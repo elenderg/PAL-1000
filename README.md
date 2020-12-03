@@ -25,7 +25,8 @@ O compilador é composto de basicamente 6 arquivos:
 
 ## Funcionamento
 
-A interface pode parecer confusa para alguns no começo. Existem 26 caracteres de A a Z, cada um correspondendo a um menu específico,  <img src="menus.png" Alt="Menu do programa">
+A interface pode parecer confusa para alguns no começo. Existem 26 caracteres de A a Z, cada um correspondendo a um menu específico,  
+<img src="menus.png" Alt="Menu do programa">
 além do botão "*" que é utilizado para selecionar a paleta de cores. 
  <img src="images/✷.png" Alt="Paleta de cores">
 
@@ -39,6 +40,6 @@ Ao lado dos botões existe uma barra que exibe informações diversas, dependend
  - texto copiado
  <img src="images/copiado.png">
  - texto colado
- <img src="images/colado">
+ <img src="images/colado.png">
  - quantidade de linhas selecionadas
  <img src="images/quantidadedelinhasselecionadas.png">
