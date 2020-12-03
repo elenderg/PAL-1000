@@ -46,3 +46,6 @@ Ao lado dos botões existe uma barra que exibe informações diversas, dependend
  
 
 No momento o programa ainda não possui barra de rolagem nem botões de Maximizar, Minimizar ou Fechar. (Para sair do Programa, pressione _Alt+Q_, para Fechar um arquivo, pressione _Ctrl + W_ . Para descer linhas utilize a seta para baixo ↓ ou clique com o botão direito do mouse e arraste.
+
+Existem projetos como o [CAL-4018](https://github.com/Folds/english) que adicionam esses elementos, porém o foco agora é traduzir a interface e a linguagem para o Português Brasileiro.
+ <img src="images/cal4018.png">
