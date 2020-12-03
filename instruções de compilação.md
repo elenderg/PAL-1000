@@ -3693,7 +3693,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 `Say no.`
 
 
-When a decider is written with a "positive" header, the CAL will understand both the positive and negative forms. For example, "To decide if a string is blank" will automatically serve as "to decide if a string is not` blank".`
+When a decider is written with a "positive" header, the CAL will understand both the positive and negative forms. For example, "`To decide if a string is blank`" will automatically serve as "`to decide if a string is not blank`".
 
 
 140. Since there's a lot of string concatenation required in monikette-to-moniker conversions, and since we do those a lot, we added in this helper to make those concatenations faster than usual:
@@ -3756,14 +3756,14 @@ When a decider is written with a "positive" header, the CAL will understand both
 142. Ready to run. Do it. In the blue, open up and list the daughter. Then open up the listing. Nice work! Now we've got monikers and parameter lists for each and every routine; here's a sampling:
 
 
-ROUTINES:
+`ROUTINES:`
 
 
-/routine/abort from/given/with/using [string]/no/no/no/no//0/0/00000000/`
+`/routine/abort from/given/with/using [string]/no/no/no/no//0/0/00000000/`
 `/variable/parameter/no/string/string/string/string/00000000/no/1/no////`
 
 
-/routine/abort from/given/with/using [string] and [byte pointer]/no/no/no/no//0/0/00000000/`
+`/routine/abort from/given/with/using [string] and [byte pointer]/no/no/no/no//0/0/00000000/`
 `/variable/parameter/no/string/string/string/string/00000000/no/1/no////`
 `/variable/parameter/no/byte pointer/byte pointer/byte pointer/byte pointer/00000000/no/1/no////`
 
@@ -3773,27 +3773,27 @@ ROUTINES:
 `/variable/parameter/no/rider/rider/rider/rider/00000000/no/1/no////`
 
 
-And you can see our "ROUTINE INDEX:" is getting a workout, too:
+And you can see our "`ROUTINE INDEX:`" is getting a workout, too:
 
 
-ROUTINE INDEX:
+`ROUTINE INDEX:`
 
 
-/4881 buckets/7862 refers/`
+`/4881 buckets/7862 refers/`
 
 
-/bucket/`
+`/bucket/`
 
-/refer/make [ratio pair] from/given/with/using.../`
+`/refer/make [ratio pair] from/given/with/using.../`
 
 
 And that it was somewhat expensive, time-wise, to do all that:
 
 
-TIMERS:
+`TIMERS:`
 
 
-/timer/loading/78/`
+`/timer/loading/78/`
 `/timer/scanning/422/`
 `/timer/resolving types/32/`
 `/timer/resolving globals/109/`
@@ -3811,10 +3811,10 @@ TIMERS:
 `/timer/total/1328/`
 
 
-Time to move on.`
+Time to move on.
 
 
----`
+
 
 
 143. Time for an easy step. In the gray, move our temporary abort line down another notch and uncomment the line above it:
@@ -3864,7 +3864,7 @@ Time to move on.`
 `Calculate the length of the type.`
 `Repeat.`
 
- `
+ 
 
 `To calculate the length of a type:`
 `If the type is nil, exit.`
@@ -3881,7 +3881,7 @@ Time to move on.`
 `Add the field's type's length times the field's count to the type's length.`
 `Repeat.`
 
-` `
+
 
 146. And here are some more helpers:
 
@@ -3940,7 +3940,7 @@ You can see that bytes are still 1 byte long:
 `/type/byte/bytes/00000001/byte/byte///0/`
 
 
-And that our prototype record is still 0 bytes long.`
+And that our prototype record is still 0 bytes long.
 
 
 `/type/record/records/00000000/record/record///0/`
@@ -3948,7 +3948,7 @@ And that our prototype record is still 0 bytes long.`
 
 But our abort message, which is a string, is now 8 bytes long, with a first byte pointer at offset 0, and a last byte pointer at offset 4:
 
- `
+ 
 
 `/type/abort message/abort messages/00000008/string/string///0/`
 `/variable//no/first byte pointer/first/byte pointer/byte pointer/00000000/no/1/no////`
@@ -3967,16 +3967,16 @@ You can also see that our "address" type has some redefinitions in it:
 `/variable//no/high wyrd/high/wyrd/wyrd/00000002/no/1/no/third byte///`
 
 
-An address is a number, 4 bytes in length overall. The low wyrd redefines the first two bytes and is thus at the same offset as the first byte; the high wyrd redefines the last two bytes, and is thus at the same offset as the third byte.`
+An address is a number, 4 bytes in length overall. The low wyrd redefines the first two bytes and is thus at the same offset as the first byte; the high wyrd redefines the last two bytes, and is thus at the same offset as the third byte.
 
 
 Finally, a glance at our timers shows that this step, important as it is, took almost no time at all:
 
 
-TIMERS:
+`TIMERS:`
 
 
-/timer/loading/109/`
+`/timer/loading/109/`
 `/timer/scanning/453/`
 `/timer/resolving types/16/`
 `/timer/resolving globals/109/`
@@ -3994,10 +3994,8 @@ TIMERS:
 `/timer/total/1390/`
 
 
-Sweet!`
+Sweet!
 
-
----`
 
 
 149. Onward. In the gray, set things up to "add the built-in memory routines":
@@ -4024,16 +4022,16 @@ Sweet!`
 `\Compile the directory (stop).`
 
 
-We saw earlier (in the "resolve the types" step) that when a programmer defines a dynamic record type using the "is a thing" syntax, the CAL does a little behind-the-scenes type-creation and type-manipulation to keep "things" simple at the programmer's level. Case in point. This type definition...`
+We saw earlier (in the "resolve the types" step) that when a programmer defines a dynamic record type using the "is a thing" syntax, the CAL does a little behind-the-scenes type-creation and type-manipulation to keep "things" simple at the programmer's level. Case in point. This type definition...
 
 
 `A source file is a thing with a path and a buffer.`
 
 
-...is modified and expanded to include (a) a "source file" type that is nothing but a pointer to a "source file record"; (b) a "source file record" that has the same fields as the programmer specified plus "next source file" and "previous source file" pointers on the front for easy chaining; and (c) a compiler-generated type, "source files" (plural) with "first source file" and "last source file" fields that can be used as the anchor for a list. Here they are in the listing:` `
+...is modified and expanded to include (a) a "`source file`" type that is nothing but a pointer to a "`source file record`"; (b) a "`source file record`" that has the same fields as the programmer specified plus "`next source file`" and "`previous source file`" pointers on the front for easy chaining; and (c) a compiler-generated type, "`source files`" (plural) with "`first source file`" and "`last source file`" fields that can be used as the anchor for a list. Here they are in the listing:
 
 
-/` - type/source file/source files/FFFFFFFF/thing/thing/source file record/source file record/0/`
+`/ - type/source file/source files/FFFFFFFF/thing/thing/source file record/source file record/0/`
 `/variable//no///byte/byte/00000000/no/4/no////`
 
 
@@ -4049,19 +4047,19 @@ We saw earlier (in the "resolve the types" step) that when a programmer defines 
 `/variable/field/no/last source file/last/source file/source file/00000000/no/1/yes////`
 
 
-Now we also want the programmer to be able to program as if` he took the time to write routines with these headers:
+Now we also want the programmer to be able to program as if he took the time to write routines with these headers:
 
 
-`To allocate memory for a source file:
+`To allocate memory for a source file:`
 
 
-`To destroy a source file:
+`To destroy a source file:`
 
 
-`To destroy some source files:
+`To destroy some source files:`
 
 
-So we have the compiler add those routines as if` they were in the programmer's source code, in this step.`
+So we have the compiler add those routines as if they were in the programmer's source code, in this step.
 
 
 150. These are the upper-level routines that make that happen:
@@ -4129,7 +4127,7 @@ So we have the compiler add those routines as if` they were in the programmer's 
 `Compile the header of the routine.`
 
 
-Note the tildes ("~") in the routine names; we don't expect the programmer will ever call these routines directly.`
+Note the tildes ("~") in the routine names; we don't expect the programmer will ever call these routines directly.
 
 
 152. And these are the deciders we need to help us do that:
@@ -4167,7 +4165,7 @@ Note the tildes ("~") in the routine names; we don't expect the programmer will 
 `Compile the header of the routine.`
 
 
-Note that there is no tilde in the routine name; we do` expect the programmer to call these routines directly.`
+Note that there is no tilde in the routine name; we do expect the programmer to call these routines directly.
 
 
 154. This is the routine that adds deallocate routines for dynamic types:
@@ -4347,8 +4345,6 @@ And that's the way we manage string memory for the programmer, and help him conv
 159. Now delete that temporary "\*** testing only" line in the son's compiler.`
 
 ` `
-
----`
 
 
 Matching a statement (in the body of a routine) with the routine (that should be called to do the work) is mostly a matter of (a) breaking down the statement into a series of monikettes, and then (b) finding a routine header with the same monikettes. We do this in the next step after this one. In this step, we increase our chances of success by re-indexing some of our routine headers using "reduced type" monikettes. For example, this routine...`
@@ -4593,8 +4589,6 @@ The Utility Index is not used again, since the Routine Index now includes both t
 See you next time!`
 
 
----`
-
 
 This is the big one. Let's take a moment to review.`
 
@@ -4762,8 +4756,6 @@ After dealing with possible special cases ("alternate wordings" and "employs"), 
 
 
 `A phrase is a string.`
-
-`
 `A term has a variable and a phrase.`
 
 
@@ -4813,8 +4805,6 @@ An expression` is two or more terms separated by the infix operators plus`, minu
 
 
 176. This is the top-level term compiler, together with one of his trivial helpers:
-
-`
 `To compile a term given a rider:`
 `Clear the term.`
 `If the compiler's abort flag is set, exit.`
@@ -5914,9 +5904,7 @@ Note that literals can have possessives; for example...`
 `Add a monikette to some monikettes given the string.`
 `Add another monikette to the monikettes given the type.`
 `Find the routine given the monikettes.`
-`Destroy the monikettes. `
-`
-218. EMPLOY and POINT statements explicitly refer to other routines, and some terms implicitly refer to other routines (like "a box's center" which is an implicit reference to the function-routine "To put a box's center into a spot.") A routine reference` is a list of monikettes that refers to such a routine, and these are the routines we use to compile them:
+`Destroy the monikettes. `218. EMPLOY and POINT statements explicitly refer to other routines, and some terms implicitly refer to other routines (like "a box's center" which is an implicit reference to the function-routine "To put a box's center into a spot.") A routine reference` is a list of monikettes that refers to such a routine, and these are the routines we use to compile them:
 
 
 `To compile a routine reference given a rider:`
@@ -5977,9 +5965,7 @@ Note that literals can have possessives; for example...`
 `To compile a routine reference given a rider (monikette string):`
 `If the compiler's abort flag is set, exit.`
 `Add a monikette to the routine reference given the rider's token.`
-`Move the rider (compiler rules). `
-`
-219. Whew! Made it. Run it, open the daughter in the blue, and List her. Then open the listing, find "ROUTINES:" (no quotes) and you'll see a lot of scratches, intermediates, and fragments hanging on our routines. I've inserted some source lines in the listing below, in blue, to make the fragments easier to understand (the fragments generated by each statement appear below the source):
+`Move the rider (compiler rules). `219. Whew! Made it. Run it, open the daughter in the blue, and List her. Then open the listing, find "ROUTINES:" (no quotes) and you'll see a lot of scratches, intermediates, and fragments hanging on our routines. I've inserted some source lines in the listing below, in blue, to make the fragments easier to understand (the fragments generated by each statement appear below the source):
 
 
 `ROUTINES:
@@ -6045,7 +6031,7 @@ Put the string into the compiler's abort message.` `
 
 `Almost home now. The rest may be tedious, but it's easy stuff.`
 
-`---`
+``
 
 
 Now that we know everything in the source checks out, it's time to add one more routine of our own.`
@@ -6179,8 +6165,6 @@ Now that we know everything in the source checks out, it's time to add one more 
 Next time, we'll calculate the offsets for our parameters and local variables.`
 
 
----`
-
 
 225. Time to calculate some offsets. Let's get right to it. Move our abort line down and reinstate the next step:
 
@@ -6293,8 +6277,6 @@ Next time, we'll calculate the offsets for our parameters and local variables.`
 Now recall that the stack, in general, is arranged like this:
 
 
-`
-
 
 Note the offset` on our parameter: 00000008. That means 8 bytes past wherever the EBP register is pointing.`
 
@@ -6305,8 +6287,6 @@ Note also the offsets on the local scratch` variables: FFFFFFFC, FFFFFFF8, FFFFF
 And that's it for this step. Next time, we'll give everyone (who needs one) a permanent address.`
 
 
-
----`
 
 
 230. Time to hand out addresses. Move the abort line down and activate the next step:
@@ -6674,8 +6654,6 @@ Sweet. And all that addressing took only... let me see...`
 `Next up: TRANSMOGRIFICATION! Mwa-hah-hah-hah (evil laugh).`
 
 
----`
-
 
 243. The dictionary says transmogrify` means "to change completely the nature or appearance of," and that's exactly what we're about to do to each and every one of our fragments. So let's do it. Move the abort line down, reactivate the next step:
 
@@ -7036,8 +7014,6 @@ Look at all that lovely machine code on the end of each fragment line! (Except f
 
 Next time, we cram everything we've got into a Portable Executable.`
 
-
----`
 
 
 Coming down the home stretch now. Time to cram everything into a Portable Executable file and finish up.`
