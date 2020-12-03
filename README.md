@@ -31,7 +31,7 @@ A interface pode parecer confusa para alguns no começo. Existem 26 caracteres d
  <img src="images/✷.png" Alt="Paleta de cores">
 
 
-Boa parte dos sub-menus possui uma tecla de atalho que pode ser acessada com Ctrl ou Alt (na maior parte das vezes qualquer uma das teclas funciona)
+Boa parte dos sub-menus possui uma tecla de atalho que pode ser acessada com _Ctrl_ ou _Alt_ (na maior parte das vezes qualquer uma das teclas funciona).
 
 Ao lado dos botões existe uma barra que exibe informações diversas, dependendo do contexto, por exemplo: 
 
@@ -43,3 +43,6 @@ Ao lado dos botões existe uma barra que exibe informações diversas, dependend
  <img src="images/colado.png">
  - quantidade de linhas selecionadas
  <img src="images/quantidadedelinhasselecionadas.png">
+ 
+
+No momento o programa ainda não possui barra de rolagem nem botões de Maximizar, Minimizar ou Fechar. (Para sair do Programa, pressione _Alt+Q_, para Fechar um arquivo, pressione _Ctrl + W_ .
