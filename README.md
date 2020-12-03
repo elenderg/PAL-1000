@@ -45,4 +45,4 @@ Ao lado dos botões existe uma barra que exibe informações diversas, dependend
  <img src="images/quantidadedelinhasselecionadas.png">
  
 
-No momento o programa ainda não possui barra de rolagem nem botões de Maximizar, Minimizar ou Fechar. (Para sair do Programa, pressione _Alt+Q_, para Fechar um arquivo, pressione _Ctrl + W_ .
+No momento o programa ainda não possui barra de rolagem nem botões de Maximizar, Minimizar ou Fechar. (Para sair do Programa, pressione _Alt+Q_, para Fechar um arquivo, pressione _Ctrl + W_ . Para descer linhas utilize a seta para baixo ↓ ou clique com o botão direito do mouse e arraste.
