@@ -25,7 +25,10 @@ O compilador é composto de basicamente 6 arquivos:
 
 ## Funcionamento
 
-A interface pode parecer confusa para alguns no começo. Existem 26 caracteres de A a Z, cada um correspondendo a um menu específico, além do botão "*" que é utilizado para selecionar a paleta de cores. 
+A interface pode parecer confusa para alguns no começo. Existem 26 caracteres de A a Z, cada um correspondendo a um menu específico,  <img src="menus.png" Alt="Menu do programa">
+além do botão "*" que é utilizado para selecionar a paleta de cores. 
+ <img src="images/✷.png" Alt="Paleta de cores">
+
 
 Boa parte dos sub-menus possui uma tecla de atalho que pode ser acessada com Ctrl ou Alt (na maior parte das vezes qualquer uma das teclas funciona)
 
