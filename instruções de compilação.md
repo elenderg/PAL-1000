@@ -6566,7 +6566,7 @@ Then jump to the literals and check out their addresses:
 `/variable/literal/yes/~L3//number/number/004030B4/no/1/no///03000000/`
 
 
-`Then jump to the routines and check out both the entry addresses, and the fragment addresses:
+Then jump to the routines and check out both the entry addresses, and the fragment addresses:
 
 
 `ROUTINES:`
@@ -6599,10 +6599,10 @@ Then jump to the literals and check out their addresses:
 `/fragment/epilog/////00000000/00419088//`
 
 
-`Finally, jump to "IMPORTS:" (no quotes) and take a peek at both the import and entry addresses we assigned:
+Finally, jump to "IMPORTS:" (no quotes) and take a peek at both the import and entry addresses we assigned:
 
 
-`IMPORTS:
+`IMPORTS:`
 
 
 `/import/user32.dll/`
@@ -6611,7 +6611,7 @@ Then jump to the literals and check out their addresses:
 `/entry/PostMessageA/004010E4/`
 
 
-Sweet. And all that addressing took only... let me see...`
+Sweet. And all that addressing took only... let me see...
 
 
 `TIMERS:`
@@ -6636,14 +6636,14 @@ Sweet. And all that addressing took only... let me see...`
 `/timer/total/5078/`
 
 
-...32 milliseconds. Zippy!`
+...32 milliseconds. Zippy!
 
 
-`Next up: TRANSMOGRIFICATION! Mwa-hah-hah-hah (evil laugh).`
+Next up: TRANSMOGRIFICATION! Mwa-hah-hah-hah (evil laugh).
 
 
 
-243. The dictionary says transmogrify` means "to change completely the nature or appearance of," and that's exactly what we're about to do to each and every one of our fragments. So let's do it. Move the abort line down, reactivate the next step:
+243. The dictionary says transmogrify means "to change completely the nature or appearance of," and that's exactly what we're about to do to each and every one of our fragments. So let's do it. Move the abort line down, reactivate the next step:
 
 
 `To compile a directory:`
@@ -6746,7 +6746,7 @@ Sweet. And all that addressing took only... let me see...`
 
 `To transmogrify a fragment (call internal):`
 `Get an address given the fragment's routine.`
-`Attach $E8 and the address to the fragment. \` call the fragment's routine's address`
+`Attach $E8 and the address to the fragment. \ call the fragment's routine's address`
 
 `To transmogrify a fragment (dereference):`
 `Attach $8B95 and the fragment's variable's offset to the fragment's code.  \ mov edx,[ebp+the fragment's variable's offset] `
@@ -6831,9 +6831,9 @@ Sweet. And all that addressing took only... let me see...`
 `If the length is 1, attach $8802 to the fragment's code; exit.  \ mov [edx],al `
 `Abort with "Internal error 3 - transmogrify a fragment (save eax)".`
 
-If you're wondering why we only need 18 fragment transmogrifiers when we have 21 fragment types, it's because 3 of those fragment types don't require transmogrification. The END IF, LOOP, and FINALIZE tags are just labels that we stick in there (and address) so we have places to jump to.`
+If you're wondering why we only need 18 fragment transmogrifiers when we have 21 fragment types, it's because 3 of those fragment types don't require transmogrification. The END IF, LOOP, and FINALIZE tags are just labels that we stick in there (and address) so we have places to jump to.
 
-247. Some of the transmogrifiers need a little help from this guy...`
+247. Some of the transmogrifiers need a little help from this guy...
 
 `To attach address loading code to a hex string given a variable: \ loads into edx`
 `If the variable is nil, attach $C7C200000000 to the hex string; exit. \ mov edx,0`
@@ -6951,14 +6951,14 @@ If you're wondering why we only need 18 fragment transmogrifiers when we have 21
 `/fragment/epilog/////00000000/00419088/8BE55DC204000000/`
 
 
-Look at all that lovely machine code on the end of each fragment line! (Except for the LOOP, END IF, and FINALIZE lines, of course).`
+Look at all that lovely machine code on the end of each fragment line! (Except for the LOOP, END IF, and FINALIZE lines, of course).
 
 
-Next time, we cram everything we've got into a Portable Executable.`
+Next time, we cram everything we've got into a Portable Executable.
 
 
 
-Coming down the home stretch now. Time to cram everything into a Portable Executable file and finish up.`
+Coming down the home stretch now. Time to cram everything into a Portable Executable file and finish up.
 
 252. Let's begin by grabbing the three ugly types we need for Windows:
 
@@ -6977,10 +6977,10 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 `A wyrd called initialirelativecs,`
 `A wyrd called addressofrelocationtableinfile,`
 `A wyrd called overlynumber,`
-8 bytes called resveredbytes,`
+`8 bytes called resveredbytes,`
 `A wyrd called oemidentifier,`
 `A wyrd called oeminfo,`
-20 bytes called reservedwords, `
+`20 bytes called reservedwords, `
 `A number called addressofpeheaderinfile.`
 
 `A pe header is a record with`
@@ -7024,21 +7024,21 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 `A number called loaderflags,`
 `\ directories (16 address and size pairs)`
 `A number called numberofdirectories,`
-8 bytes called directory0,`
+`8 bytes called directory0,`
 `A number called imagedirectoryentryimportaddress,`
 `A number called imagedirectoryentryimportsize,`
-112 bytes called directories2-15,`
+`112 bytes called directories2-15,`
 `A pe section header called idata section,`
 `A pe section header called data section,`
 `A pe section header called code section.`
 
 `A pe section header is a record with`
-8 bytes called name,`
+`8 bytes called name,`
 `A number called sizeinbytes,`
 `A number called addressinmemory,`
 `A number called sizeinfile,`
 `A number called addressinfile,`
-12 bytes called reserved,`
+`12 bytes called reserved,`
 `A number called characteristics.`
 
 
@@ -7214,7 +7214,7 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 `Add the code borough's size to the size.`
 
 
-259. And we'll be needing all 15 of our "blurt" routines, that mostly just copy bytes (quickly) from our various lists to the right spots in our pre-allocated executable buffer in memory.`
+259. And we'll be needing all 15 of our "blurt" routines, that mostly just copy bytes (quickly) from our various lists to the right spots in our pre-allocated executable buffer in memory.
 
 
 `To blurt bytes given a pointer and a length and a buffer and an offset:`
@@ -7314,7 +7314,7 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 `Repeat.`
 
 
-At this point we've got a complete executable sitting in our buffer in memory, and we're done with the "link" step.`
+At this point we've got a complete executable sitting in our buffer in memory, and we're done with the "link" step.
 
 
 260. On to the next step; add this guy back in:
@@ -7337,13 +7337,13 @@ At this point we've got a complete executable sitting in our buffer in memory, a
 `Show status "".`
 
 
-262. almost there; just one little clean-up: At the top of the file there are two comments that got double-commented when we commented out the whole file way back when. Change those double-backslashes to just single ones.`
+262. almost there; just one little clean-up: At the top of the file there are two comments that got double-commented when we commented out the whole file way back when. Change those double-backslashes to just single ones.
 
 
-TA DA! We did it! A complete Plain English compiler written entirely in Plain English.`
+TA DA! We did it! A complete Plain English compiler written entirely in Plain English.
 
 
-263. Run it. In the blue, open the SON's directory up, and copy his now-complete compiler file to the clipboard (select the file, then hit CTRL-C). Then open the daughter's directory and paste (CTRL-V) to overwrite the genetically defective compiler file she's got now, so she'll also be able to reproduce in the future. Then open up and find this line in the daughter's Desktop file...`
+263. Run it. In the blue, open the SON's directory up, and copy his now-complete compiler file to the clipboard (select the file, then hit CTRL-C). Then open the daughter's directory and paste (CTRL-V) to overwrite the genetically defective compiler file she's got now, so she'll also be able to reproduce in the future. Then open up and find this line in the daughter's Desktop file...
 
 
 `Put the lightest sky color into the desktop color.`
@@ -7355,13 +7355,13 @@ TA DA! We did it! A complete Plain English compiler written entirely in Plain En
 `Put the pink color into the desktop color.`
 
 
-Run it. Congratulations! It's a girl! And you now have three healthy generations of the CAL running. ALT-TAB to see them all in a bunch.`
+Run it. Congratulations! It's a girl! And you now have three healthy generations of the CAL running. ALT-TAB to see them all in a bunch.
 
 
 If you want to see the third-generation Portable Executable we just generated, open the daughter's directory, find the ".exe" in there, and open it (as a dump). There she is (a real "binary beauty") starting with the lovely DOS header:
 
 
-00000000  4D 5A 00 00 00 00 00 00 00 00 00 00 00 00 00 00  MZ..............`
+`00000000  4D 5A 00 00 00 00 00 00 00 00 00 00 00 00 00 00  MZ..............`
 `00000010  00 00 00 00 00 00 00 00 40 00 00 00 00 00 00 00  ........@.......`
 `00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
 `00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00  ................`
@@ -7379,9 +7379,9 @@ If you want to see the third-generation Portable Executable we just generated, o
 `000000F0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
 
 
-And that's all I have to say about that. Questions?`
+And that's all I have to say about that. Questions?
 
 
-Gerry`
+Gerry
 
 
