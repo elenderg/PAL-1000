@@ -21,3 +21,21 @@ O compilador é composto de basicamente 6 arquivos:
  4. The finder (contém as funções do explorador de arquivos)
  5. The noodle (contém as definições necessárias para o funcionamento do compilador)
  6. The writer (contém funções para o editor de manuais da plataforma)
+
+
+## Funcionamento
+
+A interface pode parecer confusa para alguns no começo. Existem 26 caracteres de A a Z, cada um correspondendo a um menu específico, além do botão "*" que é utilizado para selecionar a paleta de cores. 
+
+Boa parte dos sub-menus possui uma tecla de atalho que pode ser acessada com Ctrl ou Alt (na maior parte das vezes qualquer uma das teclas funciona)
+
+Ao lado dos botões existe uma barra que exibe informações diversas, dependendo do contexto, por exemplo: 
+
+ - linha e coluna
+ <img src="images/linhacoluna.png">
+ - texto copiado
+ <img src="images/copiado.png">
+ - texto colado
+ <img src="images/colado">
+ - quantidade de linhas selecionadas
+ <img src="images/quantidadedelinhasselecionadas.png">
