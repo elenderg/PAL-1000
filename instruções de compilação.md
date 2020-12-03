@@ -54,15 +54,22 @@ Now let's do it.
 `If the compiler's abort flag is set, exit.`
 
 `Set the compiler's abort flag.`
+
 `Put the string into the compiler's abort message.`
+
 `Find the compiler's abort path and the compiler's abort row# given the byte pointer.`
+
 `If the compiler's abort path is blank, exit.`
+
 `Extract a file name from the compiler's abort path.`
+
 `Prepend "_Error in "_ then the file name then "_. "_ to the compiler's abort message.`
 
 
 `To abort with a string and a rider:`
+
 `If the rider's token is not blank, abort with the string and the rider's token's first; exit.`
+
 `Abort with the string and the rider's source's last.`
 
 
@@ -70,19 +77,33 @@ Now let's do it.
 
 
 `The adding built-in memory routines timer is a timer.`
+
 `The adding built-in startup routine timer is a timer.`
+
 `The addressing timer is a timer.`
+
 `The calculating timer is a timer.`
+
 `The compiling routine bodies timer is a timer.`
+
 `The compiling routine headers timer is a timer.`
+
 `The indexing utilities timer is a timer.`
+
 `The linking timer is a timer.`
+
 `The offsetting timer is a timer.`
+
 `The loading timer is a timer.`
+
 `The resolving globals timer is a timer.`
+
 `The resolving types timer is a timer.`
+
 `The scanning timer is a timer.`
+
 `The transmogrifying timer is a timer.`
+
 `The writing timer is a timer.`
 
  
@@ -100,12 +121,16 @@ Now let's do it.
 
 
 `To advance a buffer:`
+
 `Append the return byte to the buffer.`
+
 `Append the linefeed byte to the buffer.`
 
 
 `To advance a buffer (twice):`
+
 `Advance the buffer.`
+
 `Advance the buffer.`
 
 
@@ -113,71 +138,112 @@ Now let's do it.
 
 
 `To append an entry to a buffer (with separator):`
+
 `If the entry is nil, append "__" to the buffer (with separator); exit.`
+
 `Append the entry's name to the buffer (with separator).`
 
 
 `To append a flag to a buffer (with separator):`
+
 `Convert the flag to a string.`
+
 `Append the string to the buffer (with separator).`
 
 `To append a number to a buffer (as hex with separator):`
+
 `Convert the number to a nibble string.`
+
 `Append the nibble string to the buffer (with separator).`
 
 
 `To append a number to a buffer (with separator):`
+
 `Convert the number to a string.`
+
 `Append the string to the buffer (with separator).`
 
 
 `To append a ratio to a buffer (with separator):`
+
 `Convert the ratio to a string.`
+
 `Append the string to the buffer (with separator).`
 
 
 `To append a routine to a buffer (with separator):`
+
 `If the routine is nil, append "__" to the buffer (with separator); exit.`
+
 `Append the routine's moniker to the buffer (with separator).`
 
 `To append a string to a buffer (with separator):`
+
 `Append the string to the buffer.`
+
 `Append "_/_" to the buffer.`
 
 
 `To append a tag to a buffer (as a fragment tag string with separator):`
+
 `If the tag is the break tag, append "_break_" to the buffer (with separator); exit.`
+
 `If the tag is the call external tag, append "_call external_" to the buffer (with separator); exit.`
+
 `If the tag is the call indirect tag, append "_call indirect_" to the buffer (with separator); exit.`
+
 `If the tag is the call internal tag, append "_call internal_" to the buffer (with separator); exit.`
+
 `If the tag is the dereference tag, append "_dereference_" to the buffer (with separator); exit.`
+
 `If the tag is the end if tag, append "_end if_" to the buffer (with separator); exit.`
+
 `If the tag is the epilog tag, append "_epilog_" to the buffer (with separator); exit.`
+
 `If the tag is the exit tag, append "_exit_" to the buffer (with separator); exit.`
+
 `If the tag is the finalize tag, append "_finalize_" to the buffer (with separator); exit.`
+
 `If the tag is the increment tag, append "_increment_" to the buffer (with separator); exit.`
+
 `If the tag is the intel tag, append "_intel_" to the buffer (with separator); exit.`
+
 `If the tag is the jump false tag, append "_jump false_" to the buffer (with separator); exit.`
+
 `If the tag is the load address tag, append "_load address_" to the buffer (with separator); exit.`
+
 `If the tag is the load eax tag, append "_load eax_" to the buffer (with separator); exit.`
+
 `If the tag is the loop tag, append "_loop_" to the buffer (with separator); exit.`
+
 `If the tag is the not tag, append "_not_" to the buffer (with separator); exit.`
+
 `If the tag is the prolog tag, append "_prolog_" to the buffer (with separator); exit.`
+
 `If the tag is the push address tag, append "_push address_" to the buffer (with separator); exit.`
+
 `If the tag is the push value tag, append "_push value_" to the buffer (with separator); exit.`
+
 `If the tag is the save eax tag, append "_save eax_" to the buffer (with separator); exit.`
+
 `If the tag is the repeat tag, append "_repeat_" to the buffer (with separator); exit.`
+
 `If the tag is the routine address tag, append "_routine address_" to the buffer (with separator); exit.`
+
 `Append "_?_" to the buffer (with separator).`
 
 
 `To append a type to a buffer (with separator):`
+
 `If the type is nil, append "__" to the buffer (with separator); exit.`
+
 `Append the type's name to the buffer (with separator).`
 
 
 `To append a variable to a buffer (with separator):`
+
 `If the variable is nil, append "__" to the buffer (with separator); exit.`
+
 `Append the variable's name to the buffer (with separator).`
 
 
@@ -191,26 +257,47 @@ Now we need to put our tags back, which are splattered around like the timers. T
 
 
 `The break tag is a tag equal to 1.`
+
 `The call external tag is a tag equal to 2.`
+
 `The call indirect tag is a tag equal to 3.`
+
 `The call internal tag is a tag equal to 4.`
+
 `The dereference tag is a tag equal to 5.`
+
 `The end if tag is a tag equal to 6.`
+
 `The epilog tag is a tag equal to 7.`
+
 `The exit tag is a tag equal to 8.`
+
 `The finalize tag is a tag equal to 9.`
+
 `The increment tag is a tag equal to 10.`
+
 `The intel tag is a tag equal to 11.`
+
 `The jump false tag is a tag equal to 12.`
+
 `The load address tag is a tag equal to 13.`
+
 `The load eax tag is a tag equal to 14.`
+
 `The loop tag is a tag equal to 15.`
+
 `The not tag is a tag equal to 16.`
+
 `The prolog tag is a tag equal to 17.`
+
 `The push address tag is a tag equal to 18.`
+
 `The push value tag is a tag equal to 19.`
+
 `The repeat tag is a tag equal to 21.`
+
 `The routine address tag is a tag equal to 22.`
+
 `The save eax tag is a tag equal to 20.`
 
 
@@ -221,23 +308,41 @@ While you're doing that, think about this: those 22 tags define the only things 
 
 
 `To compile a directory:`
+
 `Abort with "_I'm not old enough to make babies.". `
+
 `\Compile the directory (start).`
+
 `\Compile the directory (load the source files).`
+
 `\Compile the directory (scan the source files).`
+
 `\Compile the directory (resolve the types).`
+
 `\Compile the directory (resolve the globals).`
+
 `\Compile the directory (compile the headers of the routines).`
+
 `\Compile the directory (calculate lengths and offsets of types).`
+
 `\Compile the directory (add the built-in memory routines).`
+
 `\Compile the directory (index the routines for utility use).`
+
 `\Compile the directory (compile the bodies of the routines).`
+
 `\Compile the directory (add and compile the built-in startup routine).`
+
 `\Compile the directory (offset parameters and variables).`
+
 `\Compile the directory (address).`
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
 
@@ -251,14 +356,23 @@ Isn't it handy to be able to see, at a glance, which parts of the program are co
 
 
 `The compiler has`
+
 `a directory,`
+
 `a timer,`
+
 `an abort flag,`
+
 `an abort message,`
+
 `an abort path,`
+
 `an abort row#,`
+
 `a name count,`
+
 `an exe buffer,`
+
 `a listing buffer.`
 
 
@@ -266,18 +380,28 @@ Isn't it handy to be able to see, at a glance, which parts of the program are co
 
 
 `To decide if a byte is any mark:`
+
 `If the byte is the period byte, say yes.`
+
 `If the byte is the comma byte, say yes.`
+
 `If the byte is the semi-colon byte, say yes.`
+
 `If the byte is the colon byte, say yes.`
+
 `If the byte is the exclamation  byte, say yes.`
+
 `If the byte is the question-mark byte, say yes.`
+
 `Say no.`
 
 
 `To decide if a string is any flag literal:`
+
 `If the string is "_yes", say yes.`
+
 `If the string is "_no", say yes.`
+
 `Say no.`
 
 
@@ -285,9 +409,13 @@ Isn't it handy to be able to see, at a glance, which parts of the program are co
 
 
 `An entry is a thing with`
+
 `A name address,`
+
 `A thunk address,`
+
 `A name,`
+
 `An address.`
 
 
@@ -297,16 +425,27 @@ There's one "_entry_" for each DLL routine that we call.
 
 
 `To finalize the compiler:`
+
 `Destroy the utility index.`
+
 `Destroy the routine index.`
+
 `Destroy the literal index.`
+
 `Destroy the global index.`
+
 `Destroy the type index.`
+
 `Destroy the imports.`
+
 `Destroy the routines.`
+
 `Destroy the literals.`
+
 `Destroy the globals.`
+
 `Destroy the types.`
+
 `Destroy the source files.`
 
 
@@ -314,13 +453,21 @@ There's one "_entry_" for each DLL routine that we call.
 
 
 `A fragment is a thing with`
+
 `A tag [break, call external, call indirect, call internal, dereference, end if, epilog, exit, finalize, increment, intel, jump false, load address, load eax, loop, not, prolog, push address, push value, save eax, repeat, routine address],`
+
 `A variable (reference) [call indirect, dereference, increment, load address, load eax, pop, push address, push value, routine address, save eax],`
+
 `Another variable (reference) [load address],`
+
 `A routine (reference) [call internal, routine address],`
+
 `An entry (reference) [call external],`
+
 `A number [increment],`
+
 `An address,`
+
 `A hex string called code.`
 
 
@@ -338,7 +485,9 @@ There's one "_entry_" for each DLL routine that we call.
 `The literal index is an index.`
 
 `The routine index is an index.`
+
 `The type index is an index.`
+
 `The utility index is an index.`
 
 
@@ -364,18 +513,28 @@ The first two are types that say global variables and fields are a lot like any 
 
 
 `An import header is a record with`
+
 `An address called original first thunk,`
+
 `A number called timestamp,`
+
 `An address called forwarder chain,`
+
 `An address called name memory address,`
+
 `An address called first thunk memory address.`
 
 
 `An import is a thing with`
+
 `A name address,`
+
 `A header address,`
+
 `A name,`
+
 `An import header,`
+
 `Some entries.`
 
 
@@ -398,278 +557,470 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 
 `To list:`
+
 `Clear the compiler's listing.`
+
 `List the compiler's abort message in the compiler's listing.`
+
 `List the types under "_TYPES:_" in the compiler's listing.`
+
 `List the globals under "_GLOBALS:_" in the compiler's listing.`
+
 `List the literals under "_LITERALS:_" in the compiler's listing.`
+
 `List the routines under "_ROUTINES:_" in the compiler's listing. `
+
 `\List the type index under "_TYPE INDEX:_" in the compiler's listing.`
+
 `\List the global index under "_GLOBAL INDEX:_" in the compiler's listing.`
+
 `\List the literal index under "_LITERAL INDEX:_" in the compiler's listing.`
+
 `\List the routine index under "_ROUTINE INDEX:_" in the compiler's listing.`
+
 `\List the utility index under "_UTILITY INDEX:_" in the compiler's listing. `
+
 `List the imports under "_IMPORTS:_" in the compiler's listing.`
+
 `List the source files under "_SOURCE FILES:_" in the compiler's listing.`
+
 `List the timers under "_TIMERS:_" in the compiler's listing.`
+
 `Write the compiler's listing to the compiler's listing path.`
 
 
 `To list an abort message in a buffer:`
+
 `If the abort message is blank, exit.`
+
 `Append "_COMPILE ABORTED - LISTING INCOMPLETE_" to the buffer.`
+
 `Advance the buffer (twice).`
+
 `Append the abort message to the buffer.`
+
 `Advance the buffer (twice).`
 
 
 `To list a bucket in a buffer:`
+
 `If the bucket's refers are empty, exit.`
+
 `Append "_/bucket_" to the buffer (with separator).`
+
 `Advance the buffer.`
+
 `List the bucket's refers in the buffer.`
+
 `Advance the buffer.`
 
 
 `To list some entries in a buffer:`
+
 `Get an entry from the entries.`
+
 `If the entry is nil, exit.`
+
 `List the entry in the buffer.`
+
 `Repeat.`
 
 
 `To list an entry in a buffer:`
+
 `If the entry is nil, exit.`
+
 `Append "_/entry_" to the buffer (with separator).`
+
 `Append the entry's name to the buffer (with separator).`
+
 `Append the entry's address to the buffer (as hex with separator).`
+
 `Advance the buffer.`
 
 
 `To list a fragment in a buffer:`
+
 `Append "_/fragment_" to the buffer (with separator).`
+
 `Append the fragment's tag to the buffer (as a fragment tag string with separator).`
+
 `Append the fragment's variable to the buffer (with separator).`
+
 `Append the fragment's other variable to the buffer (with separator).`
+
 `Append the fragment's routine to the buffer (with separator).`
+
 `Append the fragment's entry to the buffer (with separator).`
+
 `Append the fragment's number to the buffer (as hex with separator).`
+
 `Append the fragment's address to the buffer (as hex with separator).`
+
 `Convert the fragment's code to a nibble string.`
+
 `Append the nibble string to the buffer (with separator).`
+
 `Advance the buffer.`
 
 
 `To list some fragments in a buffer:`
+
 `Get a fragment from the fragments.`
+
 `If the fragment is nil, exit.`
+
 `List the fragment in the buffer.`
+
 `Repeat.`
 
 
 `To list an import in a buffer:`
+
 `If the import is nil, exit.`
+
 `Append "_/import_" to the buffer (with separator).`
+
 `Append the import's name to the buffer (with separator).`
+
 `Advance the buffer.`
+
 `List the import's entries in the buffer.`
+
 `Advance the buffer.`
 
 
 `To list some imports in a buffer:`
+
 `Get an import from the imports.`
+
 `If the import is nil, exit.`
+
 `List the import in the buffer.`
+
 `Repeat.`
 
 
 `To list some imports under a string in a buffer:`
+
 `Append the string to the buffer.`
+
 `Advance the buffer (twice).`
+
 `If the imports are empty, exit.`
+
 `List the imports in the buffer.`
 
 
 `To list an index in a buffer:`
+
 `Append "_/_" then the index's used bucket count then "_ buckets_" to the buffer (with separator).`
+
 `Append the index's count then "_ refers_" to the buffer (with separator).`
+
 `Advance the buffer (twice).`
+
 `Loop.`
+
 `Get a bucket given the index.`
+
 `If the bucket is nil, exit.`
+
 `List the bucket in the buffer.`
+
 `Repeat.`
 
 
 `To list an index under a string in a buffer:`
+
 `Append the string to the buffer.`
+
 `Advance the buffer (twice).`
+
 `If the index is empty, exit.`
+
 `List the index in the buffer.`
 
 
 `To list a refer in a buffer:`
+
 `If the refer is nil, exit.`
+
 `Append "_/refer_" to the buffer (with separator).`
+
 `Append the refer's string to the buffer.`
+
 `If the refer's pointer is nil, append "_..._" to the buffer.`
+
 `Append "_/_" to the buffer.`
+
 `Advance the buffer.`
 
 
 `To list some refers in a buffer:`
+
 `Get a refer from the refers.`
+
 `If the refer is nil, exit.`
+
 `List the refer in the buffer.`
+
 `Repeat.`
 
 
 `To list a routine in a buffer:`
+
 `If the routine is nil, exit.`
+
 `Append "_/routine_" to the buffer (with separator).`
+
 `Append the routine's moniker to the buffer (with separator).`
+
 `Append the routine's compiled flag to the buffer (with separator).`
+
 `Append the routine's callback flag to the buffer (with separator).`
+
 `Append the routine's decider flag to the buffer (with separator).`
+
 `Append the routine's function flag to the buffer (with separator).`
+
 `Append the routine's employs moniker to the buffer (with separator).`
+
 `Append the routine's parameter size to the buffer (with separator).`
+
 `Append the routine's local size to the buffer (with separator).`
+
 `Append the routine's address to the buffer (as hex with separator).`
+
 `Advance the buffer.`
+
 `List the routine's parameters in the buffer.`
+
 `List the routine's locals in the buffer.`
+
 `List the routine's fragments in the buffer.`
+
 `Advance the buffer.`
 
 
 `To list some routines in a buffer:`
+
 `Get a routine from the routines.`
+
 `If the routine is nil, exit.`
+
 `List the routine in the buffer.`
+
 `Repeat.`
 
 
 `To list some routines under a string in a buffer:`
+
 `Append the string to the buffer.`
+
 `Advance the buffer (twice).`
+
 `If the routines are empty, exit.`
+
 `List the routines in the buffer.`
 
 
 `To list a source file in a buffer:`
+
 `If the source file is nil, exit.`
+
 `Append "_/source file_" to the buffer (with separator).`
+
 `Append the source file's path to the buffer (with separator).`
+
 `Advance the buffer.`
 
 
 `To list some source files in a buffer:`
+
 `Get a source file from the source files.`
+
 `If the source file is nil, exit.`
+
 `List the source file in the buffer.`
+
 `Repeat.`
 
 
 `To list some source files under a string in a buffer:`
+
 `Append the string to the buffer.`
+
 `Advance the buffer (twice).`
+
 `If the source files are empty, exit.`
+
 `List the source files in the buffer.`
+
 `Advance the buffer.`
 
 
 `To list a timer given a string in a buffer:`
+
 `Append "_/timer_" to the buffer (with separator).`
+
 `Append the string to the buffer (with separator).`
+
 `Append the timer's string to the buffer (with separator).`
+
 `Advance the buffer.`
 
 
 `To list the timers under a string in a buffer:`
+
 `Append the string to the buffer.`
+
 `Advance the buffer (twice).`
+
 `List the loading timer given "_loading_" in the buffer.`
+
 `List the scanning timer given "_scanning_" in the buffer.`
+
 `List the resolving types timer given "_resolving types_" in the buffer.`
+
 `List the resolving globals timer given "_resolving globals_" in the buffer.`
+
 `List the compiling routine headers timer given "_compiling routine headers_" in the buffer.`
+
 `List the calculating timer given "_calculating_" in the buffer.`
+
 `List the adding built-in memory routines timer given "_adding built-in memory routines_" in the buffer.`
+
 `List the indexing utilities timer given "_indexing utilities_" in the buffer.`
+
 `List the compiling routine bodies timer given "_compiling routine bodies_" in the buffer.`
+
 `List the adding built-in startup routine timer given "_adding built-in startup routine_" in the buffer.`
+
 `List the offsetting timer given "_offsetting_" in the buffer.`
+
 `List the addressing timer given "_addressing_" in the buffer.`
+
 `List the transmogrifying timer given "_transmogrifying_" in the buffer.`
+
 `List the linking timer given "_linking_" in the buffer.`
+
 `List the writing timer given "_writing_" in the buffer.`
+
 `List the compiler's timer given "_total_" in the buffer.`
+
 `Advance the buffer.`
 
 
 `To list a type in a buffer:`
+
 `If the type is nil, exit.`
+
 `Append "_/type_" to the buffer (with separator).`
+
 `Append the type's name to the buffer (with separator).`
+
 `Append the type's plural name to the buffer (with separator).`
+
 `Append the type's length to the buffer (as hex with separator).`
+
 `Append the type's base name to the buffer (with separator).`
+
 `Append the type's base type to the buffer (with separator).`
+
 `Append the type's target name to the buffer (with separator).`
+
 `Append the type's target type to the buffer (with separator).`
+
 `Append the type's scale to the buffer (with separator).`
+
 `Advance the buffer.`
+
 `List the type's fields in the buffer.`
+
 `Advance the buffer.`
 
 
 `To list some types in a buffer:`
+
 `Get a type from the types.`
+
 `If the type is nil, exit.`
+
 `List the type in the buffer.`
+
 `Repeat.`
 
 
 `To list some types under a string in a buffer:`
+
 `Append the string to the buffer.`
+
 `Advance the buffer (twice).`
+
 `If the types are empty, exit.`
+
 `List the types in the buffer.`
 
 
 `To list a variable in a buffer:`
+
 `If the variable is nil, exit.`
+
 `Append "_/variable_" to the buffer (with separator).`
+
 `Append the variable's kind to the buffer (with separator).`
+
 `Append the variable's compiled flag to the buffer (with separator).`
+
 `Append the variable's name to the buffer (with separator).`
+
 `Append the variable's nickname to the buffer (with separator).`
+
 `Append the variable's type name to the buffer (with separator).`
+
 `Append the variable's type to the buffer (with separator).`
+
 `Append the variable's address [or offset] to the buffer (as hex with separator).`
+
 `Append the variable's by-value flag to the buffer (with separator).`
+
 `Append the variable's count to the buffer (with separator).`
+
 `Append the variable's reference flag to the buffer (with separator).`
+
 `Append the variable's redefinition target name to the buffer (with separator).`
+
 `Append the variable's literal to the buffer (with separator).`
+
 `Convert the variable's data to a nibble string.`
+
 `Append the nibble string to the buffer (with separator).`
+
 `Advance the buffer.`
 
 
 `To list some variables in a buffer:`
+
 `Get a variable from the variables.`
+
 `If the variable is nil, exit.`
+
 `List the variable in the buffer.`
+
 `Repeat.`
 
 
 `To list some variables under a string in a buffer:`
+
 `Append the string to the buffer.`
+
 `Advance the buffer (twice).`
+
 `If the variables are empty, exit.`
+
 `List the variables in the buffer.`
+
 `Advance the buffer.`
 
 
@@ -707,11 +1058,17 @@ A "_locus_" points to the very spot in the source code where an error is discove
 
 
 `A monikette is a thing with`
+
 `a string,`
+
 `a type (reference),`
+
 `a variable (reference),`
+
 `\ for bubbling`
+
 `a current type (reference),`
+
 `a current substring.`
 
 
@@ -737,14 +1094,20 @@ Again, there's no global list of parameters because they're kept on separate lis
 
 
 `To put the compiler's exe path into a path:`
+
 `Extract a designator from the compiler's directory.`
+
 `Remove any trailing backslash from the designator.`
+
 `Put the compiler's directory then the designator then "_.exe_" into the path.`
 
 
 `To put the compiler's listing path into a path:`
+
 `Extract a designator from the compiler's directory.`
+
 `Remove any trailing backslash from the designator.`
+
 `Put the compiler's directory then the designator then "_.lst_" into the path.`
 
 
@@ -764,18 +1127,31 @@ These routines let us say "_the compiler's exe path_" and "_the compiler's listi
 
 
 `A routine is a thing with`
+
 `A locus (reference),`
+
 `A callback flag,`
+
 `A decider flag,`
+
 `A function flag,`
+
 `A compiled flag,`
+
 `A nickname index,`
+
 `A moniker, some monikettes, some parameters, a parameter size,`
+
 `An employs moniker,`
+
 `Some locals, a local size,`
+
 `A routine header, a header string,`
+
 `A routine body, a body string,`
+
 `Some fragments,`
+
 `An address.`
 
 
@@ -798,15 +1174,25 @@ These routines let us say "_the compiler's exe path_" and "_the compiler's listi
 
 
 `A type is a thing with`
+
 `A locus (reference),`
+
 `A name, a plural name,`
+
 `A partial moniker,`
+
 `A length,`
+
 `A base name, a base type (reference),`
+
 `A target name, a target type (reference) [pointers only],`
+
 `A scale ratio,`
+
 `Some fields [records only],`
+
 `A cooking flag,`
+
 `A optional info resolved flag.`
 
 
@@ -820,20 +1206,35 @@ These routines let us say "_the compiler's exe path_" and "_the compiler's listi
 
 
 `A variable is a thing with`
+
 `A locus (reference),`
+
 `A kind [literal, global, local, parameter, scratch],`
+
 `A compiled flag,`
+
 `A name, a nickname, a type name,`
+
 `A type (reference), \ actual type on literal, global, local; dereferenced type on parameters and scratches `
+
 `An address [globals and literals only] or`
+
 `An offset at the address [locals, parameters, and fields only],`
+
 `A count [fields only],`
+
 `A reference flag [fields only],`
+
 `A redefinition target name [fields only],`
+
 `A by-value flag [parameters only],`
+
 `An global body [globals only],`
+
 `An initializer string [globals only],`
+
 `A literal (reference) [globals only - constant with which to initalize the global],`
+
 `A hex string called data [literals only].`
 
 
@@ -887,23 +1288,41 @@ So where were we? Ah, yes.
 
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Abort with "_I'm not old enough to make babies.". `
+
 `\Compile the directory (load the source files).`
+
 `\Compile the directory (scan the source files).`
+
 `\Compile the directory (resolve the types).`
+
 `\Compile the directory (resolve the globals).`
+
 `\Compile the directory (compile the headers of the routines).`
+
 `\Compile the directory (calculate lengths and offsets of types).`
+
 `\Compile the directory (add the built-in memory routines).`
+
 `\Compile the directory (index the routines for utility use).`
+
 `\Compile the directory (compile the bodies of the routines).`
+
 `\Compile the directory (add and compile the built-in startup routine).`
+
 `\Compile the directory (offset parameters and variables).`
+
 `\Compile the directory (address).`
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
 
@@ -911,10 +1330,15 @@ So where were we? Ah, yes.
 
 
 `To compile a directory (start):`
+
 `Show status "_Starting...".`
+
 `Finalize the compiler.`
+
 `Start the compiler's timer.`
+
 `Initialize the compiler given the directory.`
+
 `Add the built-in types.`
 
 
@@ -928,17 +1352,29 @@ We "_Finalize the compiler_" to clean up anything that might be hanging around f
 
 
 `To initialize the compiler given a directory:`
+
 `Put the directory into the compiler's directory.`
+
 `Put 0 into the compiler's name count.`
+
 `Clear the compiler's abort flag.`
+
 `Clear the compiler's abort message.`
+
 `Clear the compiler's abort path.`
+
 `Put 0 into the compiler's abort row#.`
+
 `Void the current routine.`
+
 `Create the type index with 4027 [buckets].`
+
 `Create the global index with 4027 [buckets].`
+
 `Create the literal index with 4027 [buckets].`
+
 `Create the routine index with 7919 [buckets].`
+
 `Create the utility index with 4027 [buckets].`
 
 
@@ -946,20 +1382,35 @@ We "_Finalize the compiler_" to clean up anything that might be hanging around f
 
 
 `To list:`
+
 `Clear the compiler's listing.`
+
 `List the compiler's abort message in the compiler's listing.`
+
 `List the types under "_TYPES:_" in the compiler's listing.`
+
 `List the globals under "_GLOBALS:_" in the compiler's listing.`
+
 `List the literals under "_LITERALS:_" in the compiler's listing.`
+
 `List the routines under "_ROUTINES:_" in the compiler's listing.`
+
 `List the type index under "_TYPE INDEX:_" in the compiler's listing.`
+
 `List the global index under "_GLOBAL INDEX:_" in the compiler's listing.`
+
 `List the literal index under "_LITERAL INDEX:_" in the compiler's listing.`
+
 `List the routine index under "_ROUTINE INDEX:_" in the compiler's listing.`
+
 `List the utility index under "_UTILITY INDEX:_" in the compiler's listing.`
+
 `List the imports under "_IMPORTS:_" in the compiler's listing.`
+
 `List the source files under "_SOURCE FILES:_" in the compiler's listing.`
+
 `List the timers under "_TIMERS:_" in the compiler's listing.`
+
 `Write the compiler's listing to the compiler's listing path.`
 
 
@@ -973,14 +1424,20 @@ We "_Finalize the compiler_" to clean up anything that might be hanging around f
 
 
 `To add the built-in types:`
+
 `Add a built-in type given "_byte_" and "_bytes_" and 1.`
+
 `Add another built-in type given "_record_" and "_records_" and 0.`
 
 
 `To add a built-in type given a name and a plural name and a length:`
+
 `Add the built-in type to the types given the name and the plural name and the name.`
+
 `Put the length into the built-in type's length.`
+
 `Put the built-in type into the built-in type's base type.`
+
 `Index the built-in type.`
 
 
@@ -991,21 +1448,31 @@ Note that `byte` and `record` are the only types defined in the compiler itself;
 
 
 `To add a type to some types given a locus:`
+
 `Create the type.`
+
 `Append the type to the types.`
+
 `Put the locus into the type's locus.`
 
 
 `To add a type to some types given a name and a plural name and a base name:`
+
 `Add the type to the types given the name and the plural name and the base name and nil.`
 
 
 `To add a type to some types given a name and a plural name and a base name and a locus:`
+
 `Create the type.`
+
 `Append the type to the types.`
+
 `Put the locus into the type's locus.`
+
 `Put the name into the type's name.`
+
 `Put the plural name into the type's plural name.`
+
 `Put the base name into the type's base name.`
 
 
@@ -1013,8 +1480,11 @@ Note that `byte` and `record` are the only types defined in the compiler itself;
 
 
 `To create a type:`
+
 `Allocate memory for the type.`
+
 `Put 0/1 into the type's scale.`
+
 `Put -1 into the type's length.`
 
 
@@ -1022,18 +1492,28 @@ Note that `byte` and `record` are the only types defined in the compiler itself;
 
 
 `To index a type:`
+
 `If the type is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Index the type given the type's name.`
 
 
 `To index a type given a name:`
+
 `If the type is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Find an existing type given the name and the type index.`
+
 `If the existing type is nil, index the type given the name and the type index; exit.`
+
 `Put the type's locus into a locus.`
+
 `If the locus is nil, put the existing type's locus into the locus. \ point the error to a type in the source code, not a generated type`
+
 `Abort with "_I think I've seen this '_" then the name then "_' type somewhere before; it must be a duplicate._" and the locus.`
 
 
@@ -1041,32 +1521,53 @@ Note that `byte` and `record` are the only types defined in the compiler itself;
 
 
 `To find a path and a row# given a byte pointer:`
+
 `Clear the path.`
+
 `Put 0 into the row#.`
+
 `Find a source file given the byte pointer.`
+
 `If the source file is nil, exit.`
+
 `Put the source file's path into the path.`
+
 `Find the row# given the source file and the byte pointer.`
 
 
 `To find a source file given a byte pointer:`
+
 `If the byte pointer is nil, void the source file; exit.`
+
 `Loop.`
+
 `Get the source file from the source files.`
+
 `If the source file is nil, exit.`
+
 `If the byte pointer is less than the source file's buffer's first, repeat.`
+
 `If the byte pointer is greater than the source file's buffer's last, repeat.`
 
 
 `To find a row# given a source file and a byte pointer:`
+
 `If the byte pointer is nil, put 0 into the row#; exit.`
+
 `Slap a substring on the source file's buffer.`
+
 `Put 1 into the row#.`
+
 `Loop.`
+
 `If the substring is blank, exit.`
+
 `If the substring's first is the byte pointer, exit.`
+
 `If the substring's first's target is the return byte, add 1 to the row#.`
+
 `Add 1 to the substring's first.`
+
 `Repeat.`
 
 
@@ -1089,6 +1590,7 @@ Note that `byte` and `record` are the only types defined in the compiler itself;
 
 
 `/type/byte/bytes/00000001/byte/byte///0/`
+
 `/type/record/records/00000000/record/record///0/`
 
 
@@ -1113,20 +1615,35 @@ And after a bunch of other stuff that we don't have, at the bottom of the listin
 
 
 `/timer/loading/0/`
+
 `/timer/scanning/0/`
+
 `/timer/resolving types/0/`
+
 `/timer/resolving globals/0/`
+
 `/timer/compiling routine headers/0/`
+
 `/timer/calculating/0/`
+
 `/timer/adding built-in memory routines/0/`
+
 `/timer/indexing utilities/0/`
+
 `/timer/compiling routine bodies/0/`
+
 `/timer/adding built-in startup routine/0/`
+
 `/timer/offsetting/0/`
+
 `/timer/addressing/0/`
+
 `/timer/transmogrifying/0/`
+
 `/timer/linking/0/`
+
 `/timer/writing/0/`
+
 `/timer/total/0/`
 
 
@@ -1147,23 +1664,40 @@ Alrighty, then. Time to load up our source files.
  
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Abort with "_I'm not old enough to make babies.".` 
 `\Compile the directory (scan the source files).`
+
 `\Compile the directory (resolve the types).`
+
 `\Compile the directory (resolve the globals).`
+
 `\Compile the directory (compile the headers of the routines).`
+
 `\Compile the directory (calculate lengths and offsets of types).`
+
 `\Compile the directory (add the built-in memory routines).`
+
 `\Compile the directory (index the routines for utility use).`
+
 `\Compile the directory (compile the bodies of the routines).`
+
 `\Compile the directory (add and compile the built-in startup routine).`
+
 `\Compile the directory (offset parameters and variables).`
+
 `\Compile the directory (address).`
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
  
@@ -1173,31 +1707,49 @@ Alrighty, then. Time to load up our source files.
  
 
 `To compile a directory (load the source files):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Loading...".`
+
 `Start the loading timer.`
+
 `Load the source files.`
+
 `Stop the loading timer.`
 
  
 
 `To load a source file:`
+
 `If the source file is nil, exit.`
+
 `Load the source file's path into the source file's buffer.`
+
 `If the i/o error is not blank, abort with "_Could not load the file named '_" then the source file's path then "_'."; exit.`
 
  
 
 `To load some source files:`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get an item from the compiler's directory.`
+
 `If the item is not found, break.`
+
 `If the item's kind is not "_file", repeat.`
+
 `If the item's extension is not blank, repeat.`
+
 `If the item looks reamish, repeat.`
+
 `Add a source file to the source files given the item's path.`
+
 `Load the source file.`
+
 `Repeat.`
 
 As you know, the CAL expects a program's source code to be stored as one or more text files in a single directory. One of those files is usually a copy of the Noodle. It doesn't matter what order the files are in, and it doesn't matter what their names are, except that he will only attempt to compile files with no extension.
@@ -1209,8 +1761,11 @@ A diligent Plain English programmer, however, will typically use the CAL's Write
  
 
 `To decide if an item looks reamish:`
+
 `Load the item's path into a buffer.`
+
 `If the buffer starts with "_ream cal", say yes.`
+
 `Say no.`
 
 
@@ -1218,12 +1773,16 @@ A diligent Plain English programmer, however, will typically use the CAL's Write
 
 
 `To add a source file to some source files given a path:`
+
 `Create the source file.`
+
 `Append the source file to the source files.`
+
 `Put the path into the source file's path.`
 
 
 `To create a source file:`
+
 `Allocate memory for the source file.`
 
 
@@ -1236,30 +1795,50 @@ A diligent Plain English programmer, however, will typically use the CAL's Write
 `SOURCE FILES:`
 
 `/source file/c:\cal-4700's son's daughter\the compiler/`
+
 `/source file/c:\cal-4700's son's daughter\the desktop/`
+
 `/source file/c:\cal-4700's son's daughter\the editor/`
+
 `/source file/c:\cal-4700's son's daughter\the finder/`
+
 `/source file/c:\cal-4700's son's daughter\the noodle/`
+
 `/source file/c:\cal-4700's son's daughter\the writer/`
 
 
 `TIMERS:`
 
 `/timer/loading/140/`
+
 `/timer/scanning/0/`
+
 `/timer/resolving types/0/`
+
 `/timer/resolving globals/0/`
+
 `/timer/compiling routine headers/0/`
+
 `/timer/calculating/0/`
+
 `/timer/adding built-in memory routines/0/`
+
 `/timer/indexing utilities/0/`
+
 `/timer/compiling routine bodies/0/`
+
 `/timer/adding built-in startup routine/0/`
+
 `/timer/offsetting/0/`
+
 `/timer/addressing/0/`
+
 `/timer/transmogrifying/0/`
+
 `/timer/linking/0/`
+
 `/timer/writing/0/`
+
 `/timer/total/140/`
 
 
@@ -1279,23 +1858,41 @@ Now that we've got all our source files in memory, it's time to see what they ha
  
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Compile the directory (scan the source files).`
+
 `Abort with "_I'm not old enough to make babies.".`
+
 `\Compile the directory (resolve the types).`
+
 `\Compile the directory (resolve the globals).`
+
 `\Compile the directory (compile the headers of the routines).`
+
 `\Compile the directory (calculate lengths and offsets of types).`
+
 `\Compile the directory (add the built-in memory routines).`
+
 `\Compile the directory (index the routines for utility use).`
+
 `\Compile the directory (compile the bodies of the routines).`
+
 `\Compile the directory (add and compile the built-in startup routine).`
+
 `\Compile the directory (offset parameters and variables).`
+
 `\Compile the directory (address).`
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
  
@@ -1303,10 +1900,15 @@ Now that we've got all our source files in memory, it's time to see what they ha
  
 
 `To compile a directory (scan the source files):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Scanning...".`
+
 `Start the scanning timer.`
+
 `Scan the source files.`
+
 `Stop the scanning timer.`
 
 
@@ -1314,10 +1916,15 @@ And this little loop to make sure we scan all the source files in the project:
 
 
 `To scan some source files:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a source file from the source files.`
+
 `If the source file is nil, exit.`
+
 `Scan the source file.`
+
 `Repeat.`
 
 
@@ -1325,17 +1932,29 @@ And this little loop to make sure we scan all the source files in the project:
 
 
 `To scan a source file:`
+
 `If the source file is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Slap a rider on the source file's buffer.`
+
 `Move the rider (compiler rules).`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is blank, exit.`
+
 `If the rider's token is the start of any type, scan a type given the rider; repeat.`
+
 `If the rider's token is the start of any global, scan a global given the rider; repeat.`
+
 `If the rider's token is the start of any routine, scan a routine given the rider; repeat.`
+
 `Abort with "_I was hoping for a definition but all I found was '_" then the rider's token then "_'._" and the rider.`
+
 `Repeat.`
 
 
@@ -1343,8 +1962,11 @@ And this little loop to make sure we scan all the source files in the project:
 
 
 `To move a rider (code rules - noise):`
+
 `Bump the rider.`
+
 `If the rider's source is blank, exit.`
+
 `If the rider's source's first's target is noise, repeat.`
 
 
@@ -1352,14 +1974,23 @@ That guy simply skips any "_noise_" in the source file. When he's done, what's l
 
 
 `To decide if a byte is noise:`
+
 `If the byte is less than or equal to the space byte, say yes.`
+
 `If the byte is the delete byte, say yes.`
+
 `If the byte is the non-breaking-space byte, say yes.`
+
 `If the byte is 129, say yes.`
+
 `If the byte is 141, say  yes.`
+
 `If the byte is 143, say yes.`
+
 `If the byte is 144, say yes.`
+
 `If the byte is 157, say yes.`
+
 `Say no.`
 
 
@@ -1367,8 +1998,11 @@ That guy simply skips any "_noise_" in the source file. When he's done, what's l
 
 
 `To move a rider (code rules - comment):`
+
 `Bump the rider.`
+
 `If the rider's source is blank, exit.`
+
 `If the rider's source's first's target is not the return byte, repeat.`
 
 
@@ -1379,12 +2013,19 @@ This guy assumes we're sitting on the start of a comment (the backslash characte
 
 
 `To move a rider (code rules - remark):`
+
 `If the rider's source is blank, exit.`
+
 `If the rider's source's first's target is the return byte, break.`
+
 `If the rider's source's first's target is the left-bracket byte, add 1 to a count.`
+
 `If the rider's source's first's target is the right-bracket byte, subtract 1 from the count.`
+
 `Bump the rider.`
+
 `If the count is 0, break.`
+
 `Repeat.  `
 
 
@@ -1395,12 +2036,19 @@ This time we're starting on the start of a remark (a left-bracket "_["), and we 
 
 
 `To move a rider (code rules - qualifier):`
+
 `If the rider's source is blank, exit.`
+
 `If the rider's source's first's target is the return byte, break.`
+
 `If the rider's source's first's target is the left-paren byte, add 1 to a count.`
+
 `If the rider's source's first's target is the right-paren byte, subtract 1 from the count.`
+
 `Bump the rider.`
+
 `If the count is 0, break.`
+
 `Repeat.`
 
  
@@ -1408,18 +2056,26 @@ This time we're starting on the start of a remark (a left-bracket "_["), and we 
 71. And another for strings, that may include doubled-up double-quotes to indicate imbedded double-quote marks:
 
 `To move a rider (code rules - string):`
+
 `Bump the rider.`
+
 `If the rider's source is blank, exit.`
+
 `If the rider's source's first's target is the return byte, exit.`
+
 `If the rider is on any nested double-quote, bump the rider; repeat.`
+
 `If the rider's source's first's target is the double-quote byte, bump the rider; exit.`
+
 `Repeat.`
 
 
 Handling nested double-quotes requires a little help from this guy, so you should put him back in, too:
 
 `To decide if a rider is on any nested double-quote:`
+
 `If the rider's source starts with "_""""", say yes.`
+
 `Say no.`
 
 
@@ -1427,6 +2083,7 @@ Handling nested double-quotes requires a little help from this guy, so you shoul
 
 
 `To move a rider (code rules - mark):`
+
 `Bump the rider.`
 
 
@@ -1437,6 +2094,7 @@ Handling nested double-quotes requires a little help from this guy, so you shoul
 
 
 `To move a rider (code rules - symbol):`
+
 `Bump the rider.`
 
 
@@ -1444,27 +2102,49 @@ And this is the routine that decides if a byte is a symbol or not:
 
 
 `To decide if a byte is any symbol:`
+
 `If the byte is the caret byte, say yes.`
+
 `If the byte is the bar byte, say yes.`
+
 `If the byte is the asterisk byte, say yes.`
+
 `If the byte is the cross byte, say yes.`
+
 `If the byte is the dash byte, say yes.`
+
 `If the byte is the slash byte, say yes.`
+
 `If the byte is the left-alligator byte, say yes.`
+
 `If the byte is the right-alligator byte, say yes.`
+
 `If the byte is the left-brace byte, say yes.`
+
 `If the byte is the right-brace byte, say yes.`
+
 `If the byte is the equal-sign byte, say yes.`
+
 `If the byte is 128, say yes.`
+
 `If the byte is 130, say yes.`
+
 `If the byte is between 132 and 137, say yes.`
+
 `If the byte is 139, say yes.`
+
 `If the byte is between 145 and 153, say yes.`
+
 `If the byte is 155, say yes.`
+
 `If the byte is between 161 and 180, say yes.`
+
 `If the byte is between 183 and 191, say yes.`
+
 `If the byte is 215, say yes.`
+
 `If the byte is 247, say yes.`
+
 `Say no.`
 
 
@@ -1472,8 +2152,11 @@ And this is the routine that decides if a byte is a symbol or not:
 
 
 `To move a rider (code rules - possessive):`
+
 `Bump the rider.`
+
 `If the rider's source is blank, exit.`
+
 `If the rider's source starts with "_s", bump the rider.`
 
 
@@ -1484,30 +2167,49 @@ Simple enough, but we need the 3 deciders below, as well, to peek ahead in the s
 
 
 `To decide if a rider is on any possessive:`
+
 `If the rider's source is blank, say no.`
+
 `If the rider's source's first's target is not the single-quote byte, say no.`
+
 `If the rider is on any possessive (type 1 - single-quote, s, non-glom-byte), say yes.`
+
 `If the rider is on any possessive (type 2 - preceding s, single-quote, non-glom-byte), say yes.`
+
 `Say no.`
 
 
 `To decide if a rider is on any possessive (type 1 - single-quote, s, non-glom-byte):`
+
 `If the rider's source does not start with "_'s", say no.`
+
 `Privatize the rider.`
+
 `Add 2 to the rider's source's first.`
+
 `If the rider's source is blank, say yes.`
+
 `If the rider's source's first's target is not any glom byte, say yes.`
+
 `Say no.`
 
 
 `To decide if a rider is on any possessive (type 2 - preceding s, single-quote, non-glom-byte):`
+
 `Privatize the rider.`
+
 `If the rider's source's first is the rider's original's first, say no.`
+
 `Subtract 1 from the rider's source's first.`
+
 `If the rider's source's first's target is not the little-s byte or the big-s byte, say no.`
+
 `Add 2 to the rider's source's first.`
+
 `If the rider's source is blank, say yes.`
+
 `If the rider's source's first's target is not any glom byte, say yes.`
+
 `Say no.`
 
 
@@ -1518,9 +2220,13 @@ Note the "_Privatize the rider_" statements in the latter two routines. Recall t
 
 
 `To move a rider (code rules - glom):`
+
 `Bump the rider.`
+
 `If the rider's source is blank, exit.`
+
 `If the rider is on any possessive, exit.`
+
 `If the rider's source's first's target is any glom byte, repeat.`
 
 
@@ -1528,18 +2234,31 @@ It needs help from this decider:
 
 
 `To decide if a byte is any glom byte:`
+
 `If the byte is any letter, say yes.`
+
 `If the byte is any digit, say yes.`
+
 `If the byte is the tilde byte, say yes.`
+
 `If the byte is the at-sign byte, say yes.`
+
 `If the byte is the number-sign byte, say yes.`
+
 `If the byte is the percent-sign byte, say yes.`
+
 `If the byte is the ampersand byte, say yes.`
+
 `If the byte is the underscore byte, say yes.`
+
 `If the byte is the single-quote byte, say yes.`
+
 `If the byte is the dash byte, say yes.`
+
 `If the byte is the cross byte, say yes.`
+
 `If the byte is the slash byte, say yes.`
+
 `Say no.`
 
 
@@ -1550,15 +2269,25 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 
 `To move a rider (code rules):`
+
 `Position the rider's token on the rider's source.`
+
 `If the rider's source is blank, exit.`
+
 `If the rider's source's first's target is noise, move the rider (code rules - noise); exit.`
+
 `If the rider's source's first's target is the backslash byte, move the rider (code rules - comment); exit.`
+
 `If the rider's source's first's target is the left-bracket byte, move the rider (code rules - remark); exit.`
+
 `If the rider's source's first's target is the double-quote byte, move the rider (code rules - string); exit.`
+
 `If the rider's source's first's target is the left-paren byte, move the rider (code rules - qualifier); exit.`
+
 `If the rider's source's first's target is any mark, move the rider (code rules - mark); exit.`
+
 `If the rider is on any possessive, move the rider (code rules - possessive); exit.`
+
 `Move the rider (code rules - glom).`
 
 
@@ -1566,11 +2295,17 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 
 `To move a rider returning an error string (code rules):`
+
 `Clear the error string.`
+
 `Move the rider (code rules).`
+
 `If the rider's token is blank, exit.`
+
 `If the rider's token's first's target is the left-bracket byte, move the rider returning the error string (code rules - validate remark); exit.`
+
 `If the rider's token's first's target is the double-quote byte, move the rider returning the error string (code rules - validate string); exit.`
+
 `If the rider's token's first's target is the left-paren byte, move the rider returning the error string (code rules - validate qualifier); exit.`
 
 
@@ -1578,17 +2313,23 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 
 `To move a rider returning an error string (code rules - validate qualifier):`
+
 `If the rider's token's length is less than 2, put "_Qualifiers need to end with ')'._" into the error string; exit.`
+
 `If the rider's token's last's target is not the right-paren byte, put "_Qualifiers need to end with ')'._" into the error string; exit.`
 
 
 `To move a rider returning an error string (code rules - validate remark):`
+
 `If the rider's token's length is less than 2, put "_Remarks need to end with ']'._" into the error string; exit.`
+
 `If the rider's token's last's target is not the right-bracket byte, put "_Remarks need to end with ']'._" into the error string; exit.`
 
 
 `To move a rider returning an error string (code rules - validate string):`
+
 `If the rider's token's length is less than 2, put "_Strings need to end with '""'._" into the error string; exit.`
+
 `If the rider's token's last's target is not the double-quote byte, put "_Strings need to end with '""'._" into the error string; exit.`
 
 
@@ -1599,12 +2340,19 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 
 `To move a rider (compiler rules):`
+
 `If the compiler's abort flag is set, clear the rider's token; exit.`
+
 `Move the rider returning an error string (code rules).`
+
 `If the error string is not blank, abort with the error string and the rider's token's first; exit.`
+
 `If the rider's token is blank, exit.`
+
 `If the rider's token's first's target is noise, repeat.`
+
 `If the rider's token's first's target is the backslash byte, repeat.`
+
 `If the rider's token's first's target is the left-bracket byte, repeat.`
 
 
@@ -1615,19 +2363,27 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 
 `To decide if a string is the start of any type:`
+
 `If the string is "_a", say yes.`
+
 `If the string is "_an", say yes.`
+
 `If the string is "_some", say yes.`
+
 `Say no.`
 
 
 `To decide if a string is the start of any global:`
+
 `If the string is "_the", say yes.`
+
 `Say no.`
 
 
 `To decide if a string is the start of any routine:`
+
 `If the string is "_to", say yes.`
+
 `Say no.`
 
 
@@ -1635,22 +2391,39 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 
 `To scan a type given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add the type to the types given the rider's token's first.`
+
 `Move the rider (compiler rules).`
+
 `Scan the type's name given the rider.`
+
 `Put the type's name into the type's plural name.`
+
 `Pluralize the type's plural name.`
+
 `If the rider's token is "_has_" or "_have", scan the type given the rider (has or have); exit.`
+
 `If the rider's token is not "_is_" or "_are", abort with "_I was expecting an 'is' or 'are', but I found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is any numeric literal, scan the type given the rider (unit of measure); exit.`
+
 `If the rider's token is not any indefinite article, abort with "_I was expecting an indefinte article, but I found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan the type's base name given the rider.`
+
 `Scan any optional info for the type given the rider.`
+
 `If the rider's token is not the period byte, abort with "_Types need to end with a period, I found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Index the type.`
 
 
@@ -1658,15 +2431,25 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 
 `To scan a name given a rider:`
+
 `Clear the name.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is any name starter, extend the name with the rider's token; move the rider (compiler rules).`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is any name ender, break.`
+
 `Extend the name with the rider's token.`
+
 `Move the rider (compiler rules).`
+
 `Repeat.`
+
 `If the name is blank, abort with "_I was kind of hoping for a name around here, but I found '_" then the rider's token then "_'._" and the rider; exit.`
 
 81. Our name-scanning routine needs a little help from these 2 deciders:
@@ -1675,35 +2458,60 @@ And that's it for the bottom-level "_move a rider_" routines.
 `To decide if a string is any name starter:
 
 `If the string is any mark, say no.`
+
 `If the string is any symbol, say no.`
+
 `If the string is any article, say no.`
+
 `If the string is any conjunction, say yes.`
+
 `If the string is any possessive, say no.`
+
 `If the string is any verb, say yes.`
+
 `If the string is any operator, say yes.`
+
 `If the string is any preposition, say yes.`
+
 `If the string is any qualifier, say no.`
+
 `If the string is any literal, say no.`
+
 `If the string is "_called", say yes.`
+
 `If the string is "_equal", say yes.`
+
 `If the string is blank, say no.`
+
 `Say yes.`
 
 
 `To decide if a string is any name ender:
 
 `If the string is any mark, say yes.`
+
 `If the string is any symbol, say yes.`
+
 `If the string is any article, say yes.`
+
 `If the string is any conjunction, say yes.`
+
 `If the string is any possessive, say yes.`
+
 `If the string is any verb, say yes.`
+
 `If the string is any operator, say yes.`
+
 `If the string is any preposition, say yes.`
+
 `If the string is any qualifier, say yes.`
+
 `If the string is any literal, say yes.`
+
 `If the string is "_called", say yes.`
+
 `If the string is "_equal", say yes.`
+
 `If the string is blank, say yes.`
 
 `Say no.`
@@ -1713,219 +2521,392 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 
 `To decide if a string is any mark:`
+
 `If the string's length is not 1, say no.`
+
 `If the string's first's target is any mark, say yes.`
+
 `Say no.`
 
 
 `To decide if a string is any symbol:`
+
 `If the string's length is not 1, say no.`
+
 `If the string's first's target is any symbol, say yes.`
+
 `Say no.`
 
 
 `To decide if a string is any article:`
+
 `If the string is any indefinite article, say yes.`
+
 `If the string is "_the", say yes.`
+
 `Say no.`
 
 
 `To decide if a string is any indefinite article:`
+
 `If the string is "_a", say yes.`
+
 `If the string is "_an", say yes.`
+
 `If the string is "_another", say yes.`
+
 `If the string is "_some", say yes.`
+
 `Say no.`
 
 
 `To decide if a string is any conjunction:`
+
 `If the string is "_and", say yes.`
+
 `If the string is "_both", say yes.`
+
 `If the string is "_but", say yes.`
+
 `If the string is "_either", say yes.`
+
 `If the string is "_neither", say yes.`
+
 `If the string is "_nor", say yes.`
+
 `If the string is "_or", say yes.`
+
 `Say no.`
 
 
 `To decide if a string is any possessive:`
+
 `If the string is "_'s", say yes.`
+
 `If the string is "_'", say yes.`
+
 `Say no.`
 
 
 `To decide if a string is any verb:`
+
 `If the string is "_are", say yes. \ are not \ aren't `
+
 `If the string is "_be", say yes. `
 
 `If the string is "_can", say yes. \ cannot \ can't `
+
 `If the string is "_cannot", say yes.`
+
 `If the string is "_could", say yes. \ could not \ couldn't `
+
 `If the string is "_do", say yes. \ do not \ don't `
+
 `If the string is "_does", say yes. \ does not \ doesn't `
+
 `If the string is "_is", say yes. \ is not \ isn't `
+
 `If the string is "_may", say yes. \ may not \ mayn't `
+
 `If the string is "_should", say yes. \ should not \ shouldn't `
+
 `If the string is "_was", say yes. \ was not \ wasn't `
+
 `If the string is "_will", say yes. \ will not \ won't `
+
 `If the string is "_would", say yes. \ would not \ wouldn't `
+
 `If the string is "_has", say yes. \ used in type definitions `
+
 `If the string is "_have", say yes. \ used in type definitions `
+
 `If the string ends with "_n't", say yes. `
+
 `\ trouble makers `
+
 `If the string is "_begins", say yes. \ does not begin \ doesn't begin `
+
 `If the string is "_ends", say yes. \ does not end \ doesn't end `
+
 `If the string is "_looks", say yes. \ does not look \ doesn't look `
+
 `If the string is "_needs", say yes. \ does not need \ doesn't need `
+
 `If the string is "_starts", say yes. \ does not start \ doesn't start `
+
 `Say no.`
 
 
 `To decide if a string is any operator:`
+
 `If the string is "_plus", say yes.`
+
 `If the string is "_minus", say yes.`
+
 `If the string is "_times", say yes.`
+
 `If the string is "_divided", say yes.`
+
 `If the string is "_then", say yes.`
+
 `Say no.`
 
 
 `To decide if a string is any preposition:`
+
 `If the string is "_about", say yes.`
+
 `If the string is "_above", say yes.`
+
 `If the string is "_across", say yes.`
+
 `If the string is "_after", say yes.`
+
 `If the string is "_against", say yes.`
+
 `If the string is "_all", say yes.`
+
 `If the string is "_alone", say yes.`
+
 `If the string is "_along", say yes.`
+
 `If the string is "_among", say yes.`
+
 `If the string is "_any", say yes.`
+
 `If the string is "_anywhere", say yes.`
+
 `If the string is "_around", say yes.`
+
 `If the string is "_as", say yes.`
+
 `If the string is "_at", say yes.`
+
 `If the string is "_away", say yes.`
+
 `If the string is "_back", say yes.`
+
 `If the string is "_backward", say yes.`
+
 `If the string is "_backwards", say yes.`
+
 `If the string is "_before", say yes.`
+
 `If the string is "_beginning", say yes.`
+
 `If the string is "_behind", say yes.`
+
 `If the string is "_below", say yes.`
+
 `If the string is "_beneath", say yes.`
+
 `If the string is "_beside", say yes.`
+
 `If the string is "_between", say yes.`
+
 `If the string is "_beyond", say yes.`
+
 `If the string is "_bigger", say yes.`
+
 `If the string is "_by", say yes.`
+
 `If the string is "_close", say yes.`
+
 `If the string is "_deep", say yes.`
+
 `If the string is "_diagonally", say yes.`
+
 `If the string is "_down", say yes.`
+
 `If the string is "_downward", say yes.`
+
 `If the string is "_ending", say yes.`
+
 `If the string is "_everywhere", say yes.`
+
 `If the string is "_except", say yes.`
+
 `If the string is "_finishing", say yes.`
+
 `If the string is "_facing", say yes.`
+
 `If the string is "_for", say yes.`
+
 `If the string is "_forward", say yes.`
+
 `If the string is "_from", say yes.`
+
 `If the string is "_given", say yes.`
+
 `If the string is "_giving", say yes.`
+
 `If the string is "_high", say yes.`
+
 `If the string is "_in", say yes.`
+
 `If the string is "_inside", say yes.`
+
 `If the string is "_into", say yes.`
+
 `If the string is "_larger", say yes.`
+
 `If the string is "_leaning", say yes.`
+
 `If the string is "_left", say yes.`
+
 `If the string is "_leftward", say yes.`
+
 `If the string is "_leftways", say yes.`
+
 `If the string is "_like", say yes.`
+
 `If the string is "_limiting", say yes.`
+
 `If the string is "_long", say yes.`
+
 `If the string is "_near", say yes.`
+
 `If the string is "_of", say yes.`
+
 `If the string is "_off", say yes.`
+
 `If the string is "_on", say yes.`
+
 `If the string is "_only", say yes.`
+
 `If the string is "_onto", say yes.`
+
 `If the string is "_out", say yes.`
+
 `If the string is "_outside", say yes.`
+
 `If the string is "_over", say yes.`
+
 `If the string is "_past", say yes.`
+
 `If the string is "_pointing", say yes.`
+
 `If the string is "_returning", say yes.`
+
 `If the string is "_right", say yes.`
+
 `If the string is "_rightward", say yes.`
+
 `If the string is "_rightways", say yes.`
+
 `If the string is "_shorter", say yes.`
+
 `If the string is "_sideway", say yes.`
+
 `If the string is "_sideways", say yes.`
+
 `If the string is "_similar", say yes.`
+
 `If the string is "_smaller", say yes.`
+
 `If the string is "_somewhere", say yes.`
+
 `If the string is "_slantwise", say yes.`
+
 `If the string is "_slantway", say yes.`
+
 `If the string is "_slantways", say yes.`
+
 `If the string is "_starting", say yes.`
+
 `If the string is "_tall", say yes.`
+
 `If the string is "_taller", say yes.`
+
 `If the string is "_thru", say yes.`
+
 `If the string is "_through", say yes.`
+
 `If the string is "_throughout", say yes.`
+
 `If the string is "_to", say yes.`
+
 `If the string is "_toward", say yes.`
+
 `If the string is "_towards", say yes.`
+
 `If the string is "_under", say yes.`
+
 `If the string is "_underneath", say yes.`
+
 `If the string is "_until", say yes.`
+
 `If the string is "_unto", say yes.`
+
 `If the string is "_up", say yes.`
+
 `If the string is "_upward", say yes.`
+
 `If the string is "_upon", say yes.`
+
 `If the string is "_using", say yes.`
+
 `If the string is "_via", say yes.`
+
 `If the string is "_while", say yes.`
+
 `If the string is "_wide", say yes.`
+
 `If the string is "_with", say yes.`
+
 `If the string is "_within", say yes.`
+
 `If the string is "_without", say yes.`
+
 `Say no.`
 
 
 `To decide if a string is any qualifier:`
+
 `If the string is blank, say no.`
+
 `If the string's first's target is the left-paren byte, say yes.`
+
 `Say no.`
 
 
 `To decide if a string is any literal:`
+
 `If the string is any pointer literal, say yes.`
+
 `If the string is any numeric literal, say yes.`
+
 `If the string is any string literal, say yes.`
+
 `If the string is any flag literal, say yes.`
+
 `If the string is any hex literal, say yes.`
+
 `Say no.`
 
 
 `To decide if a string is any pointer literal:`
+
 `If the string is "_nil", say yes.`
+
 `Say no.`
 
 
 `To decide if a string is any string literal:`
+
 `If the string is blank, say no.`
+
 `If the string's first's target is the double-quote byte, say yes.`
+
 `Say no.`
 
 
 `To decide if a string is any hex literal:`
+
 `If the string is blank, say no.`
+
 `If the string's first's target is the dollar-sign byte, say yes.`
+
 `Say no.`
 
 
@@ -1936,8 +2917,11 @@ And now you know why primitive programming languages don't allow spaces in names
 
 
 `To extend a string with another string:`
+
 `If the other string is blank, exit.`
+
 `If the string is not blank, append the space byte to the string.`
+
 `Append the other string to the string.`
 
 
@@ -1945,81 +2929,146 @@ And now you know why primitive programming languages don't allow spaces in names
 
 
 `To pluralize a string: \ nouns only `
+
 `If the string is "_alumnus", put "_alumni_" into the string; exit.`
+
 `If the string is "_auto", put "_autos_" into the string; exit.`
+
 `If the string is "_cello", put "_cellos_" into the string; exit.`
+
 `If the string is "_dwarf", put "_dwarfs_" into the string; exit.`
+
 `If the string is "_foot", put "_feet_" into the string; exit.`
+
 `If the string is "_genus", put "_genera_" into the string; exit.`
+
 `If the string is "_goose", put "_geese_" into the string; exit.`
+
 `If the string is "_hippo", put "_hippos_" into the string; exit.`
+
 `If the string is "_louse", put "_lice_" into the string; exit.`
+
 `If the string is "_memo", put "_memos_" into the string; exit.`
+
 `If the string is "_mouse", put "_mice_" into the string; exit.`
+
 `If the string is "_ox", put "_oxen_" into the string; exit.`
+
 `If the string is "_phenomenon", put "_phenomena_" into the string; exit.`
+
 `If the string is "_photo", put "_photos_" into the string; exit.`
+
 `If the string is "_phylum", put "_phyla_" into the string; exit.`
+
 `If the string is "_piano", put "_pianos_" into the string; exit.`
+
 `If the string is "_pimento", put "_pimentos_" into the string; exit.`
+
 `If the string is "_pro", put "_pros_" into the string; exit.`
+
 `If the string is "_proof", put "_proofs_" into the string; exit.`
+
 `If the string is "_radius", put "_radii_" into the string; exit.`
+
 `If the string is "_rhinoceros", put "_rhinoceri_" into the string; exit.`
+
 `If the string is "_roof", put "_roofs_" into the string; exit.`
+
 `If the string is "_solo", put "_solos_" into the string; exit.`
+
 `If the string is "_soprano", put "_sopranos_" into the string; exit.`
+
 `If the string is "_staff", put "_staffs_" into the string; exit.`
+
 `If the string is "_tooth", put "_teeth_" into the string; exit.`
+
 `If the string is "_torus", put "_tori_" into the string; exit.`
+
 `If the string is "_turf", put "_turfs_" into the string; exit.`
+
 `If the string is "_virus", put "_viruses_" into the string; exit.`
+
 `If the string ends with "_sh", append "_es_" to the string; exit.`
+
 `If the string ends with "_ch", append "_es_" to the string; exit.`
+
 `If the string ends with "_man", remove the last two bytes from the string; append "_en_" to the string; exit.`
+
 `If the string ends with "_child", append "_ren_" to the string; exit.`
+
 `If the string ends with "_ex", remove the last two bytes from the string; append "_ices_" to the string; exit. \ or add ES `
+
 `If the string ends with "_fe", remove the last two bytes from the string; append "_ves_" to the string; exit.`
+
 `If the string ends with "_is", remove the last two bytes from the string; append "_es_" to the string; exit.`
+
 `If the string ends with "_ix", remove the last two bytes from the string; append "_ices_" to the string; exit. \ or add ES `
+
 `If the string ends with "_ma", append "_ta_" to the string; exit.  \ or add S `
+
 `If the string ends with any consonant and "_y", remove the last byte from the string; append "_ies_" to the string; exit.`
+
 `If the string ends with any vowel and "_o", append "_s_" to the string; exit.`
+
 `If the string ends with any vowel and "_y", append "_s_" to the string; exit.`
+
 `If the string ends with "_f", remove the last byte from the string; append "_ves_" to the string; exit.`
+
 `If the string ends with "_s", append "_es_" to the string; exit.`
+
 `If the string ends with "_x", append "_es_" to the string; exit.`
+
 `If the string ends with "_z", append "_es_" to the string; exit.`
+
 `Append "_s_" to the string.`
 
 
 `To decide if a string ends with any consonant and another string:`
+
 `Slap a substring on the string.`
+
 `Subtract the other string's length from the substring's last.`
+
 `If the substring is blank, say no.`
+
 `If the substring's last's target is not any consonant, say no.`
+
 `If the string does not end with the other string, say no.`
+
 `Say yes.`
 
 
 `To decide if a string ends with any vowel and another string:`
+
 `Slap a substring on the string.`
+
 `Subtract the other string's length from the substring's last.`
+
 `If the substring is blank, say no.`
+
 `If the substring's last's target is not any vowel, say no.`
+
 `If the string does not end with the other string, say no.`
+
 `Say yes.`
 
 
 85. And now that we've got our names straight, we can get back to scanning our types. Types come in different forms; simple types, like "_An address is a number,_" are typically just subsets of other types. But types that have the word "_has_" or "_have_" after the type name, like "_A button has a box and a name,_" are record types. To scan record types, we need this routine:
 
 `To scan a type given a rider (has or have):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Put "_record_" into the type's base name.`
+
 `Scan the type's fields given the rider.`
+
 `If the rider's token is not the period byte, abort with "_Types need to end with a period, I found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Index the type.`
 
 
@@ -2027,27 +3076,43 @@ And now you know why primitive programming languages don't allow spaces in names
 
 
 `To scan some fields given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add a field to the fields given "_field_" and the rider's token's first.`
+
 `Scan the field given the rider.`
+
 `If the rider's token is not any pause, exit.`
+
 `Scan any pauses given the rider.`
+
 `Repeat.`
 
 
 `To add a variable to some variables given a kind and a locus:`
+
 `Create the variable given the kind.`
+
 `Append the variable to the variables.`
+
 `Put the locus into the variable's locus.`
 
 
 `To scan a field given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Scan the field given the rider (type part).`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is "_called", scan the field given the rider (called part); repeat.`
+
 `If the rider's token is "_at", scan the field given the rider (redefine part); repeat.`
+
 `If the rider's token is "_(reference)", scan the field given the rider (reference part); repeat.`
 
 
@@ -2055,50 +3120,80 @@ And now you know why primitive programming languages don't allow spaces in names
 
 
 `To scan a field given a rider (type part):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is any numeric literal, scan the field given the rider (type part - byte array); exit.`
+
 `Scan the field given the rider (type part - normal).`
 
 
 `To scan a field given a rider (type part - normal):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is not any indefinite article, abort with "_I was expecting an indefinite article, but found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `If the rider's token is "_another", put "_other_" into the field's name.`
+
 `Move the rider (compiler rules).`
+
 `Scan a name given the rider.`
+
 `Extend the field's name with the name.`
 
 
 `To scan a field given a rider (called part):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `If the field's type name is blank, put the field's name into the field's type name. \ byte array type name already filled in `
+
 `Scan the field's name given the rider.`
 
 
 `To scan a field given a rider (redefine part):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not "_the", abort with "_I was expecting the word 'the', but found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan the field's redefinition target name given the rider.`
 
 
 `To scan a field given a rider (reference part):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Set the field's reference flag.`
 
 
 `To scan a field given a rider (type part - byte array):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Convert the rider's token to a ratio.`
+
 `Reduce the ratio.`
+
 `If the ratio's denominator is not 1, abort with "_You have to specify a whole number of bytes for a byte array_" and the rider; exit.`
+
 `Put the ratio's numerator into the field's count.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not "_byte_" or "_bytes", abort with "_Nothing but the word 'bytes' is appropriate after a counted field designator._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Put "_byte_" into the field's type name.`
 
 
@@ -2106,17 +3201,26 @@ And now you know why primitive programming languages don't allow spaces in names
 
 
 `To scan any pauses given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is not any pause, exit.`
+
 `Move the rider (compiler rules).`
+
 `Repeat.`
 
  
 `To decide if a string is any pause:`
+
 `If the string is "_,", say yes.`
+
 `If the string is "_;", say yes.`
+
 `If the string is "_and", say yes.`
+
 `If the string is "_or", say yes.`
+
 `Say no.`
 
 
@@ -2125,13 +3229,21 @@ And now you know why primitive programming languages don't allow spaces in names
 
 
 `To scan a type given a rider (unit of measure):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Convert the rider's token to the type's scale.`
+
 `If the type's scale is 0, abort with "_Zero is an invalid scale._" and the type's locus; exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan the type's base name given the rider.`
+
 `If the rider's token is not the period byte, abort with "_Types need to end with a period, I found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Index the type.`
 
 
@@ -2139,26 +3251,38 @@ And now you know why primitive programming languages don't allow spaces in names
 
 
 `To decide if a string is the start of any optional info:`
+
 `If the string is "_to", say yes.`
+
 `If the string is "_with", say yes.`
+
 `Say no.`
 
 
 `To scan any optional info for a type given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is "_to", scan any optional info for the type given the rider (pointer); exit.`
+
 `If the rider's token is "_with", scan any optional info for the type given the rider (record); exit.`
 
 
 `To scan any optional info for a type given a rider (pointer):`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not any indefinite article, abort with "_The 'to' here needs to be followed by an indefinite article, not '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan the type's target name given the rider.`
 
 
 `To scan any optional info for a type given a rider (record):`
+
 `Move the rider (compiler rules).`
+
 `Scan the type's fields given the rider.`
 
 
@@ -2169,39 +3293,64 @@ And that's it for scanning types.
 
 
 `To scan a global given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add the global to the globals given "_global_" and the rider's token's first.`
+
 `Move the rider (compiler rules).`
+
 `Scan the global's name given the rider.`
+
 `If the rider's token is "_has_" or "_have", scan the global given the rider (has or have); exit.`
+
 `If the rider's token is not "_is_" or "_are", abort with "_Geez. I need an 'is' or an 'are' hereabouts, but all I found was '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not any indefinite article, scan the global given the rider (literal term); exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan the global's type name given the rider. `
+
 `If the rider's token is the start of any optional info, scan the global given the rider (optional info); exit.`
+
 `If the rider's token is "_equal", scan the global given the rider (data part); exit.`
+
 `If the rider's token is not the period byte, abort with "_All global definitions must end with a period. Including this one._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Index the global.`
 
 
 `To add a variable to some variables given a kind and a locus:`
+
 `Create the variable given the kind.`
+
 `Append the variable to the variables.`
+
 `Put the locus into the variable's locus.`
 
 
 `To create a variable given a kind:`
+
 `Allocate memory for the variable.`
+
 `Put the kind into the variable's kind.`
+
 `Put 1 into the variable's count.`
 
 
 `To index a global:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the global is nil, exit.`
+
 `If the global's name is in the global index, abort with "_'_" then the global's name then "_' is a duplicate global variable._" and the global's locus; exit.`
+
 `Index the global given the global's name and the global index.`
 
 
@@ -2210,16 +3359,27 @@ And that's it for scanning types.
 
 
 `To scan a global given a rider (has or have):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Put "_~inline "_ then the global's name then "_ type_" into a name.`
+
 `Put the name then "_s_" into a plural name.`
+
 `Add a type to the types given the name and the plural name and "_record_" and the global's locus.`
+
 `Index the type.`
+
 `Put the type's name into the global's type name.`
+
 `Scan the type's fields given the rider.`
+
 `If the rider's token is not the period byte, abort with "_Your punctuation is bad here._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Index the global.`
 
 
@@ -2227,15 +3387,25 @@ And that's it for scanning types.
 
 
 `To scan a global given a rider (optional info):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Put "_~inline "_ then the global's name then "_ type_" into a name.`
+
 `Put the name then "_s_" into a plural name.`
+
 `Add a type to the types given the name and the plural name and the global's type name and the global's locus.`
+
 `Index the type.`
+
 `Put the type's name into the global's type name.`
+
 `Scan any optional info for the type given the rider.`
+
 `If the rider's token is not the period byte, abort with "_All global definitions must end with a period. Including this one._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Index the global.`
 
 
@@ -2243,13 +3413,21 @@ And that's it for scanning types.
 
 
 `To scan a global given a rider (data part):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not "_to", abort with "_I need the word 'to' after the word 'equal', not '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan the global's global body given the rider.`
+
 `If the rider's token is not the period byte, abort with "_All global definitions must end with a period. Including this one._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Index the global.`
 
 
@@ -2257,17 +3435,29 @@ We're not quite ready to deal with those initial values, so we just suck up the 
 
 
 `To scan a global body given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is blank, exit.`
+
 `Put the rider's token's first into the global body's first.`
+
 `Put -1 into the global body's last.`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is blank, exit.`
+
 `If the rider's token is the colon byte, exit.`
+
 `If the rider's token is the period byte, exit.`
+
 `Put the rider's token's last into the global body's last.`
+
 `Move the rider (compiler rules).`
+
 `Repeat.`
 
 
@@ -2275,10 +3465,15 @@ A similar thing occurs here:
 
 
 `To scan a global given a rider (literal term):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Scan the global's global body given the rider.`
+
 `If the rider's token is not the period byte, abort with "_All global definitions must end with a period. Including this one._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Index the global.`
 
 
@@ -2289,24 +3484,35 @@ And that's it for globals, for now.
 
 
 `To scan a routine given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add the routine to the routines given the rider's token's first.`
+
 `Move the rider (compiler rules).`
+
 `Scan the routine's routine header given the rider.`
+
 `If the rider's token is the semi-colon byte, scan the routine given the rider (alternate wording); exit.`
 
 `If the rider's token is not the colon byte, abort with "_This routine header is improperly formulated._" and the routine's locus; exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan the routine's routine body given the rider.`
 
 
 `To add a routine to some routines given a locus:`
+
 `Create the routine.`
+
 `Append the routine to the routines.`
+
 `Put the locus into the routine's locus.`
 
 
 `To create a routine:`
+
 `Allocate memory for the routine.`
 
 
@@ -2314,35 +3520,60 @@ And that's it for globals, for now.
 
 
 `To scan a routine header given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is blank, exit.`
+
 `Put the rider's token's first into the routine header's first.`
+
 `Put -1 into the routine header's last.`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is blank, exit.`
+
 `If the rider's token is the semi-colon byte, exit. `
 
 `If the rider's token is the colon byte, exit.`
+
 `If the rider's token is the period byte, exit.`
+
 `Put the rider's token's last into the routine header's last.`
+
 `Move the rider (compiler rules).`
+
 `Repeat.`
 
 
 `To scan a routine body given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is blank, exit.`
+
 `If the rider's token is the start of any definition, exit.`
+
 `Put the rider's token's first into the routine body's first.`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is blank, exit.`
+
 `Put the rider's token's last into the routine body's last.`
+
 `If the rider's token is the colon byte, abort with "_You may have forgotten a period somewhere above this. You better check._" and the rider; exit.`
+
 `If the rider's token is not the period byte, move the rider (compiler rules); repeat.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is the start of any definition, exit.`
+
 `Repeat.`
 
 
@@ -2352,10 +3583,15 @@ And that's it for globals, for now.
 `To scan a routine given a rider (alternate wording): `
 
 `Privatize the rider.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not "_to", abort with "_I think that there semi-colon is misplaced._" and the original rider; exit.`
+
 `Put the original rider's token's first into the routine's routine body's first.`
+
 `Put the original rider's token's last into the routine's routine body's last.`
+
 `Move the original rider (compiler rules).`
 
 
@@ -2363,11 +3599,17 @@ And that's it for globals, for now.
 
 
 `To decide if a string is the start of any definition:`
+
 `If the string is "_to", say yes.`
+
 `If the string is "_a", say yes.`
+
 `If the string is "_an", say yes.`
+
 `If the string is "_the", say yes.`
+
 `If the string is "_some", say yes.`
+
 `Say no.`
 
 
@@ -2396,9 +3638,13 @@ Thirdly, you'll notice that record types have their fields listed as variables, 
 
 
 `/type/entry/entries/FFFFFFFF/thing////0/`
+
 `/variable/field/no/name address////00000000/no/1/no////`
+
 `/variable/field/no/thunk address////00000000/no/1/no////`
+
 `/variable/field/no/name////00000000/no/1/no////`
+
 `/variable/field/no/address////00000000/no/1/no////`
 
 
@@ -2406,9 +3652,13 @@ If you skip down to the next section of the listing (just find "_GLOBALS:_" with
 
 
 `/variable/global/no/adding built-in memory routines timer//timer//00000000/no/1/no////`
+
 `/variable/global/no/adding built-in startup routine timer//timer//00000000/no/1/no////`
+
 `/variable/global/no/addressing timer//timer//00000000/no/1/no////`
+
 `/variable/global/no/break tag//tag//00000000/no/1/no////`
+
 `/variable/global/no/calculating timer//timer//00000000/no/1/no////`
 
 
@@ -2462,10 +3712,15 @@ Finally, at the very bottom, you'll see that we've got all six source files prop
 
 
 `/source file/c:\cal-4700's son's daughter\the compiler/`
+
 `/source file/c:\cal-4700's son's daughter\the desktop/`
+
 `/source file/c:\cal-4700's son's daughter\the editor/`
+
 `/source file/c:\cal-4700's son's daughter\the finder/`
+
 `/source file/c:\cal-4700's son's daughter\the noodle/`
+
 `/source file/c:\cal-4700's son's daughter\the writer/`
 
 
@@ -2476,20 +3731,35 @@ Finally, at the very bottom, you'll see that we've got all six source files prop
 
 
 `/timer/loading/0/`
+
 `/timer/scanning/437/`
+
 `/timer/resolving types/0/`
+
 `/timer/resolving globals/0/`
+
 `/timer/compiling routine headers/0/`
+
 `/timer/calculating/0/`
+
 `/timer/adding built-in memory routines/0/`
+
 `/timer/indexing utilities/0/`
+
 `/timer/compiling routine bodies/0/`
+
 `/timer/adding built-in startup routine/0/`
+
 `/timer/offsetting/0/`
+
 `/timer/addressing/0/`
+
 `/timer/transmogrifying/0/`
+
 `/timer/linking/0/`
+
 `/timer/writing/0/`
+
 `/timer/total/562/`
 
 
@@ -2503,36 +3773,62 @@ Okay, you know the drill.
 
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Compile the directory (scan the source files).`
+
 `Compile the directory (resolve the types).`
+
 `Abort with "_I'm not old enough to make babies.". `
+
 `\Compile the directory (resolve the globals).`
+
 `\Compile the directory (compile the headers of the routines).`
+
 `\Compile the directory (calculate lengths and offsets of types).`
+
 `\Compile the directory (add the built-in memory routines).`
+
 `\Compile the directory (index the routines for utility use).`
+
 `\Compile the directory (compile the bodies of the routines).`
+
 `\Compile the directory (add and compile the built-in startup routine).`
+
 `\Compile the directory (offset parameters and variables).`
+
 `\Compile the directory (address).`
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
 
 102. In this step we're going to whip through all of our types four times, looking for different things on each pass:
 
 `To compile a directory (resolve the types):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Resolving...".`
+
 `Start the resolving types timer.`
+
 `Resolve the types (expand things).`
+
 `Resolve the types (index plurals).`
+
 `Resolve the types (base types).`
+
 `Resolve the types (optional info).`
+
 `Stop the resolving types timer.`
 
 
@@ -2540,35 +3836,62 @@ Okay, you know the drill.
 
 
 `To resolve some types (expand things):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a type from the types.`
+
 `If the type is nil, exit.`
+
 `Resolve the type (expand thing).`
+
 `Repeat.`
 
 
 `To resolve a type (expand thing): \ type's base type is not resolved yet `
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type is nil, exit.`
+
 `If the type's base type is not nil, exit.`
+
 `If the type's name is "_thing", exit.`
+
 `If the type cannot be reduced to "_thing_" using the base name, exit.`
+
 `Find a base type given the type's base name and the type index. `
+
 `\  add thing record `
+
 `Put the type's name then "_ record_" into a name.`
+
 `Put the type's name then "_ records_" into a plural name.`
+
 `Put the base type's name then "_ record_" into a base name.`
+
 `Add a record type to the types given the name and the plural name and the base name.`
+
 `Add a field to the record type's fields given "_next "_ then the type's name and "_next_" and the type's name and yes.`
+
 `Add another field to the record type's fields given "_previous "_ then the type's name and "_previous_" and the type's name and yes.`
+
 `If the type's fields are not empty, append the type's fields to the record type's fields.`
+
 `Index the record type. `
+
 `\ fix up original type to look like a pointer `
+
 `Put the record type's name into the type's target name. `
+
 `\ add chain type `
+
 `Add a chain type to the types given the type's plural name and "__" and the base type's plural name.`
+
 `Add a third field to the chain type's fields given "_first "_ then the type's name and "_first_" and the type's name and yes.`
+
 `Add a fourth field to the chain type's fields given "_last "_ then the type's name and "_last_" and the type's name and yes.`
+
 `Index the chain type.`
 
 
@@ -2576,14 +3899,23 @@ Okay, you know the drill.
 
 
 `To decide if a type can be reduced to a string using the base name:`
+
 `If the type is nil, say no.`
+
 `If the type's name is the string, say yes.`
+
 `If the type's cooking flag is set, say no.`
+
 `Set the type's cooking flag.`
+
 `Find a base type given the type's base name and the type index.`
+
 `If the base type is nil, clear the type's cooking flag; say no.`
+
 `If the base type can be reduced to the string using the base name, clear the type's cooking flag; say yes.`
+
 `Clear the type's cooking flag.`
+
 `Say no.`
 
 
@@ -2591,10 +3923,15 @@ Okay, you know the drill.
 
 
 `To add a field to some fields given a name and a nickname and a type name and a reference flag:`
+
 `Add the field to the fields given "_field_" and nil.`
+
 `Put the name into the field's name.`
+
 `Put the nickname into the field's nickname.`
+
 `Put the type name into the field's type name.`
+
 `Put the reference flag into the field's reference flag.`
 
 
@@ -2602,18 +3939,28 @@ Okay, you know the drill.
 
 
 `To resolve some types (index plurals):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a type from the types.`
+
 `If the type is nil, exit.`
+
 `Resolve the type (index plural).`
+
 `Repeat.`
 
 
 `To resolve a type (index plural):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type is nil, exit.`
+
 `If the type's plural name is blank, exit.`
+
 `If the type can be reduced to "_thing_" using the base name, exit.`
+
 `Index the type given the type's plural name.`
 
 
@@ -2621,22 +3968,36 @@ Okay, you know the drill.
 
 
 `To resolve some types (base types):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a type from the types.`
+
 `If the type is nil, exit.`
+
 `Resolve the type (base type).`
+
 `Repeat.`
 
 
 `To resolve a type (base type):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type is nil, exit.`
+
 `If the type's base type is not nil, exit.`
+
 `Find the type's base type given the type's base name and the type index.`
+
 `If the type's base type is nil, abort with "_Invalid base type '_" then the type's base name then "_'._" and the type's locus; exit.`
+
 `Set the type's cooking flag.`
+
 `If the type's base type's cooking flag is set, abort with "_Recursive definition with '_" then the type's base name then "_'._" and the type's locus; exit.`
+
 `Resolve the type's base type (base type).`
+
 `Clear the type's cooking flag.`
 
 
@@ -2647,25 +4008,42 @@ We use the "_cooking flag_" to make sure we don't run into ourselves when we're 
 
 
 `To resolve some types (optional info):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a type from the types.`
+
 `If the type is nil, exit.`
+
 `Resolve the type (optional info).`
+
 `Repeat.`
 
 
 `To resolve a type (optional info):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type is nil, exit.`
+
 `If the type's optional info resolved flag is set, exit.`
+
 `If the type's base type is the type, exit. \ for built in types `
+
 `Check for invalid optional info on the type.`
+
 `Set the type's cooking flag.`
+
 `Resolve the type's base type (optional info).`
+
 `If the type can be reduced to "_pointer", resolve the type (optional info - pointer).`
+
 `If the type can be reduced to "_record", resolve the type (optional info - record).`
+
 `If the type can be reduced to "_number", resolve the type (optional info - scale).`
+
 `Clear the type's cooking flag.`
+
 `Set the type's optional info resolved flag.`
 
 
@@ -2673,25 +4051,36 @@ We use the "_cooking flag_" to make sure we don't run into ourselves when we're 
 
 
 `To check for invalid optional info on a type:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type is nil, exit.`
+
 `If the type's target name is not blank, check for invalid optional info on the type (target).`
+
 `If the type's fields are not empty, check for invalid optional info on the type (fields).`
+
 `If the type's scale is not 0, check for invalid optional info on the type (scale).`
 
 
 `To check for invalid optional info on a type (fields):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type cannot be reduced to "_record", abort with "_Optional 'with' info is only allowed on record types._" and the type's locus; exit.`
 
 
 `To check for invalid optional info on a type (scale):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type cannot be reduced to "_number", abort with "_Scales are only allowed on number types._" and the type's locus; exit.`
 
 
 `To check for invalid optional info on a type (target):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type cannot be reduced to "_pointer", abort with "_Optional 'to' info is only allowed on pointer types._" and the type's locus; exit.`
 
 
@@ -2699,40 +4088,69 @@ We use the "_cooking flag_" to make sure we don't run into ourselves when we're 
 
 
 `To resolve a type (optional info - pointer):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type's target type is not nil, exit.`
+
 `If the type's target name is blank, put the type's base type's target type into the type's target type; exit.`
+
 `Find the type's target type given the type's target name and the type index.`
+
 `If the type's target type is nil, abort with "_I can't quite see what you're pointing at. Please clarify._" and the type's locus; exit.`
 
 
 `To resolve a type (optional info - record):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type's fields are empty, copy the type's base type's fields into the type's fields; exit.`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a field from the type's fields (backwards).`
+
 `If the field is nil, break.`
+
 `If the field is duplicated in the type's fields, abort with "_The '_" then the field's name then "_' field is defined more than once._" and the field's locus; exit.`
+
 `Resolve the field.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the field's type's cooking flag is set, abort with "_Recursive definition with '_" then the field's type's name then "_'._" and the field's locus; exit.`
+
 `Resolve the field's type (optional info).`
+
 `If the field's reference flag is not set, repeat.`
+
 `If the field's type cannot be reduced to "_pointer", abort with "_Exactly what do you mean by '(reference)' here on this '_" then the field's name then "_'?_" and the field's locus; exit.`
+
 `Repeat.`
+
 `Eliminate duplicate nicknames from the type's fields.`
+
 `If the type cannot be reduced to "_thing record", exit.`
+
 `If the type's fields' count is greater than 2, exit.`
+
 `Copy the type's base type's fields into the type's fields (data fields only).`
 
 
 `To resolve a type (optional info - scale):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Put the type's base type into a base type.`
+
 `If the type's scale is 0, put the type's base type's scale into the type's scale; exit.`
+
 `If the base type's scale is 0, exit.`
+
 `Multiply the type's scale by the base type's scale.`
+
 `Put the base type's base type into the type's base type.`
 
 
@@ -2740,22 +4158,36 @@ We use the "_cooking flag_" to make sure we don't run into ourselves when we're 
 
 
 `To decide if a type can be reduced to a type name:`
+
 `If the type is nil, say no.`
+
 `Privatize the type.`
+
 `Loop.`
+
 `If the type is nil, say no.`
+
 `If the type's name is the type name, say yes.`
+
 `If the type's base type is the type, say no.`
+
 `Put the type's base type into the type.`
+
 `Repeat.`
 
 
 `To decide if a variable is duplicated in some variables:`
+
 `Get another variable from the variables.`
+
 `If the other variable is nil, say no.`
+
 `If the other variable's name is blank, repeat.`
+
 `If the other variable is the variable, repeat.`
+
 `If the other variable's name is the variable's name, say yes.`
+
 `Repeat.`
 
 
@@ -2766,36 +4198,61 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 
 
 `To copy a field into another field:`
+
 `If the field is nil, void the other field; exit.`
+
 `Allocate memory for the other field.`
+
 `Put the field's locus into the other field's locus.`
+
 `Put the field's name into the other field's name.`
+
 `Put the field's nickname into the other field's nickname.`
+
 `Put the field's type name into the other field's type name.`
+
 `Put the field's type into the other field's type.`
+
 `Put the field's count into the other field's count.`
+
 `Put the field's redefinition target name into the other field's redefinition target name.`
+
 `Put the field's reference flag into the other field's reference flag.`
+
 `Put the field's offset into the other field's offset.`
 
 
 `To copy some fields into some other fields:`
+
 `Get a field from the fields.`
+
 `If the field is nil, exit.`
+
 `Copy the field into another field.`
+
 `Append the other field to the other fields.`
+
 `Repeat.`
 
 
 `To copy some fields into some other fields (data fields only):`
+
 `If the fields' first is nil, exit.`
+
 `If the fields' first's next is nil, exit.`
+
 `Put the fields' first's next's next into a field.`
+
 `Loop.`
+
 `If the field is nil, exit.`
+
 `Copy the field into another field.`
+
 `Append the other field to the other fields.`
+
 `Get the field from the fields.`
+
 `Repeat.`
 
 
@@ -2803,25 +4260,39 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 
 
 `To resolve a field:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the field is nil, exit.`
+
 `Resolve the field as a variable.`
+
 `If the field's nickname is not any valid field name, clear the field's nickname.`
+
 `If the field's name is not any valid field name, abort with "_'_" then the field's name then "_' is not a valid field name._" and the field's locus; exit.`
 
 
 `To resolve a variable:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the variable is nil, exit.`
+
 `If the variable's type is not nil, exit.`
+
 `If the variable's type name is not blank, resolve the variable (explicit type name); exit.`
+
 `Find the variable's type and the variable's nickname given the variable's name.`
+
 `If the variable's type is not nil, put the variable's type's name into the variable's type name; exit.`
+
 `Abort with "_I can't find the '_" then the variable's name then "_' type._" and the variable's locus.`
 
 
 `To resolve a variable (explicit type name):`
+
 `Find the variable's type given the variable's type name and the type index.`
+
 `If the variable's type is nil, abort with "_I can't find the '_" then the variable's type name then "_' type._" and the variable's locus; exit.`
 
 
@@ -2829,39 +4300,67 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 
 
 `To find a type and a nickname given a name:`
+
 `Void the type.`
+
 `Clear the nickname.`
+
 `Slap a substring on the name.`
+
 `Loop.`
+
 `If the substring is blank, exit.`
+
 `Find the type given the substring and the type index.`
+
 `If the type is not nil, break.`
+
 `Skip to the next word in the substring.`
+
 `Repeat.`
+
 `Put the name's first into another substring's first.`
+
 `Put the substring's first minus 2 into the other substring's last.`
+
 `If the other substring is not blank, put the other substring into the nickname.`
+
 `If the other substring is blank, put the substring into the nickname.`
 
 
 `To find a variable given a name:`
+
 `If the current routine is nil, void the variable; exit.`
+
 `Find the variable given the name and the current routine's locals.`
+
 `If the variable is not nil, exit.`
+
 `Find the variable given the name and the current routine's parameters.`
+
 `If the variable is not nil, exit.`
+
 `Find the variable given the name and the global index.`
+
 `If the variable is not nil, exit.`
+
 `Find the variable given the name and the literal index.`
 
 
 `To find a variable given a name and some variables:`
+
 `Void the variable.`
+
 `Loop.`
+
 `Get the variable from the variables.`
+
 `If the variable is nil, exit.`
+
 `If the variable's name is the name, exit.`
+
 `If the variable's nickname is the name, exit.`
+
 `Repeat.`
 
 
@@ -2870,10 +4369,15 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 
 
 `To skip to the next word in a substring:`
+
 `If the substring is blank, exit.`
+
 `If the substring's first's target is noise, break.`
+
 `Add 1 to the substring's first.`
+
 `Repeat.`
+
 `Skip any leading noise in the substring.`
 
 
@@ -2881,9 +4385,13 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 
 
 `To decide if a name is any valid field name:`
+
 `If the name is "_magnitude", say no.`
+
 `If the name is "_target", say no.`
+
 `If the name is "_whereabouts", say no.`
+
 `Say yes.`
 
 
@@ -2891,27 +4399,43 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 
 
 `To eliminate duplicate nicknames from some variables:`
+
 `Create an index given 101.`
+
 `Eliminate duplicate nicknames from the variables given the index.`
+
 `Destroy the index.`
 
 
 `To eliminate duplicate nicknames from some variables given an index:`
+
 `If the index is nil, exit.`
+
 `Loop.`
+
 `Get a variable from the variables.`
+
 `If the variable is nil, exit.`
+
 `Eliminate duplicate nicknames given the variable and the index.`
+
 `Repeat.`
 
 
 `To eliminate duplicate nicknames given a variable and an index:`
+
 `If the variable is nil, exit.`
+
 `If the index is nil, exit.`
+
 `Find another variable given the variable's nickname and the index.`
+
 `If the other variable is nil, find the other variable given the variable's name and the index.`
+
 `If the other variable is nil, index the variable given the variable's nickname and the index; exit.`
+
 `Clear the other variable's nickname.`
+
 `Clear the variable's nickname.`
 
 
@@ -2928,11 +4452,17 @@ And a number is defined as a record like this:
 
 
 `A number has`
+
 `a first byte,`
+
 `a second byte,`
+
 `a third byte,`
+
 `a fourth byte,`
+
 `a low wyrd at the first byte,`
+
 `a high wyrd at the third byte.`
 
 
@@ -2949,11 +4479,17 @@ And now that our types have been resolved, you can see in the listing that all t
 
 
 `/type/tag/tags/FFFFFFFF/number/number///0/`
+
 `/variable//no/first byte/first/byte/byte/00000000/no/1/no////`
+
 `/variable//no/second byte/second/byte/byte/00000000/no/1/no////`
+
 `/variable//no/third byte/third/byte/byte/00000000/no/1/no////`
+
 `/variable//no/fourth byte/fourth/byte/byte/00000000/no/1/no////`
+
 `/variable//no/low wyrd/low/wyrd/wyrd/00000000/no/1/no/first byte///`
+
 `/variable//no/high wyrd/high/wyrd/wyrd/00000000/no/1/no/third byte///`
 
 
@@ -2967,18 +4503,25 @@ But now that our types have been resolved, that definition has been modified and
 
 
 `/ - type/source file/source files/FFFFFFFF/thing/thing/source file record/source file record/0/`
+
 `/variable//no///byte/byte/00000000/no/4/no////`
 
 
 `/type/source file record/source file records/FFFFFFFF/thing record/thing record///0/`
+
 `/variable/field/no/next source file/next/source file/source file/00000000/no/1/yes////`
+
 `/variable/field/no/previous source file/previous/source file/source file/00000000/no/1/yes////`
+
 `/variable/field/no/path/path/path/path/00000000/no/1/no////`
+
 `/variable/field/no/buffer/buffer/buffer/buffer/00000000/no/1/no////`
 
 
 `/type/source files//FFFFFFFF/things/things///0/`
+
 `/variable/field/no/first source file/first/source file/source file/00000000/no/1/yes////`
+
 `/variable/field/no/last source file/last/source file/source file/00000000/no/1/yes////`
 
 
@@ -3003,11 +4546,17 @@ Now that our types have been resolved, we find that the "_foot_" type looks like
 
 
 `/type/foot/feet/FFFFFFFF/inches/twip///17280/`
+
 `/variable//no/first byte/first/byte/byte/00000000/no/1/no////`
+
 `/variable//no/second byte/second/byte/byte/00000000/no/1/no////`
+
 `/variable//no/third byte/third/byte/byte/00000000/no/1/no////`
+
 `/variable//no/fourth byte/fourth/byte/byte/00000000/no/1/no////`
+
 `/variable//no/low wyrd/low/wyrd/wyrd/00000000/no/1/no/first byte///`
+
 `/variable//no/high wyrd/high/wyrd/wyrd/00000000/no/1/no/third byte///`
 
 
@@ -3042,20 +4591,35 @@ And that all that resolving of types took almost no time at all:
 
 
 `/timer/loading/62/`
+
 `/timer/scanning/453/`
+
 `/timer/resolving types/47/`
+
 `/timer/resolving globals/0/`
+
 `/timer/compiling routine headers/0/`
+
 `/timer/calculating/0/`
+
 `/timer/adding built-in memory routines/0/`
+
 `/timer/indexing utilities/0/`
+
 `/timer/compiling routine bodies/0/`
+
 `/timer/adding built-in startup routine/0/`
+
 `/timer/offsetting/0/`
+
 `/timer/addressing/0/`
+
 `/timer/transmogrifying/0/`
+
 `/timer/linking/0/`
+
 `/timer/writing/0/`
+
 `/timer/total/719/`
 
 
@@ -3067,23 +4631,41 @@ Next up: Resolving global variables.
 
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Compile the directory (scan the source files).`
+
 `Compile the directory (resolve the types).`
+
 `Compile the directory (resolve the globals).`
+
 `Abort with "_I'm not old enough to make babies.". `
+
 `\Compile the directory (compile the headers of the routines).`
+
 `\Compile the directory (calculate lengths and offsets of types).`
+
 `\Compile the directory (add the built-in memory routines).`
+
 `\Compile the directory (index the routines for utility use).`
+
 `\Compile the directory (compile the bodies of the routines).`
+
 `\Compile the directory (add and compile the built-in startup routine).`
+
 `\Compile the directory (offset parameters and variables).`
+
 `\Compile the directory (address).`
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
 
@@ -3091,18 +4673,28 @@ Next up: Resolving global variables.
 
 
 `To compile a directory (resolve the globals):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Resolving...".`
+
 `Start the resolving globals timer.`
+
 `Resolve the globals.`
+
 `Stop the resolving globals timer.`
 
 
 `To resolve some globals:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a global from the globals.`
+
 `If the global is nil, exit.`
+
 `Resolve the global.`
+
 `Repeat.`
 
 
@@ -3110,24 +4702,40 @@ Next up: Resolving global variables.
 
 
 `To resolve a global:`
+
 `If the global is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the global's global body is not blank, resolve the global (compile body).`
+
 `If the global's type name is blank, abort with "_Invalid global '_" then the global's name then "_'._" and the global's locus; exit.`
+
 `Resolve the global as a variable.`
 
 
 `To resolve a global (compile body):`
+
 `If the global is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Slap a rider on the global's global body.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not any literal, abort with "_I need a literal here, but I found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Compile a literal given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is not blank, abort with "_Is a period missing around here?_" and the rider; exit.`
+
 `If the global's type name is blank, put the literal's type's name into the global's type name.`
+
 `Put the literal into the global's literal.`
+
 `Index the literal.`
 
 
@@ -3135,13 +4743,21 @@ Next up: Resolving global variables.
 
 
 `To compile a literal given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add the literal to the literals given the rider's token's first.`
+
 `If the rider's token is any flag literal, compile the literal given the rider (flag); exit.`
+
 `If the rider's token is any hex literal, compile the literal given the rider (hex); exit.`
+
 `If the rider's token is any numeric literal, compile the literal given the rider (numeric); exit.`
+
 `If the rider's token is any pointer literal, compile the literal given the rider (pointer); exit.`
+
 `If the rider's token is any string literal, compile the literal given the rider (string); exit.`
+
 `Abort with "_Internal error - compile a term given a rider (literal)_" and the rider.`
 
 
@@ -3149,13 +4765,19 @@ Next up: Resolving global variables.
 
 
 `To generate a name given a string:`
+
 `Put the string into the name.`
+
 `Add 1 to the compiler's name count.`
+
 `Convert the compiler's name count to another string.`
+
 `Append the other string to the name.`
 
 `To add a literal to some variables given a locus:`
+
 `Add the literal as a variable to the variables given "_literal_" and the locus.`
+
 `Generate the literal's name given "_~L".`
 
 
@@ -3163,83 +4785,140 @@ Next up: Resolving global variables.
 
 
 `To compile a literal given a rider (flag):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Convert the rider's token to a flag.`
+
 `Convert the flag to the literal's data.`
+
 `Move the rider (compiler rules).`
+
 `Put "_flag_" into the literal's type name.`
+
 `Resolve the literal.`
 
 
 `To compile a literal given a rider (hex):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Put the rider's token into a nibble substring.`
+
 `Add 1 to the nibble substring's first.`
+
 `Convert the nibble substring to the literal's data.`
+
 `Move the rider (compiler rules).`
+
 `Put "_hex string_" into the literal's type name.`
+
 `Resolve the literal.`
 
 
 `To compile a literal given a rider (numeric - integer):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Convert the rider's token to a number.`
+
 `Convert the number to the literal's data.`
+
 `Move the rider (compiler rules).`
+
 `Put "_number_" into the literal's type name.`
+
 `Resolve the literal.`
 
 
 `To compile a literal given a rider (numeric - ratio):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Convert the rider's token to a ratio.`
+
 `Convert the ratio to the literal's data.`
+
 `Move the rider (compiler rules).`
+
 `Put "_ratio_" into the literal's type name.`
+
 `Resolve the literal.`
 
 
 `To compile a literal given a rider (numeric):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider is followed by any unit of measure, compile the literal given the rider (numeric - with unit of measure); exit.`
+
 `If the rider's token is any integer literal, compile the literal given the rider (numeric - integer); exit.`
+
 `If the rider's token is any ratio literal, compile the literal given the rider (numeric - ratio); exit.`
+
 `If the rider's token is any mixed literal, compile the literal given the rider (numeric - ratio); exit.`
 
 
 `To compile a literal given a rider (numeric - with unit of measure):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Convert the rider's token to a ratio.`
+
 `Move the rider (compiler rules).`
+
 `Scan a name given the rider.`
+
 `Find a type given the name and the type index.`
+
 `If the type is nil, abort with "_'_" then the name then "_' is an invalid unit of measure._" and the literal's locus; exit.`
+
 `If the type cannot be reduced to "_number", abort with "_'_" then the name then "_' is an invalid unit of measure._" and the literal's locus; exit.`
+
 `Put the type's scale into a final ratio.`
+
 `If the type's scale is 0, put 1/1 into the final ratio.`
+
 `Multiply the final ratio by the ratio.`
+
 `Reduce the final ratio.`
+
 `If the final ratio's denominator is 0, abort with "_We seem to have an invalid unit of measure here._" and the literal's locus.`
+
 `Put the final ratio's numerator divided by the final ratio's denominator into a number.`
+
 `Put the type's name into the literal's type name.`
+
 `Convert the number to the literal's data.`
+
 `Resolve the literal.`
 
 
 `To compile a literal given a rider (pointer):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Convert nil to the literal's data.`
+
 `Move the rider (compiler rules).`
+
 `Put "_pointer_" into the literal's type name.`
+
 `Resolve the literal.`
 
 
 `To compile a literal given a rider (string):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Put the rider's token into the literal's data.`
+
 `Unquote the literal's data.`
+
 `Move the rider (compiler rules).`
+
 `Put "_string_" into the literal's type name.`
+
 `Resolve the literal.`
 
 
@@ -3247,14 +4926,23 @@ Next up: Resolving global variables.
 
 
 `To decide if a rider is followed by any unit of measure:`
+
 `Privatize the rider.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not any name starter, say no.`
+
 `Scan a name given the rider.`
+
 `Find a type given the name and the type index.`
+
 `If the type is nil, say no.`
+
 `If the name is not "_times", say yes. \ special because times is an infix operator and a unit of measure `
+
 `If the rider's token is the start of any expression, say no.`
+
 `Say yes.`
 
 
@@ -3263,10 +4951,15 @@ Next up: Resolving global variables.
 
 
 `To decide if a string is the start of any expression:`
+
 `If the string is any sign, say yes.`
+
 `If the string is any indefinite article, say yes.`
+
 `If the string is "_the", say yes.`
+
 `If the string is any literal, say yes.`
+
 `Say no.`
 
 
@@ -3274,9 +4967,13 @@ Next up: Resolving global variables.
 
 
 `To index a literal:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the literal is nil, exit.`
+
 `If the literal's name is in the literal index, abort with "_Internal error - index a literal_" and the literal's locus; exit.`
+
 `Index the literal given the literal's name and the literal index.`
 
 
@@ -3293,12 +4990,19 @@ Next up: Resolving global variables.
 
 
 `/variable/global/no/adding built-in memory routines timer//timer/timer/00000000/no/1/no////`
+
 `/variable/global/no/adding built-in startup routine timer//timer/timer/00000000/no/1/no////`
+
 `/variable/global/no/addressing timer//timer/timer/00000000/no/1/no////`
+
 `/variable/global/no/break tag//tag/tag/00000000/no/1/no//~L1//`
+
 `/variable/global/no/calculating timer//timer/timer/00000000/no/1/no////`
+
 `/variable/global/no/call external tag//tag/tag/00000000/no/1/no//~L2//`
+
 `/variable/global/no/call indirect tag//tag/tag/00000000/no/1/no//~L3//`
+
 `/variable/global/no/call internal tag//tag/tag/00000000/no/1/no//~L4//`
 
 
@@ -3309,8 +5013,11 @@ Note the "_~L1_" and "_~L2_" and similar literal names near the end of the tag g
 
 
 `/variable/literal/no/~L1//number/number/00000000/no/1/no///01000000/`
+
 `/variable/literal/no/~L2//number/number/00000000/no/1/no///02000000/`
+
 `/variable/literal/no/~L3//number/number/00000000/no/1/no///03000000/`
+
 `/variable/literal/no/~L4//number/number/00000000/no/1/no///04000000/`
 
 
@@ -3339,20 +5046,35 @@ Let's check our timers and call it a day:
 
 
 `/timer/loading/94/`
+
 `/timer/scanning/437/`
+
 `/timer/resolving types/31/`
+
 `/timer/resolving globals/94/`
+
 `/timer/compiling routine headers/0/`
+
 `/timer/calculating/0/`
+
 `/timer/adding built-in memory routines/0/`
+
 `/timer/indexing utilities/0/`
+
 `/timer/compiling routine bodies/0/`
+
 `/timer/adding built-in startup routine/0/`
+
 `/timer/offsetting/0/`
+
 `/timer/addressing/0/`
+
 `/timer/transmogrifying/0/`
+
 `/timer/linking/0/`
+
 `/timer/writing/0/`
+
 `/timer/total/937/`
 
 
@@ -3366,23 +5088,41 @@ Looks like manipulating all those huge hex literals in the Noodle cost us a few 
 
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Compile the directory (scan the source files).`
+
 `Compile the directory (resolve the types).`
+
 `Compile the directory (resolve the globals).`
+
 `Compile the directory (compile the headers of the routines).`
+
 `Abort with "_I'm not old enough to make babies.". `
+
 `\Compile the directory (calculate lengths and offsets of types).`
+
 `\Compile the directory (add the built-in memory routines).`
+
 `\Compile the directory (index the routines for utility use).`
+
 `\Compile the directory (compile the bodies of the routines).`
+
 `\Compile the directory (add and compile the built-in startup routine).`
+
 `\Compile the directory (offset parameters and variables).`
+
 `\Compile the directory (address).`
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
 
@@ -3412,11 +5152,17 @@ It consists of 4 "_monikettes": the string "_create", the parameter type "_[work
 
 
 `A monikette is a thing with`
+
 `a string,`
+
 `a type (reference),`
+
 `a variable (reference),`
+
 `\ for bubbling`
+
 `a current type (reference),`
+
 `a current substring.`
 
 
@@ -3430,44 +5176,77 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 
 `To create a monikette:`
+
 `Allocate memory for the monikette.`
 
 
 `To add a monikette to some monikettes given a string:`
+
 `Create the monikette.`
+
 `Append the monikette to the monikettes. `
+
 `\ from/given/with/using `
+
 `If the string is "_from", put "_from/given/with/using_" into the monikette's string; exit.`
+
 `If the string is "_given", put "_from/given/with/using_" into the monikette's string; exit.`
+
 `If the string is "_with", put "_from/given/with/using_" into the monikette's string; exit.`
+
 `If the string is "_using", put "_from/given/with/using_" into the monikette's string; exit. `
+
 `\ in/into/to `
+
 `If the string is "_in", put "_in/into/to_" into the monikette's string; exit.`
+
 `If the string is "_into", put "_in/into/to_" into the monikette's string; exit.`
+
 `If the string is "_to", put "_in/into/to_" into the monikette's string; exit.`
+
 `\ is/are`
+
 `If the string is "_are", put "_is/are_" into the monikette's string; exit.`
+
 `If the string is "_is", put "_is/are_" into the monikette's string; exit. `
+
 `\ aren't/isn't `
+
 `If the string is "_isn't", put "_is/aren't_" into the monikette's string; exit.`
+
 `If the string is "_aren't", put "_is/aren't_" into the monikette's string; exit.`
+
 `\ backward/backwards/counterclockwise/counter-clockwise/anticlockwise/anti-clockwise`
+
 `If the string is "_backward", put "_backward_" into the monikette's string; exit.`
+
 `If the string is "_backwards", put "_backward_" into the monikette's string; exit.`
+
 `If the string is "_counterclockwise", put "_backward_" into the monikette's string; exit.`
+
 `If the string is "_counter-clockwise", put "_backward_" into the monikette's string; exit.`
+
 `If the string is "_anticlockwise", put "_backward_" into the monikette's string; exit.`
+
 `If the string is "_anti-clockwise", put "_backward_" into the monikette's string; exit. `
+
 `\ at/on `
+
 `If the string is "_at", put "_at/on_" into the monikette's string; exit.`
+
 `If the string is "_on", put "_at/on_" into the monikette's string; exit. `
+
 `\ other `
+
 `Put the string into the monikette's string.`
 
 
 `To add a monikette to some monikettes given a type:`
+
 `Create the monikette.`
+
 `Append the monikette to the monikettes.`
+
 `Put the type into the monikette's type.`
 
 
@@ -3475,22 +5254,34 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 
 `To convert some monikettes to a moniker:`
+
 `Convert the monikettes to the moniker given the monikettes' last.`
 
 
 `To convert some monikettes to a moniker given a monikette:`
+
 `Clear the moniker.`
+
 `Loop.`
+
 `Get a current monikette from the monikettes.`
+
 `If the current monikette is nil, exit.`
+
 `Append the current monikette to the moniker.`
+
 `If the current monikette is the monikette, exit.`
+
 `Repeat.`
 
 `To append a monikette to a moniker:`
+
 `If the monikette is nil, exit.`
+
 `If the moniker is not blank, append the space byte to the moniker.`
+
 `If the monikette's type is not nil, append "_[_" and the monikette's type's name and "_]_" to the moniker (fast); exit.`
+
 `If the monikette's string is not blank, append the monikette's string to the moniker; exit.`
 
 
@@ -3498,28 +5289,46 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 
 `To compile a directory (compile the headers of the routines):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Compiling...".`
+
 `Start the compiling routine headers timer.`
+
 `Compile the headers of the routines.`
+
 `Stop the compiling routine headers  timer.`
 
 `To compile the headers of some routines:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a routine from the routines.`
+
 `If the routine is nil, exit.`
+
 `Compile the header of the routine.`
+
 `Repeat.`
 
 
 `To compile the header of a routine:`
+
 `If the routine is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Slap a rider on the routine's routine header.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is "_decide", compile the header of the routine given the rider (decider); exit.`
+
 `If the rider is the start of any function, compile the header of the routine given the rider (function); exit.`
+
 `If the rider's token is "_compatibly", compile the header of the routine given the rider (callback); exit.`
+
 `Compile the header of the routine given the rider (procedure).`
 
 
@@ -3527,78 +5336,137 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 
 `To decide if a rider is the start of any function:`
+
 `If the compiler's abort flag is set, say no.`
+
 `If the rider's token is not "_put", say no.`
+
 `Privatize the rider.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not any article, say no.`
+
 `Move the rider (compiler rules).`
+
 `Scan a name given the rider.`
+
 `If the rider's token is any possessive, say yes.  `
 
 
 `To compile some monikettes given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is any monikette string, add a monikette to the monikettes given the rider's token; move the rider (compiler rules); repeat.`
+
 `If the rider's token is not the start of any expression, exit.`
+
 `Compile an expression given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add another monikette to the monikettes given the expression.`
+
 `Repeat.`
 
 
 `To compile the header of a routine given a rider (decider):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not "_if", abort with "_It's 'Decide IF.' We always say, 'Decide IF'. Got it?_" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Set the routine's decider flag.`
+
 `Compile the routine's monikettes and the routine's parameters given the rider.`
+
 `If any of the routine's monikettes are negative words, abort with "_It's a bad idea to use negatives in decider names._" and the rider; exit.`
+
 `Convert the routine's monikettes to the routine's moniker.`
+
 `If the routine's moniker is in the routine index, abort with "_I already know how to '_" then the routine's moniker then "_'._" and the routine's locus; exit.`
+
 `Index the routine given the routine's monikettes and the routine index.`
 
 
 `To compile the header of a routine given a rider (function):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Set the routine's function flag.`
+
 `Add a monikette to the routine's monikettes given "_put".`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is any indefinite article, set a flag.`
+
 `If the flag is set, compile the routine's monikettes and the routine's parameters given the rider (indefinite article).`
+
 `If the flag is not set, compile the routine's monikettes and the routine's parameters given the rider (definite article).`
+
 `If the rider's token is not any possessive, abort with "_An 's is missing or misplaced here._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan a name given the rider.`
+
 `Add another monikette to the routine's monikettes given "_'s "_ then the name.`
+
 `If the rider's token is not "_into", abort with "_I was expecting the word 'into', but found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Add a third monikette to the routine's monikettes given "_into".`
+
 `Convert the routine's monikettes to a moniker.`
+
 `If the moniker is in the routine index, abort with "_I already know how to '_" then the moniker then "_'._" and the routine's locus; exit.`
+
 `Index the routine given the routine's monikettes and the routine index.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not any indefinite article, abort with "_I was expecting an indefinite article, but found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Compile the routine's monikettes and the routine's parameters given the rider (indefinite article).`
+
 `If the rider's token is not blank, abort with "_There's extra stuff on the end of this function._" and the rider; exit.`
+
 `Convert the routine's monikettes to the routine's moniker.`
+
 `Index the routine given the routine's monikettes and the routine index. \ for employs`
 
 `To compile the header of a routine given a rider (callback):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Set the routine's callback flag.`
+
 `Compile the routine's monikettes and the routine's parameters given the rider.`
+
 `Convert the routine's monikettes to the routine's moniker.`
+
 `If the routine's moniker is in the routine index, abort with "_I already know how to '_" then the routine's moniker then "_'._" and the routine's locus; exit.`
+
 `Index the routine given the routine's monikettes and the routine index.`
 
 
 `To compile the header of a routine given a rider (procedure):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Compile the routine's monikettes and the routine's parameters given the rider.`
+
 `Convert the routine's monikettes to the routine's moniker.`
+
 `If the routine's moniker is in the routine index, abort with "_I already know how to '_" then the routine's moniker then "_'._" and the routine's locus; exit.`
+
 `Index the routine given the routine's monikettes and the routine index.`
 
 
@@ -3606,49 +5474,82 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 
 `To decide if a string is any monikette string:`
+
 `If the string is blank, say no.`
+
 `If the string is "_the", say no.`
+
 `If the string is any indefinite article, say no.`
+
 `If the string is any possessive, say no.`
+
 `If the string is any literal, say no.`
+
 `If the string is any mark, say no.`
+
 `If the string is any symbol, say no.`
+
 `Say yes.`
 
 
 `To compile some monikettes and some parameters given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is blank, exit.`
+
 `If the rider's token is "_the", compile the monikettes and the parameters given the rider (definite article); repeat.`
+
 `If the rider's token is any indefinite article, compile the monikettes and the parameters given the rider (indefinite article); repeat.`
+
 `If the rider's token is any monikette string, compile the monikettes and the parameters given the rider (monikette string); repeat.`
+
 `Abort with "_'_" then the rider's token then "_' is not valid in a routine header._" and the rider.`
 
 `To compile some monikettes and some parameters given a rider (definite article):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan a name given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Prepend "_the "_ to the name.`
+
 `Add a monikette to the monikettes given the name.`
 
 
 `To compile some monikettes and some parameters given a rider (indefinite article):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add a parameter to the parameters given "_parameter_" and the rider's token's first.`
+
 `If the rider's token is "_another", put "_other_" into the parameter's name.`
+
 `Move the rider (compiler rules).`
+
 `Scan a name given the rider.`
+
 `Extend the parameter's name with the name.`
+
 `If the rider's token is "_called", compile the call'd part given the rider and the parameter.`
+
 `Resolve the parameter.`
+
 `If the parameter is duplicated in the parameters, abort with "_Dude, you already have a parameter called '_" then the parameter's name then "_'._" and the parameter's locus; exit.`
+
 `Add a monikette to the monikettes given the parameter's type.`
 
 
 `To compile some monikettes and some parameters given a rider (monikette string):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add a monikette to the monikettes given the rider's token.`
+
 `Move the rider (compiler rules).`
 
 
@@ -3656,10 +5557,15 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 
 `To compile the call'd part given a rider and a variable:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the variable is nil, exit.`
+
 `Put the variable's name into the variable's type name.`
+
 `Move the rider (compiler rules).`
+
 `Scan the variable's name given the rider.`
 
 
@@ -3667,27 +5573,44 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 
 `To decide if any of some monikettes are negative words:`
+
 `Get a monikette from the monikettes.`
+
 `If the monikette is nil, say no.`
+
 `If the monikette's string is any negative word, say yes.`
+
 `Repeat.`
 
 `To decide if a string is any monikette string:`
+
 `If the string is blank, say no.`
+
 `If the string is "_the", say no.`
+
 `If the string is any indefinite article, say no.`
+
 `If the string is any possessive, say no.`
+
 `If the string is any literal, say no.`
+
 `If the string is any mark, say no.`
+
 `If the string is any symbol, say no.`
+
 `Say yes.`
 
 
 `To decide if a string is any negative word:`
+
 `If the string is "_not", say yes.`
+
 `If the string is "_cannot", say yes.`
+
 `If the string is "_nothing", say yes.`
+
 `If the string ends with "_n't", say yes.`
+
 `Say no.`
 
 
@@ -3698,21 +5621,37 @@ When a decider is written with a "_positive_" header, the CAL will understand bo
 
 
 `To append a string and another string and a third string to a fourth string (fast):`
+
 `Put the fourth string's length into a length.`
+
 `Add the string's length to the length.`
+
 `Add the other string's length to the length.`
+
 `Add the third string's length to the length.`
+
 `Reassign a pointer given the length.`
+
 `Put the pointer into a byte pointer.`
+
 `Copy bytes from the fourth string's first to the byte pointer for the fourth string's length.`
+
 `Add the fourth string's length to the byte pointer.`
+
 `Copy bytes from the string's first to the byte pointer for the string's length.`
+
 `Add the string's length to the byte pointer.`
+
 `Copy bytes from the other string's first to the byte pointer for the other string's length.`
+
 `Add the other string's length to the byte pointer.`
+
 `Copy bytes from the third string's first to the byte pointer for the third string's length.`
+
 `Unassign the fourth string's first.`
+
 `Put the pointer into the fourth string's first.`
+
 `Put the pointer plus the length minus 1 into the fourth string's last.`
 
 
@@ -3720,34 +5659,54 @@ When a decider is written with a "_positive_" header, the CAL will understand bo
 
 
 `To index a routine given some monikettes and an index:`
+
 `If the routine is nil, exit.`
+
 `Clear a partial moniker.`
+
 `Loop.`
+
 `Get a monikette from the monikettes.`
+
 `If the monikette is nil, exit.`
+
 `Append the monikette to the partial moniker.`
+
 `If the monikette is the monikettes' last, break.`
+
 `Index the partial moniker given the index (special).`
+
 `Repeat.`
+
 `Index the routine given the partial moniker as a moniker and the index (special).`
 
 
 `To index a routine given a moniker and an index (special):`
+
 `Find a refer given the moniker and the index.`
+
 `If the refer is not nil, put the routine into the refer's pointer; exit.`
+
 `Index the routine given the moniker and the index.`
 
 
 `To index a partial moniker given an index (special):`
+
 `Find a refer given the partial moniker and the index.`
+
 `If the refer is not nil, exit.`
+
 `Index the partial moniker in the index.`
 
 
 `To decide if a moniker is in an index:`
+
 `Find a refer given the moniker and the index.`
+
 `If the refer is nil, say no.`
+
 `If the refer's pointer is nil, say no.`
+
 `Say yes.`
 
 
@@ -3758,16 +5717,21 @@ When a decider is written with a "_positive_" header, the CAL will understand bo
 
 
 `/routine/abort from/given/with/using [string]/no/no/no/no//0/0/00000000/`
+
 `/variable/parameter/no/string/string/string/string/00000000/no/1/no////`
 
 
 `/routine/abort from/given/with/using [string] and [byte pointer]/no/no/no/no//0/0/00000000/`
+
 `/variable/parameter/no/string/string/string/string/00000000/no/1/no////`
+
 `/variable/parameter/no/byte pointer/byte pointer/byte pointer/byte pointer/00000000/no/1/no////`
 
 
 `/routine/abort from/given/with/using [string] and [rider]/no/no/no/no//0/0/00000000/`
+
 `/variable/parameter/no/string/string/string/string/00000000/no/1/no////`
+
 `/variable/parameter/no/rider/rider/rider/rider/00000000/no/1/no////`
 
 
@@ -3792,20 +5756,35 @@ And that it was somewhat expensive, time-wise, to do all that:
 
 
 `/timer/loading/78/`
+
 `/timer/scanning/422/`
+
 `/timer/resolving types/32/`
+
 `/timer/resolving globals/109/`
+
 `/timer/compiling routine headers/266/`
+
 `/timer/calculating/0/`
+
 `/timer/adding built-in memory routines/0/`
+
 `/timer/indexing utilities/0/`
+
 `/timer/compiling routine bodies/0/`
+
 `/timer/adding built-in startup routine/0/`
+
 `/timer/offsetting/0/`
+
 `/timer/addressing/0/`
+
 `/timer/transmogrifying/0/`
+
 `/timer/linking/0/`
+
 `/timer/writing/0/`
+
 `/timer/total/1328/`
 
 
@@ -3819,23 +5798,41 @@ Time to move on.
 
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Compile the directory (scan the source files).`
+
 `Compile the directory (resolve the types).`
+
 `Compile the directory (resolve the globals).`
+
 `Compile the directory (compile the headers of the routines).`
+
 `Compile the directory (calculate lengths and offsets of types).`
+
 `Abort with "_I'm not old enough to make babies.". `
+
 `\Compile the directory (add the built-in memory routines).`
+
 `\Compile the directory (index the routines for utility use).`
+
 `\Compile the directory (compile the bodies of the routines).`
+
 `\Compile the directory (add and compile the built-in startup routine).`
+
 `\Compile the directory (offset parameters and variables).`
+
 `\Compile the directory (address).`
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
 
@@ -3843,12 +5840,19 @@ Time to move on.
 
 
 `To compile a directory (calculate lengths and offsets of types):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Calculating...".`
+
 `Start the calculating timer.`
+
 `Calculate the lengths of the types.`
+
 `Calculate the offsets in the types.`
+
 `Calculate the redefinition offsets in the types.`
+
 `Stop the calculating timer.`
 
 
@@ -3856,27 +5860,45 @@ Time to move on.
 
 
 `To calculate the lengths of some types:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a type from the types.`
+
 `If the type is nil, exit.`
+
 `Calculate the length of the type.`
+
 `Repeat.`
 
  
 
 `To calculate the length of a type:`
+
 `If the type is nil, exit.`
+
 `If the type's length is not -1, exit.`
+
 `Calculate the length of the type's base type.`
+
 `If the type's fields are empty, put the type's base type's length into the type's length; exit.`
+
 `Put 0 into the type's length.`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a field from the type's fields.`
+
 `If the field is nil, exit.`
+
 `If the field's redefinition target name is not blank, repeat.`
+
 `Calculate the length of the field's type.`
+
 `Add the field's type's length times the field's count to the type's length.`
+
 `Repeat.`
 
 
@@ -3885,23 +5907,38 @@ Time to move on.
 
 
 `To calculate the offsets in a type:`
+
 `If the type is nil, exit.`
+
 `Put 0 into an offset.`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a field from the type's fields.`
+
 `If the field is nil, exit.`
+
 `If the field's redefinition target name is not blank, repeat.`
+
 `Put the offset into the field's offset.`
+
 `Add the field's type's length times the field's count to the offset.`
+
 `Repeat.`
 
 
 `To calculate the offsets in some types:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a type from the types.`
+
 `If the type is nil, exit.`
+
 `Calculate the offsets in the type.`
+
 `Repeat.`
 
 
@@ -3909,23 +5946,38 @@ Time to move on.
 
 
 `To calculate the redefinition offsets in a type:`
+
 `If the type is nil, exit.`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a field from the type's fields.`
+
 `If the field is nil, exit.`
+
 `If the field's redefinition target name is blank, repeat.`
+
 `Find another field given the field's redefinition target name and the type's fields.`
+
 `If the other field is nil, abort with "_Invalid redefine. I can't find the '_" then the field's redefinition target name then "_' field._" and the field's locus; exit.`
+
 `Put the other field's offset into the field's offset.`
+
 `Repeat.`
 
 
 `To calculate the redefinition offsets in some types:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a type from the types.`
+
 `If the type is nil, exit.`
+
 `Calculate the redefinition offsets in the type.`
+
 `Repeat.`
 
 
@@ -3949,7 +6001,9 @@ But our abort message, which is a string, is now 8 bytes long, with a first byte
  
 
 `/type/abort message/abort messages/00000008/string/string///0/`
+
 `/variable//no/first byte pointer/first/byte pointer/byte pointer/00000000/no/1/no////`
+
 `/variable//no/last byte pointer/last/byte pointer/byte pointer/00000004/no/1/no////`
 
 
@@ -3957,11 +6011,17 @@ You can also see that our "_address_" type has some redefinitions in it:
 
 
 `/type/address/addresses/00000004/number/number///0/`
+
 `/variable//no/first byte/first/byte/byte/00000000/no/1/no////`
+
 `/variable//no/second byte/second/byte/byte/00000001/no/1/no////`
+
 `/variable//no/third byte/third/byte/byte/00000002/no/1/no////`
+
 `/variable//no/fourth byte/fourth/byte/byte/00000003/no/1/no////`
+
 `/variable//no/low wyrd/low/wyrd/wyrd/00000000/no/1/no/first byte///`
+
 `/variable//no/high wyrd/high/wyrd/wyrd/00000002/no/1/no/third byte///`
 
 
@@ -3975,20 +6035,35 @@ Finally, a glance at our timers shows that this step, important as it is, took a
 
 
 `/timer/loading/109/`
+
 `/timer/scanning/453/`
+
 `/timer/resolving types/16/`
+
 `/timer/resolving globals/109/`
+
 `/timer/compiling routine headers/266/`
+
 `/timer/calculating/15/`
+
 `/timer/adding built-in memory routines/0/`
+
 `/timer/indexing utilities/0/`
+
 `/timer/compiling routine bodies/0/`
+
 `/timer/adding built-in startup routine/0/`
+
 `/timer/offsetting/0/`
+
 `/timer/addressing/0/`
+
 `/timer/transmogrifying/0/`
+
 `/timer/linking/0/`
+
 `/timer/writing/0/`
+
 `/timer/total/1390/`
 
 
@@ -4000,23 +6075,41 @@ Sweet!
 
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Compile the directory (scan the source files).`
+
 `Compile the directory (resolve the types).`
+
 `Compile the directory (resolve the globals).`
+
 `Compile the directory (compile the headers of the routines).`
+
 `Compile the directory (calculate lengths and offsets of types).`
+
 `Compile the directory (add the built-in memory routines).`
+
 `Abort with "_I'm not old enough to make babies.". `
+
 `\Compile the directory (index the routines for utility use).`
+
 `\Compile the directory (compile the bodies of the routines).`
+
 `\Compile the directory (add and compile the built-in startup routine).`
+
 `\Compile the directory (offset parameters and variables).`
+
 `\Compile the directory (address).`
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
 
@@ -4030,18 +6123,25 @@ We saw earlier (in the "_resolve the types_" step) that when a programmer define
 
 
 `/ - type/source file/source files/FFFFFFFF/thing/thing/source file record/source file record/0/`
+
 `/variable//no///byte/byte/00000000/no/4/no////`
 
 
 `/type/source file record/source file records/FFFFFFFF/thing record/thing record///0/`
+
 `/variable/field/no/next source file/next/source file/source file/00000000/no/1/yes////`
+
 `/variable/field/no/previous source file/previous/source file/source file/00000000/no/1/yes////`
+
 `/variable/field/no/path/path/path/path/00000000/no/1/no////`
+
 `/variable/field/no/buffer/buffer/buffer/buffer/00000000/no/1/no////`
 
 
 `/type/source files//FFFFFFFF/things/things///0/`
+
 `/variable/field/no/first source file/first/source file/source file/00000000/no/1/yes////`
+
 `/variable/field/no/last source file/last/source file/source file/00000000/no/1/yes////`
 
 
@@ -4064,21 +6164,34 @@ So we have the compiler add those routines as if they were in the programmer's s
 
 
 `To compile a directory (add the built-in memory routines):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Adding...".`
+
 `Start the adding built-in memory routines timer.`
+
 `Add the allocate and deallocate and finalize and destroy routines.`
+
 `Stop the adding built-in memory routines timer.`
 
 
 `To add the allocate and deallocate and finalize and destroy routines:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a type from the types.`
+
 `If the type is nil, exit.`
+
 `Add the finalize routine for the type.`
+
 `Add the allocate routine for the type.`
+
 `Add the deallocate routine for the type.`
+
 `Add the destroy routine for the type.`
+
 `Repeat.`
 
 
@@ -4086,42 +6199,73 @@ So we have the compiler add those routines as if they were in the programmer's s
 
 
 `To add the finalize routine for a type:`
+
 `If the type is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type should not be finalized, exit.`
+
 `If the type's name is "_string", add the finalize routine for the type (string); exit.`
+
 `If the type can be reduced to "_string", exit.  \ prevents generation of finalizer for derived string types `
+
 `Add the finalize routine for the type (record).`
 
 
 `To add the finalize routine for a type (string):`
+
 `If the type is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add a routine to the routines given nil.`
+
 `Append "_~finalize a "_ then the type's name to the routine's header string.`
+
 `Append "_intel $50. "_ to the routine's body string. \ push eax`
+
 `Append "_unassign the string's first. "_ to the routine's body string.`
+
 `Append "_intel $58._" to the routine's body string. \ pop eax`
+
 `Slap the routine's routine header on the routine's header string.`
+
 `Slap the routine's routine body on the routine's body string.`
+
 `Compile the header of the routine.`
 
 
 `To add the finalize routine for a type (record):`
+
 `If the type is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add a routine to the routines given nil.`
+
 `Append "_~finalize a "_ then the type's name to the routine's header string.`
+
 `Append "_intel $50. "_ to the routine's body string. \ push eax`
+
 `Loop.`
+
 `Get a field from the type's fields.`
+
 `If the field is nil, break.`
+
 `If the field's type should not be finalized, repeat.`
+
 `Append "_~finalize the "_ then the type's name then "_'s "_ then the field's name then "_. "_ to the routine's body string.`
+
 `Repeat.`
+
 `Append "_intel $58._" to the routine's body string. \ pop eax`
+
 `Slap the routine's routine header on the routine's header string.`
+
 `Slap the routine's routine body on the routine's body string.`
+
 `Compile the header of the routine.`
 
 
@@ -4132,17 +6276,26 @@ Note the tildes ("~") in the routine names; we don't expect the programmer will 
 
 
 `To decide if a type should be finalized:`
+
 `If the type is nil, say no.`
+
 `If the type can be reduced to "_substring", say no.`
+
 `If the type can be reduced to "_string", say yes.`
+
 `If the type's fields should be finalized, say yes.`
+
 `Say no.`
 
 
 `To decide if some fields should be finalized:`
+
 `Get a field from the fields.`
+
 `If the field is nil, say no.`
+
 `If the field's type should be finalized, say yes.`
+
 `Repeat.`
 
 
@@ -4150,16 +6303,27 @@ Note the tildes ("~") in the routine names; we don't expect the programmer will 
 
 
 `To add the allocate routine for a type:`
+
 `If the type is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type cannot be reduced to "_pointer", exit.`
+
 `If the type's target type is nil, exit.`
+
 `Add a routine to the routines given nil.`
+
 `Append "_allocate memory for a "_ then the type's name to the routine's header string.`
+
 `Append "_assign the "_ then the type's name then "_ given "_ to the routine's body string.`
+
 `Append the type's target type's length then "_._" to the routine's body string.`
+
 `Slap the routine's routine header on the routine's header string.`
+
 `Slap the routine's routine body on the routine's body string.`
+
 `Compile the header of the routine.`
 
 
@@ -4170,17 +6334,29 @@ Note that there is no tilde in the routine name; we do expect the programmer to 
 
 
 `To add the deallocate routine for a type:`
+
 `If the type is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type cannot be reduced to "_pointer", exit.`
+
 `If the type's target type is nil, exit.`
+
 `Add a routine to the routines given nil.`
+
 `Append "_deallocate a "_ then the type's name to the routine's header string.`
+
 `Append "_if the "_ then the type's name then "_ is nil, exit. "_ to the routine's body string.`
+
 `If the type's target type should be finalized, append "_~finalize the "_ then the type's name then "_'s target. "_ to the routine's body string.`
+
 `Append "_unassign the "_ then the type's name then "_._" to the routine's body string.`
+
 `Slap the routine's routine header on the routine's header string.`
+
 `Slap the routine's routine body on the routine's body string.`
+
 `Compile the header of the routine.`
 
 
@@ -4191,53 +6367,95 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 
 `To add the destroy routine for a type:`
+
 `If the type is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type should not be forgotten, exit.`
+
 `If the type can be reduced to "_things", add the destroy routine for the type (things); exit.`
+
 `If the type can be reduced to "_pointer", add the destroy routine for the type (pointer); exit.`
 
 
 `To add the destroy routine for a type (things):`
+
 `If the type is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the type's fields' first is nil, abort with "_Internal error - add the forget routine for a type (things)"; exit.`
+
 `If the type's fields' first's type is nil, abort with "_Internal error 2 - add the forget routine for a type (things)"; exit.`
+
 `Put "_destroy [_" then the type's name then "_]_" into a moniker.`
+
 `If the moniker is in the routine index, exit.`
+
 `Add a routine to the routines given nil.`
+
 `Append "_destroy a "_ then the type's name to the routine's header string.`
+
 `Append "_if the "_ then the type's name then "_'s first is nil, exit. "_ to the routine's body string.`
+
 `Put the type's fields' first's type's name into a name.`
+
 `Append "_put the "_ then the type's name then "_'s first into a "_ then the name then "_. "_ to the routine's body string.`
+
 `Append "_remove the "_ then the name then "_ from the "_ then the type's name then "_. "_ to the routine's body string.`
+
 `Append "_destroy the "_ then the name then "_. "_ to the routine's body string.`
+
 `Append "_repeat. "_ to the routine's body string.`
+
 `Slap the routine's routine header on the routine's header string.`
+
 `Slap the routine's routine body on the routine's body string.`
+
 `Compile the header of the routine.`
 
 
 `To add the destroy routine for a type (pointer):`
+
 `If the type is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Put "_destroy [_" then the type's name then "_]_" into a moniker.`
+
 `If the moniker is in the routine index, exit.`
+
 `Add a routine to the routines given nil.`
+
 `Append "_destroy a "_ then the type's name to the routine's header string.`
+
 `Append "_if the "_ then the type's name then "_ is nil, exit. "_ to the routine's body string.`
+
 `If the type's target type can be reduced to "_pointer", append "_destroy the "_ then the type's name then "_'s target. "_ to the routine's body string.`
+
 `If the type's target type can be reduced to "_things", append "_destroy the "_ then the type's name then "_'s target. "_ to the routine's body string.`
+
 `Loop.`
+
 `Get a field from the type's target type's fields.`
+
 `If the field is nil, break.`
+
 `If the field's reference flag is set, repeat.`
+
 `If the field's type should not be forgotten, repeat.`
+
 `Append "_destroy the "_ then the type's name then "_'s "_ then the field's name then "_. "_ to the routine's body string.`
+
 `Repeat.`
+
 `Append "_deallocate the "_ then the type's name then "_. "_ to the routine's body string.`
+
 `Slap the routine's routine header on the routine's header string.`
+
 `Slap the routine's routine body on the routine's body string.`
+
 `Compile the header of the routine.`
 
 
@@ -4251,14 +6469,23 @@ Note also that they "_go deep_" -- if anything attached to a record that is bein
 
 
 `To decide if a type should be forgotten:`
+
 `If the type is nil, say no.`
+
 `If the type's name is "_thing", say no.`
+
 `If the type's name is "_things", say no.`
+
 `If the type can be reduced to "_things", say yes.`
+
 `If the type can not be reduced to "_pointer", say no.`
+
 `If the type's target type is nil, say no.`
+
 `If the type's target type cannot be reduced to "_pointer", say yes.`
+
 `If the type's target type should not be forgotten, say no.`
+
 `Say yes.`
 
 
@@ -4266,6 +6493,7 @@ Note also that they "_go deep_" -- if anything attached to a record that is bein
 
 
 `/routine/~finalize [~inline compiler type]/no/no/no/no//0/0/00000000/`
+
 `/variable/parameter/no/~inline compiler type/~inline compiler type/~inline compiler type/~inline compiler type/00000000/no/1/no////`
 
 
@@ -4273,14 +6501,23 @@ Note also that they "_go deep_" -- if anything attached to a record that is bein
 
 
 `/type/~inline compiler type/~inline compiler types/00000040/record/record///0/`
+
 `/variable/field/no/directory/directory/directory/directory/00000000/no/1/no////`
+
 `/variable/field/no/timer/timer/timer/timer/00000008/no/1/no////`
+
 `/variable/field/no/abort flag//flag/flag/00000014/no/1/no////`
+
 `/variable/field/no/abort message/abort message/abort message/abort message/00000018/no/1/no////`
+
 `/variable/field/no/abort path//path/path/00000020/no/1/no////`
+
 `/variable/field/no/abort row#//row#/row#/00000028/no/1/no////`
+
 `/variable/field/no/name count/name/count/count/0000002C/no/1/no////`
+
 `/variable/field/no/exe buffer/exe/buffer/buffer/00000030/no/1/no////`
+
 `/variable/field/no/listing buffer/listing/buffer/buffer/00000038/no/1/no////`
 
 
@@ -4291,6 +6528,7 @@ And the first generated "_allocate_" routine in the listing is this one...
 
 
 `/routine/allocate memory for [entry]/no/no/no/no//0/0/00000000/`
+
 `/variable/parameter/no/entry/entry/entry/entry/00000000/no/1/no////`
 
 
@@ -4298,9 +6536,11 @@ Followed by the associated "_deallocate_" and "_destroy_" routines:
 
 
 `/routine/deallocate [entry]/no/no/no/no//0/0/00000000/`
+
 `/variable/parameter/no/entry/entry/entry/entry/00000000/no/1/no////`
 
 `/routine/destroy [entry]/no/no/no/no//0/0/00000000/`
+
 `/variable/parameter/no/entry/entry/entry/entry/00000000/no/1/no////`
 
 
@@ -4316,14 +6556,18 @@ Now run the son, open and list the daughter, and examine the listing. The finali
 
 
 `/routine/~finalize [~inline compiler type]/no/no/no/no//0/0/00000000/`
+
 `/variable/parameter/no/~inline compiler type/~inline compiler type/~inline compiler type/~inline compiler type/00000000/no/1/no////`
+
 `intel $50. ~finalize the ~inline compiler type's directory. ~finalize the ~inline compiler type's abort message. ~finalize the ~inline compiler type's abort path. ~finalize the ~inline compiler type's exe buffer. ~finalize the ~inline compiler type's listing buffer. intel $58.`
 
 
 Those sentences will get compiled later with the rest of the programmer's (and our generated) code. Since directories, abort messages, abort paths, and buffers are all just strings, each of those sentences will eventually resolve into a call to this finalizer...
 
 `/routine/~finalize [string]/no/no/no/no//0/0/00000000/`
+
 `/variable/parameter/no/string/string/string/string/00000000/no/1/no////`
+
 `intel $50. unassign the string's first. intel $58.`
 
 
@@ -4331,10 +6575,15 @@ Those sentences will get compiled later with the rest of the programmer's (and o
 
 
 `To unassign a pointer:`
+
 `If the pointer is nil, exit.`
+
 `Call "_kernel32.dll_" "_HeapFree_" with the heap pointer and 0 [no options] and the pointer returning a number.`
+
 `If the number is 0, exit.`
+
 `Void the pointer.`
+
 `Subtract 1 from the heap count.`
 
 
@@ -4378,57 +6627,99 @@ So let's get to work.
  
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Compile the directory (scan the source files).`
+
 `Compile the directory (resolve the types).`
+
 `Compile the directory (resolve the globals).`
+
 `Compile the directory (compile the headers of the routines).`
+
 `Compile the directory (calculate lengths and offsets of types).`
+
 `Compile the directory (add the built-in memory routines).`
+
 `Compile the directory (index the routines for utility use).`
+
 `Abort with "_I'm not old enough to make babies.". `
+
 `\Compile the directory (compile the bodies of the routines).`
+
 `\Compile the directory (add and compile the built-in startup routine).`
+
 `\Compile the directory (offset parameters and variables).`
+
 `\Compile the directory (address).`
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
 161. Then add these three guys back in:
 
 `To compile a directory (index the routines for utility use):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Utilitizing...".`
+
 `Start the indexing utilities timer.`
+
 `Index the routines for utility use.`
+
 `Scrub the utility index.`
+
 `Reindex the utility index.`
+
 `Stop the indexing utilities timer.`
 
 
 `To index some routines for utility use:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a routine from the routines.`
+
 `If the routine is nil, exit.`
+
 `Index the routine for utility use.`
+
 `Repeat.`
 
 
 `To index a routine for utility use:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the routine is nil, exit.`
+
 `If the routine's function flag is set, exit.`
+
 `If the routine's parameters' count is 0, exit.`
+
 `Copy the routine's monikettes into some monikettes.`
+
 `Reduce the monikettes for utility use.`
+
 `Convert the monikettes to a moniker.`
+
 `Destroy the monikettes.`
+
 `If the moniker is in the routine index, exit.`
+
 `Find a refer given the moniker and the utility index.`
+
 `If the refer is not nil, put nil into the refer's pointer; exit.`
+
 `Index the routine given the moniker and the utility index.`
 
 
@@ -4439,21 +6730,35 @@ Note also that if two or more routines reduce to the same moniker, we mark the f
 162. So far, so good. Now we need the helper routines, starting with these two:
 
 `To copy some monikettes into some other monikettes:`
+
 `Destroy the other monikettes.`
+
 `Loop.`
+
 `Get a monikette from the monikettes.`
+
 `If the monikette is nil, exit.`
+
 `Copy the monikette into another monikette.`
+
 `Append the other monikette to the other monikettes.`
+
 `Repeat.`
 
 `To copy a monikette into another monikette:`
+
 `If the monikette is nil, void the other monikette; exit.`
+
 `Allocate memory for the other monikette.`
+
 `Put the monikette's string into the other monikette's string.`
+
 `Put the monikette's type into the other monikette's type.`
+
 `Put the monikette's variable into the other monikette's variable. `
+
 `\ don't copy substring `
+
 `Put the monikette's current type into the other monikette's current type.`
 
 
@@ -4462,11 +6767,17 @@ Note also that if two or more routines reduce to the same moniker, we mark the f
 
 
 `To reduce some monikettes for utility use:`
+
 `Get a monikette from the monikettes.`
+
 `If the monikette is nil, exit.`
+
 `If the monikette's type is nil, repeat.`
+
 `Reduce the monikette's type to a type for utility use.`
+
 `If the type is not nil, put the type into the monikette's type.`
+
 `Repeat.`
 
 
@@ -4474,16 +6785,27 @@ Note also that if two or more routines reduce to the same moniker, we mark the f
 
 
 `To reduce a type to another type for utility use:`
+
 `Put the type into the other type.`
+
 `Loop.`
+
 `If the other type is nil, exit.`
+
 `If the other type's name is "_hex string", exit.`
+
 `If the other type's name is "_string", exit.`
+
 `If the other type's name is "_number", exit.`
+
 `If the other type's name is "_pointer", exit.`
+
 `If the other type's name is "_thing", void the other type; exit.`
+
 `If the other type's base type is the other type, void the other type; exit.`
+
 `Put the other type's base type into the other type.`
+
 `Repeat.`
 
 
@@ -4491,21 +6813,34 @@ Note also that if two or more routines reduce to the same moniker, we mark the f
 
 
 `To scrub an index:`
+
 `Get a bucket given the index.`
+
 `If the bucket is nil, exit.`
+
 `If the bucket's refers are empty, repeat.`
+
 `Scrub the bucket's refers.`
+
 `Repeat.`
 
 
 `To scrub some refers:`
+
 `Swap the refers with some other refers.`
+
 `Loop.`
+
 `Put the other refers' first into a refer.`
+
 `If the refer is nil, exit.`
+
 `Remove the refer from the other refers.`
+
 `If the refer's pointer is nil, destroy the refer; repeat.`
+
 `Append the refer to the refers.`
+
 `Repeat.`
 
 
@@ -4513,23 +6848,38 @@ Note also that if two or more routines reduce to the same moniker, we mark the f
 
 
 `To reindex the utility index:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a bucket given the utility index.`
+
 `If the bucket is nil, exit.`
+
 `If the bucket's refers are empty, repeat.`
+
 `Reindex the utility index given the bucket's refers.`
+
 `Repeat.`
 
 
 `To reindex the utility index given some refers:`
+
 `Get a refer from the refers.`
+
 `If the refer is nil, exit.`
+
 `Put the refer's pointer into a routine.`
+
 `If the routine is nil, abort with "_Internal error - index the untility routines given some refers"; exit.`
+
 `Copy the routine's monikettes into some monikettes.`
+
 `Reduce the monikettes for utility use.`
+
 `Index the routine given the monikettes and the routine index.`
+
 `Destroy the monikettes.`
+
 `Repeat.`
 
 
@@ -4546,6 +6896,7 @@ The Utility Index is not used again, since the Routine Index now includes both t
 
 
 `/bucket/`
+
 `/refer/divide [number] by [number] giving [number] and [number]/`
 
 
@@ -4556,20 +6907,35 @@ The Utility Index is not used again, since the Routine Index now includes both t
 
 
 `/timer/loading/125/`
+
 `/timer/scanning/469/`
+
 `/timer/resolving types/31/`
+
 `/timer/resolving globals/110/`
+
 `/timer/compiling routine headers/281/`
+
 `/timer/calculating/0/`
+
 `/timer/adding built-in memory routines/62/`
+
 `/timer/indexing utilities/78/`
+
 `/timer/compiling routine bodies/0/`
+
 `/timer/adding built-in startup routine/0/`
+
 `/timer/offsetting/0/`
+
 `/timer/addressing/0/`
+
 `/timer/transmogrifying/0/`
+
 `/timer/linking/0/`
+
 `/timer/writing/0/`
+
 `/timer/total/1641/`
 
 
@@ -4601,8 +6967,11 @@ This arrangement makes it easier to match each sentence in the body of each rout
 
 
 `To bump a rider:`
+
 `Intel $8B9D08000000. \ mov ebx,[ebp+8] \ the rider `
+
 `Intel $FF8314000000. \ inc [ebx+20] \ the rider's token's last `
+
 `Intel $FF8308000000. \ inc [ebx+8] \ the rider's source's first`
 
 
@@ -4610,6 +6979,7 @@ This arrangement makes it easier to match each sentence in the body of each rout
 
 
 `To buzz:`
+
 `Call "_kernel32.dll_" "_Beep_" with 220 and 200.`
 
 
@@ -4629,23 +6999,41 @@ So let's get to it.
 
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Compile the directory (scan the source files).`
+
 `Compile the directory (resolve the types).`
+
 `Compile the directory (resolve the globals).`
+
 `Compile the directory (compile the headers of the routines).`
+
 `Compile the directory (calculate lengths and offsets of types).`
+
 `Compile the directory (add the built-in memory routines).`
+
 `Compile the directory (index the routines for utility use).`
+
 `Compile the directory (compile the bodies of the routines).`
+
 `Abort with "_I'm not old enough to make babies.". `
+
 `\Compile the directory (add and compile the built-in startup routine).`
+
 `\Compile the directory (offset parameters and variables).`
+
 `\Compile the directory (address).`
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
 
@@ -4653,23 +7041,35 @@ So let's get to it.
 
 
 `To compile a directory (compile the bodies of the routines):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Compiling...".`
+
 `Start the compiling routine bodies timer.`
+
 `Compile the bodies of the routines.`
+
 `Stop the compiling routine bodies timer.`
 
 
 `To compile the bodies of the routines:`
+
 `Compile the body of the routine called "_initialize before run".`
+
 `Compile the body of the routine called "_run".`
+
 `Compile the body of the routine called "_finalize after run".`
 
 
 `To compile the body of the routine called a string:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Find a routine given the string and the routine index.`
+
 `If the routine is nil, abort with "_I need a routine to '_" then the string then "_'."; exit.`
+
 `Compile the body of the routine.`
 
 
@@ -4680,26 +7080,45 @@ Note that we're not just looping thorough the routines in the order we found the
 
 
 `To compile the body of a routine:`
+
 `If the routine is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the routine's compiled flag is set, exit.`
+
 `Set the routine's compiled flag.`
+
 `Slap a rider on the routine's routine body.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is the semi-colon byte, compile the body of the routine given the rider (alternate wording); exit.`
 
 `If the rider's token is "_employ", compile the body of the routine given the rider (employ); exit.`
+
 `Put the current routine into a saved routine.`
+
 `Put the routine into the current routine.`
+
 `Create the routine's nickname index given 101.`
+
 `Eliminate duplicate nicknames from the routine's parameters given the routine's nickname index.`
+
 `Compile the body of the routine (prolog).`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is blank, break.`
+
 `Compile the next statement given the rider.`
+
 `Repeat.`
+
 `Compile the body of the routine (epilog).`
+
 `Put the saved routine into the current routine.`
 
 
@@ -4712,11 +7131,15 @@ After dealing with possible special cases ("`alternate wordings`_" and "_`employ
 `To compile the body of a routine given a rider (alternate wording):`
 
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
 
 `Put the routine's next into a target routine.`
+
 `If the target routine is nil, abort with "_You've defined an alternate wording here, but I'm not sure what you're rewording._" and the rider; exit.`
+
 `Put the target routine's moniker into the routine's employs moniker.`
+
 `Compile the body of the target routine.`
 
 
@@ -4724,16 +7147,27 @@ After dealing with possible special cases ("`alternate wordings`_" and "_`employ
 
 
 `To compile the body of a routine given a rider (employ):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile a routine reference given the rider.`
+
 `Convert the routine reference to the routine's employs moniker.`
+
 `Destroy the routine reference.`
+
 `If the rider's token is not "_.", abort with "_Employ statments should end with a period not '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not blank, abort with "_Once an employ, only an employ_" and the rider; exit.`
+
 `Find another routine given the routine's employs moniker and the routine index.`
+
 `If the other routine is nil, abort with "_I can't find the '_" then the routine's employs moniker then "_' routine you're trying to employ._" and the routine's locus; exit.`
+
 `Compile the body of the other routine.`
 
 
@@ -4741,13 +7175,18 @@ After dealing with possible special cases ("`alternate wordings`_" and "_`employ
 
 
 `A phrase is a string.`
+
 `A term has a variable and a phrase.`
 
 
 `A field term has`
+
 `a dereference flag,`
+
 `a field (reference),`
+
 `a function routine (reference),`
+
 `a push flag.`
 
 
@@ -4776,32 +7215,50 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 
 `To compile an expression given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Compile a term given the rider.`
+
 `Put the term into the expression.`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is not any operator, exit.`
+
 `If the rider's token is "_divided", compile the expression given the rider (divided); repeat.`
+
 `If the rider's token is "_minus", compile the expression given the rider (minus); repeat.`
+
 `If the rider's token is "_plus", compile the expression given the rider (plus); repeat.`
+
 `If the rider's token is "_then", compile the expression given the rider (then); repeat.`
+
 `If the rider's token is "_times", compile the expression given the rider (times); repeat.`
 
 
 176. This is the top-level term compiler, together with one of his trivial helpers:
 
 `To compile a term given a rider:`
+
 `Clear the term.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Compile the term given the rider (common part).`
+
 `If the rider is on any simile, exit. `
 
 `If the rider's token is "_AS", compile the term given the rider (as part).`
+
 `If the rider's token is "_/", compile the term given the rider (runtime ratio).`
 
 `To clear a term:`
+
 `Void the term's variable.`
+
 `Clear the term's phrase.`
 
 
@@ -4809,12 +7266,19 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 
 `To compile a term given a rider (common part):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is the dash byte, compile the term given the rider (negated term); exit.`
+
 `If the rider's token is the cross byte, compile the term given the rider (posigated term); exit.`
+
 `If the rider's token is the start of any variable, compile the term given the rider (variable); exit.`
+
 `If the rider's token is the start of any new local, compile the term given the rider (new local); exit.`
+
 `If the rider's token is any literal, compile the term given the rider (literal); exit.`
+
 `Abort with "_I expected a term hereabouts but all I found was '_" then the rider's token then "_'._" and the rider.`
 
 
@@ -4822,15 +7286,25 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 
 `To compile a term given a rider (negated term):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile another term given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the other term's variable is nil, abort with "_Invalid negate, I don't understand the variable '_" then the other term's phrase then "_'._" and the rider; exit.`
+
 `Add an intermediate given the other term's type name and the rider's token's first.`
+
 `Add several fragments given "_put_" and the other term's variable and "_into_" and the intermediate and the other term's locus.`
+
 `Add two fragments given "_negate_" and the intermediate and the rider's token's first.`
+
 `Put the intermediate into the term's variable.`
+
 `Clear the term's phrase.`
 
 
@@ -4838,32 +7312,53 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 
 `To add an intermediate given a type name and a locus:`
+
 `If the current routine is nil, void the intermediate; exit.`
+
 `Add the intermediate to the current routine's locals given "_local_" and the locus.`
+
 `Generate the intermediate's name given "_~I".`
+
 `Put the type name into the intermediate's type name.`
+
 `Resolve the intermediate.`
 
 
 `To add several fragments given a string and a variable and another string and another variable and a locus:`
+
 `Add a fragment given the push address tag and the other variable.`
+
 `Add another fragment given the push address tag and the variable.`
+
 `Add a monikette to some monikettes given the string.`
+
 `Add another monikette to the monikettes given the variable's type.`
+
 `Add a third monikette to the monikettes given the other string.`
+
 `Add a fourth monikette to the monikettes given the other variable's type.`
+
 `Find a routine given the monikettes.`
+
 `If the routine is nil, convert the monikettes to a moniker.`
+
 `Destroy the monikettes.`
+
 `If the routine is nil, abort with "_I don't know how to '_" then the moniker then "_'._" and the locus; exit.`
+
 `Add a third fragment given the call internal tag and the routine.`
 
 
 `To add a fragment given a tag and a variable:`
+
 `If the current routine is nil, void the fragment; exit.`
+
 `Create the fragment given the tag.`
+
 `Append the fragment to the current routine's fragments.`
+
 `Put the variable into the fragment's variable.`
+
 `Set the compiled flag in the variable.`
 
 180. And this is a special helper:
@@ -4872,16 +7367,27 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 
 `To set the compiled flag in a variable:`
+
 `If the variable is nil, exit.`
+
 `If the variable's compiled flag is set, exit.`
+
 `Set the variable's compiled flag.`
+
 `If the variable's kind is not "_global", exit.`
+
 `If the variable's literal is nil, exit.`
+
 `Find a routine given "_put_" and the variable's literal's type and "_into_" and the variable's type.`
+
 `If the routine is nil, find the routine given "_convert_" and the variable's literal's type and "_to_" and the variable's type; set a flag.`
+
 `If the routine is nil, abort with "_The type of this global and the type of its literal are not compatible._" and the variable's locus; exit.`
+
 `Compile the body of the routine.`
+
 `If the flag is set, put "_convert the "_ then the variable's literal's name then "_ to the "_ then the variable's name then "_. "_ into the variable's initializer string.`
+
 `If the flag is not set, put "_put the "_ then the variable's literal's name then "_ into the "_ then the variable's name then "_. "_ into the variable's initializer string.`
 
 
@@ -4893,62 +7399,101 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 
 `To find a routine given a string and a type and another string and another type:`
+
 `Add a monikette to some monikettes given the string.`
+
 `Add another monikette to the monikettes given the type.`
+
 `Add a third monikette to the monikettes given the other string.`
+
 `Add a fourth monikette to the monikettes given the other type.`
+
 `Find the routine given the monikettes.`
+
 `Destroy the monikettes.`
 
 
 `To find a routine given some monikettes:`
+
 `Void the routine.`
+
 `Find the routine given a moniker and the monikettes' first and the routine index.`
 
 
 `To find a routine given a moniker and a monikette and an index:`
+
 `If the monikette is nil, exit.`
+
 `Void the routine.`
+
 `Privatize the moniker.`
+
 `Put the monikette's type into the monikette's current type.`
+
 `Slap the monikette's current substring on the monikette's string.`
+
 `Loop.`
+
 `Append the monikette to the moniker (while bubbling).`
+
 `Find a refer given the moniker and the index.`
+
 `If the refer is not nil, put the refer's pointer into the routine.`
+
 `If the refer is not nil, find the routine given the moniker and the monikette's next and the index.`
+
 `If the routine is not nil, break.`
+
 `Bubble the monikette.`
+
 `If the monikette is bubbled out, break.`
+
 `Put the original moniker into the moniker.`
+
 `Repeat.`
 
 
 `To append a monikette to a moniker (while bubbling):`
+
 `If the monikette is nil, exit.`
+
 `If the moniker is not blank, append the space byte to the moniker.`
+
 `If the monikette's current substring is not blank, append the monikette's current substring to the moniker; exit.`
+
 `If the monikette's current type is not nil, append "_[_" and the monikette's current type's name and "_]_" to the moniker (fast); exit.`
 
 
 `To bubble a monikette:`
+
 `If the monikette is nil, exit.`
+
 `If the monikette's current substring is not blank, clear the monikette's current substring; exit.`
+
 `If the monikette's current type is nil, exit.`
+
 `If the monikette's current type is any built-in type, put nil into the monikette's current type; exit.`
+
 `Put the monikette's current type's base type into the monikette's current type.`
 
 
 `To decide if a type is any built-in type:`
+
 `If the type is nil, say no.`
+
 `If the type is the type's base type, say yes.`
+
 `Say no.`
 
 
 `To decide if a monikette is bubbled out:`
+
 `If the monikette is nil, say yes.`
+
 `If the monikette's current type is not nil, say no.`
+
 `If the monikette's current substring is not blank, say no.`
+
 `Say yes.`
 
 
@@ -4956,25 +7501,40 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 
 `To create a fragment given a tag:`
+
 `Allocate memory for the fragment.`
+
 `Put the tag into the fragment's tag.`
 
 `To add a fragment given a tag and a routine:`
+
 `If the current routine is nil, void the fragment; exit.`
+
 `Create the fragment given the tag.`
+
 `Append the fragment to the current routine's fragments.`
+
 `Put the routine into the fragment's routine.`
+
 `Compile the body of the routine.`
 
 
 `To add two fragments given a string and a variable and a locus:`
+
 `Add a fragment given the push address tag and the variable.`
+
 `Add a monikette to some monikettes given the string.`
+
 `Add another monikette to the monikettes given the variable's type.`
+
 `Find a routine given the monikettes.`
+
 `If the routine is nil, convert the monikettes to a moniker.`
+
 `Destroy the monikettes.`
+
 `If the routine is nil, abort with "_I don't know how to '_" then the moniker then "_'._" and the locus; exit.`
+
 `Add another fragment given the call internal tag and the routine.`
 
 
@@ -4982,10 +7542,15 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 
 `To compile a term given a rider (posigated term):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile the term given the rider.`
+
 `If the term's variable is nil, abort with "_Invalid posigate, I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `Clear the term's phrase.`
 
 
@@ -4993,38 +7558,61 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 
 `To decide if a string is the start of any variable:`
+
 `If the string is "_the", say yes.`
+
 `Say no.`
 
 
 `To compile a term given a rider (variable):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the current routine is nil, abort with "_I don't know what you're trying to pull here._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan a name given the rider.`
+
 `Find a variable given the name.`
+
 `Put the variable into the term's variable.`
+
 `Put "_the "_ into the term's phrase.`
+
 `Append the name to the term's phrase.`
+
 `Compile the term given the rider (possessives).`
 
 
 
 `To compile a term given a rider (possessives):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is not any possessive, exit.`
+
 `Compile the term given the rider (possessive).`
+
 `Repeat.  `
 
 
 `To compile a term given a rider (possessive):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan a name given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the name is "_magnitude", compile the term given the rider (possessive - magnitude); exit.`
+
 `If the name is "_target", compile the term given the rider (possessive - target); exit.`
+
 `If the name is "_whereabouts", compile the term given the rider (possessive - whereabouts); exit.`
+
 `Compile the term given the rider and the name (possessive - field).`
 
 
@@ -5032,29 +7620,47 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 
 `To compile a term given a rider (possessive - magnitude):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_Invalid use of magnitude, I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `Add a literal to the literals given the rider's token's first.`
+
 `Convert the term's type's length to the literal's data.`
+
 `Put "_number_" into the literal's type name.`
+
 `Resolve the literal.`
+
 `Put the literal into the term's variable.`
+
 `Clear the term's phrase.`
 
 
 `To compile a term given a rider (possessive - target):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_Invalid use of target, I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `If the term's type cannot be reduced to "_pointer", abort with "_You can only get the target of pointer types._" and the rider; exit.`
+
 `Compile the term given the rider (dereference).`
 
 
 `To compile a term given a rider (possessive - whereabouts):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_Invalid use of whereabouts, I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `Add an intermediate given "_pointer_" and the rider's token's first.`
+
 `Add a fragment given the load address tag and the term's variable and the intermediate.`
+
 `Put the intermediate into the term's variable.`
+
 `Clear the term's phrase.`
 
 
@@ -5062,22 +7668,36 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 
 `To compile a term given a rider (dereference):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_Invalid dereference, I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `If the term's type's target type is nil, abort with "_I'm unable to determine the type of this target._" and the rider; exit.`
+
 `If the term's kind is "_scratch", compile the term given the rider (dereference - in place); exit.`
+
 `Add a scratch given the term's type's target type's name and the rider's token's first.`
+
 `Add a fragment given the load address tag and the term's variable and the scratch.`
+
 `Add another fragment given the dereference tag and the scratch.`
+
 `Put the scratch into the term's variable.`
+
 `Clear the term's phrase.`
 
 
 `To compile a term given a rider (dereference - in place):`
+
 `If the term's variable is nil, abort with "_Internal error - compile a term given a rider (dereference - in place)_" and the rider; exit.`
+
 `Put the term's type's target type's name into the term's type name.`
+
 `Put the term's type's target type into the term's type.`
+
 `Add a fragment given the dereference tag and the term's variable.`
+
 `Clear the term's phrase.`
 
 
@@ -5085,20 +7705,32 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 
 `To add a scratch given a type name and a locus:`
+
 `If the current routine is nil, void the scratch; exit.`
+
 `Add the scratch to the current routine's locals given "_scratch_" and the locus.`
+
 `Generate the scratch's name given "_~S".`
+
 `Put the type name into the scratch's type name.`
+
 `Resolve the scratch.`
 
 
 `To add a fragment given a tag and a variable and another variable:`
+
 `If the current routine is nil, void the fragment; exit.`
+
 `Create the fragment given the tag.`
+
 `Append the fragment to the current routine's fragments.`
+
 `Put the variable into the fragment's variable.`
+
 `Put the other variable into the fragment's other variable.`
+
 `Set the compiled flag in the variable.`
+
 `Set the compiled flag in the other variable.`
 
 
@@ -5106,33 +7738,58 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 
 `To compile a term given a rider and a name (possessive - field):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is not nil, put the term's type into a type.`
+
 `Find a field term given the term's phrase and the type and the name.`
+
 `If the field term is not empty, compile the term given the rider and the field term; exit.`
+
 `If the term's variable is nil, abort with "_I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `If the type can be reduced to "_pointer", put the type's target type into the type.`
+
 `If the type is nil, abort with "_There's no '_" then the name then "_' field in a '_" then the term's type's name then "_'._" and the rider; exit.`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a field from the type's fields.`
+
 `If the field is nil, abort with "_There's no '_" then the name then "_' field in a '_" then the term's type's name then "_'._" and the rider; exit.`
+
 `Find a deep field term given "__" and the field's type and the name.`
+
 `If the deep field term is empty, repeat.`
+
 `Put the field into a first field term's field.`
+
 `If the term's type can be reduced to "_pointer", set the first field term's dereference flag.`
+
 `Compile the term given the rider and the first field term.`
+
 `Compile the term given the rider and the deep field term.`
 
 
 `To find a field term given a phrase and a type and a name:`
+
 `Clear the field term.`
+
 `Find the field term given the type and the name.`
+
 `If the field term's field is not nil, exit.`
+
 `If the phrase is not blank, find a routine given "_put_" and the phrase and "_'s "_ then the name and "_into".`
+
 `If the routine is not nil, put the routine into the field term's function; exit.`
+
 `If the type is nil, exit.`
+
 `Find the routine given "_put_" and the type and "_'s "_ then the name and "_into".`
+
 `If the routine is not nil, set the field term's push flag; put the routine into the field term's function; exit.`
 
 
@@ -5140,14 +7797,20 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 
 `To find a field term given a type and a name:`
+
 `If the type is nil, exit.`
+
 `Find a field given the name and the type's fields.`
+
 `If the field is not nil, put the field into the field term's field; exit.`
+
 `If the type's target type is not nil, find the field given the name and the type's target type's fields.`
+
 `If the field is not nil, set the field term's dereference flag; put the field into the field term's field; exit.`
 
 
 `To clear a field term:`
+
 `Fill bytes with the null byte starting at the field term's whereabouts for the field term's magnitude.`
 
 
@@ -5155,31 +7818,51 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 
 `To find a routine given a string and another string and a third string and a fourth string:`
+
 `Add a monikette to some monikettes given the string.`
+
 `Add another monikette to the monikettes given the other string.`
+
 `Add a third monikette to the monikettes given the third string.`
+
 `Add a fourth monikette to the monikettes given the fourth string.`
+
 `Find the routine given the monikettes.`
+
 `Destroy the monikettes.`
 
 
 `To find a routine given a string and a type and another string and a third string:`
+
 `Add a monikette to some monikettes given the string.`
+
 `Add another monikette to the monikettes given the type.`
+
 `Add a third monikette to the monikettes given the other string.`
+
 `Add a fourth monikette to the monikettes given the third string.`
+
 `Find the routine given the monikettes.`
+
 `Destroy the monikettes.`
 
 
 `To find a routine given a string and a type and another string and a third string and a fourth string and a fifth string:`
+
 `Add a monikette to some monikettes given the string.`
+
 `Add another monikette to the monikettes given the type.`
+
 `Add a third monikette to the monikettes given the other string.`
+
 `Add a fourth monikette to the monikettes given the third string.`
+
 `Add a fifth monikette to the monikettes given the fourth string.`
+
 `Add a sixth monikette to the monikettes given the fifth string.`
+
 `Find the routine given the monikettes.`
+
 `Destroy the monikettes.`
 
 
@@ -5187,78 +7870,131 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 
 `To decide if a field term is empty:`
+
 `If the field term's field is not nil, say no.`
+
 `If the field term's function is not nil, say no.`
+
 `Say yes.`
 
 
 `To compile a term given a rider and a field term:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the field term's dereference flag is set, compile the term given the rider (dereference). `
+
 `If the field term's function is not nil, compile the term given the rider and the field term (function); exit.`
+
 `If the term's kind is "_scratch", compile the term given the rider and the field term (in place); exit.`
+
 `Put the field term's field into a field.`
+
 `Add a scratch given the field's type's name and the rider's token's first.`
+
 `Add a fragment given the load address tag and the term's variable and the scratch.`
+
 `If the field's offset is not 0, add a third fragment given the increment tag and the scratch and the field's offset.`
+
 `Put the scratch into the term's variable.`
+
 `Clear the term's phrase.`
 
 
 `To compile a term given a rider and a field term (function):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Put the field term's function into a routine.`
+
 `Put the routine's parameters' last into a parameter.`
+
 `If the parameter is nil, abort with "_Internal error - compile a term given a rider and an field term (function)._" and the rider; exit.`
+
 `If the parameter's type is nil, abort with "_Internal error 2 - compile a term given a rider and an field term (function)._" and the rider; exit.`
+
 `Add an intermediate given the parameter's type's name and the rider's token's first.`
+
 `Add a fragment given the push address tag and the intermediate.`
+
 `If the field term's push flag is set, add another fragment given the push address tag and the term's variable.`
+
 `Add a third fragment given the call internal tag and the routine.`
+
 `Put the intermediate into the term's variable.`
+
 `Clear the term's phrase.`
 
 
 `To compile a term given a rider and a field term (in place):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Put the field term's field into a field.`
+
 `Put the field's type's name into the term's type name.`
+
 `Put the field's type into the term's type.`
+
 `If the field's offset is not 0, add a third fragment given the increment tag and the term's variable and the field's offset.`
+
 `Clear the term's phrase.`
 
 
 `To add a fragment given a tag and a variable and a number:`
+
 `If the current routine is nil, void the fragment; exit.`
+
 `Create the fragment given the tag.`
+
 `Append the fragment to the current routine's fragments.`
+
 `Put the variable into the fragment's variable.`
+
 `Put the number into the fragment's number.`
+
 `Set the compiled flag in the variable.`
 
 
 `To decide if a string is the start of any new local:`
+
 `If the string is any indefinite article, say yes.`
+
 `Say no.`
 
 191. This is the guy who deals with new local variables:
 
 
 `To compile a term given a rider (new local):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the current routine is nil, abort with "_I don't know what you're trying to pull here._" and the rider; exit.`
+
 `Add a local to the current routine's locals given "_local_" and the rider's token's first.`
+
 `If the rider's token is "_another", put "_other_" into the local's name.`
+
 `Move the rider (compiler rules).`
+
 `Scan a name given the rider.`
+
 `Extend the local's name with the name.`
+
 `If the rider's token is "_called", compile the call'd part given the rider and the local.`
+
 `Resolve the local.`
+
 `If the local is duplicated in the current routine's parameters, abort with "_'_" then the local's name then "_' is already in use as a parameter._" and the local's locus; exit.`
+
 `If the local is duplicated in the current routine's locals,abort with "_'_" then the local's name then "_' is already in use as a local variable._" and the local's locus; exit.`
+
 `Eliminate duplicate nicknames given the local and the current routine's nickname index.`
+
 `Put the local into the term's variable.`
+
 `Clear the term's phrase.`
+
 `Compile the term given the rider (possessives).`
 
 
@@ -5266,10 +8002,15 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 
 `To compile a term given a rider (literal):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Compile a literal given the rider.`
+
 `Put the literal into the term's variable.`
+
 `Clear the term's phrase.`
+
 `Compile the term given the rider (possessives).`
 
 
@@ -5288,10 +8029,15 @@ Note that literals can have possessives; for example...
 `To decide if a rider is on any simile: `
 
 `Privatize the rider.`
+
 `If the rider's token is "_LIKE", say yes.`
+
 `If the rider's token is not "_AS", say no.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is any indefinite article, say no.`
+
 `Say yes.`
 
 
@@ -5299,17 +8045,29 @@ Note that literals can have possessives; for example...
 
 
 `To compile a term given a rider (as part):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_Invalid 'as', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not any indefinite article, abort with "_I was hoping for an indefinite article after AS, but I found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan a type name given the rider.`
+
 `Find a type given the type name and the type index.`
+
 `If the type is nil, abort with "_I can't find the '_" then the type name then "_' type._" and the rider; exit.`
+
 `Add a scratch given the type's name and the rider's token's first.`
+
 `Add a fragment given the load address tag and the term's variable and the scratch.`
+
 `Put the scratch into the term's variable.`
+
 `Clear the term's phrase.`
 
 
@@ -5317,15 +8075,25 @@ Note that literals can have possessives; for example...
 
 
 `To compile a term given a rider (runtime ratio):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_Invalid use of /, I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile another term given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the other term's variable is nil, abort with "_Invalid use of /, I don't understand the variable '_" then the other term's phrase then "_'._" and the rider; exit.`
+
 `Add an intermediate given "_ratio_" and the rider's token's first.`
+
 `Add several fragments given "_put_" and the term's variable and "_and_" and the other term's variable and "_into_" and the intermediate and the rider's token's first.`
+
 `Put the intermediate into the term's variable.`
+
 `Clear the term's phrase.`
 
 
@@ -5333,23 +8101,39 @@ Note that literals can have possessives; for example...
 
 
 `To add several fragments given a string and a variable and another string and another variable and a third string and a third variable and a byte pointer:`
+
 `Add a fragment given the push address tag and the third variable.`
+
 `Add another fragment given the push address tag and the other variable.`
+
 `Add a third fragment given the push address tag and the variable.`
+
 `Add a monikette to some monikettes given the string.`
+
 `Add another monikette to the monikettes given the variable's type.`
+
 `Add a third monikette to the monikettes given the other string.`
+
 `Add a fourth monikette to the monikettes given the other variable's type.`
+
 `Add a fifth monikette to the monikettes given the third string.`
+
 `Add a sixth monikette to the monikettes given the third variable's type.`
+
 `Find a routine given the monikettes.`
+
 `If the routine is nil, convert the monikettes to a moniker.`
+
 `Destroy the monikettes.`
+
 `If the routine is nil, abort with "_I don't know how to '_" then the moniker then "_'._" and the byte pointer; exit.`
+
 `Add a fourth fragment given the call internal tag and the routine.`
 
 `To put a term into another term:`
+
 `Put the term's variable into the other term's variable.`
+
 `Put the term's phrase into the other term's phrase.`
 
 
@@ -5358,91 +8142,162 @@ Note that literals can have possessives; for example...
 
 
 `To compile an expression given a rider (divided):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not "_by", abort with "_I really prefer the phrase 'divided BY'._" and the rider; exit.`
+
 `If the expression's variable is nil, abort with "_Invalid 'divided by', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile a term given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_Invalid 'divided by', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `Add an intermediate given the expression's type name and the rider's token's first.`
+
 `Add several fragments given "_put_" and the expression's variable and "_into_" and the intermediate and the rider's token's first.`
+
 `Add several fragments given "_divide_" and the intermediate and "_by_" and the term's variable and the rider's token's first.`
+
 `Put the intermediate into the expression's variable.`
+
 `Clear the expression's phrase.`
 
 
 `To compile an expression given a rider (minus):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the expression's variable is nil, abort with "_Invalid 'minus', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile a term given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_Invalid 'minus', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `Add an intermediate given the expression's type name and the rider's token's first.`
+
 `Add several fragments given "_put_" and the expression's variable and "_into_" and the intermediate and the rider's token's first.`
+
 `Add several fragments given "_subtract_" and the term's variable and "_from_" and the intermediate and the rider's token's first.`
+
 `Put the intermediate into the expression's variable.`
+
 `Clear the expression's phrase.`
 
 
 `To compile an expression given a rider (plus):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the expression's variable is nil, abort with "_Invalid 'plus', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile a term given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_Invalid 'plus', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `Add an intermediate given the expression's type name and the rider's token's first.`
+
 `Add several fragments given "_put_" and the expression's variable and "_into_" and the intermediate and the rider's token's first.`
+
 `Add several fragments given "_add_" and the term's variable and "_to_" and the intermediate and the rider's token's first.`
+
 `Put the intermediate into the expression's variable.`
+
 `Clear the expression's phrase.`
 
 
 `To compile an expression given a rider (then):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the expression's variable is nil, abort with "_Invalid 'then', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile a term given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_Invalid 'then', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `Add an intermediate given "_string_" and the rider's token's first.`
+
 `Add the put or convert fragments given the expression's variable and the intermediate and the rider's token's first.`
+
 `Convert the term for concatenation given the rider.`
+
 `Add several fragments given "_append_" and the term's variable and "_to_" and the intermediate and the rider's token's first.`
+
 `Put the intermediate into the expression's variable.`
+
 `Clear the expression's phrase.`
 
 
 `To compile an expression given a rider (times):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the expression's variable is nil, abort with "_Invalid 'times', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile a term given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_Invalid 'times', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `Add an intermediate given the expression's type name and the rider's token's first.`
+
 `Add several fragments given "_put_" and the expression's variable and "_into_" and the intermediate and the rider's token's first.`
+
 `Add several fragments given "_multiply_" and the intermediate and "_by_" and the term's variable and the rider's token's first.`
+
 `Put the intermediate into the expression's variable.`
+
 `Clear the expression's phrase.`
 
 
 `To add the put or convert fragments given a variable and another variable and a locus:`
+
 `Add a fragment given the push address tag and the other variable.`
+
 `Add another fragment given the push address tag and the variable.`
+
 `Find a routine given "_put_" and the variable's type and "_into_" and the other variable's type.`
+
 `If the routine is nil, find the routine given "_convert_" and the variable's type and "_to_" and the other variable's type.`
+
 `If the routine is not nil, add a third fragment given the call internal tag and the routine; exit. `
+
 `\ error message `
+
 `Add a monikette to some monikettes given "_put/convert".`
+
 `Add another monikette to the monikettes given the variable's type.`
+
 `Add a third monikette to the monikettes given "_into/to".`
+
 `Add a fourth monikette to the monikettes given the other variable's type.`
+
 `Convert the monikettes to a moniker.`
+
 `Destroy the monikettes.`
+
 `Abort with "_I don't know how to '_" then the moniker then "_'._" and the locus.`
 
 
@@ -5450,11 +8305,17 @@ Note that literals can have possessives; for example...
 
 
 `To convert a term for concatenation given a rider: \ used for right-side THEN operand `
+
 `If the term's variable is nil, abort with "_I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `If the term's type can be reduced to "_string", exit.`
+
 `Add an intermediate given "_string_" and the rider's token's first.`
+
 `Add the put or convert fragments given the term's variable and the intermediate and the rider's token's first.`
+
 `Put the intermediate into the term's variable.`
+
 `Clear the term's phrase.`
 
 
@@ -5462,10 +8323,15 @@ Note that literals can have possessives; for example...
 
 
 `To add a monikette to some monikettes given an expression:`
+
 `Create the monikette.`
+
 `Append the monikette to the monikettes.`
+
 `Put the expression's phrase into the monikette's string.`
+
 `Put the expression's variable into the monikette's variable.`
+
 `If the expression's variable is not nil, put the expression's type into the monikette's type.`
 
 
@@ -5474,15 +8340,22 @@ Note that literals can have possessives; for example...
 
 
 `To compile the body of a routine (prolog):`
+
 `If the routine is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add a fragment given the prolog tag.`
+
 `Add another fragment given the loop tag.`
 
 
 `To add a fragment given a tag:`
+
 `If the current routine is nil, void the fragment; exit.`
+
 `Create the fragment given the tag.`
+
 `Append the fragment to the current routine's fragments.`
 
 
@@ -5492,13 +8365,21 @@ Note that literals can have possessives; for example...
 
 
 `To compile the next statement given a rider:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is "_if", compile the next statement given the rider (if); exit.`
+
 `If the rider's token is "_loop", compile the next statement given the rider (loop); exit.`
+
 `If the rider's token is "_privatize", compile the next statement given the rider (privatize); exit.`
+
 `If the rider's token is not the start of any statement, abort with "_I was expecting a statement here, but I found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Compile the next statement given the rider (other).`
+
 `If the rider's token is not the period byte, abort with "_You seem to have forgotten a period around here._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
 
 
@@ -5506,56 +8387,101 @@ Note that literals can have possessives; for example...
 
 
 `To compile the next statement given a rider (if):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile some monikettes given the rider.`
+
 `Remove any negatives from the monikettes returning a flag.`
+
 `Find a routine given the monikettes.`
+
 `If the routine is not nil, add push fragments given the monikettes.`
+
 `If the routine is nil, convert the monikettes to a moniker.`
+
 `Destroy the monikettes.`
+
 `If the routine is nil, abort with "_I need a decider with the words '_" then the moniker then "_'._" and the rider; exit.`
+
 `If the routine's decider flag is not set, abort with "_Yeah, I'm going to need a decider here, ok?_" and the rider; exit.`
+
 `If the rider's token is not the comma byte, abort with "_I expected a comma around here, but I found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Add a fragment given the call internal tag and the routine.`
+
 `If the flag is set, add another fragment given the not tag.`
+
 `Add a third fragment given the jump false tag.`
+
 `Move the rider (compiler rules).`
+
 `Loop.`
+
 `Compile the next statement given the rider (other).`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is the semi-colon byte, move the rider (compiler rules); repeat.`
+
 `If the rider's token is not the period byte, abort with "_I'm thinking period, but you've got '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Add a fourth fragment given the end if tag.`
 
 
 `To remove any negatives from some monikettes returning a flag:`
+
 `Clear the flag.`
+
 `Swap the monikettes with some other monikettes.`
+
 `Loop.`
+
 `Put the other monikettes' first into a monikette.`
+
 `If the monikette is nil, exit.`
+
 `Remove the monikette from the other monikettes.`
+
 `If the monikette's string is "_not", reverse the flag; destroy the monikette; repeat.`
+
 `Append the monikette to the monikettes.`
+
 `If the monikette's string is "_can't", reverse the flag; put "_can_" into the monikette's string; repeat.`
+
 `If the monikette's string is "_cannot", reverse the flag; put "_can_" into the monikette's string; repeat.`
+
 `If the monikette's string is "_nothing", reverse the flag; put "_something_" into the monikette's string; repeat.`
+
 `If the monikette's string is "_won't", reverse the flag; put "_will_" into the monikette's string; repeat.`
+
 `If the monikette's string ends with "_n't", reverse the flag; remove trailing bytes from the monikette's string given 3; repeat.`
+
 `Repeat.`
 
 
 `To add push fragments given some monikettes:`
+
 `If the current routine is nil, exit.`
+
 `Loop.`
+
 `Get a monikette from the monikettes (backwards).`
+
 `If the monikette is nil, exit.`
+
 `If the monikette's variable is nil, repeat.`
+
 `If the monikette's current substring is not blank, repeat.`
+
 `If the monikette's current type is nil, repeat.`
+
 `Add a fragment given the push address tag and the monikette's variable.`
+
 `Repeat.`
 
 
@@ -5563,20 +8489,35 @@ Note that literals can have possessives; for example...
 
 
 `To compile the next statement given a rider (other):`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is blank, exit.`
+
 `If the rider's token is "_exit", compile the next statement given the rider (exit); exit.`
+
 `If the rider's token is "_repeat", compile the next statement given the rider (repeat); exit.`
+
 `If the rider's token is "_break", compile the next statement given the rider (break); exit.`
+
 `If the rider's token is "_say", compile the next statement given the rider (say); exit.`
+
 `If the rider's token is "_intel", compile the next statement given the rider (intel); exit.`
+
 `If the rider's token is "_push", compile the next statement given the rider (push); exit.`
+
 `If the rider's token is "_call", compile the next statement given the rider (call); exit.`
+
 `If the rider's token is "_point", compile the next statement given the rider (point); exit.`
+
 `If the rider's token is "_if", abort with "_Nested 'if' statements are a sure sign of unclear thinking. Think again._" and the rider; exit.`
+
 `If the rider's token is "_privatize", abort with "_The 'privatize' statement cannot be used here._" and the rider; exit.`
+
 `If the rider's token is "_loop", abort with "_Looping inside an 'if' statement is a good way to lose your lunch._" and the rider; exit.`
+
 `If the rider's token is "_employ", abort with "_'Employ' must be the first and only imperative in a routine._" and the rider; exit.`
+
 `Compile the next statement given the rider (call - internal).`
 
 
@@ -5584,29 +8525,44 @@ Note that literals can have possessives; for example...
 
 
 `To compile the next statement given a rider (exit):`
+
 `If the current routine's decider flag is set, abort with "_What does 'exit' mean here? Yes? No? Maybe?_" and the rider; exit.`
+
 `Add a fragment given the exit tag.`
+
 `Move the rider (compiler rules).`
 
 
 `To compile the next statement given a rider (repeat):`
+
 `Add a fragment given the repeat tag.`
+
 `Move the rider (compiler rules).`
 
 
 `To compile the next statement given a rider (break):`
+
 `Add a fragment given the break tag.`
+
 `Move the rider (compiler rules).`
 
 
 `To compile the next statement given a rider (say):`
+
 `If the current routine's decider flag is not set, compile the next statement given the rider (call - internal); exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile an expression given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the expression's variable is nil, abort with "_Invalid 'say', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+
 `If the expression's type cannot be reduced to "_flag", abort with "_I need a definite 'yes' or 'no' here._" and the rider; exit.`
+
 `Add a fragment given the load eax tag and the expression's variable.`
+
 `Add another fragment given the exit tag.`
 
 
@@ -5614,12 +8570,19 @@ Note that literals can have possessives; for example...
 
 
 `To compile the next statement given a rider (call - internal):`
+
 `Compile some monikettes given the rider.`
+
 `Find a routine given the monikettes.`
+
 `If the routine is not nil, add push fragments given the monikettes.`
+
 `If the routine is not nil, destroy the monikettes; add a fragment given the call internal tag and the routine; exit.`
+
 `Convert the monikettes to a moniker.`
+
 `Destroy the monikettes.`
+
 `Abort with "_I don't know how to '_" then the moniker then "_'._" and the rider.`
 
 
@@ -5628,12 +8591,19 @@ Note that literals can have possessives; for example...
 
 
 `To compile the next statement given a rider (intel):`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not any hex literal, abort with "_I need some machine code here, I found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Add a fragment given the intel tag.`
+
 `Put the rider's token into a nibble substring.`
+
 `Add 1 to the nibble substring's first.`
+
 `Convert the nibble substring to the fragment's code.`
+
 `Move the rider (compiler rules).`
 
 
@@ -5641,21 +8611,34 @@ Note that literals can have possessives; for example...
 
 
 `To compile the next statement given a rider (push):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile an expression given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the expression's variable is nil, abort with "_Invalid 'push', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+
 `If the expression's type is not value pushable, abort with "_Values of type '_" then the expression's type's name then "_' can't be pushed._" and the rider; exit.`
+
 `Add a fragment given the push value tag and the expression's variable.`
 
 
 `To decide if a type is value pushable:`
+
 `If the type is nil, say no.`
+
 `If the type is nil, say no.`
+
 `If the type's length is 4, say yes.`
+
 `If the type's length is 2, say yes.`
+
 `If the type's length is 1, say yes.`
+
 `Say no.`
 
 
@@ -5663,27 +8646,45 @@ Note that literals can have possessives; for example...
 
 
 `To compile the next statement given a rider (call):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is any string literal, compile the next statement given the rider (call - external); exit.`
+
 `Compile the next statement given the rider (call - indirect).  `
 
 
 
 `To compile the next statement given a rider (call - external):`
+
 `Put the rider's token into a string.`
+
 `Unquote the string.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not any string literal, abort with "_Gee, I was expecting a quoted entry name, but I found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Put the rider's token into another string.`
+
 `Unquote the other string.`
+
 `Move the rider (compiler rules).`
+
 `Add an entry to the imports given the string and the other string.`
+
 `If the rider's token is "_with", compile the next statement given the rider (call - with clause).`
+
 `If the rider's token is "_returning", compile the next statement given the rider returning a term (call - returning part).`
+
 `Add a fragment given the call external tag and the entry.`
+
 `If the term is empty, exit.`
+
 `If the term's variable is nil, abort with "_I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `Add another fragment given the save eax tag and the term's variable.`
 
 
@@ -5698,44 +8699,68 @@ Note that literals can have possessives; for example...
 
 
 `To add an entry to some imports given an import name and an entry name:`
+
 `Find an import given the import name.`
+
 `If the import is nil, add the import to the imports given the import name.`
+
 `Find the entry given the entry name and the import's entries.`
+
 `If the entry is not nil, exit.`
+
 `Create the entry.`
+
 `Append the entry to the import's entries.`
+
 `Put the entry name into the entry's name.`
 
 
 `To find an import given a string:`
+
 `Void the import.`
+
 `Loop.`
+
 `Get the import from the imports.`
+
 `If the import is nil, exit.`
+
 `If the import's name is the string, exit.`
+
 `Repeat.`
 
 
 `To add an import to some imports given an import name:`
+
 `Create the import.`
+
 `Append the import to the imports.`
+
 `Put the import name into the import's name.`
 
 
 `To create an import:`
+
 `Allocate memory for the import.`
 
 
 `To find an entry given a string and some entries:`
+
 `Void the entry.`
+
 `Loop.`
+
 `Get the entry from the entries.`
+
 `If the entry is nil, exit.`
+
 `If the entry's name is the string, exit.`
+
 `Repeat.`
 
 
 `To create an entry:`
+
 `Allocate memory for the entry.`
 
 
@@ -5743,21 +8768,34 @@ Note that literals can have possessives; for example...
 
 
 `To compile the next statement given a rider (call - with clause):  \ this guy is recursive so parameters get passed right to left `
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile an expression given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the expression's variable is nil, abort with "_I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+
 `If the expression's type is not value pushable, abort with "_'_" then the expression's type's name then "_' can't be passed properly._" and the rider; exit.`
+
 `If the rider's token is "_and", compile the next statement given the rider (call - with clause).`
+
 `Add a fragment given the push value tag and the expression's variable.`
 
 
 `To compile the next statement given a rider returning a term (call - returning part):`
+
 `Move the rider (compiler rules).`
+
 `Compile the term given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `If the term's type is not value pushable, abort with "_A simple 1, 2, or 4-byte variable is required in the 'returning' clause._" and the rider.`
 
 
@@ -5766,15 +8804,22 @@ Note that literals can have possessives; for example...
 
 
 `To add a fragment given a tag and an entry:`
+
 `If the current routine is nil, void the fragment; exit.`
+
 `Create the fragment given the tag.`
+
 `Append the fragment to the current routine's fragments.`
+
 `Put the entry into the fragment's entry.`
 
 
 `To decide if a term is empty:`
+
 `If the term's variable is not nil, say no.`
+
 `If the term's phrase is not blank, say no.`
+
 `Say yes.`
 
 
@@ -5782,15 +8827,25 @@ Note that literals can have possessives; for example...
 
 
 `To compile the next statement given a rider (call - indirect):`
+
 `Compile an expression given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the expression's variable is nil, abort with "_I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+
 `If the expression's type cannot be reduced to "_pointer", abort with "_I really need a pointer type in this CALL statement._" and the rider; exit.`
+
 `If the rider's token is "_with", compile the next statement given the rider (call - with clause).`
+
 `If the rider's token is "_returning", compile the next statement given the rider returning a term (call - returning part).`
+
 `Add a fragment given the call indirect tag and the expression's variable.`
+
 `If the term is empty, exit.`
+
 `If the term's variable is nil, abort with "_I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `Add another fragment given the save eax tag and the term's variable.`
 
 
@@ -5798,22 +8853,39 @@ Note that literals can have possessives; for example...
 
 
 `To compile the next statement given a rider (point):`
+
 `Move the rider (compiler rules).`
+
 `Compile a term given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `If the term's kind is "_literal", abort with "_You've got the wrong kind of variable here._" and the rider.`
+
 `If the term's type's length is not 4, abort with "_You've got the wrong kind of variable here._" and the rider.`
+
 `If the rider's token is not "_to", abort with "_I was expecting the word 'to', but found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not "_routine", abort with "_I was expecting the word 'routine' but found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile a routine reference given the rider.`
+
 `Convert the routine reference to a moniker.`
+
 `Destroy the routine reference.`
+
 `Find a routine given the moniker and the routine index.`
+
 `If the routine is nil, abort with "_I can't find the '_" then the moniker then "_' routine to which you are trying to point._" and the rider; exit.`
+
 `Add a fragment given the routine address tag and the routine.`
+
 `Put the term's variable into the fragment's variable.`
 
 
@@ -5821,10 +8893,15 @@ Note that literals can have possessives; for example...
 
 
 `To compile the next statement given a rider (loop):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add a fragment given the loop tag.`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not the period byte, abort with "_You seem to have forgotten a period around here._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
 
 
@@ -5832,21 +8909,37 @@ Note that literals can have possessives; for example...
 
 
 `To compile the next statement given a rider (privatize):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Compile a term given the rider.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the term's variable is nil, abort with "_Invalid 'privatize', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+
 `If the term's kind is not "_parameter", abort with "_You can only privatize parameters._" and the rider; exit.`
+
 `Add a local to the current routine's locals given "_local_" and the rider's token's first.`
+
 `Put the term's name into the local's name.`
+
 `Put the term's nickname into the local's nickname.`
+
 `Put the term's type name into the local's type name.`
+
 `Resolve the local.`
+
 `Prepend "_original "_ to the term's name.`
+
 `If the term's nickname is not blank, prepend "_original "_ to the term's nickname.`
+
 `Add several fragments given "_put_" and the term's variable and "_into_" and the local and the rider's token's first.`
+
 `If the rider's token is not the period byte, abort with "_You seem to have forgotten a period around here._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
 
 
@@ -5854,10 +8947,15 @@ Note that literals can have possessives; for example...
 
 
 `To decide if a string is the start of any statement:`
+
 `If the string is the start of any definition, say no.`
+
 `If the string is any literal, say no.`
+
 `If the string is any mark, say no.`
+
 `If the string is blank, say no.`
+
 `Say yes.`
 
 
@@ -5865,89 +8963,150 @@ Note that literals can have possessives; for example...
 
 
 `To compile the body of a routine (epilog):`
+
 `If the routine is nil, exit.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add a fragment given the finalize tag.`
+
 `Loop.`
+
 `Get a variable from the routine's locals.`
+
 `If the variable is nil, break.`
+
 `If the variable's kind is "_scratch", repeat.`
+
 `If the variable's type should not be finalized, repeat.`
+
 `Add another fragment given the push address tag and the variable.`
+
 `Find another routine given "_~finalize_" and the variable's type.`
+
 `If the other routine is nil, abort with "_Internal error - compile the body of a routine (epilog)"; exit.`
+
 `Add a third fragment given the call internal tag and the other routine.`
+
 `Repeat.`
+
 `Add a fourth fragment given the epilog tag.`
 
 
 `To find a routine given a string and a type:`
+
 `Add a monikette to some monikettes given the string.`
+
 `Add another monikette to the monikettes given the type.`
+
 `Find the routine given the monikettes.`
+
 `Destroy the monikettes. `
 
 218. EMPLOY and POINT statements explicitly refer to other routines, and some terms implicitly refer to other routines (like "_a box's center_" which is an implicit reference to the function-routine "_To put a box's center into a spot.") A routine reference is a list of monikettes that refers to such a routine, and these are the routines we use to compile them:
 
 
 `To compile a routine reference given a rider:`
+
 `If the rider's token is "_to", move the rider (compiler rules).`
+
 `If the rider is the start of any function, compile the routine reference given the rider (function); exit.`
+
 `If the rider's token is "_decide", compile the routine reference given the rider (decide).`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the rider's token is blank, exit.`
+
 `If the rider's token is "_.", exit.`
+
 `If the rider's token is "_the", compile the routine reference given the rider (definite article); repeat.`
+
 `If the rider's token is any indefinite article, compile the routine reference given the rider (indefinite article); repeat.`
+
 `If the rider's token is any monikette string, compile the routine reference given the rider (monikette string); repeat.`
+
 `Abort with "_'_" then the rider's token then "_' is not valid in an employ statement._" and the rider.`
 
 
 `To compile a routine reference given a rider (decide):`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not "_if", abort with "_We always say DECIDE IF, not DECIDE and then '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
 
 
 `To compile a routine reference given a rider (definite article):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan a name given the rider.`
+
 `Prepend "_the "_ to the name.`
+
 `Add a monikette to the routine reference given the name.`
 
 
 `To compile a routine reference given a rider (function):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add a monikette to the routine reference given "_put".`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is any indefinite article, set a flag.`
+
 `If the flag is set, compile the routine reference given the rider (indefinite article).`
+
 `If the flag is not set, compile the routine reference given the rider (definite article).`
+
 `If the rider's token is not any possessive, abort with "_I was expecting an 's, but found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan a name given the rider.`
+
 `Add another monikette to the routine reference given "_'s "_ then the name.`
+
 `If the rider's token is not "_into", abort with "_I was expecting the word 'into', but found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Add a third monikette to the routine reference given "_into".`
+
 `Move the rider (compiler rules).`
+
 `If the rider's token is not any indefinite article, abort with "_I was expecting an indefinite article, but found '_" then the rider's token then "_'._" and the rider; exit.`
+
 `Compile the routine reference given the rider (indefinite article).`
 
 
 `To compile a routine reference given a rider (indefinite article):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Move the rider (compiler rules).`
+
 `Scan a name given the rider.`
+
 `Find a type and a nickname given the name.`
+
 `If the type is nil, abort with "_Invalid employ statement, I don't understand '_" then the name then "_'._" and the rider; exit.`
+
 `Add a monikette to the routine reference given the type.`
 
 
 `To compile a routine reference given a rider (monikette string):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add a monikette to the routine reference given the rider's token.`
+
 `Move the rider (compiler rules). `
 
 
@@ -5958,39 +9117,61 @@ Note that literals can have possessives; for example...
 
 
 `To abort with a string: `
+
 `/routine/abort from/given/with/using [string]/yes/no/no/no//0/0/00000000/`
+
 `/variable/parameter/yes/string/string/string/string/00000000/no/1/no////`
+
 `/variable/scratch/yes/~S7063//flag/flag/00000000/no/1/no////`
+
 `/variable/scratch/yes/~S7064//flag/flag/00000000/no/1/no////`
+
 `/variable/scratch/yes/~S7065//abort message/abort message/00000000/no/1/no////`
+
 `/fragment/prolog/////00000000/00000000//`
+
 `/fragment/loop/////00000000/00000000//`
 
 If the compiler's abort flag is set, exit.
 
 `/fragment/load address/compiler/~S7063///00000000/00000000//`
+
 `/fragment/increment/~S7063////00000014/00000000//`
+
 `/fragment/push address/~S7063////00000000/00000000//`
+
 `/fragment/call internal///[flag] is/are set//00000000/00000000//`
+
 `/fragment/jump false/////00000000/00000000//`
+
 `/fragment/exit/////00000000/00000000//`
+
 `/fragment/end if/////00000000/00000000//`
 
 Set the compiler's abort flag.
 
 `/fragment/load address/compiler/~S7064///00000000/00000000//`
+
 `/fragment/increment/~S7064////00000014/00000000//`
+
 `/fragment/push address/~S7064////00000000/00000000//`
+
 `/fragment/call internal///set [flag]//00000000/00000000//`
 
 Put the string into the compiler's abort message.
 
 `/fragment/load address/compiler/~S7065///00000000/00000000//`
+
 `/fragment/increment/~S7065////00000018/00000000//`
+
 `/fragment/push address/~S7065////00000000/00000000//`
+
 `/fragment/push address/string////00000000/00000000//`
+
 `/fragment/call internal///put [string] in/into/to [string]//00000000/00000000//`
+
 `/fragment/finalize/////00000000/00000000//`
+
 `/fragment/epilog/////00000000/00000000//`
 
 
@@ -6001,20 +9182,35 @@ At the bottom of the listing you'll see that this is the part of compiling that 
 
 
 `/timer/loading/0/`
+
 `/timer/scanning/515/`
+
 `/timer/resolving types/32/`
+
 `/timer/resolving globals/109/`
+
 `/timer/compiling routine headers/281/`
+
 `/timer/calculating/16/`
+
 `/timer/adding built-in memory routines/47/`
+
 `/timer/indexing utilities/94/`
+
 `/timer/compiling routine bodies/1468/`
+
 `/timer/adding built-in startup routine/0/`
+
 `/timer/offsetting/0/`
+
 `/timer/addressing/0/`
+
 `/timer/transmogrifying/0/`
+
 `/timer/linking/0/`
+
 `/timer/writing/0/`
+
 `/timer/total/5187/`
 
 
@@ -6030,23 +9226,41 @@ Now that we know everything in the source checks out, it's time to add one more 
 
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Compile the directory (scan the source files).`
+
 `Compile the directory (resolve the types).`
+
 `Compile the directory (resolve the globals).`
+
 `Compile the directory (compile the headers of the routines).`
+
 `Compile the directory (calculate lengths and offsets of types).`
+
 `Compile the directory (add the built-in memory routines).`
+
 `Compile the directory (index the routines for utility use).`
+
 `Compile the directory (compile the bodies of the routines).`
+
 `Compile the directory (add and compile the built-in startup routine).`
+
 `Abort with "_I'm not old enough to make babies.". `
+
 `\Compile the directory (offset parameters and variables).`
+
 `\Compile the directory (address).`
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
 
@@ -6054,10 +9268,15 @@ Now that we know everything in the source checks out, it's time to add one more 
 
 
 `To compile a directory (add and compile the built-in startup routine):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Adding...".`
+
 `Start the adding built-in startup routine timer.`
+
 `Add and compile the initialize before run and run and finalize after run routine.`
+
 `Stop the adding built-in startup routine timer.`
 
 
@@ -6065,18 +9284,31 @@ Now that we know everything in the source checks out, it's time to add one more 
 
 
 `To add and compile the initialize before run and run and finalize after run routine:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Add a routine to the routines given nil.`
+
 `Append "_~initialize before run and run and finalize after run_" to the routine's header string.`
+
 `Append "_initialize before run. "_ to the routine's body string.`
+
 `Append the global initializers to the routine's body string.`
+
 `Append "_run. "_ to the routine's body string.`
+
 `Append the global finalizers to the routine's body string.`
+
 `Append "_finalize after run. "_ to the routine's body string.`
+
 `Append "_call "_"kernel32.dll"_" "_"ExitProcess"_" with 0. "_ to the routine's body string.`
+
 `Slap the routine's routine header on the routine's header string.`
+
 `Slap the routine's routine body on the routine's body string.`
+
 `Compile the header of the routine.`
+
 `Compile the body of the routine.`
 
 
@@ -6084,21 +9316,34 @@ Now that we know everything in the source checks out, it's time to add one more 
 
 
 `To append the global initializers to a string:`
+
 `Get a global from the globals.`
+
 `If the global is nil, exit.`
+
 `If the global's literal is nil, repeat.`
+
 `If the global's compiled flag is not set, repeat.`
+
 `Clear a flag.`
+
 `Append the global's initializer string to the string.`
+
 `Repeat.`
 
 
 `To append the global finalizers to a string:`
+
 `Get a global from the globals.`
+
 `If the global is nil, exit.`
+
 `If the global's compiled flag is not set, repeat.`
+
 `If the global's type should not be finalized, repeat.`
+
 `Append "_~finalize the "_ then the global's name then "_. "_ to the string.`
+
 `Repeat.`
 
 
@@ -6106,46 +9351,75 @@ Now that we know everything in the source checks out, it's time to add one more 
 
 
 `/routine/~initialize before run and run and finalize after run/yes/no/no/no//0/0/00000000/`
+
 `/fragment/prolog/////00000000/00000000//`
+
 `/fragment/loop/////00000000/00000000//`
 
 `/fragment/call internal///initialize before run//00000000/00000000// `
+
 `\ global initializers start here `
+
 `/fragment/push address/break tag////00000000/00000000//`
+
 `/fragment/push address/~L1////00000000/00000000//`
+
 `/fragment/call internal///put [number] in/into/to [number]//00000000/00000000//`
+
 `/fragment/push address/call external tag////00000000/00000000//`
+
 `/fragment/push address/~L2////00000000/00000000//`
+
 `/fragment/call internal///put [number] in/into/to [number]//00000000/00000000// `
+
 `\ blah, blah, blah`
 
 `/fragment/push address/document version////00000000/00000000//`
+
 `/fragment/push address/~L397////00000000/00000000//`
+
 `/fragment/call internal///put [string] in/into/to [string]//00000000/00000000//`
+
 `/fragment/push address/edge height////00000000/00000000//`
 
 `\ global initializers end here`
+
 `/fragment/call internal///run//00000000/00000000//`
 
 `\ global finalizers start here`
+
 `/fragment/push address/compiler////00000000/00000000//`
+
 `/fragment/call internal///~finalize [~inline compiler type]//00000000/00000000//`
+
 `/fragment/push address/answer////00000000/00000000//`
+
 `/fragment/call internal///~finalize [string]//00000000/00000000//`
 
 `\ blah, blah, blah`
+
 `/fragment/push address/temp path////00000000/00000000//`
+
 `/fragment/call internal///~finalize [string]//00000000/00000000//`
+
 `/fragment/push address/document version////00000000/00000000//`
+
 `/fragment/call internal///~finalize [string]//00000000/00000000//`
 
 `/fragment/push address/remembered picture path////00000000/00000000//`
+
 `/fragment/call internal///~finalize [string]//00000000/00000000// `
+
 `\ global finalizers end here`
+
 `/fragment/call internal///finalize after run//00000000/00000000//`
+
 `/fragment/push value/~L12694////00000000/00000000//`
+
 `/fragment/call external////ExitProcess/00000000/00000000//`
+
 `/fragment/finalize/////00000000/00000000//`
+
 `/fragment/epilog/////00000000/00000000//`
 
 
@@ -6160,23 +9434,41 @@ Next time, we'll calculate the offsets for our parameters and local variables.
 
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Compile the directory (scan the source files).`
+
 `Compile the directory (resolve the types).`
+
 `Compile the directory (resolve the globals).`
+
 `Compile the directory (compile the headers of the routines).`
+
 `Compile the directory (calculate lengths and offsets of types).`
+
 `Compile the directory (add the built-in memory routines).`
+
 `Compile the directory (index the routines for utility use).`
+
 `Compile the directory (compile the bodies of the routines).`
+
 `Compile the directory (add and compile the built-in startup routine).`
+
 `Compile the directory (offset parameters and variables).`
+
 `Abort with "_I'm not old enough to make babies.". `
+
 `\Compile the directory (address).`
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
 
@@ -6184,11 +9476,17 @@ Next time, we'll calculate the offsets for our parameters and local variables.
 
 
 `To compile a directory (offset parameters and variables):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Offsetting...".`
+
 `Start the offsetting timer.`
+
 `Offset the parameters in the routines.`
+
 `Offset the locals in the routines.`
+
 `Stop the offsetting timer.`
 
 
@@ -6196,27 +9494,43 @@ Next time, we'll calculate the offsets for our parameters and local variables.
 
 
 `To offset the parameters in some routines:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a routine from the routines.`
+
 `If the routine is nil, exit.`
+
 `Offset the parameters in the routine.`
+
 `Repeat.`
 
 
 
 `To offset the parameters in a routine:`
+
 `If the routine is nil, exit.`
+
 `If the routine's compiled flag is not set, exit.`
+
 `Clear the routine's parameter size.`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a parameter from the routine's parameters.`
+
 `If the parameter is nil, exit.`
+
 `If the routine's callback flag is set, set the parameter's by-value flag.`
+
 `If the parameter's previous is nil, put 8 into the parameter's offset. \ skip the return address and saved ebp `
+
 `If the parameter's previous is not nil, put the parameter's previous' offset plus 4 into the parameter's offset. \ all parameters are 4 bytes long `
 
 `Add 4 to the routine's parameter size.`
+
 `Repeat.`
 
 
@@ -6224,26 +9538,45 @@ Next time, we'll calculate the offsets for our parameters and local variables.
 
 
 `To offset the locals in some routines:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a routine from the routines.`
+
 `If the routine is nil, exit.`
+
 `Offset the locals in the routine.`
+
 `Repeat.`
 
 `To offset the locals in a routine:`
+
 `If the routine is nil, exit.`
+
 `If the routine's compiled flag is not set, exit.`
+
 `Clear the routine's local size.`
+
 `Loop.`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a local from the routine's locals.`
+
 `If the local is nil, exit.`
+
 `If the local's previous is not nil, put the local's previous' offset into the local's offset.`
+
 `Put the local's type's length into a length.`
+
 `If the local's kind is "_scratch", put a pointer's magnitude into the length.`
+
 `Round the length up to the nearest multiple of 4.`
+
 `Subtract the length from the local's offset.`
+
 `Add the length to the routine's local size.`
+
 `Repeat.`
 
 
@@ -6254,9 +9587,13 @@ Next time, we'll calculate the offsets for our parameters and local variables.
 
 
 `/routine/abort from/given/with/using [string]/yes/no/no/no//4/12/00000000/`
+
 `/variable/parameter/yes/string/string/string/string/00000008/no/1/no////`
+
 `/variable/scratch/yes/~S7063//flag/flag/FFFFFFFC/no/1/no////`
+
 `/variable/scratch/yes/~S7064//flag/flag/FFFFFFF8/no/1/no////`
+
 `/variable/scratch/yes/~S7065//abort message/abort message/FFFFFFF4/no/1/no////`
 
 `/fragment/prolog/////00000000/00000000//`
@@ -6281,23 +9618,41 @@ And that's it for this step. Next time, we'll give everyone (who needs one) a pe
 
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Compile the directory (scan the source files).`
+
 `Compile the directory (resolve the types).`
+
 `Compile the directory (resolve the globals).`
+
 `Compile the directory (compile the headers of the routines).`
+
 `Compile the directory (calculate lengths and offsets of types).`
+
 `Compile the directory (add the built-in memory routines).`
+
 `Compile the directory (index the routines for utility use).`
+
 `Compile the directory (compile the bodies of the routines).`
+
 `Compile the directory (add and compile the built-in startup routine).`
+
 `Compile the directory (offset parameters and variables).`
+
 `Compile the directory (address).`
+
 `Abort with "_I'm not old enough to make babies.". `
+
 `\Compile the directory (transmogrify).`
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
 
@@ -6305,22 +9660,39 @@ And that's it for this step. Next time, we'll give everyone (who needs one) a pe
 
 
 `To compile a directory (address):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Addressing...".`
+
 `Start the addressing timer.`
+
 `Put 4096 into an address.`
+
 `Put the address into the import borough's base.`
+
 `Address the imports given the address.`
+
 `Put the address minus the import borough's base into the import borough's length.`
+
 `Round the address up to the nearest multiple of 4096.`
+
 `Put the address into the data borough's base.`
+
 `Address the globals given the address.`
+
 `Address the literals given the address.`
+
 `Put the address minus the data borough's base into the data borough's length.`
+
 `Round the address up to the nearest multiple of 4096.`
+
 `Put the address into the code borough's base.`
+
 `Address the routines given the address.`
+
 `Put the address minus the code borough's base into the code borough's length.`
+
 `Stop the addressing timer.`
 
 
@@ -6361,20 +9733,35 @@ The size of a borough is its actual length rounded up to the nearest multiple of
 
 
 `To address some imports given an address:`
+
 `Put the address into the current header address.`
+
 `Put the imports' count into a count.`
+
 `Add 1 to the count.`
+
 `Multiply the count by an import header's magnitude.`
+
 `Put the address plus the count into the current thunk address.`
+
 `Get another count given the imports (all entries plus markers).`
+
 `Multiply the other count by 4.`
+
 `Put the current thunk address plus the other count into the current name address.`
+
 `Loop.`
+
 `Get an import from the imports.`
+
 `If the import is nil, break.`
+
 `Address the import.`
+
 `Repeat.`
+
 `Put the current name address minus the address into a number.`
+
 `Add the number to the address.`
 
 
@@ -6382,12 +9769,19 @@ The size of a borough is its actual length rounded up to the nearest multiple of
 
 
 `To get a count given some imports (all entries plus markers):`
+
 `Put 0 into the count.`
+
 `Loop.`
+
 `Get an import from the imports.`
+
 `If the import is nil, exit.`
+
 `Add the import's entries' count to the count.`
+
 `Add 1 to the count.`
+
 `Repeat.`
 
 
@@ -6395,15 +9789,25 @@ The size of a borough is its actual length rounded up to the nearest multiple of
 
 
 `To address an import:`
+
 `Put the current name address into the import's name address.`
+
 `Put the current header address into the import's header address.`
+
 `Put the current name address into the import's import header's name memory address.`
+
 `Put the import's name's length plus 1 into a number.`
+
 `Round the number up to the nearest multiple of 2.`
+
 `Add the number to the current name address.`
+
 `Add an import header's magnitude to the current header address.`
+
 `Put the current thunk address into the import's import header's first thunk memory address.`
+
 `Address the import's entries.`
+
 `Add 4 to the current thunk address.`
 
 
@@ -6411,19 +9815,30 @@ The size of a borough is its actual length rounded up to the nearest multiple of
 
 
 `To address some entries:`
+
 `Get an entry from the entries.`
+
 `If the entry is nil, exit.`
+
 `Address the entry.`
+
 `Repeat.`
 
 
 `To address an entry:`
+
 `Put the current name address into the entry's name address.`
+
 `Put the entry's name's length plus 3 into a number.`
+
 `Round the number up to the nearest multiple of 2.`
+
 `Add the number to the current name address.`
+
 `Put the current thunk address into the entry's thunk address.`
+
 `Put the image base plus the current thunk address into the entry's address.`
+
 `Add 4 to the current thunk address.`
 
 
@@ -6431,21 +9846,33 @@ The size of a borough is its actual length rounded up to the nearest multiple of
 
 
 `To address some variables given an address:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a variable from the variables.`
+
 `If the variable is nil, exit.`
+
 `Address the variable given the address.`
+
 `Repeat.`
 
 
 
 `To address a variable given an address:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the variable is nil, exit.`
+
 `If the variable's compiled flag is not set, exit.`
+
 `Put the image base plus the address into the variable's address.`
+
 `Add the variable's type's length to the address.`
+
 `If the variable's type can be reduced to "_string", add the variable's data's length plus 1 to the address.`
+
 `Round the address up to the nearest multiple of 4.`
 
 
@@ -6453,22 +9880,35 @@ The size of a borough is its actual length rounded up to the nearest multiple of
 
 
 `To address some routines given an address:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a routine from the routines.`
+
 `If the routine is nil, break.`
+
 `Address the routine given the address.`
+
 `Repeat.`
 
 
 
 `To address a routine given an address:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the routine is nil, exit.`
+
 `If the routine's employs moniker is not blank, exit. \ employs are addressed later`
+
 `If the routine's compiled flag is not set, exit.`
+
 `Put the routine into the current routine.`
+
 `Put the image base plus the address into the routine's address.`
+
 `Address the routine's fragments given the address.`
+
 `Round the address up to the nearest multiple of 4.`
 
 
@@ -6476,35 +9916,62 @@ The size of a borough is its actual length rounded up to the nearest multiple of
 
 
 `To address some fragments given an address:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a fragment from the fragments.`
+
 `If the fragment is nil, exit.`
+
 `Address the fragment given the address.`
+
 `Repeat.`
 
 
 `To address a fragment given an address:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the fragment is nil, exit.`
+
 `Put the image base plus the address into the fragment's address.`
+
 `If the fragment's tag is the push address tag, add 7 to the address; exit.`
+
 `If the fragment's tag is the call internal tag, add 5 to the address; exit.`
+
 `If the fragment's tag is the load address tag, add 12 to the address; exit.`
+
 `If the fragment's tag is the increment tag, add 10 to the address; exit.`
+
 `If the fragment's tag is the dereference tag, add 14 to the address; exit.`
+
 `If the fragment's tag is the jump false tag, add 9 to the address; exit.`
+
 `If the fragment's tag is the not tag, add 3 to the address; exit.`
+
 `If the fragment's tag is the exit tag, add 5 to the address; exit.`
+
 `If the fragment's tag is the repeat tag, add 5 to the address; exit.`
+
 `If the fragment's tag is the break tag, add 5 to the address; exit.`
+
 `If the fragment's tag is the prolog tag, address the fragment given the address (prolog); exit.`
+
 `If the fragment's tag is the epilog tag, address the fragment given the address (epilog); exit.`
+
 `If the fragment's tag is the intel tag, add the fragment's code's length to the address; exit.`
+
 `If the fragment's tag is the push value tag, address the fragment given the address (push value); exit.`
+
 `If the fragment's tag is the call external tag, add 6 to the address; exit.`
+
 `If the fragment's tag is the load eax tag, add 8 to the address; exit.`
+
 `If the fragment's tag is the save eax tag, address the fragment given the address (save eax); exit.`
+
 `If the fragment's tag is the call indirect tag, add 8 to the address; exit.`
+
 `If the fragment's tag is the routine address tag, add 12 to the address; exit.`
 
 
@@ -6512,35 +9979,56 @@ The size of a borough is its actual length rounded up to the nearest multiple of
 
 
 `To address a fragment given an address (epilog):`
+
 `If the current routine's callback flag is set, add 3 to the address.`
+
 `Add 6 to the address.`
 
 
 `To address a fragment given an address (prolog):`
+
 `Add 3 to the address.`
+
 `If the current routine's local size is not 0, add 10 to the address.`
+
 `If the current routine's callback flag is set, add 3 to the address.`
 
 
 `To address a fragment given an address (push value):`
+
 `Add 6 to the address.`
+
 `If the fragment's variable is nil, abort with "_Internal error - address a fragment given an address (push value)"; exit.`
+
 `If the fragment's variable's type is nil, abort with "_Internal error 2 - address a fragment given an address (push value)"; exit.`
+
 `Put the fragment's variable's type's length into a length.`
+
 `If the length is 4, add 2 to the address; exit.`
+
 `If the length is 2, add 3 to the address; exit.`
+
 `If the length is 1, add 4 to the address; exit.`
+
 `Abort with "_Internal error 3 - address a fragment given an address (push value)".`
 
 
 `To address a fragment given an address (save eax):`
+
 `Add 6 to the address.`
+
 `If the fragment's variable is nil, abort with "_Internal error - address a fragment given an address (push value)"; exit.`
+
 `If the fragment's variable's type is nil, abort with "_Internal error 2 - address a fragment given an address (push value)"; exit.`
+
 `Put the fragment's variable's type's length into a length.`
+
 `If the length is 4, add 2 to the address; exit.`
+
 `If the length is 2, add 3 to the address; exit.`
+
 `If the length is 1, add 2 to the address; exit.`
+
 `Abort with "_Internal error 3 - address a fragment given an address (push value)".`
 
 
@@ -6551,7 +10039,9 @@ The size of a borough is its actual length rounded up to the nearest multiple of
 
 
 `/variable/global/yes/adding built-in memory routines timer//timer/timer/00402000/no/1/no////`
+
 `/variable/global/yes/adding built-in startup routine timer//timer/timer/0040200C/no/1/no////`
+
 `/variable/global/yes/addressing timer//timer/timer/00402018/no/1/no////`
 
 
@@ -6562,7 +10052,9 @@ Then jump to the literals and check out their addresses:
 
 
 `/variable/literal/yes/~L1//number/number/004030AC/no/1/no///01000000/`
+
 `/variable/literal/yes/~L2//number/number/004030B0/no/1/no///02000000/`
+
 `/variable/literal/yes/~L3//number/number/004030B4/no/1/no///03000000/`
 
 
@@ -6573,29 +10065,53 @@ Then jump to the routines and check out both the entry addresses, and the fragme
 
 
 `/routine/abort from/given/with/using [string]/yes/no/no/no//4/12/00419000/`
+
 `/variable/parameter/yes/string/string/string/string/00000008/no/1/no////`
+
 `/variable/scratch/yes/~S7063//flag/flag/FFFFFFFC/no/1/no////`
+
 `/variable/scratch/yes/~S7064//flag/flag/FFFFFFF8/no/1/no////`
+
 `/variable/scratch/yes/~S7065//abort message/abort message/FFFFFFF4/no/1/no////`
+
 `/fragment/prolog/////00000000/00419000//`
+
 `/fragment/loop/////00000000/0041900D//`
+
 `/fragment/load address/compiler/~S7063///00000000/0041900D//`
+
 `/fragment/increment/~S7063////00000014/00419019//`
+
 `/fragment/push address/~S7063////00000000/00419023//`
+
 `/fragment/call internal///[flag] is/are set//00000000/0041902A//`
+
 `/fragment/jump false/////00000000/0041902F//`
+
 `/fragment/exit/////00000000/00419038//`
+
 `/fragment/end if/////00000000/0041903D//`
+
 `/fragment/load address/compiler/~S7064///00000000/0041903D//`
+
 `/fragment/increment/~S7064////00000014/00419049//`
+
 `/fragment/push address/~S7064////00000000/00419053//`
+
 `/fragment/call internal///set [flag]//00000000/0041905A//`
+
 `/fragment/load address/compiler/~S7065///00000000/0041905F//`
+
 `/fragment/increment/~S7065////00000018/0041906B//`
+
 `/fragment/push address/~S7065////00000000/00419075//`
+
 `/fragment/push address/string////00000000/0041907C//`
+
 `/fragment/call internal///put [string] in/into/to [string]//00000000/00419083//`
+
 `/fragment/finalize/////00000000/00419088//`
+
 `/fragment/epilog/////00000000/00419088//`
 
 
@@ -6606,8 +10122,11 @@ Finally, jump to "_IMPORTS:_" (no quotes) and take a peek at both the import and
 
 
 `/import/user32.dll/`
+
 `/entry/DisableProcessWindowsGhosting/004010DC/`
+
 `/entry/GetSystemMetrics/004010E0/`
+
 `/entry/PostMessageA/004010E4/`
 
 
@@ -6618,19 +10137,33 @@ Sweet. And all that addressing took only... let me see...
 
 
 `/timer/loading/16/`
+
 `/timer/scanning/437/`
+
 `/timer/resolving types/15/`
+
 `/timer/resolving globals/110/`
+
 `/timer/compiling routine headers/281/`
+
 `/timer/calculating/0/`
+
 `/timer/adding built-in memory routines/62/`
+
 `/timer/indexing utilities/79/`
+
 `/timer/compiling routine bodies/1437/`
+
 `/timer/adding built-in startup routine/31/`
+
 `/timer/offsetting/0/`
+
 `/timer/addressing/32/`
+
 `/timer/transmogrifying/0/`
+
 `/timer/linking/0/`
+
 `/timer/writing/0/`
 
 `/timer/total/5078/`
@@ -6647,23 +10180,41 @@ Next up: TRANSMOGRIFICATION! Mwa-hah-hah-hah (evil laugh).
 
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Compile the directory (scan the source files).`
+
 `Compile the directory (resolve the types).`
+
 `Compile the directory (resolve the globals).`
+
 `Compile the directory (compile the headers of the routines).`
+
 `Compile the directory (calculate lengths and offsets of types).`
+
 `Compile the directory (add the built-in memory routines).`
+
 `Compile the directory (index the routines for utility use).`
+
 `Compile the directory (compile the bodies of the routines).`
+
 `Compile the directory (add and compile the built-in startup routine).`
+
 `Compile the directory (offset parameters and variables).`
+
 `Compile the directory (address).`
+
 `Compile the directory (transmogrify).`
+
 `Abort with "_I'm not old enough to make babies.". `
+
 `\Compile the directory (link).`
+
 `\Compile the directory (write the exe).`
+
 `\Compile the directory (stop).`
 
 
@@ -6671,164 +10222,272 @@ Next up: TRANSMOGRIFICATION! Mwa-hah-hah-hah (evil laugh).
 
 
 `To compile a directory (transmogrify):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Mogrifying...".`
+
 `Start the transmogrifying timer.`
+
 `Transmogrify the routines.`
+
 `Stop the transmogrifying timer.`
 
 
 `To transmogrify some routines:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a routine from the routines.`
+
 `If the routine is nil, break.`
+
 `Transmogrify the routine.`
+
 `Repeat.`
 
 
 `To transmogrify a routine:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the routine is nil, exit.`
+
 `If the routine's employs moniker is not blank, exit.`
+
 `If the routine's compiled flag is not set, exit.`
+
 `Put the routine into the current routine.`
+
 `Transmogrify the routine's fragments.`
 
 
 245. These two routines are the top-level helpers we need:
 
 `To transmogrify some fragments:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Get a fragment from the fragments.`
+
 `If the fragment is nil, exit.`
+
 `Transmogrify the fragment.`
+
 `Repeat.`
 
 `To transmogrify a fragment:`
+
 `If the compiler's abort flag is set, exit.`
+
 `If the fragment is nil, exit.`
+
 `If the fragment's tag is the push address tag, transmogrify the fragment (push address); exit.`
+
 `If the fragment's tag is the call internal tag, transmogrify the fragment (call internal); exit.`
+
 `If the fragment's tag is the load address tag, transmogrify the fragment (load address); exit.`
+
 `If the fragment's tag is the increment tag, transmogrify the fragment (increment); exit.`
+
 `If the fragment's tag is the dereference tag, transmogrify the fragment (dereference); exit.`
+
 `If the fragment's tag is the jump false tag, transmogrify the fragment (jump false); exit.`
+
 `If the fragment's tag is the not tag, transmogrify the fragment (not); exit.`
+
 `If the fragment's tag is the exit tag, transmogrify the fragment (exit); exit.`
+
 `If the fragment's tag is the repeat tag, transmogrify the fragment (repeat); exit.`
+
 `If the fragment's tag is the break tag, transmogrify the fragment (break); exit.`
+
 `If the fragment's tag is the prolog tag, transmogrify the fragment (prolog); exit.`
+
 `If the fragment's tag is the epilog tag, transmogrify the fragment (epilog); exit.`
+
 `If the fragment's tag is the push value tag, transmogrify the fragment (push value); exit.`
+
 `If the fragment's tag is the call external tag, transmogrify the fragment (call external); exit.`
+
 `If the fragment's tag is the load eax tag, transmogrify the fragment (load eax); exit.`
+
 `If the fragment's tag is the save eax tag, transmogrify the fragment (save eax); exit.`
+
 `If the fragment's tag is the call indirect tag, transmogrify the fragment (call indirect); exit.`
+
 `If the fragment's tag is the routine address tag, transmogrify the fragment (routine address); exit.`
 
 246. And these 18 guys are the low-level helpers who actually do the transmogrification:
 
 `To transmogrify a fragment (break):`
+
 `Put the repeat tag into a tag.`
+
 `Find another fragment given the fragment and the tag.`
+
 `If the other fragment is nil, put the finalize tag into the tag.  \ for break without a loop or after a loop `
+
 `Find a third fragment given the current routine's fragments' last and the tag (backwards).`
+
 `If the third fragment is nil, abort with "_Internal error - transmogrify a fragment (break)"; exit.`
+
 `If the third fragment's next is nil, abort with "_Internal error 2 - transmogrify a fragment (break)"; exit.`
+
 `Attach $E9 and the third fragment's next's address to the fragment.  \ jmp the destination's address`
 
 `To transmogrify a fragment (call external):`
+
 `Attach $FF15 and the fragment's entry's address to the fragment's code.  \ call [the fragment's entry's address]`
 
 `To transmogrify a fragment (call indirect):`
+
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
+
 `Attach $FF12 to the fragment's code. \ call [edx]`
 
 `To transmogrify a fragment (call internal):`
+
 `Get an address given the fragment's routine.`
+
 `Attach $E8 and the address to the fragment. \ call the fragment's routine's address`
 
 `To transmogrify a fragment (dereference):`
+
 `Attach $8B95 and the fragment's variable's offset to the fragment's code.  \ mov edx,[ebp+the fragment's variable's offset] `
+
 `Attach $8B12 to the fragment's code. \ mov edx,[edx] `
+
 `Attach $8995 and the fragment's variable's offset to the fragment's code.  \ mov [ebp+the fragment's variable's offset],edx`
 
 `To transmogrify a fragment (epilog):`
+
 `If the current routine's callback flag is set, attach $5F5E5B to the fragment's code.  \ pop edi, esi, ebx `
+
 `Attach $8BE5 to the fragment's code. \ mov esp,ebp `
+
 `Attach $5D to the fragment's code. \ pop ebp `
+
 `Attach $C2 and the current routine's parameter size to the fragment's code.  \ ret the current routine's parameter size`
 
 `To transmogrify a fragment (exit):`
+
 `Find another fragment given the fragment and the finalize tag.`
+
 `If the other fragment is nil, abort with "_Internal error - transmogrify a fragment (exit)"; exit.`
+
 `Attach $E9 and the other fragment's address to the fragment.  \ jmp the destination's address`
 
 `To transmogrify a fragment (increment):`
+
 `If the fragment's variable is nil, abort with "_Internal error - transmogrify a fragment (increment)"; exit.`
+
 `If the fragment's variable's kind is not "_scratch", abort with "_Internal error 2 - transmogrify a fragment (increment)"; exit.`
+
 `Attach $8185 and the fragment's variable's offset and the fragment's number to the fragment's code. \ add [ebp+the fragment's variable's offset],the fragment's number`
 
 `To transmogrify a fragment (jump false):`
+
 `Find another fragment given the fragment and the end if tag.`
+
 `If the other fragment is nil, abort with "_Internal error - transmogrify a fragment (jump false)"; exit.`
+
 `Attach $83F800 to the fragment's code. \ cmp eax,0 `
+
 `Attach $0F84 and the other fragment's address to the fragment.  \ je the destination's address`
 
 `To transmogrify a fragment (load address):`
+
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
+
 `Attach $8995 and the fragment's other variable's offset to the fragment's code.  \ mov [ebp+the fragment's variable's offset],edx`
 
 `To transmogrify a fragment (load eax):`
+
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
+
 `If the fragment's variable is nil, abort with "_Internal error - transmogrify a fragment (load eax)"; exit.`
+
 `If the fragment's variable's type is nil, abort with "_Internal error 2 - transmogrify a fragment (load eax)"; exit.`
+
 `If the fragment's variable's type's length is not 4, abort with "_Internal error 3 - transmogrify a fragment (load eax)"; exit.`
+
 `Attach $8B02 to the fragment's code. \ mov eax,[edx]`
 
 `To transmogrify a fragment (not):`
+
 `Attach $83F001 to the fragment's code. \ xor eax,1`
 
 `To transmogrify a fragment (prolog):`
+
 `Attach $55 to the fragment's code. \ push ebp`
+
 `Attach $8BEC to the fragment's code. \ mov ebp,esp`
+
 `Put the current routine's local size divided by 4 into a number.`
+
 `If the number is not 0, attach $B9 and the number and $6A004975FB to the fragment's code. \ mov ecx,number; loop: push 0; dec ecx; jnz loop `
+
 `If the current routine's callback flag is set, attach $535657 to the fragment's code.  \ push ebx, esi, edi`
 
 `To transmogrify a fragment (push address):`
+
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
+
 `Attach $52 to the fragment's code. \ push edx`
 
 `To transmogrify a fragment (push value):`
+
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
+
 `If the fragment's variable is nil, abort with "_Internal error - transmogrify a fragment (push value)"; exit.`
+
 `If the fragment's variable's type is nil, abort with "_Internal error 2 - transmogrify a fragment (push value)"; exit.`
+
 `Put the fragment's variable's type's length into a length.`
+
 `If the length is 4, attach $FF32 to the fragment's code; exit.  \ push [edx] `
+
 `If the length is 2, attach $66FF32 to the fragment's code; exit.  \ push word ptr [edx] `
+
 `If the length is 1, attach $0FB61252 to the fragment's code; exit.  \ movzxb edx,[edx]; push edx `
+
 `Abort with "_Internal error 3 - transmogrify a fragment (push value)".`
 
 `To transmogrify a fragment (repeat):`
+
 `Find another fragment given the fragment and the loop tag (backwards).`
+
 `If the other fragment is nil, abort with "_Internal error - transmogrify a fragment (repeat)"; exit.`
+
 `Attach $E9 and the other fragment's address to the fragment.  \ jmp the destination's address`
 
 `To transmogrify a fragment (routine address):`
+
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
+
 `If the fragment's routine is nil, abort with "_Internal error - transmogrify a fragment (routine address)"; exit.`
+
 `Get an address given the fragment's routine.`
+
 `Attach $C702 and the address to the fragment's code. \ mov [edx],the address`
 
 `To transmogrify a fragment (save eax):`
+
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
+
 `If the fragment's variable is nil, abort with "_Internal error - transmogrify a fragment (save eax)"; exit.`
+
 `If the fragment's variable's type is nil, abort with "_Internal error 2 - transmogrify a fragment (save eax)"; exit.`
+
 `Put the fragment's variable's type's length into a length.`
+
 `If the length is 4, attach $8902 to the fragment's code; exit.  \ mov [edx],eax `
+
 `If the length is 2, attach $668902 to the fragment's code; exit.  \ mov [edx],ax `
+
 `If the length is 1, attach $8802 to the fragment's code; exit.  \ mov [edx],al `
+
 `Abort with "_Internal error 3 - transmogrify a fragment (save eax)".`
 
 If you're wondering why we only need 18 fragment transmogrifiers when we have 21 fragment types, it's because 3 of those fragment types don't require transmogrification. The END IF, LOOP, and FINALIZE tags are just labels that we stick in there (and address) so we have places to jump to.
@@ -6836,13 +10495,21 @@ If you're wondering why we only need 18 fragment transmogrifiers when we have 21
 247. Some of the transmogrifiers need a little help from this guy...
 
 `To attach address loading code to a hex string given a variable: \ loads into edx`
+
 `If the variable is nil, attach $C7C200000000 to the hex string; exit. \ mov edx,0`
+
 `If the variable's kind is "_global", attach $C7C2 and the variable's address to the hex string; exit. \ mov edx,the variable's address`
+
 `If the variable's kind is "_literal", attach $C7C2 and the variable's address to the hex string; exit. \ mov edx,the variable's address`
+
 `If the variable's kind is "_local", attach $8D95 and the variable's offset to the hex string; exit. \ lea edx,[ebp+the variable's offset]`
+
 `If the variable's kind is "_scratch", attach $8B95 and the variable's offset to the hex string; exit. \ mov edx,[ebp+the variable's offset]`
+
 `If the variable's kind is not "_parameter", abort with "_Internal error - attach address loading code to a hex string given a variable"; exit.`
+
 `If the variable's by-value flag is set, attach $8D95 and the variable's offset to the hex string; exit. \ lea edx,[ebp+the variable's offset]`
+
 `Attach $8B95 and the variable's offset to the hex string. \ mov edx,[ebp+the variable's offset]`
 
 
@@ -6850,32 +10517,50 @@ If you're wondering why we only need 18 fragment transmogrifiers when we have 21
 
 
 `To attach an hex string and an address to a fragment: \ call or jump`
+
 `Put the address into a number.`
+
 `Subtract the fragment's address from the number.`
+
 `Subtract the fragment's code's length from the number.`
+
 `Subtract the hex string's length from the number.`
+
 `Subtract 4 from the number.`
+
 `Attach the hex string and the number to the fragment's code.`
 
 
 `To attach a hex string and a number and another hex string to a third hex string:`
+
 `Append the hex string to the third hex string.`
+
 `Convert the number to a fourth hex string.`
+
 `Append the fourth hex string to the third hex string.`
+
 `Append the other hex string to the third hex string.`
 
 
 `To attach a hex string and a number and another number to another hex string:`
+
 `Append the hex string to the other hex string.`
+
 `Convert the number to a third hex string.`
+
 `Append the third hex string to the other hex string.`
+
 `Convert the other number to a fourth hex string.`
+
 `Append the fourth hex string to the other hex string.`
 
 
 `To attach a hex string and a number to another hex string:`
+
 `Append the hex string to the other hex string.`
+
 `Convert the number to a third hex string.`
+
 `Append the third hex string to the other hex string.`
 
 
@@ -6886,12 +10571,19 @@ If you're wondering why we only need 18 fragment transmogrifiers when we have 21
 
 
 `To get an address given a routine:`
+
 `If the routine's address is not 0, put the routine's address into the address; exit.`
+
 `Put -1 into the routine's address.`
+
 `Find another routine given the routine's employs moniker and the routine index.`
+
 `If the other routine is nil, abort with "_I can't find the '_" then the routine's employs moniker then "_' routine you're trying to employ._" and the routine's locus; exit.`
+
 `If the other routine's address is -1, abort with "_Recursive reference in employ clause._" and the routine's locus; exit.`
+
 `Get the address given the other routine.`
+
 `Put the address into the routine's address.`
 
 
@@ -6901,20 +10593,32 @@ If you're wondering why we only need 18 fragment transmogrifiers when we have 21
 
 
 `To find a fragment given another fragment and a tag:`
+
 `Put the other fragment into the fragment.`
+
 `Loop.`
+
 `If the fragment is nil, exit.`
+
 `If the fragment's tag is the tag, exit.`
+
 `Put the fragment's next into the fragment.`
+
 `Repeat.`
 
 
 `To find a fragment given another fragment and a tag (backwards):`
+
 `Put the other fragment into the fragment.`
+
 `Loop.`
+
 `If the fragment is nil, exit.`
+
 `If the fragment's tag is the tag, exit.`
+
 `Put the fragment's previous into the fragment.`
+
 `Repeat.`
 
 
@@ -6925,29 +10629,53 @@ If you're wondering why we only need 18 fragment transmogrifiers when we have 21
 
 
 `/routine/abort from/given/with/using [string]/yes/no/no/no//4/12/00419000/`
+
 `/variable/parameter/yes/string/string/string/string/00000008/no/1/no////`
+
 `/variable/scratch/yes/~S7063//flag/flag/FFFFFFFC/no/1/no////`
+
 `/variable/scratch/yes/~S7064//flag/flag/FFFFFFF8/no/1/no////`
+
 `/variable/scratch/yes/~S7065//abort message/abort message/FFFFFFF4/no/1/no////`
+
 `/fragment/prolog/////00000000/00419000/558BECB9030000006A004975FB/`
+
 `/fragment/loop/////00000000/0041900D//`
+
 `/fragment/load address/compiler/~S7063///00000000/0041900D/C7C2402040008995FCFFFFFF/`
+
 `/fragment/increment/~S7063////00000014/00419019/8185FCFFFFFF14000000/`
+
 `/fragment/push address/~S7063////00000000/00419023/8B95FCFFFFFF52/`
+
 `/fragment/call internal///[flag] is/are set//00000000/0041902A/E899160300/`
+
 `/fragment/jump false/////00000000/0041902F/83F8000F8405000000/`
+
 `/fragment/exit/////00000000/00419038/E94B000000/`
+
 `/fragment/end if/////00000000/0041903D//`
+
 `/fragment/load address/compiler/~S7064///00000000/0041903D/C7C2402040008995F8FFFFFF/`
+
 `/fragment/increment/~S7064////00000014/00419049/8185F8FFFFFF14000000/`
+
 `/fragment/push address/~S7064////00000000/00419053/8B95F8FFFFFF52/`
+
 `/fragment/call internal///set [flag]//00000000/0041905A/E8117B0500/`
+
 `/fragment/load address/compiler/~S7065///00000000/0041905F/C7C2402040008995F4FFFFFF/`
+
 `/fragment/increment/~S7065////00000018/0041906B/8185F4FFFFFF18000000/`
+
 `/fragment/push address/~S7065////00000000/00419075/8B95F4FFFFFF52/`
+
 `/fragment/push address/string////00000000/0041907C/8B950800000052/`
+
 `/fragment/call internal///put [string] in/into/to [string]//00000000/00419083/E8F8130500/`
+
 `/fragment/finalize/////00000000/00419088//`
+
 `/fragment/epilog/////00000000/00419088/8BE55DC204000000/`
 
 
@@ -6963,82 +10691,155 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 252. Let's begin by grabbing the three ugly types we need for Windows:
 
 `A dos header is a record with`
+
 `A wyrd called signature,`
+
 `A wyrd called numberofbytesonlastpage,`
+
 `A wyrd called numberofpages,`
+
 `A wyrd called relocuss,`
+
 `A wyrd called sizeofheaderinparagraphs,`
+
 `A wyrd called minimumextraparagraphs,`
+
 `A wyrd called maximumextraparagraphs,`
+
 `A wyrd called initialrelativess,`
+
 `A wyrd called initialsp,`
+
 `A wyrd called initialchecksum,`
+
 `A wyrd called initialip,`
+
 `A wyrd called initialirelativecs,`
+
 `A wyrd called addressofrelocationtableinfile,`
+
 `A wyrd called overlynumber,`
+
 `8 bytes called resveredbytes,`
+
 `A wyrd called oemidentifier,`
+
 `A wyrd called oeminfo,`
+
 `20 bytes called reservedwords, `
+
 `A number called addressofpeheaderinfile.`
 
 `A pe header is a record with`
+
 `A number called signature,`
+
 `A wyrd called machinetype,`
+
 `A wyrd called numberofsections,`
+
 `A number called timestamp,`
+
 `A number called pointertosymboltable,`
+
 `A number called numberofsymbols,`
+
 `A wyrd called sizeofoptionalheaderinbytes,`
+
 `A wyrd called characteristics,`
+
 `\ optional header`
+
 `A wyrd called magicnumber,`
+
 `A byte called majorlinkerversion,`
+
 `A byte called minorlinkerversion,`
+
 `A number called sizeofcodeinfile,`
+
 `A number called sizeofinitializeddatainfile,`
+
 `A number called sizeofuninitializeddatainfile,`
+
 `A number called addressofentrypointinmemory,`
+
 `A number called addressofcodeinmemory,`
+
 `A number called addressofinitializeddatainmemory,`
+
 `A number called imagebase,`
+
 `A number called memoryalignment,`
+
 `A number called filealignment,`
+
 `A wyrd called osmajorversion,`
+
 `A wyrd called osminorversion,`
+
 `A wyrd called usermajorversion,`
+
 `A wyrd called userminorversion,`
+
 `A wyrd called subsystemmajorversion,`
+
 `A wyrd called subsystemminorversion,`
+
 `A number called reserved,`
+
 `A number called sizeofimageinmemory,`
+
 `A number called sizeofallheadersinfile,`
+
 `A number called checksum,`
+
 `A wyrd called subsystem,`
+
 `A wyrd called dllcharacteristics,`
+
 `A number called maxstack,`
+
 `A number called minstack,`
+
 `A number called maxheap,`
+
 `A number called minheap,`
+
 `A number called loaderflags,`
+
 `\ directories (16 address and size pairs)`
+
 `A number called numberofdirectories,`
+
 `8 bytes called directory0,`
+
 `A number called imagedirectoryentryimportaddress,`
+
 `A number called imagedirectoryentryimportsize,`
+
 `112 bytes called directories2-15,`
+
 `A pe section header called idata section,`
+
 `A pe section header called data section,`
+
 `A pe section header called code section.`
 
 `A pe section header is a record with`
+
 `8 bytes called name,`
+
 `A number called sizeinbytes,`
+
 `A number called addressinmemory,`
+
 `A number called sizeinfile,`
+
 `A number called addressinfile,`
+
 `12 bytes called reserved,`
+
 `A number called characteristics.`
 
 
@@ -7046,22 +10847,39 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 
 
 `To compile a directory:`
+
 `Compile the directory (start).`
+
 `Compile the directory (load the source files).`
+
 `Compile the directory (scan the source files).`
+
 `Compile the directory (resolve the types).`
+
 `Compile the directory (resolve the globals).`
+
 `Compile the directory (compile the headers of the routines).`
+
 `Compile the directory (calculate lengths and offsets of types).`
+
 `Compile the directory (add the built-in memory routines).`
+
 `Compile the directory (index the routines for utility use).`
+
 `Compile the directory (compile the bodies of the routines).`
+
 `Compile the directory (add and compile the built-in startup routine).`
+
 `Compile the directory (offset parameters and variables).`
+
 `Compile the directory (address).`
+
 `Compile the directory (transmogrify).`
+
 `Compile the directory (link).`
+
 `Compile the directory (write the exe).`
+
 `Compile the directory (stop).`
 
 
@@ -7069,10 +10887,15 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 
 
 `To compile a directory (link):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Linking...".`
+
 `Start the linking timer.`
+
 `Link.`
+
 `Stop the linking timer.`
 
 
@@ -7080,15 +10903,25 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 
 
 `To link:`
+
 `Round up borough sizes.`
+
 `Initialize a dos header.`
+
 `Initialize a pe header.`
+
 `Fill the compiler's exe with the null byte given the compiler's exe size.`
+
 `Blurt the dos header into the compiler's exe.`
+
 `Blurt the pe header into the compiler's exe.`
+
 `Blurt the imports into the compiler's exe.`
+
 `Blurt the globals into the compiler's exe.`
+
 `Blurt the literals into the compiler's exe.`
+
 `Blurt the routines into the compiler's exe.`
 
 
@@ -7096,11 +10929,17 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 
 
 `To round up borough sizes:`
+
 `Put the import borough's length into the import borough's size.`
+
 `Round the import borough's size up to the nearest multiple of 4096.`
+
 `Put the data borough's length into the data borough's size.`
+
 `Round the data borough's size up to the nearest multiple of 4096.`
+
 `Put the code borough's length into the code borough's size.`
+
 `Round the code borough's size up to the nearest multiple of 4096.`
 
 
@@ -7108,99 +10947,169 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 
 
 `To initialize a dos header:`
+
 `Put 23117 [$5A4D] into the dos header's signature.`
+
 `Put 64 [$0040] into the dos header's addressofrelocationtableinfile.`
+
 `Put 256 [$00000100] into the dos header's addressofpeheaderinfile.`
 
 
 `To initialize a pe header:`
+
 `Initialize the pe header (standard header).`
+
 `Initialize the pe header (optional header).`
+
 `Initialize the pe header (version information).`
+
 `Initialize the pe header (directories).`
+
 `Initialize the pe header (import section).`
+
 `Initialize the pe header (data section).`
+
 `Initialize the pe header (code section).`
 
 
 `To initialize a pe header (code section):`
+
 `Copy bytes from "_code  "_'s first to the pe header's code section's name's whereabouts for 6.`
+
 `Put the code borough's length into the pe header's code section's sizeinbytes.`
+
 `Put the code borough's base into the pe header's code section's addressinmemory.`
+
 `Put the code borough's length into the pe header's code section's sizeinfile.`
+
 `Put the code borough's base into the pe header's code section's addressinfile.`
+
 `Put -536870880 [$E0000020] into the pe header's code section's characteristics. \ executable, readable, writable, code object`
 
 
 `To initialize a pe header (data section):`
+
 `Copy bytes from "_data  "_'s first to the pe header's data section's name's whereabouts for 6.`
+
 `Put the data borough's length into the pe header's data section's sizeinbytes.`
+
 `Put the data borough's base into the pe header's data section's addressinmemory.`
+
 `Put the data borough's length into the pe header's data section's sizeinfile.`
+
 `Put the data borough's base into the pe header's data section's addressinfile.`
+
 `Put -1073741760 [$C0000040] into the pe header's data section's characteristics. \ initialized, readable, writable`
 
 
 `To initialize a pe header (directories):`
+
 `Put 16 [$00000010] into the pe header's numberofdirectories.`
+
 `Put the import borough's base into the pe header's imagedirectoryentryimportaddress.`
+
 `Put the import borough's length into the pe header's imagedirectoryentryimportsize.`
 
 
 `To initialize a pe header (import section):`
+
 `Copy bytes from "_idata "_'s first to the pe header's idata section's name's whereabouts for 6.`
+
 `Put the import borough's length into the pe header's idata section's sizeinbytes.`
+
 `Put the import borough's base into the pe header's idata section's addressinmemory.`
+
 `Put the import borough's length into the pe header's idata section's sizeinfile.`
+
 `Put the import borough's base into the pe header's idata section's addressinfile.`
+
 `Put -1073741760 [$C0000040] into the pe header's idata section's characteristics. \ initialized, readable, writable`
 
 
 `To initialize a pe header (optional header):`
+
 `Put 267 [$010B] into the pe header's magicnumber.`
+
 `Put the code borough's length into the pe header's sizeofcodeinfile.`
+
 `Put the data borough's length into the pe header's sizeofinitializeddatainfile.`
+
 `Put 0 into the pe header's sizeofuninitializeddatainfile.`
+
 `Find a routine given "_~initialize before run and run and finalize after run_" and the routine index.`
+
 `If the routine is nil, abort with "_Internal error: could not find the startup routine"; exit.`
+
 `Put the routine's address minus the image base into the pe header's addressofentrypointinmemory.`
+
 `Put the code borough's base into the pe header's addressofcodeinmemory.`
+
 `Put the data borough's base into the pe header's addressofinitializeddatainmemory.`
+
 `Put the image base into the pe header's imagebase.`
+
 `Put 4096 [$00001000] into the pe header's memoryalignment.`
+
 `Put 4096 [$00001000] into the pe header's filealignment.`
+
 `Put 0 into the pe header's reserved.`
+
 `Put the compiler's exe size into the pe header's sizeofimageinmemory.`
+
 `Put 4096 [section base] into the pe header's sizeofallheadersinfile.`
+
 `Put 0 into the pe header's checksum.`
+
 `Put 0 into the pe header's dllcharacteristics.`
+
 `Put 1048576 [$00100000] into the pe header's maxstack.`
+
 `Put 16384 [$00004000] into the pe header's minstack.`
+
 `Put 1048576 [$00100000] into the pe header's maxheap.`
+
 `Put 16384 [$00004000] into the pe header's minheap.`
+
 `Put 0 into the pe header's loaderflags.`
 
 
 `To initialize a pe header (standard header):`
+
 `Put 17744 [$00004550] into the pe header's signature.`
+
 `Put 332 [$014C] into the pe header's machinetype.`
+
 `Put 3 [$0003] into the pe header's numberofsections.`
+
 `Put 0 into the pe header's timestamp.`
+
 `Put 0 into the pe header's pointertosymboltable.`
+
 `Put 0 into the pe header's numberofsymbols.`
+
 `Put 224 [$00E0] into the pe header's sizeofoptionalheaderinbytes.`
+
 `Put 33166 [$818E] into the pe header's characteristics.`
 
 
 `To initialize a pe header (version information):`
+
 `Put 0 into the pe header's majorlinkerversion.`
+
 `Put 0 into the pe header's minorlinkerversion.`
+
 `Put 4 [$0004] into the pe header's osmajorversion.`
+
 `Put 0 [$0000] into the pe header's osminorversion.`
+
 `Put 0 into the pe header's usermajorversion.`
+
 `Put 0 into the pe header's userminorversion.`
+
 `Put 4 [$0004] into the pe header's subsystemmajorversion.`
+
 `Put 0 [$0000] into the pe header's subsystemminorversion.`
+
 `Put 2 [$0002] into the pe header's subsystem.`
 
 
@@ -7208,9 +11117,13 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 
 
 `To put the compiler's exe size into a size:`
+
 `Put 4096 [section base] into the size.`
+
 `Add the import borough's size to the size.`
+
 `Add the data borough's size to the size.`
+
 `Add the code borough's size to the size.`
 
 
@@ -7218,99 +11131,151 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 
 
 `To blurt bytes given a pointer and a length and a buffer and an offset:`
+
 `Put the buffer's first plus the offset into another pointer.`
+
 `Copy bytes from the pointer to the other pointer for the length.`
 
 
 `To blurt a dos header into a buffer:`
+
 `Blurt bytes given the dos header's whereabouts and the dos header's magnitude and the buffer and 0.`
 
 
 `To blurt some entries into a buffer:`
+
 `Get an entry from the entries.`
+
 `If the entry is nil, exit.`
+
 `Blurt the entry into the buffer.`
+
 `Repeat.`
 
 
 `To blurt an entry into a buffer:`
+
 `Blurt bytes given the entry's name address's whereabouts and 4 and the buffer and the entry's thunk address.`
+
 `Put the entry's name address plus 2 into an address.`
+
 `Blurt the entry's name into the buffer at the address.`
 
 
 `To blurt a fragment into a buffer:`
+
 `If the fragment's code is blank, exit.`
+
 `Put the fragment's address minus the image base into an address.`
+
 `Blurt the fragment's code into the buffer at the address.`
 
 
 `To blurt some fragments into a buffer:`
+
 `Get a fragment from the fragments.`
+
 `If the fragment is nil, exit.`
+
 `Blurt the fragment into the buffer.`
+
 `Repeat.`
 
 
 `To blurt an import into a buffer:`
+
 `Blurt bytes given the import's import header's whereabouts and the import's import header's magnitude and the buffer and the import's header address.`
+
 `Blurt the import's name into the buffer at the import's name address.`
+
 `Blurt the import's entries into the buffer.`
 
 
 `To blurt some imports into a buffer:`
+
 `Get an import from the imports.`
+
 `If the import is nil, exit.`
+
 `Blurt the import into the buffer.`
+
 `Repeat.`
 
 
 `To blurt a pe header into a buffer:`
+
 `Blurt bytes given the pe header's whereabouts and the pe header's magnitude and the buffer and 256.`
 
 
 `To blurt a routine into a buffer:`
+
 `If the routine's compiled flag is not set, exit.`
+
 `Blurt the routine's fragments into the buffer.`
 
 
 `To blurt some routines into a buffer:`
+
 `Get a routine from the routines.`
+
 `If the routine is nil, exit.`
+
 `Blurt the routine into the buffer.`
+
 `Repeat.`
 
 
 `To blurt a string into a buffer at an address:`
+
 `Blurt bytes given the string's first and the string's length and the buffer and the address.`
 
 
 `To blurt a variable into a buffer:`
+
 `If the variable's compiled flag is not set, exit.`
+
 `If the variable's type can be reduced to "_string", blurt the variable into the buffer (as a string); exit.`
+
 `Put the variable's address minus the image base into an address.`
+
 `Blurt the variable's data into the buffer at the address.`
 
 
 `To blurt a variable into a buffer (as a string):`
+
 `Put the variable's address minus the image base into an address.`
+
 `Put the variable's data's length into a length.`
+
 `Put the address into another address.`
+
 `Add a prototype string's magnitude to the other address.`
+
 `Add the image base to the other address.`
+
 `Put 0 into the prototype string's first.`
+
 `Put -1 into the prototype string's last.`
+
 `If the length is not 0, put the other address into the prototype string's first.`
+
 `If the length is not 0, put the prototype string's first plus the length minus 1 into the prototype string's last.`
+
 `Blurt bytes given the prototype string's whereabouts and the prototype string's magnitude and the buffer and the address.`
+
 `Add the prototype string's magnitude to the address.`
+
 `Blurt the variable's data into the buffer at the address.`
 
 
 `To blurt some variables into a buffer:`
+
 `Get a variable from the variables.`
+
 `If the variable is nil, exit.`
+
 `Blurt the variable into the buffer.`
+
 `Repeat.`
 
 
@@ -7321,11 +11286,17 @@ At this point we've got a complete executable sitting in our buffer in memory, a
 
 
 `To compile a directory (write the exe):`
+
 `If the compiler's abort flag is set, exit.`
+
 `Show status "_Writing...".`
+
 `Start the writing timer.`
+
 `Write the compiler's exe to the compiler's exe path.`
+
 `If the i/o error is not blank, abort with the i/o error.`
+
 `Stop the writing timer.`
 
 
@@ -7333,7 +11304,9 @@ At this point we've got a complete executable sitting in our buffer in memory, a
 
 
 `To compile a directory (stop):`
+
 `Stop the compiler's timer.`
+
 `Show status "_".`
 
 
@@ -7362,20 +11335,35 @@ If you want to see the third-generation Portable Executable we just generated, o
 
 
 `00000000  4D 5A 00 00 00 00 00 00 00 00 00 00 00 00 00 00  MZ..............`
+
 `00000010  00 00 00 00 00 00 00 00 40 00 00 00 00 00 00 00  ........@.......`
+
 `00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
+
 `00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00  ................`
+
 `00000040  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
+
 `00000050  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
+
 `00000060  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
+
 `00000070  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
+
 `00000080  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
+
 `00000090  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
+
 `000000A0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
+
 `000000B0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
+
 `000000C0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
+
 `000000D0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
+
 `000000E0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
+
 `000000F0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
 
 
