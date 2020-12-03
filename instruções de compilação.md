@@ -59,13 +59,18 @@ Now let's do it.
 
 
 `To abort with a string:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Set the compiler's abort flag.`
+
 `Put the string into the compiler's abort message.`
 
 
 `To abort with a string and a byte pointer:`
+
 `If the compiler's abort flag is set, exit.`
+
 `Set the compiler's abort flag.`
 `Put the string into the compiler's abort message.`
 `Find the compiler's abort path and the compiler's abort row# given the byte pointer.`
@@ -93,7 +98,9 @@ Now let's do it.
 `The compiling routine bodies timer is a timer.`
 
 `The compiling routine headers timer is a timer.`
+
 `The indexing utilities timer is a timer.`
+
 `The linking timer is a timer.`
 
 `The offsetting timer is a timer.`
