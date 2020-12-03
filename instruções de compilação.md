@@ -4026,7 +4026,7 @@ We saw earlier (in the "resolve the types" step) that when a programmer defines 
 `A source file is a thing with a path and a buffer.`
 
 
-...is modified and expanded to include (a) a "source file" type that is nothing but a pointer to a "source file record`"; (b) a "source file record" that has the same fields as the programmer specified plus "next source file" and "previous source file" pointers on the front for easy chaining; and (c) a compiler-generated type, "source files" (plural) with "first source file" and "last source file" fields that can be used as the anchor for a list. Here they are in the listing:
+...is modified and expanded to include (a) a "source file" type that is nothing but a pointer to a "source file record"; (b) a "source file record" that has the same fields as the programmer specified plus "next source file" and "previous source file" pointers on the front for easy chaining; and (c) a compiler-generated type, "source files" (plural) with "first source file" and "last source file" fields that can be used as the anchor for a list. Here they are in the listing:
 
 
 `/ - type/source file/source files/FFFFFFFF/thing/thing/source file record/source file record/0/`
@@ -4048,13 +4048,13 @@ We saw earlier (in the "resolve the types" step) that when a programmer defines 
 Now we also want the programmer to be able to program as if he took the time to write routines with these headers:
 
 
-`To allocate memory for a source file:
+`To allocate memory for a source file:`
 
 
-`To destroy a source file:
+`To destroy a source file:`
 
 
-`To destroy some source files:
+`To destroy some source files:`
 
 
 So we have the compiler add those routines as if they were in the programmer's source code, in this step.
@@ -4309,7 +4309,7 @@ Followed by the associated "deallocate" and "destroy" routines:
 `If the routine's moniker starts with "~", append the routine's body string to the buffer; advance the buffer. \*** testing only`
 
 
-...just before the "Advance the buffer` line at the end of that routine.
+...just before the "`Advance the buffer`" line at the end of that routine.
 
 
 Now run the son, open and list the daughter, and examine the listing. The finalize routine for our "~inline compiler type" now looks like this (without the word-wrap):
@@ -4341,7 +4341,7 @@ Those sentences will get compiled later with the rest of the programmer's (and o
 And that's the way we manage string memory for the programmer, and help him conveniently deal with the rest of his dynamically-allocated data.
 
 
-159. Now delete that temporary "\*** testing only" line in the son's compiler.
+159. Now delete that temporary "`\*** testing only`" line in the son's compiler.
 
 
 
@@ -4352,7 +4352,7 @@ Matching a statement (in the body of a routine) with the routine (that should be
 `To divide a number by a number giving a quotient and a remainder:`
 
 
-...which at this point is indexed as...`
+...which at this point is indexed as...
 
 
 `divide [number] by [number] giving [quotient] and [remainder]`
@@ -4365,7 +4365,7 @@ Matching a statement (in the body of a routine) with the routine (that should be
 
  
 
-...since both "quotient" and "remainder" are elsewhere defined as numbers.
+...since both "`quotient`" and "`remainder`" are elsewhere defined as numbers.
 
  
 
@@ -4597,13 +4597,13 @@ At this point, the compiler has cataloged the vocabulary and grammar that the pr
 
 `add [number] in/into/to [number]`
 
-This arrangement makes it easier to match each sentence in the body of each routine with a corresponding routine. Once we know who to call, all we have to do is make a list of the logical machine-code fragments` that will be needed to push the correct parameters and actually make the call. Each routine we call will have a body of it's own, of course, and may, in turn, call other routines, etc, etc. At the very bottom, however, we will find routines that have bodies containing only machine code, like this one...`
+This arrangement makes it easier to match each sentence in the body of each routine with a corresponding routine. Once we know who to call, all we have to do is make a list of the logical machine-code fragments that will be needed to push the correct parameters and actually make the call. Each routine we call will have a body of it's own, of course, and may, in turn, call other routines, etc, etc. At the very bottom, however, we will find routines that have bodies containing only machine code, like this one...
 
 
 `To bump a rider:`
 `Intel $8B9D08000000. \ mov ebx,[ebp+8] \ the rider `
 `Intel $FF8314000000. \ inc [ebx+20] \ the rider's token's last `
-`Intel $FF8308000000. \` inc [ebx+8] \ the rider's source's first`
+`Intel $FF8308000000. \ inc [ebx+8] \ the rider's source's first`
 
 
 ...or a call to a Windows function, like this one:
@@ -4613,16 +4613,16 @@ This arrangement makes it easier to match each sentence in the body of each rout
 `Call "kernel32.dll" "Beep" with 220 and 200.`
 
 
-Simple enough. Unfortunately, the whole affair is complicated by sentences that require additional processing and/or more than one call to properly execute. This sentence, for example...`
+Simple enough. Unfortunately, the whole affair is complicated by sentences that require additional processing and/or more than one call to properly execute. This sentence, for example...
 
 
 `Put the box's height divided by 2 into a center offset.`
 
 
-...requires fragments for on-the-fly allocation of a scratch` variable (to calculate and hold the address of the "height" field in the box record), with more fragments for on-the-fly allocation of an intermediate` variable (to hold the result we get when we secretly call the Noodle's "divide a number by another number" routine to divide the box's height by 2), with even more fragments for on-the-fly allocation of the local` "center offset" target variable that will be passed to the Noodle's bottom-level "put a number into another number" routine to fill in.`
+...requires fragments for on-the-fly allocation of a scratch variable (to calculate and hold the address of the "`height`" field in the box record), with more fragments for on-the-fly allocation of an intermediate variable (to hold the result we get when we secretly call the Noodle's "divide a number by another number" routine to divide the box's height by 2), with even more fragments for on-the-fly allocation of the local "`center offset`" target variable that will be passed to the Noodle's bottom-level "`put a number into another number`" routine to fill in.
 
 
-So let's get to it.`
+So let's get to it.
 
 
 169. In the gray, move our abort line down and uncomment the next step:
@@ -4673,7 +4673,7 @@ So let's get to it.`
 `Compile the body of the routine.`
 
 
-Note that we're not just looping thorough the routines in the order we found them; rather, we're starting with the Noodle's "initialize before run" routine (and anyone he calls), then we move on to the programmer's "run" routine (and whomever he calls), and lastly we compile the Noodle's "finalize after run" routine (and his helpers, if any). This is how we avoid compiling the bodies of routines that never get called.`
+Note that we're not just looping thorough the routines in the order we found them; rather, we're starting with the Noodle's "initialize before run" routine (and anyone he calls), then we move on to the programmer's "run" routine (and whomever he calls), and lastly we compile the Noodle's "finalize after run" routine (and his helpers, if any). This is how we avoid compiling the bodies of routines that never get called.
 
 
 171. This is the top-level routine-body compiler:
@@ -4703,13 +4703,13 @@ Note that we're not just looping thorough the routines in the order we found the
 `Put the saved routine into the current routine.`
 
 
-After dealing with possible special cases ("alternate wordings" and "employs"), this guy creates a nickname index for the routine's parameters, and then compiles the routine's prolog`, body proper`, and epilog`.`
+After dealing with possible special cases ("`alternate wordings`" and "`employs`"), this guy creates a nickname index for the routine's parameters, and then compiles the routine's prolog, body proper, and epilog.
 
 
 172. This is the guy we need to handle "alternate wordings" (implicit replacement routines):
 
 
-`To compile the body of a routine given a rider (alternate wording):
+`To compile the body of a routine given a rider (alternate wording):`
 
 `If the compiler's abort flag is set, exit.`
 `Move the rider (compiler rules).`
@@ -4766,10 +4766,10 @@ After dealing with possible special cases ("alternate wordings" and "employs"), 
 `A prototype string has a first byte pointer and a last byte pointer.`
 
 
-A term` is either a literal`, a new local variable`, or a reference to a previously defined variable`. A numeric term may have a minus or plus sign in front of it. We call these "negated" and "posigated" terms, respectively. A record term may be followed by any number of possessives indicating fields within the record (like "box's left" or "rider's token's first").`
+A term is either a literal, a new local variable, or a reference to a previously defined variable. A numeric term may have a minus or plus sign in front of it. We call these "negated" and "posigated" terms, respectively. A record term may be followed by any number of possessives indicating fields within the record (like "box's left" or "rider's token's first").
 
 
-An expression` is two or more terms separated by the infix operators plus`, minus`, times`, divided by` and then`. We say that "an expression is a term" because the result of an expression (after execution) is really just another term.`
+An expression is two or more terms separated by the infix operators plus, minus, times, divided by and then. We say that "an expression is a term" because the result of an expression (after execution) is really just another term.
 
 
 175. This is the top-level expression compiler:
@@ -4789,7 +4789,8 @@ An expression` is two or more terms separated by the infix operators plus`, minu
 `If the rider's token is "times", compile the expression given the rider (times); repeat.`
 
 
-176. This is the top-level term compiler, together with one of his trivial helpers:`
+176. This is the top-level term compiler, together with one of his trivial helpers:
+
 `To compile a term given a rider:`
 `Clear the term.`
 `If the compiler's abort flag is set, exit.`
@@ -4884,7 +4885,7 @@ An expression` is two or more terms separated by the infix operators plus`, minu
 `If the flag is not set, put "put the " then the variable's literal's name then " into the " then the variable's name then ". " into the variable's initializer string.`
 
 
-If the variable is a global, and the programmer wants us to initialize it with a literal value, we're going to need a "put" or "convert" routine to actually fill it in at run time, so we make sure we've got such a routine now. If we find one, we take a moment to compile its body, and then we fill in the variable's "initializer string" with the Plain English sentence that will do the initializing. "Global initializer" sentences are compiled in the next step.`
+If the variable is a global, and the programmer wants us to initialize it with a literal value, we're going to need a "put" or "convert" routine to actually fill it in at run time, so we make sure we've got such a routine now. If we find one, we take a moment to compile its body, and then we fill in the variable's "initializer string" with the Plain English sentence that will do the initializing. "Global initializer" sentences are compiled in the next step.
 
 
 181. Here are the seven helpers we need to find the right routines to call:
@@ -5027,7 +5028,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 `Compile the term given the rider and the name (possessive - field).`
 
 
-185. Some possessives reference compiler-defined metadata. A term's magnitude`, for example, is it's length in bytes; a term's target` is the type of data a pointer points to; and a term's whereabouts` is its address in memory.
+185. Some possessives reference compiler-defined metadata. A term's magnitude, for example, is it's length in bytes; a term's target is the type of data a pointer points to; and a term's whereabouts is its address in memory.
 
 
 `To compile a term given a rider (possessive - magnitude):`
@@ -5057,7 +5058,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 `Clear the term's phrase.`
 
 
-186. Some terms need to be "dereferenced" to be used. If, for example, we're passed the address of the address of something, we need to get past that first address to get to the thing we're actually interested in.`
+186. Some terms need to be "dereferenced" to be used. If, for example, we're passed the address of the address of something, we need to get past that first address to get to the thing we're actually interested in.
 
 
 `To compile a term given a rider (dereference):`
@@ -5272,7 +5273,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 `Compile the term given the rider (possessives).`
 
 
-Note that literals can have possessives; for example...`
+Note that literals can have possessives; for example...
 
 
 `"abcde"'s magnitude.`
@@ -5328,7 +5329,7 @@ Note that literals can have possessives; for example...`
 `Clear the term's phrase.`
 
 
-196. And this is another handy-dandy helper we need: `
+196. And this is another handy-dandy helper we need: 
 
 
 `To add several fragments given a string and a variable and another string and another variable and a third string and a third variable and a byte pointer:`
@@ -5352,7 +5353,7 @@ Note that literals can have possessives; for example...`
 `Put the term's phrase into the other term's phrase.`
 
 
-197. And these are the six guys who handle infix expressions (subordinate clauses) in Plain English sentences: `
+197. And these are the six guys who handle infix expressions (subordinate clauses) in Plain English sentences: 
 
 
 
@@ -5485,7 +5486,7 @@ Note that literals can have possessives; for example...`
 `Append the fragment to the current routine's fragments.`
 
 
-  `
+  
 
 201. Some sentences start with a Plain English keyword (like "if" or "loop"); others don't:
 
@@ -5687,7 +5688,7 @@ Note that literals can have possessives; for example...`
 
 
 
-209. A Dynamic Link Library (DLL) is a chunk of executable code that can be linked up with a program at run-time. All the Windows functions we use live in DLLs. Each DLL has to be "imported" at run-time. We have to keep track of all the DLLs (imports), and all the functions in those DLLs (entries), that a program calls. For example, this sentence...`
+209. A Dynamic Link Library (DLL) is a chunk of executable code that can be linked up with a program at run-time. All the Windows functions we use live in DLLs. Each DLL has to be "imported" at run-time. We have to keep track of all the DLLs (imports), and all the functions in those DLLs (entries), that a program calls. For example, this sentence...
 
 
 `Call "kernel32.dll" "Beep" with 220 and 200.`
@@ -5793,7 +5794,7 @@ Note that literals can have possessives; for example...`
 `Add another fragment given the save eax tag and the term's variable.`
 
 
-213. Sometimes Windows wants a pointer to one of our routines so he can call us in a non-standard and annoying way. For that, we need a special POINT command and this guy to compile it: `
+213. Sometimes Windows wants a pointer to one of our routines so he can call us in a non-standard and annoying way. For that, we need a special POINT command and this guy to compile it: 
 
 
 `To compile the next statement given a rider (point):`
@@ -5884,7 +5885,9 @@ Note that literals can have possessives; for example...`
 `Add a monikette to some monikettes given the string.`
 `Add another monikette to the monikettes given the type.`
 `Find the routine given the monikettes.`
-`Destroy the monikettes. `218. EMPLOY and POINT statements explicitly refer to other routines, and some terms implicitly refer to other routines (like "a box's center" which is an implicit reference to the function-routine "To put a box's center into a spot.") A routine reference` is a list of monikettes that refers to such a routine, and these are the routines we use to compile them:
+`Destroy the monikettes. `
+
+218. EMPLOY and POINT statements explicitly refer to other routines, and some terms implicitly refer to other routines (like "a box's center" which is an implicit reference to the function-routine "To put a box's center into a spot.") A routine reference is a list of monikettes that refers to such a routine, and these are the routines we use to compile them:
 
 
 `To compile a routine reference given a rider:`
@@ -5945,7 +5948,10 @@ Note that literals can have possessives; for example...`
 `To compile a routine reference given a rider (monikette string):`
 `If the compiler's abort flag is set, exit.`
 `Add a monikette to the routine reference given the rider's token.`
-`Move the rider (compiler rules). `219. Whew! Made it. Run it, open the daughter in the blue, and List her. Then open the listing, find "ROUTINES:" (no quotes) and you'll see a lot of scratches, intermediates, and fragments hanging on our routines. I've inserted some source lines in the listing below, in blue, to make the fragments easier to understand (the fragments generated by each statement appear below the source):
+`Move the rider (compiler rules). `
+
+
+219. Whew! Made it. Run it, open the daughter in the blue, and List her. Then open the listing, find "ROUTINES:" (no quotes) and you'll see a lot of scratches, intermediates, and fragments hanging on our routines. I've inserted some source lines in the listing below, in blue, to make the fragments easier to understand (the fragments generated by each statement appear below the source):
 
 
 `ROUTINES:`
@@ -5988,7 +5994,7 @@ Put the string into the compiler's abort message.
 `/fragment/epilog/////00000000/00000000//`
 
 
-`At the bottom of the listing you'll see that this is the part of compiling that really eats up the time:
+At the bottom of the listing you'll see that this is the part of compiling that really eats up the time:
 
 
 `TIMERS:`
@@ -6014,10 +6020,10 @@ Put the string into the compiler's abort message.
 
 `Almost home now. The rest may be tedious, but it's easy stuff.`
 
-``
 
 
-Now that we know everything in the source checks out, it's time to add one more routine of our own.`
+
+Now that we know everything in the source checks out, it's time to add one more routine of our own.
 
 
 220. Move our abort line down a notch and activate the next step:
@@ -6146,7 +6152,7 @@ Now that we know everything in the source checks out, it's time to add one more 
 
 
 
-Next time, we'll calculate the offsets for our parameters and local variables.`
+Next time, we'll calculate the offsets for our parameters and local variables.
 
 
 
@@ -6208,7 +6214,7 @@ Next time, we'll calculate the offsets for our parameters and local variables.`
 `If the parameter is nil, exit.`
 `If the routine's callback flag is set, set the parameter's by-value flag.`
 `If the parameter's previous is nil, put 8 into the parameter's offset. \ skip the return address and saved ebp `
-`If the parameter's previous is not nil, put the parameter's previous' offset plus 4 into the parameter's offset. \ all parameters are 4 bytes long
+`If the parameter's previous is not nil, put the parameter's previous' offset plus 4 into the parameter's offset. \ all parameters are 4 bytes long `
 
 `Add 4 to the routine's parameter size.`
 `Repeat.`
@@ -6260,13 +6266,13 @@ Now recall that the stack, in general, is arranged like this:
 
 
 
-Note the offset` on our parameter: 00000008. That means 8 bytes past wherever the EBP register is pointing.`
+Note the offset on our parameter: `00000008`. That means 8 bytes past wherever the EBP register is pointing.
 
 
-Note also the offsets on the local scratch` variables: FFFFFFFC, FFFFFFF8, FFFFFFF4. That's -4, -8, and -12 in regular notation, which means 4, 8, and 12 bytes to the other side of where the EBP register is pointing.`
+Note also the offsets on the local scratch variables: FFFFFFFC, FFFFFFF8, FFFFFFF4. That's -4, -8, and -12 in regular notation, which means 4, 8, and 12 bytes to the other side of where the EBP register is pointing.
 
 
-And that's it for this step. Next time, we'll give everyone (who needs one) a permanent address.`
+And that's it for this step. Next time, we'll give everyone (who needs one) a permanent address.
 
 
 
@@ -6319,7 +6325,7 @@ And that's it for this step. Next time, we'll give everyone (who needs one) a pe
 
 
 
-232. You hopefully recall that we only need five of the many possible sections that a Windows Portable Executable might have: The DOS Header, the PE Header, the Import Section, the Data Section, and the Code Section. We'll deal with the two Headers later. In the meantime, we didn't want to waste a good word like "section" on Windows' crap, so we decided to call those latter three sections "boroughs." (A borough` is an administrative division of a large city.) Here are the types we'll be needing in this step; put them back in:
+232. You hopefully recall that we only need five of the many possible sections that a Windows Portable Executable might have: The DOS Header, the PE Header, the Import Section, the Data Section, and the Code Section. We'll deal with the two Headers later. In the meantime, we didn't want to waste a good word like "section" on Windows' crap, so we decided to call those latter three sections "boroughs." (A borough is an administrative division of a large city.) Here are the types we'll be needing in this step; put them back in:
 
 
 `A borough has a base address, a length and a size.`
@@ -6332,7 +6338,7 @@ And that's it for this step. Next time, we'll give everyone (who needs one) a pe
 `The code borough is a borough.`
 
 
-The size` of a borough is its actual length` rounded up to the nearest multiple of 4096 (the virtual page size used by x86 architecture CPUs).`
+The size of a borough is its actual length rounded up to the nearest multiple of 4096 (the virtual page size used by x86 architecture CPUs).
 
 
 233. We'll also be needing a few globals to keep track of where we are; put these back in too:
@@ -6549,7 +6555,7 @@ The size` of a borough is its actual length` rounded up to the nearest multiple 
 `/variable/global/yes/addressing timer//timer/timer/00402018/no/1/no////`
 
 
-`Then jump to the literals and check out their addresses:
+Then jump to the literals and check out their addresses:
 
 
 `LITERALS:`
