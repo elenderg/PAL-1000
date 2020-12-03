@@ -1,35 +1,17 @@
+# PART 1
 This is the first part. It assumes familiarity with Plain English and the CAL-4700 development environment. Let me know how you do with it. Ask any questions that come to mind.
-
-
 When developing a compiler and integrated development environment, we need to keep three "generations" in mind:
-
-
-The CAL-4700: The program we're using to do the development.
-
-
-The CAL-4700's son: The program we're developing.
-
-
-The CAL-4700's son's daughter: The program we hope to compile with our new program.
-
-
+The *CAL-4700*: The program we're using to do the development.
+The *CAL-4700's son*: The program we're developing.
+The *CAL-4700's son's daughter*: The program we hope to compile with our new program.
 So let's get to it.
 
 
 1. Start up the CAL-4700.exe.
-
-
-2. Find the CAL-4700 directory, and use the Duplicate command to make a copy. When asked to name the copy, enter "CAL-4700's son" just like that, but without the quotes. This will keep the two directories next to each other in the Finder, and will be a constant reminder of the son's roots.
-
-
+2. Find the CAL-4700 directory, and use the Duplicate command to make a copy. When asked to name the copy, enter "*CAL-4700's son*" just like that, but without the quotes. This will keep the two directories next to each other in the Finder, and will be a constant reminder of the son's roots.
 3. Open up the new "CAL-4700's son" directory, and delete the CAL-4700.exe.
-
-
 4. Open up the six source files in the son's directory. The quick way is to just drag-select them all, and hit ENTER.
-
-
 5. In the Desktop file, find this line...
-
 
 `Put the lightest gray color into the desktop color.`
 
@@ -40,13 +22,13 @@ So let's get to it.
 `Put the lightest sky color into the desktop color.`
 
 
-6. Now it's time to geld our boy, so he can grow a new pair, bit by bit. In the Compiler file, use the Select All command followed by the Comment command to "comment out" the whole file. All the text will turn a delightful shade of blue.
+6. Now it's time to geld our boy, so he can grow a new pair, bit by bit. In the Compiler file, use the Select All command followed by the Comment command (`CTRL-T`) to "comment out" the whole file. All the text will turn a delightful shade of blue.
 
 
 The CAL's son will no longer compile or run because certain types and routines that are defined in the compiler file are referenced elsewhere in the program. So we have to put those things back. And while we're doing that, we're going to put most of the compiler's "infrastructure" and "testing" routines back as well.
 
 
-You can use the usual "find" procedure (CTRL-HOME, CTRL-F, start typing) to locate the stuff we need to put back, drag down the left edge of the work area to select the text, then use the Uncomment command (or CTRL-U) to do the deed. You should read over everything we put back, and ask questions about anything that you don't understand.
+You can use the usual "find" procedure (`CTRL-HOME`, `CTRL-F`, start typing) to locate the stuff we need to put back, drag down the left edge of the work area to select the text, then use the Uncomment command (or `CTRL-U`) to do the deed. You should read over everything we put back, and ask questions about anything that you don't understand.
 
 
 Now let's do it.
@@ -84,40 +66,28 @@ Now let's do it.
 `Abort with the string and the rider's source's last.`
 
 
-8. We'll also be needing all of our timers. There are 15 of them, corresponding to the 15 time-consuming steps in the compiler process. They look like this...`
+8. We'll also be needing all of our timers. There are 15 of them, corresponding to the 15 time-consuming steps in the compiler process. They look like this...
 
 
 `The adding built-in memory routines timer is a timer.`
-
 `The adding built-in startup routine timer is a timer.`
-
 `The addressing timer is a timer.`
-
 `The calculating timer is a timer.`
-
 `The compiling routine bodies timer is a timer.`
-
 `The compiling routine headers timer is a timer.`
-
 `The indexing utilities timer is a timer.`
-
 `The linking timer is a timer.`
-
 `The offsetting timer is a timer.`
-
 `The loading timer is a timer.`
 `The resolving globals timer is a timer.`
-
 `The resolving types timer is a timer.`
 `The scanning timer is a timer.`
-
 `The transmogrifying timer is a timer.`
-
 `The writing timer is a timer.`
 
- `
+ 
 
-...and they're splattered all through the file, but you can easily put the first one back by typing CTRL-HOME, CTRL-F, "timer is a timer" (without the quotes), select and uncomment the line with END SHIFT-HOME CTRL-U. You can use CTRL-N followed by END SHIFT-HOME CTRL-U for the rest.`
+...and they're splattered all through the file, but you can easily put the first one back by typing CTRL-HOME, CTRL-F, "timer is a timer" (without the quotes), select and uncomment the line with `END SHIFT-HOME CTRL-U`. You can use `CTRL-N` followed by `END SHIFT-HOME CTRL-U` for the rest.
 
 
 9. Find this type definition and put it back as well:
@@ -211,37 +181,33 @@ Now let's do it.
 `Append the variable's name to the buffer (with separator).`
 
 
-12. Woohoo! Done with the "A"s. Now we need to put our tags back, which are splattered around like the timers. There are 22 of them. Look for "is a tag equal to" and use the same END SHIFT-HOME CTRL-U keyboard sequence to make quick work of putting them back. Don't forget the tag type, shown here at the top:
+12. Woohoo! Done with the "A"s.
+
+
+Now we need to put our tags back, which are splattered around like the timers. There are 22 of them. Look for "is a tag equal to" and use the same `END SHIFT-HOME CTRL-U` keyboard sequence to make quick work of putting them back. Don't forget the tag type, shown here at the top:
 
 
 `A tag is a number.`
 
 
 `The break tag is a tag equal to 1.`
-
 `The call external tag is a tag equal to 2.`
-
 `The call indirect tag is a tag equal to 3.`
-
 `The call internal tag is a tag equal to 4.`
 `The dereference tag is a tag equal to 5.`
-
 `The end if tag is a tag equal to 6.`
 `The epilog tag is a tag equal to 7.`
-
 `The exit tag is a tag equal to 8.`
 `The finalize tag is a tag equal to 9.`
 `The increment tag is a tag equal to 10.`
 `The intel tag is a tag equal to 11.`
 `The jump false tag is a tag equal to 12.`
 `The load address tag is a tag equal to 13.`
-
 `The load eax tag is a tag equal to 14.`
 `The loop tag is a tag equal to 15.`
 `The not tag is a tag equal to 16.`
 `The prolog tag is a tag equal to 17.`
 `The push address tag is a tag equal to 18.`
-
 `The push value tag is a tag equal to 19.`
 `The repeat tag is a tag equal to 21.`
 `The routine address tag is a tag equal to 22.`
@@ -278,7 +244,7 @@ While you're doing that, think about this: those 22 tags define the only things 
 In this case, don't uncomment the whole routine. Uncomment only the header, and add the "abort" line you see above. Note the two periods in the abort message, one inside and one outside the string. Leave the rest blue.
 
 
-Isn't it handy to be able to see, at a glance, which parts of the program are commented, and which parts are not? Now that's `a proper use of color-coding.`
+Isn't it handy to be able to see, at a glance, which parts of the program are commented, and which parts are not? Now that's A proper use of color-coding.
 
 
 14. Time to put back the compiler record:
@@ -326,7 +292,6 @@ Isn't it handy to be able to see, at a glance, which parts of the program are co
 
 
 There's one "entry" for each DLL routine that we call.
-
 
 17. Now we're up to the "F"s. Let's put back the finalize routine:`
 
@@ -377,7 +342,7 @@ There's one "entry" for each DLL routine that we call.
 `The utility index is an index.`
 
 
-While you're putting those back, think about this: All a compiler really has to do, as it wades through source code, is to collect the information it needs to put GLOBALS, LITERALS, and ROUTINES in the right places in an EXE file. It uses TYPES to tell it how big things are, but types don't end up anywhere in the EXE. The rest is decoration. If you're wondering about the Utility Index, it's used to allow generic routines to operate on types that aren't formally specified in their headers. For example, the "number" type and the "pointer" type are distinct in our Noodle; but pointers are really just numbers, so routines like "To add a number to another number" ought to work on pointers as well as numbers. So, as you'll see later, we do a little type trickery, using the Utility Index, to allow that to happen.
+While you're putting those back, think about this: All a compiler really has to do, as it wades through source code, is to collect the information it needs to put *GLOBALS, LITERALS, and ROUTINES* in the right places in an EXE file. It uses *TYPES* to tell it how big things are, but types don't end up anywhere in the EXE. The rest is decoration. If you're wondering about the Utility Index, it's used to allow generic routines to operate on types that aren't formally specified in their headers. For example, the "number" type and the "pointer" type are distinct in our *Noodle* but pointers are really just numbers, so routines like "To add a number to another number" ought to work on pointers as well as numbers. So, as you'll see later, we do a little type trickery, using the Utility Index, to allow that to happen.
 
 
 21. Now put back these three guys:
@@ -786,7 +751,7 @@ Again, there's no global list of parameters because they're kept on separate lis
 These routines let us say "the compiler's exe path" and "the compiler's listing path" as if those two things were fields in the compiler record. Kind of like "derived data" or a "calculated field" in a database.
 
 
-32. Now some routine stuff:`
+32. Now some routine stuff:
 
 
 `A routine body is a substring.`
@@ -814,25 +779,25 @@ These routines let us say "the compiler's exe path" and "the compiler's listing 
 `An address.`
 
 
-A routine reference is some monikettes.`
+`A routine reference is some monikettes.`
 
 
-The routines are some routines.`
+`The routines are some routines.`
 
 
-33. Almost there. Up to the "S"s. Let's not forget the source code! Put these back in:`
+33. Almost there. Up to the "S"s. Let's not forget the source code! Put these back in:
 
 
-A source file is a thing with a path and a buffer.`
+`A source file is a thing with a path and a buffer.`
 
 
-The source files are some source files.`
+`The source files are some source files.`
 
 
-34. We need our type stuff, too:`
+34. We need our type stuff, too:
 
 
-A type is a thing with`
+`A type is a thing with`
 `A locus (reference),`
 `A name, a plural name,`
 `A partial moniker,`
@@ -845,16 +810,16 @@ A type is a thing with`
 `A optional info resolved flag.`
 
 
-A type name is a name.`
+`A type name is a name.`
 
 
-The types are some types.`
+`The types are some types.`
 
 
-35. And last but not least, our multi-purpose variable record:`
+35. And last but not least, our multi-purpose variable record:
 
 
-A variable is a thing with`
+`A variable is a thing with`
 `A locus (reference),`
 `A kind [literal, global, local, parameter, scratch],`
 `A compiled flag,`
@@ -872,28 +837,28 @@ A variable is a thing with`
 `A hex string called data [literals only].`
 
 
-And that's almost` it for this time around. Let's test. `
+And that's almost it for this time around. Let's test. 
 
 
-36. Run the CAL-4700's son. Assuming it worked, congratulations are in order. It's a boy! And the blue desktop will serve to remind us which generation we're in. ALT-TAB back and forth a couple of times.`
+36. Run the CAL-4700's son. Assuming it worked, congratulations are in order. It's a boy! And the blue desktop will serve to remind us which generation we're in. ALT-TAB back and forth a couple of times.
 
 
-37. Now let's try to make a grand-baby. Working in the CAL-4700's son (blue desktop), find the CAL-4700's son directory and use the Duplicate command to make a copy. Call it "CAL-4700's son's daughter" too keep the family together in the Finder.`
+37. Now let's try to make a grand-baby. Working in the CAL-4700's son (blue desktop), find the CAL-4700's son directory and use the Duplicate command to make a copy. Call it "CAL-4700's son's daughter" too keep the family together in the Finder.
 
 
-38. Now, still in the blue, open up the daughter and delete the CAL-4700's son.exe.`
+38. Now, still in the blue, open up the daughter and delete the CAL-4700's son.exe.
 
 
-39. Still in the blue, open up the six source files in the daughter directory.`
+39. Still in the blue, open up the six source files in the daughter directory.
 
 
-40. Change the line in the daughter's desktop that says...`
+40. Change the line in the daughter's desktop that says...
 
 
-Put the lightest sky color into the desktop color.`
+`Put the lightest sky color into the desktop color.`
 
 
-...to say...`
+...to say...
 
 
 `Put the lightest red color into the desktop color.`
@@ -902,25 +867,23 @@ Put the lightest sky color into the desktop color.`
 41. Now, still in the blue, try to compile or run or list the daughter. You should get this message:``
 
 
-"I'm not old enough to make babies."`
+"I'm not old enough to make babies."
 
-Ta Da! End of Part 01.`
+_Ta Da! End of Part 01._
 
-
- `
-
+# PART 02
 
 
-Here are the rest of the parts. A graphic or two may have gotten inadvertently deleted when I combined them; let me know if it looks like something important is missing.`
+Here are the rest of the parts. A graphic or two may have gotten inadvertently deleted when I combined them; let me know if it looks like something important is missing.
 
 
-So where were we? Ah, yes.`
+So where were we? Ah, yes.
 
 
-42. Close up the Son of CAL (if you haven't already) and get back to the tasteful and non-distracting gray of the CAL-4700. Then find the CAL-4700's son directory and open up the son's six source files.`
+42. Close up the Son of CAL (if you haven't already) and get back to the tasteful and non-distracting gray of the CAL-4700. Then find the CAL-4700's son directory and open up the son's six source files.
 
 
-43. Now find the "compile a directory" routine, move our temporary "abort" line down a notch, and uncomment the "Compile a directory (start)" step, like so:`
+43. Now find the "compile a directory" routine, move our temporary "abort" line down a notch, and uncomment the "Compile a directory (start)" step, like so:
 
 
 `To compile a directory:`
@@ -944,7 +907,7 @@ So where were we? Ah, yes.`
 `\Compile the directory (stop).`
 
 
-44. And put these guys back in:`
+44. And put these guys back in:
 
 
 `To compile a directory (start):`
@@ -958,10 +921,10 @@ So where were we? Ah, yes.`
 `A built-in type is a type.`
 
 
-We "Finalize the compiler" to clean up anything that might be hanging around from a previous compile.`
+We "Finalize the compiler" to clean up anything that might be hanging around from a previous compile.
 
 
-45. As you can see, we're going to need this routine, too:`
+45. As you can see, we're going to need this routine, too:
 
 
 `To initialize the compiler given a directory:`
@@ -979,7 +942,7 @@ We "Finalize the compiler" to clean up anything that might be hanging around fro
 `Create the utility index with 4027 [buckets].`
 
 
-46. Now that we've got our indices created, we can uncomment those 5 blue lines in the List routine, as well:`
+46. Now that we've got our indices created, we can uncomment those 5 blue lines in the List routine, as well:
 
 
 `To list:`
@@ -1000,13 +963,13 @@ We "Finalize the compiler" to clean up anything that might be hanging around fro
 `Write the compiler's listing to the compiler's listing path.`
 
 
-47. We're going to be needing this global variable:`
+47. We're going to be needing this global variable:
 
 
 `The current routine is a routine.`
 
 
-48. And these two routines as well:`
+48. And these two routines as well:
 
 
 `To add the built-in types:`
@@ -1021,10 +984,10 @@ We "Finalize the compiler" to clean up anything that might be hanging around fro
 `Index the built-in type.`
 
 
-Note that byte` and record` are the only types defined in the compiler itself; all the other "built-in" types (like number` and string` and ratio`, etc) are in the Noodle.`
+Note that `byte` and `record` are the only types defined in the compiler itself; all the other "built-in" types (like `number` and `string` and ratio, etc) are in *the Noodle*.
 
 
-49. We add types in a number of places when we're compiling, and sometimes it's convenient to do it one way, sometimes another. So let's put back these 3 "add a type" helper routines as well:`
+49. We add types in a number of places when we're compiling, and sometimes it's convenient to do it one way, sometimes another. So let's put back these 3 "`add a type`" helper routines as well:
 
 
 `To add a type to some types given a locus:`
@@ -1037,7 +1000,7 @@ Note that byte` and record` are the only types defined in the compiler itself; a
 `Add the type to the types given the name and the plural name and the base name and nil.`
 
 
-To add a type to some types given a name and a plural name and a base name and a locus:`
+`To add a type to some types given a name and a plural name and a base name and a locus:`
 `Create the type.`
 `Append the type to the types.`
 `Put the locus into the type's locus.`
@@ -1046,7 +1009,7 @@ To add a type to some types given a name and a plural name and a base name and a
 `Put the base name into the type's base name.`
 
 
-50. We'll also need the routine below, that allocates and initializes a type record in the Heap:`
+50. We'll also need the routine below, that allocates and initializes a type record in the Heap:
 
 
 `To create a type:`
@@ -1055,7 +1018,7 @@ To add a type to some types given a name and a plural name and a base name and a
 `Put -1 into the type's length.`
 
 
-51. And we'll need these two routines to index our types:`
+51. And we'll need these two routines to index our types:
 
 
 `To index a type:`
@@ -1107,7 +1070,7 @@ To add a type to some types given a name and a plural name and a base name and a
 `Repeat.`
 
 
-53. And that's about it for this step. Let's run it as see what we've got. Press CTRL-R.`
+53. And that's about it for this step. Let's run it as see what we've got. Press CTRL-R.
 
 
 54. Now we're in the blue. Find and open the daughter's six files, then execute the List command (CTRL-L). The compile will still abort with our "`I'm not old enough to make babies`" message, but this time a listing file will be created.`
@@ -1126,30 +1089,24 @@ To add a type to some types given a name and a plural name and a base name and a
 
 
 `/type/byte/bytes/00000001/byte/byte///0/`
-
-
 `/type/record/records/00000000/record/record///0/`
 
 
 `GLOBALS:`
 
-
 `LITERALS:`
-
 
 `ROUTINES:`
 
-
 `TYPE INDEX:`
-
 
 `/2 buckets/2 refers/`
 
 
-...which shows that our two built-in types got created and hung on the list properly, and that our type index is working, with 2 buckets used to hold 2 refers (one for each type).`
+...which shows that our two built-in types got created and hung on the list properly, and that our type index is working, with 2 buckets used to hold 2 refers (one for each type).
 
 
-And after a bunch of other stuff that we don't have, at the bottom of the listing, you'll find our timers...`
+And after a bunch of other stuff that we don't have, at the bottom of the listing, you'll find our timers...
 
 
 `TIMERS:`
@@ -1173,30 +1130,26 @@ And after a bunch of other stuff that we don't have, at the bottom of the listin
 `/timer/total/0/`
 
 
-`...which tell us we don't have any performance bottlenecks yet. Sweet.`
+...which tell us we don't have any performance bottlenecks yet. Sweet.
 
 
-`Next time, we'll find and load up the source files... Stay tuned.`
+Next time, we'll find and load up the source files... Stay tuned.
 
 
-`---`
+Alrighty, then. Time to load up our source files.
 
 
-Alrighty, then. Time to load up our source files.`
+56. Close up the Son of CAL (if you haven't already) and get back to the CAL-4700. Then find the CAL-4700's son directory and open up the son's six source files (if they're not already open).
 
 
-56. Close up the Son of CAL (if you haven't already) and get back to the CAL-4700. Then find the CAL-4700's son directory and open up the son's six source files (if they're not already open).``
+57. Now find the "`compile a directory`" routine, move our temporary "`abort`" line down another notch, and uncomment the "`Compile a directory (load the source files)`" step, like so:
 
- `
-
-57. Now find the "compile a directory" routine, move our temporary "abort" line down another notch, and uncomment the "Compile a directory (load the source files)" step, like so:``
-
- `
+ 
 
 `To compile a directory:`
 `Compile the directory (start).`
 `Compile the directory (load the source files).`
-`Abort with "I'm not old enough to make babies.".` `
+`Abort with "I'm not old enough to make babies.".` 
 `\Compile the directory (scan the source files).`
 `\Compile the directory (resolve the types).`
 `\Compile the directory (resolve the globals).`
@@ -1211,29 +1164,29 @@ Alrighty, then. Time to load up our source files.`
 `\Compile the directory (transmogrify).`
 `\Compile the directory (link).`
 `\Compile the directory (write the exe).`
-`\Compile the directory (stop).``
+`\Compile the directory (stop).`
 
- `
+ 
 
-58. Then put these 3 routines back in:``
+58. Then put these 3 routines back in:
 
- `
+ 
 
 `To compile a directory (load the source files):`
 `If the compiler's abort flag is set, exit.`
 `Show status "Loading...".`
 `Start the loading timer.`
 `Load the source files.`
-`Stop the loading timer.``
+`Stop the loading timer.`
 
- `
+ 
 
 `To load a source file:`
 `If the source file is nil, exit.`
 `Load the source file's path into the source file's buffer.`
-`If the i/o error is not blank, abort with "Could not load the file named '" then the source file's path then "'."; exit.``
+`If the i/o error is not blank, abort with "Could not load the file named '" then the source file's path then "'."; exit.`
 
- `
+ 
 
 `To load some source files:`
 `Loop.`
@@ -1245,21 +1198,15 @@ Alrighty, then. Time to load up our source files.`
 `If the item looks reamish, repeat.`
 `Add a source file to the source files given the item's path.`
 `Load the source file.`
-`Repeat.``
+`Repeat.`
 
- `
+As you know, the CAL expects a program's source code to be stored as one or more text files in a single directory. One of those files is usually a copy of the Noodle. It doesn't matter what order the files are in, and it doesn't matter what their names are, except that he will only attempt to compile files with no extension.
 
-As you know, the CAL expects a program's source code to be stored as one or more text files in a single directory. One of those files is usually a copy of the Noodle. It doesn't matter what order the files are in, and it doesn't matter what their names are, except that he will only attempt to compile files with no extension.``
+A diligent Plain English programmer, however, will typically use the CAL's Writer to author a user manual and other documentation for a program. Since it's convenient to keep such documentation in the same directory as the source code, and since such documentation files will not have an extension, we need the CAL to skip them when he's collecting source code to compile.
 
- `
+59. Internally, documents created with the CAL's writer are called "reams" (as in a "_ream of paper_"). And that's why, in the above routine, files that look "reamish" are passed over. Uncomment the decider routine shown below so the compiler will be able to recognize "reamish" files:
 
-A diligent Plain English programmer, however, will typically use the CAL's Writer to author a user manual and other documentation for a program. Since it's convenient to keep such documentation in the same directory as the source code, and since such documentation files will not have an extension, we need the CAL to skip them when he's collecting source code to compile.``
-
- `
-
-59. Internally, documents created with the CAL's writer are called "reams" (as in a "ream of paper"). And that's why, in the above routine, files that look "reamish" are passed over. Uncomment the decider routine shown below so the compiler will be able to recognize "reamish" files:``
-
- `
+ 
 
 `To decide if an item looks reamish:`
 `Load the item's path into a buffer.`
@@ -1267,7 +1214,7 @@ A diligent Plain English programmer, however, will typically use the CAL's Write
 `Say no.`
 
 
-60. We're also going to need these two routines:`
+60. We're also going to need these two routines:
 
 
 `To add a source file to some source files given a path:`
@@ -1280,14 +1227,13 @@ A diligent Plain English programmer, however, will typically use the CAL's Write
 `Allocate memory for the source file.`
 
 
-61. And we're done with this step. Let's see what we've got. Run the Son of CAL and when you've got the blue desktop up, find the son's daughter and open up her source files. Then create an updated listing file with CTRL-L.`
+61. And we're done with this step. Let's see what we've got. Run the Son of CAL and when you've got the blue desktop up, find the son's daughter and open up her source files. Then create an updated listing file with CTRL-L.
 
 
-62. Still in the blue, find and open the daughter's listing on the far right tab. The top part of the listing will be the same as before, but at the bottom you'll see something like this:`
+62. Still in the blue, find and open the daughter's listing on the far right tab. The top part of the listing will be the same as before, but at the bottom you'll see something like this:
 
 
 `SOURCE FILES:`
-
 
 `/source file/c:\cal-4700's son's daughter\the compiler/`
 `/source file/c:\cal-4700's son's daughter\the desktop/`
@@ -1298,7 +1244,6 @@ A diligent Plain English programmer, however, will typically use the CAL's Write
 
 
 `TIMERS:`
-
 
 `/timer/loading/140/`
 `/timer/scanning/0/`
@@ -1317,32 +1262,30 @@ A diligent Plain English programmer, however, will typically use the CAL's Write
 `/timer/writing/0/`
 `/timer/total/140/`
 
-` `
-`TA DA! Now we're (finally) ready to teach our boy how to read.` - `
+
+`TA DA! Now we're (finally) ready to teach our boy how to read.` 
 
 
----` - `
 
 
-` `
 
-Now that we've got all our source files in memory, it's time to see what they have to say.``
+Now that we've got all our source files in memory, it's time to see what they have to say.
 
- `
+ 
 
-63. Close up the Son of CAL (if you haven't already) and get back to the CAL-4700. Then find the CAL-4700's son directory and open up the son's six source files (if they're not already open).``
+63. Close up the Son of CAL (if you haven't already) and get back to the CAL-4700. Then find the CAL-4700's son directory and open up the son's six source files (if they're not already open).
 
- `
+ 
 
-64. Now find the "compile a directory" routine, move our temporary "abort" line down another notch, and uncomment the "Compile a directory (scan the source files)" step, like so:``
+64. Now find the "compile a directory" routine, move our temporary "abort" line down another notch, and uncomment the "Compile a directory (scan the source files)" step, like so:
 
- `
+ 
 
 `To compile a directory:`
 `Compile the directory (start).`
 `Compile the directory (load the source files).`
 `Compile the directory (scan the source files).`
-`Abort with "I'm not old enough to make babies.".` - `
+`Abort with "I'm not old enough to make babies.".`
 `\Compile the directory (resolve the types).`
 `\Compile the directory (resolve the globals).`
 `\Compile the directory (compile the headers of the routines).`
@@ -1356,26 +1299,22 @@ Now that we've got all our source files in memory, it's time to see what they ha
 `\Compile the directory (transmogrify).`
 `\Compile the directory (link).`
 `\Compile the directory (write the exe).`
-`\Compile the directory (stop).``
+`\Compile the directory (stop).`
 
- `
-
-65. We'll be needing this guy to get us going:``
-
- `
+ 
+65. We'll be needing this guy to get us going:
+ 
 
 `To compile a directory (scan the source files):`
 `If the compiler's abort flag is set, exit.`
 `Show status "Scanning...".`
 `Start the scanning timer.`
 `Scan the source files.`
-`Stop the scanning timer.``
+`Stop the scanning timer.`
 
- `
 
-And this little loop to make sure we scan all the source files in the project:``
+And this little loop to make sure we scan all the source files in the project:
 
- `
 
 `To scan some source files:`
 `If the compiler's abort flag is set, exit.`
@@ -1385,7 +1324,7 @@ And this little loop to make sure we scan all the source files in the project:``
 `Repeat.`
 
 
-`66. A Plain English program is a collection of TYPES, GLOBALS, and ROUTINES, in any order. This is the top-level scanner that goes looking for those things:` - `
+66. A Plain English program is a collection of TYPES, GLOBALS, and ROUTINES, in any order. This is the top-level scanner that goes looking for those things:
 
 
 `To scan a source file:`
@@ -1403,7 +1342,7 @@ And this little loop to make sure we scan all the source files in the project:``
 `Repeat.`
 
 
-`67. The routine above needs a lot of help, first, to move that rider around, and secondly, to do some detailed scanning once he's found a type, a global, or a routine to scan. Here's one of the "move a rider" routines that he needs:` - `
+67. The routine above needs a lot of help, first, to move that rider around, and secondly, to do some detailed scanning once he's found a type, a global, or a routine to scan. Here's one of the "move a rider" routines that he needs:
 
 
 `To move a rider (code rules - noise):`
@@ -1412,7 +1351,7 @@ And this little loop to make sure we scan all the source files in the project:``
 `If the rider's source's first's target is noise, repeat.`
 
 
-That guy simply skips any "noise" in the source file. When he's done, what's left of the rider's source will start with the next non-noise byte in the file, and the noise that was sucked up will be spanned by the rider's token. Noise is defined in the Noodle (not the compiler) like this:`
+That guy simply skips any "noise" in the source file. When he's done, what's left of the rider's source will start with the next non-noise byte in the file, and the noise that was sucked up will be spanned by the rider's token. Noise is defined in the Noodle (not the compiler) like this:
 
 
 `To decide if a byte is noise:`
@@ -1427,7 +1366,7 @@ That guy simply skips any "noise" in the source file. When he's done, what's lef
 `Say no.`
 
 
-68. Here's another "move a rider" routine we'll be needing:`
+68. Here's another "move a rider" routine we'll be needing:
 
 
 `To move a rider (code rules - comment):`
@@ -1436,10 +1375,10 @@ That guy simply skips any "noise" in the source file. When he's done, what's lef
 `If the rider's source's first's target is not the return byte, repeat.`
 
 
-This guy assumes we're sitting on the start of a comment (the backslash character) and simply sucks up bytes until he hits a return byte (the end of a line). When he's done, what's left of the rider's source will start with that return byte, and the rider's token will span the whole comment, including the backslash.`
+This guy assumes we're sitting on the start of a comment (the backslash character) and simply sucks up bytes until he hits a return byte (the end of a line). When he's done, what's left of the rider's source will start with that return byte, and the rider's token will span the whole comment, including the backslash.
 
 
-`69. We need a similar "move a rider" routine for remarks:`
+69. We need a similar "`move a rider`" routine for remarks:
 
 
 `To move a rider (code rules - remark):`
@@ -1452,10 +1391,10 @@ This guy assumes we're sitting on the start of a comment (the backslash characte
 `Repeat.  `
 
 
-This time we're starting on the start of a remark (a left-bracket "["), and we skip everything up to a return byte (the end of a line) or a closing right-bracket ("]"), allowing for the possibility that the programmer may have remarks inside his remarks. When this routine is done, what's left of the rider's source will start with either a return byte, or the first character after the closing right-bracket, and the rider's token will span the entire remark.`
+This time we're starting on the start of a remark (a left-bracket "["), and we skip everything up to a return byte (the end of a line) or a closing right-bracket ("]"), allowing for the possibility that the programmer may have remarks inside his remarks. When this routine is done, what's left of the rider's source will start with either a return byte, or the first character after the closing right-bracket, and the rider's token will span the entire remark.
 
 
-`70. We need a similar "move a rider" routine for qualifiers, which can also be "nested":`
+70. We need a similar "`move a rider`" routine for qualifiers, which can also be "nested":
 
 
 `To move a rider (code rules - qualifier):`
@@ -1467,11 +1406,9 @@ This time we're starting on the start of a remark (a left-bracket "["), and we s
 `If the count is 0, break.`
 `Repeat.`
 
- `
+ 
 
-71. And another for strings, that may include doubled-up double-quotes to indicate imbedded double-quote marks:``
-
- `
+71. And another for strings, that may include doubled-up double-quotes to indicate imbedded double-quote marks:
 
 `To move a rider (code rules - string):`
 `Bump the rider.`
@@ -1479,39 +1416,37 @@ This time we're starting on the start of a remark (a left-bracket "["), and we s
 `If the rider's source's first's target is the return byte, exit.`
 `If the rider is on any nested double-quote, bump the rider; repeat.`
 `If the rider's source's first's target is the double-quote byte, bump the rider; exit.`
-`Repeat.``
+`Repeat.`
 
- `
 
-Handling nested double-quotes requires a little help from this guy, so you should put him back in, too:``
-
- `
+Handling nested double-quotes requires a little help from this guy, so you should put him back in, too:
 
 `To decide if a rider is on any nested double-quote:`
 `If the rider's source starts with """""", say yes.`
 `Say no.`
-` `
-`72. The "move a rider" routine that handles punctuation marks looks like this:`
 
 
-To move a rider (code rules - mark):`
+72. The "move a rider" routine that handles punctuation marks looks like this:
+
+
+`To move a rider (code rules - mark):`
 `Bump the rider.`
 
 
 `All this routine does is adjust the pointers in the rider so the rider's token spans the mark, and what's left of the rider's source starts just after the mark. All punctuation marks in Plain English are single characters.`
 
 
-`73. Symbols are non-letter and non-digit and non-punctuation mark characters that are not considered noise. This the the "move a rider" routine that we use to suck them up:`
+73. Symbols are non-letter and non-digit and non-punctuation mark characters that are not considered noise. This the the "move a rider" routine that we use to suck them up:
 
 
-To move a rider (code rules - symbol):`
+`To move a rider (code rules - symbol):`
 `Bump the rider.`
 
 
-And this is the routine that decides if a byte is a symbol or not:`
+And this is the routine that decides if a byte is a symbol or not:
 
 
-To decide if a byte is any symbol:`
+`To decide if a byte is any symbol:`
 `If the byte is the caret byte, say yes.`
 `If the byte is the bar byte, say yes.`
 `If the byte is the asterisk byte, say yes.`
@@ -1536,19 +1471,19 @@ To decide if a byte is any symbol:`
 `Say no.`
 
 
-`74. Possessives come in two forms: with and without an "s" on the end. An example of the former is "Mary's house"; and example of the latter is "Jesus' Kingdom". This is the "move a rider" routine that deals with both of them:`
+74. Possessives come in two forms: with and without an "s" on the end. An example of the former is "Mary's house"; and example of the latter is "Jesus' Kingdom". This is the "move a rider" routine that deals with both of them:
 
 
-To move a rider (code rules - possessive):`
+`To move a rider (code rules - possessive):`
 `Bump the rider.`
 `If the rider's source is blank, exit.`
 `If the rider's source starts with "s", bump the rider.`
 
 
-When this routine gets control, we're sitting on a an apostrophe, so we suck it up. If there's no more source, we're done, but if the next character is an "s", we suck that up too.`
+When this routine gets control, we're sitting on a an apostrophe, so we suck it up. If there's no more source, we're done, but if the next character is an "s", we suck that up too.
 
 
-Simple enough, but we need the 3 deciders below, as well, to peek ahead in the source so we know when to use the above routine:`
+Simple enough, but we need the 3 deciders below, as well, to peek ahead in the source so we know when to use the above routine:
 
 
 `To decide if a rider is on any possessive:`
@@ -1579,10 +1514,10 @@ Simple enough, but we need the 3 deciders below, as well, to peek ahead in the s
 `Say no.`
 
 
-Note the "Privatize the rider" statements in the latter two routines. Recall that all parameters in Plain English are passed by reference, not value, so if we change them, they're actually changed. The privatize` command makes a copy of the specified parameter so we can screw with it without breaking anything above us. It cleverly gives the copy the same name as the original parameter (in this case, "the rider"), while changing the original parameter's name to include the prefix "original" (as in, "the original rider").`
+Note the "Privatize the rider" statements in the latter two routines. Recall that all parameters in Plain English are passed by reference, not value, so if we change them, they're actually changed. The privatize command makes a copy of the specified parameter so we can screw with it without breaking anything above us. It cleverly gives the copy the same name as the original parameter (in this case, "the rider"), while changing the original parameter's name to include the prefix "original" (as in, "the original rider").
 
 
-75. Anything else in the source code, at this level of detail, is considered a "glom", a collection of characters that we're not quite sure how to handle at this level. This is the "move a rider" routine that sucks up gloms:`
+75. Anything else in the source code, at this level of detail, is considered a "glom", a collection of characters that we're not quite sure how to handle at this level. This is the "move a rider" routine that sucks up gloms:
 
 
 `To move a rider (code rules - glom):`
@@ -1592,7 +1527,7 @@ Note the "Privatize the rider" statements in the latter two routines. Recall tha
 `If the rider's source's first's target is any glom byte, repeat.`
 
 
-It needs help from this decider:`
+It needs help from this decider: 
 
 
 `To decide if a byte is any glom byte:`
@@ -1611,10 +1546,10 @@ It needs help from this decider:`
 `Say no.`
 
 
-And that's it for the bottom-level "move a rider" routines.`
+And that's it for the bottom-level "move a rider" routines.
 
 
-76. All of those guys are called by this guy...`
+76. All of those guys are called by this guy...
 
 
 `To move a rider (code rules):`
@@ -1630,7 +1565,7 @@ And that's it for the bottom-level "move a rider" routines.`
 `Move the rider (code rules - glom).`
 
 
-...who is not called directly, but who is called by this fellow:`
+...who is not called directly, but who is called by this fellow:
 
 
 `To move a rider returning an error string (code rules):`
