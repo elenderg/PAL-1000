@@ -385,10 +385,10 @@ The first two are types that say global variables and fields are a lot like any 
 An "import" is a DLL. That's what Windows calls them. Ugly stuff.
 
 
-23. Let's not forget this silly little guy...`
+23. Let's not forget this silly little guy...
 
 
-`To initialize the compiler:
+`To initialize the compiler:`
 
 
 ...who does nothing at all. We put it in, and left it in, just to make Desktop code up above symmetrical.
@@ -987,7 +987,7 @@ We "Finalize the compiler" to clean up anything that might be hanging around fro
 Note that `byte` and `record` are the only types defined in the compiler itself; all the other "built-in" types (like `number` and `string` and ratio, etc) are in *the Noodle*.
 
 
-49. We add types in a number of places when we're compiling, and sometimes it's convenient to do it one way, sometimes another. So let's put back these 3 "`add a type`" helper routines as well:
+49. We add types in a number of places when we're compiling, and sometimes it's convenient to do it one way, sometimes another. So let's put back these 3 "add a type" helper routines as well:
 
 
 `To add a type to some types given a locus:`
@@ -1073,10 +1073,10 @@ Note that `byte` and `record` are the only types defined in the compiler itself;
 53. And that's about it for this step. Let's run it as see what we've got. Press CTRL-R.
 
 
-54. Now we're in the blue. Find and open the daughter's six files, then execute the List command (CTRL-L). The compile will still abort with our "`I'm not old enough to make babies`" message, but this time a listing file will be created.`
+54. Now we're in the blue. Find and open the daughter's six files, then execute the List command (CTRL-L). The compile will still abort with our "I'm not old enough to make babies" message, but this time a listing file will be created.
 
 
-55. On the far right tab, open up the daughter's directory, find the file with the ".lst" extension, and double-click it. You should see something like this at the top...`
+55. On the far right tab, open up the daughter's directory, find the file with the ".lst" extension, and double-click it. You should see something like this at the top...
 
 
 `COMPILE ABORTED - LISTING INCOMPLETE`
@@ -1085,20 +1085,20 @@ Note that `byte` and `record` are the only types defined in the compiler itself;
 `I'm not old enough to make babies.`
 
 
-`TYPES:
+`TYPES:`
 
 
 `/type/byte/bytes/00000001/byte/byte///0/`
 `/type/record/records/00000000/record/record///0/`
 
 
-`GLOBALS:
+`GLOBALS:`
 
-`LITERALS:
+`LITERALS:`
 
-`ROUTINES:
+`ROUTINES:`
 
-`TYPE INDEX:
+`TYPE INDEX:`
 
 `/2 buckets/2 refers/`
 
@@ -1109,7 +1109,7 @@ Note that `byte` and `record` are the only types defined in the compiler itself;
 And after a bunch of other stuff that we don't have, at the bottom of the listing, you'll find our timers...
 
 
-`TIMERS:
+`TIMERS:`
 
 
 `/timer/loading/0/`
@@ -1142,7 +1142,7 @@ Alrighty, then. Time to load up our source files.
 56. Close up the Son of CAL (if you haven't already) and get back to the CAL-4700. Then find the CAL-4700's son directory and open up the son's six source files (if they're not already open).
 
 
-57. Now find the "`compile a directory`" routine, move our temporary "`abort`" line down another notch, and uncomment the "`Compile a directory (load the source files)`" step, like so:
+57. Now find the "compile a directory" routine, move our temporary "abort" line down another notch, and uncomment the "Compile a directory (load the source files)" step, like so:
 
  
 
@@ -1233,7 +1233,7 @@ A diligent Plain English programmer, however, will typically use the CAL's Write
 62. Still in the blue, find and open the daughter's listing on the far right tab. The top part of the listing will be the same as before, but at the bottom you'll see something like this:
 
 
-`SOURCE FILES:
+`SOURCE FILES:`
 
 `/source file/c:\cal-4700's son's daughter\the compiler/`
 `/source file/c:\cal-4700's son's daughter\the desktop/`
@@ -1243,7 +1243,7 @@ A diligent Plain English programmer, however, will typically use the CAL's Write
 `/source file/c:\cal-4700's son's daughter\the writer/`
 
 
-`TIMERS:
+`TIMERS:`
 
 `/timer/loading/140/`
 `/timer/scanning/0/`
@@ -1263,10 +1263,7 @@ A diligent Plain English programmer, however, will typically use the CAL's Write
 `/timer/total/140/`
 
 
-`TA DA! Now we're (finally) ready to teach our boy how to read.` 
-
-
-
+TA DA! Now we're (finally) ready to teach our boy how to read.
 
 
 Now that we've got all our source files in memory, it's time to see what they have to say.
@@ -1378,7 +1375,7 @@ That guy simply skips any "noise" in the source file. When he's done, what's lef
 This guy assumes we're sitting on the start of a comment (the backslash character) and simply sucks up bytes until he hits a return byte (the end of a line). When he's done, what's left of the rider's source will start with that return byte, and the rider's token will span the whole comment, including the backslash.
 
 
-69. We need a similar "`move a rider`" routine for remarks:
+69. We need a similar "move a rider" routine for remarks:
 
 
 `To move a rider (code rules - remark):`
@@ -1394,7 +1391,7 @@ This guy assumes we're sitting on the start of a comment (the backslash characte
 This time we're starting on the start of a remark (a left-bracket "["), and we skip everything up to a return byte (the end of a line) or a closing right-bracket ("]"), allowing for the possibility that the programmer may have remarks inside his remarks. When this routine is done, what's left of the rider's source will start with either a return byte, or the first character after the closing right-bracket, and the rider's token will span the entire remark.
 
 
-70. We need a similar "`move a rider`" routine for qualifiers, which can also be "nested":
+70. We need a similar "move a rider" routine for qualifiers, which can also be "nested":
 
 
 `To move a rider (code rules - qualifier):`
@@ -2374,7 +2371,7 @@ And that's it for globals, for now.
 `Say no.`
 
 
-99. And now we should be able to run. `CTRL-R`. Do it. When you're in the blue, find the "`CAL-4700's son's daughter`" directory, open it, open the source files, and do a list (`CTRL-L`).
+99. And now we should be able to run. `CTRL-R`. Do it. When you're in the blue, find the "CAL-4700's son's daughter" directory, open it, open the source files, and do a list (`CTRL-L`).
 
 
 100. Still in the blue, on a free tab, open the daughter's ".lst" file. Now we've got something to look at -- almost 12,000 lines, in fact. Let's examine just a few.
@@ -2405,7 +2402,7 @@ Thirdly, you'll notice that record types have their fields listed as variables, 
 `/variable/field/no/address////00000000/no/1/no////`
 
 
-If you skip down to the next section of the listing (just find "`GLOBALS:`" with no quotes and a colon on the end), you'll see lots of globals, with their types filled in, but with zeros in their addresses, like this:
+If you skip down to the next section of the listing (just find "GLOBALS:" with no quotes and a colon on the end), you'll see lots of globals, with their types filled in, but with zeros in their addresses, like this:
 
 
 `/variable/global/no/adding built-in memory routines timer//timer//00000000/no/1/no////`
@@ -2415,13 +2412,13 @@ If you skip down to the next section of the listing (just find "`GLOBALS:`" with
 `/variable/global/no/calculating timer//timer//00000000/no/1/no////`
 
 
-In the "`LITERALS:`" section, you'll find nothing at all, because we haven't done anything with literals yet (except save them in global and routine body substrings).
+In the "LITERALS:" section, you'll find nothing at all, because we haven't done anything with literals yet (except save them in global and routine body substrings).
 
 
-In the "`ROUTINES:`" section, you'll see we've got a lot of routines hanging on the list, but that we know almost nothing about them at this point. That's because all we did was squirrel away their headers and bodies in substrings for later.
+In the "ROUTINES:" section, you'll see we've got a lot of routines hanging on the list, but that we know almost nothing about them at this point. That's because all we did was squirrel away their headers and bodies in substrings for later.
 
 
-Further down you can see that our "`TYPE INDEX:`" is now getting some use, with some entries sharing buckets:
+Further down you can see that our "TYPE INDEX:" is now getting some use, with some entries sharing buckets:
 
 
 `TYPE INDEX:`
@@ -2430,7 +2427,7 @@ Further down you can see that our "`TYPE INDEX:`" is now getting some use, with 
 `/367 buckets/405 refers/`
 
 
-Our "`GLOBAL INDEX:`" is also getting some use:
+Our "GLOBAL INDEX:" is also getting some use:
 
 
 `GLOBAL INDEX:`
@@ -2452,7 +2449,7 @@ Our other indexes are empty:
 `UTILITY INDEX:`
 
 
-Our "`IMPORTS:`" section is also empty, since we haven't compiled any references to DLLs yet:
+Our "IMPORTS:" section is also empty, since we haven't compiled any references to DLLs yet:
 
 
 `IMPORTS:`
@@ -2643,7 +2640,7 @@ Okay, you know the drill.
 `Clear the type's cooking flag.`
 
 
-We use the "`cooking flag`" to make sure we don't run into ourselves when we're chasing down types. It's okay, for example, to have a `nickname be a name` and `a name be a string`, but you can't have a `nickname be a name` and `a name be a nickname`.
+We use the "cooking flag" to make sure we don't run into ourselves when we're chasing down types. It's okay, for example, to have a `nickname be a name` and `a name be a string`, but you can't have a `nickname be a name` and `a name be a nickname`.
 
 
 108. Fourth Pass: See what we can do with all the optional information our types might have tacked on to them:
@@ -2696,7 +2693,8 @@ We use the "`cooking flag`" to make sure we don't run into ourselves when we're 
 `To check for invalid optional info on a type (target):`
 `If the compiler's abort flag is set, exit.`
 `If the type cannot be reduced to "pointer", abort with "Optional 'to' info is only allowed on pointer types." and the type's locus; exit.`
-` `
+
+
 110: These helpers are needed too:
 
 
@@ -2801,7 +2799,7 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 `Repeat.`
 
 
-113. We resolve our global variables later, but we resolve our "`field variables`" on this pass through the types:
+113. We resolve our global variables later, but we resolve our "field variables" on this pass through the types:
 
 
 `To resolve a field:`
@@ -2827,7 +2825,7 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 `If the variable's type is nil, abort with "I can't find the '" then the variable's type name then "' type." and the variable's locus; exit.`
 
 
-114. Perhaps you noticed various calls to "`find`" routines in the stuff above. These are the ones we should put back now:
+114. Perhaps you noticed various calls to "find" routines in the stuff above. These are the ones we should put back now:
 
 
 `To find a type and a nickname given a name:`
@@ -2866,7 +2864,8 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 `If the variable's nickname is the name, exit.`
 `Repeat.`
 
-` `
+
+
 115. We're going to need this little guy to help us with nickname processing:
 
 
@@ -2958,13 +2957,13 @@ And now that our types have been resolved, you can see in the listing that all t
 `/variable//no/high wyrd/high/wyrd/wyrd/00000000/no/1/no/third byte///`
 
 
-And here's another notable example. In the compiler we define a "`source file`" like this:
+And here's another notable example. In the compiler we define a "source file" like this:
 
 
 `A source file is a thing with a path and a buffer.`
 
 
-But now that our types have been resolved, that definition has been modified and expanded to include (a) a "`source file`" type that is nothing but a pointer to a "`source file record`"; (b) a "`source file record`" that has "`next source file`" and "`previous source file`" pointers on the front for easy chaining; and (c) a compiler-generated type, "`source files`" (plural) with "`first source file`" and "`last source file`" fields that can be used as the anchor for a list. Here they are in the listing:
+But now that our types have been resolved, that definition has been modified and expanded to include (a) a "source file" type that is nothing but a pointer to a "source file record`"; (b) a "source file record" that has "next source file" and "previous source file" pointers on the front for easy chaining; and (c) a compiler-generated type, "source files" (plural) with "first source file" and "last source file" fields that can be used as the anchor for a list. Here they are in the listing:
 
 
 `/ - type/source file/source files/FFFFFFFF/thing/thing/source file record/source file record/0/`
@@ -2983,17 +2982,15 @@ But now that our types have been resolved, that definition has been modified and
 `/variable/field/no/last source file/last/source file/source file/00000000/no/1/yes////`
 
 
-A third notable example is the "`foot`" unit-of-measure type, which was defined like this:
+A third notable example is the "foot" unit-of-measure type, which was defined like this:
 
 
-A foot is 12 inches.`
+`A foot is 12 inches.`
 
 
 Which refers to this definition of an inch:
 
- `
-
-An inch is 1440 twips.
+`An inch is 1440 twips.`
 
 
 Which refers to this definition of a twip:
@@ -3014,7 +3011,7 @@ Now that our types have been resolved, we find that the "foot" type looks like t
 `/variable//no/high wyrd/high/wyrd/wyrd/00000000/no/1/no/third byte///`
 
 
-Note that the "`foot`" type not only has an appropriate plural form ("`feet`"), but that it also has all the fields that any other number has, and that the "`scale factor`" (last item on the first line above) is 17280, which is 12 times 1440, or the number of twips in an foot. The "`scale factor`" is used, at compile time, to convert literals in routine calls that have a specified unit of measure to units expected by the called routine. When, for example, in the Cal Monet we said:
+Note that the "foot" type not only has an appropriate plural form ("`feet`"), but that it also has all the fields that any other number has, and that the "scale factor" (last item on the first line above) is 17280, which is 12 times 1440, or the number of twips in an foot. The "scale factor" is used, at compile time, to convert literals in routine calls that have a specified unit of measure to units expected by the called routine. When, for example, in the Cal Monet we said:
 
 
 `Resize the picture to 5-1/2 inches by 5-1/2 inches.`
@@ -3162,7 +3159,7 @@ Next up: Resolving global variables.
 `Generate the literal's name given "~L".`
 
 
-124. Several types of literals have to be converted to "`executable ready`" format:
+124. Several types of literals have to be converted to "executable ready" format:
 
 
 `To compile a literal given a rider (flag):`
@@ -3246,7 +3243,7 @@ Next up: Resolving global variables.
 `Resolve the literal.`
 
 
-125. We'll be needing this decider to peek ahead a little so we can spot units-of-measure that follow numeric literals (like the "`inches`" part of "`3 inches`":
+125. We'll be needing this decider to peek ahead a little so we can spot units-of-measure that follow numeric literals (like the "inches" part of "3 inches`":
 
 
 `To decide if a rider is followed by any unit of measure:`
@@ -3408,7 +3405,7 @@ Then let's consider an example from the Cal Monet. The moniker for this routine.
 `create [work] from/given/with/using [url]`
 
 
-It consists of 4 "`monikettes`": the string "`create`", the parameter type "`[work]`", the string "`from/given/with/using`", and the parameter type "`[url]`".
+It consists of 4 "monikettes`": the string "create`", the parameter type "[work]`", the string "from/given/with/using`", and the parameter type "[url]`".
 
 
 132. We should uncomment the monikette thing now...
@@ -3423,7 +3420,7 @@ It consists of 4 "`monikettes`": the string "`create`", the parameter type "`[wo
 `a current substring.`
 
 
-A `monikette's string` is used to hold string-type monikettes (like "`create`" or "`from/given/with/using`"), while a `monikette's type` points to the type definition of a parameter. A `monikette's variable` isn't used until later, when we parse expressions.
+A `monikette's string` is used to hold string-type monikettes (like "create" or "from/given/with/using`"), while a `monikette's type` points to the type definition of a parameter. A `monikette's variable` isn't used until later, when we parse expressions.
 
 
 A routine record has a list of monikettes and a list of parameters in it. As we compile a routine header, we hang the routine's parameters on the parameter list, and the monikettes (both string and parameter types) on the monikette list.
@@ -3664,7 +3661,8 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 `Put the variable's name into the variable's type name.`
 `Move the rider (compiler rules).`
 `Scan the variable's name given the rider.`
-` `
+
+
 139. And these three little guys are used to spot "negative words" in decider headers:
 
 
@@ -3693,7 +3691,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 `Say no.`
 
 
-When a decider is written with a "positive" header, the CAL will understand both the positive and negative forms. For example, "`To decide if a string is blank`" will automatically serve as "`to decide if a string is not blank`".
+When a decider is written with a "positive" header, the CAL will understand both the positive and negative forms. For example, "To decide if a string is blank" will automatically serve as "to decide if a string is not blank`".
 
 
 140. Since there's a lot of string concatenation required in monikette-to-moniker conversions, and since we do those a lot, we added in this helper to make those concatenations faster than usual:
@@ -3773,10 +3771,10 @@ When a decider is written with a "positive" header, the CAL will understand both
 `/variable/parameter/no/rider/rider/rider/rider/00000000/no/1/no////`
 
 
-And you can see our "`ROUTINE INDEX:`" is getting a workout, too:
+And you can see our "ROUTINE INDEX:" is getting a workout, too:
 
 
-`ROUTINE INDEX:`
+`ROUTINE INDEX:
 
 
 `/4881 buckets/7862 refers/`
@@ -4028,7 +4026,7 @@ We saw earlier (in the "resolve the types" step) that when a programmer defines 
 `A source file is a thing with a path and a buffer.`
 
 
-...is modified and expanded to include (a) a "`source file`" type that is nothing but a pointer to a "`source file record`"; (b) a "`source file record`" that has the same fields as the programmer specified plus "`next source file`" and "`previous source file`" pointers on the front for easy chaining; and (c) a compiler-generated type, "`source files`" (plural) with "`first source file`" and "`last source file`" fields that can be used as the anchor for a list. Here they are in the listing:
+...is modified and expanded to include (a) a "source file" type that is nothing but a pointer to a "source file record`"; (b) a "source file record" that has the same fields as the programmer specified plus "next source file" and "previous source file" pointers on the front for easy chaining; and (c) a compiler-generated type, "source files" (plural) with "first source file" and "last source file" fields that can be used as the anchor for a list. Here they are in the listing:
 
 
 `/ - type/source file/source files/FFFFFFFF/thing/thing/source file record/source file record/0/`
@@ -4050,13 +4048,13 @@ We saw earlier (in the "resolve the types" step) that when a programmer defines 
 Now we also want the programmer to be able to program as if he took the time to write routines with these headers:
 
 
-`To allocate memory for a source file:`
+`To allocate memory for a source file:
 
 
-`To destroy a source file:`
+`To destroy a source file:
 
 
-`To destroy some source files:`
+`To destroy some source files:
 
 
 So we have the compiler add those routines as if they were in the programmer's source code, in this step.
@@ -4246,7 +4244,7 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 Note that we expect the programmer to call these routines directly.
 
 
-Note also that they "go deep" -- if anything attached to a record that is being destroyed needs to be destroyed, these routines let the programmer simply "forget" about those attached things. This spares the programmer a lot of repetative coding.`
+Note also that they "go deep" -- if anything attached to a record that is being destroyed needs to be destroyed, these routines let the programmer simply "forget" about those attached things. This spares the programmer a lot of repetative coding.
 
 
 156. Finally, we need this routine to decide if a type can be forgotten by the programmer:
@@ -4304,13 +4302,14 @@ Followed by the associated "deallocate" and "destroy" routines:
 
 `/routine/destroy [entry]/no/no/no/no//0/0/00000000/`
 `/variable/parameter/no/entry/entry/entry/entry/00000000/no/1/no////`
-` `
-158. Extra credit exercise: You probably noticed that the generated routines above have no meat in them. That's because we don't list routine bodies until later when they've been compiled. But let's take a peek. In the gray, get into the son's compiler, find the "list a routine" routine, and add this line (including the comment at the end)...`
-
-`If the routine's moniker starts with "~", append the routine's body string to the buffer; advance the buffer. \*** testing only
 
 
-...just before the "Advance the buffer" line at the end of that routine.
+158. Extra credit exercise: You probably noticed that the generated routines above have no meat in them. That's because we don't list routine bodies until later when they've been compiled. But let's take a peek. In the gray, get into the son's compiler, find the "list a routine" routine, and add this line (including the comment at the end)...
+
+`If the routine's moniker starts with "~", append the routine's body string to the buffer; advance the buffer. \*** testing only`
+
+
+...just before the "Advance the buffer` line at the end of that routine.
 
 
 Now run the son, open and list the daughter, and examine the listing. The finalize routine for our "~inline compiler type" now looks like this (without the word-wrap):
@@ -4321,7 +4320,7 @@ Now run the son, open and list the daughter, and examine the listing. The finali
 `intel $50. ~finalize the ~inline compiler type's directory. ~finalize the ~inline compiler type's abort message. ~finalize the ~inline compiler type's abort path. ~finalize the ~inline compiler type's exe buffer. ~finalize the ~inline compiler type's listing buffer. intel $58.`
 
 
-Those sentences will get compiled later with the rest of the programmer's (and our generated) code. Since directories, abort messages, abort paths, and buffers are all just strings, each of those sentences will eventually resolve into a call to this finalizer...`
+Those sentences will get compiled later with the rest of the programmer's (and our generated) code. Since directories, abort messages, abort paths, and buffers are all just strings, each of those sentences will eventually resolve into a call to this finalizer...
 
 `/routine/~finalize [string]/no/no/no/no//0/0/00000000/`
 `/variable/parameter/no/string/string/string/string/00000000/no/1/no////`
@@ -4342,15 +4341,15 @@ Those sentences will get compiled later with the rest of the programmer's (and o
 And that's the way we manage string memory for the programmer, and help him conveniently deal with the rest of his dynamically-allocated data.
 
 
-159. Now delete that temporary "\*** testing only" line in the son's compiler.`
-
-` `
+159. Now delete that temporary "\*** testing only" line in the son's compiler.
 
 
-Matching a statement (in the body of a routine) with the routine (that should be called to do the work) is mostly a matter of (a) breaking down the statement into a series of monikettes, and then (b) finding a routine header with the same monikettes. We do this in the next step after this one. In this step, we increase our chances of success by re-indexing some of our routine headers using "reduced type" monikettes. For example, this routine...`
 
 
-`To divide a number by a number giving a quotient and a remainder:
+Matching a statement (in the body of a routine) with the routine (that should be called to do the work) is mostly a matter of (a) breaking down the statement into a series of monikettes, and then (b) finding a routine header with the same monikettes. We do this in the next step after this one. In this step, we increase our chances of success by re-indexing some of our routine headers using "reduced type" monikettes. For example, this routine...
+
+
+`To divide a number by a number giving a quotient and a remainder:`
 
 
 ...which at this point is indexed as...`
@@ -4359,24 +4358,24 @@ Matching a statement (in the body of a routine) with the routine (that should be
 `divide [number] by [number] giving [quotient] and [remainder]`
 
 
-...will be re-indexed as...`
+`...will be re-indexed as...`
 
 
 `divide [number] by [number] giving [number] and [number]`
 
- `
+ 
 
-...since both "quotient" and "remainder" are elsewhere defined as numbers.`
+...since both "quotient" and "remainder" are elsewhere defined as numbers.
 
- `
+ 
 
-So let's get to work.`
+So let's get to work.
 
- `
+ 
 
 160. In the gray, open up the CAL's son and adjust the "compile a directory" routine to look like this:
 
- `
+ 
 
 `To compile a directory:`
 `Compile the directory (start).`
@@ -4398,11 +4397,7 @@ So let's get to work.`
 `\Compile the directory (write the exe).`
 `\Compile the directory (stop).`
 
- `
-
 161. Then add these three guys back in:
-
- `
 
 `To compile a directory (index the routines for utility use):`
 `If the compiler's abort flag is set, exit.`
@@ -4437,17 +4432,11 @@ So let's get to work.`
 `Index the routine given the moniker and the utility index.`
 
 
-Note that if the reduced moniker is the same as an existing routine's moniker, we don't put it in the Utility Index.`
+Note that if the reduced moniker is the same as an existing routine's moniker, we don't put it in the Utility Index.
 
- `
-
-Note also that if two or more routines reduce to the same moniker, we mark the first one as invalid by putting nil into the first routine's refer's pointer (in the Utility Index), so we'll know to remove it later. We don't want to remove it now, because then we wouldn't catch any other routines that ambiguously reduce to the same moniker.`
-
- `
+Note also that if two or more routines reduce to the same moniker, we mark the first one as invalid by putting nil into the first routine's refer's pointer (in the Utility Index), so we'll know to remove it later. We don't want to remove it now, because then we wouldn't catch any other routines that ambiguously reduce to the same moniker.
 
 162. So far, so good. Now we need the helper routines, starting with these two:
-
- `
 
 `To copy some monikettes into some other monikettes:`
 `Destroy the other monikettes.`
@@ -4457,8 +4446,6 @@ Note also that if two or more routines reduce to the same moniker, we mark the f
 `Copy the monikette into another monikette.`
 `Append the other monikette to the other monikettes.`
 `Repeat.`
-
- `
 
 `To copy a monikette into another monikette:`
 `If the monikette is nil, void the other monikette; exit.`
@@ -4471,7 +4458,7 @@ Note also that if two or more routines reduce to the same moniker, we mark the f
 
 
 
-163. And this little looper...`
+163. And this little looper...
 
 
 `To reduce some monikettes for utility use:`
@@ -4546,13 +4533,13 @@ Note also that if two or more routines reduce to the same moniker, we mark the f
 `Repeat.`
 
 
-The Utility Index is not used again, since the Routine Index now includes both the original and the reduced header (if any) for each routine. We keep the Utility Index around, however, as a debugging aid.`
+The Utility Index is not used again, since the Routine Index now includes both the original and the reduced header (if any) for each routine. We keep the Utility Index around, however, as a debugging aid.
 
 
 167. Run it. In the blue, open up the son's daughter and list her. The open up her listing file and find "utility index:" (with the colon, but without the quotes). At the top of that section you should see something like this:
 
 
-`UTILITY INDEX:
+`UTILITY INDEX:`
 
 
 `/658 buckets/717 refers/`
@@ -4565,7 +4552,7 @@ The Utility Index is not used again, since the Routine Index now includes both t
 168. And at the bottom we can see that all this reducing and scrubbing and reindexing doesn't take much time at all:
 
 
-`TIMERS:
+`TIMERS:`
 
 
 `/timer/loading/125/`
@@ -4586,17 +4573,17 @@ The Utility Index is not used again, since the Routine Index now includes both t
 `/timer/total/1641/`
 
 
-See you next time!`
+See you next time!
 
 
 
-This is the big one. Let's take a moment to review.`
+This is the big one. Let's take a moment to review.
 
 
-At this point, the compiler has cataloged the vocabulary` and grammar` that the programmer wants to use (as defined by the types`, the global variables`, the literals`, and the routine headers` that the Compiler found in his source). For quick and easy access, the Type Index has an entry pointing to each type` definition, the Global Index has an entry pointing to each global variable` definition, and the Literal Index has an entry pointing to the definition of each literal`. The Routine Index is a little more robust, and has multiple entries for each routine header, `one monikette at a time, from left-to-right. For example, this routine...`
+At this point, the compiler has cataloged the vocabulary and grammar that the programmer wants to use (as defined by the types, the global variables, the literals, and the routine headers that the Compiler found in his source). For quick and easy access, the Type Index has an entry pointing to each type definition, the Global Index has an entry pointing to each global variable definition, and the Literal Index has an entry pointing to the definition of each literal. The Routine Index is a little more robust, and has multiple entries for each routine header, one monikette at a time, from left-to-right. For example, this routine...
 
 
-`To add a number to another number:
+`To add a number to another number:`
 
 
 ...is cataloged in the Routine Index like so:
@@ -4609,8 +4596,6 @@ At this point, the compiler has cataloged the vocabulary` and grammar` that the 
 `add [number] in/into/to....`
 
 `add [number] in/into/to [number]`
-
- `
 
 This arrangement makes it easier to match each sentence in the body of each routine with a corresponding routine. Once we know who to call, all we have to do is make a list of the logical machine-code fragments` that will be needed to push the correct parameters and actually make the call. Each routine we call will have a body of it's own, of course, and may, in turn, call other routines, etc, etc. At the very bottom, however, we will find routines that have bodies containing only machine code, like this one...`
 
@@ -4804,7 +4789,7 @@ An expression` is two or more terms separated by the infix operators plus`, minu
 `If the rider's token is "times", compile the expression given the rider (times); repeat.`
 
 
-176. This is the top-level term compiler, together with one of his trivial helpers:
+176. This is the top-level term compiler, together with one of his trivial helpers:`
 `To compile a term given a rider:`
 `Clear the term.`
 `If the compiler's abort flag is set, exit.`
@@ -4813,8 +4798,6 @@ An expression` is two or more terms separated by the infix operators plus`, minu
 
 `If the rider's token is "AS", compile the term given the rider (as part).`
 `If the rider's token is "/", compile the term given the rider (runtime ratio).`
-
- `
 
 `To clear a term:`
 `Void the term's variable.`
@@ -4882,11 +4865,10 @@ An expression` is two or more terms separated by the infix operators plus`, minu
 `Put the variable into the fragment's variable.`
 `Set the compiled flag in the variable.`
 
- `
-
 180. And this is a special helper:
 
-` `
+
+
 
 `To set the compiled flag in a variable:`
 `If the variable is nil, exit.`
@@ -5257,8 +5239,6 @@ If the variable is a global, and the programmer wants us to initialize it with a
 `To decide if a string is the start of any new local:`
 `If the string is any indefinite article, say yes.`
 `Say no.`
-
- `
 
 191. This is the guy who deals with new local variables:
 
@@ -5968,10 +5948,10 @@ Note that literals can have possessives; for example...`
 `Move the rider (compiler rules). `219. Whew! Made it. Run it, open the daughter in the blue, and List her. Then open the listing, find "ROUTINES:" (no quotes) and you'll see a lot of scratches, intermediates, and fragments hanging on our routines. I've inserted some source lines in the listing below, in blue, to make the fragments easier to understand (the fragments generated by each statement appear below the source):
 
 
-`ROUTINES:
+`ROUTINES:`
 
 
-`To abort with a string:` `
+`To abort with a string: `
 `/routine/abort from/given/with/using [string]/yes/no/no/no//0/0/00000000/`
 `/variable/parameter/yes/string/string/string/string/00000000/no/1/no////`
 `/variable/scratch/yes/~S7063//flag/flag/00000000/no/1/no////`
@@ -5980,7 +5960,8 @@ Note that literals can have possessives; for example...`
 `/fragment/prolog/////00000000/00000000//`
 `/fragment/loop/////00000000/00000000//`
 
-If the compiler's abort flag is set, exit.` `
+If the compiler's abort flag is set, exit.
+
 `/fragment/load address/compiler/~S7063///00000000/00000000//`
 `/fragment/increment/~S7063////00000014/00000000//`
 `/fragment/push address/~S7063////00000000/00000000//`
@@ -5989,13 +5970,15 @@ If the compiler's abort flag is set, exit.` `
 `/fragment/exit/////00000000/00000000//`
 `/fragment/end if/////00000000/00000000//`
 
-Set the compiler's abort flag.` `
+Set the compiler's abort flag.
+
 `/fragment/load address/compiler/~S7064///00000000/00000000//`
 `/fragment/increment/~S7064////00000014/00000000//`
 `/fragment/push address/~S7064////00000000/00000000//`
 `/fragment/call internal///set [flag]//00000000/00000000//`
 
-Put the string into the compiler's abort message.` `
+Put the string into the compiler's abort message.
+
 `/fragment/load address/compiler/~S7065///00000000/00000000//`
 `/fragment/increment/~S7065////00000018/00000000//`
 `/fragment/push address/~S7065////00000000/00000000//`
@@ -6008,7 +5991,7 @@ Put the string into the compiler's abort message.` `
 `At the bottom of the listing you'll see that this is the part of compiling that really eats up the time:
 
 
-`TIMERS:
+`TIMERS:`
 
 
 `/timer/loading/0/`
@@ -6159,7 +6142,8 @@ Now that we know everything in the source checks out, it's time to add one more 
 `/fragment/finalize/////00000000/00000000//`
 `/fragment/epilog/////00000000/00000000//`
 
-` `
+
+
 
 
 Next time, we'll calculate the offsets for our parameters and local variables.`
@@ -6240,8 +6224,6 @@ Next time, we'll calculate the offsets for our parameters and local variables.`
 `Offset the locals in the routine.`
 `Repeat.`
 
- `
-
 `To offset the locals in a routine:`
 `If the routine is nil, exit.`
 `If the routine's compiled flag is not set, exit.`
@@ -6262,7 +6244,7 @@ Next time, we'll calculate the offsets for our parameters and local variables.`
 229. Now run it. In the blue, open up the daughter and list her. Then get into the listing and look for "routines:" (with the colon, no quotes). You should see something that starts like this:
 
 
-`ROUTINES:
+`ROUTINES:`
 
 
 `/routine/abort from/given/with/using [string]/yes/no/no/no//4/12/00000000/`
@@ -6559,7 +6541,7 @@ The size` of a borough is its actual length` rounded up to the nearest multiple 
 242. And that's it for this step. Run it. In the blue, open up the daughter and list her. Then open up the listing and check out the addresses we've given our globals:
 
 
-`GLOBALS:
+`GLOBALS:`
 
 
 `/variable/global/yes/adding built-in memory routines timer//timer/timer/00402000/no/1/no////`
@@ -6570,7 +6552,7 @@ The size` of a borough is its actual length` rounded up to the nearest multiple 
 `Then jump to the literals and check out their addresses:
 
 
-`LITERALS:
+`LITERALS:`
 
 
 `/variable/literal/yes/~L1//number/number/004030AC/no/1/no///01000000/`
@@ -6581,7 +6563,7 @@ The size` of a borough is its actual length` rounded up to the nearest multiple 
 `Then jump to the routines and check out both the entry addresses, and the fragment addresses:
 
 
-`ROUTINES:
+`ROUTINES:`
 
 
 `/routine/abort from/given/with/using [string]/yes/no/no/no//4/12/00419000/`
@@ -6626,7 +6608,7 @@ The size` of a borough is its actual length` rounded up to the nearest multiple 
 Sweet. And all that addressing took only... let me see...`
 
 
-`TIMERS:
+`TIMERS:`
 
 
 `/timer/loading/16/`
@@ -6709,16 +6691,12 @@ Sweet. And all that addressing took only... let me see...`
 
 245. These two routines are the top-level helpers we need:
 
- `
-
 `To transmogrify some fragments:`
 `If the compiler's abort flag is set, exit.`
 `Get a fragment from the fragments.`
 `If the fragment is nil, exit.`
 `Transmogrify the fragment.`
 `Repeat.`
-
- `
 
 `To transmogrify a fragment:`
 `If the compiler's abort flag is set, exit.`
@@ -6742,11 +6720,7 @@ Sweet. And all that addressing took only... let me see...`
 `If the fragment's tag is the call indirect tag, transmogrify the fragment (call indirect); exit.`
 `If the fragment's tag is the routine address tag, transmogrify the fragment (routine address); exit.`
 
- `
-
 246. And these 18 guys are the low-level helpers who actually do the transmogrification:
-
- `
 
 `To transmogrify a fragment (break):`
 `Put the repeat tag into a tag.`
@@ -6757,31 +6731,21 @@ Sweet. And all that addressing took only... let me see...`
 `If the third fragment's next is nil, abort with "Internal error 2 - transmogrify a fragment (break)"; exit.`
 `Attach $E9 and the third fragment's next's address to the fragment.  \ jmp the destination's address`
 
- `
-
 `To transmogrify a fragment (call external):`
 `Attach $FF15 and the fragment's entry's address to the fragment's code.  \ call [the fragment's entry's address]`
-
- `
 
 `To transmogrify a fragment (call indirect):`
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
 `Attach $FF12 to the fragment's code. \ call [edx]`
 
- `
-
 `To transmogrify a fragment (call internal):`
 `Get an address given the fragment's routine.`
 `Attach $E8 and the address to the fragment. \` call the fragment's routine's address`
-
- `
 
 `To transmogrify a fragment (dereference):`
 `Attach $8B95 and the fragment's variable's offset to the fragment's code.  \ mov edx,[ebp+the fragment's variable's offset] `
 `Attach $8B12 to the fragment's code. \ mov edx,[edx] `
 `Attach $8995 and the fragment's variable's offset to the fragment's code.  \ mov [ebp+the fragment's variable's offset],edx`
-
- `
 
 `To transmogrify a fragment (epilog):`
 `If the current routine's callback flag is set, attach $5F5E5B to the fragment's code.  \ pop edi, esi, ebx `
@@ -6789,21 +6753,15 @@ Sweet. And all that addressing took only... let me see...`
 `Attach $5D to the fragment's code. \ pop ebp `
 `Attach $C2 and the current routine's parameter size to the fragment's code.  \ ret the current routine's parameter size`
 
- `
-
 `To transmogrify a fragment (exit):`
 `Find another fragment given the fragment and the finalize tag.`
 `If the other fragment is nil, abort with "Internal error - transmogrify a fragment (exit)"; exit.`
 `Attach $E9 and the other fragment's address to the fragment.  \ jmp the destination's address`
 
- `
-
 `To transmogrify a fragment (increment):`
 `If the fragment's variable is nil, abort with "Internal error - transmogrify a fragment (increment)"; exit.`
 `If the fragment's variable's kind is not "scratch", abort with "Internal error 2 - transmogrify a fragment (increment)"; exit.`
 `Attach $8185 and the fragment's variable's offset and the fragment's number to the fragment's code. \ add [ebp+the fragment's variable's offset],the fragment's number`
-
- `
 
 `To transmogrify a fragment (jump false):`
 `Find another fragment given the fragment and the end if tag.`
@@ -6811,13 +6769,9 @@ Sweet. And all that addressing took only... let me see...`
 `Attach $83F800 to the fragment's code. \ cmp eax,0 `
 `Attach $0F84 and the other fragment's address to the fragment.  \ je the destination's address`
 
- `
-
 `To transmogrify a fragment (load address):`
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
 `Attach $8995 and the fragment's other variable's offset to the fragment's code.  \ mov [ebp+the fragment's variable's offset],edx`
-
- `
 
 `To transmogrify a fragment (load eax):`
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
@@ -6826,12 +6780,8 @@ Sweet. And all that addressing took only... let me see...`
 `If the fragment's variable's type's length is not 4, abort with "Internal error 3 - transmogrify a fragment (load eax)"; exit.`
 `Attach $8B02 to the fragment's code. \ mov eax,[edx]`
 
- `
-
 `To transmogrify a fragment (not):`
 `Attach $83F001 to the fragment's code. \ xor eax,1`
-
- `
 
 `To transmogrify a fragment (prolog):`
 `Attach $55 to the fragment's code. \ push ebp`
@@ -6840,13 +6790,9 @@ Sweet. And all that addressing took only... let me see...`
 `If the number is not 0, attach $B9 and the number and $6A004975FB to the fragment's code. \ mov ecx,number; loop: push 0; dec ecx; jnz loop `
 `If the current routine's callback flag is set, attach $535657 to the fragment's code.  \ push ebx, esi, edi`
 
- `
-
 `To transmogrify a fragment (push address):`
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
 `Attach $52 to the fragment's code. \ push edx`
-
- `
 
 `To transmogrify a fragment (push value):`
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
@@ -6858,22 +6804,16 @@ Sweet. And all that addressing took only... let me see...`
 `If the length is 1, attach $0FB61252 to the fragment's code; exit.  \ movzxb edx,[edx]; push edx `
 `Abort with "Internal error 3 - transmogrify a fragment (push value)".`
 
- `
-
 `To transmogrify a fragment (repeat):`
 `Find another fragment given the fragment and the loop tag (backwards).`
 `If the other fragment is nil, abort with "Internal error - transmogrify a fragment (repeat)"; exit.`
 `Attach $E9 and the other fragment's address to the fragment.  \ jmp the destination's address`
-
- `
 
 `To transmogrify a fragment (routine address):`
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
 `If the fragment's routine is nil, abort with "Internal error - transmogrify a fragment (routine address)"; exit.`
 `Get an address given the fragment's routine.`
 `Attach $C702 and the address to the fragment's code. \ mov [edx],the address`
-
- `
 
 `To transmogrify a fragment (save eax):`
 `Attach address loading code to the fragment's code given the fragment's variable.  \ put address into edx `
@@ -6885,15 +6825,9 @@ Sweet. And all that addressing took only... let me see...`
 `If the length is 1, attach $8802 to the fragment's code; exit.  \ mov [edx],al `
 `Abort with "Internal error 3 - transmogrify a fragment (save eax)".`
 
- `
-
 If you're wondering why we only need 18 fragment transmogrifiers when we have 21 fragment types, it's because 3 of those fragment types don't require transmogrification. The END IF, LOOP, and FINALIZE tags are just labels that we stick in there (and address) so we have places to jump to.`
 
- `
-
 247. Some of the transmogrifiers need a little help from this guy...`
-
- `
 
 `To attach address loading code to a hex string given a variable: \ loads into edx`
 `If the variable is nil, attach $C7C200000000 to the hex string; exit. \ mov edx,0`
@@ -6957,7 +6891,8 @@ If you're wondering why we only need 18 fragment transmogrifiers when we have 21
 
 250. We also need these two guys to help us find where to jump to (in various cases):
 
-` `
+
+
 
 `To find a fragment given another fragment and a tag:`
 `Put the other fragment into the fragment.`
@@ -6975,11 +6910,12 @@ If you're wondering why we only need 18 fragment transmogrifiers when we have 21
 `If the fragment's tag is the tag, exit.`
 `Put the fragment's previous into the fragment.`
 `Repeat.`
-` `
+
+
 251. And that's it. Transmogrification complete. Run it. In the blue, open the daughter and list her. Then open the listing and jump to the "ROUTINES:" section. This is what you should see there:
 
 
-`ROUTINES:
+`ROUTINES:`
 
 
 `/routine/abort from/given/with/using [string]/yes/no/no/no//4/12/00419000/`
@@ -7018,11 +6954,7 @@ Next time, we cram everything we've got into a Portable Executable.`
 
 Coming down the home stretch now. Time to cram everything into a Portable Executable file and finish up.`
 
- `
-
 252. Let's begin by grabbing the three ugly types we need for Windows:
-
- `
 
 `A dos header is a record with`
 `A wyrd called signature,`
@@ -7044,8 +6976,6 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 `A wyrd called oeminfo,`
 20 bytes called reservedwords, `
 `A number called addressofpeheaderinfile.`
-
- `
 
 `A pe header is a record with`
 `A number called signature,`
@@ -7095,8 +7025,6 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 `A pe section header called idata section,`
 `A pe section header called data section,`
 `A pe section header called code section.`
-
- `
 
 `A pe section header is a record with`
 8 bytes called name,`
