@@ -2415,53 +2415,53 @@ If you skip down to the next section of the listing (just find "`GLOBALS:`" with
 `/variable/global/no/calculating timer//timer//00000000/no/1/no////`
 
 
-In the "LITERALS:" section, you'll find nothing at all, because we haven't done anything with literals yet (except save them in global and routine body substrings).
+In the "`LITERALS:`" section, you'll find nothing at all, because we haven't done anything with literals yet (except save them in global and routine body substrings).
 
 
-In the "ROUTINES:" section, you'll see we've got a lot of routines hanging on the list, but that we know almost nothing about them at this point. That's because all we did was squirrel away their headers and bodies in substrings for later.`
+In the "`ROUTINES:`" section, you'll see we've got a lot of routines hanging on the list, but that we know almost nothing about them at this point. That's because all we did was squirrel away their headers and bodies in substrings for later.
 
 
-Further down you can see that our "TYPE INDEX:" is now getting some use, with some entries sharing buckets:
+Further down you can see that our "`TYPE INDEX:`" is now getting some use, with some entries sharing buckets:
 
 
-`TYPE INDEX:
+`TYPE INDEX:`
 
 
 `/367 buckets/405 refers/`
 
 
-Our "GLOBAL INDEX:" is also getting some use:
+Our "`GLOBAL INDEX:`" is also getting some use:
 
 
-`GLOBAL INDEX:
+`GLOBAL INDEX:`
 
 
 `/558 buckets/729 refers/`
 
- `
-
-`Our other indexes are empty:
 
 
-`LITERAL INDEX:
+Our other indexes are empty:
 
 
-`ROUTINE INDEX:
+`LITERAL INDEX:`
 
 
-`UTILITY INDEX:
+`ROUTINE INDEX:`
 
 
-Our "IMPORTS:" section is also empty, since we haven't compiled any references to DLLs yet:
+`UTILITY INDEX:`
 
 
-`IMPORTS:
+Our "`IMPORTS:`" section is also empty, since we haven't compiled any references to DLLs yet:
 
 
-Finally, at the very bottom, you'll see that we've got all six source files properly loaded (as before)...`
+`IMPORTS:`
 
 
-`SOURCE FILES:
+Finally, at the very bottom, you'll see that we've got all six source files properly loaded (as before)...
+
+
+`SOURCE FILES:`
 
 
 `/source file/c:\cal-4700's son's daughter\the compiler/`
@@ -2475,7 +2475,7 @@ Finally, at the very bottom, you'll see that we've got all six source files prop
 ...and that scanning now accounts for the bulk of our compile time:
 
 
-`TIMERS:
+`TIMERS:`
 
 
 `/timer/loading/0/`
@@ -2496,18 +2496,13 @@ Finally, at the very bottom, you'll see that we've got all six source files prop
 `/timer/total/562/`
 
 
-So far, so good. Next up, resolution of our types.`
+So far, so good. Next up, resolution of our types.
 
 
----`
+Okay, you know the drill.
 
 
-` `
-
-Okay, you know the drill.`
-
-
-101. In the gray, open the Son of CAL's compiler, move our temporary abort line down a notch, and uncomment the "resolve the types" step:` - `
+101. In the gray, open the Son of CAL's compiler, move our temporary abort line down a notch, and uncomment the "resolve the types" step:
 
 
 `To compile a directory:`
@@ -2648,7 +2643,7 @@ Okay, you know the drill.`
 `Clear the type's cooking flag.`
 
 
-`We use the "cooking flag" to make sure we don't run into ourselves when we're chasing down types. It's okay, for example, to have a nickname` be a name` and a name` be a string`, but you can't have a nickname` be a name` and a name` be a nickname`.`
+We use the "`cooking flag`" to make sure we don't run into ourselves when we're chasing down types. It's okay, for example, to have a `nickname be a name` and `a name be a string`, but you can't have a `nickname be a name` and `a name be a nickname`.
 
 
 108. Fourth Pass: See what we can do with all the optional information our types might have tacked on to them:
@@ -2766,7 +2761,7 @@ Okay, you know the drill.`
 `Repeat.`
 
 
-That last decider is used to eliminate duplicate fields in records (recall that fields are considered variables).`
+That last decider is used to eliminate duplicate fields in records (recall that fields are considered variables).
 
 
 112. When a record type is extended, we need to duplicate fields, so we're going to need these guys, too:
@@ -2806,7 +2801,7 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 `Repeat.`
 
 
-113. We resolve our global` variables later, but we resolve our "field variables" on this pass through the types:
+113. We resolve our global variables later, but we resolve our "`field variables`" on this pass through the types:
 
 
 `To resolve a field:`
@@ -2832,7 +2827,7 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 `If the variable's type is nil, abort with "I can't find the '" then the variable's type name then "' type." and the variable's locus; exit.`
 
 
-114. Perhaps you noticed various calls to "find" routines in the stuff above. These are the ones we should put back now:
+114. Perhaps you noticed various calls to "`find`" routines in the stuff above. These are the ones we should put back now:
 
 
 `To find a type and a nickname given a name:`
@@ -2921,13 +2916,13 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 `Clear the variable's nickname.`
 
 
-118. And that's it; types resolved. You know the drill. Run it; when you're in the blue, open the daughter and list it. Our types won't be complete yet, but will be a bit more robust and error-free.`
+118. And that's it; types resolved. You know the drill. Run it; when you're in the blue, open the daughter and list it. Our types won't be complete yet, but will be a bit more robust and error-free.
 
 
 Here's a notable example. In the Noodle, a wyrd is defined as a record like this:
 
 
-A wyrd has a low byte and a high byte.`
+`A wyrd has a low byte and a high byte.`
 
 
 And a number is defined as a record like this:
@@ -2942,7 +2937,7 @@ And a number is defined as a record like this:
 `a high wyrd at the third byte.`
 
 
-We define wyrds and numbers in this way so we can easily get to their pieces.`
+We define wyrds and numbers in this way so we can easily get to their pieces.
 
 
 You probably remember that in the compiler we have this type:
@@ -2963,16 +2958,16 @@ And now that our types have been resolved, you can see in the listing that all t
 `/variable//no/high wyrd/high/wyrd/wyrd/00000000/no/1/no/third byte///`
 
 
-And here's another notable example. In the compiler we define a "source file" like this:
+And here's another notable example. In the compiler we define a "`source file`" like this:
 
 
 `A source file is a thing with a path and a buffer.`
 
 
-But now that our types have been resolved, that definition has been modified and expanded to include (a) a "source file" type that is nothing but a pointer to a "source file record"; (b) a "source file record" that has "next source file" and "previous source file" pointers on the front for easy chaining; and (c) a compiler-generated type, "source files" (plural) with "first source file" and "last source file" fields that can be used as the anchor for a list. Here they are in the listing:
+But now that our types have been resolved, that definition has been modified and expanded to include (a) a "`source file`" type that is nothing but a pointer to a "`source file record`"; (b) a "`source file record`" that has "`next source file`" and "`previous source file`" pointers on the front for easy chaining; and (c) a compiler-generated type, "`source files`" (plural) with "`first source file`" and "`last source file`" fields that can be used as the anchor for a list. Here they are in the listing:
 
 
-/` - type/source file/source files/FFFFFFFF/thing/thing/source file record/source file record/0/`
+`/ - type/source file/source files/FFFFFFFF/thing/thing/source file record/source file record/0/`
 `/variable//no///byte/byte/00000000/no/4/no////`
 
 
@@ -2988,7 +2983,7 @@ But now that our types have been resolved, that definition has been modified and
 `/variable/field/no/last source file/last/source file/source file/00000000/no/1/yes////`
 
 
-A third notable example is the "foot" unit-of-measure type, which was defined like this:
+A third notable example is the "`foot`" unit-of-measure type, which was defined like this:
 
 
 A foot is 12 inches.`
@@ -2998,13 +2993,13 @@ Which refers to this definition of an inch:
 
  `
 
-An inch is 1440 twips.`
+An inch is 1440 twips.
 
 
 Which refers to this definition of a twip:
 
 
-A twip is a number.`
+`A twip is a number.`
 
 
 Now that our types have been resolved, we find that the "foot" type looks like this:
@@ -3019,25 +3014,25 @@ Now that our types have been resolved, we find that the "foot" type looks like t
 `/variable//no/high wyrd/high/wyrd/wyrd/00000000/no/1/no/third byte///`
 
 
-Note that the "foot" type not only has an appropriate plural form ("feet"), but that it also has all the fields that any other number has, and that the "scale factor" (last item on the first line above) is 17280, which is 12 times 1440, or the number of twips in an foot. The "scale factor" is used, at compile time, to convert literals in routine calls that have a specified unit of measure to units expected by the called routine. When, for example, in the Cal Monet we said:
+Note that the "`foot`" type not only has an appropriate plural form ("`feet`"), but that it also has all the fields that any other number has, and that the "`scale factor`" (last item on the first line above) is 17280, which is 12 times 1440, or the number of twips in an foot. The "`scale factor`" is used, at compile time, to convert literals in routine calls that have a specified unit of measure to units expected by the called routine. When, for example, in the Cal Monet we said:
 
 
 `Resize the picture to 5-1/2 inches by 5-1/2 inches.`
 
 
-The CAL automatically passed 7920 to the resize routine (who was expecting twips, not inches). And had we made the picture just a little bigger by saying...`
+The CAL automatically passed 7920 to the resize routine (who was expecting twips, not inches). And had we made the picture just a little bigger by saying...
 
 
 `Resize the picture to 1/2 foot by 1/2 foot.`
 
 
-The CAL would have passed 8640 to the resize routine (8640 is the number of twips in 6 inches, or 1/2 foot).`
-
-`
-`Looking further in our listing, we ca see that our type index is a little busier:
+The CAL would have passed 8640 to the resize routine (8640 is the number of twips in 6 inches, or 1/2 foot).
 
 
-`TYPE INDEX:
+Looking further in our listing, we ca see that our type index is a little busier:
+
+
+`TYPE INDEX:`
 
 
 `/840 buckets/1001 refers/`
@@ -3046,7 +3041,7 @@ The CAL would have passed 8640 to the resize routine (8640 is the number of twip
 And that all that resolving of types took almost no time at all:
 
 
-`TIMERS:
+`TIMERS:`
 
 
 `/timer/loading/62/`
@@ -3067,11 +3062,8 @@ And that all that resolving of types took almost no time at all:
 `/timer/total/719/`
 
 
-Next up: Resolving global variables.`
+Next up: Resolving global variables.
 
-` `
-
----`
 
 
 119. Moving on. Back in the gray, adjust the "compile a directory" routine to look like this:
@@ -3170,7 +3162,7 @@ Next up: Resolving global variables.`
 `Generate the literal's name given "~L".`
 
 
-124. Several types of literals have to be converted to "executable ready" format:
+124. Several types of literals have to be converted to "`executable ready`" format:
 
 
 `To compile a literal given a rider (flag):`
@@ -3254,7 +3246,7 @@ Next up: Resolving global variables.`
 `Resolve the literal.`
 
 
-125. We'll be needing this decider to peek ahead a little so we can spot units-of-measure that follow numeric literals (like the "inches" part of "3 inches":
+125. We'll be needing this decider to peek ahead a little so we can spot units-of-measure that follow numeric literals (like the "`inches`" part of "`3 inches`":
 
 
 `To decide if a rider is followed by any unit of measure:`
@@ -3271,7 +3263,7 @@ Next up: Resolving global variables.`
 
 126. The decider above is also used when we're parsing expressions (later on), so we need this guy to go with him:
 
-` `
+
 
 `To decide if a string is the start of any expression:`
 `If the string is any sign, say yes.`
@@ -3300,7 +3292,7 @@ Next up: Resolving global variables.`
 129. And that's it for resolving globals! Time to see what all that does to the listing. Run it. In the blue, open up the daughter's source files and list. The open up the updated listing file. Jump to the "GLOBALS:" Section and you'll see that initialized globals are now associated with named literals, like so:
 
 
-`GLOBALS:
+`GLOBALS:`
 
 
 `/variable/global/no/adding built-in memory routines timer//timer/timer/00000000/no/1/no////`
@@ -3313,10 +3305,10 @@ Next up: Resolving global variables.`
 `/variable/global/no/call internal tag//tag/tag/00000000/no/1/no//~L4//`
 
 
-`Note the "~L1" and "~L2" and similar literal names near the end of the tag globals above. Now jump to the "LITERALS:" Section and you'll see those very literals with their values, backways, ready for inclusion in our executable file:
+Note the "~L1" and "~L2" and similar literal names near the end of the tag globals above. Now jump to the "LITERALS:" Section and you'll see those very literals with their values, backways, ready for inclusion in our executable file:
 
 
-`LITERALS:
+`LITERALS:`
 
 
 `/variable/literal/no/~L1//number/number/00000000/no/1/no///01000000/`
@@ -3331,22 +3323,22 @@ If you look for "~L113" you'll find a very long line in the listing that starts 
 `/variable/literal/no/~L113//hex string/hex string/00000000/no/1/no///524946463A020...`
 
 
-`The source for that literal is in the Noodle as part of the definition of our "cluck" sound global variable:
+The source for that literal is in the Noodle as part of the definition of our "cluck" sound global variable:
 
 
 `The cluck sound is a wave equal to $524946463A020...`
 
 
-Later we'll see how the compiler generates code to copy literal values like these into the corresponding global variables just before he calls the programmer's "run" routine.`
+Later we'll see how the compiler generates code to copy literal values like these into the corresponding global variables just before he calls the programmer's "run" routine.
 
 
-More literals, and the code to copy them into the right places, will be added later as we stumble on literals in routine bodies.`
+More literals, and the code to copy them into the right places, will be added later as we stumble on literals in routine bodies.
 
 
 Let's check our timers and call it a day:
 
 
-`TIMERS:
+`TIMERS:`
 
 
 `/timer/loading/94/`
@@ -3367,13 +3359,13 @@ Let's check our timers and call it a day:
 `/timer/total/937/`
 
 
-Looks like manipulating all those huge hex literals in the Noodle cost us a few milliseconds. The cluck sound is only one of them; the Osmosian font is another, and it's almost 72,000 nibbles long. I thnk we can live with 94 milliseconds in any case.`
+Looks like manipulating all those huge hex literals in the Noodle cost us a few milliseconds. The cluck sound is only one of them; the Osmosian font is another, and it's almost 72,000 nibbles long. I think we can live with 94 milliseconds in any case.
 
 
----`
 
 
-130. Onward. In the gray, move our temporary abort line down, and uncomment the next step.` - `
+
+130. Onward. In the gray, move our temporary abort line down, and uncomment the next step.
 
 
 `To compile a directory:`
@@ -3397,17 +3389,17 @@ Looks like manipulating all those huge hex literals in the Noodle cost us a few 
 `\Compile the directory (stop).`
 
 
-131. Our goal in this step is to gather enough information so we can formulate a convenient "moniker" for each routine. Let's begin by putting back the definition of a moniker (and a partial moniker, while we're at it):` - `
+131. Our goal in this step is to gather enough information so we can formulate a convenient "moniker" for each routine. Let's begin by putting back the definition of a moniker (and a partial moniker, while we're at it):
 
 
 `A moniker is a string.`
 
 `A partial moniker is a moniker.`
 
-Then let's consider an example from the Cal Monet. The moniker for this routine...` - `
+Then let's consider an example from the Cal Monet. The moniker for this routine...
 
 
-`To create a work given a URL:
+`To create a work given a URL:`
 
 
 ... looks like this:
@@ -3416,10 +3408,10 @@ Then let's consider an example from the Cal Monet. The moniker for this routine.
 `create [work] from/given/with/using [url]`
 
 
-It consists of 4 "monikettes": the string "create", the parameter type "[work]", the string "from/given/with/using", and the parameter type "[url]".` - `
+It consists of 4 "`monikettes`": the string "`create`", the parameter type "`[work]`", the string "`from/given/with/using`", and the parameter type "`[url]`".
 
 
-132. We should uncomment the monikette thing now...`
+132. We should uncomment the monikette thing now...
 
 
 `A monikette is a thing with`
@@ -3431,10 +3423,10 @@ It consists of 4 "monikettes": the string "create", the parameter type "[work]",
 `a current substring.`
 
 
-A monikette's string` is used to hold string-type monikettes (like "create" or "from/given/with/using"), while a monikette's type` points to the type definition of a parameter. A monikette's variable` isn't used until later, when we parse expressions.`
+A `monikette's string` is used to hold string-type monikettes (like "`create`" or "`from/given/with/using`"), while a `monikette's type` points to the type definition of a parameter. A `monikette's variable` isn't used until later, when we parse expressions.
 
 
-A routine record has a list of monikettes and a list of parameters in it. As we compile a routine header, we hang the routine's parameters on the parameter list, and the monikettes (both string and parameter types) on the monikette list.`
+A routine record has a list of monikettes and a list of parameters in it. As we compile a routine header, we hang the routine's parameters on the parameter list, and the monikettes (both string and parameter types) on the monikette list.
 
 
 133. We should put back these 3 helpers at this time:
@@ -3482,7 +3474,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 `Put the type into the monikette's type.`
 
 
-134. We convert them into a moniker, using the routines below. The conversion routine is in two parts in case we don't want to convert the whole monikette list at one time.`
+134. We convert them into a moniker, using the routines below. The conversion routine is in two parts in case we don't want to convert the whole monikette list at one time.
 
 
 `To convert some monikettes to a moniker:`
@@ -3939,7 +3931,7 @@ Time to move on.`
 `Repeat.`
 
 
-148. Done! Run it. In the blue, open up and list the daughter. Then open the updated listing and consider the first few types.` - `
+148. Done! Run it. In the blue, open up and list the daughter. Then open the updated listing and consider the first few types.
 
 
 You can see that bytes are still 1 byte long:
@@ -3963,7 +3955,7 @@ But our abort message, which is a string, is now 8 bytes long, with a first byte
 `/variable//no/last byte pointer/last/byte pointer/byte pointer/00000004/no/1/no////`
 
 
-You can also see that our "address" type has some redefinitions in it:` - `
+You can also see that our "address" type has some redefinitions in it:
 
 
 `/type/address/addresses/00000004/number/number///0/`
@@ -4196,10 +4188,10 @@ Note that there is no tilde in the routine name; we do` expect the programmer to
 `Compile the header of the routine.`
 
 
-Again, no tilde in the routine name since a programmer may want to call these routines directly.` - `
+Again, no tilde in the routine name since a programmer may want to call these routines directly.
 
 
-155. And these are the routines that add the destroy routines for each dynamic type:` - `
+155. And these are the routines that add the destroy routines for each dynamic type:
 
 
 `To add the destroy routine for a type:`
@@ -4253,13 +4245,13 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 `Compile the header of the routine.`
 
 
-Note that we expect the programmer to call these routines directly.` - `
+Note that we expect the programmer to call these routines directly.
 
 
 Note also that they "go deep" -- if anything attached to a record that is being destroyed needs to be destroyed, these routines let the programmer simply "forget" about those attached things. This spares the programmer a lot of repetative coding.`
 
 
-156. Finally, we need this routine to decide if a type can be forgotten by the programmer:` - `
+156. Finally, we need this routine to decide if a type can be forgotten by the programmer:
 
 
 `To decide if a type should be forgotten:`
@@ -4274,14 +4266,14 @@ Note also that they "go deep" -- if anything attached to a record that is being 
 `Say yes.`
 
 
-157. And that's it for this step. Let's run it. Then, in the blue, load up the daughter and list her. Then look in the listing. The first "~finalize" routine in the list is this one...` - `
+157. And that's it for this step. Let's run it. Then, in the blue, load up the daughter and list her. Then look in the listing. The first "~finalize" routine in the list is this one...
 
 
 `/routine/~finalize [~inline compiler type]/no/no/no/no//0/0/00000000/`
 `/variable/parameter/no/~inline compiler type/~inline compiler type/~inline compiler type/~inline compiler type/00000000/no/1/no////`
 
 
-...which is needed because the "~inline compiler type" has lots of strings in it, as you can see from the type definition (earlier in the listing):` - `
+...which is needed because the "~inline compiler type" has lots of strings in it, as you can see from the type definition (earlier in the listing):
 
 
 `/type/~inline compiler type/~inline compiler types/00000040/record/record///0/`
@@ -4296,17 +4288,17 @@ Note also that they "go deep" -- if anything attached to a record that is being 
 `/variable/field/no/listing buffer/listing/buffer/buffer/00000038/no/1/no////`
 
 
-Recall that a directory is a path and a path is a string, and that buffer is also a string.` - `
+Recall that a directory is a path and a path is a string, and that buffer is also a string.
 
 
-And the first generated "allocate" routine in the listing is this one...` - `
+And the first generated "allocate" routine in the listing is this one...
 
 
 `/routine/allocate memory for [entry]/no/no/no/no//0/0/00000000/`
 `/variable/parameter/no/entry/entry/entry/entry/00000000/no/1/no////`
 
 
-Followed by the associated "deallocate" and "destroy" routines:` - `
+Followed by the associated "deallocate" and "destroy" routines:
 
 
 `/routine/deallocate [entry]/no/no/no/no//0/0/00000000/`
@@ -4317,10 +4309,10 @@ Followed by the associated "deallocate" and "destroy" routines:` - `
 ` `
 158. Extra credit exercise: You probably noticed that the generated routines above have no meat in them. That's because we don't list routine bodies until later when they've been compiled. But let's take a peek. In the gray, get into the son's compiler, find the "list a routine" routine, and add this line (including the comment at the end)...`
 
-`If the routine's moniker starts with "~", append the routine's body string to the buffer; advance the buffer. \*** testing only` - `
+`If the routine's moniker starts with "~", append the routine's body string to the buffer; advance the buffer. \*** testing only
 
 
-...just before the "Advance the buffer" line at the end of that routine.` - `
+...just before the "Advance the buffer" line at the end of that routine.
 
 
 Now run the son, open and list the daughter, and examine the listing. The finalize routine for our "~inline compiler type" now looks like this (without the word-wrap):
@@ -4338,7 +4330,7 @@ Those sentences will get compiled later with the rest of the programmer's (and o
 `intel $50. unassign the string's first. intel $58.`
 
 
-...who gives the string's memory back to Windows by calling this Noodle routine:` - `
+...who gives the string's memory back to Windows by calling this Noodle routine:
 
 
 `To unassign a pointer:`
@@ -4349,7 +4341,7 @@ Those sentences will get compiled later with the rest of the programmer's (and o
 `Subtract 1 from the heap count.`
 
 
-And that's the way we manage string memory for the programmer, and help him conveniently deal with the rest of his dynamically-allocated data.` - `
+And that's the way we manage string memory for the programmer, and help him conveniently deal with the rest of his dynamically-allocated data.
 
 
 159. Now delete that temporary "\*** testing only" line in the son's compiler.`
@@ -4839,7 +4831,7 @@ An expression` is two or more terms separated by the infix operators plus`, minu
 `Clear the term's phrase.`
 
 
-177. And this is the guy who compiles the part that all terms have:` - `
+177. And this is the guy who compiles the part that all terms have:
 
 
 `To compile a term given a rider (common part):`
@@ -4852,7 +4844,7 @@ An expression` is two or more terms separated by the infix operators plus`, minu
 `Abort with "I expected a term hereabouts but all I found was '" then the rider's token then "'." and the rider.`
 
 
-178. This guy deals with terms that have a minus sign in front of them:` - `
+178. This guy deals with terms that have a minus sign in front of them:
 
 
 `To compile a term given a rider (negated term):`
@@ -4923,7 +4915,7 @@ An expression` is two or more terms separated by the infix operators plus`, minu
 If the variable is a global, and the programmer wants us to initialize it with a literal value, we're going to need a "put" or "convert" routine to actually fill it in at run time, so we make sure we've got such a routine now. If we find one, we take a moment to compile its body, and then we fill in the variable's "initializer string" with the Plain English sentence that will do the initializing. "Global initializer" sentences are compiled in the next step.`
 
 
-181. Here are the seven helpers we need to find the right routines to call:` - `
+181. Here are the seven helpers we need to find the right routines to call:
 
 
 
@@ -5013,7 +5005,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 `Add another fragment given the call internal tag and the routine.`
 
 
-183. And now we're ready to compile "posigated" terms:` - `
+183. And now we're ready to compile "posigated" terms:
 
 
 `To compile a term given a rider (posigated term):`
@@ -5024,7 +5016,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 `Clear the term's phrase.`
 
 
-184. And "variable" terms, including those followed by possessives:` - `
+184. And "variable" terms, including those followed by possessives:
 
 
 `To decide if a string is the start of any variable:`
@@ -5063,7 +5055,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 `Compile the term given the rider and the name (possessive - field).`
 
 
-185. Some possessives reference compiler-defined metadata. A term's magnitude`, for example, is it's length in bytes; a term's target` is the type of data a pointer points to; and a term's whereabouts` is its address in memory.` - `
+185. Some possessives reference compiler-defined metadata. A term's magnitude`, for example, is it's length in bytes; a term's target` is the type of data a pointer points to; and a term's whereabouts` is its address in memory.
 
 
 `To compile a term given a rider (possessive - magnitude):`
@@ -5137,7 +5129,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 `Set the compiled flag in the other variable.`
 
 
-188. And these are the four guys we need to handle references to fields in records:` - `
+188. And these are the four guys we need to handle references to fields in records:
 
 
 `To compile a term given a rider and a name (possessive - field):`
@@ -5596,7 +5588,7 @@ Note that literals can have possessives; for example...`
 `Repeat.`
 
 
-203. This is the guy who compiles other (ie, normal, programmer-created sentences):` - `
+203. This is the guy who compiles other (ie, normal, programmer-created sentences):
 
 
 `To compile the next statement given a rider (other):`
@@ -6059,7 +6051,7 @@ Put the string into the compiler's abort message.` `
 Now that we know everything in the source checks out, it's time to add one more routine of our own.`
 
 
-220. Move our abort line down a notch and activate the next step:` - `
+220. Move our abort line down a notch and activate the next step:
 
 
 `To compile a directory:`
@@ -6248,7 +6240,7 @@ Next time, we'll calculate the offsets for our parameters and local variables.`
 `If the parameter is nil, exit.`
 `If the routine's callback flag is set, set the parameter's by-value flag.`
 `If the parameter's previous is nil, put 8 into the parameter's offset. \ skip the return address and saved ebp `
-`If the parameter's previous is not nil, put the parameter's previous' offset plus 4 into the parameter's offset. \ all parameters are 4 bytes long` - `
+`If the parameter's previous is not nil, put the parameter's previous' offset plus 4 into the parameter's offset. \ all parameters are 4 bytes long
 
 `Add 4 to the routine's parameter size.`
 `Repeat.`
