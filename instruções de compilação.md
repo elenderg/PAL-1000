@@ -2963,7 +2963,7 @@ And here's another notable example. In the compiler we define a "source file" li
 `A source file is a thing with a path and a buffer.`
 
 
-But now that our types have been resolved, that definition has been modified and expanded to include (a) a "source file" type that is nothing but a pointer to a "source file record`"; (b) a "source file record" that has "next source file" and "previous source file" pointers on the front for easy chaining; and (c) a compiler-generated type, "source files" (plural) with "first source file" and "last source file" fields that can be used as the anchor for a list. Here they are in the listing:
+But now that our types have been resolved, that definition has been modified and expanded to include (a) a "source file" type that is nothing but a pointer to a "source file record"; (b) a "source file record" that has "next source file" and "previous source file" pointers on the front for easy chaining; and (c) a compiler-generated type, "source files" (plural) with "first source file" and "last source file" fields that can be used as the anchor for a list. Here they are in the listing:
 
 
 `/ - type/source file/source files/FFFFFFFF/thing/thing/source file record/source file record/0/`
@@ -3243,7 +3243,7 @@ Next up: Resolving global variables.
 `Resolve the literal.`
 
 
-125. We'll be needing this decider to peek ahead a little so we can spot units-of-measure that follow numeric literals (like the "inches" part of "3 inches`":
+125. We'll be needing this decider to peek ahead a little so we can spot units-of-measure that follow numeric literals (like the "inches" part of "3 inches":
 
 
 `To decide if a rider is followed by any unit of measure:`
@@ -3405,7 +3405,7 @@ Then let's consider an example from the Cal Monet. The moniker for this routine.
 `create [work] from/given/with/using [url]`
 
 
-It consists of 4 "monikettes`": the string "create`", the parameter type "[work]`", the string "from/given/with/using`", and the parameter type "[url]`".
+It consists of 4 "monikettes": the string "create", the parameter type "[work]", the string "from/given/with/using", and the parameter type "[url]".
 
 
 132. We should uncomment the monikette thing now...
@@ -3420,7 +3420,7 @@ It consists of 4 "monikettes`": the string "create`", the parameter type "[work]
 `a current substring.`
 
 
-A `monikette's string` is used to hold string-type monikettes (like "create" or "from/given/with/using`"), while a `monikette's type` points to the type definition of a parameter. A `monikette's variable` isn't used until later, when we parse expressions.
+A `monikette's string` is used to hold string-type monikettes (like "create" or "from/given/with/using"), while a `monikette's type` points to the type definition of a parameter. A `monikette's variable` isn't used until later, when we parse expressions.
 
 
 A routine record has a list of monikettes and a list of parameters in it. As we compile a routine header, we hang the routine's parameters on the parameter list, and the monikettes (both string and parameter types) on the monikette list.
@@ -3691,7 +3691,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 `Say no.`
 
 
-When a decider is written with a "positive" header, the CAL will understand both the positive and negative forms. For example, "To decide if a string is blank" will automatically serve as "to decide if a string is not blank`".
+When a decider is written with a "positive" header, the CAL will understand both the positive and negative forms. For example, "To decide if a string is blank" will automatically serve as "to decide if a string is not blank".
 
 
 140. Since there's a lot of string concatenation required in monikette-to-moniker conversions, and since we do those a lot, we added in this helper to make those concatenations faster than usual:
@@ -3774,7 +3774,7 @@ When a decider is written with a "positive" header, the CAL will understand both
 And you can see our "ROUTINE INDEX:" is getting a workout, too:
 
 
-`ROUTINE INDEX:
+`ROUTINE INDEX:`
 
 
 `/4881 buckets/7862 refers/`
