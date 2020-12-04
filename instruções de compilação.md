@@ -139,7 +139,7 @@ Now let's do it.
 
 `To append an entry to a buffer (with separator):`
 
-`If the entry is nil, append "__" to the buffer (with separator); exit.`
+`If the entry is nil, append "" to the buffer (with separator); exit.`
 
 `Append the entry's name to the buffer (with separator).`
 
@@ -173,7 +173,7 @@ Now let's do it.
 
 `To append a routine to a buffer (with separator):`
 
-`If the routine is nil, append "__" to the buffer (with separator); exit.`
+`If the routine is nil, append "" to the buffer (with separator); exit.`
 
 `Append the routine's moniker to the buffer (with separator).`
 
@@ -235,14 +235,14 @@ Now let's do it.
 
 `To append a type to a buffer (with separator):`
 
-`If the type is nil, append "__" to the buffer (with separator); exit.`
+`If the type is nil, append "" to the buffer (with separator); exit.`
 
 `Append the type's name to the buffer (with separator).`
 
 
 `To append a variable to a buffer (with separator):`
 
-`If the variable is nil, append "__" to the buffer (with separator); exit.`
+`If the variable is nil, append "" to the buffer (with separator); exit.`
 
 `Append the variable's name to the buffer (with separator).`
 
@@ -1756,7 +1756,7 @@ As you know, the CAL expects a program's source code to be stored as one or more
 
 A diligent Plain English programmer, however, will typically use the CAL's Writer to author a user manual and other documentation for a program. Since it's convenient to keep such documentation in the same directory as the source code, and since such documentation files will not have an extension, we need the CAL to skip them when he's collecting source code to compile.
 
-59. Internally, documents created with the CAL's writer are called "_reams_" (as in a "__ream of paper_"). And that's why, in the above routine, files that look "_reamish_" are passed over. Uncomment the decider routine shown below so the compiler will be able to recognize "_reamish_" files:
+59. Internally, documents created with the CAL's writer are called "_reams_" (as in a "ream of paper_"). And that's why, in the above routine, files that look "_reamish_" are passed over. Uncomment the decider routine shown below so the compiler will be able to recognize "_reamish_" files:
 
  
 
@@ -3886,7 +3886,7 @@ Okay, you know the drill.
 
 `\ add chain type `
 
-`Add a chain type to the types given the type's plural name and "__" and the base type's plural name.`
+`Add a chain type to the types given the type's plural name and "" and the base type's plural name.`
 
 `Add a third field to the chain type's fields given "_first "_ then the type's name and "_first_" and the type's name and yes.`
 
@@ -7761,7 +7761,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `If the field is nil, abort with "_There's no '_" then the name then "_' field in a '_" then the term's type's name then "_'._" and the rider; exit.`
 
-`Find a deep field term given "__" and the field's type and the name.`
+`Find a deep field term given "" and the field's type and the name.`
 
 `If the deep field term is empty, repeat.`
 
