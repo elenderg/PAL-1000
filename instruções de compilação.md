@@ -2988,39 +2988,39 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `If the string is "virus", put "viruses" into the string; exit.`
 
-`If the string ends with "sh", append "es_" to the string; exit.`
+`If the string ends with "sh", append "es" to the string; exit.`
 
-`If the string ends with "ch", append "es_" to the string; exit.`
+`If the string ends with "ch", append "es" to the string; exit.`
 
-`If the string ends with "man", remove the last two bytes from the string; append "en_" to the string; exit.`
+`If the string ends with "man", remove the last two bytes from the string; append "en" to the string; exit.`
 
-`If the string ends with "child", append "ren_" to the string; exit.`
+`If the string ends with "child", append "ren" to the string; exit.`
 
-`If the string ends with "ex", remove the last two bytes from the string; append "ices_" to the string; exit. \ or add ES `
+`If the string ends with "ex", remove the last two bytes from the string; append "ices" to the string; exit. \ or add ES `
 
-`If the string ends with "fe", remove the last two bytes from the string; append "ves_" to the string; exit.`
+`If the string ends with "fe", remove the last two bytes from the string; append "ves" to the string; exit.`
 
-`If the string ends with "is", remove the last two bytes from the string; append "es_" to the string; exit.`
+`If the string ends with "is", remove the last two bytes from the string; append "es" to the string; exit.`
 
-`If the string ends with "ix", remove the last two bytes from the string; append "ices_" to the string; exit. \ or add ES `
+`If the string ends with "ix", remove the last two bytes from the string; append "ices" to the string; exit. \ or add ES `
 
-`If the string ends with "ma", append "ta_" to the string; exit.  \ or add S `
+`If the string ends with "ma", append "ta" to the string; exit.  \ or add S `
 
-`If the string ends with any consonant and "_y", remove the last byte from the string; append "ies_" to the string; exit.`
+`If the string ends with any consonant and "_y", remove the last byte from the string; append "ies" to the string; exit.`
 
-`If the string ends with any vowel and "_o", append "s_" to the string; exit.`
+`If the string ends with any vowel and "_o", append "s" to the string; exit.`
 
-`If the string ends with any vowel and "_y", append "s_" to the string; exit.`
+`If the string ends with any vowel and "_y", append "s" to the string; exit.`
 
-`If the string ends with "f", remove the last byte from the string; append "ves_" to the string; exit.`
+`If the string ends with "f", remove the last byte from the string; append "ves" to the string; exit.`
 
-`If the string ends with "s", append "es_" to the string; exit.`
+`If the string ends with "s", append "es" to the string; exit.`
 
-`If the string ends with "x", append "es_" to the string; exit.`
+`If the string ends with "x", append "es" to the string; exit.`
 
-`If the string ends with "z", append "es_" to the string; exit.`
+`If the string ends with "z", append "es" to the string; exit.`
 
-`append "s_" to the string.`
+`append "s" to the string.`
 
 
 `To decide if a string ends with any consonant and another string:`
@@ -5280,7 +5280,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `If the moniker is not blank, append the space byte to the moniker.`
 
-`If the monikette's type is not nil, append "[_" and the monikette's type's name and "_]_" to the moniker (fast); exit.`
+`If the monikette's type is not nil, append "[_" and the monikette's type's name and "_]" to the moniker (fast); exit.`
 
 `If the monikette's string is not blank, append the monikette's string to the moniker; exit.`
 
@@ -7461,7 +7461,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `If the monikette's current substring is not blank, append the monikette's current substring to the moniker; exit.`
 
-`If the monikette's current type is not nil, append "[_" and the monikette's current type's name and "_]_" to the moniker (fast); exit.`
+`If the monikette's current type is not nil, append "[_" and the monikette's current type's name and "_]" to the moniker (fast); exit.`
 
 
 `To bubble a monikette:`
@@ -9289,7 +9289,7 @@ Now that we know everything in the source checks out, it's time to add one more 
 
 `Add a routine to the routines given nil.`
 
-`append "~initialize before run and run and finalize after run_" to the routine's header string.`
+`append "~initialize before run and run and finalize after run" to the routine's header string.`
 
 `append "initialize before run. " to the routine's body string.`
 
