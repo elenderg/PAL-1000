@@ -877,37 +877,37 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `Advance the buffer (twice).`
 
-`List the loading timer given "loading_" in the buffer.`
+`List the loading timer given "loading" in the buffer.`
 
-`List the scanning timer given "scanning_" in the buffer.`
+`List the scanning timer given "scanning" in the buffer.`
 
-`List the resolving types timer given "resolving types_" in the buffer.`
+`List the resolving types timer given "resolving types" in the buffer.`
 
-`List the resolving globals timer given "resolving globals_" in the buffer.`
+`List the resolving globals timer given "resolving globals" in the buffer.`
 
-`List the compiling routine headers timer given "compiling routine headers_" in the buffer.`
+`List the compiling routine headers timer given "compiling routine headers" in the buffer.`
 
-`List the calculating timer given "calculating_" in the buffer.`
+`List the calculating timer given "calculating" in the buffer.`
 
-`List the adding built-in memory routines timer given "adding built-in memory routines_" in the buffer.`
+`List the adding built-in memory routines timer given "adding built-in memory routines" in the buffer.`
 
-`List the indexing utilities timer given "indexing utilities_" in the buffer.`
+`List the indexing utilities timer given "indexing utilities" in the buffer.`
 
-`List the compiling routine bodies timer given "compiling routine bodies_" in the buffer.`
+`List the compiling routine bodies timer given "compiling routine bodies" in the buffer.`
 
-`List the adding built-in startup routine timer given "adding built-in startup routine_" in the buffer.`
+`List the adding built-in startup routine timer given "adding built-in startup routine" in the buffer.`
 
-`List the offsetting timer given "offsetting_" in the buffer.`
+`List the offsetting timer given "offsetting" in the buffer.`
 
-`List the addressing timer given "addressing_" in the buffer.`
+`List the addressing timer given "addressing" in the buffer.`
 
-`List the transmogrifying timer given "transmogrifying_" in the buffer.`
+`List the transmogrifying timer given "transmogrifying" in the buffer.`
 
-`List the linking timer given "linking_" in the buffer.`
+`List the linking timer given "linking" in the buffer.`
 
-`List the writing timer given "writing_" in the buffer.`
+`List the writing timer given "writing" in the buffer.`
 
-`List the compiler's timer given "total_" in the buffer.`
+`List the compiler's timer given "total" in the buffer.`
 
 `Advance the buffer.`
 
