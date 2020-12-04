@@ -2356,7 +2356,7 @@ And that's it for the bottom-level "_move a rider_" routines.
 `If the rider's token's first's target is the left-bracket byte, repeat.`
 
 
-...who is the guy used by our scanners. We've discussed these "_move a rider_" routines from the bottom up, as it were, since they're mostly concerned with what impressive people call "_lexical analysis_" (making words out of letters). We'll be discussing our scanners from the top down since they're mostly concerned with what impressive people call "_semantic analysis_" (making sentences out of words).
+...who is the guy used by our scanners. We've discussed these "_move a rider_" routines from the bottom up, as it were, since they're mostly concerned with what impressive people Call "lexical analysis_" (making words out of letters). We'll be discussing our scanners from the top down since they're mostly concerned with what impressive people Call "semantic analysis_" (making sentences out of words).
 
 
 78. We've already put back in the top 2 scanners, the first ("to scan some source files") who just loops through the source files and passes them to the second ("to scan a source file") who simply dispatches the rest of the scanning process to his underlings once he knows what's coming up in the source. These are the deciders he needs to make a good decision:
@@ -3648,7 +3648,7 @@ Thirdly, you'll notice that record types have their fields listed as variables, 
 `/variable/field/no/address////00000000/no/1/no////`
 
 
-If you skip down to the next section of the listing (just find "_GLOBALS:_" with no quotes and a colon on the end), you'll see lots of globals, with their types filled in, but with zeros in their addresses, like this:
+If you skip down to the next section of the listing (just find "_GLOBALS:" with no quotes and a colon on the end), you'll see lots of globals, with their types filled in, but with zeros in their addresses, like this:
 
 
 `/variable/global/no/adding built-in memory routines timer//timer//00000000/no/1/no////`
@@ -6549,7 +6549,7 @@ Followed by the associated "_deallocate_" and "destroy_" routines:
 `If the routine's moniker starts with "~", append the routine's body string to the buffer; advance the buffer. \*** testing only`
 
 
-...just before the "_`Advance the buffer`_" line at the end of that routine.
+...just before the "`Advance the buffer`" line at the end of that routine.
 
 
 Now run the son, open and list the daughter, and examine the listing. The finalize routine for our "_~inline compiler type_" now looks like this (without the word-wrap):
@@ -6578,7 +6578,7 @@ Those sentences will get compiled later with the rest of the programmer's (and o
 
 `If the pointer is nil, exit.`
 
-`Call "_kernel32.dll_" "_HeapFree_" with the heap pointer and 0 [no options] and the pointer returning a number.`
+`Call "kernel32.dll" "HeapFree" with the heap pointer and 0 [no options] and the pointer returning a number.`
 
 `If the number is 0, exit.`
 
@@ -6590,7 +6590,7 @@ Those sentences will get compiled later with the rest of the programmer's (and o
 And that's the way we manage string memory for the programmer, and help him conveniently deal with the rest of his dynamically-allocated data.
 
 
-159. Now delete that temporary "_`\*** testing only`_" line in the son's compiler.
+159. Now delete that temporary "`\*** testing only`" line in the son's compiler.
 
 
 
@@ -6614,7 +6614,7 @@ Matching a statement (in the body of a routine) with the routine (that should be
 
  
 
-...since both "_`quotient`_" and "`remainder`_" are elsewhere defined as numbers.
+...since both "`quotient`" and "`remainder`" are elsewhere defined as numbers.
 
  
 
@@ -6980,7 +6980,7 @@ This arrangement makes it easier to match each sentence in the body of each rout
 
 `To buzz:`
 
-`Call "_kernel32.dll_" "_Beep_" with 220 and 200.`
+`Call "kernel32.dll" "Beep" with 220 and 200.`
 
 
 Simple enough. Unfortunately, the whole affair is complicated by sentences that require additional processing and/or more than one call to properly execute. This sentence, for example...
@@ -6989,7 +6989,7 @@ Simple enough. Unfortunately, the whole affair is complicated by sentences that 
 `Put the box's height divided by 2 into a center offset.`
 
 
-...requires fragments for on-the-fly allocation of a scratch variable (to calculate and hold the address of the "_`height`_" field in the box record), with more fragments for on-the-fly allocation of an intermediate variable (to hold the result we get when we secretly call the Noodle's "_divide a number by another number_" routine to divide the box's height by 2), with even more fragments for on-the-fly allocation of the local "_`center offset`_" target variable that will be passed to the Noodle's bottom-level "_`put a number into another number`_" routine to fill in.
+...requires fragments for on-the-fly allocation of a scratch variable (to calculate and hold the address of the "`height`" field in the box record), with more fragments for on-the-fly allocation of an intermediate variable (to hold the result we get when we secretly call the Noodle's "_divide a number by another number_" routine to divide the box's height by 2), with even more fragments for on-the-fly allocation of the local "`center offset`" target variable that will be passed to the Noodle's bottom-level "`put a number into another number`" routine to fill in.
 
 
 So let's get to it.
@@ -7055,11 +7055,11 @@ So let's get to it.
 
 `To compile the bodies of the routines:`
 
-`Compile the body of the routine called "_initialize before run".`
+`Compile the body of the routine called "initialize before run".`
 
-`Compile the body of the routine called "_run".`
+`Compile the body of the routine called "run".`
 
-`Compile the body of the routine called "_finalize after run".`
+`Compile the body of the routine called "finalize after run".`
 
 
 `To compile the body of the routine called a string:`
@@ -7122,7 +7122,7 @@ Note that we're not just looping thorough the routines in the order we found the
 `Put the saved routine into the current routine.`
 
 
-After dealing with possible special cases ("`alternate wordings`_" and "`employs`"), this guy creates a nickname index for the routine's parameters, and then compiles the routine's prolog, body proper, and epilog.
+After dealing with possible special cases ("`alternate wordings`" and "`employs`"), this guy creates a nickname index for the routine's parameters, and then compiles the routine's prolog, body proper, and epilog.
 
 
 172. This is the guy we need to handle "_alternate wordings_" (implicit replacement routines):
@@ -7391,7 +7391,7 @@ An expression is two or more terms separated by the infix operators plus, minus,
 `If the flag is not set, put "put the " then the variable's literal's name then " into the " then the variable's name then ". " into the variable's initializer string.`
 
 
-If the variable is a global, and the programmer wants us to initialize it with a literal value, we're going to need a "_put" or "convert_" routine to actually fill it in at run time, so we make sure we've got such a routine now. If we find one, we take a moment to compile its body, and then we fill in the variable's "_initializer string_" with the Plain English sentence that will do the initializing. "_Global initializer_" sentences are compiled in the next step.
+If the variable is a global, and the programmer wants us to initialize it with a literal value, we're going to need a "_put" or "convert_" routine to actually fill it in at run time, so we make sure we've got such a routine now. If we find one, we take a moment to compile its body, and then we fill in the variable's "_initializer string" with the Plain English sentence that will do the initializing. "_Global initializer_" sentences are compiled in the next step.
 
 
 181. Here are the seven helpers we need to find the right routines to call:
@@ -7554,7 +7554,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 `Clear the term's phrase.`
 
 
-184. and "variable_" terms, including those followed by possessives:
+184. and "_variable_" terms, including those followed by possessives:
 
 
 `To decide if a string is the start of any variable:`
@@ -8071,7 +8071,7 @@ Note that literals can have possessives; for example...
 `Clear the term's phrase.`
 
 
-195. Most ratios in Plain English programs are defined as literals at compile-time (like "_1/2" or "1/3"). But sometimes a programmer might define a ratio at run-time, using other variables (like "_Put the percent / 100 into a fraction.") Keep in mind that our Compiler agrees with the great mathematician Leopold Kronecker that  "_The dear God created the whole numbers; all else is menschenwerk." So when somebody says something like 0.333333333..., we think, "_What he's really trying to say is simply 1/3, 1 part out of 3." In any case, this is the guy who compiles "_run-time ratios":
+195. Most ratios in Plain English programs are defined as literals at compile-time (like "`1/2`" or "`1/3`"). But sometimes a programmer might define a ratio at run-time, using other variables (like "`Put the percent / 100 into a fraction.`") Keep in mind that our Compiler agrees with the great mathematician Leopold Kronecker that  "_The dear God created the whole numbers; all else is menschenwerk._" So when somebody says something like 0.333333333..., we think, "_What he's really trying to say is simply 1/3, 1 part out of 3._" In any case, this is the guy who compiles "`run-time ratios`":
 
 
 `To compile a term given a rider (runtime ratio):`
@@ -8692,10 +8692,10 @@ Note that literals can have possessives; for example...
 209. A Dynamic Link Library (DLL) is a chunk of executable code that can be linked up with a program at run-time. All the Windows functions we use live in DLLs. Each DLL has to be "_imported_" at run-time. We have to keep track of all the DLLs (imports), and all the functions in those DLLs (entries), that a program calls. For example, this sentence...
 
 
-`Call "_kernel32.dll_" "_Beep_" with 220 and 200.`
+`Call "kernel32.dll" "Beep" with 220 and 200.`
 
 
-...refers to the "_Beep_" entry point in the "_kernel32.dll". These five routines help us keep track of things like that:
+...refers to the "Beep" entry point in the "kernel32.dll". These five routines help us keep track of things like that:
 
 
 `To add an entry to some imports given an import name and an entry name:`
@@ -9301,7 +9301,7 @@ Now that we know everything in the source checks out, it's time to add one more 
 
 `append "finalize after run. " to the routine's body string.`
 
-`append "call "_"kernel32.dll"_" "_"ExitProcess"_" with 0. " to the routine's body string.`
+`append "Call ""kernel32.dll"" ""ExitProcess"" with 0. " to the routine's body string.`
 
 `Slap the routine's routine header on the routine's header string.`
 
