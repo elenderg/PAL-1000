@@ -1,0 +1,36 @@
+To draw a gpbitmap at a spot (pdf style):
+If the gpbitmap is nil, exit.
+\ add xobject
+Add an xobject pdf object given "image object".
+Put "I" then the xobject's number into a name.
+\  add to image resources in current page
+Put "/" then the name then " " then the xobject's number then " 0 R" into a string.
+Create a new string thing given the string.
+Append the new string thing to the pdf state's current page's image strings.
+\ finish setting up xobject
+Append the xobject's number then " 0 obj" to the xobject.
+Append "<<" to the xobject.
+Append "/Type /XObject" to the xobject.
+Append "/Subtype /Image" to the xobject.
+Append "/ColorSpace /DeviceRGB" to the xobject.
+Append "/Width " then the gpbitmap's width to the xobject.
+Append "/Height " then the gpbitmap's height to the xobject.
+Append "/BitsPerComponent 8" to the xobject.
+Convert the gpbitmap to a buffer (pdf style).
+Convert the buffer to a nibble string.
+Append "/Filter /ASCIIHexDecode" to the xobject.
+Append "/Length " then the nibble string's length to the xobject.
+Append ">>" to the xobject.
+Append "stream" to the xobject.
+Append the nibble string to the xobject.
+Append "endstream" to the xobject.
+Append "endobj" to the xobject.
+\ draw the image in the current contents
+Put the gpbitmap's width times the tpp into a width.
+Put the gpbitmap's height times the tpp into a height.
+Put the spot's x into an x number.
+Put the pdf state's current height minus the spot's y minus the height into a y number.
+Output "q".
+Output the width then " 0 0 " then the height then " " then the x then " " then the y then " cm".
+Output "/" then the name then " Do".
+Output "Q".

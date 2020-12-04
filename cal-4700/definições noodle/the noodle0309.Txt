@@ -1,0 +1,41 @@
+To compare a string to another string given a length and another length (equal only):
+Intel $8BB508000000. \ mov esi,[ebp+8] \ the string
+Intel $8B36. \ mov esi,[esi] \ the string's first
+Intel $8BBD0C000000. \ mov edi,[ebp+12] \ the other string
+Intel $8B3F. \ mov edi,[edi] \ the other string's first
+Intel $8B8510000000. \ mov eax,[ebp+16] \ the string's length
+Intel $8B00. \ mov eax,[eax]
+Intel $8B9514000000. \ mov edx,[ebp+20] \ the other string's length
+Intel $8B12. \ mov edx,[edx]
+Intel $3BD0. \ cmp eax,edx \ if the length's differ, say no
+Intel $0F8548000000. \ jne sayno
+Intel $8BC8. \ mov ecx,eax \ put length into ecx
+\L3: \ loop:
+Intel $85C9. \ test ecx,ecx
+Intel $0F8449000000. \ jz say yes
+\ uppercase current byte in the string
+Intel $8A1E. \ mov bl,[esi]
+Intel $80FB61. \ cmp bl,'a'
+Intel $0F820C000000. \ jb L4
+Intel $80FB7A. \ cmp bl,'z'
+Intel $0F8703000000. \ ja L4
+Intel $80EB20. \ sub bl,$20
+\L4: \ uppercase current byte in the other string
+Intel $8A3F. \ mov bh,[edi]
+Intel $80FF61. \ cmp bh,'a'
+Intel $0F820C000000. \ jb L5
+Intel $80FF7A. \ cmp bh,'z'
+Intel $0F8703000000. \ ja L5
+Intel $80EF20. \ sub bh,$20
+\L5: \ compare the two uppercased bytes
+Intel $3ADF. \ cmp bl,bh
+Intel $0F8508000000. \ jne say no
+Intel $46. \ inc esi
+Intel $47. \ inc edi
+Intel $49. \ dec ecx
+Intel $E9BAFFFFFF. \ jmp L3
+\SAY NO:
+Intel $C7C000000000. \ mov eax,0
+Intel $E906000000. \ jmp end
+\SAY YES:
+Intel $C7C001000000. \ mov eax,1

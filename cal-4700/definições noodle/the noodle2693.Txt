@@ -1,0 +1,24 @@
+Convert the absolute position to the text's anchor given the text.
+Convert the other absolute position to the text's caret given the text.
+Limit the origin of the text.
+
+To store a buffer in a file;
+To write a buffer to a file:
+Clear the i/o error.
+Call "kernel32.dll" "SetFilePointer" with the file and 0 and 0 and 0 [file_begin] returning a result number.
+If the result number is -1, put "Error positioning file pointer." into the i/o error; exit.
+Call "kernel32.dll" "WriteFile" with the file and the buffer's first and the buffer's length and a number's whereabouts and 0 returning the result number.
+If the result number is 0, put "Error writing file." into the i/o error; exit.
+
+To store a buffer in a path;
+To write a buffer to a path:
+Clear the i/o error.
+Extract a directory from the path.
+If the directory is not in the file system, put "Directory '" then the directory then "' doesn't exist." into the i/o error; exit.
+Set the path to read-write mode.
+Privatize the path.
+Null terminate the path.
+Call "kernel32.dll" "CreateFileA" with the path's first and 1073741824 [generic_write] 
+And 0 and 0 and 2 [create_always] and -2147483520 [file_flag_write_through or file_attribute_normal] and 0 returning a handle.
+If the handle is -1 [invalid_handle_value], put "Error opening file '" then the path then "'." into the i/o error; exit.
+Call "kernel32.dll" "WriteFile" with the handle and the buffer's first and the buffer's length and a number's whereabouts and 0 returning the number.

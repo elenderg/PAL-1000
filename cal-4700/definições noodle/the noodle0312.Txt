@@ -1,0 +1,9 @@
+To compatibly wait for a process pointer:
+Call "kernel32.dll" "WaitForSingleObject" with the process pointer's target and -1 [infinite].
+Call "kernel32.dll" "CloseHandle" with the process pointer's target.
+Put 0 into the process pointer's target.
+Call "user32.dll" "GetForegroundWindow" returning a window.
+If the window is the main window, put 0 into eax; exit.
+Call "user32.dll" "ShowWindow" with the main window and 6 [sw_minimize].
+Call "user32.dll" "ShowWindow" with the main window and 9 [sw_restore].
+Put 0 into eax. \ set return value of thread

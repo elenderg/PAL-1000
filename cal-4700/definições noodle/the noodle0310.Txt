@@ -1,0 +1,45 @@
+To compare a string to another string given a length and another length returning a number:
+Intel $8BB508000000. \ mov esi,[ebp+8] \ the string
+Intel $8B36. \ mov esi,[esi] \ the string's first
+Intel $8BBD0C000000. \ mov edi,[ebp+12] \ the other string
+Intel $8B3F. \ mov edi,[edi] \ the other string's first
+Intel $8B8510000000. \ mov eax,[ebp+16] \ the string's length
+Intel $8B00. \ mov eax,[eax]
+Intel $8B9514000000. \ mov edx,[ebp+20] \ the other string's length
+Intel $8B12. \ mov edx,[edx]
+\ get the minimum length
+Intel $8BC8. \ mov ecx,eax
+Intel $3BCA. \ cmp ecx,edx
+Intel $0F8602000000. \ jbe L2
+Intel $8BCA. \ mov ecx,edx
+\L3: \ loop:
+Intel $85C9. \ test ecx,ecx
+Intel $0F8444000000. \ jz L6
+\ uppercase current byte in the string
+Intel $8A1E. \ mov bl,[esi]
+Intel $80FB61. \ cmp bl,'a'
+Intel $0F820C000000. \ jb L4
+Intel $80FB7A. \ cmp bl,'z'
+Intel $0F8703000000. \ ja L4
+Intel $80EB20. \ sub bl,$20
+\L4: \ uppercase current byte in the other string
+Intel $8A3F. \ mov bh,[edi]
+Intel $80FF61. \ cmp bh,'a'
+Intel $0F820C000000. \ jb L5
+Intel $80FF7A. \ cmp bh,'z'
+Intel $0F8703000000. \ ja L5
+Intel $80EF20. \ sub bh,$20
+\L5: \ compare the two uppercased bytes
+Intel $3ADF. \ cmp bl,bh
+Intel $0F8508000000. \ jne L5a
+Intel $46. \ inc esi
+Intel $47. \ inc edi
+Intel $49. \ dec ecx
+Intel $E9BAFFFFFF. \ jmp L3
+\L5a: \ load bytes into eax and edx for final compare
+Intel $0FB6C3. \ movzx eax,bl
+Intel $0FB6D7. \ movzx edx,bh
+\L6: \ subtract either the lengths or the last two bytes to set the eax to <0, =0, >0
+Intel $2BC2. \ sub eax,edx
+Intel $8B9D18000000. \ mov ebx,[ebp+24] \ the number
+Intel $8903. \ mov [ebx],eax

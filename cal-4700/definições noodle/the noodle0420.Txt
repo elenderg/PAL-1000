@@ -1,0 +1,15 @@
+To create the request handle of a winhttp request using a url record:
+If the winhttp request is nil, exit.
+Convert the url record's path into a wide string called wide path and null terminate.
+Convert "POST" to a wide string called wide post string and null terminate.
+If the url record's scheme is "https", put 8388608 [winhttp_flag_secure] into a secure number.
+Call "winhttp.dll" "WinHttpOpenRequest"
+With the winhttp request's connection
+And the wide post string's first
+And the wide path's first
+And 0 [L"HTTP/1.1"] 
+And 0 [winhttp_no_referer]
+And 0 [winhttp_default_accept_types]
+And the secure number
+Returning the winhttp request's request.
+If the winhttp request's request is 0, put "Could not open request." into the i/o error; exit.
