@@ -2364,25 +2364,25 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `To decide if a string is the start of any type:`
 
-`If the string is "_a", say yes.`
+`If the string is "a", say yes.`
 
-`If the string is "_an", say yes.`
+`If the string is "an", say yes.`
 
-`If the string is "_some", say yes.`
+`If the string is "some", say yes.`
 
 `Say no.`
 
 
 `To decide if a string is the start of any global:`
 
-`If the string is "_the", say yes.`
+`If the string is "the", say yes.`
 
 `Say no.`
 
 
 `To decide if a string is the start of any routine:`
 
-`If the string is "_to", say yes.`
+`If the string is "to", say yes.`
 
 `Say no.`
 
@@ -2404,9 +2404,9 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `Pluralize the type's plural name.`
 
-`If the rider's token is "_has_" or "_have", scan the type given the rider (has or have); exit.`
+`If the rider's token is "has" or "have", scan the type given the rider (has or have); exit.`
 
-`If the rider's token is not "is_" or "_are", abort with "I was expecting an 'is' or 'are', but I found '" then the rider's token then "'." and the rider; exit.`
+`If the rider's token is not "is" or "are", abort with "I was expecting an 'is' or 'are', but I found '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -2477,9 +2477,9 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `If the string is any literal, say no.`
 
-`If the string is "_called", say yes.`
+`If the string is "called", say yes.`
 
-`If the string is "_equal", say yes.`
+`If the string is "equal", say yes.`
 
 `If the string is blank, say no.`
 
@@ -2508,9 +2508,9 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `If the string is any literal, say yes.`
 
-`If the string is "_called", say yes.`
+`If the string is "called", say yes.`
 
-`If the string is "_equal", say yes.`
+`If the string is "equal", say yes.`
 
 `If the string is blank, say yes.`
 
@@ -2542,39 +2542,39 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `If the string is any indefinite article, say yes.`
 
-`If the string is "_the", say yes.`
+`If the string is "the", say yes.`
 
 `Say no.`
 
 
 `To decide if a string is any indefinite article:`
 
-`If the string is "_a", say yes.`
+`If the string is "a", say yes.`
 
-`If the string is "_an", say yes.`
+`If the string is "an", say yes.`
 
-`If the string is "_another", say yes.`
+`If the string is "another", say yes.`
 
-`If the string is "_some", say yes.`
+`If the string is "some", say yes.`
 
 `Say no.`
 
 
 `To decide if a string is any conjunction:`
 
-`If the string is "_and", say yes.`
+`If the string is "and", say yes.`
 
-`If the string is "_both", say yes.`
+`If the string is "both", say yes.`
 
-`If the string is "_but", say yes.`
+`If the string is "but", say yes.`
 
-`If the string is "_either", say yes.`
+`If the string is "either", say yes.`
 
-`If the string is "_neither", say yes.`
+`If the string is "neither", say yes.`
 
-`If the string is "_nor", say yes.`
+`If the string is "nor", say yes.`
 
-`If the string is "_or", say yes.`
+`If the string is "or", say yes.`
 
 `Say no.`
 
@@ -2590,273 +2590,273 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `To decide if a string is any verb:`
 
-`If the string is "_are", say yes. \ are not \ aren't `
+`If the string is "are", say yes. \ are not \ aren't `
 
-`If the string is "_be", say yes. `
+`If the string is "be", say yes. `
 
-`If the string is "_can", say yes. \ cannot \ can't `
+`If the string is "can", say yes. \ cannot \ can't `
 
-`If the string is "_cannot", say yes.`
+`If the string is "cannot", say yes.`
 
-`If the string is "_could", say yes. \ could not \ couldn't `
+`If the string is "could", say yes. \ could not \ couldn't `
 
-`If the string is "_do", say yes. \ do not \ don't `
+`If the string is "do", say yes. \ do not \ don't `
 
-`If the string is "_does", say yes. \ does not \ doesn't `
+`If the string is "does", say yes. \ does not \ doesn't `
 
-`If the string is "_is", say yes. \ is not \ isn't `
+`If the string is "is", say yes. \ is not \ isn't `
 
-`If the string is "_may", say yes. \ may not \ mayn't `
+`If the string is "may", say yes. \ may not \ mayn't `
 
-`If the string is "_should", say yes. \ should not \ shouldn't `
+`If the string is "should", say yes. \ should not \ shouldn't `
 
-`If the string is "_was", say yes. \ was not \ wasn't `
+`If the string is "was", say yes. \ was not \ wasn't `
 
-`If the string is "_will", say yes. \ will not \ won't `
+`If the string is "will", say yes. \ will not \ won't `
 
-`If the string is "_would", say yes. \ would not \ wouldn't `
+`If the string is "would", say yes. \ would not \ wouldn't `
 
-`If the string is "_has", say yes. \ used in type definitions `
+`If the string is "has", say yes. \ used in type definitions `
 
-`If the string is "_have", say yes. \ used in type definitions `
+`If the string is "have", say yes. \ used in type definitions `
 
 `If the string ends with "_n't", say yes. `
 
 `\ trouble makers `
 
-`If the string is "_begins", say yes. \ does not begin \ doesn't begin `
+`If the string is "begins", say yes. \ does not begin \ doesn't begin `
 
-`If the string is "_ends", say yes. \ does not end \ doesn't end `
+`If the string is "ends", say yes. \ does not end \ doesn't end `
 
-`If the string is "_looks", say yes. \ does not look \ doesn't look `
+`If the string is "looks", say yes. \ does not look \ doesn't look `
 
-`If the string is "_needs", say yes. \ does not need \ doesn't need `
+`If the string is "needs", say yes. \ does not need \ doesn't need `
 
-`If the string is "_starts", say yes. \ does not start \ doesn't start `
+`If the string is "starts", say yes. \ does not start \ doesn't start `
 
 `Say no.`
 
 
 `To decide if a string is any operator:`
 
-`If the string is "_plus", say yes.`
+`If the string is "plus", say yes.`
 
-`If the string is "_minus", say yes.`
+`If the string is "minus", say yes.`
 
-`If the string is "_times", say yes.`
+`If the string is "times", say yes.`
 
-`If the string is "_divided", say yes.`
+`If the string is "divided", say yes.`
 
-`If the string is "_then", say yes.`
+`If the string is "then", say yes.`
 
 `Say no.`
 
 
 `To decide if a string is any preposition:`
 
-`If the string is "_about", say yes.`
+`If the string is "about", say yes.`
 
-`If the string is "_above", say yes.`
+`If the string is "above", say yes.`
 
-`If the string is "_across", say yes.`
+`If the string is "across", say yes.`
 
-`If the string is "_after", say yes.`
+`If the string is "after", say yes.`
 
-`If the string is "_against", say yes.`
+`If the string is "against", say yes.`
 
-`If the string is "_all", say yes.`
+`If the string is "all", say yes.`
 
-`If the string is "_alone", say yes.`
+`If the string is "alone", say yes.`
 
-`If the string is "_along", say yes.`
+`If the string is "along", say yes.`
 
-`If the string is "_among", say yes.`
+`If the string is "among", say yes.`
 
-`If the string is "_any", say yes.`
+`If the string is "any", say yes.`
 
-`If the string is "_anywhere", say yes.`
+`If the string is "anywhere", say yes.`
 
-`If the string is "_around", say yes.`
+`If the string is "around", say yes.`
 
-`If the string is "_as", say yes.`
+`If the string is "as", say yes.`
 
-`If the string is "_at", say yes.`
+`If the string is "at", say yes.`
 
-`If the string is "_away", say yes.`
+`If the string is "away", say yes.`
 
-`If the string is "_back", say yes.`
+`If the string is "back", say yes.`
 
-`If the string is "_backward", say yes.`
+`If the string is "backward", say yes.`
 
-`If the string is "_backwards", say yes.`
+`If the string is "backwards", say yes.`
 
-`If the string is "_before", say yes.`
+`If the string is "before", say yes.`
 
-`If the string is "_beginning", say yes.`
+`If the string is "beginning", say yes.`
 
-`If the string is "_behind", say yes.`
+`If the string is "behind", say yes.`
 
-`If the string is "_below", say yes.`
+`If the string is "below", say yes.`
 
-`If the string is "_beneath", say yes.`
+`If the string is "beneath", say yes.`
 
-`If the string is "_beside", say yes.`
+`If the string is "beside", say yes.`
 
-`If the string is "_between", say yes.`
+`If the string is "between", say yes.`
 
-`If the string is "_beyond", say yes.`
+`If the string is "beyond", say yes.`
 
-`If the string is "_bigger", say yes.`
+`If the string is "bigger", say yes.`
 
-`If the string is "_by", say yes.`
+`If the string is "by", say yes.`
 
-`If the string is "_close", say yes.`
+`If the string is "close", say yes.`
 
-`If the string is "_deep", say yes.`
+`If the string is "deep", say yes.`
 
-`If the string is "_diagonally", say yes.`
+`If the string is "diagonally", say yes.`
 
-`If the string is "_down", say yes.`
+`If the string is "down", say yes.`
 
-`If the string is "_downward", say yes.`
+`If the string is "downward", say yes.`
 
-`If the string is "_ending", say yes.`
+`If the string is "ending", say yes.`
 
-`If the string is "_everywhere", say yes.`
+`If the string is "everywhere", say yes.`
 
-`If the string is "_except", say yes.`
+`If the string is "except", say yes.`
 
-`If the string is "_finishing", say yes.`
+`If the string is "finishing", say yes.`
 
-`If the string is "_facing", say yes.`
+`If the string is "facing", say yes.`
 
-`If the string is "_for", say yes.`
+`If the string is "for", say yes.`
 
-`If the string is "_forward", say yes.`
+`If the string is "forward", say yes.`
 
-`If the string is "_from", say yes.`
+`If the string is "from", say yes.`
 
-`If the string is "_given", say yes.`
+`If the string is "given", say yes.`
 
-`If the string is "_giving", say yes.`
+`If the string is "giving", say yes.`
 
-`If the string is "_high", say yes.`
+`If the string is "high", say yes.`
 
-`If the string is "_in", say yes.`
+`If the string is "in", say yes.`
 
-`If the string is "_inside", say yes.`
+`If the string is "inside", say yes.`
 
-`If the string is "_into", say yes.`
+`If the string is "into", say yes.`
 
-`If the string is "_larger", say yes.`
+`If the string is "larger", say yes.`
 
-`If the string is "_leaning", say yes.`
+`If the string is "leaning", say yes.`
 
-`If the string is "_left", say yes.`
+`If the string is "left", say yes.`
 
-`If the string is "_leftward", say yes.`
+`If the string is "leftward", say yes.`
 
-`If the string is "_leftways", say yes.`
+`If the string is "leftways", say yes.`
 
-`If the string is "_like", say yes.`
+`If the string is "like", say yes.`
 
-`If the string is "_limiting", say yes.`
+`If the string is "limiting", say yes.`
 
-`If the string is "_long", say yes.`
+`If the string is "long", say yes.`
 
-`If the string is "_near", say yes.`
+`If the string is "near", say yes.`
 
-`If the string is "_of", say yes.`
+`If the string is "of", say yes.`
 
-`If the string is "_off", say yes.`
+`If the string is "off", say yes.`
 
-`If the string is "_on", say yes.`
+`If the string is "on", say yes.`
 
-`If the string is "_only", say yes.`
+`If the string is "only", say yes.`
 
-`If the string is "_onto", say yes.`
+`If the string is "onto", say yes.`
 
-`If the string is "_out", say yes.`
+`If the string is "out", say yes.`
 
-`If the string is "_outside", say yes.`
+`If the string is "outside", say yes.`
 
-`If the string is "_over", say yes.`
+`If the string is "over", say yes.`
 
-`If the string is "_past", say yes.`
+`If the string is "past", say yes.`
 
-`If the string is "_pointing", say yes.`
+`If the string is "pointing", say yes.`
 
-`If the string is "_returning", say yes.`
+`If the string is "returning", say yes.`
 
-`If the string is "_right", say yes.`
+`If the string is "right", say yes.`
 
-`If the string is "_rightward", say yes.`
+`If the string is "rightward", say yes.`
 
-`If the string is "_rightways", say yes.`
+`If the string is "rightways", say yes.`
 
-`If the string is "_shorter", say yes.`
+`If the string is "shorter", say yes.`
 
-`If the string is "_sideway", say yes.`
+`If the string is "sideway", say yes.`
 
-`If the string is "_sideways", say yes.`
+`If the string is "sideways", say yes.`
 
-`If the string is "_similar", say yes.`
+`If the string is "similar", say yes.`
 
-`If the string is "_smaller", say yes.`
+`If the string is "smaller", say yes.`
 
-`If the string is "_somewhere", say yes.`
+`If the string is "somewhere", say yes.`
 
-`If the string is "_slantwise", say yes.`
+`If the string is "slantwise", say yes.`
 
-`If the string is "_slantway", say yes.`
+`If the string is "slantway", say yes.`
 
-`If the string is "_slantways", say yes.`
+`If the string is "slantways", say yes.`
 
-`If the string is "_starting", say yes.`
+`If the string is "starting", say yes.`
 
-`If the string is "_tall", say yes.`
+`If the string is "tall", say yes.`
 
-`If the string is "_taller", say yes.`
+`If the string is "taller", say yes.`
 
-`If the string is "_thru", say yes.`
+`If the string is "thru", say yes.`
 
-`If the string is "_through", say yes.`
+`If the string is "through", say yes.`
 
-`If the string is "_throughout", say yes.`
+`If the string is "throughout", say yes.`
 
-`If the string is "_to", say yes.`
+`If the string is "to", say yes.`
 
-`If the string is "_toward", say yes.`
+`If the string is "toward", say yes.`
 
-`If the string is "_towards", say yes.`
+`If the string is "towards", say yes.`
 
-`If the string is "_under", say yes.`
+`If the string is "under", say yes.`
 
-`If the string is "_underneath", say yes.`
+`If the string is "underneath", say yes.`
 
-`If the string is "_until", say yes.`
+`If the string is "until", say yes.`
 
-`If the string is "_unto", say yes.`
+`If the string is "unto", say yes.`
 
-`If the string is "_up", say yes.`
+`If the string is "up", say yes.`
 
-`If the string is "_upward", say yes.`
+`If the string is "upward", say yes.`
 
-`If the string is "_upon", say yes.`
+`If the string is "upon", say yes.`
 
-`If the string is "_using", say yes.`
+`If the string is "using", say yes.`
 
-`If the string is "_via", say yes.`
+`If the string is "via", say yes.`
 
-`If the string is "_while", say yes.`
+`If the string is "while", say yes.`
 
-`If the string is "_wide", say yes.`
+`If the string is "wide", say yes.`
 
-`If the string is "_with", say yes.`
+`If the string is "with", say yes.`
 
-`If the string is "_within", say yes.`
+`If the string is "within", say yes.`
 
-`If the string is "_without", say yes.`
+`If the string is "without", say yes.`
 
 `Say no.`
 
@@ -2887,7 +2887,7 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `To decide if a string is any pointer literal:`
 
-`If the string is "_nil", say yes.`
+`If the string is "nil", say yes.`
 
 `Say no.`
 
@@ -2930,63 +2930,63 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `To pluralize a string: \ nouns only `
 
-`If the string is "_alumnus", put "alumni_" into the string; exit.`
+`If the string is "alumnus", put "alumni_" into the string; exit.`
 
-`If the string is "_auto", put "autos_" into the string; exit.`
+`If the string is "auto", put "autos_" into the string; exit.`
 
-`If the string is "_cello", put "cellos_" into the string; exit.`
+`If the string is "cello", put "cellos_" into the string; exit.`
 
-`If the string is "_dwarf", put "dwarfs_" into the string; exit.`
+`If the string is "dwarf", put "dwarfs_" into the string; exit.`
 
-`If the string is "_foot", put "feet_" into the string; exit.`
+`If the string is "foot", put "feet_" into the string; exit.`
 
-`If the string is "_genus", put "genera_" into the string; exit.`
+`If the string is "genus", put "genera_" into the string; exit.`
 
-`If the string is "_goose", put "geese_" into the string; exit.`
+`If the string is "goose", put "geese_" into the string; exit.`
 
-`If the string is "_hippo", put "hippos_" into the string; exit.`
+`If the string is "hippo", put "hippos_" into the string; exit.`
 
-`If the string is "_louse", put "lice_" into the string; exit.`
+`If the string is "louse", put "lice_" into the string; exit.`
 
-`If the string is "_memo", put "memos_" into the string; exit.`
+`If the string is "memo", put "memos_" into the string; exit.`
 
-`If the string is "_mouse", put "mice_" into the string; exit.`
+`If the string is "mouse", put "mice_" into the string; exit.`
 
-`If the string is "_ox", put "oxen_" into the string; exit.`
+`If the string is "ox", put "oxen_" into the string; exit.`
 
-`If the string is "_phenomenon", put "phenomena_" into the string; exit.`
+`If the string is "phenomenon", put "phenomena_" into the string; exit.`
 
-`If the string is "_photo", put "photos_" into the string; exit.`
+`If the string is "photo", put "photos_" into the string; exit.`
 
-`If the string is "_phylum", put "phyla_" into the string; exit.`
+`If the string is "phylum", put "phyla_" into the string; exit.`
 
-`If the string is "_piano", put "pianos_" into the string; exit.`
+`If the string is "piano", put "pianos_" into the string; exit.`
 
-`If the string is "_pimento", put "pimentos_" into the string; exit.`
+`If the string is "pimento", put "pimentos_" into the string; exit.`
 
-`If the string is "_pro", put "pros_" into the string; exit.`
+`If the string is "pro", put "pros_" into the string; exit.`
 
-`If the string is "_proof", put "proofs_" into the string; exit.`
+`If the string is "proof", put "proofs_" into the string; exit.`
 
-`If the string is "_radius", put "radii_" into the string; exit.`
+`If the string is "radius", put "radii_" into the string; exit.`
 
-`If the string is "_rhinoceros", put "rhinoceri_" into the string; exit.`
+`If the string is "rhinoceros", put "rhinoceri_" into the string; exit.`
 
-`If the string is "_roof", put "roofs_" into the string; exit.`
+`If the string is "roof", put "roofs_" into the string; exit.`
 
-`If the string is "_solo", put "solos_" into the string; exit.`
+`If the string is "solo", put "solos_" into the string; exit.`
 
-`If the string is "_soprano", put "sopranos_" into the string; exit.`
+`If the string is "soprano", put "sopranos_" into the string; exit.`
 
-`If the string is "_staff", put "staffs_" into the string; exit.`
+`If the string is "staff", put "staffs_" into the string; exit.`
 
-`If the string is "_tooth", put "teeth_" into the string; exit.`
+`If the string is "tooth", put "teeth_" into the string; exit.`
 
-`If the string is "_torus", put "tori_" into the string; exit.`
+`If the string is "torus", put "tori_" into the string; exit.`
 
-`If the string is "_turf", put "turfs_" into the string; exit.`
+`If the string is "turf", put "turfs_" into the string; exit.`
 
-`If the string is "_virus", put "viruses_" into the string; exit.`
+`If the string is "virus", put "viruses_" into the string; exit.`
 
 `If the string ends with "_sh", append "es_" to the string; exit.`
 
@@ -3053,7 +3053,7 @@ And now you know why primitive programming languages don't allow spaces in names
 `Say yes.`
 
 
-85. And now that we've got our names straight, we can get back to scanning our types. Types come in different forms; simple types, like "_An address is a number,_" are typically just subsets of other types. But types that have the word "_has_" or "_have_" after the type name, like "_A button has a box and a name,_" are record types. To scan record types, we need this routine:
+85. And now that we've got our names straight, we can get back to scanning our types. Types come in different forms; simple types, like "_An address is a number,_" are typically just subsets of other types. But types that have the word "_has" or "have_" after the type name, like "_A button has a box and a name,_" are record types. To scan record types, we need this routine:
 
 `To scan a type given a rider (has or have):`
 
@@ -3109,11 +3109,11 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `If the compiler's abort flag is set, exit.`
 
-`If the rider's token is "_called", scan the field given the rider (called part); repeat.`
+`If the rider's token is "called", scan the field given the rider (called part); repeat.`
 
-`If the rider's token is "_at", scan the field given the rider (redefine part); repeat.`
+`If the rider's token is "at", scan the field given the rider (redefine part); repeat.`
 
-`If the rider's token is "_(reference)", scan the field given the rider (reference part); repeat.`
+`If the rider's token is "(reference)", scan the field given the rider (reference part); repeat.`
 
 
 87. As you can see from the routine above, each field in a record has a type of its own, and may have a variety of other special features. We handle those with these 6 scanners:
@@ -3134,7 +3134,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'." and the rider; exit.`
 
-`If the rider's token is "_another", put "other_" into the field's name.`
+`If the rider's token is "another", put "other_" into the field's name.`
 
 `Move the rider (compiler rules).`
 
@@ -3190,7 +3190,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "byte_" or "_bytes", abort with "Nothing but the word 'bytes' is appropriate after a counted field designator." and the rider; exit.`
+`If the rider's token is not "byte" or "bytes", abort with "Nothing but the word 'bytes' is appropriate after a counted field designator." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3213,13 +3213,13 @@ And now you know why primitive programming languages don't allow spaces in names
  
 `To decide if a string is any pause:`
 
-`If the string is "_,", say yes.`
+`If the string is ",", say yes.`
 
-`If the string is "_;", say yes.`
+`If the string is ";", say yes.`
 
-`If the string is "_and", say yes.`
+`If the string is "and", say yes.`
 
-`If the string is "_or", say yes.`
+`If the string is "or", say yes.`
 
 `Say no.`
 
@@ -3252,9 +3252,9 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `To decide if a string is the start of any optional info:`
 
-`If the string is "_to", say yes.`
+`If the string is "to", say yes.`
 
-`If the string is "_with", say yes.`
+`If the string is "with", say yes.`
 
 `Say no.`
 
@@ -3263,9 +3263,9 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `If the compiler's abort flag is set, exit.`
 
-`If the rider's token is "_to", scan any optional info for the type given the rider (pointer); exit.`
+`If the rider's token is "to", scan any optional info for the type given the rider (pointer); exit.`
 
-`If the rider's token is "_with", scan any optional info for the type given the rider (record); exit.`
+`If the rider's token is "with", scan any optional info for the type given the rider (record); exit.`
 
 
 `To scan any optional info for a type given a rider (pointer):`
@@ -3302,9 +3302,9 @@ And that's it for scanning types.
 
 `Scan the global's name given the rider.`
 
-`If the rider's token is "_has_" or "_have", scan the global given the rider (has or have); exit.`
+`If the rider's token is "has" or "have", scan the global given the rider (has or have); exit.`
 
-`If the rider's token is not "is_" or "_are", abort with "Geez. I need an 'is' or an 'are' hereabouts, but all I found was '" then the rider's token then "'." and the rider; exit.`
+`If the rider's token is not "is" or "are", abort with "Geez. I need an 'is' or an 'are' hereabouts, but all I found was '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3316,7 +3316,7 @@ And that's it for scanning types.
 
 `If the rider's token is the start of any optional info, scan the global given the rider (optional info); exit.`
 
-`If the rider's token is "_equal", scan the global given the rider (data part); exit.`
+`If the rider's token is "equal", scan the global given the rider (data part); exit.`
 
 `If the rider's token is not the period byte, abort with "All global definitions must end with a period. Including this one." and the rider; exit.`
 
@@ -3600,15 +3600,15 @@ And that's it for globals, for now.
 
 `To decide if a string is the start of any definition:`
 
-`If the string is "_to", say yes.`
+`If the string is "to", say yes.`
 
-`If the string is "_a", say yes.`
+`If the string is "a", say yes.`
 
-`If the string is "_an", say yes.`
+`If the string is "an", say yes.`
 
-`If the string is "_the", say yes.`
+`If the string is "the", say yes.`
 
-`If the string is "_some", say yes.`
+`If the string is "some", say yes.`
 
 `Say no.`
 
@@ -4739,7 +4739,7 @@ Next up: Resolving global variables.
 `Index the literal.`
 
 
-122. We use the word "_compile_" here (instead of just "_scan_" or "_resolve") since we're actually getting to the place where we are formatting some of the information in the source code exactly as it will appear in the executable file. Specifically, literals used to initialize global variables:
+122. We use the word "_compile_" here (instead of just "_scan" or "resolve") since we're actually getting to the place where we are formatting some of the information in the source code exactly as it will appear in the executable file. Specifically, literals used to initialize global variables:
 
 
 `To compile a literal given a rider:`
@@ -4956,7 +4956,7 @@ Next up: Resolving global variables.
 
 `If the string is any indefinite article, say yes.`
 
-`If the string is "_the", say yes.`
+`If the string is "the", say yes.`
 
 `If the string is any literal, say yes.`
 
@@ -5166,7 +5166,7 @@ It consists of 4 "_monikettes": the string "_create", the parameter type "_[work
 `a current substring.`
 
 
-A `monikette's string` is used to hold string-type monikettes (like "_create_" or "_from/given/with/using"), while a `monikette's type` points to the type definition of a parameter. A `monikette's variable` isn't used until later, when we parse expressions.
+A `monikette's string` is used to hold string-type monikettes (like "_create" or "from/given/with/using"), while a `monikette's type` points to the type definition of a parameter. A `monikette's variable` isn't used until later, when we parse expressions.
 
 
 A routine record has a list of monikettes and a list of parameters in it. As we compile a routine header, we hang the routine's parameters on the parameter list, and the monikettes (both string and parameter types) on the monikette list.
@@ -5188,53 +5188,53 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `\ from/given/with/using `
 
-`If the string is "_from", put "from/given/with/using_" into the monikette's string; exit.`
+`If the string is "from", put "from/given/with/using_" into the monikette's string; exit.`
 
-`If the string is "_given", put "from/given/with/using_" into the monikette's string; exit.`
+`If the string is "given", put "from/given/with/using_" into the monikette's string; exit.`
 
-`If the string is "_with", put "from/given/with/using_" into the monikette's string; exit.`
+`If the string is "with", put "from/given/with/using_" into the monikette's string; exit.`
 
-`If the string is "_using", put "from/given/with/using_" into the monikette's string; exit. `
+`If the string is "using", put "from/given/with/using_" into the monikette's string; exit. `
 
 `\ in/into/to `
 
-`If the string is "_in", put "in/into/to_" into the monikette's string; exit.`
+`If the string is "in", put "in/into/to_" into the monikette's string; exit.`
 
-`If the string is "_into", put "in/into/to_" into the monikette's string; exit.`
+`If the string is "into", put "in/into/to_" into the monikette's string; exit.`
 
-`If the string is "_to", put "in/into/to_" into the monikette's string; exit.`
+`If the string is "to", put "in/into/to_" into the monikette's string; exit.`
 
 `\ is/are`
 
-`If the string is "_are", put "is/are_" into the monikette's string; exit.`
+`If the string is "are", put "is/are_" into the monikette's string; exit.`
 
-`If the string is "_is", put "is/are_" into the monikette's string; exit. `
+`If the string is "is", put "is/are_" into the monikette's string; exit. `
 
 `\ aren't/isn't `
 
-`If the string is "_isn't", put "is/aren't_" into the monikette's string; exit.`
+`If the string is "isn't", put "is/aren't_" into the monikette's string; exit.`
 
-`If the string is "_aren't", put "is/aren't_" into the monikette's string; exit.`
+`If the string is "aren't", put "is/aren't_" into the monikette's string; exit.`
 
 `\ backward/backwards/counterclockwise/counter-clockwise/anticlockwise/anti-clockwise`
 
-`If the string is "_backward", put "backward_" into the monikette's string; exit.`
+`If the string is "backward", put "backward_" into the monikette's string; exit.`
 
-`If the string is "_backwards", put "backward_" into the monikette's string; exit.`
+`If the string is "backwards", put "backward_" into the monikette's string; exit.`
 
-`If the string is "_counterclockwise", put "backward_" into the monikette's string; exit.`
+`If the string is "counterclockwise", put "backward_" into the monikette's string; exit.`
 
-`If the string is "_counter-clockwise", put "backward_" into the monikette's string; exit.`
+`If the string is "counter-clockwise", put "backward_" into the monikette's string; exit.`
 
-`If the string is "_anticlockwise", put "backward_" into the monikette's string; exit.`
+`If the string is "anticlockwise", put "backward_" into the monikette's string; exit.`
 
-`If the string is "_anti-clockwise", put "backward_" into the monikette's string; exit. `
+`If the string is "anti-clockwise", put "backward_" into the monikette's string; exit. `
 
 `\ at/on `
 
-`If the string is "_at", put "at/on_" into the monikette's string; exit.`
+`If the string is "at", put "at/on_" into the monikette's string; exit.`
 
-`If the string is "_on", put "at/on_" into the monikette's string; exit. `
+`If the string is "on", put "at/on_" into the monikette's string; exit. `
 
 `\ other `
 
@@ -5323,11 +5323,11 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is "_decide", compile the header of the routine given the rider (decider); exit.`
+`If the rider's token is "decide", compile the header of the routine given the rider (decider); exit.`
 
 `If the rider is the start of any function, compile the header of the routine given the rider (function); exit.`
 
-`If the rider's token is "_compatibly", compile the header of the routine given the rider (callback); exit.`
+`If the rider's token is "compatibly", compile the header of the routine given the rider (callback); exit.`
 
 `Compile the header of the routine given the rider (procedure).`
 
@@ -5477,7 +5477,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `If the string is blank, say no.`
 
-`If the string is "_the", say no.`
+`If the string is "the", say no.`
 
 `If the string is any indefinite article, say no.`
 
@@ -5498,7 +5498,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `If the rider's token is blank, exit.`
 
-`If the rider's token is "_the", compile the monikettes and the parameters given the rider (definite article); repeat.`
+`If the rider's token is "the", compile the monikettes and the parameters given the rider (definite article); repeat.`
 
 `If the rider's token is any indefinite article, compile the monikettes and the parameters given the rider (indefinite article); repeat.`
 
@@ -5527,7 +5527,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `Add a parameter to the parameters given "parameter_" and the rider's token's first.`
 
-`If the rider's token is "_another", put "other_" into the parameter's name.`
+`If the rider's token is "another", put "other_" into the parameter's name.`
 
 `Move the rider (compiler rules).`
 
@@ -5535,7 +5535,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `Extend the parameter's name with the name.`
 
-`If the rider's token is "_called", compile the call'd part given the rider and the parameter.`
+`If the rider's token is "called", compile the call'd part given the rider and the parameter.`
 
 `Resolve the parameter.`
 
@@ -5586,7 +5586,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `If the string is blank, say no.`
 
-`If the string is "_the", say no.`
+`If the string is "the", say no.`
 
 `If the string is any indefinite article, say no.`
 
@@ -5603,11 +5603,11 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `To decide if a string is any negative word:`
 
-`If the string is "_not", say yes.`
+`If the string is "not", say yes.`
 
-`If the string is "_cannot", say yes.`
+`If the string is "cannot", say yes.`
 
-`If the string is "_nothing", say yes.`
+`If the string is "nothing", say yes.`
 
 `If the string ends with "_n't", say yes.`
 
@@ -7095,7 +7095,7 @@ Note that we're not just looping thorough the routines in the order we found the
 
 `If the rider's token is the semi-colon byte, compile the body of the routine given the rider (alternate wording); exit.`
 
-`If the rider's token is "_employ", compile the body of the routine given the rider (employ); exit.`
+`If the rider's token is "employ", compile the body of the routine given the rider (employ); exit.`
 
 `Put the current routine into a saved routine.`
 
@@ -7205,7 +7205,7 @@ After dealing with possible special cases ("`alternate wordings`_" and "_`employ
 `A prototype string has a first byte pointer and a last byte pointer.`
 
 
-A term is either a literal, a new local variable, or a reference to a previously defined variable. A numeric term may have a minus or plus sign in front of it. We call these "_negated_" and "_posigated_" terms, respectively. A record term may be followed by any number of possessives indicating fields within the record (like "_box's left_" or "_rider's token's first").
+A term is either a literal, a new local variable, or a reference to a previously defined variable. A numeric term may have a minus or plus sign in front of it. We call these "_negated_" and "_posigated_" terms, respectively. A record term may be followed by any number of possessives indicating fields within the record (like "_box's left" or "rider's token's first").
 
 
 An expression is two or more terms separated by the infix operators plus, minus, times, divided by and then. We say that "_an expression is a term_" because the result of an expression (after execution) is really just another term.
@@ -7228,15 +7228,15 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 `If the rider's token is not any operator, exit.`
 
-`If the rider's token is "_divided", compile the expression given the rider (divided); repeat.`
+`If the rider's token is "divided", compile the expression given the rider (divided); repeat.`
 
-`If the rider's token is "_minus", compile the expression given the rider (minus); repeat.`
+`If the rider's token is "minus", compile the expression given the rider (minus); repeat.`
 
-`If the rider's token is "_plus", compile the expression given the rider (plus); repeat.`
+`If the rider's token is "plus", compile the expression given the rider (plus); repeat.`
 
-`If the rider's token is "_then", compile the expression given the rider (then); repeat.`
+`If the rider's token is "then", compile the expression given the rider (then); repeat.`
 
-`If the rider's token is "_times", compile the expression given the rider (times); repeat.`
+`If the rider's token is "times", compile the expression given the rider (times); repeat.`
 
 
 176. This is the top-level term compiler, together with one of his trivial helpers:
@@ -7251,9 +7251,9 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 `If the rider is on any simile, exit. `
 
-`If the rider's token is "_AS", compile the term given the rider (as part).`
+`If the rider's token is "AS", compile the term given the rider (as part).`
 
-`If the rider's token is "_/", compile the term given the rider (runtime ratio).`
+`If the rider's token is "/", compile the term given the rider (runtime ratio).`
 
 `To clear a term:`
 
@@ -7391,7 +7391,7 @@ An expression is two or more terms separated by the infix operators plus, minus,
 `If the flag is not set, put "put the " then the variable's literal's name then " into the " then the variable's name then ". " into the variable's initializer string.`
 
 
-If the variable is a global, and the programmer wants us to initialize it with a literal value, we're going to need a "_put_" or "_convert_" routine to actually fill it in at run time, so we make sure we've got such a routine now. If we find one, we take a moment to compile its body, and then we fill in the variable's "_initializer string_" with the Plain English sentence that will do the initializing. "_Global initializer_" sentences are compiled in the next step.
+If the variable is a global, and the programmer wants us to initialize it with a literal value, we're going to need a "_put" or "convert_" routine to actually fill it in at run time, so we make sure we've got such a routine now. If we find one, we take a moment to compile its body, and then we fill in the variable's "_initializer string_" with the Plain English sentence that will do the initializing. "_Global initializer_" sentences are compiled in the next step.
 
 
 181. Here are the seven helpers we need to find the right routines to call:
@@ -7559,7 +7559,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `To decide if a string is the start of any variable:`
 
-`If the string is "_the", say yes.`
+`If the string is "the", say yes.`
 
 `Say no.`
 
@@ -7973,7 +7973,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `Add a local to the current routine's locals given "local_" and the rider's token's first.`
 
-`If the rider's token is "_another", put "other_" into the local's name.`
+`If the rider's token is "another", put "other_" into the local's name.`
 
 `Move the rider (compiler rules).`
 
@@ -7981,7 +7981,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `Extend the local's name with the name.`
 
-`If the rider's token is "_called", compile the call'd part given the rider and the local.`
+`If the rider's token is "called", compile the call'd part given the rider and the local.`
 
 `Resolve the local.`
 
@@ -8030,7 +8030,7 @@ Note that literals can have possessives; for example...
 
 `Privatize the rider.`
 
-`If the rider's token is "_LIKE", say yes.`
+`If the rider's token is "LIKE", say yes.`
 
 `If the rider's token is not "AS", say no.`
 
@@ -8071,7 +8071,7 @@ Note that literals can have possessives; for example...
 `Clear the term's phrase.`
 
 
-195. Most ratios in Plain English programs are defined as literals at compile-time (like "_1/2_" or "_1/3"). But sometimes a programmer might define a ratio at run-time, using other variables (like "_Put the percent / 100 into a fraction.") Keep in mind that our Compiler agrees with the great mathematician Leopold Kronecker that  "_The dear God created the whole numbers; all else is menschenwerk." So when somebody says something like 0.333333333..., we think, "_What he's really trying to say is simply 1/3, 1 part out of 3." In any case, this is the guy who compiles "_run-time ratios":
+195. Most ratios in Plain English programs are defined as literals at compile-time (like "_1/2" or "1/3"). But sometimes a programmer might define a ratio at run-time, using other variables (like "_Put the percent / 100 into a fraction.") Keep in mind that our Compiler agrees with the great mathematician Leopold Kronecker that  "_The dear God created the whole numbers; all else is menschenwerk." So when somebody says something like 0.333333333..., we think, "_What he's really trying to say is simply 1/3, 1 part out of 3." In any case, this is the guy who compiles "_run-time ratios":
 
 
 `To compile a term given a rider (runtime ratio):`
@@ -8361,18 +8361,18 @@ Note that literals can have possessives; for example...
 
   
 
-201. Some sentences start with a Plain English keyword (like "_if_" or "_loop"); others don't:
+201. Some sentences start with a Plain English keyword (like "_if" or "loop"); others don't:
 
 
 `To compile the next statement given a rider:`
 
 `If the compiler's abort flag is set, exit.`
 
-`If the rider's token is "_if", compile the next statement given the rider (if); exit.`
+`If the rider's token is "if", compile the next statement given the rider (if); exit.`
 
-`If the rider's token is "_loop", compile the next statement given the rider (loop); exit.`
+`If the rider's token is "loop", compile the next statement given the rider (loop); exit.`
 
-`If the rider's token is "_privatize", compile the next statement given the rider (privatize); exit.`
+`If the rider's token is "privatize", compile the next statement given the rider (privatize); exit.`
 
 `If the rider's token is not the start of any statement, abort with "I was expecting a statement here, but I found '" then the rider's token then "'." and the rider; exit.`
 
@@ -8494,29 +8494,29 @@ Note that literals can have possessives; for example...
 
 `If the rider's token is blank, exit.`
 
-`If the rider's token is "_exit", compile the next statement given the rider (exit); exit.`
+`If the rider's token is "exit", compile the next statement given the rider (exit); exit.`
 
-`If the rider's token is "_repeat", compile the next statement given the rider (repeat); exit.`
+`If the rider's token is "repeat", compile the next statement given the rider (repeat); exit.`
 
-`If the rider's token is "_break", compile the next statement given the rider (break); exit.`
+`If the rider's token is "break", compile the next statement given the rider (break); exit.`
 
-`If the rider's token is "_say", compile the next statement given the rider (say); exit.`
+`If the rider's token is "say", compile the next statement given the rider (say); exit.`
 
-`If the rider's token is "_intel", compile the next statement given the rider (intel); exit.`
+`If the rider's token is "intel", compile the next statement given the rider (intel); exit.`
 
-`If the rider's token is "_push", compile the next statement given the rider (push); exit.`
+`If the rider's token is "push", compile the next statement given the rider (push); exit.`
 
-`If the rider's token is "_call", compile the next statement given the rider (call); exit.`
+`If the rider's token is "call", compile the next statement given the rider (call); exit.`
 
-`If the rider's token is "_point", compile the next statement given the rider (point); exit.`
+`If the rider's token is "point", compile the next statement given the rider (point); exit.`
 
-`If the rider's token is "_if", abort with "Nested 'if' statements are a sure sign of unclear thinking. Think again." and the rider; exit.`
+`If the rider's token is "if", abort with "Nested 'if' statements are a sure sign of unclear thinking. Think again." and the rider; exit.`
 
-`If the rider's token is "_privatize", abort with "The 'privatize' statement cannot be used here." and the rider; exit.`
+`If the rider's token is "privatize", abort with "The 'privatize' statement cannot be used here." and the rider; exit.`
 
-`If the rider's token is "_loop", abort with "Looping inside an 'if' statement is a good way to lose your lunch." and the rider; exit.`
+`If the rider's token is "loop", abort with "Looping inside an 'if' statement is a good way to lose your lunch." and the rider; exit.`
 
-`If the rider's token is "_employ", abort with "'Employ' must be the first and only imperative in a routine." and the rider; exit.`
+`If the rider's token is "employ", abort with "'Employ' must be the first and only imperative in a routine." and the rider; exit.`
 
 `Compile the next statement given the rider (call - internal).`
 
@@ -8675,9 +8675,9 @@ Note that literals can have possessives; for example...
 
 `Add an entry to the imports given the string and the other string.`
 
-`If the rider's token is "_with", compile the next statement given the rider (call - with clause).`
+`If the rider's token is "with", compile the next statement given the rider (call - with clause).`
 
-`If the rider's token is "_returning", compile the next statement given the rider returning a term (call - returning part).`
+`If the rider's token is "returning", compile the next statement given the rider returning a term (call - returning part).`
 
 `Add a fragment given the call external tag and the entry.`
 
@@ -8781,7 +8781,7 @@ Note that literals can have possessives; for example...
 
 `If the expression's type is not value pushable, abort with "'" then the expression's type's name then "' can't be passed properly." and the rider; exit.`
 
-`If the rider's token is "_and", compile the next statement given the rider (call - with clause).`
+`If the rider's token is "and", compile the next statement given the rider (call - with clause).`
 
 `Add a fragment given the push value tag and the expression's variable.`
 
@@ -8836,9 +8836,9 @@ Note that literals can have possessives; for example...
 
 `If the expression's type cannot be reduced to "_pointer", abort with "I really need a pointer type in this CALL statement." and the rider; exit.`
 
-`If the rider's token is "_with", compile the next statement given the rider (call - with clause).`
+`If the rider's token is "with", compile the next statement given the rider (call - with clause).`
 
-`If the rider's token is "_returning", compile the next statement given the rider returning a term (call - returning part).`
+`If the rider's token is "returning", compile the next statement given the rider returning a term (call - returning part).`
 
 `Add a fragment given the call indirect tag and the expression's variable.`
 
@@ -9008,11 +9008,11 @@ Note that literals can have possessives; for example...
 
 `To compile a routine reference given a rider:`
 
-`If the rider's token is "_to", move the rider (compiler rules).`
+`If the rider's token is "to", move the rider (compiler rules).`
 
 `If the rider is the start of any function, compile the routine reference given the rider (function); exit.`
 
-`If the rider's token is "_decide", compile the routine reference given the rider (decide).`
+`If the rider's token is "decide", compile the routine reference given the rider (decide).`
 
 `Loop.`
 
@@ -9020,9 +9020,9 @@ Note that literals can have possessives; for example...
 
 `If the rider's token is blank, exit.`
 
-`If the rider's token is "_.", exit.`
+`If the rider's token is ".", exit.`
 
-`If the rider's token is "_the", compile the routine reference given the rider (definite article); repeat.`
+`If the rider's token is "the", compile the routine reference given the rider (definite article); repeat.`
 
 `If the rider's token is any indefinite article, compile the routine reference given the rider (indefinite article); repeat.`
 
