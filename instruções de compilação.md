@@ -301,7 +301,7 @@ Now we need to put our tags back, which are splattered around like the timers. T
 `The save eax tag is a tag equal to 20.`
 
 
-While you're doing that, think about this: those 22 tags define the only things the compiler generates machine code to do. Which means the whole CAL (and every program written with the CAL) runs on just 22 machine-code "_instructions._" Wouldn't it be great if Intel built CPUs with this (and Aunt Tilly) in mind? Fewer transistors, lower costs, and no cooling fans necessary!
+While you're doing that, think about this: those 22 tags define the only things the compiler generates machine code to do. Which means the whole CAL (and every program written with the CAL) runs on just 22 machine-code "_instructions." Wouldn't it be great if Intel built CPUs with this (and Aunt Tilly) in mind? Fewer transistors, lower costs, and no cooling fans necessary!
 
 
 13. Done with the "_B"s. And that brings us to the heart of the whole compiler:
@@ -376,7 +376,7 @@ Isn't it handy to be able to see, at a glance, which parts of the program are co
 `a listing buffer.`
 
 
-15. Then a couple of trivial "_deciders":
+15. Then a couple of trivial "_deciders_":
 
 
 `To decide if a byte is any mark:`
@@ -553,7 +553,7 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 ...who does nothing at all. We put it in, and left it in, just to make Desktop code up above symmetrical.
 
 
-24. And now we put back the code we need for testing. Everything that starts with "_To List..._" except the file lines that list indexes (see below). Leave them out; we haven't created the indices yet, so they won't work and the thing will blow away. The listing stuff is all in a bunch; just find the first routine and drag down until you've got them all. But make sure you re-comment those five lines.
+24. And now we put back the code we need for testing. Everything that starts with "To List..." except the file lines that list indexes (see below). Leave them out; we haven't created the indices yet, so they won't work and the thing will blow away. The listing stuff is all in a bunch; just find the first routine and drag down until you've got them all. But make sure you re-comment those five lines.
 
 
 `To list:`
@@ -1099,7 +1099,7 @@ Again, there's no global list of parameters because they're kept on separate lis
 
 `Remove any trailing backslash from the designator.`
 
-`Put the compiler's directory then the designator then ".exe_" into the path.`
+`Put the compiler's directory then the designator then ".exe" into the path.`
 
 
 `To put the compiler's listing path into a path:`
@@ -1425,9 +1425,9 @@ We "_Finalize the compiler_" to clean up anything that might be hanging around f
 
 `To add the built-in types:`
 
-`Add a built-in type given "byte_" and "_bytes_" and 1.`
+`Add a built-in type given "byte" and "bytes" and 1.`
 
-`Add another built-in type given "record_" and "_records_" and 0.`
+`Add another built-in type given "record" and "records" and 0.`
 
 
 `To add a built-in type given a name and a plural name and a length:`
@@ -1514,7 +1514,7 @@ Note that `byte` and `record` are the only types defined in the compiler itself;
 
 `If the locus is nil, put the existing type's locus into the locus. \ point the error to a type in the source code, not a generated type`
 
-`abort with "I think I've seen this '_" then the name then "_' type somewhere before; it must be a duplicate._" and the locus.`
+`abort with "I think I've seen this '" then the name then "' type somewhere before; it must be a duplicate." and the locus.`
 
 
 52. This is a little premature, but the abort in the above routine calls another abort routine that needs a little help from the three guys below, so we need to put them back, too:
@@ -1726,7 +1726,7 @@ Alrighty, then. Time to load up our source files.
 
 `Load the source file's path into the source file's buffer.`
 
-`If the i/o error is not blank, abort with "Could not load the file named '_" then the source file's path then "_'."; exit.`
+`If the i/o error is not blank, abort with "Could not load the file named '" then the source file's path then "'."; exit.`
 
  
 
@@ -1740,7 +1740,7 @@ Alrighty, then. Time to load up our source files.
 
 `If the item is not found, break.`
 
-`If the item's kind is not "_file", repeat.`
+`If the item's kind is not "file", repeat.`
 
 `If the item's extension is not blank, repeat.`
 
@@ -1764,7 +1764,7 @@ A diligent Plain English programmer, however, will typically use the CAL's Write
 
 `Load the item's path into a buffer.`
 
-`If the buffer starts with "_ream cal", say yes.`
+`If the buffer starts with "ream cal", say yes.`
 
 `Say no.`
 
@@ -1953,7 +1953,7 @@ And this little loop to make sure we scan all the source files in the project:
 
 `If the rider's token is the start of any routine, scan a routine given the rider; repeat.`
 
-`abort with "I was hoping for a definition but all I found was '_" then the rider's token then "'._" and the rider.`
+`abort with "I was hoping for a definition but all I found was '" then the rider's token then "'." and the rider.`
 
 `Repeat.`
 
@@ -2074,7 +2074,7 @@ Handling nested double-quotes requires a little help from this guy, so you shoul
 
 `To decide if a rider is on any nested double-quote:`
 
-`If the rider's source starts with "_""""", say yes.`
+`If the rider's source starts with """""", say yes.`
 
 `Say no.`
 
@@ -2157,10 +2157,10 @@ And this is the routine that decides if a byte is a symbol or not:
 
 `If the rider's source is blank, exit.`
 
-`If the rider's source starts with "_s", bump the rider.`
+`If the rider's source starts with "s", bump the rider.`
 
 
-When this routine gets control, we're sitting on a an apostrophe, so we suck it up. If there's no more source, we're done, but if the next character is an "_s", we suck that up too.
+When this routine gets control, we're sitting on a an apostrophe, so we suck it up. If there's no more source, we're done, but if the next character is an "s", we suck that up too.
 
 
 Simple enough, but we need the 3 deciders below, as well, to peek ahead in the source so we know when to use the above routine:
@@ -2181,7 +2181,7 @@ Simple enough, but we need the 3 deciders below, as well, to peek ahead in the s
 
 `To decide if a rider is on any possessive (type 1 - single-quote, s, non-glom-byte):`
 
-`If the rider's source does not start with "_'s", say no.`
+`If the rider's source does not start with "'s", say no.`
 
 `Privatize the rider.`
 
@@ -2213,10 +2213,10 @@ Simple enough, but we need the 3 deciders below, as well, to peek ahead in the s
 `Say no.`
 
 
-Note the "_Privatize the rider_" statements in the latter two routines. Recall that all parameters in Plain English are passed by reference, not value, so if we change them, they're actually changed. The privatize command makes a copy of the specified parameter so we can screw with it without breaking anything above us. It cleverly gives the copy the same name as the original parameter (in this case, "_the rider"), while changing the original parameter's name to include the prefix "_original_" (as in, "_the original rider").
+Note the "_Privatize the rider_" statements in the latter two routines. Recall that all parameters in Plain English are passed by reference, not value, so if we change them, they're actually changed. The privatize command makes a copy of the specified parameter so we can screw with it without breaking anything above us. It cleverly gives the copy the same name as the original parameter (in this case, "_the rider_"), while changing the original parameter's name to include the prefix "_original_" (as in, "_the original rider_").
 
 
-75. Anything else in the source code, at this level of detail, is considered a "_glom", a collection of characters that we're not quite sure how to handle at this level. This is the "_move a rider_" routine that sucks up gloms:
+75. Anything else in the source code, at this level of detail, is considered a "_glom_", a collection of characters that we're not quite sure how to handle at this level. This is the "_move a rider_" routine that sucks up gloms:
 
 
 `To move a rider (code rules - glom):`
@@ -2314,23 +2314,23 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `To move a rider returning an error string (code rules - validate qualifier):`
 
-`If the rider's token's length is less than 2, put "_Qualifiers need to end with ')'._" into the error string; exit.`
+`If the rider's token's length is less than 2, put "Qualifiers need to end with ')'." into the error string; exit.`
 
-`If the rider's token's last's target is not the right-paren byte, put "_Qualifiers need to end with ')'._" into the error string; exit.`
+`If the rider's token's last's target is not the right-paren byte, put "Qualifiers need to end with ')'." into the error string; exit.`
 
 
 `To move a rider returning an error string (code rules - validate remark):`
 
-`If the rider's token's length is less than 2, put "_Remarks need to end with ']'._" into the error string; exit.`
+`If the rider's token's length is less than 2, put "Remarks need to end with ']'." into the error string; exit.`
 
-`If the rider's token's last's target is not the right-bracket byte, put "_Remarks need to end with ']'._" into the error string; exit.`
+`If the rider's token's last's target is not the right-bracket byte, put "Remarks need to end with ']'." into the error string; exit.`
 
 
 `To move a rider returning an error string (code rules - validate string):`
 
-`If the rider's token's length is less than 2, put "_Strings need to end with '""'._" into the error string; exit.`
+`If the rider's token's length is less than 2, put "Strings need to end with '""'." into the error string; exit.`
 
-`If the rider's token's last's target is not the double-quote byte, put "_Strings need to end with '""'._" into the error string; exit.`
+`If the rider's token's last's target is not the double-quote byte, put "Strings need to end with '""'." into the error string; exit.`
 
 
 ...is able to weed out mal-formed remarks, strings, and qualifiers right out of the gate.
@@ -2406,13 +2406,13 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `If the rider's token is "_has_" or "_have", scan the type given the rider (has or have); exit.`
 
-`If the rider's token is not "is_" or "_are", abort with "I was expecting an 'is' or 'are', but I found '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not "is_" or "_are", abort with "I was expecting an 'is' or 'are', but I found '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
 `If the rider's token is any numeric literal, scan the type given the rider (unit of measure); exit.`
 
-`If the rider's token is not any indefinite article, abort with "I was expecting an indefinte article, but I found '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not any indefinite article, abort with "I was expecting an indefinte article, but I found '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -2420,7 +2420,7 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `Scan any optional info for the type given the rider.`
 
-`If the rider's token is not the period byte, abort with "Types need to end with a period, I found '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "Types need to end with a period, I found '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -2450,7 +2450,7 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `Repeat.`
 
-`If the name is blank, abort with "I was kind of hoping for a name around here, but I found '_" then the rider's token then "'._" and the rider; exit.`
+`If the name is blank, abort with "I was kind of hoping for a name around here, but I found '" then the rider's token then "'." and the rider; exit.`
 
 81. Our name-scanning routine needs a little help from these 2 deciders:
 
@@ -2581,9 +2581,9 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `To decide if a string is any possessive:`
 
-`If the string is "_'s", say yes.`
+`If the string is "'s", say yes.`
 
-`If the string is "_'", say yes.`
+`If the string is "'", say yes.`
 
 `Say no.`
 
@@ -2930,63 +2930,63 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `To pluralize a string: \ nouns only `
 
-`If the string is "_alumnus", put "_alumni_" into the string; exit.`
+`If the string is "_alumnus", put "alumni_" into the string; exit.`
 
-`If the string is "_auto", put "_autos_" into the string; exit.`
+`If the string is "_auto", put "autos_" into the string; exit.`
 
-`If the string is "_cello", put "_cellos_" into the string; exit.`
+`If the string is "_cello", put "cellos_" into the string; exit.`
 
-`If the string is "_dwarf", put "_dwarfs_" into the string; exit.`
+`If the string is "_dwarf", put "dwarfs_" into the string; exit.`
 
-`If the string is "_foot", put "_feet_" into the string; exit.`
+`If the string is "_foot", put "feet_" into the string; exit.`
 
-`If the string is "_genus", put "_genera_" into the string; exit.`
+`If the string is "_genus", put "genera_" into the string; exit.`
 
-`If the string is "_goose", put "_geese_" into the string; exit.`
+`If the string is "_goose", put "geese_" into the string; exit.`
 
-`If the string is "_hippo", put "_hippos_" into the string; exit.`
+`If the string is "_hippo", put "hippos_" into the string; exit.`
 
-`If the string is "_louse", put "_lice_" into the string; exit.`
+`If the string is "_louse", put "lice_" into the string; exit.`
 
-`If the string is "_memo", put "_memos_" into the string; exit.`
+`If the string is "_memo", put "memos_" into the string; exit.`
 
-`If the string is "_mouse", put "_mice_" into the string; exit.`
+`If the string is "_mouse", put "mice_" into the string; exit.`
 
-`If the string is "_ox", put "_oxen_" into the string; exit.`
+`If the string is "_ox", put "oxen_" into the string; exit.`
 
-`If the string is "_phenomenon", put "_phenomena_" into the string; exit.`
+`If the string is "_phenomenon", put "phenomena_" into the string; exit.`
 
-`If the string is "_photo", put "_photos_" into the string; exit.`
+`If the string is "_photo", put "photos_" into the string; exit.`
 
-`If the string is "_phylum", put "_phyla_" into the string; exit.`
+`If the string is "_phylum", put "phyla_" into the string; exit.`
 
-`If the string is "_piano", put "_pianos_" into the string; exit.`
+`If the string is "_piano", put "pianos_" into the string; exit.`
 
-`If the string is "_pimento", put "_pimentos_" into the string; exit.`
+`If the string is "_pimento", put "pimentos_" into the string; exit.`
 
-`If the string is "_pro", put "_pros_" into the string; exit.`
+`If the string is "_pro", put "pros_" into the string; exit.`
 
-`If the string is "_proof", put "_proofs_" into the string; exit.`
+`If the string is "_proof", put "proofs_" into the string; exit.`
 
-`If the string is "_radius", put "_radii_" into the string; exit.`
+`If the string is "_radius", put "radii_" into the string; exit.`
 
-`If the string is "_rhinoceros", put "_rhinoceri_" into the string; exit.`
+`If the string is "_rhinoceros", put "rhinoceri_" into the string; exit.`
 
-`If the string is "_roof", put "_roofs_" into the string; exit.`
+`If the string is "_roof", put "roofs_" into the string; exit.`
 
-`If the string is "_solo", put "_solos_" into the string; exit.`
+`If the string is "_solo", put "solos_" into the string; exit.`
 
-`If the string is "_soprano", put "_sopranos_" into the string; exit.`
+`If the string is "_soprano", put "sopranos_" into the string; exit.`
 
-`If the string is "_staff", put "_staffs_" into the string; exit.`
+`If the string is "_staff", put "staffs_" into the string; exit.`
 
-`If the string is "_tooth", put "_teeth_" into the string; exit.`
+`If the string is "_tooth", put "teeth_" into the string; exit.`
 
-`If the string is "_torus", put "_tori_" into the string; exit.`
+`If the string is "_torus", put "tori_" into the string; exit.`
 
-`If the string is "_turf", put "_turfs_" into the string; exit.`
+`If the string is "_turf", put "turfs_" into the string; exit.`
 
-`If the string is "_virus", put "_viruses_" into the string; exit.`
+`If the string is "_virus", put "viruses_" into the string; exit.`
 
 `If the string ends with "_sh", append "es_" to the string; exit.`
 
@@ -3061,11 +3061,11 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `Move the rider (compiler rules).`
 
-`Put "_record_" into the type's base name.`
+`put "record_" into the type's base name.`
 
 `Scan the type's fields given the rider.`
 
-`If the rider's token is not the period byte, abort with "Types need to end with a period, I found '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "Types need to end with a period, I found '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3132,9 +3132,9 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `If the compiler's abort flag is set, exit.`
 
-`If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'." and the rider; exit.`
 
-`If the rider's token is "_another", put "_other_" into the field's name.`
+`If the rider's token is "_another", put "other_" into the field's name.`
 
 `Move the rider (compiler rules).`
 
@@ -3160,7 +3160,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "the", abort with "I was expecting the word 'the', but found '" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not "the", abort with "I was expecting the word 'the', but found '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3190,11 +3190,11 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "byte_" or "_bytes", abort with "Nothing but the word 'bytes' is appropriate after a counted field designator._" and the rider; exit.`
+`If the rider's token is not "byte_" or "_bytes", abort with "Nothing but the word 'bytes' is appropriate after a counted field designator." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
-`Put "_byte_" into the field's type name.`
+`put "byte_" into the field's type name.`
 
 
 88. Since fields in a record can be separated by a variety of things (called `pauses`), we need these 2 routines, too:
@@ -3234,13 +3234,13 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `Convert the rider's token to the type's scale.`
 
-`If the type's scale is 0, abort with "Zero is an invalid scale._" and the type's locus; exit.`
+`If the type's scale is 0, abort with "Zero is an invalid scale." and the type's locus; exit.`
 
 `Move the rider (compiler rules).`
 
 `Scan the type's base name given the rider.`
 
-`If the rider's token is not the period byte, abort with "Types need to end with a period, I found '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "Types need to end with a period, I found '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3272,7 +3272,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any indefinite article, abort with "The 'to' here needs to be followed by an indefinite article, not '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not any indefinite article, abort with "The 'to' here needs to be followed by an indefinite article, not '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3304,7 +3304,7 @@ And that's it for scanning types.
 
 `If the rider's token is "_has_" or "_have", scan the global given the rider (has or have); exit.`
 
-`If the rider's token is not "is_" or "_are", abort with "Geez. I need an 'is' or an 'are' hereabouts, but all I found was '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not "is_" or "_are", abort with "Geez. I need an 'is' or an 'are' hereabouts, but all I found was '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3318,7 +3318,7 @@ And that's it for scanning types.
 
 `If the rider's token is "_equal", scan the global given the rider (data part); exit.`
 
-`If the rider's token is not the period byte, abort with "All global definitions must end with a period. Including this one._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "All global definitions must end with a period. Including this one." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3349,7 +3349,7 @@ And that's it for scanning types.
 
 `If the global is nil, exit.`
 
-`If the global's name is in the global index, abort with "'_" then the global's name then "_' is a duplicate global variable._" and the global's locus; exit.`
+`If the global's name is in the global index, abort with "'" then the global's name then "' is a duplicate global variable." and the global's locus; exit.`
 
 `Index the global given the global's name and the global index.`
 
@@ -3364,7 +3364,7 @@ And that's it for scanning types.
 
 `Move the rider (compiler rules).`
 
-`Put "_~inline " then the global's name then " type_" into a name.`
+`put "~inline " then the global's name then " type_" into a name.`
 
 `Put the name then "_s_" into a plural name.`
 
@@ -3376,7 +3376,7 @@ And that's it for scanning types.
 
 `Scan the type's fields given the rider.`
 
-`If the rider's token is not the period byte, abort with "Your punctuation is bad here._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "Your punctuation is bad here." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3390,7 +3390,7 @@ And that's it for scanning types.
 
 `If the compiler's abort flag is set, exit.`
 
-`Put "_~inline " then the global's name then " type_" into a name.`
+`put "~inline " then the global's name then " type_" into a name.`
 
 `Put the name then "_s_" into a plural name.`
 
@@ -3402,7 +3402,7 @@ And that's it for scanning types.
 
 `Scan any optional info for the type given the rider.`
 
-`If the rider's token is not the period byte, abort with "All global definitions must end with a period. Including this one._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "All global definitions must end with a period. Including this one." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3418,13 +3418,13 @@ And that's it for scanning types.
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "to", abort with "I need the word 'to' after the word 'equal', not '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not "to", abort with "I need the word 'to' after the word 'equal', not '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
 `Scan the global's global body given the rider.`
 
-`If the rider's token is not the period byte, abort with "All global definitions must end with a period. Including this one._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "All global definitions must end with a period. Including this one." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3470,7 +3470,7 @@ A similar thing occurs here:
 
 `Scan the global's global body given the rider.`
 
-`If the rider's token is not the period byte, abort with "All global definitions must end with a period. Including this one._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "All global definitions must end with a period. Including this one." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3495,7 +3495,7 @@ And that's it for globals, for now.
 
 `If the rider's token is the semi-colon byte, scan the routine given the rider (alternate wording); exit.`
 
-`If the rider's token is not the colon byte, abort with "This routine header is improperly formulated._" and the routine's locus; exit.`
+`If the rider's token is not the colon byte, abort with "This routine header is improperly formulated." and the routine's locus; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3566,7 +3566,7 @@ And that's it for globals, for now.
 
 `Put the rider's token's last into the routine body's last.`
 
-`If the rider's token is the colon byte, abort with "You may have forgotten a period somewhere above this. You better check._" and the rider; exit.`
+`If the rider's token is the colon byte, abort with "You may have forgotten a period somewhere above this. You better check." and the rider; exit.`
 
 `If the rider's token is not the period byte, move the rider (compiler rules); repeat.`
 
@@ -3586,7 +3586,7 @@ And that's it for globals, for now.
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "to", abort with "I think that there semi-colon is misplaced._" and the original rider; exit.`
+`If the rider's token is not "to", abort with "I think that there semi-colon is misplaced." and the original rider; exit.`
 
 `Put the original rider's token's first into the routine's routine body's first.`
 
@@ -3990,11 +3990,11 @@ Okay, you know the drill.
 
 `Find the type's base type given the type's base name and the type index.`
 
-`If the type's base type is nil, abort with "Invalid base type '_" then the type's base name then "_'._" and the type's locus; exit.`
+`If the type's base type is nil, abort with "Invalid base type '" then the type's base name then "'." and the type's locus; exit.`
 
 `Set the type's cooking flag.`
 
-`If the type's base type's cooking flag is set, abort with "Recursive definition with '_" then the type's base name then "_'._" and the type's locus; exit.`
+`If the type's base type's cooking flag is set, abort with "Recursive definition with '" then the type's base name then "'." and the type's locus; exit.`
 
 `Resolve the type's base type (base type).`
 
@@ -4067,21 +4067,21 @@ We use the "_cooking flag_" to make sure we don't run into ourselves when we're 
 
 `If the compiler's abort flag is set, exit.`
 
-`If the type cannot be reduced to "_record", abort with "Optional 'with' info is only allowed on record types._" and the type's locus; exit.`
+`If the type cannot be reduced to "_record", abort with "Optional 'with' info is only allowed on record types." and the type's locus; exit.`
 
 
 `To check for invalid optional info on a type (scale):`
 
 `If the compiler's abort flag is set, exit.`
 
-`If the type cannot be reduced to "_number", abort with "Scales are only allowed on number types._" and the type's locus; exit.`
+`If the type cannot be reduced to "_number", abort with "Scales are only allowed on number types." and the type's locus; exit.`
 
 
 `To check for invalid optional info on a type (target):`
 
 `If the compiler's abort flag is set, exit.`
 
-`If the type cannot be reduced to "_pointer", abort with "Optional 'to' info is only allowed on pointer types._" and the type's locus; exit.`
+`If the type cannot be reduced to "_pointer", abort with "Optional 'to' info is only allowed on pointer types." and the type's locus; exit.`
 
 
 110: These helpers are needed too:
@@ -4097,7 +4097,7 @@ We use the "_cooking flag_" to make sure we don't run into ourselves when we're 
 
 `Find the type's target type given the type's target name and the type index.`
 
-`If the type's target type is nil, abort with "I can't quite see what you're pointing at. Please clarify._" and the type's locus; exit.`
+`If the type's target type is nil, abort with "I can't quite see what you're pointing at. Please clarify." and the type's locus; exit.`
 
 
 `To resolve a type (optional info - record):`
@@ -4114,19 +4114,19 @@ We use the "_cooking flag_" to make sure we don't run into ourselves when we're 
 
 `If the field is nil, break.`
 
-`If the field is duplicated in the type's fields, abort with "The '_" then the field's name then "_' field is defined more than once._" and the field's locus; exit.`
+`If the field is duplicated in the type's fields, abort with "The '" then the field's name then "' field is defined more than once." and the field's locus; exit.`
 
 `Resolve the field.`
 
 `If the compiler's abort flag is set, exit.`
 
-`If the field's type's cooking flag is set, abort with "Recursive definition with '_" then the field's type's name then "_'._" and the field's locus; exit.`
+`If the field's type's cooking flag is set, abort with "Recursive definition with '" then the field's type's name then "'." and the field's locus; exit.`
 
 `Resolve the field's type (optional info).`
 
 `If the field's reference flag is not set, repeat.`
 
-`If the field's type cannot be reduced to "_pointer", abort with "Exactly what do you mean by '(reference)' here on this '_" then the field's name then "_'?_" and the field's locus; exit.`
+`If the field's type cannot be reduced to "_pointer", abort with "Exactly what do you mean by '(reference)' here on this '" then the field's name then "'?_" and the field's locus; exit.`
 
 `Repeat.`
 
@@ -4269,7 +4269,7 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 
 `If the field's nickname is not any valid field name, clear the field's nickname.`
 
-`If the field's name is not any valid field name, abort with "'_" then the field's name then "_' is not a valid field name._" and the field's locus; exit.`
+`If the field's name is not any valid field name, abort with "'" then the field's name then "' is not a valid field name." and the field's locus; exit.`
 
 
 `To resolve a variable:`
@@ -4286,14 +4286,14 @@ That last decider is used to eliminate duplicate fields in records (recall that 
 
 `If the variable's type is not nil, put the variable's type's name into the variable's type name; exit.`
 
-`abort with "I can't find the '_" then the variable's name then "_' type._" and the variable's locus.`
+`abort with "I can't find the '" then the variable's name then "' type." and the variable's locus.`
 
 
 `To resolve a variable (explicit type name):`
 
 `Find the variable's type given the variable's type name and the type index.`
 
-`If the variable's type is nil, abort with "I can't find the '_" then the variable's type name then "_' type._" and the variable's locus; exit.`
+`If the variable's type is nil, abort with "I can't find the '" then the variable's type name then "' type." and the variable's locus; exit.`
 
 
 114. Perhaps you noticed various calls to "_find_" routines in the stuff above. These are the ones we should put back now:
@@ -4709,7 +4709,7 @@ Next up: Resolving global variables.
 
 `If the global's global body is not blank, resolve the global (compile body).`
 
-`If the global's type name is blank, abort with "Invalid global '_" then the global's name then "_'._" and the global's locus; exit.`
+`If the global's type name is blank, abort with "Invalid global '" then the global's name then "'." and the global's locus; exit.`
 
 `Resolve the global as a variable.`
 
@@ -4724,7 +4724,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any literal, abort with "I need a literal here, but I found '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not any literal, abort with "I need a literal here, but I found '" then the rider's token then "'." and the rider; exit.`
 
 `Compile a literal given the rider.`
 
@@ -4794,7 +4794,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`Put "_flag_" into the literal's type name.`
+`put "flag_" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -4811,7 +4811,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`Put "_hex string_" into the literal's type name.`
+`put "hex string_" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -4826,7 +4826,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`Put "_number_" into the literal's type name.`
+`put "number_" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -4841,7 +4841,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`Put "_ratio_" into the literal's type name.`
+`put "ratio_" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -4871,9 +4871,9 @@ Next up: Resolving global variables.
 
 `Find a type given the name and the type index.`
 
-`If the type is nil, abort with "'_" then the name then "_' is an invalid unit of measure._" and the literal's locus; exit.`
+`If the type is nil, abort with "'" then the name then "' is an invalid unit of measure." and the literal's locus; exit.`
 
-`If the type cannot be reduced to "_number", abort with "'_" then the name then "_' is an invalid unit of measure._" and the literal's locus; exit.`
+`If the type cannot be reduced to "_number", abort with "'" then the name then "' is an invalid unit of measure." and the literal's locus; exit.`
 
 `Put the type's scale into a final ratio.`
 
@@ -4883,7 +4883,7 @@ Next up: Resolving global variables.
 
 `Reduce the final ratio.`
 
-`If the final ratio's denominator is 0, abort with "We seem to have an invalid unit of measure here._" and the literal's locus.`
+`If the final ratio's denominator is 0, abort with "We seem to have an invalid unit of measure here." and the literal's locus.`
 
 `Put the final ratio's numerator divided by the final ratio's denominator into a number.`
 
@@ -4902,7 +4902,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`Put "_pointer_" into the literal's type name.`
+`put "pointer_" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -4917,7 +4917,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`Put "_string_" into the literal's type name.`
+`put "string_" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -4939,7 +4939,7 @@ Next up: Resolving global variables.
 
 `If the type is nil, say no.`
 
-`If the name is not "_times", say yes. \ special because times is an infix operator and a unit of measure `
+`If the name is not "times", say yes. \ special because times is an infix operator and a unit of measure `
 
 `If the rider's token is the start of any expression, say no.`
 
@@ -5188,53 +5188,53 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `\ from/given/with/using `
 
-`If the string is "_from", put "_from/given/with/using_" into the monikette's string; exit.`
+`If the string is "_from", put "from/given/with/using_" into the monikette's string; exit.`
 
-`If the string is "_given", put "_from/given/with/using_" into the monikette's string; exit.`
+`If the string is "_given", put "from/given/with/using_" into the monikette's string; exit.`
 
-`If the string is "_with", put "_from/given/with/using_" into the monikette's string; exit.`
+`If the string is "_with", put "from/given/with/using_" into the monikette's string; exit.`
 
-`If the string is "_using", put "_from/given/with/using_" into the monikette's string; exit. `
+`If the string is "_using", put "from/given/with/using_" into the monikette's string; exit. `
 
 `\ in/into/to `
 
-`If the string is "_in", put "_in/into/to_" into the monikette's string; exit.`
+`If the string is "_in", put "in/into/to_" into the monikette's string; exit.`
 
-`If the string is "_into", put "_in/into/to_" into the monikette's string; exit.`
+`If the string is "_into", put "in/into/to_" into the monikette's string; exit.`
 
-`If the string is "_to", put "_in/into/to_" into the monikette's string; exit.`
+`If the string is "_to", put "in/into/to_" into the monikette's string; exit.`
 
 `\ is/are`
 
-`If the string is "_are", put "_is/are_" into the monikette's string; exit.`
+`If the string is "_are", put "is/are_" into the monikette's string; exit.`
 
-`If the string is "_is", put "_is/are_" into the monikette's string; exit. `
+`If the string is "_is", put "is/are_" into the monikette's string; exit. `
 
 `\ aren't/isn't `
 
-`If the string is "_isn't", put "_is/aren't_" into the monikette's string; exit.`
+`If the string is "_isn't", put "is/aren't_" into the monikette's string; exit.`
 
-`If the string is "_aren't", put "_is/aren't_" into the monikette's string; exit.`
+`If the string is "_aren't", put "is/aren't_" into the monikette's string; exit.`
 
 `\ backward/backwards/counterclockwise/counter-clockwise/anticlockwise/anti-clockwise`
 
-`If the string is "_backward", put "_backward_" into the monikette's string; exit.`
+`If the string is "_backward", put "backward_" into the monikette's string; exit.`
 
-`If the string is "_backwards", put "_backward_" into the monikette's string; exit.`
+`If the string is "_backwards", put "backward_" into the monikette's string; exit.`
 
-`If the string is "_counterclockwise", put "_backward_" into the monikette's string; exit.`
+`If the string is "_counterclockwise", put "backward_" into the monikette's string; exit.`
 
-`If the string is "_counter-clockwise", put "_backward_" into the monikette's string; exit.`
+`If the string is "_counter-clockwise", put "backward_" into the monikette's string; exit.`
 
-`If the string is "_anticlockwise", put "_backward_" into the monikette's string; exit.`
+`If the string is "_anticlockwise", put "backward_" into the monikette's string; exit.`
 
-`If the string is "_anti-clockwise", put "_backward_" into the monikette's string; exit. `
+`If the string is "_anti-clockwise", put "backward_" into the monikette's string; exit. `
 
 `\ at/on `
 
-`If the string is "_at", put "_at/on_" into the monikette's string; exit.`
+`If the string is "_at", put "at/on_" into the monikette's string; exit.`
 
-`If the string is "_on", put "_at/on_" into the monikette's string; exit. `
+`If the string is "_on", put "at/on_" into the monikette's string; exit. `
 
 `\ other `
 
@@ -5385,11 +5385,11 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `Compile the routine's monikettes and the routine's parameters given the rider.`
 
-`If any of the routine's monikettes are negative words, abort with "It's a bad idea to use negatives in decider names._" and the rider; exit.`
+`If any of the routine's monikettes are negative words, abort with "It's a bad idea to use negatives in decider names." and the rider; exit.`
 
 `Convert the routine's monikettes to the routine's moniker.`
 
-`If the routine's moniker is in the routine index, abort with "I already know how to '_" then the routine's moniker then "_'._" and the routine's locus; exit.`
+`If the routine's moniker is in the routine index, abort with "I already know how to '" then the routine's moniker then "'." and the routine's locus; exit.`
 
 `Index the routine given the routine's monikettes and the routine index.`
 
@@ -5410,7 +5410,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `If the flag is not set, compile the routine's monikettes and the routine's parameters given the rider (definite article).`
 
-`If the rider's token is not any possessive, abort with "An 's is missing or misplaced here._" and the rider; exit.`
+`If the rider's token is not any possessive, abort with "An 's is missing or misplaced here." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -5418,23 +5418,23 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `Add another monikette to the routine's monikettes given "'s " then the name.`
 
-`If the rider's token is not "into", abort with "I was expecting the word 'into', but found '" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not "into", abort with "I was expecting the word 'into', but found '" then the rider's token then "'." and the rider; exit.`
 
 `Add a third monikette to the routine's monikettes given "into".`
 
 `Convert the routine's monikettes to a moniker.`
 
-`If the moniker is in the routine index, abort with "I already know how to '_" then the moniker then "_'._" and the routine's locus; exit.`
+`If the moniker is in the routine index, abort with "I already know how to '" then the moniker then "'." and the routine's locus; exit.`
 
 `Index the routine given the routine's monikettes and the routine index.`
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'." and the rider; exit.`
 
 `Compile the routine's monikettes and the routine's parameters given the rider (indefinite article).`
 
-`If the rider's token is not blank, abort with "There's extra stuff on the end of this function._" and the rider; exit.`
+`If the rider's token is not blank, abort with "There's extra stuff on the end of this function." and the rider; exit.`
 
 `Convert the routine's monikettes to the routine's moniker.`
 
@@ -5452,7 +5452,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `Convert the routine's monikettes to the routine's moniker.`
 
-`If the routine's moniker is in the routine index, abort with "I already know how to '_" then the routine's moniker then "_'._" and the routine's locus; exit.`
+`If the routine's moniker is in the routine index, abort with "I already know how to '" then the routine's moniker then "'." and the routine's locus; exit.`
 
 `Index the routine given the routine's monikettes and the routine index.`
 
@@ -5465,7 +5465,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `Convert the routine's monikettes to the routine's moniker.`
 
-`If the routine's moniker is in the routine index, abort with "I already know how to '_" then the routine's moniker then "_'._" and the routine's locus; exit.`
+`If the routine's moniker is in the routine index, abort with "I already know how to '" then the routine's moniker then "'." and the routine's locus; exit.`
 
 `Index the routine given the routine's monikettes and the routine index.`
 
@@ -5504,7 +5504,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `If the rider's token is any monikette string, compile the monikettes and the parameters given the rider (monikette string); repeat.`
 
-`abort with "'_" then the rider's token then "' is not valid in a routine header._" and the rider.`
+`abort with "'" then the rider's token then "' is not valid in a routine header." and the rider.`
 
 `To compile some monikettes and some parameters given a rider (definite article):`
 
@@ -5527,7 +5527,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `Add a parameter to the parameters given "parameter_" and the rider's token's first.`
 
-`If the rider's token is "_another", put "_other_" into the parameter's name.`
+`If the rider's token is "_another", put "other_" into the parameter's name.`
 
 `Move the rider (compiler rules).`
 
@@ -5539,7 +5539,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `Resolve the parameter.`
 
-`If the parameter is duplicated in the parameters, abort with "Dude, you already have a parameter called '_" then the parameter's name then "_'._" and the parameter's locus; exit.`
+`If the parameter is duplicated in the parameters, abort with "Dude, you already have a parameter called '" then the parameter's name then "'." and the parameter's locus; exit.`
 
 `Add a monikette to the monikettes given the parameter's type.`
 
@@ -5961,7 +5961,7 @@ Time to move on.
 
 `Find another field given the field's redefinition target name and the type's fields.`
 
-`If the other field is nil, abort with "Invalid redefine. I can't find the '_" then the field's redefinition target name then "_' field._" and the field's locus; exit.`
+`If the other field is nil, abort with "Invalid redefine. I can't find the '" then the field's redefinition target name then "' field." and the field's locus; exit.`
 
 `Put the other field's offset into the field's offset.`
 
@@ -6227,7 +6227,7 @@ So we have the compiler add those routines as if they were in the programmer's s
 
 `append "unassign the string's first. " to the routine's body string.`
 
-`append "intel $58._" to the routine's body string. \ pop eax`
+`append "intel $58." to the routine's body string. \ pop eax`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -6256,11 +6256,11 @@ So we have the compiler add those routines as if they were in the programmer's s
 
 `If the field's type should not be finalized, repeat.`
 
-`append "~finalize the " then the type's name then "_'s " then the field's name then ". " to the routine's body string.`
+`append "~finalize the " then the type's name then "'s " then the field's name then ". " to the routine's body string.`
 
 `Repeat.`
 
-`append "intel $58._" to the routine's body string. \ pop eax`
+`append "intel $58." to the routine's body string. \ pop eax`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -6318,7 +6318,7 @@ Note the tildes ("~") in the routine names; we don't expect the programmer will 
 
 `append "assign the " then the type's name then " given " to the routine's body string.`
 
-`Append the type's target type's length then "._" to the routine's body string.`
+`Append the type's target type's length then "." to the routine's body string.`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -6349,9 +6349,9 @@ Note that there is no tilde in the routine name; we do expect the programmer to 
 
 `append "if the " then the type's name then " is nil, exit. " to the routine's body string.`
 
-`If the type's target type should be finalized, append "~finalize the " then the type's name then "_'s target. " to the routine's body string.`
+`If the type's target type should be finalized, append "~finalize the " then the type's name then "'s target. " to the routine's body string.`
 
-`append "unassign the " then the type's name then "._" to the routine's body string.`
+`append "unassign the " then the type's name then "." to the routine's body string.`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -6389,7 +6389,7 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 `If the type's fields' first's type is nil, abort with "Internal error 2 - add the forget routine for a type (things)"; exit.`
 
-`Put "_destroy [_" then the type's name then "_]_" into a moniker.`
+`put "destroy [_" then the type's name then "_]_" into a moniker.`
 
 `If the moniker is in the routine index, exit.`
 
@@ -6397,11 +6397,11 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 `append "destroy a " then the type's name to the routine's header string.`
 
-`append "if the " then the type's name then "_'s first is nil, exit. " to the routine's body string.`
+`append "if the " then the type's name then "'s first is nil, exit. " to the routine's body string.`
 
 `Put the type's fields' first's type's name into a name.`
 
-`append "put the " then the type's name then "_'s first into a " then the name then ". " to the routine's body string.`
+`append "put the " then the type's name then "'s first into a " then the name then ". " to the routine's body string.`
 
 `append "remove the " then the name then " from the " then the type's name then ". " to the routine's body string.`
 
@@ -6422,7 +6422,7 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 `If the compiler's abort flag is set, exit.`
 
-`Put "_destroy [_" then the type's name then "_]_" into a moniker.`
+`put "destroy [_" then the type's name then "_]_" into a moniker.`
 
 `If the moniker is in the routine index, exit.`
 
@@ -6432,9 +6432,9 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 `append "if the " then the type's name then " is nil, exit. " to the routine's body string.`
 
-`If the type's target type can be reduced to "_pointer", append "destroy the " then the type's name then "_'s target. " to the routine's body string.`
+`If the type's target type can be reduced to "_pointer", append "destroy the " then the type's name then "'s target. " to the routine's body string.`
 
-`If the type's target type can be reduced to "_things", append "destroy the " then the type's name then "_'s target. " to the routine's body string.`
+`If the type's target type can be reduced to "_things", append "destroy the " then the type's name then "'s target. " to the routine's body string.`
 
 `Loop.`
 
@@ -6446,7 +6446,7 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 `If the field's type should not be forgotten, repeat.`
 
-`append "destroy the " then the type's name then "_'s " then the field's name then ". " to the routine's body string.`
+`append "destroy the " then the type's name then "'s " then the field's name then ". " to the routine's body string.`
 
 `Repeat.`
 
@@ -6546,7 +6546,7 @@ Followed by the associated "_deallocate_" and "_destroy_" routines:
 
 158. Extra credit exercise: You probably noticed that the generated routines above have no meat in them. That's because we don't list routine bodies until later when they've been compiled. But let's take a peek. In the gray, get into the son's compiler, find the "_list a routine_" routine, and add this line (including the comment at the end)...
 
-`If the routine's moniker starts with "_~", append the routine's body string to the buffer; advance the buffer. \*** testing only`
+`If the routine's moniker starts with "~", append the routine's body string to the buffer; advance the buffer. \*** testing only`
 
 
 ...just before the "_`Advance the buffer`_" line at the end of that routine.
@@ -7068,7 +7068,7 @@ So let's get to it.
 
 `Find a routine given the string and the routine index.`
 
-`If the routine is nil, abort with "I need a routine to '_" then the string then "_'."; exit.`
+`If the routine is nil, abort with "I need a routine to '" then the string then "'."; exit.`
 
 `Compile the body of the routine.`
 
@@ -7136,7 +7136,7 @@ After dealing with possible special cases ("`alternate wordings`_" and "_`employ
 
 `Put the routine's next into a target routine.`
 
-`If the target routine is nil, abort with "You've defined an alternate wording here, but I'm not sure what you're rewording._" and the rider; exit.`
+`If the target routine is nil, abort with "You've defined an alternate wording here, but I'm not sure what you're rewording." and the rider; exit.`
 
 `Put the target routine's moniker into the routine's employs moniker.`
 
@@ -7158,7 +7158,7 @@ After dealing with possible special cases ("`alternate wordings`_" and "_`employ
 
 `Destroy the routine reference.`
 
-`If the rider's token is not ".", abort with "Employ statments should end with a period not '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not ".", abort with "Employ statments should end with a period not '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -7166,7 +7166,7 @@ After dealing with possible special cases ("`alternate wordings`_" and "_`employ
 
 `Find another routine given the routine's employs moniker and the routine index.`
 
-`If the other routine is nil, abort with "I can't find the '_" then the routine's employs moniker then "_' routine you're trying to employ._" and the routine's locus; exit.`
+`If the other routine is nil, abort with "I can't find the '" then the routine's employs moniker then "' routine you're trying to employ." and the routine's locus; exit.`
 
 `Compile the body of the other routine.`
 
@@ -7279,7 +7279,7 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 `If the rider's token is any literal, compile the term given the rider (literal); exit.`
 
-`abort with "I expected a term hereabouts but all I found was '_" then the rider's token then "'._" and the rider.`
+`abort with "I expected a term hereabouts but all I found was '" then the rider's token then "'." and the rider.`
 
 
 178. This guy deals with terms that have a minus sign in front of them:
@@ -7295,7 +7295,7 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 `If the compiler's abort flag is set, exit.`
 
-`If the other term's variable is nil, abort with "Invalid negate, I don't understand the variable '_" then the other term's phrase then "_'._" and the rider; exit.`
+`If the other term's variable is nil, abort with "Invalid negate, I don't understand the variable '" then the other term's phrase then "'." and the rider; exit.`
 
 `Add an intermediate given the other term's type name and the rider's token's first.`
 
@@ -7344,7 +7344,7 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 `Destroy the monikettes.`
 
-`If the routine is nil, abort with "I don't know how to '_" then the moniker then "_'._" and the locus; exit.`
+`If the routine is nil, abort with "I don't know how to '" then the moniker then "'." and the locus; exit.`
 
 `Add a third fragment given the call internal tag and the routine.`
 
@@ -7374,7 +7374,7 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 `Set the variable's compiled flag.`
 
-`If the variable's kind is not "_global", exit.`
+`If the variable's kind is not "global", exit.`
 
 `If the variable's literal is nil, exit.`
 
@@ -7382,13 +7382,13 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 `If the routine is nil, find the routine given "convert_" and the variable's literal's type and "_to_" and the variable's type; set a flag.`
 
-`If the routine is nil, abort with "The type of this global and the type of its literal are not compatible._" and the variable's locus; exit.`
+`If the routine is nil, abort with "The type of this global and the type of its literal are not compatible." and the variable's locus; exit.`
 
 `Compile the body of the routine.`
 
-`If the flag is set, put "_convert the " then the variable's literal's name then " to the " then the variable's name then ". " into the variable's initializer string.`
+`If the flag is set, put "convert the " then the variable's literal's name then " to the " then the variable's name then ". " into the variable's initializer string.`
 
-`If the flag is not set, put "_put the " then the variable's literal's name then " into the " then the variable's name then ". " into the variable's initializer string.`
+`If the flag is not set, put "put the " then the variable's literal's name then " into the " then the variable's name then ". " into the variable's initializer string.`
 
 
 If the variable is a global, and the programmer wants us to initialize it with a literal value, we're going to need a "_put_" or "_convert_" routine to actually fill it in at run time, so we make sure we've got such a routine now. If we find one, we take a moment to compile its body, and then we fill in the variable's "_initializer string_" with the Plain English sentence that will do the initializing. "_Global initializer_" sentences are compiled in the next step.
@@ -7533,7 +7533,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `Destroy the monikettes.`
 
-`If the routine is nil, abort with "I don't know how to '_" then the moniker then "_'._" and the locus; exit.`
+`If the routine is nil, abort with "I don't know how to '" then the moniker then "'." and the locus; exit.`
 
 `Add another fragment given the call internal tag and the routine.`
 
@@ -7549,7 +7549,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `Compile the term given the rider.`
 
-`If the term's variable is nil, abort with "Invalid posigate, I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "Invalid posigate, I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `Clear the term's phrase.`
 
@@ -7568,7 +7568,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `If the compiler's abort flag is set, exit.`
 
-`If the current routine is nil, abort with "I don't know what you're trying to pull here._" and the rider; exit.`
+`If the current routine is nil, abort with "I don't know what you're trying to pull here." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -7578,7 +7578,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `Put the variable into the term's variable.`
 
-`Put "_the " into the term's phrase.`
+`put "the " into the term's phrase.`
 
 `Append the name to the term's phrase.`
 
@@ -7623,13 +7623,13 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "Invalid use of magnitude, I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "Invalid use of magnitude, I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `Add a literal to the literals given the rider's token's first.`
 
 `Convert the term's type's length to the literal's data.`
 
-`Put "_number_" into the literal's type name.`
+`put "number_" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -7642,9 +7642,9 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "Invalid use of target, I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "Invalid use of target, I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
-`If the term's type cannot be reduced to "_pointer", abort with "You can only get the target of pointer types._" and the rider; exit.`
+`If the term's type cannot be reduced to "_pointer", abort with "You can only get the target of pointer types." and the rider; exit.`
 
 `Compile the term given the rider (dereference).`
 
@@ -7653,7 +7653,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "Invalid use of whereabouts, I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "Invalid use of whereabouts, I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `Add an intermediate given "pointer_" and the rider's token's first.`
 
@@ -7671,9 +7671,9 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "Invalid dereference, I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "Invalid dereference, I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
-`If the term's type's target type is nil, abort with "I'm unable to determine the type of this target._" and the rider; exit.`
+`If the term's type's target type is nil, abort with "I'm unable to determine the type of this target." and the rider; exit.`
 
 `If the term's kind is "_scratch", compile the term given the rider (dereference - in place); exit.`
 
@@ -7747,11 +7747,11 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `If the field term is not empty, compile the term given the rider and the field term; exit.`
 
-`If the term's variable is nil, abort with "I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `If the type can be reduced to "_pointer", put the type's target type into the type.`
 
-`If the type is nil, abort with "There's no '_" then the name then "_' field in a '_" then the term's type's name then "_'._" and the rider; exit.`
+`If the type is nil, abort with "There's no '" then the name then "' field in a '" then the term's type's name then "'." and the rider; exit.`
 
 `Loop.`
 
@@ -7759,7 +7759,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `Get a field from the type's fields.`
 
-`If the field is nil, abort with "There's no '_" then the name then "_' field in a '_" then the term's type's name then "_'._" and the rider; exit.`
+`If the field is nil, abort with "There's no '" then the name then "' field in a '" then the term's type's name then "'." and the rider; exit.`
 
 `Find a deep field term given "" and the field's type and the name.`
 
@@ -7782,13 +7782,13 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `If the field term's field is not nil, exit.`
 
-`If the phrase is not blank, find a routine given "put_" and the phrase and "_'s " then the name and "_into".`
+`If the phrase is not blank, find a routine given "put_" and the phrase and "'s " then the name and "_into".`
 
 `If the routine is not nil, put the routine into the field term's function; exit.`
 
 `If the type is nil, exit.`
 
-`Find the routine given "put_" and the type and "_'s " then the name and "_into".`
+`Find the routine given "put_" and the type and "'s " then the name and "_into".`
 
 `If the routine is not nil, set the field term's push flag; put the routine into the field term's function; exit.`
 
@@ -7909,9 +7909,9 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `Put the routine's parameters' last into a parameter.`
 
-`If the parameter is nil, abort with "Internal error - compile a term given a rider and an field term (function)._" and the rider; exit.`
+`If the parameter is nil, abort with "Internal error - compile a term given a rider and an field term (function)." and the rider; exit.`
 
-`If the parameter's type is nil, abort with "Internal error 2 - compile a term given a rider and an field term (function)._" and the rider; exit.`
+`If the parameter's type is nil, abort with "Internal error 2 - compile a term given a rider and an field term (function)." and the rider; exit.`
 
 `Add an intermediate given the parameter's type's name and the rider's token's first.`
 
@@ -7969,11 +7969,11 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `If the compiler's abort flag is set, exit.`
 
-`If the current routine is nil, abort with "I don't know what you're trying to pull here._" and the rider; exit.`
+`If the current routine is nil, abort with "I don't know what you're trying to pull here." and the rider; exit.`
 
 `Add a local to the current routine's locals given "local_" and the rider's token's first.`
 
-`If the rider's token is "_another", put "_other_" into the local's name.`
+`If the rider's token is "_another", put "other_" into the local's name.`
 
 `Move the rider (compiler rules).`
 
@@ -7985,9 +7985,9 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `Resolve the local.`
 
-`If the local is duplicated in the current routine's parameters, abort with "'_" then the local's name then "_' is already in use as a parameter._" and the local's locus; exit.`
+`If the local is duplicated in the current routine's parameters, abort with "'" then the local's name then "' is already in use as a parameter." and the local's locus; exit.`
 
-`If the local is duplicated in the current routine's locals,abort with "'_" then the local's name then "_' is already in use as a local variable._" and the local's locus; exit.`
+`If the local is duplicated in the current routine's locals,abort with "'" then the local's name then "' is already in use as a local variable." and the local's locus; exit.`
 
 `Eliminate duplicate nicknames given the local and the current routine's nickname index.`
 
@@ -8048,11 +8048,11 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "Invalid 'as', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "Invalid 'as', I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any indefinite article, abort with "I was hoping for an indefinite article after AS, but I found '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not any indefinite article, abort with "I was hoping for an indefinite article after AS, but I found '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -8060,7 +8060,7 @@ Note that literals can have possessives; for example...
 
 `Find a type given the type name and the type index.`
 
-`If the type is nil, abort with "I can't find the '_" then the type name then "_' type._" and the rider; exit.`
+`If the type is nil, abort with "I can't find the '" then the type name then "' type." and the rider; exit.`
 
 `Add a scratch given the type's name and the rider's token's first.`
 
@@ -8071,14 +8071,14 @@ Note that literals can have possessives; for example...
 `Clear the term's phrase.`
 
 
-195. Most ratios in Plain English programs are defined as literals at compile-time (like "_1/2_" or "_1/3"). But sometimes a programmer might define a ratio at run-time, using other variables (like "_Put the percent / 100 into a fraction.") Keep in mind that our Compiler agrees with the great mathematician Leopold Kronecker that  "_The dear God created the whole numbers; all else is menschenwerk._" So when somebody says something like 0.333333333..., we think, "_What he's really trying to say is simply 1/3, 1 part out of 3._" In any case, this is the guy who compiles "_run-time ratios":
+195. Most ratios in Plain English programs are defined as literals at compile-time (like "_1/2_" or "_1/3"). But sometimes a programmer might define a ratio at run-time, using other variables (like "_Put the percent / 100 into a fraction.") Keep in mind that our Compiler agrees with the great mathematician Leopold Kronecker that  "_The dear God created the whole numbers; all else is menschenwerk." So when somebody says something like 0.333333333..., we think, "_What he's really trying to say is simply 1/3, 1 part out of 3." In any case, this is the guy who compiles "_run-time ratios":
 
 
 `To compile a term given a rider (runtime ratio):`
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "Invalid use of /, I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "Invalid use of /, I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -8086,7 +8086,7 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the other term's variable is nil, abort with "Invalid use of /, I don't understand the variable '_" then the other term's phrase then "_'._" and the rider; exit.`
+`If the other term's variable is nil, abort with "Invalid use of /, I don't understand the variable '" then the other term's phrase then "'." and the rider; exit.`
 
 `Add an intermediate given "ratio_" and the rider's token's first.`
 
@@ -8126,7 +8126,7 @@ Note that literals can have possessives; for example...
 
 `Destroy the monikettes.`
 
-`If the routine is nil, abort with "I don't know how to '_" then the moniker then "_'._" and the byte pointer; exit.`
+`If the routine is nil, abort with "I don't know how to '" then the moniker then "'." and the byte pointer; exit.`
 
 `Add a fourth fragment given the call internal tag and the routine.`
 
@@ -8147,9 +8147,9 @@ Note that literals can have possessives; for example...
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "by", abort with "I really prefer the phrase 'divided BY'._" and the rider; exit.`
+`If the rider's token is not "by", abort with "I really prefer the phrase 'divided BY'." and the rider; exit.`
 
-`If the expression's variable is nil, abort with "Invalid 'divided by', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+`If the expression's variable is nil, abort with "Invalid 'divided by', I don't understand the variable '" then the expression's phrase then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -8157,7 +8157,7 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "Invalid 'divided by', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "Invalid 'divided by', I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `Add an intermediate given the expression's type name and the rider's token's first.`
 
@@ -8174,7 +8174,7 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the expression's variable is nil, abort with "Invalid 'minus', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+`If the expression's variable is nil, abort with "Invalid 'minus', I don't understand the variable '" then the expression's phrase then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -8182,7 +8182,7 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "Invalid 'minus', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "Invalid 'minus', I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `Add an intermediate given the expression's type name and the rider's token's first.`
 
@@ -8199,7 +8199,7 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the expression's variable is nil, abort with "Invalid 'plus', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+`If the expression's variable is nil, abort with "Invalid 'plus', I don't understand the variable '" then the expression's phrase then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -8207,7 +8207,7 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "Invalid 'plus', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "Invalid 'plus', I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `Add an intermediate given the expression's type name and the rider's token's first.`
 
@@ -8224,7 +8224,7 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the expression's variable is nil, abort with "Invalid 'then', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+`If the expression's variable is nil, abort with "Invalid 'then', I don't understand the variable '" then the expression's phrase then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -8232,7 +8232,7 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "Invalid 'then', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "Invalid 'then', I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `Add an intermediate given "string_" and the rider's token's first.`
 
@@ -8251,7 +8251,7 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the expression's variable is nil, abort with "Invalid 'times', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+`If the expression's variable is nil, abort with "Invalid 'times', I don't understand the variable '" then the expression's phrase then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -8259,7 +8259,7 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "Invalid 'times', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "Invalid 'times', I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `Add an intermediate given the expression's type name and the rider's token's first.`
 
@@ -8298,7 +8298,7 @@ Note that literals can have possessives; for example...
 
 `Destroy the monikettes.`
 
-`abort with "I don't know how to '_" then the moniker then "_'._" and the locus.`
+`abort with "I don't know how to '" then the moniker then "'." and the locus.`
 
 
 198. We need this guy for help with expressions involving "_then":
@@ -8306,7 +8306,7 @@ Note that literals can have possessives; for example...
 
 `To convert a term for concatenation given a rider: \ used for right-side THEN operand `
 
-`If the term's variable is nil, abort with "I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `If the term's type can be reduced to "_string", exit.`
 
@@ -8374,11 +8374,11 @@ Note that literals can have possessives; for example...
 
 `If the rider's token is "_privatize", compile the next statement given the rider (privatize); exit.`
 
-`If the rider's token is not the start of any statement, abort with "I was expecting a statement here, but I found '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not the start of any statement, abort with "I was expecting a statement here, but I found '" then the rider's token then "'." and the rider; exit.`
 
 `Compile the next statement given the rider (other).`
 
-`If the rider's token is not the period byte, abort with "You seem to have forgotten a period around here._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "You seem to have forgotten a period around here." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -8404,11 +8404,11 @@ Note that literals can have possessives; for example...
 
 `Destroy the monikettes.`
 
-`If the routine is nil, abort with "I need a decider with the words '_" then the moniker then "_'._" and the rider; exit.`
+`If the routine is nil, abort with "I need a decider with the words '" then the moniker then "'." and the rider; exit.`
 
 `If the routine's decider flag is not set, abort with "Yeah, I'm going to need a decider here, ok?_" and the rider; exit.`
 
-`If the rider's token is not the comma byte, abort with "I expected a comma around here, but I found '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not the comma byte, abort with "I expected a comma around here, but I found '" then the rider's token then "'." and the rider; exit.`
 
 `Add a fragment given the call internal tag and the routine.`
 
@@ -8426,7 +8426,7 @@ Note that literals can have possessives; for example...
 
 `If the rider's token is the semi-colon byte, move the rider (compiler rules); repeat.`
 
-`If the rider's token is not the period byte, abort with "I'm thinking period, but you've got '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "I'm thinking period, but you've got '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -8451,13 +8451,13 @@ Note that literals can have possessives; for example...
 
 `Append the monikette to the monikettes.`
 
-`If the monikette's string is "_can't", reverse the flag; put "_can_" into the monikette's string; repeat.`
+`If the monikette's string is "_can't", reverse the flag; put "can_" into the monikette's string; repeat.`
 
-`If the monikette's string is "_cannot", reverse the flag; put "_can_" into the monikette's string; repeat.`
+`If the monikette's string is "_cannot", reverse the flag; put "can_" into the monikette's string; repeat.`
 
-`If the monikette's string is "_nothing", reverse the flag; put "_something_" into the monikette's string; repeat.`
+`If the monikette's string is "_nothing", reverse the flag; put "something_" into the monikette's string; repeat.`
 
-`If the monikette's string is "_won't", reverse the flag; put "_will_" into the monikette's string; repeat.`
+`If the monikette's string is "_won't", reverse the flag; put "will_" into the monikette's string; repeat.`
 
 `If the monikette's string ends with "_n't", reverse the flag; remove trailing bytes from the monikette's string given 3; repeat.`
 
@@ -8510,13 +8510,13 @@ Note that literals can have possessives; for example...
 
 `If the rider's token is "_point", compile the next statement given the rider (point); exit.`
 
-`If the rider's token is "_if", abort with "Nested 'if' statements are a sure sign of unclear thinking. Think again._" and the rider; exit.`
+`If the rider's token is "_if", abort with "Nested 'if' statements are a sure sign of unclear thinking. Think again." and the rider; exit.`
 
-`If the rider's token is "_privatize", abort with "The 'privatize' statement cannot be used here._" and the rider; exit.`
+`If the rider's token is "_privatize", abort with "The 'privatize' statement cannot be used here." and the rider; exit.`
 
-`If the rider's token is "_loop", abort with "Looping inside an 'if' statement is a good way to lose your lunch._" and the rider; exit.`
+`If the rider's token is "_loop", abort with "Looping inside an 'if' statement is a good way to lose your lunch." and the rider; exit.`
 
-`If the rider's token is "_employ", abort with "'Employ' must be the first and only imperative in a routine._" and the rider; exit.`
+`If the rider's token is "_employ", abort with "'Employ' must be the first and only imperative in a routine." and the rider; exit.`
 
 `Compile the next statement given the rider (call - internal).`
 
@@ -8557,9 +8557,9 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the expression's variable is nil, abort with "Invalid 'say', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+`If the expression's variable is nil, abort with "Invalid 'say', I don't understand the variable '" then the expression's phrase then "'." and the rider; exit.`
 
-`If the expression's type cannot be reduced to "_flag", abort with "I need a definite 'yes' or 'no' here._" and the rider; exit.`
+`If the expression's type cannot be reduced to "_flag", abort with "I need a definite 'yes' or 'no' here." and the rider; exit.`
 
 `Add a fragment given the load eax tag and the expression's variable.`
 
@@ -8583,7 +8583,7 @@ Note that literals can have possessives; for example...
 
 `Destroy the monikettes.`
 
-`abort with "I don't know how to '_" then the moniker then "_'._" and the rider.`
+`abort with "I don't know how to '" then the moniker then "'." and the rider.`
 
 
 
@@ -8594,7 +8594,7 @@ Note that literals can have possessives; for example...
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any hex literal, abort with "I need some machine code here, I found '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not any hex literal, abort with "I need some machine code here, I found '" then the rider's token then "'." and the rider; exit.`
 
 `Add a fragment given the intel tag.`
 
@@ -8620,9 +8620,9 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the expression's variable is nil, abort with "Invalid 'push', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+`If the expression's variable is nil, abort with "Invalid 'push', I don't understand the variable '" then the expression's phrase then "'." and the rider; exit.`
 
-`If the expression's type is not value pushable, abort with "Values of type '_" then the expression's type's name then "_' can't be pushed._" and the rider; exit.`
+`If the expression's type is not value pushable, abort with "Values of type '" then the expression's type's name then "' can't be pushed." and the rider; exit.`
 
 `Add a fragment given the push value tag and the expression's variable.`
 
@@ -8665,7 +8665,7 @@ Note that literals can have possessives; for example...
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any string literal, abort with "Gee, I was expecting a quoted entry name, but I found '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not any string literal, abort with "Gee, I was expecting a quoted entry name, but I found '" then the rider's token then "'." and the rider; exit.`
 
 `Put the rider's token into another string.`
 
@@ -8683,7 +8683,7 @@ Note that literals can have possessives; for example...
 
 `If the term is empty, exit.`
 
-`If the term's variable is nil, abort with "I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `Add another fragment given the save eax tag and the term's variable.`
 
@@ -8777,9 +8777,9 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the expression's variable is nil, abort with "I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+`If the expression's variable is nil, abort with "I don't understand the variable '" then the expression's phrase then "'." and the rider; exit.`
 
-`If the expression's type is not value pushable, abort with "'_" then the expression's type's name then "_' can't be passed properly._" and the rider; exit.`
+`If the expression's type is not value pushable, abort with "'" then the expression's type's name then "' can't be passed properly." and the rider; exit.`
 
 `If the rider's token is "_and", compile the next statement given the rider (call - with clause).`
 
@@ -8794,9 +8794,9 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
-`If the term's type is not value pushable, abort with "A simple 1, 2, or 4-byte variable is required in the 'returning' clause._" and the rider.`
+`If the term's type is not value pushable, abort with "A simple 1, 2, or 4-byte variable is required in the 'returning' clause." and the rider.`
 
 
 
@@ -8832,9 +8832,9 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the expression's variable is nil, abort with "I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
+`If the expression's variable is nil, abort with "I don't understand the variable '" then the expression's phrase then "'." and the rider; exit.`
 
-`If the expression's type cannot be reduced to "_pointer", abort with "I really need a pointer type in this CALL statement._" and the rider; exit.`
+`If the expression's type cannot be reduced to "_pointer", abort with "I really need a pointer type in this CALL statement." and the rider; exit.`
 
 `If the rider's token is "_with", compile the next statement given the rider (call - with clause).`
 
@@ -8844,7 +8844,7 @@ Note that literals can have possessives; for example...
 
 `If the term is empty, exit.`
 
-`If the term's variable is nil, abort with "I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
 `Add another fragment given the save eax tag and the term's variable.`
 
@@ -8860,17 +8860,17 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
-`If the term's kind is "_literal", abort with "You've got the wrong kind of variable here._" and the rider.`
+`If the term's kind is "_literal", abort with "You've got the wrong kind of variable here." and the rider.`
 
-`If the term's type's length is not 4, abort with "You've got the wrong kind of variable here._" and the rider.`
+`If the term's type's length is not 4, abort with "You've got the wrong kind of variable here." and the rider.`
 
-`If the rider's token is not "to", abort with "I was expecting the word 'to', but found '" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not "to", abort with "I was expecting the word 'to', but found '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "routine", abort with "I was expecting the word 'routine' but found '" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not "routine", abort with "I was expecting the word 'routine' but found '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -8882,7 +8882,7 @@ Note that literals can have possessives; for example...
 
 `Find a routine given the moniker and the routine index.`
 
-`If the routine is nil, abort with "I can't find the '_" then the moniker then "_' routine to which you are trying to point._" and the rider; exit.`
+`If the routine is nil, abort with "I can't find the '" then the moniker then "' routine to which you are trying to point." and the rider; exit.`
 
 `Add a fragment given the routine address tag and the routine.`
 
@@ -8900,7 +8900,7 @@ Note that literals can have possessives; for example...
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not the period byte, abort with "You seem to have forgotten a period around here._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "You seem to have forgotten a period around here." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -8918,9 +8918,9 @@ Note that literals can have possessives; for example...
 
 `If the compiler's abort flag is set, exit.`
 
-`If the term's variable is nil, abort with "Invalid 'privatize', I don't understand the variable '_" then the term's phrase then "_'._" and the rider; exit.`
+`If the term's variable is nil, abort with "Invalid 'privatize', I don't understand the variable '" then the term's phrase then "'." and the rider; exit.`
 
-`If the term's kind is not "_parameter", abort with "You can only privatize parameters._" and the rider; exit.`
+`If the term's kind is not "parameter", abort with "You can only privatize parameters." and the rider; exit.`
 
 `Add a local to the current routine's locals given "local_" and the rider's token's first.`
 
@@ -8938,7 +8938,7 @@ Note that literals can have possessives; for example...
 
 `Add several fragments given "put_" and the term's variable and "_into_" and the local and the rider's token's first.`
 
-`If the rider's token is not the period byte, abort with "You seem to have forgotten a period around here._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "You seem to have forgotten a period around here." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -9028,14 +9028,14 @@ Note that literals can have possessives; for example...
 
 `If the rider's token is any monikette string, compile the routine reference given the rider (monikette string); repeat.`
 
-`abort with "'_" then the rider's token then "' is not valid in an employ statement._" and the rider.`
+`abort with "'" then the rider's token then "' is not valid in an employ statement." and the rider.`
 
 
 `To compile a routine reference given a rider (decide):`
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "if", abort with "We always say DECIDE IF, not DECIDE and then '_" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not "if", abort with "We always say DECIDE IF, not DECIDE and then '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -9067,7 +9067,7 @@ Note that literals can have possessives; for example...
 
 `If the flag is not set, compile the routine reference given the rider (definite article).`
 
-`If the rider's token is not any possessive, abort with "I was expecting an 's, but found '" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not any possessive, abort with "I was expecting an 's, but found '" then the rider's token then "'." and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -9075,13 +9075,13 @@ Note that literals can have possessives; for example...
 
 `Add another monikette to the routine reference given "'s " then the name.`
 
-`If the rider's token is not "into", abort with "I was expecting the word 'into', but found '" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not "into", abort with "I was expecting the word 'into', but found '" then the rider's token then "'." and the rider; exit.`
 
 `Add a third monikette to the routine reference given "into".`
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'._" and the rider; exit.`
+`If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'." and the rider; exit.`
 
 `Compile the routine reference given the rider (indefinite article).`
 
@@ -9096,7 +9096,7 @@ Note that literals can have possessives; for example...
 
 `Find a type and a nickname given the name.`
 
-`If the type is nil, abort with "Invalid employ statement, I don't understand '_" then the name then "_'._" and the rider; exit.`
+`If the type is nil, abort with "Invalid employ statement, I don't understand '" then the name then "'." and the rider; exit.`
 
 `Add a monikette to the routine reference given the type.`
 
@@ -9697,7 +9697,7 @@ And that's it for this step. Next time, we'll give everyone (who needs one) a pe
 
 
 
-232. You hopefully recall that we only need five of the many possible sections that a Windows Portable Executable might have: The DOS Header, the PE Header, the Import Section, the Data Section, and the Code Section. We'll deal with the two Headers later. In the meantime, we didn't want to waste a good word like "_section_" on Windows' crap, so we decided to call those latter three sections "_boroughs._" (A borough is an administrative division of a large city.) Here are the types we'll be needing in this step; put them back in:
+232. You hopefully recall that we only need five of the many possible sections that a Windows Portable Executable might have: The DOS Header, the PE Header, the Import Section, the Data Section, and the Code Section. We'll deal with the two Headers later. In the meantime, we didn't want to waste a good word like "_section_" on Windows' crap, so we decided to call those latter three sections "_boroughs." (A borough is an administrative division of a large city.) Here are the types we'll be needing in this step; put them back in:
 
 
 `A borough has a base address, a length and a size.`
@@ -10382,7 +10382,7 @@ Next up: TRANSMOGRIFICATION! Mwa-hah-hah-hah (evil laugh).
 
 `If the fragment's variable is nil, abort with "Internal error - transmogrify a fragment (increment)"; exit.`
 
-`If the fragment's variable's kind is not "_scratch", abort with "Internal error 2 - transmogrify a fragment (increment)"; exit.`
+`If the fragment's variable's kind is not "scratch", abort with "Internal error 2 - transmogrify a fragment (increment)"; exit.`
 
 `Attach $8185 and the fragment's variable's offset and the fragment's number to the fragment's code. \ add [ebp+the fragment's variable's offset],the fragment's number`
 
@@ -10506,7 +10506,7 @@ If you're wondering why we only need 18 fragment transmogrifiers when we have 21
 
 `If the variable's kind is "_scratch", attach $8B95 and the variable's offset to the hex string; exit. \ mov edx,[ebp+the variable's offset]`
 
-`If the variable's kind is not "_parameter", abort with "Internal error - attach address loading code to a hex string given a variable"; exit.`
+`If the variable's kind is not "parameter", abort with "Internal error - attach address loading code to a hex string given a variable"; exit.`
 
 `If the variable's by-value flag is set, attach $8D95 and the variable's offset to the hex string; exit. \ lea edx,[ebp+the variable's offset]`
 
@@ -10578,9 +10578,9 @@ If you're wondering why we only need 18 fragment transmogrifiers when we have 21
 
 `Find another routine given the routine's employs moniker and the routine index.`
 
-`If the other routine is nil, abort with "I can't find the '_" then the routine's employs moniker then "_' routine you're trying to employ._" and the routine's locus; exit.`
+`If the other routine is nil, abort with "I can't find the '" then the routine's employs moniker then "' routine you're trying to employ." and the routine's locus; exit.`
 
-`If the other routine's address is -1, abort with "Recursive reference in employ clause._" and the routine's locus; exit.`
+`If the other routine's address is -1, abort with "Recursive reference in employ clause." and the routine's locus; exit.`
 
 `Get the address given the other routine.`
 
@@ -10974,7 +10974,7 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 
 `To initialize a pe header (code section):`
 
-`Copy bytes from "_code  "_'s first to the pe header's code section's name's whereabouts for 6.`
+`Copy bytes from "_code  "'s first to the pe header's code section's name's whereabouts for 6.`
 
 `Put the code borough's length into the pe header's code section's sizeinbytes.`
 
@@ -10989,7 +10989,7 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 
 `To initialize a pe header (data section):`
 
-`Copy bytes from "_data  "_'s first to the pe header's data section's name's whereabouts for 6.`
+`Copy bytes from "_data  "'s first to the pe header's data section's name's whereabouts for 6.`
 
 `Put the data borough's length into the pe header's data section's sizeinbytes.`
 
@@ -11013,7 +11013,7 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 
 `To initialize a pe header (import section):`
 
-`Copy bytes from "_idata "_'s first to the pe header's idata section's name's whereabouts for 6.`
+`Copy bytes from "_idata "'s first to the pe header's idata section's name's whereabouts for 6.`
 
 `Put the import borough's length into the pe header's idata section's sizeinbytes.`
 
