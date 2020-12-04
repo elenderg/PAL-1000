@@ -6395,7 +6395,7 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 `If the type's fields' first's type is nil, abort with "Internal error 2 - add the forget routine for a type (things)"; exit.`
 
-`put "destroy [_" then the type's name then "]" into a moniker.`
+`put "destroy [" then the type's name then "]" into a moniker.`
 
 `If the moniker is in the routine index, exit.`
 
@@ -6428,7 +6428,7 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 `If the compiler's abort flag is set, exit.`
 
-`put "destroy [_" then the type's name then "]" into a moniker.`
+`put "destroy [" then the type's name then "]" into a moniker.`
 
 `If the moniker is in the routine index, exit.`
 
@@ -6538,7 +6538,7 @@ And the first generated "_allocate_" routine in the listing is this one...
 `/variable/parameter/no/entry/entry/entry/entry/00000000/no/1/no////`
 
 
-Followed by the associated "_deallocate_" and "destroy_" routines:
+Followed by the associated "`deallocate`" and "`destroy`" routines:
 
 
 `/routine/deallocate [entry]/no/no/no/no//0/0/00000000/`
@@ -7211,7 +7211,7 @@ After dealing with possible special cases ("`alternate wordings`" and "`employs`
 `A prototype string has a first byte pointer and a last byte pointer.`
 
 
-A term is either a literal, a new local variable, or a reference to a previously defined variable. A numeric term may have a minus or plus sign in front of it. We call these "_negated_" and "posigated_" terms, respectively. A record term may be followed by any number of possessives indicating fields within the record (like "_box's left" or "rider's token's first").
+A term is either a literal, a new local variable, or a reference to a previously defined variable. A numeric term may have a minus or plus sign in front of it. We call these "`negated`" and "`posigated`" terms, respectively. A record term may be followed by any number of possessives indicating fields within the record (like "`box's left`" or "`rider's token's first`").
 
 
 An expression is two or more terms separated by the infix operators plus, minus, times, divided by and then. We say that "_an expression is a term_" because the result of an expression (after execution) is really just another term.
@@ -7397,7 +7397,7 @@ An expression is two or more terms separated by the infix operators plus, minus,
 `If the flag is not set, put "put the " then the variable's literal's name then " into the " then the variable's name then ". " into the variable's initializer string.`
 
 
-If the variable is a global, and the programmer wants us to initialize it with a literal value, we're going to need a "_put" or "convert_" routine to actually fill it in at run time, so we make sure we've got such a routine now. If we find one, we take a moment to compile its body, and then we fill in the variable's "_initializer string" with the Plain English sentence that will do the initializing. "_Global initializer_" sentences are compiled in the next step.
+If the variable is a global, and the programmer wants us to initialize it with a literal value, we're going to need a "`put`" or "`convert`" routine to actually fill it in at run time, so we make sure we've got such a routine now. If we find one, we take a moment to compile its body, and then we fill in the variable's "`initializer string`" with the Plain English sentence that will do the initializing. "`Global initializer`" sentences are compiled in the next step.
 
 
 181. Here are the seven helpers we need to find the right routines to call:
@@ -8047,7 +8047,7 @@ Note that literals can have possessives; for example...
 `Say yes.`
 
 
-194. And this is the guy who deals with "_type overrides_" (as in "_put 0 as a pointer into the other pointer", which coerces the number zero to a pointer type literal):
+194. And this is the guy who deals with "`type overrides`" (as in "`put 0 as a pointer into the other pointer`", which coerces the number zero to a pointer type literal):
 
 
 `To compile a term given a rider (as part):`
@@ -8307,7 +8307,7 @@ Note that literals can have possessives; for example...
 `abort with "I don't know how to '" then the moniker then "'." and the locus.`
 
 
-198. We need this guy for help with expressions involving "_then":
+198. We need this guy for help with expressions involving "`then`":
 
 
 `To convert a term for concatenation given a rider: \ used for right-side THEN operand `
@@ -8367,7 +8367,7 @@ Note that literals can have possessives; for example...
 
   
 
-201. Some sentences start with a Plain English keyword (like "_if" or "loop"); others don't:
+201. Some sentences start with a Plain English keyword (like "`if`" or "`loop`"); others don't:
 
 
 `To compile the next statement given a rider:`
@@ -9009,7 +9009,7 @@ Note that literals can have possessives; for example...
 
 `Destroy the monikettes. `
 
-218. EMPLOY and POINT statements explicitly refer to other routines, and some terms implicitly refer to other routines (like "_a box's center_" which is an implicit reference to the function-routine "_To put a box's center into a spot.") A routine reference is a list of monikettes that refers to such a routine, and these are the routines we use to compile them:
+218. EMPLOY and POINT statements explicitly refer to other routines, and some terms implicitly refer to other routines (like "`a box's center`" which is an implicit reference to the function-routine "`To put a box's center into a spot.`") A routine reference is a list of monikettes that refers to such a routine, and these are the routines we use to compile them:
 
 
 `To compile a routine reference given a rider:`
@@ -9703,7 +9703,7 @@ And that's it for this step. Next time, we'll give everyone (who needs one) a pe
 
 
 
-232. You hopefully recall that we only need five of the many possible sections that a Windows Portable Executable might have: The DOS Header, the PE Header, the Import Section, the Data Section, and the Code Section. We'll deal with the two Headers later. In the meantime, we didn't want to waste a good word like "_section_" on Windows' crap, so we decided to call those latter three sections "_boroughs." (A borough is an administrative division of a large city.) Here are the types we'll be needing in this step; put them back in:
+232. You hopefully recall that we only need five of the many possible sections that a Windows Portable Executable might have: The DOS Header, the PE Header, the Import Section, the Data Section, and the Code Section. We'll deal with the two Headers later. In the meantime, we didn't want to waste a good word like "_section_" on Windows' crap, so we decided to call those latter three sections "`boroughs.`" (A borough is an administrative division of a large city.) Here are the types we'll be needing in this step; put them back in:
 
 
 `A borough has a base address, a length and a size.`
@@ -10980,7 +10980,7 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 
 `To initialize a pe header (code section):`
 
-`Copy bytes from "_code  "'s first to the pe header's code section's name's whereabouts for 6.`
+`Copy bytes from "code  "'s first to the pe header's code section's name's whereabouts for 6.`
 
 `Put the code borough's length into the pe header's code section's sizeinbytes.`
 
@@ -11019,7 +11019,7 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 
 `To initialize a pe header (import section):`
 
-`Copy bytes from "_idata "'s first to the pe header's idata section's name's whereabouts for 6.`
+`Copy bytes from "idata "'s first to the pe header's idata section's name's whereabouts for 6.`
 
 `Put the import borough's length into the pe header's idata section's sizeinbytes.`
 
@@ -11337,39 +11337,24 @@ TA DA! We did it! A complete Plain English compiler written entirely in Plain En
 Run it. Congratulations! It's a girl! And you now have three healthy generations of the CAL running. ALT-TAB to see them all in a bunch.
 
 
-If you want to see the third-generation Portable Executable we just generated, open the daughter's directory, find the "_.exe_" in there, and open it (as a dump). There she is (a real "_binary beauty") starting with the lovely DOS header:
+If you want to see the third-generation Portable Executable we just generated, open the daughter's directory, find the "_.exe_" in there, and open it (as a dump). There she is (a real "_binary beauty_") starting with the lovely DOS header:
 
 
 `00000000  4D 5A 00 00 00 00 00 00 00 00 00 00 00 00 00 00  MZ..............`
-
 `00000010  00 00 00 00 00 00 00 00 40 00 00 00 00 00 00 00  ........@.......`
-
 `00000020  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
-
 `00000030  00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00  ................`
-
 `00000040  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
-
 `00000050  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
-
 `00000060  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
-
 `00000070  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
-
 `00000080  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
-
 `00000090  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
-
 `000000A0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
-
 `000000B0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
-
 `000000C0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
-
 `000000D0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
-
 `000000E0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
-
 `000000F0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................`
 
 
