@@ -25,7 +25,7 @@ So let's get to it.
 6. Now it's time to geld our boy, so he can grow a new pair, bit by bit. In the Compiler file, use the Select All command followed by the Comment command (`CTRL-T`) to "_comment out_" the whole file. All the text will turn a delightful shade of blue.
 
 
-The CAL's son will no longer compile or run because certain types and routines that are defined in the compiler file are referenced elsewhere in the program. So we have to put those things back. And while we're doing that, we're going to put most of the compiler's "_infrastructure_" and "testing_" routines back as well.
+The CAL's son will no longer compile or run because certain types and routines that are defined in the compiler file are referenced elsewhere in the program. So we have to put those things back. And while we're doing that, we're going to put most of the compiler's "_infrastructure_" and "_testing_" routines back as well.
 
 
 You can use the usual "_find_" procedure (`CTRL-HOME`, `CTRL-F`, start typing) to locate the stuff we need to put back, drag down the left edge of the work area to select the text, then use the Uncomment command (or `CTRL-U`) to do the deed. You should read over everything we put back, and ask questions about anything that you don't understand.
@@ -247,7 +247,7 @@ Now let's do it.
 `Append the variable's name to the buffer (with separator).`
 
 
-12. Woohoo! Done with the "_A"s.
+12. Woohoo! Done with the "_A_"s.
 
 
 Now we need to put our tags back, which are splattered around like the timers. There are 22 of them. Look for "_is a tag equal to_" and use the same `END SHIFT-HOME CTRL-U` keyboard sequence to make quick work of putting them back. Don't forget the tag type, shown here at the top:
@@ -304,7 +304,7 @@ Now we need to put our tags back, which are splattered around like the timers. T
 While you're doing that, think about this: those 22 tags define the only things the compiler generates machine code to do. Which means the whole CAL (and every program written with the CAL) runs on just 22 machine-code "_instructions." Wouldn't it be great if Intel built CPUs with this (and Aunt Tilly) in mind? Fewer transistors, lower costs, and no cooling fans necessary!
 
 
-13. Done with the "_B"s. And that brings us to the heart of the whole compiler:
+13. Done with the "_B_"s. And that brings us to the heart of the whole compiler:
 
 
 `To compile a directory:`
@@ -421,7 +421,7 @@ Isn't it handy to be able to see, at a glance, which parts of the program are co
 
 There's one "_entry_" for each DLL routine that we call.
 
-17. Now we're up to the "_F"s. Let's put back the finalize routine:
+17. Now we're up to the "_F_"s. Let's put back the finalize routine:
 
 
 `To finalize the compiler:`
@@ -1161,7 +1161,7 @@ These routines let us say "_the compiler's exe path_" and "the compiler's listin
 `The routines are some routines.`
 
 
-33. Almost there. Up to the "_S"s. Let's not forget the source code! Put these back in:
+33. Almost there. Up to the "_S_"s. Let's not forget the source code! Put these back in:
 
 
 `A source file is a thing with a path and a buffer.`
@@ -1331,7 +1331,7 @@ So where were we? Ah, yes.
 
 `To compile a directory (start):`
 
-`Show status "Starting...".`
+`Show status "starting...".`
 
 `Finalize the compiler.`
 
@@ -1407,7 +1407,7 @@ We "_Finalize the compiler_" to clean up anything that might be hanging around f
 
 `List the imports under "IMPORTS:" in the compiler's listing.`
 
-`List the source files under "SOURCE FILES:" in the compiler's listing.`
+`List the source files under "sOURCE FILES:" in the compiler's listing.`
 
 `List the timers under "TIMERS:" in the compiler's listing.`
 
@@ -1903,7 +1903,7 @@ Now that we've got all our source files in memory, it's time to see what they ha
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "Scanning...".`
+`Show status "scanning...".`
 
 `Start the scanning timer.`
 
@@ -2328,9 +2328,9 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `To move a rider returning an error string (code rules - validate string):`
 
-`If the rider's token's length is less than 2, put "Strings need to end with '""'." into the error string; exit.`
+`If the rider's token's length is less than 2, put "strings need to end with '""'." into the error string; exit.`
 
-`If the rider's token's last's target is not the double-quote byte, put "Strings need to end with '""'." into the error string; exit.`
+`If the rider's token's last's target is not the double-quote byte, put "strings need to end with '""'." into the error string; exit.`
 
 
 ...is able to weed out mal-formed remarks, strings, and qualifiers right out of the gate.
@@ -4074,7 +4074,7 @@ We use the "_cooking flag_" to make sure we don't run into ourselves when we're 
 
 `If the compiler's abort flag is set, exit.`
 
-`If the type cannot be reduced to "number", abort with "Scales are only allowed on number types." and the type's locus; exit.`
+`If the type cannot be reduced to "number", abort with "scales are only allowed on number types." and the type's locus; exit.`
 
 
 `To check for invalid optional info on a type (target):`
