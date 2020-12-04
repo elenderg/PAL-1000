@@ -63,7 +63,7 @@ Now let's do it.
 
 `Extract a file name from the compiler's abort path.`
 
-`Prepend "Error in " then the file name then "_. "_ to the compiler's abort message.`
+`Prepend "Error in " then the file name then ". " to the compiler's abort message.`
 
 
 `To abort with a string and a rider:`
@@ -714,9 +714,9 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `To list an index in a buffer:`
 
-`append "/_" then the index's used bucket count then "_ buckets" to the buffer (with separator).`
+`append "/_" then the index's used bucket count then " buckets" to the buffer (with separator).`
 
-`Append the index's count then "_ refers" to the buffer (with separator).`
+`Append the index's count then " refers" to the buffer (with separator).`
 
 `Advance the buffer (twice).`
 
@@ -1099,7 +1099,7 @@ Again, there's no global list of parameters because they're kept on separate lis
 
 `Remove any trailing backslash from the designator.`
 
-`Put the compiler's directory then the designator then "_.exe_" into the path.`
+`Put the compiler's directory then the designator then ".exe_" into the path.`
 
 
 `To put the compiler's listing path into a path:`
@@ -1108,7 +1108,7 @@ Again, there's no global list of parameters because they're kept on separate lis
 
 `Remove any trailing backslash from the designator.`
 
-`Put the compiler's directory then the designator then "_.lst_" into the path.`
+`Put the compiler's directory then the designator then ".lst_" into the path.`
 
 
 These routines let us say "_the compiler's exe path_" and "_the compiler's listing path_" as if those two things were fields in the compiler record. Kind of like "_derived data_" or a "_calculated field_" in a database.
@@ -3364,7 +3364,7 @@ And that's it for scanning types.
 
 `Move the rider (compiler rules).`
 
-`Put "_~inline " then the global's name then "_ type_" into a name.`
+`Put "_~inline " then the global's name then " type_" into a name.`
 
 `Put the name then "_s_" into a plural name.`
 
@@ -3390,7 +3390,7 @@ And that's it for scanning types.
 
 `If the compiler's abort flag is set, exit.`
 
-`Put "_~inline " then the global's name then "_ type_" into a name.`
+`Put "_~inline " then the global's name then " type_" into a name.`
 
 `Put the name then "_s_" into a plural name.`
 
@@ -3864,11 +3864,11 @@ Okay, you know the drill.
 
 `\  add thing record `
 
-`Put the type's name then "_ record_" into a name.`
+`Put the type's name then " record_" into a name.`
 
-`Put the type's name then "_ records_" into a plural name.`
+`Put the type's name then " records_" into a plural name.`
 
-`Put the base type's name then "_ record_" into a base name.`
+`Put the base type's name then " record_" into a base name.`
 
 `Add a record type to the types given the name and the plural name and the base name.`
 
@@ -5516,7 +5516,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `If the compiler's abort flag is set, exit.`
 
-`Prepend "the "_ to the name.`
+`Prepend "the " to the name.`
 
 `Add a monikette to the monikettes given the name.`
 
@@ -6223,9 +6223,9 @@ So we have the compiler add those routines as if they were in the programmer's s
 
 `append "~finalize a " then the type's name to the routine's header string.`
 
-`append "intel $50. "_ to the routine's body string. \ push eax`
+`append "intel $50. " to the routine's body string. \ push eax`
 
-`append "unassign the string's first. "_ to the routine's body string.`
+`append "unassign the string's first. " to the routine's body string.`
 
 `append "intel $58._" to the routine's body string. \ pop eax`
 
@@ -6246,7 +6246,7 @@ So we have the compiler add those routines as if they were in the programmer's s
 
 `append "~finalize a " then the type's name to the routine's header string.`
 
-`append "intel $50. "_ to the routine's body string. \ push eax`
+`append "intel $50. " to the routine's body string. \ push eax`
 
 `Loop.`
 
@@ -6256,7 +6256,7 @@ So we have the compiler add those routines as if they were in the programmer's s
 
 `If the field's type should not be finalized, repeat.`
 
-`append "~finalize the " then the type's name then "_'s " then the field's name then "_. "_ to the routine's body string.`
+`append "~finalize the " then the type's name then "_'s " then the field's name then ". " to the routine's body string.`
 
 `Repeat.`
 
@@ -6316,9 +6316,9 @@ Note the tildes ("~") in the routine names; we don't expect the programmer will 
 
 `append "allocate memory for a " then the type's name to the routine's header string.`
 
-`append "assign the " then the type's name then "_ given " to the routine's body string.`
+`append "assign the " then the type's name then " given " to the routine's body string.`
 
-`Append the type's target type's length then "_._" to the routine's body string.`
+`Append the type's target type's length then "._" to the routine's body string.`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -6347,11 +6347,11 @@ Note that there is no tilde in the routine name; we do expect the programmer to 
 
 `append "deallocate a " then the type's name to the routine's header string.`
 
-`append "if the " then the type's name then "_ is nil, exit. "_ to the routine's body string.`
+`append "if the " then the type's name then " is nil, exit. " to the routine's body string.`
 
-`If the type's target type should be finalized, append "~finalize the " then the type's name then "_'s target. "_ to the routine's body string.`
+`If the type's target type should be finalized, append "~finalize the " then the type's name then "_'s target. " to the routine's body string.`
 
-`append "unassign the " then the type's name then "_._" to the routine's body string.`
+`append "unassign the " then the type's name then "._" to the routine's body string.`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -6397,17 +6397,17 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 `append "destroy a " then the type's name to the routine's header string.`
 
-`append "if the " then the type's name then "_'s first is nil, exit. "_ to the routine's body string.`
+`append "if the " then the type's name then "_'s first is nil, exit. " to the routine's body string.`
 
 `Put the type's fields' first's type's name into a name.`
 
-`append "put the " then the type's name then "_'s first into a " then the name then "_. "_ to the routine's body string.`
+`append "put the " then the type's name then "_'s first into a " then the name then ". " to the routine's body string.`
 
-`append "remove the " then the name then "_ from the " then the type's name then "_. "_ to the routine's body string.`
+`append "remove the " then the name then " from the " then the type's name then ". " to the routine's body string.`
 
-`append "destroy the " then the name then "_. "_ to the routine's body string.`
+`append "destroy the " then the name then ". " to the routine's body string.`
 
-`append "repeat. "_ to the routine's body string.`
+`append "repeat. " to the routine's body string.`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -6430,11 +6430,11 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 `append "destroy a " then the type's name to the routine's header string.`
 
-`append "if the " then the type's name then "_ is nil, exit. "_ to the routine's body string.`
+`append "if the " then the type's name then " is nil, exit. " to the routine's body string.`
 
-`If the type's target type can be reduced to "_pointer", append "destroy the " then the type's name then "_'s target. "_ to the routine's body string.`
+`If the type's target type can be reduced to "_pointer", append "destroy the " then the type's name then "_'s target. " to the routine's body string.`
 
-`If the type's target type can be reduced to "_things", append "destroy the " then the type's name then "_'s target. "_ to the routine's body string.`
+`If the type's target type can be reduced to "_things", append "destroy the " then the type's name then "_'s target. " to the routine's body string.`
 
 `Loop.`
 
@@ -6446,11 +6446,11 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 `If the field's type should not be forgotten, repeat.`
 
-`append "destroy the " then the type's name then "_'s " then the field's name then "_. "_ to the routine's body string.`
+`append "destroy the " then the type's name then "_'s " then the field's name then ". " to the routine's body string.`
 
 `Repeat.`
 
-`append "deallocate the " then the type's name then "_. "_ to the routine's body string.`
+`append "deallocate the " then the type's name then ". " to the routine's body string.`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -7386,9 +7386,9 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 `Compile the body of the routine.`
 
-`If the flag is set, put "_convert the " then the variable's literal's name then "_ to the " then the variable's name then "_. "_ into the variable's initializer string.`
+`If the flag is set, put "_convert the " then the variable's literal's name then " to the " then the variable's name then ". " into the variable's initializer string.`
 
-`If the flag is not set, put "_put the " then the variable's literal's name then "_ into the " then the variable's name then "_. "_ into the variable's initializer string.`
+`If the flag is not set, put "_put the " then the variable's literal's name then " into the " then the variable's name then ". " into the variable's initializer string.`
 
 
 If the variable is a global, and the programmer wants us to initialize it with a literal value, we're going to need a "_put_" or "_convert_" routine to actually fill it in at run time, so we make sure we've got such a routine now. If we find one, we take a moment to compile its body, and then we fill in the variable's "_initializer string_" with the Plain English sentence that will do the initializing. "_Global initializer_" sentences are compiled in the next step.
@@ -7578,7 +7578,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `Put the variable into the term's variable.`
 
-`Put "_the "_ into the term's phrase.`
+`Put "_the " into the term's phrase.`
 
 `Append the name to the term's phrase.`
 
@@ -8932,9 +8932,9 @@ Note that literals can have possessives; for example...
 
 `Resolve the local.`
 
-`Prepend "original "_ to the term's name.`
+`Prepend "original " to the term's name.`
 
-`If the term's nickname is not blank, Prepend "original "_ to the term's nickname.`
+`If the term's nickname is not blank, Prepend "original " to the term's nickname.`
 
 `Add several fragments given "put_" and the term's variable and "_into_" and the local and the rider's token's first.`
 
@@ -9048,7 +9048,7 @@ Note that literals can have possessives; for example...
 
 `Scan a name given the rider.`
 
-`Prepend "the "_ to the name.`
+`Prepend "the " to the name.`
 
 `Add a monikette to the routine reference given the name.`
 
@@ -9291,17 +9291,17 @@ Now that we know everything in the source checks out, it's time to add one more 
 
 `append "~initialize before run and run and finalize after run_" to the routine's header string.`
 
-`append "initialize before run. "_ to the routine's body string.`
+`append "initialize before run. " to the routine's body string.`
 
 `Append the global initializers to the routine's body string.`
 
-`append "run. "_ to the routine's body string.`
+`append "run. " to the routine's body string.`
 
 `Append the global finalizers to the routine's body string.`
 
-`append "finalize after run. "_ to the routine's body string.`
+`append "finalize after run. " to the routine's body string.`
 
-`append "call "_"kernel32.dll"_" "_"ExitProcess"_" with 0. "_ to the routine's body string.`
+`append "call "_"kernel32.dll"_" "_"ExitProcess"_" with 0. " to the routine's body string.`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -9342,7 +9342,7 @@ Now that we know everything in the source checks out, it's time to add one more 
 
 `If the global's type should not be finalized, repeat.`
 
-`append "~finalize the " then the global's name then "_. "_ to the string.`
+`append "~finalize the " then the global's name then ". " to the string.`
 
 `Repeat.`
 
