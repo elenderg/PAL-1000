@@ -398,9 +398,9 @@ Isn't it handy to be able to see, at a glance, which parts of the program are co
 
 `To decide if a string is any flag literal:`
 
-`If the string is "_yes", say yes.`
+`If the string is "yes", say yes.`
 
-`If the string is "_no", say yes.`
+`If the string is "no", say yes.`
 
 `Say no.`
 
@@ -562,29 +562,29 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `List the compiler's abort message in the compiler's listing.`
 
-`List the types under "_TYPES:_" in the compiler's listing.`
+`List the types under "TYPES:" in the compiler's listing.`
 
-`List the globals under "_GLOBALS:_" in the compiler's listing.`
+`List the globals under "GLOBALS:" in the compiler's listing.`
 
-`List the literals under "_LITERALS:_" in the compiler's listing.`
+`List the literals under "LITERALS:" in the compiler's listing.`
 
-`List the routines under "_ROUTINES:_" in the compiler's listing. `
+`List the routines under "ROUTINES:" in the compiler's listing. `
 
-`\List the type index under "_TYPE INDEX:_" in the compiler's listing.`
+`\List the type index under "TYPE INDEX:" in the compiler's listing.`
 
-`\List the global index under "_GLOBAL INDEX:_" in the compiler's listing.`
+`\List the global index under "GLOBAL INDEX:" in the compiler's listing.`
 
-`\List the literal index under "_LITERAL INDEX:_" in the compiler's listing.`
+`\List the literal index under "LITERAL INDEX:" in the compiler's listing.`
 
-`\List the routine index under "_ROUTINE INDEX:_" in the compiler's listing.`
+`\List the routine index under "ROUTINE INDEX:" in the compiler's listing.`
 
-`\List the utility index under "_UTILITY INDEX:_" in the compiler's listing. `
+`\List the utility index under "UTILITY INDEX:" in the compiler's listing. `
 
-`List the imports under "_IMPORTS:_" in the compiler's listing.`
+`List the imports under "IMPORTS:" in the compiler's listing.`
 
-`List the source files under "_SOURCE FILES:_" in the compiler's listing.`
+`List the source files under "SOURCE FILES:" in the compiler's listing.`
 
-`List the timers under "_TIMERS:_" in the compiler's listing.`
+`List the timers under "TIMERS:" in the compiler's listing.`
 
 `Write the compiler's listing to the compiler's listing path.`
 
@@ -1387,29 +1387,29 @@ We "_Finalize the compiler_" to clean up anything that might be hanging around f
 
 `List the compiler's abort message in the compiler's listing.`
 
-`List the types under "_TYPES:_" in the compiler's listing.`
+`List the types under "TYPES:" in the compiler's listing.`
 
-`List the globals under "_GLOBALS:_" in the compiler's listing.`
+`List the globals under "GLOBALS:" in the compiler's listing.`
 
-`List the literals under "_LITERALS:_" in the compiler's listing.`
+`List the literals under "LITERALS:" in the compiler's listing.`
 
-`List the routines under "_ROUTINES:_" in the compiler's listing.`
+`List the routines under "ROUTINES:" in the compiler's listing.`
 
-`List the type index under "_TYPE INDEX:_" in the compiler's listing.`
+`List the type index under "TYPE INDEX:" in the compiler's listing.`
 
-`List the global index under "_GLOBAL INDEX:_" in the compiler's listing.`
+`List the global index under "GLOBAL INDEX:" in the compiler's listing.`
 
-`List the literal index under "_LITERAL INDEX:_" in the compiler's listing.`
+`List the literal index under "LITERAL INDEX:" in the compiler's listing.`
 
-`List the routine index under "_ROUTINE INDEX:_" in the compiler's listing.`
+`List the routine index under "ROUTINE INDEX:" in the compiler's listing.`
 
-`List the utility index under "_UTILITY INDEX:_" in the compiler's listing.`
+`List the utility index under "UTILITY INDEX:" in the compiler's listing.`
 
-`List the imports under "_IMPORTS:_" in the compiler's listing.`
+`List the imports under "IMPORTS:" in the compiler's listing.`
 
-`List the source files under "_SOURCE FILES:_" in the compiler's listing.`
+`List the source files under "SOURCE FILES:" in the compiler's listing.`
 
-`List the timers under "_TIMERS:_" in the compiler's listing.`
+`List the timers under "TIMERS:" in the compiler's listing.`
 
 `Write the compiler's listing to the compiler's listing path.`
 
