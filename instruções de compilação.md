@@ -1078,7 +1078,7 @@ A "_locus_" points to the very spot in the source code where an error is discove
 `A nickname is a name.`
 
 
-`A "_nickname_" is the short name for a variable. "_the left", for example, instead of "_the left coordinate". It's typically the adjective that precedes the type name noun.`
+A "_nickname_" is the short name for a variable. "_the left_", for example, instead of "_the left coordinate_". It's typically the adjective that precedes the type name noun.
 
 
 30. Now one more kind of variable:
@@ -1331,7 +1331,7 @@ So where were we? Ah, yes.
 
 `To compile a directory (start):`
 
-`Show status "_Starting...".`
+`Show status "Starting...".`
 
 `Finalize the compiler.`
 
@@ -1710,7 +1710,7 @@ Alrighty, then. Time to load up our source files.
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Loading...".`
+`Show status "Loading...".`
 
 `Start the loading timer.`
 
@@ -1903,7 +1903,7 @@ Now that we've got all our source files in memory, it's time to see what they ha
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Scanning...".`
+`Show status "Scanning...".`
 
 `Start the scanning timer.`
 
@@ -3817,7 +3817,7 @@ Okay, you know the drill.
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Resolving...".`
+`Show status "Resolving...".`
 
 `Start the resolving types timer.`
 
@@ -4676,7 +4676,7 @@ Next up: Resolving global variables.
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Resolving...".`
+`Show status "Resolving...".`
 
 `Start the resolving globals timer.`
 
@@ -5292,7 +5292,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Compiling...".`
+`Show status "Compiling...".`
 
 `Start the compiling routine headers timer.`
 
@@ -5843,7 +5843,7 @@ Time to move on.
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Calculating...".`
+`Show status "Calculating...".`
 
 `Start the calculating timer.`
 
@@ -6167,7 +6167,7 @@ So we have the compiler add those routines as if they were in the programmer's s
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Adding...".`
+`Show status "Adding...".`
 
 `Start the adding built-in memory routines timer.`
 
@@ -6670,7 +6670,7 @@ So let's get to work.
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Utilitizing...".`
+`Show status "Utilitizing...".`
 
 `Start the indexing utilities timer.`
 
@@ -7044,7 +7044,7 @@ So let's get to it.
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Compiling...".`
+`Show status "Compiling...".`
 
 `Start the compiling routine bodies timer.`
 
@@ -9271,7 +9271,7 @@ Now that we know everything in the source checks out, it's time to add one more 
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Adding...".`
+`Show status "Adding...".`
 
 `Start the adding built-in startup routine timer.`
 
@@ -9479,7 +9479,7 @@ Next time, we'll calculate the offsets for our parameters and local variables.
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Offsetting...".`
+`Show status "Offsetting...".`
 
 `Start the offsetting timer.`
 
@@ -9663,7 +9663,7 @@ And that's it for this step. Next time, we'll give everyone (who needs one) a pe
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Addressing...".`
+`Show status "Addressing...".`
 
 `Start the addressing timer.`
 
@@ -10225,7 +10225,7 @@ Next up: TRANSMOGRIFICATION! Mwa-hah-hah-hah (evil laugh).
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Mogrifying...".`
+`Show status "Mogrifying...".`
 
 `Start the transmogrifying timer.`
 
@@ -10890,7 +10890,7 @@ Coming down the home stretch now. Time to cram everything into a Portable Execut
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Linking...".`
+`Show status "Linking...".`
 
 `Start the linking timer.`
 
@@ -11289,7 +11289,7 @@ At this point we've got a complete executable sitting in our buffer in memory, a
 
 `If the compiler's abort flag is set, exit.`
 
-`Show status "_Writing...".`
+`Show status "Writing...".`
 
 `Start the writing timer.`
 
@@ -11307,7 +11307,7 @@ At this point we've got a complete executable sitting in our buffer in memory, a
 
 `Stop the compiler's timer.`
 
-`Show status "_".`
+`Show status "".`
 
 
 262. almost there; just one little clean-up: At the top of the file there are two comments that got double-commented when we commented out the whole file way back when. Change those double-backslashes to just single ones.
