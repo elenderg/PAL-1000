@@ -1953,7 +1953,7 @@ And this little loop to make sure we scan all the source files in the project:
 
 `If the rider's token is the start of any routine, scan a routine given the rider; repeat.`
 
-`abort with "I was hoping for a definition but all I found was '_" then the rider's token then "_'._" and the rider.`
+`abort with "I was hoping for a definition but all I found was '_" then the rider's token then "'._" and the rider.`
 
 `Repeat.`
 
@@ -2406,13 +2406,13 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `If the rider's token is "_has_" or "_have", scan the type given the rider (has or have); exit.`
 
-`If the rider's token is not "_is_" or "_are", abort with "I was expecting an 'is' or 'are', but I found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not "is_" or "_are", abort with "I was expecting an 'is' or 'are', but I found '_" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
 `If the rider's token is any numeric literal, scan the type given the rider (unit of measure); exit.`
 
-`If the rider's token is not any indefinite article, abort with "I was expecting an indefinte article, but I found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not any indefinite article, abort with "I was expecting an indefinte article, but I found '_" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -2420,7 +2420,7 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `Scan any optional info for the type given the rider.`
 
-`If the rider's token is not the period byte, abort with "Types need to end with a period, I found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "Types need to end with a period, I found '_" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -2450,7 +2450,7 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `Repeat.`
 
-`If the name is blank, abort with "I was kind of hoping for a name around here, but I found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the name is blank, abort with "I was kind of hoping for a name around here, but I found '_" then the rider's token then "'._" and the rider; exit.`
 
 81. Our name-scanning routine needs a little help from these 2 deciders:
 
@@ -3065,7 +3065,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `Scan the type's fields given the rider.`
 
-`If the rider's token is not the period byte, abort with "Types need to end with a period, I found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "Types need to end with a period, I found '_" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3132,7 +3132,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `If the compiler's abort flag is set, exit.`
 
-`If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'._" and the rider; exit.`
 
 `If the rider's token is "_another", put "_other_" into the field's name.`
 
@@ -3160,7 +3160,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "_the", abort with "I was expecting the word 'the', but found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not "the", abort with "I was expecting the word 'the', but found '" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3190,7 +3190,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "_byte_" or "_bytes", abort with "Nothing but the word 'bytes' is appropriate after a counted field designator._" and the rider; exit.`
+`If the rider's token is not "byte_" or "_bytes", abort with "Nothing but the word 'bytes' is appropriate after a counted field designator._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3240,7 +3240,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `Scan the type's base name given the rider.`
 
-`If the rider's token is not the period byte, abort with "Types need to end with a period, I found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "Types need to end with a period, I found '_" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3272,7 +3272,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any indefinite article, abort with "The 'to' here needs to be followed by an indefinite article, not '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not any indefinite article, abort with "The 'to' here needs to be followed by an indefinite article, not '_" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3304,7 +3304,7 @@ And that's it for scanning types.
 
 `If the rider's token is "_has_" or "_have", scan the global given the rider (has or have); exit.`
 
-`If the rider's token is not "_is_" or "_are", abort with "Geez. I need an 'is' or an 'are' hereabouts, but all I found was '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not "is_" or "_are", abort with "Geez. I need an 'is' or an 'are' hereabouts, but all I found was '_" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3418,7 +3418,7 @@ And that's it for scanning types.
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "_to", abort with "I need the word 'to' after the word 'equal', not '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not "to", abort with "I need the word 'to' after the word 'equal', not '_" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -3586,7 +3586,7 @@ And that's it for globals, for now.
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "_to", abort with "I think that there semi-colon is misplaced._" and the original rider; exit.`
+`If the rider's token is not "to", abort with "I think that there semi-colon is misplaced._" and the original rider; exit.`
 
 `Put the original rider's token's first into the routine's routine body's first.`
 
@@ -4724,7 +4724,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any literal, abort with "I need a literal here, but I found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not any literal, abort with "I need a literal here, but I found '_" then the rider's token then "'._" and the rider; exit.`
 
 `Compile a literal given the rider.`
 
@@ -5339,7 +5339,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `If the compiler's abort flag is set, say no.`
 
-`If the rider's token is not "_put", say no.`
+`If the rider's token is not "put", say no.`
 
 `Privatize the rider.`
 
@@ -5377,7 +5377,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "_if", abort with "It's 'Decide IF.' We always say, 'Decide IF'. Got it?_" and the rider; exit.`
+`If the rider's token is not "if", abort with "It's 'Decide IF.' We always say, 'Decide IF'. Got it?_" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -5418,7 +5418,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `Add another monikette to the routine's monikettes given "'s "_ then the name.`
 
-`If the rider's token is not "_into", abort with "I was expecting the word 'into', but found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not "into", abort with "I was expecting the word 'into', but found '" then the rider's token then "'._" and the rider; exit.`
 
 `Add a third monikette to the routine's monikettes given "into".`
 
@@ -5430,7 +5430,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'._" and the rider; exit.`
 
 `Compile the routine's monikettes and the routine's parameters given the rider (indefinite article).`
 
@@ -5504,7 +5504,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `If the rider's token is any monikette string, compile the monikettes and the parameters given the rider (monikette string); repeat.`
 
-`abort with "'_" then the rider's token then "_' is not valid in a routine header._" and the rider.`
+`abort with "'_" then the rider's token then "' is not valid in a routine header._" and the rider.`
 
 `To compile some monikettes and some parameters given a rider (definite article):`
 
@@ -7158,7 +7158,7 @@ After dealing with possible special cases ("`alternate wordings`_" and "_`employ
 
 `Destroy the routine reference.`
 
-`If the rider's token is not "_.", abort with "Employ statments should end with a period not '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not ".", abort with "Employ statments should end with a period not '_" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -7279,7 +7279,7 @@ An expression is two or more terms separated by the infix operators plus, minus,
 
 `If the rider's token is any literal, compile the term given the rider (literal); exit.`
 
-`abort with "I expected a term hereabouts but all I found was '_" then the rider's token then "_'._" and the rider.`
+`abort with "I expected a term hereabouts but all I found was '_" then the rider's token then "'._" and the rider.`
 
 
 178. This guy deals with terms that have a minus sign in front of them:
@@ -8032,7 +8032,7 @@ Note that literals can have possessives; for example...
 
 `If the rider's token is "_LIKE", say yes.`
 
-`If the rider's token is not "_AS", say no.`
+`If the rider's token is not "AS", say no.`
 
 `Move the rider (compiler rules).`
 
@@ -8052,7 +8052,7 @@ Note that literals can have possessives; for example...
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any indefinite article, abort with "I was hoping for an indefinite article after AS, but I found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not any indefinite article, abort with "I was hoping for an indefinite article after AS, but I found '_" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -8147,7 +8147,7 @@ Note that literals can have possessives; for example...
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "_by", abort with "I really prefer the phrase 'divided BY'._" and the rider; exit.`
+`If the rider's token is not "by", abort with "I really prefer the phrase 'divided BY'._" and the rider; exit.`
 
 `If the expression's variable is nil, abort with "Invalid 'divided by', I don't understand the variable '_" then the expression's phrase then "_'._" and the rider; exit.`
 
@@ -8374,7 +8374,7 @@ Note that literals can have possessives; for example...
 
 `If the rider's token is "_privatize", compile the next statement given the rider (privatize); exit.`
 
-`If the rider's token is not the start of any statement, abort with "I was expecting a statement here, but I found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not the start of any statement, abort with "I was expecting a statement here, but I found '_" then the rider's token then "'._" and the rider; exit.`
 
 `Compile the next statement given the rider (other).`
 
@@ -8408,7 +8408,7 @@ Note that literals can have possessives; for example...
 
 `If the routine's decider flag is not set, abort with "Yeah, I'm going to need a decider here, ok?_" and the rider; exit.`
 
-`If the rider's token is not the comma byte, abort with "I expected a comma around here, but I found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not the comma byte, abort with "I expected a comma around here, but I found '_" then the rider's token then "'._" and the rider; exit.`
 
 `Add a fragment given the call internal tag and the routine.`
 
@@ -8426,7 +8426,7 @@ Note that literals can have possessives; for example...
 
 `If the rider's token is the semi-colon byte, move the rider (compiler rules); repeat.`
 
-`If the rider's token is not the period byte, abort with "I'm thinking period, but you've got '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not the period byte, abort with "I'm thinking period, but you've got '_" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -8594,7 +8594,7 @@ Note that literals can have possessives; for example...
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any hex literal, abort with "I need some machine code here, I found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not any hex literal, abort with "I need some machine code here, I found '_" then the rider's token then "'._" and the rider; exit.`
 
 `Add a fragment given the intel tag.`
 
@@ -8665,7 +8665,7 @@ Note that literals can have possessives; for example...
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any string literal, abort with "Gee, I was expecting a quoted entry name, but I found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not any string literal, abort with "Gee, I was expecting a quoted entry name, but I found '_" then the rider's token then "'._" and the rider; exit.`
 
 `Put the rider's token into another string.`
 
@@ -8866,11 +8866,11 @@ Note that literals can have possessives; for example...
 
 `If the term's type's length is not 4, abort with "You've got the wrong kind of variable here._" and the rider.`
 
-`If the rider's token is not "_to", abort with "I was expecting the word 'to', but found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not "to", abort with "I was expecting the word 'to', but found '" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "_routine", abort with "I was expecting the word 'routine' but found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not "routine", abort with "I was expecting the word 'routine' but found '" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -9028,14 +9028,14 @@ Note that literals can have possessives; for example...
 
 `If the rider's token is any monikette string, compile the routine reference given the rider (monikette string); repeat.`
 
-`abort with "'_" then the rider's token then "_' is not valid in an employ statement._" and the rider.`
+`abort with "'_" then the rider's token then "' is not valid in an employ statement._" and the rider.`
 
 
 `To compile a routine reference given a rider (decide):`
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not "_if", abort with "We always say DECIDE IF, not DECIDE and then '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not "if", abort with "We always say DECIDE IF, not DECIDE and then '_" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -9067,7 +9067,7 @@ Note that literals can have possessives; for example...
 
 `If the flag is not set, compile the routine reference given the rider (definite article).`
 
-`If the rider's token is not any possessive, abort with "I was expecting an 's, but found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not any possessive, abort with "I was expecting an 's, but found '" then the rider's token then "'._" and the rider; exit.`
 
 `Move the rider (compiler rules).`
 
@@ -9075,13 +9075,13 @@ Note that literals can have possessives; for example...
 
 `Add another monikette to the routine reference given "'s "_ then the name.`
 
-`If the rider's token is not "_into", abort with "I was expecting the word 'into', but found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not "into", abort with "I was expecting the word 'into', but found '" then the rider's token then "'._" and the rider; exit.`
 
 `Add a third monikette to the routine reference given "into".`
 
 `Move the rider (compiler rules).`
 
-`If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '_" then the rider's token then "_'._" and the rider; exit.`
+`If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'._" and the rider; exit.`
 
 `Compile the routine reference given the rider (indefinite article).`
 
