@@ -301,7 +301,7 @@ Now we need to put our tags back, which are splattered around like the timers. T
 `The save eax tag is a tag equal to 20.`
 
 
-While you're doing that, think about this: those 22 tags define the only things the compiler generates machine code to do. Which means the whole CAL (and every program written with the CAL) runs on just 22 machine-code "_instructions." Wouldn't it be great if Intel built CPUs with this (and Aunt Tilly) in mind? Fewer transistors, lower costs, and no cooling fans necessary!
+While you're doing that, think about this: those 22 tags define the only things the compiler generates machine code to do. Which means the whole CAL (and every program written with the CAL) runs on just 22 machine-code "_instructions._" Wouldn't it be great if Intel built CPUs with this (and Aunt Tilly) in mind? Fewer transistors, lower costs, and no cooling fans necessary!
 
 
 13. Done with the "_B_"s. And that brings us to the heart of the whole compiler:
@@ -714,7 +714,7 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `To list an index in a buffer:`
 
-`append "/_" then the index's used bucket count then " buckets" to the buffer (with separator).`
+`append "/" then the index's used bucket count then " buckets" to the buffer (with separator).`
 
 `Append the index's count then " refers" to the buffer (with separator).`
 
@@ -1111,7 +1111,7 @@ Again, there's no global list of parameters because they're kept on separate lis
 `Put the compiler's directory then the designator then ".lst" into the path.`
 
 
-These routines let us say "_the compiler's exe path_" and "the compiler's listing path_" as if those two things were fields in the compiler record. Kind of like "_derived data_" or a "_calculated field_" in a database.
+These routines let us say "`the compiler's exe path`" and "`the compiler's listing path`" as if those two things were fields in the compiler record. Kind of like "`derived data`" or a "`calculated field`" in a database.
 
 
 32. Now some routine stuff:
@@ -1756,7 +1756,7 @@ As you know, the CAL expects a program's source code to be stored as one or more
 
 A diligent Plain English programmer, however, will typically use the CAL's Writer to author a user manual and other documentation for a program. Since it's convenient to keep such documentation in the same directory as the source code, and since such documentation files will not have an extension, we need the CAL to skip them when he's collecting source code to compile.
 
-59. Internally, documents created with the CAL's writer are called "_reams_" (as in a "ream of paper_"). And that's why, in the above routine, files that look "_reamish_" are passed over. Uncomment the decider routine shown below so the compiler will be able to recognize "_reamish_" files:
+59. Internally, documents created with the CAL's writer are called "`reams`" (as in a "_ream of paper_"). And that's why, in the above routine, files that look "_reamish_" are passed over. Uncomment the decider routine shown below so the compiler will be able to recognize "_reamish_" files:
 
  
 
@@ -2029,10 +2029,10 @@ This guy assumes we're sitting on the start of a comment (the backslash characte
 `Repeat.  `
 
 
-This time we're starting on the start of a remark (a left-bracket "_["), and we skip everything up to a return byte (the end of a line) or a closing right-bracket ("]"), allowing for the possibility that the programmer may have remarks inside his remarks. When this routine is done, what's left of the rider's source will start with either a return byte, or the first character after the closing right-bracket, and the rider's token will span the entire remark.
+This time we're starting on the start of a remark (a left-bracket "_[_"), and we skip everything up to a return byte (the end of a line) or a closing right-bracket ("_]_"), allowing for the possibility that the programmer may have remarks inside his remarks. When this routine is done, what's left of the rider's source will start with either a return byte, or the first character after the closing right-bracket, and the rider's token will span the entire remark.
 
 
-70. We need a similar "_move a rider_" routine for qualifiers, which can also be "_nested":
+70. We need a similar "`move a rider`" routine for qualifiers, which can also be "_nested_":
 
 
 `To move a rider (code rules - qualifier):`
@@ -2356,10 +2356,10 @@ And that's it for the bottom-level "_move a rider_" routines.
 `If the rider's token's first's target is the left-bracket byte, repeat.`
 
 
-...who is the guy used by our scanners. We've discussed these "_move a rider_" routines from the bottom up, as it were, since they're mostly concerned with what impressive people Call "lexical analysis_" (making words out of letters). We'll be discussing our scanners from the top down since they're mostly concerned with what impressive people Call "semantic analysis_" (making sentences out of words).
+...who is the guy used by our scanners. We've discussed these "_move a rider_" routines from the bottom up, as it were, since they're mostly concerned with what impressive people Call "_lexical analysis_" (making words out of letters). We'll be discussing our scanners from the top down since they're mostly concerned with what impressive people Call "_semantic analysis_" (making sentences out of words).
 
 
-78. We've already put back in the top 2 scanners, the first ("to scan some source files") who just loops through the source files and passes them to the second ("to scan a source file") who simply dispatches the rest of the scanning process to his underlings once he knows what's coming up in the source. These are the deciders he needs to make a good decision:
+78. We've already put back in the top 2 scanners, the first ("`to scan some source files`") who just loops through the source files and passes them to the second ("`to scan a source file`") who simply dispatches the rest of the scanning process to his underlings once he knows what's coming up in the source. These are the deciders he needs to make a good decision:
 
 
 `To decide if a string is the start of any type:`
