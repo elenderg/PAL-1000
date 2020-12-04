@@ -8,9 +8,9 @@ So let's get to it.
 
 
 1. Start up the CAL-4700.exe.
-2. Find the CAL-4700 directory, and use the Duplicate command to make a copy. When asked to name the copy, enter "_*CAL-4700's son*_" just like that, but without the quotes. This will keep the two directories next to each other in the Finder, and will be a constant reminder of the son's roots.
+2. Find the CAL-4700 directory, and use the `Duplicate` command to make a copy. When asked to name the copy, enter "_*CAL-4700's son*_" just like that, but without the quotes. This will keep the two directories next to each other in the `Finder`, and will be a constant reminder of the son's roots.
 3. Open up the new "_CAL-4700's son_" directory, and delete the CAL-4700.exe.
-4. Open up the six source files in the son's directory. The quick way is to just drag-select them all, and hit ENTER.
+4. Open up the six source files in the son's directory. The quick way is to just drag-select them all, and hit `ENTER`.
 5. In the Desktop file, find this line...
 
 `Put the lightest gray color into the desktop color.`
@@ -108,7 +108,7 @@ Now let's do it.
 
  
 
-...and they're splattered all through the file, but you can easily put the first one back by typing CTRL-HOME, CTRL-F, "_timer is a timer_" (without the quotes), select and uncomment the line with `END SHIFT-HOME CTRL-U`. You can use `CTRL-N` followed by `END SHIFT-HOME CTRL-U` for the rest.
+...and they're splattered all through the file, but you can easily put the first one back by typing `CTRL-HOME`, `CTRL-F`, "`timer is a timer`" (without the quotes), select and uncomment the line with `END SHIFT-HOME CTRL-U`. You can use `CTRL-N` followed by `END SHIFT-HOME CTRL-U` for the rest.
 
 
 9. Find this type definition and put it back as well:
@@ -134,7 +134,7 @@ Now let's do it.
 `Advance the buffer.`
 
 
-11. The "_append_" routines below are also needed to format the listing file. There are of 10 them, but there are a handful of intervening "_append_" routines that are used for other purposes that we'll put back later.
+11. The "`append`" routines below are also needed to format the listing file. There are of 10 them, but there are a handful of intervening "`append`" routines that are used for other purposes that we'll put back later.
 
 
 `To append an entry to a buffer (with separator):`
@@ -250,7 +250,7 @@ Now let's do it.
 12. Woohoo! Done with the "_A_"s.
 
 
-Now we need to put our tags back, which are splattered around like the timers. There are 22 of them. Look for "_is a tag equal to_" and use the same `END SHIFT-HOME CTRL-U` keyboard sequence to make quick work of putting them back. Don't forget the tag type, shown here at the top:
+Now we need to put our tags back, which are splattered around like the timers. There are 22 of them. Look for "`is a tag equal to`" and use the same `END SHIFT-HOME CTRL-U` keyboard sequence to make quick work of putting them back. Don't forget the tag type, shown here at the top:
 
 
 `A tag is a number.`
@@ -376,7 +376,7 @@ Isn't it handy to be able to see, at a glance, which parts of the program are co
 `a listing buffer.`
 
 
-15. Then a couple of trivial "_deciders_":
+15. Then a couple of trivial "`deciders`":
 
 
 `To decide if a byte is any mark:`
@@ -405,7 +405,7 @@ Isn't it handy to be able to see, at a glance, which parts of the program are co
 `Say no.`
 
 
-16. Then the "_entry_" type:
+16. Then the "`entry`" type:
 
 
 `An entry is a thing with`
@@ -419,7 +419,7 @@ Isn't it handy to be able to see, at a glance, which parts of the program are co
 `An address.`
 
 
-There's one "_entry_" for each DLL routine that we call.
+There's one "`entry`" for each DLL routine that we call.
 
 17. Now we're up to the "_F_"s. Let's put back the finalize routine:
 
@@ -449,7 +449,7 @@ There's one "_entry_" for each DLL routine that we call.
 `Destroy the source files.`
 
 
-18. And now, the "_fragment_" type, that makes use of all those tags we put back earlier:
+18. And now, the "`fragment`" type, that makes use of all those tags we put back earlier:
 
 
 `A fragment is a thing with`
@@ -471,7 +471,7 @@ There's one "_entry_" for each DLL routine that we call.
 `A hex string called code.`
 
 
-19. Next, the "_global body_" type. This is a substring that spans the part of a global variable definition in the source code that we're not ready to process until later:
+19. Next, the "`global body`" type. This is a substring that spans the part of a global variable definition in the source code that we're not ready to process until later:
 
 
 `A global body is a substring.`
@@ -491,7 +491,7 @@ There's one "_entry_" for each DLL routine that we call.
 `The utility index is an index.`
 
 
-While you're putting those back, think about this: All a compiler really has to do, as it wades through source code, is to collect the information it needs to put *GLOBALS, LITERALS, and ROUTINES* in the right places in an EXE file. It uses *TYPES* to tell it how big things are, but types don't end up anywhere in the EXE. The rest is decoration. If you're wondering about the Utility Index, it's used to allow generic routines to operate on types that aren't formally specified in their headers. For example, the "_number_" type and the "_pointer_" type are distinct in our *Noodle* but pointers are really just numbers, so routines like "_To add a number to another number_" ought to work on pointers as well as numbers. So, as you'll see later, we do a little type trickery, using the Utility Index, to allow that to happen.
+While you're putting those back, think about this: All a compiler really has to do, as it wades through source code, is to collect the information it needs to put *GLOBALS, LITERALS, and ROUTINES* in the right places in an EXE file. It uses *TYPES* to tell it how big things are, but types don't end up anywhere in the EXE. The rest is decoration. If you're wondering about the Utility Index, it's used to allow generic routines to operate on types that aren't formally specified in their headers. For example, the "`number`" type and the "`pointer`" type are distinct in our *Noodle* but pointers are really just numbers, so routines like "`To add a number to another number`" ought to work on pointers as well as numbers. So, as you'll see later, we do a little type trickery, using the Utility Index, to allow that to happen.
 
 
 21. Now put back these three guys:
@@ -541,7 +541,7 @@ The first two are types that say global variables and fields are a lot like any 
 `The imports are some imports.`
 
 
-An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
+An "`import`" is a DLL. That's what Windows calls them. Ugly stuff.
 
 
 23. Let's not forget this silly little guy...
@@ -553,7 +553,7 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 ...who does nothing at all. We put it in, and left it in, just to make Desktop code up above symmetrical.
 
 
-24. And now we put back the code we need for testing. Everything that starts with "To List..." except the file lines that list indexes (see below). Leave them out; we haven't created the indices yet, so they won't work and the thing will blow away. The listing stuff is all in a bunch; just find the first routine and drag down until you've got them all. But make sure you re-comment those five lines.
+24. And now we put back the code we need for testing. Everything that starts with "`To List...`" except the file lines that list indexes (see below). Leave them out; we haven't created the indices yet, so they won't work and the thing will blow away. The listing stuff is all in a bunch; just find the first routine and drag down until you've got them all. But make sure you re-comment those five lines.
 
 
 `To list:`
@@ -1078,7 +1078,7 @@ A "_locus_" points to the very spot in the source code where an error is discove
 `A nickname is a name.`
 
 
-A "_nickname_" is the short name for a variable. "_the left_", for example, instead of "_the left coordinate_". It's typically the adjective that precedes the type name noun.
+A "`nickname`" is the short name for a variable. "`the left`", for example, instead of "`the left coordinate`". It's typically the adjective that precedes the type name noun.
 
 
 30. Now one more kind of variable:
@@ -1090,7 +1090,7 @@ A "_nickname_" is the short name for a variable. "_the left_", for example, inst
 Again, there's no global list of parameters because they're kept on separate lists in each routine record.
 
 
-31. And that brings us to a couple of "_function-style routines_" (routines that return a value and that can thus be used as expressions):
+31. And that brings us to a couple of "`function-style routines`" (routines that return a value and that can thus be used as expressions):
 
 
 `To put the compiler's exe path into a path:`
