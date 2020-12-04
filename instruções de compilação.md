@@ -1108,7 +1108,7 @@ Again, there's no global list of parameters because they're kept on separate lis
 
 `Remove any trailing backslash from the designator.`
 
-`Put the compiler's directory then the designator then ".lst_" into the path.`
+`Put the compiler's directory then the designator then ".lst" into the path.`
 
 
 These routines let us say "_the compiler's exe path_" and "_the compiler's listing path_" as if those two things were fields in the compiler record. Kind of like "_derived data_" or a "_calculated field_" in a database.
@@ -2620,7 +2620,7 @@ And that's it for the bottom-level "_move a rider_" routines.
 
 `If the string is "have", say yes. \ used in type definitions `
 
-`If the string ends with "_n't", say yes. `
+`If the string ends with "n't", say yes. `
 
 `\ trouble makers `
 
@@ -2930,81 +2930,81 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `To pluralize a string: \ nouns only `
 
-`If the string is "alumnus", put "alumni_" into the string; exit.`
+`If the string is "alumnus", put "alumni" into the string; exit.`
 
-`If the string is "auto", put "autos_" into the string; exit.`
+`If the string is "auto", put "autos" into the string; exit.`
 
-`If the string is "cello", put "cellos_" into the string; exit.`
+`If the string is "cello", put "cellos" into the string; exit.`
 
-`If the string is "dwarf", put "dwarfs_" into the string; exit.`
+`If the string is "dwarf", put "dwarfs" into the string; exit.`
 
-`If the string is "foot", put "feet_" into the string; exit.`
+`If the string is "foot", put "feet" into the string; exit.`
 
-`If the string is "genus", put "genera_" into the string; exit.`
+`If the string is "genus", put "genera" into the string; exit.`
 
-`If the string is "goose", put "geese_" into the string; exit.`
+`If the string is "goose", put "geese" into the string; exit.`
 
-`If the string is "hippo", put "hippos_" into the string; exit.`
+`If the string is "hippo", put "hippos" into the string; exit.`
 
-`If the string is "louse", put "lice_" into the string; exit.`
+`If the string is "louse", put "lice" into the string; exit.`
 
-`If the string is "memo", put "memos_" into the string; exit.`
+`If the string is "memo", put "memos" into the string; exit.`
 
-`If the string is "mouse", put "mice_" into the string; exit.`
+`If the string is "mouse", put "mice" into the string; exit.`
 
-`If the string is "ox", put "oxen_" into the string; exit.`
+`If the string is "ox", put "oxen" into the string; exit.`
 
-`If the string is "phenomenon", put "phenomena_" into the string; exit.`
+`If the string is "phenomenon", put "phenomena" into the string; exit.`
 
-`If the string is "photo", put "photos_" into the string; exit.`
+`If the string is "photo", put "photos" into the string; exit.`
 
-`If the string is "phylum", put "phyla_" into the string; exit.`
+`If the string is "phylum", put "phyla" into the string; exit.`
 
-`If the string is "piano", put "pianos_" into the string; exit.`
+`If the string is "piano", put "pianos" into the string; exit.`
 
-`If the string is "pimento", put "pimentos_" into the string; exit.`
+`If the string is "pimento", put "pimentos" into the string; exit.`
 
-`If the string is "pro", put "pros_" into the string; exit.`
+`If the string is "pro", put "pros" into the string; exit.`
 
-`If the string is "proof", put "proofs_" into the string; exit.`
+`If the string is "proof", put "proofs" into the string; exit.`
 
-`If the string is "radius", put "radii_" into the string; exit.`
+`If the string is "radius", put "radii" into the string; exit.`
 
-`If the string is "rhinoceros", put "rhinoceri_" into the string; exit.`
+`If the string is "rhinoceros", put "rhinoceri" into the string; exit.`
 
-`If the string is "roof", put "roofs_" into the string; exit.`
+`If the string is "roof", put "roofs" into the string; exit.`
 
-`If the string is "solo", put "solos_" into the string; exit.`
+`If the string is "solo", put "solos" into the string; exit.`
 
-`If the string is "soprano", put "sopranos_" into the string; exit.`
+`If the string is "soprano", put "sopranos" into the string; exit.`
 
-`If the string is "staff", put "staffs_" into the string; exit.`
+`If the string is "staff", put "staffs" into the string; exit.`
 
-`If the string is "tooth", put "teeth_" into the string; exit.`
+`If the string is "tooth", put "teeth" into the string; exit.`
 
-`If the string is "torus", put "tori_" into the string; exit.`
+`If the string is "torus", put "tori" into the string; exit.`
 
-`If the string is "turf", put "turfs_" into the string; exit.`
+`If the string is "turf", put "turfs" into the string; exit.`
 
-`If the string is "virus", put "viruses_" into the string; exit.`
+`If the string is "virus", put "viruses" into the string; exit.`
 
-`If the string ends with "_sh", append "es_" to the string; exit.`
+`If the string ends with "sh", append "es_" to the string; exit.`
 
-`If the string ends with "_ch", append "es_" to the string; exit.`
+`If the string ends with "ch", append "es_" to the string; exit.`
 
-`If the string ends with "_man", remove the last two bytes from the string; append "en_" to the string; exit.`
+`If the string ends with "man", remove the last two bytes from the string; append "en_" to the string; exit.`
 
-`If the string ends with "_child", append "ren_" to the string; exit.`
+`If the string ends with "child", append "ren_" to the string; exit.`
 
-`If the string ends with "_ex", remove the last two bytes from the string; append "ices_" to the string; exit. \ or add ES `
+`If the string ends with "ex", remove the last two bytes from the string; append "ices_" to the string; exit. \ or add ES `
 
-`If the string ends with "_fe", remove the last two bytes from the string; append "ves_" to the string; exit.`
+`If the string ends with "fe", remove the last two bytes from the string; append "ves_" to the string; exit.`
 
-`If the string ends with "_is", remove the last two bytes from the string; append "es_" to the string; exit.`
+`If the string ends with "is", remove the last two bytes from the string; append "es_" to the string; exit.`
 
-`If the string ends with "_ix", remove the last two bytes from the string; append "ices_" to the string; exit. \ or add ES `
+`If the string ends with "ix", remove the last two bytes from the string; append "ices_" to the string; exit. \ or add ES `
 
-`If the string ends with "_ma", append "ta_" to the string; exit.  \ or add S `
+`If the string ends with "ma", append "ta_" to the string; exit.  \ or add S `
 
 `If the string ends with any consonant and "_y", remove the last byte from the string; append "ies_" to the string; exit.`
 
@@ -3012,13 +3012,13 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `If the string ends with any vowel and "_y", append "s_" to the string; exit.`
 
-`If the string ends with "_f", remove the last byte from the string; append "ves_" to the string; exit.`
+`If the string ends with "f", remove the last byte from the string; append "ves_" to the string; exit.`
 
-`If the string ends with "_s", append "es_" to the string; exit.`
+`If the string ends with "s", append "es_" to the string; exit.`
 
-`If the string ends with "_x", append "es_" to the string; exit.`
+`If the string ends with "x", append "es_" to the string; exit.`
 
-`If the string ends with "_z", append "es_" to the string; exit.`
+`If the string ends with "z", append "es_" to the string; exit.`
 
 `append "s_" to the string.`
 
@@ -3061,7 +3061,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `Move the rider (compiler rules).`
 
-`put "record_" into the type's base name.`
+`put "record" into the type's base name.`
 
 `Scan the type's fields given the rider.`
 
@@ -3134,7 +3134,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'." and the rider; exit.`
 
-`If the rider's token is "another", put "other_" into the field's name.`
+`If the rider's token is "another", put "other" into the field's name.`
 
 `Move the rider (compiler rules).`
 
@@ -3194,7 +3194,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `Move the rider (compiler rules).`
 
-`put "byte_" into the field's type name.`
+`put "byte" into the field's type name.`
 
 
 88. Since fields in a record can be separated by a variety of things (called `pauses`), we need these 2 routines, too:
@@ -4794,7 +4794,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`put "flag_" into the literal's type name.`
+`put "flag" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -4811,7 +4811,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`put "hex string_" into the literal's type name.`
+`put "hex string" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -4826,7 +4826,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`put "number_" into the literal's type name.`
+`put "number" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -4841,7 +4841,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`put "ratio_" into the literal's type name.`
+`put "ratio" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -4902,7 +4902,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`put "pointer_" into the literal's type name.`
+`put "pointer" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -4917,7 +4917,7 @@ Next up: Resolving global variables.
 
 `Move the rider (compiler rules).`
 
-`put "string_" into the literal's type name.`
+`put "string" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -5188,53 +5188,53 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `\ from/given/with/using `
 
-`If the string is "from", put "from/given/with/using_" into the monikette's string; exit.`
+`If the string is "from", put "from/given/with/using" into the monikette's string; exit.`
 
-`If the string is "given", put "from/given/with/using_" into the monikette's string; exit.`
+`If the string is "given", put "from/given/with/using" into the monikette's string; exit.`
 
-`If the string is "with", put "from/given/with/using_" into the monikette's string; exit.`
+`If the string is "with", put "from/given/with/using" into the monikette's string; exit.`
 
-`If the string is "using", put "from/given/with/using_" into the monikette's string; exit. `
+`If the string is "using", put "from/given/with/using" into the monikette's string; exit. `
 
 `\ in/into/to `
 
-`If the string is "in", put "in/into/to_" into the monikette's string; exit.`
+`If the string is "in", put "in/into/to" into the monikette's string; exit.`
 
-`If the string is "into", put "in/into/to_" into the monikette's string; exit.`
+`If the string is "into", put "in/into/to" into the monikette's string; exit.`
 
-`If the string is "to", put "in/into/to_" into the monikette's string; exit.`
+`If the string is "to", put "in/into/to" into the monikette's string; exit.`
 
 `\ is/are`
 
-`If the string is "are", put "is/are_" into the monikette's string; exit.`
+`If the string is "are", put "is/are" into the monikette's string; exit.`
 
-`If the string is "is", put "is/are_" into the monikette's string; exit. `
+`If the string is "is", put "is/are" into the monikette's string; exit. `
 
 `\ aren't/isn't `
 
-`If the string is "isn't", put "is/aren't_" into the monikette's string; exit.`
+`If the string is "isn't", put "is/aren't" into the monikette's string; exit.`
 
-`If the string is "aren't", put "is/aren't_" into the monikette's string; exit.`
+`If the string is "aren't", put "is/aren't" into the monikette's string; exit.`
 
 `\ backward/backwards/counterclockwise/counter-clockwise/anticlockwise/anti-clockwise`
 
-`If the string is "backward", put "backward_" into the monikette's string; exit.`
+`If the string is "backward", put "backward" into the monikette's string; exit.`
 
-`If the string is "backwards", put "backward_" into the monikette's string; exit.`
+`If the string is "backwards", put "backward" into the monikette's string; exit.`
 
-`If the string is "counterclockwise", put "backward_" into the monikette's string; exit.`
+`If the string is "counterclockwise", put "backward" into the monikette's string; exit.`
 
-`If the string is "counter-clockwise", put "backward_" into the monikette's string; exit.`
+`If the string is "counter-clockwise", put "backward" into the monikette's string; exit.`
 
-`If the string is "anticlockwise", put "backward_" into the monikette's string; exit.`
+`If the string is "anticlockwise", put "backward" into the monikette's string; exit.`
 
-`If the string is "anti-clockwise", put "backward_" into the monikette's string; exit. `
+`If the string is "anti-clockwise", put "backward" into the monikette's string; exit. `
 
 `\ at/on `
 
-`If the string is "at", put "at/on_" into the monikette's string; exit.`
+`If the string is "at", put "at/on" into the monikette's string; exit.`
 
-`If the string is "on", put "at/on_" into the monikette's string; exit. `
+`If the string is "on", put "at/on" into the monikette's string; exit. `
 
 `\ other `
 
@@ -5527,7 +5527,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `Add a parameter to the parameters given "parameter_" and the rider's token's first.`
 
-`If the rider's token is "another", put "other_" into the parameter's name.`
+`If the rider's token is "another", put "other" into the parameter's name.`
 
 `Move the rider (compiler rules).`
 
@@ -5609,7 +5609,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `If the string is "nothing", say yes.`
 
-`If the string ends with "_n't", say yes.`
+`If the string ends with "n't", say yes.`
 
 `Say no.`
 
@@ -7629,7 +7629,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `Convert the term's type's length to the literal's data.`
 
-`put "number_" into the literal's type name.`
+`put "number" into the literal's type name.`
 
 `Resolve the literal.`
 
@@ -7973,7 +7973,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `Add a local to the current routine's locals given "local_" and the rider's token's first.`
 
-`If the rider's token is "another", put "other_" into the local's name.`
+`If the rider's token is "another", put "other" into the local's name.`
 
 `Move the rider (compiler rules).`
 
@@ -8451,15 +8451,15 @@ Note that literals can have possessives; for example...
 
 `Append the monikette to the monikettes.`
 
-`If the monikette's string is "_can't", reverse the flag; put "can_" into the monikette's string; repeat.`
+`If the monikette's string is "_can't", reverse the flag; put "can" into the monikette's string; repeat.`
 
-`If the monikette's string is "_cannot", reverse the flag; put "can_" into the monikette's string; repeat.`
+`If the monikette's string is "_cannot", reverse the flag; put "can" into the monikette's string; repeat.`
 
-`If the monikette's string is "_nothing", reverse the flag; put "something_" into the monikette's string; repeat.`
+`If the monikette's string is "_nothing", reverse the flag; put "something" into the monikette's string; repeat.`
 
-`If the monikette's string is "_won't", reverse the flag; put "will_" into the monikette's string; repeat.`
+`If the monikette's string is "_won't", reverse the flag; put "will" into the monikette's string; repeat.`
 
-`If the monikette's string ends with "_n't", reverse the flag; remove trailing bytes from the monikette's string given 3; repeat.`
+`If the monikette's string ends with "n't", reverse the flag; remove trailing bytes from the monikette's string given 3; repeat.`
 
 `Repeat.`
 
