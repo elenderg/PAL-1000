@@ -40,7 +40,7 @@ Now let's do it.
 `An abort message is a string.`
 
 
-`To abort with a string:
+`To abort with a string:`
 
 `If the compiler's abort flag is set, exit.`
 
@@ -49,7 +49,7 @@ Now let's do it.
 `Put the string into the compiler's abort message.`
 
 
-`To abort with a string and a byte pointer:
+`To abort with a string and a byte pointer:`
 
 `If the compiler's abort flag is set, exit.`
 
