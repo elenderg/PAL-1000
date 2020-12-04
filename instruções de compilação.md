@@ -181,56 +181,56 @@ Now let's do it.
 
 `Append the string to the buffer.`
 
-`Append "_/_" to the buffer.`
+`append "/" to the buffer.`
 
 
 `To append a tag to a buffer (as a fragment tag string with separator):`
 
-`If the tag is the break tag, append "_break_" to the buffer (with separator); exit.`
+`If the tag is the break tag, append "break" to the buffer (with separator); exit.`
 
-`If the tag is the call external tag, append "_call external_" to the buffer (with separator); exit.`
+`If the tag is the call external tag, append "call external" to the buffer (with separator); exit.`
 
-`If the tag is the call indirect tag, append "_call indirect_" to the buffer (with separator); exit.`
+`If the tag is the call indirect tag, append "call indirect" to the buffer (with separator); exit.`
 
-`If the tag is the call internal tag, append "_call internal_" to the buffer (with separator); exit.`
+`If the tag is the call internal tag, append "call internal" to the buffer (with separator); exit.`
 
-`If the tag is the dereference tag, append "_dereference_" to the buffer (with separator); exit.`
+`If the tag is the dereference tag, append "dereference" to the buffer (with separator); exit.`
 
-`If the tag is the end if tag, append "_end if_" to the buffer (with separator); exit.`
+`If the tag is the end if tag, append "end if" to the buffer (with separator); exit.`
 
-`If the tag is the epilog tag, append "_epilog_" to the buffer (with separator); exit.`
+`If the tag is the epilog tag, append "epilog" to the buffer (with separator); exit.`
 
-`If the tag is the exit tag, append "_exit_" to the buffer (with separator); exit.`
+`If the tag is the exit tag, append "exit" to the buffer (with separator); exit.`
 
-`If the tag is the finalize tag, append "_finalize_" to the buffer (with separator); exit.`
+`If the tag is the finalize tag, append "finalize" to the buffer (with separator); exit.`
 
-`If the tag is the increment tag, append "_increment_" to the buffer (with separator); exit.`
+`If the tag is the increment tag, append "increment" to the buffer (with separator); exit.`
 
-`If the tag is the intel tag, append "_intel_" to the buffer (with separator); exit.`
+`If the tag is the intel tag, append "intel" to the buffer (with separator); exit.`
 
-`If the tag is the jump false tag, append "_jump false_" to the buffer (with separator); exit.`
+`If the tag is the jump false tag, append "jump false" to the buffer (with separator); exit.`
 
-`If the tag is the load address tag, append "_load address_" to the buffer (with separator); exit.`
+`If the tag is the load address tag, append "load address" to the buffer (with separator); exit.`
 
-`If the tag is the load eax tag, append "_load eax_" to the buffer (with separator); exit.`
+`If the tag is the load eax tag, append "load eax" to the buffer (with separator); exit.`
 
-`If the tag is the loop tag, append "_loop_" to the buffer (with separator); exit.`
+`If the tag is the loop tag, append "loop" to the buffer (with separator); exit.`
 
-`If the tag is the not tag, append "_not_" to the buffer (with separator); exit.`
+`If the tag is the not tag, append "not" to the buffer (with separator); exit.`
 
-`If the tag is the prolog tag, append "_prolog_" to the buffer (with separator); exit.`
+`If the tag is the prolog tag, append "prolog" to the buffer (with separator); exit.`
 
-`If the tag is the push address tag, append "_push address_" to the buffer (with separator); exit.`
+`If the tag is the push address tag, append "push address" to the buffer (with separator); exit.`
 
-`If the tag is the push value tag, append "_push value_" to the buffer (with separator); exit.`
+`If the tag is the push value tag, append "push value" to the buffer (with separator); exit.`
 
-`If the tag is the save eax tag, append "_save eax_" to the buffer (with separator); exit.`
+`If the tag is the save eax tag, append "save eax" to the buffer (with separator); exit.`
 
-`If the tag is the repeat tag, append "_repeat_" to the buffer (with separator); exit.`
+`If the tag is the repeat tag, append "repeat" to the buffer (with separator); exit.`
 
-`If the tag is the routine address tag, append "_routine address_" to the buffer (with separator); exit.`
+`If the tag is the routine address tag, append "routine address" to the buffer (with separator); exit.`
 
-`Append "_?_" to the buffer (with separator).`
+`append "?" to the buffer (with separator).`
 
 
 `To append a type to a buffer (with separator):`
@@ -593,7 +593,7 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `If the abort message is blank, exit.`
 
-`Append "_COMPILE ABORTED - LISTING INCOMPLETE_" to the buffer.`
+`append "COMPILE ABORTED - LISTING INCOMPLETE" to the buffer.`
 
 `Advance the buffer (twice).`
 
@@ -606,7 +606,7 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `If the bucket's refers are empty, exit.`
 
-`Append "_/bucket_" to the buffer (with separator).`
+`append "/bucket" to the buffer (with separator).`
 
 `Advance the buffer.`
 
@@ -630,7 +630,7 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `If the entry is nil, exit.`
 
-`Append "_/entry_" to the buffer (with separator).`
+`append "/entry" to the buffer (with separator).`
 
 `Append the entry's name to the buffer (with separator).`
 
@@ -641,7 +641,7 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `To list a fragment in a buffer:`
 
-`Append "_/fragment_" to the buffer (with separator).`
+`append "/fragment" to the buffer (with separator).`
 
 `Append the fragment's tag to the buffer (as a fragment tag string with separator).`
 
@@ -679,7 +679,7 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `If the import is nil, exit.`
 
-`Append "_/import_" to the buffer (with separator).`
+`append "/import" to the buffer (with separator).`
 
 `Append the import's name to the buffer (with separator).`
 
@@ -714,9 +714,9 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `To list an index in a buffer:`
 
-`Append "_/_" then the index's used bucket count then "_ buckets_" to the buffer (with separator).`
+`append "/_" then the index's used bucket count then "_ buckets" to the buffer (with separator).`
 
-`Append the index's count then "_ refers_" to the buffer (with separator).`
+`Append the index's count then "_ refers" to the buffer (with separator).`
 
 `Advance the buffer (twice).`
 
@@ -746,13 +746,13 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `If the refer is nil, exit.`
 
-`Append "_/refer_" to the buffer (with separator).`
+`append "/refer" to the buffer (with separator).`
 
 `Append the refer's string to the buffer.`
 
-`If the refer's pointer is nil, append "_..._" to the buffer.`
+`If the refer's pointer is nil, append "..." to the buffer.`
 
-`Append "_/_" to the buffer.`
+`append "/" to the buffer.`
 
 `Advance the buffer.`
 
@@ -772,7 +772,7 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `If the routine is nil, exit.`
 
-`Append "_/routine_" to the buffer (with separator).`
+`append "/routine" to the buffer (with separator).`
 
 `Append the routine's moniker to the buffer (with separator).`
 
@@ -829,7 +829,7 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `If the source file is nil, exit.`
 
-`Append "_/source file_" to the buffer (with separator).`
+`append "/source file" to the buffer (with separator).`
 
 `Append the source file's path to the buffer (with separator).`
 
@@ -862,7 +862,7 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `To list a timer given a string in a buffer:`
 
-`Append "_/timer_" to the buffer (with separator).`
+`append "/timer" to the buffer (with separator).`
 
 `Append the string to the buffer (with separator).`
 
@@ -916,7 +916,7 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `If the type is nil, exit.`
 
-`Append "_/type_" to the buffer (with separator).`
+`append "/type" to the buffer (with separator).`
 
 `Append the type's name to the buffer (with separator).`
 
@@ -967,7 +967,7 @@ An "_import_" is a DLL. That's what Windows calls them. Ugly stuff.
 
 `If the variable is nil, exit.`
 
-`Append "_/variable_" to the buffer (with separator).`
+`append "/variable" to the buffer (with separator).`
 
 `Append the variable's kind to the buffer (with separator).`
 
@@ -2988,39 +2988,39 @@ And now you know why primitive programming languages don't allow spaces in names
 
 `If the string is "_virus", put "_viruses_" into the string; exit.`
 
-`If the string ends with "_sh", append "_es_" to the string; exit.`
+`If the string ends with "_sh", append "es_" to the string; exit.`
 
-`If the string ends with "_ch", append "_es_" to the string; exit.`
+`If the string ends with "_ch", append "es_" to the string; exit.`
 
-`If the string ends with "_man", remove the last two bytes from the string; append "_en_" to the string; exit.`
+`If the string ends with "_man", remove the last two bytes from the string; append "en_" to the string; exit.`
 
-`If the string ends with "_child", append "_ren_" to the string; exit.`
+`If the string ends with "_child", append "ren_" to the string; exit.`
 
-`If the string ends with "_ex", remove the last two bytes from the string; append "_ices_" to the string; exit. \ or add ES `
+`If the string ends with "_ex", remove the last two bytes from the string; append "ices_" to the string; exit. \ or add ES `
 
-`If the string ends with "_fe", remove the last two bytes from the string; append "_ves_" to the string; exit.`
+`If the string ends with "_fe", remove the last two bytes from the string; append "ves_" to the string; exit.`
 
-`If the string ends with "_is", remove the last two bytes from the string; append "_es_" to the string; exit.`
+`If the string ends with "_is", remove the last two bytes from the string; append "es_" to the string; exit.`
 
-`If the string ends with "_ix", remove the last two bytes from the string; append "_ices_" to the string; exit. \ or add ES `
+`If the string ends with "_ix", remove the last two bytes from the string; append "ices_" to the string; exit. \ or add ES `
 
-`If the string ends with "_ma", append "_ta_" to the string; exit.  \ or add S `
+`If the string ends with "_ma", append "ta_" to the string; exit.  \ or add S `
 
-`If the string ends with any consonant and "_y", remove the last byte from the string; append "_ies_" to the string; exit.`
+`If the string ends with any consonant and "_y", remove the last byte from the string; append "ies_" to the string; exit.`
 
-`If the string ends with any vowel and "_o", append "_s_" to the string; exit.`
+`If the string ends with any vowel and "_o", append "s_" to the string; exit.`
 
-`If the string ends with any vowel and "_y", append "_s_" to the string; exit.`
+`If the string ends with any vowel and "_y", append "s_" to the string; exit.`
 
-`If the string ends with "_f", remove the last byte from the string; append "_ves_" to the string; exit.`
+`If the string ends with "_f", remove the last byte from the string; append "ves_" to the string; exit.`
 
-`If the string ends with "_s", append "_es_" to the string; exit.`
+`If the string ends with "_s", append "es_" to the string; exit.`
 
-`If the string ends with "_x", append "_es_" to the string; exit.`
+`If the string ends with "_x", append "es_" to the string; exit.`
 
-`If the string ends with "_z", append "_es_" to the string; exit.`
+`If the string ends with "_z", append "es_" to the string; exit.`
 
-`Append "_s_" to the string.`
+`append "s_" to the string.`
 
 
 `To decide if a string ends with any consonant and another string:`
@@ -5280,7 +5280,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 
 `If the moniker is not blank, append the space byte to the moniker.`
 
-`If the monikette's type is not nil, append "_[_" and the monikette's type's name and "_]_" to the moniker (fast); exit.`
+`If the monikette's type is not nil, append "[_" and the monikette's type's name and "_]_" to the moniker (fast); exit.`
 
 `If the monikette's string is not blank, append the monikette's string to the moniker; exit.`
 
@@ -6221,13 +6221,13 @@ So we have the compiler add those routines as if they were in the programmer's s
 
 `Add a routine to the routines given nil.`
 
-`Append "_~finalize a "_ then the type's name to the routine's header string.`
+`append "~finalize a "_ then the type's name to the routine's header string.`
 
-`Append "_intel $50. "_ to the routine's body string. \ push eax`
+`append "intel $50. "_ to the routine's body string. \ push eax`
 
-`Append "_unassign the string's first. "_ to the routine's body string.`
+`append "unassign the string's first. "_ to the routine's body string.`
 
-`Append "_intel $58._" to the routine's body string. \ pop eax`
+`append "intel $58._" to the routine's body string. \ pop eax`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -6244,9 +6244,9 @@ So we have the compiler add those routines as if they were in the programmer's s
 
 `Add a routine to the routines given nil.`
 
-`Append "_~finalize a "_ then the type's name to the routine's header string.`
+`append "~finalize a "_ then the type's name to the routine's header string.`
 
-`Append "_intel $50. "_ to the routine's body string. \ push eax`
+`append "intel $50. "_ to the routine's body string. \ push eax`
 
 `Loop.`
 
@@ -6256,11 +6256,11 @@ So we have the compiler add those routines as if they were in the programmer's s
 
 `If the field's type should not be finalized, repeat.`
 
-`Append "_~finalize the "_ then the type's name then "_'s "_ then the field's name then "_. "_ to the routine's body string.`
+`append "~finalize the "_ then the type's name then "_'s "_ then the field's name then "_. "_ to the routine's body string.`
 
 `Repeat.`
 
-`Append "_intel $58._" to the routine's body string. \ pop eax`
+`append "intel $58._" to the routine's body string. \ pop eax`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -6314,9 +6314,9 @@ Note the tildes ("~") in the routine names; we don't expect the programmer will 
 
 `Add a routine to the routines given nil.`
 
-`Append "_allocate memory for a "_ then the type's name to the routine's header string.`
+`append "allocate memory for a "_ then the type's name to the routine's header string.`
 
-`Append "_assign the "_ then the type's name then "_ given "_ to the routine's body string.`
+`append "assign the "_ then the type's name then "_ given "_ to the routine's body string.`
 
 `Append the type's target type's length then "_._" to the routine's body string.`
 
@@ -6345,13 +6345,13 @@ Note that there is no tilde in the routine name; we do expect the programmer to 
 
 `Add a routine to the routines given nil.`
 
-`Append "_deallocate a "_ then the type's name to the routine's header string.`
+`append "deallocate a "_ then the type's name to the routine's header string.`
 
-`Append "_if the "_ then the type's name then "_ is nil, exit. "_ to the routine's body string.`
+`append "if the "_ then the type's name then "_ is nil, exit. "_ to the routine's body string.`
 
-`If the type's target type should be finalized, append "_~finalize the "_ then the type's name then "_'s target. "_ to the routine's body string.`
+`If the type's target type should be finalized, append "~finalize the "_ then the type's name then "_'s target. "_ to the routine's body string.`
 
-`Append "_unassign the "_ then the type's name then "_._" to the routine's body string.`
+`append "unassign the "_ then the type's name then "_._" to the routine's body string.`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -6395,19 +6395,19 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 `Add a routine to the routines given nil.`
 
-`Append "_destroy a "_ then the type's name to the routine's header string.`
+`append "destroy a "_ then the type's name to the routine's header string.`
 
-`Append "_if the "_ then the type's name then "_'s first is nil, exit. "_ to the routine's body string.`
+`append "if the "_ then the type's name then "_'s first is nil, exit. "_ to the routine's body string.`
 
 `Put the type's fields' first's type's name into a name.`
 
-`Append "_put the "_ then the type's name then "_'s first into a "_ then the name then "_. "_ to the routine's body string.`
+`append "put the "_ then the type's name then "_'s first into a "_ then the name then "_. "_ to the routine's body string.`
 
-`Append "_remove the "_ then the name then "_ from the "_ then the type's name then "_. "_ to the routine's body string.`
+`append "remove the "_ then the name then "_ from the "_ then the type's name then "_. "_ to the routine's body string.`
 
-`Append "_destroy the "_ then the name then "_. "_ to the routine's body string.`
+`append "destroy the "_ then the name then "_. "_ to the routine's body string.`
 
-`Append "_repeat. "_ to the routine's body string.`
+`append "repeat. "_ to the routine's body string.`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -6428,13 +6428,13 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 `Add a routine to the routines given nil.`
 
-`Append "_destroy a "_ then the type's name to the routine's header string.`
+`append "destroy a "_ then the type's name to the routine's header string.`
 
-`Append "_if the "_ then the type's name then "_ is nil, exit. "_ to the routine's body string.`
+`append "if the "_ then the type's name then "_ is nil, exit. "_ to the routine's body string.`
 
-`If the type's target type can be reduced to "_pointer", append "_destroy the "_ then the type's name then "_'s target. "_ to the routine's body string.`
+`If the type's target type can be reduced to "_pointer", append "destroy the "_ then the type's name then "_'s target. "_ to the routine's body string.`
 
-`If the type's target type can be reduced to "_things", append "_destroy the "_ then the type's name then "_'s target. "_ to the routine's body string.`
+`If the type's target type can be reduced to "_things", append "destroy the "_ then the type's name then "_'s target. "_ to the routine's body string.`
 
 `Loop.`
 
@@ -6446,11 +6446,11 @@ Again, no tilde in the routine name since a programmer may want to call these ro
 
 `If the field's type should not be forgotten, repeat.`
 
-`Append "_destroy the "_ then the type's name then "_'s "_ then the field's name then "_. "_ to the routine's body string.`
+`append "destroy the "_ then the type's name then "_'s "_ then the field's name then "_. "_ to the routine's body string.`
 
 `Repeat.`
 
-`Append "_deallocate the "_ then the type's name then "_. "_ to the routine's body string.`
+`append "deallocate the "_ then the type's name then "_. "_ to the routine's body string.`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -7461,7 +7461,7 @@ If the variable is a global, and the programmer wants us to initialize it with a
 
 `If the monikette's current substring is not blank, append the monikette's current substring to the moniker; exit.`
 
-`If the monikette's current type is not nil, append "_[_" and the monikette's current type's name and "_]_" to the moniker (fast); exit.`
+`If the monikette's current type is not nil, append "[_" and the monikette's current type's name and "_]_" to the moniker (fast); exit.`
 
 
 `To bubble a monikette:`
@@ -9289,19 +9289,19 @@ Now that we know everything in the source checks out, it's time to add one more 
 
 `Add a routine to the routines given nil.`
 
-`Append "_~initialize before run and run and finalize after run_" to the routine's header string.`
+`append "~initialize before run and run and finalize after run_" to the routine's header string.`
 
-`Append "_initialize before run. "_ to the routine's body string.`
+`append "initialize before run. "_ to the routine's body string.`
 
 `Append the global initializers to the routine's body string.`
 
-`Append "_run. "_ to the routine's body string.`
+`append "run. "_ to the routine's body string.`
 
 `Append the global finalizers to the routine's body string.`
 
-`Append "_finalize after run. "_ to the routine's body string.`
+`append "finalize after run. "_ to the routine's body string.`
 
-`Append "_call "_"kernel32.dll"_" "_"ExitProcess"_" with 0. "_ to the routine's body string.`
+`append "call "_"kernel32.dll"_" "_"ExitProcess"_" with 0. "_ to the routine's body string.`
 
 `Slap the routine's routine header on the routine's header string.`
 
@@ -9342,7 +9342,7 @@ Now that we know everything in the source checks out, it's time to add one more 
 
 `If the global's type should not be finalized, repeat.`
 
-`Append "_~finalize the "_ then the global's name then "_. "_ to the string.`
+`append "~finalize the "_ then the global's name then "_. "_ to the string.`
 
 `Repeat.`
 
