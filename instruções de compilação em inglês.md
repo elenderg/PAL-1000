@@ -22,7 +22,7 @@ So let's get to it.
 `Put the lightest sky color into the desktop color.`
 
 
-6. Now it's time to geld our boy, so he can grow a new pair, bit by bit. In the Compiler file, use the Select All command followed by the Comment command (`CTRL-T`) to "_comment out_" the whole file. All the text will turn a delightful shade of blue.
+6. Now it's time to geld our boy, so he can grow a new pair, bit by bit. In the Compiler file, use the `Select All` command followed by the Comment command (`CTRL-T`) to "_comment out_" the whole file. All the text will turn a delightful shade of blue.
 
 
 The CAL's son will no longer compile or run because certain types and routines that are defined in the compiler file are referenced elsewhere in the program. So we have to put those things back. And while we're doing that, we're going to put most of the compiler's "_infrastructure_" and "_testing_" routines back as well.
