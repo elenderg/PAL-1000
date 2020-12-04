@@ -3225,7 +3225,7 @@ And now you know why primitive programming languages don't allow spaces in names
 
 
 
-89. Some types, like "_An inch is 1440 twips", are "_unit of measure_" types. The CAL uses such types to automatically convert units of measure at compile time. These types are scanned by this guy:
+89. Some types, like "`An inch is 1440 twips`", are "`unit of measure`" types. The CAL uses such types to automatically convert units of measure at compile time. These types are scanned by this guy:
 
 
 `To scan a type given a rider (unit of measure):`
@@ -3648,7 +3648,7 @@ Thirdly, you'll notice that record types have their fields listed as variables, 
 `/variable/field/no/address////00000000/no/1/no////`
 
 
-If you skip down to the next section of the listing (just find "_GLOBALS:" with no quotes and a colon on the end), you'll see lots of globals, with their types filled in, but with zeros in their addresses, like this:
+If you skip down to the next section of the listing (just find "`GLOBALS:`" with no quotes and a colon on the end), you'll see lots of globals, with their types filled in, but with zeros in their addresses, like this:
 
 
 `/variable/global/no/adding built-in memory routines timer//timer//00000000/no/1/no////`
@@ -3832,7 +3832,7 @@ Okay, you know the drill.
 `Stop the resolving types timer.`
 
 
-103: First Pass: (a) make a new record type with previous and next pointers on the front for every type defined as a "_thing"; make the original type look like a pointer to the new record type; and add the implied types needed for easy list making as well:
+103: First Pass: (a) make a new record type with previous and next pointers on the front for every type defined as a "`thing`"; make the original type look like a pointer to the new record type; and add the implied types needed for easy list making as well:
 
 
 `To resolve some types (expand things):`
@@ -4499,7 +4499,10 @@ And here's another notable example. In the compiler we define a "_source file_" 
 `A source file is a thing with a path and a buffer.`
 
 
-But now that our types have been resolved, that definition has been modified and expanded to include (a) a "_source file_" type that is nothing but a pointer to a "_source file record"; (b) a "_source file record_" that has "_next source file_" and "previous source file_" pointers on the front for easy chaining; and (c) a compiler-generated type, "_source files_" (plural) with "_first source file_" and "last source file_" fields that can be used as the anchor for a list. Here they are in the listing:
+But now that our types have been resolved, that definition has been modified and expanded to include 
+(a) a "`source file`" type that is nothing but a pointer to a "`source file record`"; 
+(b) a "`source file record`" that has "`next source file`" and "`previous source file`" pointers on the front for easy chaining; and 
+(c) a compiler-generated type, "`source files`" (_plural_) with "`first source file`" and "`last source file`" fields that can be used as the anchor for a list. Here they are in the listing:
 
 
 `/ - type/source file/source files/FFFFFFFF/thing/thing/source file record/source file record/0/`
@@ -4739,7 +4742,7 @@ Next up: Resolving global variables.
 `Index the literal.`
 
 
-122. We use the word "_compile_" here (instead of just "_scan" or "resolve") since we're actually getting to the place where we are formatting some of the information in the source code exactly as it will appear in the executable file. Specifically, literals used to initialize global variables:
+122. We use the word "`compile`" here (instead of just "_scan_" or "_resolve_") since we're actually getting to the place where we are formatting some of the information in the source code exactly as it will appear in the executable file. Specifically, literals used to initialize global variables:
 
 
 `To compile a literal given a rider:`
@@ -4922,7 +4925,7 @@ Next up: Resolving global variables.
 `Resolve the literal.`
 
 
-125. We'll be needing this decider to peek ahead a little so we can spot units-of-measure that follow numeric literals (like the "_inches_" part of "_3 inches":
+125. We'll be needing this decider to peek ahead a little so we can spot units-of-measure that follow numeric literals (like the "_inches_" part of "3 inches":
 
 
 `To decide if a rider is followed by any unit of measure:`
@@ -5006,7 +5009,7 @@ Next up: Resolving global variables.
 `/variable/global/no/call internal tag//tag/tag/00000000/no/1/no//~L4//`
 
 
-Note the "_~L1_" and "~L2_" and similar literal names near the end of the tag globals above. Now jump to the "_LITERALS:_" Section and you'll see those very literals with their values, backways, ready for inclusion in our executable file:
+Note the "_~L1_" and "_~L2_" and similar literal names near the end of the tag globals above. Now jump to the "`LITERALS:`" Section and you'll see those very literals with their values, backways, ready for inclusion in our executable file:
 
 
 `LITERALS:`
@@ -5145,7 +5148,7 @@ Then let's consider an example from the Cal Monet. The moniker for this routine.
 `create [work] from/given/with/using [url]`
 
 
-It consists of 4 "_monikettes": the string "_create", the parameter type "_[work]", the string "_from/given/with/using", and the parameter type "_[url]".
+It consists of 4 "`monikettes`": the string "`create`", the parameter type "`[work]`", the string "`from/given/with/using`", and the parameter type "`[url]`".
 
 
 132. We should uncomment the monikette thing now...
@@ -5166,7 +5169,7 @@ It consists of 4 "_monikettes": the string "_create", the parameter type "_[work
 `a current substring.`
 
 
-A `monikette's string` is used to hold string-type monikettes (like "_create" or "from/given/with/using"), while a `monikette's type` points to the type definition of a parameter. A `monikette's variable` isn't used until later, when we parse expressions.
+A `monikette's string` is used to hold string-type monikettes (like "`create`" or "`from/given/with/using`"), while a `monikette's type` points to the type definition of a parameter. A `monikette's variable` isn't used until later, when we parse expressions.
 
 
 A routine record has a list of monikettes and a list of parameters in it. As we compile a routine header, we hang the routine's parameters on the parameter list, and the monikettes (both string and parameter types) on the monikette list.
@@ -5553,7 +5556,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 `Move the rider (compiler rules).`
 
 
-138. This special guy handles "_renamed parameters_" in a routine header (like "_a number called x"):
+138. This special guy handles "_renamed parameters_" in a routine header (like "_a number called x_"):
 
 
 `To compile the call'd part given a rider and a variable:`
@@ -5614,7 +5617,7 @@ A routine record has a list of monikettes and a list of parameters in it. As we 
 `Say no.`
 
 
-When a decider is written with a "_positive_" header, the CAL will understand both the positive and negative forms. For example, "_To decide if a string is blank_" will automatically serve as "_to decide if a string is not blank".
+When a decider is written with a "_positive_" header, the CAL will understand both the positive and negative forms. For example, "_To decide if a string is blank_" will automatically serve as "_to decide if a string is not blank_".
 
 
 140. Since there's a lot of string concatenation required in monikette-to-moniker conversions, and since we do those a lot, we added in this helper to make those concatenations faster than usual:
@@ -6119,7 +6122,10 @@ We saw earlier (in the "_resolve the types_" step) that when a programmer define
 `A source file is a thing with a path and a buffer.`
 
 
-...is modified and expanded to include (a) a "_source file_" type that is nothing but a pointer to a "_source file record"; (b) a "_source file record_" that has the same fields as the programmer specified plus "_next source file_" and "previous source file_" pointers on the front for easy chaining; and (c) a compiler-generated type, "_source files_" (plural) with "_first source file_" and "last source file_" fields that can be used as the anchor for a list. Here they are in the listing:
+...is modified and expanded to include 
+(a) a "`source file`" type that is nothing but a pointer to a "`source file record`"; 
+(b) a "`source file record`" that has the same fields as the programmer specified plus "`next source file`" and "`previous source file`" pointers on the front for easy chaining; and 
+(c) a compiler-generated type, "`source files`" (plural) with "`first source file`" and "`last source file`" fields that can be used as the anchor for a list. Here they are in the listing:
 
 
 `/ - type/source file/source files/FFFFFFFF/thing/thing/source file record/source file record/0/`
