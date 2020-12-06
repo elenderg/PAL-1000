@@ -4,8 +4,8 @@
 <img src="imagens/tela.png" alt="Tela do Programa" width="1280" height="1204">
  </p>
 Este Projeto é baseado na [Plain English Programming Language](https://osmosianplainenglishprogramming.blog/) .
-Os arquivos originais do projeto podem ser obtidos [aqui](http://www.osmosian.com/cal-4700.zip).
-A documentação original (em inglês) está disponível [aqui](http://www.osmosian.com/instructions.pdf).
+Os arquivos originais do projeto podem ser obtidos [aqui](http://www.osmosian.com/cal-4700.zip) .
+A documentação original (em inglês) está disponível [aqui](http://www.osmosian.com/instructions.pdf) .
 
 
 # Estrutura dos Arquivos
