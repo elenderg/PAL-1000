@@ -1,0 +1,14 @@
+To receive a buffer from a socket:
+Clear the i/o error.
+Clear the buffer.
+Put 8 kilobytes into a buffer size.
+Loop.
+Put 0 into a size. 
+Put the buffer's length into a saved length.
+Reassign the buffer's first given the saved length plus the buffer size.
+Put the buffer's first plus the saved length into a  pointer.
+Call "ws2_32.dll" "recv" with the socket and the pointer and the buffer size and 0 returning a count.
+If the count is not -1 [socket_error], put the pointer plus the count minus 1 into the buffer's last; exit.
+If the system's last winsock error is not 10040 [wsamsgsize], put "Error receiving data." into the i/o error; clear the buffer; exit.
+Put the pointer plus the count minus 1 into the buffer's last.
+Repeat.

@@ -1,0 +1,24 @@
+To draw a string at a spot with a color and a font (pdf style):
+If the string is blank, exit.
+Privatize the spot. 
+Include the font in the current pdf.
+Include the font in the pdf state's current page.
+Find a definition pdf object given the font's name and the pdf state's font index.
+If the definition is nil, exit. \ error
+Create a font info given the font and the string.
+Output the pdf border given the color.
+Output the pdf fill given the color.
+Output "BT".
+Output "/" then the definition's font name then " " then the font's adjusted height then " Tf".
+\  add the font's adjusted height minus the font info's internal leading to the spot's y. \ just plain wrong
+Add the font info's ascent to the spot's y. \ fix for line above
+Output the spot without advancing.
+Output "Td".
+Output "[" without advancing.
+Convert the font info to pdf em units.
+Convert the string and the font info and the definition's font info into a buffer for pdf output.
+Output the buffer without advancing.
+Output "]" without advancing.
+Output " TJ".
+Output "ET".
+Destroy the font info.

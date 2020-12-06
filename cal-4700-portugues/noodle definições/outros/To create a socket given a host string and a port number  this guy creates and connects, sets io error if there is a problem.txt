@@ -1,0 +1,19 @@
+To create a socket given a host string and a port number: \ this guy creates and connects, sets i/o error if there is a problem
+Clear the i/o error.
+\ get sockaddr
+Get a sockaddr given the host.
+If the i/o error is not blank, exit.
+Put 2 [af_inet] into the sockaddr's sin_family.
+Put the port into the sockaddr's sin_port.
+\ create socket 
+Call "ws2_32.dll" "socket" with 2 [af_inet] and 1 [sock_stream] and 0 [ipproto_ip] returning the socket.
+If the socket is -1, put "Could not create socket." into the i/o error; exit.
+\ connect socket
+Call "ws2_32.dll" "connect" with the socket and the sockaddr's whereabouts and the sockaddr's magnitude returning a result number.
+If the result is not 0, put "Could not connect to socket." into the i/o error; exit.
+\ set send timeout 30 seconds
+Call "ws2_32.dll" "setsockopt" with the socket and 65535 and 4101 [so_sndtimo] and 30 seconds' whereabouts and 4 returning the result number.
+If the result is not 0, put "Could not set receive timeout." into the i/o error; exit.
+\ set receive timeout 30 seconds
+Call "ws2_32.dll" "setsockopt" with the socket and 65535 and 4102 [so_rcvtimeo] and 30 seconds' whereabouts and 4 returning the result number.
+If the result is not 0, put "Could not set receive timeout." into the i/o error; exit.

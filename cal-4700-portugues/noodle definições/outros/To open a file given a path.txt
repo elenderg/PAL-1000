@@ -1,0 +1,10 @@
+To open a file given a path:
+Clear the i/o error.
+Extract a directory from the path.
+If the directory is not in the file system, put "Directory '" then the directory then "' doesn't exist." into the i/o error; exit.
+Set the path to read-write mode.
+Privatize the path.
+Null terminate the path.
+Call "kernel32.dll" "CreateFileA" with the path's first and -1073741824 [generic_read+generic_write] and 0 and 0 and 4 [open_always]
+And -2147483520 [file_flag_write_through or file_attribute_normal] and 0 returning the file.
+If the file is -1 [invalid_handle_value], put "Error opening file '" then the path then "'." into the i/o error; exit.

@@ -1,0 +1,10 @@
+To put a string on the windows clipboard:
+Call "user32.dll" "OpenClipboard" with the main window.
+Call "user32.dll" "EmptyClipboard".
+Put the string's length plus 1 into a number.
+Call "kernel32.dll" "GlobalAlloc" with 66 [ghnd] and the number returning a handle.
+Call "kernel32.dll" "GlobalLock" with the handle returning a pointer.
+Copy bytes from the string's first to the pointer for the string's length.
+Call "kernel32.dll" "GlobalUnlock" with the handle.
+Call "user32.dll" "SetClipboardData" with 1 [cf_text] and the handle.
+Call "user32.dll" "CloseClipboard".

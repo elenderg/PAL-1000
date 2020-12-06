@@ -1,0 +1,18 @@
+To put a string's length into a length:
+Intel $8B9D08000000. \ mov ebx,[ebp+8] \ the string
+\ load default result
+Intel $B900000000. \ mov ecx,0
+\ if first is 0, store 0
+Intel $833B00. \ cmp [ebx],0
+Intel $0F8414000000. \ je store it
+\ if last is less than first, store 0
+Intel $8B5304. \ mov edx,[ebx+4] \ last pointer
+Intel $3B13. \ cmp edx,[ebx]
+Intel $0F8C09000000. \ jl store it
+\ calc length
+Intel $8B8B04000000. \ mov ecx,[ebx+4] \ last pointer
+Intel $2B0B. \ sub ecx,[ebx] \ subtract first
+Intel $41. \ inc ecx \ add 1
+\ STORE IT:
+Intel $8B950C000000. \ mov edx,[ebp+12] \ the number
+Intel $890A. \ mov [edx],ecx
