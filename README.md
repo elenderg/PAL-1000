@@ -1,11 +1,7 @@
 # Portugues-Puro
 
-<!-- TELA -->
-<a href="https://github.com/elenderg/Portugues-Puro">
-    <img src="images/tela.png" alt="Tela do Programa" width="1280" height="1204">
-  </a>
- <!-- FIM DA IMAGEM TELA -->
 
+<img src="images/tela.png" alt="Tela do Programa" width="1280" height="1204">
 Este Projeto é baseado na *[Plain English Programming Language](https://osmosianplainenglishprogramming.blog/)* .
 Os arquivos originais do projeto podem ser obtidos [aqui](http://www.osmosian.com/cal-4700.zip).
 A documentação original (em inglês) está disponível [aqui](http://www.osmosian.com/instructions.pdf).
