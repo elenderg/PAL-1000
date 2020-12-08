@@ -1,14 +1,13 @@
 # Portugues-Puro
 
-<!-- TELA -->
-<a href="https://github.com/elenderg/Portugues-Puro">
-    <img src="images/tela.png" alt="Tela do Programa" width="1280" height="1204">
-  </a>
- <!-- FIM DA IMAGEM TELA -->
+<p>
+<img src="imagens/tela.png" alt="Tela do Programa" width="1280" height="1204">
+ </p>
 
-Este Projeto é baseado na *[Plain English Programming Language](https://osmosianplainenglishprogramming.blog/)* .
-Os arquivos originais do projeto podem ser obtidos [aqui](http://www.osmosian.com/cal-4700.zip).
-A documentação original (em inglês) está disponível [aqui](http://www.osmosian.com/instructions.pdf).
+
+Este Projeto é baseado na [Plain English Programming Language](http://osmosianplainenglishprogramming.blog/).
+Os arquivos originais do projeto podem ser obtidos [aqui](http://www.osmosian.com/cal-4700.zip) e na pasta [cal-4700](https://github.com/elenderg/Portugues-Puro/tree/main/cal-4700).
+A documentação original (em inglês) está disponível [aqui](http://www.osmosian.com/instructions.pdf) e na pasta [documentation](https://github.com/elenderg/Portugues-Puro/tree/main/cal-4700/documentation).
 
 
 # Estrutura dos Arquivos
@@ -26,9 +25,9 @@ O compilador é composto de basicamente 6 arquivos:
 ## Funcionamento
 
 A interface pode parecer confusa para alguns no começo. Existem 26 caracteres de A a Z, cada um correspondendo a um menu específico,  
-<img src="images/menus.png" Alt="Menu do programa">
+<img src="imagens/menus.png" Alt="Menu do programa">
 - além do botão "*" que é utilizado para selecionar a paleta de cores. 
- <img src="images/✷.png" Alt="Paleta de cores">
+ <img src="imagens/✷.png" Alt="Paleta de cores">
 
 
 Boa parte dos sub-menus possui uma tecla de atalho que pode ser acessada com _Ctrl_ ou _Alt_ (na maior parte das vezes qualquer uma das teclas funciona).
@@ -36,16 +35,16 @@ Boa parte dos sub-menus possui uma tecla de atalho que pode ser acessada com _Ct
 Ao lado dos botões existe uma barra que exibe informações diversas, dependendo do contexto, por exemplo: 
 
  - linha e coluna
- <img src="images/linhacoluna.png">
+ <img src="imagens/linhacoluna.png">
  - texto copiado
- <img src="images/copiado.png">
+ <img src="imagens/copiado.png">
  - texto colado
- <img src="images/colado.png">
+ <img src="imagens/colado.png">
  - quantidade de linhas selecionadas
- <img src="images/quantidadedelinhasselecionadas.png">
+ <img src="imagens/quantidadedelinhasselecionadas.png">
  
 
 No momento o programa ainda não possui barra de rolagem nem botões de Maximizar, Minimizar ou Fechar. (Para sair do Programa, pressione _Alt+Q_, para Fechar um arquivo, pressione _Ctrl + W_ . Para descer linhas utilize a seta para baixo ↓ ou clique com o botão direito do mouse e arraste.
 
 Existem projetos como o [CAL-4018](https://github.com/Folds/english) que adicionam esses elementos, porém o foco agora é traduzir a interface e a linguagem para o Português Brasileiro.
- <img src="images/cal4018.png">
+ <img src="imagens/cal4018.png">
