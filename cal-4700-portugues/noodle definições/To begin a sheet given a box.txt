@@ -1,0 +1,26 @@
+To begin a sheet given a box:
+If the pdf state's document flag is set, begin the sheet given the box (pdf style); exit.
+Call "kernel32.dll" "GlobalLock" with the printer device mode handle returning a pdevmode.
+If the pdevmode is nil, exit.
+Bitwise or the pdevmode's dmfields with 1 [dm_orientation].
+Put 1 [dmorient_portrait] into the pdevmode's dmorientation.
+If the box's width is greater than the box's height, put 2 [dmorient_landscape] into the pdevmode's dmorientation.
+Call "gdi32.dll" "ResetDCA" with the printer canvas and the pdevmode.
+Call "kernel32.dll" "GlobalUnlock" with the printer device mode handle.
+Call "gdi32.dll" "SetGraphicsMode" with the printer canvas and 2 [gm_advanced].
+Call "gdi32.dll" "SetBkMode" with the printer canvas and 1 [transparent].
+Call "gdi32.dll" "SetMapMode" with the printer canvas and 8 [mm_anisotropic].
+Call "gdi32.dll" "GetDeviceCaps" with the printer canvas and 112 [physicaloffsetx] returning a pair's x.
+Call "gdi32.dll" "GetDeviceCaps" with the printer canvas and 113 [physicaloffsety] returning the pair's y.
+Negate the pair.
+Call "gdi32.dll" "SetViewportOrgEx" with the printer canvas and the pair's x and the pair's y and nil.
+Call "gdi32.dll" "GetDeviceCaps" with the printer canvas and 88 [logpixelsx] returning the pair's x.
+Call "gdi32.dll" "GetDeviceCaps" with the printer canvas and 90 [logpixelsy] returning the pair's y.
+Call "gdi32.dll" "SetViewportExtEx" with the printer canvas and the pair's x and the pair's y and nil.
+Call "gdi32.dll" "SetWindowOrgEx" with the printer canvas and 0 and 0 and nil.
+Call "gdi32.dll" "SetWindowExtEx" with the printer canvas and the tpi and the tpi and nil.
+Call "gdi32.dll" "StartPage" with the printer canvas.
+Put the printer canvas into the current canvas.
+Call "gdi32.dll" "GetDeviceCaps" with the printer canvas and 88 [logpixelsx] returning a number.
+Put the tpp into the saved tpp.
+Put the tpi divided by the number into the tpp.

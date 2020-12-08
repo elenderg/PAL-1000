@@ -1,0 +1,17 @@
+To draw a picture (pdf style):
+If the picture is nil, exit.
+Put the picture's box's left minus the picture's uncropped box's left divided by the tpp into an x number.
+Put the picture's box's top minus the picture's uncropped box's top divided by the tpp  into an y number.
+Put the picture's box's width divided by the tpp into a width.
+Put the picture's box's height divided by the tpp into a height.
+Call "gdiplus.dll" "GdipCreateBitmapFromScan0" with the width and the height and 0 and 137224 [pixelformat24bpprgb] and 0 and a gpbitmap's whereabouts.
+Call "gdiplus.dll" "GdipGetImageGraphicsContext" with the gpbitmap and a gpgraphic's whereabouts.
+If the picture's grayscale flag is set, create a gpimageattributes (grayscale).
+Call "gdiplus.dll" "GdipDrawImageRectRectI" with the gpgraphic and the picture's gpbitmap
+And 0 and 0 and the width and the height
+And the x and the y and the width and the height
+And 2 [unitpixel] and the gpimageattributes and nil and 0.
+If the gpimageattributes is not nil, destroy the gpimageattributes.
+Call "gdiplus.dll" "GdipDeleteGraphics" with the gpgraphic.
+Draw the gpbitmap at the picture's box's left-top (pdf style).
+Call "gdiplus.dll" "GdipDisposeImage" with the gpbitmap.

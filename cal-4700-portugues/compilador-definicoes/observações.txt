@@ -1,0 +1,67 @@
+BYTE and RECORD are defined in the compiler, in this routine...
+ 
+To add the built-in types:
+Add a built-in type given "byte" and "bytes" and 1.
+Add another built-in type given "record" and "records" and 0.
+ 
+...that calls this routine:
+
+To add a built-in type given a name and a plural name and a length:
+Add the built-in type to the types given the name and the plural name and the name.
+Put the length into the built-in type's length.
+Put the built-in type into the built-in type's base type.
+Index the built-in type.
+ 
+The rest of the basic types are defined in terms of those two types in the Noodle, as described below.
+ 
+A wyrd has a low byte and a high byte.
+ 
+Note that the keyword "has" in a type definition is shorthand for "is a record with". This is defined in the EBNF like this (note the second line):
+ 
+type = A name IS A type-name [ optional-info ] .
+        = A name HAS fields .
+        = A name IS number-token type-name .
+
+Since "record" is a type, the long "is a record with" version is covered by the "WITH fields" part of the optional-info" part:
+ 
+optional-info = TO A type-name | WITH fields
+ 
+By the way, we spelled "wyrd" like "byte" so we could use "word" in its ordinary sense elsewhere. Here are the rest of the basic types, as defined in the Noodle:
+
+A number has
+a first byte,
+a second byte,
+a third byte,
+a fourth byte,
+a low wyrd at the first byte,
+a high wyrd at the third byte.
+ 
+A pointer has 4 bytes.
+
+A string has a first byte pointer and a last byte pointer.
+
+I understand the these are "built-in" types. Can I rename and create a new compiler with the translated types?
+ 
+Yes you can -- but you will have to either:
+ 
+(1) change all the references to the old names in all the other files (noodle, desktop, finder, editor, compiler and writer) to match your new names, or
+ 
+(2) as a temporary fix, include redefinitions of the old types in terms of your new types, like this...
+ 
+A number is um número.
+ 
+…which is the opposite of the technique we used with the SAL, like this:
+ 
+Un número es a number.
+ 
+Either approach (1) or (2) will eventually get you to a completely Portuguese system. I don't know which will be easier.
+ 
+By the way, the accented ú above reminds me that the SAL includes special string comparison routines to make string comparisons and the editor's find facility work properly with accented characters. I think you will be better off starting with the SAL than the CAL. Did Pablo give you a copy, or tell you how to get one?
+ 
+Also, I would like a in-depth explanation of the basic types.
+For example: 
+ 
+Strings -> Record + byte pointers
+Pointer -> 32-bit Memory addresses
+ 
+A pointer is just a number; an address in memory. Addresses above 2147483647 belong to Windows. Since Windows uses "unsigned doublewords" for addresses and we use signed integers for all numbers, addresses that belong to Windows look to us like negative numbers (bit 32 is the sign bit); so all positive addresses are ours.
