@@ -1,5 +1,7 @@
 # Portugues-Puro
 
+[![Crowdin](https://badges.crowdin.net/portugues-puro/localized.svg)](https://crowdin.com/project/portugues-puro)
+
 <p>
 <img src="imagens/tela.png" alt="Tela do Programa" width="1280" height="1204">
  </p>
