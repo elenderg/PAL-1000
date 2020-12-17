@@ -3,7 +3,7 @@
 [![Crowdin](https://badges.crowdin.net/portugues-puro/localized.svg)](https://crowdin.com/project/portugues-puro)
 
 <p>
-<img src="imagens/tela.png" alt="Tela do Programa" width="1280" height="1204">
+<img src="Imagens-Para-o-Readme/tela.png" alt="Tela do Programa" width="1280" height="1204">
  </p>
 
 
@@ -27,9 +27,9 @@ O compilador é composto de basicamente 6 arquivos:
 ## Funcionamento
 
 A interface pode parecer confusa para alguns no começo. Existem 26 caracteres de A a Z, cada um correspondendo a um menu específico,  
-<img src="imagens/menus.png" Alt="Menu do programa">
+<img src="Imagens-Para-o-Readme/menus.png" Alt="Menu do programa">
 - além do botão "*" que é utilizado para selecionar a paleta de cores. 
- <img src="imagens/✷.png" Alt="Paleta de cores">
+ <img src="Imagens-Para-o-Readme/✷.png" Alt="Paleta de cores">
 
 
 Boa parte dos sub-menus possui uma tecla de atalho que pode ser acessada com _Ctrl_ ou _Alt_ (na maior parte das vezes qualquer uma das teclas funciona).
@@ -37,16 +37,16 @@ Boa parte dos sub-menus possui uma tecla de atalho que pode ser acessada com _Ct
 Ao lado dos botões existe uma barra que exibe informações diversas, dependendo do contexto, por exemplo: 
 
  - linha e coluna
- <img src="imagens/linhacoluna.png">
+ <img src="Imagens-Para-o-Readme/linhacoluna.png">
  - texto copiado
- <img src="imagens/copiado.png">
+ <img src="Imagens-Para-o-Readme/copiado.png">
  - texto colado
- <img src="imagens/colado.png">
+ <img src="Imagens-Para-o-Readme/colado.png">
  - quantidade de linhas selecionadas
- <img src="imagens/quantidadedelinhasselecionadas.png">
+ <img src="Imagens-Para-o-Readme/quantidadedelinhasselecionadas.png">
  
 
 No momento o programa ainda não possui barra de rolagem nem botões de Maximizar, Minimizar ou Fechar. (Para sair do Programa, pressione _Alt+Q_, para Fechar um arquivo, pressione _Ctrl + W_ . Para descer linhas utilize a seta para baixo ↓ ou clique com o botão direito do mouse e arraste.
 
 Existem projetos como o [CAL-4018](https://github.com/Folds/english) que adicionam esses elementos, porém o foco agora é traduzir a interface e a linguagem para o Português Brasileiro.
- <img src="imagens/cal4018.png">
+ <img src="Imagens-Para-o-Readme/cal4018.png">
