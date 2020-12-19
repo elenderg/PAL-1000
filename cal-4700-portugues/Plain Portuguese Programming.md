@@ -341,8 +341,6 @@ Print, and CTRL-Q for Quit. We'll handle ALT-P and ALT-Q as synonyms.
 ```
 The HAL 9000_ Working... Print Quit
 ```
-## (2)
-
 ```
 An original portrait,
 in the style of Claude Monet,
@@ -355,8 +353,6 @@ to print
 Messages
 go here.
 ```
-## (1)
-
 We type the name of
 any person, place, or thing
 here, and press
@@ -1050,7 +1046,7 @@ screen. Finally, we use the Quit button's left — which was calculated in the
 ```
 Print Quit
 ```
-## ??
+
 
 ```
 The print button is a button.
@@ -1445,7 +1441,7 @@ Now let's start at the ENTER key and work our way down. Here's the code:
 
 If the text is blank, there's nothing to do; we object with a cluck and exit.
 
-Otherwise, we put up a status message (in case Googley is busy and doesn't
+Otherwise, we put up a status message (in case Google is busy and doesn't
 respond right away). Then we formulate a request using a literal string and
 an HTML-compatible version of the text, reading the response into a buffer
 (which is just a fancy name for a string).
@@ -2906,19 +2902,21 @@ box IS INSIDE or IS TOUCHING another box. And whether or not a certain
 spot IS IN a box or IS ON the edge of a box. Not to mention all the other
 "Graphic Transformations" you can read about elsewhere in this glossary.
 
-## LEFT RIGHT
+```
+LEFT RIGHT
 
-## TOP
+TOP
 
-## BOTTOM
+BOTTOM
 
-## LEFT-TOP
+LEFT-TOP
 
-## RIGHT-BOTTOM
+RIGHT-BOTTOM
+```
 
-## •
 
-## •
+
+## 
 
 
 ## BUILT-IN TYPES
@@ -3116,40 +3114,34 @@ Good morning, Dr. Chandra. I'm ready for my first lesson.
 
 ## DEBUGGING
 
-```
 Let's begin this topic with an Osmosian verity: "Debuggers are for sissies".
-```
-```
+
 If you need a special tool to help you fix your code, something is seriously
 wrong. Either you're not testing enough as you go along, or your code is
 hopelessly convoluted. Or you're in the wrong occupation.
-```
-```
+
 I will now tell you what the Osmosian Masters do when faced with a bug.
-```
-```
+
 They pray for guidance. Then they consider deleting the offending feature
 altogether, to resolve the problem and prevent "feature creep" at the same
 time. Next, they study the code, hoping to simply "discern" what the problem
 is. If the bug has not been found, they pick an appropriate spot and insert a
 buzz. If they hear it on the next run, they pick another spot further down the
 line, and try again. If there is no buzz, they repeat the entire process.
-```
-```
+
 In those very rare cases when several iterations of the above procedure fail
 to produce an acceptable conclusion, they pick another spot in the code and
 insert a call like this:
-```
+
 ```
 DEBUG something.
-```
 ```
 Where "something" represents a box, byte, color, flag, font, line, number,
 pair, pointer, ratio, spot, string, or wyrd. When they run the modified code,
 the kluge's ghastly message box appears with a clue inside. The horrid look
 of the box motivates them to further prayer and renewed determination to
 solve the problem, and thus armed, they return to the first step.
-```
+
 I offer my own existence as proof of the sufficiency of these techniques.
 And I am confident that all future bugs — except, perhaps, for an unexpected
 "h-mobius loop" — will be rooted out in the same manner.
@@ -3157,39 +3149,34 @@ And I am confident that all future bugs — except, perhaps, for an unexpected
 
 ## DECIDERS
 
-```
 A "decider" is a routine that says "yes" or "no" about something. Examples:
-```
+
 ```
 To decide if a spot is in a box:
 To decide if a number is greater than another number:
 To decide if something is selected in a text:
 ```
-```
 Decider routines always start with the same three words. The format is:
-```
+
 ```
 TO DECIDE IF something:
-```
 ```
 The "something" should follow the usual rules for routine names and will
 typically include a verb like ARE, BE, CAN, COULD, DO, DOES, IS, MAY, SHOULD,
 WAS, WILL, or WOULD. Note that I consider ARE and IS to be synonyms.
-```
-```
+
 I can save you some work if you name your deciders in a "positive" way. In
 particular, avoid the words NOT, CANNOT, NOTHING, and any contraction
 ending in N'T in your decider names. Then, if I see one of these words in a
 decider call, I can simply change it to its positive form, invoke the routine
 identified by the revised name, and reverse the decision.
-```
-```
+
 For example, once you tell me how "to decide if a spot is in a box", I will know
 how "to decide if a spot is NOT in a box". When you tell me how "to decide if
 a number is greater than another number", I will know how "to decide if a
 number ISN'T greater than another number". And if you say how "to decide
 if something is selected", I will know how "to decide if NOTHING is selected".
-```
+
 Inside your deciders, you tell me what to do with conditional and imperative
 statements — as in any other routine. You may not, however, use the EXIT
 imperative in a decider, and you must take care that you don't inadvertently
@@ -3208,6 +3195,7 @@ make the negatives of these, too. But please don't try to memorize them.
 That's not at all the idea. Just say what you want to say in your program,
 and if I don't understand, add to my collection and make me smarter.
 
+```
 ## IS
 
 ## IS ALPHANUMERIC
@@ -3291,23 +3279,32 @@ and if I don't understand, add to my collection and make me smarter.
 
 ## DRAWING
 
+
+```
+
 You can tell me to do things like:
 
+```
 DRAW something.
 DRAW something WITH a color.
 DRAW something WITH a border color AND a fill color.
 DRAW something IN a box WITH a font AND a color.
 DRAW something IN THE CENTER OF a box WITH a color AND a font.
+```
 
 And I will render everything on "the memory canvas", an invisible drawing
 surface the same size and shape as the screen. Then when you say:
 
+```
 REFRESH THE SCREEN.
+```
 
 I will slap the contents of the memory canvas on the display in the blink of an
 eye. Actually, faster. With nary a flicker. If you say:
 
+```
 REFRESH THE SCREEN GIVEN a box.
+```
 
 I will transfer only those pixels that fall within the box.
 
@@ -3353,6 +3350,7 @@ WIDTH, HEIGHT, and CENTER, among other things. I can even tell if a spot
 IS IN an ellipse or IS ON the edge of an ellipse. Not to mention all the usual
 "Graphic Transformations" you can read about elsewhere in this glossary.
 
+```
 ## LEFT RIGHT
 
 ## TOP
@@ -3362,32 +3360,15 @@ IS IN an ellipse or IS ON the edge of an ellipse. Not to mention all the usual
 ## LEFT-TOP
 
 ## RIGHT-BOTTOM
+```
 
-## •
+```
+BOX
+```
 
-## •
 
-## BOX
 
-## · · · · · · · · · · · ·
-
-## · · · · · · ·
-
-## · · · · · · · · · · · ·
-
-## ·
-
-## ·
-
-## ·
-
-## ·
-
-## ·
-
-## ·
-
-## ·
+## 
 
 
 ## EVENTS
