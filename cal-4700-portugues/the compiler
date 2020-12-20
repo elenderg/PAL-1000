@@ -455,13 +455,13 @@ Abort with "Erro interno 3 - address a fragment given an address (push value)".
 
 To address a fragment given an address (save eax):
 Add 6 to the address.
-If the fragment's variable is nil, abort with "Internal error - address a fragment given an address (push value)"; exit.
-If the fragment's variable's type is nil, abort with "Internal error 2 - address a fragment given an address (push value)"; exit.
+If the fragment's variable is nil, abort with "Erro interno - address a fragment given an address (push value)"; exit.
+If the fragment's variable's type is nil, abort with "Erro interno 2 - address a fragment given an address (push value)"; exit.
 Put the fragment's variable's type's length into a length.
 If the length is 4, add 2 to the address; exit.
 If the length is 2, add 3 to the address; exit.
 If the length is 1, add 2 to the address; exit.
-Abort with "Internal error 3 - address a fragment given an address (push value)".
+Abort with "Erro interno 3 - address a fragment given an address (push value)".
 
 To address some fragments given an address:
 If the compiler's abort flag is set, exit.
@@ -834,7 +834,7 @@ Get a field from the type's fields.
 If the field is nil, exit.
 If the field's redefinition target name is blank, repeat.
 Find another field given the field's redefinition target name and the type's fields.
-If the other field is nil, abort with "Redefine inválido. EU não consigo encontrar o campo '" then the field's redefinition target name then "' field." and the field's locus; exit.
+If the other field is nil, abort with "Redefine inválido. Eu não consigo encontrar o campo '" then the field's redefinition target name then "' field." and the field's locus; exit.
 Put the other field's offset into the field's offset.
 Repeat.
 
@@ -919,7 +919,7 @@ If the variable's kind is "scratch", repeat.
 If the variable's type should not be finalized, repeat.
 Add another fragment given the push address tag and the variable.
 Find another routine given "~finalize" and the variable's type.
-If the other routine is nil, abort with "Internal error - compile the body of a routine (epilog)"; exit.
+If the other routine is nil, abort with "Erro interno - compile the body of a routine (epilog)"; exit.
 Add a third fragment given the call internal tag and the other routine.
 Repeat.
 Add a fourth fragment given the epilog tag.
@@ -1240,7 +1240,7 @@ Move the rider (compiler rules).
 If the rider's token is any indefinite article, set a flag.
 If the flag is set, compile the routine's monikettes and the routine's parameters given the rider (indefinite article).
 If the flag is not set, compile the routine's monikettes and the routine's parameters given the rider (definite article).
-If the rider's token is not any possessive, abort with "An 's is missing or misplaced here." and the rider; exit.
+If the rider's token is not any possessive, abort with "Tá faltando um 's por aqui (ou está no lugar errado)." and the rider; exit.
 Move the rider (compiler rules).
 Scan a name given the rider.
 Add another monikette to the routine's monikettes given "'s " then the name.
@@ -1250,9 +1250,9 @@ Convert the routine's monikettes to a moniker.
 If the moniker is in the routine index, abort with "Eu sá sei como '" then the moniker then "'." and the routine's locus; exit.
 Index the routine given the routine's monikettes and the routine index.
 Move the rider (compiler rules).
-If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not any indefinite article, abort with "Estava esperando um artigo indefinido, mas achei isso aqui: '" then the rider's token then "'." and the rider; exit.
 Compile the routine's monikettes and the routine's parameters given the rider (indefinite article).
-If the rider's token is not blank, abort with "There's extra stuff on the end of this function." and the rider; exit.
+If the rider's token is not blank, abort with "Tem comandos extras no fim dessa função." and the rider; exit.
 Convert the routine's monikettes to the routine's moniker.
 Index the routine given the routine's monikettes and the routine index. \ for employs
 
@@ -1278,7 +1278,7 @@ If the rider's token is any hex literal, compile the literal given the rider (he
 If the rider's token is any numeric literal, compile the literal given the rider (numeric); exit.
 If the rider's token is any pointer literal, compile the literal given the rider (pointer); exit.
 If the rider's token is any string literal, compile the literal given the rider (string); exit.
-Abort with "Internal error - compile a term given a rider (literal)" and the rider.
+Abort with "Erro interno - compile a term given a rider (literal)" and the rider.
 
 To compile a literal given a rider (flag):
 If the compiler's abort flag is set, exit.
@@ -1520,7 +1520,7 @@ If the rider's token is "call", compile the next statement given the rider (call
 If the rider's token is "point", compile the next statement given the rider (point); exit.
 If the rider's token is "if", abort with "Tente simplificar seu código. Acho que você precisa pensar nele um pouco mais." and the rider; exit.
 If the rider's token is "privatize", abort with "A palavra 'privatize' não pode ser utilizada aqui." and the rider; exit.
-If the rider's token is "loop", abort with "Looping inside an 'if' statement is a good way to lose your lunch." and the rider; exit.
+If the rider's token is "loop", abort with "Você não devia usar um Loop dentro de um 'if'. Vai dar ruim." and the rider; exit.
 If the rider's token is "employ", abort with "'Employ' must be the first and only imperative in a routine." and the rider; exit.
 Compile the next statement given the rider (call - internal).
 
@@ -1588,8 +1588,8 @@ To compile the next statement given a rider returning a term (call - returning p
 Move the rider (compiler rules).
 Compile the term given the rider.
 If the compiler's abort flag is set, exit.
-If the term's variable is nil, abort with "Eu nçao comreendi o termo da variável '" then the term's phrase then "'. Ela parece estar vazia." and the rider; exit.
-If the term's type is not value pushable, abort with "A simple 1, 2, or 4-byte variable is required in the 'returning' clause." and the rider.
+If the term's variable is nil, abort with "Eu não compreendi o termo da variável '" then the term's phrase then "'. Ela parece estar vazia." and the rider; exit.
+If the term's type is not value pushable, abort with "Uma varíavel de 1, 2, ou 4-bytes é necessária na 'returning' clause." and the rider.
 
 To compile a routine reference given a rider:
 If the rider's token is "to", move the rider (compiler rules).
@@ -1687,7 +1687,7 @@ Clear the term's phrase.
 To compile a term given a rider (dereference):
 If the compiler's abort flag is set, exit.
 If the term's variable is nil, abort with "Dereference inválido, a variável '" then the term's phrase then "' parece estar vazia." and the rider; exit.
-If the term's type's target type is nil, abort with "I'm unable to determine the type of this target." and the rider; exit.
+If the term's type's target type is nil, abort with "Não consegui identificar o tipo desse target." and the rider; exit.
 If the term's kind is "scratch", compile the term given the rider (dereference - in place); exit.
 Add a scratch given the term's type's target type's name and the rider's token's first.
 Add a fragment given the load address tag and the term's variable and the scratch.
@@ -3600,7 +3600,7 @@ Put the term's phrase into the other term's phrase.
 To load a source file:
 If the source file is nil, exit.
 Load the source file's path into the source file's buffer.
-If the i/o error is not blank, abort with "Could not load the file named '" then the source file's path then "'."; exit.
+If the i/o error is not blank, abort with "Não foi possível carregar o arquivo '" then the source file's path then "'."; exit.
 
 To load some source files:
 Loop.
@@ -3649,7 +3649,7 @@ To reindex the utility index given some refers:
 Get a refer from the refers.
 If the refer is nil, exit.
 Put the refer's pointer into a routine.
-If the routine is nil, abort with "Internal error - index the untility routines given some refers"; exit.
+If the routine is nil, abort with "Erro interno na função: index the untility routines given some refers"; exit.
 Copy the routine's monikettes into some monikettes.
 Reduce the monikettes for utility use.
 Index the routine given the monikettes and the routine index.
@@ -3888,7 +3888,7 @@ If the rider's token is "with", scan any optional info for the type given the ri
 
 To scan any optional info for a type given a rider (pointer):
 Move the rider (compiler rules).
-If the rider's token is not any indefinite article, abort with "The 'to' here needs to be followed by an indefinite article, not '" then the rider's token then "'." and the rider; exit. 
+If the rider's token is not any indefinite article, abort with "A palavra 'to' precisa de um artigo indefinido depois dela, não de um '" then the rider's token then "'." and the rider; exit. 
 Move the rider (compiler rules).
 Scan the type's target name given the rider.
 
@@ -3936,13 +3936,13 @@ Reduce the ratio.
 If the ratio's denominator is not 1, abort with "Você tem que especificar um número completo de bytes para um byte array" and the rider; exit.
 Put the ratio's numerator into the field's count.
 Move the rider (compiler rules).
-If the rider's token is not "byte" or "bytes", abort with "Nothing but the word 'bytes' is appropriate after a counted field designator." and the rider; exit.
+If the rider's token is not "byte" or "bytes", abort with "Você precisa usar a palavra 'bytes' depois de um counted field designator." and the rider; exit.
 Move the rider (compiler rules).
 Put "byte" into the field's type name.
 
 To scan a field given a rider (type part - normal):
 If the compiler's abort flag is set, exit.
-If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not any indefinite article, abort with "Falta por um artigo idefinifo aqui, mas você colocou isso: '" then the rider's token then "'." and the rider; exit.
 If the rider's token is "another", put "other" into the field's name.
 Move the rider (compiler rules).
 Scan a name given the rider.
@@ -3981,24 +3981,24 @@ Add the global to the globals given "global" and the rider's token's first.
 Move the rider (compiler rules).
 Scan the global's name given the rider.
 If the rider's token is "has" or "have", scan the global given the rider (has or have); exit.
-If the rider's token is not "is" or "are", abort with "Geez. I need an 'is' or an 'are' hereabouts, but all I found was '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not "is" or "are", abort with "VocÊ tem que usar um 'is' ou um 'are' mas você usou um '" then the rider's token then "'." and the rider; exit.
 Move the rider (compiler rules).
 If the rider's token is not any indefinite article, scan the global given the rider (literal term); exit.
 Move the rider (compiler rules).
 Scan the global's type name given the rider.  
 If the rider's token is the start of any optional info, scan the global given the rider (optional info); exit.
 If the rider's token is "equal", scan the global given the rider (data part); exit.
-If the rider's token is not the period byte, abort with "All global definitions must end with a period. Including this one." and the rider; exit. 
+If the rider's token is not the period byte, abort with "Toda definição precisa terminar com um ponto. Inclusive essa." and the rider; exit. 
 Move the rider (compiler rules).
 Index the global.
 
 To scan a global given a rider (data part):
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
-If the rider's token is not "to", abort with "I need the word 'to' after the word 'equal', not '" then the rider's token then "'." and the rider; exit. 
+If the rider's token is not "to", abort with "Depois da palavra 'equal' você precisa por a palavra  'to'. Você colocou ; '" then the rider's token then "'." and the rider; exit. 
 Move the rider (compiler rules).
 Scan the global's global body given the rider.
-If the rider's token is not the period byte, abort with "All global definitions must end with a period. Including this one." and the rider; exit. 
+If the rider's token is not the period byte, abort with "Falta terminar a frase com um ponto." and the rider; exit. 
 Move the rider (compiler rules).
 Index the global.
 
@@ -4011,14 +4011,14 @@ Add a type to the types given the name and the plural name and "record" and the 
 Index the type.
 Put the type's name into the global's type name.
 Scan the type's fields given the rider.
-If the rider's token is not the period byte, abort with "Your punctuation is bad here." and the rider; exit. 
+If the rider's token is not the period byte, abort with "Aprenda a escrever direito. Cadê o ponto?." and the rider; exit. 
 Move the rider (compiler rules).
 Index the global.
 
 To scan a global given a rider (literal term):
 If the compiler's abort flag is set, exit.
 Scan the global's global body given the rider.
-If the rider's token is not the period byte, abort with "All global definitions must end with a period. Including this one." and the rider; exit. 
+If the rider's token is not the period byte, abort with "Aprenda a escrever corretamente. Cadê o ponto?." and the rider; exit. 
 Move the rider (compiler rules).
 Index the global.
 
@@ -4030,7 +4030,7 @@ Add a type to the types given the name and the plural name and the global's type
 Index the type.
 Put the type's name into the global's type name.
 Scan any optional info for the type given the rider.
-If the rider's token is not the period byte, abort with "All global definitions must end with a period. Including this one." and the rider; exit. 
+If the rider's token is not the period byte, abort with "Tá na hora de aprender a escrever direito. Cadê o ponto?." and the rider; exit. 
 Move the rider (compiler rules).
 Index the global.
 
@@ -4044,7 +4044,7 @@ If the rider's token is any name ender, break.
 Extend the name with the rider's token.
 Move the rider (compiler rules).
 Repeat.
-If the name is blank, abort with "I was kind of hoping for a name around here, but I found '" then the rider's token then "'." and the rider; exit.
+If the name is blank, abort with "Acho que faltou colocar um nome por aqui. Você escreveu '" then the rider's token then "'." and the rider; exit.
 
 To scan a routine body given a rider:
 If the compiler's abort flag is set, exit.
@@ -4055,7 +4055,7 @@ Loop.
 If the compiler's abort flag is set, exit.
 If the rider's token is blank, exit.
 Put the rider's token's last into the routine body's last.
-If the rider's token is the colon byte, abort with "You may have forgotten a period somewhere above this. You better check." and the rider; exit.
+If the rider's token is the colon byte, abort with "Acho que faltou um ponto lá em cima. É melhor você ir lá dar uma olhada." and the rider; exit.
 If the rider's token is not the period byte, move the rider (compiler rules); repeat.
 Move the rider (compiler rules).
 If the rider's token is the start of any definition, exit.
@@ -4067,14 +4067,14 @@ Add the routine to the routines given the rider's token's first.
 Move the rider (compiler rules).
 Scan the routine's routine header given the rider.
 If the rider's token is the semi-colon byte, scan the routine given the rider (alternate wording); exit.  \ *** for alternate wordings
-If the rider's token is not the colon byte, abort with "This routine header is improperly formulated." and the routine's locus; exit.
+If the rider's token is not the colon byte, abort with "O nome dessa funão está escrito erraado.." and the routine's locus; exit.
 Move the rider (compiler rules).
 Scan the routine's routine body given the rider.
 
 To scan a routine given a rider (alternate wording):  \ *** for alternate wordings
 Privatize the rider.
 Move the rider (compiler rules).
-If the rider's token is not "to", abort with "I think that there semi-colon is misplaced." and the original rider; exit.
+If the rider's token is not "to", abort with "Esse ponto e vírgula tá no lugar errado." and the original rider; exit.
 Put the original rider's token's first into the routine's routine body's first.
 Put the original rider's token's last into the routine's routine body's last.
 Move the original rider (compiler rules).
@@ -4105,7 +4105,7 @@ If the rider's token is blank, exit.
 If the rider's token is the start of any type, scan a type given the rider; repeat.
 If the rider's token is the start of any global, scan a global given the rider; repeat.
 If the rider's token is the start of any routine, scan a routine given the rider; repeat.
-Abort with "I was hoping for a definition but all I found was '" then the rider's token then "'." and the rider.
+Abort with "Faltou definir melhor o que é o '" then the rider's token then "'." and the rider.
 Repeat.
 
 To scan some source files:
@@ -4123,14 +4123,14 @@ Scan the type's name given the rider.
 Put the type's name into the type's plural name.
 Pluralize the type's plural name.
 If the rider's token is "has" or "have", scan the type given the rider (has or have); exit.
-If the rider's token is not "is" or "are", abort with "I was expecting an 'is' or 'are', but I found '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not "is" or "are", abort with "Faltou usar um 'is' ou um 'are', você usou '" then the rider's token then "'." and the rider; exit.
 Move the rider (compiler rules).
 If the rider's token is any numeric literal, scan the type given the rider (unit of measure); exit.
-If the rider's token is not any indefinite article, abort with "I was expecting an indefinte article, but I found '" then the rider's token then "'." and the rider; exit. 
+If the rider's token is not any indefinite article, abort with "Faltou um artigo indefinido, lembra? '" then the rider's token then "'." and the rider; exit. 
 Move the rider (compiler rules).
 Scan the type's base name given the rider.
 Scan any optional info for the type given the rider.
-If the rider's token is not the period byte, abort with "Types need to end with a period, I found '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not the period byte, abort with "Você precisa usar um ponto para definir um tipo, lembra? Você usou '" then the rider's token then "'." and the rider; exit.
 Move the rider (compiler rules).
 Index the type.
 
@@ -4139,17 +4139,17 @@ If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
 Put "record" into the type's base name.
 Scan the type's fields given the rider.
-If the rider's token is not the period byte, abort with "Types need to end with a period, I found '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not the period byte, abort with "Ao invés de usar o ponto para definir  tipo, você usou '" then the rider's token then "'." and the rider; exit.
 Move the rider (compiler rules).
 Index the type.
 
 To scan a type given a rider (unit of measure):
 If the compiler's abort flag is set, exit.
 Convert the rider's token to the type's scale.
-If the type's scale is 0, abort with "Zero is an invalid scale." and the type's locus; exit.
+If the type's scale is 0, abort with "Zero é um tipo de escala inválido." and the type's locus; exit.
 Move the rider (compiler rules).
 Scan the type's base name given the rider.
-If the rider's token is not the period byte, abort with "Types need to end with a period, I found '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not the period byte, abort with "Os tipos precisam terminar com um ponto, não com '" then the rider's token then "'." and the rider; exit.
 Move the rider (compiler rules).
 Index the type.
 
@@ -4182,7 +4182,7 @@ If the variable's kind is not "global", exit.
 If the variable's literal is nil, exit.
 Find a routine given "put" and the variable's literal's type and "into" and the variable's type.
 If the routine is nil, find the routine given "convert" and the variable's literal's type and "to" and the variable's type; set a flag.
-If the routine is nil, abort with "The type of this global and the type of its literal are not compatible." and the variable's locus; exit.
+If the routine is nil, abort with "O tipo dessa variável global e desse literal não são compatíveis." and the variable's locus; exit.
 Compile the body of the routine.
 If the flag is set, put "convert the " then the variable's literal's name then " to the " then the variable's name then ". " into the variable's initializer string.
 If the flag is not set, put "put the " then the variable's literal's name then " into the " then the variable's name then ". " into the variable's initializer string.
@@ -4229,9 +4229,9 @@ Put the repeat tag into a tag.
 Find another fragment given the fragment and the tag.
 If the other fragment is nil, put the finalize tag into the tag. \ for break without a loop or after a loop
 Find a third fragment given the current routine's fragments' last and the tag (backwards).
-If the third fragment is nil, abort with "Internal error - transmogrify a fragment (break)"; exit.
-If the third fragment's next is nil, abort with "Internal error 2 - transmogrify a fragment (break)"; exit.
-Attach $E9 and the third fragment's next's address to the fragment. \ jmp the destination's address
+If the third fragment is nil, abort with "Erro interno - transmogrify a fragment (break)"; exit.
+If the third fragment's next is nil, abort with "Erro interno 2 - transmogrify a fragment (break)"; exit.
+Attach $E9 and the third fragment's next's address to the fragment. \ JMP the destination's address
 
 To transmogrify a fragment (call external):
 Attach $FF15 and the fragment's entry's address to the fragment's code. \ call [the fragment's entry's address]
@@ -4257,17 +4257,17 @@ Attach $C2 and the current routine's parameter size to the fragment's code. \ re
 
 To transmogrify a fragment (exit):
 Find another fragment given the fragment and the finalize tag.
-If the other fragment is nil, abort with "Internal error - transmogrify a fragment (exit)"; exit.
+If the other fragment is nil, abort with "Erro interno - transmogrify a fragment (exit)"; exit.
 Attach $E9 and the other fragment's address to the fragment. \ jmp the destination's address
 
 To transmogrify a fragment (increment):
-If the fragment's variable is nil, abort with "Internal error - transmogrify a fragment (increment)"; exit.
-If the fragment's variable's kind is not "scratch", abort with "Internal error 2 - transmogrify a fragment (increment)"; exit.
+If the fragment's variable is nil, abort with "Erro interno - transmogrify a fragment (increment)"; exit.
+If the fragment's variable's kind is not "scratch", abort with "Erro interno 2 - transmogrify a fragment (increment)"; exit.
 Attach $8185 and the fragment's variable's offset and the fragment's number to the fragment's code. \ add [ebp+the fragment's variable's offset],the fragment's number
 
 To transmogrify a fragment (jump false):
 Find another fragment given the fragment and the end if tag.
-If the other fragment is nil, abort with "Internal error - transmogrify a fragment (jump false)"; exit.
+If the other fragment is nil, abort with "Erro interno - transmogrify a fragment (jump false)"; exit.
 Attach $83F800 to the fragment's code. \ cmp eax,0
 Attach $0F84 and the other fragment's address to the fragment. \ je the destination's address
 
@@ -4277,9 +4277,9 @@ Attach $8995 and the fragment's other variable's offset to the fragment's code. 
 
 To transmogrify a fragment (load eax):
 Attach address loading code to the fragment's code given the fragment's variable. \ put address into edx
-If the fragment's variable is nil, abort with "Internal error - transmogrify a fragment (load eax)"; exit.
-If the fragment's variable's type is nil, abort with "Internal error 2 - transmogrify a fragment (load eax)"; exit.
-If the fragment's variable's type's length is not 4, abort with "Internal error 3 - transmogrify a fragment (load eax)"; exit.
+If the fragment's variable is nil, abort with "Erro interno - transmogrify a fragment (load eax)"; exit.
+If the fragment's variable's type is nil, abort with "Erro interno 2 - transmogrify a fragment (load eax)"; exit.
+If the fragment's variable's type's length is not 4, abort with "Erro interno 3 - transmogrify a fragment (load eax)"; exit.
 Attach $8B02 to the fragment's code. \ mov eax,[edx]
 
 To transmogrify a fragment (not):
@@ -4298,34 +4298,34 @@ Attach $52 to the fragment's code. \ push edx
 
 To transmogrify a fragment (push value):
 Attach address loading code to the fragment's code given the fragment's variable. \ put address into edx
-If the fragment's variable is nil, abort with "Internal error - transmogrify a fragment (push value)"; exit.
-If the fragment's variable's type is nil, abort with "Internal error 2 - transmogrify a fragment (push value)"; exit.
+If the fragment's variable is nil, abort with "Erro interno - transmogrify a fragment (push value)"; exit.
+If the fragment's variable's type is nil, abort with "Erro interno 2 - transmogrify a fragment (push value)"; exit.
 Put the fragment's variable's type's length into a length.
 If the length is 4, attach $FF32 to the fragment's code; exit. \ push [edx]
 If the length is 2, attach $66FF32 to the fragment's code; exit. \ push word ptr [edx]
 If the length is 1, attach $0FB61252 to the fragment's code; exit. \ movzxb edx,[edx]; push edx
-Abort with "Internal error 3 - transmogrify a fragment (push value)".
+Abort with "Erro interno 3 - transmogrify a fragment (push value)".
 
 To transmogrify a fragment (repeat):
 Find another fragment given the fragment and the loop tag (backwards).
-If the other fragment is nil, abort with "Internal error - transmogrify a fragment (repeat)"; exit.
+If the other fragment is nil, abort with "Erro interno - transmogrify a fragment (repeat)"; exit.
 Attach $E9 and the other fragment's address to the fragment. \ jmp the destination's address
 
 To transmogrify a fragment (routine address):
 Attach address loading code to the fragment's code given the fragment's variable. \ put address into edx
-If the fragment's routine is nil, abort with "Internal error - transmogrify a fragment (routine address)"; exit.
+If the fragment's routine is nil, abort with "Erro interno - transmogrify a fragment (routine address)"; exit.
 Get an address given the fragment's routine.
 Attach $C702 and the address to the fragment's code. \ mov [edx],the address
 
 To transmogrify a fragment (save eax):
 Attach address loading code to the fragment's code given the fragment's variable. \ put address into edx
-If the fragment's variable is nil, abort with "Internal error - transmogrify a fragment (save eax)"; exit.
-If the fragment's variable's type is nil, abort with "Internal error 2 - transmogrify a fragment (save eax)"; exit.
+If the fragment's variable is nil, abort with "Erro interno - transmogrify a fragment (save eax)"; exit.
+If the fragment's variable's type is nil, abort with "Erro interno 2 - transmogrify a fragment (save eax)"; exit.
 Put the fragment's variable's type's length into a length.
 If the length is 4, attach $8902 to the fragment's code; exit. \ mov [edx],eax
 If the length is 2, attach $668902 to the fragment's code; exit. \ mov [edx],ax
 If the length is 1, attach $8802 to the fragment's code; exit. \ mov [edx],al
-Abort with "Internal error 3 - transmogrify a fragment (save eax)".
+Abort with "Erro interno 3 - transmogrify a fragment (save eax)".
 
 To transmogrify some fragments:
 If the compiler's abort flag is set, exit.
