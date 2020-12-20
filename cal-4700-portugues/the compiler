@@ -3685,7 +3685,7 @@ To resolve a global:
 If the global is nil, exit.
 If the compiler's abort flag is set, exit.
 If the global's global body is not blank, resolve the global (compile body).
-If the global's type name is blank, abort with "Invalid global '" then the global's name then "'." and the global's locus; exit.
+If the global's type name is blank, abort with "Tipo inválido: '" then the global's name then "' . O tipo está vazio." and the global's locus; exit.
 Resolve the global as a variable.
 
 To resolve a global (compile body):
@@ -3693,10 +3693,10 @@ If the global is nil, exit.
 If the compiler's abort flag is set, exit.
 Slap a rider on the global's global body.
 Move the rider (compiler rules).
-If the rider's token is not any literal, abort with "I need a literal here, but I found '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not any literal, abort with "Erro de tipo. O tipo: '" then the rider's token then "' tem que ser do tipo literal." and the rider; exit.
 Compile a literal given the rider.
 If the compiler's abort flag is set, exit.
-If the rider's token is not blank, abort with "Is a period missing around here?" and the rider; exit.
+If the rider's token is not blank, abort with "Acho que era bom colocar um ponto por aqui, né?" and the rider; exit.
 If the global's type name is blank, put the literal's type's name into the global's type name.
 Put the literal into the global's literal.
 Index the literal.
@@ -3713,9 +3713,9 @@ If the compiler's abort flag is set, exit.
 If the type is nil, exit.
 If the type's base type is not nil, exit.
 Find the type's base type given the type's base name and the type index.
-If the type's base type is nil, abort with "Invalid base type '" then the type's base name then "'." and the type's locus; exit.
+If the type's base type is nil, abort with "Base type inválido:'" then the type's base name then "'." and the type's locus; exit.
 Set the type's cooking flag.
-If the type's base type's cooking flag is set, abort with "Recursive definition with '" then the type's base name then "'." and the type's locus; exit.
+If the type's base type's cooking flag is set, abort with "Recursive definition with '" then the type's base name then "'." and the type's locus; exit. \parece repetido. DRY!
 Resolve the type's base type (base type).
 Clear the type's cooking flag.
 
@@ -3755,7 +3755,7 @@ If the compiler's abort flag is set, exit.
 If the type's target type is not nil, exit.
 If the type's target name is blank, put the type's base type's target type into the type's target type; exit.
 Find the type's target type given the type's target name and the type index.
-If the type's target type is nil, abort with "I can't quite see what you're pointing at. Please clarify." and the type's locus; exit.
+If the type's target type is nil, abort with "Não sei bem pra que coisa você está pointing at." and the type's locus; exit.
 
 To resolve a type (optional info - record):
 If the compiler's abort flag is set, exit.
@@ -3764,13 +3764,13 @@ Loop.
 If the compiler's abort flag is set, exit.
 Get a field from the type's fields (backwards).
 If the field is nil, break.
-If the field is duplicated in the type's fields, abort with "The '" then the field's name then "' field is defined more than once." and the field's locus; exit.
+If the field is duplicated in the type's fields, abort with "O campo '" then the field's name then "' está definido mais de uma vez" and the field's locus; exit.
 Resolve the field.
 If the compiler's abort flag is set, exit.
 If the field's type's cooking flag is set, abort with "Recursive definition with '" then the field's type's name then "'." and the field's locus; exit.
-Resolve the field's type (optional info).
+Resolve the field's type (optional info). \ de novo
 If the field's reference flag is not set, repeat.
-If the field's type cannot be reduced to "pointer", abort with "Exactly what do you mean by '(reference)' here on this '" then the field's name then "'?" and the field's locus; exit.
+If the field's type cannot be reduced to "pointer", abort with "Não entendi o parâmetro '(reference)' nesse campo '" then the field's name then "'..." and the field's locus; exit.
 Repeat.
 Eliminate duplicate nicknames from the type's fields.
 If the type cannot be reduced to "thing record", exit.
@@ -3834,11 +3834,11 @@ If the variable's type is not nil, exit.
 If the variable's type name is not blank, resolve the variable (explicit type name); exit.
 Find the variable's type and the variable's nickname given the variable's name.
 If the variable's type is not nil, put the variable's type's name into the variable's type name; exit.
-Abort with "I can't find the '" then the variable's name then "' type." and the variable's locus.
+Abort with "Não achei o tipo da variável '" then the variable's name then "'." and the variable's locus.
 
 To resolve a variable (explicit type name):
 Find the variable's type given the variable's type name and the type index.
-If the variable's type is nil, abort with "I can't find the '" then the variable's type name then "' type." and the variable's locus; exit.
+If the variable's type is nil, abort with "Não achei o nome do tipo da variável '" then the variable's type name then "'." and the variable's locus; exit.
 
 The resolving globals timer is a timer.
 
@@ -3920,7 +3920,7 @@ Scan the field's name given the rider.
 To scan a field given a rider (redefine part):
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
-If the rider's token is not "the", abort with "I was expecting the word 'the', but found '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not "the", abort with "Eu estava esperando o artigo 'the', mas o que encontrei foi '" then the rider's token then "'." and the rider; exit.
 Move the rider (compiler rules).
 Scan the field's redefinition target name given the rider.
 
@@ -3933,7 +3933,7 @@ To scan a field given a rider (type part - byte array):
 If the compiler's abort flag is set, exit.
 Convert the rider's token to a ratio.
 Reduce the ratio.
-If the ratio's denominator is not 1, abort with "You have to specify a whole number of bytes for a byte array" and the rider; exit.
+If the ratio's denominator is not 1, abort with "Você tem que especificar um número completo de bytes para um byte array" and the rider; exit.
 Put the ratio's numerator into the field's count.
 Move the rider (compiler rules).
 If the rider's token is not "byte" or "bytes", abort with "Nothing but the word 'bytes' is appropriate after a counted field designator." and the rider; exit.
