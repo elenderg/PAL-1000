@@ -30,7 +30,5 @@
 | outdent | recuo | --- | --- | --- |
 | query string | questionamento | --- | --- | inscrição de consulta |
 | clear | limpar | apagar | excluir | clarear |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
+|twip|tuipe|–|–|–|–|
 |  |  |  |  |  |
