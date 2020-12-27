@@ -2,9 +2,9 @@
 
 ## Como eu faço para ... <a name="toc"> </a>
 
-* [Usar este guia] (# introdução)?
+* [Usar este guia] (#Introdução)?
 * Para perguntar ou dizer algo? 🤔🐛😱
-   * [Para solicitar suporte] (#request-support)
+   * [Para solicitar ajuda] (#Solicitar-ajuda)
    * [Para relatar um erro ou bug] (# report-an-error-or-bug)
    * [Para solicitar um recurso] (# request-a-feature)
 * Fazer algo? 🤓👩🏽‍💻📜🍳
