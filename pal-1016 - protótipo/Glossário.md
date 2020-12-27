@@ -1,6 +1,6 @@
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|add [D]|unir|somar|juntar|adicionar|–|
+|add <sup>[D]</sup>|unir|somar|juntar|adicionar|–|
 |add [E]|–|–|–|–|–|
 |anywhere [D]|algures|qualquer*|–|–|em qualquer lugar|
 |anywhere [E]|–|–|–|–|–|
