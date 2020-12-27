@@ -218,34 +218,34 @@ Algumas observações:
 * Certifique-se de estar familiarizado com o código ou a documentação que está sendo atualizada, a menos que seja uma pequena alteração (verificação ortográfica, formatação secundária, etc.). Você pode @mencionar outro membro do projeto que você acha que é mais adequado para a revisão, mas ainda assim fornecer sua própria revisão que não aprovou.
 * Seja extremamente gentil: as pessoas que enviam contribuições de código / documento estão se colocando em uma posição bastante vulnerável e dedicam tempo e atenção ao que fizeram (mesmo que isso não seja óbvio para você!) - sempre responda com respeito, seja compreensivo, mas também não sinta que precisa sacrificar seus padrões pelo bem deles. Só não se comporte como um idiota quanto a isso.
 
-## Merge Pull Requests
+## Unificando Pull Requests
 
-[Needs Collaborator](#join-the-project-team): Committer
+[Needs Collaborator] (#join-the-project-team): Committer
 
-TBD - need to hash out a bit more of this process.
+A ser desenvolvido - preciso escrever mais sobre esse processo.
 
-## Tag A Release
+## Anunciando um novo Lançamento
 
-[Needs Collaborator](#join-the-project-team): Committer
+[Needs Collaborator] (#join-the-project-team): Committer
 
-TBD - need to hash out a bit more of this process. The most important bit here is probably that all tests must pass, and tags must use [semver](https://semver.org).
+A ser desenvolvido - preciso escrever mais sobre esse processo. A parte mais importante aqui é provavelmente que todos os testes devem ser realizados corretamente e as os números de versão devem usar um método de [numeração semântica] (https://semver.org).
 
-## Join the Project Team
+## Junte-se à equipe do projeto
 
-### Ways to Join
+### Formas de participar
 
-There are many ways to contribute! Most of them don't require any official status unless otherwise noted. That said, there's a couple of positions that grant special repository abilities, and this section describes how they're granted and what they do.
+Existem muitas maneiras de contribuir! A maioria deles não exige nenhum status oficial, a menos que seja indicado o contrário. Dito isso, há algumas posições que concedem habilidades de repositório especiais e esta seção descreve como elas são concedidas e o que fazem.
 
-All of the below positions are granted based on the project team's needs, as well as their consensus opinion about whether they would like to work with the person and think that they would fit well into that position. The process is relatively informal, and it's likely that people who express interest in participating can just be granted the permissions they'd like.
+Todos os cargos abaixo são concedidos com base nas necessidades da equipe do projeto, bem como em sua opinião consensual sobre se gostariam de trabalhar com a pessoa e se acham que se encaixariam bem nessa posição. O processo é relativamente informal e é provável que as pessoas que expressam interesse em participar possam apenas receber as permissões que desejam.
 
-You can spot a collaborator on the repo by looking for the `[Collaborator]` or `[Owner]` tags next to their names.
+Você pode identificar um colaborador no repo procurando pelas tags `[Colaborador]` ou `[Proprietário]` ao lado de seus nomes.
 
-Permission | Description
+Permissão Descrição
 --- | ---
-Issue Tracker | Granted to contributors who express a strong interest in spending time on the project's issue tracker. These tasks are mainly [labeling issues](#label-issues), [cleaning up old ones](#clean-up-issues-and-prs), and [reviewing pull requests](#review-pull-requests), as well as all the usual things non-team-member contributors can do. Issue handlers should not merge pull requests, tag releases, or directly commit code themselves: that should still be done through the usual pull request process. Becoming an Issue Handler means the project team trusts you to understand enough of the team's process and context to implement it on the issue tracker.
-Committer | Granted to contributors who want to handle the actual pull request merges, tagging new versions, etc. Committers should have a good level of familiarity with the codebase, and enough context to understand the implications of various changes, as well as a good sense of the will and expectations of the project team.
-Admin/Owner | Granted to people ultimately responsible for the project, its community, etc.
+Rastreador de Problemas | Concedido a contribuidores que expressam grande interesse em dedicar tempo a rastrear problemas do projeto. Essas tarefas são principalmente [problemas de rotulagem] (#label-issues), [arquivamento de solicitações] (#clean-up-issues-and-prs) e [revisão de solicitações ] (#review-pull-requests), como bem como todas as coisas habituais que os contribuidores não membros da equipe podem fazer. Os rastreadores de problemas não mesclam solicitações, não rotulam lançamentos ou confirmam o código diretamente: isso ainda deve ser feito por meio do processo de solicitação de pull normal. Tornar-se um ratreador de problemas significa que a equipe do projeto confia em você para entender o suficiente do processo e do contexto da equipe para implementá-lo no rastreador de problemas.
+Committer | Concedido a contribuidores que desejam lidar com as mesclagens reais de solicitação, rotulando novas versões, etc. Os desenvolvedores devem ter um bom nível de familiaridade com a base de código e contexto suficiente para entender as implicações de várias alterações, bem como um bom senso de vontade e expectativas da equipe do projeto.
+Admin / Proprietário | Concedido às pessoas responsáveis ​​pelo projeto, sua comunidade, etc.
 
-## Attribution
+## Atribuição
 
-This guide was generated using the WeAllJS `CONTRIBUTING.md` generator. [Make your own](https://npm.im/weallcontribute)!
+Este guia foi gerado usando o gerador WeAllJS `CONTRIBUTING.md`. [Faça o seu aqui] (https://npm.im/weallcontribute)!
