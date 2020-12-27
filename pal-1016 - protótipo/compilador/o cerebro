@@ -9,39 +9,72 @@
 \   there is always a return byte at the end of the last row.
 
 The on flag is a_ flag equal to 1.
+\A flag ligado é uma flag igual a 1. \ verificar qual termo será utilizado no lugar de flag. Sugestões: Bandeira, Sinal (semáforo), ver exemplo abaixo
+\Elender O sinal verde é um sinal igual a 1.
 
 The off flag is a_ flag equal to 0.
+\A bandeira desligado é uma bandeira igual a 0.
+\Elender O sinal vermelho é um sinal igual a 0.
 
 The a-key is a_ key equal to 65.
+\Elender A tecla-a é uma tecla igual a 65.
 
 An abc is a_ record with a_ number called abca, a_ number called abcb, a_ number called abcc.
+\Elender Um abc é um registro [falta definir a tradução de record] com um número chamado abca,. um número chamado abcb, um número chamado abcc.
 
 An abc pointer is a_ pointer to an abc.
+\Elender Um ponteiro abc [falta definir a tradução de pointer - sugiro algo como indicador] é um ponteiro para um abc.
 
 An abca is a_ number.  
+\Elender Um abca é um número.
 
 An abcc is a_ number.
+\Elender Um abcc é um número.
 
 An absolute position is a_ number.
+\Elender Uma posição absoluta é um número.
 
 The accent byte is a_ byte equal to 96.
+\Elender O byte de acento é um byte igual a 96.
 
 The accent key is a_ key equal to 192.
+\Elender A tecla de acento é um byte igual a 192.
 
 The acknowledge byte is a_ byte equal to 6.
+\Elender O byte de confirmação é um byte igual a 6.
 
 The acute-accent byte is a_ byte equal to 180.
+\Elender O byte de acento agudo é um byte igual a 180.
 
 \PAL
 Para adicionar um byte a outro byte;
+\Elender Para adicionar um byte em outro byte; \Coloquei apenas para evitar conflitos.
 \SAL
 \Para agregar un byte a otro byte;
 \CAL
 To add a_ byte to another byte:
 Intel $8B8508000000. \ mov eax,[ebp+8] \ the byte
+\0:  8b                      .byte 0x8b
+\1:  85 08                   test   DWORD PTR [eax],ec
+\mov eax,[ebp+8] 
+\ eax contém o valor de retorno de uma function call.
+\ Raw Hex (zero bytes in bold): 8B4508    ->  talvez devesse ser 8B8508
+\String Literal:  "\x8B\x45\x08"
+\Array Literal: { 0x8B, 0x45, 0x08 }
+\Disassembly: 0:  8b 45 08
+\ mov    eax,DWORD PTR [ebp+0x8]
 Intel $0FB600. \ movzx eax,[eax]
+\0:  0f b6 00        movzx  eax,BYTE PTR [eax]
+\MOV <destino>, <origem> 
+\Move dados da <origem> para um <destino>.  
+\<origem> pode ser um valor imediato, um registrador, ou endereço da memória.  
+\ <destino> pode ser tanto um endereço na memória quanto um registrador.
+\Tanto <origem> quanto <destino> não precisam ser um endereço da memória.
 Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ the other byte
+\0:  8b 5d 0c                      mov    ebx,DWORD PTR [ebp+0xc]
+\0:  8b 9d 0c 00 00 00      mov    ebx,DWORD PTR [ebp+0xc]
 Intel $0003. \ add [ebx],al
+\0:  00 03   add  BYTE PTR [ebx],al
 
 \PAL
 Para adicionar um byte a um número;
@@ -53,6 +86,7 @@ Intel $8B8508000000. \ mov eax,[ebp+8] \ the byte
 Intel $0FB600. \ movzx eax,[eax]
 Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ the number
 Intel $0103. \ add [ebx],eax
+\0:  01 03    add    DWORD PTR [ebx],eax
 
 \PAL
 Para adicionar uma fração a outra fração;
@@ -165,6 +199,8 @@ To add a_ pair to another pair:
 Add the pair's x-number to the other pair's x-number.
 Add the pair's y-number to the other pair's y-number.
 
+
+\Elender  Para adicionar um objeto pdf usando um tipo:
 To add a_ pdf object given a_ kind:
 Create the pdf object given the kind.
 Append the pdf object to the pdf state's objects.
@@ -172,7 +208,7 @@ Add 1 to the pdf state's object number.
 Put the pdf state's object number into the pdf object's number.
 
 \PAL
-Para adicionar uma quora a um terminal;
+Para adicionar uma quora a um terminal; \ QuORa => QUestion OR Anser
 \SAL
 \Para agregar una quora a una terminal;
 \CAL
@@ -185,7 +221,7 @@ Remove the doomed quora from the terminal's quoras.
 Destroy the doomed quora.
 
 \PAL
-Para adicionar um ponto a uma figura;
+Para adicionar um ponto a uma figura; / o termo point terá que ser trocado...
 \SAL
 Para agregar un punto a una figura;
 \CAL
@@ -193,13 +229,15 @@ To add a_ spot to a_ figure:
 append the spot to the figure.
 
 \PAL
-Para adicionar uma cadeia a algumas coisas de cadeia;
+Para adicionar uma cadeia a algumas coisas de cadeia; \ querendo ou não cadeia só me faz lembrar o xilindró
 \SAL
 Para agregar una cadena a algunas cosas de cadena;
 \CAL
 To add a_ string to some string things:
 Create a_ string thing given the string.
 Append the string thing to the string things.
+
+\Elender Uma informação de endereço é um registro contendo
 
 An addrinfo is a_ record with
 a_ number called ai_flags,
@@ -211,10 +249,12 @@ a_ pchar called ai_canonname,
 a_ sockaddrptr called ai_addr,
 a_ addrinfoptr called ai_next.
 
+
 Some addrinfo routines is a_ record with
 a_ getaddrinfo pointer,
 a_ freeaddrinfo pointer.
 
+\Elender Um ponteiro contendo informação de endereço é um ponteiro para uma informação de endereço.
 An addrinfoptr is a_ pointer to an addrinfo.
 
 \PAL
@@ -290,18 +330,25 @@ To align a_ text given an alignment:
 Put the alignment into the text's alignment.
 
 An alignment is a_ string [center, left, or right].
+\Elender Um alinhamento é uma cadeia[o alinhamento pode ser ao centro, à esquerda ou à direita]
 
 The alt key is a_ key equal to 18.
+\Elender A tecla alt é uma tecla igual à 18.
 
 An amount is a_ number.
+\Elender Uma quantia é um número.
 
 The ampersand byte is a_ byte equal to 38.
+\O byte de & comercial é um byte igual a 38.
 
 An anchor is a_ position.
+\Elender Uma âncora é uma posição. [no contexto, é a posição de baixo, acho bom renomear o termo]
 
 An and-mask is a_ mask.
+\Elender Uma máscara de conjunção é uma máscara. [o termo máscara é comum em planilhas, mas creio que o ideal seja algo relacionado à mascarar/maquiar/enfeitar]
 
 An angle is some precise degrees [0 to 3599].
+\Elender Um ângulo é alguns graus precisos [que vão de 0 até 3599]
 
 \PAL
 Para adicionar um depósito a um arquivo;
@@ -486,6 +533,7 @@ Append "0" to the string.
 Repeat.
 
 The arrow cursor is a_ cursor.
+\Elender A setinha do mouse é um cursor. [Vi que vocês usaram o termo flecha]. Fiquem à vontade.
 
 \PAL
 Para atribuir um ponteiro dado um contador de bytes;
