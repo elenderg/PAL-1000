@@ -1,4 +1,4 @@
-|–|Origem|Tradução 1|Tradução 2|Tradução 3|Tradução 4|Tradução 5|
+|–|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|------------|
 |01.1|add|unir|somar|juntar|adicionar|–|
 |01.2|–|–|–|–|–|–|
