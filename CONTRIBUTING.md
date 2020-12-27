@@ -162,7 +162,7 @@ Algumas notas sobre como identificar problemas de suporte:
 
 ## Identificação adequada de problemas
 
-[Needs Collaborator](#join-the-project-team): Rastreador de problemas
+[Vagas abertas](#join-the-project-team): Rastreador de problemas
 
 Uma das tarefas mais importantes no tratamento de problemas é rotulá-los de forma útil e precisa. Todas as outras tarefas que envolvem problemas dependem, em última análise, de o problema ser classificado de forma que as partes relevantes que procuram realizar suas próprias tarefas possam encontrá-los de forma rápida e fácil.
 
@@ -186,7 +186,7 @@ Etiqueta | Quando usar | Observações
 
 ## Arquivamento de Solicitações antigas
 
-[Needs Collaborator](#join-the-project-team): Rastreador de problemas
+[Vagas abertas](#join-the-project-team): Rastreador de problemas
 
 Problemas e solicitações podem ficar obsoletos depois de um tempo. Talvez estejam abandonados. Talvez a equipe simplesmente não tenha tempo para abordá-los tão cedo.
 
@@ -205,7 +205,7 @@ Para arquivar problemas e solicitações:
 
 ## Revisão de Solicitações
 
-[Needs Collaborator](#join-the-project-team): Rastreador de Problemas
+[Vagas abertas](#join-the-project-team): Rastreador de Problemas
 
 Embora qualquer pessoa possa comentar sobre uma solicitação, adicionar feedback, etc, elas são * aprovados * apenaspor membros da equipe que possuam o cargo Rastreador de Problemas ou que possuam cargos superiores.
 
@@ -220,13 +220,13 @@ Algumas observações:
 
 ## Unificando solicitações
 
-[Needs Collaborator](#join-the-project-team): Committer
+[Vagas abertas](#join-the-project-team): Committer
 
 A ser desenvolvido - preciso escrever mais sobre esse processo.
 
 ## Anunciando um novo Lançamento
 
-[Needs Collaborator](#join-the-project-team): Committer
+[Vagas abertas](#join-the-project-team): Committer
 
 A ser desenvolvido - preciso escrever mais sobre esse processo. A parte mais importante aqui é provavelmente que todos os testes devem ser realizados corretamente e as os números de versão devem usar um método de [numeração semântica](https://semver.org).
 
