@@ -10,7 +10,7 @@
 * Fazer algo? 🤓👩🏽‍💻📜🍳
    * [Configurar o projeto](#Configuração-do-projeto)
    * [Contribiur com a Documentação](#Contribuir-com-a-documentação)
-   * Gerenciar algo ✅🙆🏼💃👔
+* Gerenciar algo ✅🙆🏼💃👔
    * [Fornecer suporte para problemas](#Fornecendo-suporte-em-questões)
    * [Catalogar problemas em aberto](#lIdentificação-adequada-de-problemas)
    * [Arquivar Solicitações Antigas](#Arquivamento-de-Solicitações-antigas)
