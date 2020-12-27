@@ -175,48 +175,48 @@ Etiqueta | Quando usar | Observações
 `documentation` | Adicione a problemas ou solicitações de pull que afetam qualquer documentação do projeto. | Pode ser combinado com outros rótulos, como `bug` ou` enhancement`.
 `repetido` | Esse termo deve ser adicionado a questões ou Pull Requests que se referem exatamente ao mesmo problema que outro que foi previamente identificado. | Problemas duplicados devem ser marcados e fechados imediatamente, com uma mensagem referindo o problema do qual é uma duplicata (com `# 123`)
 `aprimoramento` | Esse termo deve ser adicionado a Pull Requests contendo [solicitações de recurso] (#request-a-feature), ou a problemas de documentação que são puramente aditivos: o código ou documentos atualmente funcionam conforme o esperado, mas uma alteração está sendo solicitada ou sugerida. |
-`preciso de ajuda` | Esse termo deve ser aplicado por [Committers] (#join-the-project-team) a problemas e Pull Requests para os quais eles gostariam de obter ajuda externa. Geralmente, isso significa que é menos prioridade para a equipe de mantenedor implementar, mas que a comunidade é encorajada a se engajar, se assim o desejar | Nunca aplicado na etiqueta de primeira passagem.
-`in-progress` | Applied by [Committers](#join-the-project-team) to PRs that are pending some work before they're ready for review. | The original PR submitter should @mention the team member that applied the label once the PR is complete.
-`performance` | This issue or PR is directly related to improving performance. |
-`refactor` | Added to issues or PRs that deal with cleaning up or modifying the project for the betterment of it. |
-`starter` | Applied by [Committers](#join-the-project-team) to issues that they consider good introductions to the project for people who have not contributed before. These are not necessarily "easy", but rather focused around how much context is necessary in order to understand what needs to be done for this project in particular. | Existing project members are expected to stay away from these unless they increase in priority.
-`support` | This issue is either asking a question about how to use the project, clarifying the reason for unexpected behavior, or possibly reporting a `bug` but does not have enough detail yet to determine whether it would count as such. | The label should be switched to `bug` if reliable reproduction steps are provided. Issues primarily with unintended configurations of a user's environment are not considered bugs, even if they cause crashes.
-`tests` | This issue or PR either requests or adds primarily tests to the project. | If a PR is pending tests, that will be handled through the [PR review process](#review-pull-requests)
-`wontfix` | Labelers may apply this label to issues that clearly have nothing at all to do with the project or are otherwise entirely outside of its scope/sphere of influence. [Committers](#join-the-project-team) may apply this label and close an issue or PR if they decide to pass on an otherwise relevant issue. | The issue or PR should be closed as soon as the label is applied, and a clear explanation provided of why the label was used. Contributors are free to contest the labeling, but the decision ultimately falls on committers as to whether to accept something or not.
+`preciso de ajuda` | Esse termo deve ser aplicado por qualquer [membro da equipe] (#join-the-project-team) em problemas e Pull Requests para os quais eles gostariam de obter ajuda externa. Geralmente, isso significa que é menos prioridade para a equipe de mantenedor implementar, mas que a comunidade é encorajada a se engajar, se assim o desejar | 
+`in-progress` | Esse termo deve ser aplicado por [membros da equipe] (#join-the-project-team) para Pull Requests que estão com algum trabalho pendente antes de estarem prontos para revisão. | O responsável pelo envio de RP original deve @mencionar o membro da equipe que aplicou o rótulo assim que a solicitação for atendida.
+`desempenho` | Esse termo deve ser aplicado a problemas que estejam diretamente relacionados à melhoria do desempenho.|
+`refazer` | Esse termo deve ser adicionado a solicitações que lidam com a organização ou modificação do projeto para melhorá-lo. |
+`iniciantes` | Aplicado por [membros da equipe] (#join-the-project-team) às questões que eles consideram boas introduções ao projeto para pessoas que não contribuíram antes. Eles não são necessariamente "fáceis", mas sim focadas em quanto contexto é necessário para entender o que precisa ser feito para este projeto em particular. | Espera-se que os membros existentes do projeto não foquem neles, a menos que a questão aumente de prioridade.
+`pergunta` | Esse termo deve ser aplicado a perguntas sobre como usar o projeto, esclarecer o motivo do comportamento inesperado ou possivelmente relatar um `bug`, mas ainda não tem detalhes suficientes para determinar se isso contaria como tal. | O rótulo deve ser alterado para `bug` se forem fornecidas etapas de reprodução confiáveis. Problemas principalmente com configurações não intencionais do ambiente de um usuário não são considerados bugs, mesmo que causem travamentos.
+`testes` | Esse termo deve ser aplicado a solicitações que  adicionem ou sugiram testes ao projeto. | Se uma solicitação estiver com testes pendentes, isso será tratado por meio do [processo de revisão de solicitações] (#review-pull-requests)
+`sem conserto` | Os membros podem aplicar este rótulo a questões que claramente não têm nada a ver com o projeto ou estão totalmente fora de seu escopo / esfera de influência. Os [membros da equipe] (#join-the-project-team) podem aplicar este rótulo e fechar um problema ou solicitação se decidirem rejeitar um problema relevante. | O problema ou solicitação deve ser encerrado assim que o rótulo for aplicado, devendo conter uma explicação clara do motivo pelo qual o rótulo foi usado. Os contribuidores são livres para contestar a rotulagem, mas a decisão final recai sobre os responsáveis pela confirmação de aceitar algo ou não.
 
-## Clean Up Issues and PRs
+## Arquivamento de Solicitações antigas
 
-[Needs Collaborator](#join-the-project-team): Issue Tracker
+[Needs Collaborator] (#join-the-project-team): Rastreador de problemas
 
-Issues and PRs can go stale after a while. Maybe they're abandoned. Maybe the team will just plain not have time to address them any time soon.
+Problemas e solicitações podem ficar obsoletos depois de um tempo. Talvez estejam abandonados. Talvez a equipe simplesmente não tenha tempo para abordá-los tão cedo.
 
-In these cases, they should be closed until they're brought up again or the interaction starts over.
+Nesses casos, eles devem ser fechados até que sejam ativados novamente ou a interação seja reiniciada.
 
-To clean up issues and PRs:
+Para arquivar problemas e solicitações:
 
-* Search the issue tracker for issues or PRs, and add the term `updated:<=YYYY-MM-DD`, where the date is 30 days before today.
-* Go through each issue *from oldest to newest*, and close them if **all of the following are true**:
-  * not opened by a maintainer
-  * not marked as `critical`
-  * not marked as `starter` or `help wanted` (these might stick around for a while, in general, as they're intended to be available)
-  * no explicit messages in the comments asking for it to be left open
-  * does not belong to a milestone
-* Leave a message when closing saying "Cleaning up stale issue. Please reopen or ping us if and when you're ready to resume this. See https://github.com/elenderg/Portugues-Puro/blob/latest/CONTRIBUTING.md#clean-up-issues-and-prs for more details."
+* Pesquise problemas ou PRs no rastreador de problemas e adicione o termo `updated:<=YYYY-MM-DD`, onde YYYY é o ano atual, MM é o mês e DD o dia. Lembre-se de inserir datas. antigas, com pelo menos 30 dias de diferença da data atual;
+* Passe por cada problema * do mais antigo ao mais recente * e feche-os se ** todas as opções a seguir forem verdadeiras **:
+  *  A solicitação não foi aberta por um mantenedor
+  * A solicitação não foi  marcadacomo `problema crítico`
+  * A solicitação não foi marcada como `iniciante` ou `dúvida` (estas solicitações permanecer por um tempo maior, em geral, pois devem estar disponíveis para outros usuários)
+  * A solicitação não contém nenhuma mensagem explícita nos comentários pedindo para ser deixada em aberto
+  * A solicitação não pertence a um lançamento específico (1000, 2000, 3000, etc)
+* Deixe uma mensagem ao fechar dizendo "Problema obsoleto arquivado. Abra novamente ou envie um ping se e quando você estiver pronto para retomar isso. Consulte https://github.com/elenderg/Portugues-Puro/blob/latest/CONTRIBUTING.md#arquivamento-de-solicitações-antigas para mais detalhes. "
 
-## Review Pull Requests
+## Revisão de Solicitações
 
-[Needs Collaborator](#join-the-project-team): Issue Tracker
+[Needs Collaborator](#join-the-project-team): Rastreador de Problemas
 
-While anyone can comment on a PR, add feedback, etc, PRs are only *approved* by team members with Issue Tracker or higher permissions.
+Embora qualquer pessoa possa comentar sobre uma solicitação, adicionar feedback, etc, elas são * aprovados * apenaspor membros da equipe que possuam o cargo Rastreador de Problemas ou que possuam cargos superiores.
 
-PR reviews use [GitHub's own review feature](https://help.github.com/articles/about-pull-request-reviews/), which manages comments, approval, and review iteration.
+As revisões de problemas usam [o recurso de revisão do próprio GitHub] (https://help.github.com/articles/about-pull-request-reviews/), que gerencia comentários, aprovação e iteração de revisão.
 
-Some notes:
+Algumas observações:
 
-* You may ask for minor changes ("nitpicks"), but consider whether they are really blockers to merging: try to err on the side of "approve, with comments".
-* *ALL PULL REQUESTS* should be covered by a test: either by a previously-failing test, an existing test that covers the entire functionality of the submitted code, or new tests to verify any new/changed behavior. All tests must also pass and follow established conventions. Test coverage should not drop, unless the specific case is considered reasonable by maintainers.
-* Please make sure you're familiar with the code or documentation being updated, unless it's a minor change (spellchecking, minor formatting, etc). You may @mention another project member who you think is better suited for the review, but still provide a non-approving review of your own.
-* Be extra kind: people who submit code/doc contributions are putting themselves in a pretty vulnerable position, and have put time and care into what they've done (even if that's not obvious to you!) -- always respond with respect, be understanding, but don't feel like you need to sacrifice your standards for their sake, either. Just don't be a jerk about it?
+* Você pode pedir pequenas alterações ("nitpicks"), mas considere se elas podem causar problemas durante a unificação (merge):. Tente deixar comentários para aquilo que for aprovado.
+* * TODOS AS SOLICITAÇÕES * devem ser cobertos por um teste: por um teste anterior com falha, um teste existente que cobre toda a funcionalidade do código enviado ou novos testes para verificar qualquer comportamento novo / alterado. Todos os testes também devem passar e seguir as convenções estabelecidas. A  área de cobertura do teste não deve ser ignorada, a menos que o caso específico seja considerado razoável pelos mantenedores.
+* Certifique-se de estar familiarizado com o código ou a documentação que está sendo atualizada, a menos que seja uma pequena alteração (verificação ortográfica, formatação secundária, etc.). Você pode @mencionar outro membro do projeto que você acha que é mais adequado para a revisão, mas ainda assim fornecer sua própria revisão que não aprovou.
+* Seja extremamente gentil: as pessoas que enviam contribuições de código / documento estão se colocando em uma posição bastante vulnerável e dedicam tempo e atenção ao que fizeram (mesmo que isso não seja óbvio para você!) - sempre responda com respeito, seja compreensivo, mas também não sinta que precisa sacrificar seus padrões pelo bem deles. Só não se comporte como um idiota quanto a isso.
 
 ## Merge Pull Requests
 
