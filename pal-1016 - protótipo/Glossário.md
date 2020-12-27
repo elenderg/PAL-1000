@@ -1,7 +1,7 @@
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |add <sup>[D]</sup>|unir|somar|juntar|adicionar|–|
-|add <sup>[E]</sup>|<ruby>adicionar<rt>exemplo de ruby</rt></ruby>|–|–|–|–|
+|add <sup>[E]</sup>|adicionar|–|–|–|–|
 |anywhere <sup>[D]</sup>|algures|qualquer*|–|–|em qualquer lugar|
 |anywhere <sup>[E]</sup>|–|–|–|–|–|
 |append <sup>[D]</sup>|atar|apor|ligar|associar|–|
