@@ -1,21 +1,21 @@
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|add <sup>[D]</sup>|unir|somar|juntar|adicionar|–|
-|add [E]|–|–|–|–|–|
-|anywhere [D]|algures|qualquer*|–|–|em qualquer lugar|
-|anywhere [E]|–|–|–|–|–|
-|append [D]|atar|apor|ligar|associar|–|
+|add <sup>D</sup>|unir|somar|juntar|adicionar|–|
+|add <sup>[E]</sup>|–|–|–|–|–|
+|anywhere <sup>[D]</sup>|algures|qualquer*|–|–|em qualquer lugar|
+|anywhere <sup>[E]</sup>|–|–|–|–|–|
+|append <sup>[D]</sup>|atar|apor|ligar|associar|–|
 |append [E]|–|–|–|–|–|
-|box [D]|caixa|moldura|contexto|circunstância|–|
+|box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
 |box [E]|–|–|–|–|–|
-|break [D]|parar|pare|interrompa|interromper|–|
+|break <sup>[D]</sup>|parar|pare|interrompa|interromper|–|
 |break [E]|–|–|–|–|–|
-|bump [D]|acrescer|aumentar|incrementar|acrescentar|–|
+|bump <sup>[D]</sup>|acrescer|aumentar|incrementar|acrescentar|–|
 |bump [E]|–|–|–|–|–|
-|center [D]|centrar|centralizar|–|–|–|
+|center <sup>[D]</sup>|centrar|centralizar|–|–|–|
 |center [E]|–|–|–|–|–|
-|change [D]|mudar|trocar|alterar|modificar|–|
-|change [E]|–|–|–|–|–|
+|change <sup>[D]</sup>|mudar|trocar|alterar|modificar|–|
+|change <sup>[D]</sup>|–|–|–|–|–|
 |clear [D]|limpar|apagar|excluir|clarear|
 |clear [E]|–|–|–|–|–|
 |clipboard [D]|prancheta|–|–|área de transferência|–|
