@@ -52,7 +52,7 @@ publicação por meio de uma conta oficial de mídia social
 ou atuação como representante indicado em um evento online ou offline. 
 A representação de um projeto pode ser posteriormente definida e esclarecida pelos mantenedores do projeto.
 
-## Enforcement
+## Aplicação
 
 Casos de comportamento abusivo, de importunação 
 ou de outra forma de comportamento inaceitável podem ser relatados 
