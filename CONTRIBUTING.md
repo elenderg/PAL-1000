@@ -5,20 +5,20 @@
 * [Usar este guia](#Introdução)?
 * Para perguntar ou dizer algo? 🤔🐛😱
    * [Para solicitar ajuda](#Solicitar-ajuda)
-   * [Para relatar um erro ou bug](# report-an-error-or-bug)
-   * [Para solicitar um recurso](# request-a-feature)
+   * [Para relatar um erro ou bug](#Reportar-um-erro-ou-bug)
+   * [Para solicitar um recurso](#Solicitando-um-recurso)
 * Fazer algo? 🤓👩🏽‍💻📜🍳
-   * [Configuração do projeto](#project-setup)
-   * [Contribiur com a Documentação](#contribute-documentation)
+   * [Configurar o projeto](#Configuração-do-projeto)
+   * [Contribiur com a Documentação](#Contribuir-com-a-documentação)
    * Gerenciar algo ✅🙆🏼💃👔
-   * [Fornecer suporte para problemas](#provide-support-on-issues)
-   * [Problemas em aberto](#label-issues)
-   * [Problemas de limpeza e Pull Requests](# clean-up-issues-and-prs)
-   * [Revisar Pull Requests](# review-pull-requests)
-   * [Unificar Pull Requests](# merge-pull-requests)
-   * [Anunciar um lançamento](# tag-a-release)
-   * [Me Juntar à equipe do projeto](#join-the-project-team)
-* Adicionar um guia como este [para meu projeto](#attribution)? 🤖😻👻
+   * [Fornecer suporte para problemas](#Fornecendo-suporte-em-questões)
+   * [Catalogar problemas em aberto](#lIdentificação-adequada-de-problemas)
+   * [Arquivar Solicitações Antigas](#Arquivamento-de-Solicitações-antigas)
+   * [Revisar Solicitações](#Revisão-de-Solicitações)
+   * [Unificar Solicitações](#Unificando-Solicitações)
+   * [Anunciar um lançamento](#Anunciando-um-novo-Lançamento)
+   * [Me Juntar à equipe do projeto](#Junte-se-à-equipe-do-projeto)
+* Adicionar um guia como este [para meu projeto](#Atribuição)? 🤖😻👻
 
 ## Introdução
 
@@ -76,7 +76,7 @@ Nota: É improvável que a equipe seja capaz de aceitar todas as solicitações 
 
 ## Configuração do projeto
 
-Então você quer contribuir com algum código! Isso é ótimo! Este projeto usa as Pull Requests do GitHub para gerenciar as contribuições, então [leia sobre como bifurcar um projeto GitHub e submeter uma Pull Request](https://guides.github.com/activities/forking) se você nunca fez isso antes.
+Então você quer contribuir com algum código! Isso é ótimo! Este projeto usa as solicitações do GitHub para gerenciar as contribuições, então [leia sobre como bifurcar um projeto GitHub e submeter uma solicitação](https://guides.github.com/activities/forking) se você nunca fez isso antes.
 
 Se isso parecer muito difícil ou você não consegue fazer toda essa configuração, você também pode [editar os arquivos diretamente](https://help.github.com/articles/editing-files-in-another-user-s-repository/) sem ter que fazer nenhuma configuração. Sim, [até mesmo códiios podem ser editados](#contribute-code).
 
@@ -90,11 +90,11 @@ Então, em seu computador abra a pasta do projeto:
 
 E você deve estar pronto para começar!
 
-## Contribuir com documentação
+## Contribuir com a documentação
 
 A documentação é uma parte superimportante e crítica deste projeto. Os documentos são como controlamos o que estamos fazendo, como e por quê. É assim que nos mantemos em sintonia com nossas políticas. E é assim que contamos aos outros tudo o que eles precisam para poder usar este projeto - ou contribuir com ele. Então, agradeço antecipadamente.
 
-Contribuições de documentação de qualquer tamanho são bem-vindas! Sinta-se à vontade para registrar um Pull Request, mesmo que esteja apenas reformulando uma frase para ser mais claro ou corrigindo um erro de ortografia!
+Contribuições de documentação de qualquer tamanho são bem-vindas! Sinta-se à vontade para registrar um solicitação, mesmo que esteja apenas reformulando uma frase para ser mais claro ou corrigindo um erro de ortografia!
 
 Para contribuir com documentação:
 
@@ -104,14 +104,14 @@ Para contribuir com documentação:
 * Releia o que você escreveu e execute um corretor ortográfico para ter certeza de que não perdeu nada.
 * Escreva mensagens de confirmação claras e concisas usando o [formato convencional para registro de alterações](https://github.com/conventional-changelog/conventional-changelog-angular/blob/master/convention.md). Os commits de documentação devem usar `docs(<component>): <message>`.
 * Vá para https://github.com/elenderg/Portugues-Puro/pulls e abra uma nova solicitação pull com suas alterações.
-* Se a sua Pull Requeste estiver relacionada a um problema em aberto, adicione uma linha na descrição da sua Pull Request que diga `Correção do problema # 123`, onde` # 123` é o número do problema que você está corrigindo.
+* Se a sua solicitaçãoe estiver relacionada a um problema em aberto, adicione uma linha na descrição da sua solicitação que diga `Correção do problema # 123`, onde` # 123` é o número do problema que você está corrigindo.
 
-Uma vez que você tenha enviado a Pull Request:
+Uma vez que você tenha enviado a solicitação:
 
-* Um ou mais mantenedores usarão o recurso de revisão do GitHub para revisar sua Pull Request.
-* Se o mantenedor solicitar que você faça alguma alteração, edite o que for preciso, e submeta uma nova Pull Request..
-* Se o mantenedor decidir rejeitar sua Pull Request, ele agradecerá pela contribuição e explicará por quais motivos não aceitará as alterações. Sem problemas Ainda apreciamos muito o seu tempo para fazer isso, e não consideramos isso levianamente. 💚
-* Se a sua Pull Request for aceita, ela será devidamente identificada e incorporada ao "branch" `mais recente` logo em seguida. Sua contribuição será distribuída para as todos na próxima vez que os mantenedores [fizerem um lançamento](#tag-a-release)
+* Um ou mais mantenedores usarão o recurso de revisão do GitHub para revisar sua solicitação.
+* Se o mantenedor solicitar que você faça alguma alteração, edite o que for preciso, e submeta uma nova solicitação..
+* Se o mantenedor decidir rejeitar sua solicitação, ele agradecerá pela contribuição e explicará por quais motivos não aceitará as alterações. Sem problemas Ainda apreciamos muito o seu tempo para fazer isso, e não consideramos isso levianamente. 💚
+* Se a sua solicitação for aceita, ela será devidamente identificada e incorporada ao "branch" `mais recente` logo em seguida. Sua contribuição será distribuída para as todos na próxima vez que os mantenedores [fizerem um lançamento](#tag-a-release)
 
 ## Contribuir com Código
 
@@ -129,15 +129,15 @@ Para contribuir com o código:
 * Escreva testes que verifiquem se sua contribuição funciona conforme o esperado.
 * Escreva mensagens de confirmação claras e concisas usando [formato convencional para registro de alterações](https://github.com/conventional-changelog/conventional-changelog-angular/blob/master/convention.md).
 * Vá para https://github.com/elenderg/Portugues-Puro/pulls e abra uma nova solicitação pull com suas alterações.
-* Se a sua Pull Request estiver relacionada a um problema aberto, adicione uma linha na descrição da sua Pull Request que diga `Correção do problema # 123`, onde` # 123` é o número do problema que você está corrigindo.
+* Se a sua solicitação estiver relacionada a um problema aberto, adicione uma linha na descrição da sua solicitação que diga `Correção do problema # 123`, onde` # 123` é o número do problema que você está corrigindo.
 
 Uma vez que você tenha feito isso:
 
-* Exceto em circunstâncias especiais, os mantenedores não revisarão as Pull Requests até que todas as verificações sejam feitas.
-* Um ou mais mantenedores usarão o recurso de revisão do GitHub para revisar a sua Pull Request.
-* Se o mantenedor solicitar que você faça qualquer alteração, modifique o que for necessário e envie uma nova Pull Request. Tags adicionais (como `não-testado`) serão adicionadas dependendo do nível de análise que foi feito em sua solicitação.
-* Se o mantenedor decidir rejeitar sua Pull Request, ele agradecerá pela contribuição e explicará por quais motivos ele não aceitou as alterações. Sem problemas! Ainda apreciamos muito o seu tempo para fazer isso, e não consideramos isso levianamente. 💚
-* Se a sua Pull Request for aceita, ela será identificada e incorporado ao branch `mais recente` logo em seguida. Sua contribuição será distribuída para todos na próxima vez que os mantenedores [realizarem um lançamento](#tag-a-release)
+* Exceto em circunstâncias especiais, os mantenedores não revisarão as solicitações até que todas as verificações sejam feitas.
+* Um ou mais mantenedores usarão o recurso de revisão do GitHub para revisar a sua solicitação.
+* Se o mantenedor solicitar que você faça qualquer alteração, modifique o que for necessário e envie uma nova solicitação. Tags adicionais (como `não-testado`) serão adicionadas dependendo do nível de análise que foi feito em sua solicitação.
+* Se o mantenedor decidir rejeitar sua solicitação, ele agradecerá pela contribuição e explicará por quais motivos ele não aceitou as alterações. Sem problemas! Ainda apreciamos muito o seu tempo para fazer isso, e não consideramos isso levianamente. 💚
+* Se a sua solicitação for aceita, ela será identificada e incorporado ao branch `mais recente` logo em seguida. Sua contribuição será distribuída para todos na próxima vez que os mantenedores [realizarem um lançamento](#tag-a-release)
 
 ## Fornecendo suporte em questões
 
@@ -173,10 +173,10 @@ Etiqueta | Quando usar | Observações
 `bug` | Esse termo deve ser adicionado a casos em que o código (ou documentação) está se comportando de uma maneira inesperada. | Se algo está acontecendo que surpreende o * usuário *, mas não vai contra a maneira como o código foi projetado, ele deve usar o rótulo `aprimoramento`.
 `critical` | Esse termo deve ser adicionado aos problemas de `bug` se o problema descrito torna o código completamente inutilizável em uma situação comum. |
 `documentation` | Adicione a problemas ou solicitações de pull que afetam qualquer documentação do projeto. | Pode ser combinado com outros rótulos, como `bug` ou` enhancement`.
-`repetido` | Esse termo deve ser adicionado a questões ou Pull Requests que se referem exatamente ao mesmo problema que outro que foi previamente identificado. | Problemas duplicados devem ser marcados e fechados imediatamente, com uma mensagem referindo o problema do qual é uma duplicata (com `# 123`)
-`aprimoramento` | Esse termo deve ser adicionado a Pull Requests contendo [solicitações de recurso](#request-a-feature), ou a problemas de documentação que são puramente aditivos: o código ou documentos atualmente funcionam conforme o esperado, mas uma alteração está sendo solicitada ou sugerida. |
-`preciso de ajuda` | Esse termo deve ser aplicado por qualquer [membro da equipe](#join-the-project-team) em problemas e Pull Requests para os quais eles gostariam de obter ajuda externa. Geralmente, isso significa que é menos prioridade para a equipe de mantenedor implementar, mas que a comunidade é encorajada a se engajar, se assim o desejar | 
-`in-progress` | Esse termo deve ser aplicado por [membros da equipe](#join-the-project-team) para Pull Requests que estão com algum trabalho pendente antes de estarem prontos para revisão. | O responsável pelo envio de RP original deve @mencionar o membro da equipe que aplicou o rótulo assim que a solicitação for atendida.
+`repetido` | Esse termo deve ser adicionado a questões ou solicitações que se referem exatamente ao mesmo problema que outro que foi previamente identificado. | Problemas duplicados devem ser marcados e fechados imediatamente, com uma mensagem referindo o problema do qual é uma duplicata (com `# 123`)
+`aprimoramento` | Esse termo deve ser adicionado a solicitações contendo [solicitações de recurso](#request-a-feature), ou a problemas de documentação que são puramente aditivos: o código ou documentos atualmente funcionam conforme o esperado, mas uma alteração está sendo solicitada ou sugerida. |
+`preciso de ajuda` | Esse termo deve ser aplicado por qualquer [membro da equipe](#join-the-project-team) em problemas e solicitações para os quais eles gostariam de obter ajuda externa. Geralmente, isso significa que é menos prioridade para a equipe de mantenedor implementar, mas que a comunidade é encorajada a se engajar, se assim o desejar | 
+`in-progress` | Esse termo deve ser aplicado por [membros da equipe](#join-the-project-team) para solicitações que estão com algum trabalho pendente antes de estarem prontos para revisão. | O responsável pelo envio de RP original deve @mencionar o membro da equipe que aplicou o rótulo assim que a solicitação for atendida.
 `desempenho` | Esse termo deve ser aplicado a problemas que estejam diretamente relacionados à melhoria do desempenho.|
 `refazer` | Esse termo deve ser adicionado a solicitações que lidam com a organização ou modificação do projeto para melhorá-lo. |
 `iniciantes` | Aplicado por [membros da equipe](#join-the-project-team) às questões que eles consideram boas introduções ao projeto para pessoas que não contribuíram antes. Eles não são necessariamente "fáceis", mas sim focadas em quanto contexto é necessário para entender o que precisa ser feito para este projeto em particular. | Espera-se que os membros existentes do projeto não foquem neles, a menos que a questão aumente de prioridade.
@@ -214,11 +214,11 @@ As revisões de problemas usam [o recurso de revisão do próprio GitHub](https:
 Algumas observações:
 
 * Você pode pedir pequenas alterações ("nitpicks"), mas considere se elas podem causar problemas durante a unificação (merge):. Tente deixar comentários para aquilo que for aprovado.
-* * TODOS AS SOLICITAÇÕES * devem ser cobertos por um teste: por um teste anterior com falha, um teste existente que cobre toda a funcionalidade do código enviado ou novos testes para verificar qualquer comportamento novo / alterado. Todos os testes também devem passar e seguir as convenções estabelecidas. A  área de cobertura do teste não deve ser ignorada, a menos que o caso específico seja considerado razoável pelos mantenedores.
+* * TODAS AS SOLICITAÇÕES * devem ser cobertoas por um teste: seja por um teste anterior com falha, um teste existente que cobre toda a funcionalidade do código enviado ou novos testes para verificar qualquer comportamento novo / alterado. Todos os testes também devem passar e seguir as convenções estabelecidas. A  área de cobertura do teste não deve ser ignorada, a menos que o caso específico seja considerado razoável pelos mantenedores.
 * Certifique-se de estar familiarizado com o código ou a documentação que está sendo atualizada, a menos que seja uma pequena alteração (verificação ortográfica, formatação secundária, etc.). Você pode @mencionar outro membro do projeto que você acha que é mais adequado para a revisão, mas ainda assim fornecer sua própria revisão que não aprovou.
 * Seja extremamente gentil: as pessoas que enviam contribuições de código / documento estão se colocando em uma posição bastante vulnerável e dedicam tempo e atenção ao que fizeram (mesmo que isso não seja óbvio para você!) - sempre responda com respeito, seja compreensivo, mas também não sinta que precisa sacrificar seus padrões pelo bem deles. Só não se comporte como um idiota quanto a isso.
 
-## Unificando Pull Requests
+## Unificando solicitações
 
 [Needs Collaborator](#join-the-project-team): Committer
 
