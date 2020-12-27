@@ -1,5 +1,5 @@
-||Termo Original|Alternativa 1|Alternativa 2|Alternativa 3|Alternativa 4|Alternativa 5|
-||------------|------------|------------|------------|------------|------------|
+|–|Termo Original|Alternativa 1|Alternativa 2|Alternativa 3|Alternativa 4|Alternativa 5|
+|------------|------------|------------|------------|------------|------------|------------|
 |01.1|add|unir|somar|juntar|adicionar|–|
 |01.2|–|–|–|–|–|–|
 |02.1|anywhere|algures|qualquer*|–|–|em qualquer lugar|
