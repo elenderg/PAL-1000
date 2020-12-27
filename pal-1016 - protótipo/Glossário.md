@@ -30,7 +30,7 @@
 |14.2|–|–|–|–|–|–|
 |15.1|given|dado|usando|segundo|conforme|consoante|
 |15.2|–|–|–|–|–|–|
-|16.1|handle|tratar|agente|manejar|manipular|considerar|
+|16.1|handle (verbo)|tratar|agente|manejar|manipular|considerar|
 |16.2|–|–|–|–|–|–|
 |17.1|has|tem|possui|–|–|–|
 |17.2|–|–|–|–|–|–|
@@ -93,6 +93,21 @@
 |46.2|–|decresça|diminua|decremente|subtraia|reduza|
 |47.1|wyrd|ordin|pavra|plava|–|–|
 |47.2|–|palavro|meia barra|–|–|–|
-|48.1|–|–|–|–|–|–|
+|48.1|handle (substantivo)|alça|número de série|identificador|número identidicador|número do objeto|
+|48.2|-|–|–|–|–|–|
+|49.1|handler|assistente|ajudante|–|–|–|
+|50.1|text|caixa de texto|moldura de texto|–|–|–|
+|50.2|–|–|–|–|–|–|
+|51.1|point|ponto|–|–|–|–|
+|51.2|–|–|–|–|–|–|
+|52.1|line|linha|–|–|–|–|
+|52.2|-|–|–|–|–|–|
+|53.1|row|fileira|–|–|–|–|
+|53.2|–|–|–|–|–|–|
+|54.1|pointer|indicador|–|–|–|–|
+|54.2|–|–|–|–|–|–|
+|55.1|record|registro|conjunto|–|–|–|
+|55.2|–|–|–|–|–|–|
+|56.1|–|–|–|–|–|–|
 
 _*_ exclusivo para flag (sinal/semáforo)
