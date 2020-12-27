@@ -1,7 +1,7 @@
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|add <span style="vertical-align: baseline; position: relative;top: -0.5em;>1</span>|unir|somar|juntar|adicionar|–|
-|add ^2^|–|–|–|–|–|
+|add [D]|unir|somar|juntar|adicionar|–|
+|add [E]|–|–|–|–|–|
 |anywhere ^1^|algures|qualquer*|–|–|em qualquer lugar|
 |anywhere ^2^|–|–|–|–|–|
 |append ^1^|atar|apor|ligar|associar|–|
