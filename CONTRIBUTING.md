@@ -228,7 +228,7 @@ A ser desenvolvido - preciso escrever mais sobre esse processo.
 
 [Vagas abertas](#join-the-project-team): Committer
 
-A ser desenvolvido - preciso escrever mais sobre esse processo. A parte mais importante aqui é provavelmente que todos os testes devem ser realizados corretamente e as os números de versão devem usar um método de [numeração semântica](https://semver.org).
+A ser desenvolvido - preciso escrever mais sobre esse processo. A parte mais importante aqui é provavelmente que todos os testes devem ser realizados corretamente e as os números de versão devem usar um método de [numeração semântica](https://semver.org/lang/pt-BR/).
 
 ## Junte-se à equipe do projeto
 
