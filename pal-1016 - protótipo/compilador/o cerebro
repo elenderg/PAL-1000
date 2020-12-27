@@ -54,24 +54,27 @@ Para adicionar um byte a outro byte;
 \CAL
 To add a_ byte to another byte:
 Intel $8B8508000000. \ mov eax,[ebp+8] \ the byte
+\0:  8b                      .byte 0x8b
+\1:  85 08                   test   DWORD PTR [eax],ec
+\mov eax,[ebp+8] 
 \ eax contém o valor de retorno de uma function call.
 \ Raw Hex (zero bytes in bold): 8B4508    ->  talvez devesse ser 8B8508
 \String Literal:  "\x8B\x45\x08"
 \Array Literal: { 0x8B, 0x45, 0x08 }
 \Disassembly: 0:  8b 45 08
 \ mov    eax,DWORD PTR [ebp+0x8]
-
 Intel $0FB600. \ movzx eax,[eax]
-
+\0:  0f b6 00        movzx  eax,BYTE PTR [eax]
 \MOV <destino>, <origem> 
 \Move dados da <origem> para um <destino>.  
 \<origem> pode ser um valor imediato, um registrador, ou endereço da memória.  
 \ <destino> pode ser tanto um endereço na memória quanto um registrador.
 \Tanto <origem> quanto <destino> não precisam ser um endereço da memória.
-
-
 Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ the other byte
+\0:  8b 5d 0c                      mov    ebx,DWORD PTR [ebp+0xc]
+\0:  8b 9d 0c 00 00 00      mov    ebx,DWORD PTR [ebp+0xc]
 Intel $0003. \ add [ebx],al
+\0:  00 03   add  BYTE PTR [ebx],al
 
 \PAL
 Para adicionar um byte a um número;
@@ -83,6 +86,7 @@ Intel $8B8508000000. \ mov eax,[ebp+8] \ the byte
 Intel $0FB600. \ movzx eax,[eax]
 Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ the number
 Intel $0103. \ add [ebx],eax
+\0:  01 03    add    DWORD PTR [ebx],eax
 
 \PAL
 Para adicionar uma fração a outra fração;
