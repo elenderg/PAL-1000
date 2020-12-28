@@ -3,9 +3,9 @@
 |add <sup>[D]</sup>|unir|somar|juntar|adicionar|–|
 |add <sup>[E]</sup>|adicionar|–|–|–|–|
 |anywhere <sup>[D]</sup>|algures|qualquer|–|–|em qualquer lugar|
-|anywhere <sup>[E]</sup>|–|–|–|–|–|
+|anywhere <sup>[E]</sup>|-|–|–|–|algum lugar|
 |append <sup>[D]</sup>|atar|apor|ligar|associar|–|
-|append <sup>[E]</sup>|–|–|–|–|–|
+|append <sup>[E]</sup>|prepor|–|–|–|–|
 |box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
 |box <sup>[E]</sup>|–|–|–|–|–|
 |break <sup>[D]</sup>|parar|pare|interrompa|interromper|–|
@@ -24,16 +24,16 @@
 |console <sup>[E]</sup>|–|–|–|–|–|
 |dab <sup>[D]</sup>|matizar|pincelar|colorir|–|–|
 |dab <sup>[E]</sup>|–|–|–|–|–|
-|deque <sup>[D]</sup>|decue|decifre|decifrar|–|–|
+|deque <sup>[D]</sup>|decue|desenfileirar|–|–|–|
 |deque <sup>[E]</sup>|–|–|–|–|–|
 |dot <sup>[D]</sup>|ponto|marca|–|–|–|
-|dot <sup>[E]</sup>|–|–|–|–|–|
+|dot <sup>[E]</sup>|pinta|–|–|–|–|
 |flag <sup>[D]</sup>|sinal|sinalizador|bandeira|–|–|
 |flag <sup>[E]</sup>|–|–|–|–|–|
 |given <sup>[D]</sup>|dado|usando|segundo|conforme|consoante|
-|given <sup>[E]</sup>|–|–|–|–|–|
+|given <sup>[E]</sup>|a partir de|–|–|–|–|
 |handle <sup>[D]</sup>|tratar|agente|manejar|manipular|considerar|
-|handle <sup>[E]</sup>|–|–|–|–|–|
+|handle <sup>[E]</sup>|(número) identificador|número de série|número do objeto|–|–|
 |has <sup>[D]</sup>|tem|possui|–|–|–|
 |has <sup>[E]</sup>|–|–|–|–|–|
 |have <sup>[D]</sup>|têm|possuem|–|–|–|
@@ -41,65 +41,67 @@
 |hue <sup>[D]</sup>|tom|matiz| coloração|tonalidade|–|
 |hue <sup>[E]</sup>|–|–|–|–|–|
 |indent <sup>[D]</sup>|avanço|–|–|–||
-|indent <sup>[E]</sup>|–|–|–|–|–|
+|indent <sup>[E]</sup>|recuo (à direita)|–|–|–|–|
 |is past <sup>[D]</sup>|ultrapassar|passar de|–|–|–|
 |is past <sup>[E]</sup>|–|–|–|–|–|
 |loop <sup>[D]</sup>|reciclar|recicle|–|–|–|
-|loop <sup>[E]</sup>|–|–|–|–|–|
+|loop <sup>[E]</sup>|Percorrer|–|–|–|–|
 |moniker <sup>[D]</sup>|alcunha|–|–|–|–|
 |moniker <sup>[E]</sup>|–|–|–|–|–|
 |monikette <sup>[D]</sup>|apelido|–|–|–|–|
-|monikette <sup>[E]</sup>|–|–|–|–|–|
+|monikette <sup>[E]</sup>|minialcunha|–|–|–|–|
 |nibble <sup>[D]</sup>|níquel|nicles|–|–|–|
-|nibble <sup>[E]</sup>|–|–|–|–|–|
+|nibble <sup>[E]</sup>|meio pedaço|metade de um pedaço|quatro pedacinhos|níbôu|–|
 |nodette <sup>[D]</sup>|nódulo|nó|–|–||
-|nodette <sup>[E]</sup>|–|–|–|–|–|
+|nodette <sup>[E]</sup>|elemento|–|–|–|–|
 |node <sup>[D]</sup>|nodo|enlace|–|–||
-|node <sup>[E]</sup>|–|–|–|–|–|
+|node <sup>[E]</sup>|lista|–|–|–|–|
 |outdent <sup>[D]</sup>|recuo|–|–|–||
-|outdent <sup>[E]</sup>|–|–|–|–|–|
+|outdent <sup>[E]</sup>|recuo (à esquerda)|–|–|–|–|
 |pick <sup>[D]</sup>|pegar|realçar|escolher|separar|selecionar|
-|pick <sup>[E]</sup>|–|–|–|–|–|
+|pick <sup>[E]</sup>|coletar|–|–|–|–|
 |point <sup>[D]</sup>|foco|meta|objetivo|–|–|
-|point <sup>[E]</sup>|–|–|–|–|–|
+|point <sup>[E]</sup>|ponto|–|–|–|–|
 |query string <sup>[D]</sup>|questionamento|–|–|inscrição de consulta||
-|query string <sup>[E]</sup>|–|–|–|–|–|
+|query string <sup>[E]</sup>|texto da consulta|–|–|–|–|
 |rainbow color <sup>[D]</sup>|furta-cor|–|–|cor do arco-íris|–|
-|rainbow color <sup>[E]</sup>|–|–|–|–|–|
+|rainbow color <sup>[E]</sup>|cor da íris|–|–|–|–|
 |repeat <sup>[D]</sup>|repetir|repita|–|–|–|
 |repeat <sup>[E]</sup>|–|–|–|–|–|
 |resize <sup>[D]</sup>|repor|redimensionar|recalcular|–|–|
-|resize <sup>[E]</sup>|–|–|–|–|–|
+|resize <sup>[E]</sup>|redimensionar|–|–|–|–|
 |rider <sup>[D]</sup>|iterador|sequenciador|–|–|–|
-|rider <sup>[E]</sup>|–|–|–|–|–|
+|rider <sup>[E]</sup>|percorredor|–|–|–|–|
 |slap <sup>[D]</sup>|impor|aplicar|assentar|empregar|–|
-|slap <sup>[E]</sup>|–|–|–|–|–|
+|slap <sup>[E]</sup>|colocar|–|–|–|–|
 |some <sup>[D]</sup>|uns|umas|certo|algum|–|
-|some <sup>[E]</sup>|–|–|–|–|–|
+|some <sup>[E]</sup>|algum(a/as)|algun(s)|–|–|–|
 |spot <sup>[D]</sup>|lugar|local|posição|–|–|
-|spot <sup>[E]</sup>|–|–|–|–|–|
+|spot <sup>[E]</sup>|mancha|–|–|–|–|
 |stack entry <sup>[D]</sup>|empilhamento|–|–|entrada de pilha|–|
 |stack entry <sup>[E]</sup>|–|–|–|–|–|
 |string <sup>[D]</sup>|escrito/a|inscrição|série|sequência|frase|
-|string <sup>[E]</sup>|–|–|–|–|–|
+|string <sup>[E]</sup>|texto|–|–|–|–|
 |substring <sup>[D]</sup>|trecho|segmento|subsérie|subsequência|fragmento|
-|substring <sup>[E]</sup>|–|–|–|–|–|
+|substring <sup>[E]</sup>|pedaço de um texto|parte de um texto|–|–|–|
 |target <sup>[D]</sup>|alvo|meta|–|–|–|
-|target <sup>[E]</sup>|–|–|–|–|–|
+|target <sup>[E]</sup>|objetivo (SAL)|–|–|–|–|
 |thing <sup>[D]</sup>|coisa|elemento|algo|objeto|–|
 |thing <sup>[E]</sup>|–|–|–|–|–|
 |token <sup>[D]</sup>|marco|signo|símbolo|marca|–|
-|token <sup>[E]</sup>|–|–|–|–|–|
+|token <sup>[E]</sup>|sinal|–|–|–|–|
 |twip <sup>[D]</sup>|tuipe|–|–|–|–|
-|twip <sup>[E]</sup>|–|–|–|–|–|
+|twip <sup>[E]</sup>|miniponto|microponto|minipixel|micropixel|–|
 |unbump <sup>[D]</sup>|decrescer|diminuir|decrementar|subtrair|–|
 |unbump <sup>[E]</sup>|–|–|–|–|–|
 |wyrd <sup>[D]</sup>|ordin|pavra|plava|–|–|
-|wyrd <sup>[E]</sup>|–|–|–|–|–|
+|wyrd <sup>[E]</sup>|meia barra|metade de uma barra|palavro|palavre|–|
 
+tags restantes para adicionar:  
 
-tags restantes para adicionar: 
+[A](#A) [B](#B) [C](#C) [D](#D) [E](#E) [F](#F) [G](#G) [H](#H) [I](#I) [J-K](#J-K) [L](#L) [M](#M) [N](#N) [O](#O) [P](#P) [Q](#Q) [R](#R) [S](#S) [T](#T) [U](#U) [V](#V) [WXYZ](#WXYZ)
 
+### #A
 
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
@@ -110,16 +112,21 @@ tags restantes para adicionar:
 |accent key|–|–|–|–|–|
 |acknowledge byte|–|–|–|–|–|
 |acute-accent byte|–|–|–|–|–|
-|adress|–|–|–|–|–|
+|adress|número do endereço|–|–|–|–|
 |a-key|–|–|–|–|–|
 |alt key|–|–|–|–|–|
-|amount|–|–|–|–|–|
+|amount|quantia|quantidade|–|–|–|
 |ampersand byte|–|–|–|–|–|
 |angle|–|–|–|–|–|
 |arrow cursor|–|–|–|–|–|
 |asterisk byte|–|–|–|–|–|
 |at-sign byte|–|–|–|–|–|
-|backslash|–|–|–|–|–|
+
+### #B
+
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
+|backslash|barra invertida|–|–|–|–|
 |backslash byte|–|–|–|–|–|
 |backspace key|–|–|–|–|–|
 |bar byte|–|–|–|–|–|
@@ -185,7 +192,7 @@ tags restantes para adicionar:
 |big-y-diaeresis byte|–|–|–|–|–|
 |big-z byte|–|–|–|–|–|
 |big-z-caron byte|–|–|–|–|–|
-|bit|–|–|–|–|–|
+|bit|pedacinho|–|–|–|–|
 |b-key|–|–|–|–|–|
 |black color|–|–|–|–|–|
 |black pen|–|–|–|–|–|
@@ -199,19 +206,22 @@ tags restantes para adicionar:
 |brownish color|–|–|–|–|–|
 |bucket|–|–|–|–|–|
 |bucket count|–|–|–|–|–|
-|buffer|–|–|–|–|–|
+|buffer|depósito|armazém|estoque|almoxarifado|–|
 |built-in type|–|–|–|–|–|
 |bullet byte|–|–|–|–|–|
 |byte|–|–|–|–|–|
 |byte count|–|–|–|–|–|
-|byte#|–|–|–|–|–|
+
+### #C
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |call external tag|–|–|–|–|–|
 |call indirect tag|–|–|–|–|–|
 |call internal tag|–|–|–|–|–|
 |cancel byte|–|–|–|–|–|
-|canvas|–|–|–|–|–|
+|canvas|painel|quadro|–|–|–|
 |caps key|–|–|–|–|–|
-|caret byte|–|–|–|–|–|
+|caret byte|pedaço contendo um cursor de texto|pedaço com um cursor de texto|–|–|–|
 |cedilla byte|–|–|–|–|–|
 |cent-sign byte|–|–|–|–|–|
 |character|–|–|–|–|–|
@@ -220,34 +230,38 @@ tags restantes para adicionar:
 |clear color|–|–|–|–|–|
 |clear key|–|–|–|–|–|
 |clear pen|–|–|–|–|–|
-|clsid|–|–|–|–|–|
-|cluck sound|–|–|–|–|–|
+|clsid|Identificador de Classe|Número Identificador de Classe|–|–|–|
+|cluck sound|som de latido|cacarejo|–|–|–|
 |colon byte|–|–|–|–|–|
 |color|–|–|–|–|–|
-|colorref|–|–|–|–|–|
-|column#|–|–|–|–|–|
+|colorref|código da cor|número da cor|–|–|–|
+|column#|número da coluna|–|–|–|–|
 |comma byte|–|–|–|–|–|
 |command|–|–|–|–|–|
-|comment color|–|–|–|–|–|
+|comment color|cor dos comentários|–|–|–|–|
 |~~console~~|–|–|–|–|–|
 |context|–|–|–|–|–|
 |context stack|–|–|–|–|–|
-|coord|–|–|–|–|–|
+|coord|coordenada|–|–|–|–|
 |copy|–|–|–|–|–|
 |copyright byte|–|–|–|–|–|
 |count|–|–|–|–|–|
 |counter|–|–|–|–|–|
-|cross byte|–|–|–|–|–|
+|cross byte|pedaço contendo um mais|-|–|–|–|
 |ctrl key|–|–|–|–|–|
 |currency-sign byte|–|–|–|–|–|
-|current canvas|–|–|–|–|–|
+|current canvas|painel atual|–|–|–|–|
 |current menu|–|–|–|–|–|
 |current process|–|–|–|–|–|
 |current rainbow color number|–|–|–|–|–|
 |current tab|–|–|–|–|–|
-|cursor|–|–|–|–|–|
+|cursor|setinha|cursor|–|–|–|
 |cyan color|–|–|–|–|–|
 |cyan pen|–|–|–|–|–|
+
+### #D
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |dagger byte|–|–|–|–|–|
 |dark blue color|–|–|–|–|–|
 |dark blue pen|–|–|–|–|–|
@@ -357,7 +371,8 @@ tags restantes para adicionar:
 |device-control-three byte|–|–|–|–|–|
 |device-control-two byte|–|–|–|–|–|
 |diaeresis byte|–|–|–|–|–|
-|directory|–|–|–|–|–|
+|directory|endereço da pasta|pasta|–|–|–|
+|directory name|nome da pasta|||||
 |distance|–|–|–|–|–|
 |division-symbol byte|–|–|–|–|–|
 |d-key|–|–|–|–|–|
@@ -366,6 +381,10 @@ tags restantes para adicionar:
 |double-dagger byte|–|–|–|–|–|
 |double-quote byte|–|–|–|–|–|
 |down-arrow key|–|–|–|–|–|
+
+### #E
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |eight byte|–|–|–|–|–|
 |eight key|–|–|–|–|–|
 |e-key|–|–|–|–|–|
@@ -393,7 +412,11 @@ tags restantes para adicionar:
 |exclamation-mark byte|–|–|–|–|–|
 |exit tag|–|–|–|–|–|
 |extra points|–|–|–|–|–|
-|fancy arrow|–|–|–|–|–|
+
+### #F
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
+|fancy arrow|Seta elegante|–|–|–|–|
 |feminine byte|–|–|–|–|–|
 |figure|–|–|–|–|–|
 |file|–|–|–|–|–|
@@ -408,8 +431,12 @@ tags restantes para adicionar:
 |form-feed byte|–|–|–|–|–|
 |four byte|–|–|–|–|–|
 |four key|–|–|–|–|–|
-|free tab|–|–|–|–|–|
-|gcd|–|–|–|–|–|
+|free tab|aba livre|aba vazia|–|–|–|
+
+### #G
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
+|gcd|Máximo divisor comum|MDC|–|–|–|
 |geometric figure|–|–|–|–|–|
 |g-key|–|–|–|–|–|
 |gold color|–|–|–|–|–|
@@ -425,44 +452,60 @@ tags restantes para adicionar:
 |greenish color|–|–|–|–|–|
 |grid color|–|–|–|–|–|
 |group-separator byte|–|–|–|–|–|
-|guid|–|–|–|–|–|
-|hand cursor|–|–|–|–|–|
+|guid|Identificador Único Abrangente|–|–|–|–|
+
+### #H
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
+|hand cursor|mãozinha|–|–|–|–|
 |~~handle~~|–|–|–|–|–|
 |hashtag byte|–|–|–|–|–|
 |hash-tag byte|–|–|–|–|–|
-|hbitmap|–|–|–|–|–|
-|hbrush|–|–|–|–|–|
-|hdc|–|–|–|–|–|
+|hbitmap|número identificador de um bitmap|–|–|–|–|
+|hbrush|número identificador de um pincel|–|–|–|–|
+|hdc|Número de contexto do dispositivo (device context)|–|–|–|–|
 |heading|–|–|–|–|–|
 |heap count|–|–|–|–|–|
 |height|–|–|–|–|–|
 |hex string|–|–|–|–|–|
-|hfont|–|–|–|–|–|
-|hicon|–|–|–|–|–|
-|hilite color|–|–|–|–|–|
+|hfont|Número identificador da fonte|–|–|–|–|
+|hicon|Número identificador do ícone|–|–|–|–|
+|hilite color|cor de realce|cor de destaque|–|–|–|
 |h-key|–|–|–|–|–|
 |home key|–|–|–|–|–|
-|hpen|–|–|–|–|–|
-|hrgn|–|–|–|–|–|
+|hpen|Número identificador da caneta|Número identificador da canetinha|Número identificador do lápis de cor|–|–|
+|hrgn|Número identificador da região|–|–|–|–|
 |~~hue~~|–|–|–|–|–|
+
+### #I
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |i-beam cursor|–|–|–|–|–|
-|iid|–|–|–|–|–|
+|iid|Número identificador da interface|–|–|–|–|
 |i-key|–|–|–|–|–|
 |import header|–|–|–|–|–|
 |increment tag|–|–|–|–|–|
 |~~indent~~|–|–|–|–|–|
-|input|–|–|–|–|–|
+|input|fluxo de entrada|–|–|–|–|
 |insert key|–|–|–|–|–|
 |intel tag|–|–|–|–|–|
 |intermediate|–|–|–|–|–|
 |inverted-exclamation-mark byte|–|–|–|–|–|
 |inverted-question-mark byte|–|–|–|–|–|
+
+### #J-K
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |j-key|–|–|–|–|–|
 |jump false tag|–|–|–|–|–|
-|key|–|–|–|–|–|
+|key|tecla|–|–|–|–|
 |k-key|–|–|–|–|–|
+
+### #L
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |large letter height|–|–|–|–|–|
-|lcm|–|–|–|–|–|
+|lcm|Mínimo múltiplo comum|MMC|–|–|–|
 |left|–|–|–|–|–|
 |left-alligator byte|–|–|–|–|–|
 |left-alligator-quote byte|–|–|–|–|–|
@@ -474,9 +517,9 @@ tags restantes para adicionar:
 |left-paren byte|–|–|–|–|–|
 |left-single-quote byte|–|–|–|–|–|
 |left-window key|–|–|–|–|–|
-|length|–|–|–|–|–|
+|length|comprimento|tamanho|–|–|–|
 |less-than-sign byte|–|–|–|–|–|
-|letter|–|–|–|–|–|
+|letter|letra|–|–|–|–|
 |letter height|–|–|–|–|–|
 |light blue color|–|–|–|–|–|
 |light blue pen|–|–|–|–|–|
@@ -632,17 +675,21 @@ tags restantes para adicionar:
 |l-key|–|–|–|–|–|
 |load address tag|–|–|–|–|–|
 |load eax tag|–|–|–|–|–|
-|local|–|–|–|–|–|
+|local|de abrangência restrita|regional|–|–|–|
 |loop tag|–|–|–|–|–|
 |lower-double-quote byte|–|–|–|–|–|
 |lower-single-quote byte|–|–|–|–|–|
 |l-param|–|–|–|–|–|
+
+### #M
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |magenta color|–|–|–|–|–|
 |magenta pen|–|–|–|–|–|
 |main window|–|–|–|–|–|
 |margin|–|–|–|–|–|
 |masculine byte|–|–|–|–|–|
-|mask|–|–|–|–|–|
+|mask|máscara|enfeite|maquiagem|–|–|
 |max page undos|–|–|–|–|–|
 |max text undos|–|–|–|–|–|
 |memory canvas|–|–|–|–|–|
@@ -654,14 +701,18 @@ tags restantes para adicionar:
 |m-key|–|–|–|–|–|
 |~~moniker~~|–|–|–|–|–|
 |monikette|–|–|–|–|–|
-|ms|–|–|–|–|–|
+|ms|milisegundo(s)|–|–|–|–|
 |multiple|–|–|–|–|–|
 |multiplication-symbol byte|–|–|–|–|–|
-|name|–|–|–|–|–|
+
+### #N
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
+|name|nome|–|–|–|–|
 |negative-acknowledge byte|–|–|–|–|–|
 |next letter|–|–|–|–|–|
 |~~nibble~~|–|–|–|–|–|
-|nibble string|–|–|–|–|–|
+|nibble string|texto contendo quatro pedacinhos|meio pedaço de texto|–|–|–|
 |nine byte|–|–|–|–|–|
 |nine key|–|–|–|–|–|
 |n-key|–|–|–|–|–|
@@ -674,7 +725,7 @@ tags restantes para adicionar:
 |null hbrush|–|–|–|–|–|
 |null hfont|–|–|–|–|–|
 |null hpen|–|–|–|–|–|
-|number|–|–|–|–|–|
+|number|número|–|–|–|–|
 |number-sign byte|–|–|–|–|–|
 |numlock key|–|–|–|–|–|
 |numpad-astrisk key|–|–|–|–|–|
@@ -692,7 +743,11 @@ tags restantes para adicionar:
 |numpad-three key|–|–|–|–|–|
 |numpad-two key|–|–|–|–|–|
 |numpad-zero key|–|–|–|–|–|
-|offset|–|–|–|–|–|
+
+### #O
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
+|offset|deslocamento|–|–|–|–|
 |o-key|–|–|–|–|–|
 |one byte|–|–|–|–|–|
 |one key|–|–|–|–|–|
@@ -702,18 +757,21 @@ tags restantes para adicionar:
 |orange pen|–|–|–|–|–|
 |osmosian font resource|–|–|–|–|–|
 |~~outdent~~|–|–|–|–|–|
+
+### #P
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |page|–|–|–|–|–|
 |page clipboard|–|–|–|–|–|
 |page number|–|–|–|–|–|
 |page-down key|–|–|–|–|–|
 |page-up key|–|–|–|–|–|
 |paragraph byte|–|–|–|–|–|
-|paren,|–|–|–|–|–|
 |partial moniker|–|–|–|–|–|
 |pastel color|–|–|–|–|–|
-|path|–|–|–|–|–|
+|path|endereço||–|–|–|
 |pause key|–|–|–|–|–|
-|pdf|–|–|–|–|–|
+|pdf|arquivo pdf|–|–|–|–|
 |pen|–|–|–|–|–|
 |pen size|–|–|–|–|–|
 |per|–|–|–|–|–|
@@ -728,9 +786,9 @@ tags restantes para adicionar:
 |plus-sign byte|–|–|–|–|–|
 |~~point~~|–|–|–|–|–|
 |~~pointer~~|–|–|–|–|–|
-|polygon|–|–|–|–|–|
+|polygon|polígono|–|–|–|–|
 |pound-sign byte|–|–|–|–|–|
-|ppi|–|–|–|–|–|
+|ppi|pontos por polegada|pontos em uma polegada|–|–|–|
 |precise degree|–|–|–|–|–|
 |printer canvas|–|–|–|–|–|
 |printer device mode|–|–|–|–|–|
@@ -741,30 +799,39 @@ tags restantes para adicionar:
 |purple pen|–|–|–|–|–|
 |push address tag|–|–|–|–|–|
 |push value tag|–|–|–|–|–|
+
+### #Q
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |q-key|–|–|–|–|–|
-|quarter|–|–|–|–|–|
+|quarter|quarto|–|–|–|–|
 |query byte|–|–|–|–|–|
 |~~query string~~|–|–|–|–|–|
 |question-mark byte|–|–|–|–|–|
-|quotient|–|–|–|–|–|
-|radius|–|–|–|–|–|
+|quotient|quociente|–|–|–|–|
+
+### #R
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
+|radius|raio|–|–|–|–|
 |~~rainbow color~~|–|–|–|–|–|
 |random number|–|–|–|–|–|
+|ratio|proporção|||||
 |really dark color|–|–|–|–|–|
 |really light color|–|–|–|–|–|
 |really really dark color|–|–|–|–|–|
 |really really light color|–|–|–|–|–|
-|~~record~~|–|–|–|–|–|
+|record|conjunto|registro|–|–|–|
 |record-separator byte|–|–|–|–|–|
 |rectangle|–|–|–|–|–|
 |red color|–|–|–|–|–|
 |red pen|–|–|–|–|–|
 |registered byte|–|–|–|–|–|
 |registered-trade-mark byte|–|–|–|–|–|
-|remainder|–|–|–|–|–|
+|remainder|resto|–|–|–|–|
 |remembered page number|–|–|–|–|–|
 |repeat tag|–|–|–|–|–|
-|reply|–|–|–|–|–|
+|reply|objeção|argumento de resposta|–|–|–|
 |return byte|–|–|–|–|–|
 |right-alligator byte|–|–|–|–|–|
 |right-alligator-quote byte|–|–|–|–|–|
@@ -778,12 +845,16 @@ tags restantes para adicionar:
 |right-window key|–|–|–|–|–|
 |rise|–|–|–|–|–|
 |r-key|–|–|–|–|–|
-|routine|–|–|–|–|–|
+|routine|tarefa|–|–|–|–|
 |routine address tag|–|–|–|–|–|
 |routine reference|–|–|–|–|–|
 |row#|–|–|–|–|–|
 |row/sheet|–|–|–|–|–|
 |run|–|–|–|–|–|
+
+### #S
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |saturation|–|–|–|–|–|
 |save eax tag|–|–|–|–|–|
 |saved memory hbitmap|–|–|–|–|–|
@@ -793,7 +864,7 @@ tags restantes para adicionar:
 |scrolllock key|–|–|–|–|–|
 |second|–|–|–|–|–|
 |sector byte|–|–|–|–|–|
-|seed|–|–|–|–|–|
+|seed|número da semente|–|–|–|–|
 |semi-colon byte|–|–|–|–|–|
 |seven byte|–|–|–|–|–|
 |seven key|–|–|–|–|–|
@@ -812,7 +883,7 @@ tags restantes para adicionar:
 |sky blue pen|–|–|–|–|–|
 |sky color|–|–|–|–|–|
 |sky pen|–|–|–|–|–|
-|slash|–|–|–|–|–|
+|slash|barra|–|–|–|–|
 |slash byte|–|–|–|–|–|
 |small letter height|–|–|–|–|–|
 |small-bullet byte|–|–|–|–|–|
@@ -826,31 +897,36 @@ tags restantes para adicionar:
 |~~stack entry~~|–|–|–|–|–|
 |start-of-heading byte|–|–|–|–|–|
 |start-of-text byte|–|–|–|–|–|
-|stdin handle|–|–|–|–|–|
-|stdout handle|–|–|–|–|–|
-|string|–|–|–|–|–|
+|stdin handle|número identificador do fluxo padrão de entrada|–|–|–|–|
+|stdout handle|número identificador do fluxo padrão de saída|–|–|–|–|
+|~~string~~|–|–|–|–|–|
 |string#|–|–|–|–|–|
 |submenu|–|–|–|–|–|
 |substitute byte|–|–|–|–|–|
-|substring|–|–|–|–|–|
+|~~substring~~|–|–|–|–|–|
+|superduper|posicionador|||||
 |superscript-one byte|–|–|–|–|–|
 |superscript-three byte|–|–|–|–|–|
 |superscript-two byte|–|–|–|–|–|
 |synchronous-idle byte|–|–|–|–|–|
+
+### #T
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |tab|–|–|–|–|–|
 |tab byte|–|–|–|–|–|
 |tab key|–|–|–|–|–|
-|tag|–|–|–|–|–|
+|tag|etiqueta|–|–|–|–|
 |talker|–|–|–|–|–|
 |tan color|–|–|–|–|–|
 |tan pen|–|–|–|–|–|
-|teal color|–|–|–|–|–|
+|teal color|verde-azulado|azul petróleo|verde petróleo|–|–|
 |teal pen|–|–|–|–|–|
 |terminal|–|–|–|–|–|
 |text cutoff|–|–|–|–|–|
 |text margin|–|–|–|–|–|
 |the|–|–|–|–|–|
-|the gptoken|–|–|–|–|–|
+|the gptoken|grupo do sinal|–|–|–|–|
 |~~thing~~|–|–|–|–|–|
 |three byte|–|–|–|–|–|
 |three key|–|–|–|–|–|
@@ -859,23 +935,31 @@ tags restantes para adicionar:
 |tilde byte|–|–|–|–|–|
 |times|–|–|–|–|–|
 |t-key|–|–|–|–|–|
-|top|–|–|–|–|–|
-|tpi|–|–|–|–|–|
-|tpp|–|–|–|–|–|
-|tracer color|–|–|–|–|–|
+|top|parte de cima|–|–|–|–|
+|tpi|minipontos por polegada|–|–|–|–|
+|tpp|minipontos por ponto|–|–|–|–|
+|tracer color|cor usada pelo pintor|–|–|–|–|
 |trade-mark byte|–|–|–|–|–|
 |~~twip~~|–|–|–|–|–|
 |two byte|–|–|–|–|–|
 |two key|–|–|–|–|–|
-|type|–|–|–|–|–|
+|type|tipo|–|–|–|–|
+
+### #U
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |u-key|–|–|–|–|–|
 |underscore byte|–|–|–|–|–|
-|unit|–|–|–|–|–|
+|unit|unidade|–|–|–|–|
 |unit-separator byte|–|–|–|–|–|
 |up-arrow key|–|–|–|–|–|
 |upperscore byte|–|–|–|–|–|
-|uuid|–|–|–|–|–|
+|uuid|Identificador Único Universal|–|–|–|–|
 |variable|–|–|–|–|–|
+
+### #V
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |vertical-bar byte|–|–|–|–|–|
 |vertical-tab byte|–|–|–|–|–|
 |very dark color|–|–|–|–|–|
@@ -885,6 +969,11 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–|–|
+
+### #WXYZ
+
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |wave|–|–|–|–|–|
 |white color|–|–|–|–|–|
 |white pen|–|–|–|–|–|

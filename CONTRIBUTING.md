@@ -3,14 +3,14 @@
 ## Como eu faço para ... <a name="toc"> </a>
 
 * [Usar este guia](#Introdução)?
-* Para perguntar ou dizer algo? 🤔🐛😱
+* Perguntar ou dizer alguma coisa? 🤔🐛😱
    * [Para solicitar ajuda](#Solicitar-ajuda)
    * [Para relatar um erro ou bug](#Reportar-um-erro-ou-bug)
    * [Para solicitar um recurso](#Solicitando-um-recurso)
-* Fazer algo? 🤓👩🏽‍💻📜🍳
+* Fazer alguma coisa? 🤓👩🏽‍💻📜🍳
    * [Configurar o projeto](#Configuração-do-projeto)
    * [Contribiur com a Documentação](#Contribuir-com-a-documentação)
-* Gerenciar algo ✅🙆🏼💃👔
+* Gerenciar alguma coisa?✅🙆🏼💃👔
    * [Fornecer suporte para problemas](#Fornecendo-suporte-em-questões)
    * [Catalogar problemas em aberto](#lIdentificação-adequada-de-problemas)
    * [Arquivar Solicitações Antigas](#Arquivamento-de-Solicitações-antigas)
@@ -22,7 +22,7 @@
 
 ## Introdução
 
-Muito obrigado pelo seu interesse em contribuir !. Todos os tipos de contribuições são encorajadas e valorizadas. Veja o [índice](# toc) para diferentes maneiras de ajudar e detalhes sobre como este projeto os trata! 📝
+Muito obrigado pelo seu interesse em contribuir !. Todos os tipos de contribuições são encorajadas e valorizadas. Veja o [índice](#toc) para diferentes maneiras de ajudar e detalhes sobre como este projeto os trata! 📝
 
 Por favor, certifique-se de ler a seção relevante antes de fazer sua contribuição! Isso tornará muito mais fácil para nós, mantenedores, tirar o máximo proveito disso e suavizar a experiência de todos os envolvidos. 💚
 
