@@ -22,7 +22,7 @@
 
 ## Introdução
 
-Muito obrigado pelo seu interesse em contribuir !. Todos os tipos de contribuições são encorajadas e valorizadas. Veja o [índice](# toc) para diferentes maneiras de ajudar e detalhes sobre como este projeto os trata! 📝
+Muito obrigado pelo seu interesse em contribuir !. Todos os tipos de contribuições são encorajadas e valorizadas. Veja o [índice](#toc) para diferentes maneiras de ajudar e detalhes sobre como este projeto os trata! 📝
 
 Por favor, certifique-se de ler a seção relevante antes de fazer sua contribuição! Isso tornará muito mais fácil para nós, mantenedores, tirar o máximo proveito disso e suavizar a experiência de todos os envolvidos. 💚
 
