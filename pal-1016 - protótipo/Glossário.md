@@ -3,9 +3,9 @@
 |add <sup>[D]</sup>|unir|somar|juntar|adicionar|–|
 |add <sup>[E]</sup>|adicionar|–|–|–|–|
 |anywhere <sup>[D]</sup>|algures|qualquer|–|–|em qualquer lugar|
-|anywhere <sup>[E]</sup>|–|–|–|–|–|
+|anywhere <sup>[E]</sup>|-|–|–|–|algum lugar|
 |append <sup>[D]</sup>|atar|apor|ligar|associar|–|
-|append <sup>[E]</sup>|–|–|–|–|–|
+|append <sup>[E]</sup>|prepor|–|–|–|–|
 |box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
 |box <sup>[E]</sup>|–|–|–|–|–|
 |break <sup>[D]</sup>|parar|pare|interrompa|interromper|–|
@@ -27,13 +27,13 @@
 |deque <sup>[D]</sup>|decue|desenfileirar|–|–|–|
 |deque <sup>[E]</sup>|–|–|–|–|–|
 |dot <sup>[D]</sup>|ponto|marca|–|–|–|
-|dot <sup>[E]</sup>|–|–|–|–|–|
+|dot <sup>[E]</sup>|pinta|–|–|–|–|
 |flag <sup>[D]</sup>|sinal|sinalizador|bandeira|–|–|
 |flag <sup>[E]</sup>|–|–|–|–|–|
 |given <sup>[D]</sup>|dado|usando|segundo|conforme|consoante|
-|given <sup>[E]</sup>|–|–|–|–|–|
+|given <sup>[E]</sup>|a partir de|–|–|–|–|
 |handle <sup>[D]</sup>|tratar|agente|manejar|manipular|considerar|
-|handle <sup>[E]</sup>|–|–|–|–|–|
+|handle <sup>[E]</sup>|(número) identificador|número de série|número do objeto|–|–|
 |has <sup>[D]</sup>|tem|possui|–|–|–|
 |has <sup>[E]</sup>|–|–|–|–|–|
 |have <sup>[D]</sup>|têm|possuem|–|–|–|
@@ -41,61 +41,61 @@
 |hue <sup>[D]</sup>|tom|matiz| coloração|tonalidade|–|
 |hue <sup>[E]</sup>|–|–|–|–|–|
 |indent <sup>[D]</sup>|avanço|–|–|–||
-|indent <sup>[E]</sup>|–|–|–|–|–|
+|indent <sup>[E]</sup>|recuo (à direita)|–|–|–|–|
 |is past <sup>[D]</sup>|ultrapassar|passar de|–|–|–|
 |is past <sup>[E]</sup>|–|–|–|–|–|
 |loop <sup>[D]</sup>|reciclar|recicle|–|–|–|
-|loop <sup>[E]</sup>|–|–|–|–|–|
+|loop <sup>[E]</sup>|Percorrer|–|–|–|–|
 |moniker <sup>[D]</sup>|alcunha|–|–|–|–|
 |moniker <sup>[E]</sup>|–|–|–|–|–|
 |monikette <sup>[D]</sup>|apelido|–|–|–|–|
-|monikette <sup>[E]</sup>|–|–|–|–|–|
+|monikette <sup>[E]</sup>|minialcunha|–|–|–|–|
 |nibble <sup>[D]</sup>|níquel|nicles|–|–|–|
-|nibble <sup>[E]</sup>|–|–|–|–|–|
+|nibble <sup>[E]</sup>|meio pedaço|metade de um pedaço|quatro pedacinhos|níbôu|–|
 |nodette <sup>[D]</sup>|nódulo|nó|–|–||
-|nodette <sup>[E]</sup>|–|–|–|–|–|
+|nodette <sup>[E]</sup>|elemento|–|–|–|–|
 |node <sup>[D]</sup>|nodo|enlace|–|–||
-|node <sup>[E]</sup>|–|–|–|–|–|
+|node <sup>[E]</sup>|lista|–|–|–|–|
 |outdent <sup>[D]</sup>|recuo|–|–|–||
-|outdent <sup>[E]</sup>|–|–|–|–|–|
+|outdent <sup>[E]</sup>|recuo (à esquerda)|–|–|–|–|
 |pick <sup>[D]</sup>|pegar|realçar|escolher|separar|selecionar|
-|pick <sup>[E]</sup>|–|–|–|–|–|
+|pick <sup>[E]</sup>|coletar|–|–|–|–|
 |point <sup>[D]</sup>|foco|meta|objetivo|–|–|
-|point <sup>[E]</sup>|–|–|–|–|–|
+|point <sup>[E]</sup>|ponto|–|–|–|–|
 |query string <sup>[D]</sup>|questionamento|–|–|inscrição de consulta||
-|query string <sup>[E]</sup>|–|–|–|–|–|
+|query string <sup>[E]</sup>|texto da consulta|–|–|–|–|
 |rainbow color <sup>[D]</sup>|furta-cor|–|–|cor do arco-íris|–|
-|rainbow color <sup>[E]</sup>|–|–|–|–|–|
+|rainbow color <sup>[E]</sup>|cor da íris|–|–|–|–|
 |repeat <sup>[D]</sup>|repetir|repita|–|–|–|
 |repeat <sup>[E]</sup>|–|–|–|–|–|
 |resize <sup>[D]</sup>|repor|redimensionar|recalcular|–|–|
-|resize <sup>[E]</sup>|–|–|–|–|–|
+|resize <sup>[E]</sup>|redimensionar|–|–|–|–|
 |rider <sup>[D]</sup>|iterador|sequenciador|–|–|–|
-|rider <sup>[E]</sup>|–|–|–|–|–|
+|rider <sup>[E]</sup>|percorredor|–|–|–|–|
 |slap <sup>[D]</sup>|impor|aplicar|assentar|empregar|–|
-|slap <sup>[E]</sup>|–|–|–|–|–|
+|slap <sup>[E]</sup>|colocar|–|–|–|–|
 |some <sup>[D]</sup>|uns|umas|certo|algum|–|
-|some <sup>[E]</sup>|–|–|–|–|–|
+|some <sup>[E]</sup>|algum(a/as)|algun(s)|–|–|–|
 |spot <sup>[D]</sup>|lugar|local|posição|–|–|
-|spot <sup>[E]</sup>|–|–|–|–|–|
+|spot <sup>[E]</sup>|mancha|–|–|–|–|
 |stack entry <sup>[D]</sup>|empilhamento|–|–|entrada de pilha|–|
 |stack entry <sup>[E]</sup>|–|–|–|–|–|
 |string <sup>[D]</sup>|escrito/a|inscrição|série|sequência|frase|
-|string <sup>[E]</sup>|–|–|–|–|–|
+|string <sup>[E]</sup>|texto|–|–|–|–|
 |substring <sup>[D]</sup>|trecho|segmento|subsérie|subsequência|fragmento|
-|substring <sup>[E]</sup>|–|–|–|–|–|
+|substring <sup>[E]</sup>|pedaço de um texto|parte de um texto|–|–|–|
 |target <sup>[D]</sup>|alvo|meta|–|–|–|
-|target <sup>[E]</sup>|–|–|–|–|–|
+|target <sup>[E]</sup>|objetivo (SAL)|–|–|–|–|
 |thing <sup>[D]</sup>|coisa|elemento|algo|objeto|–|
 |thing <sup>[E]</sup>|–|–|–|–|–|
 |token <sup>[D]</sup>|marco|signo|símbolo|marca|–|
-|token <sup>[E]</sup>|–|–|–|–|–|
+|token <sup>[E]</sup>|sinal|–|–|–|–|
 |twip <sup>[D]</sup>|tuipe|–|–|–|–|
-|twip <sup>[E]</sup>|–|–|–|–|–|
+|twip <sup>[E]</sup>|miniponto|microponto|minipixel|micropixel|–|
 |unbump <sup>[D]</sup>|decrescer|diminuir|decrementar|subtrair|–|
 |unbump <sup>[E]</sup>|–|–|–|–|–|
 |wyrd <sup>[D]</sup>|ordin|pavra|plava|–|–|
-|wyrd <sup>[E]</sup>|–|–|–|–|–|
+|wyrd <sup>[E]</sup>|meia barra|metade de uma barra|palavro|palavre|–|
 
 tags restantes para adicionar:  
 
