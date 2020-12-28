@@ -480,7 +480,7 @@ tags restantes para adicionar:
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |i-beam cursor|–|–|–|–|–|
-|iid|–|–|–|–|–|
+|iid|Número identificador da interface|–|–|–|–|
 |i-key|–|–|–|–|–|
 |import header|–|–|–|–|–|
 |increment tag|–|–|–|–|–|
@@ -504,7 +504,7 @@ tags restantes para adicionar:
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |large letter height|–|–|–|–|–|
-|lcm|–|–|–|–|–|
+|lcm|Mínimo múltiplo comum|MMC|–|–|–|
 |left|–|–|–|–|–|
 |left-alligator byte|–|–|–|–|–|
 |left-alligator-quote byte|–|–|–|–|–|
