@@ -1,4 +1,4 @@
-\ copyright © 2006, 2017 the osmosian order (4700)
+\ copyright Â© 2006, 2017 the osmosian order (4700)
 
 To add a nodette to a node and to the file system given a path:
 If the node is nil, exit.
@@ -118,6 +118,10 @@ Extract the node's designator from the node's path.
 Put the node's designator into the node's designator w/o backslash.
 Remove any trailing backslash from the node's designator w/o backslash.
 Extract the node's extension from the node's path.
+
+To create a node given a path and a date/time string:
+Create the node given the path.
+Put the date/time string into the node's creation date/time string.
 
 To cut any selected nodettes in a node returning a count:
 Put 0 into the count.
@@ -719,6 +723,7 @@ Show the desktop with status.
 
 To handle sort nodettes given a node and a string:
 If the node is root-level, cluck; exit.
+If the string is "date", sort the node by date.
 If the string is "kind", sort the node by kind.
 If the string is "name", sort the node by designator.
 If the string is "extension", sort the node by extension.
@@ -744,6 +749,18 @@ Limit the node's origin's y to the number and the finder's top.
 
 The node height is 360.
 
+\A node is a thing with
+\a parent node (reference),
+\a box,
+\an origin,
+\a node selection called selection,
+\a kind,
+\a path, a directory, a designator, a designator called designator w/o backslash, an extension,
+\a selected flag, a previously selected flag,
+\some nodettes,
+\a source, or 
+\a document and a page (reference).
+
 A node is a thing with
 a parent node (reference),
 a box,
@@ -751,6 +768,7 @@ an origin,
 a node selection called selection,
 a kind,
 a path, a directory, a designator, a designator called designator w/o backslash, an extension,
+a creation date/time string,
 a selected flag, a previously selected flag,
 some nodettes,
 a source, or 
@@ -767,11 +785,22 @@ If the node's kind is "disk", open the node (disk or directory); exit.
 If the node's kind is "directory", open the node (disk or directory); exit.
 If the node's kind is "file", open the node (file); exit.
 
+\To open a node (disk or directory):
+\Get an item from the node's path.
+\If the item is not found, break.
+\Put the node's path then the item's designator into a path.
+\Create a nodette given the path.
+\Append the nodette to the node's nodettes.
+\Put the node into the nodette's parent node.
+\Repeat.
+\Adjust the node.
+\Sort the node.
+
 To open a node (disk or directory):
 Get an item from the node's path.
 If the item is not found, break.
 Put the node's path then the item's designator into a path.
-Create a nodette given the path.
+Create a nodette given the path and the item's creation date/time string.
 Append the nodette to the node's nodettes.
 Put the node into the nodette's parent node.
 Repeat.
@@ -1092,6 +1121,11 @@ If the node is nil, exit.
 Sort the node's nodettes by extension.
 Adjust every nodette in the node.
 
+To sort a node by date:
+If the node is nil, exit.
+Sort the node's nodettes by date.
+Adjust every nodette in the node.
+
 To sort a node by kind:
 If the node is nil, exit.
 Sort the node's nodettes by kind.
@@ -1122,6 +1156,20 @@ Put the right nodettes' first into a right nodette.
 If the left nodette is nil, append the right nodettes to the nodettes; exit.
 If the right nodette is nil, append the left nodettes to the nodettes; exit.
 If the left nodette's extension is greater than the right nodette's extension, move the right nodette from the right nodettes to the nodettes; repeat.
+Move the left nodette from the left nodettes to the nodettes.
+Repeat.
+
+To sort some nodettes by date:
+If the nodettes' first is the nodettes' last, exit.
+Split the nodettes into some left nodettes and some right nodettes.
+Sort the left nodettes by date.
+Sort the right nodettes by date.
+Loop.
+Put the left nodettes' first into a left nodette.
+Put the right nodettes' first into a right nodette.
+If the left nodette is nil, append the right nodettes to the nodettes; exit.
+If the right nodette is nil, append the left nodettes to the nodettes; exit.
+If the left nodette's creation date/time string is greater than the right nodette's creation date/time string, move the right nodette from the right nodettes to the nodettes; repeat.
 Move the left nodette from the left nodettes to the nodettes.
 Repeat.
 

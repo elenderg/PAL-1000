@@ -1,4 +1,4 @@
-\ copyright © 2006, 2017 the osmosian order (4700)
+\ copyright ¬© 2006, 2017 the osmosian order (4700)
 
 \ here are the text rules:
 \   in a non-wrapped text, the rows end with a return byte.
@@ -313,12 +313,12 @@ Put the text's font's height into a number.
 Clear a difference.
 Put the text's box into a box.
 Indent the box given the tpp.
-If the spot's y is less than the box's top, put the number into the difference's y.
-If the spot's y is greater than the box's bottom, put the number into the difference's y; negate the difference's y.
-If the spot's x is less than the box's left, put the number into the difference's x.
-If the spot's x is greater than the box's right, put the number into the difference's x; negate the difference's x.
-If the text's horizontal scroll flag is not set, put 0 into the difference's x.
-If the text's vertical scroll flag is not set, put 0 into the difference's y.
+If the spot's y-coord is less than the box's top, put the number into the difference's y-number.
+If the spot's y-coord is greater than the box's bottom, put the number into the difference's y-number; negate the difference's y-number.
+If the spot's x-coord is less than the box's left, put the number into the difference's x-number.
+If the spot's x-coord is greater than the box's right, put the number into the difference's x-number; negate the difference's x-number.
+If the text's horizontal scroll flag is not set, put 0 into the difference's x-number.
+If the text's vertical scroll flag is not set, put 0 into the difference's y-number.
 If the difference is 0, clear the flag; exit.
 Set the flag.
 Scroll the text given the difference.
@@ -397,13 +397,13 @@ Call "kernel32.dll" "GlobalUnlock" with the printer device mode handle.
 Call "gdi32.dll" "SetGraphicsMode" with the printer canvas and 2 [gm_advanced].
 Call "gdi32.dll" "SetBkMode" with the printer canvas and 1 [transparent].
 Call "gdi32.dll" "SetMapMode" with the printer canvas and 8 [mm_anisotropic].
-Call "gdi32.dll" "GetDeviceCaps" with the printer canvas and 112 [physicaloffsetx] returning a pair's x.
-Call "gdi32.dll" "GetDeviceCaps" with the printer canvas and 113 [physicaloffsety] returning the pair's y.
+Call "gdi32.dll" "GetDeviceCaps" with the printer canvas and 112 [physicaloffsetx] returning a pair's x-number.
+Call "gdi32.dll" "GetDeviceCaps" with the printer canvas and 113 [physicaloffsety] returning the pair's y-number.
 Negate the pair.
-Call "gdi32.dll" "SetViewportOrgEx" with the printer canvas and the pair's x and the pair's y and nil.
-Call "gdi32.dll" "GetDeviceCaps" with the printer canvas and 88 [logpixelsx] returning the pair's x.
-Call "gdi32.dll" "GetDeviceCaps" with the printer canvas and 90 [logpixelsy] returning the pair's y.
-Call "gdi32.dll" "SetViewportExtEx" with the printer canvas and the pair's x and the pair's y and nil.
+Call "gdi32.dll" "SetViewportOrgEx" with the printer canvas and the pair's x-number and the pair's y-number and nil.
+Call "gdi32.dll" "GetDeviceCaps" with the printer canvas and 88 [logpixelsx] returning the pair's x-number.
+Call "gdi32.dll" "GetDeviceCaps" with the printer canvas and 90 [logpixelsy] returning the pair's y-number.
+Call "gdi32.dll" "SetViewportExtEx" with the printer canvas and the pair's x-number and the pair's y-number and nil. 
 Call "gdi32.dll" "SetWindowOrgEx" with the printer canvas and 0 and 0 and nil.
 Call "gdi32.dll" "SetWindowExtEx" with the printer canvas and the tpi and the tpi and nil.
 Call "gdi32.dll" "StartPage" with the printer canvas.
@@ -650,9 +650,11 @@ The blue color is a color.
 The blue pen is a pen.
 
 A box has
-A left coord, a top coord, a right coord, a bottom coord,
-A left-top spot at the left, and a right-bottom spot at the right,
-A top-left spot at the left, and a bottom-right spot at the right.
+a left coord, a top coord, a right coord, a bottom coord,
+a left-top spot at the left, and a right-bottom spot at the right,
+a top-left spot at the left, and a bottom-right spot at the right,
+una izquierda at the left coord, una superior at the top coord, una derecha at the right coord, una inferior at the bottom coord,
+un punto superior-izquierda at the left, un punto inferior-derecha at the right.
 
 A brightness is a lightness.
 
@@ -760,7 +762,7 @@ Round the number to the nearest multiple of the tpp.
 Move the box given the number and 0.
 
 To center a box in another box (vertically):
-Put the other box's center's y minus the box's center's y into a number.
+Put the other box's center's y-coord minus the box's center's y-coord into a number.
 Round the number to the nearest multiple of the tpp.
 Move the box given 0 and the number.
 
@@ -785,13 +787,13 @@ Move the line given 0 and the number.
 
 To center a picture in a box (horizontally):
 If the picture is nil, exit.
-Put the box's center's x minus the picture's box's center's x into a number.
+Put the box's center's x-coord minus the picture's box's center's x-coord into a number.
 Round the number to the nearest multiple of the tpp.
 Move the picture given the number and 0.
 
 To center a picture in a box (vertically):
 If the picture is nil, exit.
-Put the box's center's y minus the picture's box's center's y into a number.
+Put the box's center's y-coord minus the picture's box's center's y-coord into a number.
 Round the number to the nearest multiple of the tpp.
 Move the picture given 0 and the number.
 
@@ -845,12 +847,12 @@ Wrap the text.
 
 To change a text given a font height:
 If the text is nil, exit.
-Subtract the text's margin from the text's x.
+Subtract the text's margin from the text's x-coord.
 Put the text's origin divided by the text's grid into a pair.
 Put the font height into the text's font's height.
 Scale the text's font's height given the text's scale.
 Put the pair times the text's grid into the text's origin.
-Add the text's margin to the text's x.
+Add the text's margin to the text's x-coord.
 Limit the origin of the text.
 Wrap the text.
 
@@ -883,7 +885,7 @@ To clear an ellipse:
 Clear the ellipse's box.
 
 To clear a flag:
-Put no into the flag.
+Put 0 into the flag. \ was "Put no into the flag." Value of "no" inherited from the CAL-1000 according to Dan.
 
 To clear a font:
 Put "" and 0 into the font.
@@ -944,7 +946,7 @@ To clear a selection:
 Clear the selection's anchor.
 Clear the selection's caret.
 
-To clear the stack:
+To clear the stack: \ stack needs work
 Destroy the stack.
 
 To clear a string:
@@ -985,6 +987,7 @@ A column# is a number.
 
 The comma byte is a byte equal to 44.
 
+To compare a string to another string given a length and another length and a translation table (equal only);
 To compare a string to another string given a length and another length (equal only):
 Intel $8BB508000000. \ mov esi,[ebp+8] \ the string
 Intel $8B36. \ mov esi,[esi] \ the string's first
@@ -995,39 +998,34 @@ Intel $8B00. \ mov eax,[eax]
 Intel $8B9514000000. \ mov edx,[ebp+20] \ the other string's length
 Intel $8B12. \ mov edx,[edx]
 Intel $3BD0. \ cmp eax,edx \ if the length's differ, say no
-Intel $0F8548000000. \ jne sayno
-Intel $8BC8. \ mov ecx,eax \ put length into ecx
-\L3: \ loop:
+Intel $0F852B000000. \ jne say no \ ************************************ was 2C
+Intel $8BC8. \ mov ecx,eax \ put length into ecx  
+Intel $8B9D18000000. \ mov ebx,[ebp+24] \ the translation table
+Intel $8B1B. \ mov ebx,[ebx] the translation table's first
+\ loop:
 Intel $85C9. \ test ecx,ecx
-Intel $0F8449000000. \ jz say yes
-\ uppercase current byte in the string
-Intel $8A1E. \ mov bl,[esi]
-Intel $80FB61. \ cmp bl,'a'
-Intel $0F820C000000. \ jb L4
-Intel $80FB7A. \ cmp bl,'z'
-Intel $0F8703000000. \ ja L4
-Intel $80EB20. \ sub bl,$20
-\L4: \ uppercase current byte in the other string
-Intel $8A3F. \ mov bh,[edi]
-Intel $80FF61. \ cmp bh,'a'
-Intel $0F820C000000. \ jb L5
-Intel $80FF7A. \ cmp bh,'z'
-Intel $0F8703000000. \ ja L5
-Intel $80EF20. \ sub bh,$20
-\L5: \ compare the two uppercased bytes
-Intel $3ADF. \ cmp bl,bh
-Intel $0F8508000000. \ jne say no
+Intel $0F8424000000. \ jz say yes \ ************************************ was 25
+ \ fetch and translate the  current byte in the other string
+Intel $8A07. \ mov al,[edi]
+Intel $D7. \ xlat al,[ebx]
+Intel $C1E008. \ shl eax,8
+\ fetch and translate the current byte in the string
+Intel $8A06. \ mov al,[esi]
+Intel $D7. \ xlat al,[ebx]
+ \ compare the two translated  bytes
+Intel $38E0. \ cmp al,ah
+Intel $0F8508000000. \ jne say no \ ************************************
 Intel $46. \ inc esi
 Intel $47. \ inc edi
 Intel $49. \ dec ecx
-Intel $E9BAFFFFFF. \ jmp L3
+Intel $E9DFFFFFFF. \ jmp loop \ ************************************ was DE
 \SAY NO:
 Intel $C7C000000000. \ mov eax,0
 Intel $E906000000. \ jmp end
 \SAY YES:
 Intel $C7C001000000. \ mov eax,1
 
-To compare a string to another string given a length and another length returning a number:
+To compare a string to another string given a length and another length and a translation table (equal only):
 Intel $8BB508000000. \ mov esi,[ebp+8] \ the string
 Intel $8B36. \ mov esi,[esi] \ the string's first
 Intel $8BBD0C000000. \ mov edi,[ebp+12] \ the other string
@@ -1036,41 +1034,82 @@ Intel $8B8510000000. \ mov eax,[ebp+16] \ the string's length
 Intel $8B00. \ mov eax,[eax]
 Intel $8B9514000000. \ mov edx,[ebp+20] \ the other string's length
 Intel $8B12. \ mov edx,[edx]
+Intel $3BD0. \ cmp eax,edx \ if the length's differ, say no
+Intel $0F852B000000. \ jne say no \ ************************************ was 2C
+Intel $8BC8. \ mov ecx,eax \ put length into ecx  
+Intel $8B9D18000000. \ mov ebx,[ebp+24] \ the translation table
+Intel $8B1B. \ mov ebx,[ebx] the translation table's first
+\ loop:
+Intel $85C9. \ test ecx,ecx
+Intel $0F8424000000. \ jz say yes \ ************************************ was 25
+ \ fetch and translate the  current byte in the other string
+Intel $8A07. \ mov al,[edi]
+Intel $D7. \ xlat al,[ebx]
+Intel $C1E008. \ shl eax,8
+\ fetch and translate the current byte in the string
+Intel $8A06. \ mov al,[esi]
+Intel $D7. \ xlat al,[ebx]
+ \ compare the two translated  bytes
+Intel $38E0. \ cmp al,ah
+Intel $0F8508000000. \ jne say no \ ************************************
+Intel $46. \ inc esi
+Intel $47. \ inc edi
+Intel $49. \ dec ecx
+Intel $E9DFFFFFFF. \ jmp loop \ ************************************ was DE
+\SAY NO:
+Intel $C7C000000000. \ mov eax,0
+Intel $E906000000. \ jmp end
+\SAY YES:
+Intel $C7C001000000. \ mov eax,1
+
+\ dahn - spanish strings 2 - which table to use?
+To compare a string to another string given a length and another length returning a number:
+Compare the string to the other string given the length and the other length and the lowercase ascii table returning the number.
+\Compare the string to the other string given the length and the other length and the lowercase accent-free ascii table returning the number.
+
+To compare a string to another string given a length and another length and a translation table returning a number:
+Intel $8BB508000000. \ mov esi,[ebp+8] \ the string
+Intel $8B36. \ mov esi,[esi] \ the string's first
+Intel $8BBD0C000000. \ mov edi,[ebp+12] \ the other string
+Intel $8B3F. \ mov edi,[edi] \ the other string's first
+Intel $8B8510000000. \ mov eax,[ebp+16] \ the string's length
+Intel $8B00. \ mov eax,[eax]
+Intel $8B9514000000. \ mov edx,[ebp+20] \ the other string's length
+Intel $8B12. \ mov edx,[edx]
+Intel $8B9D18000000. \ mov ebx,[ebp+24] \ the translation table
+Intel $8B1B. \ mov ebx,[ebx] the translation table's first
 \ get the minimum length
 Intel $8BC8. \ mov ecx,eax
 Intel $3BCA. \ cmp ecx,edx
 Intel $0F8602000000. \ jbe L2
 Intel $8BCA. \ mov ecx,edx
-\L3: \ loop:
+\ if the minimum length is 0, jump to L5
 Intel $85C9. \ test ecx,ecx
-Intel $0F8444000000. \ jz L6
-\ uppercase current byte in the string
-Intel $8A1E. \ mov bl,[esi]
-Intel $80FB61. \ cmp bl,'a'
-Intel $0F820C000000. \ jb L4
-Intel $80FB7A. \ cmp bl,'z'
-Intel $0F8703000000. \ ja L4
-Intel $80EB20. \ sub bl,$20
-\L4: \ uppercase current byte in the other string
-Intel $8A3F. \ mov bh,[edi]
-Intel $80FF61. \ cmp bh,'a'
-Intel $0F820C000000. \ jb L5
-Intel $80FF7A. \ cmp bh,'z'
-Intel $0F8703000000. \ ja L5
-Intel $80EF20. \ sub bh,$20
-\L5: \ compare the two uppercased bytes
-Intel $3ADF. \ cmp bl,bh
-Intel $0F8508000000. \ jne L5a
+Intel $0F8428000000.  \ jz L5
+\L2: \ loop:
+\ fetch and translate the current byte in the string
+Intel $8A06. \ mov al,[esi]
+Intel $D7. \ xlat al,[ebx]
+Intel $88C2. \ mov dl,al
+\ fetch and translate the  current byte in the other string
+Intel $8A07. \ mov al,[edi]
+Intel $D7. \ xlat al,[ebx]
+Intel $88C6. \ mov dh,al
+\L3: \ compare the two translated bytes
+Intel $38F2. \ cmp dl,dh
+Intel $0F8510000000. \ jne L4
 Intel $46. \ inc esi
 Intel $47. \ inc edi
 Intel $49. \ dec ecx
-Intel $E9BAFFFFFF. \ jmp L3
-\L5a: \ load bytes into eax and edx for final compare
-Intel $0FB6C3. \ movzx eax,bl
-Intel $0FB6D7. \ movzx edx,bh
-\L6: \ subtract either the lengths or the last two bytes to set the eax to <0, =0, >0
+Intel $85C9. \ test ecx,ecx
+Intel $0F8405000000. \ jz L4
+Intel $E9DEFFFFFF. \ jmp L2
+\L4: \ load bytes into eax and edx for final compare
+Intel $0FB6C2. \ movzx eax,dl
+Intel $0FB6D6. \ movzx edx,dh
+\L5: \ subtract either the lengths or the last two bytes to set the eax to <0, =0, >0
 Intel $2BC2. \ sub eax,edx
-Intel $8B9D18000000. \ mov ebx,[ebp+24] \ the number
+Intel $8B9D1C000000. \ mov ebx,[ebp+28] \ the number
 Intel $8903. \ mov [ebx],eax
 
 To compatibly handle any message with a window a message number a w-param and an l-param:
@@ -1709,8 +1748,8 @@ Copy the guts of the text into the other text.
 To copy a vertex into another vertex:
 If the vertex is nil, void the other vertex; exit.
 Allocate memory for the other vertex.
-Put the vertex's x into the other vertex's x.
-Put the vertex's y into the other vertex's y.
+Put the vertex's x-coord into the other vertex's x-coord.
+Put the vertex's y-coord into the other vertex's y-coord.
 
 To copy some vertices into some other vertices:
 Destroy the other vertices.
@@ -1756,7 +1795,7 @@ Set the console's text's wrap flag.
 Clear the console's text's horizontal scroll flag.
 Set the console's text's vertical scroll flag.
 Put the default font's height into the console's grid.
-Multiply the console's grid's x by 2.
+Multiply the console's grid's x-number by 2.
 
 To create a crypt session with a passphrase string: \ sets i/o error if failure
 Clear the i/o error.
@@ -2352,8 +2391,8 @@ If the number is the smallest number, put the largest number into the number; ex
 If the number is less than 0, negate the number.
 
 To de-sign a pair:
-De-sign the pair's x.
-De-sign the pair's y.
+De-sign the pair's x-number.
+De-sign the pair's y-number.
 
 To de-sign a string:
 If the string is blank, exit.
@@ -3091,18 +3130,18 @@ If the other number is greater than 1, repeat.
 Say yes.
 
 To decide if a pair is another pair:
-If the pair's x is not the other pair's x, say no.
-If the pair's y is not the other pair's y, say no.
+If the pair's x-number is not the other pair's x-number, say no.
+If the pair's y-number is not the other pair's y-number, say no.
 Say yes.
 
 To decide if a pair is a number:
-If the pair's x is not the number, say no.
-If the pair's y is not the number, say no.
+If the pair's x-number is not the number, say no.
+If the pair's y-number is not the number, say no.
 Say yes.
 
 To decide if a pair is a number and another number:
-If the pair's x is not the number, say no.
-If the pair's y is not the other number, say no.
+If the pair's x-number is not the number, say no.
+If the pair's y-number is not the other number, say no.
 Say yes.
 
 To decide if a path is directory-format:
@@ -3277,7 +3316,7 @@ To decide if a spot is in an ellipse:
 Create an hrgn given the ellipse.
 Privatize the spot.
 Divide the spot by the tpp.
-Call "gdi32.dll" "PtInRegion" with the hrgn and the spot's x and the spot's y returning a number.
+Call "gdi32.dll" "PtInRegion" with the hrgn and the spot's x-coord and the spot's y-coord returning a number.
 Destroy the hrgn.
 If the number is 0, say no.
 Say yes.
@@ -3291,7 +3330,7 @@ To decide if a spot is in a polygon:
 If the polygon is nil, say no.
 Create a vertex array given the polygon's vertices.
 Call "gdi32.dll" "CreatePolygonRgn" with the vertex array's spot pointer and the vertex array's count and 2 [winding] returning an hrgn.
-Call "gdi32.dll" "PtInRegion" with the hrgn and the spot's x and the spot's y returning a number.
+Call "gdi32.dll" "PtInRegion" with the hrgn and the spot's x-coord and the spot's y-coord returning a number.
 Call "gdi32.dll" "DeleteObject" with the hrgn.
 Destroy the vertex array.
 If the number is 0, say no.
@@ -3309,7 +3348,7 @@ Add the tpp to the roundy box's right-bottom.
 Put the roundy box's radius times 2 into a diameter number.
 Call "gdi32.dll" "CreateRoundRectRgn" with the roundy box's left and the roundy box's top and the roundy box's right and the roundy box's bottom 
 And the diameter and the diameter returning an hrgn.
-Call "gdi32.dll" "PtInRegion" with the hrgn and the spot's x and the spot's y returning a number.
+Call "gdi32.dll" "PtInRegion" with the hrgn and the spot's x-coord and the spot's y-coord returning a number.
 Call "gdi32.dll" "DeleteObject" with the hrgn.
 If the number is 0, say no.
 Say yes.
@@ -3322,14 +3361,14 @@ Say no.
 To decide if a spot is inside a box;
 To decide if a spot is within a box;
 To decide if a spot is in a box:
-If the spot's x is less than the box's left, say no.
-If the spot's y is less than the box's top, say no.
-If the spot's x is greater than the box's right, say no.
-If the spot's y is greater than the box's bottom, say no.
+If the spot's x-coord is less than the box's left, say no.
+If the spot's y-coord is less than the box's top, say no.
+If the spot's x-coord is greater than the box's right, say no.
+If the spot's y-coord is greater than the box's bottom, say no.
 Say yes.
 
 To decide if a spot is to the left of a box:
-If the spot's x is less than the box's left, say yes.
+If the spot's x-coord is less than the box's left, say yes.
 Say no.
 
 To decide if a spot is left or right of a box:
@@ -3453,8 +3492,20 @@ If the string is blank, say no.
 If the string's first's target is the byte, say yes.
 Say no.
 
+To decide if a string does end with a byte; \ added by Mike Gonta
+Para decidir si una cadena termina con un byte;
+To decide if a string ends with a byte:
+If the string is blank, say no.
+If the string's last's target is the byte, say yes.
+Say no.
+
+
+To decide if a string is another string (accent-free compare):
+Compare the string to the other string given the string's length and the other string's length and the lowercase accent-free ascii table (equal only).
+
+
 To decide if a string is another string:
-Compare the string to the other string given the string's length and the other string's length (equal only).
+Compare the string to the other string given the string's length and the other string's length and the lowercase ascii table (equal only).
 
 To decide if a string is another string or a third string:
 If the string is the other string, say yes.
@@ -3959,7 +4010,7 @@ A directory name is a string. \ rightmost directory with slash = folder2\
 
 A directory name w/o slash is a string. \ rightmost directory without slash = folder2
 
-A distance is a number.
+A distance is some twips. \ is a number
 
 To divide a fraction by another fraction:
 Privatize the other fraction.
@@ -3976,16 +4027,16 @@ Flip the fraction.
 Multiply the number by the fraction.
 
 To divide a pair by another pair:
-Divide the pair's x by the other pair's x.
-Divide the pair's y by the other pair's y.
+Divide the pair's x-number by the other pair's x-number.
+Divide the pair's y-number by the other pair's y-number.
 
 To divide a pair by a number:
-Divide the pair's x by the number.
-Divide the pair's y by the number.
+Divide the pair's x-number by the number.
+Divide the pair's y-number by the number.
 
 To divide a pair by a number and another number:
-Divide the pair's x by the number.
-Divide the pair's y by the other number.
+Divide the pair's x-number by the number.
+Divide the pair's y-number by the other number.
 
 To divide a pointer by a number;
 To divide a number by another number:
@@ -4000,7 +4051,7 @@ Intel $8903. \ mov [ebx],eax
 
 To divide a pointer by a number giving a quotient and a remainder;
 To divide a number by another number giving a quotient and a remainder:
-If the other number is 0, put the largest number into the number; put 0 into the remainder; exit.
+If the other number is 0, put the largest number into the quotient; put 0 into the remainder; exit. \ quotient era number
 Intel $8B8508000000. \ mov eax,[ebp+8] \ the number
 Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ the other number
 Intel $8B00. \ mov eax,[eax]
@@ -4164,7 +4215,7 @@ To draw an ellipse with a border color and a fill color (pdf style):
 If the border and the fill are clear, exit.
 Output setcolor given the border and the fill.
 Put the ellipse's left and the ellipse's top into a spot.
-Add the ellipse's y-extent divided by 2 to the spot's y.
+Add the ellipse's y-extent divided by 2 to the spot's y-coord.
 Output moveto given the spot.
 Output the arc of the ellipse given "left-top".
 Output the arc of the ellipse given "right-top".
@@ -4247,10 +4298,10 @@ Append "endobj" to the xobject.
 \ draw the image in the current contents
 Put the gpbitmap's width times the tpp into a width.
 Put the gpbitmap's height times the tpp into a height.
-Put the spot's x into an x number.
-Put the pdf state's current height minus the spot's y minus the height into a y number.
+Put the spot's x-coord into an x-number.
+Put the pdf state's current height minus the spot's y-coord minus the height into a y-number.
 Output "q".
-Output the width then " 0 0 " then the height then " " then the x then " " then the y then " cm".
+Output the width then " 0 0 " then the height then " " then the x-number then " " then the y-number then " cm".
 Output "/" then the name then " Do".
 Output "Q".
 
@@ -4315,8 +4366,8 @@ To stroke a line some twips long:
 Put the context's spot into the line's start.
 Put the context's spot into the line's end.
 Get a rise and a run given the context's heading.
-Add the run times the twips divided by 10000 to the line's end's x.
-Add the rise times the twips divided by 10000 to the line's end's y.
+Add the run times the twips divided by 10000 to the line's end's x-coord.
+Add the rise times the twips divided by 10000 to the line's end's y-coord.
 Put the line's end into the context's spot.
 Draw the line with the context's color.
 \If the delay is positive, refresh the screen.
@@ -4328,10 +4379,10 @@ Stroke the twips.
 To draw a line with a color:
 If the pdf state's page flag is set, draw the line with the color (pdf style); exit.
 Create the hpen of the current canvas given the color.
-Call "gdi32.dll" "MoveToEx" with the current canvas and the line's start's x and the line's start's y and nil.
-Call "gdi32.dll" "LineTo" with the current canvas and the line's end's x and the line's end's y.
+Call "gdi32.dll" "MoveToEx" with the current canvas and the line's start's x-coord and the line's start's y-coord and nil.
+Call "gdi32.dll" "LineTo" with the current canvas and the line's end's x-coord and the line's end's y-coord.
 Convert the color to a colorref.
-Call "gdi32.dll" "SetPixelV" with the current canvas and the line's end's x and the line's end's y and the colorref.
+Call "gdi32.dll" "SetPixelV" with the current canvas and the line's end's x-coord and the line's end's y-coord and the colorref.
 Destroy the hpen of the current canvas.
 
 To draw a line with a color (pdf style):
@@ -4400,8 +4451,8 @@ Restore the current canvas.
 
 To draw a picture (pdf style):
 If the picture is nil, exit.
-Put the picture's box's left minus the picture's uncropped box's left divided by the tpp into an x number.
-Put the picture's box's top minus the picture's uncropped box's top divided by the tpp  into an y number.
+Put the picture's box's left minus the picture's uncropped box's left divided by the tpp into an x-number.
+Put the picture's box's top minus the picture's uncropped box's top divided by the tpp  into an y-number.
 Put the picture's box's width divided by the tpp into a width.
 Put the picture's box's height divided by the tpp into a height.
 Call "gdiplus.dll" "GdipCreateBitmapFromScan0" with the width and the height and 0 and 137224 [pixelformat24bpprgb] and 0 and a gpbitmap's whereabouts.
@@ -4409,18 +4460,18 @@ Call "gdiplus.dll" "GdipGetImageGraphicsContext" with the gpbitmap and a gpgraph
 If the picture's grayscale flag is set, create a gpimageattributes (grayscale).
 Call "gdiplus.dll" "GdipDrawImageRectRectI" with the gpgraphic and the picture's gpbitmap
 And 0 and 0 and the width and the height
-And the x and the y and the width and the height
+And the x-number and the y-number and the width and the height
 And 2 [unitpixel] and the gpimageattributes and nil and 0.
 If the gpimageattributes is not nil, destroy the gpimageattributes.
 Call "gdiplus.dll" "GdipDeleteGraphics" with the gpgraphic.
 Draw the gpbitmap at the picture's box's left-top (pdf style).
 Call "gdiplus.dll" "GdipDisposeImage" with the gpbitmap.
 
-To draw a picture on a gpgraphic at an x coord and a y coord:
+To draw a picture on a gpgraphic at an x-coord and a y-coord:
 If the picture is nil, exit.
 If the picture's grayscale flag is set, create a gpimageattributes (grayscale).
 Call "gdiplus.dll" "GdipDrawImageRectRectI" with the gpgraphic and the picture's gpbitmap
-And the x and the y and the picture's uncropped box's width and the picture's uncropped box's height
+And the x-coord and the y-coord and the picture's uncropped box's width and the picture's uncropped box's height
 And 0 and 0 and the picture's gpbitmap's width and the picture's gpbitmap's height
 And 2 [unitpixel] and the gpimageattributes and nil and 0.
 If the gpimageattributes is not nil, destroy the gpimageattributes.
@@ -4457,16 +4508,16 @@ If the color is clear, exit.
 Create the hpen of the current canvas given the color.
 Get a vertex from the polygon's vertices.
 If the vertex is nil, exit.
-Call "gdi32.dll" "MoveToEx" with the current canvas and the vertex's x and the vertex's y and nil.
+Call "gdi32.dll" "MoveToEx" with the current canvas and the vertex's x-coord and the vertex's y-coord and nil.
 Loop.
 Get the vertex from the polygon's vertices.
 If the vertex is nil, break.
-Call "gdi32.dll" "LineTo" with the current canvas and the vertex's x and the vertex's y.
+Call "gdi32.dll" "LineTo" with the current canvas and the vertex's x-coord and the vertex's y-coord.
 Repeat.
 Destroy the hpen of the current canvas.
 If the polygon's vertices' first's spot is the polygon's vertices' last's spot, exit.
 Convert the color to a colorref.
-Call "gdi32.dll" "SetPixelV" with the current canvas and the polygon's vertices' last's x and the polygon's vertices' last's y and the colorref.
+Call "gdi32.dll" "SetPixelV" with the current canvas and the polygon's vertices' last's x-coord and the polygon's vertices' last's y-coord and the colorref.
 
 To draw a polygon with a color (fill only):
 If the polygon is nil, exit.
@@ -4607,7 +4658,7 @@ Draw the spot with the black color.
 
 To draw a spot with a color:
 Convert the color to a colorref.
-Call "gdi32.dll" "SetPixelV" with the current canvas and the spot's x and the spot's y and the colorref.
+Call "gdi32.dll" "SetPixelV" with the current canvas and the spot's x-coord and the spot's y-coord and the colorref.
 
 To draw a star given a point count and a size:
 Put 1 and the point count into a fraction.
@@ -4661,9 +4712,9 @@ Privatize the spot.
 Loop.
 If the substring is blank, break.
 If the substring's last is greater than the string's last, put the string's last into the substring's last.
-Call "gdi32.dll" "TextOutA" with the current canvas and the spot's x and the spot's y and the substring's first and the substring's length.
+Call "gdi32.dll" "TextOutA" with the current canvas and the spot's x-coord and the spot's y-coord and the substring's first and the substring's length.
 Get a width given the substring and the current canvas.
-Add the width to the spot's x.
+Add the width to the spot's x-coord.
 Move the substring given the text cutoff.
 Repeat.
 Destroy the hfont of the current canvas.
@@ -4858,7 +4909,7 @@ Append "%%EOF" to the pdf.
 
 To end printing a pdf (append header):
 Append "%PDF-1.3" then the crlf string to the pdf.
-Append "%‚„œ”" then the crlf string to the pdf.
+Append "%√¢√£√è√ì" then the crlf string to the pdf.
 Append the crlf string to the pdf.
 
 To end printing a pdf (append the outline entries - create the objects):
@@ -5071,7 +5122,9 @@ Put the low run plus the high run divided by 2 into the run.
 The euro-sign byte is a byte equal to 128.
 
 An event is a thing with
-A kind,
+A kind, [refresh, set cursor, key down, left click, left double click, right click, right double click, deactivate, activate, done], \ English
+
+\A class,
 A shift flag,
 A ctrl flag,
 An alt flag,
@@ -5397,7 +5450,7 @@ Put the substring's first plus the find string's length minus 1 into the substri
 If the row's row# is the find anchor's row#, move the substring given the find anchor's column# minus 1.
 Loop.
 If the substring's last is greater than or equal to the row's string's last, exit.
-If the substring is the find string, break.
+If the substring is the find string (accent-free compare), break. \ for spanish incremental find
 Move the substring given 1.
 Repeat.
 Set the flag.
@@ -5428,7 +5481,7 @@ Put the string's first plus the offset minus 1 into a substring's first.
 Put the substring's first plus the find string's length minus 1 into the substring's last.
 Loop.
 If the substring's last is greater than the string's last, exit.
-If the substring is the find string, break.
+If the substring is the find string (accent-free compare), break. \ for spanish incremental find
 Move the substring given 1.
 Repeat.
 Set the flag.
@@ -5493,8 +5546,8 @@ If the string is the refer's string, exit.
 Repeat.
 
 To find a sector given a grid and a spot:
-Put the spot's x divided by the grid's x times the grid's x into the sector's x.
-Put the spot's y divided by the grid's y times the grid's y into the sector's y.
+Put the spot's x-coord divided by the grid's x-number times the grid's x-number into the sector's x-coord.
+Put the spot's y-coord divided by the grid's y-number times the grid's y-number into the sector's y-coord.
 
 To find a square root of a number: \ rounds down
 Privatize the number.
@@ -5574,8 +5627,8 @@ Call "gdiplus.dll" "GdipImageRotateFlip" with the gpimage and 6 [rotatenoneflipy
 
 To flip a picture:
 If the picture is nil, exit.
-Put the picture's box's center's y minus the picture's uncropped box's center's y into a pair's y.
-Multiply the pair's y by 2.
+Put the picture's box's center's y-coord minus the picture's uncropped box's center's y-coord into a pair's y-number.
+Multiply the pair's y-number by 2.
 Move the picture's uncropped box given the pair.
 Flip the gpbitmap in the picture.
 
@@ -5585,8 +5638,8 @@ Put the polygon's box into a box.
 Loop.
 Get a vertex from the polygon's vertices.
 If the vertex is nil, exit.
-Subtract the box's top from the vertex's y.
-Put the box's bottom minus the vertex's y into the vertex's y.
+Subtract the box's top from the vertex's y-coord.
+Put the box's bottom minus the vertex's y-coord into the vertex's y-coord.
 Repeat.
 
 To flush all input;
@@ -5774,7 +5827,7 @@ Put the spot and the other spot into a line.
 Put the line's center into the center.
 
 To get a color given a spot:
-Call "gdi32.dll" "GetPixel" with the current canvas and the spot's x and the spot's y returning a colorref.
+Call "gdi32.dll" "GetPixel" with the current canvas and the spot's x-coord and the spot's y-coord returning a colorref.
 Convert the colorref to the color.
 
 To get a column# given a row and a spot and a text:
@@ -5782,7 +5835,7 @@ Put 0 into the column#.
 If the text is nil, exit.
 If the row is nil, exit.
 Get a box given the row and the text.
-If the spot's y is greater than the box's bottom, put the row's string's length into the column#; exit. \ only happens on last row of text
+If the spot's y-coord is greater than the box's bottom, put the row's string's length into the column#; exit. \ only happens on last row of text
 Create the hfont of the memory canvas given the text's font.
 Get a start width and a substring given the row and the spot and the text (for "get a column# given a row...").
 Loop.
@@ -5792,7 +5845,7 @@ Add the start width to the width.
 Get another width given the substring's last's target and the memory canvas.
 Divide the other width by 2.
 Subtract the other width from the width.
-If the spot's x is less than the width, break.
+If the spot's x-coord is less than the width, break.
 Add 1 to the substring's last.
 Repeat.
 Put the substring's last minus the row's string's first plus 1 into the column#.
@@ -5834,9 +5887,9 @@ Put the square root into the distance.
 If the d-key is down, debug the distance.
 
 To get a distance between a spot and another spot (chessboard):
-Put the spot's x minus the other spot's x into a number.
+Put the spot's x-coord minus the other spot's x-coord into a number.
 De-sign the number.
-Put the spot's y minus the other spot's y into another number.
+Put the spot's y-coord minus the other spot's y-coord into another number.
 De-sign the other number.
 Put the number into the distance.
 If the other number is greater than the number, put the other number into the distance.
@@ -5946,11 +5999,11 @@ Get the offset pair given the string and the box and the font and the alignment 
 Destroy the hfont of the memory canvas.
 
 To get an offset pair given a string and a box and a font and an alignment (fast):
-If the alignment is "left", get the offset pair's x given the string and the box (fast - left).
-If the alignment is "right", get the offset pair's x given the string and the box  (fast - right).
-If the alignment is "center", get the offset pair's x given the string and the box (fast - center).
+If the alignment is "left", get the offset pair's x-number given the string and the box (fast - left).
+If the alignment is "right", get the offset pair's x-number given the string and the box  (fast - right).
+If the alignment is "center", get the offset pair's x-number given the string and the box (fast - center).
 Call "gdi32.dll" "GetTextMetricsA" with the memory canvas and a textmetric's whereabouts.
-Add the box's height minus the textmetric's tmheight divided by 2 to the offset pair's y.
+Add the box's height minus the textmetric's tmheight divided by 2 to the offset pair's y-number.
 
 To get an outlinetextmetric given a font:
 Create the hfont of the memory canvas given the font.
@@ -6032,9 +6085,9 @@ Repeat.
 
 To get a row given a spot and a text:
 If the text is nil, void the row; exit.
-Put the spot's y into a y coord.
-Limit the y to the text's top and the text's bottom.
-Put the y minus the text's globalized origin's y divided by the text's row height plus 1 into a row#.
+Put the spot's y-coord into a y-coord.
+Limit the y-coord to the text's top and the text's bottom.
+Put the y-coord minus the text's globalized origin's y-coord divided by the text's row height plus 1 into a row#.
 Limit the row# to 1 and the text's row count.
 Get the row given the row# and the text.
 
@@ -6049,14 +6102,14 @@ Get the selection box given the row and the text (right side).
 
 To get a selection box given a row and a text (left side):
 Put the text's normalized selection into a selection.
-Put the text's globalized origin's x into the selection box's left.
-If the selection's anchor row# is the row's row#, get a spot given the selection's anchor and the text; put the spot's x into the selection box's left.
+Put the text's globalized origin's x-coord into the selection box's left.
+If the selection's anchor row# is the row's row#, get a spot given the selection's anchor and the text; put the spot's x-coord into the selection box's left.
 Limit the selection box's left to the text's left and the text's right.
 
 To get a selection box given a row and a text (right side):
 Put the text's normalized selection into a selection.
 Put the text's right into the selection box's right.
-If the selection's caret row# is the row's row#, get a spot given the selection's caret and the text; put the spot's x into the selection box's right.
+If the selection's caret row# is the row's row#, get a spot given the selection's caret and the text; put the spot's x-coord into the selection box's right.
 Limit the selection box's right to the text's left and the text's right.
 
 To get a size given a path in the file system:
@@ -6104,13 +6157,13 @@ Clear the spot.
 If the text is nil, exit.
 Get a row given the position's row# and the text.
 Get a box given the row and the text.
-Put the box's top into the spot's y.
+Put the box's top into the spot's y-coord.
 Put the row's string's first into a substring's first.
 Put the substring's first plus the position's column# minus 2 into the substring's last.
 Get a width given the substring and the memory canvas and the text's font.
-Put the box's left plus the width into the spot's x.
+Put the box's left plus the width into the spot's x-coord.
 Get an offset pair given the row's working string and the box and the text's font and the text's alignment.
-Add the offset pair's x to the spot's x.
+Add the offset pair's x-number to the spot's x-coord.
 
 To get a start width and a substring given a row and a spot and a text (for "get a column# given a row..."):
 Clear the start width.
@@ -6120,13 +6173,13 @@ If the row is nil, exit.
 Get a box given the row and the text.
 Slap the substring on the row's working string.
 Get an offset pair given the substring and the box and the text's font and the text's alignment (fast).
-Put the text's globalized origin's x plus the offset pair's x into the start width.
+Put the text's globalized origin's x-coord plus the offset pair's x-number into the start width.
 Put the substring's first plus the text cutoff minus 1 into the substring's last.
 Loop.
 If the substring's last is greater than or equal to the row's string's last, break.
 Get a width given the substring and the memory canvas.
 Put the start width plus the width into another width.
-If the spot's x is less than or equal to the other width, break.
+If the spot's x-coord is less than or equal to the other width, break.
 Add the width to the start width.
 Move the substring given the text cutoff.
 Repeat.
@@ -6172,7 +6225,7 @@ Repeat.
 
 To get a width given a byte and a canvas:
 Call "gdi32.dll" "GetTextExtentPoint32A" with the canvas and the byte's whereabouts and 1 and a pair's whereabouts.
-Put the pair's x into the width.
+Put the pair's x-number into the width.
 
 To get a width given a byte and some font widths:
 Put the byte into a number.
@@ -6186,7 +6239,7 @@ Put the number pointer's target into the width.
 
 To get a width given a string and a canvas: \ assumes font is already selected in canvas
 Call "gdi32.dll" "GetTextExtentPoint32A" with the canvas and the string's first and the string's length and a pair's whereabouts.
-Put the pair's x into the width.
+Put the pair's x-number into the width.
 
 To get a width given a string and a canvas and a font:
 Create the hfont of the canvas given the font.
@@ -6196,21 +6249,21 @@ Destroy the hfont of the canvas.
 To get a width given a string and a font: \ assumes memory canvas
 Get the width given the string and the memory canvas and the font.
 
-To get an x coord given a string and a box (fast - center):
+To get an x-coord given a string and a box (fast - center):
 Get a width given the string and the memory canvas.
 Get an abca and an abcc given the string and the memory canvas.
 Put the width minus the abca minus the abcc into the width.
-Put the box's width minus the width divided by 2 minus the abca into the x.
+Put the box's width minus the width divided by 2 minus the abca into the x-coord.
 
-To get an x coord given a string and a box (fast - left):
+To get an x-coord given a string and a box (fast - left):
 Get an abca given the string and the memory canvas.
-Put - the abca into the x.
+Put - the abca into the x-coord.
 
-To get an x coord given a string and a box (fast - right):
+To get an x-coord given a string and a box (fast - right):
 Get an abca and an abcc given the string and the memory canvas.
 Get a width given the string and the memory canvas.
 Put the width minus the abca minus the abcc into the width.
-Put the box's width minus the width minus the abca into the x.
+Put the box's width minus the width minus the abca into the x-coord.
 
 A gigabyte is 1024 megabytes.
 
@@ -6305,8 +6358,8 @@ Enque the event.
 Call "user32.dll" "PostMessageA" with the main window and 0 [wn_null] and 0 and 0.
 
 To handle any wm-char with a w-param and an l-param:
-If the alt key was down, exit.
-If the ctrl key was down, exit.
+\If the alt key was down, exit. \ removed for Spanish keyboard AltGr and ctrl+alt characters
+If the ctrl key was down, exit.  \ removed for Spanish keyboard AltGr and ctrl+alt characters
 Put the w-param into a byte.
 If the byte is not printable, exit.
 Create an event.
@@ -6927,9 +6980,10 @@ To imagine a line with a spot and another spot;
 To make a line with a spot and another spot:
 Put the spot and the other spot into the line.
 
-To imagine a line with an x coord and a y coord and another x coord and another y coord;
-To make a line with an x coord and a y coord and another x coord and another y coord:
-Put the x coord and the y coord and the other x coord and the other y coord into the line.
+To imagine a line with an x-coord and a y-coord and another x-coord and another y-coord;
+
+To make a line with an x-coord and a y-coord and another x-coord and another y-coord:
+Put the x-coord and the y-coord and the other x-coord and the other y-coord into the line.
 
 To imagine a roundy box from a box and a radius;
 To make a roundy box from a box and a radius:
@@ -6950,9 +7004,10 @@ To imagine a roundy box with a spot and another spot and a radius;
 To make a roundy box with a spot and another spot and a radius:
 Put the spot and the other spot and the radius into the roundy box.
 
-To imagine a spot with an x coord and a y coord;
-To make a spot with an x coord and a y coord:
-Put the x coord and the y coord into the spot.
+
+To imagine a spot with an x-coord and a y-coord;
+To make a spot with an x-coord and a y-coord:
+Put the x-coord and the y-coord into the spot.
 
 An inch is 1440 twips.
 
@@ -7430,6 +7485,10 @@ Put the screen's pixel width times the tpp into a width.
 Put the screen's pixel height times the tpp into a height.
 Put 0 and 0 and the width and the height into the screen's box.
 Subtract the tpp from the screen's right-bottom.
+\ new below
+
+Put the screen's pixel height into la pantalla's pixel height.
+Put the screen's pixel width into la pantalla's pixel width.
 
 To initialize the screen canvas:
 Call "user32.dll" "GetDC" with the main window returning the screen canvas.
@@ -7615,9 +7674,10 @@ A pointer called stat,
 A pointer called clone.
 
 An item has
-A kind,
+A kind, \a class [directory, file] \Spanish kind
 A path, a directory, a designator, an extension,
-A size,
+A size, 
+a creation date/time string,
 A win32finddata and a handle.
 
 The j-key is a key equal to 74.
@@ -7912,15 +7972,15 @@ If the number is greater than the third number, put the third number into the nu
 
 To limit the origin of a text:
 If the text is nil, exit.
-Limit the text's x to the smallest number and the text's margin.
+Limit the text's x-coord to the smallest number and the text's margin.
 Put the text's row count minus 1 times the text's row height into a number.
-Limit the text's y to - the number and 0.
+Limit the text's y-coord to - the number and 0.
 
 To limit a spot to a box:
-If the spot's x is less than the box's left, put the box's left into the spot's x.
-If the spot's y is less than the box's top, put the box's top into the spot's y.
-If the spot's x is greater than the box's right, put the box's right into the spot's x.
-If the spot's y is greater than the box's bottom, put the box's bottom into the spot's y.
+If the spot's x-coord is less than the box's left, put the box's left into the spot's x-coord.
+If the spot's y-coord is less than the box's top, put the box's top into the spot's y-coord.
+If the spot's x-coord is greater than the box's right, put the box's right into the spot's x-coord.
+If the spot's y-coord is greater than the box's bottom, put the box's bottom into the spot's y-coord.
 
 To limit some texts to a count:
 Put the texts' count into another count.
@@ -8142,12 +8202,13 @@ Lowercase the substring.
 Repeat.
 
 To lowercase a byte:
-Intel $8B8508000000. \ mov eax,[ebp+8] \ the byte
-Intel $803841. \ cmp byte ptr [eax],'A'
-Intel $0F820C000000. \ jb END
-Intel $80385A. \ cmp byte ptr [eax],'Z'
-Intel $0F8703000000. \ ja END
-Intel $800020. \ add byte ptr [eax],$20
+Translate the byte given the lowercase ascii table.
+\Intel $8B8508000000. \ mov eax,[ebp+8] \ the byte
+\Intel $803841. \ cmp byte ptr [eax],'A'
+\Intel $0F820C000000. \ jb END
+\Intel $80385A. \ cmp byte ptr [eax],'Z'
+\Intel $0F8703000000. \ ja END
+\Intel $800020. \ add byte ptr [eax],$20
 \ END
 
 To lowercase the character under a finger and put it into a string:
@@ -8310,8 +8371,8 @@ Call "gdiplus.dll" "GdipImageRotateFlip" with the gpimage and 4 [rotatenoneflipx
 
 To mirror a picture:
 If the picture is nil, exit.
-Put the picture's box's center's x minus the picture's uncropped box's center's x into a pair's x.
-Multiply the pair's x by 2.
+Put the picture's box's center's x-coord minus the picture's uncropped box's center's x-coord into a pair's x-number.
+Multiply the pair's x-number by 2.
 Move the picture's uncropped box given the pair.
 Mirror the gpbitmap in the picture.
 
@@ -8321,8 +8382,8 @@ Put the polygon's box into a box.
 Loop.
 Get a vertex from the polygon's vertices.
 If the vertex is nil, exit.
-Subtract the box's left from the vertex's x.
-Put the box's right minus the vertex's x into the vertex's x.
+Subtract the box's left from the vertex's x-coord.
+Put the box's right minus the vertex's x-coord into the vertex's x-coord.
 Repeat.
 
 A mixed has a whole number and a ratio and a fraction at the ratio.
@@ -8366,7 +8427,7 @@ To move a box down some twips:
 Move the box given 0 and the twips.
 
 To move a box given a pair:
-Move the box given the pair's x and the pair's y.
+Move the box given the pair's x-number and the pair's y-number.
 
 To move a box given a ratio pair and a spot;
 To move a box given a fraction pair and a spot:
@@ -8376,11 +8437,15 @@ Scale the other difference given the fraction pair.
 Subtract the difference from the other difference.
 Move the box given the other difference.
 
-To move a box given some x twips and some y twips:
-Add the x twips to the box's left.
-Add the y twips to the box's top.
-Add the x twips to the box's right.
-Add the y twips to the box's bottom.
+Some x-twips are some twips.
+Some y-twips are some twips.
+
+
+To move a box given some x-twips and some y-twips:
+Add the x-twips to the box's left.
+Add the y-twips to the box's top.
+Add the x-twips to the box's right.
+Add the y-twips to the box's bottom.
 
 To move a box left to a coord:
 Move the box left the box's left minus the coord.
@@ -8529,8 +8594,9 @@ Move the ellipse given 0 and the twips.
 To move an ellipse given a pair:
 Move the ellipse given the pair's x and the pair's y.
 
-To move an ellipse given some x twips and some y twips:
-Move the ellipse's box given the x twips and the y twips.
+
+To move an ellipse given some x-twips and some y-twips:
+Move the ellipse's box given the x-twips and the y-twips.
 
 To move an ellipse left some twips:
 Move the ellipse given - the twips and 0.
@@ -8550,7 +8616,7 @@ If the finger is nil, exit.
 Add 1 to the finger.
 
 To move to the left some twips and down some other twips;
-To move left some twips and down some other twips:
+To move left some twips and down some other twips;
 To move some twips to the left and some other twips down;
 To move some twips left and some other twips down:
 Move the context's spot left the twips.
@@ -8569,11 +8635,12 @@ Move the line given 0 and the twips.
 To move a line given a pair:
 Move the line given the pair's x and the pair's y.
 
-To move a line given some x twips and some y twips:
-Add the x twips to the line's start's x.
-Add the y twips to the line's start's y.
-Add the x twips to the line's end's x.
-Add the y twips to the line's end's y.
+
+To move a line given some x-twips and some y-twips:
+Add the x-twips to the line's start's x-coord.
+Add the y-twips to the line's start's y-coord.
+Add the x-twips to the line's end's x-coord.
+Add the y-twips to the line's end's y-coord.
 
 To move a line left some twips:
 Move the line given - the twips and 0.
@@ -8605,12 +8672,13 @@ To move a picture down some twips:
 Move the picture given 0 and the twips.
 
 To move a picture given a pair:
-Move the picture given the pair's x and the pair's y.
+Move the picture given the pair's x-number and the pair's y-number.
 
-To move a picture given some x twips and some y twips:
+
+To move a picture given some x-twips and some y-twips:
 If the picture is nil, exit.
-Move the picture's box given the x twips and the y twips.
-Move the picture's uncropped box given the x twips and the y twips.
+Move the picture's box given the x-twips and the y-twips.
+Move the picture's uncropped box given the x-twips and the y-twips.
 
 To move a picture left some twips:
 Move the picture given - the twips and 0.
@@ -8630,20 +8698,22 @@ To move a polygon down some twips:
 Move the polygon given 0 and the twips.
 
 To move a polygon given a pair:
-Move the polygon given the pair's x and the pair's y.
+Move the polygon given the pair's x-number and the pair's y-number.
 
-To move a polygon given some x twips and some y twips:
+
+To move a polygon given some x-twips and some y-twips:
 If the polygon is nil, exit.
 Loop.
 Get a vertex from the polygon's vertices.
 If the vertex is nil, exit.
-Move the vertex given the x twips and the y twips.
+Move the vertex given the x-twips and the y-twips.
 Repeat.
 
 To move a polygon left some twips:
 Move the polygon given - the twips and 0.
 
-To move a polygon left some twips and up down other twips:
+Para mover un pol√≠gono hacia la izquierda algunos twips y hacia abajo otros twips;
+To move a polygon left some twips and down some other twips:
 Move the polygon left the twips.
 Move the polygon down the other twips.
 
@@ -8654,7 +8724,8 @@ Move the polygon up the other twips.
 To move a polygon right some twips:
 Move the polygon given the twips and 0.
 
-To move a polygon right some twips and up down other twips:
+Para mover un pol√≠gono hacia la derecha algunos twips y hacia abajo otros twips;
+To move a polygon right some twips and down some other twips:
 Move the polygon right the twips.
 Move the polygon down the other twips.
 
@@ -8768,11 +8839,12 @@ To move a spot to another spot:
 Put the other spot into the spot.
 
 To move a spot given a pair:
-Move the spot given the pair's x and the pair's y.
+Move the spot given the pair's x-number and the pair's y-number.
 
-To move a spot given some x twips and some y twips:
-Add the x twips to the spot's x.
-Add the y twips to the spot's y.
+
+To move a spot given some x-twips and some y-twips:
+Add the x-twips to the spot's x-coord.
+Add the y-twips to the spot's y-coord.
 
 To move a spot some twips down;
 To move a spot down some twips:
@@ -8812,11 +8884,12 @@ To move a text down some twips:
 Move the text given 0 and the twips.
 
 To move a text given a pair:
-Move the text given the pair's x and the pair's y.
+Move the text given the pair's x-number and the pair's y-number.
 
-To move a text given some x twips and some y twips:
+
+To move a text given some x-twips and some y-twips:
 If the text is nil, exit.
-Move the text's box given the x twips and the y twips.
+Move the text's box given the x-twips and the y-twips.
 
 To move a text left some twips:
 Move the text given - the twips and 0.
@@ -8848,8 +8921,8 @@ To move some twips:
 Put the context's spot into a line's start.
 Put the context's spot into the line's end.
 Get a rise and a run given the context's heading.
-Add the run times the twips divided by 10000 to the line's end's x.
-Add the rise times the twips divided by 10000 to the line's end's y.
+Add the run times the twips divided by 10000 to the line's end's x-coord.
+Add the rise times the twips divided by 10000 to the line's end's y-coord.
 Put the line's end into the context's spot.
 
 To move some twips down;
@@ -8874,12 +8947,13 @@ To move a vertex down some twips:
 Move the vertex given 0 and the twips.
 
 To move a vertex given a pair:
-Move the vertex given the pair's x and the pair's y.
+Move the vertex given the pair's x-number and the pair's y-number.
 
-To move a vertex given some x twips and some y twips:
+
+To move a vertex given some x-twips and some y-twips:
 If the vertex is nil, exit.
-Add the x twips to the vertex's x.
-Add the y twips to the vertex's y.
+Add the x-twips to the vertex's x-coord.
+Add the y-twips to the vertex's y-coord.
 
 To move a vertex left some twips:
 Move the vertex given - the twips and 0.
@@ -8929,16 +9003,16 @@ If the fraction's denominator is 0, exit.
 Call "kernel32.dll" "MulDiv" with the number and the fraction's numerator and the fraction's denominator returning the number.
 
 To multiply a pair by another pair:
-Multiply the pair's x by the other pair's x.
-Multiply the pair's y by the other pair's y.
+Multiply the pair's x-number by the other pair's x-number.
+Multiply the pair's y-number by the other pair's y-number.
 
 To multiply a pair by a number:
-Multiply the pair's x by the number.
-Multiply the pair's y by the number.
+Multiply the pair's x-number by the number.
+Multiply the pair's y-number by the number.
 
 To multiply a pair by a number and another number:
-Multiply the pair's x by the number.
-Multiply the pair's y by the other number.
+Multiply the pair's x-number by the number.
+Multiply the pair's y-number by the other number.
 
 To multiply a pointer by a number;
 To multiply a number by another number:
@@ -8961,8 +9035,8 @@ Intel $8B8508000000. \ mov eax,[ebp+8] \ the number
 Intel $F718.\ neg [eax]
 
 To negate a pair:
-Negate the pair's x.
-Negate the pair's y.
+Negate the pair's x-number.
+Negate the pair's y-number.
 
 The negative-acknowledge byte is a byte equal to 21.
 
@@ -8994,7 +9068,8 @@ Resize the box given the twip pair.
 Make a fraction pair given the box and the picture's box.
 Non-destructively resize the picture given the fraction pair.
 
-To normalize an angle: divide the angle by 3600 giving a quotient and the angle.
+To normalize an angle:
+divide the angle by 3600 giving a quotient and the angle.
 
 To normalize a box:
 If the box's right is less than the box's left, swap the box's left with the box's right.
@@ -9221,18 +9296,18 @@ Put 2761/10000 into a fraction. \ 2/3*(sqrt(2)-1)
 Put the ellipse's center into a center spot.
 Put the ellipse's x-extent divided by 2 into a half width.
 Put the ellipse's y-extent divided by 2 into a half height.
-Put the ellipse's x-extent times the fraction into an x offset.
-Put the ellipse's y-extent times the fraction into a y offset.
+Put the ellipse's x-extent times the fraction into an x-offset.
+Put the ellipse's y-extent times the fraction into a y-offset.
 \ control point 1
-If the string is "left-top", put the ellipse's left and the center's y minus the y offset into a first control spot. 
-If the string is "right-top", put the center's x plus the x offset and the ellipse's top into the first control spot.
-If the string is "right-bottom", put the ellipse's right and the center's y plus the y offset into the first control spot.
-If the string is "left-bottom", put the center's x minus the x offset and the ellipse's bottom into the first control spot.
+If the string is "left-top", put the ellipse's left and the center's y-coord minus the y-offset into a first control spot. 
+If the string is "right-top", put the center's x-coord plus the x-offset and the ellipse's top into the first control spot.
+If the string is "right-bottom", put the ellipse's right and the center's y-coord plus the y-offset into the first control spot.
+If the string is "left-bottom", put the center's x-coord minus the x-offset and the ellipse's bottom into the first control spot.
 \ control point 2
-If the string is "left-top", put the center's x minus the x offset and the ellipse's top into a second control spot.
-If the string is "right-top", put the ellipse's right and the center's y minus the y offset into the second control spot.
-If the string is "right-bottom", put the center's x plus the x offset and the ellipse's bottom into the second control spot.
-If the string is "left-bottom", put the ellipse's left and the center's y plus the y offset into the second control spot.
+If the string is "left-top", put the center's x-coord minus the x-offset and the ellipse's top into a second control spot.
+If the string is "right-top", put the ellipse's right and the center's y-coord minus the y-offset into the second control spot.
+If the string is "right-bottom", put the center's x-coord plus the x-offset and the ellipse's bottom into the second control spot.
+If the string is "left-bottom", put the ellipse's left and the center's y-coord plus the y-offset into the second control spot.
 \ ending point
 If the string is "left-top", put the ellipse's left plus the half width and the ellipse's top into an ending spot.
 If the string is "right-top", put the ellipse's right and the ellipse's top plus the half height into the ending spot.
@@ -9258,16 +9333,16 @@ To output lineto given a spot:
 Output the spot without advancing.
 Output "l".
 
-To output lineto given an x number and a y number:
-Put the x and the y into a spot.
+To output lineto given an x-number and a y-number:
+Put the x-number and the y-number into a spot.
 Output lineto given the spot.
 
 To output moveto given a spot:
 Output the spot without advancing.
 Output "m".
 
-To output moveto given an x number and a y number:
-Put the x and the y into a spot.
+To output moveto given an x-number and a y-number:
+Put the x-number and the y-number into a spot.
 Output moveto given the spot.
 
 To output a number without advancing:
@@ -9323,7 +9398,10 @@ A number called frestore,
 A number called fincupdate,
 32 bytes.
 
-A pair has an x number and a y number.
+An x-number is a number.
+A y-number is a number.
+
+A pair has an x-number and a y-number.
 
 A panose is a record with
 A byte called bfamilytype,
@@ -9519,8 +9597,8 @@ Put the box's bottom minus the twips into the box's top.
 Pick the spot in the box.
 
 To pick a spot anywhere in a box:
-Pick the spot's x between the box's left and the box's right.
-Pick the spot's y between the box's top and the box's bottom.
+Pick the spot's x-coord between the box's left and the box's right.
+Pick the spot's y-coord between the box's top and the box's bottom.
 Put the spot into the context's spot.
 
 To pick a spot anywhere in the middle a fraction of a box;
@@ -9588,8 +9666,8 @@ Put the bounding box's top plus the other twips into the bounding box's bottom.
 Pick the spot anywhere in the bounding box.
 
 To pick a spot within a distance of another spot:
-Pick the spot's x within the distance of the other spot's x.
-Pick the spot's y within the distance of the other spot's y.
+Pick the spot's x-coord within the distance of the other spot's x-coord.
+Pick the spot's y-coord within the distance of the other spot's y-coord.
 Put the spot into the context's spot.
 
 To pick some twips between some min twips and some other twips; \ are all these necessary? ***
@@ -9752,8 +9830,16 @@ If the things is not empty, put the thing into the things' first's previous.
 If the things are empty, put the thing into the things' last.
 Put the thing into the things' first.
 
+\To prepend some things to some other things: \ bug found by Mike Gonta - corrected version below
+\Get a thing from the things (backwards).
+\If the thing is nil, exit.
+\Remove the thing from the things.
+\Prepend the thing to the other things.
+\Repeat.
+
+Para anteponer algunas cosas a algunas otras cosas;
 To prepend some things to some other things:
-Get a thing from the things (backwards).
+Put the things' last into a thing.
 If the thing is nil, exit.
 Remove the thing from the things.
 Prepend the thing to the other things.
@@ -9863,17 +9949,17 @@ Put the box's center's x into the spot's x.
 Put the box's bottom into the spot's y.
 
 To put a box's center into a spot:
-Put the box's left plus the box's right into the spot's x.
-Put the box's top plus the box's bottom into the spot's y.
+Put the box's left plus the box's right into the spot's x-coord.
+Put the box's top plus the box's bottom into the spot's y-coord.
 Divide the spot by 2.
 
 To put a box's center-bottom into a spot:
-Put the box's center's x into the spot's x.
-Put the box's bottom into the spot's y.
+Put the box's center's x-coord into the spot's x-coord.
+Put the box's bottom into the spot's y-coord.
 
 To put a box's center-top into a spot:
-Put the box's center's x into the spot's x.
-Put the box's top into the spot's y.
+Put the box's center's x-coord into the spot's x-coord.
+Put the box's top into the spot's y-coord.
 
 To put a box's height into a height:
 Put the box's bottom into the height.
@@ -9885,32 +9971,32 @@ Put the box's left and the box's top into the line's start.
 Put the box's left and the box's bottom into the line's end.
 
 To put a box's left-bottom into a spot:
-Put the box's left into the spot's x.
-Put the box's bottom into the spot's y.
+Put the box's left into the spot's x-coord.
+Put the box's bottom into the spot's y-coord.
 
 To put a box's left-center into a spot:
-Put the box's left into the spot's x.
-Put the box's center's y into the spot's y.
+Put the box's left into the spot's x-coord.
+Put the box's center's y-coord into the spot's y-coord.
 
 To put a box's right line into a line:
 Put the box's right and the box's top into the line's start.
 Put the box's right and the box's bottom into the line's end.
 
 To put a box's right-center into a spot:
-Put the box's right into the spot's x.
-Put the box's center's y into the spot's y.
+Put the box's right into the spot's x-coord.
+Put the box's center's y-coord into the spot's y-coord.
 
 To put a box's right-top into a spot:
-Put the box's right into the spot's x.
-Put the box's top into the spot's y.
+Put the box's right into the spot's x-coord.
+Put the box's top into the spot's y-coord.
 
 To put a box's top line into a horizontal line:
 Put the box's left and the box's top into the horizontal line's start.
 Put the box's right and the box's top into the horizontal line's end.
 
 To put a box's top-center into a spot:
-Put the box's center's x into the spot's x.
-Put the box's top into the spot's y.
+Put the box's center's x-coord into the spot's x-coord.
+Put the box's top into the spot's y-coord.
 
 To put a box's width into a width:
 Put the box's right into the width.
@@ -10041,7 +10127,7 @@ Intel $8B03. \ mov eax,[ebx]
 
 To put a flag into a string;
 To convert a flag to a string:
-If the flag is set, put "yes" into the string; exit.
+If the flag is set, put "yes" into the string; exit. \ has to be english for externalized reams
 Put "no" into the string.
 
 To put a font into another font:
@@ -10179,30 +10265,30 @@ Put the line's end into the box's right-bottom.
 Normalize the box.
 
 To put a line's center into a spot:
-Put the line's start's x plus the line's end's x into the spot's x.
-Put the line's start's y plus the line's end's y into the spot's y.
+Put the line's start's x-coord plus the line's end's x-coord into the spot's x-coord.
+Put the line's start's y-coord plus the line's end's y-coord into the spot's y-coord.
 Divide the spot by 2.
 
 To put a line's left into a coord:
-Put the line's start's x into the coord.
-If the line's end's x is less than the line's start's x, put the line's end's x into the coord.
+Put the line's start's x-coord into the coord.
+If the line's end's x-coord is less than the line's start's x-coord, put the line's end's x-coord into the coord.
 
 To put a line's right into a coord:
-Put the line's start's x into the coord.
-If the line's end's x is greater than the line's start's x, put the line's end's x into the coord.
+Put the line's start's x-coord into the coord.
+If the line's end's x-coord is greater than the line's start's x-coord, put the line's end's x-coord into the coord.
 
 To put a line's top into a coord:
-Put the line's start's y into the coord.
-If the line's end's y is less than the line's start's y, put the line's end's y into the coord.
+Put the line's start's y-coord into the coord.
+If the line's end's y-coord is less than the line's start's y-coord, put the line's end's y-coord into the coord.
 
 To put masking tape below a figure:
 If the figure is nil, exit.
 If the figure's vertices' count is less than 2, exit.
 Copy the figure to another figure.
-Put the screen's bottom into a spot's y.
-Put the figure's last's x into the spot's x.
+Put the screen's bottom into a spot's y-coord.
+Put the figure's last's x-coord into the spot's x-coord.
 Append the spot to the other figure.
-Put the figure's first's x into the spot's x.
+Put the figure's first's x-coord into the spot's x-coord.
 Append the spot to the other figure.
 Append the figure's first's spot to the other figure.
 Mask inside the other figure.
@@ -10227,8 +10313,8 @@ To put a name into a font:
 Put the name into the font's name.
 
 To put a number and another number into a pair:
-Put the number into the pair's x.
-Put the other number into the pair's y.
+Put the number into the pair's x-number.
+Put the other number into the pair's y-number.
 
 To put a number into a big-endian unsigned wyrd:
 Put the number into a wyrd.
@@ -10245,8 +10331,8 @@ Put the number into the fraction's numerator.
 Put 1 into the fraction's denominator.
 
 To put a number into a pair:
-Put the number into the pair's x.
-Put the number into the pair's y.
+Put the number into the pair's x-number.
+Put the number into the pair's y-number.
 
 To put a number into a string;
 To convert a number to a string:
@@ -10286,8 +10372,8 @@ To put an outlinetextmetric into another outlinetextmetric:
 Copy bytes from the outlinetextmetric's whereabouts to the other outlinetextmetric's whereabouts for the outlinetextmetric's magnitude.
 
 To put a pair into another pair:
-Put the pair's x into the other pair's x.
-Put the pair's y into the other pair's y.
+Put the pair's x-number into the other pair's x-number.
+Put the pair's y-number into the other pair's y-number.
 
 To put a pair's absolute value into another pair:
 Put the pair into the other pair.
@@ -10330,10 +10416,10 @@ Put the largest number and the largest number and the smallest number and the sm
 Loop.
 Get a vertex from the polygon's vertices.
 If the vertex is nil, break.
-If the vertex's x is less than the box's left, put the vertex's x into the box's left.
-If the vertex's y is less than the box's top, put the vertex's y into the box's top.
-If the vertex's x is greater than the box's right, put the vertex's x into the box's right.
-If the vertex's y is greater than the box's bottom, put the vertex's y into the box's bottom.
+If the vertex's x-coord is less than the box's left, put the vertex's x-coord into the box's left.
+If the vertex's y-coord is less than the box's top, put the vertex's y-coord into the box's top.
+If the vertex's x-coord is greater than the box's right, put the vertex's x-coord into the box's right.
+If the vertex's y-coord is greater than the box's bottom, put the vertex's y-coord into the box's bottom.
 Repeat.
 
 To put a polygon's center into a spot:
@@ -10560,8 +10646,8 @@ Globalize the spot given the text's left-top.
 
 To put a text's grid into a grid:
 If the text is nil, clear the grid; exit.
-Put the text's font's height times 4 into the grid's x.
-Put the text's font's height into the grid's y.
+Put the text's font's height times 4 into the grid's x-number.
+Put the text's font's height into the grid's y-number.
 
 To put a text's normalized selection into a selection:
 If the text is nil, exit.
@@ -10688,11 +10774,15 @@ Intel $0FBF00. \ movsx eax,wyrd ptr [eax]
 Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ the number
 Intel $8903. \ mov [ebx],eax
 
-To put an x coord and a y coord and another x coord and another y coord into a line:
-Put the x into the line's start's x.
-Put the y into the line's start's y.
-Put the other x into the line's end's x.
-Put the other y into the line's end's y.
+An x-coord is a coord.
+A y-coord is a coord.
+
+
+To put an x-coord and a y-coord and another x-coord and another y-coord into a line:
+Put the x-coord into the line's start's x-coord.
+Put the y-coord into the line's start's y-coord.
+Put the other x-coord into the line's end's x-coord.
+Put the other y-coord into the line's end's y-coord.
 
 The q-key is a key equal to 81.
 
@@ -10746,7 +10836,7 @@ A random number is a number.
 
 A ratio is a fraction.
 
-A ratio pair is a pair.
+A ratio pair is a fraction pair. \n√£o tinha fraction antes
 
 To read the bible:
 If the bible is not nil, exit.
@@ -11249,8 +11339,8 @@ Clear the flag.
 
 To reset the origin of a text:
 If the text is nil, exit.
-Put the text's margin into the text's x.
-Put 0 into the text's y.
+Put the text's margin into the text's x-coord.
+Put 0 into the text's y-coord.
 
 To reset a pointer;
 To reset a pointer for the next time around;
@@ -11276,8 +11366,8 @@ Put the box's left plus the width into the box's right.
 Put the box's top plus the height into the box's bottom.
 
 To resize a box given a twip pair:
-Add the twip pair's x to the box's right.
-Add the twip pair's y to the box's bottom.
+Add the twip pair's x-number to the box's right.
+Add the twip pair's y-number to the box's bottom.
 
 To resize an ellipse given a ratio pair;
 To resize an ellipse given a fraction pair:
@@ -11390,9 +11480,10 @@ Put 1000 minus the color's lightness into the color's lightness.
 \Put 1000 minus the color's saturation into the color's saturation.
 Add 1800 to the color's hue. Normalize the color's hue.
 
+To invert a flag;
 To reverse a flag:
-If the flag is yes, put no into the flag; exit.
-Put yes into the flag.
+If the flag is 1, put 0 into the flag; exit. z era yes e no ao inv√©s de 1 e 0
+Put 1 into the flag.
 
 To reverse a number;
 To invert a number:
@@ -11453,10 +11544,10 @@ A run is a number.
 To rotate a box:
 Put the box's center into a center spot.
 Put the box into another box.
-Put the center's y minus the other box's top plus the center's x into the box's right.
-Put the other box's left minus the center's x plus the center's y into the box's top.
-Put the center's y minus the other box's bottom plus the center's x into the box's left.
-Put the other box's right minus the center's x plus the center's y into the box's bottom.
+Put the center's y-coord minus the other box's top plus the center's x-coord into the box's right.
+Put the other box's left minus the center's x-coord plus the center's y-coord into the box's top.
+Put the center's y-coord minus the other box's bottom plus the center's x-coord into the box's left.
+Put the other box's right minus the center's x-coord plus the center's y-coord into the box's bottom.
 
 To rotate an ellipse:
 Rotate the ellipse's box.
@@ -11487,10 +11578,10 @@ Rotate the picture's box.
 Rotate the picture's uncropped box.
 Put the picture's box's center into a center spot.
 Put the picture's uncropped box's center into another center spot.
-Put the center's y minus the other center's y plus the center's x into a twip pair's x.
-Subtract the other center's x from the twip pair's x.
-Put the center's y plus the other center's x minus the center's x into the twip pair's y.
-Subtract the other center's y from the twip pair's y.
+Put the center's y-coord minus the other center's y-coord plus the center's x-coord into a twip pair's x-number.
+Subtract the other center's x-coord from the twip pair's x-number.
+Put the center's y-coord plus the other center's x-coord minus the center's x-coord into the twip pair's y-number.
+Subtract the other center's y-coord from the twip pair's y-number.
 Move the picture's uncropped box given the twip pair.
 Rotate the picture's gpbitmap.
 
@@ -11505,8 +11596,8 @@ Repeat.
 
 To rotate a spot around a center spot:
 Put the spot into another spot.
-Put the center's y minus the other spot's y plus the center's x into the spot's x.
-Put the other spot's x minus the center's x plus the center's y into the spot's y.
+Put the center's y-coord minus the other spot's y-coord plus the center's x-coord into the spot's x-coord.
+Put the other spot's x-coord minus the center's x-coord plus the center's y-coord into the spot's y-coord.
 
 To rotate a text:
 If the text is nil, exit.
@@ -11550,12 +11641,12 @@ To round a pair to another pair:
 Round the pair to the nearest multiple of the other pair.
 
 To round a pair to the nearest multiple of another pair:
-Round the pair's x to the nearest multiple of the other pair's x.
-Round the pair's y to the nearest multiple of the other pair's y.
+Round the pair's x-number to the nearest multiple of the other pair's x-number.
+Round the pair's y-number to the nearest multiple of the other pair's y-number.
 
 To round a pair to the nearest multiple of a number:
-Round the pair's x to the nearest multiple of the number.
-Round the pair's y to the nearest multiple of the number.
+Round the pair's x-number to the nearest multiple of the number.
+Round the pair's y-number to the nearest multiple of the number.
 
 To round a pair to a number:
 Round the pair to the nearest multiple of the number.
@@ -11656,13 +11747,13 @@ Scale the line given the fraction.
 To scale a pair given a ratio;
 To scale a pair given a fraction:
 If the fraction is 1/1, exit.
-Scale the pair's x given the fraction.
-Scale the pair's y given the fraction.
+Scale the pair's x-number given the fraction.
+Scale the pair's y-number given the fraction.
 
 To scale a pair given a ratio pair;
 To scale a pair given a fraction pair:
-Scale the pair's x given the fraction pair's fraction.
-Scale the pair's y given the fraction pair's other fraction.
+Scale the pair's x-number given the fraction pair's fraction.
+Scale the pair's y-number given the fraction pair's other fraction.
 
 To scale a pair to a percent:
 Put the percent / 100 into a fraction.
@@ -11759,19 +11850,19 @@ Limit the origin of the text.
 
 To scroll a text to the caret:
 If the text is nil, exit.
-If the text's caret's column# is 1, put the text's margin into the text's x.
+If the text's caret's column# is 1, put the text's margin into the text's x-coord.
 Get a box for the caret in the text.
 Adjust the box given 0 and - the tpp and 0 and the tpp. \ caret boxes don't fill entire row
-If the box's top is less than the text's top, put the text's top minus the box's top into a difference's y.
-If the box's bottom is greater than the text's bottom, put the text's bottom minus the box's bottom into the difference's y.
-If the box's left is less than the text's left, put the text's left minus the box's left into the difference's x.
-If the box's right is greater than the text's right, put the text's right minus the box's right into the difference's x.
+If the box's top is less than the text's top, put the text's top minus the box's top into a difference's y-number.
+If the box's bottom is greater than the text's bottom, put the text's bottom minus the box's bottom into the difference's y-number.
+If the box's left is less than the text's left, put the text's left minus the box's left into the difference's x-number.
+If the box's right is greater than the text's right, put the text's right minus the box's right into the difference's x-number.
 If the difference is 0, exit.
 Scroll the text given the difference.
 
 To scroll a text to the caret and center it:
 If the text is nil, exit.
-Put the text's margin into the text's x.
+Put the text's margin into the text's x-coord.
 Get a box for the caret in the text.
 If the box is inside the text's box, exit.
 Adjust the box given 0 and - the tpp and 0 and the tpp. \ caret boxes don't fill entire row
@@ -11779,10 +11870,10 @@ Put the text's box's y-extent divided by 2 into a height.
 Round the height down to the nearest multiple of the text's row height.
 Put the text's box's top plus the height into a top coord.
 Put the top plus the text's row height into a bottom coord.
-If the box's top is less than the top, put the top minus the box's top into a difference's y.
-If the box's bottom is greater than the bottom, put the bottom minus the box's bottom into the difference's y.
-If the box's left is less than the text's left, put the text's left minus the box's left into the difference's x.
-If the box's right is greater than the text's right, put the text's right minus the box's right into the difference's x.
+If the box's top is less than the top, put the top minus the box's top into a difference's y-number.
+If the box's bottom is greater than the bottom, put the bottom minus the box's bottom into the difference's y-number.
+If the box's left is less than the text's left, put the text's left minus the box's left into the difference's x-number.
+If the box's right is greater than the text's right, put the text's right minus the box's right into the difference's x-number.
 If the difference is 0, exit.
 Scroll the text given the difference.
 
@@ -11795,15 +11886,15 @@ Scroll the text given the difference.
 To scroll a text down one page:
 If the text is nil, exit.
 If the text's vertical scroll flag is not set, exit.
-Subtract the text's box's y-extent from the text's y.
-Add the text's row height to the text's y.
+Subtract the text's box's y-extent from the text's y-coord.
+Add the text's row height to the text's y-coord.
 Limit the origin of the text.
 
 To scroll a text given a difference:
 If the text is nil, exit.
 Privatize the difference.
-If the text's horizontal scroll flag is not set, put 0 into the difference's x.
-If the text's vertical scroll flag is not set, put 0 into the difference's y.
+If the text's horizontal scroll flag is not set, put 0 into the difference's x-number.
+If the text's vertical scroll flag is not set, put 0 into the difference's y-number.
 If the difference is 0, exit.
 Move the text's origin given the difference.
 Limit the origin of the text.
@@ -11823,8 +11914,8 @@ Scroll the text given the difference.
 To scroll a text up one page:
 If the text is nil, exit.
 If the text's vertical scroll flag is not set, exit.
-Add the text's box's y-extent to the text's y.
-Subtract the text's row height from the text's y.
+Add the text's box's y-extent to the text's y-coord.
+Subtract the text's row height from the text's y-coord.
 Limit the origin of the text.
 
 The scrolllock key is a key equal to 145.
@@ -11833,7 +11924,7 @@ A second is 1000 milliseconds.
 
 The sector byte is a byte equal to 167.
 
-A sector is a pair with an x coord and an y coord [indicating the left-top of the sector].
+A sector is a pair with an x-coord and an y-coord [indicating the left-top of the sector].
 
 The seed is a number.
 
@@ -11981,17 +12072,17 @@ Convert the color to a colorref.
 Call "gdi32.dll" "SetTextColor" with the canvas and the colorref.
 
 To set the drawing origin to a spot:
-Call "gdi32.dll" "GetDeviceCaps" with the current canvas and 112 [physicaloffsetx] returning a pair's x.
-Call "gdi32.dll" "GetDeviceCaps" with the current canvas and 113 [physicaloffsety] returning the pair's y.
+Call "gdi32.dll" "GetDeviceCaps" with the current canvas and 112 [physicaloffsetx] returning a pair's x-number.
+Call "gdi32.dll" "GetDeviceCaps" with the current canvas and 113 [physicaloffsety] returning the pair's y-number.
 Negate the pair.
 If the current canvas is not the printer canvas, clear the pair.
-Call "gdi32.dll" "SetViewportOrgEx" with the current canvas and the pair's x and the pair's y and nil.
+Call "gdi32.dll" "SetViewportOrgEx" with the current canvas and the pair's x-number and the pair's y-number and nil.
 Privatize the spot.
 Call "gdi32.dll" "LPtoDP" with the current canvas and the spot's whereabouts and 1.
-Call "gdi32.dll" "SetViewportOrgEx" with the current canvas and the spot's x and the spot's y and nil.
+Call "gdi32.dll" "SetViewportOrgEx" with the current canvas and the spot's x-coord and the spot's y-coord and nil.
 
 To set a flag:
-Put yes into the flag.
+Put 1 into the flag. \ was "Put yes into the flag." Value of yes inherited from the CAL-1000 according to Dan.
 
 To set a path to read-write mode:
 Privatize the path.
@@ -12387,7 +12478,7 @@ Shift the wyrd right 8 bits.
 Put the wyrd into the byte.
 Put the original wyrd into the other byte.
 
-A spot is a pair with an x coord and a y coord and a left at the x coord and a top at the y coord.
+A spot is a pair with an x-coord and a y-coord and a left at the x-coord and a top at the y-coord.
 
 A spot pointer is a pointer to a spot.
 
@@ -12688,11 +12779,11 @@ Turn left the points.
 
 To start in the middle of a box facing south;
 To start at the middle of a box facing south;
-To move to the middle of a box facing south:
+To move to the middle of a box facing south;
 To move to the middle of a box and face south;
 To start in the center of a box facing south;
 To start at the center of a box facing south;
-To move to the center of a box facing south:
+To move to the center of a box facing south;
 To move to the center of a box and face south:
 Put the box's center into the context's spot.
 Face south.
@@ -14394,12 +14485,12 @@ To subtract a number from a fraction:
 Subtract the number / 1 from the fraction.
 
 To subtract a number from a pair:
-Subtract the number from the pair's x.
-Subtract the number from the pair's y.
+Subtract the number from the pair's x-number.
+Subtract the number from the pair's y-number.
 
 To subtract a pair from another pair:
-Subtract the pair's x from the other pair's x.
-Subtract the pair's y from the other pair's y.
+Subtract the pair's x-number from the other pair's x-number.
+Subtract the pair's y-number from the other pair's y-number.
 
 To subtract a pointer from another pointer;
 To subtract a number from a pointer;
@@ -14421,8 +14512,8 @@ Swap the color's saturation with the other color's saturation.
 Swap the color's lightness with the other color's lightness.
 
 To swap a pair with another pair:
-Swap the pair's x with the other pair's x.
-Swap the pair's y with the other pair's y.
+Swap the pair's x-number with the other pair's x-number.
+Swap the pair's y-number with the other pair's y-number.
 
 To swap a pointer with another pointer;
 To swap a number with another number:
@@ -14639,6 +14730,12 @@ To turn right some degrees:
 Put the degrees times 10 and 3600 into a fraction.
 Turn right the fraction.
 
+
+To turn some degrees:
+Put the degrees times 10 and 3600 into a fraction.
+\If the degrees are negative, turn left the fraction; exit.
+Turn right the fraction.
+
 To turn right a fraction equal to a number over another number:
 Put the number into the fraction's top.
 Put the other number into the fraction's bottom.
@@ -14774,12 +14871,21 @@ Uppercase the substring.
 Repeat.
 
 To uppercase a byte:
-Intel $8B8508000000. \ mov eax,[ebp+8] \ the byte
-Intel $803861. \ cmp byte ptr [eax],'a'
-Intel $0F820C000000. \ jb END
-Intel $80387A. \ cmp byte ptr [eax],'z'
-Intel $0F8703000000. \ ja END
-Intel $802820. \ sub byte ptr [eax],$20
+Translate the byte using the uppercase ascii table.
+
+To translate a byte using a translation hex string:
+Intel $8B8D08000000. \ mov ecx,[ebp+8] \ the byte pointer
+Intel $8B01. \ mov eax,[ecx] \ the byte
+Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ the translation table
+Intel $8B1B. \ mov ebx,[ebx] the translation table's first
+Intel $D7. \ xlat al,[ebx]
+Intel $8901. \ mov [ecx],eax
+\Intel $8B8508000000. \ mov eax,[ebp+8] \ the byte
+\Intel $803861. \ cmp byte ptr [eax],'a'
+\Intel $0F820C000000. \ jb END
+\Intel $80387A. \ cmp byte ptr [eax],'z'
+\Intel $0F8703000000. \ ja END
+\Intel $802820. \ sub byte ptr [eax],$20
 \ END
 
 To uppercase the character under a finger and put it into a string:
@@ -14866,7 +14972,7 @@ A vertex array is a pointer to a vertex array record.
 
 A vertex array record has a count and a spot pointer.
 
-A vertex is a thing with an x coord, a y coord, a spot at the x.
+A vertex is a thing with an x-coord, a y-coord, a spot at the x-coord.
 
 The vertical-bar byte is a byte equal to 124.
 
