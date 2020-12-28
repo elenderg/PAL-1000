@@ -206,7 +206,7 @@ tags restantes para adicionar:
 |brownish color|–|–|–|–|–|
 |bucket|–|–|–|–|–|
 |bucket count|–|–|–|–|–|
-|buffer|–|–|–|–|–|
+|buffer|depósito|armazém|estoque|almoxarifado|–|
 |built-in type|–|–|–|–|–|
 |bullet byte|–|–|–|–|–|
 |byte|–|–|–|–|–|
@@ -219,7 +219,7 @@ tags restantes para adicionar:
 |call indirect tag|–|–|–|–|–|
 |call internal tag|–|–|–|–|–|
 |cancel byte|–|–|–|–|–|
-|canvas|–|–|–|–|–|
+|canvas|painel|quadro|–|–|–|
 |caps key|–|–|–|–|–|
 |caret byte|pedaço contendo um cursor de texto|pedaço com um cursor de texto|–|–|–|
 |cedilla byte|–|–|–|–|–|
@@ -231,18 +231,18 @@ tags restantes para adicionar:
 |clear key|–|–|–|–|–|
 |clear pen|–|–|–|–|–|
 |clsid|Identificador de Classe|Número Identificador de Classe|–|–|–|
-|cluck sound|–|–|–|–|–|
+|cluck sound|som de latido|cacarejo|–|–|–|
 |colon byte|–|–|–|–|–|
 |color|–|–|–|–|–|
 |colorref|código da cor|número da cor|–|–|–|
-|column#|–|–|–|–|–|
+|column#|número da coluna|–|–|–|–|
 |comma byte|–|–|–|–|–|
 |command|–|–|–|–|–|
 |comment color|cor dos comentários|–|–|–|–|
 |~~console~~|–|–|–|–|–|
 |context|–|–|–|–|–|
 |context stack|–|–|–|–|–|
-|coord|–|–|–|–|–|
+|coord|coordenada|–|–|–|–|
 |copy|–|–|–|–|–|
 |copyright byte|–|–|–|–|–|
 |count|–|–|–|–|–|
@@ -250,7 +250,7 @@ tags restantes para adicionar:
 |cross byte|pedaço contendo um mais|-|–|–|–|
 |ctrl key|–|–|–|–|–|
 |currency-sign byte|–|–|–|–|–|
-|current canvas|–|–|–|–|–|
+|current canvas|painel atual|–|–|–|–|
 |current menu|–|–|–|–|–|
 |current process|–|–|–|–|–|
 |current rainbow color number|–|–|–|–|–|
@@ -821,7 +821,7 @@ tags restantes para adicionar:
 |really light color|–|–|–|–|–|
 |really really dark color|–|–|–|–|–|
 |really really light color|–|–|–|–|–|
-|~~record~~|–|–|–|–|–|
+|record|conjunto|registro|–|–|–|
 |record-separator byte|–|–|–|–|–|
 |rectangle|–|–|–|–|–|
 |red color|–|–|–|–|–|
