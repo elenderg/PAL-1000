@@ -24,7 +24,7 @@
 |console <sup>[E]</sup>|–|–|–|–|–|
 |dab <sup>[D]</sup>|matizar|pincelar|colorir|–|–|
 |dab <sup>[E]</sup>|–|–|–|–|–|
-|deque <sup>[D]</sup>|decue|decifre|decifrar|–|–|
+|deque <sup>[D]</sup>|decue|desenfileirar|–|–|–|
 |deque <sup>[E]</sup>|–|–|–|–|–|
 |dot <sup>[D]</sup>|ponto|marca|–|–|–|
 |dot <sup>[E]</sup>|–|–|–|–|–|
