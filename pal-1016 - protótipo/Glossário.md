@@ -804,7 +804,7 @@ tags restantes para adicionar:
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |q-key|–|–|–|–|–|
-|quarter|–|–|–|–|–|
+|quarter|quarto|–|–|–|–|
 |query byte|–|–|–|–|–|
 |~~query string~~|–|–|–|–|–|
 |question-mark byte|–|–|–|–|–|
@@ -828,7 +828,7 @@ tags restantes para adicionar:
 |red pen|–|–|–|–|–|
 |registered byte|–|–|–|–|–|
 |registered-trade-mark byte|–|–|–|–|–|
-|remainder|–|–|–|–|–|
+|remainder|resto|–|–|–|–|
 |remembered page number|–|–|–|–|–|
 |repeat tag|–|–|–|–|–|
 |reply|objeção|argumento de resposta|–|–|–|
@@ -904,6 +904,7 @@ tags restantes para adicionar:
 |submenu|–|–|–|–|–|
 |substitute byte|–|–|–|–|–|
 |~~substring~~|–|–|–|–|–|
+|superduper|posicionador|||||
 |superscript-one byte|–|–|–|–|–|
 |superscript-three byte|–|–|–|–|–|
 |superscript-two byte|–|–|–|–|–|
