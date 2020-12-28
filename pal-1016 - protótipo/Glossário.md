@@ -688,7 +688,7 @@ tags restantes para adicionar:
 |main window|–|–|–|–|–|
 |margin|–|–|–|–|–|
 |masculine byte|–|–|–|–|–|
-|mask|–|–|–|–|–|
+|mask|máscara|enfeite|maquiagem|–|–|
 |max page undos|–|–|–|–|–|
 |max text undos|–|–|–|–|–|
 |memory canvas|–|–|–|–|–|
@@ -700,18 +700,18 @@ tags restantes para adicionar:
 |m-key|–|–|–|–|–|
 |~~moniker~~|–|–|–|–|–|
 |monikette|–|–|–|–|–|
-|ms|–|–|–|–|–|
+|ms|milisegundo(s)|–|–|–|–|
 |multiple|–|–|–|–|–|
 |multiplication-symbol byte|–|–|–|–|–|
 
 ### #N
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|name|–|–|–|–|–|
+|name|nome|–|–|–|–|
 |negative-acknowledge byte|–|–|–|–|–|
 |next letter|–|–|–|–|–|
 |~~nibble~~|–|–|–|–|–|
-|nibble string|–|–|–|–|–|
+|nibble string|texto contendo quatro pedacinhos|meio pedaço de texto|–|–|–|
 |nine byte|–|–|–|–|–|
 |nine key|–|–|–|–|–|
 |n-key|–|–|–|–|–|
@@ -724,7 +724,7 @@ tags restantes para adicionar:
 |null hbrush|–|–|–|–|–|
 |null hfont|–|–|–|–|–|
 |null hpen|–|–|–|–|–|
-|number|–|–|–|–|–|
+|number|número|–|–|–|–|
 |number-sign byte|–|–|–|–|–|
 |numlock key|–|–|–|–|–|
 |numpad-astrisk key|–|–|–|–|–|
@@ -746,7 +746,7 @@ tags restantes para adicionar:
 ### #O
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|offset|–|–|–|–|–|
+|offset|deslocamento|–|–|–|–|
 |o-key|–|–|–|–|–|
 |one byte|–|–|–|–|–|
 |one key|–|–|–|–|–|
@@ -769,9 +769,9 @@ tags restantes para adicionar:
 |paren,|–|–|–|–|–|
 |partial moniker|–|–|–|–|–|
 |pastel color|–|–|–|–|–|
-|path|–|–|–|–|–|
+|path|endereço|endereço com extensão|–|–|–|
 |pause key|–|–|–|–|–|
-|pdf|–|–|–|–|–|
+|pdf|arquivo pdf|–|–|–|–|
 |pen|–|–|–|–|–|
 |pen size|–|–|–|–|–|
 |per|–|–|–|–|–|
@@ -788,7 +788,7 @@ tags restantes para adicionar:
 |~~pointer~~|–|–|–|–|–|
 |polygon|–|–|–|–|–|
 |pound-sign byte|–|–|–|–|–|
-|ppi|–|–|–|–|–|
+|ppi|pontos por polegada|pontos em uma polegada|–|–|–|
 |precise degree|–|–|–|–|–|
 |printer canvas|–|–|–|–|–|
 |printer device mode|–|–|–|–|–|
@@ -808,12 +808,12 @@ tags restantes para adicionar:
 |query byte|–|–|–|–|–|
 |~~query string~~|–|–|–|–|–|
 |question-mark byte|–|–|–|–|–|
-|quotient|–|–|–|–|–|
+|quotient|quociente|–|–|–|–|
 
 ### #R
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|radius|–|–|–|–|–|
+|radius|raio|–|–|–|–|
 |~~rainbow color~~|–|–|–|–|–|
 |random number|–|–|–|–|–|
 |really dark color|–|–|–|–|–|
@@ -830,7 +830,7 @@ tags restantes para adicionar:
 |remainder|–|–|–|–|–|
 |remembered page number|–|–|–|–|–|
 |repeat tag|–|–|–|–|–|
-|reply|–|–|–|–|–|
+|reply|objeção|argumento de resposta|–|–|–|
 |return byte|–|–|–|–|–|
 |right-alligator byte|–|–|–|–|–|
 |right-alligator-quote byte|–|–|–|–|–|
@@ -863,7 +863,7 @@ tags restantes para adicionar:
 |scrolllock key|–|–|–|–|–|
 |second|–|–|–|–|–|
 |sector byte|–|–|–|–|–|
-|seed|–|–|–|–|–|
+|seed|número da semente|–|–|–|–|
 |semi-colon byte|–|–|–|–|–|
 |seven byte|–|–|–|–|–|
 |seven key|–|–|–|–|–|
@@ -882,7 +882,7 @@ tags restantes para adicionar:
 |sky blue pen|–|–|–|–|–|
 |sky color|–|–|–|–|–|
 |sky pen|–|–|–|–|–|
-|slash|–|–|–|–|–|
+|slash|barra|–|–|–|–|
 |slash byte|–|–|–|–|–|
 |small letter height|–|–|–|–|–|
 |small-bullet byte|–|–|–|–|–|
@@ -896,8 +896,8 @@ tags restantes para adicionar:
 |~~stack entry~~|–|–|–|–|–|
 |start-of-heading byte|–|–|–|–|–|
 |start-of-text byte|–|–|–|–|–|
-|stdin handle|–|–|–|–|–|
-|stdout handle|–|–|–|–|–|
+|stdin handle|número identificador do fluxo padrão de entrada|–|–|–|–|
+|stdout handle|número identificador do fluxo padrão de saída|–|–|–|–|
 |string|–|–|–|–|–|
 |string### #|–|–|–|–|–|
 |submenu|–|–|–|–|–|
@@ -918,13 +918,13 @@ tags restantes para adicionar:
 |talker|–|–|–|–|–|
 |tan color|–|–|–|–|–|
 |tan pen|–|–|–|–|–|
-|teal color|–|–|–|–|–|
+|teal color|verde-azulado|azul petróleo|verde petróleo|–|–|
 |teal pen|–|–|–|–|–|
 |terminal|–|–|–|–|–|
 |text cutoff|–|–|–|–|–|
 |text margin|–|–|–|–|–|
 |the|–|–|–|–|–|
-|the gptoken|–|–|–|–|–|
+|the gptoken|grupo do sinal|–|–|–|–|
 |~~thing~~|–|–|–|–|–|
 |three byte|–|–|–|–|–|
 |three key|–|–|–|–|–|
@@ -934,9 +934,9 @@ tags restantes para adicionar:
 |times|–|–|–|–|–|
 |t-key|–|–|–|–|–|
 |top|–|–|–|–|–|
-|tpi|–|–|–|–|–|
-|tpp|–|–|–|–|–|
-|tracer color|–|–|–|–|–|
+|tpi|minipontos por polegada|–|–|–|–|
+|tpp|minipontos por ponto|–|–|–|–|
+|tracer color|cor usada pelo pintor|–|–|–|–|
 |trade-mark byte|–|–|–|–|–|
 |~~twip~~|–|–|–|–|–|
 |two byte|–|–|–|–|–|
