@@ -451,7 +451,7 @@ tags restantes para adicionar:
 |greenish color|–|–|–|–|–|
 |grid color|–|–|–|–|–|
 |group-separator byte|–|–|–|–|–|
-|guid|Identificador Único Universal|–|–|–|–|
+|guid|Identificador Único Abrangente|–|–|–|–|
 
 ### #H
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -844,10 +844,10 @@ tags restantes para adicionar:
 |right-window key|–|–|–|–|–|
 |rise|–|–|–|–|–|
 |r-key|–|–|–|–|–|
-|routine|–|–|–|–|–|
+|routine|tarefa|–|–|–|–|
 |routine address tag|–|–|–|–|–|
 |routine reference|–|–|–|–|–|
-|row### #|–|–|–|–|–|
+|row#|–|–|–|–|–|
 |row/sheet|–|–|–|–|–|
 |run|–|–|–|–|–|
 
@@ -898,11 +898,11 @@ tags restantes para adicionar:
 |start-of-text byte|–|–|–|–|–|
 |stdin handle|número identificador do fluxo padrão de entrada|–|–|–|–|
 |stdout handle|número identificador do fluxo padrão de saída|–|–|–|–|
-|string|–|–|–|–|–|
-|string### #|–|–|–|–|–|
+|~~string~~|–|–|–|–|–|
+|string#|–|–|–|–|–|
 |submenu|–|–|–|–|–|
 |substitute byte|–|–|–|–|–|
-|substring|–|–|–|–|–|
+|~~substring~~|–|–|–|–|–|
 |superscript-one byte|–|–|–|–|–|
 |superscript-three byte|–|–|–|–|–|
 |superscript-two byte|–|–|–|–|–|
@@ -914,7 +914,7 @@ tags restantes para adicionar:
 |tab|–|–|–|–|–|
 |tab byte|–|–|–|–|–|
 |tab key|–|–|–|–|–|
-|tag|–|–|–|–|–|
+|tag|etiqueta|–|–|–|–|
 |talker|–|–|–|–|–|
 |tan color|–|–|–|–|–|
 |tan pen|–|–|–|–|–|
@@ -933,7 +933,7 @@ tags restantes para adicionar:
 |tilde byte|–|–|–|–|–|
 |times|–|–|–|–|–|
 |t-key|–|–|–|–|–|
-|top|–|–|–|–|–|
+|top|parte de cima|–|–|–|–|
 |tpi|minipontos por polegada|–|–|–|–|
 |tpp|minipontos por ponto|–|–|–|–|
 |tracer color|cor usada pelo pintor|–|–|–|–|
@@ -941,18 +941,18 @@ tags restantes para adicionar:
 |~~twip~~|–|–|–|–|–|
 |two byte|–|–|–|–|–|
 |two key|–|–|–|–|–|
-|type|–|–|–|–|–|
+|type|tipo|–|–|–|–|
 
 ### #U
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |u-key|–|–|–|–|–|
 |underscore byte|–|–|–|–|–|
-|unit|–|–|–|–|–|
+|unit|unidade|–|–|–|–|
 |unit-separator byte|–|–|–|–|–|
 |up-arrow key|–|–|–|–|–|
 |upperscore byte|–|–|–|–|–|
-|uuid|–|–|–|–|–|
+|uuid|Identificador Único Universal|–|–|–|–|
 |variable|–|–|–|–|–|
 
 ### #V
