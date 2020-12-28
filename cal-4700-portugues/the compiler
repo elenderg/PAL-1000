@@ -196,6 +196,12 @@ Create the fragment given the tag.
 Append the fragment to the current routine's fragments.
 Put the entry into the fragment's entry.
 
+To add a fragment given a tag and a flag:
+If the current routine is nil, void the fragment; exit.
+Create the fragment given the tag.
+Append the fragment to the current routine's fragments.
+Put the flag into the fragment's flag.
+
 To add a fragment given a tag and a routine:
 If the current routine is nil, void the fragment; exit.
 Create the fragment given the tag.
@@ -255,18 +261,34 @@ If the expression's variable is not nil, put the expression's type into the moni
 To add a monikette to some monikettes given a string:
 Create the monikette.
 Append the monikette to the monikettes.
+\ Spanish conjunctions, etc
+If the string is "y", put "and" into the monikette's string; exit. \ and
+If the string is "e", put "and" into the monikette's string; exit. \ and
+If the string is "o", put "or" into the monikette's string; exit. \ or
+If the string is "u", put "or" into the monikette's string; exit. \ or
 \ from/given/with/using
+If the string is "desde", put "from/given/with/using" into the monikette's string; exit.
+If the string is "de", put "from/given/with/using" into the monikette's string; exit.
+If the string is "dada", put "from/given/with/using" into the monikette's string; exit.
+If the string is "dado", put "from/given/with/using" into the monikette's string; exit.
+If the string is "con", put "from/given/with/using" into the monikette's string; exit.
+If the string is "usando", put "from/given/with/using" into the monikette's string; exit.
 If the string is "from", put "from/given/with/using" into the monikette's string; exit.
 If the string is "given", put "from/given/with/using" into the monikette's string; exit.
 If the string is "with", put "from/given/with/using" into the monikette's string; exit.
 If the string is "using", put "from/given/with/using" into the monikette's string; exit.
 \ in/into/to
+If the string is "en", put "in/into/to" into the monikette's string; exit.
 If the string is "in", put "in/into/to" into the monikette's string; exit.
 If the string is "into", put "in/into/to" into the monikette's string; exit.
 If the string is "to", put "in/into/to" into the monikette's string; exit.
+If the string is "a", put "in/into/to" into the monikette's string; exit.
 \ is/are
 If the string is "are", put "is/are" into the monikette's string; exit.
 If the string is "is", put "is/are" into the monikette's string; exit.
+If the string is "es", put "is/are" into the monikette's string; exit.
+If the string is "está", put "is/are" into the monikette's string; exit.
+If the string is "se", put "is/are" into the monikette's string; exit.
 \ aren't/isn't
 If the string is "isn't", put "is/aren't" into the monikette's string; exit.
 If the string is "aren't", put "is/aren't" into the monikette's string; exit.
@@ -280,6 +302,12 @@ If the string is "anti-clockwise", put "backward" into the monikette's string; e
 \ at/on
 If the string is "at", put "at/on" into the monikette's string; exit.
 If the string is "on", put "at/on" into the monikette's string; exit.
+\ Spanish allocates and destroys
+If the string is "asignar", put "allocate" into the monikette's string; exit.
+If the string is "memoria", put "memory" into the monikette's string; exit.
+If the string is "para", put "for" into the monikette's string; exit.
+If the string is "desasignar", put "deallocate" into the monikette's string; exit.
+If the string is "destruir", put "destroy" into the monikette's string; exit.
 \ other
 Put the string into the monikette's string.
 
@@ -429,7 +457,7 @@ If the fragment's tag is the epilog tag, address the fragment given the address 
 If the fragment's tag is the intel tag, add the fragment's code's length to the address; exit.
 If the fragment's tag is the push value tag, address the fragment given the address (push value); exit.
 If the fragment's tag is the call external tag, add 6 to the address; exit.
-If the fragment's tag is the load eax tag, add 8 to the address; exit.
+If the fragment's tag is the load eax tag, add 5 to the address; exit. \ was 8 when "load eax" took in variables; now "load eax" only does an immediate value
 If the fragment's tag is the save eax tag, address the fragment given the address (save eax); exit.
 If the fragment's tag is the call indirect tag, add 8 to the address; exit.
 If the fragment's tag is the routine address tag, add 12 to the address; exit.
@@ -683,6 +711,7 @@ Append the third hex string to the other hex string.
 Convert the other number to a fourth hex string.
 Append the fourth hex string to the other hex string.
 
+To attach a hex string and a flag to another hex string;
 To attach a hex string and a number to another hex string:
 Append the hex string to the other hex string.
 Convert the number to a third hex string.
@@ -1127,15 +1156,11 @@ Put the term into the expression.
 Loop.
 If the compiler's abort flag is set, exit.
 If the rider's token is not any operator, exit.
-If the rider's token is "divided", compile the expression given the rider (divided); repeat.
-If the rider's token is "dividido", compile the expression given the rider (divided); repeat.
-If the rider's token is "minus", compile the expression given the rider (minus); repeat.
-If the rider's token is "menos", compile the expression given the rider (minus); repeat.
-If the rider's token is "plus", compile the expression given the rider (plus); repeat.
-If the rider's token is "mais", compile the expression given the rider (plus); repeat.
-If the rider's token is "then", compile the expression given the rider (then); repeat.
-If the rider's token is "times", compile the expression given the rider (times); repeat.
-If the rider's token is "multiplicado", compile the expression given the rider (times); repeat.
+If the rider's token is any divided, compile the expression given the rider (divided); repeat.
+If the rider's token is any minus, compile the expression given the rider (minus); repeat.
+If the rider's token is any plus, compile the expression given the rider (plus); repeat.
+If the rider's token is any then, compile the expression given the rider (then); repeat.
+If the rider's token is any times, compile the expression given the rider (times); repeat.
 
 To compile an expression given a rider (divided):
 If the compiler's abort flag is set, exit.
@@ -1211,7 +1236,8 @@ If the routine is nil, exit.
 If the compiler's abort flag is set, exit.
 Slap a rider on the routine's routine header.
 Move the rider (compiler rules).
-If the rider's token is "decide", compile the header of the routine given the rider (decider); exit.
+If the rider's token is any decide, compile the header of the routine given the rider (decider); exit.
+If the rider is the start of any reverse-possessive function, compile the header of the routine given the rider (reverse-possessive function); exit.
 If the rider is the start of any function, compile the header of the routine given the rider (function); exit.
 If the rider's token is "compatibly", compile the header of the routine given the rider (callback); exit.
 Compile the header of the routine given the rider (procedure).
@@ -1345,7 +1371,7 @@ If the rider's token is any mixed literal, compile the literal given the rider (
 
 To compile a literal given a rider (pointer):
 If the compiler's abort flag is set, exit.
-Convert nil to the literal's data.
+Convert 0 to the literal's data. \ was nil
 Move the rider (compiler rules).
 Put "pointer" into the literal's type name.
 Resolve the literal.
@@ -1361,10 +1387,10 @@ Resolve the literal.
 To compile some monikettes and some parameters given a rider:
 If the compiler's abort flag is set, exit.
 If the rider's token is blank, exit.
-If the rider's token is "the", compile the monikettes and the parameters given the rider (definite article); repeat.
+\If the rider's token is "the", compile the monikettes and the parameters given the rider (definite article); repeat.
 If the rider's token is any definite article, compile the monikettes and the parameters given the rider (definite article); repeat. \não sei porque comentei issso
-If the rider's token is any indefinite article, compile the monikettes and the parameters given the rider (indefinite article); repeat.
-If the rider's token is any monikette string, compile the monikettes and the parameters given the rider (monikette string); repeat.
+If the rider's token is on any indefinite article, compile the monikettes and the parameters given the rider (indefinite article); repeat.
+If the rider's token is on any monikette string, compile the monikettes and the parameters given the rider (monikette string); repeat.
 Abort with "'" then the rider's token then "' não é um nome de função que eu conheça." and the rider.
 
 To compile some monikettes and some parameters given a rider (definite article):
@@ -1380,6 +1406,8 @@ To compile some monikettes and some parameters given a rider (indefinite article
 If the compiler's abort flag is set, exit.
 Add a parameter to the parameters given "parameter" and the rider's token's first.
 If the rider's token is "another", put "other" into the parameter's name.
+\If the rider's token is "otra", put "segunda" into the parameter's name.
+\If the rider's token is "otro", put "segundo" into the parameter's name.
 Move the rider (compiler rules).
 Scan a name given the rider.
 Extend the parameter's name with the name.
@@ -1401,6 +1429,15 @@ Compile an expression given the rider.
 If the compiler's abort flag is set, exit.
 Add another monikette to the monikettes given the expression.
 Repeat.
+
+\To compile some monikettes given a rider:
+\If the compiler's abort flag is set, exit.
+\If the rider's token is any monikette string, add a monikette to the monikettes given the rider's token; move the rider (compiler rules); repeat.
+\If the rider's token is not the start of any expression, exit.
+\Compile an expression given the rider.
+\If the compiler's abort flag is set, exit.
+\Add another monikette to the monikettes given the expression.
+\Repeat.
 
 To compile the next statement given a rider:
 If the compiler's abort flag is set, exit.
@@ -1592,14 +1629,29 @@ To compile the next statement given a rider (repeat):
 Add a fragment given the repeat tag.
 Move the rider (compiler rules).
 
+\To compile the next statement given a rider (say):
+\If the current routine's decider flag is not set, compile the next statement given the rider (call - internal); exit.
+\Move the rider (compiler rules).
+\Compile an expression given the rider.
+\If the compiler's abort flag is set, exit.
+\If the expression's variable is nil, abort with "No es válido este 'diga', no entiendo la variable '" then the expression's phrase then "'." and the rider; exit.
+\If the expression's type cannot be reduced to "flag", abort with "Necesito un rotundo 'si' o 'no' aquí." and the rider; exit.
+\Add a fragment given the load eax tag and the expression's variable.
+\Add another fragment given the exit tag.
+
 To compile the next statement given a rider (say):
 If the current routine's decider flag is not set, compile the next statement given the rider (call - internal); exit.
 Move the rider (compiler rules).
-Compile an expression given the rider.
-If the compiler's abort flag is set, exit.
-If the expression's variable is nil, abort with "Comando 'Say'inválido, a expressão '" then the expression's phrase then "' parece estar vazia." and the rider; exit.
-If the expression's type cannot be reduced to "flag", abort with "Eu preciso de um 'sim' ou de um 'não' nessa linha." and the rider; exit.
-Add a fragment given the load eax tag and the expression's variable.
+If the rider's token is not any decider literal, abort with "Necesito un rotundo 'si' o 'no' aquí." and the rider; exit.
+Clear a flag. If the rider's token is any positive decider literal, set the flag.
+Move the rider (compiler rules).
+If the rider's token is not the period byte, abort with "Pensaba en un punto, pero pusiste '" then the rider's token then "'." and the rider; exit.
+Add a fragment given the load eax tag and the flag.
+\Compile an expression given the rider.
+\If the compiler's abort flag is set, exit.
+\If the expression's variable is nil, abort with "Comando 'Say'inválido, a expressão '" then the expression's phrase then "' parece estar vazia." and the rider; exit.
+\If the expression's type cannot be reduced to "flag", abort with "Eu preciso de um 'sim' ou de um 'não' nessa linha." and the rider; exit.
+\Add a fragment given the load eax tag and the expression's variable.
 Add another fragment given the exit tag.
 
 To compile the next statement given a rider returning a term (call - returning part):
@@ -1737,6 +1789,8 @@ If the compiler's abort flag is set, exit.
 If the current routine is nil, abort with "Parece que essa tarefa não existe. Não achei nada pra pull por aqui." and the rider; exit.
 Add a local to the current routine's locals given "local" and the rider's token's first.
 If the rider's token is "another", put "other" into the local's name.
+\If the rider's token is "otra", put "segunda" into the local's name.
+\If the rider's token is "otro", put "segundo" into the local's name.
 Move the rider (compiler rules).
 Scan a name given the rider.
 Extend the local's name with the name.
@@ -1813,11 +1867,59 @@ If the compiler's abort flag is set, exit.
 If the current routine is nil, abort with "Erro de tarefa vazia, nada pra pull aqui." and the rider; exit.
 Move the rider (compiler rules).
 Scan a name given the rider.
+If the rider is on any reverse-possessive, compile the term given the rider and the name (reverse-possessive); exit.
 Find a variable given the name.
 Put the variable into the term's variable.
 Put "the " into the term's phrase.
 Append the name to the term's phrase.
 Compile the term given the rider (possessives).
+
+To compile a term given a rider and a field name (reverse-possessive):  \ this is recursive \ dahn version 2
+If the compiler's abort flag is set, exit.
+Move the rider (compiler rules). \ past the reverse-possessive starter
+\If the rider's token is not "del", Move the rider (compiler rules). \ past the reverse-possessive starter \ gerry added "if" part
+\If the rider's token is "del", Add 1 to the rider's token's first. \ makes "del" look like "de el"
+If the rider's token is not any article, abort with "Esperaba un artículo, pero encontré '" then the rider's token then "'."; exit.
+Put the rider's token into an article token.
+Move the rider (compiler rules).
+Scan a name given the rider. 
+If the rider is on any reverse-possessive, set a reverse-possessive flag.
+If the reverse-possessive flag is set, compile the term given the rider and the name (reverse-possessive).
+If the reverse-possessive flag is not set, compile the term given the rider and the name and the article (reverse-possessive prepare to unwind).
+Compile the term given the field name and the rider (reverse-possessive).
+
+To compile a term given a rider and a variable name and an article token (reverse-possessive prepare to unwind): \ dahn version 2
+If the article is the start of any variable, compile the term given the rider and the variable name  and the article (reverse-possessive prepare to unwind existing variable); exit.
+Compile the term given the rider and the variable name (reverse-possessive prepare to unwind new local).
+
+To compile a term given a rider and a variable name and an article token (reverse-possessive prepare to unwind existing variable): \ dahn version 2
+Find a variable given the variable name.
+If the variable is nil, abort with "No se pudo encontrar una variable con el nombre '" then the variable name then "'.".
+Put the variable into the term's variable.
+Put "the " into the term's phrase.
+Append the variable name to the term's phrase.
+
+To compile a term given a rider and a variable name (reverse-possessive prepare to unwind new local): \ dahn version 2
+If the compiler's abort flag is set, exit.
+Add a local to the current routine's locals given "local" and the rider's token's first.
+If the rider's token is "another", put "other" into the local's name.
+If the rider's token is "otra", put "segunda" into the local's name.
+If the rider's token is "otro", put "segundo" into the local's name.
+Extend the local's name with the variable name.
+If the rider's token is any called, compile the call'd part given the rider and the local.
+Resolve the local.
+If the local is duplicated in the current routine's parameters, abort with "'" then the local's name then "' ya está en uso como parámetro." and the local's locus; exit.
+If the local is duplicated in the current routine's locals,abort with "'" then the local's name then "' ya está en uso como una variable local." and the local's locus; exit.
+Eliminate duplicate nicknames given the local and the current routine's nickname index.
+Put the local into the term's variable.
+Clear the term's phrase.
+
+To compile a term given a field name and a rider (reverse-possessive):  \ similar to "compile a term given a rider (possessive)" \ dahn
+If the compiler's abort flag is set, exit.
+If the field name is any magnitude, compile the term given the rider (possessive - magnitude); exit.
+If the field name is any target, compile the term given the rider (possessive - target); exit.
+If the field name is any whereabouts, compile the term given the rider (possessive - whereabouts); exit.
+Compile the term given the rider and the field name (possessive - field).
 
 To compile a term given a rider and a field term:
 If the compiler's abort flag is set, exit.
@@ -1929,9 +2031,15 @@ Append the other field to the other fields.
 Repeat.
 
 To copy some fields into some other fields (data fields only):
-If the fields' first is nil, exit.
-If the fields' first's next is nil, exit.
-Put the fields' first's next's next into a field.
+If the fields' count is less than 4, exit. \ for english next and prev and spanish next and prev redefinitions
+\If the fields' first is nil, exit.
+\If the fields' first's next is nil, exit.
+\If the fields' first's next's next is nil, exit.
+\\Put the fields' first's next's next into a field. \ skip next and prev
+\If the fields' first's next's next's next is nil, exit.
+\If the fields' first's next's next's next's next is nil, exit.
+\If the fields' first's next's next's next's next's next is nil, exit.
+Put the fields' first's next's next's next's next into a field. \ english next and prev and spanish next and prev redefinitions
 Loop.
 If the field is nil, exit.
 Copy the field into another field.
@@ -2078,16 +2186,31 @@ If the monikette's current type is not nil, say no.
 If the monikette's current substring is not blank, say no.
 Say yes.
 
+To decide if a name is any magnitude:
+If the name is "magnitude", say yes.
+If the name is "magnitud", say yes.
+Say no.
+
+To decide if a name is any target:
+If the name is "target", say yes.
+If the name is "objetivo", say yes.
+Say no.
+
+To decide if a name is any whereabouts:
+If the name is "whereabouts", say yes.
+If the name is "paradero", say yes.
+Say no.
+
 To decide if a name is any valid field name:
-If the name is "magnitude", say no.
-If the name is "target", say no. \alvo, objetivo em espanhol
-If the name is "whereabouts", say no. \paradeiro
+If the name is any magnitude, say no.
+If the name is any target, say no.
+If the name is any whereabouts, say no.
 Say yes.
 
 To decide if a rider is followed by any unit of measure:
 Privatize the rider.
 Move the rider (compiler rules).
-If the rider's token is not any name starter, say no.
+If the rider is not on any name starter, say no. \SAl era rider's token
 Scan a name given the rider.
 Find a type given the name and the type index.
 If the type is nil, say no.
@@ -2140,7 +2263,8 @@ Move the rider (compiler rules).
 If the rider's token is not any article, say no.
 Move the rider (compiler rules).
 Scan a name given the rider.
-If the rider's token is any possessive, say yes.  
+If the rider's token is any possessive, say yes.
+Say no.
 
 To decide if a string ends with any consonant and another string:
 Slap a substring on the string.
@@ -2158,9 +2282,81 @@ If the substring's last's target is not any vowel, say no.
 If the string does not end with the other string, say no.
 Say yes.
 
+To decide if a string ends with any consonant:
+If the string is blank, say no.
+If the string's last's target is not any consonant, say no.
+Say yes.
+
+To decide if a string ends with any vowel:
+If the string is blank, say no.
+If the string's last's target is not any vowel, say no.
+Say yes.
+
+To decide if a string is any plus:
+If the string is "más", say yes.
+If the string is "plus", say yes.
+Say no.
+
+To decide if a string is any put:
+If the string is "put", say yes.
+If the string is "poner", say yes.
+Say no.
+
+To decide if a string is any minus:
+If the string is "menos", say yes.
+If the string is "minus", say yes.
+Say no.
+
+To decide if a string is any times:
+If the string is "veces", say yes.
+If the string is "times", say yes.
+Say no.
+
+To decide if a string is any divided:
+If the string is "dividido", say yes.
+If the string is "divided", say yes.
+Say no.
+
+To decide if a string is any by:
+If the string is "por", say yes.
+If the string is "by", say yes.
+Say no.
+
+To decide if a string is any then:
+If the string is "luego", say yes.
+If the string is "then", say yes.
+Say no.
+
+To decide if a string is any has:
+If the string is "tiene", say yes.
+If the string is "tener", say yes.
+If the string is "has", say yes.
+If the string is "have", say yes.
+Say no.
+
+To decide if a string is any is:
+If the string is "es", say yes.
+If the string is "está", say yes.
+If the string is "se", say yes.
+If the string is "son", say yes.
+If the string is "is", say yes.
+If the string is "are", say yes.
+Say no.
+
+To decide if a string is any equal:
+If the string is "igual", say yes.
+If the string is "equal", say yes.
+Say no.
+
+To decide if a string is any with:
+If the string is "con", say yes.
+If the string is "with", say yes.
+Say no.
+
 To decide if a string is any article:
 If the string is any indefinite article, say yes.
 If the string is "the", say yes.
+\If the string is any definite article, say yes.
 \If the string is "o", say yes.
 \If the string is "os", say yes.
 \If the string is "as", say yes.
@@ -2184,11 +2380,47 @@ If the string is "or", say yes.
 \If the string is "ou", say yes.
 Say no.
 
-To decide if a string is any flag literal:
+To decide if a string is any to:
+If the string is "a", say yes. \ this is questionable
+If the string is "to", say yes.
+Say no.
+
+To decide if a string is any and:
+If the string is "y", say yes.
+If the string is "and", say yes.
+Say no.
+
+To decide if a string is any reverse-possessive function into:
+If the string is "into", say yes.
+If the string is "en", say yes.
+Say no.
+
+\To decide if a string is any flag literal:
+\If the string is "si", say yes.
+\If the string is "yes", say yes.
+\If the string is "no", say yes.
+\Say no.
+
+To decide if a string is any decider literal:
+If the string is "sí", say yes.
 If the string is "yes", say yes.
 If the string is "sim", say yes.
 If the string is "no", say yes.
-If the string is "não", say yes.
+If the string is "nay", say yes.
+If the string is "nope", say yes.
+Say no.
+
+To decide if a string is any positive decider literal:
+If the string is "sí", say yes.
+If the string is "yes", say yes.
+If the string is "yep", say yes.
+If the string is "yea", say yes.
+Say no.
+
+To decide if a string is any negative decider literal:
+If the string is "no", say yes.
+If the string is "nay", say yes.
+If the string is "nope", say yes.
 Say no.
 
 To decide if a string is any hex literal:
@@ -2940,6 +3172,28 @@ If the byte pointer is greater than the source file's buffer's last, repeat.
 To find a type and a nickname given a name:
 Void the type.
 Clear the nickname.
+Find the type and the nickname given the name (forward). \SAL daqui
+If the type is not nil, exit.
+Find the type and the nickname given the name (backward).
+
+To find a type and a nickname given a name (backward):
+Void the type.
+Clear the nickname.
+Slap a substring on the name.
+Loop.
+If the substring is blank, exit.
+Find the type given the substring and the type index.
+If the type is not nil, break.
+Skip to the previous word in the substring.
+Repeat.
+Put the name's last into another substring's last.
+Put the substring's last plus 2 into the other substring's first.
+If the other substring is not blank, put the other substring into the nickname.
+If the other substring is blank, put the substring into the nickname.
+
+To find a type and a nickname given a name (forward):  \ original - no change
+Void the type.
+Clear the nickname.
 Slap a substring on the name.
 Loop.
 If the substring is blank, exit.
@@ -2950,7 +3204,7 @@ Repeat.
 Put the name's first into another substring's first.
 Put the substring's first minus 2 into the other substring's last.
 If the other substring is not blank, put the other substring into the nickname.
-If the other substring is blank, put the substring into the nickname.
+If the other substring is blank, put the substring into the nickname. \até aqui
 
 To find a variable given a name:
 If the current routine is nil, void the variable; exit.
@@ -2978,6 +3232,7 @@ Another variable (reference) [load address],
 A routine (reference) [call internal, routine address],
 An entry (reference) [call external],
 A number [increment],
+a flag [load eax], \SAL
 An address,
 A hex string called code.
 
@@ -3116,11 +3371,11 @@ Clear the compiler's abort message.
 Clear the compiler's abort path.
 Put 0 into the compiler's abort row#.
 Void the current routine.
-Create the type index with 4027 [buckets].
-Create the global index with 4027 [buckets].
-Create the literal index with 4027 [buckets].
-Create the routine index with 7919 [buckets].
-Create the utility index with 4027 [buckets].
+Create the type index with 13001 [buckets]. \ was 4027
+Create the global index with 13001 [buckets]. \ was 4027
+Create the literal index with 13001 [buckets]. \ was 4027
+Create the routine index with 13001 [buckets]. \ was 7919
+Create the utility index with 13001 [buckets]. \ was 4027
 
 To initialize a dos header:
 Put 23117 [$5A4D] into the dos header's signature.
@@ -3573,6 +3828,8 @@ To move a rider (compiler rules):
 If the compiler's abort flag is set, clear the rider's token; exit.
 Move the rider returning an error string (code rules).
 If the error string is not blank, abort with the error string and the rider's token's first; exit.
+\If the rider's token is "del", unbump the rider; exit. \ Spanish contraction "del"; fudged to "de l", short for "de el"
+\If the rider's token is "al", unbump the rider; exit. \ Spanish contraction "al"; fudged to "a l", short for "a el"
 If the rider's token is blank, exit.
 If the rider's token's first's target is noise, repeat.
 If the rider's token's first's target is the backslash byte, repeat.
@@ -3714,7 +3971,42 @@ A number called characteristics.
 
 A phrase is a string.
 
-To pluralize a string: \ nouns only
+\To pluralize a string: \ nouns only
+\To decide if a string looks like English:
+\Load the lexicon.
+\If the lexicon is nil, show error "I can't find any lecksicon."; say no.
+\If the string is blank, say no.
+\Slap a substring on the string.
+\Put the substring's last into the substring's first.
+\Loop.
+\If the substring's first is the string's first, break.
+\If the substring's first's target is the space byte, add 1 to the substring's first; break.
+\Subtract 1 from the substring's first.
+\Repeat.
+\If the substring is in the lexicon's index, say yes.
+\Say no.
+
+To pluralize a string (spanish rules): \ nouns only
+Slap a rider on the string.
+Loop.
+Move the rider (spell checking rules).
+If the rider's token is blank, break.
+If a plural string is not blank, append " " to the plural string.
+Append the rider's token to the plural string.
+If the rider's token is "de", set a flag; repeat.
+If the flag is not set, pluralize the plural string (spanish rules - each word).
+Repeat.
+Put the plural string into the string.
+
+To pluralize a string (spanish rules - each word): \ nouns only
+If the string ends with "ión", remove the last two bytes from the string; append "ones" to the string; exit.
+\If the string ends with "ión", remove the last two bytes from the string; append "ons" to the string; exit.
+If the string ends with "z", remove the last byte from the string; append "ces" to the string; exit.
+If the string ends with any vowel, append "s" to the string; exit.
+If the string ends with any consonant, append "es" to the string; exit.
+Append "s" to the string. \ for words that end in special characters, both languages, like bucket#
+
+To pluralize a string (english rules):
 If the string is "alumnus", put "alumni" into the string; exit.
 If the string is "auto", put "autos" into the string; exit.
 If the string is "cello", put "cellos" into the string; exit.
@@ -3869,7 +4161,9 @@ Put the other monikettes' first into a monikette.
 If the monikette is nil, exit.
 Remove the monikette from the other monikettes.
 If the monikette's string is "not", reverse the flag; destroy the monikette; repeat.
-If the monikette's string is "não", reverse the flag; destroy the monikette; repeat.
+\If the monikette's string is "ni", reverse the flag; destroy the monikette; repeat.
+\If the monikette's string is "no", reverse the flag; destroy the monikette; repeat.
+\If the monikette's string is "nada", reverse the flag; destroy the monikette; repeat.
 Append the monikette to the monikettes.
 If the monikette's string is "can't", reverse the flag; put "can" into the monikette's string; repeat.
 \If the monikette's string is "não pode", reverse the flag; put "pode" into the monikette's string; repeat.
@@ -3935,21 +4229,37 @@ If the type's base type is not nil, exit.
 If the type's name is "thing", exit.
 If the type cannot be reduced to "thing" using the base name, exit.
 Find a base type given the type's base name and the type index.
-\  add thing record
+\  add thing record - the number of secret fields is hard coded in two places: search for "than 4" \ was 6
 Put the type's name then " record" into a name.
 Put the type's name then " records" into a plural name.
 Put the base type's name then " record" into a base name.
 Add a record type to the types given the name and the plural name and the base name.
-Add a field to the record type's fields given "next " then the type's name and "next" and the type's name and yes.
-Add another field to the record type's fields given "previous " then the type's name and "previous" and the type's name and yes.
+Add a field to the record type's fields given "next " then the type's name and "next" and the type's name and the on flag.
+Add a spanish field to the record type's fields given "siguiente " then the type's name and "siguiente" and the type's name and the on flag.
+Put "next " then the type's name into the spanish field's redefinition target name.
+\Add a spanish reverse field to the record type's fields given the type's name then " siguiente" and "siguiente" and the type's name and the on flag.
+\Put "next " then the type's name into the spanish reverse field's redefinition target name.
+Add another field to the record type's fields given "previous " then the type's name and "previous" and the type's name and the on flag.
+\Add another spanish field to the record type's fields given "anterior " then the type's name and "anterior" and the type's name and the on flag.
+\Put "previous " then the type's name into the other spanish field's redefinition target name.
+Add another spanish reverse field to the record type's fields given the type's name then " anterior" and "anterior" and the type's name and the on flag.
+Put "previous " then the type's name into the other spanish reverse field's redefinition target name.
 If the type's fields are not empty, append the type's fields to the record type's fields.
 Index the record type.
 \ fix up original type to look like a pointer
 Put the record type's name into the type's target name.
 \ add chain type
 Add a chain type to the types given the type's plural name and "" and the base type's plural name.
-Add a third field to the chain type's fields given "first " then the type's name and "first" and the type's name and yes.
-Add a fourth field to the chain type's fields given "last " then the type's name and "last" and the type's name and yes.
+Add a third field to the chain type's fields given "first " then the type's name and "first" and the type's name and the on flag.
+Add a third spanish field to the chain type's fields given "primero " then the type's name and "primero" and the type's name and the on flag.
+Put "first " then the type's name into the third spanish field's redefinition target name.
+Add a third feminine spanish field to the chain type's fields given "primera " then the type's name and "primera" and the type's name and the on flag.
+Put "first " then the type's name into the third feminine spanish field's redefinition target name.
+Add a fourth field to the chain type's fields given "last " then the type's name and "last" and the type's name and the on flag.
+Add a fourth spanish field to the chain type's fields given "último " then the type's name and "último" and the type's name and the on flag.
+Put "last " then the type's name into the fourth spanish field's redefinition target name.
+Add a fourth spanish feminine field to the chain type's fields given "última " then the type's name and "última" and the type's name and the on flag.
+Put "last " then the type's name into the fourth spanish feminine field's redefinition target name.
 Index the chain type.
 
 To resolve a type (index plural):
@@ -3983,7 +4293,7 @@ If the field's type cannot be reduced to "pointer", abort with "Não entendi o pa
 Repeat.
 Eliminate duplicate nicknames from the type's fields.
 If the type cannot be reduced to "thing record", exit.
-If the type's fields' count is greater than 2, exit.
+If the type's fields' count is greater than 4, exit. \ already copied? was 2 for next and prev, now 6 to included Spanish redefiniions
 Copy the type's base type's fields into the type's fields (data fields only).
 
 To resolve a type (optional info - scale):
@@ -4093,7 +4403,9 @@ The save eax tag is a tag equal to 20.
 To scan any optional info for a type given a rider:
 If the compiler's abort flag is set, exit.
 If the rider's token is "to", scan any optional info for the type given the rider (pointer); exit.
-If the rider's token is "with", scan any optional info for the type given the rider (record); exit.
+\If the rider's token is "with", scan any optional info for the type given the rider (record); exit.
+
+If the rider's token is any with, scan any optional info for the type given the rider (record); exit.
 
 To scan any optional info for a type given a rider (pointer):
 Move the rider (compiler rules).
@@ -4116,9 +4428,11 @@ If the compiler's abort flag is set, exit.
 Scan the field given the rider (type part).
 Loop.
 If the compiler's abort flag is set, exit.
-If the rider's token is "called", scan the field given the rider (called part); repeat.
+\If the rider's token is "called", scan the field given the rider (called part); repeat.
+If the rider's token is any called, scan the field given the rider (called part); repeat.
 If the rider's token is "at", scan the field given the rider (redefine part); repeat.
-If the rider's token is "(reference)", scan the field given the rider (reference part); repeat.
+\If the rider's token is "(reference)", scan the field given the rider (reference part); repeat.
+If the rider's token is any reference, scan the field given the rider (reference part); repeat.
 
 To scan a field given a rider (called part):
 If the compiler's abort flag is set, exit.
@@ -4153,6 +4467,8 @@ To scan a field given a rider (type part - normal):
 If the compiler's abort flag is set, exit.
 If the rider's token is not any indefinite article, abort with "Falta por um artigo idefinifo aqui, mas você colocou isso: '" then the rider's token then "'." and the rider; exit.
 If the rider's token is "another", put "other" into the field's name.
+\If the rider's token is "otra", put "segunda" into the field's name.
+\If the rider's token is "otro", put "segundo" into the field's name.
 Move the rider (compiler rules).
 Scan a name given the rider.
 Extend the field's name with the name.
@@ -4193,6 +4509,9 @@ If the rider's token is "has" or "have", scan the global given the rider (has or
 If the rider's token is not "is" or "are", abort with "Você tem que usar um 'is' ou um 'are' mas você usou um '" then the rider's token then "'." and the rider; exit. 
 \If the rider's token is not any definidor, abort with "Você usou um termo definidor '" then the rider's token then "' no lugar errado." and the rider; exit. 
 \Talvez dê para ampliar isso aqui colocando as exceções problemáticas
+
+If the rider's token is any has, scan the global given the rider (has or have); exit.
+If the rider's token is not any is, abort with "¡Epa! Necesito un 'es' o un 'son' por ahí, pero todo lo que encontré fue '" then the rider's token then "'." and the rider; exit.
 Move the rider (compiler rules).
 If the rider's token is not any indefinite article, scan the global given the rider (literal term); exit.
 Move the rider (compiler rules).
@@ -4248,10 +4567,10 @@ Index the global.
 To scan a name given a rider:
 Clear the name.
 If the compiler's abort flag is set, exit.
-If the rider's token is any name starter, extend the name with the rider's token; move the rider (compiler rules).
+If the rider is on any name starter, extend the name with the rider's token; move the rider (compiler rules). \SAL
 Loop.
 If the compiler's abort flag is set, exit.
-If the rider's token is any name ender, break.
+If the rider is on any name ender, break. \SAL
 Extend the name with the rider's token.
 Move the rider (compiler rules).
 Repeat.
@@ -4328,6 +4647,7 @@ Repeat.
 
 To scan a type given a rider:
 If the compiler's abort flag is set, exit.
+If the rider's token is any english indefinite article, set an english flag. \CAL
 Add the type to the types given the rider's token's first.
 Move the rider (compiler rules).
 Scan the type's name given the rider.
@@ -4404,6 +4724,13 @@ If the substring's first's target is noise, break.
 Add 1 to the substring's first.
 Repeat.
 Skip any leading noise in the substring.
+
+To skip to the previous word in a substring:
+If the substring is blank, exit.
+If the substring's last's target is noise, break.
+Subtract 1 from the substring's last.
+Repeat.
+Skip any trailing noise in the substring.
 
 A source file is a thing with a path and a buffer.
 
@@ -4486,12 +4813,20 @@ To transmogrify a fragment (load address):
 Attach address loading code to the fragment's code given the fragment's variable. \ put address into edx
 Attach $8995 and the fragment's other variable's offset to the fragment's code. \ mov [ebp+the fragment's variable's offset],edx
 
+\To transmogrify a fragment (load eax):
+\Attach address loading code to the fragment's code given the fragment's variable. \ put address into edx
+\If the fragment's variable is nil, abort with "Internal error - transmogrify a fragment (load eax)"; exit.
+\If the fragment's variable's type is nil, abort with "Internal error 2 - transmogrify a fragment (load eax)"; exit.
+\If the fragment's variable's type's length is not 4, abort with "Internal error 3 - transmogrify a fragment (load eax)"; exit.
+\Attach $8B02 to the fragment's code. \ mov eax,[edx]
+
 To transmogrify a fragment (load eax):
-Attach address loading code to the fragment's code given the fragment's variable. \ put address into edx
-If the fragment's variable is nil, abort with "Erro interno - transmogrify a fragment (load eax)"; exit.
-If the fragment's variable's type is nil, abort with "Erro interno 2 - transmogrify a fragment (load eax)"; exit.
-If the fragment's variable's type's length is not 4, abort with "Erro interno 3 - transmogrify a fragment (load eax)"; exit.
-Attach $8B02 to the fragment's code. \ mov eax,[edx]
+Attach $B8 and the fragment's flag to the fragment's code. \ mov eax,flag \SAL
+\Attach address loading code to the fragment's code given the fragment's variable. \ put address into edx \CAL
+\If the fragment's variable is nil, abort with "Erro interno - transmogrify a fragment (load eax)"; exit. \CAL
+\If the fragment's variable's type is nil, abort with "Erro interno 2 - transmogrify a fragment (load eax)"; exit. \CAL
+\If the fragment's variable's type's length is not 4, abort with "Erro interno 3 - transmogrify a fragment (load eax)"; exit. \CAL
+\Attach $8B02 to the fragment's code. \ mov eax,[edx] CAL
 
 To transmogrify a fragment (not):
 Attach $83F001 to the fragment's code. \ xor eax,1
@@ -4600,3 +4935,49 @@ A literal (reference) [globals only - constant with which to initalize the globa
 A hex string called data [literals only].
 
 The writing timer is a timer.
+To skip any trailing noise in a substring: \ daqui pra baixo é SAL
+If the substring is blank, exit.
+If the substring's last's target is not noise, exit.
+Subtract 1 from the substring's last.
+Repeat.
+
+\ dahn - reverse functions
+\ to put the xxx uv a/the yyy into zzz
+\ internally we turn this into "to put a/the yyy's xxx into zzz"
+To compile the header of a routine given a rider (reverse-possessive function):
+If the compiler's abort flag is set, exit.
+Set the routine's function flag.
+Add a monikette to the routine's monikettes given "put".
+Move the rider (compiler rules). \ skip "put" or "poner"
+Move the rider (compiler rules). \ skip "the" or Spanish definite article
+Scan a name given the rider. \ field name
+Move the rider (compiler rules). \ skip "uv" or "de"
+If the rider's token is any indefinite article, set a flag.
+If the flag is set, compile the routine's monikettes and the routine's parameters given the rider (indefinite article).
+If the flag is not set, compile the routine's monikettes and the routine's parameters given the rider (definite article).
+Add another monikette to the routine's monikettes given "'s " then the name.
+If the rider's token is not any reverse-possessive function into, abort with "Esperaba la palabra 'en', pero encontré '" then the rider's token then "'." and the rider; exit.
+Add a third monikette to the routine's monikettes given "into".
+Convert the routine's monikettes to a moniker.
+If the moniker is in the routine index, abort with "Ya sé cómo '" then the moniker then "'." and the routine's locus; exit.
+Index the routine given the routine's monikettes and the routine index.
+Move the rider (compiler rules).
+If the rider's token is not any indefinite article, abort with "Esperaba un artículo indefinido, pero encontré '" then the rider's token then "'." and the rider; exit.
+Compile the routine's monikettes and the routine's parameters given the rider (indefinite article).
+If the rider's token is not blank, abort with "Hay cosas demás en el final de esta función." and the rider; exit.
+Convert the routine's monikettes to the routine's moniker.
+Index the routine given the routine's monikettes and the routine index. \ for employs
+
+\ dahn - reverse functions
+\ to put the xxx uv a/the yyy into zzz
+To decide if a rider is the start of any reverse-possessive function:
+If the compiler's abort flag is set, say no.
+If the rider's token is not any put, say no.
+Privatize the rider.
+Move the rider (compiler rules).
+If the rider's token is not any definite article, say no.
+Move the rider (compiler rules).
+Scan a name given the rider.
+If the rider is not on any reverse-possessive, say no.
+Say yes.  
+
