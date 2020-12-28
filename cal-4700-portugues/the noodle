@@ -1,4 +1,4 @@
-\ copyright ¬© 2006, 2017 the osmosian order (4700)
+\ copyright © 2006, 2017 the osmosian order (4700)
 
 \ here are the text rules:
 \   in a non-wrapped text, the rows end with a return byte.
@@ -7,6 +7,10 @@
 \   when a string is converted to text, linefeed bytes are removed.
 \   there is always at least one row.
 \   there is always a return byte at the end of the last row.
+
+The on flag is a flag equal to 1.
+
+The off flag is a flag equal to 0.
 
 The a-key is a key equal to 65.
 
@@ -61,8 +65,8 @@ Put the name into the choice's name.
 Put the choice at the end of the choices.
 
 To add a number and another number to a pair:
-Add the number to the pair's x.
-Add the other number to the pair's y.
+Add the number to the pair's x-number.
+Add the other number to the pair's y-number.
 
 To add a number to another number and a third number to a fourth number:
 Add the number to the other number.
@@ -80,8 +84,8 @@ To add a number to a fraction:
 Add the number / 1 to the fraction.
 
 To add a number to a pair:
-Add the number to the pair's x.
-Add the number to the pair's y.
+Add the number to the pair's x-number.
+Add the number to the pair's y-number.
 
 To add a number to a pointer;
 To add a number to another number:
@@ -91,8 +95,8 @@ Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ the other number
 Intel $0103. \ add [ebx],eax
 
 To add a pair to another pair:
-Add the pair's x to the other pair's x.
-Add the pair's y to the other pair's y.
+Add the pair's x-number to the other pair's x-number.
+Add the pair's y-number to the other pair's y-number.
 
 To add a pdf object given a kind:
 Create the pdf object given the kind.
@@ -108,7 +112,8 @@ Put the terminal's quoras' first into a doomed quora.
 Remove the doomed quora from the terminal's quoras.
 Destroy the doomed quora.
 
-To add a spot to a figure: append the spot to the figure.
+To add a spot to a figure:
+append the spot to the figure.
 
 To add a string to some string things:
 Create a string thing given the string.
@@ -652,9 +657,7 @@ The blue pen is a pen.
 A box has
 a left coord, a top coord, a right coord, a bottom coord,
 a left-top spot at the left, and a right-bottom spot at the right,
-a top-left spot at the left, and a bottom-right spot at the right,
-una izquierda at the left coord, una superior at the top coord, una derecha at the right coord, una inferior at the bottom coord,
-un punto superior-izquierda at the left, un punto inferior-derecha at the right.
+a top-left spot at the left, and a bottom-right spot at the right.
 
 A brightness is a lightness.
 
@@ -1025,44 +1028,44 @@ Intel $E906000000. \ jmp end
 \SAY YES:
 Intel $C7C001000000. \ mov eax,1
 
-To compare a string to another string given a length and another length and a translation table (equal only):
-Intel $8BB508000000. \ mov esi,[ebp+8] \ the string
-Intel $8B36. \ mov esi,[esi] \ the string's first
-Intel $8BBD0C000000. \ mov edi,[ebp+12] \ the other string
-Intel $8B3F. \ mov edi,[edi] \ the other string's first
-Intel $8B8510000000. \ mov eax,[ebp+16] \ the string's length
-Intel $8B00. \ mov eax,[eax]
-Intel $8B9514000000. \ mov edx,[ebp+20] \ the other string's length
-Intel $8B12. \ mov edx,[edx]
-Intel $3BD0. \ cmp eax,edx \ if the length's differ, say no
-Intel $0F852B000000. \ jne say no \ ************************************ was 2C
-Intel $8BC8. \ mov ecx,eax \ put length into ecx  
-Intel $8B9D18000000. \ mov ebx,[ebp+24] \ the translation table
-Intel $8B1B. \ mov ebx,[ebx] the translation table's first
-\ loop:
-Intel $85C9. \ test ecx,ecx
-Intel $0F8424000000. \ jz say yes \ ************************************ was 25
- \ fetch and translate the  current byte in the other string
-Intel $8A07. \ mov al,[edi]
-Intel $D7. \ xlat al,[ebx]
-Intel $C1E008. \ shl eax,8
-\ fetch and translate the current byte in the string
-Intel $8A06. \ mov al,[esi]
-Intel $D7. \ xlat al,[ebx]
- \ compare the two translated  bytes
-Intel $38E0. \ cmp al,ah
-Intel $0F8508000000. \ jne say no \ ************************************
-Intel $46. \ inc esi
-Intel $47. \ inc edi
-Intel $49. \ dec ecx
-Intel $E9DFFFFFFF. \ jmp loop \ ************************************ was DE
-\SAY NO:
-Intel $C7C000000000. \ mov eax,0
-Intel $E906000000. \ jmp end
-\SAY YES:
-Intel $C7C001000000. \ mov eax,1
-
+\To compare a string to another string given a length and another length and a translation table (equal only):
+\Intel $8BB508000000. \ mov esi,[ebp+8] \ the string
+\Intel $8B36. \ mov esi,[esi] \ the string's first
+\Intel $8BBD0C000000. \ mov edi,[ebp+12] \ the other string
+\Intel $8B3F. \ mov edi,[edi] \ the other string's first
+\Intel $8B8510000000. \ mov eax,[ebp+16] \ the string's length
+\Intel $8B00. \ mov eax,[eax]
+\Intel $8B9514000000. \ mov edx,[ebp+20] \ the other string's length
+\Intel $8B12. \ mov edx,[edx]
+\Intel $3BD0. \ cmp eax,edx \ if the length's differ, say no
+\Intel $0F852B000000. \ jne say no \ ************************************ was 2C
+\Intel $8BC8. \ mov ecx,eax \ put length into ecx  
+\Intel $8B9D18000000. \ mov ebx,[ebp+24] \ the translation table
+\Intel $8B1B. \ mov ebx,[ebx] the translation table's first
+\\ loop:
+\Intel $85C9. \ test ecx,ecx
+\Intel $0F8424000000. \ jz say yes \ ************************************ was 25
+\ \ fetch and translate the  current byte in the other string
+\Intel $8A07. \ mov al,[edi]
+\Intel $D7. \ xlat al,[ebx]
+\Intel $C1E008. \ shl eax,8
+\\ fetch and translate the current byte in the string
+\Intel $8A06. \ mov al,[esi]
+\Intel $D7. \ xlat al,[ebx]
+\ \ compare the two translated  bytes
+\Intel $38E0. \ cmp al,ah
+\Intel $0F8508000000. \ jne say no \ ************************************
+\Intel $46. \ inc esi
+\Intel $47. \ inc edi
+\Intel $49. \ dec ecx
+\Intel $E9DFFFFFFF. \ jmp loop \ ************************************ was DE
+\\SAY NO:
+\Intel $C7C000000000. \ mov eax,0
+\Intel $E906000000. \ jmp end
+\\SAY YES:
+\Intel $C7C001000000. \ mov eax,1
 \ dahn - spanish strings 2 - which table to use?
+
 To compare a string to another string given a length and another length returning a number:
 Compare the string to the other string given the length and the other length and the lowercase ascii table returning the number.
 \Compare the string to the other string given the length and the other length and the lowercase accent-free ascii table returning the number.
@@ -1240,6 +1243,20 @@ Put the colorref into the rgb's green byte.
 Shift the colorref right 8 bits.
 Put the colorref into the rgb's blue byte.
 
+To convert a filetime to a string:
+Clear the string.
+Call "kernel32.dll" "FileTimeToSystemTime" with the filetime's whereabouts and a systemtime's whereabouts returning a number.
+If the number is 0, exit.
+Put the systemtime's wyear into a date/time's year.
+Put the systemtime's wmonth into the date/time's month.
+Put the systemtime's wdayofweek into the date/time's week day.
+Put the systemtime's wday into the date/time's day.
+Put the systemtime's whour into the date/time's hour.
+Put the systemtime's wminute into the date/time's minute.
+Put the systemtime's wsecond into the date/time's second.
+Put the systemtime's wmilliseconds into the date/time's millisecond.
+Put the date/time's string into the string.
+
 To convert a flag to a hex string:
 Reassign the hex string's first given the flag's magnitude.
 Copy bytes from the flag's whereabouts to the hex string's first for the flag's magnitude.
@@ -1344,8 +1361,8 @@ If the key is the clear key, put the numpad-five key into the key; exit.
 
 To convert an l-param to a spot:
 Split the l-param into a wyrd and another wyrd.
-Put the wyrd into the spot's y.
-Put the other wyrd into the spot's x.
+Put the wyrd into the spot's y-coord.
+Put the other wyrd into the spot's x-coord.
 Multiply the spot by the tpp.
 
 To convert a mixed to a fraction:
@@ -3493,7 +3510,6 @@ If the string's first's target is the byte, say yes.
 Say no.
 
 To decide if a string does end with a byte; \ added by Mike Gonta
-Para decidir si una cadena termina con un byte;
 To decide if a string ends with a byte:
 If the string is blank, say no.
 If the string's last's target is the byte, say yes.
@@ -4909,7 +4925,7 @@ Append "%%EOF" to the pdf.
 
 To end printing a pdf (append header):
 Append "%PDF-1.3" then the crlf string to the pdf.
-Append "%√¢√£√è√ì" then the crlf string to the pdf.
+Append "%‚„œ”" then the crlf string to the pdf.
 Append the crlf string to the pdf.
 
 To end printing a pdf (append the outline entries - create the objects):
@@ -7486,9 +7502,7 @@ Put the screen's pixel height times the tpp into a height.
 Put 0 and 0 and the width and the height into the screen's box.
 Subtract the tpp from the screen's right-bottom.
 \ new below
-
-Put the screen's pixel height into la pantalla's pixel height.
-Put the screen's pixel width into la pantalla's pixel width.
+Put the screen's pixel width into the screen's pixel width.
 
 To initialize the screen canvas:
 Call "user32.dll" "GetDC" with the main window returning the screen canvas.
@@ -8712,7 +8726,7 @@ Repeat.
 To move a polygon left some twips:
 Move the polygon given - the twips and 0.
 
-Para mover un pol√≠gono hacia la izquierda algunos twips y hacia abajo otros twips;
+Para mover un polÌgono hacia la izquierda algunos twips y hacia abajo otros twips;
 To move a polygon left some twips and down some other twips:
 Move the polygon left the twips.
 Move the polygon down the other twips.
@@ -8724,7 +8738,7 @@ Move the polygon up the other twips.
 To move a polygon right some twips:
 Move the polygon given the twips and 0.
 
-Para mover un pol√≠gono hacia la derecha algunos twips y hacia abajo otros twips;
+Para mover un polÌgono hacia la derecha algunos twips y hacia abajo otros twips;
 To move a polygon right some twips and down some other twips:
 Move the polygon right the twips.
 Move the polygon down the other twips.
@@ -9837,7 +9851,6 @@ Put the thing into the things' first.
 \Prepend the thing to the other things.
 \Repeat.
 
-Para anteponer algunas cosas a algunas otras cosas;
 To prepend some things to some other things:
 Put the things' last into a thing.
 If the thing is nil, exit.
@@ -10836,7 +10849,7 @@ A random number is a number.
 
 A ratio is a fraction.
 
-A ratio pair is a fraction pair. \n√£o tinha fraction antes
+A ratio pair is a fraction pair. \n„o tinha fraction antes
 
 To read the bible:
 If the bible is not nil, exit.
@@ -11480,10 +11493,10 @@ Put 1000 minus the color's lightness into the color's lightness.
 \Put 1000 minus the color's saturation into the color's saturation.
 Add 1800 to the color's hue. Normalize the color's hue.
 
-To invert a flag;
+\To invert a flag;
 To reverse a flag:
-If the flag is 1, put 0 into the flag; exit. z era yes e no ao inv√©s de 1 e 0
-Put 1 into the flag.
+If the flag is yes, put no into the flag; exit. \ era yes e no ao invÈs de 1 e 0
+Put yes into the flag.
 
 To reverse a number;
 To invert a number:
@@ -15453,3 +15466,14 @@ The zero key is a key equal to 48.
 The zero line is a line. \ tracer
 
 The zero spot is a spot.
+
+A translation table is a hex string.
+
+The ascii table is a translation table equal to $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798999A9B9C9D9E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6D7D8D9DADBDCDDDEDFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF.
+
+The lowercase accent-free ascii table is a translation table equal to $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F406162636465666768696A6B6C6D6E6F707172737475767778797A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788899A8B9C8D9E8F909192939495969798999A9B9C9D9E79A0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBF616161616161E6636565656569696969F06E6F6F6F6F6FD7F87575757579FEDF616161616161E6636565656569696969F06E6F6F6F6F6FF7F87575757579FE79.
+
+The lowercase ascii table is a translation table equal to $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F406162636465666768696A6B6C6D6E6F707172737475767778797A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788899A8B9C8D9E8F909192939495969798999A9B9C9D9EFFA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6D7F8F9FAFBFCFDFEDFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF.
+
+The uppercase ascii table is a translation table equal to $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F604142434445464748494A4B4C4D4E4F505152535455565758595A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798998A9B8C9D8E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6D7D8D9DADBDCDDDEDFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6F7D8D9DADBDCDDDE9F.
+

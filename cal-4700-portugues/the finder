@@ -29,8 +29,8 @@ Limit the origin in the node.
 
 To adjust a node:
 If the node is nil, exit.
-Put the finder's left plus the finder's margin into the node's origin's x.
-Put the finder's top into the node's origin's y.
+Put the finder's left plus the finder's margin into the node's origin's x-coord.
+Put the finder's top into the node's origin's y-coord.
 Adjust every nodette in the node.
 Void the node's caret.
 Put the node's caret into the node's anchor.
@@ -48,8 +48,8 @@ To autoscroll a node given a spot and a flag:
 If the node is nil, exit.
 If the spot is in the finder's box, clear the flag; exit.
 Set the flag.
-If the spot's y is less than the finder's top, put the node height into a difference's y.
-If the spot's y is greater than the finder's bottom, put - the node height into the difference's y.
+If the spot's y-coord is less than the finder's top, put the node height into a difference's y-number.
+If the spot's y-coord is greater than the finder's bottom, put - the node height into the difference's y-number.
 Scroll the node given the difference.
 Wait for 50 milliseconds.
 
@@ -63,7 +63,7 @@ Get a nodette from the node's nodettes.
 If the nodette is nil, exit.
 If the nodette is not selected, repeat.
 Add 1 to the current count.
-Show status the current count then " of " then the total count then "...".
+Show status the current count then " de " then the total count then "...".
 Get another size given the nodette's path in the file system.
 Add the other size to the size.
 Repeat.
@@ -92,7 +92,7 @@ Get a nodette from the node's nodettes.
 If the nodette is nil, exit.
 If the nodette is not selected, repeat.
 Add 1 to the current count.
-Show status the current count then " of " then the total count then "...".
+Show status the current count then " de " then the total count then "...".
 Copy the nodette in the file system.
 Add 1 to the count.
 Repeat.
@@ -135,7 +135,7 @@ Put the next nodette into a current nodette.
 Put the current nodette's next into the next nodette.
 If the current nodette is not selected, repeat.
 Add 1 to the current count.
-Show status the current count then " of " then the total count then "...".
+Show status the current count then " de " then the total count then "...".
 Cut the current nodette in the node and in the file system.
 Add 1 to the count.
 Repeat.
@@ -401,7 +401,7 @@ Put the node's selected nodette count into a count.
 If the count is 0, format the node's nodettes' count and "item" or "items" into the status' string.
 If the count is not 0, format the count and "item selected" or "items selected" into the status' string.
 If the node is root-level, exit.
-If the node's path is read-only, append " (r)" to the status' string.
+If the node's path is read-only, append " (s)" to the status' string.
 
 To handle copy given a node:
 If the node is root-level, cluck; exit.
@@ -443,7 +443,7 @@ Show the desktop with "Duplicating...".
 Duplicate the nodette in the node and in the file system given the path returning a new nodette.
 If the i/o error is not blank, show error the i/o error; exit.
 Focus on the new nodette in the node.
-Show the desktop with "Duplicated".
+Show the desktop with "Duplicado".
 Flush the event queue.
 
 To handle an event given a node (key down - backspace key):
@@ -455,7 +455,7 @@ If the node is root-level, cluck; exit.
 If the node's path is read-only, show error "I'm sorry, but this directory is read only."; exit.
 If nothing is selected in the node, show error "I'm not sure what you want me to delete."; exit.
 If the user is not sure, exit.
-Show status "Deleting...".
+Show status "Eliminando...".
 Put the node's last selected nodette's next into a nodette.
 Remove any selected nodettes in the node and in the file system returning a count.
 If the nodette is nil, put the node's last nodette into the nodette.
@@ -607,7 +607,7 @@ If  the i/o error is not blank, show error the i/o error; exit.
 Convert the buffer to a nibble string.
 Prepend "$" to the nibble string.
 Put the nibble string on the windows clipboard.
-Show status "Copied".  
+Show status "Copiado".  
 
 To handle get size given a node:
 If the node is root-level, cluck; exit.
@@ -743,9 +743,9 @@ Put the box into the finder's box.
 To limit the origin in a node:
 If the node is nil, exit.
 If the node is empty, exit.
-Limit the node's origin's x to -32767 and the finder's left plus the finder's margin.
+Limit the node's origin's x-coord to -32767 and the finder's left plus the finder's margin.
 Put the finder's top minus the node's last nodette's top into a number.
-Limit the node's origin's y to the number and the finder's top.
+Limit the node's origin's y-coord to the number and the finder's top.
 
 The node height is 360.
 
@@ -876,7 +876,7 @@ Get an item from the finder's clipboard.
 If the item is not found, exit.
 Add 1 to the current count.
 If the user does not want to overwrite the item in the node, repeat.
-Show status the current count then " of " then the total count then "...".
+Show status the current count then " de " then the total count then "...".
 Paste the item into the node and into the file system before the first selected nodette.
 If the i/o error is not blank, repeat.
 Add 1 to the count.
@@ -964,7 +964,7 @@ Put the next nodette into a current nodette.
 Put the current nodette's next into the next nodette.
 If the current nodette is not selected, repeat.
 Add 1 to the current count.
-Show status the current count then " of " then the total count then "...".
+Show status the current count then " de " then the total count then "...".
 Remove the current nodette in the node and in the file system.
 If the i/o error is not blank, repeat.
 Add 1 to the count.
@@ -1019,8 +1019,8 @@ If the i/o error is blank, clear the node's source's text's modified flag.
 
 To scroll a node down one page:
 If the node is nil, exit.
-Put the finder's y-extent minus the node height into a difference's y.
-Negate the difference's y.
+Put the finder's y-extent minus the node height into a difference's y-number.
+Negate the difference's y-number.
 Scroll the node given the difference.
 
 To scroll a node given a difference:
@@ -1043,7 +1043,7 @@ Repeat.
 
 To scroll a node up one page:
 If the node is nil, exit.
-Put the finder's y-extent minus the node height into a difference's y.
+Put the finder's y-extent minus the node height into a difference's y-number.
 Scroll the node given the difference.
 
 To scroll to a nodette given a node:
@@ -1052,8 +1052,8 @@ If the nodette is nil, exit.
 If the nodette is visible in the node, exit.
 Put the nodette's box into a box.
 Globalize the box given the node's origin.
-If the box's bottom is less than or equal to the finder's top, put the finder's top minus the box's top into a difference's y.
-If the box's top is greater than or equal to the finder's bottom, put the finder's bottom minus the box's top minus the edge height into the difference's y.
+If the box's bottom is less than or equal to the finder's top, put the finder's top minus the box's top into a difference's y-number.
+If the box's top is greater than or equal to the finder's bottom, put the finder's bottom minus the box's top minus the edge height into the difference's y-number.
 Scroll the node given the difference.
 
 To select a nodette:
