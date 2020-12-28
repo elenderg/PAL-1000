@@ -371,7 +371,7 @@ tags restantes para adicionar:
 |device-control-three byte|–|–|–|–|–|
 |device-control-two byte|–|–|–|–|–|
 |diaeresis byte|–|–|–|–|–|
-|directory|–|–|–|–|–|
+|directory|endereço da pasta|–|–|–|–|
 |distance|–|–|–|–|–|
 |division-symbol byte|–|–|–|–|–|
 |d-key|–|–|–|–|–|
@@ -485,7 +485,7 @@ tags restantes para adicionar:
 |import header|–|–|–|–|–|
 |increment tag|–|–|–|–|–|
 |~~indent~~|–|–|–|–|–|
-|input|–|–|–|–|–|
+|input|fluxo de entrada|–|–|–|–|
 |insert key|–|–|–|–|–|
 |intel tag|–|–|–|–|–|
 |intermediate|–|–|–|–|–|
@@ -497,7 +497,7 @@ tags restantes para adicionar:
 |------------|------------|------------|------------|------------|------------|
 |j-key|–|–|–|–|–|
 |jump false tag|–|–|–|–|–|
-|key|–|–|–|–|–|
+|key|tecla|–|–|–|–|
 |k-key|–|–|–|–|–|
 
 ### #L
@@ -516,9 +516,9 @@ tags restantes para adicionar:
 |left-paren byte|–|–|–|–|–|
 |left-single-quote byte|–|–|–|–|–|
 |left-window key|–|–|–|–|–|
-|length|–|–|–|–|–|
+|length|comprimento|tamanho|–|–|–|
 |less-than-sign byte|–|–|–|–|–|
-|letter|–|–|–|–|–|
+|letter|letra|–|–|–|–|
 |letter height|–|–|–|–|–|
 |light blue color|–|–|–|–|–|
 |light blue pen|–|–|–|–|–|
@@ -674,7 +674,7 @@ tags restantes para adicionar:
 |l-key|–|–|–|–|–|
 |load address tag|–|–|–|–|–|
 |load eax tag|–|–|–|–|–|
-|local|–|–|–|–|–|
+|local|de abrangência restrita|regional|–|–|–|
 |loop tag|–|–|–|–|–|
 |lower-double-quote byte|–|–|–|–|–|
 |lower-single-quote byte|–|–|–|–|–|
@@ -766,7 +766,6 @@ tags restantes para adicionar:
 |page-down key|–|–|–|–|–|
 |page-up key|–|–|–|–|–|
 |paragraph byte|–|–|–|–|–|
-|paren,|–|–|–|–|–|
 |partial moniker|–|–|–|–|–|
 |pastel color|–|–|–|–|–|
 |path|endereço|endereço com extensão|–|–|–|
@@ -786,7 +785,7 @@ tags restantes para adicionar:
 |plus-sign byte|–|–|–|–|–|
 |~~point~~|–|–|–|–|–|
 |~~pointer~~|–|–|–|–|–|
-|polygon|–|–|–|–|–|
+|polygon|polígono|–|–|–|–|
 |pound-sign byte|–|–|–|–|–|
 |ppi|pontos por polegada|pontos em uma polegada|–|–|–|
 |precise degree|–|–|–|–|–|
@@ -816,6 +815,7 @@ tags restantes para adicionar:
 |radius|raio|–|–|–|–|
 |~~rainbow color~~|–|–|–|–|–|
 |random number|–|–|–|–|–|
+|ratio|proporção|||||
 |really dark color|–|–|–|–|–|
 |really light color|–|–|–|–|–|
 |really really dark color|–|–|–|–|–|
