@@ -97,7 +97,7 @@
 |wyrd <sup>[D]</sup>|ordin|pavra|plava|–|–|
 |wyrd <sup>[E]</sup>|–|–|–|–|–|
 
-tags restantes para adicionar: 
+tags restantes para adicionar:  
 
 
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
