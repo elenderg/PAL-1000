@@ -1,23 +1,23 @@
-|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Conflita com outro termo?|
 |------------|------------|------------|------------|------------|------------|
 |add <sup>[D]</sup>|unir|somar|juntar|adicionar|–|
 |add <sup>[E]</sup>|adicionar|–|–|–|–|
-|anywhere <sup>[D]</sup>|algures|qualquer|–|–|em qualquer lugar|
-|anywhere <sup>[E]</sup>|–|–|–|–|–|
+|anywhere <sup>[D]</sup>|algures|qualquer|–|em qualquer lugar||
+|anywhere <sup>[E]</sup>| qualquer lugar     | algum lugar                                 |quaisquer lugares–|–|"lugar" pode conflitar com spot / local e similares|
 |append <sup>[D]</sup>|atar|apor|ligar|associar|–|
-|append <sup>[E]</sup>|–|–|–|–|–|
+|append <sup>[E]</sup>|Prepor|Por _x_ no início de...|–|–|–|
 |box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
-|box <sup>[E]</sup>|–|–|–|–|–|
+|box <sup>[E]</sup>|caixa|–|–|–|–|
 |break <sup>[D]</sup>|parar|pare|interrompa|interromper|–|
-|break <sup>[E]</sup>|–|–|–|–|–|
+|break <sup>[E]</sup>|Interromper|–|–|–|–|
 |bump <sup>[D]</sup>|acrescer|aumentar|incrementar|acrescentar|–|
 |bump <sup>[E]</sup>|–|–|–|–|–|
 |center <sup>[D]</sup>|centrar|centralizar|–|–|–|
-|center <sup>[E]</sup>|–|–|–|–|–|
+|center <sup>[E]</sup>|Centralizar|–|–|–|–|
 |change <sup>[D]</sup>|mudar|trocar|alterar|modificar|–|
-|change <sup>[E]</sup>|–|–|–|–|–|
+|change <sup>[E]</sup>|Mudar|Alterar|Modificar|Trocar|–|
 |clear <sup>[D]</sup>|limpar|apagar|excluir|clarear||
-|clear <sup>[E]</sup>|–|–|–|–|–|
+|clear <sup>[E]</sup>|Limpar|Trocar a cor do sinal (semáforo) para verde|–|–|–|
 |clipboard <sup>[D]</sup>|prancheta|–|–|área de transferência|–|
 |clipboard <sup>[E]</sup>|–|–|–|–|–|
 |console <sup>[D]</sup>|console|mostrador|–|–||
@@ -25,45 +25,45 @@
 |dab <sup>[D]</sup>|matizar|pincelar|colorir|–|–|
 |dab <sup>[E]</sup>|–|–|–|–|–|
 |deque <sup>[D]</sup>|decue|decifre|decifrar|–|–|
-|deque <sup>[E]</sup>|–|–|–|–|–|
+|deque <sup>[E]</sup>|desenfileirar|remover da fila|tirar da fila|–|–|
 |dot <sup>[D]</sup>|ponto|marca|–|–|–|
-|dot <sup>[E]</sup>|–|–|–|–|–|
+|dot <sup>[E]</sup>|ponto|pontinho|–|–|ponto (point)|
 |flag <sup>[D]</sup>|sinal|sinalizador|bandeira|–|–|
 |flag <sup>[E]</sup>|–|–|–|–|–|
-|given <sup>[D]</sup>|dado|usando|segundo|conforme|consoante|
-|given <sup>[E]</sup>|–|–|–|–|–|
-|handle <sup>[D]</sup>|tratar|agente|manejar|manipular|considerar|
-|handle <sup>[E]</sup>|–|–|–|–|–|
+|given <sup>[D]</sup>|dado|usando|segundo|conforme||
+|given <sup>[E]</sup>|consoante|–|–|–|–|
+|handle <sup>[D]</sup>|tratar|agente|manejar|manipular|                                                     |
+|handle <sup>[E]</sup>|etiquetar|numerar|considerar|–|–|
 |has <sup>[D]</sup>|tem|possui|–|–|–|
 |has <sup>[E]</sup>|–|–|–|–|–|
 |have <sup>[D]</sup>|têm|possuem|–|–|–|
 |have <sup>[E]</sup>|–|–|–|–|–|
 |hue <sup>[D]</sup>|tom|matiz| coloração|tonalidade|–|
-|hue <sup>[E]</sup>|–|–|–|–|–|
+|hue <sup>[E]</sup>|matiz|–|–|–|–|
 |indent <sup>[D]</sup>|avanço|–|–|–||
-|indent <sup>[E]</sup>|–|–|–|–|–|
+|indent <sup>[E]</sup>|recuo [à direita]|–|–|–|–|
 |is past <sup>[D]</sup>|ultrapassar|passar de|–|–|–|
 |is past <sup>[E]</sup>|–|–|–|–|–|
 |loop <sup>[D]</sup>|reciclar|recicle|–|–|–|
-|loop <sup>[E]</sup>|–|–|–|–|–|
+|loop <sup>[E]</sup>|percorrer|–|–|–|–|
 |moniker <sup>[D]</sup>|alcunha|–|–|–|–|
 |moniker <sup>[E]</sup>|–|–|–|–|–|
 |monikette <sup>[D]</sup>|apelido|–|–|–|–|
-|monikette <sup>[E]</sup>|–|–|–|–|–|
+|monikette <sup>[E]</sup>|minialcunha|–|–|–|–|
 |nibble <sup>[D]</sup>|níquel|nicles|–|–|–|
-|nibble <sup>[E]</sup>|–|–|–|–|–|
+|nibble <sup>[E]</sup>|meio pedaço|metade de um pedaço|quatro pedacinhos|níbôu|–|
 |nodette <sup>[D]</sup>|nódulo|nó|–|–||
-|nodette <sup>[E]</sup>|–|–|–|–|–|
+|nodette <sup>[E]</sup>|elemento|–|–|–|–|
 |node <sup>[D]</sup>|nodo|enlace|–|–||
-|node <sup>[E]</sup>|–|–|–|–|–|
+|node <sup>[E]</sup>|lista|–|–|–|–|
 |outdent <sup>[D]</sup>|recuo|–|–|–||
-|outdent <sup>[E]</sup>|–|–|–|–|–|
+|outdent <sup>[E]</sup>|recuo [à esquerda]|–|–|–|–|
 |pick <sup>[D]</sup>|pegar|realçar|escolher|separar|selecionar|
-|pick <sup>[E]</sup>|–|–|–|–|–|
-|point <sup>[D]</sup>|foco|meta|objetivo|–|–|
-|point <sup>[E]</sup>|–|–|–|–|–|
+|pick <sup>[E]</sup>|coletar|–|–|–|–|
+|point <sup>[D]</sup>|foco|meta|objetivo|–|-|
+|point <sup>[E]</sup>|ponto|apontar (verbo)|–|–|dot (ponto)|
 |query string <sup>[D]</sup>|questionamento|–|–|inscrição de consulta||
-|query string <sup>[E]</sup>|–|–|–|–|–|
+|query string <sup>[E]</sup>|texto de consulta|–|–|–|–|
 |rainbow color <sup>[D]</sup>|furta-cor|–|–|cor do arco-íris|–|
 |rainbow color <sup>[E]</sup>|–|–|–|–|–|
 |repeat <sup>[D]</sup>|repetir|repita|–|–|–|
