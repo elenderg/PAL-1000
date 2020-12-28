@@ -115,7 +115,7 @@ tags restantes para adicionar:
 |adress|–|–|–|–|–|
 |a-key|–|–|–|–|–|
 |alt key|–|–|–|–|–|
-|amount|–|–|–|–|–|
+|amount|quantia|quantidade|–|–|–|
 |ampersand byte|–|–|–|–|–|
 |angle|–|–|–|–|–|
 |arrow cursor|–|–|–|–|–|
@@ -126,7 +126,7 @@ tags restantes para adicionar:
 
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|backslash|–|–|–|–|–|
+|backslash|barra invertida|–|–|–|–|
 |backslash byte|–|–|–|–|–|
 |backspace key|–|–|–|–|–|
 |bar byte|–|–|–|–|–|
@@ -192,7 +192,7 @@ tags restantes para adicionar:
 |big-y-diaeresis byte|–|–|–|–|–|
 |big-z byte|–|–|–|–|–|
 |big-z-caron byte|–|–|–|–|–|
-|bit|–|–|–|–|–|
+|bit|pedacinho|–|–|–|–|
 |b-key|–|–|–|–|–|
 |black color|–|–|–|–|–|
 |black pen|–|–|–|–|–|
@@ -211,7 +211,6 @@ tags restantes para adicionar:
 |bullet byte|–|–|–|–|–|
 |byte|–|–|–|–|–|
 |byte count|–|–|–|–|–|
-|byte### #|–|–|–|–|–|
 
 ### #C
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -222,7 +221,7 @@ tags restantes para adicionar:
 |cancel byte|–|–|–|–|–|
 |canvas|–|–|–|–|–|
 |caps key|–|–|–|–|–|
-|caret byte|–|–|–|–|–|
+|caret byte|pedaço contendo um cursor de texto|pedaço com um cursor de texto|–|–|–|
 |cedilla byte|–|–|–|–|–|
 |cent-sign byte|–|–|–|–|–|
 |character|–|–|–|–|–|
@@ -231,15 +230,15 @@ tags restantes para adicionar:
 |clear color|–|–|–|–|–|
 |clear key|–|–|–|–|–|
 |clear pen|–|–|–|–|–|
-|clsid|–|–|–|–|–|
+|clsid|Identificador de Classe|Número Identificador de Classe|–|–|–|
 |cluck sound|–|–|–|–|–|
 |colon byte|–|–|–|–|–|
 |color|–|–|–|–|–|
-|colorref|–|–|–|–|–|
-|column### #|–|–|–|–|–|
+|colorref|código da cor|número da cor|–|–|–|
+|column#|–|–|–|–|–|
 |comma byte|–|–|–|–|–|
 |command|–|–|–|–|–|
-|comment color|–|–|–|–|–|
+|comment color|cor dos comentários|–|–|–|–|
 |~~console~~|–|–|–|–|–|
 |context|–|–|–|–|–|
 |context stack|–|–|–|–|–|
@@ -248,7 +247,7 @@ tags restantes para adicionar:
 |copyright byte|–|–|–|–|–|
 |count|–|–|–|–|–|
 |counter|–|–|–|–|–|
-|cross byte|–|–|–|–|–|
+|cross byte|pedaço contendo um mais|-|–|–|–|
 |ctrl key|–|–|–|–|–|
 |currency-sign byte|–|–|–|–|–|
 |current canvas|–|–|–|–|–|
@@ -256,7 +255,7 @@ tags restantes para adicionar:
 |current process|–|–|–|–|–|
 |current rainbow color number|–|–|–|–|–|
 |current tab|–|–|–|–|–|
-|cursor|–|–|–|–|–|
+|cursor|setinha|cursor|–|–|–|
 |cyan color|–|–|–|–|–|
 |cyan pen|–|–|–|–|–|
 
@@ -416,7 +415,7 @@ tags restantes para adicionar:
 ### #F
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|fancy arrow|–|–|–|–|–|
+|fancy arrow|Seta elegante|–|–|–|–|
 |feminine byte|–|–|–|–|–|
 |figure|–|–|–|–|–|
 |file|–|–|–|–|–|
@@ -431,12 +430,12 @@ tags restantes para adicionar:
 |form-feed byte|–|–|–|–|–|
 |four byte|–|–|–|–|–|
 |four key|–|–|–|–|–|
-|free tab|–|–|–|–|–|
+|free tab|aba livre|aba vazia|–|–|–|
 
 ### #G
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|gcd|–|–|–|–|–|
+|gcd|Máximo divisor comum|MDC|–|–|–|
 |geometric figure|–|–|–|–|–|
 |g-key|–|–|–|–|–|
 |gold color|–|–|–|–|–|
@@ -452,29 +451,29 @@ tags restantes para adicionar:
 |greenish color|–|–|–|–|–|
 |grid color|–|–|–|–|–|
 |group-separator byte|–|–|–|–|–|
-|guid|–|–|–|–|–|
+|guid|Identificador Único Universal|–|–|–|–|
 
 ### #H
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|hand cursor|–|–|–|–|–|
+|hand cursor|mãozinha|–|–|–|–|
 |~~handle~~|–|–|–|–|–|
 |hashtag byte|–|–|–|–|–|
 |hash-tag byte|–|–|–|–|–|
-|hbitmap|–|–|–|–|–|
-|hbrush|–|–|–|–|–|
-|hdc|–|–|–|–|–|
+|hbitmap|número identificador de um bitmap|–|–|–|–|
+|hbrush|número identificador de um pincel|–|–|–|–|
+|hdc|Número de contexto do dispositivo (device context)|–|–|–|–|
 |heading|–|–|–|–|–|
 |heap count|–|–|–|–|–|
 |height|–|–|–|–|–|
 |hex string|–|–|–|–|–|
-|hfont|–|–|–|–|–|
-|hicon|–|–|–|–|–|
-|hilite color|–|–|–|–|–|
+|hfont|Número identificador da fonte|–|–|–|–|
+|hicon|Número identificador do ícone|–|–|–|–|
+|hilite color|cor de realce|cor de destaque|–|–|–|
 |h-key|–|–|–|–|–|
 |home key|–|–|–|–|–|
-|hpen|–|–|–|–|–|
-|hrgn|–|–|–|–|–|
+|hpen|Número identificador da caneta|Número identificador da canetinha|Número identificador do lápis de cor|–|–|
+|hrgn|Número identificador da região|–|–|–|–|
 |~~hue~~|–|–|–|–|–|
 
 ### #I
