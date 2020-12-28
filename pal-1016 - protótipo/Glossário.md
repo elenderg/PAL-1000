@@ -112,7 +112,7 @@ tags restantes para adicionar:
 |accent key|–|–|–|–|–|
 |acknowledge byte|–|–|–|–|–|
 |acute-accent byte|–|–|–|–|–|
-|adress|–|–|–|–|–|
+|adress|número do endereço|–|–|–|–|
 |a-key|–|–|–|–|–|
 |alt key|–|–|–|–|–|
 |amount|quantia|quantidade|–|–|–|
@@ -371,7 +371,8 @@ tags restantes para adicionar:
 |device-control-three byte|–|–|–|–|–|
 |device-control-two byte|–|–|–|–|–|
 |diaeresis byte|–|–|–|–|–|
-|directory|endereço da pasta|–|–|–|–|
+|directory|endereço da pasta|pasta|–|–|–|
+|directory name|nome da pasta|||||
 |distance|–|–|–|–|–|
 |division-symbol byte|–|–|–|–|–|
 |d-key|–|–|–|–|–|
@@ -768,7 +769,7 @@ tags restantes para adicionar:
 |paragraph byte|–|–|–|–|–|
 |partial moniker|–|–|–|–|–|
 |pastel color|–|–|–|–|–|
-|path|endereço|endereço com extensão|–|–|–|
+|path|endereço||–|–|–|
 |pause key|–|–|–|–|–|
 |pdf|arquivo pdf|–|–|–|–|
 |pen|–|–|–|–|–|
