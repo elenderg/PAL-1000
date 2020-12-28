@@ -100,6 +100,8 @@
 tags restantes para adicionar:  
 
 
+
+#A
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |abca|–|–|–|–|–|
@@ -118,6 +120,11 @@ tags restantes para adicionar:
 |arrow cursor|–|–|–|–|–|
 |asterisk byte|–|–|–|–|–|
 |at-sign byte|–|–|–|–|–|
+
+
+#B
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |backslash|–|–|–|–|–|
 |backslash byte|–|–|–|–|–|
 |backspace key|–|–|–|–|–|
@@ -204,6 +211,10 @@ tags restantes para adicionar:
 |byte|–|–|–|–|–|
 |byte count|–|–|–|–|–|
 |byte#|–|–|–|–|–|
+
+#C
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |call external tag|–|–|–|–|–|
 |call indirect tag|–|–|–|–|–|
 |call internal tag|–|–|–|–|–|
@@ -247,6 +258,10 @@ tags restantes para adicionar:
 |cursor|–|–|–|–|–|
 |cyan color|–|–|–|–|–|
 |cyan pen|–|–|–|–|–|
+
+#D
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |dagger byte|–|–|–|–|–|
 |dark blue color|–|–|–|–|–|
 |dark blue pen|–|–|–|–|–|
@@ -365,6 +380,10 @@ tags restantes para adicionar:
 |double-dagger byte|–|–|–|–|–|
 |double-quote byte|–|–|–|–|–|
 |down-arrow key|–|–|–|–|–|
+
+#E
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |eight byte|–|–|–|–|–|
 |eight key|–|–|–|–|–|
 |e-key|–|–|–|–|–|
@@ -392,6 +411,10 @@ tags restantes para adicionar:
 |exclamation-mark byte|–|–|–|–|–|
 |exit tag|–|–|–|–|–|
 |extra points|–|–|–|–|–|
+
+#F
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |fancy arrow|–|–|–|–|–|
 |feminine byte|–|–|–|–|–|
 |figure|–|–|–|–|–|
@@ -408,6 +431,10 @@ tags restantes para adicionar:
 |four byte|–|–|–|–|–|
 |four key|–|–|–|–|–|
 |free tab|–|–|–|–|–|
+
+#G
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |gcd|–|–|–|–|–|
 |geometric figure|–|–|–|–|–|
 |g-key|–|–|–|–|–|
@@ -425,6 +452,10 @@ tags restantes para adicionar:
 |grid color|–|–|–|–|–|
 |group-separator byte|–|–|–|–|–|
 |guid|–|–|–|–|–|
+
+#H
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |hand cursor|–|–|–|–|–|
 |~~handle~~|–|–|–|–|–|
 |hashtag byte|–|–|–|–|–|
@@ -444,6 +475,10 @@ tags restantes para adicionar:
 |hpen|–|–|–|–|–|
 |hrgn|–|–|–|–|–|
 |~~hue~~|–|–|–|–|–|
+
+#I
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |i-beam cursor|–|–|–|–|–|
 |iid|–|–|–|–|–|
 |i-key|–|–|–|–|–|
@@ -456,10 +491,18 @@ tags restantes para adicionar:
 |intermediate|–|–|–|–|–|
 |inverted-exclamation-mark byte|–|–|–|–|–|
 |inverted-question-mark byte|–|–|–|–|–|
+
+#J-K
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |j-key|–|–|–|–|–|
 |jump false tag|–|–|–|–|–|
 |key|–|–|–|–|–|
 |k-key|–|–|–|–|–|
+
+#L
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |large letter height|–|–|–|–|–|
 |lcm|–|–|–|–|–|
 |left|–|–|–|–|–|
@@ -636,6 +679,10 @@ tags restantes para adicionar:
 |lower-double-quote byte|–|–|–|–|–|
 |lower-single-quote byte|–|–|–|–|–|
 |l-param|–|–|–|–|–|
+
+#M
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |magenta color|–|–|–|–|–|
 |magenta pen|–|–|–|–|–|
 |main window|–|–|–|–|–|
@@ -656,6 +703,10 @@ tags restantes para adicionar:
 |ms|–|–|–|–|–|
 |multiple|–|–|–|–|–|
 |multiplication-symbol byte|–|–|–|–|–|
+
+#N
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |name|–|–|–|–|–|
 |negative-acknowledge byte|–|–|–|–|–|
 |next letter|–|–|–|–|–|
@@ -691,6 +742,10 @@ tags restantes para adicionar:
 |numpad-three key|–|–|–|–|–|
 |numpad-two key|–|–|–|–|–|
 |numpad-zero key|–|–|–|–|–|
+
+#O
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |offset|–|–|–|–|–|
 |o-key|–|–|–|–|–|
 |one byte|–|–|–|–|–|
@@ -701,6 +756,10 @@ tags restantes para adicionar:
 |orange pen|–|–|–|–|–|
 |osmosian font resource|–|–|–|–|–|
 |~~outdent~~|–|–|–|–|–|
+
+#P
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |page|–|–|–|–|–|
 |page clipboard|–|–|–|–|–|
 |page number|–|–|–|–|–|
@@ -740,12 +799,20 @@ tags restantes para adicionar:
 |purple pen|–|–|–|–|–|
 |push address tag|–|–|–|–|–|
 |push value tag|–|–|–|–|–|
+
+#Q
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |q-key|–|–|–|–|–|
 |quarter|–|–|–|–|–|
 |query byte|–|–|–|–|–|
 |~~query string~~|–|–|–|–|–|
 |question-mark byte|–|–|–|–|–|
 |quotient|–|–|–|–|–|
+
+#R
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |radius|–|–|–|–|–|
 |~~rainbow color~~|–|–|–|–|–|
 |random number|–|–|–|–|–|
@@ -783,6 +850,10 @@ tags restantes para adicionar:
 |row#|–|–|–|–|–|
 |row/sheet|–|–|–|–|–|
 |run|–|–|–|–|–|
+
+#S
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |saturation|–|–|–|–|–|
 |save eax tag|–|–|–|–|–|
 |saved memory hbitmap|–|–|–|–|–|
@@ -836,6 +907,10 @@ tags restantes para adicionar:
 |superscript-three byte|–|–|–|–|–|
 |superscript-two byte|–|–|–|–|–|
 |synchronous-idle byte|–|–|–|–|–|
+
+#T
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |tab|–|–|–|–|–|
 |tab byte|–|–|–|–|–|
 |tab key|–|–|–|–|–|
@@ -867,6 +942,10 @@ tags restantes para adicionar:
 |two byte|–|–|–|–|–|
 |two key|–|–|–|–|–|
 |type|–|–|–|–|–|
+
+#U
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |u-key|–|–|–|–|–|
 |underscore byte|–|–|–|–|–|
 |unit|–|–|–|–|–|
@@ -875,6 +954,10 @@ tags restantes para adicionar:
 |upperscore byte|–|–|–|–|–|
 |uuid|–|–|–|–|–|
 |variable|–|–|–|–|–|
+
+#V
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |vertical-bar byte|–|–|–|–|–|
 |vertical-tab byte|–|–|–|–|–|
 |very dark color|–|–|–|–|–|
@@ -884,6 +967,10 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–|–|
+
+#WXYZ
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|------------|------------|------------|------------|------------|------------|
 |wave|–|–|–|–|–|
 |white color|–|–|–|–|–|
 |white pen|–|–|–|–|–|
