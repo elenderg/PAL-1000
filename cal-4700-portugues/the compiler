@@ -256,9 +256,9 @@ Put the expression's phrase into the monikette's string.
 Put the expression's variable into the monikette's variable.
 If the expression's variable is not nil, put the expression's type into the monikette's type.
 
-
 \ parece ser algo de gramática aqui
-To add a monikette to some monikettes given a string:
+
+To add a monikette to some monikettes given a string: \SAL
 Create the monikette.
 Append the monikette to the monikettes.
 \ Spanish conjunctions, etc
@@ -1165,9 +1165,11 @@ If the rider's token is any times, compile the expression given the rider (times
 To compile an expression given a rider (divided):
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
-If the rider's token is not "by", abort with "Prefiro o termo 'divided BY'." and the rider; exit.
+\If the rider's token is not "by", abort with "Prefiro o termo 'divided BY'." and the rider; exit.
 \If the rider's token is not "por", abort with "Prefiro o termo 'dividido POR'." and the rider; exit.
-If the expression's variable is nil, abort with "O seu 'divided by', está errado. Não dá pra dividir o '" then the expression's phrase then "'." and the rider; exit.
+\If the expression's variable is nil, abort with "O seu 'divided by', está errado. Não dá pra dividir o '" then the expression's phrase then "'." and the rider; exit.
+If the rider's token is not any by, abort with "Prefiero la frase 'dividido POR'." and the rider; exit.
+If the expression's variable is nil, abort with "Inválido el 'dividido por', no entiendo la variable '" then the expression's phrase then "'." and the rider; exit.
 Move the rider (compiler rules).
 Compile a term given the rider.
 If the compiler's abort flag is set, exit.
@@ -1254,8 +1256,10 @@ Index the routine given the routine's monikettes and the routine index.
 To compile the header of a routine given a rider (decider):
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
-If the rider's token is not "if", abort with "It's 'Decide IF.' Sempre dizemos, 'Decide IF'. Certo?" and the rider; exit.
-Move the rider (compiler rules).
+\If the rider's token is not "if", abort with "It's 'Decide IF.' Sempre dizemos, 'Decide IF'. Certo?" and the rider; exit.
+If the rider's token is not  any conditional, abort with "It's 'Decide IF.' Sempre dizemos, 'Decide IF'. Certo?" and the rider; exit.
+\If the rider's token is not any conditional, abort with "Se dice 'Decidir SI'. Siempre 'Decidir SI'. ¿Se entiende?" and the rider; exit.
+Move the rider (compiler rules).  
 Set the routine's decider flag.
 Compile the routine's monikettes and the routine's parameters given the rider.
 If any of the routine's monikettes are negative words, abort with "Não consigo me dar bem com palavras negativas nos decider names." and the rider; exit.
@@ -1304,7 +1308,7 @@ Repeat.
 To compile a literal given a rider:
 If the compiler's abort flag is set, exit.
 Add the literal to the literals given the rider's token's first.
-If the rider's token is any flag literal, compile the literal given the rider (flag); exit.
+\If the rider's token is any flag literal, compile the literal given the rider (flag); exit.
 If the rider's token is any hex literal, compile the literal given the rider (hex); exit.
 If the rider's token is any numeric literal, compile the literal given the rider (numeric); exit.
 If the rider's token is any pointer literal, compile the literal given the rider (pointer); exit.
@@ -1371,7 +1375,7 @@ If the rider's token is any mixed literal, compile the literal given the rider (
 
 To compile a literal given a rider (pointer):
 If the compiler's abort flag is set, exit.
-Convert 0 to the literal's data. \ was nil
+Convert 0 to the literal's data. \CAL was nil \SAL
 Move the rider (compiler rules).
 Put "pointer" into the literal's type name.
 Resolve the literal.
@@ -1388,9 +1392,9 @@ To compile some monikettes and some parameters given a rider:
 If the compiler's abort flag is set, exit.
 If the rider's token is blank, exit.
 \If the rider's token is "the", compile the monikettes and the parameters given the rider (definite article); repeat.
-If the rider's token is any definite article, compile the monikettes and the parameters given the rider (definite article); repeat. \não sei porque comentei issso
-If the rider's token is on any indefinite article, compile the monikettes and the parameters given the rider (indefinite article); repeat.
-If the rider's token is on any monikette string, compile the monikettes and the parameters given the rider (monikette string); repeat.
+If the rider's token is any definite article, compile the monikettes and the parameters given the rider (definite article); repeat. \SAL
+If the rider is on any indefinite article, compile the monikettes and the parameters given the rider (indefinite article); repeat. \SAL trocado 's pela palavra is on
+If the rider is on any monikette string, compile the monikettes and the parameters given the rider (monikette string); repeat. \idem
 Abort with "'" then the rider's token then "' não é um nome de função que eu conheça." and the rider.
 
 To compile some monikettes and some parameters given a rider (definite article):
@@ -1411,7 +1415,7 @@ If the rider's token is "another", put "other" into the parameter's name.
 Move the rider (compiler rules).
 Scan a name given the rider.
 Extend the parameter's name with the name.
-If the rider's token is "called", compile the call'd part given the rider and the parameter.
+If the rider's token is any called, compile the call'd part given the rider and the parameter. \SAL adicionado o termo any
 Resolve the parameter.
 If the parameter is duplicated in the parameters, abort with "Cara, você repetiou o parâmetro '" then the parameter's name then "'." and the parameter's locus; exit.
 Add a monikette to the monikettes given the parameter's type.
@@ -1423,9 +1427,10 @@ Move the rider (compiler rules).
 
 To compile some monikettes given a rider:
 If the compiler's abort flag is set, exit.
-If the rider's token is any monikette string, add a monikette to the monikettes given the rider's token; move the rider (compiler rules); repeat.
+\If the rider's token is "del", add a special monikette to the monikettes given "de"; add 1 to the rider's token's first. \ to make "del" in a call look like "de el" \SAL
+If the rider is on any monikette string, add a monikette to the monikettes given the rider's token; move the rider (compiler rules); repeat. \SAL adicionou o termo on
 If the rider's token is not the start of any expression, exit.
-Compile an expression given the rider.
+Compile an expression given the rider. 
 If the compiler's abort flag is set, exit.
 Add another monikette to the monikettes given the expression.
 Repeat.
@@ -1441,9 +1446,9 @@ Repeat.
 
 To compile the next statement given a rider:
 If the compiler's abort flag is set, exit.
-If the rider's token is "if", compile the next statement given the rider (if); exit.
-If the rider's token is "loop", compile the next statement given the rider (loop); exit.
-If the rider's token is "privatize", compile the next statement given the rider (privatize); exit.
+If the rider's token is any conditional, compile the next statement given the rider (if); exit.
+If the rider's token is any loop, compile the next statement given the rider (loop); exit.
+If the rider's token is any privatize, compile the next statement given the rider (privatize); exit.
 If the rider's token is not the start of any statement, abort with "Eu estava esperando um statement mas você colocou '" then the rider's token then "'." and the rider; exit.
 Compile the next statement given the rider (other).
 If the rider's token is not the period byte, abort with "Acho que tá faltando um pontinho por aqui." and the rider; exit.
@@ -1555,28 +1560,19 @@ Move the rider (compiler rules).
 To compile the next statement given a rider (other):
 If the compiler's abort flag is set, exit.
 If the rider's token is blank, exit.
-If the rider's token is "exit", compile the next statement given the rider (exit); exit.
-If the rider's token is "saia", compile the next statement given the rider (exit); exit.
-If the rider's token is "deixa quieto", compile the next statement given the rider (exit); exit.
-If the rider's token is "deixe quieto", compile the next statement given the rider (exit); exit.
-If the rider's token is "repeat", compile the next statement given the rider (repeat); exit.
-If the rider's token is "repita", compile the next statement given the rider (repeat); exit.
-If the rider's token is "break", compile the next statement given the rider (break); exit.
-If the rider's token is "interrompa", compile the next statement given the rider (break); exit.
-If the rider's token is "pare", compile the next statement given the rider (break); exit.
-If the rider's token is "say", compile the next statement given the rider (say); exit.
-If the rider's token is "diga", compile the next statement given the rider (say); exit.
+If the rider's token is any exit, compile the next statement given the rider (exit); exit. \SAL - praticamente todas as linhas daqui foi colocado o "any"
+If the rider's token is any repeat, compile the next statement given the rider (repeat); exit.
+If the rider's token is any break, compile the next statement given the rider (break); exit.
+If the rider's token is any say, compile the next statement given the rider (say); exit.
 If the rider's token is "intel", compile the next statement given the rider (intel); exit.
 \If the rider's token is "intel", compile the next statement given the rider (intel); exit.
 If the rider's token is "push", compile the next statement given the rider (push); exit.
-If the rider's token is "call", compile the next statement given the rider (call); exit.
-If the rider's token is "point", compile the next statement given the rider (point); exit.
-If the rider's token is "if", abort with "Tente simplificar seu código. Acho que você precisa pensar nele um pouco mais." and the rider; exit.
-If the rider's token is "se", abort with "Tente simplificar seu código. Acho que você precisa pensar nele um pouco mais." and the rider; exit.
-If the rider's token is "privatize", abort with "A palavra 'privatize' não pode ser utilizada aqui." and the rider; exit.
-If the rider's token is "loop", abort with "Você não devia usar um Loop dentro de um 'if'. Vai dar ruim." and the rider; exit.
-If the rider's token is "percorra", abort with "Você não devia usar um Loop dentro de um 'if'. Vai dar ruim." and the rider; exit.
-If the rider's token is "employ", abort with "'Employ' must be the first and only imperative in a routine." and the rider; exit.
+If the rider's token is any call, compile the next statement given the rider (call); exit.
+If the rider's token is any point, compile the next statement given the rider (point); exit.
+If the rider's token is any conditional, abort with "Los anidamientos de sentencias SI son una clara señal de razonamiento poco claro. Piénsalo otra vez." and the rider; exit.
+If the rider's token is any privatize, abort with "La sentencia 'privatizar' no puede usarse aquí." and the rider; exit.
+If the rider's token is any loop, abort with "Lazos luego de un SI es una buena forma de perder el almuerzo." and the rider; exit.
+If the rider's token is any employ, abort with "'Emplée' debe ser el único imperativo en una rutina." and the rider; exit.
 Compile the next statement given the rider (call - internal).
 
 To compile the next statement given a rider (point):
@@ -1629,7 +1625,7 @@ To compile the next statement given a rider (repeat):
 Add a fragment given the repeat tag.
 Move the rider (compiler rules).
 
-\To compile the next statement given a rider (say):
+\To compile the next statement given a rider (say): \SAL - não tem no original
 \If the current routine's decider flag is not set, compile the next statement given the rider (call - internal); exit.
 \Move the rider (compiler rules).
 \Compile an expression given the rider.
@@ -1646,7 +1642,7 @@ If the rider's token is not any decider literal, abort with "Necesito un rotundo
 Clear a flag. If the rider's token is any positive decider literal, set the flag.
 Move the rider (compiler rules).
 If the rider's token is not the period byte, abort with "Pensaba en un punto, pero pusiste '" then the rider's token then "'." and the rider; exit.
-Add a fragment given the load eax tag and the flag.
+Add a fragment given the load eax tag and the flag. \para aqui
 \Compile an expression given the rider.
 \If the compiler's abort flag is set, exit.
 \If the expression's variable is nil, abort with "Comando 'Say'inválido, a expressão '" then the expression's phrase then "' parece estar vazia." and the rider; exit.
@@ -1669,14 +1665,14 @@ Loop.
 If the compiler's abort flag is set, exit.
 If the rider's token is blank, exit.
 If the rider's token is ".", exit.
-If the rider's token is "the", compile the routine reference given the rider (definite article); repeat.
+If the rider's token is any definite article, compile the routine reference given the rider (definite article); repeat. \SAL - idem
 If the rider's token is any indefinite article, compile the routine reference given the rider (indefinite article); repeat.
-If the rider's token is any monikette string, compile the routine reference given the rider (monikette string); repeat.
+If the rider is on any monikette string, compile the routine reference given the rider (monikette string); repeat. \SAL - adicionado is on
 Abort with "'" then the rider's token then "' não é um employ statement válido." and the rider.
 
 To compile a routine reference given a rider (decide):
 Move the rider (compiler rules).
-If the rider's token is not "if", abort with "Sempre use DECIDE IF, ao invés de apenas DECIDE com '" then the rider's token then "' logo em seguida." and the rider; exit.
+If the rider's token is not any conditional, abort with "Sempre use DECIDE IF, ao invés de apenas DECIDE com '" then the rider's token then "' logo em seguida." and the rider; exit.
 Move the rider (compiler rules).
 
 To compile a routine reference given a rider (definite article):
@@ -1794,7 +1790,7 @@ If the rider's token is "another", put "other" into the local's name.
 Move the rider (compiler rules).
 Scan a name given the rider.
 Extend the local's name with the name.
-If the rider's token is "called", compile the call'd part given the rider and the local.
+If the rider's token is any called, compile the call'd part given the rider and the local. \SAl adicionou any aqui
 Resolve the local.
 If the local is duplicated in the current routine's parameters, abort with "o parâmetro '" then the local's name then "' já está sendo usado como parâmetro." and the local's locus; exit.
 If the local is duplicated in the current routine's locals,abort with "Já existe uma variável local chamada'" then the local's name then "'. Você tem que dar um nome diferente." and the local's locus; exit.
@@ -1874,7 +1870,7 @@ Put "the " into the term's phrase.
 Append the name to the term's phrase.
 Compile the term given the rider (possessives).
 
-To compile a term given a rider and a field name (reverse-possessive):  \ this is recursive \ dahn version 2
+To compile a term given a rider and a field name (reverse-possessive):  \ this is recursive \ dahn version 2 \SAL - função original
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules). \ past the reverse-possessive starter
 \If the rider's token is not "del", Move the rider (compiler rules). \ past the reverse-possessive starter \ gerry added "if" part
@@ -1914,7 +1910,7 @@ Eliminate duplicate nicknames given the local and the current routine's nickname
 Put the local into the term's variable.
 Clear the term's phrase.
 
-To compile a term given a field name and a rider (reverse-possessive):  \ similar to "compile a term given a rider (possessive)" \ dahn
+To compile a term given a field name and a rider (reverse-possessive):  \ similar to "compile a term given a rider (possessive)" \ dahn \ SAL - função original
 If the compiler's abort flag is set, exit.
 If the field name is any magnitude, compile the term given the rider (possessive - magnitude); exit.
 If the field name is any target, compile the term given the rider (possessive - target); exit.
@@ -2031,14 +2027,14 @@ Append the other field to the other fields.
 Repeat.
 
 To copy some fields into some other fields (data fields only):
-If the fields' count is less than 4, exit. \ for english next and prev and spanish next and prev redefinitions
-\If the fields' first is nil, exit.
-\If the fields' first's next is nil, exit.
-\If the fields' first's next's next is nil, exit.
-\\Put the fields' first's next's next into a field. \ skip next and prev
-\If the fields' first's next's next's next is nil, exit.
-\If the fields' first's next's next's next's next is nil, exit.
-\If the fields' first's next's next's next's next's next is nil, exit.
+If the fields' count is less than 4, exit. \ for english next and prev and spanish next and prev redefinitions \SAL - conteúdo original
+\If the fields' first is nil, exit. \SAL comentou essa linha
+\If the fields' first's next is nil, exit. \idem
+\If the fields' first's next's next is nil, exit. \idem
+\\Put the fields' first's next's next into a field. \ skip next and prev \idem
+\If the fields' first's next's next's next is nil, exit. \linha nova
+\If the fields' first's next's next's next's next is nil, exit. \linha nova
+\If the fields' first's next's next's next's next's next is nil, exit. \linha nova
 Put the fields' first's next's next's next's next into a field. \ english next and prev and spanish next and prev redefinitions
 Loop.
 If the field is nil, exit.
@@ -2186,23 +2182,23 @@ If the monikette's current type is not nil, say no.
 If the monikette's current substring is not blank, say no.
 Say yes.
 
-To decide if a name is any magnitude:
+To decide if a name is any magnitude: \SAL - função original
 If the name is "magnitude", say yes.
 If the name is "magnitud", say yes.
 Say no.
 
-To decide if a name is any target:
+To decide if a name is any target: \SAL - função original
 If the name is "target", say yes.
 If the name is "objetivo", say yes.
 Say no.
 
-To decide if a name is any whereabouts:
+To decide if a name is any whereabouts: \SAL - função original
 If the name is "whereabouts", say yes.
 If the name is "paradero", say yes.
 Say no.
 
 To decide if a name is any valid field name:
-If the name is any magnitude, say no.
+If the name is any magnitude, say no. \SAl - adicionado any nas condicionais abaixo
 If the name is any target, say no.
 If the name is any whereabouts, say no.
 Say yes.
@@ -2210,7 +2206,7 @@ Say yes.
 To decide if a rider is followed by any unit of measure:
 Privatize the rider.
 Move the rider (compiler rules).
-If the rider is not on any name starter, say no. \SAl era rider's token
+If the rider is not on any name starter, say no. \SAl era rider's token is not any
 Scan a name given the rider.
 Find a type given the name and the type index.
 If the type is nil, say no.
@@ -2239,7 +2235,7 @@ Say no.
 
 To decide if a rider is on any possessive (type 2 - preceding s, single-quote, non-glom-byte):
 Privatize the rider.
-If the rider's source's first is the rider's original's first, say no.
+If the rider's source's first is the rider's original substring's first, say no. \SAL - adicionado o termo substring
 Subtract 1 from the rider's source's first.
 If the rider's source's first's target is not the little-s byte or the big-s byte, say no.
 Add 2 to the rider's source's first.
@@ -2264,7 +2260,7 @@ If the rider's token is not any article, say no.
 Move the rider (compiler rules).
 Scan a name given the rider.
 If the rider's token is any possessive, say yes.
-Say no.
+Say no. \Adicionado o Say No aqui. Estranho que o outro não tenha.
 
 To decide if a string ends with any consonant and another string:
 Slap a substring on the string.
@@ -2282,59 +2278,59 @@ If the substring's last's target is not any vowel, say no.
 If the string does not end with the other string, say no.
 Say yes.
 
-To decide if a string ends with any consonant:
+To decide if a string ends with any consonant: \SAL - adicionado função
 If the string is blank, say no.
 If the string's last's target is not any consonant, say no.
 Say yes.
 
-To decide if a string ends with any vowel:
+To decide if a string ends with any vowel: \SAL - adicionado função
 If the string is blank, say no.
 If the string's last's target is not any vowel, say no.
 Say yes.
 
-To decide if a string is any plus:
+To decide if a string is any plus: \SAL - adicionado função
 If the string is "más", say yes.
 If the string is "plus", say yes.
 Say no.
 
-To decide if a string is any put:
+To decide if a string is any put: \SAL - adicionado função
 If the string is "put", say yes.
 If the string is "poner", say yes.
 Say no.
 
-To decide if a string is any minus:
+To decide if a string is any minus: \SAL - adicionado função
 If the string is "menos", say yes.
 If the string is "minus", say yes.
 Say no.
 
-To decide if a string is any times:
+To decide if a string is any times: \SAL - adicionado função
 If the string is "veces", say yes.
 If the string is "times", say yes.
 Say no.
 
-To decide if a string is any divided:
+To decide if a string is any divided: \SAL - adicionado função
 If the string is "dividido", say yes.
 If the string is "divided", say yes.
 Say no.
 
-To decide if a string is any by:
+To decide if a string is any by: \SAL - adicionado função
 If the string is "por", say yes.
 If the string is "by", say yes.
 Say no.
 
-To decide if a string is any then:
+To decide if a string is any then: \SAL - adicionado função
 If the string is "luego", say yes.
 If the string is "then", say yes.
 Say no.
 
-To decide if a string is any has:
+To decide if a string is any has: \SAL - adicionado função
 If the string is "tiene", say yes.
 If the string is "tener", say yes.
 If the string is "has", say yes.
 If the string is "have", say yes.
 Say no.
 
-To decide if a string is any is:
+To decide if a string is any is: \SAL - adicionado função
 If the string is "es", say yes.
 If the string is "está", say yes.
 If the string is "se", say yes.
@@ -2343,23 +2339,19 @@ If the string is "is", say yes.
 If the string is "are", say yes.
 Say no.
 
-To decide if a string is any equal:
+To decide if a string is any equal: \SAL - adicionado função
 If the string is "igual", say yes.
 If the string is "equal", say yes.
 Say no.
 
-To decide if a string is any with:
+To decide if a string is any with: \SAL - adicionado função
 If the string is "con", say yes.
 If the string is "with", say yes.
 Say no.
 
 To decide if a string is any article:
 If the string is any indefinite article, say yes.
-If the string is "the", say yes.
-\If the string is any definite article, say yes.
-\If the string is "o", say yes.
-\If the string is "os", say yes.
-\If the string is "as", say yes.
+If the string is any definite article, say yes. \SAL - alterado texto por razões óbvias
 Say no.
 
 To decide if a string is any conjunction:
@@ -2380,25 +2372,25 @@ If the string is "or", say yes.
 \If the string is "ou", say yes.
 Say no.
 
-To decide if a string is any to:
-If the string is "a", say yes. \ this is questionable
+To decide if a string is any to: \SAL - adicionado função
+If the string is "a", say yes. \ this is questionable \totalmente
 If the string is "to", say yes.
 Say no.
 
-To decide if a string is any and:
+To decide if a string is any and: \SAL - adicionado função
 If the string is "y", say yes.
 If the string is "and", say yes.
 Say no.
 
-To decide if a string is any reverse-possessive function into:
+To decide if a string is any reverse-possessive function into: \SAL - adicionado função
 If the string is "into", say yes.
 If the string is "en", say yes.
 Say no.
 
-To decide if a string is any flag literal:
-If the string is "si", say yes.
-If the string is "yes", say yes.
-If the string is "no", say yes.
+To decide if a string is any flag literal: 
+If the string is "si", say yes. 
+If the string is "yes", say yes. \SAL - adicionado definição
+If the string is "no", say yes. \SAl - é a mesma palavra em inglês
 Say no.
 
 To decide if a string is any decider literal:
@@ -2406,18 +2398,19 @@ If the string is "sí", say yes.
 If the string is "yes", say yes.
 If the string is "sim", say yes.
 If the string is "no", say yes.
-If the string is "nay", say yes.
-If the string is "nope", say yes.
+If the string is "nay", say yes. \SAL - nem precisa
+If the string is "nope", say yes. \SAL - nem precisa
 Say no.
 
-To decide if a string is any positive decider literal:
-If the string is "sí", say yes.
+To decide if a string is any positive decider literal: \SAL - adicionado função
+If the string is "sí", say yes. 
 If the string is "yes", say yes.
 If the string is "yep", say yes.
 If the string is "yea", say yes.
+If the string is "sim", say yes.
 Say no.
 
-To decide if a string is any negative decider literal:
+To decide if a string is any negative decider literal: \SAL - adicionado função
 If the string is "no", say yes.
 If the string is "nay", say yes.
 If the string is "nope", say yes.
@@ -2428,7 +2421,36 @@ If the string is blank, say no.
 If the string's first's target is the dollar-sign byte, say yes.
 Say no.
 
+To decide if a string is any definite article: \SAL - adicionado função por razões óbvias
+\If the string is "l", say yes. \ all that is left of "el" in contractions "del" and "al" - see "move a rider (compiler rules)"
+\If the string is "el", say yes. \SAL - adicionado termos
+\If the string is "los", say yes.
+\If the string is "la", say yes.
+\If the string is "las", say yes.
+\If the string is "lo", say yes.
+If the string is "the", say yes.
+Say no.
+
+To decide if a rider is on any indefinite article:
+If the rider is on any Spanish to, say no. \SAL - adicionado função
+If the rider's token is not any indefinite article, say no. \SAL - alterado função
+Say yes. \SAL - alterado valor
+
+To decide if a rider is on any Spanish to: \SAL - adicionado função
+If the rider's token is not "a", say no.
+Privatize the rider. Move the rider (compiler rules).
+If the rider's token is any article, say yes.
+Say no.
+
 To decide if a string is any indefinite article:
+\If the string is "un", say yes. \SAL - adicionado definições
+If the string is "una", say yes.
+\If the string is "otro", say yes.
+\If the string is "otra", say yes.
+\If the string is "algún", say yes.
+\If the string is "alguna", say yes.
+\If the string is "algunas", say yes.
+\If the string is "algunos", say yes.
 If the string is "a", say yes.
 If the string is "an", say yes.
 \If the string is "um", say yes.
@@ -2445,19 +2467,18 @@ If the string is "alguns", say yes.
 If the string is "algumas", say yes.
 Say no.
 
-To decide if a string is any definite article:
-If the string is "the", say yes.
-\If the string is "o", say yes.
-\If the string is "os", say yes.
-\If the string is "a", say yes.
-\If the string is "as", say yes.
+To decide if a string is any english indefinite article: \SAL - adicionado função
+If the string is "a", say yes.
+If the string is "an", say yes.
+If the string is "another", say yes.
+If the string is "some", say yes.
 Say no.
 
 To decide if a string is any literal:
 If the string is any pointer literal, say yes.
 If the string is any numeric literal, say yes.
 If the string is any string literal, say yes.
-If the string is any flag literal, say yes.
+\If the string is any flag literal, say yes. *** \SAL - comentado
 If the string is any hex literal, say yes.
 Say no.
 
@@ -2466,51 +2487,59 @@ If the string's length is not 1, say no.
 If the string's first's target is any mark, say yes.
 Say no.
 
-To decide if a string is any monikette string:
-If the string is blank, say no.
-If the string is "the", say no.
-If the string is any definite article, say no.
-If the string is any indefinite article, say no.
-If the string is any possessive, say no.
-If the string is any literal, say no.
-If the string is any mark, say no.
-If the string is any symbol, say no.
+To decide if a rider is on any monikette string: \SAL - adicionado o termo on
+If the rider's token is blank, say no.
+If the rider's token is any definite article, say no.
+If the rider is on any indefinite article, say no.
+If the rider's token is any possessive, say no.
+If the rider's token is any literal, say no.
+If the rider's token is any mark, say no.
+If the rider's token is any symbol, say no.
 Say yes.
 
-To decide if a string is any name ender: \ compare with name starter
-If the string is any mark, say yes.
-If the string is any symbol, say yes.
-If the string is any article, say yes.
-If the string is any conjunction, say yes.
-If the string is any possessive, say yes.
-If the string is any verb, say yes.
-If the string is any operator, say yes.
-If the string is any preposition, say yes.
-If the string is any qualifier, say yes.
-If the string is any literal, say yes.
+To decide if a string is any called:
 If the string is "called", say yes.
-If the string is "chamado", say yes.
-If the string is "equal", say yes.
-\If the string is "igual", say yes.
-If the string is blank, say yes.
+If the string is "llamado", say yes.
 Say no.
 
-To decide if a string is any name starter: \ compare with name ender
-If the string is any mark, say no.
-If the string is any symbol, say no.
-If the string is any article, say no.
-If the string is any conjunction, say yes.
-If the string is any possessive, say no.
-If the string is any verb, say yes.
-If the string is any operator, say yes.
-If the string is any preposition, say yes.
-If the string is any qualifier, say no.
-If the string is any literal, say no.
-If the string is "called", say yes.
-If the string is "chamado", say yes.
-If the string is "equal", say yes.
-\If the string is "igual", say yes.
-If the string is blank, say no.
+To decide if a string is any reference:
+If the string is "(reference)", say yes.
+If the string is "(referencia)", say yes.
+Say no.
+
+To decide if a rider is on any name ender: \ compare with name starter
+If the rider's token is any mark, say yes.
+If the rider's token is any symbol, say yes.
+If the rider's token is any article, say yes.
+If the rider's token is any conjunction, say yes.
+If the rider's token is any possessive, say yes.
+If the rider is on any reverse-possessive, say yes.
+If the rider's token is any verb, say yes.
+If the rider's token is any operator, say yes.
+If the rider is on any preposition, say yes.
+If the rider's token is any qualifier, say yes.
+If the rider's token is any literal, say yes.
+If the rider's token is any called, say yes.
+If the rider's token is any equal, say yes.
+If the rider's token is blank, say yes.
+\ Spanish trouble makers
+If the rider's token is any negative word, say yes.
+Say no.
+
+To decide if a rider is on any name starter: \ compare with name ender
+If the rider's token is any mark, say no.
+If the rider's token is any symbol, say no.
+If the rider's token is any article, say no.
+If the rider's token is any conjunction, say yes.
+If the rider's token is any possessive, say no.
+If the rider's token is any verb, say yes.
+If the rider's token is any operator, say yes.
+If the rider is on any preposition, say yes.
+If the rider's token is any qualifier, say no.
+If the rider's token is any literal, say no.
+If the rider's token is any called, say yes.
+If the rider's token is any equal, say yes.
+If the rider's token is blank, say no.
 Say yes.
 
 To decide if a string is any negative word:
@@ -2566,139 +2595,167 @@ If the string is "'", say yes.
 \If the string is "dumas", say yes.
 Say no.
 
-To decide if a string is any preposition:
-If the string is "about", say yes.
-\If the string is "sobre", say yes.
-\If the string is "mais ou menos", say yes.
-\If the string is "aproximadamente", say yes.
-If the string is "above", say yes.
-\If the string is "acima", say yes.
-\If the string is "em cima", say yes.
-If the string is "across", say yes.
-\If the string is "cruzando", say yes.
-If the string is "after", say yes.
-\If the string is "após", say yes.
-\If the string is "depois", say yes.
-If the string is "against", say yes.
-\If the string is "contra", say yes.
-If the string is "all", say yes.
-\If the string is "tudo", say yes.
-\If the string is "todo", say yes.
-\If the string is "todos", say yes.
-If the string is "alone", say yes.
-\If the string is "apenas", say yes.
-\If the string is "sozinho", say yes.
-If the string is "along", say yes.
-If the string is "among", say yes.
-\If the string is "no meio", say yes.
-If the string is "any", say yes.
-\If the string is "qualquer", say yes.
-\If the string is "quaisquer", say yes.
-If the string is "anywhere", say yes.
-\If the string is "qualquer lugar", say yes.
-\If the string is "todo lugar", say yes.
-If the string is "around", say yes.
-If the string is "as", say yes.
-If the string is "at", say yes.
-If the string is "away", say yes.
-If the string is "back", say yes.
-If the string is "backward", say yes.
-If the string is "backwards", say yes.
-If the string is "before", say yes.
-If the string is "beginning", say yes.
-If the string is "behind", say yes.
-If the string is "below", say yes.
-If the string is "beneath", say yes.
-If the string is "beside", say yes.
-If the string is "between", say yes.
-If the string is "beyond", say yes.
-If the string is "bigger", say yes.
-If the string is "by", say yes.
-If the string is "close", say yes.
-If the string is "deep", say yes.
-If the string is "diagonally", say yes.
-If the string is "down", say yes.
-If the string is "downward", say yes.
-If the string is "ending", say yes.
-If the string is "everywhere", say yes.
-If the string is "except", say yes.
-If the string is "finishing", say yes.
-If the string is "facing", say yes.
-If the string is "for", say yes.
-If the string is "forward", say yes.
-If the string is "from", say yes.
-If the string is "given", say yes.
-If the string is "giving", say yes.
-If the string is "high", say yes.
-If the string is "in", say yes.
-If the string is "inside", say yes.
-If the string is "into", say yes.
-If the string is "larger", say yes.
-If the string is "leaning", say yes.
-If the string is "left", say yes.
-If the string is "leftward", say yes.
-If the string is "leftways", say yes.
-If the string is "like", say yes.
-If the string is "limiting", say yes.
-If the string is "long", say yes.
-If the string is "near", say yes.
-If the string is "of", say yes.
-\If the string is "de", say yes.
-\If the string is "da", say yes.
-\If the string is "do", say yes.
-\If the string is "dos", say yes.
-\If the string is "das", say yes.
-If the string is "off", say yes.
-If the string is "on", say yes.
-If the string is "only", say yes.
-If the string is "onto", say yes.
-If the string is "out", say yes.
-If the string is "outside", say yes.
-If the string is "over", say yes.
-If the string is "past", say yes.
-If the string is "pointing", say yes.
-If the string is "returning", say yes.
-If the string is "right", say yes.
-If the string is "rightward", say yes.
-If the string is "rightways", say yes.
-If the string is "shorter", say yes.
-If the string is "sideway", say yes.
-If the string is "sideways", say yes.
-If the string is "similar", say yes.
-If the string is "smaller", say yes.
-If the string is "somewhere", say yes.
-If the string is "slantwise", say yes.
-If the string is "slantway", say yes.
-If the string is "slantways", say yes.
-If the string is "starting", say yes.
-If the string is "tall", say yes.
-If the string is "taller", say yes.
-If the string is "thru", say yes.
-If the string is "through", say yes.
-If the string is "throughout", say yes.
-If the string is "to", say yes.
-If the string is "toward", say yes.
-If the string is "towards", say yes.
-If the string is "under", say yes.
-If the string is "underneath", say yes.
-If the string is "until", say yes.
-If the string is "unto", say yes.
-If the string is "up", say yes.
-If the string is "upward", say yes.
-If the string is "upon", say yes.
-If the string is "using", say yes.
-If the string is "via", say yes.
-If the string is "while", say yes.
-If the string is "wide", say yes.
-If the string is "with", say yes.
-\If the string is "com", say yes.
-If the string is "within", say yes.
-If the string is "without", say yes.
+To decide if a rider is on any preposition:
+Put the rider's token into a substring.
+\ Spanish prepositions
+If the rider is on any Spanish to, say yes. \ "a" followed by an article is "to" in spanish
+If the substring is "abajo", say yes. \ down
+If the substring is "arriba", say yes. \ up
+If the substring is "ante", say yes. \ before
+If the substring is "antes", say yes. \ before
+If the substring is "bajo", say yes. \ below
+If the substring is "cabe", say yes. \ fit
+If the substring is "cerca", say yes. \ near
+If the substring is "con", say yes. \ with
+If the substring is "contra", say yes. \ against
+\ If the substring is "de", say yes. \ reverse-possessive indicator 
+If the substring is "dada", say yes. \ given
+If the substring is "dado", say yes. \ given
+If the substring is "dando", say yes. \ given
+If the substring is "derecha", say yes. \ right
+If the substring is "desde", say yes. \ since
+If the substring is "después", say yes. \ after
+If the substring is "durante", say yes. \ during
+If the substring is "en", say yes. \ in
+If the substring is "entre", say yes. \ between
+If the substring is "hacia", say yes. \ toward
+If the substring is "hasta", say yes. \ until
+If the substring is "izquierda", say yes. \ left
+If the substring is "mediante", say yes. \ through
+If the substring is "para", say yes. \ to
+If the substring is "por", say yes. \ by
+If the substring is "según", say yes. \ according
+If the substring is "sin", say yes. \ without
+If the substring is "so", say yes.
+If the substring is "sobre", say yes. \ on
+If the substring is "tras", say yes. \ after
+If the substring is "usando", say yes. \ using
+If the substring is "versus", say yes. \ versus
+If the substring is "vía", say yes. \ via
+\ English prepositions
+If the substring is "about", say yes.
+If the substring is "above", say yes.
+If the substring is "across", say yes.
+If the substring is "after", say yes.
+If the substring is "against", say yes.
+If the substring is "all", say yes.
+If the substring is "alone", say yes.
+If the substring is "along", say yes.
+If the substring is "among", say yes.
+If the substring is "any", say yes.
+If the substring is "anywhere", say yes.
+If the substring is "around", say yes.
+If the substring is "as", say yes.
+If the substring is "at", say yes.
+If the substring is "away", say yes.
+If the substring is "back", say yes.
+If the substring is "backward", say yes.
+If the substring is "backwards", say yes.
+If the substring is "before", say yes.
+If the substring is "beginning", say yes.
+If the substring is "behind", say yes.
+If the substring is "below", say yes.
+If the substring is "beneath", say yes.
+If the substring is "beside", say yes.
+If the substring is "between", say yes.
+If the substring is "beyond", say yes.
+If the substring is "bigger", say yes.
+If the substring is "by", say yes.
+If the substring is "close", say yes.
+If the substring is "deep", say yes.
+If the substring is "diagonally", say yes.
+If the substring is "down", say yes.
+If the substring is "downward", say yes.
+If the substring is "ending", say yes.
+If the substring is "everywhere", say yes.
+If the substring is "except", say yes.
+If the substring is "finishing", say yes.
+If the substring is "facing", say yes.
+If the substring is "for", say yes.
+If the substring is "forward", say yes.
+If the substring is "from", say yes.
+If the substring is "given", say yes.
+If the substring is "giving", say yes.
+If the substring is "high", say yes.
+If the substring is "in", say yes.
+If the substring is "inside", say yes.
+If the substring is "into", say yes.
+If the substring is "en", say yes.
+If the substring is "larger", say yes.
+If the substring is "leaning", say yes.
+If the substring is "left", say yes.
+If the substring is "leftward", say yes.
+If the substring is "leftways", say yes.
+If the substring is "like", say yes.
+If the substring is "limiting", say yes.
+If the substring is "long", say yes.
+If the substring is "near", say yes.
+If the substring is "of", say yes.
+If the substring is "off", say yes.
+If the substring is "on", say yes.
+If the substring is "only", say yes.
+If the substring is "onto", say yes.
+If the substring is "out", say yes.
+If the substring is "outside", say yes.
+If the substring is "over", say yes.
+If the substring is "past", say yes.
+If the substring is "pointing", say yes.
+If the substring is "returning", say yes.
+If the substring is "right", say yes.
+If the substring is "rightward", say yes.
+If the substring is "rightways", say yes.
+If the substring is "shorter", say yes.
+If the substring is "sideway", say yes.
+If the substring is "sideways", say yes.
+If the substring is "similar", say yes.
+If the substring is "smaller", say yes.
+If the substring is "somewhere", say yes.
+If the substring is "slantwise", say yes.
+If the substring is "slantway", say yes.
+If the substring is "slantways", say yes.
+If the substring is "starting", say yes.
+If the substring is "tall", say yes.
+If the substring is "taller", say yes.
+If the substring is "thru", say yes.
+If the substring is "through", say yes.
+If the substring is "throughout", say yes.
+If the substring is "to", say yes.
+If the substring is "toward", say yes.
+If the substring is "towards", say yes.
+If the substring is "under", say yes.
+If the substring is "underneath", say yes.
+If the substring is "until", say yes.
+If the substring is "unto", say yes.
+If the substring is "up", say yes.
+If the substring is "upward", say yes.
+If the substring is "upon", say yes.
+If the substring is "using", say yes.
+If the substring is "via", say yes.
+If the substring is "while", say yes.
+If the substring is "wide", say yes.
+If the substring is "with", say yes.
+If the substring is "within", say yes.
+If the substring is "without", say yes.
 Say no.
 
 To decide if a string is any qualifier:
 If the string is blank, say no.
 If the string's first's target is the left-paren byte, say yes.
+Say no.
+
+\To decide if a string is any reverse-possessive:
+\If the string is "uv", say yes.
+\If the string is "de", say yes.
+\If the string is "del", say yes. \ short for "de el", expanded in "compile a term given a rider and a field name (reverse-possessive)"
+\Say no.
+
+To decide if a rider is on any reverse-possessive:
+Privatize the rider.
+If the rider's token is "uv", say yes.
+\If the rider's token is "del", say yes. \ short for "de el", expanded in "compile a term given a rider and a field name (reverse-possessive)"
+If the rider's token is not "de", say no.
+Move the rider (compiler rules).
+If the rider's token is any article, say yes.
 Say no.
 
 To decide if a string is any string literal:
@@ -2794,41 +2851,83 @@ If the string is "starts", say yes. \ does not start \ doesn't start
 Say no.
 
 To decide if a string is the start of any definition:
+If the string is "para", say yes.
 If the string is "to", say yes.
-If the string is "Para", say yes.
-\If the string is "como", say yes.
-If the string is "a", say yes.
-\If the string is "Um", say yes.
-\If the string is "Uma", say yes.
-\If the string is "Uns", say yes.
-\If the string is "Umas", say yes.
-If the string is "an", say yes.
-If the string is "the", say yes.
-\If the string is "o", say yes.
-\If the string is "os", say yes.
-\If the string is "as", say yes.
-If the string is "algum", say yes.
-If the string is "alguns", say yes.
-If the string is "alguma", say yes.
-If the string is "algumas", say yes.
-If the string is "some", say yes.
+If the string is any indefinite article, say yes.
+If the string is any definite article, say yes.
+\If the string is "to", say yes.
+\If the string is "a", say yes.
+\If the string is "an", say yes.
+\If the string is "the", say yes.
+\If the string is "some", say yes.
+Say no.
+
+To decide if a string is any conditional:
+If the string is "si", say yes.
+If the string is "cuando", say yes.
+If the string is "if", say yes.
+Say no.
+
+To decide if a string is any privatize:
+If the string is "privatizar", say yes.
+If the string is "privatize", say yes.
+Say no.
+
+To decide if a string is any loop:
+If the string is "lazo", say yes.
+If the string is "loop", say yes.
+Say no.
+
+To decide if a string is any break:
+If the string is "interrumpir", say yes.
+If the string is "break", say yes.
+Say no.
+
+To decide if a string is any exit:
+If the string is "salir", say yes.
+If the string is "exit", say yes.
+Say no.
+
+To decide if a string is any repeat:
+If the string is "repetir", say yes.
+If the string is "repeat", say yes.
+Say no.
+
+To decide if a string is any say:
+If the string is "diga", say yes.
+If the string is "di", say yes.
+If the string is "say", say yes.
+Say no.
+
+To decide if a string is any decide:
+If the string is "decidir", say yes.
+If the string is "decide", say yes.
+Say no.
+
+To decide if a string is any call:
+If the string is "llamada", say yes.
+If the string is "call", say yes.
+Say no.
+
+To decide if a string is any point:
+If the string is "apuntar", say yes.
+If the string is "point", say yes.
+Say no.
+
+To decide if a string is any employ:
+If the string is "emplear", say yes.
+If the string is "employ", say yes.
 Say no.
 
 To decide if a string is the start of any expression:
 If the string is any sign, say yes.
 If the string is any indefinite article, say yes.
-If the string is "the", say yes.
-\If the string is "o", say yes.
-\If the string is "os", say yes.
-\If the string is "as", say yes.
+If the string is any definite article, say yes.
 If the string is any literal, say yes.
 Say no.
 
 To decide if a string is the start of any global:
-If the string is "the", say yes.
-\If the string is "o", say yes.
-\If the string is "os", say yes.
-\If the string is "as", say yes.
+If the string is any definite article, say yes.
 Say no.
 
 To decide if a string is the start of any new local:
@@ -2843,8 +2942,8 @@ If the string is "with", say yes.
 Say no.
 
 To decide if a string is the start of any routine:
-If the string is "to", say yes.
 If the string is "para", say yes.
+If the string is "to", say yes.
 \If the string is "como", say yes.
 \If the string is "função", say yes.
 Say no.
@@ -2857,17 +2956,10 @@ If the string is blank, say no.
 Say yes.
 
 To decide if a string is the start of any type:
-If the string is "a", say yes.
-If the string is "an", say yes.
-If the string is "some", say yes.
-\If the string is "um", say yes.
-\If the string is "uma", say yes.
-\If the string is "uns", say yes.
-\If the string is "umas", say yes.
-If the string is "alguns", say yes.
-If the string is "algumas", say yes.
-If the string is "algum", say yes.
-If the string is "alguma", say yes.
+If the string is any indefinite article, say yes.
+\If the string is "a", say yes.
+\If the string is "an", say yes.
+\If the string is "some", say yes.
 Say no.
 
 To decide if a string is the start of any variable:
@@ -4443,7 +4535,7 @@ Scan the field's name given the rider.
 To scan a field given a rider (redefine part):
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
-If the rider's token is not "the", abort with "Eu estava esperando o artigo 'the', mas o que encontrei foi '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not any definite article, abort with "Eu estava esperando o artigo 'the', mas o que encontrei foi '" then the rider's token then "'." and the rider; exit.
 Move the rider (compiler rules).
 Scan the field's redefinition target name given the rider.
 
@@ -4505,8 +4597,8 @@ If the compiler's abort flag is set, exit.
 Add the global to the globals given "global" and the rider's token's first.
 Move the rider (compiler rules).
 Scan the global's name given the rider.
-If the rider's token is "has" or "have", scan the global given the rider (has or have); exit.
-If the rider's token is not "is" or "are", abort with "Você tem que usar um 'is' ou um 'are' mas você usou um '" then the rider's token then "'." and the rider; exit. 
+\If the rider's token is "has" or "have", scan the global given the rider (has or have); exit.
+\If the rider's token is not "is" or "are", abort with "Você tem que usar um 'is' ou um 'are' mas você usou um '" then the rider's token then "'." and the rider; exit. 
 \If the rider's token is not any definidor, abort with "Você usou um termo definidor '" then the rider's token then "' no lugar errado." and the rider; exit. 
 \Talvez dê para ampliar isso aqui colocando as exceções problemáticas
 
@@ -4517,7 +4609,7 @@ If the rider's token is not any indefinite article, scan the global given the ri
 Move the rider (compiler rules).
 Scan the global's type name given the rider.  
 If the rider's token is the start of any optional info, scan the global given the rider (optional info); exit.
-If the rider's token is "equal", scan the global given the rider (data part); exit.
+If the rider's token is any equal, scan the global given the rider (data part); exit.
 If the rider's token is not the period byte, abort with "Toda definição precisa terminar com um ponto. Inclusive essa." and the rider; exit. 
 Move the rider (compiler rules).
 Index the global.
@@ -4525,7 +4617,7 @@ Index the global.
 To scan a global given a rider (data part):
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
-If the rider's token is not "to", abort with "Depois da palavra 'equal' você precisa por a palavra  'to'. Você colocou ; '" then the rider's token then "'." and the rider; exit. 
+If the rider's token is not any to, abort with "Depois da palavra 'equal' você precisa por a palavra  'to'. Você colocou ; '" then the rider's token then "'." and the rider; exit. 
 Move the rider (compiler rules).
 Scan the global's global body given the rider.
 If the rider's token is not the period byte, abort with "Falta terminar a frase com um ponto." and the rider; exit. 
@@ -4647,14 +4739,15 @@ Repeat.
 
 To scan a type given a rider:
 If the compiler's abort flag is set, exit.
-If the rider's token is any english indefinite article, set an english flag. \CAL
+If the rider's token is any english indefinite article, set an english flag. \CAL/SAL
 Add the type to the types given the rider's token's first.
 Move the rider (compiler rules).
 Scan the type's name given the rider.
 Put the type's name into the type's plural name.
-Pluralize the type's plural name.
-If the rider's token is "has" or "have", scan the type given the rider (has or have); exit.
-If the rider's token is not "is" or "are", abort with "Faltou usar um 'is' ou um 'are', você usou '" then the rider's token then "'." and the rider; exit.
+If the english flag is set, pluralize the type's plural name (english rules).
+If the english flag is not set, pluralize the type's plural name (spanish rules).
+If the rider's token is any has, scan the type given the rider (has or have); exit.
+If the rider's token is not any is, abort with "Faltou usar um 'is' ou um 'are', você usou '" then the rider's token then "'." and the rider; exit.
 Move the rider (compiler rules).
 If the rider's token is any numeric literal, scan the type given the rider (unit of measure); exit.
 If the rider's token is not any indefinite article, abort with "Faltou um artigo indefinido, lembra? '" then the rider's token then "'." and the rider; exit. 
@@ -4935,7 +5028,8 @@ A literal (reference) [globals only - constant with which to initalize the globa
 A hex string called data [literals only].
 
 The writing timer is a timer.
-To skip any trailing noise in a substring: \ daqui pra baixo é SAL
+
+To skip any trailing noise in a substring:
 If the substring is blank, exit.
 If the substring's last's target is not noise, exit.
 Subtract 1 from the substring's last.
