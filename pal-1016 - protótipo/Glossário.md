@@ -486,7 +486,7 @@ tags restantes para adicionar:
 |import header|–|–|–|–|–|
 |increment tag|–|–|–|–|–|
 |~~indent~~|–|–|–|–|–|
-|input|fluxo de entrada|–|–|–|–|
+|input|fluxo de entrada|inserção|–|–|–|
 |insert key|–|–|–|–|–|
 |intel tag|–|–|–|–|–|
 |intermediate|–|–|–|–|–|
@@ -988,4 +988,6 @@ tags restantes para adicionar:
 |y-key|–|–|–|–|–|
 |zero byte|–|–|–|–|–|
 |zero key|–|–|–|–|–|
-|z-key|–|–|–|–|–|
+|z-key|–|–|–|–|–| 
+
+
