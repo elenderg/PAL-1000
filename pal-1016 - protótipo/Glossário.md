@@ -4,8 +4,8 @@
 |add <sup>[E]</sup>|adicionar|–|–|–|–|
 |anywhere <sup>[D]</sup>|algures|qualquer|–|–|em qualquer lugar|
 |anywhere <sup>[E]</sup>|-|–|–|–|algum lugar|
-|append <sup>[D]</sup>|prepor|atar|apor|ligar|–|
-|append <sup>[E]</sup>|prepor|–|–|–|–|
+|append <sup>[D]</sup>|pospor|atar|apor|ligar|–|
+|append <sup>[E]</sup>|pospor|–|–|–|–|
 |box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
 |box <sup>[E]</sup>|–|–|–|–|–|
 |break <sup>[D]</sup>|parar|pare|interrompa|interromper|–|
