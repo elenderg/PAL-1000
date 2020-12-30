@@ -4,7 +4,7 @@
 |add <sup>[E]</sup>|adicionar|–|–|–|–|
 |anywhere <sup>[D]</sup>|algures|qualquer|–|–|em qualquer lugar|
 |anywhere <sup>[E]</sup>|-|–|–|–|algum lugar|
-|append <sup>[D]</sup>|atar|apor|ligar|associar|–|
+|append <sup>[D]</sup>|preporc|atar|apor|ligar|–|
 |append <sup>[E]</sup>|prepor|–|–|–|–|
 |box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
 |box <sup>[E]</sup>|–|–|–|–|–|
@@ -62,6 +62,8 @@
 |pick <sup>[E]</sup>|coletar|–|–|–|–|
 |point <sup>[D]</sup>|foco|meta|objetivo|–|–|
 |point <sup>[E]</sup>|ponto|–|–|–|–|
+|prepend <sup>[D]</sup>|prepor|antepor|–|–|–|
+|prepend <sup>[E]</sup>|–|–|–|–|–|
 |query string <sup>[D]</sup>|questionamento|–|–|inscrição de consulta||
 |query string <sup>[E]</sup>|texto da consulta|–|–|–|–|
 |rainbow color <sup>[D]</sup>|furta-cor|–|–|cor do arco-íris|–|
