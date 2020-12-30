@@ -4,7 +4,7 @@
 |add <sup>[E]</sup>|adicionar|–|–|–|–|
 |anywhere <sup>[D]</sup>|algures|qualquer|–|–|em qualquer lugar|
 |anywhere <sup>[E]</sup>|-|–|–|–|algum lugar|
-|append <sup>[D]</sup>|preporc|atar|apor|ligar|–|
+|append <sup>[D]</sup>|prepor|atar|apor|ligar|–|
 |append <sup>[E]</sup>|prepor|–|–|–|–|
 |box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
 |box <sup>[E]</sup>|–|–|–|–|–|
