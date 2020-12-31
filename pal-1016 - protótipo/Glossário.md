@@ -221,7 +221,7 @@ tags restantes para adicionar:
 |button|botão|-|-|-|-|
 |byte|–|–|–|–|byte|
 |byte count|–|–|–|–|conta de byte|
-|bar<br/>barmstyle<br/>bcontrast<br/>bfamilytype<br/>big-endiunsigned wyrd<br/>bitmapdata<br/>bletterform<br/>blue byte<br/>bmidline<br/>boroughbox<br/>bproportion<br/>bserifstyle<br/>bstrokevariation<br/>bucket record<br/>bweight<br/>bxheight<b||||||
+|bar<br/>barmstyle<br/>bcontrast<br/>bfamilytype<br/>big-endiunsigned wyrd<br/>bitmapdata<br/>bletterform<br/>blue byte<br/>bmidline<br/>boroughbox<br/>bproportion<br/>bserifstyle<br/>bstrokevariation<br/>bucket record<br/>bweight<br/>bxheight<br/>||||||
 
 ### #C
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
