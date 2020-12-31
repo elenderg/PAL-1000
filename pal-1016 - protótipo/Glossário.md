@@ -388,6 +388,7 @@ tags restantes para adicionar:
 |double-dagger byte|–|byte-‡|–|–|–|
 |double-quote byte|–|byte-aspas|–|–|–|
 |down-arrow key|–|tecla-⬇️|–|–|–|
+|dyad|-|-|-|-|-|
 
 ### #E
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -974,6 +975,7 @@ tags restantes para adicionar:
 ### #V
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
+|value string|-|-|-|-|-|
 |vertical-bar byte|–|–|–|–|–|
 |vertical-tab byte|–|–|–|–|–|
 |very dark color|–|–|–|–|–|
