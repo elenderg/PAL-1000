@@ -257,6 +257,7 @@ tags restantes para adicionar:
 |copyright byte|–|–|–|–|byte-©|
 |count|–|–|–|–|conta|
 |counter|–|–|–|–|contador|
+|crypt session|-|-|-|-|-|
 |cross byte|pedaço contendo um mais|-|–|–|–|
 |ctrl key|–|–|–|–|tecla-ctrl|
 |currency-sign byte|–|–|–|–|–|
@@ -388,6 +389,7 @@ tags restantes para adicionar:
 |distance|–|–|–|–|distância|
 |division-symbol byte|–|byte-÷|byte-divisão|–|-|
 |d-key|–|–|–|–|tecla-d|
+|document|documento|-|-|-|-|
 |document indent|–|–|–|–|–|
 |dollar-sign byte|–|byte-$|–|–|–|
 |double-dagger byte|–|byte-‡|–|–|–|
@@ -991,7 +993,7 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–|–|
-|<br/>command<br/>console<br/>context<br/>crypt session<br/>document<br/>dyad<br/>entry<br/>event<br/>font info<br/>fragment<br/>import<br/>index<br/>menu<br/>monikette<br/>node<br/>node<br/>page<br/>paragraph<br/>pdf object<br/>pdf outline entry<br/>picture<br/>polygon<br/>quora<br/>refer<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/>tab<br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/>vertex<br/>winhttp request<br/>font widths<br/><br/><br/>||||||
+|<br/>dyad<br/>entry<br/>event<br/>font info<br/>fragment<br/>import<br/>index<br/>menu<br/>monikette<br/>node<br/>node<br/>page<br/>paragraph<br/>pdf object<br/>pdf outline entry<br/>picture<br/>polygon<br/>quora<br/>refer<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/><br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/>vertex<br/>winhttp request<br/>font widths<br/><br/><br/>||||||
 
 ### #WXYZ
 
