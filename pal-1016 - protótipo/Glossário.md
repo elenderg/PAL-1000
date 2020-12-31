@@ -426,8 +426,9 @@ tags restantes para adicionar:
 |fancy arrow|Seta elegante|–|–|–|–|
 |feminine byte|–|byte-ª|–|–|–|
 |figure|–|–|–|–|–|
-|file|–|–|–|–|–|
-|fileext|–|–|–|–|–|
+|file|arquivo|–|–|–|–|
+|fileext|extensão de arquivo|–|–|–|–|
+|file name|nome do arquivo com extensão|||||
 |file-separator byte|–|–|–|–|–|
 |finalize tag|–|–|–|–|–|
 |five byte|–|–|–|–|–|
