@@ -800,7 +800,7 @@ tags restantes para adicionar:
 |precise degree|–|–|–|–|–|
 |printer canvas|–|–|–|–|–|
 |printer device mode|–|–|–|–|–|
-|print-screen key|–|–|–|–|–|
+|print-screen key|Tecla Print Screen|Tecla Prt Scr|–|–|-|
 |process|–|–|–|–|–|
 |prolog tag|–|–|–|–|–|
 |purple color|–|–|–|–|–|
