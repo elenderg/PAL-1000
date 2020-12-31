@@ -414,6 +414,7 @@ tags restantes para adicionar:
 |end-of-transmission-block byte|–|–|–|–|–|
 |enquiry byte|–|–|–|–|–|
 |enter key|–|–|–|–|–|
+|entry|entrada|-|-|-|-|
 |epilog tag|–|–|–|–|–|
 |equal-sign byte|–|–|–|–|–|
 |equal-sign key|–|–|–|–|–|
@@ -427,6 +428,7 @@ tags restantes para adicionar:
 |exclamation-mark byte|–|–|–|–|–|
 |exit tag|–|–|–|–|–|
 |extra points|–|–|–|–|–|
+|event|-|-|-|-|-|
 
 ### #F
 
@@ -448,10 +450,12 @@ tags restantes para adicionar:
 |five key|–|–|–|–|–|
 |f-key|–|–|–|–|–|
 |font height|–|–|–|–|–|
+|font info|-|-|-|-|-|
 |font resource|–|–|–|–|–|
 |form-feed byte|–|–|–|–|–|
 |four byte|–|–|–|–|–|
 |four key|–|–|–|–|–|
+|fragment|-|-|-|-|-|
 |free tab|aba livre|aba vazia|–|–|–|
 
 ### #G
@@ -505,9 +509,11 @@ tags restantes para adicionar:
 |i-beam cursor|–|–|–|–|–|
 |iid|Número identificador da interface|–|–|–|–|
 |i-key|–|–|–|–|–|
+|import|-|-|-|-|-|
 |import header|–|–|–|–|–|
 |increment tag|–|–|–|–|–|
 |~~indent~~|–|–|–|–|–|
+|index|-|-|-|-|-|
 |input|fluxo de entrada|inserção|–|imposição|impor|
 |insert key|–|–|–|–|–|
 |intel tag|–|–|–|–|–|
@@ -993,7 +999,7 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–|–|
-|<br/>dyad<br/>entry<br/>event<br/>font info<br/>fragment<br/>import<br/>index<br/>menu<br/>monikette<br/>node<br/>node<br/>page<br/>paragraph<br/>pdf object<br/>pdf outline entry<br/>picture<br/>polygon<br/>quora<br/>refer<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/><br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/>vertex<br/>winhttp request<br/>font widths<br/><br/><br/>||||||
+|<br/><br/>menu<br/>monikette<br/>node<br/>node<br/>page<br/>paragraph<br/>pdf object<br/>pdf outline entry<br/>picture<br/>polygon<br/>quora<br/>refer<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/><br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/>vertex<br/>winhttp request<br/>font widths<br/><br/><br/>||||||
 
 ### #WXYZ
 
