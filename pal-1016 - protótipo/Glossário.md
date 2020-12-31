@@ -1007,6 +1007,7 @@ tags restantes para adicionar:
 |two byte|–|–|–|–|–|
 |two key|–|–|–|–|–|
 |type|tipo|–|–|–|–|
+|talker object<br/>talker vtable record<br/>term<br/>textmetric<br/>thing record<br/>time<br/>timer<br/>timestamp<br/>timestamp<br/>tmascent<br/>tmavecharwidth<br/>tmbreakchar<br/>tmcharset<br/>tmdefaultchar<br/>tmdescent<br/>tmdigitizedaspectx<br/>tmdigitizedaspecty<br/>tmexternalleading<br/>tmfirstchar<br/>tmheight<br/>tminternalleading<br/>tmitalic<br/>tmlastchar<br/>tmmaxcharwidth<br/>tmoverhang<br/>tmpitchandfamily<br/>tmstruckout<br/>tmunderlined<br/>tmweight<br/>||||||
 
 ### #U
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -1036,7 +1037,7 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–| -          |
-|talker object<br/>talker vtable record<br/>term<br/>textmetric<br/>thing record<br/>time<br/>timer<br/>timestamp<br/>timestamp<br/>tmascent<br/>tmavecharwidth<br/>tmbreakchar<br/>tmcharset<br/>tmdefaultchar<br/>tmdescent<br/>tmdigitizedaspectx<br/>tmdigitizedaspecty<br/>tmexternalleading<br/>tmfirstchar<br/>tmheight<br/>tminternalleading<br/>tmitalic<br/>tmlastchar<br/>tmmaxcharwidth<br/>tmoverhang<br/>tmpitchandfamily<br/>tmstruckout<br/>tmunderlined<br/>tmweight<br/>vertex array record<br/>vtable<br/>vtable<br/>|||||            |
+|vertex array record<br/>vtable<br/>vtable<br/>|||||            |
 
 ### #WXYZ
 
