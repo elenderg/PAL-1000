@@ -852,7 +852,7 @@ tags restantes para adicionar:
 |right-single-quote byte|–|–|–|–|–|
 |right-window key|–|–|–|–|–|
 |rise|–|–|–|–|–|
-|r-key|–|–|–|–|–|
+|r-key|tecla r|-|–|–|–|
 |routine|tarefa|–|–|–|–|
 |routine address tag|–|–|–|–|–|
 |routine reference|–|–|–|–|–|
@@ -878,10 +878,10 @@ tags restantes para adicionar:
 |seven key|–|–|–|–|–|
 |shape|–|–|–|–|–|
 |shape clipboard|–|–|–|–|–|
-|sharp-s byte|–|–|–|–|–|
-|shift key|–|–|–|–|–|
-|shift-in byte|–|–|–|–|–|
-|shift-out byte|–|–|–|–|–|
+|sharp-s byte|byte-ß|–|–|–|–|
+|shift key|tecla shift|–|–|–|–|
+|shift-in byte|byte de shift pressionado|–|–|–|–|
+|shift-out byte|byte de shift liberado|–|–|–|–|
 |single-quote byte|–|–|–|–|–|
 |six byte|–|–|–|–|–|
 |six key|–|–|–|–|–|
