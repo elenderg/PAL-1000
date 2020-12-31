@@ -803,6 +803,8 @@ tags restantes para adicionar:
 |path|endereço completo do arquivo contendo extensão|endereço|–|–|–|
 |pause key|–|–|–|–|–|
 |pdf|arquivo pdf|–|–|–|–|
+|pdf object|-|-|-|-|-|
+|pdf outline entry|-|-|-|-|-|
 |pen|–|–|–|–|–|
 |pen size|–|–|–|–|–|
 |per|–|–|–|–|–|
@@ -810,6 +812,7 @@ tags restantes para adicionar:
 |percent-sign byte|–|–|–|–|–|
 |period byte|–|–|–|–|–|
 |per-mille-sign byte|–|–|–|–|–|
+|picture|-|-|-|-|-|
 |pink color|–|–|–|–|–|
 |pink pen|–|–|–|–|–|
 |p-key|–|–|–|–|–|
@@ -991,6 +994,7 @@ tags restantes para adicionar:
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |value string|-|-|-|-|-|
+|vertex|-|-|-|-|-|
 |vertical-bar byte|–|–|–|–|–|
 |vertical-tab byte|–|–|–|–|–|
 |very dark color|–|–|–|–|–|
@@ -1000,7 +1004,7 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–|–|
-|<br/><br/>pdf object<br/>pdf outline entry<br/>picture<br/>polygon<br/>quora<br/>refer<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/><br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/>vertex<br/>winhttp request<br/>font widths<br/>||||||
+|<br/>polygon<br/>quora<br/>refer<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/><br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/><br/>winhttp request<br/>font widths<br/>||||||
 
 ### #WXYZ
 
