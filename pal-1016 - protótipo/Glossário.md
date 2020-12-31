@@ -997,6 +997,8 @@ tags restantes para adicionar:
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |value string|-|-|-|-|-|
+|variable|-|-|-|-|-|
+|verse|-|-|-|-|-|
 |vertex|-|-|-|-|-|
 |vertical-bar byte|–|–|–|–|–|
 |vertical-tab byte|–|–|–|–|–|
@@ -1007,7 +1009,7 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–|–|
-|<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/><br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/><br/>winhttp request<br/>font widths<br/>||||||
+|shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/>terminal<br/>text<br/>type<br/><br/>font widths<br/>||||||
 
 ### #WXYZ
 
@@ -1018,6 +1020,7 @@ tags restantes para adicionar:
 |white pen|–|–|–|–|–|
 |width|–|–|–|–|–|
 |window|–|–|–|–|–|
+|winhttp request|-|-|-|-|-|
 |w-key|–|–|–|–|–|
 |w-param|–|–|–|–|–|
 |x-key|–|–|–|–|–|
