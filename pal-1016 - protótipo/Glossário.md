@@ -424,7 +424,7 @@ tags restantes para adicionar:
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |fancy arrow|Seta elegante|–|–|–|–|
-|feminine byte|–|–|–|–|–|
+|feminine byte|–|byte-ª|–|–|–|
 |figure|–|–|–|–|–|
 |file|–|–|–|–|–|
 |fileext|–|–|–|–|–|
@@ -696,7 +696,7 @@ tags restantes para adicionar:
 |magenta pen|–|–|–|–|–|
 |main window|–|–|–|–|–|
 |margin|–|–|–|–|–|
-|masculine byte|–|–|–|–|–|
+|masculine byte|–|byte-º|–|–|–|
 |mask|máscara|enfeite|maquiagem|–|–|
 |max page undos|–|–|–|–|–|
 |max text undos|–|–|–|–|–|
