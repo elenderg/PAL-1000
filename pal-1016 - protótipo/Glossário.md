@@ -421,6 +421,8 @@ tags restantes para adicionar:
 |extra points|–|–|–|–|–|
 
 ### #F
+
+
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |fancy arrow|Seta elegante|–|–|–|–|
@@ -428,10 +430,12 @@ tags restantes para adicionar:
 |figure|–|–|–|–|–|
 |file|arquivo|–|–|–|–|
 |fileext|extensão de arquivo|–|–|–|–|
-|file name|nome do arquivo contendo extensão|||||
-|file name w/o extension|norme do arquivo sem extensão|||||
+|file name|nome do arquivo contendo extensão|-|-|-|-|
+|file name w/o extension|norme do arquivo sem extensão|-|-|-|-|
 |file-separator byte|–|–|–|–|–|
+|filetime||||||
 |finalize tag|–|–|–|–|–|
+|find anchor|-|-|-|-|-|
 |five byte|–|–|–|–|–|
 |five key|–|–|–|–|–|
 |f-key|–|–|–|–|–|
