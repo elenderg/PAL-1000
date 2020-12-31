@@ -538,6 +538,7 @@ tags restantes para adicionar:
 |less-than-sign byte|–|–|–|–|–|
 |letter|letra|–|–|–|–|
 |letter height|–|–|–|–|–|
+|lexicon|léxico|-|-|-|-|
 |light blue color|–|–|–|–|–|
 |light blue pen|–|–|–|–|–|
 |light color|–|–|–|–|–|
@@ -1007,6 +1008,6 @@ tags restantes para adicionar:
 |zero byte|–|–|–|–|–|
 |zero key|–|–|–|–|–|
 |z-key|–|–|–|–|–|
-|<br/><br/>choice<br/>command<br/>console<br/>context<br/>crypt session<br/>document<br/>dyad<br/>entry<br/>event<br/>font info<br/>fragment<br/>import<br/>index<br/>menu<br/>monikette<br/>node<br/>node<br/>page<br/>paragraph<br/>pdf object<br/>pdf outline entry<br/>picture<br/>polygon<br/>quora<br/>refer<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/>tab<br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/>vertex<br/>winhttp request<br/>font widths<br/>Bible<br/>dialog<br/>lexicon||||||
+|<br/><br/>choice<br/>command<br/>console<br/>context<br/>crypt session<br/>document<br/>dyad<br/>entry<br/>event<br/>font info<br/>fragment<br/>import<br/>index<br/>menu<br/>monikette<br/>node<br/>node<br/>page<br/>paragraph<br/>pdf object<br/>pdf outline entry<br/>picture<br/>polygon<br/>quora<br/>refer<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/>tab<br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/>vertex<br/>winhttp request<br/>font widths<br/>Bible<br/>dialog<br/>||||||
 
 
