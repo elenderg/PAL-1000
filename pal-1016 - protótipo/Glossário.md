@@ -12,6 +12,8 @@
 |break <sup>[E]</sup>|–|–|–|–|–|
 |bump <sup>[D]</sup>|acrescer|aumentar|incrementar|acrescentar|–|
 |bump <sup>[E]</sup>|–|–|–|–|–|
+|buffer <sup>[D]</sup>|depósito|–|–|báfer|bâfer|
+|buffer <sup>[E]</sup>|depósito|armazém|estoque|almoxarifado|–|
 |center <sup>[D]</sup>|centrar|centralizar|–|–|–|
 |center <sup>[E]</sup>|–|–|–|–|–|
 |change <sup>[D]</sup>|mudar|trocar|alterar|modificar|–|
@@ -20,7 +22,7 @@
 |clear <sup>[E]</sup>|–|–|–|–|–|
 |clipboard <sup>[D]</sup>|prancheta|–|–|área de transferência|–|
 |clipboard <sup>[E]</sup>|–|–|–|–|–|
-|console <sup>[D]</sup>|console|mostrador|–|–||
+|console <sup>[D]</sup>|console|mostrador|–|–|–|
 |console <sup>[E]</sup>|–|–|–|–|–|
 |dab <sup>[D]</sup>|matizar|pincelar|colorir|–|–|
 |dab <sup>[E]</sup>|–|–|–|–|–|
@@ -210,7 +212,7 @@ tags restantes para adicionar:
 |brownish color|–|–|–|–|castanho|
 |bucket|–|–|–|–|–|
 |bucket count|–|–|–|–|–|
-|buffer|depósito|armazém|estoque|almoxarifado|–|
+|~~buffer~~|depósito|armazém|estoque|almoxarifado|–|
 |built-in type|–|–|–|–|tipo embutido|
 |bullet byte|–|–|–|–|byte-marcador|
 |byte|–|–|–|–|byte|
