@@ -226,9 +226,9 @@ tags restantes para adicionar:
 ### #C
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|call external tag|–|–|–|–|–|
-|call indirect tag|–|–|–|–|–|
-|call internal tag|–|–|–|–|–|
+|call external tag|–|–|–|–|marca-evocar|
+|call indirect tag|–|–|–|–|marca-convocar|
+|call internal tag|–|–|–|–|marca-invocar|
 |cancel byte|–|–|–|–|byte cancelar|
 |canvas|painel|quadro|–|–|–|
 |caps key|–|tecla Fixa|–|–|tecla-fixar|
