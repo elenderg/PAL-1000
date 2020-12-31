@@ -907,6 +907,7 @@ tags restantes para adicionar:
 |seven key|–|–|–|–|–|
 |shape|–|–|–|–|–|
 |shape clipboard|–|–|–|–|–|
+|shape refer|-|-|-|-|-|
 |sharp-s byte|byte-ß|–|–|–|–|
 |shift key|tecla shift|–|–|–|–|
 |shift-in byte|byte de shift pressionado|–|–|–|–|
@@ -926,6 +927,8 @@ tags restantes para adicionar:
 |small-bullet byte|–|–|–|–|–|
 |soft-dash byte|–|–|–|–|–|
 |solid color|–|–|–|–|–|
+|source|-|-|-|-|-|
+|source file|-|-|-|-|-|
 |space byte|–|–|–|–|–|
 |space key|tecla espaço|barra de espaço|–|–|–|
 |square root|raiz quadrada|–|–|–|–|
@@ -960,6 +963,7 @@ tags restantes para adicionar:
 |teal color|verde-azulado|azul petróleo|verde petróleo|–|–|
 |teal pen|–|–|–|–|–|
 |terminal|–|–|–|–|–|
+|text|-|-|-|-|-|
 |text cutoff|–|–|–|–|–|
 |text margin|–|–|–|–|–|
 |the gptoken|grupo do sinal|–|–|–|–|
@@ -1009,7 +1013,7 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–|–|
-|shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/>terminal<br/>text<br/>type<br/><br/>font widths<br/>||||||
+|<br/>source<br/>stack entry<br/>string thing<br/>terminal<br/><br/>font widths<br/>||||||
 
 ### #WXYZ
 
