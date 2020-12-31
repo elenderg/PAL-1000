@@ -64,7 +64,7 @@
 |point <sup>[E]</sup>|ponto|–|–|–|–|
 |prepend <sup>[D]</sup>|prepor|antepor|–|–|–|
 |prepend <sup>[E]</sup>|–|–|–|–|–|
-|query string <sup>[D]</sup>|questionamento|–|–|inscrição de consulta||
+|query string <sup>[D]</sup>|consulta|questionamento|–|escrita de consulta|–|
 |query string <sup>[E]</sup>|texto da consulta|–|–|–|–|
 |rainbow color <sup>[D]</sup>|furta-cor|–|–|cor do arco-íris|–|
 |rainbow color <sup>[E]</sup>|cor da íris|–|–|–|–|
@@ -109,110 +109,110 @@ tags restantes para adicionar:
 |------------|------------|------------|------------|------------|------------|
 |abca|–|–|–|–|–|
 |abcc|–|–|–|–|–|
-|absolute position|–|–|–|–|–|
-|accent byte|–|–|–|–|–|
-|accent key|–|–|–|–|–|
-|acknowledge byte|–|–|–|–|–|
-|acute-accent byte|–|–|–|–|–|
-|adress|número do endereço|–|–|–|–|
-|a-key|–|–|–|–|–|
-|alt key|–|–|–|–|–|
+|absolute position|–|–|–|–|posição absoluta|
+|accent byte|–|–|–|–|byte-\`|
+|accent key|–|–|–|–|tecla-\`|
+|acknowledge byte|–|–|–|–|byte-ack|
+|acute-accent byte|–|–|–|–|byte-´|
+|adress|número do endereço|–|–|–|endereço|
+|a-key|–|–|–|–|tecla-a|
+|alt key|–|–|–|–|tecla-alt|
 |amount|quantia|quantidade|–|–|–|
-|ampersand byte|–|–|–|–|–|
-|angle|–|–|–|–|–|
-|arrow cursor|–|–|–|–|–|
-|asterisk byte|–|–|–|–|–|
-|at-sign byte|–|–|–|–|–|
+|ampersand byte|–|–|–|–|tecla-&|
+|angle|–|–|–|–|ângulo|
+|arrow cursor|–|–|–|–|seta|
+|asterisk byte|–|–|–|–|byte-\*|
+|at-sign byte|–|–|–|–|byte-@|
 
 ### #B
 
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|backslash|barra invertida|–|–|–|–|
-|backslash byte|–|–|–|–|–|
-|backspace key|–|–|–|–|–|
-|bar byte|–|–|–|–|–|
-|baseline|–|–|–|–|–|
-|bell byte|–|–|–|–|–|
-|big-a byte|–|–|–|–|–|
-|big-a-acute byte|–|–|–|–|–|
-|big-a-circumflex byte|–|–|–|–|–|
-|big-a-diaeresis byte|–|–|–|–|–|
-|big-ae byte|–|–|–|–|–|
-|big-a-grave byte|–|–|–|–|–|
-|big-a-ring byte|–|–|–|–|–|
-|big-a-tilde byte|–|–|–|–|–|
-|big-b byte|–|–|–|–|–|
-|big-c byte|–|–|–|–|–|
-|big-c-cedilla byte|–|–|–|–|–|
-|big-d byte|–|–|–|–|–|
-|big-e byte|–|–|–|–|–|
-|big-e-acute byte|–|–|–|–|–|
-|big-e-circumflex byte|–|–|–|–|–|
-|big-e-diaeresis byte|–|–|–|–|–|
-|big-e-grave byte|–|–|–|–|–|
-|big-eth byte|–|–|–|–|–|
-|big-f byte|–|–|–|–|–|
-|big-g byte|–|–|–|–|–|
-|big-h byte|–|–|–|–|–|
-|big-i byte|–|–|–|–|–|
-|big-i-acute byte|–|–|–|–|–|
-|big-i-circumflex byte|–|–|–|–|–|
-|big-i-diaeresis byte|–|–|–|–|–|
-|big-i-grave byte|–|–|–|–|–|
-|big-j byte|–|–|–|–|–|
-|big-k byte|–|–|–|–|–|
-|big-l byte|–|–|–|–|–|
-|big-m byte|–|–|–|–|–|
-|big-n byte|–|–|–|–|–|
-|big-n-tilde byte|–|–|–|–|–|
-|big-o byte|–|–|–|–|–|
-|big-o-acute byte|–|–|–|–|–|
-|big-o-circumflex byte|–|–|–|–|–|
-|big-o-diaeresis byte|–|–|–|–|–|
-|big-oe byte|–|–|–|–|–|
-|big-o-grave byte|–|–|–|–|–|
+|backslash|barra invertida|–|–|–|barra-inv|
+|backslash byte|–|–|–|–|byte-\\|
+|backspace key|–|–|–|–|tecla-\\|
+|bar byte|–|–|–|–|byte-pipe|
+|baseline|–|–|–|–|linha base|
+|bell byte|–|–|–|–|byte-sino|
+|big-a byte|–|–|–|–|byte-a maiúsculo|
+|big-a-acute byte|–|–|–|–|byte-á maiúsculo|
+|big-a-circumflex byte|–|–|–|–|byte-â maiúsculo|
+|big-a-diaeresis byte|–|–|–|–|byte-ä maiúsculo|
+|big-ae byte|–|–|–|–|byte-ae maiúsculo|
+|big-a-grave byte|–|–|–|–|byte-à maiúsculo|
+|big-a-ring byte|–|–|–|–|byte-å maiúsculo|
+|big-a-tilde byte|–|–|–|–|byte-ã maiúsculo|
+|big-b byte|–|–|–|–|byte-b maiúsculo|
+|big-c byte|–|–|–|–|byte-c maiúsculo|
+|big-c-cedilla byte|–|–|–|–|byte-ç maiúsculo|
+|big-d byte|–|–|–|–|byte-d maiúsculo|
+|big-e byte|–|–|–|–|byte-e maiúsculo|
+|big-e-acute byte|–|–|–|–|byte-é maiúsculo|
+|big-e-circumflex byte|–|–|–|–|byte-ê maiúsculo|
+|big-e-diaeresis byte|–|–|–|–|byte-ë maiúsculo|
+|big-e-grave byte|–|–|–|–|byte-è maiúsculo|
+|big-eth byte|–|–|–|–|byte-eth maiúsculo|
+|big-f byte|–|–|–|–|byte-f maiúsculo|
+|big-g byte|–|–|–|–|byte-g maiúsculo|
+|big-h byte|–|–|–|–|byte-h maiúsculo|
+|big-i byte|–|–|–|–|byte-i maiúsculo|
+|big-i-acute byte|–|–|–|–|byte-í maiúsculo|
+|big-i-circumflex byte|–|–|–|–|byte-î maiúsculo|
+|big-i-diaeresis byte|–|–|–|–|byte-ï maiúsculo|
+|big-i-grave byte|–|–|–|–|byte-ì maiúsculo|
+|big-j byte|–|–|–|–|byte-j maiúsculo|
+|big-k byte|–|–|–|–|byte-k maiúsculo|
+|big-l byte|–|–|–|–|byte-l maiúsculo|
+|big-m byte|–|–|–|–|byte-m maiúsculo|
+|big-n byte|–|–|–|–|byte-n maiúsculo|
+|big-n-tilde byte|–|–|–|–|byte-ñ maiúsculo|
+|big-o byte|–|–|–|–|byte-o maiúsculo|
+|big-o-acute byte|–|–|–|–|byte-ó maiúsculo|
+|big-o-circumflex byte|–|–|–|–|byte-ô maiúsculo|
+|big-o-diaeresis byte|–|–|–|–|byte-ö maiúsculo|
+|big-oe byte|–|–|–|–|byte-oe maiúsculo|
+|big-o-grave byte|–|–|–|–|byte-ò maiúsculo|
 |big-o-stroke byte|–|–|–|–|–|
-|big-o-tilde byte|–|–|–|–|–|
-|big-p byte|–|–|–|–|–|
-|big-q byte|–|–|–|–|–|
-|big-r byte|–|–|–|–|–|
-|big-s byte|–|–|–|–|–|
+|big-o-tilde byte|–|–|–|–|byte-õ maiúsculo|
+|big-p byte|–|–|–|–|byte-p maiúsculo|
+|big-q byte|–|–|–|–|byte-q maiúsculo|
+|big-r byte|–|–|–|–|byte-r maiúsculo|
+|big-s byte|–|–|–|–|byte-s maiúsculo|
 |big-s-caron byte|–|–|–|–|–|
-|big-t byte|–|–|–|–|–|
+|big-t byte|–|–|–|–|byte-t maiúsculo|
 |big-thorn byte|–|–|–|–|–|
-|big-u byte|–|–|–|–|–|
-|big-u-acute byte|–|–|–|–|–|
-|big-u-circumflex byte|–|–|–|–|–|
-|big-u-diaeresis byte|–|–|–|–|–|
-|big-u-grave byte|–|–|–|–|–|
-|big-v byte|–|–|–|–|–|
-|big-w byte|–|–|–|–|–|
-|big-x byte|–|–|–|–|–|
-|big-y byte|–|–|–|–|–|
-|big-y-acute byte|–|–|–|–|–|
-|big-y-diaeresis byte|–|–|–|–|–|
-|big-z byte|–|–|–|–|–|
+|big-u byte|–|–|–|–|byte-u maiúsculo|
+|big-u-acute byte|–|–|–|–|byte-ú maiúsculo|
+|big-u-circumflex byte|–|–|–|–|byte-û maiúsculo|
+|big-u-diaeresis byte|–|–|–|–|byte-ü maiúsculo|
+|big-u-grave byte|–|–|–|–|byte-ù maiúsculo|
+|big-v byte|–|–|–|–|byte-v maiúsculo|
+|big-w byte|–|–|–|–|byte-w maiúsculo|
+|big-x byte|–|–|–|–|byte-x maiúsculo|
+|big-y byte|–|–|–|–|byte-y maiúsculo|
+|big-y-acute byte|–|–|–|–|byte-ý maiúsculo|
+|big-y-diaeresis byte|–|–|–|–|byte-ÿ maiúsculo|
+|big-z byte|–|–|–|–|byte-z maiúsculo|
 |big-z-caron byte|–|–|–|–|–|
-|bit|pedacinho|–|–|–|–|
-|b-key|–|–|–|–|–|
-|black color|–|–|–|–|–|
-|black pen|–|–|–|–|–|
-|blue color|–|–|–|–|–|
-|blue pen|–|–|–|–|–|
-|break tag|–|–|–|–|–|
-|brightness|–|–|–|–|–|
+|bit|pedacinho|–|–|–|bit|
+|b-key|–|–|–|–|tecla-b|
+|black color|–|–|–|–|preto|
+|black pen|–|–|–|–|caneta preta|
+|blue color|–|–|–|–|azul|
+|blue pen|–|–|–|–|caneta azul|
+|break tag|–|–|–|–|marca parar|
+|brightness|–|–|–|–|brilho|
 |broken-bar byte|–|–|–|–|–|
-|brown color|–|–|–|–|–|
-|brown pen|–|–|–|–|–|
-|brownish color|–|–|–|–|–|
+|brown color|–|–|–|–|marrom|
+|brown pen|–|–|–|–|caneta marrom|
+|brownish color|–|–|–|–|castanho|
 |bucket|–|–|–|–|–|
 |bucket count|–|–|–|–|–|
 |buffer|depósito|armazém|estoque|almoxarifado|–|
-|built-in type|–|–|–|–|–|
-|bullet byte|–|–|–|–|–|
-|byte|–|–|–|–|–|
-|byte count|–|–|–|–|–|
+|built-in type|–|–|–|–|tipo embutido|
+|bullet byte|–|–|–|–|byte-marcador|
+|byte|–|–|–|–|byte|
+|byte count|–|–|–|–|conta de byte|
 
 ### #C
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
