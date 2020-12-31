@@ -850,7 +850,7 @@ tags restantes para adicionar:
 |right-double-quote byte|–|–|–|–|–|
 |right-paren byte|–|–|–|–|–|
 |right-single-quote byte|–|–|–|–|–|
-|right-window key|–|–|–|–|–|
+|right-window key|–|tecla ⊞ direita|–|–|–|
 |rise|–|–|–|–|–|
 |r-key|tecla r|-|–|–|–|
 |routine|tarefa|–|–|–|–|
@@ -991,7 +991,7 @@ tags restantes para adicionar:
 |x-key|–|–|–|–|–|
 |yellow color|–|–|–|–|–|
 |yellow pen|–|–|–|–|–|
-|yen-sign byte|–|–|–|–|–|
+|yen-sign byte|–|byte ¥|–|–|–|
 |y-key|–|–|–|–|–|
 |zero byte|–|–|–|–|–|
 |zero key|–|–|–|–|–|
