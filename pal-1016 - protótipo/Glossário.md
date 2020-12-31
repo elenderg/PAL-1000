@@ -776,7 +776,7 @@ tags restantes para adicionar:
 |paragraph byte|–|–|–|–|–|
 |partial moniker|–|–|–|–|–|
 |pastel color|–|–|–|–|–|
-|path|endereço||–|–|–|
+|path|endereço completo do arquivo com extensão|endereço|–|–|–|
 |pause key|–|–|–|–|–|
 |pdf|arquivo pdf|–|–|–|–|
 |pen|–|–|–|–|–|
@@ -995,6 +995,6 @@ tags restantes para adicionar:
 |y-key|–|–|–|–|–|
 |zero byte|–|–|–|–|–|
 |zero key|–|–|–|–|–|
-|z-key|–|–|–|–|–| 
+|z-key|–|–|–|–|–|
 
 
