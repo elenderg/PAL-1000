@@ -129,9 +129,9 @@ tags restantes para adicionar:
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |backslash|barra invertida|–|–|–|barra-inv|
-|backslash byte|–|–|–|–|byte-\|
-|backspace key|–|–|–|–|tecla-\|
-|bar byte|–|–|–|–|byte-pipe|
+|backslash byte|–|–|–|–|byte-barra-inv|
+|backspace key|–|–|–|–|tecla-retornar|
+|bar byte|–|–|–|–|byte-barra|
 |baseline|–|–|–|–|linha base|
 |bell byte|–|–|–|–|byte-sino|
 |big-a byte|–|–|–|–|byte-a maiúsculo|
