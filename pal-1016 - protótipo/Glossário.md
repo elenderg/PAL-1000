@@ -139,33 +139,33 @@ tags restantes para adicionar:
 |baseline|–|–|–|–|linha base|
 |bell byte|–|–|–|–|byte-sino|
 |big-a byte|–|–|–|–|byte-a maiúsculo|
-|big-a-acute byte|–|–|–|–|byte-á maiúsculo|
-|big-a-circumflex byte|–|–|–|–|byte-â maiúsculo|
-|big-a-diaeresis byte|–|–|–|–|byte-ä maiúsculo|
-|big-ae byte|–|–|–|–|byte-ae maiúsculo|
-|big-a-grave byte|–|–|–|–|byte-à maiúsculo|
-|big-a-ring byte|–|–|–|–|byte-å maiúsculo|
-|big-a-tilde byte|–|–|–|–|byte-ã maiúsculo|
-|big-b byte|–|–|–|–|byte-b maiúsculo|
-|big-c byte|–|–|–|–|byte-c maiúsculo|
-|big-c-cedilla byte|–|–|–|–|byte-ç maiúsculo|
-|big-d byte|–|–|–|–|byte-d maiúsculo|
-|big-e byte|–|–|–|–|byte-e maiúsculo|
-|big-e-acute byte|–|–|–|–|byte-é maiúsculo|
-|big-e-circumflex byte|–|–|–|–|byte-ê maiúsculo|
-|big-e-diaeresis byte|–|–|–|–|byte-ë maiúsculo|
-|big-e-grave byte|–|–|–|–|byte-è maiúsculo|
-|big-eth byte|–|–|–|–|byte-eth maiúsculo|
-|big-f byte|–|–|–|–|byte-f maiúsculo|
-|big-g byte|–|–|–|–|byte-g maiúsculo|
-|big-h byte|–|–|–|–|byte-h maiúsculo|
-|big-i byte|–|–|–|–|byte-i maiúsculo|
-|big-i-acute byte|–|–|–|–|byte-í maiúsculo|
-|big-i-circumflex byte|–|–|–|–|byte-î maiúsculo|
-|big-i-diaeresis byte|–|–|–|–|byte-ï maiúsculo|
-|big-i-grave byte|–|–|–|–|byte-ì maiúsculo|
-|big-j byte|–|–|–|–|byte-j maiúsculo|
-|big-k byte|–|–|–|–|byte-k maiúsculo|
+|big-a-acute byte|–|–|–|–|byte-À maiúsculo|
+|big-a-circumflex byte|–|–|–|–|byte-Â maiúsculo|
+|big-a-diaeresis byte|–|–|–|–|byte-Ä maiúsculo|
+|big-ae byte|–|-|–|–|byte-Æ maiúsculo|
+|big-a-grave byte|–||–|–|byte-À maiúsculo|
+|big-a-ring byte|–|–|–|–|byte-Å maiúsculo|
+|big-a-tilde byte|–|–|–|–|byte-Ã maiúsculo|
+|big-b byte|–|–|–|–|byte-B maiúsculo|
+|big-c byte|–|–|–|–|byte-C maiúsculo|
+|big-c-cedilla byte|–|–|–|–|byte-Ç maiúsculo|
+|big-d byte|–|–|–|–|byte-D maiúsculo|
+|big-e byte|–|–|–|–|byte-E maiúsculo|
+|big-e-acute byte|–|–|–|–|byte-É maiúsculo|
+|big-e-circumflex byte|–|–|–|–|byte-Ê maiúsculo|
+|big-e-diaeresis byte|–|–|–|–|byte-Ë maiúsculo|
+|big-e-grave byte|–|–|–|–|byte-È maiúsculo|
+|big-eth byte|–|byte-Ð maiúsculo|–|–|byte-ETH maiúsculo|
+|big-f byte|–|–|–|–|byte-F maiúsculo|
+|big-g byte|–|–|–|–|byte-G maiúsculo|
+|big-h byte|–|–|–|–|byte-H maiúsculo|
+|big-i byte|–|–|–|–|byte-I maiúsculo|
+|big-i-acute byte|–|–|–|–|byte-Í maiúsculo|
+|big-i-circumflex byte|–|–|–|–|byte-Î maiúsculo|
+|big-i-diaeresis byte|–|–|–|–|byte-Ï maiúsculo|
+|big-i-grave byte|–|–|–|–|byte-Ì maiúsculo|
+|big-j byte|–|–|–|–|byte-J maiúsculo|
+|big-k byte|–|–|–|–|byte-K maiúsculo|
 |big-l byte|–|–|–|–|byte-l maiúsculo|
 |big-m byte|–|–|–|–|byte-m maiúsculo|
 |big-n byte|–|–|–|–|byte-n maiúsculo|
@@ -381,13 +381,13 @@ tags restantes para adicionar:
 |directory name|nome da pasta contendo caractere separador|–|–|–|–|
 |directory name w/o slash|nome da pasta sem caractere separador|||||
 |distance|–|–|–|–|distância|
-|division-symbol byte|–|–|–|–|–|
+|division-symbol byte|–|byte-÷|byte-divisão|–|-|
 |d-key|–|–|–|–|tecla-d|
 |document indent|–|–|–|–|–|
-|dollar-sign byte|–|–|–|–|–|
-|double-dagger byte|–|–|–|–|–|
-|double-quote byte|–|–|–|–|–|
-|down-arrow key|–|–|–|–|–|
+|dollar-sign byte|–|byte-$|–|–|–|
+|double-dagger byte|–|byte-‡|–|–|–|
+|double-quote byte|–|byte-aspas|–|–|–|
+|down-arrow key|–|tecla-⬇️|–|–|–|
 
 ### #E
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
