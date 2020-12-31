@@ -1015,6 +1015,7 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–| -          |
+|dos header<br/>import header<br/>pe header<br/>pe section header<br/>abc<br/>addrinfo<br/>Some addrinfo routines<br/>big-endiunsigned wyrd<br/>bitmapdata<br/>devmode<br/>docinfo<br/>filetime<br/>gcpresults<br/>gdiplusstartupinput<br/>gprect<br/>in_addr<br/>istream object<br/>istream vtable record<br/>msg<br/>outlinetextmetric<br/>paintstruct<br/>panose<br/>printdlgex<br/>processinfo<br/>rgb<br/>sockaddr<br/>startupinfo<br/>systemtime<br/>talker object<br/>talker vtable record<br/>textmetric<br/>urlcomponents<br/>uuid<br/>win32finddata<br/>window class<br/>wsadata|||||            |
 
 ### #WXYZ
 
