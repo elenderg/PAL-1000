@@ -446,6 +446,7 @@ tags restantes para adicionar:
 |gcd|Máximo divisor comum|MDC|–|–|–|
 |geometric figure|–|–|–|–|–|
 |g-key|–|–|–|–|–|
+|global|abrangente|-|-|-|-|
 |gold color|–|–|–|–|–|
 |gold pen|–|–|–|–|–|
 |gpimage|–|–|–|–|–|
