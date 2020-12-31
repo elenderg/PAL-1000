@@ -951,7 +951,8 @@ tags restantes para adicionar:
 |superscript-one byte|–|–|–|–|–|
 |superscript-three byte|–|–|–|–|–|
 |superscript-two byte|–|–|–|–|–|
-|switch|interruptor|tomada|decisor|||
+|switch (verbo)|Alternar|Trocar|Mudar|||
+|switch (substantivo)|interruptor|tomada|decisor|alternador||
 |synchronous-idle byte|–|–|–|–|–|
 
 ### #T
