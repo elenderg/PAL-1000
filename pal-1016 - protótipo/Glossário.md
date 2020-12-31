@@ -138,7 +138,7 @@ tags restantes para adicionar:
 |bar byte|–|–|–|–|byte-barra|
 |baseline|–|–|–|–|linha base|
 |bell byte|–|–|–|–|byte-sino|
-|big-a byte|–|–|–|–|byte-a maiúsculo|
+|big-a byte|–|–|–|–|byte-A maiúsculo|
 |big-a-acute byte|–|–|–|–|byte-À maiúsculo|
 |big-a-circumflex byte|–|–|–|–|byte-Â maiúsculo|
 |big-a-diaeresis byte|–|–|–|–|byte-Ä maiúsculo|
