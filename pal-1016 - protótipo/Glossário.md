@@ -220,46 +220,46 @@ tags restantes para adicionar:
 |call external tag|–|–|–|–|–|
 |call indirect tag|–|–|–|–|–|
 |call internal tag|–|–|–|–|–|
-|cancel byte|–|–|–|–|–|
+|cancel byte|–|–|–|–|byte cancelar|
 |canvas|painel|quadro|–|–|–|
-|caps key|–|–|–|–|–|
-|caret byte|pedaço contendo um cursor de texto|pedaço com um cursor de texto|–|–|–|
-|cedilla byte|–|–|–|–|–|
+|caps key|–|–|–|–|tecla-fixar|
+|caret byte|pedaço contendo um cursor de texto|pedaço com um cursor de texto|–|–|byte cursor|
+|cedilla byte|–|–|–|–|byte-ç|
 |cent-sign byte|–|–|–|–|–|
-|character|–|–|–|–|–|
-|circumflex byte|–|–|–|–|–|
-|c-key|–|–|–|–|–|
-|clear color|–|–|–|–|–|
-|clear key|–|–|–|–|–|
-|clear pen|–|–|–|–|–|
+|character|–|–|–|–|caractere|
+|circumflex byte|–|–|–|–|byte-^|
+|c-key|–|–|–|–|tecla-c|
+|clear color|–|–|–|–|cor transparente|
+|clear key|–|–|–|–|tecla limpar|
+|clear pen|–|–|–|–|caneta transparente|
 |clsid|Identificador de Classe|Número Identificador de Classe|–|–|–|
-|cluck sound|som de latido|cacarejo|–|–|–|
-|colon byte|–|–|–|–|–|
-|color|–|–|–|–|–|
-|colorref|código da cor|número da cor|–|–|–|
+|cluck sound|som de latido|cacarejo|–|clamar|reclamar|
+|colon byte|–|–|–|–|byte-:|
+|color|–|–|–|–|cor|
+|colorref|código da cor|número da cor|–|–|cor-ref|
 |column#|número da coluna|–|–|–|–|
-|comma byte|–|–|–|–|–|
-|command|–|–|–|–|–|
+|comma byte|–|–|–|–|byte-,|
+|command|–|–|–|–|comando|
 |comment color|cor dos comentários|–|–|–|–|
 |~~console~~|–|–|–|–|–|
-|context|–|–|–|–|–|
-|context stack|–|–|–|–|–|
+|context|–|–|–|–|contexto|
+|context stack|–|–|–|–|pilha do contexto|
 |coord|coordenada|–|–|–|–|
-|copy|–|–|–|–|–|
-|copyright byte|–|–|–|–|–|
-|count|–|–|–|–|–|
-|counter|–|–|–|–|–|
+|copy|–|–|–|–|cópia|
+|copyright byte|–|–|–|–|byte-©|
+|count|–|–|–|–|conta|
+|counter|–|–|–|–|contador|
 |cross byte|pedaço contendo um mais|-|–|–|–|
-|ctrl key|–|–|–|–|–|
+|ctrl key|–|–|–|–|tecla-ctrl|
 |currency-sign byte|–|–|–|–|–|
-|current canvas|painel atual|–|–|–|–|
-|current menu|–|–|–|–|–|
-|current process|–|–|–|–|–|
+|current canvas|painel atual|–|–|–|tela atual|
+|current menu|–|–|–|–|menu atual|
+|current process|–|–|–|–|processo atual|
 |current rainbow color number|–|–|–|–|–|
-|current tab|–|–|–|–|–|
+|current tab|–|–|–|–|aba corrente|
 |cursor|setinha|cursor|–|–|–|
-|cyan color|–|–|–|–|–|
-|cyan pen|–|–|–|–|–|
+|cyan color|–|–|–|–|turqueza|
+|cyan pen|–|–|–|–|caneta turqueza|
 
 ### #D
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
