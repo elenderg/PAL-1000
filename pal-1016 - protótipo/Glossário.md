@@ -138,6 +138,7 @@ tags restantes para adicionar:
 |bar byte|–|–|–|–|byte-barra|
 |baseline|–|–|–|–|linha base|
 |bell byte|–|–|–|–|byte-sino|
+|Bible|Bíblia|Escrituras|Sagradas Escrituras|-|-|
 |big-a byte|–|–|–|–|byte-A maiúsculo|
 |big-a-acute byte|–|–|–|–|byte-À maiúsculo|
 |big-a-circumflex byte|–|–|–|–|byte-Â maiúsculo|
@@ -201,15 +202,15 @@ tags restantes para adicionar:
 |bit|pedacinho|–|–|–|bit|
 |b-key|–|–|–|–|tecla-b|
 |black color|–|–|–|–|preto|
-|black pen|–|–|–|–|caneta preta|
+|black pen|–|–|–|–|pincel preto|
 |block|-|-|-|-|-|
 |blue color|–|–|–|–|azul|
-|blue pen|–|–|–|–|caneta azul|
+|blue pen|–|–|–|–|pincel azul|
 |break tag|–|–|–|–|marca parar|
 |brightness|–|–|–|–|brilho|
 |broken-bar byte|–|–|–|–|–|
 |brown color|–|–|–|–|marrom|
-|brown pen|–|–|–|–|caneta marrom|
+|brown pen|–|–|–|–|pincel marrom|
 |brownish color|–|–|–|–|castanho|
 |bucket|–|–|–|–|–|
 |bucket count|–|–|–|–|–|
@@ -238,7 +239,7 @@ tags restantes para adicionar:
 |c-key|–|–|–|–|tecla-c|
 |clear color|–|–|–|–|cor transparente|
 |clear key|–|–|–|–|tecla limpar|
-|clear pen|–|–|–|–|caneta transparente|
+|clear pen|–|–|–|–|pincel transparente|
 |clsid|Identificador de Classe|Número Identificador de Classe|–|–|–|
 |cluck sound|som de latido|cacarejo|–|–|reclamação|
 |colon byte|–|–|–|–|byte-:|
@@ -990,7 +991,7 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–|–|
-|<br/>command<br/>console<br/>context<br/>crypt session<br/>document<br/>dyad<br/>entry<br/>event<br/>font info<br/>fragment<br/>import<br/>index<br/>menu<br/>monikette<br/>node<br/>node<br/>page<br/>paragraph<br/>pdf object<br/>pdf outline entry<br/>picture<br/>polygon<br/>quora<br/>refer<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/>tab<br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/>vertex<br/>winhttp request<br/>font widths<br/>Bible<br/><br/>||||||
+|<br/>command<br/>console<br/>context<br/>crypt session<br/>document<br/>dyad<br/>entry<br/>event<br/>font info<br/>fragment<br/>import<br/>index<br/>menu<br/>monikette<br/>node<br/>node<br/>page<br/>paragraph<br/>pdf object<br/>pdf outline entry<br/>picture<br/>polygon<br/>quora<br/>refer<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/>tab<br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/>vertex<br/>winhttp request<br/>font widths<br/><br/><br/>||||||
 
 ### #WXYZ
 
