@@ -842,6 +842,7 @@ tags restantes para adicionar:
 |query byte|–|–|–|–|–|
 |~~query string~~|–|–|–|–|–|
 |question-mark byte|–|byte-?|–|–|–|
+|quora|question or answer|-|-|-|-|
 |quotient|quociente|–|–|–|–|
 
 ### #R
@@ -860,6 +861,7 @@ tags restantes para adicionar:
 |rectangle|–|–|–|–|–|
 |red color|–|–|–|–|–|
 |red pen|–|–|–|–|–|
+|refer|-|-|-|-|-|
 |registered byte|–|–|–|–|–|
 |registered-trade-mark byte|–|–|–|–|–|
 |remainder|resto|–|–|–|–|
@@ -1004,7 +1006,7 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–|–|
-|<br/>polygon<br/>quora<br/>refer<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/><br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/><br/>winhttp request<br/>font widths<br/>||||||
+|<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/><br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/><br/>winhttp request<br/>font widths<br/>||||||
 
 ### #WXYZ
 
