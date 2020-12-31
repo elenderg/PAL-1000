@@ -195,7 +195,7 @@ tags restantes para adicionar:
 |big-x byte|–|–|–|–|byte-X maiúsculo|
 |big-y byte|–|–|–|–|byte-Y maiúsculo|
 |big-y-acute byte|–|–|–|–|byte-Ý maiúsculo|
-|big-y-diaeresis byte|–|–|–|–|byte-ÿ maiúsculo|
+|big-y-diaeresis byte|–|–|–|–|byte-Ÿ maiúsculo|
 |big-z byte|–|–|–|–|byte-Z maiúsculo|
 |big-z-caron byte|–|–|–|–|–|
 |bit|pedacinho|–|–|–|bit|
