@@ -428,7 +428,7 @@ tags restantes para adicionar:
 |figure|–|–|–|–|–|
 |file|arquivo|–|–|–|–|
 |fileext|extensão de arquivo|–|–|–|–|
-|file name|nome do arquivo com extensão|||||
+|file name|nome do arquivo cotendo extensão|||||
 |file-separator byte|–|–|–|–|–|
 |finalize tag|–|–|–|–|–|
 |five byte|–|–|–|–|–|
