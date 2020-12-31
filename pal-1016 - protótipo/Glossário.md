@@ -296,7 +296,7 @@ tags restantes para adicionar:
 |dark sky blue pen|–|–|–|–|tinta azul-celeste escuro|
 |dark sky color|–|–|–|–|cerúleo escuro|
 |dark sky pen|–|–|–|–|tinta cerúleo escuro|
-|dark teal color|–|–|–|–|telha escuro|
+|dark teal color|verde azulado escuro|–|–|–|telha escuro|
 |dark teal pen|–|–|–|–|tinta telha escuro|
 |dark violet color|–|–|–|–|violeta escuro|
 |dark violet pen|–|–|–|–|tinta violeta escuro|
