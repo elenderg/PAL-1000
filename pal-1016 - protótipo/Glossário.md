@@ -886,7 +886,7 @@ tags restantes para adicionar:
 |six byte|–|–|–|–|–|
 |six key|–|–|–|–|–|
 |size|–|–|–|–|–|
-|s-key|–|–|–|–|–|
+|s-key|tecla S|–|–|–|–|
 |sky blue color|–|–|–|–|–|
 |sky blue pen|–|–|–|–|–|
 |sky color|–|–|–|–|–|
@@ -898,8 +898,8 @@ tags restantes para adicionar:
 |soft-dash byte|–|–|–|–|–|
 |solid color|–|–|–|–|–|
 |space byte|–|–|–|–|–|
-|space key|–|–|–|–|–|
-|square root|–|–|–|–|–|
+|space key|tecla espaço|barra de espaço|–|–|–|
+|square root|raiz quadrada|–|–|–|–|
 |square size|–|–|–|–|–|
 |stack|–|–|–|–|–|
 |~~stack entry~~|–|–|–|–|–|
@@ -925,7 +925,7 @@ tags restantes para adicionar:
 |tab byte|–|–|–|–|–|
 |tab key|–|–|–|–|–|
 |tag|etiqueta|–|–|–|–|
-|talker|–|–|–|–|–|
+|talker|narrador|locutor|falante|–|–|
 |tan color|–|–|–|–|–|
 |tan pen|–|–|–|–|–|
 |teal color|verde-azulado|azul petróleo|verde petróleo|–|–|
