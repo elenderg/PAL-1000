@@ -811,11 +811,11 @@ tags restantes para adicionar:
 ### #Q
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|q-key|–|–|–|–|–|
+|q-key|tecla q|–|–|–|–|
 |quarter|quarto|–|–|–|–|
 |query byte|–|–|–|–|–|
 |~~query string~~|–|–|–|–|–|
-|question-mark byte|–|–|–|–|–|
+|question-mark byte|–|byte-?|–|–|–|
 |quotient|quociente|–|–|–|–|
 
 ### #R
