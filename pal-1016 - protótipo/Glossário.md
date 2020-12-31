@@ -380,6 +380,7 @@ tags restantes para adicionar:
 |device-control-three byte|–|–|–|–|–|
 |device-control-two byte|–|–|–|–|–|
 |diaeresis byte|–|–|–|–|byte-¨|
+|dialog|-|-|-|-|-|
 |directory|endereço completo da pasta|pasta|–|–|–|
 |directory name|nome da pasta contendo caractere separador|–|–|–|–|
 |directory name w/o slash|nome da pasta sem caractere separador|||||
@@ -989,7 +990,7 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–|–|
-|<br/>command<br/>console<br/>context<br/>crypt session<br/>document<br/>dyad<br/>entry<br/>event<br/>font info<br/>fragment<br/>import<br/>index<br/>menu<br/>monikette<br/>node<br/>node<br/>page<br/>paragraph<br/>pdf object<br/>pdf outline entry<br/>picture<br/>polygon<br/>quora<br/>refer<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/>tab<br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/>vertex<br/>winhttp request<br/>font widths<br/>Bible<br/>dialog<br/>||||||
+|<br/>command<br/>console<br/>context<br/>crypt session<br/>document<br/>dyad<br/>entry<br/>event<br/>font info<br/>fragment<br/>import<br/>index<br/>menu<br/>monikette<br/>node<br/>node<br/>page<br/>paragraph<br/>pdf object<br/>pdf outline entry<br/>picture<br/>polygon<br/>quora<br/>refer<br/>routine<br/>row<br/>shape<br/>shape refer<br/>source file<br/>source<br/>stack entry<br/>string thing<br/>tab<br/>terminal<br/>text<br/>type<br/>variable<br/>verse<br/>verse<br/>vertex<br/>winhttp request<br/>font widths<br/>Bible<br/><br/>||||||
 
 ### #WXYZ
 
