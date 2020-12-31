@@ -452,6 +452,7 @@ tags restantes para adicionar:
 |font height|–|–|–|–|–|
 |font info|-|-|-|-|-|
 |font resource|–|–|–|–|–|
+|font widths|-|-|-|-|-|
 |form-feed byte|–|–|–|–|–|
 |four byte|–|–|–|–|–|
 |four key|–|–|–|–|–|
@@ -941,6 +942,7 @@ tags restantes para adicionar:
 |stdout handle|número identificador do fluxo padrão de saída|–|–|–|–|
 |~~string~~|–|–|–|–|–|
 |string#|–|–|–|–|–|
+|string thing|-|-|-|-|-|
 |submenu|–|–|–|–|–|
 |substitute byte|–|–|–|–|–|
 |~~substring~~|–|–|–|–|–|
@@ -1012,8 +1014,7 @@ tags restantes para adicionar:
 |very very light color|–|–|–|–|–|
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
-|v-key|–|–|–|–|–|
-|<br/>source<br/>stack entry<br/>string thing<br/>terminal<br/><br/>font widths<br/>||||||
+|v-key|–|–|–|–| -          |
 
 ### #WXYZ
 
