@@ -226,10 +226,10 @@ tags restantes para adicionar:
 |call internal tag|–|–|–|–|–|
 |cancel byte|–|–|–|–|byte cancelar|
 |canvas|painel|quadro|–|–|–|
-|caps key|–|–|–|–|tecla-fixar|
+|caps key|–|tecla Fixa|–|–|tecla-fixar|
 |caret byte|pedaço contendo um cursor de texto|pedaço com um cursor de texto|–|–|byte cursor|
 |cedilla byte|–|–|–|–|byte-ç|
-|cent-sign byte|–|–|–|–|–|
+|cent-sign byte|–|–|–|–|byte-¢|
 |character|–|–|–|–|caractere|
 |circumflex byte|–|–|–|–|byte-^|
 |c-key|–|–|–|–|tecla-c|
