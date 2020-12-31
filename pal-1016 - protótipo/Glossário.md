@@ -141,64 +141,64 @@ tags restantes para adicionar:
 |bell byte|–|–|–|–|byte-sino|
 |Bible|Bíblia|Escrituras|Sagradas Escrituras|-|-|
 |big-a byte|–|–|–|–|byte-A maiúsculo|
-|big-a-acute byte|–|–|–|–|byte-À maiúsculo|
-|big-a-circumflex byte|–|–|–|–|byte-Â maiúsculo|
-|big-a-diaeresis byte|–|–|–|–|byte-Ä maiúsculo|
-|big-ae byte|–|byte-Æ maiúsculo|–|–|byte-AE maiúsculo|
-|big-a-grave byte|–||–|–|byte-À maiúsculo|
-|big-a-ring byte|–|–|–|–|byte-Å maiúsculo|
-|big-a-tilde byte|–|–|–|–|byte-Ã maiúsculo|
-|big-b byte|–|–|–|–|byte-B maiúsculo|
-|big-c byte|–|–|–|–|byte-C maiúsculo|
-|big-c-cedilla byte|–|–|–|–|byte-Ç maiúsculo|
-|big-d byte|–|–|–|–|byte-D maiúsculo|
-|big-e byte|–|–|–|–|byte-E maiúsculo|
-|big-e-acute byte|–|–|–|–|byte-É maiúsculo|
-|big-e-circumflex byte|–|–|–|–|byte-Ê maiúsculo|
-|big-e-diaeresis byte|–|–|–|–|byte-Ë maiúsculo|
-|big-e-grave byte|–|–|–|–|byte-È maiúsculo|
-|big-eth byte|–|byte-Ð maiúsculo|–|–|byte-ETH maiúsculo|
-|big-f byte|–|–|–|–|byte-F maiúsculo|
-|big-g byte|–|–|–|–|byte-G maiúsculo|
-|big-h byte|–|–|–|–|byte-H maiúsculo|
-|big-i byte|–|–|–|–|byte-I maiúsculo|
-|big-i-acute byte|–|–|–|–|byte-Í maiúsculo|
-|big-i-circumflex byte|–|–|–|–|byte-Î maiúsculo|
-|big-i-diaeresis byte|–|–|–|–|byte-Ï maiúsculo|
-|big-i-grave byte|–|–|–|–|byte-Ì maiúsculo|
-|big-j byte|–|–|–|–|byte-J maiúsculo|
-|big-k byte|–|–|–|–|byte-K maiúsculo|
-|big-l byte|–|–|–|–|byte-L maiúsculo|
-|big-m byte|–|–|–|–|byte-M maiúsculo|
-|big-n byte|–|–|–|–|byte-N maiúsculo|
-|big-n-tilde byte|–|–|–|–|byte-Ñ maiúsculo|
-|big-o byte|–|–|–|–|byte-O maiúsculo|
-|big-o-acute byte|–|–|–|–|byte-Ó maiúsculo|
-|big-o-circumflex byte|–|–|–|–|byte-Ô maiúsculo|
-|big-o-diaeresis byte|–|–|–|–|byte-Ö maiúsculo|
-|big-oe byte|–|byte-Œ maiúsculo|–|–|byte-OE maiúsculo|
-|big-o-grave byte|–|–|–|–|byte-Ò maiúsculo|
+|big-a-acute byte|–|–|–|–|byte-à maiúsculo|
+|big-a-circumflex byte|–|–|–|–|byte-â maiúsculo|
+|big-a-diaeresis byte|–|–|–|–|byte-ä maiúsculo|
+|big-ae byte|–|byte-Æ maiúsculo|–|–|byte-æ maiúsculo|
+|big-a-grave byte|–||–|–|byte-à maiúsculo|
+|big-a-ring byte|–|–|–|–|byte-å maiúsculo|
+|big-a-tilde byte|–|–|–|–|byte-ã maiúsculo|
+|big-b byte|–|–|–|–|byte-b maiúsculo|
+|big-c byte|–|–|–|–|byte-c maiúsculo|
+|big-c-cedilla byte|–|–|–|–|byte-ç maiúsculo|
+|big-d byte|–|–|–|–|byte-d maiúsculo|
+|big-e byte|–|–|–|–|byte-e maiúsculo|
+|big-e-acute byte|–|–|–|–|byte-é maiúsculo|
+|big-e-circumflex byte|–|–|–|–|byte-ê maiúsculo|
+|big-e-diaeresis byte|–|–|–|–|byte-ë maiúsculo|
+|big-e-grave byte|–|–|–|–|byte-è maiúsculo|
+|big-eth byte|–|byte-Ð maiúsculo|–|–|byte-eth maiúsculo|
+|big-f byte|–|–|–|–|byte-f maiúsculo|
+|big-g byte|–|–|–|–|byte-g maiúsculo|
+|big-h byte|–|–|–|–|byte-h maiúsculo|
+|big-i byte|–|–|–|–|byte-i maiúsculo|
+|big-i-acute byte|–|–|–|–|byte-í maiúsculo|
+|big-i-circumflex byte|–|–|–|–|byte-î maiúsculo|
+|big-i-diaeresis byte|–|–|–|–|byte-ï maiúsculo|
+|big-i-grave byte|–|–|–|–|byte-ì maiúsculo|
+|big-j byte|–|–|–|–|byte-j maiúsculo|
+|big-k byte|–|–|–|–|byte-k maiúsculo|
+|big-l byte|–|–|–|–|byte-l maiúsculo|
+|big-m byte|–|–|–|–|byte-m maiúsculo|
+|big-n byte|–|–|–|–|byte-n maiúsculo|
+|big-n-tilde byte|–|–|–|–|byte-ñ maiúsculo|
+|big-o byte|–|–|–|–|byte-o maiúsculo|
+|big-o-acute byte|–|–|–|–|byte-í maiúsculo|
+|big-o-circumflex byte|–|–|–|–|byte-ô maiúsculo|
+|big-o-diaeresis byte|–|–|–|–|byte-ö maiúsculo|
+|big-oe byte|–|byte-Œ maiúsculo|–|–|byte-œ maiúsculo|
+|big-o-grave byte|–|–|–|–|byte-ò maiúsculo|
 |big-o-stroke byte|–|–|–|–|byte-Ø maiúsculo|
-|big-o-tilde byte|–|–|–|–|byte-Õ maiúsculo|
-|big-p byte|–|–|–|–|byte-P maiúsculo|
-|big-q byte|–|–|–|–|byte-Q maiúsculo|
-|big-r byte|–|–|–|–|byte-R maiúsculo|
-|big-s byte|–|–|–|–|byte-S maiúsculo|
+|big-o-tilde byte|–|–|–|–|byte-õ maiúsculo|
+|big-p byte|–|–|–|–|byte-p maiúsculo|
+|big-q byte|–|–|–|–|byte-q maiúsculo|
+|big-r byte|–|–|–|–|byte-r maiúsculo|
+|big-s byte|–|–|–|–|byte-s maiúsculo|
 |big-s-caron byte|–|–|–|–|byte-Š maiúsculo|
-|big-t byte|–|–|–|–|byte-T maiúsculo|
+|big-t byte|–|–|–|–|byte-t maiúsculo|
 |big-thorn byte|–|–|–|–|byte-Þ maiúsculo|
-|big-u byte|–|–|–|–|byte-U maiúsculo|
-|big-u-acute byte|–|–|–|–|byte-Ú maiúsculo|
-|big-u-circumflex byte|–|–|–|–|byte-Û maiúsculo|
-|big-u-diaeresis byte|–|–|–|–|byte-Ü maiúsculo|
-|big-u-grave byte|–|–|–|–|byte-Ù maiúsculo|
-|big-v byte|–|–|–|–|byte-V maiúsculo|
-|big-w byte|–|–|–|–|byte-W maiúsculo|
-|big-x byte|–|–|–|–|byte-X maiúsculo|
-|big-y byte|–|–|–|–|byte-Y maiúsculo|
-|big-y-acute byte|–|–|–|–|byte-Ý maiúsculo|
-|big-y-diaeresis byte|–|–|–|–|byte-Ÿ maiúsculo|
-|big-z byte|–|–|–|–|byte-Z maiúsculo|
+|big-u byte|–|–|–|–|byte-u maiúsculo|
+|big-u-acute byte|–|–|–|–|byte-ú maiúsculo|
+|big-u-circumflex byte|–|–|–|–|byte-û maiúsculo|
+|big-u-diaeresis byte|–|–|–|–|byte-ü maiúsculo|
+|big-u-grave byte|–|–|–|–|byte-ù maiúsculo|
+|big-v byte|–|–|–|–|byte-v maiúsculo|
+|big-w byte|–|–|–|–|byte-w maiúsculo|
+|big-x byte|–|–|–|–|byte-x maiúsculo|
+|big-y byte|–|–|–|–|byte-y maiúsculo|
+|big-y-acute byte|–|–|–|–|byte-ý maiúsculo|
+|big-y-diaeresis byte|–|–|–|–|byte-ÿ maiúsculo|
+|big-z byte|–|–|–|–|byte-z maiúsculo|
 |big-z-caron byte|–|–|–|–|–|
 |bit|pedacinho|–|–|–|bit|
 |b-key|–|–|–|–|tecla-b|
