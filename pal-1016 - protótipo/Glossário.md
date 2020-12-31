@@ -74,7 +74,7 @@
 |resize <sup>[E]</sup>|redimensionar|–|–|–|–|
 |rider <sup>[D]</sup>|iterador|sequenciador|–|–|–|
 |rider <sup>[E]</sup>|percorredor|–|–|–|–|
-|slap <sup>[D]</sup>|impor|aplicar|assentar|empregar|–|
+|slap <sup>[D]</sup>|colocar|aplicar|assentar|empregar|–|
 |slap <sup>[E]</sup>|colocar|–|–|–|–|
 |some <sup>[D]</sup>|uns|umas|certo|algum|–|
 |some <sup>[E]</sup>|algum(a/as)|algun(s)|–|–|–|
@@ -488,7 +488,7 @@ tags restantes para adicionar:
 |import header|–|–|–|–|–|
 |increment tag|–|–|–|–|–|
 |~~indent~~|–|–|–|–|–|
-|input|fluxo de entrada|inserção|–|–|–|
+|input|fluxo de entrada|inserção|–|imposição|impor|
 |insert key|–|–|–|–|–|
 |intel tag|–|–|–|–|–|
 |intermediate|–|–|–|–|–|
@@ -759,6 +759,7 @@ tags restantes para adicionar:
 |orange pen|–|–|–|–|–|
 |osmosian font resource|–|–|–|–|–|
 |~~outdent~~|–|–|–|–|–|
+|output|–|–|–|produção|produzir|
 
 ### #P
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
