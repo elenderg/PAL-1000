@@ -44,6 +44,8 @@
 |indent <sup>[E]</sup>|recuo (à direita)|–|–|–|–|
 |is past <sup>[D]</sup>|ultrapassar|passar de|–|–|–|
 |is past <sup>[E]</sup>|–|–|–|–|–|
+|lenght <sup>[D]</sup>|medida|dimensão|–|–|–|
+|lenght <sup>[E]</sup>|–|–|–|–|–|
 |loop <sup>[D]</sup>|reciclar|recicle|–|–|–|
 |loop <sup>[E]</sup>|Percorrer|–|–|–|–|
 |moniker <sup>[D]</sup>|alcunha|–|–|–|–|
