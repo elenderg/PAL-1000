@@ -850,7 +850,7 @@ tags restantes para adicionar:
 |right-double-quote byte|–|–|–|–|–|
 |right-paren byte|–|–|–|–|–|
 |right-single-quote byte|–|–|–|–|–|
-|right-window key|–|tecla ⊞ direita|–|–|–|
+|right-window key|–|tecla ⊞ direita|tecla ⌘ direita|–|–|
 |rise|–|–|–|–|–|
 |r-key|tecla r|-|–|–|–|
 |routine|tarefa|–|–|–|–|
