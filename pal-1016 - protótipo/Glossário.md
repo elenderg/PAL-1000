@@ -230,7 +230,7 @@ tags restantes para adicionar:
 |call indirect tag|–|–|–|–|marca-convocar|
 |call internal tag|–|–|–|–|marca-invocar|
 |cancel byte|–|–|–|–|byte cancelar|
-|canvas|painel|quadro|–|–|–|
+|canvas|painel|quadro|–|–|tela|
 |caps key|–|tecla Fixa|–|–|tecla-fixar|
 |caret byte|pedaço contendo um cursor de texto|pedaço com um cursor de texto|–|–|byte cursor|
 |cedilla byte|–|–|–|–|byte-ç|
@@ -244,11 +244,11 @@ tags restantes para adicionar:
 |clear pen|–|–|–|–|pincel transparente|
 |clsid|Identificador de Classe|Número Identificador de Classe|–|–|–|
 |cluck sound|som de latido|cacarejo|–|–|reclamação|
-|colon byte|–|–|–|–|byte-:|
+|colon byte|–|–|–|–|byte dois-pontos|
 |color|–|–|–|–|cor|
 |colorref|código da cor|número da cor|–|–|cor-ref|
 |column#|número da coluna|–|–|–|–|
-|comma byte|–|–|–|–|byte-,|
+|comma byte|–|–|–|–|byte-vírgula|
 |command|–|–|–|–|comando|
 |comment color|cor dos comentários|–|–|–|–|
 |~~console~~|–|–|–|–|–|
@@ -266,8 +266,8 @@ tags restantes para adicionar:
 |current canvas|painel atual|–|–|–|tela atual|
 |current menu|–|–|–|–|menu atual|
 |current process|–|–|–|–|processo atual|
-|current rainbow color number|–|–|–|–|–|
-|current tab|–|–|–|–|aba corrente|
+|current rainbow color number|–|–|–|–|número atual do furtacor|
+|current tab|–|–|–|–|aba atual|
 |cursor|setinha|cursor|–|–|–|
 |cyan color|–|–|–|–|turqueza|
 |cyan pen|–|–|–|–|tinta turqueza|
@@ -278,100 +278,100 @@ tags restantes para adicionar:
 |------------|------------|------------|------------|------------|------------|
 |dagger byte|–|–|–|–|–|
 |dark blue color|–|–|–|–|azul escuro|
-|dark blue pen|–|–|–|–|tinta azul escuro|
+|dark blue pen|–|–|–|–|pincel azul escuro|
 |dark brown color|–|–|–|–|marrom escuro|
-|dark brown pen|–|–|–|–|tinta marrom escuro|
+|dark brown pen|–|–|–|–|pincel marrom escuro|
 |dark color|–|–|–|–|cor escura|
 |dark cyan color|–|–|–|–|turqueza escuro|
-|dark cyan pen|–|–|–|–|tinta turqueza escuro|
+|dark cyan pen|–|–|–|–|pincel turqueza escuro|
 |dark gray color|–|–|–|–|cinza escuro|
-|dark gray pen|–|–|–|–|tinta cinza escuro|
+|dark gray pen|–|–|–|–|pincel cinza escuro|
 |dark green color|–|–|–|–|verde escuro|
-|dark green pen|–|–|–|–|tinta verde escuro|
+|dark green pen|–|–|–|–|pincel verde escuro|
 |dark lime color|–|–|–|–|limão escuro|
-|dark lime pen|–|–|–|–|tinta limão escuro|
+|dark lime pen|–|–|–|–|pincel limão escuro|
 |dark magenta color|–|–|–|–|magenta escuro|
-|dark magenta pen|–|–|–|–|tinta magenta escuro|
+|dark magenta pen|–|–|–|–|pincel magenta escuro|
 |dark orange color|–|–|–|–|laranja escuro|
-|dark orange pen|–|–|–|–|tinta laranja escuro|
+|dark orange pen|–|–|–|–|pincel laranja escuro|
 |dark pink color|–|–|–|–|rosa escuro|
-|dark pink pen|–|–|–|–|tinta rosa escuro|
+|dark pink pen|–|–|–|–|pincel rosa escuro|
 |dark purple color|–|–|–|–|púrpura escuro|
-|dark purple pen|–|–|–|–|tinta púrpura escuro|
+|dark purple pen|–|–|–|–|pincel púrpura escuro|
 |dark red color|–|–|–|–|vermelho escuro|
-|dark red pen|–|–|–|–|tinta vermelho escuro|
+|dark red pen|–|–|–|–|pincel vermelho escuro|
 |dark sky blue color|–|–|–|–|azul-celeste escuro|
-|dark sky blue pen|–|–|–|–|tinta azul-celeste escuro|
+|dark sky blue pen|–|–|–|–|pincel azul-celeste escuro|
 |dark sky color|–|–|–|–|cerúleo escuro|
-|dark sky pen|–|–|–|–|tinta cerúleo escuro|
+|dark sky pen|–|–|–|–|pincel cerúleo escuro|
 |dark teal color|verde azulado escuro|–|–|–|telha escuro|
-|dark teal pen|–|–|–|–|tinta telha escuro|
+|dark teal pen|–|–|–|–|pincel telha escuro|
 |dark violet color|–|–|–|–|violeta escuro|
-|dark violet pen|–|–|–|–|tinta violeta escuro|
+|dark violet pen|–|–|–|–|pincel violeta escuro|
 |dark yellow color|–|–|–|–|amarelo escuro|
-|dark yellow pen|–|–|–|–|tinta amarelo escuro|
-|darker blue color|–|–|–|–|azul mais escuro|
-|darker blue pen|–|–|–|–|tinta azul mais escuro|
-|darker brown color|–|–|–|–|marrom mais escuro|
-|darker brown pen|–|–|–|–|tinta marrom mais escuro|
-|darker cyan color|–|–|–|–|turqueza mais escuro|
-|darker cyan pen|–|–|–|–|tinta turqueza mais escuro|
-|darker gray color|–|–|–|–|cinza mais escuro|
-|darker gray pen|–|–|–|–|tinta cinza mais escuro|
-|darker green color|–|–|–|–|verde mais escuro|
-|darker green pen|–|–|–|–|tinta verde mais escuro|
-|darker lime color|–|–|–|–|limão mais escuro|
-|darker lime pen|–|–|–|–|tinta limão mais escuro|
-|darker magenta color|–|–|–|–|magenta mais escuro|
-|darker magenta pen|–|–|–|–|tinta magenta mais escuro|
-|darker orange color|–|–|–|–|laranja mais escuro|
-|darker orange pen|–|–|–|–|tinta laranja mais escuro|
-|darker purple color|–|–|–|–|púrpura mais escuro|
-|darker purple pen|–|–|–|–|tinta púrpura mais escuro|
-|darker red color|–|–|–|–|vermelho mais escuro|
-|darker red pen|–|–|–|–|tinta vermelho mais escuro|
-|darker sky blue color|–|–|–|–|azul-celeste mais escuro|
-|darker sky blue pen|–|–|–|–|tinta azul-celeste mais escuro|
-|darker sky color|–|–|–|–|cerúleo mais escuro|
-|darker sky pen|–|–|–|–|tinta cerúleo mais escuro|
-|darker teal color|–|–|–|–|telha mais escuro|
-|darker teal pen|–|–|–|–|tinta telha mais escuro|
-|darker violet color|–|–|–|–|violeta mais escuro|
-|darker violet pen|–|–|–|–|tinta violeta mais escuro|
-|darker yellow color|–|–|–|–|amarelo mais escuro|
-|darker yellow pen|–|–|–|–|tinta amarelo mais escuro|
+|dark yellow pen|–|–|–|–|pincel amarelo escuro|
+|darker blue color|–|–|–|–|azul muito escuro|
+|darker blue pen|–|–|–|–|pincel azul muito escuro|
+|darker brown color|–|–|–|–|marrom muito escuro|
+|darker brown pen|–|–|–|–|pincel marrom muito escuro|
+|darker cyan color|–|–|–|–|turqueza muito escuro|
+|darker cyan pen|–|–|–|–|pincel turqueza muito escuro|
+|darker gray color|–|–|–|–|cinza muito escuro|
+|darker gray pen|–|–|–|–|pincel cinza muito escuro|
+|darker green color|–|–|–|–|verde muito escuro|
+|darker green pen|–|–|–|–|pincel verde muito escuro|
+|darker lime color|–|–|–|–|limão muito escuro|
+|darker lime pen|–|–|–|–|pincel limão muito escuro|
+|darker magenta color|–|–|–|–|magenta muito escuro|
+|darker magenta pen|–|–|–|–|pincel magenta muito escuro|
+|darker orange color|–|–|–|–|laranja muito escuro|
+|darker orange pen|–|–|–|–|pincel laranja muito escuro|
+|darker purple color|–|–|–|–|púrpura muito escuro|
+|darker purple pen|–|–|–|–|pincel púrpura muito escuro|
+|darker red color|–|–|–|–|vermelho muito escuro|
+|darker red pen|–|–|–|–|pincel vermelho muito escuro|
+|darker sky blue color|–|–|–|–|azul-celeste muito escuro|
+|darker sky blue pen|–|–|–|–|princel azul-celeste muito escuro|
+|darker sky color|–|–|–|–|cerúleo muito escuro|
+|darker sky pen|–|–|–|–|pincel cerúleo muito escuro|
+|darker teal color|–|–|–|–|telha muito escuro|
+|darker teal pen|–|–|–|–|pincel telha muito escuro|
+|darker violet color|–|–|–|–|violeta muito escuro|
+|darker violet pen|–|–|–|–|pincel violeta muito escuro|
+|darker yellow color|–|–|–|–|amarelo muito escuro|
+|darker yellow pen|–|–|–|–|pincel amarelo muito escuro|
 |darkest blue color|–|–|–|–|azul escuríssimo|
-|darkest blue pen|–|–|–|–|tinta azul escuríssimo|
+|darkest blue pen|–|–|–|–|pincel azul escuríssimo|
 |darkest brown color|–|–|–|–|marrom escuríssimo|
-|darkest brown pen|–|–|–|–|tinta marrom escuríssimo|
+|darkest brown pen|–|–|–|–|pincel marrom escuríssimo|
 |darkest cyan color|–|–|–|–|turqueza escuríssimo|
-|darkest cyan pen|–|–|–|–|tinta turqueza escuríssimo|
+|darkest cyan pen|–|–|–|–|pincel turqueza escuríssimo|
 |darkest gray color|–|–|–|–|cinza escuríssimo|
-|darkest gray pen|–|–|–|–|tinta cinza escuríssimo|
+|darkest gray pen|–|–|–|–|pincel cinza escuríssimo|
 |darkest green color|–|–|–|–|verde escuríssimo|
-|darkest green pen|–|–|–|–|tinta verde escuríssimo|
+|darkest green pen|–|–|–|–|pincel verde escuríssimo|
 |darkest lime color|–|–|–|–|limão escuríssimo|
-|darkest lime pen|–|–|–|–|tinta limão escuríssimo|
+|darkest lime pen|–|–|–|–|pincel limão escuríssimo|
 |darkest magenta color|–|–|–|–|magenta escuríssimo|
-|darkest magenta pen|–|–|–|–|tinta magenta escuríssimo|
+|darkest magenta pen|–|–|–|–|pincel magenta escuríssimo|
 |darkest orange color|–|–|–|–|laranja escuríssimo|
-|darkest orange pen|–|–|–|–|tinta laranja escuríssimo|
+|darkest orange pen|–|–|–|–|pincel laranja escuríssimo|
 |darkest purple color|–|–|–|–|púrpura escuríssimo|
-|darkest purple pen|–|–|–|–|tinta púrpura escuríssimo|
+|darkest purple pen|–|–|–|–|pincel púrpura escuríssimo|
 |darkest red color|–|–|–|–|vermelho escuríssimo|
-|darkest red pen|–|–|–|–|tinta vermelho escuríssimo|
+|darkest red pen|–|–|–|–|pincel vermelho escuríssimo|
 |darkest sky blue color|–|–|–|–|azul-celeste escuríssimo|
-|darkest sky blue pen|–|–|–|–|tinta azul-celeste escuríssimo|
+|darkest sky blue pen|–|–|–|–|pincel azul-celeste escuríssimo|
 |darkest sky color|–|–|–|–|cerúleo escuríssimo|
-|darkest sky pen|–|–|–|–|tinta cerúleo escuríssimo|
+|darkest sky pen|–|–|–|–|pincel cerúleo escuríssimo|
 |darkest teal color|–|–|–|–|telha escuríssimo|
-|darkest teal pen|–|–|–|–|tinta telha escuríssimo|
+|darkest teal pen|–|–|–|–|pincel telha escuríssimo|
 |darkest violet color|–|–|–|–|violeta escuríssimo|
-|darkest violet pen|–|–|–|–|tinta violeta escuríssimo|
+|darkest violet pen|–|–|–|–|pincel violeta escuríssimo|
 |darkest yellow color|–|–|–|–|amarelo escuríssimo|
-|darkest yellow pen|–|–|–|–|tinta amarelo escuríssimo|
-|dash byte|–|–|–|–|byte traço|
-|dash key|–|–|–|–|tecla traço|
+|darkest yellow pen|–|–|–|–|pincel amarelo escuríssimo|
+|dash byte|–|–|–|–|byte-traço|
+|dash key|–|–|–|–|tecla-traço|
 |data-link-escape byte|–|–|–|–|–|
 |degree|–|–|–|–|grau|
 |degree-symbol byte|–|–|–|–|–|
