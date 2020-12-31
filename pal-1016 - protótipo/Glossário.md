@@ -933,7 +933,6 @@ tags restantes para adicionar:
 |terminal|–|–|–|–|–|
 |text cutoff|–|–|–|–|–|
 |text margin|–|–|–|–|–|
-|the|–|–|–|–|–|
 |the gptoken|grupo do sinal|–|–|–|–|
 |~~thing~~|–|–|–|–|–|
 |three byte|–|–|–|–|–|
@@ -942,12 +941,12 @@ tags restantes para adicionar:
 |tick|–|–|–|–|–|
 |tilde byte|–|–|–|–|–|
 |times|–|–|–|–|–|
-|t-key|–|–|–|–|–|
+|t-key|tecla t|–|–|–|–|
 |top|parte de cima|–|–|–|–|
 |tpi|minipontos por polegada|–|–|–|–|
 |tpp|minipontos por ponto|–|–|–|–|
 |tracer color|cor usada pelo pintor|–|–|–|–|
-|trade-mark byte|–|–|–|–|–|
+|trade-mark byte|-|byte ®|–|–|–|
 |~~twip~~|–|–|–|–|–|
 |two byte|–|–|–|–|–|
 |two key|–|–|–|–|–|
