@@ -377,7 +377,7 @@ tags restantes para adicionar:
 |device-control-three byte|–|–|–|–|–|
 |device-control-two byte|–|–|–|–|–|
 |diaeresis byte|–|–|–|–|byte-¨|
-|directory|endereço da pasta|pasta|–|–|–|
+|directory|endereço completo da pasta|pasta|–|–|–|
 |directory name|nome da pasta|–|–|–|–|
 |distance|–|–|–|–|distância|
 |division-symbol byte|–|–|–|–|–|
@@ -776,7 +776,7 @@ tags restantes para adicionar:
 |paragraph byte|–|–|–|–|–|
 |partial moniker|–|–|–|–|–|
 |pastel color|–|–|–|–|–|
-|path|endereço completo do arquivo com extensão|endereço|–|–|–|
+|path|endereço completo do arquivo contendo extensão|endereço|–|–|–|
 |pause key|–|–|–|–|–|
 |pdf|arquivo pdf|–|–|–|–|
 |pen|–|–|–|–|–|
