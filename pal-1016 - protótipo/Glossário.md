@@ -378,7 +378,8 @@ tags restantes para adicionar:
 |device-control-two byte|–|–|–|–|–|
 |diaeresis byte|–|–|–|–|byte-¨|
 |directory|endereço completo da pasta|pasta|–|–|–|
-|directory name|nome da pasta|–|–|–|–|
+|directory name|nome da pasta contendo caractere separador|–|–|–|–|
+|directory name w/o slash|nome da pasta sem caractere separador|||||
 |distance|–|–|–|–|distância|
 |division-symbol byte|–|–|–|–|–|
 |d-key|–|–|–|–|tecla-d|
