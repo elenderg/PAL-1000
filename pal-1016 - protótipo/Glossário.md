@@ -857,6 +857,7 @@ tags restantes para adicionar:
 |q-key|tecla q|–|–|–|–|
 |quarter|quarto|–|–|–|–|
 |query byte|–|–|–|–|–|
+|queryinterface|-|-|-|-|-|
 |~~query string~~|–|–|–|–|–|
 |question-mark byte|–|byte-?|–|–|–|
 |quora|question or answer|-|-|-|-|
@@ -905,6 +906,7 @@ tags restantes para adicionar:
 |row#|–|–|–|–|–|
 |row/sheet|–|–|–|–|–|
 |run|–|–|–|–|–|
+|rcpaint<br/>read<br/>red byte<br/>redos<br/>release<br/>release<br/>relocuss<br/>reserved<br/>reserved<br/>reserved<br/>reservedwords<br/>resume<br/>resveredbytes<br/>revert<br/>rgb<br/>rider<br/>right button<br/>||||||
 
 ### #S
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -1033,7 +1035,7 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–| -          |
-|queryinterface<br/>queryinterface<br/>rcpaint<br/>read<br/>red byte<br/>redos<br/>release<br/>release<br/>relocuss<br/>reserved<br/>reserved<br/>reserved<br/>reservedwords<br/>resume<br/>resveredbytes<br/>revert<br/>rgb<br/>rider<br/>right button<br/>s_addr at the s_b1<br/>s_b1<br/>s_b2<br/>s_b3<br/>s_b4<br/>s_w1 at the s_b1<br/>s_w2 at the s_b3<br/>scan0<br/>screen<br/>seek<br/>selection<br/>selection<br/>selection<br/>selection<br/>setalertboundary<br/>setinterest<br/>setnotifycallbackfunction<br/>setnotifycallbackinterface<br/>setnotifysink<br/>setnotifywin32event<br/>setnotifywindowmessage<br/>setoutput<br/>setpriority<br/>setrate<br/>setsize<br/>setsyncspeaktimeout<br/>setvoice<br/>setvolume<br/>signature<br/>signature<br/>sin_addr<br/>sin_family<br/>sin_port<br/>sin_zero<br/>sizeinbytes<br/>sizeinfile<br/>sizeofallheadersinfile<br/>sizeofcodeinfile<br/>sizeofheaderinparagraphs<br/>sizeofimageinmemory<br/>sizeofinitializeddatainfile<br/>sizeofoptionalheaderinbytes<br/>sizeofuninitializeddatainfile<br/>skip<br/>sockaddr<br/>Some addrinfo routines<br/>Some things<br/>speak<br/>speakcompleteevent<br/>speakstream<br/>startupinfo<br/>stat<br/>status<br/>stride<br/>string<br/>style<br/>subsystem<br/>subsystemmajorversion<br/>subsystemminorversion<br/>superduper<br/>suppressbackgroundthread<br/>suppressexternalcodecs<br/>systemtime<br/>szdescription<br/>szsystemstatus<br/>talker object<br/>talker vtable record<br/>term<br/>textmetric<br/>thing record<br/>time<br/>timer<br/>timestamp<br/>timestamp<br/>tmascent<br/>tmavecharwidth<br/>tmbreakchar<br/>tmcharset<br/>tmdefaultchar<br/>tmdescent<br/>tmdigitizedaspectx<br/>tmdigitizedaspecty<br/>tmexternalleading<br/>tmfirstchar<br/>tmheight<br/>tminternalleading<br/>tmitalic<br/>tmlastchar<br/>tmmaxcharwidth<br/>tmoverhang<br/>tmpitchandfamily<br/>tmstruckout<br/>tmunderlined<br/>tmweight<br/>vertex array record<br/>vtable<br/>vtable<br/>|||||            |
+|s_addr at the s_b1<br/>s_b1<br/>s_b2<br/>s_b3<br/>s_b4<br/>s_w1 at the s_b1<br/>s_w2 at the s_b3<br/>scan0<br/>screen<br/>seek<br/>selection<br/>selection<br/>selection<br/>selection<br/>setalertboundary<br/>setinterest<br/>setnotifycallbackfunction<br/>setnotifycallbackinterface<br/>setnotifysink<br/>setnotifywin32event<br/>setnotifywindowmessage<br/>setoutput<br/>setpriority<br/>setrate<br/>setsize<br/>setsyncspeaktimeout<br/>setvoice<br/>setvolume<br/>signature<br/>signature<br/>sin_addr<br/>sin_family<br/>sin_port<br/>sin_zero<br/>sizeinbytes<br/>sizeinfile<br/>sizeofallheadersinfile<br/>sizeofcodeinfile<br/>sizeofheaderinparagraphs<br/>sizeofimageinmemory<br/>sizeofinitializeddatainfile<br/>sizeofoptionalheaderinbytes<br/>sizeofuninitializeddatainfile<br/>skip<br/>sockaddr<br/>Some addrinfo routines<br/>Some things<br/>speak<br/>speakcompleteevent<br/>speakstream<br/>startupinfo<br/>stat<br/>status<br/>stride<br/>string<br/>style<br/>subsystem<br/>subsystemmajorversion<br/>subsystemminorversion<br/>superduper<br/>suppressbackgroundthread<br/>suppressexternalcodecs<br/>systemtime<br/>szdescription<br/>szsystemstatus<br/>talker object<br/>talker vtable record<br/>term<br/>textmetric<br/>thing record<br/>time<br/>timer<br/>timestamp<br/>timestamp<br/>tmascent<br/>tmavecharwidth<br/>tmbreakchar<br/>tmcharset<br/>tmdefaultchar<br/>tmdescent<br/>tmdigitizedaspectx<br/>tmdigitizedaspecty<br/>tmexternalleading<br/>tmfirstchar<br/>tmheight<br/>tminternalleading<br/>tmitalic<br/>tmlastchar<br/>tmmaxcharwidth<br/>tmoverhang<br/>tmpitchandfamily<br/>tmstruckout<br/>tmunderlined<br/>tmweight<br/>vertex array record<br/>vtable<br/>vtable<br/>|||||            |
 
 ### #WXYZ
 
