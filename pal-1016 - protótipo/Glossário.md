@@ -1584,31 +1584,29 @@ Lista de Termos em Ordem Alfabética
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |u-key|–|–|–|–|–|
-|underscore byte|–|–|–|–|–|
-|unit|unidade|–|–|–|–|
-|unit-separator byte|–|–|–|–|–|
-|up-arrow key|–|–|–|–|–|
-|upperscore byte|–|–|–|–|–|
-|uuid|Identificador Único Universal|–|–|–|–|
-|unbump <sup>[D]</sup>|decrescer|diminuir|decrementar|subtrair|–|
-|unbump <sup>[E]</sup>|–|–|–|–|–|
-|undos|-|-|-|-|-|
-|unlockregion|-|-|-|-|-|
-|url record|-|-|-|-|-|
-|urlcomponents|-|-|-|-|-|
-|usermajorversion|-|-|-|-|-|
-|userminorversion|-|-|-|-|-|
-|uuid|-|-|-|-|-|
 |unassign|-|-|-|-|-|
+|unbump|decrescer|diminuir|decrementar|subtrair|–|
 |uncomment|-|-|-|-|-|
+|underscore byte|–|–|–|–|–|
+|undos|-|-|-|-|-|
 |ungroup|-|-|-|-|-|
 |unlabel|-|-|-|-|-|
 |unlock|-|-|-|-|-|
+|unit|unidade|–|–|–|–|
+|unit-separator byte|–|–|–|–|–|
+|unlockregion|-|-|-|-|-|
 |unmask|-|-|-|-|-|
 |unquote|-|-|-|-|-|
+|up-arrow key|–|–|–|–|–|
 |update|-|-|-|-|-|
-|uppercase|-|-|-|-|-|
+|uppercase (verbo)|-|-|-|-|-|
+|upperscore byte|–|–|–|–|–|
+|url record|-|-|-|-|-|
+|urlcomponents|-|-|-|-|-|
 |use (verbo)|-|-|-|-|-|
+|usermajorversion|-|-|-|-|-|
+|userminorversion|-|-|-|-|-|
+|uuid|Identificador Único Universal|–|–|–|–|
 
 
 ### #V
