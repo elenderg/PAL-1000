@@ -1,15 +1,5 @@
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|given <sup>[D]</sup>|dado|usando|segundo|conforme|consoante|
-|given <sup>[E]</sup>|a partir de|–|–|–|–|
-|handle <sup>[D]</sup>|tratar|agente|manejar|manipular|considerar|
-|handle <sup>[E]</sup>|(número) identificador|número de série|número do objeto|–|–|
-|has <sup>[D]</sup>|tem|possui|–|–|–|
-|has <sup>[E]</sup>|–|–|–|–|–|
-|have <sup>[D]</sup>|têm|possuem|–|–|–|
-|have <sup>[E]</sup>|–|–|–|–|–|
-|hue <sup>[D]</sup>|tom|matiz| coloração|tonalidade|–|
-|hue <sup>[E]</sup>|–|–|–|–|–|
 |indent <sup>[D]</sup>|avanço|–|–|–||
 |indent <sup>[E]</sup>|recuo (à direita)|–|–|–|–|
 |is past <sup>[D]</sup>|ultrapassar|passar de|–|–|–|
@@ -187,8 +177,6 @@ tags restantes para adicionar:
 |break <sup>[E]</sup>|–|–|–|–|–|
 |bump <sup>[D]</sup>|acrescer|aumentar|incrementar|acrescentar|–|
 |bump <sup>[E]</sup>|–|–|–|–|–|
-|buffer <sup>[D]</sup>|depósito|–|–|báfer|bâfer|
-|buffer <sup>[E]</sup>|depósito|armazém|estoque|almoxarifado|–|
 |break tag|–|–|–|–|marca parar|
 |brightness|–|–|–|–|brilho|
 |broken-bar byte|–|–|–|–|–|
@@ -197,7 +185,8 @@ tags restantes para adicionar:
 |brownish color|–|–|–|–|castanho|
 |bucket|–|–|–|–|–|
 |bucket count|–|–|–|–|–|
-|~~buffer~~|depósito|armazém|estoque|almoxarifado|–|
+|buffer <sup>[D]</sup>|depósito|–|–|báfer|bâfer|
+|buffer <sup>[E]</sup>|depósito|armazém|estoque|almoxarifado|–|
 |built-in type|–|–|–|–|tipo embutido|
 |bullet byte|–|–|–|–|byte-marcador|
 |button|botão|-|-|-|-|
@@ -225,8 +214,6 @@ tags restantes para adicionar:
 |clear <sup>[E]</sup>|–|–|–|–|–|
 |clipboard <sup>[D]</sup>|prancheta|–|–|área de transferência|–|
 |clipboard <sup>[E]</sup>|–|–|–|–|–|
-|console <sup>[D]</sup>|console|mostrador|–|–|–|
-|console <sup>[E]</sup>|–|–|–|–|–|
 |character|–|–|–|–|caractere|
 |choice|escolha|opção|-|-|-|
 |circumflex byte|–|–|–|–|byte-^|
@@ -243,7 +230,8 @@ tags restantes para adicionar:
 |comma byte|–|–|–|–|byte-vírgula|
 |command|–|–|–|–|comando|
 |comment color|cor dos comentários|–|–|–|–|
-|~~console~~|–|–|–|–|–|
+|console <sup>[D]</sup>|console|mostrador|–|–|–|
+|console <sup>[E]</sup>|–|–|–|–|–|
 |context|–|–|–|–|contexto|
 |context stack|–|–|–|–|pilha do contexto|
 |coord|coordenada|–|–|–|–|
@@ -471,6 +459,8 @@ tags restantes para adicionar:
 |------------|------------|------------|------------|------------|------------|
 |gcd|Máximo divisor comum|MDC|–|–|–|
 |geometric figure|–|–|–|–|–|
+|given <sup>[D]</sup>|dado|usando|segundo|conforme|consoante|
+|given <sup>[E]</sup>|a partir de|–|–|–|–|
 |g-key|–|–|–|–|–|
 |global|abrangente|-|-|-|-|
 |gold color|–|–|–|–|–|
@@ -493,7 +483,14 @@ tags restantes para adicionar:
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |hand cursor|mãozinha|–|–|–|–|
-|~~handle~~|–|–|–|–|–|
+|handle <sup>[D]</sup>|tratar|agente|manejar|manipular|considerar|
+|handle <sup>[E]</sup>|(número) identificador|número de série|número do objeto|–|–|
+|has <sup>[D]</sup>|tem|possui|–|–|–|
+|has <sup>[E]</sup>|–|–|–|–|–|
+|have <sup>[D]</sup>|têm|possuem|–|–|–|
+|have <sup>[E]</sup>|–|–|–|–|–|
+|hue <sup>[D]</sup>|tom|matiz| coloração|tonalidade|–|
+|hue <sup>[E]</sup>|–|–|–|–|–|
 |hashtag byte|–|–|–|–|–|
 |hash-tag byte|–|–|–|–|–|
 |hbitmap|número identificador de um bitmap|–|–|–|–|
