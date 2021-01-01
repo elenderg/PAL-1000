@@ -1496,6 +1496,37 @@ Lista de Termos em Ordem Alfabética
 |systemtime|-|-|-|-|-|
 |szdescription|-|-|-|-|-|
 |szsystemstatus|-|-|-|-|-|
+|save|-|-|-|-|-|
+|say|-|-|-|-|-|
+|scale|-|-|-|-|-|
+|scan|-|-|-|-|-|
+|scroll|-|-|-|-|-|
+|scrub|-|-|-|-|-|
+|seed|-|-|-|-|-|
+|select|-|-|-|-|-|
+|send|-|-|-|-|-|
+|set|-|-|-|-|-|
+|shift|-|-|-|-|-|
+|show|-|-|-|-|-|
+|shrink|-|-|-|-|-|
+|shut|-|-|-|-|-|
+|simplify|-|-|-|-|-|
+|skip|-|-|-|-|-|
+|slap|-|-|-|-|-|
+|smooth (verbo)|-|-|-|-|-|
+|snapshot (verbo)|-|-|-|-|-|
+|sort (verbo)|-|-|-|-|-|
+|space (verbo)|-|-|-|-|-|
+|speak|-|-|-|-|-|
+|split|-|-|-|-|-|
+|square (verbo)|-|-|-|-|-|
+|start (verbo)|-|-|-|-|-|
+|stop (verbo)|-|-|-|-|-|
+|store (verbo)|-|-|-|-|-|
+|stroke|-|-|-|-|-|
+|subtract|-|-|-|-|-|
+|swap|-|-|-|-|-|
+|switch (verbo)|-|-|-|-|-|
 
 
 ### #T
@@ -1567,7 +1598,13 @@ Lista de Termos em Ordem Alfabética
 |tmstruckout|-|-|-|-|-|
 |tmunderlined|-|-|-|-|-|
 |tmweight|-|-|-|-|-|
-
+|take|-|-|-|-|-|
+|tell|-|-|-|-|-|
+|track|-|-|-|-|-|
+|translate|-|-|-|-|-|
+|transmogrify|-|-|-|-|-|
+|trim|-|-|-|-|-|
+|turn|-|-|-|-|-|
 
 ### #U
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
