@@ -763,6 +763,9 @@ Lista de Termos em Ordem Alfabética
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |large letter height|–|–|–|–|–|
+|lbcolor|-|-|-|-|-|
+|lbhatch|-|-|-|-|-|
+|lbstyle|-|-|-|-|-|
 |lcm|Mínimo múltiplo comum|MMC|–|–|–|
 |left|–|–|–|–|–|
 |left-alligator byte|–|–|–|–|–|
@@ -770,6 +773,7 @@ Lista de Termos em Ordem Alfabética
 |left-arrow key|–|–|–|–|–|
 |left-brace byte|–|–|–|–|–|
 |left-bracket byte|–|–|–|–|–|
+|left button|-|-|-|-|-|
 |left-double-alligator-quote byte|–|–|–|–|–|
 |left-double-quote byte|–|–|–|–|–|
 |left-paren byte|–|–|–|–|–|
@@ -812,6 +816,7 @@ Lista de Termos em Ordem Alfabética
 |light violet pen|–|–|–|–|–|
 |light yellow color|–|–|–|–|–|
 |light yellow pen|–|–|–|–|–|
+|lighten (verbo)|clarear|-|-|-|-|
 |lighter blue color|–|–|–|–|–|
 |lighter blue pen|–|–|–|–|–|
 |lighter cyan color|–|–|–|–|–|
@@ -871,7 +876,11 @@ Lista de Termos em Ordem Alfabética
 |lightness|–|–|–|–|–|
 |lime color|–|–|–|–|–|
 |lime pen|–|–|–|–|–|
+|limit (verbo)|limitar|delimitar|-|-|-|
+|line|-|-|-|-|-|
 |linefeed byte|–|–|–|–|–|
+|link (verbo)|elencar|conectar|reunir|ajuntar|-|
+|list (verbo)|listar|alistar|catalogar|-|-|
 |little-a byte|–|–|–|–|–|
 |little-a-acute byte|–|–|–|–|–|
 |little-a-circumflex byte|–|–|–|–|–|
@@ -935,22 +944,20 @@ Lista de Termos em Ordem Alfabética
 |little-z byte|–|–|–|–|–|
 |little-z-caron byte|–|–|–|–|–|
 |l-key|–|–|–|–|–|
+|load (verbo)|carregar|abastecer|encher|-|-|
 |load address tag|–|–|–|–|–|
 |load eax tag|–|–|–|–|–|
-|local|de abrangência restrita|regional|–|–|–|
-|loop tag|–|–|–|–|–|
-|lower-double-quote byte|–|–|–|–|–|
-|lower-single-quote byte|–|–|–|–|–|
-|l-param|–|–|–|–|–|
-|lbcolor|-|-|-|-|-|
-|lbhatch|-|-|-|-|-|
-|lbstyle|-|-|-|-|-|
-|left button|-|-|-|-|-|
-|line|-|-|-|-|-|
 |loaderflags|-|-|-|-|-|
+|local|de abrangência restrita|regional|–|–|–|
+|localize|-|-|-|-|-|
+|lock|-|-|-|-|-|
 |lockregion|-|-|-|-|-|
 |logbrush|-|-|-|-|-|
-|lparam|-|-|-|-|-|
+|loop tag|–|–|–|–|–|
+|lower-double-quote byte|–|–|–|–|–|
+|lowercase (verbo)|-|-|-|-|-|
+|lower-single-quote byte|–|–|–|–|–|
+|l-param|–|–|–|–|–|
 |lpcallback|-|-|-|-|-|
 |lpcaretpos|-|-|-|-|-|
 |lpclass|-|-|-|-|-|
@@ -980,15 +987,8 @@ Lista de Termos em Ordem Alfabética
 |lpvendorinfo|-|-|-|-|-|
 |lstructsize|-|-|-|-|-|
 |lstructsize|-|-|-|-|-|
-|lighten|-|-|-|-|-|
-|limit|-|-|-|-|-|
-|link:|-|-|-|-|-|
-|list|-|-|-|-|-|
-|list:|-|-|-|-|-|
-|load|-|-|-|-|-|
-|localize|-|-|-|-|-|
-|lock|-|-|-|-|-|
-|lowercase (verbo)|-|-|-|-|-|
+
+
 
 ### #M
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -1036,14 +1036,15 @@ Lista de Termos em Ordem Alfabética
 |mask (verbo)|-|-|-|-|-|
 |minimize|-|-|-|-|-|
 |mirror (verbo)|-|-|-|-|-|
-|move|-|-|-|-|-|
+|move (verbo)|mover|movimentar|mexer|deslocar|transferir|
 |multiply|-|-|-|-|-|
-|name (verbo)|nomear|-|-|-|-|
+
 
 ### #N
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|name|nome|–|–|–|–|
+|name (substantivo)|nome|–|–|–|–|
+|name (verbo)|nomear|-|-|-|-|
 |negative-acknowledge byte|–|–|–|–|–|
 |next letter|–|–|–|–|–|
 |nibble <sup>[D]</sup>|níquel|nicles|–|–|–|
