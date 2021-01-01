@@ -662,17 +662,14 @@ Lista de Termos em Ordem Alfabética
 |hand cursor|mãozinha|–|–|–|–|
 |handle <sup>[D]</sup>|tratar|agente|manejar|manipular|considerar|
 |handle <sup>[E]</sup>|(número) identificador|número de série|número do objeto|–|–|
-|has <sup>[D]</sup>|tem|possui|–|–|–|
-|has <sup>[E]</sup>|–|–|–|–|–|
-|have <sup>[D]</sup>|têm|possuem|–|–|–|
-|have <sup>[E]</sup>|–|–|–|–|–|
-|hue <sup>[D]</sup>|tom|matiz| coloração|tonalidade|–|
-|hue <sup>[E]</sup>|–|–|–|–|–|
+|has|tem|possui|–|–|–|
+|hash|escrutínio|-|-|-|-|
 |hashtag byte|–|–|–|–|–|
 |hash-tag byte|–|–|–|–|–|
+|have|têm|possuem|–|–|–|
 |hbitmap|número identificador de um bitmap|–|–|–|–|
 |hbrush|número identificador de um pincel|–|–|–|–|
-|hdc|Número de contexto do dispositivo (device context)|–|–|–|–|
+|hdc|Número de contexto do dispositivo [device context]|–|–|–|–|
 |heading|–|–|–|–|–|
 |heap count|–|–|–|–|–|
 |height|–|–|–|–|–|
@@ -681,14 +678,13 @@ Lista de Termos em Ordem Alfabética
 |hicon|Número identificador do ícone|–|–|–|–|
 |hilite color|cor de realce|cor de destaque|–|–|–|
 |h-key|–|–|–|–|–|
-|home key|–|–|–|–|–|
+|home key|tecla Home|–|–|–|–|
 |hpen|Número identificador da pincel|Número identificador da canetinha|Número identificador do lápis de cor|–|–|
 |hrgn|Número identificador da região|–|–|–|–|
-|~~hue~~|–|–|–|–|–|
-|hbrbackground|-|-|-|-|-|
-|hcrypthash pointer|-|-|-|-|-|
-|hcursor|-|-|-|-|-|
-|hdc|-|-|-|-|-|
+|hue|tom|matiz| coloração|tonalidade|–|
+|hbrbackground|número identidicador do plano de fundo|-|-|-|-|
+|hcrypthash pointer|número identificador do escrutínio|-|-|-|-|
+|hcursor|número identificador do cursor|-|-|-|-|
 |hdc|-|-|-|-|-|
 |hdevmode|-|-|-|-|-|
 |hdevnames|-|-|-|-|-|
