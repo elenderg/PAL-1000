@@ -1,15 +1,6 @@
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|outdent <sup>[D]</sup>|recuo|–|–|–||
-|outdent <sup>[E]</sup>|recuo (à esquerda)|–|–|–|–|
-|pick <sup>[D]</sup>|pegar|realçar|escolher|separar|selecionar|
-|pick <sup>[E]</sup>|coletar|–|–|–|–|
-|point <sup>[D]</sup>|foco|meta|objetivo|–|–|
-|point <sup>[E]</sup>|ponto|–|–|–|–|
-|prepend <sup>[D]</sup>|prepor|antepor|–|–|–|
-|prepend <sup>[E]</sup>|–|–|–|–|–|
-|query string <sup>[D]</sup>|consulta|questionamento|–|escrita de consulta|–|
-|query string <sup>[E]</sup>|texto da consulta|–|–|–|–|
+
 |rainbow color <sup>[D]</sup>|furta-cor|–|–|cor do arco-íris|–|
 |rainbow color <sup>[E]</sup>|cor da íris|–|–|–|–|
 |repeat <sup>[D]</sup>|repetir|repita|–|–|–|
@@ -791,7 +782,8 @@ tags restantes para adicionar:
 |orange color|–|–|–|–|–|
 |orange pen|–|–|–|–|–|
 |osmosian font resource|–|–|–|–|–|
-|~~outdent~~|–|–|–|–|–|
+|outdent <sup>[D]</sup>|recuo|–|–|–||
+|outdent <sup>[E]</sup>|recuo (à esquerda)|–|–|–|–|
 |output|–|–|–|produção|produzir|
 |objects<br/>oemidentifier<br/>oeminfo<br/>original first thunk<br/>osmajorversion<br/>osminorversion<br/>otmascent<br/>otmdescent<br/>otmemsquare<br/>otmfiller<br/>otmfsselection<br/>otmfstype<br/>otmitalicangle<br/>otmlinegap<br/>otmmacascent<br/>otmmacdescent<br/>otmmaclinegap<br/>otmpanosenumber<br/>otmpfacename<br/>otmpfamilyname<br/>otmpfullname<br/>otmpstylename<br/>otmptsubscriptoffset<br/>otmptsubscriptsize<br/>otmptsuperscriptoffset<br/>otmptsuperscriptsize<br/>otmrcfontbox<br/>otmscapemheight<br/>otmscharsloperise<br/>otmscharsloperun<br/>otmsize<br/>otmsstrikeoutposition<br/>otmsstrikeoutsize<br/>otmsunderscoreposition<br/>otmsunderscoresize<br/>otmsxheight<br/>otmtextmetrics<br/>otmusminiumppem<br/>outline entries<br/>outlinetextmetric<br/>overlynumber<br/>||||||
 
@@ -819,14 +811,19 @@ tags restantes para adicionar:
 |percent-sign byte|–|–|–|–|–|
 |period byte|–|–|–|–|–|
 |per-mille-sign byte|–|–|–|–|–|
+|pick <sup>[D]</sup>|pegar|realçar|escolher|separar|selecionar|
+|pick <sup>[E]</sup>|coletar|–|–|–|–|
 |picture|-|-|-|-|-|
 |pink color|–|–|–|–|–|
 |pink pen|–|–|–|–|–|
 |p-key|–|–|–|–|–|
 |plus-or-minus byte|–|–|–|–|–|
 |plus-sign byte|–|–|–|–|–|
-|~~point~~|–|–|–|–|–|
-|~~pointer~~|–|–|–|–|–|
+|prepend <sup>[D]</sup>|prepor|antepor|–|–|–|
+|prepend <sup>[E]</sup>|–|–|–|–|–|
+|point <sup>[D]</sup>|foco|meta|objetivo|–|–|
+|point <sup>[E]</sup>|ponto|–|–|–|–|
+|pointer|–|–|–|–|–|
 |polygon|polígono|–|–|–|–|
 |pound-sign byte|–|–|–|–|–|
 |ppi|pontos por polegada|pontos em uma polegada|–|–|–|
@@ -849,7 +846,8 @@ tags restantes para adicionar:
 |quarter|quarto|–|–|–|–|
 |query byte|–|–|–|–|–|
 |queryinterface|-|-|-|-|-|
-|~~query string~~|–|–|–|–|–|
+|query string <sup>[D]</sup>|consulta|questionamento|–|escrita de consulta|–|
+|query string <sup>[E]</sup>|texto da consulta|–|–|–|–|
 |question-mark byte|–|byte-?|–|–|–|
 |quora|question or answer|-|-|-|pesquisa|
 |quotient|quociente|–|–|–|–|
