@@ -94,8 +94,6 @@ Lista de Verbos em Ordem Alfabética
 |indent|-|-|-|-|-|
 |index|-|-|-|-|-|
 |initalize|-|-|-|-|-|
-|initialize|-|-|-|-|-|
-|initialize:|-|-|-|-|-|
 |insert|-|-|-|-|-|
 |internalize|-|-|-|-|-|
 |intersect|-|-|-|-|-|
