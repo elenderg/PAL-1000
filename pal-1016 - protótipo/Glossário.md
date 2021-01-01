@@ -1,9 +1,6 @@
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|indent <sup>[D]</sup>|avanço|–|–|–||
-|indent <sup>[E]</sup>|recuo (à direita)|–|–|–|–|
-|is past <sup>[D]</sup>|ultrapassar|passar de|–|–|–|
-|is past <sup>[E]</sup>|–|–|–|–|–|
+
 |lenght <sup>[D]</sup>|medida|dimensão|–|–|–|
 |lenght <sup>[E]</sup>|–|–|–|–|–|
 |loop <sup>[D]</sup>|reciclar|recicle|–|–|–|
@@ -519,7 +516,10 @@ tags restantes para adicionar:
 |import|-|-|-|-|-|
 |import header|dados do título|cabeçalho de importação|–|–|–|
 |increment tag|–|–|–|–|–|
-|~~indent~~|–|–|–|–|–|
+|indent <sup>[D]</sup>|avanço|–|–|–||
+|indent <sup>[E]</sup>|recuo (à direita)|–|–|–|–|
+|is past <sup>[D]</sup>|ultrapassar|passar de|–|–|–|
+|is past <sup>[E]</sup>|–|–|–|–|–|
 |index|-|-|-|-|-|
 |input|fluxo de entrada|inserção|–|imposição|impor|
 |insert key|–|–|–|–|–|
