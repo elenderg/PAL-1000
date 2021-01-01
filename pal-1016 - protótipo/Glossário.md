@@ -389,6 +389,7 @@ Lista de Termos em Ordem Alfabética
 |data-link-escape byte|–|–|–|–|–|
 |data section|-|-|-|-|-|
 |date/time|-|-|-|-|-|
+|debugeventcallback|-|-|-|-|-|
 |degree|–|–|–|–|grau|
 |degree-symbol byte|–|–|–|–|–|
 |delete byte|–|–|–|–|byte-del|
@@ -397,42 +398,24 @@ Lista de Termos em Ordem Alfabética
 |dereference tag|–|–|–|–|–|
 |deque <sup>[D]</sup>|decue|desenfileirar|–|–|–|
 |deque <sup>[E]</sup>|–|–|–|–|–|
+|designator w/o backslash|-|-|-|-|-|
 |desktop color|–|–|–|–|cor do desktop |
 |device-control-four byte|–|–|–|–|–|
 |device-control-one byte|–|–|–|–|–|
 |device-control-three byte|–|–|–|–|–|
 |device-control-two byte|–|–|–|–|–|
+|devmode|-|-|-|-|-|
 |diaeresis byte|–|–|–|–|byte-¨|
 |dialog|-|-|-|-|-|
+|directories2-15|-|-|-|-|-|
 |directory|endereço completo da pasta|pasta|–|–|–|
 |directory name|nome da pasta contendo caractere separador|–|–|–|–|
 |directory name w/o slash|nome da pasta sem caractere separador|||||
+|directory0|-|-|-|-|-|
+|displayui|-|-|-|-|-|
 |distance|–|–|–|–|distância|
 |division-symbol byte|–|byte-÷|byte-divisão|–|-|
 |d-key|–|–|–|–|tecla-d|
-|document|documento|-|-|-|-|
-|document indent|–|–|–|–|–|
-|dollar-sign byte|–|byte-$|–|–|–|
-|dos header|suplemento windows pe|informação suplementar||||
-|dot <sup>[D]</sup>|ponto|marca|–|–|–|
-|dot <sup>[E]</sup>|pinta|–|–|–|–|
-|double-dagger byte|–|byte-‡|–|–|–|
-|double-quote byte|–|byte-aspas|–|–|–|
-|down-arrow key|–|tecla-⬇️|–|–|–|
-|dyad|-|-|-|-|-|
-|d1|-|-|-|-|-|
-|d2|-|-|-|-|-|
-|d3|-|-|-|-|-|
-|d4|-|-|-|-|-|
-
-
-
-|debugeventcallback|-|-|-|-|-|
-|designator w/o backslash|-|-|-|-|-|
-|devmode|-|-|-|-|-|
-|directories2-15|-|-|-|-|-|
-|directory0|-|-|-|-|-|
-|displayui|-|-|-|-|-|
 |dllcharacteristics|-|-|-|-|-|
 |dmbitsperpel|-|-|-|-|-|
 |dmcollate|-|-|-|-|-|
@@ -464,6 +447,15 @@ Lista de Termos em Ordem Alfabética
 |dmspecversion|-|-|-|-|-|
 |dmttoption|-|-|-|-|-|
 |docinfo|-|-|-|-|-|
+|document|documento|-|-|-|-|
+|document indent|–|–|–|–|–|
+|dollar-sign byte|–|byte-$|–|–|–|
+|dos header|suplemento windows pe|informação suplementar|-|-|-|
+|dot <sup>[D]</sup>|ponto|marca|–|–|–|
+|dot <sup>[E]</sup>|pinta|–|–|–|–|
+|double-dagger byte|–|byte-‡|–|–|–|
+|double-quote byte|–|byte-aspas|–|–|–|
+|down-arrow key|–|tecla-⬇️|–|–|–|
 |dwextrainfolength  |-|-|-|-|-|
 |dwfileattributes|-|-|-|-|-|
 |dwfillattribute|-|-|-|-|-|
@@ -486,6 +478,11 @@ Lista de Termos em Ordem Alfabética
 |dwxsize|-|-|-|-|-|
 |dwy|-|-|-|-|-|
 |dwysize|-|-|-|-|-|
+|dyad|-|-|-|-|-|
+|d1|-|-|-|-|-|
+|d2|-|-|-|-|-|
+|d3|-|-|-|-|-|
+|d4|-|-|-|-|-|
 |darken|-|-|-|-|-|
 |debug|-|-|-|-|-|
 |decide|-|-|-|-|-|
