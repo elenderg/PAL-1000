@@ -644,12 +644,12 @@ Lista de Termos em Ordem Alfabética
 |grayscale (verbo)|-|-|-|-|-|
 |greater-than-sign byte|–|–|–|–|–|
 |green byte|-|-|-|-|-|
-|green color|–|–|–|–|–|
-|green pen|–|–|–|–|–|
-|greenish color|–|–|–|–|–|
-|grid color|–|–|–|–|–|
-|group (substantivo)|-|-|-|-|-|
-|group (verbo)|-|-|-|-|-|
+|green color|cor verde|–|–|–|–|
+|green pen|pincel verde|–|–|–|–|
+|greenish color|cor esverdeada|–|–|–|–|
+|grid color|cor da grade|cor da grelha|cor da estante|–|–|
+|group (substantivo)|grupo|-|-|-|-|
+|group (verbo)|agrupar|reunir|ajuntar|-|-|
 |group-separator byte|–|–|–|–|–|
 |guid|Identificador Único Abrangente|–|–|–|–|
 
@@ -667,39 +667,37 @@ Lista de Termos em Ordem Alfabética
 |hashtag byte|–|–|–|–|–|
 |hash-tag byte|–|–|–|–|–|
 |have|têm|possuem|–|–|–|
+|hbrbackground|número identidicador do plano de fundo|-|-|-|-|
 |hbitmap|número identificador de um bitmap|–|–|–|–|
 |hbrush|número identificador de um pincel|–|–|–|–|
-|hdc|Número de contexto do dispositivo [device context]|–|–|–|–|
-|heading|–|–|–|–|–|
+|hcrypthash pointer|número identificador do escrutínio|-|-|-|-|
+|hcursor|número identificador do cursor|-|-|-|-|
+|hdc|número identificador de contexto de dispositivo|-|-|-|-|
+|hdevmode|-|-|-|-|-|
+|hdevnames|-|-|-|-|-|
+|header|título|cabeçalho|nome|-|-|
+|heading|proa|rumo|norte|sentido|direção|
 |heap count|–|–|–|–|–|
 |height|–|–|–|–|–|
 |hex string|–|–|–|–|–|
 |hfont|Número identificador da fonte|–|–|–|–|
 |hicon|Número identificador do ícone|–|–|–|–|
+|hiconsm|-|-|-|-|-|
 |hilite color|cor de realce|cor de destaque|–|–|–|
+|hinstance|-|-|-|-|-|
+|hinstance|-|-|-|-|-|
 |h-key|–|–|–|–|–|
 |home key|tecla Home|–|–|–|–|
 |hpen|Número identificador da pincel|Número identificador da canetinha|Número identificador do lápis de cor|–|–|
-|hrgn|Número identificador da região|–|–|–|–|
-|hue|tom|matiz| coloração|tonalidade|–|
-|hbrbackground|número identidicador do plano de fundo|-|-|-|-|
-|hcrypthash pointer|número identificador do escrutínio|-|-|-|-|
-|hcursor|número identificador do cursor|-|-|-|-|
-|hdc|-|-|-|-|-|
-|hdevmode|-|-|-|-|-|
-|hdevnames|-|-|-|-|-|
-|height|-|-|-|-|-|
-|hicon|-|-|-|-|-|
-|hiconsm|-|-|-|-|-|
-|hinstance|-|-|-|-|-|
-|hinstance|-|-|-|-|-|
 |hprocess|-|-|-|-|-|
+|hrgn|Número identificador da região|–|–|–|–|
 |hstderror|-|-|-|-|-|
 |hstdinput|-|-|-|-|-|
 |hstdoutput|-|-|-|-|-|
 |hthread|-|-|-|-|-|
 |hwnd|-|-|-|-|-|
 |hwndowner|-|-|-|-|-|
+|hue|tom|matiz| coloração|tonalidade|–|
 
 
 ### #I
