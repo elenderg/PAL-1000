@@ -1106,23 +1106,24 @@ Lista de Termos em Ordem Alfabética
 ### #O
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|offset|deslocamento|–|–|–|–|
+|objects|-|-|-|-|-|
+|oemidentifier|-|-|-|-|-|
+|oeminfo|-|-|-|-|-|
+|offset (substantivo)|deslocamento|–|–|–|–|
+|offset (verbo)|deslocar|-|-|-|-|
 |o-key|–|–|–|–|–|
 |one byte|–|–|–|–|–|
 |one key|–|–|–|–|–|
 |one-half byte|–|–|–|–|–|
 |one-quarter byte|–|–|–|–|–|
+|only draw|-|-|-|-|-|
+|open|-|-|-|-|-|
 |orange color|–|–|–|–|–|
 |orange pen|–|–|–|–|–|
-|osmosian font resource|–|–|–|–|–|
-|outdent|recuo|recuo (à esquerda)|–|–||
-|output|–|–|–|produção|produzir|
-|objects|-|-|-|-|-|
-|oemidentifier|-|-|-|-|-|
-|oeminfo|-|-|-|-|-|
 |original first thunk|-|-|-|-|-|
 |osmajorversion|-|-|-|-|-|
 |osminorversion|-|-|-|-|-|
+|osmosian font resource|–|–|–|–|–|
 |otmascent|-|-|-|-|-|
 |otmdescent|-|-|-|-|-|
 |otmemsquare|-|-|-|-|-|
@@ -1155,46 +1156,65 @@ Lista de Termos em Ordem Alfabética
 |otmsxheight|-|-|-|-|-|
 |otmtextmetrics|-|-|-|-|-|
 |otmusminiumppem|-|-|-|-|-|
+|outdent (substantivo)|recuo|recuo (à esquerda)|–|–|-|
+|outdent (verbo)|recuar|recuar (à esquerda)|-|-|-|
+|outline (substantivo)|contorno|realce|borda|-|-|
+|outline (verbo)|contornar|contornear|realçar|-|-|
 |outline entries|-|-|-|-|-|
 |outlinetextmetric|-|-|-|-|-|
+|output|fluxo de saída|resultado|–|produção|produzir|
 |overlynumber|-|-|-|-|-|
-|offset (verbo)|-|-|-|-|-|
-|only draw|-|-|-|-|-|
-|open|-|-|-|-|-|
-|outdent|-|-|-|-|-|
-|outline|-|-|-|-|-|
-|output|-|-|-|-|-|
+
 
 ### #P
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
+|pad|-|-|-|-|-|
+|paintstruct|-|-|-|-|-|
+|pair|-|-|-|-|-|
 |page|–|–|–|–|–|
 |page clipboard|–|–|–|–|–|
 |page number|–|–|–|–|–|
 |page-down key|–|–|–|–|–|
+|page redos|-|-|-|-|-|
+|page undos|-|-|-|-|-|
 |page-up key|–|–|–|–|–|
+|panose|-|-|-|-|-|
+|paperlength|-|-|-|-|-|
+|paperwidth|-|-|-|-|-|
 |paragraph|-|-|-|-|-|
 |paragraph byte|–|–|–|–|–|
+|parse|-|-|-|-|-|
 |partial moniker|–|–|–|–|–|
+|paste|-|-|-|-|-|
 |pastel color|–|–|–|–|–|
 |path|endereço completo do arquivo contendo extensão|endereço|–|–|–|
+|pause|-|-|-|-|-|
 |pause key|–|–|–|–|–|
 |pdf|arquivo pdf|–|–|–|–|
+|pdfify|pdficar|pdfizar|transformar em pdf|criar pdf|-|
 |pdf object|-|-|-|-|-|
 |pdf outline entry|-|-|-|-|-|
-|pen|–|–|–|–|–|
+|pdf state|-|-|-|-|-|
+|pdf string|-|-|-|-|-|
+|pen (substantivo)|pincel|lápis de cor|–|–|–|
+|pen (verbo)|colorir|-|-|-|-|
 |pen size|–|–|–|–|–|
 |per|–|–|–|–|–|
 |percent|–|–|–|–|–|
 |percent-sign byte|–|–|–|–|–|
 |period byte|–|–|–|–|–|
 |per-mille-sign byte|–|–|–|–|–|
+|pe section header|-|-|-|-|-|
 |pick <sup>[D]</sup>|pegar|realçar|escolher|separar|selecionar|
 |pick <sup>[E]</sup>|coletar|–|–|–|–|
 |picture|-|-|-|-|-|
 |pink color|–|–|–|–|–|
 |pink pen|–|–|–|–|–|
+|pixelformat|-|-|-|-|-|
 |p-key|–|–|–|–|–|
+|play|-|-|-|-|-|
+|pluralize|-|-|-|-|-|
 |plus-or-minus byte|–|–|–|–|–|
 |plus-sign byte|–|–|–|–|–|
 |prepend <sup>[D]</sup>|prepor|antepor|–|–|–|
@@ -1202,49 +1222,28 @@ Lista de Termos em Ordem Alfabética
 |point <sup>[D]</sup>|foco|meta|objetivo|–|–|
 |point <sup>[E]</sup>|ponto|–|–|–|–|
 |pointer|–|–|–|–|–|
+|pointertosymboltable|-|-|-|-|-|
 |polygon|polígono|–|–|–|–|
+|position|-|-|-|-|-|
+|post|-|-|-|-|-|
 |pound-sign byte|–|–|–|–|–|
 |ppi|pontos por polegada|pontos em uma polegada|–|–|–|
 |precise degree|–|–|–|–|–|
+|prepend|prepor|antepor|pôr no começo|pôr no início|-|
+|print|-|-|-|-|-|
+|printdlgex|-|-|-|-|-|
 |printer canvas|–|–|–|–|–|
 |printer device mode|–|–|–|–|–|
 |print-screen key|Tecla Print Screen|Tecla Prt Scr|–|–|-|
 |process|–|–|–|–|–|
+|processinfo|-|-|-|-|-|
+|prototype string|-|-|-|-|-|
+|pt|-|-|-|-|-|
 |prolog tag|–|–|–|–|–|
 |purple color|–|–|–|–|–|
 |purple pen|–|–|–|–|–|
 |push address tag|–|–|–|–|–|
 |push value tag|–|–|–|–|–|
-|pad|-|-|-|-|-|
-|page redos|-|-|-|-|-|
-|page undos|-|-|-|-|-|
-|paintstruct|-|-|-|-|-|
-|pair|-|-|-|-|-|
-|panose|-|-|-|-|-|
-|paperlength|-|-|-|-|-|
-|paperwidth|-|-|-|-|-|
-|pause|-|-|-|-|-|
-|pdf state|-|-|-|-|-|
-|pdf string is string.|-|-|-|-|-|
-|pe section header|-|-|-|-|-|
-|pixelformat|-|-|-|-|-|
-|pointer|-|-|-|-|-|
-|pointertosymboltable|-|-|-|-|-|
-|printdlgex|-|-|-|-|-|
-|processinfo|-|-|-|-|-|
-|prototype string|-|-|-|-|-|
-|pt|-|-|-|-|-|
-|parse|-|-|-|-|-|
-|paste|-|-|-|-|-|
-|pdfify|-|-|-|-|-|
-|pen (verbo)|colorir|-|-|-|-|
-|pick|-|-|-|-|-|
-|play|-|-|-|-|-|
-|pluralize|-|-|-|-|-|
-|position|-|-|-|-|-|
-|post|-|-|-|-|-|
-|prepend|-|-|-|-|-|
-|print|-|-|-|-|-|
 |put|-|-|-|-|-|
 
 ### #Q
@@ -1258,9 +1257,11 @@ Lista de Termos em Ordem Alfabética
 |query string <sup>[E]</sup>|texto da consulta|–|–|–|–|
 |question-mark byte|–|byte-?|–|–|–|
 |quora|question or answer|-|-|-|pesquisa|
+|quote (verbo)|citar|referenciar|fazer referência|-|-|
 |quotient|quociente|–|–|–|–|
-|quit|-|-|-|-|-|
-|quote (verbo)|-|-|-|-|-|
+|quit|encerrar|sair|fechar|finalizar|-|
+
+
 ### #R
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
@@ -1268,7 +1269,9 @@ Lista de Termos em Ordem Alfabética
 |rainbow color <sup>[D]</sup>|furta-cor|–|–|cor do arco-íris|–|
 |rainbow color <sup>[E]</sup>|cor da íris|–|–|–|–|
 |random number|–|–|–|–|–|
-|ratio|proporção|||||
+|ratio|proporção|-|-|-|-|
+|rcpaint|-|-|-|-|-|
+|read|-|-|-|-|-|
 |really dark color|–|–|–|–|–|
 |really light color|–|–|–|–|–|
 |really really dark color|–|–|–|–|–|
@@ -1276,22 +1279,23 @@ Lista de Termos em Ordem Alfabética
 |record|conjunto|registro|–|–|–|
 |record-separator byte|–|–|–|–|–|
 |rectangle|–|–|–|–|–|
+|red byte|-|-|-|-|-|
 |red color|–|–|–|–|–|
 |red pen|–|–|–|–|–|
+|redos|-|-|-|-|-|
 |refer|-|-|-|-|-|
 |registered byte|–|–|–|–|–|
 |registered-trade-mark byte|–|–|–|–|–|
+|release|-|-|-|-|-|
+|relocuss|-|-|-|-|-|
 |remainder|resto|–|–|–|–|
 |remembered page number|–|–|–|–|–|
-|repeat <sup>[D]</sup>|repetir|repita|–|–|–|
-|repeat <sup>[E]</sup>|–|–|–|–|–|
-|resize <sup>[D]</sup>|repor|redimensionar|recalcular|–|–|
-|resize <sup>[E]</sup>|redimensionar|–|–|–|–|
+|repeat|repetir|repita|repete|–|–|
+|resize|repor|redimensionar|recalcular|–|–|
 |repeat tag|–|–|–|–|–|
 |reply|objeção|argumento de resposta|–|–|–|
 |return byte|–|–|–|–|–|
-|rider <sup>[D]</sup>|iterador|sequenciador|–|–|–|
-|rider <sup>[E]</sup>|percorredor|–|–|–|–|
+|rider|iterador|sequenciador|percorredor|–|–|
 |right-alligator byte|–|–|–|–|–|
 |right-alligator-quote byte|–|–|–|–|–|
 |right-arrow key|–|–|–|–|–|
@@ -1308,16 +1312,11 @@ Lista de Termos em Ordem Alfabética
 |routine address tag|–|–|–|–|–|
 |routine reference|–|–|–|–|–|
 |row|fileira|||||
-|row#|–|–|–|–|–|
+|row\#|–|–|–|–|–|
 |row/sheet|–|–|–|–|–|
 |run|–|–|–|–|–|
-|rcpaint|-|-|-|-|-|
-|read|-|-|-|-|-|
-|red byte|-|-|-|-|-|
-|redos|-|-|-|-|-|
-|release|-|-|-|-|-|
-|release|-|-|-|-|-|
-|relocuss|-|-|-|-|-|
+
+
 |reserved|-|-|-|-|-|
 |reserved|-|-|-|-|-|
 |reserved|-|-|-|-|-|
