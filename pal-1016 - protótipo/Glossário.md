@@ -1269,7 +1269,9 @@ Lista de Termos em Ordem Alfabética
 |rainbow color <sup>[D]</sup>|furta-cor|–|–|cor do arco-íris|–|
 |rainbow color <sup>[E]</sup>|cor da íris|–|–|–|–|
 |random number|–|–|–|–|–|
-|ratio|proporção|||||
+|ratio|proporção|-|-|-|-|
+|rcpaint|-|-|-|-|-|
+|read|-|-|-|-|-|
 |really dark color|–|–|–|–|–|
 |really light color|–|–|–|–|–|
 |really really dark color|–|–|–|–|–|
@@ -1277,22 +1279,23 @@ Lista de Termos em Ordem Alfabética
 |record|conjunto|registro|–|–|–|
 |record-separator byte|–|–|–|–|–|
 |rectangle|–|–|–|–|–|
+|red byte|-|-|-|-|-|
 |red color|–|–|–|–|–|
 |red pen|–|–|–|–|–|
+|redos|-|-|-|-|-|
 |refer|-|-|-|-|-|
 |registered byte|–|–|–|–|–|
 |registered-trade-mark byte|–|–|–|–|–|
+|release|-|-|-|-|-|
+|relocuss|-|-|-|-|-|
 |remainder|resto|–|–|–|–|
 |remembered page number|–|–|–|–|–|
-|repeat <sup>[D]</sup>|repetir|repita|–|–|–|
-|repeat <sup>[E]</sup>|–|–|–|–|–|
-|resize <sup>[D]</sup>|repor|redimensionar|recalcular|–|–|
-|resize <sup>[E]</sup>|redimensionar|–|–|–|–|
+|repeat|repetir|repita|repete|–|–|
+|resize|repor|redimensionar|recalcular|–|–|
 |repeat tag|–|–|–|–|–|
 |reply|objeção|argumento de resposta|–|–|–|
 |return byte|–|–|–|–|–|
-|rider <sup>[D]</sup>|iterador|sequenciador|–|–|–|
-|rider <sup>[E]</sup>|percorredor|–|–|–|–|
+|rider|iterador|sequenciador|percorredor|–|–|
 |right-alligator byte|–|–|–|–|–|
 |right-alligator-quote byte|–|–|–|–|–|
 |right-arrow key|–|–|–|–|–|
@@ -1309,16 +1312,11 @@ Lista de Termos em Ordem Alfabética
 |routine address tag|–|–|–|–|–|
 |routine reference|–|–|–|–|–|
 |row|fileira|||||
-|row#|–|–|–|–|–|
+|row\#|–|–|–|–|–|
 |row/sheet|–|–|–|–|–|
 |run|–|–|–|–|–|
-|rcpaint|-|-|-|-|-|
-|read|-|-|-|-|-|
-|red byte|-|-|-|-|-|
-|redos|-|-|-|-|-|
-|release|-|-|-|-|-|
-|release|-|-|-|-|-|
-|relocuss|-|-|-|-|-|
+
+
 |reserved|-|-|-|-|-|
 |reserved|-|-|-|-|-|
 |reserved|-|-|-|-|-|
