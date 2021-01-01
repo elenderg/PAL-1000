@@ -1,37 +1,5 @@
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|add <sup>[D]</sup>|unir|somar|juntar|adicionar|–|
-|add <sup>[E]</sup>|adicionar|–|–|–|–|
-|anywhere <sup>[D]</sup>|algures|qualquer|–|–|em qualquer lugar|
-|anywhere <sup>[E]</sup>|-|–|–|–|algum lugar|
-|append <sup>[D]</sup>|pospor|atar|apor|ligar|–|
-|append <sup>[E]</sup>|pospor|–|–|–|–|
-|box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
-|box <sup>[E]</sup>|–|–|–|–|–|
-|break <sup>[D]</sup>|parar|pare|interrompa|interromper|–|
-|break <sup>[E]</sup>|–|–|–|–|–|
-|bump <sup>[D]</sup>|acrescer|aumentar|incrementar|acrescentar|–|
-|bump <sup>[E]</sup>|–|–|–|–|–|
-|buffer <sup>[D]</sup>|depósito|–|–|báfer|bâfer|
-|buffer <sup>[E]</sup>|depósito|armazém|estoque|almoxarifado|–|
-|center <sup>[D]</sup>|centrar|centralizar|–|–|–|
-|center <sup>[E]</sup>|–|–|–|–|–|
-|change <sup>[D]</sup>|mudar|trocar|alterar|modificar|–|
-|change <sup>[E]</sup>|–|–|–|–|–|
-|clear <sup>[D]</sup>|limpar|apagar|excluir|clarear||
-|clear <sup>[E]</sup>|–|–|–|–|–|
-|clipboard <sup>[D]</sup>|prancheta|–|–|área de transferência|–|
-|clipboard <sup>[E]</sup>|–|–|–|–|–|
-|console <sup>[D]</sup>|console|mostrador|–|–|–|
-|console <sup>[E]</sup>|–|–|–|–|–|
-|dab <sup>[D]</sup>|matizar|pincelar|colorir|–|–|
-|dab <sup>[E]</sup>|–|–|–|–|–|
-|deque <sup>[D]</sup>|decue|desenfileirar|–|–|–|
-|deque <sup>[E]</sup>|–|–|–|–|–|
-|dot <sup>[D]</sup>|ponto|marca|–|–|–|
-|dot <sup>[E]</sup>|pinta|–|–|–|–|
-|flag <sup>[D]</sup>|sinal|sinalizador|bandeira|–|–|
-|flag <sup>[E]</sup>|–|–|–|–|–|
 |given <sup>[D]</sup>|dado|usando|segundo|conforme|consoante|
 |given <sup>[E]</sup>|a partir de|–|–|–|–|
 |handle <sup>[D]</sup>|tratar|agente|manejar|manipular|considerar|
@@ -118,6 +86,12 @@ tags restantes para adicionar:
 |accent key|–|–|–|–|tecla-\`|
 |acknowledge byte|–|–|–|–|byte-ack|
 |acute-accent byte|–|–|–|–|byte-´|
+|add <sup>[D]</sup>|unir|somar|juntar|adicionar|–|
+|add <sup>[E]</sup>|adicionar|–|–|–|–|
+|anywhere <sup>[D]</sup>|algures|qualquer|–|–|em qualquer lugar|
+|anywhere <sup>[E]</sup>|-|–|–|–|algum lugar|
+|append <sup>[D]</sup>|pospor|atar|apor|ligar|–|
+|append <sup>[E]</sup>|pospor|–|–|–|–|
 |adress|número do endereço|–|–|–|endereço|
 |a-key|–|–|–|–|tecla-a|
 |alt key|–|–|–|–|tecla-alt|
@@ -207,6 +181,14 @@ tags restantes para adicionar:
 |block|-|-|-|-|-|
 |blue color|–|–|–|–|azul|
 |blue pen|–|–|–|–|pincel azul|
+|box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
+|box <sup>[E]</sup>|–|–|–|–|–|
+|break <sup>[D]</sup>|parar|pare|interrompa|interromper|–|
+|break <sup>[E]</sup>|–|–|–|–|–|
+|bump <sup>[D]</sup>|acrescer|aumentar|incrementar|acrescentar|–|
+|bump <sup>[E]</sup>|–|–|–|–|–|
+|buffer <sup>[D]</sup>|depósito|–|–|báfer|bâfer|
+|buffer <sup>[E]</sup>|depósito|armazém|estoque|almoxarifado|–|
 |break tag|–|–|–|–|marca parar|
 |brightness|–|–|–|–|brilho|
 |broken-bar byte|–|–|–|–|–|
@@ -235,6 +217,16 @@ tags restantes para adicionar:
 |caret byte|pedaço contendo um cursor de texto|pedaço com um cursor de texto|–|–|byte cursor|
 |cedilla byte|–|–|–|–|byte-ç|
 |cent-sign byte|–|–|–|–|byte-¢|
+|center <sup>[D]</sup>|centrar|centralizar|–|–|–|
+|center <sup>[E]</sup>|–|–|–|–|–|
+|change <sup>[D]</sup>|mudar|trocar|alterar|modificar|–|
+|change <sup>[E]</sup>|–|–|–|–|–|
+|clear <sup>[D]</sup>|limpar|apagar|excluir|clarear||
+|clear <sup>[E]</sup>|–|–|–|–|–|
+|clipboard <sup>[D]</sup>|prancheta|–|–|área de transferência|–|
+|clipboard <sup>[E]</sup>|–|–|–|–|–|
+|console <sup>[D]</sup>|console|mostrador|–|–|–|
+|console <sup>[E]</sup>|–|–|–|–|–|
 |character|–|–|–|–|caractere|
 |choice|escolha|opção|-|-|-|
 |circumflex byte|–|–|–|–|byte-^|
@@ -379,6 +371,12 @@ tags restantes para adicionar:
 |delete key|–|–|–|–|tecla-del|
 |depth|–|–|–|–|profundidade|
 |dereference tag|–|–|–|–|–|
+|dab <sup>[D]</sup>|matizar|pincelar|colorir|–|–|
+|dab <sup>[E]</sup>|–|–|–|–|–|
+|deque <sup>[D]</sup>|decue|desenfileirar|–|–|–|
+|deque <sup>[E]</sup>|–|–|–|–|–|
+|dot <sup>[D]</sup>|ponto|marca|–|–|–|
+|dot <sup>[E]</sup>|pinta|–|–|–|–|
 |desktop color|–|–|–|–|cor do desktop |
 |device-control-four byte|–|–|–|–|–|
 |device-control-one byte|–|–|–|–|–|
@@ -455,6 +453,8 @@ tags restantes para adicionar:
 |five byte|–|–|–|–|–|
 |five key|–|–|–|–|–|
 |f-key|–|–|–|–|–|
+|flag <sup>[D]</sup>|sinal|sinalizador|bandeira|–|–|
+|flag <sup>[E]</sup>|–|–|–|–|–|
 |font height|–|–|–|–|–|
 |font info|-|-|-|-|-|
 |font resource|–|–|–|–|–|
