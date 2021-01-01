@@ -739,12 +739,21 @@ Lista de Termos em Ordem Alfabética
 |istream vtable record|-|-|-|-|-|
 |isuisupported|-|-|-|-|-|
 |item|-|-|-|-|-|
-
+|imagine|-|-|-|-|-|
+|include|-|-|-|-|-|
+|indent|-|-|-|-|-|
+|index|-|-|-|-|-|
+|initalize|-|-|-|-|-|
+|insert|-|-|-|-|-|
+|internalize|-|-|-|-|-|
+|intersect|-|-|-|-|-|
+|invert|-|-|-|-|-|
 
 ### #J-K
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |j-key|–|–|–|–|–|
+|jump (verbo)|-|-|-|-|-|
 |jump false tag|–|–|–|–|–|
 |key|tecla|–|–|–|–|
 |k-key|–|–|–|–|–|
