@@ -173,6 +173,16 @@ Lista de Termos em Ordem Alfabética
 |bucket record|-|-|-|-|-|
 |bweight|-|-|-|-|-|
 |bxheight|-|-|-|-|-|
+|beep|-|-|-|-|-|
+|begin|-|-|-|-|-|
+|bitwise|-|-|-|-|-|
+|blank|-|-|-|-|-|
+|blurt|-|-|-|-|-|
+|border|-|-|-|-|-|
+|bring|-|-|-|-|-|
+|bubble|-|-|-|-|-|
+|bump|-|-|-|-|-|
+|buzz:|-|-|-|-|-|
 
 
 ### #C
