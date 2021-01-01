@@ -400,8 +400,11 @@ Lista de Termos em Ordem Alfabética
 |depth|–|–|–|–|profundidade|
 |dereference tag|–|–|–|–|–|
 |deque|decue|desenfileirar|remover da fila|–|–|
+|deselect|-|-|-|-|-|
+|de-sign|-|-|-|-|-|
 |designator w/o backslash|-|-|-|-|-|
 |desktop color|–|–|–|–|cor do desktop |
+|destroy|-|-|-|-|-|
 |device-control-four byte|–|–|–|–|–|
 |device-control-one byte|–|–|–|–|–|
 |device-control-three byte|–|–|–|–|–|
@@ -416,6 +419,7 @@ Lista de Termos em Ordem Alfabética
 |directory0|-|-|-|-|-|
 |displayui|-|-|-|-|-|
 |distance|–|–|–|–|distância|
+|divide|-|-|-|-|-|
 |division-symbol byte|–|byte-÷|byte-divisão|–|-|
 |d-key|–|–|–|–|tecla-d|
 |dllcharacteristics|-|-|-|-|-|
@@ -455,9 +459,13 @@ Lista de Termos em Ordem Alfabética
 |dos header|suplemento windows pe|informação suplementar|-|-|-|
 |dot <sup>[D]</sup>|ponto|marca|–|–|–|
 |dot <sup>[E]</sup>|pinta|–|–|–|–|
+|double|-|-|-|-|-|
 |double-dagger byte|–|byte-‡|–|–|–|
 |double-quote byte|–|byte-aspas|–|–|–|
 |down-arrow key|–|tecla-⬇️|–|–|–|
+|draw|-|-|-|-|-|
+|dump|-|-|-|-|-|
+|duplicate|-|-|-|-|-|
 |dwextrainfolength  |-|-|-|-|-|
 |dwfileattributes|-|-|-|-|-|
 |dwfillattribute|-|-|-|-|-|
@@ -485,17 +493,6 @@ Lista de Termos em Ordem Alfabética
 |d2|-|-|-|-|-|
 |d3|-|-|-|-|-|
 |d4|-|-|-|-|-|
-
-
-
-|deselect|-|-|-|-|-|
-|de-sign|-|-|-|-|-|
-|destroy|-|-|-|-|-|
-|divide|-|-|-|-|-|
-|double|-|-|-|-|-|
-|draw|-|-|-|-|-|
-|dump|-|-|-|-|-|
-|duplicate|-|-|-|-|-|
 
 
 ### #E
