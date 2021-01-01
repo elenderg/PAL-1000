@@ -1166,8 +1166,6 @@ Lista de Termos em Ordem Alfabética
 |overlynumber|-|-|-|-|-|
 
 
-
-
 ### #P
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
