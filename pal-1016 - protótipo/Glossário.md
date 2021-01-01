@@ -200,6 +200,11 @@ Lista de Termos em Ordem Alfabética
 |caps key|–|tecla Fixa|–|–|tecla-fixar|
 |caret byte|pedaço contendo um cursor de texto|pedaço com um cursor de texto|–|–|byte cursor|
 |cb|-|-|-|-|-|
+|cbclsextra|-|-|-|-|-|
+|cbreserved2|-|-|-|-|-|
+|cbsize|-|-|-|-|-|
+|cbsize|-|-|-|-|-|
+|cbwndextra|-|-|-|-|-|
 |cedilla byte|–|–|–|–|byte-ç|
 |cent-sign byte|–|–|–|–|byte-¢|
 |center <sup>[D]</sup>|centrar|centralizar|–|–|–|
@@ -208,8 +213,10 @@ Lista de Termos em Ordem Alfabética
 |change <sup>[E]</sup>|–|–|–|–|–|
 |clear <sup>[D]</sup>|limpar|apagar|excluir|clarear||
 |clear <sup>[E]</sup>|–|–|–|–|–|
-|clipboard <sup>[D]</sup>|prancheta|–|–|área de transferência|–|
-|clipboard <sup>[E]</sup>|–|–|–|–|–|
+|cfilename|-|-|-|-|-|
+|characteristics|-|-|-|-|-|
+|characteristics|-|-|-|-|-|
+|checksum|-|-|-|-|-|
 |character|–|–|–|–|caractere|
 |choice|escolha|opção|-|-|-|
 |circumflex byte|–|–|–|–|byte-^|
@@ -217,8 +224,13 @@ Lista de Termos em Ordem Alfabética
 |clear color|–|–|–|–|cor transparente|
 |clear key|–|–|–|–|tecla limpar|
 |clear pen|–|–|–|–|pincel transparente|
+|clipboard <sup>[D]</sup>|prancheta|–|–|área de transferência|–|
+|clipboard <sup>[E]</sup>|–|–|–|–|–|
+|clone|-|-|-|-|-|
 |clsid|Identificador de Classe|Número Identificador de Classe|–|–|–|
 |cluck sound|som de latido|cacarejo|–|–|reclamação|
+|code|-|-|-|-|-|
+|code section|-|-|-|-|-|
 |colon byte|–|–|–|–|byte dois-pontos|
 |color|–|–|–|–|cor|
 |colorref|código da cor|número da cor|–|–|cor-ref|
@@ -226,6 +238,8 @@ Lista de Termos em Ordem Alfabética
 |comma byte|–|–|–|–|byte-vírgula|
 |command|–|–|–|–|comando|
 |comment color|cor dos comentários|–|–|–|–|
+|commit|-|-|-|-|-|
+|compiler|agrupador|reunidor|-|-|-|
 |console <sup>[D]</sup>|console|mostrador|–|–|–|
 |console <sup>[E]</sup>|–|–|–|–|–|
 |context|–|–|–|–|contexto|
@@ -233,6 +247,7 @@ Lista de Termos em Ordem Alfabética
 |coord|coordenada|–|–|–|–|
 |copy|–|–|–|–|cópia|
 |copyright byte|–|–|–|–|byte-©|
+|copyto|-|-|-|-|-|
 |count|–|–|–|–|conta|
 |counter|–|–|–|–|contador|
 |crypt session|-|-|-|-|-|
@@ -246,24 +261,8 @@ Lista de Termos em Ordem Alfabética
 |current tab|–|–|–|–|aba atual|
 |cursor|setinha|cursor|–|–|–|
 |cyan color|–|–|–|–|turqueza|
+|cwycountchars|-|-|-|-|-|
 |cyan pen|–|–|–|–|tinta turqueza|
-|cbclsextra|-|-|-|-|-|
-|cbreserved2|-|-|-|-|-|
-|cbsize|-|-|-|-|-|
-|cbsize|-|-|-|-|-|
-|cbwndextra|-|-|-|-|-|
-|cfilename|-|-|-|-|-|
-|characteristics|-|-|-|-|-|
-|characteristics|-|-|-|-|-|
-|checksum|-|-|-|-|-|
-|clone|-|-|-|-|-|
-|code|-|-|-|-|-|
-|code section|-|-|-|-|-|
-|color|-|-|-|-|-|
-|commit|-|-|-|-|-|
-|compiler|-|-|-|-|-|
-|copyto|-|-|-|-|-|
-|cwycountchars<|-|-|-|-|-|
 |calculate|-|-|-|-|-|
 |cancel|-|-|-|-|-|
 |capitalize|-|-|-|-|-|
