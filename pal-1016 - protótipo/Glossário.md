@@ -151,8 +151,8 @@ Lista de Termos em Ordem Alfabética
 |blue pen|–|–|–|–|pincel azul|
 |blurt|-|-|-|-|-|
 |bmidline|-|-|-|-|-|
-|border (substantivo)|borda|-|-|-|-|
-|border (verbo)|contornar|contornear|-|-|-|
+|border (substantivo)|borda|realce|-|-|-|
+|border (verbo)|contornar|contornear|realçar|-|-|
 |borough|região|bairro|zona|-|-|
 |boroughbox|-|-|-|-|-|
 |box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
