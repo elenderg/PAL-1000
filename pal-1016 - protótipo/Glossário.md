@@ -1115,8 +1115,7 @@ Lista de Termos em Ordem Alfabética
 |orange color|–|–|–|–|–|
 |orange pen|–|–|–|–|–|
 |osmosian font resource|–|–|–|–|–|
-|outdent <sup>[D]</sup>|recuo|–|–|–||
-|outdent <sup>[E]</sup>|recuo (à esquerda)|–|–|–|–|
+|outdent|recuo|recuo (à esquerda)|–|–||
 |output|–|–|–|produção|produzir|
 |objects|-|-|-|-|-|
 |oemidentifier|-|-|-|-|-|
