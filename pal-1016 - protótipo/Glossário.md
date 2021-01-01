@@ -1165,7 +1165,7 @@ Lista de Termos em Ordem Alfabética
 |outlinetextmetric|-|-|-|-|-|
 |overlynumber|-|-|-|-|-|
 |offset (verbo)|-|-|-|-|-|
-|only|-|-|-|-|-|
+|only draw|-|-|-|-|-|
 |open|-|-|-|-|-|
 |outdent|-|-|-|-|-|
 |outline|-|-|-|-|-|
@@ -1240,7 +1240,18 @@ Lista de Termos em Ordem Alfabética
 |processinfo|-|-|-|-|-|
 |prototype string|-|-|-|-|-|
 |pt|-|-|-|-|-|
-
+|parse|-|-|-|-|-|
+|paste|-|-|-|-|-|
+|pdfify|-|-|-|-|-|
+|pen (verbo)|colorir|-|-|-|-|
+|pick|-|-|-|-|-|
+|play|-|-|-|-|-|
+|pluralize|-|-|-|-|-|
+|position|-|-|-|-|-|
+|post|-|-|-|-|-|
+|prepend|-|-|-|-|-|
+|print|-|-|-|-|-|
+|put|-|-|-|-|-|
 
 ### #Q
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -1254,7 +1265,8 @@ Lista de Termos em Ordem Alfabética
 |question-mark byte|–|byte-?|–|–|–|
 |quora|question or answer|-|-|-|pesquisa|
 |quotient|quociente|–|–|–|–|
-
+|quit|-|-|-|-|-|
+|quote (verbo)|-|-|-|-|-|
 ### #R
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
@@ -1322,7 +1334,29 @@ Lista de Termos em Ordem Alfabética
 |rgb|-|-|-|-|-|
 |rider|-|-|-|-|-|
 |right button|-|-|-|-|-|
-
+|raise|-|-|-|-|-|
+|read|-|-|-|-|-|
+|reassign|-|-|-|-|-|
+|receive|-|-|-|-|-|
+|reduce|-|-|-|-|-|
+|refresh|-|-|-|-|-|
+|reindex|-|-|-|-|-|
+|relinquish|-|-|-|-|-|
+|remember|-|-|-|-|-|
+|remove|-|-|-|-|-|
+|rename|-|-|-|-|-|
+|renumber|-|-|-|-|-|
+|replace|-|-|-|-|-|
+|reque|-|-|-|-|-|
+|reset|-|-|-|-|-|
+|resize|-|-|-|-|-|
+|resolve|-|-|-|-|-|
+|restart|-|-|-|-|-|
+|restore|-|-|-|-|-|
+|reverse|-|-|-|-|-|
+|rotate|-|-|-|-|-|
+|round (verbo)|arredondar|-|-|-|-|
+|run (verbo)|-|-|-|-|-|
 
 ### #S
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
