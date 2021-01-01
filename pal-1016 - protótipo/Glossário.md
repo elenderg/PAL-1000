@@ -1454,6 +1454,8 @@ Lista de Termos em Ordem Alfabética
 |superscript-one byte|–|–|–|–|–|
 |superscript-three byte|–|–|–|–|–|
 |superscript-two byte|–|–|–|–|–|
+|suppressbackgroundthread|-|-|-|-|-|
+|suppressexternalcodecs|-|-|-|-|-|
 |switch (verbo)|Alternar|Trocar|Mudar|||
 |switch (substantivo)|interruptor|tomada|decisor|alternador||
 |synchronous-idle byte|–|–|–|–|–|
@@ -1468,18 +1470,15 @@ Lista de Termos em Ordem Alfabética
 |sin_family|-|-|-|-|-|
 |sin_port|-|-|-|-|-|
 |sin_zero|-|-|-|-|-|
+|systemtime|-|-|-|-|-|
+|szdescription|-|-|-|-|-|
+|szsystemstatus|-|-|-|-|-|
+
 
 |addrinfo routines|-|-|-|-|-|
 |things|-|-|-|-|-|
 
 
-
-|superduper|-|-|-|-|-|
-|suppressbackgroundthread|-|-|-|-|-|
-|suppressexternalcodecs|-|-|-|-|-|
-|systemtime|-|-|-|-|-|
-|szdescription|-|-|-|-|-|
-|szsystemstatus|-|-|-|-|-|
 |save|-|-|-|-|-|
 |say|-|-|-|-|-|
 |scale|-|-|-|-|-|
