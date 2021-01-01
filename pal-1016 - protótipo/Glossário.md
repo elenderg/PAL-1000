@@ -57,7 +57,7 @@ tags restantes para adicionar:
 |ai_flags|-|-|-|-|-|
 |ai_next|-|-|-|-|-|
 |ai_protocol|-|-|-|-|-|
-|ai_sockettype||||||
+|ai_sockettype|-|-|-|-|-|
 
 ### #B
 
@@ -251,7 +251,7 @@ tags restantes para adicionar:
 |commit|-|-|-|-|-|
 |compiler|-|-|-|-|-|
 |copyto|-|-|-|-|-|
-|cwycountchars<||||||
+|cwycountchars<|-|-|-|-|-|
 
 ### #D
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -504,7 +504,7 @@ tags restantes para adicionar:
 |file name|nome do arquivo contendo extensão|-|-|-|-|
 |file name w/o extension|norme do arquivo sem extensão|-|-|-|-|
 |file-separator byte|–|–|–|–|–|
-|filetime||||||
+|filetime|-|-|-|-|-|
 |finalize tag|–|–|–|–|–|
 |find anchor|-|-|-|-|-|
 |five byte|–|–|–|–|–|
@@ -540,7 +540,7 @@ tags restantes para adicionar:
 |ftcreationtime|-|-|-|-|-|
 |ftlastaccesstime|-|-|-|-|-|
 |ftlastwritetime|-|-|-|-|-|
-|fwtype<br/||||||
+|fwtype<br/|-|-|-|-|-|
 
 ### #G
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -1475,7 +1475,7 @@ tags restantes para adicionar:
 |vertex array record|-|-|-|-|-|
 |vtable|-|-|-|-|-|
 |vtable|-|-|-|-|-|
-||||||            |
+|-|-|-|-|-|            |
 
 ### #WXYZ
 
@@ -1519,5 +1519,5 @@ tags restantes para adicionar:
 |wyrd|-|-|-|-|-|
 |x|-|-|-|-|-|
 |y|-|-|-|-|-|
-|ydmresolution||||||
+|ydmresolution|-|-|-|-|-|
 
