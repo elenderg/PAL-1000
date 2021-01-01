@@ -1513,8 +1513,11 @@ Lista de Termos em Ordem Alfabética
 |tab key|–|–|–|–|–|
 |tag|etiqueta|–|–|–|–|
 |talker|narrador|locutor|falante|–|–|
+|talker object|-|-|-|-|-|
+|talker vtable record|-|-|-|-|-|
 |tan color|–|–|–|–|–|
 |tan pen|–|–|–|–|–|
+|target|alvo|meta|objetivo [SAL]|–|–|
 |teal color|verde-azulado|azul petróleo|verde petróleo|–|–|
 |teal pen|–|–|–|–|–|
 |terminal|–|–|–|–|–|
@@ -1536,17 +1539,8 @@ Lista de Termos em Ordem Alfabética
 |tpp|minipontos por ponto|–|–|–|–|
 |tracer color|cor usada pelo pintor|–|–|–|–|
 |trade-mark byte|-|byte ®|–|–|–|
-|target <sup>[D]</sup>|alvo|meta|–|–|–|
-|target <sup>[E]</sup>|objetivo (SAL)|–|–|–|–|
-|token <sup>[D]</sup>|marco|signo|símbolo|marca|–|
-|token <sup>[E]</sup>|sinal|–|–|–|–|
-|twip <sup>[D]</sup>|tuipe|–|–|–|–|
-|twip <sup>[E]</sup>|miniponto|microponto|minipixel|micropixel|–|
-|two byte|–|–|–|–|–|
-|two key|–|–|–|–|–|
-|type|tipo|–|–|–|–|
-|talker object|-|-|-|-|-|
-|talker vtable record|-|-|-|-|-|
+
+
 |term|-|-|-|-|-|
 |textmetric|-|-|-|-|-|
 |thing record|-|-|-|-|-|
@@ -1574,6 +1568,16 @@ Lista de Termos em Ordem Alfabética
 |tmstruckout|-|-|-|-|-|
 |tmunderlined|-|-|-|-|-|
 |tmweight|-|-|-|-|-|
+|token <sup>[D]</sup>|marco|signo|símbolo|marca|–|
+|token <sup>[E]</sup>|sinal|–|–|–|–|
+|twip <sup>[D]</sup>|tuipe|–|–|–|–|
+|twip <sup>[E]</sup>|miniponto|microponto|minipixel|micropixel|–|
+|two byte|–|–|–|–|–|
+|two key|–|–|–|–|–|
+|type|tipo|–|–|–|–|
+
+
+
 |take|-|-|-|-|-|
 |tell|-|-|-|-|-|
 |track|-|-|-|-|-|
