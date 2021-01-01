@@ -1656,7 +1656,8 @@ Lista de Termos em Ordem Alfabética
 |vertex array record|-|-|-|-|-|
 |vtable|-|-|-|-|-|
 |vtable|-|-|-|-|-|
-|-|-|-|-|-|            |
+|vary|-|-|-|-|-|
+|void|-|-|-|-|-|
 
 ### #WXYZ
 
@@ -1702,4 +1703,11 @@ Lista de Termos em Ordem Alfabética
 |x|-|-|-|-|-|
 |y|-|-|-|-|-|
 |ydmresolution|-|-|-|-|-|
-
+|wait|-|-|-|-|-|
+|wipe|-|-|-|-|-|
+|wrap|-|-|-|-|-|
+|write|-|-|-|-|-|
+|yank|-|-|-|-|-|
+|yield|-|-|-|-|-|
+|zero|-|-|-|-|-|
+|zero fill|-|-|-|-|-|
