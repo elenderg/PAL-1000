@@ -981,7 +981,15 @@ Lista de Termos em Ordem Alfabética
 |lpvendorinfo|-|-|-|-|-|
 |lstructsize|-|-|-|-|-|
 |lstructsize|-|-|-|-|-|
-
+|lighten|-|-|-|-|-|
+|limit|-|-|-|-|-|
+|link:|-|-|-|-|-|
+|list|-|-|-|-|-|
+|list:|-|-|-|-|-|
+|load|-|-|-|-|-|
+|localize|-|-|-|-|-|
+|lock|-|-|-|-|-|
+|lowercase (verbo)|-|-|-|-|-|
 
 ### #M
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -1025,7 +1033,13 @@ Lista de Termos em Ordem Alfabética
 |module|-|-|-|-|-|
 |mouse|-|-|-|-|-|
 |msg|-|-|-|-|-|
-
+|make|-|-|-|-|-|
+|mask (verbo)|-|-|-|-|-|
+|minimize|-|-|-|-|-|
+|mirror (verbo)|-|-|-|-|-|
+|move|-|-|-|-|-|
+|multiply|-|-|-|-|-|
+|name (verbo)|nomear|-|-|-|-|
 
 ### #N
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -1089,7 +1103,10 @@ Lista de Termos em Ordem Alfabética
 |numberofpages|-|-|-|-|-|
 |numberofsections|-|-|-|-|-|
 |numberofsymbols|-|-|-|-|-|
-
+|negate|-|-|-|-|-|
+|non-destructively|-|-|-|-|-|
+|normalize|-|-|-|-|-|
+|null terminate|-|-|-|-|-|
 
 ### #O
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -1147,7 +1164,12 @@ Lista de Termos em Ordem Alfabética
 |outline entries|-|-|-|-|-|
 |outlinetextmetric|-|-|-|-|-|
 |overlynumber|-|-|-|-|-|
-
+|offset (verbo)|-|-|-|-|-|
+|only|-|-|-|-|-|
+|open|-|-|-|-|-|
+|outdent|-|-|-|-|-|
+|outline|-|-|-|-|-|
+|output|-|-|-|-|-|
 
 ### #P
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|

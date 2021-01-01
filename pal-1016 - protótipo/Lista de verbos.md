@@ -117,9 +117,9 @@ Lista de Verbos em Ordem Alfabética
 |negate|-|-|-|-|-|
 |non-destructively|-|-|-|-|-|
 |normalize|-|-|-|-|-|
-|null|-|-|-|-|-|
+|null terminate|-|-|-|-|-|
 |offset|-|-|-|-|-|
-|only|-|-|-|-|-|
+|only draw|-|-|-|-|-|
 |open|-|-|-|-|-|
 |outdent|-|-|-|-|-|
 |outline|-|-|-|-|-|
