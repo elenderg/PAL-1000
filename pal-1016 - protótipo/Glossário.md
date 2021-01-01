@@ -1515,39 +1515,33 @@ Lista de Termos em Ordem Alfabética
 |talker|narrador|locutor|falante|–|–|
 |talker object|-|-|-|-|-|
 |talker vtable record|-|-|-|-|-|
+|take|-|-|-|-|-|
 |tan color|–|–|–|–|–|
 |tan pen|–|–|–|–|–|
 |target|alvo|meta|objetivo [SAL]|–|–|
 |teal color|verde-azulado|azul petróleo|verde petróleo|–|–|
 |teal pen|–|–|–|–|–|
+|tell|-|-|-|-|-|
+|term|-|-|-|-|-|
 |terminal|–|–|–|–|–|
 |text|-|-|-|-|-|
 |text cutoff|–|–|–|–|–|
 |text margin|–|–|–|–|–|
-|the gptoken|grupo do sinal|–|–|–|–|
-|thing <sup>[D]</sup>|coisa|elemento|algo|objeto|–|
-|thing <sup>[E]</sup>|–|–|–|–|–|
+|textmetric|-|-|-|-|-|
+|the gptoken|grupo do sinal|grupo do símbolo|grupo do elemento|grupo do caractere|–|
+|thing|coisa|elemento|algo|objeto|–|
+|thing record|-|-|-|-|-|
 |three byte|–|–|–|–|–|
 |three key|–|–|–|–|–|
 |three-quarter byte|–|–|–|–|–|
 |tick|–|–|–|–|–|
 |tilde byte|–|–|–|–|–|
-|times|–|–|–|–|–|
-|t-key|tecla t|–|–|–|–|
-|top|parte de cima|–|–|–|–|
-|tpi|minipontos por polegada|–|–|–|–|
-|tpp|minipontos por ponto|–|–|–|–|
-|tracer color|cor usada pelo pintor|–|–|–|–|
-|trade-mark byte|-|byte ®|–|–|–|
-
-
-|term|-|-|-|-|-|
-|textmetric|-|-|-|-|-|
-|thing record|-|-|-|-|-|
 |time|-|-|-|-|-|
 |timer|-|-|-|-|-|
+|times|–|–|–|–|–|
 |timestamp|-|-|-|-|-|
 |timestamp|-|-|-|-|-|
+|t-key|tecla t|–|–|–|–|
 |tmascent|-|-|-|-|-|
 |tmavecharwidth|-|-|-|-|-|
 |tmbreakchar|-|-|-|-|-|
@@ -1568,23 +1562,23 @@ Lista de Termos em Ordem Alfabética
 |tmstruckout|-|-|-|-|-|
 |tmunderlined|-|-|-|-|-|
 |tmweight|-|-|-|-|-|
-|token <sup>[D]</sup>|marco|signo|símbolo|marca|–|
-|token <sup>[E]</sup>|sinal|–|–|–|–|
-|twip <sup>[D]</sup>|tuipe|–|–|–|–|
-|twip <sup>[E]</sup>|miniponto|microponto|minipixel|micropixel|–|
-|two byte|–|–|–|–|–|
-|two key|–|–|–|–|–|
-|type|tipo|–|–|–|–|
-
-
-
-|take|-|-|-|-|-|
-|tell|-|-|-|-|-|
+|token|marco|signo|símbolo|marca|sinal|
+|top|parte de cima|–|–|–|–|
+|tpi|minipontos por polegada|–|–|–|–|
+|tpp|minipontos por ponto|–|–|–|–|
+|twip <sup>[E]</sup>|miniponto|microponto|minipixel|micropixel|tuípe|
+|tracer color|cor usada pelo pintor|–|–|–|–|
+|trade-mark byte|-|byte ®|–|–|–|
 |track|-|-|-|-|-|
 |translate|-|-|-|-|-|
 |transmogrify|-|-|-|-|-|
 |trim|-|-|-|-|-|
 |turn|-|-|-|-|-|
+|two byte|–|–|–|–|–|
+|two key|–|–|–|–|–|
+|type|tipo|–|–|–|–|
+
+
 
 ### #U
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
