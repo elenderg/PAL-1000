@@ -861,7 +861,7 @@ tags restantes para adicionar:
 |queryinterface|-|-|-|-|-|
 |~~query string~~|–|–|–|–|–|
 |question-mark byte|–|byte-?|–|–|–|
-|quora|question or answer|-|-|-|-|
+|quora|question or answer|-|-|-|pesquisa|
 |quotient|quociente|–|–|–|–|
 
 ### #R
