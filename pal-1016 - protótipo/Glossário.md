@@ -194,10 +194,12 @@ Lista de Termos em Ordem Alfabética
 |call external tag|–|–|–|–|marca-evocar|
 |call indirect tag|–|–|–|–|marca-convocar|
 |call internal tag|–|–|–|–|marca-invocar|
+|calternatefilename|-|-|-|-|-|
 |cancel byte|–|–|–|–|byte cancelar|
 |canvas|painel|quadro|–|–|tela|
 |caps key|–|tecla Fixa|–|–|tecla-fixar|
 |caret byte|pedaço contendo um cursor de texto|pedaço com um cursor de texto|–|–|byte cursor|
+|cb|-|-|-|-|-|
 |cedilla byte|–|–|–|–|byte-ç|
 |cent-sign byte|–|–|–|–|byte-¢|
 |center <sup>[D]</sup>|centrar|centralizar|–|–|–|
@@ -245,8 +247,6 @@ Lista de Termos em Ordem Alfabética
 |cursor|setinha|cursor|–|–|–|
 |cyan color|–|–|–|–|turqueza|
 |cyan pen|–|–|–|–|tinta turqueza|
-|calternatefilename|-|-|-|-|-|
-|cb|-|-|-|-|-|
 |cbclsextra|-|-|-|-|-|
 |cbreserved2|-|-|-|-|-|
 |cbsize|-|-|-|-|-|
