@@ -281,7 +281,7 @@ Lista de Termos em Ordem Alfabética
 |cut|-|-|-|-|-|
 |cwycountchars|-|-|-|-|-|
 |cyan color|–|–|–|–|turqueza|
-|cyan pen|–|–|–|–|tinta turqueza|
+|cyan pen|–|–|–|–|pincel turqueza|
 
 
 ### #D
