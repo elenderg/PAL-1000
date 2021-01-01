@@ -999,47 +999,44 @@ Lista de Termos em Ordem Alfabética
 |magicnumber|-|-|-|-|-|
 |main window|–|–|–|–|–|
 |majorlinkerversion|-|-|-|-|-|
+|make|-|-|-|-|-|
 |margin|–|–|–|–|–|
 |masculine byte|–|byte-º|–|–|–|
 |mask|máscara|enfeite|maquiagem|–|–|
+|mask (verbo)|enfeitar|maquiar|mascarar|formatar|-|
 |maxfit|-|-|-|-|-|
 |maximumextraparagraphs|-|-|-|-|-|
 |maxheap|-|-|-|-|-|
 |max page undos|–|–|–|–|–|
 |maxstack|-|-|-|-|-|
 |max text undos|–|–|–|–|–|
+|memoryalignment|-|-|-|-|-|
 |memory canvas|–|–|–|–|–|
 |menu|–|–|–|–|–|
 |menu key|–|–|–|–|–|
+|message|-|-|-|-|-|
 |micro byte|–|–|–|–|–|
 |millisecond|–|–|–|–|–|
-|minus-sign byte|–|–|–|–|–|
-|m-key|–|–|–|–|–|
-|moniker <sup>[D]</sup>|alcunha|–|–|–|–|
-|moniker <sup>[E]</sup>|–|–|–|–|–|
-|monikette <sup>[D]</sup>|apelido|–|–|–|–|
-|monikette <sup>[E]</sup>|minialcunha|–|–|–|–|
-|ms|milisegundo(s)|–|–|–|–|
-|multiple|–|–|–|–|–|
-|multiplication-symbol byte|–|–|–|–|–|
-
-
-|memoryalignment|-|-|-|-|-|
-|message|-|-|-|-|-|
 |minheap|-|-|-|-|-|
+|minimize|-|-|-|-|-|
 |minimumextraparagraphs|-|-|-|-|-|
 |minorlinkerversion|-|-|-|-|-|
 |minstack|-|-|-|-|-|
-|mixed|-|-|-|-|-|
-|module|-|-|-|-|-|
-|mouse|-|-|-|-|-|
-|msg|-|-|-|-|-|
-|make|-|-|-|-|-|
-|mask (verbo)|-|-|-|-|-|
-|minimize|-|-|-|-|-|
+|minus-sign byte|–|–|–|–|–|
 |mirror (verbo)|-|-|-|-|-|
+|mixed|-|-|-|-|-|
+|m-key|–|–|–|–|–|
+|module|-|-|-|-|-|
+|moniker|alcunha|–|–|–|–|
+|monikette|apelido|minialcunha|–|–|–|
 |move (verbo)|mover|movimentar|mexer|deslocar|transferir|
+|mouse|-|-|-|-|-|
+|ms|milisegundo(s)|–|–|–|–|
+|msg|-|-|-|-|-|
+|multiple|–|–|–|–|–|
+|multiplication-symbol byte|–|–|–|–|–|
 |multiply|-|-|-|-|-|
+
 
 
 ### #N
