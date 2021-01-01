@@ -65,9 +65,13 @@ Lista de Termos em Ordem Alfabética
 |backslash|barra invertida|–|–|–|barra-inv|
 |backslash byte|–|–|–|–|byte-barra-inv|
 |backspace key|–|–|–|–|tecla-retornar|
+|bar|-|-|-|-|-|
 |bar byte|–|–|–|–|byte-barra|
+|barmstyle|-|-|-|-|-|
 |baseline|–|–|–|–|linha base|
+|bcontrast|-|-|-|-|-|
 |bell byte|–|–|–|–|byte-sino|
+|bfamilytype|-|-|-|-|-|
 |Bible|Bíblia|Escrituras|Sagradas Escrituras|-|-|
 |big-a byte|–|–|–|–|byte-A maiúsculo|
 |big-a-acute byte|–|–|–|–|byte-à maiúsculo|
@@ -86,6 +90,7 @@ Lista de Termos em Ordem Alfabética
 |big-e-circumflex byte|–|–|–|–|byte-ê maiúsculo|
 |big-e-diaeresis byte|–|–|–|–|byte-ë maiúsculo|
 |big-e-grave byte|–|–|–|–|byte-è maiúsculo|
+|big-endiunsigned wyrd|-|-|-|-|-|
 |big-eth byte|–|byte-Ð maiúsculo|–|–|byte-eth maiúsculo|
 |big-f byte|–|–|–|–|byte-f maiúsculo|
 |big-g byte|–|–|–|–|byte-g maiúsculo|
@@ -130,14 +135,21 @@ Lista de Termos em Ordem Alfabética
 |big-z byte|–|–|–|–|byte-z maiúsculo|
 |big-z-caron byte|–|–|–|–|–|
 |bit|pedacinho|–|–|–|bit|
+|bitmapdata|-|-|-|-|-|
 |b-key|–|–|–|–|tecla-b|
 |black color|–|–|–|–|preto|
 |black pen|–|–|–|–|pincel preto|
+|bletterform|-|-|-|-|-|
 |block|-|-|-|-|-|
+|blue byte|-|-|-|-|-|
 |blue color|–|–|–|–|azul|
 |blue pen|–|–|–|–|pincel azul|
+|bmidline|-|-|-|-|-|
+|borough|região|bairro|zona|-|-|
+|boroughbox|-|-|-|-|-|
 |box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
 |box <sup>[E]</sup>|–|–|–|–|–|
+|bproportion|-|-|-|-|-|
 |break <sup>[D]</sup>|parar|pare|interrompa|interromper|–|
 |break <sup>[E]</sup>|–|–|–|–|–|
 |bump <sup>[D]</sup>|acrescer|aumentar|incrementar|acrescentar|–|
@@ -148,31 +160,20 @@ Lista de Termos em Ordem Alfabética
 |brown color|–|–|–|–|marrom|
 |brown pen|–|–|–|–|pincel marrom|
 |brownish color|–|–|–|–|castanho|
+|bserifstyle|-|-|-|-|-|
+|bstrokevariation|-|-|-|-|-|
 |bucket|–|–|–|–|–|
 |bucket count|–|–|–|–|–|
+|bucket record|-|-|-|-|-|
 |buffer <sup>[D]</sup>|depósito|–|–|báfer|bâfer|
 |buffer <sup>[E]</sup>|depósito|armazém|estoque|almoxarifado|–|
 |built-in type|–|–|–|–|tipo embutido|
 |bullet byte|–|–|–|–|byte-marcador|
 |button|botão|-|-|-|-|
-|byte|–|–|–|–|byte|
-|byte count|–|–|–|–|conta de byte|
-|bar|-|-|-|-|-|
-|barmstyle|-|-|-|-|-|
-|bcontrast|-|-|-|-|-|
-|bfamilytype|-|-|-|-|-|
-|big-endiunsigned wyrd|-|-|-|-|-|
-|bitmapdata|-|-|-|-|-|
-|bletterform|-|-|-|-|-|
-|blue byte|-|-|-|-|-|
-|bmidline|-|-|-|-|-|
-|boroughbox|-|-|-|-|-|
-|bproportion|-|-|-|-|-|
-|bserifstyle|-|-|-|-|-|
-|bstrokevariation|-|-|-|-|-|
-|bucket record|-|-|-|-|-|
 |bweight|-|-|-|-|-|
 |bxheight|-|-|-|-|-|
+|byte|pedaço|–|–|–|byte|
+|byte count|–|quantidade de pedaços|–|–|conta de byte|
 |beep|-|-|-|-|-|
 |begin|-|-|-|-|-|
 |bitwise|-|-|-|-|-|
