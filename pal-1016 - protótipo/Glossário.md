@@ -539,6 +539,7 @@ tags restantes para adicionar:
 |jump false tag|–|–|–|–|–|
 |key|tecla|–|–|–|–|
 |k-key|–|–|–|–|–|
+|kind|–|–|–|espécie|grupo|
 |knob|botão de regulagem|botão de volume|volume|regulador|-|
 
 ### #L
