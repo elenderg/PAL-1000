@@ -322,6 +322,7 @@ Lista de Termos em Ordem Alfabética
 |dark violet pen|–|–|–|–|pincel violeta escuro|
 |dark yellow color|–|–|–|–|amarelo escuro|
 |dark yellow pen|–|–|–|–|pincel amarelo escuro|
+|darken|-|-|-|-|-|
 |darker blue color|–|–|–|–|azul muito escuro|
 |darker blue pen|–|–|–|–|pincel azul muito escuro|
 |darker brown color|–|–|–|–|marrom muito escuro|
@@ -388,15 +389,17 @@ Lista de Termos em Ordem Alfabética
 |data-link-escape byte|–|–|–|–|–|
 |data section|-|-|-|-|-|
 |date/time|-|-|-|-|-|
+|debug|analisar|depurar|purificar|filtrar|-|
 |debugeventcallback|-|-|-|-|-|
+|decide|decidir|verificar|examinar|-|-|
+|decrypt|decodificar|descrirografar|desvendar|-|-|
 |degree|–|–|–|–|grau|
 |degree-symbol byte|–|–|–|–|–|
 |delete byte|–|–|–|–|byte-del|
 |delete key|–|–|–|–|tecla-del|
 |depth|–|–|–|–|profundidade|
 |dereference tag|–|–|–|–|–|
-|deque <sup>[D]</sup>|decue|desenfileirar|–|–|–|
-|deque <sup>[E]</sup>|–|–|–|–|–|
+|deque|decue|desenfileirar|remover da fila|–|–|
 |designator w/o backslash|-|-|-|-|-|
 |desktop color|–|–|–|–|cor do desktop |
 |device-control-four byte|–|–|–|–|–|
@@ -482,11 +485,9 @@ Lista de Termos em Ordem Alfabética
 |d2|-|-|-|-|-|
 |d3|-|-|-|-|-|
 |d4|-|-|-|-|-|
-|darken|-|-|-|-|-|
-|debug|-|-|-|-|-|
-|decide|-|-|-|-|-|
-|decrypt|-|-|-|-|-|
-|deque|-|-|-|-|-|
+
+
+
 |deselect|-|-|-|-|-|
 |de-sign|-|-|-|-|-|
 |destroy|-|-|-|-|-|
