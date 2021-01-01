@@ -1,14 +1,5 @@
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-
-|rainbow color <sup>[D]</sup>|furta-cor|–|–|cor do arco-íris|–|
-|rainbow color <sup>[E]</sup>|cor da íris|–|–|–|–|
-|repeat <sup>[D]</sup>|repetir|repita|–|–|–|
-|repeat <sup>[E]</sup>|–|–|–|–|–|
-|resize <sup>[D]</sup>|repor|redimensionar|recalcular|–|–|
-|resize <sup>[E]</sup>|redimensionar|–|–|–|–|
-|rider <sup>[D]</sup>|iterador|sequenciador|–|–|–|
-|rider <sup>[E]</sup>|percorredor|–|–|–|–|
 |slap <sup>[D]</sup>|colocar|aplicar|assentar|empregar|–|
 |slap <sup>[E]</sup>|colocar|–|–|–|–|
 |some <sup>[D]</sup>|uns|umas|certo|algum|–|
@@ -856,7 +847,8 @@ tags restantes para adicionar:
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |radius|raio|–|–|–|–|
-|~~rainbow color~~|–|–|–|–|–|
+|rainbow color <sup>[D]</sup>|furta-cor|–|–|cor do arco-íris|–|
+|rainbow color <sup>[E]</sup>|cor da íris|–|–|–|–|
 |random number|–|–|–|–|–|
 |ratio|proporção|||||
 |really dark color|–|–|–|–|–|
@@ -873,9 +865,15 @@ tags restantes para adicionar:
 |registered-trade-mark byte|–|–|–|–|–|
 |remainder|resto|–|–|–|–|
 |remembered page number|–|–|–|–|–|
+|repeat <sup>[D]</sup>|repetir|repita|–|–|–|
+|repeat <sup>[E]</sup>|–|–|–|–|–|
+|resize <sup>[D]</sup>|repor|redimensionar|recalcular|–|–|
+|resize <sup>[E]</sup>|redimensionar|–|–|–|–|
 |repeat tag|–|–|–|–|–|
 |reply|objeção|argumento de resposta|–|–|–|
 |return byte|–|–|–|–|–|
+|rider <sup>[D]</sup>|iterador|sequenciador|–|–|–|
+|rider <sup>[E]</sup>|percorredor|–|–|–|–|
 |right-alligator byte|–|–|–|–|–|
 |right-alligator-quote byte|–|–|–|–|–|
 |right-arrow key|–|–|–|–|–|
