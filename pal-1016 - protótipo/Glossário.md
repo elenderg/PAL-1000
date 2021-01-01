@@ -8,23 +8,26 @@ Lista de Termos em Ordem Alfabética
 |------------|------------|------------|------------|------------|------------|
 |abca|–|–|–|–|–|
 |abcc|–|–|–|–|–|
+|abort|-|-|-|-|-|
 |absolute position|–|–|–|–|posição absoluta|
 |accent byte|–|–|–|–|byte-\`|
 |accent key|–|–|–|–|tecla-\`|
 |acknowledge byte|–|–|–|–|byte-ack|
 |acute-accent byte|–|–|–|–|byte-´|
+|adjust|-|-|-|-|-|
 |add <sup>[D]</sup>|unir|somar|juntar|adicionar|–|
 |add <sup>[E]</sup>|adicionar|–|–|–|–|
-|anywhere <sup>[D]</sup>|algures|qualquer|–|–|em qualquer lugar|
-|anywhere <sup>[E]</sup>|-|–|–|–|algum lugar|
-|append <sup>[D]</sup>|pospor|atar|apor|ligar|–|
-|append <sup>[E]</sup>|pospor|–|–|–|–|
-|adress|número do endereço|–|–|–|endereço|
+|adress (substantivo)|número do endereço|–|–|–|endereço|
+|address(verbo)|-|-|-|-|-|
+|advance(verbo)|-|-|-|-|-|
 |a-key|–|–|–|–|tecla-a|
+|align|alinhar|-|-|-|-|
 |alt key|–|–|–|–|tecla-alt|
 |amount|quantia|quantidade|–|–|–|
 |ampersand byte|–|–|–|–|tecla-&|
 |angle|–|–|–|–|ângulo|
+|anywhere <sup>[D]</sup>|algures|qualquer|–|–|em qualquer lugar|
+|anywhere <sup>[E]</sup>|-|–|–|–|algum lugar|
 |arrow cursor|–|–|–|–|seta|
 |asterisk byte|–|–|–|–|byte-\*|
 |at-sign byte|–|–|–|–|byte-@|
@@ -50,7 +53,11 @@ Lista de Termos em Ordem Alfabética
 |ai_next|-|-|-|-|-|
 |ai_protocol|-|-|-|-|-|
 |ai_sockettype|-|-|-|-|-|
-
+|append <sup>[D]</sup>|pospor|atar|apor|ligar|–|
+|append <sup>[E]</sup>|pospor|–|–|–|–|
+|ask|-|-|-|-|-|
+|assign|-|-|-|-|-|
+|attach|-|-|-|-|-|
 ### #B
 
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
