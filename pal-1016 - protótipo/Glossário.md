@@ -695,7 +695,7 @@ Lista de Termos em Ordem Alfabética
 |hstdoutput|-|-|-|-|-|
 |hthread|-|-|-|-|-|
 |hwnd|número identificador de janela de console|-|-|-|-|
-|hwndowner|-|-|-|-|-|
+|hwndowner|número identificador de propietário da janela|identificador de dono da janela|-|-|-|
 |hue|tom|matiz| coloração|tonalidade|–|
 
 
@@ -704,15 +704,20 @@ Lista de Termos em Ordem Alfabética
 |------------|------------|------------|------------|------------|------------|
 |if|se|caso|quando|–|–|
 |i-beam cursor|–|–|–|–|–|
+|idata section|-|-|-|-|-|
 |iid|Número identificador da interface|–|–|–|–|
 |i-key|–|–|–|–|–|
+|image strings [page]|-|-|-|-|-|
+|imagebase|-|-|-|-|-|
+|imagedirectoryentryimportaddress|-|-|-|-|-|
+|imagedirectoryentryimportsize|-|-|-|-|-|
+|imaxsockets|-|-|-|-|-|
+|imaxudpdg|-|-|-|-|-|
 |import|-|-|-|-|-|
 |import header|dados do título|cabeçalho de importação|–|–|–|
+|in_addr|-|-|-|-|-|
 |increment tag|–|–|–|–|–|
-|indent <sup>[D]</sup>|avanço|–|–|–||
-|indent <sup>[E]</sup>|recuo (à direita)|–|–|–|–|
-|is past <sup>[D]</sup>|ultrapassar|passar de|–|–|–|
-|is past <sup>[E]</sup>|–|–|–|–|–|
+|indent|avanço|recuo (à direita)|–|–||
 |index|-|-|-|-|-|
 |input|fluxo de entrada|inserção|–|imposição|impor|
 |insert key|–|–|–|–|–|
@@ -720,20 +725,15 @@ Lista de Termos em Ordem Alfabética
 |intermediate|–|–|–|–|–|
 |inverted-exclamation-mark byte|–|–|–|–|–|
 |inverted-question-mark byte|–|–|–|–|–|
-|idata section|-|-|-|-|-|
-|image strings [page]|-|-|-|-|-|
-|imagebase|-|-|-|-|-|
-|imagedirectoryentryimportaddress|-|-|-|-|-|
-|imagedirectoryentryimportsize|-|-|-|-|-|
-|imaxsockets|-|-|-|-|-|
-|imaxudpdg|-|-|-|-|-|
-|in_addr|-|-|-|-|-|
+
+
 |initialchecksum|-|-|-|-|-|
 |initialip|-|-|-|-|-|
 |initialirelativecs|-|-|-|-|-|
 |initialrelativess|-|-|-|-|-|
 |initialsp|-|-|-|-|-|
 |ip address|-|-|-|-|-|
+|is past|ultrapassar|passar de|passou|–|–|
 |istream object|-|-|-|-|-|
 |istream vtable record|-|-|-|-|-|
 |isuisupported|-|-|-|-|-|
