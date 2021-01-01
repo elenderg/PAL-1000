@@ -609,28 +609,12 @@ Lista de Termos em Ordem Alfabética
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |gcd|Máximo divisor comum|MDC|–|–|–|
-|geometric figure|–|–|–|–|–|
-|given <sup>[D]</sup>|dado|usando|segundo|conforme|consoante|
-|given <sup>[E]</sup>|a partir de|–|–|–|–|
-|g-key|–|–|–|–|–|
-|global|abrangente|-|-|-|-|
-|gold color|–|–|–|–|–|
-|gold pen|–|–|–|–|–|
-|gpimage|–|–|–|–|–|
-|gptoken|–|–|–|–|–|
-|grain|–|–|–|–|–|
-|gray color|–|–|–|–|–|
-|gray pen|–|–|–|–|–|
-|greater-than-sign byte|–|–|–|–|–|
-|green color|–|–|–|–|–|
-|green pen|–|–|–|–|–|
-|greenish color|–|–|–|–|–|
-|grid color|–|–|–|–|–|
-|group-separator byte|–|–|–|–|–|
-|guid|Identificador Único Abrangente|–|–|–|–|
 |gcpresults|-|-|-|-|-|
 |gdiplusstartupinput|-|-|-|-|-|
 |gdiplusversion|-|-|-|-|-|
+|generate|-|-|-|-|-|
+|geometric figure|–|–|–|–|–|
+|get|-|-|-|-|-|
 |getalertboundary|-|-|-|-|-|
 |getevents|-|-|-|-|-|
 |getinfo|-|-|-|-|-|
@@ -643,14 +627,34 @@ Lista de Termos em Ordem Alfabética
 |getsyncspeaktimeout|-|-|-|-|-|
 |getvoice|-|-|-|-|-|
 |getvolume|-|-|-|-|-|
-|gprect|-|-|-|-|-|
-|green byte|-|-|-|-|-|
-|generate|-|-|-|-|-|
-|get|-|-|-|-|-|
+|given <sup>[D]</sup>|dado|usando|segundo|conforme|consoante|
+|given <sup>[E]</sup>|a partir de|–|–|–|–|
+|g-key|–|–|–|–|–|
 |globalize|-|-|-|-|-|
+|global|abrangente|-|-|-|-|
 |go|-|-|-|-|-|
+|gold color|–|–|–|–|–|
+|gold pen|–|–|–|–|–|
+|gpimage|–|–|–|–|–|
+|gprect|-|-|-|-|-|
+|gptoken|–|–|–|–|–|
+|grain|–|–|–|–|–|
+|gray color|–|–|–|–|–|
+|gray pen|–|–|–|–|–|
 |grayscale (verbo)|-|-|-|-|-|
-|group|-|-|-|-|-|
+|greater-than-sign byte|–|–|–|–|–|
+|green byte|-|-|-|-|-|
+|green color|–|–|–|–|–|
+|green pen|–|–|–|–|–|
+|greenish color|–|–|–|–|–|
+|grid color|–|–|–|–|–|
+|group (substantivo)|-|-|-|-|-|
+|group (verbo)|-|-|-|-|-|
+|group-separator byte|–|–|–|–|–|
+|guid|Identificador Único Abrangente|–|–|–|–|
+
+
+
 
 ### #H
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
