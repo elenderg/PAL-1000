@@ -1352,13 +1352,31 @@ Lista de Termos em Ordem Alfabética
 |save eax tag|–|–|–|–|–|
 |saved memory hbitmap|–|–|–|–|–|
 |saved tpp|–|–|–|–|–|
+|scan0|-|-|-|-|-|
 |scratch|–|–|–|–|–|
-|screen canvas|–|–|–|–|–|
+|screen|tela|-|-|-|-|
+|screen canvas|painel da tela|quadro da tela|–|–|–|
 |scrolllock key|–|–|–|–|–|
 |second|–|–|–|–|–|
 |sector byte|–|–|–|–|–|
 |seed|número da semente|–|–|–|–|
+|seek|-|-|-|-|-|
+|selection|-|-|-|-|-|
 |semi-colon byte|–|–|–|–|–|
+|setalertboundary|-|-|-|-|-|
+|setinterest|-|-|-|-|-|
+|setnotifycallbackfunction|-|-|-|-|-|
+|setnotifycallbackinterface|-|-|-|-|-|
+|setnotifysink|-|-|-|-|-|
+|setnotifywin32event|-|-|-|-|-|
+|setnotifywindowmessage|-|-|-|-|-|
+|setoutput|-|-|-|-|-|
+|setpriority|-|-|-|-|-|
+|setrate|-|-|-|-|-|
+|setsize|-|-|-|-|-|
+|setsyncspeaktimeout|-|-|-|-|-|
+|setvoice|-|-|-|-|-|
+|setvolume|-|-|-|-|-|
 |seven byte|–|–|–|–|–|
 |seven key|–|–|–|–|–|
 |shape|–|–|–|–|–|
@@ -1368,44 +1386,53 @@ Lista de Termos em Ordem Alfabética
 |shift key|tecla shift|–|–|–|–|
 |shift-in byte|byte de shift pressionado|–|–|–|–|
 |shift-out byte|byte de shift liberado|–|–|–|–|
+|signature|-|-|-|-|-|
 |single-quote byte|–|–|–|–|–|
 |six byte|–|–|–|–|–|
 |six key|–|–|–|–|–|
 |size|–|–|–|–|–|
+|sizeinbytes|-|-|-|-|-|
+|sizeinfile|-|-|-|-|-|
+|sizeofallheadersinfile|-|-|-|-|-|
+|sizeofcodeinfile|-|-|-|-|-|
+|sizeofheaderinparagraphs|-|-|-|-|-|
+|sizeofimageinmemory|-|-|-|-|-|
+|sizeofinitializeddatainfile|-|-|-|-|-|
+|sizeofoptionalheaderinbytes|-|-|-|-|-|
+|sizeofuninitializeddatainfile|-|-|-|-|-|
 |s-key|tecla S|–|–|–|–|
+|skip|-|-|-|-|-|
 |sky blue color|–|–|–|–|–|
 |sky blue pen|–|–|–|–|–|
 |sky color|–|–|–|–|–|
 |sky pen|–|–|–|–|–|
 |slap <sup>[D]</sup>|colocar|aplicar|assentar|empregar|–|
 |slap <sup>[E]</sup>|colocar|–|–|–|–|
-|some <sup>[D]</sup>|uns|umas|certo|algum|–|
-|some <sup>[E]</sup>|algum(a/as)|algun(s)|–|–|–|
-|spot <sup>[D]</sup>|lugar|local|posição|–|–|
-|spot <sup>[E]</sup>|mancha|–|–|–|–|
-|stack entry <sup>[D]</sup>|empilhamento|–|–|entrada de pilha|–|
-|stack entry <sup>[E]</sup>|–|–|–|–|–|
 |slash|barra|–|–|–|–|
 |slash byte|–|–|–|–|–|
 |small letter height|–|–|–|–|–|
 |small-bullet byte|–|–|–|–|–|
 |soft-dash byte|–|–|–|–|–|
 |solid color|–|–|–|–|–|
+|some <sup>[D]</sup>|uns|umas|certo|algum|–|
+|some <sup>[E]</sup>|algum(a/as)|algun(s)|–|–|–|
 |source|-|-|-|-|-|
 |source file|-|-|-|-|-|
 |space byte|–|–|–|–|–|
 |space key|tecla espaço|barra de espaço|–|–|–|
+|spot <sup>[D]</sup>|lugar|local|posição|–|–|
+|spot <sup>[E]</sup>|mancha|–|–|–|–|
 |square root|raiz quadrada|–|–|–|–|
 |square size|–|–|–|–|–|
 |stack|–|–|–|–|–|
-|~~stack entry~~|–|–|–|–|–|
+|stack entry|empilhamento|–|–|entrada de pilha|–|
 |start-of-heading byte|–|–|–|–|–|
 |start-of-text byte|–|–|–|–|–|
 |stdin handle|número identificador do fluxo padrão de entrada|–|–|–|–|
 |stdout handle|número identificador do fluxo padrão de saída|–|–|–|–|
 |string <sup>[D]</sup>|escrito/a|inscrição|série|sequência|frase|
 |string <sup>[E]</sup>|texto|–|–|–|–|
-|string#|–|–|–|–|–|
+|string\#|–|–|–|–|–|
 |string thing|-|-|-|-|elemento de escrita|
 |submenu|–|–|–|–|–|
 |substitute byte|–|–|–|–|–|
@@ -1425,46 +1452,17 @@ Lista de Termos em Ordem Alfabética
 |s_b4|-|-|-|-|-|
 |s_w1 at the s_b1|-|-|-|-|-|
 |s_w2 at the s_b3|-|-|-|-|-|
-|scan0|-|-|-|-|-|
-|screen|-|-|-|-|-|
-|seek|-|-|-|-|-|
-|selection|-|-|-|-|-|
-|selection|-|-|-|-|-|
-|selection|-|-|-|-|-|
-|selection|-|-|-|-|-|
-|setalertboundary|-|-|-|-|-|
-|setinterest|-|-|-|-|-|
-|setnotifycallbackfunction|-|-|-|-|-|
-|setnotifycallbackinterface|-|-|-|-|-|
-|setnotifysink|-|-|-|-|-|
-|setnotifywin32event|-|-|-|-|-|
-|setnotifywindowmessage|-|-|-|-|-|
-|setoutput|-|-|-|-|-|
-|setpriority|-|-|-|-|-|
-|setrate|-|-|-|-|-|
-|setsize|-|-|-|-|-|
-|setsyncspeaktimeout|-|-|-|-|-|
-|setvoice|-|-|-|-|-|
-|setvolume|-|-|-|-|-|
-|signature|-|-|-|-|-|
-|signature|-|-|-|-|-|
 |sin_addr|-|-|-|-|-|
 |sin_family|-|-|-|-|-|
 |sin_port|-|-|-|-|-|
 |sin_zero|-|-|-|-|-|
-|sizeinbytes|-|-|-|-|-|
-|sizeinfile|-|-|-|-|-|
-|sizeofallheadersinfile|-|-|-|-|-|
-|sizeofcodeinfile|-|-|-|-|-|
-|sizeofheaderinparagraphs|-|-|-|-|-|
-|sizeofimageinmemory|-|-|-|-|-|
-|sizeofinitializeddatainfile|-|-|-|-|-|
-|sizeofoptionalheaderinbytes|-|-|-|-|-|
-|sizeofuninitializeddatainfile|-|-|-|-|-|
-|skip|-|-|-|-|-|
+
+
+
+
 |sockaddr|-|-|-|-|-|
-|Some addrinfo routines|-|-|-|-|-|
-|Some things|-|-|-|-|-|
+|addrinfo routines|-|-|-|-|-|
+|things|-|-|-|-|-|
 |speak|-|-|-|-|-|
 |speakcompleteevent|-|-|-|-|-|
 |speakstream|-|-|-|-|-|
