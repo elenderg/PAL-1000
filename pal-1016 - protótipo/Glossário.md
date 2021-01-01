@@ -138,7 +138,7 @@ Lista de Termos em Ordem Alfabética
 |big-z-caron byte|–|–|–|–|–|
 |bit|pedacinho|–|–|–|bit|
 |bitwise (substantivo)|conjunção|conjunção binária|combinação|-|-|
-|bitwise (verbo)|combinar|-|-|-|-|
+|bitwise (verbo)|combinar|corresponder|-|-|-|
 |bitmapdata|-|-|-|-|-|
 |b-key|–|–|–|–|tecla-b|
 |black color|–|–|–|–|preto|
