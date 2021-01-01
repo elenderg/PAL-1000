@@ -1,12 +1,4 @@
-|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
-|------------|------------|------------|------------|------------|------------|
-
-|unbump <sup>[D]</sup>|decrescer|diminuir|decrementar|subtrair|–|
-|unbump <sup>[E]</sup>|–|–|–|–|–|
-|wyrd <sup>[D]</sup>|ordin|pavra|plava|–|–|
-|wyrd <sup>[E]</sup>|meia barra|metade de uma barra|palavro|palavre|–|
-
-tags restantes para adicionar:  
+Lista de Termos em Ordem Alfabética
 
 [A](#A) [B](#B) [C](#C) [D](#D) [E](#E) [F](#F) [G](#G) [H](#H) [I](#I) [J-K](#J-K) [L](#L) [M](#M) [N](#N) [O](#O) [P](#P) [Q](#Q) [R](#R) [S](#S) [T](#T) [U](#U) [V](#V) [WXYZ](#WXYZ)
 
@@ -1447,6 +1439,8 @@ tags restantes para adicionar:
 |up-arrow key|–|–|–|–|–|
 |upperscore byte|–|–|–|–|–|
 |uuid|Identificador Único Universal|–|–|–|–|
+|unbump <sup>[D]</sup>|decrescer|diminuir|decrementar|subtrair|–|
+|unbump <sup>[E]</sup>|–|–|–|–|–|
 |undos|-|-|-|-|-|
 |unlockregion|-|-|-|-|-|
 |url record|-|-|-|-|-|
@@ -1516,7 +1510,8 @@ tags restantes para adicionar:
 |wshowwindow|-|-|-|-|-|
 |wversion|-|-|-|-|-|
 |wyear|-|-|-|-|-|
-|wyrd|-|-|-|-|-|
+|wyrd <sup>[D]</sup>|ordin|pavra|plava|–|–|
+|wyrd <sup>[E]</sup>|meia barra|metade de uma barra|palavro|palavre|–|
 |x|-|-|-|-|-|
 |y|-|-|-|-|-|
 |ydmresolution|-|-|-|-|-|
