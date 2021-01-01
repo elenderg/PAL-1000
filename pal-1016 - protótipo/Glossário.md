@@ -288,6 +288,7 @@ Lista de Termos em Ordem Alfabética
 ### #D
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
+|dab|matizar|pincelar|colorir|–|–|
 |dagger byte|–|–|–|–|–|
 |dark blue color|–|–|–|–|azul escuro|
 |dark blue pen|–|–|–|–|pincel azul escuro|
@@ -384,19 +385,18 @@ Lista de Termos em Ordem Alfabética
 |darkest yellow pen|–|–|–|–|pincel amarelo escuríssimo|
 |dash byte|–|–|–|–|byte-traço|
 |dash key|–|–|–|–|tecla-traço|
+|data|-|-|-|-|-|
 |data-link-escape byte|–|–|–|–|–|
+|data section|-|-|-|-|-|
+|date/time|-|-|-|-|-|
 |degree|–|–|–|–|grau|
 |degree-symbol byte|–|–|–|–|–|
 |delete byte|–|–|–|–|byte-del|
 |delete key|–|–|–|–|tecla-del|
 |depth|–|–|–|–|profundidade|
 |dereference tag|–|–|–|–|–|
-|dab <sup>[D]</sup>|matizar|pincelar|colorir|–|–|
-|dab <sup>[E]</sup>|–|–|–|–|–|
 |deque <sup>[D]</sup>|decue|desenfileirar|–|–|–|
 |deque <sup>[E]</sup>|–|–|–|–|–|
-|dot <sup>[D]</sup>|ponto|marca|–|–|–|
-|dot <sup>[E]</sup>|pinta|–|–|–|–|
 |desktop color|–|–|–|–|cor do desktop |
 |device-control-four byte|–|–|–|–|–|
 |device-control-one byte|–|–|–|–|–|
@@ -414,6 +414,8 @@ Lista de Termos em Ordem Alfabética
 |document indent|–|–|–|–|–|
 |dollar-sign byte|–|byte-$|–|–|–|
 |dos header|suplemento windows pe|informação suplementar||||
+|dot <sup>[D]</sup>|ponto|marca|–|–|–|
+|dot <sup>[E]</sup>|pinta|–|–|–|–|
 |double-dagger byte|–|byte-‡|–|–|–|
 |double-quote byte|–|byte-aspas|–|–|–|
 |down-arrow key|–|tecla-⬇️|–|–|–|
@@ -422,9 +424,9 @@ Lista de Termos em Ordem Alfabética
 |d2|-|-|-|-|-|
 |d3|-|-|-|-|-|
 |d4|-|-|-|-|-|
-|data|-|-|-|-|-|
-|data section|-|-|-|-|-|
-|date/time|-|-|-|-|-|
+
+
+
 |debugeventcallback|-|-|-|-|-|
 |designator w/o backslash|-|-|-|-|-|
 |devmode|-|-|-|-|-|
