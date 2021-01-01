@@ -1184,17 +1184,21 @@ Lista de Termos em Ordem Alfabética
 |paperwidth|-|-|-|-|-|
 |paragraph|-|-|-|-|-|
 |paragraph byte|–|–|–|–|–|
+|parse|-|-|-|-|-|
 |partial moniker|–|–|–|–|–|
+|paste|-|-|-|-|-|
 |pastel color|–|–|–|–|–|
 |path|endereço completo do arquivo contendo extensão|endereço|–|–|–|
 |pause|-|-|-|-|-|
 |pause key|–|–|–|–|–|
 |pdf|arquivo pdf|–|–|–|–|
+|pdfify|pdficar|pdfizar|transformar em pdf|criar pdf|-|
 |pdf object|-|-|-|-|-|
 |pdf outline entry|-|-|-|-|-|
 |pdf state|-|-|-|-|-|
 |pdf string|-|-|-|-|-|
-|pen|–|–|–|–|–|
+|pen (substantivo)|pincel|lápis de cor|–|–|–|
+|pen (verbo)|colorir|-|-|-|-|
 |pen size|–|–|–|–|–|
 |per|–|–|–|–|–|
 |percent|–|–|–|–|–|
@@ -1209,6 +1213,8 @@ Lista de Termos em Ordem Alfabética
 |pink pen|–|–|–|–|–|
 |pixelformat|-|-|-|-|-|
 |p-key|–|–|–|–|–|
+|play|-|-|-|-|-|
+|pluralize|-|-|-|-|-|
 |plus-or-minus byte|–|–|–|–|–|
 |plus-sign byte|–|–|–|–|–|
 |prepend <sup>[D]</sup>|prepor|antepor|–|–|–|
@@ -1218,9 +1224,13 @@ Lista de Termos em Ordem Alfabética
 |pointer|–|–|–|–|–|
 |pointertosymboltable|-|-|-|-|-|
 |polygon|polígono|–|–|–|–|
+|position|-|-|-|-|-|
+|post|-|-|-|-|-|
 |pound-sign byte|–|–|–|–|–|
 |ppi|pontos por polegada|pontos em uma polegada|–|–|–|
 |precise degree|–|–|–|–|–|
+|prepend|prepor|antepor|pôr no começo|pôr no início|-|
+|print|-|-|-|-|-|
 |printdlgex|-|-|-|-|-|
 |printer canvas|–|–|–|–|–|
 |printer device mode|–|–|–|–|–|
@@ -1234,19 +1244,6 @@ Lista de Termos em Ordem Alfabética
 |purple pen|–|–|–|–|–|
 |push address tag|–|–|–|–|–|
 |push value tag|–|–|–|–|–|
-
-
-|parse|-|-|-|-|-|
-|paste|-|-|-|-|-|
-|pdfify|-|-|-|-|-|
-|pen (verbo)|colorir|-|-|-|-|
-|pick|-|-|-|-|-|
-|play|-|-|-|-|-|
-|pluralize|-|-|-|-|-|
-|position|-|-|-|-|-|
-|post|-|-|-|-|-|
-|prepend|-|-|-|-|-|
-|print|-|-|-|-|-|
 |put|-|-|-|-|-|
 
 ### #Q
