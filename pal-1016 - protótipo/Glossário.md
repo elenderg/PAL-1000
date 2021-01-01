@@ -1106,6 +1106,9 @@ Lista de Termos em Ordem Alfabética
 ### #O
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
+|objects|-|-|-|-|-|
+|oemidentifier|-|-|-|-|-|
+|oeminfo|-|-|-|-|-|
 |offset|deslocamento|–|–|–|–|
 |o-key|–|–|–|–|–|
 |one byte|–|–|–|–|–|
@@ -1114,15 +1117,10 @@ Lista de Termos em Ordem Alfabética
 |one-quarter byte|–|–|–|–|–|
 |orange color|–|–|–|–|–|
 |orange pen|–|–|–|–|–|
-|osmosian font resource|–|–|–|–|–|
-|outdent|recuo|recuo (à esquerda)|–|–||
-|output|–|–|–|produção|produzir|
-|objects|-|-|-|-|-|
-|oemidentifier|-|-|-|-|-|
-|oeminfo|-|-|-|-|-|
 |original first thunk|-|-|-|-|-|
 |osmajorversion|-|-|-|-|-|
 |osminorversion|-|-|-|-|-|
+|osmosian font resource|–|–|–|–|–|
 |otmascent|-|-|-|-|-|
 |otmdescent|-|-|-|-|-|
 |otmemsquare|-|-|-|-|-|
@@ -1155,9 +1153,12 @@ Lista de Termos em Ordem Alfabética
 |otmsxheight|-|-|-|-|-|
 |otmtextmetrics|-|-|-|-|-|
 |otmusminiumppem|-|-|-|-|-|
+|outdent|recuo|recuo (à esquerda)|–|–||
 |outline entries|-|-|-|-|-|
 |outlinetextmetric|-|-|-|-|-|
+|output|–|–|–|produção|produzir|
 |overlynumber|-|-|-|-|-|
+
 |offset (verbo)|-|-|-|-|-|
 |only draw|-|-|-|-|-|
 |open|-|-|-|-|-|
