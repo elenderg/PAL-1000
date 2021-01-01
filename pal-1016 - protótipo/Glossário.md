@@ -1265,6 +1265,7 @@ Lista de Termos em Ordem Alfabética
 ### #R
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
+|raise (verbo)|-|-|-|-|-|
 |radius|raio|–|–|–|–|
 |rainbow color <sup>[D]</sup>|furta-cor|–|–|cor do arco-íris|–|
 |rainbow color <sup>[E]</sup>|cor da íris|–|–|–|–|
@@ -1276,6 +1277,8 @@ Lista de Termos em Ordem Alfabética
 |really light color|–|–|–|–|–|
 |really really dark color|–|–|–|–|–|
 |really really light color|–|–|–|–|–|
+|reassign|-|-|-|-|-|
+|receive|-|-|-|-|-|
 |record|conjunto|registro|–|–|–|
 |record-separator byte|–|–|–|–|–|
 |rectangle|–|–|–|–|–|
@@ -1283,24 +1286,47 @@ Lista de Termos em Ordem Alfabética
 |red color|–|–|–|–|–|
 |red pen|–|–|–|–|–|
 |redos|-|-|-|-|-|
+|reduce|-|-|-|-|-|
 |refer|-|-|-|-|-|
+|refresh|-|-|-|-|-|
 |registered byte|–|–|–|–|–|
 |registered-trade-mark byte|–|–|–|–|–|
+|reindex|-|-|-|-|-|
 |release|-|-|-|-|-|
+|relinquish|-|-|-|-|-|
 |relocuss|-|-|-|-|-|
 |remainder|resto|–|–|–|–|
+|remember|-|-|-|-|-|
 |remembered page number|–|–|–|–|–|
+|remove|-|-|-|-|-|
+|rename|-|-|-|-|-|
+|renumber|-|-|-|-|-|
 |repeat|repetir|repita|repete|–|–|
 |resize|repor|redimensionar|recalcular|–|–|
 |repeat tag|–|–|–|–|–|
+|replace|-|-|-|-|-|
 |reply|objeção|argumento de resposta|–|–|–|
+|reque|-|-|-|-|-|
+|reserved|-|-|-|-|-|
+|reservedwords|-|-|-|-|-|
+|reset|-|-|-|-|-|
+|resize|-|-|-|-|-|
+|resolve|-|-|-|-|-|
+|restart|-|-|-|-|-|
+|restore|-|-|-|-|-|
+|resume|-|-|-|-|-|
+|resveredbytes|-|-|-|-|-|
 |return byte|–|–|–|–|–|
+|revert|-|-|-|-|-|
+|reverse|-|-|-|-|-|
+|rgb|vva|vermelhoverdeazul|-|-|-|
 |rider|iterador|sequenciador|percorredor|–|–|
 |right-alligator byte|–|–|–|–|–|
 |right-alligator-quote byte|–|–|–|–|–|
 |right-arrow key|–|–|–|–|–|
 |right-brace byte|–|–|–|–|–|
 |right-bracket byte|–|–|–|–|–|
+|right button|-|-|-|-|-|
 |right-double-alligator-quote byte|–|–|–|–|–|
 |right-double-quote byte|–|–|–|–|–|
 |right-paren byte|–|–|–|–|–|
@@ -1308,47 +1334,15 @@ Lista de Termos em Ordem Alfabética
 |right-window key|–|tecla ⊞ direita|tecla ⌘ direita|–|–|
 |rise|–|–|–|–|–|
 |r-key|tecla r|-|–|–|–|
+|rotate|-|-|-|-|-|
+|round (verbo)|arredondar|-|-|-|-|
 |routine|tarefa|–|–|–|–|
 |routine address tag|–|–|–|–|–|
 |routine reference|–|–|–|–|–|
 |row|fileira|||||
 |row\#|–|–|–|–|–|
 |row/sheet|–|–|–|–|–|
-|run|–|–|–|–|–|
-
-
-|reserved|-|-|-|-|-|
-|reserved|-|-|-|-|-|
-|reserved|-|-|-|-|-|
-|reservedwords|-|-|-|-|-|
-|resume|-|-|-|-|-|
-|resveredbytes|-|-|-|-|-|
-|revert|-|-|-|-|-|
-|rgb|-|-|-|-|-|
-|rider|-|-|-|-|-|
-|right button|-|-|-|-|-|
-|raise|-|-|-|-|-|
-|read|-|-|-|-|-|
-|reassign|-|-|-|-|-|
-|receive|-|-|-|-|-|
-|reduce|-|-|-|-|-|
-|refresh|-|-|-|-|-|
-|reindex|-|-|-|-|-|
-|relinquish|-|-|-|-|-|
-|remember|-|-|-|-|-|
-|remove|-|-|-|-|-|
-|rename|-|-|-|-|-|
-|renumber|-|-|-|-|-|
-|replace|-|-|-|-|-|
-|reque|-|-|-|-|-|
-|reset|-|-|-|-|-|
-|resize|-|-|-|-|-|
-|resolve|-|-|-|-|-|
-|restart|-|-|-|-|-|
-|restore|-|-|-|-|-|
-|reverse|-|-|-|-|-|
-|rotate|-|-|-|-|-|
-|round (verbo)|arredondar|-|-|-|-|
+|run (substantivo)|execução|–|–|–|–|
 |run (verbo)|-|-|-|-|-|
 
 ### #S
