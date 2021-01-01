@@ -749,10 +749,13 @@ Lista de Termos em Ordem Alfabética
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |j-key|–|–|–|–|–|
+|joke|-|-|–|–|–|
 |jump (verbo)|-|-|-|-|-|
 |jump false tag|–|–|–|–|–|
+|just|apenas|somente|–|–|–|
 |key|tecla|–|–|–|–|
 |k-key|–|–|–|–|–|
+|kilobyte|quilobyte|kb|–|-|-|
 |kind|–|–|–|espécie|grupo|
 |knob|botão de regulagem|botão de volume|volume|regulador|-|
 
