@@ -1,14 +1,5 @@
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-
-|lenght <sup>[D]</sup>|medida|dimensão|–|–|–|
-|lenght <sup>[E]</sup>|–|–|–|–|–|
-|loop <sup>[D]</sup>|reciclar|recicle|–|–|–|
-|loop <sup>[E]</sup>|Percorrer|–|–|–|–|
-|moniker <sup>[D]</sup>|alcunha|–|–|–|–|
-|moniker <sup>[E]</sup>|–|–|–|–|–|
-|monikette <sup>[D]</sup>|apelido|–|–|–|–|
-|monikette <sup>[E]</sup>|minialcunha|–|–|–|–|
 |nibble <sup>[D]</sup>|níquel|nicles|–|–|–|
 |nibble <sup>[E]</sup>|meio pedaço|metade de um pedaço|quatro pedacinhos|níbôu|–|
 |nodette <sup>[D]</sup>|nódulo|nó|–|–||
@@ -555,7 +546,10 @@ tags restantes para adicionar:
 |left-paren byte|–|–|–|–|–|
 |left-single-quote byte|–|–|–|–|–|
 |left-window key|–|–|–|–|–|
-|length|comprimento|tamanho|–|–|–|
+|lenght <sup>[D]</sup>|medida|dimensão|–|–|–|
+|lenght <sup>[E]</sup>|comprimento|tamanho|–|–|–|
+|loop <sup>[D]</sup>|reciclar|recicle|–|–|–|
+|loop <sup>[E]</sup>|Percorrer|–|–|–|–|
 |less-than-sign byte|–|–|–|–|–|
 |letter|letra|–|–|–|–|
 |letter height|–|–|–|–|–|
@@ -739,8 +733,10 @@ tags restantes para adicionar:
 |millisecond|–|–|–|–|–|
 |minus-sign byte|–|–|–|–|–|
 |m-key|–|–|–|–|–|
-|~~moniker~~|–|–|–|–|–|
-|monikette|–|–|–|–|–|
+|moniker <sup>[D]</sup>|alcunha|–|–|–|–|
+|moniker <sup>[E]</sup>|–|–|–|–|–|
+|monikette <sup>[D]</sup>|apelido|–|–|–|–|
+|monikette <sup>[E]</sup>|minialcunha|–|–|–|–|
 |ms|milisegundo(s)|–|–|–|–|
 |multiple|–|–|–|–|–|
 |multiplication-symbol byte|–|–|–|–|–|
