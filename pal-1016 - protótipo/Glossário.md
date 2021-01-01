@@ -1162,7 +1162,7 @@ Lista de Termos em Ordem Alfabética
 |outline (verbo)|contornar|contornear|realçar|-|-|
 |outline entries|-|-|-|-|-|
 |outlinetextmetric|-|-|-|-|-|
-|output|fluxo de saída|–|–|produção|produzir|
+|output|fluxo de saída|resultado|–|produção|produzir|
 |overlynumber|-|-|-|-|-|
 
 
