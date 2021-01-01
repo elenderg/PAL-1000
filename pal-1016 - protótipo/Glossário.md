@@ -685,7 +685,6 @@ Lista de Termos em Ordem Alfabética
 |hiconsm|-|-|-|-|-|
 |hilite color|cor de realce|cor de destaque|–|–|–|
 |hinstance|-|-|-|-|-|
-|hinstance|-|-|-|-|-|
 |h-key|–|–|–|–|–|
 |home key|tecla Home|–|–|–|–|
 |hpen|Número identificador da pincel|Número identificador da canetinha|Número identificador do lápis de cor|–|–|
@@ -695,7 +694,7 @@ Lista de Termos em Ordem Alfabética
 |hstdinput|-|-|-|-|-|
 |hstdoutput|-|-|-|-|-|
 |hthread|-|-|-|-|-|
-|hwnd|-|-|-|-|-|
+|hwnd|número identificador de janela de console|-|-|-|-|
 |hwndowner|-|-|-|-|-|
 |hue|tom|matiz| coloração|tonalidade|–|
 
