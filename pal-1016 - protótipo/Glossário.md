@@ -1,25 +1,6 @@
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|slap <sup>[D]</sup>|colocar|aplicar|assentar|empregar|–|
-|slap <sup>[E]</sup>|colocar|–|–|–|–|
-|some <sup>[D]</sup>|uns|umas|certo|algum|–|
-|some <sup>[E]</sup>|algum(a/as)|algun(s)|–|–|–|
-|spot <sup>[D]</sup>|lugar|local|posição|–|–|
-|spot <sup>[E]</sup>|mancha|–|–|–|–|
-|stack entry <sup>[D]</sup>|empilhamento|–|–|entrada de pilha|–|
-|stack entry <sup>[E]</sup>|–|–|–|–|–|
-|string <sup>[D]</sup>|escrito/a|inscrição|série|sequência|frase|
-|string <sup>[E]</sup>|texto|–|–|–|–|
-|substring <sup>[D]</sup>|trecho|segmento|subsérie|subsequência|fragmento|
-|substring <sup>[E]</sup>|pedaço de um texto|parte de um texto|–|–|–|
-|target <sup>[D]</sup>|alvo|meta|–|–|–|
-|target <sup>[E]</sup>|objetivo (SAL)|–|–|–|–|
-|thing <sup>[D]</sup>|coisa|elemento|algo|objeto|–|
-|thing <sup>[E]</sup>|–|–|–|–|–|
-|token <sup>[D]</sup>|marco|signo|símbolo|marca|–|
-|token <sup>[E]</sup>|sinal|–|–|–|–|
-|twip <sup>[D]</sup>|tuipe|–|–|–|–|
-|twip <sup>[E]</sup>|miniponto|microponto|minipixel|micropixel|–|
+
 |unbump <sup>[D]</sup>|decrescer|diminuir|decrementar|subtrair|–|
 |unbump <sup>[E]</sup>|–|–|–|–|–|
 |wyrd <sup>[D]</sup>|ordin|pavra|plava|–|–|
@@ -55,7 +36,28 @@ tags restantes para adicionar:
 |arrow cursor|–|–|–|–|seta|
 |asterisk byte|–|–|–|–|byte-\*|
 |at-sign byte|–|–|–|–|byte-@|
-|abc<br/>abca<br/>abcb<br/>abcc<br/>addref<br/>addref<br/>addressinfile<br/>addressinmemory<br/>addressofcodeinmemory<br/>addressofentrypointinmemory<br/>addressofinitializeddatainmemory<br/>addressofpeheaderinfile<br/>addressofrelocationtableinfile<br/>addrinfo<br/>ai_addr<br/>ai_addrlen<br/>ai_canonname<br/>ai_family<br/>ai_flags<br/>ai_next<br/>ai_protocol<br/>ai_sockettype||||||
+|abc|-|-|-|-|-|
+|abca|-|-|-|-|-|
+|abcb|-|-|-|-|-|
+|abcc|-|-|-|-|-|
+|addref|-|-|-|-|-|
+|addref|-|-|-|-|-|
+|addressinfile|-|-|-|-|-|
+|addressinmemory|-|-|-|-|-|
+|addressofcodeinmemory|-|-|-|-|-|
+|addressofentrypointinmemory|-|-|-|-|-|
+|addressofinitializeddatainmemory|-|-|-|-|-|
+|addressofpeheaderinfile|-|-|-|-|-|
+|addressofrelocationtableinfile|-|-|-|-|-|
+|addrinfo|-|-|-|-|-|
+|ai_addr|-|-|-|-|-|
+|ai_addrlen|-|-|-|-|-|
+|ai_canonname|-|-|-|-|-|
+|ai_family|-|-|-|-|-|
+|ai_flags|-|-|-|-|-|
+|ai_next|-|-|-|-|-|
+|ai_protocol|-|-|-|-|-|
+|ai_sockettype||||||
 
 ### #B
 
@@ -156,7 +158,23 @@ tags restantes para adicionar:
 |button|botão|-|-|-|-|
 |byte|–|–|–|–|byte|
 |byte count|–|–|–|–|conta de byte|
-|bar<br/>barmstyle<br/>bcontrast<br/>bfamilytype<br/>big-endiunsigned wyrd<br/>bitmapdata<br/>bletterform<br/>blue byte<br/>bmidline<br/>boroughbox<br/>bproportion<br/>bserifstyle<br/>bstrokevariation<br/>bucket record<br/>bweight<br/>bxheight<br/>||||||
+|bar|-|-|-|-|-|
+|barmstyle|-|-|-|-|-|
+|bcontrast|-|-|-|-|-|
+|bfamilytype|-|-|-|-|-|
+|big-endiunsigned wyrd|-|-|-|-|-|
+|bitmapdata|-|-|-|-|-|
+|bletterform|-|-|-|-|-|
+|blue byte|-|-|-|-|-|
+|bmidline|-|-|-|-|-|
+|boroughbox|-|-|-|-|-|
+|bproportion|-|-|-|-|-|
+|bserifstyle|-|-|-|-|-|
+|bstrokevariation|-|-|-|-|-|
+|bucket record|-|-|-|-|-|
+|bweight|-|-|-|-|-|
+|bxheight|-|-|-|-|-|
+
 
 ### #C
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -215,7 +233,25 @@ tags restantes para adicionar:
 |cursor|setinha|cursor|–|–|–|
 |cyan color|–|–|–|–|turqueza|
 |cyan pen|–|–|–|–|tinta turqueza|
-|calternatefilename<br/>cb<br/>cbclsextra<br/>cbreserved2<br/>cbsize<br/>cbsize<br/>cbwndextra<br/>cfilename<br/>characteristics<br/>characteristics<br/>checksum<br/>clone<br/>code<br/>code section<br/>color<br/>commit<br/>compiler<br/>copyto<br/>cwycountchars<||||||
+|calternatefilename|-|-|-|-|-|
+|cb|-|-|-|-|-|
+|cbclsextra|-|-|-|-|-|
+|cbreserved2|-|-|-|-|-|
+|cbsize|-|-|-|-|-|
+|cbsize|-|-|-|-|-|
+|cbwndextra|-|-|-|-|-|
+|cfilename|-|-|-|-|-|
+|characteristics|-|-|-|-|-|
+|characteristics|-|-|-|-|-|
+|checksum|-|-|-|-|-|
+|clone|-|-|-|-|-|
+|code|-|-|-|-|-|
+|code section|-|-|-|-|-|
+|color|-|-|-|-|-|
+|commit|-|-|-|-|-|
+|compiler|-|-|-|-|-|
+|copyto|-|-|-|-|-|
+|cwycountchars<||||||
 
 ### #D
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -350,7 +386,73 @@ tags restantes para adicionar:
 |double-quote byte|–|byte-aspas|–|–|–|
 |down-arrow key|–|tecla-⬇️|–|–|–|
 |dyad|-|-|-|-|-|
-|d1<br/>d2<br/>d3<br/>d4<br/>data<br/>data section<br/>date/time<br/>debugeventcallback<br/>designator w/o backslash<br/>devmode<br/>directories2-15<br/>directory0<br/>displayui<br/>dllcharacteristics<br/>dmbitsperpel<br/>dmcollate<br/>dmcolor<br/>dmcopies<br/>dmdefaultsource<br/>dmdevicename<br/>dmdisplayflags<br/>dmdisplayfrequency<br/>dmdithertype<br/>dmdriverextra<br/>dmdriverversion<br/>dmduplex<br/>dmfields<br/>dmformname<br/>dmicmintent<br/>dmicmmethod<br/>dmlogpixels<br/>dmmediatype<br/>dmorientation<br/>dmpapersize<br/>dmpelsheight<br/>dmpelswidth<br/>dmprintquality<br/>dmreserved1<br/>dmreserved2<br/>dmscale<br/>dmsize<br/>dmspecversion<br/>dmttoption<br/>docinfo<br/>dwextrainfolength  <br/>dwfileattributes<br/>dwfillattribute<br/>dwflags<br/>dwhighdatetime<br/>dwhostnamelength<br/>dwlowdatetime<br/>dwpasswordlength<br/>dwprocessid<br/>dwreserved0<br/>dwreserved1<br/>dwresultaction<br/>dwschemelength<br/>dwstructsize<br/>dwthreadid<br/>dwurlpathlength<br/>dwusernamelength<br/>dwx<br/>dwxcountchars<br/>dwxsize<br/>dwy<br/>dwysize<br/>||||||
+|d1|-|-|-|-|-|
+|d2|-|-|-|-|-|
+|d3|-|-|-|-|-|
+|d4|-|-|-|-|-|
+|data|-|-|-|-|-|
+|data section|-|-|-|-|-|
+|date/time|-|-|-|-|-|
+|debugeventcallback|-|-|-|-|-|
+|designator w/o backslash|-|-|-|-|-|
+|devmode|-|-|-|-|-|
+|directories2-15|-|-|-|-|-|
+|directory0|-|-|-|-|-|
+|displayui|-|-|-|-|-|
+|dllcharacteristics|-|-|-|-|-|
+|dmbitsperpel|-|-|-|-|-|
+|dmcollate|-|-|-|-|-|
+|dmcolor|-|-|-|-|-|
+|dmcopies|-|-|-|-|-|
+|dmdefaultsource|-|-|-|-|-|
+|dmdevicename|-|-|-|-|-|
+|dmdisplayflags|-|-|-|-|-|
+|dmdisplayfrequency|-|-|-|-|-|
+|dmdithertype|-|-|-|-|-|
+|dmdriverextra|-|-|-|-|-|
+|dmdriverversion|-|-|-|-|-|
+|dmduplex|-|-|-|-|-|
+|dmfields|-|-|-|-|-|
+|dmformname|-|-|-|-|-|
+|dmicmintent|-|-|-|-|-|
+|dmicmmethod|-|-|-|-|-|
+|dmlogpixels|-|-|-|-|-|
+|dmmediatype|-|-|-|-|-|
+|dmorientation|-|-|-|-|-|
+|dmpapersize|-|-|-|-|-|
+|dmpelsheight|-|-|-|-|-|
+|dmpelswidth|-|-|-|-|-|
+|dmprintquality|-|-|-|-|-|
+|dmreserved1|-|-|-|-|-|
+|dmreserved2|-|-|-|-|-|
+|dmscale|-|-|-|-|-|
+|dmsize|-|-|-|-|-|
+|dmspecversion|-|-|-|-|-|
+|dmttoption|-|-|-|-|-|
+|docinfo|-|-|-|-|-|
+|dwextrainfolength  |-|-|-|-|-|
+|dwfileattributes|-|-|-|-|-|
+|dwfillattribute|-|-|-|-|-|
+|dwflags|-|-|-|-|-|
+|dwhighdatetime|-|-|-|-|-|
+|dwhostnamelength|-|-|-|-|-|
+|dwlowdatetime|-|-|-|-|-|
+|dwpasswordlength|-|-|-|-|-|
+|dwprocessid|-|-|-|-|-|
+|dwreserved0|-|-|-|-|-|
+|dwreserved1|-|-|-|-|-|
+|dwresultaction|-|-|-|-|-|
+|dwschemelength|-|-|-|-|-|
+|dwstructsize|-|-|-|-|-|
+|dwthreadid|-|-|-|-|-|
+|dwurlpathlength|-|-|-|-|-|
+|dwusernamelength|-|-|-|-|-|
+|dwx|-|-|-|-|-|
+|dwxcountchars|-|-|-|-|-|
+|dwxsize|-|-|-|-|-|
+|dwy|-|-|-|-|-|
+|dwysize|-|-|-|-|-|
+
 
 ### #E
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -384,7 +486,10 @@ tags restantes para adicionar:
 |exit tag|–|–|–|–|–|
 |extra points|–|–|–|–|–|
 |event|-|-|-|-|-|
-|ellipse<br/>email<br/>exclusionflags<br/>||||||
+|ellipse|-|-|-|-|-|
+|email|-|-|-|-|-|
+|exclusionflags|-|-|-|-|-|
+
 
 ### #F
 
@@ -416,7 +521,26 @@ tags restantes para adicionar:
 |four key|–|–|–|–|–|
 |fragment|-|-|-|-|-|
 |free tab|aba livre|aba vazia|–|–|–|
-|ferase<br/>field term<br/>filealignment<br/>filetime<br/>fincupdate<br/>finder<br/>first thunk memory address<br/>flag<br/>flags<br/>flags2<br/>font<br/>font strings [page]<br/>forwarder chain<br/>fraction<br/>fraction pair<br/>frestore<br/>ftcreationtime<br/>ftlastaccesstime<br/>ftlastwritetime<br/>fwtype<br/||||||
+|ferase|-|-|-|-|-|
+|field term|-|-|-|-|-|
+|filealignment|-|-|-|-|-|
+|filetime|-|-|-|-|-|
+|fincupdate|-|-|-|-|-|
+|finder|-|-|-|-|-|
+|first thunk memory address|-|-|-|-|-|
+|flag|-|-|-|-|-|
+|flags|-|-|-|-|-|
+|flags2|-|-|-|-|-|
+|font|-|-|-|-|-|
+|font strings [page]|-|-|-|-|-|
+|forwarder chain|-|-|-|-|-|
+|fraction|-|-|-|-|-|
+|fraction pair|-|-|-|-|-|
+|frestore|-|-|-|-|-|
+|ftcreationtime|-|-|-|-|-|
+|ftlastaccesstime|-|-|-|-|-|
+|ftlastwritetime|-|-|-|-|-|
+|fwtype<br/||||||
 
 ### #G
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -441,7 +565,24 @@ tags restantes para adicionar:
 |grid color|–|–|–|–|–|
 |group-separator byte|–|–|–|–|–|
 |guid|Identificador Único Abrangente|–|–|–|–|
-|gcpresults<br/>gdiplusstartupinput<br/>gdiplusversion<br/>getalertboundary<br/>getevents<br/>getinfo<br/>getnotifyeventhandle<br/>getoutputobjecttoken<br/>getoutputstream<br/>getpriority<br/>getrate<br/>getstatus<br/>getsyncspeaktimeout<br/>getvoice<br/>getvolume<br/>gprect<br/>green byte<br/>||||||
+|gcpresults|-|-|-|-|-|
+|gdiplusstartupinput|-|-|-|-|-|
+|gdiplusversion|-|-|-|-|-|
+|getalertboundary|-|-|-|-|-|
+|getevents|-|-|-|-|-|
+|getinfo|-|-|-|-|-|
+|getnotifyeventhandle|-|-|-|-|-|
+|getoutputobjecttoken|-|-|-|-|-|
+|getoutputstream|-|-|-|-|-|
+|getpriority|-|-|-|-|-|
+|getrate|-|-|-|-|-|
+|getstatus|-|-|-|-|-|
+|getsyncspeaktimeout|-|-|-|-|-|
+|getvoice|-|-|-|-|-|
+|getvolume|-|-|-|-|-|
+|gprect|-|-|-|-|-|
+|green byte|-|-|-|-|-|
+
 
 ### #H
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -472,7 +613,26 @@ tags restantes para adicionar:
 |hpen|Número identificador da pincel|Número identificador da canetinha|Número identificador do lápis de cor|–|–|
 |hrgn|Número identificador da região|–|–|–|–|
 |~~hue~~|–|–|–|–|–|
-|hbrbackground<br/>hcrypthash pointer<br/>hcursor<br/>hdc<br/>hdc<br/>hdevmode<br/>hdevnames<br/>height<br/>hicon<br/>hiconsm<br/>hinstance<br/>hinstance<br/>hprocess<br/>hstderror<br/>hstdinput<br/>hstdoutput<br/>hthread<br/>hwnd<br/>hwndowner<br/>||||||
+|hbrbackground|-|-|-|-|-|
+|hcrypthash pointer|-|-|-|-|-|
+|hcursor|-|-|-|-|-|
+|hdc|-|-|-|-|-|
+|hdc|-|-|-|-|-|
+|hdevmode|-|-|-|-|-|
+|hdevnames|-|-|-|-|-|
+|height|-|-|-|-|-|
+|hicon|-|-|-|-|-|
+|hiconsm|-|-|-|-|-|
+|hinstance|-|-|-|-|-|
+|hinstance|-|-|-|-|-|
+|hprocess|-|-|-|-|-|
+|hstderror|-|-|-|-|-|
+|hstdinput|-|-|-|-|-|
+|hstdoutput|-|-|-|-|-|
+|hthread|-|-|-|-|-|
+|hwnd|-|-|-|-|-|
+|hwndowner|-|-|-|-|-|
+
 
 ### #I
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -494,7 +654,25 @@ tags restantes para adicionar:
 |intermediate|–|–|–|–|–|
 |inverted-exclamation-mark byte|–|–|–|–|–|
 |inverted-question-mark byte|–|–|–|–|–|
-|idata section<br/>image strings [page]<br/>imagebase<br/>imagedirectoryentryimportaddress<br/>imagedirectoryentryimportsize<br/>imaxsockets<br/>imaxudpdg<br/>in_addr<br/>initialchecksum<br/>initialip<br/>initialirelativecs<br/>initialrelativess<br/>initialsp<br/>ip address<br/>istream object<br/>istream vtable record<br/>isuisupported<br/>item<br/>||||||
+|idata section|-|-|-|-|-|
+|image strings [page]|-|-|-|-|-|
+|imagebase|-|-|-|-|-|
+|imagedirectoryentryimportaddress|-|-|-|-|-|
+|imagedirectoryentryimportsize|-|-|-|-|-|
+|imaxsockets|-|-|-|-|-|
+|imaxudpdg|-|-|-|-|-|
+|in_addr|-|-|-|-|-|
+|initialchecksum|-|-|-|-|-|
+|initialip|-|-|-|-|-|
+|initialirelativecs|-|-|-|-|-|
+|initialrelativess|-|-|-|-|-|
+|initialsp|-|-|-|-|-|
+|ip address|-|-|-|-|-|
+|istream object|-|-|-|-|-|
+|istream vtable record|-|-|-|-|-|
+|isuisupported|-|-|-|-|-|
+|item|-|-|-|-|-|
+
 
 ### #J-K
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -689,7 +867,45 @@ tags restantes para adicionar:
 |lower-double-quote byte|–|–|–|–|–|
 |lower-single-quote byte|–|–|–|–|–|
 |l-param|–|–|–|–|–|
-|lbcolor<br/>lbhatch<br/>lbstyle<br/>left button<br/>line<br/>loaderflags<br/>lockregion<br/>logbrush<br/>lparam<br/>lpcallback<br/>lpcaretpos<br/>lpclass<br/>lpdesktop<br/>lpdx<br/>lpfnwndproc<br/>lpglyphs<br/>lphpropertypages<br/>lporder<br/>lpoutstring<br/>lppageranges<br/>lpprinttemplatename<br/>lpreserved<br/>lpreserved2<br/>lpszclassname<br/>lpszdatadtype<br/>lpszdocname<br/>lpszextrainfo<br/>lpszhostname<br/>lpszmenuname<br/>lpszoutput<br/>lpszpassword<br/>lpszscheme<br/>lpszurlpath<br/>lpszusername<br/>lptitle<br/>lpvendorinfo<br/>lstructsize<br/>lstructsize<br/>||||||
+|lbcolor|-|-|-|-|-|
+|lbhatch|-|-|-|-|-|
+|lbstyle|-|-|-|-|-|
+|left button|-|-|-|-|-|
+|line|-|-|-|-|-|
+|loaderflags|-|-|-|-|-|
+|lockregion|-|-|-|-|-|
+|logbrush|-|-|-|-|-|
+|lparam|-|-|-|-|-|
+|lpcallback|-|-|-|-|-|
+|lpcaretpos|-|-|-|-|-|
+|lpclass|-|-|-|-|-|
+|lpdesktop|-|-|-|-|-|
+|lpdx|-|-|-|-|-|
+|lpfnwndproc|-|-|-|-|-|
+|lpglyphs|-|-|-|-|-|
+|lphpropertypages|-|-|-|-|-|
+|lporder|-|-|-|-|-|
+|lpoutstring|-|-|-|-|-|
+|lppageranges|-|-|-|-|-|
+|lpprinttemplatename|-|-|-|-|-|
+|lpreserved|-|-|-|-|-|
+|lpreserved2|-|-|-|-|-|
+|lpszclassname|-|-|-|-|-|
+|lpszdatadtype|-|-|-|-|-|
+|lpszdocname|-|-|-|-|-|
+|lpszextrainfo|-|-|-|-|-|
+|lpszhostname|-|-|-|-|-|
+|lpszmenuname|-|-|-|-|-|
+|lpszoutput|-|-|-|-|-|
+|lpszpassword|-|-|-|-|-|
+|lpszscheme|-|-|-|-|-|
+|lpszurlpath|-|-|-|-|-|
+|lpszusername|-|-|-|-|-|
+|lptitle|-|-|-|-|-|
+|lpvendorinfo|-|-|-|-|-|
+|lstructsize|-|-|-|-|-|
+|lstructsize|-|-|-|-|-|
+
 
 ### #M
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -716,7 +932,24 @@ tags restantes para adicionar:
 |ms|milisegundo(s)|–|–|–|–|
 |multiple|–|–|–|–|–|
 |multiplication-symbol byte|–|–|–|–|–|
-|machinetype<br/>magicnumber<br/>majorlinkerversion<br/>maxfit<br/>maxheap<br/>maximumextraparagraphs<br/>maxstack<br/>memoryalignment<br/>message<br/>minheap<br/>minimumextraparagraphs<br/>minorlinkerversion<br/>minstack<br/>mixed<br/>module<br/>mouse<br/>msg<br/>||||||
+|machinetype|-|-|-|-|-|
+|magicnumber|-|-|-|-|-|
+|majorlinkerversion|-|-|-|-|-|
+|maxfit|-|-|-|-|-|
+|maxheap|-|-|-|-|-|
+|maximumextraparagraphs|-|-|-|-|-|
+|maxstack|-|-|-|-|-|
+|memoryalignment|-|-|-|-|-|
+|message|-|-|-|-|-|
+|minheap|-|-|-|-|-|
+|minimumextraparagraphs|-|-|-|-|-|
+|minorlinkerversion|-|-|-|-|-|
+|minstack|-|-|-|-|-|
+|mixed|-|-|-|-|-|
+|module|-|-|-|-|-|
+|mouse|-|-|-|-|-|
+|msg|-|-|-|-|-|
+
 
 ### #N
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -759,7 +992,28 @@ tags restantes para adicionar:
 |numpad-three key|–|–|–|–|–|
 |numpad-two key|–|–|–|–|–|
 |numpad-zero key|–|–|–|–|–|
-|name<br/>name<br/>name memory address<br/>ncopies<br/>nfilesizehigh<br/>nfilesizelow<br/>nglyphs<br/>nmaxpage<br/>nmaxpageranges<br/>nminpage<br/>npageranges<br/>nport<br/>npropertypages<br/>nscheme<br/>nstartpage<br/>number<br/>numberofbytesonlastpage<br/>numberofdirectories<br/>numberofpages<br/>numberofsections<br/>numberofsymbols<br/>||||||
+|name|-|-|-|-|-|
+|name|-|-|-|-|-|
+|name memory address|-|-|-|-|-|
+|ncopies|-|-|-|-|-|
+|nfilesizehigh|-|-|-|-|-|
+|nfilesizelow|-|-|-|-|-|
+|nglyphs|-|-|-|-|-|
+|nmaxpage|-|-|-|-|-|
+|nmaxpageranges|-|-|-|-|-|
+|nminpage|-|-|-|-|-|
+|npageranges|-|-|-|-|-|
+|nport|-|-|-|-|-|
+|npropertypages|-|-|-|-|-|
+|nscheme|-|-|-|-|-|
+|nstartpage|-|-|-|-|-|
+|number|-|-|-|-|-|
+|numberofbytesonlastpage|-|-|-|-|-|
+|numberofdirectories|-|-|-|-|-|
+|numberofpages|-|-|-|-|-|
+|numberofsections|-|-|-|-|-|
+|numberofsymbols|-|-|-|-|-|
+
 
 ### #O
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -776,7 +1030,48 @@ tags restantes para adicionar:
 |outdent <sup>[D]</sup>|recuo|–|–|–||
 |outdent <sup>[E]</sup>|recuo (à esquerda)|–|–|–|–|
 |output|–|–|–|produção|produzir|
-|objects<br/>oemidentifier<br/>oeminfo<br/>original first thunk<br/>osmajorversion<br/>osminorversion<br/>otmascent<br/>otmdescent<br/>otmemsquare<br/>otmfiller<br/>otmfsselection<br/>otmfstype<br/>otmitalicangle<br/>otmlinegap<br/>otmmacascent<br/>otmmacdescent<br/>otmmaclinegap<br/>otmpanosenumber<br/>otmpfacename<br/>otmpfamilyname<br/>otmpfullname<br/>otmpstylename<br/>otmptsubscriptoffset<br/>otmptsubscriptsize<br/>otmptsuperscriptoffset<br/>otmptsuperscriptsize<br/>otmrcfontbox<br/>otmscapemheight<br/>otmscharsloperise<br/>otmscharsloperun<br/>otmsize<br/>otmsstrikeoutposition<br/>otmsstrikeoutsize<br/>otmsunderscoreposition<br/>otmsunderscoresize<br/>otmsxheight<br/>otmtextmetrics<br/>otmusminiumppem<br/>outline entries<br/>outlinetextmetric<br/>overlynumber<br/>||||||
+|objects|-|-|-|-|-|
+|oemidentifier|-|-|-|-|-|
+|oeminfo|-|-|-|-|-|
+|original first thunk|-|-|-|-|-|
+|osmajorversion|-|-|-|-|-|
+|osminorversion|-|-|-|-|-|
+|otmascent|-|-|-|-|-|
+|otmdescent|-|-|-|-|-|
+|otmemsquare|-|-|-|-|-|
+|otmfiller|-|-|-|-|-|
+|otmfsselection|-|-|-|-|-|
+|otmfstype|-|-|-|-|-|
+|otmitalicangle|-|-|-|-|-|
+|otmlinegap|-|-|-|-|-|
+|otmmacascent|-|-|-|-|-|
+|otmmacdescent|-|-|-|-|-|
+|otmmaclinegap|-|-|-|-|-|
+|otmpanosenumber|-|-|-|-|-|
+|otmpfacename|-|-|-|-|-|
+|otmpfamilyname|-|-|-|-|-|
+|otmpfullname|-|-|-|-|-|
+|otmpstylename|-|-|-|-|-|
+|otmptsubscriptoffset|-|-|-|-|-|
+|otmptsubscriptsize|-|-|-|-|-|
+|otmptsuperscriptoffset|-|-|-|-|-|
+|otmptsuperscriptsize|-|-|-|-|-|
+|otmrcfontbox|-|-|-|-|-|
+|otmscapemheight|-|-|-|-|-|
+|otmscharsloperise|-|-|-|-|-|
+|otmscharsloperun|-|-|-|-|-|
+|otmsize|-|-|-|-|-|
+|otmsstrikeoutposition|-|-|-|-|-|
+|otmsstrikeoutsize|-|-|-|-|-|
+|otmsunderscoreposition|-|-|-|-|-|
+|otmsunderscoresize|-|-|-|-|-|
+|otmsxheight|-|-|-|-|-|
+|otmtextmetrics|-|-|-|-|-|
+|otmusminiumppem|-|-|-|-|-|
+|outline entries|-|-|-|-|-|
+|outlinetextmetric|-|-|-|-|-|
+|overlynumber|-|-|-|-|-|
+
 
 ### #P
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -828,7 +1123,26 @@ tags restantes para adicionar:
 |purple pen|–|–|–|–|–|
 |push address tag|–|–|–|–|–|
 |push value tag|–|–|–|–|–|
-|pad<br/>page redos<br/>page undos<br/>paintstruct<br/>pair<br/>panose<br/>paperlength<br/>paperwidth<br/>pause<br/>pdf state<br/>pdf string is string.<br/>pe section header<br/>pixelformat<br/>pointer<br/>pointertosymboltable<br/>printdlgex<br/>processinfo<br/>prototype string<br/>pt<br/>||||||
+|pad|-|-|-|-|-|
+|page redos|-|-|-|-|-|
+|page undos|-|-|-|-|-|
+|paintstruct|-|-|-|-|-|
+|pair|-|-|-|-|-|
+|panose|-|-|-|-|-|
+|paperlength|-|-|-|-|-|
+|paperwidth|-|-|-|-|-|
+|pause|-|-|-|-|-|
+|pdf state|-|-|-|-|-|
+|pdf string is string.|-|-|-|-|-|
+|pe section header|-|-|-|-|-|
+|pixelformat|-|-|-|-|-|
+|pointer|-|-|-|-|-|
+|pointertosymboltable|-|-|-|-|-|
+|printdlgex|-|-|-|-|-|
+|processinfo|-|-|-|-|-|
+|prototype string|-|-|-|-|-|
+|pt|-|-|-|-|-|
+
 
 ### #Q
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -893,7 +1207,24 @@ tags restantes para adicionar:
 |row#|–|–|–|–|–|
 |row/sheet|–|–|–|–|–|
 |run|–|–|–|–|–|
-|rcpaint<br/>read<br/>red byte<br/>redos<br/>release<br/>release<br/>relocuss<br/>reserved<br/>reserved<br/>reserved<br/>reservedwords<br/>resume<br/>resveredbytes<br/>revert<br/>rgb<br/>rider<br/>right button<br/>||||||
+|rcpaint|-|-|-|-|-|
+|read|-|-|-|-|-|
+|red byte|-|-|-|-|-|
+|redos|-|-|-|-|-|
+|release|-|-|-|-|-|
+|release|-|-|-|-|-|
+|relocuss|-|-|-|-|-|
+|reserved|-|-|-|-|-|
+|reserved|-|-|-|-|-|
+|reserved|-|-|-|-|-|
+|reservedwords|-|-|-|-|-|
+|resume|-|-|-|-|-|
+|resveredbytes|-|-|-|-|-|
+|revert|-|-|-|-|-|
+|rgb|-|-|-|-|-|
+|rider|-|-|-|-|-|
+|right button|-|-|-|-|-|
+
 
 ### #S
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -927,6 +1258,14 @@ tags restantes para adicionar:
 |sky blue pen|–|–|–|–|–|
 |sky color|–|–|–|–|–|
 |sky pen|–|–|–|–|–|
+|slap <sup>[D]</sup>|colocar|aplicar|assentar|empregar|–|
+|slap <sup>[E]</sup>|colocar|–|–|–|–|
+|some <sup>[D]</sup>|uns|umas|certo|algum|–|
+|some <sup>[E]</sup>|algum(a/as)|algun(s)|–|–|–|
+|spot <sup>[D]</sup>|lugar|local|posição|–|–|
+|spot <sup>[E]</sup>|mancha|–|–|–|–|
+|stack entry <sup>[D]</sup>|empilhamento|–|–|entrada de pilha|–|
+|stack entry <sup>[E]</sup>|–|–|–|–|–|
 |slash|barra|–|–|–|–|
 |slash byte|–|–|–|–|–|
 |small letter height|–|–|–|–|–|
@@ -945,12 +1284,14 @@ tags restantes para adicionar:
 |start-of-text byte|–|–|–|–|–|
 |stdin handle|número identificador do fluxo padrão de entrada|–|–|–|–|
 |stdout handle|número identificador do fluxo padrão de saída|–|–|–|–|
-|~~string~~|–|–|–|–|–|
+|string <sup>[D]</sup>|escrito/a|inscrição|série|sequência|frase|
+|string <sup>[E]</sup>|texto|–|–|–|–|
 |string#|–|–|–|–|–|
 |string thing|-|-|-|-|elemento de escrita|
 |submenu|–|–|–|–|–|
 |substitute byte|–|–|–|–|–|
-|~~substring~~|–|–|–|–|–|
+|substring <sup>[D]</sup>|trecho|segmento|subsérie|subsequência|fragmento|
+|substring <sup>[E]</sup>|pedaço de um texto|parte de um texto|–|–|–|
 |superduper|posicionador|||||
 |superscript-one byte|–|–|–|–|–|
 |superscript-three byte|–|–|–|–|–|
@@ -958,7 +1299,72 @@ tags restantes para adicionar:
 |switch (verbo)|Alternar|Trocar|Mudar|||
 |switch (substantivo)|interruptor|tomada|decisor|alternador||
 |synchronous-idle byte|–|–|–|–|–|
-|s_addr at the s_b1<br/>s_b1<br/>s_b2<br/>s_b3<br/>s_b4<br/>s_w1 at the s_b1<br/>s_w2 at the s_b3<br/>scan0<br/>screen<br/>seek<br/>selection<br/>selection<br/>selection<br/>selection<br/>setalertboundary<br/>setinterest<br/>setnotifycallbackfunction<br/>setnotifycallbackinterface<br/>setnotifysink<br/>setnotifywin32event<br/>setnotifywindowmessage<br/>setoutput<br/>setpriority<br/>setrate<br/>setsize<br/>setsyncspeaktimeout<br/>setvoice<br/>setvolume<br/>signature<br/>signature<br/>sin_addr<br/>sin_family<br/>sin_port<br/>sin_zero<br/>sizeinbytes<br/>sizeinfile<br/>sizeofallheadersinfile<br/>sizeofcodeinfile<br/>sizeofheaderinparagraphs<br/>sizeofimageinmemory<br/>sizeofinitializeddatainfile<br/>sizeofoptionalheaderinbytes<br/>sizeofuninitializeddatainfile<br/>skip<br/>sockaddr<br/>Some addrinfo routines<br/>Some things<br/>speak<br/>speakcompleteevent<br/>speakstream<br/>startupinfo<br/>stat<br/>status<br/>stride<br/>string<br/>style<br/>subsystem<br/>subsystemmajorversion<br/>subsystemminorversion<br/>superduper<br/>suppressbackgroundthread<br/>suppressexternalcodecs<br/>systemtime<br/>szdescription<br/>szsystemstatus<br/>||||||
+|s_addr at the s_b1|-|-|-|-|-|
+|s_b1|-|-|-|-|-|
+|s_b2|-|-|-|-|-|
+|s_b3|-|-|-|-|-|
+|s_b4|-|-|-|-|-|
+|s_w1 at the s_b1|-|-|-|-|-|
+|s_w2 at the s_b3|-|-|-|-|-|
+|scan0|-|-|-|-|-|
+|screen|-|-|-|-|-|
+|seek|-|-|-|-|-|
+|selection|-|-|-|-|-|
+|selection|-|-|-|-|-|
+|selection|-|-|-|-|-|
+|selection|-|-|-|-|-|
+|setalertboundary|-|-|-|-|-|
+|setinterest|-|-|-|-|-|
+|setnotifycallbackfunction|-|-|-|-|-|
+|setnotifycallbackinterface|-|-|-|-|-|
+|setnotifysink|-|-|-|-|-|
+|setnotifywin32event|-|-|-|-|-|
+|setnotifywindowmessage|-|-|-|-|-|
+|setoutput|-|-|-|-|-|
+|setpriority|-|-|-|-|-|
+|setrate|-|-|-|-|-|
+|setsize|-|-|-|-|-|
+|setsyncspeaktimeout|-|-|-|-|-|
+|setvoice|-|-|-|-|-|
+|setvolume|-|-|-|-|-|
+|signature|-|-|-|-|-|
+|signature|-|-|-|-|-|
+|sin_addr|-|-|-|-|-|
+|sin_family|-|-|-|-|-|
+|sin_port|-|-|-|-|-|
+|sin_zero|-|-|-|-|-|
+|sizeinbytes|-|-|-|-|-|
+|sizeinfile|-|-|-|-|-|
+|sizeofallheadersinfile|-|-|-|-|-|
+|sizeofcodeinfile|-|-|-|-|-|
+|sizeofheaderinparagraphs|-|-|-|-|-|
+|sizeofimageinmemory|-|-|-|-|-|
+|sizeofinitializeddatainfile|-|-|-|-|-|
+|sizeofoptionalheaderinbytes|-|-|-|-|-|
+|sizeofuninitializeddatainfile|-|-|-|-|-|
+|skip|-|-|-|-|-|
+|sockaddr|-|-|-|-|-|
+|Some addrinfo routines|-|-|-|-|-|
+|Some things|-|-|-|-|-|
+|speak|-|-|-|-|-|
+|speakcompleteevent|-|-|-|-|-|
+|speakstream|-|-|-|-|-|
+|startupinfo|-|-|-|-|-|
+|stat|-|-|-|-|-|
+|status|-|-|-|-|-|
+|stride|-|-|-|-|-|
+|string|-|-|-|-|-|
+|style|-|-|-|-|-|
+|subsystem|-|-|-|-|-|
+|subsystemmajorversion|-|-|-|-|-|
+|subsystemminorversion|-|-|-|-|-|
+|superduper|-|-|-|-|-|
+|suppressbackgroundthread|-|-|-|-|-|
+|suppressexternalcodecs|-|-|-|-|-|
+|systemtime|-|-|-|-|-|
+|szdescription|-|-|-|-|-|
+|szsystemstatus|-|-|-|-|-|
+
 
 ### #T
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -977,7 +1383,8 @@ tags restantes para adicionar:
 |text cutoff|–|–|–|–|–|
 |text margin|–|–|–|–|–|
 |the gptoken|grupo do sinal|–|–|–|–|
-|~~thing~~|–|–|–|–|–|
+|thing <sup>[D]</sup>|coisa|elemento|algo|objeto|–|
+|thing <sup>[E]</sup>|–|–|–|–|–|
 |three byte|–|–|–|–|–|
 |three key|–|–|–|–|–|
 |three-quarter byte|–|–|–|–|–|
@@ -990,11 +1397,45 @@ tags restantes para adicionar:
 |tpp|minipontos por ponto|–|–|–|–|
 |tracer color|cor usada pelo pintor|–|–|–|–|
 |trade-mark byte|-|byte ®|–|–|–|
-|~~twip~~|–|–|–|–|–|
+|target <sup>[D]</sup>|alvo|meta|–|–|–|
+|target <sup>[E]</sup>|objetivo (SAL)|–|–|–|–|
+|token <sup>[D]</sup>|marco|signo|símbolo|marca|–|
+|token <sup>[E]</sup>|sinal|–|–|–|–|
+|twip <sup>[D]</sup>|tuipe|–|–|–|–|
+|twip <sup>[E]</sup>|miniponto|microponto|minipixel|micropixel|–|
 |two byte|–|–|–|–|–|
 |two key|–|–|–|–|–|
 |type|tipo|–|–|–|–|
-|talker object<br/>talker vtable record<br/>term<br/>textmetric<br/>thing record<br/>time<br/>timer<br/>timestamp<br/>timestamp<br/>tmascent<br/>tmavecharwidth<br/>tmbreakchar<br/>tmcharset<br/>tmdefaultchar<br/>tmdescent<br/>tmdigitizedaspectx<br/>tmdigitizedaspecty<br/>tmexternalleading<br/>tmfirstchar<br/>tmheight<br/>tminternalleading<br/>tmitalic<br/>tmlastchar<br/>tmmaxcharwidth<br/>tmoverhang<br/>tmpitchandfamily<br/>tmstruckout<br/>tmunderlined<br/>tmweight<br/>||||||
+|talker object|-|-|-|-|-|
+|talker vtable record|-|-|-|-|-|
+|term|-|-|-|-|-|
+|textmetric|-|-|-|-|-|
+|thing record|-|-|-|-|-|
+|time|-|-|-|-|-|
+|timer|-|-|-|-|-|
+|timestamp|-|-|-|-|-|
+|timestamp|-|-|-|-|-|
+|tmascent|-|-|-|-|-|
+|tmavecharwidth|-|-|-|-|-|
+|tmbreakchar|-|-|-|-|-|
+|tmcharset|-|-|-|-|-|
+|tmdefaultchar|-|-|-|-|-|
+|tmdescent|-|-|-|-|-|
+|tmdigitizedaspectx|-|-|-|-|-|
+|tmdigitizedaspecty|-|-|-|-|-|
+|tmexternalleading|-|-|-|-|-|
+|tmfirstchar|-|-|-|-|-|
+|tmheight|-|-|-|-|-|
+|tminternalleading|-|-|-|-|-|
+|tmitalic|-|-|-|-|-|
+|tmlastchar|-|-|-|-|-|
+|tmmaxcharwidth|-|-|-|-|-|
+|tmoverhang|-|-|-|-|-|
+|tmpitchandfamily|-|-|-|-|-|
+|tmstruckout|-|-|-|-|-|
+|tmunderlined|-|-|-|-|-|
+|tmweight|-|-|-|-|-|
+
 
 ### #U
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -1006,7 +1447,14 @@ tags restantes para adicionar:
 |up-arrow key|–|–|–|–|–|
 |upperscore byte|–|–|–|–|–|
 |uuid|Identificador Único Universal|–|–|–|–|
-|undos<br/>unlockregion<br/>url record<br/>urlcomponents<br/>usermajorversion<br/>userminorversion<br/>uuid<br/>||||||
+|undos|-|-|-|-|-|
+|unlockregion|-|-|-|-|-|
+|url record|-|-|-|-|-|
+|urlcomponents|-|-|-|-|-|
+|usermajorversion|-|-|-|-|-|
+|userminorversion|-|-|-|-|-|
+|uuid|-|-|-|-|-|
+
 
 ### #V
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -1024,7 +1472,10 @@ tags restantes para adicionar:
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
 |v-key|–|–|–|–| -          |
-|vertex array record<br/>vtable<br/>vtable<br/>|||||            |
+|vertex array record|-|-|-|-|-|
+|vtable|-|-|-|-|-|
+|vtable|-|-|-|-|-|
+||||||            |
 
 ### #WXYZ
 
@@ -1046,5 +1497,27 @@ tags restantes para adicionar:
 |zero byte|–|–|–|–|–|
 |zero key|–|–|–|–|–|
 |z-key|–|–|–|–|–|
-|waitfornotifyevent<br/>waituntildone<br/>wday<br/>wdayofweek<br/>whighversion<br/>whour<br/>width<br/>win32finddata<br/>window class<br/>wmilliseconds<br/>wminute<br/>wmonth<br/>wparam<br/>write<br/>wsadata<br/>wsecond<br/>wshowwindow<br/>wversion<br/>wyear<br/>wyrd<br/>x<br/>y<br/>ydmresolution||||||
+|waitfornotifyevent|-|-|-|-|-|
+|waituntildone|-|-|-|-|-|
+|wday|-|-|-|-|-|
+|wdayofweek|-|-|-|-|-|
+|whighversion|-|-|-|-|-|
+|whour|-|-|-|-|-|
+|width|-|-|-|-|-|
+|win32finddata|-|-|-|-|-|
+|window class|-|-|-|-|-|
+|wmilliseconds|-|-|-|-|-|
+|wminute|-|-|-|-|-|
+|wmonth|-|-|-|-|-|
+|wparam|-|-|-|-|-|
+|write|-|-|-|-|-|
+|wsadata|-|-|-|-|-|
+|wsecond|-|-|-|-|-|
+|wshowwindow|-|-|-|-|-|
+|wversion|-|-|-|-|-|
+|wyear|-|-|-|-|-|
+|wyrd|-|-|-|-|-|
+|x|-|-|-|-|-|
+|y|-|-|-|-|-|
+|ydmresolution||||||
 
