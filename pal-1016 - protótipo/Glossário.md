@@ -217,44 +217,60 @@ Lista de Termos em Ordem Alfabética
 |clear <sup>[D]</sup>|limpar|apagar|excluir|clarear||
 |clear <sup>[E]</sup>|–|–|–|–|–|
 |cfilename|-|-|-|-|-|
+|change (verbo)|-|-|-|-|-|
 |characteristics|-|-|-|-|-|
 |characteristics|-|-|-|-|-|
+|check (verbo)|-|-|-|-|-|
 |checksum|-|-|-|-|-|
 |character|–|–|–|–|caractere|
 |choice|escolha|opção|-|-|-|
 |circumflex byte|–|–|–|–|byte-^|
 |c-key|–|–|–|–|tecla-c|
+|clear (verbo)|-|-|-|-|-|
 |clear color|–|–|–|–|cor transparente|
 |clear key|–|–|–|–|tecla limpar|
 |clear pen|–|–|–|–|pincel transparente|
 |clipboard <sup>[D]</sup>|prancheta|–|–|área de transferência|–|
 |clipboard <sup>[E]</sup>|–|–|–|–|–|
-|clone|-|-|-|-|-|
+|clone (substantivo)|-|-|-|-|-|
+|close (verbo)|-|-|-|-|-|
 |clsid|Identificador de Classe|Número Identificador de Classe|–|–|–|
-|cluck sound|som de latido|cacarejo|–|–|reclamação|
+|cluck (verbo)|latir|cacarejar|alertar|-|-|
+|cluck sound|som de latido|cacarejo|som de alerta|–|reclamação|
 |code|-|-|-|-|-|
 |code section|-|-|-|-|-|
+|collapse|-|-|-|-|-|
 |colon byte|–|–|–|–|byte dois-pontos|
 |color|–|–|–|–|cor|
 |colorref|código da cor|número da cor|–|–|cor-ref|
 |column\#|número da coluna|–|–|–|–|
 |comma byte|–|–|–|–|byte-vírgula|
 |command|–|–|–|–|comando|
+|comment (verbo)|comentar|-|-|-|-|
 |comment color|cor dos comentários|–|–|–|–|
 |commit|-|-|-|-|-|
-|compiler|agrupador|reunidor|-|-|-|
+|compare|-|-|-|-|-|
+|compatibly|compativelmente|-|-|-|-|
+|compatibly handle|lidar compativelmente|processar compativelmente|-|-|-|
+|compatibly wait|aguardar compativelmente|-|-|-|-|
+|compile|agrupar|reunir|catalogar|-|-|
+|compiler|agrupador|reunidor|catalogador|-|-|
 |console <sup>[D]</sup>|console|mostrador|–|–|–|
 |console <sup>[E]</sup>|–|–|–|–|–|
 |context|–|–|–|–|contexto|
 |context stack|–|–|–|–|pilha do contexto|
+|convert|-|-|-|-|-|
 |coord|coordenada|–|–|–|–|
-|copy|–|–|–|–|cópia|
+|copy (substantivo)|–|–|–|–|cópia|
+|copy (verbo)|-|-|-|-|-|
 |copyright byte|–|–|–|–|byte-©|
 |copyto|-|-|-|-|-|
 |count|–|–|–|–|conta|
 |counter|–|–|–|–|contador|
-|crypt session|-|-|-|-|-|
+|create|-|-|-|-|-|
+|crop|-|-|-|-|-|
 |cross byte|pedaço contendo um mais|-|–|–|–|
+|crypt session|-|-|-|-|-|
 |ctrl key|–|–|–|–|tecla-ctrl|
 |currency-sign byte|–|–|–|–|–|
 |current canvas|painel atual|–|–|–|tela atual|
@@ -263,27 +279,11 @@ Lista de Termos em Ordem Alfabética
 |current rainbow color number|–|–|–|–|número atual do furtacor|
 |current tab|–|–|–|–|aba atual|
 |cursor|setinha|cursor|–|–|–|
-|cyan color|–|–|–|–|turqueza|
+|cut|-|-|-|-|-|
 |cwycountchars|-|-|-|-|-|
+|cyan color|–|–|–|–|turqueza|
 |cyan pen|–|–|–|–|tinta turqueza|
 
-
-|center|-|-|-|-|-|
-|change|-|-|-|-|-|
-|check|-|-|-|-|-|
-|clear|-|-|-|-|-|
-|close|-|-|-|-|-|
-|cluck|-|-|-|-|-|
-|collapse|-|-|-|-|-|
-|comment|-|-|-|-|-|
-|compare|-|-|-|-|-|
-|compatibly|-|-|-|-|-|
-|compile|-|-|-|-|-|
-|convert|-|-|-|-|-|
-|copy|-|-|-|-|-|
-|create|-|-|-|-|-|
-|crop|-|-|-|-|-|
-|cut|-|-|-|-|-|
 
 ### #D
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
