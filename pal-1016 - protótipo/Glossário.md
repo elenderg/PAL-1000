@@ -143,12 +143,16 @@ Lista de Termos em Ordem Alfabética
 |b-key|–|–|–|–|tecla-b|
 |black color|–|–|–|–|preto|
 |black pen|–|–|–|–|pincel preto|
+|blank (verbo)|-|-|-|-|-|
 |bletterform|-|-|-|-|-|
 |block|-|-|-|-|-|
 |blue byte|-|-|-|-|-|
 |blue color|–|–|–|–|azul|
 |blue pen|–|–|–|–|pincel azul|
+|blurt|-|-|-|-|-|
 |bmidline|-|-|-|-|-|
+|border (substantivo)|borda|-|-|-|-|
+|border (verbo)|contornar|-|-|-|-|
 |borough|região|bairro|zona|-|-|
 |boroughbox|-|-|-|-|-|
 |box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
@@ -182,9 +186,6 @@ Lista de Termos em Ordem Alfabética
 
 
 
-|blank|-|-|-|-|-|
-|blurt|-|-|-|-|-|
-|border|-|-|-|-|-|
 |bring|-|-|-|-|-|
 |bubble|-|-|-|-|-|
 |bump|-|-|-|-|-|
