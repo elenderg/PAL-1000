@@ -88,7 +88,6 @@ Lista de Verbos em Ordem Alfabética
 |guarantee|-|-|-|-|-|
 |handle|-|-|-|-|-|
 |hide|-|-|-|-|-|
-|If|-|-|-|-|-|
 |imagine|-|-|-|-|-|
 |include|-|-|-|-|-|
 |indent|-|-|-|-|-|

@@ -703,6 +703,7 @@ Lista de Termos em Ordem Alfabética
 ### #I
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
+|if|se|caso|quando|–|–|
 |i-beam cursor|–|–|–|–|–|
 |iid|Número identificador da interface|–|–|–|–|
 |i-key|–|–|–|–|–|
