@@ -739,6 +739,7 @@ Lista de Termos em Ordem Alfabética
 |inverted-question-mark byte|–|–|–|–|–|
 |ip address|-|-|-|-|-|
 |is past|ultrapassar|passar de|passou|–|–|
+|is set|estiver definido|estiver verde|estiver ligado|–|–|
 |istream object|-|-|-|-|-|
 |istream vtable record|-|-|-|-|-|
 |isuisupported|-|-|-|-|-|
@@ -1371,6 +1372,8 @@ Lista de Termos em Ordem Alfabética
 |select|selecionar|escolher|-|-|-|
 |selection|-|-|-|-|-|
 |semi-colon byte|–|–|–|–|–|
+|send|-|-|-|-|-|
+|set (verbo)|definir|mudar a cor do sinal|-|-|-|
 |setalertboundary|-|-|-|-|-|
 |setinterest|-|-|-|-|-|
 |setnotifycallbackfunction|-|-|-|-|-|
@@ -1487,8 +1490,6 @@ Lista de Termos em Ordem Alfabética
 
 
 
-|send|-|-|-|-|-|
-|set|-|-|-|-|-|
 |shift|-|-|-|-|-|
 |show|-|-|-|-|-|
 |shrink|-|-|-|-|-|
