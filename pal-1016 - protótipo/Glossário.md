@@ -548,6 +548,8 @@ Lista de Termos em Ordem Alfabética
 
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
+|face|-|-|-|-|-|
+|fail|-|-|-|-|-|
 |fancy arrow|Seta elegante|–|–|–|–|
 |feminine byte|–|byte-ª|–|–|–|
 |figure|–|–|–|–|–|
@@ -577,14 +579,22 @@ Lista de Termos em Ordem Alfabética
 |field term|-|-|-|-|-|
 |filealignment|-|-|-|-|-|
 |filetime|-|-|-|-|-|
+|fill|-|-|-|-|-|
+|finalize|-|-|-|-|-|
+|finalize:|-|-|-|-|-|
 |fincupdate|-|-|-|-|-|
+|find|-|-|-|-|-|
 |finder|-|-|-|-|-|
 |first thunk memory address|-|-|-|-|-|
 |flag|-|-|-|-|-|
 |flags|-|-|-|-|-|
 |flags2|-|-|-|-|-|
+|flip|-|-|-|-|-|
+|flush|-|-|-|-|-|
+|focus|-|-|-|-|-|
 |font|-|-|-|-|-|
 |font strings [page]|-|-|-|-|-|
+|format|-|-|-|-|-|
 |forwarder chain|-|-|-|-|-|
 |fraction|-|-|-|-|-|
 |fraction pair|-|-|-|-|-|
@@ -592,17 +602,8 @@ Lista de Termos em Ordem Alfabética
 |ftcreationtime|-|-|-|-|-|
 |ftlastaccesstime|-|-|-|-|-|
 |ftlastwritetime|-|-|-|-|-|
-|fwtype<br/|-|-|-|-|-|
-|face|-|-|-|-|-|
-|fail|-|-|-|-|-|
-|fill|-|-|-|-|-|
-|finalize|-|-|-|-|-|
-|finalize:|-|-|-|-|-|
-|find|-|-|-|-|-|
-|flip|-|-|-|-|-|
-|flush|-|-|-|-|-|
-|focus|-|-|-|-|-|
-|format|-|-|-|-|-|
+|fwtype|-|-|-|-|-|
+
 
 ### #G
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
