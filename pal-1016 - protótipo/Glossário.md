@@ -191,12 +191,15 @@ Lista de Termos em Ordem Alfabética
 ### #C
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
+|calculate|-|-|-|-|-|
 |call external tag|–|–|–|–|marca-evocar|
 |call indirect tag|–|–|–|–|marca-convocar|
 |call internal tag|–|–|–|–|marca-invocar|
 |calternatefilename|-|-|-|-|-|
+|cancel|-|-|-|-|-|
 |cancel byte|–|–|–|–|byte cancelar|
 |canvas|painel|quadro|–|–|tela|
+|capitalize|-|-|-|-|-|
 |caps key|–|tecla Fixa|–|–|tecla-fixar|
 |caret byte|pedaço contendo um cursor de texto|pedaço com um cursor de texto|–|–|byte cursor|
 |cb|-|-|-|-|-|
@@ -234,7 +237,7 @@ Lista de Termos em Ordem Alfabética
 |colon byte|–|–|–|–|byte dois-pontos|
 |color|–|–|–|–|cor|
 |colorref|código da cor|número da cor|–|–|cor-ref|
-|column#|número da coluna|–|–|–|–|
+|column\#|número da coluna|–|–|–|–|
 |comma byte|–|–|–|–|byte-vírgula|
 |command|–|–|–|–|comando|
 |comment color|cor dos comentários|–|–|–|–|
@@ -263,9 +266,8 @@ Lista de Termos em Ordem Alfabética
 |cyan color|–|–|–|–|turqueza|
 |cwycountchars|-|-|-|-|-|
 |cyan pen|–|–|–|–|tinta turqueza|
-|calculate|-|-|-|-|-|
-|cancel|-|-|-|-|-|
-|capitalize|-|-|-|-|-|
+
+
 |center|-|-|-|-|-|
 |change|-|-|-|-|-|
 |check|-|-|-|-|-|
