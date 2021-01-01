@@ -1614,8 +1614,10 @@ Lista de Termos em Ordem Alfabética
 |------------|------------|------------|------------|------------|------------|
 |value string|-|-|-|-|-|
 |variable|-|-|-|-|-|
+|vary|-|-|-|-|-|
 |verse|-|-|-|-|-|
 |vertex|-|-|-|-|-|
+|vertex array record|-|-|-|-|-|
 |vertical-bar byte|–|–|–|–|–|
 |vertical-tab byte|–|–|–|–|–|
 |very dark color|–|–|–|–|–|
@@ -1624,12 +1626,12 @@ Lista de Termos em Ordem Alfabética
 |very very light color|–|–|–|–|–|
 |violet color|–|–|–|–|–|
 |violet pen|–|–|–|–|–|
-|v-key|–|–|–|–| -          |
-|vertex array record|-|-|-|-|-|
-|vtable|-|-|-|-|-|
-|vtable|-|-|-|-|-|
-|vary|-|-|-|-|-|
+|v-key|–|–|–|–|-|
 |void|-|-|-|-|-|
+|vtable|-|-|-|-|-|
+
+
+
 
 ### #WXYZ
 
