@@ -1169,20 +1169,31 @@ Lista de Termos em Ordem Alfabética
 ### #P
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
+|pad|-|-|-|-|-|
+|paintstruct|-|-|-|-|-|
+|pair|-|-|-|-|-|
 |page|–|–|–|–|–|
 |page clipboard|–|–|–|–|–|
 |page number|–|–|–|–|–|
 |page-down key|–|–|–|–|–|
+|page redos|-|-|-|-|-|
+|page undos|-|-|-|-|-|
 |page-up key|–|–|–|–|–|
+|panose|-|-|-|-|-|
+|paperlength|-|-|-|-|-|
+|paperwidth|-|-|-|-|-|
 |paragraph|-|-|-|-|-|
 |paragraph byte|–|–|–|–|–|
 |partial moniker|–|–|–|–|–|
 |pastel color|–|–|–|–|–|
 |path|endereço completo do arquivo contendo extensão|endereço|–|–|–|
+|pause|-|-|-|-|-|
 |pause key|–|–|–|–|–|
 |pdf|arquivo pdf|–|–|–|–|
 |pdf object|-|-|-|-|-|
 |pdf outline entry|-|-|-|-|-|
+|pdf state|-|-|-|-|-|
+|pdf string|-|-|-|-|-|
 |pen|–|–|–|–|–|
 |pen size|–|–|–|–|–|
 |per|–|–|–|–|–|
@@ -1190,11 +1201,13 @@ Lista de Termos em Ordem Alfabética
 |percent-sign byte|–|–|–|–|–|
 |period byte|–|–|–|–|–|
 |per-mille-sign byte|–|–|–|–|–|
+|pe section header|-|-|-|-|-|
 |pick <sup>[D]</sup>|pegar|realçar|escolher|separar|selecionar|
 |pick <sup>[E]</sup>|coletar|–|–|–|–|
 |picture|-|-|-|-|-|
 |pink color|–|–|–|–|–|
 |pink pen|–|–|–|–|–|
+|pixelformat|-|-|-|-|-|
 |p-key|–|–|–|–|–|
 |plus-or-minus byte|–|–|–|–|–|
 |plus-sign byte|–|–|–|–|–|
@@ -1203,38 +1216,26 @@ Lista de Termos em Ordem Alfabética
 |point <sup>[D]</sup>|foco|meta|objetivo|–|–|
 |point <sup>[E]</sup>|ponto|–|–|–|–|
 |pointer|–|–|–|–|–|
+|pointertosymboltable|-|-|-|-|-|
 |polygon|polígono|–|–|–|–|
 |pound-sign byte|–|–|–|–|–|
 |ppi|pontos por polegada|pontos em uma polegada|–|–|–|
 |precise degree|–|–|–|–|–|
+|printdlgex|-|-|-|-|-|
 |printer canvas|–|–|–|–|–|
 |printer device mode|–|–|–|–|–|
 |print-screen key|Tecla Print Screen|Tecla Prt Scr|–|–|-|
 |process|–|–|–|–|–|
+|processinfo|-|-|-|-|-|
+|prototype string|-|-|-|-|-|
+|pt|-|-|-|-|-|
 |prolog tag|–|–|–|–|–|
 |purple color|–|–|–|–|–|
 |purple pen|–|–|–|–|–|
 |push address tag|–|–|–|–|–|
 |push value tag|–|–|–|–|–|
-|pad|-|-|-|-|-|
-|page redos|-|-|-|-|-|
-|page undos|-|-|-|-|-|
-|paintstruct|-|-|-|-|-|
-|pair|-|-|-|-|-|
-|panose|-|-|-|-|-|
-|paperlength|-|-|-|-|-|
-|paperwidth|-|-|-|-|-|
-|pause|-|-|-|-|-|
-|pdf state|-|-|-|-|-|
-|pdf string is string.|-|-|-|-|-|
-|pe section header|-|-|-|-|-|
-|pixelformat|-|-|-|-|-|
-|pointer|-|-|-|-|-|
-|pointertosymboltable|-|-|-|-|-|
-|printdlgex|-|-|-|-|-|
-|processinfo|-|-|-|-|-|
-|prototype string|-|-|-|-|-|
-|pt|-|-|-|-|-|
+
+
 |parse|-|-|-|-|-|
 |paste|-|-|-|-|-|
 |pdfify|-|-|-|-|-|
