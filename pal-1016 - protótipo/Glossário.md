@@ -152,7 +152,7 @@ Lista de Termos em Ordem Alfabética
 |blurt|-|-|-|-|-|
 |bmidline|-|-|-|-|-|
 |border (substantivo)|borda|-|-|-|-|
-|border (verbo)|contornar|-|-|-|-|
+|border (verbo)|contornar|contornear|-|-|-|
 |borough|região|bairro|zona|-|-|
 |boroughbox|-|-|-|-|-|
 |box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
