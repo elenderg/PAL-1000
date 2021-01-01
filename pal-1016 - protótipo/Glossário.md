@@ -1625,6 +1625,16 @@ Lista de Termos em Ordem Alfabética
 |usermajorversion|-|-|-|-|-|
 |userminorversion|-|-|-|-|-|
 |uuid|-|-|-|-|-|
+|unassign|-|-|-|-|-|
+|uncomment|-|-|-|-|-|
+|ungroup|-|-|-|-|-|
+|unlabel|-|-|-|-|-|
+|unlock|-|-|-|-|-|
+|unmask|-|-|-|-|-|
+|unquote|-|-|-|-|-|
+|update|-|-|-|-|-|
+|uppercase|-|-|-|-|-|
+|use (verbo)|-|-|-|-|-|
 
 
 ### #V
