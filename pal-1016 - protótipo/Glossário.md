@@ -1109,12 +1109,15 @@ Lista de Termos em Ordem Alfabética
 |objects|-|-|-|-|-|
 |oemidentifier|-|-|-|-|-|
 |oeminfo|-|-|-|-|-|
-|offset|deslocamento|–|–|–|–|
+|offset (substantivo)|deslocamento|–|–|–|–|
+|offset (verbo)|deslocar|-|-|-|-|
 |o-key|–|–|–|–|–|
 |one byte|–|–|–|–|–|
 |one key|–|–|–|–|–|
 |one-half byte|–|–|–|–|–|
 |one-quarter byte|–|–|–|–|–|
+|only draw|-|-|-|-|-|
+|open|-|-|-|-|-|
 |orange color|–|–|–|–|–|
 |orange pen|–|–|–|–|–|
 |original first thunk|-|-|-|-|-|
@@ -1153,18 +1156,17 @@ Lista de Termos em Ordem Alfabética
 |otmsxheight|-|-|-|-|-|
 |otmtextmetrics|-|-|-|-|-|
 |otmusminiumppem|-|-|-|-|-|
-|outdent|recuo|recuo (à esquerda)|–|–||
+|outdent (substantivo)|recuo|recuo (à esquerda)|–|–|-|
+|outdent (verbo)|recuar|recuar (à esquerda)|-|-|-|
+|outline (substantivo)|contorno|realce|borda|-|-|
+|outline (verbo)|contornar|contornear|realçar|-|-|
 |outline entries|-|-|-|-|-|
 |outlinetextmetric|-|-|-|-|-|
-|output|–|–|–|produção|produzir|
+|output|fluxo de saída|–|–|produção|produzir|
 |overlynumber|-|-|-|-|-|
 
-|offset (verbo)|-|-|-|-|-|
-|only draw|-|-|-|-|-|
-|open|-|-|-|-|-|
-|outdent|-|-|-|-|-|
-|outline|-|-|-|-|-|
-|output|-|-|-|-|-|
+
+
 
 ### #P
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
