@@ -1044,26 +1044,46 @@ Lista de Termos em Ordem Alfabética
 |------------|------------|------------|------------|------------|------------|
 |name (substantivo)|nome|–|–|–|–|
 |name (verbo)|nomear|-|-|-|-|
+|name memory address|-|-|-|-|-|
+|ncopies|-|-|-|-|-|
+|negate|-|-|-|-|-|
 |negative-acknowledge byte|–|–|–|–|–|
 |next letter|–|–|–|–|–|
+|nfilesizehigh|-|-|-|-|-|
+|nfilesizelow|-|-|-|-|-|
+|nglyphs|-|-|-|-|-|
 |nibble <sup>[D]</sup>|níquel|nicles|–|–|–|
 |nibble <sup>[E]</sup>|meio pedaço|metade de um pedaço|quatro pedacinhos|níbôu|–|
 |nibble string|texto contendo quatro pedacinhos|meio pedaço de texto|–|–|–|
 |nine byte|–|–|–|–|–|
 |nine key|–|–|–|–|–|
 |n-key|–|–|–|–|–|
-|nodette <sup>[D]</sup>|nódulo|nó|–|–||
-|nodette <sup>[E]</sup>|elemento|–|–|–|–|
-|node <sup>[D]</sup>|nodo|enlace|–|–||
-|node <sup>[E]</sup>|lista|–|–|–|–|
+|nmaxpage|-|-|-|-|-|
+|nmaxpageranges|-|-|-|-|-|
+|nminpage|-|-|-|-|-|
+|nodette|nódulo|nó|elemento|–||
+|node|nodo|enlace|lista|–||
 |non-breaking-space byte|–|–|–|–|–|
+|non-destructively resize|redimensionar sem destruir|-|-|-|-|
+|normalize|-|-|-|-|-|
 |not byte|–|–|–|–|–|
 |not tag|–|–|–|–|–|
+|npageranges|-|-|-|-|-|
+|nport|-|-|-|-|-|
+|npropertypages|-|-|-|-|-|
+|nscheme|-|-|-|-|-|
+|nstartpage|-|-|-|-|-|
 |null byte|–|–|–|–|–|
 |null hbrush|–|–|–|–|–|
 |null hfont|–|–|–|–|–|
 |null hpen|–|–|–|–|–|
+|null terminate|-|-|-|-|-|
 |number|número|–|–|–|–|
+|numberofbytesonlastpage|-|-|-|-|-|
+|numberofdirectories|-|-|-|-|-|
+|numberofpages|-|-|-|-|-|
+|numberofsections|-|-|-|-|-|
+|numberofsymbols|-|-|-|-|-|
 |number-sign byte|–|–|–|–|–|
 |numlock key|–|–|–|–|–|
 |numpad-astrisk key|–|–|–|–|–|
@@ -1081,31 +1101,7 @@ Lista de Termos em Ordem Alfabética
 |numpad-three key|–|–|–|–|–|
 |numpad-two key|–|–|–|–|–|
 |numpad-zero key|–|–|–|–|–|
-|name|-|-|-|-|-|
-|name|-|-|-|-|-|
-|name memory address|-|-|-|-|-|
-|ncopies|-|-|-|-|-|
-|nfilesizehigh|-|-|-|-|-|
-|nfilesizelow|-|-|-|-|-|
-|nglyphs|-|-|-|-|-|
-|nmaxpage|-|-|-|-|-|
-|nmaxpageranges|-|-|-|-|-|
-|nminpage|-|-|-|-|-|
-|npageranges|-|-|-|-|-|
-|nport|-|-|-|-|-|
-|npropertypages|-|-|-|-|-|
-|nscheme|-|-|-|-|-|
-|nstartpage|-|-|-|-|-|
-|number|-|-|-|-|-|
-|numberofbytesonlastpage|-|-|-|-|-|
-|numberofdirectories|-|-|-|-|-|
-|numberofpages|-|-|-|-|-|
-|numberofsections|-|-|-|-|-|
-|numberofsymbols|-|-|-|-|-|
-|negate|-|-|-|-|-|
-|non-destructively|-|-|-|-|-|
-|normalize|-|-|-|-|-|
-|null terminate|-|-|-|-|-|
+
 
 ### #O
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
