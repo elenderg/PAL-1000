@@ -501,8 +501,13 @@ Lista de Termos em Ordem Alfabética
 |eight byte|–|–|–|–|–|
 |eight key|–|–|–|–|–|
 |e-key|–|–|–|–|–|
+|ellipse|-|-|-|-|-|
 |ellipsis byte|–|–|–|–|–|
+|eliminate|-|-|-|-|-|
+|email|-|-|-|-|-|
 |em-dash byte|–|–|–|–|–|
+|encrypt|-|-|-|-|-|
+|end|-|-|-|-|-|
 |end if tag|–|–|–|–|–|
 |end key|–|–|–|–|–|
 |en-dash byte|–|–|–|–|–|
@@ -510,36 +515,32 @@ Lista de Termos em Ordem Alfabética
 |end-of-text byte|–|–|–|–|–|
 |end-of-transmission byte|–|–|–|–|–|
 |end-of-transmission-block byte|–|–|–|–|–|
+|enlarge|-|-|-|-|-|
+|enque|-|-|-|-|-|
 |enquiry byte|–|–|–|–|–|
 |enter key|–|–|–|–|–|
 |entry|entrada|-|-|-|-|
 |epilog tag|–|–|–|–|–|
 |equal-sign byte|–|–|–|–|–|
 |equal-sign key|–|–|–|–|–|
+|erase|-|-|-|-|-|
 |esc key|–|–|–|–|–|
 |escape byte|–|–|–|–|–|
 |escape key|–|–|–|–|–|
+|estimate|-|-|-|-|-|
 |euro-sign byte|–|–|–|–|–|
 |event|–|–|–|–|–|
 |event queue|–|–|–|–|–|
 |exclamation byte|–|–|–|–|–|
 |exclamation-mark byte|–|–|–|–|–|
-|exit tag|–|–|–|–|–|
-|extra points|–|–|–|–|–|
-|event|-|-|-|-|-|
-|ellipse|-|-|-|-|-|
-|email|-|-|-|-|-|
 |exclusionflags|-|-|-|-|-|
-|eliminate|-|-|-|-|-|
-|encrypt|-|-|-|-|-|
-|end|-|-|-|-|-|
-|enlarge|-|-|-|-|-|
-|enque|-|-|-|-|-|
-|erase|-|-|-|-|-|
-|estimate|-|-|-|-|-|
+|exit tag|–|–|–|–|–|
 |extend|-|-|-|-|-|
 |externalize|-|-|-|-|-|
+|extra points|–|–|–|–|–|
 |extract|-|-|-|-|-|
+|event|-|-|-|-|-|
+
 
 
 ### #F
