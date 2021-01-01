@@ -70,6 +70,8 @@ Lista de Termos em Ordem Alfabética
 |barmstyle|-|-|-|-|-|
 |baseline|–|–|–|–|linha base|
 |bcontrast|-|-|-|-|-|
+|beep (verbo)|-|-|-|-|-|
+|begin|-|-|-|-|-|
 |bell byte|–|–|–|–|byte-sino|
 |bfamilytype|-|-|-|-|-|
 |Bible|Bíblia|Escrituras|Sagradas Escrituras|-|-|
@@ -135,6 +137,8 @@ Lista de Termos em Ordem Alfabética
 |big-z byte|–|–|–|–|byte-z maiúsculo|
 |big-z-caron byte|–|–|–|–|–|
 |bit|pedacinho|–|–|–|bit|
+|bitwise (substantivo)|conjunção|conjunção binária|-|-|-|
+|bitwise (verbo)|-|-|-|-|-|
 |bitmapdata|-|-|-|-|-|
 |b-key|–|–|–|–|tecla-b|
 |black color|–|–|–|–|preto|
@@ -174,9 +178,10 @@ Lista de Termos em Ordem Alfabética
 |bxheight|-|-|-|-|-|
 |byte|pedaço|–|–|–|byte|
 |byte count|–|quantidade de pedaços|–|–|conta de byte|
-|beep|-|-|-|-|-|
-|begin|-|-|-|-|-|
-|bitwise|-|-|-|-|-|
+
+
+
+
 |blank|-|-|-|-|-|
 |blurt|-|-|-|-|-|
 |border|-|-|-|-|-|
