@@ -711,42 +711,39 @@ Lista de Termos em Ordem Alfabética
 |imagebase|-|-|-|-|-|
 |imagedirectoryentryimportaddress|-|-|-|-|-|
 |imagedirectoryentryimportsize|-|-|-|-|-|
+|imagine|-|-|-|-|-|
 |imaxsockets|-|-|-|-|-|
 |imaxudpdg|-|-|-|-|-|
 |import|-|-|-|-|-|
 |import header|dados do título|cabeçalho de importação|–|–|–|
 |in_addr|-|-|-|-|-|
+|include|-|-|-|-|-|
 |increment tag|–|–|–|–|–|
 |indent|avanço|recuo (à direita)|–|–||
 |index|-|-|-|-|-|
-|input|fluxo de entrada|inserção|–|imposição|impor|
-|insert key|–|–|–|–|–|
-|intel tag|–|–|–|–|–|
-|intermediate|–|–|–|–|–|
-|inverted-exclamation-mark byte|–|–|–|–|–|
-|inverted-question-mark byte|–|–|–|–|–|
-
-
 |initialchecksum|-|-|-|-|-|
 |initialip|-|-|-|-|-|
 |initialirelativecs|-|-|-|-|-|
+|initalize|-|-|-|-|-|
 |initialrelativess|-|-|-|-|-|
 |initialsp|-|-|-|-|-|
+|input|fluxo de entrada|inserção|–|imposição|impor|
+|insert|-|-|-|-|-|
+|insert key|–|–|–|–|–|
+|intel tag|–|–|–|–|–|
+|intermediate|–|–|–|–|–|
+|internalize|-|-|-|-|-|
+|intersect|-|-|-|-|-|
+|invert|-|-|-|-|-|
+|inverted-exclamation-mark byte|–|–|–|–|–|
+|inverted-question-mark byte|–|–|–|–|–|
 |ip address|-|-|-|-|-|
 |is past|ultrapassar|passar de|passou|–|–|
 |istream object|-|-|-|-|-|
 |istream vtable record|-|-|-|-|-|
 |isuisupported|-|-|-|-|-|
 |item|-|-|-|-|-|
-|imagine|-|-|-|-|-|
-|include|-|-|-|-|-|
-|indent|-|-|-|-|-|
-|index|-|-|-|-|-|
-|initalize|-|-|-|-|-|
-|insert|-|-|-|-|-|
-|internalize|-|-|-|-|-|
-|intersect|-|-|-|-|-|
-|invert|-|-|-|-|-|
+
 
 ### #J-K
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
