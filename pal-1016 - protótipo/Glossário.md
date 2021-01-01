@@ -261,6 +261,25 @@ Lista de Termos em Ordem Alfabética
 |compiler|-|-|-|-|-|
 |copyto|-|-|-|-|-|
 |cwycountchars<|-|-|-|-|-|
+|calculate|-|-|-|-|-|
+|cancel|-|-|-|-|-|
+|capitalize|-|-|-|-|-|
+|center|-|-|-|-|-|
+|change|-|-|-|-|-|
+|check|-|-|-|-|-|
+|clear|-|-|-|-|-|
+|close|-|-|-|-|-|
+|cluck|-|-|-|-|-|
+|collapse|-|-|-|-|-|
+|comment|-|-|-|-|-|
+|compare|-|-|-|-|-|
+|compatibly|-|-|-|-|-|
+|compile|-|-|-|-|-|
+|convert|-|-|-|-|-|
+|copy|-|-|-|-|-|
+|create|-|-|-|-|-|
+|crop|-|-|-|-|-|
+|cut|-|-|-|-|-|
 
 ### #D
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -461,6 +480,19 @@ Lista de Termos em Ordem Alfabética
 |dwxsize|-|-|-|-|-|
 |dwy|-|-|-|-|-|
 |dwysize|-|-|-|-|-|
+|darken|-|-|-|-|-|
+|debug|-|-|-|-|-|
+|decide|-|-|-|-|-|
+|decrypt|-|-|-|-|-|
+|deque|-|-|-|-|-|
+|deselect|-|-|-|-|-|
+|de-sign|-|-|-|-|-|
+|destroy|-|-|-|-|-|
+|divide|-|-|-|-|-|
+|double|-|-|-|-|-|
+|draw|-|-|-|-|-|
+|dump|-|-|-|-|-|
+|duplicate|-|-|-|-|-|
 
 
 ### #E
@@ -498,6 +530,16 @@ Lista de Termos em Ordem Alfabética
 |ellipse|-|-|-|-|-|
 |email|-|-|-|-|-|
 |exclusionflags|-|-|-|-|-|
+|eliminate|-|-|-|-|-|
+|encrypt|-|-|-|-|-|
+|end|-|-|-|-|-|
+|enlarge|-|-|-|-|-|
+|enque|-|-|-|-|-|
+|erase|-|-|-|-|-|
+|estimate|-|-|-|-|-|
+|extend|-|-|-|-|-|
+|externalize|-|-|-|-|-|
+|extract|-|-|-|-|-|
 
 
 ### #F
@@ -550,6 +592,16 @@ Lista de Termos em Ordem Alfabética
 |ftlastaccesstime|-|-|-|-|-|
 |ftlastwritetime|-|-|-|-|-|
 |fwtype<br/|-|-|-|-|-|
+|face|-|-|-|-|-|
+|fail|-|-|-|-|-|
+|fill|-|-|-|-|-|
+|finalize|-|-|-|-|-|
+|finalize:|-|-|-|-|-|
+|find|-|-|-|-|-|
+|flip|-|-|-|-|-|
+|flush|-|-|-|-|-|
+|focus|-|-|-|-|-|
+|format|-|-|-|-|-|
 
 ### #G
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -591,7 +643,12 @@ Lista de Termos em Ordem Alfabética
 |getvolume|-|-|-|-|-|
 |gprect|-|-|-|-|-|
 |green byte|-|-|-|-|-|
-
+|generate|-|-|-|-|-|
+|get|-|-|-|-|-|
+|globalize|-|-|-|-|-|
+|go|-|-|-|-|-|
+|grayscale (verbo)|-|-|-|-|-|
+|group|-|-|-|-|-|
 
 ### #H
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|

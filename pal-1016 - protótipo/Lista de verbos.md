@@ -35,7 +35,7 @@ Lista de Verbos em Ordem Alfabética
 |check|-|-|-|-|-|
 |clear|-|-|-|-|-|
 |close|-|-|-|-|-|
-|cluck:|-|-|-|-|-|
+|cluck|-|-|-|-|-|
 |collapse|-|-|-|-|-|
 |comment|-|-|-|-|-|
 |compare|-|-|-|-|-|
