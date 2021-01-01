@@ -1,11 +1,5 @@
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|nibble <sup>[D]</sup>|níquel|nicles|–|–|–|
-|nibble <sup>[E]</sup>|meio pedaço|metade de um pedaço|quatro pedacinhos|níbôu|–|
-|nodette <sup>[D]</sup>|nódulo|nó|–|–||
-|nodette <sup>[E]</sup>|elemento|–|–|–|–|
-|node <sup>[D]</sup>|nodo|enlace|–|–||
-|node <sup>[E]</sup>|lista|–|–|–|–|
 |outdent <sup>[D]</sup>|recuo|–|–|–||
 |outdent <sup>[E]</sup>|recuo (à esquerda)|–|–|–|–|
 |pick <sup>[D]</sup>|pegar|realçar|escolher|separar|selecionar|
@@ -748,13 +742,16 @@ tags restantes para adicionar:
 |name|nome|–|–|–|–|
 |negative-acknowledge byte|–|–|–|–|–|
 |next letter|–|–|–|–|–|
-|~~nibble~~|–|–|–|–|–|
+|nibble <sup>[D]</sup>|níquel|nicles|–|–|–|
+|nibble <sup>[E]</sup>|meio pedaço|metade de um pedaço|quatro pedacinhos|níbôu|–|
 |nibble string|texto contendo quatro pedacinhos|meio pedaço de texto|–|–|–|
 |nine byte|–|–|–|–|–|
 |nine key|–|–|–|–|–|
 |n-key|–|–|–|–|–|
-|~~node~~|–|–|–|–|–|
-|nodette|–|–|–|–|–|
+|nodette <sup>[D]</sup>|nódulo|nó|–|–||
+|nodette <sup>[E]</sup>|elemento|–|–|–|–|
+|node <sup>[D]</sup>|nodo|enlace|–|–||
+|node <sup>[E]</sup>|lista|–|–|–|–|
 |non-breaking-space byte|–|–|–|–|–|
 |not byte|–|–|–|–|–|
 |not tag|–|–|–|–|–|
