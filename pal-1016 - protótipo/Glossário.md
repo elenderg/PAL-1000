@@ -993,13 +993,20 @@ Lista de Termos em Ordem Alfabética
 ### #M
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
+|machinetype|-|-|-|-|-|
 |magenta color|–|–|–|–|–|
 |magenta pen|–|–|–|–|–|
+|magicnumber|-|-|-|-|-|
 |main window|–|–|–|–|–|
+|majorlinkerversion|-|-|-|-|-|
 |margin|–|–|–|–|–|
 |masculine byte|–|byte-º|–|–|–|
 |mask|máscara|enfeite|maquiagem|–|–|
+|maxfit|-|-|-|-|-|
+|maximumextraparagraphs|-|-|-|-|-|
+|maxheap|-|-|-|-|-|
 |max page undos|–|–|–|–|–|
+|maxstack|-|-|-|-|-|
 |max text undos|–|–|–|–|–|
 |memory canvas|–|–|–|–|–|
 |menu|–|–|–|–|–|
@@ -1015,13 +1022,8 @@ Lista de Termos em Ordem Alfabética
 |ms|milisegundo(s)|–|–|–|–|
 |multiple|–|–|–|–|–|
 |multiplication-symbol byte|–|–|–|–|–|
-|machinetype|-|-|-|-|-|
-|magicnumber|-|-|-|-|-|
-|majorlinkerversion|-|-|-|-|-|
-|maxfit|-|-|-|-|-|
-|maxheap|-|-|-|-|-|
-|maximumextraparagraphs|-|-|-|-|-|
-|maxstack|-|-|-|-|-|
+
+
 |memoryalignment|-|-|-|-|-|
 |message|-|-|-|-|-|
 |minheap|-|-|-|-|-|
