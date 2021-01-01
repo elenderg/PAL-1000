@@ -160,6 +160,7 @@ Lista de Termos em Ordem Alfabética
 |bproportion|-|-|-|-|-|
 |break <sup>[D]</sup>|parar|pare|interrompa|interromper|–|
 |break <sup>[E]</sup>|–|–|–|–|–|
+|bring|-|-|-|-|-|
 |bump <sup>[D]</sup>|acrescer|aumentar|incrementar|acrescentar|–|
 |bump <sup>[E]</sup>|–|–|–|–|–|
 |break tag|–|–|–|–|marca parar|
@@ -170,6 +171,7 @@ Lista de Termos em Ordem Alfabética
 |brownish color|–|–|–|–|castanho|
 |bserifstyle|-|-|-|-|-|
 |bstrokevariation|-|-|-|-|-|
+|bubble|-|-|-|-|-|
 |bucket|–|–|–|–|–|
 |bucket count|–|–|–|–|–|
 |bucket record|-|-|-|-|-|
@@ -177,19 +179,13 @@ Lista de Termos em Ordem Alfabética
 |buffer <sup>[E]</sup>|depósito|armazém|estoque|almoxarifado|–|
 |built-in type|–|–|–|–|tipo embutido|
 |bullet byte|–|–|–|–|byte-marcador|
+|bump|-|-|-|-|-|
 |button|botão|-|-|-|-|
+|buzz|-|-|-|-|-|
 |bweight|-|-|-|-|-|
 |bxheight|-|-|-|-|-|
 |byte|pedaço|–|–|–|byte|
 |byte count|–|quantidade de pedaços|–|–|conta de byte|
-
-
-
-
-|bring|-|-|-|-|-|
-|bubble|-|-|-|-|-|
-|bump|-|-|-|-|-|
-|buzz:|-|-|-|-|-|
 
 
 ### #C
