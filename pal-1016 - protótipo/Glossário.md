@@ -1427,24 +1427,31 @@ Lista de Termos em Ordem Alfabética
 |slash byte|–|–|–|–|–|
 |small letter height|–|–|–|–|–|
 |small-bullet byte|–|–|–|–|–|
+|smooth (verbo)|-|-|-|-|-|
+|snapshot (verbo)|-|-|-|-|-|
 |sockaddr|-|-|-|-|-|
 |soft-dash byte|–|–|–|–|–|
 |solid color|–|–|–|–|–|
 |some <sup>[D]</sup>|uns|umas|certo|algum|–|
 |some <sup>[E]</sup>|algum(a/as)|algun(s)|–|–|–|
+|sort (verbo)|ordenar|classificar|organizar|listar|-|
 |source|-|-|-|-|-|
 |source file|-|-|-|-|-|
+|space (verbo)|-|-|-|-|-|
 |space byte|–|–|–|–|–|
 |space key|tecla espaço|barra de espaço|–|–|–|
 |speak|-|-|-|-|-|
 |speakcompleteevent|-|-|-|-|-|
 |speakstream|-|-|-|-|-|
+|split (verbo)|-|-|-|-|-|
 |spot <sup>[D]</sup>|lugar|local|posição|–|–|
 |spot <sup>[E]</sup>|mancha|–|–|–|–|
+|square (verbo)|quadrado|-|-|-|-|
 |square root|raiz quadrada|–|–|–|–|
-|square size|–|–|–|–|–|
+|square size|tamanho do quadrado|–|–|–|–|
 |stack|–|–|–|–|–|
 |stack entry|empilhamento|–|–|entrada de pilha|–|
+|start (verbo)|-|-|-|-|-|
 |start-of-heading byte|–|–|–|–|–|
 |start-of-text byte|–|–|–|–|–|
 |startupinfo|-|-|-|-|-|
@@ -1452,11 +1459,14 @@ Lista de Termos em Ordem Alfabética
 |status|-|-|-|-|-|
 |stdin handle|número identificador do fluxo padrão de entrada|–|–|–|–|
 |stdout handle|número identificador do fluxo padrão de saída|–|–|–|–|
+|stop (verbo)|-|-|-|-|-|
+|store (verbo)|-|-|-|-|-|
 |stride|-|-|-|-|-|
 |string <sup>[D]</sup>|escrito/a|inscrição|série|sequência|frase|
 |string <sup>[E]</sup>|texto|–|–|–|–|
 |string\#|–|–|–|–|–|
 |string thing|-|-|-|-|elemento de escrita|
+|stroke|-|-|-|-|-|
 |style|-|-|-|-|-|
 |submenu|–|–|–|–|–|
 |substitute byte|–|–|–|–|–|
@@ -1465,12 +1475,14 @@ Lista de Termos em Ordem Alfabética
 |subsystem|-|-|-|-|-|
 |subsystemmajorversion|-|-|-|-|-|
 |subsystemminorversion|-|-|-|-|-|
+|subtract|-|-|-|-|-|
 |superduper|posicionador|mecanismo de posicionamento|-|-|-|
 |superscript-one byte|–|–|–|–|–|
 |superscript-three byte|–|–|–|–|–|
 |superscript-two byte|–|–|–|–|–|
 |suppressbackgroundthread|-|-|-|-|-|
 |suppressexternalcodecs|-|-|-|-|-|
+|swap (verbo)|-|-|-|-|-|
 |switch (verbo)|Alternar|Trocar|Mudar|||
 |switch (substantivo)|interruptor|tomada|decisor|alternador||
 |synchronous-idle byte|–|–|–|–|–|
@@ -1491,22 +1503,6 @@ Lista de Termos em Ordem Alfabética
 
 |addrinfo routines|-|-|-|-|-|
 |things|-|-|-|-|-|
-
-
-|smooth (verbo)|-|-|-|-|-|
-|snapshot (verbo)|-|-|-|-|-|
-|sort (verbo)|-|-|-|-|-|
-|space (verbo)|-|-|-|-|-|
-|speak|-|-|-|-|-|
-|split|-|-|-|-|-|
-|square (verbo)|-|-|-|-|-|
-|start (verbo)|-|-|-|-|-|
-|stop (verbo)|-|-|-|-|-|
-|store (verbo)|-|-|-|-|-|
-|stroke|-|-|-|-|-|
-|subtract|-|-|-|-|-|
-|swap|-|-|-|-|-|
-|switch (verbo)|-|-|-|-|-|
 
 
 ### #T
