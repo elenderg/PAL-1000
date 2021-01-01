@@ -961,7 +961,7 @@ tags restantes para adicionar:
 |stdout handle|número identificador do fluxo padrão de saída|–|–|–|–|
 |~~string~~|–|–|–|–|–|
 |string#|–|–|–|–|–|
-|string thing|-|-|-|-|-|
+|string thing|-|-|-|-|elemento de escrita|
 |submenu|–|–|–|–|–|
 |substitute byte|–|–|–|–|–|
 |~~substring~~|–|–|–|–|–|
