@@ -1630,58 +1630,51 @@ Lista de Termos em Ordem Alfabética
 |void|-|-|-|-|-|
 |vtable|-|-|-|-|-|
 
-
-
-
 ### #WXYZ
 
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |wave|–|–|–|–|–|
-|white color|–|–|–|–|–|
-|white pen|–|–|–|–|–|
-|width|–|–|–|–|–|
-|window|–|–|–|–|–|
-|winhttp request|-|-|-|-|-|
-|w-key|–|–|–|–|–|
-|w-param|–|–|–|–|–|
-|x-key|–|–|–|–|–|
-|yellow color|–|–|–|–|–|
-|yellow pen|–|–|–|–|–|
-|yen-sign byte|–|byte ¥|–|–|–|
-|y-key|–|–|–|–|–|
-|zero byte|–|–|–|–|–|
-|zero key|–|–|–|–|–|
-|z-key|–|–|–|–|–|
+|wait|-|-|-|-|-|
 |waitfornotifyevent|-|-|-|-|-|
 |waituntildone|-|-|-|-|-|
 |wday|-|-|-|-|-|
 |wdayofweek|-|-|-|-|-|
 |whighversion|-|-|-|-|-|
+|white color|–|–|–|–|–|
+|white pen|–|–|–|–|–|
 |whour|-|-|-|-|-|
-|width|-|-|-|-|-|
-|win32finddata|-|-|-|-|-|
-|window class|-|-|-|-|-|
+|width|–|–|–|–|–|
+|window|–|–|–|–|–|
+|window class|–|–|–|–|–|
+|winhttp request|-|-|-|-|-|
+|win32finddata|–|–|–|–|–|
+|wipe|-|-|-|-|-|
+|w-key|–|–|–|–|–|
 |wmilliseconds|-|-|-|-|-|
 |wminute|-|-|-|-|-|
 |wmonth|-|-|-|-|-|
-|wparam|-|-|-|-|-|
+|w-param|–|–|–|–|–|
+|wrap|-|-|-|-|-|
 |write|-|-|-|-|-|
-|wsadata|-|-|-|-|-|
+|wsadata|–|–|–|–|–|
 |wsecond|-|-|-|-|-|
 |wshowwindow|-|-|-|-|-|
 |wversion|-|-|-|-|-|
 |wyear|-|-|-|-|-|
 |wyrd <sup>[D]</sup>|ordin|pavra|plava|–|–|
 |wyrd <sup>[E]</sup>|meia barra|metade de uma barra|palavro|palavre|–|
-|x|-|-|-|-|-|
-|y|-|-|-|-|-|
-|ydmresolution|-|-|-|-|-|
-|wait|-|-|-|-|-|
-|wipe|-|-|-|-|-|
-|wrap|-|-|-|-|-|
-|write|-|-|-|-|-|
+|x-key|–|–|–|–|–|
+|x-number|-|-|-|-|-|
 |yank|-|-|-|-|-|
 |yield|-|-|-|-|-|
-|zero|-|-|-|-|-|
+|y-number|-|-|-|-|-|
+|yellow color|–|–|–|–|–|
+|yellow pen|–|–|–|–|–|
+|yen-sign byte|–|byte ¥|–|–|–|
+|ydmresolution|-|-|-|-|-|
+|y-key|–|–|–|–|–|
+|zero byte|–|–|–|–|–|
 |zero fill|-|-|-|-|-|
+|zero key|–|–|–|–|–|
+|z-key|–|–|–|–|–|
