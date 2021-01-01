@@ -1349,18 +1349,26 @@ Lista de Termos em Ordem Alfabética
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
 |saturation|–|–|–|–|–|
+|save|-|-|-|-|-|
 |save eax tag|–|–|–|–|–|
 |saved memory hbitmap|–|–|–|–|–|
 |saved tpp|–|–|–|–|–|
+|say|-|-|-|-|-|
+|scale|-|-|-|-|-|
+|scan (verbo)|examinar|-|-|-|-|
 |scan0|-|-|-|-|-|
 |scratch|–|–|–|–|–|
 |screen|tela|-|-|-|-|
 |screen canvas|painel da tela|quadro da tela|–|–|–|
+|scroll|-|-|-|-|-|
 |scrolllock key|–|–|–|–|–|
-|second|–|–|–|–|–|
+|scrub|-|-|-|-|-|
+|second|segundo|–|–|–|–|
 |sector byte|–|–|–|–|–|
-|seed|número da semente|–|–|–|–|
+|seed (substantivo)|número da semente|–|–|–|–|
+|seed (verbo)|semear|fertilizar|adubar|preparar|-|
 |seek|-|-|-|-|-|
+|select|selecionar|escolher|-|-|-|
 |selection|-|-|-|-|-|
 |semi-colon byte|–|–|–|–|–|
 |setalertboundary|-|-|-|-|-|
@@ -1474,19 +1482,11 @@ Lista de Termos em Ordem Alfabética
 |szdescription|-|-|-|-|-|
 |szsystemstatus|-|-|-|-|-|
 
-
 |addrinfo routines|-|-|-|-|-|
 |things|-|-|-|-|-|
 
 
-|save|-|-|-|-|-|
-|say|-|-|-|-|-|
-|scale|-|-|-|-|-|
-|scan|-|-|-|-|-|
-|scroll|-|-|-|-|-|
-|scrub|-|-|-|-|-|
-|seed|-|-|-|-|-|
-|select|-|-|-|-|-|
+
 |send|-|-|-|-|-|
 |set|-|-|-|-|-|
 |shift|-|-|-|-|-|
