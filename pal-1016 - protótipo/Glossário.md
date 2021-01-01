@@ -1412,6 +1412,7 @@ Lista de Termos em Ordem Alfabética
 |slash byte|–|–|–|–|–|
 |small letter height|–|–|–|–|–|
 |small-bullet byte|–|–|–|–|–|
+|sockaddr|-|-|-|-|-|
 |soft-dash byte|–|–|–|–|–|
 |solid color|–|–|–|–|–|
 |some <sup>[D]</sup>|uns|umas|certo|algum|–|
@@ -1420,6 +1421,9 @@ Lista de Termos em Ordem Alfabética
 |source file|-|-|-|-|-|
 |space byte|–|–|–|–|–|
 |space key|tecla espaço|barra de espaço|–|–|–|
+|speak|-|-|-|-|-|
+|speakcompleteevent|-|-|-|-|-|
+|speakstream|-|-|-|-|-|
 |spot <sup>[D]</sup>|lugar|local|posição|–|–|
 |spot <sup>[E]</sup>|mancha|–|–|–|–|
 |square root|raiz quadrada|–|–|–|–|
@@ -1428,17 +1432,25 @@ Lista de Termos em Ordem Alfabética
 |stack entry|empilhamento|–|–|entrada de pilha|–|
 |start-of-heading byte|–|–|–|–|–|
 |start-of-text byte|–|–|–|–|–|
+|startupinfo|-|-|-|-|-|
+|stat|-|-|-|-|-|
+|status|-|-|-|-|-|
 |stdin handle|número identificador do fluxo padrão de entrada|–|–|–|–|
 |stdout handle|número identificador do fluxo padrão de saída|–|–|–|–|
+|stride|-|-|-|-|-|
 |string <sup>[D]</sup>|escrito/a|inscrição|série|sequência|frase|
 |string <sup>[E]</sup>|texto|–|–|–|–|
 |string\#|–|–|–|–|–|
 |string thing|-|-|-|-|elemento de escrita|
+|style|-|-|-|-|-|
 |submenu|–|–|–|–|–|
 |substitute byte|–|–|–|–|–|
 |substring <sup>[D]</sup>|trecho|segmento|subsérie|subsequência|fragmento|
 |substring <sup>[E]</sup>|pedaço de um texto|parte de um texto|–|–|–|
-|superduper|posicionador|||||
+|subsystem|-|-|-|-|-|
+|subsystemmajorversion|-|-|-|-|-|
+|subsystemminorversion|-|-|-|-|-|
+|superduper|posicionador|mecanismo de posicionamento|-|-|-|
 |superscript-one byte|–|–|–|–|–|
 |superscript-three byte|–|–|–|–|–|
 |superscript-two byte|–|–|–|–|–|
@@ -1457,24 +1469,11 @@ Lista de Termos em Ordem Alfabética
 |sin_port|-|-|-|-|-|
 |sin_zero|-|-|-|-|-|
 
-
-
-
-|sockaddr|-|-|-|-|-|
 |addrinfo routines|-|-|-|-|-|
 |things|-|-|-|-|-|
-|speak|-|-|-|-|-|
-|speakcompleteevent|-|-|-|-|-|
-|speakstream|-|-|-|-|-|
-|startupinfo|-|-|-|-|-|
-|stat|-|-|-|-|-|
-|status|-|-|-|-|-|
-|stride|-|-|-|-|-|
-|string|-|-|-|-|-|
-|style|-|-|-|-|-|
-|subsystem|-|-|-|-|-|
-|subsystemmajorversion|-|-|-|-|-|
-|subsystemminorversion|-|-|-|-|-|
+
+
+
 |superduper|-|-|-|-|-|
 |suppressbackgroundthread|-|-|-|-|-|
 |suppressexternalcodecs|-|-|-|-|-|
