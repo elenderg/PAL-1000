@@ -4,19 +4,19 @@ Lista de Verbos em Ordem Alfabética
 
 ### #A
 
-|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
+|Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Adicionado na lista?|
 |------------|------------|------------|------------|------------|------------|
-|abort|-|-|-|-|-|
-|add|-|-|-|-|-|
-|address|-|-|-|-|-|
-|adjust|-|-|-|-|-|
-|advance|-|-|-|-|-|
-|align|-|-|-|-|-|
-|append|-|-|-|-|-|
-|ask|-|-|-|-|-|
-|assign|-|-|-|-|-|
-|attach|-|-|-|-|-|
-|autoscroll|-|-|-|-|-|
+|abort|-|-|-|-|✔️|
+|add|-|-|-|-|✔️|
+|address|-|-|-|-|✔️|
+|adjust|-|-|-|-|✔️|
+|advance|-|-|-|-|✔️|
+|align|-|-|-|-|✔️|
+|append|-|-|-|-|✔️|
+|ask|-|-|-|-|✔️|
+|assign|-|-|-|-|✔️|
+|attach|-|-|-|-|✔️|
+|autoscroll|-|-|-|-|✔️|
 |beep:|-|-|-|-|-|
 |begin|-|-|-|-|-|
 |bitwise|-|-|-|-|-|
