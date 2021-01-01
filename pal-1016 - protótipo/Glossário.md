@@ -137,8 +137,9 @@ Lista de Termos em Ordem Alfabética
 |big-z byte|–|–|–|–|byte-z maiúsculo|
 |big-z-caron byte|–|–|–|–|–|
 |bit|pedacinho|–|–|–|bit|
-|bitwise (substantivo)|conjunção|conjunção binária|combinação|-|-|
-|bitwise (verbo)|combinar|corresponder|-|-|-|
+|bitwise and|combinar|corresponder|condizer|compatibilizar|-|
+|bitwise or|unir|juntar|-|-|-|
+|bitwise xor|adicionar|somar|unir exclusivamente|-|-|
 |bitmapdata|-|-|-|-|-|
 |b-key|–|–|–|–|tecla-b|
 |black color|–|–|–|–|preto|
@@ -161,8 +162,6 @@ Lista de Termos em Ordem Alfabética
 |break <sup>[D]</sup>|parar|pare|interrompa|interromper|–|
 |break <sup>[E]</sup>|–|–|–|–|–|
 |bring|-|-|-|-|-|
-|bump <sup>[D]</sup>|acrescer|aumentar|incrementar|acrescentar|–|
-|bump <sup>[E]</sup>|–|–|–|–|–|
 |break tag|–|–|–|–|marca parar|
 |brightness|–|–|–|–|brilho|
 |broken-bar byte|–|–|–|–|–|
@@ -179,7 +178,7 @@ Lista de Termos em Ordem Alfabética
 |buffer <sup>[E]</sup>|depósito|armazém|estoque|almoxarifado|–|
 |built-in type|–|–|–|–|tipo embutido|
 |bullet byte|–|–|–|–|byte-marcador|
-|bump|-|-|-|-|-|
+|bump|acrescer|aumentar|incrementar|acrescentar|–|
 |button|botão|-|-|-|-|
 |buzz|-|-|-|-|-|
 |bweight|-|-|-|-|-|
