@@ -1257,9 +1257,11 @@ Lista de Termos em Ordem Alfabética
 |query string <sup>[E]</sup>|texto da consulta|–|–|–|–|
 |question-mark byte|–|byte-?|–|–|–|
 |quora|question or answer|-|-|-|pesquisa|
+|quote (verbo)|citar|referenciar|fazer referência|-|-|
 |quotient|quociente|–|–|–|–|
-|quit|-|-|-|-|-|
-|quote (verbo)|-|-|-|-|-|
+|quit|encerrar|sair|fechar|finalizar|-|
+
+
 ### #R
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
