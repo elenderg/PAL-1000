@@ -1394,10 +1394,15 @@ Lista de Termos em Ordem Alfabética
 |shape clipboard|–|–|–|–|–|
 |shape refer|-|-|-|-|-|
 |sharp-s byte|byte-ß|–|–|–|–|
+|shift|deslocar|mover|movimentar|transferir|reposicionar|
 |shift key|tecla shift|–|–|–|–|
 |shift-in byte|byte de shift pressionado|–|–|–|–|
 |shift-out byte|byte de shift liberado|–|–|–|–|
+|show|-|-|-|-|-|
+|shrink|-|-|-|-|-|
+|shut|-|-|-|-|-|
 |signature|-|-|-|-|-|
+|simplify|-|-|-|-|-|
 |single-quote byte|–|–|–|–|–|
 |six byte|–|–|–|–|–|
 |six key|–|–|–|–|–|
@@ -1412,13 +1417,12 @@ Lista de Termos em Ordem Alfabética
 |sizeofoptionalheaderinbytes|-|-|-|-|-|
 |sizeofuninitializeddatainfile|-|-|-|-|-|
 |s-key|tecla S|–|–|–|–|
-|skip|-|-|-|-|-|
+|skip (verbo)|-|-|-|-|-|
 |sky blue color|–|–|–|–|–|
 |sky blue pen|–|–|–|–|–|
 |sky color|–|–|–|–|–|
 |sky pen|–|–|–|–|–|
-|slap <sup>[D]</sup>|colocar|aplicar|assentar|empregar|–|
-|slap <sup>[E]</sup>|colocar|–|–|–|–|
+|slap|colocar|aplicar|assentar|empregar|–|
 |slash|barra|–|–|–|–|
 |slash byte|–|–|–|–|–|
 |small letter height|–|–|–|–|–|
@@ -1489,14 +1493,6 @@ Lista de Termos em Ordem Alfabética
 |things|-|-|-|-|-|
 
 
-
-|shift|-|-|-|-|-|
-|show|-|-|-|-|-|
-|shrink|-|-|-|-|-|
-|shut|-|-|-|-|-|
-|simplify|-|-|-|-|-|
-|skip|-|-|-|-|-|
-|slap|-|-|-|-|-|
 |smooth (verbo)|-|-|-|-|-|
 |snapshot (verbo)|-|-|-|-|-|
 |sort (verbo)|-|-|-|-|-|
