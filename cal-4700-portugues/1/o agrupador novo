@@ -2563,6 +2563,114 @@ If the string is "'s", say yes.
 If the string is "'", say yes.
 Say no.
 
+To decide if an rider is on any preposition:
+Put the rider's token into a substring.
+\ English prepositions
+If the substring is "about", say yes.
+If the substring is "above", say yes.
+If the substring is "across", say yes.
+If the substring is "after", say yes.
+If the substring is "against", say yes.
+If the substring is "all", say yes.
+If the substring is "alone", say yes.
+If the substring is "along", say yes.
+If the substring is "among", say yes.
+If the substring is "any", say yes.
+If the substring is "anywhere", say yes.
+If the substring is "around", say yes.
+If the substring is "as", say yes.
+If the substring is "at", say yes.
+If the substring is "away", say yes.
+If the substring is "back", say yes.
+If the substring is "backward", say yes.
+If the substring is "backwards", say yes.
+If the substring is "before", say yes.
+If the substring is "beginning", say yes.
+If the substring is "behind", say yes.
+If the substring is "below", say yes.
+If the substring is "beneath", say yes.
+If the substring is "beside", say yes.
+If the substring is "between", say yes.
+If the substring is "beyond", say yes.
+If the substring is "bigger", say yes.
+If the substring is "by", say yes.
+If the substring is "close", say yes.
+If the substring is "deep", say yes.
+If the substring is "diagonally", say yes.
+If the substring is "down", say yes.
+If the substring is "downward", say yes.
+If the substring is "ending", say yes.
+If the substring is "everywhere", say yes.
+If the substring is "except", say yes.
+If the substring is "finishing", say yes.
+If the substring is "facing", say yes.
+If the substring is "for", say yes.
+If the substring is "forward", say yes.
+If the substring is "from", say yes.
+If the substring is "given", say yes.
+If the substring is "giving", say yes.
+If the substring is "high", say yes.
+If the substring is "in", say yes.
+If the substring is "inside", say yes.
+If the substring is "into", say yes.
+If the substring is "en", say yes.
+If the substring is "larger", say yes.
+If the substring is "leaning", say yes.
+If the substring is "left", say yes.
+If the substring is "leftward", say yes.
+If the substring is "leftways", say yes.
+If the substring is "like", say yes.
+If the substring is "limiting", say yes.
+If the substring is "long", say yes.
+If the substring is "near", say yes.
+If the substring is "of", say yes.
+If the substring is "off", say yes.
+If the substring is "on", say yes.
+If the substring is "only", say yes.
+If the substring is "onto", say yes.
+If the substring is "out", say yes.
+If the substring is "outside", say yes.
+If the substring is "over", say yes.
+If the substring is "past", say yes.
+If the substring is "pointing", say yes.
+If the substring is "returning", say yes.
+If the substring is "right", say yes.
+If the substring is "rightward", say yes.
+If the substring is "rightways", say yes.
+If the substring is "shorter", say yes.
+If the substring is "sideway", say yes.
+If the substring is "sideways", say yes.
+If the substring is "similar", say yes.
+If the substring is "smaller", say yes.
+If the substring is "somewhere", say yes.
+If the substring is "slantwise", say yes.
+If the substring is "slantway", say yes.
+If the substring is "slantways", say yes.
+If the substring is "starting", say yes.
+If the substring is "tall", say yes.
+If the substring is "taller", say yes.
+If the substring is "thru", say yes.
+If the substring is "through", say yes.
+If the substring is "throughout", say yes.
+If the substring is "to", say yes.
+If the substring is "toward", say yes.
+If the substring is "towards", say yes.
+If the substring is "under", say yes.
+If the substring is "underneath", say yes.
+If the substring is "until", say yes.
+If the substring is "unto", say yes.
+If the substring is "up", say yes.
+If the substring is "upward", say yes.
+If the substring is "upon", say yes.
+If the substring is "using", say yes.
+If the substring is "via", say yes.
+If the substring is "while", say yes.
+If the substring is "wide", say yes.
+If the substring is "with", say yes.
+If the substring is "within", say yes.
+If the substring is "without", say yes.
+Say no.
+
 To decide if an string is any preposition:
 If the string is "about", say yes.
 If the string is "above", say yes.
@@ -2816,13 +2924,15 @@ If the string is blank, say no.
 Say yes.
 
 To decide if an string is the start of any type:
-If the string is "a", say yes.
-If the string is "an", say yes.
-If the string is "some", say yes.
+If the string is any indefinite article, say yes.
+\If the string is "a", say yes.
+\If the string is "an", say yes.
+\If the string is "some", say yes.
 Say no.
 
 To decide if an string is the start of any variable:
-If the string is "the", say yes.
+If the string is any definite article, say yes.
+\If the string is "del", say yes. \ this is iffy, here for reverse-possessives
 Say no.
 
 To decide if an term is empty:
@@ -3897,6 +4007,41 @@ An number called characteristics.
 
 An phrase is an string.
 
+\To decide if a string looks like English:
+\Load the lexicon.
+\If the lexicon is nil, show error "I can't find any lecksicon."; say no.
+\If the string is blank, say no.
+\Slap a substring on the string.
+\Put the substring's last into the substring's first.
+\Loop.
+\If the substring's first is the string's first, break.
+\If the substring's first's target is the space byte, add 1 to the substring's first; break.
+\Subtract 1 from the substring's first.
+\Repeat.
+\If the substring is in the lexicon's index, say yes.
+\Say no.
+
+To pluralize a string (spanish rules): \ nouns only
+Slap a rider on the string.
+Loop.
+Move the rider (spell checking rules).
+If the rider's token is blank, break.
+If a plural string is not blank, append " " to the plural string.
+Append the rider's token to the plural string.
+If the rider's token is "de", set a flag; repeat.
+If the flag is not set, pluralize the plural string (spanish rules - each word).
+Repeat.
+Put the plural string into the string.
+
+To pluralize a string (spanish rules - each word): \ nouns only
+If the string ends with "ión", remove the last two bytes from the string; append "ones" to the string; exit.
+\If the string ends with "ión", remove the last two bytes from the string; append "ons" to the string; exit.
+If the string ends with "z", remove the last byte from the string; append "ces" to the string; exit.
+If the string ends with any vowel, append "s" to the string; exit.
+If the string ends with any consonant, append "es" to the string; exit.
+Append "s" to the string. \ for words that end in special characters, both languages, like bucket#
+
+To pluralize a string (english rules);
 To pluralize an string: \ nouns only
 If the string is "alumnus", put "alumni" into the string; exit.
 If the string is "auto", put "autos" into the string; exit.
@@ -4040,6 +4185,7 @@ Put the other monikettes' first into an monikette.
 If the monikette is nil, exit.
 Remove the monikette from the other monikettes.
 If the monikette's string is "not", reverse the flag; destroy the monikette; repeat.
+If the monikette's string is "nada", reverse the flag; destroy the monikette; repeat.
 Append the monikette to the monikettes.
 If the monikette's string is "can't", reverse the flag; put "can" into the monikette's string; repeat.
 If the monikette's string is "cannot", reverse the flag; put "can" into the monikette's string; repeat.
@@ -4772,3 +4918,49 @@ An literal (reference) [globals only - constant with which to initalize the glob
 An hex string called data [literals only].
 
 The writing timer is an timer.
+To skip any trailing noise in a substring:
+If the substring is blank, exit.
+If the substring's last's target is not noise, exit.
+Subtract 1 from the substring's last.
+Repeat.
+
+\ dahn - reverse functions
+\ to put the xxx uv a/the yyy into zzz
+\ internally we turn this into "to put a/the yyy's xxx into zzz"
+To compile the header of a routine given a rider (reverse-possessive function):
+If the compiler's abort flag is set, exit.
+Set the routine's function flag.
+Add a monikette to the routine's monikettes given "put".
+Move the rider (compiler rules). \ skip "put" or "poner"
+Move the rider (compiler rules). \ skip "the" or Spanish definite article
+Scan a name given the rider. \ field name
+Move the rider (compiler rules). \ skip "uv" or "de"
+If the rider's token is any indefinite article, set a flag.
+If the flag is set, compile the routine's monikettes and the routine's parameters given the rider (indefinite article).
+If the flag is not set, compile the routine's monikettes and the routine's parameters given the rider (definite article).
+Add another monikette to the routine's monikettes given "'s " then the name.
+If the rider's token is not any reverse-possessive function into, abort with "Esperaba la palabra 'en', pero encontré '" then the rider's token then "'." and the rider; exit.
+Add a third monikette to the routine's monikettes given "into".
+Convert the routine's monikettes to a moniker.
+If the moniker is in the routine index, abort with "Ya sé cómo '" then the moniker then "'." and the routine's locus; exit.
+Index the routine given the routine's monikettes and the routine index.
+Move the rider (compiler rules).
+If the rider's token is not any indefinite article, abort with "Esperaba un artículo indefinido, pero encontré '" then the rider's token then "'." and the rider; exit.
+Compile the routine's monikettes and the routine's parameters given the rider (indefinite article).
+If the rider's token is not blank, abort with "Hay cosas demás en el final de esta función." and the rider; exit.
+Convert the routine's monikettes to the routine's moniker.
+Index the routine given the routine's monikettes and the routine index. \ for employs
+
+\ dahn - reverse functions
+\ to put the xxx uv a/the yyy into zzz
+To decide if a rider is the start of any reverse-possessive function:
+If the compiler's abort flag is set, say no.
+If the rider's token is not any put, say no.
+Privatize the rider.
+Move the rider (compiler rules).
+If the rider's token is not any definite article, say no.
+Move the rider (compiler rules).
+Scan a name given the rider.
+If the rider is not on any reverse-possessive, say no.
+Say yes.  
+
