@@ -265,7 +265,7 @@ If the string is "from", put "from/given/with/using" into the monikette's string
 If the string is "given", put "from/given/with/using" into the monikette's string; exit.
 If the string is "with", put "from/given/with/using" into the monikette's string; exit.
 If the string is "using", put "from/given/with/using" into the monikette's string; exit.
-
+\\PAL
 If the string is "usando", put "from/given/with/using" into the monikette's string; exit.
 If the string is "utilizando", put "from/given/with/using" into the monikette's string; exit.
 If the string is "dado", put "from/given/with/using" into the monikette's string; exit.
@@ -907,7 +907,7 @@ Set the routine's compiled flag.
 Slap an rider on the routine's routine body.
 Move the rider (compiler rules).
 If the rider's token is the semi-colon byte, compile the body of the routine given the rider (alternate wording); exit. \ *** alternate wording
-If the rider's token is "employ", compile the body of the routine given the rider (employ); exit.
+If the rider's token is any employ, compile the body of the routine given the rider (employ); exit.
 Put the current routine into an saved routine.
 Put the routine into the current routine.
 Create the routine's nickname index given 101.
@@ -1140,16 +1140,16 @@ Put the term into the expression.
 Loop.
 If the compiler's abort flag is set, exit.
 If the rider's token is not any operator, exit.
-If the rider's token is "divided", compile the expression given the rider (divided); repeat.
-If the rider's token is "minus", compile the expression given the rider (minus); repeat.
-If the rider's token is "plus", compile the expression given the rider (plus); repeat.
-If the rider's token is "then", compile the expression given the rider (then); repeat.
-If the rider's token is "times", compile the expression given the rider (times); repeat.
+If the rider's token is any divided, compile the expression given the rider (divided); repeat.
+If the rider's token is any minus, compile the expression given the rider (minus); repeat.
+If the rider's token is any plus, compile the expression given the rider (plus); repeat.
+If the rider's token is any then, compile the expression given the rider (then); repeat.
+If the rider's token is any times, compile the expression given the rider (times); repeat.
 
 To compile an expression given an rider (divided):
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
-If the rider's token is not "by", abort with "I really prefer the phrase 'divided BY'." and the rider; exit.
+If the rider's token is not any by, abort with "Você deve usar o termo 'divided BY'." and the rider; exit.
 If the expression's variable is nil, abort with "Invalid 'divided by', I don't understand the variable '" then the expression's phrase then "'." and the rider; exit.
 Move the rider (compiler rules).
 Compile an term given the rider.
@@ -1219,7 +1219,8 @@ If the routine is nil, exit.
 If the compiler's abort flag is set, exit.
 Slap an rider on the routine's routine header.
 Move the rider (compiler rules).
-If the rider's token is "decide", compile the header of the routine given the rider (decider); exit.
+If the rider's token is any decide, compile the header of the routine given the rider (decider); exit.
+\If the rider is the start of any reverse-possessive function, compile the header of the routine given the rider (reverse-possessive function); exit.
 If the rider is the start of any function, compile the header of the routine given the rider (function); exit.
 If the rider's token is "compatibly", compile the header of the routine given the rider (callback); exit.
 Compile the header of the routine given the rider (procedure).
@@ -1236,7 +1237,7 @@ Index the routine given the routine's monikettes and the routine index.
 To compile the header of an routine given an rider (decider):
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
-If the rider's token is not "if", abort with "It's 'Decide IF.' Sempre dizemos, 'Decide IF'. Certo?" and the rider; exit.
+If the rider's token is not any conditional, abort with "It's 'Decide IF.' Sempre dizemos, 'Decide IF'. Certo?" and the rider; exit.
 Move the rider (compiler rules).
 Set the routine's decider flag.
 Compile the routine's monikettes and the routine's parameters given the rider.
@@ -1253,19 +1254,19 @@ Move the rider (compiler rules).
 If the rider's token is any indefinite article, set an flag.
 If the flag is set, compile the routine's monikettes and the routine's parameters given the rider (indefinite article).
 If the flag is not set, compile the routine's monikettes and the routine's parameters given the rider (definite article).
-If the rider's token is not any possessive, abort with "Tá faltando um 's por aqui (ou está no lugar errado)." and the rider; exit.
+If the rider's token is not any possessive, abort with "Tá faltando um 's por aqui (ou está no lugar errado)." and the rider; exit. \ not translated - no possessives in Spanish
 Move the rider (compiler rules).
 Scan an name given the rider.
 Add another monikette to the routine's monikettes given "'s " then the name.
-If the rider's token is not "into", abort with "Eu estava esperando an palavra 'into', mas encontrei an palavra '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not "into", abort with "Eu estava esperando an palavra 'into', mas encontrei an palavra '" then the rider's token then "'." and the rider; exit. \ not translated - no possessives in Spanish
 Add an third monikette to the routine's monikettes given "into".
 Convert the routine's monikettes to an moniker.
-If the moniker is in the routine index, abort with "Eu sá sei como '" then the moniker then "'." and the routine's locus; exit.
+If the moniker is in the routine index, abort with "Eu já sei como '" then the moniker then "'." and the routine's locus; exit. \ not translated - no possessives in Spanish
 Index the routine given the routine's monikettes and the routine index.
 Move the rider (compiler rules).
-If the rider's token is not any indefinite article, abort with "Estava esperando um artigo indefinido, mas achei isso aqui: '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not any indefinite article, abort with "Estava esperando um artigo indefinido, mas achei isso aqui: '" then the rider's token then "'." and the rider; exit. \ not translated - no possessives in Spanish
 Compile the routine's monikettes and the routine's parameters given the rider (indefinite article).
-If the rider's token is not blank, abort with "Tem comandos extras no fim dessa função." and the rider; exit.
+If the rider's token is not blank, abort with "Tem comandos extras no fim dessa função." and the rider; exit. \ not translated - no possessives in Spanish
 Convert the routine's monikettes to the routine's moniker.
 Index the routine given the routine's monikettes and the routine index. \ for employs
 
@@ -1369,8 +1370,8 @@ Resolve the literal.
 To compile some monikettes and some parameters given an rider:
 If the compiler's abort flag is set, exit.
 If the rider's token is blank, exit.
-If the rider's token is "the", compile the monikettes and the parameters given the rider (definite article); repeat.
-If the rider's token is any indefinite article, compile the monikettes and the parameters given the rider (indefinite article); repeat.
+If the rider's token is any definite article, compile the monikettes and the parameters given the rider (definite article); repeat.
+If the rider is on any indefinite article, compile the monikettes and the parameters given the rider (indefinite article); repeat.
 If the rider's token is any monikette string, compile the monikettes and the parameters given the rider (monikette string); repeat.
 Abort with "'" then the rider's token then "' não é um nome de função que eu conheça." and the rider.
 
@@ -1386,10 +1387,12 @@ To compile some monikettes and some parameters given an rider (indefinite articl
 If the compiler's abort flag is set, exit.
 Add an parameter to the parameters given "parameter" and the rider's token's first.
 If the rider's token is "another", put "other" into the parameter's name.
+If the rider's token is "outra", put "segunda" into the parameter's name.
+If the rider's token is "outro", put "segundo" into the parameter's name.
 Move the rider (compiler rules).
 Scan an name given the rider.
 Extend the parameter's name with the name.
-If the rider's token is "called", compile the call'd part given the rider and the parameter.
+If the rider's token is any called, compile the call'd part given the rider and the parameter.
 Resolve the parameter.
 If the parameter is duplicated in the parameters, abort with "Cara, você repetiou o parâmetro '" then the parameter's name then "'." and the parameter's locus; exit.
 Add an monikette to the monikettes given the parameter's type.
@@ -1523,10 +1526,10 @@ Move the rider (compiler rules).
 To compile the next statement given an rider (other):
 If the compiler's abort flag is set, exit.
 If the rider's token is blank, exit.
-If the rider's token is "exit", compile the next statement given the rider (exit); exit.
-If the rider's token is "repeat", compile the next statement given the rider (repeat); exit.
-If the rider's token is "break", compile the next statement given the rider (break); exit.
-If the rider's token is "say", compile the next statement given the rider (say); exit.
+If the rider's token is any exit, compile the next statement given the rider (exit); exit.
+If the rider's token is any repeat, compile the next statement given the rider (repeat); exit.
+If the rider's token is any break, compile the next statement given the rider (break); exit.
+If the rider's token is any say, compile the next statement given the rider (say); exit.
 If the rider's token is "intel", compile the next statement given the rider (intel); exit.
 If the rider's token is "push", compile the next statement given the rider (push); exit.
 If the rider's token is "call", compile the next statement given the rider (call); exit.
@@ -1587,6 +1590,15 @@ To compile the next statement given an rider (repeat):
 Add an fragment given the repeat tag.
 Move the rider (compiler rules).
 
+\To compile the next statement given a rider (say):
+\If the current routine's decider flag is not set, compile the next statement given the rider (call - internal); exit.
+\Move the rider (compiler rules).
+\Compile an expression given the rider.
+\If the compiler's abort flag is set, exit.
+\If the expression's variable is nil, abort with "No es válido este 'diga', no entiendo la variable '" then the expression's phrase then "'." and the rider; exit.
+\If the expression's type cannot be reduced to "flag", abort with "Necesito un rotundo 'si' o 'no' aquí." and the rider; exit.
+\Add a fragment given the load eax tag and the expression's variable.
+\Add another fragment given the exit tag.
 To compile the next statement given an rider (say):
 If the current routine's decider flag is not set, compile the next statement given the rider (call - internal); exit.
 Move the rider (compiler rules).
@@ -1732,10 +1744,12 @@ If the compiler's abort flag is set, exit.
 If the current routine is nil, abort with "Parece que essa tarefa não existe. Não achei nada pra pull por aqui." and the rider; exit.
 Add an local to the current routine's locals given "local" and the rider's token's first.
 If the rider's token is "another", put "other" into the local's name.
+If the rider's token is "outra", put "segunda" into the local's name.
+If the rider's token is "outro", put "segundo" into the local's name.
 Move the rider (compiler rules).
 Scan an name given the rider.
 Extend the local's name with the name.
-If the rider's token is "called", compile the call'd part given the rider and the local.
+If the rider's token is any called, compile the call'd part given the rider and the local.
 Resolve the local.
 If the local is duplicated in the current routine's parameters, abort with "o parâmetro '" then the local's name then "' já está sendo usado como parâmetro." and the local's locus; exit.
 If the local is duplicated in the current routine's locals,abort with "Já existe uma variável local chamada'" then the local's name then "'. Você tem que dar um nome diferente." and the local's locus; exit.
@@ -1775,7 +1789,7 @@ Add an fragment given the load address tag and the term's variable and the inter
 Put the intermediate into the term's variable.
 Clear the term's phrase.
 
-To compile an term given an rider (possessive):
+To compile an term given an rider (possessive): \ similar to "compile a term given a rider (reverse-possessive)
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
 Scan an name given the rider.
@@ -1924,9 +1938,17 @@ Append the other field to the other fields.
 Repeat.
 
 To copy some fields into some other fields (data fields only):
+\If the fields' count is less than 4, exit. \ for english next and prev and spanish next and prev redefinitions
 If the fields' first is nil, exit.
 If the fields' first's next is nil, exit.
 Put the fields' first's next's next into an field.
+\If the fields' first's next is nil, exit.
+\If the fields' first's next's next is nil, exit.
+\\Put the fields' first's next's next into a field. \ skip next and prev
+\If the fields' first's next's next's next is nil, exit.
+\If the fields' first's next's next's next's next is nil, exit.
+\If the fields' first's next's next's next's next's next is nil, exit.
+\Put the fields' first's next's next's next's next into a field. \ english next and prev and spanish next and prev redefinitions
 Loop.
 If the field is nil, exit.
 Copy the field into another field.
@@ -2077,6 +2099,20 @@ If the monikette's current type is not nil, say no.
 If the monikette's current substring is not blank, say no.
 Say yes.
 
+To decide if a name is any magnitude:
+If the name is "magnitude", say yes.
+If the name is "magnitud", say yes.
+Say no.
+
+To decide if a name is any target:
+If the name is "target", say yes.
+If the name is "objetivo", say yes.
+Say no.
+
+To decide if a name is any whereabouts:
+If the name is "whereabouts", say yes.
+If the name is "paradero", say yes.
+Say no.
 To decide if an name is any valid field name:
 If the name is "magnitude", say no.
 If the name is "target", say no.
@@ -2157,6 +2193,77 @@ If the substring is blank, say no.
 If the substring's last's target is not any vowel, say no.
 If the string does not end with the other string, say no.
 Say yes.
+To decide if a string ends with any consonant:
+If the string is blank, say no.
+If the string's last's target is not any consonant, say no.
+Say yes.
+
+To decide if a string ends with any vowel:
+If the string is blank, say no.
+If the string's last's target is not any vowel, say no.
+Say yes.
+
+To decide if a string is any plus:
+If the string is "más", say yes.
+If the string is "plus", say yes.
+Say no.
+
+
+To decide if a string is any put:
+If the string is "put", say yes.
+If the string is "poner", say yes.
+Say no.
+
+To decide if a string is any minus:
+If the string is "menos", say yes.
+If the string is "minus", say yes.
+Say no.
+
+To decide if a string is any times:
+If the string is "veces", say yes.
+If the string is "times", say yes.
+Say no.
+
+To decide if a string is any divided:
+If the string is "dividido", say yes.
+If the string is "divided", say yes.
+Say no.
+
+To decide if a string is any by:
+If the string is "por", say yes.
+If the string is "by", say yes.
+Say no.
+
+To decide if a string is any then:
+If the string is "luego", say yes.
+If the string is "then", say yes.
+Say no.
+
+To decide if a string is any has:
+If the string is "tiene", say yes.
+If the string is "tener", say yes.
+If the string is "has", say yes.
+If the string is "have", say yes.
+Say no.
+
+To decide if a string is any is:
+If the string is "es", say yes.
+If the string is "está", say yes.
+If the string is "se", say yes.
+If the string is "son", say yes.
+If the string is "is", say yes.
+If the string is "are", say yes.
+Say no.
+
+To decide if a string is any equal:
+If the string is "igual", say yes.
+If the string is "equal", say yes.
+Say no.
+
+To decide if a string is any with:
+If the string is "con", say yes.
+If the string is "with", say yes.
+Say no.
 
 To decide if an string is any article:
 If the string is any indefinite article, say yes.
@@ -2178,9 +2285,75 @@ If the string is "yes", say yes.
 If the string is "no", say yes.
 Say no.
 
+To decide if a string is any to:
+\If the string is "a", say yes. \ this is questionable
+If the string is "to", say yes.
+
 To decide if an string is any hex literal:
 If the string is blank, say no.
 If the string's first's target is the dollar-sign byte, say yes.
+Say no.
+To decide if a string is any and:
+\If the string is "y", say yes.
+If the string is "and", say yes.
+Say no. \repetido?
+
+To decide if a string is any reverse-possessive function into:
+If the string is "into", say yes.
+\If the string is "en", say yes.
+Say no.
+
+\To decide if a string is any flag literal:
+\If the string is "si", say yes.
+\If the string is "yes", say yes.
+\If the string is "no", say yes.
+\Say no.
+
+To decide if a string is any decider literal:
+If the string is "sí", say yes.
+If the string is "yes", say yes.
+If the string is "yep", say yes.
+If the string is "yea", say yes.
+If the string is "no", say yes.
+If the string is "nay", say yes.
+If the string is "nope", say yes.
+Say no.
+
+To decide if a string is any positive decider literal:
+If the string is "sí", say yes.
+If the string is "yes", say yes.
+If the string is "yep", say yes.
+If the string is "yea", say yes.
+Say no.
+
+To decide if a string is any negative decider literal:
+If the string is "no", say yes.
+If the string is "nay", say yes.
+If the string is "nope", say yes.
+Say no.
+
+\To decide if a string is any hex literal:
+\If the string is blank, say no.
+\If the string's first's target is the dollar-sign byte, say yes.
+\Say no.
+To decide if a string is any definite article:
+If the string is "l", say yes. \ all that is left of "el" in contractions "del" and "al" - see "move a rider (compiler rules)"
+\If the string is "el", say yes.
+\If the string is "los", say yes.
+\If the string is "la", say yes.
+\If the string is "las", say yes.
+\If the string is "lo", say yes.
+If the string is "the", say yes.
+Say no.
+To decide if a rider is on any indefinite article:
+If the rider is on any Spanish to, say no.
+If the rider's token is not any indefinite article, say no.
+Say yes.
+
+To decide if a rider is on any Spanish to:
+If the rider's token is not "a", say no.
+Privatize the rider. Move the rider (compiler rules).
+If the rider's token is any article, say yes.
 Say no.
 
 To decide if an string is any indefinite article:
@@ -2189,6 +2362,11 @@ If the string is "an", say yes.
 If the string is "another", say yes.
 If the string is "some", say yes.
 Say no.
+
+\To decide if a string is any reverse-possessive function into: \repetido
+\If the string is "into", say yes.
+\If the string is "en", say yes.
+\Say no.
 
 To decide if an string is any literal:
 If the string is any pointer literal, say yes.
@@ -2212,6 +2390,10 @@ If the string is any literal, say no.
 If the string is any mark, say no.
 If the string is any symbol, say no.
 Say yes.
+To decide if a string is any called:
+If the string is "called", say yes.
+\If the string is "llamado", say yes.
+Say no.
 
 To decide if an string is any name ender: \ compare with name starter
 If the string is any mark, say yes.
@@ -2228,6 +2410,7 @@ If the string is "called", say yes.
 If the string is "equal", say yes.
 If the string is blank, say yes.
 Say no.
+
 
 To decide if an string is any name starter: \ compare with name ender
 If the string is any mark, say no.
@@ -2258,6 +2441,12 @@ If the string is "minus", say yes.
 If the string is "times", say yes.
 If the string is "divided", say yes.
 If the string is "then", say yes.
+Say no.
+To decide if a string is any english indefinite article:
+If the string is "a", say yes.
+If the string is "an", say yes.
+If the string is "another", say yes.
+If the string is "some", say yes.
 Say no.
 
 To decide if an string is any pause:
@@ -2386,6 +2575,20 @@ If the string is blank, say no.
 If the string's first's target is the left-paren byte, say yes.
 Say no.
 
+To decide if a string is any reverse-possessive:
+\If the string is "uv", say yes.
+If the string is "de", say yes.
+\If the string is "del", say yes. \ short for "de el", expanded in "compile a term given a rider and a field name (reverse-possessive)"
+Say no.
+
+To decide if a rider is on any reverse-possessive:
+Privatize the rider.
+If the rider's token is "de", say yes.
+\If the rider's token is "del", say yes. \ short for "de el", expanded in "compile a term given a rider and a field name (reverse-possessive)"
+If the rider's token is not "de", say no.
+Move the rider (compiler rules).
+If the rider's token is any article, say yes.
+Say no.
 To decide if an string is any string literal:
 If the string is blank, say no.
 If the string's first's target is the double-quote byte, say yes.
@@ -2427,6 +2630,60 @@ If the string is "a", say yes.
 If the string is "an", say yes.
 If the string is "the", say yes.
 If the string is "some", say yes.
+Say no.
+To decide if a string is any conditional:
+\If the string is "si", say yes.
+If the string is "cuando", say yes.
+If the string is "if", say yes.
+Say no.
+To decide if a string is any privatize:
+If the string is "privatizar", say yes.
+If the string is "privatize", say yes.
+Say no.
+
+To decide if a string is any loop:
+If the string is "lazo", say yes.
+If the string is "loop", say yes.
+Say no.
+
+To decide if a string is any break:
+If the string is "interrumpir", say yes.
+If the string is "break", say yes.
+Say no.
+
+To decide if a string is any exit:
+If the string is "salir", say yes.
+If the string is "exit", say yes.
+Say no.
+
+To decide if a string is any repeat:
+If the string is "repetir", say yes.
+If the string is "repeat", say yes.
+Say no.
+
+To decide if a string is any say:
+If the string is "diga", say yes.
+If the string is "di", say yes.
+If the string is "say", say yes.
+Say no.
+
+To decide if a string is any decide:
+If the string is "decidir", say yes.
+If the string is "decide", say yes.
+Say no.
+
+To decide if a string is any call:
+If the string is "llamada", say yes.
+If the string is "call", say yes.
+Say no.
+
+To decide if a string is any point:
+If the string is "apuntar", say yes.
+If the string is "point", say yes.
+Say no.
+To decide if a string is any employ:
+If the string is "emplear", say yes.
+If the string is "employ", say yes.
 Say no.
 
 To decide if an string is the start of any expression:
@@ -2803,7 +3060,7 @@ Another variable (reference) [load address],
 An routine (reference) [call internal, routine address],
 An entry (reference) [call external],
 An number [increment],
-\\an flag [load eax], \SAL
+An flag [load eax], \SAL
 An address,
 An hex string called code.
 
@@ -2818,7 +3075,7 @@ If the routine's address is not 0, put the routine's address into the address; e
 Put -1 into the routine's address.
 Find another routine given the routine's employs moniker and the routine index.
 If the other routine is nil, abort with "Eu não consegui encontrar an tarefa '" then the routine's employs moniker then "' que você está tentando employ." and the routine's locus; exit.
-If the other routine's address is -1, abort with "Recursive reference in employ clause." and the routine's locus; exit. \Bora traduzir
+If the other routine's address is -1, abort with "Referência recursiva na cláusula employ." and the routine's locus; exit. \Bora traduzir
 Get the address given the other routine.
 Put the address into the routine's address.
 
@@ -2942,11 +3199,11 @@ Clear the compiler's abort message.
 Clear the compiler's abort path.
 Put 0 into the compiler's abort row#.
 Void the current routine.
-Create the type index with 4027 [buckets].
-Create the global index with 4027 [buckets].
-Create the literal index with 4027 [buckets].
-Create the routine index with 7919 [buckets].
-Create the utility index with 4027 [buckets].
+Create the type index with 13001 [buckets]. \ was 4027
+Create the global index with 13001 [buckets]. \ was 4027
+Create the literal index with 13001 [buckets]. \ was 4027
+Create the routine index with 13001 [buckets]. \ was 7919
+Create the utility index with 13001 [buckets]. \ was 4027
 
 To initialize an dos header:
 Put 23117 [$5A4D] into the dos header's signature.
@@ -3399,6 +3656,8 @@ To move an rider (compiler rules):
 If the compiler's abort flag is set, clear the rider's token; exit.
 Move the rider returning an error string (code rules).
 If the error string is not blank, abort with the error string and the rider's token's first; exit.
+\If the rider's token is "del", unbump the rider; exit. \ Spanish contraction "del"; fudged to "de l", short for "de el"
+\If the rider's token is "al", unbump the rider; exit. \ Spanish contraction "al"; fudged to "a l", short for "a el"
 If the rider's token is blank, exit.
 If the rider's token's first's target is noise, repeat.
 If the rider's token's first's target is the backslash byte, repeat.
@@ -3793,7 +4052,7 @@ If the field's type cannot be reduced to "pointer", abort with "Não entendi o pa
 Repeat.
 Eliminate duplicate nicknames from the type's fields.
 If the type cannot be reduced to "thing record", exit.
-If the type's fields' count is greater than 2, exit.
+If the type's fields' count is greater than 4, exit. \ already copied? was 2 for next and prev, now 6 to included Spanish redefiniions
 Copy the type's base type's fields into the type's fields (data fields only).
 
 To resolve an type (optional info - scale):
@@ -3926,7 +4185,7 @@ If the compiler's abort flag is set, exit.
 Scan the field given the rider (type part).
 Loop.
 If the compiler's abort flag is set, exit.
-If the rider's token is "called", scan the field given the rider (called part); repeat.
+If the rider's token is any called, scan the field given the rider (called part); repeat.
 If the rider's token is "at", scan the field given the rider (redefine part); repeat.
 If the rider's token is "(reference)", scan the field given the rider (reference part); repeat.
 
