@@ -4,7 +4,7 @@
 
 |Origem|Tradução 1|Tradução 2|Tradução 3|Tradução 4|Tradução 5|
 |------|----------|----------|----------|----------|----------|
-|angle|ãngulo|||||
+|angle|ângulo|||||
 |bit|bit|||||
 |box|caixa|||||
 |buffer|depósito|||||
@@ -17,15 +17,25 @@
 |cursor|cursor|||||
 |date/time|data/hora|||||
 |degree|grau|||||
+|description|descrição|||||
+|directory|pasta|||||
+|directory name|nome de pasta|||||
 |dot|ponto|||||
+|drive|unidade|||||
+|drive kind|tipo de unidade|||||
+|drive name|nome de unidade|||||
 |event|evento|||||
 |ellipse|elipse|||||
+|file|arquivo|||||
+|file name|nome de arquivo|||||
 |flag|sinal|||||
 |figure|figura|||||
 |fraction|fração|||||
 |grid|grade|||||
 |height|altura|||||
+|horizontal line|reta horizontal|||||
 |hue|matiz|||||
+|inch|polegada|||||
 |index|índice|||||
 |ip address|endereço ip|||||
 |item|recurso|||||
@@ -37,14 +47,16 @@
 |name|nome|||||
 |number|número|||||
 |pair|par|||||
-|path|rota|||||
+|path|rota|caminho||||
 |pen|pincel|||||
+|percent|porcentagem|porcento||||
 |picture|imagem|||||
-|point|foco|gradação||||
+|point|degrau|graduação|gradação|||
 |pointer|ponteiro|||||
 |position|posição|||||
 |polygon|polígono|||||
 |portrait sheet|folha vertical|||||
+|precise degree|grau preciso|||||
 |quotient|quociente|||||
 |radious|raio|||||
 |refer|referência|||||
@@ -53,6 +65,7 @@
 |row|linha|||||
 |roundy box|caixa arredondada|||||
 |saturation|saturação|||||
+|second|segundo|||||
 |selection|seleção|||||
 |sheet|folha|||||
 |spot|loco|||||
