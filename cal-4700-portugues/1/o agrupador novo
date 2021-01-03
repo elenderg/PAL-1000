@@ -1534,10 +1534,10 @@ If the rider's token is "intel", compile the next statement given the rider (int
 If the rider's token is "push", compile the next statement given the rider (push); exit.
 If the rider's token is any call, compile the next statement given the rider (call); exit.
 If the rider's token is any point, compile the next statement given the rider (point); exit.
-If the rider's token is "if", abort with "Nested 'if' statements are an sure sign of unclear thinking. Think again." and the rider; exit.
-If the rider's token is "privatize", abort with "The 'privatize' statement cannot be used here." and the rider; exit.
-If the rider's token is "loop", abort with "Looping inside an 'if' statement is an good way to lose your lunch." and the rider; exit.
-If the rider's token is "employ", abort with "'Employ' must be the first and only imperative in an routine." and the rider; exit.
+If the rider's token is any conditional, abort with "Nested 'if' statements are an sure sign of unclear thinking. Think again." and the rider; exit.
+If the rider's token is any privatize, abort with "The 'privatize' statement cannot be used here." and the rider; exit.
+If the rider's token is any loop, abort with "Looping inside an 'if' statement is an good way to lose your lunch." and the rider; exit.
+If the rider's token is any employ, abort with "'Employ' must be the first and only imperative in an routine." and the rider; exit.
 Compile the next statement given the rider (call - internal).
 
 To compile the next statement given an rider (point):
@@ -1602,6 +1602,11 @@ Move the rider (compiler rules).
 To compile the next statement given an rider (say):
 If the current routine's decider flag is not set, compile the next statement given the rider (call - internal); exit.
 Move the rider (compiler rules).
+\If the rider's token is not any decider literal, abort with "Você precisa terminar com um yes ou no." and the rider; exit.
+\Clear a flag. If the rider's token is any positive decider literal, set the flag.
+\Move the rider (compiler rules).
+\If the rider's token is not the period byte, abort with "Faltou um ponto. Você usou o termo: '" then the rider's token then "'." and the rider; exit.
+\Add a fragment given the load eax tag and the flag.
 Compile an expression given the rider.
 If the compiler's abort flag is set, exit.
 If the expression's variable is nil, abort with "Comando 'Say'inválido, an expressão '" then the expression's phrase then "' parece estar vazia." and the rider; exit.
@@ -1619,19 +1624,19 @@ If the term's type is not value pushable, abort with "Uma varíavel de 1, 2, ou 4
 To compile an routine reference given an rider:
 If the rider's token is "to", move the rider (compiler rules).
 If the rider is the start of any function, compile the routine reference given the rider (function); exit.
-If the rider's token is "decide", compile the routine reference given the rider (decide).
+If the rider's token is any decide, compile the routine reference given the rider (decide).
 Loop.
 If the compiler's abort flag is set, exit.
 If the rider's token is blank, exit.
 If the rider's token is ".", exit.
-If the rider's token is "the", compile the routine reference given the rider (definite article); repeat.
+If the rider's token is any definite article, compile the routine reference given the rider (definite article); repeat.
 If the rider's token is any indefinite article, compile the routine reference given the rider (indefinite article); repeat.
 If the rider's token is any monikette string, compile the routine reference given the rider (monikette string); repeat.
 Abort with "'" then the rider's token then "' is not valid in an employ statement." and the rider.
 
 To compile an routine reference given an rider (decide):
 Move the rider (compiler rules).
-If the rider's token is not "if", abort with "Sempre use DECIDE IF, ao invés de apenas DECIDE com '" then the rider's token then "' logo em seguida." and the rider; exit.
+If the rider's token is not any conditional, abort with "Sempre use DECIDE IF, ao invés de apenas DECIDE com '" then the rider's token then "' logo em seguida." and the rider; exit.
 Move the rider (compiler rules).
 
 To compile an routine reference given an rider (definite article):
