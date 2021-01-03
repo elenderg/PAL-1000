@@ -1411,12 +1411,20 @@ If the compiler's abort flag is set, exit.
 Add another monikette to the monikettes given the expression.
 Repeat.
 
+\To compile some monikettes given a rider:
+\If the compiler's abort flag is set, exit.
+\If the rider's token is any monikette string, add a monikette to the monikettes given the rider's token; move the rider (compiler rules); repeat.
+\If the rider's token is not the start of any expression, exit.
+\Compile an expression given the rider.
+\If the compiler's abort flag is set, exit.
+\Add another monikette to the monikettes given the expression.
+\Repeat.
 To compile the next statement given an rider:
 If the compiler's abort flag is set, exit.
-If the rider's token is "if", compile the next statement given the rider (if); exit.
-If the rider's token is "loop", compile the next statement given the rider (loop); exit.
-If the rider's token is "privatize", compile the next statement given the rider (privatize); exit.
-If the rider's token is not the start of any statement, abort with "I was expecting an statement here, but I found '" then the rider's token then "'." and the rider; exit.
+If the rider's token is any conditional, compile the next statement given the rider (if); exit.
+If the rider's token is any loop, compile the next statement given the rider (loop); exit.
+If the rider's token is any privatize, compile the next statement given the rider (privatize); exit.
+If the rider's token is not the start of any statement, abort with "Eu esperava uma declaração aqui, mas encontrei: '" then the rider's token then "'." and the rider; exit.
 Compile the next statement given the rider (other).
 If the rider's token is not the period byte, abort with "Acho que tá faltando um pontinho por aqui." and the rider; exit.
 Move the rider (compiler rules).
@@ -1469,7 +1477,7 @@ Compile an expression given the rider.
 If the compiler's abort flag is set, exit.
 If the expression's variable is nil, abort with "Eu não entendo an variável: '" then the expression's phrase then "'." and the rider; exit.
 If the expression's type is not value pushable, abort with "'" then the expression's type's name then "' não pode ser processado corretamente." and the rider; exit.
-If the rider's token is "and", compile the next statement given the rider (call - with clause).
+If the rider's token is any and, compile the next statement given the rider (call - with clause).
 Add an fragment given the push value tag and the expression's variable.
 
 To compile the next statement given an rider (call):
@@ -2781,7 +2789,7 @@ If the string is blank, say no.
 If the string's first's target is the left-paren byte, say yes.
 Say no.
 
-To decide if a string is any reverse-possessive:
+To decide if an string is any reverse-possessive:
 \If the string is "uv", say yes.
 If the string is "de", say yes.
 \If the string is "del", say yes. \ short for "de el", expanded in "compile a term given a rider and a field name (reverse-possessive)"
@@ -2833,9 +2841,13 @@ Say no.
 To decide if an string is the start of any definition:
 If the string is "to", say yes.
 If the string is "a", say yes.
-If the string is "an", say yes.
-If the string is "the", say yes.
-If the string is "some", say yes.
+If the string is any indefinite article, say yes.
+If the string is any definite article, say yes.
+If the string is "to", say yes.
+\If the string is "a", say yes.
+\If the string is "an", say yes.
+\If the string is "the", say yes.
+\If the string is "some", say yes.
 Say no.
 To decide if a string is any conditional:
 \If the string is "si", say yes.
@@ -2895,12 +2907,12 @@ Say no.
 To decide if an string is the start of any expression:
 If the string is any sign, say yes.
 If the string is any indefinite article, say yes.
-If the string is "the", say yes.
+If the string is any definite article, say yes.
 If the string is any literal, say yes.
 Say no.
 
 To decide if an string is the start of any global:
-If the string is "the", say yes.
+If the string is any definite article, say yes.
 Say no.
 
 To decide if an string is the start of any new local:
@@ -4237,7 +4249,7 @@ If the type's base type is not nil, exit.
 Find the type's base type given the type's base name and the type index.
 If the type's base type is nil, abort with "Base type inválido:'" then the type's base name then "'." and the type's locus; exit.
 Set the type's cooking flag.
-If the type's base type's cooking flag is set, abort with "Recursive definition with '" then the type's base name then "'." and the type's locus; exit. \parece repetido. DRY!
+If the type's base type's cooking flag is set, abort with "Definição recursiva com '" then the type's base name then "'." and the type's locus; exit.
 Resolve the type's base type (base type).
 Clear the type's cooking flag.
 
@@ -4406,7 +4418,7 @@ The save eax tag is an tag equal to 20.
 To scan any optional info for an type given an rider:
 If the compiler's abort flag is set, exit.
 If the rider's token is "to", scan any optional info for the type given the rider (pointer); exit.
-If the rider's token is "with", scan any optional info for the type given the rider (record); exit.
+If the rider's token is any with, scan any optional info for the type given the rider (record); exit.
 
 To scan any optional info for an type given an rider (pointer):
 Move the rider (compiler rules).
@@ -4431,7 +4443,7 @@ Loop.
 If the compiler's abort flag is set, exit.
 If the rider's token is any called, scan the field given the rider (called part); repeat.
 If the rider's token is "at", scan the field given the rider (redefine part); repeat.
-If the rider's token is "(reference)", scan the field given the rider (reference part); repeat.
+If the rider's token is any reference, scan the field given the rider (reference part); repeat.
 
 To scan an field given an rider (called part):
 If the compiler's abort flag is set, exit.
@@ -4442,7 +4454,7 @@ Scan the field's name given the rider.
 To scan an field given an rider (redefine part):
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
-If the rider's token is not "the", abort with "Eu estava esperando o artigo 'the', mas o que encontrei foi '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not any definite article, abort with "Eu estava esperando o artigo 'the', mas o que encontrei foi '" then the rider's token then "'." and the rider; exit.
 Move the rider (compiler rules).
 Scan the field's redefinition target name given the rider.
 
@@ -4466,6 +4478,8 @@ To scan an field given an rider (type part - normal):
 If the compiler's abort flag is set, exit.
 If the rider's token is not any indefinite article, abort with "Falta por um artigo idefinifo aqui, mas você colocou isso: '" then the rider's token then "'." and the rider; exit.
 If the rider's token is "another", put "other" into the field's name.
+If the rider's token is "outra", put "segunda" into the field's name.
+If the rider's token is "outro", put "segundo" into the field's name.
 Move the rider (compiler rules).
 Scan an name given the rider.
 Extend the field's name with the name.
@@ -4502,14 +4516,14 @@ If the compiler's abort flag is set, exit.
 Add the global to the globals given "global" and the rider's token's first.
 Move the rider (compiler rules).
 Scan the global's name given the rider.
-If the rider's token is "has" or "have", scan the global given the rider (has or have); exit.
-If the rider's token is not "is" or "are", abort with "Eu preciso de um 'is' ou de um 'are' mas só pude achar o termo '" then the rider's token then "'." and the rider; exit.
+If the rider's token is any has, scan the global given the rider (has or have); exit.
+If the rider's token is not any is, abort with "Eu preciso de um 'is' ou de um 'are' mas só pude achar o termo: '" then the rider's token then "'." and the rider; exit.
 Move the rider (compiler rules).
 If the rider's token is not any indefinite article, scan the global given the rider (literal term); exit.
 Move the rider (compiler rules).
 Scan the global's type name given the rider.  
 If the rider's token is the start of any optional info, scan the global given the rider (optional info); exit.
-If the rider's token is "equal", scan the global given the rider (data part); exit.
+If the rider's token is any equal, scan the global given the rider (data part); exit.
 If the rider's token is not the period byte, abort with "Toda definição precisa terminar com um ponto. Inclusive essa." and the rider; exit. 
 Move the rider (compiler rules).
 Index the global.
@@ -4517,7 +4531,7 @@ Index the global.
 To scan an global given an rider (data part):
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
-If the rider's token is not "to", abort with "Depois da palavra 'equal' você precisa por an palavra  'to'. Você colocou ; '" then the rider's token then "'." and the rider; exit. 
+If the rider's token is not any to, abort with "Depois da palavra 'equal' você precisa por an palavra  'to'. Você colocou ; '" then the rider's token then "'." and the rider; exit. 
 Move the rider (compiler rules).
 Scan the global's global body given the rider.
 If the rider's token is not the period byte, abort with "Falta terminar an frase com um ponto." and the rider; exit. 
@@ -4639,13 +4653,19 @@ Repeat.
 
 To scan an type given an rider:
 If the compiler's abort flag is set, exit.
+If the rider's token is any english indefinite article, set an english flag.
 Add the type to the types given the rider's token's first.
 Move the rider (compiler rules).
 Scan the type's name given the rider.
 Put the type's name into the type's plural name.
-Pluralize the type's plural name.
-If the rider's token is "has" or "have", scan the type given the rider (has or have); exit.
-If the rider's token is not "is" or "are", abort with "I was expecting an 'is' or 'are', but I found '" then the rider's token then "'." and the rider; exit.
+If the english flag is set, pluralize the type's plural name (english rules).
+If the english flag is not set, pluralize the type's plural name (spanish rules).
+If the rider's token is any has, scan the type given the rider (has or have); exit.
+If the rider's token is not any is, abort with "Eu esperava um 'is' ou um 'are', mas só achei um : '" then the rider's token then "'." and the rider; exit.
+\Pluralize the type's plural name.
+\If the rider's token is "has" or "have", scan the type given the rider (has or have); exit.
+\If the rider's token is not "is" or "are", abort with "I was expecting an 'is' or 'are', but I found '" then the rider's token then "'." and the rider; exit.
+
 Move the rider (compiler rules).
 If the rider's token is any numeric literal, scan the type given the rider (unit of measure); exit.
 If the rider's token is not any indefinite article, abort with "Faltou um artigo indefinido, lembra? '" then the rider's token then "'." and the rider; exit. 
@@ -4804,6 +4824,12 @@ To transmogrify an fragment (load address):
 Attach address loading code to the fragment's code given the fragment's variable. \ put address into edx
 Attach $8995 and the fragment's other variable's offset to the fragment's code. \ mov [ebp+the fragment's variable's offset],edx
 
+\To transmogrify a fragment (load eax):
+\Attach address loading code to the fragment's code given the fragment's variable. \ put address into edx
+\If the fragment's variable is nil, abort with "Internal error - transmogrify a fragment (load eax)"; exit.
+\If the fragment's variable's type is nil, abort with "Internal error 2 - transmogrify a fragment (load eax)"; exit.
+\If the fragment's variable's type's length is not 4, abort with "Internal error 3 - transmogrify a fragment (load eax)"; exit.
+\Attach $8B02 to the fragment's code. \ mov eax,[edx]
 To transmogrify an fragment (load eax):
 Attach address loading code to the fragment's code given the fragment's variable. \ put address into edx
 If the fragment's variable is nil, abort with "Internal error - transmogrify an fragment (load eax)"; exit.
