@@ -9,19 +9,19 @@ Lista de Termos em Ordem Alfabética
 |abca|–|–|–|–|–|
 |abcc|–|–|–|–|–|
 |abort|-|-|-|-|-|
-|absolute position|–|–|–|–|posição absoluta|
+|absolute position|–|–|–|abside|posição absoluta|
 |accent byte|–|–|–|–|byte-\`|
 |accent key|–|–|–|–|tecla-\`|
 |acknowledge byte|–|–|–|–|byte-ack|
 |acute-accent byte|–|–|–|–|byte-´|
-|adjust|-|-|-|-|-|
+|adjust|-|-|-|-|ajustar|
 |add <sup>[D]</sup>|unir|somar|juntar|adicionar|–|
 |add <sup>[E]</sup>|adicionar|–|–|–|–|
 |adress (substantivo)|número do endereço|–|–|–|endereço|
-|address(verbo)|-|-|-|-|-|
-|advance(verbo)|-|-|-|-|-|
+|address(verbo)|-|-|-|-|endereçar|
+|advance(verbo)|-|-|-|-|adiantar|
 |a-key|–|–|–|–|tecla-a|
-|align|alinhar|-|-|-|-|
+|align|alinhar|-|-|-|nivelar|
 |alt key|–|–|–|–|tecla-alt|
 |amount|quantia|quantidade|–|–|–|
 |ampersand byte|–|–|–|–|tecla-&|
@@ -55,9 +55,9 @@ Lista de Termos em Ordem Alfabética
 |ai_sockettype|-|-|-|-|-|
 |append <sup>[D]</sup>|pospor|atar|apor|ligar|–|
 |append <sup>[E]</sup>|pospor|–|–|–|–|
-|ask|-|-|-|-|-|
-|assign|-|-|-|-|-|
-|attach|-|-|-|-|-|
+|ask|-|-|-|-|perguntar|
+|assign|-|-|-|-|designar|
+|attach|-|-|-|-|anexar|
 ### #B
 
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -65,13 +65,13 @@ Lista de Termos em Ordem Alfabética
 |backslash|barra invertida|–|–|–|barra-inv|
 |backslash byte|–|–|–|–|byte-barra-inv|
 |backspace key|–|–|–|–|tecla-retornar|
-|bar|-|-|-|-|-|
+|bar|-|-|-|-|barra|
 |bar byte|–|–|–|–|byte-barra|
 |barmstyle|-|-|-|-|-|
 |baseline|–|–|–|–|linha base|
 |bcontrast|-|-|-|-|-|
-|beep (verbo)|-|-|-|-|-|
-|begin|-|-|-|-|-|
+|beep (verbo)|-|-|-|-|bipar|
+|begin|-|-|-|-|começar|
 |bell byte|–|–|–|–|byte-sino|
 |bfamilytype|-|-|-|-|-|
 |Bible|Bíblia|Escrituras|Sagradas Escrituras|-|-|
@@ -114,13 +114,13 @@ Lista de Termos em Ordem Alfabética
 |big-o-diaeresis byte|–|–|–|–|byte-ö maiúsculo|
 |big-oe byte|–|byte-Œ maiúsculo|–|–|byte-œ maiúsculo|
 |big-o-grave byte|–|–|–|–|byte-ò maiúsculo|
-|big-o-stroke byte|–|–|–|–|byte-Ø maiúsculo|
+|big-o-stroke byte|–|–|–|–|byte-ø maiúsculo|
 |big-o-tilde byte|–|–|–|–|byte-õ maiúsculo|
 |big-p byte|–|–|–|–|byte-p maiúsculo|
 |big-q byte|–|–|–|–|byte-q maiúsculo|
 |big-r byte|–|–|–|–|byte-r maiúsculo|
 |big-s byte|–|–|–|–|byte-s maiúsculo|
-|big-s-caron byte|–|–|–|–|byte-Š maiúsculo|
+|big-s-caron byte|–|–|–|–|byte-š maiúsculo|
 |big-t byte|–|–|–|–|byte-t maiúsculo|
 |big-thorn byte|–|–|–|–|byte-Þ maiúsculo|
 |big-u byte|–|–|–|–|byte-u maiúsculo|
@@ -135,43 +135,43 @@ Lista de Termos em Ordem Alfabética
 |big-y-acute byte|–|–|–|–|byte-ý maiúsculo|
 |big-y-diaeresis byte|–|–|–|–|byte-ÿ maiúsculo|
 |big-z byte|–|–|–|–|byte-z maiúsculo|
-|big-z-caron byte|–|–|–|–|–|
+|big-z-caron byte|–|–|–|–|byte-ž|
 |bit|pedacinho|–|–|–|bit|
-|bitwise and|combinar|corresponder|condizer|compatibilizar|-|
-|bitwise or|unir|juntar|-|-|-|
-|bitwise xor|adicionar|somar|unir exclusivamente|-|-|
-|bitmapdata|-|-|-|-|-|
+|bitwise and|combinar|corresponder|condizer|compatibilizar|rebitar-e|
+|bitwise or|unir|juntar|-|-|rebitar-ou|
+|bitwise xor|adicionar|somar|unir exclusivamente|-|rebitar-xor|
+|bitmapdata|-|-|-|-|dado-bitmap|
 |b-key|–|–|–|–|tecla-b|
 |black color|–|–|–|–|preto|
 |black pen|–|–|–|–|pincel preto|
-|blank (verbo)|-|-|-|-|-|
+|blank (verbo)|-|-|-|-|esvaziar|
 |bletterform|-|-|-|-|-|
-|block|-|-|-|-|-|
-|blue byte|-|-|-|-|-|
+|block|-|-|-|-|bloco|
+|blue byte|-|-|-|-|byte-azul|
 |blue color|–|–|–|–|azul|
 |blue pen|–|–|–|–|pincel azul|
 |blurt|-|-|-|-|-|
 |bmidline|-|-|-|-|-|
 |border (substantivo)|borda|realce|-|-|-|
-|border (verbo)|contornar|contornear|realçar|-|-|
+|border (verbo)|contornar|contornear|realçar|-|delinear|
 |borough|região|bairro|zona|-|-|
-|boroughbox|-|-|-|-|-|
+|boroughbox|-|-|-|-|caixa postal|
 |box <sup>[D]</sup>|caixa|moldura|contexto|circunstância|–|
 |box <sup>[E]</sup>|–|–|–|–|–|
-|bproportion|-|-|-|-|-|
+|bproportion|-|-|-|-|proporção-b|
 |break <sup>[D]</sup>|parar|pare|interrompa|interromper|–|
 |break <sup>[E]</sup>|–|–|–|–|–|
-|bring|-|-|-|-|-|
-|break tag|–|–|–|–|marca parar|
+|bring|-|-|-|-|trazer|
+|break tag|–|–|–|–|marca-parar|
 |brightness|–|–|–|–|brilho|
-|broken-bar byte|–|–|–|–|–|
+|broken-bar byte|–|–|–|–|byte barra-int|
 |brown color|–|–|–|–|marrom|
 |brown pen|–|–|–|–|pincel marrom|
 |brownish color|–|–|–|–|castanho|
 |bserifstyle|-|-|-|-|-|
 |bstrokevariation|-|-|-|-|-|
-|bubble|-|-|-|-|-|
-|bucket|–|–|–|–|–|
+|bubble|-|-|-|-|bolha|
+|bucket|–|–|–|vaso|recipiente|
 |bucket count|–|–|–|–|–|
 |bucket record|-|-|-|-|-|
 |buffer <sup>[D]</sup>|depósito|–|–|báfer|bâfer|
@@ -180,7 +180,7 @@ Lista de Termos em Ordem Alfabética
 |bullet byte|–|–|–|–|byte-marcador|
 |bump|acrescer|aumentar|incrementar|acrescentar|–|
 |button|botão|-|-|-|-|
-|buzz|-|-|-|-|-|
+|buzz|-|-|-|-|zumbido|
 |bweight|-|-|-|-|-|
 |bxheight|-|-|-|-|-|
 |byte|pedaço|–|–|–|byte|
@@ -190,17 +190,17 @@ Lista de Termos em Ordem Alfabética
 ### #C
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|calculate|-|-|-|-|-|
+|calculate|-|-|-|-|calcular|
 |call external tag|–|–|–|–|marca-evocar|
-|call indirect tag|–|–|–|–|marca-convocar|
+|call indirect tag|–|–|–|–|marca-avocar|
 |call internal tag|–|–|–|–|marca-invocar|
 |calternatefilename|-|-|-|-|-|
-|cancel|-|-|-|-|-|
-|cancel byte|–|–|–|–|byte cancelar|
+|cancel|-|-|-|-|cancelar|
+|cancel byte|–|–|–|–|byte-cancel|
 |canvas|painel|quadro|–|–|tela|
-|capitalize|-|-|-|-|-|
+|capitalize|-|-|-|capitalizar|maiusculizar|
 |caps key|–|tecla Fixa|–|–|tecla-fixar|
-|caret byte|pedaço contendo um cursor de texto|pedaço com um cursor de texto|–|–|byte cursor|
+|caret byte|pedaço contendo um cursor de texto|pedaço com um cursor de texto|–|–|byte-cursor|
 |cb|-|-|-|-|-|
 |cbclsextra|-|-|-|-|-|
 |cbreserved2|-|-|-|-|-|
@@ -213,63 +213,63 @@ Lista de Termos em Ordem Alfabética
 |center <sup>[E]</sup>|–|–|–|–|–|
 |change <sup>[D]</sup>|mudar|trocar|alterar|modificar|–|
 |change <sup>[E]</sup>|–|–|–|–|–|
-|clear <sup>[D]</sup>|limpar|apagar|excluir|clarear||
+|clear <sup>[D]</sup>|limpar|apagar|excluir|clarear|–|
 |clear <sup>[E]</sup>|–|–|–|–|–|
 |cfilename|-|-|-|-|-|
-|change (verbo)|-|-|-|-|-|
+|~~change (verbo)~~|-|-|-|-|-|
+|characteristics|-|-|-|-|característica(s)|
 |characteristics|-|-|-|-|-|
-|characteristics|-|-|-|-|-|
-|check (verbo)|-|-|-|-|-|
+|check (verbo)|-|-|-|-|checar|
 |checksum|-|-|-|-|-|
 |character|–|–|–|–|caractere|
 |choice|escolha|opção|-|-|-|
 |circumflex byte|–|–|–|–|byte-^|
 |c-key|–|–|–|–|tecla-c|
-|clear (verbo)|-|-|-|-|-|
+|~~clear (verbo)~~|-|-|-|-|-|
 |clear color|–|–|–|–|cor transparente|
-|clear key|–|–|–|–|tecla limpar|
+|clear key|–|–|–|–|tecla-limpar|
 |clear pen|–|–|–|–|pincel transparente|
 |clipboard <sup>[D]</sup>|prancheta|–|–|área de transferência|–|
 |clipboard <sup>[E]</sup>|–|–|–|–|–|
-|clone (substantivo)|-|-|-|-|-|
-|close (verbo)|-|-|-|-|-|
+|clone (substantivo)|-|-|-|-|clone|
+|close (verbo)|-|-|-|-|clonar|
 |clsid|Identificador de Classe|Número Identificador de Classe|–|–|–|
-|cluck (verbo)|latir|cacarejar|alertar|-|-|
+|cluck (verbo)|latir|cacarejar|alertar|clamar|reclamar|
 |cluck sound|som de latido|cacarejo|som de alerta|–|reclamação|
-|code|-|-|-|-|-|
-|code section|-|-|-|-|-|
-|collapse|-|-|-|-|-|
+|code|-|-|-|-|código|
+|code section|-|-|-|-|seção de código|
+|collapse|-|-|-|colapso|colapsar|
 |colon byte|–|–|–|–|byte dois-pontos|
 |color|–|–|–|–|cor|
 |colorref|código da cor|número da cor|–|–|cor-ref|
 |column\#|número da coluna|–|–|–|–|
 |comma byte|–|–|–|–|byte-vírgula|
 |command|–|–|–|–|comando|
-|comment (verbo)|comentar|-|-|-|-|
-|comment color|cor dos comentários|–|–|–|–|
-|commit|-|-|-|-|-|
-|compare|-|-|-|-|-|
+|comment|comentar|-|-|-|comentário|
+|comment color|cor dos comentários|–|–|–|cor do comentário|
+|commit|-|-|-|envio|enviar|
+|compare|-|-|-|-|comparar|
 |compatibly|compativelmente|-|-|-|-|
-|compatibly handle|lidar compativelmente|processar compativelmente|-|-|-|
+|compatibly handle|lidar compativelmente|processar compativelmente|tratar compativelmente|-|-|
 |compatibly wait|aguardar compativelmente|-|-|-|-|
-|compile|agrupar|reunir|catalogar|-|-|
-|compiler|agrupador|reunidor|catalogador|-|-|
+|compile|agrupar|reunir|catalogar|-|compilar|
+|compiler|agrupador|reunidor|catalogador|-|compilador|
 |console <sup>[D]</sup>|console|mostrador|–|–|–|
 |console <sup>[E]</sup>|–|–|–|–|–|
 |context|–|–|–|–|contexto|
 |context stack|–|–|–|–|pilha do contexto|
-|convert|-|-|-|-|-|
-|coord|coordenada|–|–|–|–|
+|convert|-|-|-|-|converter|
+|coord|coordenada|–|–|–|coord|
 |copy (substantivo)|–|–|–|–|cópia|
-|copy (verbo)|-|-|-|-|-|
+|copy (verbo)|-|-|-|-|copiar|
 |copyright byte|–|–|–|–|byte-©|
-|copyto|-|-|-|-|-|
+|copyto|-|-|-|-|copiar para|
 |count|–|–|–|–|conta|
 |counter|–|–|–|–|contador|
-|create|-|-|-|-|-|
-|crop|-|-|-|-|-|
-|cross byte|pedaço contendo um mais|-|–|–|–|
-|crypt session|-|-|-|-|-|
+|create|-|-|-|-|criar|
+|crop|-|-|-|-|colher|
+|cross byte|pedaço contendo um mais|-|–|–|byte-cruz|
+|crypt session|-|-|-|-|seção encriptada|
 |ctrl key|–|–|–|–|tecla-ctrl|
 |currency-sign byte|–|–|–|–|–|
 |current canvas|painel atual|–|–|–|tela atual|
@@ -278,7 +278,7 @@ Lista de Termos em Ordem Alfabética
 |current rainbow color number|–|–|–|–|número atual do furtacor|
 |current tab|–|–|–|–|aba atual|
 |cursor|setinha|cursor|–|–|–|
-|cut|-|-|-|-|-|
+|cut|-|-|-|-|cortar|
 |cwycountchars|-|-|-|-|-|
 |cyan color|–|–|–|–|turqueza|
 |cyan pen|–|–|–|–|pincel turqueza|
@@ -322,7 +322,7 @@ Lista de Termos em Ordem Alfabética
 |dark violet pen|–|–|–|–|pincel violeta escuro|
 |dark yellow color|–|–|–|–|amarelo escuro|
 |dark yellow pen|–|–|–|–|pincel amarelo escuro|
-|darken|-|-|-|-|-|
+|darken|-|-|-|-|escurecer|
 |darker blue color|–|–|–|–|azul muito escuro|
 |darker blue pen|–|–|–|–|pincel azul muito escuro|
 |darker brown color|–|–|–|–|marrom muito escuro|
@@ -385,14 +385,14 @@ Lista de Termos em Ordem Alfabética
 |darkest yellow pen|–|–|–|–|pincel amarelo escuríssimo|
 |dash byte|–|–|–|–|byte-traço|
 |dash key|–|–|–|–|tecla-traço|
-|data|-|-|-|-|-|
+|data|-|-|-|-|dados|
 |data-link-escape byte|–|–|–|–|–|
-|data section|-|-|-|-|-|
-|date/time|-|-|-|-|-|
+|data section|-|-|-|-|seção de dados|
+|date/time|-|-|-|-|data/horário|
 |debug|analisar|depurar|purificar|filtrar|-|
-|debugeventcallback|-|-|-|-|-|
+|debugeventcallback|–|–|–|–|–|
 |decide|decidir|verificar|examinar|-|-|
-|decrypt|decodificar|descrirografar|desvendar|-|-|
+|decrypt|decodificar|descriptografar|desvendar|-|decifrar|
 |degree|–|–|–|–|grau|
 |degree-symbol byte|–|–|–|–|–|
 |delete byte|–|–|–|–|byte-del|
@@ -400,26 +400,26 @@ Lista de Termos em Ordem Alfabética
 |depth|–|–|–|–|profundidade|
 |dereference tag|–|–|–|–|–|
 |deque|decue|desenfileirar|remover da fila|–|–|
-|deselect|-|-|-|-|-|
-|de-sign|-|-|-|-|-|
-|designator w/o backslash|-|-|-|-|-|
-|desktop color|–|–|–|–|cor do desktop |
-|destroy|-|-|-|-|-|
-|device-control-four byte|–|–|–|–|–|
-|device-control-one byte|–|–|–|–|–|
-|device-control-three byte|–|–|–|–|–|
-|device-control-two byte|–|–|–|–|–|
-|devmode|-|-|-|-|-|
+|deselect|–|–|–|–|–|
+|de-sign|–|–|–|–|–|
+|designator w/o backslash|–|–|–|–|–|
+|desktop color|–|–|–|–|cor do desktop|
+|destroy|–|–|–|–|destruir|
+|device-control-four byte|–|–|–|–|byte-devcrtl4|
+|device-control-one byte|–|–|–|–|byte-devcrtl1|
+|device-control-three byte|–|–|–|–|byte-devcrtl3|
+|device-control-two byte|–|–|–|–|byte-devcrtl2|
+|devmode|–|–|–|–|–|
 |diaeresis byte|–|–|–|–|byte-¨|
-|dialog|-|-|-|-|-|
-|directories2-15|-|-|-|-|-|
-|directory|endereço completo da pasta|pasta|–|–|–|
-|directory name|nome da pasta contendo caractere separador|–|–|–|–|
-|directory name w/o slash|nome da pasta sem caractere separador|||||
-|directory0|-|-|-|-|-|
+|dialog|–|–|–|–|dialogo|
+|directories2-15|–|–|–|–|–|
+|directory|endereço completo da pasta|pasta|–|–|diretório|
+|directory name|nome da pasta contendo caractere separador|–|–|–|nome do diretório|
+|directory name w/o slash|nome da pasta sem caractere separador|–|–|–|–|
+|directory0|-|-|-|-|diretório-0|
 |displayui|-|-|-|-|-|
 |distance|–|–|–|–|distância|
-|divide|-|-|-|-|-|
+|divide|-|-|-|-|dividir|
 |division-symbol byte|–|byte-÷|byte-divisão|–|-|
 |d-key|–|–|–|–|tecla-d|
 |dllcharacteristics|-|-|-|-|-|
@@ -436,36 +436,36 @@ Lista de Termos em Ordem Alfabética
 |dmdriverversion|-|-|-|-|-|
 |dmduplex|-|-|-|-|-|
 |dmfields|-|-|-|-|-|
-|dmformname|-|-|-|-|-|
-|dmicmintent|-|-|-|-|-|
-|dmicmmethod|-|-|-|-|-|
-|dmlogpixels|-|-|-|-|-|
-|dmmediatype|-|-|-|-|-|
-|dmorientation|-|-|-|-|-|
-|dmpapersize|-|-|-|-|-|
-|dmpelsheight|-|-|-|-|-|
-|dmpelswidth|-|-|-|-|-|
-|dmprintquality|-|-|-|-|-|
-|dmreserved1|-|-|-|-|-|
-|dmreserved2|-|-|-|-|-|
-|dmscale|-|-|-|-|-|
-|dmsize|-|-|-|-|-|
-|dmspecversion|-|-|-|-|-|
-|dmttoption|-|-|-|-|-|
-|docinfo|-|-|-|-|-|
-|document|documento|-|-|-|-|
+|dmformname|–|–|–|–|–|
+|dmicmintent|–|–|–|–|–|
+|dmicmmethod|–|–|–|–|–|
+|dmlogpixels|–|–|–|–|–|
+|dmmediatype|–|–|–|–|–|
+|dmorientation|–|–|–|–|–|
+|dmpapersize|–|–|–|–|–|
+|dmpelsheight|–|–|–|–|–|
+|dmpelswidth|–|–|–|–|–|
+|dmprintquality|–|–|–|–|–|
+|dmreserved1|–|–|–|–|–|
+|dmreserved2|–|–|–|–|–|
+|dmscale|–|–|–|–|–|
+|dmsize|–|–|–|–|–|
+|dmspecversion|–|–|–|–|–|
+|dmttoption|–|–|–|–|–|
+|docinfo|–|–|–|–|infodoc|
+|document|documento|–|–|–|–|–|
 |document indent|–|–|–|–|–|
 |dollar-sign byte|–|byte-$|–|–|–|
-|dos header|suplemento windows pe|informação suplementar|-|-|-|
+|dos header|suplemento windows pe|informação suplementar|–|–|dosheader|
 |dot <sup>[D]</sup>|ponto|marca|–|–|–|
 |dot <sup>[E]</sup>|pinta|–|–|–|–|
-|double|-|-|-|-|-|
+|double|–|–|–|–|duplo|
 |double-dagger byte|–|byte-‡|–|–|–|
 |double-quote byte|–|byte-aspas|–|–|–|
-|down-arrow key|–|tecla-⬇️|–|–|–|
-|draw|-|-|-|-|-|
-|dump|-|-|-|-|-|
-|duplicate|-|-|-|-|-|
+|down-arrow key|–|tecla-⬇️|–|–|tecla-abaixo|
+|draw|-|-|-|-|desenhar|
+|dump|-|-|-|despejo|despejar|
+|duplicate|-|-|duplicado|duplicata|duplicar|
 |dwextrainfolength  |-|-|-|-|-|
 |dwfileattributes|-|-|-|-|-|
 |dwfillattribute|-|-|-|-|-|
@@ -498,48 +498,48 @@ Lista de Termos em Ordem Alfabética
 ### #E
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|eight byte|–|–|–|–|–|
-|eight key|–|–|–|–|–|
-|e-key|–|–|–|–|–|
-|ellipse|-|-|-|-|-|
-|ellipsis byte|–|–|–|–|–|
-|eliminate|-|-|-|-|-|
-|email|-|-|-|-|-|
-|em-dash byte|–|–|–|–|–|
-|encrypt|-|-|-|-|-|
-|end|-|-|-|-|-|
-|end if tag|–|–|–|–|–|
-|end key|–|–|–|–|–|
+|eight byte|–|–|–|–|byte-8|
+|eight key|–|–|–|–|tecla-8|
+|e-key|–|–|–|–|tecla-e|
+|ellipse|-|-|-|-|elipse|
+|ellipsis byte|–|–|–|–|byte-elipse|
+|eliminate|-|-|-|-|eliminar|
+|email|-|-|-|-|e-mail|
+|em-dash byte|–|–|–|–|byte-travessão|
+|encrypt|-|-|-|codificar|encriptar|
+|end|-|-|-|finalizar|fim|
+|end if tag|–|–|–|–|marca-fimse|
+|end key|–|–|–|–|tecla-se|
 |en-dash byte|–|–|–|–|–|
-|end-of-medium byte|–|–|–|–|–|
-|end-of-text byte|–|–|–|–|–|
-|end-of-transmission byte|–|–|–|–|–|
-|end-of-transmission-block byte|–|–|–|–|–|
-|enlarge|-|-|-|-|-|
-|enque|-|-|-|-|-|
-|enquiry byte|–|–|–|–|–|
-|enter key|–|–|–|–|–|
+|end-of-medium byte|–|–|–|–|byte-eom|
+|end-of-text byte|–|–|–|–|byte-eotxt|
+|end-of-transmission byte|–|–|–|–|byte-eotr|
+|end-of-transmission-block byte|–|–|–|–|byte-eotb|
+|enlarge|-|-|-|-|alargar|
+|enque|-|-|-|encue|enfileirar|
+|enquiry byte|–|–|–|–|byte-consultar|
+|enter key|–|–|–|–|tecla-entrar|
 |entry|entrada|-|-|-|-|
-|epilog tag|–|–|–|–|–|
-|equal-sign byte|–|–|–|–|–|
-|equal-sign key|–|–|–|–|–|
-|erase|-|-|-|-|-|
-|esc key|–|–|–|–|–|
-|escape byte|–|–|–|–|–|
-|escape key|–|–|–|–|–|
-|estimate|-|-|-|-|-|
+|epilog tag|–|–|–|–|marca-epílogo|
+|equal-sign byte|–|–|–|–|byte-=|
+|equal-sign key|–|–|–|–|teca-=|
+|erase|-|-|-|-|apagar|
+|esc key|–|–|–|–|tecla-esc|
+|escape byte|–|–|–|–|byte-escape|
+|escape key|–|–|–|–|tela-escape|
+|estimate|-|-|-|-|estimar|
 |euro-sign byte|–|–|–|–|–|
-|event|–|–|–|–|–|
-|event queue|–|–|–|–|–|
-|exclamation byte|–|–|–|–|–|
-|exclamation-mark byte|–|–|–|–|–|
+|event|–|–|–|–|evento|
+|event queue|–|–|–|–|fila do evento|
+|exclamation byte|–|–|–|–|byte-exclamação|
+|exclamation-mark byte|–|–|–|–|byte-!|
 |exclusionflags|-|-|-|-|-|
-|exit tag|–|–|–|–|–|
-|extend|-|-|-|-|-|
-|externalize|-|-|-|-|-|
+|exit tag|–|–|–|–|marca-sair|
+|extend|-|-|-|-|estender|
+|externalize|-|-|-|-|externalizar|
 |extra points|–|–|–|–|–|
-|extract|-|-|-|-|-|
-|event|-|-|-|-|-|
+|extract|-|-|-|-|extrair|
+|~~event~~|-|-|-|-|-|
 
 
 
@@ -548,55 +548,55 @@ Lista de Termos em Ordem Alfabética
 
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|face|-|-|-|-|-|
-|fail|-|-|-|-|-|
+|face|–|–|–|–|face|
+|fail|–|–|–|falha|falhar|
 |fancy arrow|Seta elegante|–|–|–|–|
 |feminine byte|–|byte-ª|–|–|–|
-|figure|–|–|–|–|–|
+|figure|–|–|–|–|figura|
 |file|arquivo|–|–|–|–|
 |fileext|extensão de arquivo|–|–|–|–|
-|file name|nome do arquivo contendo extensão|-|-|-|-|
-|file name w/o extension|norme do arquivo sem extensão|-|-|-|-|
+|file name|nome do arquivo contendo extensão|-|-|-|nome de arquivo|
+|file name w/o extension|norme do arquivo sem extensão|-|-|-|arquivo sem extensão|
 |file-separator byte|–|–|–|–|–|
-|filetime|-|-|-|-|-|
-|finalize tag|–|–|–|–|–|
-|find anchor|-|-|-|-|-|
-|five byte|–|–|–|–|–|
-|five key|–|–|–|–|–|
-|f-key|–|–|–|–|–|
+|filetime|–|–|–|–|–|
+|finalize tag|–|–|–|–|marca-finalizar|
+|find anchor|–|–|–|–|–|
+|five byte|–|–|–|–|byte-5|
+|five key|–|–|–|–|tecla-5|
+|f-key|–|–|–|–|tecla-f|
 |flag <sup>[D]</sup>|sinal|sinalizador|bandeira|–|–|
 |flag <sup>[E]</sup>|–|–|–|–|–|
-|font height|–|–|–|–|–|
-|font info|-|-|-|-|-|
-|font resource|–|–|–|–|–|
-|font widths|-|-|-|-|-|
+|font height|–|–|–|–|altura da fonte|
+|font info|–|–|–|–|informação da fonte|
+|font resource|–|–|–|–|recursos da fonte|
+|font widths|–|–|–|–|largura da fonte|
 |form-feed byte|–|–|–|–|–|
-|four byte|–|–|–|–|–|
-|four key|–|–|–|–|–|
-|fragment|-|-|-|-|-|
+|four byte|–|–|–|–|byte-4|
+|four key|–|–|–|–|tecla-4|
+|fragment|–|–|–|–|fragmento|
 |free tab|aba livre|aba vazia|–|–|–|
 |ferase|-|-|-|-|-|
-|field term|-|-|-|-|-|
-|filealignment|-|-|-|-|-|
+|field term|-|-|-|-|termo de campo|
+|filealignment|-|-|-|-|alinhamento de arquivo|
 |filetime|-|-|-|-|-|
-|fill|-|-|-|-|-|
-|finalize|-|-|-|-|-|
-|finalize:|-|-|-|-|-|
+|fill|-|-|-|encher|preencher|
+|finalize|-|-|-|-|finalizar|
+|finalize:|-|-|-|-|finalize:|
 |fincupdate|-|-|-|-|-|
-|find|-|-|-|-|-|
-|finder|-|-|-|-|-|
+|find|-|-|achar|buscar|procurar|
+|finder|-|-|-|-|buscador|
 |first thunk memory address|-|-|-|-|-|
-|flag|-|-|-|-|-|
-|flags|-|-|-|-|-|
+|flag|-|-|-|-|marca|
+|flags|-|-|-|-|marcas|
 |flags2|-|-|-|-|-|
 |flip|-|-|-|-|-|
 |flush|-|-|-|-|-|
-|focus|-|-|-|-|-|
-|font|-|-|-|-|-|
+|focus|-|-|-|-|foco|
+|font|-|-|-|-|fonte|
 |font strings [page]|-|-|-|-|-|
-|format|-|-|-|-|-|
+|format|-|-|-|-|formato|
 |forwarder chain|-|-|-|-|-|
-|fraction|-|-|-|-|-|
+|fraction|-|-|-|-|fração|
 |fraction pair|-|-|-|-|-|
 |frestore|-|-|-|-|-|
 |ftcreationtime|-|-|-|-|-|
@@ -1220,40 +1220,40 @@ Lista de Termos em Ordem Alfabética
 |plus-sign byte|–|–|–|–|–|
 |prepend <sup>[D]</sup>|prepor|antepor|–|–|–|
 |prepend <sup>[E]</sup>|–|–|–|–|–|
-|point <sup>[D]</sup>|foco|meta|objetivo|–|–|
+|point <sup>[D]</sup>|nível|degrau|gradação|graduação|gama|
 |point <sup>[E]</sup>|ponto|–|–|–|–|
-|pointer|–|–|–|–|–|
+|pointer|–|–|–|–|ponteiro|
 |pointertosymboltable|-|-|-|-|-|
 |polygon|polígono|–|–|–|–|
-|position|-|-|-|-|-|
+|position|-|-|-|-|posição|
 |post|-|-|-|-|-|
 |pound-sign byte|–|–|–|–|–|
 |ppi|pontos por polegada|pontos em uma polegada|–|–|–|
-|precise degree|–|–|–|–|–|
+|precise degree|–|–|–|–|grau preciso|
 |prepend|prepor|antepor|pôr no começo|pôr no início|-|
-|print|-|-|-|-|-|
+|print|-|-|-|-|imprimir|
 |printdlgex|-|-|-|-|-|
 |printer canvas|–|–|–|–|–|
 |printer device mode|–|–|–|–|–|
-|print-screen key|Tecla Print Screen|Tecla Prt Scr|–|–|-|
-|process|–|–|–|–|–|
+|print-screen key|Tecla Print Screen|Tecla Prt Scr|–|–|tecla-prtscr|
+|process|–|–|–|–|processo|
 |processinfo|-|-|-|-|-|
-|prototype string|-|-|-|-|-|
+|prototype string|-|-|-|-|proto-escrita|
 |pt|-|-|-|-|-|
-|prolog tag|–|–|–|–|–|
-|purple color|–|–|–|–|–|
-|purple pen|–|–|–|–|–|
+|prolog tag|–|–|–|–|marca-prolog|
+|purple color|–|–|–|–|cor púrpura|
+|purple pen|–|–|–|–|pincel púrpura|
 |push address tag|–|–|–|–|–|
 |push value tag|–|–|–|–|–|
-|put|-|-|-|-|-|
+|put|-|-|-|-|pôr|
 
 ### #Q
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|q-key|tecla q|–|–|–|–|
+|q-key|tecla q|–|–|–|tecla-q|
 |quarter|quarto|–|–|–|–|
-|query byte|–|–|–|–|–|
-|queryinterface|-|-|-|-|-|
+|query byte|–|–|–|–|byte-consulta|
+|queryinterface|-|-|-|-|interface de consulta|
 |query string <sup>[D]</sup>|consulta|questionamento|–|escrita de consulta|–|
 |query string <sup>[E]</sup>|texto da consulta|–|–|–|–|
 |question-mark byte|–|byte-?|–|–|–|
