@@ -9,6 +9,7 @@
 |box|caixa|||||
 |buffer|depósito|||||
 |byte|byte|||||
+|byte pointer|ponteiro de byte|||||
 |color|cor||||||
 |console|console|||||
 |coord|coordenada|||||
@@ -16,10 +17,10 @@
 |cursor|cursor|||||
 |date/time|data/hora|||||
 |degree|grau|||||
-|dot|pinta|||||
+|dot|ponto|||||
 |event|evento|||||
 |ellipse|elipse|||||
-|flag|sinalizador|||||
+|flag|sinal|||||
 |figure|figura|||||
 |fraction|fração|||||
 |grid|grade|||||
@@ -29,8 +30,9 @@
 |ip address|endereço ip|||||
 |item|recurso|||||
 |key|tecla|||||
-|landscape sheet|folha de paisagem|||||
+|landscape sheet|folha horizontal|||||
 |lightness|brilho|luminosidade||||
+|line|reta|||||
 |millisecond|milissegundo|||||
 |name|nome|||||
 |number|número|||||
@@ -38,17 +40,22 @@
 |path|rota|||||
 |pen|pincel|||||
 |picture|imagem|||||
+|point|foco|gradação||||
+|pointer|ponteiro|||||
 |position|posição|||||
 |polygon|polígono|||||
-|portrait sheet|folha de retrato|||||
+|portrait sheet|folha vertical|||||
 |quotient|quociente|||||
 |radious|raio|||||
 |refer|referência|||||
 |remainder|resto|||||
+|rider|iterador|percorredor||||
+|row|linha|||||
 |roundy box|caixa arredondada|||||
 |saturation|saturação|||||
 |selection|seleção|||||
 |sheet|folha|||||
+|spot|loco|||||
 |square root|raiz quadrada|||||
 |string|sequência|série|escrito|escrita||
 |string thing|elemento de sequência|elemento de série|elemento de escrito|elemento de escrita||
