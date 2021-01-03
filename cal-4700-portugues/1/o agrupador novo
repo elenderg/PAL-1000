@@ -1653,14 +1653,14 @@ Move the rider (compiler rules).
 If the rider's token is any indefinite article, set an flag.
 If the flag is set, compile the routine reference given the rider (indefinite article).
 If the flag is not set, compile the routine reference given the rider (definite article).
-If the rider's token is not any possessive, abort with "Eu estava esperando un 's, mas apareceu '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not any possessive, abort with "Eu estava esperando un 's, mas apareceu '" then the rider's token then "'." and the rider; exit. \ not translated - no possessives in Spanish
 Move the rider (compiler rules).
 Scan an name given the rider.
 Add another monikette to the routine reference given "'s " then the name.
-If the rider's token is not "into", abort with "E estava esperando an palavra 'into', mas encontrei '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not "into", abort with "E estava esperando an palavra 'into', mas encontrei '" then the rider's token then "'." and the rider; exit. \ not translated - no possessives in Spanish
 Add an third monikette to the routine reference given "into".
 Move the rider (compiler rules).
-If the rider's token is not any indefinite article, abort with "Eu estava esperando um artigo indefinido mas encontrei isso: '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not any indefinite article, abort with "Eu estava esperando um artigo indefinido mas encontrei isso: '" then the rider's token then "'." and the rider; exit. \ not translated - no possessives in Spanish
 Compile the routine reference given the rider (indefinite article).
 
 To compile an routine reference given an rider (indefinite article):
@@ -1757,7 +1757,7 @@ Extend the local's name with the name.
 If the rider's token is any called, compile the call'd part given the rider and the local.
 Resolve the local.
 If the local is duplicated in the current routine's parameters, abort with "o parâmetro '" then the local's name then "' já está sendo usado como parâmetro." and the local's locus; exit.
-If the local is duplicated in the current routine's locals,abort with "Já existe uma variável local chamada'" then the local's name then "'. Você tem que dar um nome diferente." and the local's locus; exit.
+If the local is duplicated in the current routine's locals, abort with "Já existe uma variável local chamada'" then the local's name then "'. Você tem que dar um nome diferente." and the local's locus; exit.
 Eliminate duplicate nicknames given the local and the current routine's nickname index.
 Put the local into the term's variable.
 Clear the term's phrase.
@@ -1799,9 +1799,9 @@ If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
 Scan an name given the rider.
 If the compiler's abort flag is set, exit.
-If the name is "magnitude", compile the term given the rider (possessive - magnitude); exit.
-If the name is "target", compile the term given the rider (possessive - target); exit.
-If the name is "whereabouts", compile the term given the rider (possessive - whereabouts); exit.
+If the name is any magnitude, compile the term given the rider (possessive - magnitude); exit.
+If the name is any target, compile the term given the rider (possessive - target); exit.
+If the name is any whereabouts, compile the term given the rider (possessive - whereabouts); exit.
 Compile the term given the rider and the name (possessive - field).
 
 To compile an term given an rider (possessives):
@@ -1832,6 +1832,52 @@ Put the variable into the term's variable.
 Put "the " into the term's phrase.
 Append the name to the term's phrase.
 Compile the term given the rider (possessives).
+To compile a term given a rider and a field name (reverse-possessive):  \ this is recursive \ dahn version 2
+If the compiler's abort flag is set, exit.
+Move the rider (compiler rules). \ past the reverse-possessive starter
+\If the rider's token is not "del", Move the rider (compiler rules). \ past the reverse-possessive starter \ gerry added "if" part
+\If the rider's token is "del", Add 1 to the rider's token's first. \ makes "del" look like "de el"
+If the rider's token is not any article, abort with "Esperaba un artículo, pero encontré '" then the rider's token then "'."; exit.
+Put the rider's token into an article token.
+Move the rider (compiler rules).
+Scan a name given the rider. 
+If the rider is on any reverse-possessive, set a reverse-possessive flag.
+If the reverse-possessive flag is set, compile the term given the rider and the name (reverse-possessive).
+If the reverse-possessive flag is not set, compile the term given the rider and the name and the article (reverse-possessive prepare to unwind).
+Compile the term given the field name and the rider (reverse-possessive).
+
+To compile a term given a rider and a variable name and an article token (reverse-possessive prepare to unwind): \ dahn version 2
+If the article is the start of any variable, compile the term given the rider and the variable name  and the article (reverse-possessive prepare to unwind existing variable); exit.
+Compile the term given the rider and the variable name (reverse-possessive prepare to unwind new local).
+
+To compile a term given a rider and a variable name and an article token (reverse-possessive prepare to unwind existing variable): \ dahn version 2
+Find a variable given the variable name.
+If the variable is nil, abort with "No se pudo encontrar una variable con el nombre '" then the variable name then "'.".
+Put the variable into the term's variable.
+Put "the " into the term's phrase.
+Append the variable name to the term's phrase.
+
+To compile a term given a rider and a variable name (reverse-possessive prepare to unwind new local): \ dahn version 2
+If the compiler's abort flag is set, exit.
+Add a local to the current routine's locals given "local" and the rider's token's first.
+If the rider's token is "another", put "other" into the local's name.
+If the rider's token is "outra", put "segunda" into the local's name.
+If the rider's token is "outro", put "segundo" into the local's name.
+Extend the local's name with the variable name.
+If the rider's token is any called, compile the call'd part given the rider and the local.
+Resolve the local.
+If the local is duplicated in the current routine's parameters, abort with "'" then the local's name then "' ya está en uso como parámetro." and the local's locus; exit.
+If the local is duplicated in the current routine's locals,abort with "'" then the local's name then "' ya está en uso como una variable local." and the local's locus; exit.
+Eliminate duplicate nicknames given the local and the current routine's nickname index.
+Put the local into the term's variable.
+Clear the term's phrase.
+
+To compile a term given a field name and a rider (reverse-possessive):  \ similar to "compile a term given a rider (possessive)" \ dahn
+If the compiler's abort flag is set, exit.
+If the field name is any magnitude, compile the term given the rider (possessive - magnitude); exit.
+If the field name is any target, compile the term given the rider (possessive - target); exit.
+If the field name is any whereabouts, compile the term given the rider (possessive - whereabouts); exit.
+Compile the term given the rider and the field name (possessive - field).
 
 To compile an term given an rider and an field term:
 If the compiler's abort flag is set, exit.
