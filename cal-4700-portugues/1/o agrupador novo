@@ -1827,6 +1827,7 @@ If the compiler's abort flag is set, exit.
 If the current routine is nil, abort with "Erro de tarefa vazia, nada pra pull aqui." and the rider; exit.
 Move the rider (compiler rules).
 Scan an name given the rider.
+If the rider is on any reverse-possessive, compile the term given the rider and the name (reverse-possessive); exit.
 Find an variable given the name.
 Put the variable into the term's variable.
 Put "the " into the term's phrase.
@@ -1992,10 +1993,8 @@ To copy some fields into some other fields (data fields only):
 \If the fields' count is less than 4, exit. \ for english next and prev and spanish next and prev redefinitions
 If the fields' first is nil, exit.
 If the fields' first's next is nil, exit.
-Put the fields' first's next's next into an field.
-\If the fields' first's next is nil, exit.
 \If the fields' first's next's next is nil, exit.
-\\Put the fields' first's next's next into a field. \ skip next and prev
+Put the fields' first's next's next into a field. \ skip next and prev
 \If the fields' first's next's next's next is nil, exit.
 \If the fields' first's next's next's next's next is nil, exit.
 \If the fields' first's next's next's next's next's next is nil, exit.
@@ -2165,9 +2164,9 @@ If the name is "whereabouts", say yes.
 If the name is "paradero", say yes.
 Say no.
 To decide if an name is any valid field name:
-If the name is "magnitude", say no.
-If the name is "target", say no.
-If the name is "whereabouts", say no.
+If the name is any magnitude, say no.
+If the name is any target, say no.
+If the name is any whereabouts, say no.
 Say yes.
 
 To decide if an rider is followed by any unit of measure:
@@ -2318,7 +2317,7 @@ Say no.
 
 To decide if an string is any article:
 If the string is any indefinite article, say yes.
-If the string is "the", say yes.
+If the string is any definite article, say yes.
 Say no.
 
 To decide if an string is any conjunction:
@@ -2340,9 +2339,7 @@ To decide if a string is any to:
 \If the string is "a", say yes. \ this is questionable
 If the string is "to", say yes.
 
-To decide if an string is any hex literal:
-If the string is blank, say no.
-If the string's first's target is the dollar-sign byte, say yes.
+
 Say no.
 To decide if a string is any and:
 \If the string is "y", say yes.
@@ -2383,10 +2380,10 @@ If the string is "nay", say yes.
 If the string is "nope", say yes.
 Say no.
 
-\To decide if a string is any hex literal:
-\If the string is blank, say no.
-\If the string's first's target is the dollar-sign byte, say yes.
-\Say no.
+To decide if a string is any hex literal:
+If the string is blank, say no.
+If the string's first's target is the dollar-sign byte, say yes.
+Say no.
 To decide if a string is any definite article:
 If the string is "l", say yes. \ all that is left of "el" in contractions "del" and "al" - see "move a rider (compiler rules)"
 \If the string is "el", say yes.
@@ -2413,11 +2410,15 @@ If the string is "an", say yes.
 If the string is "another", say yes.
 If the string is "some", say yes.
 Say no.
+To decide if a string is any english indefinite article:
+If the string is "a", say yes.
+If the string is "an", say yes.
+If the string is "another", say yes.
+If the string is "some", say yes.
+Say no.
 
-\To decide if a string is any reverse-possessive function into: \repetido
-\If the string is "into", say yes.
-\If the string is "en", say yes.
-\Say no.
+
+
 
 To decide if an string is any literal:
 If the string is any pointer literal, say yes.
@@ -2441,6 +2442,14 @@ If the string is any literal, say no.
 If the string is any mark, say no.
 If the string is any symbol, say no.
 Say yes.
+To decide if a rider is on any monikette string:
+If the rider's token is blank, say no.
+If the rider's token is any definite article, say no.
+If the rider is on any indefinite article, say no.
+If the rider's token is any possessive, say no.
+If the rider's token is any literal, say no.
+If the rider's token is any mark, say no.
+If the rider's token is any symbol, say no.
 To decide if a string is any called:
 If the string is "called", say yes.
 \If the string is "llamado", say yes.
@@ -2461,7 +2470,29 @@ If the string is "called", say yes.
 If the string is "equal", say yes.
 If the string is blank, say yes.
 Say no.
+To decide if a string is any reference:
+If the string is "(reference)", say yes.
+If the string is "(referência)", say yes.
+Say no.
 
+To decide if a rider is on any name ender: \ compare with name starter
+If the rider's token is any mark, say yes.
+If the rider's token is any symbol, say yes.
+If the rider's token is any article, say yes.
+If the rider's token is any conjunction, say yes.
+If the rider's token is any possessive, say yes.
+If the rider is on any reverse-possessive, say yes.
+If the rider's token is any verb, say yes.
+If the rider's token is any operator, say yes.
+If the rider is on any preposition, say yes.
+If the rider's token is any qualifier, say yes.
+If the rider's token is any literal, say yes.
+If the rider's token is any called, say yes.
+If the rider's token is any equal, say yes.
+If the rider's token is blank, say yes.
+\ Spanish trouble makers
+If the rider's token is any negative word, say yes.
+Say no.
 
 To decide if an string is any name starter: \ compare with name ender
 If the string is any mark, say no.
@@ -2478,6 +2509,21 @@ If the string is "called", say yes.
 If the string is "equal", say yes.
 If the string is blank, say no.
 Say yes.
+To decide if a rider is on any name starter: \ compare with name ender
+If the rider's token is any mark, say no.
+If the rider's token is any symbol, say no.
+If the rider's token is any article, say no.
+If the rider's token is any conjunction, say yes.
+If the rider's token is any possessive, say no.
+If the rider's token is any verb, say yes.
+If the rider's token is any operator, say yes.
+If the rider is on any preposition, say yes.
+If the rider's token is any qualifier, say no.
+If the rider's token is any literal, say no.
+If the rider's token is any called, say yes.
+If the rider's token is any equal, say yes.
+If the rider's token is blank, say no.
+Say yes.
 
 To decide if an string is any negative word:
 If the string is "not", say yes.
@@ -2493,12 +2539,13 @@ If the string is "times", say yes.
 If the string is "divided", say yes.
 If the string is "then", say yes.
 Say no.
-To decide if a string is any english indefinite article:
-If the string is "a", say yes.
-If the string is "an", say yes.
-If the string is "another", say yes.
-If the string is "some", say yes.
-Say no.
+
+\To decide if a string is any english indefinite article:
+\If the string is "a", say yes.
+\If the string is "an", say yes.
+\If the string is "another", say yes.
+\If the string is "some", say yes.
+\Say no.
 
 To decide if an string is any pause:
 If the string is ",", say yes.
