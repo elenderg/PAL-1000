@@ -3279,16 +3279,21 @@ Say yes.
 
 To decide if an string is the start of any type:
 If the string is any indefinite article, say yes.
-\If the string is "a", say yes.
-If the string is "an", say yes.
-\If the string is "some", say yes.
+
 Say no.
 
 To decide if an string is the start of any variable:
 If the string is any definite article, say yes.
-\If the string is "del", say yes. \ this is iffy, here for reverse-possessives
+\If the string is "do", say yes. \ this is iffy, here for reverse-possessives
 Say no.
 
+To decide if an string has any stressed vowel:
+Privatize the string.
+Loop.
+If the string is blank, say no.
+If the string's last's target is any stressed vowel, say yes.
+Subtract 1 from the string's last.
+Repeat.
 To decide if an term is empty:
 If the term's variable is not nil, say no.
 If the term's phrase is not blank, say no.
@@ -3337,6 +3342,10 @@ Say no.
 
 To decide if an type should be forgotten:
 If the type is nil, say no.
+\PAL
+If the type's name is "elemento", say no.
+If the type's name is "elementos", say no.
+\CAL
 If the type's name is "thing", say no.
 If the type's name is "things", say no.
 If the type can be reduced to "things", say yes.
@@ -4428,7 +4437,7 @@ An phrase is an string.
 \If the substring is in the lexicon's index, say yes.
 \Say no.
 
-To pluralize an string (spanish rules): \ nouns only
+To pluralize an string (portuguese rules):
 Slap an rider on the string.
 Loop.
 Move the rider (spell checking rules).
@@ -4436,17 +4445,183 @@ If the rider's token is blank, break.
 If an plural string is not blank, append " " to the plural string.
 Append the rider's token to the plural string.
 If the rider's token is "de", set an flag; repeat.
-If the flag is not set, pluralize the plural string (spanish rules - each word).
+If the flag is not set, pluralize the plural string (portuguese rules - each word).
 Repeat.
 Put the plural string into the string.
 
-To pluralize an string (spanish rules - each word): \ nouns only
-If the string ends with "ión", remove the last two bytes from the string; append "ones" to the string; exit.
-\If the string ends with "ión", remove the last two bytes from the string; append "ons" to the string; exit.
-If the string ends with "z", remove the last byte from the string; append "ces" to the string; exit.
-If the string ends with any vowel, append "s" to the string; exit.
-If the string ends with any consonant, append "es" to the string; exit.
-Append "s" to the string. \ for words that end in special characters, both languages, like bucket#
+To pluralize an string (portuguese rules - each word):
+\PAL
+\# https://www.normaculta.com.br/singular-e-plural/
+\# palavras que são exceções às regras
+If the string is "cidadão", append "s" to the string; exit.
+If the string is "irmão", append "s" to the string; exit.
+If the string is "cristão", append "s" to the string; exit.
+If the string is "refrão", append "s" to the string; exit.
+If the string is "pão", remove the last byte from the string; append "es" to the string; exit.
+If the string is "capitão", remove the last byte from the string; append "es" to the string; exit.
+If the string is "alemão", remove the last byte from the string; append "es" to the string; exit.
+If the string is "charlatão", remove the last byte from the string; append "es" to the string; exit.
+If the string is "caráter", put "carateres" into the string; exit.
+If the string is "júnior", put "juniores" into the string; exit.
+If the string is "sênior", put "seniores" into the string; exit.
+If the string is "mão", put "mãos" into the string; exit.
+If the string is "são", put "sãos" into the string; exit.
+\# advérbios principais
+If the string is "muito", exit.
+If the string is "pouco", exit.
+If the string is "mais", exit.
+If the string is "menos", exit.
+If the string is "bastante", exit.
+If the string is "quase", exit.
+If the string is "demais", exit.
+If the string is "bem", exit.
+If the string is "deveras", exit.
+If the string is "mal", exit.
+If the string is "melhor", exit.
+If the string is "pior", exit.
+\# palavras terminadas com "ão"
+If the string ends with "ão", pluralize the string (portuguese rules - ending words with "ão"); exit.
+\# palavras terminadas com "l"
+If the string ends with "l", pluralize the string (portuguese rules - ending words with "l"); exit.
+\# palavra terminadas com "m"
+If the string ends with "m", remove the last byte from the string; append "ns" to the string; exit.
+\# palavra terminadas com "n" (essa regra é preferível porque mantém o acento da palavra, se houver)
+If the string ends with "n", append "es" to the string; exit.
+\# palavras terminadas com "r"
+If the string ends with "r", pluralize the string (portuguese rules - ending words with "r"); exit.
+\# palavras terminadas com "s"
+If the string ends with "s", pluralize the string (portuguese rules - ending words with "s"); exit.
+\# palavra terminadas com "x"
+If the string ends with "x", exit.
+\# palavras terminadas com "z"
+If the string ends with "z", pluralize the string (portuguese rules - ending words with "z"); exit.
+\# regra padrão
+Append "s" to the string.
+
+To pluralize an string (portuguese rules - ending words with "ão"):
+\# acentos em sílabas prévias
+Slap an substring on the string.
+Subtract 2 from the substring's last.
+If the substring has any stressed vowel, append "s" to the string; exit.
+\# regra padrão
+Remove the last two bytes from the string.
+Append "ões" to the string.
+
+To pluralize an string (portuguese rules - ending words with "l"):
+\# palavras terminadas com "al"
+If the string ends with "al", remove the last byte from the string; append "is" to the string; exit.
+\# palavras terminadas com "el"
+If the string ends with "el", pluralize the string (portuguese rules - ending words with "el"); exit.
+\# palavras terminadas com "il"
+If the string ends with "il", pluralize the string (portuguese rules - ending words with "il"); exit.
+\# palavras terminadas com "ol"
+If the string ends with "ol", pluralize the string (portuguese rules - ending words with "ol"); exit.
+\# palavras terminadas com "ul"
+If the string ends with "ul", remove the last byte from the string; append "is" to the string; exit.
+
+To pluralize an string (portuguese rules - ending words with "el"):
+\# acentos em sílabas prévias
+Slap an substring on the string.
+Subtract 2 from the substring's last.
+If the substring has any stressed vowel, remove the last byte from the string; append "is" to the string; exit.
+Remove the last two bytes from the string.
+Append "éis" to the string.
+
+To pluralize an string (portuguese rules - ending words with "il"):
+\# acentos em sílabas prévias
+Slap an substring on the string.
+Subtract 2 from the substring's last.
+If the substring has any stressed vowel, remove the last two bytes from the string; append "eis" to the string; exit.
+Remove the last byte from the string.
+Append "s" to the string.
+
+To pluralize an string (portuguese rules - ending words with "ol"):
+\# acentos em sílabas prévias
+Slap an substring on the string.
+Subtract 2 from the substring's last.
+If the substring has any stressed vowel, remove the last byte from the string; append "is" to the string; exit.
+Remove the last two bytes from the string.
+Append "óis" to the string.
+
+To pluralize an string (portuguese rules - ending words with "r"):
+\# hiatos acentuados
+If the string ends with "aír", append "es" to the string; exit.
+If the string ends with "aúr", append "es" to the string; exit.
+\# palavras terminas em "ár", "âr", "ér", "êr", "ír", "ór", "ôr", "úr"
+If the string ends with "ár", remove the last two bytes from the string; append "ares" to the string; exit.
+If the string ends with "âr", remove the last two bytes from the string; append "ares" to the string; exit.
+If the string ends with "ér", remove the last two bytes from the string; append "eres" to the string; exit.
+If the string ends with "êr", remove the last two bytes from the string; append "eres" to the string; exit.
+If the string ends with "ír", remove the last two bytes from the string; append "ires" to the string; exit.
+If the string ends with "ór", remove the last two bytes from the string; append "ores" to the string; exit.
+If the string ends with "ôr", remove the last two bytes from the string; append "ores" to the string; exit.
+If the string ends with "úr", remove the last two bytes from the string; append "ures" to the string; exit.
+\# acentos em sílabas prévias
+Slap an substring on the string.
+Subtract 2 from the substring's last.
+If the substring has any stressed vowel, append "es" to the string; exit.
+\# hiatos
+If the string ends with "air", remove the last two bytes from the string; append "íres" to the string; exit.
+If the string ends with "aur", remove the last two bytes from the string; append "úres" to the string; exit.
+\# regra padrão
+Append "es" to the string.
+
+To pluralize an string (portuguese rules - ending words with "s"):
+\# proparoxítonas/paroxítonas terminadas com "as", "es", "os"
+If the string ends with "as", exit.
+If the string ends with "es", exit.
+If the string ends with "os", exit.
+\# hiatos acentuados
+If the string ends with "aís", append "es" to the string; exit.
+If the string ends with "aús", append "es" to the string; exit.
+\# oxítonas terminadas com "ás", "âs", "és", "ês", "ís", "ós", "ôs", "ús"
+If the string ends with "ás", remove the last two bytes from the string; append "ases" to the string; exit.
+If the string ends with "âs", remove the last two bytes from the string; append "ases" to the string; exit.
+If the string ends with "és", remove the last two bytes from the string; append "eses" to the string; exit.
+If the string ends with "ês", remove the last two bytes from the string; append "eses" to the string; exit.
+If the string ends with "ís", remove the last two bytes from the string; append "ises" to the string; exit.
+If the string ends with "ós", remove the last two bytes from the string; append "oses" to the string; exit.
+If the string ends with "ôs", remove the last two bytes from the string; append "oses" to the string; exit.
+If the string ends with "ús", remove the last two bytes from the string; append "uses" to the string; exit.
+\# palavras terminadas com "is", "us"
+If the string ends with "is", pluralize the string (portuguese rules - ending words with "is/us"); exit.
+If the string ends with "us", pluralize the string (portuguese rules - ending words with "is/us"); exit.
+\# regra padrão
+Append "es" to the string.
+
+To pluralize an string (portuguese rules - ending words with "is/us"):
+\# acentos em sílabas prévias
+Slap an substring on the string.
+Subtract 2 from the substring's last.
+If the substring has any stressed vowel, exit.
+\# hiatos
+If the string ends with "ais", remove the last two bytes from the string; append "íses" to the string; exit.
+If the string ends with "aus", remove the last two bytes from the string; append "úses" to the string; exit.
+\# regra padrão
+Append "es" to the string.
+
+To pluralize an string (portuguese rules - ending words with "z"):
+\# hiatos acentuados
+If the string ends with "aíz", append "es" to the string; exit.
+If the string ends with "aúz", append "es" to the string; exit.
+\# palavras terminas em "áz", "âz", "éz", "êz", "íz", "óz", "ôz", "úz"
+If the string ends with "áz", remove the last two bytes from the string; append "azes" to the string; exit.
+If the string ends with "âz", remove the last two bytes from the string; append "azes" to the string; exit.
+If the string ends with "éz", remove the last two bytes from the string; append "ezes" to the string; exit.
+If the string ends with "êz", remove the last two bytes from the string; append "ezes" to the string; exit.
+If the string ends with "íz", remove the last two bytes from the string; append "izes" to the string; exit.
+If the string ends with "óz", remove the last two bytes from the string; append "ozes" to the string; exit.
+If the string ends with "ôz", remove the last two bytes from the string; append "ozes" to the string; exit.
+If the string ends with "úz", remove the last two bytes from the string; append "uzes" to the string; exit.
+\# acentos em sílabas prévias
+Slap an substring on the string.
+Subtract 2 from the substring's last.
+If the substring has any stressed vowel, append "es" to the string; exit.
+\# hiatos
+If the string ends with "aiz", remove the last two bytes from the string; append "ízes" to the string; exit.
+If the string ends with "auz", remove the last two bytes from the string; append "úzes" to the string; exit.
+\# regra padrão
+Append "es" to the string.
 
 To pluralize an string (english rules);
 To pluralize an string: \ nouns only
@@ -4529,6 +4704,9 @@ To load an source file:
 If the source file is nil, exit.
 Load the source file's path into the source file's buffer.
 If the i/o error is not blank, abort with "Não foi possível carregar o arquivo '" then the source file's path then "'."; exit.
+\Load the source file's path into an string.
+\If the i/o error is not blank, abort with "Não foi possível carregar o arquivo '" then the source file's path then "'."; exit.
+\Parse the string to the source file's buffer (portuguese contractions and synonyms rules).
 
 To load some source files:
 Loop.
@@ -4543,6 +4721,19 @@ Load the source file.
 Repeat.
 
 The loading timer is an timer.
+
+To parse an string to another string (portuguese contractions and synonyms rules):
+Clear the other string.
+Clear an third string.
+Slap an rider on the string.
+Loop.
+If the rider's source is blank, exit.
+Position the rider's token on the rider's source.
+Move the rider (code rules).
+If the rider's token's first's target is not any glom byte, append the rider's token to the other string; repeat.
+Append the rider's token to the other string giving the third string (portuguese contractions and synonyms rules).
+Put the rider's token into the third string.
+Repeat.
 
 To reduce some monikettes for utility use:
 Get an monikette from the monikettes.
@@ -5080,7 +5271,7 @@ Move the rider (compiler rules).
 Scan the type's name given the rider.
 Put the type's name into the type's plural name.
 If the english flag is set, pluralize the type's plural name (english rules).
-If the english flag is not set, pluralize the type's plural name (spanish rules).
+If the english flag is not set, pluralize the type's plural name (portuguese rules).
 If the rider's token is any has, scan the type given the rider (has or have); exit.
 If the rider's token is not any is, abort with "Eu esperava um 'is' ou um 'are', mas só achei um : '" then the rider's token then "'." and the rider; exit.
 \Pluralize the type's plural name.
