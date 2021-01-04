@@ -126,7 +126,7 @@
 |121|`y`|`little-y byte`|`byte-y`|
 |122|`z`|`little-z byte`|`byte-z`|
 |123|`{`|`left-brace byte`|`byte-abre-chaves` `byte-chavesq`|
-|124|`|`|`bar byte` `vertical-bar byte`|`byte-barra-vertical` `byte barra-vert`|
+|124|`\|`|`bar byte` `vertical-bar byte`|`byte-barra-vertical` `byte barra-vert`|
 |125|`}`|`right-brace byte`|`byte-fecha-chaves` `byte-chavedir`|
 |126|`~`|`tilde byte`|`byte-~`|
 |127|``|`delete byte`|`byte-del`|
