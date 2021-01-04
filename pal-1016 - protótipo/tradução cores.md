@@ -1,4 +1,4 @@
-== Tradução de cores ==
+## Tradução de cores
 
 ##### Cores como tipo de dado
 
