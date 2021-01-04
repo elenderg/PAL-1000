@@ -13,13 +13,13 @@
 |20|`caps key`|`tecla-fixar`||
 |27|`esc key` `escape key`|`tecla-esc`|`tecla-escapar`|
 |32|`space key`|`tecla-espaço`||
-|33|`page-up key`|`tecla-voltar-página`||
-|34|`page-down key`|`tecla-avançar-página`||
+|33|`page-up key`|`tecla-voltar-página`|`tecla página-acima`|
+|34|`page-down key`|`tecla-avançar-página`|`tecla página-abaixo`|
 |35|`end key`|`tecla-fim`||
 |36|`home key`|`tecla-início`||
-|37|`left-arrow key`|`tecla-esquerda`||
+|37|`left-arrow key`|`tecla-esquerda`|`tecla-àesquerda`|
 |38|`up-arrow key`|`tecla-acima`||
-|39|`right-arrow key`|`tecla-direita`||
+|39|`right-arrow key`|`tecla-direita`|`tecla-àdireita`|
 |40|`down-arrow key`|`tecla-abaixo`||
 |44|`print-screen key`|`tecla-imprimir`||
 |45|`insert key`|`tecla-inserir`|`tecla-ins`|
@@ -60,24 +60,24 @@
 |88|`x-key`|`tecla-x`||
 |89|`y-key`|`tecla-y`||
 |90|`z-key`|`tecla-z`||
-|91|`left-window key`|`tecla-windows-esquerda`||
-|92|`right-window key`|`tecla-windows-direita key`||
+|91|`left-window key`|`tecla-windows-esquerda`|`tecla win-esq`|
+|92|`right-window key`|`tecla-windows-direita key`|`tecla win-dir`|
 |93|`menu key`|`tecla-menu`||
-|96|`numpad-zero key`|`tecla-numpad-0`||
-|97|`numpad-one key`|`tecla-numpad-1`||
-|98|`numpad-two key`|`tecla-numpad-2`||
-|99|`numpad-three key`|`tecla-numpad-3`||
-|100|`numpad-four key`|`tecla-numpad-4`||
-|101|`numpad-five key`|`tecla-numpad-5`||
-|102|`numpad-six key`|`tecla-numpad-6`||
-|103|`numpad-seven key`|`tecla-numpad-7`||
-|104|`numpad-eight key`|`tecla-numpad-8`||
-|105|`numpad-nine key`|`tecla-numpad-9`||
-|106|`numpad-ast`|`tecla-numpad-asterisco`||
-|107|`numpad-cross key`|`tecla-numpad-mais`||
-|109|`numpad-dash key`|`tecla-numpad-traço`||
-|110|`numpad-period key`|`tecla-numpad-ponto`||
-|111|`numpad-slash key`|`tecla-numpad-barra`||
+|96|`numpad-zero key`|`tecla-numpad-0`|`tecla-nump0`|
+|97|`numpad-one key`|`tecla-numpad-1`|`tecla-nump1`|
+|98|`numpad-two key`|`tecla-numpad-2`|`tecla-nump2`|
+|99|`numpad-three key`|`tecla-numpad-3`|`tecla-nump3`|
+|100|`numpad-four key`|`tecla-numpad-4`|`tecla-nump4`|
+|101|`numpad-five key`|`tecla-numpad-5`|`tecla-nump5`|
+|102|`numpad-six key`|`tecla-numpad-6`|`tecla-nump6`|
+|103|`numpad-seven key`|`tecla-numpad-7`|`tecla-nump7`|
+|104|`numpad-eight key`|`tecla-numpad-8`|`tecla-nump8`|
+|105|`numpad-nine key`|`tecla-numpad-9`|`tecla-nump9`|
+|106|`numpad-asterisk key`|`tecla-numpad-asterisco`|`tecla nump-asterisco`|
+|107|`numpad-cross key`|`tecla-numpad-mais`|`tecla nump-mais`|
+|109|`numpad-dash key`|`tecla-numpad-traço`|`tecla nump-menos`|
+|110|`numpad-period key`|`tecla-numpad-ponto`|`tecla nump-ponto`|
+|111|`numpad-slash key`|`tecla-numpad-barra`|`tecla nump-barra`|
 |112|`f1-key`|`tecla-f1`||
 |113|`f2-key`|`tecla-f2`||
 |114|`f3-key`|`tecla-f3`||
@@ -90,7 +90,7 @@
 |121|`f10-key`|`tecla-f10`||
 |122|`f11-key`|`tecla-f11`||
 |123|`f12-key`|`tecla-f12`||
-|144|`numlock key`|`tecla-nu`||
+|144|`numlock key`|`tecla-numérico`|`tecla-numlock`|
 |145|`scrolllock key`|`tecla-deslocamento`||
 |187|`equal-sign key`|`tecla-igual`||
 |189|`dash key`|`tecla-sublinhado`||
