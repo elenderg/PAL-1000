@@ -167,7 +167,7 @@
 |167|`§`|`sector byte`|`byte-parágrafo`|
 |168|`¨`|`diaeresis byte`|`byte-dieresis`|
 |169|`©`|`copyright byte`|`byte-copyright`|
-|170|`ª`|`feminine byte`||
+|170|`ª`|`feminine byte`|`byte ordinal-a`|
 |171|`«`|`left-double-alligator-quote byte`||
 |172|`¬`|`not byte`|`byte-não`|
 |173|`­`|`soft-dash byte`||
@@ -183,7 +183,7 @@
 |183|`·`|`small-bullet byte`||
 |184|`¸`|`cedilla byte`|`byte-cedilha`|
 |185|`¹`|`superscript-one byte`|`byte-super1`|
-|186|`º`|`masculine byte`||
+|186|`º`|`masculine byte`|`byte ordinal-o|
 |187|`»`|`right-double-alligator-quote byte`||
 |188|`¼`|`one-quarter byte`|`byte um-quarto`|
 |189|`½`|`one-half byte`|`byte um-meio`|
