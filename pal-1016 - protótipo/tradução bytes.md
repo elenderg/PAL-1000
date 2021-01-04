@@ -212,7 +212,7 @@
 |212|`Ô`|`big-o-circumflex byte`|`byte-ô maiúsculo`|
 |213|`Õ`|`big-o-tilde byte`|`byte-õ maiúsculo`|
 |214|`Ö`|`big-o-diaere`|`byte-ö maiúsculo`|
-|215|`×`|`multiplication-symbol byte`|`byte-multiplic`|
+|215|`×`|`multiplication-symbol byte`|`byte-multiplicação`|
 |216|`Ø`|`big-o-stroke byte`|`byte-ø maiúsculo`|
 |217|`Ù`|`big-u-grave byte`|`byte-ù maiúsculo`|
 |218|`Ú`|`big-u-acute byte`|`byte-ú maiúsculo`|
