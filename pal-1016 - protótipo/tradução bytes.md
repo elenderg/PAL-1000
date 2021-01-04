@@ -129,7 +129,7 @@
 |124|`\|`|`bar byte` `vertical-bar byte`|`byte-barra-vertical` `byte barra-vert`|
 |125|`}`|`right-brace byte`|`byte-fecha-chaves` `byte-chavedir`|
 |126|`~`|`tilde byte`|`byte-~`|
-|127|``|`delete byte`|`byte-del`|
+|127|` `|`delete byte`|`byte-del`|
 |128|`€`|`euro-sign byte`|`byte-euro`|
 |130|`‚`|`lower-single-quote byte`||
 |131|`ƒ`|`little-f-hook byte`|`byte-ƒ`|
