@@ -1,6 +1,6 @@
-##Tradução da tabela de cores
+## Tradução de cores
 
-#####Cores como tipo de dado:
+##### Cores como tipo de dado
 
 |Origem|Tradução 1|Tradução 2|Tradução 3|Tradução 4|Tradução 5|
 |------|----------|----------|----------|----------|----------|
@@ -16,7 +16,7 @@
 |very very dark color|cor escuríssima|||||
 |very very light color|cor claríssima|||||
 
-#####Cores fixas
+##### Cores fixas
 
 |Origem|Tradução 1|Tradução 2|Tradução 3|Tradução 4|Tradução 5|
 |------|----------|----------|----------|----------|----------|
@@ -116,4 +116,3 @@
 |darkest violet color|violeta escuríssimo|||||
 |pink color|rosa|||||
 |gold color|dourado|||||
-

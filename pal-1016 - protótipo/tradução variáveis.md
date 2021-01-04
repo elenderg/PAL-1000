@@ -1,7 +1,6 @@
-##Tradução das variáveis
+## Tradução das variáveis
 
-#####Tipos de dados:
-
+##### Tipos de dados:
 |Origem|Tradução 1|Tradução 2|Tradução 3|Tradução 4|Tradução 5|
 |------|----------|----------|----------|----------|----------|
 |angle|ângulo|||||
@@ -84,7 +83,7 @@
 |width|largura|||||
 |window|janela|||||
 
-#####Variáveis globais
+##### Variáveis globais
 |Origem|Tradução 1|Tradução 2|Tradução 3|Tradução 4|Tradução 5|
 |------|----------|----------|----------|----------|----------|
 |i/o error|erro de e/s|
