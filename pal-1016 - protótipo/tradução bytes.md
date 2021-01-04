@@ -170,7 +170,7 @@
 |170|`ª`|`feminine byte`|`byte ordinal-a`|
 |171|`«`|`left-double-alligator-quote byte`|`byte angulares-esq`|
 |172|`¬`|`not byte`|`byte-não`|
-|173|`­`|`soft-dash byte`|`byte marcador-leve`|
+|173|`­`|`soft-dash byte`|`byte marcador-leve` `byte traço-leve`|
 |174|`®`|`registered byte`|`byte-registrado`|
 |175|`¯`|`upperscore byte`|`byte-mácron`|
 |176|`°`|`degree-symbol byte`|`byte-grau`|
