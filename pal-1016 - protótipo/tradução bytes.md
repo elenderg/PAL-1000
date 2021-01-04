@@ -131,13 +131,13 @@
 |126|`~`|`tilde byte`|`byte-~`|
 |127|` `|`delete byte`|`byte-del`|
 |128|`€`|`euro-sign byte`|`byte-euro`|
-|130|`‚`|`lower-single-quote byte`|`byte-subaspa`|
+|130|`‚`|`lower-single-quote byte`|`byte-subaspa` `byte aspa-inf`|
 |131|`ƒ`|`little-f-hook byte`|`byte-ƒ`|
-|132|`„`|`lower-double-quote byte`|`byte-subaspas`|
+|132|`„`|`lower-double-quote byte`|`byte-subaspas` `byte aspas-inf`|
 |133|`…`|`ellipsis byte`|`byte-elipse`|
 |134|`†`|`dagger byte`|`byte-adaga`|
-|135|`‡`|`double-dagger byte`|`byte adaga-dupla`|
-|136|`ˆ`|`circumflex byte`|´byte acento-cir`|
+|135|`‡`|`double-dagger byte`|`byte-dupladaga` `byte adaga-dupla`|
+|136|`ˆ`|`circumflex byte`|`byte acento-cir`|
 |137|`‰`|`per-mille-sign byte`|`byte por-milha`|
 |138|`Š`|`big-s-caron byte`|`byte-š maiúsculo`|
 |139|`‹`|`left-alligator-quote byte`|`byte angular-esq`|
