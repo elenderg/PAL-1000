@@ -71,7 +71,7 @@
 |square root|raiz quadrada|||||
 |string|sequência|série|escrito|escrita||
 |string thing|elemento de sequência|elemento de série|elemento de escrito|elemento de escrita||
-|substring|segmento|subsequência|subsérie|||
+|substring|subsequência|subsérie|segmento|||
 |terminal|terminal|||||
 |text|texto|||||
 |thing|elemento|||||
