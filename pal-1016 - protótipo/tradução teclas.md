@@ -61,7 +61,7 @@
 |89|`y-key`|`tecla-y`||
 |90|`z-key`|`tecla-z`||
 |91|`left-window key`|`tecla-windows-esquerda`|`tecla win-esq`|
-|92|`right-window key`|`tecla-windows-direita key`|`tecla win-dir`|
+|92|`right-window key`|`tecla-windows-direita`|`tecla win-dir`|
 |93|`menu key`|`tecla-menu`||
 |96|`numpad-zero key`|`tecla-numpad-0`|`tecla-nump0`|
 |97|`numpad-one key`|`tecla-numpad-1`|`tecla-nump1`|
