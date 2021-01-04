@@ -230,7 +230,7 @@
 |230|`æ`|`little-ae byte`|`byte-æ`|
 |231|`ç`|`little-c-cedilla byte`|`byte-ç`|
 |232|`è`|`little-e-grave byte`|`byte-è`|
-|233|`é`|`little-e-acute byte`|`byte`|
+|233|`é`|`little-e-acute byte`|`byte-é`|
 |234|`ê`|`little-e-circumflex byte`|`byte-ê`|
 |235|`ë`|`little-e-diaere`|`byte-ë`|
 |236|`ì`|`little-i-grave byte`|`byte-ì`|
