@@ -265,20 +265,22 @@ Append the monikette to the monikettes.
 If the string is "e", put "and" into the monikette's string; exit. \ and
 If the string is "ou", put "or" into the monikette's string; exit. \ or
 \\ from/given/with/using
-If the string is "from", put "from/given/with/using" into the monikette's string; exit.
-If the string is "given", put "from/given/with/using" into the monikette's string; exit.
-If the string is "with", put "from/given/with/using" into the monikette's string; exit.
-If the string is "using", put "from/given/with/using" into the monikette's string; exit.
-\\PAL
-If the string is "usando", put "from/given/with/using" into the monikette's string; exit.
-If the string is "utilizando", put "from/given/with/using" into the monikette's string; exit.
+If the string is "desde", put "from/given/with/using" into the monikette's string; exit.
+If the string is "de", put "from/given/with/using" into the monikette's string; exit.
+If the string is "dada", put "from/given/with/using" into the monikette's string; exit.
 If the string is "dado", put "from/given/with/using" into the monikette's string; exit.
-If the string is "a partir de", put "from/given/with/using" into the monikette's string; exit.
+If the string is "dadas", put "from/given/with/using" into the monikette's string; exit.
+If the string is "dados", put "from/given/with/using" into the monikette's string; exit.
+If the string is "com", put "from/given/with/using" into the monikette's string; exit.
+If the string is "usando", put "from/given/with/using" into the monikette's string; exit.
 \\ in/into/to
-If the string is "in", put "in/into/to" into the monikette's string; exit.
-If the string is "into", put "in/into/to" into the monikette's string; exit.
-If the string is "to", put "in/into/to" into the monikette's string; exit.
+If the string is "em", put "in/into/to" into the monikette's string; exit.
+If the string is "a", put "in/into/to" into the monikette's string; exit.
 \\ is/are
+If the string is "é", put "is/are" into the monikette's string; exit.
+If the string is "está", put "is/are" into the monikette's string; exit.
+If the string is "for", put "is/are" into the monikette's string; exit.
+If the string is "estiver", put "is/are" into the monikette's string; exit.
 If the string is "are", put "is/are" into the monikette's string; exit.
 If the string is "são", put "is/are" into the monikette's string; exit.
 If the string is "estão", put "is/are" into the monikette's string; exit.
@@ -1481,7 +1483,7 @@ Add an monikette to the monikettes given the name.
 To compile some monikettes and some parameters given an rider (indefinite article):
 If the compiler's abort flag is set, exit.
 Add an parameter to the parameters given "parameter" and the rider's token's first.
-If the rider's token is "another", put "other" into the parameter's name.
+\PAL
 If the rider's token is "outra", put "segunda" into the parameter's name.
 If the rider's token is "outro", put "segundo" into the parameter's name.
 \CAL
@@ -1491,7 +1493,7 @@ Scan an name given the rider.
 Extend the parameter's name with the name.
 If the rider's token is any called, compile the call'd part given the rider and the parameter.
 Resolve the parameter.
-If the parameter is duplicated in the parameters, abort with "Cara, você repetiou o parâmetro '" then the parameter's name then "'." and the parameter's locus; exit.
+If the parameter is duplicated in the parameters, abort with "Cara, você repetiu o parâmetro '" then the parameter's name then "'." and the parameter's locus; exit.
 Add an monikette to the monikettes given the parameter's type.
 
 To compile some monikettes and some parameters given an rider (monikette string):
@@ -1737,7 +1739,7 @@ If the rider's token is ".", exit.
 If the rider's token is any definite article, compile the routine reference given the rider (definite article); repeat.
 If the rider's token is any indefinite article, compile the routine reference given the rider (indefinite article); repeat.
 If the rider's token is any monikette string, compile the routine reference given the rider (monikette string); repeat.
-Abort with "'" then the rider's token then "' is not valid in an employ statement." and the rider.
+Abort with "'" then the rider's token then "' não é válido em  um employ statement." and the rider.
 
 To compile an routine reference given an rider (decide):
 Move the rider (compiler rules).
@@ -2279,7 +2281,7 @@ To decide if a name is any whereabouts:
 If the name is "paradeiro", say yes.
 \CAL
 If the name is "whereabouts", say yes.
-If the name is "paradero", say yes.
+
 Say no.
 To decide if an name is any valid field name:
 If the name is any magnitude, say no.
@@ -2385,8 +2387,13 @@ Say no.
 
 
 To decide if a string is any put:
+\PAL
+If the string is "pôr", say yes.
+\# Não precisa porque está como sinônimo: ver "To append an string to another string giving an third string (portuguese contractions and synonyms rules)"
+\If the string is "colocar", say yes. 
+\CAL
 If the string is "put", say yes.
-If the string is "poner", say yes.
+
 Say no.
 
 To decide if a string is any minus:
@@ -3359,6 +3366,9 @@ If the byte pointer is greater than the source file's buffer's last, repeat.
 To find an type and an nickname given an name:
 Void the type.
 Clear the nickname.
+\Find the type and the nickname given the name (forward).
+\If the type is not nil, exit.
+\Find the type and the nickname given the name (backward).
 Slap an substring on the name.
 Loop.
 If the substring is blank, exit.
@@ -3370,8 +3380,38 @@ Put the name's first into another substring's first.
 Put the substring's first minus 2 into the other substring's last.
 If the other substring is not blank, put the other substring into the nickname.
 If the other substring is blank, put the substring into the nickname.
+\
+To find a type and a nickname given a name (backward):
+Void the type.
+Clear the nickname.
+Slap a substring on the name.
+Loop.
+If the substring is blank, exit.
+Find the type given the substring and the type index.
+If the type is not nil, break.
+Skip to the previous word in the substring.
+Repeat.
+Put the name's last into another substring's last.
+Put the substring's last plus 2 into the other substring's first.
+If the other substring is not blank, put the other substring into the nickname.
+If the other substring is blank, put the substring into the nickname.
+\
+To find a type and a nickname given a name (forward):  \ original - no change
+Void the type.
+Clear the nickname.
+Slap a substring on the name.
+Loop.
+If the substring is blank, exit.
+Find the type given the substring and the type index.
+If the type is not nil, break.
+Skip to the next word in the substring.
+Repeat.
+Put the name's first into another substring's first.
+Put the substring's first minus 2 into the other substring's last.
+If the other substring is not blank, put the other substring into the nickname.
+If the other substring is blank, put the substring into the nickname.
 
-To find an variable given an name:
+To find a variable given a name:
 If the current routine is nil, void the variable; exit.
 Find the variable given the name and the current routine's locals.
 If the variable is not nil, exit.
@@ -3381,7 +3421,7 @@ Find the variable given the name and the global index.
 If the variable is not nil, exit.
 Find the variable given the name and the literal index.
 
-To find an variable given an name and some variables:
+To find a variable given a name and some variables:
 Void the variable.
 Loop.
 Get the variable from the variables.
@@ -3389,6 +3429,26 @@ If the variable is nil, exit.
 If the variable's name is the name, exit.
 If the variable's nickname is the name, exit.
 Repeat.
+\
+
+\To find an variable given an name:
+\If the current routine is nil, void the variable; exit.
+\Find the variable given the name and the current routine's locals.
+\If the variable is not nil, exit.
+\Find the variable given the name and the current routine's parameters.
+\If the variable is not nil, exit.
+\Find the variable given the name and the global index.
+\If the variable is not nil, exit.
+\ Find the variable given the name and the literal index.
+
+\To find an variable given an name and some variables:
+\Void the variable.
+\Loop.
+\Get the variable from the variables.
+\If the variable is nil, exit.
+\If the variable's name is the name, exit.
+\If the variable's nickname is the name, exit.
+\Repeat.
 
 An fragment is an thing with
 An tag [break, call external, call indirect, call internal, dereference, end if, epilog, exit, finalize, increment, intel, jump false, load address, load eax, loop, not, prolog, push address, push value, save eax, repeat, routine address],
@@ -4384,6 +4444,20 @@ Put the base type's name then " record" into an base name.
 Add an record type to the types given the name and the plural name and the base name.
 Add an field to the record type's fields given "next " then the type's name and "next" and the type's name and yes.
 Add another field to the record type's fields given "previous " then the type's name and "previous" and the type's name and yes.
+\\\\\
+\Add a field to the record type's fields given "next " then the type's name and "next" and the type's name and the on flag.
+\Add a spanish field to the record type's fields given "seguinte " then the type's name and "seguinte" and the type's name and the on flag.
+\Put "next " then the type's name into the spanish field's redefinition target name.
+\\Add a spanish reverse field to the record type's fields given the type's name then " seguinte" and "seguinte" and the type's name and the on flag.
+\Put "next " then the type's name into the spanish reverse field's redefinition target name.
+\\Add another field to the record type's fields given "previous " then the type's name and "previous" and the type's name and the on flag.
+\\Add another spanish field to the record type's fields given "anterior " then the type's name and "anterior" and the type's name and the on flag.
+\\Put "previous " then the type's name into the other spanish field's redefinition target name.
+\Add another spanish reverse field to the record type's fields given the type's name then " anterior" and "anterior" and the type's name and the on flag.
+\Put "previous " then the type's name into the other spanish reverse field's redefinition target name.
+
+\\\\\
+
 If the type's fields are not empty, append the type's fields to the record type's fields.
 Index the record type.
 \ fix up original type to look like an pointer
@@ -4392,6 +4466,18 @@ Put the record type's name into the type's target name.
 Add an chain type to the types given the type's plural name and "" and the base type's plural name.
 Add an third field to the chain type's fields given "first " then the type's name and "first" and the type's name and yes.
 Add an fourth field to the chain type's fields given "last " then the type's name and "last" and the type's name and yes.
+\\\\
+\Add a third field to the chain type's fields given "first " then the type's name and "first" and the type's name and the on flag.
+\Add a third spanish field to the chain type's fields given "primero " then the type's name and "primero" and the type's name and the on flag.
+\Put "first " then the type's name into the third spanish field's redefinition target name.
+\Add a third feminine spanish field to the chain type's fields given "primera " then the type's name and "primera" and the type's name and the on flag.
+\Put "first " then the type's name into the third feminine spanish field's redefinition target name.
+\Add a fourth field to the chain type's fields given "last " then the type's name and "last" and the type's name and the on flag.
+\Add a fourth spanish field to the chain type's fields given "último " then the type's name and "último" and the type's name and the on flag.
+\Put "last " then the type's name into the fourth spanish field's redefinition target name.
+\Add a fourth spanish feminine field to the chain type's fields given "última " then the type's name and "última" and the type's name and the on flag.
+\Put "last " then the type's name into the fourth spanish feminine field's redefinition target name.
+\\\\
 Index the chain type.
 
 To resolve an type (index plural):
@@ -4727,7 +4813,7 @@ Scan the routine's routine body given the rider.
 To scan an routine given an rider (alternate wording):  \ *** for alternate wordings
 Privatize the rider.
 Move the rider (compiler rules).
-If the rider's token is not "to", abort with "Esse ponto e vírgula tá no lugar errado." and the original rider; exit.
+If the rider's token is not the start of any routine, abort with "Esse ponto e vírgula tá no lugar errado." and the original rider; exit.
 Put the original rider's token's first into the routine's routine body's first.
 Put the original rider's token's last into the routine's routine body's last.
 Move the original rider (compiler rules).
