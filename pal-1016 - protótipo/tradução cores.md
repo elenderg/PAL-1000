@@ -46,7 +46,7 @@
 |darkest orange color|laranja escuríssimo|marrom escuríssimo||||
 |lightest yellow color|amarelo claríssimo|||||
 |lighter yellow color|amarelo muito claro|||||
-|light yellow color|amarelo claro|||||
+|light yellow color|amarelo-claro|||||
 |yellow color|amarelo|||||
 |dark yellow color|amarelo escuro|||||
 |darker yellow color|amarelo muito escuro|||||
@@ -60,9 +60,9 @@
 |darkest lime color|limão escuríssimo|||||
 |lightest green color|verde claríssimo|||||
 |lighter green color|verde muito claro|||||
-|light green color|verde claro|||||
+|light green color|verde-claro|||||
 |green color|verde|||||
-|dark green color|verde escuro|||||
+|dark green color|verde-escuro|||||
 |darker green color|verde muito escuro|||||
 |darkest green color|verde escuríssimo|||||
 |lightest teal color|turquesa claríssimo|||||
@@ -72,13 +72,13 @@
 |dark teal color|turquesa escuro|||||
 |darker teal color|turquesa muito escuro|||||
 |darkest teal color|turquesa escuríssimo|||||
-|lightest cyan color|ciano claríssimo|||||
-|lighter cyan color|ciano muito claro|||||
-|light cyan color|ciano claro|||||
-|cyan color|ciano|||||
-|dark cyan color|ciano escuro|||||
-|darker cyan color|ciano muito escuro|||||
-|darkest cyan color|ciano escuríssimo|||||
+|lightest cyan color|cíano claríssimo|ciã claríssimo||||
+|lighter cyan color|cíano muito claro|ciã muito claro||||
+|light cyan color|cíano claro|ciã claro||||
+|cyan color|cíano|ciã||||
+|dark cyan color|cíano escuro|ciã escuro||||
+|darker cyan color|cíano muito escuro|ciã muito escuro||||
+|darkest cyan color|cíano escuríssimo|ciã escuríssimo||||
 |lightest sky/sky blue color|azul-celeste claríssimo|cerúleo claríssimo||||
 |lighter sky/sky blue color|azul-celeste muito claro|cerúleo muito claro||||
 |light sky/sky blue color|azul-celeste claro|cerúleo claro||||
