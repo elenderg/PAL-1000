@@ -151,14 +151,14 @@
 |150|`–`|`en-dash byte`|`byte meia-risca`|
 |151|`—`|`em-dash byte`|`byte-travessão`|
 |152|`˜`|`little-tilde byte`|`byte-til`|
-|153|`™`|`trade-mark byte`|`byte marca-registrada|
+|153|`™`|`trade-mark byte`|`byte-registrado`|
 |154|`š`|`little-s-caron byte`|`byte-š`|
 |155|`›`|`right-alligator-quote byte`||
 |156|`œ`|`little-oe byte`|`byte-œ`|
 |158|`ž`|`little-z-caron byte`|`byte-ž`|
 |159|`Ÿ`|`big-y-diaere`|`byte-ÿ maiúsculo`|
 |160|` `|`non-breaking-space byte`|`byte-nbsp`|
-|161|`¡`|`inverted-exclamation-mark byte`|`byte exclamação-inv|
+|161|`¡`|`inverted-exclamation-mark byte`|`byte exclam-inv`|
 |162|`¢`|`cent-sign byte`|`byte-centavo`|
 |163|`£`|`hash-tag byte` `hashtag byte` `pound-sign byte`|`byte-libra`|
 |164|`¤`|`currency-sign byte`||
