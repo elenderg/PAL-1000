@@ -790,60 +790,60 @@ Lista de Termos em Ordem Alfabética
 |lexicon|léxico|-|-|-|-|
 |light blue color|–|–|–|–|azul-claro|
 |light blue pen|–|–|–|–|pincal azul-claro|
-|light color|–|–|–|–|–|
-|light cyan color|–|–|–|–|–|
-|light cyan pen|–|–|–|–|–|
-|light gray color|–|–|–|–|–|
-|light gray pen|–|–|–|–|–|
-|light green color|–|–|–|–|–|
-|light green pen|–|–|–|–|–|
-|light lime color|–|–|–|–|–|
-|light lime pen|–|–|–|–|–|
-|light magenta color|–|–|–|–|–|
-|light magenta pen|–|–|–|–|–|
-|light orange color|–|–|–|–|–|
-|light orange pen|–|–|–|–|–|
-|light purple color|–|–|–|–|–|
-|light purple pen|–|–|–|–|–|
-|light red color|–|–|–|–|–|
-|light red pen|–|–|–|–|–|
-|light sky blue color|–|–|–|–|–|
-|light sky blue pen|–|–|–|–|–|
-|light sky color|–|–|–|–|–|
-|light sky pen|–|–|–|–|–|
-|light teal color|–|–|–|–|–|
-|light teal pen|–|–|–|–|–|
-|light violet color|–|–|–|–|–|
-|light violet pen|–|–|–|–|–|
-|light yellow color|–|–|–|–|–|
-|light yellow pen|–|–|–|–|–|
+|light color|–|–|–|–|cor clara|
+|light cyan color|–|–|–|ciã claro|cíano claro|
+|light cyan pen|–|–|–|pincel ciã claro|pincel cíano claro|
+|light gray color|–|–|–|–|cinza claro|
+|light gray pen|–|–|–|–|pincel cinza claro|
+|light green color|–|–|–|–|verde-claro|
+|light green pen|–|–|–|–|pincel verde-claro|
+|light lime color|–|–|–|–|limão claro|
+|light lime pen|–|–|–|–|pincel limão claro|
+|light magenta color|–|–|–|–|magenta claro|
+|light magenta pen|–|–|–|–|pincel magenta claro|
+|light orange color|–|–|–|–|laranja claro|
+|light orange pen|–|–|–|–|pincel laranja claro|
+|light purple color|–|–|–|–|púrpura claro|
+|light purple pen|–|–|–|–|pincel púrpura claro|
+|light red color|–|–|–|–|vermelho claro|
+|light red pen|–|–|–|–|pincel vermelho claro|
+|light sky blue color|–|–|–|–|azul-celeste claro|
+|light sky blue pen|–|–|–|–|pincel azul-celeste claro|
+|light sky color|–|–|–|–|cerúleo claro|
+|light sky pen|–|–|–|–|pincel cerúleo claro|
+|light teal color|–|–|–|–|turqueza claro|
+|light teal pen|–|–|–|–|pincel turqueza claro|
+|light violet color|–|–|–|–|violeta claro|
+|light violet pen|–|–|–|–|pincel violeta claro|
+|light yellow color|–|–|–|–|amarelo-claro|
+|light yellow pen|–|–|–|–|pincel amarelo-claro|
 |lighten (verbo)|clarear|-|-|-|-|
-|lighter blue color|–|–|–|–|–|
-|lighter blue pen|–|–|–|–|–|
-|lighter cyan color|–|–|–|–|–|
-|lighter cyan pen|–|–|–|–|–|
-|lighter gray color|–|–|–|–|–|
-|lighter gray pen|–|–|–|–|–|
-|lighter green color|–|–|–|–|–|
-|lighter green pen|–|–|–|–|–|
-|lighter lime color|–|–|–|–|–|
-|lighter lime pen|–|–|–|–|–|
-|lighter magenta color|–|–|–|–|–|
-|lighter magenta pen|–|–|–|–|–|
-|lighter orange color|–|–|–|–|–|
-|lighter orange pen|–|–|–|–|–|
-|lighter purple color|–|–|–|–|–|
-|lighter purple pen|–|–|–|–|–|
-|lighter red color|–|–|–|–|–|
-|lighter red pen|–|–|–|–|–|
-|lighter sky blue color|–|–|–|–|–|
-|lighter sky blue pen|–|–|–|–|–|
-|lighter sky color|–|–|–|–|–|
-|lighter sky pen|–|–|–|–|–|
-|lighter teal color|–|–|–|–|–|
-|lighter teal pen|–|–|–|–|–|
-|lighter violet color|–|–|–|–|–|
-|lighter violet pen|–|–|–|–|–|
+|lighter blue color|–|–|–|–|azul muito claro|
+|lighter blue pen|–|–|–|–|pincel azul muito claro|
+|lighter cyan color|–|–|–|ciã muito claro|cíano muito claro|
+|lighter cyan pen|–|–|–|pincel ciã muito claro|pincel cíano muito claro|
+|lighter gray color|–|–|–|–|cinza muito claro|
+|lighter gray pen|–|–|–|–|pincel cinza muito claro|
+|lighter green color|–|–|–|–|verde muito claro|
+|lighter green pen|–|–|–|–|pincel verde muito claro|
+|lighter lime color|–|–|–|–|limão muito claro|
+|lighter lime pen|–|–|–|–|pincel limão muito claro|
+|lighter magenta color|–|–|–|–|magenta muito claro|
+|lighter magenta pen|–|–|–|–|pincel magenta muito claro|
+|lighter orange color|–|–|–|–|laranja muito claro|
+|lighter orange pen|–|–|–|–|pincel laranja muito claro|
+|lighter purple color|–|–|–|–|púrpura muito claro|
+|lighter purple pen|–|–|–|–|pincel púrpura muito claro|
+|lighter red color|–|–|–|–|vermelho muito claro|
+|lighter red pen|–|–|–|–|pincel vermelho muito claro|
+|lighter sky blue color|–|–|–|–|azul-celeste muito claro|
+|lighter sky blue pen|–|–|–|–|pincel azul-celeste muito claro|
+|lighter sky color|–|–|–|–|cerúleo muito claro|
+|lighter sky pen|–|–|–|–|pincel cerúleo muito claro|
+|lighter teal color|–|–|–|–|turqueza muito claro|
+|lighter teal pen|–|–|–|–|pincel turqueza muito claro|
+|lighter violet color|–|–|–|–|violeta muito claro|
+|lighter violet pen|–|–|–|–|pincel violeta muito claro|
 |lighter yellow color|–|–|–|–|–|
 |lighter yellow pen|–|–|–|–|–|
 |lightest blue color|–|–|–|–|–|
