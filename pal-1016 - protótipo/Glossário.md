@@ -488,7 +488,7 @@ Lista de Termos em Ordem Alfabética
 |dwxsize|-|-|-|-|-|
 |dwy|-|-|-|-|-|
 |dwysize|-|-|-|-|-|
-|dyad|-|-|-|-|-|
+|dyad|-|-|-|-|díade|
 |d1|-|-|-|-|-|
 |d2|-|-|-|-|-|
 |d3|-|-|-|-|-|
@@ -608,50 +608,50 @@ Lista de Termos em Ordem Alfabética
 ### #G
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|gcd|Máximo divisor comum|MDC|–|–|–|
+|gcd|Máximo divisor comum|MDC|–|–|mdc|
 |gcpresults|-|-|-|-|-|
 |gdiplusstartupinput|-|-|-|-|-|
 |gdiplusversion|-|-|-|-|-|
-|generate|-|-|-|-|-|
-|geometric figure|–|–|–|–|–|
-|get|-|-|-|-|-|
+|generate|-|-|-|-|gerar|
+|geometric figure|–|–|–|–|figura geométrica|
+|get|-|-|-|obt-|obter|
 |getalertboundary|-|-|-|-|-|
-|getevents|-|-|-|-|-|
-|getinfo|-|-|-|-|-|
+|getevents|-|-|-|-|obt-eventos|
+|getinfo|-|-|-|-|obt-info|
 |getnotifyeventhandle|-|-|-|-|-|
 |getoutputobjecttoken|-|-|-|-|-|
 |getoutputstream|-|-|-|-|-|
-|getpriority|-|-|-|-|-|
+|getpriority|-|-|-|-|obt-prior|
 |getrate|-|-|-|-|-|
-|getstatus|-|-|-|-|-|
+|getstatus|-|-|-|-|obt-estado|
 |getsyncspeaktimeout|-|-|-|-|-|
-|getvoice|-|-|-|-|-|
-|getvolume|-|-|-|-|-|
+|getvoice|-|-|-|-|obt-voz|
+|getvolume|-|-|-|-|obt-volume|
 |given <sup>[D]</sup>|dado|usando|segundo|conforme|consoante|
 |given <sup>[E]</sup>|a partir de|–|–|–|–|
-|g-key|–|–|–|–|–|
-|globalize|-|-|-|-|-|
-|global|abrangente|-|-|-|-|
-|go|-|-|-|-|-|
-|gold color|–|–|–|–|–|
-|gold pen|–|–|–|–|–|
+|g-key|–|–|–|–|tecla-g|
+|globalize|-|-|-|-|globalizar|
+|global|abrangente|-|-|-|global|
+|go|-|-|-|-|ir|
+|gold color|–|–|–|–|dourado|
+|gold pen|–|–|–|–|pincel dourado|
 |gpimage|–|–|–|–|–|
 |gprect|-|-|-|-|-|
 |gptoken|–|–|–|–|–|
 |grain|–|–|–|–|–|
-|gray color|–|–|–|–|–|
-|gray pen|–|–|–|–|–|
-|grayscale (verbo)|-|-|-|-|-|
-|greater-than-sign byte|–|–|–|–|–|
-|green byte|-|-|-|-|-|
-|green color|cor verde|–|–|–|–|
-|green pen|pincel verde|–|–|–|–|
-|greenish color|cor esverdeada|–|–|–|–|
+|gray color|–|–|–|cinzento|cinza|
+|gray pen|–|–|–|–|pincel cinza|
+|grayscale (verbo)|-|-|-|-|acinzentar|
+|greater-than-sign byte|–|–|–|–|byte->|
+|green byte|-|-|-|-|byte-cinza|
+|green color|cor verde|–|–|–|verde|
+|green pen|pincel verde|–|–|–|pincel verde|
+|greenish color|cor esverdeada|–|–|–|esverdeado|
 |grid color|cor da grade|cor da grelha|cor da estante|–|–|
 |group (substantivo)|grupo|-|-|-|-|
 |group (verbo)|agrupar|reunir|ajuntar|-|-|
 |group-separator byte|–|–|–|–|–|
-|guid|Identificador Único Abrangente|–|–|–|–|
+|guid|Identificador Único Abrangente|–|–|–|guid|
 
 
 
@@ -677,16 +677,16 @@ Lista de Termos em Ordem Alfabética
 |hdevnames|-|-|-|-|-|
 |header|título|cabeçalho|nome|-|-|
 |heading|proa|rumo|norte|sentido|direção|
-|heap count|–|–|–|–|–|
-|height|–|–|–|–|–|
-|hex string|–|–|–|–|–|
+|heap count|–|–|–|–|contagem da pilha|
+|height|–|–|–|–|altura|
+|hex string|–|–|–|sequência hexadecimal|hexcrita|
 |hfont|Número identificador da fonte|–|–|–|–|
 |hicon|Número identificador do ícone|–|–|–|–|
 |hiconsm|-|-|-|-|-|
 |hilite color|cor de realce|cor de destaque|–|–|–|
 |hinstance|-|-|-|-|-|
-|h-key|–|–|–|–|–|
-|home key|tecla Home|–|–|–|–|
+|h-key|–|–|–|–|tecla-h|
+|home key|tecla Home|–|–|–|tecla-rome|
 |hpen|Número identificador da pincel|Número identificador da canetinha|Número identificador do lápis de cor|–|–|
 |hprocess|-|-|-|-|-|
 |hrgn|Número identificador da região|–|–|–|–|
@@ -696,7 +696,7 @@ Lista de Termos em Ordem Alfabética
 |hthread|-|-|-|-|-|
 |hwnd|número identificador de janela de console|-|-|-|-|
 |hwndowner|número identificador de propietário da janela|identificador de dono da janela|-|-|-|
-|hue|tom|matiz| coloração|tonalidade|–|
+|hue|tom|matiz|coloração|tonalidade|–|
 
 
 ### #I
@@ -706,56 +706,56 @@ Lista de Termos em Ordem Alfabética
 |i-beam cursor|–|–|–|–|–|
 |idata section|-|-|-|-|-|
 |iid|Número identificador da interface|–|–|–|–|
-|i-key|–|–|–|–|–|
+|i-key|–|–|–|–|tecla-i|
 |image strings [page]|-|-|-|-|-|
 |imagebase|-|-|-|-|-|
 |imagedirectoryentryimportaddress|-|-|-|-|-|
 |imagedirectoryentryimportsize|-|-|-|-|-|
-|imagine|-|-|-|-|-|
+|imagine|-|-|-|-|imaginar|
 |imaxsockets|-|-|-|-|-|
 |imaxudpdg|-|-|-|-|-|
-|import|-|-|-|-|-|
+|import|-|-|-|-|importar|
 |import header|dados do título|cabeçalho de importação|–|–|–|
 |in_addr|-|-|-|-|-|
-|include|-|-|-|-|-|
-|increment tag|–|–|–|–|–|
-|indent|avanço|recuo (à direita)|–|–||
-|index|-|-|-|-|-|
+|include|-|-|-|-|incluir|
+|increment tag|–|–|–|–|marca-incrementar|
+|indent|avanço|recuo (à direita)|–|–|–|
+|index|-|-|-|índice|índex|
 |initialchecksum|-|-|-|-|-|
 |initialip|-|-|-|-|-|
 |initialirelativecs|-|-|-|-|-|
-|initalize|-|-|-|-|-|
+|initalize|-|-|-|-|inicializar|
 |initialrelativess|-|-|-|-|-|
 |initialsp|-|-|-|-|-|
 |input|fluxo de entrada|inserção|–|imposição|impor|
-|insert|-|-|-|-|-|
-|insert key|–|–|–|–|–|
-|intel tag|–|–|–|–|–|
-|intermediate|–|–|–|–|–|
-|internalize|-|-|-|-|-|
-|intersect|-|-|-|-|-|
-|invert|-|-|-|-|-|
-|inverted-exclamation-mark byte|–|–|–|–|–|
-|inverted-question-mark byte|–|–|–|–|–|
-|ip address|-|-|-|-|-|
+|insert|-|-|-|-|inserir|
+|insert key|–|–|–|–|tecla-inserir|
+|intel tag|–|–|–|–|marca-intel|
+|intermediate|–|–|mediar|intervenir|intermediário|
+|internalize|-|-|-|-|internalizar|
+|intersect|-|-|-|-|interserir|
+|invert|-|-|-|-|inverter|
+|inverted-exclamation-mark byte|–|–|–|–|byte-¡|
+|inverted-question-mark byte|–|–|–|–|byte-¿|
+|ip address|-|-|-|endereço de ip|ip|
 |is past|ultrapassar|passar de|passou|–|–|
-|is set|estiver definido|estiver verde|estiver ligado|–|–|
+|is set|estiver definido|estiver verde|estiver ligado|for positivo|estiver positivado|
 |istream object|-|-|-|-|-|
 |istream vtable record|-|-|-|-|-|
 |isuisupported|-|-|-|-|-|
-|item|-|-|-|-|-|
+|item|-|-|-|-|item|
 
 
 ### #J-K
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|j-key|–|–|–|–|–|
+|j-key|–|–|–|–|tecla-j|
 |joke|-|-|–|–|–|
-|jump (verbo)|-|-|-|-|-|
+|jump (verbo)|-|-|-|saltar|pular|
 |jump false tag|–|–|–|–|–|
-|just|apenas|somente|–|–|–|
+|just|apenas|somente|–|–|só|
 |key|tecla|–|–|–|–|
-|k-key|–|–|–|–|–|
+|k-key|–|–|–|–|tecla-k|
 |kilobyte|quilobyte|kb|–|-|-|
 |kind|–|–|–|espécie|grupo|
 |knob|botão de regulagem|botão de volume|volume|regulador|-|
@@ -768,28 +768,28 @@ Lista de Termos em Ordem Alfabética
 |lbhatch|-|-|-|-|-|
 |lbstyle|-|-|-|-|-|
 |lcm|Mínimo múltiplo comum|MMC|–|–|–|
-|left|–|–|–|–|–|
+|left|–|–|–|–|esquerda|
 |left-alligator byte|–|–|–|–|–|
 |left-alligator-quote byte|–|–|–|–|–|
-|left-arrow key|–|–|–|–|–|
-|left-brace byte|–|–|–|–|–|
-|left-bracket byte|–|–|–|–|–|
-|left button|-|-|-|-|-|
+|left-arrow key|–|–|–|–|tecla-àesq|
+|left-brace byte|–|–|–|byte-chaveàesq|tecla-{|
+|left-bracket byte|–|–|–|byte-colcheteàesq|byte-\[|
+|left button|-|-|-|-|botão esquerdo|
 |left-double-alligator-quote byte|–|–|–|–|–|
 |left-double-quote byte|–|–|–|–|–|
-|left-paren byte|–|–|–|–|–|
+|left-paren byte|–|–|–|byte-parenàesq|byte-(|
 |left-single-quote byte|–|–|–|–|–|
-|left-window key|–|–|–|–|–|
+|left-window key|–|–|–|–|tecla-janelesq|
 |lenght <sup>[D]</sup>|medida|dimensão|–|–|–|
 |lenght <sup>[E]</sup>|comprimento|tamanho|–|–|–|
-|loop <sup>[D]</sup>|reciclar|recicle|–|–|–|
+|loop <sup>[D]</sup>|reciclar|recicle|ciclo|laço|–|
 |loop <sup>[E]</sup>|Percorrer|–|–|–|–|
-|less-than-sign byte|–|–|–|–|–|
+|less-than-sign byte|–|–|–|–|byte-<|
 |letter|letra|–|–|–|–|
-|letter height|–|–|–|–|–|
+|letter height|–|–|–|–|altura da letra|
 |lexicon|léxico|-|-|-|-|
-|light blue color|–|–|–|–|–|
-|light blue pen|–|–|–|–|–|
+|light blue color|–|–|–|–|azul-claro|
+|light blue pen|–|–|–|–|pincal azul-claro|
 |light color|–|–|–|–|–|
 |light cyan color|–|–|–|–|–|
 |light cyan pen|–|–|–|–|–|

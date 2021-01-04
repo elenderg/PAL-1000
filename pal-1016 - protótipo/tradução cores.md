@@ -88,9 +88,9 @@
 |darkest sky/sky blue color|azul-celeste escuríssimo|cerúleo escuríssimo||||
 |lightest blue color|azul claríssimo|||||
 |lighter blue color|azul muito claro|||||
-|light blue color|azul claro|||||
+|light blue color|azul-claro|||||
 |blue color|azul|||||
-|dark blue color|azul escuro|||||
+|dark blue color|azul-escuro|||||
 |darker blue color|azul muito escuro|||||
 |darkest blue color|azul escuríssimo|||||
 |lightest purple color|púrpura claríssimo|||||
