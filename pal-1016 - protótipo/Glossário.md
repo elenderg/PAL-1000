@@ -401,7 +401,7 @@ Lista de Termos em Ordem Alfabética
 |dereference tag|–|–|–|–|–|
 |deque|decue|desenfileirar|remover da fila|–|–|
 |deselect|–|–|–|–|–|
-|de-sign|–|–|–|–|–|
+|de-sign|dessinalar|–|–|–|–|
 |designator w/o backslash|–|–|–|–|–|
 |desktop color|–|–|–|–|cor do desktop|
 |destroy|–|–|–|–|destruir|
