@@ -739,7 +739,7 @@ Lista de Termos em Ordem Alfabética
 |inverted-question-mark byte|–|–|–|–|byte-¿|
 |ip address|-|-|-|endereço de ip|ip|
 |is past|ultrapassar|passar de|passou|–|–|
-|is set|estiver definido|estiver verde|estiver ligado|for positivo|estiver positivado|
+|is set|estiver definido|estiver verde|está/iver ligado|é/for positivo|está/iver positivado|
 |istream object|-|-|-|-|-|
 |istream vtable record|-|-|-|-|-|
 |isuisupported|-|-|-|-|-|
