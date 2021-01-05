@@ -240,7 +240,7 @@ Lista de Termos em Ordem Alfabética
 |code section|-|-|-|-|seção de código|
 |collapse|-|-|-|colapso|colapsar|
 |colon byte|–|–|–|–|byte dois-pontos|
-|color|–|–|–|–|cor|
+|color|–|–|–|cor|tom|
 |colorref|código da cor|número da cor|–|–|cor-ref|
 |column\#|número da coluna|–|–|–|–|
 |comma byte|–|–|–|–|byte-vírgula|
@@ -696,7 +696,7 @@ Lista de Termos em Ordem Alfabética
 |hthread|-|-|-|-|-|
 |hwnd|número identificador de janela de console|-|-|-|-|
 |hwndowner|número identificador de propietário da janela|identificador de dono da janela|-|-|-|
-|hue|tom|matiz|coloração|tonalidade|–|
+|hue|matiz|coloração|tonalidade|tom|–|
 
 
 ### #I
