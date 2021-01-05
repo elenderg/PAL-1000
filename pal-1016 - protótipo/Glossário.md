@@ -23,7 +23,7 @@ Lista de Termos em Ordem Alfabética
 |a-key|–|–|–|–|tecla-a|
 |align|alinhar|-|-|-|nivelar|
 |alt key|–|–|–|–|tecla-alt|
-|amount|quantia|quantidade|–|–|–|
+|amount|quantia|quantidade|porção|montante|magnitude|
 |ampersand byte|–|–|–|–|tecla-&|
 |angle|–|–|–|–|ângulo|
 |anywhere <sup>[D]</sup>|algures|qualquer|–|–|em qualquer lugar|
