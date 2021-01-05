@@ -1202,7 +1202,7 @@ Lista de Termos em Ordem Alfabética
 |pen (verbo)|colorir|-|-|-|-|
 |pen size|–|–|–|–|–|
 |per|–|–|–|–|–|
-|percent|–|–|–|–|–|
+|percent|–|–|–|percentual|porcentagem|
 |percent-sign byte|–|–|–|–|–|
 |period byte|–|–|–|–|–|
 |per-mille-sign byte|–|–|–|–|–|
