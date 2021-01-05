@@ -1563,7 +1563,7 @@ Lista de Termos em Ordem Alfabética
 |tmstruckout|-|-|-|-|-|
 |tmunderlined|-|-|-|-|-|
 |tmweight|-|-|-|-|-|
-|token|marco|signo|símbolo|marca|sinal|
+|token|marco|signo|símbolo|–|–|
 |top|parte de cima|–|–|–|–|
 |tpi|minipontos por polegada|–|–|–|–|
 |tpp|minipontos por ponto|–|–|–|–|
