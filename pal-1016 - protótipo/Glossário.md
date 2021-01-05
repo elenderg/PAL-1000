@@ -1258,7 +1258,8 @@ Lista de Termos em Ordem Alfabética
 |query string <sup>[E]</sup>|texto da consulta|–|–|–|–|
 |question-mark byte|–|byte-?|–|–|–|
 |quora|question or answer|-|-|-|pesquisa|
-|quote (verbo)|citar|referenciar|fazer referência|-|-|
+|quote (verbo)|citar|referenciar|fazer referência|-|aspear|
+|quoted|–|–|–|–|aspeado|
 |quotient|quociente|–|–|–|–|
 |quit|encerrar|sair|fechar|finalizar|-|
 
