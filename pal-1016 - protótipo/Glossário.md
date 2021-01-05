@@ -1543,38 +1543,38 @@ Lista de Termos em Ordem Alfabética
 |timestamp|-|-|-|-|-|
 |timestamp|-|-|-|-|-|
 |t-key|tecla t|–|–|–|–|
-|tmascent|-|-|-|-|-|
-|tmavecharwidth|-|-|-|-|-|
-|tmbreakchar|-|-|-|-|-|
-|tmcharset|-|-|-|-|-|
-|tmdefaultchar|-|-|-|-|-|
-|tmdescent|-|-|-|-|-|
-|tmdigitizedaspectx|-|-|-|-|-|
-|tmdigitizedaspecty|-|-|-|-|-|
-|tmexternalleading|-|-|-|-|-|
-|tmfirstchar|-|-|-|-|-|
-|tmheight|-|-|-|-|-|
-|tminternalleading|-|-|-|-|-|
-|tmitalic|-|-|-|-|-|
-|tmlastchar|-|-|-|-|-|
-|tmmaxcharwidth|-|-|-|-|-|
-|tmoverhang|-|-|-|-|-|
-|tmpitchandfamily|-|-|-|-|-|
-|tmstruckout|-|-|-|-|-|
-|tmunderlined|-|-|-|-|-|
-|tmweight|-|-|-|-|-|
-|token|marco|signo|símbolo|–|–|
+|tmascent|–|–|–|–|–|
+|tmavecharwidth|–|–|–|–|–|
+|tmbreakchar|–|–|–|–|–|
+|tmcharset|–|–|–|–|–|
+|tmdefaultchar|–|–|–|–|–|
+|tmdescent|–|–|–|–|–|
+|tmdigitizedaspectx|–|–|–|–|–|
+|tmdigitizedaspecty|–|–|–|–|–|
+|tmexternalleading|–|–|–|–|–|
+|tmfirstchar|–|–|–|–|–|
+|tmheight|–|–|–|–|–|
+|tminternalleading|–|–|–|–|–|
+|tmitalic|–|–|–|–|–|
+|tmlastchar|–|–|–|–|–|
+|tmmaxcharwidth|–|–|–|–|–|
+|tmoverhang|–|–|–|–|–|
+|tmpitchandfamily|–|–|–|–|–|
+|tmstruckout|–|–|–|–|–|
+|tmunderlined|–|–|–|–|–|
+|tmweight|–|–|–|–|–|
+|token|–|toque|marco|signo|símbolo|
 |top|parte de cima|–|–|–|–|
 |tpi|minipontos por polegada|–|–|–|–|
 |tpp|minipontos por ponto|–|–|–|–|
 |twip <sup>[E]</sup>|miniponto|microponto|minipixel|micropixel|tuípe|
 |tracer color|cor usada pelo pintor|–|–|–|–|
-|trade-mark byte|-|byte ®|–|–|–|
-|track|-|-|-|-|-|
-|translate|-|-|-|-|-|
-|transmogrify|-|-|-|-|-|
-|trim|-|-|-|-|-|
-|turn|-|-|-|-|-|
+|trade-mark byte|-|byte-®|–|–|–|
+|track|–|–|–|–|–|
+|translate|–|–|–|–|–|
+|transmogrify|–|–|–|–|–|
+|trim|–|–|–|–|–|
+|turn|–|–|–|–|–|
 |two byte|–|–|–|–|–|
 |two key|–|–|–|–|–|
 |type|tipo|–|–|–|–|
