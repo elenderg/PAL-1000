@@ -263,14 +263,15 @@ Append the monikette to the monikettes.
 \PAL
 \\ conjunctions
 If the string is "e", put "and" into the monikette's string; exit. \ and
-If the string is "o", put "or" into the monikette's string; exit. \ or
-If the string is "u", put "or" into the monikette's string; exit. \ or
+If the string is "ou", put "or" into the monikette's string; exit. \ or
 \ from/given/with/using
 If the string is "desde", put "from/given/with/using" into the monikette's string; exit.
 If the string is "de", put "from/given/with/using" into the monikette's string; exit.
 If the string is "dada", put "from/given/with/using" into the monikette's string; exit.
 If the string is "dado", put "from/given/with/using" into the monikette's string; exit.
-If the string is "con", put "from/given/with/using" into the monikette's string; exit.
+If the string is "dadas", put "from/given/with/using" into the monikette's string; exit.
+If the string is "dados", put "from/given/with/using" into the monikette's string; exit.
+If the string is "com", put "from/given/with/using" into the monikette's string; exit.
 If the string is "usando", put "from/given/with/using" into the monikette's string; exit.
 \\ in/into/to
 If the string is "em", put "in/into/to" into the monikette's string; exit.
@@ -301,17 +302,12 @@ If the string is "given", put "from/given/with/using" into the monikette's strin
 If the string is "with", put "from/given/with/using" into the monikette's string; exit.
 If the string is "using", put "from/given/with/using" into the monikette's string; exit.
 \ in/into/to
-If the string is "en", put "in/into/to" into the monikette's string; exit.
 If the string is "in", put "in/into/to" into the monikette's string; exit.
 If the string is "into", put "in/into/to" into the monikette's string; exit.
 If the string is "to", put "in/into/to" into the monikette's string; exit.
-If the string is "a", put "in/into/to" into the monikette's string; exit.
 \ is/are
 If the string is "are", put "is/are" into the monikette's string; exit.
 If the string is "is", put "is/are" into the monikette's string; exit.
-If the string is "es", put "is/are" into the monikette's string; exit.
-If the string is "está", put "is/are" into the monikette's string; exit.
-If the string is "se", put "is/are" into the monikette's string; exit.
 \ aren't/isn't
 If the string is "isn't", put "is/aren't" into the monikette's string; exit.
 If the string is "aren't", put "is/aren't" into the monikette's string; exit.
@@ -325,12 +321,7 @@ If the string is "anti-clockwise", put "backward" into the monikette's string; e
 \ at/on
 If the string is "at", put "at/on" into the monikette's string; exit.
 If the string is "on", put "at/on" into the monikette's string; exit.
-\ Spanish allocates and destroys
-If the string is "asignar", put "allocate" into the monikette's string; exit.
-If the string is "memoria", put "memory" into the monikette's string; exit.
-If the string is "para", put "for" into the monikette's string; exit.
-If the string is "desasignar", put "deallocate" into the monikette's string; exit.
-If the string is "destruir", put "destroy" into the monikette's string; exit.
+
 \ other
 Put the string into the monikette's string.
 
@@ -955,7 +946,7 @@ Get an field from the type's fields.
 If the field is nil, exit.
 If the field's redefinition target name is blank, repeat.
 Find another field given the field's redefinition target name and the type's fields.
-If the other field is nil, abort with "Redefinición inválida. No pude encontrar '" then the field's redefinition target name then "' field." and the field's locus; exit.
+If the other field is nil, abort with "Redefine inválido. Eu não consigo encontrar o campo '" then the field's redefinition target name then "' field." and the field's locus; exit.
 Put the other field's offset into the field's offset.
 Repeat.
 
@@ -983,15 +974,15 @@ If the type's scale is not 0, check for invalid optional info on the type (scale
 
 To check for invalid optional info on an type (fields):
 If the compiler's abort flag is set, exit.
-If the type cannot be reduced to "record", abort with "Info opcional 'con' solo permitida en tipo registro." and the type's locus; exit.
+If the type cannot be reduced to "record", abort with "An palavra 'with' só é permitida em record types." and the type's locus; exit.
 
 To check for invalid optional info on an type (scale):
 If the compiler's abort flag is set, exit.
-If the type cannot be reduced to "number", abort with "Escalas solo permitidas en tipos numéricos." and the type's locus; exit.
+If the type cannot be reduced to "number", abort with "Escalas são permitidas apenas em tipos numéricos." and the type's locus; exit.
 
 To check for invalid optional info on an type (target):
 If the compiler's abort flag is set, exit.
-If the type cannot be reduced to "pointer", abort with "Optional 'a' info solo está permitido en tipos de punteros." and the type's locus; exit.
+If the type cannot be reduced to "pointer", abort with "An palavra 'to' só é permitida em pointer types." and the type's locus; exit.
 
 To clear an field term:
 Fill bytes with the null byte starting at the field term's whereabouts for the field term's magnitude.
@@ -1040,7 +1031,7 @@ If the variable's kind is "scratch", repeat.
 If the variable's type should not be finalized, repeat.
 Add another fragment given the push address tag and the variable.
 Find another routine given "~finalize" and the variable's type.
-If the other routine is nil, abort with "Internal error - compile the body of an routine (epilog)"; exit.
+If the other routine is nil, abort with "Erro interno - compile the body of an routine (epilog)"; exit.
 Add an third fragment given the call internal tag and the other routine.
 Repeat.
 Add an fourth fragment given the epilog tag.
@@ -1054,14 +1045,14 @@ Add another fragment given the loop tag.
 To compile the body of the routine called an string:
 If the compiler's abort flag is set, exit.
 Find an routine given the string and the routine index.
-If the routine is nil, abort with "Necesito una rutina para '" then the string then "'."; exit.
+If the routine is nil, abort with "Eu preciso de uma função para fazer '" then the string then "'."; exit.
 Compile the body of the routine.
 
 To compile the body of an routine given an rider (alternate wording): \ *** alternate wording
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules). \ *** do we need this?
 Put the routine's next into an target routine.
-If the target routine is nil, abort with "Has definido una forma alternativa aquí, pero no estoy seguro de qué cosa es." and the rider; exit.
+If the target routine is nil, abort with "Você definiu uma palavra alternativa aqui, mas eu não tenho certeza pra que ela serve." and the rider; exit.
 Put the target routine's moniker into the routine's employs moniker.
 Compile the body of the target routine.
 
@@ -1071,11 +1062,11 @@ Move the rider (compiler rules).
 Compile an routine reference given the rider.
 Convert the routine reference to the routine's employs moniker.
 Destroy the routine reference.
-If the rider's token is not ".", abort with "Las oraciones usadas deben terminar en un punto y no '" then the rider's token then "'." and the rider; exit.
+If the rider's token is not ".", abort with "Employ statments devem terminar com um ponto, não com '" then the rider's token then "'." and the rider; exit.
 Move the rider (compiler rules).
-If the rider's token is not blank, abort with "Una vez empleado, no hay otro." and the rider; exit.
+If the rider's token is not blank, abort with "Somente um employ" and the rider; exit.
 Find another routine given the routine's employs moniker and the routine index.
-If the other routine is nil, abort with "No pude encontrar '" then the routine's employs moniker then "' rutina que estás tratando de emplear" and the routine's locus; exit.
+If the other routine is nil, abort with "Não consigo encontrar an rotina '" then the routine's employs moniker then "' que você está tentando empregar." and the routine's locus; exit.
 Compile the body of the other routine.
 
 To compile the call'd part given an rider and an variable:
@@ -1106,21 +1097,21 @@ Compile the directory (stop).
 
 To compile an directory (add and compile the built-in startup routine):
 If the compiler's abort flag is set, exit.
-Show status "Agregando...".
+Show status "Adicionando e agrupando an tarefa de inicialização padrão...".
 Start the adding built-in startup routine timer.
 Add and compile the initialize before run and run and finalize after run routine.
 Stop the adding built-in startup routine timer.
 
 To compile an directory (add the built-in memory routines):
 If the compiler's abort flag is set, exit.
-Show status "Agregando...".
+Show status "Adicionando as tarefas predefinidas na memória...".
 Start the adding built-in memory routines timer.
 Add the allocate and deallocate and finalize and destroy routines.
 Stop the adding built-in memory routines timer.
 
 To compile an directory (address):
 If the compiler's abort flag is set, exit.
-Show status "Calcular lugares...".
+Show status "Obtendo endereço dos itens...".
 Start the addressing timer.
 Put 4096 into an address.
 Put the address into the import borough's base.
@@ -1139,7 +1130,7 @@ Stop the addressing timer.
 
 To compile an directory (calculate lengths and offsets of types):
 If the compiler's abort flag is set, exit.
-Show status "Calculando...".
+Show status "Calculando tamanhos e deslocamentos...".
 Start the calculating timer.
 Calculate the lengths of the types.
 Calculate the offsets in the types.
@@ -1148,21 +1139,21 @@ Stop the calculating timer.
 
 To compile an directory (compile the bodies of the routines):
 If the compiler's abort flag is set, exit.
-Show status "Compilando...".
+Show status "Agrupando o conteúdo das tarefas...".
 Start the compiling routine bodies timer.
 Compile the bodies of the routines.
 Stop the compiling routine bodies timer.
 
 To compile an directory (compile the headers of the routines):
 If the compiler's abort flag is set, exit.
-Show status "Compilando...".
+Show status "Agrupando os nomes das tarefas...".
 Start the compiling routine headers timer.
 Compile the headers of the routines.
 Stop the compiling routine headers  timer.
 
 To compile an directory (index the routines for utility use):
 If the compiler's abort flag is set, exit.
-Show status "Generalizando...".
+Show status "Catalogando tarefas...".
 Start the indexing utilities timer.
 Index the routines for utility use.
 Scrub the utility index.
@@ -1171,14 +1162,14 @@ Stop the indexing utilities timer.
 
 To compile an directory (link):
 If the compiler's abort flag is set, exit.
-Show status "Conectando...".
+Show status "Elencando arquivos..".
 Start the linking timer.
 Link.
 Stop the linking timer.
 
 To compile an directory (offset parameters and variables):
 If the compiler's abort flag is set, exit.
-Show status "Cálculo de compensaciones...".
+Show status "Deslocando parâmetros e variáveis...".
 Start the offsetting timer.
 Offset the parameters in the routines.
 Offset the locals in the routines.
@@ -1186,21 +1177,21 @@ Stop the offsetting timer.
 
 To compile an directory (load the source files):
 If the compiler's abort flag is set, exit.
-Show status "Cargando...".
+Show status "Carregando arquivos...".
 Start the loading timer.
 Load the source files.
 Stop the loading timer.
 
 To compile an directory (resolve the globals):
 If the compiler's abort flag is set, exit.
-Show status "Resolviendo...".
+Show status "Resolvendo itens de escopo abrangente...".
 Start the resolving globals timer.
 Resolve the globals.
 Stop the resolving globals timer.
 
 To compile an directory (resolve the types):
 If the compiler's abort flag is set, exit.
-Show status "Resolviendo...".
+Show status "Resolvendo tipos...".
 Start the resolving types timer.
 Resolve the types (expand things).
 Resolve the types (index plurals).
@@ -1210,7 +1201,7 @@ Stop the resolving types timer.
 
 To compile an directory (scan the source files):
 If the compiler's abort flag is set, exit.
-Show status "Exploración...".
+Show status "Analisando arquivos...".
 Start the scanning timer.
 Scan the source files.
 Stop the scanning timer.
@@ -1224,18 +1215,18 @@ Add the built-in types.
 
 To compile an directory (stop):
 Stop the compiler's timer.
-Show status "".
+Show status "Interrompendo".
 
 To compile an directory (transmogrify):
 If the compiler's abort flag is set, exit.
-Show status "Transmogrificando...".
+Show status "Modificando...".
 Start the transmogrifying timer.
 Transmogrify the routines.
 Stop the transmogrifying timer.
 
 To compile an directory (write the exe):
 If the compiler's abort flag is set, exit.
-Show status "Escribiendo...".
+Show status "Gerando arquivo executável...".
 Start the writing timer.
 Write the compiler's exe to the compiler's exe path.
 If the i/o error is not blank, abort with the i/o error.
@@ -1257,12 +1248,12 @@ If the rider's token is any times, compile the expression given the rider (times
 To compile an expression given an rider (divided):
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
-If the rider's token is not any by, abort with "Prefiero la frase 'dividido POR'." and the rider; exit.
-If the expression's variable is nil, abort with "Inválido el 'dividido por', no entiendo la variable '" then the expression's phrase then "'." and the rider; exit.
+If the rider's token is not any by, abort with "Você deve usar o termo 'divided BY'." and the rider; exit.
+If the expression's variable is nil, abort with "Termo 'divided by' inválido, há um erro na variável: '" then the expression's phrase then "'." and the rider; exit.
 Move the rider (compiler rules).
 Compile an term given the rider.
 If the compiler's abort flag is set, exit.
-If the term's variable is nil, abort with "Inválido el 'dividido por', no entiendo la variable '" then the term's phrase then "'." and the rider; exit.
+If the term's variable is nil, abort with "O seu 'divided by',está errado. Não dá pra dividir por '" then the term's phrase then "'." and the rider; exit.
 Add an intermediate given the expression's type name and the rider's token's first.
 Add several fragments given "put" and the expression's variable and "into" and the intermediate and the rider's token's first.
 Add several fragments given "divide" and the intermediate and "by" and the term's variable and the rider's token's first.
@@ -1271,11 +1262,11 @@ Clear the expression's phrase.
 
 To compile an expression given an rider (minus):
 If the compiler's abort flag is set, exit.
-If the expression's variable is nil, abort with "Inválido el 'menos', no entiendo la variable '" then the expression's phrase then "'." and the rider; exit.
+If the expression's variable is nil, abort with "O seu 'minus', está errado. Não consigo subtrair o(a) '" then the expression's phrase then "'." and the rider; exit.
 Move the rider (compiler rules).
 Compile an term given the rider.
 If the compiler's abort flag is set, exit.
-If the term's variable is nil, abort with "Inválido el 'menos', no entiendo la variable '" then the term's phrase then "'." and the rider; exit.
+If the term's variable is nil, abort with "O seu 'minus', está errado. Não consigo diminuir do(a) '" then the term's phrase then "'." and the rider; exit.
 Add an intermediate given the expression's type name and the rider's token's first.
 Add several fragments given "put" and the expression's variable and "into" and the intermediate and the rider's token's first.
 Add several fragments given "subtract" and the term's variable and "from" and the intermediate and the rider's token's first.
@@ -1284,11 +1275,11 @@ Clear the expression's phrase.
 
 To compile an expression given an rider (plus):
 If the compiler's abort flag is set, exit.
-If the expression's variable is nil, abort with "Inválido el 'más', no entiendo la variable '" then the expression's phrase then "'." and the rider; exit.
+If the expression's variable is nil, abort with "O seu 'plus', está errado. Não consigo somar o '" then the expression's phrase then "'." and the rider; exit.
 Move the rider (compiler rules).
 Compile an term given the rider.
 If the compiler's abort flag is set, exit.
-If the term's variable is nil, abort with "Inválido el 'más', no entiendo la variable '" then the term's phrase then "'." and the rider; exit.
+If the term's variable is nil, abort with "O seu 'plus',  está errado. Não consigo somar an '" then the term's phrase then "'." and the rider; exit.
 Add an intermediate given the expression's type name and the rider's token's first.
 Add several fragments given "put" and the expression's variable and "into" and the intermediate and the rider's token's first.
 Add several fragments given "add" and the term's variable and "to" and the intermediate and the rider's token's first.
@@ -1297,11 +1288,11 @@ Clear the expression's phrase.
 
 To compile an expression given an rider (then):
 If the compiler's abort flag is set, exit.
-If the expression's variable is nil, abort with "Inválido el 'luego', no entiendo la variable '" then the expression's phrase then "'." and the rider; exit.
+If the expression's variable is nil, abort with "O seu 'then', está errado. Eu não entendi o que é o(a) '" then the expression's phrase then "'." and the rider; exit.
 Move the rider (compiler rules).
 Compile an term given the rider.
 If the compiler's abort flag is set, exit.
-If the term's variable is nil, abort with "Inválido el 'luego', no entiendo la variable '" then the term's phrase then "'." and the rider; exit.
+If the term's variable is nil, abort with "O seu 'then', está errado. Eu não sei o que é o(a) '" then the term's phrase then "'." and the rider; exit.
 Add an intermediate given "string" and the rider's token's first.
 Add the put or convert fragments given the expression's variable and the intermediate and the rider's token's first.
 Convert the term for concatenation given the rider.
@@ -1311,11 +1302,11 @@ Clear the expression's phrase.
 
 To compile an expression given an rider (times):
 If the compiler's abort flag is set, exit.
-If the expression's variable is nil, abort with "Inválido el 'veces', no entiendo la variable '" then the expression's phrase then "'." and the rider; exit.
+If the expression's variable is nil, abort with "O seu 'times', está errado. Eu não sei como multiplicar o '" then the expression's phrase then "'." and the rider; exit.
 Move the rider (compiler rules).
 Compile an term given the rider.
 If the compiler's abort flag is set, exit.
-If the term's variable is nil, abort with "Inválido el 'veces', no entiendo la variable '" then the term's phrase then "'." and the rider; exit.
+If the term's variable is nil, abort with "O seu 'times', está errado. Eu não sei como multiplicar an '" then the term's phrase then "'." and the rider; exit.
 Add an intermediate given the expression's type name and the rider's token's first.
 Add several fragments given "put" and the expression's variable and "into" and the intermediate and the rider's token's first.
 Add several fragments given "multiply" and the intermediate and "by" and the term's variable and the rider's token's first.
@@ -1339,19 +1330,19 @@ Move the rider (compiler rules).
 Set the routine's callback flag.
 Compile the routine's monikettes and the routine's parameters given the rider.
 Convert the routine's monikettes to the routine's moniker.
-If the routine's moniker is in the routine index, abort with "Ya sé cómo '" then the routine's moniker then "'." and the routine's locus; exit.
+If the routine's moniker is in the routine index, abort with "Você já tinha escrito an função '" then the routine's moniker then "'." and the routine's locus; exit.
 Index the routine given the routine's monikettes and the routine index.
 
 To compile the header of an routine given an rider (decider):
 If the compiler's abort flag is set, exit.
 Move the rider (compiler rules).
-If the rider's token is not any conditional, abort with "Se dice 'Decidir SI'. Siempre 'Decidir SI'. ¿Se entiende?" and the rider; exit.
+If the rider's token is not any conditional, abort with "It's 'Decide IF.' Sempre dizemos, 'Decide IF'. Certo?" and the rider; exit.
 Move the rider (compiler rules).
 Set the routine's decider flag.
 Compile the routine's monikettes and the routine's parameters given the rider.
-If any of the routine's monikettes are negative words, abort with "No es buena idea usar negativos en los nombres de los decisores." and the rider; exit.
+If any of the routine's monikettes are negative words, abort with "Não consigo me dar bem com palavras negativas nos decider names." and the rider; exit.
 Convert the routine's monikettes to the routine's moniker.
-If the routine's moniker is in the routine index, abort with "Ya sé cómo '" then the routine's moniker then "'." and the routine's locus; exit.
+If the routine's moniker is in the routine index, abort with "Você já me contou como'" then the routine's moniker then "'." and the routine's locus; exit.
 Index the routine given the routine's monikettes and the routine index.
 
 To compile the header of an routine given an rider (function):
@@ -1362,19 +1353,19 @@ Move the rider (compiler rules).
 If the rider's token is any indefinite article, set an flag.
 If the flag is set, compile the routine's monikettes and the routine's parameters given the rider (indefinite article).
 If the flag is not set, compile the routine's monikettes and the routine's parameters given the rider (definite article).
-If the rider's token is not any possessive, abort with "An 's is missing or misplaced here." and the rider; exit. \ not translated - no possessives in Spanish
+If the rider's token is not any possessive, abort with "Tá faltando um 's por aqui (ou está no lugar errado)." and the rider; exit. \ not translated - no possessives in Spanish
 Move the rider (compiler rules).
 Scan an name given the rider.
 Add another monikette to the routine's monikettes given "'s " then the name.
-If the rider's token is not "into", abort with "I was expecting the word 'into', but found '" then the rider's token then "'." and the rider; exit. \ not translated - no possessives in Spanish
+If the rider's token is not "into", abort with "Eu estava esperando an palavra 'into', mas encontrei an palavra '" then the rider's token then "'." and the rider; exit. \ not translated - no possessives in Spanish
 Add an third monikette to the routine's monikettes given "into".
 Convert the routine's monikettes to an moniker.
-If the moniker is in the routine index, abort with "I already know how to '" then the moniker then "'." and the routine's locus; exit. \ not translated - no possessives in Spanish
+If the moniker is in the routine index, abort with "Eu já sei como '" then the moniker then "'." and the routine's locus; exit. \ not translated - no possessives in Spanish
 Index the routine given the routine's monikettes and the routine index.
 Move the rider (compiler rules).
-If the rider's token is not any indefinite article, abort with "I was expecting an indefinite article, but found '" then the rider's token then "'." and the rider; exit. \ not translated - no possessives in Spanish
+If the rider's token is not any indefinite article, abort with "Estava esperando um artigo indefinido, mas achei isso aqui: '" then the rider's token then "'." and the rider; exit. \ not translated - no possessives in Spanish
 Compile the routine's monikettes and the routine's parameters given the rider (indefinite article).
-If the rider's token is not blank, abort with "There's extra stuff on the end of this function." and the rider; exit. \ not translated - no possessives in Spanish
+If the rider's token is not blank, abort with "Tem comandos extras no fim dessa função." and the rider; exit. \ not translated - no possessives in Spanish
 Convert the routine's monikettes to the routine's moniker.
 Index the routine given the routine's monikettes and the routine index. \ for employs
 
@@ -1382,7 +1373,7 @@ To compile the header of an routine given an rider (procedure):
 If the compiler's abort flag is set, exit.
 Compile the routine's monikettes and the routine's parameters given the rider.
 Convert the routine's monikettes to the routine's moniker.
-If the routine's moniker is in the routine index, abort with "Ya sé cómo '" then the routine's moniker then "'." and the routine's locus; exit.
+If the routine's moniker is in the routine index, abort with "Você já escreveu como fazer '" then the routine's moniker then "'." and the routine's locus; exit.
 Index the routine given the routine's monikettes and the routine index.
 
 To compile the headers of some routines:
@@ -1400,7 +1391,7 @@ If the rider's token is any hex literal, compile the literal given the rider (he
 If the rider's token is any numeric literal, compile the literal given the rider (numeric); exit.
 If the rider's token is any pointer literal, compile the literal given the rider (pointer); exit.
 If the rider's token is any string literal, compile the literal given the rider (string); exit.
-Abort with "Internal error - compile an term given an rider (literal)" and the rider.
+Abort with "Erro interno - compile an term given an rider (literal)" and the rider.
 
 To compile an literal given an rider (flag):
 If the compiler's abort flag is set, exit.
@@ -1441,13 +1432,13 @@ Convert the rider's token to an ratio.
 Move the rider (compiler rules).
 Scan an name given the rider.
 Find an type given the name and the type index.
-If the type is nil, abort with "'" then the name then "' no es una unidad de medida válida." and the literal's locus; exit.
-If the type cannot be reduced to "number", abort with "'" then the name then "' no es una unidad de medida válida." and the literal's locus; exit.
+If the type is nil, abort with "'" then the name then "' é uma unidade de medida inexistente." and the literal's locus; exit.
+If the type cannot be reduced to "number", abort with "'" then the name then "' é uma unidade de medida inválida." and the literal's locus; exit.
 Put the type's scale into an final ratio.
 If the type's scale is 0, put 1/1 into the final ratio.
 Multiply the final ratio by the ratio.
 Reduce the final ratio.
-If the final ratio's denominator is 0, abort with "Parece que no tenemos una unidad de medida válida aquí." and the literal's locus.
+If the final ratio's denominator is 0, abort with "Parece que essa é uma unidade de medida inválida." and the literal's locus.
 Put the final ratio's numerator divided by the final ratio's denominator into an number.
 Put the type's name into the literal's type name.
 Convert the number to the literal's data.
