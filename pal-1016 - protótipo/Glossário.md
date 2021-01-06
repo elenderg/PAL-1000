@@ -781,7 +781,7 @@ Lista de Termos em Ordem Alfabética
 |left-paren byte|–|–|–|byte-parenàesq|byte-(|
 |left-single-quote byte|–|–|–|–|–|
 |left-window key|–|–|–|–|tecla-janelesq|
-|lenght <sup>[D]</sup>|medida|dimensão|–|–|–|
+|lenght <sup>[D]</sup>|medida|estensão|dimensão|–|–|
 |lenght <sup>[E]</sup>|comprimento|tamanho|–|–|–|
 |loop <sup>[D]</sup>|reciclar|recicle|ciclo|laço|–|
 |loop <sup>[E]</sup>|Percorrer|–|–|–|–|
