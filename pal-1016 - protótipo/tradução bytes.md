@@ -42,8 +42,8 @@
 |37|`%`|`percent-sign byte`|`byte-%`|
 |38|`&`|`ampersand byte`|`byte-&`|
 |39|`'`|`single-quote byte`|`byte-apóstrofo`|
-|40|`(`|`left-paren byte`|`byte-abre-parênteses` `byte paren-esq`|
-|41|`)`|`right-paren byte`|`byte-fecha-parênteses` `byte paren-dir`|
+|40|`(`|`left-paren byte`|`byte abre-parênteses` `byte paren-esq`|
+|41|`)`|`right-paren byte`|`byte fecha-parênteses` `byte paren-dir`|
 |42|`*`|`aste`|`byte-asterisco`|
 |43|`+`|`cross byte` `plus-sign byte`|`byte-+`|
 |44|`,`|`comma byte`|`byte-vírgula`|
@@ -60,11 +60,11 @@
 |55|`7`|`seven byte`|`byte-7`|
 |56|`8`|`eight byte`|`byte-8`|
 |57|`9`|`nine byte`|`byte-9`|
-|58|`:`|`colon byte`|`byte-dois-pontos` `byte dois-pontos`|
-|59|`;`|`semi-colon byte`|`byte-ponto-vírgula` `byte ponto-vírgula`|
-|60|`<`|`left-alligator byte` `less-than-sign byte`|`byte-menor-que` `byte menor-que`|
-|61|`=`|`equal-sign byte`|`byte-igual-a` `byte igual-a`|
-|62|`>`|`greater-than-sign byte` `right-alligator byte`|`byte-maior-que` `byte maior-que`|
+|58|`:`|`colon byte`|`byte dois-pontos`|
+|59|`;`|`semi-colon byte`|`byte ponto-vírgula`|
+|60|`<`|`left-alligator byte` `less-than-sign byte`|`byte menor-que`|
+|61|`=`|`equal-sign byte`|`byte igual-a`|
+|62|`>`|`greater-than-sign byte` `right-alligator byte`|`byte maior-que`|
 |63|`?`|`question-mark byte`|`byte-interrogação`|
 |64|`@`|`at-sign byte`|`byte-@`|
 |65|`A`|`big-a byte`|`byte-a maiúsculo`|
@@ -94,8 +94,8 @@
 |89|`Y`|`big-y byte`|`byte-y maiúsculo`|
 |90|`Z`|`big-z byte`|`byte-z maiúsculo`|
 |91|`[`|`left-bracket byte`|`byte-abre-colchetes` `byte conchete-esq`|
-|92|`\`|`backslash byte`|`byte-barra-inv` `byte barra-inv`|
-|93|`]`|`right-bracket byte`|`byte-fecha-colchetes` `byte colchete-dir`|
+|92|`\`|`backslash byte`|`byte barra-invertida` `byte barra-inv`|
+|93|`]`|`right-bracket byte`|`byte fecha-colchetes` `byte colchete-dir`|
 |94|`^`|`caret byte`|`byte-circunflexo`|
 |95|`_`|`underscore byte`|`byte-_`|
 |96|\`|`accent byte`|byte-\`|
@@ -125,9 +125,9 @@
 |120|`x`|`little-x byte`|`byte-x`|
 |121|`y`|`little-y byte`|`byte-y`|
 |122|`z`|`little-z byte`|`byte-z`|
-|123|`{`|`left-brace byte`|`byte-abre-chaves` `byte chave-esq`|
-|124|`\|`|`bar byte` `vertical-bar byte`|`byte-barra-vertical` `byte barra-vert`|
-|125|`}`|`right-brace byte`|`byte-fecha-chaves` `byte chave-dir`|
+|123|`{`|`left-brace byte`|`byte abre-chaves` `byte chave-esq`|
+|124|`\|`|`bar byte` `vertical-bar byte`|`byte barra-vertical` `byte barra-vert`|
+|125|`}`|`right-brace byte`|`byte fecha-chaves` `byte chave-dir`|
 |126|`~`|`tilde byte`|`byte-~`|
 |127|` `|`delete byte`|`byte-del`|
 |128|`€`|`euro-sign byte`|`byte-euro`|
@@ -171,7 +171,7 @@
 |171|`«`|`left-double-alligator-quote byte`|`byte angulares-esq`|
 |172|`¬`|`not byte`|`byte-não`|
 |173|`­`|`soft-dash byte`|`byte marcador-leve` `byte traço-leve`|
-|174|`®`|`registered byte`|`byte-registrado`|
+|174|`®`|`registered byte`|`byte marca-registrada`|
 |175|`¯`|`upperscore byte`|`byte-mácron`|
 |176|`°`|`degree-symbol byte`|`byte-grau`|
 |177|`±`|`plus-or-minus byte`|`byte mais-menos`|

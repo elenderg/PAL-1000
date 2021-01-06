@@ -9,7 +9,7 @@
 |buffer|depósito|||||
 |byte|byte|||||
 |byte pointer|ponteiro de byte|||||
-|color|cor||||||
+|color|cor|tom|||||
 |console|console|||||
 |coord|coordenada|||||
 |count|contador|||||
@@ -27,7 +27,7 @@
 |ellipse|elipse|||||
 |file|arquivo|||||
 |file name|nome de arquivo|||||
-|flag|sinal|||||
+|flag|signa|sinalizador||||
 |figure|figura|||||
 |fraction|fração|||||
 |grid|grade|||||
