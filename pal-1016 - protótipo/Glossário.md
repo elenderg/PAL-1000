@@ -1458,33 +1458,33 @@ Lista de Termos em Ordem Alfabética
 |start up|–|–|–|ativar|executar|
 |start-of-heading byte|–|–|–|–|–|
 |start-of-text byte|–|–|–|–|–|
-|startupinfo|-|-|-|-|-|
-|stat|-|-|-|-|-|
-|status|-|-|-|-|-|
+|startupinfo|–|–|–|–|–|
+|stat|–|–|–|–|–|
+|status|–|–|–|–|–|
 |stdin handle|número identificador do fluxo padrão de entrada|–|–|–|–|
 |stdout handle|número identificador do fluxo padrão de saída|–|–|–|–|
-|stop (verbo)|-|-|-|-|-|
-|store (verbo)|-|-|-|-|-|
-|stride|-|-|-|-|-|
+|stop (verbo)|–|–|–|–|–|
+|store (verbo)|–|–|–|–|–|
+|stride|–|–|–|–|–|
 |string <sup>[D]</sup>|escrito/a|inscrição|série|sequência|frase|
 |string <sup>[E]</sup>|texto|–|–|–|–|
 |string\#|–|–|–|–|–|
-|string thing|-|-|-|-|elemento de escrita|
-|stroke|-|-|-|-|-|
-|style|-|-|-|-|-|
+|string thing|–|–|–|–|elemento de escrita|
+|stroke|esboçar|rabiscar|–|–|–|
+|style|–|–|–|–|–|
 |submenu|–|–|–|–|–|
 |substitute byte|–|–|–|–|–|
 |substring <sup>[D]</sup>|trecho|segmento|subsérie|subsequência|fragmento|
 |substring <sup>[E]</sup>|pedaço de um texto|parte de um texto|–|–|–|
-|subsystem|-|-|-|-|-|
-|subsystemmajorversion|-|-|-|-|-|
-|subsystemminorversion|-|-|-|-|-|
-|subtract|-|-|-|-|-|
-|superduper|posicionador|mecanismo de posicionamento|-|-|-|
+|subsystem|–|–|–|–|–|
+|subsystemmajorversion|–|–|–|–|–|
+|subsystemminorversion|–|–|–|–|–|
+|subtract|–|–|–|–|–|
+|superduper|posicionador|mecanismo de posicionamento|–|–|–|
 |superscript-one byte|–|–|–|–|–|
 |superscript-three byte|–|–|–|–|–|
 |superscript-two byte|–|–|–|–|–|
-|suppressbackgroundthread|-|-|-|-|-|
+|suppressbackgroundthread|–|–|–|–|–|
 |suppressexternalcodecs|-|-|-|-|-|
 |swap (verbo)|-|-|-|-|-|
 |switch (verbo)|Alternar|Trocar|Mudar|||
