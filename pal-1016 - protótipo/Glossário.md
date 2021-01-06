@@ -400,7 +400,7 @@ Lista de Termos em Ordem Alfabética
 |depth|–|–|–|–|profundidade|
 |dereference tag|–|–|–|–|–|
 |deque|decue|desenfileirar|remover da fila|–|–|
-|deselect|–|–|–|–|–|
+|deselect|–|–|–|desmarcar|dispensar|
 |de-sign|dessinalar|–|–|–|–|
 |designator w/o backslash|–|–|–|–|–|
 |desktop color|–|–|–|–|cor do desktop|
