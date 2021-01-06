@@ -535,7 +535,8 @@ Lista de Termos em Ordem Alfabética
 |exclamation-mark byte|–|–|–|–|byte-!|
 |exclusionflags|-|-|-|-|-|
 |exit tag|–|–|–|–|marca-sair|
-|extend|-|-|-|-|estender|
+|extend|ampliar|estender|expandir|aumentar|prolongar|
+|extension|extensão|–|–|–|–|
 |externalize|-|-|-|-|externalizar|
 |extra points|–|–|–|–|–|
 |extract|-|-|-|-|extrair|
@@ -781,7 +782,7 @@ Lista de Termos em Ordem Alfabética
 |left-paren byte|–|–|–|byte-parenàesq|byte-(|
 |left-single-quote byte|–|–|–|–|–|
 |left-window key|–|–|–|–|tecla-janelesq|
-|lenght <sup>[D]</sup>|medida|dimensão|–|–|–|
+|lenght <sup>[D]</sup>|medida|estensão|dimensão|–|–|
 |lenght <sup>[E]</sup>|comprimento|tamanho|–|–|–|
 |loop <sup>[D]</sup>|reciclar|recicle|ciclo|laço|–|
 |loop <sup>[E]</sup>|Percorrer|–|–|–|–|
@@ -1447,7 +1448,7 @@ Lista de Termos em Ordem Alfabética
 |speakcompleteevent|-|-|-|-|-|
 |speakstream|-|-|-|-|-|
 |split (verbo)|-|-|-|-|-|
-|spot <sup>[D]</sup>|lugar|local|posição|–|–|
+|spot <sup>[D]</sup>|loco|–|–|–|–|
 |spot <sup>[E]</sup>|mancha|–|–|–|–|
 |square (verbo)|quadrado|–|–|–|–|
 |square root|raiz quadrada|–|–|–|–|
