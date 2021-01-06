@@ -463,7 +463,7 @@ Lista de Termos em Ordem Alfabética
 |double-dagger byte|–|byte-‡|–|–|–|
 |double-quote byte|–|byte-aspas|–|–|–|
 |down-arrow key|–|tecla-⬇️|–|–|tecla-abaixo|
-|draw|-|-|-|-|desenhar|
+|draw|esboçar|desenhar|–|riscar|rabiscar|
 |dump|-|-|-|despejo|despejar|
 |duplicate|-|-|duplicado|duplicata|duplicar|
 |dwextrainfolength  |-|-|-|-|-|
@@ -1470,7 +1470,7 @@ Lista de Termos em Ordem Alfabética
 |string <sup>[E]</sup>|texto|–|–|–|–|
 |string\#|–|–|–|–|–|
 |string thing|–|–|–|–|elemento de escrita|
-|stroke|esboçar|rabiscar|–|–|–|
+|stroke|riscar|rabiscar|–|esboçar|desenhar|
 |style|–|–|–|–|–|
 |submenu|–|–|–|–|–|
 |substitute byte|–|–|–|–|–|
