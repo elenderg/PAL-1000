@@ -1447,7 +1447,7 @@ Lista de Termos em Ordem Alfabética
 |speakcompleteevent|-|-|-|-|-|
 |speakstream|-|-|-|-|-|
 |split (verbo)|-|-|-|-|-|
-|spot <sup>[D]</sup>|lugar|local|posição|–|–|
+|spot <sup>[D]</sup>|loco|degrau|–|–|–|
 |spot <sup>[E]</sup>|mancha|–|–|–|–|
 |square (verbo)|quadrado|–|–|–|–|
 |square root|raiz quadrada|–|–|–|–|
