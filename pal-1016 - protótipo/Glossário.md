@@ -400,7 +400,7 @@ Lista de Termos em Ordem Alfabética
 |depth|–|–|–|–|profundidade|
 |dereference tag|–|–|–|–|–|
 |deque|decue|desenfileirar|remover da fila|–|–|
-|deselect|–|–|–|–|–|
+|deselect|–|–|–|desmarcar|dispensar|
 |de-sign|dessinalar|–|–|–|–|
 |designator w/o backslash|–|–|–|–|–|
 |desktop color|–|–|–|–|cor do desktop|
@@ -463,7 +463,7 @@ Lista de Termos em Ordem Alfabética
 |double-dagger byte|–|byte-‡|–|–|–|
 |double-quote byte|–|byte-aspas|–|–|–|
 |down-arrow key|–|tecla-⬇️|–|–|tecla-abaixo|
-|draw|-|-|-|-|desenhar|
+|draw|esboçar|desenhar|–|riscar|rabiscar|
 |dump|-|-|-|despejo|despejar|
 |duplicate|-|-|duplicado|duplicata|duplicar|
 |dwextrainfolength  |-|-|-|-|-|
@@ -566,6 +566,7 @@ Lista de Termos em Ordem Alfabética
 |f-key|–|–|–|–|tecla-f|
 |flag <sup>[D]</sup>|sinal|sinalizador|bandeira|–|–|
 |flag <sup>[E]</sup>|–|–|–|–|–|
+|flip|inverter|–|–|–|–|
 |font height|–|–|–|–|altura da fonte|
 |font info|–|–|–|–|informação da fonte|
 |font resource|–|–|–|–|recursos da fonte|
@@ -1334,18 +1335,18 @@ Lista de Termos em Ordem Alfabética
 |right-paren byte|–|–|–|–|–|
 |right-single-quote byte|–|–|–|–|–|
 |right-window key|–|tecla ⊞ direita|tecla ⌘ direita|–|–|
-|rise|–|–|–|–|–|
-|r-key|tecla r|-|–|–|–|
-|rotate|-|-|-|-|-|
+|rise|elevar|–|–|–|–|
+|r-key|tecla-r|–|–|–|–|
+|rotate|girar|rodar|–|–|–|
 |round (verbo)|arredondar|-|-|-|-|
-|routine|tarefa|–|–|–|–|
+|routine|tarefa|–|–|–|rotina|
 |routine address tag|–|–|–|–|–|
-|routine reference|–|–|–|–|–|
-|row|fileira|||||
-|row\#|–|–|–|–|–|
+|routine reference|–|–|–|–|rotina-ref|
+|row|fileira|–|–|–|–|
+|row\#|–|–|–|–|fileira#|
 |row/sheet|–|–|–|–|–|
-|run (substantivo)|execução|–|–|–|–|
-|run (verbo)|-|-|-|-|-|
+|run (substantivo)|execução|–|–|–|ativação|
+|run (verbo)|-|-|-|-|ativar|
 
 ### #S
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -1370,9 +1371,9 @@ Lista de Termos em Ordem Alfabética
 |seed (substantivo)|número da semente|–|–|–|–|
 |seed (verbo)|semear|fertilizar|adubar|preparar|-|
 |seek|-|-|-|-|-|
-|select|selecionar|escolher|-|-|-|
-|selection|-|-|-|-|-|
-|semi-colon byte|–|–|–|–|–|
+|select|selecionar|escolher|-|-|seletar|
+|selection|seleção|escolha|-|-|-|
+|semi-colon byte|–|–|–|–|byte dois-pontos|
 |send|-|-|-|-|-|
 |set (verbo)|definir|mudar a cor do sinal|-|-|-|
 |setalertboundary|-|-|-|-|-|
@@ -1401,7 +1402,8 @@ Lista de Termos em Ordem Alfabética
 |shift-out byte|byte de shift liberado|–|–|–|–|
 |show|-|-|-|-|-|
 |shrink|-|-|-|-|-|
-|shut|-|-|-|-|-|
+|shut|-|-|-|fechar|cerrar|
+|shut down|-|-|desativar|terminar|encerrar|
 |signature|-|-|-|-|-|
 |simplify|-|-|-|-|-|
 |single-quote byte|–|–|–|–|–|
@@ -1447,41 +1449,42 @@ Lista de Termos em Ordem Alfabética
 |split (verbo)|-|-|-|-|-|
 |spot <sup>[D]</sup>|lugar|local|posição|–|–|
 |spot <sup>[E]</sup>|mancha|–|–|–|–|
-|square (verbo)|quadrado|-|-|-|-|
+|square (verbo)|quadrado|–|–|–|–|
 |square root|raiz quadrada|–|–|–|–|
 |square size|tamanho do quadrado|–|–|–|–|
 |stack|–|–|–|–|–|
 |stack entry|empilhamento|–|–|entrada de pilha|–|
-|start (verbo)|-|-|-|-|-|
+|start (verbo)|-|-|-|começar|iniciar|
+|start up|–|–|–|ativar|executar|
 |start-of-heading byte|–|–|–|–|–|
 |start-of-text byte|–|–|–|–|–|
-|startupinfo|-|-|-|-|-|
-|stat|-|-|-|-|-|
-|status|-|-|-|-|-|
+|startupinfo|–|–|–|–|–|
+|stat|–|–|–|–|–|
+|status|–|–|–|–|–|
 |stdin handle|número identificador do fluxo padrão de entrada|–|–|–|–|
 |stdout handle|número identificador do fluxo padrão de saída|–|–|–|–|
-|stop (verbo)|-|-|-|-|-|
-|store (verbo)|-|-|-|-|-|
-|stride|-|-|-|-|-|
+|stop (verbo)|–|–|–|–|–|
+|store (verbo)|–|–|–|–|–|
+|stride|–|–|–|–|–|
 |string <sup>[D]</sup>|escrito/a|inscrição|série|sequência|frase|
 |string <sup>[E]</sup>|texto|–|–|–|–|
 |string\#|–|–|–|–|–|
-|string thing|-|-|-|-|elemento de escrita|
-|stroke|-|-|-|-|-|
-|style|-|-|-|-|-|
+|string thing|–|–|–|–|elemento de escrita|
+|stroke|riscar|rabiscar|–|esboçar|desenhar|
+|style|–|–|–|–|–|
 |submenu|–|–|–|–|–|
 |substitute byte|–|–|–|–|–|
 |substring <sup>[D]</sup>|trecho|segmento|subsérie|subsequência|fragmento|
 |substring <sup>[E]</sup>|pedaço de um texto|parte de um texto|–|–|–|
-|subsystem|-|-|-|-|-|
-|subsystemmajorversion|-|-|-|-|-|
-|subsystemminorversion|-|-|-|-|-|
-|subtract|-|-|-|-|-|
-|superduper|posicionador|mecanismo de posicionamento|-|-|-|
+|subsystem|–|–|–|–|–|
+|subsystemmajorversion|–|–|–|–|–|
+|subsystemminorversion|–|–|–|–|–|
+|subtract|–|–|–|–|–|
+|superduper|posicionador|mecanismo de posicionamento|–|–|–|
 |superscript-one byte|–|–|–|–|–|
 |superscript-three byte|–|–|–|–|–|
 |superscript-two byte|–|–|–|–|–|
-|suppressbackgroundthread|-|-|-|-|-|
+|suppressbackgroundthread|–|–|–|–|–|
 |suppressexternalcodecs|-|-|-|-|-|
 |swap (verbo)|-|-|-|-|-|
 |switch (verbo)|Alternar|Trocar|Mudar|||

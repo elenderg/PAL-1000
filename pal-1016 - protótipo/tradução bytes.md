@@ -37,19 +37,19 @@
 |32|` `|`space byte`|`byte-espaço`|
 |33|`!`|`exclamation byte` `exclamation-mark byte`|`byte-esclamação`|
 |34|`“`|`double-quote byte`|`byte-aspas`|
-|35|`#`|`number-sign byte`|`byte-#`|
+|35|`#`|`number-sign byte`|`byte-#` `byte-número`|
 |36|`$`|`dollar-sign byte`|`byte-cifrão`|
-|37|`%`|`percent-sign byte`|`byte-%`|
-|38|`&`|`ampersand byte`|`byte-&`|
+|37|`%`|`percent-sign byte`|`byte-%` `byte-porcento`|
+|38|`&`|`ampersand byte`|`byte-&` `byte-ampersand`|
 |39|`'`|`single-quote byte`|`byte-apóstrofo`|
 |40|`(`|`left-paren byte`|`byte-abre-parênteses` `byte paren-esq`|
 |41|`)`|`right-paren byte`|`byte-fecha-parênteses` `byte paren-dir`|
 |42|`*`|`aste`|`byte-asterisco`|
-|43|`+`|`cross byte` `plus-sign byte`|`byte-+`|
+|43|`+`|`cross byte` `plus-sign byte`|`byte-+` `byte-mais`|
 |44|`,`|`comma byte`|`byte-vírgula`|
-|45|`–`|`dash byte` `minus-sign byte`|`byte-traço`|
+|45|`–`|`dash byte` `minus-sign byte`|`byte-traço` `byte-menos`|
 |46|`.`|`period byte`|`byte-ponto`|
-|47|`/`|`slash byte`|`byte-/`|
+|47|`/`|`slash byte`|`byte-/` `byte-barra`|
 |48|`0`|`zero byte`|`byte-0`|
 |49|`1`|`one byte`|`byte-1`|
 |50|`2`|`two byte`|`byte-2`|
@@ -60,13 +60,13 @@
 |55|`7`|`seven byte`|`byte-7`|
 |56|`8`|`eight byte`|`byte-8`|
 |57|`9`|`nine byte`|`byte-9`|
-|58|`:`|`colon byte`|`byte-dois-pontos` `byte dois-pontos`|
-|59|`;`|`semi-colon byte`|`byte-ponto-vírgula` `byte ponto-vírgula`|
-|60|`<`|`left-alligator byte` `less-than-sign byte`|`byte-menor-que` `byte menor-que`|
-|61|`=`|`equal-sign byte`|`byte-igual-a` `byte igual-a`|
-|62|`>`|`greater-than-sign byte` `right-alligator byte`|`byte-maior-que` `byte maior-que`|
+|58|`:`|`colon byte`|`byte dois-pontos`|
+|59|`;`|`semi-colon byte`|`byte ponto-vírgula`|
+|60|`<`|`left-alligator byte` `less-than-sign byte`|`byte menor-que`|
+|61|`=`|`equal-sign byte`|`byte igual-a`|
+|62|`>`|`greater-than-sign byte` `right-alligator byte`|`byte maior-que`|
 |63|`?`|`question-mark byte`|`byte-interrogação`|
-|64|`@`|`at-sign byte`|`byte-@`|
+|64|`@`|`at-sign byte`|`byte-@` `byte-arroba`|
 |65|`A`|`big-a byte`|`byte-a maiúsculo`|
 |66|`B`|`big-b byte`|`byte-b maiúsculo`|
 |67|`C`|`big-c byte`|`byte-c maiúsculo`|
@@ -93,12 +93,12 @@
 |88|`X`|`big-x byte`|`byte-x maiúsculo`|
 |89|`Y`|`big-y byte`|`byte-y maiúsculo`|
 |90|`Z`|`big-z byte`|`byte-z maiúsculo`|
-|91|`[`|`left-bracket byte`|`byte-abre-colchetes` `byte conchete-esq`|
-|92|`\`|`backslash byte`|`byte-barra-inv` `byte barra-inv`|
-|93|`]`|`right-bracket byte`|`byte-fecha-colchetes` `byte colchete-dir`|
+|91|`[`|`left-bracket byte`|`byte abre-colchetes` `byte conchete-esq`|
+|92|`\`|`backslash byte`|`byte barra-inv`|
+|93|`]`|`right-bracket byte`|`byte fecha-colchetes` `byte colchete-dir`|
 |94|`^`|`caret byte`|`byte-circunflexo`|
-|95|`_`|`underscore byte`|`byte-_`|
-|96|\`|`accent byte`|byte-\`|
+|95|`_`|`underscore byte`|`byte-_` `byte-sublinhado`|
+|96|\`|`accent byte`|`byte-\` `Byte barra-inv`|
 |97|`a`|`little-a byte`|`byte-a`|
 |98|`b`|`little-b byte`|`byte-b`|
 |99|`c`|`little-c byte`|`byte-c`|
@@ -125,15 +125,15 @@
 |120|`x`|`little-x byte`|`byte-x`|
 |121|`y`|`little-y byte`|`byte-y`|
 |122|`z`|`little-z byte`|`byte-z`|
-|123|`{`|`left-brace byte`|`byte-abre-chaves` `byte chave-esq`|
-|124|`\|`|`bar byte` `vertical-bar byte`|`byte-barra-vertical` `byte barra-vert`|
-|125|`}`|`right-brace byte`|`byte-fecha-chaves` `byte chave-dir`|
-|126|`~`|`tilde byte`|`byte-~`|
-|127|` `|`delete byte`|`byte-del`|
+|123|`{`|`left-brace byte`|`byte abre-chaves` `byte chave-esq`|
+|124|`\|`|`bar byte` `vertical-bar byte`|`byte barra-vertical` `byte barra-vert`|
+|125|`}`|`right-brace byte`|`byte fecha-chaves` `byte chave-dir`|
+|126|`~`|`tilde byte`|`byte-~` `byte-til`|
+|127|` `|`delete byte`|`byte-del` `byte-deletar`|
 |128|`€`|`euro-sign byte`|`byte-euro`|
-|130|`‚`|`lower-single-quote byte`|`byte-subaspa` `byte aspa-inf`|
+|130|`‚`|`lower-single-quote byte`|`byte aspa-inf`|
 |131|`ƒ`|`little-f-hook byte`|`byte-ƒ`|
-|132|`„`|`lower-double-quote byte`|`byte-subaspas` `byte aspas-inf`|
+|132|`„`|`lower-double-quote byte`|`byte aspas-inf`|
 |133|`…`|`ellipsis byte`|`byte-elipse`|
 |134|`†`|`dagger byte`|`byte-adaga`|
 |135|`‡`|`double-dagger byte`|`byte-dupladaga` `byte adaga-dupla`|
@@ -150,8 +150,8 @@
 |149|`•`|`bullet byte`|`byte-marcador`|
 |150|`–`|`en-dash byte`|`byte meia-risca`|
 |151|`—`|`em-dash byte`|`byte-travessão`|
-|152|`˜`|`little-tilde byte`|`byte-til`|
-|153|`™`|`trade-mark byte`|`byte-registrado`|
+|152|`˜`|`little-tilde byte`|`byte acento-til`|
+|153|`™`|`trade-mark byte`|`byte marca-registrada`|
 |154|`š`|`little-s-caron byte`|`byte-š`|
 |155|`›`|`right-alligator-quote byte`|`byte angular-dir`|
 |156|`œ`|`little-oe byte`|`byte-œ`|
@@ -178,8 +178,8 @@
 |178|`²`|`superscript-two byte`|`byte-super2`|
 |179|`³`|`superscript-three byte`|`byte-super3`|
 |180|`´`|`acute-accent byte`|`byte acento-agudo`|
-|181|`µ`|`micro byte`|`byte-µ`|
-|182|`¶`|`paragraph byte`|`byte-¶`|
+|181|`µ`|`micro byte`|`byte-µ` `byte-micro`|
+|182|`¶`|`paragraph byte`|`byte-¶` `byte indic-par`|
 |183|`·`|`small-bullet byte`|`byte marcador-pequeno`|
 |184|`¸`|`cedilla byte`|`byte-cedilha`|
 |185|`¹`|`superscript-one byte`|`byte-super1`|
@@ -220,14 +220,14 @@
 |220|`Ü`|`big-u-diaere`|`byte-ü maiúsculo`|
 |221|`Ý`|`big-y-acute byte`|`byte-ý maiúsculo`|
 |222|`Þ`|`big-thorn byte`|`byte-þ maiúsculo`|
-|223|`ß`|`sharp-s byte`|`byte-ß`|
+|223|`ß`|`sharp-s byte`|`byte-ß` `byte s-duplo`|
 |224|`à`|`little-a-grave byte`|`byte-à`|
 |225|`á`|`little-a-acute byte`|`byte-á`|
 |226|`â`|`little-a-circumflex byte`|`byte-â`|
 |227|`ã`|`little-a-tilde byte`|`byte-ã`|
 |228|`ä`|`little-a-diaere`|`byte-ä`|
-|229|`å`|`little-a-ring byte`|`byte-å`|
-|230|`æ`|`little-ae byte`|`byte-æ`|
+|229|`å`|`little-a-ring byte`|`byte-å` `byte a-anelado`|
+|230|`æ`|`little-ae byte`|`byte-æ` `byte-ae`|
 |231|`ç`|`little-c-cedilla byte`|`byte-ç`|
 |232|`è`|`little-e-grave byte`|`byte-è`|
 |233|`é`|`little-e-acute byte`|`byte-é`|
@@ -245,10 +245,10 @@
 |245|`õ`|`little-o-tilde byte`|`byte-õ`|
 |246|`ö`|`little-o-diaere`|`byte-ö`|
 |247|`÷`|`division-symbol byte`|`byte-divisão`|
-|248|`ø`|`little-o-stroke byte`|`byte-ø`|
+|248|`ø`|`little-o-stroke byte`|`byte-ø` `byte o-cortado`|
 |249|`ù`|`little-u-grave byte`|`byte-ù`|
 |250|`ú`|`little-u-acute byte`|`byte-ú`|
 |251|`û`|`little-u-circumflex byte`|`byte-û`|
 |252|`ü`|`little-u-diaere`|`byte-ü`|
 |253|`ý`|`little-y-acute byte`|`byte-ý`|
-|254|`þ`|`little-thorn byte`|`byte-þ`|
+|254|`þ`|`little-thorn byte`|`byte-þ` `byte-thorn`|
