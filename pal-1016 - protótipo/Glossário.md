@@ -549,7 +549,7 @@ Lista de Termos em Ordem Alfabética
 
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|face|–|–|–|–|face|
+|face|fitar|mirar|–|–|–|
 |fail|–|–|–|falha|falhar|
 |fancy arrow|Seta elegante|–|–|–|–|
 |feminine byte|–|byte-ª|–|–|–|
