@@ -1370,9 +1370,9 @@ Lista de Termos em Ordem Alfabética
 |seed (substantivo)|número da semente|–|–|–|–|
 |seed (verbo)|semear|fertilizar|adubar|preparar|-|
 |seek|-|-|-|-|-|
-|select|selecionar|escolher|-|-|-|
-|selection|-|-|-|-|-|
-|semi-colon byte|–|–|–|–|–|
+|select|selecionar|escolher|-|-|seletar|
+|selection|seleção|escolha|-|-|-|
+|semi-colon byte|–|–|–|–|byte dois-pontos|
 |send|-|-|-|-|-|
 |set (verbo)|definir|mudar a cor do sinal|-|-|-|
 |setalertboundary|-|-|-|-|-|
