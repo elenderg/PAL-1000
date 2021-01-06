@@ -535,7 +535,8 @@ Lista de Termos em Ordem Alfabética
 |exclamation-mark byte|–|–|–|–|byte-!|
 |exclusionflags|-|-|-|-|-|
 |exit tag|–|–|–|–|marca-sair|
-|extend|-|-|-|estender|aumentar|
+|extend|ampliar|estender|expandir|aumentar|prolongar|
+|extension|extensão|–|–|–|–|
 |externalize|-|-|-|-|externalizar|
 |extra points|–|–|–|–|–|
 |extract|-|-|-|-|extrair|
