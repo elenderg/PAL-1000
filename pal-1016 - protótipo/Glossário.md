@@ -566,6 +566,7 @@ Lista de Termos em Ordem Alfabética
 |f-key|–|–|–|–|tecla-f|
 |flag <sup>[D]</sup>|sinal|sinalizador|bandeira|–|–|
 |flag <sup>[E]</sup>|–|–|–|–|–|
+|flip|inverter|–|–|–|–|
 |font height|–|–|–|–|altura da fonte|
 |font info|–|–|–|–|informação da fonte|
 |font resource|–|–|–|–|recursos da fonte|
