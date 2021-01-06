@@ -1401,7 +1401,8 @@ Lista de Termos em Ordem Alfabética
 |shift-out byte|byte de shift liberado|–|–|–|–|
 |show|-|-|-|-|-|
 |shrink|-|-|-|-|-|
-|shut|-|-|-|-|-|
+|shut|-|-|-|fechar|cerrar|
+|shut down|-|-|-|terminar|encerrar|
 |signature|-|-|-|-|-|
 |simplify|-|-|-|-|-|
 |single-quote byte|–|–|–|–|–|
@@ -1447,12 +1448,13 @@ Lista de Termos em Ordem Alfabética
 |split (verbo)|-|-|-|-|-|
 |spot <sup>[D]</sup>|lugar|local|posição|–|–|
 |spot <sup>[E]</sup>|mancha|–|–|–|–|
-|square (verbo)|quadrado|-|-|-|-|
+|square (verbo)|quadrado|–|–|–|–|
 |square root|raiz quadrada|–|–|–|–|
 |square size|tamanho do quadrado|–|–|–|–|
 |stack|–|–|–|–|–|
 |stack entry|empilhamento|–|–|entrada de pilha|–|
-|start (verbo)|-|-|-|-|-|
+|start (verbo)|-|-|-|começar|iniciar|
+|start up|–|–|–|–|executar|
 |start-of-heading byte|–|–|–|–|–|
 |start-of-text byte|–|–|–|–|–|
 |startupinfo|-|-|-|-|-|
