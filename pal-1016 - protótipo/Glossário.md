@@ -1335,18 +1335,18 @@ Lista de Termos em Ordem Alfabética
 |right-paren byte|–|–|–|–|–|
 |right-single-quote byte|–|–|–|–|–|
 |right-window key|–|tecla ⊞ direita|tecla ⌘ direita|–|–|
-|rise|–|–|–|–|–|
-|r-key|tecla r|-|–|–|–|
-|rotate|-|-|-|-|-|
+|rise|elevar|–|–|–|–|
+|r-key|tecla-r|–|–|–|–|
+|rotate|girar|rodar|–|–|–|
 |round (verbo)|arredondar|-|-|-|-|
-|routine|tarefa|–|–|–|–|
+|routine|tarefa|–|–|–|rotina|
 |routine address tag|–|–|–|–|–|
-|routine reference|–|–|–|–|–|
-|row|fileira|||||
-|row\#|–|–|–|–|–|
+|routine reference|–|–|–|–|rotina-ref|
+|row|fileira|–|–|–|–|
+|row\#|–|–|–|–|fileira#|
 |row/sheet|–|–|–|–|–|
-|run (substantivo)|execução|–|–|–|–|
-|run (verbo)|-|-|-|-|-|
+|run (substantivo)|execução|–|–|–|ativação|
+|run (verbo)|-|-|-|-|ativar|
 
 ### #S
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
@@ -1403,7 +1403,7 @@ Lista de Termos em Ordem Alfabética
 |show|-|-|-|-|-|
 |shrink|-|-|-|-|-|
 |shut|-|-|-|fechar|cerrar|
-|shut down|-|-|-|terminar|encerrar|
+|shut down|-|-|desativar|terminar|encerrar|
 |signature|-|-|-|-|-|
 |simplify|-|-|-|-|-|
 |single-quote byte|–|–|–|–|–|
@@ -1455,7 +1455,7 @@ Lista de Termos em Ordem Alfabética
 |stack|–|–|–|–|–|
 |stack entry|empilhamento|–|–|entrada de pilha|–|
 |start (verbo)|-|-|-|começar|iniciar|
-|start up|–|–|–|–|executar|
+|start up|–|–|–|ativar|executar|
 |start-of-heading byte|–|–|–|–|–|
 |start-of-text byte|–|–|–|–|–|
 |startupinfo|-|-|-|-|-|
