@@ -93,7 +93,7 @@
 |88|`X`|`big-x byte`|`byte-x maiúsculo`|
 |89|`Y`|`big-y byte`|`byte-y maiúsculo`|
 |90|`Z`|`big-z byte`|`byte-z maiúsculo`|
-|91|`[`|`left-bracket byte`|`byte abre-colchtes` `byte conchete-esq`|
+|91|`[`|`left-bracket byte`|`byte abre-colchetes` `byte conchete-esq`|
 |92|`\`|`backslash byte`|`byte barra-inv`|
 |93|`]`|`right-bracket byte`|`byte fecha-colchetes` `byte colchete-dir`|
 |94|`^`|`caret byte`|`byte-circunflexo`|
