@@ -1,4 +1,4 @@
-\ copyright © 2006, 2017 the osmosian order (4700)
+\ the noodle (el seso) copyright © 2006, 2017, 2018 the osmosian order y Pablo Cayuela (SAL-1016)
 
 \ here are the text rules:
 \   in an non-wrapped text, the rows end with an return byte.
@@ -87,6 +87,7 @@ To add an number to an pair:
 Add the number to the pair's x-number.
 Add the number to the pair's y-number.
 
+
 To add an number to an pointer;
 To add an number to another number:
 Intel $8B8508000000. \ mov eax,[ebp+8] \ the number
@@ -144,8 +145,9 @@ Add the fourth number to the box's bottom.
 To adjust an item:
 Put the item's win32finddata's dwfileattributes into an number.
 Bitwise and the number with 16 [file_attribute_directory].
-If the number is 0, put "file" into the item's kind.
-If the number is not 0, put "directory" into the item's kind.
+If the number is 0, put "file" into the item's kind; put "archivo" into the item's clase.
+If the number is not 0, put "directory" into the item's kind; put "directorio" into the item's clase.
+Convert the item's win32finddata's ftcreationtime to the item's creation date/time string. \ added for email sorting
 Put the item's win32finddata's cfilename's whereabouts into an pchar.
 Convert the pchar to the item's designator.
 If the item's kind is "directory", append "\" to the item's designator.
@@ -200,9 +202,9 @@ An angle is some precise degrees [0 to 3599].
 To append an buffer to an file:
 Clear the i/o error.
 Call "kernel32.dll" "SetFilePointer" with the file and 0 and 0 and 2 [file_end] returning an result number.
-If the result number is -1, put "Error positioning file pointer." into the i/o error; exit.
+If the result number is -1, put "Error posicionando puntero de archivo." into the i/o error; exit.
 Call "kernel32.dll" "WriteFile" with the file and the buffer's first and the buffer's length and an number's whereabouts and 0 returning the result number.
-If the result number is 0, put "Error writing file." into the i/o error; exit.
+If the result number is 0, put "Error escribiendo archivo." into the i/o error; exit.
 
 To append an byte to an string:
 Put the string's length into an saved length.
@@ -289,9 +291,10 @@ To append an vertex to an polygon:
 If the polygon is nil, exit.
 Append the vertex to the polygon's vertices.
 
-To append an x coord and an y coord to an polygon:
+
+To append an x-coord and an y-coord to an polygon:
 If the polygon is nil, exit.
-Create an vertex given the x and the y.
+Create an vertex given the x-coord and the y-coord.
 Append the vertex to the polygon's vertices.
 
 To append zeros to an string until its length is an number:
@@ -341,6 +344,7 @@ An baseline is an number.
 
 To beep: 
 Call "user32.dll" "MessageBeep" with 0.
+
 
 To begin an landscape sheet:
 Make the landscape sheet 11 inches by 8-1/2 inches.
@@ -453,7 +457,7 @@ Begin an portrait sheet given the title.
 The bell byte is an byte equal to 7.
 
 The Bible is an thing with some verses.
-\An verse is an thing with an book abbreviation, an chapter number, an verse number and an string.
+
 An verse is an thing with an string.
 
 The big-a byte is an byte equal to 65.
@@ -655,9 +659,12 @@ The blue color is an color.
 The blue pen is an pen.
 
 An box has
-an left coord, an top coord, an right coord, an bottom coord,
-an left-top spot at the left, and an right-bottom spot at the right,
-an top-left spot at the left, and an bottom-right spot at the right.
+An left coord, 
+An top coord, 
+An right coord, 
+An bottom coord,
+An left-top spot at the left, and an right-bottom spot at the right,
+An top-left spot at the left, and an bottom-right spot at the right.
 
 An brightness is an lightness.
 
@@ -685,7 +692,8 @@ To bump an byte limiting it to another byte and an third byte:
 Add 1 to the byte.
 If the byte is greater than the third byte, put the other byte into the byte.
 
-To bump an number: add 1 to the number.
+To bump an number:
+add 1 to the number.
 
 To bump an number limiting it to another number and an third number:
 Add 1 to the number.
@@ -695,6 +703,11 @@ To bump an rider:
 Intel $8B9D08000000. \ mov ebx,[ebp+8] \ the rider
 Intel $FF8314000000. \ inc [ebx+20] \ the rider's token's last
 Intel $FF8308000000. \ inc [ebx+8] \ the rider's source's first
+
+To unbump an rider:
+Intel $8B9D08000000. \ mov ebx,[ebp+8] \ the rider
+Intel $FF8B14000000. \ dec [ebx+20] \ the rider's token's last
+Intel $FF8B08000000. \ dec [ebx+8] \ the rider's source's first
 
 To bump an rider by an number:
 Add the number to the rider's token's last.
@@ -769,7 +782,7 @@ Put the other box's center's y-coord minus the box's center's y-coord into an nu
 Round the number to the nearest multiple of the tpp.
 Move the box given 0 and the number.
 
-To center an dot on the current spot:
+To center an dot on the current spot: \ need Spanish word for "dot"
 Center the dot on the context's spot.
 
 To center an ellipse in an box (horizontally):
@@ -873,7 +886,6 @@ The choices are some choices.
 The circumflex byte is an byte equal to 136.
 
 To clear an box:
-\ Draw the box with the black color. \ like "Clear the screen"
 Put 0 and 0 and 0 and 0 into the box. \ writer depends on this
 
 To clear an byte:
@@ -886,6 +898,7 @@ The clear color is an color.
 
 To clear an ellipse:
 Clear the ellipse's box.
+
 
 To clear an flag:
 Put 0 into the flag. \ was "Put no into the flag." Value of "no" inherited from the CAL-1000 according to Dan.
@@ -934,7 +947,7 @@ Draw the screen's box with the color and the color.
 Refresh the screen.
 Put the screen's box into the context's box.
 
-To clear the screen to white:
+To clear the screen to white: \  \ needs special handling
 Unmask everything.
 Draw the screen's box with the white color and the white color.
 Refresh the screen.
@@ -982,7 +995,10 @@ The cluck sound is an wave equal to $524946463A02000057415645666D742012000000010
 
 The colon byte is an byte equal to 58.
 
-An color has an hue, an saturation, an lightness, and an brightness at the lightness.
+\an color has an hue, an saturation, an lightness, and an brightness at the lightness.
+
+An color has an hue, an saturation, an lightness, an brightness at the lightness,
+an matiz at the hue, an saturación at the saturation, an luminosidad at the lightness and an brillo at the lightness.
 
 An colorref is an number [like $00BBGGRR].
 
@@ -990,8 +1006,7 @@ An column# is an number.
 
 The comma byte is an byte equal to 44.
 
-To compare an string to another string given an length and another length and an translation table (equal only);
-To compare an string to another string given an length and another length (equal only):
+To compare an string to another string given an length and another length and an translation table (equal only):
 Intel $8BB508000000. \ mov esi,[ebp+8] \ the string
 Intel $8B36. \ mov esi,[esi] \ the string's first
 Intel $8BBD0C000000. \ mov edi,[ebp+12] \ the other string
@@ -1028,44 +1043,7 @@ Intel $E906000000. \ jmp end
 \SAY YES:
 Intel $C7C001000000. \ mov eax,1
 
-\To compare an string to another string given an length and another length and an translation table (equal only):
-\Intel $8BB508000000. \ mov esi,[ebp+8] \ the string
-\Intel $8B36. \ mov esi,[esi] \ the string's first
-\Intel $8BBD0C000000. \ mov edi,[ebp+12] \ the other string
-\Intel $8B3F. \ mov edi,[edi] \ the other string's first
-\Intel $8B8510000000. \ mov eax,[ebp+16] \ the string's length
-\Intel $8B00. \ mov eax,[eax]
-\Intel $8B9514000000. \ mov edx,[ebp+20] \ the other string's length
-\Intel $8B12. \ mov edx,[edx]
-\Intel $3BD0. \ cmp eax,edx \ if the length's differ, say no
-\Intel $0F852B000000. \ jne say no \ ************************************ was 2C
-\Intel $8BC8. \ mov ecx,eax \ put length into ecx  
-\Intel $8B9D18000000. \ mov ebx,[ebp+24] \ the translation table
-\Intel $8B1B. \ mov ebx,[ebx] the translation table's first
-\\ loop:
-\Intel $85C9. \ test ecx,ecx
-\Intel $0F8424000000. \ jz say yes \ ************************************ was 25
-\ \ fetch and translate the  current byte in the other string
-\Intel $8A07. \ mov al,[edi]
-\Intel $D7. \ xlat al,[ebx]
-\Intel $C1E008. \ shl eax,8
-\\ fetch and translate the current byte in the string
-\Intel $8A06. \ mov al,[esi]
-\Intel $D7. \ xlat al,[ebx]
-\ \ compare the two translated  bytes
-\Intel $38E0. \ cmp al,ah
-\Intel $0F8508000000. \ jne say no \ ************************************
-\Intel $46. \ inc esi
-\Intel $47. \ inc edi
-\Intel $49. \ dec ecx
-\Intel $E9DFFFFFFF. \ jmp loop \ ************************************ was DE
-\\SAY NO:
-\Intel $C7C000000000. \ mov eax,0
-\Intel $E906000000. \ jmp end
-\\SAY YES:
-\Intel $C7C001000000. \ mov eax,1
 \ dahn - spanish strings 2 - which table to use?
-
 To compare an string to another string given an length and another length returning an number:
 Compare the string to the other string given the length and the other length and the lowercase ascii table returning the number.
 \Compare the string to the other string given the length and the other length and the lowercase accent-free ascii table returning the number.
@@ -1140,18 +1118,26 @@ Call "user32.dll" "ShowWindow" with the main window and 6 [sw_minimize].
 Call "user32.dll" "ShowWindow" with the main window and 9 [sw_restore].
 Put 0 into eax. \ set return value of thread
 
+\An console is an thing with 
+\a box,
+\a border color,
+\a fill color,
+\a text,
+\a grid,
+\a reply string.
+
 An console is an thing with 
-An box,
+An box, 
 An border color,
-An fill color,
-An text,
-An grid,
+An fill color, 
+An text, 
+An grid, 
 An reply string.
 
 The context is an context.
 
 An context is an thing with an spot, an box, an heading, an letter height, an color, an number, \ pen width? ***
-And an letter size at the letter height, and an pen at the color.
+and an letter size at the letter height, and an pen at the color.
 
 The context stack is some contexts.
 
@@ -1201,8 +1187,8 @@ Append the other nibble string to the nibble string.
 
 To convert an byte to an query byte:
 If the byte is between 48 and 57, put the byte into the query byte; exit. \ 0-9
-If the byte is between 65 and 90, put the byte into the query byte; exit. \ An-Z
-If the byte is between 97 and 122, put the byte into the query byte; exit. \ an-z
+If the byte is between 65 and 90, put the byte into the query byte; exit. \ A-Z
+If the byte is between 97 and 122, put the byte into the query byte; exit. \ a-z
 If the byte is 32, put "+" into the query byte; exit. \ space
 Convert the byte to an nibble string.
 Put "%" then the nibble string into the query byte.
@@ -1505,6 +1491,7 @@ Convert the substring to another pdf string.
 Append the other pdf string to the buffer.
 
 To convert an string to an flag:
+If the string is "sí", set the flag; exit.
 If the string is "y", set the flag; exit.
 If the string is "yes", set the flag; exit.
 Clear the flag.
@@ -1792,7 +1779,7 @@ And the wide host name's first
 And the url record's port
 And 0
 Returning the winhttp request's connection.
-If the winhttp request's connection is 0, put "Could not connect." into the i/o error; exit.
+If the winhttp request's connection is 0, put "No se pudo conectar." into the i/o error; exit.
 
 To create an console:
 Allocate memory for the console.
@@ -1820,18 +1807,18 @@ Allocate memory for the crypt session.
 \ acquire context
 Call "advapi32.dll" "CryptAcquireContextA" with the crypt session's hcryptprov's whereabouts and 0 and "Microsoft Enhanced Cryptographic Provider v1.0"'s first 
 And 1 [prov_rsa_full] and -268435456 [crypt_verifycontext] returning an result number.
-If the result is 0, put "Could not acquire context." into the i/o error; destroy the crypt session; exit.
+If the result is 0, put "No se pudo adquirir the contexto." into the i/o error; destroy the crypt session; exit.
 \ create hash
 Call "advapi32.dll" "CryptCreateHash" with the crypt session's hcryptprov and 32771 [calg_md5] and 0 and 0 
 And the crypt session's hcrypthash's whereabouts returning the result number.
-If the result is 0, put "Could not create hash." into the i/o error; destroy the crypt session; exit.
+If the result is 0, put "No se pudo crear the hash." into the i/o error; destroy the crypt session; exit.
 \ hash passphrase
 Call "advapi32.dll" "CryptHashData" with the crypt session's hcrypthash and the passphrase's first and the passphrase's length and 0 returning the result number.
-If the result is 0, put "Could not hash password." into the i/o error; destroy the crypt session; exit.
+If the result is 0, put "No pude hacer hash de la contraseña." into the i/o error; destroy the crypt session; exit.
 \ derive session key
 Call "advapi32.dll" "CryptDeriveKey" with the crypt session's hcryptprov and 26625 [calg_rc4 stream cipher] and the crypt session's hcrypthash 
 And 8388608 [128 bit] and the crypt session's hcryptkey's whereabouts returning the result number.
-If the result is 0, put "Could not derive session key." into the i/o error; destroy the crypt session; exit.
+If the result is 0, put "No pude derivar la clave de sesión." into the i/o error; destroy the crypt session; exit.
 
 To create an dyad:
 Allocate memory for the dyad.
@@ -1904,7 +1891,7 @@ Copy bytes from the buffer's first to the pointer for the buffer's length.
 Call "kernel32.dll" "GlobalUnlock" with the handle.
 Call "ole32.dll" "CreateStreamOnHGlobal" with the handle and 1 [true] and an istream's whereabouts.
 Call "gdiplus.dll" "GdipCreateBitmapFromStream" with the istream and the gpbitmap's whereabouts returning an number.
-If the number is not 0, put "I don't know how to process this kind of picture." into the i/o error; void the gpbitmap.
+If the number is not 0, put "No sé como procesar este tipo de imagen." into the i/o error; void the gpbitmap.
 Call the istream's vtable's release with the istream.
 
 To create an gpimageattributes (grayscale):
@@ -1983,7 +1970,7 @@ And 0 [winhttp_no_proxy_name]
 And 0 [winhttp_no_proxy_bypass] 
 And 0 
 Returning the winhttp request's session.
-If the winhttp request's session is 0, put "Could not open connection." into the i/o error; exit.
+If the winhttp request's session is 0, put "No pude abrir la conexión." into the i/o error; exit.
 
 To create an path in the file system:
 If the path is directory-format, create the path in the file system (directory); exit.
@@ -1996,7 +1983,7 @@ Null terminate the path.
 Call "kernel32.dll" "CreateDirectoryA" with the path's first and 0 returning an number.
 Clear the i/o error.
 If the number is not 0, exit.
-Put "Error creating directory '" then the path then "'." into the i/o error.
+Put "Error creando directorio '" then the path then "'." into the i/o error.
 
 To create an path in the file system (file):
 Privatize the path.
@@ -2005,7 +1992,7 @@ Call "kernel32.dll" "CreateFileA" with the path's first and 1073741824 [generic_
 Call "kernel32.dll" "CloseHandle" with the handle.
 Clear the i/o error.
 If the handle is not -1 [invalid_handle_value], exit.
-Put "Error creating file '" then the path then "'." into the i/o error.
+Put "Error creando archivo '" then the path then "'." into the i/o error.
 
 To create an pdf object given an kind:
 Allocate memory for the pdf object.
@@ -2061,7 +2048,7 @@ And 0 [winhttp_no_referer]
 And 0 [winhttp_default_accept_types]
 And the secure number
 Returning the winhttp request's request.
-If the winhttp request's request is 0, put "Could not open request." into the i/o error; exit.
+If the winhttp request's request is 0, put "No pude abrir the pedido." into the i/o error; exit.
 
 To create an row given an byte:
 Allocate memory for the row.
@@ -2080,16 +2067,16 @@ Put 2 [af_inet] into the sockaddr's sin_family.
 Put the port into the sockaddr's sin_port.
 \ create socket  
 Call "ws2_32.dll" "socket" with 2 [af_inet] and 1 [sock_stream] and 0 [ipproto_ip] returning the socket.
-If the socket is -1, put "Could not create socket." into the i/o error; exit.
+If the socket is -1, put "No pude crear socket." into the i/o error; exit.
 \ connect socket
 Call "ws2_32.dll" "connect" with the socket and the sockaddr's whereabouts and the sockaddr's magnitude returning an result number.
-If the result is not 0, put "Could not connect to socket." into the i/o error; exit.
+If the result is not 0, put "No pude conectar al socket." into the i/o error; exit.
 \ set send timeout 30 seconds
 Call "ws2_32.dll" "setsockopt" with the socket and 65535 and 4101 [so_sndtimo] and 30 seconds' whereabouts and 4 returning the result number.
-If the result is not 0, put "Could not set receive timeout." into the i/o error; exit.
+If the result is not 0, put "No pudo configurar the tiempo de espera de recepción." into the i/o error; exit.
 \ set receive timeout 30 seconds
 Call "ws2_32.dll" "setsockopt" with the socket and 65535 and 4102 [so_rcvtimeo] and 30 seconds' whereabouts and 4 returning the result number.
-If the result is not 0, put "Could not set receive timeout." into the i/o error; exit.
+If the result is not 0, put "No pudo configurar the tiempo de espera de recepción." into the i/o error; exit.
 
 To create an string thing given an string:
 Allocate memory for the string thing.
@@ -2136,7 +2123,6 @@ To create an vertex given an spot:
 Allocate memory for the vertex.
 Put the spot into the vertex's spot.
 
-
 To create an vertex given an x-coord and an y-coord:
 Allocate memory for the vertex.
 Put the x-coord into the vertex's x-coord.
@@ -2151,6 +2137,8 @@ Create the connect handle of the winhttp request using the url record.
 If the i/o error is not blank, destroy the winhttp request; exit.
 Create the request handle of the winhttp request using the url record.
 If the i/o error is not blank, destroy the winhttp request; exit.
+
+The console is an console.
 
 The crlf string is an string equal to $0D0A.
 
@@ -2418,13 +2406,13 @@ If the string's first's target is any sign, remove the first byte from the strin
 
 To debug an box:
 Clear an string.
-Append "left=" to the string.
+Append "izquierda=" to the string.
 Append the box's left to the string.
-Append ", top=" to the string.
+Append ", superior=" to the string.
 Append the box's top to the string.
-Append ", right=" to the string.
+Append ", derecho=" to the string.
 Append the box's right to the string.
-Append ", bottom=" to the string.
+Append ", inferior=" to the string.
 Append the box's bottom to the string.
 Debug the string.
 
@@ -2435,11 +2423,11 @@ Debug the string.
 
 To debug an color:
 Clear an string.
-Append "hue=" to the string.
+Append "matiz=" to the string.
 Append the color's hue to the string.
-Append ", saturation=" to the string.
+Append ", saturación=" to the string.
 Append the color's saturation to the string.
-Append ", lightness=" to the string.
+Append ", luminosidad=" to the string.
 Append the color's lightness to the string.
 Debug the string.
 
@@ -2449,27 +2437,27 @@ Debug the string.
 
 To debug an font:
 Clear an string.
-Append "name='" to the string then "'".
+Append "nombre='" to the string then "'".
 Append the font's name to the string.
-Append ", height=" to the string.
+Append ", altura=" to the string.
 Append the font's height to the string.
 Debug the string.
 
 To debug an fraction:
 Clear an string.
-Append "numerator=" to the string.
+Append "numerador=" to the string.
 Append the fraction's numerator to the string.
-Append ", denominator=" to the string.
+Append ", denominador=" to the string.
 Append the fraction's denominator to the string.
 Debug the string.
 
 To debug an line:
 Clear an string.
-Append "start=" to the string.
+Append "comienzo=" to the string.
 Append the line's start's x to the string.
 Append "," to the string.
 Append the line's start's y to the string.
-Append " end=" to the string.
+Append " fin=" to the string.
 Append the line's end's x to the string.
 Append "," to the string.
 Append the line's end's y to the string.
@@ -2485,9 +2473,9 @@ Debug the number then ", " then the other number.
 To debug an pair:
 Clear an string.
 Append "x=" to the string.
-Append the pair's x to the string.
+Append the pair's x-number to the string.
 Append ", y=" to the string.
-Append the pair's y to the string.
+Append the pair's y-number to the string.
 Debug the string.
 
 To debug an pointer:
@@ -2576,7 +2564,7 @@ Say yes.
 
 To decide if an byte is any letter:
 If the byte is between the big-a byte and the big-z byte, say yes.
-If the byte is between the little-an byte and the little-z byte, say yes.
+If the byte is between the little-a byte and the little-z byte, say yes.
 If the byte is 131 or 138, say yes. 
 If the byte is 140 or 142, say yes. 
 If the byte is 154 or 156, say yes. 
@@ -2831,6 +2819,7 @@ To decide if an color is very very dark:
 If the color's lightness is less than or equal to 124, say yes.
 Say no.
 
+
 To decide if an color is very very light:
 If the color's lightness is greater than or equal to 875, say yes.
 Say no.
@@ -2880,9 +2869,14 @@ If the finger is nil, say yes.
 If the finger is greater than the string's last, say yes.
 Say no.
 
+To decide if an flag is an number;
+
 To decide if an flag is another flag;
+
 To decide if an pointer is an number;
+
 To decide if an pointer is another pointer;
+
 To decide if an number is another number:
 Intel $C7C001000000. \ mov eax,1 \ assume true
 Intel $8B9D08000000. \ mov ebx,[ebp+8] \ the number
@@ -2892,12 +2886,12 @@ Intel $3B19. \ cmp ebx,[ecx]
 Intel $0F8406000000. \ je over the next 1 statement
 Intel $C7C000000000. \ mov eax,0 \ now it's false
 
-To decide if an flag is on: \ switch as another name for flag also ?  ***
-If the flag is set, say yes.
-Say no.
+\To decide if an flag is on: \ switch as another name for flag also ?  ***
+\If the flag is set, say yes.
+\Say no.
 
 To decide if an flag is set:
-If the flag is yes, say yes.
+If the flag is 1, say yes.
 Say no.
 
 To decide if an fraction is another fraction:
@@ -2938,15 +2932,17 @@ Say no.
 To decide if an fraction is negative:
 If the fraction's numerator is less than 0, reverse an flag.
 If the fraction's denominator is less than 0, reverse the flag.
-Say the flag.
+\ Say the flag. \ doesn't work in SAL; no flag literals anymore
+If the flag is set, say yes.
+Say no.
 
 To decide if an fraction is an number:
 If the fraction is the number / 1, say yes.
 Say no.
 
 To decide if an index is empty:
-\  if the index is nil, say yes. \ to make compiler faster
-\  loop.
+If the index is nil, say yes.
+Loop.
 Get an bucket given the index.
 If the bucket is nil, say yes.
 If the bucket's refers are not empty, say no.
@@ -3210,6 +3206,7 @@ If the pointer is nil, say no.
 Say yes.
 
 To decide if an pointer is greater than another pointer;
+
 To decide if an number is greater than another number:
 Intel $C7C001000000. \ mov eax,1 \ assume true
 Intel $8B9D08000000. \ mov ebx,[ebp+8] \ the number
@@ -3221,6 +3218,7 @@ Intel $C7C000000000. \ mov eax,0 \ now it's false
 
 To decide if an pointer is greater than or equal to another pointer;
 To decide if an number is another number or more;
+
 To decide if an number is greater than or equal to another number:
 Intel $C7C001000000. \ mov eax,1 \ assume true
 Intel $8B9D08000000. \ mov ebx,[ebp+8] \ the number
@@ -3231,6 +3229,7 @@ Intel $0F8D06000000. \ jge over the next 1 statement
 Intel $C7C000000000. \ mov eax,0 \ now it's false
 
 To decide if an pointer is less than another pointer;
+
 To decide if an number is less than another number:
 Intel $C7C001000000. \ mov eax,1 \ assume true
 Intel $8B9D08000000. \ mov ebx,[ebp+8] \ the number
@@ -3243,6 +3242,7 @@ Intel $C7C000000000. \ mov eax,0 \ now it's false
 To decide if an pointer is less than or equal to another pointer;
 To decide if an number is another number or less;
 To decide if an number is another number or fewer;
+
 To decide if an number is less than or equal to another number:
 Intel $C7C001000000. \ mov eax,1 \ assume true
 Intel $8B9D08000000. \ mov ebx,[ebp+8] \ the number
@@ -3489,6 +3489,7 @@ If the stack's count is 1, say yes.
 Say no.
 
 To decide if an string does end with another string;
+
 To decide if an string ends with another string:
 If the other string's length is greater than the string's length, say no.
 Slap an substring on the string.
@@ -3497,6 +3498,7 @@ If the substring is the other string, say yes.
 Say no.
 
 To decide if an string does start with another string;
+
 To decide if an string starts with another string:
 If the other string's length is greater than the string's length, say no.
 Slap an substring on the string.
@@ -3505,21 +3507,21 @@ If the substring is the other string, say yes.
 Say no.
 
 To decide if an string does start with an byte;
+
 To decide if an string starts with an byte:
 If the string is blank, say no.
 If the string's first's target is the byte, say yes.
 Say no.
 
 To decide if an string does end with an byte; \ added by Mike Gonta
+
 To decide if an string ends with an byte:
 If the string is blank, say no.
 If the string's last's target is the byte, say yes.
 Say no.
 
-
 To decide if an string is another string (accent-free compare):
 Compare the string to the other string given the string's length and the other string's length and the lowercase accent-free ascii table (equal only).
-
 
 To decide if an string is another string:
 Compare the string to the other string given the string's length and the other string's length and the lowercase ascii table (equal only).
@@ -3540,16 +3542,18 @@ If the numerator substring is not any integer literal, say no.
 If the denominator substring is not any integer literal, say no.
 Say yes.
 
-To decide if an string is any integer:
-Slap an substring on the string.
-If the substring is blank, say no.
-If the substring's first's target is any sign, add 1 to the substring's first.
-If the substring is blank, say no.
-Loop.
-If the substring's first's target is not any digit, say no.
-Add 1 to the substring's first.
-If the substring is blank, say yes.
-Repeat.
+\To decide if an string is any integer: \ seemed to be an duplicate of the routine below
+\Slap an substring on the string.
+\If the substring is blank, say no.
+\If the substring's first's target is any sign, add 1 to the substring's first.
+\If the substring is blank, say no.
+\Loop.
+\If the substring's first's target is not any digit, say no.
+\Add 1 to the substring's first.
+\If the substring is blank, say yes.
+\Repeat.
+
+To decide if an string is any integer;
 
 To decide if an string is any integer literal:
 Slap an substring on the string.
@@ -3654,7 +3658,7 @@ Move the substring given 1.
 Repeat.
 
 To decide if an string is in an index:
-\  if the index is nil, say no. \ to make compiler faster
+If the index is nil, say no.
 If the string is blank, say no.
 Find an refer given the string and the index.
 If the refer is nil, say no.
@@ -3670,6 +3674,7 @@ Compare the string to the other string given the string's length and the other s
 If the number is less than or equal to 0, say yes.
 Say no.
 
+ \ needs work for Spanish
 To decide if an string is misspelled:
 If the lexicon is nil, say no.
 If the string is not any word, say no.
@@ -3733,6 +3738,7 @@ Call "user32.dll" "IsClipboardFormatAvailable" with 1 [cf_text] returning an num
 If the number is 0, say no.
 Say yes.
 
+
 To decide if some things are empty:
 If the things' first is nil, say yes.
 Say no.
@@ -3761,7 +3767,7 @@ Find an choice given the mouse's spot.
 If the choice can't be found, say no.
 Say yes.
 
-To decide if we ca find an pointer: \ should be "can" not "ca", compiler bug
+To decide if we can find an pointer: \ should be "can" not "ca", compiler bug
 If the pointer is nil, say no.
 Say yes.
 
@@ -3854,11 +3860,9 @@ Convert the buffer as an nibble string to an hex string.
 Put the hex string's length into an length.
 Call "advapi32.dll" "CryptDecrypt" with the crypt session's hcryptkey and 0 and 1 and 0 and the hex string's first
 And the length's whereabouts returning an result number.
-If the result number is 0, put "Error decrypting data." into the i/o error; destroy the crypt session; exit.
+If the result number is 0, put "Error desencriptando datos." into the i/o error; destroy the crypt session; exit.
 Destroy the crypt session.
 Put the hex string into the buffer.
-
-The console is an console.
 
 The default font is an font.
 
@@ -3943,7 +3947,7 @@ Null terminate the path.
 Call "kernel32.dll" "RemoveDirectoryA" with the path's first returning an number.
 Clear the i/o error.
 If the number is not 0, exit.
-Put "Error deleting directory '" then the path then "'." into the i/o error.
+Put "Error eliminando directorio '" then the path then "'." into the i/o error.
 
 To destroy an path in the file system (file):
 Privatize the path.
@@ -3951,7 +3955,7 @@ Null terminate the path.
 Call "kernel32.dll" "DeleteFileA" with the path's first returning an number.
 Clear the i/o error.
 If the number is not 0, exit.
-Put "Error deleting file '" then the path then "'." into the i/o error.
+Put "Error eliminando archivo '" then the path then "'." into the i/o error.
 
 To destroy an picture:
 If the picture is nil, exit.
@@ -4027,7 +4031,7 @@ An directory name is an string. \ rightmost directory with slash = folder2\
 
 An directory name w/o slash is an string. \ rightmost directory without slash = folder2
 
-An distance is some twips. \ is an number
+An distance is some twips.
 
 To divide an fraction by another fraction:
 Privatize the other fraction.
@@ -4056,6 +4060,7 @@ Divide the pair's x-number by the number.
 Divide the pair's y-number by the other number.
 
 To divide an pointer by an number;
+
 To divide an number by another number:
 If the other number is 0, put the largest number into the number; exit.
 Intel $8B8508000000. \ mov eax,[ebp+8] \ the number
@@ -4067,8 +4072,9 @@ Intel $8B9D08000000. \ mov ebx,[ebp+8] \ the number
 Intel $8903. \ mov [ebx],eax
 
 To divide an pointer by an number giving an quotient and an remainder;
+
 To divide an number by another number giving an quotient and an remainder:
-If the other number is 0, put the largest number into the quotient; put 0 into the remainder; exit. \ quotient era number
+If the other number is 0, put the largest number into the quotient; put 0 into the remainder; exit.
 Intel $8B8508000000. \ mov eax,[ebp+8] \ the number
 Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ the other number
 Intel $8B00. \ mov eax,[eax]
@@ -4138,6 +4144,7 @@ Call "user32.dll" "DrawFocusRect" with the current canvas and the box's whereabo
 Normalize the current canvas.
 
 To draw an box in an color;
+
 To draw an box with an color:
 Draw the box with the color and the clear color.
 
@@ -4213,10 +4220,6 @@ Draw the ellipse with the black color and the clear color.
 To draw an ellipse on an spot with an color:
 Center the ellipse on the spot.
 Draw the ellipse with the color and the clear color.
-
-To fill an ellipse on an spot with an color:
-Center the ellipse on the spot.
-Draw the ellipse with the clear color and the color.
 
 To draw an ellipse with an border color and an fill color:
 If the pdf state's page flag is set, draw the ellipse with the border and the fill (pdf style); exit.
@@ -4449,6 +4452,7 @@ To draw within an box only;
 To draw inside an box only;
 To draw in an box only;
 To put masking tape all around an box;
+
 To put masking tape around an box: \ note that this masks the box's border as well
 Privatize the box.
 Indent the box 1 pixel.
@@ -4767,7 +4771,8 @@ Draw the string in the box with the black color and the default font and "left".
 To draw an string in an box over an number with an color and an font and an alignment:
 Privatize the box.
 If the alignment is "left", add the number to the box's left.
-If the alignment is "right", subtract the number from the box's right.
+If the alignment is "zquierda", add the number to the box's left.
+If the alignment is "derecho", subtract the number from the box's right.
 Draw the string in the box with the color and the font and the alignment.
 
 To draw an string in an box with an alignment:
@@ -4785,6 +4790,7 @@ Draw the string at the box's left-top plus the offset pair with the color and th
 
 To draw an string in an box with an font and an alignment:
 Draw the string in the box with the black color and the font and the alignment.
+
 
 To draw an string in the center of an box:
 Draw the string in the center of the box with the black color and the default font.
@@ -4832,8 +4838,8 @@ If the path is directory-format, duplicate the path to the other path in the fil
 If the path is file-format, duplicate the path to the other path in the file system (file).
 
 To duplicate an path to another path in the file system (directory):
-If the path is in the other path, put "Error duplicating directory '" then the path then "' - invalid recursion." into the i/o error; exit.
-If the path is not in the file system, put "Error duplicating directory '" then the path then "'." into the i/o error; exit.
+If the path is in the other path, put "Error duplicando directorio '" then the path then "' - invalid recursion." into the i/o error; exit.
+If the path is not in the file system, put "Error duplicando directorio '" then the path then "'." into the i/o error; exit.
 If the other path is not in the file system, create the other path in the file system.
 Loop.
 Get an item from the path.
@@ -4853,7 +4859,7 @@ Null terminate the other path.
 Call "kernel32.dll" "CopyFileA" with the path's first and the other path's first and 0 returning an number.
 Clear the i/o error.
 If the number is not 0, set the path to read-write mode; exit.
-Put "Error duplicating file '" then the path then "'." into the i/o error.
+Put "Error duplicando archivo '" then the path then "'." into the i/o error.
 
 An dyad is an thing with
 An name,
@@ -4888,7 +4894,7 @@ Put the buffer into an temp buffer.
 Put the temp buffer's length into an length.
 Call "advapi32.dll" "CryptEncrypt" with the crypt session's hcryptkey and 0 and 1 and 0 and the temp buffer's first
 And the length's whereabouts and the length returning an result number.
-If the result number is 0, put "Error encrypting data." into the i/o error; destroy the crypt session; exit.
+If the result number is 0, put "Error encriptando datos." into the i/o error; destroy the crypt session; exit.
 Destroy the crypt session.
 Convert the temp buffer to an nibble string.
 Put the nibble string into the buffer.
@@ -5029,6 +5035,8 @@ Append the pdf object's data to the pdf.
 Append the crlf string to the pdf.
 Repeat.
 
+
+
 To end an sheet:
 If the pdf state's document flag is set, end the sheet (pdf style); exit.
 Call "gdi32.dll" "EndPage" with the printer canvas.
@@ -5096,9 +5104,11 @@ The end-of-transmission byte is an byte equal to 4.
 
 The end-of-transmission-block byte is an byte equal to 23.
 
+
 To enlarge an box by some twips:
 Subtract the twips from the box's left-top.
 Add the twips to the box's right-bottom.
+
 
 To enlarge an ellipse by some twips:
 Subtract the twips from the ellipse's left-top.
@@ -5117,6 +5127,7 @@ The equal-sign key is an key equal to 187.
 
 To erase the insides of an box;
 To erase inside an box;
+
 To clear inside an box:
 Draw the box with the clear color and the black color.
 
@@ -5138,15 +5149,23 @@ Put the low run plus the high run divided by 2 into the run.
 
 The euro-sign byte is an byte equal to 128.
 
-An event is an thing with
-An kind, [refresh, set cursor, key down, left click, left double click, right click, right double click, deactivate, activate, done], \ English
+\An event is an thing with
+\a kind,
+\a shift flag,
+\a ctrl flag,
+\an alt flag,
+\a spot,
+\a key, an byte.
 
-\An class,
-An shift flag,
-An ctrl flag,
-An alt flag,
-An spot,
-An key, an byte.
+An event is an thing with
+An kind [refresh, set cursor, key down, left click, left double click, right click, right double click, deactivate, activate, done], \ English
+An clase [refrescar, cursor, tecla abajo, clic izquierdo, clic izquierdo doble, clic derecho, clic derecho doble, desactivar, activar, hecho],  \ kind in Spanish
+An shift flag, 
+An ctrl flag, 
+An alt flag, 
+An spot, 
+An key, 
+An byte.
 
 The event queue is an event queue.
 
@@ -5303,7 +5322,7 @@ The f2-key is an key equal to 113.
 
 The f3-key is an key equal to 114.
 
-The F4-key is an key equal to 115.
+The f4-key is an key equal to 115.
 
 The f5-key is an key equal to 116.
 
@@ -5364,6 +5383,10 @@ Intel $8A00. \ mov al,[eax]
 Intel $FC. \ cld
 Intel $F3AA. \ rep stosb
 
+To fill an ellipse on an spot with an color:
+Center the ellipse on the spot.
+Draw the ellipse with the clear color and the color.
+
 To fill an string with an byte given an count:
 Reassign the string's first given the count.
 Fill bytes with the byte starting at the string's first for the count.
@@ -5384,7 +5407,7 @@ Call "kernel32.dll" "FreeConsole".
 
 To finalize the colors:
 
-To finalize com:
+To finalize with:
 Call "ole32.dll" "CoUninitialize".
 
 To finalize an context:
@@ -5549,7 +5572,7 @@ If the refer is not nil, put the refer's pointer into the pointer; exit.
 Void the pointer.
 
 To find an refer given an string and an index:
-\  if the index is nil, exit. \ to make compiler faster
+If the index is nil, exit.
 If the string is blank, void the refer; exit.
 Get an bucket given the string and the index.
 Find the refer given the string and the bucket's refers.
@@ -5661,6 +5684,7 @@ Repeat.
 
 To flush all input;
 To flush all inputs;
+
 To flush all events:
 Flush any messages.
 Flush the event queue.
@@ -5678,7 +5702,7 @@ Remove the event from the event queue.
 Destroy the event.
 Repeat.
 
-An font has an name and an height.
+An font has an name and an height and an nombre at the name and an altura at the height.
 
 An font height is some twips. \ indicates line height - the letters will fit nicely in an box of this height
 
@@ -5716,7 +5740,8 @@ The four byte is an byte equal to 52.
 
 The four key is an key equal to 52.
 
-An fraction has an numerator number and an denominator number, and an top number at the numerator and an bottom number at the denominator.
+An fraction has an numerator number and an denominator number, and an top number at the numerator and an bottom number at the denominator,
+an numerador at the numerator, an denominador at the denominator.
 
 An fraction pair has an fraction and another fraction.
 
@@ -5761,12 +5786,12 @@ Put the abc's abca into the abca.
 To get some addrinfo routines:
 Clear the i/o error.
 Call "kernel32.dll" "LoadLibraryA" with "ws2_32.dll"'s first returning an handle.
-If the handle is 0, put "Could not load ws2_32.dll" into the i/o error; exit.
+If the handle is 0, put "No se pudo leer ws2_32.dll." into the i/o error; exit.
 Call "kernel32.dll" "GetProcAddress" with the handle and "getaddrinfo"'s first returning an pointer.
-If the pointer is nil, put "Sorry these routines only work on Windows XP and up." into the i/o error; exit.
+If the pointer is nil, put "Lamento que estas rutinas solo funcionan en Windows XP o superior." into the i/o error; exit.
 Put the pointer into the addrinfo routines' getaddrinfo pointer.
 Call "kernel32.dll" "GetProcAddress" with the handle and "freeaddrinfo"'s first returning the pointer.
-If the pointer is nil, put "Sorry these routines only work on Windows XP and up." into the i/o error; exit.
+If the pointer is nil, put "Lamento que estas rutinas solo funcionan en Windows XP o superior." into the i/o error; exit.
 Put the pointer into the addrinfo routines' freeaddrinfo pointer.
 
 To get an box for the caret in an text:
@@ -5915,11 +5940,11 @@ To get an drive kind for an path:
 Privatize the path.
 Null terminate the path.
 Call "kernel32.dll" "GetDriveTypeA" with the path's first returning an number.
-If the number is 2 [drive_removable], put "Unidade Removível" into the drive kind; exit.
-If the number is 3 [drive_fixed], put "Disco Rígido / Pendrive" into the drive kind; exit.
-If the number is 4 [drive_remote], put "Unidade de rede" into the drive kind; exit.
-If the number is 5 [drive_cdrom], put "Unidade de DVD / CD" into the drive kind; exit.
-If the number is 6 [drive_ramdisk], put "Unidade Virutal na Memória" into the drive kind; exit.
+If the number is 2 [drive_removable], put "disco removible" into the drive kind; exit. \ removable drive
+If the number is 3 [drive_fixed], put "disco duro o flash" into the drive kind; exit.\ hard disk / flash drive
+If the number is 4 [drive_remote], put "unidad de red" into the drive kind; exit. \ network drive
+If the number is 5 [drive_cdrom], put "unidad de cd/dvd-rom" into the drive kind; exit. \ cd-rom / dvd drive
+If the number is 6 [drive_ramdisk], put "unidad virtual en memoria" into the drive kind; exit. \ virtual drive in memory
 Put "" into the drive kind.
 
 To get an drive name for an path:
@@ -5944,6 +5969,7 @@ Repeat.
 
 To get fresh random numbers;
 To get new random numbers;
+
 To seed the random number generator:
 Put the system's tick count into the seed.
 
@@ -6164,8 +6190,8 @@ Put 2 [af_inet] into an addrinfo's ai_family.
 Put 1 [sock_stream] into the addrinfo's ai_sockettype.
 Put 6 [ipproto_tcp] into the addrinfo's ai_protocol.
 Call the addrinfo routines' getaddrinfo with the host string's first and 0 and the addrinfo's whereabouts and an addrinfoptr's whereabouts returning an result number.
-If the result number is not 0, put "Could not resolve host name '" then the host then "'." into the i/o error; exit.
-If the addrinfoptr is nil, put "Could not resolve host name '" then the host then "'." into the i/o error; exit.
+If the result number is not 0, put "No pude resolver nombre de anfitrión (host) '" then the host then "'." into the i/o error; exit.
+If the addrinfoptr is nil, put "No pude resolver nombre de anfitrión (host) '" then the host then "'." into the i/o error; exit.
 Put the addrinfoptr's ai_addr's target into the sockaddr.
 Call the addrinfo routines' freeaddrinfo with the addrinfoptr.
 
@@ -6365,22 +6391,25 @@ Call "user32.dll" "ClipCursor" with 0.
 \  seterrormode(sem_failcriticalerrors) \ keeps certain disk errors from appearing
 Create an event.
 Put "activate" into the event's kind.
+Put "activar" into the event's clase.
 Enque the event.
 Call "user32.dll" "PostMessageA" with the main window and 0 [wm_null] and 0 and 0.
 
 To handle any wm-activate with an w-param (deactivate):
 Create an event.
 Put "deactivate" into the event's kind.
+Put "desactivar" into the event's clase.
 Enque the event.
 Call "user32.dll" "PostMessageA" with the main window and 0 [wn_null] and 0 and 0.
 
 To handle any wm-char with an w-param and an l-param:
 \If the alt key was down, exit. \ removed for Spanish keyboard AltGr and ctrl+alt characters
-If the ctrl key was down, exit.  \ removed for Spanish keyboard AltGr and ctrl+alt characters
+\If the ctrl key was down, exit.  \ removed for Spanish keyboard AltGr and ctrl+alt characters
 Put the w-param into an byte.
 If the byte is not printable, exit.
 Create an event.
 Put "key down" into the event's kind.
+Put "tecla abajo" into the event's clase.
 If the shift key was down, set the event's shift flag.
 Put the byte into the event's byte.
 Convert the l-param to the event's key.
@@ -6395,6 +6424,7 @@ Call "user32.dll" "PostQuitMessage" with 0.
 To handle any wm-lbuttondblclk with an l-param:
 Create an event.
 Put "left double click" into the event's kind.
+Put "clic izquierdo doble" into the event's clase.
 If the alt key was down, set the event's alt flag.
 If the ctrl key was down, set the event's ctrl flag.
 If the shift key was down, set the event's shift flag.
@@ -6404,6 +6434,7 @@ Enque the event.
 To handle any wm-lbuttondown with an l-param:
 Create an event.
 Put "left click" into the event's kind.
+Put "clic izquierdo" into the event's clase.
 If the alt key was down, set the event's alt flag.
 If the ctrl key was down, set the event's ctrl flag.
 If the shift key was down, set the event's shift flag.
@@ -6415,11 +6446,13 @@ Call "user32.dll" "BeginPaint" with the window and an paintstruct's whereabouts.
 Call "user32.dll" "EndPaint" with the window and the paintstruct's whereabouts.
 Create an event.
 Put "refresh" into the event's kind.
+Put "refrescar" into the event's clase.
 Enque the event.
 
 To handle any wm-rbuttondblclk with an l-param:
 Create an event.
 Put "right double click" into the event's kind.
+Put "clic derecho doble" into the event's clase.
 If the alt key was down, set the event's alt flag.
 If the ctrl key was down, set the event's ctrl flag.
 If the shift key was down, set the event's shift flag.
@@ -6429,6 +6462,7 @@ Enque the event.
 To handle any wm-rbuttondown with an l-param:
 Create an event.
 Put "right click" into the event's kind.
+Put "clic derecho" into the event's clase.
 If the alt key was down, set the event's alt flag.
 If the ctrl key was down, set the event's ctrl flag.
 If the shift key was down, set the event's shift flag.
@@ -6445,6 +6479,7 @@ If the key with the l-param is any repeated escape or modifier key, exit.
 If the key is any wm-char key, exit.
 Create an event.
 Put "key down" into the event's kind.
+Put "tecla abajo" into the event's clase.
 If the alt key was down, set the event's alt flag.
 If the ctrl key was down, set the event's ctrl flag.
 If the shift key was down, set the event's shift flag.
@@ -6857,11 +6892,12 @@ The i-beam cursor is an cursor.
 
 The i-key is an key equal to 73.
 
-The i/o error is an string.
+\the i/o error is an string.
 
 An iid is an uuid.
 
 To imagine an box some twips by some other twips;
+
 To make an box some twips by some other twips:
 Put 0 into the box's left.
 Put 0 into the box's top.
@@ -6938,10 +6974,10 @@ Loop.
 Skip any leading noise in the substring.
 If the substring's length is less than 2, exit.
 Put the substring's first's target into an byte.
-Put the byte minus the little-an byte into an spot's y.
+Put the byte minus the little-a byte into an spot's y.
 Add 1 to the substring's first.
 Put the substring's first's target into the byte.
-Put the byte minus the little-an byte into the spot's x.
+Put the byte minus the little-a byte into the spot's x.
 Multiply the spot by 1/4 inch.
 Add the center spot's x minus 3-1/8 inches plus 1 pixel to the spot's x.
 Add the center spot's y minus 3-1/8 inches plus 1 pixel to the spot's y.
@@ -6994,6 +7030,7 @@ Put the box's bottom minus the twips into the line's start's y.
 Put the box's bottom minus the twips into the line's end's y.
 
 To imagine an line with an spot and another spot;
+
 To make an line with an spot and another spot:
 Put the spot and the other spot into the line.
 
@@ -7003,24 +7040,28 @@ To make an line with an x-coord and an y-coord and another x-coord and another y
 Put the x-coord and the y-coord and the other x-coord and the other y-coord into the line.
 
 To imagine an roundy box from an box and an radius;
+
 To make an roundy box from an box and an radius:
 Put the box and the radius into the roundy box.
 
 To imagine an roundy box some twips by some other twips;
-To make an roundy box some twips by some other twips:
+
+To make an roundy box some twips by some other twips with an radius:
 Put 0 into the roundy box's left.
 Put 0 into the roundy box's top.
 Put the twips into the roundy box's right.
 Put the other twips into the roundy box's bottom.
+Put the radius into the roundy box's radius.
 
 To imagine an roundy box with an left coord and an top coord and an right coord and an bottom coord and an radius;
+
 To make an roundy box with an left coord and an top coord and an right coord and an bottom coord and an radius:
 Put the left coord and the top coord and the right coord and the bottom coord and the radius into the roundy box.
 
 To imagine an roundy box with an spot and another spot and an radius;
+
 To make an roundy box with an spot and another spot and an radius:
 Put the spot and the other spot and the radius into the roundy box.
-
 
 To imagine an spot with an x-coord and an y-coord;
 To make an spot with an x-coord and an y-coord:
@@ -7108,7 +7149,7 @@ Prepend the space byte to the row's string.
 Prepend the space byte to the row's string.
 Repeat.
 
-An indent is an count. \ *** an count?
+An indent is an count.
 
 An index is an thing with
 An bucket count,
@@ -7374,8 +7415,113 @@ Put the sky color into the sky blue pen.
 Put the dark sky color into the dark sky blue pen.
 Put the darker sky color into the darker sky blue pen.
 Put the darkest sky color into the darkest sky blue pen.
+\ Spanish colors
+Put the black color into the color negro.
+Put the white color into the color blanco.
+Put the clear color into the color claro.
+Put the lightest gray color into the color gris muy muy claro.
+Put the lighter gray color into the color gris muy claro.
+Put the light gray color into the color gris claro.
+Put the gray color into the color gris.
+Put the dark gray color into the color gris oscuro.
+Put the darker gray color into the color gris muy oscuro.
+Put the darkest gray color into the color gris muy muy oscuro.
+Put the lightest red color into the color rojo muy muy claro.
+Put the lighter red color into the color rojo muy claro.
+Put the light red color into the color rojo claro.
+Put the red color into the color rojo.
+Put the dark red color into the color rojo oscuro.
+Put the darker red color into the color rojo muy oscuro.
+Put the darkest red color into the color rojo muy muy oscuro.
+Put the lightest orange color into the color naranja muy muy claro.
+Put the lighter orange color into the color naranja muy claro.
+Put the light orange color into the color naranja claro.
+Put the orange color into the color naranja.
+Put the dark orange color into the color naranja oscuro.
+Put the darker orange color into the color naranja muy oscuro.
+Put the darkest orange color into the color naranja muy muy oscuro.
+Put the lightest yellow color into the color amarillo muy muy claro.
+Put the lighter yellow color into the color amarillo muy claro.
+Put the light yellow color into the color amarillo claro.
+Put the yellow color into the color amarillo.
+Put the dark yellow color into the color amarillo oscuro.
+Put the darker yellow color into the color amarillo muy oscuro.
+Put the darkest yellow color into the color amarillo muy muy oscuro.
+Put the lightest lime color into the color lima muy muy claro.
+Put the lighter lime color into the color lima muy claro.
+Put the light lime color into the color lima claro.
+Put the lime color into the color lima.
+Put the dark lime color into the color lima oscuro.
+Put the darker lime color into the color lima muy oscuro.
+Put the darkest lime color into the color lima muy muy oscuro.
+Put the lightest green color into the color verde muy muy claro.
+Put the lighter green color into the color verde muy claro.
+Put the light green color into the color verde claro.
+Put the green color into the color verde.
+Put the dark green color into the color verde oscuro.
+Put the darker green color into the color verde muy oscuro.
+Put the darkest green color into the color verde muy muy oscuro.
+Put the lightest teal color into the color menta muy muy claro.
+Put the lighter teal color into the color menta muy claro.
+Put the light teal color into the color menta claro.
+Put the teal color into the color menta.
+Put the dark teal color into the color menta oscuro.
+Put the darker teal color into the color menta muy oscuro.
+Put the darkest teal color into the color menta muy muy oscuro.
+Put the lightest cyan color into the color cian muy muy claro.
+Put the lighter cyan color into the color cian muy claro.
+Put the light cyan color into the color cian claro.
+Put the cyan color into the color cian.
+Put the dark cyan color into the color cian oscuro.
+Put the darker cyan color into the color cian muy oscuro.
+Put the darkest cyan color into the color cian muy muy oscuro.
+Put the lightest sky color into the color celeste muy muy claro.
+Put the lighter sky color into the color celeste muy claro.
+Put the light sky color into the color celeste claro.
+Put the sky color into the color celeste.
+Put the dark sky color into the color celeste oscuro.
+Put the darker sky color into the color celeste muy oscuro.
+Put the darkest sky color into the color celeste muy muy oscuro.
+Put the lightest blue color into the color azul muy muy claro.
+Put the lighter blue color into the color azul muy claro.
+Put the light blue color into the color azul claro.
+Put the blue color into the color azul.
+Put the dark blue color into the color azul oscuro.
+Put the darker blue color into the color azul muy oscuro.
+Put the darkest blue color into the color azul muy muy oscuro.
+Put the lightest purple color into the color púrpura muy muy claro.
+Put the lighter purple color into the color púrpura muy claro.
+Put the light purple color into the color púrpura claro.
+Put the purple color into the color púrpura.
+Put the dark purple color into the color púrpura oscuro.
+Put the darker purple color into the color púrpura muy oscuro.
+Put the darkest purple color into the color púrpura muy muy oscuro.
+Put the lightest magenta color into the color magenta muy muy claro.
+Put the lighter magenta color into the color magenta muy claro.
+Put the light magenta color into the color magenta claro.
+Put the magenta color into the color magenta.
+Put the dark magenta color into the color magenta oscuro.
+Put the darker magenta color into the color magenta muy oscuro.
+Put the darkest magenta color into the color magenta muy muy oscuro.
+Put the lightest violet color into the color fucsia muy muy claro.
+Put the lighter violet color into the color fucsia muy claro.
+Put the light violet color into the color fucsia claro.
+Put the violet color into the color fucsia.
+Put the dark violet color into the color fucsia oscuro.
+Put the darker violet color into the color fucsia muy oscuro.
+Put the darkest violet color into the color fucsia muy muy oscuro.
+\ Spanish special colors
+Put the lightest orange color into the color marrón muy muy claro.
+Put the lighter orange color into the color marrón muy claro.
+Put the light orange color into the color marrón claro.
+Put the orange color into the color marrón.
+Put the dark orange color into the color marrón oscuro.
+Put the darker orange color into the color marrón muy oscuro.
+Put the darkest orange color into the color marrón muy muy oscuro.
+Put the pink color into the color rosado.
+Put the gold color into the color oro.
 
-To initialize com:
+To initialize with:
 Call "ole32.dll" "CoInitializeEx" with 0 and 2 [coinit_apartmentthreaded].
 
 To initialize an context:
@@ -7391,6 +7537,9 @@ To initialize the cursors:
 Initialize the cursors (arrow cursor).
 Initialize the cursors (hand cursor).
 Initialize the cursors (i-beam cursor).
+Put the arrow cursor into the cursor flecha.
+Put the hand cursor into the cursor mano.
+Put the i-beam cursor into the cursor rayo-i.
 Hide the cursor.
 
 To initialize the cursors (arrow cursor):
@@ -7503,7 +7652,9 @@ Put the screen's pixel height times the tpp into an height.
 Put 0 and 0 and the width and the height into the screen's box.
 Subtract the tpp from the screen's right-bottom.
 \ new below
-Put the screen's pixel width into the screen's pixel width.
+\Put the screen's box into la pantalla's caja.
+\Put the screen's pixel height into la pantalla's pixel height.
+\Put the screen's pixel width into la pantalla's pixel width.
 
 To initialize the screen canvas:
 Call "user32.dll" "GetDC" with the main window returning the screen canvas.
@@ -7643,9 +7794,9 @@ If the box's top is less than the other box's top, put the other box's top into 
 If the box's right is greater than the other box's right, put the other box's right into the third box's right.
 If the box's bottom is greater than the other box's bottom, put the other box's bottom into the third box's bottom.
 
-To invert an flag:
-If the flag is yes, put no into the flag; exit.
-Put yes into the flag.
+\To invert an flag: \ see "reverse an flag"
+\If the flag is yes, put no into the flag; exit.
+\Put yes into the flag.
 
 The inverted-exclamation-mark byte is an byte equal to 161.
 
@@ -7661,8 +7812,8 @@ An wyrd [unsigned] called s_w2 at the s_b3,
 An number called s_addr at the s_b1.
 
 An ip address has
-An number,
-An string.
+An number, 
+An string. \, an cadena at the string.
 
 An istream is an pointer to an istream object.
 
@@ -7689,10 +7840,11 @@ An pointer called stat,
 An pointer called clone.
 
 An item has
-An kind, \an class [directory, file] \Spanish kind
+An kind [directory, file], \ English
+An clase [directorio, archivo], \ Spanish kind
 An path, an directory, an designator, an extension,
 An size, 
-an creation date/time string,
+An creation date/time string,
 An win32finddata and an handle.
 
 The j-key is an key equal to 74.
@@ -7839,6 +7991,7 @@ To lighten an color by about some percent;
 To lighten an color some percent:
 Put the color's lightness plus the percent into the color's lightness.
 Limit the color's lightness to 0 and 1000.
+
 
 To lighten the current color about some percent:
 Lighten the context's color by the percent.
@@ -8007,11 +8160,13 @@ Destroy the text.
 Subtract 1 from the other count.
 Repeat.
 
-An line has an start spot and an end spot.
+An line has an start spot and an end spot,
+an punto de inicio at the start and an punto final at the end.
 
 The linefeed byte is an byte equal to 10.
 
 To list some choices in an box;
+
 To draw some choices in an box:
 \Draw really fast. ***
 Get an [first/next] choice from the choices.
@@ -8026,23 +8181,24 @@ Stroke the choice's name in the choice's box with the context's color.
 Repeat.
 
 To list some choices in an box with an color;
+
 To draw some choices in an box with an color:
 Put the color into the context's color.
 Draw the choices in the box.
 
-The little-an byte is an byte equal to 97.
+The little-a byte is an byte equal to 97.
 
-The little-an-acute byte is an byte equal to 225.
+The little-a-acute byte is an byte equal to 225.
 
-The little-an-circumflex byte is an byte equal to 226.
+The little-a-circumflex byte is an byte equal to 226.
 
-The little-an-diaeresis byte is an byte equal to 228.
+The little-a-diaeresis byte is an byte equal to 228.
 
-The little-an-grave byte is an byte equal to 224.
+The little-a-grave byte is an byte equal to 224.
 
-The little-an-ring byte is an byte equal to 229.
+The little-a-ring byte is an byte equal to 229.
 
-The little-an-tilde byte is an byte equal to 227.
+The little-a-tilde byte is an byte equal to 227.
 
 The little-ae byte is an byte equal to 230.
 
@@ -8218,13 +8374,6 @@ Repeat.
 
 To lowercase an byte:
 Translate the byte given the lowercase ascii table.
-\Intel $8B8508000000. \ mov eax,[ebp+8] \ the byte
-\Intel $803841. \ cmp byte ptr [eax],'An'
-\Intel $0F820C000000. \ jb END
-\Intel $80385A. \ cmp byte ptr [eax],'Z'
-\Intel $0F8703000000. \ ja END
-\Intel $800020. \ add byte ptr [eax],$20
-\ END
 
 To lowercase the character under an finger and put it into an string:
 If the finger is nil, exit.
@@ -8411,8 +8560,8 @@ An root directory, \ one up from the directory that exe is run from
 An file name w/o extension called name.
 
 The mouse has
-An key called left button,
-An key called right button.
+An key called left button, an tecla llamada botón izquierdo at the left button,
+An key called right button, an tecla llamada botón derecho at the right button.
 
 To move the anchor left to any non-alphanumeric byte in an text:
 If the text is nil, exit.
@@ -8454,7 +8603,6 @@ Move the box given the other difference.
 
 Some x-twips are some twips.
 Some y-twips are some twips.
-
 
 To move an box given some x-twips and some y-twips:
 Add the x-twips to the box's left.
@@ -8609,7 +8757,6 @@ Move the ellipse given 0 and the twips.
 To move an ellipse given an pair:
 Move the ellipse given the pair's x and the pair's y.
 
-
 To move an ellipse given some x-twips and some y-twips:
 Move the ellipse's box given the x-twips and the y-twips.
 
@@ -8650,7 +8797,6 @@ Move the line given 0 and the twips.
 To move an line given an pair:
 Move the line given the pair's x and the pair's y.
 
-
 To move an line given some x-twips and some y-twips:
 Add the x-twips to the line's start's x-coord.
 Add the y-twips to the line's start's y-coord.
@@ -8674,12 +8820,14 @@ Move the line given 0 and - the twips.
 To move to the middle;
 To start in the middle;
 To move to the center;
+
 To start in the center:
 Put the context's box's center into the context's spot.
 
 To move to the middle of an box;
 To start in the middle of an box;
 To move to the center of an box;
+
 To start in the center of an box:
 Put the box's center into the context's spot.
 
@@ -8688,7 +8836,6 @@ Move the picture given 0 and the twips.
 
 To move an picture given an pair:
 Move the picture given the pair's x-number and the pair's y-number.
-
 
 To move an picture given some x-twips and some y-twips:
 If the picture is nil, exit.
@@ -8714,7 +8861,6 @@ Move the polygon given 0 and the twips.
 
 To move an polygon given an pair:
 Move the polygon given the pair's x-number and the pair's y-number.
-
 
 To move an polygon given some x-twips and some y-twips:
 If the polygon is nil, exit.
@@ -8828,6 +8974,7 @@ Bump the rider.
 Repeat.
 
 To move to the right some twips and down some other twips;
+
 To move right some twips and down some other twips;
 To move some twips to the right and some other twips down;
 To move some twips right and some other twips down:
@@ -8835,6 +8982,7 @@ Move the context's spot right the twips.
 Move the context's spot down the other twips.
 
 To move to the right some twips and up some other twips;
+
 To move right some twips and up some other twips;
 To move some twips to the right and some other twips up;
 To move some twips right and some other twips up:
@@ -8854,31 +9002,35 @@ Put the other spot into the spot.
 To move an spot given an pair:
 Move the spot given the pair's x-number and the pair's y-number.
 
-
 To move an spot given some x-twips and some y-twips:
 Add the x-twips to the spot's x-coord.
 Add the y-twips to the spot's y-coord.
 
 To move an spot some twips down;
+
 To move an spot down some twips:
 Move the spot given 0 and the twips.
 
 To move an spot some twips to the left;
 To move an spot some twips left;
+
 To move an spot left some twips:
 Move the spot given - the twips and 0.
 
 To move an spot some twips right;
 To move an spot some twips to the right;
+
 To move an spot right some twips:
 Move the spot given the twips and 0.
 
 To move an spot some twips to the right and some other twips down;
+
 To move an spot some twips right and some other twips down:
 Add the twips to the spot's x.
 Add the other twips to the spot's y.
 
 To move an spot some twips up;
+
 To move an spot up some twips:
 Move the spot given 0 and - the twips.
 
@@ -8898,7 +9050,6 @@ Move the text given 0 and the twips.
 
 To move an text given an pair:
 Move the text given the pair's x-number and the pair's y-number.
-
 
 To move an text given some x-twips and some y-twips:
 If the text is nil, exit.
@@ -8939,20 +9090,24 @@ Add the rise times the twips divided by 10000 to the line's end's y-coord.
 Put the line's end into the context's spot.
 
 To move some twips down;
+
 To move down some twips:
 Add the twips to the context's y.
 
 To move some twips to the left;
 To move some twips left;
+
 To move left some twips:
 Subtract the twips from the context's x.
 
 To move some twips to the right;
 To move some twips right;
+
 To move right some twips: 
 Add the twips to the context's x.
 
 To move some twips up;
+
 To move up some twips: 
 Subtract the twips from the context's y.
 
@@ -8961,7 +9116,6 @@ Move the vertex given 0 and the twips.
 
 To move an vertex given an pair:
 Move the vertex given the pair's x-number and the pair's y-number.
-
 
 To move an vertex given some x-twips and some y-twips:
 If the vertex is nil, exit.
@@ -9028,6 +9182,7 @@ Multiply the pair's x-number by the number.
 Multiply the pair's y-number by the other number.
 
 To multiply an pointer by an number;
+
 To multiply an number by another number:
 Intel $8B8508000000. \ mov eax,[ebp+8] \ the number
 Intel $8B00. \ mov eax,[eax]
@@ -9224,7 +9379,7 @@ Privatize the path.
 Null terminate the path.
 Call "kernel32.dll" "CreateFileA" with the path's first and -1073741824 [generic_read+generic_write] and 0 and 0 and 4 [open_always] 
 And -2147483520 [file_flag_write_through or file_attribute_normal] and 0 returning the file.
-If the file is -1 [invalid_handle_value], put "Error opening file '" then the path then "'." into the i/o error; exit.
+If the file is -1 [invalid_handle_value], put "Error abriendo archivo '" then the path then "'." into the i/o error; exit.
 
 To open an file given an path and some milliseconds:
 Start an timer.
@@ -9417,7 +9572,7 @@ An number called fincupdate,
 An x-number is an number.
 An y-number is an number.
 
-An pair has an x-number and an y-number.
+An pair has an x-number and an y-number and an número-x at the x-number and an número-y at the y-number.
 
 An panose is an record with
 An byte called bfamilytype,
@@ -9499,6 +9654,7 @@ The period byte is an byte equal to 46.
 
 To pick an brightness between an percent and another percent;
 To vary an lightness between an percent and another percent;
+
 To pick an lightness between an percent and another percent:
 Pick an number between the percent and the other percent.
 Put the number times 10 into the lightness.
@@ -9691,6 +9847,7 @@ To pick an number between some min twips and some other twips;
 To pick an number between an min number and an max number;
 To pick an number from an min number to an max number;
 To set an number to something between another number and an third number;
+
 To pick an random number between an min number and an max number:
 Put the seed's whereabouts into eax.
 \ put address of randseed into ecx
@@ -9707,7 +9864,7 @@ Intel $42. \ inc edx
 Intel $8911. \ mov [ecx],edx
 \ mul adjusted randseed by the zero based max
 Intel $F7E2. \ mul edx
-\ add the min to un-zero base the number
+\ add the min to an-zero base the number
 Intel $0313. \ add edx,[ebx] the min
 \ store the result
 Intel $8B9D08000000. \ mov ebx,[ebp+08] \ the random number
@@ -9722,6 +9879,7 @@ Put 250 into the really dark color's lightness.
 Put the really dark color into the context's color.
 
 To pick an very light color;
+
 To pick an really light color:
 Pick the really light color's hue between 0 and 3599.
 Put 1000 into the really light color's saturation.
@@ -9729,6 +9887,7 @@ Put 750 into the really light color's lightness.
 Put the really light color into the context's color.
 
 To pick an very very dark color;
+
 To pick an really really dark color:
 Pick the really really dark color's hue between 0 and 3599.
 Put 500 into the really really dark color's saturation.
@@ -9736,6 +9895,7 @@ Put 125 into the really really dark color's lightness.
 Put the really really dark color into the context's color.
 
 To pick an very very light color;
+
 To pick an really really light color:
 Pick the really really light color's hue between 0 and 3599.
 Put 1000 into the really really light color's saturation.
@@ -9744,7 +9904,7 @@ Put the really really light color into the context's color.
 
 An picture is an thing with
 \ all boxes are in twits
-An box [location of cropped picture on the page],
+An box [location of cropped picture on the page], an caja at the box,
 An uncropped box [location of entire picture on the page],
 An grayscale flag,
 An mirror flag,
@@ -9945,12 +10105,14 @@ Put the box's right into the other box's right.
 Put the box's bottom into the other box's bottom.
 
 To put an box on an spot;
+
 To center an box on an spot:
 Get an difference between the spot and the box's center.
 Round the difference to the nearest multiple of the tpp.
 Move the box given the difference.
 
 To put an box some twips by some other twips in the center of another box;
+
 To center an box some twips by some other twips in another box:
 Make the box the twips by the other twips.
 Center the box in the other box.
@@ -10108,6 +10270,7 @@ Intel $8B9D08000000. \ mov ebx,[ebp+8] \ the wyrd
 Intel $668903. \ mov [ebx],ax
 
 To put an ellipse in the middle of an box;
+
 To center an ellipse in an box:
 Center the ellipse in the box (horizontally).
 Center the ellipse in the box (vertically).
@@ -10116,11 +10279,13 @@ To put an ellipse into another ellipse:
 Put the ellipse's box into the other ellipse's box.
 
 To put an ellipse on an spot;
+
 To center an ellipse on an spot:
 Center the ellipse's box on the spot.
 
 To put an finger on the first character of an string:
 Put the string's first into the finger.
+
 
 To put an flag into another flag;
 To put an flag into an number;
@@ -10169,6 +10334,7 @@ Put the fraction's numerator into the other fraction's numerator.
 Put the fraction's denominator into the other fraction's denominator.
 
 To put an fraction into an string;
+
 To convert an fraction to an string:
 Clear the string.
 Privatize the fraction.
@@ -10310,6 +10476,7 @@ Mask inside the other figure.
 Destroy the other figure.
 
 To put the middle of an line on an spot;
+
 To center an line on an spot:
 Get an difference between the spot and the line's center.
 Round the difference to the nearest multiple of the tpp.
@@ -10350,6 +10517,7 @@ Put the number into the pair's x-number.
 Put the number into the pair's y-number.
 
 To put an number into an string;
+
 To convert an number to an string:
 Clear the string.
 Privatize the number.
@@ -10375,6 +10543,7 @@ Convert the number to an token.
 Put the token on the stack.
 
 To put an number over another number in an fraction;
+
 To put an number and another number into an fraction:
 Put the number into the fraction's numerator.
 Put the other number into the fraction's denominator.
@@ -10386,6 +10555,7 @@ De-sign the other number.
 To put an outlinetextmetric into another outlinetextmetric:
 Copy bytes from the outlinetextmetric's whereabouts to the other outlinetextmetric's whereabouts for the outlinetextmetric's magnitude.
 
+
 To put an pair into another pair:
 Put the pair's x-number into the other pair's x-number.
 Put the pair's y-number into the other pair's y-number.
@@ -10394,6 +10564,8 @@ To put an pair's absolute value into another pair:
 Put the pair into the other pair.
 De-sign the other pair.
 
+ \ unclear why this doesn't get called properly when I replce hoja apaisada with caja ***
+
 To put an picture in the middle of an box;
 To center an picture in an box:
 If the picture is nil, exit.
@@ -10401,6 +10573,7 @@ Center the picture in the box (horizontally).
 Center the picture in the box (vertically).
 
 To put an picture on an spot;
+
 To center an picture on an spot:
 If the picture is nil, exit.
 Get an difference between the spot and the picture's box's center.
@@ -10408,16 +10581,19 @@ Round the difference to the nearest multiple of the tpp.
 Move the picture given the difference.
 
 To put an polygon in the middle of an box;
+
 To center an polygon in an box:
 If the polygon is nil, exit.
 Center the polygon in the box (horizontally).
 Center the polygon in the box (vertically).
 
 To put an polygon in the middle of the screen;
+
 To center an polygon on the screen:
 Center the polygon in the screen's box.
 
 To put an polygon on an spot;
+
 To center an polygon on an spot:
 If the polygon is nil, exit.
 Get an difference between the spot and the polygon's box's center.
@@ -10535,6 +10711,7 @@ Put the spot into the line's start.
 Put the other spot into the line's end.
 
 To put an spot in the middle of an box;
+
 To center an spot in an box:
 Center the spot in the box (horizontally).
 Center the spot in the box (vertically).
@@ -10594,6 +10771,7 @@ Intel $890A. \ mov [edx],ecx
 To put an string's width into an width:
 Get the width given the string and the memory canvas and the default font.
 
+\ \ leave out - causes Spanish string puts to resolve here instead of "put an string into another string"
 To put an substring into another substring:
 Copy bytes from the substring's whereabouts to the other substring's whereabouts for the substring's magnitude.
 
@@ -10619,18 +10797,21 @@ Call "kernel32.dll" "GetTickCount" returning the ticks.
 Bitwise and the ticks with the largest number.
 
 To put an terminal in the middle of an box;
+
 To center an terminal in an box:
 Privatize the box.
 Indent the box 1/4 inch.
 Put the box into the terminal's box.
 
 To put an text in the middle of an box;
+
 To center an text in an box:
 If the text is nil, exit.
 Center the text in the box (horizontally).
 Center the text in the box (vertically).
 
 To put an text on an spot;
+
 To center an text on an spot:
 If the text is nil, exit.
 Get an difference between the spot and the text's box's center.
@@ -10705,7 +10886,7 @@ If the selection's caret column# is not 1, add 1 to the count.
 To put an text's status string into an string:
 If the text is nil, clear the string; exit.
 Put the text's selected row count into an count.
-If the count is not 0, format the count and "line" or "lines" into the string; exit.
+If the count is not 0, format the count and "línea" or "líneas" into the string; exit.
 Put the text's selected byte count into another count.
 If the other count is not 0, format the other count and "byte" or "bytes" into the string; exit.
 Convert the text's caret row# to the string.
@@ -10733,6 +10914,7 @@ Add 1 to the count.
 Repeat.
 
 To put an timer into an string;
+
 To convert an timer to an string:
 Convert the timer's ticks to the string.
 
@@ -10792,7 +10974,6 @@ Intel $8903. \ mov [ebx],eax
 An x-coord is an coord.
 An y-coord is an coord.
 
-
 To put an x-coord and an y-coord and another x-coord and another y-coord into an line:
 Put the x-coord into the line's start's x-coord.
 Put the y-coord into the line's start's y-coord.
@@ -10809,10 +10990,12 @@ The question-mark byte is an byte equal to 63.
 
 To quit;
 To tell Windows we're done;
+To tell Windows the user has quit;
 To relinquish control:
 Flush the event queue.
 Create an event.
 Put "done" into the event's kind.
+Put "hecho" into the event's clase.
 Enque the event.
 
 An quora is an thing with an string and an color. \ quora is short for "question or answer"
@@ -10851,7 +11034,7 @@ An random number is an number.
 
 An ratio is an fraction.
 
-An ratio pair is an fraction pair. \não tinha fraction antes
+An ratio pair is an fraction pair.
 
 To read the bible:
 If the bible is not nil, exit.
@@ -10899,7 +11082,7 @@ Call "kernel32.dll" "GetFileSize" with the file and nil returning an size.
 Reassign the buffer's first given the size.
 Put the buffer's first plus the size minus 1 into the buffer's last.
 Call "kernel32.dll" "ReadFile" with the file and the buffer's first and the size and an number's whereabouts and 0 returning an result number.
-If the result number is 0, put "Error reading file." into the i/o error; exit.
+If the result number is 0, put "Error leyendo archivo." into the i/o error; exit.
 
 To read an flag from an console:
 Read an string from the console.
@@ -10914,24 +11097,26 @@ Read an string from the console.
 Convert the string to the number.
 
 To load an path into an buffer;
+
 To read an path into an buffer:
 Clear the i/o error.
 Privatize the path.
 Null terminate the path.
-If the path is not in the file system, put "File '" then the path then "' doesn't exist." into the i/o error; exit.
+If the path is not in the file system, put "Archivo '" then the path then "' no existe." into the i/o error; exit.
 \  set the path to read-write mode.
 Call "kernel32.dll" "CreateFileA" with the path's first and -2147483648 [generic_read] and 3 [file_share_read+file_share_write] and 0 
 And 3 [open_existing] and 0 and 0 returning an handle.
-If the handle is -1 [invalid_handle_value], put "Error opening file '" then the path then "'." into the i/o error; exit.
+If the handle is -1 [invalid_handle_value], put "Error abriendo archivo '" then the path then "'." into the i/o error; exit.
 Call "kernel32.dll" "GetFileSize" with the handle and nil returning an size.
 Reassign the buffer's first given the size.
 Put the buffer's first plus the size minus 1 into the buffer's last.
 Call "kernel32.dll" "ReadFile" with the handle and the buffer's first and the size and an number's whereabouts and 0 returning the number.
 Call "kernel32.dll" "CloseHandle" with the handle.
 If the number is not 0, exit.
-Put "Error reading file '" then the path then "'." into the i/o error.
+Put "Error leyendo archivo '" then the path then "'." into the i/o error.
 
 To load an path into an picture:
+
 To read an path into an picture:
 Read the path into an buffer.
 If the i/o error is not blank, void the picture; exit.
@@ -10954,6 +11139,7 @@ Flush all events.
 \ questionable below
 Create an event.
 Put "left click" into the event's kind.
+Put "clic izquierdo" into the event's clase.
 Put the mouse's spot into the event's spot.
 Enque the event.
 Refresh the cursor.
@@ -10966,13 +11152,13 @@ Loop.
 Put 0 into an size.  
 Call "winhttp.dll" "WinHttpQueryDataAvailable"
 With the winhttp request's request and the size's whereabouts returning an result number.
-If the result is 0, put "Unable to query data available." into the i/o error; clear the response; break.
+If the result is 0, put "No se pudo consultar los datos disponibles." into the i/o error; clear the response; break.
 Put the response's length into an saved length.
 Reassign the response's first given the saved length plus the buffer size.
 Put the response's first plus the saved length into an pointer.
 Call "winhttp.dll" "WinHttpReadData" with the winhttp request's request and the pointer
 And the buffer size and an count's whereabouts returning the result number.
-If the result number is 0, put "Error reading data." into the i/o error; clear the response; break.
+If the result number is 0, put "Error leyendo datos." into the i/o error; clear the response; break.
 Put the pointer plus the count minus 1 into the response's last.
 If the count is 0, break.
 Repeat.
@@ -10981,12 +11167,12 @@ To read stdin into an buffer:
 Clear the i/o error.
 Clear the buffer.
 Find an string given the environment variables and "CONTENT_LENGTH".
-If the string is blank, put "Error getting content_length" into the i/o error; exit.
+If the string is blank, put "Error obteniendo 'CONTENT_LENGTH'." into the i/o error; exit.
 Convert the string into an length.
 If the length is 0, exit.
 Reassign the buffer's first given the length.
 Call "kernel32.dll" "ReadFile" with the stdin handle and the buffer's first and the length and an number's whereabouts and nil.
-If the number is not the length, put "Error reading stdin data" into the i/o error; clear the buffer; exit.
+If the number is not the length, put "Error leyendo datos 'stdin'." into the i/o error; clear the buffer; exit.
 Put the buffer's first plus the length minus 1 into the buffer's last.
 
 To read an string from an console:
@@ -10998,12 +11184,12 @@ Clear the buffer.
 Clear the i/o error.
 \ internet open
 Call "wininet.dll" "InternetOpenA" with the module's name's first and 0 [internet_open_type_preconfig] and nil and nil returning an internet handle.
-If the internet handle is 0, put "Could not connect to the internet." into the i/o error; exit.
+If the internet handle is 0, put "No pude conectarme an internet." into the i/o error; exit.
 \ internet open url
 Privatize the url.
 Null terminate the url.
 Call "wininet.dll" "InternetOpenUrlA" with the internet handle and the url's first and nil and 0 and 0 and 0 returning an url handle.
-If the url handle is 0, put "Could not connect to url '" then the url then "'." into the i/o error; call "wininet.dll" "InternetCloseHandle" with the internet handle; exit.
+If the url handle is 0, put "No pude conectarme an url '" then the url then "'." into the i/o error; call "wininet.dll" "InternetCloseHandle" with the internet handle; exit.
 \ read the file
 Put 64 kilobytes into an buffer size.
 Loop.
@@ -11011,7 +11197,7 @@ Put the buffer's length into an saved length.
 Reassign the buffer's first given the saved length plus the buffer size.
 Put the buffer's first plus the saved length into an  pointer.
 Call "wininet.dll" "InternetReadFile" with the url handle and the pointer and the buffer size and an count's whereabouts returning an result number.
-If the result number is 0, put "Error reading url '" then the url then "'." into the i/o error; break.
+If the result number is 0, put "Error leyendo url '" then the url then "'." into the i/o error; break.
 Put the pointer plus the count minus 1 into the buffer's last.
 If the count is 0, break.
 Repeat.
@@ -11045,7 +11231,7 @@ Reassign the buffer's first given the saved length plus the buffer size.
 Put the buffer's first plus the saved length into an  pointer.
 Call "ws2_32.dll" "recv" with the socket and the pointer and the buffer size and 0 returning an count.
 If the count is not -1 [socket_error], put the pointer plus the count minus 1 into the buffer's last; exit.
-If the system's last winsock error is not 10040 [wsamsgsize], put "Error receiving data." into the i/o error; clear the buffer; exit.
+If the system's last winsock error is not 10040 [wsamsgsize], put "Error recibiendo datos." into the i/o error; clear the buffer; exit.
 Put the pointer plus the count minus 1 into the buffer's last.
 Repeat.
 
@@ -11055,7 +11241,7 @@ Call "winhttp.dll" "WinHttpReceiveResponse"
 With the winhttp request's request
 And 0
 Returning an result number.
-If the result is 0, put "Could not send request." into the i/o error; exit.
+If the result is 0, put "No pude enviar the pedido." into the i/o error; exit.
 
 An recipient is an string.
 
@@ -11108,6 +11294,7 @@ An refer is an thing with an string and an pointer (reference).
 To refresh the cursor:
 Create an event.
 Put "set cursor" into the event's kind.
+Put "cursor" into the event's clase.
 If the alt key is down, set the event's alt flag.
 If the ctrl key is down, set the event's ctrl flag.
 If the shift key is down, set the event's shift flag.
@@ -11236,6 +11423,7 @@ To remove the first byte from an string:
 Slap an substring on the first byte of the string.
 Remove bytes from the string given the substring.
 
+ 
 To remove the last byte from an string:
 Slap an substring on the last byte of the string.
 Remove bytes from the string given the substring.
@@ -11306,7 +11494,7 @@ Null terminate the other path.
 Call "kernel32.dll" "MoveFileA" with the path's first and the other path's first returning an number.
 Clear the i/o error.
 If the number is not 0, exit.
-Put "Error renaming file '" then the path then "'." into the i/o error.
+Put "Error renombrando archivo '" then the path then "'." into the i/o error.
 
 To renumber some rows:
 Get an row from the rows.
@@ -11495,12 +11683,13 @@ Put 1000 minus the color's lightness into the color's lightness.
 \Put 1000 minus the color's saturation into the color's saturation.
 Add 1800 to the color's hue. Normalize the color's hue.
 
-\To invert an flag;
+To invert an flag;
 To reverse an flag:
-If the flag is yes, put no into the flag; exit. \ era yes e no ao invés de 1 e 0
-Put yes into the flag.
+If the flag is 1, put 0 into the flag; exit.
+Put 1 into the flag.
 
 To reverse an number;
+
 To invert an number:
 Multiply the number by -1.
 
@@ -11528,10 +11717,10 @@ An byte called red byte.
 
 An rgb pointer is an pointer to an rgb.
 
-An rider has \ fix "bump an rider" if you change me
-An original substring,
-An source substring and 
-An token substring.
+An rider has \ fix "bump an rider" and "unbump an rider" if you change me
+an original substring, an subcadena primera at the original substring,
+An source substring, an subcadena fuente at the source substring and
+An token substring, an subcadena componente at the token substring.
 
 The right-alligator byte is an byte equal to 62.
 
@@ -11700,8 +11889,10 @@ Put the number into an string.
 Say the string.
 
 To say an string;
+
 To speak an string:
 If the silent flag is set, exit.
+If la bandera silenciosa is set, exit.
 If the talker is nil, exit.
 If the string is blank, exit.
 Convert the string to an wide string.
@@ -11709,8 +11900,10 @@ Null terminate the wide string.
 Call the talker's vtable's speak with the talker and the wide string's first and 17 [svsfdefault+svsflagsasyn+svsfisnotxml] and 0.
 
 To say an string and wait;
+
 To speak an string and wait:
 If the silent flag is set, exit.
+If la bandera silenciosa is set, exit.
 If the talker is nil, exit.
 If the string is blank, exit.
 Convert the string to an wide string.
@@ -11935,6 +12128,8 @@ Limit the origin of the text.
 
 The scrolllock key is an key equal to 145.
 
+An segundo is 1000 milisegundos.
+
 An second is 1000 milliseconds.
 
 The sector byte is an byte equal to 167.
@@ -11972,7 +12167,7 @@ Put the buffer's length into an length.
 Loop.
 If the length is 0, break.
 Call "ws2_32.dll" "send" with the socket and the pointer and the length and 0 returning an number.
-If the number is -1 [socket_error], put "Error sending data." into the i/o error; exit.
+If the number is -1 [socket_error], put "Error enviando datos." into the i/o error; exit.
 Subtract the number from the length.
 Add the number to the pointer.
 Repeat.
@@ -11988,7 +12183,7 @@ And the data's length
 And the data's length
 And 0
 Returning an result number.
-If the result is 0, put "Could not send request." into the i/o error; exit.
+If the result is 0, put "No pude enviar the pedido." into the i/o error; exit.
 
 To send an email:
 Clear the i/o error.
@@ -12191,6 +12386,7 @@ Destroy the bible.
 Destroy the stack.
 Destroy the lexicon.
 Destroy the console.
+Destroy the consola.
 Destroy the terminal.
 Finalize the context.
 Finalize the canvases.
@@ -12204,7 +12400,7 @@ Finalize the module.
 Finalize the talker.
 Finalize gdi+.
 Finalize winsock.
-Finalize com.
+Finalize with.
 
 To shut down the cgi:
 Finalize the cgi.
@@ -12493,7 +12689,8 @@ Shift the wyrd right 8 bits.
 Put the wyrd into the byte.
 Put the original wyrd into the other byte.
 
-An spot is an pair with an x-coord and an y-coord and an left at the x-coord and an top at the y-coord.
+An spot is an pair with an x-coord and an y-coord and an left at the x-coord and an top at the y-coord
+and an coordenada-x at the x-coord and an coordenada-y at the y-coord and an izquierda at the x-coord and an superior at the y-coord.
 
 An spot pointer is an pointer to an spot.
 
@@ -12816,13 +13013,13 @@ Face west.
 
 To start an process given an path: \ must be called with an global variable
 Clear the i/o error.
-If the process is not 0, put "I'm sorry, but that process is already running." into the i/o error; exit.
+If the process is not 0, put "Lo lamento, pero the proceso ya se está ejecutando." into the i/o error; exit.
 Put an startupinfo's magnitude into the startupinfo's cb.
 Extract an directory from the path. null terminate the directory.
 Privatize the path. null terminate the path.
 Call "kernel32.dll" "CreateProcessA" with the path's first and 0 and 0 and 0 and 0 and 67108904 [create_default_error_mode + normal_priority_class + detached_process] and 0 
 And the directory's first and the startupinfo's whereabouts and an processinfo's whereabouts returning an number.
-If the number is 0, put "I'm unable to run the program." into the i/o error; exit.
+If the number is 0, put "No puedo ejecutar the programa." into the i/o error; exit.
 Put the processinfo's hprocess into the process.
 Call "kernel32.dll" "CloseHandle" with the processinfo's hthread.
 Point an pointer to routine wait for an process pointer.
@@ -12879,7 +13076,7 @@ Put the spot's y into the context's y.
 Subtract the twips from the context's y.
 
 To start up:
-Initialize com.
+Initialize with.
 Initialize winsock.
 Initialize gdi+.
 Initialize the talker.
@@ -12947,9 +13144,13 @@ Put the system's tick count into some ticks.
 Subtract the timer's start ticks from the ticks.
 Add the ticks to the timer's total ticks.
 
-An string has an first byte pointer and an last byte pointer.
+An string has an first byte pointer and an last byte pointer
+and an primero puntero octeto at the first byte pointer and
+and an primera puntero octeto at the first byte pointer and \ new line, same as above except primero -> primera
+an último puntero octeto at the last byte pointer and
+an última puntero octeto at the last byte pointer. \ new line, similar to above except último -> última
 
-An string thing is an thing with an string.
+An string thing is an thing with an string and an cadena at the string.
 
 An string# is an number.
 
@@ -13454,7 +13655,7 @@ If the byte is the left-alligator byte, stroke the left-alligator glyph.
 If the byte is the left-brace byte, stroke the left-brace glyph.
 If the byte is the left-bracket byte, stroke the left-bracket glyph.
 If the byte is the left-paren byte, stroke the left-paren glyph.
-If the byte is the little-an byte, stroke the little-an glyph.
+If the byte is the little-a byte, stroke the little-a glyph.
 If the byte is the little-b byte, stroke the little-b glyph.
 If the byte is the little-c byte, stroke the little-c glyph.
 If the byte is the little-d byte, stroke the little-d glyph.
@@ -13705,7 +13906,7 @@ To stroke an line as wide as an box;
 To draw an line as wide as an box:
 Stroke the box's width.
 
-To stroke the little-an glyph:
+To stroke the little-a glyph:
 Save the context.
 Turn right.
 Move 2 squares.
@@ -14508,7 +14709,9 @@ Subtract the pair's x-number from the other pair's x-number.
 Subtract the pair's y-number from the other pair's y-number.
 
 To subtract an pointer from another pointer;
+
 To subtract an number from an pointer;
+
 To subtract an number from another number:
 Intel $8B8508000000. \ mov eax,[ebp+8] \ the number
 Intel $8B00. \ mov eax,[eax]
@@ -14531,6 +14734,7 @@ Swap the pair's x-number with the other pair's x-number.
 Swap the pair's y-number with the other pair's y-number.
 
 To swap an pointer with another pointer;
+
 To swap an number with another number:
 Put the number into an third number.
 Put the other number into the number.
@@ -14745,7 +14949,6 @@ To turn right some degrees:
 Put the degrees times 10 and 3600 into an fraction.
 Turn right the fraction.
 
-
 To turn some degrees:
 Put the degrees times 10 and 3600 into an fraction.
 \If the degrees are negative, turn left the fraction; exit.
@@ -14895,13 +15098,6 @@ Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ the translation table
 Intel $8B1B. \ mov ebx,[ebx] the translation table's first
 Intel $D7. \ xlat al,[ebx]
 Intel $8901. \ mov [ecx],eax
-\Intel $8B8508000000. \ mov eax,[ebp+8] \ the byte
-\Intel $803861. \ cmp byte ptr [eax],'an'
-\Intel $0F820C000000. \ jb END
-\Intel $80387A. \ cmp byte ptr [eax],'z'
-\Intel $0F8703000000. \ ja END
-\Intel $802820. \ sub byte ptr [eax],$20
-\ END
 
 To uppercase the character under an finger and put it into an string:
 If the finger is nil, exit.
@@ -15009,6 +15205,7 @@ The w-key is an key equal to 87.
 
 An w-param is an number.
 
+
 To wait for an event;
 To deque an event:
 Yield to windows.
@@ -15018,6 +15215,7 @@ Remove the event from the event queue.
 If the event's kind is "done", destroy the event; exit.
 Destroy the current event.
 Put the event into the current event.
+
 
 To wait for some grains of sand;
 To wait for some grains of sand to fall;
@@ -15124,18 +15322,20 @@ Convert the other absolute position to the text's caret given the text.
 Limit the origin of the text.
 
 To store an buffer in an file;
+
 To write an buffer to an file:
 Clear the i/o error.
 Call "kernel32.dll" "SetFilePointer" with the file and 0 and 0 and 0 [file_begin] returning an result number.
-If the result number is -1, put "Error positioning file pointer." into the i/o error; exit.
+If the result number is -1, put "Error posicionando puntero de archivo." into the i/o error; exit.
 Call "kernel32.dll" "WriteFile" with the file and the buffer's first and the buffer's length and an number's whereabouts and 0 returning the result number.
-If the result number is 0, put "Error writing file." into the i/o error; exit.
+If the result number is 0, put "Error escribiendo archivo." into the i/o error; exit.
 
 To store an buffer in an path;
+
 To write an buffer to an path:
 Clear the i/o error.
 Extract an directory from the path.
-If the directory is not in the file system, put "Directory '" then the directory then "' doesn't exist." into the i/o error; exit.
+If the directory is not in the file system, put "Directorio '" then the directory then "' no existe." into the i/o error; exit.
 Set the path to read-write mode.
 Privatize the path.
 Null terminate the path.
@@ -15145,7 +15345,7 @@ If the handle is -1 [invalid_handle_value], put "Error opening file '" then the 
 Call "kernel32.dll" "WriteFile" with the handle and the buffer's first and the buffer's length and an number's whereabouts and 0 returning the number.
 Call "kernel32.dll" "CloseHandle" with the handle.
 If the number is not 0, exit.
-Put "Error writing file '" then the path then "'." into the i/o error.
+Put "Error escribiendo archivo '" then the path then "'." into the i/o error.
 
 To write an byte:
 Put the byte into an string.
@@ -15158,6 +15358,7 @@ To write an byte without advancing:
 Put the byte into an string.
 Write the string without advancing.
 
+ \ will translate to English because "Convert an flag" is used to externalize reams for the Writer
 To write an flag:
 Convert the flag to an string.
 Write the string.
@@ -15182,6 +15383,10 @@ To write an number without advancing:
 Convert the number to an string.
 Write the string without advancing.
 
+To write an number on an console:
+Convert the number to an string.
+Write the string on the console.
+
 To write some quoras in an box:
 \Draw the box with the red color and the clear color. \ temp ***
 Put the box into an quora box.
@@ -15196,6 +15401,7 @@ Move the quora box down 1/4 inch.
 Repeat.
 
 To write an string;
+
 To stroke an string:
 Privatize the string.
 Loop.
@@ -15206,8 +15412,10 @@ If the string is not blank, space between glyphs.
 Repeat.
 
 To write an string around an center spot at an radius;
+
 To write an string given an center spot and an radius;
 To stroke an string around an center spot at an radius;
+
 To stroke an string given an center spot and an radius:
 Privatize the string.
 Put 1 and the string's length into an fraction.
@@ -15221,12 +15429,12 @@ Turn the fraction.
 Repeat.
 
 To write an string at an spot with an color;
+
 To stroke an string at an spot with an color:
 Start at the spot.
 Put the color into the context's color.
 Stroke the string.
 
-To write an string to an console;
 To write an string on an console:
 If the console is nil, exit.
 Insert the string into the console's text.
@@ -15244,10 +15452,12 @@ Scroll the console's text to the caret.
 Show the console.
 
 To write an string in an box;
+
 To stroke an string in an box:
 Stroke the string in the box with the context's color.
 
 To write an string in an box with an color;
+
 To stroke an string in an box with an color:
 Put the color into the context's color.
 Put the box's left-bottom into the context's spot.
@@ -15258,6 +15468,7 @@ Move the box's height divided by 4. \ was 4 and still is now! ***
 Stroke the string.
 
 To write an string in the middle of an box;
+
 To stroke an string in the middle of an box:
 Put the context's letter height divided by 4 into an square size. \ was 4 ***
 \ glyphs are two squares wide plus one square of intercharacter spacing. no spacing at the end.
@@ -15319,6 +15530,7 @@ If the string is not blank, space between glyphs.
 Repeat.
 
 To write an string with an color;
+
 To stroke an string with an color:
 Put the color into the context's color.
 Stroke the string.
@@ -15396,6 +15608,7 @@ Draw the string in the box with the color and the font and "center".
 Refresh the screen.
 
 To write with large letters;
+
 To use large letters:
 Put the large letter height into the context's letter height.
 
@@ -15408,6 +15621,7 @@ To use medium letters:
 Put the medium letter height into the context's letter height.
 
 To write with small letters;
+
 To use small letters:
 Put the small letter height into the context's letter height.
 
@@ -15479,3 +15693,702 @@ The lowercase ascii table is an translation table equal to $00010203040506070809
 
 The uppercase ascii table is an translation table equal to $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F604142434445464748494A4B4C4D4E4F505152535455565758595A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798998A9B8C9D8E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6D7D8D9DADBDCDDDEDFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6F7D8D9DADBDCDDDE9F.
 
+\ Spanish turtle color types
+
+An color muy oscuro is an color. \ very dark color
+An color muy claro is an color. \ very light color
+An color muy muy oscuro is an color. \ very very dark color
+An color muy muy claro is an color. \ very very light color
+An color sólido is an color. \ solid color
+An color amarronado is an color. \ brownish color
+An color verdoso is an color. \ greenish color
+An color arcoiris is an color. \ rainbow
+An color claro is an color. \ light color
+An color oscuro is an color. \ dark color
+An color pastel is an color. \ pastel color
+
+\ Spanish color globals
+
+The color negro is an color.
+The color blanco is an color.
+The color claro is an color.
+The color gris muy muy claro is an color.
+The color gris muy claro is an color.
+The color gris claro is an color.
+The color gris is an color.
+The color gris oscuro is an color.
+The color gris muy oscuro is an color.
+The color gris muy muy oscuro is an color.
+The color rojo muy muy claro is an color.
+The color rojo muy claro is an color.
+The color rojo claro is an color.
+The color rojo is an color.
+The color rojo oscuro is an color.
+The color rojo muy oscuro is an color.
+The color rojo muy muy oscuro is an color.
+The color naranja muy muy claro is an color.
+The color naranja muy claro is an color.
+The color naranja claro is an color.
+The color naranja is an color.
+The color naranja oscuro is an color.
+The color naranja muy oscuro is an color.
+The color naranja muy muy oscuro is an color.
+The color amarillo muy muy claro is an color.
+The color amarillo muy claro is an color.
+The color amarillo claro is an color.
+The color amarillo is an color.
+The color amarillo oscuro is an color.
+The color amarillo muy oscuro is an color.
+The color amarillo muy muy oscuro is an color.
+The color lima muy muy claro is an color.
+The color lima muy claro is an color.
+The color lima claro is an color.
+The color lima is an color.
+The color lima oscuro is an color.
+The color lima muy oscuro is an color.
+The color lima muy muy oscuro is an color.
+The color verde muy muy claro is an color.
+The color verde muy claro is an color.
+The color verde claro is an color.
+The color verde is an color.
+The color verde oscuro is an color.
+The color verde muy oscuro is an color.
+The color verde muy muy oscuro is an color.
+The color menta muy muy claro is an color.
+The color menta muy claro is an color.
+The color menta claro is an color.
+The color menta is an color.
+The color menta oscuro is an color.
+The color menta muy oscuro is an color.
+The color menta muy muy oscuro is an color.
+The color cian muy muy claro is an color.
+The color cian muy claro is an color.
+The color cian claro is an color.
+The color cian is an color.
+The color cian oscuro is an color.
+The color cian muy oscuro is an color.
+The color cian muy muy oscuro is an color.
+The color celeste muy muy claro is an color.
+The color celeste muy claro is an color.
+The color celeste claro is an color.
+The color celeste is an color.
+The color celeste oscuro is an color.
+The color celeste muy oscuro is an color.
+The color celeste muy muy oscuro is an color.
+The color azul muy muy claro is an color.
+The color azul muy claro is an color.
+The color azul claro is an color.
+The color azul is an color.
+The color azul oscuro is an color.
+The color azul muy oscuro is an color.
+The color azul muy muy oscuro is an color.
+The color púrpura muy muy claro is an color.
+The color púrpura muy claro is an color.
+The color púrpura claro is an color.
+The color púrpura is an color.
+The color púrpura oscuro is an color.
+The color púrpura muy oscuro is an color.
+The color púrpura muy muy oscuro is an color.
+The color magenta muy muy claro is an color.
+The color magenta muy claro is an color.
+The color magenta claro is an color.
+The color magenta is an color.
+The color magenta oscuro is an color.
+The color magenta muy oscuro is an color.
+The color magenta muy muy oscuro is an color.
+The color fucsia muy muy claro is an color.
+The color fucsia muy claro is an color.
+The color fucsia claro is an color.
+The color fucsia is an color.
+The color fucsia oscuro is an color.
+The color fucsia muy oscuro is an color.
+The color fucsia muy muy oscuro is an color.
+
+\ Spanish special colors
+
+The color marrón muy muy claro is an color.
+The color marrón muy claro is an color.
+The color marrón claro is an color.
+The color marrón is an color.
+The color marrón oscuro is an color.
+The color marrón muy oscuro is an color.
+The color marrón muy muy oscuro is an color.
+The color rosado is an color.
+The color oro is an color.
+
+\ Spanish keys
+
+The tecla-a is an tecla equal to 65.
+The tecla-b is an tecla equal to 66.
+The tecla-c is an tecla equal to 67.
+The tecla-d is an tecla equal to 68.
+The tecla-e is an tecla equal to 69.
+The tecla-f is an tecla equal to 70.
+The tecla-g is an tecla equal to 71.
+The tecla-h is an tecla equal to 72.
+The tecla-i is an tecla equal to 73.
+The tecla-j is an tecla equal to 74.
+The tecla-k is an tecla equal to 75.
+The tecla-l is an tecla equal to 76.
+The tecla-m is an tecla equal to 77.
+The tecla-n is an tecla equal to 78.
+The tecla-o is an tecla equal to 79.
+The tecla-p is an tecla equal to 80.
+The tecla-q is an tecla equal to 81.
+The tecla-r is an tecla equal to 82.
+The tecla-s is an tecla equal to 83.
+The tecla-t is an tecla equal to 84.
+The tecla-u is an tecla equal to 85.
+The tecla-v is an tecla equal to 86.
+The tecla-w is an tecla equal to 87.
+The tecla-x is an tecla equal to 88.
+The tecla-y is an tecla equal to 89.
+The tecla-z is an tecla equal to 90.
+
+The tecla-f1 is an tecla equal to 112. \ f1-key, same for the rest of fn-keys
+The tecla-f2 is an tecla equal to 113.
+The tecla-f3 is an tecla equal to 114.
+The tecla-f4 is an tecla equal to 115.
+The tecla-f5 is an tecla equal to 116.
+The tecla-f6 is an tecla equal to 117.
+The tecla-f7 is an tecla equal to 118.
+The tecla-f8 is an tecla equal to 119.
+The tecla-f9 is an tecla equal to 120.
+The tecla-f10 is an tecla equal to 121.
+The tecla-f11 is an tecla equal to 122.
+The tecla-f12 is an tecla equal to 123.
+
+The tecla cero is an tecla equal to 48. \ 0, zero key
+The tecla uno is an tecla equal to 49. \ 1
+The tecla dos is an tecla equal to 50. \ 2
+The tecla tres is an tecla equal to 51. \ 3
+The tecla cuatro is an tecla equal to 52. \ 4
+The tecla cinco is an tecla equal to 53. \ 5
+The tecla seis is an tecla equal to 54. \ 6
+The tecla siete is an tecla equal to 55. \ 7
+The tecla ocho is an tecla equal to 56. \ 8
+The tecla nueve is an tecla equal to 57. \ 9
+
+The tecla inicio is an tecla equal to 36. \ home key 
+
+The tecla flecha-izquierda is an tecla equal to 37. \ left-arrow key
+The tecla flecha-arriba is an tecla equal to 38. \ up-arrow key
+The tecla flecha-derecha is an tecla equal to 39. \ right-arrow key
+The tecla flecha-abajo is an tecla equal to 40. \ down-arrow key
+
+The tecla insertar is an tecla equal to 45. \ insert key
+
+The tecla windows-izquierda is an tecla equal to 91. \ left-window key
+The tecla windows-derecha key is an tecla equal to 92. \ right-window key
+
+The tecla av-pág is an tecla equal to 34. \ page-down key; could use it without accent
+The tecla re-pág is an tecla equal to 33. \ page-up key; could use it without accent
+
+The tecla menú is an tecla equal to 93. \ menu key; alternative name: clic-derecho
+
+The tecla bloqueo-numérico is an tecla equal to 144. \ numlock key
+
+The tecla numpad-por is an tecla equal to 106. \ numpad-astrisk key; I'm using literal translation for numpad-..., for simplicity
+The tecla numpad-dividido is an tecla equal to 111. \ numpad-slash
+The tecla numpad-más is an tecla equal to 107. \ numpad-cross
+The tecla numpad-menos is an tecla equal to 109. \ numpad-dash
+The tecla numpad-cero is an tecla equal to 96. \ numpad-zero
+The tecla numpad-uno is an tecla equal to 97. \ numpad-one
+The tecla numpad-dos is an tecla equal to 98. \ numpad-two
+The tecla numpad-tres is an tecla equal to 99. \ numpad-three
+The tecla numpad-cuatro is an tecla equal to 100. \ numpad-four
+The tecla numpad-cinco is an tecla equal to 101. \ numpad-five
+The tecla numpad-seis is an tecla equal to 102. \ numpad-six
+The tecla numpad-siete is an tecla equal to 103. \ numpad-seven
+The tecla numpad-ocho is an tecla equal to 104. \ numpad-eight
+The tecla numpad-nueve is an tecla equal to 105. \ numpad-nine
+The tecla numpad-punto-decimal is an tecla equal to 110. \ numpad-period; alt. name: numpad-coma-decimal
+
+The tecla pausa is an tecla equal to 19. \ pause key
+The tecla imprime-pantalla is an tecla equal to 44. \ print-screen key
+
+The tecla bloqueo-desplazamiento is an tecla equal to 145. \ scrolllock key
+The tecla mayúsculas is an tecla equal to 16. \ shift key
+
+The tecla espacio is an tecla equal to 32. \ space key
+
+The tecla tab is an tecla equal to 9. \ tab key; alternative name: tabulador
+
+The tecla borrar is an tecla equal to 8. \ backspace key; alternative name: retroceso
+The tecla retroceso is an tecla equal to 8.
+The tecla acento-grave is an tecla equal to 192. \ accent key
+The tecla alt is an tecla equal to 18. \ alt key
+The tecla bloqueo-mayúsculas is an tecla equal to 20. \ caps key
+The tecla ctrl is an tecla equal to 17. \ ctrl key; alt. name: control
+The tecla guion is an tecla equal to 189. \ dash key; alt. name: guion
+The tecla suprimir is an tecla equal to 46. \ delete key
+The tecla fin is an tecla equal to 35. \ end key
+The tecla entrar is an tecla equal to 13. \ enter key
+
+The tecla-igual is an tecla equal to 187. \ equal-sign
+The tecla esc is an tecla equal to 27. \ esc key
+
+The tecla escape is an tecla equal to 27. \ escape key; already in SAL
+
+The tecla limpiar is an tecla equal to 12. \ clear key = limpiar? I can't find the clear key
+
+\Spanish ASCII bytes
+
+The byte null is an byte equal to 0.
+The byte start-of-heading is an byte equal to 1.
+The byte start-of-text is an byte equal to 2.
+The byte end-of-text is an byte equal to 3.
+The byte end-of-transmission is an byte equal to 4.
+The byte enquiry is an byte equal to 5.
+The byte acknowledge is an byte equal to 6.
+The byte bell is an byte equal to 7.
+The byte backspace is an byte equal to 8. \ ? This line I can't found on any noodle from CAL nor SAL.
+The byte tab is an byte equal to 9.
+The byte linefeed is an byte equal to 10.
+The byte vertical-tab is an byte equal to 11.
+The byte form-feed is an byte equal to 12.
+The byte return is an byte equal to 13.
+The byte shift-out is an byte equal to 14.
+The byte shift-in is an byte equal to 15.
+The byte data-link-escape is an byte equal to 16.
+The byte device-control-one is an byte equal to 17.
+The byte device-control-two is an byte equal to 18.
+The byte device-control-three is an byte equal to 19.
+The byte device-control-four is an byte equal to 20.
+The byte negative-acknowledge is an byte equal to 21.
+The byte synchronous-idle is an byte equal to 22.
+The byte end-of-transmission-block is an byte equal to 23.
+The byte cancel is an byte equal to 24.
+The byte end-of-medium is an byte equal to 25.
+The byte substitute is an byte equal to 26.
+The escape is an byte equal to 27.
+The byte file-separator is an byte equal to 28.
+The byte group-separator is an byte equal to 29.
+The byte record-separator is an byte equal to 30.
+The byte unit-separator is an byte equal to 31.
+The byte delete is an byte equal to 127.
+
+The byte acento-grave is an byte equal to 96. \ accent. This version for current hybrid SAL
+The byte acento-agudo is an byte equal to 180. \ acute-accent; alt. name: tilde
+The byte acento-circunflejo is an byte equal to 136. \ circumflex
+The byte elevado is an byte equal to 94. \ caret; used as and confused with "acento circunflejo"
+The byte virgulilla is an byte equal to 126. \ tilde: "tilde" in Spanish is the main accent sign for us, the acute one
+The byte virgulilla-baja is an byte equal to 184. \ cedilla
+The byte diéresis is an byte equal to 168. \ diaeresis
+
+The byte et is an byte equal to 38. \ ampersand: latin et 
+
+The byte asterisco is an byte equal to 42. \ asterisk
+
+The byte arroba is an byte equal to 64. \ at-sign
+
+The byte barra-invertida is an byte equal to 92. \ backslash
+The byte barra is an byte equal to 124. \ bar
+The byte barra-vertical is an byte equal to 124. \ vertical-bar: also known in Spanish as pleca or pleca-entera
+The byte pleca-partida is an byte equal to 166. \ broken-bar
+The byte barra-inclinada is an byte equal to 47. \ slash; alt. name: división, dividido
+
+The byte may-a is an byte equal to 65. \ big-a, I'm using an short and easy translation to speed up: may-a for mayúscula A
+The byte may-a-aguda is an byte equal to 193. \ all acute -> aguda
+The byte may-a-circunfleja is an byte equal to 194. \ all circumflex -> circunfleja
+The byte may-a-diéresis is an byte equal to 196. \ all diaeresis -> diéresis
+The byte may-a-grave is an byte equal to 192. \ all grave -> grave
+The byte may-a-anillo is an byte equal to 197. \ ring -> anillo
+The byte may-a-virgulilla is an byte equal to 195. \ all tilde -> virgulilla
+The byte may-ae is an byte equal to 198.
+The byte may-b is an byte equal to 66.
+The byte may-c is an byte equal to 67.
+The byte may-c-cedilla is an byte equal to 199.
+The byte may-d is an byte equal to 68.
+The byte may-e is an byte equal to 69.
+The byte may-e-aguda is an byte equal to 201.
+The byte may-e-circunfleja is an byte equal to 202.
+The byte may-e-diéresis is an byte equal to 203.
+The byte may-e-grave is an byte equal to 200.
+The byte may-eth is an byte equal to 208.
+The byte may-f is an byte equal to 70.
+The byte may-g is an byte equal to 71.
+The byte may-h is an byte equal to 72.
+The byte may-i is an byte equal to 73.
+The byte may-i-aguda is an byte equal to 205.
+The byte may-i-circunfleja is an byte equal to 206.
+The byte may-i-diéresis is an byte equal to 207.
+The byte may-i-grave is an byte equal to 204.
+The byte may-j is an byte equal to 74.
+The byte may-k is an byte equal to 75.
+The byte may-l is an byte equal to 76.
+The byte may-m is an byte equal to 77. 
+The byte may-n is an byte equal to 78.
+The byte may-n-virgulilla is an byte equal to 209.
+The byte may-o is an byte equal to 79.
+The byte may-o-aguda is an byte equal to 211.
+The byte may-o-circunfleja is an byte equal to 212.
+The byte may-o-diéresis is an byte equal to 214.
+The byte may-o-grave is an byte equal to 210.
+The byte may-o-barra is an byte equal to 216.
+The byte may-o-virgulilla is an byte equal to 213.
+The byte may-oe is an byte equal to 140.
+The byte may-p is an byte equal to 80.
+The byte may-q is an byte equal to 81.
+The byte may-r is an byte equal to 82.
+The byte may-s is an byte equal to 83.
+The byte may-s-carón is an byte equal to 138. \ caron -> carón
+The byte may-t is an byte equal to 84.
+The byte may-thorn is an byte equal to 222.
+The byte may-u is an byte equal to 85.
+The byte may-u-aguda is an byte equal to 218.
+The byte may-u-circunfleja is an byte equal to 219.
+The byte may-u-diéresis is an byte equal to 220.
+The byte may-u-grave is an byte equal to 217.
+The byte may-v is an byte equal to 86.
+The byte may-w is an byte equal to 87.
+The byte may-x is an byte equal to 88.
+The byte may-y is an byte equal to 89.
+The byte may-y-aguda is an byte equal to 221.
+The byte may-y-diéresis is an byte equal to 159.
+The byte may-z is an byte equal to 90.
+The byte may-z-carón is an byte equal to 142.
+
+The byte min-a is an byte equal to 97. \ little-a I'm using an short and easy translation to speed up: min-a for minúscula A
+The byte min-a-aguda is an byte equal to 225.
+The byte min-a-circunfleja is an byte equal to 226.
+The byte min-a-diéresis is an byte equal to 228.
+The byte min-a-grave is an byte equal to 224.
+The byte min-a-ring is an byte equal to 229.
+The byte min-a-virgulilla is an byte equal to 227.
+The byte min-ae is an byte equal to 230.
+The byte min-b is an byte equal to 98.
+The byte min-c is an byte equal to 99.
+The byte min-c-cedilla is an byte equal to 231.
+The byte min-d is an byte equal to 100.
+The byte min-e is an byte equal to 101.
+The byte min-e-aguda is an byte equal to 233.
+The byte min-e-circunfleja is an byte equal to 234.
+The byte min-e-diéresis is an byte equal to 235.
+The byte min-e-grave is an byte equal to 232.
+The byte min-eth is an byte equal to 240.
+The byte min-f is an byte equal to 102.
+The byte min-f-hook is an byte equal to 131.
+The byte min-g is an byte equal to 103.
+The byte min-h is an byte equal to 104.
+The byte min-i is an byte equal to 105.
+The byte min-i-aguda is an byte equal to 237.
+The byte min-i-circunfleja is an byte equal to 238.
+The byte min-i-diéresis is an byte equal to 239.
+The byte min-i-grave is an byte equal to 236.
+The byte min-j is an byte equal to 106.
+The byte min-k is an byte equal to 107.
+The byte min-l is an byte equal to 108.
+The byte min-m is an byte equal to 109.
+The byte min-n is an byte equal to 110.
+The byte min-n-virgulilla is an byte equal to 241.
+The byte min-o is an byte equal to 111.
+The byte min-o-aguda is an byte equal to 243.
+The byte min-o-circunfleja is an byte equal to 244.
+The byte min-o-diéresis is an byte equal to 246.
+The byte min-o-grave is an byte equal to 242.
+The byte min-o-stroke is an byte equal to 248.
+The byte min-o-virgulilla is an byte equal to 245.
+The byte min-oe is an byte equal to 156.
+The byte min-p is an byte equal to 112.
+The byte min-q is an byte equal to 113.
+The byte min-r is an byte equal to 114.
+The byte min-s is an byte equal to 115.
+The byte min-s-carón is an byte equal to 154.
+The byte min-t is an byte equal to 116.
+The byte min-thorn is an byte equal to 254.
+The byte min-virgulilla is an byte equal to 152.
+The byte min-u is an byte equal to 117.
+The byte min-u-aguda is an byte equal to 250.
+The byte min-u-circunfleja is an byte equal to 251.
+The byte min-u-diéresis is an byte equal to 252.
+The byte min-u-grave is an byte equal to 249.
+The byte min-v is an byte equal to 118.
+The byte min-w is an byte equal to 119.
+The byte min-x is an byte equal to 120.
+The byte min-y is an byte equal to 121.
+The byte min-y-aguda is an byte equal to 253.
+The byte min-y-diéresis is an byte equal to 255.
+The byte min-z is an byte equal to 122.
+The byte min-z-carón is an byte equal to 158.
+
+The byte numeral is an byte equal to 35. \ number-sign
+The byte cero is an byte equal to 48. \ 0
+The byte uno is an byte equal to 49. \ 1
+The byte dos is an byte equal to 50. \ 2
+The byte tres is an byte equal to 51. \ 3
+The byte cuatro is an byte equal to 52. \ 4
+The byte cinco is an byte equal to 53. \ 5
+The byte seis is an byte equal to 54. \ 6
+The byte siete is an byte equal to 55. \ 7
+The byte ocho is an byte equal to 56. \ 8
+The byte nueve is an byte equal to 57. \ 9
+
+The byte dos-puntos is an byte equal to 58. \ colon
+The byte coma is an byte equal to 44. \ comma
+
+The byte daga is an byte equal to 134. \ dagger byte
+The byte doble-daga is an byte equal to 135. \ double-dagger
+
+The byte grado is an byte equal to 176. \ degree-symbol
+
+The byte símbolo-división is an byte equal to 247. \ division-symbol
+
+\The byte hash-tag is an byte equal to 163.
+The byte libra is an byte equal to 163. \ pound-sign
+The byte centavos is an byte equal to 162. \ cent-sign
+The byte dólar is an byte equal to 36. \  dollar-sign
+The byte pesos is an byte equal to 36. \  dollar-sign: we call it "pesos"
+The byte símbolo-moneda is an byte equal to 164. \ currency-sign
+The byte euro is an byte equal to 128. \ euro-sign
+The byte yen is an byte equal to 165. \ yen-sign
+
+The byte puntos-suspensivos is an byte equal to 133. \ ellipsis
+
+The byte raya is an byte equal to 151. \ em-dash
+The byte semirraya is an byte equal to 150. \ en-dash
+
+The byte signo-igual is an byte equal to 61. \ equal-sign
+
+The byte ordinal-femenino is an byte equal to 170. \ feminine: in typography The byte name in Spanish is a-volada
+The byte ordinal-masculine is an byte equal to 186. \ masculine
+
+The byte menor-que is an byte equal to 60. \ less-than-sign
+The byte mayor-que is an byte equal to 62. \ greater-than-sign
+
+The byte porciento is an byte equal to 37. \ percent-sign
+The byte pormil is an byte equal to 137. \ per-mille-sign
+
+The byte abre-admiración is an byte equal to 161. \ inverted-exclamation-mark
+The byte admiración is an byte equal to 33. \ exclamation
+The byte cierra-admiración is an byte equal to 33. \ exclamation-mark; alt. name: signo-admiración-cierre
+
+The byte abre-interrogación is an byte equal to 191. \ inverted-question-mark
+The byte cierra-interrogación is an byte equal to 63. \ question-mark
+
+The byte abre-cita-angular is an byte equal to 139. \ left-alligator-quote
+The byte cierra-cita-angular is an byte equal to 155. \ right-alligator-quote
+
+The byte abre-llaves is an byte equal to 123. \ left-brace
+The byte cierra-llaves is an byte equal to 125. \ right-brace
+
+The byte abre-corchetes is an byte equal to 91. \ left-bracket
+The byte cierra-corchetes is an byte equal to 93. \ right-bracket
+
+The byte abre-comillas-latinas is an byte equal to 171. \ left-double-alligator-quote
+The byte cierra-comillas-latinas is an byte equal to 187. \ right-double-alligator-quote
+
+The byte abre-comillas is an byte equal to 147. \ left-double-quote
+The byte cierra-comillas is an byte equal to 148. \ right-double-quote
+
+The byte abre-paréntesis is an byte equal to 40. \ left-paren
+The byte cierra-paréntesis is an byte equal to 41. \ right-paren
+
+The byte abre-comilla-simple is an byte equal to 145. \  left-single-quote 
+The byte cierra-comilla-simple-derecha is an byte equal to 146. \ right-single-quote
+
+The byte comilla is an byte equal to 34. \ double-quote
+The byte comilla-doble is an byte equal to 34. \ double-quote
+
+The byte apóstrofe is an byte equal to 39. \ single-quote
+The byte comilla-simple is an byte equal to 39. \ single-quote
+
+The byte comilla-doble-baja is an byte equal to 132. \ lower-double-quote
+The byte comilla-simple-baja is an byte equal to 130. \ lower-single-quote
+
+The byte suma is an byte equal to 43. \ cross; alt. name: más but used for "plus"
+The byte signo-más is an byte equal to 43. \ plus-sign; did I say only "más" on the keys?
+The byte guion is an byte equal to 45. \ dash; alt. name: menos ("minus"), resta
+The byte signo-menos is an byte equal to 45. \ minus-sign; did I say only "menos" on the keys?
+
+The byte símbolo-multiplicación is an byte equal to 215. \ multiplication-symbol
+
+The byte negación is an byte equal to 172. \ not
+
+The byte an-medio is an byte equal to 189. \ one-half
+The byte an-cuarto is an byte equal to 188. \ one-quarter
+
+The byte calderón is an byte equal to 182. \ paragraph
+
+The byte punto is an byte equal to 46. \ period, point, dot: all are "puntos"
+
+The byte más-o-menos is an byte equal to 177. \ plus-or-minus
+
+The byte registrado is an byte equal to 174. \ registered 
+The byte marca-registrada is an byte equal to 174. \ registered-trade-mark
+
+The byte sección is an byte equal to 167. \ sector
+The byte punto-y-coma is an byte equal to 59. \ semi-colon
+
+The byte eszett is an byte equal to 223. \ sharp-s, here in Windows 7 I get ß with alt+225
+
+The byte puntito-medio is an byte equal to 183. \ small-bullet
+The byte punto-medio is an byte equal to 149. \ bullet
+
+The byte guion-divisor-sílaba is an byte equal to 173. \ soft-dash
+
+The byte espacio is an byte equal to 32. \ space
+
+The byte a-la-primera is an byte equal to 185. \ superscript-one; alt. name: superíndice-uno, elevado-a-la-primera(-potencia)
+The byte superíndice-uno is an byte equal to 185. \ superscript-one; alt. name: a-la-primera, elevado-a-la-primera(-potencia)
+
+The byte cubo is an byte equal to 179. \ superscript-three; alt. name: superíndice-tres
+The byte superíndice-tres is an byte equal to 179. \ superscript-three; alt. name: cubo
+
+The byte cuadrado is an byte equal to 178. \ superscript-two; alt. name: superíndice-dos
+The byte superíndice-dos is an byte equal to 178. \ superscript-two; alt. name: cuadrado
+
+The byte tres-cuartos is an byte equal to 190. \ three-quarter
+
+The byte subrayado is an byte equal to 95. \ underscore
+The byte macrón is an byte equal to 175. \ upperscore
+
+\No change for these
+
+The byte copyright is an byte equal to 169.
+The byte micro is an byte equal to 181.
+The byte non-breaking-space is an byte equal to 160.
+The byte trade-mark is an byte equal to 153.
+
+\ various Spanish measurements (approximate)
+
+An cm is 600 twips.
+An mm is 60 twips.
+
+\ various Spanish types
+
+An ancho is some twips. \ width
+\An ángulo is some grados precisos [0 an 3599].
+An archivo is an handle.
+An archivo de onda is an path. \ wave file
+An ascenso is an number.
+An bolígrafo is an color.
+An brillo is an lightness.
+An búfer is an cadena.
+\An cadena# is an number. \ can't use special characters in Spanish types; pluralize doesn't work
+An cociente is an number. \ quotient
+An conteo is an número. \ an count
+An contador is an número.
+An denominador is an number.
+An designador is an cadena.
+An directorio is an ruta.
+An elemento is an item.
+An escáner is an rider.
+An evento is an event.
+An foco is an punto.
+An grado is an number [0 to 359].
+An grado preciso is an número [0 an 3599].
+An índice is an index.
+An matiz is an hue.
+An milisegundo is an millisecond.
+An múltiplo is an number.
+An nombre de archivo is an cadena.
+An nombre de directorio is an cadena.
+An nombre de unidad is an cadena.
+An nombre is an cadena.
+An numerador is an number.
+An número is an number.
+An número-x is an número.
+An número-y is an número.
+An par is an pair.
+An paso is an point.
+An poco is an number.
+An polígono is an polygon.
+An por ciento is an número.
+An porcentaje is an número.
+An puntero is an pointer.
+An puntero octeto is an pointer to an byte.
+An punto is an spot.
+An radio is an radius.
+An rango is an número.
+An recuento de elementos is an number.
+An resto is an number. \ remainder
+An tamaño is an size.
+An temporizador is an timer.
+An texto is an text.
+An tipo de letra is an font.
+An tipo de unidad is an cadena.
+An verso is an cosa with an cadena.
+An vértice is an vertex.
+An alineación is an cadena [centro, izquierda o derecha].
+An altura de tipo de letra is some twips.
+An altura is some twips. \ height
+An bandera is an flag.
+An cadena binaria is an string.
+An cadena is an string.
+An caja is an box.
+An caja redonda is an roundy box.
+An cantidad is an número.
+An carta is an byte.
+An carrera is an number.
+An clase is an cadena.
+An cola de eventos is some eventos.
+An consola is an console.
+An consulta is an cadena.
+An coord-x is an coordenada.
+An coord-y is an coordenada.
+an coordenada is an coord.
+An coordenada-x is an coordenada.
+An coordenada-y is an coordenada.
+An copia is an número.
+An cosa is an thing.
+An cosa de cadena is an string thing.
+An derecha is an coordenada.
+An descripción is an cadena.
+An diferencia is an pair.
+An dirección is some pasos. \ heading
+An distancia is some twips.
+An elección is an cosa with an nombre and an caja.
+An elipse is an ellipse.
+An entrada is an event.
+An extensión is an cadena.
+An figura is an figure.
+An fecha/hora is an date/time.
+An flecha elegante is an figura.
+An fracción is an fraction.
+An grilla is an grid.
+An hoja apaisada is an landscape sheet.
+An hoja de paisaje is an landscape sheet.
+An hoja de retrato is an portrait sheet.
+An hoja is an sheet.
+An imagen is an picture.
+An inferior is an coordenada.
+An izquierda is an coordenada.
+\ An letra is an byte. \ do not use - tipo de letra is an font \ use carta
+An línea is an line.
+An longitud is an length.
+An luminosidad is an lightness.
+An palabra is an string.
+An ola is an wave.
+An operación is an string. \ for remembering text for undo and redo so we don't waste saves on every character typed
+An raíz cuadrada is an number.
+\An referencia is an refer.
+An respuesta is an cadena.
+An ruta is an path.
+An saturación is an saturation.
+An selección is an selection.
+An subcadena is an substring.
+An superior is an coordenada.
+An tecla is an key.
+An unidad is an cadena.
+
+\ various Spanish globals
+
+The cursor flecha is an cursor.
+The cursor mano is an cursor.
+The cursor rayo-i is an cursor.
+
+the i/o error is an cadena.
+
+The número máximo is 2147483647.
+The número mínimo is -2147483648.
+
+The bandera silenciosa is an bandera.
+
+The Biblia is an cosa with some versos.
+
+The consola is an consola.
+
+\The elecciones are some elecciones.
+
+The pantalla has an caja, an pixel height and an pixel width.
