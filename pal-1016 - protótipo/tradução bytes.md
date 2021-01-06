@@ -98,7 +98,7 @@
 |93|`]`|`right-bracket byte`|`byte fecha-colchetes` `byte colchete-dir`|
 |94|`^`|`caret byte`|`byte-circunflexo`|
 |95|`_`|`underscore byte`|`byte-_` `byte-sublinhado`|
-|96|\`|`accent byte`|`byte-\` `Byte barra-inv`|
+|96|\`|`accent byte`|byte-\` `byte-acento`|
 |97|`a`|`little-a byte`|`byte-a`|
 |98|`b`|`little-b byte`|`byte-b`|
 |99|`c`|`little-c byte`|`byte-c`|
@@ -252,3 +252,4 @@
 |252|`ü`|`little-u-diaere`|`byte-ü`|
 |253|`ý`|`little-y-acute byte`|`byte-ý`|
 |254|`þ`|`little-thorn byte`|`byte-þ` `byte-thorn`|
+|255|`ÿ`|`little-y-diaeresis`|`byte-ÿ`|

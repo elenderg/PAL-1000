@@ -507,7 +507,7 @@ Lista de Termos em Ordem Alfabética
 |email|-|-|-|-|e-mail|
 |em-dash byte|–|–|–|–|byte-travessão|
 |encrypt|-|-|-|codificar|encriptar|
-|end|-|-|-|finalizar|fim|
+|end|-|acabar|terminar|finalizar|fim|
 |end if tag|–|–|–|–|marca-fimse|
 |end key|–|–|–|–|tecla-se|
 |en-dash byte|–|–|–|–|–|
