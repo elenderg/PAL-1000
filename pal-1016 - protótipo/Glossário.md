@@ -535,7 +535,8 @@ Lista de Termos em Ordem Alfabética
 |exclamation-mark byte|–|–|–|–|byte-!|
 |exclusionflags|-|-|-|-|-|
 |exit tag|–|–|–|–|marca-sair|
-|extend|-|-|-|-|estender|
+|extend|ampliar|estender|expandir|aumentar|prolongar|
+|extension|extensão|–|–|–|–|
 |externalize|-|-|-|-|externalizar|
 |extra points|–|–|–|–|–|
 |extract|-|-|-|-|extrair|
@@ -548,7 +549,7 @@ Lista de Termos em Ordem Alfabética
 
 |Origem|Sugestão 1|Sugestão 2|Sugestão 3|Sugestão 4|Sugestão 5|
 |------------|------------|------------|------------|------------|------------|
-|face|–|–|–|–|face|
+|face|fitar|mirar|–|–|–|
 |fail|–|–|–|falha|falhar|
 |fancy arrow|Seta elegante|–|–|–|–|
 |feminine byte|–|byte-ª|–|–|–|
@@ -781,7 +782,7 @@ Lista de Termos em Ordem Alfabética
 |left-paren byte|–|–|–|byte-parenàesq|byte-(|
 |left-single-quote byte|–|–|–|–|–|
 |left-window key|–|–|–|–|tecla-janelesq|
-|lenght <sup>[D]</sup>|medida|dimensão|–|–|–|
+|lenght <sup>[D]</sup>|medida|estensão|dimensão|–|–|
 |lenght <sup>[E]</sup>|comprimento|tamanho|–|–|–|
 |loop <sup>[D]</sup>|reciclar|recicle|ciclo|laço|–|
 |loop <sup>[E]</sup>|Percorrer|–|–|–|–|
