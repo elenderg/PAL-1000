@@ -400,7 +400,7 @@ Lista de Termos em Ordem Alfabética
 |depth|–|–|–|–|profundidade|
 |dereference tag|–|–|–|–|–|
 |deque|decue|desenfileirar|remover da fila|–|–|
-|deselect|–|–|–|–|–|
+|deselect|–|–|–|desmarcar|dispensar|
 |de-sign|dessinalar|–|–|–|–|
 |designator w/o backslash|–|–|–|–|–|
 |desktop color|–|–|–|–|cor do desktop|
@@ -566,6 +566,7 @@ Lista de Termos em Ordem Alfabética
 |f-key|–|–|–|–|tecla-f|
 |flag <sup>[D]</sup>|sinal|sinalizador|bandeira|–|–|
 |flag <sup>[E]</sup>|–|–|–|–|–|
+|flip|inverter|–|–|–|–|
 |font height|–|–|–|–|altura da fonte|
 |font info|–|–|–|–|informação da fonte|
 |font resource|–|–|–|–|recursos da fonte|
@@ -1370,9 +1371,9 @@ Lista de Termos em Ordem Alfabética
 |seed (substantivo)|número da semente|–|–|–|–|
 |seed (verbo)|semear|fertilizar|adubar|preparar|-|
 |seek|-|-|-|-|-|
-|select|selecionar|escolher|-|-|-|
-|selection|-|-|-|-|-|
-|semi-colon byte|–|–|–|–|–|
+|select|selecionar|escolher|-|-|seletar|
+|selection|seleção|escolha|-|-|-|
+|semi-colon byte|–|–|–|–|byte dois-pontos|
 |send|-|-|-|-|-|
 |set (verbo)|definir|mudar a cor do sinal|-|-|-|
 |setalertboundary|-|-|-|-|-|
@@ -1401,7 +1402,8 @@ Lista de Termos em Ordem Alfabética
 |shift-out byte|byte de shift liberado|–|–|–|–|
 |show|-|-|-|-|-|
 |shrink|-|-|-|-|-|
-|shut|-|-|-|-|-|
+|shut|-|-|-|fechar|cerrar|
+|shut down|-|-|-|terminar|encerrar|
 |signature|-|-|-|-|-|
 |simplify|-|-|-|-|-|
 |single-quote byte|–|–|–|–|–|
@@ -1447,12 +1449,13 @@ Lista de Termos em Ordem Alfabética
 |split (verbo)|-|-|-|-|-|
 |spot <sup>[D]</sup>|lugar|local|posição|–|–|
 |spot <sup>[E]</sup>|mancha|–|–|–|–|
-|square (verbo)|quadrado|-|-|-|-|
+|square (verbo)|quadrado|–|–|–|–|
 |square root|raiz quadrada|–|–|–|–|
 |square size|tamanho do quadrado|–|–|–|–|
 |stack|–|–|–|–|–|
 |stack entry|empilhamento|–|–|entrada de pilha|–|
-|start (verbo)|-|-|-|-|-|
+|start (verbo)|-|-|-|começar|iniciar|
+|start up|–|–|–|–|executar|
 |start-of-heading byte|–|–|–|–|–|
 |start-of-text byte|–|–|–|–|–|
 |startupinfo|-|-|-|-|-|
