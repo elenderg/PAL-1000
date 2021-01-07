@@ -68,6 +68,7 @@ Lista de Termos em Ordem Alfabética
 |bar|-|-|-|-|barra|
 |bar byte|–|–|–|–|byte-barra|
 |barmstyle|-|-|-|-|-|
+|base|principal|primário|–|–|base|
 |baseline|–|–|–|–|linha base|
 |bcontrast|-|-|-|-|-|
 |beep (verbo)|-|-|-|-|bipar|
