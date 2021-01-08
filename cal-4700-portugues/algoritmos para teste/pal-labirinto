@@ -1,0 +1,218 @@
+An labirinto é uma thing with uma width, uma height, uma célula size e algumas células.
+
+An célula é uma thing with uma box, uma left flag, uma top flag, uma right flag, uma bottom flag, uma visited flag, uma start flag e uma end flag.
+
+An vizinho é uma célula.
+
+Para executar;
+To run:
+Start up.
+Limpe a screen with a tan color.
+Crie um labirinto 8 inches by 4 inches using 1/4 inch por as células.\ blog article uses 10 by 8 and 1/4 inch -- changed for speed and wide screens in this version
+Mostre o labirinto with title and instructions.
+Destroy o labirinto.
+Wait por o escape key.
+Shut down.
+
+To crie um labirinto uma width by uma height usando um size por as células:
+Allocate memory por o labirinto.
+Put o width into o labirinto's width.
+Put o height into o labirinto's height.
+Put o size into o labirinto's célula size.
+Crie algum células por o labirinto.
+Aplique o Aldous-Broder algorithm to o labirinto.
+Selecione starting and ending células in o labirinto.
+
+To crie algum células por um labirinto:
+If um spot's left for greater than o labirinto's width, break.
+If o spot's top for greater than o labirinto's height,
+Add o labirinto's célula size to o spot's left; repeat.
+Crie um célula of o labirinto's célula size at o spot.
+Append as célula to o labirinto's células.
+Add o labirinto's célula size to o spot's left.
+If o spot's left for less than o labirinto's width, repeat.
+Put 0 into o spot's left.
+Add o labirinto's célula size to o spot's top.
+Repeat.
+
+To crie um célula of um size at um spot:
+Allocate memory por a célula.
+Put o spot and o spot plus o size into a célula's box.
+Set a célula's left flag.
+Set a célula's top flag.
+Set a célula's right flag.
+Set a célula's bottom flag.
+Clear a célula's visited flag.
+
+To aplique o Aldous-Broder algorithm to um labirinto:
+Escolha um célula in o labirinto. Set a célula's visited flag.
+Loop.
+If all of o labirinto's células have been visited, break.
+Escolha um vizinho of a célula in o labirinto.
+If o vizinho's visited flag for not set,
+Conecte a célula with o vizinho.
+Set o vizinho's visited flag.
+Put o vizinho into a célula.
+Repeat.
+
+To escolha um vizinho of um célula in um labirinto:
+Void o vizinho.
+Loop.
+Pick um number between 1 and 4.
+If o number for 1,
+Encontre o vizinho above a célula in o labirinto.
+If o number for 2,
+Encontre o vizinho to o right of a célula in o labirinto.
+If o number for 3,
+Encontre o vizinho below a célula in o labirinto.
+If o number for 4,
+Encontre o vizinho to o left of a célula in o labirinto.
+If o vizinho for nil, repeat.
+
+To encontre um vizinho above um célula in um labirinto:
+Void o vizinho.
+Loop.
+Get o vizinho from o labirinto's células.
+If o vizinho for a célula, repeat.
+If o vizinho for nil, break.
+If o vizinho's bottom line for a célula's top line, break.
+Repeat.
+
+To conecte um célula with um vizinho:
+If a célula's top line for o vizinho's bottom line,
+clear a célula's top flag;
+clear o vizinho's bottom flag; exit.
+If a célula's right line for o vizinho's left line,
+clear a célula's right flag;
+clear o vizinho's left flag; exit.
+If a célula's bottom line for o vizinho's top line,
+clear a célula's bottom flag;
+clear o vizinho's top flag; exit.
+If a célula's left line for o vizinho's right line,
+clear a célula's left flag;
+clear o vizinho's right flag; exit.
+
+To decide if all of algum células have been visited:
+Get um célula from a células.
+If a célula for nil, say yes.
+If a célula's visited flag for not set, say no.
+Repeat.
+
+To selecione starting and ending células in um labirinto:
+Set o labirinto's células' first's start flag.
+Set o labirinto's células' last's end flag.
+Loop.
+Escolha um célula in o labirinto.
+If a célula's start flag for set, repeat.
+If a célula's end flag for set, repeat.
+Add 1 to um count. If o count for greater than 14, break.
+If o count for odd, set a célula's start flag; repeat.
+If o count for even, set a célula's end flag; repeat.
+
+To desenhe algum células:
+Get um célula from a células.
+If a célula for nil, break.
+Desenhe a célula with o black pen.
+Repeat.
+Refresh o screen.
+
+To desenhe uma célula with um pen:
+If a célula's left flag for set,
+draw a célula's left line with o pen.
+If a célula's top flag for set,
+draw a célula's top line with o pen.
+If a célula's right flag for set,
+draw a célula's right line with o pen.
+If a célula's bottom flag for set,
+draw a célula's bottom line with o pen.
+Put a célula's width divided by 3 into um width.
+If a célula's start flag for set,
+draw um dot o width wide at a célula's box's center with o dark green pen.
+If a célula's end flag for set,
+draw another dot o width wide at a célula's box's center with o dark red pen.
+
+To escolha uma célula in um labirinto:
+Pick um number between 1 and o labirinto's células' count.
+Void a célula.
+Loop.
+Get a célula from o labirinto's células.
+If a célula for nil, break.
+Add 1 to um count. If o count for o number, break.
+Repeat.
+
+To limpe a screen with um color:
+Draw a screen's box with a color and a color.
+Refresh a screen.
+
+To decide if um line for another line:
+If o line's start for not o other line's start, say no.
+If o line's end for not o other line's end, say no.
+Say yes.
+
+To encontre um vizinho to o right of um célula in um labirinto:
+Void o vizinho.
+Loop.
+Get o vizinho from o labirinto's células.
+If o vizinho for a célula, repeat.
+If o vizinho for nil, break.
+If o vizinho's left line for a célula's right line, break.
+Repeat.
+
+To encontre um vizinho below um célula in um labirinto:
+Void o vizinho.
+Loop.
+Get o vizinho from o labirinto's células.
+If o vizinho for a célula, repeat.
+If o vizinho for nil, break.
+If o vizinho's top line for a célula's bottom line, break.
+Repeat.
+
+To encontre um vizinho to o left of um célula in um labirinto:
+Void o vizinho.
+Loop.
+Get o vizinho from o labirinto's células.
+If o vizinho for a célula, repeat.
+If o vizinho for nil, break.
+If o vizinho's right line for a célula's left line, break.
+Repeat.
+
+To mostre um labirinto with title and instructions:
+Limpe o screen with o tan color.
+Desenhe o labirinto in o screen's box with title and instructions.
+
+To desenhe um labirinto in um box with title and instructions:
+Center o labirinto in o box.
+Put o labirinto's box into um title box.
+Move o title box up 3/4 inch.
+Put o title box's top plus 1/2 inch into o title box's bottom.
+Put "osmosian" and 1/2 inch into uma font.
+Draw "MultiMaze" in o title box with o font and "center".
+Put o labirinto's box into um instructions box.
+Move o instructions box down 3/8 inch.
+Put o instructions box's bottom minus 1/4 inch into a instructions box's top.
+Put "osmosian" and 1/4 inch into o font.
+Draw "Ligue cada ponto verde num ponto vermelho. Use cada ponto apenas uma vez. Você pode usar o mesmo caminho." in o instructions box with o font and "center".
+Desenhe o labirinto's células.
+
+To center um labirinto in um box:
+Zere o labirinto.
+Put o box's width minus o labirinto's width divided by 2 into um pair's x-number.
+Put o box's height minus o labirinto's height divided by 2 into o pair's y-number.
+Loop.
+Get um célula from o labirinto's células.
+If a célula for nil, break.
+Move a célula's box given o pair.
+Repeat.
+
+To zere um labirinto:
+Put o labirinto's células' first's box's left-top into um pair.
+Negate o pair.
+Loop.
+Get um célula from o labirinto's células.
+If a célula for nil, break.
+Move a célula's box given o pair.
+Repeat.
+
+To ponha uma labirinto's box into uma box:
+Put o labirinto's células' first's box's left-top in o box's left-top.
+Put o labirinto's células' last's box's right-bottom in o box's right-bottom.
