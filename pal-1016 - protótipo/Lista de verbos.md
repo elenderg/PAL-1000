@@ -39,7 +39,7 @@ Lista de Verbos em Ordem Alfabética
 |collapse|colapsar|-|-|-|✔️|
 |comment|comentar|-|-|-|✔️|
 |compare|comparar|-|-|-|✔️|
-|compatibly|[advérbio]|-|-|-|✔️|
+|compatibly|**[advérbio]**|-|-|-|✔️|
 |compile|compilar|-|-|-|✔️|
 |convert|converter|-|-|-|✔️|
 |copy|copiar|-|-|-|✔️|
@@ -115,7 +115,7 @@ Lista de Verbos em Ordem Alfabética
 |multiply|multiplicar|-|-|-|✔️|
 |name|nomear|-|-|-|✔️|
 |negate|nomear|-|-|-|✔️|
-|non-destructively|[advérbio]|-|-|-|✔️|
+|non-destructively|**[advérbio]**|-|-|-|✔️|
 |normalize|normalizar|-|-|-|✔️|
 |null terminate|anular|-|-|-|✔️|
 |offset|compensar|-|-|-|✔️|
