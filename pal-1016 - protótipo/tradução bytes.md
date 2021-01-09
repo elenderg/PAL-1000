@@ -98,7 +98,7 @@
 |93|`]`|`right-bracket byte`|`byte fecha-colchetes` `byte colchete-dir`|
 |94|`^`|`caret byte`|`byte-circunflexo`|
 |95|`_`|`underscore byte`|`byte-_` `byte-sublinhado`|
-|96|\```|`accent byte`|`byte-crase`|
+|96|``|`accent byte`|`byte-crase`|
 |97|`a`|`little-a byte`|`byte-a`|
 |98|`b`|`little-b byte`|`byte-b`|
 |99|`c`|`little-c byte`|`byte-c`|
