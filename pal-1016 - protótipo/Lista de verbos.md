@@ -129,7 +129,7 @@ Lista de Verbos em Ordem Alfabética
 |pdfify|-|-|-|-|✔️|
 |pen|pintar|-|-|-|✔️|
 |pick|escolher|-|-|-|✔️|
-|play|-|-|-|-|✔️|
+|play|tocar|-|-|-|✔️|
 |pluralize|pluralizar|-|-|-|✔️|
 |position|posicionar|-|-|-|✔️|
 |post|divulgar|-|-|-|✔️|
