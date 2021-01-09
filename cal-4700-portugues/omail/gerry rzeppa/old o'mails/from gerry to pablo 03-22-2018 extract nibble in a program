@@ -1,0 +1,109 @@
+\Dear Papa Pablo,
+
+\Classes in three universities! Congratulations. What subjects are you teaching?
+
+\ You probably noticed that I added an "old communications" directory to your mailbox and moved your old mail into it to cut down the clutter.
+
+Pablo says: If I have time I will check it on the noodle to see the extract function (I've started giving classes in three universities!).
+
+\ Let me save you some searching. These are the types and routines in the Noodle that are used to make nibble strings, from the top down:
+
+A nibble is a byte. \ only low order 4 bits are used
+
+A nibble string is a string. \ a string of readable nibble values, one ASCII character per nibble: digits 0 through 9 and letters A through F only
+
+To convert a string to a nibble string:
+Clear the nibble string.
+Slap a substring on the string.
+Loop.
+If the substring is blank, exit.
+Convert the substring's first's target to another nibble string.
+Append the other nibble string to the nibble string.
+Add 1 to the substring's first.
+Repeat.
+
+To convert a byte to a nibble string:
+Split the byte into a nibble and another nibble.
+Convert the nibble to the nibble string.
+Convert the other nibble to another nibble string.
+Append the other nibble string to the nibble string.
+
+To split a byte into a nibble and another nibble:
+Put the byte into the nibble.
+Shift the nibble right 4 bits.
+Put the byte into the other nibble.
+Bitwise AND the other nibble with 15.
+
+To convert a nibble to a nibble string:
+Privatize the nibble.
+If the nibble is greater than 9, add 7 to the nibble.
+Add 48 to the nibble.
+Put the nibble into the nibble string.
+
+\ Below is the type and the routines in the Noodle that are used to convert a nibble string back into a hex string:
+
+A hex string is a string. \ a string of bytes where each byte can be any value, from binary 00000000 to binary 11111111
+
+To convert a nibble string to a hex string:
+Privatize the nibble string.
+Clear the hex string.
+If the nibble string's length is odd, prepend the zero byte to the nibble string.
+Slap a substring on the nibble string.
+Loop.
+If the substring is blank, exit.
+Convert the substring's first's target to a nibble.
+Shift the nibble left 4 bits.
+Add 1 to the substring's first.
+Convert the substring's first's target to another nibble.
+Bitwise or the nibble with the other nibble.
+Append the nibble to the hex string.
+Add 1 to the substring's first.
+Repeat.
+
+To convert a byte to a nibble:
+Put the byte into the nibble as a byte.
+Uppercase the nibble.
+If the nibble is greater than the nine byte, subtract 7 from the nibble.
+Subtract 48 from the nibble.
+
+Pablo asks: What about extract nibble from a selected file in a program?
+
+\ The routine we use to extract nibble literals (as described in my previous post) resides in the Finder, not the Noodle.
+\ Here are the routines:
+
+To handle extract nibble literal given a node: \ this routine is called when the command is selected from the menu
+If the node is root-level, cluck; exit.
+If the node's selected nodette count is not 1, show error "Select only one file item to extract."; exit.
+Show status "Copying...".
+Put the node's first selected nodette into a nodette.
+If the nodette's kind is not "file", show error "I can only extract files into nibble literals."; exit.
+Read the nodette's path into a buffer.
+If  the i/o error is not blank, show error the i/o error; exit.
+Convert the buffer to a nibble string. \ a buffer is just a string, so this calls the "convert a string to a nibble string" routine in the Noodle
+Prepend "$" to the nibble string.
+Put the nibble string on the windows clipboard.
+Show status "Copied". 
+
+\ If you know  the path of the file you want converted, you only need these three lines to convert a file to a nibble string:
+
+Put "c:\pablo cayuela\test.jpg" into a path.
+Read the path into a buffer.
+Convert the buffer to a nibble string.
+
+Pablo also asks: Maybe after selecting a file from many.
+
+\ Now THAT is not a simple matter, because the user needs to SEE a list of files before he can select one.
+\ And then he needs some way of executing commands.
+\ Plain English, as you know, doesn't have any dialog boxes that display file lists (or anything else) because we believe
+\ the programmer should be free to make his file manager (and everything else) look the way he wants it to look.
+\ Options:
+\ 1. If he wants his interface and file manager to look like the CAL, he can start with the CAL's Desktop, Finder, and Noodle and delete the parts he doesn't need.
+\ 2. If he wants it to look like a command-line system, he can start with the CAL's Noodle and use the CAL's console as an input-output device.
+\ 3. If he want it to look altogether different, he can start with the CAL's Noodle, clear the screen, and do whatever he wants (from scratch). 
+
+\ I added a directory to your mailbox that shows how Option 1 can be implemented. When you run the program it will look like the CAL, except...
+\ the desktop will be blue and it will have a "Jigsaw Puzzle" command under the "J" menu when you're in the Finder.
+\ Just choose a picture file (.jpg, .png, etc) and execute the command. When you're done with a puzzle, press ESC.
+\ I didn't have time to delete the unnecessary stuff, and it may have bugs since I did it quickly and didn't test it thoroughly. Sorry about that.
+
+\ Gerry

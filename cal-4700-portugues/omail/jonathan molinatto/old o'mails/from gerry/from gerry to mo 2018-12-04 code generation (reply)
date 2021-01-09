@@ -1,0 +1,101 @@
+so long as you can get the device drivers running, then that's fine. you're right that readily
+
+\ The above line seems out of place.
+
+yeah, i don't know what to do about hardware. just because the chip is simple, that doesn't mean
+we shouldn't use other commodity hardware on the board. we could use usb and hdmi chips and
+just route them appropriately. lots of hobbyists do these kinds of things in one-off projects. i'm
+sure we could figure it out. we could also start with ps/2 and vga. no CRTs, though. too heavy.
+
+\ I'm not really a hardware guy. The biggest "computer" I ever designed and built, from scratch,
+\ was a terminal for a restaurant system called SilentServer. It had a Z8 CPU with a piggy-back ROM,
+\ a 16-character display, and a 4-button keyboard with dynamically labeled keys. It talked with the
+\ host via a simple RS-485 phone-wire connection. I've put a picture of it in your box. Engineering the
+\ custom plastic case cost almost as much as the machine itself. Compared with software, hardware
+\ development (as I'm sure you know) is slow and expensive.
+
+\ Bottom line: I want somebody else to build the hardware for the KAL. You, if you want, or we'll have
+\ to find another guy to complete the team.
+
+i'm actually not worried about the code generation. i've done that bit a number of times in school
+and goofy one-off projects.
+
+\ I agree; the CAL's transmogrify step is really quite simple, even given the goofiness of the x86.
+
+you have doubly-linked lists, so building a tree shouldn't be difficult. i actually might write a red-black tree
+implementation and hashtable for fun (in CAL). i've done it in ansi c, and that was ... fun ... yeah.
+
+\ We thought about using trees in the compiler, but Aunt Tilly said we didn't need them. The CAL does,
+\ however, make frequent use of hashtables. We called them "Indices". The generic code is in the Noodle.
+\ The Writer loads the Lexicon into an Index for spell-checking, the Compiler uses separate Indices for
+\ Type, Global, Literal, and Routine names, and the Noodle uses them in several unusual places, as well.
+\ Here's an overview of the generic implementation, top to bottom:
+
+\ INDEX TYPES:
+
+An index is a thing with a bucket count, a first bucket and a last bucket.
+A bucket is a pointer to a bucket record.
+A bucket record has some refers.
+A refer is a thing with a string and a pointer (reference).
+
+\ HIGH LEVEL INDEX ROUTINES:
+
+To create an index given a bucket count:
+To index a string in an index:
+To decide if a string is in an index:
+To index a pointer given a string and an index:
+To find a pointer given a string and an index:
+To destroy an index:
+
+\ The hash is based on the djb2 algorithm; find djb2 in the Noodle if you want to see it.
+
+once we have a tree, we have an AST, and then we can apply optimizing passes to the AST to simplify
+and shrink the actual code that is output.
+
+\ Aunt Tilly says, "Abstract Syntax Trees, and 'optimizing passes to the AST' are unnecessary. The CAL
+\ works just fine (and is plenty fast, and generates reasonably small files) without them."
+
+we could use registers, but we'd still need optimizing passes to ensure we're not clobbering register values
+we need later. i've both used llvm and done it by-hand (a lifetime ago), so if i can find my notes or
+old projects, i can refresh myself.
+
+\ Aunt Tilly says, "Don't bother. It's all superfluous."
+
+i'm sure you know about all of that. and i don't think trees are difficult to explain to a 12-year-old.
+
+\ Sure. Show the kid how to implement that "Guess what I'm thinking of" game with a tree structure
+\ for educational purposes. But don't drag them into compilers, which are difficult enough,
+\ and can work just fine, without them.
+
+i just had an idea for a vm simulator in CAL that has a window for the screen, a window for the
+stack, a window for other flags, some buttons to step/pause/play/rewind the clock. that would
+be pretty neat.
+
+\ Yes. Sure. Neat. Fun. But isn't "vm simulator" TWO steps removed from where we want to be?
+\ REAL MACHINE -> (1) VIRTUAL MACHINE -> (2) SIMULATED VIRTUAL MACHINE
+\ I'm not even sure why we would need a virtual machine. After all, we're not really breaking any new
+\ ground here. We're just doing what has already been done with all the superfluous crap removed.
+
+\ Regarding the Instruction Set you sent, I'm confused.
+
+\ 1. Does the "load from memory (push value at memory)" instruction get the memory address from
+\     an immediate value that's in the instruction, or from the top of the Data Stack?
+
+\ 2. Why is there no generic POP instruction? How do we discard unneeded Data and Return Stack elements?
+
+\ 3. How does the Return Stack support traditional stack frames? Specifically, how do we push values onto
+\    the Return Stack, and how do we pop them off? Where is the Return Stack's base pointer kept, and how do we
+\    push (copy) parameter values that are stored at various offsets on the Return Stack onto the Data Stack?
+
+\ 4. Why might "divide with remainder" need registers? The remainder can be left on the Data Stack either
+\     above or below the quotient.
+
+\ 5. Do we really need a register for Flags? Why not just leave the post-comparison flag on the data stack?
+
+\ 6. I don't see the need for a special "fraction unit"; the CAL (and Forth) do fractions without one.
+
+\ 7. Where happened to the fundamental bit operations (like AND, OR, XOR, SHL, SHR, etc)?
+
+\ 8. Where are the instructions that work with 8-bit values (like characters in an ASCII text file?
+
+\ Gerry

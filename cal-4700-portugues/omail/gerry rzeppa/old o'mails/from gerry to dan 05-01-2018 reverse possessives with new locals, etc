@@ -1,0 +1,55 @@
+Yo, Dan!
+
+I finally got around to integrating the "reverse-possesives with new locals" code you sent,
+and it all seems to work. Thanks.
+
+Just three things still to implement that are beyond my ability:
+
+#1. Reverse-possessive functions, which I think follow this general syntax:
+
+ normal possessive function = TO PUT A type-name 'S name INTO A type-name ;
+                                                = TO PUT THE name 'S name INTO A type-name ;
+
+reverse-possessive function = TO PUT THE name UV A type-name INTO A type-name ;
+                                                 = TO PUT THE name UV THE name INTO A type-name ;
+
+Examples:
+
+To put a box's center into a spot -> To put the center uv a box into a spot
+To put the screen's center into a spot -> To put the center uv the screen into a spot
+
+#2. We need to allow "no" as a "negative word" in decider calls, such as...
+
+Si el trabajo no es completa, salida.\ If the work is not completed, exit.
+
+...which calls...
+
+Para decidir si un trabajo es completa: \To decide if a work is finished:
+
+Note that the negative word in Spanish goes before the verb: "no es" instead of "is not".
+I've got that part handled. The problem is that "no" is a flag literal, so this...
+
+Si el trabajo no es completa, salida.\ If the work is not completed, exit.
+
+...is interpreted like this:
+
+Se [work] [flag] es completa \ If [work] [flag] is finished
+
+I don't know how to fix this.
+
+I thought about changing the flag literal from "no" to "nope", but
+that would require a lot of changes in the English parts of the SAL's code.
+
+I think it might be easiest to just eliminate flag literals altogether and
+treat "say yes" and "say no" as special keyword phrases. After all, we tell them
+in the manual to "set a flag" and "clear a flag", not to "put [ yes | no ] into a flag".
+
+#3. "A" is an important indefinite article in English, but it is a mere preposition in Spanish.
+I'm thinking that fixing this is going to have to wait until somebody in Argentina
+converts the whole thing to a Spanish-only SAL. But if you have any ideas, let me know.
+I thought maybe I could use different "name-ender" rules if a statement looked like Spanish -
+I did this with types so I could call a different "pluralize" routine for Spanish type names -
+but Spanish types are easy to spot - it's not as easy to spot Spanish statements in body of a routine.
+And some statements are now a mixture of Spanish and English.
+
+

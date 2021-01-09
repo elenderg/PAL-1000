@@ -1,0 +1,81 @@
+Gerry,
+
+CAL-4018 has some modest changes:
+ * The turtle can now
+   "fade a line a length long from a color to another color".
+
+\ Interesting feature. Did you need this to produce a particular drawing?
+
+\ --Gerry
+
+I wrote a "splash a color" turtle demo to figure out
+some issues with measuring the differences between colors,
+and with picking "a color near a color".
+The drawing has a 1 inch diameter dot in the middle,
+with 96 fat lines radiating out from the dot's perimeter.
+The length of each line is proportional to
+the measured difference in color between its ends.
+A dE-2000 difference of 10 is one inch.
+The drawing also has white circles with 2, 3, and 4-inch
+diameters; they provide a scale for the dE-2000 measurements.
+The effect is similar to the starburst in the Osmosian logo,
+but with a 1 inch dot instead of a central point.
+
+The drawing helped me choose 13-1/2 for the value of
+a color difference that produces colors that are "near" enough.
+
+The "fade" feature has two benefits for this drawing:
+It makes the color variation be roughly proportional
+to radius, and it helped me diagnose a few bugs
+in the code to choose a color partway from one color
+toward another.
+
+Here is the demo code:
+
+To run:
+  start up.
+  initialize the context.
+  save the context.
+  pick a color. splash the color. wait 3 seconds. reset the context.
+  finalize the context.
+  shut down.
+
+to splash a color:
+  clear the screen.
+  draw concentric circles.
+  make a dot 1 inch wide.
+  center the dot in the screen's box.
+  draw the dot with the color.
+  refresh the screen.
+  start in the center of the screen's box facing north.
+  use the fat pen.
+  loop.
+    pick another color near the color.
+    measure a delta ratio between the color and the other color.
+    remember where we are.
+    move 1/2 inch.
+    put 1/10 inch in a length.
+    multiply the length by the delta ratio.
+    use the other color.
+    fade a line the length long from the color to the other color.
+    refresh the screen.
+    go back to where we were.
+    turn right 1/96 of the way.  
+    add 1 to a count.
+    if the count is greater than 96, break.
+  repeat.
+
+to draw concentric circles: 
+  use the white pen.
+  use the thin pen.
+  start in the center of the screen's box facing north.
+  move left 1 inch.
+  draw a circle 2 inches wide.
+  move left 1/2 inch.
+  draw the circle 3 inches wide.
+  move left 1/2 inch.
+  draw the circle 4 inches wide.
+  move right 2 inches.
+  refresh the screen.
+
+-- Jasper

@@ -1,0 +1,233 @@
+\Hello again, Lope!
+
+\You're in black and I'm in blue - except where I've provided sample code (in black).
+
+Excuse me for writing with a document but I will be able to express myself better with this than regular text.
+
+\I understand. No problem.
+\I see you have figured out how to label text blocks on pages so they show up in the "page edges" view.
+\Nice work. We really should fully document the CAL's writer one of these days.
+
+I have read up to page 28 of the "Instructions" (cal-4707) document. I printed the whole thing.
+I wrote the sample program that runs and can be exited by pressing ctrl/alt-q.
+
+\Great!
+\Does the gray-and-white mottled background appear on the screen?
+\It should be slower when it is first being drawn, but faster when you ALT-TAB in and out of it
+\because then it is simply being copied from the screen image saved in "the background," which is a global variable.
+
+I realize that the word "console" is different from my understanding of it.
+
+\Since the word "console" isn't mentioned in the Manual until page 66,
+\I'm guessing you went exploring in the Noodle as suggested on page 16 and
+\came across the statement "Create the console" at the bottom of the "Start Up" routine.
+
+That word is usually synonymous with terminal and is related to stdout,
+which is the screen (again, this is just my understanding) when you run a command prompt shell.
+
+\Yes, I know. Bear with me...
+
+However, you use the word "console" for the cal interface.
+
+\Not quite and not always.
+
+\This is a Plain English program that writes text to stdout in a separate, ugly, overlapping window:
+
+To run:
+Initialize the cgi.
+Write "Hello, world!" then the crlf string to stdout.
+Write "Press the ESC key to quit." then the crlf string to stdout.
+Wait for the escape key.
+Finalize the cgi.
+
+\Try running that program. It uses the 4707 Noodle.
+
+\I keep a directory called "Test Program" on my C drive with just two things in it:
+\- A copy of the Noodle; and
+\- A text file called "the code".
+\Then, when I want to run a quickie program like the one above, all I have to do is
+\a. Copy the source,
+\b. Find and open "the code" file on an empty tab, then
+\c. Paste over whatever is hanging around in the "the code" file and Run.
+
+\But the program above is a different thing than the CAL's handsome,
+\full-screen, built-in console, which is described on page 66.
+
+\Here's a sample program that...
+\1. uses the CAL's console to get some input from the user,
+\2. switches to full-screen graphics to do something fancy, then
+\3. switches back to the CAL's console to say goodbye to the user.
+
+To run:
+Start up.
+Write "Enter a short sentence, then press ENTER: " on the console without advancing.
+Read a string from the console.
+Write "---" on the console.
+Write the string in ring-around-the-rosy fashion.
+Wait for 3 seconds.
+Write "Now we're back looking at the console." on the console.
+Write "Press ESC to exit." on the console.
+Wait for the escape key.
+Shut down.
+
+To write a string in ring-around-the-rosy fashion:
+Clear the screen.
+Pick a really dark color.
+Use medium letters.
+Loop.
+Start in the center of the screen's box.
+Turn left 1/32 of the way.
+Turn right. Move 1 inch. Turn left.
+Uppercase the string.
+Write the string.
+Refresh the screen.
+Wait for 1/60 second.
+Lighten the current color about 20 percent.
+Add 1 to a count. If the count is 32, break.
+Repeat.
+
+\Try running that one. Pretty nifty, yes?
+
+If you remember I asked you if the CAL can make console apps. Apparently, not at the moment.
+
+\See above.
+\You can also make your own consoles (based on the CAL's default console) and
+\make them whatever size, color, etc, you want and put them wherever you like on the screen.
+\Here is a sample program that illustrates this approach:
+
+The input console is a console.
+The output console is a console.
+
+To run:
+Start up.
+Create the consoles.
+Write "Up here is the output console." on the output console.
+Write "Type ""quit"" or ""exit"" then press ENTER when you're done." on the output console.
+Loop.
+Write "Down here is the input console. What you type here will appear above > " on the input console without advancing.
+Read a string from the input console.
+If the string is "quit", break.
+If the string is "exit", break.
+Write the string on the output console.
+Repeat.
+Destroy the input console.
+Destroy the output console.
+Shut down.
+
+To create the consoles:
+  \ input console
+  Create the input console.
+  Put the white color into the input console's fill.
+  Put the white color into the input console's border.
+  Put 0 and the screen's height minus 3/4 inch and the screen's width and the screen's bottom into a box.
+  Put the box into the input console's box.
+  Indent the box 1/4 inch.
+  Put the box into the input console's text's box. 
+  \ ouput console
+  Create the output console.
+  Put the lightest gray color into the output console's fill.
+  Put the lightest gray color into the output console's border.
+  Put 0 and 0 and the screen's width and the screen's bottom minus 3/4 inch into the box.
+  Put the box into the output console's box.
+  Indent the box 1/4 inch.
+  Put the box into the output console's text's box.
+
+\Try running that one, too.
+\You have to enter "quit" or "exit" to get out of it.
+\Or you can ALT-TAB back to the CAL and use the Stop command, but
+\that's really only for emergencies.
+
+There are many questions I have about the compiler and the other modules.
+However, because of my limited understanding of Hex and assembly,
+I feel I can't even begin to ask the right questions.
+Nonetheless, I'll attempt some here. When you type:
+
+To put a number into another number:
+Intel $8B8508000000. \ mov eax,[ebp+8] \ the number
+Intel $8B00. \ mov eax,[eax]
+Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ the other number
+Intel $8903. \ mov [ebx],eax
+
+Are these hex numbers put into the executable that's produced by the compiler?
+
+\Yes, exactly as you see them.
+
+backways?
+
+\No. They go into the executable exactly as you see them, because
+\the parts that need flipping have already been flipped, manually, by us.
+
+\Take the first instruction above as an example.
+\Opcodes, like "8B85" don't get flipped, so that's easy, but
+\offsets, addresses and other immediate operands DO get flipped, so
+\when we want an offset of "00000008" we have to put "08000000".
+
+\Note that it's whole bytes (8 bits, or two hex characters) that are flipped,
+\not nibbles (4 bits, or 1 hex character), so
+\"00 00 00 08", after flipping, is "08 00 00 00" and
+\"DE AD BE EF", after flipping is "EF BE AD DE".
+\This is called "little endian" notation and it's a pain.
+\Even the name seems wrong, because it's the MOST-significant byte at the END!
+\But they say "little endian" because the least-significant byte is at the lowest address.
+\So we just say, "backways".
+
+\Intel did it because it made it easy to make their 8-bit machines compatible with their 16-bit machines, etc.
+\So the mistake was made 'way back around 1980 and we're still suffering for it today!
+
+So, are these "Intel" instructions equivalent to the "mov", etc. like in assembly language?
+
+\Yes. I've put the equivalent Intel Assembly instructions as comments above.
+\If you go to this site:
+
+https://defuse.ca/online-x86-assembler.htm#disassembly2
+
+\and paste these hex bytes (from above)... 
+
+8B8508000000
+8B00
+8B9D0C000000
+8903
+
+\...into the Disassemble box (the LOWER one on the page) and press the "Disassemble" button,
+\you'll get these assembly instructions (in standard Intel notation):
+
+mov eax,DWORD PTR [ebp+0x8] 
+mov eax,DWORD PTR [eax]
+mov ebx,DWORD PTR [ebp+0x12]
+mov DWORD PTR [ebx],eax
+
+\If you look closely, you'll see that our notation in the comments above is a little different because
+\- we used dwords (double-words, 32 bits) by default, and
+\- we assumed that all of our offsets were in hex (so we didn't have to use C's ugly 0x literal notation).
+
+Why are these worded differently?
+
+\Our "Intel" statements look like "$8B8508000000" instead of "mov eax,dword ptr [ebp+0x8]"
+\because we jumped right over the assembly step and went straight to machine code.
+\In other words, Dan did the assembly step in his head so we didn't have to write an assembler as well as a compiler.
+\Only 447 of the 12650 statements in the Noodle are Intel statements, so it wasn't hard to do.
+\And the Compiler only uses 40 different Intel instructions, so that's not a big deal either.
+\Without Dan I would have had to use a tool like the site above, and that's why Dan gets the title
+\"Prime Assembler of the Osmosian Order of Plain English Programmers."
+
+Or, are these numbers closer to the binary (in hex here) that the executable will comprise of.
+
+\Yes. Way closer. As close as one can get without converting them to binary notation.
+\The hex numbers in our "Intel" statements are actual Intel x86 machine code;
+\They're what an assembler would generate from assembly code.
+
+Or, should I even think about these things?
+
+\You should be AWARE of these things, but you don't have to memorize any of them.
+\Like the names of state capitals, you can look up the ones you need when you need them.
+\Which, like the names of state capitals, will not be very often.
+
+You know this is from that compiler book which is pretty interesting
+but my main preoccupation will be the instruction book.
+
+\As it should be, at least for now.
+\You need to know WHAT we're trying to compile before we delve into HOW we compile it.
+
+\Good questions. Keep up the good work!
+
+\Gerry

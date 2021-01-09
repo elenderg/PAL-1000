@@ -1,0 +1,210 @@
+\The background is a picture. \ not needed since the "background" is not a picture or a thing; we just draw it when we "show everything"
+A button is a thing with a roundy box and a name and a value byte. \ "and a value" changed to "and a value byte" which eliminates the need for the "value" type definition.
+\ the naming convention here is the one we use in everyday speech: the adjective "value" is the name, and the following noun, "byte" is the type; as in "red ball" or "big house"
+\A value is a byte. \ not needed; see above
+
+The buttons are some buttons. \ I changed "The number buttons" to just "The buttons" since they don't all have numbers on them
+
+\The calculator buttons are some buttons. \ moved from below, but not needed or used
+The calculator window has a box and a string. \ moved from below; see next line for a more coherent design
+\ The calculator has a window box, a string, and some buttons.
+
+To run:
+  Start up.
+  Initialize our stuff.
+  Handle any events.
+  Finalize our stuff.
+  Shut down.
+
+To initialize our stuff:
+\  Create the background. \ Not needed; there's nothing to create; the background is simply drawn when we need it
+  Initialize the status.
+  Initialize the buttons.
+  Call "kernel32.dll" "GetCommandLineA" returning a pchar. \ Only  Noodle routines should call Windows directly. See the bottom of this file.
+  Convert the pchar to the status' string. \ Only the Noodle should use Windows types. See the bottom of this file.
+  Slap a rider on the status' string.
+  Loop. \ I'm not sure what you were trying to do in this loop; I suspect you were just experimenting
+  Move the rider (text file rules). \ "text file rules" returns each line (separated by carriage returns and/or linefeeds) of a buffer as a token
+  If the rider's token is blank, exit.
+  Write the rider's token to "output.txt". \ you need a complete path for this to work, like "c:\output.txt"
+  If the i/o error is not blank, debug the i/o error. \ new 
+  Repeat.
+
+The status has a box and a string.
+
+To dump a buffer: \ same comments as those on the loop above
+  Slap a rider on the buffer.
+  Loop.
+  Move the rider (text file rules).
+  If the rider's token is blank, exit.
+  Write the rider's token to "output.txt".
+  Repeat.
+
+To move the rider (abcdacus): \ I suspect this is just another experiment
+  Clear the rider's token.
+  Loop.
+  If the rider's source is blank, exit.
+  Repeat.
+
+To create a button:
+  Allocate memory for the button.
+
+To create a button given a spot and a name: \ make changed to "create"; we (by convention) use "create" for dynamic things, "make" for static records
+  Create the button given the spot and the name and 1/2 inch and 1/2 inch.
+
+To create a button given a spot and a name and a width:
+  Create the button given the spot and the name and the width and the width.
+
+To create a button given a spot and a name and a width and a height:
+  Create the button.
+  Put the spot's x minus the width into the button's left.
+  Put the spot's y minus the height  into the button's top.
+  Put the spot into the button's right-bottom.
+  Put the name into the button's name.
+  Append the button to the buttons.
+
+To draw a name in a roundy box with an alignment:
+  Draw the name in the roundy box with the black color and the default font and the alignment.
+
+To draw a button:
+  Put 1/12 inch into the button's roundy box's radius.
+  Draw the button's roundy box.
+  Draw the button's name in the button's roundy box with "center".
+
+To find a button given a spot:
+  Void the button.
+  Loop.
+  Get the button from the buttons.
+  If the button is nil, exit.
+  If the spot is in the button, exit.
+  Repeat.
+
+To decide if a spot is in a button:
+  If the spot is in the button's roundy box, say yes.
+  Say no.
+
+To move a spot right: \ not a great name since the distance to be moved is not mentioned or passed
+  Put the spot's x plus 1/2 inch into the spot's x.
+
+To carriage return a spot: \ curious name, but i see what you were thinking
+  Put the spot's y plus 1/2 inch into the spot's y.
+  Put the spot's x minus 1-1/2 inch into the spot's x.
+
+To initialize the buttons: \ I made some formatting changes below; and "Makes" changed to "Creates"
+  Put the screen's center into a spot.
+  Put the spot's x minus 1/4 inch into the spot's x.
+  Put the spot's y minus 1/4 inch into the spot's y.
+  Initialize the calculator window given the spot.
+  Create a button given the spot and "7" and 1/2 inch. Move the spot right. \ same line since it's really one big thought. If it was allowed, I'd separate the two with a semicolon rather than a period.
+  Create the button given the spot and "8" and 1/2 inch. Move the spot right.
+  Create the button given the spot and "9" and 1/2 inch. Move the spot right.
+  Create the button given the spot and "+" and 1/2 inch.
+  Carriage return the spot.
+  Create the  button given the spot and "4" and 1/2 inch. Move the spot right.
+  Create the button given the spot and "5" and 1/2 inch. Move the spot right.
+  Create the button given the spot and "6" and 1/2 inch. Move the spot right.
+  Create the button given the spot and "-" and 1/2 inch.
+  Carriage return the spot.
+  Create the button given the spot and "1" and 1/2 inch. Move the spot right.
+  Create the button given the spot and "2" and 1/2 inch. Move the spot right.
+  Create the button given the spot and "3" and 1/2 inch. Move the spot right.
+  Create the button given the spot and "*" and 1/2 inch.
+  Carriage return the spot.
+  Move the spot right. Create the button given the spot and "0" and 1 inch and 1/2 inch. \ a little weird that the move come first now
+  Move the spot right. Create the button given the spot and "." and 1/2 inch.
+  Move the spot right. Create the button given the spot and "/" and 1/2 inch.
+
+To initialize the calculator window given a spot:
+  Privatize the spot.
+  Put the spot's x minus 1/2 inch into the spot's x.
+  Put the spot's y minus 1 inch into the spot's y.
+  Put the spot's x into the calculator window's box's left.
+  Put the spot's x  plus 2 inches into the calculator window's box's right.
+  Put the spot's y  into the calculator window's box's top.
+  Put the spot's y plus 1/2 inch into the calculator window's box's bottom.
+
+To draw the calculator window:
+  Mask outside the calculator window's box. \ to avoid writing outside the calculator window
+  Draw the calculator window's box with the black color and the white color. \ white border changed to black so the tops of top row buttons are not obscured
+  Draw the calculator window's string in the center of the calculator window's box.
+  Unmask everything. \ to allow everything else to draw
+
+To initialize the status:
+  Put the screen's center into a spot.
+  Put the spot's x minus 1 inch into the status' left.
+  Put the spot's x plus 1 inch into the status' right.
+  Put the screen's bottom minus 3/4 inch into the status' top.
+  Put the screen's bottom minus 1/2 inch into the status' bottom.
+
+To draw the status:
+  Draw the status' box with the white color and the white color.
+  Draw the status' string in the center of the status' box.
+
+To show a string in the status:
+  Put the string in the status' string.
+  Show everything.
+
+To draw the buttons:
+  Get a button from the buttons.
+  If the button is nil, exit.
+  Draw the button.
+  Repeat.
+  
+To show everything:
+  Draw the background.
+  Draw the status.
+  Draw the buttons.
+  Draw the calculator window. \ "window" added; calculator alone, I would think, would include the window and the buttons
+  Refresh the screen.
+
+To draw the background: \ was "create the background" which is not needed
+  Draw the screen's box with the white color and the white color.
+  
+To handle any events:
+  Deque an event.
+  If the event is nil, exit.
+  Handle the event.
+  Repeat.
+
+To handle an event:
+  If the event's kind is "set cursor", handle the event (set cursor); exit.
+  If the event's kind is "refresh", handle the event (refresh); exit.
+  If the event's kind is "left click", handle the event (left click); exit.
+  If the event's kind is "key down", handle the event (key down); exit.
+
+To handle an event (set cursor):
+  Show the arrow cursor.
+
+To handle an event (refresh):
+  Show everything.
+
+To handle an event (left click):
+  Find a button given the event's spot.
+  If the button is nil, show "invalid click..." in the status; cluck; exit. \ "cluck" added to PUNISH the user for sloppy clicking
+  Append the button's name to the calculator window's string.
+  Show the button's name in the status.
+
+To handle an event (key down):
+  If the event is modified, handle the event (shortcut); exit.
+
+To handle an event (shortcut):
+  If the event's key is the q-key, quit; exit.
+
+\To destroy the buttons: \ not necessary; destroy routines are automatically generated (but not called) by the compiler
+\  Loop.
+\  Get a button from the number buttons.
+\  If the button is nil, exit.
+\  Destroy the button.
+\  Repeat.
+
+To finalize our stuff:
+  Destroy the buttons. \ calls a routine automatically generated (but not called) by the compiler
+\  Destroy the background. \ not needed; the background isn't a thing anymore
+
+\ BELOW IS STUFF THAT SHOULD BE IN THE NOODLE OR IN A SEPARATE, NOODLE-LIKE, LOW-LEVEL LIBRARY
+
+To put the command line into a string:
+Call "kernel32.dll" "GetCommandLineA" with 0 returning a pchar.
+Convert the pchar to the string.
+
+\ All in all, I'm impressed. (Even though it doesn't do any math yet.) Very nice work. I think you get the idea.

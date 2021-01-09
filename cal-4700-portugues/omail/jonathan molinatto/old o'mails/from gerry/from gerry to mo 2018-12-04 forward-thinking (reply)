@@ -1,0 +1,86 @@
+i'm going to focus on project oberon and the stack computer book. once i have something i like,
+i'll send you a diagram of what i'm thinking and get your opinion. i need to keep reminding myself
+that this isn't going to happen over the weekend. it takes time to do things right, then evaluate,
+then cut unnecessary cruft.
+
+\ Proceed at your own pace.
+
+one thing we DO have to keep in mind is that, once we're doing everything ourselves (kernel,
+hardware, software, peripherals, display, etc), we won't have the benefit of the kludge.
+
+\ But we CAN use readily available peripherals (keyboards, mice, monitors, printers, etc) for our prototypes,
+\ if the device drivers for them are consistent and simple enough.
+
+so we'll need some dedicated video memory area, so that whatever gets put there shows up on the screen.
+i've never done that before. i have no idea how that works.
+
+\ We really need two screen buffers to avoid flicker. As I understand it, the video hardware maps
+\ pixels from a buffer at a particular address onto the display; just change the address to flip buffers.
+\ Which is faster than what we have to do in Windows (actually copy the bits from one buffer to another).
+
+i should get this ["How am I going to explain this to a bright 12-year-old? How long will it take? Will I be able to
+keep him interested?"] tattooed on the inside of my forearm. (i don't actually have any tattoos; but i
+like to daydream about the tattoos i'll never get. i don't have any problem with them, but i doubt
+i'd actually get something permanent that i'll love forever. i have a bit of a problem with regrets.)
+
+\ Yeah, it's a bad idea to do something you don't have to do that can't be undone.
+
+i hadn't considered [the hobby market]. i think the most common arduino (arduino uno) is an 8-bit MCU. i don't
+know anything about the instruction set those use, but it's an interesting idea. looks like the manual
+is almost 200 pages long. but there's a lot of white-space and diagrams. i don't think those typically
+have any display ports (it's basically all serial programming).
+
+\ An 8-bit MCU? In the 21st century? Where is the equally simple 32-bit equivalent? A Raspberry Pi, for example,
+\ isn't at all like an Arduino; it has freaking Linux on it!
+
+we could do a raspberry pi (based off 32-bit ARM processors). i believe ARM is big-endian. and it's RISC
+(not stack-based). it also has lots of hardware bits and bobs that are nice.
+
+\ Better, I think, to grow our own. Who knows which of the many versions of ARM processors are going to be
+\ readily available 10 years from now?
+
+the ARM Cortex-A7 instruction manual is 268 pages. but we wouldn't need all of that.
+
+\ Another reason to grow our own. We've already got a system with stuff that needs to be ignored underneath;
+\ The KAL system is supposed to be pristine, from the ground up. That's a thing that hasn't been done since the
+\ original Mac; that's our opportunity, our "claim to fame."
+
+given what i know about stack-based computers, i don't know that we'd need 32 instructions.
+
+\ Time will tell. It depends, I imagine, on how many stacks our stack machine has.
+
+did you get the term "transmogrify" from calvin and hobbes? i read those comics religiously as a 
+kid. i assumed bill waterson came up with that word, but a quick internet search tells me that it's
+much, much older. 
+
+\ We got "transmogrify" from Morgan Freeman as the great Joe Clark in the movie "Lean on Me".
+\ See here...
+
+https://www.americanrhetoric.com/MovieSpeeches/moviespeechleanonme3.html
+
+\ ...starting 2 minutes in, and listen to the end for a pep talk. The word "transmogrify" is in there.
+
+thanks for the update on outputting machine code! and i definitely think you'd be a better fit
+for outputting machine code for whatever stack machine we come up with. i'll learn it eventually,
+i'm sure.
+
+\ Just give me a nice, clean target and I'll do my best to hit it.
+
+regarding big-endian: yes, i'd prefer to work in big-endian. it's network-byte-order, too. i don't
+really understand why little-endian is so prevalent. it seems unnatural. even for hardware. and i
+get that there are technical reasons why little-endian makes sense in some circumstances, but
+at a very real cost of being completely backwards and difficult for users. [/rant]
+
+\ I think it grew out of Intel's desire to make their CPUs backward-compatible. Little Endian loading
+\ makes it easy for them to do that. But, as you say, it makes it hard for everyone else.
+
+what are your thoughts on memory management units?
+
+\ We don't need virtual memory, or paging, or caches. Just 4 gigabytes divided between ROM and RAM.
+\ I've got a very simple and reliable memory allocation algorithm (that we used in very early versions of the CAL)
+\ around here someplace. I've also been talking to Dan about garbage collection and I'm pretty sure we can
+\ have automatic memory management for everything (not just strings) in the KAL.
+
+\ All the best,
+
+\ Gerry

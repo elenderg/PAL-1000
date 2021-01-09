@@ -1,0 +1,185 @@
+\ COBOL DATA DIVISION
+
+A calculator is a thing with a box, a display box, and some buttons.
+
+A button is a thing with a name and a box.
+
+The calculator is a calculator.
+
+\ COBOL PROCEDURE DIVISION
+
+\ MAIN LOOP AND HANDLERS THAT DELEGATE TO WORKER-BEES
+
+To run:
+Start up.
+Create the calculator.
+Handle events.
+Destroy the calculator.
+Shut down.
+
+To handle events:
+Deque an event.
+If the event is nil, exit.
+Handle the event.
+Repeat.
+ 
+To handle an event:
+If the event's kind is "set cursor", handle the event (set cursor); exit.
+If the event's kind is "refresh", handle the event (refresh); exit.
+If the event's kind is "left click", handle the event (left click); exit.
+If the event's kind is "left double click", handle the event (left click); exit. \ for fast entry
+If the event's kind is "key down", handle the event (key down); exit.
+
+To handle an event (left click):
+Find a button given the event's spot.
+If the button is nil, cluck; exit.
+If the button's name is "enter", handle enter; exit.
+If the button's name is "+", handle add; exit.
+If the button's name is "-", handle subtract; exit.
+If the button's name is "*", handle multiply; exit.
+If the button's name is "/", handle divide; exit.
+handle new digit using the button's name.
+
+To handle an event (key down):
+If the event's key is the escape key, quit; exit.
+If the event's key is the enter key, handle enter; exit.
+If the event's byte is the cross byte, handle add; exit.
+If the event's byte is the dash byte, handle subtract; exit.
+If the event's byte is the asterisk byte, handle multiply; exit.
+If the event's byte is the slash byte, handle divide; exit.
+Put the event's byte into a string.
+If the event's byte is between the zero byte and the nine byte, handle new digit using the string; exit.
+Cluck.
+ 
+\ WORKER-BEE HANDLERS (the stack and related routines are in the Noodle)
+
+To handle an event (set cursor):
+Show the arrow cursor.
+
+To handle an event (refresh):
+Show everything.
+
+To handle enter:
+Put "" on the stack.
+Show everything.
+
+To handle add:
+If the stack has just one thing on it, handle error; exit.
+Get a number from the stack.
+Get another number from the stack.
+Add the other number to the number.
+Put the number on the stack.
+Show everything.
+
+To handle subtract:
+If the stack has just one thing on it, handle error; exit.
+Get a number from the stack.
+Get another number from the stack.
+Subtract the number from the other number.
+Put the other number on the stack.
+Show everything.
+
+To handle multiply:
+If the stack has just one thing on it, handle error; exit.
+Get a number from the stack.
+Get another number from the stack.
+Multiply the number by the other number.
+Put the number on the stack.
+Show everything.
+
+To handle divide:
+If the stack has just one thing on it, handle error; exit.
+Get a number from the stack.
+Get another number from the stack.
+Divide the other number by the number.
+Put the other number on the stack.
+Show everything.
+
+To handle new digit given a digit string:
+If the stack's first's string's length is 9, cluck; exit.
+Append the digit to the stack's first's string.
+Show everything.
+
+To handle error:
+Put "" on the stack.
+Show everything.
+
+\ HELPERS
+
+To find a button given a spot:
+Void the button.
+Loop.
+Get the button from the calculator's buttons.
+If the button is nil, exit.
+If the spot is in the button's box, exit.
+Repeat.
+
+\ SHOW AND DRAW ROUTINES (SHOWs refresh the screen; DRAWs don't - see "Avoiding Flicker", page 24 of the Manual)
+
+To show everything:
+Clear the screen without refreshing.
+Draw the calculator.
+Refresh the screen.
+
+To draw the calculator:
+Put the gold color into a color.
+Draw the calculator's box with the color.
+Draw the calculator's display with the color.
+Put "osmosian" and 1/2 inch into a font.
+Draw the stack's first's string in the calculator's display with the green color and the font and "center".
+Draw the calculator's buttons with the color and the font.
+
+To draw some buttons with a color and a font:
+Get a button from the buttons.
+If the button is nil, exit.
+Draw the button with the color and the font.
+Repeat.
+
+To draw a button with a color and a font:
+Draw the button's box with the color.
+Draw the button's name in the button's box with the color and the font and "center".
+
+\ CREATE ROUTINES
+
+To create the calculator:
+Allocate memory for the calculator.
+Make the calculator's box 3-1/4 inches by 4 inches.
+Center the calculator's box in the screen's box.
+Put the calculator's box into the calculator's display.
+Indent the calculator's display 1/4 inch.
+Subtract 3 inches from the calculator's display's bottom.
+Create the calculator's buttons.
+Put "" on the stack.
+
+To create some buttons:
+Put the calculator's left plus 1/4 inch into a left.
+Put the calculator's top plus 1 inch into a top. 
+Add a button with "7" and the left and the top and 1/2 inch and 1/2 inch.
+Add another button with "8" and the left plus 3/4 inch and the top and 1/2 inch and 1/2 inch.
+Add a third button with "9" and the left plus 1-1/2 inches and the top and 1/2 inch and 1/2 inch.
+Add a fourth button with "/" and the left plus 2-1/4 inches and the top and 1/2 inch and 1/2 inch.
+Add 3/4 inch to the top.
+Add a fifth button with "4" and the left and the top and 1/2 inch and 1/2 inch.
+Add a sixth button with "5" and the left plus 3/4 inch and the top and 1/2 inch and 1/2 inch.
+Add a seventh button with "6" and the left plus 1-1/2 inches and the top and 1/2 inch and 1/2 inch.
+Add a eighth button with  "*" and the left plus 2-1/4 inches and the top and 1/2 inch and 1/2 inch.
+Add 3/4 inch to the top.
+Add a ninth button with "1" and the left and the top and 1/2 inch and 1/2 inch.
+Add a tenth button with "2" and the left plus 3/4 inch and the top and 1/2 inch and 1/2 inch.
+Add a eleventh button with "3" and the left plus 1-1/2 inches and the top and 1/2 inch and 1/2 inch.
+Add a twelfth button with "-" and the left plus 2-1/4 inches and the top and 1/2 inch and 1/2 inch.
+Add 3/4 inch to the top.
+Add a thirteenth button with "0" and the left and the top and 1/2 inch and 1/2 inch.
+Add a fourteenth button with "ENTER" and the left plus 3/4 inch and the top and 1-1/4 inch and 1/2 inch.
+Add a fifteenth button with "+" and the left plus 2-1/4 inches and the top and 1/2 inch and 1/2 inch.
+
+To add a button given a name and a left and a top and a width and a height: \ (we use ADD to mean "CREATE and APPEND to a list")
+Allocate memory for the button.
+Put the name into the button's name.
+Make the button's box with the left and the top and the left plus the width and the top plus the height.
+Append the button to the calculator's buttons.
+
+\ ROUTINES THAT SHOULD BE IN THE STANDARD NOODLE BELOW
+
+To clear the screen without refreshing:
+Draw the screen's box with the black color and the black color.

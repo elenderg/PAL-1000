@@ -1,0 +1,92 @@
+To handle jigsaw puzzle given a node:
+If the node is root-level, cluck; exit.
+Put the node's first selected nodette into a nodette.
+If the nodette is nil, show error "I'm not sure what you want me to make a puzzle from."; exit.
+If the nodette's kind is "directory", show error "Please select a file, not a directory."; exit.
+Show the desktop with "Working...".
+Read the nodette's path into a buffer.
+If the i/o error is not blank, exit.
+Show the desktop with "Press ESC when you're done.".
+Create a puzzle from the buffer.
+Display the puzzle.
+Show the arrow cursor.
+Loop.
+    Deque an event.
+    If the event is nil, break.
+    If the event's kind is "key down", break.
+    If the event's kind is not "left click", repeat.
+    Track the mouse on the puzzle.
+Repeat.
+Destroy the puzzle.
+Show the desktop with "Did you have fun?".
+Flush the event queue.
+
+The piece size is a size equal to 2 inches.
+
+A piece is a thing with a box and a picture.
+
+A puzzle is a thing with a box, a picture and some pieces.
+
+To create a puzzle from a buffer:
+Allocate memory for the puzzle.
+Make the puzzle's box 6 inches by 6 inches.
+Center the puzzle's box in the screen's box.
+Create the puzzle's picture from the buffer.
+Resize the puzzle's picture to 6 inches by 6 inches.
+Center the puzzle's picture in the puzzle's box.
+Cut the puzzle into pieces.
+Splatter the puzzle's pieces.
+
+To cut a puzzle into pieces:
+Draw the puzzle's picture.
+Put the puzzle's left-top into a spot.
+Loop.
+    Allocate memory for a piece. Append the piece to the puzzle's pieces.
+    Put the spot and the spot plus the piece size into the piece's box.
+    Extract the piece's picture using the piece's box.
+    Add the piece size to the spot's left.
+    If the spot's left is less than the puzzle's right, repeat.
+    Put the puzzle's left into the spot's left.
+    Add the piece size to the spot's top.
+    If the spot's top is the puzzle's bottom, break.
+Repeat.
+
+To splatter some pieces:
+Make a box 1 inch smaller than the screen's box.
+Loop.
+    Get a piece from the pieces.
+    If the piece is nil, break.
+    Pick a spot anywhere in the box. Round the spot to the nearest multiple of 1/4 inch.
+    Center the piece's box on the spot.
+    Center the piece's picture on the spot.
+Repeat.
+
+To display a puzzle:
+Clear the screen without refreshing.
+Loop.
+    Get a piece from the puzzle's pieces.
+    If the piece is nil, break.
+    Draw the piece's picture.
+Repeat.
+Refresh the screen.
+
+To track the mouse on a puzzle:
+Find a piece of the puzzle given the mouse's spot.
+If the piece is nil, exit.
+Loop.
+    If the mouse's left button is up, exit.
+    Put the mouse's spot into a spot.
+    Round the spot to the nearest multiple of 1/4 inch.
+    Center the piece's box on the spot.
+    Center the piece's picture on the spot.
+    Display the puzzle.
+Repeat.
+
+To find a piece of a puzzle given a spot:
+Get the piece from the puzzle's pieces (backwards).
+If the piece is nil, exit.
+If the spot is not in the piece's box, repeat.
+
+To clear the screen without refreshing:
+Draw the screen's box with the desktop color and the desktop color.
+

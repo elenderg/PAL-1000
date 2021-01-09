@@ -1,0 +1,68 @@
+Dear Gerry,
+
+\Exactly. We are not checking grammar now, and we will not be checking it in the future. It is a "feature" of both the CAL and SAL that they can
+\understand natural language sentences even when the grammar is bad. And common spelling errors can also be ignored if the programmer
+\defines them in his headers, for example:
+
+\To erase the screen;
+\To erace the screen: \ mispelled "erase"
+
+\In other words, the "vocabulary" of the language is defined by the user (not you and me) in his type and global variable definitions;
+\and the "grammar" of the language is defined by the user (not you and me) in his routine headers.
+
+\The idea is to let the user/programmer/teacher define his own "local dialect" of the language for his own (and his friends' and his student's) use.
+\So we put as little as possible in the compiler, and as much as possible in El Seso. And in other user-created "brains" (libraries).
+\Imagine specialized "el sesoes" for each of your target audiences: one or more for beginners, one or more for engineers,
+\one or more for teaching robotics, one or more for game programmers, etc. 
+
+All that you say  I agree.
+I do realize that your method is a path of least resistance for the parser discarding what is not adding information,
+giving tolerance to the parsing that usual compilers did not have, and extracting useful executable meaning from less formal texts.
+That tolerance gives the machine the ability people already have to process orders from others besides noise, errors and misunderstandings.
+
+\If you're curious, I had to "trick" the compiler to make both forms work. This is the routine that handles
+\"reverse-possessives" like "el clase de el evento" instead of the English "the event's kind".
+\When we enter this routine, the rider is sitting on either a "de" or a "del":
+Yes, I have not the time to check all the modifications that you are doing to the SAL progressively, thus I'll pay attention to what you're pointing me at.
+
+\To compile a term given a rider and a field name (reverse-possessive):  \ this is recursive
+\If the compiler's abort flag is set, exit.
+\If the rider's token is not "del", Move the rider (compiler rules). \ past the reverse-possessive starter
+\If the rider's token is "del", Add 1 to the rider's token's first. \ makes the "el" part of "del" look like the next token in the source
+\If the rider's token is not the start of any variable, abort with "Esperaba una palabra 'el/la/los/las/lo', pero encontré '" then the rider's token then "'." and the rider; exit.
+\Move the rider (compiler rules).
+\Scan a name given the rider. 
+\If the rider's token is any reverse-possessive, put yes into a reverse-possessive flag.
+\If the reverse-possessive flag is yes, compile the term given the rider and the name (reverse-possessive).
+\If the reverse-possessive flag is no, compile the term given the rider and the name (reverse-possessive prepare to unwind).
+\Compile the term given the field name and the rider (reverse-possessive).
+
+\We had to make it recursive so the order of the names would be reversed when we "unwind".
+\The code-generation part of the compiler, you see, is expecting outside-to-inside field access, like this:
+
+\The screen's box's left... \ PASCAL: screen.box.left
+
+\But in Spanish we get the reverse:
+
+\La izquierda de la caja de la pantalla.... \ PASCAL: left.box.screen
+
+It is so clever this use of simple actions; I've never found such an application on natural language processing so simple as this.
+And so generalizable to many natural language grammars not treated yet.
+I envision a description of the method for general parsing of languages.
+
+\In any case, it appears to work acceptably well, though it unfortunately disallows use of "de" or "del" as a preposition.
+You say it. Good enough!
+
+\I still need the rest of those "key" globals translated.
+\After that, I've got a few basic record types that need translating.
+When you tell me I'll do it.
+
+\Then we will be ready to start translating the SAL Monet (pages 4-54 of the manual).
+\This is an important program because it exercises all the fundamental parts of the compiler,
+\and uses most of the general-purpose routines in the Noodle.
+\Tu compañero Quijote, Gerry.
+Hope to get there.
+
+Tu compañero Quijote, Pablo.
+
+

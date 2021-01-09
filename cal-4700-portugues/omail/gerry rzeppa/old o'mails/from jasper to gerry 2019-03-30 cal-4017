@@ -1,0 +1,46 @@
+Gerry,
+
+I have released the CAL-4017 on both GitHub,
+and on the "O:\" drive.
+
+"O:\cal-4017\" is set up so that the program
+can be compiled using either CAL-4017 or CAL-4700.
+It has a single directory with the source code,
+and the call "to test (the compiler - parse ain't)"
+is commented out.
+
+CAL-4017 can compute the visual difference
+between two colors using the dE-2000 formula.
+On my computer, "To measure a delta ratio between a color
+and another color" takes about 30 milliseconds.
+"To pick a result color near a starting color" takes
+65 - 300 milliseconds, with an average of 110 milliseconds.
+I wrote a new turtle demo that showed that the color difference
+could be as large as 13-1/2, and still have the colors
+look similar.  (CAL-4017 does not include the turtle demos.)
+
+In order to perform the color comparisons in a tolerable
+amount of time, I added precision timers,
+64-bit integers (bigints), and binary logarithms.
+I also added a lot of slow tests for the color code.
+The test suite now takes 700 milliseconds
+instead of its former 130 milliseconds.
+
+If the computer supports it, timers now default to using
+precision timers; their strings now show results in milliseconds.
+"21" means 21 ms.  Timers now also have microsecond strings.
+"21098 µs" means what it says.
+Client code can optionally "make a timer be imprecise".
+
+I wrote very little machine code for the new features.
+Basically just a routine that performs add-with-carry,
+called "to add a number to another number and carry a flag".
+I hope that the bigint math can be sped up by using machine
+code, but I don't know how to get the correct bits
+into and out of the correct registers.
+Any tips you can provide would be much appreciated.
+
+I also included Mike Gonta's patch for bumping a rider.
+With luck, that should soothe Windows Defender.
+
+-- Jasper

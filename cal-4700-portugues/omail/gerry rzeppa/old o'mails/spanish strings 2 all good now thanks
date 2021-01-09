@@ -1,0 +1,51 @@
+\I modified "to compare a string and another string ... returning a number" to use the 
+\translation tables.
+
+Thanks. That's tedious work.
+
+\There are now 4 upper/lower case functions:
+
+\to lowercase a byte:
+\to lowercase a byte given a translation hex string:
+\to uppercase a byte:
+\to uppercase a byte given a transaction hex string:
+
+\The functions that take the translation hex string are the same so, we could just have
+
+\to change the case of byte given a translation hex string:
+\to lowercase a byte
+\to uppercase a byte:
+
+\Where "to lowercase abyte" and "to uppercase a byte" would call "to change the case of a byte..."
+\with the appropriate translation table.
+
+I went with something very much like the second option. I defined the following type and routines:
+
+\A translation table is a hex string.
+
+\To lowercase a byte:
+
+\To uppercase a byte:
+
+\To translate a byte using a translation table:
+
+All good and as fast as before we started (now that I keep the bytes in al and ah instead of moving them to dl and dh in "to compare a string...").
+
+I also changed the incremental find to ignore accented characters. This Noodle routine...
+
+\To find next given a row and a text and a flag:
+
+...now calls...
+
+\If the substring is the find string (accent-free compare), break.
+
+...which uses the lowercase accent free translation table, and all is good.
+
+We can find things like "Español" and and "número" as easy as if they were English.
+
+Thanks again for your help. You have retained the right to the title, "Primer Ensamblador".
+
+Sharon and Chuckles say, "¡Hola!"
+
+Tu Querido Papá Viejo, el Gran Nagus
+

@@ -1,0 +1,49 @@
+I have the reverse-possessive stuff working with new variables in the Cal, but I can't just replace
+the routines in the Sal since you've modified/added to them.
+
+I didn't realize this until I started working on the the function possessives.
+
+Here are are the routines that need to be changed/added:
+
+\ TODO: alphabetize me - dahn modified
+To compile a term given a rider and a field name (reverse-possessive):  \ this is recursive \ dahn modified
+If the compiler's abort flag is set, exit.
+Move the rider (compiler rules). \ past the reverse- possessive starter
+\If the rider's token is not the start of any variable, abort with "Expected 'the', found '" then the rider's token then "'."; exit.
+If the rider's token is not any article, abort with "Expected an article, found '" then the rider's token then "'."; exit.
+put the rider's token into an article token.
+Move the rider (compiler rules).
+Scan a name given the rider. 
+If the rider's token is any reverse-possessive, put yes into a reverse-possessive flag.
+If the reverse-possessive flag is yes, compile the term given the rider and the name (reverse-possessive).
+If the reverse-possessive flag is no, compile the term given the rider and the name and the article (reverse-possessive prepare to unwind).
+Compile the term given the field name and the rider (reverse-possessive).
+
+\ TODO: alphabetize me - dahn modified
+To compile a term given a rider and a variable name and an article token (reverse-possessive prepare to unwind): \ dahn version 2
+if the article is the start of any variable, compile the term given the rider and the variable name  and the article (reverse-possessive prepart to unwind existing variable); exit.
+compile the term given the rider and the variable name (reverse-possessive prepart to unwind new local).
+
+\ TODO: alphabetize me - dahn modified
+To compile a term given a rider and a variable name and an article token (reverse-possessive prepart to unwind existing variable): \ dahn version 2
+Find a variable given the variable name.
+If the variable is nil, abort with "Could not find a variable with the name '" then the variable name then "'.".
+Put the variable into the term's variable.
+Put "the " into the term's phrase.
+Append the variable name to the term's phrase.
+
+\ TODO: alphabetize - dahn modified
+To compile a term given a rider and a variable name (reverse-possessive prepart to unwind new local):
+If the compiler's abort flag is set, exit.
+Add a local to the current routine's locals given "local" and the rider's token's first.
+If the rider's token is "another", put "other" into the local's name.
+Extend the local's name with the variable name.
+If the rider's token is "called", compile the call'd part given the rider and the local.
+Resolve the local.
+If the local is duplicated in the current routine's parameters, abort with "'" then the local's name then "' is already in use as a parameter." and the local's locus; exit.
+If the local is duplicated in the current routine's locals,abort with "'" then the local's name then "' is already in use as a local variable." and the local's locus; exit.
+Eliminate duplicate nicknames given the local and the current routine's nickname index.
+Put the local into the term's variable.
+Clear the term's phrase.
+
+I can integrate these into the Sal tomorrow, unless I hear from you that you've already done it.

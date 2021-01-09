@@ -1,0 +1,40 @@
+\ Jasper:
+
+\ Sorry for the delayed response.
+
+I have a couple questions about timers.
+
+Current versions of CAL do their timing using "ticks", which are
+measured in milliseconds, but only occur every 15 or 16 milliseconds.
+
+I have the 64-bit bigints working.  This lets CAL get
+precise timing metrics from computers that support the 
+QueryPerformanceCounter and QueryPerformanceFrequency API calls.
+Internally, my draft version of CAL calls its precise time units
+"jiffies".  For display and output purposes, it converts jiffies
+to normal units of time, such as milliseconds or microseconds.
+If jiffies are not available, or the client code wants to use ticks,
+it uses ticks.
+
+First question:  Does "jiffy" seem like a good name for the
+precise time unit?  Do you have another suggestion instead?
+
+\ I like the name "jiffy". Exactly how long is a "jiffy" in your implementation?
+
+Second question:  The compiler's current timer outputs
+are only accurate to about 15 milliseconds.
+They report that some compiler steps take no time at all,
+even if the steps actually take a few milliseconds.
+Do you ever want more precise timings?
+
+\ I haven't experienced a need for more precise timings so far.
+\ But I was a disappointed in the inaccuracy of Microsoft's timer functions.
+\ On the other hand, I'm not sure how meaningful extremely-precise timings are
+\ on a virtual paged-memory / multi-tasking system, since it is rare that you can
+\ count on a routine not getting interrupted.
+
+If so, would you want them in milliseconds or microseconds?
+
+\ Probably both, depending on the application.
+
+\ -- Gerry

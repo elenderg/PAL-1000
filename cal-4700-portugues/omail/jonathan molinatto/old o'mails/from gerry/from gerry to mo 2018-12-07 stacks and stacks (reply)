@@ -1,0 +1,108 @@
+i didn't write yesterday, because i was very sick. i'm thinking food poisoning, since it only lasted
+for  a day. it's been almost 10 years since i was that sick. i hope it's another 10! or 20!
+
+\ I'm glad you're feeling better.
+
+hope you're well!
+
+\ Everyone is well here, thanks.
+
+i'll try to hold off on questioning the speed in the future. i work in c/c++ on security software,
+where we need to be conscious of how much cpu and memory we're using all the time. so i get
+a little trigger-happy on optimizations. 
+
+\ I understand, though "optimizations" of that sort, I think, smack of "fix ups" or "repairs."
+\ Better to build a system that is efficient BY DESIGN so optimization is not necessary; that is,
+\ a system that is so simple and straightforward that it can't help but perform well.
+
+that sort/merge looks like quicksort or mergesort. i didn't find the quicksort's partitioning
+function in the noodle, so maybe it's mergesort. 
+
+\ Yes, it is a merge-sort.
+
+that's a little prestidigitation there [just 12 lines]. the sort function is 12 lines, but there are other functions
+you're calling from there. it's easier to read than c/java/python, but it's not the whole story.
+
+\ Sure, but it only calls itself (recursively) and generic, non-sort-specific routines, such as splitting a list
+\ into two, appending a list to another list, moving a thing from one list to another, and some compares.
+
+now i'm just nit-picking, though. did you base this sort on mergesort? it looks very similar.
+
+\ Dan just "thought it up" one day. Whether he was remembering something he had read about merge sorts
+\ (without realizing it) or whether he actually re-invented the merge-sort right then, I don't know.
+
+i understand what you're saying [about accessing parameters and locals by name vs by position]. 
+i think either way is fine.
+
+\ The CAL ASSUMES direct addressing of all parameters and locals. And bottom level Noodle routines,
+\ like "to add a number to another number," even when targeting a stack machine, will assume this as well.
+\ Here, for example is the register version of that routine from the CAL's Noodle (remember that the CAL
+\ passes all parameters by address, not value)...
+
+To add a number to another number:
+Intel $8B8508000000. \ mov eax,[ebp+8] \ put the address of "the number" into eax
+Intel $8B00. \ mov eax,[eax] \ fetch the actual value of "the number" into eax
+Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ put the address of "the other number" into ebx
+Intel $0103. \ add [ebx],eax \ add the value in eax to the memory location whose address is in ebx
+
+\ This routine will actually get worse on a stack machine because the Intel (in the last line above)
+\ knows how to add a register directly to a location in memory. The more I think about this, the more
+\ I'm convinced that a simple register machine is all we need (and probably easier to find, ready-made).
+
+my issue with using registers is that you have to save them all whenever you call a function anyway,
+which is just more overhead.
+
+\ The only time the CAL saves registers (other than the stack frame base pointer) is when dealing with
+\ callbacks, which will not be required once Windows is gone. So the only register-specific prolog that is
+\ required on each routine is this:
+
+Intel $55. \ push ebp \ save the caller's base pointer
+Intel $8BEC. \ mov ebp,esp \ set up our base pointer
+
+why not just keep the data on the stack in the first place?
+
+\ We DO keep data addresses on the stack since most of the data is too big to fit on the stack.
+\ The CAL never passes a value or saves anything in a register unless Windows requires it.
+
+but i understand manipulating stack elements costs cycles, too. nothing's perfect.
+
+\ I'm thinking that everything you know about traditional compilers and optimization is confusing our discussion.
+\ Our Compiler does very little except push parameters and make calls, with an occasional jump here and
+\ there to handle IFs and LOOPs. Most of the low-level code is hand-coded in Noodle routines (which are like
+\ Forth "words," since the programmer has to think about the machine's architecture when he writes them up).
+\ That's probably why the idea of ASTs and optimizations sound so foreign to me. Find "Intel" in the Noodle
+\ if you want to see the kind of things that the KAL hardware will need to be able to efficiently do. Above that
+\ level it's just jumps and calls (with their pushes and pops).
+
+i ordered an fpga development board, and i'll be spending some time learning how this thing works.
+i haven't forgotten about linux/mac; i just found a shinier object!
+
+\ Have fun!
+
+i'm running a windows 10 system inside of a virtual machine, because my desktop is linux. it's
+almost certainly a problem with virtualization.
+
+\ Hopefully, someday, you'll be running the KAL on a bare KAL machine, and will have a great user experience.
+
+there are quite a few hardware implementations of the forth machine. i have looked over a couple
+of them. most of them seem to be 16-bit chips. i thought we'd target 32-bit architecture. if you
+disagree, then we could just grab some forth chips and start from there. the forth-chip architecture
+seems to be pretty simple.
+
+\ Less than 32 bits: too small. More than 32-bits: too big. 32-bits: just right.
+\ 32-bits gives us big enough numbers and enough memory addresses to do everything we need to do.
+\ But don't forget we still need to deal with 8-bit bytes for text.
+
+i meant pure-stack programming. i figured we'd start pure-stack and then move away from that if we
+found it too restrictive.
+
+\ Pure-stack IS too restrictive.
+
+\ All the best.
+
+\ Gerry
+
+ps. i found an fpga implementation of a 16-bit forth cpu. i put it in your box.
+
+\ Interesting implementation, but as he says himself just before he concludes, "J1 is not a general purpose CPU."
+\ A general-purpose machine, like the KAL, is a much bigger project.

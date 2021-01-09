@@ -1,0 +1,137 @@
+
+Dear Papa Pablo,
+
+\I want to write some simple programs to use in teaching the exercises for the students.
+
+Once again, your enthusiasm is to be commended. ¡Bravo!
+
+\I'm having troubles with console not appearing in screen.
+
+I'm not surprised.
+La Consola is discussed on page 66 of the manual, and I'm still translating the code to match page 5!
+
+\By the way, I discover that I need to translate parts of the desktop to refresh the screen for example.
+
+Now THAT surprises me. You should not have to change anything in the Desktop to make la consola work.
+What did you change?
+
+This is the plan:
+
+1. Page by page, you translate the manual into Spanish and I make the program match.
+
+(a) The Overview section (pages 1 to 12) requires  a lot of program changes - menus, shortcut keys,
+status messages, error messages, disk types, etc - so the going is slow at first.
+Note that these changes affect the whole program (and not just the Noodle) so they are the hardest
+to implement and the hardest to change later.
+
+(b) Unless I've made serious errors, the Sample Program section (pages 13-54) should only require
+changes to the types, global variables, and routine headers in the Noodle. A lot of changes,
+but only en el seso.
+
+(c) Likewise, the Gray Matter Glossary section (pages 55-120) should only require changes to the
+types, global variables, and routine headers in the Noodle. Again, many changes, but only en el seso.
+
+2. At this point, the SAL will be a complete development system y el seso de la SAL will become yours to extend,
+enhance, and improve as you see fit.
+
+(a) You may, for example, decide to write Spanish headers for the "Turtle Graphics" routines that are
+currently in the Noodle but not documented in the manual.
+
+(b) You may also decide to convert the program's graphics to use metric units (instead of twips)
+at the very bottom to make the SAL more compatible with your cultural norms.
+
+(c) You may also decide to develop additional libraries for special purposes, like an interface library for
+those automation boards the "pc-control.uk" people sell.
+
+I will of course give you all the help you need, but since Step 2 is almost entirely a translation problem,
+I'm not really qualified to do the work myself. If only I were as bi-lingual as you are!
+
+---
+
+And now, so you don't lose heart (even though it is getting ahead of ourselves), below is a working version
+of your console program. Use the SAL-1003 and el seso that is in the SAL-1003 directory.
+
+Para ejecutar:
+Poner en marcha.
+Escribir "¡Hola, mundo!" luego " (that's, ""Hello, world!"" in Spanish)" en la consola.
+Escribir "Ingrese un número > " en la consola sin avanzar.
+Leer un número desde la consola.
+Poner el número veces el número en otro número.
+Escribir el segundo número en la consola. \ note "segundo", explanation #2 below
+Escribir "Presione ENTER para salir" en la consola.
+Leer una cadena de la consola.
+Apagar.
+
+The console appears automatically when you write to it, or read from it.
+
+NOTES Y QUESTIONS:
+
+The SAL-1003 also has Spanish status and non-compiler error messages, and Spanish dialogs and buttons.
+I think you'll feel even more at home with it.
+
+1. We cannot use "por" for "times" (instead of "veces") because "por" is a preposition.
+Our "infix operators" (PLUS, MINUS, TIMES, DIVIDED BY, THEN) must translate to Spanish words
+that will not be mistaken for articles, prepositions, or simple verbs (like "is" and "has").
+If there's a better word, fine. But it can't be an article or a preposition.
+
+2. In English, "another" is an indefinite article, but "other" is an adjective. So we can say
+"another" to indicate a parameter or a new local variable, and we use "other" to reference that parameter
+or local variable within the routine. For example:
+
+\Put the number times the number into ANOTHER number.
+\Write the OTHER number on the console.
+
+In Spanish, however, "otro" appears to serve as both an indefinite article and an adjective, so
+this "trick" doesn't work. Specifically:
+
+\Poner el número veces el número en OTRO número. 
+\Escribir el OTRO número en la consola.
+
+The compiler reads that second line as...
+
+Write THE ANOTHER number.
+
+...and is confused by the "definite-article indefinite-article" combination.
+
+I solved this by using "segundo" as the adjective corresponding to the indefinite "otro" article.
+
+\Poner el número veces el número en OTRO número.
+\Escribir el SEGUNDO número en la consola.
+
+I hope this is satisfactory.
+
+3. There is a similar problem with the Spanish preposition "de" (English "of"). In English, for example, 
+the possessive "the box's left" can be written "the left of the box," but the CAL has trouble with the latter
+form because "of" is a preposition and prepositions are "name enders" and not "field indicators".
+"La izquierda de la caja" fails for the same reason ("de" is not unique enough to use as a "field indicator."
+I'm hoping we can solve this by using something like "dentro" as in "la izquierda dentro la caja".
+
+The compiler, as you can see, is really not much smarter than Gary Larson's dog ("blah blah blah GINGER blah blah").
+So the trick is to find natural-sounding words that can be used "inline" to indicate infix addition, subtraction,
+mulltiplication, division, concatenation of strings, and fields within records. These are things that are
+in the program itself (and not just the Noodle), so it is important that we define them carefully.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\Pablo
+
+Para ejecutar:
+  Poner en marcha.
+  Escribir "Trabajando..." en la consola.
+  Mostrar la consola.
+  Leer un número desde la consola.
+  Refresh the screen.
+  Poner el número veces el número en otro número. \ In Spanish we say "por" not "veces" but I'm using it as it was written in current version 1002.
+  Mostrar la consola.
+  Apagar.
