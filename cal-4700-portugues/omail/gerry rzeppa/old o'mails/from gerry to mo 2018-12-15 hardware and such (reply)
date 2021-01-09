@@ -1,0 +1,178 @@
+we've had a veritable blizzard here (north carolina), and i've been swamped with responsibilities
+(work and dealing with screaming kids who aren't used to being together so much, because school).
+
+\ Been there, done that. We moved from northern Michigan to southern Kentucky when it dawned on me
+\ that you don't have to shovel rain. The kid thing, well, ya gotta take 'em with you, so moving doesn't help.
+
+yes, i understand [that the Raspberry Pi is a "moving-target mess]. i'm afraid i'm going to have to go
+back to the linux port idea, then.
+
+\ The easiest way to do that is to find an x86 version of Linux with analogs of the 355 Windows routines
+\ that we call. Then reduce the ELF documentation to about 5 pages and make the necessary changes to
+\ the Compiler. I don't see how a Linux port helps to prove that operating systems and CPUs don't need to
+\ be as overly-complicated as they are, however.
+
+i was hoping to use this as an opportunity to learn some hardware stuff, but you keep shooting holes in
+my ideas for working up to something that would be ideal.
+
+\ The problem is that hardware isn't simple anymore. This guy...
+
+https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/index.html
+
+\ ...for example, was doing great at explaining how to deal directly with Raspberry Pi hardware until he got
+\ to the USB interface (Lesson 10), where he discovered he was unable to reduce the 700-page USB
+\ standard to something his students could understand. We never had that kind of problem with the
+\ RS-232 standard (1 page) and the RS-485 standard (10 pages).
+
+basically, i don't have the engineering chops to be your hardware guy. it's a hard truth that i've been
+avoiding in true hollywood fashion (if i just keep at it, my sheer grit will take me there!).
+
+\ No problem. I understand. It's amazing to me that any modern machine works at all given the
+\ ridiculous complexity of it. My neighbor has a 1965 Mustang that takes him wherever he wants to go.
+\ And he can take it apart and put it back together with little more than a box of wrenches. We have
+\ a current-model Dodge minivan. I opened the hood the other day to show my 13-year-old some
+\ common internal combustion engine components and was unable to find a freaking spark plug.
+\ My theory is that big companies like things overly-complicated because it eliminates competition
+\ from the "little guy."
+
+i'm not saying CAL needs to be multithreaded and multi-process. but i think it might actually need to be,
+or else how would he recompile himself without the screen freezing? i think you need some sort of threading
+or multi-process behavior for GUIs to work. but i could be wrong.
+
+\ Why should the screen freeze? The CAL puts up status messages during a compile, but that only
+\ requires calling a couple of Windows subroutines in a synchronous fashion. The CAL writes the finished
+\ executable to disk when he's done, but that also is a sychronous call to a Windows subroutine. Nothing
+\ important goes on in the background except for Windows handling keyboard and mouse interrupts by
+\ saving events in his event queue and moving the mouse pointer on the screen.
+
+how would anything happen in the background?
+
+\ The only thing that needs to happen "in the background" is interrupt processing. And all an interrupt
+\ handler needs to do is:
+\ (a) disable interrupts
+\ (b) save the registers,
+\ (c) process the input, typically by just saving an event in the system queue,
+\ (d) restore the registers, and
+\ (e) enable interrupts.
+
+that [a one-second hard restart] would be nice.
+
+\ If the KAL is in ROM, and the interrupt handler addresses are pre-set, I don't see why a one-second
+\ restart should be a problem.
+
+that [ Intel Stick PC] looks nice. i don't think it would be difficult to replace the operating system on that,
+but we'd still need to write the operating system and whatever video-memory buffering. it shouldn't be too
+onerous, though. it's a lot more expensive than a raspberry pi. especially the cute little ones.
+
+\ It would still leave us with a very ugly piece of hardware. That slick little stick has a freaking fan on it!
+
+have you written anything like this operating system before?
+
+\ Sort of. Remember that piece of restaurant-system hardware I sent a picture of? That system used
+\ a PC with DOS in ROM as the host machine, and we communicated with up to twenty of those Z8-powered
+\ terminal units and up to ten Z8-powered radio receivers (that, in turn, received signals from
+\ transmitters on each of the restaurant's 50 tables) using nothing but a long RS-485, telephone-
+\ wire daisy chain and a polling loop in a Pascal program that, in Plain English, would look like this:
+
+To run:
+Start up.
+Initialize.
+Loop.
+  Poll the receivers. \ ask each receiver if has any data in its buffer; if it does, process it.
+  Poll the dispatchers. \ ask each dispatcher if has any data in its buffer; if it does, process it.
+  If the mouse button is down, handle the mouse click.
+  If a key is pressed, handle the key press.
+  If the print queue is not empty, send a line to the printer.
+  If the shutdown button was pressed, break.
+Repeat.
+Finalize.
+Shut down.
+
+\ And that worked like a charm on a machine with just 640 KILObytes of memory running at just
+\ 4.77 MEGAhertz. The terminals and receivers had 20-byte buffers in them.
+\ Wirth's Oberon system uses a similar polling system, and that works, too. But using interrupts
+\ saves CPU cycles and returns control to "operating system" (interrupt handling) code only
+\ when necessary. In other words, the operating system only gets control at start up, and when an
+\ input interrupt occurs, or a running application program calls a built-in service routine (like "refresh
+\ the screen" or "write a buffer to a file").
+
+i've done windows, linux, and minix kernel programming, and they're all beasts. seeing something small
+and simple would be nice. though i don't see how we'd be able to handle all the i/o from disk, network,
+mouse, keyboard, camera, etc, so simply. but that's for the smart guy (you) to figure out.
+
+\ You're looking in the wrong places for simple. Study computers like the Apple II, and PCs running DOS
+\ and the original Macintosh.
+
+i'm actually a big fan of using integer maths instead of floating point maths.
+
+\ You're one of the few, but welcome to the club!
+
+it seems much more natural.
+
+\ As the great mathematician Leopold Kronecker said, "The dear Lord created the whole numbers;
+\ everything else is man's doing."
+
+and doing cryptography (i'm not going to argue the necessity, just that it's a fun maths
+project) is all integers.
+
+\ Interesting. I didn't know that.
+
+i'm transferring all the old pictures, etc, off the lenovo, so i'm using it now. it's a pretty nice
+experience using CAL and only seeing CAL.
+
+\ Careful... "as simple as possible, but no simpler" can be addictive.
+
+it seems like you're not using as many registers as you could. was that a choice to make things
+simpler or more stable?
+
+\ We wanted to use as few registers as possible. But i don't recall a single case where we found
+\ ourselves saying, "If only we had another register here!" The eight were always enough.
+
+i'm very familiar with memcmp/memcpy/strcmp/strcpy compiling down to a handful of bytes of opcodes
+using these registers (and ECX).
+
+\ Yes, but we didn't use Intel's string instructions because we wanted to use the x86 as if it was a RISC chip.
+\ So a Noodle routine like "copy bytes from a pointer to another pointer for a byte count" does it the
+\ hard way, as do our bottom-level string comparison routines.
+
+i haven't been able to play with the FPGA kit, yet, because i need to get the free licenses to design/compile
+the gates on a windows computer. so i had to wait until i got total access to the lenovo. but it looks a lot
+more involved than i had thought. i took a couple of hardware design classes in college, so i thought
+i'd be able to just have a refresher weekend and i'd be set. but after 20 hours of reading and videos,
+i'm still pretty lost.
+
+\ sounds like another thing "they" have goofed up.
+
+at least i have it! i think i'll get something done eventually, even if it turns out to just be a simple MCU
+clone. it would be nice to be able to model a 32-bit forth-like (with a couple of registers) cpu on it,
+but i don't think it's a powerful enough FPGA for that. time will tell!
+
+\ Have fun!
+
+do you spend much time on the CAL?
+
+\ We use the Writer a lot around here, and now and then I'll write a little console program to try out an
+\ idea. My latest was a real-number set generator that I was forced to develop to convince a
+\ math professor that Cantor's Diagonal "Proof" is seriously flawed.
+
+\ As far as actually improving the CAL, no, I don't spend much time on that. I think about how to make
+\ memory management automatic for all variables, and how to allow parameters to be passed in any
+\ order (I can never remember, for example, if it's "Draw a string with a color and a font" or "Draw a
+\ string with a font and a color"), but I don't want to make any big changes without Dan around to 
+\ keep an eye on me. I don't trust programmers working by themselves. When we wrote the CAL, we sat
+\ at a single computer with two monitors (both showing the same thing), and one of us ran the mouse
+\ while the other typed. So every line was created, reviewed, and tested by two sets of eyes.
+
+have you given much thought to a BIOS or other OS design?
+
+\ I think about it a lot, but I keep getting stuck in this "feasibility study" loop:
+
+\ 1. To use readily-available (and cheap) peripherals, we need USB, HDMI, WI-FI, etc, but that's complicated stuff.
+\ 2. So we need to develop our own, simpler peripherals. But that's way too big and expensive a proposition.
+\ 3. So it seems we need to use other people's USB, HDMI, and WI-FI drivers, and just bury the complexity.
+\ 4. But wait - that's what we've already done with the CAL on Windows.
+\ 5. Go to step 1.
+
+\All the best,
+
+\Gerry

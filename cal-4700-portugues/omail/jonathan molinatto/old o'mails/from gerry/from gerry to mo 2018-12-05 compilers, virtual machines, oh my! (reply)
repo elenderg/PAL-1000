@@ -1,0 +1,177 @@
+
+i didn't know you had hashtables. i'll look at the indices.
+
+\ They're not part of the language per se; they're implemented entirely in the Noodle.
+
+if you don't have trees, are you just doing a lot of list walking?
+
+\ We do a lot of list walking in the compiler, but we use our indices to find named things quickly.
+
+isn't that a bit slower?
+
+\ Seems pretty fast to me. I just clicked on a different tab and rebuilt the whole CAL in less than 3 seconds on
+\ a bottom-of-the-line Dell desktop computer.
+
+do you keep your lists sorted?
+
+\ No. The compiler's lists of Types, Globals, and Routines are in the order he discovers them in
+\ the source. But given a type, global, or routine name, we can jump directly to that item in the list via
+\ the Type, Global, or Routine indices.
+
+i guess things are operating fast enough. if performance becomes an issue, would that be grounds for adding a
+faster access structure?
+
+\ Maybe. First we'd find the slow part and try to speed it up by deleting, or at least simplifying, something.
+\ ADDING something is always our last resort, because "adding" is the crevice that bloat creeps through.
+\ Besides, why would you think a simpler system like the KAL would end up slower than the CAL who
+\ has the bloated Kluge underneath?
+
+\ But I must confess that we do use a recursive tree-like sort/merge, in both the Noodle and the Finder,
+\ but not in the Compiler. Here's the one from the Noodle:
+
+To sort some rows:
+If the rows' first is the rows' last, exit.
+Split the rows into some left rows and some right rows.
+Sort the left rows.
+Sort the right rows.
+Loop.
+Put the left rows' first into a left row.
+Put the right rows' first into a right row.
+If the left row is nil, append the right rows to the rows; exit.
+If the right row is nil, append the left rows to the rows; exit.
+If the left row's string is greater than the right row's string, move the right row from the right rows to the rows; repeat.
+Move the left row from the left rows to the rows.
+Repeat.
+
+\ Just 12 lines. And it's fast and stable.
+
+have i started this missive off on a sour note?
+
+\ I don't think so. Almost every popular book about compilers says you need binary searches and ASTs
+\ and optimization techniques and a lot of other stuff to make an efficient compiler. We set out to
+\ prove that isn't so. And did, with the CAL. With the KAL I hope we can make a similar point about
+\ bloated and unnecessarily complicated hardware.
+
+my comment on registers is based on your comment on registers, where you lamented that compiling
+Plain English to a pure stack-based architecture would be difficult, and you opined that perhaps adding
+a register or two to the mix would be worthwhile for the added simplicity. so Aunt Tilly might have
+spoken a lesson to me, but she definitely gave you a raised eyebrow!
+
+\ I like the simplicity of stack machines, but I fear that a PURE stack machine is TOO simple.
+\ It forces the programmer (and/or the compiler) to think too much about the order of parameters
+\ and local variables. This is unnatural, since parameters and local variables, in any high-level language,
+\ are NAMED entities. The traditional stack-frame approach is thus better for parameters and locals,
+\ since it allows access to parameters and local variables by name (and not just position). Hence my
+\ suggestion for a hybrid that uses the data stack for calculations (instead of registers) and
+\ the return stack for parameter passing and local variables. I'm not certain, yet, that this is
+\ superior to a simple register machine with a traditional stack; I'm just saying that it's simpler and
+\ easier than trying to compile to a pure stack machine.
+
+so i get confused by what you want to be simple enough to explain to a 12 year old.
+
+\ The whole shebang.
+
+ i don't think there's any way to explain a full system (hardware, operating system, peripherals, protocols, etc)
+to anyone and have them understand it in one sitting. if you mean discrete parts at a time, then
+i understand that.
+
+\ Yes, that's it. One step at a time, each step building on the previous step, with no sudden
+\ and unnecessary paradigm shifts. Take our compiler as an example. In the EBNF that defines
+\ the language, a program is defined as "a collection of types, globals, and routines, in any order":
+
+program = { type | global | routine }
+
+\ When a kid writes Plain English, he finds the same pattern: Types start with A or AN, Globals start with
+\ THE, and Routines start with TO (followed by a verb). Later, when he digs into our compiler, he finds
+\ the same pattern again: a list of types, a list of globals, and a list of routines, in the order they are
+\ found in the source. And if he continues to dig, he finds that we generate executable machine code directly
+\ from those lists. No ASTs, no optimization steps: just the shortest, straightest line from source to
+\ executable. Short straight lines are fast and friendly.
+
+and i think using a tree just makes more sense, because you get hierarchy that
+makes code generation a lot easier.
+
+\ I can't imagine code generation being easier than it is in the CAL. And everybody knows that
+\ trees are more difficult than lists. Go down to Walmart and ask the first person out the door
+\ about the difference between in-order, pre-order, and post-order traversal of a tree.
+
+i'm not arguing that they're necessary, but they definitely
+make it easier to maintain context.
+
+\ Each of our Compiler's Routine records has all the context we need: a list of parameters, a
+\ list of globals, the parsed header and body, and even pointers to the header and body source
+\ so we can highlight the offending line in our integrated Editor when an error is discovered.
+
+\ By the way: How are errors reported when someone is using a command-line compiler with a separate
+\ editor of his own choice?
+
+so the idea behind a simulated virtual machine in CAL is that it's actually a virtual machine, but
+with easy introspection. it's a way to test the compiled output without actual hardware.
+
+\ Sure. I know what it is and what it is for. But it's so different from the real thing that I tend
+\ to question its value. The design you sent me, for example: How can I use it to figure out how
+\ many frames-per-second I'm going to able to draw on a full-size screen? How can I use it
+\ to find out if our font manager can display various fonts clearly enough and fast enough?
+\ How can I use it to determine if mouse response is going to be smooth or if it will "move funny"?
+\ How can I use it to determine how long it will take the KAL to recompile himself on the actual
+\ machine? You see? It's way more than I need to see if I put out the right instructions (which I
+\ can tell just by dumping the executable and reading it) and way less than I need to tell me
+\ anything about the end-user experience. I'm all for prototyping; but a prototype has to at
+\ least be the same SPECIES as the final product.
+
+also, it's a way to write a virtual machine in the CAL (instead of in C, which i figured you wanted).
+
+\ Yes. All the development should be done in the CAL (and later, the KAL) so we know our the systems
+\ are sufficient. When we can say, "We can recreate and document the KAL, conveniently and efficiently,
+\ using nothing but the KAL," we've succeeded.
+
+i've still been writing little example programs in C, so this is more an attempt to force myself to use
+CAL. i just don't like programming in windows. my mouse moves funny, the keyboard isn't as
+responsive, and the screen locks up from time to time.
+
+\ What version of Windows are you running? On what kind of machine? I use a bottom-of-
+\ the-line ($350) DELL all-in-one computer with bloated Windows 10, and I experience none of
+\ the problems you describe. It was even faster and better with XP.
+
+but until i get my act together, windows is where i'm stuck for interfacing with the CAL.
+
+\ As are we all.
+
+it actually took me a long time to put that little diagram together, so i stopped when i was tired.
+it was more of a check-in. it's not a finished (or even a nearly complete) draft. sorry about the
+confusion. 
+
+\ No problem. It's good to check in early and often so you don't waste time going down roads that
+\ we're probably not going to travel together.
+
+while putting it together, i was reading (and learning) more about forth and the forth
+vm. i recall your mentioning you modeled CAL after forth, right? or am i misremembering?
+
+\ Yes, the CAL is like Forth in that both systems, at the bottom, execute machine-level code in 
+\ tiny chunks; and, at the top, do almost nothing but call routines. In other words, both systems
+\ understand just enough (and no more) about the source code to make the right calls, which is why
+\ both systems are small, simple and fast - and why neither system needs an AST or a complicated
+\ semantic analyzer or optimization techniques. I said before that Plain English was like a
+\ "readable version of Forth"; I will now say that it is also like a "writable version of Forth" because
+\ you can name your parameters and locals and don't have to worry about what order they're in.
+\ "As simple as possible, but no simpler." Forth: TOO simple. C++: TOO Complex. Plain English: Just right.
+
+modeling the CAL hardware on a modified forth chip would be a good starting place.
+
+\ Modified in what way?
+
+and targeting the forth vm with a custom noodle would also be a good way to
+test full stack-based programming.
+
+\ I'm not sure what you mean by "full stack-based programming." Do you mean "without stack frames"?
+
+i'm anticipating the instruction set to have all the necessary instructions that the forth instruction
+set has. and i like the idea of having a top-of-stack register. the POP omission was definitely an
+oversight. yes, there will be POPs aplenty. and whatever else we need. i'll update the document.
+
+\ By the way, you can rotate the page in the Writer to better simulate these modern, too short and too wide
+\ movie-style screens that everybody sells these days.
+
+\ All the best,
+
+\ Gerry

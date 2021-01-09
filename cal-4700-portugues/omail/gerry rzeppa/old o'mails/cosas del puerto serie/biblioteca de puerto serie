@@ -1,0 +1,89 @@
+A comtimeouts is a record with
+  a number called readintervaltimeout,
+  a number called readtotaltimeoutmultiplier,
+  a number called readtotaltimeoutconstant,
+  a number called writetotaltimeoutmultiplier,
+  a number called writetotaltimeoutconstant.
+
+A dcb is a record with
+  a number called dcblength,
+  a number called baudrate,
+  a number called fbinary,
+  a number called fparity,
+  a number called foutxctsflow,
+  a number called foutdsrflow,
+  a number called fdtrcontrol,
+  a number called fdsrsensitivity,
+  a number called ftxcontinueonxoff,
+  a number called foutx,
+  a number called finx,
+  a number called ferrorchar,
+  a number called fnull,
+  a number called frtscontrol,
+  a number called fabortonerror,
+  a number called fdummy2,
+  a wyrd called wreservedm,
+  a wyrd called xonlim,
+  a word called xofflim,
+  a byte called bytesize,
+  a byte called parity,
+  a byte called stopbits,
+  a byte called xonchar,
+  a byte called xoffchar,
+  a byte called errorchar,
+  a byte called eofchar,
+  a byte called evtchar,
+  a wyrd called wreserved1.
+
+Para cerrar un puerto serie;
+To close a serial port:
+    Call "kernel32.dll" "CloseHandle" with the serial port.
+
+Para abrir un puerto serie con una cadena de puerto COM y un número de velocidad;
+To open a serial port given a com port string and a baud rate number:
+  Clear el error de e/s.
+  Privatize the com port.
+  Null terminate the com port.
+  \ open the com port
+  Call "kernel32.dll" "CreateFileA" with the com port string's first and -1073741824 [generic_read+generic_write] and 0 and 0 and 3 [open_existing] 
+    And 0 and 0 returning the serial port.
+  If the serial port is -1 [invalid_handle_value], put "Error al abrir el puerto serie '" then the com port then "'." into el error de e/s; exit.
+  \ get the current settings so everything gets defaulted correctly
+  Call "kernel32.dll" "GetCommState" with the serial port and a dcb's whereabouts returning a result number.
+  If the result number is 0, put "Error al obtener el estado de comunicación." into el error de e/s; exit.
+  \ set the settings
+  Put the baud rate into the dcb's baudrate.
+  Call "kernel32.dll" "SetCommState" with the serial port and the dcb's whereabouts returning the result number.
+  If the result number is 0, put "Error al configurar el estado de comunicación." into el error de e/s; exit.
+  \ set the timeouts
+  Put -1 into a comtimeouts' readintervaltimeout.
+  Put 0 into the comtimeouts' readtotaltimeoutconstant.
+  Put 0 into the comtimeouts' readtotaltimeoutmultiplier.
+  Call "kernel32.dll" "SetCommTimeouts" with the serial port and the comtimeouts' whereabouts returning the result number.
+  If the result number is 0, put "Error al configurar los tiempos de espera de comunicación." into el error de e/s; exit.
+
+Para recibir desde un puerto serie en un búfer;
+To receive from a serial port into a buffer:
+  Clear the buffer.
+  Put 1024 into a size.
+  Loop.
+  Clear el error de e/s.
+  Reassign a temp buffer's first given the size.
+  Put the temp buffer's first plus the size minus 1 into the temp buffer's last.
+  Call "kernel32.dll" "ReadFile" with the serial port and the temp buffer's first and the size and a number's whereabouts and 0 returning a result number.
+  If the result number is 0, put "Error al leer desde el puerto serie." into el error de e/s; exit.
+  If the number is 0, exit.
+  Reassign the temp buffer's first given the number.
+  Put the temp buffer's first plus the number minus 1 into the temp buffer's last.
+  Append the temp buffer to the buffer.
+  Repeat.
+
+A serial port is a handle.
+
+Para transmitir un búfer a un puerto serie;
+To transmit a buffer to a serial port:
+  Clear el error de e/s.
+  Call "kernel32.dll" "WriteFile" with the serial port and the buffer's first and the buffer's length and a number's whereabouts and 0 returning a result number.
+  If the result number is 0, put "Error al escribir en el puerto serie." into el error de e/s; exit.
+
+Un puerto serie es a serial port.

@@ -1,0 +1,111 @@
+so, a clarification: the calculator doesn't need editable text; i was searching through the files
+to find implementations of what i thought i needed. i went back a couple of steps to write
+something simpler.
+
+\ I understand.
+
+i think you and i will not agree on the left-to-right evaluation of mathematical expressions with
+no precedence. however, if that's the way CAL wants it, and it's clearly codified, i see no problem
+with that. it's what lisp does: require the programmer to spell out the precedence, and it'll happily
+perform the required calculus.
+
+\ Actually, it's quite different than LISP. The LISP folks started with a preferred paradigm (prefix notation)
+\ and tried to FORCE everything into that mold. We, on the other hand, tried (and are trying) to discover
+\ how normal people NATURALLY say and think about things.
+
+i am coming to realize that i actually like complicated, tangled, twisted things. i think i get a
+deeper sense of accomplishment when i work on messy, cumbersome systems. especially when
+i do so in a text-only interface that makes me feel like i'm chiseling bison on cave walls. like
+i bootstrapped myself up from the silicon. it's all fantasy, but i think that's one of my
+struggles now.
+
+\ Not a great metaphor since "chiseling bison on cave walls" is a right-brain, artistic, non-textual activity.
+\ But I get it.
+\ Someone once said, "The real genius is the guy who can explain what the other genii are saying to a six year old."
+\ I like that saying; in fact, I find the "deepest sense of accomplishment" when I discover how to make some
+\ ridiculously complicated thing understandable to a child.
+
+i've always been terrible at design and doing anything artistic with my hands. so moving away from
+the mouse actually made me more productive--i just focused on the things i was good at. 
+
+\ Everybody likes doing what they're good at. But at least half your brain was designed for picture-processing,
+\ so it seems a shame to waste it. Curious thing: I always thought that the "fringes" were occupied by the few;
+\ but it turns out that it's the middle of the road that is nearly vacant. Case in point:
+\ (1) There are millions of right-brain, artistic types who like programming in languages like Scratch; and
+\ (2) there are millions of left-brain, text-oriented types who like programming in C on Linux; but
+\ (3) there are only a handful of people who see the beauty of the CAL, which uses text where text works best, and
+\ graphics where graphics work best.
+
+i was curious about how you're getting the windows mouse/keyboard events in the kludge. having done
+some windows programming (and thinking about porting to a separate system), i was wondering how
+you register with the operating system to get those events. i'm sure i can find it with some focused
+searching, but i think you probably could point me at it and explain it more succinctly than i would
+otherwise glean.
+
+\ (1) The "Start up" routine in the Noodle, after setting up a few other things, calls
+\ (2) "Initialize the window" which registers our full-screen window with Windows, passing a pointer to
+\ (3) "Handle any message with a window a message number a w-param and a l-param" as the callback function:
+
+To compatibly handle any message with a window a message number a w-param and an l-param:
+If the message is 006, handle any wm-activate with the w-param; put 0 into eax; exit.
+If the message is 258, handle any wm-char with the w-param and the l-param; put 0 into eax; exit.
+If the message is 001, handle any wm-create with the window; put 0 into eax; exit.
+If the message is 002, handle any wm-destroy; put 0 into eax; exit.
+If the message is 256, handle any wm-keydown with the w-param and the l-param; put 0 into eax; exit.
+If the message is 513, handle any wm-lbuttondown with the l-param; put 0 into eax; exit.
+If the message is 515, handle any wm-lbuttondblclk with the l-param; put 0 into eax; exit.
+If the message is 015, handle any wm-paint with the window; put 0 into eax; exit.
+If the message is 516, handle any wm-rbuttondown with the l-param; put 0 into eax; exit.
+If the message is 518, handle any wm-rbuttondblclk with the l-param; put 0 into eax; exit.
+If the message is 032, handle any wm-setcursor; put 1 into eax; exit.
+If the message is 260, handle any wm-syskeydown with the w-param and the l-param; put 0 into eax; exit.
+Call "user32.dll" "DefWindowProcA" with the window and the message and the w-param and the l-param.
+
+\ (The "compatibly" keyword is required because parameters are passed differently to callbacks.)
+
+\ (4) The above routine, as you can see, explicitly dispatches 12  kinds of messages to helper handlers, and
+\ (5) passes the (dozens and dozens) of other Window messages to Windows' default message handler.
+\ (6) The helper routines convert Windows' messages into our simplified events...
+
+An event is a thing with a kind, a shift flag, a ctrl flag, an alt flag, a spot, a key, a byte.
+
+\ (7) ...and append them to our own event queue:
+
+An event queue is some events. \ type definition
+The event queue is an event queue. \ global variable
+
+\ It would have been simpler if we had just said, "The event queue is some events."
+\ But we didn't know, at the time, whether the explicit "event queue" type would be useful.
+
+\ 8. "Deque an event" returns events from our queue in a first in, first out sequence.
+\ 9. A handy list of our event types is on Page 72 of the manual.
+
+i assure you that i read the whole instruction (pages 1-54). most of it twice.
+
+\ But did you print it? The manual is a "feely," like the stuff the Infocom folks used to include with
+\ their text adventures. I've put a document with a photo of our original packaging prototype in your mailbox.
+
+i've gone through about half of the gray matter material, mostly because it's fun.
+i did like that the manual addresses topics individually.
+
+\ Thanks. We were trying, as much as possible, to make it read like the old AppleSoft BASIC manual.
+\ You know, from the "Old Days," when programming was simple, easy, and fun. Before Mice :)
+
+ps. i have included the simple calculator. since i'm not using version control, i made edits after i
+said i got something that looked reasonable.
+
+\ I described our approach to "version control" in one of my comments on Jasper's Github repository.
+\ I think I gave you the link in an earlier post: https://github.com/Folds/osmosian/issues/3
+\ Here's the pertinent part:
+
+When we coded our Plain English development system, we put all the source in a folder called CAL-3000.
+When we got further along, we saved everything in another folder called CAL-3001. Etc.
+When we found ourselves with a version what was seriously flawed, we simply deleted the current folder and
+opened up the previous one. And when we got to something we were satisfied with, we released it (in this case,
+the CAL-3040). Then we saved everything in a folder called the CAL-4000 and went to work on the next version.
+So, there. In one paragraph we have the Osmosian equivalent of the Bazaar's 231-page GitHub manual.
+
+\ I will now review your calculator, leaving comments inline over there.
+
+\ All the best,
+\ Gerry

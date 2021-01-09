@@ -1,0 +1,127 @@
+i don't think i've told you what i do for my day job. i work as a senior software engineer (ugh, titles)
+at a medium-sized software security start-up called endgame, inc. (www.endgame.com)
+
+\ Wow! That's a pretty graphic website for text-only Linux-type folks :)
+
+well, we have a single-agent endpoint-detection-and-response product that does real-time detection
+and prevention of malware and exploits. i happened to have the agent installed and running (i
+mentioned we're going through a release, so it's all-hands-on-testing) when i launched CAL to check
+my o'mail, and CAL was blocked by the agent. it seems to have exceeded our malware threshold.
+
+\ We've had false positives before. We report them, and the virus-detection folks eventually
+\ fix their software. One guy thought our "bump a rider" routine, which is written in machine code (for speed),
+\ was the culprit:
+
+To bump a rider:
+Intel $8B9D08000000. \ mov ebx,[ebp+8] \ the rider
+Intel $FF8314000000. \ inc [ebx+20] \ the rider's token's last
+Intel $FF8308000000. \ inc [ebx+8] \ the rider's source's first
+
+\ When he changed that routine to look like this...
+
+To bump a rider:
+Add 1 to the rider's token's last.
+Add 1 to the rider's source's first.
+
+\ ... the false positive he was getting went away. But I left the machine code version in the 4700 Noodle
+\ because it is really the other guy's code that is faulty and needs to be fixed. And I don't think this
+\ is the only code that appears "suspicious" to detectors.
+
+this threshold pulls information from the headers and resources and does some analysis on imports,
+etc. we are always looking for false-positives (which this obviously is), but i wanted to get your
+permission before i bring this up to our research team. would you be okay with my sending a copy
+of CAL to my research team to put in our database of false-positives, so we can figure out what we're
+seeing in CAL that looks like malware?
+
+\ No problem. Send it.
+
+--- shift ---
+
+i have been looking through the compiler at how you're creating the executables, and it seems like
+it's all just bare-handed code-generation. do you do any optimization or unused-code removal?
+
+\ Yes. When we get to Step [10] of our compile sequence...
+
+To compile a directory:
+[1] Compile the directory (start).
+[2] Compile the directory (load the source files).
+[3] Compile the directory (scan the source files).
+[4] Compile the directory (resolve the types).
+[5] Compile the directory (resolve the globals).
+[6] Compile the directory (compile the headers of the routines).
+[7] Compile the directory (calculate lengths and offsets of types).
+[8] Compile the directory (add the built-in memory routines).
+[9] Compile the directory (index the routines for utility use).
+[10] Compile the directory (compile the bodies of the routines).
+[11] Compile the directory (add and compile the built-in startup routine).
+[12] Compile the directory (offset parameters and variables).
+[13] Compile the directory (address).
+[14] Compile the directory (transmogrify).
+[15] Compile the directory (link).
+[16] Compile the directory (write the exe).
+[17] Compile the directory (stop).
+
+\ ...we start with the "Run" routine and compile top-down; ie, only routines that actually get called somewhere.
+\ And when we get to Step [15], we only copy compiled routines into the executable. Fast and small.
+
+--- shift ---
+
+in your ideal future for CAL, would it (he? she?) be used for all types of programming? \ It's he. The CAL is a boy.
+
+\ Yes. The IDEAL future starts with a simple hardware stack machine with a simple, deterministic,
+\ real-time operating system, similar to a 32-bit version of DOS but written in Plain English, in ROM.
+\ The CAL would be in ROM as well, and the machine would be GUI all the time would start up instantaneously.
+\ And the whole shebang, due to it's simplicity, would fit on a single chip and require very little power and cooling,
+\ and could thus be used for everything from desktops to laptops to robots made by kids. It would be a
+\ complete replacement for Macs, PCs, Arduinos, Raspberry-PIs, etc. Picture something like Niklaus Wirth's
+\ Oberon system, but with dedicated hardware, Plain English as the core language, and the CAL's honest face.
+\ I think we can do the whole thing in 25,000 Plain English sentences or less.
+
+non-gui-based applications? servers? operating systems? hardware drivers? arduino? ooh! what if i figured
+out how to output arduino code? so noob diyers could write Plain English arduino code? but that
+would probably need lots of other things installed (like serial programmers, etc). but interesting!
+
+\ It's all such a mess, it can only be fixed from the ground up, as described above.
+\ We're a bit behind schedule, I admit. But our original vision, I think, is still valid. See our
+\ two-page Manifesto for the original words: http://www.osmosian.com/manifesto.pdf
+\ And if you know anyone with a lot of money and interest in such a thing, send him my way.
+
+if Plain English programming becomes more widespread, it'll have to be able to create non-gui
+applications, unless everything in the future has a gui. i know i'm not approaching this in an
+Osmosian fashion (and Aunt Tilly is probably shaking her head--i'm sorry, Aunt Tilly!), but i
+promise i'm trying! i just spend so much time writing console-based applications that i don't
+think about graphics or point-and-click user interfaces. i even use lynx browser sometimes. i'm
+obviously not your target demographic.
+
+\ The CAL already has a console for quickie, non-GUI testing, etc. Try, for example, this:
+
+To run:
+Start up.
+\ console mode
+Write "Input something > " on the console without advancing.
+Read a string from the console.
+Write "Now we're talking!" on the console.
+Write "I'm switching to GUI 'mode' in 3 seconds for 3 seconds." on the console.
+Wait for 3 seconds.
+\ GUI mode
+Clear the screen.
+Make a box 3 inches by 1 inch. Center the box in the screen's box.
+Draw the box with the green pen.
+Use the fat pen. Use medium letters. Write "Hello World" in the middle of the screen .
+Refresh the screen.
+Wait for 3 seconds.
+\ console mode
+Write "Now I'm back in console 'mode'." on the console.
+Write "Hit the ESC key to quit." on the console.
+Wait for the escape key.
+Shut down.
+
+\ And i think I mentioned before that we've used the CAL to write CGI server-side programs:
+\ You just replace "Start up" and "Shut down" with Start up the CGI" and "Shut down the CGI", and go from there.
+
+anyway, i'm still kicking against these goads over here. i'll overcome this stubborn streak. or not.
+time will tell.
+
+\ No hurry. Proceed at your own pace.
+
+\ Gerry

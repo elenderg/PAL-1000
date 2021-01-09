@@ -1,0 +1,243 @@
+A block# is a number.
+A block is a thing with a box and a block#.
+A cell is a thing with a box, a row#, a column#, a block#, a number and a given flag.
+A puzzle is a thing with a box, some blocks and some cells.
+
+The puzzle is a puzzle.
+
+To run:
+Start up.
+Clear the screen using the tan color.
+Create the puzzle.
+Fill the puzzle with "004103800708000601030080040390050062005030900280090073010060080803000104007908300".
+Draw the puzzle. Display message "Press ENTER to solve.". Wait for the enter key.
+Solve the puzzle.
+Destroy the puzzle.
+Wait for the escape key.
+Shut down.
+
+To solve a sudoku puzzle:
+Get a blank cell. If the blank cell is nil, exit.
+Loop.
+Add 1 to a number. If the number is greater than 9, exit.
+If the number is not valid in the blank, repeat.
+Put the number into the blank.
+Draw the sudoku puzzle.
+Solve the puzzle. If the sudoku puzzle is solved, break.
+Erase the blank cell.
+Repeat.
+Draw the sudoku puzzle.
+Display message "Solved! Press ESC to quit.".
+
+To get a blank cell:
+Get a cell from the puzzle's cells.
+If the cell is nil, break.
+If the cell's given flag is set, repeat.
+If the cell's number is not 0, repeat.
+Put the cell into the blank cell.
+
+To decide if a number is valid in a cell:
+If the number is already in the cell's row#, say no.
+If the number is already in the cell's column#, say no.
+If the number is already in the cell's block#, say no.
+Say yes.
+
+To put a number into a cell:
+Put the number into the cell's number.
+
+To erase a cell:
+Put 0 into the cell's number.
+
+To decide if a number is already in a row#:
+Get a cell from the puzzle's cells.
+If the cell is nil, say no.
+If the cell's row# is not the row#, repeat.
+If the cell's number is the number, say yes.
+Repeat.
+
+To decide if a number is already in a column#:
+Get a cell from the puzzle's cells.
+If the cell is nil, say no.
+If the cell's column# is not the column#, repeat.
+If the cell's number is the number, say yes.
+Repeat.
+
+To decide if a number is already in a block#:
+Get a cell from the puzzle's cells.
+If the cell is nil, say no.
+If the cell's block# is not the block#, repeat.
+If the cell's number is the number, say yes.
+Repeat.
+
+To decide if a cell is in a block:
+If the cell's block# is the block's block#, say yes.
+Say no.
+
+To decide if a number is in a block:
+Get a cell from the puzzle's cells.
+If the cell is nil, break.
+If the cell is not in the block, repeat.
+If the cell's number is the number, say yes.
+Repeat.
+Say no.
+
+To decide if a cell is empty:
+If the cell's number is 0, say yes.
+Say no.
+
+To decide if a cell is full:
+If the cell's number is not 0, say yes.
+Say no.
+
+To decide if a cell can hold a number:
+If the cell is full, say no.
+Say yes.
+
+To decide if a number is already in a block:
+Get a cell from the puzzle's cells.
+If the cell is nil, say no.
+If the cell's number is the number, say yes.
+
+To decide if a puzzle is solved:
+Get a cell from the puzzle's cells.
+If the cell is nil, say yes.
+If the cell's number is not between 1 and 9, say no.
+repeat.
+
+To fill a puzzle from a string:
+Privatize the string.
+Loop.
+If the string is blank, break.
+Get a cell from the puzzle's cells.
+Get a byte from the string.
+If the byte minus 48 is not between 1 and 9, put 0 into the cell's number; repeat.
+If the cell is nil, break.
+Put the byte minus 48 into the cell's number.
+Set the cell's given flag.
+Repeat.
+
+To create a puzzle:
+Allocate memory for the puzzle.
+Make the puzzle's box 6 inches by 6 inches.
+Create the puzzle's blocks.
+Create the puzzle's cells.
+Center the puzzle in the screen's box.
+
+To create some blocks:
+Put 1 into a row#.
+Put  1 into a column#.
+Put 1 into a block#.
+Loop.
+Create a block using the row# and the column# and the block#. Append the block to the blocks.
+Add 1 to the block#.
+If the column# is less than 3, add 1 to the column#; repeat.
+Put 1 into the column#.
+If the row# is less than 3, add 1 to the row#; repeat.
+
+To create a block with a row# and a column# and a block#:
+Put the puzzle's x-extent divided by 3 into a size.
+Allocate memory for the block.
+Put the block# into the block's block#.
+Put the row# minus 1 times the size into the block's top.
+Put the column# minus 1 times the size into the block's left.
+Put the block's left-top plus the size into the block's right-bottom.
+
+To create some cells:
+Put 1 into a row#.
+Put  1 into a column#.
+Loop.
+Create a cell using the row# and the column#. Append the cell to the cells.
+If the column# is less than 9, add 1 to the column#; repeat.
+Put 1 into the column#.
+If the row# is less than 9, add 1 to the row#; repeat.
+
+To create a cell with a row# and a column#:
+Put the puzzle's x-extent divided by 9 into a size.
+Allocate memory for the cell.
+Put the column# minus 1 times the size into the cell's left.
+Put the row# minus 1 times the size into the cell's top.
+Put the cell's left-top plus the size into the cell's right-bottom.
+Put the row# into the cell's row#.
+Put the column# into the cell's column#.
+Find a block# for the cell.
+
+To find a block# for a cell:
+Get a block from the puzzle's blocks.
+If the block is nil, break.
+If the cell's box is not in the block's box, repeat.
+Put the block's block# into the block#.
+Put the block's block# into the cell's block#.
+Repeat.
+
+To center a puzzle in a box:
+Center the puzzle's box in the box.
+Center the cells of the puzzle in the box.
+Center the blocks of the puzzle in the box.
+
+To center the cells of a puzzle in a box:
+Put the box's width minus the puzzle's width divided by 2 into a pair's x.
+Put the box's height minus the puzzle's height divided by 2 into the pair's y.
+Loop.
+Get a cell from the puzzle's cells.
+If the cell is nil, break.
+Move the cell's box given the pair.
+Repeat.
+
+To center the blocks of a puzzle in a box:
+Put the box's width minus the puzzle's width divided by 2 into a pair's x.
+Put the box's height minus the puzzle's height divided by 2 into the pair's y.
+Loop.
+Get a block from the puzzle's blocks.
+If the block is nil, break.
+Move the block's box given the pair.
+Repeat.
+
+To draw a puzzle:
+Draw the puzzle's cells.
+Draw the puzzle's blocks.
+Refresh the screen.
+
+To draw some cells:
+Get a cell from the cells.
+If the cell is nil, break.
+Draw the cell.
+Repeat.
+
+To draw a cell:
+Draw the cell's box with the lighter orange pen and the tan pen.
+\Put "osmosian" and 1/6 inch into a font.
+\Put the cell's row# then ", " then the cell's column# then ": " then the cell's block# into a string.
+\Draw the string in the cell's box with the brown pen and the font and "center".
+If the cell's number is 0, exit.
+Put "osmosian" and 1/2 inch into a font.
+Put "arial bold" and 1/2 inch into another font.
+Convert the cell's number to a string.
+If the cell's given flag is not set, Draw the string in the cell's box with the brown pen and the font and "center".
+If the cell's given flag is set, Draw the string in the cell's box with the brown pen and the other font and "center".
+
+To draw some blocks:
+Get a block from the blocks.
+If the block is nil, break.
+Draw the block.
+Repeat.
+Refresh the screen.
+
+To draw a block:
+Draw the block's box with the brown pen.
+
+To clear the screen with a color:
+Draw the screen's box with the color and the color.
+Refresh the screen.
+
+To display message a string:
+Write the string under the puzzle's box.
+Refresh the screen.
+
+To write a string under a box;
+To write a string below a box:
+Privatize the box.
+Put the box's bottom plus 1/8 inch into the box's top.
+Put the box's top plus 1/4 inch into the box's bottom.
+Draw the box with the tan pen and the tan pen.
+Draw the string in the box with the brown pen and "center".
+

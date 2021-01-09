@@ -1,0 +1,92 @@
+so an issue with an [executable] format this simple is that it doesn't leave room for data or version info.
+but i guess that could be after the executable format. 
+
+\ I was wondering why Aunt Tilly woke up this morning with tears in her eyes.
+\ The version is in the file name, like it is with the CAL-4700. No need to repeat ourselves.
+
+as i'm in software security, i'd be concerned about exploitability and user-kernel context switching.
+
+\ The operating system should be in ROM, where it is safe.
+
+need to make sure CAL doesn't get compromised by some rogue shellcode.
+
+\ DOS and the original Mac had no protections against "rogue shellcode," and we got lots done with them.
+
+i've been reading the stack computer book, and i'm intrigued by the idea. i've worked with some
+stack machines in software, and it was very fun to interface with.
+
+\ Yes. Stack machines are small, simple, and fast. Just what the doctor ordered.
+
+since i've spent the last fifteen or so years in the software security industry, i'm going to want
+to make sure it's not trivially exploitable.
+
+\ Dragging that baggage into this project will do nothing but complicate it. And since the goal of
+\ this project is extreme simplicity, I don't think that's a good idea.
+
+for use in a kiosk or any kind of device that interfaces directly with the public, it'll need to be mostly bulletproof.
+
+\ Well, then, Redbox is is trouble, because Windows 7 is hardly "bulletproof". Yet there it is.
+
+because we want it to be better than what people are using.
+
+\ Ah, yes. But what do we mean by better? Better in EVERY way? Impossible.
+\ O'mail is better than eMail in some ways, worse in others. It's easier to implement, manage, and explain,
+\ and can be used with just the CAL; a good thing, consistent with what we're trying to prove.
+\ O'mail is not secure at all, yet it is working, and we're communicating handily with it.
+
+do you have ideas for the kind of executable format you want to use?
+
+\ Yes:
+
+\ Byte 0: the first instruction to be executed.
+\ Bytes 1-n: whatever the compiler writer wants them to be.
+
+\ That is all that is necessary. That's the format used on old-school embedded system chips;
+\ All we have to do is scale it up from 8-bits to 32-bits. No paradigm shifts, no additional rules.
+
+we can either have a more complicated format or some convention.
+
+\ Or we can sacrifice security in the interest of simplicity.
+
+if we want the first byte of the file to be an opcode, then we'll have to either use the last X bytes as
+the data section (for strings, etc)
+
+\ The data goes wherever the compiler-writer decides to put it. Maybe he puts it all in one place, or
+\ maybe he puts it at the end of each routine; or even at the beginning of each routine preceded by a jump.
+\ We don't want to dictate these things. We want the future compiler-writer to be free to decide.
+\ With a minimal framework like this, Dan and I could have designed (and implemented) several workable
+\ schemes for the CAL in way less time than it took us to find and digest the PE format rules.
+\ Nobody should EVER have to read goofy documents like that! C'mon, honestly, how do you really feel
+\ about having to digest all that ELF documentation before you can even think about making the CAL
+\ generate a Linux-compatible executable?
+
+or add in some extra opcodes to calculate whatever the data section would otherwise contain.
+
+\ No need for extra opcodes. The word "extra" tells us that's not the right path.
+
+but i'd rather have a legit data section.
+
+\ Why? The permanent, operating stuff is in ROM at addresses, say, 2-gigs plus 1 up to 4-gigs,
+\ and all the addresses below that, 0 to 2-gigs, is the programmer's to do with as he pleases,
+\ (minus the RAM buffers used by the operating system, of course).
+\ If you think of an address as a signed integer, that puts "negative" addresses in ROM, and
+\ all the positive addresses in RAM.
+
+i'm fully aware i'm putting the cart before the horse on this one.
+
+\ I don't think you are. As I mentioned before, decisions on things like this are determined by what we're
+\ trying to PROVE (and thus what we're not trying to prove). I say we go with Aunt Tilly's list.
+\ We've proven, for example, that email doesn't have to be complicated and "secure" in the modern sense
+\ to work. I consider that a success.
+
+i've also done some research into graphics support on linux, and it might still be feasible. i have
+too many disparate interests, and CAL is touching on all of them!
+
+\ Well, we're brainstorming at this stage. We call it "spiraling" - considering each alternative, then re-considering
+\ each alternative, etc, until we finally "zero in" on the best alternative.
+
+here's to bringing dreams to life!
+
+\ Ditto!
+
+\ Gerry

@@ -1,0 +1,35 @@
+so long as you can get the device drivers running, then that's fine. you're right that readily
+available peripherals should be used. i didn't think most drivers would be open-source. even
+if they were, i didn't think it would be trivially convertible to CAL. but it's actually probably
+easier to convert to CAL. because you just have to be able to explain in in english. it's so novel!
+
+\ Device drivers for other people's (usually goofy) hardware are the biggest problem in this whole project.
+\ Which is why most hobbyist projects use PS2 keyboards and mice rather than USB versions, and
+\ VGA monitors rather than HDMI stuff. Unfortunately, I don't think PS2/VGA generation devices
+\ will be readily available for much longer. So it's either build ALL the hardware ourselves (which we can't
+\ afford to do, people-wise or money-wise) or we have to find stuff we can live with.
+
+i basically don't understand video memory at all. is it the same for vga/dvi/hdmi? these aren't
+questions i really need answers to. i'm just curious.
+
+\ I really don't know. I know the original Mac just traced the screen, top to bottom, 60 times a second, getting
+\ the data from a memory buffer. But that machine had a CRT, not a solid-state display. It was cool,
+\ however, how they used the "vertical retrace interrupt" to update the mouse position on the screen; very smooth.
+
+that [memory description] sounds pretty neat. as far as hardware and the number of stacks, do you have opinions on how
+many stacks we should support? so far i like the idea of a data stack and a return-address stack.
+i'm used to routine frames from intel asm.
+
+\ The CAL uses tradiional stack frames, where variables are addressed relative to each routine's "stack base pointer".
+\ Return addresses go on the same stack. I've put a page from an old document describing how we do that in your box.
+\ I'm not sure how that would convert to a stack machine where items on the stack were not individually addressable.
+\ Most such real-life stack machines are programmed in Forth and it's the programmer's job to SWAP and DUP and ROT
+\ to get the variables in the right places; the CAL isn't smart enough to do that. So our "stack machine" might have
+\ to be a bit of a hybrid, with a data stack (where operations take place), plus a directly addressable return stack
+\ (that would be used, not just for return addresses, but for parameter passing, as well). Or (since we're spiraling), we
+\ might want switch gears and give some more thought to a RISC machine with just a few registers. Something
+\ like the Intel, but with the registers less restrictive, fewer instructions than even the tiny subset we use now, and much
+\ simpler encodings (all op codes 8 bits, all operands 32 bits). I think I could explain that to a bright 12-year-old.
+
+\ Gerry
+

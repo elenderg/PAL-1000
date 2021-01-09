@@ -1,0 +1,120 @@
+so i've been reading through some build-an-operating-system tutorials for the raspberry pi, and it
+appears that using a raspberry pi might be a decent way to get started.
+
+\ The Raspberry Pi is a "moving-target mess." Not only are there numerous models, but all of them
+\ include all kinds of features we neither need nor want. You list some of those features yourself, below:
+
+it uses an arm chip, which is a register-based cpu, and can be big endian (i think it's configurable,
+which seems weird). i have no idea what endianness it actually implemented on the boards.
+
+\ We don't want a configurable bi-endian machine with lots of modes; we want a simple big-endian machine.
+
+if raspberry pi won't work, i've read other blogs of people using arm chips to build custom computers.
+so that's also a possibility. arm chips are cheap and fast.
+
+\ ARM architecture is anything but simple. The "ARM Architecture Reference Manual", for just the V8
+\ models, in PDF format is - wait for it - 7,476 pages long! That's right, over SEVEN THOUSAND pages.
+
+the biggest downside is the amount of ram on a pi board. typically 512M or 1G. if we're designing
+the system from scratch, will we need 4G ram? ... i think 4G is a nice, round number to shoot for, but i
+don't know that it's required. or do you want 4G as something CAL would never outgrow?
+
+\ The CAL uses about 3 megabytes, most of the time, and only 30 megabytes to recompile himself.
+\ But with 32-bit addresses, the OBVIOUS amount of connected (or, preferably, built-in) memory
+\ OUGHT to be 4 gigabytes.
+
+the bloated linux kernel and desktop os on the raspberry pi only has 512M or 1G to work with, but it
+isn't laggy at all. and it is multithreaded and multi-process.
+
+\ "...multithreaded and multi-process." Two more features we neither need nor want. Keep in mind
+\ that an Osmosian operating system is little more than a BIOS with some interrupt handlers and
+\ device drivers. Much closer to a 32-bit DOS than a Windows or an Android or a Linux or an iOS, etc.
+
+\ Right now I'm staring at the CAL on my screen, but the there are no less than 72 other processes
+\ running in the background. THAT JUST AIN'T RIGHT. The only thing I'm using, right now, is the CAL,
+\ so the only thing that should be running right now, is the CAL. The KAL hardware, after a reset,
+\ will pass control to the first instruction of the KAL (in ROM) and the KAL's simple and honest face
+\ (identical to the CAL's) will then appear on the screen. A hard restart should take less than a second.
+
+\ In the meantime, if I wanted a cheap, pocket-sized computer to run the CAL on, I wouldn't get a
+\ Raspberry Pi; I'd get something like this:
+
+https://www.amazon.com/dp/B078MT5ZJ8/
+
+\ If we could figure out how to replace the operating system on that with the handful of BIOS-like
+\ interrupt handlers and device drivers we need, we'd be 2/3 of the way to where we want to be, but
+\ the final third would still be a blur on the horizon:
+
+\ FIRST 1/3: Demonstrate that convenient, efficient, and useful systems can be developed without
+\ scroll bars, mouse wheels, dialog boxes, nested IFs and LOOPs, Object-Oriented programming,
+\ floating-point numbers, ASTs, complicated compile-time optimizations, etc. This part is done.
+
+\ SECOND 1/3: Demonstrate that a convenient, efficient, and useful operating system can be kept in
+\ ROM and be as simple as a handful of BIOS-like interrupt handlers and device drivers.
+
+\ THIRD 1/3: Demonstrate that system-on-a-chip hardware doesn't need virtual memory, a plethora
+\ of caches, an FPU, a half-dozen or more operating modes, a huge instruction set, etc.
+
+\ It is better, I think, to attack the Third Third first, because that will make the Second Third much
+\ easier. No 7,476-page manuals to read and digest, for example.
+
+i'm getting my wife a new dell laptop, so i'll get her old lenovo laptop. so soon i'll have a dedicated
+windows laptop. 
+
+\ If you're ever wondering how the CAL will be using the registers on that old Lenovo, here's a summary:
+
+EAX and EBX - general purpose "operand" registers
+
+\ Noodle routines use the EAX register 165 times, and the EBX register 141 times, in routines like
+\ "to add a number to another number" and "to bitwise AND a number with another number."
+
+\ The Compiler uses EAX only to temporarily store the result of compare operations in IF statements.
+\ It does not use EBX at all (since all the comparison code is in low-level Noodle routines).
+
+ECX - general purpose "count" register
+
+\ Noodle routines use the ECX register 90 times, in bit shifts and string (and other) comparisons where
+\ bytes are involved; in loops that copy bytes quickly from here to there; and sometimes as an operand when
+\ EAX needs to be kept free for a comparison result. This latter use is a little goofy and could be probably be
+\ avoided by using ECX, instead of EAX, as the comparison-result register.
+
+\ The Compiler uses ECX in just one place - to push zeros on the stack to make space for local variables.
+
+EDX - general purpose "address" register
+
+\ Noodle routines make use of the EDX register in 22 places.
+
+\ The compiler uses EDX in 21 places, to calculate addresses at run-time.
+
+EDI and ESI - general purpose "pointer" registers
+
+\ Noodle routines use these registers 19 tiems, in string comparisons and fast byte-copy routines.
+
+\ The Compiler does not use these registers.
+
+EBP - stack frame base pointer register
+
+\ Noodle routines reference (but do not change) the address in EBP when accessing parameters and
+\ local variables, 140 times.
+
+\ The Compiler sets up the EBP register in each routine's prolog, and restores it in each routine's epilog.
+
+ESP - the stack pointer
+
+\ Noodle routines do not use this register.
+
+\ The Compiler copies ESP into EBP in the prolog of each routine (to set up the stack frame base pointer).
+\ ESP is automatically adjusted when local variables are pushed onto the stack.
+\ EBP is copied back into ESP in each routine's epilog (to free up stack memory used by local variables).
+\ Passed parameters are popped by Intel's return instruction, automatically adjusting ESP.
+
+Conclusions:
+
+\ Intel x86 CPUs may be little-endian, bloated, and the instruction encoding horrendous, but they do
+\ exhibit some rhyme and reason in their design. The eight Intel registers described above were apparently
+\ designed with the low-level programmer and compiler-writer in mind since the kind of things that we
+\ wanted to do in the Compiler and Noodle slid easily into the x86 scheme.
+
+\ Gerry
+
+\ Are you still feeling better? Having fun with your FPGA kit?

@@ -1,0 +1,70 @@
+Hello, Pablo!
+
+This is how I tested the serial port routines:
+
+1. I bought two USB-to-serial cables from Amazon:
+
+https://www.amazon.com/gp/product/B0758B6MK6/
+
+2. I plugged them into two USB ports on my computer and the Windows device manager
+assigned them to "COM3" and "COM4".
+
+3. I connected the two cables together using a "null modem" adapter:
+
+https://www.amazon.com/gp/product/B075XGRLXW/
+
+4. Then I started up two instances of the SAL-1016.
+
+5. In the first instance, I ran the program below: it listens to "COM3" until it gets an end-of-transmission byte.
+
+Para ejecutar:
+  Poner en marcha.
+  Escribir "Abriendo..." en la consola.
+  Abrir un puerto serie con "COM3" y 9600.
+  Escribir "Leyendo ..." en la consola.
+  Lazo.
+    Recibir desde el puerto serie en un búfer.
+    Si el error de e/s no está en blanco, escribir el error de e/s en la consola; salir.
+    Si el búfer está en blanco, repetir.
+    Append el búfer to una cadena.
+    Si la cadena no termina con el byte end-of-transmission, repeat.
+  Remove trailing noise from la cadena. \ Spanish header on this routine needs work
+  Escribir la cadena en la consola.
+  Refresh the screen.
+  Escribir "Cerrando..." en la consola.
+  Cerrar el puerto serie.
+  Escribir "Presione ENTER para continuar." en la consola.
+  Leer otra cadena desde la consola.
+  Apagar.
+
+6. Then I ALT-TABBED to the other instance of the SAL and ran this program:
+
+Para ejecutar:
+  Poner en marcha.
+  Escribir "Abriendo..." en la consola.
+  Abrir un puerto serie con "COM4" y 9600.
+  Si el error de e/s no está en blanco, escribir el error de e/s en la consola; salir.
+  Escribir "Transmitiendo..." en la consola.
+  Transmitir "¡Hola Mundo! That's 'Hello World!' in Spanish." then the end-of-transmission byte al puerto serie.
+  Si el error de e/s no está en blanco, escribir el error de e/s en la consola; salir.
+  Escribir "Presione ENTER para continuar." en la consola.
+  Leer una cadena desde la consola.
+  Apagar.
+
+7. When I ALT-TABBED back to the first instance, the transmitted message was on the console.
+
+8. I pressed ENTER to end the first instance, then ALT-TABBED to the other instance and did the same.
+
+So I think it works!
+
+Gerry
+
+PS. I've also put a directory called "serial chat" into your mail box.
+This is Dan's test program, in English, but it runs in your SAL-1016.
+It has a big gray console at the top (for output messages) and
+a small white console at the bottom (for input messages).
+When you run it, it asks for a port number.
+You can enter just the number (like "5") or the whole name (like "COM5").
+You can run it on two machines, connected with USB-to-serial and null modem cables,
+or you can run two instances on the same machine connected like my test above.
+

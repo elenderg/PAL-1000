@@ -1,0 +1,54 @@
+Gerry,
+
+\ I like the name "jiffy". Exactly how long is a "jiffy" in your implementation?
+
+I'm glad you like it.
+The length of a jiffy varies from computer to computer.
+According to the Windows API documentation, it is supposed
+to be a constant amount of time on a given computer
+from a single start-up until the corresponding shut-down.
+Unfortunately, some computers built back when Windows XP was new
+were not able to support the constant time feature.
+My computer has 1315891 jiffies per second,
+or a little under 760 nanoseconds per jiffy.
+
+\ I haven't experienced a need for more precise timings so far.
+\ But I was a disappointed in the inaccuracy of Microsoft's timer functions.
+\ On the other hand, I'm not sure how meaningful extremely-precise timings are
+\ on a virtual paged-memory / multi-tasking system, since it is rare that you can
+\ count on a routine not getting interrupted.
+
+If so, would you want them in milliseconds or microseconds?
+
+\ Probably both, depending on the application.
+
+My test suite reports its overall run-time in milliseconds.
+The individual tests report their run-times
+in either milliseconds, microseconds, or nanoseconds,
+depending on which units the run-time can be expressed in.
+This made it easy to search the output file for the long-running tests.
+The slow tests end like " which I got in 15 ms." or " which is OK in 3 ms."
+The fast tests end like " which I got in 8 탎." or " which is OK in 227 탎."
+On my computer, every test takes at least 4 탎.
+
+I am surprised at how consistent individual tests' run-times are
+from one run to another.  The overall run-time still bounces around,
+but is consistent enough to reinforce Aunt Tilly's advice.
+The precision timers are good enough that if I make a code change
+whose purpose is to speed things up, but the timers say
+it either slowed things down or made no difference,
+I promptly undo the code change.
+
+Based on your comments, I will make the compiler's timers
+show the most accurate possible number of milliseconds,
+rounded down to the nearest millisecond.
+
+I will also make it easy to show the total number of microseconds.
+
+I have experimented with converting times to a format like
+789 days 01:23:45 678 ms 901 탎 234 ns
+but I am not happy with it.  For most purposes,
+only the largest non-zero time range (such as ms or 탎)
+is useful.
+
+-- Jasper

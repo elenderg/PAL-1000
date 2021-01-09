@@ -1,0 +1,129 @@
+Dear Pablo,
+
+\I'm working with modified SAL-1004.
+
+Great!
+
+\The only thing that I could say, is that you do not design it as a broken but as a solid vertical bar.
+
+Actually, I think the problem is that the "extended ASCII table" is not well-defined.
+Codes 0 - 128 are consistent, but there are different "standards" for the "extended ACSII codes" 128-255.
+
+Joke: The great thing about standards is that there are so many to choose from :)
+
+We have the vertical bar ( | ) as Alt + 0124 and the broken bar ( ¦ ) at Alt + 0166.
+Windows must translate your broken bar key to 124.
+
+It's a very goofy process. There are two event (message) queues: our simple one, and Windows' complicated one.
+Ours has just 10 event kinds, while Windows' has hundreds (maybe thousands) of them.
+(See https://wiki.winehq.org/List_Of_Windows_Messages.)
+When the programmer asks the CAL/SAL to "deque an event," we "yield to windows":
+
+To yield to windows:
+If the event queue is not empty, exit. \ if we have events waiting in our queue, don't yield
+Call "user32.dll" "GetMessageA" with an msg's whereabouts and 0 and 0 and 0 returning a number. \ get a message from windows
+If the number is 0, exit. \ no messages waiting, get out
+Call "user32.dll" "TranslateMessage" with the msg's whereabouts. \ ask Windows to translate the key codes, etc
+Call "user32.dll" "DispatchMessageA" with the msg's whereabouts. \ send the message to the routine attached to our main window (which occupies the whole screen)
+
+This is the routine that is attached to our main window:
+
+To compatibly handle any message with a window and a message number and a w-param and an l-param:
+If the message is 006, handle any wm-activate with the w-param; put 0 into eax; exit.
+If the message is 258, handle any wm-char with the w-param and the l-param; put 0 into eax; exit.
+If the message is 001, handle any wm-create with the window; put 0 into eax; exit.
+If the message is 002, handle any wm-destroy; put 0 into eax; exit.
+If the message is 256, handle any wm-keydown with the w-param and the l-param; put 0 into eax; exit.
+If the message is 513, handle any wm-lbuttondown with the l-param; put 0 into eax; exit.
+If the message is 515, handle any wm-lbuttondblclk with the l-param; put 0 into eax; exit.
+If the message is 015, handle any wm-paint with the window; put 0 into eax; exit.
+If the message is 516, handle any wm-rbuttondown with the l-param; put 0 into eax; exit.
+If the message is 518, handle any wm-rbuttondblclk with the l-param; put 0 into eax; exit.
+If the message is 032, handle any wm-setcursor; put 1 into eax; exit.
+If the message is 260, handle any wm-syskeydown with the w-param and the l-param; put 0 into eax; exit.
+Call "user32.dll" "DefWindowProcA" with the window and the message and the w-param and the l-param.
+
+The "compatibly" keyword is required because Windows thinks we're a C program and passes the parameters to us backwards.
+
+As you can see, most of the 12 messages we care about call handlers that convert the message into an event and put it in our queue.
+This, for example, is what we do with a wm-lbuttondown message:
+
+To handle any wm-lbuttondown with a l-param:
+Create an event.
+Put "left click" into the event's kind.
+If the alt key was down, set the event's alt flag.
+If the ctrl key was down, set the event's ctrl flag.
+If the shift key was down, set the event's shift flag.
+Convert the l-param to the event's spot.
+Enque the event.
+
+Sometimes we even do a little work for the programmer first, as is the case with wm-paint messages:
+
+To handle any wm-paint with a window:
+Call "user32.dll" "BeginPaint" with the window and a paintstruct's whereabouts.
+Call "user32.dll" "EndPaint" with the window and the paintstruct's whereabouts.
+Create an event.
+Put "refresh" into the event's kind.
+Enque the event.
+
+The call to "DefWindowProcA" at the bottom passes unprocessed messages back to Windows to handle in the "usual" way.
+
+Goofy, goofy, goofy. But that's how Microsoft wants it done.
+Sometimes I think C programmers actually LIKE things to be obscure, obtuse, and unnecessarily difficult.
+
+\Sorry querido gringo, I misleading you somewhat:
+\el/los: masc., sing. and plural respectively. 
+\la/las: fem., sing. and plural respectively. 
+\lo: neutral singular for special sentences not usual ones.
+
+\Some examples:
+\art. + noun 
+\sm: El evento. The event.
+\pm: Los eventos. The events.
+\By the way: el seso (the brain) -> los sesos (the brains)
+
+Ah! That helps.
+
+\sf: La tecla. The key.
+\pf: Las teclas. The keys.
+
+That helps, too.
+
+\sn + m: Lo blanco de tu cara. The whiteness of your face.
+\sn + f: ¡Lo blanca que es la leche! How white is the milk!
+
+That is less helpful. What's the plural form of "lo"?
+
+\art. + noun + adj.: the three need to match in gender and number. You could see the regularity of plural cases.
+
+\sm: -o: El evento último. The last event.
+\sf: -a: La tecla última. The last key.
+
+\sm: -os: Los eventos últimos. The last events.
+\sf: -as: Las teclas últimas. The last keys.
+
+So "últim" can be either masculine or feminine?
+
+\Now with an adj. of neutral gender
+
+\pm: -o -e: El evento reciente.The recent event.
+\pf: -a -e: La tecla reciente. The recent key.
+
+\pm: -os -es: Los eventos recientes.The recent events.
+\pf: -as -es: Las teclas recientes. The recent keys.
+
+I'm beginning to think I'm too old for this.
+
+\But watch out! Nouns ending in -e, have no clear rule:
+
+\Masculinos:
+\el hombre, el cable, el aire, etc.: the man, the cable, the air.
+\los hombres, los cables, los aires: the men, the cables, the airs.
+
+\Femeninos:
+\la cumbre, la pirámide, la serie, etc.: the summit, the pyramid, a (or the) series 
+\las cumbres, la pirámides, las series: the summit, the pyramids, the series
+
+I will keep trying, but in English we say, "It is hard to teach an old dog new tricks."
+
+Tu muy viejo compañero Quijote, Gerry.

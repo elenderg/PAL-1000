@@ -1,0 +1,92 @@
+\Okay, Papa,
+
+\We begin. I need to learn more about Spanish, and you need to learn more about how the CAL works, to help me.
+\The good news is I do not think either of us needs to learn very much. The reason is this: The CAL cares about only a few things:
+
+(1) Five kinds of sentences:
+
+(a) type definitions, which always start with an indefinite article like A, AN, ANOTHER or SOME (UN, UNA, OTRO o ALGUNO);
+(b) global variable definitions, which always start with a definite article like THE (EL, LOS, LA, LAS o LO);
+(c) routine headers, which always start with an appropriate preposition like TO (PARA);
+(d) conditional statements, which always start with IF (SI o CUANDO); and
+(e) imperative statements, which start with anything else.
+
+(2) Names, which are anything after an article (indefinite or definite) up to:
+
+(a) any simple verb, like IS, ARE, CAN, or DO (es, es, puede, hacer), or
+(b) any conjunction, like AND or OR (y, o), or
+(c) any preposition, like FROM, TO, WITH, or BY (DE, A, CON o POR), or
+(d) any literal, like 123 or "Hello, World!" (123 o "¡Hola, Mundo!"), or
+(e) any punctuation mark.
+
+(3) Reserved words:
+
+(a) infix operators: PLUS, MINUS, TIMES, DIVIDED BY and THEN (which we can worry about later);
+(b) special definition words: CALLED and EQUAL (LLAMADO y IGUAL); and
+(c) special imperatives: LOOP, BREAK, EXIT, REPEAT and SAY (LAZO, INTERRUMPIR, SALIDA, REPETIR y DECIR).
+
+\What the programmer puts before and after and between all the special words above doesn't matter to the CAL, as long as spelling is consistent.
+\This command, for example...
+
+Add 3 to a number.  ->  Agrega 3 a un número.
+
+\...looks to the CAL like this...
+
+add [number] to [number]  ->  agregar [número] a [número]
+
+\...because the articles are no longer needed once we have found the variables and their types.
+
+\So far, so good. No big problems, and no changes to the CAL's machine-code-generation routines.
+\Until we come to possessives. There are no possessives in Spanish. So:
+
+The box's top  ->  La parte superior de la caja
+
+\In English, we have the record preceding the field, and the apostrophe always indicates there is a field name coming next.
+\In Spanish, however, we have the field preceding the record, with (I hope) the word "de" consistently indicating there is a record name coming next.
+
+\What I need to do is first enhance the CAL to accept a similar syntax in English...
+
+The top of the box  ->  La parte superior de la caja
+
+\...so I can see how to handle that in Spanish. This is not a trivial enhancement, since it affects both parsing and code generation.
+\I'm going to need some time to think about the best way to approach this.
+\The good news is that's the only major stumbling block I've discovered so far.
+
+\I agree that we should use the most generally accepted form of Spanish.
+\If the keywords at the top of this post are the same in all dialects, however, we should be able to support different dialects at the same time.
+\Right now, for example, the SAL (Spanish CAL) is bi-lingual; understands both English and Spanish.
+\My test program, for example, is completely Spanish and looks like this right now (in a text file called "el código"):
+
+Para correr:
+Puesta en marcha.
+Hacer cosas increíbles.
+Apagar.
+
+Para hacer cosas increíbles:
+Borrar la pantalla.
+Espera la clave de escape.
+
+\But my Noodle, called "los fideos," has an unholy mixture of the two languages like this:
+
+La clave de escape is a key equal to 27.
+
+Para espera una clave;
+To wait until we hit a key;
+To wait for a key:
+Wait for the key to go down.
+Wait for the key to come up.
+Flush all events.
+
+\As I said above, the CAL/SAL doesn't much care what we put between articles, conjunctions, and prepositions.
+\I'm not sure how far I can get with this approach, however. But it lets me test without translating a lot of low-level Noodle (fideos) code.
+
+\I almost forgot.  The primary entry point, "run," is hard-coded in the compiler, so we need to choose between...
+
+Para correr:   o   Para ejecutar:
+
+\...or whatever you think best.
+
+\Your amigo,
+
+\Gerry
+

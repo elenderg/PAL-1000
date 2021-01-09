@@ -1,0 +1,92 @@
+the input console is a console.
+the output console is a console.
+the serial port is a serial port.
+the serial buffer is a buffer.
+
+to run:
+  start up.
+  initialize our stuff.
+  handle any events.
+  finalize our stuff.
+  shut down.
+
+to check the serial port:
+  receive from the serial port into a buffer.
+  if the i/o error is not blank, write the i/o error; exit.
+  if the buffer's length is 0, exit.
+  append the buffer to the serial buffer.
+  put the return byte into a temp string.
+  if the serial buffer does not end with the temp string, exit.
+  remove the last byte from the serial buffer.
+  write "Them: " then the serial buffer on the output console.
+  clear the serial buffer.
+  show everything.
+  
+to finalize our stuff:
+  destroy the output console.
+  destroy the input console.
+
+To handle any events:
+  if there are not any events waiting, check the serial port; repeat.
+  deque an event.
+  if the event is nil, exit.
+  handle the event.
+  repeat.
+ 
+to handle an event:
+  if the event's kind is "refresh", handle the event (refresh); exit.
+  if the event's kind is "key down", handle the event (key down); exit.
+  handle the event given the input console.
+
+to handle an event (enter):
+  extract a string from the input console's text.
+  if the string is "q", relinquish control.
+  transmit the string then the return byte to the serial port.
+  if the i/o error is not blank, write the i/o error; exit.
+  write "You: " then the string on the output console.
+  put "" into the input console's text.
+  show everything.
+
+To handle an event (key down):
+  put the event's key into a key.
+  if the key is the enter key, handle the event (enter); exit.
+  handle the event given the input console.
+
+to handle an event (refresh):
+  show everything.
+
+to initialize our stuff:
+  \ input console
+  create the input console.
+  put the white color into the input console's fill.
+  put the white color into the input console's border.
+  put 0 and the screen's height minus 1/2 inch and the screen's width and the screen's bottom into a box.
+  put the box into the input console's box.
+  put the box into the input console's text's box. 
+  \ ouput console
+  create the output console.
+  put the gray color into the output console's fill.
+  put the black color into the output console's border.
+  put 0 and 0 and the screen's width and the screen's bottom minus 1/2 inch into the box.
+  put the box into the output console's box.
+  put the box into the output console's text's box. 
+  \ instructions
+  write "Type q then press enter to quit." on the output console.
+  \ serial port
+  write "opening com port 4..." on the output console.
+  open the serial port given "COM4" and 9600.
+  if the i/o error is not blank, write the i/o error; exit.
+  write "com port open" on the output console.
+
+to show everything:
+  draw the input console.
+  draw the output console.
+  refresh the screen.
+  show the arrow cursor.
+
+\ this should probably be a function in the noodle.
+to decide if there are any events waiting:
+  if the event queue is not empty, say yes.
+  call "user32.dll" "PeekMessageA" with an msg's whereabouts and 0 and 0 and 0 and 0 [pm_noremove] returning a number.
+  if the number is not 0, say yes.
+  say no.

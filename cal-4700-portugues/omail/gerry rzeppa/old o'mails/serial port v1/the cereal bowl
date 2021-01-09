@@ -1,0 +1,79 @@
+a comstat is a record with
+  a number called fctshold,
+  a number called fdsrhold,
+  a number called frlsdhold,
+  a number called fxoffhold,
+  a number called fxoffsent,
+  a number called feof,
+  a number called ftxim,
+  a number called freserved,
+  a number called cbinque,
+  a number called cboutque.
+
+a dcb is a record with
+  a number called dcblength,
+  a number called baudrate,
+  a number called fbinary,
+  a number called fparity,
+  a number called foutxctsflow,
+  a number called foutdsrflow,
+  a number called fdtrcontrol,
+  a number called fdsrsensitivity,
+  a number called ftxcontinueonxoff,
+  a number called foutx,
+  a number called finx,
+  a number called ferrorchar,
+  a number called fnull,
+  a number called frtscontrol,
+  a number called fabortonerror,
+  a number called fdummy2,
+  a wyrd called wreservedm,
+  a wyrd called xonlim,
+  a word called xofflim,
+  a byte called bytesize,
+  a byte called parity,
+  a byte called stopbits,
+  a byte called xonchar,
+  a byte called xoffchar,
+  a byte called errorchar,
+  a byte called eofchar,
+  a byte called evtchar,
+  a wyrd called wreserved1.
+
+to close a serial port:
+    call "kernel32.dll" "CloseHandle" with the serial port.
+
+to open a serial port given a com port string and a baud rate number:
+  clear the i/o error.
+  privatize the com port.
+  null terminate the com port.
+  \ open the com port
+  call "kernel32.dll" "CreateFileA" with the com port string's first and -1073741824 [generic_read+generic_write] and 0 and 0 and 3 [open_existing] 
+    and 0 and 0 returning the serial port.
+  if the serial port is -1 [invalid_handle_value], put "Error opening serial port '" then the com port then "'." into the i/o error; exit.
+  \ get the current settings so everything gets defaulted correctly
+  call "kernel32.dll" "GetCommState" with the serial port and a dcb's whereabouts returning a result number.
+  if the result number is 0, put "Error getting comm state" into the i/o error; exit.
+  \ set the settings
+  put the baud rate into the dcb's baudrate.
+  call "kernel32.dll" "SetCommState" with the serial port and the dcb's whereabouts returning the result number.
+  if the result number is 0, put "Error setting comm state" into the i/o error; exit.
+
+to read from a serial port into a buffer:
+  clear the i/o error.
+  clear the buffer.  
+  call "kernel32.dll" "ClearCommError" with the serial port and 0 and a comstat's whereabouts returning a result number.
+  if the result number is 0, put "Error getting number of bytes to read." into the i/o error; exit.
+  put the comstat's cbinque into a size.
+  if the size is 0, exit.
+  reassign the buffer's first given the size.
+  put the buffer's first plus the size minus 1 into the buffer's last.
+  call "kernel32.dll" "ReadFile" with the serial port and the buffer's first and the size and a number's whereabouts and 0 returning the result number.
+  if the result number is 0, put "Error reading from serial port." into the i/o error; exit.
+
+a serial port is a handle.
+
+to write a buffer to a serial port:
+  clear the i/o error.
+  call "kernel32.dll" "WriteFile" with the serial port and the buffer's first and the buffer's length and a number's whereabouts and 0 returning a result number.
+  if the result number is 0, put "Error writing to serial port." into the i/o error; exit.

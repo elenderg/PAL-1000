@@ -1,0 +1,308 @@
+¡Hola Gerry!
+
+I'm trying to do the task:
+
+\Hola, Papa!
+
+\Please read my other "01-04-2018 why it is easy to convert plain english to español llano" post first.
+
+\Since Plain English and Español Llano allow spaces in type, variable, and routine names,
+\(unlike every other programming language on the planet!) we need to know where those names begin and end.
+\We use the following routines (and some others, already translated) to help us do that
+\(the string in each case is the current token that the parser has extracted from the source code):
+
+\To decide if a string is any name starter: \ compare with name ender
+\If the string is any mark, say no.
+\If the string is any symbol, say no.
+\If the string is any article, say no.
+\If the string is any conjunction, say yes.
+\If the string is any possessive, say no.
+\If the string is any verb, say yes.
+\If the string is any operator, say yes.
+\If the string is any preposition, say yes.
+\If the string is any qualifier, say no.
+\If the string is any literal, say no.
+\If the string is "called", say yes. \ as in "...20 bytes CALLED filler"
+\If the string is "equal", say yes. \ an in "...is a byte EQUAL to 13. 
+\If the string is blank, say no.
+\Say yes.
+
+\To decide if a string is any name ender: \ compare with name starter
+\If the string is any mark, say yes.
+\If the string is any symbol, say yes.
+\If the string is any article, say yes.
+\If the string is any conjunction, say yes.
+\If the string is any possessive, say yes.
+\If the string is any verb, say yes.
+\If the string is any operator, say yes.
+\If the string is any preposition, say yes.
+\If the string is any qualifier, say yes.
+\If the string is any literal, say yes.
+\If the string is "called", say yes.
+\If the string is "equal", say yes.
+\If the string is blank, say yes.
+\Say no.
+
+To decide if a string is any verb: \ only used in decider headers and IF statements
+
+If the string is "ser", say yes. \ "be": note that Spanish have both verbs for "to be": infinitive "ser" for permanent attribute
+If the string is "estar", say yes. \ "be": note that Spanish have both verbs for "to be": infinitive "estar" for temporal state
+
+If the string is "es", say yes. \ "is" is not \ isn't: "to be" conjugated in the singular third person (3ps) present, perm.
+If the string is "está", say yes. \ "is" is not \ isn't: "to be" conjugated in the singular third person (3ps) present, temp.
+If the string is "son", say yes. \ "are" are not \ aren't: "to be" conjugated in the plural third person (3pp) present, perm.
+If the string is "están", say yes. \ "are" are not \ aren't: "to be" conjugated in the plural third person (3pp) present, temp.
+
+If the string is "fue", say yes. \ "was" was not \ wasn't: only used in Noodle (3ps) past, perm.
+If the string is "estaba", say yes. \ "was" was not \ wasn't: only used in Noodle (3ps) past, temp.
+If the string is "fueron", say yes. \ "were" were not \ weren't?: not used in CAL (3pp) past, perm.
+If the string is "estaban", say yes. \ "were" were not \ weren't?: not used in CAL (3pp) past, temp.
+
+If the string is "será", say yes. \ it "will" will not \ won't: not used in CAL (3ps) past, perm.
+If the string is "estará", say yes. \ it "will" will not \ won't: not used in CAL (3ps) past, temp.
+If the string is "serán", say yes. \ they "will" will not \ won't: not used in CAL (3pp) past, perm.
+If the string is "estarán", say yes. \ they "will" will not \ won't: not used in CAL (3pp) past, temp.
+
+If the string is "puede", say yes. \ it "can" cannot \ can't: only case in CAL (3ps)
+If the string is "pueden", say yes. \ they "can" cannot \ can't: not used in CAL (3pp) added just in case 
+
+\these two following cases could be treated as beginning with negative particle "no"? they also are considered in decider of negative words
+If the string is "no puede", say yes. \ it "cannot": only case in CAL (3ps); should we used a literal translation to simplify "puede no"? sounds a little awkward but understandable enough
+If the string is "no pueden", say yes. \ they "cannot": not used in CAL (3pp) added just in case; should we used a literal translation to simplify "pueden no"? sounds a little awkward but understandable enough
+
+\If the string is "may", say yes. \ "may" may not \ mayn't: in Spanish the same use as "could"; not used in CAL
+If the string is "pudiera", say yes. \ it "could" could not \ couldn't: not used in CAL (3ps) added just in case
+If the string is "pudieran", say yes. \ they "could" could not \ couldn't:  not used in CAL (3pp) added just in case
+If the string is "pudiéramos", say yes. \ we "could" could not \ couldn't: only once in Noodle (1pp) "To decide if we could find a pointer:"
+\"we could" i.e. "nosotros pudiéramos", note the verb conjugation
+
+\If the string is "would", say yes. \ "would" would not \ wouldn't: in Spanish the same use as "should" I guess; not used in CAL
+If the string is "debe", say yes. \ it "should" should not \ shouldn't: (3ps)
+If the string is "deben", say yes. \ they "should" should not \ shouldn't: (3pp)
+
+\-----------------------------------------------------------------------------------------------------------
+\If the string is "do", say yes. \ "do": not used in CAL; same case as affirmative "does"
+
+\If the string is "sí", say yes. \ "does": only case used in CAL for affirmative questions, then we could use "sí" with accent, emphasizing literal "yes"
+
+\example from Noodle: \ both good in Spanish,
+\To     decide   if   a      string     does   end         with   another  string;
+\Para  decidir  si   una  cadena   sí        termina   con   otra        cadena; \ case with emphasis on the verb "does end" - "sí termina"
+
+\To     decide   if   a      string       ends         with    another   string;
+\Para  decidir  si   una  cadena     termina    con    otra         cadena; \ usual case in Spanish without emphasis on verb "ends" - "termina"
+
+\Exception: negative questions with "does not" where it could be a "si no" without accent, literal "if not", despite being in a sentence beginning with an "if"
+\example from Noodle:
+\If the substring    does  not  start  with "\\", exit.
+\Si  la   subcadena  si        no   inicia  con "\\", salida. \ it sounds somewhat repetitive in Spanish (si ... si ...), but is understandable, simplifying translation
+\Si  la   subcadena             no   inicia  con "\\", salida. \ this sounds natural in Spanish, this would be best
+
+\Well... To simplify more: use "si" for "do/does" without distinguish "sí/si" and leaves the interpretation to the reader/writer
+If the string is "si", say yes. \ "does": only case used in CAL for affirmative questions, used also for negative ones "does not" -> "si no" with neg. after
+\-----------------------------------------------------------------------------------------------------------
+
+If the string is "tiene", say yes. \ it "has" used in type definitions; (3ps) present
+If the string is "tienen", say yes. \ they "have" used in type definitions; (3pp) present
+
+\Watch out! "has" in deciders works differently: has  -> ha, been -> sido; may be it is easy because is the only "has been" in all of CAL
+\To     decide   if   the  mouse  has  been  dragged      from  a    spot                         given  a      grid:
+\Para  decidir  si   el      ratón  ha    sido   arrastrado  de      un  sitio/lugar/punto   dada  una  grilla:
+
+\Better and simple translation?:  has (like do/does) -> si, been -> fue, ...
+\To decide if the mouse has been dragged from ...
+\Para decidir si el ratón si fue arrastrado de ...
+\If the mouse has not been dragged from ...
+\Para decidir si el ratón si no fue arrastrado de ... \ rare but good enough, ... sounds better without "si"
+
+\But... has -> ha
+\To decide if the user has clicked in some choices;
+\Para decidir si el usuario ha cliqueado en algunas opciones.
+
+\Well... summary: "has/have" for deciders
+\has/have been                ->  ha/han sido  (3ps/3pp)
+\has/have +  past part.    ->  ha/han  (3ps/3pp)
+
+\-----------------------------------------------------------------------------------------------------------
+
+\If the string ends with "n't", say yes.  \ "n't"
+\this case is difficult because in Spanish negatives begin with negative particle "no" at least two words: the negative particle and the verb
+\shouldn't: no debe
+\can't: no puede
+\it hasn't: no tiene
+\they haven't: no tienen
+\isn't: no es / no está
+\aren't: no son: no son / no están
+\doesn't: si no, lit. for "does not" see exception for does
+\don't: si no, lit. for "do not" see exception for does
+\... in all cases could be treated after as a particle "not" Sp. "no", as in English, with a little awkardness for Spanish, but understandable enough
+
+To decide if a string is any negative word:
+If the string is "no", say yes. \ "not"
+If the string is "no puede", say yes. \ it "cannot" (3ps), could be lit. "puede no" rare but good enough 
+If the string is "no pueden", say yes. \ they "cannot" (3pp), could be lit. "pueden no" rare but good enough 
+If the string is "nada", say yes. \ "nothing"
+If the string ends with "n't", say yes. \ "n't"
+Say no.
+
+The compiler looks for "negative words" in conditional statements, removes them,
+and then calls a "positive" decider routine and reverses the result.
+For example, when the compiler finds this statement...
+
+"If the string is not any negative word, beep."
+
+...it will remove the "not" and match the rest to the above routine;
+then it will generate machine code to make the call, with added machine code to reverse the boolean result.
+
+\ trouble makers
+If the string is "inicia", say yes. \ "begins" does not begin \ doesn't begin: syn. "comienza"; could we add synonyms?
+If the string is "comienza", say yes. \ "starts" does not start \ doesn't start: I hear a yes
+If the string is "termina", say yes. \ "ends" does not end \ doesn't end
+If the string is "finaliza", say yes. \ "ends" does not end \ doesn't end
+If the string is "parece", say yes. \ "looks" does not look \ doesn't look
+If the string is "luce", say yes. \ "looks" does not look \ doesn't look
+If the string is "necesita", say yes. \ "needs" does not need \ doesn't need: not used in CAL
+If the string is "requiere", say yes. \ "needs" does not need \ doesn't need: not used in CAL
+Say no.
+
+\-----------------------------------------------------------------------------------------------------------
+\Prepositions in Spanish are twice a handful:
+\“a”, “ante”, “bajo”, “cabe”, “con”, “contra”, “de”, “desde”, “durante”, “en”, “entre”, “hacia”, “hasta”, “mediante”, “para”, “por”, “según”, “sin”, “so”, “sobre”, “tras”, “versus” y “vía”
+\ prep. in the context of SAL, not on a full Spanish grammar, as you note will use plenty of equivalent phrases with adverbs instead of a single prep. word
+To decide if a string is any preposition: 
+If the string is "alrededor de", say yes. \ "about" "around"
+If the string is "cerca de", say yes. \ "about" "around"
+If the string is "sobre", say yes. \ "above"
+If the string is "encima de", say yes. \ "above"
+If the string is "a través de", say yes. \ "across"
+If the string is "a lo largo de", say yes. \ "along"
+If the string is "tras", say yes. \ "after"
+If the string is "luego de", say yes. \ "after"
+If the string is "contra", say yes. \ "against"
+If the string is "todo", say yes. \ "all" masc.
+If the string is "toda", say yes. \ "all" fem.
+If the string is "solo", say yes. \ "alone" masc.
+If the string is "sola", say yes. \ "alone" fem.
+If the string is "entre", say yes. \ "among"
+If the string is "cualquier", say yes. \ "any" masc. sing.
+If the string is "cualquiera", say yes. \ "any" fem. sing.
+If the string is "cualesquier", say yes. \ "any" masc. plural
+If the string is "cualesquiera", say yes. \ "any" fem. plural
+If the string is "algún", say yes. \ "any" masc. sing.
+If the string is "alguna", say yes. \ "any" fem. sing.
+If the string is "algunos", say yes. \ "any" masc. plural
+If the string is "algunas", say yes. \ "any" fem. plural
+\I have a doubt on "ningún" for "not any", similar to "algún" for "any"
+If the string is "dondequiera", say yes. \ "anywhere" 
+If the string is "doquier", say yes. \ "anywhere"
+If the string is "doquiera", say yes. \ "anywhere"
+If the string is "donde sea", say yes. \ "anywhere"
+
+If the string is "como", say yes. \ "as"
+\But in this cases:
+\To draw a line as high as a box with a color;
+\To draw a line as tall as a box with a color: 
+\both: -> Para dibujar una línea tan alta como un cuadro con un color:
+\as ... as  -> tan ...como
+
+If the string is "en", say yes. \ "at" "in"
+If the string is "a", say yes. \ "at" "in"
+
+If the string is "away", say yes.
+If the string is "back", say yes.
+If the string is "backward", say yes.
+If the string is "backwards", say yes.
+If the string is "before", say yes.
+If the string is "beginning", say yes.
+If the string is "behind", say yes.
+If the string is "below", say yes.
+If the string is "beneath", say yes.
+If the string is "beside", say yes.
+If the string is "between", say yes.
+If the string is "beyond", say yes.
+If the string is "bigger", say yes.
+If the string is "by", say yes.
+If the string is "close", say yes.
+If the string is "deep", say yes.
+If the string is "diagonally", say yes.
+If the string is "down", say yes.
+If the string is "downward", say yes.
+If the string is "ending", say yes.
+If the string is "everywhere", say yes.
+If the string is "except", say yes.
+If the string is "finishing", say yes.
+If the string is "facing", say yes.
+If the string is "for", say yes.
+If the string is "forward", say yes.
+If the string is "from", say yes.
+If the string is "given", say yes.
+If the string is "giving", say yes.
+If the string is "high", say yes.
+
+If the string is "inside", say yes.
+If the string is "into", say yes.
+If the string is "larger", say yes.
+If the string is "leaning", say yes.
+If the string is "left", say yes.
+If the string is "leftward", say yes.
+If the string is "leftways", say yes.
+If the string is "like", say yes.
+If the string is "limiting", say yes.
+If the string is "long", say yes.
+If the string is "near", say yes.
+If the string is "of", say yes.
+If the string is "off", say yes.
+If the string is "on", say yes.
+If the string is "only", say yes.
+If the string is "onto", say yes.
+If the string is "out", say yes.
+If the string is "outside", say yes.
+If the string is "over", say yes.
+If the string is "past", say yes.
+If the string is "pointing", say yes.
+If the string is "returning", say yes.
+If the string is "right", say yes.
+If the string is "rightward", say yes.
+If the string is "rightways", say yes.
+If the string is "shorter", say yes.
+If the string is "sideway", say yes.
+If the string is "sideways", say yes.
+If the string is "similar", say yes.
+If the string is "smaller", say yes.
+If the string is "somewhere", say yes.
+If the string is "slantwise", say yes.
+If the string is "slantway", say yes.
+If the string is "slantways", say yes.
+If the string is "starting", say yes.
+If the string is "tall", say yes.
+If the string is "taller", say yes.
+If the string is "thru", say yes.
+If the string is "through", say yes.
+If the string is "throughout", say yes.
+If the string is "to", say yes.
+If the string is "toward", say yes.
+If the string is "towards", say yes.
+If the string is "under", say yes.
+If the string is "underneath", say yes.
+If the string is "until", say yes.
+If the string is "unto", say yes.
+If the string is "up", say yes.
+If the string is "upward", say yes.
+If the string is "upon", say yes.
+If the string is "using", say yes.
+If the string is "via", say yes.
+If the string is "while", say yes.
+If the string is "wide", say yes.
+If the string is "with", say yes.
+If the string is "within", say yes.
+If the string is "without", say yes.
+Say no.
+
+
+Please replace the quoted words (like "are" and "be" and "not") in the routines above with appropriate Spanish equivalents,
+where possible. I will then paste them into the SAL-1001 and he will be a little older, and know more, and work better, than the SAL-1000.
+
+Thanks,
+
+Gerry
+

@@ -1,0 +1,162 @@
+\ Guiding Principle #1: "Everything should be made as simple as possible, but not simpler."
+
+okay, okay. i think i am coming to understand that you don't want to define any executable headers
+or file formats. i can somewhat understand that. you, however, have a lot more experience with
+compiling by hand and getting CAL and Plain English running than i do.
+
+\ We have to define some kind of executable format, if only to say where the first instruction goes.
+\ I just want it "as simple as possible, but not simpler." I'm a teacher at heart, so I'm always thinking,
+\ "How am I going to explain this to a bright 12-year-old? How long will it take? Will I be able to
+\ keep him interested?"
+
+i had offered to try to get CAL's honest face on mac or linux, and you have somewhat persuaded me
+that getting a minimal system that is custom-built for CAL is a good goal.
+
+\ Not just good, but GREAT! A decade-old dream come true!
+
+so i'm looking into that, because you've also convinced me that reading through the ELF manual to
+try to get CAL on linux might not be completely worthwhile.
+
+\ Agreed. We already have a nice, simple CAL with an inexplicable mess underneath. Switching messes
+\ doesn't really get us any closer to that bright 12-year-old.
+
+i'm afraid i'm trying to run before i even walk. i believe i said something like this a week ago. i really
+need someone to keep pulling me back from wandering off cliffs. perhaps just some discipline. ugh;
+adulting is hard.
+
+\ That's why we're so thankful that Aunt Tilly never abandons her post at the Gates of the Monastery.
+
+that's a fair point [that an operating system in ROM is safe].
+
+\ Note that this approach works best with "old-school programming masters" who think code should be
+\ thoroughly tested before it is released, unlike the "new-school neophytes" who skimp on testing and
+\ excuse themselves with the the thought that it's easy to broadcast an update over the internet.
+
+i don't disagree with this point [that DOS and the original Mac had few protections against rogue shellcode].
+i'd argue that the current hellscape of hackers and nation-state actors makes net-connected computers
+somewhat less safe nowadays.
+
+\ I agree that we live in a wicked world: "The whole world lies in wickedness," 1 John 5:19.
+\ And that people are no damn good: "There is none righteous, no not one," Romans 3:10.
+\ But I don't believe in living in fear, either. We rarely lock our doors, and I almost always leave
+\ the car keys (er, fob) in the car. A class on "How a Computer Works" is different than a class on
+\ "How to Keep Evil People out of Your Computer." Since I don't think I've got time to do both,
+\ I'm willing to take the risk and settle for the former. Besides, there are better ways than software
+\ to discourage hackers: punish the bad guys, not the good guys. Catch a couple of hackers and
+\ publicly cut their fingers off. That'll do it.
+
+this is another fair point [don't prematurely complicate our system with elaborate security measures].
+solve the problems that are immediately facing me and not the ones i anticipate facing. so many cliffs.
+
+\ They sell a lot of Arduinos, and they're not hardened against hackers. I think a 32-bit "Arduino" with
+\ Plain English and the CAL's simple and honest face would appeal to a lot of folks. Folks who wouldn't
+\ care about security. If, in the end, we did no more than rid the world of 8-bit hobby computers, I'd still
+\ consider our project a whopping success.
+
+a fair point there, too [re: Redbox's Windows 7 security]. i'd argue that windows 7 has been hardened
+considerably more than you are proposing. i'll admit that i jumped the gun on the security requirements, but it's
+worth at least a mention.
+
+\ We don't keep babies safe by changing their DNA or making them wear armored diapers; we like them cute
+\ and cuddly. We keep them safe by building walls around them. So when the time comes, www.endgame.com can
+\ build a wall to keep the baby CAL safe in his Redbox cradle.
+
+something like O'mail works until someone comes along who is not trustworthy.
+
+\ But that only happens once. Then we hunt that bastard down and cut off his hands, and that's that.
+
+perhaps it's because my kids are still so young, but i'm hyper-conscious of betrayal and neer-do-wells.
+my oldest is five and still inherently trusting. i'm not looking forward to having to explain betrayal to him.
+
+\ I understand. You're probably not looking forward to explaining Intel's x86 architecture or
+\ ELF executables to him, either. Hopefully, you won't have to. "Our CPU has just 32 instructions, son, and
+\ our programs have the first instruction to be executed right at the start of the executable file..."
+
+we might not get many customers [if we sacrifice security for simplicity]. it might just become an academic tool.
+
+\ "Just academia" could still be a big market. Maybe as big or bigger than "just hobbyists."
+\ Or "just appliance manufacturers." Or "just toy makers."
+
+\ Guiding Priniple #2 "A small success is more impressive than a big failure" (as my wife Sharon often reminds me).
+
+i think the ELF and PE formats are more complex than is strictly necessary.
+
+\ No doubt about that.
+
+and that they lose a lot in the way of security by having so many moving pieces. a wall is harder to break into than a door.
+
+\ And as I said above, I'm fine with walls AROUND our baby; I just  don't want those big burly guards messing with the kid himself.
+
+however, some flexibility is nice.
+
+\ What could be more flexible than "Bytes 1-n: whatever the compiler writer wants to put there"?
+
+and, for the sake of argument, if i were the compiler writer, i'd want to
+get some opinions from the language developers (you) and other experts (also you).
+
+\ Our expert "opinion" will be visible to other compiler writers in the future CAL himself, and in
+\ the executables he churns out.
+
+yeah, i definitely feel like i'm "spiraling" here. i just gotta get this glider under control before i get too low.
+
+\ Just dwell on our Guiding principles. They go very nicely together:
+\ Guiding Principle #1: "Everything should be made as simple as possible, but not simpler."
+\ Guiding Priniple #2, "A small success is more impressive than a big failure."
+
+so at a minimum, i'd probably target the same instruction set (or proper subset thereof) that you used
+from intel. except, since it's stack-based, the register stuff would go away. so addition, subtraction,
+memory store, memory load, conditional jump, bit-wise AND/OR/XOR, test/compare. probably a couple more.
+that seems pretty minimal.
+
+\ The "transmogrify" step in our compiler is the one that generates Intel x86 machine code.
+\ At that point, each routine has been reduced to a series of "fragments" describing what, in a logical sense,
+\ the machine needs to do. There are 22 kinds of fragments; below are their identifying tags, with comments
+\ indicating how they are "transmogrified" into something an x86 CPU can understand:
+
+The break tag is a tag equal to 1. \ generates an unconditional jump to a specified address
+The call external tag is a tag equal to 2. \ generates a call to a DLL (in our case, this would be a call to a routine in ROM)
+The call indirect tag is a tag equal to 3. \ generates a call to an address known only at run-time, used to start up a compiled program when the Run command is invoked
+The call internal tag is a tag equal to 4. \ generates a call to a specified address
+The dereference tag is a tag equal to 5. \ converts a pointer's address into the address of the thing the pointer is pointing at
+The end if tag is a tag equal to 6. \ just a label for addressing purposes; does not generate code
+The epilog tag is a tag equal to 7. \ generates pops and a register copy to reset the stack frame, followed by a return statement
+The exit tag is a tag equal to 8. \ generates a jump to a specified address
+The finalize tag is a tag equal to 9. \ just a label for addressing purposes; does not generate code
+The increment tag is a tag equal to 10. \ generates code to convert a record address into a field address; really just an add with an immediate operand
+The intel tag is a tag equal to 11. \ copies machine code described in hex in the source
+The jump false tag is a tag equal to 12. \ generates code to compare a flag, and a jump if the flag is zero
+The load address tag is a tag equal to 13. \ generates code to put the address of a variable into a register
+The load eax tag is a tag equal to 14. \ generates code to put the address of a variable into the EAX register (EDX is normally used for addresses)
+The loop tag is a tag equal to 15. \ just a label for addressing purposes; does not generate code
+The not tag is a tag equal to 16. \ generates code to XOR the flag value in the EAX register
+The prolog tag is a tag equal to 17. \ generates a push and a register copy to reset the stack frame, followed by a little loop to make room on the stack for local variables, initialized to zero
+The push address tag is a tag equal to 18. \ generates code to push a variable's address on the stack
+The push value tag is a tag equal to 19. \ generates code to push a variable's value on the stack; only used for calls to Windows routines that require it
+The repeat tag is a tag equal to 21. \ generates a jump to a specified address
+The routine address tag is a tag equal to 22. \ generates code to put a routine address known only at run time into the EDX register; only used for Windows callbacks
+The save eax tag is a tag equal to 20. \ generates code to copy either 8, 16, or 32 bits from the EAX register to a variable; only used to get return values from Windows
+
+\ Note that three of the 22  (END IF, FINALIZE, and LOOP) don't generate code; which leaves us with just 19.
+\ Note also that three of the remaining (PUSH VALUE, ROUTINE ADDRESS, and SAVE EAX) are only for goofy Windows stuff, which leaves us with just 16.
+\ So we really only need 16 (or maybe fewer) distinct operations to satisfy the compiler.
+\ The Noodle is another matter: there we use machine code to add, subtract, multiply, divide, or, and, xor, etc.
+\ But I still think we can get by with a set of 32 (or fewer) instructions.
+
+i'm still early in the stack book. i'll probably write a basic stack machine based on the book in Plain English/CAL.
+once i have it in CAL, i'll see if i can work with you on porting the compiler to that architecture. thoughts?
+
+\ By "porting the compiler to that architecture," I assume you mean, "make a modified version of the CAL that
+\ generates an executable suitable to that architecture." Not a problem. This might also make for a workable
+\ division of labor. Give me the specs (instruction set, etc) and I'll see if I can whip up a KAL-1000 that does that.
+\ (I wanted to say SAL-1000, where "S" stood for "Stack", but I already used "S" for the Spanish CAL/SAL).
+\ The KAL will have a tiny noodle at first, of course, since our "bare" stack machine won't yet include analogs of the 
+\ 347 Windows routines that are called in the full CAL. But it's a start. And I'm going to love deleting the
+\ DOS header record, and the PE header record, and the PE section header record, and all the goofy stuff for
+\ Imports and Entries, etc. It will also be a joy to work with Big Endian addresses and values (I hope you're
+\ planning on that).
+
+\ And they're off and running (er, crawling)!
+
+\ Gerry
+
+
