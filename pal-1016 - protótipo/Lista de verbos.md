@@ -11,7 +11,7 @@ Lista de Verbos em Ordem Alfabética
 |address|endereçar|-|-|-|✔️|
 |adjust|ajustar|-|-|-|✔️|
 |advance|promover|-|-|-|✔️|
-|align|-|alinhar|-|-|✔️|
+|align|alinhar|-|-|-|✔️|
 |append|pospor|-|-|-|✔️|
 |ask|pedir|perguntar|-|-|✔️|
 |assign|designar|-|-|-|✔️|
