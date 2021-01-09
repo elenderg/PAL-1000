@@ -6,9 +6,9 @@
 |9|`tab key`|`tecla-tab`||
 |12|`clear key`|`tecla-limpar`||
 |13|`enter key`|`tecla-entrar`||
-|16|`shift key`|`tecla-maiúsculo`|`tecla-shift`|
-|17|`ctrl key`|`tecla-ctrl`||
-|18|`alt key`|`tecla-alt`||
+|16|`shift key`|`tecla-shift`|`tecla-maiúsculo`|
+|17|`ctrl key`|`tecla-ctrl`|`tecla-controle`|
+|18|`alt key`|`tecla-alt`|`tecla-alterar`|
 |19|`pause key`|`tecla-pausa`||
 |20|`caps key`|`tecla-fixar`||
 |27|`esc key` `escape key`|`tecla-esc`|`tecla-escapar`|
