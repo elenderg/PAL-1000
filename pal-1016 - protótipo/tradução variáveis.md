@@ -11,7 +11,7 @@
 |byte pointer|ponteiro de byte|||||
 |color|cor|tom|||||
 |console|console|||||
-|coord|coordenada|||||
+|coord|coordenada|coord||||
 |count|contador|||||
 |cursor|cursor|||||
 |date/time|data/hora|||||
@@ -34,11 +34,11 @@
 |fraction|fração|||||
 |grid|grade|||||
 |height|altura|||||
-|horizontal line|reta horizontal|||||
+|horizontal line|reta horizontal|traço horizontal||||
 |hue|matiz|||||
 |inch|polegada|||||
 |index|índice|||||
-|ip address|endereço ip|||||
+|ip address|endereço ip| número ip|ip|||
 |item|recurso|||||
 |key|tecla|||||
 |landscape sheet|folha horizontal|||||
@@ -46,7 +46,7 @@
 |line|reta|traço||||
 |millisecond|milissegundo|||||
 |name|nome|||||
-|number|número|||||
+|number|número|nº||||
 |pair|par|||||
 |path|rota|caminho||||
 |pen|pincel|||||
@@ -58,7 +58,7 @@
 |polygon|polígono|||||
 |portrait sheet|folha vertical|||||
 |precise degree|grau preciso|||||
-|quotient|quociente|||||
+|quotient|quociente|cociente||||
 |radious|raio|||||
 |refer|referência|||||
 |remainder|resto|||||
@@ -76,7 +76,7 @@
 |substring|subsequência|subsérie|segmento|||
 |terminal|terminal|||||
 |text|texto|||||
-|thing|elemento|||||
+|thing|elemento|coisa||||
 |tick|tique|||||
 |timer|temporizador|||||
 |vertex|vértice|||||
