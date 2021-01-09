@@ -20,15 +20,17 @@
 |directory|pasta|||||
 |directory name|nome de pasta|||||
 |dot|ponto|||||
-|drive|unidade|||||
-|drive kind|tipo de unidade|||||
-|drive name|nome de unidade|||||
+|drive|disco|||||
+|drive kind|tipo de disco|||||
+|drive name|nome de disco|||||
 |event|evento|||||
 |ellipse|elipse|||||
 |file|arquivo|||||
 |file name|nome de arquivo|||||
 |flag|signa|sinalizador||||
 |figure|figura|||||
+|font|fonte|tipo de letra||||
+|font height|altura de fonte|altura de tipo de letra||||
 |fraction|fração|||||
 |grid|grade|||||
 |height|altura|||||
@@ -41,7 +43,7 @@
 |key|tecla|||||
 |landscape sheet|folha horizontal|||||
 |lightness|brilho|luminosidade||||
-|line|reta|||||
+|line|reta|traço||||
 |millisecond|milissegundo|||||
 |name|nome|||||
 |number|número|||||
