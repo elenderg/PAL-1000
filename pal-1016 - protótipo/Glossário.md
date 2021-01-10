@@ -1176,7 +1176,7 @@ Lista de Termos em Ordem Alfabética
 |------------|------------|------------|------------|------------|------------|
 |pad|-|-|-|-|-|
 |paintstruct|-|-|-|-|-|
-|pair|-|-|-|-|-|
+|pair|par|dupla|-|-|-|
 |page|–|–|–|–|–|
 |page clipboard|–|–|–|–|–|
 |page number|–|–|–|–|–|
