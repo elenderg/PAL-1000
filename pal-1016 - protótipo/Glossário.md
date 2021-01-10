@@ -618,7 +618,7 @@ Lista de Termos em Ordem Alfabética
 |gdiplusversion|-|-|-|-|-|
 |generate|-|-|-|-|gerar|
 |geometric figure|–|–|–|–|figura geométrica|
-|get|-|-|-|obt-|obter|
+|get|-|-|-|obter|obter-se|
 |getalertboundary|-|-|-|-|-|
 |getevents|-|-|-|-|obt-eventos|
 |getinfo|-|-|-|-|obt-info|
