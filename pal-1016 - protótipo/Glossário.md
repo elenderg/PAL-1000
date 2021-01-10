@@ -1338,7 +1338,7 @@ Lista de Termos em Ordem Alfabética
 |right-paren byte|–|–|–|–|–|
 |right-single-quote byte|–|–|–|–|–|
 |right-window key|–|tecla ⊞ direita|tecla ⌘ direita|–|–|
-|rise|elevar|–|–|–|–|
+|rise|elevar|elevação|–|–|–|
 |r-key|tecla-r|–|–|–|–|
 |rotate|girar|rodar|–|–|–|
 |round (verbo)|arredondar|-|-|-|-|
