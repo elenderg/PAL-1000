@@ -569,6 +569,7 @@ Lista de Termos em Ordem Alfabética
 |flag <sup>[D]</sup>|sinal|sinalizador|bandeira|–|–|
 |flag <sup>[E]</sup>|–|–|–|–|–|
 |flip|inverter|–|–|–|–|
+|flush|descarregar|–|–|–|–|
 |font height|–|–|–|–|altura da fonte|
 |font info|–|–|–|–|informação da fonte|
 |font resource|–|–|–|–|recursos da fonte|
