@@ -1,7 +1,7 @@
-## TraduÃ§Ã£o dos imperativos
+## Tradução dos imperativos
 
 ##### Imperativos:
-|Origem|TraduÃ§Ã£o 1|TraduÃ§Ã£o 2|TraduÃ§Ã£o 3|TraduÃ§Ã£o 4|TraduÃ§Ã£o 5|
+|Origem|Tradução 1|Tradução 2|Tradução 3|Tradução 4|Tradução 5|
 |------|----------|----------|----------|----------|----------|
 |Exit|Saia|Interrrompa|Ignore|-|-|-|-|-|-|-|
 |Loop|-|-|-|-|-|-|-|-|-|-|
