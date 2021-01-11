@@ -1,7 +1,7 @@
 ## Tradução dos imperativos
 
 ##### Imperativos:
-|Origem|Tradução 1|Tradução 2|Tradução 3|Tradução 4|Tradução 5|
+|Termo|Tradução 1|Tradução 2|Tradução 3|Tradução 4|Tradução 5|
 |------|----------|----------|----------|----------|----------|
 |Exit|Saia|Interrrompa|Ignore|-|-|-|-|-|-|-|
 |Loop|-|-|-|-|-|-|-|-|-|-|
@@ -12,7 +12,7 @@
 |Start up|-|-|-|-|-|-|-|-|-|-|
 
 ##### Decisores
-|Origem|Tradução 1|Tradução 2|Tradução 3|Tradução 4|Tradução 5|
+|Termo|Tradução 1|Tradução 2|Tradução 3|Tradução 4|Tradução 5|
 |------|----------|----------|----------|----------|----------|
 |is alphanumeric|-|-|-|-|-|
 |is any consonant|-|-|-|-|-|
