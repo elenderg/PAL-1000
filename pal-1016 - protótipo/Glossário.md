@@ -566,7 +566,7 @@ Lista de Termos em Ordem Alfabética
 |five byte|–|–|–|–|byte-5|
 |five key|–|–|–|–|tecla-5|
 |f-key|–|–|–|–|tecla-f|
-|flag <sup>[D]</sup>|sinal|sinalizador|bandeira|–|–|
+|flag <sup>[D]</sup>|signa|sinalizador|bandeira|–|–|
 |flag <sup>[E]</sup>|–|–|–|–|–|
 |flip|inverter|–|–|–|–|
 |flush|descarregar|–|–|–|–|
