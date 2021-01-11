@@ -1263,7 +1263,7 @@ Lista de Termos em Ordem Alfabética
 |question-mark byte|–|byte-?|–|–|–|
 |quora|question or answer|-|-|-|pesquisa|
 |quote (verbo)|citar|referenciar|fazer referência|-|aspear|
-|quoted|–|–|mencionado|citado|aspeado|
+|quoted|–|cotado|mencionado|citado|aspeado|
 |quotient|quociente|cociente|–|–|–|
 |quit|encerrar|sair|fechar|finalizar|-|
 
