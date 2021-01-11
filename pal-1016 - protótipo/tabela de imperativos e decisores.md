@@ -1,7 +1,7 @@
-## TraduÁ„o dos imperativos
+## Tradu√ß√£o dos imperativos
 
 ##### Imperativos:
-|Origem|TraduÁ„o 1|TraduÁ„o 2|TraduÁ„o 3|TraduÁ„o 4|TraduÁ„o 5|
+|Origem|Tradu√ß√£o 1|Tradu√ß√£o 2|Tradu√ß√£o 3|Tradu√ß√£o 4|Tradu√ß√£o 5|
 |------|----------|----------|----------|----------|----------|
 |Exit|Saia|Interrrompa|Ignore|-|-|-|-|-|-|-|
 |Loop|-|-|-|-|-|-|-|-|-|-|
@@ -12,6 +12,7 @@
 |Start up|-|-|-|-|-|-|-|-|-|-|
 
 ##### Decisores
+|Origem|Tradu√ß√£o 1|Tradu√ß√£o 2|Tradu√ß√£o 3|Tradu√ß√£o 4|Tradu√ß√£o 5|
 |------|----------|----------|----------|----------|----------|
 |is alphanumeric|-|-|-|-|-|
 |is any consonant|-|-|-|-|-|
