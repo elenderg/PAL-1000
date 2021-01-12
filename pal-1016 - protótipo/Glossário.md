@@ -1531,7 +1531,7 @@ Lista de Termos em Ordem Alfabética
 |tell|-|-|-|-|-|
 |term|-|-|-|-|-|
 |terminal|–|–|–|–|–|
-|text|-|-|-|-|-|
+|text|campo de texto|-|-|-|-|
 |text cutoff|–|–|–|–|–|
 |text margin|–|–|–|–|–|
 |textmetric|-|-|-|-|-|
