@@ -1,2 +1,2 @@
-\ <h4>Todos os arquivos precisam do arquivo "the noodle" para serem compilados.
-\ Pode ser necessário trocar o caractere <code>’</code> pelo caractere <code>'</code> em alguns algoritmos, devido um erro na codificação dos carateres. <h4>
+\ <h4>Todos os arquivos precisam do arquivo "the noodle" para serem compilados. </h4>
+\ <h4> Pode ser necessário trocar o caractere <code>’</code> pelo caractere <code>'</code> em alguns algoritmos, devido um erro na codificação dos carateres. <h4>
