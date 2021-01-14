@@ -1,0 +1,169 @@
+A variable is a thing with a name and a value.
+A value is a string.
+An operator is a string.
+A label is a string.
+
+
+The current statement is a statement.
+The next statement is a statement.
+
+The compare flag is a flag.
+The abort flag is a flag.
+
+The variables are some variables.
+
+To run some statements:
+Clear the abort flag.
+Put the statements' first into the next statement.
+Loop.
+If the escape key is down, Write "EXECUTION INTERRUPTED" on the console; break.
+If the abort flag is set, break.
+Put the next statement into the current statement.
+If the current statement is nil, break.
+Put the current statement's next into the next statement.
+Slap a rider on the current statement's string.
+Move the rider (simple rules).
+If the rider's token is "put", do put using the rider; repeat.
+If the rider's token is "go", do jump using the rider; repeat.
+If the rider's token is "if", do if using the rider; repeat.
+If the rider's token is "subtract", do subtract using the rider; repeat.
+If the rider's token is "write", do write using the rider; repeat.
+If the rider's token ends with ":", repeat.
+Abort with the rider and "EXPECTED A STATEMENT".
+Repeat.
+Destroy the variables.
+
+
+To abort with a rider and an error string:
+Put "ERROR: " then the error string into a message.
+Append " " then "FOUND" to the message.
+Append " '" then the rider's token then "'" to the message.
+Write the message on the console.
+List the current statement.
+Set the abort flag.
+
+
+To do subtract given a rider: \ SUBTRACT value FROM variable-name
+Move the rider (simple rules).
+Find a value given the rider. If the abort flag is set, exit.
+Move the rider (simple rules).
+If the rider's token is not "from", abort with the rider and "EXPECTED 'FROM'"; exit.
+Move the rider (simple rules).
+Find a variable given the rider's token.
+Convert the value to a number.
+Convert the variable's value to another number.
+Subtract the number from the other number.
+Convert the other number to the variable's value.
+
+To do if given a rider: \ IF comparison jump
+Move the rider (simple rules).
+Do comparison using the rider. If the abort flag is set, exit.
+If the compare flag is not set, exit.
+Do jump given the rider.
+
+To do comparison given a rider: \ value operator value
+Find a left value given the rider. If the abort flag is set, exit.
+If the left value starts with """", abort with the rider and "EXPECTED SOMETHING
+NUMERIC"; exit.
+Move the rider (simple rules).
+If the rider's token is not any operator, abort with the rider and "EXPECTED 'OPERATOR'"; exit.
+Put the rider's token into an operator.
+Move the rider (simple rules).
+Find a right value given the rider. If the abort flag is set, exit.
+If the RIGHT value starts with """", abort with the rider and "EXPECTED SOMETHING NUMERIC"; exit.
+Move the rider (simple rules).
+If the operator is "=", do comparison using the left value and the right value (equal); exit.
+If the operator is "<>", do comparison using the left value and the right value (equal); reverse the compare flag; exit.
+If the operator is "<", do comparison using the left value and the right value (less); exit.
+If the operator is "<=", do comparison using the left value and the right value (greater); reverse the compare flag; exit.
+If the operator is ">", do comparison using the left value and the right value (greater); exit.
+If the operator is ">=", do comparison using the left value and the right value (less); reverse the compare flag; exit.
+
+To do comparison given a left value and a right value (equal):
+Clear the compare flag.
+Convert the left value to a left number. Convert the right value to a right number.
+If the left number is the right number, set the compare flag.
+
+To do comparison given a left value and a right value (greater):
+Clear the compare flag.
+Convert the left value to a left number. Convert the right value to a right number.
+If the left number is greater than the right number, set the compare flag.
+
+To do comparison given a left value and a right value (less):
+Clear the compare flag.
+Convert the left value to a left number. Convert the right value to a right number.|
+If the left number is less than the right number, set the compare flag.
+
+To do jump given a rider: \ GO TO label-name
+If the rider's token is not "go", abort with the rider and "EXPECTED 'Go'"; exit.
+Move the rider (simple rules).
+If the rider's token is not "to", abort with the rider and "EXPECTED 'to'"; exit.
+Move the rider (simple rules).
+Find a statement by label using the rider's token.
+If the statement is nil, abort with the rider and "EXPECTED A LABEL"; exit.
+Put the statement's next into the next statement.
+
+To do write given a rider: \ WRITE value
+Move the rider (simple rules).
+Find a value given the rider. If the abort flag is set, exit.
+Write the value on the console.
+
+To do put given a rider: \ PUT literal | variable-name INTO variable-name
+Move the rider (simple rules).
+Find a value given the rider. If the abort flag is set, exit.
+Move the rider (simple rules).
+If the rider's token is not "into", abort with the rider and "EXPECTED 'INTO'"; exit.
+Move the rider (simple rules).
+If the rider's token is not any name, abort with the rider and "EXPECTED A VARIABLE NAME"; exit.
+Find a variable given the rider's token.
+If the variable is nil, create the variable using the rider's token.
+Put the value into the variable's value.
+
+To create a variable with a name:
+Allocate memory for the variable.
+Append the variable to the variables.
+Put the name into the variable's name.
+Put "0" into the variable's value.
+
+To find a variable given a name:
+Void the variable.
+Loop.
+Get the variable from the variables.
+If the variable is nil, exit.
+If the variable's name is the name, break.
+Repeat.
+
+To find a statement by label given a label:
+Privatize the label.
+Append ":" to the label.
+Void the statement.
+Loop.
+Get the statement from the statements.
+If the statement is nil, exit.
+If the statement's string is the label, break.
+Repeat.
+
+To find a value given a rider: \ literal | variable-name \ does not advance rider
+If the rider's token is any literal, put the rider's token into the value; exit.
+Find a variable given the rider's token.
+If the variable is nil, abort with the rider and "EXPECTED A VARIABLE"; exit.
+Put the variable's value into the value.
+
+To decide if a string is any operator:
+If the string is "=", say yes.
+If the string is "<>", say yes.
+If the string is "<", say yes.
+If the string is "<=", say yes.
+If the string is ">", say yes.
+If the string is ">=", say yes.
+Say no.
+
+To decide if a string is any name:
+If the string is blank, say no.
+If the string's first's target is any digit, say no.
+Say yes.
+
+To decide if a string is any literal:
+If the string is numeric, say yes.
+If the string starts with the double-quote byte, say yes.
+Say no.
