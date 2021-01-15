@@ -3,7 +3,7 @@
 [![Crowdin](https://badges.crowdin.net/portugues-puro/localized.svg)](https://crowdin.com/project/portugues-puro)
 
 <p>
-<img src="Imagens-Para-o-Readme/tela.png" alt="Tela do Programa" width="1280" height="1024">
+<img src="Imagens-Para-o-Readme/tela.png" alt="Tela do Programa" width="640" height="512">
  </p>
  
 
