@@ -9,8 +9,8 @@
 
 
 Este Projeto é baseado na [Plain English Programming Language](http://osmosianplainenglishprogramming.blog/).
-Os arquivos originais do projeto podem ser obtidos [aqui](http://www.osmosian.com/cal-4700.zip) e na pasta [cal-4700](https://github.com/elenderg/Portugues-Puro/tree/main/cal-4700%20ingl%C3%AAs).
-A documentação original (em inglês) está disponível [aqui](http://www.osmosian.com/instructions.pdf) e na pasta [documentation](https://github.com/elenderg/Portugues-Puro/tree/main/cal-4700%20ingl%C3%AAs/documentation).
+Os arquivos originais do projeto podem ser obtidos [aqui](http://www.osmosian.com/cal-4700.zip) e na pasta [cal-4700](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/cal-4700%20ingl%C3%AAs).
+A documentação original (em inglês) está disponível [aqui](http://www.osmosian.com/instructions.pdf) e na pasta [documentation](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/cal-4700%20ingl%C3%AAs/documentation).
 
 
 # Estrutura dos Arquivos
