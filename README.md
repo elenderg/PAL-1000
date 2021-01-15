@@ -3,10 +3,9 @@
 [![Crowdin](https://badges.crowdin.net/portugues-puro/localized.svg)](https://crowdin.com/project/portugues-puro)
 
 <p>
-<img src="Imagens-Para-o-Readme/tela.png" alt="Tela do Programa" width="1280" height="1204">
+<img src="Imagens-Para-o-Readme/tela.png" alt="Tela do Programa" width="1280" height="1024">
  </p>
  
- ![](Imagens-Para-o-Readme/tela.png | width=100)
 
 
 Este Projeto é baseado na [Plain English Programming Language](http://osmosianplainenglishprogramming.blog/).
