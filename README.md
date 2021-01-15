@@ -5,6 +5,8 @@
 <p>
 <img src="Imagens-Para-o-Readme/tela.png" alt="Tela do Programa" width="1280" height="1204">
  </p>
+ 
+ ![](Imagens-Para-o-Readme/tela.png | width=100)
 
 
 Este Projeto é baseado na [Plain English Programming Language](http://osmosianplainenglishprogramming.blog/).
