@@ -148,7 +148,7 @@ Put the item's win32finddata's dwfileattributes into um number.
 Bitwise and the number with 16 [file_attribute_directory].
 If the number is 0, put "file" into the item's kind. \; put "archivo" into the item's clase.
 If the number is not 0, put "directory" into the item's kind.\; put "directorio" into the item's clase.
-Convert the item's win32finddata's ftcreationtime to the item's creation date/time string. \ added por email sorting
+Convert the item's win32finddata's ftcreationtime to the item's creation date/time string. \ added for email sorting
 Put the item's win32finddata's cfilename's whereabouts into um pchar.
 Convert the pchar to the item's designator.
 If the item's kind is "directory", append "\" to the item's designator.
@@ -1492,6 +1492,8 @@ Append the other pdf string to the buffer.
 
 To convert um string to um flag:
 If the string is "sí", set the flag; exit.
+If the string is "s", set the flag; exit.
+If the string is "sim", set the flag; exit.
 If the string is "y", set the flag; exit.
 If the string is "yes", set the flag; exit.
 Clear the flag.
@@ -1983,7 +1985,7 @@ Null terminate the path.
 Call "kernel32.dll" "CreateDirectoryA" with the path's first and 0 returning um number.
 Clear the i/o error.
 If the number is not 0, exit.
-Put "Error creando directorio '" then the path then "'." into the i/o error.
+Put "Erro. Não foi possível criar a pasta '" then the path then "'." into the i/o error.
 
 To create um path in the file system (file):
 Privatize the path.
@@ -1992,7 +1994,7 @@ Call "kernel32.dll" "CreateFileA" with the path's first and 1073741824 [generic_
 Call "kernel32.dll" "CloseHandle" with the handle.
 Clear the i/o error.
 If the handle is not -1 [invalid_handle_value], exit.
-Put "Error creando archivo '" then the path then "'." into the i/o error.
+Put "Erro. Não foi possível criar o arquivo '" then the path then "'." into the i/o error.
 
 To create um pdf object given um kind:
 Allocate memory por the pdf object.
@@ -2048,7 +2050,7 @@ And 0 [winhttp_no_referer]
 And 0 [winhttp_default_accept_types]
 And the secure number
 Returning the winhttp request's request.
-If the winhttp request's request is 0, put "No pude abrir the pedido." into the i/o error; exit.
+If the winhttp request's request is 0, put "Erro na requisição winhttp. Não foi possível abrir a requisição." into the i/o error; exit.
 
 To create um row given um byte:
 Allocate memory por the row.
@@ -2067,16 +2069,16 @@ Put 2 [af_inet] into the sockaddr's sin_family.
 Put the port into the sockaddr's sin_port.
 \ create socket  
 Call "ws2_32.dll" "socket" with 2 [af_inet] and 1 [sock_stream] and 0 [ipproto_ip] returning the socket.
-If the socket is -1, put "No pude crear socket." into the i/o error; exit.
+If the socket is -1, put "Erro. Não foi possível criar o soquete." into the i/o error; exit.
 \ connect socket
 Call "ws2_32.dll" "connect" with the socket and the sockaddr's whereabouts and the sockaddr's magnitude returning um result number.
-If the result is not 0, put "No pude conectar al socket." into the i/o error; exit.
+If the result is not 0, put "Erro. Falha na conexão com o soquete." into the i/o error; exit.
 \ set send timeout 30 seconds
 Call "ws2_32.dll" "setsockopt" with the socket and 65535 and 4101 [so_sndtimo] and 30 seconds' whereabouts and 4 returning the result number.
-If the result is not 0, put "No pudo configurar the tiempo de espera de recepción." into the i/o error; exit.
+If the result is not 0, put "Erro. Não foi possível definir o tempo limite de recepção 4101 so_sndtimo." into the i/o error; exit.
 \ set receive timeout 30 seconds
 Call "ws2_32.dll" "setsockopt" with the socket and 65535 and 4102 [so_rcvtimeo] and 30 seconds' whereabouts and 4 returning the result number.
-If the result is not 0, put "No pudo configurar the tiempo de espera de recepción." into the i/o error; exit.
+If the result is not 0, put "Erro. Não foi possível definir o tempo limite de recepção 4102 so_rcvtimeo." into the i/o error; exit.
 
 To create um string thing given um string:
 Allocate memory por the string thing.
@@ -3848,7 +3850,7 @@ Convert the buffer como um nibble string to um hex string.
 Put the hex string's length into um length.
 Call "advapi32.dll" "CryptDecrypt" with the crypt session's hcryptkey and 0 and 1 and 0 and the hex string's first
 And the length's whereabouts returning um result number.
-If the result number is 0, put "Error desencriptando datos." into the i/o error; destroy the crypt session; exit.
+If the result number is 0, put "Erro ao tentar decifrar os dados." into the i/o error; destroy the crypt session; exit.
 Destroy the crypt session.
 Put the hex string into the buffer.
 
@@ -3935,7 +3937,7 @@ Null terminate the path.
 Call "kernel32.dll" "RemoveDirectoryA" with the path's first returning um number.
 Clear the i/o error.
 If the number is not 0, exit.
-Put "Error eliminando directorio '" then the path then "'." into the i/o error.
+Put "Erro. Não foi possível apagar a pasta '" then the path then "'." into the i/o error.
 
 To destroy um path in the file system (file):
 Privatize the path.
@@ -3943,7 +3945,7 @@ Null terminate the path.
 Call "kernel32.dll" "DeleteFileA" with the path's first returning um number.
 Clear the i/o error.
 If the number is not 0, exit.
-Put "Error eliminando archivo '" then the path then "'." into the i/o error.
+Put "Erro. Não foi possível apagar o arquivo '" then the path then "'." into the i/o error.
 
 To destroy um picture:
 If the picture is nil, exit.
@@ -15247,15 +15249,15 @@ To store um buffer in um file;
 To write um buffer to um file:
 Clear the i/o error.
 Call "kernel32.dll" "SetFilePointer" with the file and 0 and 0 and 0 [file_begin] returning um result number.
-If the result number is -1, put "Error posicionando puntero de archivo." into the i/o error; exit.
+If the result number is -1, put "Erro no posicionamento do ponteiro do arquivo." into the i/o error; exit.
 Call "kernel32.dll" "WriteFile" with the file and the buffer's first and the buffer's length and um number's whereabouts and 0 returning the result number.
-If the result number is 0, put "Error escribiendo archivo." into the i/o error; exit.
+If the result number is 0, put "Erro na gravação do arquivo." into the i/o error; exit.
 
 To store um buffer in um path;
 To write um buffer to um path:
 Clear the i/o error.
 Extract um directory from the path.
-If the directory is not in the file system, put "Directorio '" then the directory then "' no existe." into the i/o error; exit.
+If the directory is not in the file system, put "A pasta '" then the directory then "' não existe." into the i/o error; exit.
 Set the path to read-write mode.
 Privatize the path.
 Null terminate the path.
