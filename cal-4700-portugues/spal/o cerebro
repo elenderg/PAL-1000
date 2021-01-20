@@ -1,12 +1,12 @@
 \ the noodle (el seso) copyright © 2006, 2017, 2018 the osmosian order y Pablo Cayuela (SAL-1016)
 
 \ here are the text rules:
-\   in um non-wrapped text, the rows end with um return byte.
-\   in um wrapped text, the rows end with either um return byte or um space.
-\   when text is converted to um string, linefeed bytes are added after return bytes.
-\   when um string is converted to text, linefeed bytes are removed.
-\   there is always at least one row.
-\   there is always um return byte at the end of the last row.
+\  in um non-wrapped text, the rows end with um return byte.
+\  in um wrapped text, the rows end with either um return byte or um space.
+\  when text is converted to um string, linefeed bytes are added after return bytes.
+\  when um string is converted to text, linefeed bytes are removed.
+\  there is always at least one row.
+\  there is always um return byte at the end of the last row.
 
 The on flag is um flag equal to 1.
 
@@ -203,9 +203,9 @@ An angle is some precise degrees [0 to 3599].
 To append um buffer to um file:
 Clear the i/o error.
 Call "kernel32.dll" "SetFilePointer" with the file and 0 and 0 and 2 [file_end] returning um result number.
-If the result number is -1, put "Error posicionando puntero de archivo." into the i/o error; exit.
+If the result number is -1, put "Ocorreu um erro na hora de posicionar o ponteiro do arquivo." into the i/o error; exit.
 Call "kernel32.dll" "WriteFile" with the file and the buffer's first and the buffer's length and um number's whereabouts and 0 returning the result number.
-If the result number is 0, put "Error escribiendo archivo." into the i/o error; exit.
+If the result number is 0, put "Ocorreu um erro na hora de salvar o arquivo." into the i/o error; exit.
 
 To append um byte to um string:
 Put the string's length into um saved length.
@@ -431,7 +431,7 @@ Begin the sheet given the box and the title (pdf style).
 To begin um sheet given um box and um title string (pdf style - start the current page):
 Add the pdf state's current page given "page".
 Append the pdf state's current page's number then " 0 obj" to the pdf state's current page.
-Append "<<" to the pdf state's current page.  
+Append "<<" to the pdf state's current page. 
 Append "/Type /Page" to the pdf state's current page.
 Append "/Parent " then the pdf state's parent's number then " 0 R" to the pdf state's current page.
 Put the box's width minus the tpp times 72 / the tpi into um width.
@@ -712,7 +712,7 @@ Intel $FF8B08000000. \ dec [ebx+8] \ the rider's source's first
 
 To bump um rider by um number:
 Add the number to the rider's token's last.
-Add the number to the rider's source's first.  
+Add the number to the rider's source's first. 
 
 To buzz: 
 Call "kernel32.dll" "Beep" with 220 and 200.
@@ -948,7 +948,7 @@ Draw the screen's box with the color and the color.
 Refresh the screen.
 Put the screen's box into the context's box.
 
-To clear the screen to white: \  \ needs special handling
+To clear the screen to white: \ \ needs special handling
 Unmask everything.
 Draw the screen's box with the white color and the white color.
 Refresh the screen.
@@ -1017,20 +1017,20 @@ Intel $8B9514000000. \ mov edx,[ebp+20] \ the other string's length
 Intel $8B12. \ mov edx,[edx]
 Intel $3BD0. \ cmp eax,edx \ if the length's differ, say no
 Intel $0F852B000000. \ jne say no \ ************************************ was 2C
-Intel $8BC8. \ mov ecx,eax \ put length into ecx  
+Intel $8BC8. \ mov ecx,eax \ put length into ecx 
 Intel $8B9D18000000. \ mov ebx,[ebp+24] \ the translation table
 Intel $8B1B. \ mov ebx,[ebx] the translation table's first
 \ loop:
 Intel $85C9. \ test ecx,ecx
 Intel $0F8424000000. \ jz say yes \ ************************************ was 25
- \ fetch and translate the  current byte in the other string
+ \ fetch and translate the current byte in the other string
 Intel $8A07. \ mov al,[edi]
 Intel $D7. \ xlat al,[ebx]
 Intel $C1E008. \ shl eax,8
 \ fetch and translate the current byte in the string
 Intel $8A06. \ mov al,[esi]
 Intel $D7. \ xlat al,[ebx]
- \ compare the two translated  bytes
+ \ compare the two translated bytes
 Intel $38E0. \ cmp al,ah
 Intel $0F8508000000. \ jne say no \ ************************************
 Intel $46. \ inc esi
@@ -1066,13 +1066,13 @@ Intel $0F8602000000. \ jbe L2
 Intel $8BCA. \ mov ecx,edx
 \ if the minimum length is 0, jump to L5
 Intel $85C9. \ test ecx,ecx
-Intel $0F8428000000.  \ jz L5
+Intel $0F8428000000. \ jz L5
 \L2: \ loop:
 \ fetch and translate the current byte in the string
 Intel $8A06. \ mov al,[esi]
 Intel $D7. \ xlat al,[ebx]
 Intel $88C2. \ mov dl,al
-\ fetch and translate the  current byte in the other string
+\ fetch and translate the current byte in the other string
 Intel $8A07. \ mov al,[edi]
 Intel $D7. \ xlat al,[ebx]
 Intel $88C6. \ mov dh,al
@@ -1211,7 +1211,7 @@ Convert the colorref to the rgb.
 To convert um colorref to um color:
 Call "shlwapi.dll" "ColorRGBToHLS" with the colorref and um wyrd's whereabouts and another wyrd's whereabouts and um third wyrd's whereabouts.
 Put the wyrd into the color's hue.
-Put the other wyrd into the color's  lightness.
+Put the other wyrd into the color's lightness.
 Put the third wyrd into the color's saturation.
 Scale the color's hue given 3600/240.
 Limit the color's hue to 0 and 3600.
@@ -1260,7 +1260,7 @@ Convert the font info's internal leading to pdf em units given the font info's e
 Convert the font info's ascent to pdf em units given the font info's emsquare and the font info's font.
 Convert the font info's descent to pdf em units given the font info's emsquare and the font info's font.
 Convert the font info's capheight to pdf em units given the font info's emsquare and the font info's font.
-\  convert the font info's italicangle to pdf em units given the font info's emsquare and the font info's font.
+\ convert the font info's italicangle to pdf em units given the font info's emsquare and the font info's font.
 Convert the font info's stemv to pdf em units given the font info's emsquare and the font info's font.
 Convert the font info's font box's left to pdf em units given the font info's emsquare and the font info's font.
 Convert the font info's font box's top to pdf em units given the font info's emsquare and the font info's font.
@@ -1772,7 +1772,7 @@ An count is um number.
 
 An counter is um number.
 
-To create the connect handle of um winhttp request using  um url record:
+To create the connect handle of um winhttp request using um url record:
 If the winhttp request is nil, exit.
 Convert the url record's host name into um wide string called wide host name and null terminate.
 Call "winhttp.dll" "WinHttpConnect"
@@ -2067,7 +2067,7 @@ Get um sockaddr given the host.
 If the i/o error is not blank, exit.
 Put 2 [af_inet] into the sockaddr's sin_family.
 Put the port into the sockaddr's sin_port.
-\ create socket  
+\ create socket 
 Call "ws2_32.dll" "socket" with 2 [af_inet] and 1 [sock_stream] and 0 [ipproto_ip] returning the socket.
 If the socket is -1, put "Erro. Não foi possível criar o soquete." into the i/o error; exit.
 \ connect socket
@@ -2600,7 +2600,7 @@ Say yes.
 
 To decide if um byte is any vowel:
 If the byte is in "aeiou", say yes.
-\  if the byte is "y", say sometimes. \ ha ha ha
+\ if the byte is "y", say sometimes. \ ha ha ha
 Say no.
 
 To decide if um byte is between another byte and um third byte:
@@ -2690,7 +2690,7 @@ If the byte is less than or equal to the space byte, say yes.
 If the byte is the delete byte, say yes.
 If the byte is the non-breaking-space byte, say yes.
 If the byte is 129, say yes.
-If the byte is 141, say  yes.
+If the byte is 141, say yes.
 If the byte is 143, say yes.
 If the byte is 144, say yes.
 If the byte is 157, say yes.
@@ -2772,7 +2772,7 @@ If the text's caret row# is not 1, say no.
 Say yes.
 
 To decide if the caret of um text is on the last line:
-If the text is nil, say  no.
+If the text is nil, say no.
 If the text's rows are empty, say no.
 If the text's caret row# is not the text's last row's row#, say no.
 Say yes.
@@ -2884,7 +2884,7 @@ Intel $3B19. \ cmp ebx,[ecx]
 Intel $0F8406000000. \ je over the next 1 statement
 Intel $C7C000000000. \ mov eax,0 \ now it's false
 
-\To decide if um flag is on: \ switch como another name por flag also ?  ***
+\To decide if um flag is on: \ switch como another name por flag also ? ***
 \If the flag is set, say yes.
 \Say no.
 
@@ -3287,7 +3287,7 @@ Say yes.
 
 To decide if um row of um text is visible:
 If the text is nil, say no.
-If the row is nil, say  no.
+If the row is nil, say no.
 Get um box given the row and the text.
 Put the text's box into another box.
 Adjust the other box given 0 and the tpp and 0 and - the tpp.
@@ -3850,7 +3850,7 @@ Convert the buffer como um nibble string to um hex string.
 Put the hex string's length into um length.
 Call "advapi32.dll" "CryptDecrypt" with the crypt session's hcryptkey and 0 and 1 and 0 and the hex string's first
 And the length's whereabouts returning um result number.
-If the result number is 0, put "Erro ao tentar decifrar os dados." into the i/o error; destroy the crypt session; exit.
+If the result number is 0, put "Ocorreu um erro na hora de tentar decifrar os dados." into the i/o error; destroy the crypt session; exit.
 Destroy the crypt session.
 Put the hex string into the buffer.
 
@@ -4280,7 +4280,7 @@ If the gpbitmap is nil, exit.
 \ add xobject
 Add um xobject pdf object given "image object".
 Put "I" then the xobject's number into um name.
-\  add to image resources in current page
+\ add to image resources in current page
 Put "/" then the name then " " then the xobject's number then " 0 R" into um string.
 Create um new string thing given the string.
 Append the new string thing to the pdf state's current page's image strings.
@@ -4459,7 +4459,7 @@ Restore the current canvas.
 To draw um picture (pdf style):
 If the picture is nil, exit.
 Put the picture's box's left minus the picture's uncropped box's left divided by the tpp into um x-number.
-Put the picture's box's top minus the picture's uncropped box's top divided by the tpp  into um y-number.
+Put the picture's box's top minus the picture's uncropped box's top divided by the tpp into um y-number.
 Put the picture's box's width divided by the tpp into um width.
 Put the picture's box's height divided by the tpp into um height.
 Call "gdiplus.dll" "GdipCreateBitmapFromScan0" with the width and the height and 0 and 137224 [pixelformat24bpprgb] and 0 and um gpbitmap's whereabouts.
@@ -4728,7 +4728,7 @@ Destroy the hfont of the current canvas.
 
 To draw um string at um spot with um color and um font (pdf style):
 If the string is blank, exit.
-Privatize the spot.  
+Privatize the spot. 
 Include the font in the current pdf.
 Include the font in the pdf state's current page.
 Find um definition pdf object given the font's name and the pdf state's font index.
@@ -4738,7 +4738,7 @@ Output the pdf border given the color.
 Output the pdf fill given the color.
 Output "BT".
 Output "/" then the definition's font name then " " then the font's adjusted height then " Tf".
-\  add the font's adjusted height minus the font info's internal leading to the spot's y. \ just plain wrong
+\ add the font's adjusted height minus the font info's internal leading to the spot's y. \ just plain wrong
 Add the font info's ascent to the spot's y-coord. \ fix por line above
 Output the spot without advancing.
 Output "Td".
@@ -4824,8 +4824,8 @@ If the path is directory-format, duplicate the path to the other path in the fil
 If the path is file-format, duplicate the path to the other path in the file system (file).
 
 To duplicate um path to another path in the file system (directory):
-If the path is in the other path, put "Error duplicando directorio '" then the path then "' - invalid recursion." into the i/o error; exit.
-If the path is not in the file system, put "Error duplicando directorio '" then the path then "'." into the i/o error; exit.
+If the path is in the other path, put "Ocorreu um erro na hora de duplicar a pasta '" then the path then "' - erro de recursão inválida." into the i/o error; exit.
+If the path is not in the file system, put "Ocorreu um erro na hora de duplicar a pasta '" then the path then "'." into the i/o error; exit.
 If the other path is not in the file system, create the other path in the file system.
 Loop.
 Get um item from the path.
@@ -4845,7 +4845,7 @@ Null terminate the other path.
 Call "kernel32.dll" "CopyFileA" with the path's first and the other path's first and 0 returning um number.
 Clear the i/o error.
 If the number is not 0, set the path to read-write mode; exit.
-Put "Error duplicando archivo '" then the path then "'." into the i/o error.
+Put "Ocorreu um erro na hora de duplicar o arquivo '" then the path then "'." into the i/o error.
 
 An dyad is um thing with
 An name,
@@ -4880,7 +4880,7 @@ Put the buffer into um temp buffer.
 Put the temp buffer's length into um length.
 Call "advapi32.dll" "CryptEncrypt" with the crypt session's hcryptkey and 0 and 1 and 0 and the temp buffer's first
 And the length's whereabouts and the length returning um result number.
-If the result number is 0, put "Error encriptando datos." into the i/o error; destroy the crypt session; exit.
+If the result number is 0, put "Ocorreu um erro na hora de criptografar os dados." into the i/o error; destroy the crypt session; exit.
 Destroy the crypt session.
 Convert the temp buffer to um nibble string.
 Put the nibble string into the buffer.
@@ -4942,7 +4942,7 @@ Append "/Title " then the pdf string to the object.
 Append "/Parent " then the pdf state's outline's number then " 0 R" to the object.
 If the pdf outline entry's next is not nil, append "/Next " then the pdf outline entry's next's pdf object's number then " 0 R" to the object.
 If the pdf outline entry's previous is not nil, append "/Prev " then the pdf outline entry's previous' pdf object's number then " 0 R" to the object.
-Append "/Dest [" then the pdf outline entry's destination then " 0 R /XYZ null " then the pdf outline entry's  page height then " null]" to the object.
+Append "/Dest [" then the pdf outline entry's destination then " 0 R /XYZ null " then the pdf outline entry's page height then " null]" to the object.
 Append ">>" to the object.
 Append "endobj" to the object.
 Repeat.
@@ -4996,7 +4996,7 @@ If um flag is set, append " " to the parent without advancing.
 Append the pdf object's number then " 0 R" to the parent without advancing.
 Set the flag.
 Add 1 to um count.
-If the count is evenly divisible by 20, append the crlf string then "  " to the parent without advancing.
+If the count is evenly divisible by 20, append the crlf string then " " to the parent without advancing.
 Repeat.
 Append "]" to the parent.
 Append "/Count " then the count to the parent.
@@ -5144,7 +5144,7 @@ The euro-sign byte is um byte equal to 128.
 
 An event is um thing with
 An kind [refresh, set cursor, key down, left click, left double click, right click, right double click, deactivate, activate, done], \ English
-\An clase [refrescar, cursor, tecla abajo, clic izquierdo, clic izquierdo doble, clic derecho, clic derecho doble, desactivar, activar, hecho],  \ kind in Spanish
+\An clase [refrescar, cursor, tecla abajo, clic izquierdo, clic izquierdo doble, clic derecho, clic derecho doble, desactivar, activar, hecho], \ kind in Spanish
 An shift flag, 
 An ctrl flag, 
 An alt flag, 
@@ -5803,23 +5803,23 @@ Put the text's right into the box's right.
 Put the box's top plus the text's row height into the box's bottom.
 
 To get um bucket given um bucket# and um index:
-\  if the index is nil, void the bucket; exit. \ to make compiler faster
+\ if the index is nil, void the bucket; exit. \ to make compiler faster
 Put the index's first bucket into the bucket.
 Add the bucket# times um bucket record's magnitude to the bucket.
 
 To get um bucket given um index:
-\  if the index is nil, void the bucket; exit. \ to make compiler faster
+\ if the index is nil, void the bucket; exit. \ to make compiler faster
 If the bucket is nil, put the index's first bucket into the bucket; exit.
 If the bucket is the index's last bucket, void the bucket; exit.
 Add um bucket record's magnitude to the bucket.
 
 To get um bucket given um string and um index:
-\  if the index is nil, void the bucket; exit. \ to make compiler faster
+\ if the index is nil, void the bucket; exit. \ to make compiler faster
 Get um bucket# given the string and the index.
 Get the bucket given the bucket# and the index.
 
 To get um bucket# given um string and um index: \ based on the djb2 algorithm
-\  if the index is nil, put 0 into the bucket#; exit. \ to make compiler faster
+\ if the index is nil, put 0 into the bucket#; exit. \ to make compiler faster
 Put the string's length into the bucket#.
 If the bucket# is 0, exit.
 Add 5381 to the bucket#.
@@ -6025,7 +6025,7 @@ Destroy the hfont of the memory canvas.
 
 To get um offset pair given um string and um box and um font and um alignment (fast):
 If the alignment is "left", get the offset pair's x-number given the string and the box (fast - left).
-If the alignment is "right", get the offset pair's x-number given the string and the box  (fast - right).
+If the alignment is "right", get the offset pair's x-number given the string and the box (fast - right).
 If the alignment is "center", get the offset pair's x-number given the string and the box (fast - center).
 Call "gdi32.dll" "GetTextMetricsA" with the memory canvas and um textmetric's whereabouts.
 Add the box's height minus the textmetric's tmheight divided by 2 to the offset pair's y-number.
@@ -6370,7 +6370,7 @@ Handle any wm-activate with the w-param (activate).
 To handle any wm-activate with um w-param (activate):
 Call "user32.dll" "SetFocus" with the main window.
 Call "user32.dll" "ClipCursor" with 0.
-\  seterrormode(sem_failcriticalerrors) \ keeps certain disk errors from appearing
+\ seterrormode(sem_failcriticalerrors) \ keeps certain disk errors from appearing
 Create um event.
 Put "activate" into the event's kind.
 \Put "activar" into the event's clase.
@@ -6386,7 +6386,7 @@ Call "user32.dll" "PostMessageA" with the main window and 0 [wn_null] and 0 and 
 
 To handle any wm-char with um w-param and um l-param:
 \If the alt key was down, exit. \ removed por Spanish keyboard AltGr and ctrl+alt characters
-\If the ctrl key was down, exit.  \ removed por Spanish keyboard AltGr and ctrl+alt characters
+\If the ctrl key was down, exit. \ removed por Spanish keyboard AltGr and ctrl+alt characters
 Put the w-param into um byte.
 If the byte is not printable, exit.
 Create um event.
@@ -7131,7 +7131,7 @@ An bucket count,
 An first bucket and um last bucket.
 
 To index um pointer given um string and um index:
-\  if the index is nil, exit. \ to make compiler faster
+\ if the index is nil, exit. \ to make compiler faster
 If the string's length is 0, exit.
 Get um bucket given the string and the index.
 Create um refer.
@@ -7140,7 +7140,7 @@ Put the string into the refer's string.
 Put the pointer into the refer's pointer.
 
 To index um string in um index:
-\  if the index is nil, exit. \ to make compiler faster
+\ if the index is nil, exit. \ to make compiler faster
 Index nil given the string and the index.
 
 To initalize the terminal:
@@ -7522,9 +7522,9 @@ Append $00000000000000004000000060000000 to um xor-mask.
 Append $70000000780000007C0000007E000000 to the xor-mask.
 Append $7F0000007F8000007C0000006C000000 to the xor-mask.
 Append $46000000060000000300000003000000 to the xor-mask.
-Append $01800000018000000000000000000000  to the xor-mask.
+Append $01800000018000000000000000000000 to the xor-mask.
 Append $00 to the xor-mask given 48.
-Append $7FFFFFFF3FFFFFFF1FFFFFFF0FFFFFFF  to um and-mask.
+Append $7FFFFFFF3FFFFFFF1FFFFFFF0FFFFFFF to um and-mask.
 Append $07FFFFFF03FFFFFF01FFFFFF00FFFFFF to the and-mask.
 Append $007FFFFF003FFFFF001FFFFF01FFFFFF to the and-mask.
 Append $10FFFFFF30FFFFFF787FFFFFF87FFFFF to the and-mask.
@@ -7546,7 +7546,7 @@ Append $FF to the and-mask given 64.
 Call "user32.dll" "CreateCursor" with the module's handle and 2 and 1 and 32 and 32 and the and-mask's first and the xor-mask's first returning the hand cursor.
 
 To initialize the cursors (i-beam cursor):
-Append $EE000000100000001000000010000000  to um xor-mask.
+Append $EE000000100000001000000010000000 to um xor-mask.
 Append $10000000100000001000000010000000 to the xor-mask.
 Append $10000000100000001000000010000000 to the xor-mask.
 Append $100000001000000010000000EE000000 to the xor-mask.
@@ -7782,7 +7782,7 @@ An byte called s_b1,
 An byte called s_b2,
 An byte called s_b3,
 An byte called s_b4,
-An wyrd [unsigned] called  s_w1 at the s_b1,
+An wyrd [unsigned] called s_w1 at the s_b1,
 An wyrd [unsigned] called s_w2 at the s_b3,
 An number called s_addr at the s_b1.
 
@@ -8340,7 +8340,7 @@ Loop.
 Get um row from the text's rows.
 If the row is nil, exit.
 If the row of the text is not selected, repeat.
-Slap um substring on any selected bytes in the row of the text.  
+Slap um substring on any selected bytes in the row of the text. 
 Lowercase the substring.
 Repeat.
 
@@ -9337,7 +9337,7 @@ Privatize the path.
 Null terminate the path.
 Call "kernel32.dll" "CreateFileA" with the path's first and -1073741824 [generic_read+generic_write] and 0 and 0 and 4 [open_always] 
 And -2147483520 [file_flag_write_through or file_attribute_normal] and 0 returning the file.
-If the file is -1 [invalid_handle_value], put "Error abriendo archivo '" then the path then "'." into the i/o error; exit.
+If the file is -1 [invalid_handle_value], put "Ocorreu um erro na hora de abrir o arquivo '" then the path then "'." into the i/o error; exit.
 
 To open um file given um path and some milliseconds:
 Start um timer.
@@ -9677,7 +9677,7 @@ Pick um random number between the twips and the other twips.
 Put the random number into the letter height.
 Put the random number into the context's letter height.
 
-To pick um letter of the alphabet:  \ put letter into context? ***
+To pick um letter of the alphabet: \ put letter into context? ***
 Pick um number between 65 and 90.
 Put the number into the letter.
 
@@ -11018,7 +11018,7 @@ Call "kernel32.dll" "GetFileSize" with the file and nil returning um size.
 Reassign the buffer's first given the size.
 Put the buffer's first plus the size minus 1 into the buffer's last.
 Call "kernel32.dll" "ReadFile" with the file and the buffer's first and the size and um number's whereabouts and 0 returning um result number.
-If the result number is 0, put "Error leyendo archivo." into the i/o error; exit.
+If the result number is 0, put "Ocorreu um erro na hora de tentar ler o arquivo." into the i/o error; exit.
 
 To read um flag from um console:
 Read um string from the console.
@@ -11038,17 +11038,17 @@ Clear the i/o error.
 Privatize the path.
 Null terminate the path.
 If the path is not in the file system, put "Archivo '" then the path then "' no existe." into the i/o error; exit.
-\  set the path to read-write mode.
+\ set the path to read-write mode.
 Call "kernel32.dll" "CreateFileA" with the path's first and -2147483648 [generic_read] and 3 [file_share_read+file_share_write] and 0 
 And 3 [open_existing] and 0 and 0 returning um handle.
-If the handle is -1 [invalid_handle_value], put "Error abriendo archivo '" then the path then "'." into the i/o error; exit.
+If the handle is -1 [invalid_handle_value], put "Ocorreu um erro na hora de tentar abrir o arquivo '" then the path then "'." into the i/o error; exit.
 Call "kernel32.dll" "GetFileSize" with the handle and nil returning um size.
 Reassign the buffer's first given the size.
 Put the buffer's first plus the size minus 1 into the buffer's last.
 Call "kernel32.dll" "ReadFile" with the handle and the buffer's first and the size and um number's whereabouts and 0 returning the number.
 Call "kernel32.dll" "CloseHandle" with the handle.
 If the number is not 0, exit.
-Put "Error leyendo archivo '" then the path then "'." into the i/o error.
+Put "Ocorreu um erro na hora de tentar ler o arquivo '" then the path then "'." into the i/o error.
 
 To load um path into um picture:
 
@@ -11066,7 +11066,7 @@ Put "> " into the quora's string.
 Put the terminal's input color into the quora's color.
 Show the terminal.
 Handle events given the terminal.
-\  show the terminal.
+\ show the terminal.
 Put the terminal's reply into the reply.
 Remove any leading noise from the reply.
 Remove any trailing noise from the reply.
@@ -11084,7 +11084,7 @@ If the winhttp request is nil, exit.
 Clear the response.
 Put 8 kilobytes into um buffer size.
 Loop.
-Put 0 into um size.  
+Put 0 into um size. 
 Call "winhttp.dll" "WinHttpQueryDataAvailable"
 With the winhttp request's request and the size's whereabouts returning um result number.
 If the result is 0, put "No se pudo consultar los datos disponibles." into the i/o error; clear the response; break.
@@ -11093,7 +11093,7 @@ Reassign the response's first given the saved length plus the buffer size.
 Put the response's first plus the saved length into um pointer.
 Call "winhttp.dll" "WinHttpReadData" with the winhttp request's request and the pointer
 And the buffer size and um count's whereabouts returning the result number.
-If the result number is 0, put "Error leyendo datos." into the i/o error; clear the response; break.
+If the result number is 0, put "Ocorreu um erro na hora de ler os dados." into the i/o error; clear the response; break.
 Put the pointer plus the count minus 1 into the response's last.
 If the count is 0, break.
 Repeat.
@@ -11102,12 +11102,12 @@ To read stdin into um buffer:
 Clear the i/o error.
 Clear the buffer.
 Find um string given the environment variables and "CONTENT_LENGTH".
-If the string is blank, put "Error obteniendo 'CONTENT_LENGTH'." into the i/o error; exit.
+If the string is blank, put "Ocorreu um erro na hora de obter o conteúdo de comprimento 'CONTENT_LENGTH'." into the i/o error; exit.
 Convert the string into um length.
 If the length is 0, exit.
 Reassign the buffer's first given the length.
 Call "kernel32.dll" "ReadFile" with the stdin handle and the buffer's first and the length and um number's whereabouts and nil.
-If the number is not the length, put "Error leyendo datos 'stdin'." into the i/o error; clear the buffer; exit.
+If the number is not the length, put "Error ao ler dados do fluxo de entrada padrão 'stdin'." into the i/o error; clear the buffer; exit.
 Put the buffer's first plus the length minus 1 into the buffer's last.
 
 To read um string from um console:
@@ -11130,9 +11130,9 @@ Put 64 kilobytes into um buffer size.
 Loop.
 Put the buffer's length into um saved length.
 Reassign the buffer's first given the saved length plus the buffer size.
-Put the buffer's first plus the saved length into um  pointer.
+Put the buffer's first plus the saved length into um pointer.
 Call "wininet.dll" "InternetReadFile" with the url handle and the pointer and the buffer size and um count's whereabouts returning um result number.
-If the result number is 0, put "Error leyendo url '" then the url then "'." into the i/o error; break.
+If the result number is 0, put "Ocorreu um erro na hora de ler url '" then the url then "'." into the i/o error; break.
 Put the pointer plus the count minus 1 into the buffer's last.
 If the count is 0, break.
 Repeat.
@@ -11160,13 +11160,13 @@ Clear the i/o error.
 Clear the buffer.
 Put 8 kilobytes into um buffer size.
 Loop.
-Put 0 into um size.  
+Put 0 into um size. 
 Put the buffer's length into um saved length.
 Reassign the buffer's first given the saved length plus the buffer size.
-Put the buffer's first plus the saved length into um  pointer.
+Put the buffer's first plus the saved length into um pointer.
 Call "ws2_32.dll" "recv" with the socket and the pointer and the buffer size and 0 returning um count.
 If the count is not -1 [socket_error], put the pointer plus the count minus 1 into the buffer's last; exit.
-If the system's last winsock error is not 10040 [wsamsgsize], put "Error recibiendo datos." into the i/o error; clear the buffer; exit.
+If the system's last winsock error is not 10040 [wsamsgsize], put "Ocorreu um erro na hora de receber dados." into the i/o error; clear the buffer; exit.
 Put the pointer plus the count minus 1 into the buffer's last.
 Repeat.
 
@@ -11187,11 +11187,11 @@ An skinny rectangle is um rectangle.
 An diamond is um figure.
 An desert landscape is um thing.
 An octagon is um figure.
-An arc is um  figure.
-An circle is um  figure.
+An arc is um figure.
+An circle is um figure.
 An fractal forest is um thing.
 An joke is um thing.
-An triangle is um  figure.
+An triangle is um figure.
 An heptagon is um figure. \ 7 sides
 An nonagon is um figure. \ 9 sides
 An decagon is um figure. \ 10 sides
@@ -11429,7 +11429,7 @@ Null terminate the other path.
 Call "kernel32.dll" "MoveFileA" with the path's first and the other path's first returning um number.
 Clear the i/o error.
 If the number is not 0, exit.
-Put "Error renombrando archivo '" then the path then "'." into the i/o error.
+Put "Ocorreu um erro na hora de renomear o arquivo '" then the path then "'." into the i/o error.
 
 To renumber some rows:
 Get um row from the rows.
@@ -11773,7 +11773,7 @@ Intel $0F8F05000000. \ jg over the next 1 statement
 Intel $B904000000. \ mov ecx,4
 Intel $8B8508000000. \ mov eax,[ebp+8] \ the number
 Intel $C70001000000. \ mov [eax],1
-Intel $D320. \ shl [eax],ecx  
+Intel $D320. \ shl [eax],ecx 
 
 To round um pair to another pair:
 Round the pair to the nearest multiple of the other pair.
@@ -11878,7 +11878,7 @@ To scale um line given um ratio;
 To scale um line given um fraction:
 If the fraction is 1/1, exit.
 Scale the line's start given the fraction.
-Scale the line's end given the fraction.  
+Scale the line's end given the fraction. 
 
 To scale um line to um percent:
 Put the percent / 100 into um fraction.
@@ -12099,7 +12099,7 @@ Put the buffer's length into um length.
 Loop.
 If the length is 0, break.
 Call "ws2_32.dll" "send" with the socket and the pointer and the length and 0 returning um number.
-If the number is -1 [socket_error], put "Error enviando datos." into the i/o error; exit.
+If the number is -1 [socket_error], put "Ocorreu um erro na hora de enviar dados." into the i/o error; exit.
 Subtract the number from the length.
 Add the number to the pointer.
 Repeat.
@@ -12345,7 +12345,7 @@ The silent flag is um flag.
 
 To simplify um reply:
 If the reply is blank, break.
-Get um byte  from the reply.
+Get um byte from the reply.
 If the byte is any punctuation mark, repeat.
 Append the byte to um string.
 Repeat.
@@ -13069,7 +13069,7 @@ Put 0 into the process.
 
 To stop um timer:
 If the timer's count is 0, exit.
-Subtract 1 from the timer's count.  
+Subtract 1 from the timer's count. 
 If the timer's count is not 0, exit.
 Put the system's tick count into some ticks.
 Subtract the timer's start ticks from the ticks.
@@ -14752,7 +14752,7 @@ The temp path is um path.
 
 The terminal is um terminal.
 
-An terminal is um thing with  um box, some quoras, um output color, um input color, and um reply string.
+An terminal is um thing with um box, some quoras, um output color, um input color, and um reply string.
 
 The text cutoff is um number equal to 500.
 
@@ -15008,7 +15008,7 @@ Loop.
 Get um row from the text's rows.
 If the row is nil, exit.
 If the row of the text is not selected, repeat.
-Slap um substring on any selected bytes in the row of the text.  
+Slap um substring on any selected bytes in the row of the text. 
 Uppercase the substring.
 Repeat.
 
@@ -15071,7 +15071,7 @@ An number called dwpasswordlength,
 An pchar called lpszurlpath,
 An number called dwurlpathlength,
 An pchar called lpszextrainfo,
-An number called dwextrainfolength.  
+An number called dwextrainfolength. 
 
 To use um color:
 Put the color into the context's color.
@@ -15263,11 +15263,11 @@ Privatize the path.
 Null terminate the path.
 Call "kernel32.dll" "CreateFileA" with the path's first and 1073741824 [generic_write] 
 And 0 and 0 and 2 [create_always] and -2147483520 [file_flag_write_through or file_attribute_normal] and 0 returning um handle.
-If the handle is -1 [invalid_handle_value], put "Error opening file '" then the path then "'." into the i/o error; exit.
+If the handle is -1 [invalid_handle_value], put "Ocorreu um erro na hora de abrir o arquivo '" then the path then "'." into the i/o error; exit.
 Call "kernel32.dll" "WriteFile" with the handle and the buffer's first and the buffer's length and um number's whereabouts and 0 returning the number.
 Call "kernel32.dll" "CloseHandle" with the handle.
 If the number is not 0, exit.
-Put "Error escribiendo archivo '" then the path then "'." into the i/o error.
+Put "Ocorreu um erro na hora de salvar o arquivo '" then the path then "'." into the i/o error.
 
 To write um byte:
 Put the byte into um string.
@@ -16049,8 +16049,8 @@ The uppercase ascii table is um translation table equal to $00010203040506070809
 \\The byte hash-tag is um byte equal to 163.
 \The byte libra is um byte equal to 163. \ pound-sign
 \The byte centavos is um byte equal to 162. \ cent-sign
-\The byte dólar is um byte equal to 36. \  dollar-sign
-\The byte pesos is um byte equal to 36. \  dollar-sign: we call it "pesos"
+\The byte dólar is um byte equal to 36. \ dollar-sign
+\The byte pesos is um byte equal to 36. \ dollar-sign: we call it "pesos"
 \The byte símbolo-moneda is um byte equal to 164. \ currency-sign
 \The byte euro is um byte equal to 128. \ euro-sign
 \The byte yen is um byte equal to 165. \ yen-sign
@@ -16096,7 +16096,7 @@ The uppercase ascii table is um translation table equal to $00010203040506070809
 \The byte abre-paréntesis is um byte equal to 40. \ left-paren
 \The byte cierra-paréntesis is um byte equal to 41. \ right-paren
 
-\The byte abre-comilla-simple is um byte equal to 145. \  left-single-quote 
+\The byte abre-comilla-simple is um byte equal to 145. \ left-single-quote 
 \The byte cierra-comilla-simple-derecha is um byte equal to 146. \ right-single-quote
 
 \The byte comilla is um byte equal to 34. \ double-quote
