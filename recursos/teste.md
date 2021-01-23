@@ -1,4 +1,4 @@
-<div style="position:absolute;top:0px;left:10px;width:793px;height:1122px;">![](instructions\image_1.jpg)</div>
+<div style="position:absolute;top:0px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_1.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -18,7 +18,7 @@
 
 </span>
 
-<div style="position:absolute;top:1122px;left:10px;width:793px;height:1122px;">![](instructions\image_2.jpg)</div>
+<div style="position:absolute;top:1122px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_2.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -58,7 +58,7 @@
 
 </span>
 
-<div style="position:absolute;top:2244px;left:10px;width:793px;height:1122px;">![](instructions\image_3.jpg)</div>
+<div style="position:absolute;top:2244px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_3.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -66,7 +66,7 @@
 
 </span>
 
-<div style="position:absolute;top:3366px;left:10px;width:793px;height:1122px;">![](instructions\image_4.jpg)</div>
+<div style="position:absolute;top:3366px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_4.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -170,7 +170,7 @@
 
 </span>
 
-<div style="position:absolute;top:4488px;left:10px;width:793px;height:1122px;">![](instructions\image_5.jpg)</div>
+<div style="position:absolute;top:4488px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_5.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -310,7 +310,7 @@
 
 </span>
 
-<div style="position:absolute;top:5610px;left:10px;width:793px;height:1122px;">![](instructions\image_6.jpg)</div>
+<div style="position:absolute;top:5610px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_6.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -462,7 +462,7 @@
 
 </span>
 
-<div style="position:absolute;top:6732px;left:10px;width:793px;height:1122px;">![](instructions\image_7.jpg)</div>
+<div style="position:absolute;top:6732px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_7.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -626,7 +626,7 @@
 
 </span>
 
-<div style="position:absolute;top:7854px;left:10px;width:793px;height:1122px;">![](instructions\image_8.jpg)</div>
+<div style="position:absolute;top:7854px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_8.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -850,7 +850,7 @@
 
 </span>
 
-<div style="position:absolute;top:8976px;left:10px;width:793px;height:1122px;">![](instructions\image_9.jpg)</div>
+<div style="position:absolute;top:8976px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_9.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -954,7 +954,7 @@
 
 </span>
 
-<div style="position:absolute;top:10098px;left:10px;width:793px;height:1122px;">![](instructions\image_10.jpg)</div>
+<div style="position:absolute;top:10098px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_10.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -1102,7 +1102,7 @@
 
 </span>
 
-<div style="position:absolute;top:11220px;left:10px;width:793px;height:1122px;">![](instructions\image_11.jpg)</div>
+<div style="position:absolute;top:11220px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_11.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -1202,7 +1202,7 @@
 
 </span>
 
-<div style="position:absolute;top:12342px;left:10px;width:793px;height:1122px;">![](instructions\image_12.jpg)</div>
+<div style="position:absolute;top:12342px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_12.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -1310,7 +1310,7 @@
 
 </span>
 
-<div style="position:absolute;top:13464px;left:10px;width:793px;height:1122px;">![](instructions\image_13.jpg)</div>
+<div style="position:absolute;top:13464px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_13.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -1318,7 +1318,7 @@
 
 </span>
 
-<div style="position:absolute;top:14586px;left:10px;width:793px;height:1122px;">![](instructions\image_14.jpg)</div>
+<div style="position:absolute;top:14586px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_14.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -1450,7 +1450,7 @@
 
 </span>
 
-<div style="position:absolute;top:15708px;left:10px;width:793px;height:1122px;">![](instructions\image_15.jpg)</div>
+<div style="position:absolute;top:15708px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_15.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -1662,7 +1662,7 @@
 
 </span>
 
-<div style="position:absolute;top:16830px;left:10px;width:793px;height:1122px;">![](instructions\image_16.jpg)</div>
+<div style="position:absolute;top:16830px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_16.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -1754,7 +1754,7 @@
 
 </span>
 
-<div style="position:absolute;top:17952px;left:10px;width:793px;height:1122px;">![](instructions\image_17.jpg)</div>
+<div style="position:absolute;top:17952px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_17.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -1846,7 +1846,7 @@
 
 </span>
 
-<div style="position:absolute;top:19074px;left:10px;width:793px;height:1122px;">![](instructions\image_18.jpg)</div>
+<div style="position:absolute;top:19074px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_18.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -1950,7 +1950,7 @@
 
 </span>
 
-<div style="position:absolute;top:20196px;left:10px;width:793px;height:1122px;">![](instructions\image_19.jpg)</div>
+<div style="position:absolute;top:20196px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_19.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -2034,7 +2034,7 @@
 
 </span>
 
-<div style="position:absolute;top:21318px;left:10px;width:793px;height:1122px;">![](instructions\image_20.jpg)</div>
+<div style="position:absolute;top:21318px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_20.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -2134,7 +2134,7 @@
 
 </span>
 
-<div style="position:absolute;top:22440px;left:10px;width:793px;height:1122px;">![](instructions\image_21.jpg)</div>
+<div style="position:absolute;top:22440px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_21.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -2222,7 +2222,7 @@
 
 </span>
 
-<div style="position:absolute;top:23562px;left:10px;width:793px;height:1122px;">![](instructions\image_22.jpg)</div>
+<div style="position:absolute;top:23562px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_22.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -2314,7 +2314,7 @@
 
 </span>
 
-<div style="position:absolute;top:24684px;left:10px;width:793px;height:1122px;">![](instructions\image_23.jpg)</div>
+<div style="position:absolute;top:24684px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_23.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -2386,7 +2386,7 @@
 
 </span>
 
-<div style="position:absolute;top:25806px;left:10px;width:793px;height:1122px;">![](instructions\image_24.jpg)</div>
+<div style="position:absolute;top:25806px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_24.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -2490,7 +2490,7 @@
 
 </span>
 
-<div style="position:absolute;top:26928px;left:10px;width:793px;height:1122px;">![](instructions\image_25.jpg)</div>
+<div style="position:absolute;top:26928px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_25.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -2590,7 +2590,7 @@
 
 </span>
 
-<div style="position:absolute;top:28050px;left:10px;width:793px;height:1122px;">![](instructions\image_26.jpg)</div>
+<div style="position:absolute;top:28050px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_26.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -2662,7 +2662,7 @@
 
 </span>
 
-<div style="position:absolute;top:29172px;left:10px;width:793px;height:1122px;">![](instructions\image_27.jpg)</div>
+<div style="position:absolute;top:29172px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_27.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -2766,7 +2766,7 @@
 
 </span>
 
-<div style="position:absolute;top:30294px;left:10px;width:793px;height:1122px;">![](instructions\image_28.jpg)</div>
+<div style="position:absolute;top:30294px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_28.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -2870,7 +2870,7 @@
 
 </span>
 
-<div style="position:absolute;top:31416px;left:10px;width:793px;height:1122px;">![](instructions\image_29.jpg)</div>
+<div style="position:absolute;top:31416px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_29.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -2966,7 +2966,7 @@
 
 </span>
 
-<div style="position:absolute;top:32538px;left:10px;width:793px;height:1122px;">![](instructions\image_30.jpg)</div>
+<div style="position:absolute;top:32538px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_30.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -3050,7 +3050,7 @@
 
 </span>
 
-<div style="position:absolute;top:33660px;left:10px;width:793px;height:1122px;">![](instructions\image_31.jpg)</div>
+<div style="position:absolute;top:33660px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_31.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -3134,7 +3134,7 @@
 
 </span>
 
-<div style="position:absolute;top:34782px;left:10px;width:793px;height:1122px;">![](instructions\image_32.jpg)</div>
+<div style="position:absolute;top:34782px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_32.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -3230,7 +3230,7 @@
 
 </span>
 
-<div style="position:absolute;top:35904px;left:10px;width:793px;height:1122px;">![](instructions\image_33.jpg)</div>
+<div style="position:absolute;top:35904px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_33.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -3326,7 +3326,7 @@
 
 </span>
 
-<div style="position:absolute;top:37026px;left:10px;width:793px;height:1122px;">![](instructions\image_34.jpg)</div>
+<div style="position:absolute;top:37026px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_34.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -3430,7 +3430,7 @@
 
 </span>
 
-<div style="position:absolute;top:38148px;left:10px;width:793px;height:1122px;">![](instructions\image_35.jpg)</div>
+<div style="position:absolute;top:38148px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_35.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -3530,7 +3530,7 @@
 
 </span>
 
-<div style="position:absolute;top:39270px;left:10px;width:793px;height:1122px;">![](instructions\image_36.jpg)</div>
+<div style="position:absolute;top:39270px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_36.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -3626,7 +3626,7 @@
 
 </span>
 
-<div style="position:absolute;top:40392px;left:10px;width:793px;height:1122px;">![](instructions\image_37.jpg)</div>
+<div style="position:absolute;top:40392px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_37.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -3730,7 +3730,7 @@
 
 </span>
 
-<div style="position:absolute;top:41514px;left:10px;width:793px;height:1122px;">![](instructions\image_38.jpg)</div>
+<div style="position:absolute;top:41514px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_38.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -3830,7 +3830,7 @@
 
 </span>
 
-<div style="position:absolute;top:42636px;left:10px;width:793px;height:1122px;">![](instructions\image_39.jpg)</div>
+<div style="position:absolute;top:42636px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_39.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -3926,7 +3926,7 @@
 
 </span>
 
-<div style="position:absolute;top:43758px;left:10px;width:793px;height:1122px;">![](instructions\image_40.jpg)</div>
+<div style="position:absolute;top:43758px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_40.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -4030,7 +4030,7 @@
 
 </span>
 
-<div style="position:absolute;top:44880px;left:10px;width:793px;height:1122px;">![](instructions\image_41.jpg)</div>
+<div style="position:absolute;top:44880px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_41.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -4118,7 +4118,7 @@
 
 </span>
 
-<div style="position:absolute;top:46002px;left:10px;width:793px;height:1122px;">![](instructions\image_42.jpg)</div>
+<div style="position:absolute;top:46002px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_42.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -4218,7 +4218,7 @@
 
 </span>
 
-<div style="position:absolute;top:47124px;left:10px;width:793px;height:1122px;">![](instructions\image_43.jpg)</div>
+<div style="position:absolute;top:47124px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_43.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -4318,7 +4318,7 @@
 
 </span>
 
-<div style="position:absolute;top:48246px;left:10px;width:793px;height:1122px;">![](instructions\image_44.jpg)</div>
+<div style="position:absolute;top:48246px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_44.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -4410,7 +4410,7 @@
 
 </span>
 
-<div style="position:absolute;top:49368px;left:10px;width:793px;height:1122px;">![](instructions\image_45.jpg)</div>
+<div style="position:absolute;top:49368px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_45.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -4514,7 +4514,7 @@
 
 </span>
 
-<div style="position:absolute;top:50490px;left:10px;width:793px;height:1122px;">![](instructions\image_46.jpg)</div>
+<div style="position:absolute;top:50490px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_46.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -4626,7 +4626,7 @@
 
 </span>
 
-<div style="position:absolute;top:51612px;left:10px;width:793px;height:1122px;">![](instructions\image_47.jpg)</div>
+<div style="position:absolute;top:51612px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_47.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -4730,7 +4730,7 @@
 
 </span>
 
-<div style="position:absolute;top:52734px;left:10px;width:793px;height:1122px;">![](instructions\image_48.jpg)</div>
+<div style="position:absolute;top:52734px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_48.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -4834,7 +4834,7 @@
 
 </span>
 
-<div style="position:absolute;top:53856px;left:10px;width:793px;height:1122px;">![](instructions\image_49.jpg)</div>
+<div style="position:absolute;top:53856px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_49.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -4934,7 +4934,7 @@
 
 </span>
 
-<div style="position:absolute;top:54978px;left:10px;width:793px;height:1122px;">![](instructions\image_50.jpg)</div>
+<div style="position:absolute;top:54978px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_50.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -5042,7 +5042,7 @@
 
 </span>
 
-<div style="position:absolute;top:56100px;left:10px;width:793px;height:1122px;">![](instructions\image_51.jpg)</div>
+<div style="position:absolute;top:56100px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_51.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -5142,7 +5142,7 @@
 
 </span>
 
-<div style="position:absolute;top:57222px;left:10px;width:793px;height:1122px;">![](instructions\image_52.jpg)</div>
+<div style="position:absolute;top:57222px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_52.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -5238,7 +5238,7 @@
 
 </span>
 
-<div style="position:absolute;top:58344px;left:10px;width:793px;height:1122px;">![](instructions\image_53.jpg)</div>
+<div style="position:absolute;top:58344px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_53.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
@@ -5334,7 +5334,7 @@
 
 </span>
 
-<div style="position:absolute;top:59466px;left:10px;width:793px;height:1122px;">![](instructions\image_54.jpg)</div>
+<div style="position:absolute;top:59466px;left:10px;width:793px;height:1122px;">![](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_54.jpg)</div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
 
