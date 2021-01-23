@@ -1,5 +1,5 @@
 <div style="position:absolute;top:0px;left:10px;width:793px;height:1122px;">
-  [![Crowdin](https://badges.crowdin.net/portugues-puro/localized.svg)](https://crowdin.com/project/portugues-puro)
+<img src="instructions/image_1.jpg" alt="Tela do Programa" width="856" height="481">
   [![teste](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/instructions/image_1.jpg)](https://crowdin.com/project/portugues-puro) </div>
 
 <span style="font-size:18px; color: rgb(1, 1, 1); font-family:osmosian">
