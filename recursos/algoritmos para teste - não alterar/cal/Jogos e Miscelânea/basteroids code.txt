@@ -1,0 +1,217 @@
+ \ TYPES
+
+A ball is a thing with a radius, a color, a rise, a run, a spot, and a visible flag.
+A turret is a thing with a radius, a spot and a heading.
+
+\ GLOBAL VARIABLES
+
+The balls are some balls.
+The ball count is 10.
+The game-over flag is a flag.
+The turret is a turret.
+
+\ MAIN ROUTINE
+
+To run:
+Start up.
+Create the turret.
+Create the balls.
+Loop.
+If the escape key is down, break.
+If the game-over flag is set, break.
+Move the balls.
+If the right-arrow key is down, add 10 points to the turret's heading.
+If the left-arrow key is down, subtract 10 points from the turret's heading.
+If the space key is down, shoot.
+Show everything.
+Repeat.
+Wait for the escape key.
+Destroy the balls.
+Destroy the turret.
+Shut down.
+
+\ CREATE ROUTINES
+
+To create some balls:
+Create a ball.
+Add 1 to a count. If the count is the ball count, break.
+Repeat.
+
+To create a ball:
+Allocate memory for the ball. Append the ball to the balls.
+Pick a radius between 1/8 inch and 1/4 inch. Put the radius into the ball's radius.
+Pick a grayish color. Put the grayish color into the ball's color.
+Put 1 pixel into the ball's rise. If you feel like it, reverse the ball's rise.
+Put 1 pixel  into the ball's run. If you feel like it, reverse the ball's run.
+Pick a spot for the ball.
+Set the ball's visible flag.
+
+To pick a spot for a ball:
+Put the screen's box into a box. Indent the box 1/2 inch.
+Pick the spot anywhere in the box.
+If the spot is occupied, repeat.
+Put the spot into the ball's spot.
+
+To decide if a spot is occupied:
+If the spot is within 1 inch of the turret's spot, say yes.
+Loop.
+Get a ball from the balls.
+If the ball is nil, break.
+If the spot is within 1 inch of the ball's spot, say yes.
+Repeat.
+Say no.
+
+To create a turret:
+Allocate memory for the turret.
+Put 1/2 inch into the turret's radius.
+Put the screen's center into the turret's spot.
+
+\ SHOOT ROUTINES
+
+To shoot:
+If the left-arrow key is down, exit.
+If the right-arrow key is down, exit.
+Move to the turret's spot. Put the context's spot into a line's start.
+Use the fat pen. Use the green color.
+Stroke 12 inches. Put the context's spot into the line's end.
+Refresh the screen.
+Erase any ball on the line.
+Show everything.
+
+To erase any ball on a line:
+Get a ball from the balls.
+If the ball is nil, exit.
+If the ball's visible flag is not set, repeat.
+If the ball's spot is not within the ball's radius of the line, repeat.
+Clear the ball's visible flag.
+Repeat.
+
+\ BALL MOVE ROUTINES
+
+To move some balls:
+Get a ball from the balls.
+If the ball is nil, exit.
+If the ball's visible flag is not set, repeat.
+Move the ball.
+Repeat.
+
+To move a ball:
+Add the ball's run and the ball's rise to the ball's spot.
+Put the screen's box into a box. Indent the box the ball's radius.
+If the ball's spot is above or below the box, reverse the ball's rise.
+If the ball's spot is left or right of the box, reverse the ball's run.
+If the ball is touching another ball, reverse the ball given the other ball (first ball bounces).
+If the ball is touching the turret, set the game-over flag.
+
+To decide if a ball is touching another ball:
+Void the other ball.
+Loop.
+Get the other ball from the balls.
+If the other ball is nil, say no.
+If the other ball's visible flag is not set, repeat.
+If the other ball is the ball, repeat.
+Get a quadrance between the ball's spot and the other ball's spot.
+Put the ball's radius plus the other ball's radius into another quadrance. Square the other quadrance.
+If the quadrance is greater than the other quadrance, repeat.
+Say yes.
+
+To reverse a ball given another ball (first ball bounces):
+If the ball's spot is above or below the other ball's spot, reverse the ball's rise.
+If the ball's spot is left or right of the other ball's spot, reverse the ball's run.
+
+To decide if a ball is touching a turret:
+Get a quadrance between the ball's spot and the turret's spot.
+Put the ball's radius plus the turret's radius into another quadrance. Square the other quadrance.
+If the quadrance is greater than the other quadrance, say no.
+Say yes.
+
+\ SHOW AND DRAW ROUTINES
+
+To show everything:
+Draw the screen's box with the black color and the black color.
+Draw the balls.
+Draw the turret.
+If the game-over flag is not set, refresh the screen; exit.
+Put "osmosian" and 3 inches into a font.
+Draw "GAME OVER" in the center of the screen's box with the red pen and the font.
+Refresh the screen.
+
+To draw some balls:
+Get a ball from the balls.
+If the ball is nil, exit.
+If the ball's visible flag is not set, repeat.
+Draw the ball.
+Repeat.
+
+To draw a ball:
+Put the ball's radius times 2 into a width.
+Make an ellipse the width by the width. Center the ellipse on the ball's spot.
+Draw the ellipse with the ball's color.
+
+To draw a turret:
+Put the turret's radius times 2 into a width.
+Make an ellipse the width by the width. Center the ellipse on the turret's spot.
+Draw the ellipse with the white pen and the clear pen.
+Use the fat pen. Use the red color.
+Move to the turret's spot.
+Put the turret's heading into the context's heading.
+Stroke 1/2 inch.
+
+\ GENERAL PURPOSE ROUTINES THAT SHOULD BE IN THE NOODLE
+
+A quadrance is a number.
+
+A grayish color is a color.
+
+To get a quadrance between a spot and another spot:
+Put the spot's x minus the other spot's x into a number. Square the number.
+Put the spot's y minus the other spot's y into another number. Square the other number.
+Put the number plus the other number into the quadrance.
+
+To square a number:
+Put the number times the number into the number.
+
+To decide if a spot is above another spot:
+If the spot's y is less than the other spot's y, say yes.
+Say no.
+
+To decide if a spot is below another spot:
+If the spot's y is greater than the other spot's y, say yes.
+Say no.
+
+To decide if a spot is left of another spot:
+If the spot's x is less than the other spot's x, say yes.
+Say no.
+
+To decide if a spot is right of another spot:
+If the spot's x is greater than the other spot's x, say yes.
+Say no.
+
+To decide if a spot is above or below another spot:
+If the spot is above the other spot, say yes.
+If the spot is below the other spot, say yes.
+Say no.
+
+To decide if a spot is left or right of another spot:
+If the spot is left of the other spot, say yes.
+If the spot is right of the other spot, say yes.
+Say no.
+
+To decide if a spot is within some twips of a line:
+Privatize the line.
+Loop.
+Get a distance between the spot and the line's center (chessboard).
+If the distance is less than or equal to the twips, say yes.
+Get the distance between the line's start and the line's end (chessboard).
+If the distance is less than or equal to the tpp, say no.
+Split the line into the line and another line.
+Get the distance between the spot and the line's center (chessboard).
+Get another distance between the spot and the other line's center (chessboard).
+If the distance is greater than the other distance, put the other line into the line.
+Repeat.
+
+To pick a grayish color:
+Pick the grayish color's hue between 2100 and 2100.
+Put 0 into the grayish color's saturation.
+Pick the grayish color's brightness between 250 and 875.
+Put the grayish color into the context's color.
