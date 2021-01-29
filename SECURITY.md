@@ -1,8 +1,8 @@
-# Security Policy
+# Política de Segurannça
 
-## Supported Versions
+## Versões Suportadas
 
-Use esta seção para informar às pessoas sobre quais versões de seu projeto
+Esta seção serve para informar às pessoas sobre quais versões de seu projeto
 estão sendo atualmente suportadas com atualizações de segurança.
 
 | Versão  | Suportada?          |
@@ -13,8 +13,8 @@ estão sendo atualmente suportadas com atualizações de segurança.
 
 ## Relatando uma vulnerabilidade
 
-Use esta seção para informar às pessoas como relatar uma vulnerabilidade.
+Esta seção serve para informar às pessoas como relatar uma vulnerabilidade.
 
-Diga-lhes para onde ir, 
-com que frequência podem esperar obter uma atualização sobre uma vulnerabilidade relatada,
+Esta seção serve para que você saiba para onde ir, 
+com que frequência pode esperar obter uma atualização sobre uma vulnerabilidade relatada,
 o que esperar se a vulnerabilidade for aceita ou recusada, etc.
