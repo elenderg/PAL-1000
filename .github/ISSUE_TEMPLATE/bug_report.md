@@ -11,9 +11,9 @@ assignees: ''
 Faça uma descrição clara e concisa do erro..
 
 **Como Reproduzir o Erro**
-Etapas para reprodução do erro:
+Descreva as etapas para reprodução do erro:
 1. Vá em '...'
-2. Clicque on '....'
+2. Clique np '....'
 3. Desça até '....'
 4. Veja o erro
 
