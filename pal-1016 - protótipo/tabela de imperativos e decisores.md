@@ -5,6 +5,7 @@
 |------|----------|----------|----------|----------|----------|
 |Exit|Saia|Interrrompa|Ignore|-|-|-|-|-|-|-|
 |Loop|-|-|-|-|-|-|-|-|-|-|
+|Privatize|Derive|Reserve|Crie uma cópia de segurança|Faça um backup|-|
 |Quit|-|-|-|-|-|-|-|-|-|-|
 |Repeat|-|-|-|-|-|-|-|-|-|-|
 |Run|-|-|-|-|-|-|-|-|-|-|
