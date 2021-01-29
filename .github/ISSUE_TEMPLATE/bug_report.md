@@ -8,10 +8,10 @@ assignees: ''
 ---
 
 **Descreva o erro**
-Faça uma descrição clara e concisa do erro..
+ - Faça uma descrição clara e concisa do erro..
 
 **Como Reproduzir o Erro**
-Descreva as etapas para reprodução do erro:
+ - Descreva as etapas para reprodução do erro:
 1. Vá em '...'
 2. Clique np '....'
 3. Desça até '....'
