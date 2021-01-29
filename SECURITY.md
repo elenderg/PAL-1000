@@ -5,12 +5,11 @@
 Use esta seção para informar às pessoas sobre quais versões de seu projeto
 estão sendo atualmente suportadas com atualizações de segurança.
 
-| Versão  | Suportada          |
+| Versão  | Suportada?          |
 | ------- | ------------------ |
-| 4700    | :white_check_mark: |
-| 1016    | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| CAL-4700    | :white_check_mark: |
+| SAL-1016    | :white_check_mark: |
+
 
 ## Relatando uma vulnerabilidade
 
