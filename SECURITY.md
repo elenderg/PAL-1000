@@ -1,4 +1,4 @@
-# Política de Segurannça
+# Política de Segurança
 
 ## Versões Suportadas
 
