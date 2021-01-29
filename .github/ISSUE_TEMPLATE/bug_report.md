@@ -1,32 +1,32 @@
 ---
-name: Relatório de Erro
-about: Crie um relatório para aprimorar nosso projeto
-title: ''
-labels: ''
+Nome: RelatÃ³rio de Erro
+DescriÃ§Ã£o: Crie um relatÃ³rio para aprimorar nosso projeto
+TÃ­tulo: ''
+tags: ''
 assignees: ''
 
 ---
 
 **Descreva o erro**
-Faça uma descrição clara e concisa do erro..
+FaÃ§a uma descriÃ§Ã£o clara e concisa do erro..
 
 **Como Reproduzir o Erro**
-Etapas para reprodução do erro:
-1. Vá em '...'
+Etapas para reproduÃ§Ã£o do erro:
+1. VÃ¡ em '...'
 2. Clicque on '....'
-3. Desça até '....'
+3. DesÃ§a atÃ© '....'
 4. Veja o erro
 
 **Comportamento esperado**
-Informe uma descrição clara e concisa daquilo que você esperava que acontecesse..
+Informe uma descriÃ§Ã£o clara e concisa daquilo que vocÃª esperava que acontecesse..
 
 **Capturas de Tela**
-Se necessário, adicione capturas de tela para ajudar a descrever seu problema.
+Se necessÃ¡rio, adicione capturas de tela para ajudar a descrever seu problema.
 
-**Ambiente de Trabalho (por favor preencha as seguitnes informações):**
+**Ambiente de Trabalho (por favor preencha as seguitnes informaÃ§Ãµes):**
  - Sistema Operacional: [por exemplo, Windows 7]
  - Idioma [por exemplo CAL, SAL, ou PAL]
- - Versão [por exemplo 4700]
+ - VersÃ£o [por exemplo 4700]
 
-**Informações adicionais**
-Quaisquer ifnormações adicionais que vcê julgue necessárias devem estar aqui.
+**InformaÃ§Ãµes adicionais**
+Quaisquer ifnormaÃ§Ãµes adicionais que vcÃª julgue necessÃ¡rias devem estar aqui.
