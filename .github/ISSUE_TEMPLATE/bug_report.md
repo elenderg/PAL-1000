@@ -1,8 +1,8 @@
 ---
-Nome: Relatório de Erro
-Descrição: Crie um relatório para aprimorar nosso projeto
-Título: ''
-tags: ''
+name: Relatório de Erro
+about: Crie um relatório para aprimorar nosso projeto
+title: ''
+labels: ''
 assignees: ''
 
 ---
