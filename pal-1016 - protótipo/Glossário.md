@@ -1240,11 +1240,12 @@ Lista de Termos em Ordem Alfabética
 |printer canvas|–|–|–|–|–|
 |printer device mode|–|–|–|–|–|
 |print-screen key|Tecla Print Screen|Tecla Prt Scr|–|–|tecla-prtscr|
+|privatize|derivar|reservar|fazer backup|fazer cópia de segurança|✔️|
 |process|–|–|–|–|processo|
 |processinfo|-|-|-|-|-|
 |prototype string|-|-|-|-|proto-escrita|
-|pt|-|-|-|-|-|
 |prolog tag|–|–|–|–|marca-prolog|
+|pt|-|-|-|-|-|
 |purple color|–|–|–|–|cor púrpura|
 |purple pen|–|–|–|–|pincel púrpura|
 |push address tag|–|–|–|–|–|
