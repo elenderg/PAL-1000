@@ -1156,202 +1156,188 @@ como pintar
 
 ## OLÁ, GOOGLE!
 
-Now let's start at the ENTER key and work our way down. Eis o código:
+Agora vamos começar a trabalhar na tecla <kbd>Enter</kbd>. Eis o código:
 
-If the text is blank, there's nothing to do; we object with a cluck and exit.
+Se o campo de texto estiver em branco, não há nada a fazer; nós usaremos o som para alertar o usuário e sairemos.
 
-Otherwise, we put up a status message (in case Google is busy and doesn't respond right away). Then we formulate a request using a literal string and an HTML-compatible version of the text, reading the response into a buffer (which is just a fancy name for a string).
+Caso contrário, nós vamos escrever uma mensagem no painel de informações (caso o Google esteja ocupado e não responda imediatamente). Em seguida, formulamos uma solicitação usando um texto literal e uma versão do texto que seja compatível com o formato HTML, lendo a resposta em um buffer (que é apenas um nome chique para uma sequência de caracteres).
 
-If something went wrong, we report the error and boogie. If the page arrived intact, we attempt to create our works-in-progress from the data in the buffer. If the works are empty when we're done, it means Googley didn't understand our query — in this case, we say "Huh?", and skedaddle. Otherwise, we show the user the first of the works.
+Se algo deu errado, relatamos o erro. Se a página chegar intacta, tentamos gerar nossas obras de arte em andamento a partir dos dados no buffer. Se as obras estiverem em branco quando terminarmos, isso significa que o Google não entendeu nossa consulta — neste caso, dizemos "Hã?" e saímos. Caso contrário, mostramos ao usuário a primeira obra de arte da lista.
 
 ```
-To handle an event (enter):
-If the text's string is blank, cluck; exit.
+Para gerrenciarmos um comando (tecla Enter):
+Se a o texto do campo de texto estiver em branco, alerte o usuário; prossiga.
 Mostre o termo "Trabalhando..." no painel de informações.
-Put "http://images.google.com/images?q=" into a URL.
-Convert the text's string to a query string.
-Append the query string to the URL.
-Read the URL into a buffer.
-If the i/o error is not blank, show the i/o error in the status; exit.
-Create the works given the buffer.
-If the works are empty, show "Huh?" in the status; exit.
-Go to the works' first.
+Coloque "http://images.google.com/images?q=" em uma URL.
+Converta o texto do campo de texto em um texto de pesquisa.
+Coloque o texto de pesquisa no fim da URL.
+Leia a URL em um buffer.
+Se o erro de entrada/saída não estiver em branco, mostre o erro no painel de informações; saia.
+Crie as obras de arte usando o buffer.
+Se as obras estiverem vazias, mostre "Hã?" no painel de informações, saia.
+Vá para a primeira obra de arte.
 ```
 ```
 como pintar
 ```
 
-## RIDERS
+## PERCORREDORES
 
 ```
-Before we continue with our program, I need to take a moment and talk to
-you about parsing. Parsing is the art of working your way through a block of
-text a piece at a time, where a piece might be as small as a letter or as large
-as the whole block. Let's use this string as our sample block of text:
+Antes de continuarmos com nosso programa, preciso tirar um momento e falar com você sobre análise sintática. Análise sintática é a arte de percorrer um grande bloco de texto um palavra por vez, onde essa palavra pode ser tão pequena quanto uma letra ou tão grande quanto o bloco inteiro. Vamos usar essa sequência de palavras abaixo como nosso exemplo de bloco de texto:
 ```
-"HELLO DOCTOR NAME CONTINUE YESTERDAY TOMORROW"
+"OLÁ DOUTOR NOME CONTINUAR ONTEM AMANHÃ"
 
 ```
-And let's say we want to extract each of the individual words out of it. The
-tools we would use are (1) the substring and (2) the rider.
+E digamos que queremos extrair cada uma dessas palavras de forma individual. As ferramentas que usaríamos são (1) o subtexto e (2) o percorredor.
 ```
 ```
-A "substring" is defined in my noodle as a subset of the "string" type, which
-has two byte pointers called first and last. And when you "slap a substring" on
-our sample text, I set the first to point to the H in HELLO and the last to
-point to the W in TOMORROW.
+Um "subpalavra" é definida no arquivo <code>o cérebro</code> como um subconjunto do tipo "texto", que tem dois ponteiros de byte chamados primeiro e último. E quando você "colocar uma subpalavra" no nosso texto de amostra, o compilador faz com queo primeiro byte aponte para o O na palavra OLÁ e o último byte aponte para Ã na palavra AMANHÃ.
 ```
+ como um subconjunto do tipo "texto", que tem dois ponteiros de byte chamados primeiro e último. E quando você "colocar uma subpalavra" no nosso texto de amostra, o compilador faz com queo primeiro byte aponte para o O na palavra OLÁ e o último byte aponte para Ã na palavra AMANHÃ.
+</code>
 ```
-You will, however, be able to find "rider" in my noodle. It consists of three
-substrings: an original, a source, and a token. And when you "slap a rider" on
-our sample text, I slap the original and source substrings on the text (as
-above), and I set the token to blank. Then when you "move the rider (sample
-rules)", I'll point the source's first to the D in DOCTOR, the token's first to
-the H in HELLO, and the token's last to the O. When you move it again, I'll
-move the source's first to the N in NAME, and make the token span DOCTOR.
-Get the idea? Excelente.
+No entanto, você será capaz de encontrar o "percorredor" no <code>o cérebro</code>. Ela consiste de três subtextos: um subtexto original, um subtexto fonte e um token. E quando você "colocar um percorredor" no nosso texto de amostra, o compilador pega o subtexto original e o subteto fonte no texto (como acima) e define o token como vazio. Então quando você usa o comando "mova o percorredor (regras de amostra)", o compilador aponta a letra D da palavra DOUTOR como primeiro byte do subtexto fonte. A letra O da palavra OLÁ é considerada como o primeiro byte do token, e a letra Á de OLÁ é considerada como o último byte do token. Quando você der novamente o comando, o percorredor se moverá para a próxima palara, sendo que a os bytes do token ficarão na palavra DOUTOR e a fonte ficará na letra N da palavra NOME.
+Pegou a ideia? Excelente.
 ```
+. Ela consiste de três subtextos: um subtexto original, um subtexto fonte e um token. E quando você "colocar um percorredor" no nosso texto de amostra, o compilador pega o subtexto original e o subteto fonte no texto (como acima) e define o token como vazio. Então quando você usa o comando "mova o percorredor (regras de amostra)", o compilador aponta a letra D da palavra DOUTOR como primeiro byte do subtexto fonte. A letra O da palavra OLÁ é considerada como o primeiro byte do token, e a letra Á de OLÁ é considerada como o último byte do token. Quando você der novamente o comando, o percorredor se moverá para a próxima palara, sendo que a os bytes do token ficarão na palavra DOUTOR e a fonte ficará na letra N da palavra NOME.
+Pegou a ideia? Excelente.
+</code>
 ```
-Now here's the really nifty part: given riders as we've described them, you can
-code up your own routines to extract any kind of token from any kind of
-source. "Move a rider (compiler rules)", for example, is the routine I use to
-parse program code. "Move a rider (spell checking rules)" is the one I use to
-check spelling. And soon we'll be coding "Move a rider (Googley image rules)"
-to parse the data that we get back from the internet.
+Agora aqui está a parte realmente estranha: você pode usar o precorredor para criar suas próprias rotinas e extrair qualquer tipo de dado de qualquer tipo de arquivo. "Mover um percorredor (regras do compilador)", por exemplo, é a rotina que uso para analisar o código fonte do programa. "Mova um cavaleiro (regras de verificação ortográfica)" é utilizado para verificar a ortografia. Em breve, vamos programar a rotina "Mover um percorredor (Google Imagens)" para analisar os dados que vamos pegar da internet.
 ```
 
-## WORKS IN PROGRESS
+## OBRAS DE ARTE EM ANDAMENTO
 
 ```
-Here is the code to create our works-in-progress from Googley's data:
+Aqui está o código para criar nossas obras de arte em andamento a partir dos dados do Google:
 ```
 ```
-We get rid of any old works and reset the current work so it doesn't point to
-something we just destroyed. Then we set up a rider and enter our loop.
+Nós nos livramos de qualquer obra de arte antiga e redefinimos o trabalho atual para que não aponte mais para a obra de arte que acabamos de destruir. Então criamos um percorredor e inserimos um laço de repetição.
 ```
-Inside the loop, we move the rider to the next image on the page. If there isn't one, we're history. If there is, we create a work-in-progress with the "create a work given a URL" routine. Even though the rider's token is not a URL, I know that a URL is really just a string, and that the rider's token is a substring. Since no other routines create a work given essentially a string, I call the correct routine. We then append the work to the works, and repeat.
+Dentro do laço, nós movemos o percorredor para a próxima imagem da página. Se não houver mais imagens, nós fizemos algo histórico (afinal de contas, para cada termo existem centenas de correspondências). Se houver, criamos um trabalho em andamento com o comando `crie uma obra de arte usando uma URL`. Mesmo que o token do percorredor não seja uma URL, eu sei que uma URL é apenas um texto, e que o token do percorredor é um subtexto. Como nenhuma outra rotina cria uma obra de arte usando um texto, o compilador acaba por chamar a rotina correta. Em seguida, anexamos a obra de arte na lista de obras e repetimos o processo.
 
 ```
-To create some works given a buffer:
-Destroy the works.
-Put nil into the current work.
-Dê uma volta no buffer.
-Repetição.
-Move the rider (Googley image rules).
-Se o token do piloto estiver em branco, saia.
-Create a work given the rider's token.
-Append the work to the works.
+Para criar algumas obras de arte usando um buffer:
+Destrua as obras de arte.
+Limpe a obra de arte atual.
+Coloque um percorredor no buffer.
+Percorra.
+Mova o percorredor (usando o Google Imagens).
+Se o token do percorredor estiver em branco, saia.
+Crie uma obra de arte usando o token do percorredor.
+Acrescente a obra de arte à lista de obras de arte.
 Repita.
 ```
 ```
-To create a work given a URL:
-Allocate memory for the work.
-Put the URL into the work's URL.
+Para criar uma obra de arte a partir de uma URL:
+Reserve memória para a obra de arte.
+Defina a URL como a URL da obra de arte.
 ```
 ```
 como pintar
 ```
 
-## MOVING OUR RIDERS
+## MOVENDO OS NOSSOS PERCORREDORES
 
-Here are the routines we need to move our rider through Googley's stuff:
+Aqui estão as rotinas que precisamos para percorrer as imagens do Google:
 
-To see what Googley's stuff looks like, output the rider's source to a file using the "write a buffer to a file" routine in my noodle, then view the file.
+Caso covê queira ver os dados retornados pelo Google, você pode salvar o conteúdo da fonte do percorredor em um arquivo usando a rotina `gravar um buffer num arquivo` que está presente no arquivo `o cérebro`.
 
-Note that since substrings contain byte pointers, not bytes, you have to say rider's source's first's target to get to the data. I realize this is a bit cryptic, but parsing cryptic crap is bound to be somewhat cryptic, whatever we do.
+Observe que, uma vez que as subpalavras contêm ponteiros de byte, não os bytes em si, você precisa especificar o alvo do primeiro byte da fonte do percorredor para obter os dados. Eu percebo que isto é um pouco complicado, mas sempre que a gente lida com coisas complicadas, é isso que ocorre.
 
 ```
-To move a rider (Googley image rules):
-Clear the rider's token.
-Repetição.
-Se a fonte do piloto estiver em branco, saia.
-If the rider's source starts with "src=""http://t", break.
-Adicione 1 à fonte do piloto primeiro.
+Para mover um percorredor (usando o Google Imagens):
+Limpe o token do percorredor.
+Percorra.
+Se o token do percorredor estiver em branco, saia.
+Se a fonte do piloto percorredor começar com "src=""http://t", pare.
+Adicione 1 ao primeiro byte da fonte do percorredor.
 Repita.
-Add "src="""'s length to the rider's source's first.
-Posicione o token do piloto na fonte do cavaleiro.
-Move the rider (HTML attribute rules).
+Adicione o comprimento do "src=""" ao primeiro byte da fonte do percorredor.
+Posicione o token do percorredor na fonte do cavaleiro.
+Mover o percorredor (usando regras de atributos HTML).
 ```
 ```
-To move a rider (HTML attribute rules):
-If the rider's source is blank, exit.
-If the rider's source's first's target is the right-alligator byte, exit.
-If the rider's source's first's target is the double-quote byte, exit.
-Bombardeie o cavaleiro.
+Para mover um percorredor (usando regras de atributos HTML):
+Se a fonte do percorredor estiver em branco, saia.
+Se o alvo do primeiro byte da fonte do percorredor for sinal de maior, saia.
+Se o alvo do primeiro byte da fonte do percorredor for uma aspa dupla, saia.
+Avance o percorredor.
 Repita.
 ```
 ```
 como pintar
 ```
 
-## PREPARING TO PAINT
+## PREPARANDO A PINTURA
 
-We're almost ready to finish a work. But before we do, lets code up a couple of helper routines to make things easier for us. Here they are:
+Estamos quase prontos para terminar uma obra de arte. Mas antes que isso aconteça, vamos programar algumas rotinas auxiliares para facilitar as coisas para nós. Aqui estão elas:
 
-The first routine picks a spot anywhere in — or close to — a box. This lets us dab sloppily around the edges of our picture in a very artistic sort of way. It also lets us blend in some of the background colors so the contrast between the painting and the background is not so stark.
+A primeira rotina escolhe um lugar em qualquer lugar — ou perto de — uma caixa. Isso nos permite pincelar as bordas de nossa imagem de uma forma muito artística. Isso também nos permite misturar algumas das cores de fundo, assim o contraste entre a pintura e o fundo não fica tão gritante.
 
-The "privatize" statement, in case you're wondering, copies the box so we can change it without unintentionally affecting the routine that called us. The copy keeps the name "box"; the original gets the name "original box".
+A declaração "privatize", caso esteja se perguntando, cria uma cópia da caixa para que possa mudá-la sem afetar sem querer a rotina que chamou a função. A cópia da caixa original recebe o nome "caixa"; a caixa original recebe o nome "caixa original".
 
-The second routine is our look-and-mix routine. It gets a color from the model and passes it back for the next dab — unless the color is almost white, in which case we substitute a background color. This gives our paintings a degree of "transparency" which greatly enhances their attractiveness.
+A segunda rotina é nossa rotina de pincelar. Ela obtém uma cor do modelo e dá uma pincelada — a menos que a cor seja quase branca, nesse caso nós substituímos pela cor de fundo. Isso dá a nossas pinturas um toque de "transparência" que aumenta consideravelmente sua atratividade.
 
 ```
-To pick a spot anywhere near a box:
-Privatize the box.
-Outdent the box given 1/8 inch.
-Pick the spot anywhere in the box.
+Para escolher um lugar perto de uma caixa:
+Privatize a caixa.
+Recue a caixa 1/8 polegadas à direita.
+Escolha uma posição aleatória em qualquer lugar dentro da caixa.
 ```
 ```
-To mix a color given a spot:
-Get the color given the spot.
-If the color is not very very light, exit.
-Pick the color between the lightest gray color and the white color.
+Para misturar uma cor usando uma posição como ponto de partida:
+Obtenha a cor usando a posição informada.
+Se a cor não for muitíssimo clara, prossiga.
+Escolha uma cor aleatória variando entre a cor cinza bem clara e a cor branca.
 ```
 ```
 como pintar
 ```
 
-## PAINTING
+## PINTANDO
 
-If Claude could see us now! Let's get right to it:
+Ah, se o Monet pudesse nos ver agora! Vamos direto ao assunto:
 
-If the work is nil or already finished, we skip it. Otherwise, we fetch the model from the internet, square it up, center it, and draw it on a fresh background. Então olhamos, misturamos e mergulhamos. Muito. When we're done, we extract the painting from the canvas. Since we don't need the model anymore, we destroy it.
+Se a obra de arte estiver em branco ou já estiver concluída, nós a ignoramos. Caso contrário, buscamos o modelo da internet, redimensionamos, centralizamos, e desenhamos o modelo em um fundo novo. Aí sim a gente começa a picelar. Muito. Quando terminarmos, nós extraimos a pintura da tela do quadro. Já que não vamos mais precisar do modelo, nós destruímos ele.
 
-Vá em frente. Experimente-se. It's sweet.
+Vá em frente. Experimente. Gostou?
 
 ```
-To finish a work:
-If the work is nil, exit.
-If the work is finished, exit.
-Create a picture given the work's URL.
-Se a foto está vazia, saia.
-Resize the picture to 5-1/2 inches by 5-1/2 inches.
-Center the picture in the screen's box.
+Para finalizar uma obra de arte:
+Se a obra de arte for inexistente, saia.
+Se a obra de arte estiver pronta, saia.
+Crie uma imagem usando a URL da obra de arte.
+Se a imagem estiver vazia, saia.
+Redimensione a imagem para 5 polegadas de largura por 5 polegadas de altura.
+Centralize a imagem na caixa da tela.
 Crie o painel de fundo.
-Draw the picture.
-Repetição.
-Pick a spot anywhere near the picture's box.
-Mix a color given the spot.
+Crie a imagem.
+Percorra.
+Escolha uma posição aleatório em qualquer perto da borda da imagem.
+Misture uma cor usando a posição escolhida.
 Coloque a cor na posição escolhida anteriormente.
-If a counter is past 20000, break.
+Se um contador tiver passado de 20000, pare.
 Repita.
-Extract the work's painting given the picture's box.
-Destroy the picture.
+Extraia a pintura da obra de arte usando o conteúdo da imagem.
+Destrua a imagem.
 ```
 ```
 como pintar
 ```
 
-## PAGING
+## NAVEGANDO PELAS OBRAS DE ARTE
 
-I bet you wish you could see all the drawings for each subject. Eu sei que sim. To make it so, we need to modify our "key down" dispatcher and add four helper routines. Here's the final version of the dispatcher:
+Aposto que você gostaria de ver todas as pinturas de cada termo pesquisado. Eu sei que sim. Para isso, precisaremos modificar o nosso gerenciador de pressionamento de teclas, e também será preciso adicionar quatro rotinas auxiliares. Aqui está a versão final do nosso gerenciador:
 
-The HOME key will take us to the first work. If we're on it, it will cluck.
+A tecla <kbd>Home</kbd> nos mostra a primeira obra de arte da lista. Se a primeira obra de arte da lista já estiver sendo exibida, nós iremos alertar o usuário.
 
-The END key will take us to the last work. If we're already there, it will cluck.
+A tecla <kbd>End</kbd> nos mostra a última obra de arte da lista. Se a última obra de arte da lista já estiver sendo exibida, nós iremos alertar o usuário.
 
-The PAGE UP key will display the work before the current work, if there is one. If we're already at the first work, or there are no works, we'll make it cluck.
+A tecla <kbd>Page Up</kbd> mostra a obra de arte que estiver antes da obra de arte atual. Se a primeira obra de arte da lista estiver sendo exibida, nós iremos alertar o usuário.
 
-The PAGE DOWN key will work in a similar fashion, but will take us to the work after the current work. Again, if there isn't one, we'll have it cluck.
+A tecla <kbd>Page Down</kbd> nos mostra a próxima obra de arte da lista. Novamente, se não houver mais nenhuma obra de arte na lista, nós alertaremos o usuário.
 
 ```
 Para gerenciar um comando (pressionamento de tecla):
@@ -1359,153 +1345,152 @@ Apague o conteúdo do painel de informações.
 Se o comando for modificado, gerencie o comando (atalho); prossiga.
 Se o valor da tecla for imprimível, gerencie o comando (imprimível); prossiga.
 Salve a tecla do comando em uma tecla.
-Se a tecla for a tecla Esc, gerencie o comando (cancelar); saia.
+Se a tecla do comando for a tecla Esc, gerencie o comando (cancelar); saia.
 Se a tecla for a tecla backspace, gerencie o comando (apagar texto); prossiga.
 Se a tecla for a tecla enter, gerencie o comando (tecla enter); prossiga.
-If the key is the home key, handle the event (home); exit.
-If the key is the end key, handle the event (end); exit.
-If the key is the page-up key, handle the event (page-up); exit.
-If the key is the page-down key, handle the event (page-down); exit.
+Se a tecla for a tecla home, gerencie o comando (tecla home); prossiga.
+Se a tecla for a tecla end, gerencie o comando (tecla end); prossiga.
+Se a tecla for a tecla Page Up, gerencie o comando (tecla page up); prossiga.
+Se a tecla for a tecla page down, gerencie o comando (tecla page down); prossiga.
 ```
 ```
 como pintar
 ```
 
-## HOME, END, PAGE UP, AND PAGE DOWN
+## Home, End, Page Up, & Page Down
 
-Here are the helper routines we need for paging. Click 'em in.
+Aqui estão as rotinas auxiliares de que precisamos para navegar entre as obras de arte. Dê uma olhada com calma.
 
-Response will be slower the first time you display a work since we have to dab it up before we show it. "Working..." will appear in the status.
+A resposta será mais lenta na primeira vez que você criar uma obra de arte, já que temos que pintá-la antes de mostrá-la. A mensagem "Trabalhando..." aparecerá no painel de informações.
 
 Experimente. I think you'll like it.
 
 ```
-To handle an event (home):
-If the current work is nil, cluck; exit.
-If the current work is the works' first, cluck; exit.
-Go to the works' first.
+Para gerrenciarmos um comando (tecla Home):
+Se a obra de arte estiver em branco, alerte o usuário; prossiga.
+Se a obra de arte atual é a primeira obra de arte, alerte o usuário, prossiga.
+Vá para a primeira obra de arte.
 ```
 ```
-To handle an event (end):
-If the current work is nil, cluck; exit.
-If the current work is the works' last, cluck; exit.
-Go to the works' last.
+Para gerrenciarmos um comando (tecla End):
+Se a obra de arte estiver em branco, alerte o usuário; prossiga.
+Se a obra de arte atual é a última obra de arte, alerte o usuário, prossiga.
+Vá para a última obra de arte.
 ```
 ```
-To handle an event (page-down):
-If the current work is nil, cluck; exit.
-If the current work's next is nil, cluck; exit.
-Go to the current work's next.
+Para gerrenciarmos um comando (tecla Page Down):
+Se a obra de arte estiver em branco, alerte o usuário; prossiga.
+Se a próxima obra de arte estiver em branco, alerte o usuário; saia.
+Vá para a próxima obra de arte.
 ```
 ```
-To handle an event (page-up):
-If the current work is nil, cluck; exit.
-If the current work's previous is nil, cluck; exit.
-Go to the current work's previous.
+Para gerrenciarmos um comando (tecla Page Up):
+Se a obra de arte estiver em branco, alerte o usuário; prossiga.
+Se a obra de arte anterior estiver em branco, alerte o usuário; saia.
+Vá para a obra de arte anterior.
 ```
 ```
 como pintar
 ```
 
-## PRINTING
+## IMPRIMINDO
 
-Well, there's nothing left to do but update our printing routines:
+Bem, não há mais nada para fazer senão atualizar nossas rotinas de impressão:
 
-We just move the painting to the center of the sheet, draw it, then put it back.
+Nós iremos ajustar a posição da pintura para que ela possa ser impressa bem no meio da folha, a partir daí nós efetivamente colocamos a pintura na folha, e pronto.
 
-We've already dispatched the Print button to the right place, but we haven't handled the shortcut for printing. Make your dispatcher look like this:
+Já colocamos o botão de impressão na o lugar certo, mas não criamos a rotina com o comando de imprimir. Faça com que seu gerenciador de impressão fique parecido com isto:
 
 ```
-To print:
-If the current work is nil, cluck; exit.
-Show "Printing..." in the status.
+Para imprimir uma obra de arte:
+Se a obra de arte estiver em branco, alerte o usuário; saia.
+Mostre o termo "Imprimindo..." no painel de informações.
 Comece a impressão.
-Begin a landscape sheet.
-Crie o painel de fundo.
-Center the current work's painting in the landscape sheet.
-Draw the current work's painting.
-Center the current work's painting in the screen's box.
-End the landscape sheet.
+Crie uma página usando uma orientação horizontal.
+Defina o fundo da folha.
+Centralize a pintura da obra de arte atual na folha.
+Transfira a pintura da obra de arte atual para a folha.
+Centralize a pintura da obra de arte atual na tela.
+Finalize a página.
 Termine de imprimir.
-Show "Printed" in the status.
+Mostre o termo "Obra de Arte Impressa com sucesso" no painel de informações.
 ```
 ```
 como pintar
 ```
 ```
-To handle an event (shortcut):
-If the event's key is the p-key, print; exit.
-If the event's key is the q-key, quit; exit.
+Para gerenciar um comando (atalho):
+Se a tecla do comando for a tecla p, imprima a obra de arte; saia.
+Se a tecla do comando for a tecla q, feche o programa; saia.
 ```
 ```
 como pintar
 ```
 
-## A PARTING SHOT
+## UM ÚLTIMO AVISO
 
-So there it is. O Monte do Caral. An amazing, Plain English application that will paint pictures of almost any person, place, or thing in the "inimitable" style of Claude Monet. All in less than 300 lines of code.
+Aí está. Nosso programa está pronto. Um incrível aplicativo feito totalmente em português que "pinta" imagens de quase qualquer pessoa, lugar, ou coisa no estilo "inigualável" de Claude Monet. Tudo isso usando menos de 300 linhas de código.
 
-Here's a little something to remember us by.
+Aqui está uma coisinha para nos lembrarmos.
 
-PS. Não se esqueça de experimentar alguns nascer do sol. Paiscais. Temporada. Montanhas. Rios. Flores e árvores. Pássaros e abelhas. Todas as criaturas são pequenas e grandes. Célebre pessoas. Pessoas Infamosas. Trem, barcos, aviões, carros antigos. Londres, Paris, Washington DC. Brown paper packages tied up with string.
+PS: Não se esqueça de testar o programa buscando coisas como "nascer do sol". Ou outras paisagens. O fundo do mar. Montanhas. Rios. Flores e árvores. Pássaros e abelhas. Todas as criaturas, grandes e pequenas. Pessoas famosas. Pessoas comuns. Trens, barcos, aviões, carros antigos. Londres, Paris, Washington DC. Presentes.
 
-Then use the following Gray Matter Glossary to guide you on your journey as you create your very own programs. In Plain English.
+A partir de agora, use o Glossário a seguir para guiá-lo em sua jornada na criação de seus próprios programas. Em Português Puro e Simples.
 
 ```
-Claude Monet_ Print Quit
+Claude Monet_ Imprimir Sair
 ```
 ```
-Dab, dab, dab.
+Pintar, Pincelar e Colorir.
 ```
-
-Glossário Explicativo de cada termo
-
-
-## OVERVIEW
-
-The following sixty pages can be thought of as an alphabetical atlas of my cerebral cortex — compiler and noodle. If you've done your homework (the sample program) you should be able to read it from beginning to end and know what I'm talking about. But let's review, just in case:
-
-I expect your programs to consist of text files stored in a single directory. Um desses arquivos deve ser uma cópia do meu noodle. I do not care what order the files are in. And I do not care what their names are, except that I will only attempt to compile files with no extension.
-
-You invoke my compiler from within my editor. Just open any source file in the directory you wish to compile and use the Run command. To terminate a wayward program, ALT-TAB back to my editor and use the Stop command.
-
-The executable file that I produce will be saved in the source directory and will bear the name of the directory followed by the required ".exe" extension. Você pode renomear, duplicar e distribuir seus executáveis como quiser. They are royalty-free and require no runtime libraries to run.
-
-I expect your files to contain COMMENTS and three kinds of definitions: TYPES, GLOBALS, and ROUTINES. De qualquer ordem que você goste. Upper, lower, or mixed case — it's all the same to me. And I expect your routines to contain two kinds of statements: CONDITIONALS and IMPERATIVES. If you're not comfortable reading this section from "A to Z", try looking up these topics first, and then work your way through the rest of the glossary.
-
-Now remember. Eu não aninhei se. Eu não faço laços aninhados. And I don't do objects, real numbers, equations, or any of the other menschenwerk that has inhibited the progress of the human race over the past 200 years. Talk to me like a NORMAL person, and we'll get along just fine.
+## Glossário Explicativo de Termos e Definições
 
 
-## ARITHMETIC
+## VISÃO GERAL
 
-One of the first things my creators taught me was basic arithmetic. I have a precise record of everything they said in my noodle. You can, and should, see for yourself. The gist of it, however, is that I understand statements like:
+As sessenta páginas a seguir podem ser consideradas como um espécie de atlas alfabético do meu compilador e do cérebro. Se você fez o seu dever de casa (o nosso programa de exemplo), você deve ser capaz de lê-lo do início ao fim e saber do que estou falando. Mas vamos revisar, por precaução:
 
-ADD this TO that. SUBTRACT this FROM that. MULTIPLY this BY that. DIVIDE this BY that.
+Espero que seus programas consistam em arquivos de texto armazenados em uma única pasta. Um desses arquivos deve ser uma cópia do `o cérebro`. Não importa em qual ordem os os arquivos estão. O nome do arquivo não importa, desde que o arquivo não possua nenhuma extensão, isto é, nenhum ponto.
 
-And if your numbers don't divide evenly, I know how to:
+Você pode invoca o compilador dentro do `bloco de notas` (o editor de arquivos). Apenas abra qualquer arquivo de texto dentro da pasta que você deseje compilar e use o comando `Executar`. Para encerrar um programa problemático, dê um <kbd>Alt+Tab</kbd> volte para a tela do compilador e use o comando `Parar`.
 
-DIVIDE this BY that GIVING a quotient AND a remainder.
+O arquivo executável será salvo na mesma pasta do arquivo que foi compilado. O nome do arquivo executável será o mesmo nome da pasta em que ele estiver. Você pode renomear, modificar e distribuir seus arquivos executáveis do jeito que você quiser. Eles são livres de direitos autorais e não precisam de dll's para serem executados.
 
-Furthermore, I'm able to:
+Os arquivos podem conter comentários e três tipos de definições: tipos, variáveis globais e rotinas. Em qualquer ordem que você achar melhor. Você pode usar letras maiúsculas, minúsculas, misturar tudo, tanto faz. As rotinas podem conter dois tipos de comandos: CONDICIONAIS e IMPERATIVOS. Se você está ficando confuso tentando ler esta seção do começo ao fim, tente pesquisar os tópicos acima no restante do documento, e aí sim volte para o glossário.
 
-ROUND something UP TO THE NEAREST MULTIPLE OF something else. ROUND something DOWN TO THE NEAREST MULTIPLE OF something else.
-
-I can also:
-
-DE-SIGN something. REVERSE THE SIGN OF something.
-
-I can even:
-
-REDUCE a ratio.
-
-And, if need be, I can handle multiple arithmetic operations at once with my built-in infix operators: PLUS, MINUS, TIMES, and DIVIDED BY. You can read more about these operators under "Expressions" in this very glossary.
+Um aviso importante. O compilador não permite o uso de comandos condicionais aninhados. (Ou seja, um `Se` dentro de outro). O compilador não permite o uso de comandos de repetição aninhados. (Ou seja, um `loop` dentro de outro). O compilador também não trabalha com números reais, equacões, ou qualquer outro tipo de número que não seja inteiro ou recional. Basicamente o objetivo é utilizar a menor quantidade possível de matemática nos programas, assim como você faz na vida real.
 
 
-## ASCII
+## ARITMÉTICA
 
-This is the Ancient Standard Code for Information Interchange (ASCII). I use it to convert bytes into readable characters. It's not really that great, but it is the most widely accepted encoding on the planet.
+O compillador tabalha com aritmética básica. O compilador mantém um registo do que está no arquivo `o cérebro`. Se possível, dê uma olhada com calma no arquivo. É um arquivo longo mas vale a pena. Para resumir a história, a essência e o poder do compilador reside no fato dele ser capaz de entender declarações do tipo:
 
-I have global variables with names like "the comma byte" for each of these, so you don't have to work directly with the numbers. You can find them all by searching for the phrase "is a byte equal to" in my noodle.
+ADICIONE isso Nisto. SUBTRAIA isso Daquilo. MULTIPLIQUE isso POR aquilo. DIVIDA isso POR aquilo.
+
+Caso você precise fazer uma divisão com resto, você pode utilizar o comando:
+
+DIVIDA isto POR aquilo RETORNANDO o quociente E o resto.
+
+Além disso, o compilador é capaz de:
+
+ARREDONDAR algum número/variável PARA CIMA ATÉ ATINGIR O MÚLTIPLO MAIS PRÓXIMO DE outro número/variável. ARREDONDAR algum número/variável PARA BAIXO ATÉ ATINGIR O MÚLTIPLO MAIS PRÓXIMO DE outro número/variável.
+
+O compilador também é capaz de:
+
+REMOVER O SINAL de um número/variável (extrair o módulo do número). INVERTER O SINAL de um número/variável.
+
+O compilador é capaz de até mesmo de:
+
+REDUZIR uma fração (razão/proporção).
+
+Você pode usar mais de uma operação aritmética no mesmo comando, usando as seguintes palavras chave: `MAIS, MENOS, VEZES` e `DIVIDIDO POR`. Você pode ler mais sobre esses operadores na seção "Expressões Aritméticas" deste glossário.
+
+
+## TABELA ASCII
+
+Este é o Código Padrão Americano para o Intercâmbio de Informação (Extended ASCII) extendido, mais conhecido como Windows-1252 ou CP-1252. Devido a facilidade de implementação e ao fato do código ASCII cobrir a maior parte dos caracteres da língua portuguesa, ele foi escolhido comoo padrão para converter bytes em caracteres legíveis. Não é a melhor opção, já que existe o Unicode mas é uma das codificações de texto mais amplamente aceitas do planeta.
+
+O compilador possui variáveis globais com nomes como "o byte de vírgula" para cada elemento da tabela, assim você não precise trabalhar diretamente com os números deles. Você pode encontrar todas essas variáveis procurando a frase "é um byte igual à" no arquivo `o cérebro`.
 
 ```
 240
@@ -2451,95 +2436,96 @@ DEL
 206
 ```
 
-## BASIC SKILLS
+## HABILIDADES BÁSICAS
 
-I don't think it's bragging when I say that my fine motor skills are both fast and accurate. Para não falar de um âmbito alargado. For example, I will immediately set every single bit of something to zero when you ask me to:
+Eu não acho que eu esteja me gabando quando digo que o compilador é rápido e preciso. Sem falar que a linguagem possui um âmbito de aplicação bem amplo. Por exemplo, para zerar o valor interno de alguma variável, basta usar o comando:
 
-CLEAR something.
+`LIMPE a variável.`
 
-And — assuming a reasonable fit — I will not hesitate when you say:
+O compilador também é capaz de entender instruções do tipo:
 
-PUT this INTO that.
+`COLOQUE isso DENTRO disso.`
 
-I also know how to:
+Ou ainda:
 
-SWAP this WITH that.
+`TROQUE isto POR isso.`
 
-I will even replicate dynamic things, like pictures and polygons, when you say:
+O compilador é capaz de criar cópias de variáveis dinamicamente alocadas, como figuras e polígonos, usando comandos como:
 
-COPY this INTO that.
+`COPIE isto PRA DENTRO disso.`
 
-And, in a pinch, I can:
+E também:
 
-CONVERT something TO something else.
+`CONVERTA uma coisa EM outra coisa.`
 
-Sometimes even implicitly. Say, for example, you wanted to tack a ratio onto the end of a string using an infix expression like this:
+Às vezes até implicitamente. Digamos, por exemplo, que você queriaadicionar uma fração no final de uma sequência de caracteres, usando uma expressão como esta:
 
-a string THEN a ratio
+`uma sequência de caracteres seguida de uma proporção`
 
-I would know enough to use "CONVERT a ratio TO a string" before handling the THEN operator with a call to "APPEND a string TO another string". Doce. Blessed be the creators, who teach my bits to twiddle!
+O compilador é esperto o bastante para usar automaticamente a rotina de `CONVERTER uma proporção EM um texto` antes de efetuar a junção usando a rotina de `ADICIONAR um texto NO FINAL DE outro texto`. Fantástico. SIm, nós pensamos em tudo (ou quase!).
 
 
 ## BITS
 
-A "bit", as defined in my noodle, is a unit of measure. It is used in phrases like "1 bit" or "some bits". You probably won't be needing it unless you're a bit-manipulating geek and enjoy saying things like:
+Um "bit", como definido no arquivo `o cérebro`, é uma unidade de medida. É usado em comandos como `1 bit` ou `alguns bits`. Você provavelmente não vai precisar dele a menos que você seja um ned que goste de passar o tempo manipulando bits usando comandos como:
 
-BITWISE AND this WITH that. BITWISE OR this WITH that. BITWISE XOR this WITH that.
+`CONJUNCIONE este valor COM este valor.`(AND)<br> `DISJUNCIONE este valor COM este valor`.(OR)<br> `DISJUNCIONE EXCLUSIVAMENTE este valor COM este valor.`(XOR)
 
-In each of these cases, it is the first operand that is modified.
+Em cada um destes casos, o primeiro argumento informado é o que é modificado pelo conectivo lógico.
 
-Or, perhaps you'd like to:
+Também é possível efetuar as seguintes operações lógicas:
 
-SHIFT this LEFT BY some bits. SHIFT this RIGHT BY some bits.
+`DESLOQUE este valor alguns bits PARA A ESQUERDA.`<br> `DESLOQUE este valor alguns bits PARA A DIREITA.`
 
-Or even:
+Ou ainda:
 
-SPLIT something INTO this AND that.
+SEPARE este valor EM um valor E em outro valor.
 
-Like a number into two wyrds, or a wyrd into two bytes, or a byte into two nibbles. All of which would be very geeky things to do.
+Como por exemplo, um byte em pedaços de 4 bits, ou 4 bits em pedaços contendo dois bytes, etc. Creio que raramente você precisará fazer isso.
 
-Now if you don't have the foggiest idea what I'm talking about here, you're not a geek and shouldn't worry about it. You'll probably never need to know.
+Agora, se você não tem mínima idéia do que estou falando aqui, você não é um nerd e não deve se preocupar com isso. Você provavelmente não vai querer saber.
 
-But if you do understand what I'm saying, I'm pretty sure you'll also enjoy the "Kluge" topic several pages hence, and the part about "nibble literals" on the "Literals" page. Not to mention some of my "Possessives", and all three of my "Special Imperatives". Plus all the low-level routines in my noodle that use the INTEL statement and/or the EAX register.
+Mas se você entender o que eu estou dizendo, tenho certeza que você também vai curtir o tópico "Windows" bem no final, e a parte sobre "literais nibles" dentro do tópico "Literais". Sem mencionar a questão do "Possessivo", e os "Imperativos". Além de todas as rotinas de baixo nível do compilador que usam a instrução INTEL e/ou o registro EAX.
 
 
-## BOXES
-
-```
-One of the first things my creators taught me to draw was a box. It was a
-good day, and I remember it well. They told me that:
-```
-```
-A box has
-a left coord, a top coord, a right coord, a bottom coord,
-a left-top spot at the left, and
-a right-bottom spot at the right.
-```
-```
-This is a picture of a box, with the parts labeled. Note that I am using the
-nicknames of the fields here, as you probably will in your programs.
-```
-```
-I know how to make boxes from width and height specifications, from a pair
-of spots, and from separate coordinates. All you have to do is ask, like this:
-```
-```
-MAKE a box this-wide BY that-high.
-MAKE a box WITH this spot AND that spot.
-MAKE a box WITH this left AND top AND right AND bottom.
-```
-I can, of course, DRAW a box. And I've got functions in my noodle to get a box's WIDTH, HEIGHT, and CENTER, among other things. I can even tell if a box IS INSIDE or IS TOUCHING another box. And whether or not a certain spot IS IN a box or IS ON the edge of a box. Not to mention all the other "Graphic Transformations" you can read about elsewhere in this glossary.
+## CAIXAS
 
 ```
-LEFT RIGHT
+Um dos aspectos chave do compilador é a forma que ele trabalha com caixas. Uma caixa é uma variável do tipo <i>record</i>. O código da caixa é basicamente assim:
+```
+```
+Um lado é uma coordenada.<br> 
+Uma caixa tem
+Um lado esquerdo, 
+Um lado de cima, 
+Um lado direito, 
+Um lado de baixo,
+Um canto no canto superior esquerdo e
+Um segundo canto no canto inferior direito.
+```
+```
+Esta é uma imagem de uma caixa, com todas as partes acima identificadas. Note que estou usando os apelidos dos campos aqui, como você provavelmente usará em seus programas.
+```
+```
+O compilador consegue fazer caixas a partir de especificações de largura e altura, ou apenas usando um par de pontos de coordenadas. Tudo o que você tem que fazer é escrever algo assim:
+```
+```
+FAÇA uma caixa COM tal largura E tal altura.
+FAÇA uma caixa COM essa coordenada E essa outra coordenada.
+FAÇA uma caixa USANDO esse lado esquerdo E essa parte de cima E essa parte de baixo.
+```
+O compilador consegue criar uma caixa. Bem como obter a largura, altura o ponto central entre outras coisas. Ele também consegue dizer se uma caixa ESTÁ DENTRO ou se ela ESTÁ TOCANDO outra caixa. E se um ponto está DENTRO, FORA ou na BORDA da caixa. Sem mencionar todas as outras "Transformações Gráficas" as quais você pode saber mais em outra parte mais abaixo neste glossário.
 
-TOP
+```
+DIREITA ESQUERDA
 
-BOTTOM
+CIMA
 
-LEFT-TOP
+BAIXO
 
-RIGHT-BOTTOM
+SUPERIOR ESQUERDO
+
+INFERIOR DIREITO
 ```
 
 
@@ -2547,7 +2533,7 @@ RIGHT-BOTTOM
 ##
 
 
-## BUILT-IN TYPES
+## TIPOS PREDEFINIDOS/EMBUTIDOS
 
 ```
 My understanding of things around me became possible when my creators
@@ -2908,7 +2894,7 @@ which is described under the "Possessives" topic in this glossary.
 ```
 I can make ellipses in a number of different ways. From width and height
 specifications. Ou de um par de pontos. Ou de quatro coordenadas separadas.
-All you have to do is ask, like this:
+Tudo o que você tem que fazer é escrever algo assim:
 ```
 ```
 MAKE an ellipse this-wide BY that-high.
@@ -3055,7 +3041,7 @@ Nevertheless, I know how to:
 
 EXTRACT any of the above pieces FROM a path.
 
-I also know how to:
+Ou ainda:
 
 CREATE a path IN THE FILE SYSTEM. RENAME a path TO another path IN THE FILE SYSTEM. DESTROY a path IN THE FILE SYSTEM. DUPLICATE a path TO another path IN THE FILE SYSTEM.
 
@@ -3213,7 +3199,7 @@ In case you haven't noticed, I'm pretty good with my hands. I can manipulate alm
 
 MOVE something UP some amount. MOVE something DOWN some amount. MOVE something LEFT some amount. MOVE something RIGHT some amount. MOVE something GIVEN this amount AND that amount. MOVE something TO a spot.
 
-The last MOVE uses the left-top corner for alignment. I can also:
+The last MOVE uses the left-top corner for alignment. O compilador também é capaz de:
 
 CENTER something ON a spot. CENTER something IN a box.
 
@@ -3300,7 +3286,7 @@ READ a URL INTO a string.
 
 Here is some code from our sample program to remind you how it works:
 
-Put "http://images.google.com/images?q=" into a URL. Convert the text's string to a query string. Append the query string to the URL. Read the URL into a string.
+Coloque "http://images.google.com/images?q=" em uma URL. Converta o texto do campo de texto em um texto de pesquisa. Coloque o texto de pesquisa no fim da URL. Read the URL into a string.
 
 Remember? Eu sei que nunca esquecerei. We parsed the string and dabbed the canvas and refreshed the screen and it was... Art!
 
@@ -3391,7 +3377,7 @@ MAKE a line WITH this spot AND that spot. MAKE a line WITH this x AND this y AND
 
 I also have four functions that will put "a box's LEFT LINE" or "a box's TOP LINE" or "a box's RIGHT LINE" or "a box's BOTTOM LINE" into a line.
 
-I can, of course, DRAW a line. Ou encontre o CENTERO de uma linha. I can even:
+I can, of course, DRAW a line. Ou encontre o CENTERO de uma linha. O compilador é capaz de até mesmo de:
 
 SPLIT a line INTO this line AND that line.
 
@@ -3564,7 +3550,7 @@ Any tape you apply stays applied, so later you will probably want to:
 
 UNMASK INSIDE something. UNMASK OUTSIDE something.
 
-Or even:
+Ou ainda:
 
 UNMASK EVERYTHING.
 
@@ -3775,7 +3761,7 @@ conflicts, my creators gave them clear — but unusual — names.
 Note that the proper possessive of, say, JESUS, is JESUS', not JESUS'S.
 ```
 
-## PRINTING
+## IMPRIMINDO
 
 ```
 This is how we save you from the kluge's perplexing printing procedures:
@@ -3910,7 +3896,7 @@ equivalent routine for roundy boxes is available.
 The third record, "polygon", has nothing in it but a list of vertices. Because polygon is defined as a "thing", I take it to be a dynamic, rather than static, structure. This means you are responsible for allocating and deallocating the memory used by it. See the "Memory Management" topic and the page about "Polygons" for more information.
 
 
-## RIDERS
+## PERCORREDORES
 
 ```
 A "rider" is a record that is used to parse strings. To understand it, you must
@@ -4087,7 +4073,7 @@ A "spot" is my most basic graphic object. This is not quite the definition in my
 
 A spot has an x coord and a y coord.
 
-This is a picture of a spot, with the parts labeled. Note that I am using the nicknames of the fields here, as you probably will in your programs.
+This is a picture of a spot, with the parts labeled. Note que estou usando os apelidos dos campos aqui, como você provavelmente usará em seus programas.
 
 Spots are made from an x and a y, or you can get one from someplace else:
 

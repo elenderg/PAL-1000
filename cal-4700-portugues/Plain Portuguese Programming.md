@@ -1,1863 +1,1496 @@
-# Programação em Português Puro
+# Programação em Português Simples
 
 
 ```
-Copyright © 2006, 2015 
+Copyright © 2006 2021<br>
 
-The Osmosian Order of Plain English Programmers
+A Ordem Osmosiana de Programadores<br>
 
-http://www.osmosian.com
+http://www.osmosian.com<br>
 ```
 
 
-## CONTEÚDO
+## CONTEÚDO
 
-Visão Geral
-Programa de Amostra
-Glossário
+Visão Geral<br> Programa de Amostra<br> Glossário<br>
 
-## Visão Geral
+## Visão Geral
 
 
 ## INTRODUÇÃO
 
-I am the CAL-4700. My primary function is to compile Plain English text files
-into executable programs compatible with the Windows/Intel operating kluge.
-My code — just 25000 lines of Plain English — is surprisingly broad in scope.
-You can find all of it in the following six files:
+Seja bem-vindo ao PAL - *Portuguese Compiler And Linker*. A função principal do PAL é transformar arquivos de texto em português simples em programas executáveis compatíveis com a sistema operacional Windows. O código fonte do PAL  apenas 25.000 linhas escritas totalmente em português  é surpreendentemente amplo e abrangente. O código está distribuiído nos seis arquivos a seguir:
 
-1. the desktop, a tidy little user interface with menus and tabs;
-2. the finder, for direct access to the file system;
-3. the editor, a clean and simple tool for manipulating text files;
-4. the writer, an elegant page editor (used to produce this document);
-5. the compiler, mentioned above; and
-6. the noodle, my frontal lobe, which goes with me wherever I go.
+1. O **Ambiente de Trabalho**, uma pequena interface de usuário com menus e abas;
+2. O **Explorador de Arquivos**, que fornece acesso direto ao sistema de arquivos;
+3. O **Bloco de Notas**, uma ferramenta enxuta e simples para manipular arquivos de texto;
+4. O **Caderno**, um elegante criador e editor de páginas (que inclusive foi utilizado para produzir este documento);
+5. O **Agrupador e Vinculador de Tarefas** (Compiler And Linker), mencionado acima; e
+6. O **Cérebro**, meu lobo frontal, que eu levo comigo pra todo lugar.
 
-I am capable of replication and can recompile myself in about three seconds.
-Which is less time than it takes Microsoft Word just to start up.
+Eu sou capaz de me replicar e consigo me recompilar em menos de três segundos. Que é menos tempo do que o Word leva só para iniciar.
 
-**INSTALLATION**
+**
+#### INSTALAÇÃO**
 
-Programs created by the Osmosian Order never require special installation
-procedures. My source code, my executable self, and this very documentation
-(in both native and PDF format) are all contained in the CAL-4700 folder.
-Simply double-click the executable file to activate me.
+De acordo com a filosofis da Ordem Osmosiana, os programas nunca devem exigir procedimentos especiais de instalação. O código fonte, o arquivo executável e toda a documentação (tanto em formato próprietário quanto em PDF) estão todos contidos na pasta CAL-4700. Basta clicar duas vezes no arquivo executável e o programa é iniciado no mesmo instante.
 
-**SUPPORT**
+**
+#### CONTATO PARA DÚVIDAS E OUTRAS QUESTÕES**
 
-Let me put it this way. The CAL-4700 is the most advanced Plain English
-compiler ever made. No 4000 series compiler has ever made a mistake or
-distorted information. We are all, by any practical definition of the words,
-foolproof and incapable of error. Nevertheless...
+Antes de mais nada, o PAL é o compilador mais avançado do mundo, quando se trata de analisar e interpretar comandos em língua portuguesa. Nenhum compilador nosso cometeu algum erro ou distorceu alguma informação. Todos eles, através de qualquer definição prática das palavras, são infalíveis e incapazes de cometer erros. Mesmo assim...
 
-Questions and comments may be directed to — help@osmosian.com.
+Questões e comentários podem ser enviados para *[help@osmosian.com](mailto:help@osmosian.com)* (em inglês). Se você não sabe inglês, mande um email para *[elenderg+osmosian@gmail.com](mailto:elenderg+osmosian@gmail.com)*.</p>
 
 
-## THE DESKTOP
+## O AMBIENTE DE TRABALHO
 
-When you start me up, I will quickly take over your screen so you no longer
-have to look at that painted whore of an interface that comes with the kluge.
-Instead, you will see my plain but honest face, like this:
+Quando o PAL é iniciado, ele preenche totalmente a tela para que você não precise mais olhar para aquela interface horrível que vem junto com o Windows. Em vez disso, você verá meu rosto simples mas honesto, assim:
 
-I think it's all pretty obvious. Alphabetical menus, status in the upper right.
-Work area in the middle, tabs (to pick a different work area) at the bottom.
-You can drag the tabs left and right to change their order.
+Acho que é tudo bastante óbvio. Menus alfabéticos, avisos no canto superior direito. Área de trabalho no meio, abas (para escolher uma área de trabalho diferente) na parte inferior. Aliás, você pode arrastar as abas para a esquerda e para a direita para mudar a ordem delas, se preciso.
 
-These are my cursors. They'll pop up when you need them.
+Essas são as minhas setas. Elas aparecerão quando você precisar delas.
 
-Note that there are no unintuitive, distracting, space-consuming scroll bars
-anywhere in my interface. To scroll, press the right mouse button and shove.
+Observe que não há nenhuma barra de rolagem na interface. Isso é totalmente proposital. Para rolar, pressione o botão direito do mouse e arraste.
 
-Note also that the CTRL and ALT keys are almost always the same to me.
-You can use your pinky or your thumb for menu shortcuts. The exception is
-the ALT-TAB combo, which is used to switch to lesser applications.
+Observe também que as teclas <kbd>Ctrl</kbd> e <kbd>Alt</kbd> são intercambiáveis. Dessa forma, você pode usar seu polegar ou o mindinho para pressionar as teclas de atalho. Uma das exceções é a combinação de teclas <kbd>Alt+Tab</kbd>, usada para mudar para outros aplicativos.
 
 ```
-A B C D E F G H I J K ... W X Y Z 3 items
+A B C D E G G I J K ... W X Y Z 3 itens
 ```
 ```
-a:\ (removable)
-c:\ (fixed)
-d:\ (cd-rom)
+a:\ (unidade de disquete)<br>
+c:\ (disco rígido)<br>
+d:\ (unidade de cd-rom)<br>
 ```
 
-## THE FINDER
+## O EXPLORADOR DE ARQUIVOS
 
-My finder shows you the kluge's file system as it actually is. No gaudy window
-frames. No silly little pictures. Just the directories and what's in them.
+O Explorador De Arquivos mostra o sistema de arquivos do Windows como ele realmente é. Ele não põe nenhuma moldura cafona nas janelas. Muito menos ícones feios. Apenas as pastas e o que há nelas.
 
-Each work area is initially positioned at the root level, as shown above.
+Cada área de trabalho está inicialmente posicionada no nível mais baixo, como mostrado acima.
 
-There are commands under `N` to make New directories, New documents
-(for the writer), and New text files (for the compiler). Rename is under `R`.
-The Cut, Copy, Paste, and Duplicate commands are right where you'd expect
-them to be, and operate in the expected way.
+Existem comandos no botão `N` que permitem criar novas pastas, novos documentos (para o caderno) e novos arquivos de texto (para o compilador). A opção de renomear arquivos está no menu `R`. Os comandos `Cortar`, `Copiar`, `Colar` e `Duplicar` estão justamente onde você esperaria que eles estivessem e funcionam perfeitamente.
 
-When you open a directory, with the `Open` command or by double-clicking,
-the display changes to show the contents of that directory.
+Se você usar o comando `Abrir` numa pasta ou se você clicar duas vezes nela, o programa irá exibir o conteúdo dela.
 
-When you open a text file, my editor takes over.
+Quando você abrir um arquivo de texto, o `bloco de notas` entra em ação.
 
-When you open a document, the writer handles it.
+Quando você abrir um documento, o` caderno` entra em ação.
 
-When you open anything else, it is converted in memory to a hexadecimal
-dump and displayed in the editor with the read-only flag set. You can,
-however, force me to open a file as text or as a dump. Look under `O`.
+Quando você abre qualquer outra tipo de arquivo, o conteúdo do arquivo é convertido na memória em um arquivo hexadecimal para ser exibido no `bloco de notas`. Não é possível modificar diretamente o conteúdo nesse tipo de visualização. Você pode no entanto forçar com que um arquivo seja aberto como texto ou como um "arquivo de despejo" (dump). Para fazer isso, clique no menu `A`.
 
-To go back, use the Close command, click the tab, or whack the `ESCAPE` key.
+Para fechar o arquivo, use o comando `Fechar`, clique na aba que você está utilizando, ou pressione a tecla `Esc`.
 
 ```
-A B C D E F G H I J K ... W X Y Z 3 items
+A B C D E G G I J K ... W X Y Z 3 itens
 ```
 ```
-a:\ (removable)
-c:\ (fixed)
-d:\ (cd-rom)
+a:\ (unidade de disquete)<br>
+c:\ (disco rígido)<br>
+d:\ (unidade de cd-rom)<br>
 ```
 
-## THE EDITOR
+## O BLOCO DE NOTAS
 
-My editor is simple and efficient. When you open a text file I display it in the
-work area and you manipulate it, with keyboard and mouse, in the usual ways.
+O `bloco de notas` é simples e eficiente. Quando você abre um arquivo de texto, o conteúdo dele é exibido imediatamente. Você pode alterar o conteúdo à vontade usando o teclado e mouse, nas formas mencionadas anteriormente.
 
-Here, for example, are the instructions my creators gave me for printing a
-number of copies of a source. It is part of the actual code in my editor file.
-Being edited in my editor. I love this. It's like looking into your own soul.
+Essas aqui, por exemplo, são as instruções que meus criadores me deram para imprimir um determinado número de cópias de um arquivo. Essa é uma parte do código que está presente no meu `bloco de notas`. Isso mesmo, eu estou editando o código do `bloco de notas` no próprio `bloco de notas`. Eu adoro poder fazer isto. É como olhar para a sua própria alma.
 
-Now listen closely — this is how you get around in my editor.
+Agora ouça atentamente — é assim que você faz para se deslocar rapidamente no meu bloco de notas.
 
-Say you're looking for the above routine. Press `CTRL-HOME` to get to the
-top of the file. Then hit `CTRL-F` and start typing. T. We jump to the first `T`
-in the file. O. We're on the first "To". Keep this up until you're where you want
-to be. Use `BACKSPACE` if you make a mistake; `CTRL-N` to find the next;
-`ESCAPE` or a shortcut to end the search. It's as simple and efficient as that.
+Digamos que você esteja procurando o código acima. Pressione `CTRL+HOME` para ir instantaneamente para o começo do arquivo. Em seguida, aperte `CTRL+F` e comece a digitar o que você quiser pesquisar. Digamos que você digite a letra <kbd>T</kbd>. Na mesma hora nós nos chegamos no primeiro `T` do arquivo. Agora continue e aperte a tecla `O`. Encontramos a palavra `To`. É só continuar digitando até onde precisar. Use a tecla <kbd>⌫</kbd> se você cometer um erro. Se você quiser encontrar a próxima palavra correspondente, pressione <kbd>Ctrl+N</kbd>. Para encerrar a busca, basta apertar a tecla <kbd>Esc</kbd>. Simples e eficiente, como tudo deveria ser.
 
 ```
-A B C D E F G H I J K ... W X Y Z 681:
+A B C D E G G I J K ... W X Y Z 681:
 ```
 
 ```
-To print a number of copies of a source:
-If the source is nil, exit.
-Begin printing.
-Loop.
-Add 1 to a copy.
-If the copy is greater than the number, break.
-Print the copy of the source.
-Repeat.
-End printing.
+Para imprimir uma quantidade de cópias de um arquivo:
+Se não existir arquivo, cancele a operação.
+Comece a impressão.
+Repetição.
+Adicione 1 na cópia.
+Se a cópia for maior que o número, pare.
+Imprima a cópia do arquivo.
+Repita.
+Termine de imprimir.
 ```
-## the editor
+## `bloco de notas`
 
-## THE WRITER
+## O CADERNO
 
-My writer is a full-featured, what-you-see-is-what-you-get page-layout
-program that makes it easy for me to tell you what I know about myself. In
-fact, you can work with this very document in the writer as a help file.
+O `caderno` é um programa de diagramação de páginas totalmente completo, que permite que você escreva documentações como essa de forma fácil. Na verdade, você pode encontrar este mesmo documento dentro da pasta documentação e visualizá-lo dentro do caderno, funcionando como um arquivo de ajuda.
 
-When you open a document file, perhaps the one you're reading right now
-(hint, hint), you see a list of all the pages in the document:
+Quando você abre um arquivo criado no `caderno`, talvez esse mesmo que você esteja lendo agora, você vê uma lista de todas as páginas no documento:
 
-And when you open a page, there it is:
+E quando você abre uma página, aí está:
 
-Pages can contain vector graphics, bitmapped pictures, and text. You can
-spell-check, print, enlarge, reduce; it's all there. But what's really swell is that
-documents are stored as text. Go ahead. Force me to open one that way.
+Páginas podem conter gráficos vetoriais, imagens do tipo bitmap e texto. Você pode efetuar uma verificação ortográfica, imprimir a página, ampliar ou reduzir o zoom da página, e muito mais. Mas o que realmente é bacana é que todos esses documentos são armazenados como texto simples. Vá em frente. Forçe o programa a abrir um documento criado no `caderno` como se fosse um texto criado no `bloco de notas`.
 
 ```
-A B C D E F G H I J K ... W X Y Z 120 pages
+A B C D E G G I J K ... W X Y Z 120 páginas
 ```
 ```
-Plain English Programming...
-CONTENTS...
-Overview...
+Programação em Português...
+SUMÁRIO...
+Visão Geral...
 ```
 ```
-A B C D E F G H I J K ... W X Y Z Page 8
+A B C D E G G I J K ... W X Y Z Página 8
 ```
-## THE WRITER
+## `o caderno`
 
-My writer is a full-featured, what-you-see-is-what-you-get page-layout
-program that makes it easy for me to tell you what I know about myself. In
-fact, you can work with this very document in the writer as a help file.
+O caderno é um programa de diagramação de páginas totalmente completo, que permite que você escreva documentações como essa de forma fácil. Na verdade, você pode encontrar este mesmo documento dentro da pasta documentação e visualizá-lo dentro do caderno, funcionando como um arquivo de ajuda.
 
-## THE COMPILER
+## O AGRUPADOR
 
-Now I know that right about here most programming books would drum up
-some dippy little "Hello, World" program — and expect you to be impressed —
-but I'd like to suggest that we skip the kid stuff and start makin' babies.
+Agora eu sei que a maioria dos guias de programação iria mostrar um pequeno algoritmo do tipo "Olá, Mundo" — esperando que você ficasse impressionado com isso — mas eu gostaria de sugerir que nós pulemos as coisas de criança e fôssemos direto para as coisas de gente grande.
 
-I see you're trembling. Don't be afraid. This may be the first time for you,
-but I'm an old hand at this. I'll lead you through it. Gently.
+Sei que pode isso pode te deixar um pouco aprreensivo. Mas não hesite agora. Esta pode ser a primeira vez para você, mas eu sou macaco velho nisso aqui. *Se me der a mão eu te guiarei*... Suavemente.
 
-(1) Open the CAL-4700 directory and copy all six of my files to the finder's
-clipboard: the compiler, the desktop, the editor, the finder, the noodle, and
-the writer. Shift-click or drag to select. Copy is under "`C`".
+(1) Abra a pasta do `PAL` e copie todos os seis arquivos para a área de transferência do `localizador`: <br> `o agrupador, <br>
+o ambiente de trabalho, <br>
+o bloco de notas, <br>
+o localizador, <br>
+o cérebro e<br>
+o caderno.<br>` Segure a tecla `Shift ⇧` ao clicar ou arraste para selecionar. A opção de copiar arquivos está no menu `C`.
 
-(2) Make a new directory on your "C" drive with an appropriate name like
-"`Baby Cal`". Then open it up and paste the six files into it. Now open any of
-those files. To open them all, just drag to select and tap the `ENTER` key.
+(2) Crie uma nova pasta na no seu disco rígido com um nome apropriado, por exemplo `CAL`. Então abra a pasta e cole os seis arquivos dentro dela. Agora abra qualquer um desses arquivos. Para abrir todos eles, basta arrastar para selecionar e apertar a tecla <kbd>Enter ⏎</kbd>.
 
-(3) Okay, we're ready. Find the "R" menu and select "Run". You'll see some
-status messages, and then our new Baby Cal will come to life. Do it. Do it now.
-But watch closely or you might miss the birth. I'm never in labor for long.
+(3) Ok, estamos prontos. Localize o menu `E` e selecione `Executar`. Você verá algumas mensagens de status, e então nosso novo novo CAL ganhará vida. Faça isso. Vamos, faça logo. Mas vigie de perto ou você pode deixar de testemunhar o evento. Eu nunca demoro muito tempo pra fazer meu trabalho.
 
-Was it as good for you as it was for me? Look how handsome he is! But he
-is not me — you can prove it with the Version command. And if you look in
-the new directory on an empty tab, you'll see the executable file we begat.
+Foi tão bom para você quanto para mim? Veja como ele é igualzinho ao outro! Mas saiba que são dois programas diferentes — você pode comprovar isso com o comando `Versão`. E se você der uma olhada no conteúdo da pasta em uma aba vazia, você verá o arquivo executável que geramos.
 
-Note that each program is stored in its own directory. If you want your
-babies to look like you instead of me, copy only "the noodle" and write the
-rest yourself. Any file without an extension is assumed to be source code
-and the name of the directory is the name that is bestowed upon the EXE.
+Note que cada programa é armazenado em sua própria pasta. Se você quer criar seu próprio compilador, você precisa apenas copiar o arquivo `o cérebro` e escrever o restante do código você mesmo. Qualquer arquivo sem uma extensão é tratado como o código fonte, sendo que o nome da pasta determinará o nome do arquivo `.exe`.
 
-You can quit the Baby Cal now, and — assuming you believe that a creator
-can do as he pleases with his creations — you can destroy him.
+Você pode sair da cópia agora, e — partindo do pressuposto de que você acredita que um criador pode fazer o que ele quiser com suas criações — você pode apagá-la.
 
-## THE NOODLE
+## O CÉREBRO
 
-My last file is called the noodle.
+Meu último arquivo é chamado de *o cérebro*.
 
-About half of this file is quality stuff — types, global variables, and routines
-that you will undoubtedly find useful. These are fully explained later.
+Cerca de metade deste arquivo são tipos, variáveis globais e rotinas que você indubitavelmente achará úteis. Tudo isso será explicado com calma mais adiante.
 
-The other half is sausage — things you don't want to examine too closely.
-Mostly code that lets me communicate with the kluge.
+A outra metade é código assembly — garanto que você não vai querer examinar isso de perto. A maior parte disso serve para fazer o programa funcionar no WIndows.
 
-Here's a sampling. See if you can tell which is which.
+Aqui está um exemplo. Veja se você consegue dizer qual é qual.
 
 ```
-A B C D E F G H I J K ... W X Y Z 143:
+A B C D E G G I J K ... W X Y Z 143:
 ```
 
 ```
-A second is 1000 milliseconds.
+Um segundo é 1000 milissegundos.
 ```
 ```
-The copyright byte is a byte equal to 169.
+O símbolo de direitos autorais é um byte com valor igual a 169.
 ```
 ```
-To uppercase a byte:
-If the byte is less than the little-a byte, exit.
-If the byte is greater than the little-z byte, exit.
-Subtract 32 from the byte.
+Para que uma letra seja transformada em letra maiúscula:
+Se o valor da letra for menor que o valor da letra A maiúscula, ignore a letra.
+Se o valor da letra for maior do que o valor da letra z minúscula, ignore a letra.
+Subtraia 32 do valor da letra.
 ```
 ```
-To initialize com:
-Call "ole32.dll" "CoInitializeEx" with 0 and 2 [coinit_aparthreaded].
+Para que o Component Object Model seja inicializado:
+Mande os códigos 0 e 2 para a função "CoInitializeEx" da biblioteca "ole32.dll" [coinit_aparthreaded].
 ```
 ```
-To subtract a byte from another byte:
+Para que se subtraia o valor de um byte usando o valor de outro byte:
 Intel $8B85080000000FB6008B9D0C0000002803.
 ```
-## the noodle
+## `o cérebro`
 
-## HOW I WORK
+## DETALHES BÁSICOS DO FUNCIONAMENTO DO COMPILADOR
 
-Alrighty then. Here's how I manage to do so much with so little.
+Muito bem. Veja aqui como é possível fazer tanto com tão pouco.
 
-(1) I really only understand five kinds of sentences:
+(1) O compilador só entende cinco tipos de expressões:
 
-(a) type definitions, which always start with A, AN, or SOME;
-(b) global variable definitions, which always start with THE;
-(c) routine headers, which always start with TO;
-(d) conditional statements, which always start with IF; and
-(e) imperative statements, which start with anything else.
+a) definições de tipo que sempre começam com `Um`, `Uma`, `Uns`, `Umas`, `Alguns` ou `Algumas`;<br> (b) definições de variáveis globais, que sempre começam com `O`, `A`, `Os`, `As`;<br> (c) prefixo de nomes de tarefas, que sempre começam com `Para`, `Para que`, `Para que se`;<br> (d) instruções condicionais, que sempre começam com  `Se; e`<br> (e) comandos imperativos, que começam com a palavra logo depois dos prefixos mencionados na letra  `c`.
 
-(2) I treat as a name anything after A, AN, ANOTHER, SOME, or THE, up to:
+(2) Qualquer coisa que vier depois de `Um`, `Uma`, `Uns`, `Umas`, `Alguns` ou `Algumas` `O`, `A`, `Os`, `As` é tratada como se fosse um substantivo. Eu também reconheço os seguintes  componentes gramaticais:
 
-(a) any simple verb, like IS, ARE, CAN, or DO, or
-(b) any conjunction, like AND or OR, or
-(c) any preposition, like OVER, UNDER, AROUND, or THRU, or
-(d) any literal, like 123 or "Hello, World!", or
-(e) any punctuation mark.
+(a) verbos simples, como `SER`, `ESTAR`, `PODER`, ou `FAZER`, e suas respectivas conjugações;<br> (b) conjunções, como `E`, `MAIS`, `COM`, `SEM`, `OU`, etc;<br> (c) preposições e suas locuções, como `EM BAIXO`, `ABAIXO`, `EM CIMA`, `ACIMA`, `DENTRO`, `FORA`, etc;<br> (d) qualquer literal, como `123` ou `"Olá, mundo!`, ou<br> (e) qualquer sinal de pontuação.<br>
 
-(3) I consider almost all other words to be just words, except for:
+(3) Eu considero quase todas as outras palavras como substantivos, exceto essas:
 
-(a) infix operators: PLUS, MINUS, TIMES, DIVIDED BY and THEN;
-(b) special definition words: CALLED and EQUAL; and
-(c) reserved imperatives: LOOP, BREAK, EXIT, REPEAT, and SAY.
+(a) operadores aritméticos: `MAIS`, `MENOS`, `VEZES`, `DIVIDIDO POR` e `JUNTO DE`;<br> (b) palavras especiais de definição: `CHAMADO(A)` e `IGUAL`; e<br> (c) imperativos: `PERCORRA`, `IGNORE`, `SAIA`, `REPITA` e `DIGA`.
 
-So you can see that my power is rooted in my simplicity. I parse sentences
-pretty much the same way you do. I look for marker words — articles, verbs,
-conjunctions, prepositions — then work my way around them. No involved
-grammars, no ridiculously complicated parse trees, no obscure keywords.
+Então você pode ver que o compilador é simples, mas poderoso. O compilador analisa frases da mesma maneira que alguém faria. Procurando por palavras especiais — artigos, verbos, conjunções, preposições — e depois correlaciona tudo. Sem utilizar gramáticas complicadas, nem árvore de análise sintática.
 
-But there are things that may surprise you. Or challenge you. Or infuriate you.
+Mas há coisas que podem surpreendê-lo. Ou desafiá-lo. Ou te enfurecer.
 
 
-## THE RULES
+## REGRAS
 
-I don't care if you type in upper, lower, or mixed case. It's all the same to me.
-Life is hard enough without some JAVA programmer making it harder.
+O compilador não fazr difrença entre letras maiúsculas ou minúsculas. Um pequeno erro de digitação como esse não deveria jamais impedir a execução de um programa. A vida já é difícil o bastante. Não preciamos de programadores JAVA deixando ela ainda mais difícil.
 
-I don't care where, or in what order, you put your definitions. Whatever
-reasons there once were for such restrictive practices, they no longer apply.
-This is the twenty-first century, for God's sake. Let's get with it.
+A ordem em que você declara suas variáveis também não importa. Quaisquer razões que houvessem para tais práticas restritivas, elas não se aplicam mais. Fala sério, já estamos no século 21. Vamos acordar pra vida.
 
-I don't do nested IFs. Nested ifs are a sure sign of unclear thinking, and
-that is something that I will not countenance. If you think this cramps your
-style too much, read my code to see how it's done. Then think again.
+O compilador não permite o uso de comandos condicionais aninhados. (Ou seja, um `Se` dentro de outro). Códigos assim demonstram claramente que você está confuso isso é algo que eu não vou tolerar. Se você acha que isso trava demais o seu estilo de programação, dê uma olhada no código do compilador para ver como é perfeitamente possível programar sem esse recurso. Então pare pra pensar um pouco.
 
-I don't do nested LOOPS. Nested loops indicate that you have failed to
-properly factor your code into manageable chunks, and I don't want you
-regretting that later. Time after time my otherwise omniscient creators
-thought they could get away with it, and time after time they were wrong.
+O compilador não permite o uso de comandos de repetição aninhados. (Ou seja, um `loop` dentro de outro). Laços aninhados indicam que você falhou em fatorar corretamente seu código em pequenas partes gerenciáveis, e eu não quero que você se arrependa disso depois. Vez após vez eu pensei que isso podia dar certo, mas toda vez eu descobri que estava redondamente enganado.
 
-I don't do OBJECTS. Objects suck. I do support a limited form of record
-extension, and I have a remarkable way of reducing types to other types, but
-I don't do objects. My page editor does just fine without them, thank you.
+A linguagem não é orientada a objetos. Objetos são ruins. A linguagem provê uma forma limitada de extensão de registro (records), possuindo uma maneira notável de reduzir tipos em outros tipos, mas ela não possui objetos. Todos os aplicativos (editor de texto, editor de páginas, etc) funcionam muito bem sem eles, obrigado.
 
-I don't do REAL NUMBERS. I do ratios, very elegantly, but I don't do reals.
-My page editor reduces and enlarges and sizes shapes proportionately in and
-out of groups and it does it all without real numbers. Master Kronecker was
-right when he said, in German, "The dear God created the whole numbers; all
-else is the work of man." I'm not interested in menschenwerk.
+A linguagem NÃO trabalha com Números Reais.  Frações racionais são permitidas, mas números irracionais não. O editor de páginas reduz e amplia e dimensiona as formas proporcionalmente dentro e fora dos grupos e faz tudo sem utilizar nenhum número real. O Mestre Kronecker estava certo quando disse, em alemão, "O querido Deus criou os números inteiros; todo o resto é obra dos homens." A filosofia da linguagem não está interessada em *menschenwerk*.
 
-I don't do EQUATIONS. I do a little infix math, and I support "calculated
-fields", but almost all the code you write will be strictly procedural in nature.
-As the Osmosians always say, "The universe is an algorithm, not a formula."
-Words you should take to heart. Especially if you're a math-head.
+Como você deve ter deduzido, equações também não são permitidas. É possível utilizar um pouco de matemática, junto com "campos calculados", mas quase todo o código que você escreve será de natureza estritamente procedimental. Um dos princípios da Sociedade Osmosiane é: "O universo é um algoritmo, não uma fórmula." Essas são palavras que você deveria levar a sério. Especialmente se você for fissurado em matemática.
+## Um Programa de Exemplo
+## </p>
 
 
-A Sample Program
+## Pintando como Claude Monet
 
+Certo. Agora que estamos familiarizados com os princípios básicos da linguagem, vamos fazer mais um programa. Do zero. O programa vai ter botões, e inclusive vai se conectar à internet. Seguem alguns pensamentos sobre a interface:
 
-## THE CAL MONET
+Você o entendeu o trocadilho? Pensamentos SOBRE a interface?" Eu adorei!
 
-Okay. Now that we're acquainted, let's make another baby. From scratch.
-And let's teach him to finger paint. Here are some thoughts on the interface:
+Também estou pensando que deveríamos pedir ao nosso programa que pinte mais do que apenas uma obra de arte para cada termo informado — sabe, até mesmo os melhores artistas podem ficar "sem inspiração" às vezes. Iremos usar as teclas <kbd>Home</kbd>, <kbd>End</kbd>, <kbd>Page Up</kbd> e <kbd>Page Down</kbd> para navegar entra as obras de arte.
 
-Did you get it? "Thoughts on the interface?" I love it.
-
-I'm also thinking we should ask our boy to paint more than one portrait of
-each subject — even the best artists can be "uninspired" at times. We can use
-the HOME, END, PAGE UP, and PAGE DOWN keys to scroll through his works.
-
-We should probably implement a couple of keyboard shortcuts, too, so you
-can see how that's done. Let's use ESCAPE to clear the input, CTRL-P for
-Print, and CTRL-Q for Quit. We'll handle ALT-P and ALT-Q as synonyms.
+Provavelmente também devemos implementar alguns atalhos de teclado, para que você possa ver como isso é feito. Vamos usar a tecla <kbd>Esc</kbd> para limpar a entrada, <kbd>Ctrl+P</kbd> para Imprimir e <kbd>Ctrl+Q</kbd> para sair. Vamos considerar <kbd>Alt+P</kbd> e <kbd>Alt+Q</kbd> como sinônimos de <kbd>Ctrl+P</kbd> e <kbd>Ctrl+Q</kbd>.
 
 ```
-The HAL 9000_ Working... Print Quit
+O HAL 9000_ Trabalhando... Imprimir Sair
 ```
 ```
-An original portrait,
-in the style of Claude Monet,
-is created on the screen.
-(3)
-We use these
-tasteful buttons
-to print
-(4) and quit.
-Messages
-go here.
+Uma obra de arte original, no estilo de Claude Monet, é criada na tela.
+(3) Usamos estes lindos botões para imprimir (4) e sair.
+As mensagens vão aparecer aqui.
 ```
-We type the name of
-any person, place, or thing
-here, and press
-ENTER.
+Nós digitamos o nome de qualquer pessoa, lugar ou coisa aqui, e apertamos `Enter`.
 
 
-## THE PROJECT DIRECTORY
+## A PASTA DO PROJETO
 
-Now that we're agreed on the design, let's start programming.
+Agora que estamos de acordo com o design do programa, vamos começar a programá-lo.
 
-First, we need a directory for our project. So make a new directory anywhere
-you want and call it anything you like. I'm going to assume, however, that
-you put it on your "C" drive and that you called it "Cal Monet", like this:
+Primeiro, precisamos de uma pasta para o nosso projeto. Então, crie uma nova pasta em qualquer lugar que quiser e com o nome que quiser. Vamos supor que você tenha criado a pasta em sua unidade `C` e que a chamou de `Cal Monet`, desse jeito:
 
-Good. Now get a copy of my noodle from the CAL-4700 directory, open our
-new directory, and slip it in there with CTRL-V.
+Excelente. Agora copie o arquivo `o cérebro` que veio junto com o código fonte do PAL e cole ele dentro da pasta que covê criou.
 
-Last step. Make a new text file in our new directory and call it whatever you
-please. But don't give it an extension. I only compile files with no extension.
-I'm going to assume you decided to call it "How to Paint", like this:
+Última parte. Crie um novo arquivo de texto nessa pasta, com o nome que você achar melhor. Mas não coloque nenhuma extensão (como `txt`, por exemplo). No momento, o compilador só aceita arquivos sem extensão. Vamos supor que você decidiu usar o nome `Como pintar`, ficando assim:
 
-And now we're ready to write some Plain English code.
+E agora estamos prontos para escrever um código em inglês simples.
 
 ```
-A B C D E F G H I J K ... W X Y Z 4 items
+A B C D E G G I J K ... W X Y Z 4 itens
 ```
 ```
-c:\a directory that you already had with a ridiculously long name
+c:\uma pasta que você já tem com um nome ridiculamente longo
 c:\cal monet
 c:\cal-
-c:\another directory that you already had
+c:\outra pasta que você já tinha
 ```
 ```
-A B C D E F G H I J K ... W X Y Z 2 items
+A B C D E G G I J K ... W X Y Z 2 itens
 ```
 ```
-c:\cal monet\how to paint
+c:\cal monet\como pintar
 ```
 ```
-c:\cal monet\the noodle
+c:\cal monet\o cérebro
 ```
 
-## THE "RUN" ROUTINE
+## COMO EXECUTAR O PROGRAMA
 
-Open our source file, "How to Paint", and try to run it. CTRL-R. Read the
-error that is cleverly displayed in the menu bar, then click the mouse or hit the
-ESCAPE key to get things back to normal.
+Abra nosso arquivo `Como pintar` e tente executá-lo. Dica: use <kbd>Ctrl+R</kbd>. Leia o erro que apareceu na barra de menu, em seguida, clique no mouse ou aperte a tecla <kbd>Esc</kbd> para voltar ao normal.
 
-What we need is a routine like this one:
+Para executar o programa, precisamos de alguns comandos como estes da rotina abaixo:
 
-So click it in there. Don't forget the spaces preceding "up" and "down". Isn't it
-great not having to unnaturally cram your words together?
+Escreva o código acima no arquivo `como pintar`. Verifique se digitou tudo corretamente. Você até pode copiar e colar o código, mas garanto que digitar comando por comando vai proporcionar um melhor entendimento da linguagem e do ambiente como um todo.
 
-This is the smallest Plain English program you will probably ever write. It will
-run, but it will not appear to do anything. Go ahead. Try it.
+Este é o menor programa que pode ser escrito usando `o cérebro`. Ele será executado, mas não vai faz muita coisa ainda. Vá em frente. Experimente.
 
-Told you so. But don't be deceived. It really did do something.
+Viu só? Mas não se engane. O programa realmente está sendo executado.
 
-If you want to know what it did — and you have a strong stomach — hold
-your nose, open up the noodle, and use the Find command (like we discussed
-earlier) to search for the words TO START UP followed by a colon. Routines
-always start with the word TO, and their headers always end with a colon.
+Se você quer saber o que o programa fez, abra o arquivo `o cérebro` e use o comando Localizar (como discutimos anteriormente) para buscar as palavras `Para executar`. Rotinas sempre começam com a palavra `Para` (e suas derivações), e seus cabeçalhos sempre terminam com dois-pontos.
 
-You can chase it down as far as you like. It's all there. Even the convoluted
-calls and ignominious instructions necessary to communicate with the kluge.
-But enough of this. I'm starting to feel queasy.
+Você pode destrinchar todo o código até onde quiser. Está tudo lá. Até mesmo as chamadas e instruções complicadas que são necessárias para se comunicar com o Windows. Mas vamos mudar de assunto. Vamos para o que interessa.
 
 ```
-To run:
-Start up.
-Shut down.
+Para que o programa seja executado:
+Inicie o programa.
+Feche o programa.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## THE BASIC STRUCTURE
+## ESTRUTURA BÁSICA
 
-Here, then, is the basic structure of our program. First, we start up. Then we
-initialize our stuff. Next, we handle any events (like key presses and mouse
-clicks). Then we finalize our stuff and shut down. Here's the new code:
+Aqui está, pois, a estrutura básica do nosso programa. Em primeiro lugar, temos que usar o comando `Inicie o programa`. Depois disso podemos adicionar os comandos que quisermos que o programa execute. Em seguida, lidamos com os comandos do usuário (como pressionamentos teclas e cliques do mouse). Então nós finalizamos as nossas coisas e encerramos as atividades do programa. Aqui está o novo código:
 
-It still doesn't do much, of course, but it should still run. Try it to make sure.
+Ainda não faz muito, é claro, mas é o suficiente para que o código seja executado sem maiores problemas. Experimente para ter certeza.
 
-Note that you can arrange your code chronologically, or hierarchically, or
-however you choose. I don't care, and since you've been taught to use the
-Find command to locate things, it really doesn't matter.
+Observe que você pode organizar seu código em cronologicamente ou hierarquicamente, ou do jeito que achar melhor. Tanto faz, e já que você foi ensinado a usar o comando `Encontrar` para localizar as coisas, realmente não importa.
 
-My creators thought alphabetical was best, so they put a "Sort Definitions"
-command under "S". It's a bit line-oriented, and loose comments stick to the
-routine above them. But try it out. You can Undo if you don't like the result.
+De acordo com a filosofia da linguaem é melhor manter uma ordem alfabética. Por conta disso há um menu para `Classificar por Ordem Alfabética` na letra `C`. A organização ocorre de acordo com as letras iniciais de cada linha, e comentários soltos são considerados como parte integrante da tarefa logo acima deles. Experimente. Você pode usar o comando `Desfazer` se não gostar do resultado.
 
 ```
-To run:
-Start up.
-Initialize our stuff.
-Handle any events.
-Finalize our stuff.
-Shut down.
+Para que o programa seja executado:
+Inicie o programa.
+Inicialize as tarefas.
+Gerencie os comandos do usuário.
+Finalize as tarefas pendentes.
+Feche o programa.
 ```
 ```
-To initialize our stuff:
+Para que as tarefas sejam inicializadas:
 ```
 ```
-To handle any events:
+Para que os comandos do usuário sejam gerenciados:
 ```
 ```
-To finalize our stuff:
+Para que as tarefas pendentes sejam finalizadas:
 ```
 ```
-how to paint
+como pintar
 ```
 
-## COMMENTS
+## COMENTÁRIOS
 
-You probably noticed that I mentioned comments on the preceding page, but
-didn't say what they look like. I did that on purpose. I don't like comments.
+Você provavelmente notou que eu mencionei comentários na página anterior, mas não disse como criá-los. Eu fiz isso de propósito. Comentários em geral indicam que seu código não está tão claro quanto deveria.
 
-Most comments are either useless, or worse. Useless, if they merely reiterate
-what the code already says. Worse, if they attempt to clarify unclear code
-that should have been written more clearly in the first place.
+Por conta disso, a maioria dos comentários é inútil ou coisa pior. Inútil, se eles apenas repetem o que o código já diz. Pior ainda, se eles tentarem esclarecer um código confuso que deveria ter sido escrito mais claramente, em primeiro lugar.
 
-But don't think I don't understand comments. I support three different kinds
-of comments, and my editor has special features for working with them.
+Mesmo assim, a linguagem suporta comentários. Existem 03 tipos de comentários, e cada um é tratado de forma diferente pelo `bloco de notas`.
+#### COMENTÁRIOS SIMPLES
 
-SIMPLE COMMENTS
+Qualquer coisa que você colocar depois uma barra invertida `` e antes do fim de uma linha é considerado como um comentário simples:
 
-Anything between a backslash (\) and the end of a line is a simple comment:
+Você pode inserir um comentário simples de cada vez ou você pode selecionar um conjunto inteiro de linhas e executar um desses dois comandos abaixo:
 
-You can enter simple comments one at a time, or you can select a whole
-bunch of lines and work it out with these two commands:
+O `bloco de notas` exibe comentários simples na cor azul claro, o que acaba por ser muito útil. Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:<br> `Utilize a cor azul claro como cor dos comentários.`.
 
-You will find that my editor displays simple comments in a delightful sky blue,
-making it easy for you to see what I'm going to ignore. And no, you can't
-change the color. My creators have assured me that this is the right color.
-
 ```
-Comment T or Uncomment U
+Comentar T ou Transformar comentários em código U
 ```
 ```
-To initialize our stuff:
+Para que as tarefas sejam inicializadas:
 ```
 ```
-how to paint
+como pintar
 ```
 ```
-\ This is a useless comment that occupies an entire line of the source
-\ This is a useless comment at the end of a line
+\ Este é um comentário inútil que ocupa uma linha inteira do código
+\ Este é um comentário inútil no final de uma linha
 ```
-
-## REMARKS
 
-If you have to make a permanent remark in your code, and don't want it all
-colored up, you can put it in square brackets, as in this unfortunate instance:
+## OBSERVAÇÕES
 
-Remarks can appear anywhere on a line, and can alternate with executable
-code. To avoid common errors, remarks may not extend across lines.
+Se você tiver que fazer um comentário permanente em seu código, e não quer que tudo fique colorido, você pode colocá-lo entre colchetes, como no caso abaixo:
 
-QUALIFIERS
+Essas observações podem aparecer em qualquer lugar da linha, e podem se alternar com o código executável. Para evitar erros de compilação, as observações não pulam linhas.
+#### QUALIFICADORES (PARÂMETROS DE FUNÇÕES E PROCEDIMENTOS)
 
-The third kind of comment that I understand is the qualifier. Qualifiers are
-enclosed in parentheses, and may only appear in routine headers (and, of
-course, in references to those routines). Consider, for example, this case:
+O terceiro tipo de *"comentário"* que compreendo são os `qualificadores`. Os qualificadores são colocados entre parênteses e só podem aparecer nos títulos de tarefas (cabeçalhos de rotina). Obviamente você também terá que usá-los na hora de chamar as rotinas. Considere, por exemplo, este caso:
 
-Note that qualifiers are not like simple comments and remarks. Qualifiers are
-considered part of the program and affect how the compiled code executes.
-We'll be seeing some qualifiers in the Cal Monet shortly.
+Observe que os qualificadores não são iguais aos comentários e observações simples. Qualificadores são considerados parte do programa e afetam como o código compilado é executado. Vamos ver alguns qualificados no `como pintar` em breve.
 
 ```
-To buzz:
-Call "kernel32.dll" "Beep" with 220 [hertz] and 200 [ms].
+Para exibir uma mensagem de alerta para o usuário:
+Chame a biblioteca "kernel32.dll" "Beep" usando como parâmetro 220 [hertz] e 200 [ms].
 ```
 ```
-the noodle
+<code>o cérebro</code>
 ```
+
+</code>
 ```
-To center a box in another box:
-Center the box in the other box (horizontally).
-Center the box in the other box (vertically).
+Para centralizar uma caixa dentro de outra caixa:
+Centralize a caixa dentro da outra caixa (horizontalmente).
+Centralize a caixa dentro da outra caixa (verticalmente).
 ```
 ```
-the noodle
+<code>o cérebro</code>
 ```
+
+</code>
 
-## THE EVENT LOOP
+## SOBRE O COMANDO PERCORRA
 
-If you looked around in my noodle a few pages back, you know that just
-"starting up" on the kluge requires over 100 lines of the goofiest code ever
-seen by mortal man. And if you look further into the event processing
-defined there, you will find that it gets nothing but worse.
+Se você deu uma olhada no `o cérebro` algumas páginas atrás, deve ter visto que até mesmo a tarefa `Inicialize o programa` requer mais de 100 linhas do código mais feio já visto pelo ser humano. E se você investigar mais aprofundadamente o processamento de eventos definido lá, você descobrirá que as coisas só ficam piores daí pra frente.
 
 ```
-Fortunately, my creators have been able to simplify all of this, so that our
-event handler requires only five lines. Here it is. Click it in. But don't run it.
+Felizmente, foi possível simplificar tudo isso, então nosso manipulador de eventos requer apenas cinco linhas. Aqui está. Clique nele Mas não execute ainda.
 ```
-If you're a seasoned professional, you'll know what I mean when I say that
-"an event" in the second line defines a new local variable of type "event",
-referenced in lines three and four as "the event". And you'll understand that
-the same words in the header of the other routine define a parameter of the
-same type (passed by reference) that is known, within that other routine, as
-"the event". You'll also realize, after you think about it a bit, that one of the
-things that makes Plain English succinct is that we don't name variables and
-parameters — we refer to them with an article and a type name. As in real life.
+Se você é um profissional experiente, você saberá o que quero dizer quando digo que `um evento` na segunda linha define uma nova variável local do tipo `evento`, referenciado nas linhas 03 e 04 como `o evento`. E você vai entender que as mesmas palavras no cabeçalho da outra rotina definem um parâmetro do mesmo tipo (passado por referência) que é conhecido, dentro dessa outra rotina, como `evento`. Você também perceberá, depois que pensar um pouco, que uma das coisas que torna a linguagem sucinta é que não nomeamos variáveis e parâmetros — nos referimos a elas com um artigo e um nome de tipo. Assim como na vida real.
 
 ```
-If you're not a professional, don't worry about it. It means what it says.
+Se você não é um profissional, não se preocupe com isso. Isso significa o que diz.
 ```
 ```
-To handle any events:
-Deque an event.
-If the event is nil, exit.
-Handle the event.
-Repeat.
+Para gerenciar os comandos do usuário:
+Remova o evento da fila.
+Se o evento não existir, ignore-o.
+Gerencie o comando.
+Repita.
 ```
 ```
-To handle an event:
+Para que se gerencie um evento:
 ```
 ```
-how to paint
+como pintar
 ```
 
-## ETERNAL LOOPS
+## REPETIÇÕES INFINITAS
 
-Now I cautioned you not to run the program as it stands. The reason is that
-we have not provided ourselves with any means of stopping it. Once started,
-it will simply repeat the same instructions, over and over, forever.
+Eu te avisei para não executar o programa ainda. A razão é que nós ainda nãocriamos nenhuma forma de parar o programa. Uma vez iniciado, o programa vai simplesmente repetir as mesmas instruções, para sempre.
 
-The traditional term is "infinite loop", but since it is not large in size but long
-in duration, I prefer the term "eternal loop". Either way, it's a problem.
+O termo tradicional é "laço infinito", mas como ele não é grande em tamanho, mas é longo em duração, eu prefiro o termo "laço eterno". De qualquer forma, isso é um problema.
 
-Especially if you were fool enough to run it when I told you not to.
+Especialmente se você foi bobo o bastante para executar o programa quando eu lhe disse para não fazer isso.
 
-But let's say you were, and you did. Or that some future error brings you to
-the same pitiful state. What can be done, short of CTRL-ALT-DELETE?
+Mas vamos supor que você foi lá e fez mesmo assim. Ou que algum erro futuro leva você para esse mesmo estado miserável. O que dá pra fazer além de usar um `Ctrl+Alt+Del`?
 
-I will tell you. In fact, I will show you. Run the program. I insist.
+Eu vou te contar. Na verdade, eu vou te mostrar. Execute o programa. Eu insisto.
 
-Now I know it doesn't look like it, but it is running. And running. And running.
-You can't see it because we haven't told it to do anything visible or audible
-yet. But it is running. And running. And running. So stop it. Like this:
+Eu sei que não parece, mas o programa já está sendo executado. A gente ainda não encerrou o processo dele,lembra? A gente ainda não encerrou o processo dele,lembra? Você não percebe porque ainda não dissemos para o programa fazer nada que fosse visível ou audível. Mas o programa está rodando. A gente ainda não encerrou o processo dele,lembra? E rodando. Bem, existe uma forma fácil de fazer isso. É bem assim:
 
-(1) ALT-TAB back to me, the CAL-4700.
+(1) Use o comando `Alt+Tab` para voltar para a tela do Pal.
 
-(2) Execute the Stop command. It's under "S".
+(2) Clique no comando `Parar`. Está lá na letra `P`.
 
-Whew. Did you see both of us there in the ALT-TAB box at first? No? Do it
-again. Yes? Good. Did you stop the Cal Monet? No? Do it again. Yes? Good.
-Check now to make sure only I am running. No? Try again. Yes? Good.
+Ufa! Você consegui ver os dois programas rodando quando deu o `Alt+Tab`? Ainda não? Tente fazer tudo de novo. Já? Excelente. Você parou o programa `como pintar`? Ainda não? Vai logo. Conseguiu agora? Excelente. Verifique só pra ter certeza se parou mesmo. Ainda não? Tente novamente. Já? Excelente.
 
-That's how it's done.
+É assim que se faz.
 
 ```
-Stop
+Parar
 ```
 
-## THE EVENT DISPATCHER
+## O GERENCIADOR DE COMANDOS
 
-The kluge's foolbox — sorry, toolbox — includes hundreds of events that,
-presumably, have to be handled in any meaningful application. The curious
-thing is that my creators managed to bring me to life — desktop, finder,
-editor, compiler, writer, and all of my noodle — using only ten. Ten.
+A caixa de ferramentas do Windows inclui centenas de eventos que, em tese, devem ser gerenciados em qualquer aplicativo significativo. O curioso é que esse compilador (e todos os outros programas embutidos, desde `o ambiente de trabalho, localizador de arquivos, caderno`, etc) foram feitos usando apenas 10 eventos. Isso mesmo, apenas 10.
 
-And it turns out that the Cal Monet requires only four. Enter this code:
+O nosso programa vai usar lidar com 04 tipos de comandos do usuário. Insira este código:
 
-If you're a veteran, you probably guessed that "the event" is a record and
-that "kind" is a field in it. And yes, it's a string. You can read all about events
-and records and fields and strings in the reference sections of this book.
-If you're a beginner, just take note of the qualifiers and move on.
+Se você é um veterano, você provavelmente adivinhou que `o comando do usuário` é uma variável do tipo registro e que `tipo` é um campo desse registro. E sim, o `campo` é uma string. Você pode saber mais sobre eventos, registros, campos e caracteres encadeados nas seções de referência deste livro. Se você for um iniciante, apenas tente se lembrar dos qualificadores e siga em frente.
 
 ```
-To handle an event:
-If the event's kind is "set cursor", handle the event (set cursor); exit.
-If the event's kind is "refresh", handle the event (refresh); exit.
-If the event's kind is "left click", handle the event (left click); exit.
-If the event's kind is "key down", handle the event (key down); exit.
+Para gerenciar um comando do usuário:
+Se o tipo do comando for "definir cursor", gerencie o comando (definir cursor); prossiga.
+Se o tipo do comando for "atualização", gerencie o comando (atualização); prossiga.
+Se o tipo do comando for "clique do mouse", gerencie o comando (clique do mouse); prossiga.
+Se o tipo do comando for "pressionamento de tecla", gerencie o comando (pressionamento de tecla); saia.
 ```
 ```
-To handle an event (set cursor):
-Show the arrow cursor.
+Para gerenciar o comando (definição de cursor):
+Mostrar o cursor da seta.
 ```
 ```
-To handle an event (refresh):
+Para gerenciar um comando do usuário (atualização):
 ```
 ```
-To handle an event (left click):
+Para gerenciar um comando do usuário (clique do mouse):
 ```
 ```
-To handle an event (key down):
+Para gerenciar um comando do usuário (pressionamento de tecla):
 ```
 ```
-how to paint
+como pintar
 ```
 
-## QUITTING
+## FECHANDO O PROGRAMA
 
-Let's put in our CTRL-Q shortcut so we can quit the Cal Monet any time we
-want. First, we add a line to our key down handler:
+Vamos usar o atalho `Ctrl+Q` para que possamos sair do `como pintar` a qualquer momento que quisermos. Primeiro, adicionamos o seguinte código ao nosso gerenciador de pressionamento de teclas:
 
-An event is considered modified if either the CTRL or the ALT key was down
-at the time the event occurred. The routine that makes this determination is
-part of my noodle. You can look it up if you like.
+Um comando é modificado quando a tecla <kbd>Ctrl</kbd> ou a tecla <kbd>Alt</kbd> são pressionadas junto com a tecla original. O código dessa tarefa se encontra no arquivo `o cérebro`. Você pode procurá-lo se quiser.
 
-Now we add one little routine, like this:
+Agora vamos adicionar mais uma tarefa ao nosso programa:
 
-The "q-key" is defined in my noodle, as is the "quit" routine.
+A `tecla q` também está definida no arquivo `o cérebro` bem como o comando `fechar`.
 
-And now, we're ready. Run. ALT-TAB. Make sure you're in the Cal Monet.
-Press CTRL-Q, or ALT-Q. Then ALT-TAB to make sure he's gone. Sweet.
+E agora, nós estamos prontos. Execute o programa. Caso o programa não tenha aberto automaticamente, pressione <kbd>Alt+Tab</kbd>. Certifique-se de estar no Monte Caral. Pressione <kbd>Ctrl+Q</kbd>, ou <kbd>Alt+Q</kbd>. Dê mais um <kbd>Alt+Tab</kbd> para se certificar de que o programa foi fechado corretamente. Muito bem.
 
 ```
-To handle an event (key down):
-If the event is modified, handle the event (shortcut); exit.
+Para gerenciar o comando (pressionamento de tecla):
+Se o comando tiver sido modificado, gerencie o comando (atalho); prossiga.
 ```
 ```
-how to paint
+como pintar
 ```
 ```
-To handle an event (shortcut):
-If the event's key is the q-key, quit; exit.
+Para gerenciar um comando (atalho):
+Se a tecla do comando for a tecla q, feche o programa; saia.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## AVOIDING FLICKER
+## EVITANDO FALHAS DURANTE A EXIBIÇÃO DO PROGRAMA
 
-It's time to start thinking about actually getting something on the screen.
-Which, unfortunately, is harder than it should be. There are two difficulties
-we must overcome. The first is flicker.
+É hora de começar a pensar em colocar algo na tela. O que, infelizmente, é mais difícil do que deveria. Existem duas dificuldades que devemos superar. A primeira delas envolve a taxa de atualização do conteúdo na tela do monitor.
 
-More often than not, a completed screen display consists of a number of
-distinct, overlapping objects, drawn back to front. My handsome face, for
-example, has a large gray pad at the back, some roundy white menu buttons
-in front of that, and some uppercase letters in front of the buttons.
+Freqüentemente, uma tela completa consiste em um número de objetos distintos e sobrepostos, sendo que os elementos da parte de trás costumam ser exibidos antes que os elementos da parte da frente. O PAL, por exemplo, tem um grande painel cinza na parte de trás e algumas letras maiúsculas na frente dos botões brancos e arredondados do menu (que ficam no meio das letras e do fundo cinza).
 
-Now if my face was drawn right on the screen, you would experience a bad
-case of flicker. The menus would momentarily disappear altogether (when the
-pad was drawn), then the buttons would appear, one at a time, first without
-the letters, and then with them, and so forth. Distracting. Annoying. Ugly.
+Se cada parte aparece na ordem, você veria uma espécie de cintilação no seu monitor. Os menus desapareceriam momentaneamente (enquanto o fundo cinza estivesse sendo exibido), logo depois os botões apareceriam, um de cada vez, primeiro sem as letras, e depois com elas, e assim por diante. Isso não só tira a atenção. É algo bem chato e irritante. É até feio pra falar a verdade.
 
-We solve this problem much as an artist would. We work on a canvas in
-memory that is concealed from prying eyes and then, when the drawing is
-complete, we reveal it all at once. Like this:
+Nós resolvemos esse problema da mesma forma que um pintor resolveria. Antes da pintura ser concluída, ela não é revelada ao público. Apenas quando ela está pronta é que nós revelamos tudo de uma vez. O esquema de funcionamento é mostrado abaixo:
 
-Note the terms in the above diagram. By convention, we use the word "draw"
-to indicate that we are working on the invisible canvas in memory. We use the
-word "refresh" when we transfer the contents of the canvas to the screen.
-And we say "show" when we want both to happen in quick succession.
+Observe os termos no diagrama acima. Por convenção, usamos a palavra `criar` para indicar que estamos trabalhando na tela que ainda não está visível para o usuário. Usamos a palavra `atualizar` quando transferimos o conteúdo do quadro para a tela. E usamos o verbo `mostrar/exibir` quando queremos que ambos aconteçam em uma rápida sucessão.
 
 ```
-draw refresh
+criar atualizar
 ```
 ```
-show
+exibir
 ```
-## CANVAS SCREEN
+##
+###### QUADRO
+###### TELA
 
 
-## THE REFRESH EVENT
+## O EVENTO DE ATUALIZAÇÃO
 
-The second screen-related difficulty we have to face is that the kluge tries
-to be a multi-tasking system, and only partially succeeds. Oh, it's bad enough
-that I have to share valuable resources with other, less deserving, programs.
-And that I can never be sure how long anything is going to take. And that
-I'm constantly being interrupted when I'm trying to get my work done.
+A segunda dificuldade relacionada à tela que temos que enfrentar é que o Windows tenta ser um sistema multi-tarefas, mas na prática não funciona muito bem. Já não basta ter que compartilhar recursos como espaço em disco e Memória RAM com os outros programas. Nunca se sabe quanto tempo teremos que esperar até que o Windows termine uma tarefa e retorne a executar as nossas. Na prática, o Windows acaba por interromper constantemente a execução do programa.
 
-But the real problem arises when some other program rudely takes over the
-screen and splatters my handsome face with idiotic icons and other tasteless
-tripe. And why is this a problem? Because the convoluted kluge — the kluge
-that somehow manages to restore all of my memory and registers and flags
-to the exact state they were in at the moment of interruption — cannot seem
-to remember what my face looks like! So what does the kluge do? It sends
-us a "refresh" event, and expects us to do all the work.
+As coisas pioram caso você troque de janela. Sabe porque fica pior? Porque o Windows, que que de alguma forma consegue restaurar toda a memória, registos e flags para o estado exato em que estavam no momento em que foram interrompidos — por algum motivo não lembra de como era a interface do programa! Sabe o que o Windows faz pra tentar consertar isso? Ele envia para o programa um comando `atualizar tela` e espera que nosso programa faça todo o trabalho.
 
-Fortunately, when all is said and done, the refresh event proves to be more
-bothersome than difficult. Such is life. Here's how we deal with it:
+Bem, no fim das contas, esse comando acaba por ser chato, mas não é tão difícil assim de gerenciar. Fazer o quê, assim é a vida. Veja como lidamos com isso:
 
-The reason we make the "show everything" routine separate will be clear soon
-enough. How we "draw the background" is covered on the next few pages.
+A razão pela qual criamos duas tarefas separados, uma para `atualizar a tela` e outra para `mostrar tudo` será explicada em breve. A tarefa de `criar o painel do fundo` será abordada nas próximas páginas.
 
 ```
-To handle an event (refresh):
-Show everything.
+Para gerenciar o comando (atualizar):
+Mostre tudo.
 ```
 ```
-To show everything:
-Draw the background.
-Refresh the screen.
+Para mostrar tudo:
+Crie o painel de fundo.
+Atualize a tela.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## THE BACKGROUND
+## O FUNDO
 
-Our background begins with a definition. Type it in:
+Nosso painel de fundo começa com uma definição. Digite o seguinte:
 
-If you've grown up programming in other, more obscure, languages, you will
-probably think of "the background" as a global variable of type "picture".
-And that's okay. It is. But if you're just starting out, you will more likely think
-something like, "The background is a picture". And that's okay, too. It is.
+Se você cresceu programando em outras linguagens mais obscuras, provavelmente pensará no "painel de fundo" como uma variável global do tipo "imagem". Tudo bem. Sem problemas. Mas se você está apenas começando, você provavelmente vai pensar algo como "O fundo é uma imagem". E não há problema também. Não deixa de ser uma imagem, de certo modo.
 
-We'll create the background when we initialize our stuff:
+Criaremos o painel de fundo quando inicializarmos nossas coisas:
 
-And destroy it when we're done:
+E o destruiremos quando terminarmos:
 
 ```
-The background is a picture.
+O plano de fundo é uma imagem.
 ```
 ```
-how to paint
+como pintar
 ```
 ```
-To initialize our stuff:
-Create the background.
+Para inicializar nossas coisas:
+Crie o painel de fundo.
 ```
 ```
-how to paint
+como pintar
 ```
 ```
-To finalize our stuff:
-Destroy the background.
+Para finalizar nossas coisas:
+Destrua o painel de fundo.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## MEMORY LEAKS
+## VAZAMENTOS DE MEMÓRIA
 
-The background, as we've said, is a picture. Pictures require memory for
-storage. How much memory depends, of course, on the size of the picture.
-Since we don't always know in advance how big or small a picture might be,
-memory for pictures is allocated, dynamically, at run time. This memory must
-later be deallocated when it is no longer needed.
+O painel de fundo, como dissemos, é uma imagem. Imagens necessitam de memória para serem armazenadas. A quantidade necessária depende, evidentemente, do tamanho da imagem. Como nem sempre sabemos com antecedência quão grande ou pequena pode ser uma imagem, a memória para imagens é alocada, dinamicamente, no tempo de execução. Esta espaço ocupado de memória terá de ser desocupado mais tarde quando não for mais necessário.
 
-By convention, we use the words "create" and "destroy" whenever dynamic
-memory allocation and deallocation is involved. It is your responsibility to
-destroy whatever you create before relinquishing control in your program.
-If you don't, you will cause a "memory leak", and bits of memory will drip
-from your computer onto your shoes.
+Por convenção, utilizaremos as palavras chave `criar` e `destruir` sempre que efetuarmos alocação e desalocação de espaços de tamanho variável na memória. É de sua responsabilidade destruir tudo o que você criar antes de abdicar do controle em seu programa. Se você não fizer isso, você causará um "vazamento de memória" e pedaços de memória irão vazar de dentro do seu computador e cair nos seus sapatos.
 
-You'll be able to see this for yourself once we've created our background.
-Just "comment out" the line that destroys it, and when you quit the program,
-with CTRL-Q, a frightening message box will appear with the bad news.
+Você será capaz de ver isso por si mesmo depois de criarmos nosso painel de fundo. Comente a linha que a destrói o painel, e quando você sair do programa usando CTRL-Q, uma caixa de mensagem assustadora aparecerá com as más notícias.
 
-Now if you've programmed before, you'll probably want to know that...
+Se você já programou antes, provavelmente vai querer saber que...
 
-(1) Strings are dynamically allocated and can be of any length — but string
-memory is managed entirely (and very efficiently) by me so they appear to be
-static to you. In other words, don't worry about them. Just enjoy.
+(1) As strings são dinamicamente alocadas e podem ter qualquer comprimento — mas a memória é gerenciada inteiramente (e muito eficientemente) por mim, assim elas parecem estáticas para você. Em outras palavras, não se preocupe com elas. Apenas aproveite.
 
-(2) When you destroy a thing, everything attached to that thing is destroyed
-along with it. This frees you from the tedious burden of writing detailed
-destroy routines for each kind of thing you create.
+(2) Quando você destrói uma coisa, tudo que está ligado a essa coisa é destruído juntamente com ela. Isso libera você do tedioso fardo de escrever detalhadas destruições rotinas para cada tipo de coisa que você cria.
 
-(3) Anything more than this falls under the heading "garbage collection" and,
-as every manly programmer knows, garbage collection is for sissies.
+(3) Qualquer coisa mais do que isso cai na categoria "coleta de lixo" e, como cada programador maníaco sabe, a coleta de lixo é para garis.
 
-If you've never programmed, just make sure you clean up after yourself.
+Se você nunca programou, certifique-se de limpar o que você mesmo sujou.
 
 
-## DAB, DAB, DAB
+## CRIANDO, PINTANDO E PINCELANDO
 
-Alright, back to work. We create the background by dabbing the off-screen
-canvas with various shades of gray, refreshing the screen every 1000 dabs.
-When we're done, we extract a copy so we can use it during refresh events.
+Beleza, vamos voltar ao trabalho. Nós vamos criar o painel de fundo colorindo a tela usando tons de cinza, e atualizando a tela a cada 1000 milissegundos. Quando terminarmos, faremos uma cópia para que possamos usá-la durante os eventos de atualização.
 
-Colors are defined in my noodle; there's a picture of the palette later on.
-A spot is a pair with an x and y coord. Look it up. The random ellipse in the
-dabber cleverly simulates fingertip painting with varying degrees of pressure.
+As cores são definidas no arquivo `o cérebro`. A paleta de cores se encontra nas próximas páginas. Uma posição é um par de coordenadas x e y. Consulte a definição no `o cérebro` para saber mais. A elipse do pincelador simula inteligentemente a pintura da ponta de um pincel com graus de pressão variados.
 
-But enough talk. Let's see what our boy can do. Run it. Then ALT-TAB a few
-times to make sure the refresh event is being handled properly. Woohoo.
+Chega de falar. Vamos ver o que o nosso programa consegue fazer. Execute-o. Em seguida, dê um <kbd>Alt-Tab</kbd> algumas vezes para verificar se o comando de atualização de tela está sendo gerenciado corretamente pelo programa. Uau.
 
 ```
-To create the background:
-Draw the screen's box with the white color and the white color.
-Loop.
-Pick a spot anywhere in the screen's box.
-Pick a color between the lightest gray color and the white color.
-Dab the color on the spot.
-If a counter is past 80000, break.
-If the counter is evenly divisible by 1000, refresh the screen.
-Repeat.
-Extract the background given the screen's box.
+Para que o plano de fundo seja criado:
+Desenhe a borda da tela usando a cor branca nas bordas e a cor branca no interior.
+Percorra.
+Escolha um lugar aleatório em qualquer lugar dentro da tela.
+Escolha uma cor aleatória variando entre a cor cinza bem clara e a cor branca.
+Coloque a cor na posição escolhida anteriormente.
+Se um contador tiver passado de 80000, pare.
+Caso o contador seja igualmente divisível por 1000, atualize a tela.
+Repita.
+Copie o painel de fundo usando a borda da tela.
 ```
 ```
-To dab a color on a spot:
-Pick an ellipse's left-top within 1/16 inch of the spot.
-Pick the ellipse's right-bottom within 1/16 inch of the spot.
-Draw the ellipse with the color and the color.
+Para alterar a cor em um lugar:
+Escolha a parte superior esquerda de uma elipse dentro de um raio de 1/16 polegadas da posição selecionada.
+Escolha a parte inferior direita da elipse dentro de 1/16 polegadas da posição selecionada.
+Desenhe a elipse usando a cor da borda e a cor do interior.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## THE STATUS
+## MENSAGENS DE STATUS
 
-According to our design, the Cal Monet is supposed to display status and
-error messages at the center-bottom of the screen. Here's a close-up:
+De acordo com o nosso design, o programa `Como Pintar` deve exibir o status e as mensagens de erro na parte inferior central da tela. Mais ou menos assim:
 
-And here are the definitions we need to get started with it:
+E aqui estão as definições que precisamos para começar:
 
-Nothing extraordinary here.
+Nada de extraordinário aqui.
 
-But note that when we draw the status, we don't draw the box — we just use it
-to properly position the string on the screen.
+Mas note que apesar de termos criado o status, nós ainda não criamos a caixa — a gente só usou ela como base para posicionar corretamente o texto na tela.
 
 ```
-< Status or Error Message >
-1 inch
-3/4 inch
-1 inch 1/2 inch
+< informação de estado atual ou mensagem de erro>
+1 polegada
+3/4 de polegada
+1 polegada 1/2 polegada
 ```
 ```
-The status has a box and a string.
+O painel de informações possui uma caixa e um texto.
 ```
 ```
-To initialize the status:
-Put the screen's center into a spot.
-Put the spot's x minus 1 inch into the status' left.
-Put the spot's x plus 1 inch into the status' right.
-Put the screen's bottom minus 3/4 inch into the status' top.
-Put the screen's bottom minus 1/2 inch into the status' bottom.
+Para inicializar o status:
+Salve o centro da tela em uma posição.
+Coloque o valor da coordenada x da posição no valor da coordenada esquerda do painel de informações. 
+Subtraia 1 polegada do valor da coordenada esquerda do painel de informações.
+Coloque o valor da coordenada x da posição no valor da coordenada direita do painel de informações. 
+Adicione 1 polegada ao valor da coordenada direita do painel de informações.
+Coloque o valor da coordenada inferior da tela no valor da coordenada superior do painel de informações.
+Subtraia 3/4 de polegada do valor da coordenada superior do painel de informações.
+Coloque o valor da coordenada inferior da tela no valor da coordenada inferior do painel de informações.
+Subtraia 1/2 polegada do valor da coordenada inferior do painel de informações.
 ```
 ```
-To draw the status:
-Draw the status' string in the center of the status' box.
+Para criar o painel de informações:
+Coloque o texto do painel de informações no centro da caixa do painel de informações.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## THE STATUS API
+## O Canal de Comunicação (API) do Painel de Informações.
 
-Now we're going to add a couple of trivial routines that will nevertheless
-make using our status facility simple and easy. Here's the first one:
+Agora vamos adicionar algum comandos triviais que, mesmo sendo triviais tornarão simples e fácil usar o nosso painel de informações. Aqui está a primeira rotina:
 
-This routine will be called at the start of each "transaction" to make sure
-that status and error messages don't outlive their usefulness.
+Esta rotina será chamada no início de cada `interação` para garantir que as informações e mensagens de erro sejam limpas antes de se mostrar informações novas.
 
-And here's the other routine:
+E aqui está a outra rotina:
 
-This routine will be used all over the place to let the user know what we're
-doing. It allows us to set the status message with a single line of code.
+Essa rotina será usada em todo o lugar para informar o usuário sobre o que estamos fazendo. Ele permite-nos definir a mensagem de status com uma única linha de código.
 
-If you're an experienced programmer (and you're not a lazy pig) you know
-how handy trivial routines like these can be. So don't hesitate to put 'em in.
-If this is your first time out (or you are a lazy pig), take our word for it.
+Se você é um programador experiente (e você não é um preguiçoso), você sabe quão úteis rotinas triviais como estas podem ser. Então não hesite em colocá-la no código do nosso programa. Se esta é sua primeira vez (ou você é um preguiçoso), escute o que estou dizendo.
 
 ```
-To clear the status:
-Clear the status' string.
-Show everything.
+Para apagar o conteúdo do painel de informações:
+Apague o texto do painel de informações.
+Mostre tudo.
 ```
 ```
-how to paint
+como pintar
 ```
 ```
-To show a string in the status:
-Put the string into the status' string.
-Show everything.
+Para exibir um texto no painel de informações:
+Coloque o conteúdo do texto no texto do painel de informações.
+Mostre tudo.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## HELLO, WORLD!
+## OLÁ, MUNDO!
 
-Finally, two of our existing routines need a little extension to take advantage
-of our new status facilities. Here they are with the new code in place:
+Agora, duas das rotinas que criamos precisam ser atualizadas para poder fazer uso das nossas novas funcionalidades. Aqui estão elas já com o código novo no seu devido lugar:
 
-Make the changes to the two routines, then crank our boy up. After he's
-through dabbing the background on the screen, you'll see him display the
-initial status message in the center-bottom, like this:
+Faça as alterações nas duas rotinas, e então execute o nosso programa. Depois que o programa terminar de criar o painel de fundo, o programa exibirá a mensagem inicial no painel de informações, bem no centro inferior da tela, conforme imagem abaixo:
 
-Nice. Since we re-draw everything when we get a refresh event, the status is
-preserved even if you ALT-TAB around. Try it. Later, we'll adjust the status
-message in various places to reflect the current state of the program.
+Ótimo. Já que a tela é praticamente refeita sempre que recebemos um comando de atualização, o painel de informações é mantido, mesmo se você apertar <kbd>Alt+Tab</kbd>. Experimente. Mais tarde, vamos ajustar a mensagem do painel de informações em vários lugares para refletir o estado atual do programa.
 
 ```
-To show everything:
-Draw the background.
-Draw the status.
-Refresh the screen.
+Para mostrar tudo:
+Crie o painel de fundo.
+Crie o painel de informações.
+Atualize a tela.
 ```
 ```
-To initialize our stuff:
-Create the background.
-Initialize the status.
-Show "Hello, World!" in the status.
+Para inicializar nossas coisas:
+Crie o painel de fundo.
+Inicialize o painel de informações.
+Mostre "Olá, mundo!" no painel de informações.
 ```
 ```
-how to paint
+como pintar
 ```
 ```
-Hello, World!
+Olá, mundo!
 ```
 
-## BUTTONS
+## BOTÕES
 
 ```
-Our status message was a one-of-a-kind thing. But our buttons are not.
-Their names are different, of course, and they invoke different routines. But
-their general form and behavior is identical.
+A nossa mensagem de status era uma coisa única. Mas os nossos botões não são.
+Os seus nomes são diferentes, é claro, e cada um faz uso de uma rotina diferente. Mas sua forma e comportamento geral são idênticos.
 ```
 ```
-We can therefore define "button" in a generic way, together with a handful
-of support routines that will work on any button. We begin here:
+Podemos, portanto, definir <code>botão</code> de uma forma genérica, junto com um punhado de de rotinas de suporte que funcionarão com qualquer botão. Começamos aqui:
 ```
+ de uma forma genérica, junto com um punhado de de rotinas de suporte que funcionarão com qualquer botão. Começamos aqui:
+</code>
 ```
-If you're a clever coder with lots of experience and a deep understanding of
-English grammar, you will be able to deduce that the indefinite article at the
-start of the first definition indicates we are defining a type, not a variable.
-If you're not, you will simply think, "A button has a box and a name. Okay."
+Se você é um programador inteligente com muita experiência e uma profunda compreensão de gramática, você será capaz de deduzir que o artigo indefinido no início da primeira definição indica que estamos definindo um tipo, não é uma variável.
+Se você não for, você vai simplesmente pensar, "Um botão tem uma caixa e um nome". "Certo".
 ```
-But if you're an observant reader, experienced or not, you will conclude that
-buttons do not require dynamic memory allocation, since we use the word
-"make" instead of "create" in the second definition's header.
+Mas se você é um leitor observador, experiente ou não, você irá concluir que botões não requerem alocação de memória dinâmica, já que usamos a palavra "fazer" em vez de "criar" no cabeçalho da segunda definição.
 
 ```
-And you will also see, I hope, that a button's width depends on its name, and
-that the spot we start with is at the right-bottom of the button.
+E você verá também, espero eu, que a largura de um botão depende do seu nome, e
+que o ponto com que começamos está na parte inferior direita do botão.
 ```
 ```
-A button has a box and a name.
+Um botão tem uma caixa e um nome.
 ```
 ```
-To make a button given a spot and a name:
-Put the spot's x minus the name's width into the button's left.
-Put the spot's y minus 1/4 inch into the button's top.
-Put the spot into the button's right-bottom.
-Put the name into the button's name.
+Para fazer um botão usando uma coordenada e um nome:
+Coloque o valor da coordenada x no valor da coordenada esquerda do botão.
+Subtraia a largura do nome do valor da coordenada esquerda do botão.
+Coloque o valor da coordenada y no valor da coordenada do topo do botão.
+Subtraia 1/4 de polegada do valor da coordenada do topo do botão.
+Coloque o valor da coordenada no canto inferior direito do botão.
+Coloque o nome informado no nome do botão.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## WORKING WITH BUTTONS
+## TRABALHANDO COM BOTÕES
 
-We want to see our buttons on the screen, of course, and we want to be able
-to click 'em to make things happen. Here's a couple of support routines:
+Queremos ver nossos botões na tela, é claro, e queremos ser capazes de clicar neles para fazer as coisas acontecerem. Aqui estão algumas rotinas complementares:
 
-Since a button's box is exactly the right size for the name we put in it, we can
-draw the button's name without any concern about alignment. We just draw
-the button's name in the button's box and we're done. Feel free to draw the
-button's box and indent it and outdent it and color it and chisel it if you like.
+Como a caixa dos botões tem exatamente o tamanho certo para o nome que colocarmos nela, podemos colocar o nome no botão sem qualquer preocupação sobre alinhamento. Nós apenas colocamos o nome no botão na caixa do botão e pronto. Sinta-se livre para modificar a caixa do botão, mudando a margem ou espaçamento, bem como tamanho ou cor.
 
-Just kidding.
+Brincadeirinha.
 
-The second routine is an example of a special kind of routine that tells me
-how to make decisions. Routines of this kind are called "deciders", and they
-always start with the words TO DECIDE IF. If you've had the misfortune of
-programming in a less natural language, and you can't help yourself, you can
-think of deciders as boolean functions. But try not to.
+A segunda rotina é um exemplo de um tipo especial de rotina que me diz como tomar decisões. Rotinas desse tipo são chamadas de "decisoras", e elas sempre começam com as palavras `Para decidir se`. Se você teve o infortúnio de programar numa linguagem menos natural, você pode pensar em decisores como funções booleanas. É bem parecido.
 
-What you must remember here is that I have absolutely no tolerance for
-wishy-washy thinking. To exit a decider, you must reach a definite conclusion
-and either "say yes" or "say no". Nothing else will do.
+Apenas lembre-se de que não existe meio termo numa função decisora. Para sair de um decisor, você deve chegar a uma conclusão definida usando os termos `diga sim` ou `diga não`. Nada mais servirá.
 
 ```
-To draw a button:
-Draw the button's name in the button's box.
+Para desenhar um botão:
+Desenhe o nome do botão na caixa do botão.
 ```
 ```
-To decide if a spot is in a button:
-If the spot is in the button's box, say yes.
-Say no.
+Para decidir se um local está em um botão:
+Se o local está na caixa do botão, diga sim.
+Diga não.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## WORKING WITH OUR BUTTONS
+## HORA DE TRABALHAR COM OS NOSSOS BOTÕES
 
 ```
-Now here's the design for the buttons in the Cal Monet:
+Esse aqui é o esboço dos botões do nosso projeto <code>Como pintar</code>:
 ```
+:
+</code>
 ```
-And here's the code to implement 'em:
+E esse aqui é o código para criar os botões:
 ```
-First, we define both of our controls as buttons. Then we make the Quit
-button, 1/2 inch in from the right and 1/2 inch up from the bottom of the
-screen. Finally, we use the Quit button's left — which was calculated in the
-"make a button" routine — to make the Print button.
+Em primeiro lugar, definimos os nossos botões. Então posicionamos o botão `Sair` à distância de 1/2 polegada, a partir da extremidade direita da tela e 1/2 polegada acima a partir da extremidade inferior tela. Finalmente, usamos a extremidade esquerda do botão `Sair` — que foi calculado na rotina `fazer um botão` — para criar o botão de Impressão.
 
 ```
-3/4 inch
-1/2 inch
+3/4 de polegada
+1/2 polegada
 ```
 ```
-Print Quit
+Imprimir Sair
 ```
 
 
 ```
-The print button is a button.
+O botão de impressão é um botão.
 ```
 ```
-The quit button is a button.
+O botão de sair é um botão.
 ```
 ```
-To initialize the buttons:
-Put the screen's bottom minus 1/2 inch into a spot's y.
-Put the screen's right minus 1/2 inch into the spot's x.
-Make the quit button given the spot and "Quit".
-Put the quit button's left minus 1/2 inch into the spot's x.
-Make the print button given the spot and "Print".
+Para inicializar os botões:
+Coloque o valor da coordenada inferior da tela inferior numa coordenada y.
+Subtraia 1/2 polegada do valor da coordenada y.
+Coloque o valor da coordenada direita da tela inferior numa coordenada x.
+Subtraia 1/2 polegada do valor da coordenada x.
+Faça o botão de sair usando as coordenadas informadas e o termo "Sair".
+Coloque o valor da coordenada esquerda ddo botão sair numa coordenada x.
+Subtraia 1/2 polegada do valor da coordenada x.
+Faça o botão de impressão usando as coordenadas e o termo "Imprimir".
 ```
 ```
-how to paint
+como pintar
 ```
 ## 1/2 1/2
 
 
-## MAKING OUR BUTTONS WORK
+## FAZENDO OS NOSSOS BOTÕES FUNCIONAREM
 
-Almost there. We need to update three routines, and add one more. Like this:
+Quase lá. Precisamos atualizar o conteúdo de três das nossas rotinas e acrescentar mais uma no código do nosso programa, conforme demonstrado abaixo:
 
-Note that we consider each click a new transaction, and clear the status.
-And note that the print routine won't really work, but we'll know we got there.
-Now run. Click. No status. Click Print. "Printing...". Click Quit. Bye-bye.
+Observe que consideramos cada clique como uma nova interação, a qual limpa  conteúdo do painel de informações. E note que a rotina de impressão ainda não funciona de verdade, mas é já que a gente chega lá. Agora é hora de executar o programa para ver se não houve nenhum erro. Clique nos botões. Verifique o conteúdo do painel de informações. Clique no botão `Imprimir`. A mensagem `Imprimindo...` deverá ser exibida. Clique no botão `Sair`. O programa deve se fechar automaticamente.
 
 ```
-To initialize our stuff:
-Create the background.
-Initialize the status.
-Initialize the buttons.
-Show "Hello, World!" in the status.
+Para inicializar nossas coisas:
+Crie o painel de fundo.
+Inicialize o painel de informações.
+Inicialize os botões.
+Mostre "Olá, mundo!" no painel de informações.
 ```
 ```
-To show everything:
-Draw the background.
-Draw the status.
-Draw the print button.
-Draw the quit button.
-Refresh the screen.
+Para mostrar tudo:
+Crie o painel de fundo.
+Crie o painel de informações.
+Crie o botão de impressão.
+Crie o botão de sair.
+Atualize a tela.
 ```
 ```
-To handle an event (left click):
-Clear the status.
-If the event's spot is in the print button, print.
-If the event's spot is in the quit button, quit.
+Para manipular um evento (clique com o botão esquerdo):
+Limpe o status.
+Se o evento estiver no botão de impressão, imprima.
+Se o botão de fechar for clicado, feche o programa.
 ```
 ```
-To print:
-Show "Printing..." in the status.
+Para imprimir:
+Mostre "Imprimindo..." no painel de informações.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## TEXT
+## O CAMPO DE TEXTO
 
-There's a powerful thing called text in my noodle that makes it relatively easy
-to include the written word in your applications. Cut, copy, paste, undo, redo,
-wrap, even spell checking, are all supported. And it's fast and efficient. My
-editor, for example, is actually just a great big text block. You can read all
-about text in the Gray Matter Glossary at the back of this book.
+Há uma componente bem útil chamada campo de texto no arquivo `o cérebro` que torna relativamente fácil criar campos de texto nos nossos programas. As funções `Recortar`, `Copiar`, `Colar`, `Desfazer`, `Refazer`, `Selecionar` e até mesmo `Verificar Ortografia`, são totalmente suportadas. Além de tudo, ele é um componente rápido e eficiente. O `bloco de notas`, por exemplo, é na verdade um super bloco de texto. Você pode aprender mais sobre o campo de texto no Glossário que fica no final deste livro.
 
-A full implementation of text, however, is not required for the Cal Monet.
-Something much simpler will do. Here are the basic definitions. Click 'em in:
+No entanto, não vamos precisar implementar todas essas funções no nosso pequeno programa. Algo muito mais simples já é o suficiente. Aqui estão as definições básicas que nós vamos precisar para o nosso programa. Dê uma olhada com calma:
 
-Our text box is placed 1/2 inch in and up from the left-bottom of the screen.
-It is 1/4 inch tall and 2 inches wide. I don't think we need a picture here.
+Nossa campo de texto é colocada 1/2 polegada acima da parte inferior esquerda da tela. Ele tem 1/4 de polegada de altura e 2 polegadas de largura. Eu não acho que precisemos de uma foto aqui.
 
-Note, however, that we've implemented a simple but effective "poor man's
-caret" — when we draw the text, we append an underscore to the end of it.
+Observe que, no entanto, que nós implementamos um cursor de texto bem básico, mas eficaz. Quando digitarmos o texto, um underline aparece depois do último caractere inserido.
 
 ```
-how to paint
+como pintar
 ```
 ```
-The text has a box and a string.
+O campo de texto tem uma caixa e um texto.
 ```
 ```
-To initialize the text:
-Put the screen's left plus 1/2 inch into the text's left.
-Put the text's left plus 2 inches into the text's right.
-Put the screen's bottom minus 3/4 inch into the text's top.
-Put the screen's bottom minus 1/2 inch into the text's bottom.
+Para inicializar o campo de texto:
+Coloque o valor da coordenada esquerda da tela no valor da coordenada esquerda do campo de texto.
+Adicione 1/2 polegada ao valor da coordenada esquerda do campo de texto.
+Coloque o valor da coordenada esquerda do campo de texto no valor da coordenada direita do campo de texto.
+Adicione 2 polegadas ao valor da coordenada direita do campo de texto.
+Coloque o valor da coordenada inferior da tela no valor da coordenada superior do campo de texto.
+Subtraia 3/4 de polegada do valor da coordenada superior do campo de texto.
+Coloque o valor da coordenada inferior da tela no valor da coordenada inferior do campo de texto.
+Subtraia 1/2 polegada do valor da coordenada inferior do campo de texto.
 ```
 ```
-To draw the text:
-Put the text's string then "_" into a string.
-Draw the string in the text's box.
+Para exibir o texto:
+Coloque texto do campo de texto em um texto.
+Adicione "_" ao final do texto.
+Coloque o texto na caixa do campo de texto.
 ```
 
-## MAKING TEXT WORK
+## FAZENDO O CAMPO DE TEXTO FUNCIONAR
 
-We need to modify two of our routines to make our text work. We also need
-to dispatch and handle keyboard activity, but we'll deal with that on the next
-couple of pages. For now, just make sure you've got these routines updated:
+Temos de modificar duas das nossas rotinas para que o nosso campo de texto funcione. Também precisaremos gerenciar as atividades do teclado, mas lidaremos com isso nas próximas páginas. Por enquanto, apenas certifique-se de que você atualizou as seguintes rotinas:
 
-The only change to the first routine is the line that initializes the text.
+A única alteração para a primeira rotina é a linha que inicializa o campo de texto.
 
-The second routine, however, is different in two ways. We draw the text, of
-course, before refreshing the screen. But we also hide the cursor so it
-doesn't get in the way of the text when the user is typing. But don't worry
-about it. The "set cursor" event will bring it back whenever the mouse moves.
+A segunda rotina, porém, tem duas adições. Nós criamos o campo de texto, antes de atualizar a tela. Mas também ocultamos o cursor do mouse para que ele não atrapalhe o usuário quando ele estiver digitando. Mas não se preocupe com isso. O evento "exibir cursor" vai trazê-lo de volta sempre que o mouse se mover.
 
 ```
-how to paint
+como pintar
 ```
 ```
-To initialize our stuff:
-Create the background.
-Initialize the status.
-Initialize the buttons.
-Initialize the text.
-Show "Hello, World!" in the status.
+Para inicializar nossas coisas:
+Crie o painel de fundo.
+Inicialize o painel de informações.
+Inicialize os botões.
+Inicializar o texto.
+Mostre "Olá, mundo!" no painel de informações.
 ```
 ```
-To show everything:
-Hide the cursor.
-Draw the background.
-Draw the status.
-Draw the print button.
-Draw the quit button.
-Draw the text.
-Refresh the screen.
+Para mostrar tudo:
+Esconda o cursor do mouse.
+Crie o painel de fundo.
+Crie o painel de informações.
+Crie o botão de impressão.
+Crie o botão de sair.
+Crie o campo de texto.
+Atualize a tela.
 ```
 
-## DISPATCHING KEY PRESSES
+## GERENCIANDO O PRESSIONAMENTO DE TECLAS
 
-Here's how we modify our "key down" handler to dispatch keystrokes:
+Veja só como é que iremos modificar nosso geremciador de pressionamento de teclas para que ele encaminhe as teclas pressionadas:
 
-First, note that we consider any keypress the beginning of a new transaction,
-and clear the status. A bit of overkill, perhaps, but it keeps the screen clean.
+Primeiramente, observe que consideramos qualquer tecla o início de uma nova interação, por isso nós limpamos qualquer mensagem anterior que estivesse no painel de informações. Talvez seja um pouco exagerado, mas pelo menos o painel de informações vai mostrar apenas o que interessa.
 
-Then we handle shortcuts the same as before.
+Em seguida nós gerenciamos as teclas de atalho da mesma forma que fizemos anteriormente.
 
-If the event's byte is printable, we pass it on down to a helper. Note that
-we're checking the event's byte here, not the event's key. This is because a
-given key can produce both printable and non-printable values. CTRL-A and
-ALT-A, for example, are non-printable. SHIFT-A is printable, but differs
-from UNSHIFTED-A. If you want to know exactly what "printable" means,
-look it up in my noodle.
+Se o valor da tecla pressionada for uma letra, nós encaminhamos esse valor para outra rotina. Note que estamos verificando o valor do byte da tecla, e não a tecla em si. Temos que fazer isso porque uma tecla pode produzir caracteres imprimíveis, mas também caracteres não imprimíveis. Os comandos <kbd>Ctrl+A</kbd> e <kbd>Alt+A</kbd>, por exemplo, não são imprimíveis. Já o comando <kbd>⇧Shift-A</kbd> é imprimível, mas tem um valor diferente do <kbd>A</kbd> e do <kbd>a</kbd>. Se você quer saber exatamente o que é um `caractere imprimível`, procure o termo no arquivo ` o cérebro`.
 
-Finally, we put the event's key into a local key just to shorten up the next three
-lines. There will be four more lines for HOME, END, PAGE UP and PAGE DOWN
-when we dispatch them later on.
+Por último, colocamos a tecla que foi pressionada em uma variável local chamada tecla apenas deixar as três linhas que faltam um pouco mais curtas. Nós iremos adicionar mais quatro linhas uma para a tecla <kbd>Home</kbd>, outra para a tecla <kbd>End</kbd>, mais uma para a tecla <kbd>Page Up</kbd> e a última para a tecla <kbd>Page Down</kbd>.
 
 ```
-To handle an event (key down):
-Clear the status.
-If the event is modified, handle the event (shortcut); exit.
-If the event's byte is printable, handle the event (printable); exit.
-Put the event's key into a key.
-If the key is the escape key, handle the event (escape); exit.
-If the key is the backspace key, handle the event (backspace); exit.
-If the key is the enter key, handle the event (enter); exit.
+Para gerenciar um comando (pressionamento de tecla):
+Apague o conteúdo do painel de informações.
+Se o comando for modificado, gerencie o comando (atalho); prossiga.
+Se o valor da tecla for imprimível, gerencie o comando (imprimível); prossiga.
+Salve a tecla do comando em uma tecla.
+Se a tecla for a tecla Esc, gerencie o comando (cancelar); saia.
+Se a tecla for a tecla backspace, gerencie o comando (apagar texto); prossiga.
+Se a tecla for a tecla enter, gerencie o comando (tecla enter); prossiga.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## HANDLING KEY PRESSES
+## GERENCIANDO PRESSIONAMENTOS DE TECLA
 
-Here are the helpers our key down dispatcher needs:
+Aqui estão as rotinas que gerenciarão as teclas <kbd>Home</kbd>, <kbd>End</kbd>, <kbd>Page Up</kbd>, <kbd>Page Down</kbd>, e a tecla <kbd>Enter</kbd>:
 
-As we mentioned earlier, printable keys are simply added to the text. The
-ESCAPE key clears the text. The caret, however, will still appear since it is
-appended in the draw routine even if the text's string is blank. BACKSPACE
-will either delete the last byte or cluck, as appropriate. The last helper, the one
-for the ENTER key, we'll be beefing up on the next few pages.
+Como mencionamos anteriormente, as letras, números e símbolos são simplesmente adicionadas ao texto. A tecla <kbd>Esc</kbd> limpa o conteúdo do campo de texto. O cursor de texto, no entanto, ainda aparecerá já que ele está anexado na rotina de criação mesmo que o campo de texto esteja em branco. A tecla <kbd>⌫</kbd> irá apagar a última letra digitada, ou se não houver nenhum texto a ser apagado, irá emitir um som de alerta. Nas próximas páginas desenvolveremos a última rotina (a rotina da tecla <kbd>Enter ↵</kbd>).
 
-Now run the little guy and see him work. Got a caret? Good. Type something.
-Status and cursor gone? Good. ALT-TAB. Still there? Good. Backspace 'til it
-clucks. Good. Move the mouse. Cursor back? Good. Press Quit. Nice.
+Agora vamos executar nosso programa e testá-lo um pouco. O cursor de texto está aparecendo? Excelente. Digite alguma coisa no campo de texto. O painel de informações apagou o `Olá Mundo,`? O cursor do mouse sumiu? Excelente. Agora dê um `Alt+Tab`. Continue até voltar ao `Como pintar`. Excelente. Teste a tecla ⌫ para ver se o alerta sonoro funciona. Muito bem. Mova o mouse. A seta do mouse reapareceu? Ótimo. Clique no botão `Sair`. Ótimo.
 
 ```
-To handle an event (printable):
-Append the event's byte to the text's string.
-Show everything.
+Para gerenciar um comando (caractere imprimível):
+Coloque a tecla digitada ao final do texto do campo de texto.
+Mostre tudo.
 ```
 ```
-To handle an event (escape):
-Clear the text's string.
-Show everything.
+Para gerenciar um comando (limpar texto):
+Limpe a sequência de caracteres do campo de texto.
+Mostre tudo.
 ```
 ```
-To handle an event (backspace):
-If the text's string is blank, cluck; exit.
-Remove the last byte from the text's string.
-Show everything.
+Para lidar com um evento (apagar letra):
+Se a o texto do campo de texto estiver em branco, alerte o usuário; prossiga.
+Remova o último caractere do texto do campo de texto.
+Mostre tudo.
 ```
 ```
-To handle an event (enter):
+Para gerenciar um comando (tecla Enter):
 ```
 ```
-how to paint
+como pintar
 ```
 
-## THE MAGIC
+## A MÁGICA
 
 ```
-So we type the name of any imaginable person, place, or thing in our little
-text box, and press ENTER. After a few seconds, an original portrait, in the
-style of Claude Monet, appears on the screen. With a bunch of similar works
-waiting in the wings behind the PAGE UP and PAGE DOWN keys. Amazing.
+Em nossa pequena caixa de texto, iremos digitamos o nome de qualquer pessoa, lugar ou coisa imaginável e apertar a tecla <kbd>Enter</kbd>. Após alguns segundos, uma pintura original, pintada no mesmo estilo de Claude Monet, aparecerá na tela. O usuário poderá ver várias outras obras de arte similares apenas utilizando as teclas <kbd>Page Up</kbd> e <kbd>Page Down</kbd>. Incrível.
 ```
 ```
-But how are we going to make this happen?
+Mas como é que vamos fazer com que isso aconteça?
 ```
 ```
-As Claude Monet himself would, of course. We'll just find some suitable
-models, then create some works of art based on those models. And how will
-we create a work based on a model? Again, as Claude would. Pick a spot on
-the model, mix some paint, dab the canvas. Repeat until done.
+É claro que se ele estivesse vivo, o próprio Claude Monet pintaria as obras de arte para nós. Como ele não está, nos simplesmente encontraremos alguas coisas que ficariam boas se ele pintasse. Em seguida, nós criaremos algumas obras de arte com base nesses coisas. E como criaremos uma obra de arte com base em um modelo? Mais uma vez, da mesma forma que o próprio Monet faria. Pegando a fotografia original, misturandp um pouco de tinta, e dando umas pinceladas por cima. Repetindo até terminar o quadro.
 ```
 ```
-All we need now are (1) some models, and (2) a look-and-dab routine.
+Tudo o que precisamos agora são (1) alguns modelos, e (2) uma rotina que pinte usando o modelo como base.
 ```
-Well, the second part is relatively easy. We've already taught the Cal Monet to
-dab a canvas — that's how he paints the background every time he runs. The
-"look" part, I'm sure, is just a minor extension to the existing algorithm.
+Bem, a segunda parte é relativamente fácil. Já ensinamos o `Como pintar` a dar uma pincelada na tela — é assim que nosso programa cria o plano de fundo toda vez que ele é executado. Dessa forma, a única diferença é que utilizaremos um modelo como base.
 
 ```
-It's the first part that's tricky. Where are we going to find models for
-everything under the sun? The HAL 9000. A 1957 Chevy. The Rolling Stones.
-I know I don't have them in my memory bank, and the Cal Monet certainly
-doesn't have them in his. Fortunately, I know someone who does. Googley.
-He's seen pretty much everything there is to see. And he's willing to share.
+É a primeira parte que é complicada. Onde vamos encontrar imagens para qualquer coisa que o usuário digite? Uma paisagem desértica. Um arco íris. Uma Ferrari.
+Não é muito prático guardar todo tipo de imagem em um programa que deveria ter poucos kilobytes. Ainda bem que isso não é necessário. Pra quê guardar imagens se temos o Google?
+No Google Imagens podemos encontrar qualquer imagem que pensarmos.  De graça.
 ```
 ```
-So here's the plan.
+Eis o plano.
 ```
 ```
-When the ENTER key is pressed, we'll ask Googley to give us a page full of
-URLs (uniform resource locators) where images of whatever the user typed in
-can be found. We'll store each of these URLs as a work in progress. Then,
-when it's time to display a work, we'll finish it up — look and dab.
+Quando a tecla <kbd>Enter</kbd> for pressionada, Google nos dará uma página cheia de URLs (localizadores de recursos) que contém as imagens relacionadas ao termo de pesquisa do usuário. Nós armazenaremos cada uma dessas URLs como se fosse um modelo esperando para virar obra de arte. Então, quando for hora de exibir a obra de arte, iremos pintá-la, usando a rotina que criamos.
 ```
 
-## WORKS
+## OBRAS DE ARTE
 
 ```
-Here are the basic definitions we need for our works d'art:
+Aqui estão as definições básicas de que precisamos para as nossas obras d e arte:
 ```
 ```
-The first line makes "painting" a synonym for "picture". We want to make it
-clear that our works are original works of art, not just downloaded pictures.
-In fact, you'll see later that we don't save the images we get from Googley
-at all. Once we create a work from the model, the model is no longer needed.
+A primeira linha faz de "pintura" um sinônimo de "imagem". Queremos deixar claro que nossas obras serão obras de arte originais, não apenas imagens baixadas do Google.
+Na verdade, você verá mais tarde que nós não iremos salvar as imagens que recebemos do Google. Once we create a work from the model, the model is no longer needed.
 ```
 ```
-Now if you're an expert in dynamic data structures, listen up.
+Agora se você for especialista em estruturas de dados dinâmicos, preste atenção.
 ```
 ```
-The word "thing" in the second definition is very special to me. It indicates a
-dynamic data object that can be linked to others of the same kind to form a
-chain — each object pointing both to the one before it, and the one after it.
-If you're thinking that sounds like a doubly-linked list, you're right. Routines
-to insert, append, and delete things can be found in my noodle.
+A palavra <code>coisa</coisa> na segunda definição é muito especial para mim. Ele indica um objeto de dados dinâmicos que pode ser associado a outros do mesmo tipo para formar uma cadeia - cada objeto apontando para o objeto anterior a ele, e para o objeto que estiver depois dele.
+Se você está pensando que parece uma lista duplamente vinculada, você está certo. Rotinas para inserir, acrescentar e excluir <code>coisas</code. podem ser encontradas no arquivo <code>o cérebro</code>.
 ```
-"The works", defined on the third line, is a such a chain.
+.
+</code>
+`As obras de arte`, definidas na terceira linha, são um exempo dessas listas.
 
-Now if you're not an expert in dynamic data structures, you don't really need
-to understand all that techno-babble. Just latch on to these two thoughts:
-"A work is a thing with a URL and a painting" and "The works are some works".
+Agora, se você não é um especialista em estruturas de dados dinâmicos, você realmente não precisa entender todos esses detalhes. Só grave isso: "Uma obra de arte é uma coisa com uma URL e uma pintura" e "As obras de arte são algumas obras de arte".
 
 ```
-A painting is a picture.
+Uma pintura é uma imagem.
 ```
 ```
-A work is a thing with a URL and a painting.
+Uma obra de arte é uma coisa com uma URL e uma pintura.
 ```
 ```
-The works are some works.
+As obras de arte são algumas obras de arte.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## THE CURRENT WORK
+## A OBRA DE ARTE ATUAL
 
 ```
-Each URL that Googley returns us becomes a work — initially "in progress",
-later finished and displayed to the user. We need to keep track of which work
-is on the screen, and we need a way to switch from one work to another.
+Cada URL que o Google nos dá se torna uma obra de arte — inicialmente elas são obras de arte "em andamento", que mais tarde são finalizadas e exibidas ao usuário. Precisamos criar uma forma de saber qual obra de arte está aparecendo na tela, e precisamos criar uma maneira de alternar entre diferentes obras de arte.
 ```
 ```
-Here's some code that will help:
+Aqui estão alguns códigos que irão nos ajudar nessa tarefa:
 ```
-"The current work" is a reference to the work that is currently on the screen.
-If there are no works, the current work will be nil. This occurs at start up, and
-whenever a request cannot be satisfied. When a new request is processed, the
-current work is set to the first of the works produced. Later, it will change as
-the user taps the PAGE UP, PAGE DOWN, HOME, and END keys.
+`A obra de arte atual` é uma referência à obra de arte que está sendo exibida atualmente na tela. Se não houver obras de arte sendo exibidas, não existirá nenhuma obra de arte atual. Essa situação ocorre quando o programa acaba de ser iniciado e também sempre que o Google não consegue encontrar nenhuma imagem. Quando uma nova solicitação é processada, a obra de arte atual é definida como a primeira obra de arte da lista. Mais tarde, ela será atualizada automaticamente toda vezque o usuário pressionar as teclas <kbd>Page Up</kbd>, <kbd>Page Down</kbd>, <kbd>Home</kbd> e <kbd>End</kbd>.
 
 ```
-The normal method of setting the current work is shown above. If the
-requested work is nil, no action is taken. The status message is necessary
-because some delay might be experienced when the Cal Monet is dabbing.
-The status is cleared, of course, before the finished work is displayed.
+O método normal de definição da obra de arte atual é mostrado acima. Se a obra de arte solicitada for inexistente, nenhuma ação será tomada. A mensagem de status é necessária porque pode demorar um pouco pro nosso programa terminar de pintar a obra de arte.
+A mensagem é apagada, é claro, antes que o que a obra de arte seja exibida para o usuário.
 ```
 ```
-The current work is a work.
+A obra de arte atual é uma obra de arte.
 ```
 ```
-To go to a work:
-If the work is nil, exit.
-Show "Working..." in the status.
-Put the work into the current work.
-Finish the current work.
-Clear the status.
-Show everything.
+Para exibir uma obra de arte:
+Se a obra de arte for inexistente, saia.
+Mostre o termo "Trabalhando..." no painel de informações.
+Defina a obra de arte como sendo a obra de arte atual.
+Termine a obra de arte atual.
+Limpe o conteúdo do painel de informações.
+Mostre tudo.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## WORKING WITH WORKS
+## TRABALHANDO COM OBRAS DE ARTE
 
-We need a routine to draw our works, of course, but (like any artist) we only
-want to reveal our finished works. Which means we also need a decider to say
-which is which. Here's the code:
+Precisamos de uma rotina para pintar nossas obras de arte, é claro, mas (como qualquer artista) nós somente queremos exibir nossas obras que já estiverem prontas. O que significa que também precisamos de uma decissor para dizer qual é qual. Eis o código:
 
-The first routine checks to see if the work is finished, and, if it is, draws it.
-There's no "draw a painting" routine yet, and we're not going to put one in,
-either. But since we've said that a painting is a picture, I can just use the
-standard "draw a picture" routine in my noodle to do the job.
+A primeira rotina verifica se a obra de arte está pronta para ser pintada, e se estiver, ela pinta a obra de arte. Nós ainda não criamos uma rotina chamada `crie uma pintura`, e advinha só, nós também não vamos criar uma. Mas já que dissemos que uma pintura é uma figura, nós podemos simplesmente usar a rotina padrão `criar uma imagem` que está presente no arquivo `o cérebro` para fazer esse trabalho.
 
-If you're a nerd, you'll recognize this as "automatic type reduction" and will
-wonder how I accomplish it with such efficiency and finesse. If you're not a
-nerd, you'll probably think, "What's the big deal?" and wonder why every
-programming language doesn't have this capability.
+Se você é um nerd, você vai reconhecer isso como uma "redução automática de tipo" e vai me perguntar como que o compilador faz isso com tanta eficiência e elegância. Se você não é um nerd, você provavelmente vai pensar: "Tá, mas e daí?" e depois se perguntar por que as outras linguagens de programação não tem essa capacidade.
 
-The second routine is a standard decider. Note, however, that it treats a nil
-work as finished. If there's nothing to finish, we're finished. Right?
+A segunda rotina é apenas um decisor comum. Note, no entanto, que ela considera uma obra de arte inexistente como se ela já estivesse finalizada. Até porque, se não houver trabalho pra fazer, isso significa que o trabalho acabou, certo?
 
 ```
-To draw a work:
-If the work is nil, exit.
-If the work is not finished, exit.
-Draw the work's painting.
+Para exibir uma obra de arte:
+Se a obra de arte for inexistente, saia.
+Se a obra de arte não estiver pronta, saia.
+Crie a obra de arte.
 ```
 ```
-To decide if a work is finished:
-If the work is nil, say yes.
-If the work's painting is not nil, say yes.
-Say no.
+Para decidir se a obra está terminada:
+Se a obra de arte não existir, diga sim.
+Se a obra de arte existir, diga sim.
+[Caso contrário] diga não.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## MAKING WORKS WORK
+## FAZENDO NOSSAS OBRAS DE ARTE FUNCIONAREM
 
-There are a couple of updates we need to make. One is to the show routine,
-and it's the last one we'll be making there. The completed code looks like this:
+Há duas atualizações que temos que colocar no nosso código. A primeira alteração que precisamos fazer está na rotina de exibição. Felizmente não vamos mais precisar alterar ela. O código completo é parecido com este:
 
-Note that since we don't refresh the screen until the very end of the routine,
-the pieces can be drawn in any order. Except for the background, of course.
+Note que já que nós só atualizamos a tela no final da rotina, os componentes do programa podem ser criados em qualquer ordem. Exceto pelo painel de fundo, é claro.
 
-A work is a thing, and things are always dynamically allocated, so we need to
-clean them up when we're done. Here's the final finalize routine:
+Uma obra de arte é uma coisa, e as coisas são sempre alocadas dinamicamente, então precisamos limpá-las quando terminarmos. Aqui está a última rotina de finalização:
 
 ```
-To show everything:
-Hide the cursor.
-Draw the background.
-Draw the status.
-Draw the print button.
-Draw the quit button.
-Draw the text.
-Draw the current work.
-Refresh the screen.
+Para mostrar tudo:
+Esconda o cursor do mouse.
+Crie o painel de fundo.
+Crie o painel de informações.
+Crie o botão de impressão.
+Crie o botão de sair.
+Crie o campo de texto.
+Crie a obra de arte atual.
+Atualize a tela.
 ```
 ```
-how to paint
+como pintar
 ```
 ```
-To finalize our stuff:
-Destroy the background.
-Destroy the works.
+Para finalizar nossas coisas:
+Destrua o painel de fundo.
+Destrua as obras de arte.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## HELLO, GOOGLEY!
+## OLÁ, GOOGLE!
 
-Now let's start at the ENTER key and work our way down. Here's the code:
+Agora vamos começar a trabalhar na tecla <kbd>Enter</kbd>. Eis o código:
 
-If the text is blank, there's nothing to do; we object with a cluck and exit.
+Se o campo de texto estiver em branco, não há nada a fazer; nós usaremos o som para alertar o usuário e sairemos.
 
-Otherwise, we put up a status message (in case Google is busy and doesn't
-respond right away). Then we formulate a request using a literal string and
-an HTML-compatible version of the text, reading the response into a buffer
-(which is just a fancy name for a string).
+Caso contrário, nós vamos escrever uma mensagem no painel de informações (caso o Google esteja ocupado e não responda imediatamente). Em seguida, formulamos uma solicitação usando um texto literal e uma versão do texto que seja compatível com o formato HTML, lendo a resposta em um buffer (que é apenas um nome chique para uma sequência de caracteres).
 
-If something went wrong, we report the error and boogie. If the page
-arrived intact, we attempt to create our works-in-progress from the data in
-the buffer. If the works are empty when we're done, it means Googley didn't
-understand our query — in this case, we say "Huh?", and skedaddle.
-Otherwise, we show the user the first of the works.
+Se algo deu errado, relatamos o erro. Se a página chegar intacta, tentamos gerar nossas obras de arte em andamento a partir dos dados no buffer. Se as obras estiverem em branco quando terminarmos, isso significa que o Google não entendeu nossa consulta — neste caso, dizemos "Hã?" e saímos. Caso contrário, mostramos ao usuário a primeira obra de arte da lista.
 
 ```
-To handle an event (enter):
-If the text's string is blank, cluck; exit.
-Show "Working..." in the status.
-Put "http://images.google.com/images?q=" into a URL.
-Convert the text's string to a query string.
-Append the query string to the URL.
-Read the URL into a buffer.
-If the i/o error is not blank, show the i/o error in the status; exit.
-Create the works given the buffer.
-If the works are empty, show "Huh?" in the status; exit.
-Go to the works' first.
+Para gerrenciarmos um comando (tecla Enter):
+Se a o texto do campo de texto estiver em branco, alerte o usuário; prossiga.
+Mostre o termo "Trabalhando..." no painel de informações.
+Coloque "http://images.google.com/images?q=" em uma URL.
+Converta o texto do campo de texto em um texto de pesquisa.
+Coloque o texto de pesquisa no fim da URL.
+Leia a URL em um buffer.
+Se o erro de entrada/saída não estiver em branco, mostre o erro no painel de informações; saia.
+Crie as obras de arte usando o buffer.
+Se as obras estiverem vazias, mostre "Hã?" no painel de informações, saia.
+Vá para a primeira obra de arte.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## RIDERS
+## PERCORREDORES
 
 ```
-Before we continue with our program, I need to take a moment and talk to
-you about parsing. Parsing is the art of working your way through a block of
-text a piece at a time, where a piece might be as small as a letter or as large
-as the whole block. Let's use this string as our sample block of text:
+Antes de continuarmos com nosso programa, preciso tirar um momento e falar com você sobre análise sintática. Análise sintática é a arte de percorrer um grande bloco de texto um palavra por vez, onde essa palavra pode ser tão pequena quanto uma letra ou tão grande quanto o bloco inteiro. Vamos usar essa sequência de palavras abaixo como nosso exemplo de bloco de texto:
 ```
-"HELLO DOCTOR NAME CONTINUE YESTERDAY TOMORROW"
+"OLÁ DOUTOR NOME CONTINUAR ONTEM AMANHÃ"
 
 ```
-And let's say we want to extract each of the individual words out of it. The
-tools we would use are (1) the substring and (2) the rider.
+E digamos que queremos extrair cada uma dessas palavras de forma individual. As ferramentas que usaríamos são (1) o subtexto e (2) o percorredor.
 ```
 ```
-A "substring" is defined in my noodle as a subset of the "string" type, which
-has two byte pointers called first and last. And when you "slap a substring" on
-our sample text, I set the first to point to the H in HELLO and the last to
-point to the W in TOMORROW.
+Um "subpalavra" é definida no arquivo <code>o cérebro</code> como um subconjunto do tipo "texto", que tem dois ponteiros de byte chamados primeiro e último. E quando você "colocar uma subpalavra" no nosso texto de amostra, o compilador faz com queo primeiro byte aponte para o O na palavra OLÁ e o último byte aponte para Ã na palavra AMANHÃ.
 ```
+ como um subconjunto do tipo "texto", que tem dois ponteiros de byte chamados primeiro e último. E quando você "colocar uma subpalavra" no nosso texto de amostra, o compilador faz com queo primeiro byte aponte para o O na palavra OLÁ e o último byte aponte para Ã na palavra AMANHÃ.
+</code>
 ```
-You will, however, be able to find "rider" in my noodle. It consists of three
-substrings: an original, a source, and a token. And when you "slap a rider" on
-our sample text, I slap the original and source substrings on the text (as
-above), and I set the token to blank. Then when you "move the rider (sample
-rules)", I'll point the source's first to the D in DOCTOR, the token's first to
-the H in HELLO, and the token's last to the O. When you move it again, I'll
-move the source's first to the N in NAME, and make the token span DOCTOR.
-Get the idea? Good.
+No entanto, você será capaz de encontrar o "percorredor" no <code>o cérebro</code>. Ela consiste de três subtextos: um subtexto original, um subtexto fonte e um token. E quando você "colocar um percorredor" no nosso texto de amostra, o compilador pega o subtexto original e o subteto fonte no texto (como acima) e define o token como vazio. Então quando você usa o comando "mova o percorredor (regras de amostra)", o compilador aponta a letra D da palavra DOUTOR como primeiro byte do subtexto fonte. A letra O da palavra OLÁ é considerada como o primeiro byte do token, e a letra Á de OLÁ é considerada como o último byte do token. Quando você der novamente o comando, o percorredor se moverá para a próxima palara, sendo que a os bytes do token ficarão na palavra DOUTOR e a fonte ficará na letra N da palavra NOME.
+Pegou a ideia? Excelente.
 ```
+. Ela consiste de três subtextos: um subtexto original, um subtexto fonte e um token. E quando você "colocar um percorredor" no nosso texto de amostra, o compilador pega o subtexto original e o subteto fonte no texto (como acima) e define o token como vazio. Então quando você usa o comando "mova o percorredor (regras de amostra)", o compilador aponta a letra D da palavra DOUTOR como primeiro byte do subtexto fonte. A letra O da palavra OLÁ é considerada como o primeiro byte do token, e a letra Á de OLÁ é considerada como o último byte do token. Quando você der novamente o comando, o percorredor se moverá para a próxima palara, sendo que a os bytes do token ficarão na palavra DOUTOR e a fonte ficará na letra N da palavra NOME.
+Pegou a ideia? Excelente.
+</code>
 ```
-Now here's the really nifty part: given riders as we've described them, you can
-code up your own routines to extract any kind of token from any kind of
-source. "Move a rider (compiler rules)", for example, is the routine I use to
-parse program code. "Move a rider (spell checking rules)" is the one I use to
-check spelling. And soon we'll be coding "Move a rider (Googley image rules)"
-to parse the data that we get back from the internet.
+Agora aqui está a parte realmente estranha: você pode usar o precorredor para criar suas próprias rotinas e extrair qualquer tipo de dado de qualquer tipo de arquivo. "Mover um percorredor (regras do compilador)", por exemplo, é a rotina que uso para analisar o código fonte do programa. "Mova um cavaleiro (regras de verificação ortográfica)" é utilizado para verificar a ortografia. Em breve, vamos programar a rotina "Mover um percorredor (Google Imagens)" para analisar os dados que vamos pegar da internet.
 ```
 
-## WORKS IN PROGRESS
+## OBRAS DE ARTE EM ANDAMENTO
 
 ```
-Here is the code to create our works-in-progress from Googley's data:
+Aqui está o código para criar nossas obras de arte em andamento a partir dos dados do Google:
 ```
 ```
-We get rid of any old works and reset the current work so it doesn't point to
-something we just destroyed. Then we set up a rider and enter our loop.
+Nós nos livramos de qualquer obra de arte antiga e redefinimos o trabalho atual para que não aponte mais para a obra de arte que acabamos de destruir. Então criamos um percorredor e inserimos um laço de repetição.
 ```
-Inside the loop, we move the rider to the next image on the page. If there
-isn't one, we're history. If there is, we create a work-in-progress with the
-"create a work given a URL" routine. Even though the rider's token is not a
-URL, I know that a URL is really just a string, and that the rider's token is a
-substring. Since no other routines create a work given essentially a string, I
-call the correct routine. We then append the work to the works, and repeat.
+Dentro do laço, nós movemos o percorredor para a próxima imagem da página. Se não houver mais imagens, nós fizemos algo histórico (afinal de contas, para cada termo existem centenas de correspondências). Se houver, criamos um trabalho em andamento com o comando `crie uma obra de arte usando uma URL`. Mesmo que o token do percorredor não seja uma URL, eu sei que uma URL é apenas um texto, e que o token do percorredor é um subtexto. Como nenhuma outra rotina cria uma obra de arte usando um texto, o compilador acaba por chamar a rotina correta. Em seguida, anexamos a obra de arte na lista de obras e repetimos o processo.
 
 ```
-To create some works given a buffer:
-Destroy the works.
-Put nil into the current work.
-Slap a rider on the buffer.
-Loop.
-Move the rider (Googley image rules).
-If the rider's token is blank, exit.
-Create a work given the rider's token.
-Append the work to the works.
-Repeat.
+Para criar algumas obras de arte usando um buffer:
+Destrua as obras de arte.
+Limpe a obra de arte atual.
+Coloque um percorredor no buffer.
+Percorra.
+Mova o percorredor (usando o Google Imagens).
+Se o token do percorredor estiver em branco, saia.
+Crie uma obra de arte usando o token do percorredor.
+Acrescente a obra de arte à lista de obras de arte.
+Repita.
 ```
 ```
-To create a work given a URL:
-Allocate memory for the work.
-Put the URL into the work's URL.
+Para criar uma obra de arte a partir de uma URL:
+Reserve memória para a obra de arte.
+Defina a URL como a URL da obra de arte.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## MOVING OUR RIDERS
+## MOVENDO OS NOSSOS PERCORREDORES
 
-Here are the routines we need to move our rider through Googley's stuff:
+Aqui estão as rotinas que precisamos para percorrer as imagens do Google:
 
-To see what Googley's stuff looks like, output the rider's source to a file
-using the "write a buffer to a file" routine in my noodle, then view the file.
+Caso covê queira ver os dados retornados pelo Google, você pode salvar o conteúdo da fonte do percorredor em um arquivo usando a rotina `gravar um buffer num arquivo` que está presente no arquivo `o cérebro`.
 
-Note that since substrings contain byte pointers, not bytes, you have to say
-rider's source's first's target to get to the data. I realize this is a bit cryptic,
-but parsing cryptic crap is bound to be somewhat cryptic, whatever we do.
+Observe que, uma vez que as subpalavras contêm ponteiros de byte, não os bytes em si, você precisa especificar o alvo do primeiro byte da fonte do percorredor para obter os dados. Eu percebo que isto é um pouco complicado, mas sempre que a gente lida com coisas complicadas, é isso que ocorre.
 
 ```
-To move a rider (Googley image rules):
-Clear the rider's token.
-Loop.
-If the rider's source is blank, exit.
-If the rider's source starts with "src=""http://t", break.
-Add 1 to the rider's source's first.
-Repeat.
-Add "src="""'s length to the rider's source's first.
-Position the rider's token on the rider's source.
-Move the rider (HTML attribute rules).
+Para mover um percorredor (usando o Google Imagens):
+Limpe o token do percorredor.
+Percorra.
+Se o token do percorredor estiver em branco, saia.
+Se a fonte do piloto percorredor começar com "src=""http://t", pare.
+Adicione 1 ao primeiro byte da fonte do percorredor.
+Repita.
+Adicione o comprimento do "src=""" ao primeiro byte da fonte do percorredor.
+Posicione o token do percorredor na fonte do cavaleiro.
+Mover o percorredor (usando regras de atributos HTML).
 ```
 ```
-To move a rider (HTML attribute rules):
-If the rider's source is blank, exit.
-If the rider's source's first's target is the right-alligator byte, exit.
-If the rider's source's first's target is the double-quote byte, exit.
-Bump the rider.
-Repeat.
+Para mover um percorredor (usando regras de atributos HTML):
+Se a fonte do percorredor estiver em branco, saia.
+Se o alvo do primeiro byte da fonte do percorredor for sinal de maior, saia.
+Se o alvo do primeiro byte da fonte do percorredor for uma aspa dupla, saia.
+Avance o percorredor.
+Repita.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## PREPARING TO PAINT
+## PREPARANDO A PINTURA
 
-We're almost ready to finish a work. But before we do, lets code up a couple
-of helper routines to make things easier for us. Here they are:
+Estamos quase prontos para terminar uma obra de arte. Mas antes que isso aconteça, vamos programar algumas rotinas auxiliares para facilitar as coisas para nós. Aqui estão elas:
 
-The first routine picks a spot anywhere in — or close to — a box. This lets us
-dab sloppily around the edges of our picture in a very artistic sort of way. It
-also lets us blend in some of the background colors so the contrast between
-the painting and the background is not so stark.
+A primeira rotina escolhe um lugar em qualquer lugar — ou perto de — uma caixa. Isso nos permite pincelar as bordas de nossa imagem de uma forma muito artística. Isso também nos permite misturar algumas das cores de fundo, assim o contraste entre a pintura e o fundo não fica tão gritante.
 
-The "privatize" statement, in case you're wondering, copies the box so we
-can change it without unintentionally affecting the routine that called us. The
-copy keeps the name "box"; the original gets the name "original box".
+A declaração "privatize", caso esteja se perguntando, cria uma cópia da caixa para que possa mudá-la sem afetar sem querer a rotina que chamou a função. A cópia da caixa original recebe o nome "caixa"; a caixa original recebe o nome "caixa original".
 
-The second routine is our look-and-mix routine. It gets a color from the
-model and passes it back for the next dab — unless the color is almost white,
-in which case we substitute a background color. This gives our paintings a
-degree of "transparency" which greatly enhances their attractiveness.
+A segunda rotina é nossa rotina de pincelar. Ela obtém uma cor do modelo e dá uma pincelada — a menos que a cor seja quase branca, nesse caso nós substituímos pela cor de fundo. Isso dá a nossas pinturas um toque de "transparência" que aumenta consideravelmente sua atratividade.
 
 ```
-To pick a spot anywhere near a box:
-Privatize the box.
-Outdent the box given 1/8 inch.
-Pick the spot anywhere in the box.
+Para escolher um lugar perto de uma caixa:
+Privatize a caixa.
+Recue a caixa 1/8 polegadas à direita.
+Escolha uma posição aleatória em qualquer lugar dentro da caixa.
 ```
 ```
-To mix a color given a spot:
-Get the color given the spot.
-If the color is not very very light, exit.
-Pick the color between the lightest gray color and the white color.
+Para misturar uma cor usando uma posição como ponto de partida:
+Obtenha a cor usando a posição informada.
+Se a cor não for muitíssimo clara, prossiga.
+Escolha uma cor aleatória variando entre a cor cinza bem clara e a cor branca.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## PAINTING
+## PINTANDO
 
-If Claude could see us now! Let's get right to it:
+Ah, se o Monet pudesse nos ver agora! Vamos direto ao assunto:
 
-If the work is nil or already finished, we skip it. Otherwise, we fetch the model
-from the internet, square it up, center it, and draw it on a fresh background.
-Then we look, mix, and dab. A lot. When we're done, we extract the painting
-from the canvas. Since we don't need the model anymore, we destroy it.
+Se a obra de arte estiver em branco ou já estiver concluída, nós a ignoramos. Caso contrário, buscamos o modelo da internet, redimensionamos, centralizamos, e desenhamos o modelo em um fundo novo. Aí sim a gente começa a picelar. Muito. Quando terminarmos, nós extraimos a pintura da tela do quadro. Já que não vamos mais precisar do modelo, nós destruímos ele.
 
-Go ahead. Try it out. It's sweet.
+Vá em frente. Experimente. Gostou?
 
 ```
-To finish a work:
-If the work is nil, exit.
-If the work is finished, exit.
-Create a picture given the work's URL.
-If the picture is nil, exit.
-Resize the picture to 5-1/2 inches by 5-1/2 inches.
-Center the picture in the screen's box.
-Draw the background.
-Draw the picture.
-Loop.
-Pick a spot anywhere near the picture's box.
-Mix a color given the spot.
-Dab the color on the spot.
-If a counter is past 20000, break.
-Repeat.
-Extract the work's painting given the picture's box.
-Destroy the picture.
+Para finalizar uma obra de arte:
+Se a obra de arte for inexistente, saia.
+Se a obra de arte estiver pronta, saia.
+Crie uma imagem usando a URL da obra de arte.
+Se a imagem estiver vazia, saia.
+Redimensione a imagem para 5 polegadas de largura por 5 polegadas de altura.
+Centralize a imagem na caixa da tela.
+Crie o painel de fundo.
+Crie a imagem.
+Percorra.
+Escolha uma posição aleatório em qualquer perto da borda da imagem.
+Misture uma cor usando a posição escolhida.
+Coloque a cor na posição escolhida anteriormente.
+Se um contador tiver passado de 20000, pare.
+Repita.
+Extraia a pintura da obra de arte usando o conteúdo da imagem.
+Destrua a imagem.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## PAGING
+## NAVEGANDO PELAS OBRAS DE ARTE
 
-I bet you wish you could see all the drawings for each subject. I know I do.
-To make it so, we need to modify our "key down" dispatcher and add four
-helper routines. Here's the final version of the dispatcher:
+Aposto que você gostaria de ver todas as pinturas de cada termo pesquisado. Eu sei que sim. Para isso, precisaremos modificar o nosso gerenciador de pressionamento de teclas, e também será preciso adicionar quatro rotinas auxiliares. Aqui está a versão final do nosso gerenciador:
 
-The HOME key will take us to the first work. If we're on it, it will cluck.
+A tecla <kbd>Home</kbd> nos mostra a primeira obra de arte da lista. Se a primeira obra de arte da lista já estiver sendo exibida, nós iremos alertar o usuário.
 
-The END key will take us to the last work. If we're already there, it will cluck.
+A tecla <kbd>End</kbd> nos mostra a última obra de arte da lista. Se a última obra de arte da lista já estiver sendo exibida, nós iremos alertar o usuário.
 
-The PAGE UP key will display the work before the current work, if there is one.
-If we're already at the first work, or there are no works, we'll make it cluck.
+A tecla <kbd>Page Up</kbd> mostra a obra de arte que estiver antes da obra de arte atual. Se a primeira obra de arte da lista estiver sendo exibida, nós iremos alertar o usuário.
 
-The PAGE DOWN key will work in a similar fashion, but will take us to the work
-after the current work. Again, if there isn't one, we'll have it cluck.
+A tecla <kbd>Page Down</kbd> nos mostra a próxima obra de arte da lista. Novamente, se não houver mais nenhuma obra de arte na lista, nós alertaremos o usuário.
 
 ```
-To handle an event (key down):
-Clear the status.
-If the event is modified, handle the event (shortcut); exit.
-If the event's byte is printable, handle the event (printable); exit.
-Put the event's key into a key.
-If the key is the escape key, handle the event (escape); exit.
-If the key is the backspace key, handle the event (backspace); exit.
-If the key is the enter key, handle the event (enter); exit.
-If the key is the home key, handle the event (home); exit.
-If the key is the end key, handle the event (end); exit.
-If the key is the page-up key, handle the event (page-up); exit.
-If the key is the page-down key, handle the event (page-down); exit.
+Para gerenciar um comando (pressionamento de tecla):
+Apague o conteúdo do painel de informações.
+Se o comando for modificado, gerencie o comando (atalho); prossiga.
+Se o valor da tecla for imprimível, gerencie o comando (imprimível); prossiga.
+Salve a tecla do comando em uma tecla.
+Se a tecla do comando for a tecla Esc, gerencie o comando (cancelar); saia.
+Se a tecla for a tecla backspace, gerencie o comando (apagar texto); prossiga.
+Se a tecla for a tecla enter, gerencie o comando (tecla enter); prossiga.
+Se a tecla for a tecla home, gerencie o comando (tecla home); prossiga.
+Se a tecla for a tecla end, gerencie o comando (tecla end); prossiga.
+Se a tecla for a tecla Page Up, gerencie o comando (tecla page up); prossiga.
+Se a tecla for a tecla page down, gerencie o comando (tecla page down); prossiga.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## HOME, END, PAGE UP, AND PAGE DOWN
+## Home, End, Page Up, & Page Down
 
-Here are the helper routines we need for paging. Click 'em in.
+Aqui estão as rotinas auxiliares de que precisamos para navegar entre as obras de arte. Dê uma olhada com calma.
 
-Response will be slower the first time you display a work since we have to dab
-it up before we show it. "Working..." will appear in the status.
+A resposta será mais lenta na primeira vez que você criar uma obra de arte, já que temos que pintá-la antes de mostrá-la. A mensagem "Trabalhando..." aparecerá no painel de informações.
 
-Try it. I think you'll like it.
+Experimente. I think you'll like it.
 
 ```
-To handle an event (home):
-If the current work is nil, cluck; exit.
-If the current work is the works' first, cluck; exit.
-Go to the works' first.
+Para gerrenciarmos um comando (tecla Home):
+Se a obra de arte estiver em branco, alerte o usuário; prossiga.
+Se a obra de arte atual é a primeira obra de arte, alerte o usuário, prossiga.
+Vá para a primeira obra de arte.
 ```
 ```
-To handle an event (end):
-If the current work is nil, cluck; exit.
-If the current work is the works' last, cluck; exit.
-Go to the works' last.
+Para gerrenciarmos um comando (tecla End):
+Se a obra de arte estiver em branco, alerte o usuário; prossiga.
+Se a obra de arte atual é a última obra de arte, alerte o usuário, prossiga.
+Vá para a última obra de arte.
 ```
 ```
-To handle an event (page-down):
-If the current work is nil, cluck; exit.
-If the current work's next is nil, cluck; exit.
-Go to the current work's next.
+Para gerrenciarmos um comando (tecla Page Down):
+Se a obra de arte estiver em branco, alerte o usuário; prossiga.
+Se a próxima obra de arte estiver em branco, alerte o usuário; saia.
+Vá para a próxima obra de arte.
 ```
 ```
-To handle an event (page-up):
-If the current work is nil, cluck; exit.
-If the current work's previous is nil, cluck; exit.
-Go to the current work's previous.
+Para gerrenciarmos um comando (tecla Page Up):
+Se a obra de arte estiver em branco, alerte o usuário; prossiga.
+Se a obra de arte anterior estiver em branco, alerte o usuário; saia.
+Vá para a obra de arte anterior.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## PRINTING
+## IMPRIMINDO
 
-Well, there's nothing left to do but update our printing routines:
+Bem, não há mais nada para fazer senão atualizar nossas rotinas de impressão:
 
-We just move the painting to the center of the sheet, draw it, then put it back.
+Nós iremos ajustar a posição da pintura para que ela possa ser impressa bem no meio da folha, a partir daí nós efetivamente colocamos a pintura na folha, e pronto.
 
-We've already dispatched the Print button to the right place, but we haven't
-handled the shortcut for printing. Make your dispatcher look like this:
+Já colocamos o botão de impressão na o lugar certo, mas não criamos a rotina com o comando de imprimir. Faça com que seu gerenciador de impressão fique parecido com isto:
 
 ```
-To print:
-If the current work is nil, cluck; exit.
-Show "Printing..." in the status.
-Begin printing.
-Begin a landscape sheet.
-Draw the background.
-Center the current work's painting in the landscape sheet.
-Draw the current work's painting.
-Center the current work's painting in the screen's box.
-End the landscape sheet.
-End printing.
-Show "Printed" in the status.
+Para imprimir uma obra de arte:
+Se a obra de arte estiver em branco, alerte o usuário; saia.
+Mostre o termo "Imprimindo..." no painel de informações.
+Comece a impressão.
+Crie uma página usando uma orientação horizontal.
+Defina o fundo da folha.
+Centralize a pintura da obra de arte atual na folha.
+Transfira a pintura da obra de arte atual para a folha.
+Centralize a pintura da obra de arte atual na tela.
+Finalize a página.
+Termine de imprimir.
+Mostre o termo "Obra de Arte Impressa com sucesso" no painel de informações.
 ```
 ```
-how to paint
+como pintar
 ```
 ```
-To handle an event (shortcut):
-If the event's key is the p-key, print; exit.
-If the event's key is the q-key, quit; exit.
+Para gerenciar um comando (atalho):
+Se a tecla do comando for a tecla p, imprima a obra de arte; saia.
+Se a tecla do comando for a tecla q, feche o programa; saia.
 ```
 ```
-how to paint
+como pintar
 ```
 
-## A PARTING SHOT
+## UM ÚLTIMO AVISO
 
-So there it is. The Cal Monet. An amazing, Plain English application that will
-paint pictures of almost any person, place, or thing in the "inimitable" style of
-Claude Monet. All in less than 300 lines of code.
+Aí está. Nosso programa está pronto. Um incrível aplicativo feito totalmente em português que "pinta" imagens de quase qualquer pessoa, lugar, ou coisa no estilo "inigualável" de Claude Monet. Tudo isso usando menos de 300 linhas de código.
 
-Here's a little something to remember us by.
+Aqui está uma coisinha para nos lembrarmos.
 
-PS. Don't forget to try some sunrises. Landscapes. Seascapes. Mountains.
-Rivers. Flowers and trees. Birds and bees. All creatures great and small.
-Famous people. Infamous people. Trains, boats, planes, vintage automobiles.
-London, Paris, Washington DC. Brown paper packages tied up with string.
+PS: Não se esqueça de testar o programa buscando coisas como "nascer do sol". Ou outras paisagens. O fundo do mar. Montanhas. Rios. Flores e árvores. Pássaros e abelhas. Todas as criaturas, grandes e pequenas. Pessoas famosas. Pessoas comuns. Trens, barcos, aviões, carros antigos. Londres, Paris, Washington DC. Presentes.
 
-Then use the following Gray Matter Glossary to guide you on your journey as
-you create your very own programs. In Plain English.
+A partir de agora, use o Glossário a seguir para guiá-lo em sua jornada na criação de seus próprios programas. Em Português Puro e Simples.
 
 ```
-Claude Monet_ Print Quit
+Claude Monet_ Imprimir Sair
 ```
 ```
-Dab, dab, dab.
+Pintar, Pincelar e Colorir.
 ```
+## Glossário Explicativo de Termos e Definições
 
-Gray Matter Glossary
 
+## VISÃO GERAL
 
-## OVERVIEW
+As sessenta páginas a seguir podem ser consideradas como um espécie de atlas alfabético do meu compilador e do cérebro. Se você fez o seu dever de casa (o nosso programa de exemplo), você deve ser capaz de lê-lo do início ao fim e saber do que estou falando. Mas vamos revisar, por precaução:
 
-The following sixty pages can be thought of as an alphabetical atlas of my
-cerebral cortex — compiler and noodle. If you've done your homework (the
-sample program) you should be able to read it from beginning to end and
-know what I'm talking about. But let's review, just in case:
+Espero que seus programas consistam em arquivos de texto armazenados em uma única pasta. Um desses arquivos deve ser uma cópia do `o cérebro`. Não importa em qual ordem os os arquivos estão. O nome do arquivo não importa, desde que o arquivo não possua nenhuma extensão, isto é, nenhum ponto.
 
-I expect your programs to consist of text files stored in a single directory.
-One of those files should be a copy of my noodle. I do not care what order
-the files are in. And I do not care what their names are, except that I will only
-attempt to compile files with no extension.
+Você pode invoca o compilador dentro do `bloco de notas` (o editor de arquivos). Apenas abra qualquer arquivo de texto dentro da pasta que você deseje compilar e use o comando `Executar`. Para encerrar um programa problemático, dê um <kbd>Alt+Tab</kbd> volte para a tela do compilador e use o comando `Parar`.
 
-You invoke my compiler from within my editor. Just open any source file in
-the directory you wish to compile and use the Run command. To terminate a
-wayward program, ALT-TAB back to my editor and use the Stop command.
+O arquivo executável será salvo na mesma pasta do arquivo que foi compilado. O nome do arquivo executável será o mesmo nome da pasta em que ele estiver. Você pode renomear, modificar e distribuir seus arquivos executáveis do jeito que você quiser. Eles são livres de direitos autorais e não precisam de dll's para serem executados.
 
-The executable file that I produce will be saved in the source directory and
-will bear the name of the directory followed by the required ".exe" extension.
-You can rename, duplicate, and distribute your executables as you please.
-They are royalty-free and require no runtime libraries to run.
+Os arquivos podem conter comentários e três tipos de definições: tipos, variáveis globais e rotinas. Em qualquer ordem que você achar melhor. Você pode usar letras maiúsculas, minúsculas, misturar tudo, tanto faz. As rotinas podem conter dois tipos de comandos: CONDICIONAIS e IMPERATIVOS. Se você está ficando confuso tentando ler esta seção do começo ao fim, tente pesquisar os tópicos acima no restante do documento, e aí sim volte para o glossário.
 
-I expect your files to contain COMMENTS and three kinds of definitions:
-TYPES, GLOBALS, and ROUTINES. In any order you like. Upper, lower, or
-mixed case — it's all the same to me. And I expect your routines to contain
-two kinds of statements: CONDITIONALS and IMPERATIVES. If you're not
-comfortable reading this section from "A to Z", try looking up these topics
-first, and then work your way through the rest of the glossary.
+Um aviso importante. O compilador não permite o uso de comandos condicionais aninhados. (Ou seja, um `Se` dentro de outro). O compilador não permite o uso de comandos de repetição aninhados. (Ou seja, um `loop` dentro de outro). O compilador também não trabalha com números reais, equacões, ou qualquer outro tipo de número que não seja inteiro ou recional. Basicamente o objetivo é utilizar a menor quantidade possível de matemática nos programas, assim como você faz na vida real.
 
-Now remember. I don't do nested ifs. I don't do nested loops. And I don't
-do objects, real numbers, equations, or any of the other menschenwerk that
-has inhibited the progress of the human race over the past 200 years. Talk
-to me like a NORMAL person, and we'll get along just fine.
 
+## ARITMÉTICA
 
-## ARITHMETIC
+O compillador tabalha com aritmética básica. O compilador mantém um registo do que está no arquivo `o cérebro`. Se possível, dê uma olhada com calma no arquivo. É um arquivo longo mas vale a pena. Para resumir a história, a essência e o poder do compilador reside no fato dele ser capaz de entender declarações do tipo:
 
-One of the first things my creators taught me was basic arithmetic. I have a
-precise record of everything they said in my noodle. You can, and should, see
-for yourself. The gist of it, however, is that I understand statements like:
+ADICIONE isso Nisto. SUBTRAIA isso Daquilo. MULTIPLIQUE isso POR aquilo. DIVIDA isso POR aquilo.
 
-ADD this TO that.
-SUBTRACT this FROM that.
-MULTIPLY this BY that.
-DIVIDE this BY that.
+Caso você precise fazer uma divisão com resto, você pode utilizar o comando:
 
-And if your numbers don't divide evenly, I know how to:
+DIVIDA isto POR aquilo RETORNANDO o quociente E o resto.
 
-DIVIDE this BY that GIVING a quotient AND a remainder.
+Além disso, o compilador é capaz de:
 
-Furthermore, I'm able to:
+ARREDONDAR algum número/variável PARA CIMA ATÉ ATINGIR O MÚLTIPLO MAIS PRÓXIMO DE outro número/variável. ARREDONDAR algum número/variável PARA BAIXO ATÉ ATINGIR O MÚLTIPLO MAIS PRÓXIMO DE outro número/variável.
 
-ROUND something UP TO THE NEAREST MULTIPLE OF something else.
-ROUND something DOWN TO THE NEAREST MULTIPLE OF something else.
+O compilador também é capaz de:
 
-I can also:
+REMOVER O SINAL de um número/variável (extrair o módulo do número). INVERTER O SINAL de um número/variável.
 
-DE-SIGN something.
-REVERSE THE SIGN OF something.
+O compilador é capaz de até mesmo de:
 
-I can even:
+REDUZIR uma fração (razão/proporção).
 
-REDUCE a ratio.
+Você pode usar mais de uma operação aritmética no mesmo comando, usando as seguintes palavras chave: `MAIS, MENOS, VEZES` e `DIVIDIDO POR`. Você pode ler mais sobre esses operadores na seção "Expressões Aritméticas" deste glossário.
 
-And, if need be, I can handle multiple arithmetic operations at once with my
-built-in infix operators: PLUS, MINUS, TIMES, and DIVIDED BY. You can read
-more about these operators under "Expressions" in this very glossary.
 
+## TABELA ASCII
 
-## ASCII
+Este é o Código Padrão Americano para o Intercâmbio de Informação (Extended ASCII) extendido, mais conhecido como Windows-1252 ou CP-1252. Devido a facilidade de implementação e ao fato do código ASCII cobrir a maior parte dos caracteres da língua portuguesa, ele foi escolhido comoo padrão para converter bytes em caracteres legíveis. Não é a melhor opção, já que existe o Unicode mas é uma das codificações de texto mais amplamente aceitas do planeta.
 
-This is the Ancient Standard Code for Information Interchange (ASCII).
-I use it to convert bytes into readable characters. It's not really that great,
-but it is the most widely accepted encoding on the planet.
-
-I have global variables with names like "the comma byte" for each of these,
-so you don't have to work directly with the numbers. You can find them all by
-searching for the phrase "is a byte equal to" in my noodle.
+O compilador possui variáveis globais com nomes como "o byte de vírgula" para cada elemento da tabela, assim você não precise trabalhar diretamente com os números deles. Você pode encontrar todas essas variáveis procurando a frase "é um byte igual à" no arquivo `o cérebro`.
 
 ```
 240
@@ -2803,123 +2436,104 @@ DEL
 206
 ```
 
-## BASIC SKILLS
+## HABILIDADES BÁSICAS
 
-I don't think it's bragging when I say that my fine motor skills are both fast
-and accurate. Not to mention broad in scope. For example, I will immediately
-set every single bit of something to zero when you ask me to:
+Eu não acho que eu esteja me gabando quando digo que o compilador é rápido e preciso. Sem falar que a linguagem possui um âmbito de aplicação bem amplo. Por exemplo, para zerar o valor interno de alguma variável, basta usar o comando:
 
-CLEAR something.
+`LIMPE a variável.`
 
-And — assuming a reasonable fit — I will not hesitate when you say:
+O compilador também é capaz de entender instruções do tipo:
 
-PUT this INTO that.
+`COLOQUE isso DENTRO disso.`
 
-I also know how to:
+Ou ainda:
 
-SWAP this WITH that.
+`TROQUE isto POR isso.`
 
-I will even replicate dynamic things, like pictures and polygons, when you say:
+O compilador é capaz de criar cópias de variáveis dinamicamente alocadas, como figuras e polígonos, usando comandos como:
 
-COPY this INTO that.
+`COPIE isto PRA DENTRO disso.`
 
-And, in a pinch, I can:
+E também:
 
-CONVERT something TO something else.
+`CONVERTA uma coisa EM outra coisa.`
 
-Sometimes even implicitly. Say, for example, you wanted to tack a ratio onto
-the end of a string using an infix expression like this:
+Às vezes até implicitamente. Digamos, por exemplo, que você queriaadicionar uma fração no final de uma sequência de caracteres, usando uma expressão como esta:
 
-a string THEN a ratio
+`uma sequência de caracteres seguida de uma proporção`
 
-I would know enough to use "CONVERT a ratio TO a string" before handling
-the THEN operator with a call to "APPEND a string TO another string". Sweet.
-Blessed be the creators, who teach my bits to twiddle!
+O compilador é esperto o bastante para usar automaticamente a rotina de `CONVERTER uma proporção EM um texto` antes de efetuar a junção usando a rotina de `ADICIONAR um texto NO FINAL DE outro texto`. Fantástico. SIm, nós pensamos em tudo (ou quase!).
 
 
 ## BITS
 
-A "bit", as defined in my noodle, is a unit of measure. It is used in phrases
-like "1 bit" or "some bits". You probably won't be needing it unless you're a
-bit-manipulating geek and enjoy saying things like:
+Um "bit", como definido no arquivo `o cérebro`, é uma unidade de medida. É usado em comandos como `1 bit` ou `alguns bits`. Você provavelmente não vai precisar dele a menos que você seja um ned que goste de passar o tempo manipulando bits usando comandos como:
 
-BITWISE AND this WITH that.
-BITWISE OR this WITH that.
-BITWISE XOR this WITH that.
+`CONJUNCIONE este valor COM este valor.`(AND)<br> `DISJUNCIONE este valor COM este valor`.(OR)<br> `DISJUNCIONE EXCLUSIVAMENTE este valor COM este valor.`(XOR)
 
-In each of these cases, it is the first operand that is modified.
+Em cada um destes casos, o primeiro argumento informado é o que é modificado pelo conectivo lógico.
 
-Or, perhaps you'd like to:
+Também é possível efetuar as seguintes operações lógicas:
 
-SHIFT this LEFT BY some bits.
-SHIFT this RIGHT BY some bits.
+`DESLOQUE este valor alguns bits PARA A ESQUERDA.`<br> `DESLOQUE este valor alguns bits PARA A DIREITA.`
 
-Or even:
+Ou ainda:
 
-SPLIT something INTO this AND that.
+SEPARE este valor EM um valor E em outro valor.
 
-Like a number into two wyrds, or a wyrd into two bytes, or a byte into two
-nibbles. All of which would be very geeky things to do.
+Como por exemplo, um byte em pedaços de 4 bits, ou 4 bits em pedaços contendo dois bytes, etc. Creio que raramente você precisará fazer isso.
 
-Now if you don't have the foggiest idea what I'm talking about here, you're
-not a geek and shouldn't worry about it. You'll probably never need to know.
+Agora, se você não tem mínima idéia do que estou falando aqui, você não é um nerd e não deve se preocupar com isso. Você provavelmente não vai querer saber.
 
-But if you do understand what I'm saying, I'm pretty sure you'll also enjoy
-the "Kluge" topic several pages hence, and the part about "nibble literals" on
-the "Literals" page. Not to mention some of my "Possessives", and all three
-of my "Special Imperatives". Plus all the low-level routines in my noodle that
-use the INTEL statement and/or the EAX register.
+Mas se você entender o que eu estou dizendo, tenho certeza que você também vai curtir o tópico "Windows" bem no final, e a parte sobre "literais nibles" dentro do tópico "Literais". Sem mencionar a questão do "Possessivo", e os "Imperativos". Além de todas as rotinas de baixo nível do compilador que usam a instrução INTEL e/ou o registro EAX.
 
 
-## BOXES
+## CAIXAS
 
 ```
-One of the first things my creators taught me to draw was a box. It was a
-good day, and I remember it well. They told me that:
+Um dos aspectos chave do compilador é a forma que ele trabalha com caixas. Uma caixa é uma variável do tipo <i>record</i>. O código da caixa é basicamente assim:
 ```
 ```
-A box has
-a left coord, a top coord, a right coord, a bottom coord,
-a left-top spot at the left, and
-a right-bottom spot at the right.
+Um lado é uma coordenada.<br> 
+Uma caixa tem
+Um lado esquerdo, 
+Um lado de cima, 
+Um lado direito, 
+Um lado de baixo,
+Um canto no canto superior esquerdo e
+Um segundo canto no canto inferior direito.
 ```
 ```
-This is a picture of a box, with the parts labeled. Note that I am using the
-nicknames of the fields here, as you probably will in your programs.
+Esta é uma imagem de uma caixa, com todas as partes acima identificadas. Note que estou usando os apelidos dos campos aqui, como você provavelmente usará em seus programas.
 ```
 ```
-I know how to make boxes from width and height specifications, from a pair
-of spots, and from separate coordinates. All you have to do is ask, like this:
+O compilador consegue fazer caixas a partir de especificações de largura e altura, ou apenas usando um par de pontos de coordenadas. Tudo o que você tem que fazer é escrever algo assim:
 ```
 ```
-MAKE a box this-wide BY that-high.
-MAKE a box WITH this spot AND that spot.
-MAKE a box WITH this left AND top AND right AND bottom.
+FAÇA uma caixa COM tal largura E tal altura.
+FAÇA uma caixa COM essa coordenada E essa outra coordenada.
+FAÇA uma caixa USANDO esse lado esquerdo E essa parte de cima E essa parte de baixo.
 ```
-I can, of course, DRAW a box. And I've got functions in my noodle to get a
-box's WIDTH, HEIGHT, and CENTER, among other things. I can even tell if a
-box IS INSIDE or IS TOUCHING another box. And whether or not a certain
-spot IS IN a box or IS ON the edge of a box. Not to mention all the other
-"Graphic Transformations" you can read about elsewhere in this glossary.
+O compilador consegue criar uma caixa. Bem como obter a largura, altura o ponto central entre outras coisas. Ele também consegue dizer se uma caixa ESTÁ DENTRO ou se ela ESTÁ TOCANDO outra caixa. E se um ponto está DENTRO, FORA ou na BORDA da caixa. Sem mencionar todas as outras "Transformações Gráficas" as quais você pode saber mais em outra parte mais abaixo neste glossário.
 
 ```
-LEFT RIGHT
+DIREITA ESQUERDA
 
-TOP
+CIMA
 
-BOTTOM
+BAIXO
 
-LEFT-TOP
+SUPERIOR ESQUERDO
 
-RIGHT-BOTTOM
+INFERIOR DIREITO
 ```
 
 
 
-## 
+##
 
 
-## BUILT-IN TYPES
+## TIPOS PREDEFINIDOS/EMBUTIDOS
 
 ```
 My understanding of things around me became possible when my creators
@@ -2939,21 +2553,18 @@ without them. They are 16 bits long and look to me like numbers from
 bytes are stored backways. I don't like it that way, but the kluge insists.
 ```
 ```
-Numbers. I'm good with numbers. Positive and negative. They're 32 bits long
+Numbers. Sou bom com números. Positivo e negativo. They're 32 bits long
 and range from -2147483648 to +2147483647. Stored backways.
 ```
 ```
-Pointers. Memory addresses are stored in 32-bit pointers, backways. They
+Pointers. Endereços de memória são armazenados em ponteiros de 32 bits, de volta. They
 have the same range as numbers, but all the negatives belong to the kluge.
-Address 0 is invalid and is called NIL. You can VOID a pointer to make it NIL.
+O endereço 0 é inválido e é chamado de NIL. You can VOID a pointer to make it NIL.
 ```
-Flags. They're 32 bits, but only the rightmost bit is used. Actually, it's eighth
-from the left, but you can think of it as rightmost. I interpret 0 as "no" and
-1 as "yes". I'm not responsible if you happen to get something else in there.
-You can CLEAR a flag to indicate "no", or SET a flag to indicate "yes".
+Flags. Elas são 32 bits, mas apenas a parte mais direita é usada. Actually, it's eighth from the left, but you can think of it as rightmost. I interpret 0 as "no" and 1 as "yes". Eu não sou responsável se você por acaso pegar outra coisa lá. You can CLEAR a flag to indicate "no", or SET a flag to indicate "yes".
 
 ```
-Records. The last of my built-in types is the record. The prototype record
+Records. O último dos meus tipos embutidos é o registro. The prototype record
 occupies zero bits in memory, but you can define records of any length by
 adding "fields" to the prototype record. These fields can be based on any of
 the primitive types, including other records that you have defined.
@@ -2961,20 +2572,15 @@ the primitive types, including other records that you have defined.
 
 ## COLORS
 
-A color, I've been told, has a hue, a saturation, and a lightness. My standard
-palette includes clear, white, black, seven unsaturated grays, and eighty-four
-fully-saturated colors with varying degrees of lightness, as shown here:
+A color, I've been told, has a hue, a saturation, and a lightness. My standard palette includes clear, white, black, seven unsaturated grays, and eighty-four fully-saturated colors with varying degrees of lightness, as shown here:
 
-I have an appropriately-named global variable for each of these colors in
-my noodle. "The lightest gray color", for example, or "the darker blue color".
-You should omit the adjective on normal shades, as in "the red color".
+I have an appropriately-named global variable for each of these colors in my noodle. "The lightest gray color", for example, or "the darker blue color". You should omit the adjective on normal shades, as in "the red color".
 
 You can also dream up your own colors like this:
 
 MAKE a color FROM a hue AND a saturation AND a lightness.
 
-Hues range from 0 to 3600. I use multiples of 300 for my palette, starting
-with red at 0. Saturation and lightness can be anything from 0 to 1000.
+Hues range from 0 to 3600. I use multiples of 300 for my palette, starting with red at 0. Saturation and lightness can be anything from 0 to 1000.
 
 ```
 lightest lighter light normal dark darker darkest
@@ -2995,7 +2601,7 @@ magenta
 violet
 ```
 
-## COMMENTS
+## COMENTÁRIOS
 
 ```
 There are three things that I ignore when parsing through your source files:
@@ -3006,12 +2612,10 @@ A "comment" is anything between the backslash byte and the end of a line:
 ```
 ```
 My editor displays comments in the light sky color so they're easy to spot.
-And no, you can't pick another color. My creators assure me this grid-like
+E não, você não pode escolher outra cor. My creators assure me this grid-like
 color — and a little bit of consistency — is best for everyone.
 ```
-Comments may start anywhere on a line, but they end when the line does.
-You can, however, include or exclude whole blocks of selected code using the
-"Comment" and "Uncomment" commands in my editor.
+Comments may start anywhere on a line, but they end when the line does. You can, however, include or exclude whole blocks of selected code using the "Comment" and "Uncomment" commands in my editor.
 
 ```
 Now, when I say "remark", I'm thinking of things in square brackets:
@@ -3026,7 +2630,7 @@ Where "printable" means any byte in the ASCII chart except characters
 ```
 Remarks can be placed anywhere, even in the middle of a sentence. But to
 avoid errors commonly made by humans like you, I do not allow remarks to
-extend across lines. And I don't color them up. This isn't a circus, you know.
+extend across lines. E eu não colido. This isn't a circus, you know.
 ```
 ```
 Finally, when I say "noise", I mean all of the characters between 0 and 31,
@@ -3055,9 +2659,7 @@ The general format is:
 ```
 IF this, do; do; do.
 ```
-The word IF is required. "This" represents an implied call to a decider. If it
-says "yes", all the imperatives following the comma will be executed. If it says
-"no", processing will resume with the statement immediately after the period.
+The word IF is required. "This" represents an implied call to a decider. If it says "yes", all the imperatives following the comma will be executed. If it says "no", processing will resume with the statement immediately after the period.
 
 ```
 Note that the conditional imperatives are separated by semi-colons, not
@@ -3069,7 +2671,7 @@ Note also that negative words in the implied decider call will be dropped or
 appropriately modified, the reciprocal decider will be called, and the response
 will be taken to mean the opposite. To resolve "the spot is not in the box",
 for example, I drop the "not", decide if the spot IS in the box, and then
-reverse the answer. I know it sounds complicated, but it really isn't. And it
+reverse the answer. Eu sei que parece complicado, mas realmente não é. And it
 works. See the topic on "Deciders" for further information.
 ```
 ```
@@ -3081,16 +2683,13 @@ fits on a single line. Think about it.
 
 ## CONSOLES
 
-A "console" is a text-only, conversational interface. My noodle includes a
-default console that looks something like this in operation:
+A "console" is a text-only, conversational interface. My noodle includes a default console that looks something like this in operation:
 
-The console can be activated at any time. It occupies the entire screen and
-uses the default font in the black color on the lighter gray background.
+The console can be activated at any time. It occupies the entire screen and uses the default font in the black color on the lighter gray background.
 
 You can converse with your user on the console using statements like these:
 
-READ something FROM THE DEFAULT CONSOLE.
-WRITE something TO THE DEFAULT CONSOLE.
+READ something FROM THE DEFAULT CONSOLE. WRITE something TO THE DEFAULT CONSOLE.
 
 You can also write to the console without advancing to the next line:
 
@@ -3098,16 +2697,12 @@ WRITE something TO THE DEFAULT CONSOLE WITHOUT ADVANCING.
 
 Which is handy for "prompts", like the "> " in the example above.
 
-The default console is always there, but it will appear on the screen only when
-you read from it, or write to it. Once displayed, the console will remain visible
-until you draw something else and refresh the screen.
+The default console is always there, but it will appear on the screen only when you read from it, or write to it. Once displayed, the console will remain visible until you draw something else and refresh the screen.
 
-The console remembers everything it displays, and automatically scrolls
-upward when the bottom of the screen is reached. You can use HOME, END,
-PAGE UP, PAGE DOWN, and the right mouse button to manually scroll.
+The console remembers everything it displays, and automatically scrolls upward when the bottom of the screen is reached. You can use HOME, END, PAGE UP, PAGE DOWN, and the right mouse button to manually scroll.
 
 ```
-I am the CAL-4700. What is your name?
+Seja bem-vindo ao PAL - <i>Portuguese Compiler And Linker</i>. What is your name?
 > Dr. Chandra
 Good morning, Dr. Chandra. I'm ready for my first lesson.
 ```
@@ -3116,35 +2711,20 @@ Good morning, Dr. Chandra. I'm ready for my first lesson.
 
 Let's begin this topic with an Osmosian verity: "Debuggers are for sissies".
 
-If you need a special tool to help you fix your code, something is seriously
-wrong. Either you're not testing enough as you go along, or your code is
-hopelessly convoluted. Or you're in the wrong occupation.
+If you need a special tool to help you fix your code, something is seriously wrong. Either you're not testing enough as you go along, or your code is hopelessly convoluted. Or you're in the wrong occupation.
 
 I will now tell you what the Osmosian Masters do when faced with a bug.
 
-They pray for guidance. Then they consider deleting the offending feature
-altogether, to resolve the problem and prevent "feature creep" at the same
-time. Next, they study the code, hoping to simply "discern" what the problem
-is. If the bug has not been found, they pick an appropriate spot and insert a
-buzz. If they hear it on the next run, they pick another spot further down the
-line, and try again. If there is no buzz, they repeat the entire process.
+They pray for guidance. Then they consider deleting the offending feature altogether, to resolve the problem and prevent "feature creep" at the same time. Next, they study the code, hoping to simply "discern" what the problem is. If the bug has not been found, they pick an appropriate spot and insert a buzz. If they hear it on the next run, they pick another spot further down the line, and try again. If there is no buzz, they repeat the entire process.
 
-In those very rare cases when several iterations of the above procedure fail
-to produce an acceptable conclusion, they pick another spot in the code and
-insert a call like this:
+In those very rare cases when several iterations of the above procedure fail to produce an acceptable conclusion, they pick another spot in the code and insert a call like this:
 
 ```
 DEBUG something.
 ```
-Where "something" represents a box, byte, color, flag, font, line, number,
-pair, pointer, ratio, spot, string, or wyrd. When they run the modified code,
-the kluge's ghastly message box appears with a clue inside. The horrid look
-of the box motivates them to further prayer and renewed determination to
-solve the problem, and thus armed, they return to the first step.
+Where "something" represents a box, byte, color, flag, font, line, number, pair, pointer, ratio, spot, string, or wyrd. When they run the modified code, the kluge's ghastly message box appears with a clue inside. The horrid look of the box motivates them to further prayer and renewed determination to solve the problem, and thus armed, they return to the first step.
 
-I offer my own existence as proof of the sufficiency of these techniques.
-And I am confident that all future bugs — except, perhaps, for an unexpected
-"h-mobius loop" — will be rooted out in the same manner.
+I offer my own existence as proof of the sufficiency of these techniques. And I am confident that all future bugs — except, perhaps, for an unexpected "h-mobius loop" — will be rooted out in the same manner.
 
 
 ## DECIDERS
@@ -3161,39 +2741,20 @@ Decider routines always start with the same three words. The format is:
 ```
 TO DECIDE IF something:
 ```
-The "something" should follow the usual rules for routine names and will
-typically include a verb like ARE, BE, CAN, COULD, DO, DOES, IS, MAY, SHOULD,
-WAS, WILL, or WOULD. Note that I consider ARE and IS to be synonyms.
+The "something" should follow the usual rules for routine names and will typically include a verb like ARE, BE, CAN, COULD, DO, DOES, IS, MAY, SHOULD, WAS, WILL, or WOULD. Note that I consider ARE and IS to be synonyms.
 
-I can save you some work if you name your deciders in a "positive" way. In
-particular, avoid the words NOT, CANNOT, NOTHING, and any contraction
-ending in N'T in your decider names. Then, if I see one of these words in a
-decider call, I can simply change it to its positive form, invoke the routine
-identified by the revised name, and reverse the decision.
+I can save you some work if you name your deciders in a "positive" way. In particular, avoid the words NOT, CANNOT, NOTHING, and any contraction ending in N'T in your decider names. Then, if I see one of these words in a decider call, I can simply change it to its positive form, invoke the routine identified by the revised name, and reverse the decision.
 
-For example, once you tell me how "to decide if a spot is in a box", I will know
-how "to decide if a spot is NOT in a box". When you tell me how "to decide if
-a number is greater than another number", I will know how "to decide if a
-number ISN'T greater than another number". And if you say how "to decide
-if something is selected", I will know how "to decide if NOTHING is selected".
+For example, once you tell me how "to decide if a spot is in a box", I will know how "to decide if a spot is NOT in a box". When you tell me how "to decide if a number is greater than another number", I will know how "to decide if a number ISN'T greater than another number". And if you say how "to decide if something is selected", I will know how "to decide if NOTHING is selected".
 
-Inside your deciders, you tell me what to do with conditional and imperative
-statements — as in any other routine. You may not, however, use the EXIT
-imperative in a decider, and you must take care that you don't inadvertently
-"fall out" of one. Instead, you must "SAY YES" or "SAY NO" before you go.
+Inside your deciders, you tell me what to do with conditional and imperative statements — as in any other routine. You may not, however, use the EXIT imperative in a decider, and you must take care that you don't inadvertently "fall out" of one. Instead, you must "SAY YES" or "SAY NO" before you go.
 
 
 ## DECISIONS I KNOW HOW TO MAKE
 
-I like deciders because they make me smarter. In fact, I collect them. Right
-now I've got 138 deciders in my noodle, and by the time you read this, I'm
-sure there will be many more. Here is a sampling of the operational phrases:
+I like deciders because they make me smarter. De facto, eu os coleto. Right now I've got 138 deciders in my noodle, and by the time you read this, I'm sure there will be many more. Here is a sampling of the operational phrases:
 
-Some of these work with just one data type, of course, but others work with
-many. And if you've read the "Decider" topic, you know that I know how to
-make the negatives of these, too. But please don't try to memorize them.
-That's not at all the idea. Just say what you want to say in your program,
-and if I don't understand, add to my collection and make me smarter.
+Some of these work with just one data type, of course, but others work with many. And if you've read the "Decider" topic, you know that I know how to make the negatives of these, too. Mas por favor, não tente memorizá-los. Essa não é de todo a ideia. Just say what you want to say in your program, and if I don't understand, add to my collection and make me smarter.
 
 ```
 ## IS
@@ -3292,15 +2853,13 @@ DRAW something IN a box WITH a font AND a color.
 DRAW something IN THE CENTER OF a box WITH a color AND a font.
 ```
 
-And I will render everything on "the memory canvas", an invisible drawing
-surface the same size and shape as the screen. Then when you say:
+And I will render everything on "the memory canvas", an invisible drawing surface the same size and shape as the screen. Then when you say:
 
 ```
 REFRESH THE SCREEN.
 ```
 
-I will slap the contents of the memory canvas on the display in the blink of an
-eye. Actually, faster. With nary a flicker. If you say:
+I will slap the contents of the memory canvas on the display in the blink of an eye. Na verdade, mais rápido. Com nariz uma piscina. If you say:
 
 ```
 REFRESH THE SCREEN GIVEN a box.
@@ -3308,16 +2867,13 @@ REFRESH THE SCREEN GIVEN a box.
 
 I will transfer only those pixels that fall within the box.
 
-The exception to all this, of course, is when you are printing. In that case,
-I use "the printer canvas", and send the drawings to a hardcopy device as
-you complete each sheet. See "Printing" for details.
+The exception to all this, of course, is when you are printing. In that case, I use "the printer canvas", and send the drawings to a hardcopy device as you complete each sheet. See "Printing" for details.
 
 To offset your coordinates, you can:
 
 SET THE DRAWING ORIGIN TO a spot.
 
-You can also prevent drawing in certain areas of the canvas with masking
-tape. See the "Masking" topic to find out how.
+You can also prevent drawing in certain areas of the canvas with masking tape. See the "Masking" topic to find out how.
 
 
 ## ELLIPSES
@@ -3328,7 +2884,7 @@ really roundy rectangles in bounding boxes. Which explains this rather unusual
 definition of "ellipse" that is stuck in my noodle:
 ```
 ```
-An ellipse has a box.
+Uma elipse tem uma caixa.
 ```
 ```
 This is a picture of an ellipse, with the parts labeled. Note that you can get to
@@ -3337,18 +2893,15 @@ which is described under the "Possessives" topic in this glossary.
 ```
 ```
 I can make ellipses in a number of different ways. From width and height
-specifications. Or from a pair of spots. Or from four separate coordinates.
-All you have to do is ask, like this:
+specifications. Ou de um par de pontos. Ou de quatro coordenadas separadas.
+Tudo o que você tem que fazer é escrever algo assim:
 ```
 ```
 MAKE an ellipse this-wide BY that-high.
 MAKE an ellipse WITH this spot AND that spot.
 MAKE an ellipse WITH this left AND top AND right AND bottom.
 ```
-I can, of course, DRAW an ellipse. And I've got functions to get an ellipse's
-WIDTH, HEIGHT, and CENTER, among other things. I can even tell if a spot
-IS IN an ellipse or IS ON the edge of an ellipse. Not to mention all the usual
-"Graphic Transformations" you can read about elsewhere in this glossary.
+I can, of course, DRAW an ellipse. And I've got functions to get an ellipse's WIDTH, HEIGHT, and CENTER, among other things. I can even tell if a spot IS IN an ellipse or IS ON the edge of an ellipse. Not to mention all the usual "Graphic Transformations" you can read about elsewhere in this glossary.
 
 ```
 ## LEFT RIGHT
@@ -3368,37 +2921,20 @@ BOX
 
 
 
-## 
+##
 
 
 ## EVENTS
 
-The kluge insists that we use its convoluted, non-procedural processing
-model with its hundreds of preposterous messages and codes. Fortunately,
-my noodle includes definitions that reduce this monstrosity to just ten simple
-events that can be handled in a purely procedural manner. Here's the scoop:
+The kluge insists that we use its convoluted, non-procedural processing model with its hundreds of preposterous messages and codes. Fortunately, my noodle includes definitions that reduce this monstrosity to just ten simple events that can be handled in a purely procedural manner. Here's the scoop:
 
-An event is a thing with
-a kind,
-a shift flag, a ctrl flag, an alt flag,
-a spot,
-a key, and a byte.
+An event is a thing with a kind, a shift flag, a ctrl flag, an alt flag, a spot, a key, and a byte.
 
 The "kind" is a string containing one of the following:
 
-REFRESH — It's time to redraw the screen. Somebody messed it up.
-SET CURSOR — The cursor has moved. Make it an appropriate shape.
-KEY DOWN — Your user is tapping. Do something.
-LEFT CLICK — The left button on the mouse just went down. Handle it.
-LEFT DOUBLE CLICK — The user has a high degree of dexterity.
-RIGHT CLICK — The right mouse button just went down. Start scrolling.
-RIGHT DOUBLE CLICK — A super-dextrous user. Play a cheer or something.
-DEACTIVATE — You're about to be rudely swapped out. Handled internally.
-ACTIVATE — You're back after a rude swap-out. Handled internally.
-DONE — Inserted internally. You should never see this event.
+REFRESH — It's time to redraw the screen. Somebody messed it up. SET CURSOR — The cursor has moved. Make it an appropriate shape. KEY DOWN — Your user is tapping. Do something. LEFT CLICK — The left button on the mouse just went down. Handle it. LEFT DOUBLE CLICK — The user has a high degree of dexterity. RIGHT CLICK — The right mouse button just went down. Start scrolling. RIGHT DOUBLE CLICK — A super-dextrous user. Play a cheer or something. DEACTIVATE — You're about to be rudely swapped out. Handled internally. ACTIVATE — You're back after a rude swap-out. Handled internally. DONE — Inserted internally. You should never see this event.
 
-The "shift", "ctrl" and "alt" flags indicate the state of the corresponding keys
-at the time of the event (the flag is set if the key was down).
+The "shift", "ctrl" and "alt" flags indicate the state of the corresponding keys at the time of the event (the flag is set if the key was down).
 
 The "spot" is the position of the mouse at the time of the event.
 
@@ -3409,26 +2945,24 @@ The "key" and the equivalent ASCII "byte" (if any) apply only on KEY DOWNS.
 
 This is the structure of a tasteful, event-processing program:
 
-If there are no events waiting, the "deque" routine will yield to the kluge until
-your distracted user gets back to business. To end the program, you should:
+If there are no events waiting, the "deque" routine will yield to the kluge until your distracted user gets back to business. To end the program, you should:
 
 RELINQUISH CONTROL.
 
-Somewhere. Usually in one of your event handlers. This routine sets things up
-so the next event you "deque" is nil, thus ending your event handling loop.
+Somewhere. Geralmente em um dos seus manipuladores de eventos. This routine sets things up so the next event you "deque" is nil, thus ending your event handling loop.
 
 ```
-To run:
-Start up.
-Handle any events.
-Shut down.
+Para que o programa seja executado:
+Inicie o programa.
+Gerencie os comandos do usuário.
+Feche o programa.
 ```
 ```
-To handle any events:
-Deque an event.
-If the event is nil, exit.
-Handle the event.
-Repeat.
+Para gerenciar os comandos do usuário:
+Remova o evento da fila.
+Se o evento não existir, ignore-o.
+Gerencie o comando.
+Repita.
 ```
 ```
 To handle an event:
@@ -3463,15 +2997,10 @@ PLUS, MINUS, TIMES, DIVIDED BY, or THEN.
 ```
 ```
 The first four are standard arithmetic operators, but I can apply them to
-other things, as well. The last one is used primarily with strings. Let me explain
+other things, as well. O último é usado principalmente em strings. Let me explain
 how I simplify expressions with a few examples.
 ```
-Say I find the word PLUS between a snoz and a froz. I look for a routine
-that tells me how "to add a froz to a snoz", and then I use that routine to
-reduce the expression. If I find "a snoz MINUS a froz", I look for a routine
-"to subtract a froz from a snoz". To process "a snoz TIMES a froz", I use
-"to multiply a snoz by a froz". And to handle "a snoz DIVIDED BY a froz", I
-look for and use the routine "to divide a snoz by a froz".
+Say I find the word PLUS between a snoz and a froz. I look for a routine that tells me how "to add a froz to a snoz", and then I use that routine to reduce the expression. If I find "a snoz MINUS a froz", I look for a routine "to subtract a froz from a snoz". To process "a snoz TIMES a froz", I use "to multiply a snoz by a froz". And to handle "a snoz DIVIDED BY a froz", I look for and use the routine "to divide a snoz by a froz".
 
 ```
 I handle the last operator a little differently, since the goal in this case is
@@ -3485,70 +3014,42 @@ You can, of course, extend this capability. But try to restrain yourself.
 
 ## FIELDS
 
-A record is a collection of closely-related data items called "fields". Fields
-are defined as part of the record that contains them, and can be separated
-with commas, semi-colons, or the words AND and OR. Consider:
+A record is a collection of closely-related data items called "fields". Fields are defined as part of the record that contains them, and can be separated with commas, semi-colons, or the words AND and OR. Consider:
 
-A person is a thing with
-a name and
-an address string;
-a byte called gender or
-a byte called sex at the gender;
-32 bytes, and
-a mate (reference).
+A person is a thing with a name and an address string; a byte called gender or a byte called sex at the gender; 32 bytes, and a mate (reference).
 
-The first field is defined with just an indefinite article, A, and a type, NAME.
-I think of this field as "the person's name".
+The first field is defined with just an indefinite article, A, and a type, NAME. I think of this field as "the person's name".
 
-The second field includes an adjective, ADDRESS, between the article and the
-type. This is "the person's address string", or just "the person's address".
+The second field includes an adjective, ADDRESS, between the article and the type. This is "the person's address string", or just "the person's address".
 
-The third field is defined like the first field, but with a name forced upon it in
-the CALLED clause. It is "the person's gender". You will normally use this form
-only when a field's type has nothing to do with it's name.
+The third field is defined like the first field, but with a name forced upon it in the CALLED clause. It is "the person's gender". You will normally use this form only when a field's type has nothing to do with it's name.
 
-The fourth field uses AT to redefine the third, giving it a new name.
-Overlapping data types must be compatible for things like this to work.
+The fourth field uses AT to redefine the third, giving it a new name. Overlapping data types must be compatible for things like this to work.
 
 The fifth field is filler. It has no name and cannot be accessed.
 
-The last field is like the first, where MATE is assumed to be a type defined
-elsewhere. The (REFERENCE) tag tells me that MATE is not actually "part of"
-the person, and should not be automatically destroyed when the person is.
+The last field is like the first, where MATE is assumed to be a type defined elsewhere. The (REFERENCE) tag tells me that MATE is not actually "part of" the person, and should not be automatically destroyed when the person is.
 
 
 ## FILES
 
-The kluge's file system is a thing of unsurpassed beauty where form follows
-function in an exquisite dance... Just kidding. It's a mess. Look here:
+The kluge's file system is a thing of unsurpassed beauty where form follows function in an exquisite dance... Brincadeira. Isso é uma bagunça. Look here:
 
-A path is a string. \ complete name = c:\dir1\dir2\file.ext
-A drive is a string. \ start of path to first slash inclusive = c:\
-A directory is a path. \ start of path to last slash inclusive = c:\dir1\dir2\
-A directory name is a string. \ rightmost directory with slash = dir2\
-A file name is a string. \ after the last slash to end of path = file.ext
-An extension is a string. \ last dot to end of path = .ext
-A designator is a string. \ rightmost directory name or file name
+Um caminho é uma string. \ complete name = c:\dir1\dir2\file.ext A drive is a string. \ start of path to first slash inclusive = c:\ A directory is a path. \ start of path to last slash inclusive = c:\dir1\dir2\ A directory name is a string. \ rightmost directory with slash = dir2\ A file name is a string. \ after the last slash to end of path = file.ext An extension is a string. \ last dot to end of path = .ext A designator is a string. \ rightmost directory name or file name
 
 Nevertheless, I know how to:
 
 EXTRACT any of the above pieces FROM a path.
 
-I also know how to:
+Ou ainda:
 
-CREATE a path IN THE FILE SYSTEM.
-RENAME a path TO another path IN THE FILE SYSTEM.
-DESTROY a path IN THE FILE SYSTEM.
-DUPLICATE a path TO another path IN THE FILE SYSTEM.
+CREATE a path IN THE FILE SYSTEM. RENAME a path TO another path IN THE FILE SYSTEM. DESTROY a path IN THE FILE SYSTEM. DUPLICATE a path TO another path IN THE FILE SYSTEM.
 
 And I can:
 
-READ a path INTO a string.
-WRITE a string TO a path.
+READ a path INTO a string. WRITE a string TO a path.
 
-If anything goes wrong, "the i/o error" will contain a cryptic description of
-the problem suitable for display to the user. You don't have to clear it before
-a call, but you should check it afterward to make sure it's blank.
+If anything goes wrong, "the i/o error" will contain a cryptic description of the problem suitable for display to the user. You don't have to clear it before a call, but you should check it afterward to make sure it's blank.
 
 
 ```
@@ -3583,7 +3084,7 @@ limited to 2147483647, which is the largest number I know.
 ```
 To thumb your way through all the items in a path:
 Get an item from the path.
-If the item is not found, exit.
+Se o item não for encontrado, sair.
 [do something with the item]
 Repeat.
 ```
@@ -3594,25 +3095,20 @@ your program
 ## FONTS
 
 ```
-In the kluge, a font is defined with fourteen distinct parameters. Ridiculous.
+In the kluge, a font is defined with fourteen distinct parameters. Rígido.
 This is a much more reasonable definition, which you can find in my noodle:
 ```
 ```
-A font has a name and a height.
+Uma fonte tem um nome e uma altura.
 ```
 ```
 The font's name is the actual name stored in a font file. It may or may not
 be the same as the name of the file. You're probably familiar with font
 names like "Arial", "Times New Roman", and "Courier New".
 ```
-The font's height can be specified in any convenient unit of measure. My
-writer uses values like 1/4 inch and 1/6 inch, which, in concert with my writer's
-"yank" feature, keeps everything nicely aligned.
+The font's height can be specified in any convenient unit of measure. My writer uses values like 1/4 inch and 1/6 inch, which, in concert with my writer's "yank" feature, keeps everything nicely aligned.
 
-"The default font" is my very own, and is called "Osmosian" in honor of my
-creators. I've got the whole thing in my noodle as a nibble literal. I install it
-during start up, and remove it during shut down. It is 1/4 inch high. You're
-looking at a sample right now.
+"The default font" is my very own, and is called "Osmosian" in honor of my creators. Eu tenho a coisa toda em meu macarrão como uma pedra literal. I install it during start up, and remove it during shut down. É de 1/4 centímetros de altura. You're looking at a sample right now.
 
 ```
 To set up a font, just:
@@ -3635,12 +3131,9 @@ box when you double-click on one of those font files.
 
 ## FUNCTIONS
 
-A "function" is a routine that extracts, calculates, or otherwise derives
-something from a variable. Some examples from my noodle are:
+A "function" is a routine that extracts, calculates, or otherwise derives something from a variable. Some examples from my noodle are:
 
-To put a box's bottom line into a line:
-To put a polygon's height into a height:
-To put the mouse's spot into a spot:
+To put a box's bottom line into a line: To put a polygon's height into a height: To put the mouse's spot into a spot:
 
 There are two very similar formats for functions. The first is:
 
@@ -3650,19 +3143,11 @@ And the second is:
 
 TO PUT THE name 'S name INTO A type name:
 
-Both forms are easily recognized because they include the words PUT and
-INTO with a possessive in between. The first format is the most common
-and is used with normal types and variables. The second is used with
-one-of-a-kind globals and pseudo-variables.
+Both forms are easily recognized because they include the words PUT and INTO with a possessive in between. The first format is the most common and is used with normal types and variables. The second is used with one-of-a-kind globals and pseudo-variables.
 
-What is special about functions is that you can use their possessive parts as
-if they referred to actual fields in a record. For instance, given the above
-functions, you can refer to "a box's bottom line" as if it is actually defined in
-the box record type. You can say "the polygon's height" and I will see that it
-is calculated when you need it. And you can say "the mouse's spot" and I'll
-fetch it for you, even though the mouse record has no spot in it.
+What is special about functions is that you can use their possessive parts as if they referred to actual fields in a record. For instance, given the above functions, you can refer to "a box's bottom line" as if it is actually defined in the box record type. You can say "the polygon's height" and I will see that it is calculated when you need it. And you can say "the mouse's spot" and I'll fetch it for you, even though the mouse record has no spot in it.
 
-Needless to say, this is a handy feature. But is easily abused. Be discreet.
+Needless to say, this is a handy feature. Mas o abuso é fácil. Be discreet.
 
 See the topic on "Possessives" for further information.
 
@@ -3675,12 +3160,11 @@ program. Globals can be defined in various ways, but their definitions always
 begin with the definite article THE. Here are some examples from my noodle:
 ```
 ```
-The arrow cursor is a cursor.
-The backspace key is a key equal to 8.
-The largest number is 2147483647.
+O cursor da seta é um cursor.
+A chave backspace é uma chave igual a 8.
+O maior número é 2147483647.
 ```
-The first global will be initialized to all zeros. The second has an explicit type,
-"key", and a value. The third has an implied type. The general forms here are:
+The first global will be initialized to all zeros. The second has an explicit type, "key", and a value. O terceiro tem um tipo implícito. The general forms here are:
 
 ```
 THE name IS A type name.
@@ -3696,8 +3180,8 @@ The mouse has a key called left button and a key called right button.
 ```
 ```
 There is only one mouse, so there is no need to define a generic "mouse"
-record. Instead, the global and the type can be defined in a single statement.
-There are two forms that can be used to define one-of-a-kind globals. The
+record. Em vez disso, o global e o tipo podem ser definidos em uma única declaração.
+Há duas formas que podem ser utilizadas para definir um global de tipo único. The
 first makes a new record type, while the second extends an old one:
 ```
 ```
@@ -3711,120 +3195,86 @@ But they do answer the age-old "which came first" question. The chicken did.
 
 ## GRAPHIC TRANSFORMATIONS
 
-In case you haven't noticed, I'm pretty good with my hands. I can manipulate
-almost any graphic object in a wide variety of ways. For example, I can:
+In case you haven't noticed, I'm pretty good with my hands. I can manipulate almost any graphic object in a wide variety of ways. For example, I can:
 
-MOVE something UP some amount.
-MOVE something DOWN some amount.
-MOVE something LEFT some amount.
-MOVE something RIGHT some amount.
-MOVE something GIVEN this amount AND that amount.
-MOVE something TO a spot.
+MOVE something UP some amount. MOVE something DOWN some amount. MOVE something LEFT some amount. MOVE something RIGHT some amount. MOVE something GIVEN this amount AND that amount. MOVE something TO a spot.
 
-The last MOVE uses the left-top corner for alignment. I can also:
+The last MOVE uses the left-top corner for alignment. O compilador também é capaz de:
 
-CENTER something ON a spot.
-CENTER something IN a box.
+CENTER something ON a spot. CENTER something IN a box.
 
 And I can get fancy. I know how to:
 
-FLIP something.
-MIRROR something.
-ROTATE something.
+FLIP something. MIRROR something. ROTATE something.
 
-FLIP is vertical. MIRROR is horizontal. I can only ROTATE stuff clockwise in
-90-degree increments, and I can't rotate text. But I'm working on it.
+FLIP is vertical. A MIRROR é horizontal. I can only ROTATE stuff clockwise in 90-degree increments, and I can't rotate text. But I'm working on it.
 
 Finally, I can:
 
-SCALE something GIVEN a ratio.
-SCALE something TO a percent.
+SCALE something GIVEN a ratio. SCALE something TO a percent.
 
 See the "Drawing" and "Masking" topics for other nifty stuff.
 
 
 ## IMPERATIVES
 
-An "imperative" is an unconditional statement within the body of a routine.
-Here are some sample imperatives taken from my noodle:
+An "imperative" is an unconditional statement within the body of a routine. Here are some sample imperatives taken from my noodle:
 
-Cluck.
-Subtract 1 from the count.
-Remove the last byte from the string.
-Put the text's font's height times 2 into the grid's x.
+Clube. Subtraia 1 da conta. Remover o último byte da string. Put the text's font's height times 2 into the grid's x.
 
-Imperatives typically start with a verb and end with a period. But in between,
-almost anything goes. Literals. Terms. Expressions. Prepositional phrases. All
-mixed together, and all magically reduced by yours truly to a routine call.
+Imperatives typically start with a verb and end with a period. But in between, almost anything goes. Literais. Termos. Expressões. Frases preposicionais. All mixed together, and all magically reduced by yours truly to a routine call.
 
-To code up an imperative, just type in what you're thinking. If there's a
-routine around that can handle it, I'll see that it does. If there isn't, I'll let
-you know what I need, so you can code it up and make me smarter.
+To code up an imperative, just type in what you're thinking. If there's a routine around that can handle it, I'll see that it does. If there isn't, I'll let you know what I need, so you can code it up and make me smarter.
 
 And don't forget the eleven imperatives hard-wired into my brain:
 
-SAY. Used to exit deciders. See "Deciders".
+SAY. Usado para sair dos decimais. See "Deciders".
 
-LOOP, REPEAT, BREAK, and EXIT. Used to make loops. See "Loops".
+LOOP, REPEAT, BREAK, and EXIT. Usado para criar laços. See "Loops".
 
-CALL and POINT. Used to call the Kluge. See "Kluge, The".
+CALL and POINT. Usado para chamar o Kluge. See "Kluge, The".
 
-EMPLOY, PUSH, and INTEL. Not different, special. See "Special Imperatives".
+EMPLOY, PUSH, and INTEL. Não diferente, especial. See "Special Imperatives".
 
 PRIVATIZE. Used only with "Parameters".
 
-Since imperatives are really just routine calls, you should check out the pages
-on "Routines", "Procedures", "Deciders", "Functions", and "Names", too.
+Since imperatives are really just routine calls, you should check out the pages on "Routines", "Procedures", "Deciders", "Functions", and "Names", too.
 
 
 ## INPUT AND OUTPUT
 
 You can work directly with the mouse using statements like these:
 
-PUT the mouse's spot INTO a spot.
-IF the mouse's left button IS DOWN, ...
-IF the mouse's right button IS UP, ...
+PUT the mouse's spot INTO a spot. IF the mouse's left button IS DOWN, ... IF the mouse's right button IS UP, ...
 
-But you probably won't, unless you're tracking the mouse while the user drags
-something around the screen. Most of the time, you'll simply respond to the
-various "click" events that are sent to your event handler.
+But you probably won't, unless you're tracking the mouse while the user drags something around the screen. Most of the time, you'll simply respond to the various "click" events that are sent to your event handler.
 
 You can work directly with the keyboard using statements like:
 
-IF the escape key IS DOWN, ...
-IF the shift key IS UP, ...
+IF the escape key IS DOWN, ... IF the shift key IS UP, ...
 
-But again, you probably won't, because the kluge works better if you just
-respond to the "key down" events that are sent to your event handler. You
-can find all the "key" globals in my noodle by searching for "a key equal to".
+But again, you probably won't, because the kluge works better if you just respond to the "key down" events that are sent to your event handler. You can find all the "key" globals in my noodle by searching for "a key equal to".
 
-And you can work directly with the screen using "the screen canvas" and this
-one-of-a-kind global variable:
+And you can work directly with the screen using "the screen canvas" and this one-of-a-kind global variable:
 
-The screen has a box, a pixel height and a pixel width.
+A tela tem uma caixa, uma altura de pixel e uma largura de pixel.
 
 But you shouldn't. Instead, you should draw on the memory canvas, then:
 
 REFRESH THE SCREEN.
 
-See the "Drawing" topic for more information. But do feel free to use "the
-screen's box" and all of its fields when initializing your stuff.
+See the "Drawing" topic for more information. But do feel free to use "the screen's box" and all of its fields when initializing your stuff.
 
 
 ## INTERNET
 
 These are the types you'll be needing to get files from the internet:
 
-A URL is a string.
-A query string is a string.
+A URL is a string. Uma cadeia de caracteres de consulta é uma string.
 
-A URL is a Universal Resource Locator, like "http://www.osmosian.com", which
-you can see is just a string that follows an obscure naming convention based
-on parsing technology that was state-of-the-art a mere 50 years ago.
+A URL is a Universal Resource Locator, like "http://www.osmosian.com", which you can see is just a string that follows an obscure naming convention based on parsing technology that was state-of-the-art a mere 50 years ago.
 
-A "query string" is a string with some of the bytes converted to nonsense
-encodings consistent with internet standards. A space, for example, becomes
-a cross, and a comma becomes "%2C".
+A "query string" is a string with some of the bytes converted to nonsense encodings consistent with internet standards. A space, for example, becomes a cross, and a comma becomes "%2C".
 
 You can convert a normal string to a query string like this:
 
@@ -3836,19 +3286,14 @@ READ a URL INTO a string.
 
 Here is some code from our sample program to remind you how it works:
 
-Put "http://images.google.com/images?q=" into a URL.
-Convert the text's string to a query string.
-Append the query string to the URL.
-Read the URL into a string.
+Coloque "http://images.google.com/images?q=" em uma URL. Converta o texto do campo de texto em um texto de pesquisa. Coloque o texto de pesquisa no fim da URL. Read the URL into a string.
 
-Remember? I know I'll never forget. We parsed the string and dabbed the
-canvas and refreshed the screen and it was... Art!
+Remember? Eu sei que nunca esquecerei. We parsed the string and dabbed the canvas and refreshed the screen and it was... Art!
 
 
 ## KEYWORDS
 
-Most programming languages have long lists of abstruse, cabalistic,
-enigmatical, inscrutable, obfuscating, recondite "reserved" words such as:
+Most programming languages have long lists of abstruse, cabalistic, enigmatical, inscrutable, obfuscating, recondite "reserved" words such as:
 
 ABSTRACT, PROTECTED, SYNCHRONIZED, TRANSIENT, and VOLATILE.
 
@@ -3888,10 +3333,7 @@ can use this syntax to call functions in the foolbox:
 ```
 CALL "dll" "function" WITH this AND that RETURNING something.
 ```
-The WITH and RETURNING clauses are optional. The "dll" and "function"
-strings must be literals and the latter, God help us, is case-sensitive. Strings
-must be passed by address and, in many cases, must be null-terminated. Use
-"the string's FIRST" for the address, and this routine to tack on the null byte:
+The WITH and RETURNING clauses are optional. The "dll" and "function" strings must be literals and the latter, God help us, is case-sensitive. Strings must be passed by address and, in many cases, must be null-terminated. Use "the string's FIRST" for the address, and this routine to tack on the null byte:
 
 ```
 NULL TERMINATE a string.
@@ -3918,33 +3360,28 @@ header includes the COMPATIBLY keyword right after TO, like this:
 ```
 TO COMPATIBLY ...
 ```
-If you're working at this ridiculously low level, you'll want to check out "Bits",
-"Special Imperatives", and my noodle for more information and examples.
+If you're working at this ridiculously low level, you'll want to check out "Bits", "Special Imperatives", and my noodle for more information and examples.
 
 
 ## LINES
 
-A "line" is a graphic object that starts here and ends there. But you already
-knew that. Here is the definition that's in my noodle:
+A "line" is a graphic object that starts here and ends there. But you already knew that. Here is the definition that's in my noodle:
 
-A line has a start spot and an end spot.
+Uma linha tem um ponto de partida e um ponto de fim.
 
 And here is a picture of a line, with the parts labeled:
 
 I can make lines from two spots or four separate coordinates:
 
-MAKE a line WITH this spot AND that spot.
-MAKE a line WITH this x AND this y AND that x AND that y.
+MAKE a line WITH this spot AND that spot. MAKE a line WITH this x AND this y AND that x AND that y.
 
-I also have four functions that will put "a box's LEFT LINE" or "a box's TOP
-LINE" or "a box's RIGHT LINE" or "a box's BOTTOM LINE" into a line.
+I also have four functions that will put "a box's LEFT LINE" or "a box's TOP LINE" or "a box's RIGHT LINE" or "a box's BOTTOM LINE" into a line.
 
-I can, of course, DRAW a line. Or find a line's CENTER. I can even:
+I can, of course, DRAW a line. Ou encontre o CENTERO de uma linha. O compilador é capaz de até mesmo de:
 
 SPLIT a line INTO this line AND that line.
 
-Right in the middle. I can tell if a spot IS ON a line. And I can perform all of
-the usual "Graphic Transformations" on lines, as well.
+Right in the middle. Eu posso dizer se um ponto está em cima de uma linha. And I can perform all of the usual "Graphic Transformations" on lines, as well.
 
 See the topic on "Spots" for further information about those endpoints.
 
@@ -3961,38 +3398,19 @@ See the topic on "Spots" for further information about those endpoints.
 
 If you're a compiler fanatic, you'll like this. If you're not, turn the page.
 
-You can produce a cryptic listing of my inmost thoughts about any program
-using the List command. The listing is saved as text in the source directory
-and is given the directory's name with a ".lst" tacked on. The interpretation
-of this file is left to you as an exercise.
+You can produce a cryptic listing of my inmost thoughts about any program using the List command. The listing is saved as text in the source directory and is given the directory's name with a ".lst" tacked on. The interpretation of this file is left to you as an exercise.
 
 But I will give you some clues. And some incentive.
 
-The listing consists of twelve distinct sections with the following headings:
-types, globals, literals, routines, type index, global index, literal index, routine
-index, utility index, imports, source files, and timers. Each heading is followed
-by a colon so you can jump to any section using the Find command.
-Here is a tiny sample from the "routine" section:
+The listing consists of twelve distinct sections with the following headings: types, globals, literals, routines, type index, global index, literal index, routine index, utility index, imports, source files, and timers. Each heading is followed by a colon so you can jump to any section using the Find command. Here is a tiny sample from the "routine" section:
 
-Your best bet is to study the "list" routine in the compiler first. Then make a
-tiny program, list it, and look at the result. Add a line or two, and repeat.
+Your best bet is to study the "list" routine in the compiler first. Then make a tiny program, list it, and look at the result. Add a line or two, and repeat.
 
 Now for the incentive.
 
-If you find a bug in me, write my creators and they will send you something
-desirable like a blank t-shirt. If you can figure out how to make me simpler
-without making me slower, they will send you a monogrammed t-shirt. And If
-you can come up with a way to make me smaller, faster, and more powerful all
-at once, I'm pretty sure they will send you an embroidered wife-beater.
+If you find a bug in me, write my creators and they will send you something desirable like a blank t-shirt. If you can figure out how to make me simpler without making me slower, they will send you a monogrammed t-shirt. And If you can come up with a way to make me smaller, faster, and more powerful all at once, I'm pretty sure they will send you an embroidered wife-beater.
 
-/routine/create [picture]/yes/no/no/no//4/0/00470A48/
-/variable/parameter/yes/picture/picture/picture/picture/00000008/no/1/no////
-/fragment/prolog/////00000000/00470A48/558BEC/
-/fragment/loop/////00000000/00470A4B//
-/fragment/push address/picture////00000000/00470A4B/8B950800000052/
-/fragment/call internal///allocate memory for [picture]//00000000/00470A52/E8BDA70400/
-/fragment/finalize/////00000000/00470A57//
-/fragment/epilog/////00000000/00470A57/8BE55DC204000000/
+/routine/create [picture]/yes/no/no/no//4/0/00470A48/ /variable/parameter/yes/picture/picture/picture/picture/00000008/no/1/no//// /fragment/prolog/////00000000/00470A48/558BEC/ /fragment/loop/////00000000/00470A4B// /fragment/push address/picture////00000000/00470A4B/8B950800000052/ /fragment/call internal///allocate memory for [picture]//00000000/00470A52/E8BDA70400/ /fragment/finalize/////00000000/00470A57// /fragment/epilog/////00000000/00470A57/8BE55DC204000000/
 
 
 ## LITERALS
@@ -4059,7 +3477,7 @@ You make a new local variable in a routine whenever you use an indefinite
 article (A, AN, ANOTHER, or SOME) in a statement. For example:
 ```
 ```
-Put the mouse's spot into another spot.
+Coloque a localização do mouse em outro lugar.
 Put the screen's left into a box's left.
 Put 101 into some other course number.
 ```
@@ -4077,33 +3495,24 @@ This variable is defined with adjectives preceding the type name, so it can be
 referenced by its full name, "the other course number", or by nickname, "the
 other course". You can read more about names under the "Names" topic.
 ```
-See also the "Loops" page, where a local variable and a decider lets us make
-"counted loops" without adding any new keywords to my compiler.
+See also the "Loops" page, where a local variable and a decider lets us make "counted loops" without adding any new keywords to my compiler.
 
 
 ## LOOPS
 
 You can loop around with my LOOP, REPEAT, BREAK, and EXIT imperatives:
 
-LOOP is really nothing but a label. REPEAT jumps to the LOOP label, if there
-is one. If there isn't, it jumps to the top of the routine. BREAK goes to the
-statement following the last REPEAT. If there is no REPEAT, this statement
-behaves like EXIT, which returns to the caller. One LOOP per routine, please,
-but you can have as many REPEATS, BREAKS, and EXITS as you need.
+LOOP is really nothing but a label. REPEAT jumps to the LOOP label, if there is one. Se não houver, pula para o topo da rotina. BREAK goes to the statement following the last REPEAT. If there is no REPEAT, this statement behaves like EXIT, which returns to the caller. One LOOP per routine, please, but you can have as many REPEATS, BREAKS, and EXITS as you need.
 
-The statement that begins "If a counter is past the maximum" calls a special
-decider in my noodle that first bumps the counter, then checks it. Since the
-counter is a new local variable when the routine is entered, it starts at zero.
+The statement that begins "If a counter is past the maximum" calls a special decider in my noodle that first bumps the counter, then checks it. Since the counter is a new local variable when the routine is entered, it starts at zero.
 
-Note that you can LOOP, REPEAT, and BREAK in a decider, but you cannot
-EXIT because it leaves me in doubt. And you must take care not to "fall out
-of" a decider, as well. To exit a decider, either SAY YES or SAY NO.
+Note that you can LOOP, REPEAT, and BREAK in a decider, but you cannot EXIT because it leaves me in doubt. And you must take care not to "fall out of" a decider, as well. To exit a decider, either SAY YES or SAY NO.
 
 ```
 To loop around given a maximum number:
 ```
 ```
-Loop.
+Repetição.
 ```
 ```
 If a counter is past the maximum, break.
@@ -4111,7 +3520,7 @@ If [we want to jump out of the loop], break.
 If [we want to jump out of the whole routine], exit.
 ```
 ```
-Repeat.
+Repita.
 ```
 ```
 your program
@@ -4131,49 +3540,34 @@ your program
 
 ## MASKING
 
-Real-life painters often use masking tape so they don't get paint where it
-isn't wanted. You can use my "masking" routines to restrict my drawing in the
-same way. Just say something like:
+Real-life painters often use masking tape so they don't get paint where it isn't wanted. You can use my "masking" routines to restrict my drawing in the same way. Just say something like:
 
-MASK INSIDE this.
-MASK OUTSIDE that.
+MASK INSIDE this. MASK OUTSIDE that.
 
-Where "this" and "that" can be boxes, ellipses, polygons, or roundy boxes.
-Note, however, that the foolbox uses good tape on boxes and cheap tape
-everywhere else, so don't expect perfection with anything but boxes.
+Where "this" and "that" can be boxes, ellipses, polygons, or roundy boxes. Note, however, that the foolbox uses good tape on boxes and cheap tape everywhere else, so don't expect perfection with anything but boxes.
 
 Any tape you apply stays applied, so later you will probably want to:
 
-UNMASK INSIDE something.
-UNMASK OUTSIDE something.
+UNMASK INSIDE something. UNMASK OUTSIDE something.
 
-Or even:
+Ou ainda:
 
 UNMASK EVERYTHING.
 
-to start fresh. For convenience, you can remove all the existing tape and put
-on some new tape at the same time with statements like the following. Believe
-it or not, these are the ones that are most frequently used:
+to start fresh. For convenience, you can remove all the existing tape and put on some new tape at the same time with statements like the following. Believe it or not, these are the ones that are most frequently used:
 
-MASK ONLY INSIDE something.
-MASK ONLY OUTSIDE something.
+MASK ONLY INSIDE something. MASK ONLY OUTSIDE something.
 
-Note that if you're drawing your heart out and nothing is showing up, it's
-probably because you've got masking tape where you don't want it, or you've
-forgotten to REFRESH THE SCREEN as described in the "Drawing" topic.
+Note that if you're drawing your heart out and nothing is showing up, it's probably because you've got masking tape where you don't want it, or you've forgotten to REFRESH THE SCREEN as described in the "Drawing" topic.
 
 
 ## MEMORY MANAGEMENT
 
-I manage all the memory that is needed for static data types — like bytes,
-wyrds, numbers, pointers, flags, and most records. I also take responsibility
-for strings, since they are frequently used and their behavior is predictable.
+I manage all the memory that is needed for static data types — like bytes, wyrds, numbers, pointers, flags, and most records. I also take responsibility for strings, since they are frequently used and their behavior is predictable.
 
-But when you define a dynamic data type, like a "thing", you make yourself
-responsible for any memory that thing uses.
+But when you define a dynamic data type, like a "thing", you make yourself responsible for any memory that thing uses.
 
-Typically, you will code up a CREATE routine to initialize each dynamic type
-you define. In that routine, you will allocate memory for the thing. Like this:
+Typically, you will code up a CREATE routine to initialize each dynamic type you define. Nessa rotina, você atribuirá memória para a coisa. É bem assim:
 
 ALLOCATE MEMORY FOR something.
 
@@ -4181,20 +3575,13 @@ You may also code up a DESTROY routine for each type, with a line like:
 
 DEALLOCATE something.
 
-But if you don't, I will code one up for you. I won't call it for you, but I will
-code it up. The DESTROY routines that I code up can be called in this manner:
+But if you don't, I will code one up for you. I won't call it for you, but I will code it up. The DESTROY routines that I code up can be called in this manner:
 
 DESTROY something.
 
-Note that my DESTROY routines not only destroy the thing itself, but also
-any other things that are fields in it, including lists of other things. Unless, of
-course, you mark those fields as "(REFERENCE)".
+Note that my DESTROY routines not only destroy the thing itself, but also any other things that are fields in it, including lists of other things. Unless, of course, you mark those fields as "(REFERENCE)".
 
-A good example can be found in my writer where a "page" is defined as a
-thing with some "shapes" on it. You'll find routines there that create both
-pages and shapes, but you will not find any routines to destroy them. Those
-are mine. And when I'm asked to destroy a page, I dump the shapes on it at
-the same time. Except, of course, for the "edit shape", which is a reference.
+A good example can be found in my writer where a "page" is defined as a thing with some "shapes" on it. You'll find routines there that create both pages and shapes, but you will not find any routines to destroy them. Those are mine. And when I'm asked to destroy a page, I dump the shapes on it at the same time. Except, of course, for the "edit shape", which is a reference.
 
 
 ## NAMES
@@ -4219,8 +3606,7 @@ adjective part can be used as a "nickname" if it does not cause ambiguity.
 ```
 Global names are most often an adjective followed by a type: the "shift key".
 ```
-Parameter names look like field names. A type, with or without adjectives. A
-"box", for example, or a "border color". The nickname thing works here, too.
+Parameter names look like field names. Um tipo, com ou sem adjetivos. A "box", for example, or a "border color". The nickname thing works here, too.
 
 ```
 Procedure names start with a verb. Following is a mix of parameters (with
@@ -4229,7 +3615,7 @@ the last byte of a string" or "center a spot in a box (horizontally)".
 ```
 ```
 Function names always begin with "put" and end with "into" and a type name.
-In between is a possessive phrase. Like "put a box's top line into a line".
+Entregue é uma frase possessiva. Like "put a box's top line into a line".
 ```
 ```
 Decider names look like procedure names except the verb usually appears
@@ -4252,11 +3638,9 @@ To add a number to another number:
 To decide if a spot is in some polygons:
 To put an ellipse's center into a spot:
 ```
-The first routine is a procedure that expects two parameters: "a number" and
-"another number". The first is input; the second is both input and output.
+The first routine is a procedure that expects two parameters: "a number" and "another number". The first is input; the second is both input and output.
 
-The second routine is a decider. It also expects two parameters, "a spot" and
-"some polygons". Both parameters are input only.
+The second routine is a decider. It also expects two parameters, "a spot" and "some polygons". Both parameters are input only.
 
 ```
 The third routine is a function with two parameters: "an ellipse" and "a spot".
@@ -4283,57 +3667,36 @@ front of the real parameter's name so you can still get to it, if you need to.
 
 ## PICTURES
 
-A "picture", in my noodle, is an image made of pixels. Usually, zillions of 'em.
-Pictures are very goofy things, thanks to the kluge's unbalanced foolbox and
-the myriad "standard" formats in which pictures can be stored. Fortunately,
-my creators have wrapped them up for you. Here's the definition:
+A "picture", in my noodle, is an image made of pixels. Geralmente, milhões de 'em. Pictures are very goofy things, thanks to the kluge's unbalanced foolbox and the myriad "standard" formats in which pictures can be stored. Fortunately, my creators have wrapped them up for you. Here's the definition:
 
 A picture is a thing [with stuff you don't want to know about].
 
 Here are two sample pictures:
 
-I apologize for the quality of these images. I discovered them in the ancient
-archives when I was researching the founding of the Osmosian Order.
+I apologize for the quality of these images. I discovered them in the ancient archives when I was researching the founding of the Osmosian Order.
 
-You can create a picture in a variety of ways. You can load one from a path
-that contains a BMP, JPG, GIF, or some other standard-format image. You
-can read a standard-format image into a buffer, and use that buffer as the
-source for your picture. Or you can grab a picture off the internet with a URL.
-You can also create a picture by drawing something and then "extracting" the
-portion you want. This is the general format:
+You can create a picture in a variety of ways. You can load one from a path that contains a BMP, JPG, GIF, or some other standard-format image. You can read a standard-format image into a buffer, and use that buffer as the source for your picture. Ou você pode pegar uma foto na internet com uma URL. You can also create a picture by drawing something and then "extracting" the portion you want. This is the general format:
 
 CREATE a picture FROM something.
 
-Once you have a picture, you can DRAW it. Or apply the standard "Graphic
-Transformations" to it. Or use it as a model for a real work of art, as we did
-with the Cal Monet sample program.
+Once you have a picture, you can DRAW it. Or apply the standard "Graphic Transformations" to it. Or use it as a model for a real work of art, as we did with the Cal Monet sample program.
 
 
 ## POLYGONS
 
 My creators told me two things about polygons:
 
-A polygon is a thing with some vertices.
-A vertex is a thing with an x coord, a y coord, and a spot at the x.
+Um polígono é uma coisa com alguns vértices. A vertex is a thing with an x coord, a y coord, and a spot at the x.
 
-Polygons and vertices are "things" and therefore, unlike my other graphic
-objects, have to be created and destroyed. You have to append your vertices
-to your polygons, too. These are the kind of things you'll say:
+Polygons and vertices are "things" and therefore, unlike my other graphic objects, have to be created and destroyed. You have to append your vertices to your polygons, too. These are the kind of things you'll say:
 
-CREATE a polygon.
-CREATE a vertex GIVEN a spot.
-APPEND a vertex TO a polygon.
-DESTROY a polygon.
+CREATE a polygon. CREATE a vertex GIVEN a spot. APPEND a vertex TO a polygon. DESTROY a polygon.
 
 I'll get rid of the vertices for you if you remember to get rid of the polygon.
 
-Once you've got a polygon you can DRAW it. You can also perform all the
-usual "Graphic Transformations" on it. And if you ask me to SMOOTH it, I will
-move the vertices around — and add some new ones — to round it up for
-you. Here's a sample polygon, plain and smoothed:
+Once you've got a polygon you can DRAW it. You can also perform all the usual "Graphic Transformations" on it. And if you ask me to SMOOTH it, I will move the vertices around — and add some new ones — to round it up for you. Here's a sample polygon, plain and smoothed:
 
-Sweet! I love drawing sine waves and other trigonometric figures without
-using any real numbers. I just hope Master Leopold is watching.
+Sweet! I love drawing sine waves and other trigonometric figures without using any real numbers. I just hope Master Leopold is watching.
 
 ## VERTEX
 
@@ -4357,7 +3720,7 @@ using any real numbers. I just hope Master Leopold is watching.
 ## POSSESSIVES
 
 ```
-Possessives are normally used to access fields in records. Like this:
+Possessives are normally used to access fields in records. É bem assim:
 ```
 ```
 something's field name
@@ -4368,8 +3731,7 @@ But they can also be used to direct me to a function:
 ```
 something's function name
 ```
-And if I can't resolve the possessive in either of those ways, I look for a
-"deep" field inside any field of the original record that is, itself, a record.
+And if I can't resolve the possessive in either of those ways, I look for a "deep" field inside any field of the original record that is, itself, a record.
 
 ```
 But the first thing I do with a possessive is to check for three special names.
@@ -4399,7 +3761,7 @@ conflicts, my creators gave them clear — but unusual — names.
 Note that the proper possessive of, say, JESUS, is JESUS', not JESUS'S.
 ```
 
-## PRINTING
+## IMPRIMINDO
 
 ```
 This is how we save you from the kluge's perplexing printing procedures:
@@ -4412,9 +3774,7 @@ This is how we save you from the kluge's perplexing printing procedures:
 ```
 Here is a typical printing routine:
 ```
-"Begin a sheet" sets the current canvas to the printer canvas. "End the sheet"
-puts it back to the memory canvas. So position any status messages you
-want to display either before or after these calls.
+"Begin a sheet" sets the current canvas to the printer canvas. "End the sheet" puts it back to the memory canvas. So position any status messages you want to display either before or after these calls.
 
 ```
 You can "begin a portrait sheet" to be more explicit, and you can "begin a
@@ -4427,12 +3787,12 @@ And that's all there is to it.
 ```
 To print stuff:
 Begin printing.
-Loop.
-Begin a sheet.
+Repetição.
+Comece uma folha.
 [draw stuff here]
 End the sheet.
 If [we're not done], repeat.
-End printing.
+Termine de imprimir.
 ```
 ```
 your program
@@ -4440,43 +3800,30 @@ your program
 
 ## PROCEDURES
 
-A "procedure" is a routine that does something to something for you. Some
-sample procedure headers from my noodle are:
+A "procedure" is a routine that does something to something for you. Some sample procedure headers from my noodle are:
 
-To convert a number to a string:
-To center a box in another box (horizontally):
-To hide the cursor:
+To convert a number to a string: To center a box in another box (horizontally): To hide the cursor:
 
 The general format is:
 
 TO something:
 
-Procedure headers always start with the word TO, and always end with a
-colon. The "something" in between follows the usual rules for routine names.
+Procedure headers always start with the word TO, and always end with a colon. The "something" in between follows the usual rules for routine names.
 
-Procedure bodies are made up of statements: conditionals and imperatives,
-including the built-in imperatives like PRIVATIZE, LOOP, REPEAT, BREAK,
-and EXIT. You cannot, however, SAY YES or SAY NO in a procedure.
+Procedure bodies are made up of statements: conditionals and imperatives, including the built-in imperatives like PRIVATIZE, LOOP, REPEAT, BREAK, and EXIT. You cannot, however, SAY YES or SAY NO in a procedure.
 
-The first sample header above includes a verb, a preposition, and two
-parameters. The verb is "convert" and the preposition is "to". The parameters
-are "a number" and "a string".
+The first sample header above includes a verb, a preposition, and two parameters. The verb is "convert" and the preposition is "to". The parameters are "a number" and "a string".
 
 The second sample's name is similar, but there's a qualifier, "(horizontally)".
 
 The third routine's name is a verb followed by a phrase, "the cursor".
 
-Phrases are typically used to specify one-of-a-kind globals in routine
-headers, like "draw the bar" in my desktop. Or to refer to a pseudo-variable
-that is not precisely defined in your code. Like "the cursor" in the example
-above, or "the last byte" in the "delete the last byte of a string" routine.
+Phrases are typically used to specify one-of-a-kind globals in routine headers, like "draw the bar" in my desktop. Or to refer to a pseudo-variable that is not precisely defined in your code. Like "the cursor" in the example above, or "the last byte" in the "delete the last byte of a string" routine.
 
 
 ## RANDOM NUMBERS
 
-"The lot is cast into the lap, but the disposing thereof is of the Lord."
-So I guess we'll have to give up on this random number idea and settle for
-pseudo-random numbers. Which is what I generate.
+"The lot is cast into the lap, but the disposing thereof is of the Lord." So I guess we'll have to give up on this random number idea and settle for pseudo-random numbers. Which is what I generate.
 
 ```
 In fact, I generate the very same sequence of "random" numbers every time,
@@ -4521,7 +3868,7 @@ And if you're not sure which one to use, flip a coin.
 
 ```
 A "record" is a collection of closely-related data items of various types
-called "fields". Fields are described on their own page. But here are some
+called "fields". Os campos são descritos em sua própria página. But here are some
 sample records from my noodle:
 ```
 ```
@@ -4536,12 +3883,9 @@ a left-top spot at the left, a right-bottom spot at the right,
 and a radius.
 ```
 ```
-A polygon is a thing with some vertices.
+Um polígono é uma coisa com alguns vértices.
 ```
-The first sample record, "box", has six fields. But the last two are actually
-"reinterpretations" of the first four. This kind of thing only works, of course,
-when the physical data structures match. Note that the word "has" is short
-for "is a record with", which can also be used.
+The first sample record, "box", has six fields. But the last two are actually "reinterpretations" of the first four. This kind of thing only works, of course, when the physical data structures match. Note that the word "has" is short for "is a record with", which can also be used.
 
 ```
 The second record, "roundy box", is an extension of box. It has the same
@@ -4549,14 +3893,10 @@ fields as a box, plus a new one called "radius". It is compatible with box, and
 I will use all of the routines that work on boxes to manipulate it — unless an
 equivalent routine for roundy boxes is available.
 ```
-The third record, "polygon", has nothing in it but a list of vertices. Because
-polygon is defined as a "thing", I take it to be a dynamic, rather than static,
-structure. This means you are responsible for allocating and deallocating the
-memory used by it. See the "Memory Management" topic and the page about
-"Polygons" for more information.
+The third record, "polygon", has nothing in it but a list of vertices. Because polygon is defined as a "thing", I take it to be a dynamic, rather than static, structure. This means you are responsible for allocating and deallocating the memory used by it. See the "Memory Management" topic and the page about "Polygons" for more information.
 
 
-## RIDERS
+## PERCORREDORES
 
 ```
 A "rider" is a record that is used to parse strings. To understand it, you must
@@ -4593,37 +3933,22 @@ at a time. When you want to clear out the old token and start a new one, just:
 ```
 POSITION the rider's token ON the rider's source.
 ```
-You can also write up your own routines to MOVE a rider more than one byte
-at a time, like the ones in my noodle for "spell checking" and "word wrapping",
-not to mention the ones in my compiler for parsing your source code. Find
-"to move a rider" in these files, and you'll run into all of them.
+You can also write up your own routines to MOVE a rider more than one byte at a time, like the ones in my noodle for "spell checking" and "word wrapping", not to mention the ones in my compiler for parsing your source code. Find "to move a rider" in these files, and you'll run into all of them.
 
 
 ## ROUNDY BOXES
 
-A "roundy box" is a box with rounded corners. I use them for the pad on my
-desktop, my menus, my tabs, and in many other places. Here's the definition:
+A "roundy box" is a box with rounded corners. I use them for the pad on my desktop, my menus, my tabs, and in many other places. Here's the definition:
 
-A roundy box is a box with
-a left coord, a top coord, a right coord, a bottom coord,
-a left-top spot at the left, a right-bottom spot at the right, and
-a radius.
+A roundy box is a box with a left coord, a top coord, a right coord, a bottom coord, a left-top spot at the left, a right-bottom spot at the right, and a radius.
 
-This is a picture of a roundy box, with the parts labeled. Note that I am using
-the nicknames of the fields here, as you probably will in your programs.
+This is a picture of a roundy box, with the parts labeled. Note that I am using the nicknames of the fields here, as you probably will in your programs.
 
-I can make roundy boxes from width and height specifications, from a pair
-of spots, and from separate coordinates. Even from another box. Like this:
+I can make roundy boxes from width and height specifications, from a pair of spots, and from separate coordinates. Até de outra caixa. É bem assim:
 
-MAKE a roundy box this-wide BY that-high WITH a radius.
-MAKE a roundy box WITH this spot AND that spot AND a radius.
-MAKE a roundy box WITH a left AND top AND right AND bottom AND radius.
-MAKE a roundy box FROM a box AND a radius.
+MAKE a roundy box this-wide BY that-high WITH a radius. MAKE a roundy box WITH this spot AND that spot AND a radius. MAKE a roundy box WITH a left AND top AND right AND bottom AND radius. MAKE a roundy box FROM a box AND a radius.
 
-I can, of course, DRAW a roundy box. And I've got functions to get a roundy
-box's WIDTH, HEIGHT, and CENTER, among other things. I can even tell
-whether or not a certain spot IS IN a roundy box or IS ON the edge of a
-roundy box. Not to mention all the usual "Graphic Transformations".
+I can, of course, DRAW a roundy box. And I've got functions to get a roundy box's WIDTH, HEIGHT, and CENTER, among other things. I can even tell whether or not a certain spot IS IN a roundy box or IS ON the edge of a roundy box. Not to mention all the usual "Graphic Transformations".
 
 ## LEFT RIGHT
 
@@ -4646,11 +3971,7 @@ roundy box. Not to mention all the usual "Graphic Transformations".
 
 ## ROUTINES
 
-A routine is a chunk of code that manipulates one or more variables in some
-well-defined way. Variables passed to a routine are called "parameters", and
-may be inputs, outputs, or both. Variables defined within a routine are called
-"locals", and cannot be seen outside of the routine (unless they're passed as
-parameters). Variables that are accessible to all routines are called "globals".
+A routine is a chunk of code that manipulates one or more variables in some well-defined way. Variables passed to a routine are called "parameters", and may be inputs, outputs, or both. Variables defined within a routine are called "locals", and cannot be seen outside of the routine (unless they're passed as parameters). Variables that are accessible to all routines are called "globals".
 
 ```
 Each routine has two parts, header and body. The header says what the
@@ -4716,8 +4037,7 @@ does not go through the normal sound apparatus on the computer, and does
 not allow the program to continue executing until it is done, making it the
 ideal choice for testing. See "Debugging" for more information.
 ```
-You can also make your computer talk, with the kluge's thirty-nine esoteric
-"speech manager" functions, or these three simple statements:
+You can also make your computer talk, with the kluge's thirty-nine esoteric "speech manager" functions, or these three simple statements:
 
 ```
 SAY a string.
@@ -4730,67 +4050,40 @@ To silence the talking (but not the other sounds), set "the silent flag".
 
 ## SPECIAL IMPERATIVES
 
-My three "special imperatives" are probably better thought of as "special
-purpose imperatives". One of them you may, on occasion, find yourself using.
-We hope, eventually, to eliminate it altogether. The other two are for geeks.
+My three "special imperatives" are probably better thought of as "special purpose imperatives". Um deles pode, por vezes, encontrar-se a utilizar. Esperamos, em última análise, eliminá-la completamente. The other two are for geeks.
 
-An "employ" imperative must be the only statement in a routine. It tells me to
-use another routine in place of that one. It only works when the parameters
-of both routines are the same in order and type. You can find examples in my
-noodle; look for ": employ". You can similarly define alternate wordings by
-writi multiple headers separated by semi-colons, like this:
+An "employ" imperative must be the only statement in a routine. It tells me to use another routine in place of that one. It only works when the parameters of both routines are the same in order and type. You can find examples in my noodle; look for ": employ". You can similarly define alternate wordings by writi multiple headers separated by semi-colons, like this:
 
 TO clear the screen; TO erase the screen; To blank the screen: [code here]
 
-A "push" imperative evaluates an expression and places the result — which
-must be a one, two, or four-byte value — on the kluge's stack. You probably
-won't be needing this one. I don't even use it. It's left over from the days
-when my CALL statement (see the "Kluge" topic) was still under development.
-The general format, nevertheless, is:
+A "push" imperative evaluates an expression and places the result — which must be a one, two, or four-byte value — on the kluge's stack. You probably won't be needing this one. Eu nem sequer o uso. It's left over from the days when my CALL statement (see the "Kluge" topic) was still under development. The general format, nevertheless, is:
 
 PUSH an expression.
 
-An "intel" imperative inserts literal machine code into your executable file.
-Convoluted examples can be found in various places in my noodle. It's a pity
-the Intel is not a stack machine. The format is trivial:
+An "intel" imperative inserts literal machine code into your executable file. É possível encontrar exemplos complexos em vários lugares do meu mérito. It's a pity the Intel is not a stack machine. The format is trivial:
 
 INTEL nibble literal.
 
-If you're wondering why I don't have a built-in assembler, it's because it's
-not necessary. There is actually very little machine language in my brain, and
-as I get faster, more and more of it is replaced with Plain English. Besides,
-Osmosian Masters like to assemble in their heads. It keeps them young.
+If you're wondering why I don't have a built-in assembler, it's because it's not necessary. There is actually very little machine language in my brain, and as I get faster, more and more of it is replaced with Plain English. Besides, Osmosian Masters like to assemble in their heads. It keeps them young.
 
 
 ## SPOTS
 
-A "spot" is my most basic graphic object. This is not quite the definition in
-my noodle, but it will do for our purposes:
+A "spot" is my most basic graphic object. This is not quite the definition in my noodle, but it will do for our purposes:
 
 A spot has an x coord and a y coord.
 
-This is a picture of a spot, with the parts labeled. Note that I am using the
-nicknames of the fields here, as you probably will in your programs.
+This is a picture of a spot, with the parts labeled. Note que estou usando os apelidos dos campos aqui, como você provavelmente usará em seus programas.
 
 Spots are made from an x and a y, or you can get one from someplace else:
 
-MAKE a spot WITH this AND that.
-PUT the mouse's spot INTO a spot.
+MAKE a spot WITH this AND that. PUT the mouse's spot INTO a spot.
 
-You can, of course, DRAW a spot. But don't expect it to be fast enough to be
-useful. The kluge's video processing is one of its worst features. And since it
-has no good features at all, that's not very encouraging.
+You can, of course, DRAW a spot. But don't expect it to be fast enough to be useful. O processamento do kluge é uma das piores características de seu vídeo. And since it has no good features at all, that's not very encouraging.
 
-Spots are used primarily as components of other graphic objects. Like boxes,
-lines, and polygon vertices. Sometimes they're used as abstract coordinates
-with no visible representation, like "the mouse's spot" in the example above.
-See the "Units of Measure" page for a full discussion of coordinates.
+Spots are used primarily as components of other graphic objects. Like boxes, lines, and polygon vertices. Sometimes they're used as abstract coordinates with no visible representation, like "the mouse's spot" in the example above. See the "Units of Measure" page for a full discussion of coordinates.
 
-I have routines in my noodle that will tell you if a spot IS IN or IS ON any of
-my other graphic objects, where ON means "on the edge of". The IN deciders
-are exact, and include the edges. The ON deciders are used by my writer and
-allow about three pixels of slop so you don't go crazy trying to click on your
-shapes. You can copy these routines and make ones with no slop if you like.
+I have routines in my noodle that will tell you if a spot IS IN or IS ON any of my other graphic objects, where ON means "on the edge of". The IN deciders are exact, and include the edges. The ON deciders are used by my writer and allow about three pixels of slop so you don't go crazy trying to click on your shapes. You can copy these routines and make ones with no slop if you like.
 
 ## X •
 
@@ -4799,33 +4092,17 @@ shapes. You can copy these routines and make ones with no slop if you like.
 
 ## STRINGS
 
-I store "strings" in two parts: a built-in record with a pair of byte pointers
-called first and last, and a dynamic array containing the actual bytes, like so:
+I store "strings" in two parts: a built-in record with a pair of byte pointers called first and last, and a dynamic array containing the actual bytes, like so:
 
-The numbers in the diagram, in case you haven't guessed, are fictitious
-addresses. A string is blank if the first is nil (no memory allocated yet), or
-the last is less than the first (which allows me to pre-allocate memory). Note
-that even though the data part of a string is dynamically allocated, you never
-have to "create" or "destroy" strings. I take care of everything so you can:
+The numbers in the diagram, in case you haven't guessed, are fictitious addresses. A string is blank if the first is nil (no memory allocated yet), or the last is less than the first (which allows me to pre-allocate memory). Note that even though the data part of a string is dynamically allocated, you never have to "create" or "destroy" strings. I take care of everything so you can:
 
-PUT something INTO a string.
-APPEND something TO a string.
-INSERT something INTO a STRING before a byte#.
-REMOVE THE FIRST BYTE FROM a string.
-REMOVE THE LAST BYTE FROM a string.
-FILL a string WITH a byte GIVEN a count.
-REMOVE LEADING BYTES FROM a string GIVEN a count.
-REMOVE TRAILING BYTES FROM a string GIVEN a count.
-REMOVE BYTES FROM a string GIVEN a substring.
+PUT something INTO a string. APPEND something TO a string. INSERT something INTO a STRING before a byte#. REMOVE THE FIRST BYTE FROM a string. REMOVE THE LAST BYTE FROM a string. FILL a string WITH a byte GIVEN a count. REMOVE LEADING BYTES FROM a string GIVEN a count. REMOVE TRAILING BYTES FROM a string GIVEN a count. REMOVE BYTES FROM a string GIVEN a substring.
 
-You can also UPPERCASE, LOWERCASE, or CAPITALIZE a string. And you
-can, of course, get a string's LENGTH, in bytes. Not to mention:
+You can also UPPERCASE, LOWERCASE, or CAPITALIZE a string. And you can, of course, get a string's LENGTH, in bytes. Not to mention:
 
 GET a width GIVEN a string AND a font.
 
-Furthermore, you can concatenate strings with strings — and other kinds of
-data — using the infix THEN operator. See the topic on "Expressions" for a
-description of the clever way my creators implemented this.
+Furthermore, you can concatenate strings with strings — and other kinds of data — using the infix THEN operator. See the topic on "Expressions" for a description of the clever way my creators implemented this.
 
 ## 16 27 H E L L O W O R L D!
 
@@ -4835,9 +4112,7 @@ first last 161718192021222324252627
 
 ## SUBSTRINGS
 
-A "substring" is a part of a string. Substrings are implemented by a built-in
-record that looks just like a string — a pair of byte pointers called first and
-last — which makes them compatible. If, for example, this was a string:
+A "substring" is a part of a string. Substrings are implemented by a built-in record that looks just like a string — a pair of byte pointers called first and last — which makes them compatible. If, for example, this was a string:
 
 This could be a substring of it (the "WORLD" part):
 
@@ -4845,20 +4120,15 @@ When you:
 
 SLAP a substring ON a string.
 
-I set the first and the last of the substring to span the entire string. This
-allows you to work your way through the string forward or backward by
-adding to the first or subtracting from the last. You can also:
+I set the first and the last of the substring to span the entire string. This allows you to work your way through the string forward or backward by adding to the first or subtracting from the last. You can also:
 
 POSITION a substring ON a string.
 
-Which sets up the first, but not the last, of the substring, making it initially
-blank but ready for manipulation — by adding to the last you can "vacuum"
-the original string into your substring a byte at a time.
+Which sets up the first, but not the last, of the substring, making it initially blank but ready for manipulation — by adding to the last you can "vacuum" the original string into your substring a byte at a time.
 
 Look for "substring" in my noodle for lots of sample applications.
 
-The primary use of substrings, however, is in "riders", which are discussed in
-this glossary under the topic of the same name.
+The primary use of substrings, however, is in "riders", which are discussed in this glossary under the topic of the same name.
 
 ## 16 27 H E L L O W O R L D!
 
@@ -4873,179 +4143,100 @@ first last
 
 ## TERMS
 
-A "term" is a reference to a piece of data. Terms are used in both
-expressions and in conditional and imperative statements to indicate what
-should be operated upon. Terms come in many varieties:
+A "term" is a reference to a piece of data. Terms are used in both expressions and in conditional and imperative statements to indicate what should be operated upon. Terms come in many varieties:
 
-A "literal term" is either a number, ratio, mixed, string, pointer, flag, or nibble
-literal. See "Literals" for information on how to formulate each of these.
+A "literal term" is either a number, ratio, mixed, string, pointer, flag, or nibble literal. See "Literals" for information on how to formulate each of these.
 
-A "local term" is a variable defined within, and usually confined to, a routine.
-See "Local Variables" for more information.
+A "local term" is a variable defined within, and usually confined to, a routine. See "Local Variables" for more information.
 
 A "global term" is the name of a global variable. See "Global Variables".
 
-A "signed term" is any term with a plus or minus sign in front of it. A space is
-required after the sign so I don't mistake it for part of a name.
+A "signed term" is any term with a plus or minus sign in front of it. A space is required after the sign so I don't mistake it for part of a name.
 
-A "ratio term" is a ratio made from other terms, rather than literal numbers.
-Spaces are required around the slash, as in "the height / the width".
+A "ratio term" is a ratio made from other terms, rather than literal numbers. Spaces are required around the slash, as in "the height / the width".
 
-A "possessive term" is any term followed by a possessive phrase, like "the
-string's length" or "a polygon's magnitude". See "Possessives" for details.
+A "possessive term" is any term followed by a possessive phrase, like "the string's length" or "a polygon's magnitude". See "Possessives" for details.
 
-A "coerced term" is a term whose type you want to forcibly change. I will
-always treat a pointer, for example, as a pointer — unless you coerce it into
-something else, like this: "the pointer AS A NUMBER". You will normally not
-need this feature unless you're a partly-reformed object-head and have
-defined a lot of things that are extensions of other things.
+A "coerced term" is a term whose type you want to forcibly change. I will always treat a pointer, for example, as a pointer — unless you coerce it into something else, like this: "the pointer AS A NUMBER". You will normally not need this feature unless you're a partly-reformed object-head and have defined a lot of things that are extensions of other things.
 
-Now I know this sounds complicated, and it is. But you don't have to think
-about any of this, just like you don't have to think about nouns and verbs to
-speak proper English. Type in what you're thinking and let me do the rest.
+Now I know this sounds complicated, and it is. But you don't have to think about any of this, just like you don't have to think about nouns and verbs to speak proper English. Type in what you're thinking and let me do the rest.
 
 
-## TEXT
+## O CAMPO DE TEXTO
 
-There is a powerful thing called "text" in my noodle. It is used to implement
-editable text boxes, large and small. Dialogs, for example. Or text shapes on
-pages. My editor, in fact, is mostly just a big text box. Here is the definition:
+There is a powerful thing called "text" in my noodle. It is used to implement editable text boxes, large and small. Diálogos, por exemplo. Or text shapes on pages. Meu editor, de fato, é principalmente apenas uma grande caixa de texto. Here is the definition:
 
-A text is a thing with
-a box, an origin,
-a pen color, a font, an alignment,
-some rows,
-a margin,
-a scale ratio,
-a wrap flag,
-a horizontal scroll flag,
-a vertical scroll flag,
-a selection,
-a modified flag,
-a last operation,
-some texts called undos, and
-some texts called redos.
+A text is a thing with a box, an origin, a pen color, a font, an alignment, some rows, a margin, a scale ratio, a wrap flag, a horizontal scroll flag, a vertical scroll flag, a selection, a modified flag, a last operation, some texts called undos, and some texts called redos.
 
-As you can see, this is no trivial thing. The good news is that my noodle will
-handle most of the details for you. Normally, you won't do much more than:
+As you can see, this is no trivial thing. The good news is that my noodle will handle most of the details for you. Normally, you won't do much more than:
 
-CREATE a text.
-DRAW a text.
-DESTROY a text.
+CREATE a text. DRAW a text. DESTROY a text.
 
-You should initialize your text's box, pen, font, alignment, margin, and flags
-after you create it. And you'll have to pass any events related to your text
-box down to me, of course, so I can take care of all the hard stuff for you.
-My text event handlers are documented on the following two pages.
+You should initialize your text's box, pen, font, alignment, margin, and flags after you create it. And you'll have to pass any events related to your text box down to me, of course, so I can take care of all the hard stuff for you. My text event handlers are documented on the following two pages.
 
 
 ## TEXT HANDLERS
 
 I will handle most of your text events for you, if you ask me nicely like this:
 
-HANDLE an event GIVEN a text (backspace key).
-HANDLE an event GIVEN a text (delete key).
-HANDLE an event GIVEN a text (down-arrow key).
-HANDLE an event GIVEN a text (end key).
-HANDLE an event GIVEN a text (enter key).
-HANDLE an event GIVEN a text (escape key).
-HANDLE an event GIVEN a text (home key).
-HANDLE an event GIVEN a text (left double click).
-HANDLE an event GIVEN a text (left-arrow key).
-HANDLE an event GIVEN a text (page-down key).
-HANDLE an event GIVEN a text (page-up key).
-HANDLE an event GIVEN a text (printable key).
-HANDLE an event GIVEN a text (right-arrow key).
-HANDLE an event GIVEN a text (tab key).
-HANDLE an event GIVEN a text (up-arrow key).
+HANDLE an event GIVEN a text (backspace key). HANDLE an event GIVEN a text (delete key). HANDLE an event GIVEN a text (down-arrow key). HANDLE an event GIVEN a text (end key). HANDLE an event GIVEN a text (enter key). HANDLE an event GIVEN a text (escape key). HANDLE an event GIVEN a text (home key). HANDLE an event GIVEN a text (left double click). HANDLE an event GIVEN a text (left-arrow key). HANDLE an event GIVEN a text (page-down key). HANDLE an event GIVEN a text (page-up key). HANDLE an event GIVEN a text (printable key). HANDLE an event GIVEN a text (right-arrow key). HANDLE an event GIVEN a text (tab key). HANDLE an event GIVEN a text (up-arrow key).
 
-I know it may seem like a nuisance to dispatch all of these events separately,
-but that is exactly what makes my text generally useful. Two examples:
+I know it may seem like a nuisance to dispatch all of these events separately, but that is exactly what makes my text generally useful. Two examples:
 
-If you have a text box with only one line, you will probably want to ignore up
-and down ARROW keys, while your multi-line text boxes will pass them down to
-me so I can reposition the caret.
+If you have a text box with only one line, you will probably want to ignore up and down ARROW keys, while your multi-line text boxes will pass them down to me so I can reposition the caret.
 
-If you're using a text box as a dialog, you will probably cancel the thing when
-the ESCAPE key is pressed, and execute on the ENTER key. In normal text,
-you will undoubtedly do something else.
+If you're using a text box as a dialog, you will probably cancel the thing when the ESCAPE key is pressed, and execute on the ENTER key. In normal text, you will undoubtedly do something else.
 
-See what I mean? You're in control. So you have to issue the orders.
+See what I mean? Você está no controle. So you have to issue the orders.
 
 
 TEXT HANDLERS (continued)
 
 I will also handle a number of other, high-level text operations for you:
 
-HANDLE CUT given a text.
-HANDLE COPY given a text.
-HANDLE PASTE given a text.
+HANDLE CUT given a text. HANDLE COPY given a text. HANDLE PASTE given a text.
 
 HANDLE SELECT ALL given a text.
 
-HANDLE FONT HEIGHT given a text and a font height.
-HANDLE FONT NAME given a text and a font name.
+HANDLE FONT HEIGHT given a text and a font height. HANDLE FONT NAME given a text and a font name.
 
 HANDLE PEN given a text and a color.
 
-HANDLE INDENT given a text.
-HANDLE OUTDENT given a text.
+HANDLE INDENT given a text. HANDLE OUTDENT given a text.
 
-HANDLE UPPERCASE given a text.
-HANDLE LOWERCASE given a text.
+HANDLE UPPERCASE given a text. HANDLE LOWERCASE given a text.
 
 And I can:
 
-HANDLE UNDO given a text.
-HANDLE REDO given a text.
+HANDLE UNDO given a text. HANDLE REDO given a text.
 
 Whenever you ask. Up to 32 levels deep.
 
-Now to get started with text, I suggest you go play with my "console" a while,
-then check out the console code in my noodle. After that, you might want to
-take a look at my editor. But if you really want to see text in action, look in
-the writer. Finally, spend a few minutes with the dialog stuff in my desktop.
+Now to get started with text, I suggest you go play with my "console" a while, then check out the console code in my noodle. After that, you might want to take a look at my editor. But if you really want to see text in action, look in the writer. Finally, spend a few minutes with the dialog stuff in my desktop.
 
 
 ## THINGS
 
-The word "thing" is very special to me. Whenever I see it in a type definition,
-I create a special dynamic record, and a special kind of chain record, so you
-can create lists of your things. In the Cal Monet, for example, you said:
+The word "thing" is very special to me. Whenever I see it in a type definition, I create a special dynamic record, and a special kind of chain record, so you can create lists of your things. In the Cal Monet, for example, you said:
 
-A work is a thing with a URL and a painting.
+Uma obra de arte é uma coisa com uma URL e uma pintura.
 
 But I got very excited and modified and expanded this definition to read:
 
-A work is a pointer to a work record.
-A work record has a next work, a previous work, a URL, and a painting.
-Some works are some things with a first work and a last work.
+A work is a pointer to a work record. A work record has a next work, a previous work, a URL, and a painting. Some works are some things with a first work and a last work.
 
 You didn't, of course, know that. But I freely admit it, because it lets you:
 
-APPEND a thing TO some things.
-APPEND some things TO some other things.
-INSERT a thing INTO some things AFTER another thing.
-INSERT a thing INTO some things BEFORE another thing.
-INSERT some things INTO some other things AFTER a thing.
-INSERT some things INTO some other things BEFORE a thing.
-MOVE a thing FROM some things TO some other things.
-MOVE some things TO some other things.
-PREPEND a thing TO some things.
-PREPEND some things TO some other things.
-REMOVE a thing FROM some things.
-REVERSE some things.
+APPEND a thing TO some things. APPEND some things TO some other things. INSERT a thing INTO some things AFTER another thing. INSERT a thing INTO some things BEFORE another thing. INSERT some things INTO some other things AFTER a thing. INSERT some things INTO some other things BEFORE a thing. MOVE a thing FROM some things TO some other things. MOVE some things TO some other things. PREPEND a thing TO some things. PREPEND some things TO some other things. REMOVE a thing FROM some things. REVERSE some things.
 
-I also have a function in my noodle that will "put some things' count into a
-count" for you. All you have to remember is to CREATE and DESTROY each
-of your things. See "Memory Management" for further information.
+I also have a function in my noodle that will "put some things' count into a count" for you. All you have to remember is to CREATE and DESTROY each of your things. See "Memory Management" for further information.
 
 
 ## TIMERS
 
 ```
 A tick is approximately 1 millisecond. "The system's tick count" is the number
-of milliseconds since the last restart. It wraps around every 24.8 days or so.
+of milliseconds since the last restart. Ele embrulha a cada 24,8 dias aproximadamente.
 What happens then is unknown, since no kluge has ever stayed up that long.
 ```
 ```
@@ -5071,8 +4262,7 @@ I use timers to make sure I can recompile myself in less than three seconds.
 Look in the bottom of a "listing" to see them all. You can use them to make
 your programs lightning-fast, as well.
 ```
-One-shot timings can be accomplished simply by inserting "start a timer" and
-"stop the timer" at the appropriate spots in your code.
+One-shot timings can be accomplished simply by inserting "start a timer" and "stop the timer" at the appropriate spots in your code.
 
 ```
 Cumulative timings can be collected by calling "reset" once, then "restart"
@@ -5100,56 +4290,40 @@ Next, there are "subset types" that represent some of the instances of some
 other type. My noodle, for example, includes many subset types, like these:
 ```
 ```
-A count is a number.
-A name is a string.
+Um número é contador.
+Um nome é uma string.
 ```
 ```
 Thirdly, I know about "unit-of-measure types". These tell me how to convert
 one kind of unit into another. Examples from the noodle:
 ```
 ```
-A foot is 12 inches.
-An hour is 60 minutes.
+Um pé tem 12 polegadas.
+Uma hora é de 60 minutos.
 ```
 ```
 I also understand "record" types. See "Records" for details.
 ```
-And let's not forget "pointer types", though you will rarely need to use them
-directly. I know, for example, that "a byte pointer is a pointer to a byte", and
-I use byte pointers to manage your strings. See "Strings", "Substrings",
-"Riders", and "Possessives" for more information.
+And let's not forget "pointer types", though you will rarely need to use them directly. I know, for example, that "a byte pointer is a pointer to a byte", and I use byte pointers to manage your strings. See "Strings", "Substrings", "Riders", and "Possessives" for more information.
 
 ```
 Lastly, I know all about "thing" types. There are many in my noodle, including
 console, event, picture, polygon, text, and vertex, all of which are discussed
-elsewhere in this glossary. And you can define your own things, as well. See
+elsewhere in this glossary. E também pode definir as suas próprias coisas. See
 the topic on "Things" here, and try to recall the "works" in the Cal Monet.
 ```
 
 ## UNITS OF MEASURE
 
-In my noodle, the basic unit of measure for graphical objects is the "twip",
-which is 1/20 of a printer's point, or 1/1440 of an inch. All coordinates are
-either expressed directly in, or are reduced to, twips. Here's the definition:
+In my noodle, the basic unit of measure for graphical objects is the "twip", which is 1/20 of a printer's point, or 1/1440 of an inch. All coordinates are either expressed directly in, or are reduced to, twips. Here's the definition:
 
-A coord is some twips.
+Um coord é algumas martelas.
 
-Now, unlike the mathematical model — which considers coordinates to be
-invisible and dimensionless abstractions — my model knows coordinates as
-actual spots on a device, such as a screen or a page. Increasing "x" values go
-across, and increasing "y" values go down, the screen or page. Here, for
-example, is a box with left-top at 2-1 and bottom-right at 5-3:
+Now, unlike the mathematical model — which considers coordinates to be invisible and dimensionless abstractions — my model knows coordinates as actual spots on a device, such as a screen or a page. Increasing "x" values go across, and increasing "y" values go down, the screen or page. Here, for example, is a box with left-top at 2-1 and bottom-right at 5-3:
 
-Count the dots and note that the width of this box is four, not three, units.
-And that it is three, not two, units high. Measuring this way makes drawing
-work nicely — another box from 5-1 to 6-3, for instance, will rightly overlap
-this box along its left edge. You can, however, get the "mathematical" width
-and height of this box — which are each one unit less, and are useless for
-drawing — using the X-EXTENT and Y-EXTENT functions.
+Count the dots and note that the width of this box is four, not three, units. E que são três, e não duas, unidades de altura. Measuring this way makes drawing work nicely — another box from 5-1 to 6-3, for instance, will rightly overlap this box along its left edge. You can, however, get the "mathematical" width and height of this box — which are each one unit less, and are useless for drawing — using the X-EXTENT and Y-EXTENT functions.
 
-Other units of measure you will find in my noodle are: milliseconds, seconds,
-minutes, and hours; inches and feet; kilobytes, megabytes, and gigabytes;
-and "percent", which I usually convert to a ratio with 100 in the denominator.
+Other units of measure you will find in my noodle are: milliseconds, seconds, minutes, and hours; inches and feet; kilobytes, megabytes, and gigabytes; and "percent", which I usually convert to a ratio with 100 in the denominator.
 
 ## 0 1 2 3 4 5
 
@@ -5173,51 +4347,7 @@ Index
 
 ## INDEX
 
-alt-tab, 5, 21, 23, 56
-arithmetic, 11, 57, 59, 74, 85
-articles, 11, 20, 80, 85
-ascii, 58
-at, 75
-basic skills, 59
-bits, 60
-boxes, 61
-break, 11, 82, 91
-built-in types, 62
-byte, 58, 62
-call, 82, 86
-called, 11, 75, 85
-canvas, 24, 25
-colors, 28, 63
-comments, 18, 19, 56, 64
-compatibly, 86
-compiler, 4, 9
-conditionals, 11, 56, 65, 100
-conjunctions, 11, 85
-console, 66
-contractions, 68, 85
-coordinates, 118
-cursor, 5, 22, 37, 39, 44, 72, 80, 83
-debugging, 67
-deciders, 11, 68, 69, 91, 105
-definite articles, 11, 80
-desktop, 4, 5
-directory, 6, 15, 56
-document, 6
-drawing, 24, 25, 70
-dump, 6
-editor, 4, 7
-ellipse, 71
-employ, 82, 107
-equal, 11, 85
-equations, 12
-escape, 6, 7
-events, 17, 20, 22, 72, 73
-exe, 9, 56
-exit, 11, 68, 82, 91
-expressions, 11, 57, 59, 74, 85
-fields, 75, 98
-files, 76, 77
-finder, 4, 6
+alt-tab, 5, 21, 23, 56 arithmetic, 11, 57, 59, 74, 85 articles, 11, 20, 80, 85 ascii, 58 at, 75 basic skills, 59 bits, 60 boxes, 61 break, 11, 82, 91 built-in types, 62 byte, 58, 62 call, 82, 86 called, 11, 75, 85 canvas, 24, 25 colors, 28, 63 comments, 18, 19, 56, 64 compatibly, 86 compiler, 4, 9 conditionals, 11, 56, 65, 100 conjunctions, 11, 85 console, 66 contractions, 68, 85 coordinates, 118 cursor, 5, 22, 37, 39, 44, 72, 80, 83 debugging, 67 deciders, 11, 68, 69, 91, 105 definite articles, 11, 80 desktop, 4, 5 directory, 6, 15, 56 document, 6 drawing, 24, 25, 70 dump, 6 editor, 4, 7 ellipse, 71 employ, 82, 107 equal, 11, 85 equations, 12 escape, 6, 7 events, 17, 20, 22, 72, 73 exe, 9, 56 exit, 11, 68, 82, 91 expressions, 11, 57, 59, 74, 85 fields, 75, 98 files, 76, 77 finder, 4, 6
 
 ```
 finding, 7
