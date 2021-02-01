@@ -114,7 +114,7 @@ Lista de Verbos em Ordem Alfabética
 |move|mover|-|-|-|✔️|
 |multiply|multiplicar|-|-|-|✔️|
 |name|nomear|-|-|-|✔️|
-|negate|nomear|-|-|-|✔️|
+|negate|negar|-|-|-|✔️|
 |non-destructively|**[advérbio]**|-|-|-|✔️|
 |normalize|normalizar|-|-|-|✔️|
 |null terminate|anular|-|-|-|✔️|
