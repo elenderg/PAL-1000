@@ -2974,16 +2974,16 @@ O último campo é parecido com o segundo, onde se assume que a variável CÔNJU
 O sistema de arquivos do Windows é uma coisa de beleza insuperável, se igualando a uma obra de arte... Brincadeirinha. Na verdade o sistema de arquivos do Windows é uma verdadeira bagunça. Só pra você ter uma idéia:
 
 `Um endereço completo é um texto.` ` \ nome completo do arquivo = c:\pasta1\subpasta2\arquivo.exe <br>
-Um endereço de unidade é um texto. <code> \ letra da unidade seguido dois pontos e barra invertida. Exemplo -> c:\
-<br>Um endereço de pasta é um endereço completo. <code> \  Exemplo -> c:\pasta1\pasta2\
-<br>Um nome de pasta é um texto. <code> \ apenas o nome da pasta em si seguido da barra invertida = pasta2\ <br>
-Um nome completo de arquivo é um texto. <code> \ nome do arquivo após a última barra invertida até o fim da extensão. Exemplo: aquivo.exe <br>
-Uma extensão de arquivo com ponto é um texto. <code> \ Exemplo: .ext <br>
-Um designador é um texto. <code> \ nome da pasta ou nome do arquivo</p>
+Um endereço de unidade é um texto. <code> \ letra da unidade seguido dois pontos e barra invertida. Exemplo -> c:\ <br>
+Um endereço de pasta é um endereço completo.` ` \  Exemplo -> c:\pasta1\pasta2\
+<br>Um nome de pasta é um texto.` ` \ apenas o nome da pasta em si seguido da barra invertida = pasta2\ <br>
+Um nome completo de arquivo é um texto.` ` \ nome do arquivo após a última barra invertida até o fim da extensão. Exemplo: aquivo.exe <br>
+Uma extensão de arquivo com ponto é um texto.` ` \ Exemplo: .ext <br>
+Um designador é um texto.` ` \ nome da pasta ou nome do arquivo`
 
-<p spaces-before="0">Mesmo com tanta cofusão, o compilador consegue:</p>
+Mesmo com tanta cofusão, o compilador consegue:
 
-<p spaces-before="0"><code>EXTRAIR qualquer uma dos itens acima USANDO um endereço completo.`
+`EXTRAIR qualquer uma dos itens acima USANDO um endereço completo.`
 
 Ou ainda:
 
@@ -3993,234 +3993,243 @@ O compilador armazena "strings" em duas partes: um registro integrado que conté
 
 Os números do diagrama, caso você não tenha percebido, são apenas endereços fictícios. Um texto está em branco se o *primeiro ponteiro de byte* estiver vazio (sem memória alocada nele ainda), ou se o último ponteiro de byte for menor que o primeiro (o que permite a pré-alocação de memória). Observeque mesmo que a parte de dados de um texto seja dinamicamente alocada, você nunca tem que "criar" ou "destruir" a string. O compilador toma conta de tudo isso, assim você pode usar comandos como:
 
-`COLOQUE algo EM um texto.`<br> `ADICIONE algo NO FINAL DE um texto`<br> `ADICIONE algo A um texto ANTES de um byte#.`<br> REMOVE THE FIRST BYTE FROM a string. REMOVE THE LAST BYTE FROM a string. FILL a string WITH a byte GIVEN a count. REMOVE LEADING BYTES FROM a string GIVEN a count. REMOVE TRAILING BYTES FROM a string GIVEN a count. REMOVE BYTES FROM a string GIVEN a substring.
+`COLOQUE algo EM um texto.`<br> `ADICIONE algo NO FINAL DE um texto`<br> `ADICIONE algo A um texto ANTES de um byte#.`<br> `REMOVA O PRIMEIRO BYTE DE um texto.`<br> `REMOVA O ÚLTIMOO BYTE DE um texto.`<br> `PREENCHA um texto USANDO um byte A PARTIR DE uma contagem<.code><br>
+<code>REMOVA OS BYTES INICIAIS DE um texto USANDO uma contagem.`<br> `REMOVA OS BYTES FINAIS DE um texto USANDO uma contagem.`<br> `REMOVA OS BYTES DE um texto USANDO um subtexto.`<br>
 
-You can also UPPERCASE, LOWERCASE, or CAPITALIZE a string. And you can, of course, get a string's LENGTH, in bytes. Not to mention:
+Você também pode COLOCAR TODO O TEXTO EM LETRAS MAIÚSCULAS, MINÚSCULAS, ou COLOCAR O PRIMEIRO BYTE EM LETRAS MAIÚSCULAS. Além de obter o COMPRIMENTO de um texto, em bytes. Sem mencionar o comando:
 
-GET a width GIVEN a string AND a font.
+OBTENHA uma largura USANDO um texto E uma fonte.
 
-Furthermore, you can concatenate strings with strings — and other kinds of data — using the infix THEN operator. See the topic on "Expressions" for a description of the clever way my creators implemented this.
+Além disso, você pode concatenar (unir, juntar) um texto com outro — ou com outros tipos de dados — usando os operadores ENTÃO, EM SEGUIDA ou JUNTO COM . Veja o tópico "Expressões" para uma descrição da implementação dessa rotina.
 
-## 16 27 H E L L O W O R L D!
-
-```
-first last 161718192021222324252627
-```
-
-## SUBSTRINGS
-
-A "substring" is a part of a string. Substrings are implemented by a built-in record that looks just like a string — a pair of byte pointers called first and last — which makes them compatible. If, for example, this was a string:
-
-This could be a substring of it (the "WORLD" part):
-
-Eis o que acontece quando o comando abaixo é invocado:
-
-SLAP a substring ON a string.
-
-I set the first and the last of the substring to span the entire string. This allows you to work your way through the string forward or backward by adding to the first or subtracting from the last. Você também pode:
-
-POSITION a substring ON a string.
-
-Which sets up the first, but not the last, of the substring, making it initially blank but ready for manipulation — by adding to the last you can "vacuum" the original string into your substring a byte at a time.
-
-Look for "substring" in my noodle for lots of sample applications.
-
-The primary use of substrings, however, is in "riders", which are discussed in this glossary under the topic of the same name.
-
-## 16 27 H E L L O W O R L D!
+##
+###### 16 27 H E L L O W O R L D!
 
 ```
-first last 161718192021222324252627
-```
-## 22 26
-
-```
-first last
+primeiro último 161718192021222324252627
 ```
 
-## TERMS
+## SUBTEXTO
 
-A "term" is a reference to a piece of data. Terms are used in both expressions and in conditional and imperative statements to indicate what should be operated upon. Terms come in many varieties:
+Uma "substring" ou subtexto faz parte de um texto. Subtextos são implementadoss através um registro embutido que se parece como um texto — um subtexto tem um par de ponteiros de bytes chamado primeiro e último — o que os torna compatíveis com o texto. Se, por exemplo, isso fosse um texto:
 
-A "literal term" is either a number, ratio, mixed, string, pointer, flag, or nibble literal. See "Literals" for information on how to formulate each of these.
+Isto poderia ser um subtexto (a parte "WORLD"):
 
-A "local term" is a variable defined within, and usually confined to, a routine. See "Local Variables" for more information.
+Você pode usar o comando abaixo:
 
-A "global term" is the name of a global variable. See "Global Variables".
+COLOQUE um subtexto EM um texto.
 
-A "signed term" is any term with a plus or minus sign in front of it. A space is required after the sign so I don't mistake it for part of a name.
+Para fazer com que o compilador defina o primeiro byte do subtexto e o último byte do subtexto abarquem completamente o texto. Isso permite que você consiga avançar ou retroceder dentro do texto ao adicionar algo ao primeiro byte ou removendo algum item do último byte. Você também pode usar o comando:
 
-A "ratio term" is a ratio made from other terms, rather than literal numbers. Spaces are required around the slash, as in "the height / the width".
+POSICIONE um subtexto EM um texto.
 
-A "possessive term" is any term followed by a possessive phrase, like "the string's length" or "a polygon's magnitude". See "Possessives" for details.
+O que define o primeiro byte, mas não o último byte, do subtexto, deixando-o inicialmente em branco mas pronto para manipulação — ao adicionar o pultimo byte você pode "adicionar" o texto original no seu subtexto um byte por vez.
 
-A "coerced term" is a term whose type you want to forcibly change. I will always treat a pointer, for example, as a pointer — unless you coerce it into something else, like this: "the pointer AS A NUMBER". You will normally not need this feature unless you're a partly-reformed object-head and have defined a lot of things that are extensions of other things.
+Procure por "subtexto" no código fonte para obter exemplos.
 
-Now I know this sounds complicated, and it is. But you don't have to think about any of this, just like you don't have to think about nouns and verbs to speak proper English. Type in what you're thinking and let me do the rest.
+No entanto, o uso principal dos subtextos ocorre nos "percorredores", que são discutidos no neste glossário sob o tópico de mesmo nome.
+
+##
+###### 16 27 H E L L O W O R L D!
+
+```
+primeiro último 161718192021222324252627
+```
+##
+###### 22 26
+
+```
+primeiro último
+```
+
+## TERMOS
+
+Um "termo" é uma referência a um pedaço de dados. Os termos são usados tanto em expressões quanto em instruções condicionais e imperativas para indicar o que deve ser operado. Os termos têm muitas variedades:
+
+Um "termo literal" é um número, proporção, combinação, texto, ponteiro, bandeira ou um nibble literal. Veja "Literais" para informações sobre como formular cada um deles.
+
+Um "termo local" é uma variável definida dentro de uma rotina e que geralmente fica confinado dentro dela. Consulte "Variáveis Locais" para obter mais informações.
+
+Um "termo global" é o nome de uma variável global. Veja "Variáveis globais".
+
+Um "termo sinalizado" (assinalado) é qualquer termo com um sinal de mais ou menos na frente dele. Um espaço é necessário após o sinal, para que o compilador não a confunda com a parte de um nome.
+
+O "termo de proporção" é uma proporção feita a partir de outros termos, ao invés de números literais. Espaços são necessários ao redor da barra, como em "um valor de altura / um valor de largura".
+
+Um "termo possessivo" é qualquer termo seguido por uma frase possessiva, como "o comprimento de dentro do texto" ou "magnitude que faz parte do polígono". Veja a seção "Possessivos" para mais detalhes.
+
+Um "termo coagido" é um termo cujo tipo você deseja mudar à força. O compilador sempre tratará um ponteiro, por exemplo, como um ponteiro — a menos que você coaga-o a ser outra coisa, como neste exemplo: "o ponteiro COMO UM NÚMERO". Normalmente você não vai precisar deste recurso, a menos que você seja uma pessoa que ama objetos e tenha definido um monte de coisas que são extensões de outras coisas.
+
+Agora sei que isto parece complicado, e realmente é. Mas você não precisa pensar sobre nada disso, assim como você não precisa pensar em substantivos e verbos para falar português apropriadamente. Digite o que você está pensando e deixe o compilador tentar fazer o resto.
 
 
 ## O CAMPO DE TEXTO
 
-There is a powerful thing called "text" in my noodle. It is used to implement editable text boxes, large and small. Diálogos, por exemplo. Or text shapes on pages. Meu editor, de fato, é principalmente apenas uma grande caixa de texto. Here is the definition:
+Existe um componente chamado "campo de texto". Ele é utilizado para implementar campos editáveis de texto, sejam eles grandes ou pequenos. Diálogos, por exemplo. Ou formas de texto em páginas. O editor de código, na verdade, é na maior parte apenas uma grande caixa de texto. Eis a definição:
 
-A text is a thing with a box, an origin, a pen color, a font, an alignment, some rows, a margin, a scale ratio, a wrap flag, a horizontal scroll flag, a vertical scroll flag, a selection, a modified flag, a last operation, some texts called undos, and some texts called redos.
+`Um campo de texto é algo com<br>
+uma caixa, uma origem,<br>
+uma cor de caneta, uma fonte, um alinhamento,<br>
+algumas linhas,<br>
+uma margem,<br>
+uma proporção de escala,<br>
+uma bandeira de embrulho,<br>
+uma bandeira de rolagem horizontal,<br>
+uma bandeira de rolagem vertical,<br>
+uma seleção,<br>
+uma bandeira modificada,<br>
+uma última operação,<br>
+alguns textos chamados desfazimentos, e<br>
+alguns textos chamados refazimentos.<br></p>
 
-As you can see, this is no trivial thing. The good news is that my noodle will handle most of the details for you. Normally, you won't do much more than:
+<p spaces-before="0">Como você pode ver, esta não é uma definição trivial. Felizmente o compilador lida com a paior parte dos detalhes ra você. Normalmente, você não fará muito mais do que usar os seguintes comandos:</p>
 
-CREATE a text. DRAW a text. DESTROY a text.
+<p spaces-before="0"><code>CRIE um campo de texto.`<br> `DESENHE um campo de texto.`<br> `DESTRUA um campo de texto.`<br>
 
-You should initialize your text's box, pen, font, alignment, margin, and flags after you create it. And you'll have to pass any events related to your text box down to me, of course, so I can take care of all the hard stuff for you. My text event handlers are documented on the following two pages.
-
-
-## TEXT HANDLERS
-
-I will handle most of your text events for you, if you ask me nicely like this:
-
-HANDLE an event GIVEN a text (backspace key). HANDLE an event GIVEN a text (delete key). HANDLE an event GIVEN a text (down-arrow key). HANDLE an event GIVEN a text (end key). HANDLE an event GIVEN a text (enter key). HANDLE an event GIVEN a text (escape key). HANDLE an event GIVEN a text (home key). HANDLE an event GIVEN a text (left double click). HANDLE an event GIVEN a text (left-arrow key). HANDLE an event GIVEN a text (page-down key). HANDLE an event GIVEN a text (page-up key). HANDLE an event GIVEN a text (printable key). HANDLE an event GIVEN a text (right-arrow key). HANDLE an event GIVEN a text (tab key). HANDLE an event GIVEN a text (up-arrow key).
-
-I know it may seem like a nuisance to dispatch all of these events separately, but that is exactly what makes my text generally useful. Two examples:
-
-If you have a text box with only one line, you will probably want to ignore up and down ARROW keys, while your multi-line text boxes will pass them down to me so I can reposition the caret.
-
-If you're using a text box as a dialog, you will probably cancel the thing when the ESCAPE key is pressed, and execute on the ENTER key. In normal text, you will undoubtedly do something else.
-
-See what I mean? Você está no controle. So you have to issue the orders.
+Você deve inicializar a caixa do campo de texto, a caneta, a fonte, o alinhamento, a margem e as bandeiras depois de criá-lo. E você terá que passar todos os eventos relacionados à sua caixa de texto para o compilador, obviamente, para que ele possa cuidar de todas as coisas difíceis para você. Os manipuladores de eventos do campo de texto estão documentados nas duas páginas a seguir.
 
 
-TEXT HANDLERS (continued)
+## GERENCIADORES DE CAMPOS DE TEXTO
 
-I will also handle a number of other, high-level text operations for you:
+Conforme dito na página anterior, o compilador gerencia a maior parte dos eventos ou comandos que são enviados ao campo de texto, desde que você use os comandos apropriados:
 
-HANDLE CUT given a text. HANDLE COPY given a text. HANDLE PASTE given a text.
+`GERENCIE um evento USANDO um campo de texto (tecla backspace).`<br> `GERENCIE um evento USANDO um campo de texto (tecla delete).`<br> `GERENCIE um evento USANDO um campo de texto (tecla seta para baixo).`<br> `GERENCIE um evento USANDO um campo de texto (tecla end).`<br> `GERENCIE um evento USANDO um campo de texto (tecla enter).`<br> `GERENCIE um evento USANDO um campo de texto (tecla esc).`<br> `GERENCIE um evento USANDO um campo de texto (tecla home).`<br> `GERENCIE um evento USANDO um campo de texto (clique duplo).`<br> `GERENCIE um evento USANDO um campo de texto (seta esquerda).`<br> `GERENCIE um evento USANDO um campo de texto (tecla page down).`<br> `GERENCIE um evento USANDO um campo de texto (tecla page up).`<br> `GERENCIE um evento USANDO um campo de texto (tecla imprimível).`<br> `GERENCIE um evento USANDO um campo de texto (seta direita).`<br> `GERENCIE um evento USANDO um campo de texto (tecla tab).`<br> `GERENCIE um evento USANDO um campo de texto (seta para cima).`<br>
 
-HANDLE SELECT ALL given a text.
+Eu sei que pode parecer um incômodo despachar todos estes eventos separadamente, mas é exatamente isso o que torna o campo de texto geralmente útil. Por exemplo:
 
-HANDLE FONT HEIGHT given a text and a font height. HANDLE FONT NAME given a text and a font name.
+Se você tiver uma caixa de texto com apenas uma linha, provavelmente vai querer ignorar e as teclas de seta para cima e para baixo, enquanto que se você usar caixas de texto com várias linhas você vai querer utilizar essas teclas para mover o cursor de texto.
 
-HANDLE PEN given a text and a color.
+Se você estiver usando uma caixa de texto como uma caixa de diálogo, você provavelmente cancelará a operação quando a tecla ESC for pressionada, bem como você irá querer executar a operação ao pressionar a tecla ENTER. Em um campo de texto normal, provavelmente você utilizará a tecla ENTER para inserir uma quebra de linha por exemplo.
 
-HANDLE INDENT given a text. HANDLE OUTDENT given a text.
+Entendeu o que eu quis dizer? Você está no comando. Portanto, é você que tem que emitir as ordens.
+## CONTINUAÇÃO
 
-HANDLE UPPERCASE given a text. HANDLE LOWERCASE given a text.
+O compilador também gerencia de uma série de outras operações de texto de alto nível para você:
+
+`RECORTE O TEXTO DE um campo de texto.`<br> `COPIE O TEXTO DE um campo de texto.`<br> `COLE O TEXTO DE um campo de texto.`<br>
+
+`SELECIONE TODO O TEXTO DE um campo de texto.`<br>
+
+`GERENCIE A ALTURA DA FONTE usando um campo de texto e um valor de altura de fonte.`<br> `GERENCIE O NOME DA FONTE usando um campo de texto e um nome de fonte.`<br>
+
+`GERENCIE A COR DO TEXTO usando um campo de texto e uma cor.`<br>
+
+`GERENCIE O RECUO DO TEXTO usando um campo de texto.`<br> `GERENCIE O AVANÇO DO TEXTO usando um campo de texto.`<br>
+
+`TRANSFORME O TEXTO DE um campo de texto EM LETRAS MAIÚSCULAS.`<br> `TRANSFORME O TEXTO DE um campo de texto EM LETRAS MINÚSCULAS.`<br>
 
 Ou, se você preferir:
 
-HANDLE UNDO given a text. HANDLE REDO given a text.
+`DESFAÇA A OPERAÇÃO EM um campo de texto.`<br> `REFAÇA A OPERAÇÃO EM um campo de texto.`<br>
 
-Whenever you ask. Up to 32 levels deep.
+Você sempre pode usar os comandos acima. O máximo de vezes que você pode desfazer ou refazer uma operação é de 32.
 
-Now to get started with text, I suggest you go play with my "console" a while, then check out the console code in my noodle. After that, you might want to take a look at my editor. But if you really want to see text in action, look in the writer. Finally, spend a few minutes with the dialog stuff in my desktop.
-
-
-## THINGS
-
-The word "thing" is very special to me. Whenever I see it in a type definition, I create a special dynamic record, and a special kind of chain record, so you can create lists of your things. In the Cal Monet, for example, you said:
-
-Uma obra de arte é uma coisa com uma URL e uma pintura.
-
-But I got very excited and modified and expanded this definition to read:
-
-A work is a pointer to a work record. A work record has a next work, a previous work, a URL, and a painting. Some works are some things with a first work and a last work.
-
-You didn't, of course, know that. But I freely admit it, because it lets you:
-
-APPEND a thing TO some things. APPEND some things TO some other things. INSERT a thing INTO some things AFTER another thing. INSERT a thing INTO some things BEFORE another thing. INSERT some things INTO some other things AFTER a thing. INSERT some things INTO some other things BEFORE a thing. MOVE a thing FROM some things TO some other things. MOVE some things TO some other things. PREPEND a thing TO some things. PREPEND some things TO some other things. REMOVE a thing FROM some things. REVERSE some things.
-
-I also have a function in my noodle that will "put some things' count into a count" for you. All you have to remember is to CREATE and DESTROY each of your things. See "Memory Management" for further information.
+Se você quiser ter uma noção boa de como funciona o campo de texto, eu sugiro que você experimente o "console" por um tempo. e então confira o código fonte do console. Depois disso, você pode querer dar uma olhada no editor de código. Mas se você realmente quer ver o campo texto em ação, dê uma olhada no caderno. Finalmente, gaste alguns minutos com as caixas de diálogo no ambiente de trabalho.
 
 
-## TIMERS
+## COISAS
+
+Uma das palavras mais imporantes do compilador é a palavra "coisa". Sempre que o compilador lê a palavra coisa, ele cria um registro especial de tamanho dinâmico, além de criar um registro especial de lista encadeada, assim você pode criar uma lista de coisas. No nosso programa de exemplo, usamos o seguinte comando:
+
+`Uma obra de arte é uma coisa que tem uma URL e uma pintura.`
+
+Mas a definição pode ser expandida para ficar assim:
+
+`Uma obra de arte é um ponteiro para um registro de obra de arte.`<br> `Uma registro de obra de arte é um registro que tem uma próxima obra de arte, uma URL e uma pintura.`<br> `Algumas obras de arte são algumas coisas que têm uma primeira obra de arte e uma última obra de arte.`<br>
+
+Obviamente você não sabia disso. De qualquer forma, isso permite que você utilize os comandos:
+
+`ADICIONE uma coisa NO FINAL de algumas coisas.`<br> `ADICIONE algumas coisas NO FINAL de outras coisas.`<br> `INSIRA uma coisa DEPOIS de outra coisa DENTRO DE algumas coisas.`<br> `INSIRA uma coisa ANTES de outra coisa DENTRO DE algumas coisas.`<br> `INSIRA algumas coisas DEPOIS de outras coisas DENTRO DE uma coisa.`<br> `INSIRA algumas coisas ANTES de outras coisas DENTRO DE uma coisa.`<br> `MOVA uma coisa DE algumas coisas PARA outras coisas.`<br> `MOVA algumas coisas PARA outras coisas.`<br> `ADICIONE uma coisa NO INÍCIO de algumas coisas.`<br> `ADICIONE algumas coisas NO INÍCIO de outras coisas.`<br> `REMOVA uma coisa DE outras coisas.`<br> `INVERTA algumas coisas.`<br>
+
+Existe também uma função que permite que você "coloque a quantidade de algumas coisas" em uma contagem. Tudo o que você precisa lembrar é de CRIAR e DESTRUIR cada uma de suas coisas. Consulte "Gerenciamento de memória" para mais informações.
+
+
+## TEMPORIZADORES
 
 ```
-A tick is approximately 1 millisecond. "The system's tick count" is the number
-of milliseconds since the last restart. Ele embrulha a cada 24,8 dias aproximadamente.
-What happens then is unknown, since no kluge has ever stayed up that long.
+Um tique dura aproximadamente 1 milissegundo. "A contagem de tiques do sistema" é o número de milissegundos desde a última reinicialização. Ele reseta a cada 24,8 dias aproximadamente.
+O que se passa nessa altura é desconhecido,já que nenhum Windows ficou tanto tempo ligado sem dar pau.
 ```
 ```
-Any time you want, you can:
+Quando quiser, você pode:
 ```
 ```
-WAIT FOR some milliseconds.
+<code>AGUARDAR tantos milissegundos.</code><br>
+```
+<br>
+</code>
+```
+O compilador também entende unidades maiores como "minutos" ou "segundos".
 ```
 ```
-I will reduce larger units, such as "1 minute" or "3 seconds", for you.
+O compilador possui uma variável chamada de temporizador que permite que você utilize os seguintes comandos:
 ```
 ```
-I also have a type called "timer" in my noodle that lets you say things like:
+<code>ZERE o temporizador.</code><br>
+<code>REINICIE um temporizador.</code><br>
+<code>INICIE um temporizador.</code><br>
+<code>PARE um temporizador.</code><br>
 ```
+<br>
+REINICIE um temporizador.<br>
+INICIE um temporizador.<br>
+PARE um temporizador.<br>
+</code>
 ```
-RESET a timer.
-RESTART a timer.
-START a timer.
-STOP a timer.
+O compilador utiliza esses cronômetros para verificar o tempo de recompilação, por exemplo (que atualmente é cerca de 3 segundos, dependendo do hardware).
+Procure a seção "listagem" para ver todos os temporizadores. Você pode usá-los para tornar seus programas mais rápidos.
 ```
-```
-I use timers to make sure I can recompile myself in less than three seconds.
-Look in the bottom of a "listing" to see them all. You can use them to make
-your programs lightning-fast, as well.
-```
-One-shot timings can be accomplished simply by inserting "start a timer" and "stop the timer" at the appropriate spots in your code.
+Os tempos podem ser cronometrados simplesmente inserindo os comandos "inicie um temporizador" e "pare o temporizador" nos pontos apropriados no seu código.
 
 ```
-Cumulative timings can be collected by calling "reset" once, then "restart"
-and "stop" in pairs throughout your code.
+Tempos cumulativos podem ser acumulados usando o comando ""zerar" uma vez e "reiniciar" logo em seguida juntamente com o comando "parar".
 ```
 ```
-There is a function in my noodle that will get you "a timer's string" anytime
-you need it — even while it is running — and you can also concatenate timers
-and strings for display at any time using the infix THEN operator.
+Existe uma função no compilador que permite que você obtenha o texto de um temporizador a qualquer momento — mesmo durante sua execução. Você também pode utilizar as operações de concatenação de strings neles.
 ```
 
-## TYPES
+## TIPOS
 
 ```
-A "type" is a kind or sort of thing — a noun. An "instance" is an actual thing
-of a particular type — a proper noun. Globals, locals, and parameters are
-concrete instances of abstract types. This is what I understand about types:
+Um "tipo" é uma categoria ou espécie de coisa — um substantivo. Uma "instância" é uma coisa real de um tipo específico — um substantivo próprio. Globais, locais e parâmetros são instâncias concretas de tipos abstratos. Isso é o que o compilador entende sobre tipos:
 ```
 ```
-First of all, I have six primitive "built-in types" hard-wired into my brain:
-BYTE, WYRD, NUMBER, POINTER, FLAG, and RECORD. See "Built-in Types".
+Em primeiro lugar, existem seis tipos "embutidos" primitivos no meu compilador: BYTE, WYRD, NUMBER, POINTER, FLAG e RECORD. Consulte "Tipos Integrados".
 ```
 ```
-Next, there are "subset types" that represent some of the instances of some
-other type. My noodle, for example, includes many subset types, like these:
+Em seguida, há "subconjunto de tipos" que representam algumas das instâncias de algum outro tipo. O compilador, por exemplo, inclui muitos tipos de subconjunto, como estes:
 ```
 ```
 Um número é contador.
-Um nome é uma string.
+Um nome é um texto.
 ```
 ```
-Thirdly, I know about "unit-of-measure types". These tell me how to convert
-one kind of unit into another. Examples from the noodle:
+Em terceiro lugar, o compilador reconhece "tipos de unidade de medida". Assim ele pode converter um tipo de unidade em outro. Exemplos:
 ```
 ```
 Um pé tem 12 polegadas.
-Uma hora é de 60 minutos.
+Uma hora é 60 minutos.
 ```
 ```
-I also understand "record" types. See "Records" for details.
+O compilador também entende tipos de "registro". Veja a seção "Registros" para mais detalhes.
 ```
-And let's not forget "pointer types", though you will rarely need to use them directly. I know, for example, that "a byte pointer is a pointer to a byte", and I use byte pointers to manage your strings. See "Strings", "Substrings", "Riders", and "Possessives" for more information.
+E não vamos nos esquecer dos "tipos de ponteiro", embora você raramente precise usá-los diretamente. O compilador sabe, por exemplo, que "um ponteiro de bytes é um ponteiro para um byte" e ele uso ponteiros de bytes para gerenciar suas strings. Veja "Strings", "Substrings", "Percorredores", e "Possessivos" para obter mais informações.
 
 ```
-Lastly, I know all about "thing" types. There are many in my noodle, including
-console, event, picture, polygon, text, and vertex, all of which are discussed
-elsewhere in this glossary. E também pode definir as suas próprias coisas. See
-the topic on "Things" here, and try to recall the "works" in the Cal Monet.
+Por último, o compilador reconhece todos os tipos de "coisa". Existem várias no compilador, incluindo console, evento, imagem, polígono e vértice, todas elas são discutidas em outros lugares neste glossário. E também pode definir as suas próprias coisas. Consulte o tópico sobre "Coisas", e tente se lembrar das "obras de arte" do programa de exemplo.
 ```
 
-## UNITS OF MEASURE
+## UNIDADES DA MEDIDA
 
-In my noodle, the basic unit of measure for graphical objects is the "twip", which is 1/20 of a printer's point, or 1/1440 of an inch. All coordinates are either expressed directly in, or are reduced to, twips. Eis a definição:
+A unidade de medida básica para objetos gráficos é a "twip", que é 1/20 de um ponto de impressora, ou 1/1440 de uma polegada. Todas as coordenadas são expressas diretamente em twips, ou são convertidas para twips. Eis a definição:
 
-Um coord é algumas martelas.
+Um coordenada é alguns twips.
 
-Now, unlike the mathematical model — which considers coordinates to be invisible and dimensionless abstractions — my model knows coordinates as actual spots on a device, such as a screen or a page. Increasing "x" values go across, and increasing "y" values go down, the screen or page. Here, for example, is a box with left-top at 2-1 and bottom-right at 5-3:
+Agora, ao contrário do modelo matemático — que considera coordenadas como invisíveis abstrações indimensionadas — o modelo do compilador entende coordenadas como pontos reais em um dispositivo, como uma tela ou uma página. Valores grande de x e y vão além da tela ou página. Aqui, por exemplo temos uma caixa com o canto superior esquerdo em 2-1 e inferior direito, em 5-3:
 
-Count the dots and note that the width of this box is four, not three, units. E que são três, e não duas, unidades de altura. Measuring this way makes drawing work nicely — another box from 5-1 to 6-3, for instance, will rightly overlap this box along its left edge. You can, however, get the "mathematical" width and height of this box — which are each one unit less, and are useless for drawing — using the X-EXTENT and Y-EXTENT functions.
+Conte os pontos e note que a largura desta caixa é de quatro, não três, unidades. E que são três, e não duas unidades de altura. Medir desta forma faz com que o compilador desenhe bem — outra caixa entre 5-1 e 6-3, por exemplo, irá sobrepor corretamente esta caixa ao longo de sua borda esquerda. No entanto, você pode obter a largura e a altura desta caixa na forma "matemática" — que correspondem, cada uma, a uma unidade a menos, e são inúteis para desenho. Use as funções X-EXTENT e Y-EXTENT.
 
-Other units of measure you will find in my noodle are: milliseconds, seconds, minutes, and hours; inches and feet; kilobytes, megabytes, and gigabytes; and "percent", which I usually convert to a ratio with 100 in the denominator.
+Outras unidades de medida que você vai encontrar são: milissegundos, segundos, minutos e horas; polegadas e pés; kilobytes, megabytes, e gigabytes; e "porcento", que geralmente é convertido para uma proporção com 100 no denominador.
 
 ## 0 1 2 3 4 5
 
