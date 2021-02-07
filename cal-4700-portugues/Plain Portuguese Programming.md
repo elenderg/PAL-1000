@@ -1,18 +1,18 @@
 # Programação em Português Simples
 
 
-```
-Copyright © 2006 2021<br>
 
-A Ordem Osmosiana de Programadores<br>
+Copyright © 2006 2021
 
-http://www.osmosian.com<br>
-```
+A Ordem Osmosiana de Programadores<br/>  
+
+http://www.osmosian.com  
+
 
 
 ## CONTEÚDO
 
-Visão Geral<br> Programa de Amostra<br> Glossário<br>
+Visão Geral<br/>   Programa de Amostra<br/>   Glossário<br/>  
 
 ## Visão Geral
 
@@ -30,13 +30,13 @@ Seja bem-vindo ao PAL - *Portuguese Compiler And Linker*. A função principal d
 
 Eu sou capaz de me replicar e consigo me recompilar em menos de três segundos. Que é menos tempo do que o Word leva só para iniciar.
 
-**
-#### INSTALAÇÃO**
 
-De acordo com a filosofis da Ordem Osmosiana, os programas nunca devem exigir procedimentos especiais de instalação. O código fonte, o arquivo executável e toda a documentação (tanto em formato próprietário quanto em PDF) estão todos contidos na pasta CAL-4700. Basta clicar duas vezes no arquivo executável e o programa é iniciado no mesmo instante.
+#### INSTALAÇÃO
 
-**
-#### CONTATO PARA DÚVIDAS E OUTRAS QUESTÕES**
+De acordo com a filosofia da Ordem Osmosiana, os programas nunca devem exigir procedimentos especiais de instalação. O código fonte, o arquivo executável e toda a documentação (tanto em formato próprietário quanto em PDF) estão todos contidos na pasta CAL-4700. Basta clicar duas vezes no arquivo executável e o programa é iniciado no mesmo instante.
+
+
+#### CONTATO PARA DÚVIDAS E OUTRAS QUESTÕES
 
 Antes de mais nada, o PAL é o compilador mais avançado do mundo, quando se trata de analisar e interpretar comandos em língua portuguesa. Nenhum compilador nosso cometeu algum erro ou distorceu alguma informação. Todos eles, através de qualquer definição prática das palavras, são infalíveis e incapazes de cometer erros. Mesmo assim...
 
@@ -47,6 +47,14 @@ Questões e comentários podem ser enviados para *[help@osmosian.com](mailto:hel
 
 Quando o PAL é iniciado, ele preenche totalmente a tela para que você não precise mais olhar para aquela interface horrível que vem junto com o Windows. Em vez disso, você verá meu rosto simples mas honesto, assim:
 
+```
+A B C D E G G I J K ... W X Y Z 3 itens
+```
+```
+a:\ (unidade de disquete)<br/>  
+c:\ (disco rígido)<br/>  
+d:\ (unidade de cd-rom)<br/>  
+```
 Acho que é tudo bastante óbvio. Menus alfabéticos, avisos no canto superior direito. Área de trabalho no meio, abas (para escolher uma área de trabalho diferente) na parte inferior. Aliás, você pode arrastar as abas para a esquerda e para a direita para mudar a ordem delas, se preciso.
 
 Essas são as minhas setas. Elas aparecerão quando você precisar delas.
@@ -55,18 +63,19 @@ Observe que não há nenhuma barra de rolagem na interface. Isso é totalmente p
 
 Observe também que as teclas <kbd>Ctrl</kbd> e <kbd>Alt</kbd> são intercambiáveis. Dessa forma, você pode usar seu polegar ou o mindinho para pressionar as teclas de atalho. Uma das exceções é a combinação de teclas <kbd>Alt+Tab</kbd>, usada para mudar para outros aplicativos.
 
-```
-A B C D E G G I J K ... W X Y Z 3 itens
-```
-```
-a:\ (unidade de disquete)<br>
-c:\ (disco rígido)<br>
-d:\ (unidade de cd-rom)<br>
-```
 
 ## O EXPLORADOR DE ARQUIVOS
 
 O Explorador De Arquivos mostra o sistema de arquivos do Windows como ele realmente é. Ele não põe nenhuma moldura cafona nas janelas. Muito menos ícones feios. Apenas as pastas e o que há nelas.
+
+```
+A B C D E G G I J K ... W X Y Z 3 itens
+```
+```
+a:\ (unidade de disquete)<br/>  
+c:\ (disco rígido)<br/>  
+d:\ (unidade de cd-rom)<br/>  
+```
 
 Cada área de trabalho está inicialmente posicionada no nível mais baixo, como mostrado acima.
 
@@ -82,24 +91,12 @@ Quando você abre qualquer outra tipo de arquivo, o conteúdo do arquivo é conv
 
 Para fechar o arquivo, use o comando `Fechar`, clique na aba que você está utilizando, ou pressione a tecla `Esc`.
 
-```
-A B C D E G G I J K ... W X Y Z 3 itens
-```
-```
-a:\ (unidade de disquete)<br>
-c:\ (disco rígido)<br>
-d:\ (unidade de cd-rom)<br>
-```
 
 ## O BLOCO DE NOTAS
 
 O `bloco de notas` é simples e eficiente. Quando você abre um arquivo de texto, o conteúdo dele é exibido imediatamente. Você pode alterar o conteúdo à vontade usando o teclado e mouse, nas formas mencionadas anteriormente.
 
 Essas aqui, por exemplo, são as instruções que meus criadores me deram para imprimir um determinado número de cópias de um arquivo. Essa é uma parte do código que está presente no meu `bloco de notas`. Isso mesmo, eu estou editando o código do `bloco de notas` no próprio `bloco de notas`. Eu adoro poder fazer isto. É como olhar para a sua própria alma.
-
-Agora ouça atentamente — é assim que você faz para se deslocar rapidamente no meu bloco de notas.
-
-Digamos que você esteja procurando o código acima. Pressione `CTRL+HOME` para ir instantaneamente para o começo do arquivo. Em seguida, aperte `CTRL+F` e comece a digitar o que você quiser pesquisar. Digamos que você digite a letra <kbd>T</kbd>. Na mesma hora nós nos chegamos no primeiro `T` do arquivo. Agora continue e aperte a tecla `O`. Encontramos a palavra `To`. É só continuar digitando até onde precisar. Use a tecla <kbd>⌫</kbd> se você cometer um erro. Se você quiser encontrar a próxima palavra correspondente, pressione <kbd>Ctrl+N</kbd>. Para encerrar a busca, basta apertar a tecla <kbd>Esc</kbd>. Simples e eficiente, como tudo deveria ser.
 
 ```
 A B C D E G G I J K ... W X Y Z 681:
@@ -116,17 +113,19 @@ Imprima a cópia do arquivo.
 Repita.
 Termine de imprimir.
 ```
-## `bloco de notas`
+`bloco de notas`
+
+Agora ouça atentamente — é assim que você faz para se deslocar rapidamente no meu bloco de notas.
+
+Digamos que você esteja procurando o código acima. Pressione <kbd>CTRL+HOME</kbd> para ir instantaneamente para o começo do arquivo. Em seguida, aperte <kbd>CTRL+F</kbd></kbd> e comece a digitar o que você quiser pesquisar. Digamos que você digite a letra <kbd>T</kbd>. Na mesma hora nós nos chegamos no primeiro `T` do arquivo. Agora continue e aperte a tecla `O`. Encontramos a palavra `To`. É só continuar digitando até onde precisar. Use a tecla <kbd>⌫</kbd> se você cometer um erro. Se você quiser encontrar a próxima palavra correspondente, pressione <kbd>Ctrl+N</kbd>. Para encerrar a busca, basta apertar a tecla <kbd>Esc</kbd>. Simples e eficiente, como tudo deveria ser.
+
+
 
 ## O CADERNO
 
 O `caderno` é um programa de diagramação de páginas totalmente completo, que permite que você escreva documentações como essa de forma fácil. Na verdade, você pode encontrar este mesmo documento dentro da pasta documentação e visualizá-lo dentro do caderno, funcionando como um arquivo de ajuda.
 
 Quando você abre um arquivo criado no `caderno`, talvez esse mesmo que você esteja lendo agora, você vê uma lista de todas as páginas no documento:
-
-E quando você abre uma página, aí está:
-
-Páginas podem conter gráficos vetoriais, imagens do tipo bitmap e texto. Você pode efetuar uma verificação ortográfica, imprimir a página, ampliar ou reduzir o zoom da página, e muito mais. Mas o que realmente é bacana é que todos esses documentos são armazenados como texto simples. Vá em frente. Forçe o programa a abrir um documento criado no `caderno` como se fosse um texto criado no `bloco de notas`.
 
 ```
 A B C D E G G I J K ... W X Y Z 120 páginas
@@ -136,10 +135,18 @@ Programação em Português...
 SUMÁRIO...
 Visão Geral...
 ```
+
+E quando você abre uma página, aí está:
+
+
 ```
 A B C D E G G I J K ... W X Y Z Página 8
 ```
-## `o caderno`
+`o caderno`
+
+
+Páginas podem conter gráficos vetoriais, imagens do tipo bitmap e texto. Você pode efetuar uma verificação ortográfica, imprimir a página, ampliar ou reduzir o zoom da página, e muito mais. Mas o que realmente é bacana é que todos esses documentos são armazenados como texto simples. Vá em frente. Forçe o programa a abrir um documento criado no `caderno` como se fosse um texto criado no `bloco de notas`.
+
 
 O caderno é um programa de diagramação de páginas totalmente completo, que permite que você escreva documentações como essa de forma fácil. Na verdade, você pode encontrar este mesmo documento dentro da pasta documentação e visualizá-lo dentro do caderno, funcionando como um arquivo de ajuda.
 
@@ -149,12 +156,17 @@ Agora eu sei que a maioria dos guias de programação iria mostrar um pequeno al
 
 Sei que pode isso pode te deixar um pouco aprreensivo. Mas não hesite agora. Esta pode ser a primeira vez para você, mas eu sou macaco velho nisso aqui. *Se me der a mão eu te guiarei*... Suavemente.
 
-(1) Abra a pasta do `PAL` e copie todos os seis arquivos para a área de transferência do `localizador`: <br> `o agrupador, <br>
-o ambiente de trabalho, <br>
-o bloco de notas, <br>
-o localizador, <br>
-o cérebro e<br>
-o caderno.<br>` Segure a tecla `Shift ⇧` ao clicar ou arraste para selecionar. A opção de copiar arquivos está no menu `C`.
+(1) Abra a pasta do `PAL` e copie todos os seis arquivos para a área de transferência do `localizador`: <br/>   
+`o agrupador, <br/>  
+o ambiente de trabalho, <br/>  
+o bloco de notas, <br/>  
+o localizador, <br/>  
+o cérebro e<br/>  
+o caderno.<br/>  ` 
+
+
+
+Segure a tecla <kbd>Shift ⇧</kbd> ao clicar ou arraste para selecionar. A opção de copiar arquivos está no menu `C`.
 
 (2) Crie uma nova pasta na no seu disco rígido com um nome apropriado, por exemplo `CAL`. Então abra a pasta e cole os seis arquivos dentro dela. Agora abra qualquer um desses arquivos. Para abrir todos eles, basta arrastar para selecionar e apertar a tecla <kbd>Enter ⏎</kbd>.
 
@@ -168,7 +180,7 @@ Você pode sair da cópia agora, e — partindo do pressuposto de que você acre
 
 ## O CÉREBRO
 
-Meu último arquivo é chamado de *o cérebro*.
+Meu último arquivo é chamado de <code>o cérebro</code>.
 
 Cerca de metade deste arquivo são tipos, variáveis globais e rotinas que você indubitavelmente achará úteis. Tudo isso será explicado com calma mais adiante.
 
@@ -200,7 +212,7 @@ Mande os códigos 0 e 2 para a função "CoInitializeEx" da biblioteca "ole32.dl
 Para que se subtraia o valor de um byte usando o valor de outro byte:
 Intel $8B85080000000FB6008B9D0C0000002803.
 ```
-## `o cérebro`
+`o cérebro`
 
 ## DETALHES BÁSICOS DO FUNCIONAMENTO DO COMPILADOR
 
@@ -208,15 +220,15 @@ Muito bem. Veja aqui como é possível fazer tanto com tão pouco.
 
 (1) O compilador só entende cinco tipos de expressões:
 
-a) definições de tipo que sempre começam com `Um`, `Uma`, `Uns`, `Umas`, `Alguns` ou `Algumas`;<br> (b) definições de variáveis globais, que sempre começam com `O`, `A`, `Os`, `As`;<br> (c) prefixo de nomes de tarefas, que sempre começam com `Para`, `Para que`, `Para que se`;<br> (d) instruções condicionais, que sempre começam com  `Se; e`<br> (e) comandos imperativos, que começam com a palavra logo depois dos prefixos mencionados na letra  `c`.
+a) definições de tipo que sempre começam com `Um`, `Uma`, `Uns`, `Umas`, `Alguns` ou `Algumas`;<br/>   (b) definições de variáveis globais, que sempre começam com `O`, `A`, `Os`, `As`;<br/>   (c) prefixo de nomes de tarefas, que sempre começam com `Para`, `Para que`, `Para que se`;<br/>   (d) instruções condicionais, que sempre começam com  `Se`; e<br/>   (e) comandos imperativos, que começam com a palavra logo depois dos prefixos mencionados na letra  `c`.
 
 (2) Qualquer coisa que vier depois de `Um`, `Uma`, `Uns`, `Umas`, `Alguns` ou `Algumas` `O`, `A`, `Os`, `As` é tratada como se fosse um substantivo. Eu também reconheço os seguintes  componentes gramaticais:
 
-(a) verbos simples, como `SER`, `ESTAR`, `PODER`, ou `FAZER`, e suas respectivas conjugações;<br> (b) conjunções, como `E`, `MAIS`, `COM`, `SEM`, `OU`, etc;<br> (c) preposições e suas locuções, como `EM BAIXO`, `ABAIXO`, `EM CIMA`, `ACIMA`, `DENTRO`, `FORA`, etc;<br> (d) qualquer literal, como `123` ou `"Olá, mundo!`, ou<br> (e) qualquer sinal de pontuação.<br>
+(a) verbos simples, como `SER`, `ESTAR`, `PODER`, ou `FAZER`, e suas respectivas conjugações;<br/>   (b) conjunções, como `E`, `MAIS`, `COM`, `SEM`, `OU`, etc;<br/>   (c) preposições e suas locuções, como `EM BAIXO`, `ABAIXO`, `EM CIMA`, `ACIMA`, `DENTRO`, `FORA`, etc;<br/>   (d) qualquer literal, como `123` ou `"Olá, mundo!`, ou<br/>   (e) qualquer sinal de pontuação.<br/>  
 
 (3) Eu considero quase todas as outras palavras como substantivos, exceto essas:
 
-(a) operadores aritméticos: `MAIS`, `MENOS`, `VEZES`, `DIVIDIDO POR` e `JUNTO DE`;<br> (b) palavras especiais de definição: `CHAMADO(A)` e `IGUAL`; e<br> (c) imperativos: `PERCORRA`, `IGNORE`, `SAIA`, `REPITA` e `DIGA`.
+(a) operadores aritméticos: `MAIS`, `MENOS`, `VEZES`, `DIVIDIDO POR` e `JUNTO DE`;<br/>   (b) palavras especiais de definição: `CHAMADO(A)` e `IGUAL`; e<br/>   (c) imperativos: `PERCORRA`, `IGNORE`, `SAIA`, `REPITA` e `DIGA`.
 
 Então você pode ver que o compilador é simples, mas poderoso. O compilador analisa frases da mesma maneira que alguém faria. Procurando por palavras especiais — artigos, verbos, conjunções, preposições — e depois correlaciona tudo. Sem utilizar gramáticas complicadas, nem árvore de análise sintática.
 
@@ -238,8 +250,8 @@ A linguagem não é orientada a objetos. Objetos são ruins. A linguagem provê 
 A linguagem NÃO trabalha com Números Reais.  Frações racionais são permitidas, mas números irracionais não. O editor de páginas reduz e amplia e dimensiona as formas proporcionalmente dentro e fora dos grupos e faz tudo sem utilizar nenhum número real. O Mestre Kronecker estava certo quando disse, em alemão, "O querido Deus criou os números inteiros; todo o resto é obra dos homens." A filosofia da linguagem não está interessada em *menschenwerk*.
 
 Como você deve ter deduzido, equações também não são permitidas. É possível utilizar um pouco de matemática, junto com "campos calculados", mas quase todo o código que você escreve será de natureza estritamente procedimental. Um dos princípios da Sociedade Osmosiane é: "O universo é um algoritmo, não uma fórmula." Essas são palavras que você deveria levar a sério. Especialmente se você for fissurado em matemática.
-## Um Programa de Exemplo
-## </p>
+# Um Programa de Exemplo
+## 
 
 
 ## Pintando como Claude Monet
@@ -252,15 +264,17 @@ Também estou pensando que deveríamos pedir ao nosso programa que pinte mais do
 
 Provavelmente também devemos implementar alguns atalhos de teclado, para que você possa ver como isso é feito. Vamos usar a tecla <kbd>Esc</kbd> para limpar a entrada, <kbd>Ctrl+P</kbd> para Imprimir e <kbd>Ctrl+Q</kbd> para sair. Vamos considerar <kbd>Alt+P</kbd> e <kbd>Alt+Q</kbd> como sinônimos de <kbd>Ctrl+P</kbd> e <kbd>Ctrl+Q</kbd>.
 
+
 ```
-O HAL 9000_ Trabalhando... Imprimir Sair
+(1) Nós iremos o nome de qualquer pessoa, lugar ou coisa aqui, e apertamos `Enter`.
+(2) Uma obra de arte original, no estilo de Claude Monet, será criada na tela.
+(3) Usaremos estes lindos botões para imprimir  e sair.
+(4) As mensagens de erro e similares irão aparecer aqui.
 ```
 ```
-Uma obra de arte original, no estilo de Claude Monet, é criada na tela.
-(3) Usamos estes lindos botões para imprimir (4) e sair.
-As mensagens vão aparecer aqui.
+texto a ser pesquisado_ Trabalhando... Imprimir Sair
 ```
-Nós digitamos o nome de qualquer pessoa, lugar ou coisa aqui, e apertamos `Enter`.
+
 
 
 ## A PASTA DO PROJETO
@@ -268,12 +282,6 @@ Nós digitamos o nome de qualquer pessoa, lugar ou coisa aqui, e apertamos `Ente
 Agora que estamos de acordo com o design do programa, vamos começar a programá-lo.
 
 Primeiro, precisamos de uma pasta para o nosso projeto. Então, crie uma nova pasta em qualquer lugar que quiser e com o nome que quiser. Vamos supor que você tenha criado a pasta em sua unidade `C` e que a chamou de `Cal Monet`, desse jeito:
-
-Excelente. Agora copie o arquivo `o cérebro` que veio junto com o código fonte do PAL e cole ele dentro da pasta que covê criou.
-
-Última parte. Crie um novo arquivo de texto nessa pasta, com o nome que você achar melhor. Mas não coloque nenhuma extensão (como `txt`, por exemplo). No momento, o compilador só aceita arquivos sem extensão. Vamos supor que você decidiu usar o nome `Como pintar`, ficando assim:
-
-E agora estamos prontos para escrever um código em inglês simples.
 
 ```
 A B C D E G G I J K ... W X Y Z 4 itens
@@ -284,6 +292,11 @@ c:\cal monet
 c:\cal-
 c:\outra pasta que você já tinha
 ```
+
+Excelente. Agora copie o arquivo `o cérebro` que veio junto com o código fonte do PAL e cole ele dentro da pasta que covê criou.
+
+Última parte. Crie um novo arquivo de texto nessa pasta, com o nome que você achar melhor. Mas não coloque nenhuma extensão (como `.txt`, por exemplo). No momento, o compilador só aceita arquivos sem extensão. Vamos supor que você decidiu usar o nome `Como pintar`, ficando assim:
+
 ```
 A B C D E G G I J K ... W X Y Z 2 itens
 ```
@@ -294,11 +307,24 @@ c:\cal monet\como pintar
 c:\cal monet\o cérebro
 ```
 
+E agora estamos prontos para escrever um código em inglês simples.
+
+
+
 ## COMO EXECUTAR O PROGRAMA
 
 Abra nosso arquivo `Como pintar` e tente executá-lo. Dica: use <kbd>Ctrl+R</kbd>. Leia o erro que apareceu na barra de menu, em seguida, clique no mouse ou aperte a tecla <kbd>Esc</kbd> para voltar ao normal.
 
 Para executar o programa, precisamos de alguns comandos como estes da rotina abaixo:
+
+```
+Para que o programa seja executado:
+Inicie o programa.
+Feche o programa.
+```
+```
+como pintar
+```
 
 Escreva o código acima no arquivo `como pintar`. Verifique se digitou tudo corretamente. Você até pode copiar e colar o código, mas garanto que digitar comando por comando vai proporcionar um melhor entendimento da linguagem e do ambiente como um todo.
 
@@ -310,24 +336,11 @@ Se você quer saber o que o programa fez, abra o arquivo `o cérebro` e use o co
 
 Você pode destrinchar todo o código até onde quiser. Está tudo lá. Até mesmo as chamadas e instruções complicadas que são necessárias para se comunicar com o Windows. Mas vamos mudar de assunto. Vamos para o que interessa.
 
-```
-Para que o programa seja executado:
-Inicie o programa.
-Feche o programa.
-```
-```
-como pintar
-```
+
 
 ## ESTRUTURA BÁSICA
 
 Aqui está, pois, a estrutura básica do nosso programa. Em primeiro lugar, temos que usar o comando `Inicie o programa`. Depois disso podemos adicionar os comandos que quisermos que o programa execute. Em seguida, lidamos com os comandos do usuário (como pressionamentos teclas e cliques do mouse). Então nós finalizamos as nossas coisas e encerramos as atividades do programa. Aqui está o novo código:
-
-Ainda não faz muito, é claro, mas é o suficiente para que o código seja executado sem maiores problemas. Experimente para ter certeza.
-
-Observe que você pode organizar seu código em cronologicamente ou hierarquicamente, ou do jeito que achar melhor. Tanto faz, e já que você foi ensinado a usar o comando `Encontrar` para localizar as coisas, realmente não importa.
-
-De acordo com a filosofia da linguaem é melhor manter uma ordem alfabética. Por conta disso há um menu para `Classificar por Ordem Alfabética` na letra `C`. A organização ocorre de acordo com as letras iniciais de cada linha, e comentários soltos são considerados como parte integrante da tarefa logo acima deles. Experimente. Você pode usar o comando `Desfazer` se não gostar do resultado.
 
 ```
 Para que o programa seja executado:
@@ -350,6 +363,14 @@ Para que as tarefas pendentes sejam finalizadas:
 como pintar
 ```
 
+Ainda não faz muito, é claro, mas é o suficiente para que o código seja executado sem maiores problemas. Experimente para ter certeza.
+
+Observe que você pode organizar seu código em cronologicamente ou hierarquicamente, ou do jeito que achar melhor. Tanto faz, e já que você foi ensinado a usar o comando `Encontrar` para localizar as coisas, realmente não importa.
+
+De acordo com a filosofia da linguaem é melhor manter uma ordem alfabética. Por conta disso há um menu para `Classificar por Ordem Alfabética` na letra `C`. A organização ocorre de acordo com as letras iniciais de cada linha, e comentários soltos são considerados como parte integrante da tarefa logo acima deles. Experimente. Você pode usar o comando `Desfazer` se não gostar do resultado.
+
+
+
 ## COMENTÁRIOS
 
 Você provavelmente notou que eu mencionei comentários na página anterior, mas não disse como criá-los. Eu fiz isso de propósito. Comentários em geral indicam que seu código não está tão claro quanto deveria.
@@ -361,67 +382,63 @@ Mesmo assim, a linguagem suporta comentários. Existem 03 tipos de comentários,
 
 Qualquer coisa que você colocar depois uma barra invertida `` e antes do fim de uma linha é considerado como um comentário simples:
 
-Você pode inserir um comentário simples de cada vez ou você pode selecionar um conjunto inteiro de linhas e executar um desses dois comandos abaixo:
-
-O `bloco de notas` exibe comentários simples na cor azul claro, o que acaba por ser muito útil. Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:<br> `Utilize a cor azul claro como cor dos comentários.`.
-
 ```
-Comentar T ou Transformar comentários em código U
-```
-```
-Para que as tarefas sejam inicializadas:
+\ Este é um comentário inútil que ocupa uma linha inteira do código
+Para que as tarefas sejam inicializadas: \ Este é um comentário inútil no final de uma linha
 ```
 ```
 como pintar
 ```
+
+Você pode inserir um comentário simples de cada vez ou você pode selecionar um conjunto inteiro de linhas e executar um desses dois comandos abaixo:
+
+O `bloco de notas` exibe comentários simples na cor azul claro, o que acaba por ser muito útil. Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:<br/>   `Utilize a cor azul claro como cor dos comentários.`.
+
 ```
-\ Este é um comentário inútil que ocupa uma linha inteira do código
-\ Este é um comentário inútil no final de uma linha
+Comentar T ou Transformar comentários em código U
 ```
+
+
+
 
 ## OBSERVAÇÕES
 
 Se você tiver que fazer um comentário permanente em seu código, e não quer que tudo fique colorido, você pode colocá-lo entre colchetes, como no caso abaixo:
-
-Essas observações podem aparecer em qualquer lugar da linha, e podem se alternar com o código executável. Para evitar erros de compilação, as observações não pulam linhas.
-#### QUALIFICADORES (PARÂMETROS DE FUNÇÕES E PROCEDIMENTOS)
-
-O terceiro tipo de *"comentário"* que compreendo são os `qualificadores`. Os qualificadores são colocados entre parênteses e só podem aparecer nos títulos de tarefas (cabeçalhos de rotina). Obviamente você também terá que usá-los na hora de chamar as rotinas. Considere, por exemplo, este caso:
-
-Observe que os qualificadores não são iguais aos comentários e observações simples. Qualificadores são considerados parte do programa e afetam como o código compilado é executado. Vamos ver alguns qualificados no `como pintar` em breve.
 
 ```
 Para exibir uma mensagem de alerta para o usuário:
 Chame a biblioteca "kernel32.dll" "Beep" usando como parâmetro 220 [hertz] e 200 [ms].
 ```
 ```
-<code>o cérebro</code>
+o cérebro
 ```
 
-</code>
+Essas observações podem aparecer em qualquer lugar da linha, e podem se alternar com o código executável. Para evitar erros de compilação, as observações não pulam linhas.
+#### QUALIFICADORES (PARÂMETROS DE FUNÇÕES E PROCEDIMENTOS)
+
+O terceiro tipo de *"comentário"* que compreendo são os `qualificadores`. Os qualificadores são colocados entre parênteses e só podem aparecer nos títulos de tarefas (cabeçalhos de rotina). Obviamente você também terá que usá-los na hora de chamar as rotinas. Considere, por exemplo, este caso:
+
 ```
 Para centralizar uma caixa dentro de outra caixa:
 Centralize a caixa dentro da outra caixa (horizontalmente).
 Centralize a caixa dentro da outra caixa (verticalmente).
 ```
 ```
-<code>o cérebro</code>
+o cérebro
 ```
 
-</code>
+Observe que os qualificadores não são iguais aos comentários e observações simples. Qualificadores são considerados parte do programa e afetam como o código compilado é executado. Vamos ver alguns qualificados no `como pintar` em breve.
+
+
+
 
 ## SOBRE O COMANDO PERCORRA
 
 Se você deu uma olhada no `o cérebro` algumas páginas atrás, deve ter visto que até mesmo a tarefa `Inicialize o programa` requer mais de 100 linhas do código mais feio já visto pelo ser humano. E se você investigar mais aprofundadamente o processamento de eventos definido lá, você descobrirá que as coisas só ficam piores daí pra frente.
 
-```
-Felizmente, foi possível simplificar tudo isso, então nosso manipulador de eventos requer apenas cinco linhas. Aqui está. Clique nele Mas não execute ainda.
-```
-Se você é um profissional experiente, você saberá o que quero dizer quando digo que `um evento` na segunda linha define uma nova variável local do tipo `evento`, referenciado nas linhas 03 e 04 como `o evento`. E você vai entender que as mesmas palavras no cabeçalho da outra rotina definem um parâmetro do mesmo tipo (passado por referência) que é conhecido, dentro dessa outra rotina, como `evento`. Você também perceberá, depois que pensar um pouco, que uma das coisas que torna a linguagem sucinta é que não nomeamos variáveis e parâmetros — nos referimos a elas com um artigo e um nome de tipo. Assim como na vida real.
 
-```
-Se você não é um profissional, não se preocupe com isso. Isso significa o que diz.
-```
+Felizmente, foi possível simplificar tudo isso, então nosso manipulador de eventos requer apenas cinco linhas. Aqui está. Pode copiar o código,, mas não execute o programa ainda.
+
 ```
 Para gerenciar os comandos do usuário:
 Remova o evento da fila.
@@ -436,6 +453,13 @@ Para que se gerencie um evento:
 como pintar
 ```
 
+Se você é um profissional experiente, você saberá o que quero dizer quando digo que `um evento` na segunda linha define uma nova variável local do tipo `evento`, referenciado nas linhas 03 e 04 como `o evento`. E você vai entender que as mesmas palavras no cabeçalho da outra rotina definem um parâmetro do mesmo tipo (passado por referência) que é conhecido, dentro dessa outra rotina, como `evento`. Você também perceberá, depois que pensar um pouco, que uma das coisas que torna a linguagem sucinta é que não nomeamos variáveis e parâmetros — nos referimos a elas com um artigo e um nome de tipo. Assim como na vida real.
+
+
+Se você não é um profissional, não se preocupe com isso. Isso significa o que diz.
+
+
+
 ## REPETIÇÕES INFINITAS
 
 Eu te avisei para não executar o programa ainda. A razão é que nós ainda nãocriamos nenhuma forma de parar o programa. Uma vez iniciado, o programa vai simplesmente repetir as mesmas instruções, para sempre.
@@ -444,31 +468,30 @@ O termo tradicional é "laço infinito", mas como ele não é grande em tamanho,
 
 Especialmente se você foi bobo o bastante para executar o programa quando eu lhe disse para não fazer isso.
 
-Mas vamos supor que você foi lá e fez mesmo assim. Ou que algum erro futuro leva você para esse mesmo estado miserável. O que dá pra fazer além de usar um `Ctrl+Alt+Del`?
+Mas vamos supor que você foi lá e fez mesmo assim. Ou que algum erro futuro leva você para esse mesmo estado miserável. O que dá pra fazer além de usar um <kbd>Ctrl+Alt+Del</kbd>?
 
 Eu vou te contar. Na verdade, eu vou te mostrar. Execute o programa. Eu insisto.
 
 Eu sei que não parece, mas o programa já está sendo executado. A gente ainda não encerrou o processo dele,lembra? A gente ainda não encerrou o processo dele,lembra? Você não percebe porque ainda não dissemos para o programa fazer nada que fosse visível ou audível. Mas o programa está rodando. A gente ainda não encerrou o processo dele,lembra? E rodando. Bem, existe uma forma fácil de fazer isso. É bem assim:
 
-(1) Use o comando `Alt+Tab` para voltar para a tela do Pal.
+(1) Use o comando <kbd>Alt+Tab</kbd> para voltar para a tela do PAL.
 
 (2) Clique no comando `Parar`. Está lá na letra `P`.
-
-Ufa! Você consegui ver os dois programas rodando quando deu o `Alt+Tab`? Ainda não? Tente fazer tudo de novo. Já? Excelente. Você parou o programa `como pintar`? Ainda não? Vai logo. Conseguiu agora? Excelente. Verifique só pra ter certeza se parou mesmo. Ainda não? Tente novamente. Já? Excelente.
-
-É assim que se faz.
 
 ```
 Parar
 ```
+
+Ufa! Você consegui ver os dois programas rodando quando deu o <kbd>Alt+Tab</kbd>? Ainda não? Tente fazer tudo de novo. Já? Excelente. Você parou o programa `como pintar`? Ainda não? Vai logo. Conseguiu agora? Excelente. Verifique só pra ter certeza se parou mesmo. Ainda não? Tente novamente. Já? Excelente.
+
+É assim que se faz.
+
 
 ## O GERENCIADOR DE COMANDOS
 
 A caixa de ferramentas do Windows inclui centenas de eventos que, em tese, devem ser gerenciados em qualquer aplicativo significativo. O curioso é que esse compilador (e todos os outros programas embutidos, desde `o ambiente de trabalho, localizador de arquivos, caderno`, etc) foram feitos usando apenas 10 eventos. Isso mesmo, apenas 10.
 
 O nosso programa vai usar lidar com 04 tipos de comandos do usuário. Insira este código:
-
-Se você é um veterano, você provavelmente adivinhou que `o comando do usuário` é uma variável do tipo registro e que `tipo` é um campo desse registro. E sim, o `campo` é uma string. Você pode saber mais sobre eventos, registros, campos e caracteres encadeados nas seções de referência deste livro. Se você for um iniciante, apenas tente se lembrar dos qualificadores e siga em frente.
 
 ```
 Para gerenciar um comando do usuário:
@@ -494,17 +517,13 @@ Para gerenciar um comando do usuário (pressionamento de tecla):
 como pintar
 ```
 
+Se você é um veterano, você provavelmente adivinhou que `o comando do usuário` é uma variável do tipo registro e que `tipo` é um campo desse registro. E sim, o `campo` é uma string. Você pode saber mais sobre eventos, registros, campos e caracteres encadeados nas seções de referência deste livro. Se você for um iniciante, apenas tente se lembrar dos qualificadores e siga em frente.
+
+
+
 ## FECHANDO O PROGRAMA
 
-Vamos usar o atalho `Ctrl+Q` para que possamos sair do `como pintar` a qualquer momento que quisermos. Primeiro, adicionamos o seguinte código ao nosso gerenciador de pressionamento de teclas:
-
-Um comando é modificado quando a tecla <kbd>Ctrl</kbd> ou a tecla <kbd>Alt</kbd> são pressionadas junto com a tecla original. O código dessa tarefa se encontra no arquivo `o cérebro`. Você pode procurá-lo se quiser.
-
-Agora vamos adicionar mais uma tarefa ao nosso programa:
-
-A `tecla q` também está definida no arquivo `o cérebro` bem como o comando `fechar`.
-
-E agora, nós estamos prontos. Execute o programa. Caso o programa não tenha aberto automaticamente, pressione <kbd>Alt+Tab</kbd>. Certifique-se de estar no Monte Caral. Pressione <kbd>Ctrl+Q</kbd>, ou <kbd>Alt+Q</kbd>. Dê mais um <kbd>Alt+Tab</kbd> para se certificar de que o programa foi fechado corretamente. Muito bem.
+Vamos usar o atalho <kbd>Ctrl+Q</kbd> para que possamos sair do `como pintar` a qualquer momento que quisermos. Primeiro, adicionamos o seguinte código ao nosso gerenciador de pressionamento de teclas:
 
 ```
 Para gerenciar o comando (pressionamento de tecla):
@@ -513,6 +532,11 @@ Se o comando tiver sido modificado, gerencie o comando (atalho); prossiga.
 ```
 como pintar
 ```
+
+Um comando é modificado quando a tecla <kbd>Ctrl</kbd> ou a tecla <kbd>Alt</kbd> são pressionadas junto com a tecla original. O código dessa tarefa se encontra no arquivo `o cérebro`. Você pode procurá-lo se quiser.
+
+Agora vamos adicionar mais uma tarefa ao nosso programa:
+
 ```
 Para gerenciar um comando (atalho):
 Se a tecla do comando for a tecla q, feche o programa; saia.
@@ -520,6 +544,12 @@ Se a tecla do comando for a tecla q, feche o programa; saia.
 ```
 como pintar
 ```
+
+A `tecla q` também está definida no arquivo `o cérebro` bem como o comando `fechar`.
+
+E agora, nós estamos prontos. Execute o programa. Caso o programa não tenha aberto automaticamente, pressione <kbd>Alt+Tab</kbd>. Certifique-se de estar no Monte Caral. Pressione <kbd>Ctrl+Q</kbd>, ou <kbd>Alt+Q</kbd>. Dê mais um <kbd>Alt+Tab</kbd> para se certificar de que o programa foi fechado corretamente. Muito bem.
+
+
 
 ## EVITANDO FALHAS DURANTE A EXIBIÇÃO DO PROGRAMA
 
@@ -531,17 +561,17 @@ Se cada parte aparece na ordem, você veria uma espécie de cintilação no seu 
 
 Nós resolvemos esse problema da mesma forma que um pintor resolveria. Antes da pintura ser concluída, ela não é revelada ao público. Apenas quando ela está pronta é que nós revelamos tudo de uma vez. O esquema de funcionamento é mostrado abaixo:
 
-Observe os termos no diagrama acima. Por convenção, usamos a palavra `criar` para indicar que estamos trabalhando na tela que ainda não está visível para o usuário. Usamos a palavra `atualizar` quando transferimos o conteúdo do quadro para a tela. E usamos o verbo `mostrar/exibir` quando queremos que ambos aconteçam em uma rápida sucessão.
-
 ```
 criar atualizar
 ```
+```QUADRO	TELA```
 ```
 exibir
 ```
-##
-###### QUADRO
-###### TELA
+
+Observe os termos no diagrama acima. Por convenção, usamos a palavra `criar` para indicar que estamos trabalhando na tela que ainda não está visível para o usuário. Usamos a palavra `atualizar` quando transferimos o conteúdo do quadro para a tela. E usamos o verbo `mostrar/exibir` quando queremos que ambos aconteçam em uma rápida sucessão.
+
+
 
 
 ## O EVENTO DE ATUALIZAÇÃO
@@ -552,7 +582,6 @@ As coisas pioram caso você troque de janela. Sabe porque fica pior? Porque o Wi
 
 Bem, no fim das contas, esse comando acaba por ser chato, mas não é tão difícil assim de gerenciar. Fazer o quê, assim é a vida. Veja como lidamos com isso:
 
-A razão pela qual criamos duas tarefas separados, uma para `atualizar a tela` e outra para `mostrar tudo` será explicada em breve. A tarefa de `criar o painel do fundo` será abordada nas próximas páginas.
 
 ```
 Para gerenciar o comando (atualizar):
@@ -567,15 +596,12 @@ Atualize a tela.
 como pintar
 ```
 
+A razão pela qual criamos duas tarefas separados, uma para `atualizar a tela` e outra para `mostrar tudo` será explicada em breve. A tarefa de `criar o painel do fundo` será abordada nas próximas páginas.
+
+
 ## O FUNDO
 
 Nosso painel de fundo começa com uma definição. Digite o seguinte:
-
-Se você cresceu programando em outras linguagens mais obscuras, provavelmente pensará no "painel de fundo" como uma variável global do tipo "imagem". Tudo bem. Sem problemas. Mas se você está apenas começando, você provavelmente vai pensar algo como "O fundo é uma imagem". E não há problema também. Não deixa de ser uma imagem, de certo modo.
-
-Criaremos o painel de fundo quando inicializarmos nossas coisas:
-
-E o destruiremos quando terminarmos:
 
 ```
 O plano de fundo é uma imagem.
@@ -583,6 +609,11 @@ O plano de fundo é uma imagem.
 ```
 como pintar
 ```
+
+Se você cresceu programando em outras linguagens mais obscuras, provavelmente pensará no "painel de fundo" como uma variável global do tipo "imagem". Tudo bem. Sem problemas. Mas se você está apenas começando, você provavelmente vai pensar algo como "O fundo é uma imagem". E não há problema também. Não deixa de ser uma imagem, de certo modo.
+
+Criaremos o painel de fundo quando inicializarmos nossas coisas:
+
 ```
 Para inicializar nossas coisas:
 Crie o painel de fundo.
@@ -590,6 +621,10 @@ Crie o painel de fundo.
 ```
 como pintar
 ```
+
+E o destruiremos quando terminarmos:
+
+
 ```
 Para finalizar nossas coisas:
 Destrua o painel de fundo.
@@ -621,10 +656,6 @@ Se você nunca programou, certifique-se de limpar o que você mesmo sujou.
 
 Beleza, vamos voltar ao trabalho. Nós vamos criar o painel de fundo colorindo a tela usando tons de cinza, e atualizando a tela a cada 1000 milissegundos. Quando terminarmos, faremos uma cópia para que possamos usá-la durante os eventos de atualização.
 
-As cores são definidas no arquivo `o cérebro`. A paleta de cores se encontra nas próximas páginas. Uma posição é um par de coordenadas x e y. Consulte a definição no `o cérebro` para saber mais. A elipse do pincelador simula inteligentemente a pintura da ponta de um pincel com graus de pressão variados.
-
-Chega de falar. Vamos ver o que o nosso programa consegue fazer. Execute-o. Em seguida, dê um <kbd>Alt-Tab</kbd> algumas vezes para verificar se o comando de atualização de tela está sendo gerenciado corretamente pelo programa. Uau.
-
 ```
 Para que o plano de fundo seja criado:
 Desenhe a borda da tela usando a cor branca nas bordas e a cor branca no interior.
@@ -647,22 +678,23 @@ Desenhe a elipse usando a cor da borda e a cor do interior.
 como pintar
 ```
 
+As cores são definidas no arquivo `o cérebro`. A paleta de cores se encontra nas próximas páginas. Uma posição é um par de coordenadas x e y. Consulte a definição no `o cérebro` para saber mais. A elipse do pincelador simula inteligentemente a pintura da ponta de um pincel com graus de pressão variados.
+
+Chega de falar. Vamos ver o que o nosso programa consegue fazer. Execute-o. Em seguida, dê um <kbd>Alt-Tab</kbd> algumas vezes para verificar se o comando de atualização de tela está sendo gerenciado corretamente pelo programa. Uau.
+
+
+
 ## MENSAGENS DE STATUS
 
 De acordo com o nosso design, o programa `Como Pintar` deve exibir o status e as mensagens de erro na parte inferior central da tela. Mais ou menos assim:
 
-E aqui estão as definições que precisamos para começar:
-
-Nada de extraordinário aqui.
-
-Mas note que apesar de termos criado o status, nós ainda não criamos a caixa — a gente só usou ela como base para posicionar corretamente o texto na tela.
-
 ```
 < informação de estado atual ou mensagem de erro>
-1 polegada
-3/4 de polegada
-1 polegada 1/2 polegada
+3/4 de polegada	1 polegada	1 polegada	1/2 polegada
 ```
+
+E aqui estão as definições que precisamos para começar:
+
 ```
 O painel de informações possui uma caixa e um texto.
 ```
@@ -686,17 +718,15 @@ Coloque o texto do painel de informações no centro da caixa do painel de infor
 como pintar
 ```
 
+Nada de extraordinário aqui.
+
+Mas note que apesar de termos criado o status, nós ainda não criamos a caixa — a gente só usou ela como base para posicionar corretamente o texto na tela.
+
+
+
 ## O Canal de Comunicação (API) do Painel de Informações.
 
 Agora vamos adicionar algum comandos triviais que, mesmo sendo triviais tornarão simples e fácil usar o nosso painel de informações. Aqui está a primeira rotina:
-
-Esta rotina será chamada no início de cada `interação` para garantir que as informações e mensagens de erro sejam limpas antes de se mostrar informações novas.
-
-E aqui está a outra rotina:
-
-Essa rotina será usada em todo o lugar para informar o usuário sobre o que estamos fazendo. Ele permite-nos definir a mensagem de status com uma única linha de código.
-
-Se você é um programador experiente (e você não é um preguiçoso), você sabe quão úteis rotinas triviais como estas podem ser. Então não hesite em colocá-la no código do nosso programa. Se esta é sua primeira vez (ou você é um preguiçoso), escute o que estou dizendo.
 
 ```
 Para apagar o conteúdo do painel de informações:
@@ -706,6 +736,11 @@ Mostre tudo.
 ```
 como pintar
 ```
+
+Esta rotina será chamada no início de cada `interação` para garantir que as informações e mensagens de erro sejam limpas antes de se mostrar informações novas.
+
+E aqui está a outra rotina:
+
 ```
 Para exibir um texto no painel de informações:
 Coloque o conteúdo do texto no texto do painel de informações.
@@ -715,13 +750,16 @@ Mostre tudo.
 como pintar
 ```
 
+Essa rotina será usada em todo o lugar para informar o usuário sobre o que estamos fazendo. Ele permite-nos definir a mensagem de status com uma única linha de código.
+
+Se você é um programador experiente (e você não é um preguiçoso), você sabe quão úteis rotinas triviais como estas podem ser. Então não hesite em colocá-la no código do nosso programa. Se esta é sua primeira vez (ou você é um preguiçoso), escute o que estou dizendo.
+
+
+
+
 ## OLÁ, MUNDO!
 
 Agora, duas das rotinas que criamos precisam ser atualizadas para poder fazer uso das nossas novas funcionalidades. Aqui estão elas já com o código novo no seu devido lugar:
-
-Faça as alterações nas duas rotinas, e então execute o nosso programa. Depois que o programa terminar de criar o painel de fundo, o programa exibirá a mensagem inicial no painel de informações, bem no centro inferior da tela, conforme imagem abaixo:
-
-Ótimo. Já que a tela é praticamente refeita sempre que recebemos um comando de atualização, o painel de informações é mantido, mesmo se você apertar <kbd>Alt+Tab</kbd>. Experimente. Mais tarde, vamos ajustar a mensagem do painel de informações em vários lugares para refletir o estado atual do programa.
 
 ```
 Para mostrar tudo:
@@ -738,31 +776,26 @@ Mostre "Olá, mundo!" no painel de informações.
 ```
 como pintar
 ```
+
+Faça as alterações nas duas rotinas, e então execute o nosso programa. Depois que o programa terminar de criar o painel de fundo, o programa exibirá a mensagem inicial no painel de informações, bem no centro inferior da tela, conforme imagem abaixo:
+
 ```
 Olá, mundo!
 ```
 
+Ótimo. Já que a tela é praticamente refeita sempre que recebemos um comando de atualização, o painel de informações é mantido, mesmo se você apertar <kbd>Alt+Tab</kbd>. Experimente. Mais tarde, vamos ajustar a mensagem do painel de informações em vários lugares para refletir o estado atual do programa.
+
+
+
+
 ## BOTÕES
 
-```
+
 A nossa mensagem de status era uma coisa única. Mas os nossos botões não são.
 Os seus nomes são diferentes, é claro, e cada um faz uso de uma rotina diferente. Mas sua forma e comportamento geral são idênticos.
-```
-```
-Podemos, portanto, definir <code>botão</code> de uma forma genérica, junto com um punhado de de rotinas de suporte que funcionarão com qualquer botão. Começamos aqui:
-```
- de uma forma genérica, junto com um punhado de de rotinas de suporte que funcionarão com qualquer botão. Começamos aqui:
-</code>
-```
-Se você é um programador inteligente com muita experiência e uma profunda compreensão de gramática, você será capaz de deduzir que o artigo indefinido no início da primeira definição indica que estamos definindo um tipo, não é uma variável.
-Se você não for, você vai simplesmente pensar, "Um botão tem uma caixa e um nome". "Certo".
-```
-Mas se você é um leitor observador, experiente ou não, você irá concluir que botões não requerem alocação de memória dinâmica, já que usamos a palavra "fazer" em vez de "criar" no cabeçalho da segunda definição.
 
-```
-E você verá também, espero eu, que a largura de um botão depende do seu nome, e
-que o ponto com que começamos está na parte inferior direita do botão.
-```
+Podemos, portanto, definir <code>botão</code> de uma forma genérica, junto com um punhado de de rotinas de suporte que funcionarão com qualquer botão. Começamos aqui:
+
 ```
 Um botão tem uma caixa e um nome.
 ```
@@ -779,17 +812,22 @@ Coloque o nome informado no nome do botão.
 como pintar
 ```
 
+Se você é um programador inteligente com muita experiência e uma profunda compreensão de gramática, você será capaz de deduzir que o artigo indefinido no início da primeira definição indica que estamos definindo um tipo, não é uma variável.
+Se você não for, você vai simplesmente pensar, "Um botão tem uma caixa e um nome". Também não há problemas em pensar dessa forma.
+
+
+Mas se você é um leitor observador, experiente ou não, você irá concluir que botões não requerem alocação de memória dinâmica, já que usamos a palavra "fazer" em vez de "criar" no cabeçalho da segunda definição.
+
+
+E você verá também, espero eu, que a largura de um botão depende do seu nome, e
+que o ponto com que começamos está na parte inferior direita do botão.
+
+
+
 ## TRABALHANDO COM BOTÕES
 
 Queremos ver nossos botões na tela, é claro, e queremos ser capazes de clicar neles para fazer as coisas acontecerem. Aqui estão algumas rotinas complementares:
 
-Como a caixa dos botões tem exatamente o tamanho certo para o nome que colocarmos nela, podemos colocar o nome no botão sem qualquer preocupação sobre alinhamento. Nós apenas colocamos o nome no botão na caixa do botão e pronto. Sinta-se livre para modificar a caixa do botão, mudando a margem ou espaçamento, bem como tamanho ou cor.
-
-Brincadeirinha.
-
-A segunda rotina é um exemplo de um tipo especial de rotina que me diz como tomar decisões. Rotinas desse tipo são chamadas de "decisoras", e elas sempre começam com as palavras `Para decidir se`. Se você teve o infortúnio de programar numa linguagem menos natural, você pode pensar em decisores como funções booleanas. É bem parecido.
-
-Apenas lembre-se de que não existe meio termo numa função decisora. Para sair de um decisor, você deve chegar a uma conclusão definida usando os termos `diga sim` ou `diga não`. Nada mais servirá.
 
 ```
 Para desenhar um botão:
@@ -804,26 +842,28 @@ Diga não.
 como pintar
 ```
 
+Como a caixa dos botões tem exatamente o tamanho certo para o nome que colocarmos nela, podemos colocar o nome no botão sem qualquer preocupação sobre alinhamento. Nós apenas colocamos o nome no botão na caixa do botão e pronto. Sinta-se livre para modificar a caixa do botão, mudando a margem ou espaçamento, bem como tamanho ou cor.
+
+Brincadeirinha.
+
+A segunda rotina é um exemplo de um tipo especial de rotina que me diz como tomar decisões. Rotinas desse tipo são chamadas de "decisoras", e elas sempre começam com as palavras `Para decidir se`. Se você teve o infortúnio de programar numa linguagem menos natural, você pode pensar em decisores como funções booleanas. É bem parecido.
+
+Apenas lembre-se de que não existe meio termo numa função decisora. Para sair de um decisor, você deve chegar a uma conclusão definida usando os termos `diga sim` ou `diga não`. Nenhum outro comando que você utilize vai funcionar nesse caso..
+
+
 ## HORA DE TRABALHAR COM OS NOSSOS BOTÕES
 
-```
+
 Esse aqui é o esboço dos botões do nosso projeto <code>Como pintar</code>:
+
 ```
-:
-</code>
+? 1/2 polegada ? 1/2 polegada
+	Imprimir	Sair
+3/4 de polegada 1/2 polegada
+
 ```
+
 E esse aqui é o código para criar os botões:
-```
-Em primeiro lugar, definimos os nossos botões. Então posicionamos o botão `Sair` à distância de 1/2 polegada, a partir da extremidade direita da tela e 1/2 polegada acima a partir da extremidade inferior tela. Finalmente, usamos a extremidade esquerda do botão `Sair` — que foi calculado na rotina `fazer um botão` — para criar o botão de Impressão.
-
-```
-3/4 de polegada
-1/2 polegada
-```
-```
-Imprimir Sair
-```
-
 
 ```
 O botão de impressão é um botão.
@@ -845,14 +885,17 @@ Faça o botão de impressão usando as coordenadas e o termo "Imprimir".
 ```
 como pintar
 ```
+
+Em primeiro lugar, definimos os nossos botões. Então posicionamos o botão `Sair` à distância de 1/2 polegada, a partir da extremidade direita da tela e 1/2 polegada acima a partir da extremidade inferior tela. Finalmente, usamos a extremidade esquerda do botão `Sair` — que foi calculado na rotina `fazer um botão` — para criar o botão de Impressão.
+
+
+
 ## 1/2 1/2
 
 
 ## FAZENDO OS NOSSOS BOTÕES FUNCIONAREM
 
 Quase lá. Precisamos atualizar o conteúdo de três das nossas rotinas e acrescentar mais uma no código do nosso programa, conforme demonstrado abaixo:
-
-Observe que consideramos cada clique como uma nova interação, a qual limpa  conteúdo do painel de informações. E note que a rotina de impressão ainda não funciona de verdade, mas é já que a gente chega lá. Agora é hora de executar o programa para ver se não houve nenhum erro. Clique nos botões. Verifique o conteúdo do painel de informações. Clique no botão `Imprimir`. A mensagem `Imprimindo...` deverá ser exibida. Clique no botão `Sair`. O programa deve se fechar automaticamente.
 
 ```
 Para inicializar nossas coisas:
@@ -883,15 +926,15 @@ Mostre "Imprimindo..." no painel de informações.
 como pintar
 ```
 
+Observe que consideramos cada clique como uma nova interação, a qual limpa  conteúdo do painel de informações. E note que a rotina de impressão ainda não funciona de verdade, mas é já que a gente chega lá. Agora é hora de executar o programa para ver se não houve nenhum erro. Clique nos botões. Verifique o conteúdo do painel de informações. Clique no botão `Imprimir`. A mensagem `Imprimindo...` deverá ser exibida. Clique no botão `Sair`. O programa deve se fechar automaticamente.
+
+
+
 ## O CAMPO DE TEXTO
 
 Há uma componente bem útil chamada campo de texto no arquivo `o cérebro` que torna relativamente fácil criar campos de texto nos nossos programas. As funções `Recortar`, `Copiar`, `Colar`, `Desfazer`, `Refazer`, `Selecionar` e até mesmo `Verificar Ortografia`, são totalmente suportadas. Além de tudo, ele é um componente rápido e eficiente. O `bloco de notas`, por exemplo, é na verdade um super bloco de texto. Você pode aprender mais sobre o campo de texto no Glossário que fica no final deste livro.
 
 No entanto, não vamos precisar implementar todas essas funções no nosso pequeno programa. Algo muito mais simples já é o suficiente. Aqui estão as definições básicas que nós vamos precisar para o nosso programa. Dê uma olhada com calma:
-
-Nossa campo de texto é colocada 1/2 polegada acima da parte inferior esquerda da tela. Ele tem 1/4 de polegada de altura e 2 polegadas de largura. Eu não acho que precisemos de uma foto aqui.
-
-Observe que, no entanto, que nós implementamos um cursor de texto bem básico, mas eficaz. Quando digitarmos o texto, um underline aparece depois do último caractere inserido.
 
 ```
 como pintar
@@ -917,13 +960,15 @@ Adicione "_" ao final do texto.
 Coloque o texto na caixa do campo de texto.
 ```
 
+Nossa campo de texto é colocada 1/2 polegada acima da parte inferior esquerda da tela. Ele tem 1/4 de polegada de altura e 2 polegadas de largura. Eu não acho que precisemos de uma foto aqui.
+
+Observe que, no entanto, que nós implementamos um cursor de texto bem básico, mas eficaz. Quando digitarmos o texto, um underline aparece depois do último caractere inserido.
+
+
+
 ## FAZENDO O CAMPO DE TEXTO FUNCIONAR
 
 Temos de modificar duas das nossas rotinas para que o nosso campo de texto funcione. Também precisaremos gerenciar as atividades do teclado, mas lidaremos com isso nas próximas páginas. Por enquanto, apenas certifique-se de que você atualizou as seguintes rotinas:
-
-A única alteração para a primeira rotina é a linha que inicializa o campo de texto.
-
-A segunda rotina, porém, tem duas adições. Nós criamos o campo de texto, antes de atualizar a tela. Mas também ocultamos o cursor do mouse para que ele não atrapalhe o usuário quando ele estiver digitando. Mas não se preocupe com isso. O evento "exibir cursor" vai trazê-lo de volta sempre que o mouse se mover.
 
 ```
 como pintar
@@ -933,7 +978,7 @@ Para inicializar nossas coisas:
 Crie o painel de fundo.
 Inicialize o painel de informações.
 Inicialize os botões.
-Inicializar o texto.
+Inicialize o texto.
 Mostre "Olá, mundo!" no painel de informações.
 ```
 ```
@@ -947,17 +992,15 @@ Crie o campo de texto.
 Atualize a tela.
 ```
 
+A única alteração para a primeira rotina é a linha que inicializa o campo de texto.
+
+A segunda rotina, porém, tem duas adições. Nós criamos o campo de texto, antes de atualizar a tela. Mas também ocultamos o cursor do mouse para que ele não atrapalhe o usuário quando ele estiver digitando. Mas não se preocupe com isso. O evento "exibir cursor" vai trazê-lo de volta sempre que o mouse se mover.
+
+
+
 ## GERENCIANDO O PRESSIONAMENTO DE TECLAS
 
 Veja só como é que iremos modificar nosso geremciador de pressionamento de teclas para que ele encaminhe as teclas pressionadas:
-
-Primeiramente, observe que consideramos qualquer tecla o início de uma nova interação, por isso nós limpamos qualquer mensagem anterior que estivesse no painel de informações. Talvez seja um pouco exagerado, mas pelo menos o painel de informações vai mostrar apenas o que interessa.
-
-Em seguida nós gerenciamos as teclas de atalho da mesma forma que fizemos anteriormente.
-
-Se o valor da tecla pressionada for uma letra, nós encaminhamos esse valor para outra rotina. Note que estamos verificando o valor do byte da tecla, e não a tecla em si. Temos que fazer isso porque uma tecla pode produzir caracteres imprimíveis, mas também caracteres não imprimíveis. Os comandos <kbd>Ctrl+A</kbd> e <kbd>Alt+A</kbd>, por exemplo, não são imprimíveis. Já o comando <kbd>⇧Shift-A</kbd> é imprimível, mas tem um valor diferente do <kbd>A</kbd> e do <kbd>a</kbd>. Se você quer saber exatamente o que é um `caractere imprimível`, procure o termo no arquivo ` o cérebro`.
-
-Por último, colocamos a tecla que foi pressionada em uma variável local chamada tecla apenas deixar as três linhas que faltam um pouco mais curtas. Nós iremos adicionar mais quatro linhas uma para a tecla <kbd>Home</kbd>, outra para a tecla <kbd>End</kbd>, mais uma para a tecla <kbd>Page Up</kbd> e a última para a tecla <kbd>Page Down</kbd>.
 
 ```
 Para gerenciar um comando (pressionamento de tecla):
@@ -973,13 +1016,18 @@ Se a tecla for a tecla enter, gerencie o comando (tecla enter); prossiga.
 como pintar
 ```
 
-## GERENCIANDO PRESSIONAMENTOS DE TECLA
+Primeiramente, observe que consideramos qualquer tecla o início de uma nova interação, por isso nós limpamos qualquer mensagem anterior que estivesse no painel de informações. Talvez seja um pouco exagerado, mas pelo menos o painel de informações vai mostrar apenas o que interessa.
+
+Em seguida nós gerenciamos as teclas de atalho da mesma forma que fizemos anteriormente.
+
+Se o valor da tecla pressionada for uma letra, nós encaminhamos esse valor para outra rotina. Note que estamos verificando o valor do byte da tecla, e não a tecla em si. Temos que fazer isso porque uma tecla pode produzir caracteres imprimíveis, mas também caracteres não imprimíveis. Os comandos <kbd>Ctrl+A</kbd> e <kbd>Alt+A</kbd>, por exemplo, não são imprimíveis. Já o comando <kbd>⇧Shift-A</kbd> é imprimível, mas tem um valor diferente do <kbd>A</kbd> e do <kbd>a</kbd>. Se você quer saber exatamente o que é um `caractere imprimível`, procure o termo no arquivo ` o cérebro`.
+
+Por último, colocamos a tecla que foi pressionada em uma variável local chamada tecla apenas deixar as três linhas que faltam um pouco mais curtas. Nós iremos adicionar mais quatro linhas uma para a tecla <kbd>Home</kbd>, outra para a tecla <kbd>End</kbd>, mais uma para a tecla <kbd>Page Up</kbd> e a última para a tecla <kbd>Page Down</kbd>.
+
+
+## GERENCIANDO (AINDA MAIS) PRESSIONAMENTOS DE TECLA
 
 Aqui estão as rotinas que gerenciarão as teclas <kbd>Home</kbd>, <kbd>End</kbd>, <kbd>Page Up</kbd>, <kbd>Page Down</kbd>, e a tecla <kbd>Enter</kbd>:
-
-Como mencionamos anteriormente, as letras, números e símbolos são simplesmente adicionadas ao texto. A tecla <kbd>Esc</kbd> limpa o conteúdo do campo de texto. O cursor de texto, no entanto, ainda aparecerá já que ele está anexado na rotina de criação mesmo que o campo de texto esteja em branco. A tecla <kbd>⌫</kbd> irá apagar a última letra digitada, ou se não houver nenhum texto a ser apagado, irá emitir um som de alerta. Nas próximas páginas desenvolveremos a última rotina (a rotina da tecla <kbd>Enter ↵</kbd>).
-
-Agora vamos executar nosso programa e testá-lo um pouco. O cursor de texto está aparecendo? Excelente. Digite alguma coisa no campo de texto. O painel de informações apagou o `Olá Mundo,`? O cursor do mouse sumiu? Excelente. Agora dê um `Alt+Tab`. Continue até voltar ao `Como pintar`. Excelente. Teste a tecla ⌫ para ver se o alerta sonoro funciona. Muito bem. Mova o mouse. A seta do mouse reapareceu? Ótimo. Clique no botão `Sair`. Ótimo.
 
 ```
 Para gerenciar um comando (caractere imprimível):
@@ -1004,55 +1052,39 @@ Para gerenciar um comando (tecla Enter):
 como pintar
 ```
 
+Como mencionamos anteriormente, as letras, números e símbolos são simplesmente adicionadas ao texto. A tecla <kbd>Esc</kbd> limpa o conteúdo do campo de texto. O cursor de texto, no entanto, ainda aparecerá já que ele está anexado na rotina de criação mesmo que o campo de texto esteja em branco. A tecla <kbd>⌫</kbd> irá apagar a última letra digitada, ou se não houver nenhum texto a ser apagado, irá emitir um som de alerta. Nas próximas páginas desenvolveremos a última rotina (a rotina da tecla <kbd>Enter ↵</kbd>).
+
+Agora vamos executar nosso programa e testá-lo um pouco. O cursor de texto está aparecendo? Excelente. Digite alguma coisa no campo de texto. O painel de informações apagou o `Olá Mundo,`? O cursor do mouse sumiu? Excelente. Agora dê um `Alt+Tab`. Continue até voltar ao `Como pintar`. Excelente. Teste a tecla ⌫ para ver se o alerta sonoro funciona. Muito bem. Mova o mouse. A seta do mouse reapareceu? Ótimo. Clique no botão `Sair`. Ótimo.
+
+
+
 ## A MÁGICA
 
-```
+
 Em nossa pequena caixa de texto, iremos digitamos o nome de qualquer pessoa, lugar ou coisa imaginável e apertar a tecla <kbd>Enter</kbd>. Após alguns segundos, uma pintura original, pintada no mesmo estilo de Claude Monet, aparecerá na tela. O usuário poderá ver várias outras obras de arte similares apenas utilizando as teclas <kbd>Page Up</kbd> e <kbd>Page Down</kbd>. Incrível.
-```
-```
+
 Mas como é que vamos fazer com que isso aconteça?
-```
-```
+
 É claro que se ele estivesse vivo, o próprio Claude Monet pintaria as obras de arte para nós. Como ele não está, nos simplesmente encontraremos alguas coisas que ficariam boas se ele pintasse. Em seguida, nós criaremos algumas obras de arte com base nesses coisas. E como criaremos uma obra de arte com base em um modelo? Mais uma vez, da mesma forma que o próprio Monet faria. Pegando a fotografia original, misturandp um pouco de tinta, e dando umas pinceladas por cima. Repetindo até terminar o quadro.
-```
-```
+
 Tudo o que precisamos agora são (1) alguns modelos, e (2) uma rotina que pinte usando o modelo como base.
-```
+
 Bem, a segunda parte é relativamente fácil. Já ensinamos o `Como pintar` a dar uma pincelada na tela — é assim que nosso programa cria o plano de fundo toda vez que ele é executado. Dessa forma, a única diferença é que utilizaremos um modelo como base.
 
-```
+
 É a primeira parte que é complicada. Onde vamos encontrar imagens para qualquer coisa que o usuário digite? Uma paisagem desértica. Um arco íris. Uma Ferrari.
 Não é muito prático guardar todo tipo de imagem em um programa que deveria ter poucos kilobytes. Ainda bem que isso não é necessário. Pra quê guardar imagens se temos o Google?
 No Google Imagens podemos encontrar qualquer imagem que pensarmos.  De graça.
-```
-```
+
 Eis o plano.
-```
-```
+
 Quando a tecla <kbd>Enter</kbd> for pressionada, Google nos dará uma página cheia de URLs (localizadores de recursos) que contém as imagens relacionadas ao termo de pesquisa do usuário. Nós armazenaremos cada uma dessas URLs como se fosse um modelo esperando para virar obra de arte. Então, quando for hora de exibir a obra de arte, iremos pintá-la, usando a rotina que criamos.
-```
+
 
 ## OBRAS DE ARTE
 
-```
-Aqui estão as definições básicas de que precisamos para as nossas obras d e arte:
-```
-```
-A primeira linha faz de "pintura" um sinônimo de "imagem". Queremos deixar claro que nossas obras serão obras de arte originais, não apenas imagens baixadas do Google.
-Na verdade, você verá mais tarde que nós não iremos salvar as imagens que recebemos do Google. Once we create a work from the model, the model is no longer needed.
-```
-```
-Agora se você for especialista em estruturas de dados dinâmicos, preste atenção.
-```
-```
-A palavra <code>coisa</coisa> na segunda definição é muito especial para mim. Ele indica um objeto de dados dinâmicos que pode ser associado a outros do mesmo tipo para formar uma cadeia - cada objeto apontando para o objeto anterior a ele, e para o objeto que estiver depois dele.
-Se você está pensando que parece uma lista duplamente vinculada, você está certo. Rotinas para inserir, acrescentar e excluir <code>coisas</code. podem ser encontradas no arquivo <code>o cérebro</code>.
-```
-.
-</code>
-`As obras de arte`, definidas na terceira linha, são um exempo dessas listas.
 
-Agora, se você não é um especialista em estruturas de dados dinâmicos, você realmente não precisa entender todos esses detalhes. Só grave isso: "Uma obra de arte é uma coisa com uma URL e uma pintura" e "As obras de arte são algumas obras de arte".
+Aqui estão as definições básicas de que precisamos para as nossas obras de arte:
 
 ```
 Uma pintura é uma imagem.
@@ -1067,20 +1099,28 @@ As obras de arte são algumas obras de arte.
 como pintar
 ```
 
+A primeira linha faz de "pintura" um sinônimo de "imagem". Queremos deixar claro que nossas obras serão obras de arte originais, não apenas imagens baixadas do Google.
+Na verdade, você verá mais tarde que nós não iremos salvar as imagens que recebemos do Google. Uma vez que a obra de arte é criada, não precisamos mais da imagem..
+
+Agora se você for especialista em estruturas de dados dinâmicos, preste atenção.
+
+A palavra <code>coisa</coisa> na segunda definição é muito especial para mim. Ele indica um objeto de dados dinâmicos que pode ser associado a outros do mesmo tipo para formar uma cadeia - cada objeto apontando para o objeto anterior a ele, e para o objeto que estiver depois dele.
+Se você está pensando que parece uma lista duplamente vinculada, você está certo. Rotinas para inserir, acrescentar e excluir <code>coisas</code>. podem ser encontradas no arquivo <code>o cérebro</code>.
+
+
+<code>As obras de arte</code>, definidas na terceira linha, são um exempo dessas listas.
+
+Agora, se você não é um especialista em estruturas de dados dinâmicos, você realmente não precisa entender todos esses detalhes. Só grave isso: "Uma obra de arte é uma coisa com uma URL e uma pintura" e "As obras de arte são algumas obras de arte".
+
+
+
 ## A OBRA DE ARTE ATUAL
 
-```
-Cada URL que o Google nos dá se torna uma obra de arte — inicialmente elas são obras de arte "em andamento", que mais tarde são finalizadas e exibidas ao usuário. Precisamos criar uma forma de saber qual obra de arte está aparecendo na tela, e precisamos criar uma maneira de alternar entre diferentes obras de arte.
-```
-```
-Aqui estão alguns códigos que irão nos ajudar nessa tarefa:
-```
-`A obra de arte atual` é uma referência à obra de arte que está sendo exibida atualmente na tela. Se não houver obras de arte sendo exibidas, não existirá nenhuma obra de arte atual. Essa situação ocorre quando o programa acaba de ser iniciado e também sempre que o Google não consegue encontrar nenhuma imagem. Quando uma nova solicitação é processada, a obra de arte atual é definida como a primeira obra de arte da lista. Mais tarde, ela será atualizada automaticamente toda vezque o usuário pressionar as teclas <kbd>Page Up</kbd>, <kbd>Page Down</kbd>, <kbd>Home</kbd> e <kbd>End</kbd>.
 
-```
-O método normal de definição da obra de arte atual é mostrado acima. Se a obra de arte solicitada for inexistente, nenhuma ação será tomada. A mensagem de status é necessária porque pode demorar um pouco pro nosso programa terminar de pintar a obra de arte.
-A mensagem é apagada, é claro, antes que o que a obra de arte seja exibida para o usuário.
-```
+Cada URL que o Google nos dá se torna uma obra de arte — inicialmente elas são obras de arte "em andamento", que mais tarde são finalizadas e exibidas ao usuário. Precisamos criar uma forma de saber qual obra de arte está aparecendo na tela, e precisamos criar uma maneira de alternar entre diferentes obras de arte.
+
+Aqui estão alguns códigos que irão nos ajudar nessa tarefa:
+
 ```
 A obra de arte atual é uma obra de arte.
 ```
@@ -1097,15 +1137,16 @@ Mostre tudo.
 como pintar
 ```
 
+`A obra de arte atual` é uma referência à obra de arte que está sendo exibida atualmente na tela. Se não houver obras de arte sendo exibidas, não existirá nenhuma obra de arte atual. Essa situação ocorre quando o programa acaba de ser iniciado e também sempre que o Google não consegue encontrar nenhuma imagem. Quando uma nova solicitação é processada, a obra de arte atual é definida como a primeira obra de arte da lista. Mais tarde, ela será atualizada automaticamente toda vezque o usuário pressionar as teclas <kbd>Page Up</kbd>, <kbd>Page Down</kbd>, <kbd>Home</kbd> e <kbd>End</kbd>.
+
+O método normal de definição da obra de arte atual é mostrado acima. Se a obra de arte solicitada for inexistente, nenhuma ação será tomada. A mensagem de status é necessária porque pode demorar um pouco pro nosso programa terminar de pintar a obra de arte.
+A mensagem é apagada, é claro, antes que o que a obra de arte seja exibida para o usuário.
+
+
+
 ## TRABALHANDO COM OBRAS DE ARTE
 
 Precisamos de uma rotina para pintar nossas obras de arte, é claro, mas (como qualquer artista) nós somente queremos exibir nossas obras que já estiverem prontas. O que significa que também precisamos de uma decissor para dizer qual é qual. Eis o código:
-
-A primeira rotina verifica se a obra de arte está pronta para ser pintada, e se estiver, ela pinta a obra de arte. Nós ainda não criamos uma rotina chamada `crie uma pintura`, e advinha só, nós também não vamos criar uma. Mas já que dissemos que uma pintura é uma figura, nós podemos simplesmente usar a rotina padrão `criar uma imagem` que está presente no arquivo `o cérebro` para fazer esse trabalho.
-
-Se você é um nerd, você vai reconhecer isso como uma "redução automática de tipo" e vai me perguntar como que o compilador faz isso com tanta eficiência e elegância. Se você não é um nerd, você provavelmente vai pensar: "Tá, mas e daí?" e depois se perguntar por que as outras linguagens de programação não tem essa capacidade.
-
-A segunda rotina é apenas um decisor comum. Note, no entanto, que ela considera uma obra de arte inexistente como se ela já estivesse finalizada. Até porque, se não houver trabalho pra fazer, isso significa que o trabalho acabou, certo?
 
 ```
 Para exibir uma obra de arte:
@@ -1123,13 +1164,17 @@ Se a obra de arte existir, diga sim.
 como pintar
 ```
 
+A primeira rotina verifica se a obra de arte está pronta para ser pintada, e se estiver, ela pinta a obra de arte. Nós ainda não criamos uma rotina chamada `crie uma pintura`, e advinha só, nós também não vamos criar uma. Mas já que dissemos que uma pintura é uma figura, nós podemos simplesmente usar a rotina padrão `criar uma imagem` que está presente no arquivo `o cérebro` para fazer esse trabalho.
+
+Se você é um nerd, você vai reconhecer isso como uma "redução automática de tipo" e vai me perguntar como que o compilador faz isso com tanta eficiência e elegância. Se você não é um nerd, você provavelmente vai pensar: "Tá, mas e daí?" e depois se perguntar por que as outras linguagens de programação não tem essa capacidade.
+
+A segunda rotina é apenas um decisor comum. Note, no entanto, que ela considera uma obra de arte inexistente como se ela já estivesse finalizada. Até porque, se não houver trabalho pra fazer, isso significa que o trabalho acabou, certo?
+
+
+
 ## FAZENDO NOSSAS OBRAS DE ARTE FUNCIONAREM
 
 Há duas atualizações que temos que colocar no nosso código. A primeira alteração que precisamos fazer está na rotina de exibição. Felizmente não vamos mais precisar alterar ela. O código completo é parecido com este:
-
-Note que já que nós só atualizamos a tela no final da rotina, os componentes do programa podem ser criados em qualquer ordem. Exceto pelo painel de fundo, é claro.
-
-Uma obra de arte é uma coisa, e as coisas são sempre alocadas dinamicamente, então precisamos limpá-las quando terminarmos. Aqui está a última rotina de finalização:
 
 ```
 Para mostrar tudo:
@@ -1145,6 +1190,11 @@ Atualize a tela.
 ```
 como pintar
 ```
+
+Note que já que nós só atualizamos a tela no final da rotina, os componentes do programa podem ser criados em qualquer ordem. Exceto pelo painel de fundo, é claro.
+
+Uma obra de arte é uma coisa, e as coisas são sempre alocadas dinamicamente, então precisamos limpá-las quando terminarmos. Aqui está a última rotina de finalização:
+
 ```
 Para finalizar nossas coisas:
 Destrua o painel de fundo.
@@ -1157,12 +1207,6 @@ como pintar
 ## OLÁ, GOOGLE!
 
 Agora vamos começar a trabalhar na tecla <kbd>Enter</kbd>. Eis o código:
-
-Se o campo de texto estiver em branco, não há nada a fazer; nós usaremos o som para alertar o usuário e sairemos.
-
-Caso contrário, nós vamos escrever uma mensagem no painel de informações (caso o Google esteja ocupado e não responda imediatamente). Em seguida, formulamos uma solicitação usando um texto literal e uma versão do texto que seja compatível com o formato HTML, lendo a resposta em um buffer (que é apenas um nome chique para uma sequência de caracteres).
-
-Se algo deu errado, relatamos o erro. Se a página chegar intacta, tentamos gerar nossas obras de arte em andamento a partir dos dados no buffer. Se as obras estiverem em branco quando terminarmos, isso significa que o Google não entendeu nossa consulta — neste caso, dizemos "Hã?" e saímos. Caso contrário, mostramos ao usuário a primeira obra de arte da lista.
 
 ```
 Para gerrenciarmos um comando (tecla Enter):
@@ -1181,41 +1225,37 @@ Vá para a primeira obra de arte.
 como pintar
 ```
 
+Se o campo de texto estiver em branco, não há nada a fazer; nós usaremos o som para alertar o usuário e sairemos.
+
+Caso contrário, nós vamos escrever uma mensagem no painel de informações (caso o Google esteja ocupado e não responda imediatamente). Em seguida, formulamos uma solicitação usando um texto literal e uma versão do texto que seja compatível com o formato HTML, lendo a resposta em um buffer (que é apenas um nome chique para uma sequência de caracteres).
+
+Se algo deu errado, relatamos o erro. Se a página chegar intacta, tentamos gerar nossas obras de arte em andamento a partir dos dados no buffer. Se as obras estiverem em branco quando terminarmos, isso significa que o Google não entendeu nossa consulta — neste caso, dizemos "Hã?" e saímos. Caso contrário, mostramos ao usuário a primeira obra de arte da lista.
+
+
+
 ## PERCORREDORES
 
-```
+
 Antes de continuarmos com nosso programa, preciso tirar um momento e falar com você sobre análise sintática. Análise sintática é a arte de percorrer um grande bloco de texto um palavra por vez, onde essa palavra pode ser tão pequena quanto uma letra ou tão grande quanto o bloco inteiro. Vamos usar essa sequência de palavras abaixo como nosso exemplo de bloco de texto:
 ```
 "OLÁ DOUTOR NOME CONTINUAR ONTEM AMANHÃ"
 
 ```
 E digamos que queremos extrair cada uma dessas palavras de forma individual. As ferramentas que usaríamos são (1) o subtexto e (2) o percorredor.
-```
-```
-Um "subpalavra" é definida no arquivo <code>o cérebro</code> como um subconjunto do tipo "texto", que tem dois ponteiros de byte chamados primeiro e último. E quando você "colocar uma subpalavra" no nosso texto de amostra, o compilador faz com queo primeiro byte aponte para o O na palavra OLÁ e o último byte aponte para Ã na palavra AMANHÃ.
-```
- como um subconjunto do tipo "texto", que tem dois ponteiros de byte chamados primeiro e último. E quando você "colocar uma subpalavra" no nosso texto de amostra, o compilador faz com queo primeiro byte aponte para o O na palavra OLÁ e o último byte aponte para Ã na palavra AMANHÃ.
-</code>
-```
-No entanto, você será capaz de encontrar o "percorredor" no <code>o cérebro</code>. Ela consiste de três subtextos: um subtexto original, um subtexto fonte e um token. E quando você "colocar um percorredor" no nosso texto de amostra, o compilador pega o subtexto original e o subteto fonte no texto (como acima) e define o token como vazio. Então quando você usa o comando "mova o percorredor (regras de amostra)", o compilador aponta a letra D da palavra DOUTOR como primeiro byte do subtexto fonte. A letra O da palavra OLÁ é considerada como o primeiro byte do token, e a letra Á de OLÁ é considerada como o último byte do token. Quando você der novamente o comando, o percorredor se moverá para a próxima palara, sendo que a os bytes do token ficarão na palavra DOUTOR e a fonte ficará na letra N da palavra NOME.
+
+Um "subpalavra" é definida no arquivo <code>o cérebro</code> como um subconjunto do tipo "texto", que tem dois ponteiros de byte chamados primeiro e último. E quando você "colocar uma subpalavra" no nosso texto de amostra, o compilador faz com que o primeiro byte aponte para o `O` na palavra `OLÁ` e o último byte aponte para `Ã` na palavra `AMANHÃ`.
+
+No entanto, você será capaz de encontrar o "percorredor" no <code>o cérebro</code>. Ele consiste de três subtextos: um subtexto original, um subtexto fonte e um token. E quando você "colocar um percorredor" no nosso texto de amostra, o compilador pega o subtexto original e o subteto fonte no texto (como acima) e define o token como vazio. Então quando você usa o comando "mova o percorredor (regras de amostra)", o compilador aponta a letra `D` da palavra `DOUTOR` como primeiro byte do subtexto fonte. A letra `O` da palavra `OLÁ` é considerada como o primeiro byte do token, e a letra `Á` de `OLÁ` é considerada como o último byte do token. Quando você der novamente o comando, o percorredor se moverá para a próxima palara, sendo que a os bytes do token ficarão na palavra `DOUTOR` e a fonte ficará na letra `N` da palavra `NOME`.
 Pegou a ideia? Excelente.
-```
-. Ela consiste de três subtextos: um subtexto original, um subtexto fonte e um token. E quando você "colocar um percorredor" no nosso texto de amostra, o compilador pega o subtexto original e o subteto fonte no texto (como acima) e define o token como vazio. Então quando você usa o comando "mova o percorredor (regras de amostra)", o compilador aponta a letra D da palavra DOUTOR como primeiro byte do subtexto fonte. A letra O da palavra OLÁ é considerada como o primeiro byte do token, e a letra Á de OLÁ é considerada como o último byte do token. Quando você der novamente o comando, o percorredor se moverá para a próxima palara, sendo que a os bytes do token ficarão na palavra DOUTOR e a fonte ficará na letra N da palavra NOME.
-Pegou a ideia? Excelente.
-</code>
-```
-Agora aqui está a parte realmente estranha: você pode usar o precorredor para criar suas próprias rotinas e extrair qualquer tipo de dado de qualquer tipo de arquivo. "Mover um percorredor (regras do compilador)", por exemplo, é a rotina que uso para analisar o código fonte do programa. "Mova um cavaleiro (regras de verificação ortográfica)" é utilizado para verificar a ortografia. Em breve, vamos programar a rotina "Mover um percorredor (Google Imagens)" para analisar os dados que vamos pegar da internet.
-```
+
+
+Agora aqui está a parte realmente estranha: você pode usar o precorredor para criar suas próprias rotinas e extrair qualquer tipo de dado de qualquer tipo de arquivo. `Mover um percorredor (regras do compilador)`, por exemplo, é a rotina que uso para analisar o código fonte do programa. `Mova um percorredor (regras de verificação ortográfica)` é utilizado para verificar a ortografia. Em breve, vamos programar a rotina `Mova um percorredor (Google Imagens)` para analisar os dados que vamos pegar da internet.
+
 
 ## OBRAS DE ARTE EM ANDAMENTO
 
-```
+
 Aqui está o código para criar nossas obras de arte em andamento a partir dos dados do Google:
-```
-```
-Nós nos livramos de qualquer obra de arte antiga e redefinimos o trabalho atual para que não aponte mais para a obra de arte que acabamos de destruir. Então criamos um percorredor e inserimos um laço de repetição.
-```
-Dentro do laço, nós movemos o percorredor para a próxima imagem da página. Se não houver mais imagens, nós fizemos algo histórico (afinal de contas, para cada termo existem centenas de correspondências). Se houver, criamos um trabalho em andamento com o comando `crie uma obra de arte usando uma URL`. Mesmo que o token do percorredor não seja uma URL, eu sei que uma URL é apenas um texto, e que o token do percorredor é um subtexto. Como nenhuma outra rotina cria uma obra de arte usando um texto, o compilador acaba por chamar a rotina correta. Em seguida, anexamos a obra de arte na lista de obras e repetimos o processo.
 
 ```
 Para criar algumas obras de arte usando um buffer:
@@ -1238,13 +1278,14 @@ Defina a URL como a URL da obra de arte.
 como pintar
 ```
 
+Nós nos livramos de qualquer obra de arte antiga e redefinimos o trabalho atual para que não aponte mais para a obra de arte que acabamos de destruir. Então criamos um percorredor e inserimos um laço de repetição.
+
+Dentro do laço, nós movemos o percorredor para a próxima imagem da página. Se não houver mais imagens, nós fizemos algo histórico (afinal de contas, para cada termo existem centenas de correspondências). Se houver, criamos um trabalho em andamento com o comando `crie uma obra de arte usando uma URL`. Mesmo que o token do percorredor não seja uma URL, eu sei que uma URL é apenas um texto, e que o token do percorredor é um subtexto. Como nenhuma outra rotina cria uma obra de arte usando um texto, o compilador acaba por chamar a rotina correta. Em seguida, anexamos a obra de arte na lista de obras e repetimos o processo.
+
+
 ## MOVENDO OS NOSSOS PERCORREDORES
 
 Aqui estão as rotinas que precisamos para percorrer as imagens do Google:
-
-Caso covê queira ver os dados retornados pelo Google, você pode salvar o conteúdo da fonte do percorredor em um arquivo usando a rotina `gravar um buffer num arquivo` que está presente no arquivo `o cérebro`.
-
-Observe que, uma vez que as subpalavras contêm ponteiros de byte, não os bytes em si, você precisa especificar o alvo do primeiro byte da fonte do percorredor para obter os dados. Eu percebo que isto é um pouco complicado, mas sempre que a gente lida com coisas complicadas, é isso que ocorre.
 
 ```
 Para mover um percorredor (usando o Google Imagens):
@@ -1270,15 +1311,15 @@ Repita.
 como pintar
 ```
 
+Caso covê queira ver os dados retornados pelo Google, você pode salvar o conteúdo da fonte do percorredor em um arquivo usando a rotina `gravar um buffer num arquivo` que está presente no arquivo `o cérebro`.
+
+Observe que, uma vez que as subpalavras contêm ponteiros de byte, não os bytes em si, você precisa especificar o alvo do primeiro byte da fonte do percorredor para obter os dados. Eu percebo que isto é um pouco complicado, mas sempre que a gente lida com coisas complicadas, é isso que ocorre.
+
+
+
 ## PREPARANDO A PINTURA
 
 Estamos quase prontos para terminar uma obra de arte. Mas antes que isso aconteça, vamos programar algumas rotinas auxiliares para facilitar as coisas para nós. Aqui estão elas:
-
-A primeira rotina escolhe um lugar em qualquer lugar — ou perto de — uma caixa. Isso nos permite pincelar as bordas de nossa imagem de uma forma muito artística. Isso também nos permite misturar algumas das cores de fundo, assim o contraste entre a pintura e o fundo não fica tão gritante.
-
-A declaração "privatize", caso esteja se perguntando, cria uma cópia da caixa para que possa mudá-la sem afetar sem querer a rotina que chamou a função. A cópia da caixa original recebe o nome "caixa"; a caixa original recebe o nome "caixa original".
-
-A segunda rotina é nossa rotina de pincelar. Ela obtém uma cor do modelo e dá uma pincelada — a menos que a cor seja quase branca, nesse caso nós substituímos pela cor de fundo. Isso dá a nossas pinturas um toque de "transparência" que aumenta consideravelmente sua atratividade.
 
 ```
 Para escolher um lugar perto de uma caixa:
@@ -1296,13 +1337,19 @@ Escolha uma cor aleatória variando entre a cor cinza bem clara e a cor branca.
 como pintar
 ```
 
+
+A primeira rotina escolhe um lugar em qualquer lugar — ou perto de — uma caixa. Isso nos permite pincelar as bordas de nossa imagem de uma forma muito artística. Isso também nos permite misturar algumas das cores de fundo, assim o contraste entre a pintura e o fundo não fica tão gritante.
+
+A declaração "privatize", caso esteja se perguntando, cria uma cópia da caixa para que possa mudá-la sem afetar sem querer a rotina que chamou a função. A cópia da caixa original recebe o nome "caixa"; a caixa original recebe o nome "caixa original".
+
+A segunda rotina é nossa rotina de pincelar. Ela obtém uma cor do modelo e dá uma pincelada — a menos que a cor seja quase branca, nesse caso nós substituímos pela cor de fundo. Isso dá a nossas pinturas um toque de "transparência" que aumenta consideravelmente sua atratividade.
+
+
+
 ## PINTANDO
 
 Ah, se o Monet pudesse nos ver agora! Vamos direto ao assunto:
 
-Se a obra de arte estiver em branco ou já estiver concluída, nós a ignoramos. Caso contrário, buscamos o modelo da internet, redimensionamos, centralizamos, e desenhamos o modelo em um fundo novo. Aí sim a gente começa a picelar. Muito. Quando terminarmos, nós extraimos a pintura da tela do quadro. Já que não vamos mais precisar do modelo, nós destruímos ele.
-
-Vá em frente. Experimente. Gostou?
 
 ```
 Para finalizar uma obra de arte:
@@ -1327,17 +1374,14 @@ Destrua a imagem.
 como pintar
 ```
 
+Se a obra de arte estiver em branco ou já estiver concluída, nós a ignoramos. Caso contrário, buscamos o modelo da internet, redimensionamos, centralizamos, e desenhamos o modelo em um fundo novo. Aí sim a gente começa a picelar. Muito. Quando terminarmos, nós extraimos a pintura da tela do quadro. Já que não vamos mais precisar do modelo, nós destruímos ele.
+
+Vá em frente. Experimente. Gostou?
+
+
 ## NAVEGANDO PELAS OBRAS DE ARTE
 
 Aposto que você gostaria de ver todas as pinturas de cada termo pesquisado. Eu sei que sim. Para isso, precisaremos modificar o nosso gerenciador de pressionamento de teclas, e também será preciso adicionar quatro rotinas auxiliares. Aqui está a versão final do nosso gerenciador:
-
-A tecla <kbd>Home</kbd> nos mostra a primeira obra de arte da lista. Se a primeira obra de arte da lista já estiver sendo exibida, nós iremos alertar o usuário.
-
-A tecla <kbd>End</kbd> nos mostra a última obra de arte da lista. Se a última obra de arte da lista já estiver sendo exibida, nós iremos alertar o usuário.
-
-A tecla <kbd>Page Up</kbd> mostra a obra de arte que estiver antes da obra de arte atual. Se a primeira obra de arte da lista estiver sendo exibida, nós iremos alertar o usuário.
-
-A tecla <kbd>Page Down</kbd> nos mostra a próxima obra de arte da lista. Novamente, se não houver mais nenhuma obra de arte na lista, nós alertaremos o usuário.
 
 ```
 Para gerenciar um comando (pressionamento de tecla):
@@ -1357,13 +1401,19 @@ Se a tecla for a tecla page down, gerencie o comando (tecla page down); prossiga
 como pintar
 ```
 
+A tecla <kbd>Home</kbd> nos mostra a primeira obra de arte da lista. Se a primeira obra de arte da lista já estiver sendo exibida, nós iremos alertar o usuário.
+
+A tecla <kbd>End</kbd> nos mostra a última obra de arte da lista. Se a última obra de arte da lista já estiver sendo exibida, nós iremos alertar o usuário.
+
+A tecla <kbd>Page Up</kbd> mostra a obra de arte que estiver antes da obra de arte atual. Se a primeira obra de arte da lista estiver sendo exibida, nós iremos alertar o usuário.
+
+A tecla <kbd>Page Down</kbd> nos mostra a próxima obra de arte da lista. Novamente, se não houver mais nenhuma obra de arte na lista, nós alertaremos o usuário.
+
+
+
 ## Home, End, Page Up, & Page Down
 
-Aqui estão as rotinas auxiliares de que precisamos para navegar entre as obras de arte. Dê uma olhada com calma.
-
-A resposta será mais lenta na primeira vez que você criar uma obra de arte, já que temos que pintá-la antes de mostrá-la. A mensagem "Trabalhando..." aparecerá no painel de informações.
-
-Experimente. I think you'll like it.
+Aqui estão as rotinas auxiliares de que precisamos para navegar entre as obras de arte. Dê uma olhada com calma:
 
 ```
 Para gerrenciarmos um comando (tecla Home):
@@ -1393,13 +1443,15 @@ Vá para a obra de arte anterior.
 como pintar
 ```
 
+A resposta será mais lenta na primeira vez que você criar uma obra de arte, já que temos que pintá-la antes de mostrá-la. A mensagem "Trabalhando..." aparecerá no painel de informações.
+
+Experimente. Com certeza você vai gostar..
+
+
+
 ## IMPRIMINDO
 
 Bem, não há mais nada para fazer senão atualizar nossas rotinas de impressão:
-
-Nós iremos ajustar a posição da pintura para que ela possa ser impressa bem no meio da folha, a partir daí nós efetivamente colocamos a pintura na folha, e pronto.
-
-Já colocamos o botão de impressão na o lugar certo, mas não criamos a rotina com o comando de imprimir. Faça com que seu gerenciador de impressão fique parecido com isto:
 
 ```
 Para imprimir uma obra de arte:
@@ -1418,6 +1470,11 @@ Mostre o termo "Obra de Arte Impressa com sucesso" no painel de informações.
 ```
 como pintar
 ```
+
+Nós iremos ajustar a posição da pintura para que ela possa ser impressa bem no meio da folha, a partir daí nós efetivamente colocamos a pintura na folha, e pronto.
+
+Já colocamos o botão de impressão na o lugar certo, mas não criamos a rotina com o comando de imprimir. Faça com que seu gerenciador de impressão fique parecido com isto:
+
 ```
 Para gerenciar um comando (atalho):
 Se a tecla do comando for a tecla p, imprima a obra de arte; saia.
@@ -1433,17 +1490,17 @@ Aí está. Nosso programa está pronto. Um incrível aplicativo feito totalmente
 
 Aqui está uma coisinha para nos lembrarmos.
 
+```
+Pintar, Pincelar e Colorir.
+Claude Monet_	Imprimir	Sair
+```
+
+
 PS: Não se esqueça de testar o programa buscando coisas como "nascer do sol". Ou outras paisagens. O fundo do mar. Montanhas. Rios. Flores e árvores. Pássaros e abelhas. Todas as criaturas, grandes e pequenas. Pessoas famosas. Pessoas comuns. Trens, barcos, aviões, carros antigos. Londres, Paris, Washington DC. Presentes.
 
 A partir de agora, use o Glossário a seguir para guiá-lo em sua jornada na criação de seus próprios programas. Em Português Puro e Simples.
 
-```
-Claude Monet_ Imprimir Sair
-```
-```
-Pintar, Pincelar e Colorir.
-```
-## Glossário Explicativo de Termos e Definições
+# Glossário Explicativo de Termos e Definições
 
 
 ## VISÃO GERAL
@@ -2469,13 +2526,13 @@ O compilador é esperto o bastante para usar automaticamente a rotina de `CONVER
 
 Um "bit", como definido no arquivo `o cérebro`, é uma unidade de medida. É usado em comandos como `1 bit` ou `alguns bits`. Você provavelmente não vai precisar dele a menos que você seja um ned que goste de passar o tempo manipulando bits usando comandos como:
 
-`CONJUNCIONE este valor COM este valor.`(AND)<br> `DISJUNCIONE este valor COM este valor`.(OR)<br> `DISJUNCIONE EXCLUSIVAMENTE este valor COM este valor.`(XOR)
+`CONJUNCIONE este valor COM este valor.`(AND)<br/>   `DISJUNCIONE este valor COM este valor`.(OR)<br/>   `DISJUNCIONE EXCLUSIVAMENTE este valor COM este valor.`(XOR)
 
 Em cada um destes casos, o primeiro argumento informado é o que é modificado pelo conectivo lógico.
 
 Também é possível efetuar as seguintes operações lógicas:
 
-`DESLOQUE este valor alguns bits PARA A ESQUERDA.`<br> `DESLOQUE este valor alguns bits PARA A DIREITA.`
+`DESLOQUE este valor alguns bits PARA A ESQUERDA.`<br/>   `DESLOQUE este valor alguns bits PARA A DIREITA.`
 
 Ou ainda:
 
@@ -2494,7 +2551,7 @@ Mas se você entender o que eu estou dizendo, tenho certeza que você também va
 Um dos aspectos chave do compilador é a forma que ele trabalha com caixas. Uma caixa é uma variável do tipo <i>record</i>. O código da caixa é basicamente assim:
 ```
 ```
-Um lado é uma coordenada.<br> 
+Um lado é uma coordenada.<br/>   
 Uma caixa tem
 Um lado esquerdo, 
 Um lado de cima, 
@@ -2600,7 +2657,7 @@ Um "comentário" é qualquer coisa entre o uma barra invertida e o final de uma 
 ```
 ```
 O editor de texto exibe comentários na cor do azul claro para que sejam fáceis de encontrar.
-Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:<br> <code>Utilize a cor azul claro como cor dos comentários.</code>
+Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:<br/>   <code>Utilize a cor azul claro como cor dos comentários.</code>
 ```
 
 </code>
@@ -2648,7 +2705,7 @@ Observe que os comandos imperativos nos comandos condicionais são separados por
 A nãos er que o ponto esteja num comentário ou dentro de aspas duplas, é claro.
 ```
 ```
-Observe também que se você utilizar palavras negativas na chamada implícita do decidor, essas palavras serão descartadas ou serão modificadas adequadamente. Nesse caso o decisor que será chamado é o que não contém as palavras negativas, a única coisa que acontece é que o valor de retorno dele será invertido. Por exemplo, digamos que você use o seguinte comando:<br>
+Observe também que se você utilizar palavras negativas na chamada implícita do decidor, essas palavras serão descartadas ou serão modificadas adequadamente. Nesse caso o decisor que será chamado é o que não contém as palavras negativas, a única coisa que acontece é que o valor de retorno dele será invertido. Por exemplo, digamos que você use o seguinte comando:<br/>  
 <code>Se a coordenada não estiver dentro da caixa, [...]</code>
 Primeiramente, o compilador vai "descartar" o <code>não</code>. Logo em seguida, ele vai <i>decidir se a coordenada está na caixa</i>. A resposta obtida será então invertida (Se a resposta for "sim", então o retorno será um "não" e vice-versa). Eu sei que parece complicado, mas na verdade não é. E até onde testamos, tem funcionado muito bem, já que os decisores apenas retornam "sim" ou "não". Veja o tópico "Decisores" para mais informações.
 ```
@@ -2667,7 +2724,7 @@ O console pode ser ativado a qualquer momento. Ele ocupa toda a tela e usa a fon
 
 Você pode conversar com o usuário no console usando instruções como estas:
 
-LEIA algo USANDO O CONSOLE PADRÃO.<br> MOSTRE algo NO CONSOLE PADRÃO.
+LEIA algo USANDO O CONSOLE PADRÃO.<br/>   MOSTRE algo NO CONSOLE PADRÃO.
 
 Você também pode escrever no console sem avançar para a próxima linha:
 
@@ -2864,15 +2921,15 @@ CAIXA
 
 O Windows insiste que usemos seu modelo complicado e não processual juntamente com as suas centenas de mensagens e códigos absurdos. Felizmente, o compilador inclui definições que reduzem essa monstruosidade a apenas dez simples eventos que podem ser tratados de uma forma puramente processual. Eis o código:
 
-`Um evento é uma coisa com<br>
-uma categoria,<br>
-um detector de shift, uma detector de ctrl, uma detector de alt,<br>
-uma coordenada,<br>
+`Um evento é uma coisa com<br/>  
+uma categoria,<br/>  
+um detector de shift, uma detector de ctrl, uma detector de alt,<br/>  
+uma coordenada,<br/>  
 uma tecla e um byte.`
 
 "Categoria" nada mais é do que uma das seguintes palavras:
 
-ATUALIZAÇÃO DE TELA — Esse tipo de evento informa que é hora de redesenhar a tela. Culpe o Windows por isso.<br> MOVIMENTO DE CURSOR — O cursor se moveu. Esse tipo de evento é muito usado para redimensionar formas e objetos.<br> PRESSIONAMENTO DE TECLA — O usuário digitou algo. Acho que nem preciso explicar nada.<br> CLIQUE ESQUERDO (ou apenas CLIQUE) — O botão esquerdo do mouse acabou de ser presssionado. Muito usado em botões e componentes similares.<br> CLIQUE DUPLO — O usuário clicou duas vezes. Se você usa o Windows então já sabe que geralmente esse comando é utilizado para abrir ou executar arquivos.<br> CLIQUE DIREITO — O botão direito do mouse acabou de ser pressionado. No compilador, esse é o comando que inicia a rolagem da página.<br> CLIQUE DIREITO DUPLO — O usuário deve ter clicado por engano. Que tal colocar darmos a ele ovo de páscoa para celebrar?<br> DEACTIVATE — You're about to be rudely swapped out. Handled internally. ACTIVATE — You're back after a rude swap-out. Handled internally. DONE — Inserted internally. You should never see this event.
+ATUALIZAÇÃO DE TELA — Esse tipo de evento informa que é hora de redesenhar a tela. Culpe o Windows por isso.<br/>   MOVIMENTO DE CURSOR — O cursor se moveu. Esse tipo de evento é muito usado para redimensionar formas e objetos.<br/>   PRESSIONAMENTO DE TECLA — O usuário digitou algo. Acho que nem preciso explicar nada.<br/>   CLIQUE ESQUERDO (ou apenas CLIQUE) — O botão esquerdo do mouse acabou de ser presssionado. Muito usado em botões e componentes similares.<br/>   CLIQUE DUPLO — O usuário clicou duas vezes. Se você usa o Windows então já sabe que geralmente esse comando é utilizado para abrir ou executar arquivos.<br/>   CLIQUE DIREITO — O botão direito do mouse acabou de ser pressionado. No compilador, esse é o comando que inicia a rolagem da página.<br/>   CLIQUE DIREITO DUPLO — O usuário deve ter clicado por engano. Que tal colocar darmos a ele ovo de páscoa para celebrar?<br/>   DEACTIVATE — You're about to be rudely swapped out. Handled internally. ACTIVATE — You're back after a rude swap-out. Handled internally. DONE — Inserted internally. You should never see this event.
 
 Os sinalizadores "ctrl" e "alt" e "shift" indicam o estado das teclas correspondentes no momento do evento (a flag é definida se a tecla for pressionada).
 
@@ -2948,17 +3005,17 @@ Eu lido com o último operador um pouco diferente, já que o objetivo neste caso
 
 Um record é uma coleção de itens que contém dados intimamente relacionados. Cada item é considerado um "campo". Campos são definidos como parte do record que os contém, e podem ser separada por vírgulas, ponto e vírgula ou pelas palavras E e OU. Veja o exemplo abaixo:
 
-`Uma pessoa é algo com<br>
-um nome e<br>
-um endereço postal;<br>
-um byte chamado gênero ou<br>
-um byte chamado sexo no gênero;<br>
-32 bytes, e<br>
+`Uma pessoa é algo com<br/>  
+um nome e<br/>  
+um endereço postal;<br/>  
+um byte chamado gênero ou<br/>  
+um byte chamado sexo no gênero;<br/>  
+32 bytes, e<br/>  
 um cônjuge (referência).`
 
 O primeiro campo é definido com apenas um artigo indefinido, UMA e um tipo, NOME. Pense neste campo como "o nome da pessoa".
 
-O segundo campo inclui um ENDEREÇO POSTAL, que é nada mais do que um texto. Logo, em algum lugar do seu código você precisará acrescentar a definição:<br> `Um endereço postal é um texto`.
+O segundo campo inclui um ENDEREÇO POSTAL, que é nada mais do que um texto. Logo, em algum lugar do seu código você precisará acrescentar a definição:<br/>   `Um endereço postal é um texto`.
 
 O terceiro campo é definido da mesma forma que o primeiro campo, mas com um nome imposto a ele devido a cláusula CHAMADO. Esse campo é o "gênero da pessoa". Normalmente, você só usará esssa forma quando o tipo de um campo não tiver nada a ver com o nome do tipo (Ninguém costuma pensar em gênero em termos de bytes).
 
@@ -2973,12 +3030,12 @@ O último campo é parecido com o segundo, onde se assume que a variável CÔNJU
 
 O sistema de arquivos do Windows é uma coisa de beleza insuperável, se igualando a uma obra de arte... Brincadeirinha. Na verdade o sistema de arquivos do Windows é uma verdadeira bagunça. Só pra você ter uma idéia:
 
-`Um endereço completo é um texto.` ` \ nome completo do arquivo = c:\pasta1\subpasta2\arquivo.exe <br>
-Um endereço de unidade é um texto. <code> \ letra da unidade seguido dois pontos e barra invertida. Exemplo -> c:\ <br>
+`Um endereço completo é um texto.` ` \ nome completo do arquivo = c:\pasta1\subpasta2\arquivo.exe <br/>  
+Um endereço de unidade é um texto. <code> \ letra da unidade seguido dois pontos e barra invertida. Exemplo -> c:\ <br/>  
 Um endereço de pasta é um endereço completo.` ` \  Exemplo -> c:\pasta1\pasta2\
-<br>Um nome de pasta é um texto.` ` \ apenas o nome da pasta em si seguido da barra invertida = pasta2\ <br>
-Um nome completo de arquivo é um texto.` ` \ nome do arquivo após a última barra invertida até o fim da extensão. Exemplo: aquivo.exe <br>
-Uma extensão de arquivo com ponto é um texto.` ` \ Exemplo: .ext <br>
+<br/>  Um nome de pasta é um texto.` ` \ apenas o nome da pasta em si seguido da barra invertida = pasta2\ <br/>  
+Um nome completo de arquivo é um texto.` ` \ nome do arquivo após a última barra invertida até o fim da extensão. Exemplo: aquivo.exe <br/>  
+Uma extensão de arquivo com ponto é um texto.` ` \ Exemplo: .ext <br/>  
 Um designador é um texto.` ` \ nome da pasta ou nome do arquivo`
 
 Mesmo com tanta cofusão, o compilador consegue:
@@ -2987,11 +3044,11 @@ Mesmo com tanta cofusão, o compilador consegue:
 
 Ou ainda:
 
-`GRAVAR um endereço completo NO SISTEMA DE ARQUIVOS.`<br> `SUBSTITUIR um endereço completo POR outro endereço completo NO SISTEMA DE ARQUIVOS.`<br> `EXCLUIR um endereço completo NO SISTEMA DE ARQUIVOS.`<br> `CRIAR UMA CÓPIA DE um endereço completo EM outro endereço completo NO SISTEMA DE ARQUIVOS.`<br>
+`GRAVAR um endereço completo NO SISTEMA DE ARQUIVOS.`<br/>   `SUBSTITUIR um endereço completo POR outro endereço completo NO SISTEMA DE ARQUIVOS.`<br/>   `EXCLUIR um endereço completo NO SISTEMA DE ARQUIVOS.`<br/>   `CRIAR UMA CÓPIA DE um endereço completo EM outro endereço completo NO SISTEMA DE ARQUIVOS.`<br/>  
 
 Ou, se você preferir:
 
-`COLOCAR um endereço completo DENTRO DE um texto.`<br> `GRAVAR um texto EM um endereço completo.`
+`COLOCAR um endereço completo DENTRO DE um texto.`<br/>   `GRAVAR um texto EM um endereço completo.`
 
 Se algo der errado, "o erro de entrada/saída " irá conter uma descrição do problema, adequada para exibição ao usuário. Você não precisa limpar o erro de entrada/saída antes de uma invocar uma dessas funções, mas deve verifica o erro depois de chamar a função para ter certeza que ele está em branco.
 
@@ -3131,15 +3188,15 @@ Mas respondem à velha pergunta "quem veio primeiro?". A galinha, claro.
 
 O compilador possui uma série de rotinas para manipulação gráfica. Os objetos gráficos podem ser manipulados de diversas formas. Por exemplo, você pode:
 
-MOVER alguma coisa PARA CIMA tantos pixels. MOVER alguma coisa PARA BAIXO tantos pixels. MOVER alguma coisa PARA A ESQUERDA tantos pixels.<br> MOVER alguma coisa PARA A DIREITA tantos pixels.<br> MOVER alguma coisa USANDO um valor x E um valor y. MOVER algo PARA um ponto na tela.
+MOVER alguma coisa PARA CIMA tantos pixels. MOVER alguma coisa PARA BAIXO tantos pixels. MOVER alguma coisa PARA A ESQUERDA tantos pixels.<br/>   MOVER alguma coisa PARA A DIREITA tantos pixels.<br/>   MOVER alguma coisa USANDO um valor x E um valor y. MOVER algo PARA um ponto na tela.
 
 O último comando MOVER usa o canto superior esquerdo para efetuar o alinhamento. O compilador também é capaz de:
 
-CENTRALIZAR algo EM um ponto na tela.<br> CENTRALIZAR algo EM uma caixa.
+CENTRALIZAR algo EM um ponto na tela.<br/>   CENTRALIZAR algo EM uma caixa.
 
 Álém das feramentas de posicionamento, existem ferramentas de transformação de objetos. Por exemplo:
 
-`INVERTER algo.`<br> `ESPELHAR algo.`<br> `ROTACIONAR algo.`<br>
+`INVERTER algo.`<br/>   `ESPELHAR algo.`<br/>   `ROTACIONAR algo.`<br/>  
 
 O comando INVERTER é vertical. O comando ESPELHAR é horizontal. No momento o comando ROTACIONAR só consegue rotacionar objetos em intervalos de 90 graus. Além disso o comando não funciona com textos. Essa á uma rotina que ainda está sendo aprimorada.
 
@@ -3154,7 +3211,7 @@ Veja os tópicos "Desenhando" e "Máscara" para informações adicionais.
 
 Um comando "imperativo" é um comando não condicional dentro do corpo de uma rotina. Aqui estão alguns imperativos de amostra retirados do compilador:
 
-`Alerte o usuário.`<br> `Subtraia 1 da quantia.`<br> `Remova o último pedaço do texto.`<br> `Coloque a altura da fonte do texto multiplicada por 2 no x da grade.`
+`Alerte o usuário.`<br/>   `Subtraia 1 da quantia.`<br/>   `Remova o último pedaço do texto.`<br/>   `Coloque a altura da fonte do texto multiplicada por 2 no x da grade.`
 
 Os imperativos normalmente começam com um verbo e terminam com um ponto. Mas no meio, entra quase qualquer coisa. Literais. Termos. Expressões. Frases preposicionais. Tudo junto e misturado.
 
@@ -3179,7 +3236,7 @@ Já que os imperativos são apenas palavras que chamam rotinas, você também de
 
 Você pode trabalhar diretamente com o mouse usando instruções como estas:
 
-`ARMAZENE a posição do mouse EM uma posição.`<br> `SE o botão esquerdo do mouse FOR PRESSIONADO, ...`<br> `SE o botão direito do mouse FOR LIBERADO, ...`<br>
+`ARMAZENE a posição do mouse EM uma posição.`<br/>   `SE o botão esquerdo do mouse FOR PRESSIONADO, ...`<br/>   `SE o botão direito do mouse FOR LIBERADO, ...`<br/>  
 
 Mas você provavelmente não vai precisar, a menos que esteja monitorando o mouse, enquanto o usuário arrasta alguma coisa pela tela. Na maioria das vezes, você simplesmente irá responder aos vários eventos do tipo "clique" que são enviados para o seu gerenciador de eventos.
 
@@ -3205,7 +3262,7 @@ Consulte o tópico "Desenhando" para obter mais informações. Mas não hesite e
 
 Essas são as variáveis que você precisará usar para obter arquivos da internet:
 
-`Uma URL é um texto.`<br> `Um texto de requisição é um texto.`
+`Uma URL é um texto.`<br/>   `Um texto de requisição é um texto.`
 
 Um URL é um Localizador Universal de Recursos, por exemplo `<a href="http://www.osmosian.com">http://www.osmosian.com</a>`, que como você pode ver é apenas uma seqüência de caracteres que segue uma convenção complicada para nomes. Essa convenção foi baseada na tecnologia de análise disponível na época, e que fazia muito sucesso há uns 50 anos.
 
@@ -3217,11 +3274,11 @@ Você pode converter um texto comum em um texto de requisição usando o comando
 
 Você pode acessar um recurso da internet usando o seguinte comando:
 
-`COLOQUE uma URL DENTRO DE um texto.`<br>
+`COLOQUE uma URL DENTRO DE um texto.`<br/>  
 
 Aqui está um código do nosso programa de exemplo para te lembrar como funcionaque você lembre-se de como funciona
 
-`Coloque "http://images.google.com/images?q=" em uma URL.`<br> `Converta o texto do campo de texto em um texto de pesquisa.`<br> `Coloque o texto de pesquisa no fim da URL.`<br> `COLOQUE a URL DENTRO DE um texto.`<br>
+`Coloque "http://images.google.com/images?q=" em uma URL.`<br/>   `Converta o texto do campo de texto em um texto de pesquisa.`<br/>   `Coloque o texto de pesquisa no fim da URL.`<br/>   `COLOQUE a URL DENTRO DE um texto.`<br/>  
 
 Lembra? Não tem nem como esquecer. O compilador analisou o texto, pintou o quadro, atualizou a tela, gerando uma verdadeira Obra de arte.
 
@@ -3304,9 +3361,9 @@ E aqui está uma imagem de uma linha, com suas partes identificadas:
 
 O compilador consegue fazer linhas a partir de dois pontos ou usando quatro coordenadas separadas (2 x e 2 y):
 
-`FAÇA uma linha USANDO essa coordenada E essa outra coordenada.`<br> `FAÇA uma linha COM este x E este Y E aquele x E aquele Y.`<br>
+`FAÇA uma linha USANDO essa coordenada E essa outra coordenada.`<br/>   `FAÇA uma linha COM este x E este Y E aquele x E aquele Y.`<br/>  
 
-O compilador também tem quatro funções que colocarão<br> "uma LINHA ESQUERDA DA caixa" ou <br> "uma LINHA SUPERIOR de uma caixa" ou <br> "uma LINHA DO LADO DIREITO de uma caixa" ou <br> "uma "LINHA INFERIOR da caixa" <br> em uma linha.
+O compilador também tem quatro funções que colocarão<br/>   "uma LINHA ESQUERDA DA caixa" ou <br/>   "uma LINHA SUPERIOR de uma caixa" ou <br/>   "uma LINHA DO LADO DIREITO de uma caixa" ou <br/>   "uma "LINHA INFERIOR da caixa" <br/>   em uma linha.
 
 O compilador consegue CRIAR uma linha. Ou encontrar o CENTRO de uma linha. O compilador é capaz de até mesmo de:
 
@@ -3462,21 +3519,21 @@ seu programa
 
 Os pintores da vida real geralmente usam fita crepe, dessa forma eles não pintam onde não querem. Da mesma forma que os artistas, você pode usar as rotinas de "máscara" do compilador para restringir a rotina de desenho do compilador. Os comandos são esses:
 
-`PROTEJA O INTERIOR disso.`<br> `PROTEJA A PARTE DE DENTRO disso.`<br> `PROTEJA A PARTE INTERNA disso.`<br> `PROTEJA O EXTERIOR disso.`<br> `PROTEJA A PARTE DE FORA disso.`<br> `PROTEJA A PARTE EXTERNA disso.`<br>
+`PROTEJA O INTERIOR disso.`<br/>   `PROTEJA A PARTE DE DENTRO disso.`<br/>   `PROTEJA A PARTE INTERNA disso.`<br/>   `PROTEJA O EXTERIOR disso.`<br/>   `PROTEJA A PARTE DE FORA disso.`<br/>   `PROTEJA A PARTE EXTERNA disso.`<br/>  
 
 Onde "isto" e "isto" podem ser caixas, elipses, polígonos ou caixas arredondadas. Perceba, no entanto, que a infelizmente só conseguimos usar uma "fita boa" em caixas. Em todos os outros lugares só conseguimos usar uma fita ruim, então não espere perfeição com nada a não ser caixas.
 
 Qualquer fita que você aplica permanece aplicada, então depois você provavelmente vai querer usar um desses comandos:
 
-`DESPROTEJA O INTERIOR disso.`<br> `DESPROTEJA A PARTE DE DENTRO disso.`<br> `DESPROTEJA A PARTE INTERNA disso.`<br> `REMOVA A PROTEÇÃO DO INTERIOR disso.`<br> `REMOVA A PROTEÇÃO DA PARTE DE DENTRO disso.`<br> `REMOVA A PROTEÇÃO DA PARTE INTERNA disso.`<br> `DESPROTEJA O EXTERIOR disso.`<br> `DESPROTEJA A PARTE DE FORA disso.`<br> `DESPROTEJA A PARTE EXTERNA disso.`<br> `REMOVA A PROTEÇÃO DO EXTERIOR disso.`<br> `REMOVA A PROTEÇÃO DA PARTE DE FORA disso.`<br> `REMOVA A PROTEÇÃO DA PARTE EXTERNA disso.`<br>
+`DESPROTEJA O INTERIOR disso.`<br/>   `DESPROTEJA A PARTE DE DENTRO disso.`<br/>   `DESPROTEJA A PARTE INTERNA disso.`<br/>   `REMOVA A PROTEÇÃO DO INTERIOR disso.`<br/>   `REMOVA A PROTEÇÃO DA PARTE DE DENTRO disso.`<br/>   `REMOVA A PROTEÇÃO DA PARTE INTERNA disso.`<br/>   `DESPROTEJA O EXTERIOR disso.`<br/>   `DESPROTEJA A PARTE DE FORA disso.`<br/>   `DESPROTEJA A PARTE EXTERNA disso.`<br/>   `REMOVA A PROTEÇÃO DO EXTERIOR disso.`<br/>   `REMOVA A PROTEÇÃO DA PARTE DE FORA disso.`<br/>   `REMOVA A PROTEÇÃO DA PARTE EXTERNA disso.`<br/>  
 
 Ou para agilizar o serviço:
 
-`DESPROTEJA TUDO.<br>` `REMOVA A PROTEÇÃO DE TUDO.`
+`DESPROTEJA TUDO.<br/>  ` `REMOVA A PROTEÇÃO DE TUDO.`
 
 para começar do zero. Para conveniência, você pode remover toda a fita existente e colocar uma nova fita ao mesmo tempo com instruções como as seguintes. Acredite se quiser, estas são as que são mais frequentemente usadas:
 
-`PROTEJA SOMENTE O INTERIOR disso.`<br> `PROTEJA SOMENTE A PARTE DE DENTRO disso.`<br> `PROTEJA SOMENTE A PARTE INTERNA disso.`<br> `PROTEJA SOMENTE O EXTERIOR disso.`<br> `PROTEJA SOMENTE A PARTE DE FORA disso.`<br> `PROTEJA SOMENTE A PARTE EXTERNA disso.`<br>
+`PROTEJA SOMENTE O INTERIOR disso.`<br/>   `PROTEJA SOMENTE A PARTE DE DENTRO disso.`<br/>   `PROTEJA SOMENTE A PARTE INTERNA disso.`<br/>   `PROTEJA SOMENTE O EXTERIOR disso.`<br/>   `PROTEJA SOMENTE A PARTE DE FORA disso.`<br/>   `PROTEJA SOMENTE A PARTE EXTERNA disso.`<br/>  
 
 Note que se você estiver desenhando e nada estiver aparecendo, isso provavelmente está acontecendo porque você está usando a fita crepe onde não quer, ou você esqueceu de ATUALIZAR A TELA conforme descrito no tópico "Desenhar".
 
@@ -3489,11 +3546,11 @@ Mas quando você define um tipo dinâmico de dados, como uma "coisa", você se t
 
 Normalmente, você vai programar uma rotina CRIAR para inicializar cada tipo dinâmico que você definir. Nessa rotina, você atribuirá memória para a coisa. O esquema de funcionamento é mostrado abaixo:
 
-`ALOQUE MEMÓRIA PARA algo.`<br> `ALOJE MEMÓRIA PARA algo.`<br> `ATRIBUA MEMÓRIA PARA algo.`<br> `RESERVE MEMÓRIA PARA algo.`<br> `SEPARE MEMÓRIA PARA algo.`<br>
+`ALOQUE MEMÓRIA PARA algo.`<br/>   `ALOJE MEMÓRIA PARA algo.`<br/>   `ATRIBUA MEMÓRIA PARA algo.`<br/>   `RESERVE MEMÓRIA PARA algo.`<br/>   `SEPARE MEMÓRIA PARA algo.`<br/>  
 
 Você também pode codificar uma rotina DESTRUIR para cada tipo, com uma linha como:
 
-`DESALOQUE A MEMÓRIA DE algo.`<br> `DESALOJE A MEMÓRIA DE algo.`<br> `REMOVA A MEMÓRIA DE algo.`<br> `LIMPE A MEMÓRIA DE algo.`<br> `ESVAZIE A MEMÓRIA DE algo.`<br>
+`DESALOQUE A MEMÓRIA DE algo.`<br/>   `DESALOJE A MEMÓRIA DE algo.`<br/>   `REMOVA A MEMÓRIA DE algo.`<br/>   `LIMPE A MEMÓRIA DE algo.`<br/>   `ESVAZIE A MEMÓRIA DE algo.`<br/>  
 
 Mas se você não quiser, pode usar a rotina padrão do sistema. Apesar da rotina não ser ececutada automaticamente, ela existe, basta usar o comando certo. As rotinas DESTRUA que podem ser chamadas desta maneira:
 
@@ -3592,11 +3649,11 @@ Assim que você tiver uma imagem, você pode DESENHÁ-la Ou aplicar as "Transfor
 
 Existem duas definições importantes sobre polígonos no compilador:
 
-`Um polígono é uma coisa com alguns vértices.`<br> `Um vértice é uma coisa com uma coordenada x, uma coordenada y, e uma localização na coordenada x.`<br>
+`Um polígono é uma coisa com alguns vértices.`<br/>   `Um vértice é uma coisa com uma coordenada x, uma coordenada y, e uma localização na coordenada x.`<br/>  
 
 Polígonos e vértices são "coisas" e, portanto, ao contrário dos outros objetos gráficos, eles têm que ser criados e destruídos. Você também precisa acrescentar os seus vértices aos seus polígonos. Exemplos:
 
-`CRIE um polígono.`<br> `CRIE um vértice A PARTIR DE uma localização.`<br> `ACRESCENTE um vértice A um polígono.`<br> `DESTRUA um polígono.`<br>
+`CRIE um polígono.`<br/>   `CRIE um vértice A PARTIR DE uma localização.`<br/>   `ACRESCENTE um vértice A um polígono.`<br/>   `DESTRUA um polígono.`<br/>  
 
 Ao usar o comando `DESTRUA um polígogo`, o compilador se livra tanto do polígono quanto dos vértices associados a ele.
 
@@ -3711,7 +3768,7 @@ seu programa
 
 Um "procedimento" é uma rotina que faz algo para você. Eis alguns cabeçalhos de procedimento de amostra:
 
-`Para converter um número em um texto:`<br> `Para centralizar uma caixa dentro de outra caixa (horizontalmente):`<br> `Para ocultar o cursor:`<br>
+`Para converter um número em um texto:`<br/>   `Para centralizar uma caixa dentro de outra caixa (horizontalmente):`<br/>   `Para ocultar o cursor:`<br/>  
 
 O formato geral é:
 
@@ -3837,16 +3894,16 @@ Você também pode escrever suas próprias rotinas para MOVER um percorredor mai
 
 Uma "caixa arredondada" é uma caixa com cantos arredondados. O compilador usa essas caixas arredondadas no ambiente de trabalho, nos menus, abas e muitos outros lugares. Aqui está a definição:
 
-`Uma caixa arredondada é uma caixa que tem<br>
-uma coordenada esquerda, uma coordenada superior, um coordenada direita, uma coordenada inferior,<br>
-um canto superior esquerdo na coordenada esquerda, e um canto inferior direito na coordenada direita e<br>
+`Uma caixa arredondada é uma caixa que tem<br/>  
+uma coordenada esquerda, uma coordenada superior, um coordenada direita, uma coordenada inferior,<br/>  
+um canto superior esquerdo na coordenada esquerda, e um canto inferior direito na coordenada direita e<br/>  
 um raio.`
 
 Esta é uma imagem de uma caixa arredondada, com todas as partes acima identificadas. Observe que estou usando os apelidos dos campos aqui, da mesma forma que você provavelmente irá usar em seus programas.
 
 O compilador consegue fazer caixas arredondadas a partir de especificações de largura e altura, ou apenas usando um par de pontos de coordenadas. O compilador consegue criar uma caixa arredondada até mesmo usando outra caixa como base. O esquema de funcionamento é mostrado abaixo:
 
-`FAÇA uma caixa arredondada com tantas polegadas de largura POR tantas polegadas de altura COM um raio de tantas polegadas.`<br> `FAÇA uma caixa arredondada USANDO esta localização E esta outra localização E este raio.`<br> `FAÇA uma caixa arredondada USANDO esta coordenada esquerda E esta coordenada superior E esta coordenada direita E esta coordenada inferior E este raio.`<br> `FAÇA uma caixa arredondada USANDO esta caixa E este raio.`<br>
+`FAÇA uma caixa arredondada com tantas polegadas de largura POR tantas polegadas de altura COM um raio de tantas polegadas.`<br/>   `FAÇA uma caixa arredondada USANDO esta localização E esta outra localização E este raio.`<br/>   `FAÇA uma caixa arredondada USANDO esta coordenada esquerda E esta coordenada superior E esta coordenada direita E esta coordenada inferior E este raio.`<br/>   `FAÇA uma caixa arredondada USANDO esta caixa E este raio.`<br/>  
 
 O compilador consegue DESENHAR uma caixa arredondada. Bem como obter a largura, altura o ponto central entre outras coisas. E se um ponto está DENTRO, FORA ou na BORDA da caixa. Sem mencionar todas as "Transformações Gráficas" de costume.
 
@@ -3946,9 +4003,9 @@ Os três "imperativos especiais" do compilador provavelmente estão mais para "i
 
 Um imperativo de "emprego" deve ser a única declaração em uma rotina. Esse tipo de imperativo faz com que o compilador utilize outra rotina no lugar da que foi chamada. Só funciona quando os parâmetros de ambas as rotinas estão na mesma ordem e são do mesmo tipo. Para encontrar exemplos, basta progurar por ": employ". Você pode dar mais de um nome para uma rotina, usando ponto e vírgula no lugar de dois pontos, assim:
 
-`PARA limpar a tela;<br>
-PARA apagar a tela;<br>
-Para deixar a tela em branco:<br>
+`PARA limpar a tela;<br/>  
+PARA apagar a tela;<br/>  
+Para deixar a tela em branco:<br/>  
 [código aqui]`
 
 Um imperativo "push" avalia uma expressão e coloca o resultado — que deve ser um valor contendo um, dois ou quatro bytes — na pilha do sistema. Você provavelmente não vai precisar usar ele. Nem eu uso isso. Isso é um resquício dos dias em que o comando CHAMAR ainda estava em desenvolvimento (Consulte o tópico Windows para maiores informações sobre esse comando). Só pra você saber, o formato geral do comando é:
@@ -3972,7 +4029,7 @@ Esta é uma imagem de uma localização, com as partes acima identificadas. Note
 
 Localizações são feitas a partir de um x e um y, ou você pode obter uma de outro lugar:
 
-`FAÇA uma localização USANDO isto E aquilo.`<br> `ARMAZENE a posição do mouse EM uma localização.`<br>
+`FAÇA uma localização USANDO isto E aquilo.`<br/>   `ARMAZENE a posição do mouse EM uma localização.`<br/>  
 
 O compilador consegue DESENHAR uma localização. Mas não espere que seja rápido o suficiente para ser útil. O processamento de vídeo do Windows é uma das suas piores características. E já que ele só oferece recursos ruins, isso não é lá muito encorajador.
 
@@ -3993,8 +4050,8 @@ O compilador armazena "strings" em duas partes: um registro integrado que conté
 
 Os números do diagrama, caso você não tenha percebido, são apenas endereços fictícios. Um texto está em branco se o *primeiro ponteiro de byte* estiver vazio (sem memória alocada nele ainda), ou se o último ponteiro de byte for menor que o primeiro (o que permite a pré-alocação de memória). Observeque mesmo que a parte de dados de um texto seja dinamicamente alocada, você nunca tem que "criar" ou "destruir" a string. O compilador toma conta de tudo isso, assim você pode usar comandos como:
 
-`COLOQUE algo EM um texto.`<br> `ADICIONE algo NO FINAL DE um texto`<br> `ADICIONE algo A um texto ANTES de um byte#.`<br> `REMOVA O PRIMEIRO BYTE DE um texto.`<br> `REMOVA O ÚLTIMOO BYTE DE um texto.`<br> `PREENCHA um texto USANDO um byte A PARTIR DE uma contagem<.code><br>
-<code>REMOVA OS BYTES INICIAIS DE um texto USANDO uma contagem.`<br> `REMOVA OS BYTES FINAIS DE um texto USANDO uma contagem.`<br> `REMOVA OS BYTES DE um texto USANDO um subtexto.`<br>
+`COLOQUE algo EM um texto.`<br/>   `ADICIONE algo NO FINAL DE um texto`<br/>   `ADICIONE algo A um texto ANTES de um byte#.`<br/>   `REMOVA O PRIMEIRO BYTE DE um texto.`<br/>   `REMOVA O ÚLTIMOO BYTE DE um texto.`<br/>   `PREENCHA um texto USANDO um byte A PARTIR DE uma contagem<.code><br/>  
+<code>REMOVA OS BYTES INICIAIS DE um texto USANDO uma contagem.`<br/>   `REMOVA OS BYTES FINAIS DE um texto USANDO uma contagem.`<br/>   `REMOVA OS BYTES DE um texto USANDO um subtexto.`<br/>  
 
 Você também pode COLOCAR TODO O TEXTO EM LETRAS MAIÚSCULAS, MINÚSCULAS, ou COLOCAR O PRIMEIRO BYTE EM LETRAS MAIÚSCULAS. Além de obter o COMPRIMENTO de um texto, em bytes. Sem mencionar o comando:
 
@@ -4067,24 +4124,24 @@ Agora sei que isto parece complicado, e realmente é. Mas você não precisa pen
 
 Existe um componente chamado "campo de texto". Ele é utilizado para implementar campos editáveis de texto, sejam eles grandes ou pequenos. Diálogos, por exemplo. Ou formas de texto em páginas. O editor de código, na verdade, é na maior parte apenas uma grande caixa de texto. Eis a definição:
 
-`Um campo de texto é algo com<br>
-uma caixa, uma origem,<br>
-uma cor de caneta, uma fonte, um alinhamento,<br>
-algumas linhas,<br>
-uma margem,<br>
-uma proporção de escala,<br>
-uma bandeira de embrulho,<br>
-uma bandeira de rolagem horizontal,<br>
-uma bandeira de rolagem vertical,<br>
-uma seleção,<br>
-uma bandeira modificada,<br>
-uma última operação,<br>
-alguns textos chamados desfazimentos, e<br>
-alguns textos chamados refazimentos.<br></p>
+`Um campo de texto é algo com<br/>  
+uma caixa, uma origem,<br/>  
+uma cor de caneta, uma fonte, um alinhamento,<br/>  
+algumas linhas,<br/>  
+uma margem,<br/>  
+uma proporção de escala,<br/>  
+uma bandeira de embrulho,<br/>  
+uma bandeira de rolagem horizontal,<br/>  
+uma bandeira de rolagem vertical,<br/>  
+uma seleção,<br/>  
+uma bandeira modificada,<br/>  
+uma última operação,<br/>  
+alguns textos chamados desfazimentos, e<br/>  
+alguns textos chamados refazimentos.<br/>  </p>
 
 <p spaces-before="0">Como você pode ver, esta não é uma definição trivial. Felizmente o compilador lida com a paior parte dos detalhes ra você. Normalmente, você não fará muito mais do que usar os seguintes comandos:</p>
 
-<p spaces-before="0"><code>CRIE um campo de texto.`<br> `DESENHE um campo de texto.`<br> `DESTRUA um campo de texto.`<br>
+<p spaces-before="0"><code>CRIE um campo de texto.`<br/>   `DESENHE um campo de texto.`<br/>   `DESTRUA um campo de texto.`<br/>  
 
 Você deve inicializar a caixa do campo de texto, a caneta, a fonte, o alinhamento, a margem e as bandeiras depois de criá-lo. E você terá que passar todos os eventos relacionados à sua caixa de texto para o compilador, obviamente, para que ele possa cuidar de todas as coisas difíceis para você. Os manipuladores de eventos do campo de texto estão documentados nas duas páginas a seguir.
 
@@ -4093,7 +4150,7 @@ Você deve inicializar a caixa do campo de texto, a caneta, a fonte, o alinhamen
 
 Conforme dito na página anterior, o compilador gerencia a maior parte dos eventos ou comandos que são enviados ao campo de texto, desde que você use os comandos apropriados:
 
-`GERENCIE um evento USANDO um campo de texto (tecla backspace).`<br> `GERENCIE um evento USANDO um campo de texto (tecla delete).`<br> `GERENCIE um evento USANDO um campo de texto (tecla seta para baixo).`<br> `GERENCIE um evento USANDO um campo de texto (tecla end).`<br> `GERENCIE um evento USANDO um campo de texto (tecla enter).`<br> `GERENCIE um evento USANDO um campo de texto (tecla esc).`<br> `GERENCIE um evento USANDO um campo de texto (tecla home).`<br> `GERENCIE um evento USANDO um campo de texto (clique duplo).`<br> `GERENCIE um evento USANDO um campo de texto (seta esquerda).`<br> `GERENCIE um evento USANDO um campo de texto (tecla page down).`<br> `GERENCIE um evento USANDO um campo de texto (tecla page up).`<br> `GERENCIE um evento USANDO um campo de texto (tecla imprimível).`<br> `GERENCIE um evento USANDO um campo de texto (seta direita).`<br> `GERENCIE um evento USANDO um campo de texto (tecla tab).`<br> `GERENCIE um evento USANDO um campo de texto (seta para cima).`<br>
+`GERENCIE um evento USANDO um campo de texto (tecla backspace).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla delete).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla seta para baixo).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla end).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla enter).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla esc).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla home).`<br/>   `GERENCIE um evento USANDO um campo de texto (clique duplo).`<br/>   `GERENCIE um evento USANDO um campo de texto (seta esquerda).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla page down).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla page up).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla imprimível).`<br/>   `GERENCIE um evento USANDO um campo de texto (seta direita).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla tab).`<br/>   `GERENCIE um evento USANDO um campo de texto (seta para cima).`<br/>  
 
 Eu sei que pode parecer um incômodo despachar todos estes eventos separadamente, mas é exatamente isso o que torna o campo de texto geralmente útil. Por exemplo:
 
@@ -4106,21 +4163,21 @@ Entendeu o que eu quis dizer? Você está no comando. Portanto, é você que tem
 
 O compilador também gerencia de uma série de outras operações de texto de alto nível para você:
 
-`RECORTE O TEXTO DE um campo de texto.`<br> `COPIE O TEXTO DE um campo de texto.`<br> `COLE O TEXTO DE um campo de texto.`<br>
+`RECORTE O TEXTO DE um campo de texto.`<br/>   `COPIE O TEXTO DE um campo de texto.`<br/>   `COLE O TEXTO DE um campo de texto.`<br/>  
 
-`SELECIONE TODO O TEXTO DE um campo de texto.`<br>
+`SELECIONE TODO O TEXTO DE um campo de texto.`<br/>  
 
-`GERENCIE A ALTURA DA FONTE usando um campo de texto e um valor de altura de fonte.`<br> `GERENCIE O NOME DA FONTE usando um campo de texto e um nome de fonte.`<br>
+`GERENCIE A ALTURA DA FONTE usando um campo de texto e um valor de altura de fonte.`<br/>   `GERENCIE O NOME DA FONTE usando um campo de texto e um nome de fonte.`<br/>  
 
-`GERENCIE A COR DO TEXTO usando um campo de texto e uma cor.`<br>
+`GERENCIE A COR DO TEXTO usando um campo de texto e uma cor.`<br/>  
 
-`GERENCIE O RECUO DO TEXTO usando um campo de texto.`<br> `GERENCIE O AVANÇO DO TEXTO usando um campo de texto.`<br>
+`GERENCIE O RECUO DO TEXTO usando um campo de texto.`<br/>   `GERENCIE O AVANÇO DO TEXTO usando um campo de texto.`<br/>  
 
-`TRANSFORME O TEXTO DE um campo de texto EM LETRAS MAIÚSCULAS.`<br> `TRANSFORME O TEXTO DE um campo de texto EM LETRAS MINÚSCULAS.`<br>
+`TRANSFORME O TEXTO DE um campo de texto EM LETRAS MAIÚSCULAS.`<br/>   `TRANSFORME O TEXTO DE um campo de texto EM LETRAS MINÚSCULAS.`<br/>  
 
 Ou, se você preferir:
 
-`DESFAÇA A OPERAÇÃO EM um campo de texto.`<br> `REFAÇA A OPERAÇÃO EM um campo de texto.`<br>
+`DESFAÇA A OPERAÇÃO EM um campo de texto.`<br/>   `REFAÇA A OPERAÇÃO EM um campo de texto.`<br/>  
 
 Você sempre pode usar os comandos acima. O máximo de vezes que você pode desfazer ou refazer uma operação é de 32.
 
@@ -4135,11 +4192,11 @@ Uma das palavras mais imporantes do compilador é a palavra "coisa". Sempre que 
 
 Mas a definição pode ser expandida para ficar assim:
 
-`Uma obra de arte é um ponteiro para um registro de obra de arte.`<br> `Uma registro de obra de arte é um registro que tem uma próxima obra de arte, uma URL e uma pintura.`<br> `Algumas obras de arte são algumas coisas que têm uma primeira obra de arte e uma última obra de arte.`<br>
+`Uma obra de arte é um ponteiro para um registro de obra de arte.`<br/>   `Uma registro de obra de arte é um registro que tem uma próxima obra de arte, uma URL e uma pintura.`<br/>   `Algumas obras de arte são algumas coisas que têm uma primeira obra de arte e uma última obra de arte.`<br/>  
 
 Obviamente você não sabia disso. De qualquer forma, isso permite que você utilize os comandos:
 
-`ADICIONE uma coisa NO FINAL de algumas coisas.`<br> `ADICIONE algumas coisas NO FINAL de outras coisas.`<br> `INSIRA uma coisa DEPOIS de outra coisa DENTRO DE algumas coisas.`<br> `INSIRA uma coisa ANTES de outra coisa DENTRO DE algumas coisas.`<br> `INSIRA algumas coisas DEPOIS de outras coisas DENTRO DE uma coisa.`<br> `INSIRA algumas coisas ANTES de outras coisas DENTRO DE uma coisa.`<br> `MOVA uma coisa DE algumas coisas PARA outras coisas.`<br> `MOVA algumas coisas PARA outras coisas.`<br> `ADICIONE uma coisa NO INÍCIO de algumas coisas.`<br> `ADICIONE algumas coisas NO INÍCIO de outras coisas.`<br> `REMOVA uma coisa DE outras coisas.`<br> `INVERTA algumas coisas.`<br>
+`ADICIONE uma coisa NO FINAL de algumas coisas.`<br/>   `ADICIONE algumas coisas NO FINAL de outras coisas.`<br/>   `INSIRA uma coisa DEPOIS de outra coisa DENTRO DE algumas coisas.`<br/>   `INSIRA uma coisa ANTES de outra coisa DENTRO DE algumas coisas.`<br/>   `INSIRA algumas coisas DEPOIS de outras coisas DENTRO DE uma coisa.`<br/>   `INSIRA algumas coisas ANTES de outras coisas DENTRO DE uma coisa.`<br/>   `MOVA uma coisa DE algumas coisas PARA outras coisas.`<br/>   `MOVA algumas coisas PARA outras coisas.`<br/>   `ADICIONE uma coisa NO INÍCIO de algumas coisas.`<br/>   `ADICIONE algumas coisas NO INÍCIO de outras coisas.`<br/>   `REMOVA uma coisa DE outras coisas.`<br/>   `INVERTA algumas coisas.`<br/>  
 
 Existe também uma função que permite que você "coloque a quantidade de algumas coisas" em uma contagem. Tudo o que você precisa lembrar é de CRIAR e DESTRUIR cada uma de suas coisas. Consulte "Gerenciamento de memória" para mais informações.
 
@@ -4154,9 +4211,9 @@ O que se passa nessa altura é desconhecido,já que nenhum Windows ficou tanto t
 Quando quiser, você pode:
 ```
 ```
-<code>AGUARDAR tantos milissegundos.</code><br>
+<code>AGUARDAR tantos milissegundos.</code><br/>  
 ```
-<br>
+<br/>  
 </code>
 ```
 O compilador também entende unidades maiores como "minutos" ou "segundos".
@@ -4165,15 +4222,15 @@ O compilador também entende unidades maiores como "minutos" ou "segundos".
 O compilador possui uma variável chamada de temporizador que permite que você utilize os seguintes comandos:
 ```
 ```
-<code>ZERE o temporizador.</code><br>
-<code>REINICIE um temporizador.</code><br>
-<code>INICIE um temporizador.</code><br>
-<code>PARE um temporizador.</code><br>
+<code>ZERE o temporizador.</code><br/>  
+<code>REINICIE um temporizador.</code><br/>  
+<code>INICIE um temporizador.</code><br/>  
+<code>PARE um temporizador.</code><br/>  
 ```
-<br>
-REINICIE um temporizador.<br>
-INICIE um temporizador.<br>
-PARE um temporizador.<br>
+<br/>  
+REINICIE um temporizador.<br/>  
+INICIE um temporizador.<br/>  
+PARE um temporizador.<br/>  
 </code>
 ```
 O compilador utiliza esses cronômetros para verificar o tempo de recompilação, por exemplo (que atualmente é cerca de 3 segundos, dependendo do hardware).
