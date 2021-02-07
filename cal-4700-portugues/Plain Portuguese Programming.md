@@ -4269,12 +4269,12 @@ Uma hora é 60 minutos.
 ```
 ```
 O compilador também entende tipos de "registro". Veja a seção "Registros" para mais detalhes.
-```
+
 E não vamos nos esquecer dos "tipos de ponteiro", embora você raramente precise usá-los diretamente. O compilador sabe, por exemplo, que "um ponteiro de bytes é um ponteiro para um byte" e ele uso ponteiros de bytes para gerenciar suas strings. Veja "Strings", "Substrings", "Percorredores", e "Possessivos" para obter mais informações.
 
-```
+
 Por último, o compilador reconhece todos os tipos de "coisa". Existem várias no compilador, incluindo console, evento, imagem, polígono e vértice, todas elas são discutidas em outros lugares neste glossário. E também pode definir as suas próprias coisas. Consulte o tópico sobre "Coisas", e tente se lembrar das "obras de arte" do programa de exemplo.
-```
+
 
 ## UNIDADES DA MEDIDA
 
@@ -4288,31 +4288,62 @@ Conte os pontos e note que a largura desta caixa é de quatro, não três, unida
 
 Outras unidades de medida que você vai encontrar são: milissegundos, segundos, minutos e horas; polegadas e pés; kilobytes, megabytes, e gigabytes; e "porcento", que geralmente é convertido para uma proporção com 100 no denominador.
 
-## 0 1 2 3 4 5
+0 1 2 3 4 5
 
-## 0 1 2 3 4 5 6 7
+0 1 2 3 4 5 6 7
 
-## · · · · · · · ·
+· · · · · · · ·
 
-## · · • · · • · ·
-
-## · · · · · · · ·
-
-## · · • · · • · ·
-
-## · · · · · · · ·
-
-## · · · · · · · ·
+# Índice
 
 
-Index
-
-
-## INDEX
-
-alt-tab, 5, 21, 23, 56 arithmetic, 11, 57, 59, 74, 85 articles, 11, 20, 80, 85 ascii, 58 at, 75 basic skills, 59 bits, 60 boxes, 61 break, 11, 82, 91 built-in types, 62 byte, 58, 62 call, 82, 86 called, 11, 75, 85 canvas, 24, 25 colors, 28, 63 comments, 18, 19, 56, 64 compatibly, 86 compiler, 4, 9 conditionals, 11, 56, 65, 100 conjunctions, 11, 85 console, 66 contractions, 68, 85 coordinates, 118 cursor, 5, 22, 37, 39, 44, 72, 80, 83 debugging, 67 deciders, 11, 68, 69, 91, 105 definite articles, 11, 80 desktop, 4, 5 directory, 6, 15, 56 document, 6 drawing, 24, 25, 70 dump, 6 editor, 4, 7 ellipse, 71 employ, 82, 107 equal, 11, 85 equations, 12 escape, 6, 7 events, 17, 20, 22, 72, 73 exe, 9, 56 exit, 11, 68, 82, 91 expressions, 11, 57, 59, 74, 85 fields, 75, 98 files, 76, 77 finder, 4, 6
+## ÍNDICE
 
 ```
+
+alt-tab, 5, 21, 23, 56 
+arithmetic, 11, 57, 59, 74, 85 
+articles, 11, 20, 80, 85 
+ascii, 58 
+at, 75 
+basic skills, 59 
+bits, 60 
+boxes, 61 
+break, 11, 82, 91 
+built-in types, 62 
+byte, 58, 62 call, 82, 86 
+called, 11, 75, 85 
+canvas, 24, 25 
+colors, 28, 63 
+comments, 18, 19, 56, 64 
+compatibly, 86 
+compiler, 4, 9 
+conditionals, 11, 56, 65, 100 
+conjunctions, 11, 85 
+console, 66 
+contractions, 68, 85 
+coordinates, 118 
+cursor, 5, 22, 37, 39, 44, 72, 80, 83 
+debugging, 67 
+deciders, 11, 68, 69, 91, 105 
+definite articles, 11, 80 
+desktop, 4, 5 
+directory, 6, 15, 56 
+document, 6 
+drawing, 24, 25, 70 
+dump, 6 
+editor, 4, 7 
+ellipse, 71 
+employ, 82, 107 
+equal, 11, 85 
+equations, 12 
+escape, 6, 7 
+events, 17, 20, 22, 72, 73 
+exe, 9, 56 exit, 11, 68, 82, 91 
+expressions, 11, 57, 59, 74, 85 
+fields, 75, 98 
+files, 76, 77 
+finder, 4, 6
 finding, 7
 flags, 62, 85, 89
 flicker, 24
