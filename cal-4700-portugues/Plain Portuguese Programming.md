@@ -2957,17 +2957,16 @@ Você não deve usar artigos, verbos, conjunções ou preposições em nomes.
 
 Nomes de tipo geralmente contém de uma a três palavras. Como `byte` ou `nome do arquivo`.
 
-Os nomes dos campos geralmente são apenas um nome de tipo. Como "número" ou "texto". Mas eles também podem incluir adjetivos como "número total" ou "texto do primeiro nome". A parte do adjetivo pode ser usada como um "apelido" se não causar ambiguidade.
+Os nomes dos campos geralmente são apenas um nome de tipo. Como `número` ou `texto`. Mas eles também podem incluir adjetivos como `número total` ou `texto do primeiro nome`. A parte do adjetivo pode ser usada como um `apelido` se não causar ambiguidade.
 
-Nomes globais são frequentemente um tipo seguido por um adjetivo: a "tecla shift".
+Nomes globais são frequentemente um tipo seguido por um adjetivo: a `tecla shift`.
 
-Nomes de parâmetros parecem nomes de campo. Um tipo, com ou sem adjetivos. Uma "caixa", por exemplo, ou uma "cor de borda". Também neste caso o apelido funciona.
+Nomes de parâmetros parecem nomes de campo. Um tipo, com ou sem adjetivos. Uma `caixa`, por exemplo, ou uma `cor de borda`. Também neste caso o apelido funciona.
 
 
 Os nomes de procedimentos iniciam com um verbo. Em seguida, uma série de parâmetros (com artigos indefinidos), frases e talvez um qualificador no final. Tal como `remova o último byte de um texto` ou `centralize um ponto em uma caixa (horizontalmente)`.
 
-Nomes de função sempre começam com `PONHA` e terminam com `EM/DENTRO` e um nome de tipo.
-Com uma frase possessiva no meio. Como `coloque a linha do topo que faz parte da caixa em uma linha`.
+Nomes de função sempre começam com `PONHA` e terminam com `EM/DENTRO` e um nome de tipo. Com uma frase possessiva no meio. Como `coloque a linha do topo que faz parte da caixa em uma linha`.
 
 Nomes de decisores parecem nomes de procedimentos, exceto pelo fato do verbo normalmente aparecer em algum lugar no meio. Como em, `um número É menor que outro número`.
 
@@ -2976,9 +2975,9 @@ Os nomes de variáveis locais seguem o padrão de parâmetro. O compilador cria 
 
 ## PARÂMETROS
 
-```
+
 Uma variável se torna um "parâmetro" quando ela é passada para uma rotina. Para utilizar os parâmetros em uma rotina, você precisa informar a quantidade e os tipos de parâmetros no cabeçalho da rotina. Eis alguns cabeçalhos de rotina de amostra:
-```
+
 ```
 Para adicionar um número a outro número:
 Para decidir se uma localização está dentro de alguns polígonos:
@@ -2988,23 +2987,21 @@ A primeira rotina é um procedimento que espera dois parâmetros: `um número` e
 
 A segunda rotina é apenas um decisor comum. Ela também espera dois parâmetros, `uma localização` e `alguns polígonos`. Ambos os parâmetros são somente de entrada.
 
-```
-A terceira rotina é uma função com dois parâmetros: "uma elipse" e "uma localização".
+
+A terceira rotina é uma função com dois parâmetros: `uma elipse` e `uma localização`.
 A elipse é o parâmetro de entrada e a localização é o parâmetro de saída.
-```
-```
+
 As definições de parâmetros são fáceis de identificar porque sempre começam com um
-artigo indefinido (UM, UMA, UNS, UMAS ou ALGUM, ALGUMA, ALGUNS, ALGUMAS) seguido por um substantivo. Você pode ler mais sobre nomes sob o tópico "Nomes".
-```
-```
+artigo indefinido (`UM`, `UMA`, `UNS`, `UMAS` ou `ALGUM`, `ALGUMA`, `ALGUNS`, `ALGUMAS`) seguido por um substantivo. Você pode ler mais sobre nomes sob o tópico `Nomes`.
+
 Observe que quando parâmetros são passados para rotinas, o compilador passa o parâmetro original, e não cópias. É por isso que você pode usá-las na entradas, saída ou nos dois. Às vezes, no entanto, você queira manipular o valor de um parâmetro sem afetar a variavel original. Neste caso, você pode utilizar o seguinte comando:
-```
+
 ```
 PRIVATIZE um parâmetro.
 ```
-```
-E o compilador fará uma cópia do parâmetro para você. Conforme explicado anteriormente, você continuará utilizando o mesmo nome do parâmetro, já que a variável original será renomeada apenas temporariamente. A variável original receberá o sufixo "original" no nome dela, para que você ainda possa acessá-la se precisar.
-```
+
+E o compilador fará uma cópia do parâmetro para você. Conforme explicado anteriormente, você continuará utilizando o mesmo nome do parâmetro, já que a variável original será renomeada apenas temporariamente. A variável original receberá o sufixo `original` no nome dela, para que você ainda possa acessá-la se precisar.
+
 
 ## IMAGENS
 
@@ -3016,118 +3013,105 @@ Aqui estão duas imagens de amostra:
 
 Peço desculpa pela qualidade destas imagens. Eu as descobri nos antigos arquivos quando eu estava pesquisando sobre a fundação da Sociedade Osmosiana.
 
-Você pode criar uma imagem de várias maneiras. Você pode carregar um a partir de um endereço que contenha uma imagem BMP, JPG, GIF ou alguma outra imagem no formato padrão. Você pode colocar uma imagem em um depósito (buffer) e usar esse buffer como a fonte para sua imagem. Ou você pode pegar uma foto na internet através de uma URL. Você também pode criar uma imagem desenhando alguma coisa e, em seguida, "extraindo" a parte que você quer. Este é o formato geral:
+Você pode criar uma imagem de várias maneiras. Você pode carregar um a partir de um endereço que contenha uma imagem `BMP`, `JPG`, `GIF` ou alguma outra imagem no formato padrão. Você pode colocar uma imagem em um depósito (buffer) e usar esse buffer como a fonte para sua imagem. Ou você pode pegar uma foto na internet através de uma URL. Você também pode criar uma imagem desenhando alguma coisa e, em seguida, "extraindo" a parte que você quer. Este é o formato geral:
 
 `CRIE uma imagem DE algo.`
 
-Assim que você tiver uma imagem, você pode DESENHÁ-la Ou aplicar as "Transformações Gráficas" nela. Ou usá-la como um modelo para uma verdadeira obra de arte, como fizemos com o programa de exemplo `como pintar`.
+Assim que você tiver uma imagem, você pode DESENHÁ-la Ou aplicar as `Transformações Gráficas` nela. Ou usá-la como um modelo para uma verdadeira obra de arte, como fizemos com o programa de exemplo `como pintar`.
 
 
 ## POLÍGONOS
 
 Existem duas definições importantes sobre polígonos no compilador:
 
-`Um polígono é uma coisa com alguns vértices.`<br/>   `Um vértice é uma coisa com uma coordenada x, uma coordenada y, e uma localização na coordenada x.`<br/>  
+`Um polígono é uma coisa com alguns vértices.`
+`Um vértice é uma coisa com uma coordenada x, uma coordenada y, e uma localização na coordenada x.`  
 
 Polígonos e vértices são "coisas" e, portanto, ao contrário dos outros objetos gráficos, eles têm que ser criados e destruídos. Você também precisa acrescentar os seus vértices aos seus polígonos. Exemplos:
 
-`CRIE um polígono.`<br/>   `CRIE um vértice A PARTIR DE uma localização.`<br/>   `ACRESCENTE um vértice A um polígono.`<br/>   `DESTRUA um polígono.`<br/>  
+`CRIE um polígono.`
+`CRIE um vértice A PARTIR DE uma localização.`
+`ACRESCENTE um vértice A um polígono.`
+`DESTRUA um polígono.`
 
 Ao usar o comando `DESTRUA um polígogo`, o compilador se livra tanto do polígono quanto dos vértices associados a ele.
 
-Uma vez que você criar um polígono, você poderá DESENHÁ-lo. Você também pode realizar todas as habituais "Transformações Gráficas" nele. Você também pode usar o comando SUAVIZAR, e o compilador vai tentar arredondar o seu polígono, transformando cantos em curvas.  Aqui está um polígono de amostra, com a versão normal e a suavizada:
+Uma vez que você criar um polígono, você poderá DESENHÁ-lo. Você também pode realizar todas as habituais `Transformações Gráficas` nele. Você também pode usar o comando `SUAVIZAR`, e o compilador vai tentar arredondar o seu polígono, transformando cantos em curvas.  Aqui está um polígono de amostra, com a versão normal e a suavizada:
 
 Muito bem! Dessa forma fica fácil desenhar ondas sinoidais e outras formas geométricas sem usar um número real sequer. Eu gostaria que o Leopold estivesse aqui pra ver isso.
 
-##
-###### VÉRTICE
+```
+VÉRTICE
 
-##
-###### VÉRTICE
+VÉRTICE
 
-##
-###### VÉRTICE
+VÉRTICE
 
-## •
+•
 
-## •
+•
 
-## •
+ •
 
-## •
-###### VÉRTICE
+•
+VÉRTICE
 
-##
-###### DEPOIS
+DEPOIS
 
-##
-###### SUAVIZADO
-
+SUAVIZADO
+```
 
 ## POSSESSIVOS
 
-```
+
 Os Possessivos são normalmente usados para acessar campos nos registros. Conforme o exemplo abaixo:
-```
+
 ```
 *nome do campo* QUE FAZ PARTE DO *nome do registro*.
 ```
-```
+
+
 Mas eles também podem ser usados para fazer referência a uma função:
-```
+
+
 ```
 *nome da função* QUE FAZ PARTE DO *nome da coisa*.
 ```
 Se o compilador não conseguir encontrar o campo dentro do primeiro nível registro, ele verifica se existe algum campo do registro que também seja um registro. E se encontrar, usa esse campo.
 
-```
 Mas a primeira coisa o compilador faz ao encontrar um possessivo é verificar a existência de três termos específicos.
 O primeiro é o seguinte:
-```
+
+
 ```
 um ALVO que faz parte de um ponteiro
 ```
-```
+
+
 Este forma é usado apenas com ponteiros. Isso diz que você quer saber para que item o ponteiro aponta. "Um ponteiro de byte", por exemplo, refere-se ao endereço de um byte. "O alvo que faz parte do ponteiro de byte" se refere aos dados no byte.
-```
-```
+
 Os outros possessivos especiais retornam "meta-dados" — dados a respeito dos dados.
 Um deles lhe traz o tamanho, em bytes, e o outro lhe traz o endereço:
-```
+
 ```
 *MAGNITUDE* que faz parte do *nome da variável*.
 *PARADEIRO* que faz parte do *nome da variável*.
 ```
-```
+
 Você provavelmente não precisará destes com muita frequência, por isso que esses nomes esquisitos foram escolhidos.
-```
-```
-Note that the proper possessive of, say, JESUS, is JESUS', not JESUS'S.
-```
+
 
 ## IMPRIMINDO
 
-```
-A rotina de impressão precisa ser aprimorada. Eis alguns detalhes da implementação:
-```
-```
-(1) O compilador sempre envia o trabalho de impressão para a impressora padrão do sistema;
-(2) O compilador faz uso das rotinas habituais de desenho.
-(3) O compilador verifica se o texto que aparece na página de impressão é igual ao conteúdo que está na tela.
-```
-```
-Aqui está uma rotina típica de impressão:
-```
-O comando `Inicie uma página` define o quadro (área de desenho) atual como o quadro da impressora. O comando `Apronte a página` coloca o conteúdo da página de volta ao quadro da tela virtual. Então posicione quaisquer mensagens de status que você desejar exibir antes ou após essas chamadas.
 
-```
-Você pode usar o comando <code>iniciar uma página vertical</code> para ser mais explícito, e você pode <code>iniciar uma página horizontal</code> para trabalhar em modo paisagem. As várias "páginas" são na verdade caixas, inicializadas pela rotina "inicie", que você pode usar para posicionar suas coisas.
-```
- para ser mais explícito, e você pode iniciar uma página horizontal para trabalhar em modo paisagem. As várias "páginas" são na verdade caixas, inicializadas pela rotina "inicie", que você pode usar para posicionar suas coisas.
-</code>
-```
-Basicamente é só isso.
-```
+A rotina de impressão precisa ser aprimorada. Eis alguns detalhes da implementação:
+
+1. O compilador sempre envia o trabalho de impressão para a impressora padrão do sistema;
+2. O compilador faz uso das rotinas habituais de desenho.
+3. O compilador verifica se o texto que aparece na página de impressão é igual ao conteúdo que está na tela.
+
+Aqui está uma rotina típica de impressão:
+
 ```
 Para imprimir coisas:
 Inicie a impressão.
@@ -3138,144 +3122,153 @@ Apronte a página.
 Se [ faltar alguma coisa], repita.
 Termine de imprimir.
 ```
+
 ```
 seu programa
 ```
+
+O comando `Inicie uma página` define o quadro (área de desenho) atual como o quadro da impressora. O comando `Apronte a página` coloca o conteúdo da página de volta ao quadro da tela virtual. Então posicione quaisquer mensagens de status que você desejar exibir antes ou após essas chamadas.
+
+
+Você pode usar o comando `inicie uma página vertical` para ser mais explícito, e você pode `iniciar uma página horizontal` para trabalhar em modo paisagem. As várias `páginas` são na verdade caixas, inicializadas pela rotina `inicie`, que você pode usar para posicionar suas coisas.
+
+Basicamente é só isso.
+
 
 ## PROCEDIMENTOS
 
 Um "procedimento" é uma rotina que faz algo para você. Eis alguns cabeçalhos de procedimento de amostra:
 
-`Para converter um número em um texto:`<br/>   `Para centralizar uma caixa dentro de outra caixa (horizontalmente):`<br/>   `Para ocultar o cursor:`<br/>  
+`Para converter um número em um texto:`
+`Para centralizar uma caixa dentro de outra caixa (horizontalmente):`
+`Para ocultar o cursor:` 
 
 O formato geral é:
 
-PARA fazer alguma coisa:
+`PARA fazer alguma coisa:`
 
-Os cabeçalhos de procedimento sempre começam com a palavra PARA, e sempre terminam com de dois-pontos. O "alguma coisa" entre elas segue as regras normais para nomes de rotina.
+Os cabeçalhos de procedimento sempre começam com a palavra `PARA`, e sempre terminam com de dois-pontos. O `alguma coisa` entre elas segue as regras normais para nomes de rotina.
 
-O conteúdo do "corpo" dos procedimentos são compostos por declarações: condicionais e imperativas, incluindo os imperativos internos como PRIVATIZE, PERCORRA, REPITA, PARE, e SAIA. No entanto, não se pode utilizar os comandos DIGA SIM e DIGA NÃO num procedimento.
+O conteúdo do `corpo` dos procedimentos são compostos por declarações: condicionais e imperativas, incluindo os imperativos internos como `PRIVATIZE`, `PERCORRA`, `REPITA`, `PARE`, e `SAIA`. No entanto, não se pode utilizar os comandos `DIGA SIM` e `DIGA NÃO` num procedimento.
 
-O primeiro cabeçalho de amostra acima inclui um verbo, uma preposição e dois parâmetros. O verbo é "converter" e a preposição é "em". Os parâmetros são "um número" e "um texto".
+O primeiro cabeçalho de amostra acima inclui um verbo, uma preposição e dois parâmetros. O verbo é `converter` e a preposição é `em`. Os parâmetros são `um número` e `um texto`.
 
-O segundo procedimento é parecido com o primeiro, mas existe um qualificador: "(horizontalmente)".
+O segundo procedimento é parecido com o primeiro, mas existe um qualificador: "`(horizontalmente)`".
 
-A terceira rotina é um verbo seguido de um substantivo: "o cursor".
+A terceira rotina é um verbo seguido de um substantivo: `o cursor`.
 
-Quando um substantivo estiver acompanhado de um artigo definido em um cabeçalho de rotina, ele geralmente será interpretado como uma variável global única, como por exemplo o comando `desenhe a barra` que está dentro do arquivo `ambiente de trabalho`. Mas eles também podem ser utilizados para se referir a uma pseudo-variável que não está definida precisamente no seu código. Como "o cursor" no exemplo acima, ou "o último byte" na rotina "remova o último byte de um texto".
+Quando um substantivo estiver acompanhado de um artigo definido em um cabeçalho de rotina, ele geralmente será interpretado como uma variável global única, como por exemplo o comando `desenhe a barra` que está dentro do arquivo `ambiente de trabalho`. Mas eles também podem ser utilizados para se referir a uma pseudo-variável que não está definida precisamente no seu código. Como `o cursor` no exemplo acima, ou `o último byte` na rotina `remova o último byte de um texto`.
 
 
 ## NÚMEROS ALEATÓRIOS
 
 *"Para fazer um sorteio são lançados os dados, mas quem determina o reultado é o Senhor." [Provérbios 16:33](https://www.bibliaonline.com.br/acf/pv/16/33)* Então, eu acho que teremos que desistir dessa ideia de números aleatórios e nos contentar com números pseudo-aleatórios. Que é o que esse consegue gerar (não só esse, mas a maioria dos compiladores).
 
-```
 Na verdade, o compilador gera a mesma sequência de números "aleatórios" toda vez, a não ser que você <a href="https://pt. wikipedia. org/wiki/Semente_aleat%C3%B3ria">semeie</a> o gerador de números aleatórios com um valor inicial diferente (esse comportamento também se repete em outros compiladores).
 Enfim, para semear o gerador de números aleatórios, use o comando:
-```
+
 ```
 SEMEIE O GERADOR DE NÚMERO ALEATÓRIOS.
 ```
-```
+
 Mas não pense que você vai sempre ter certeza do resultado. Ninguém sabe. Exceto o Senhor, é claro.
-```
-```
+
 A rotina de números aleatórios mais básica é esta:
-```
+
 ```
 ESCOLHA um número.
 ```
-```
-O que retorna um número entre 0 e 2147483647. Você também pode fazer assim:
-```
+
+O que retorna um número entre `0` e `2147483647`. Você também pode fazer assim:
+
+
 ```
 ESCOLHA um número ENTRE o número mínimo E o número máximo.
 ESCOLHA um número ENTRE uma quantidade DE outro número.
 (Por exemplo: Escolha um número entre 6 de 60).
 ```
-```
+
 Você também pode usar a aleatoriedade ao escolher posições na tela:
-```
+
+
 ```
 ESCOLHA um lugar em QUALQUER LUGAR dentro de uma caixa.
 ESCOLHA uma localização NO RAIO DE uma distância DE outra localização.
 ```
-```
+
 Rotinas como essa estão sempre sendo adicionadas e aperfeiçoadas então é sempre bom dar uma olhada no código fonte do compilador. Basta procurar por "escolha" e você provavelmente encontrará a maioria deles.
-```
-```
+
 E se você não tiver certeza qual usar, tente o cara ou coroa.
-```
+
 
 ## REGISTROS
 
-```
 Um record é uma coleção de itens que contém dados intimamente relacionados. Cada item é considerado um "campo". Os campos são descritos em sua própria página. Mas aqui estão alguns exemplos de registros:
-```
+
 ```
 Uma caixa tem
 uma coordenada esquerda, uma coordenada superior, um coordenada direita, uma coordenada inferior,
 um canto superior esquerdo na coordenada esquerda, e um canto inferior direito na coordenada direita.
 ```
+
 ```
 Uma caixa arredondada é uma caixa que tem
 uma coordenada esquerda, uma coordenada superior, um coordenada direita, uma coordenada inferior,
 um canto superior esquerdo na coordenada esquerda, e um canto inferior direito na coordenada direita e um raio.
 ```
+
 ```
 Um polígono é uma coisa com alguns vértices.
 ```
-O primeiro registro de amostra, "caixa", tem seis campos. Mas os dois últimos são na verdade "reinterpretações" dos primeiros quatro. Este tipo de coisa só funciona, é claro, quando as estruturas físicas de dados correspondem. Observe que a palavra "tem" é uma abreviação do termo "é um registro com", que também pode ser usado.
+O primeiro registro de amostra, `caixa`, tem seis campos. Mas os dois últimos são na verdade "reinterpretações" dos primeiros quatro. Este tipo de coisa só funciona, é claro, quando as estruturas físicas de dados correspondem. Observe que a palavra `tem` é uma abreviação do termo `é um registro com`, que também pode ser usado.
 
-```
-O segundo registro, "caixa arredondada", é uma extensão da caixa. Tem os mesmos campos que uma caixa, e mais um novo campo chamado de "raio". É compatível com a caixa, e é possível usar todas as rotinas que funcionam nas caixas normais para manipulár as caixas arredondadas — a menos que uma rotina específica para caixas arredondadas tenha sido criada.
-```
-O terceiro registro, "polígono", não tem nada além de uma lista de vértices. Como o polígono é definido como uma "coisa", o compilador considera o polígono como uma estrutura dinâmica de dados (ao invés de uma estrutura estática). Isto significa que você é responsável por alocar e lidar com a memória usada por ele. Consulte o tópico "Gerenciamento de Memória" e a página sobre "Polígonos" para obter mais informações.
+O segundo registro, `caixa arredondada`, é uma extensão da caixa. Tem os mesmos campos que uma caixa, e mais um novo campo chamado de `raio`. É compatível com a caixa, e é possível usar todas as rotinas que funcionam nas caixas normais para manipulár as caixas arredondadas — a menos que uma rotina específica para caixas arredondadas tenha sido criada.
+
+O terceiro registro, `polígono`, não tem nada além de uma lista de vértices. Como o polígono é definido como uma `coisa`, o compilador considera o polígono como uma estrutura dinâmica de dados (ao invés de uma estrutura estática). Isto significa que você é responsável por alocar e lidar com a memória usada por ele. Consulte o tópico `Gerenciamento de Memória` e a página sobre `Polígonos` para obter mais informações.
 
 
 ## PERCORREDORES
 
-```
 Um "percorredor" é um registro usado para analisar texto. Para entendê-lo, você deve estar confortável com o modo de funcionamento do tipo texto (strings) e subtextos (substrings). Se você não estiver familiarizado com estes termos, procure-os neste glossário e analise as manipulações de texto que fizemos no nosso programa de exemplo.
-```
-```
+
 Eis a definição de "percorredor":
-```
+
 ```
 Um percorredor possui
 um subtexto original,
 uma subtexto fonte e
 uma caractere de subtexto.
 ```
-```
 Eis o que acontece quando o comando abaixo é invocado:
-```
+
 ```
 COLOQUE um percorredor em um texto.
 ```
-```
-O compilador define o *subtexto original* e o *subtexto fonte* de forma que eles possam abranger todo o texto. Então ele posiciona o *caractere de subtexto* no *subtexto fonte* — o que faz com que o subtexto fonte comece com valorem branco, mas pronto para receber um novo valor. Depois de colocar um percorredor no texto, você pode usar o seguinte comando:
-```
+
+O compilador define o `subtexto original` e o `subtexto fonte` de forma que eles possam abranger todo o texto. Então ele posiciona o `caractere de subtexto` no `subtexto fonte` — o que faz com que o subtexto fonte comece com valorem branco, mas pronto para receber um novo valor. Depois de colocar um percorredor no texto, você pode usar o seguinte comando:
+
 ```
 AVANCE um percorredor.
 ```
-```
-O compilador adiciona um no *primeiro byte do subtexto fonte* e mais um no *último byte do subtexto fonte*. Isso faz com que o *subtexto fonte* fique mais curto enquanto que o *caractere de subtexto* fica mais longo, permitindo que você processe o texto um byte de cada vez. Quando você quiser limpar o *caractere de subtexto* antigo e começar um novo, você só precisa utilizar o comando:
-```
+
+O compilador adiciona um no `primeiro byte do subtexto fonte` e mais um no `último byte do subtexto fonte`. Isso faz com que o `subtexto fonte` fique mais curto enquanto que o `caractere de subtexto` fica mais longo, permitindo que você processe o texto um byte de cada vez. Quando você quiser limpar o `caractere de subtexto` antigo e começar um novo, você só precisa utilizar o comando:
+
 ```
 POSICIONE o caractere de subtexto do percorredor no subtexto fonte do percorredor.
 ```
-Você também pode escrever suas próprias rotinas para MOVER um percorredor mais de um byte por vez, assim como acontece nas rotinas de "verificação ortográfica" e de "quebra de linha", sem mencionar as rotinas de análise de código-fonte. Pesquise "para mover um percorredor" para encontrar os exemplos.
+Você também pode escrever suas próprias rotinas para MOVER um percorredor mais de um byte por vez, assim como acontece nas rotinas de "verificação ortográfica" e de "quebra de linha", sem mencionar as rotinas de análise de código-fonte. Pesquise `para mover um percorredor` para encontrar os exemplos.
 
 
 ## CAIXAS ARREDONDADAS
 
 Uma "caixa arredondada" é uma caixa com cantos arredondados. O compilador usa essas caixas arredondadas no ambiente de trabalho, nos menus, abas e muitos outros lugares. Aqui está a definição:
 
-`Uma caixa arredondada é uma caixa que tem<br/>  
-uma coordenada esquerda, uma coordenada superior, um coordenada direita, uma coordenada inferior,<br/>  
-um canto superior esquerdo na coordenada esquerda, e um canto inferior direito na coordenada direita e<br/>  
-um raio.`
+```
+Uma caixa arredondada é uma caixa que tem 
+uma coordenada esquerda, uma coordenada superior, um coordenada direita, uma coordenada inferior,  
+um canto superior esquerdo na coordenada esquerda, e um canto inferior direito na coordenada direita e
+um raio.
+```
 
 Esta é uma imagem de uma caixa arredondada, com todas as partes acima identificadas. Observe que estou usando os apelidos dos campos aqui, da mesma forma que você provavelmente irá usar em seus programas.
 
@@ -3317,24 +3310,31 @@ Uma rotina é um pedaço de código que manipula uma ou mais variáveis em algum
 ```
 Cada rotina tem duas partes, cabeçalho e corpo. O cabeçalho diz o que a rotina faz e define os parâmetros com os quais ele funciona. O corpo contém uma ou mais afirmações que fazem a rotina realmente funcionar. Declarações podem ser "condicionais" ou "imperativas". Existem três tipos de rotinas.
 ```
+
 ```
 Um "procedimento" é uma rotina que simplesmente faz algo — um procedimento pode ser longo ou curto, grande ou pequeno, fácil ou difícil. Os cabeçalhos de procedimento sempre se parecem com isto:
 ```
+
 ```
 PARA fazer alguma coisa:
 ```
+
 ```
 Um "decisor" é uma rotina que diz "sim" ou "não" sobre algo, geralmente depois de examinar os parâmetros passados para ele. Um cabeçalhos de decisão é assim:
 ```
+
 ```
 PARA DECIDIR SE alguma coisa:
 ```
+
 ```
 Uma "função" é uma rotina que extrai, calcula ou deriva algo usando uma variável. Cabeçalhos de função assumem este formato:
 ```
+
 ```
 PARA POR algo QUE FAZ PARTE DE algo EM uma variável temporária:
 ```
+
 ```
 Ao contrário dos procedimentos e dos decisores, as funções não são normalmente chamadas directamente.
 Em vez disso, o "algo que faz parte de algo" é utilizado como se fosse um campo em um registro.
@@ -3346,21 +3346,26 @@ Como um "centro que está dentro da caixa", que você não encontrará no regist
 ```
 Você pode reproduzir sons usando comandos como este:
 ```
+
 ```
 REPRODUZA um arquivo wave.
 TOQUE um arquivo wave E AGUARDE.
 ```
+
 ```
 O "arquivo wave" deve estar no formato ".wav". Se você tocar e não utilizar o comando aguarde/espere, o seu programa continuará sendo executado enquanto o som é reproduzido. Se você utilizar o comando aguarde/espere, o fluxo de execução do seu programa vai parar até que o som tenha terminado de tocar.
 ```
+
 ```
 Você também pode usar os seguintes comandos:
 ```
+
 ```
 APITE.
 CACAREJE (alerte o usuário).
 ASSOVIE (susurre).
 ```
+
 ```
 O primeiro toca o som de erro padrão do Windows. O "cacarejo" é o som de notificação padrão do compilador, codificado em formato hexadecimal no compilador, basta pesquisar por "cluck". O terceiro som é o som de erro da CPU e não permite que o programa continue a ser executado até que termine de ser tocado, tornando-se a escolha ideal para testes. Consulte "Depuração" para obter mais informações.
 ```
@@ -3371,6 +3376,7 @@ DIGA um texto.
 DIGA um texto E AGUARDE.
 AGUARDE ATÉ QUE A FALA TERMINE.
 ```
+
 ```
 Para silenciar a conversa (mas não os outros sons), ative "a bandeira silenciosa".
 ```
@@ -3585,9 +3591,11 @@ Existe também uma função que permite que você "coloque a quantidade de algum
 Um tique dura aproximadamente 1 milissegundo. "A contagem de tiques do sistema" é o número de milissegundos desde a última reinicialização. Ele reseta a cada 24,8 dias aproximadamente.
 O que se passa nessa altura é desconhecido,já que nenhum Windows ficou tanto tempo ligado sem dar pau.
 ```
+
 ```
 Quando quiser, você pode:
 ```
+
 ```
 <code>AGUARDAR tantos milissegundos.</code><br/>  
 ```
@@ -3596,9 +3604,11 @@ Quando quiser, você pode:
 ```
 O compilador também entende unidades maiores como "minutos" ou "segundos".
 ```
+
 ```
 O compilador possui uma variável chamada de temporizador que permite que você utilize os seguintes comandos:
 ```
+
 ```
 <code>ZERE o temporizador.</code><br/>  
 <code>REINICIE um temporizador.</code><br/>  
@@ -3619,6 +3629,7 @@ Os tempos podem ser cronometrados simplesmente inserindo os comandos "inicie um 
 ```
 Tempos cumulativos podem ser acumulados usando o comando ""zerar" uma vez e "reiniciar" logo em seguida juntamente com o comando "parar".
 ```
+
 ```
 Existe uma função no compilador que permite que você obtenha o texto de um temporizador a qualquer momento — mesmo durante sua execução. Você também pode utilizar as operações de concatenação de strings neles.
 ```
@@ -3628,23 +3639,29 @@ Existe uma função no compilador que permite que você obtenha o texto de um te
 ```
 Um "tipo" é uma categoria ou espécie de coisa — um substantivo. Uma "instância" é uma coisa real de um tipo específico — um substantivo próprio. Globais, locais e parâmetros são instâncias concretas de tipos abstratos. Isso é o que o compilador entende sobre tipos:
 ```
+
 ```
 Em primeiro lugar, existem seis tipos "embutidos" primitivos no meu compilador: BYTE, WYRD, NUMBER, POINTER, FLAG e RECORD. Consulte "Tipos Integrados".
 ```
+
 ```
 Em seguida, há "subconjunto de tipos" que representam algumas das instâncias de algum outro tipo. O compilador, por exemplo, inclui muitos tipos de subconjunto, como estes:
 ```
+
 ```
 Um número é contador.
 Um nome é um texto.
 ```
+
 ```
 Em terceiro lugar, o compilador reconhece "tipos de unidade de medida". Assim ele pode converter um tipo de unidade em outro. Exemplos:
 ```
+
 ```
 Um pé tem 12 polegadas.
 Uma hora é 60 minutos.
 ```
+
 ```
 O compilador também entende tipos de "registro". Consulte a seção "Registros" para mais detalhes.
 
@@ -3811,6 +3828,10 @@ void, 62, 89
 whereabouts, 98
 writer, 4, 8
 wyrd, 62
+
+```
+
+```
 
 ```
 
