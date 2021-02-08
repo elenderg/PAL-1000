@@ -2843,65 +2843,76 @@ Consulte também a página `Laços`, onde uma variável local e um decisor nos p
 
 ## LAÇOS
 
-Os comandos específicos para laços são PERCORRA, REPITA, INTERROMPA e SAIA.
+Os comandos específicos para laços são `PERCORRA`, `REPITA`, `INTERROMPA` e `SAIA`.
 
-O comando PERCORRA não faz nada a não ser indicar o começo do laço. O comando REPITA volta para o comando PERCORRA, se houver um. Se não houver, o comando volta para o topo da rotina. O comando INTERROMPA sai do LAÇO e prossegue para o comando logo após o último comando REPITA. Se não houver nenhum comando REPITA, o comando vai fazer a mesma coisa que o comando SAIA. Você só pode usar um comando PERCORRA em cada rotina, mas não há limites para a quantidade de REPITA, INTERROMPA ou SAIA.
+O comando `PERCORRA` não faz nada a não ser indicar o começo do laço. O comando `REPITA` volta para o comando `PERCORRA`, se houver um. Se não houver, o comando volta para o topo da rotina. O comando `INTERROMPA` sai do LAÇO e prossegue para o comando logo após o último comando `REPITA`. Se não houver nenhum comando `REPITA`, o comando vai fazer a mesma coisa que o comando `SAIA`. Você só pode usar um comando `PERCORRA` em cada rotina, mas não há limites para a quantidade de `REPITA`, `INTERROMPA` ou `SAIA`.
 
 O comando que começa com "Se um contador tiver passado do máximo" chama um decisor especial que avança o conrador e verifica o mesmo logo após. Como o contador é uma nova variável local, quando a rotina é iniciada ele começa valendo zero.
 
-Observe que você pode utilizar os comandos PERCORRER, REPETIR e INTERROMPER em um decisor, mas você não pode usar o comando SAIR porque isso interrompe o fluxo de decisão da rotina. Por isso você precisa tomar cuidado para não sair sem querer de um decisor, também. Para sair de um decisor, utilize os comandos DIGA SIM ou DIGA NÃO.
+Observe que você pode utilizar os comandos `PERCORRA`, `REPITA` e `INTERROMPA` em um decisor, mas você não pode usar o comando `SAIA` porque isso interrompe o fluxo de decisão da rotina. Por isso você precisa tomar cuidado para não sair sem querer de um decisor, também. Para sair de um decisor, utilize os comandos `DIGA SIM` ou `DIGA NÃO`.
 
 ```
 Para fazer um laço em torno de um número máximo:
-```
-```
+\ coisas que você quer fazer antes do loop
 Percorra.
-```
-```
+\ coisas que você deseja fazer pelo menos uma vez
 Se um contador tiver passado do valor máximo, pare.
 Se [queremos saltar para fora do laço], pare.
 Se [queremos saltar de toda a rotina], saia.
-```
-```
+\ coisas que você pode querer fazer ou não
 Repita.
+\ coisas que você quer fazer depois do loop
 ```
 ```
 seu programa
 ```
-```
-\ coisas que você quer fazer antes do loop
-```
-```
-\ coisas que você quer fazer depois do loop
-```
-```
-\ coisas que você deseja fazer pelo menos uma vez
-```
-```
-\ coisas que você pode querer fazer ou não
-```
+
+
 
 ## FITA CREPE
 
 Os pintores da vida real geralmente usam fita crepe, dessa forma eles não pintam onde não querem. Da mesma forma que os artistas, você pode usar as rotinas de "máscara" do compilador para restringir a rotina de desenho do compilador. Os comandos são esses:
 
-`PROTEJA O INTERIOR disso.`<br/>   `PROTEJA A PARTE DE DENTRO disso.`<br/>   `PROTEJA A PARTE INTERNA disso.`<br/>   `PROTEJA O EXTERIOR disso.`<br/>   `PROTEJA A PARTE DE FORA disso.`<br/>   `PROTEJA A PARTE EXTERNA disso.`<br/>  
+`PROTEJA O INTERIOR disso.`
+`PROTEJA A PARTE DE DENTRO disso.`
+`PROTEJA A PARTE INTERNA disso.`
+`PROTEJA O EXTERIOR disso.`
+`PROTEJA A PARTE DE FORA disso.`
+`PROTEJA A PARTE EXTERNA disso.`
 
-Onde "isto" e "isto" podem ser caixas, elipses, polígonos ou caixas arredondadas. Perceba, no entanto, que a infelizmente só conseguimos usar uma "fita boa" em caixas. Em todos os outros lugares só conseguimos usar uma fita ruim, então não espere perfeição com nada a não ser caixas.
+Onde `disSo` podem ser caixas, elipses, polígonos ou caixas arredondadas. Perceba, no entanto, que a infelizmente só conseguimos usar uma "fita boa" em caixas. Em todos os outros lugares só conseguimos usar uma fita ruim, então não espere perfeição com nada a não ser caixas.
 
 Qualquer fita que você aplica permanece aplicada, então depois você provavelmente vai querer usar um desses comandos:
 
-`DESPROTEJA O INTERIOR disso.`<br/>   `DESPROTEJA A PARTE DE DENTRO disso.`<br/>   `DESPROTEJA A PARTE INTERNA disso.`<br/>   `REMOVA A PROTEÇÃO DO INTERIOR disso.`<br/>   `REMOVA A PROTEÇÃO DA PARTE DE DENTRO disso.`<br/>   `REMOVA A PROTEÇÃO DA PARTE INTERNA disso.`<br/>   `DESPROTEJA O EXTERIOR disso.`<br/>   `DESPROTEJA A PARTE DE FORA disso.`<br/>   `DESPROTEJA A PARTE EXTERNA disso.`<br/>   `REMOVA A PROTEÇÃO DO EXTERIOR disso.`<br/>   `REMOVA A PROTEÇÃO DA PARTE DE FORA disso.`<br/>   `REMOVA A PROTEÇÃO DA PARTE EXTERNA disso.`<br/>  
+`DESPROTEJA O INTERIOR disso.`
+`DESPROTEJA A PARTE DE DENTRO disso.`
+`DESPROTEJA A PARTE INTERNA disso.`
+`REMOVA A PROTEÇÃO DO INTERIOR disso.`
+`REMOVA A PROTEÇÃO DA PARTE DE DENTRO disso.`
+`REMOVA A PROTEÇÃO DA PARTE INTERNA disso.`
+`DESPROTEJA O EXTERIOR disso.`
+`DESPROTEJA A PARTE DE FORA disso.`
+`DESPROTEJA A PARTE EXTERNA disso.`
+`REMOVA A PROTEÇÃO DO EXTERIOR disso.`
+`REMOVA A PROTEÇÃO DA PARTE DE FORA disso.`
+`REMOVA A PROTEÇÃO DA PARTE EXTERNA disso.`
+
 
 Ou para agilizar o serviço:
 
-`DESPROTEJA TUDO.<br/>  ` `REMOVA A PROTEÇÃO DE TUDO.`
+`DESPROTEJA TUDO.`
+`REMOVA A PROTEÇÃO DE TUDO.`
 
 para começar do zero. Para conveniência, você pode remover toda a fita existente e colocar uma nova fita ao mesmo tempo com instruções como as seguintes. Acredite se quiser, estas são as que são mais frequentemente usadas:
 
-`PROTEJA SOMENTE O INTERIOR disso.`<br/>   `PROTEJA SOMENTE A PARTE DE DENTRO disso.`<br/>   `PROTEJA SOMENTE A PARTE INTERNA disso.`<br/>   `PROTEJA SOMENTE O EXTERIOR disso.`<br/>   `PROTEJA SOMENTE A PARTE DE FORA disso.`<br/>   `PROTEJA SOMENTE A PARTE EXTERNA disso.`<br/>  
+`PROTEJA SOMENTE O INTERIOR disso.`
+`PROTEJA SOMENTE A PARTE DE DENTRO disso.`
+`PROTEJA SOMENTE A PARTE INTERNA disso.`
+`PROTEJA SOMENTE O EXTERIOR disso.`
+`PROTEJA SOMENTE A PARTE DE FORA disso.`
+`PROTEJA SOMENTE A PARTE EXTERNA disso.`
 
-Note que se você estiver desenhando e nada estiver aparecendo, isso provavelmente está acontecendo porque você está usando a fita crepe onde não quer, ou você esqueceu de ATUALIZAR A TELA conforme descrito no tópico "Desenhar".
+Note que se você estiver desenhando e nada estiver aparecendo, isso provavelmente está acontecendo porque você está usando a fita crepe onde não quer, ou você esqueceu de `ATUALIZAR A TELA` conforme descrito no tópico `Desenhar`.
 
 
 ## GERENCIAMENTO DE MEMÓRIA
@@ -2910,57 +2921,58 @@ O compiladorgerencia toda a memória necessária para os tipos de dados estátic
 
 Mas quando você define um tipo dinâmico de dados, como uma "coisa", você se torna o único responsável por qualquer memória usada pelo tipo.
 
-Normalmente, você vai programar uma rotina CRIAR para inicializar cada tipo dinâmico que você definir. Nessa rotina, você atribuirá memória para a coisa. O esquema de funcionamento é mostrado abaixo:
+Normalmente, você vai programar uma rotina `CRIAR` para inicializar cada tipo dinâmico que você definir. Nessa rotina, você atribuirá memória para a coisa. O esquema de funcionamento é mostrado abaixo:
 
-`ALOQUE MEMÓRIA PARA algo.`<br/>   `ALOJE MEMÓRIA PARA algo.`<br/>   `ATRIBUA MEMÓRIA PARA algo.`<br/>   `RESERVE MEMÓRIA PARA algo.`<br/>   `SEPARE MEMÓRIA PARA algo.`<br/>  
+`ALOQUE MEMÓRIA PARA algo.`
+`ALOJE MEMÓRIA PARA algo.`
+`ATRIBUA MEMÓRIA PARA algo.`
+`RESERVE MEMÓRIA PARA algo.`
+`SEPARE MEMÓRIA PARA algo.` 
 
 Você também pode codificar uma rotina DESTRUIR para cada tipo, com uma linha como:
 
-`DESALOQUE A MEMÓRIA DE algo.`<br/>   `DESALOJE A MEMÓRIA DE algo.`<br/>   `REMOVA A MEMÓRIA DE algo.`<br/>   `LIMPE A MEMÓRIA DE algo.`<br/>   `ESVAZIE A MEMÓRIA DE algo.`<br/>  
+`DESALOQUE A MEMÓRIA DE algo.`
+`DESALOJE A MEMÓRIA DE algo.`
+`REMOVA A MEMÓRIA DE algo.`
+`LIMPE A MEMÓRIA DE algo.`
+`ESVAZIE A MEMÓRIA DE algo.`
 
-Mas se você não quiser, pode usar a rotina padrão do sistema. Apesar da rotina não ser ececutada automaticamente, ela existe, basta usar o comando certo. As rotinas DESTRUA que podem ser chamadas desta maneira:
+Mas se você não quiser, pode usar a rotina padrão do sistema. Apesar da rotina não ser ececutada automaticamente, ela existe, basta usar o comando certo. As rotinas `DESTRUA` que podem ser chamadas desta maneira:
 
 `DESTRUA algo.`
 
-Observe quea rotina DESTRUA não só destrói a coisa em si, mas também quaisquer outras coisas que estejam dentro da coisa, como campos e listas. A menos que, que você defina esses campos como "(REFERÊNCIA)".
+Observe quea rotina `DESTRUA` não só destrói a coisa em si, mas também quaisquer outras coisas que estejam dentro da coisa, como campos e listas. A menos que, que você defina esses campos como "`(REFERÊNCIA)`".
 
 Um bom exemplo pode ser encontrado no caderno onde uma "página" é definida como uma coisa com algumas "formas" nela. Voce encontrará rotinas que criam páginas e formas, mas não encontrará nenhuma rotina específica para destruí-las. Elas são parte do compilador. Entao, quando destruímos uma página, nós destruímos todas as formas dentro dela ao mesmo tempo. Exceto, é claro, para a "forma de edição", que é uma referência.
 
 
 ## NOMES
 
-```
+
 Ao contrário dos compiladores de era neandertal, as regras para nomes são amplas e flexíveis.
-```
-```
+
 Em geral, um nome pode ser uma palavra ou vároas, e pode começar com letras, dígitos e qualquer símbolo que eu não sejam sinais de pontuação, como um ponto, uma vírgula, um ponto e vírgula ou dois pontos.
 Um nome é geralmente um substantivo, ou um substantivo com um ou mais adjetivos.
 Você não deve usar artigos, verbos, conjunções ou preposições em nomes.
-```
-```
-Nomes de tipo geralmente contém de uma a três palavras. Como "byte" ou "nome do arquivo".
-```
-```
+
+Nomes de tipo geralmente contém de uma a três palavras. Como `byte` ou `nome do arquivo`.
+
 Os nomes dos campos geralmente são apenas um nome de tipo. Como "número" ou "texto". Mas eles também podem incluir adjetivos como "número total" ou "texto do primeiro nome". A parte do adjetivo pode ser usada como um "apelido" se não causar ambiguidade.
-```
-```
+
 Nomes globais são frequentemente um tipo seguido por um adjetivo: a "tecla shift".
-```
+
 Nomes de parâmetros parecem nomes de campo. Um tipo, com ou sem adjetivos. Uma "caixa", por exemplo, ou uma "cor de borda". Também neste caso o apelido funciona.
 
-```
-Os nomes de procedimentos iniciam com um verbo. Em seguida, uma série de parâmetros (com artigos indefinidos), frases e talvez um qualificador no final. Tal como "remova o último byte de um texto" ou "centralize um ponto em uma caixa (horizontalmente)".
-```
-```
-Nomes de função sempre começam com "PONHA" e terminam com "EM/DENTRO" e um nome de tipo.
-Com uma frase possessiva no meio. Como "coloque a linha do topo que faz parte da caixa em uma linha".
-```
-```
-Nomes de decisores parecem nomes de procedimentos, exceto pelo fato do verbo normalmente aparecer em algum lugar no meio. "Como em, "um número É menor que outro número".
-```
-```
+
+Os nomes de procedimentos iniciam com um verbo. Em seguida, uma série de parâmetros (com artigos indefinidos), frases e talvez um qualificador no final. Tal como `remova o último byte de um texto` ou `centralize um ponto em uma caixa (horizontalmente)`.
+
+Nomes de função sempre começam com `PONHA` e terminam com `EM/DENTRO` e um nome de tipo.
+Com uma frase possessiva no meio. Como `coloque a linha do topo que faz parte da caixa em uma linha`.
+
+Nomes de decisores parecem nomes de procedimentos, exceto pelo fato do verbo normalmente aparecer em algum lugar no meio. Como em, `um número É menor que outro número`.
+
 Os nomes de variáveis locais seguem o padrão de parâmetro. O compilador cria uma variável local sempre que encontra um nome com um artigo indefinido na frente de todo o corpo de uma rotina.
-```
+
 
 ## PARÂMETROS
 
