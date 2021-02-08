@@ -300,8 +300,6 @@ c:\cal monet\o cérebro
 
 E agora estamos prontos para escrever um código em inglês simples.
 
-
-
 ## COMO EXECUTAR O PROGRAMA
 
 Abra nosso arquivo `Como pintar` e tente executá-lo. Dica: use <kbd>Ctrl+R</kbd>. Leia o erro que apareceu na barra de menu, em seguida, clique no mouse ou aperte a tecla <kbd>Esc</kbd> para voltar ao normal.
@@ -326,8 +324,6 @@ Viu só? Mas não se engane. O programa realmente está sendo executado.
 Se você quer saber o que o programa fez, abra o arquivo `o cérebro` e use o comando Localizar (como discutimos anteriormente) para buscar as palavras `Para executar`. Rotinas sempre começam com a palavra `Para` (e suas derivações), e seus cabeçalhos sempre terminam com dois-pontos.
 
 Você pode destrinchar todo o código até onde quiser. Está tudo lá. Até mesmo as chamadas e instruções complicadas que são necessárias para se comunicar com o Windows. Mas vamos mudar de assunto. Vamos para o que interessa.
-
-
 
 ## ESTRUTURA BÁSICA
 
@@ -360,8 +356,6 @@ Observe que você pode organizar seu código em cronologicamente ou hierarquicam
 
 De acordo com a filosofia da linguaem é melhor manter uma ordem alfabética. Por conta disso há um menu para `Classificar por Ordem Alfabética` na letra `C`. A organização ocorre de acordo com as letras iniciais de cada linha, e comentários soltos são considerados como parte integrante da tarefa logo acima deles. Experimente. Você pode usar o comando `Desfazer` se não gostar do resultado.
 
-
-
 ## COMENTÁRIOS
 
 Você provavelmente notou que eu mencionei comentários na página anterior, mas não disse como criá-los. Eu fiz isso de propósito. Comentários em geral indicam que seu código não está tão claro quanto deveria.
@@ -383,14 +377,12 @@ como pintar
 
 Você pode inserir um comentário simples de cada vez ou você pode selecionar um conjunto inteiro de linhas e executar um desses dois comandos abaixo:
 
-O `bloco de notas` exibe comentários simples na cor azul claro, o que acaba por ser muito útil. Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:<br/>   `Utilize a cor azul claro como cor dos comentários.`.
-
 ```
 Comentar T ou Transformar comentários em código U
 ```
 
-
-
+O `bloco de notas` exibe comentários simples na cor azul claro, o que acaba por ser muito útil. Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:
+ `Utilize a cor azul claro como cor dos comentários.`.
 
 ## OBSERVAÇÕES
 
@@ -420,13 +412,9 @@ o cérebro
 
 Observe que os qualificadores não são iguais aos comentários e observações simples. Qualificadores são considerados parte do programa e afetam como o código compilado é executado. Vamos ver alguns qualificados no `como pintar` em breve.
 
-
-
-
 ## SOBRE O COMANDO PERCORRA
 
 Se você deu uma olhada no `o cérebro` algumas páginas atrás, deve ter visto que até mesmo a tarefa `Inicialize o programa` requer mais de 100 linhas do código mais feio já visto pelo ser humano. E se você investigar mais aprofundadamente o processamento de eventos definido lá, você descobrirá que as coisas só ficam piores daí pra frente.
-
 
 Felizmente, foi possível simplificar tudo isso, então nosso manipulador de eventos requer apenas cinco linhas. Aqui está. Pode copiar o código,, mas não execute o programa ainda.
 
@@ -446,10 +434,7 @@ como pintar
 
 Se você é um profissional experiente, você saberá o que quero dizer quando digo que `um evento` na segunda linha define uma nova variável local do tipo `evento`, referenciado nas linhas 03 e 04 como `o evento`. E você vai entender que as mesmas palavras no cabeçalho da outra rotina definem um parâmetro do mesmo tipo (passado por referência) que é conhecido, dentro dessa outra rotina, como `evento`. Você também perceberá, depois que pensar um pouco, que uma das coisas que torna a linguagem sucinta é que não nomeamos variáveis e parâmetros — nos referimos a elas com um artigo e um nome de tipo. Assim como na vida real.
 
-
 Se você não é um profissional, não se preocupe com isso. Isso significa o que diz.
-
-
 
 ## REPETIÇÕES INFINITAS
 
@@ -476,7 +461,6 @@ Parar
 Ufa! Você consegui ver os dois programas rodando quando deu o <kbd>Alt+Tab</kbd>? Ainda não? Tente fazer tudo de novo. Já? Excelente. Você parou o programa `como pintar`? Ainda não? Vai logo. Conseguiu agora? Excelente. Verifique só pra ter certeza se parou mesmo. Ainda não? Tente novamente. Já? Excelente.
 
 É assim que se faz.
-
 
 ## O GERENCIADOR DE COMANDOS
 
@@ -510,8 +494,6 @@ como pintar
 
 Se você é um veterano, você provavelmente adivinhou que `o comando do usuário` é uma variável do tipo registro e que `tipo` é um campo desse registro. E sim, o `campo` é uma string. Você pode saber mais sobre eventos, registros, campos e caracteres encadeados nas seções de referência deste livro. Se você for um iniciante, apenas tente se lembrar dos qualificadores e siga em frente.
 
-
-
 ## FECHANDO O PROGRAMA
 
 Vamos usar o atalho <kbd>Ctrl+Q</kbd> para que possamos sair do `como pintar` a qualquer momento que quisermos. Primeiro, adicionamos o seguinte código ao nosso gerenciador de pressionamento de teclas:
@@ -540,8 +522,6 @@ A `tecla q` também está definida no arquivo `o cérebro` bem como o comando `f
 
 E agora, nós estamos prontos. Execute o programa. Caso o programa não tenha aberto automaticamente, pressione <kbd>Alt+Tab</kbd>. Certifique-se de estar no Monte Caral. Pressione <kbd>Ctrl+Q</kbd>, ou <kbd>Alt+Q</kbd>. Dê mais um <kbd>Alt+Tab</kbd> para se certificar de que o programa foi fechado corretamente. Muito bem.
 
-
-
 ## EVITANDO FALHAS DURANTE A EXIBIÇÃO DO PROGRAMA
 
 É hora de começar a pensar em colocar algo na tela. O que, infelizmente, é mais difícil do que deveria. Existem duas dificuldades que devemos superar. A primeira delas envolve a taxa de atualização do conteúdo na tela do monitor.
@@ -562,16 +542,13 @@ exibir
 
 Observe os termos no diagrama acima. Por convenção, usamos a palavra `criar` para indicar que estamos trabalhando na tela que ainda não está visível para o usuário. Usamos a palavra `atualizar` quando transferimos o conteúdo do quadro para a tela. E usamos o verbo `mostrar/exibir` quando queremos que ambos aconteçam em uma rápida sucessão.
 
-
-
 ## O EVENTO DE ATUALIZAÇÃO
 
 A segunda dificuldade relacionada à tela que temos que enfrentar é que o Windows tenta ser um sistema multi-tarefas, mas na prática não funciona muito bem. Já não basta ter que compartilhar recursos como espaço em disco e Memória RAM com os outros programas. Nunca se sabe quanto tempo teremos que esperar até que o Windows termine uma tarefa e retorne a executar as nossas. Na prática, o Windows acaba por interromper constantemente a execução do programa.
 
 As coisas pioram caso você troque de janela. Sabe porque fica pior? Porque o Windows, que que de alguma forma consegue restaurar toda a memória, registos e flags para o estado exato em que estavam no momento em que foram interrompidos — por algum motivo não lembra de como era a interface do programa! Sabe o que o Windows faz pra tentar consertar isso? Ele envia para o programa um comando `atualizar tela` e espera que nosso programa faça todo o trabalho.
 
-Bem, no fim das contas, esse comando acaba por ser chato, mas não é tão difícil assim de gerenciar. Fazer o quê, assim é a vida. Consulte como lidamos com isso:
-
+Bem, no fim das contas, esse comando acaba por ser chato, mas não é tão difícil assim de gerenciar. Fazer o quê, assim é a vida. Veja como lidamos com isso:
 
 ```
 Para gerenciar o comando (atualizar):
@@ -587,7 +564,6 @@ como pintar
 ```
 
 A razão pela qual criamos duas tarefas separados, uma para `atualizar a tela` e outra para `mostrar tudo` será explicada em breve. A tarefa de `criar o painel do fundo` será abordada nas próximas páginas.
-
 
 ## O FUNDO
 
@@ -614,7 +590,6 @@ como pintar
 
 E o destruiremos quando terminarmos:
 
-
 ```
 Para finalizar nossas coisas:
 Destrua o painel de fundo.
@@ -640,7 +615,6 @@ Se você já programou antes, provavelmente vai querer saber que...
 (3) Qualquer coisa mais do que isso cai na categoria "coleta de lixo" e, como cada programador maníaco sabe, a coleta de lixo é para garis.
 
 Se você nunca programou, certifique-se de limpar o que você mesmo sujou.
-
 
 ## CRIANDO, PINTANDO E PINCELANDO
 
@@ -671,8 +645,6 @@ como pintar
 As cores são definidas no arquivo `o cérebro`. A paleta de cores se encontra nas próximas páginas. Uma posição é um par de coordenadas x e y. Consulte a definição no `o cérebro` para saber mais. A elipse do pincelador simula inteligentemente a pintura da ponta de um pincel com graus de pressão variados.
 
 Chega de falar. Vamos ver o que o nosso programa consegue fazer. Execute-o. Em seguida, dê um <kbd>Alt-Tab</kbd> algumas vezes para verificar se o comando de atualização de tela está sendo gerenciado corretamente pelo programa. Uau.
-
-
 
 ## MENSAGENS DE STATUS
 
@@ -712,8 +684,6 @@ Nada de extraordinário aqui.
 
 Mas note que apesar de termos criado o status, nós ainda não criamos a caixa — a gente só usou ela como base para posicionar corretamente o texto na tela.
 
-
-
 ## O Canal de Comunicação (API) do Painel de Informações.
 
 Agora vamos adicionar algum comandos triviais que, mesmo sendo triviais tornarão simples e fácil usar o nosso painel de informações. Aqui está a primeira rotina:
@@ -744,9 +714,6 @@ Essa rotina será usada em todo o lugar para informar o usuário sobre o que est
 
 Se você é um programador experiente (e você não é um preguiçoso), você sabe quão úteis rotinas triviais como estas podem ser. Então não hesite em colocá-la no código do nosso programa. Se esta é sua primeira vez (ou você é um preguiçoso), escute o que estou dizendo.
 
-
-
-
 ## OLÁ, MUNDO!
 
 Agora, duas das rotinas que criamos precisam ser atualizadas para poder fazer uso das nossas novas funcionalidades. Aqui estão elas já com o código novo no seu devido lugar:
@@ -775,11 +742,7 @@ Olá, mundo!
 
 Ótimo. Já que a tela é praticamente refeita sempre que recebemos um comando de atualização, o painel de informações é mantido, mesmo se você apertar <kbd>Alt+Tab</kbd>. Experimente. Mais tarde, vamos ajustar a mensagem do painel de informações em vários lugares para refletir o estado atual do programa.
 
-
-
-
 ## BOTÕES
-
 
 A nossa mensagem de status era uma coisa única. Mas os nossos botões não são.
 Os seus nomes são diferentes, é claro, e cada um faz uso de uma rotina diferente. Mas sua forma e comportamento geral são idênticos.
