@@ -47,12 +47,9 @@ Quando o PAL é iniciado, ele preenche totalmente a tela para que você não pre
 A B C D E G G I J K ... W X Y Z 3 itens
 ```
 ```
-a:\ (unidade de disquete)
-
-c:\ (disco rígido)
-
-d:\ (unidade de cd-rom)
-
+a:\ (unidade de disquete)<br/>  
+c:\ (disco rígido)<br/>  
+d:\ (unidade de cd-rom)<br/>  
 ```
 
 Acho que é tudo bastante óbvio. Menus alfabéticos, avisos no canto superior direito. Área de trabalho no meio, abas (para escolher uma área de trabalho diferente) na parte inferior. Aliás, você pode arrastar as abas para a esquerda e para a direita para mudar a ordem delas, se preciso.
@@ -71,12 +68,9 @@ O Explorador De Arquivos mostra o sistema de arquivos do Windows como ele realme
 A B C D E G G I J K ... W X Y Z 3 itens
 ```
 ```
-a:\ (unidade de disquete)
-
-c:\ (disco rígido)
-
-d:\ (unidade de cd-rom)
-
+a:\ (unidade de disquete)<br/>  
+c:\ (disco rígido)<br/>  
+d:\ (unidade de cd-rom)<br/>  
 ```
 
 Cada área de trabalho está inicialmente posicionada no nível mais baixo, como mostrado acima.
@@ -153,19 +147,12 @@ Agora eu sei que a maioria dos guias de programação iria mostrar um pequeno al
 Sei que pode isso pode te deixar um pouco aprreensivo. Mas não hesite agora. Esta pode ser a primeira vez para você, mas eu sou macaco velho nisso aqui. *Se me der a mão eu te guiarei*... Suavemente.
 
 (1) Abra a pasta do `PAL` e copie todos os seis arquivos para a área de transferência do `localizador`: 
- 
-`o agrupador, 
-
+`o agrupador,
 o ambiente de trabalho, 
-
-o bloco de notas, 
-
-o localizador, 
-
+o bloco de notas,
+o localizador,
 o cérebro e
-
-o caderno.
-` 
+o caderno.` 
 
 Segure a tecla <kbd>Shift ⇧</kbd> ao clicar ou arraste para selecionar. A opção de copiar arquivos está no menu `C`.
 
@@ -261,7 +248,7 @@ A linguagem NÃO trabalha com Números Reais.  Frações racionais são permitid
 
 Como você deve ter deduzido, equações também não são permitidas. É possível utilizar um pouco de matemática, junto com "campos calculados", mas quase todo o código que você escreve será de natureza estritamente procedimental. Um dos princípios da Sociedade Osmosiane é: "O universo é um algoritmo, não uma fórmula." Essas são palavras que você deveria levar a sério. Especialmente se você for fissurado em matemática.
 # Um Programa de Exemplo
-## 
+
 
 ## Pintando como Claude Monet
 

@@ -2,22 +2,19 @@
 
 # Programação em Português Simples
 
-
-
 Copyright © 2006 2021
 
-A Ordem Osmosiana de Programadores<br/>  
+A Ordem Osmosiana de Programadores
 
-http://www.osmosian.com  
-
-
+http://www.osmosian.com
 
 ## CONTEÚDO
 
-Visão Geral<br/>   Programa de Amostra<br/>   Glossário<br/>  
+Visão Geral
+ Programa de Amostra
+ Glossário
 
 ## Visão Geral
-
 
 ## INTRODUÇÃO
 
@@ -32,18 +29,15 @@ Seja bem-vindo ao PAL - *Portuguese Compiler And Linker*. A função principal d
 
 Eu sou capaz de me replicar e consigo me recompilar em menos de três segundos. Que é menos tempo do que o Word leva só para iniciar.
 
-
 #### INSTALAÇÃO
 
 De acordo com a filosofia da Ordem Osmosiana, os programas nunca devem exigir procedimentos especiais de instalação. O código fonte, o arquivo executável e toda a documentação (tanto em formato próprietário quanto em PDF) estão todos contidos na pasta CAL-4700. Basta clicar duas vezes no arquivo executável e o programa é iniciado no mesmo instante.
-
 
 #### CONTATO PARA DÚVIDAS E OUTRAS QUESTÕES
 
 Antes de mais nada, o PAL é o compilador mais avançado do mundo, quando se trata de analisar e interpretar comandos em língua portuguesa. Nenhum compilador nosso cometeu algum erro ou distorceu alguma informação. Todos eles, através de qualquer definição prática das palavras, são infalíveis e incapazes de cometer erros. Mesmo assim...
 
-Questões e comentários podem ser enviados para *[help@osmosian.com](mailto:help@osmosian.com)* (em inglês). Se você não sabe inglês, mande um email para *[elenderg+osmosian@gmail.com](mailto:elenderg+osmosian@gmail.com)*.</p>
-
+Questões e comentários podem ser enviados para *[help@osmosian.com](mailto:help@osmosian.com)* (em inglês). Se você não sabe inglês, mande um email para *[elenderg+osmosian@gmail.com](mailto:elenderg+osmosian@gmail.com)*.
 
 ## O AMBIENTE DE TRABALHO
 
@@ -57,6 +51,7 @@ a:\ (unidade de disquete)<br/>
 c:\ (disco rígido)<br/>  
 d:\ (unidade de cd-rom)<br/>  
 ```
+
 Acho que é tudo bastante óbvio. Menus alfabéticos, avisos no canto superior direito. Área de trabalho no meio, abas (para escolher uma área de trabalho diferente) na parte inferior. Aliás, você pode arrastar as abas para a esquerda e para a direita para mudar a ordem delas, se preciso.
 
 Essas são as minhas setas. Elas aparecerão quando você precisar delas.
@@ -64,7 +59,6 @@ Essas são as minhas setas. Elas aparecerão quando você precisar delas.
 Observe que não há nenhuma barra de rolagem na interface. Isso é totalmente proposital. Para rolar, pressione o botão direito do mouse e arraste.
 
 Observe também que as teclas <kbd>Ctrl</kbd> e <kbd>Alt</kbd> são intercambiáveis. Dessa forma, você pode usar seu polegar ou o mindinho para pressionar as teclas de atalho. Uma das exceções é a combinação de teclas <kbd>Alt+Tab</kbd>, usada para mudar para outros aplicativos.
-
 
 ## O EXPLORADOR DE ARQUIVOS
 
@@ -93,7 +87,6 @@ Quando você abre qualquer outra tipo de arquivo, o conteúdo do arquivo é conv
 
 Para fechar o arquivo, use o comando `Fechar`, clique na aba que você está utilizando, ou pressione a tecla `Esc`.
 
-
 ## O BLOCO DE NOTAS
 
 O `bloco de notas` é simples e eficiente. Quando você abre um arquivo de texto, o conteúdo dele é exibido imediatamente. Você pode alterar o conteúdo à vontade usando o teclado e mouse, nas formas mencionadas anteriormente.
@@ -121,8 +114,6 @@ Agora ouça atentamente — é assim que você faz para se deslocar rapidamente 
 
 Digamos que você esteja procurando o código acima. Pressione <kbd>CTRL+HOME</kbd> para ir instantaneamente para o começo do arquivo. Em seguida, aperte <kbd>CTRL+F</kbd></kbd> e comece a digitar o que você quiser pesquisar. Digamos que você digite a letra <kbd>T</kbd>. Na mesma hora nós nos chegamos no primeiro `T` do arquivo. Agora continue e aperte a tecla `O`. Encontramos a palavra `To`. É só continuar digitando até onde precisar. Use a tecla <kbd>⌫</kbd> se você cometer um erro. Se você quiser encontrar a próxima palavra correspondente, pressione <kbd>Ctrl+N</kbd>. Para encerrar a busca, basta apertar a tecla <kbd>Esc</kbd>. Simples e eficiente, como tudo deveria ser.
 
-
-
 ## O CADERNO
 
 O `caderno` é um programa de diagramação de páginas totalmente completo, que permite que você escreva documentações como essa de forma fácil. Na verdade, você pode encontrar este mesmo documento dentro da pasta documentação e visualizá-lo dentro do caderno, funcionando como um arquivo de ajuda.
@@ -140,15 +131,12 @@ Visão Geral...
 
 E quando você abre uma página, aí está:
 
-
 ```
 A B C D E G G I J K ... W X Y Z Página 8
 ```
 `o caderno`
 
-
 Páginas podem conter gráficos vetoriais, imagens do tipo bitmap e texto. Você pode efetuar uma verificação ortográfica, imprimir a página, ampliar ou reduzir o zoom da página, e muito mais. Mas o que realmente é bacana é que todos esses documentos são armazenados como texto simples. Vá em frente. Forçe o programa a abrir um documento criado no `caderno` como se fosse um texto criado no `bloco de notas`.
-
 
 O caderno é um programa de diagramação de páginas totalmente completo, que permite que você escreva documentações como essa de forma fácil. Na verdade, você pode encontrar este mesmo documento dentro da pasta documentação e visualizá-lo dentro do caderno, funcionando como um arquivo de ajuda.
 
@@ -158,15 +146,13 @@ Agora eu sei que a maioria dos guias de programação iria mostrar um pequeno al
 
 Sei que pode isso pode te deixar um pouco aprreensivo. Mas não hesite agora. Esta pode ser a primeira vez para você, mas eu sou macaco velho nisso aqui. *Se me der a mão eu te guiarei*... Suavemente.
 
-(1) Abra a pasta do `PAL` e copie todos os seis arquivos para a área de transferência do `localizador`: <br/>   
-`o agrupador, <br/>  
-o ambiente de trabalho, <br/>  
-o bloco de notas, <br/>  
-o localizador, <br/>  
-o cérebro e<br/>  
-o caderno.<br/>  ` 
-
-
+(1) Abra a pasta do `PAL` e copie todos os seis arquivos para a área de transferência do `localizador`: 
+`o agrupador,
+o ambiente de trabalho, 
+o bloco de notas,
+o localizador,
+o cérebro e
+o caderno.` 
 
 Segure a tecla <kbd>Shift ⇧</kbd> ao clicar ou arraste para selecionar. A opção de copiar arquivos está no menu `C`.
 
@@ -174,7 +160,7 @@ Segure a tecla <kbd>Shift ⇧</kbd> ao clicar ou arraste para selecionar. A opç
 
 (3) Ok, estamos prontos. Localize o menu `E` e selecione `Executar`. Você verá algumas mensagens de status, e então nosso novo novo CAL ganhará vida. Faça isso. Vamos, faça logo. Mas vigie de perto ou você pode deixar de testemunhar o evento. Eu nunca demoro muito tempo pra fazer meu trabalho.
 
-Foi tão bom para você quanto para mim? Consulte como ele é igualzinho ao outro! Mas saiba que são dois programas diferentes — você pode comprovar isso com o comando `Versão`. E se você der uma olhada no conteúdo da pasta em uma aba vazia, você verá o arquivo executável que geramos.
+Foi tão bom para você quanto para mim? Veja só como ele é igualzinho ao outro! Mas saiba que são dois programas diferentes — você pode comprovar isso com o comando `Versão`. E se você der uma olhada no conteúdo da pasta em uma aba vazia, você verá o arquivo executável que geramos.
 
 Note que cada programa é armazenado em sua própria pasta. Se você quer criar seu próprio compilador, você precisa apenas copiar o arquivo `o cérebro` e escrever o restante do código você mesmo. Qualquer arquivo sem uma extensão é tratado como o código fonte, sendo que o nome da pasta determinará o nome do arquivo `.exe`.
 
@@ -222,20 +208,29 @@ Muito bem. Consulte aqui como é possível fazer tanto com tão pouco.
 
 (1) O compilador só entende cinco tipos de expressões:
 
-a) definições de tipo que sempre começam com `Um`, `Uma`, `Uns`, `Umas`, `Alguns` ou `Algumas`;<br/>   (b) definições de variáveis globais, que sempre começam com `O`, `A`, `Os`, `As`;<br/>   (c) prefixo de nomes de tarefas, que sempre começam com `Para`, `Para que`, `Para que se`;<br/>   (d) instruções condicionais, que sempre começam com  `Se`; e<br/>   (e) comandos imperativos, que começam com a palavra logo depois dos prefixos mencionados na letra  `c`.
+a) definições de tipo que sempre começam com `Um`, `Uma`, `Uns`, `Umas`, `Alguns` ou `Algumas`;
+ (b) definições de variáveis globais, que sempre começam com `O`, `A`, `Os`, `As`;
+ (c) prefixo de nomes de tarefas, que sempre começam com `Para`, `Para que`, `Para que se`;
+ (d) instruções condicionais, que sempre começam com  `Se`; e
+ (e) comandos imperativos, que começam com a palavra logo depois dos prefixos mencionados na letra  `c`.
 
 (2) Qualquer coisa que vier depois de `Um`, `Uma`, `Uns`, `Umas`, `Alguns` ou `Algumas` `O`, `A`, `Os`, `As` é tratada como se fosse um substantivo. Eu também reconheço os seguintes  componentes gramaticais:
 
-(a) verbos simples, como `SER`, `ESTAR`, `PODER`, ou `FAZER`, e suas respectivas conjugações;<br/>   (b) conjunções, como `E`, `MAIS`, `COM`, `SEM`, `OU`, etc;<br/>   (c) preposições e suas locuções, como `EM BAIXO`, `ABAIXO`, `EM CIMA`, `ACIMA`, `DENTRO`, `FORA`, etc;<br/>   (d) qualquer literal, como `123` ou `"Olá, mundo!`, ou<br/>   (e) qualquer sinal de pontuação.<br/>  
+(a) verbos simples, como `SER`, `ESTAR`, `PODER`, ou `FAZER`, e suas respectivas conjugações;
+ (b) conjunções, como `E`, `MAIS`, `COM`, `SEM`, `OU`, etc;
+ (c) preposições e suas locuções, como `EM BAIXO`, `ABAIXO`, `EM CIMA`, `ACIMA`, `DENTRO`, `FORA`, etc;
+ (d) qualquer literal, como `123` ou `"Olá, mundo!`, ou
+ (e) qualquer sinal de pontuação.
 
 (3) Eu considero quase todas as outras palavras como substantivos, exceto essas:
 
-(a) operadores aritméticos: `MAIS`, `MENOS`, `VEZES`, `DIVIDIDO POR` e `JUNTO DE`;<br/>   (b) palavras especiais de definição: `CHAMADO(A)` e `IGUAL`; e<br/>   (c) imperativos: `PERCORRA`, `IGNORE`, `SAIA`, `REPITA` e `DIGA`.
+(a) operadores aritméticos: `MAIS`, `MENOS`, `VEZES`, `DIVIDIDO POR` e `JUNTO DE`;
+ (b) palavras especiais de definição: `CHAMADO(A)` e `IGUAL`; e
+ (c) imperativos: `PERCORRA`, `IGNORE`, `SAIA`, `REPITA` e `DIGA`.
 
 Então você pode ver que o compilador é simples, mas poderoso. O compilador analisa frases da mesma maneira que alguém faria. Procurando por palavras especiais — artigos, verbos, conjunções, preposições — e depois correlaciona tudo. Sem utilizar gramáticas complicadas, nem árvore de análise sintática.
 
 Mas há coisas que podem surpreendê-lo. Ou desafiá-lo. Ou te enfurecer.
-
 
 ## REGRAS
 
@@ -255,17 +250,9 @@ Como você deve ter deduzido, equações também não são permitidas. É possí
 # Um Programa de Exemplo
 
 
-
 ## Pintando como Claude Monet
 
 Certo. Agora que estamos familiarizados com os princípios básicos da linguagem, vamos fazer mais um programa. Do zero. O programa vai ter botões, e inclusive vai se conectar à internet. Seguem alguns pensamentos sobre a interface:
-
-Você o entendeu o trocadilho? Pensamentos SOBRE a interface?" Eu adorei!
-
-Também estou pensando que deveríamos pedir ao nosso programa que pinte mais do que apenas uma obra de arte para cada termo informado — sabe, até mesmo os melhores artistas podem ficar "sem inspiração" às vezes. Iremos usar as teclas <kbd>Home</kbd>, <kbd>End</kbd>, <kbd>Page Up</kbd> e <kbd>Page Down</kbd> para navegar entra as obras de arte.
-
-Provavelmente também devemos implementar alguns atalhos de teclado, para que você possa ver como isso é feito. Vamos usar a tecla <kbd>Esc</kbd> para limpar a entrada, <kbd>Ctrl+P</kbd> para Imprimir e <kbd>Ctrl+Q</kbd> para sair. Vamos considerar <kbd>Alt+P</kbd> e <kbd>Alt+Q</kbd> como sinônimos de <kbd>Ctrl+P</kbd> e <kbd>Ctrl+Q</kbd>.
-
 
 ```
 (1) Nós iremos o nome de qualquer pessoa, lugar ou coisa aqui, e apertamos `Enter`.
@@ -277,7 +264,11 @@ Provavelmente também devemos implementar alguns atalhos de teclado, para que vo
 texto a ser pesquisado_ Trabalhando... Imprimir Sair
 ```
 
+Você o entendeu o trocadilho? Pensamentos SOBRE a interface?" Eu adorei!
 
+Também estou pensando que deveríamos pedir ao nosso programa que pinte mais do que apenas uma obra de arte para cada termo informado — sabe, até mesmo os melhores artistas podem ficar "sem inspiração" às vezes. Iremos usar as teclas <kbd>Home</kbd>, <kbd>End</kbd>, <kbd>Page Up</kbd> e <kbd>Page Down</kbd> para navegar entra as obras de arte.
+
+Provavelmente também devemos implementar alguns atalhos de teclado, para que você possa ver como isso é feito. Vamos usar a tecla <kbd>Esc</kbd> para limpar a entrada, <kbd>Ctrl+P</kbd> para Imprimir e <kbd>Ctrl+Q</kbd> para sair. Vamos considerar <kbd>Alt+P</kbd> e <kbd>Alt+Q</kbd> como sinônimos de <kbd>Ctrl+P</kbd> e <kbd>Ctrl+Q</kbd>.
 
 ## A PASTA DO PROJETO
 
