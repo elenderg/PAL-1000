@@ -2257,9 +2257,18 @@ uma coordenada,
 uma tecla e um byte.
 ```
 
-"Categoria" nada mais é do que uma das seguintes palavras:
+`Categoria` nada mais é do que uma das seguintes palavras:
 
-ATUALIZAÇÃO DE TELA — Esse tipo de evento informa que é hora de redesenhar a tela. Culpe o Windows por isso.<br/>   MOVIMENTO DE CURSOR — O cursor se moveu. Esse tipo de evento é muito usado para redimensionar formas e objetos.<br/>   PRESSIONAMENTO DE TECLA — O usuário digitou algo. Acho que nem preciso explicar nada.<br/>   CLIQUE ESQUERDO (ou apenas CLIQUE) — O botão esquerdo do mouse acabou de ser presssionado. Muito usado em botões e componentes similares.<br/>   CLIQUE DUPLO — O usuário clicou duas vezes. Se você usa o Windows então já sabe que geralmente esse comando é utilizado para abrir ou executar arquivos.<br/>   CLIQUE DIREITO — O botão direito do mouse acabou de ser pressionado. No compilador, esse é o comando que inicia a rolagem da página.<br/>   CLIQUE DIREITO DUPLO — O usuário deve ter clicado por engano. Que tal colocar darmos a ele ovo de páscoa para celebrar?<br/>   DEACTIVATE — You're about to be rudely swapped out. Handled internally. ACTIVATE — You're back after a rude swap-out. Handled internally. DONE — Inserted internally. You should never see this event.
+ATUALIZAÇÃO DE TELA — Esse tipo de evento informa que é hora de redesenhar a tela. Culpe o Windows por isso.
+MOVIMENTO DE CURSOR — O cursor se moveu. Esse tipo de evento é muito usado para redimensionar formas e objetos.
+PRESSIONAMENTO DE TECLA — O usuário digitou algo. Acho que nem preciso explicar nada.
+CLIQUE ESQUERDO (ou apenas CLIQUE) — O botão esquerdo do mouse acabou de ser presssionado. Muito usado em botões e componentes similares.
+CLIQUE DUPLO — O usuário clicou duas vezes. Se você usa o Windows então já sabe que geralmente esse comando é utilizado para abrir ou executar arquivos.
+CLIQUE DIREITO — O botão direito do mouse acabou de ser pressionado. No compilador, esse é o comando que inicia a rolagem da página.
+CLIQUE DIREITO DUPLO — O usuário deve ter clicado por engano. Que tal colocar darmos a ele ovo de páscoa para celebrar?
+DESATIVAÇÃO — O usuário mudou para outra  janela. O compilador lida com isso internamente.
+ATIVAÇÃO — O usuário retornou para o seu programa. O compilador lida com isso internamente.
+ENCERRAMENTO — Informa que o programa está sendo encerrado. Inserido internamente. Você não deveria ver esse tipo de evento.
 
 Os sinalizadores "ctrl" e "alt" e "shift" indicam o estado das teclas correspondentes no momento do evento (a flag é definida se a tecla for pressionada).
 
