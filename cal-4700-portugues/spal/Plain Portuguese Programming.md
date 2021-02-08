@@ -1,3 +1,5 @@
+
+
 # Programação em Português Simples
 
 
@@ -172,7 +174,7 @@ Segure a tecla <kbd>Shift ⇧</kbd> ao clicar ou arraste para selecionar. A opç
 
 (3) Ok, estamos prontos. Localize o menu `E` e selecione `Executar`. Você verá algumas mensagens de status, e então nosso novo novo CAL ganhará vida. Faça isso. Vamos, faça logo. Mas vigie de perto ou você pode deixar de testemunhar o evento. Eu nunca demoro muito tempo pra fazer meu trabalho.
 
-Foi tão bom para você quanto para mim? Veja como ele é igualzinho ao outro! Mas saiba que são dois programas diferentes — você pode comprovar isso com o comando `Versão`. E se você der uma olhada no conteúdo da pasta em uma aba vazia, você verá o arquivo executável que geramos.
+Foi tão bom para você quanto para mim? Consulte como ele é igualzinho ao outro! Mas saiba que são dois programas diferentes — você pode comprovar isso com o comando `Versão`. E se você der uma olhada no conteúdo da pasta em uma aba vazia, você verá o arquivo executável que geramos.
 
 Note que cada programa é armazenado em sua própria pasta. Se você quer criar seu próprio compilador, você precisa apenas copiar o arquivo `o cérebro` e escrever o restante do código você mesmo. Qualquer arquivo sem uma extensão é tratado como o código fonte, sendo que o nome da pasta determinará o nome do arquivo `.exe`.
 
@@ -186,7 +188,7 @@ Cerca de metade deste arquivo são tipos, variáveis globais e rotinas que você
 
 A outra metade é código assembly — garanto que você não vai querer examinar isso de perto. A maior parte disso serve para fazer o programa funcionar no WIndows.
 
-Aqui está um exemplo. Veja se você consegue dizer qual é qual.
+Aqui está um exemplo. Consulte se você consegue dizer qual é qual.
 
 ```
 A B C D E G G I J K ... W X Y Z 143:
@@ -216,7 +218,7 @@ Intel $8B85080000000FB6008B9D0C0000002803.
 
 ## DETALHES BÁSICOS DO FUNCIONAMENTO DO COMPILADOR
 
-Muito bem. Veja aqui como é possível fazer tanto com tão pouco.
+Muito bem. Consulte aqui como é possível fazer tanto com tão pouco.
 
 (1) O compilador só entende cinco tipos de expressões:
 
@@ -573,14 +575,13 @@ Observe os termos no diagrama acima. Por convenção, usamos a palavra `criar` p
 
 
 
-
 ## O EVENTO DE ATUALIZAÇÃO
 
 A segunda dificuldade relacionada à tela que temos que enfrentar é que o Windows tenta ser um sistema multi-tarefas, mas na prática não funciona muito bem. Já não basta ter que compartilhar recursos como espaço em disco e Memória RAM com os outros programas. Nunca se sabe quanto tempo teremos que esperar até que o Windows termine uma tarefa e retorne a executar as nossas. Na prática, o Windows acaba por interromper constantemente a execução do programa.
 
 As coisas pioram caso você troque de janela. Sabe porque fica pior? Porque o Windows, que que de alguma forma consegue restaurar toda a memória, registos e flags para o estado exato em que estavam no momento em que foram interrompidos — por algum motivo não lembra de como era a interface do programa! Sabe o que o Windows faz pra tentar consertar isso? Ele envia para o programa um comando `atualizar tela` e espera que nosso programa faça todo o trabalho.
 
-Bem, no fim das contas, esse comando acaba por ser chato, mas não é tão difícil assim de gerenciar. Fazer o quê, assim é a vida. Veja como lidamos com isso:
+Bem, no fim das contas, esse comando acaba por ser chato, mas não é tão difícil assim de gerenciar. Fazer o quê, assim é a vida. Consulte como lidamos com isso:
 
 
 ```
@@ -1000,7 +1001,7 @@ A segunda rotina, porém, tem duas adições. Nós criamos o campo de texto, ant
 
 ## GERENCIANDO O PRESSIONAMENTO DE TECLAS
 
-Veja só como é que iremos modificar nosso geremciador de pressionamento de teclas para que ele encaminhe as teclas pressionadas:
+Consulte só como é que iremos modificar nosso geremciador de pressionamento de teclas para que ele encaminhe as teclas pressionadas:
 
 ```
 Para gerenciar um comando (pressionamento de tecla):
@@ -1434,7 +1435,7 @@ Se a próxima obra de arte estiver em branco, alerte o usuário; saia.
 Vá para a próxima obra de arte.
 ```
 ```
-Para gerrenciarmos um comando (tecla Page Up):
+Para gerenciarmos um comando (tecla Page Up):
 Se a obra de arte estiver em branco, alerte o usuário; prossiga.
 Se a obra de arte anterior estiver em branco, alerte o usuário; saia.
 Vá para a obra de arte anterior.
@@ -1522,976 +1523,323 @@ Um aviso importante. O compilador não permite o uso de comandos condicionais an
 
 O compillador tabalha com aritmética básica. O compilador mantém um registo do que está no arquivo `o cérebro`. Se possível, dê uma olhada com calma no arquivo. É um arquivo longo mas vale a pena. Para resumir a história, a essência e o poder do compilador reside no fato dele ser capaz de entender declarações do tipo:
 
-ADICIONE isso Nisto. SUBTRAIA isso Daquilo. MULTIPLIQUE isso POR aquilo. DIVIDA isso POR aquilo.
+`ADICIONE isso Nisto.`
+
+`SUBTRAIA isso Daquilo.`
+
+`MULTIPLIQUE isso POR aquilo.`
+
+`DIVIDA isso POR aquilo.`
 
 Caso você precise fazer uma divisão com resto, você pode utilizar o comando:
 
-DIVIDA isto POR aquilo RETORNANDO o quociente E o resto.
+`DIVIDA isto POR aquilo RETORNANDO o quociente E o resto.`
 
 Além disso, o compilador é capaz de:
 
-ARREDONDAR algum número/variável PARA CIMA ATÉ ATINGIR O MÚLTIPLO MAIS PRÓXIMO DE outro número/variável. ARREDONDAR algum número/variável PARA BAIXO ATÉ ATINGIR O MÚLTIPLO MAIS PRÓXIMO DE outro número/variável.
+`ARREDONDAR algum número/variável PARA CIMA ATÉ ATINGIR O MÚLTIPLO MAIS PRÓXIMO DE outro número/variável. `
+
+`ARREDONDAR algum número/variável PARA BAIXO ATÉ ATINGIR O MÚLTIPLO MAIS PRÓXIMO DE outro número/variável.`
 
 O compilador também é capaz de:
 
-REMOVER O SINAL de um número/variável (extrair o módulo do número). INVERTER O SINAL de um número/variável.
+`REMOVER O SINAL de um número/variável (extrair o módulo do número).`
+
+`INVERTER O SINAL de um número/variável.`
 
 O compilador é capaz de até mesmo de:
 
-REDUZIR uma fração (razão/proporção).
+`REDUZIR uma fração (razão/proporção).`
 
-Você pode usar mais de uma operação aritmética no mesmo comando, usando as seguintes palavras chave: `MAIS, MENOS, VEZES` e `DIVIDIDO POR`. Você pode ler mais sobre esses operadores na seção "Expressões Aritméticas" deste glossário.
+Você pode usar mais de uma operação aritmética no mesmo comando, usando as seguintes palavras chave: `MAIS, MENOS, VEZES` e `DIVIDIDO POR`. Você pode ler mais sobre esses operadores na seção `Expressões Aritméticas` deste glossário.
 
 
 ## TABELA ASCII
 
 Este é o Código Padrão Americano para o Intercâmbio de Informação (Extended ASCII) extendido, mais conhecido como Windows-1252 ou CP-1252. Devido a facilidade de implementação e ao fato do código ASCII cobrir a maior parte dos caracteres da língua portuguesa, ele foi escolhido comoo padrão para converter bytes em caracteres legíveis. Não é a melhor opção, já que existe o Unicode mas é uma das codificações de texto mais amplamente aceitas do planeta.
 
-O compilador possui variáveis globais com nomes como "o byte de vírgula" para cada elemento da tabela, assim você não precise trabalhar diretamente com os números deles. Você pode encontrar todas essas variáveis procurando a frase "é um byte igual à" no arquivo `o cérebro`.
+O compilador possui variáveis globais com nomes como `o byte de vírgula` para cada elemento da tabela, assim você não precise trabalhar diretamente com os números deles. Você pode encontrar todas essas variáveis procurando a frase `é um byte igual à` no arquivo `o cérebro`.
 
-```
-240
-ð
-```
-```
-255
-ÿ
-```
-```
-080
-P
-```
-```
-081
-Q
-```
-```
-082
-R
-```
-```
-083
-S
-```
-```
-084
-T
-```
-```
-085
-U
-```
-```
-086
-V
-```
-```
-087
-W
-```
-```
-088
-X
-```
-```
-089
-Y
-```
-```
-090
-Z
-```
-```
-091
-[
-```
-```
-092
-\
-```
-```
-093
-]
-```
-```
-094
-^
-```
-```
-095
-_
-096
-`
-```
-```
-097
-a
-```
-```
-098
-b
-```
-```
-099
-c
-```
-```
-100
-d
-```
-```
-101
-e
-```
-```
-102
-f
-```
-```
-103
-g
-```
-```
-104
-h
-```
-```
-105
-i
-```
-```
-106
-j
-```
-```
-107
-k
-```
-```
-108
-l
-```
-```
-109
-m
-```
-```
-110
-n
-```
-```
-111
-o
-p q r s t u v w x y z { | } ~
-128
-€
-```
-```
-129
-```
--
+## Caracteres de controle ASCII (código de caractere 0-31)
 
-```
-130
-‚
-```
-```
-131
-ƒ
-```
-```
-132
-„
-```
-```
-133
-...
-```
-```
-134
-†
-```
-```
-135
-‡
-```
-```
-136
-ˆ
-```
-```
-137
-‰
-```
-```
-138
-Š
-```
-```
-139
-‹
-```
-```
-140
-Œ
-```
-```
-141
-```
--
+Os 32 primeiros caracteres na tabela ASCII são códigos de controle “não imprimíveis” e usados principalmente para controle de periféricos, como impressoras.
 
-```
-142
-Ž
-```
-```
-143
-```
--
+|` DEC  `|` OCT  `|` HEX  `|` BIN      `|` Símbolo `|` Número HTML `|` Descrição                             `|
+| ---- | ---- | ---- | -------- | ------- | ----------- | ------------------------------------- |
+|` 0    `|` 000  `|` 00   `|` 00000000 `|` NUL     `|` &#000;    `|` Caractere Nulo                          `|
+|` 1    `|` 001  `|` 01   `|` 00000001 `|` SOH     `|` &#001;      `|` Início do Cabeçalho                   `|
+|` 2    `|` 002  `|` 02   `|` 00000010 `|` STX     `|` &#002;      `|` Início do Texto                       `|
+|` 3    `|` 003  `|` 03   `|` 00000011 `|` ETX     `|` &#003;      `|` Final do Texto                        `|
+|` 4    `|` 004  `|` 04   `|` 00000100 `|` EOT     `|` &#004;      `|` Final da Transmissão                  `|
+|` 5    `|` 005  `|` 05   `|` 00000101 `|` ENQ     `|` &#005;      `|` Consulta                              `|
+|` 6    `|` 006  `|` 06   `|` 00000110 `|` ACK     `|` &#006;      `|` Confirmação                           `|
+|` 7    `|` 007  `|` 07   `|` 00000111 `|` BEL     `|` &#007;      `|` Sino                                  `|
+|` 8    `|` 010  `|` 08   `|` 00001000 `|` BS      `|` &#008;      `|` Voltar (Back Space)                   `|
+|` 9    `|` 011  `|` 09   `|` 00001001 `|` HT      `|` &#009;      `|` Tab Horizontal                        `|
+|` 10   `|` 012  `|` 0A   `|` 00001010 `|` LF      `|` &#010;      `|` Linha Feed                            `|
+|` 11   `|` 013  `|` 0B   `|` 00001011 `|` VT      `|` &#011;      `|` Tab Vertical                          `|
+|` 12   `|` 014  `|` 0C   `|` 00001100 `|` FF      `|` &#012;      `|` Formulário Feed                       `|
+|` 13   `|` 015  `|` 0D   `|` 00001101 `|` CR      `|` &#013;      `|` Mudança de Linha                      `|
+|` 14   `|` 016  `|` 0E   `|` 00001110 `|` SO      `|` &#014;      `|` Shift Out / X-On                      `|
+|` 15   `|` 017  `|` 0F   `|` 00001111 `|` SI      `|` &#015;      `|` Shift In / X-Off                      `|
+|` 16   `|` 020  `|` 10   `|` 00010000 `|` DLE     `|` &#016;      `|` Data Line Escape                      `|
+|` 17   `|` 021  `|` 11   `|` 00010001 `|` DC1     `|` &#017;      `|` Controle de Dispositivo 1 (oft. XON)  `|
+|` 18   `|` 022  `|` 12   `|` 00010010 `|` DC2     `|` &#018;      `|` Controle de Dispositivo 2             `|
+|` 19   `|` 023  `|` 13   `|` 00010011 `|` DC3     `|` &#019;      `|` Controle de Dispositivo 3 (oft. XOFF) `|
+|` 20   `|` 024  `|` 14   `|` 00010100 `|` DC4     `|` &#020;      `|` Controle de Dispositivo 4             `|
+|` 21   `|` 025  `|` 15   `|` 00010101 `|` NAK     `|` &#021;      `|` Afirmação Negativa                    `|
+|` 22   `|` 026  `|` 16   `|` 00010110 `|` SYN     `|` &#022;      `|` Ocioso Síncrono                       `|
+|` 23   `|` 027  `|` 17   `|` 00010111 `|` ETB     `|` &#023;      `|` Final do Bloco de Transmissão         `|
+|` 24   `|` 030  `|` 18   `|` 00011000 `|` CAN     `|` &#024;      `|` Cancelar                              `|
+|` 25   `|` 031  `|` 19   `|` 00011001 `|` EM      `|` &#025;      `|` Final do Meio                         `|
+|` 26   `|` 032  `|` 1A   `|` 00011010 `|` SUB     `|` &#026;      `|` Sbustituir                            `|
+|` 27   `|` 033  `|` 1B   `|` 00011011 `|` ESC     `|` &#027;      `|` Escapar                               `|
+|` 28   `|` 034  `|` 1C   `|` 00011100 `|` FS      `|` &#028;      `|` Separador de Arquivo                  `|
+|` 29   `|` 035  `|` 1D   `|` 00011101 `|` GS      `|` &#029;      `|` Separador de Grupo                    `|
+|` 30   `|` 036  `|` 1E   `|` 00011110 `|` RS      `|` &#030;      `|` Separador de Gravação                 `|
+|` 31   `|` 037  `|` 1F   `|` 00011111 `|` US      `|` &#031;      `|` Separador de unidade                  `|`
 
-```
-032 033
-!
-```
-```
-034
-"
-```
-```
-035
-#
-```
-```
-036
-$
-```
-```
-037
-%
-```
-```
-038
-&
-```
-```
-039
-'
-```
-```
-040
-(
-```
-```
-041
-)
-```
-```
-042
-*
-```
-```
-043
-+
-```
-```
-044
-,
-```
-```
-045
-```
--
+## Caracteres imprimíveis ASCII (código de caractere 32-127)
 
-```
-046
-.
-```
-```
-047
-/
-048
-0
-```
-```
-049
-1
-```
-```
-050
-2
-```
-```
-051
-3
-```
-```
-052
-4
-```
-```
-053
-5
-```
-```
-054
-6
-```
-```
-055
-7
-```
-```
-056
-8
-```
-```
-057
-9
-```
-```
-058
-:
-```
-```
-059
-;
-```
-```
-060
-<
-```
-```
-061
-=
-```
-```
-062
->
-```
-```
-063
-?
-064
-@
-```
-```
-065
-A
-```
-```
-066
-B
-```
-```
-067
-C
-```
-```
-068
-D
-```
-```
-069
-E
-```
-```
-070
-F
-```
-```
-071
-G
-```
-```
-072
-H
-```
-```
-073
-I
-```
-```
-074
-J
-```
-```
-075
-K
-```
-```
-076
-L
-```
-```
-077
-M
-```
-```
-078
-N
-```
-```
-079
-O
-```
-```
-000
-NUL
-```
-```
-001
-SOH
-```
-```
-002
-STX
-```
-```
-003
-ETX
-```
-```
-004 005
-ENQ
-```
-```
-006
-ACK
-```
-```
-007
-BEL
-```
-```
-008
-BS
-```
-```
-009
-HT
-```
-```
-010
-LF
-```
-```
-011
-BT
-```
-```
-012
-FF
-```
-```
-013
-CR
-```
-```
-014
-SO
-```
-```
-015
-EOT SI
-016
-DLE
-```
-```
-017
-DC1
-```
-```
-018
-DC2
-```
-```
-019
-DC3
-```
-```
-020
-DC4
-```
-```
-021
-NAK
-```
-```
-022
-SYN
-```
-```
-023
-ETB
-```
-```
-024
-CAN
-```
-```
-025
-EM
-```
-```
-026
-SUB
-```
-```
-027
-ESC
-```
-```
-028
-FS
-```
-```
-029
-GS
-```
-```
-030
-RS
-```
-```
-031
-US
-```
-```
-112 113 114 115 116 117 118 119 120 121 122 123 124 125 126
-```
-```
-144
-```
--
+Os códigos 32-127 são comuns **para todas** as diferentes variações da tabela ASCII, são chamados caracteres imprimíveis, representam letras, dígitos, sinais de pontuação e alguns símbolos diversificados. Nela você encontra quase todos os caracteres do seu teclado que são em comum com outros idiomas, no caso do Português, temos alguns caracteres que estarão na Tabela Extendida, logo abaixo desta:
 
-```
-145
-‘
-```
-```
-146
-’
-```
-```
-147
-“
-```
-```
-148
-”
-```
-```
-149
-```
--
+\* *O caractere 127 representa o comando DEL.*
 
-```
-150
-```
--
+|` DEC  `|` OCT  `|` HEX  `|` BIN      `|` Símbolo `|` Número HTML `|` Nome HTML `|` Descrição           `|
+| ---- | ---- | ---- | -------- | ------- | ----------- | --------- | ------------------- |
+|` 32   `|` 040  `|` 20   `|` 00100000 `|`         `|` &#32;       `|`           `|` Espaço              `|
+|` 33   `|` 041  `|` 21   `|` 00100001 `|` !       `|` &#33;       `|`           `|` Ponto de exclamação `|
+|` 34   `|` 042  `|` 22   `|` 00100010 `|` “       `|` &#34;       `|` &quot;    `|` Aspas dupla         `|
+|` 35   `|` 043  `|` 23   `|` 00100011 `|` #       `|` &#35;       `|`           `|` Cerquilha           `|
+|` 36   `|` 044  `|` 24   `|` 00100100 `|` $       `|` &#36;       `|`           `|` Dolar               `|
+|` 37   `|` 045  `|` 25   `|` 00100101 `|` %       `|` &#37;       `|`           `|` Porcentagem         `|
+|` 38   `|` 046  `|` 26   `|` 00100110 `|` &       `|` &#38;       `|` &amp;     `|` E comercial         `|
+|` 39   `|` 047  `|` 27   `|` 00100111 `|` ‘       `|` &#39;       `|`           `|` Aspas simples       `|
+|` 40   `|` 050  `|` 28   `|` 00101000 `|` (       `|` &#40;       `|`           `|` Abre parenteses     `|
+|` 41   `|` 051  `|` 29   `|` 00101001 `|` )       `|` &#41;       `|`           `|` Fecha parenteses    `|
+|` 42   `|` 052  `|` 2A   `|` 00101010 `|` *       `|` &#42;       `|`           `|` Asterísco           `|
+|` 43   `|` 053  `|` 2B   `|` 00101011 `|` +       `|` &#43;       `|`           `|` Mais                `|
+|` 44   `|` 054  `|` 2C   `|` 00101100 `|` ,       `|` &#44;       `|`           `|` Vírgula             `|
+|` 45   `|` 055  `|` 2D   `|` 00101101 `|` –       `|` &#45;       `|`           `|` Hífem               `|
+|` 46   `|` 056  `|` 2E   `|` 00101110 `|` .       `|` &#46;       `|`           `|` Ponto               `|
+|` 47   `|` 057  `|` 2F   `|` 00101111 `|` /       `|` &#47;       `|`           `|` Barra               `|
+|` 48   `|` 060  `|` 30   `|` 00110000 `|` 0       `|` &#48;       `|`           `|` Zero                `|
+|` 49   `|` 061  `|` 31   `|` 00110001 `|` 1       `|` &#49;       `|`           `|` Um                  `|
+|` 50   `|` 062  `|` 32   `|` 00110010 `|` 2       `|` &#50;       `|`           `|` Dois                `|
+|` 51   `|` 063  `|` 33   `|` 00110011 `|` 3       `|` &#51;       `|`           `|` Três                `|
+|` 52   `|` 064  `|` 34   `|` 00110100 `|` 4       `|` &#52;       `|`           `|` Quatro              `|
+|` 53   `|` 065  `|` 35   `|` 00110101 `|` 5       `|` &#53;       `|`           `|` Cinco               `|
+|` 54   `|` 066  `|` 36   `|` 00110110 `|` 6       `|` &#54;       `|`           `|` Seis                `|
+|` 55   `|` 067  `|` 37   `|` 00110111 `|` 7       `|` &#55;       `|`           `|` Sete                `|
+|` 56   `|` 070  `|` 38   `|` 00111000 `|` 8       `|` &#56;       `|`           `|` Oito                `|
+|` 57   `|` 071  `|` 39   `|` 00111001 `|` 9       `|` &#57;       `|`           `|` Nove                `|
+|` 58   `|` 072  `|` 3A   `|` 00111010 `|` :       `|` &#58;       `|`           `|` Dois pontos         `|
+|` 59   `|` 073  `|` 3B   `|` 00111011 `|` ;       `|` &#59;       `|`           `|` Ponto e vírgula     `|
+|` 60   `|` 074  `|` 3C   `|` 00111100 `|` <       `|` &#60;       `|` &lt;      `|` Menor que           `|
+|` 61   `|` 075  `|` 3D   `|` 00111101 `|` =       `|` &#61;       `|`           `|` Igual               `|
+|` 62   `|` 076  `|` 3E   `|` 00111110 `|` >       `|` &#62;       `|` &gt;      `|` Maior que           `|
+|` 63   `|` 077  `|` 3F   `|` 00111111 `|` ?       `|` &#63;       `|`           `|` Interrogação        `|
+|` 64   `|` 100  `|` 40   `|` 01000000 `|` @       `|` &#64;       `|`           `|` Arroba              `|
+|` 65   `|` 101  `|` 41   `|` 01000001 `|` A       `|` &#65;       `|`           `|` A Maiúsculo         `|
+|` 66   `|` 102  `|` 42   `|` 01000010 `|` B       `|` &#66;       `|`           `|` B Maiúsculo         `|
+|` 67   `|` 103  `|` 43   `|` 01000011 `|` C       `|` &#67;       `|`           `|` C Maiúsculo         `|
+|` 68   `|` 104  `|` 44   `|` 01000100 `|` D       `|` &#68;       `|`           `|` D Maiúsculo         `|
+|` 69   `|` 105  `|` 45   `|` 01000101 `|` E       `|` &#69;       `|`           `|` E Maiúsculo         `|
+|` 70   `|` 106  `|` 46   `|` 01000110 `|` F       `|` &#70;       `|`           `|` F Maiúsculo         `|
+|` 71   `|` 107  `|` 47   `|` 01000111 `|` G       `|` &#71;       `|`           `|` G Maiúsculo         `|
+|` 72   `|` 110  `|` 48   `|` 01001000 `|` H       `|` &#72;       `|`           `|` H Maiúsculo         `|
+|` 73   `|` 111  `|` 49   `|` 01001001 `|` I       `|` &#73;       `|`           `|` I Maiúsculo         `|
+|` 74   `|` 112  `|` 4A   `|` 01001010 `|` J       `|` &#74;       `|`           `|` J Maiúsculo         `|
+|` 75   `|` 113  `|` 4B   `|` 01001011 `|` K       `|` &#75;       `|`           `|` K Maiúsculo         `|
+|` 76   `|` 114  `|` 4C   `|` 01001100 `|` L       `|` &#76;       `|`           `|` L Maiúsculo         `|
+|` 77   `|` 115  `|` 4D   `|` 01001101 `|` M       `|` &#77;       `|`           `|` M Maiúsculo         `|
+|` 78   `|` 116  `|` 4E   `|` 01001110 `|` N       `|` &#78;       `|`           `|` N Maiúsculo         `|
+|` 79   `|` 117  `|` 4F   `|` 01001111 `|` O       `|` &#79;       `|`           `|` O Maiúsculo         `|
+|` 80   `|` 120  `|` 50   `|` 01010000 `|` P       `|` &#80;       `|`           `|` P Maiúsculo         `|
+|` 81   `|` 121  `|` 51   `|` 01010001 `|` Q       `|` &#81;       `|`           `|` Q Maiúsculo         `|
+|` 82   `|` 122  `|` 52   `|` 01010010 `|` R       `|` &#82;       `|`           `|` R Maiúsculo         `|
+|` 83   `|` 123  `|` 53   `|` 01010011 `|` S       `|` &#83;       `|`           `|` S Maiúsculo         `|
+|` 84   `|` 124  `|` 54   `|` 01010100 `|` T       `|` &#84;       `|`           `|` T Maiúsculo         `|
+|` 85   `|` 125  `|` 55   `|` 01010101 `|` U       `|` &#85;       `|`           `|` U Maiúsculo         `|
+|` 86   `|` 126  `|` 56   `|` 01010110 `|` V       `|` &#86;       `|`           `|` V Maiúsculo         `|
+|` 87   `|` 127  `|` 57   `|` 01010111 `|` W       `|` &#87;       `|`           `|` W Maiúsculo         `|
+|` 88   `|` 130  `|` 58   `|` 01011000 `|` X       `|` &#88;       `|`           `|` X Maiúsculo         `|
+|` 89   `|` 131  `|` 59   `|` 01011001 `|` Y       `|` &#89;       `|`           `|` Y Maiúsculo         `|
+|` 90   `|` 132  `|` 5A   `|` 01011010 `|` Z       `|` &#90;       `|`           `|` Z Maiúsculo         `|
+|` 91   `|` 133  `|` 5B   `|` 01011011 `|` [       `|` &#91;       `|`           `|` Abre Colchete       `|
+|` 92   `|` 134  `|` 5C   `|` 01011100 `|` \       `|` &#92;       `|`           `|` Barra invertida     `|
+|` 93   `|` 135  `|` 5D   `|` 01011101 `|` ]       `|` &#93;       `|`           `|` Fecha Colchete      `|
+|` 94   `|` 136  `|` 5E   `|` 01011110 `|` ^       `|` &#94;       `|`           `|` Circunflexo         `|
+|` 95   `|` 137  `|` 5F   `|` 01011111 `|` _       `|` &#95;       `|`           `|` Sublinhado          `|
+|` 96   `|` 140  `|` 60   `|` 01100000 `|` `       `|` &#96;       `|`           `|` Acento grave        `||||
+|` 97   `|` 141  `|` 61   `|` 01100001 `|` a       `|` &#97;       `|`           `|` a Minúsculo         `|
+|` 98   `|` 142  `|` 62   `|` 01100010 `|` b       `|` &#98;       `|`           `|` b Minúsculo         `|
+|` 99   `|` 143  `|` 63   `|` 01100011 `|` c       `|` &#99;       `|`           `|` c Minúsculo         `|
+|` 100  `|` 144  `|` 64   `|` 01100100 `|` d       `|` &#100;      `|`           `|` d Minúsculo         `|
+|` 101  `|` 145  `|` 65   `|` 01100101 `|` e       `|` &#101;      `|`           `|` e Minúsculo         `|
+|` 102  `|` 146  `|` 66   `|` 01100110 `|` f       `|` &#102;      `|`           `|` f Minúsculo         `|
+|` 103  `|` 147  `|` 67   `|` 01100111 `|` g       `|` &#103;      `|`           `|` g Minúsculo         `|
+|` 104  `|` 150  `|` 68   `|` 01101000 `|` h       `|` &#104;      `|`           `|` h Minúsculo         `|
+|` 105  `|` 151  `|` 69   `|` 01101001 `|` i       `|` &#105;      `|`           `|` i Minúsculo         `|
+|` 106  `|` 152  `|` 6A   `|` 01101010 `|` j       `|` &#106;      `|`           `|` j Minúsculo         `|
+|` 107  `|` 153  `|` 6B   `|` 01101011 `|` k       `|` &#107;      `|`           `|` k Minúsculo         `|
+|` 108  `|` 154  `|` 6C   `|` 01101100 `|` l       `|` &#108;      `|`           `|` l Minúsculo         `|
+|` 109  `|` 155  `|` 6D   `|` 01101101 `|` m       `|` &#109;      `|`           `|` m Minúsculo         `|
+|` 110  `|` 156  `|` 6E   `|` 01101110 `|` n       `|` &#110;      `|`           `|` n Minúsculo         `|
+|` 111  `|` 157  `|` 6F   `|` 01101111 `|` o       `|` &#111;      `|`           `|` o Minúsculo         `|
+|` 112  `|` 160  `|` 70   `|` 01110000 `|` p       `|` &#112;      `|`           `|` p Minúsculo         `|
+|` 113  `|` 161  `|` 71   `|` 01110001 `|` q       `|` &#113;      `|`           `|` q Minúsculo         `|
+|` 114  `|` 162  `|` 72   `|` 01110010 `|` r       `|` &#114;      `|`           `|` r Minúsculo         `|
+|` 115  `|` 163  `|` 73   `|` 01110011 `|` s       `|` &#115;      `|`           `|` s Minúsculo         `|
+|` 116  `|` 164  `|` 74   `|` 01110100 `|` t       `|` &#116;      `|`           `|` t Minúsculo         `|
+|` 117  `|` 165  `|` 75   `|` 01110101 `|` u       `|` &#117;      `|`           `|` u Minúsculo         `|
+|` 118  `|` 166  `|` 76   `|` 01110110 `|` v       `|` &#118;      `|`           `|` v Minúsculo         `|
+|` 119  `|` 167  `|` 77   `|` 01110111 `|` w       `|` &#119;      `|`           `|` w Minúsculo         `|
+|` 120  `|` 170  `|` 78   `|` 01111000 `|` x       `|` &#120;      `|`           `|` x Minúsculo         `|
+|` 121  `|` 171  `|` 79   `|` 01111001 `|` y       `|` &#121;      `|`           `|` y Minúsculo         `|
+|` 122  `|` 172  `|` 7A   `|` 01111010 `|` z       `|` &#122;      `|`           `|` z Minúsculo         `|
+|` 123  `|` 173  `|` 7B   `|` 01111011 `|` {       `|` &#123;      `|`           `|` Abre Chaves         `|
+|` 124  `|` 174  `|` 7C   `|` 01111100 `|` \`|`    `|` &#124;      `|`           `|
+|` 125  `|` 175  `|` 7D   `|` 01111101 `|` }       `|` &#125;      `|`           `|` Fecha Chaves        `|
+|` 126  `|` 176  `|` 7E   `|` 01111110 `|` ~       `|` &#126;      `|`           `|` Til                 `|
+|`127`|`177`|`7F`|`01111111`||`&#127;`||`Deletar`|
 
-```
-151
-—
-```
-```
-152
-̃
-```
-```
-153
-™
-```
-```
-154
-š
-```
-```
-155
-›
-```
-```
-156
-œ
-```
-```
-157
-```
--
 
-```
-158
-ž
-```
-```
-159
-Ÿ
-160
-161
-¡
-```
-```
-162
-¢
-```
-```
-163
-£
-```
-```
-164
-¤
-```
-```
-165
-¥
-```
-```
-166
-¦
-```
-```
-167
-§
-```
-```
-168
-̈
-```
-```
-169
-©
-```
-```
-170
-ª
-```
-```
-171
-«
-```
-```
-172
-¬
-```
-```
-173
-```
--
+## Tabela de códigos ASCII extendida (código de caractere 128-255)
 
-```
-174
-®
-```
-```
-175
-̄
-176
-°
-```
-```
-177
-±
-```
-```
-178
-²
-```
-```
-179
-³
-```
-```
-180
-́
-```
-```
-181
-μ
-```
-```
-182
-¶
-```
-```
-183
-·
-```
-```
-184
-̧
-```
-```
-185
-¹
-```
-```
-186
-º
-```
-```
-187
-»
-```
-```
-188
-¼
-```
-```
-189
-½
-```
-```
-190
-¾
-```
-```
-191
-¿
-192
-À
-```
-```
-193
-Á
-```
-```
-194
-Â
-```
-```
-195
-Ã
-```
-```
-196
-Ä
-```
-```
-197
-Å
-```
-```
-198
-Æ
-```
-```
-199
-Ç
-```
-```
-200
-È
-```
-```
-201
-É
-```
-```
-202
-Ê
-```
-```
-203
-Ë
-```
-```
-204
-Ì
-```
-```
-205
-Í Î
-```
-```
-207
-Ï
-208
-Ð
-```
-```
-209
-Ñ
-```
-```
-210
-Ò
-```
-```
-211
-Ó
-```
-```
-212
-Ô
-```
-```
-213
-Õ
-```
-```
-214
-Ö
-```
-```
-215
-×
-```
-```
-216
-Ø
-```
-```
-217
-Ù
-```
-```
-218
-Ú
-```
-```
-219
-Û
-```
-```
-220
-Ü
-```
-```
-221
-Ý
-```
-```
-222
-Þ
-```
-```
-223
-ß
-224
-à
-```
-```
-225
-á
-```
-```
-226
-â
-```
-```
-227
-ã
-```
-```
-228
-ä
-```
-```
-229
-å
-```
-```
-230
-æ
-```
-```
-231
-ç
-```
-```
-232
-è
-```
-```
-233
-é
-```
-```
-234
-ê
-```
-```
-235
-ë
-```
-```
-236
-ì
-```
-```
-237
-í
-```
-```
-238
-î
-```
-```
-239
-ï
-241
-ñ
-```
-```
-242
-ò
-```
-```
-243
-ó
-```
-```
-244
-ô
-```
-```
-245
-õ
-```
-```
-246
-ö
-```
-```
-247
-÷
-```
-```
-248
-ø
-```
-```
-249
-ù
-```
-```
-250
-ú
-```
-```
-251
-û
-```
-```
-252
-ü
-```
-```
-253
-ý
-```
-```
-254
-þ
-```
-```
-127
-DEL
-```
-```
-206
-```
+Existem diferentes variações da tabela ASCII de 8 bits. A tabela abaixo está de acordo com o Windows-1252 (CP-1252), que é um superconjunto da ISO 8859-1, também chamado ISO Latina-1.
+
+|` DEC  `|` OCT  `|` HEX  `|` BIN      `|` Símbolo `|` Número HTML `|` Nome HTML `|` Descrição                               `|
+| ---- | ---- | ---- | -------- | ------- | ----------- | --------- | --------------------------------------- |
+|` 128  `|` 200  `|` 80   `|` 10000000 `|` €       `|` &#128;      `|` &euro;    `|` Sinal do Euro                           `|
+|` 129  `|` 201  `|` 81   `|` 10000001 `|`         `|`             `|`           `|`                                         `|
+|` 130  `|` 202  `|` 82   `|` 10000010 `|` ‚       `|` &#130;      `|` &sbquo;   `|` Aspas inferiores                        `|
+|` 131  `|` 203  `|` 83   `|` 10000011 `|` ƒ       `|` &#131;      `|` &fnof;    `|` Letra Latina f Minúscula                `|
+|` 132  `|` 204  `|` 84   `|` 10000100 `|` „       `|` &#132;      `|` &bdquo;   `|` Aspas dupla inferiores                  `|
+|` 133  `|` 205  `|` 85   `|` 10000101 `|` …       `|` &#133;      `|` &hellip;  `|` Reticências horizontal                  `|
+|` 134  `|` 206  `|` 86   `|` 10000110 `|` †       `|` &#134;      `|` &dagger;  `|` Punhal                                  `|
+|` 135  `|` 207  `|` 87   `|` 10000111 `|` ‡       `|` &#135;      `|` &Dagger;  `|` Punhal duplo                            `|
+|` 136  `|` 210  `|` 88   `|` 10001000 `|` ˆ       `|` &#136;      `|` &circ;    `|` Circunflexo                             `|
+|` 137  `|` 211  `|` 89   `|` 10001001 `|` ‰       `|` &#137;      `|` &permil;  `|` Símbolo de por milha                    `|
+|` 138  `|` 212  `|` 8A   `|` 10001010 `|` Š       `|` &#138;      `|` &Scaron;  `|` Letra Latina S com caron                `|
+|` 139  `|` 213  `|` 8B   `|` 10001011 `|` ‹       `|` &#139;      `|` &lsaquo;  `|` Sinal menor que                         `|
+|` 140  `|` 214  `|` 8C   `|` 10001100 `|` Œ       `|` &#140;      `|` &OElig;   `|` Letra Latina ligatura OE                `|
+|` 141  `|` 215  `|` 8D   `|` 10001101 `|`         `|`             `|`           `|`                                         `|
+|` 142  `|` 216  `|` 8E   `|` 10001110 `|` Ž       `|` &#142;      `|`           `|` Letra Latina maiúscula Z com caron      `|
+|` 143  `|` 217  `|` 8F   `|` 10001111 `|`         `|`             `|`           `|`                                         `|
+|` 144  `|` 220  `|` 90   `|` 10010000 `|`         `|`             `|`           `|`                                         `|
+|` 145  `|` 221  `|` 91   `|` 10010001 `|` ‘       `|` &#145;      `|` &lsquo;   `|` Aspa única à esquerda                   `|
+|` 146  `|` 222  `|` 92   `|` 10010010 `|` ’       `|` &#146;      `|` &rsquo;   `|` Aspa única à direita                    `|
+|` 147  `|` 223  `|` 93   `|` 10010011 `|` “       `|` &#147;      `|` &ldquo;   `|` Aspa dupla à esquerda                   `|
+|` 148  `|` 224  `|` 94   `|` 10010100 `|` ”       `|` &#148;      `|` &rdquo;   `|` Aspa única à direita                    `|
+|` 149  `|` 225  `|` 95   `|` 10010101 `|` •       `|` &#149;      `|` &bull;    `|` Ponto médio                             `|
+|` 150  `|` 226  `|` 96   `|` 10010110 `|` –       `|` &#150;      `|` &ndash;   `|` Traço médio                             `|
+|` 151  `|` 227  `|` 97   `|` 10010111 `|` —       `|` &#151;      `|` &mdash;   `|` Travessão                               `|
+|` 152  `|` 230  `|` 98   `|` 10011000 `|` ˜       `|` &#152;      `|` &tilde;   `|` Til Minúsculo                           `|
+|` 153  `|` 231  `|` 99   `|` 10011001 `|` ™       `|` &#153;      `|` &trade;   `|` Símbolo Trade mark                      `|
+|` 154  `|` 232  `|` 9A   `|` 10011010 `|` š       `|` &#154;      `|` &scaron;  `|` Letra Latina Minúscula S com Caron      `|
+|` 155  `|` 233  `|` 9B   `|` 10011011 `|` ›       `|` &#155;      `|` &rsaquo;  `|` Símbolo Maior que                       `|
+|` 156  `|` 234  `|` 9C   `|` 10011100 `|` œ       `|` &#156;      `|` &oelig;   `|` Letra Latina Minúscula ligatura oe      `|
+|` 157  `|` 235  `|` 9D   `|` 10011101 `|`         `|`             `|`           `|`                                         `|
+|` 158  `|` 236  `|` 9E   `|` 10011110 `|` ž       `|` &#158;      `|`           `|` Letra Latina Minúscula z com caron      `|
+|` 159  `|` 237  `|` 9F   `|` 10011111 `|` Ÿ       `|` &#159;      `|` &Yuml;    `|` Letra Latina Maiúscula Y com trema      `|
+|` 160  `|` 240  `|` A0   `|` 10100000 `|`         `|` &#160;      `|` &nbsp;    `|` Espaço em branco                        `|
+|` 161  `|` 241  `|` A1   `|` 10100001 `|` ¡       `|` &#161;      `|` &iexcl;   `|` Ponto de Exclamação Invertido           `|
+|` 162  `|` 242  `|` A2   `|` 10100010 `|` ¢       `|` &#162;      `|` &cent;    `|` Símbolo de Centavo                      `|
+|` 163  `|` 243  `|` A3   `|` 10100011 `|` £       `|` &#163;      `|` &pound;   `|` Símbolo da Libra                        `|
+|` 164  `|` 244  `|` A4   `|` 10100100 `|` ¤       `|` &#164;      `|` &curren;  `|` Símbolo de Moeda                        `|
+|` 165  `|` 245  `|` A5   `|` 10100101 `|` ¥       `|` &#165;      `|` &yen;     `|` Símbolo do Yen                          `|
+|` 166  `|` 246  `|` A6   `|` 10100110 `|` ¦       `|` &#166;      `|` &brvbar;  `|` Barra vertical quebrada                 `|
+|` 167  `|` 247  `|` A7   `|` 10100111 `|` §       `|` &#167;      `|` &sect;    `|` Símbolo de Sessão                       `|
+|` 168  `|` 250  `|` A8   `|` 10101000 `|` ¨       `|` &#168;      `|` &uml;     `|` Trema                                   `|
+|` 169  `|` 251  `|` A9   `|` 10101001 `|` ©       `|` &#169;      `|` &copy;    `|` Copyright                               `|
+|` 170  `|` 252  `|` AA   `|` 10101010 `|` ª       `|` &#170;      `|` &ordf;    `|` Indicador ordinal feminino              `|
+|` 171  `|` 253  `|` AB   `|` 10101011 `|` «       `|` &#171;      `|` &laquo;   `|` Ângulo Duplo para Esquerda              `|
+|` 172  `|` 254  `|` AC   `|` 10101100 `|` ¬       `|` &#172;      `|` &not;     `|` Sinal de negação                        `|
+|` 173  `|` 255  `|` AD   `|` 10101101 `|` ­       `|` &#173;      `|` &shy;     `|` Hífen                                   `|
+|` 174  `|` 256  `|` AE   `|` 10101110 `|` ®       `|` &#174;      `|` &reg;     `|` Trade mark registrada                   `|
+|` 175  `|` 257  `|` AF   `|` 10101111 `|` ¯       `|` &#175;      `|` &macr;    `|` Macron – overline                       `|
+|` 176  `|` 260  `|` B0   `|` 10110000 `|` °       `|` &#176;      `|` &deg;     `|` Símbolo de grau                         `|
+|` 177  `|` 261  `|` B1   `|` 10110001 `|` ±       `|` &#177;      `|` &plusmn;  `|` Simbolo mais-menos                      `|
+|` 178  `|` 262  `|` B2   `|` 10110010 `|` ²       `|` &#178;      `|` &sup2;    `|` Número 2 sobrescrito                    `|
+|` 179  `|` 263  `|` B3   `|` 10110011 `|` ³       `|` &#179;      `|` &sup3;    `|` Número 2 sobrescrito                    `|
+|` 180  `|` 264  `|` B4   `|` 10110100 `|` ´       `|` &#180;      `|` &acute;   `|` acento agudo                            `|
+|` 181  `|` 265  `|` B5   `|` 10110101 `|` µ       `|` &#181;      `|` &micro;   `|` Sinal de Micro                          `|
+|` 182  `|` 266  `|` B6   `|` 10110110 `|` ¶       `|` &#182;      `|` &para;    `|` Paragráfo                               `|
+|` 183  `|` 267  `|` B7   `|` 10110111 `|` ·       `|` &#183;      `|` &middot;  `|` Ponto no Meio                           `|
+|` 184  `|` 270  `|` B8   `|` 10111000 `|` ¸       `|` &#184;      `|` &cedil;   `|` Espaçador de Cedilha                    `|
+|` 185  `|` 271  `|` B9   `|` 10111001 `|` ¹       `|` &#185;      `|` &sup1;    `|` Número 1 sobrescrito                    `|
+|` 186  `|` 272  `|` BA   `|` 10111010 `|` º       `|` &#186;      `|` &ordm;    `|` Indicador Ordinal Masculino             `|
+|` 187  `|` 273  `|` BB   `|` 10111011 `|` »       `|` &#187;      `|` &raquo;   `|` Aspas angulares direita                 `|
+|` 188  `|` 274  `|` BC   `|` 10111100 `|` ¼       `|` &#188;      `|` &frac14;  `|` Fração um quarto                        `|
+|` 189  `|` 275  `|` BD   `|` 10111101 `|` ½       `|` &#189;      `|` &frac12;  `|` Fração um e meio                        `|
+|` 190  `|` 276  `|` BE   `|` 10111110 `|` ¾       `|` &#190;      `|` &frac34;  `|` Fração três quartos                     `|
+|` 191  `|` 277  `|` BF   `|` 10111111 `|` ¿       `|` &#191;      `|` &iquest;  `|` Interrogação invertida                  `|
+|` 192  `|` 300  `|` C0   `|` 11000000 `|` À       `|` &#192;      `|` &Agrave;  `|` Letra Latina Maiúscula A com grave       `|
+|` 193  `|` 301  `|` C1   `|` 11000001 `|` Á       `|` &#193;      `|` &Aacute;  `|` Letra Latina Maiúscula A com acento      `|
+|` 194  `|` 302  `|` C2   `|` 11000010 `|` Â       `|` &#194;      `|` &Acirc;   `|` Letra Latina Maiúscula A com circunflexo `|
+|` 195  `|` 303  `|` C3   `|` 11000011 `|` Ã       `|` &#195;      `|` &Atilde;  `|` Letra Latina Maiúscula A com til         `|
+|` 196  `|` 304  `|` C4   `|` 11000100 `|` Ä       `|` &#196;      `|` &Auml;    `|` Letra Latina Maiúscula A com trema       `|
+|` 197  `|` 305  `|` C5   `|` 11000101 `|` Å       `|` &#197;      `|` &Aring;   `|` Letra Latina Maiúscula A com anel acima  `|
+|` 198  `|` 306  `|` C6   `|` 11000110 `|` Æ       `|` &#198;      `|` &AElig;   `|` Letra Latina Maiúscula AE                `|
+|` 199  `|` 307  `|` C7   `|` 11000111 `|` Ç       `|` &#199;      `|` &Ccedil;  `|` Letra Latina Maiúscula C com cedilha     `|
+|` 200  `|` 310  `|` C8   `|` 11001000 `|` È       `|` &#200;      `|` &Egrave;  `|` Letra Latina Maiúscula E com grave       `|
+|` 201  `|` 311  `|` C9   `|` 11001001 `|` É       `|` &#201;      `|` &Eacute;  `|` Letra Latina Maiúscula E com acento      `|
+|` 202  `|` 312  `|` CA   `|` 11001010 `|` Ê       `|` &#202;      `|` &Ecirc;   `|` Letra Latina Maiúscula E com circunflexo `|
+|` 203  `|` 313  `|` CB   `|` 11001011 `|` Ë       `|` &#203;      `|` &Euml;    `|` Letra Latina Maiúscula E com trema       `|
+|` 204  `|` 314  `|` CC   `|` 11001100 `|` Ì       `|` &#204;      `|` &Igrave;  `|` Letra Latina Maiúscula I com grave       `|
+|` 205  `|` 315  `|` CD   `|` 11001101 `|` Í       `|` &#205;      `|` &Iacute;  `|` Letra Latina Maiúscula I com acento      `|
+|` 206  `|` 316  `|` CE   `|` 11001110 `|` Î       `|` &#206;      `|` &Icirc;   `|` Letra Latina Maiúscula I com circunflexo `|
+|` 207  `|` 317  `|` CF   `|` 11001111 `|` Ï       `|` &#207;      `|` &Iuml;    `|` Letra Latina Maiúscula I com trema       `|
+|` 208  `|` 320  `|` D0   `|` 11010000 `|` Ð       `|` &#208;      `|` &ETH;     `|` Letra Latina Maiúscula ETH               `|
+|` 209  `|` 321  `|` D1   `|` 11010001 `|` Ñ       `|` &#209;      `|` &Ntilde;  `|` Letra Latina Maiúscula N com til         `|
+|` 210  `|` 322  `|` D2   `|` 11010010 `|` Ò       `|` &#210;      `|` &Ograve;  `|` Letra Latina Maiúscula O com grave       `|
+|` 211  `|` 323  `|` D3   `|` 11010011 `|` Ó       `|` &#211;      `|` &Oacute;  `|` Letra Latina Maiúscula O com acento      `|
+|` 212  `|` 324  `|` D4   `|` 11010100 `|` Ô       `|` &#212;      `|` &Ocirc;   `|` Letra Latina Maiúscula O com circunflexo `|
+|` 213  `|` 325  `|` D5   `|` 11010101 `|` Õ       `|` &#213;      `|` &Otilde;  `|` Letra Latina Maiúscula O com til         `|
+|` 214  `|` 326  `|` D6   `|` 11010110 `|` Ö       `|` &#214;      `|` &Ouml;    `|` Letra Latina Maiúscula O com trema       `|
+|` 215  `|` 327  `|` D7   `|` 11010111 `|` ×       `|` &#215;      `|` &times;   `|` Sinal de Multiplicação                  `|
+|` 216  `|` 330  `|` D8   `|` 11011000 `|` Ø       `|` &#216;      `|` &Oslash;  `|` Letra Latina Maiúscula O com barra       `|
+|` 217  `|` 331  `|` D9   `|` 11011001 `|` Ù       `|` &#217;      `|` &Ugrave;  `|` Letra Latina Maiúscula U com grave       `|
+|` 218  `|` 332  `|` DA   `|` 11011010 `|` Ú       `|` &#218;      `|` &Uacute;  `|` Letra Latina Maiúscula U com acento      `|
+|` 219  `|` 333  `|` DB   `|` 11011011 `|` Û       `|` &#219;      `|` &Ucirc;   `|` Letra Latina Maiúscula U com circunflexo `|
+|` 220  `|` 334  `|` DC   `|` 11011100 `|` Ü       `|` &#220;      `|` &Uuml;    `|` Letra Latina Maiúscula U com trema       `|
+|` 221  `|` 335  `|` DD   `|` 11011101 `|` Ý       `|` &#221;      `|` &Yacute;  `|` Letra Latina Maiúscula Y com acento      `|
+|` 222  `|` 336  `|` DE   `|` 11011110 `|` Þ       `|` &#222;      `|` &THORN;   `|` Letra Latina Maiúscula THORN             `|
+|` 223  `|` 337  `|` DF   `|` 11011111 `|` ß       `|` &#223;      `|` &szlig;   `|` Letra Latina Minúscula sharp s – ess-zed   `|
+|` 224  `|` 340  `|` E0   `|` 11100000 `|` à       `|` &#224;      `|` &agrave;  `|` Letra Latina Minúscula a com grave         `|
+|` 225  `|` 341  `|` E1   `|` 11100001 `|` á       `|` &#225;      `|` &aacute;  `|` Letra Latina Minúscula a with acento       `|
+|` 226  `|` 342  `|` E2   `|` 11100010 `|` â       `|` &#226;      `|` &acirc;   `|` Letra Latina Minúscula a com circunflexo   `|
+|` 227  `|` 343  `|` E3   `|` 11100011 `|` ã       `|` &#227;      `|` &atilde;  `|` Letra Latina Minúscula a til               `|
+|` 228  `|` 344  `|` E4   `|` 11100100 `|` ä       `|` &#228;      `|` &auml;    `|` Letra Latina Minúscula a com trema         `|
+|` 229  `|` 345  `|` E5   `|` 11100101 `|` å       `|` &#229;      `|` &aring;   `|` Letra Latina Minúscula a com círculo acima `|
+|` 230  `|` 346  `|` E6   `|` 11100110 `|` æ       `|` &#230;      `|` &aelig;   `|` Letra Latina Minúscula ae                  `|
+|` 231  `|` 347  `|` E7   `|` 11100111 `|` ç       `|` &#231;      `|` &ccedil;  `|` Letra Latina Minúscula c com cedilha       `|
+|` 232  `|` 350  `|` E8   `|` 11101000 `|` è       `|` &#232;      `|` &egrave;  `|` Letra Latina Minúscula e com grave         `|
+|` 233  `|` 351  `|` E9   `|` 11101001 `|` é       `|` &#233;      `|` &eacute;  `|` Letra Latina Minúscula e com acento        `|
+|` 234  `|` 352  `|` EA   `|` 11101010 `|` ê       `|` &#234;      `|` &ecirc;   `|` Letra Latina Minúscula e com circunflexo   `|
+|` 235  `|` 353  `|` EB   `|` 11101011 `|` ë       `|` &#235;      `|` &euml;    `|` Letra Latina Minúscula e com trema         `|
+|` 236  `|` 354  `|` EC   `|` 11101100 `|` ì       `|` &#236;      `|` &igrave;  `|` Letra Latina Minúscula i com grave         `|
+|` 237  `|` 355  `|` ED   `|` 11101101 `|` í       `|` &#237;      `|` &iacute;  `|` Letra Latina Minúscula i com acento        `|
+|` 238  `|` 356  `|` EE   `|` 11101110 `|` î       `|` &#238;      `|` &icirc;   `|` Letra Latina Minúscula i com circunflexo   `|
+|` 239  `|` 357  `|` EF   `|` 11101111 `|` ï       `|` &#239;      `|` &iuml;    `|` Letra Latina Minúscula i com trema         `|
+|` 240  `|` 360  `|` F0   `|` 11110000 `|` ð       `|` &#240;      `|` &eth;     `|` Letra Latina Minúscula eth                 `|
+|` 241  `|` 361  `|` F1   `|` 11110001 `|` ñ       `|` &#241;      `|` &ntilde;  `|` Letra Latina Minúscula n com til           `|
+|` 242  `|` 362  `|` F2   `|` 11110010 `|` ò       `|` &#242;      `|` &ograve;  `|` Letra Latina Minúscula o com grave         `|
+|` 243  `|` 363  `|` F3   `|` 11110011 `|` ó       `|` &#243;      `|` &oacute;  `|` Letra Latina Minúscula o com acento        `|
+|` 244  `|` 364  `|` F4   `|` 11110100 `|` ô       `|` &#244;      `|` &ocirc;   `|` Letra Latina Minúscula o com circunflexo   `|
+|` 245  `|` 365  `|` F5   `|` 11110101 `|` õ       `|` &#245;      `|` &otilde;  `|` Letra Latina Minúscula o com til           `|
+|` 246  `|` 366  `|` F6   `|` 11110110 `|` ö       `|` &#246;      `|` &ouml;    `|` Letra Latina Minúscula o com trema         `|
+|` 247  `|` 367  `|` F7   `|` 11110111 `|` ÷       `|` &#247;      `|` &divide;  `|` Sinal de Divisão                        `|
+|` 248  `|` 370  `|` F8   `|` 11111000 `|` ø       `|` &#248;      `|` &oslash;  `|` Letra Latina Minúscula o com barra         `|
+|` 249  `|` 371  `|` F9   `|` 11111001 `|` ù       `|` &#249;      `|` &ugrave;  `|` Letra Latina Minúscula u com grave         `|
+|` 250  `|` 372  `|` FA   `|` 11111010 `|` ú       `|` &#250;      `|` &uacute;  `|` Letra Latina Minúscula u com acento        `|
+|` 251  `|` 373  `|` FB   `|` 11111011 `|` û       `|` &#251;      `|` &ucirc;   `|` Letra Latina Minúscula u com circunflexo   `|
+|` 252  `|` 374  `|` FC   `|` 11111100 `|` ü       `|` &#252;      `|` &uuml;    `|` Letra Latina Minúscula u com trema         `|
+|` 253  `|` 375  `|` FD   `|` 11111101 `|` ý       `|` &#253;      `|` &yacute;  `|` Letra Latina Minúscula y com acento        `|
+|` 254  `|` 376  `|` FE   `|` 11111110 `|` þ       `|` &#254;      `|` &thorn;   `|` Letra Latina Minúscula thorn               `|
+|` 255  `|` 377  `|` FF   `|` 11111111 `|` ÿ       `|` &#255;      `|` &yuml;    `|` Letra Latina Minúscula y com trema         `|
+
 
 ## HABILIDADES BÁSICAS
 
@@ -2526,30 +1874,35 @@ O compilador é esperto o bastante para usar automaticamente a rotina de `CONVER
 
 Um "bit", como definido no arquivo `o cérebro`, é uma unidade de medida. É usado em comandos como `1 bit` ou `alguns bits`. Você provavelmente não vai precisar dele a menos que você seja um ned que goste de passar o tempo manipulando bits usando comandos como:
 
-`CONJUNCIONE este valor COM este valor.`(AND)<br/>   `DISJUNCIONE este valor COM este valor`.(OR)<br/>   `DISJUNCIONE EXCLUSIVAMENTE este valor COM este valor.`(XOR)
+`CONJUNCIONE este valor COM este valor.`(AND)
+
+ `DISJUNCIONE este valor COM este valor`.(OR)
+
+`DISJUNCIONE EXCLUSIVAMENTE este valor COM este valor.`(XOR)
 
 Em cada um destes casos, o primeiro argumento informado é o que é modificado pelo conectivo lógico.
 
 Também é possível efetuar as seguintes operações lógicas:
 
-`DESLOQUE este valor alguns bits PARA A ESQUERDA.`<br/>   `DESLOQUE este valor alguns bits PARA A DIREITA.`
+`DESLOQUE este valor alguns bits PARA A ESQUERDA.`
+
+`DESLOQUE este valor alguns bits PARA A DIREITA.`
 
 Ou ainda:
 
-SEPARE este valor EM um valor E em outro valor.
+`SEPARE este valor EM um valor E em outro valor.`
 
 Como por exemplo, um byte em pedaços de 4 bits, ou 4 bits em pedaços contendo dois bytes, etc. Creio que raramente você precisará fazer isso.
 
 Agora, se você não tem mínima idéia do que estou falando aqui, você não é um nerd e não deve se preocupar com isso. Você provavelmente não vai querer saber.
 
-Mas se você entender o que eu estou dizendo, tenho certeza que você também vai curtir o tópico "Windows" bem no final, e a parte sobre "literais nibles" dentro do tópico "Literais". Sem mencionar a questão do "Possessivo", e os "Imperativos". Além de todas as rotinas de baixo nível do compilador que usam a instrução INTEL e/ou o registro EAX.
+Mas se você entender o que eu estou dizendo, tenho certeza que você também vai curtir o tópico `Windows` bem no final, e a parte sobre `literais nibles` dentro do tópico `Literais`. Sem mencionar a questão do `Possessivo`, e os `Imperativos`. Além de todas as rotinas de baixo nível do compilador que usam a instrução `INTEL` e/ou o registro EAX.
 
 
 ## CAIXAS
 
-```
-Um dos aspectos chave do compilador é a forma que ele trabalha com caixas. Uma caixa é uma variável do tipo <i>record</i>. O código da caixa é basicamente assim:
-```
+Um dos aspectos chave do compilador é a forma que ele trabalha com caixas. Uma caixa é uma variável do tipo *record*. O código da caixa é basicamente assim:
+
 ```
 Um lado é uma coordenada.<br/>   
 Uma caixa tem
@@ -2560,18 +1913,7 @@ Um lado de baixo,
 Um canto no canto superior esquerdo e
 Um segundo canto no canto inferior direito.
 ```
-```
 Esta é uma imagem de uma caixa, com todas as partes acima identificadas. Note que estou usando os apelidos dos campos aqui, como você provavelmente usará em seus programas.
-```
-```
-O compilador consegue fazer caixas a partir de especificações de largura e altura, ou apenas usando um par de pontos de coordenadas. Tudo o que você tem que fazer é escrever algo assim:
-```
-```
-FAÇA uma caixa COM tal largura E tal altura.
-FAÇA uma caixa COM essa coordenada E essa outra coordenada.
-FAÇA uma caixa USANDO esse lado esquerdo E essa parte de cima E esse lado direito E essa parte de baixo.
-```
-O compilador consegue criar uma caixa. Bem como obter a largura, altura o ponto central entre outras coisas. Ele também consegue dizer se uma caixa ESTÁ DENTRO ou se ela ESTÁ TOCANDO outra caixa. E se um ponto está DENTRO, FORA ou na BORDA da caixa. Sem mencionar todas as outras "Transformações Gráficas" as quais você pode saber mais em outra parte mais abaixo neste glossário.
 
 ```
 DIREITA ESQUERDA
@@ -2585,35 +1927,38 @@ SUPERIOR ESQUERDO
 INFERIOR DIREITO
 ```
 
+O compilador consegue fazer caixas a partir de especificações de largura e altura, ou apenas usando um par de pontos de coordenadas. Tudo o que você tem que fazer é escrever algo assim:
 
+```
+FAÇA uma caixa COM tal largura E tal altura.
+FAÇA uma caixa COM essa coordenada E essa outra coordenada.
+FAÇA uma caixa USANDO esse lado esquerdo E essa parte de cima E esse lado direito E essa parte de baixo.
+```
+O compilador consegue criar uma caixa. Bem como obter a largura, altura o ponto central entre outras coisas. Ele também consegue dizer se uma caixa ESTÁ DENTRO ou se ela ESTÁ TOCANDO outra caixa. E se um ponto está DENTRO, FORA ou na BORDA da caixa. Sem mencionar todas as outras "Transformações Gráficas" as quais você pode saber mais em outra parte mais abaixo neste glossário.
 
-##
 
 
 ## TIPOS PREDEFINIDOS/EMBUTIDOS
 
-```
+
 O compilador tabalha com 6 espécies de tipos de dados primitivos: BYTE, WYRD, NÚMERO, PONTEIRO, FLAG e RECORD.
-```
-```
+
+
 Bytes. Bytes, como você já sabe, nada mais são do que 8 bits de dados binários sequenciais. O compilador trabalha no formato decimal, logo valor de um byte vai de 0 até 255. O compilador usa a tabela ASCII sempre que é necessário converter um byte para uma caractere.
-```
-```
+
 Wyrds. As wyrds são necessárias para comunicação com o Windows/Processador. Eles têm 16 bits de comprimento sendo que o valor mínimo corresponde a -32768 e o valor máximo corresponde a +32767. Os bits dentro de cada byte são armazenados da esquerda para a direita, mas os bytes em si são armazenadas da direita pra esquerda. Infelizmente essa é uma das coisas que não é possível alterar.
-```
-```
+
 Números. O compilador trabalha números inteiros. Ou seja, números positivos e negativos. Eles têm 32 bits de comprimento com o valor mínimo sendo -2147483648 e o valor máximo sendo +2147483647. São armazenados da direita para a esquerda.
-```
-```
+
 Pointers. OS endereços de memória são armazenados em ponteiros de 32 bits de comprimento, da direita para a esquerda. Os ponteiros possuem o mesmo intervalo que os NÚMEROS inteiros, mas os números negativos são reservados para uso do Windows.
 O endereço 0 é inválido e é chamado de NIL. Para fazer com que um ponteiro fique vazio (NIL) é só usar o comando ESVAZIAR.
-```
+
 Flags. Apesar de ocuparem 32 bits na memória apenas o bit mais significativo da direita é utilizado. Na verdade, são os 8 primeiros bits começando a partir da esquerda, mas na prática é como se fosse o que eu falei antes. Dessa forma, o valor 0 é interpretado como "não" ou "falso" e 1 como "sim" ou "verdadeiro". Qualquer outro valor é inválido. Você pode LIMPAR uma flag para indicar "não" ou DEFINIR uma flag para indicar "sim".
 
-```
+
 Records. O último dos meus tipos embutidos é o record. O protótipo inicial ocupa zero bits na memória, mas você pode definir records de qualquer comprimento adicionando "campos" para o registro protótipo. Estes campos podem ser baseados em qualquer um dos
 tipos primitivos, incluindo outros records que você tenha definido anteriormente.
-```
+
 
 ## CORES
 
@@ -2649,108 +1994,100 @@ violeta
 
 ## COMENTÁRIOS
 
-```
+
 Existem 3 tipos de comentários disponíveis no compilador. Aqui está uma descrição exata de cada um.
-```
-```
+
 Um "comentário" é qualquer coisa entre o uma barra invertida e o final de uma linha:
-```
-```
+
+`\este é um comentário que termina com o byte CR`
+
 O editor de texto exibe comentários na cor do azul claro para que sejam fáceis de encontrar.
-Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:<br/>   <code>Utilize a cor azul claro como cor dos comentários.</code>
-```
+Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:
+`Utilize a cor azul claro como cor dos comentários.`
 
-</code>
-Os comentários podem começar em qualquer lugar da linha, mas terminam quando a linha termina. No entanto, você pode incluir ou excluir blocos inteiros do código selecionado usando os comandos "Comentário" e "Sem Comentário" no meu editor.
+Os comentários podem começar em qualquer lugar da linha, mas terminam quando a linha termina. No entanto, você pode incluir ou excluir blocos inteiros do código selecionado usando os comandos `Comentar` e `Descomentar` no meu editor.
 
-```
+
 Existe outro tipo de comentário que é chamado de "observação. Ele não possui uma cor diferenciada nem é afetado pelos comandos mencionados acima. Exemplo:
-```
-```
-[ bytes imprimíveis ]
-```
-```
-Onde "imprimível" significa qualquer byte no gráfico ASCII, exceto caracteres com valores de 0 a 31, o byte de exclusão, e os bytes indefinidos 129, 141, 143, 144, 157.
-```
-```
+
+`[ bytes imprimíveis ]`
+
+Onde "imprimível" significa qualquer byte da tabela ASCII, exceto caracteres com valores de 0 a 31, o byte de exclusão, e os bytes indefinidos 129, 141, 143, 144, 157.
+
 Observações podem ser colocadas em qualquer lugar, mesmo no meio de uma frase. Mas a fim de evitar erros, as observações também não podem ocupar mais de uma linha. Conforme dito antes, elas não são realçadas. Então use como observação e não como comentário.
-```
-```
+
 O termo "ruído", se refere a todos os caracteres da tabela ASCII cujo valor esteja entre 0 e 31, o byte de espaço, o byte de exclusão, os bytes indefinidos 129, 141, 143, 144, 157, e o byte de espaço rígido. O compilador reconhece estes bytes como separadores, claro, mas, fora isso, não faz nada com eles.
-```
-```
-\este é um comentário que termina com o byte CR
-```
+
+
 
 ## CONDIÇÕES
 
-```
+
 Uma declaração "condicional" é uma declaração com duas partes. A primeira parte determina as condições sob as quais a segunda parte poderá ser executada. Aqui estão alguns exemplos:
-```
+
 ```
 Se a coordenada não estiver dentro da caixa, alerte o usuário.
 Se o número for maior que 3, diga "Isso é muito"; saia.
 Se o botão esquerdo do mouse estiver sendo pressionado, coloque a coordenada do ponteiro em uma coordenada; repita.
 ```
-```
+
 O formato geral é:
-```
+
 ```
 Se isso acontecer, faça isso; isto; aquilo.
 ```
 A palavra SE é necessária. "Isso" representa uma chamada implícita para uma rotina decisora. Se a rotina retornar um "sim", todos os comandos após a vírgula serão executados. Se a rotina retornar um "não", o programa executará a próxima linha.
 
-```
 Observe que os comandos imperativos nos comandos condicionais são separados por ponto e vírgula, e não por pontos, porque o primeiro ponto encontrado indica o fim da instrução.
 A nãos er que o ponto esteja num comentário ou dentro de aspas duplas, é claro.
-```
-```
-Observe também que se você utilizar palavras negativas na chamada implícita do decidor, essas palavras serão descartadas ou serão modificadas adequadamente. Nesse caso o decisor que será chamado é o que não contém as palavras negativas, a única coisa que acontece é que o valor de retorno dele será invertido. Por exemplo, digamos que você use o seguinte comando:<br/>  
-<code>Se a coordenada não estiver dentro da caixa, [...]</code>
-Primeiramente, o compilador vai "descartar" o <code>não</code>. Logo em seguida, ele vai <i>decidir se a coordenada está na caixa</i>. A resposta obtida será então invertida (Se a resposta for "sim", então o retorno será um "não" e vice-versa). Eu sei que parece complicado, mas na verdade não é. E até onde testamos, tem funcionado muito bem, já que os decisores apenas retornam "sim" ou "não". Veja o tópico "Decisores" para mais informações.
-```
 
-Primeiramente, o compilador vai "descartar" o não. Logo em seguida, ele vai *decidir se a coordenada está na caixa*. A resposta obtida será então invertida (Se a resposta for "sim", então o retorno será um "não" e vice-versa). Eu sei que parece complicado, mas na verdade não é. E até onde testamos, tem funcionado muito bem, já que os decisores apenas retornam "sim" ou "não". Veja o tópico "Decisores" para mais informações.
-</code>
-```
+Observe também que se você utilizar palavras negativas na chamada implícita do decidor, essas palavras serão descartadas ou serão modificadas adequadamente. Nesse caso o decisor que será chamado é o que não contém as palavras negativas, a única coisa que acontece é que o valor de retorno dele será invertido. Por exemplo, digamos que você use o seguinte comando:
+
+`Se a coordenada não estiver dentro da caixa, [...]`
+
+Primeiramente, o compilador vai *descartar* o `não`. Logo em seguida, ele vai `decidir se a coordenada está na caixa`. A resposta obtida será então invertida (Se a resposta for `sim`, então o retorno será um `não` e vice-versa). Eu sei que parece complicado, mas na verdade não é. E até onde testamos, tem funcionado muito bem, já que os decisores apenas retornam `sim` ou `não`. Consulte o tópico `Decisores` para mais informações.
+
 Por último, lembre-se: o compilador não aceita o aninhamento de declarações condicionais. A filosofia da linguagem entende que esse tipo de declaração acaba por ser sempre desnecessário (por poder ser expresso de outra forma) e quase sempre incerto (gerando resultados indesejados). Não há nenhuma declaração condicional aninhada em todas as mais de 25 mil linhas de código deste projeto. E se você parar pra pensar que este é o compilador de língua portuguesa mais avançado do mundo, verá que elas realmente não são nenhum pouco necessárias. Na verdade, cada uma das declarações condicionais do compilador cabe numa linha só. Pense nisso.
-```
+
 
 ## O CONSOLE
 
 Um "console" é uma interface de texto puro, com a qual você pode interagir de forma limitada. O console padrão parece mais ou menos com a imagem abaixo:
 
+```
+Seja bem-vindo ao PAL - Portuguese Compiler And Linker. Qual é o seu nome?
+> Dr. Gerry
+Bom dia, Dr. Gerry. Estou pronto para a minha primeira lição.
+```
+
 O console pode ser ativado a qualquer momento. Ele ocupa toda a tela e usa a fonte padrão na cor preta no fundo cinza muito claro.
 
 Você pode conversar com o usuário no console usando instruções como estas:
 
-LEIA algo USANDO O CONSOLE PADRÃO.<br/>   MOSTRE algo NO CONSOLE PADRÃO.
+`LEIA algo USANDO O CONSOLE PADRÃO.`
+`MOSTRE algo NO CONSOLE PADRÃO.`
 
 Você também pode escrever no console sem avançar para a próxima linha:
 
-MOSTRE algo NO CONSOLE PADRÃO SEM PULAR LINHAS.
+`MOSTRE algo NO CONSOLE PADRÃO SEM PULAR LINHAS.`
 
-Que é útil para "prompts", como o símbolo ">" no exemplo acima.
+Que é útil para "prompts", como o símbolo `>` no exemplo acima.
 
 O console padrão está sempre disponível, mas ele vai aparecer na tela somente quando você precisar informar alguma coisa para ele ou exibir alguma coisa nele. Uma vez exibido, o console permanecerá visível até que você mande o programa exibir outra coisa e atualizar a tela.
 
 O console lembra tudo o que ele exibe e rola automaticamente para cima quando a parte inferior da tela é alcançada. Você pode usar as teclas <kbd>Home</kbd>, <kbd>End</kbd>, <kbd>Page Up</kbd>, <kbd>Page Down</kbd>, e o botão direito do mouse para rolar manualmente.
 
-```
-Seja bem-vindo ao PAL - <i>Portuguese Compiler And Linker</i>. Qual é o seu nome?
-> Dr. Gerry
-Bom dia, Dr. Gerry. Estou pronto para a minha primeira lição.
-```
+
 
 ## CONSERTANDO FALHAS E ERROS
 
-Uma dos princípios que regem a linguagem da Sociedade Osmosiana é: Depuradores são coisa de frangotes.
+Uma dos princípios que regem a linguagem da Sociedade Osmosiana é: *Depuradores são coisa de frangotes*.
 
 Se você precisa de uma ferramenta especial para ajudá-lo a consertar seu código, algo está seriamente errado. Ou você está esquecendo de testar seu programa conforme vai acrescentando as funções nele, ou o seu código está irremediavelmente complexo. Ou talvez você esteja na profissão errada.
 
-Dir-vos-ei agora o que fazem os Mestres Osmosianos quando confrontados com um erro na execução do código.
+Dir-vos-ei agora o que fazem os *Mestres Osmosianos* quando confrontados com um erro na execução do código.
 
-Antes de tudo, eles oram ao bom Deus solicitando sua orientação. Em seguida, eles consideram excluit totalmente a funcionalidade problemática, dessa forma eles se livram de uma vez do problema, e evitam o famoso *[Feature creep](https://en.wikipedia.org/wiki/Feature_creep)*. Em seguida, eles estudam o código, esperando conseguir "discernir" qual é o problema. Se o bug não foi encontrado, eles escolhem um local que seja apropriado para que o programa emita um som de alerta. Se eles não ouvirem o som durante a execução do programa, então tem algo errado na rotina, e eles verificam. Caso eles escutem o som, o comando é movido para próxima rotina, ou para o próximo comando da rotina. O console também pode ajudar muito.</p>
+Antes de tudo, eles oram ao bom Deus solicitando sua orientação. Em seguida, eles consideram excluit totalmente a funcionalidade problemática, dessa forma eles se livram de uma vez do problema, e evitam o famoso *[Feature creep](https://en.wikipedia.org/wiki/Feature_creep)*. Em seguida, eles estudam o código, esperando conseguir "discernir" qual é o problema. Se o bug não foi encontrado, eles escolhem um local que seja apropriado para que o programa emita um som de alerta. Se eles não ouvirem o som durante a execução do programa, então tem algo errado na rotina, e eles verificam. Caso eles escutem o som, o comando é movido para próxima rotina, ou para o próximo comando da rotina. O console também pode ajudar muito.
 
 Nos raríssimos casos, em que várias repetições dos procedimento descrito acima falham em providenciar uma conclusão aceitável, os Mestres da Sociedade OSmosiana escolhem outro lugar no código e inserem o seguinte comando:
 
@@ -2776,20 +2113,20 @@ As rotinas decisoras sempre começam com as mesmas três palavras. O formato é:
 ```
 PARA DECIDIR SE alguma coisa:
 ```
-Esse "alguma coisa" deve seguir as regras existentes para nomes de rotina e tipicamente incluirá um verbo como o É, ESTÁ, PODE, FAZ, DEVE, ETC. Perceba que a conjugação dos verbos não importa muito.
+Esse "alguma coisa" deve seguir as regras existentes para nomes de rotina e tipicamente incluirá um verbo como o `É`, `ESTÁ`, `PODE`, `FAZ`, `DEVE`, ETC. Perceba que a conjugação dos verbos não importa muito.
 
-O ideal é sempre criar decisores "positivos". Ou seja, se você quiser evitar dores de cabeça no futuro usar as palavras NÃO, NUNCA, NENHUM, NADA e similares. Não se preocupe, caso seja realmente necessário utilizar tais temos, você pode. Mas na prática o compilador vai meio que desfazer tudo que você fez.
+O ideal é sempre criar decisores "positivos". Ou seja, se você quiser evitar dores de cabeça no futuro usar as palavras `NÃO`, `NUNCA`, `NENHUM`, `NADA` e similares. Não se preocupe, caso seja realmente necessário utilizar tais temos, você pode. Mas na prática o compilador vai meio que desfazer tudo que você fez.
 
 Por exemplo, se você criar uma rotina que "decide se uma coordenada está dentro de uma caixa", o compilador automaticamente vai saber dizer se "uma coordenada NÃO está dentro de uma caixa. Isso funciona pra quelauqer tipo de rotina decisora. Para saber mais, procure os exemplos disponíveis nos arquivos de código fonte.
 
 Os decisores funcionam basicamente da mesma forma que as rotinas condicionais e imperativas. No entanto você não pode usar o comando SAIA em um decisor, por motivos óbvios, bem como qualquer outra forma que faça você sair sem dar alguma resposta. Um decisor sempre deve terminar com as palavras "DIGA SIM" ou "DIGA NÃO".
 
 
-## LISTA DE DECISORES DISPONÍVEIS NO SITEMA
+## LISTA DE DECISORES DISPONÍVEIS NO SISTEMA
 
 Decisores são uma boa forma de deixar o seu programa (e o compilador) mais inteligente. Você pode (e deve) integrá-los ao sistema. Existem 138 decisores no sistema. Neste exato momento, com certeza devem haver bem mais. Eis uma amostra dos principais decisores:
 
-Alguns desses funcionam com apenas um tipo de dado, é claro, mas outros trabalham com muitos. E se você leu o tópico "Decisor", você sabe que o compilador também aceita as variantes negativas desses mesmos decisores. Por favor, não tente memorizá-los. Essa não é a ideia. Apenas diga o que você quer dizer em seu programa, e se o compilador não entender, adicione o decisor à coleção de rotinas e me deixe o compilador mais inteligente.
+Alguns desses funcionam com apenas um tipo de dado, é claro, mas outros trabalham com muitos. E se você leu o tópico `Decisor`, você sabe que o compilador também aceita as variantes negativas desses mesmos decisores. Por favor, não tente memorizá-los. Essa não é a ideia. Apenas diga o que você quer dizer em seu programa, e se o compilador não entender, adicione o decisor à coleção de rotinas e me deixe o compilador mais inteligente.
 
 ```
 É
@@ -2832,26 +2169,21 @@ ESTÁ ACIMA [DE]
 É MUITO CLARO
 É UM ESPAÇO EM BRANCO
 ESTÁ ENTRE
+```
 
+## DESENHANDO
+
+Você pode dizer ao compilador coisas como:
 
 ```
-## DESENHANDO Você pode dizer ao compilador coisas como:
-
-```
-<code>DESENHE uma coisa</code>.
-<code>DESENHE uma coisa USANDO uma cor</code>.
-<code>DESENHE uma coisa USANDO uma cor na borda E uma cor no preenchimento</code>.
-<code>DESENHE uma coisa DENTRO DE uma caixa USANDO uma fonte E uma cor</code>.
-<code>DESENHE uma coisa NO CENTRO DE uma caixa USANDO uma determinada fonte E uma cor</code>.
-```
-.
+DESENHE uma coisa.
 DESENHE uma coisa USANDO uma cor.
 DESENHE uma coisa USANDO uma cor na borda E uma cor no preenchimento.
 DESENHE uma coisa DENTRO DE uma caixa USANDO uma fonte E uma cor.
 DESENHE uma coisa NO CENTRO DE uma caixa USANDO uma determinada fonte E uma cor.
-</code>
+```
 
-E o compilador irá renderizar tudo numa "tela virtual", uma tela invisível do mesmo tamanho e formato que a tela do monitor. Dessa forma, quando você utilizar o comando:
+E o compilador irá renderizar tudo numa "tela virtual", ou seja, uma tela invisível do mesmo tamanho e formato que a tela do monitor. Dessa forma, quando você utilizar o comando:
 
 ```
 ATUALIZE A TELA.
@@ -2863,38 +2195,27 @@ O compilador irá substituir o conteudo da tela pelo conteúdo da tela virtual e
 ATUALIZA A TELA USANDO [o conteúdo de] uma caixa.
 ```
 
-O compliador vai transferi apenas os pixels que estiverem dentro da caixa.
+O compliador vai transferir apenas os pixels que estiverem dentro da caixa.
 
-As regras para impressão funcionam de forma diferente. Nesse caso, o compilador usa "a tela da impressora" e envia os desenhos para um dispositivo de impressão assim que você finaliza página. Veja a seção "Imprimindo" para mais detalhes.
+As regras para impressão funcionam de forma diferente. Nesse caso, o compilador usa "a tela da impressora" e envia os desenhos para um dispositivo de impressão assim que você finaliza página. Consulte a seção "Imprimindo" para mais detalhes.
 
 Para ajustar suas coordenadas, você pode:
 
-DEFINIR uma coordenada COMO ORIGEM DO DESENHO.
+`DEFINIR uma coordenada COMO ORIGEM DO DESENHO.`
 
 Você também pode evitar o desenho em certas áreas da tela usando o recurso de "fita crepe". Consulte o tópico "Fita Crepe" para descobrir como fazer isso.
 
 
 ## ELIPSES
 
-```
+
 Infelizmente o Windows não permite círculos nem elipses — ele só desenha retângulos redondos dentro de caixas sem bordas. O que explica essa definição incomum de "elipse" que está presente no cérebro:
-```
+
 ```
 Uma elipse tem uma caixa.
 ```
-```
+
 Esta é uma imagem de uma elipse, com suas partes identificadas. Note que você pode obter os campos individuais da caixa da elipse usando o meu recurso de acesso aos "campos profundos", recurso este que é descrito sob o tema "Possessivos" neste glossário.
-```
-```
-O compilador pode fazer elipses de várias maneiras diferentes. Usando especificações de largura e altura. Ou usando um par de coordenadas. Ou todas as quatro coordenadas.
-Tudo o que você tem que fazer é escrever algo assim:
-```
-```
-FAÇA uma elipse USANDO tal valor na largura E tal valor para a altura.
-FAÇA uma elipse USANDO essa coordenada E essa outra coordenada.
-FAÇA uma caixa USANDO esse lado esquerdo E essa parte de cima E esse lado direito E essa parte de baixo.
-```
-Assim como caixas, o compilador consegue DESENHAR uma elipse. Bem como obter a largura, altura o ponto central entre outras coisas. Inclusive detectar se uma coordenada ESTÁ DENTRO (ou fora) de uma elipse ou se a coordenada ESTÁ na borda de uma elipse. Sem mencionar todas as outras "Transformações Gráficas" as quais você pode saber mais em outra parte mais abaixo neste glossário.
 
 ```
 DIREITA ESQUERDA
@@ -2912,39 +2233,63 @@ INFERIOR DIREITO
 CAIXA
 ```
 
+O compilador pode fazer elipses de várias maneiras diferentes. Usando especificações de largura e altura. Ou usando um par de coordenadas. Ou todas as quatro coordenadas.
+Tudo o que você tem que fazer é escrever algo assim:
 
+```
+FAÇA uma elipse USANDO tal valor na largura E tal valor para a altura.
+FAÇA uma elipse USANDO essa coordenada E essa outra coordenada.
+FAÇA uma caixa USANDO esse lado esquerdo E essa parte de cima E esse lado direito E essa parte de baixo.
+```
+Assim como caixas, o compilador consegue DESENHAR uma elipse. Bem como obter a largura, altura o ponto central entre outras coisas. Inclusive detectar se uma coordenada ESTÁ DENTRO (ou fora) de uma elipse ou se a coordenada ESTÁ na borda de uma elipse. Sem mencionar todas as outras "Transformações Gráficas" as quais você pode saber mais em outra parte mais abaixo neste glossário.
 
-##
 
 
 ## EVENTOS/COMANDOS RECEBIDOS PELO SISTEMA
 
 O Windows insiste que usemos seu modelo complicado e não processual juntamente com as suas centenas de mensagens e códigos absurdos. Felizmente, o compilador inclui definições que reduzem essa monstruosidade a apenas dez simples eventos que podem ser tratados de uma forma puramente processual. Eis o código:
 
-`Um evento é uma coisa com<br/>  
-uma categoria,<br/>  
-um detector de shift, uma detector de ctrl, uma detector de alt,<br/>  
-uma coordenada,<br/>  
-uma tecla e um byte.`
+```
+Um evento é uma coisa com 
+uma categoria,
+um detector de shift, uma detector de ctrl, uma detector de alt,
+uma coordenada,
+uma tecla e um byte.
+```
 
-"Categoria" nada mais é do que uma das seguintes palavras:
+`Categoria` nada mais é do que uma das seguintes palavras:
 
-ATUALIZAÇÃO DE TELA — Esse tipo de evento informa que é hora de redesenhar a tela. Culpe o Windows por isso.<br/>   MOVIMENTO DE CURSOR — O cursor se moveu. Esse tipo de evento é muito usado para redimensionar formas e objetos.<br/>   PRESSIONAMENTO DE TECLA — O usuário digitou algo. Acho que nem preciso explicar nada.<br/>   CLIQUE ESQUERDO (ou apenas CLIQUE) — O botão esquerdo do mouse acabou de ser presssionado. Muito usado em botões e componentes similares.<br/>   CLIQUE DUPLO — O usuário clicou duas vezes. Se você usa o Windows então já sabe que geralmente esse comando é utilizado para abrir ou executar arquivos.<br/>   CLIQUE DIREITO — O botão direito do mouse acabou de ser pressionado. No compilador, esse é o comando que inicia a rolagem da página.<br/>   CLIQUE DIREITO DUPLO — O usuário deve ter clicado por engano. Que tal colocar darmos a ele ovo de páscoa para celebrar?<br/>   DEACTIVATE — You're about to be rudely swapped out. Handled internally. ACTIVATE — You're back after a rude swap-out. Handled internally. DONE — Inserted internally. You should never see this event.
+`ATUALIZAÇÃO DE TELA` — Esse tipo de evento informa que é hora de redesenhar a tela. Culpe o Windows por isso.
+`MOVIMENTO DE CURSOR` — O cursor se moveu. Esse tipo de evento é muito usado para redimensionar formas e objetos.
+`PRESSIONAMENTO DE TECLA` — O usuário digitou algo. Acho que nem preciso explicar nada.
+`CLIQUE ESQUERDO` (ou apenas `CLIQUE`) — O botão esquerdo do mouse acabou de ser presssionado. Muito usado em botões e componentes similares.
+`CLIQUE DUPLO` — O usuário clicou duas vezes. Se você usa o Windows então já sabe que geralmente esse comando é utilizado para abrir ou executar arquivos.
+`CLIQUE DIREITO` — O botão direito do mouse acabou de ser pressionado. No compilador, esse é o comando que inicia a rolagem da página.
+`CLIQUE DIREITO DUPLO` — O usuário deve ter clicado por engano. Que tal colocar darmos a ele ovo de páscoa para celebrar?
+`DESATIVAÇÃO` — O usuário mudou para outra  janela. O compilador lida com isso internamente.
+`ATIVAÇÃO` — O usuário retornou para o seu programa. O compilador lida com isso internamente.
+`ENCERRAMENTO` — Informa que o programa está sendo encerrado. Inserido internamente. Você não deveria ver esse tipo de evento.
 
-Os sinalizadores "ctrl" e "alt" e "shift" indicam o estado das teclas correspondentes no momento do evento (a flag é definida se a tecla for pressionada).
+Os detectores de `ctrl` e `alt` e `shift` indicam o estado das teclas correspondentes no momento do evento (o detector é acionado se a tecla for pressionada).
 
-A "coordenada" é a posição do mouse no momento do evento.
+A `coordenada` é a posição do mouse no momento do evento.
 
-A "tecla" e seu "byte" ASCII equivalente (se houver) aplicam-se apenas à Teclas Pressionadas.
+A `tecla` e seu `byte` ASCII equivalente (se houver) aplicam-se apenas à Teclas Pressionadas.
 
 
 ## PROGRAMAÇÃO ORIENTADA A EVENTOS
 
 Esta é a estrutura de um programa orientado a eventos:
 
-Se não houver eventos sendo executados, a rotina de "desenfileirar" continuará verificando a situação junto ao Windows até que o seu usuário distraído faça alguma coisa. Para encerrar o programa, você deve:
+Se não houver eventos sendo executados, a rotina de "desenfileirar" continuará verificando a situação junto ao Windows até que o seu usuário distraído faça alguma coisa. Para encerrar o programa, você deve utilizar um dos seguintes comandos:
 
-`RENUNCIAR O CONTROLE.`
+```
+RENUNCIAR AO CONTROLE.
+DELEGAR O CONTROLE.
+ENTREGAR O CONTROLE.
+ABANDONAR O CONTROLE.
+LARGAR O CONTROLE.
+```
 
 Em algum lugar do seu código. Geralmente em um dos seus gerenciadores de eventos. Esta rotina configura as coisas para que o próximo evento que você "desenfileirar" seja nulo, terminando o seu loop de gerenciamento de eventos.
 
@@ -2974,69 +2319,69 @@ seu programa
 
 ## EXPRESSÕES
 
-```
+
 Uma "expressão" é como uma oração subordinada em uma frase complexa. É uma frase que deve ser reduzida, separadamente, antes que a instrução que a contém possa ser totalmente compreendida. Se você, por exemplo, dizer:
-```
+
 ```
 Coloque a altura menos 1 vez a contagem em um número.
 ```
-```
-Eu devo reduzir a frase "a altura menos 1 vez a contagem" para algo muito mais simples antes de pensar em colocar qualquer coisa em qualquer lugar.
-```
-```
-O compilador considera como expressão qualquer frase com uma ou mais das seguintes palavras:
-```
-```
-MAIS, MENOS, VEZES, DIVIDIDO POR, ou EM SEGUIDA.
-```
-```
-Os quatro primeiros são operadores aritméticos padrão, mas você pode aplicá-los a outras coisas também. O último é usado principalmente para unir palavras e textos. Deixe-me explicar como o compilador simplifica expressões com alguns exemplos.
-```
-Digamos que o compilador encontre a palavra MAIS entre a palavra couve e a palavra flor. Ele busca por uma rotina que diga como "adicionar uma couve a uma flor", e então usa essa rotina para reduzir a expressão. Se ele encontrar "uma couve MENOS uma flor", ele procura uma rotina "para subtrair uma flor de uma couve". Para multiplicarr "um couve VEZES uma flor", ele usa a rotina "para multiplicar uma couve por uma flor". E para poder calcular "uma couve DIVIDIDO POR uma flor", ele busca e usa a rotina "para dividir um couve por uma flor".
 
-```
-Eu lido com o último operador um pouco diferente, já que o objetivo neste caso é sempre "para anexar uma texto no final de outro texto". Então, por exemplo, se o compilador encontrar a palavra EM SEGUIDA entre, digamos, uma palavra e um número, o compilador busca por uma rotina "para converter um número em um texto", aplica a rotina no número e então adiciona o número convertido ao final do texto.
-```
-```
+O compilador converte a frase `a altura menos 1 vez a contagem` para algo muito mais simples antes de pensar em colocar qualquer coisa em qualquer lugar.
+O compilador considera como expressão qualquer frase com uma ou mais das seguintes palavras:
+
+`MAIS`, `MENOS`, `VEZES`, `DIVIDIDO POR`, ou `EM SEGUIDA`.
+
+Os quatro primeiros são operadores aritméticos padrão, mas você pode aplicá-los a outras coisas também. O último é usado principalmente para unir palavras e textos. Deixe-me explicar como o compilador simplifica expressões com alguns exemplos.
+
+Digamos que o compilador encontre a palavra `MAIS` entre a palavra `couve` e a palavra `flor`. Ele busca por uma rotina que diga como `adicionar uma couve a uma flor`, e então usa essa rotina para reduzir a expressão. Se ele encontrar `uma couve MENOS uma flor`, ele procura uma rotina `para subtrair uma flor de uma couve`. Para calcular `um couve VEZES uma flor`, ele usa a rotina `para multiplicar uma couve por uma flor`. E para poder calcular `uma couve DIVIDIDO POR uma flor`, ele busca e usa a rotina `para dividir um couve por uma flor`.
+
+O compilador lida com o último operador um pouco diferente, já que o objetivo neste caso é sempre `para anexar uma texto no final de outro texto`. Então, por exemplo, se o compilador encontrar a expressão `EM SEGUIDA` entre, digamos, uma palavra e um número, o compilador busca por uma rotina `para converter um número em um texto`, aplica a rotina no número e então adiciona o número convertido ao final do texto.
+
 É claro que é possível extender essa capacidade. Mas use com moderação.
-```
+
 
 ## CAMPOS
 
-Um record é uma coleção de itens que contém dados intimamente relacionados. Cada item é considerado um "campo". Campos são definidos como parte do record que os contém, e podem ser separada por vírgulas, ponto e vírgula ou pelas palavras E e OU. Veja o exemplo abaixo:
+Um *record* é uma coleção de itens que contém dados intimamente relacionados. Cada item é considerado um "campo". Campos são definidos como parte do record que os contém, e podem ser separada por vírgulas, ponto e vírgula ou pelas palavras `E` e `OU`. Consulte o exemplo abaixo:
 
-`Uma pessoa é algo com<br/>  
-um nome e<br/>  
-um endereço postal;<br/>  
-um byte chamado gênero ou<br/>  
+```
+Uma pessoa é algo com 
+um nome e
+um endereço postal;
+um byte chamado gênero ou
 um byte chamado sexo no gênero;<br/>  
-32 bytes, e<br/>  
-um cônjuge (referência).`
+32 bytes, e
+um cônjuge (referência).
+```
 
-O primeiro campo é definido com apenas um artigo indefinido, UMA e um tipo, NOME. Pense neste campo como "o nome da pessoa".
+O primeiro campo é definido com apenas um artigo indefinido,` UM` e um tipo, `NOME`. Pense neste campo como `o nome da pessoa`.
 
-O segundo campo inclui um ENDEREÇO POSTAL, que é nada mais do que um texto. Logo, em algum lugar do seu código você precisará acrescentar a definição:<br/>   `Um endereço postal é um texto`.
+O segundo campo inclui um `ENDEREÇO POSTAL`, que é nada mais do que uma variável do tipo `texto`. Logo, em algum lugar do seu código você precisará acrescentar a definição:
 
-O terceiro campo é definido da mesma forma que o primeiro campo, mas com um nome imposto a ele devido a cláusula CHAMADO. Esse campo é o "gênero da pessoa". Normalmente, você só usará esssa forma quando o tipo de um campo não tiver nada a ver com o nome do tipo (Ninguém costuma pensar em gênero em termos de bytes).
+`Um endereço postal é um texto`.
 
-O quarto campo usa a palavra chave NO para redefinir o terceiro campo, dando-lhe um novo nome. Asobreposição de tipos de dados deve ser compatível para que coisas como esta funcionem.
+O terceiro campo é definido da mesma forma que o primeiro campo, mas com um nome imposto a ele devido a cláusula `CHAMADO`. Esse campo é o `gênero da pessoa`. Normalmente, você só usará esssa forma quando o tipo de um campo não tiver nada a ver com o nome do tipo (Ninguém costuma pensar em gênero em termos de bytes).
+
+O quarto campo usa a palavra chave `NO` para redefinir o terceiro campo, dando-lhe um novo nome. Asobreposição de tipos de dados deve ser compatível para que coisas como esta funcionem.
 
 O quinto campo é enchimento. Ele não tem nome e não pode ser acessado diretamente.
 
-O último campo é parecido com o segundo, onde se assume que a variável CÔNJUGE é um tipo definido em outro lugar. A tag (REFERÊNCIA) serve para informar que o termo CÔNJUGE não faz "parte" da pessoa e não deve ser destruído automaticamente quando a pessoa for.
+O último campo é parecido com o segundo, onde se assume que a variável `CÔNJUGE` é um tipo definido em outro lugar. A tag `(REFERÊNCIA)` serve para informar que o termo `CÔNJUGE` não faz "parte" da pessoa e não deve ser destruído automaticamente quando a pessoa for.
 
 
 ## ARQUIVOS
 
 O sistema de arquivos do Windows é uma coisa de beleza insuperável, se igualando a uma obra de arte... Brincadeirinha. Na verdade o sistema de arquivos do Windows é uma verdadeira bagunça. Só pra você ter uma idéia:
 
-`Um endereço completo é um texto.` ` \ nome completo do arquivo = c:\pasta1\subpasta2\arquivo.exe <br/>  
-Um endereço de unidade é um texto. <code> \ letra da unidade seguido dois pontos e barra invertida. Exemplo -> c:\ <br/>  
-Um endereço de pasta é um endereço completo.` ` \  Exemplo -> c:\pasta1\pasta2\
-<br/>  Um nome de pasta é um texto.` ` \ apenas o nome da pasta em si seguido da barra invertida = pasta2\ <br/>  
-Um nome completo de arquivo é um texto.` ` \ nome do arquivo após a última barra invertida até o fim da extensão. Exemplo: aquivo.exe <br/>  
-Uma extensão de arquivo com ponto é um texto.` ` \ Exemplo: .ext <br/>  
-Um designador é um texto.` ` \ nome da pasta ou nome do arquivo`
+```
+Um endereço completo é um texto. \ nome completo do arquivo = c:\pasta1\subpasta2\arquivo.exe
+Um endereço de unidade é um texto. \ letra da unidade seguido dois pontos e barra invertida. Exemplo -> c:\
+Um endereço de pasta é um endereço completo. \ Exemplo -> c:\pasta1\pasta2\
+Um nome de pasta é um texto.\ apenas o nome da pasta em si seguido da barra invertida = pasta2\ 
+Um nome completo de arquivo é um texto.\ nome do arquivo após a última barra invertida até o fim da extensão. Exemplo: aquivo.exe
+Uma extensão de arquivo com ponto é um texto.\ Exemplo: .ext
+Um designador é um texto.\ nome da pasta ou nome do arquivo`
+```
 
 Mesmo com tanta cofusão, o compilador consegue:
 
@@ -3044,42 +2389,22 @@ Mesmo com tanta cofusão, o compilador consegue:
 
 Ou ainda:
 
-`GRAVAR um endereço completo NO SISTEMA DE ARQUIVOS.`<br/>   `SUBSTITUIR um endereço completo POR outro endereço completo NO SISTEMA DE ARQUIVOS.`<br/>   `EXCLUIR um endereço completo NO SISTEMA DE ARQUIVOS.`<br/>   `CRIAR UMA CÓPIA DE um endereço completo EM outro endereço completo NO SISTEMA DE ARQUIVOS.`<br/>  
+`GRAVAR um endereço completo NO SISTEMA DE ARQUIVOS.`
+`SUBSTITUIR um endereço completo POR outro endereço completo NO SISTEMA DE ARQUIVOS.`
+`EXCLUIR um endereço completo NO SISTEMA DE ARQUIVOS.`
+`CRIAR UMA CÓPIA DE um endereço completo EM outro endereço completo NO SISTEMA DE ARQUIVOS.`
 
 Ou, se você preferir:
 
-`COLOCAR um endereço completo DENTRO DE um texto.`<br/>   `GRAVAR um texto EM um endereço completo.`
+`COLOCAR um endereço completo DENTRO DE um texto.`
+`GRAVAR um texto EM um endereço completo.`
 
-Se algo der errado, "o erro de entrada/saída " irá conter uma descrição do problema, adequada para exibição ao usuário. Você não precisa limpar o erro de entrada/saída antes de uma invocar uma dessas funções, mas deve verifica o erro depois de chamar a função para ter certeza que ele está em branco.
+Se algo der errado, `o erro de entrada/saída` irá conter uma descrição do problema, adequada para exibição ao usuário. Você não precisa limpar o erro de entrada/saída antes de uma invocar uma dessas funções, mas deve verifica o erro depois de chamar a função para ter certeza que ele está em branco.
 
+## ARQUIVOS (continuação)
 
-```
-<h2>ARQUIVOS (continuação)
-```
-```
-If you need to thumb your way through any or all of the directories in the
-file system, you can do so with a simple loop like this one:
-```
-O termo "Item" é definido da seguinte forma no compilador:
+Se você precisar acessar uma ou mais pastas do sistema de arquivos, você pode usar um comando como esse:
 
-```
-Um item tem
-uma categoria,
-um endereço completo, um endereço de pasta, um designador, uma extensão,
-um tamanho,
-um win32finddata e um número identificador.
-```
-```
-O campo "categoria" é um texto. Seu conteúdo corresponde a "pasta" ou "arquivo" para cada item encontrado. A "extensão" e "tamanho" serão preenchidos apenas se a categoria for "arquivo".
-Os campos "win32finddata" e "número identificador" são males necessários. Você também pode:
-```
-```
-OBTER uma contagem de ITENS EM um endereço completo no SISTEMA DE ARQUIVOS.
-OBTER um tamanho USANDO um endereço completo no SISTEMA DE ARQUIVOS.
-```
-```
-Note que os contadores e tamanhos de arquivo, incluindo o "tamanho" no registro de nome "item", são limitados a 2147483647, que é o maior número permitido pelo compilador no momento.
-```
 ```
 Para percorrer todos os itens em um endereço completo:
 Obtenha um item do do endereço completo.
@@ -3091,68 +2416,93 @@ Repita.
 seu programa
 ```
 
-## FONTES
+O termo "Item" é definido da seguinte forma no compilador:
 
 ```
+Um item tem
+uma categoria,
+um endereço completo, um endereço de pasta, um designador, uma extensão,
+um tamanho,
+um win32finddata e um número identificador.
+```
+
+O campo `categoria` é uma variável do tipo `texto`. O conteúdo dessa variável pode ser `pasta` ou `arquivo` para cada item encontrado. Os campos `extensão` e `tamanho` serão preenchidos apenas se a categoria for `arquivo`.
+Os campos `win32finddata` e `número identificador` são necessários que o compilador funcione no Windows. Você também pode usar os seguintes comandos:
+
+```
+OBTENHA uma contagem de ITENS EM um endereço completo no SISTEMA DE ARQUIVOS.
+OBTENHA um tamanho USANDO um endereço completo no SISTEMA DE ARQUIVOS.
+```
+
+Note que os contadores e tamanhos de arquivo, incluindo o `tamanho` no registro de nome `Item`, são limitados a 2147483647, que é o maior número permitido pelo compilador no momento.
+
+
+## FONTES
+
 No Windows, uma fonte é definida com quatorze parâmetros distintos. Complicado demais.
 O compilador usa uma definição bem mais simplicada:
-```
+
 ```
 Uma fonte tem um nome e uma altura.
 ```
-```
 O nome da fonte é o nome real armazenado em um arquivo de fonte. Ele pode ou não ser o mesmo que o nome do arquivo. Você provavelmente está familiarizado com nomes de fonte
-como "Arial", "Times New Roman" e "Courier New".
-```
-A altura da fonte pode ser especificada em qualquer unidade de medida conveniente. O caderno utiliza valores como 1/4 de polegada para poder se harmonizar com a função de alinhamento "yank".
+como `Arial`, `Times New Roman` e `Courier New`.
 
-"A fonte padrão" do sistema é chamada de "Osmosian" como homenagem aos criadores do projeto. O código hexadecimal da fonte está presente no noodle. O CAL "instala" a fonte na inicialização e deleta no encerramento. Ela mede 1/4 de polegada. Você está vendo uma amostra neste momento.
+A altura da fonte pode ser especificada em qualquer unidade de medida conveniente. O caderno utiliza valores como 1/4 de polegada para poder se harmonizar com a função de alinhamento `yank`.
+
+A fonte padrão" do compilador é chamada de Osmosian como homenagem aos criadores do projeto. O código hexadecimal da fonte está presente no noodle. O CAL "instala" a fonte na inicialização e deleta no encerramento. Ela mede 1/4 de polegada. Você está vendo uma amostra neste momento.
+
+Para configurar uma fonte, basta utilizar o comando:
 
 ```
-Para configurar uma fonte, basta:
-```
-```
-COLOCAR um nome E uma altura EM uma fonte.
-```
+COLOQUE um nome E uma altura EM uma fonte.
 ```
 Então, quando você estiver exibindo os itens na dela, informe que quer usar sua fonte:
-```
+
 ```
 Escreva "Olá, mundo!" no centro da caixa de seleção usando a fonte.
 ```
-```
+
 Se as suas fontes apareceram diferente do esperado, você provavelmente errou o nome da fonte.
-Lembre-se, um nome de fonte não é necessariamente o nome do arquivo na pasta "fonte" do Windows. Em vez disso, é o "nome do typeface" exibido na caixa de visualização que aparece quando você clica duas vezes em um desses arquivos de fontes.
-```
+Lembre-se, um nome de fonte não é necessariamente o nome do arquivo na pasta "fonte" do Windows. Em vez disso, você deve usar o *nome do typeface* exibido na caixa de visualização que aparece quando você clica duas vezes em um desses arquivos de fontes.
+
 
 ## FUNÇÕES
 
 Uma "função" é uma rotina que extrai, calcula ou deriva algo usando uma variável. Alguns exemplos são:
 
-Para colocar a linha inferior de uma caixa em uma linha: Para colocar a altura de um polígono em uma altura: Para colocar a posição do mouse em uma posição:
+```
+Para colocar a linha inferior de uma caixa em uma linha:
+Para colocar a altura de um polígono em uma altura:
+Para colocar a posição do mouse em uma posição:
+```
 
 Há dois formatos muito semelhantes para funções. O primeiro é:
 
+```
 PARA COLOCAR UM nome DO tipo EM um nome DE tipo:
+```
 
 E o segundo é:
 
+```
 PARA COLOCAR UM nome DO nome EM um nome DE tipo:
+```
 
-Ambas as formas são facilmente reconhecidas porque elas incluem as palavras COLOCAR e EM com um possessivo entre elas. O primeiro formato é o mais comum e é usado com tipos e variáveis normais. O segundo é usado com variáveis únicas globais e pseudo-variáveis.
+Ambas as formas são facilmente reconhecidas porque elas incluem as palavras `COLOCAR` e `EM` com um `possessivo` entre elas. O primeiro formato é o mais comum e é usado com tipos e variáveis normais. O segundo é usado com variáveis únicas globais e pseudo-variáveis.
 
-O que é especial sobre funções é que você pode usar suas partes possessivas como se elas fizerem referência a campos reais em um registro. Por exemplo, dadas as funções acima, você pode consultar a "linha inferior da caixa" como se ela já tivesse sido definida no tipo de registro da caixa. Você pode dizer "a altura do polígono" e veremos que ela é calculada quando você precisar. E você pode dizer "a localização do mouse" e eu o compilador busca a lozalização para você, mesmo que a variável mouse não tenha nenhum item "localizalão" dentro dela.
+O que é especial sobre funções é que você pode usar suas partes possessivas como se elas fizerem referência a campos reais em um registro. Por exemplo, dadas as funções acima, você pode obter a `linha inferior da caixa` como se ela já tivesse sido definida no tipo de registro da caixa. Você pode solicitar `a altura do polígono` e veremos que ela é calculada quando você precisar. E você pode dizer `a localização do mouse` e  o compilador busca a lozalização para você, mesmo que a variável mouse não tenha nenhum item `localização` dentro dela.
 
 Nem preciso dizer o quão útil é essa função. Mas tente não abusar dela. Seja sábio.
 
-Veja o tópico "Possessivos" para mais informações.
+Consulte o tópico `Possessivos` para mais informações.
 
 
 ## VARIÁVEIS GLOBAIS
 
-```
-Uma variável "global" é uma variável que é visível para todas as rotinas, e que portanto pode ser usada por qualquer rotina em um programa. As variáveis globais podem ser definidos através de várias maneiras, mas suas definições sempre começam com um artigo definido (O, A, OS, AS). Eis alguns exemplos:
-```
+
+Uma variável "global" é uma variável que é visível para todas as rotinas, e que portanto pode ser usada por qualquer rotina em um programa. As variáveis globais podem ser definidos através de várias maneiras, mas suas definições sempre começam com um artigo definido (`O`, `A`, `OS`, `AS`). Eis alguns exemplos:
+
 ```
 A seta do mouse é um cursor.
 A tecla backspace é uma tecla igual a 8.
@@ -3161,57 +2511,75 @@ O maior número é [um número igual a] 2147483647.
 A `seta do mouse ` será inicializado com o valor 0 (indefinido). A `tecla backspace ` foi inicializada com um tipo explícito (`tecla`) e com o valor `8`. A terceira variável usa um tipo implícito (colocado em colchetes como observação). Portanto, as formas gerais são:
 
 ```
-O <i>nome da variável aqui</i> É UM <i>nome de tipo da variável aqui</i>.
-O <i>nome da variável aqui</i> É UM <i>nome de tipo da variável aqui</i>IGUAL A <i>valor da variável aqui</i>.
-O <i>nome da variável aqui</i> É <i>valor da variável aqui</i>.
+O *nome da variável aqui* É UM *nome de tipo da variável aqui*.
+O *nome da variável aqui* É UM *nome de tipo da variável aqui*IGUAL A *valor da variável aqui*.
+O *nome da variável aqui* É *valor da variável aqui*.
 ```
-```
+
 Uma variável global "única" é um tipo especial de variável global que inclui a definição de de um tipo dentro dela. Exemplo:
-```
+
 ```
 O mouse tem uma tecla chamada botão esquerdo e uma tecla chamada botão direito.
 ```
-```
-Como só existe um mouse, não há necessidade de definir um registro chamado "mouse". Em vez disso, a variável global e seu tipo podem ser definidos em uma única linha.
+
+Como só existe um mouse, não há necessidade de definir um registro chamado `mouse`. Em vez disso, a variável global e seu tipo podem ser definidos em uma única linha.
 Há duas formas que podem ser utilizadas para definir uma variável global de tipo único. A primeira cria um novo tipo de registro, enquanto a segunda estende um registro já existente:
+
 ```
+O *insira o nome da variável aqui* TEM *insira os campos aqui*.
+O *insira o nome da variável aqui* É UM *insira o tipo da variável aqui* COM *insira os campos aqui*.
 ```
-O <i>insira o nome da variável aqui</i> TEM <i>insira os campos aqui</i>.
-O <i>insira o nome da variável aqui</i> É UM <i>insira o tipo da variável aqui</i> COM <i>insira os campos aqui</i>.
-```
-```
+
 Uma variável global única é algo raro. Provavelmente porque são únicas.
-Mas respondem à velha pergunta "quem veio primeiro?". A galinha, claro.
-```
+Mas respondem à velha pergunta "Quem veio primeiro, o ovo ou a galinha?". A galinha, claro.
+
 
 ## TRANSFORMAÇÕES GRÁFICAS
 
-O compilador possui uma série de rotinas para manipulação gráfica. Os objetos gráficos podem ser manipulados de diversas formas. Por exemplo, você pode:
+O compilador possui uma série de rotinas para manipulação gráfica. Os objetos gráficos podem ser manipulados de diversas formas. Por exemplo, você pode usar os comandos:
 
-MOVER alguma coisa PARA CIMA tantos pixels. MOVER alguma coisa PARA BAIXO tantos pixels. MOVER alguma coisa PARA A ESQUERDA tantos pixels.<br/>   MOVER alguma coisa PARA A DIREITA tantos pixels.<br/>   MOVER alguma coisa USANDO um valor x E um valor y. MOVER algo PARA um ponto na tela.
+```
+MOVA alguma coisa PARA CIMA tantos pixels. 
+MOVA alguma coisa PARA BAIXO tantos pixels. 
+MOVA alguma coisa PARA A ESQUERDA tantos pixels.
+MOVA alguma coisa PARA A DIREITA tantos pixels.
+MOVA alguma coisa USANDO um valor x E um valor y.
+MOVA algo PARA um ponto na tela.
+```
 
-O último comando MOVER usa o canto superior esquerdo para efetuar o alinhamento. O compilador também é capaz de:
+O último comando `MOVA` usa o canto superior esquerdo do ponto informado para efetuar o alinhamento do objeto. O compilador também aceita os seguinte comandos:
 
-CENTRALIZAR algo EM um ponto na tela.<br/>   CENTRALIZAR algo EM uma caixa.
+```
+CENTRALIZE algo EM um ponto na tela.
+CENTRALIZE algo EM uma caixa.
+```
 
-Álém das feramentas de posicionamento, existem ferramentas de transformação de objetos. Por exemplo:
+Álém dos comandos de posicionamento, existem comandos de transformação de objetos. Por exemplo:
 
-`INVERTER algo.`<br/>   `ESPELHAR algo.`<br/>   `ROTACIONAR algo.`<br/>  
+`INVERTA algo.`
+`ESPELHE algo.`
+`ROTACIONE algo.` 
 
-O comando INVERTER é vertical. O comando ESPELHAR é horizontal. No momento o comando ROTACIONAR só consegue rotacionar objetos em intervalos de 90 graus. Além disso o comando não funciona com textos. Essa á uma rotina que ainda está sendo aprimorada.
+O comando `INVERTA` inverte objetos verticalmente. O comando `ESPELHE` faz a mesma coisa, mas na  horizontal. No momento o comando `ROTACIONE` só consegue rotacionar objetos em intervalos de 90 graus. Além disso o comando não funciona com textos. Essa á uma rotina que ainda está sendo aprimorada.
 
 As últimas rotinas de transformação de objetos gráficos são:
 
-REDIMENSIONAR algo USANDO uma proporção. REDIMENSIONAR algo USANDO uma porcentagem.
+```
+REDIMENSIONE algo USANDO uma proporção. 
+REDIMENSIONE algo USANDO uma porcentagem.
+```
 
-Veja os tópicos "Desenhando" e "Máscara" para informações adicionais.
+Consulte os tópicos `Desenhando` e `Máscara` para informações adicionais.
 
 
 ## IMPERATIVOS
 
 Um comando "imperativo" é um comando não condicional dentro do corpo de uma rotina. Aqui estão alguns imperativos de amostra retirados do compilador:
 
-`Alerte o usuário.`<br/>   `Subtraia 1 da quantia.`<br/>   `Remova o último pedaço do texto.`<br/>   `Coloque a altura da fonte do texto multiplicada por 2 no x da grade.`
+`Alerte o usuário.`
+`Subtraia 1 da quantia.`
+`Remova o último pedaço do texto.`
+`Coloque a altura da fonte do texto multiplicada por 2 no x da grade.`
 
 Os imperativos normalmente começam com um verbo e terminam com um ponto. Mas no meio, entra quase qualquer coisa. Literais. Termos. Expressões. Frases preposicionais. Tudo junto e misturado.
 
@@ -3219,35 +2587,37 @@ Para criar um imperativo, basta digitar o que você está pensando. Se houver um
 
 Eis os onze imperativos básicos presentes no compilador:
 
-DIGA. Este imperativo é utilizado dentro de rotinas decisoras. Para mais informações, veja o tópico "Decisores".
+`DIGA`. Este imperativo é utilizado dentro de rotinas decisoras. Para mais informações, consulte o tópico `Decisores`.
 
-PERCORRA, REPITA, PARE e SAIA. Usado para em laços de repetição. Consulte "Laços".
+`PERCORRA`, `REPITA`, `PARE` e `SAIA`. Esses comandos s]ao usado em laços de repetição. Consulte a seção `Laços`.
 
-CHAMAR e APONTAR. Usado para chamar bibliotecas e funções do Windows. Consulte "Windows".
+`CHAMAR` e `APONTAR`. Usado para chamar bibliotecas e funções do Windows. Consulte a seção`Windows`.
 
-EMPLOY, PUSH e INTEL. Comandos que espero que você nunca precise utilizar. Veja "Imperativos Especiais".
+`EMPLOY`, `PUSH` e `INTE`L. Comandos que espero que você nunca precise utilizar. Consulte `Imperativos Especiais`.
 
-PRIVATIZAR. Usado somente com "Parâmetros".
+`PRIVATIZE`. Usado somente com "Parâmetros".
 
-Já que os imperativos são apenas palavras que chamam rotinas, você também deve conferir as páginas  "Rotinas", "Procedimentos", "Decisores", "Funções" e "Nomes".
+Já que os imperativos são apenas palavras que chamam rotinas, você também deve conferir as páginas  `Rotinas`, `Procedimentos`, `Decisores`, `Funções` e `Nomes`.
 
 
 ## FLUXO PADRÃO DE ENTRADA E SAÍDA
 
 Você pode trabalhar diretamente com o mouse usando instruções como estas:
 
-`ARMAZENE a posição do mouse EM uma posição.`<br/>   `SE o botão esquerdo do mouse FOR PRESSIONADO, ...`<br/>   `SE o botão direito do mouse FOR LIBERADO, ...`<br/>  
+`ARMAZENE a posição do mouse EM uma localização.`
+`SE o botão esquerdo do mouse FOR PRESSIONADO, ...`
+`SE o botão direito do mouse FOR LIBERADO, ...` 
 
 Mas você provavelmente não vai precisar, a menos que esteja monitorando o mouse, enquanto o usuário arrasta alguma coisa pela tela. Na maioria das vezes, você simplesmente irá responder aos vários eventos do tipo "clique" que são enviados para o seu gerenciador de eventos.
 
 Você pode trabalhar diretamente com o teclado usando instruções como:
 
-`SE a tecla de escape ESTIVER/FOR PRESSIONADA, ...`  
-`SE a tecla shift FOR LIBERADA, ...`
+`SE a tecla Esc FOR PRESSIONADA, ...`  
+`SE a tecla Shift FOR LIBERADA, ...`
 
-Mas novamente, você provavelmente não vai precisar usar esses comandos, porque o Windows funciona melhor se você apenas responder aos eventos de "key down" que forem enviados para seu manipulador de eventos. Você pode encontrar todas as "teclas" globais procurando por `"é uma tecla igual a"`.
+Mas novamente, você provavelmente não vai precisar usar esses comandos, porque o Windows funciona melhor se você apenas responder aos eventos de "tecla pressionada" que forem enviados para seu gerenciador de eventos. Você pode encontrar todas as `teclas` globais procurando por `"é uma tecla igual a"`.
 
-Você pode trabalhar diretamente com a tela usando a variável "quadro da tela" e essa é uma variável global única:
+Você pode trabalhar diretamente com a tela usando a variável `quadro da tela` e essa é uma variável global única:
 
 `A tela tem uma caixa, uma altura de pixel e uma largura de pixel.`
 
@@ -3255,14 +2625,16 @@ Mas você não deveria. Em vez disso, é melhor que você use a tela virtual, pa
 
 `ATUALIZE A TELA.`
 
-Consulte o tópico "Desenhando" para obter mais informações. Mas não hesite em usar "a caixa da tela" e todos os campos da tela ao inicializar suas coisas.
+Consulte o tópico `Desenhando` para obter mais informações. Mas não hesite em usar `a caixa da tela` e todos os campos da tela ao inicializar suas coisas.
 
 
 ## INTERNET
 
 Essas são as variáveis que você precisará usar para obter arquivos da internet:
 
-`Uma URL é um texto.`<br/>   `Um texto de requisição é um texto.`
+`Uma URL é um texto.`
+
+ `Um texto de requisição é um texto.`
 
 Um URL é um Localizador Universal de Recursos, por exemplo `<a href="http://www.osmosian.com">http://www.osmosian.com</a>`, que como você pode ver é apenas uma seqüência de caracteres que segue uma convenção complicada para nomes. Essa convenção foi baseada na tecnologia de análise disponível na época, e que fazia muito sucesso há uns 50 anos.
 
@@ -3274,11 +2646,17 @@ Você pode converter um texto comum em um texto de requisição usando o comando
 
 Você pode acessar um recurso da internet usando o seguinte comando:
 
-`COLOQUE uma URL DENTRO DE um texto.`<br/>  
+`COLOQUE uma URL DENTRO DE um texto.`  
 
 Aqui está um código do nosso programa de exemplo para te lembrar como funcionaque você lembre-se de como funciona
 
-`Coloque "http://images.google.com/images?q=" em uma URL.`<br/>   `Converta o texto do campo de texto em um texto de pesquisa.`<br/>   `Coloque o texto de pesquisa no fim da URL.`<br/>   `COLOQUE a URL DENTRO DE um texto.`<br/>  
+`Coloque "http://images.google.com/images?q=" em uma URL.`
+
+``Converta o texto do campo de texto em um texto de pesquisa.`
+
+`Coloque o texto de pesquisa no fim da URL.`
+
+`COLOQUE a URL DENTRO DE um texto.`  
 
 Lembra? Não tem nem como esquecer. O compilador analisou o texto, pintou o quadro, atualizou a tela, gerando uma verdadeira Obra de arte.
 
@@ -3287,40 +2665,40 @@ Lembra? Não tem nem como esquecer. O compilador analisou o texto, pintou o quad
 
 A maioria das linguagens de programação tem longas listas de palavras chave anômalas, cabalistas, enigmáticas, inescrutáveis, ofuscantes, "reservadas", tais como:
 
-ABSTRACT, PROTECTED, SYNCHRONIZED, TRANSIENT, e VOLATILE.
+`ABSTRACT`, `PROTECTED`, `SYNCHRONIZED`, `TRANSIENT`, e `VOLATILE`.
 
 Essa linguagem funciona de forma diferente. As palavras-chave são termos comuns. Artigos como:
 
-UM, UMA, UNS, UMAS, O, A, OS, AS, ETC.
+`UM`, `UMA`, `UNS`, `UMAS`, `O`, `A`, `OS`, `AS`, etc.
 
 Verbos usados frequentemente:
 
-SER, ESTAR, PODER, FAZER, DEVER, POSSUIR e TER.
+`SER`, `ESTAR`, `PODER`, `FAZER`, `DEVER`, `POSSUIR` e `TER`.
 
 Algumas conjunções:
 
-E, AMBOS(AS), MAS, QUALQUER, QUAISQUER, NENHUM(A), NEM e OU.
+`E`, `AMBOS(AS)`, `MAS`, `QUALQUER`, `QUAISQUER`, `NENHUM(A)`, `NEM` e `OU`.
 
 E muitas preposições:
 
-EM CIMA, COMO, EM, ANTES, ENTRE, VIA, EMBAIXO, POR, DE e várias outras.
+`EM CIMA`, `COMO`, `EM`, `ANTES`, `ENTRE`, `VIA`, `EMBAIXO`, `POR`, `DE` e várias outras.
 
 Alguns operadores aritméticos:
 
-MAIS, MENOS, VEZES, DIVIDIDO POR, EM SEGUIDA, NULO, SIM, NÃO, CHAMADO e IGUAL.
+`MAIS`, `MENOS`, `VEZES`, `DIVIDIDO POR`, `EM SEGUIDA`, `NULO`, `SIM`, `NÃO`, `CHAMADO` e `IGUAL`.
 
 Por último, palavras negativas:
 
-NÃO, NEM, NENHUM, NADA, NUNCA, JAMAIS e similares.
+`NÃO`, `NEM`, `NENHUM`, `NADA`, `NUNCA`, `JAMAIS` e similares.
 
 Espero não ter esquecido nada importante. Na dúvida, consulte o código fonte para exemplos de uso.
 
 
 ## O WINDOWS
 
-```
+
 Se você por acaso precisar utilizar bibliotecas e funções internas do Windows, você pode utilizar comandos semelhantes a este:
-```
+
 ```
 CHAME "NomeDaDll.dll" "NomeDafunção" COM parâmetro E RETORNE algo.
 ```
@@ -3329,22 +2707,22 @@ As cláusulas COM e RETORNANDO são opcionais. Você deve diferenciar maiúscula
 ```
 ADICIONE O BYTE NULO no final de um texto.
 ```
-```
+
 Em outros casos, o Windows nos fornece não nome de uma função, mas o endereço dela. Você pode chamar essas funções usando uma sintaxe similar:
-```
+
 ```
 CHAME um endereço COM esse parâmetro E RETORNE algo.
 ```
-```
+
 Às vezes, o Windows precisa que nós forneçamos o endereço de uma de nossas rotinas para que ele possa interromper nosso previsível fluxo processual em algum
 momento. Você pode usar esta sintaxe para obter o endereço de uma rotina:
-```
+
 ```
 APONTE um ponteiro PARA ROTINA nome de rotina.
 ```
-```
+
 Mas se você for passar o endereço para o Windows, certifique-se de que o cabeçalho da rotina inclua a palavra-chave COMPATIVELMENTE logo após PARA, assim:
-```
+
 ```
 PARA COMPATIVELMENTE ...
 ```
@@ -3361,181 +2739,180 @@ E aqui está uma imagem de uma linha, com suas partes identificadas:
 
 O compilador consegue fazer linhas a partir de dois pontos ou usando quatro coordenadas separadas (2 x e 2 y):
 
-`FAÇA uma linha USANDO essa coordenada E essa outra coordenada.`<br/>   `FAÇA uma linha COM este x E este Y E aquele x E aquele Y.`<br/>  
+`FAÇA uma linha USANDO essa coordenada E essa outra coordenada.`
+`FAÇA uma linha COM este x E este Y E aquele x E aquele Y.`
 
-O compilador também tem quatro funções que colocarão<br/>   "uma LINHA ESQUERDA DA caixa" ou <br/>   "uma LINHA SUPERIOR de uma caixa" ou <br/>   "uma LINHA DO LADO DIREITO de uma caixa" ou <br/>   "uma "LINHA INFERIOR da caixa" <br/>   em uma linha.
+O compilador também tem quatro funções que colocarão   `uma LINHA ESQUERDA DA caixa` ou `uma LINHA SUPERIOR de uma caixa` ou `uma LINHA DO LADO DIREITO de uma caixa` ou uma `LINHA INFERIOR da caixa`  em uma linha.
 
-O compilador consegue CRIAR uma linha. Ou encontrar o CENTRO de uma linha. O compilador é capaz de até mesmo de:
+O compilador consegue `CRIAR` uma linha. Ou encontrar o `CENTRO` de uma linha. O compilador é capaz de até mesmo de:
 
-DIVIDIR uma linha EM uma linha E outra linha.
+`DIVIDIR uma linha EM uma linha E outra linha.`
 
-Bem no meio. ELE dizer se um ponto está em cima de uma linha. Além de conseguir realizar todas as "Transformações Gráficas" habituais em linhas, também.
+Bem no meio. Ele consegue detectar se um ponto está em cima de uma linha. Além de conseguir realizar todas as `Transformações Gráficas` habituais em linhas, também.
 
-Veja o tópico "Spots" para mais informações sobre esses pontos finais.
+Consulte o tópico `Spots` para mais informações sobre esses pontos finais.
 
-## PONTO INICIAL
+`PONTO INICIAL`
 
-## PONTO FINAL
+`PONTO FINAL`
 
-## •
-
-## •
-
+`•`
 
 ## LISTAGEM
 
-Se você é um fã dE compiladores, você vai gostar disso. Se você não for, vire a página.
+Se você é um fã de compiladores, você vai gostar disso. Se você não for, vire a página.
 
-Você pode produzir uma lista criptografada de todas as definições do compilador utilizando o comando `Listar`. A listagem é salva como texto na pasta de origem recebe o nome dessa pasta junto com a extensão ".lst". A interpretação deste arquivo é deixada para você como um exercício.
+Você pode produzir uma lista criptografada de todas as definições do compilador utilizando o comando `Listar`. A listagem é salva como texto na pasta de origem recebe o nome dessa pasta junto com a extensão `.lst`. A interpretação deste arquivo é deixada para você como um exercício.
 
 Mas vou dar-lhe algumas pistas. E algum incentivo.
 
-A listagem consiste em doze seções distintas com os seguintes títulos: tipos, globais, literais, rotinas, tipo índice, índice global, índice literal, índice de rotina índice, índice de utilidade, importações, arquivos fonte e temporizadores. Cada título é seguido de dois pontos para que você possa pular para qualquer seção usando o comando `Encontrar`. Aqui está uma pequena amostra da seção "rotina":
+A listagem consiste em doze seções distintas com os seguintes títulos: tipos, globais, literais, rotinas, tipo índice, índice global, índice literal, índice de rotina índice, índice de utilidade, importações, arquivos fonte e temporizadores. Cada título é seguido de dois pontos para que você possa pular para qualquer seção usando o comando `Encontrar`. Aqui está uma pequena amostra da seção `rotina`:
 
-Eu recomendo que você estude a rotina "listar" no compilador antes. Faça um pequeno programa, use o comando listar, e veja o resultado. Adicione uma linha ou duas, e repita.
-
-Passemos agora ao incentivo.
-
-Se você encontrar algum erro no compilador, mande um email para os criadores e eles lhe enviarão algo bacana como uma camiseta em branco. Se você consegue descobrir como tornar o compilador mais simples sem deixar mais lento, eles vão te enviar uma camiseta personalizada. E se você puder criar uma maneira de fazer o compilador menor, mais rápido e mais poderosa tudo de uma só vez, tenho certeza que eles te enviarão uma camiseta sem manga bordada.
-
-`/routine/create [picture]/yes/no/no/no//4/0/00470A48/
+```
+/routine/create [picture]/yes/no/no/no//4/0/00470A48/
 /variable/parameter/yes/picture/picture/picture/picture/00000008/no/1/no////
 /fragment/prolog/////00000000/00470A48/558BEC/
 /fragment/loop/////00000000/00470A4B//
 /fragment/push address/picture////00000000/00470A4B/8B950800000052/
 /fragment/call internal///allocate memory for [picture]//00000000/00470A52/E8BDA70400/
 /fragment/finalize/////00000000/00470A57//
-/fragment/epilog/////00000000/00470A57/8BE55DC204000000/</p>
-
-<h2 spaces-before="0">LITERAIS</h2>
-
-<pre><code>Um valor "literal" é um valor constante em um programa. O compilador entende sete tipos diferentes de literais, cada um com um formato específico.
-`</pre>
+/fragment/epilog/////00000000/00470A57/8BE55DC204000000/
 ```
+
+Eu recomendo que você estude a rotina `listar` no compilador antes. Faça um pequeno programa, use o comando listar, e consulte o resultado. Adicione uma linha ou duas, e repita.
+
+Passemos agora ao incentivo.
+
+Se você encontrar algum erro no compilador, mande um email para os criadores e eles lhe enviarão algo bacana como uma camiseta em branco. Se você consegue descobrir como tornar o compilador mais simples sem deixar mais lento, eles vão te enviar uma camiseta personalizada. E se você puder criar uma maneira de fazer o compilador menor, mais rápido e mais poderosa tudo de uma só vez, tenho certeza que eles te enviarão uma camiseta sem manga bordada.
+
+
+
+## LITERAIS
+
+Um valor "literal" é um valor constante em um programa. O compilador entende sete tipos diferentes de literais, cada um com um formato específico.
+
 Um "número" literal são dígitos, com um sinal opcional, mas sem espaços ou observações:
-```
-```
-Exemplos: 0, -2147483648, +2147483647
-```
-```
+
+
+Exemplos: `0`,` -2147483648`, `+2147483647`
+
 Uma "Proporção literal" é um número, uma barra e um número sem sinal:
-```
-```
-Exemplos: 335/113, 25946/9545, -19601/13860
-```
-```
+
+Exemplos: `335/113`, `25946/9545`, `-19601/13860`
+
 Um "literal misto" é um literal numérico, um traço e uma proporção sem sinal.
-```
-` Exemplos: 1-1/2, -2-2/3, 3-3/4</p>
 
-<pre><code>Um "texto literal" é uma série de caracteres entre aspas duplas. Se você precisar de uma aspa dupla dentro de uma string, coloque duas ao redor dela e pronto. Assim:
-`</pre>
-`"Este é um texto literal com ""aspas duplas em torno disto"" mas não disto"</p>
+Exemplos: `1-1/2`, `-2-2/3`, `3-3/4`
 
-<pre><code>O único "ponteiro literal" é a palavra-chave NIL. Ele indica um ponteiro vazio ou inválido. Para fazer com que um ponteiro fique vazio (NIL) é só usar o comando ESVAZIAR.
-`</pre>
-```
-Uma "bandeira literal" é uma das palavras-chave SIM ou NÂO. Você pode definir uma bandeira para colocar SIM nela, e você pode LIMPAR uma bandeira para colocar NÃO nela.
-```
-```
-Um "nibble literal" é um <code>$</code> seguido de dígitos hexadecimais. Provavelmente você não precisará utilizá-los. Aqui está uma amostra, de qualquer forma:
-```
- seguido de dígitos hexadecimais. Provavelmente você não precisará utilizá-los. Aqui está uma amostra, de qualquer forma:
-</code>
+Um `texto literal` é uma série de caracteres entre aspas duplas. Se você precisar de uma aspa dupla dentro de uma string, coloque duas ao redor dela e pronto. Assim:
+
+
+`"Este é um texto literal com ""aspas duplas em torno disto"" mas não disto"`
+
+O único "ponteiro literal" é a palavra-chave `NIL`. Ele indica um ponteiro vazio ou inválido. Para fazer com que um ponteiro fique vazio (`NIL`) é só usar o comando `ESVAZIAR`.
+
+Uma `bandeira literal` é uma das palavras-chave `SIM` ou `NÂO`. Você pode definir uma bandeira para colocar `SIM` nela, e você pode `LIMPAR` uma bandeira para colocar `NÃO` nela.
+
+Um `nibble literal` é um `$` seguido de dígitos hexadecimais. Provavelmente você não precisará utilizá-los. Aqui está uma amostra, de qualquer forma:
+
 ```
 $DED0FEDE
 ```
 
 ## VARIÁVEIS LOCAIS
 
-```
 Uma "variável local" é uma variável que é propriedade privada de uma rotina. Variáveis locais não podem ser vistas ou modificadas por qualquer outra rotina. A menos que, claro, você as passe para outras rotinas como parâmetros.
-```
-```
+
 O compilador cria uma nova cópia de cada variável local, a cada vez que uma rotina é chamada. A variável é inicializada com o valor 0. O que significa que uma rotina pode chamar a si mesa e tudo ainda vai funcionar. Isto é chamado de "recursão", e se você não sabe o que isso significa, não precisa disso. O compilador se lira das variáveis locais à medida que cada rotina é completada, para que elas não ocupem memória à toa.
-```
-```
-Você cria uma nova variável local em uma rotina sempre que usa um artigo indefinido (A, AN, AN, ANOTHER ou SOME) em um comando. Por exemplo:
-```
-```
-Coloque a localização do mouse em outra localização.
-Coloque a coordenada esquerda da tela em uma coordenada esquerda da caixa.
-Coloque 101 em outro número de curso.
-```
-```
-No primeiro exemplo, a frase "uma localização" faz com que eu faça uma nova variável local chamada "a localização". Em seguida, o compilador põe a localização atual do mouse na variável.
-```
-```
+
+Você cria uma nova variável local em uma rotina sempre que usa um artigo indefinido (`A`, `AN`, `ANOTHER` ou `SOME`) em um comando. Por exemplo:
+
+`Coloque a localização do mouse em outra localização.`
+`Coloque a coordenada esquerda da tela em uma coordenada esquerda da caixa.`
+`Coloque 101 em outro número de curso.`
+
+No primeiro exemplo, a frase `uma localização` faz com que eu faça uma nova variável local chamada "a localização". Em seguida, o compilador põe a localização atual do mouse na variável.
+
 O segundo exemplo coloca a coordenada esquerda da tela em uma nova coordenada esquerda da caixa. O restante das coordenadas da caixa — superior, direita e inferior — estão definidas como zero.
-```
-```
+
 O terceiro exemplo coloca um literal 101 em uma nova variável local do tipo número.
-Esta variável é definida com adjetivos anteriores ao nome do tipo, então ela pode ser referenciada pelo seu nome completo, "O outro número de curso", ou por apelido, "o outro curso". Você pode ler mais sobre nomes sob o tópico "Nomes".
-```
-Veja também a página "Laços", onde uma variável local e um decisor nos permite fazer "laços contados" sem adicionar novas palavras-chave ao compilador.
+Esta variável é definida com adjetivos anteriores ao nome do tipo, então ela pode ser referenciada pelo seu nome completo, `O outro número de curso`, ou por apelido, `o outro curso`. Você pode ler mais sobre nomes sob o tópico `Nomes`.
+
+Consulte também a página `Laços`, onde uma variável local e um decisor nos permite fazer `laços contados` sem adicionar novas palavras-chave ao compilador.
 
 
 ## LAÇOS
 
-Os comandos específicos para laços são PERCORRA, REPITA, INTERROMPA e SAIA.
+Os comandos específicos para laços são `PERCORRA`, `REPITA`, `INTERROMPA` e `SAIA`.
 
-O comando PERCORRA não faz nada a não ser indicar o começo do laço. O comando REPITA volta para o comando PERCORRA, se houver um. Se não houver, o comando volta para o topo da rotina. O comando INTERROMPA sai do LAÇO e prossegue para o comando logo após o último comando REPITA. Se não houver nenhum comando REPITA, o comando vai fazer a mesma coisa que o comando SAIA. Você só pode usar um comando PERCORRA em cada rotina, mas não há limites para a quantidade de REPITA, INTERROMPA ou SAIA.
+O comando `PERCORRA` não faz nada a não ser indicar o começo do laço. O comando `REPITA` volta para o comando `PERCORRA`, se houver um. Se não houver, o comando volta para o topo da rotina. O comando `INTERROMPA` sai do LAÇO e prossegue para o comando logo após o último comando `REPITA`. Se não houver nenhum comando `REPITA`, o comando vai fazer a mesma coisa que o comando `SAIA`. Você só pode usar um comando `PERCORRA` em cada rotina, mas não há limites para a quantidade de `REPITA`, `INTERROMPA` ou `SAIA`.
 
 O comando que começa com "Se um contador tiver passado do máximo" chama um decisor especial que avança o conrador e verifica o mesmo logo após. Como o contador é uma nova variável local, quando a rotina é iniciada ele começa valendo zero.
 
-Observe que você pode utilizar os comandos PERCORRER, REPETIR e INTERROMPER em um decisor, mas você não pode usar o comando SAIR porque isso interrompe o fluxo de decisão da rotina. Por isso você precisa tomar cuidado para não sair sem querer de um decisor, também. Para sair de um decisor, utilize os comandos DIGA SIM ou DIGA NÃO.
+Observe que você pode utilizar os comandos `PERCORRA`, `REPITA` e `INTERROMPA` em um decisor, mas você não pode usar o comando `SAIA` porque isso interrompe o fluxo de decisão da rotina. Por isso você precisa tomar cuidado para não sair sem querer de um decisor, também. Para sair de um decisor, utilize os comandos `DIGA SIM` ou `DIGA NÃO`.
 
 ```
 Para fazer um laço em torno de um número máximo:
-```
-```
+\ coisas que você quer fazer antes do loop
 Percorra.
-```
-```
+\ coisas que você deseja fazer pelo menos uma vez
 Se um contador tiver passado do valor máximo, pare.
 Se [queremos saltar para fora do laço], pare.
 Se [queremos saltar de toda a rotina], saia.
-```
-```
+\ coisas que você pode querer fazer ou não
 Repita.
+\ coisas que você quer fazer depois do loop
 ```
 ```
 seu programa
 ```
-```
-\ coisas que você quer fazer antes do loop
-```
-```
-\ coisas que você quer fazer depois do loop
-```
-```
-\ coisas que você deseja fazer pelo menos uma vez
-```
-```
-\ coisas que você pode querer fazer ou não
-```
+
+
 
 ## FITA CREPE
 
 Os pintores da vida real geralmente usam fita crepe, dessa forma eles não pintam onde não querem. Da mesma forma que os artistas, você pode usar as rotinas de "máscara" do compilador para restringir a rotina de desenho do compilador. Os comandos são esses:
 
-`PROTEJA O INTERIOR disso.`<br/>   `PROTEJA A PARTE DE DENTRO disso.`<br/>   `PROTEJA A PARTE INTERNA disso.`<br/>   `PROTEJA O EXTERIOR disso.`<br/>   `PROTEJA A PARTE DE FORA disso.`<br/>   `PROTEJA A PARTE EXTERNA disso.`<br/>  
+`PROTEJA O INTERIOR disso.`
+`PROTEJA A PARTE DE DENTRO disso.`
+`PROTEJA A PARTE INTERNA disso.`
+`PROTEJA O EXTERIOR disso.`
+`PROTEJA A PARTE DE FORA disso.`
+`PROTEJA A PARTE EXTERNA disso.`
 
-Onde "isto" e "isto" podem ser caixas, elipses, polígonos ou caixas arredondadas. Perceba, no entanto, que a infelizmente só conseguimos usar uma "fita boa" em caixas. Em todos os outros lugares só conseguimos usar uma fita ruim, então não espere perfeição com nada a não ser caixas.
+Onde `disSo` podem ser caixas, elipses, polígonos ou caixas arredondadas. Perceba, no entanto, que a infelizmente só conseguimos usar uma "fita boa" em caixas. Em todos os outros lugares só conseguimos usar uma fita ruim, então não espere perfeição com nada a não ser caixas.
 
 Qualquer fita que você aplica permanece aplicada, então depois você provavelmente vai querer usar um desses comandos:
 
-`DESPROTEJA O INTERIOR disso.`<br/>   `DESPROTEJA A PARTE DE DENTRO disso.`<br/>   `DESPROTEJA A PARTE INTERNA disso.`<br/>   `REMOVA A PROTEÇÃO DO INTERIOR disso.`<br/>   `REMOVA A PROTEÇÃO DA PARTE DE DENTRO disso.`<br/>   `REMOVA A PROTEÇÃO DA PARTE INTERNA disso.`<br/>   `DESPROTEJA O EXTERIOR disso.`<br/>   `DESPROTEJA A PARTE DE FORA disso.`<br/>   `DESPROTEJA A PARTE EXTERNA disso.`<br/>   `REMOVA A PROTEÇÃO DO EXTERIOR disso.`<br/>   `REMOVA A PROTEÇÃO DA PARTE DE FORA disso.`<br/>   `REMOVA A PROTEÇÃO DA PARTE EXTERNA disso.`<br/>  
+`DESPROTEJA O INTERIOR disso.`
+`DESPROTEJA A PARTE DE DENTRO disso.`
+`DESPROTEJA A PARTE INTERNA disso.`
+`REMOVA A PROTEÇÃO DO INTERIOR disso.`
+`REMOVA A PROTEÇÃO DA PARTE DE DENTRO disso.`
+`REMOVA A PROTEÇÃO DA PARTE INTERNA disso.`
+`DESPROTEJA O EXTERIOR disso.`
+`DESPROTEJA A PARTE DE FORA disso.`
+`DESPROTEJA A PARTE EXTERNA disso.`
+`REMOVA A PROTEÇÃO DO EXTERIOR disso.`
+`REMOVA A PROTEÇÃO DA PARTE DE FORA disso.`
+`REMOVA A PROTEÇÃO DA PARTE EXTERNA disso.`
+
 
 Ou para agilizar o serviço:
 
-`DESPROTEJA TUDO.<br/>  ` `REMOVA A PROTEÇÃO DE TUDO.`
+`DESPROTEJA TUDO.`
+`REMOVA A PROTEÇÃO DE TUDO.`
 
 para começar do zero. Para conveniência, você pode remover toda a fita existente e colocar uma nova fita ao mesmo tempo com instruções como as seguintes. Acredite se quiser, estas são as que são mais frequentemente usadas:
 
-`PROTEJA SOMENTE O INTERIOR disso.`<br/>   `PROTEJA SOMENTE A PARTE DE DENTRO disso.`<br/>   `PROTEJA SOMENTE A PARTE INTERNA disso.`<br/>   `PROTEJA SOMENTE O EXTERIOR disso.`<br/>   `PROTEJA SOMENTE A PARTE DE FORA disso.`<br/>   `PROTEJA SOMENTE A PARTE EXTERNA disso.`<br/>  
+`PROTEJA SOMENTE O INTERIOR disso.`
+`PROTEJA SOMENTE A PARTE DE DENTRO disso.`
+`PROTEJA SOMENTE A PARTE INTERNA disso.`
+`PROTEJA SOMENTE O EXTERIOR disso.`
+`PROTEJA SOMENTE A PARTE DE FORA disso.`
+`PROTEJA SOMENTE A PARTE EXTERNA disso.`
 
-Note que se você estiver desenhando e nada estiver aparecendo, isso provavelmente está acontecendo porque você está usando a fita crepe onde não quer, ou você esqueceu de ATUALIZAR A TELA conforme descrito no tópico "Desenhar".
+Note que se você estiver desenhando e nada estiver aparecendo, isso provavelmente está acontecendo porque você está usando a fita crepe onde não quer, ou você esqueceu de `ATUALIZAR A TELA` conforme descrito no tópico `Desenhar`.
 
 
 ## GERENCIAMENTO DE MEMÓRIA
@@ -3544,63 +2921,63 @@ O compiladorgerencia toda a memória necessária para os tipos de dados estátic
 
 Mas quando você define um tipo dinâmico de dados, como uma "coisa", você se torna o único responsável por qualquer memória usada pelo tipo.
 
-Normalmente, você vai programar uma rotina CRIAR para inicializar cada tipo dinâmico que você definir. Nessa rotina, você atribuirá memória para a coisa. O esquema de funcionamento é mostrado abaixo:
+Normalmente, você vai programar uma rotina `CRIAR` para inicializar cada tipo dinâmico que você definir. Nessa rotina, você atribuirá memória para a coisa. O esquema de funcionamento é mostrado abaixo:
 
-`ALOQUE MEMÓRIA PARA algo.`<br/>   `ALOJE MEMÓRIA PARA algo.`<br/>   `ATRIBUA MEMÓRIA PARA algo.`<br/>   `RESERVE MEMÓRIA PARA algo.`<br/>   `SEPARE MEMÓRIA PARA algo.`<br/>  
+`ALOQUE MEMÓRIA PARA algo.`
+`ALOJE MEMÓRIA PARA algo.`
+`ATRIBUA MEMÓRIA PARA algo.`
+`RESERVE MEMÓRIA PARA algo.`
+`SEPARE MEMÓRIA PARA algo.` 
 
 Você também pode codificar uma rotina DESTRUIR para cada tipo, com uma linha como:
 
-`DESALOQUE A MEMÓRIA DE algo.`<br/>   `DESALOJE A MEMÓRIA DE algo.`<br/>   `REMOVA A MEMÓRIA DE algo.`<br/>   `LIMPE A MEMÓRIA DE algo.`<br/>   `ESVAZIE A MEMÓRIA DE algo.`<br/>  
+`DESALOQUE A MEMÓRIA DE algo.`
+`DESALOJE A MEMÓRIA DE algo.`
+`REMOVA A MEMÓRIA DE algo.`
+`LIMPE A MEMÓRIA DE algo.`
+`ESVAZIE A MEMÓRIA DE algo.`
 
-Mas se você não quiser, pode usar a rotina padrão do sistema. Apesar da rotina não ser ececutada automaticamente, ela existe, basta usar o comando certo. As rotinas DESTRUA que podem ser chamadas desta maneira:
+Mas se você não quiser, pode usar a rotina padrão do sistema. Apesar da rotina não ser ececutada automaticamente, ela existe, basta usar o comando certo. As rotinas `DESTRUA` que podem ser chamadas desta maneira:
 
 `DESTRUA algo.`
 
-Observe quea rotina DESTRUA não só destrói a coisa em si, mas também quaisquer outras coisas que estejam dentro da coisa, como campos e listas. A menos que, que você defina esses campos como "(REFERÊNCIA)".
+Observe quea rotina `DESTRUA` não só destrói a coisa em si, mas também quaisquer outras coisas que estejam dentro da coisa, como campos e listas. A menos que, que você defina esses campos como "`(REFERÊNCIA)`".
 
 Um bom exemplo pode ser encontrado no caderno onde uma "página" é definida como uma coisa com algumas "formas" nela. Voce encontrará rotinas que criam páginas e formas, mas não encontrará nenhuma rotina específica para destruí-las. Elas são parte do compilador. Entao, quando destruímos uma página, nós destruímos todas as formas dentro dela ao mesmo tempo. Exceto, é claro, para a "forma de edição", que é uma referência.
 
 
 ## NOMES
 
-```
+
 Ao contrário dos compiladores de era neandertal, as regras para nomes são amplas e flexíveis.
-```
-```
+
 Em geral, um nome pode ser uma palavra ou vároas, e pode começar com letras, dígitos e qualquer símbolo que eu não sejam sinais de pontuação, como um ponto, uma vírgula, um ponto e vírgula ou dois pontos.
 Um nome é geralmente um substantivo, ou um substantivo com um ou mais adjetivos.
 Você não deve usar artigos, verbos, conjunções ou preposições em nomes.
-```
-```
-Nomes de tipo geralmente contém de uma a três palavras. Como "byte" ou "nome do arquivo".
-```
-```
-Os nomes dos campos geralmente são apenas um nome de tipo. Como "número" ou "texto". Mas eles também podem incluir adjetivos como "número total" ou "texto do primeiro nome". A parte do adjetivo pode ser usada como um "apelido" se não causar ambiguidade.
-```
-```
-Nomes globais são frequentemente um tipo seguido por um adjetivo: a "tecla shift".
-```
-Nomes de parâmetros parecem nomes de campo. Um tipo, com ou sem adjetivos. Uma "caixa", por exemplo, ou uma "cor de borda". Também neste caso o apelido funciona.
 
-```
-Os nomes de procedimentos iniciam com um verbo. Em seguida, uma série de parâmetros (com artigos indefinidos), frases e talvez um qualificador no final. Tal como "remova o último byte de um texto" ou "centralize um ponto em uma caixa (horizontalmente)".
-```
-```
-Nomes de função sempre começam com "PONHA" e terminam com "EM/DENTRO" e um nome de tipo.
-Com uma frase possessiva no meio. Como "coloque a linha do topo que faz parte da caixa em uma linha".
-```
-```
-Nomes de decisores parecem nomes de procedimentos, exceto pelo fato do verbo normalmente aparecer em algum lugar no meio. "Como em, "um número É menor que outro número".
-```
-```
+Nomes de tipo geralmente contém de uma a três palavras. Como `byte` ou `nome do arquivo`.
+
+Os nomes dos campos geralmente são apenas um nome de tipo. Como `número` ou `texto`. Mas eles também podem incluir adjetivos como `número total` ou `texto do primeiro nome`. A parte do adjetivo pode ser usada como um `apelido` se não causar ambiguidade.
+
+Nomes globais são frequentemente um tipo seguido por um adjetivo: a `tecla shift`.
+
+Nomes de parâmetros parecem nomes de campo. Um tipo, com ou sem adjetivos. Uma `caixa`, por exemplo, ou uma `cor de borda`. Também neste caso o apelido funciona.
+
+
+Os nomes de procedimentos iniciam com um verbo. Em seguida, uma série de parâmetros (com artigos indefinidos), frases e talvez um qualificador no final. Tal como `remova o último byte de um texto` ou `centralize um ponto em uma caixa (horizontalmente)`.
+
+Nomes de função sempre começam com `PONHA` e terminam com `EM/DENTRO` e um nome de tipo. Com uma frase possessiva no meio. Como `coloque a linha do topo que faz parte da caixa em uma linha`.
+
+Nomes de decisores parecem nomes de procedimentos, exceto pelo fato do verbo normalmente aparecer em algum lugar no meio. Como em, `um número É menor que outro número`.
+
 Os nomes de variáveis locais seguem o padrão de parâmetro. O compilador cria uma variável local sempre que encontra um nome com um artigo indefinido na frente de todo o corpo de uma rotina.
-```
+
 
 ## PARÂMETROS
 
-```
+
 Uma variável se torna um "parâmetro" quando ela é passada para uma rotina. Para utilizar os parâmetros em uma rotina, você precisa informar a quantidade e os tipos de parâmetros no cabeçalho da rotina. Eis alguns cabeçalhos de rotina de amostra:
-```
+
 ```
 Para adicionar um número a outro número:
 Para decidir se uma localização está dentro de alguns polígonos:
@@ -3610,23 +2987,21 @@ A primeira rotina é um procedimento que espera dois parâmetros: `um número` e
 
 A segunda rotina é apenas um decisor comum. Ela também espera dois parâmetros, `uma localização` e `alguns polígonos`. Ambos os parâmetros são somente de entrada.
 
-```
-A terceira rotina é uma função com dois parâmetros: "uma elipse" e "uma localização".
+
+A terceira rotina é uma função com dois parâmetros: `uma elipse` e `uma localização`.
 A elipse é o parâmetro de entrada e a localização é o parâmetro de saída.
-```
-```
+
 As definições de parâmetros são fáceis de identificar porque sempre começam com um
-artigo indefinido (UM, UMA, UNS, UMAS ou ALGUM, ALGUMA, ALGUNS, ALGUMAS) seguido por um substantivo. Você pode ler mais sobre nomes sob o tópico "Nomes".
-```
-```
+artigo indefinido (`UM`, `UMA`, `UNS`, `UMAS` ou `ALGUM`, `ALGUMA`, `ALGUNS`, `ALGUMAS`) seguido por um substantivo. Você pode ler mais sobre nomes sob o tópico `Nomes`.
+
 Observe que quando parâmetros são passados para rotinas, o compilador passa o parâmetro original, e não cópias. É por isso que você pode usá-las na entradas, saída ou nos dois. Às vezes, no entanto, você queira manipular o valor de um parâmetro sem afetar a variavel original. Neste caso, você pode utilizar o seguinte comando:
-```
+
 ```
 PRIVATIZE um parâmetro.
 ```
-```
-E o compilador fará uma cópia do parâmetro para você. Conforme explicado anteriormente, você continuará utilizando o mesmo nome do parâmetro, já que a variável original será renomeada apenas temporariamente. A variável original receberá o sufixo "original" no nome dela, para que você ainda possa acessá-la se precisar.
-```
+
+E o compilador fará uma cópia do parâmetro para você. Conforme explicado anteriormente, você continuará utilizando o mesmo nome do parâmetro, já que a variável original será renomeada apenas temporariamente. A variável original receberá o sufixo `original` no nome dela, para que você ainda possa acessá-la se precisar.
+
 
 ## IMAGENS
 
@@ -3638,118 +3013,105 @@ Aqui estão duas imagens de amostra:
 
 Peço desculpa pela qualidade destas imagens. Eu as descobri nos antigos arquivos quando eu estava pesquisando sobre a fundação da Sociedade Osmosiana.
 
-Você pode criar uma imagem de várias maneiras. Você pode carregar um a partir de um endereço que contenha uma imagem BMP, JPG, GIF ou alguma outra imagem no formato padrão. Você pode colocar uma imagem em um depósito (buffer) e usar esse buffer como a fonte para sua imagem. Ou você pode pegar uma foto na internet através de uma URL. Você também pode criar uma imagem desenhando alguma coisa e, em seguida, "extraindo" a parte que você quer. Este é o formato geral:
+Você pode criar uma imagem de várias maneiras. Você pode carregar um a partir de um endereço que contenha uma imagem `BMP`, `JPG`, `GIF` ou alguma outra imagem no formato padrão. Você pode colocar uma imagem em um depósito (buffer) e usar esse buffer como a fonte para sua imagem. Ou você pode pegar uma foto na internet através de uma URL. Você também pode criar uma imagem desenhando alguma coisa e, em seguida, "extraindo" a parte que você quer. Este é o formato geral:
 
 `CRIE uma imagem DE algo.`
 
-Assim que você tiver uma imagem, você pode DESENHÁ-la Ou aplicar as "Transformações Gráficas" nela. Ou usá-la como um modelo para uma verdadeira obra de arte, como fizemos com o programa de exemplo `como pintar`.
+Assim que você tiver uma imagem, você pode DESENHÁ-la Ou aplicar as `Transformações Gráficas` nela. Ou usá-la como um modelo para uma verdadeira obra de arte, como fizemos com o programa de exemplo `como pintar`.
 
 
 ## POLÍGONOS
 
 Existem duas definições importantes sobre polígonos no compilador:
 
-`Um polígono é uma coisa com alguns vértices.`<br/>   `Um vértice é uma coisa com uma coordenada x, uma coordenada y, e uma localização na coordenada x.`<br/>  
+`Um polígono é uma coisa com alguns vértices.`
+`Um vértice é uma coisa com uma coordenada x, uma coordenada y, e uma localização na coordenada x.`  
 
 Polígonos e vértices são "coisas" e, portanto, ao contrário dos outros objetos gráficos, eles têm que ser criados e destruídos. Você também precisa acrescentar os seus vértices aos seus polígonos. Exemplos:
 
-`CRIE um polígono.`<br/>   `CRIE um vértice A PARTIR DE uma localização.`<br/>   `ACRESCENTE um vértice A um polígono.`<br/>   `DESTRUA um polígono.`<br/>  
+`CRIE um polígono.`
+`CRIE um vértice A PARTIR DE uma localização.`
+`ACRESCENTE um vértice A um polígono.`
+`DESTRUA um polígono.`
 
 Ao usar o comando `DESTRUA um polígogo`, o compilador se livra tanto do polígono quanto dos vértices associados a ele.
 
-Uma vez que você criar um polígono, você poderá DESENHÁ-lo. Você também pode realizar todas as habituais "Transformações Gráficas" nele. Você também pode usar o comando SUAVIZAR, e o compilador vai tentar arredondar o seu polígono, transformando cantos em curvas.  Aqui está um polígono de amostra, com a versão normal e a suavizada:
+Uma vez que você criar um polígono, você poderá DESENHÁ-lo. Você também pode realizar todas as habituais `Transformações Gráficas` nele. Você também pode usar o comando `SUAVIZAR`, e o compilador vai tentar arredondar o seu polígono, transformando cantos em curvas.  Aqui está um polígono de amostra, com a versão normal e a suavizada:
 
 Muito bem! Dessa forma fica fácil desenhar ondas sinoidais e outras formas geométricas sem usar um número real sequer. Eu gostaria que o Leopold estivesse aqui pra ver isso.
 
-##
-###### VÉRTICE
+```
+VÉRTICE
 
-##
-###### VÉRTICE
+VÉRTICE
 
-##
-###### VÉRTICE
+VÉRTICE
 
-## •
+•
 
-## •
+•
 
-## •
+ •
 
-## •
-###### VÉRTICE
+•
+VÉRTICE
 
-##
-###### DEPOIS
+DEPOIS
 
-##
-###### SUAVIZADO
-
+SUAVIZADO
+```
 
 ## POSSESSIVOS
 
-```
+
 Os Possessivos são normalmente usados para acessar campos nos registros. Conforme o exemplo abaixo:
+
 ```
+*nome do campo* QUE FAZ PARTE DO *nome do registro*.
 ```
-<i>nome do campo</i> QUE FAZ PARTE DO <i>nome do registro</i>.
-```
-```
+
+
 Mas eles também podem ser usados para fazer referência a uma função:
+
+
 ```
-```
-<i>nome da função</i> QUE FAZ PARTE DO <i>nome da coisa</i>.
+*nome da função* QUE FAZ PARTE DO *nome da coisa*.
 ```
 Se o compilador não conseguir encontrar o campo dentro do primeiro nível registro, ele verifica se existe algum campo do registro que também seja um registro. E se encontrar, usa esse campo.
 
-```
 Mas a primeira coisa o compilador faz ao encontrar um possessivo é verificar a existência de três termos específicos.
 O primeiro é o seguinte:
-```
+
+
 ```
 um ALVO que faz parte de um ponteiro
 ```
-```
+
+
 Este forma é usado apenas com ponteiros. Isso diz que você quer saber para que item o ponteiro aponta. "Um ponteiro de byte", por exemplo, refere-se ao endereço de um byte. "O alvo que faz parte do ponteiro de byte" se refere aos dados no byte.
-```
-```
+
 Os outros possessivos especiais retornam "meta-dados" — dados a respeito dos dados.
 Um deles lhe traz o tamanho, em bytes, e o outro lhe traz o endereço:
+
 ```
+*MAGNITUDE* que faz parte do *nome da variável*.
+*PARADEIRO* que faz parte do *nome da variável*.
 ```
-<i>MAGNITUDE</i> que faz parte do <i>nome da variável</i>.
-<i>PARADEIRO</i> que faz parte do <i>nome da variável</i>.
-```
-```
+
 Você provavelmente não precisará destes com muita frequência, por isso que esses nomes esquisitos foram escolhidos.
-```
-```
-Note that the proper possessive of, say, JESUS, is JESUS', not JESUS'S.
-```
+
 
 ## IMPRIMINDO
 
-```
-A rotina de impressão precisa ser aprimorada. Eis alguns detalhes da implementação:
-```
-```
-(1) O compilador sempre envia o trabalho de impressão para a impressora padrão do sistema;
-(2) O compilador faz uso das rotinas habituais de desenho.
-(3) O compilador verifica se o texto que aparece na página de impressão é igual ao conteúdo que está na tela.
-```
-```
-Aqui está uma rotina típica de impressão:
-```
-O comando `Inicie uma página` define o quadro (área de desenho) atual como o quadro da impressora. O comando `Apronte a página` coloca o conteúdo da página de volta ao quadro da tela virtual. Então posicione quaisquer mensagens de status que você desejar exibir antes ou após essas chamadas.
 
-```
-Você pode usar o comando <code>iniciar uma página vertical</code> para ser mais explícito, e você pode <code>iniciar uma página horizontal</code> para trabalhar em modo paisagem. As várias "páginas" são na verdade caixas, inicializadas pela rotina "inicie", que você pode usar para posicionar suas coisas.
-```
- para ser mais explícito, e você pode iniciar uma página horizontal para trabalhar em modo paisagem. As várias "páginas" são na verdade caixas, inicializadas pela rotina "inicie", que você pode usar para posicionar suas coisas.
-</code>
-```
-Basicamente é só isso.
-```
+A rotina de impressão precisa ser aprimorada. Eis alguns detalhes da implementação:
+
+1. O compilador sempre envia o trabalho de impressão para a impressora padrão do sistema;
+2. O compilador faz uso das rotinas habituais de desenho.
+3. O compilador verifica se o texto que aparece na página de impressão é igual ao conteúdo que está na tela.
+
+Aqui está uma rotina típica de impressão:
+
 ```
 Para imprimir coisas:
 Inicie a impressão.
@@ -3760,232 +3122,240 @@ Apronte a página.
 Se [ faltar alguma coisa], repita.
 Termine de imprimir.
 ```
+
 ```
 seu programa
 ```
+
+O comando `Inicie uma página` define o quadro (área de desenho) atual como o quadro da impressora. O comando `Apronte a página` coloca o conteúdo da página de volta ao quadro da tela virtual. Então posicione quaisquer mensagens de status que você desejar exibir antes ou após essas chamadas.
+
+
+Você pode usar o comando `inicie uma página vertical` para ser mais explícito, e você pode `iniciar uma página horizontal` para trabalhar em modo paisagem. As várias `páginas` são na verdade caixas, inicializadas pela rotina `inicie`, que você pode usar para posicionar suas coisas.
+
+Basicamente é só isso.
+
 
 ## PROCEDIMENTOS
 
 Um "procedimento" é uma rotina que faz algo para você. Eis alguns cabeçalhos de procedimento de amostra:
 
-`Para converter um número em um texto:`<br/>   `Para centralizar uma caixa dentro de outra caixa (horizontalmente):`<br/>   `Para ocultar o cursor:`<br/>  
+`Para converter um número em um texto:`
+`Para centralizar uma caixa dentro de outra caixa (horizontalmente):`
+`Para ocultar o cursor:` 
 
 O formato geral é:
 
-PARA fazer alguma coisa:
+`PARA fazer alguma coisa:`
 
-Os cabeçalhos de procedimento sempre começam com a palavra PARA, e sempre terminam com de dois-pontos. O "alguma coisa" entre elas segue as regras normais para nomes de rotina.
+Os cabeçalhos de procedimento sempre começam com a palavra `PARA`, e sempre terminam com de dois-pontos. O `alguma coisa` entre elas segue as regras normais para nomes de rotina.
 
-O conteúdo do "corpo" dos procedimentos são compostos por declarações: condicionais e imperativas, incluindo os imperativos internos como PRIVATIZE, PERCORRA, REPITA, PARE, e SAIA. No entanto, não se pode utilizar os comandos DIGA SIM e DIGA NÃO num procedimento.
+O conteúdo do `corpo` dos procedimentos são compostos por declarações: condicionais e imperativas, incluindo os imperativos internos como `PRIVATIZE`, `PERCORRA`, `REPITA`, `PARE`, e `SAIA`. No entanto, não se pode utilizar os comandos `DIGA SIM` e `DIGA NÃO` num procedimento.
 
-O primeiro cabeçalho de amostra acima inclui um verbo, uma preposição e dois parâmetros. O verbo é "converter" e a preposição é "em". Os parâmetros são "um número" e "um texto".
+O primeiro cabeçalho de amostra acima inclui um verbo, uma preposição e dois parâmetros. O verbo é `converter` e a preposição é `em`. Os parâmetros são `um número` e `um texto`.
 
-O segundo procedimento é parecido com o primeiro, mas existe um qualificador: "(horizontalmente)".
+O segundo procedimento é parecido com o primeiro, mas existe um qualificador: "`(horizontalmente)`".
 
-A terceira rotina é um verbo seguido de um substantivo: "o cursor".
+A terceira rotina é um verbo seguido de um substantivo: `o cursor`.
 
-Quando um substantivo estiver acompanhado de um artigo definido em um cabeçalho de rotina, ele geralmente será interpretado como uma variável global única, como por exemplo o comando `desenhe a barra` que está dentro do arquivo `ambiente de trabalho`. Mas eles também podem ser utilizados para se referir a uma pseudo-variável que não está definida precisamente no seu código. Como "o cursor" no exemplo acima, ou "o último byte" na rotina "remova o último byte de um texto".
+Quando um substantivo estiver acompanhado de um artigo definido em um cabeçalho de rotina, ele geralmente será interpretado como uma variável global única, como por exemplo o comando `desenhe a barra` que está dentro do arquivo `ambiente de trabalho`. Mas eles também podem ser utilizados para se referir a uma pseudo-variável que não está definida precisamente no seu código. Como `o cursor` no exemplo acima, ou `o último byte` na rotina `remova o último byte de um texto`.
 
 
 ## NÚMEROS ALEATÓRIOS
 
 *"Para fazer um sorteio são lançados os dados, mas quem determina o reultado é o Senhor." [Provérbios 16:33](https://www.bibliaonline.com.br/acf/pv/16/33)* Então, eu acho que teremos que desistir dessa ideia de números aleatórios e nos contentar com números pseudo-aleatórios. Que é o que esse consegue gerar (não só esse, mas a maioria dos compiladores).
 
-```
 Na verdade, o compilador gera a mesma sequência de números "aleatórios" toda vez, a não ser que você <a href="https://pt. wikipedia. org/wiki/Semente_aleat%C3%B3ria">semeie</a> o gerador de números aleatórios com um valor inicial diferente (esse comportamento também se repete em outros compiladores).
 Enfim, para semear o gerador de números aleatórios, use o comando:
-```
+
 ```
 SEMEIE O GERADOR DE NÚMERO ALEATÓRIOS.
 ```
-```
+
 Mas não pense que você vai sempre ter certeza do resultado. Ninguém sabe. Exceto o Senhor, é claro.
-```
-```
+
 A rotina de números aleatórios mais básica é esta:
-```
+
 ```
 ESCOLHA um número.
 ```
-```
-O que retorna um número entre 0 e 2147483647. Você também pode fazer assim:
-```
+
+O que retorna um número entre `0` e `2147483647`. Você também pode fazer assim:
+
+
 ```
 ESCOLHA um número ENTRE o número mínimo E o número máximo.
 ESCOLHA um número ENTRE uma quantidade DE outro número.
 (Por exemplo: Escolha um número entre 6 de 60).
 ```
-```
+
 Você também pode usar a aleatoriedade ao escolher posições na tela:
-```
+
+
 ```
 ESCOLHA um lugar em QUALQUER LUGAR dentro de uma caixa.
 ESCOLHA uma localização NO RAIO DE uma distância DE outra localização.
 ```
-```
+
 Rotinas como essa estão sempre sendo adicionadas e aperfeiçoadas então é sempre bom dar uma olhada no código fonte do compilador. Basta procurar por "escolha" e você provavelmente encontrará a maioria deles.
-```
-```
+
 E se você não tiver certeza qual usar, tente o cara ou coroa.
-```
+
 
 ## REGISTROS
 
-```
 Um record é uma coleção de itens que contém dados intimamente relacionados. Cada item é considerado um "campo". Os campos são descritos em sua própria página. Mas aqui estão alguns exemplos de registros:
-```
+
 ```
 Uma caixa tem
 uma coordenada esquerda, uma coordenada superior, um coordenada direita, uma coordenada inferior,
 um canto superior esquerdo na coordenada esquerda, e um canto inferior direito na coordenada direita.
 ```
+
 ```
 Uma caixa arredondada é uma caixa que tem
 uma coordenada esquerda, uma coordenada superior, um coordenada direita, uma coordenada inferior,
 um canto superior esquerdo na coordenada esquerda, e um canto inferior direito na coordenada direita e um raio.
 ```
+
 ```
 Um polígono é uma coisa com alguns vértices.
 ```
-O primeiro registro de amostra, "caixa", tem seis campos. Mas os dois últimos são na verdade "reinterpretações" dos primeiros quatro. Este tipo de coisa só funciona, é claro, quando as estruturas físicas de dados correspondem. Observe que a palavra "tem" é uma abreviação do termo "é um registro com", que também pode ser usado.
+O primeiro registro de amostra, `caixa`, tem seis campos. Mas os dois últimos são na verdade "reinterpretações" dos primeiros quatro. Este tipo de coisa só funciona, é claro, quando as estruturas físicas de dados correspondem. Observe que a palavra `tem` é uma abreviação do termo `é um registro com`, que também pode ser usado.
 
-```
-O segundo registro, "caixa arredondada", é uma extensão da caixa. Tem os mesmos campos que uma caixa, e mais um novo campo chamado de "raio". É compatível com a caixa, e é possível usar todas as rotinas que funcionam nas caixas normais para manipulár as caixas arredondadas — a menos que uma rotina específica para caixas arredondadas tenha sido criada.
-```
-O terceiro registro, "polígono", não tem nada além de uma lista de vértices. Como o polígono é definido como uma "coisa", o compilador considera o polígono como uma estrutura dinâmica de dados (ao invés de uma estrutura estática). Isto significa que você é responsável por alocar e lidar com a memória usada por ele. Consulte o tópico "Gerenciamento de Memória" e a página sobre "Polígonos" para obter mais informações.
+O segundo registro, `caixa arredondada`, é uma extensão da caixa. Tem os mesmos campos que uma caixa, e mais um novo campo chamado de `raio`. É compatível com a caixa, e é possível usar todas as rotinas que funcionam nas caixas normais para manipulár as caixas arredondadas — a menos que uma rotina específica para caixas arredondadas tenha sido criada.
+
+O terceiro registro, `polígono`, não tem nada além de uma lista de vértices. Como o polígono é definido como uma `coisa`, o compilador considera o polígono como uma estrutura dinâmica de dados (ao invés de uma estrutura estática). Isto significa que você é responsável por alocar e lidar com a memória usada por ele. Consulte o tópico `Gerenciamento de Memória` e a página sobre `Polígonos` para obter mais informações.
 
 
 ## PERCORREDORES
 
-```
 Um "percorredor" é um registro usado para analisar texto. Para entendê-lo, você deve estar confortável com o modo de funcionamento do tipo texto (strings) e subtextos (substrings). Se você não estiver familiarizado com estes termos, procure-os neste glossário e analise as manipulações de texto que fizemos no nosso programa de exemplo.
-```
-```
+
 Eis a definição de "percorredor":
-```
+
 ```
 Um percorredor possui
 um subtexto original,
 uma subtexto fonte e
 uma caractere de subtexto.
 ```
-```
 Eis o que acontece quando o comando abaixo é invocado:
-```
+
 ```
 COLOQUE um percorredor em um texto.
 ```
-```
-O compilador define o <i>subtexto original</i> e o <i>subtexto fonte</i> de forma que eles possam abranger todo o texto. Então ele posiciona o <i>caractere de subtexto<i> no <i>subtexto fonte</i> — o que faz com que o subtexto fonte comece com valorem branco, mas pronto para receber um novo valor. Depois de colocar um percorredor no texto, você pode usar o seguinte comando:
-```
+
+O compilador define o `subtexto original` e o `subtexto fonte` de forma que eles possam abranger todo o texto. Então ele posiciona o `caractere de subtexto` no `subtexto fonte` — o que faz com que o subtexto fonte comece com valorem branco, mas pronto para receber um novo valor. Depois de colocar um percorredor no texto, você pode usar o seguinte comando:
+
 ```
 AVANCE um percorredor.
 ```
-```
-O compilador adiciona um no <i>primeiro byte do subtexto fonte</i> e mais um no <i>último byte do subtexto fonte</i>. Isso faz com que o <i>subtexto fonte</i> fique mais curto enquanto que o <i>caractere de subtexto</i> fica mais longo, permitindo que você processe o texto um byte de cada vez. Quando você quiser limpar o <i>caractere de subtexto</i> antigo e começar um novo, você só precisa utilizar o comando:
-```
+
+O compilador adiciona um no `primeiro byte do subtexto fonte` e mais um no `último byte do subtexto fonte`. Isso faz com que o `subtexto fonte` fique mais curto enquanto que o `caractere de subtexto` fica mais longo, permitindo que você processe o texto um byte de cada vez. Quando você quiser limpar o `caractere de subtexto` antigo e começar um novo, você só precisa utilizar o comando:
+
 ```
 POSICIONE o caractere de subtexto do percorredor no subtexto fonte do percorredor.
 ```
-Você também pode escrever suas próprias rotinas para MOVER um percorredor mais de um byte por vez, assim como acontece nas rotinas de "verificação ortográfica" e de "quebra de linha", sem mencionar as rotinas de análise de código-fonte. Pesquise "para mover um percorredor" para encontrar os exemplos.
+Você também pode escrever suas próprias rotinas para MOVER um percorredor mais de um byte por vez, assim como acontece nas rotinas de "verificação ortográfica" e de "quebra de linha", sem mencionar as rotinas de análise de código-fonte. Pesquise `para mover um percorredor` para encontrar os exemplos.
 
 
 ## CAIXAS ARREDONDADAS
 
 Uma "caixa arredondada" é uma caixa com cantos arredondados. O compilador usa essas caixas arredondadas no ambiente de trabalho, nos menus, abas e muitos outros lugares. Aqui está a definição:
 
-`Uma caixa arredondada é uma caixa que tem<br/>  
-uma coordenada esquerda, uma coordenada superior, um coordenada direita, uma coordenada inferior,<br/>  
-um canto superior esquerdo na coordenada esquerda, e um canto inferior direito na coordenada direita e<br/>  
-um raio.`
+```
+Uma caixa arredondada é uma caixa que tem 
+uma coordenada esquerda, uma coordenada superior, um coordenada direita, uma coordenada inferior,  
+um canto superior esquerdo na coordenada esquerda, e um canto inferior direito na coordenada direita e
+um raio.
+```
 
 Esta é uma imagem de uma caixa arredondada, com todas as partes acima identificadas. Observe que estou usando os apelidos dos campos aqui, da mesma forma que você provavelmente irá usar em seus programas.
 
+DIREITA ESQUERDA
+
+TOPO
+
+BASE
+
+CANTO SUPERIOR ESQUERDO
+
+CANTO INFERIOR DIREITO
+
+•
+
+•
+
+•
+
+RAIO
+
 O compilador consegue fazer caixas arredondadas a partir de especificações de largura e altura, ou apenas usando um par de pontos de coordenadas. O compilador consegue criar uma caixa arredondada até mesmo usando outra caixa como base. O esquema de funcionamento é mostrado abaixo:
 
-`FAÇA uma caixa arredondada com tantas polegadas de largura POR tantas polegadas de altura COM um raio de tantas polegadas.`<br/>   `FAÇA uma caixa arredondada USANDO esta localização E esta outra localização E este raio.`<br/>   `FAÇA uma caixa arredondada USANDO esta coordenada esquerda E esta coordenada superior E esta coordenada direita E esta coordenada inferior E este raio.`<br/>   `FAÇA uma caixa arredondada USANDO esta caixa E este raio.`<br/>  
+`FAÇA uma caixa arredondada com tantas polegadas de largura POR tantas polegadas de altura COM um raio de tantas polegadas.`
+`FAÇA uma caixa arredondada USANDO esta localização E esta outra localização E este raio.`
+`FAÇA uma caixa arredondada USANDO esta coordenada esquerda E esta coordenada superior E esta coordenada direita E esta coordenada inferior E este raio.`
+`FAÇA uma caixa arredondada USANDO esta caixa E este raio.` 
 
-O compilador consegue DESENHAR uma caixa arredondada. Bem como obter a largura, altura o ponto central entre outras coisas. E se um ponto está DENTRO, FORA ou na BORDA da caixa. Sem mencionar todas as "Transformações Gráficas" de costume.
+O compilador consegue ` DESENHAR`  uma caixa arredondada. Bem como obter a largura, altura o ponto central entre outras coisas. E se um ponto está DENTRO, FORA ou na BORDA da caixa. Sem mencionar todas as ` Transformações Gráficas`  de costume.
 
-##
-###### DIREITA ESQUERDA</h2>
 
-##
-###### TOPO
-
-##
-###### BASE
-
-##
-###### CANTO SUPERIOR ESQUERDO
-
-##
-###### CANTO INFERIOR DIREITO
-
-## •
-
-## •
-
-## •
-
-##
-###### RAIO
 
 
 ## ROTINAS
 
 Uma rotina é um pedaço de código que manipula uma ou mais variáveis em algumas formas bem definidas. As variáveis passadas para uma rotina são chamadas de "parâmetros", podendo ser apenas parâmetros de entrada, parâmetros de saída ou ambos. As variáveis definidas dentro de uma rotina são chamadas de "variáveis locaos" e não podem ser vistas fora da rotina (a menos que sejam passados como parâmetros). As variáveis que são acessíveis a todas as rotinas são chamadas de "variáveis globais".
 
-```
 Cada rotina tem duas partes, cabeçalho e corpo. O cabeçalho diz o que a rotina faz e define os parâmetros com os quais ele funciona. O corpo contém uma ou mais afirmações que fazem a rotina realmente funcionar. Declarações podem ser "condicionais" ou "imperativas". Existem três tipos de rotinas.
-```
-```
+
 Um "procedimento" é uma rotina que simplesmente faz algo — um procedimento pode ser longo ou curto, grande ou pequeno, fácil ou difícil. Os cabeçalhos de procedimento sempre se parecem com isto:
-```
+
 ```
 PARA fazer alguma coisa:
 ```
-```
+
 Um "decisor" é uma rotina que diz "sim" ou "não" sobre algo, geralmente depois de examinar os parâmetros passados para ele. Um cabeçalhos de decisão é assim:
-```
+
+
 ```
 PARA DECIDIR SE alguma coisa:
 ```
-```
+
+
 Uma "função" é uma rotina que extrai, calcula ou deriva algo usando uma variável. Cabeçalhos de função assumem este formato:
-```
+
+
 ```
 PARA POR algo QUE FAZ PARTE DE algo EM uma variável temporária:
 ```
-```
+
+
 Ao contrário dos procedimentos e dos decisores, as funções não são normalmente chamadas directamente.
 Em vez disso, o "algo que faz parte de algo" é utilizado como se fosse um campo em um registro.
 Como um "centro que está dentro da caixa", que você não encontrará no registro "caixa", porque ele é calculado por uma função automaticamente.
-```
+
 
 ## SONS
 
-```
 Você pode reproduzir sons usando comandos como este:
-```
+
 ```
 REPRODUZA um arquivo wave.
 TOQUE um arquivo wave E AGUARDE.
 ```
-```
+
 O "arquivo wave" deve estar no formato ".wav". Se você tocar e não utilizar o comando aguarde/espere, o seu programa continuará sendo executado enquanto o som é reproduzido. Se você utilizar o comando aguarde/espere, o fluxo de execução do seu programa vai parar até que o som tenha terminado de tocar.
-```
-```
+
 Você também pode usar os seguintes comandos:
-```
+
 ```
 APITE.
 CACAREJE (alerte o usuário).
 ASSOVIE (susurre).
 ```
-```
-O primeiro toca o som de erro padrão do Windows. O "cacarejo" é o som de notificação padrão do compilador, codificado em formato hexadecimal no compilador, basta pesquisar por "cluck". O terceiro som é o som de erro da CPU e não permite que o programa continue a ser executado até que termine de ser tocado, tornando-se a escolha ideal para testes. Consulte "Depuração" para obter mais informações.
-```
+
+O primeiro comando toca o som de erro padrão do Windows. O "cacarejo" é o som de notificação padrão do compilador, codificado em formato hexadecimal no compilador, basta pesquisar por "cluck". O terceiro som é o som de erro da CPU e não permite que o programa continue a ser executado até que termine de ser tocado, tornando-se a escolha ideal para testes. Consulte ` Depuração`  para obter mais informações.
+
 Você também pode falar no seu computador, com as trinta e nove funções esotéricas de "gerenciamento de fala" do Windows, ou usando um desses três comandos a seguir:
 
 ```
@@ -3993,9 +3363,9 @@ DIGA um texto.
 DIGA um texto E AGUARDE.
 AGUARDE ATÉ QUE A FALA TERMINE.
 ```
-```
+
 Para silenciar a conversa (mas não os outros sons), ative "a bandeira silenciosa".
-```
+
 
 ## IMPERATIVOS ESPECIAIS
 
@@ -4003,82 +3373,104 @@ Os três "imperativos especiais" do compilador provavelmente estão mais para "i
 
 Um imperativo de "emprego" deve ser a única declaração em uma rotina. Esse tipo de imperativo faz com que o compilador utilize outra rotina no lugar da que foi chamada. Só funciona quando os parâmetros de ambas as rotinas estão na mesma ordem e são do mesmo tipo. Para encontrar exemplos, basta progurar por ": employ". Você pode dar mais de um nome para uma rotina, usando ponto e vírgula no lugar de dois pontos, assim:
 
-`PARA limpar a tela;<br/>  
-PARA apagar a tela;<br/>  
-Para deixar a tela em branco:<br/>  
-[código aqui]`
-
+```
+PARA limpar a tela; 
+PARA apagar a tela; 
+Para deixar a tela em branco: 
+[código aqui]
+```
 Um imperativo "push" avalia uma expressão e coloca o resultado — que deve ser um valor contendo um, dois ou quatro bytes — na pilha do sistema. Você provavelmente não vai precisar usar ele. Nem eu uso isso. Isso é um resquício dos dias em que o comando CHAMAR ainda estava em desenvolvimento (Consulte o tópico Windows para maiores informações sobre esse comando). Só pra você saber, o formato geral do comando é:
 
-PUSH uma expressão.
+`PUSH uma expressão.`
 
 Um imperativo "Intel" insere código de máquina no seu arquivo executável. É possível encontrar exemplos complexos em vários lugares do compilador. É uma pena que o Intel não é uma máquina de pilha. O formato é trivial:
 
-INTEL nibble literal.
+`INTEL nibble literal.`
 
 Se você está se perguntando por que razão o compilador não possui um assembler (montador) integrado, a resposta é simplesmente porque não é necessário. Na verdade, há muito pouca linguagem da máquina no meu compilador, e conforme novas funções vão sendo adicionadas, mais e mais desses comandos vão sendo substituídos por português simples. Além disso, um dos princípios dos Mestres da Sociedade Osmosiana é que o melhor assembler sempre foi e sempre será a sua cabeça. É uma forma de manter seu cérebro em dia.
 
 
 ## LOCALIZAÇÕES
 
-Uma "localização" ou "posição" ou ainda "ponto na tela" é um dos objetos gráficos mais básicos do compilador. Esta não é bem a melhor definição pra gora vai servir:
+Uma "localização" ou "posição" ou ainda "ponto na tela" é um dos objetos gráficos mais básicos do compilador. Esta não é bem a melhor definição pra agora vai servir:
 
-Uma localização é um registro que tem uma coordenada x e uma coordenada y.
+`Uma localização é um registro que tem uma coordenada x e uma coordenada y.`
 
 Esta é uma imagem de uma localização, com as partes acima identificadas. Note que estou usando os apelidos dos campos aqui, como você provavelmente usará em seus programas.
 
+COORDENADA X •
+
+COORDENADA Y •
+
 Localizações são feitas a partir de um x e um y, ou você pode obter uma de outro lugar:
 
-`FAÇA uma localização USANDO isto E aquilo.`<br/>   `ARMAZENE a posição do mouse EM uma localização.`<br/>  
+`FAÇA uma localização USANDO isto E aquilo.`
+`ARMAZENE a posição do mouse EM uma localização.`  
 
 O compilador consegue DESENHAR uma localização. Mas não espere que seja rápido o suficiente para ser útil. O processamento de vídeo do Windows é uma das suas piores características. E já que ele só oferece recursos ruins, isso não é lá muito encorajador.
 
-Posições são usadas principalmente como componentes de outros objetos gráficos. Como caixas, linhas, vértices e polígonos. Às vezes, elas são usados como coordenadas abstratas sem representação visível, como "a localização do mouse" no exemplo acima. Veja a página "Unidades de medida" para uma discussão completa sobre coordenadas.
+Posições são usadas principalmente como componentes de outros objetos gráficos. Como caixas, linhas, vértices e polígonos. Às vezes, elas são usados como coordenadas abstratas sem representação visível, como "a localização do mouse" no exemplo acima. Consulte a página "Unidades de medida" para uma discussão completa sobre coordenadas.
 
 O compilador possui rotinas que podem identificar se uma localização ESTÁ DENTRO ou NA BORDA de qualquer outro objeto gráfico (na borda significa em cima). Quando você vê se algo está DENTRO, isso inclui as bordas. As rotinas que identificam se algo está na borda são usadas pelo caderno e incluem uma margem de erro de 3 pixels para ficar mais fácil de clicar nas formas. Você pode copiar essas rotinas e retirar essas margens de tolerância, se quiser.
-
-##
-###### COORDENADA X •
-
-##
-###### COORDENADA Y •
 
 
 ## TEXTO
 
 O compilador armazena "strings" em duas partes: um registro integrado que contém dois ponteiros de byte. O primeiro e o último. Além de armzenar os bytes de cada letra, assim:
 
-Os números do diagrama, caso você não tenha percebido, são apenas endereços fictícios. Um texto está em branco se o *primeiro ponteiro de byte* estiver vazio (sem memória alocada nele ainda), ou se o último ponteiro de byte for menor que o primeiro (o que permite a pré-alocação de memória). Observeque mesmo que a parte de dados de um texto seja dinamicamente alocada, você nunca tem que "criar" ou "destruir" a string. O compilador toma conta de tudo isso, assim você pode usar comandos como:
-
-`COLOQUE algo EM um texto.`<br/>   `ADICIONE algo NO FINAL DE um texto`<br/>   `ADICIONE algo A um texto ANTES de um byte#.`<br/>   `REMOVA O PRIMEIRO BYTE DE um texto.`<br/>   `REMOVA O ÚLTIMOO BYTE DE um texto.`<br/>   `PREENCHA um texto USANDO um byte A PARTIR DE uma contagem<.code><br/>  
-<code>REMOVA OS BYTES INICIAIS DE um texto USANDO uma contagem.`<br/>   `REMOVA OS BYTES FINAIS DE um texto USANDO uma contagem.`<br/>   `REMOVA OS BYTES DE um texto USANDO um subtexto.`<br/>  
-
-Você também pode COLOCAR TODO O TEXTO EM LETRAS MAIÚSCULAS, MINÚSCULAS, ou COLOCAR O PRIMEIRO BYTE EM LETRAS MAIÚSCULAS. Além de obter o COMPRIMENTO de um texto, em bytes. Sem mencionar o comando:
-
-OBTENHA uma largura USANDO um texto E uma fonte.
-
-Além disso, você pode concatenar (unir, juntar) um texto com outro — ou com outros tipos de dados — usando os operadores ENTÃO, EM SEGUIDA ou JUNTO COM . Veja o tópico "Expressões" para uma descrição da implementação dessa rotina.
-
-##
-###### 16 27 H E L L O W O R L D!
+`16 27 H E L L O W O R L D!`
 
 ```
 primeiro último 161718192021222324252627
 ```
 
+Os números do diagrama, caso você não tenha percebido, são apenas endereços fictícios. Um texto está em branco se o `primeiro ponteiro de byte` estiver vazio (sem memória alocada nele ainda), ou se o último ponteiro de byte for menor que o primeiro (o que permite a pré-alocação de memória). Observeque mesmo que a parte de dados de um texto seja dinamicamente alocada, você nunca tem que `criar` ou `destruir` a string. O compilador toma conta de tudo isso, assim você pode usar comandos como:
+
+`COLOQUE algo EM um texto.`
+`ADICIONE algo NO FINAL DE um texto`
+`ADICIONE algo A um texto ANTES de um byte#.`
+`REMOVA O PRIMEIRO BYTE DE um texto.`
+`REMOVA O ÚLTIMOO BYTE DE um texto.`
+`PREENCHA um texto USANDO um byte A PARTIR DE uma contagem<.code>
+`REMOVA OS BYTES INICIAIS DE um texto USANDO uma contagem.`
+`REMOVA OS BYTES FINAIS DE um texto USANDO uma contagem.`
+`REMOVA OS BYTES DE um texto USANDO um subtexto.`
+
+Você também pode `COLOCAR TODO O TEXTO EM LETRAS MAIÚSCULAS`, `MINÚSCULAS`, ou `COLOCAR APENAS O PRIMEIRO BYTE EM LETRAS MAIÚSCULAS`. Além de obter o COMPRIMENTO de um texto, em bytes. Sem mencionar o comando:
+
+`OBTENHA uma largura USANDO um texto E uma fonte.`
+
+Além disso, você pode concatenar (unir, juntar) um texto com outro — ou com outros tipos de dados — usando os operadores ENTÃO, EM SEGUIDA ou JUNTO COM . Consulte o tópico "Expressões" para uma descrição da implementação dessa rotina.
+
+
+
 ## SUBTEXTO
 
 Uma "substring" ou subtexto faz parte de um texto. Subtextos são implementadoss através um registro embutido que se parece como um texto — um subtexto tem um par de ponteiros de bytes chamado primeiro e último — o que os torna compatíveis com o texto. Se, por exemplo, isso fosse um texto:
 
+```
+16 27 H E L L O W O R L D!
+```
+```
+primeiro último 161718192021222324252627
+```
+
 Isto poderia ser um subtexto (a parte "WORLD"):
+
+```
+22 26
+```
+```
+primeiro último
+```
 
 Você pode usar o comando abaixo:
 
-COLOQUE um subtexto EM um texto.
+`COLOQUE um subtexto EM um texto.`
 
 Para fazer com que o compilador defina o primeiro byte do subtexto e o último byte do subtexto abarquem completamente o texto. Isso permite que você consiga avançar ou retroceder dentro do texto ao adicionar algo ao primeiro byte ou removendo algum item do último byte. Você também pode usar o comando:
 
-POSICIONE um subtexto EM um texto.
+`POSICIONE um subtexto EM um texto.`
 
 O que define o primeiro byte, mas não o último byte, do subtexto, deixando-o inicialmente em branco mas pronto para manipulação — ao adicionar o pultimo byte você pode "adicionar" o texto original no seu subtexto um byte por vez.
 
@@ -4086,34 +3478,23 @@ Procure por "subtexto" no código fonte para obter exemplos.
 
 No entanto, o uso principal dos subtextos ocorre nos "percorredores", que são discutidos no neste glossário sob o tópico de mesmo nome.
 
-##
-###### 16 27 H E L L O W O R L D!
 
-```
-primeiro último 161718192021222324252627
-```
-##
-###### 22 26
-
-```
-primeiro último
-```
 
 ## TERMOS
 
 Um "termo" é uma referência a um pedaço de dados. Os termos são usados tanto em expressões quanto em instruções condicionais e imperativas para indicar o que deve ser operado. Os termos têm muitas variedades:
 
-Um "termo literal" é um número, proporção, combinação, texto, ponteiro, bandeira ou um nibble literal. Veja "Literais" para informações sobre como formular cada um deles.
+Um "termo literal" é um número, proporção, combinação, texto, ponteiro, bandeira ou um nibble literal. Consulte "Literais" para informações sobre como formular cada um deles.
 
 Um "termo local" é uma variável definida dentro de uma rotina e que geralmente fica confinado dentro dela. Consulte "Variáveis Locais" para obter mais informações.
 
-Um "termo global" é o nome de uma variável global. Veja "Variáveis globais".
+Um "termo global" é o nome de uma variável global. Consulte "Variáveis globais".
 
 Um "termo sinalizado" (assinalado) é qualquer termo com um sinal de mais ou menos na frente dele. Um espaço é necessário após o sinal, para que o compilador não a confunda com a parte de um nome.
 
 O "termo de proporção" é uma proporção feita a partir de outros termos, ao invés de números literais. Espaços são necessários ao redor da barra, como em "um valor de altura / um valor de largura".
 
-Um "termo possessivo" é qualquer termo seguido por uma frase possessiva, como "o comprimento de dentro do texto" ou "magnitude que faz parte do polígono". Veja a seção "Possessivos" para mais detalhes.
+Um "termo possessivo" é qualquer termo seguido por uma frase possessiva, como "o comprimento de dentro do texto" ou "magnitude que faz parte do polígono". Consulte a seção "Possessivos" para mais detalhes.
 
 Um "termo coagido" é um termo cujo tipo você deseja mudar à força. O compilador sempre tratará um ponteiro, por exemplo, como um ponteiro — a menos que você coaga-o a ser outra coisa, como neste exemplo: "o ponteiro COMO UM NÚMERO". Normalmente você não vai precisar deste recurso, a menos que você seja uma pessoa que ama objetos e tenha definido um monte de coisas que são extensões de outras coisas.
 
@@ -4124,24 +3505,28 @@ Agora sei que isto parece complicado, e realmente é. Mas você não precisa pen
 
 Existe um componente chamado "campo de texto". Ele é utilizado para implementar campos editáveis de texto, sejam eles grandes ou pequenos. Diálogos, por exemplo. Ou formas de texto em páginas. O editor de código, na verdade, é na maior parte apenas uma grande caixa de texto. Eis a definição:
 
-`Um campo de texto é algo com<br/>  
-uma caixa, uma origem,<br/>  
-uma cor de caneta, uma fonte, um alinhamento,<br/>  
-algumas linhas,<br/>  
-uma margem,<br/>  
-uma proporção de escala,<br/>  
-uma bandeira de embrulho,<br/>  
-uma bandeira de rolagem horizontal,<br/>  
-uma bandeira de rolagem vertical,<br/>  
-uma seleção,<br/>  
-uma bandeira modificada,<br/>  
-uma última operação,<br/>  
-alguns textos chamados desfazimentos, e<br/>  
-alguns textos chamados refazimentos.<br/>  </p>
+```
+Um campo de texto é algo com
+uma caixa, uma origem,
+uma cor de caneta, uma fonte, um alinhamento,
+algumas linhas,
+uma margem,
+uma proporção de escala,
+uma bandeira de embrulho,
+uma bandeira de rolagem horizontal,
+uma bandeira de rolagem vertical,
+uma seleção,
+uma bandeira modificada,
+uma última operação,
+alguns textos chamados desfazimentos, e
+alguns textos chamados refazimentos.
+```
 
-<p spaces-before="0">Como você pode ver, esta não é uma definição trivial. Felizmente o compilador lida com a paior parte dos detalhes ra você. Normalmente, você não fará muito mais do que usar os seguintes comandos:</p>
+Como você pode ver, esta não é uma definição trivial. Felizmente o compilador lida com a paior parte dos detalhes ra você. Normalmente, você não fará muito mais do que usar os seguintes comandos:
 
-<p spaces-before="0"><code>CRIE um campo de texto.`<br/>   `DESENHE um campo de texto.`<br/>   `DESTRUA um campo de texto.`<br/>  
+`CRIE um campo de texto.`
+`DESENHE um campo de texto.`
+`DESTRUA um campo de texto.`
 
 Você deve inicializar a caixa do campo de texto, a caneta, a fonte, o alinhamento, a margem e as bandeiras depois de criá-lo. E você terá que passar todos os eventos relacionados à sua caixa de texto para o compilador, obviamente, para que ele possa cuidar de todas as coisas difíceis para você. Os manipuladores de eventos do campo de texto estão documentados nas duas páginas a seguir.
 
@@ -4150,34 +3535,55 @@ Você deve inicializar a caixa do campo de texto, a caneta, a fonte, o alinhamen
 
 Conforme dito na página anterior, o compilador gerencia a maior parte dos eventos ou comandos que são enviados ao campo de texto, desde que você use os comandos apropriados:
 
-`GERENCIE um evento USANDO um campo de texto (tecla backspace).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla delete).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla seta para baixo).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla end).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla enter).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla esc).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla home).`<br/>   `GERENCIE um evento USANDO um campo de texto (clique duplo).`<br/>   `GERENCIE um evento USANDO um campo de texto (seta esquerda).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla page down).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla page up).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla imprimível).`<br/>   `GERENCIE um evento USANDO um campo de texto (seta direita).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla tab).`<br/>   `GERENCIE um evento USANDO um campo de texto (seta para cima).`<br/>  
+`GERENCIE um evento USANDO um campo de texto (tecla backspace).`
+`GERENCIE um evento USANDO um campo de texto (tecla delete).`
+`GERENCIE um evento USANDO um campo de texto (tecla seta para baixo).`
+`GERENCIE um evento USANDO um campo de texto (tecla end).`
+`GERENCIE um evento USANDO um campo de texto (tecla enter).`
+`GERENCIE um evento USANDO um campo de texto (tecla esc).`
+`GERENCIE um evento USANDO um campo de texto (tecla home).`
+`GERENCIE um evento USANDO um campo de texto (clique duplo).`
+`GERENCIE um evento USANDO um campo de texto (seta esquerda).`
+`GERENCIE um evento USANDO um campo de texto (tecla page down).`
+`GERENCIE um evento USANDO um campo de texto (tecla page up).`
+`GERENCIE um evento USANDO um campo de texto (tecla imprimível).`
+`GERENCIE um evento USANDO um campo de texto (seta direita).`
+`GERENCIE um evento USANDO um campo de texto (tecla tab).`
+`GERENCIE um evento USANDO um campo de texto (seta para cima).`
 
 Eu sei que pode parecer um incômodo despachar todos estes eventos separadamente, mas é exatamente isso o que torna o campo de texto geralmente útil. Por exemplo:
 
 Se você tiver uma caixa de texto com apenas uma linha, provavelmente vai querer ignorar e as teclas de seta para cima e para baixo, enquanto que se você usar caixas de texto com várias linhas você vai querer utilizar essas teclas para mover o cursor de texto.
 
-Se você estiver usando uma caixa de texto como uma caixa de diálogo, você provavelmente cancelará a operação quando a tecla ESC for pressionada, bem como você irá querer executar a operação ao pressionar a tecla ENTER. Em um campo de texto normal, provavelmente você utilizará a tecla ENTER para inserir uma quebra de linha por exemplo.
+Se você estiver usando uma caixa de texto como uma caixa de diálogo, você provavelmente cancelará a operação quando a tecla <kbd>Esc</kbd> for pressionada, bem como você irá querer executar a operação ao pressionar a tecla <kbd>Enter</kbd>. Em um campo de texto normal, provavelmente você utilizará a tecla <kbd>Enter</kbd> para inserir uma quebra de linha por exemplo.
 
 Entendeu o que eu quis dizer? Você está no comando. Portanto, é você que tem que emitir as ordens.
+
 ## CONTINUAÇÃO
 
 O compilador também gerencia de uma série de outras operações de texto de alto nível para você:
 
-`RECORTE O TEXTO DE um campo de texto.`<br/>   `COPIE O TEXTO DE um campo de texto.`<br/>   `COLE O TEXTO DE um campo de texto.`<br/>  
+`RECORTE O TEXTO DE um campo de texto.`
+`COPIE O TEXTO DE um campo de texto.`
+`COLE O TEXTO DE um campo de texto.`
 
-`SELECIONE TODO O TEXTO DE um campo de texto.`<br/>  
+`SELECIONE TODO O TEXTO DE um campo de texto.`  
 
-`GERENCIE A ALTURA DA FONTE usando um campo de texto e um valor de altura de fonte.`<br/>   `GERENCIE O NOME DA FONTE usando um campo de texto e um nome de fonte.`<br/>  
+`GERENCIE A ALTURA DA FONTE usando um campo de texto e um valor de altura de fonte.`
+`GERENCIE O NOME DA FONTE usando um campo de texto e um nome de fonte.`
 
-`GERENCIE A COR DO TEXTO usando um campo de texto e uma cor.`<br/>  
+`GERENCIE A COR DO TEXTO usando um campo de texto e uma cor.` 
 
-`GERENCIE O RECUO DO TEXTO usando um campo de texto.`<br/>   `GERENCIE O AVANÇO DO TEXTO usando um campo de texto.`<br/>  
+`GERENCIE O RECUO DO TEXTO usando um campo de texto.`
+`GERENCIE O AVANÇO DO TEXTO usando um campo de texto.`
 
-`TRANSFORME O TEXTO DE um campo de texto EM LETRAS MAIÚSCULAS.`<br/>   `TRANSFORME O TEXTO DE um campo de texto EM LETRAS MINÚSCULAS.`<br/>  
+`TRANSFORME O TEXTO DE um campo de texto EM LETRAS MAIÚSCULAS.`
+`TRANSFORME O TEXTO DE um campo de texto EM LETRAS MINÚSCULAS.`
 
 Ou, se você preferir:
 
-`DESFAÇA A OPERAÇÃO EM um campo de texto.`<br/>   `REFAÇA A OPERAÇÃO EM um campo de texto.`<br/>  
+`DESFAÇA A OPERAÇÃO EM um campo de texto.`
+`REFAÇA A OPERAÇÃO EM um campo de texto.`
 
 Você sempre pode usar os comandos acima. O máximo de vezes que você pode desfazer ou refazer uma operação é de 32.
 
@@ -4192,127 +3598,164 @@ Uma das palavras mais imporantes do compilador é a palavra "coisa". Sempre que 
 
 Mas a definição pode ser expandida para ficar assim:
 
-`Uma obra de arte é um ponteiro para um registro de obra de arte.`<br/>   `Uma registro de obra de arte é um registro que tem uma próxima obra de arte, uma URL e uma pintura.`<br/>   `Algumas obras de arte são algumas coisas que têm uma primeira obra de arte e uma última obra de arte.`<br/>  
+`Uma obra de arte é um ponteiro para um registro de obra de arte.`
+`Uma registro de obra de arte é um registro que tem uma próxima obra de arte, uma URL e uma pintura.`
+`Algumas obras de arte são algumas coisas que têm uma primeira obra de arte e uma última obra de arte.`
 
 Obviamente você não sabia disso. De qualquer forma, isso permite que você utilize os comandos:
 
-`ADICIONE uma coisa NO FINAL de algumas coisas.`<br/>   `ADICIONE algumas coisas NO FINAL de outras coisas.`<br/>   `INSIRA uma coisa DEPOIS de outra coisa DENTRO DE algumas coisas.`<br/>   `INSIRA uma coisa ANTES de outra coisa DENTRO DE algumas coisas.`<br/>   `INSIRA algumas coisas DEPOIS de outras coisas DENTRO DE uma coisa.`<br/>   `INSIRA algumas coisas ANTES de outras coisas DENTRO DE uma coisa.`<br/>   `MOVA uma coisa DE algumas coisas PARA outras coisas.`<br/>   `MOVA algumas coisas PARA outras coisas.`<br/>   `ADICIONE uma coisa NO INÍCIO de algumas coisas.`<br/>   `ADICIONE algumas coisas NO INÍCIO de outras coisas.`<br/>   `REMOVA uma coisa DE outras coisas.`<br/>   `INVERTA algumas coisas.`<br/>  
+`ADICIONE uma coisa NO FINAL de algumas coisas.`
+`ADICIONE algumas coisas NO FINAL de outras coisas.`
+`INSIRA uma coisa DEPOIS de outra coisa DENTRO DE algumas coisas.`
+`INSIRA uma coisa ANTES de outra coisa DENTRO DE algumas coisas.`
+`INSIRA algumas coisas DEPOIS de outras coisas DENTRO DE uma coisa.`
+`INSIRA algumas coisas ANTES de outras coisas DENTRO DE uma coisa.`
+`MOVA uma coisa DE algumas coisas PARA outras coisas.`
+`MOVA algumas coisas PARA outras coisas.`
+`ADICIONE uma coisa NO INÍCIO de algumas coisas.`
+`ADICIONE algumas coisas NO INÍCIO de outras coisas.`
+`REMOVA uma coisa DE outras coisas.`
+`INVERTA algumas coisas.`
 
 Existe também uma função que permite que você "coloque a quantidade de algumas coisas" em uma contagem. Tudo o que você precisa lembrar é de CRIAR e DESTRUIR cada uma de suas coisas. Consulte "Gerenciamento de memória" para mais informações.
 
 
 ## TEMPORIZADORES
 
-```
+
 Um tique dura aproximadamente 1 milissegundo. "A contagem de tiques do sistema" é o número de milissegundos desde a última reinicialização. Ele reseta a cada 24,8 dias aproximadamente.
 O que se passa nessa altura é desconhecido,já que nenhum Windows ficou tanto tempo ligado sem dar pau.
-```
-```
+
 Quando quiser, você pode:
-```
-```
-<code>AGUARDAR tantos milissegundos.</code><br/>  
-```
-<br/>  
-</code>
-```
-O compilador também entende unidades maiores como "minutos" ou "segundos".
-```
-```
-O compilador possui uma variável chamada de temporizador que permite que você utilize os seguintes comandos:
-```
-```
-<code>ZERE o temporizador.</code><br/>  
-<code>REINICIE um temporizador.</code><br/>  
-<code>INICIE um temporizador.</code><br/>  
-<code>PARE um temporizador.</code><br/>  
-```
-<br/>  
-REINICIE um temporizador.<br/>  
-INICIE um temporizador.<br/>  
-PARE um temporizador.<br/>  
-</code>
-```
-O compilador utiliza esses cronômetros para verificar o tempo de recompilação, por exemplo (que atualmente é cerca de 3 segundos, dependendo do hardware).
-Procure a seção "listagem" para ver todos os temporizadores. Você pode usá-los para tornar seus programas mais rápidos.
-```
-Os tempos podem ser cronometrados simplesmente inserindo os comandos "inicie um temporizador" e "pare o temporizador" nos pontos apropriados no seu código.
+
 
 ```
-Tempos cumulativos podem ser acumulados usando o comando ""zerar" uma vez e "reiniciar" logo em seguida juntamente com o comando "parar".
+AGUARDAR tantos milissegundos.
 ```
+
+O compilador também entende unidades maiores como "minutos" ou "segundos".
+
+O compilador possui uma variável chamada de temporizador que permite que você utilize os seguintes comandos:
+
+
 ```
+ZERE o temporizador.
+REINICIE um temporizador.
+INICIE um temporizador.
+PARE um temporizador.
+```
+```` 
+REINICIE um temporizador.
+INICIE um temporizador.
+PARE um temporizador.
+```
+O compilador utiliza esses cronômetros para verificar o tempo de recompilação, por exemplo (que atualmente é cerca de 3 segundos, dependendo do hardware).
+Procure a seção `listagem` para ver todos os temporizadores. Você pode usá-los para tornar seus programas mais rápidos.
+
+Os tempos podem ser cronometrados simplesmente inserindo os comandos `inicie um temporizador` e `pare o temporizador` nos pontos apropriados no seu código.
+
+Tempos cumulativos podem ser acumulados usando o comando `zerar` uma vez e `reiniciar` logo em seguida juntamente com o comando "parar".
+
 Existe uma função no compilador que permite que você obtenha o texto de um temporizador a qualquer momento — mesmo durante sua execução. Você também pode utilizar as operações de concatenação de strings neles.
-```
+
 
 ## TIPOS
 
-```
 Um "tipo" é uma categoria ou espécie de coisa — um substantivo. Uma "instância" é uma coisa real de um tipo específico — um substantivo próprio. Globais, locais e parâmetros são instâncias concretas de tipos abstratos. Isso é o que o compilador entende sobre tipos:
-```
-```
+
 Em primeiro lugar, existem seis tipos "embutidos" primitivos no meu compilador: BYTE, WYRD, NUMBER, POINTER, FLAG e RECORD. Consulte "Tipos Integrados".
-```
-```
+
 Em seguida, há "subconjunto de tipos" que representam algumas das instâncias de algum outro tipo. O compilador, por exemplo, inclui muitos tipos de subconjunto, como estes:
-```
+
 ```
 Um número é contador.
 Um nome é um texto.
 ```
-```
+
 Em terceiro lugar, o compilador reconhece "tipos de unidade de medida". Assim ele pode converter um tipo de unidade em outro. Exemplos:
-```
+
 ```
 Um pé tem 12 polegadas.
 Uma hora é 60 minutos.
 ```
-```
-O compilador também entende tipos de "registro". Veja a seção "Registros" para mais detalhes.
-```
-E não vamos nos esquecer dos "tipos de ponteiro", embora você raramente precise usá-los diretamente. O compilador sabe, por exemplo, que "um ponteiro de bytes é um ponteiro para um byte" e ele uso ponteiros de bytes para gerenciar suas strings. Veja "Strings", "Substrings", "Percorredores", e "Possessivos" para obter mais informações.
 
-```
-Por último, o compilador reconhece todos os tipos de "coisa". Existem várias no compilador, incluindo console, evento, imagem, polígono e vértice, todas elas são discutidas em outros lugares neste glossário. E também pode definir as suas próprias coisas. Consulte o tópico sobre "Coisas", e tente se lembrar das "obras de arte" do programa de exemplo.
-```
+O compilador também entende tipos de "registro". Consulte a seção `Registros` para mais detalhes.
+
+E não vamos nos esquecer dos "tipos de ponteiro", embora você raramente precise usá-los diretamente. O compilador sabe, por exemplo, que "um ponteiro de bytes é um ponteiro para um byte" e ele uso ponteiros de bytes para gerenciar suas strings. Consulte `Strings`, `Substrings`, `Percorredores`, e `Possessivos` para obter mais informações.
+
+
+Por último, o compilador reconhece todos os tipos de "coisa". Existem várias no compilador, incluindo console, evento, imagem, polígono e vértice, todas elas são discutidas em outros lugares neste glossário. E também pode definir as suas próprias coisas. Consulte o tópico sobre `Coisas`, e tente se lembrar das "obras de arte" do programa de exemplo.
+
 
 ## UNIDADES DA MEDIDA
 
 A unidade de medida básica para objetos gráficos é a "twip", que é 1/20 de um ponto de impressora, ou 1/1440 de uma polegada. Todas as coordenadas são expressas diretamente em twips, ou são convertidas para twips. Eis a definição:
 
-Um coordenada é alguns twips.
+`Um coordenada é alguns twips.`
 
-Agora, ao contrário do modelo matemático — que considera coordenadas como invisíveis abstrações indimensionadas — o modelo do compilador entende coordenadas como pontos reais em um dispositivo, como uma tela ou uma página. Valores grande de x e y vão além da tela ou página. Aqui, por exemplo temos uma caixa com o canto superior esquerdo em 2-1 e inferior direito, em 5-3:
+Agora, ao contrário do modelo matemático — que considera coordenadas como invisíveis abstrações indimensionadas — o modelo do compilador entende coordenadas como pontos reais em um dispositivo, como uma tela ou uma página. Valores grande de x e y vão além da tela ou página. Aqui, por exemplo temos uma caixa com o canto superior esquerdo em `2-1` e inferior direito, em `5-3`:
 
-Conte os pontos e note que a largura desta caixa é de quatro, não três, unidades. E que são três, e não duas unidades de altura. Medir desta forma faz com que o compilador desenhe bem — outra caixa entre 5-1 e 6-3, por exemplo, irá sobrepor corretamente esta caixa ao longo de sua borda esquerda. No entanto, você pode obter a largura e a altura desta caixa na forma "matemática" — que correspondem, cada uma, a uma unidade a menos, e são inúteis para desenho. Use as funções X-EXTENT e Y-EXTENT.
+0 1 2 3 4 5
+
+0 1 2 3 4 5 6 7
+
+· · · · · · · ·
+
+Conte os pontos e note que a largura desta caixa é de quatro, não três, unidades. E que são três, e não duas unidades de altura. Medir desta forma faz com que o compilador desenhe bem — outra caixa entre `5-1` e `6-3`, por exemplo, irá sobrepor corretamente esta caixa ao longo de sua borda esquerda. No entanto, você pode obter a largura e a altura desta caixa na forma "matemática" — que correspondem, cada uma, a uma unidade a menos, e são inúteis para desenho. Use as funções X-EXTENT e Y-EXTENT.
 
 Outras unidades de medida que você vai encontrar são: milissegundos, segundos, minutos e horas; polegadas e pés; kilobytes, megabytes, e gigabytes; e "porcento", que geralmente é convertido para uma proporção com 100 no denominador.
 
-## 0 1 2 3 4 5
-
-## 0 1 2 3 4 5 6 7
-
-## · · · · · · · ·
-
-## · · • · · • · ·
-
-## · · · · · · · ·
-
-## · · • · · • · ·
-
-## · · · · · · · ·
-
-## · · · · · · · ·
 
 
-Index
+# Índice
 
 
-## INDEX
-
-alt-tab, 5, 21, 23, 56 arithmetic, 11, 57, 59, 74, 85 articles, 11, 20, 80, 85 ascii, 58 at, 75 basic skills, 59 bits, 60 boxes, 61 break, 11, 82, 91 built-in types, 62 byte, 58, 62 call, 82, 86 called, 11, 75, 85 canvas, 24, 25 colors, 28, 63 comments, 18, 19, 56, 64 compatibly, 86 compiler, 4, 9 conditionals, 11, 56, 65, 100 conjunctions, 11, 85 console, 66 contractions, 68, 85 coordinates, 118 cursor, 5, 22, 37, 39, 44, 72, 80, 83 debugging, 67 deciders, 11, 68, 69, 91, 105 definite articles, 11, 80 desktop, 4, 5 directory, 6, 15, 56 document, 6 drawing, 24, 25, 70 dump, 6 editor, 4, 7 ellipse, 71 employ, 82, 107 equal, 11, 85 equations, 12 escape, 6, 7 events, 17, 20, 22, 72, 73 exe, 9, 56 exit, 11, 68, 82, 91 expressions, 11, 57, 59, 74, 85 fields, 75, 98 files, 76, 77 finder, 4, 6
+## ÍNDICE
 
 ```
+alt-tab, 5, 21, 23, 56 
+arithmetic, 11, 57, 59, 74, 85 
+articles, 11, 20, 80, 85 
+ascii, 58 
+at, 75 
+basic skills, 59 
+bits, 60 
+boxes, 61 
+break, 11, 82, 91 
+built-in types, 62 
+byte, 58, 62 call, 82, 86 
+called, 11, 75, 85 
+canvas, 24, 25 
+colors, 28, 63 
+comments, 18, 19, 56, 64 
+compatibly, 86 
+compiler, 4, 9 
+conditionals, 11, 56, 65, 100 
+conjunctions, 11, 85 
+console, 66 
+contractions, 68, 85 
+coordinates, 118 
+cursor, 5, 22, 37, 39, 44, 72, 80, 83 
+debugging, 67 
+deciders, 11, 68, 69, 91, 105 
+definite articles, 11, 80 
+desktop, 4, 5 
+directory, 6, 15, 56 
+document, 6 
+drawing, 24, 25, 70 
+dump, 6 
+editor, 4, 7 
+ellipse, 71 
+employ, 82, 107 
+equal, 11, 85 
+equations, 12 
+escape, 6, 7 
+events, 17, 20, 22, 72, 73 
+exe, 9, 56 exit, 11, 68, 82, 91 
+expressions, 11, 57, 59, 74, 85 
+fields, 75, 98 
+files, 76, 77 
+finder, 4, 6
 finding, 7
 flags, 62, 85, 89
 flicker, 24
@@ -4358,8 +3801,6 @@ point, 86
 pointers, 62, 82, 89
 polygons, 97
 possessives, 98
-```
-```
 prepositions, 11, 85
 printing, 53, 99
 privatize, 49, 82, 95
@@ -4405,4 +3846,11 @@ void, 62, 89
 whereabouts, 98
 writer, 4, 8
 wyrd, 62
+
+```
+
+```
+
+```
+
 ```
