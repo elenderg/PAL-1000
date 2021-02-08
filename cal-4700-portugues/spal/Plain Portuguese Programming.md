@@ -1,5 +1,3 @@
-
-
 # Programação em Português Simples
 
 Copyright © 2006 2021
