@@ -392,12 +392,12 @@ como pintar
 
 Você pode inserir um comentário simples de cada vez ou você pode selecionar um conjunto inteiro de linhas e executar um desses dois comandos abaixo:
 
-O `bloco de notas` exibe comentários simples na cor azul claro, o que acaba por ser muito útil. Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:
- `Utilize a cor azul claro como cor dos comentários.`.
-
 ```
 Comentar T ou Transformar comentários em código U
 ```
+
+O `bloco de notas` exibe comentários simples na cor azul claro, o que acaba por ser muito útil. Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:
+ `Utilize a cor azul claro como cor dos comentários.`.
 
 ## OBSERVAÇÕES
 
