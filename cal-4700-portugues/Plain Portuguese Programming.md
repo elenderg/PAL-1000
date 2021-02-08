@@ -1940,28 +1940,25 @@ O compilador consegue criar uma caixa. Bem como obter a largura, altura o ponto 
 
 ## TIPOS PREDEFINIDOS/EMBUTIDOS
 
-```
+
 O compilador tabalha com 6 espécies de tipos de dados primitivos: BYTE, WYRD, NÚMERO, PONTEIRO, FLAG e RECORD.
-```
-```
+
+
 Bytes. Bytes, como você já sabe, nada mais são do que 8 bits de dados binários sequenciais. O compilador trabalha no formato decimal, logo valor de um byte vai de 0 até 255. O compilador usa a tabela ASCII sempre que é necessário converter um byte para uma caractere.
-```
-```
+
 Wyrds. As wyrds são necessárias para comunicação com o Windows/Processador. Eles têm 16 bits de comprimento sendo que o valor mínimo corresponde a -32768 e o valor máximo corresponde a +32767. Os bits dentro de cada byte são armazenados da esquerda para a direita, mas os bytes em si são armazenadas da direita pra esquerda. Infelizmente essa é uma das coisas que não é possível alterar.
-```
-```
+
 Números. O compilador trabalha números inteiros. Ou seja, números positivos e negativos. Eles têm 32 bits de comprimento com o valor mínimo sendo -2147483648 e o valor máximo sendo +2147483647. São armazenados da direita para a esquerda.
-```
-```
+
 Pointers. OS endereços de memória são armazenados em ponteiros de 32 bits de comprimento, da direita para a esquerda. Os ponteiros possuem o mesmo intervalo que os NÚMEROS inteiros, mas os números negativos são reservados para uso do Windows.
 O endereço 0 é inválido e é chamado de NIL. Para fazer com que um ponteiro fique vazio (NIL) é só usar o comando ESVAZIAR.
-```
+
 Flags. Apesar de ocuparem 32 bits na memória apenas o bit mais significativo da direita é utilizado. Na verdade, são os 8 primeiros bits começando a partir da esquerda, mas na prática é como se fosse o que eu falei antes. Dessa forma, o valor 0 é interpretado como "não" ou "falso" e 1 como "sim" ou "verdadeiro". Qualquer outro valor é inválido. Você pode LIMPAR uma flag para indicar "não" ou DEFINIR uma flag para indicar "sim".
 
-```
+
 Records. O último dos meus tipos embutidos é o record. O protótipo inicial ocupa zero bits na memória, mas você pode definir records de qualquer comprimento adicionando "campos" para o registro protótipo. Estes campos podem ser baseados em qualquer um dos
 tipos primitivos, incluindo outros records que você tenha definido anteriormente.
-```
+
 
 ## CORES
 
@@ -1997,38 +1994,31 @@ violeta
 
 ## COMENTÁRIOS
 
-```
-Existem 3 tipos de comentários disponíveis no compilador. Aqui está uma descrição exata de cada um.
-```
-```
-Um "comentário" é qualquer coisa entre o uma barra invertida e o final de uma linha:
-```
-```
-O editor de texto exibe comentários na cor do azul claro para que sejam fáceis de encontrar.
-Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:<br/>   <code>Utilize a cor azul claro como cor dos comentários.</code>
-```
 
-</code>
+Existem 3 tipos de comentários disponíveis no compilador. Aqui está uma descrição exata de cada um.
+
+Um "comentário" é qualquer coisa entre o uma barra invertida e o final de uma linha:
+
+O editor de texto exibe comentários na cor do azul claro para que sejam fáceis de encontrar.
+Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:
+`Utilize a cor azul claro como cor dos comentários.`
+
 Os comentários podem começar em qualquer lugar da linha, mas terminam quando a linha termina. No entanto, você pode incluir ou excluir blocos inteiros do código selecionado usando os comandos "Comentário" e "Sem Comentário" no meu editor.
 
-```
+
 Existe outro tipo de comentário que é chamado de "observação. Ele não possui uma cor diferenciada nem é afetado pelos comandos mencionados acima. Exemplo:
-```
-```
+
 [ bytes imprimíveis ]
-```
-```
-Onde "imprimível" significa qualquer byte no gráfico ASCII, exceto caracteres com valores de 0 a 31, o byte de exclusão, e os bytes indefinidos 129, 141, 143, 144, 157.
-```
-```
+
+Onde "imprimível" significa qualquer byte da tabela ASCII, exceto caracteres com valores de 0 a 31, o byte de exclusão, e os bytes indefinidos 129, 141, 143, 144, 157.
+
 Observações podem ser colocadas em qualquer lugar, mesmo no meio de uma frase. Mas a fim de evitar erros, as observações também não podem ocupar mais de uma linha. Conforme dito antes, elas não são realçadas. Então use como observação e não como comentário.
-```
-```
+
 O termo "ruído", se refere a todos os caracteres da tabela ASCII cujo valor esteja entre 0 e 31, o byte de espaço, o byte de exclusão, os bytes indefinidos 129, 141, 143, 144, 157, e o byte de espaço rígido. O compilador reconhece estes bytes como separadores, claro, mas, fora isso, não faz nada com eles.
-```
-```
-\este é um comentário que termina com o byte CR
-```
+
+
+`\este é um comentário que termina com o byte CR`
+
 
 ## CONDIÇÕES
 
