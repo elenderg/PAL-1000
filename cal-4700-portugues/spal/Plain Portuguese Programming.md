@@ -1417,7 +1417,8 @@ O arquivo executável será salvo na mesma pasta do arquivo que foi compilado. O
 
 Os arquivos podem conter comentários e três tipos de definições: tipos, variáveis globais e rotinas. Em qualquer ordem que você achar melhor. Você pode usar letras maiúsculas, minúsculas, misturar tudo, tanto faz. As rotinas podem conter dois tipos de comandos: CONDICIONAIS e IMPERATIVOS. Se você está ficando confuso tentando ler esta seção do começo ao fim, tente pesquisar os tópicos acima no restante do documento, e aí sim volte para o glossário.
 
-Um aviso importante. O compilador não permite o uso de comandos condicionais aninhados. (Ou seja, um `Se` dentro de outro). O compilador não permite o uso de comandos de repetição aninhados. (Ou seja, um `loop` dentro de outro). O compilador também não trabalha com números reais, equacões, ou qualquer outro tipo de número que não seja inteiro ou recional. Basicamente o objetivo é utilizar a menor quantidade possível de matemática nos programas, assim como você faz na vida real.
+Um aviso importante. O compilador não permite o uso de comandos condicionais aninhados. (Ou seja, um `Se` dentro de outro). O compilador não permite o uso de comandos de repetição aninhados. (Ou seja, um `loop` dentro de outro). O compilador também não trabalha com números reais, equações, ou qualquer outro tipo de número que não seja inteiro ou racional. Basicamente o objetivo é utilizar a menor quantidade possível de matemática nos programas, assim como você faz na vida real.
+
 
 ## ARITMÉTICA
 
@@ -1800,7 +1801,7 @@ Um dos aspectos chave do compilador é a forma que ele trabalha com caixas. Uma 
 
 ```
 Um lado é uma coordenada.
- 
+
 Uma caixa tem
 Um lado esquerdo, 
 Um lado de cima, 
@@ -1809,6 +1810,7 @@ Um lado de baixo,
 Um canto no canto superior esquerdo e
 Um segundo canto no canto inferior direito.
 ```
+
 Esta é uma imagem de uma caixa, com todas as partes acima identificadas. Note que estou usando os apelidos dos campos aqui, como você provavelmente usará em seus programas.
 
 ```

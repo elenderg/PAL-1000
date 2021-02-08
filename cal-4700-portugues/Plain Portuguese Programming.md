@@ -768,19 +768,14 @@ como pintar
 Se você é um programador inteligente com muita experiência e uma profunda compreensão de gramática, você será capaz de deduzir que o artigo indefinido no início da primeira definição indica que estamos definindo um tipo, não é uma variável.
 Se você não for, você vai simplesmente pensar, "Um botão tem uma caixa e um nome". Também não há problemas em pensar dessa forma.
 
-
 Mas se você é um leitor observador, experiente ou não, você irá concluir que botões não requerem alocação de memória dinâmica, já que usamos a palavra "fazer" em vez de "criar" no cabeçalho da segunda definição.
-
 
 E você verá também, espero eu, que a largura de um botão depende do seu nome, e
 que o ponto com que começamos está na parte inferior direita do botão.
 
-
-
 ## TRABALHANDO COM BOTÕES
 
 Queremos ver nossos botões na tela, é claro, e queremos ser capazes de clicar neles para fazer as coisas acontecerem. Aqui estão algumas rotinas complementares:
-
 
 ```
 Para desenhar um botão:
@@ -803,9 +798,7 @@ A segunda rotina é um exemplo de um tipo especial de rotina que me diz como tom
 
 Apenas lembre-se de que não existe meio termo numa função decisora. Para sair de um decisor, você deve chegar a uma conclusão definida usando os termos `diga sim` ou `diga não`. Nenhum outro comando que você utilize vai funcionar nesse caso..
 
-
 ## HORA DE TRABALHAR COM OS NOSSOS BOTÕES
-
 
 Esse aqui é o esboço dos botões do nosso projeto <code>Como pintar</code>:
 
@@ -841,10 +834,7 @@ como pintar
 
 Em primeiro lugar, definimos os nossos botões. Então posicionamos o botão `Sair` à distância de 1/2 polegada, a partir da extremidade direita da tela e 1/2 polegada acima a partir da extremidade inferior tela. Finalmente, usamos a extremidade esquerda do botão `Sair` — que foi calculado na rotina `fazer um botão` — para criar o botão de Impressão.
 
-
-
 ## 1/2 1/2
-
 
 ## FAZENDO OS NOSSOS BOTÕES FUNCIONAREM
 
@@ -881,8 +871,6 @@ como pintar
 
 Observe que consideramos cada clique como uma nova interação, a qual limpa  conteúdo do painel de informações. E note que a rotina de impressão ainda não funciona de verdade, mas é já que a gente chega lá. Agora é hora de executar o programa para ver se não houve nenhum erro. Clique nos botões. Verifique o conteúdo do painel de informações. Clique no botão `Imprimir`. A mensagem `Imprimindo...` deverá ser exibida. Clique no botão `Sair`. O programa deve se fechar automaticamente.
 
-
-
 ## O CAMPO DE TEXTO
 
 Há uma componente bem útil chamada campo de texto no arquivo `o cérebro` que torna relativamente fácil criar campos de texto nos nossos programas. As funções `Recortar`, `Copiar`, `Colar`, `Desfazer`, `Refazer`, `Selecionar` e até mesmo `Verificar Ortografia`, são totalmente suportadas. Além de tudo, ele é um componente rápido e eficiente. O `bloco de notas`, por exemplo, é na verdade um super bloco de texto. Você pode aprender mais sobre o campo de texto no Glossário que fica no final deste livro.
@@ -917,8 +905,6 @@ Nossa campo de texto é colocada 1/2 polegada acima da parte inferior esquerda d
 
 Observe que, no entanto, que nós implementamos um cursor de texto bem básico, mas eficaz. Quando digitarmos o texto, um underline aparece depois do último caractere inserido.
 
-
-
 ## FAZENDO O CAMPO DE TEXTO FUNCIONAR
 
 Temos de modificar duas das nossas rotinas para que o nosso campo de texto funcione. Também precisaremos gerenciar as atividades do teclado, mas lidaremos com isso nas próximas páginas. Por enquanto, apenas certifique-se de que você atualizou as seguintes rotinas:
@@ -949,8 +935,6 @@ A única alteração para a primeira rotina é a linha que inicializa o campo de
 
 A segunda rotina, porém, tem duas adições. Nós criamos o campo de texto, antes de atualizar a tela. Mas também ocultamos o cursor do mouse para que ele não atrapalhe o usuário quando ele estiver digitando. Mas não se preocupe com isso. O evento "exibir cursor" vai trazê-lo de volta sempre que o mouse se mover.
 
-
-
 ## GERENCIANDO O PRESSIONAMENTO DE TECLAS
 
 Consulte só como é que iremos modificar nosso geremciador de pressionamento de teclas para que ele encaminhe as teclas pressionadas:
@@ -976,7 +960,6 @@ Em seguida nós gerenciamos as teclas de atalho da mesma forma que fizemos anter
 Se o valor da tecla pressionada for uma letra, nós encaminhamos esse valor para outra rotina. Note que estamos verificando o valor do byte da tecla, e não a tecla em si. Temos que fazer isso porque uma tecla pode produzir caracteres imprimíveis, mas também caracteres não imprimíveis. Os comandos <kbd>Ctrl+A</kbd> e <kbd>Alt+A</kbd>, por exemplo, não são imprimíveis. Já o comando <kbd>⇧Shift-A</kbd> é imprimível, mas tem um valor diferente do <kbd>A</kbd> e do <kbd>a</kbd>. Se você quer saber exatamente o que é um `caractere imprimível`, procure o termo no arquivo ` o cérebro`.
 
 Por último, colocamos a tecla que foi pressionada em uma variável local chamada tecla apenas deixar as três linhas que faltam um pouco mais curtas. Nós iremos adicionar mais quatro linhas uma para a tecla <kbd>Home</kbd>, outra para a tecla <kbd>End</kbd>, mais uma para a tecla <kbd>Page Up</kbd> e a última para a tecla <kbd>Page Down</kbd>.
-
 
 ## GERENCIANDO (AINDA MAIS) PRESSIONAMENTOS DE TECLA
 
@@ -1009,10 +992,7 @@ Como mencionamos anteriormente, as letras, números e símbolos são simplesment
 
 Agora vamos executar nosso programa e testá-lo um pouco. O cursor de texto está aparecendo? Excelente. Digite alguma coisa no campo de texto. O painel de informações apagou o `Olá Mundo,`? O cursor do mouse sumiu? Excelente. Agora dê um `Alt+Tab`. Continue até voltar ao `Como pintar`. Excelente. Teste a tecla ⌫ para ver se o alerta sonoro funciona. Muito bem. Mova o mouse. A seta do mouse reapareceu? Ótimo. Clique no botão `Sair`. Ótimo.
 
-
-
 ## A MÁGICA
-
 
 Em nossa pequena caixa de texto, iremos digitamos o nome de qualquer pessoa, lugar ou coisa imaginável e apertar a tecla <kbd>Enter</kbd>. Após alguns segundos, uma pintura original, pintada no mesmo estilo de Claude Monet, aparecerá na tela. O usuário poderá ver várias outras obras de arte similares apenas utilizando as teclas <kbd>Page Up</kbd> e <kbd>Page Down</kbd>. Incrível.
 
@@ -1024,7 +1004,6 @@ Tudo o que precisamos agora são (1) alguns modelos, e (2) uma rotina que pinte 
 
 Bem, a segunda parte é relativamente fácil. Já ensinamos o `Como pintar` a dar uma pincelada na tela — é assim que nosso programa cria o plano de fundo toda vez que ele é executado. Dessa forma, a única diferença é que utilizaremos um modelo como base.
 
-
 É a primeira parte que é complicada. Onde vamos encontrar imagens para qualquer coisa que o usuário digite? Uma paisagem desértica. Um arco íris. Uma Ferrari.
 Não é muito prático guardar todo tipo de imagem em um programa que deveria ter poucos kilobytes. Ainda bem que isso não é necessário. Pra quê guardar imagens se temos o Google?
 No Google Imagens podemos encontrar qualquer imagem que pensarmos.  De graça.
@@ -1033,9 +1012,7 @@ Eis o plano.
 
 Quando a tecla <kbd>Enter</kbd> for pressionada, Google nos dará uma página cheia de URLs (localizadores de recursos) que contém as imagens relacionadas ao termo de pesquisa do usuário. Nós armazenaremos cada uma dessas URLs como se fosse um modelo esperando para virar obra de arte. Então, quando for hora de exibir a obra de arte, iremos pintá-la, usando a rotina que criamos.
 
-
 ## OBRAS DE ARTE
-
 
 Aqui estão as definições básicas de que precisamos para as nossas obras de arte:
 
@@ -1060,15 +1037,11 @@ Agora se você for especialista em estruturas de dados dinâmicos, preste atenç
 A palavra <code>coisa</coisa> na segunda definição é muito especial para mim. Ele indica um objeto de dados dinâmicos que pode ser associado a outros do mesmo tipo para formar uma cadeia - cada objeto apontando para o objeto anterior a ele, e para o objeto que estiver depois dele.
 Se você está pensando que parece uma lista duplamente vinculada, você está certo. Rotinas para inserir, acrescentar e excluir <code>coisas</code>. podem ser encontradas no arquivo <code>o cérebro</code>.
 
-
 <code>As obras de arte</code>, definidas na terceira linha, são um exempo dessas listas.
 
 Agora, se você não é um especialista em estruturas de dados dinâmicos, você realmente não precisa entender todos esses detalhes. Só grave isso: "Uma obra de arte é uma coisa com uma URL e uma pintura" e "As obras de arte são algumas obras de arte".
 
-
-
 ## A OBRA DE ARTE ATUAL
-
 
 Cada URL que o Google nos dá se torna uma obra de arte — inicialmente elas são obras de arte "em andamento", que mais tarde são finalizadas e exibidas ao usuário. Precisamos criar uma forma de saber qual obra de arte está aparecendo na tela, e precisamos criar uma maneira de alternar entre diferentes obras de arte.
 
@@ -1095,8 +1068,6 @@ como pintar
 O método normal de definição da obra de arte atual é mostrado acima. Se a obra de arte solicitada for inexistente, nenhuma ação será tomada. A mensagem de status é necessária porque pode demorar um pouco pro nosso programa terminar de pintar a obra de arte.
 A mensagem é apagada, é claro, antes que o que a obra de arte seja exibida para o usuário.
 
-
-
 ## TRABALHANDO COM OBRAS DE ARTE
 
 Precisamos de uma rotina para pintar nossas obras de arte, é claro, mas (como qualquer artista) nós somente queremos exibir nossas obras que já estiverem prontas. O que significa que também precisamos de uma decissor para dizer qual é qual. Eis o código:
@@ -1122,8 +1093,6 @@ A primeira rotina verifica se a obra de arte está pronta para ser pintada, e se
 Se você é um nerd, você vai reconhecer isso como uma "redução automática de tipo" e vai me perguntar como que o compilador faz isso com tanta eficiência e elegância. Se você não é um nerd, você provavelmente vai pensar: "Tá, mas e daí?" e depois se perguntar por que as outras linguagens de programação não tem essa capacidade.
 
 A segunda rotina é apenas um decisor comum. Note, no entanto, que ela considera uma obra de arte inexistente como se ela já estivesse finalizada. Até porque, se não houver trabalho pra fazer, isso significa que o trabalho acabou, certo?
-
-
 
 ## FAZENDO NOSSAS OBRAS DE ARTE FUNCIONAREM
 
@@ -1184,10 +1153,7 @@ Caso contrário, nós vamos escrever uma mensagem no painel de informações (ca
 
 Se algo deu errado, relatamos o erro. Se a página chegar intacta, tentamos gerar nossas obras de arte em andamento a partir dos dados no buffer. Se as obras estiverem em branco quando terminarmos, isso significa que o Google não entendeu nossa consulta — neste caso, dizemos "Hã?" e saímos. Caso contrário, mostramos ao usuário a primeira obra de arte da lista.
 
-
-
 ## PERCORREDORES
-
 
 Antes de continuarmos com nosso programa, preciso tirar um momento e falar com você sobre análise sintática. Análise sintática é a arte de percorrer um grande bloco de texto um palavra por vez, onde essa palavra pode ser tão pequena quanto uma letra ou tão grande quanto o bloco inteiro. Vamos usar essa sequência de palavras abaixo como nosso exemplo de bloco de texto:
 ```
@@ -1201,12 +1167,9 @@ Um "subpalavra" é definida no arquivo <code>o cérebro</code> como um subconjun
 No entanto, você será capaz de encontrar o "percorredor" no <code>o cérebro</code>. Ele consiste de três subtextos: um subtexto original, um subtexto fonte e um token. E quando você "colocar um percorredor" no nosso texto de amostra, o compilador pega o subtexto original e o subteto fonte no texto (como acima) e define o token como vazio. Então quando você usa o comando "mova o percorredor (regras de amostra)", o compilador aponta a letra `D` da palavra `DOUTOR` como primeiro byte do subtexto fonte. A letra `O` da palavra `OLÁ` é considerada como o primeiro byte do token, e a letra `Á` de `OLÁ` é considerada como o último byte do token. Quando você der novamente o comando, o percorredor se moverá para a próxima palara, sendo que a os bytes do token ficarão na palavra `DOUTOR` e a fonte ficará na letra `N` da palavra `NOME`.
 Pegou a ideia? Excelente.
 
-
 Agora aqui está a parte realmente estranha: você pode usar o precorredor para criar suas próprias rotinas e extrair qualquer tipo de dado de qualquer tipo de arquivo. `Mover um percorredor (regras do compilador)`, por exemplo, é a rotina que uso para analisar o código fonte do programa. `Mova um percorredor (regras de verificação ortográfica)` é utilizado para verificar a ortografia. Em breve, vamos programar a rotina `Mova um percorredor (Google Imagens)` para analisar os dados que vamos pegar da internet.
 
-
 ## OBRAS DE ARTE EM ANDAMENTO
-
 
 Aqui está o código para criar nossas obras de arte em andamento a partir dos dados do Google:
 
@@ -1234,7 +1197,6 @@ como pintar
 Nós nos livramos de qualquer obra de arte antiga e redefinimos o trabalho atual para que não aponte mais para a obra de arte que acabamos de destruir. Então criamos um percorredor e inserimos um laço de repetição.
 
 Dentro do laço, nós movemos o percorredor para a próxima imagem da página. Se não houver mais imagens, nós fizemos algo histórico (afinal de contas, para cada termo existem centenas de correspondências). Se houver, criamos um trabalho em andamento com o comando `crie uma obra de arte usando uma URL`. Mesmo que o token do percorredor não seja uma URL, eu sei que uma URL é apenas um texto, e que o token do percorredor é um subtexto. Como nenhuma outra rotina cria uma obra de arte usando um texto, o compilador acaba por chamar a rotina correta. Em seguida, anexamos a obra de arte na lista de obras e repetimos o processo.
-
 
 ## MOVENDO OS NOSSOS PERCORREDORES
 
@@ -1268,8 +1230,6 @@ Caso covê queira ver os dados retornados pelo Google, você pode salvar o conte
 
 Observe que, uma vez que as subpalavras contêm ponteiros de byte, não os bytes em si, você precisa especificar o alvo do primeiro byte da fonte do percorredor para obter os dados. Eu percebo que isto é um pouco complicado, mas sempre que a gente lida com coisas complicadas, é isso que ocorre.
 
-
-
 ## PREPARANDO A PINTURA
 
 Estamos quase prontos para terminar uma obra de arte. Mas antes que isso aconteça, vamos programar algumas rotinas auxiliares para facilitar as coisas para nós. Aqui estão elas:
@@ -1290,19 +1250,15 @@ Escolha uma cor aleatória variando entre a cor cinza bem clara e a cor branca.
 como pintar
 ```
 
-
 A primeira rotina escolhe um lugar em qualquer lugar — ou perto de — uma caixa. Isso nos permite pincelar as bordas de nossa imagem de uma forma muito artística. Isso também nos permite misturar algumas das cores de fundo, assim o contraste entre a pintura e o fundo não fica tão gritante.
 
 A declaração "privatize", caso esteja se perguntando, cria uma cópia da caixa para que possa mudá-la sem afetar sem querer a rotina que chamou a função. A cópia da caixa original recebe o nome "caixa"; a caixa original recebe o nome "caixa original".
 
 A segunda rotina é nossa rotina de pincelar. Ela obtém uma cor do modelo e dá uma pincelada — a menos que a cor seja quase branca, nesse caso nós substituímos pela cor de fundo. Isso dá a nossas pinturas um toque de "transparência" que aumenta consideravelmente sua atratividade.
 
-
-
 ## PINTANDO
 
 Ah, se o Monet pudesse nos ver agora! Vamos direto ao assunto:
-
 
 ```
 Para finalizar uma obra de arte:
@@ -1330,7 +1286,6 @@ como pintar
 Se a obra de arte estiver em branco ou já estiver concluída, nós a ignoramos. Caso contrário, buscamos o modelo da internet, redimensionamos, centralizamos, e desenhamos o modelo em um fundo novo. Aí sim a gente começa a picelar. Muito. Quando terminarmos, nós extraimos a pintura da tela do quadro. Já que não vamos mais precisar do modelo, nós destruímos ele.
 
 Vá em frente. Experimente. Gostou?
-
 
 ## NAVEGANDO PELAS OBRAS DE ARTE
 
@@ -1361,8 +1316,6 @@ A tecla <kbd>End</kbd> nos mostra a última obra de arte da lista. Se a última 
 A tecla <kbd>Page Up</kbd> mostra a obra de arte que estiver antes da obra de arte atual. Se a primeira obra de arte da lista estiver sendo exibida, nós iremos alertar o usuário.
 
 A tecla <kbd>Page Down</kbd> nos mostra a próxima obra de arte da lista. Novamente, se não houver mais nenhuma obra de arte na lista, nós alertaremos o usuário.
-
-
 
 ## Home, End, Page Up, & Page Down
 
@@ -1399,8 +1352,6 @@ como pintar
 A resposta será mais lenta na primeira vez que você criar uma obra de arte, já que temos que pintá-la antes de mostrá-la. A mensagem "Trabalhando..." aparecerá no painel de informações.
 
 Experimente. Com certeza você vai gostar..
-
-
 
 ## IMPRIMINDO
 
@@ -1448,13 +1399,11 @@ Pintar, Pincelar e Colorir.
 Claude Monet_	Imprimir	Sair
 ```
 
-
 PS: Não se esqueça de testar o programa buscando coisas como "nascer do sol". Ou outras paisagens. O fundo do mar. Montanhas. Rios. Flores e árvores. Pássaros e abelhas. Todas as criaturas, grandes e pequenas. Pessoas famosas. Pessoas comuns. Trens, barcos, aviões, carros antigos. Londres, Paris, Washington DC. Presentes.
 
 A partir de agora, use o Glossário a seguir para guiá-lo em sua jornada na criação de seus próprios programas. Em Português Puro e Simples.
 
 # Glossário Explicativo de Termos e Definições
-
 
 ## VISÃO GERAL
 
@@ -1504,7 +1453,6 @@ O compilador é capaz de até mesmo de:
 `REDUZIR uma fração (razão/proporção).`
 
 Você pode usar mais de uma operação aritmética no mesmo comando, usando as seguintes palavras chave: `MAIS, MENOS, VEZES` e `DIVIDIDO POR`. Você pode ler mais sobre esses operadores na seção `Expressões Aritméticas` deste glossário.
-
 
 ## TABELA ASCII
 
@@ -1656,7 +1604,6 @@ Os códigos 32-127 são comuns **para todas** as diferentes variações da tabel
 |` 126  `|` 176  `|` 7E   `|` 01111110 `|` ~       `|` &#126;      `|`           `|` Til                 `|
 |`127`|`177`|`7F`|`01111111`||`&#127;`||`Deletar`|
 
-
 ## Tabela de códigos ASCII extendida (código de caractere 128-255)
 
 Existem diferentes variações da tabela ASCII de 8 bits. A tabela abaixo está de acordo com o Windows-1252 (CP-1252), que é um superconjunto da ISO 8859-1, também chamado ISO Latina-1.
@@ -1792,7 +1739,6 @@ Existem diferentes variações da tabela ASCII de 8 bits. A tabela abaixo está 
 |` 254  `|` 376  `|` FE   `|` 11111110 `|` þ       `|` &#254;      `|` &thorn;   `|` Letra Latina Minúscula thorn               `|
 |` 255  `|` 377  `|` FF   `|` 11111111 `|` ÿ       `|` &#255;      `|` &yuml;    `|` Letra Latina Minúscula y com trema         `|
 
-
 ## HABILIDADES BÁSICAS
 
 Eu não acho que eu esteja me gabando quando digo que o compilador é rápido e preciso. Sem falar que a linguagem possui um âmbito de aplicação bem amplo. Por exemplo, para zerar o valor interno de alguma variável, basta usar o comando:
@@ -1820,7 +1766,6 @@ E também:
 `uma sequência de caracteres seguida de uma proporção`
 
 O compilador é esperto o bastante para usar automaticamente a rotina de `CONVERTER uma proporção EM um texto` antes de efetuar a junção usando a rotina de `ADICIONAR um texto NO FINAL DE outro texto`. Fantástico. SIm, nós pensamos em tudo (ou quase!).
-
 
 ## BITS
 
@@ -1850,13 +1795,13 @@ Agora, se você não tem mínima idéia do que estou falando aqui, você não é
 
 Mas se você entender o que eu estou dizendo, tenho certeza que você também vai curtir o tópico `Windows` bem no final, e a parte sobre `literais nibles` dentro do tópico `Literais`. Sem mencionar a questão do `Possessivo`, e os `Imperativos`. Além de todas as rotinas de baixo nível do compilador que usam a instrução `INTEL` e/ou o registro EAX.
 
-
 ## CAIXAS
 
 Um dos aspectos chave do compilador é a forma que ele trabalha com caixas. Uma caixa é uma variável do tipo *record*. O código da caixa é basicamente assim:
 
 ```
-Um lado é uma coordenada.<br/>   
+Um lado é uma coordenada.
+
 Uma caixa tem
 Um lado esquerdo, 
 Um lado de cima, 
@@ -1865,6 +1810,7 @@ Um lado de baixo,
 Um canto no canto superior esquerdo e
 Um segundo canto no canto inferior direito.
 ```
+
 Esta é uma imagem de uma caixa, com todas as partes acima identificadas. Note que estou usando os apelidos dos campos aqui, como você provavelmente usará em seus programas.
 
 ```
@@ -1888,13 +1834,9 @@ FAÇA uma caixa USANDO esse lado esquerdo E essa parte de cima E esse lado direi
 ```
 O compilador consegue criar uma caixa. Bem como obter a largura, altura o ponto central entre outras coisas. Ele também consegue dizer se uma caixa ESTÁ DENTRO ou se ela ESTÁ TOCANDO outra caixa. E se um ponto está DENTRO, FORA ou na BORDA da caixa. Sem mencionar todas as outras "Transformações Gráficas" as quais você pode saber mais em outra parte mais abaixo neste glossário.
 
-
-
 ## TIPOS PREDEFINIDOS/EMBUTIDOS
 
-
 O compilador tabalha com 6 espécies de tipos de dados primitivos: BYTE, WYRD, NÚMERO, PONTEIRO, FLAG e RECORD.
-
 
 Bytes. Bytes, como você já sabe, nada mais são do que 8 bits de dados binários sequenciais. O compilador trabalha no formato decimal, logo valor de um byte vai de 0 até 255. O compilador usa a tabela ASCII sempre que é necessário converter um byte para uma caractere.
 
@@ -1907,10 +1849,8 @@ O endereço 0 é inválido e é chamado de NIL. Para fazer com que um ponteiro f
 
 Flags. Apesar de ocuparem 32 bits na memória apenas o bit mais significativo da direita é utilizado. Na verdade, são os 8 primeiros bits começando a partir da esquerda, mas na prática é como se fosse o que eu falei antes. Dessa forma, o valor 0 é interpretado como "não" ou "falso" e 1 como "sim" ou "verdadeiro". Qualquer outro valor é inválido. Você pode LIMPAR uma flag para indicar "não" ou DEFINIR uma flag para indicar "sim".
 
-
 Records. O último dos meus tipos embutidos é o record. O protótipo inicial ocupa zero bits na memória, mas você pode definir records de qualquer comprimento adicionando "campos" para o registro protótipo. Estes campos podem ser baseados em qualquer um dos
 tipos primitivos, incluindo outros records que você tenha definido anteriormente.
-
 
 ## CORES
 
@@ -1946,7 +1886,6 @@ violeta
 
 ## COMENTÁRIOS
 
-
 Existem 3 tipos de comentários disponíveis no compilador. Aqui está uma descrição exata de cada um.
 
 Um "comentário" é qualquer coisa entre o uma barra invertida e o final de uma linha:
@@ -1959,7 +1898,6 @@ Caso você deseje alterar a cor dos comentários, será necessário recompilar o
 
 Os comentários podem começar em qualquer lugar da linha, mas terminam quando a linha termina. No entanto, você pode incluir ou excluir blocos inteiros do código selecionado usando os comandos `Comentar` e `Descomentar` no meu editor.
 
-
 Existe outro tipo de comentário que é chamado de "observação. Ele não possui uma cor diferenciada nem é afetado pelos comandos mencionados acima. Exemplo:
 
 `[ bytes imprimíveis ]`
@@ -1970,10 +1908,7 @@ Observações podem ser colocadas em qualquer lugar, mesmo no meio de uma frase.
 
 O termo "ruído", se refere a todos os caracteres da tabela ASCII cujo valor esteja entre 0 e 31, o byte de espaço, o byte de exclusão, os bytes indefinidos 129, 141, 143, 144, 157, e o byte de espaço rígido. O compilador reconhece estes bytes como separadores, claro, mas, fora isso, não faz nada com eles.
 
-
-
 ## CONDIÇÕES
-
 
 Uma declaração "condicional" é uma declaração com duas partes. A primeira parte determina as condições sob as quais a segunda parte poderá ser executada. Aqui estão alguns exemplos:
 
