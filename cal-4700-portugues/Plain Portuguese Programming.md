@@ -1999,11 +1999,13 @@ Existem 3 tipos de comentários disponíveis no compilador. Aqui está uma descr
 
 Um "comentário" é qualquer coisa entre o uma barra invertida e o final de uma linha:
 
+`\este é um comentário que termina com o byte CR`
+
 O editor de texto exibe comentários na cor do azul claro para que sejam fáceis de encontrar.
 Caso você deseje alterar a cor dos comentários, será necessário recompilar o programa, mudando a seguinte linha de código:
 `Utilize a cor azul claro como cor dos comentários.`
 
-Os comentários podem começar em qualquer lugar da linha, mas terminam quando a linha termina. No entanto, você pode incluir ou excluir blocos inteiros do código selecionado usando os comandos "Comentário" e "Sem Comentário" no meu editor.
+Os comentários podem começar em qualquer lugar da linha, mas terminam quando a linha termina. No entanto, você pode incluir ou excluir blocos inteiros do código selecionado usando os comandos `Comentar` e `Descomentar` no meu editor.
 
 
 Existe outro tipo de comentário que é chamado de "observação. Ele não possui uma cor diferenciada nem é afetado pelos comandos mencionados acima. Exemplo:
@@ -2017,68 +2019,65 @@ Observações podem ser colocadas em qualquer lugar, mesmo no meio de uma frase.
 O termo "ruído", se refere a todos os caracteres da tabela ASCII cujo valor esteja entre 0 e 31, o byte de espaço, o byte de exclusão, os bytes indefinidos 129, 141, 143, 144, 157, e o byte de espaço rígido. O compilador reconhece estes bytes como separadores, claro, mas, fora isso, não faz nada com eles.
 
 
-`\este é um comentário que termina com o byte CR`
-
 
 ## CONDIÇÕES
 
-```
+
 Uma declaração "condicional" é uma declaração com duas partes. A primeira parte determina as condições sob as quais a segunda parte poderá ser executada. Aqui estão alguns exemplos:
-```
+
 ```
 Se a coordenada não estiver dentro da caixa, alerte o usuário.
 Se o número for maior que 3, diga "Isso é muito"; saia.
 Se o botão esquerdo do mouse estiver sendo pressionado, coloque a coordenada do ponteiro em uma coordenada; repita.
 ```
-```
+
 O formato geral é:
-```
+
 ```
 Se isso acontecer, faça isso; isto; aquilo.
 ```
 A palavra SE é necessária. "Isso" representa uma chamada implícita para uma rotina decisora. Se a rotina retornar um "sim", todos os comandos após a vírgula serão executados. Se a rotina retornar um "não", o programa executará a próxima linha.
 
-```
 Observe que os comandos imperativos nos comandos condicionais são separados por ponto e vírgula, e não por pontos, porque o primeiro ponto encontrado indica o fim da instrução.
 A nãos er que o ponto esteja num comentário ou dentro de aspas duplas, é claro.
-```
-```
-Observe também que se você utilizar palavras negativas na chamada implícita do decidor, essas palavras serão descartadas ou serão modificadas adequadamente. Nesse caso o decisor que será chamado é o que não contém as palavras negativas, a única coisa que acontece é que o valor de retorno dele será invertido. Por exemplo, digamos que você use o seguinte comando:<br/>  
-<code>Se a coordenada não estiver dentro da caixa, [...]</code>
-Primeiramente, o compilador vai "descartar" o <code>não</code>. Logo em seguida, ele vai <i>decidir se a coordenada está na caixa</i>. A resposta obtida será então invertida (Se a resposta for "sim", então o retorno será um "não" e vice-versa). Eu sei que parece complicado, mas na verdade não é. E até onde testamos, tem funcionado muito bem, já que os decisores apenas retornam "sim" ou "não". Veja o tópico "Decisores" para mais informações.
-```
 
-Primeiramente, o compilador vai "descartar" o não. Logo em seguida, ele vai *decidir se a coordenada está na caixa*. A resposta obtida será então invertida (Se a resposta for "sim", então o retorno será um "não" e vice-versa). Eu sei que parece complicado, mas na verdade não é. E até onde testamos, tem funcionado muito bem, já que os decisores apenas retornam "sim" ou "não". Veja o tópico "Decisores" para mais informações.
-</code>
-```
+Observe também que se você utilizar palavras negativas na chamada implícita do decidor, essas palavras serão descartadas ou serão modificadas adequadamente. Nesse caso o decisor que será chamado é o que não contém as palavras negativas, a única coisa que acontece é que o valor de retorno dele será invertido. Por exemplo, digamos que você use o seguinte comando:
+
+`Se a coordenada não estiver dentro da caixa, [...]`
+
+Primeiramente, o compilador vai "descartar" o `não`. Logo em seguida, ele vai <i>decidir se a coordenada está na caixa</i>. A resposta obtida será então invertida (Se a resposta for "sim", então o retorno será um "não" e vice-versa). Eu sei que parece complicado, mas na verdade não é. E até onde testamos, tem funcionado muito bem, já que os decisores apenas retornam `sim` ou `não`. Veja o tópico "Decisores" para mais informações.
+
 Por último, lembre-se: o compilador não aceita o aninhamento de declarações condicionais. A filosofia da linguagem entende que esse tipo de declaração acaba por ser sempre desnecessário (por poder ser expresso de outra forma) e quase sempre incerto (gerando resultados indesejados). Não há nenhuma declaração condicional aninhada em todas as mais de 25 mil linhas de código deste projeto. E se você parar pra pensar que este é o compilador de língua portuguesa mais avançado do mundo, verá que elas realmente não são nenhum pouco necessárias. Na verdade, cada uma das declarações condicionais do compilador cabe numa linha só. Pense nisso.
-```
+
 
 ## O CONSOLE
 
 Um "console" é uma interface de texto puro, com a qual você pode interagir de forma limitada. O console padrão parece mais ou menos com a imagem abaixo:
-
-O console pode ser ativado a qualquer momento. Ele ocupa toda a tela e usa a fonte padrão na cor preta no fundo cinza muito claro.
-
-Você pode conversar com o usuário no console usando instruções como estas:
-
-LEIA algo USANDO O CONSOLE PADRÃO.<br/>   MOSTRE algo NO CONSOLE PADRÃO.
-
-Você também pode escrever no console sem avançar para a próxima linha:
-
-MOSTRE algo NO CONSOLE PADRÃO SEM PULAR LINHAS.
-
-Que é útil para "prompts", como o símbolo ">" no exemplo acima.
-
-O console padrão está sempre disponível, mas ele vai aparecer na tela somente quando você precisar informar alguma coisa para ele ou exibir alguma coisa nele. Uma vez exibido, o console permanecerá visível até que você mande o programa exibir outra coisa e atualizar a tela.
-
-O console lembra tudo o que ele exibe e rola automaticamente para cima quando a parte inferior da tela é alcançada. Você pode usar as teclas <kbd>Home</kbd>, <kbd>End</kbd>, <kbd>Page Up</kbd>, <kbd>Page Down</kbd>, e o botão direito do mouse para rolar manualmente.
 
 ```
 Seja bem-vindo ao PAL - <i>Portuguese Compiler And Linker</i>. Qual é o seu nome?
 > Dr. Gerry
 Bom dia, Dr. Gerry. Estou pronto para a minha primeira lição.
 ```
+
+O console pode ser ativado a qualquer momento. Ele ocupa toda a tela e usa a fonte padrão na cor preta no fundo cinza muito claro.
+
+Você pode conversar com o usuário no console usando instruções como estas:
+
+`LEIA algo USANDO O CONSOLE PADRÃO.`
+`MOSTRE algo NO CONSOLE PADRÃO.`
+
+Você também pode escrever no console sem avançar para a próxima linha:
+
+`MOSTRE algo NO CONSOLE PADRÃO SEM PULAR LINHAS.`
+
+Que é útil para "prompts", como o símbolo `>` no exemplo acima.
+
+O console padrão está sempre disponível, mas ele vai aparecer na tela somente quando você precisar informar alguma coisa para ele ou exibir alguma coisa nele. Uma vez exibido, o console permanecerá visível até que você mande o programa exibir outra coisa e atualizar a tela.
+
+O console lembra tudo o que ele exibe e rola automaticamente para cima quando a parte inferior da tela é alcançada. Você pode usar as teclas <kbd>Home</kbd>, <kbd>End</kbd>, <kbd>Page Up</kbd>, <kbd>Page Down</kbd>, e o botão direito do mouse para rolar manualmente.
+
+
 
 ## CONSERTANDO FALHAS E ERROS
 
@@ -2088,7 +2087,7 @@ Se você precisa de uma ferramenta especial para ajudá-lo a consertar seu códi
 
 Dir-vos-ei agora o que fazem os Mestres Osmosianos quando confrontados com um erro na execução do código.
 
-Antes de tudo, eles oram ao bom Deus solicitando sua orientação. Em seguida, eles consideram excluit totalmente a funcionalidade problemática, dessa forma eles se livram de uma vez do problema, e evitam o famoso *[Feature creep](https://en.wikipedia.org/wiki/Feature_creep)*. Em seguida, eles estudam o código, esperando conseguir "discernir" qual é o problema. Se o bug não foi encontrado, eles escolhem um local que seja apropriado para que o programa emita um som de alerta. Se eles não ouvirem o som durante a execução do programa, então tem algo errado na rotina, e eles verificam. Caso eles escutem o som, o comando é movido para próxima rotina, ou para o próximo comando da rotina. O console também pode ajudar muito.</p>
+Antes de tudo, eles oram ao bom Deus solicitando sua orientação. Em seguida, eles consideram excluit totalmente a funcionalidade problemática, dessa forma eles se livram de uma vez do problema, e evitam o famoso *[Feature creep](https://en.wikipedia.org/wiki/Feature_creep)*. Em seguida, eles estudam o código, esperando conseguir "discernir" qual é o problema. Se o bug não foi encontrado, eles escolhem um local que seja apropriado para que o programa emita um som de alerta. Se eles não ouvirem o som durante a execução do programa, então tem algo errado na rotina, e eles verificam. Caso eles escutem o som, o comando é movido para próxima rotina, ou para o próximo comando da rotina. O console também pode ajudar muito.
 
 Nos raríssimos casos, em que várias repetições dos procedimento descrito acima falham em providenciar uma conclusão aceitável, os Mestres da Sociedade OSmosiana escolhem outro lugar no código e inserem o seguinte comando:
 
@@ -2114,9 +2113,9 @@ As rotinas decisoras sempre começam com as mesmas três palavras. O formato é:
 ```
 PARA DECIDIR SE alguma coisa:
 ```
-Esse "alguma coisa" deve seguir as regras existentes para nomes de rotina e tipicamente incluirá um verbo como o É, ESTÁ, PODE, FAZ, DEVE, ETC. Perceba que a conjugação dos verbos não importa muito.
+Esse "alguma coisa" deve seguir as regras existentes para nomes de rotina e tipicamente incluirá um verbo como o `É`, `ESTÁ`, `PODE`, `FAZ`, `DEVE`, ETC. Perceba que a conjugação dos verbos não importa muito.
 
-O ideal é sempre criar decisores "positivos". Ou seja, se você quiser evitar dores de cabeça no futuro usar as palavras NÃO, NUNCA, NENHUM, NADA e similares. Não se preocupe, caso seja realmente necessário utilizar tais temos, você pode. Mas na prática o compilador vai meio que desfazer tudo que você fez.
+O ideal é sempre criar decisores "positivos". Ou seja, se você quiser evitar dores de cabeça no futuro usar as palavras `NÃO`, `NUNCA`, `NENHUM`, `NADA` e similares. Não se preocupe, caso seja realmente necessário utilizar tais temos, você pode. Mas na prática o compilador vai meio que desfazer tudo que você fez.
 
 Por exemplo, se você criar uma rotina que "decide se uma coordenada está dentro de uma caixa", o compilador automaticamente vai saber dizer se "uma coordenada NÃO está dentro de uma caixa. Isso funciona pra quelauqer tipo de rotina decisora. Para saber mais, procure os exemplos disponíveis nos arquivos de código fonte.
 
@@ -2170,26 +2169,21 @@ ESTÁ ACIMA [DE]
 É MUITO CLARO
 É UM ESPAÇO EM BRANCO
 ESTÁ ENTRE
+```
 
+## DESENHANDO
+
+Você pode dizer ao compilador coisas como:
 
 ```
-## DESENHANDO Você pode dizer ao compilador coisas como:
-
-```
-<code>DESENHE uma coisa</code>.
-<code>DESENHE uma coisa USANDO uma cor</code>.
-<code>DESENHE uma coisa USANDO uma cor na borda E uma cor no preenchimento</code>.
-<code>DESENHE uma coisa DENTRO DE uma caixa USANDO uma fonte E uma cor</code>.
-<code>DESENHE uma coisa NO CENTRO DE uma caixa USANDO uma determinada fonte E uma cor</code>.
-```
-.
+DESENHE uma coisa.
 DESENHE uma coisa USANDO uma cor.
 DESENHE uma coisa USANDO uma cor na borda E uma cor no preenchimento.
 DESENHE uma coisa DENTRO DE uma caixa USANDO uma fonte E uma cor.
 DESENHE uma coisa NO CENTRO DE uma caixa USANDO uma determinada fonte E uma cor.
-</code>
+```
 
-E o compilador irá renderizar tudo numa "tela virtual", uma tela invisível do mesmo tamanho e formato que a tela do monitor. Dessa forma, quando você utilizar o comando:
+E o compilador irá renderizar tudo numa "tela virtual", ou seja, uma tela invisível do mesmo tamanho e formato que a tela do monitor. Dessa forma, quando você utilizar o comando:
 
 ```
 ATUALIZE A TELA.
@@ -2201,7 +2195,7 @@ O compilador irá substituir o conteudo da tela pelo conteúdo da tela virtual e
 ATUALIZA A TELA USANDO [o conteúdo de] uma caixa.
 ```
 
-O compliador vai transferi apenas os pixels que estiverem dentro da caixa.
+O compliador vai transferir apenas os pixels que estiverem dentro da caixa.
 
 As regras para impressão funcionam de forma diferente. Nesse caso, o compilador usa "a tela da impressora" e envia os desenhos para um dispositivo de impressão assim que você finaliza página. Veja a seção "Imprimindo" para mais detalhes.
 
