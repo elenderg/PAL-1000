@@ -3272,93 +3272,81 @@ um raio.
 
 Esta é uma imagem de uma caixa arredondada, com todas as partes acima identificadas. Observe que estou usando os apelidos dos campos aqui, da mesma forma que você provavelmente irá usar em seus programas.
 
+DIREITA ESQUERDA
+
+TOPO
+
+BASE
+
+CANTO SUPERIOR ESQUERDO
+
+CANTO INFERIOR DIREITO
+
+•
+
+•
+
+•
+
+RAIO
+
 O compilador consegue fazer caixas arredondadas a partir de especificações de largura e altura, ou apenas usando um par de pontos de coordenadas. O compilador consegue criar uma caixa arredondada até mesmo usando outra caixa como base. O esquema de funcionamento é mostrado abaixo:
 
-`FAÇA uma caixa arredondada com tantas polegadas de largura POR tantas polegadas de altura COM um raio de tantas polegadas.`<br/>   `FAÇA uma caixa arredondada USANDO esta localização E esta outra localização E este raio.`<br/>   `FAÇA uma caixa arredondada USANDO esta coordenada esquerda E esta coordenada superior E esta coordenada direita E esta coordenada inferior E este raio.`<br/>   `FAÇA uma caixa arredondada USANDO esta caixa E este raio.`<br/>  
+`FAÇA uma caixa arredondada com tantas polegadas de largura POR tantas polegadas de altura COM um raio de tantas polegadas.`
+`FAÇA uma caixa arredondada USANDO esta localização E esta outra localização E este raio.`
+`FAÇA uma caixa arredondada USANDO esta coordenada esquerda E esta coordenada superior E esta coordenada direita E esta coordenada inferior E este raio.`
+`FAÇA uma caixa arredondada USANDO esta caixa E este raio.` 
 
-O compilador consegue DESENHAR uma caixa arredondada. Bem como obter a largura, altura o ponto central entre outras coisas. E se um ponto está DENTRO, FORA ou na BORDA da caixa. Sem mencionar todas as "Transformações Gráficas" de costume.
+O compilador consegue ` DESENHAR`  uma caixa arredondada. Bem como obter a largura, altura o ponto central entre outras coisas. E se um ponto está DENTRO, FORA ou na BORDA da caixa. Sem mencionar todas as ` Transformações Gráficas`  de costume.
 
-##
-###### DIREITA ESQUERDA</h2>
 
-##
-###### TOPO
-
-##
-###### BASE
-
-##
-###### CANTO SUPERIOR ESQUERDO
-
-##
-###### CANTO INFERIOR DIREITO
-
-## •
-
-## •
-
-## •
-
-##
-###### RAIO
 
 
 ## ROTINAS
 
 Uma rotina é um pedaço de código que manipula uma ou mais variáveis em algumas formas bem definidas. As variáveis passadas para uma rotina são chamadas de "parâmetros", podendo ser apenas parâmetros de entrada, parâmetros de saída ou ambos. As variáveis definidas dentro de uma rotina são chamadas de "variáveis locaos" e não podem ser vistas fora da rotina (a menos que sejam passados como parâmetros). As variáveis que são acessíveis a todas as rotinas são chamadas de "variáveis globais".
 
-```
 Cada rotina tem duas partes, cabeçalho e corpo. O cabeçalho diz o que a rotina faz e define os parâmetros com os quais ele funciona. O corpo contém uma ou mais afirmações que fazem a rotina realmente funcionar. Declarações podem ser "condicionais" ou "imperativas". Existem três tipos de rotinas.
-```
 
-```
 Um "procedimento" é uma rotina que simplesmente faz algo — um procedimento pode ser longo ou curto, grande ou pequeno, fácil ou difícil. Os cabeçalhos de procedimento sempre se parecem com isto:
-```
 
 ```
 PARA fazer alguma coisa:
 ```
 
-```
 Um "decisor" é uma rotina que diz "sim" ou "não" sobre algo, geralmente depois de examinar os parâmetros passados para ele. Um cabeçalhos de decisão é assim:
-```
+
 
 ```
 PARA DECIDIR SE alguma coisa:
 ```
 
-```
+
 Uma "função" é uma rotina que extrai, calcula ou deriva algo usando uma variável. Cabeçalhos de função assumem este formato:
-```
+
 
 ```
 PARA POR algo QUE FAZ PARTE DE algo EM uma variável temporária:
 ```
 
-```
+
 Ao contrário dos procedimentos e dos decisores, as funções não são normalmente chamadas directamente.
 Em vez disso, o "algo que faz parte de algo" é utilizado como se fosse um campo em um registro.
 Como um "centro que está dentro da caixa", que você não encontrará no registro "caixa", porque ele é calculado por uma função automaticamente.
-```
+
 
 ## SONS
 
-```
 Você pode reproduzir sons usando comandos como este:
-```
 
 ```
 REPRODUZA um arquivo wave.
 TOQUE um arquivo wave E AGUARDE.
 ```
 
-```
 O "arquivo wave" deve estar no formato ".wav". Se você tocar e não utilizar o comando aguarde/espere, o seu programa continuará sendo executado enquanto o som é reproduzido. Se você utilizar o comando aguarde/espere, o fluxo de execução do seu programa vai parar até que o som tenha terminado de tocar.
-```
 
-```
 Você também pode usar os seguintes comandos:
-```
 
 ```
 APITE.
@@ -3366,9 +3354,8 @@ CACAREJE (alerte o usuário).
 ASSOVIE (susurre).
 ```
 
-```
-O primeiro toca o som de erro padrão do Windows. O "cacarejo" é o som de notificação padrão do compilador, codificado em formato hexadecimal no compilador, basta pesquisar por "cluck". O terceiro som é o som de erro da CPU e não permite que o programa continue a ser executado até que termine de ser tocado, tornando-se a escolha ideal para testes. Consulte "Depuração" para obter mais informações.
-```
+O primeiro comando toca o som de erro padrão do Windows. O "cacarejo" é o som de notificação padrão do compilador, codificado em formato hexadecimal no compilador, basta pesquisar por "cluck". O terceiro som é o som de erro da CPU e não permite que o programa continue a ser executado até que termine de ser tocado, tornando-se a escolha ideal para testes. Consulte ` Depuração`  para obter mais informações.
+
 Você também pode falar no seu computador, com as trinta e nove funções esotéricas de "gerenciamento de fala" do Windows, ou usando um desses três comandos a seguir:
 
 ```
@@ -3377,9 +3364,8 @@ DIGA um texto E AGUARDE.
 AGUARDE ATÉ QUE A FALA TERMINE.
 ```
 
-```
 Para silenciar a conversa (mas não os outros sons), ative "a bandeira silenciosa".
-```
+
 
 ## IMPERATIVOS ESPECIAIS
 
@@ -3387,33 +3373,39 @@ Os três "imperativos especiais" do compilador provavelmente estão mais para "i
 
 Um imperativo de "emprego" deve ser a única declaração em uma rotina. Esse tipo de imperativo faz com que o compilador utilize outra rotina no lugar da que foi chamada. Só funciona quando os parâmetros de ambas as rotinas estão na mesma ordem e são do mesmo tipo. Para encontrar exemplos, basta progurar por ": employ". Você pode dar mais de um nome para uma rotina, usando ponto e vírgula no lugar de dois pontos, assim:
 
-`PARA limpar a tela;<br/>  
-PARA apagar a tela;<br/>  
-Para deixar a tela em branco:<br/>  
-[código aqui]`
-
+```
+PARA limpar a tela; 
+PARA apagar a tela; 
+Para deixar a tela em branco: 
+[código aqui]
+```
 Um imperativo "push" avalia uma expressão e coloca o resultado — que deve ser um valor contendo um, dois ou quatro bytes — na pilha do sistema. Você provavelmente não vai precisar usar ele. Nem eu uso isso. Isso é um resquício dos dias em que o comando CHAMAR ainda estava em desenvolvimento (Consulte o tópico Windows para maiores informações sobre esse comando). Só pra você saber, o formato geral do comando é:
 
-PUSH uma expressão.
+`PUSH uma expressão.`
 
 Um imperativo "Intel" insere código de máquina no seu arquivo executável. É possível encontrar exemplos complexos em vários lugares do compilador. É uma pena que o Intel não é uma máquina de pilha. O formato é trivial:
 
-INTEL nibble literal.
+`INTEL nibble literal.`
 
 Se você está se perguntando por que razão o compilador não possui um assembler (montador) integrado, a resposta é simplesmente porque não é necessário. Na verdade, há muito pouca linguagem da máquina no meu compilador, e conforme novas funções vão sendo adicionadas, mais e mais desses comandos vão sendo substituídos por português simples. Além disso, um dos princípios dos Mestres da Sociedade Osmosiana é que o melhor assembler sempre foi e sempre será a sua cabeça. É uma forma de manter seu cérebro em dia.
 
 
 ## LOCALIZAÇÕES
 
-Uma "localização" ou "posição" ou ainda "ponto na tela" é um dos objetos gráficos mais básicos do compilador. Esta não é bem a melhor definição pra gora vai servir:
+Uma "localização" ou "posição" ou ainda "ponto na tela" é um dos objetos gráficos mais básicos do compilador. Esta não é bem a melhor definição pra agora vai servir:
 
-Uma localização é um registro que tem uma coordenada x e uma coordenada y.
+`Uma localização é um registro que tem uma coordenada x e uma coordenada y.`
 
 Esta é uma imagem de uma localização, com as partes acima identificadas. Note que estou usando os apelidos dos campos aqui, como você provavelmente usará em seus programas.
 
+COORDENADA X •
+
+COORDENADA Y •
+
 Localizações são feitas a partir de um x e um y, ou você pode obter uma de outro lugar:
 
-`FAÇA uma localização USANDO isto E aquilo.`<br/>   `ARMAZENE a posição do mouse EM uma localização.`<br/>  
+`FAÇA uma localização USANDO isto E aquilo.`
+`ARMAZENE a posição do mouse EM uma localização.`  
 
 O compilador consegue DESENHAR uma localização. Mas não espere que seja rápido o suficiente para ser útil. O processamento de vídeo do Windows é uma das suas piores características. E já que ele só oferece recursos ruins, isso não é lá muito encorajador.
 
@@ -3421,48 +3413,64 @@ Posições são usadas principalmente como componentes de outros objetos gráfic
 
 O compilador possui rotinas que podem identificar se uma localização ESTÁ DENTRO ou NA BORDA de qualquer outro objeto gráfico (na borda significa em cima). Quando você vê se algo está DENTRO, isso inclui as bordas. As rotinas que identificam se algo está na borda são usadas pelo caderno e incluem uma margem de erro de 3 pixels para ficar mais fácil de clicar nas formas. Você pode copiar essas rotinas e retirar essas margens de tolerância, se quiser.
 
-##
-###### COORDENADA X •
-
-##
-###### COORDENADA Y •
-
 
 ## TEXTO
 
 O compilador armazena "strings" em duas partes: um registro integrado que contém dois ponteiros de byte. O primeiro e o último. Além de armzenar os bytes de cada letra, assim:
 
-Os números do diagrama, caso você não tenha percebido, são apenas endereços fictícios. Um texto está em branco se o *primeiro ponteiro de byte* estiver vazio (sem memória alocada nele ainda), ou se o último ponteiro de byte for menor que o primeiro (o que permite a pré-alocação de memória). Observeque mesmo que a parte de dados de um texto seja dinamicamente alocada, você nunca tem que "criar" ou "destruir" a string. O compilador toma conta de tudo isso, assim você pode usar comandos como:
-
-`COLOQUE algo EM um texto.`<br/>   `ADICIONE algo NO FINAL DE um texto`<br/>   `ADICIONE algo A um texto ANTES de um byte#.`<br/>   `REMOVA O PRIMEIRO BYTE DE um texto.`<br/>   `REMOVA O ÚLTIMOO BYTE DE um texto.`<br/>   `PREENCHA um texto USANDO um byte A PARTIR DE uma contagem<.code><br/>  
-<code>REMOVA OS BYTES INICIAIS DE um texto USANDO uma contagem.`<br/>   `REMOVA OS BYTES FINAIS DE um texto USANDO uma contagem.`<br/>   `REMOVA OS BYTES DE um texto USANDO um subtexto.`<br/>  
-
-Você também pode COLOCAR TODO O TEXTO EM LETRAS MAIÚSCULAS, MINÚSCULAS, ou COLOCAR O PRIMEIRO BYTE EM LETRAS MAIÚSCULAS. Além de obter o COMPRIMENTO de um texto, em bytes. Sem mencionar o comando:
-
-OBTENHA uma largura USANDO um texto E uma fonte.
-
-Além disso, você pode concatenar (unir, juntar) um texto com outro — ou com outros tipos de dados — usando os operadores ENTÃO, EM SEGUIDA ou JUNTO COM . Consulte o tópico "Expressões" para uma descrição da implementação dessa rotina.
-
-##
-###### 16 27 H E L L O W O R L D!
+`16 27 H E L L O W O R L D!`
 
 ```
 primeiro último 161718192021222324252627
 ```
 
+Os números do diagrama, caso você não tenha percebido, são apenas endereços fictícios. Um texto está em branco se o `primeiro ponteiro de byte` estiver vazio (sem memória alocada nele ainda), ou se o último ponteiro de byte for menor que o primeiro (o que permite a pré-alocação de memória). Observeque mesmo que a parte de dados de um texto seja dinamicamente alocada, você nunca tem que `criar` ou `destruir` a string. O compilador toma conta de tudo isso, assim você pode usar comandos como:
+
+`COLOQUE algo EM um texto.`
+`ADICIONE algo NO FINAL DE um texto`
+`ADICIONE algo A um texto ANTES de um byte#.`
+`REMOVA O PRIMEIRO BYTE DE um texto.`
+`REMOVA O ÚLTIMOO BYTE DE um texto.`
+`PREENCHA um texto USANDO um byte A PARTIR DE uma contagem<.code>
+`REMOVA OS BYTES INICIAIS DE um texto USANDO uma contagem.`
+`REMOVA OS BYTES FINAIS DE um texto USANDO uma contagem.`
+`REMOVA OS BYTES DE um texto USANDO um subtexto.`
+
+Você também pode `COLOCAR TODO O TEXTO EM LETRAS MAIÚSCULAS`, `MINÚSCULAS`, ou `COLOCAR APENAS O PRIMEIRO BYTE EM LETRAS MAIÚSCULAS`. Além de obter o COMPRIMENTO de um texto, em bytes. Sem mencionar o comando:
+
+`OBTENHA uma largura USANDO um texto E uma fonte.`
+
+Além disso, você pode concatenar (unir, juntar) um texto com outro — ou com outros tipos de dados — usando os operadores ENTÃO, EM SEGUIDA ou JUNTO COM . Consulte o tópico "Expressões" para uma descrição da implementação dessa rotina.
+
+
+
 ## SUBTEXTO
 
 Uma "substring" ou subtexto faz parte de um texto. Subtextos são implementadoss através um registro embutido que se parece como um texto — um subtexto tem um par de ponteiros de bytes chamado primeiro e último — o que os torna compatíveis com o texto. Se, por exemplo, isso fosse um texto:
 
+```
+16 27 H E L L O W O R L D!
+```
+```
+primeiro último 161718192021222324252627
+```
+
 Isto poderia ser um subtexto (a parte "WORLD"):
+
+```
+22 26
+```
+```
+primeiro último
+```
 
 Você pode usar o comando abaixo:
 
-COLOQUE um subtexto EM um texto.
+`COLOQUE um subtexto EM um texto.`
 
 Para fazer com que o compilador defina o primeiro byte do subtexto e o último byte do subtexto abarquem completamente o texto. Isso permite que você consiga avançar ou retroceder dentro do texto ao adicionar algo ao primeiro byte ou removendo algum item do último byte. Você também pode usar o comando:
 
-POSICIONE um subtexto EM um texto.
+`POSICIONE um subtexto EM um texto.`
 
 O que define o primeiro byte, mas não o último byte, do subtexto, deixando-o inicialmente em branco mas pronto para manipulação — ao adicionar o pultimo byte você pode "adicionar" o texto original no seu subtexto um byte por vez.
 
@@ -3470,18 +3478,7 @@ Procure por "subtexto" no código fonte para obter exemplos.
 
 No entanto, o uso principal dos subtextos ocorre nos "percorredores", que são discutidos no neste glossário sob o tópico de mesmo nome.
 
-##
-###### 16 27 H E L L O W O R L D!
 
-```
-primeiro último 161718192021222324252627
-```
-##
-###### 22 26
-
-```
-primeiro último
-```
 
 ## TERMOS
 
@@ -3508,24 +3505,28 @@ Agora sei que isto parece complicado, e realmente é. Mas você não precisa pen
 
 Existe um componente chamado "campo de texto". Ele é utilizado para implementar campos editáveis de texto, sejam eles grandes ou pequenos. Diálogos, por exemplo. Ou formas de texto em páginas. O editor de código, na verdade, é na maior parte apenas uma grande caixa de texto. Eis a definição:
 
-`Um campo de texto é algo com<br/>  
-uma caixa, uma origem,<br/>  
-uma cor de caneta, uma fonte, um alinhamento,<br/>  
-algumas linhas,<br/>  
-uma margem,<br/>  
-uma proporção de escala,<br/>  
-uma bandeira de embrulho,<br/>  
-uma bandeira de rolagem horizontal,<br/>  
-uma bandeira de rolagem vertical,<br/>  
-uma seleção,<br/>  
-uma bandeira modificada,<br/>  
-uma última operação,<br/>  
-alguns textos chamados desfazimentos, e<br/>  
-alguns textos chamados refazimentos.<br/>  </p>
+```
+Um campo de texto é algo com
+uma caixa, uma origem,
+uma cor de caneta, uma fonte, um alinhamento,
+algumas linhas,
+uma margem,
+uma proporção de escala,
+uma bandeira de embrulho,
+uma bandeira de rolagem horizontal,
+uma bandeira de rolagem vertical,
+uma seleção,
+uma bandeira modificada,
+uma última operação,
+alguns textos chamados desfazimentos, e
+alguns textos chamados refazimentos.
+```
 
-<p spaces-before="0">Como você pode ver, esta não é uma definição trivial. Felizmente o compilador lida com a paior parte dos detalhes ra você. Normalmente, você não fará muito mais do que usar os seguintes comandos:</p>
+Como você pode ver, esta não é uma definição trivial. Felizmente o compilador lida com a paior parte dos detalhes ra você. Normalmente, você não fará muito mais do que usar os seguintes comandos:
 
-<p spaces-before="0"><code>CRIE um campo de texto.`<br/>   `DESENHE um campo de texto.`<br/>   `DESTRUA um campo de texto.`<br/>  
+`CRIE um campo de texto.`
+`DESENHE um campo de texto.`
+`DESTRUA um campo de texto.`
 
 Você deve inicializar a caixa do campo de texto, a caneta, a fonte, o alinhamento, a margem e as bandeiras depois de criá-lo. E você terá que passar todos os eventos relacionados à sua caixa de texto para o compilador, obviamente, para que ele possa cuidar de todas as coisas difíceis para você. Os manipuladores de eventos do campo de texto estão documentados nas duas páginas a seguir.
 
@@ -3534,34 +3535,55 @@ Você deve inicializar a caixa do campo de texto, a caneta, a fonte, o alinhamen
 
 Conforme dito na página anterior, o compilador gerencia a maior parte dos eventos ou comandos que são enviados ao campo de texto, desde que você use os comandos apropriados:
 
-`GERENCIE um evento USANDO um campo de texto (tecla backspace).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla delete).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla seta para baixo).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla end).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla enter).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla esc).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla home).`<br/>   `GERENCIE um evento USANDO um campo de texto (clique duplo).`<br/>   `GERENCIE um evento USANDO um campo de texto (seta esquerda).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla page down).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla page up).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla imprimível).`<br/>   `GERENCIE um evento USANDO um campo de texto (seta direita).`<br/>   `GERENCIE um evento USANDO um campo de texto (tecla tab).`<br/>   `GERENCIE um evento USANDO um campo de texto (seta para cima).`<br/>  
+`GERENCIE um evento USANDO um campo de texto (tecla backspace).`
+`GERENCIE um evento USANDO um campo de texto (tecla delete).`
+`GERENCIE um evento USANDO um campo de texto (tecla seta para baixo).`
+`GERENCIE um evento USANDO um campo de texto (tecla end).`
+`GERENCIE um evento USANDO um campo de texto (tecla enter).`
+`GERENCIE um evento USANDO um campo de texto (tecla esc).`
+`GERENCIE um evento USANDO um campo de texto (tecla home).`
+`GERENCIE um evento USANDO um campo de texto (clique duplo).`
+`GERENCIE um evento USANDO um campo de texto (seta esquerda).`
+`GERENCIE um evento USANDO um campo de texto (tecla page down).`
+`GERENCIE um evento USANDO um campo de texto (tecla page up).`
+`GERENCIE um evento USANDO um campo de texto (tecla imprimível).`
+`GERENCIE um evento USANDO um campo de texto (seta direita).`
+`GERENCIE um evento USANDO um campo de texto (tecla tab).`
+`GERENCIE um evento USANDO um campo de texto (seta para cima).`
 
 Eu sei que pode parecer um incômodo despachar todos estes eventos separadamente, mas é exatamente isso o que torna o campo de texto geralmente útil. Por exemplo:
 
 Se você tiver uma caixa de texto com apenas uma linha, provavelmente vai querer ignorar e as teclas de seta para cima e para baixo, enquanto que se você usar caixas de texto com várias linhas você vai querer utilizar essas teclas para mover o cursor de texto.
 
-Se você estiver usando uma caixa de texto como uma caixa de diálogo, você provavelmente cancelará a operação quando a tecla ESC for pressionada, bem como você irá querer executar a operação ao pressionar a tecla ENTER. Em um campo de texto normal, provavelmente você utilizará a tecla ENTER para inserir uma quebra de linha por exemplo.
+Se você estiver usando uma caixa de texto como uma caixa de diálogo, você provavelmente cancelará a operação quando a tecla <kbd>Esc</kbd> for pressionada, bem como você irá querer executar a operação ao pressionar a tecla <kbd>Enter</kbd>. Em um campo de texto normal, provavelmente você utilizará a tecla <kbd>Enter</kbd> para inserir uma quebra de linha por exemplo.
 
 Entendeu o que eu quis dizer? Você está no comando. Portanto, é você que tem que emitir as ordens.
+
 ## CONTINUAÇÃO
 
 O compilador também gerencia de uma série de outras operações de texto de alto nível para você:
 
-`RECORTE O TEXTO DE um campo de texto.`<br/>   `COPIE O TEXTO DE um campo de texto.`<br/>   `COLE O TEXTO DE um campo de texto.`<br/>  
+`RECORTE O TEXTO DE um campo de texto.`
+`COPIE O TEXTO DE um campo de texto.`
+`COLE O TEXTO DE um campo de texto.`
 
-`SELECIONE TODO O TEXTO DE um campo de texto.`<br/>  
+`SELECIONE TODO O TEXTO DE um campo de texto.`  
 
-`GERENCIE A ALTURA DA FONTE usando um campo de texto e um valor de altura de fonte.`<br/>   `GERENCIE O NOME DA FONTE usando um campo de texto e um nome de fonte.`<br/>  
+`GERENCIE A ALTURA DA FONTE usando um campo de texto e um valor de altura de fonte.`
+`GERENCIE O NOME DA FONTE usando um campo de texto e um nome de fonte.`
 
-`GERENCIE A COR DO TEXTO usando um campo de texto e uma cor.`<br/>  
+`GERENCIE A COR DO TEXTO usando um campo de texto e uma cor.` 
 
-`GERENCIE O RECUO DO TEXTO usando um campo de texto.`<br/>   `GERENCIE O AVANÇO DO TEXTO usando um campo de texto.`<br/>  
+`GERENCIE O RECUO DO TEXTO usando um campo de texto.`
+`GERENCIE O AVANÇO DO TEXTO usando um campo de texto.`
 
-`TRANSFORME O TEXTO DE um campo de texto EM LETRAS MAIÚSCULAS.`<br/>   `TRANSFORME O TEXTO DE um campo de texto EM LETRAS MINÚSCULAS.`<br/>  
+`TRANSFORME O TEXTO DE um campo de texto EM LETRAS MAIÚSCULAS.`
+`TRANSFORME O TEXTO DE um campo de texto EM LETRAS MINÚSCULAS.`
 
 Ou, se você preferir:
 
-`DESFAÇA A OPERAÇÃO EM um campo de texto.`<br/>   `REFAÇA A OPERAÇÃO EM um campo de texto.`<br/>  
+`DESFAÇA A OPERAÇÃO EM um campo de texto.`
+`REFAÇA A OPERAÇÃO EM um campo de texto.`
 
 Você sempre pode usar os comandos acima. O máximo de vezes que você pode desfazer ou refazer uma operação é de 32.
 
@@ -3576,118 +3598,114 @@ Uma das palavras mais imporantes do compilador é a palavra "coisa". Sempre que 
 
 Mas a definição pode ser expandida para ficar assim:
 
-`Uma obra de arte é um ponteiro para um registro de obra de arte.`<br/>   `Uma registro de obra de arte é um registro que tem uma próxima obra de arte, uma URL e uma pintura.`<br/>   `Algumas obras de arte são algumas coisas que têm uma primeira obra de arte e uma última obra de arte.`<br/>  
+`Uma obra de arte é um ponteiro para um registro de obra de arte.`
+`Uma registro de obra de arte é um registro que tem uma próxima obra de arte, uma URL e uma pintura.`
+`Algumas obras de arte são algumas coisas que têm uma primeira obra de arte e uma última obra de arte.`
 
 Obviamente você não sabia disso. De qualquer forma, isso permite que você utilize os comandos:
 
-`ADICIONE uma coisa NO FINAL de algumas coisas.`<br/>   `ADICIONE algumas coisas NO FINAL de outras coisas.`<br/>   `INSIRA uma coisa DEPOIS de outra coisa DENTRO DE algumas coisas.`<br/>   `INSIRA uma coisa ANTES de outra coisa DENTRO DE algumas coisas.`<br/>   `INSIRA algumas coisas DEPOIS de outras coisas DENTRO DE uma coisa.`<br/>   `INSIRA algumas coisas ANTES de outras coisas DENTRO DE uma coisa.`<br/>   `MOVA uma coisa DE algumas coisas PARA outras coisas.`<br/>   `MOVA algumas coisas PARA outras coisas.`<br/>   `ADICIONE uma coisa NO INÍCIO de algumas coisas.`<br/>   `ADICIONE algumas coisas NO INÍCIO de outras coisas.`<br/>   `REMOVA uma coisa DE outras coisas.`<br/>   `INVERTA algumas coisas.`<br/>  
+`ADICIONE uma coisa NO FINAL de algumas coisas.`
+`ADICIONE algumas coisas NO FINAL de outras coisas.`
+`INSIRA uma coisa DEPOIS de outra coisa DENTRO DE algumas coisas.`
+`INSIRA uma coisa ANTES de outra coisa DENTRO DE algumas coisas.`
+`INSIRA algumas coisas DEPOIS de outras coisas DENTRO DE uma coisa.`
+`INSIRA algumas coisas ANTES de outras coisas DENTRO DE uma coisa.`
+`MOVA uma coisa DE algumas coisas PARA outras coisas.`
+`MOVA algumas coisas PARA outras coisas.`
+`ADICIONE uma coisa NO INÍCIO de algumas coisas.`
+`ADICIONE algumas coisas NO INÍCIO de outras coisas.`
+`REMOVA uma coisa DE outras coisas.`
+`INVERTA algumas coisas.`
 
 Existe também uma função que permite que você "coloque a quantidade de algumas coisas" em uma contagem. Tudo o que você precisa lembrar é de CRIAR e DESTRUIR cada uma de suas coisas. Consulte "Gerenciamento de memória" para mais informações.
 
 
 ## TEMPORIZADORES
 
-```
+
 Um tique dura aproximadamente 1 milissegundo. "A contagem de tiques do sistema" é o número de milissegundos desde a última reinicialização. Ele reseta a cada 24,8 dias aproximadamente.
 O que se passa nessa altura é desconhecido,já que nenhum Windows ficou tanto tempo ligado sem dar pau.
-```
 
-```
 Quando quiser, você pode:
-```
+
 
 ```
-<code>AGUARDAR tantos milissegundos.</code><br/>  
+AGUARDAR tantos milissegundos.
 ```
-<br/>  
-</code>
-```
+
 O compilador também entende unidades maiores como "minutos" ou "segundos".
-```
 
-```
 O compilador possui uma variável chamada de temporizador que permite que você utilize os seguintes comandos:
-```
+
 
 ```
-<code>ZERE o temporizador.</code><br/>  
-<code>REINICIE um temporizador.</code><br/>  
-<code>INICIE um temporizador.</code><br/>  
-<code>PARE um temporizador.</code><br/>  
+ZERE o temporizador.
+REINICIE um temporizador.
+INICIE um temporizador.
+PARE um temporizador.
 ```
-<br/>  
-REINICIE um temporizador.<br/>  
-INICIE um temporizador.<br/>  
-PARE um temporizador.<br/>  
-</code>
+```` 
+REINICIE um temporizador.
+INICIE um temporizador.
+PARE um temporizador.
 ```
 O compilador utiliza esses cronômetros para verificar o tempo de recompilação, por exemplo (que atualmente é cerca de 3 segundos, dependendo do hardware).
-Procure a seção "listagem" para ver todos os temporizadores. Você pode usá-los para tornar seus programas mais rápidos.
-```
-Os tempos podem ser cronometrados simplesmente inserindo os comandos "inicie um temporizador" e "pare o temporizador" nos pontos apropriados no seu código.
+Procure a seção `listagem` para ver todos os temporizadores. Você pode usá-los para tornar seus programas mais rápidos.
 
-```
-Tempos cumulativos podem ser acumulados usando o comando ""zerar" uma vez e "reiniciar" logo em seguida juntamente com o comando "parar".
-```
+Os tempos podem ser cronometrados simplesmente inserindo os comandos `inicie um temporizador` e `pare o temporizador` nos pontos apropriados no seu código.
 
-```
+Tempos cumulativos podem ser acumulados usando o comando `zerar` uma vez e `reiniciar` logo em seguida juntamente com o comando "parar".
+
 Existe uma função no compilador que permite que você obtenha o texto de um temporizador a qualquer momento — mesmo durante sua execução. Você também pode utilizar as operações de concatenação de strings neles.
-```
+
 
 ## TIPOS
 
-```
 Um "tipo" é uma categoria ou espécie de coisa — um substantivo. Uma "instância" é uma coisa real de um tipo específico — um substantivo próprio. Globais, locais e parâmetros são instâncias concretas de tipos abstratos. Isso é o que o compilador entende sobre tipos:
-```
 
-```
 Em primeiro lugar, existem seis tipos "embutidos" primitivos no meu compilador: BYTE, WYRD, NUMBER, POINTER, FLAG e RECORD. Consulte "Tipos Integrados".
-```
 
-```
 Em seguida, há "subconjunto de tipos" que representam algumas das instâncias de algum outro tipo. O compilador, por exemplo, inclui muitos tipos de subconjunto, como estes:
-```
 
 ```
 Um número é contador.
 Um nome é um texto.
 ```
 
-```
 Em terceiro lugar, o compilador reconhece "tipos de unidade de medida". Assim ele pode converter um tipo de unidade em outro. Exemplos:
-```
 
 ```
 Um pé tem 12 polegadas.
 Uma hora é 60 minutos.
 ```
 
-```
-O compilador também entende tipos de "registro". Consulte a seção "Registros" para mais detalhes.
+O compilador também entende tipos de "registro". Consulte a seção `Registros` para mais detalhes.
 
-E não vamos nos esquecer dos "tipos de ponteiro", embora você raramente precise usá-los diretamente. O compilador sabe, por exemplo, que "um ponteiro de bytes é um ponteiro para um byte" e ele uso ponteiros de bytes para gerenciar suas strings. Consulte "Strings", "Substrings", "Percorredores", e "Possessivos" para obter mais informações.
+E não vamos nos esquecer dos "tipos de ponteiro", embora você raramente precise usá-los diretamente. O compilador sabe, por exemplo, que "um ponteiro de bytes é um ponteiro para um byte" e ele uso ponteiros de bytes para gerenciar suas strings. Consulte `Strings`, `Substrings`, `Percorredores`, e `Possessivos` para obter mais informações.
 
 
-Por último, o compilador reconhece todos os tipos de "coisa". Existem várias no compilador, incluindo console, evento, imagem, polígono e vértice, todas elas são discutidas em outros lugares neste glossário. E também pode definir as suas próprias coisas. Consulte o tópico sobre "Coisas", e tente se lembrar das "obras de arte" do programa de exemplo.
+Por último, o compilador reconhece todos os tipos de "coisa". Existem várias no compilador, incluindo console, evento, imagem, polígono e vértice, todas elas são discutidas em outros lugares neste glossário. E também pode definir as suas próprias coisas. Consulte o tópico sobre `Coisas`, e tente se lembrar das "obras de arte" do programa de exemplo.
 
 
 ## UNIDADES DA MEDIDA
 
 A unidade de medida básica para objetos gráficos é a "twip", que é 1/20 de um ponto de impressora, ou 1/1440 de uma polegada. Todas as coordenadas são expressas diretamente em twips, ou são convertidas para twips. Eis a definição:
 
-Um coordenada é alguns twips.
+`Um coordenada é alguns twips.`
 
-Agora, ao contrário do modelo matemático — que considera coordenadas como invisíveis abstrações indimensionadas — o modelo do compilador entende coordenadas como pontos reais em um dispositivo, como uma tela ou uma página. Valores grande de x e y vão além da tela ou página. Aqui, por exemplo temos uma caixa com o canto superior esquerdo em 2-1 e inferior direito, em 5-3:
-
-Conte os pontos e note que a largura desta caixa é de quatro, não três, unidades. E que são três, e não duas unidades de altura. Medir desta forma faz com que o compilador desenhe bem — outra caixa entre 5-1 e 6-3, por exemplo, irá sobrepor corretamente esta caixa ao longo de sua borda esquerda. No entanto, você pode obter a largura e a altura desta caixa na forma "matemática" — que correspondem, cada uma, a uma unidade a menos, e são inúteis para desenho. Use as funções X-EXTENT e Y-EXTENT.
-
-Outras unidades de medida que você vai encontrar são: milissegundos, segundos, minutos e horas; polegadas e pés; kilobytes, megabytes, e gigabytes; e "porcento", que geralmente é convertido para uma proporção com 100 no denominador.
+Agora, ao contrário do modelo matemático — que considera coordenadas como invisíveis abstrações indimensionadas — o modelo do compilador entende coordenadas como pontos reais em um dispositivo, como uma tela ou uma página. Valores grande de x e y vão além da tela ou página. Aqui, por exemplo temos uma caixa com o canto superior esquerdo em `2-1` e inferior direito, em `5-3`:
 
 0 1 2 3 4 5
 
 0 1 2 3 4 5 6 7
 
 · · · · · · · ·
+
+Conte os pontos e note que a largura desta caixa é de quatro, não três, unidades. E que são três, e não duas unidades de altura. Medir desta forma faz com que o compilador desenhe bem — outra caixa entre `5-1` e `6-3`, por exemplo, irá sobrepor corretamente esta caixa ao longo de sua borda esquerda. No entanto, você pode obter a largura e a altura desta caixa na forma "matemática" — que correspondem, cada uma, a uma unidade a menos, e são inúteis para desenho. Use as funções X-EXTENT e Y-EXTENT.
+
+Outras unidades de medida que você vai encontrar são: milissegundos, segundos, minutos e horas; polegadas e pés; kilobytes, megabytes, e gigabytes; e "porcento", que geralmente é convertido para uma proporção com 100 no denominador.
+
+
 
 # Índice
 
