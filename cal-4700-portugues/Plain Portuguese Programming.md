@@ -2201,32 +2201,21 @@ As regras para impressão funcionam de forma diferente. Nesse caso, o compilador
 
 Para ajustar suas coordenadas, você pode:
 
-DEFINIR uma coordenada COMO ORIGEM DO DESENHO.
+`DEFINIR uma coordenada COMO ORIGEM DO DESENHO.`
 
 Você também pode evitar o desenho em certas áreas da tela usando o recurso de "fita crepe". Consulte o tópico "Fita Crepe" para descobrir como fazer isso.
 
 
 ## ELIPSES
 
-```
+
 Infelizmente o Windows não permite círculos nem elipses — ele só desenha retângulos redondos dentro de caixas sem bordas. O que explica essa definição incomum de "elipse" que está presente no cérebro:
-```
+
 ```
 Uma elipse tem uma caixa.
 ```
-```
+
 Esta é uma imagem de uma elipse, com suas partes identificadas. Note que você pode obter os campos individuais da caixa da elipse usando o meu recurso de acesso aos "campos profundos", recurso este que é descrito sob o tema "Possessivos" neste glossário.
-```
-```
-O compilador pode fazer elipses de várias maneiras diferentes. Usando especificações de largura e altura. Ou usando um par de coordenadas. Ou todas as quatro coordenadas.
-Tudo o que você tem que fazer é escrever algo assim:
-```
-```
-FAÇA uma elipse USANDO tal valor na largura E tal valor para a altura.
-FAÇA uma elipse USANDO essa coordenada E essa outra coordenada.
-FAÇA uma caixa USANDO esse lado esquerdo E essa parte de cima E esse lado direito E essa parte de baixo.
-```
-Assim como caixas, o compilador consegue DESENHAR uma elipse. Bem como obter a largura, altura o ponto central entre outras coisas. Inclusive detectar se uma coordenada ESTÁ DENTRO (ou fora) de uma elipse ou se a coordenada ESTÁ na borda de uma elipse. Sem mencionar todas as outras "Transformações Gráficas" as quais você pode saber mais em outra parte mais abaixo neste glossário.
 
 ```
 DIREITA ESQUERDA
@@ -2244,20 +2233,29 @@ INFERIOR DIREITO
 CAIXA
 ```
 
+O compilador pode fazer elipses de várias maneiras diferentes. Usando especificações de largura e altura. Ou usando um par de coordenadas. Ou todas as quatro coordenadas.
+Tudo o que você tem que fazer é escrever algo assim:
 
+```
+FAÇA uma elipse USANDO tal valor na largura E tal valor para a altura.
+FAÇA uma elipse USANDO essa coordenada E essa outra coordenada.
+FAÇA uma caixa USANDO esse lado esquerdo E essa parte de cima E esse lado direito E essa parte de baixo.
+```
+Assim como caixas, o compilador consegue DESENHAR uma elipse. Bem como obter a largura, altura o ponto central entre outras coisas. Inclusive detectar se uma coordenada ESTÁ DENTRO (ou fora) de uma elipse ou se a coordenada ESTÁ na borda de uma elipse. Sem mencionar todas as outras "Transformações Gráficas" as quais você pode saber mais em outra parte mais abaixo neste glossário.
 
-##
 
 
 ## EVENTOS/COMANDOS RECEBIDOS PELO SISTEMA
 
 O Windows insiste que usemos seu modelo complicado e não processual juntamente com as suas centenas de mensagens e códigos absurdos. Felizmente, o compilador inclui definições que reduzem essa monstruosidade a apenas dez simples eventos que podem ser tratados de uma forma puramente processual. Eis o código:
 
-`Um evento é uma coisa com<br/>  
-uma categoria,<br/>  
-um detector de shift, uma detector de ctrl, uma detector de alt,<br/>  
-uma coordenada,<br/>  
-uma tecla e um byte.`
+```
+Um evento é uma coisa com 
+uma categoria,
+um detector de shift, uma detector de ctrl, uma detector de alt,
+uma coordenada,
+uma tecla e um byte.
+```
 
 "Categoria" nada mais é do que uma das seguintes palavras:
 
