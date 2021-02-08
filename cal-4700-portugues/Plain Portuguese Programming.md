@@ -1435,7 +1435,7 @@ Se a próxima obra de arte estiver em branco, alerte o usuário; saia.
 Vá para a próxima obra de arte.
 ```
 ```
-Para gerrenciarmos um comando (tecla Page Up):
+Para gerenciarmos um comando (tecla Page Up):
 Se a obra de arte estiver em branco, alerte o usuário; prossiga.
 Se a obra de arte anterior estiver em branco, alerte o usuário; saia.
 Vá para a obra de arte anterior.
@@ -1523,32 +1523,42 @@ Um aviso importante. O compilador não permite o uso de comandos condicionais an
 
 O compillador tabalha com aritmética básica. O compilador mantém um registo do que está no arquivo `o cérebro`. Se possível, dê uma olhada com calma no arquivo. É um arquivo longo mas vale a pena. Para resumir a história, a essência e o poder do compilador reside no fato dele ser capaz de entender declarações do tipo:
 
-ADICIONE isso Nisto. SUBTRAIA isso Daquilo. MULTIPLIQUE isso POR aquilo. DIVIDA isso POR aquilo.
+`ADICIONE isso Nisto.`
+
+`SUBTRAIA isso Daquilo.`
+
+`MULTIPLIQUE isso POR aquilo.`
+
+`DIVIDA isso POR aquilo.`
 
 Caso você precise fazer uma divisão com resto, você pode utilizar o comando:
 
-DIVIDA isto POR aquilo RETORNANDO o quociente E o resto.
+`DIVIDA isto POR aquilo RETORNANDO o quociente E o resto.`
 
 Além disso, o compilador é capaz de:
 
-ARREDONDAR algum número/variável PARA CIMA ATÉ ATINGIR O MÚLTIPLO MAIS PRÓXIMO DE outro número/variável. ARREDONDAR algum número/variável PARA BAIXO ATÉ ATINGIR O MÚLTIPLO MAIS PRÓXIMO DE outro número/variável.
+`ARREDONDAR algum número/variável PARA CIMA ATÉ ATINGIR O MÚLTIPLO MAIS PRÓXIMO DE outro número/variável. `
+
+`ARREDONDAR algum número/variável PARA BAIXO ATÉ ATINGIR O MÚLTIPLO MAIS PRÓXIMO DE outro número/variável.`
 
 O compilador também é capaz de:
 
-REMOVER O SINAL de um número/variável (extrair o módulo do número). INVERTER O SINAL de um número/variável.
+`REMOVER O SINAL de um número/variável (extrair o módulo do número).`
+
+`INVERTER O SINAL de um número/variável.`
 
 O compilador é capaz de até mesmo de:
 
-REDUZIR uma fração (razão/proporção).
+`REDUZIR uma fração (razão/proporção).`
 
-Você pode usar mais de uma operação aritmética no mesmo comando, usando as seguintes palavras chave: `MAIS, MENOS, VEZES` e `DIVIDIDO POR`. Você pode ler mais sobre esses operadores na seção "Expressões Aritméticas" deste glossário.
+Você pode usar mais de uma operação aritmética no mesmo comando, usando as seguintes palavras chave: `MAIS, MENOS, VEZES` e `DIVIDIDO POR`. Você pode ler mais sobre esses operadores na seção `Expressões Aritméticas` deste glossário.
 
 
 ## TABELA ASCII
 
 Este é o Código Padrão Americano para o Intercâmbio de Informação (Extended ASCII) extendido, mais conhecido como Windows-1252 ou CP-1252. Devido a facilidade de implementação e ao fato do código ASCII cobrir a maior parte dos caracteres da língua portuguesa, ele foi escolhido comoo padrão para converter bytes em caracteres legíveis. Não é a melhor opção, já que existe o Unicode mas é uma das codificações de texto mais amplamente aceitas do planeta.
 
-O compilador possui variáveis globais com nomes como "o byte de vírgula" para cada elemento da tabela, assim você não precise trabalhar diretamente com os números deles. Você pode encontrar todas essas variáveis procurando a frase "é um byte igual à" no arquivo `o cérebro`.
+O compilador possui variáveis globais com nomes como `o byte de vírgula` para cada elemento da tabela, assim você não precise trabalhar diretamente com os números deles. Você pode encontrar todas essas variáveis procurando a frase `é um byte igual à` no arquivo `o cérebro`.
 
 ## Caracteres de controle ASCII (código de caractere 0-31)
 
@@ -1864,30 +1874,35 @@ O compilador é esperto o bastante para usar automaticamente a rotina de `CONVER
 
 Um "bit", como definido no arquivo `o cérebro`, é uma unidade de medida. É usado em comandos como `1 bit` ou `alguns bits`. Você provavelmente não vai precisar dele a menos que você seja um ned que goste de passar o tempo manipulando bits usando comandos como:
 
-`CONJUNCIONE este valor COM este valor.`(AND)<br/>   `DISJUNCIONE este valor COM este valor`.(OR)<br/>   `DISJUNCIONE EXCLUSIVAMENTE este valor COM este valor.`(XOR)
+`CONJUNCIONE este valor COM este valor.`(AND)
+
+ `DISJUNCIONE este valor COM este valor`.(OR)
+
+`DISJUNCIONE EXCLUSIVAMENTE este valor COM este valor.`(XOR)
 
 Em cada um destes casos, o primeiro argumento informado é o que é modificado pelo conectivo lógico.
 
 Também é possível efetuar as seguintes operações lógicas:
 
-`DESLOQUE este valor alguns bits PARA A ESQUERDA.`<br/>   `DESLOQUE este valor alguns bits PARA A DIREITA.`
+`DESLOQUE este valor alguns bits PARA A ESQUERDA.`
+
+`DESLOQUE este valor alguns bits PARA A DIREITA.`
 
 Ou ainda:
 
-SEPARE este valor EM um valor E em outro valor.
+`SEPARE este valor EM um valor E em outro valor.`
 
 Como por exemplo, um byte em pedaços de 4 bits, ou 4 bits em pedaços contendo dois bytes, etc. Creio que raramente você precisará fazer isso.
 
 Agora, se você não tem mínima idéia do que estou falando aqui, você não é um nerd e não deve se preocupar com isso. Você provavelmente não vai querer saber.
 
-Mas se você entender o que eu estou dizendo, tenho certeza que você também vai curtir o tópico "Windows" bem no final, e a parte sobre "literais nibles" dentro do tópico "Literais". Sem mencionar a questão do "Possessivo", e os "Imperativos". Além de todas as rotinas de baixo nível do compilador que usam a instrução INTEL e/ou o registro EAX.
+Mas se você entender o que eu estou dizendo, tenho certeza que você também vai curtir o tópico `Windows` bem no final, e a parte sobre `literais nibles` dentro do tópico `Literais`. Sem mencionar a questão do `Possessivo`, e os `Imperativos`. Além de todas as rotinas de baixo nível do compilador que usam a instrução `INTEL` e/ou o registro EAX.
 
 
 ## CAIXAS
 
-```
 Um dos aspectos chave do compilador é a forma que ele trabalha com caixas. Uma caixa é uma variável do tipo <i>record</i>. O código da caixa é basicamente assim:
-```
+
 ```
 Um lado é uma coordenada.<br/>   
 Uma caixa tem
@@ -1898,18 +1913,7 @@ Um lado de baixo,
 Um canto no canto superior esquerdo e
 Um segundo canto no canto inferior direito.
 ```
-```
 Esta é uma imagem de uma caixa, com todas as partes acima identificadas. Note que estou usando os apelidos dos campos aqui, como você provavelmente usará em seus programas.
-```
-```
-O compilador consegue fazer caixas a partir de especificações de largura e altura, ou apenas usando um par de pontos de coordenadas. Tudo o que você tem que fazer é escrever algo assim:
-```
-```
-FAÇA uma caixa COM tal largura E tal altura.
-FAÇA uma caixa COM essa coordenada E essa outra coordenada.
-FAÇA uma caixa USANDO esse lado esquerdo E essa parte de cima E esse lado direito E essa parte de baixo.
-```
-O compilador consegue criar uma caixa. Bem como obter a largura, altura o ponto central entre outras coisas. Ele também consegue dizer se uma caixa ESTÁ DENTRO ou se ela ESTÁ TOCANDO outra caixa. E se um ponto está DENTRO, FORA ou na BORDA da caixa. Sem mencionar todas as outras "Transformações Gráficas" as quais você pode saber mais em outra parte mais abaixo neste glossário.
 
 ```
 DIREITA ESQUERDA
@@ -1923,9 +1927,15 @@ SUPERIOR ESQUERDO
 INFERIOR DIREITO
 ```
 
+O compilador consegue fazer caixas a partir de especificações de largura e altura, ou apenas usando um par de pontos de coordenadas. Tudo o que você tem que fazer é escrever algo assim:
 
+```
+FAÇA uma caixa COM tal largura E tal altura.
+FAÇA uma caixa COM essa coordenada E essa outra coordenada.
+FAÇA uma caixa USANDO esse lado esquerdo E essa parte de cima E esse lado direito E essa parte de baixo.
+```
+O compilador consegue criar uma caixa. Bem como obter a largura, altura o ponto central entre outras coisas. Ele também consegue dizer se uma caixa ESTÁ DENTRO ou se ela ESTÁ TOCANDO outra caixa. E se um ponto está DENTRO, FORA ou na BORDA da caixa. Sem mencionar todas as outras "Transformações Gráficas" as quais você pode saber mais em outra parte mais abaixo neste glossário.
 
-##
 
 
 ## TIPOS PREDEFINIDOS/EMBUTIDOS
