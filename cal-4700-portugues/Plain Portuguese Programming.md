@@ -1936,7 +1936,6 @@ Primeiramente, o compilador vai *descartar* o `não`. Logo em seguida, ele vai `
 
 Por último, lembre-se: o compilador não aceita o aninhamento de declarações condicionais. A filosofia da linguagem entende que esse tipo de declaração acaba por ser sempre desnecessário (por poder ser expresso de outra forma) e quase sempre incerto (gerando resultados indesejados). Não há nenhuma declaração condicional aninhada em todas as mais de 25 mil linhas de código deste projeto. E se você parar pra pensar que este é o compilador de língua portuguesa mais avançado do mundo, verá que elas realmente não são nenhum pouco necessárias. Na verdade, cada uma das declarações condicionais do compilador cabe numa linha só. Pense nisso.
 
-
 ## O CONSOLE
 
 Um "console" é uma interface de texto puro, com a qual você pode interagir de forma limitada. O console padrão parece mais ou menos com a imagem abaixo:
@@ -1964,8 +1963,6 @@ O console padrão está sempre disponível, mas ele vai aparecer na tela somente
 
 O console lembra tudo o que ele exibe e rola automaticamente para cima quando a parte inferior da tela é alcançada. Você pode usar as teclas <kbd>Home</kbd>, <kbd>End</kbd>, <kbd>Page Up</kbd>, <kbd>Page Down</kbd>, e o botão direito do mouse para rolar manualmente.
 
-
-
 ## CONSERTANDO FALHAS E ERROS
 
 Uma dos princípios que regem a linguagem da Sociedade Osmosiana é: *Depuradores são coisa de frangotes*.
@@ -1984,7 +1981,6 @@ ANALISE isso.
 Onde "isso" pode ser uma caixa, byte, cor, bandeira, fonte, linha, número, par de coordenadas, ponteiro, proporção, local, texto ou wyrd. Quando eles executam o código modificado, a caixa de mensagem do Windows aparece contendo uma pista. A aparência horrenda da caixa os motiva a rezar mais e renovar a determinação de resolver o problema, E assim armados, eles voltam ao primeiro passo.
 
 Ofereço a minha própria existência como prova da suficiência destas técnicas. E estou confiante que todos os futuros erros — exceto talvez, um inesperado [Ciclo infinito de Mobius](https://pt.wikipedia.org/wiki/Fita_de_M%C3%B6bius) - poderão ser gerenciados da mesma forma.
-
 
 ## DECISORES
 
@@ -2007,7 +2003,6 @@ O ideal é sempre criar decisores "positivos". Ou seja, se você quiser evitar d
 Por exemplo, se você criar uma rotina que "decide se uma coordenada está dentro de uma caixa", o compilador automaticamente vai saber dizer se "uma coordenada NÃO está dentro de uma caixa. Isso funciona pra quelauqer tipo de rotina decisora. Para saber mais, procure os exemplos disponíveis nos arquivos de código fonte.
 
 Os decisores funcionam basicamente da mesma forma que as rotinas condicionais e imperativas. No entanto você não pode usar o comando SAIA em um decisor, por motivos óbvios, bem como qualquer outra forma que faça você sair sem dar alguma resposta. Um decisor sempre deve terminar com as palavras "DIGA SIM" ou "DIGA NÃO".
-
 
 ## LISTA DE DECISORES DISPONÍVEIS NO SISTEMA
 
@@ -2092,9 +2087,7 @@ Para ajustar suas coordenadas, você pode:
 
 Você também pode evitar o desenho em certas áreas da tela usando o recurso de "fita crepe". Consulte o tópico "Fita Crepe" para descobrir como fazer isso.
 
-
 ## ELIPSES
-
 
 Infelizmente o Windows não permite círculos nem elipses — ele só desenha retângulos redondos dentro de caixas sem bordas. O que explica essa definição incomum de "elipse" que está presente no cérebro:
 
@@ -2130,8 +2123,6 @@ FAÇA uma caixa USANDO esse lado esquerdo E essa parte de cima E esse lado direi
 ```
 Assim como caixas, o compilador consegue DESENHAR uma elipse. Bem como obter a largura, altura o ponto central entre outras coisas. Inclusive detectar se uma coordenada ESTÁ DENTRO (ou fora) de uma elipse ou se a coordenada ESTÁ na borda de uma elipse. Sem mencionar todas as outras "Transformações Gráficas" as quais você pode saber mais em outra parte mais abaixo neste glossário.
 
-
-
 ## EVENTOS/COMANDOS RECEBIDOS PELO SISTEMA
 
 O Windows insiste que usemos seu modelo complicado e não processual juntamente com as suas centenas de mensagens e códigos absurdos. Felizmente, o compilador inclui definições que reduzem essa monstruosidade a apenas dez simples eventos que podem ser tratados de uma forma puramente processual. Eis o código:
@@ -2162,7 +2153,6 @@ Os detectores de `ctrl` e `alt` e `shift` indicam o estado das teclas correspond
 A `coordenada` é a posição do mouse no momento do evento.
 
 A `tecla` e seu `byte` ASCII equivalente (se houver) aplicam-se apenas à Teclas Pressionadas.
-
 
 ## PROGRAMAÇÃO ORIENTADA A EVENTOS
 
@@ -2206,7 +2196,6 @@ seu programa
 
 ## EXPRESSÕES
 
-
 Uma "expressão" é como uma oração subordinada em uma frase complexa. É uma frase que deve ser reduzida, separadamente, antes que a instrução que a contém possa ser totalmente compreendida. Se você, por exemplo, dizer:
 
 ```
@@ -2225,7 +2214,6 @@ Digamos que o compilador encontre a palavra `MAIS` entre a palavra `couve` e a p
 O compilador lida com o último operador um pouco diferente, já que o objetivo neste caso é sempre `para anexar uma texto no final de outro texto`. Então, por exemplo, se o compilador encontrar a expressão `EM SEGUIDA` entre, digamos, uma palavra e um número, o compilador busca por uma rotina `para converter um número em um texto`, aplica a rotina no número e então adiciona o número convertido ao final do texto.
 
 É claro que é possível extender essa capacidade. Mas use com moderação.
-
 
 ## CAMPOS
 
@@ -2254,7 +2242,6 @@ O quarto campo usa a palavra chave `NO` para redefinir o terceiro campo, dando-l
 O quinto campo é enchimento. Ele não tem nome e não pode ser acessado diretamente.
 
 O último campo é parecido com o segundo, onde se assume que a variável `CÔNJUGE` é um tipo definido em outro lugar. A tag `(REFERÊNCIA)` serve para informar que o termo `CÔNJUGE` não faz "parte" da pessoa e não deve ser destruído automaticamente quando a pessoa for.
-
 
 ## ARQUIVOS
 
@@ -2323,7 +2310,6 @@ OBTENHA um tamanho USANDO um endereço completo no SISTEMA DE ARQUIVOS.
 
 Note que os contadores e tamanhos de arquivo, incluindo o `tamanho` no registro de nome `Item`, são limitados a 2147483647, que é o maior número permitido pelo compilador no momento.
 
-
 ## FONTES
 
 No Windows, uma fonte é definida com quatorze parâmetros distintos. Complicado demais.
@@ -2352,7 +2338,6 @@ Escreva "Olá, mundo!" no centro da caixa de seleção usando a fonte.
 
 Se as suas fontes apareceram diferente do esperado, você provavelmente errou o nome da fonte.
 Lembre-se, um nome de fonte não é necessariamente o nome do arquivo na pasta "fonte" do Windows. Em vez disso, você deve usar o *nome do typeface* exibido na caixa de visualização que aparece quando você clica duas vezes em um desses arquivos de fontes.
-
 
 ## FUNÇÕES
 
@@ -2384,9 +2369,7 @@ Nem preciso dizer o quão útil é essa função. Mas tente não abusar dela. Se
 
 Consulte o tópico `Possessivos` para mais informações.
 
-
 ## VARIÁVEIS GLOBAIS
-
 
 Uma variável "global" é uma variável que é visível para todas as rotinas, e que portanto pode ser usada por qualquer rotina em um programa. As variáveis globais podem ser definidos através de várias maneiras, mas suas definições sempre começam com um artigo definido (`O`, `A`, `OS`, `AS`). Eis alguns exemplos:
 
@@ -2419,7 +2402,6 @@ O *insira o nome da variável aqui* É UM *insira o tipo da variável aqui* COM 
 
 Uma variável global única é algo raro. Provavelmente porque são únicas.
 Mas respondem à velha pergunta "Quem veio primeiro, o ovo ou a galinha?". A galinha, claro.
-
 
 ## TRANSFORMAÇÕES GRÁFICAS
 
@@ -2458,7 +2440,6 @@ REDIMENSIONE algo USANDO uma porcentagem.
 
 Consulte os tópicos `Desenhando` e `Máscara` para informações adicionais.
 
-
 ## IMPERATIVOS
 
 Um comando "imperativo" é um comando não condicional dentro do corpo de uma rotina. Aqui estão alguns imperativos de amostra retirados do compilador:
@@ -2486,7 +2467,6 @@ Eis os onze imperativos básicos presentes no compilador:
 
 Já que os imperativos são apenas palavras que chamam rotinas, você também deve conferir as páginas  `Rotinas`, `Procedimentos`, `Decisores`, `Funções` e `Nomes`.
 
-
 ## FLUXO PADRÃO DE ENTRADA E SAÍDA
 
 Você pode trabalhar diretamente com o mouse usando instruções como estas:
@@ -2513,7 +2493,6 @@ Mas você não deveria. Em vez disso, é melhor que você use a tela virtual, pa
 `ATUALIZE A TELA.`
 
 Consulte o tópico `Desenhando` para obter mais informações. Mas não hesite em usar `a caixa da tela` e todos os campos da tela ao inicializar suas coisas.
-
 
 ## INTERNET
 
@@ -2547,7 +2526,6 @@ Aqui está um código do nosso programa de exemplo para te lembrar como funciona
 
 Lembra? Não tem nem como esquecer. O compilador analisou o texto, pintou o quadro, atualizou a tela, gerando uma verdadeira Obra de arte.
 
-
 ## PALAVRAS-CHAVE
 
 A maioria das linguagens de programação tem longas listas de palavras chave anômalas, cabalistas, enigmáticas, inescrutáveis, ofuscantes, "reservadas", tais como:
@@ -2580,9 +2558,7 @@ Por último, palavras negativas:
 
 Espero não ter esquecido nada importante. Na dúvida, consulte o código fonte para exemplos de uso.
 
-
 ## O WINDOWS
-
 
 Se você por acaso precisar utilizar bibliotecas e funções internas do Windows, você pode utilizar comandos semelhantes a este:
 
@@ -2614,7 +2590,6 @@ Mas se você for passar o endereço para o Windows, certifique-se de que o cabe�
 PARA COMPATIVELMENTE ...
 ```
 Se você está trabalhando neste nível ridiculamente baixo, você vai querer verificar as seções "Bits", "Imperativos Especiais" e meu o código fonte para mais informações e exemplos.
-
 
 ## LINHAS
 
@@ -2672,14 +2647,11 @@ Passemos agora ao incentivo.
 
 Se você encontrar algum erro no compilador, mande um email para os criadores e eles lhe enviarão algo bacana como uma camiseta em branco. Se você consegue descobrir como tornar o compilador mais simples sem deixar mais lento, eles vão te enviar uma camiseta personalizada. E se você puder criar uma maneira de fazer o compilador menor, mais rápido e mais poderosa tudo de uma só vez, tenho certeza que eles te enviarão uma camiseta sem manga bordada.
 
-
-
 ## LITERAIS
 
 Um valor "literal" é um valor constante em um programa. O compilador entende sete tipos diferentes de literais, cada um com um formato específico.
 
 Um "número" literal são dígitos, com um sinal opcional, mas sem espaços ou observações:
-
 
 Exemplos: `0`,` -2147483648`, `+2147483647`
 
@@ -2692,7 +2664,6 @@ Um "literal misto" é um literal numérico, um traço e uma proporção sem sina
 Exemplos: `1-1/2`, `-2-2/3`, `3-3/4`
 
 Um `texto literal` é uma série de caracteres entre aspas duplas. Se você precisar de uma aspa dupla dentro de uma string, coloque duas ao redor dela e pronto. Assim:
-
 
 `"Este é um texto literal com ""aspas duplas em torno disto"" mas não disto"`
 
@@ -2727,7 +2698,6 @@ Esta variável é definida com adjetivos anteriores ao nome do tipo, então ela 
 
 Consulte também a página `Laços`, onde uma variável local e um decisor nos permite fazer `laços contados` sem adicionar novas palavras-chave ao compilador.
 
-
 ## LAÇOS
 
 Os comandos específicos para laços são `PERCORRA`, `REPITA`, `INTERROMPA` e `SAIA`.
@@ -2753,8 +2723,6 @@ Repita.
 ```
 seu programa
 ```
-
-
 
 ## FITA CREPE
 
@@ -2784,7 +2752,6 @@ Qualquer fita que você aplica permanece aplicada, então depois você provavelm
 `REMOVA A PROTEÇÃO DA PARTE DE FORA disso.`
 `REMOVA A PROTEÇÃO DA PARTE EXTERNA disso.`
 
-
 Ou para agilizar o serviço:
 
 `DESPROTEJA TUDO.`
@@ -2800,7 +2767,6 @@ para começar do zero. Para conveniência, você pode remover toda a fita existe
 `PROTEJA SOMENTE A PARTE EXTERNA disso.`
 
 Note que se você estiver desenhando e nada estiver aparecendo, isso provavelmente está acontecendo porque você está usando a fita crepe onde não quer, ou você esqueceu de `ATUALIZAR A TELA` conforme descrito no tópico `Desenhar`.
-
 
 ## GERENCIAMENTO DE MEMÓRIA
 
@@ -2832,9 +2798,7 @@ Observe quea rotina `DESTRUA` não só destrói a coisa em si, mas também quais
 
 Um bom exemplo pode ser encontrado no caderno onde uma "página" é definida como uma coisa com algumas "formas" nela. Voce encontrará rotinas que criam páginas e formas, mas não encontrará nenhuma rotina específica para destruí-las. Elas são parte do compilador. Entao, quando destruímos uma página, nós destruímos todas as formas dentro dela ao mesmo tempo. Exceto, é claro, para a "forma de edição", que é uma referência.
 
-
 ## NOMES
-
 
 Ao contrário dos compiladores de era neandertal, as regras para nomes são amplas e flexíveis.
 
@@ -2850,7 +2814,6 @@ Nomes globais são frequentemente um tipo seguido por um adjetivo: a `tecla shif
 
 Nomes de parâmetros parecem nomes de campo. Um tipo, com ou sem adjetivos. Uma `caixa`, por exemplo, ou uma `cor de borda`. Também neste caso o apelido funciona.
 
-
 Os nomes de procedimentos iniciam com um verbo. Em seguida, uma série de parâmetros (com artigos indefinidos), frases e talvez um qualificador no final. Tal como `remova o último byte de um texto` ou `centralize um ponto em uma caixa (horizontalmente)`.
 
 Nomes de função sempre começam com `PONHA` e terminam com `EM/DENTRO` e um nome de tipo. Com uma frase possessiva no meio. Como `coloque a linha do topo que faz parte da caixa em uma linha`.
@@ -2859,9 +2822,7 @@ Nomes de decisores parecem nomes de procedimentos, exceto pelo fato do verbo nor
 
 Os nomes de variáveis locais seguem o padrão de parâmetro. O compilador cria uma variável local sempre que encontra um nome com um artigo indefinido na frente de todo o corpo de uma rotina.
 
-
 ## PARÂMETROS
-
 
 Uma variável se torna um "parâmetro" quando ela é passada para uma rotina. Para utilizar os parâmetros em uma rotina, você precisa informar a quantidade e os tipos de parâmetros no cabeçalho da rotina. Eis alguns cabeçalhos de rotina de amostra:
 
@@ -2873,7 +2834,6 @@ Para colocar o centro de uma elipse em uma localização:
 A primeira rotina é um procedimento que espera dois parâmetros: `um número` e `outro número`. O primeiro é um parâmetro entrada; o segundo também é um parâmetro de entrada mas será devolvido na saída da rotina.
 
 A segunda rotina é apenas um decisor comum. Ela também espera dois parâmetros, `uma localização` e `alguns polígonos`. Ambos os parâmetros são somente de entrada.
-
 
 A terceira rotina é uma função com dois parâmetros: `uma elipse` e `uma localização`.
 A elipse é o parâmetro de entrada e a localização é o parâmetro de saída.
@@ -2888,7 +2848,6 @@ PRIVATIZE um parâmetro.
 ```
 
 E o compilador fará uma cópia do parâmetro para você. Conforme explicado anteriormente, você continuará utilizando o mesmo nome do parâmetro, já que a variável original será renomeada apenas temporariamente. A variável original receberá o sufixo `original` no nome dela, para que você ainda possa acessá-la se precisar.
-
 
 ## IMAGENS
 
@@ -2905,7 +2864,6 @@ Você pode criar uma imagem de várias maneiras. Você pode carregar um a partir
 `CRIE uma imagem DE algo.`
 
 Assim que você tiver uma imagem, você pode DESENHÁ-la Ou aplicar as `Transformações Gráficas` nela. Ou usá-la como um modelo para uma verdadeira obra de arte, como fizemos com o programa de exemplo `como pintar`.
-
 
 ## POLÍGONOS
 
@@ -2950,16 +2908,13 @@ SUAVIZADO
 
 ## POSSESSIVOS
 
-
 Os Possessivos são normalmente usados para acessar campos nos registros. Conforme o exemplo abaixo:
 
 ```
 *nome do campo* QUE FAZ PARTE DO *nome do registro*.
 ```
 
-
 Mas eles também podem ser usados para fazer referência a uma função:
-
 
 ```
 *nome da função* QUE FAZ PARTE DO *nome da coisa*.
@@ -2969,11 +2924,9 @@ Se o compilador não conseguir encontrar o campo dentro do primeiro nível regis
 Mas a primeira coisa o compilador faz ao encontrar um possessivo é verificar a existência de três termos específicos.
 O primeiro é o seguinte:
 
-
 ```
 um ALVO que faz parte de um ponteiro
 ```
-
 
 Este forma é usado apenas com ponteiros. Isso diz que você quer saber para que item o ponteiro aponta. "Um ponteiro de byte", por exemplo, refere-se ao endereço de um byte. "O alvo que faz parte do ponteiro de byte" se refere aos dados no byte.
 
@@ -2987,9 +2940,7 @@ Um deles lhe traz o tamanho, em bytes, e o outro lhe traz o endereço:
 
 Você provavelmente não precisará destes com muita frequência, por isso que esses nomes esquisitos foram escolhidos.
 
-
 ## IMPRIMINDO
-
 
 A rotina de impressão precisa ser aprimorada. Eis alguns detalhes da implementação:
 
@@ -3016,11 +2967,9 @@ seu programa
 
 O comando `Inicie uma página` define o quadro (área de desenho) atual como o quadro da impressora. O comando `Apronte a página` coloca o conteúdo da página de volta ao quadro da tela virtual. Então posicione quaisquer mensagens de status que você desejar exibir antes ou após essas chamadas.
 
-
 Você pode usar o comando `inicie uma página vertical` para ser mais explícito, e você pode `iniciar uma página horizontal` para trabalhar em modo paisagem. As várias `páginas` são na verdade caixas, inicializadas pela rotina `inicie`, que você pode usar para posicionar suas coisas.
 
 Basicamente é só isso.
-
 
 ## PROCEDIMENTOS
 
@@ -3046,7 +2995,6 @@ A terceira rotina é um verbo seguido de um substantivo: `o cursor`.
 
 Quando um substantivo estiver acompanhado de um artigo definido em um cabeçalho de rotina, ele geralmente será interpretado como uma variável global única, como por exemplo o comando `desenhe a barra` que está dentro do arquivo `ambiente de trabalho`. Mas eles também podem ser utilizados para se referir a uma pseudo-variável que não está definida precisamente no seu código. Como `o cursor` no exemplo acima, ou `o último byte` na rotina `remova o último byte de um texto`.
 
-
 ## NÚMEROS ALEATÓRIOS
 
 *"Para fazer um sorteio são lançados os dados, mas quem determina o reultado é o Senhor." [Provérbios 16:33](https://www.bibliaonline.com.br/acf/pv/16/33)* Então, eu acho que teremos que desistir dessa ideia de números aleatórios e nos contentar com números pseudo-aleatórios. Que é o que esse consegue gerar (não só esse, mas a maioria dos compiladores).
@@ -3068,7 +3016,6 @@ ESCOLHA um número.
 
 O que retorna um número entre `0` e `2147483647`. Você também pode fazer assim:
 
-
 ```
 ESCOLHA um número ENTRE o número mínimo E o número máximo.
 ESCOLHA um número ENTRE uma quantidade DE outro número.
@@ -3076,7 +3023,6 @@ ESCOLHA um número ENTRE uma quantidade DE outro número.
 ```
 
 Você também pode usar a aleatoriedade ao escolher posições na tela:
-
 
 ```
 ESCOLHA um lugar em QUALQUER LUGAR dentro de uma caixa.
@@ -3086,7 +3032,6 @@ ESCOLHA uma localização NO RAIO DE uma distância DE outra localização.
 Rotinas como essa estão sempre sendo adicionadas e aperfeiçoadas então é sempre bom dar uma olhada no código fonte do compilador. Basta procurar por "escolha" e você provavelmente encontrará a maioria deles.
 
 E se você não tiver certeza qual usar, tente o cara ou coroa.
-
 
 ## REGISTROS
 
@@ -3112,7 +3057,6 @@ O primeiro registro de amostra, `caixa`, tem seis campos. Mas os dois últimos s
 O segundo registro, `caixa arredondada`, é uma extensão da caixa. Tem os mesmos campos que uma caixa, e mais um novo campo chamado de `raio`. É compatível com a caixa, e é possível usar todas as rotinas que funcionam nas caixas normais para manipulár as caixas arredondadas — a menos que uma rotina específica para caixas arredondadas tenha sido criada.
 
 O terceiro registro, `polígono`, não tem nada além de uma lista de vértices. Como o polígono é definido como uma `coisa`, o compilador considera o polígono como uma estrutura dinâmica de dados (ao invés de uma estrutura estática). Isto significa que você é responsável por alocar e lidar com a memória usada por ele. Consulte o tópico `Gerenciamento de Memória` e a página sobre `Polígonos` para obter mais informações.
-
 
 ## PERCORREDORES
 
@@ -3144,7 +3088,6 @@ O compilador adiciona um no `primeiro byte do subtexto fonte` e mais um no `últ
 POSICIONE o caractere de subtexto do percorredor no subtexto fonte do percorredor.
 ```
 Você também pode escrever suas próprias rotinas para MOVER um percorredor mais de um byte por vez, assim como acontece nas rotinas de "verificação ortográfica" e de "quebra de linha", sem mencionar as rotinas de análise de código-fonte. Pesquise `para mover um percorredor` para encontrar os exemplos.
-
 
 ## CAIXAS ARREDONDADAS
 
@@ -3186,9 +3129,6 @@ O compilador consegue fazer caixas arredondadas a partir de especificações de 
 
 O compilador consegue ` DESENHAR`  uma caixa arredondada. Bem como obter a largura, altura o ponto central entre outras coisas. E se um ponto está DENTRO, FORA ou na BORDA da caixa. Sem mencionar todas as ` Transformações Gráficas`  de costume.
 
-
-
-
 ## ROTINAS
 
 Uma rotina é um pedaço de código que manipula uma ou mais variáveis em algumas formas bem definidas. As variáveis passadas para uma rotina são chamadas de "parâmetros", podendo ser apenas parâmetros de entrada, parâmetros de saída ou ambos. As variáveis definidas dentro de uma rotina são chamadas de "variáveis locaos" e não podem ser vistas fora da rotina (a menos que sejam passados como parâmetros). As variáveis que são acessíveis a todas as rotinas são chamadas de "variáveis globais".
@@ -3203,24 +3143,19 @@ PARA fazer alguma coisa:
 
 Um "decisor" é uma rotina que diz "sim" ou "não" sobre algo, geralmente depois de examinar os parâmetros passados para ele. Um cabeçalhos de decisão é assim:
 
-
 ```
 PARA DECIDIR SE alguma coisa:
 ```
 
-
 Uma "função" é uma rotina que extrai, calcula ou deriva algo usando uma variável. Cabeçalhos de função assumem este formato:
-
 
 ```
 PARA POR algo QUE FAZ PARTE DE algo EM uma variável temporária:
 ```
 
-
 Ao contrário dos procedimentos e dos decisores, as funções não são normalmente chamadas directamente.
 Em vez disso, o "algo que faz parte de algo" é utilizado como se fosse um campo em um registro.
 Como um "centro que está dentro da caixa", que você não encontrará no registro "caixa", porque ele é calculado por uma função automaticamente.
-
 
 ## SONS
 
@@ -3253,7 +3188,6 @@ AGUARDE ATÉ QUE A FALA TERMINE.
 
 Para silenciar a conversa (mas não os outros sons), ative "a bandeira silenciosa".
 
-
 ## IMPERATIVOS ESPECIAIS
 
 Os três "imperativos especiais" do compilador provavelmente estão mais para "imperativos usados para propósitos especiais". Talvez você chegue a usar um deles. Esperamos, em última análise, eliminá-lo completamente. Os outros dois são para nerds.
@@ -3275,7 +3209,6 @@ Um imperativo "Intel" insere código de máquina no seu arquivo executável. É 
 `INTEL nibble literal.`
 
 Se você está se perguntando por que razão o compilador não possui um assembler (montador) integrado, a resposta é simplesmente porque não é necessário. Na verdade, há muito pouca linguagem da máquina no meu compilador, e conforme novas funções vão sendo adicionadas, mais e mais desses comandos vão sendo substituídos por português simples. Além disso, um dos princípios dos Mestres da Sociedade Osmosiana é que o melhor assembler sempre foi e sempre será a sua cabeça. É uma forma de manter seu cérebro em dia.
-
 
 ## LOCALIZAÇÕES
 
@@ -3299,7 +3232,6 @@ O compilador consegue DESENHAR uma localização. Mas não espere que seja rápi
 Posições são usadas principalmente como componentes de outros objetos gráficos. Como caixas, linhas, vértices e polígonos. Às vezes, elas são usados como coordenadas abstratas sem representação visível, como "a localização do mouse" no exemplo acima. Consulte a página "Unidades de medida" para uma discussão completa sobre coordenadas.
 
 O compilador possui rotinas que podem identificar se uma localização ESTÁ DENTRO ou NA BORDA de qualquer outro objeto gráfico (na borda significa em cima). Quando você vê se algo está DENTRO, isso inclui as bordas. As rotinas que identificam se algo está na borda são usadas pelo caderno e incluem uma margem de erro de 3 pixels para ficar mais fácil de clicar nas formas. Você pode copiar essas rotinas e retirar essas margens de tolerância, se quiser.
-
 
 ## TEXTO
 
@@ -3328,8 +3260,6 @@ Você também pode `COLOCAR TODO O TEXTO EM LETRAS MAIÚSCULAS`, `MINÚSCULAS`, 
 `OBTENHA uma largura USANDO um texto E uma fonte.`
 
 Além disso, você pode concatenar (unir, juntar) um texto com outro — ou com outros tipos de dados — usando os operadores ENTÃO, EM SEGUIDA ou JUNTO COM . Consulte o tópico "Expressões" para uma descrição da implementação dessa rotina.
-
-
 
 ## SUBTEXTO
 
@@ -3365,8 +3295,6 @@ Procure por "subtexto" no código fonte para obter exemplos.
 
 No entanto, o uso principal dos subtextos ocorre nos "percorredores", que são discutidos no neste glossário sob o tópico de mesmo nome.
 
-
-
 ## TERMOS
 
 Um "termo" é uma referência a um pedaço de dados. Os termos são usados tanto em expressões quanto em instruções condicionais e imperativas para indicar o que deve ser operado. Os termos têm muitas variedades:
@@ -3386,7 +3314,6 @@ Um "termo possessivo" é qualquer termo seguido por uma frase possessiva, como "
 Um "termo coagido" é um termo cujo tipo você deseja mudar à força. O compilador sempre tratará um ponteiro, por exemplo, como um ponteiro — a menos que você coaga-o a ser outra coisa, como neste exemplo: "o ponteiro COMO UM NÚMERO". Normalmente você não vai precisar deste recurso, a menos que você seja uma pessoa que ama objetos e tenha definido um monte de coisas que são extensões de outras coisas.
 
 Agora sei que isto parece complicado, e realmente é. Mas você não precisa pensar sobre nada disso, assim como você não precisa pensar em substantivos e verbos para falar português apropriadamente. Digite o que você está pensando e deixe o compilador tentar fazer o resto.
-
 
 ## O CAMPO DE TEXTO
 
@@ -3416,7 +3343,6 @@ Como você pode ver, esta não é uma definição trivial. Felizmente o compilad
 `DESTRUA um campo de texto.`
 
 Você deve inicializar a caixa do campo de texto, a caneta, a fonte, o alinhamento, a margem e as bandeiras depois de criá-lo. E você terá que passar todos os eventos relacionados à sua caixa de texto para o compilador, obviamente, para que ele possa cuidar de todas as coisas difíceis para você. Os manipuladores de eventos do campo de texto estão documentados nas duas páginas a seguir.
-
 
 ## GERENCIADORES DE CAMPOS DE TEXTO
 
@@ -3476,7 +3402,6 @@ Você sempre pode usar os comandos acima. O máximo de vezes que você pode desf
 
 Se você quiser ter uma noção boa de como funciona o campo de texto, eu sugiro que você experimente o "console" por um tempo. e então confira o código fonte do console. Depois disso, você pode querer dar uma olhada no editor de código. Mas se você realmente quer ver o campo texto em ação, dê uma olhada no caderno. Finalmente, gaste alguns minutos com as caixas de diálogo no ambiente de trabalho.
 
-
 ## COISAS
 
 Uma das palavras mais imporantes do compilador é a palavra "coisa". Sempre que o compilador lê a palavra coisa, ele cria um registro especial de tamanho dinâmico, além de criar um registro especial de lista encadeada, assim você pode criar uma lista de coisas. No nosso programa de exemplo, usamos o seguinte comando:
@@ -3506,15 +3431,12 @@ Obviamente você não sabia disso. De qualquer forma, isso permite que você uti
 
 Existe também uma função que permite que você "coloque a quantidade de algumas coisas" em uma contagem. Tudo o que você precisa lembrar é de CRIAR e DESTRUIR cada uma de suas coisas. Consulte "Gerenciamento de memória" para mais informações.
 
-
 ## TEMPORIZADORES
-
 
 Um tique dura aproximadamente 1 milissegundo. "A contagem de tiques do sistema" é o número de milissegundos desde a última reinicialização. Ele reseta a cada 24,8 dias aproximadamente.
 O que se passa nessa altura é desconhecido,já que nenhum Windows ficou tanto tempo ligado sem dar pau.
 
 Quando quiser, você pode:
-
 
 ```
 AGUARDAR tantos milissegundos.
@@ -3523,7 +3445,6 @@ AGUARDAR tantos milissegundos.
 O compilador também entende unidades maiores como "minutos" ou "segundos".
 
 O compilador possui uma variável chamada de temporizador que permite que você utilize os seguintes comandos:
-
 
 ```
 ZERE o temporizador.
@@ -3544,7 +3465,6 @@ Os tempos podem ser cronometrados simplesmente inserindo os comandos `inicie um 
 Tempos cumulativos podem ser acumulados usando o comando `zerar` uma vez e `reiniciar` logo em seguida juntamente com o comando "parar".
 
 Existe uma função no compilador que permite que você obtenha o texto de um temporizador a qualquer momento — mesmo durante sua execução. Você também pode utilizar as operações de concatenação de strings neles.
-
 
 ## TIPOS
 
@@ -3570,9 +3490,7 @@ O compilador também entende tipos de "registro". Consulte a seção `Registros`
 
 E não vamos nos esquecer dos "tipos de ponteiro", embora você raramente precise usá-los diretamente. O compilador sabe, por exemplo, que "um ponteiro de bytes é um ponteiro para um byte" e ele uso ponteiros de bytes para gerenciar suas strings. Consulte `Strings`, `Substrings`, `Percorredores`, e `Possessivos` para obter mais informações.
 
-
 Por último, o compilador reconhece todos os tipos de "coisa". Existem várias no compilador, incluindo console, evento, imagem, polígono e vértice, todas elas são discutidas em outros lugares neste glossário. E também pode definir as suas próprias coisas. Consulte o tópico sobre `Coisas`, e tente se lembrar das "obras de arte" do programa de exemplo.
-
 
 ## UNIDADES DA MEDIDA
 
@@ -3592,10 +3510,7 @@ Conte os pontos e note que a largura desta caixa é de quatro, não três, unida
 
 Outras unidades de medida que você vai encontrar são: milissegundos, segundos, minutos e horas; polegadas e pés; kilobytes, megabytes, e gigabytes; e "porcento", que geralmente é convertido para uma proporção com 100 no denominador.
 
-
-
 # Índice
-
 
 ## ÍNDICE
 

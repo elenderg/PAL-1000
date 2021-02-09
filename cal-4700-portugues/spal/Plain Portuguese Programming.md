@@ -3649,4 +3649,3 @@ paradeiro, 98
 caderno (writer), 4, 8
 wyrd, 62
 ```
-
