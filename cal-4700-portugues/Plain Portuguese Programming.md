@@ -2236,7 +2236,7 @@ Uma pessoa é algo com
 um nome e
 um endereço postal;
 um byte chamado gênero ou
-um byte chamado sexo no gênero;<br/>  
+um byte chamado sexo no gênero;
 32 bytes, e
 um cônjuge (referência).
 ```
@@ -3620,7 +3620,7 @@ compiler, 4, 9
 conditionais, 11, 56, 65, 100 
 conjunções, 11, 85 
 console, 66 
-contraçõs, 68, 85 
+contrações, 68, 85 
 coordenatas, 118 
 cursor, 5, 22, 37, 39, 44, 72, 80, 83 
 depuração, 67 
@@ -3733,5 +3733,4 @@ esvaziar, 62, 89
 paradeiro, 98
 caderno (writer), 4, 8
 wyrd, 62
-
 ```
