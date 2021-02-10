@@ -1969,7 +1969,7 @@ O console lembra tudo o que ele exibe e rola automaticamente para cima quando a 
 
 ## CONSERTANDO FALHAS E ERROS
 
-Uma dos princípios que regem a linguagem da Sociedade Osmosiana é: *Depuradores são coisa de frangotes*.
+Um dos princípios que regem a linguagem da Sociedade Osmosiana é: *Depuradores são coisa de frangotes*.
 
 Se você precisa de uma ferramenta especial para ajudá-lo a consertar seu código, algo está seriamente errado. Ou você está esquecendo de testar seu programa conforme vai acrescentando as funções nele, ou o seu código está irremediavelmente complexo. Ou talvez você esteja na profissão errada.
 
