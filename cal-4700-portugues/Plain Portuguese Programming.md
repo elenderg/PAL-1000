@@ -933,7 +933,7 @@ Crie o campo de texto.
 Atualize a tela.
 ```
 
-A única alteração para a primeira rotina é a linha que inicializa o campo de texto.
+A única alteração na primeira rotina é a linha que inicializa o campo de texto.
 
 A segunda rotina, porém, tem duas adições. Nós criamos o campo de texto, antes de atualizar a tela. Mas também ocultamos o cursor do mouse para que ele não atrapalhe o usuário quando ele estiver digitando. Mas não se preocupe com isso. O evento "exibir cursor" vai trazê-lo de volta sempre que o mouse se mover.
 
