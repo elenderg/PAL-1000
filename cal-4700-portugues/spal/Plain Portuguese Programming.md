@@ -2508,7 +2508,7 @@ Essas são as variáveis que você precisará usar para obter arquivos da intern
 
  `Um texto de requisição é um texto.`
 
-Um URL é um Localizador Universal de Recursos, por exemplo `<a href="http://www.osmosian.com">http://www.osmosian.com</a>`, que como você pode ver é apenas uma seqüência de caracteres que segue uma convenção complicada para nomes. Essa convenção foi baseada na tecnologia de análise disponível na época, e que fazia muito sucesso há uns 50 anos.
+Uma URL é um Localizador Universal de Recursos, por exemplo `<a href="http://www.osmosian.com">http://www.osmosian.com</a>`, que como você pode ver é apenas uma seqüência de caracteres que segue uma convenção complicada para nomes. Essa convenção foi baseada na tecnologia de análise disponível na época, e que fazia muito sucesso há uns 50 anos.
 
 Umtexto de requisição ou "query string" é um texto com alguns dos seus bytes convertidos em codificações absurdas consistentes com os padrões da internet. Um espaço, por exemplo, se torna uma `%20`, e uma vírgula se torna `%2C`.
 
