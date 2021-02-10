@@ -1214,7 +1214,7 @@ Adicione 1 ao primeiro byte da fonte do percorredor.
 Repita.
 Adicione o comprimento do "src=""" ao primeiro byte da fonte do percorredor.
 Posicione o token do percorredor na fonte do cavaleiro.
-Mover o percorredor (usando regras de atributos HTML).
+Mova o percorredor (usando regras de atributos HTML).
 ```
 ```
 Para mover um percorredor (usando regras de atributos HTML):
@@ -1228,7 +1228,7 @@ Repita.
 como pintar
 ```
 
-Caso covê queira ver os dados retornados pelo Google, você pode salvar o conteúdo da fonte do percorredor em um arquivo usando a rotina `gravar um buffer num arquivo` que está presente no arquivo `o cérebro`.
+Caso você queira ver os dados retornados pelo Google, você pode salvar o conteúdo da fonte do percorredor em um arquivo usando a rotina `gravar um buffer num arquivo` que está presente no arquivo `o cérebro`.
 
 Observe que, uma vez que as subpalavras contêm ponteiros de byte, não os bytes em si, você precisa especificar o alvo do primeiro byte da fonte do percorredor para obter os dados. Eu percebo que isto é um pouco complicado, mas sempre que a gente lida com coisas complicadas, é isso que ocorre.
 
