@@ -91,7 +91,7 @@ Para fechar o arquivo, use o comando `Fechar`, clique na aba que você está uti
 
 O `bloco de notas` é simples e eficiente. Quando você abre um arquivo de texto, o conteúdo dele é exibido imediatamente. Você pode alterar o conteúdo à vontade usando o teclado e mouse, nas formas mencionadas anteriormente.
 
-Essas aqui, por exemplo, são as instruções que meus criadores me deram para imprimir um determinado número de cópias de um arquivo. Essa é uma parte do código que está presente no meu `bloco de notas`. Isso mesmo, eu estou editando o código do `bloco de notas` no próprio `bloco de notas`. Eu adoro poder fazer isto. É como olhar para a sua própria alma.
+Essas aqui, por exemplo, são as instruções para imprimir um determinado número de cópias de um arquivo. Essa é uma parte do código que está presente no meu `bloco de notas`. Isso mesmo, é possível editar o código do `bloco de notas` no próprio `bloco de notas`. Eu adoro poder fazer isto. É como olhar para a sua própria alma.
 
 ```
 A B C D E G G I J K ... W X Y Z 681:
@@ -174,7 +174,7 @@ Cerca de metade deste arquivo são tipos, variáveis globais e rotinas que você
 
 A outra metade é código assembly — garanto que você não vai querer examinar isso de perto. A maior parte disso serve para fazer o programa funcionar no WIndows.
 
-Aqui está um exemplo. Consulte se você consegue dizer qual é qual.
+Aqui está um exemplo. Veja se você consegue dizer qual é qual.
 
 ```
 A B C D E G G I J K ... W X Y Z 143:
@@ -204,7 +204,7 @@ Intel $8B85080000000FB6008B9D0C0000002803.
 
 ## DETALHES BÁSICOS DO FUNCIONAMENTO DO COMPILADOR
 
-Muito bem. Consulte aqui como é possível fazer tanto com tão pouco.
+Muito bem. Veja aqui como é possível fazer tanto com tão pouco.
 
 (1) O compilador só entende cinco tipos de expressões:
 
@@ -222,7 +222,7 @@ a) definições de tipo que sempre começam com `Um`, `Uma`, `Uns`, `Umas`, `Alg
  (d) qualquer literal, como `123` ou `"Olá, mundo!`, ou
  (e) qualquer sinal de pontuação.
 
-(3) Eu considero quase todas as outras palavras como substantivos, exceto essas:
+(3) O compilador considera quase todas as outras palavras como substantivos, exceto essas:
 
 (a) operadores aritméticos: `MAIS`, `MENOS`, `VEZES`, `DIVIDIDO POR` e `JUNTO DE`;
  (b) palavras especiais de definição: `CHAMADO(A)` e `IGUAL`; e
