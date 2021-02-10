@@ -9,14 +9,14 @@ http://www.osmosian.com
 ## CONTEÚDO
 
 Visão Geral
- Programa de Amostra
- Glossário
+Programa de Amostra
+Glossário
 
 ## Visão Geral
 
 ## INTRODUÇÃO
 
-Seja bem-vindo ao PAL - *Portuguese Compiler And Linker*. A função principal do PAL é transformar arquivos de texto em português simples em programas executáveis compatíveis com a sistema operacional Windows. O código fonte do PAL  apenas 25.000 linhas escritas totalmente em português  é surpreendentemente amplo e abrangente. O código está distribuiído nos seis arquivos a seguir:
+Seja bem-vindo ao PAL - *Portuguese Compiler And Linker*. A função principal do PAL é transformar arquivos de texto em português simples em programas executáveis compatíveis com a sistema operacional Windows. O código fonte do PAL  apenas 25.000 linhas escritas totalmente em português  é surpreendentemente amplo e abrangente. O código está distribuído nos seis arquivos a seguir:
 
 1. O **Ambiente de Trabalho**, uma pequena interface de usuário com menus e abas;
 2. O **Explorador de Arquivos**, que fornece acesso direto ao sistema de arquivos;
@@ -25,34 +25,36 @@ Seja bem-vindo ao PAL - *Portuguese Compiler And Linker*. A função principal d
 5. O **Agrupador e Vinculador de Tarefas** (Compiler And Linker), mencionado acima; e
 6. O **Cérebro**, meu lobo frontal, que eu levo comigo pra todo lugar.
 
-Eu sou capaz de me replicar e consigo me recompilar em menos de três segundos. Que é menos tempo do que o Word leva só para iniciar.
+O compilador consegue gerar uma nova cópia de si mesmo, se recompilando em cerca de três segundos. Isso é menos tempo do que o Word leva só para iniciar.
 
 #### INSTALAÇÃO
 
-De acordo com a filosofia da Ordem Osmosiana, os programas nunca devem exigir procedimentos especiais de instalação. O código fonte, o arquivo executável e toda a documentação (tanto em formato próprietário quanto em PDF) estão todos contidos na pasta CAL-4700. Basta clicar duas vezes no arquivo executável e o programa é iniciado no mesmo instante.
+De acordo com a filosofia da Ordem Osmosiana, os programas gerados pelo compilador nunca devem exigir procedimentos especiais de instalação. O código fonte, o arquivo executável e toda a documentação (tanto em formato proprietário quanto em PDF) estão todos contidos na pasta CAL-4700. Basta clicar duas vezes no arquivo executável e o programa é iniciado no mesmo instante.
 
 #### CONTATO PARA DÚVIDAS E OUTRAS QUESTÕES
 
 Antes de mais nada, o PAL é o compilador mais avançado do mundo, quando se trata de analisar e interpretar comandos em língua portuguesa. Nenhum compilador nosso cometeu algum erro ou distorceu alguma informação. Todos eles, através de qualquer definição prática das palavras, são infalíveis e incapazes de cometer erros. Mesmo assim...
 
-Questões e comentários podem ser enviados para *[help@osmosian.com](mailto:help@osmosian.com)* (em inglês). Se você não sabe inglês, mande um email para *[elenderg+osmosian@gmail.com](mailto:elenderg+osmosian@gmail.com)*.
+Questões e comentários podem ser enviados para *[help@osmosian.com](mailto:help@osmosian.com)* (em inglês). Se você não sabe inglês, mande um e-mail para *[elenderg+osmosian@gmail.com](mailto:elenderg+osmosian@gmail.com)*.
 
 ## O AMBIENTE DE TRABALHO
 
-Quando o PAL é iniciado, ele preenche totalmente a tela para que você não precise mais olhar para aquela interface horrível que vem junto com o Windows. Em vez disso, você verá meu rosto simples mas honesto, assim:
+Quando o PAL é iniciado, ele preenche totalmente a tela para que você não precise mais se distrair com a interface do Windows. Em vez disso, você verá uma tela mais ou menos assim:
 
 ```
 A B C D E G G I J K ... W X Y Z 3 itens
 ```
 ```
-a:\ (unidade de disquete)<br/>  
-c:\ (disco rígido)<br/>  
-d:\ (unidade de cd-rom)<br/>  
+a:\ (unidade de disquete)  
+c:\ (disco rígido)  
+d:\ (unidade de cd-rom)  
 ```
 
 Acho que é tudo bastante óbvio. Menus alfabéticos, avisos no canto superior direito. Área de trabalho no meio, abas (para escolher uma área de trabalho diferente) na parte inferior. Aliás, você pode arrastar as abas para a esquerda e para a direita para mudar a ordem delas, se preciso.
 
 Essas são as minhas setas. Elas aparecerão quando você precisar delas.
+
+
 
 Observe que não há nenhuma barra de rolagem na interface. Isso é totalmente proposital. Para rolar, pressione o botão direito do mouse e arraste.
 
@@ -89,7 +91,7 @@ Para fechar o arquivo, use o comando `Fechar`, clique na aba que você está uti
 
 O `bloco de notas` é simples e eficiente. Quando você abre um arquivo de texto, o conteúdo dele é exibido imediatamente. Você pode alterar o conteúdo à vontade usando o teclado e mouse, nas formas mencionadas anteriormente.
 
-Essas aqui, por exemplo, são as instruções que meus criadores me deram para imprimir um determinado número de cópias de um arquivo. Essa é uma parte do código que está presente no meu `bloco de notas`. Isso mesmo, eu estou editando o código do `bloco de notas` no próprio `bloco de notas`. Eu adoro poder fazer isto. É como olhar para a sua própria alma.
+Essas aqui, por exemplo, são as instruções para imprimir um determinado número de cópias de um arquivo. Essa é uma parte do código que está presente no meu `bloco de notas`. Isso mesmo, é possível editar o código do `bloco de notas` no próprio `bloco de notas`. Eu adoro poder fazer isto. É como olhar para a sua própria alma.
 
 ```
 A B C D E G G I J K ... W X Y Z 681:
@@ -172,7 +174,7 @@ Cerca de metade deste arquivo são tipos, variáveis globais e rotinas que você
 
 A outra metade é código assembly — garanto que você não vai querer examinar isso de perto. A maior parte disso serve para fazer o programa funcionar no WIndows.
 
-Aqui está um exemplo. Consulte se você consegue dizer qual é qual.
+Aqui está um exemplo. Veja se você consegue dizer qual é qual.
 
 ```
 A B C D E G G I J K ... W X Y Z 143:
@@ -202,7 +204,7 @@ Intel $8B85080000000FB6008B9D0C0000002803.
 
 ## DETALHES BÁSICOS DO FUNCIONAMENTO DO COMPILADOR
 
-Muito bem. Consulte aqui como é possível fazer tanto com tão pouco.
+Muito bem. Veja aqui como é possível fazer tanto com tão pouco.
 
 (1) O compilador só entende cinco tipos de expressões:
 
@@ -220,7 +222,7 @@ a) definições de tipo que sempre começam com `Um`, `Uma`, `Uns`, `Umas`, `Alg
  (d) qualquer literal, como `123` ou `"Olá, mundo!`, ou
  (e) qualquer sinal de pontuação.
 
-(3) Eu considero quase todas as outras palavras como substantivos, exceto essas:
+(3) O compilador considera quase todas as outras palavras como substantivos, exceto essas:
 
 (a) operadores aritméticos: `MAIS`, `MENOS`, `VEZES`, `DIVIDIDO POR` e `JUNTO DE`;
  (b) palavras especiais de definição: `CHAMADO(A)` e `IGUAL`; e
@@ -937,7 +939,7 @@ A segunda rotina, porém, tem duas adições. Nós criamos o campo de texto, ant
 
 ## GERENCIANDO O PRESSIONAMENTO DE TECLAS
 
-Consulte só como é que iremos modificar nosso geremciador de pressionamento de teclas para que ele encaminhe as teclas pressionadas:
+Veja só como é que iremos modificar nosso geremciador de pressionamento de teclas para que ele encaminhe as teclas pressionadas:
 
 ```
 Para gerenciar um comando (pressionamento de tecla):
