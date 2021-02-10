@@ -939,7 +939,7 @@ A segunda rotina, porém, tem duas adições. Nós criamos o campo de texto, ant
 
 ## GERENCIANDO O PRESSIONAMENTO DE TECLAS
 
-Consulte só como é que iremos modificar nosso geremciador de pressionamento de teclas para que ele encaminhe as teclas pressionadas:
+Veja só como é que iremos modificar nosso geremciador de pressionamento de teclas para que ele encaminhe as teclas pressionadas:
 
 ```
 Para gerenciar um comando (pressionamento de tecla):
