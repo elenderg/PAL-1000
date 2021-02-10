@@ -9,14 +9,14 @@ http://www.osmosian.com
 ## CONTEÚDO
 
 Visão Geral
- Programa de Amostra
- Glossário
+Programa de Amostra
+Glossário
 
 ## Visão Geral
 
 ## INTRODUÇÃO
 
-Seja bem-vindo ao PAL - *Portuguese Compiler And Linker*. A função principal do PAL é transformar arquivos de texto em português simples em programas executáveis compatíveis com a sistema operacional Windows. O código fonte do PAL  apenas 25.000 linhas escritas totalmente em português  é surpreendentemente amplo e abrangente. O código está distribuiído nos seis arquivos a seguir:
+Seja bem-vindo ao PAL - *Portuguese Compiler And Linker*. A função principal do PAL é transformar arquivos de texto em português simples em programas executáveis compatíveis com a sistema operacional Windows. O código fonte do PAL  apenas 25.000 linhas escritas totalmente em português  é surpreendentemente amplo e abrangente. O código está distribuído nos seis arquivos a seguir:
 
 1. O **Ambiente de Trabalho**, uma pequena interface de usuário com menus e abas;
 2. O **Explorador de Arquivos**, que fornece acesso direto ao sistema de arquivos;
@@ -25,17 +25,17 @@ Seja bem-vindo ao PAL - *Portuguese Compiler And Linker*. A função principal d
 5. O **Agrupador e Vinculador de Tarefas** (Compiler And Linker), mencionado acima; e
 6. O **Cérebro**, meu lobo frontal, que eu levo comigo pra todo lugar.
 
-Eu sou capaz de me replicar e consigo me recompilar em menos de três segundos. Que é menos tempo do que o Word leva só para iniciar.
+O compilador consegue gerar uma nova cópia de si mesmo, se recompilando em cerca de três segundos. Isso é menos tempo do que o Word leva só para iniciar.
 
 #### INSTALAÇÃO
 
-De acordo com a filosofia da Ordem Osmosiana, os programas nunca devem exigir procedimentos especiais de instalação. O código fonte, o arquivo executável e toda a documentação (tanto em formato próprietário quanto em PDF) estão todos contidos na pasta CAL-4700. Basta clicar duas vezes no arquivo executável e o programa é iniciado no mesmo instante.
+De acordo com a filosofia da Ordem Osmosiana, os programas gerados pelo compilador nunca devem exigir procedimentos especiais de instalação. O código fonte, o arquivo executável e toda a documentação (tanto em formato proprietário quanto em PDF) estão todos contidos na pasta CAL-4700. Basta clicar duas vezes no arquivo executável e o programa é iniciado no mesmo instante.
 
 #### CONTATO PARA DÚVIDAS E OUTRAS QUESTÕES
 
 Antes de mais nada, o PAL é o compilador mais avançado do mundo, quando se trata de analisar e interpretar comandos em língua portuguesa. Nenhum compilador nosso cometeu algum erro ou distorceu alguma informação. Todos eles, através de qualquer definição prática das palavras, são infalíveis e incapazes de cometer erros. Mesmo assim...
 
-Questões e comentários podem ser enviados para *[help@osmosian.com](mailto:help@osmosian.com)* (em inglês). Se você não sabe inglês, mande um email para *[elenderg+osmosian@gmail.com](mailto:elenderg+osmosian@gmail.com)*.
+Questões e comentários podem ser enviados para *[help@osmosian.com](mailto:help@osmosian.com)* (em inglês). Se você não sabe inglês, mande um e-mail para *[elenderg+osmosian@gmail.com](mailto:elenderg+osmosian@gmail.com)*.
 
 ## O AMBIENTE DE TRABALHO
 
@@ -53,6 +53,8 @@ d:\ (unidade de cd-rom)<br/>
 Acho que é tudo bastante óbvio. Menus alfabéticos, avisos no canto superior direito. Área de trabalho no meio, abas (para escolher uma área de trabalho diferente) na parte inferior. Aliás, você pode arrastar as abas para a esquerda e para a direita para mudar a ordem delas, se preciso.
 
 Essas são as minhas setas. Elas aparecerão quando você precisar delas.
+
+
 
 Observe que não há nenhuma barra de rolagem na interface. Isso é totalmente proposital. Para rolar, pressione o botão direito do mouse e arraste.
 
