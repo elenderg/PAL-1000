@@ -300,7 +300,7 @@ c:\cal monet\como pintar
 c:\cal monet\o cérebro
 ```
 
-E agora estamos prontos para escrever um código em inglês simples.
+E agora estamos prontos para escrever um código em iPortuguês Simples.
 
 ## COMO EXECUTAR O PROGRAMA
 
