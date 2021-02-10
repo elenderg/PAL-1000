@@ -2605,6 +2605,12 @@ Uma linha tem um ponto inicial e um ponto final.
 
 E aqui está uma imagem de uma linha, com suas partes identificadas:
 
+`PONTO INICIAL`
+
+`PONTO FINAL`
+
+`•`
+
 O compilador consegue fazer linhas a partir de dois pontos ou usando quatro coordenadas separadas (2 x e 2 y):
 
 `FAÇA uma linha USANDO essa coordenada E essa outra coordenada.`
@@ -2620,11 +2626,7 @@ Bem no meio. Ele consegue detectar se um ponto está em cima de uma linha. Além
 
 Consulte o tópico `Spots` para mais informações sobre esses pontos finais.
 
-`PONTO INICIAL`
 
-`PONTO FINAL`
-
-`•`
 
 ## LISTAGEM
 
