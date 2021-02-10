@@ -2776,7 +2776,7 @@ Note que se você estiver desenhando e nada estiver aparecendo, isso provavelmen
 
 ## GERENCIAMENTO DE MEMÓRIA
 
-O compiladorgerencia toda a memória necessária para os tipos de dados estáticos — como bytes, wyrds, números, ponteiros, bandeiras e a maioria dos registros. O compilador também gerencia as strings (texto), uma vez que elas são usadas com frequência e seu comportamento é previsível.
+O compilador gerencia toda a memória necessária para os tipos de dados estáticos — como bytes, wyrds, números, ponteiros, bandeiras e a maioria dos registros. O compilador também gerencia as strings (texto), uma vez que elas são usadas com frequência e seu comportamento é previsível.
 
 Mas quando você define um tipo dinâmico de dados, como uma "coisa", você se torna o único responsável por qualquer memória usada pelo tipo.
 
@@ -2800,7 +2800,7 @@ Mas se você não quiser, pode usar a rotina padrão do sistema. Apesar da rotin
 
 `DESTRUA algo.`
 
-Observe quea rotina `DESTRUA` não só destrói a coisa em si, mas também quaisquer outras coisas que estejam dentro da coisa, como campos e listas. A menos que, que você defina esses campos como "`(REFERÊNCIA)`".
+Observe que a rotina `DESTRUA` não só destrói a coisa em si, mas também quaisquer outras coisas que estejam dentro da coisa, como campos e listas. A menos que, que você defina esses campos como "`(REFERÊNCIA)`".
 
 Um bom exemplo pode ser encontrado no caderno onde uma "página" é definida como uma coisa com algumas "formas" nela. Voce encontrará rotinas que criam páginas e formas, mas não encontrará nenhuma rotina específica para destruí-las. Elas são parte do compilador. Entao, quando destruímos uma página, nós destruímos todas as formas dentro dela ao mesmo tempo. Exceto, é claro, para a "forma de edição", que é uma referência.
 
