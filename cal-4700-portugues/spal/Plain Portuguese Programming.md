@@ -2745,7 +2745,7 @@ Os pintores da vida real geralmente usam fita crepe, dessa forma eles não pinta
 `PROTEJA A PARTE DE FORA disso.`
 `PROTEJA A PARTE EXTERNA disso.`
 
-Onde `disSo` podem ser caixas, elipses, polígonos ou caixas arredondadas. Perceba, no entanto, que a infelizmente só conseguimos usar uma "fita boa" em caixas. Em todos os outros lugares só conseguimos usar uma fita ruim, então não espere perfeição com nada a não ser caixas.
+Onde `disso` podem ser caixas, elipses, polígonos ou caixas arredondadas. Perceba, no entanto, que a infelizmente só conseguimos usar uma "fita boa" em caixas. Em todos os outros lugares só conseguimos usar uma fita ruim, então não espere perfeição com nada a não ser caixas.
 
 Qualquer fita que você aplica permanece aplicada, então depois você provavelmente vai querer usar um desses comandos:
 
