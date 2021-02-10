@@ -45,9 +45,9 @@ Quando o PAL é iniciado, ele preenche totalmente a tela para que você não pre
 A B C D E G G I J K ... W X Y Z 3 itens
 ```
 ```
-a:\ (unidade de disquete)<br/>  
-c:\ (disco rígido)<br/>  
-d:\ (unidade de cd-rom)<br/>  
+a:\ (unidade de disquete)  
+c:\ (disco rígido)  
+d:\ (unidade de cd-rom)  
 ```
 
 Acho que é tudo bastante óbvio. Menus alfabéticos, avisos no canto superior direito. Área de trabalho no meio, abas (para escolher uma área de trabalho diferente) na parte inferior. Aliás, você pode arrastar as abas para a esquerda e para a direita para mudar a ordem delas, se preciso.
