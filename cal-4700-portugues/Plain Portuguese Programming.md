@@ -1353,7 +1353,7 @@ como pintar
 
 A resposta será mais lenta na primeira vez que você criar uma obra de arte, já que temos que pintá-la antes de mostrá-la. A mensagem "Trabalhando..." aparecerá no painel de informações.
 
-Experimente. Com certeza você vai gostar..
+Experimente. Com certeza você vai gostar.
 
 ## IMPRIMINDO
 
