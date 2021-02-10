@@ -39,7 +39,7 @@ Questões e comentários podem ser enviados para *[help@osmosian.com](mailto:hel
 
 ## O AMBIENTE DE TRABALHO
 
-Quando o PAL é iniciado, ele preenche totalmente a tela para que você não precise mais olhar para aquela interface horrível que vem junto com o Windows. Em vez disso, você verá meu rosto simples mas honesto, assim:
+Quando o PAL é iniciado, ele preenche totalmente a tela para que você não precise mais olhar para aquela interface horrível que vem junto com o Windows. Em vez disso, você verá uma tela mais ou menos assim:
 
 ```
 A B C D E G G I J K ... W X Y Z 3 itens
