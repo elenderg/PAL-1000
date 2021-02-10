@@ -1856,7 +1856,7 @@ tipos primitivos, incluindo outros records que você tenha definido anteriorment
 
 ## CORES
 
-Uma cor tem uma matiz, uma saturação e um brilho. Minha paleta padrão inclui clores claras, brancos, pretos, sete cinzas não saturados e oitenta e quatro cores totalmente saturadas com diferentes graus de claridade, como mostrado aqui:
+Uma cor tem uma matiz, uma saturação e um brilho. A paleta padrão de cores inclui clores claras, brancos, pretos, sete cinzas não saturados e oitenta e quatro cores totalmente saturadas com diferentes graus de claridade, como mostrado aqui:
 
 O compilador possui uma variável global para cada uma dessas cores no arquivo `o cérebro`. "A cor cinza mutio claro", por exemplo, ou "a cor azul escura". Você deve omitir o adjetivo em tons normais, como em "a cor vermelha".
 
