@@ -1357,7 +1357,7 @@ Experimente. Com certeza você vai gostar.
 
 ## IMPRIMINDO
 
-Bem, não há mais nada para fazer senão atualizar nossas rotinas de impressão:
+Bem, não há mais nada para fazer a não ser atualizar nossas rotinas de impressão:
 
 ```
 Para imprimir uma obra de arte:
