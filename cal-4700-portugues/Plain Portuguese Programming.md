@@ -880,9 +880,6 @@ Há uma componente bem útil chamada campo de texto no arquivo `o cérebro` que 
 No entanto, não vamos precisar implementar todas essas funções no nosso pequeno programa. Algo muito mais simples já é o suficiente. Aqui estão as definições básicas que nós vamos precisar para o nosso programa. Dê uma olhada com calma:
 
 ```
-como pintar
-```
-```
 O campo de texto tem uma caixa e um texto.
 ```
 ```
@@ -901,6 +898,9 @@ Para exibir o texto:
 Coloque texto do campo de texto em um texto.
 Adicione "_" ao final do texto.
 Coloque o texto na caixa do campo de texto.
+```
+```
+como pintar
 ```
 
 Nossa campo de texto é colocada 1/2 polegada acima da parte inferior esquerda da tela. Ele tem 1/4 de polegada de altura e 2 polegadas de largura. Eu não acho que precisemos de uma foto aqui.
