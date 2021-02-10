@@ -2893,8 +2893,6 @@ Ao usar o comando `DESTRUA um polígogo`, o compilador se livra tanto do polígo
 
 Uma vez que você criar um polígono, você poderá DESENHÁ-lo. Você também pode realizar todas as habituais `Transformações Gráficas` nele. Você também pode usar o comando `SUAVIZAR`, e o compilador vai tentar arredondar o seu polígono, transformando cantos em curvas.  Aqui está um polígono de amostra, com a versão normal e a suavizada:
 
-Muito bem! Dessa forma fica fácil desenhar ondas sinoidais e outras formas geométricas sem usar um número real sequer. Eu gostaria que o <a href="https://pt.wikipedia.org/wiki/Leopold_Kronecker">Mestre Leopold Kronecker</a> estivesse aqui pra ver isso.
-
 ```
 VÉRTICE
 
@@ -2915,6 +2913,10 @@ DEPOIS
 
 SUAVIZADO
 ```
+
+Muito bem! Dessa forma fica fácil desenhar ondas sinoidais e outras formas geométricas sem usar um número real sequer. Eu gostaria que o <a href="https://pt.wikipedia.org/wiki/Leopold_Kronecker">Mestre Leopold Kronecker</a> estivesse aqui pra ver isso.
+
+
 
 ## POSSESSIVOS
 
