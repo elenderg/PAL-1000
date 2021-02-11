@@ -83,7 +83,7 @@ Quando você abrir um arquivo de texto, o `bloco de notas` entra em ação.
 
 Quando você abrir um documento, o` caderno` entra em ação.
 
-Quando você abre qualquer outra tipo de arquivo, o conteúdo do arquivo é convertido na memória em um arquivo hexadecimal para ser exibido no `bloco de notas`. Não é possível modificar diretamente o conteúdo nesse tipo de visualização. Você pode no entanto forçar com que um arquivo seja aberto como texto ou como um "arquivo de despejo" (dump). Para fazer isso, clique no menu `A`.
+Quando você abre qualquer outro tipo de arquivo, o conteúdo do arquivo é convertido na memória em um arquivo hexadecimal para ser exibido no `bloco de notas`. Não é possível modificar diretamente o conteúdo nesse tipo de visualização. Você pode no entanto forçar com que um arquivo seja aberto como texto ou como um "arquivo de despejo" (dump). Para fazer isso, clique no menu `A`.
 
 Para fechar o arquivo, use o comando `Fechar`, clique na aba que você está utilizando, ou pressione a tecla `Esc`.
 
