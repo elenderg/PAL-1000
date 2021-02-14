@@ -29,7 +29,7 @@ O compilador consegue gerar uma nova cópia de si mesmo, se recompilando em cerc
 
 #### INSTALAÇÃO
 
-De acordo com a filosofia da Ordem Osmosiana, os programas gerados pelo compilador nunca devem exigir procedimentos especiais de instalação. O código fonte, o arquivo executável e toda a documentação (tanto em formato proprietário quanto em PDF) estão todos contidos na pasta CAL-4700. Basta clicar duas vezes no arquivo executável e o programa é iniciado no mesmo instante.
+De acordo com a filosofia da Ordem Osmosiana, os programas gerados pelo compilador nunca devem exigir procedimentos especiais de instalação. O código fonte, o arquivo executável e toda a documentação (tanto em formato nativo do sistema quanto em PDF) estão todos contidos na pasta CAL-4700. Basta clicar duas vezes no arquivo executável e o programa é iniciado no mesmo instante.
 
 #### CONTATO PARA DÚVIDAS E OUTRAS QUESTÕES
 
@@ -50,9 +50,9 @@ c:\ (disco rígido)
 d:\ (unidade de cd-rom)  
 ```
 
-Acho que é tudo bastante óbvio. Menus alfabéticos, avisos no canto superior direito. Área de trabalho no meio, abas (para escolher uma área de trabalho diferente) na parte inferior. Aliás, você pode arrastar as abas para a esquerda e para a direita para mudar a ordem delas, se preciso.
+Tudo é meio que bastante óbvio. Menus alfabéticos, avisos no canto superior direito. Área de trabalho no meio, abas (para escolher uma área de trabalho diferente) na parte inferior. Aliás, você pode arrastar as abas para a esquerda e para a direita para mudar a ordem delas, se preciso.
 
-Essas são as minhas setas. Elas aparecerão quando você precisar delas.
+Essas são as setas do compilador. Elas aparecerão quando você precisar delas.
 
 
 
@@ -142,7 +142,7 @@ O caderno é um programa de diagramação de páginas totalmente completo, que p
 
 ## O AGRUPADOR
 
-Agora eu sei que a maioria dos guias de programação iria mostrar um pequeno algoritmo do tipo "Olá, Mundo" — esperando que você ficasse impressionado com isso — mas eu gostaria de sugerir que nós pulemos as coisas de criança e fôssemos direto para as coisas de gente grande.
+A maioria dos guias de programação mostra apenas um pequeno algoritmo do tipo "Olá, Mundo" — e espera que você fique impressionado com isso — mas eu gostaria de sugerir que nós pulemos as coisas de criança e fôssemos direto para as coisas de gente grande.
 
 Sei que pode isso pode te deixar um pouco aprreensivo. Mas não hesite agora. Esta pode ser a primeira vez para você, mas eu sou macaco velho nisso aqui. *Se me der a mão eu te guiarei*... Suavemente.
 
@@ -168,7 +168,7 @@ Você pode sair da cópia agora, e — partindo do pressuposto de que você acre
 
 ## O CÉREBRO
 
-Meu último arquivo é chamado de <code>o cérebro</code>.
+O último arquivo é chamado de <code>o cérebro</code>.
 
 Cerca de metade deste arquivo são tipos, variáveis globais e rotinas que você indubitavelmente achará úteis. Tudo isso será explicado com calma mais adiante.
 
