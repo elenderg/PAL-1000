@@ -1,0 +1,727 @@
+\ The portions of this file that are from CAL-3040
+\ are copyright 2006 by the Osmosian Order.
+\ The remainder is copyright 2014, 2017 by Jasper Paulsen.
+
+to adjust a scrollbar:
+  if the scrollbar's cab is nil, exit.
+  get a height called cabheight (scrollbar cab height).
+  put the scrollbar's cab's top plus the cabheight
+    in the scrollbar's cab's bottom.
+  put the scrollbar's box's height
+    minus the scrollbar's uptick's height
+    minus the scrollbar's downtick's height
+    minus the cabheight
+    in a number called range.
+  put the range into a number called position.
+  get a ratio of invisible rows.
+  scale the position given the ratio.
+  put the scrollbar's uptick's bottom plus the position
+    in the scrollbar's cab's top.
+  put the scrollbar's cab's top plus the cabheight
+    in the scrollbar's cab's bottom.
+  put the scrollbar's cab's top in the scrollbar's uppage's bottom.
+  put the scrollbar's cab's bottom in the scrollbar's downpage's top.
+
+an arrow is a polygon.
+
+to convert a count to a height given a scrollee (invert scrollbar drag):
+  put the count in the height.
+  if the scrollee is empty, exit.
+  put the scrollbar's range and the scrollee's invisible count in a ratio.
+  scale the height given the ratio.
+
+to convert a height to a count given a scrollee (scrollbar drag):
+  put the height in the count.
+  if the scrollee is empty, exit.
+  put the scrollee's invisible count and the scrollbar's range in a ratio.
+  scale the count given the ratio.
+
+to create a scrollbar:
+  create the scrollbar's uptick.
+  create the scrollbar's uppage.
+  create the scrollbar's cab.
+  create the scrollbar's downpage.
+  create the scrollbar's downtick.
+
+to decide if a command is left-clicked:
+  if the mouse's left button is up, say no.
+  if the mouse's spot is in the command, say yes.
+  say no.
+
+to decide if a command is wafer thin:
+  if the command's roundy box is wafer thin, say yes.
+  say no.
+
+to decide if an event is in a scrollbar:
+  if the scrollbar is not needed, say no.
+  if the event's spot is in the scrollbar's box, say yes.
+  say no.
+
+to decide if a mode is never scrollable:
+  if the mode is sometimes scrollable, say no.
+  say yes.
+
+to decide if a mode is sometimes scrollable:
+  if the mode is "editor", say yes.
+  if the mode is "finder", say yes.
+  if the mode is "docster", say yes.
+  say no.
+
+to decide if a roundy box is wafer thin:
+  if the roundy box's top  is the roundy box's bottom, say yes.
+  if the roundy box's left is the roundy box's right,  say yes.
+  if the roundy box's top  plus the tpp is the roundy box's bottom, say yes.
+  if the roundy box's left plus the tpp is the roundy box's right,  say yes.
+  say no.
+
+to decide if the scrollbar is needed:
+  make a scrollee given the current tab.
+  if the scrollbar is needed given the scrollee, say yes.
+  say no.
+
+to decide if a scrollbar is needed given a scrollee:
+  if the scrollee is empty, say no.
+  if the scrollee's invisible count is 0, say no.
+  say yes.
+
+to decide if a scrollee is empty:
+  if the scrollee's node is nil, say yes.
+  if the scrollee's mode is never scrollable, say yes.
+  if the scrollee is populated (docster), say no.
+  if the scrollee is populated (editor), say no.
+  if the scrollee is populated (finder), say no.
+  say yes.
+
+to decide if a scrollee is populated (docster):
+  if the scrollee's mode is not "docster", say no.
+  if the scrollee's node is nil, say no.
+  if the scrollee's node's document is empty, say no.
+  say yes.
+
+to decide if a scrollee is populated (editor):
+  if the scrollee's mode is not "editor", say no.
+  if the scrollee's node is nil, say no.
+  if the scrollee's node's source is nil, say no.
+  if the scrollee's node's source's text is empty, say no.
+  say yes.
+
+to decide if a scrollee is populated (finder):
+  if the scrollee's mode is not "finder", say no.
+  if the scrollee's node is empty, say no.
+  say yes.
+
+to decide if a spot is in the scrollbar:
+  if the scrollbar is not needed, say no.
+  if the spot is in the scrollbar's box, say yes.
+  say no.
+
+to destroy a scrollbar:
+  destroy the scrollbar's uptick.
+  destroy the scrollbar's uppage.
+  destroy the scrollbar's cab.
+  destroy the scrollbar's downpage.
+  destroy the scrollbar's downtick.
+
+to draw an arrow in a command:
+  privatize the arrow.
+  center the arrow in the command's roundy box.
+  draw the arrow with the black color
+    and the gray color's light shade.
+
+to draw down arrow in a command:
+  create an arrow.
+  initialize the arrow.
+  draw the arrow in the command.
+  destroy the arrow.
+
+to draw a scrollbar:
+  draw the scrollbar's uptick.
+  draw up arrow in the scrollbar's uptick.
+  if the scrollbar's uppage is not wafer thin,
+    draw the scrollbar's uppage.
+  draw the scrollbar's cab.
+  if the scrollbar's downpage is not wafer thin,
+    draw the scrollbar's downpage.
+  draw the scrollbar's downtick.
+  draw down arrow in the scrollbar's downtick.
+
+to draw up arrow in a command:
+  create an arrow.
+  initialize the arrow.
+  flip the arrow.
+  draw the arrow in the command.
+  destroy the arrow.
+
+to estimate character width given a font returning a ratio:
+  \ Common characters in the New York Times from January to March 1992,
+  \ per http://www.indiana.edu/~clcl/Papers/LFE.pdf
+  put "AIMa abcde eeefg hiilm nnoop rrsst ttuwy ""',,. .01" in a string.
+  get a width given the string and the memory canvas and the font.
+  put the width and the string's length into the ratio.
+
+to finalize a scrollbar:
+  destroy the scrollbar.
+
+to find a command given a scrollbar and a spot:
+  void the command.
+  if the spot is in the scrollbar's uptick,
+    put the scrollbar's uptick in the command; exit.
+  if the spot is in the scrollbar's uppage,
+    put the scrollbar's uppage in the command; exit.
+  if the spot is in the scrollbar's downpage,
+    put the scrollbar's downpage in the command; exit.
+  if the spot is in the scrollbar's downtick,
+    put the scrollbar's downtick in the command; exit.
+
+to get the default fast horizontal scroll speed returning a number:
+  put 3 in the number.
+  if the current tab's mode is not "editor", exit.
+  if the current tab's source is nil, exit.
+  if the current tab's source's text is nil, exit.
+  if the current tab's source's text's characters/box is less than 2,
+    put 1 in the number; exit.
+  put the current tab's source's text's characters/box minus 1 in the number.
+
+to get the default fast scroll speed returning a number:
+  put 3 in the number.
+  if the current tab's mode is not "editor", exit.
+  if the current tab's source is nil, exit.
+  if the current tab's source's text is nil, exit.
+  if the current tab's source's text's rows/box is less than 2,
+    put 1 in the number; exit.
+  put the current tab's source's text's rows/box minus 1 in the number.
+
+to get a height (scrollbar cab height):
+  put the scrollbar's box's height 
+    minus the scrollbar's uptick's height 
+    minus the scrollbar's downtick's height 
+    into the height.
+  if the height is less than 1/4 inch, exit.
+  make a scrollee given the current tab.
+  if the scrollee is empty, exit.
+  put the scrollee's visible count and the scrollee's count into a ratio.
+  if the ratio's numerator is greater than the ratio's denominator,
+    put 1 into the ratio.
+  scale the height given the ratio.
+  if the height is less than 1/4 inch,
+    put 1/4 inch into the height.
+
+to get the horizontal scroll speed returning a number:
+  if the stashed horizontal scroll speed is 0,
+    stash horizontal scroll speed.
+  if the stashed horizontal scroll speed is less than 0,
+    get the default fast horizontal scroll speed returning the number;
+    exit.
+  put the stashed horizontal scroll speed in the number.
+
+to get the horizontal scroll speed returning a number (from windows):
+  clear the number.
+  call "user32.dll" "SystemParametersInfoA"
+    with 108 [SPI_GETWHEELSCROLLCHARS] and 0 [not used]
+    and the number's whereabouts and 0 [not used].
+\
+\ https://msdn.microsoft.com/en-us/library/windows/desktop/ms724947(v=vs.85).aspx
+\ lists the System Parameters Info (SPI) constants.
+
+to get a ratio of invisible rows:
+  make a scrollee given the current tab.
+  get the ratio of invisible rows given the scrollee.
+
+to get a ratio of invisible rows given a scrollee:
+  if the scrollee is empty, put 1 / 2 in the ratio; exit.
+  put the scrollee's leading invisible count in a top number.
+  put the scrollee's trailing invisible count in a bottom number.
+  put the top plus the bottom in a number called invisible.
+  if the invisible is less than the top,
+    put the top and the top in the ratio; exit.
+  put the top and the invisible in the ratio.
+
+to get the scroll speed returning a number:
+  if the stashed scroll speed is 0,
+    stash scroll speed.
+  if the stashed scroll speed is less than 0,
+    get the default fast scroll speed returning the number;
+    exit.
+  put the stashed scroll speed in the number.
+
+to get the scroll speed returning a number (from windows):
+  clear the number.
+  call "user32.dll" "SystemParametersInfoA"
+    with 104 [SPI_GETWHEELSCROLLLINES] and 0 [not used]
+    and the number's whereabouts and 0 [not used].
+
+to handle downtick:
+  make a scrollee given the current tab.
+  if the scrollee is empty, exit.
+  hide the cursor.
+  put 1 in a count.
+  scroll the scrollee given the count.
+  show the desktop with status.
+  wait for 50 milliseconds.
+  if the scrollbar's downtick is left-clicked, repeat.
+
+to handle an event (left click - scrollbar):
+  if the event's spot is in the scrollbar's cab,
+    scroll given the event (scrollbar drag); exit.
+  find a command given the scrollbar and the event's spot.
+  handle the command.
+
+to handle an event (mouse horizontal scroll speed changed):
+  stash horizontal scroll speed.
+
+to handle an event (mouse horizontal wheel):
+  if the current tab is nil, exit.
+  if the current tab's mode is never scrollable, exit.
+  if the current tab's mode is "docster", exit.
+  \ the docster only scrolls vertically, not horizontally.
+  if the event is modified, exit.
+  convert the event's byte into a mouse wyrd.
+  \ The scrollbar behaves opposite to "right-click and push",
+  \ so let right-click and push take precedence:
+  if right is implied by the mouse wyrd, exit.
+  if the event's key is 0, exit.
+  get the horizontal scroll speed returning a number called speed.
+  if the speed is 0, exit.
+  put 120 [WHEEL_DELTA] divided by the speed in a number called roll quantum.
+  if the event's key and the unprocessed horizontal mouse roll are not similarly signed,
+    put 0 in the unprocessed horizontal mouse roll.
+  add the event's key to the unprocessed horizontal mouse roll.
+  put the unprocessed horizontal mouse roll in a number.
+  de-sign the number.
+  if the number is less than the roll quantum, exit.
+  get the sign of the unprocessed horizontal mouse roll returning a number called sign.
+  put the number divided by the roll quantum in a number called quanta.
+  put the sign times the quanta in a count called requested quanta.
+  make a scrollee given the current tab.
+\  horizontal scroll the scrollee given the requested quanta.
+\  show the desktop with status.
+  if the current tab's mode is "editor",
+    horizontal scroll the current tab's source given the requested quanta;
+    show the desktop with status.
+  if the current tab's mode is "finder",
+    horizontal scroll the current tab's node given the requested quanta;
+    show the desktop with status.
+  put the requested quanta times the roll quantum in a number called requested roll.
+  subtract the requested roll from the unprocessed horizontal mouse roll.
+
+to handle an event (mouse scroll speed changed):
+  stash scroll speed.
+
+to handle an event (mouse wheel):
+  if the event's shift flag is set,
+    handle the event (shift mouse wheel); exit.
+  if the scrollbar is not needed, exit.
+  if the event is modified, exit.
+  convert the event's byte into a mouse wyrd.
+  \ The scrollbar behaves opposite to "right-click and push",
+  \ so let right-click and push take precedence:
+  if right is implied by the mouse wyrd, exit.
+  if the event's key is 0, exit.
+  get the scroll speed returning a number called speed.
+  if the speed is 0, exit.
+  put 120 [WHEEL_DELTA] divided by the speed in a number called roll quantum.
+  if the event's key and the unprocessed mouse roll are not similarly signed,
+    put 0 in the unprocessed mouse roll.
+  add the event's key to the unprocessed mouse roll.
+  put the unprocessed mouse roll in a number.
+  de-sign the number.
+  if the number is less than the roll quantum, exit.
+  get the sign of the unprocessed mouse roll returning a number called sign.
+  put the number divided by the roll quantum in a number called lines.
+  put the sign times the lines in a count called requested lines.
+  if the current tab's mode is "editor",
+    scroll the current tab's source given - the requested lines;
+    show the desktop with status.
+  if the current tab's mode is "docster", 
+    scroll the current tab's document down given - the requested lines; 
+    show the desktop with status.
+  if the current tab's mode is "finder", 
+    scroll the current tab's node down given - the requested lines; 
+    show the desktop with status.
+  put the requested lines times the roll quantum in a number called requested roll.
+  subtract the requested roll from the unprocessed mouse roll.
+
+to handle an event (shift mouse wheel):
+  \ Some users (especially of Macintoshes)
+  \ use Shift-mouse-scrolling
+  \ to request horizontal mouse scrolling.
+  \ Perform a horizontal mouse scroll,
+  \ but use the parameters of the event
+  \ and the speed setting of the vertical mouse scroll.
+  \ Shift-mouse scrolling is much easier and more accurate
+  \ than horizontal mouse scrolling.
+  if the current tab's mode is never scrollable, exit.
+  if the current tab's mode is "docster", exit.
+  \ the docster only scrolls vertically, not horizontally.
+  if the event is modified, exit.
+  if the event's shift flag is not set, exit.
+  convert the event's byte into a mouse wyrd.
+  \ The scrollbar behaves opposite to "right-click and push",
+  \ so let right-click and push take precedence:
+  if right is implied by the mouse wyrd, exit.
+  if the event's key is 0, exit.
+  get the scroll speed returning a number called speed.
+  if the speed is 0, exit.
+  put 120 [WHEEL_DELTA] divided by the speed in a number called roll quantum.
+  if the event's key and the unprocessed horizontal mouse roll are not similarly signed,
+    put 0 in the unprocessed horizontal mouse roll.
+  add the event's key to the unprocessed horizontal mouse roll.
+  put the unprocessed horizontal mouse roll in a number.
+  de-sign the number.
+  if the number is less than the roll quantum, exit.
+  get the sign of the unprocessed horizontal mouse roll returning a number called sign.
+  put the number divided by the roll quantum in a number called quanta.
+  put the sign times the quanta in a count called requested quanta.
+  if the current tab's mode is "editor",
+    horizontal scroll the current tab's source given - the requested quanta;
+    show the desktop with status.
+  if the current tab's mode is "finder",
+    horizontal scroll the current tab's node given - the requested quanta;
+    show the desktop with status.
+\  make a scrollee given the current tab.
+\  horizontal scroll the scrollee given - the requested quanta.
+  put the requested quanta times the roll quantum in a number called requested roll.
+  subtract the requested roll from the unprocessed horizontal mouse roll.
+
+to handle page down:
+  make a scrollee given the current tab.
+  if the scrollee is empty, exit.
+  put the scrollee's window capacity in a count.
+  subtract 1 from the count.
+  if the count is at most 0, exit.
+  hide the cursor.
+  scroll the scrollee given the count.
+  show the desktop with status.
+  wait for 200 milliseconds.
+  if the scrollbar's downpage is left-clicked, repeat.
+
+to handle page up:
+  make a scrollee given the current tab.
+  if the scrollee is empty, exit.
+  put the scrollee's window capacity in a count.
+  subtract 1 from the count.
+  if the count is at most 0, exit.
+  hide the cursor.
+  negate the count.
+  scroll the scrollee given the count.
+  show the desktop with status.
+  wait for 200 milliseconds.
+  if the scrollbar's uppage is left-clicked, repeat.
+
+to handle uptick:
+  make a scrollee given the current tab.
+  if the scrollee is empty, exit.
+  hide the cursor.
+  put -1 in a count.
+  scroll the scrollee given the count.
+  show the desktop with status.
+  wait for 50 milliseconds.
+  if the scrollbar's uptick is left-clicked, repeat.
+
+to horizontal scroll a node given a count:
+  if the node is nil, exit.
+  if the count is 0, exit.
+  estimate character width given the default font returning a ratio.
+  put the count times the ratio's numerator divided by the ratio's denominator into some twips.
+\  horizontal scroll the source's text given the count.
+  put - the twips and 0 into a difference.
+  move the node's origin given the difference.
+  \debug the source's text's x.
+  limit the origin in the node.
+\  put the old flag in the source's text's horizontal scroll flag.
+
+to horizontal scroll a source given a count:
+  \debug the source's text's x.
+  if the source is nil, exit.
+  if the count is 0, exit.
+  put the source's text's horizontal scroll flag in a flag called old flag.
+  set the source's text's horizontal scroll flag.
+  estimate character width given the source's text's font returning a ratio.
+  put the count times the ratio's numerator divided by the ratio's denominator into some twips.
+\  horizontal scroll the source's text given the count.
+  put - the twips and 0 into a difference.
+  move the source's text's origin given the difference.
+  \debug the source's text's x.
+  limit the origin of the source's text.
+  put the old flag in the source's text's horizontal scroll flag.
+
+to initialize an arrow:
+  append   0 and   0 to the arrow.
+  append  30 and   0 to the arrow.
+  append  90 and  30 to the arrow.
+  append 165 and  30 to the arrow.
+  append 225 and   0 to the arrow.
+  append 255 and   0 to the arrow.
+  append 135 and 195 to the arrow.
+  append 120 and 195 to the arrow.
+  append   0 and   0 to the arrow.
+
+to initialize a scrollbar:
+  create the scrollbar.
+  put "handle uptick" in the scrollbar's uptick's handler.
+  put the pale color in the scrollbar's uppage's color.
+  put "handle page up" in the scrollbar's uppage's handler.
+  put the pale color in the scrollbar's downpage's color.
+  put "handle page down" in the scrollbar's downpage's handler.
+  put "handle downtick" in the scrollbar's downtick's handler.
+  resize the scrollbar.
+
+to make a scrollee given a tab:
+  put "" in the scrollee's mode.
+  if the tab is nil, exit.
+  put the tab's mode in the scrollee's mode.
+  put the tab's node in the scrollee's node.
+
+to put the scrollbar's range into a height:
+  put the scrollbar's box's height
+    minus the scrollbar's uptick's height
+    minus the scrollbar's cab's height
+    minus the scrollbar's downtick's height
+    into the height.
+
+to put a scrollee's bottom into a number:
+  if the scrollee is empty, put 0 in the number; exit.
+  if the scrollee's mode is "docster",
+    get a page from the scrollee's node's document's pages (backwards);
+    put the page's edge into a box;
+    globalize the box given the scrollee's node's document's origin;
+    put the box's bottom in the number;
+    exit.
+  if the scrollee's mode is "editor",
+    put the scrollee's node's source's text's row count in the number;
+    multiply the number by the scrollee's incremental height;
+    add the scrollee's source's text's y to the number;
+    exit.
+  if the scrollee's mode is "finder",
+    get a nodette from the scrollee's node's nodettes (backwards);
+    put the nodette's box into the box;
+    globalize the box given the scrollee's node's origin;
+    put the box's bottom in the number;
+    exit.
+  put 0 in the number.
+
+to put a scrollee's count into a count:
+  if the scrollee is empty, put 0 in the count; exit.
+  put the scrollee's bottom in a number.
+  subtract the scrollee's top from the number.
+  divide the number by the scrollee's incremental height.
+  put the number in the count. 
+
+to put a scrollee's incremental height into a height:
+  if the scrollee is empty, put 1 in the height; exit.
+  if the scrollee's mode is "editor",
+    put the scrollee's node's source's text's row height in the height;
+    exit.
+  if the scrollee's mode is "docster",
+    put the edge height in the height; exit.
+  if the scrollee's mode is "finder",
+    put the node height in the height; exit.
+  put 1 in the height.
+
+to put a scrollee's invisible count into a count:
+  put the scrollee's leading invisible count in the count.
+  put the scrollee's trailing invisible count in another count.
+  add the other count to the count.
+
+to put a scrollee's leading invisible count into a count:
+  if the scrollee is empty, put 0 in the count; exit.
+  put the scrollee's window top in a number.
+  subtract the scrollee's top from the number.
+  if the number is at most 0, put 0 in the count; exit.
+  divide the number by the scrollee's incremental height
+    giving a quotient and a remainder.
+  put the quotient in the count.
+  if the remainder is 0, exit.
+  add 1 to the count.
+
+to put a scrollee's top into a number:
+  if the scrollee is empty, put 0 in the number; exit.
+  if the scrollee's mode is "docster",
+    get a page from the scrollee's node's document's pages;
+    put the page's edge into a box;
+    globalize the box given the scrollee's node's document's origin;
+    put the box's top in the number;
+    exit.
+  if the scrollee's mode is "editor",
+    put the scrollee's node's source's text's y in the number;
+    exit.
+  if the scrollee's mode is "finder",
+    get a nodette from the scrollee's node's nodettes;
+    put the nodette's box into the box;
+    globalize the box given the scrollee's node's origin;
+    put the box's top in the number;
+    exit.
+  put 0 in the number.
+
+to put a scrollee's trailing invisible count into a count:
+  if the scrollee is empty, put 0 in the count; exit.
+  put the scrollee's bottom in a number.
+  subtract the scrollee's window bottom from the number.
+  if the number is at most 0, put 0 in the count; exit.
+  divide the number by the scrollee's incremental height
+    giving a quotient and a remainder.
+  put the quotient in the count.
+  if the remainder is 0, exit.
+  add 1 to the count.
+
+to put a scrollee's visible count into a count:
+  if the scrollee is empty, put 0 in the count; exit.
+  put the scrollee's count into the count.
+  subtract the scrollee's invisible count from the count.
+
+to put a scrollee's window bottom into a number:
+  if the scrollee is empty, put 0 in the number; exit.
+  if the scrollee's mode is "docster",
+    put the scrollee's node's document's box's bottom in the number;
+    exit.
+  if the scrollee's mode is "finder",
+    put the finder's bottom in the number; exit.
+  if the scrollee's mode is "editor",
+    put the scrollee's node's source's text's box's y-extent in the number;
+    exit.
+  put 0 in the number.
+
+to put a scrollee's window capacity into a count:
+  if the scrollee is empty, put 0 in the count; exit.
+  put the scrollee's window bottom in a number.
+  subtract the scrollee's window top from the number.
+  if the number is at most 0, put 0 in the count; exit.
+  divide the number by the scrollee's incremental height.
+  put the number in the count.
+
+to put a scrollee's window top into a number:
+  if the scrollee is empty, put 0 in the number; exit.
+  if the scrollee's mode is "docster",
+    put the scrollee's node's document's box's top in the number;
+    exit.
+  if the scrollee's mode is "finder",
+    put the finder's top in the number; exit.
+  if the scrollee's mode is "editor",
+    put 0 in the number; exit.
+  put 0 in the number.
+
+to put a text's characters/box into a count:
+  if the text is nil, put 0 into the count; exit.
+  estimate character width given the text's font returning a ratio.
+  put the text's box's width times the ratio's denominator divided by the ratio's numerator into the count.
+
+to resize a scrollbar:
+  put the screen's right minus 1/4 inch in the scrollbar's box's left.
+  put the screen's right in the scrollbar's box's right.
+  put the bar's bottom minus 1/4 inch in the scrollbar's box's top.
+  put the switch's top plus 1/4 inch in the scrollbar's box's bottom.
+  put the scrollbar's box's left in the scrollbar's uptick's left.
+  put the scrollbar's box's left in the scrollbar's uppage's left.
+  put the scrollbar's box's left in the scrollbar's cab's left.
+  put the scrollbar's box's left in the scrollbar's downpage's left.
+  put the scrollbar's box's left in the scrollbar's downtick's left.
+  put the scrollbar's box's right in the scrollbar's uptick's right.
+  put the scrollbar's box's right in the scrollbar's uppage's right.
+  put the scrollbar's box's right in the scrollbar's cab's right.
+  put the scrollbar's box's right in the scrollbar's downpage's right.
+  put the scrollbar's box's right in the scrollbar's downtick's right.
+  put the scrollbar's box's top in the scrollbar's uptick's top.
+  put the scrollbar's uptick's top plus 1/4 inch
+    in the scrollbar's uptick's bottom.
+  put the scrollbar's uptick's bottom
+    in the scrollbar's uppage's top.
+  put the scrollbar's box's bottom
+    in the scrollbar's downtick's bottom.
+  put the scrollbar's downtick's bottom minus 1/4 inch
+    in the scrollbar's downtick's top.
+  put the scrollbar's downtick's top
+    in the scrollbar's downpage's bottom.
+  adjust the scrollbar.
+
+to scroll given an event (scrollbar drag):
+  make a scrollee given the current tab.
+  scroll the scrollee given the event (scrollbar drag).
+
+to scroll a scrollee given a count:
+  if the count is 0, exit.
+  if the scrollee is empty, exit.
+  if the scrollee's mode is "docster",
+    scroll the scrollee's node's document down given the count;
+    exit.
+  if the scrollee's mode is "editor",
+    scroll the scrollee's node's source given the count; exit.
+  if the scrollee's mode is "finder",
+    scroll the scrollee's node down given the count.
+
+to scroll a scrollee given an event (scrollbar drag):
+  if the scrollee is empty, exit.
+  if the event is nil, exit.
+  put the event's spot in a spot called old spot.
+  put the old spot's y in a number called old y.
+  put 3 in a count called leeway count.
+  convert the leeway count to a height called leeway height 
+    given the scrollee (invert scrollbar drag).
+  put the scrollbar's downpage's height plus the old y 
+    plus the leeway height in a number called max y.
+  put the old y in a number called previous y.
+  loop.
+    if a flag is set, show the desktop with status.
+    put the mouse's spot's y in a number called current y.
+    if the mouse's left button is up, 
+      exit.
+    if the current y is greater than the max y, 
+      put the max y in the current y.
+    put the current y minus the previous y in a height.
+    if the height is 0, repeat.
+    convert the height to a count given the scrollee (scrollbar drag).
+    if the count is 0, repeat.
+    scroll the scrollee given the count.
+    put the current y in the previous y.
+    set the flag.
+  repeat.
+
+to scroll a source given a count:
+  if the source is nil, exit.
+  if the count is 0, exit.
+  put the source's text's vertical scroll flag in a flag called old flag.
+  set the source's text's vertical scroll flag.
+  scroll the source's text given the count.
+  put the old flag in the source's text's vertical scroll flag.
+
+a scrollbar has
+  a box,
+  a command called uptick,
+  a command called uppage,
+  a command called cab,
+  a command called downpage,
+  a command called downtick.
+
+the scrollbar is a scrollbar.
+
+a scrollee has a mode and a node (reference).
+  \ a scrollee is scrolled by a scrollbar or the mouse.
+
+to stash horizontal scroll speed:
+  if the stashed horizontal scroll speed is 0,
+    put 3 in the stashed horizontal scroll speed.
+  get the horizontal scroll speed returning a number (from windows).
+  if the number is not 0,
+    put the number in the stashed horizontal scroll speed.
+
+to stash scroll speed:
+  if the stashed scroll speed is 0,
+    put 3 in the stashed scroll speed.
+  get the scroll speed returning a number (from windows).
+  if the number is not 0,
+    put the number in the stashed scroll speed.
+
+the stashed horizontal scroll speed is a number.
+\
+\ A stashed horizontal scroll speed of -1 = one screen at a time.
+
+the stashed scroll speed is a number.
+\
+\ A stashed scroll speed of -1 = one screen at a time.
+
+the unprocessed horizontal mouse roll is a number.
+\ a WHEEL_DELTA of 120 = 15 degrees, so 2880 = one rotation.
+\ a WHEEL_DELTA requests WheelScrollChars (horizontal scroll speed) of movement.
+
+the unprocessed mouse roll is a number.
+\ a WHEEL_DELTA of 120 = 15 degrees, so 2880 = one rotation.
+\ a WHEEL_DELTA requests WheelScrollLines (scroll speed) of movement.
