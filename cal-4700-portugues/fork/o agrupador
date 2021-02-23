@@ -5,16 +5,16 @@
 An abort message é um string.
 
 Etapas necessárias para que se abort with um string:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Set the compiler's abort flag.
 Put the string into the compiler's abort message.
 
 Etapas necessárias para que se abort with um string e um pedaço endereço de memória:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Set the compiler's abort flag.
 Put the string into the compiler's abort message.
 Find the compiler's abort path e the compiler's abort row# given the pedaço endereço de memória.
-Se the compiler's abort path é blank, exit.
+Se the compiler's abort path é blank, cancele.
 Extract um file name from the compiler's abort path.
 Prepend "Erro no " then the file name then ". " to the compiler's abort message.
 
@@ -23,9 +23,9 @@ Se the rider's token é not blank, abort with the string e the rider's token's fi
 Abort with the string e the rider's source's last.
 
 Etapas necessárias para que se adicione the allocate e deallocate e finalize e destroy routines:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um type from the types.
-Se the type é nil, exit.
+Se the type é nil, cancele.
 Adicione the finalize routine por the type.
 Adicione the allocate routine por the type.
 Adicione the deallocate routine por the type.
@@ -33,10 +33,10 @@ Adicione the destroy routine por the type.
 Repeat.
 
 Etapas necessárias para que se adicione the allocate routine por um type:
-Se the type é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
-Se the type cannot be reduced to "endereço de memória", exit.
-Se the type's target type é nil, exit.
+Se the type é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
+Se the type cannot be reduced to "endereço de memória", cancele.
+Se the type's target type é nil, cancele.
 Adicione um routine to the routines given nil.
 Append "allocate memory por um " then the type's name to the routine's header string. \ traduzir aqui
 Append "assign the " then the type's name then " given " to the routine's body string.
@@ -46,7 +46,7 @@ Slap the routine's routine body on the routine's body string.
 Compile the header of the routine.
 
 Etapas necessárias para que se adicione e compile the initialize before run e run e finalize after run routine:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione um routine to the routines given nil.
 Append "~initialize before run e run e finalize after run" to the routine's header string.
 Append "initialize before run. " to the routine's body string.
@@ -73,13 +73,13 @@ Put the built-in type into the built-in type's base type.
 Index the built-in type.
 
 Etapas necessárias para que se adicione the deallocate routine por um type:
-Se the type é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
-Se the type cannot be reduced to "endereço de memória", exit.
-Se the type's target type é nil, exit.
+Se the type é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
+Se the type cannot be reduced to "endereço de memória", cancele.
+Se the type's target type é nil, cancele.
 Adicione um routine to the routines given nil.
 Append "deallocate um " then the type's name to the routine's header string.
-Append "if the " then the type's name then " é nil, exit. " to the routine's body string.
+Append "if the " then the type's name then " é nil, cancele. " to the routine's body string.
 Se the type's target type should be finalized, append "~finalize the " then the type's name then "'s target. " to the routine's body string.
 Append "unassign the " then the type's name then "." to the routine's body string.
 Slap the routine's routine header on the routine's header string.
@@ -87,20 +87,20 @@ Slap the routine's routine body on the routine's body string.
 Compile the header of the routine.
 
 Etapas necessárias para que se adicione the destroy routine por um type:
-Se the type é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
-Se the type should not be forgotten, exit.
+Se the type é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
+Se the type should not be forgotten, cancele.
 Se the type can be reduced to "coisas", adicione the destroy routine por the type (coisas); exit.
 Se the type can be reduced to "endereço de memória", adicione the destroy routine por the type (endereço de memória); exit.
 
 Etapas necessárias para que se adicione the destroy routine por um type (endereço de memória):
-Se the type é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
+Se the type é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
 Put "destroy [" then the type's name then "]" into um moniker.
-Se the moniker é in the routine index, exit.
+Se the moniker é in the routine index, cancele.
 Adicione um routine to the routines given nil.
 Append "destroy um " then the type's name to the routine's header string.
-Append "if the " then the type's name then " é nil, exit. " to the routine's body string.
+Append "if the " then the type's name then " é nil, cancele. " to the routine's body string.
 Se the type's target type can be reduced to "endereço de memória", append "destroy the " then the type's name then "'s target. " to the routine's body string.
 Se the type's target type can be reduced to "coisas", append "destroy the " then the type's name then "'s target. " to the routine's body string.
 Loop.
@@ -116,16 +116,16 @@ Slap the routine's routine body on the routine's body string.
 Compile the header of the routine.
 
 Etapas necessárias para que se adicione the destroy routine por um type (coisas):
-Se the type é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
+Se the type é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
 Put "Erro interno na hora de executar a tarefa de destruição de tipos"  into a reply.
 Se the type's fields' first é nil, abort with "Erro interno - adicione um forget routine por um type (coisas)"; [Say the reply;] exit. \Adicionado Say the reply
 Se the type's fields' first's type é nil, abort with "Erro interno 2 - adicione the forget routine por um type (coisas)"; exit.
 Put "destroy [" then the type's name then "]" into um moniker.
-Se the moniker é in the routine index, exit.
+Se the moniker é in the routine index, cancele.
 Adicione um routine to the routines given nil.
 Append "destroy um " then the type's name to the routine's header string.
-Append "if the " then the type's name then "'s first é nil, exit. " to the routine's body string.
+Append "if the " then the type's name then "'s first é nil, cancele. " to the routine's body string.
 Put the type's fields' first's type's name into um name.
 Append "put the " then the type's name then "'s first into um " then the name then ". " to the routine's body string.
 Append "remove the " then the name then " from the " then the type's name then ". " to the routine's body string.
@@ -139,7 +139,7 @@ Etapas necessárias para que se adicione um entry to some imports given um import
 Find um import given the import name.
 Se the import é nil, adicione the import to the imports given the import name.
 Find the entry given the entry name e the import's entries.
-Se the entry é not nil, exit.
+Se the entry é not nil, cancele.
 Create the entry.
 Append the entry to the import's entries.
 Put the entry name into the entry's name.
@@ -152,16 +152,16 @@ Put the type name into the field's type name.
 Put the reference flag into the field's reference flag.
 
 Etapas necessárias para que se adicione the finalize routine por um type:
-Se the type é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
-Se the type should not be finalized, exit.
+Se the type é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
+Se the type should not be finalized, cancele.
 Se the type's name é "string", adicione the finalize routine por the type (string); exit.
-Se the type can be reduced to "string", exit. \ prevents generation of finalizer por derived string types
+Se the type can be reduced to "string", cancele. \ prevents generation of finalizer por derived string types
 Adicione the finalize routine por the type (conjunto).
 
 Etapas necessárias para que se adicione the finalize routine por um type (conjunto):
-Se the type é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
+Se the type é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione um routine to the routines given nil.
 Append "~finalize um " then the type's name to the routine's header string.
 Append "intel $50. " to the routine's body string. \ push eax
@@ -177,8 +177,8 @@ Slap the routine's routine body on the routine's body string.
 Compile the header of the routine.
 
 Etapas necessárias para que se adicione the finalize routine por um type (string):
-Se the type é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
+Se the type é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione um routine to the routines given nil.
 Append "~finalize um " then the type's name to the routine's header string.
 Append "intel $50. " to the routine's body string. \ push eax
@@ -345,10 +345,10 @@ Append the monikette to the monikettes.
 Put the type into the monikette's type.
 
 Etapas necessárias para que se adicione push fragments given some monikettes:
-Se the current routine é nil, exit.
+Se the current routine é nil, cancele.
 Loop.
 Get um monikette from the monikettes (backwards).
-Se the monikette é nil, exit.
+Se the monikette é nil, cancele.
 Se the monikette's variable é nil, repeat.
 Se the monikette's current substring é not blank, repeat.
 Se the monikette's current type é nil, repeat.
@@ -453,7 +453,7 @@ The adding built-in startup routine timer é um timer.
 
 Etapas necessárias para que se address some entries:
 Get um entry from the entries.
-Se the entry é nil, exit.
+Se the entry é nil, cancele.
 Address the entry.
 Repeat.
 
@@ -467,8 +467,8 @@ Put the image base plus the current thunk address into the entry's address.
 Adicione 4 to the current thunk address.
 
 Etapas necessárias para que se address um fragment given um address:
-Se the compiler's abort flag estiver verde, exit.
-Se the fragment é nil, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the fragment é nil, cancele.
 Put the image base plus the address into the fragment's address.
 Se the fragment's tag é the push address tag, adicione 7 to the address; exit.
 Se the fragment's tag é the call internal tag, adicione 5 to the address; exit.
@@ -520,9 +520,9 @@ Se the length é 1, adicione 2 to the address; exit.
 Abort with "Erro interno 3 - address um fragment given um address (push value)".
 
 Etapas necessárias para que se address some fragments given um address:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um fragment from the fragments.
-Se the fragment é nil, exit.
+Se the fragment é nil, cancele.
 Address the fragment given the address.
 Repeat.
 
@@ -558,35 +558,35 @@ Adicione the número to the address.
 An address é um número.
 
 Etapas necessárias para que se address um routine given um address:
-Se the compiler's abort flag estiver verde, exit.
-Se the routine é nil, exit.
-Se the routine's employs moniker é not blank, exit. \ employs are addressed later
-Se the routine's compiled flag estiver not verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the routine é nil, cancele.
+Se the routine's employs moniker é not blank, cancele. \ employs are addressed later
+Se the routine's compiled flag estiver not verde, cancele.
 Put the routine into the current routine.
 Put the image base plus the address into the routine's address.
 Address the routine's fragments given the address.
 Round the address up to the nearest multiple of 4.
 
 Etapas necessárias para que se address some routines given um address:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um routine from the routines.
 Se the routine é nil, break.
 Address the routine given the address.
 Repeat.
 
 Etapas necessárias para que se address um variable given um address:
-Se the compiler's abort flag estiver verde, exit.
-Se the variable é nil, exit.
-Se the variable's compiled flag estiver not verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the variable é nil, cancele.
+Se the variable's compiled flag estiver not verde, cancele.
 Put the image base plus the address into the variable's address.
 Adicione the variable's type's length to the address.
 Se the variable's type can be reduced to "string", adicione the variable's data's length plus 1 to the address.
 Round the address up to the nearest multiple of 4.
 
 Etapas necessárias para que se address some variables given um address:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um variable from the variables.
-Se the variable é nil, exit.
+Se the variable é nil, cancele.
 Address the variable given the address.
 Repeat.
 
@@ -610,7 +610,7 @@ Append the string to the buffer (with separator).
 
 Etapas necessárias para que se append the global finalizers to um string:
 Get um global from the globals.
-Se the global é nil, exit.
+Se the global é nil, cancele.
 Se the global's compiled flag estiver not verde, repeat.
 Se the global's type should not be finalized, repeat.
 Append "~finalize the " then the global's name then ". " to the string.
@@ -618,7 +618,7 @@ Repeat.
 
 Etapas necessárias para que se append the global initializers to um string:
 Get um global from the globals.
-Se the global é nil, exit.
+Se the global é nil, cancele.
 Se the global's literal é nil, repeat.
 Se the global's compiled flag estiver not verde, repeat.
 Clear um flag.
@@ -626,13 +626,13 @@ Append the global's initializer string to the string.
 Repeat.
 
 Etapas necessárias para que se append um monikette to um moniker:
-Se the monikette é nil, exit.
+Se the monikette é nil, cancele.
 Se the moniker é not blank, append the space pedaço to the moniker.
 Se the monikette's type é not nil, append "[" e the monikette's type's name e "]" to the moniker (fast); exit.
 Se the monikette's string é not blank, append the monikette's string to the moniker; exit.
 
 Etapas necessárias para que se append um monikette to um moniker (while bubbling):
-Se the monikette é nil, exit.
+Se the monikette é nil, cancele.
 Se the moniker é not blank, append the space pedaço to the moniker.
 Se the monikette's current substring é not blank, append the monikette's current substring to the moniker; exit.
 Se the monikette's current type é not nil, append "[" e the monikette's current type's name e "]" to the moniker (fast); exit.
@@ -869,7 +869,7 @@ Blurt pedaços given the dos header's whereabouts e the dos header's magnitude e 
 
 Etapas necessárias para que se blurt some entries into um buffer:
 Get um entry from the entries.
-Se the entry é nil, exit.
+Se the entry é nil, cancele.
 Blurt the entry into the buffer.
 Repeat.
 
@@ -879,13 +879,13 @@ Put the entry's name address plus 2 into um address.
 Blurt the entry's name into the buffer at the address.
 
 Etapas necessárias para que se blurt um fragment into um buffer:
-Se the fragment's code é blank, exit.
+Se the fragment's code é blank, cancele.
 Put the fragment's address minus the image base into um address.
 Blurt the fragment's code into the buffer at the address.
 
 Etapas necessárias para que se blurt some fragments into um buffer:
 Get um fragment from the fragments.
-Se the fragment é nil, exit.
+Se the fragment é nil, cancele.
 Blurt the fragment into the buffer.
 Repeat.
 
@@ -896,7 +896,7 @@ Blurt the import's entries into the buffer.
 
 Etapas necessárias para que se blurt some imports into um buffer:
 Get um import from the imports.
-Se the import é nil, exit.
+Se the import é nil, cancele.
 Blurt the import into the buffer.
 Repeat.
 
@@ -904,12 +904,12 @@ Etapas necessárias para que se blurt um pe header into um buffer:
 Blurt pedaços given the pe header's whereabouts e the pe header's magnitude e the buffer e 256.
 
 Etapas necessárias para que se blurt um routine into um buffer:
-Se the routine's compiled flag estiver not verde, exit.
+Se the routine's compiled flag estiver not verde, cancele.
 Blurt the routine's fragments into the buffer.
 
 Etapas necessárias para que se blurt some routines into um buffer:
 Get um routine from the routines.
-Se the routine é nil, exit.
+Se the routine é nil, cancele.
 Blurt the routine into the buffer.
 Repeat.
 
@@ -917,7 +917,7 @@ Etapas necessárias para que se blurt um string into um buffer at um address:
 Blurt pedaços given the string's first e the string's length e the buffer e the address.
 
 Etapas necessárias para que se blurt um variable into um buffer:
-Se the variable's compiled flag estiver not verde, exit.
+Se the variable's compiled flag estiver not verde, cancele.
 Se the variable's type can be reduced to "string", blurt the variable into the buffer (as um string); exit.
 Put the variable's address minus the image base into um address.
 Blurt the variable's data into the buffer at the address.
@@ -938,7 +938,7 @@ Blurt the variable's data into the buffer at the address.
 
 Etapas necessárias para que se blurt some variables into um buffer:
 Get um variable from the variables.
-Se the variable é nil, exit.
+Se the variable é nil, cancele.
 Blurt the variable into the buffer.
 Repeat.
 
@@ -947,61 +947,61 @@ An borough é um conjunto with um base address, um length e um size.
 The break tag é um tag equal to 1.
 
 Etapas necessárias para que se bubble um monikette:
-Se the monikette é nil, exit.
+Se the monikette é nil, cancele.
 Se the monikette's current substring é not blank, clear the monikette's current substring; exit.
-Se the monikette's current type é nil, exit.
+Se the monikette's current type é nil, cancele.
 Se the monikette's current type é any built-in type, put nil into the monikette's current type; exit.
 Put the monikette's current type's base type into the monikette's current type.
 
 An built-in type é um type.
 
 Etapas necessárias para que se calculate the length of um type:
-Se the type é nil, exit.
-Se the type's length é not -1, exit.
+Se the type é nil, cancele.
+Se the type's length é not -1, cancele.
 Calculate the length of the type's base type.
 Se the type's fields are empty, put the type's base type's length into the type's length; exit.
 Put 0 into the type's length.
 Loop.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um field from the type's fields.
-Se the field é nil, exit.
+Se the field é nil, cancele.
 Se the field's redefinition target name é not blank, repeat.
 Calculate the length of the field's type.
 Adicione the field's type's length times the field's count to the type's length.
 Repeat.
 
 Etapas necessárias para que se calculate the lengths of some types:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um type from the types.
-Se the type é nil, exit.
+Se the type é nil, cancele.
 Calculate the length of the type.
 Repeat.
 
 Etapas necessárias para que se calculate the offsets in um type:
-Se the type é nil, exit.
+Se the type é nil, cancele.
 Put 0 into um offset.
 Loop.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um field from the type's fields.
-Se the field é nil, exit.
+Se the field é nil, cancele.
 Se the field's redefinition target name é not blank, repeat.
 Put the offset into the field's offset.
 Adicione the field's type's length times the field's count to the offset.
 Repeat.
 
 Etapas necessárias para que se calculate the offsets in some types:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um type from the types.
-Se the type é nil, exit.
+Se the type é nil, cancele.
 Calculate the offsets in the type.
 Repeat.
 
 Etapas necessárias para que se calculate the redefinition offsets in um type:
-Se the type é nil, exit.
+Se the type é nil, cancele.
 Loop.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um field from the type's fields.
-Se the field é nil, exit.
+Se the field é nil, cancele.
 Se the field's redefinition target name é blank, repeat.
 Find another field given the field's redefinition target name e the type's fields.
 Se the other field é nil, abort with "Redefine inválido. Eu não consigo encontrar o campo '" then the field's redefinition target name then "' field." e the field's locus; exit.
@@ -1009,9 +1009,9 @@ Put the other field's offset into the field's offset.
 Repeat.
 
 Etapas necessárias para que se calculate the redefinition offsets in some types:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um type from the types.
-Se the type é nil, exit.
+Se the type é nil, cancele.
 Calculate the redefinition offsets in the type.
 Repeat.
 
@@ -1024,22 +1024,22 @@ The call indirect tag é um tag equal to 3.
 The call internal tag é um tag equal to 4.
 
 Etapas necessárias para que se check por invalid optional info on um type:
-Se the compiler's abort flag estiver verde, exit.
-Se the type é nil, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the type é nil, cancele.
 Se the type's target name é not blank, check por invalid optional info on the type (target).
 Se the type's fields are not empty, check por invalid optional info on the type (fields).
 Se the type's scale é not 0, check por invalid optional info on the type (scale).
 
 Etapas necessárias para que se check por invalid optional info on um type (fields):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the type cannot be reduced to "conjunto", abort with "A palavra 'with' só é permitida em conjunto types." e the type's locus; exit. \\mudar aqui
 
 Etapas necessárias para que se check por invalid optional info on um type (scale):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the type cannot be reduced to "número", abort with "Escalas são permitidas apenas em tipos numéricos." e the type's locus; exit.
 
 Etapas necessárias para que se check por invalid optional info on um type (target):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the type cannot be reduced to "endereço de memória", abort with "An palavra 'to' só é permitida em endereço de memória types." e the type's locus; exit.
 
 Etapas necessárias para que se clear um field term:
@@ -1057,9 +1057,9 @@ Compile the body of the routine called "execute nosso programa".
 Compile the body of the routine called "finalize after run".
 
 Etapas necessárias para que se compile the body of um routine:
-Se the routine é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
-Se the routine's compiled flag estiver verde, exit.
+Se the routine é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
+Se the routine's compiled flag estiver verde, cancele.
 Set the routine's compiled flag.
 Slap um rider on the routine's routine body.
 Move the rider (compiler rules).
@@ -1071,7 +1071,7 @@ Create the routine's nickname index given 101.
 Eliminate duplicate nicknames from the routine's parameters given the routine's nickname index.
 Compile the body of the routine (prolog).
 Loop.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider's token é blank, break.
 Compile the next statement given the rider.
 Repeat.
@@ -1079,8 +1079,8 @@ Compile the body of the routine (epilog).
 Put the saved routine into the current routine.
 
 Etapas necessárias para que se compile the body of um routine (epilog):
-Se the routine é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
+Se the routine é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione um fragment given the finalize tag.
 Loop.
 Get um variable from the routine's locals.
@@ -1095,19 +1095,19 @@ Repeat.
 Adicione um fourth fragment given the epilog tag.
 
 Etapas necessárias para que se compile the body of um routine (prolog):
-Se the routine é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
+Se the routine é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione um fragment given the prolog tag.
 Adicione another fragment given the loop tag.
 
 Etapas necessárias para que se compile the body of the routine called um string:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Find um routine given the string e the routine index.
 Se the routine é nil, abort with "Eu preciso de uma função para fazer '" then the string then "'."; exit.
 Compile the body of the routine.
 
 Etapas necessárias para que se compile the body of um routine given um rider (alternate wording): \ *** alternate wording
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules). \ *** do we need this?
 Put the routine's next into um target routine.
 Se the target routine é nil, abort with "Você definiu uma palavra alternativa aqui, mas eu não tenho certeza pra que ela serve." e the rider; exit.
@@ -1115,7 +1115,7 @@ Put the target routine's moniker into the routine's employs moniker.
 Compile the body of the target routine.
 
 Etapas necessárias para que se compile the body of um routine given um rider (employ):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Compile um routine reference given the rider.
 Convert the routine reference to the routine's employs moniker.
@@ -1128,8 +1128,8 @@ Se the other routine é nil, abort with "Não consigo encontrar um rotina '" then 
 Compile the body of the other routine.
 
 Etapas necessárias para que se compile the call'd part given um rider e um variable:
-Se the compiler's abort flag estiver verde, exit.
-Se the variable é nil, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the variable é nil, cancele.
 Put the variable's name into the variable's type name.
 Move the rider (compiler rules).
 Scan the variable's name given the rider.
@@ -1154,21 +1154,21 @@ Compile the directory (write the exe).
 Compile the directory (stop).
 
 Etapas necessárias para que se compile um directory (Adicione e compile the built-in startup routine):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Adicionando e agrupando um tarefa de inicialização padrão...".
 Start the adding built-in startup routine timer.
 Adicione e compile the initialize before run e run e finalize after run routine.
 Stop the adding built-in startup routine timer.
 
 Etapas necessárias para que se compile um directory (Adicione the built-in memory routines):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Adicionando como tarefas predefinidas na memória...".
 Start the adding built-in memory routines timer.
 Adicione the allocate e deallocate e finalize e destroy routines.
 Stop the adding built-in memory routines timer.
 
 Etapas necessárias para que se compile um directory (address):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Obtendo endereço dos itens...".
 Start the addressing timer.
 Put 4096 into um address.
@@ -1187,7 +1187,7 @@ Put the address minus the code borough's base into the code borough's length.
 Stop the addressing timer.
 
 Etapas necessárias para que se compile um directory (calculate lengths e offsets of types):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Calculando tamanhos e deslocamentos...".
 Start the calculating timer.
 Calculate the lengths of the types.
@@ -1196,21 +1196,21 @@ Calculate the redefinition offsets in the types.
 Stop the calculating timer.
 
 Etapas necessárias para que se compile um directory (compile the bodies of the routines):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Agrupando o conteúdo das tarefas...".
 Start the compiling routine bodies timer.
 Compile the bodies of the routines.
 Stop the compiling routine bodies timer.
 
 Etapas necessárias para que se compile um directory (compile the headers of the routines):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Agrupando os nomes das tarefas...".
 Start the compiling routine headers timer.
 Compile the headers of the routines.
 Stop the compiling routine headers  timer.
 
 Etapas necessárias para que se compile um directory (index the routines por utility use):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Catalogando tarefas...".
 Start the indexing utilities timer.
 Index the routines por utility use.
@@ -1219,14 +1219,14 @@ Reindex the utility index.
 Stop the indexing utilities timer.
 
 Etapas necessárias para que se compile um directory (link):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Elencando arquivos..".
 Start the linking timer.
 Link.
 Stop the linking timer.
 
 Etapas necessárias para que se compile um directory (offset parameters e variables):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Deslocando parâmetros e variáveis...".
 Start the offsetting timer.
 Offset the parameters in the routines.
@@ -1234,21 +1234,21 @@ Offset the locals in the routines.
 Stop the offsetting timer.
 
 Etapas necessárias para que se compile um directory (load the source files):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Carregando arquivos...".
 Start the loading timer.
 Load the source files.
 Stop the loading timer.
 
 Etapas necessárias para que se compile um directory (resolve the globals):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Resolvendo itens de escopo abrangente...".
 Start the resolving globals timer.
 Resolve the globals.
 Stop the resolving globals timer.
 
 Etapas necessárias para que se compile um directory (resolve the types):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Resolvendo tipos...".
 Start the resolving types timer.
 Resolve the types (expand coisas).
@@ -1258,7 +1258,7 @@ Resolve the types (optional info).
 Stop the resolving types timer.
 
 Etapas necessárias para que se compile um directory (scan the source files):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Analisando arquivos...".
 Start the scanning timer.
 Scan the source files.
@@ -1276,14 +1276,14 @@ Stop the compiler's timer.
 Show status "Interrompendo".
 
 Etapas necessárias para que se compile um directory (transmogrify):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Modificando...".
 Start the transmogrifying timer.
 Transmogrify the routines.
 Stop the transmogrifying timer.
 
 Etapas necessárias para que se compile um directory (write the exe):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Show status "Gerando arquivo executável...".
 Start the writing timer.
 Write the compiler's exe to the compiler's exe path.
@@ -1291,12 +1291,12 @@ Se the i/o error é not blank, abort with the i/o error.
 Stop the writing timer.
 
 Etapas necessárias para que se compile um expression given um rider:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Compile um term given the rider.
 Put the term into the expression.
 Loop.
-Se the compiler's abort flag estiver verde, exit.
-Se the rider's token é not any operator, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the rider's token é not any operator, cancele.
 Se the rider's token é any divided, compile the expression given the rider (divided); repeat.
 Se the rider's token é any minus, compile the expression given the rider (minus); repeat.
 Se the rider's token é any plus, compile the expression given the rider (plus); repeat.
@@ -1304,13 +1304,13 @@ Se the rider's token é any then, compile the expression given the rider (then); 
 Se the rider's token é any times, compile the expression given the rider (times); repeat.
 
 Etapas necessárias para que se compile um expression given um rider (divided):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Se the rider's token é not any by, abort with "Você deve usar o termo 'divided BY'." e the rider; exit.
 Se the expression's variable é nil, abort with "Termo 'divided by' inválido, há um erro na variável: '" then the expression's phrase then "'." e the rider; exit.
 Move the rider (compiler rules).
 Compile um term given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "O seu 'divided by',está errado. Não dá pra dividir por '" then the term's phrase then "'." e the rider; exit.
 Adicione um intermediate given the expression's type name e the rider's token's first.
 Adicione several fragments given "put" e the expression's variable e "into" e the intermediate e the rider's token's first.
@@ -1319,11 +1319,11 @@ Put the intermediate into the expression's variable.
 Clear the expression's phrase.
 
 Etapas necessárias para que se compile um expression given um rider (minus):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the expression's variable é nil, abort with "O seu 'minus', está errado. Não consigo subtrair o(a) '" then the expression's phrase then "'." e the rider; exit.
 Move the rider (compiler rules).
 Compile um term given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "O seu 'minus', está errado. Não consigo diminuir do(a) '" then the term's phrase then "'." e the rider; exit.
 Adicione um intermediate given the expression's type name e the rider's token's first.
 Adicione several fragments given "put" e the expression's variable e "into" e the intermediate e the rider's token's first.
@@ -1332,11 +1332,11 @@ Put the intermediate into the expression's variable.
 Clear the expression's phrase.
 
 Etapas necessárias para que se compile um expression given um rider (plus):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the expression's variable é nil, abort with "O seu 'plus', está errado. Não consigo somar o '" then the expression's phrase then "'." e the rider; exit.
 Move the rider (compiler rules).
 Compile um term given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "O seu 'plus',  está errado. Não consigo somar um '" then the term's phrase then "'." e the rider; exit.
 Adicione um intermediate given the expression's type name e the rider's token's first.
 Adicione several fragments given "put" e the expression's variable e "into" e the intermediate e the rider's token's first. \aqui muda o put
@@ -1345,11 +1345,11 @@ Put the intermediate into the expression's variable.
 Clear the expression's phrase.
 
 Etapas necessárias para que se compile um expression given um rider (then):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the expression's variable é nil, abort with "O seu 'then', está errado. Eu não entendi o que é o(a) '" then the expression's phrase then "'." e the rider; exit.
 Move the rider (compiler rules).
 Compile um term given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "O seu 'then', está errado. Eu não sei o que é o(a) '" then the term's phrase then "'." e the rider; exit.
 Adicione um intermediate given "string" e the rider's token's first.
 Adicione the put or convert fragments given the expression's variable e the intermediate e the rider's token's first.
@@ -1359,11 +1359,11 @@ Put the intermediate into the expression's variable.
 Clear the expression's phrase.
 
 Etapas necessárias para que se compile um expression given um rider (times):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the expression's variable é nil, abort with "O seu 'times', está errado. Eu não sei como multiplicar o '" then the expression's phrase then "'." e the rider; exit.
 Move the rider (compiler rules).
 Compile um term given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "O seu 'times', está errado. Eu não sei como multiplicar um '" then the term's phrase then "'." e the rider; exit.
 Adicione um intermediate given the expression's type name e the rider's token's first.
 Adicione several fragments given "put" e the expression's variable e "into" e the intermediate e the rider's token's first.
@@ -1372,8 +1372,8 @@ Put the intermediate into the expression's variable.
 Clear the expression's phrase.
 
 Etapas necessárias para que se compile the header of um routine:
-Se the routine é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
+Se the routine é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
 Slap um rider on the routine's routine header.
 Move the rider (compiler rules).
 Se the rider's token é any decide, compile the header of the routine given the rider (decider); exit.
@@ -1383,7 +1383,7 @@ Se the rider's token é "compativelmente", compile the header of the routine give
 Compile the header of the routine given the rider (procedure).
 
 Etapas necessárias para que se compile the header of um routine given um rider (callback):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Set the routine's callback flag.
 Compile the routine's monikettes e the routine's parameters given the rider.
@@ -1392,7 +1392,7 @@ Se the routine's moniker é in the routine index, abort with "Você já tinha escri
 Index the routine given the routine's monikettes e the routine index.
 
 Etapas necessárias para que se compile the header of um routine given um rider (decider):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Se the rider's token é not any conditional, abort with "It's 'Decide IF.' Sempre dizemos, 'Decide IF'. Certo?" e the rider; exit.
 Move the rider (compiler rules).
@@ -1404,7 +1404,7 @@ Se the routine's moniker é in the routine index, abort with "Você já me contou c
 Index the routine given the routine's monikettes e the routine index.
 
 Etapas necessárias para que se compile the header of um routine given um rider (function):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Set the routine's function flag.
 Adicione um monikette to the routine's monikettes given "put".
 Move the rider (compiler rules).
@@ -1428,21 +1428,21 @@ Convert the routine's monikettes to the routine's moniker.
 Index the routine given the routine's monikettes e the routine index. \ por employs
 
 Etapas necessárias para que se compile the header of um routine given um rider (procedure):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Compile the routine's monikettes e the routine's parameters given the rider.
 Convert the routine's monikettes to the routine's moniker.
 Se the routine's moniker é in the routine index, abort with "Você já escreveu como fazer '" then the routine's moniker then "'." e the routine's locus; exit.
 Index the routine given the routine's monikettes e the routine index.
 
 Etapas necessárias para que se compile the headers of some routines:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um routine from the routines.
-Se the routine é nil, exit.
+Se the routine é nil, cancele.
 Compile the header of the routine.
 Repeat.
 
 Etapas necessárias para que se compile um literal given um rider:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione the literal to the literals given the rider's token's first.
 \Se the rider's token é any flag literal, compile the literal given the rider (flag); exit.
 Se the rider's token é any hex literal, compile the literal given the rider (hex); exit.
@@ -1452,7 +1452,7 @@ Se the rider's token é any string literal, compile the literal given the rider (
 Abort with "Erro interno - compile um term given um rider (literal)" e the rider.
 
 Etapas necessárias para que se compile um literal given um rider (flag):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Convert the rider's token to um flag.
 Convert the flag to the literal's data.
 Move the rider (compiler rules).
@@ -1460,7 +1460,7 @@ Put "flag" into the literal's type name.
 Resolve the literal.
 
 Etapas necessárias para que se compile um literal given um rider (hex):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Put the rider's token into um nibble substring.
 Adicione 1 to the nibble substring's first.
 Convert the nibble substring to the literal's data.
@@ -1469,7 +1469,7 @@ Put "texto hexadecimal" into the literal's type name.
 Resolve the literal.
 
 Etapas necessárias para que se compile um literal given um rider (numeric - integer):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Convert the rider's token to um número.
 Convert the número to the literal's data.
 Move the rider (compiler rules).
@@ -1477,7 +1477,7 @@ Put "número" into the literal's type name.
 Resolve the literal.
 
 Etapas necessárias para que se compile um literal given um rider (numeric - ratio):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Convert the rider's token to um ratio.
 Convert the ratio to the literal's data.
 Move the rider (compiler rules).
@@ -1485,7 +1485,7 @@ Put "ratio" into the literal's type name.
 Resolve the literal.
 
 Etapas necessárias para que se compile um literal given um rider (numeric - with unit of measure):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Convert the rider's token to um ratio.
 Move the rider (compiler rules).
 Scan um name given the rider.
@@ -1503,21 +1503,21 @@ Convert the número to the literal's data.
 Resolve the literal.
 
 Etapas necessárias para que se compile um literal given um rider (numeric):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider é followed by any unit of measure, compile the literal given the rider (numeric - with unit of measure); exit.
 Se the rider's token é any integer literal, compile the literal given the rider (numeric - integer); exit.
 Se the rider's token é any ratio literal, compile the literal given the rider (numeric - ratio); exit.
 Se the rider's token é any mixed literal, compile the literal given the rider (numeric - ratio); exit.
 
 Etapas necessárias para que se compile um literal given um rider (endereço de memória):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Convert 0 to the literal's data. \ was nil
 Move the rider (compiler rules).
 Put "endereço de memória" into the literal's type name.
 Resolve the literal.
 
 Etapas necessárias para que se compile um literal given um rider (string):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Put the rider's token into the literal's data.
 Unquote the literal's data.
 Move the rider (compiler rules).
@@ -1525,23 +1525,23 @@ Put "string" into the literal's type name.
 Resolve the literal.
 
 Etapas necessárias para que se compile some monikettes e some parameters given um rider:
-Se the compiler's abort flag estiver verde, exit.
-Se the rider's token é blank, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the rider's token é blank, cancele.
 Se the rider's token é any definite article, compile the monikettes e the parameters given the rider (definite article); repeat.
 Se the rider é on any indefinite article, compile the monikettes e the parameters given the rider (indefinite article); repeat.
 Se the rider é on any monikette string, compile the monikettes e the parameters given the rider (monikette string); repeat.
 Abort with "'" then the rider's token then "' não é um nome de função que eu conheça." e the rider.
 
 Etapas necessárias para que se compile some monikettes e some parameters given um rider (definite article):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Scan um name given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Prepend "the " to the name.
 Adicione um monikette to the monikettes given the name.
 
 Etapas necessárias para que se compile some monikettes e some parameters given um rider (indefinite article):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione um parameter to the parameters given "parameter" e the rider's token's first.
 \PAL
 Se the rider's token é "outra", put "segunda" into the parameter's name.
@@ -1557,30 +1557,30 @@ Se the parameter é duplicated in the parameters, abort with "Cara, você repetiu 
 Adicione um monikette to the monikettes given the parameter's type.
 
 Etapas necessárias para que se compile some monikettes e some parameters given um rider (monikette string):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione um monikette to the monikettes given the rider's token.
 Move the rider (compiler rules).
 
 Etapas necessárias para que se compile some monikettes given um rider:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider é on any monikette string, adicione um monikette to the monikettes given the rider's token; move the rider (compiler rules); repeat.
-Se the rider's token é not the start of any expression, exit.
+Se the rider's token é not the start of any expression, cancele.
 Compile um expression given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione another monikette to the monikettes given the expression.
 Repeat.
 
 \Etapas necessárias para que se compile some monikettes given um rider:
-\Se the compiler's abort flag estiver verde, exit.
+\Se the compiler's abort flag estiver verde, cancele.
 \Se the rider's token é any monikette string, adicione um monikette to the monikettes given the rider's token; move the rider (compiler rules); repeat.
-\Se the rider's token é not the start of any expression, exit.
+\Se the rider's token é not the start of any expression, cancele.
 \Compile um expression given the rider.
-\Se the compiler's abort flag estiver verde, exit.
+\Se the compiler's abort flag estiver verde, cancele.
 \Adicione another monikette to the monikettes given the expression.
 \Repeat.
 
 Etapas necessárias para que se compile the next statement given um rider:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider's token é any conditional, compile the next statement given the rider (if); exit.
 Se the rider's token é any loop, compile the next statement given the rider (loop); exit.
 Se the rider's token é any privatize, compile the next statement given the rider (privatize); exit.
@@ -1605,19 +1605,19 @@ Adicione um entry to the imports given the string e the other string.
 Se the rider's token é "with", compile the next statement given the rider (call - with clause).
 Se the rider's token é "returning", compile the next statement given the rider returning um term (call - returning part).
 Adicione um fragment given the call external tag e the entry.
-Se the term é empty, exit.
+Se the term é empty, cancele.
 Se the term's variable é nil, abort with "Não entendi bem o que é '" then the term's phrase then "'." e the rider; exit.
 Adicione another fragment given the save eax tag e the term's variable.
 
 Etapas necessárias para que se compile the next statement given um rider (call - indirect):
 Compile um expression given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the expression's variable é nil, abort with "Eu não sei o que é '" then the expression's phrase then "'." e the rider; exit.
 Se the expression's type cannot be reduced to "endereço de memória", abort with "Eu preciso de um endereço de memória type nesse CALL statement." e the rider; exit.
 Se the rider's token é "with", compile the next statement given the rider (call - with clause).
 Se the rider's token é "returning", compile the next statement given the rider returning um term (call - returning part).
 Adicione um fragment given the call indirect tag e the expression's variable.
-Se the term é empty, exit.
+Se the term é empty, cancele.
 Se the term's variable é nil, abort with "Acho que essa varíavel é inválida: '" then the term's phrase then "'." e the rider; exit.
 Adicione another fragment given the save eax tag e the term's variable.
 
@@ -1635,17 +1635,17 @@ Put the moniker into a reply.
 Abort with "Eu ainda não aprendi como '" then the moniker then "'." e the rider.
 
 Etapas necessárias para que se compile the next statement given um rider (call - with clause): \ this guy é recursise so parameters get passed right to left
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Compile um expression given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the expression's variable é nil, abort with "Eu não entendo um variável: '" then the expression's phrase then "'." e the rider; exit.
 Se the expression's type é not value pushable, abort with "'" then the expression's type's name then "' não pode ser processado corretamente." e the rider; exit.
 Se the rider's token é any and, compile the next statement given the rider (call - with clause).
 Adicione um fragment given the push value tag e the expression's variable.
 
 Etapas necessárias para que se compile the next statement given um rider (call):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Se the rider's token é any string literal, compile the next statement given the rider (call - external); exit.
 Compile the next statement given the rider (call - indirect).  
@@ -1656,7 +1656,7 @@ Adicione um fragment given the exit tag.
 Move the rider (compiler rules).
 
 Etapas necessárias para que se compile the next statement given um rider (if):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Compile some monikettes given the rider.
 Remove any negatives from the monikettes returning um flag.
@@ -1673,7 +1673,7 @@ Adicione um third fragment given the jump false tag.
 Move the rider (compiler rules).
 Loop.
 Compile the next statement given the rider (other).
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider's token é the semi-colon pedaço, move the rider (compiler rules); repeat.
 Se the rider's token é not the period pedaço, abort with "Você precisa usar um ponto ao invés de usar o termo '" then the rider's token then "'." e the rider; exit.
 Move the rider (compiler rules).
@@ -1689,15 +1689,15 @@ Convert the nibble substring to the fragment's code.
 Move the rider (compiler rules).
 
 Etapas necessárias para que se compile the next statement given um rider (loop):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione um fragment given the loop tag.
 Move the rider (compiler rules).
 Se the rider's token é not the period pedaço, abort with "Parece que alguém esqueceu de colocar um ponto por aí." e the rider; exit.
 Move the rider (compiler rules).
 
 Etapas necessárias para que se compile the next statement given um rider (other):
-Se the compiler's abort flag estiver verde, exit.
-Se the rider's token é blank, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the rider's token é blank, cancele.
 Se the rider's token é any exit, compile the next statement given the rider (exit); exit.
 Se the rider's token é any repeat, compile the next statement given the rider (repeat); exit.
 Se the rider's token é any break, compile the next statement given the rider (break); exit.
@@ -1715,7 +1715,7 @@ Compile the next statement given the rider (call - internal).
 Etapas necessárias para que se compile the next statement given um rider (point):
 Move the rider (compiler rules).
 Compile um term given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "Acho que o termo '" then the term's phrase then "' está vazio." e the rider; exit.
 Se the term's kind é "literal", abort with "Você usou o tipo errado de variável aqui (literal)." e the rider.
 Se the term's type's length é not 4, abort with "Você usou uma variável de comprimento errado (<>4)." e the rider.
@@ -1732,10 +1732,10 @@ Adicione um fragment given the routine address tag e the routine.
 Put the term's variable into the fragment's variable.
 
 Etapas necessárias para que se compile the next statement given um rider (privatize):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Compile um term given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "Comando 'privatize', Inválido. Eu acho que o termo da variável '" then the term's phrase then "' está vazio." e the rider; exit.
 Se the term's kind é not "parameter", abort with "Você só pode privatizar parâmetros." e the rider; exit.
 Adicione um local to the current routine's locals given "local" e the rider's token's first.
@@ -1750,10 +1750,10 @@ Se the rider's token é not the period pedaço, abort with "Você vive esquecendo d
 Move the rider (compiler rules).
 
 Etapas necessárias para que se compile the next statement given um rider (push):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Compile um expression given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the expression's variable é nil, abort with "Comando 'push' inválido, um expressão '" then the expression's phrase then "' parece estar vazia." e the rider; exit.
 Se the expression's type é not value pushable, abort with "Valores do tipo '" then the expression's type's name then "' não podem ser pushed." e the rider; exit.
 Adicione um fragment given the push value tag e the expression's variable.
@@ -1766,7 +1766,7 @@ Move the rider (compiler rules).
 \Se the current routine's decider flag estiver not verde, compile the next statement given the rider (call - internal); exit.
 \Move the rider (compiler rules).
 \Compile um expression given the rider.
-\Se the compiler's abort flag estiver verde, exit.
+\Se the compiler's abort flag estiver verde, cancele.
 \Se the expression's variable é nil, abort with "No es válido este 'diga', no entiendo la variable '" then the expression's phrase then "'." e the rider; exit.
 \Se the expression's type cannot be reduced to "flag", abort with "Necesito un rotundo 'si' o 'no' aquí." e the rider; exit.
 \Adicione um fragment given the load eax tag e the expression's variable.
@@ -1785,7 +1785,7 @@ Adicione another fragment given the exit tag.
 Etapas necessárias para que se compile the next statement given um rider returning um term (call - returning part):
 Move the rider (compiler rules).
 Compile the term given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "Eu não compreendi o termo da variável '" then the term's phrase then "'. Ela parece estar vazia." e the rider; exit.
 Se the term's type é not value pushable, abort with "Uma varíavel de 1, 2, ou 4-pedaços é necessária na 'returning' clause." e the rider.
 
@@ -1794,9 +1794,9 @@ Se the rider's token é "to", move the rider (compiler rules).
 Se the rider é the start of any function, compile the routine reference given the rider (function); exit.
 Se the rider's token é any decide, compile the routine reference given the rider (decide).
 Loop.
-Se the compiler's abort flag estiver verde, exit.
-Se the rider's token é blank, exit.
-Se the rider's token é ".", exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the rider's token é blank, cancele.
+Se the rider's token é ".", cancele.
 Se the rider's token é any definite article, compile the routine reference given the rider (definite article); repeat.
 Se the rider's token é any indefinite article, compile the routine reference given the rider (indefinite article); repeat.
 Se the rider é on any monikette string, compile the routine reference given the rider (monikette string); repeat.
@@ -1808,14 +1808,14 @@ Se the rider's token é not any conditional, abort with "Sempre use DECIDE IF, ao
 Move the rider (compiler rules).
 
 Etapas necessárias para que se compile um routine reference given um rider (definite article):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Scan um name given the rider.
 Prepend "the " to the name.
 Adicione um monikette to the routine reference given the name.
 
 Etapas necessárias para que se compile um routine reference given um rider (function):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione um monikette to the routine reference given "put".
 Move the rider (compiler rules).
 Se the rider's token é any indefinite article, set um flag.
@@ -1832,7 +1832,7 @@ Se the rider's token é not any indefinite article, abort with "Eu estava esperan
 Compile the routine reference given the rider (indefinite article).
 
 Etapas necessárias para que se compile um routine reference given um rider (indefinite article):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Scan um name given the rider.
 Find um type e um nickname given the name.
@@ -1840,15 +1840,15 @@ Se the type é nil, abort with "Employ statement inválido, Eu não sei o que é '" 
 Adicione um monikette to the routine reference given the type.
 
 Etapas necessárias para que se compile um routine reference given um rider (monikette string):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione um monikette to the routine reference given the rider's token.
 Move the rider (compiler rules).
 
 Etapas necessárias para que se compile um term given um rider:
 Clear the term.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Compile the term given the rider (common part).
-Se the rider é on any simile, exit. \ added por invisible turtle project ***
+Se the rider é on any simile, cancele. \ added por invisible turtle project ***
 \Se the rider's token é "as", compile the term given the rider (as part).  \preposição
 \Se the rider's token é "tão", compile the term given the rider (as part). \ me parece desnecessário por ser usado apenas em funções.
 Se the rider's token é "quão", compile the term given the rider (as part).
@@ -1858,7 +1858,7 @@ Se the rider's token é "como", compile the term given the rider (as part).
 Se the rider's token é "/", compile the term given the rider (runtime ratio).
 
 Etapas necessárias para que se compile um term given um rider (as part):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "Comando 'as'inválido. Eu acho que um variável '" then the term's phrase then "' está vaiza." e the rider; exit.
 Move the rider (compiler rules).
 Se the rider's token é not any indefinite article, abort with "Tá faltando um artigo indefinido depois do 'como', mas você escreveu '" then the rider's token then "' no lugar disso." e the rider; exit.
@@ -1872,7 +1872,7 @@ Put the scratch into the term's variable.
 Clear the term's phrase.
 
 Etapas necessárias para que se compile um term given um rider (common part):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider's token é the dash pedaço, compile the term given the rider (negated term); exit.
 Se the rider's token é the cross pedaço, compile the term given the rider (posigated term); exit.
 Se the rider's token é the start of any variable, compile the term given the rider (variable); exit.
@@ -1888,7 +1888,7 @@ Adicione um fragment given the dereference tag e the term's variable.
 Clear the term's phrase.
 
 Etapas necessárias para que se compile um term given um rider (dereference):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "Dereference inválido, um variável '" then the term's phrase then "' parece estar vazia." e the rider; exit.
 Se the term's type's target type é nil, abort with "Não consegui identificar o tipo desse target." e the rider; exit.
 Se the term's kind é "scratch", compile the term given the rider (dereference - in place); exit.
@@ -1899,17 +1899,17 @@ Put the scratch into the term's variable.
 Clear the term's phrase.
 
 Etapas necessárias para que se compile um term given um rider (literal):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Compile um literal given the rider.
 Put the literal into the term's variable.
 Clear the term's phrase.
 Compile the term given the rider (possessives).
 
 Etapas necessárias para que se compile um term given um rider (negated term):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Compile another term given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the other term's variable é nil, abort with "Negate inválido, um variável '" then the other term's phrase then "' parece estar vazia." e the rider; exit.
 Adicione um intermediate given the other term's type name e the rider's token's first.
 Adicione several fragments given "put" e the other term's variable e "into" e the intermediate e the other term's locus.
@@ -1918,7 +1918,7 @@ Put the intermediate into the term's variable.
 Clear the term's phrase.
 
 Etapas necessárias para que se compile um term given um rider (new local):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the current routine é nil, abort with "Parece que essa tarefa não existe. Não achei nada pra pull da pilha por aqui." e the rider; exit.
 Adicione um local to the current routine's locals given "local" e the rider's token's first.
 \PAL
@@ -1939,14 +1939,14 @@ Clear the term's phrase.
 Compile the term given the rider (possessives).
 
 Etapas necessárias para que se compile um term given um rider (posigated term):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Compile the term given the rider.
 Se the term's variable é nil, abort with "Posigate inválido, o termo da variável'" then the term's phrase then "' parece estar vazio." e the rider; exit.
 Clear the term's phrase.
 
 Etapas necessárias para que se compile um term given um rider (possessive - magnitude):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "Use da magnitude inválido. An variável '" then the term's phrase then "' parece estar vazia." e the rider; exit.
 Adicione um literal to the literals given the rider's token's first.
 Convert the term's type's length to the literal's data.
@@ -1956,13 +1956,13 @@ Put the literal into the term's variable.
 Clear the term's phrase.
 
 Etapas necessárias para que se compile um term given um rider (possessive - target):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "Você usou o target de forma errada. O termo da variável '" then the term's phrase then "' parece estar vazio." e the rider; exit.
 Se the term's type cannot be reduced to "endereço de memória", abort with "Você só pode usar target com tipos endereço de memória." e the rider; exit.
 Compile the term given the rider (dereference).
 
 Etapas necessárias para que se compile um term given um rider (possessive - whereabouts):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "Você usou whereabouts da forma errada, erro no termo da variável '" then the term's phrase then "'." e the rider; exit.
 Adicione um intermediate given "endereço de memória" e the rider's token's first. 
 Adicione um fragment given the load address tag e the term's variable e the intermediate.
@@ -1970,27 +1970,27 @@ Put the intermediate into the term's variable.
 Clear the term's phrase.
 
 Etapas necessárias para que se compile um term given um rider (possessive): \ similar to "compile um term given um rider (reverse-possessive)
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Scan um name given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the name é any magnitude, compile the term given the rider (possessive - magnitude); exit.
 Se the name é any target, compile the term given the rider (possessive - target); exit.
 Se the name é any whereabouts, compile the term given the rider (possessive - whereabouts); exit.
 Compile the term given the rider e the name (possessive - field).
 
 Etapas necessárias para que se compile um term given um rider (possessives):
-Se the compiler's abort flag estiver verde, exit.
-Se the rider's token é not any possessive, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the rider's token é not any possessive, cancele.
 Compile the term given the rider (possessive).
 Repeat.  
 
 Etapas necessárias para que se compile um term given um rider (runtime ratio):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é nil, abort with "Você usou o / (proporção da execução) da forma errada, erro de termo vazio na variável '" then the term's phrase then "'." e the rider; exit.
 Move the rider (compiler rules).
 Compile another term given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the other term's variable é nil, abort with "Uso inválido da /, termo vazio da variável: '" then the other term's phrase then "'." e the rider; exit.
 Adicione um intermediate given "ratio" e the rider's token's first.
 Adicione several fragments given "put" e the term's variable e "e" e the other term's variable e "into" e the intermediate e the rider's token's first.
@@ -1998,7 +1998,7 @@ Put the intermediate into the term's variable.
 Clear the term's phrase.
 
 Etapas necessárias para que se compile um term given um rider (variable):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the current routine é nil, abort with "Erro de tarefa vazia, nada pra pull da pilha aqui." e the rider; exit.
 Move the rider (compiler rules).
 Scan um name given the rider.
@@ -2010,7 +2010,7 @@ Append the name to the term's phrase.
 Compile the term given the rider (possessives).
 
 Etapas necessárias para que se compile um term given um rider e um field name (reverse-possessive):  \ this é recursive \ dahn version 2
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules). \ past the reverse-possessive starter
 \Se the rider's token é not "del", Move the rider (compiler rules). \ past the reverse-possessive starter \ gerry added "if" part
 \Se the rider's token é "del", adicione 1 to the rider's token's first. \ makes "del" look like "de el"
@@ -2035,7 +2035,7 @@ Put "the " into the term's phrase.
 Append the variable name to the term's phrase.
 
 Etapas necessárias para que se compile um term given um rider e um variable name (reverse-possessive prepare to unwind new local): \ dahn version 2
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione um local to the current routine's locals given "local" e the rider's token's first.
 \PAL
 Se the rider's token é "outra", put "segunda" into the local's name.
@@ -2052,14 +2052,14 @@ Put the local into the term's variable.
 Clear the term's phrase.
 
 Etapas necessárias para que se compile um term given um field name e um rider (reverse-possessive):  \ similar to "compile um term given um rider (possessive)" \ dahn
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the field name é any magnitude, compile the term given the rider (possessive - magnitude); exit.
 Se the field name é any target, compile the term given the rider (possessive - target); exit.
 Se the field name é any whereabouts, compile the term given the rider (possessive - whereabouts); exit.
 Compile the term given the rider e the field name (possessive - field).
 
 Etapas necessárias para que se compile um term given um rider e um field term:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the field term's dereference flag estiver verde, compile the term given the rider (dereference).  
 Se the field term's function é not nil, compile the term given the rider e the field term (function); exit.
 Se the term's kind é "scratch", compile the term given the rider e the field term (in place); exit.
@@ -2071,7 +2071,7 @@ Put the scratch into the term's variable.
 Clear the term's phrase.
 
 Etapas necessárias para que se compile um term given um rider e um field term (function):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Put the field term's function into um routine.
 Put the routine's parameters' last into um parameter.
 Se the parameter é nil, abort with "Erro interno na função compile um term given um rider e um field term (function) - parâmetro vazio." e the rider; exit.
@@ -2084,7 +2084,7 @@ Put the intermediate into the term's variable.
 Clear the term's phrase.
 
 Etapas necessárias para que se compile um term given um rider e um field term (in place):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Put the field term's field into um field.
 Put the field's type's name into the term's type name.
 Put the field's type into the term's type.
@@ -2092,7 +2092,7 @@ Se the field's offset é not 0, adicione um third fragment given the increment ta
 Clear the term's phrase.
 
 Etapas necessárias para que se compile um term given um rider e um name (possessive - field):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the term's variable é not nil, put the term's type into um type.
 Find um field term given the term's phrase e the type e the name.
 Se the field term é not empty, compile the term given the rider e the field term; exit.
@@ -2100,7 +2100,7 @@ Se the term's variable é nil, abort with "Erro: variável vazia '" then the term'
 Se the type can be reduced to "endereço de memória", put the type's target type into the type.
 Se the type é nil, abort with "Não existe o campo '" then the name then "' no tipo '" then the term's type's name then "'." e the rider; exit.
 Loop.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um field from the type's fields.
 Se the field é nil, abort with "Não tem nenhum campo '" then the name then "' no tipo '" then the term's type's name then "'." e the rider; exit.
 Find um deep field term given "" e the field's type e the name.
@@ -2132,16 +2132,16 @@ Etapas necessárias para que se convert some monikettes to um moniker given um mo
 Clear the moniker.
 Loop.
 Get um current monikette from the monikettes.
-Se the current monikette é nil, exit.
+Se the current monikette é nil, cancele.
 Append the current monikette to the moniker.
-Se the current monikette é the monikette, exit.
+Se the current monikette é the monikette, cancele.
 Repeat.
 
 Etapas necessárias para que se convert um nibble substring to um string: employ convert um nibble string to um texto hexadecimal.
 
 Etapas necessárias para que se convert um term por concatenation given um rider: \ used por right-side THEN operand
 Se the term's variable é nil, abort with "Erro: variável do termo está vazia '" then the term's phrase then "'." e the rider; exit.
-Se the term's type can be reduced to "string", exit.
+Se the term's type can be reduced to "string", cancele.
 Adicione um intermediate given "string" e the rider's token's first.
 Adicione the put or convert fragments given the term's variable e the intermediate e the rider's token's first.
 Put the intermediate into the term's variable.
@@ -2162,23 +2162,23 @@ Put the field's offset into the other field's offset.
 
 Etapas necessárias para que se copy some fields into some other fields:
 Get um field from the fields.
-Se the field é nil, exit.
+Se the field é nil, cancele.
 Copy the field into another field.
 Append the other field to the other fields.
 Repeat.
 
 Etapas necessárias para que se copy some fields into some other fields (data fields only):
-Se the fields' count é less than 4, exit. \ por english next e prev e spanish next e prev redefinitions
-\Se the fields' first é nil, exit.
-\Se the fields' first's next é nil, exit.
-\Se the fields' first's next's next é nil, exit.
+Se the fields' count é less than 4, cancele. \ por english next e prev e spanish next e prev redefinitions
+\Se the fields' first é nil, cancele.
+\Se the fields' first's next é nil, cancele.
+\Se the fields' first's next's next é nil, cancele.
 \\Put the fields' first's next's next into um field. \ skip next e prev
-\Se the fields' first's next's next's next é nil, exit.
-\Se the fields' first's next's next's next's next é nil, exit.
-\Se the fields' first's next's next's next's next's next é nil, exit.
+\Se the fields' first's next's next's next é nil, cancele.
+\Se the fields' first's next's next's next's next é nil, cancele.
+\Se the fields' first's next's next's next's next's next é nil, cancele.
 Put the fields' first's next's next's next's next into um field. \ english next e prev e spanish next e prev redefinitions
 Loop.
-Se the field é nil, exit.
+Se the field é nil, cancele.
 Copy the field into another field.
 Append the other field to the other fields.
 Get the field from the fields.
@@ -2197,7 +2197,7 @@ Etapas necessárias para que se copy some monikettes into some other monikettes:
 Destroy the other monikettes.
 Loop.
 Get um monikette from the monikettes.
-Se the monikette é nil, exit.
+Se the monikette é nil, cancele.
 Copy the monikette into another monikette.
 Append the other monikette to the other monikettes.
 Repeat.
@@ -3296,6 +3296,7 @@ Se the string é "acabou-se", say yes.
 \Se the string é "advirta", say yes.
 \Se the string é "anuncie", say yes.
 \Se the string é "avise", say yes.
+Se the string é "cancele", say yes.
 Se the string é "desconsidere.", say yes.
 Se the string é "deixa quieto", say yes.
 Se the string é "deixe quieto", say yes.
@@ -3527,16 +3528,16 @@ Eliminate duplicate nicknames from the variables given the index.
 Destroy the index.
 
 Etapas necessárias para que se eliminate duplicate nicknames from some variables given um index:
-Se the index é nil, exit.
+Se the index é nil, cancele.
 Loop.
 Get um variable from the variables.
-Se the variable é nil, exit.
+Se the variable é nil, cancele.
 Eliminate duplicate nicknames given the variable e the index.
 Repeat.
 
 Etapas necessárias para que se eliminate duplicate nicknames given um variable e um index:
-Se the variable é nil, exit.
-Se the index é nil, exit.
+Se the variable é nil, cancele.
+Se the index é nil, cancele.
 Find another variable given the variable's nickname e the index.
 Se the other variable é nil, find the other variable given the variable's name e the index.
 Se the other variable é nil, index the variable given the variable's nickname e the index; exit.
@@ -3558,7 +3559,7 @@ The exit tag é um tag equal to 8.
 An expression é um term.
 
 Etapas necessárias para que se extend um string with another string:
-Se the other string é blank, exit.
+Se the other string é blank, cancele.
 Se the string é not blank, append the space pedaço to the string.
 Append the other string to the string.
 
@@ -3589,17 +3590,17 @@ Etapas necessárias para que se find um entry given um string e some entries:
 Void the entry.
 Loop.
 Get the entry from the entries.
-Se the entry é nil, exit.
-Se the entry's name é the string, exit.
+Se the entry é nil, cancele.
+Se the entry's name é the string, cancele.
 Repeat.
 
 Etapas necessárias para que se find um field term given um phrase e um type e um name:
 Clear the field term.
 Find the field term given the type e the name.
-Se the field term's field é not nil, exit.
+Se the field term's field é not nil, cancele.
 Se the phrase é not blank, find um routine given "put" e the phrase e "'s " then the name e "into".
 Se the routine é not nil, put the routine into the field term's function; exit.
-Se the type é nil, exit.
+Se the type é nil, cancele.
 Find the routine given "put" e the type e "'s " then the name e "into".
 Se the routine é not nil, set the field term's push flag; put the routine into the field term's function; exit.
 \  code below por looking deep within endereço de memórias - um debatable feature
@@ -3607,7 +3608,7 @@ Se the routine é not nil, set the field term's push flag; put the routine into t
 \  if the routine é not nil, set the field term's dereference flag; put the routine into the field term's function; exit.
 
 Etapas necessárias para que se find um field term given um type e um name:
-Se the type é nil, exit.
+Se the type é nil, cancele.
 Find um field given the name e the type's fields.
 Se the field é not nil, put the field into the field term's field; exit.
 Se the type's target type é not nil, find the field given the name e the type's target type's fields.
@@ -3616,16 +3617,16 @@ Se the field é not nil, set the field term's dereference flag; put the field int
 Etapas necessárias para que se find um fragment given another fragment e um tag:
 Put the other fragment into the fragment.
 Loop.
-Se the fragment é nil, exit.
-Se the fragment's tag é the tag, exit.
+Se the fragment é nil, cancele.
+Se the fragment's tag é the tag, cancele.
 Put the fragment's next into the fragment.
 Repeat.
 
 Etapas necessárias para que se find um fragment given another fragment e um tag (backwards):
 Put the other fragment into the fragment.
 Loop.
-Se the fragment é nil, exit.
-Se the fragment's tag é the tag, exit.
+Se the fragment é nil, cancele.
+Se the fragment's tag é the tag, cancele.
 Put the fragment's previous into the fragment.
 Repeat.
 
@@ -3633,20 +3634,20 @@ Etapas necessárias para que se find um import given um string:
 Void the import.
 Loop.
 Get the import from the imports.
-Se the import é nil, exit.
-Se the import's name é the string, exit.
+Se the import é nil, cancele.
+Se the import's name é the string, cancele.
 Repeat.
 
 Etapas necessárias para que se find um path e um row# given um pedaço endereço de memória:
 Clear the path.
 Put 0 into the row#.
 Find um source file given the pedaço endereço de memória.
-Se the source file é nil, exit.
+Se the source file é nil, cancele.
 Put the source file's path into the path.
 Find the row# given the source file e the pedaço endereço de memória.
 
 Etapas necessárias para que se find um routine given um moniker e um monikette e um index:
-Se the monikette é nil, exit.
+Se the monikette é nil, cancele.
 Void the routine.
 Privatize the moniker.
 Put the monikette's type into the monikette's current type.
@@ -3711,8 +3712,8 @@ Se the pedaço endereço de memória é nil, put 0 into the row#; exit.
 Slap um substring on the source file's buffer.
 Put 1 into the row#.
 Loop.
-Se the substring é blank, exit.
-Se the substring's first é the pedaço endereço de memória, exit.
+Se the substring é blank, cancele.
+Se the substring's first é the pedaço endereço de memória, cancele.
 Se the substring's first's target é the return pedaço, adicione 1 to the row#.
 Adicione 1 to the substring's first.
 Repeat.
@@ -3721,7 +3722,7 @@ Etapas necessárias para que se find um source file given um pedaço endereço de m
 Se the pedaço endereço de memória é nil, void the source file; exit.
 Loop.
 Get the source file from the source files.
-Se the source file é nil, exit.
+Se the source file é nil, cancele.
 Se the pedaço endereço de memória é less than the source file's buffer's first, repeat.
 Se the pedaço endereço de memória é greater than the source file's buffer's last, repeat.
 
@@ -3729,11 +3730,11 @@ Etapas necessárias para que se find um type e um nickname given um name:
 Void the type.
 Clear the nickname.
 Find the type e the nickname given the name (forward).
-Se the type é not nil, exit.
+Se the type é not nil, cancele.
 Find the type e the nickname given the name (backward).
 \Slap um substring on the name.
 \Loop.
-\Se the substring é blank, exit.
+\Se the substring é blank, cancele.
 \Find the type given the substring e the type index.
 \Se the type é not nil, break.
 \Skip to the next word in the substring.
@@ -3748,7 +3749,7 @@ Void the type.
 Clear the nickname.
 Slap um substring on the name.
 Loop.
-Se the substring é blank, exit.
+Se the substring é blank, cancele.
 Find the type given the substring e the type index.
 Se the type é not nil, break.
 Skip to the previous word in the substring.
@@ -3763,7 +3764,7 @@ Void the type.
 Clear the nickname.
 Slap um substring on the name.
 Loop.
-Se the substring é blank, exit.
+Se the substring é blank, cancele.
 Find the type given the substring e the type index.
 Se the type é not nil, break.
 Skip to the next word in the substring.
@@ -3776,40 +3777,40 @@ Se the other substring é blank, put the substring into the nickname.
 Etapas necessárias para que se find um variable given um name:
 Se the current routine é nil, void the variable; exit.
 Find the variable given the name e the current routine's locals.
-Se the variable é not nil, exit.
+Se the variable é not nil, cancele.
 Find the variable given the name e the current routine's parameters.
-Se the variable é not nil, exit.
+Se the variable é not nil, cancele.
 Find the variable given the name e the global index.
-Se the variable é not nil, exit.
+Se the variable é not nil, cancele.
 Find the variable given the name e the literal index.
 
 Etapas necessárias para que se find um variable given um name e some variables:
 Void the variable.
 Loop.
 Get the variable from the variables.
-Se the variable é nil, exit.
-Se the variable's name é the name, exit.
-Se the variable's nickname é the name, exit.
+Se the variable é nil, cancele.
+Se the variable's name é the name, cancele.
+Se the variable's nickname é the name, cancele.
 Repeat.
 
 
 \Etapas necessárias para que se find um variable given um name:
 \Se the current routine é nil, void the variable; exit.
 \Find the variable given the name e the current routine's locals.
-\Se the variable é not nil, exit.
+\Se the variable é not nil, cancele.
 \Find the variable given the name e the current routine's parameters.
-\Se the variable é not nil, exit.
+\Se the variable é not nil, cancele.
 \Find the variable given the name e the global index.
-\Se the variable é not nil, exit.
+\Se the variable é not nil, cancele.
 \ Find the variable given the name e the literal index.
 
 \Etapas necessárias para que se find um variable given um name e some variables:
 \Void the variable.
 \Loop.
 \Get the variable from the variables.
-\Se the variable é nil, exit.
-\Se the variable's name é the name, exit.
-\Se the variable's nickname é the name, exit.
+\Se the variable é nil, cancele.
+\Se the variable's name é the name, cancele.
+\Se the variable's nickname é the name, cancele.
 \Repeat.
 
 An fragment é um coisa with
@@ -3842,7 +3843,7 @@ Etapas necessárias para que se get um count given some imports (all entries plus
 Put 0 into the count.
 Loop.
 Get um import from the imports.
-Se the import é nil, exit.
+Se the import é nil, cancele.
 Adicione the import's entries' count to the count.
 Adicione 1 to the count.
 Repeat.
@@ -3878,32 +3879,32 @@ The imports are some imports.
 The increment tag é um tag equal to 10.
 
 Etapas necessárias para que se index um global:
-Se the compiler's abort flag estiver verde, exit.
-Se the global é nil, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the global é nil, cancele.
 Se the global's name é in the global index, abort with "'" then the global's name then "' é uma variável global duplicada." e the global's locus; exit.
 Index the global given the global's name e the global index.
 
 Etapas necessárias para que se index um literal:
-Se the compiler's abort flag estiver verde, exit.
-Se the literal é nil, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the literal é nil, cancele.
 Se the literal's name é in the literal index, abort with "Erro interno no nome do literal na função index um literal" e the literal's locus; exit.
 Index the literal given the literal's name e the literal index.
 
 Etapas necessárias para que se index um partial moniker given um index (special):
 Find um refer given the partial moniker e the index.
-Se the refer é not nil, exit.
+Se the refer é not nil, cancele.
 Index the partial moniker in the index.
 
 Etapas necessárias para que se index um routine por utility use:
-Se the compiler's abort flag estiver verde, exit.
-Se the routine é nil, exit.
-Se the routine's function flag estiver verde, exit.
-Se the routine's parameters' count é 0, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the routine é nil, cancele.
+Se the routine's function flag estiver verde, cancele.
+Se the routine's parameters' count é 0, cancele.
 Copy the routine's monikettes into some monikettes.
 Reduce the monikettes por utility use.
 Convert the monikettes to um moniker.
 Destroy the monikettes.
-Se the moniker é in the routine index, exit.
+Se the moniker é in the routine index, cancele.
 Find um refer given the moniker e the utility index.
 Se the refer é not nil, put nil into the refer's endereço de memória; exit.
 Index the routine given the moniker e the utility index.
@@ -3914,11 +3915,11 @@ Se the refer é not nil, put the routine into the refer's endereço de memória; ex
 Index the routine given the moniker e the index.
 
 Etapas necessárias para que se index um routine given some monikettes e um index:
-Se the routine é nil, exit.
+Se the routine é nil, cancele.
 Clear um partial moniker.
 Loop.
 Get um monikette from the monikettes.
-Se the monikette é nil, exit.
+Se the monikette é nil, cancele.
 Append the monikette to the partial moniker.
 Se the monikette é the monikettes' last, break.
 Index the partial moniker given the index (special).
@@ -3926,20 +3927,20 @@ Repeat.
 Index the routine given the partial moniker como um moniker e the index (special).
 
 Etapas necessárias para que se index some routines por utility use:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um routine from the routines.
-Se the routine é nil, exit.
+Se the routine é nil, cancele.
 Index the routine por utility use.
 Repeat.
 
 Etapas necessárias para que se index um type:
-Se the type é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
+Se the type é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
 Index the type given the type's name.
 
 Etapas necessárias para que se index um type given um name:
-Se the type é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
+Se the type é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
 Find um existing type given the name e the type index.
 Se the existing type é nil, index the type given the name e the type index; exit.
 Put the type's locus into um locus.
@@ -4090,14 +4091,14 @@ List the timers under "TIMERS:" in the compiler's listing.
 Write the compiler's listing to the compiler's listing path.
 
 Etapas necessárias para que se list um abort message in um buffer:
-Se the abort message é blank, exit.
+Se the abort message é blank, cancele.
 Append "COMPILE ABORTED - LISTING INCOMPLETE" to the buffer.
 Advance the buffer (twice).
 Append the abort message to the buffer.
 Advance the buffer (twice).
 
 Etapas necessárias para que se list um bucket in um buffer:
-Se the bucket's refers are empty, exit.
+Se the bucket's refers are empty, cancele.
 Append "/bucket" to the buffer (with separator).
 Advance the buffer.
 List the bucket's refers in the buffer.
@@ -4105,12 +4106,12 @@ Advance the buffer.
 
 Etapas necessárias para que se list some entries in um buffer:
 Get um entry from the entries.
-Se the entry é nil, exit.
+Se the entry é nil, cancele.
 List the entry in the buffer.
 Repeat.
 
 Etapas necessárias para que se list um entry in um buffer:
-Se the entry é nil, exit.
+Se the entry é nil, cancele.
 Append "/entry" to the buffer (with separator).
 Append the entry's name to the buffer (with separator).
 Append the entry's address to the buffer (as hex with separator).
@@ -4131,12 +4132,12 @@ Advance the buffer.
 
 Etapas necessárias para que se list some fragments in um buffer:
 Get um fragment from the fragments.
-Se the fragment é nil, exit.
+Se the fragment é nil, cancele.
 List the fragment in the buffer.
 Repeat.
 
 Etapas necessárias para que se list um import in um buffer:
-Se the import é nil, exit.
+Se the import é nil, cancele.
 Append "/import" to the buffer (with separator).
 Append the import's name to the buffer (with separator).
 Advance the buffer.
@@ -4145,14 +4146,14 @@ Advance the buffer.
 
 Etapas necessárias para que se list some imports in um buffer:
 Get um import from the imports.
-Se the import é nil, exit.
+Se the import é nil, cancele.
 List the import in the buffer.
 Repeat.
 
 Etapas necessárias para que se list some imports under um string in um buffer:
 Append the string to the buffer.
 Advance the buffer (twice).
-Se the imports are empty, exit.
+Se the imports are empty, cancele.
 List the imports in the buffer.
 
 Etapas necessárias para que se list um index in um buffer:
@@ -4161,18 +4162,18 @@ Append the index's count then " refers" to the buffer (with separator).
 Advance the buffer (twice).
 Loop.
 Get um bucket given the index.
-Se the bucket é nil, exit.
+Se the bucket é nil, cancele.
 List the bucket in the buffer.
 Repeat.
 
 Etapas necessárias para que se list um index under um string in um buffer:
 Append the string to the buffer.
 Advance the buffer (twice).
-Se the index é empty, exit.
+Se the index é empty, cancele.
 List the index in the buffer.
 
 Etapas necessárias para que se list um refer in um buffer:
-Se the refer é nil, exit.
+Se the refer é nil, cancele.
 Append "/refer" to the buffer (with separator).
 Append the refer's string to the buffer.
 Se the refer's endereço de memória é nil, append "..." to the buffer.
@@ -4181,12 +4182,12 @@ Advance the buffer.
 
 Etapas necessárias para que se list some refers in um buffer:
 Get um refer from the refers.
-Se the refer é nil, exit.
+Se the refer é nil, cancele.
 List the refer in the buffer.
 Repeat.
 
 Etapas necessárias para que se list um routine in um buffer:
-Se the routine é nil, exit.
+Se the routine é nil, cancele.
 Append "/routine" to the buffer (with separator).
 Append the routine's moniker to the buffer (with separator).
 Append the routine's compiled flag to the buffer (with separator).
@@ -4205,32 +4206,32 @@ Advance the buffer.
 
 Etapas necessárias para que se list some routines in um buffer:
 Get um routine from the routines.
-Se the routine é nil, exit.
+Se the routine é nil, cancele.
 List the routine in the buffer.
 Repeat.
 
 Etapas necessárias para que se list some routines under um string in um buffer:
 Append the string to the buffer.
 Advance the buffer (twice).
-Se the routines are empty, exit.
+Se the routines are empty, cancele.
 List the routines in the buffer.
 
 Etapas necessárias para que se list um source file in um buffer:
-Se the source file é nil, exit.
+Se the source file é nil, cancele.
 Append "/source file" to the buffer (with separator).
 Append the source file's path to the buffer (with separator).
 Advance the buffer.
 
 Etapas necessárias para que se list some source files in um buffer:
 Get um source file from the source files.
-Se the source file é nil, exit.
+Se the source file é nil, cancele.
 List the source file in the buffer.
 Repeat.
 
 Etapas necessárias para que se list some source files under um string in um buffer:
 Append the string to the buffer.
 Advance the buffer (twice).
-Se the source files are empty, exit.
+Se the source files are empty, cancele.
 List the source files in the buffer.
 Advance the buffer.
 
@@ -4262,7 +4263,7 @@ List the compiler's timer given "total" in the buffer.
 Advance the buffer.
 
 Etapas necessárias para que se list um type in um buffer:
-Se the type é nil, exit.
+Se the type é nil, cancele.
 Append "/type" to the buffer (with separator).
 Append the type's name to the buffer (with separator).
 Append the type's plural name to the buffer (with separator).
@@ -4278,18 +4279,18 @@ Advance the buffer.
 
 Etapas necessárias para que se list some types in um buffer:
 Get um type from the types.
-Se the type é nil, exit.
+Se the type é nil, cancele.
 List the type in the buffer.
 Repeat.
 
 Etapas necessárias para que se list some types under um string in um buffer:
 Append the string to the buffer.
 Advance the buffer (twice).
-Se the types are empty, exit.
+Se the types are empty, cancele.
 List the types in the buffer.
 
 Etapas necessárias para que se list um variable in um buffer:
-Se the variable é nil, exit.
+Se the variable é nil, cancele.
 Append "/variable" to the buffer (with separator).
 Append the variable's kind to the buffer (with separator).
 Append the variable's compiled flag to the buffer (with separator).
@@ -4309,14 +4310,14 @@ Advance the buffer.
 
 Etapas necessárias para que se list some variables in um buffer:
 Get um variable from the variables.
-Se the variable é nil, exit.
+Se the variable é nil, cancele.
 List the variable in the buffer.
 Repeat.
 
 Etapas necessárias para que se list some variables under um string in um buffer:
 Append the string to the buffer.
 Advance the buffer (twice).
-Se the variables are empty, exit.
+Se the variables are empty, cancele.
 List the variables in the buffer.
 Advance the buffer.
 
@@ -4348,13 +4349,13 @@ An current substring.
 
 Etapas necessárias para que se move um rider (code rules - comment):
 Bump the rider.
-Se the rider's source é blank, exit.
+Se the rider's source é blank, cancele.
 Se the rider's source's first's target é not the return pedaço, repeat.
 
 Etapas necessárias para que se move um rider (code rules - glom):
 Bump the rider.
-Se the rider's source é blank, exit.
-Se the rider é on any possessive, exit.
+Se the rider's source é blank, cancele.
+Se the rider é on any possessive, cancele.
 Se the rider's source's first's target é any glom pedaço, repeat.
 
 Etapas necessárias para que se move um rider (code rules - mark):
@@ -4362,16 +4363,16 @@ Bump the rider.
 
 Etapas necessárias para que se move um rider (code rules - noise):
 Bump the rider.
-Se the rider's source é blank, exit.
+Se the rider's source é blank, cancele.
 Se the rider's source's first's target é noise, repeat.
 
 Etapas necessárias para que se move um rider (code rules - possessive):
 Bump the rider.
-Se the rider's source é blank, exit.
+Se the rider's source é blank, cancele.
 Se the rider's source starts with "s", bump the rider.
 
 Etapas necessárias para que se move um rider (code rules - qualifier):
-Se the rider's source é blank, exit.
+Se the rider's source é blank, cancele.
 Se the rider's source's first's target é the return pedaço, break.
 Se the rider's source's first's target é the left-paren pedaço, adicione 1 to um count.
 Se the rider's source's first's target é the right-paren pedaço, subtract 1 from the count.
@@ -4380,7 +4381,7 @@ Se the count é 0, break.
 Repeat.
 
 Etapas necessárias para que se move um rider (code rules - remark):
-Se the rider's source é blank, exit.
+Se the rider's source é blank, cancele.
 Se the rider's source's first's target é the return pedaço, break.
 Se the rider's source's first's target é the left-bracket pedaço, adicione 1 to um count.
 Se the rider's source's first's target é the right-bracket pedaço, subtract 1 from the count.
@@ -4390,8 +4391,8 @@ Repeat.
 
 Etapas necessárias para que se move um rider (code rules - string):
 Bump the rider.
-Se the rider's source é blank, exit.
-Se the rider's source's first's target é the return pedaço, exit.
+Se the rider's source é blank, cancele.
+Se the rider's source's first's target é the return pedaço, cancele.
 Se the rider é on any nested double-quote, bump the rider; repeat.
 Se the rider's source's first's target é the double-quote pedaço, bump the rider; exit.
 Repeat.
@@ -4401,7 +4402,7 @@ Bump the rider.
 
 Etapas necessárias para que se move um rider (code rules):
 Position the rider's token on the rider's source.
-Se the rider's source é blank, exit.
+Se the rider's source é blank, cancele.
 Se the rider's source's first's target é noise, move the rider (code rules - noise); exit.
 Se the rider's source's first's target é the backslash pedaço, move the rider (code rules - comment); exit.
 Se the rider's source's first's target é the left-bracket pedaço, move the rider (code rules - remark); exit.
@@ -4417,7 +4418,7 @@ Move the rider returning um error string (code rules).
 Se the error string é not blank, abort with the error string e the rider's token's first; exit.
 \Se the rider's token é "del", unbump the rider; exit. \ Spanish contraction "del"; fudged to "de l", short por "de el"
 \Se the rider's token é "al", unbump the rider; exit. \ Spanish contraction "al"; fudged to "a l", short por "a el"
-Se the rider's token é blank, exit.
+Se the rider's token é blank, cancele.
 Se the rider's token's first's target é noise, repeat.
 Se the rider's token's first's target é the backslash pedaço, repeat.
 Se the rider's token's first's target é the left-bracket pedaço, repeat.
@@ -4437,7 +4438,7 @@ Se the rider's token's last's target é not the double-quote pedaço, put "Strings
 Etapas necessárias para que se move um rider returning um error string (code rules):
 Clear the error string.
 Move the rider (code rules).
-Se the rider's token é blank, exit.
+Se the rider's token é blank, cancele.
 Se the rider's token's first's target é the left-bracket pedaço, move the rider returning the error string (code rules - validate remark); exit.
 Se the rider's token's first's target é the double-quote pedaço, move the rider returning the error string (code rules - validate string); exit.
 Se the rider's token's first's target é the left-paren pedaço, move the rider returning the error string (code rules - validate qualifier); exit.
@@ -4449,13 +4450,13 @@ An nickname é um name.
 The not tag é um tag equal to 16.
 
 Etapas necessárias para que se offset the locals in um routine:
-Se the routine é nil, exit.
-Se the routine's compiled flag estiver not verde, exit.
+Se the routine é nil, cancele.
+Se the routine's compiled flag estiver not verde, cancele.
 Clear the routine's local size.
 Loop.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um local from the routine's locals.
-Se the local é nil, exit.
+Se the local é nil, cancele.
 Se the local's previous é not nil, put the local's previous' offset into the local's offset.
 Put the local's type's length into um length.
 Se the local's kind é "scratch", put um endereço de memória's magnitude into the length.
@@ -4465,20 +4466,20 @@ Adicione the length to the routine's local size.
 Repeat.
 
 Etapas necessárias para que se offset the locals in some routines:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um routine from the routines.
-Se the routine é nil, exit.
+Se the routine é nil, cancele.
 Offset the locals in the routine.
 Repeat.
 
 Etapas necessárias para que se offset the parameters in um routine:
-Se the routine é nil, exit.
-Se the routine's compiled flag estiver not verde, exit.
+Se the routine é nil, cancele.
+Se the routine's compiled flag estiver not verde, cancele.
 Clear the routine's parameter size.
 Loop.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um parameter from the routine's parameters.
-Se the parameter é nil, exit.
+Se the parameter é nil, cancele.
 Se the routine's callback flag estiver verde, set the parameter's by-value flag.
 Se the parameter's previous é nil, put 8 into the parameter's offset. \ skip the return address e saved ebp
 Se the parameter's previous é not nil, put the parameter's previous' offset plus 4 into the parameter's offset. \ all parameters are 4 pedaço endereço de memórias or 4 pedaço values por callbacks
@@ -4486,9 +4487,9 @@ Adicione 4 to the routine's parameter size.
 Repeat.
 
 Etapas necessárias para que se offset the parameters in some routines:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um routine from the routines.
-Se the routine é nil, exit.
+Se the routine é nil, cancele.
 Offset the parameters in the routine.
 Repeat.
 
@@ -4602,18 +4603,18 @@ Se the string é "sênior", put "seniores" into the string; exit.
 Se the string é "mão", put "mãos" into the string; exit.
 Se the string é "são", put "sãos" into the string; exit.
 \# advérbios principais
-Se the string é "muito", exit.
-Se the string é "pouco", exit.
-Se the string é "mais", exit.
-Se the string é "menos", exit.
-Se the string é "bastante", exit.
-Se the string é "quase", exit.
-Se the string é "demais", exit.
-Se the string é "bem", exit.
-Se the string é "deveras", exit.
-Se the string é "mal", exit.
-Se the string é "melhor", exit.
-Se the string é "pior", exit.
+Se the string é "muito", cancele.
+Se the string é "pouco", cancele.
+Se the string é "mais", cancele.
+Se the string é "menos", cancele.
+Se the string é "bastante", cancele.
+Se the string é "quase", cancele.
+Se the string é "demais", cancele.
+Se the string é "bem", cancele.
+Se the string é "deveras", cancele.
+Se the string é "mal", cancele.
+Se the string é "melhor", cancele.
+Se the string é "pior", cancele.
 \# palavras terminadas com "ão"
 Se the string ends with "ão", pluralize the string (portuguese rules - ending words with "ão"); exit.
 \# palavras terminadas com "l"
@@ -4627,7 +4628,7 @@ Se the string ends with "r", pluralize the string (portuguese rules - ending wor
 \# palavras terminadas com "s"
 Se the string ends with "s", pluralize the string (portuguese rules - ending words with "s"); exit.
 \# palavra terminadas com "x"
-Se the string ends with "x", exit.
+Se the string ends with "x", cancele.
 \# palavras terminadas com "z"
 Se the string ends with "z", pluralize the string (portuguese rules - ending words with "z"); exit.
 \# regra padrão
@@ -4703,9 +4704,9 @@ Append "es" to the string.
 
 Etapas necessárias para que se pluralize um string (portuguese rules - ending words with "s"):
 \# proparoxítonas/paroxítonas terminadas com "as", "es", "os"
-Se the string ends with "as", exit.
-Se the string ends with "es", exit.
-Se the string ends with "os", exit.
+Se the string ends with "as", cancele.
+Se the string ends with "es", cancele.
+Se the string ends with "os", cancele.
 \# hiatos acentuados
 Se the string ends with "aís", append "es" to the string; exit.
 Se the string ends with "aús", append "es" to the string; exit.
@@ -4728,7 +4729,7 @@ Etapas necessárias para que se pluralize um string (portuguese rules - ending wo
 \# acentos em sílabas prévias
 Slap um substring on the string.
 Subtract 2 from the substring's last.
-Se the substring has any stressed vowel, exit.
+Se the substring has any stressed vowel, cancele.
 \# hiatos
 Se the string ends with "ais", remove the last two pedaços from the string; append "íses" to the string; exit.
 Se the string ends with "aus", remove the last two pedaços from the string; append "úses" to the string; exit.
@@ -4836,7 +4837,7 @@ Put the term's variable into the other term's variable.
 Put the term's phrase into the other term's phrase.
 
 Etapas necessárias para que se load um source file:
-Se the source file é nil, exit.
+Se the source file é nil, cancele.
 Load the source file's path into the source file's buffer.
 Se the i/o error é not blank, abort with "Não foi possível carregar o arquivo: '" then the source file's path then "'."; exit.
 \Load the source file's path into um string.
@@ -4845,7 +4846,7 @@ Se the i/o error é not blank, abort with "Não foi possível carregar o arquivo: '
 
 Etapas necessárias para que se load some source files:
 Loop.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um item from the compiler's directory.
 Se the item é not found, break.
 Se the item's kind é not "file", repeat.
@@ -4862,7 +4863,7 @@ Clear the other string.
 Clear um third string.
 Slap um rider on the string.
 Loop.
-Se the rider's source é blank, exit.
+Se the rider's source é blank, cancele.
 Position the rider's token on the rider's source.
 Move the rider (code rules).
 Se the rider's token's first's target é not any glom pedaço, append the rider's token to the other string; repeat.
@@ -4872,7 +4873,7 @@ Repeat.
 
 Etapas necessárias para que se reduce some monikettes por utility use:
 Get um monikette from the monikettes.
-Se the monikette é nil, exit.
+Se the monikette é nil, cancele.
 Se the monikette's type é nil, repeat.
 Reduce the monikette's type to um type por utility use.
 Se the type é not nil, put the type into the monikette's type.
@@ -4881,11 +4882,11 @@ Repeat.
 Etapas necessárias para que se reduce um type to another type por utility use:
 Put the type into the other type.
 Loop.
-Se the other type é nil, exit.
-Se the other type's name é "texto hexadecimal", exit.
-Se the other type's name é "string", exit.
-Se the other type's name é "número", exit.
-Se the other type's name é "endereço de memória", exit.
+Se the other type é nil, cancele.
+Se the other type's name é "texto hexadecimal", cancele.
+Se the other type's name é "string", cancele.
+Se the other type's name é "número", cancele.
+Se the other type's name é "endereço de memória", cancele.
 Se the other type's name é "coisa", void the other type; exit.
 \PAL
 \Se the other type's name é "elemento", void the other type; exit.
@@ -4894,16 +4895,16 @@ Put the other type's base type into the other type.
 Repeat.
 
 Etapas necessárias para que se reindex the utility index:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um bucket given the utility index.
-Se the bucket é nil, exit.
+Se the bucket é nil, cancele.
 Se the bucket's refers are empty, repeat.
 Reindex the utility index given the bucket's refers.
 Repeat.
 
 Etapas necessárias para que se reindex the utility index given some refers:
 Get um refer from the refers.
-Se the refer é nil, exit.
+Se the refer é nil, cancele.
 Put the refer's endereço de memória into um routine.
 Se the routine é nil, abort with "Erro interno na função: index the utility routines given some refers"; exit.
 Copy the routine's monikettes into some monikettes.
@@ -4917,7 +4918,7 @@ Clear the flag.
 Swap the monikettes with some other monikettes.
 Loop.
 Put the other monikettes' first into um monikette.
-Se the monikette é nil, exit.
+Se the monikette é nil, cancele.
 Remove the monikette from the other monikettes.
 \PAL
 Se the monikette's string é "não", reverse the flag; destroy the monikette; repeat.
@@ -4936,43 +4937,43 @@ Repeat.
 The repeat tag é um tag equal to 21.
 
 Etapas necessárias para que se resolve um field:
-Se the compiler's abort flag estiver verde, exit.
-Se the field é nil, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the field é nil, cancele.
 Resolve the field como um variable.
 Se the field's nickname é not any valid field name, clear the field's nickname.
 Se the field's name é not any valid field name, abort with "'" then the field's name then "' é um field name inválido." e the field's locus; exit.
 
 Etapas necessárias para que se resolve um global:
-Se the global é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
+Se the global é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
 Se the global's global body é not blank, resolve the global (compile body).
 Se the global's type name é blank, abort with "Tipo inválido: '" then the global's name then "' . O tipo da variável global está vazio." e the global's locus; exit.
 Resolve the global como um variable.
 
 Etapas necessárias para que se resolve um global (compile body):
-Se the global é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
+Se the global é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
 Slap um rider on the global's global body.
 Move the rider (compiler rules).
 Se the rider's token é not any literal, abort with "Erro de tipo. O tipo: '" then the rider's token then "' tem que ser do tipo literal." e the rider; exit.
 Compile um literal given the rider.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider's token é not blank, abort with "Acho que era bom colocar um ponto por aqui, né?" e the rider; exit.
 Se the global's type name é blank, put the literal's type's name into the global's type name.
 Put the literal into the global's literal.
 Index the literal.
 
 Etapas necessárias para que se resolve some globals:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um global from the globals.
-Se the global é nil, exit.
+Se the global é nil, cancele.
 Resolve the global.
 Repeat.
 
 Etapas necessárias para que se resolve um type (base type):
-Se the compiler's abort flag estiver verde, exit.
-Se the type é nil, exit.
-Se the type's base type é not nil, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the type é nil, cancele.
+Se the type's base type é not nil, cancele.
 Find the type's base type given the type's base name e the type index.
 Se the type's base type é nil, abort with "Base type inválido:'" then the type's base name then "'." e the type's locus; exit.
 Set the type's cooking flag.
@@ -4981,12 +4982,12 @@ Resolve the type's base type (base type).
 Clear the type's cooking flag.
 
 Etapas necessárias para que se resolve um type (expand coisa): \ type's base type é not resolved yet
-Se the compiler's abort flag estiver verde, exit.
-Se the type é nil, exit.
-Se the type's base type é not nil, exit.
-Se the type's name é "coisa", exit.
-\Se the type's name é "elemento", exit.
-Se the type cannot be reduced to "coisa" using the base name, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the type é nil, cancele.
+Se the type's base type é not nil, cancele.
+Se the type's name é "coisa", cancele.
+\Se the type's name é "elemento", cancele.
+Se the type cannot be reduced to "coisa" using the base name, cancele.
 Find um base type given the type's base name e the type index.
 \  adicione coisa conjunto - the número of secret fields é hard coded in two places: search por "than 4" \ was 6
 Put the type's name then " conjunto" into um name.
@@ -5023,52 +5024,52 @@ Put "last " then the type's name into the fourth portuguese feminine field's red
 Index the chain type.
 
 Etapas necessárias para que se resolve um type (index plural):
-Se the compiler's abort flag estiver verde, exit.
-Se the type é nil, exit.
-Se the type's plural name é blank, exit.
-Se the type can be reduced to "coisa" using the base name, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the type é nil, cancele.
+Se the type's plural name é blank, cancele.
+Se the type can be reduced to "coisa" using the base name, cancele.
 Index the type given the type's plural name.
 
 Etapas necessárias para que se resolve um type (optional info - endereço de memória):
-Se the compiler's abort flag estiver verde, exit.
-Se the type's target type é not nil, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the type's target type é not nil, cancele.
 Se the type's target name é blank, put the type's base type's target type into the type's target type; exit.
 Find the type's target type given the type's target name e the type index.
 Se the type's target type é nil, abort with "Não sei bem pra que coisa você está pointing at." e the type's locus; exit.
 
 Etapas necessárias para que se resolve um type (optional info - conjunto):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the type's fields are empty, copy the type's base type's fields into the type's fields; exit.
 Loop.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um field from the type's fields (backwards).
 Se the field é nil, break.
 Se the field é duplicated in the type's fields, abort with "O campo '" then the field's name then "' está definido mais de uma vez." e the field's locus; exit.
 Resolve the field.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the field's type's cooking flag estiver verde, abort with "Recursive definition no: '" then the field's type's name then "'." e the field's locus; exit.
 Resolve the field's type (optional info). \ de novo
 Se the field's reference flag estiver not verde, repeat.
 Se the field's type cannot be reduced to "endereço de memória", abort with "Não entendi o parâmetro '(reference)' nesse campo '" then the field's name then "'..." e the field's locus; exit.
 Repeat.
 Eliminate duplicate nicknames from the type's fields.
-Se the type cannot be reduced to "coisa conjunto", exit.
-Se the type's fields' count é greater than 4, exit. \ already copied? was 2 por next e prev, now 6 to included Spanish redefiniions
+Se the type cannot be reduced to "coisa conjunto", cancele.
+Se the type's fields' count é greater than 4, cancele. \ already copied? was 2 por next e prev, now 6 to included Spanish redefiniions
 Copy the type's base type's fields into the type's fields (data fields only).
 
 Etapas necessárias para que se resolve um type (optional info - scale):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Put the type's base type into um base type.
 Se the type's scale é 0, put the type's base type's scale into the type's scale; exit.
-Se the base type's scale é 0, exit.
+Se the base type's scale é 0, cancele.
 Multiply the type's scale by the base type's scale.
 Put the base type's base type into the type's base type.
 
 Etapas necessárias para que se resolve um type (optional info):
-Se the compiler's abort flag estiver verde, exit.
-Se the type é nil, exit.
-Se the type's optional info resolved flag estiver verde, exit.
-Se the type's base type é the type, exit. \ por built in types
+Se the compiler's abort flag estiver verde, cancele.
+Se the type é nil, cancele.
+Se the type's optional info resolved flag estiver verde, cancele.
+Se the type's base type é the type, cancele. \ por built in types
 Check por invalid optional info on the type.
 Set the type's cooking flag.
 Resolve the type's base type (optional info).
@@ -5079,37 +5080,37 @@ Clear the type's cooking flag.
 Set the type's optional info resolved flag.
 
 Etapas necessárias para que se resolve some types (base types):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um type from the types.
-Se the type é nil, exit.
+Se the type é nil, cancele.
 Resolve the type (base type).
 Repeat.
 
 Etapas necessárias para que se resolve some types (expand coisas):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um type from the types.
-Se the type é nil, exit.
+Se the type é nil, cancele.
 Resolve the type (expand coisa).
 Repeat.
 
 Etapas necessárias para que se resolve some types (index plurals):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um type from the types.
-Se the type é nil, exit.
+Se the type é nil, cancele.
 Resolve the type (index plural).
 Repeat.
 
 Etapas necessárias para que se resolve some types (optional info):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um type from the types.
-Se the type é nil, exit.
+Se the type é nil, cancele.
 Resolve the type (optional info).
 Repeat.
 
 Etapas necessárias para que se resolve um variable:
-Se the compiler's abort flag estiver verde, exit.
-Se the variable é nil, exit.
-Se the variable's type é not nil, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the variable é nil, cancele.
+Se the variable's type é not nil, cancele.
 Se the variable's type name é not blank, resolve the variable (explicit type name); exit.
 Find the variable's type e the variable's nickname given the variable's name.
 Se the variable's type é not nil, put the variable's type's name into the variable's type name; exit.
@@ -5161,7 +5162,7 @@ The routines are some routines.
 The save eax tag é um tag equal to 20.
 
 Etapas necessárias para que se scan any optional info por um type given um rider:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider's token é "to", scan any optional info por the type given the rider (endereço de memória); exit.
 Se the rider's token é "para", scan any optional info por the type given the rider (endereço de memória); exit.
 Se the rider's token é any with, scan any optional info por the type given the rider (conjunto); exit.
@@ -5177,16 +5178,16 @@ Move the rider (compiler rules).
 Scan the type's fields given the rider.
 
 Etapas necessárias para que se scan any pauses given um rider:
-Se the compiler's abort flag estiver verde, exit.
-Se the rider's token é not any pause, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the rider's token é not any pause, cancele.
 Move the rider (compiler rules).
 Repeat.
 
 Etapas necessárias para que se scan um field given um rider:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Scan the field given the rider (type part).
 Loop.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider's token é any called, scan the field given the rider (called part); repeat.
 Se the rider's token é "at", scan the field given the rider (redefine part); repeat.
 Se the rider's token é "em", scan the field given the rider (redefine part); repeat.
@@ -5194,25 +5195,25 @@ Se the rider's token é "redefinindo", scan the field given the rider (redefine p
 Se the rider's token é any reference, scan the field given the rider (reference part); repeat.
 
 Etapas necessárias para que se scan um field given um rider (called part):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Se the field's type name é blank, put the field's name into the field's type name. \ pedaço array type name already filled in
 Scan the field's name given the rider.
 
 Etapas necessárias para que se scan um field given um rider (redefine part):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Se the rider's token é not any definite article, abort with "Eu estava esperando o artigo 'the', mas o que encontrei foi '" then the rider's token then "'." e the rider; exit.
 Move the rider (compiler rules).
 Scan the field's redefinition target name given the rider.
 
 Etapas necessárias para que se scan um field given um rider (reference part):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Set the field's reference flag.
 
 Etapas necessárias para que se scan um field given um rider (type part - pedaço array):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Convert the rider's token to um ratio.
 Reduce the ratio.
 Se the ratio's denominator é not 1, abort with "Você tem que especificar um número completo de pedaços para um pedaço array" e the rider; exit.
@@ -5223,7 +5224,7 @@ Move the rider (compiler rules).
 Put "pedaço" into the field's type name.
 
 Etapas necessárias para que se scan um field given um rider (type part - normal):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider's token é not any indefinite article, abort with "Falta por um artigo idefinido aqui, mas você colocou isso: '" then the rider's token then "'." e the rider; exit.
 Se the rider's token é "another", put "other" into the field's name.
 \PAL
@@ -5234,34 +5235,34 @@ Scan um name given the rider.
 Extend the field's name with the name.
 
 Etapas necessárias para que se scan um field given um rider (type part):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider's token é any numeric literal, scan the field given the rider (type part - pedaço array); exit.
 Scan the field given the rider (type part - normal).
 
 Etapas necessárias para que se scan some fields given um rider:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione um field to the fields given "field" e the rider's token's first.
 Scan the field given the rider.
-Se the rider's token é not any pause, exit.
+Se the rider's token é not any pause, cancele.
 Scan any pauses given the rider.
 Repeat.
 
 Etapas necessárias para que se scan um global body given um rider:
-Se the compiler's abort flag estiver verde, exit.
-Se the rider's token é blank, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the rider's token é blank, cancele.
 Put the rider's token's first into the global body's first.
 Put -1 into the global body's last.
 Loop.
-Se the compiler's abort flag estiver verde, exit.
-Se the rider's token é blank, exit.
-Se the rider's token é the colon pedaço, exit.
-Se the rider's token é the period pedaço, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the rider's token é blank, cancele.
+Se the rider's token é the colon pedaço, cancele.
+Se the rider's token é the period pedaço, cancele.
 Put the rider's token's last into the global body's last.
 Move the rider (compiler rules).
 Repeat.
 
 Etapas necessárias para que se scan um global given um rider:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione the global to the globals given "global" e the rider's token's first.
 Move the rider (compiler rules).
 Scan the global's name given the rider.
@@ -5278,7 +5279,7 @@ Move the rider (compiler rules).
 Index the global.
 
 Etapas necessárias para que se scan um global given um rider (data part):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Se the rider's token é not any to, abort with "Depois da palavra 'equal' você precisa por um palavra  'to'. Você colocou ; '" then the rider's token then "'." e the rider; exit. 
 Move the rider (compiler rules).
@@ -5288,7 +5289,7 @@ Move the rider (compiler rules).
 Index the global.
 
 Etapas necessárias para que se scan um global given um rider (has or have):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Put "~inline " then the global's name then " type" into um name.
 Put the name then "s" into um plural name.
@@ -5301,14 +5302,14 @@ Move the rider (compiler rules).
 Index the global.
 
 Etapas necessárias para que se scan um global given um rider (literal term):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Scan the global's global body given the rider.
 Se the rider's token é not the period pedaço, abort with "Aprenda a escrever corretamente. Cadê o ponto?." e the rider; exit. 
 Move the rider (compiler rules).
 Index the global.
 
 Etapas necessárias para que se scan um global given um rider (optional info):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Put "~inline " then the global's name then " type" into um name.
 Put the name then "s" into um plural name.
 Adicione um type to the types given the name e the plural name e the global's type name e the global's locus.
@@ -5321,10 +5322,10 @@ Index the global.
 
 Etapas necessárias para que se scan um name given um rider:
 Clear the name.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider é on any name starter, extend the name with the rider's token; move the rider (compiler rules).
 Loop.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider é on any name ender, break.
 Extend the name with the rider's token.
 Move the rider (compiler rules).
@@ -5332,22 +5333,22 @@ Repeat.
 Se the name é blank, abort with "Acho que faltou colocar um nome por aqui. Você escreveu '" then the rider's token then "'." e the rider; exit.
 
 Etapas necessárias para que se scan um routine body given um rider:
-Se the compiler's abort flag estiver verde, exit.
-Se the rider's token é blank, exit.
-Se the rider's token é the start of any definition, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the rider's token é blank, cancele.
+Se the rider's token é the start of any definition, cancele.
 Put the rider's token's first into the routine body's first.
 Loop.
-Se the compiler's abort flag estiver verde, exit.
-Se the rider's token é blank, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the rider's token é blank, cancele.
 Put the rider's token's last into the routine body's last.
 Se the rider's token é the colon pedaço, abort with "Acho que faltou um ponto lá em cima. É melhor você ir lá dar uma olhada." e the rider; exit.
 Se the rider's token é not the period pedaço, move the rider (compiler rules); repeat.
 Move the rider (compiler rules).
-Se the rider's token é the start of any definition, exit.
+Se the rider's token é the start of any definition, cancele.
 Repeat.
 
 Etapas necessárias para que se scan um routine given um rider:  \ Define o cabeçalho de rotina.
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Adicione the routine to the routines given the rider's token's first.
 Move the rider (compiler rules). \ skip the "Passos" e get the next token
 Se the rider's token é "necessários" or "necessárias", move the rider (compiler rules). 
@@ -5372,28 +5373,28 @@ Put the original rider's token's last into the routine's routine body's last.
 Move the original rider (compiler rules).
 
 Etapas necessárias para que se scan um routine header given um rider:
-Se the compiler's abort flag estiver verde, exit.
-Se the rider's token é blank, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the rider's token é blank, cancele.
 Put the rider's token's first into the routine header's first.
 Put -1 into the routine header's last.
 Loop.
-Se the compiler's abort flag estiver verde, exit.
-Se the rider's token é blank, exit.
-Se the rider's token é the semi-colon pedaço, exit. \ *** alternate wordings
-Se the rider's token é the colon pedaço, exit.
-Se the rider's token é the period pedaço, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the rider's token é blank, cancele.
+Se the rider's token é the semi-colon pedaço, cancele. \ *** alternate wordings
+Se the rider's token é the colon pedaço, cancele.
+Se the rider's token é the period pedaço, cancele.
 Put the rider's token's last into the routine header's last.
 Move the rider (compiler rules).
 Repeat.
 
 Etapas necessárias para que se scan um source file:
-Se the source file é nil, exit.
-Se the compiler's abort flag estiver verde, exit.
+Se the source file é nil, cancele.
+Se the compiler's abort flag estiver verde, cancele.
 Slap um rider on the source file's buffer.
 Move the rider (compiler rules).
 Loop.
-Se the compiler's abort flag estiver verde, exit.
-Se the rider's token é blank, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the rider's token é blank, cancele.
 Se the rider's token é the start of any type, scan um type given the rider; repeat.
 Se the rider's token é the start of any global, scan um global given the rider; repeat.
 Se the rider's token é the start of any routine, scan um routine given the rider; repeat.
@@ -5401,14 +5402,14 @@ Abort with "Faltou definir melhor o que é o '" then the rider's token then "'." 
 Repeat.
 
 Etapas necessárias para que se scan some source files:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um source file from the source files.
-Se the source file é nil, exit.
+Se the source file é nil, cancele.
 Scan the source file.
 Repeat.
 
 Etapas necessárias para que se scan um type given um rider:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Se the rider's token é any portuguese indefinite article, set um portuguese flag.
 Se the rider's token é any english indefinite article, set um english flag.
 Adicione the type to the types given the rider's token's first.
@@ -5435,7 +5436,7 @@ Move the rider (compiler rules).
 Index the type.
 
 Etapas necessárias para que se scan um type given um rider (has or have):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Move the rider (compiler rules).
 Put "conjunto" into the type's base name. \\mudar aqui
 Scan the type's fields given the rider.
@@ -5444,7 +5445,7 @@ Move the rider (compiler rules).
 Index the type.
 
 Etapas necessárias para que se scan um type given um rider (unit of measure):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Convert the rider's token to the type's scale.
 Se the type's scale é 0, abort with "Zero é um tipo de escala inválido." e the type's locus; exit.
 Move the rider (compiler rules).
@@ -5459,7 +5460,7 @@ An scratch é um local.
 
 Etapas necessárias para que se scrub um index:
 Get um bucket given the index.
-Se the bucket é nil, exit.
+Se the bucket é nil, cancele.
 Se the bucket's refers are empty, repeat.
 Scrub the bucket's refers.
 Repeat.
@@ -5468,18 +5469,18 @@ Etapas necessárias para que se scrub some refers:
 Swap the refers with some other refers.
 Loop.
 Put the other refers' first into um refer.
-Se the refer é nil, exit.
+Se the refer é nil, cancele.
 Remove the refer from the other refers.
 Se the refer's endereço de memória é nil, destroy the refer; repeat.
 Append the refer to the refers.
 Repeat.
 
 Etapas necessárias para que se set the compiled flag in um variable:
-Se the variable é nil, exit.
-Se the variable's compiled flag estiver verde, exit.
+Se the variable é nil, cancele.
+Se the variable's compiled flag estiver verde, cancele.
 Set the variable's compiled flag.
-Se the variable's kind é not "global", exit.
-Se the variable's literal é nil, exit.
+Se the variable's kind é not "global", cancele.
+Se the variable's literal é nil, cancele.
 Find um routine given "put" e the variable's literal's type e "into" e the variable's type.
 Se the routine é nil, find the routine given "convert" e the variable's literal's type e "to" e the variable's type; set um flag.
 Se the routine é nil, abort with "O tipo dessa variável global e desse literal não são compatíveis." e the variable's locus; exit.
@@ -5488,14 +5489,14 @@ Se the flag estiver verde, put "convert the " then the variable's literal's name
 Se the flag estiver not verde, put "put the " then the variable's literal's name then " into the " then the variable's name then ". " into the variable's initializer string.
 
 Etapas necessárias para que se skip to the next word in um substring:
-Se the substring é blank, exit.
+Se the substring é blank, cancele.
 Se the substring's first's target é noise, break.
 Adicione 1 to the substring's first.
 Repeat.
 Skip any leading noise in the substring.
 
 Etapas necessárias para que se skip to the previous word in um substring:
-Se the substring é blank, exit.
+Se the substring é blank, cancele.
 Se the substring's last's target é noise, break.
 Subtract 1 from the substring's last.
 Repeat.
@@ -5510,8 +5511,8 @@ An tag é um número.
 An term é um conjunto with um variable e um phrase.
 
 Etapas necessárias para que se transmogrify um fragment:
-Se the compiler's abort flag estiver verde, exit.
-Se the fragment é nil, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the fragment é nil, cancele.
 Se the fragment's tag é the push address tag, transmogrify the fragment (push address); exit.
 Se the fragment's tag é the call internal tag, transmogrify the fragment (call internal); exit.
 Se the fragment's tag é the load address tag, transmogrify the fragment (load address); exit.
@@ -5643,22 +5644,22 @@ Se the length é 1, attach $8802 to the fragment's code; exit. \ mov [edx],al
 Abort with "Erro interno 3 - transmogrify um fragment (save eax)".
 
 Etapas necessárias para que se transmogrify some fragments:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um fragment from the fragments.
-Se the fragment é nil, exit.
+Se the fragment é nil, cancele.
 Transmogrify the fragment.
 Repeat.
 
 Etapas necessárias para que se transmogrify um routine:
-Se the compiler's abort flag estiver verde, exit.
-Se the routine é nil, exit.
-Se the routine's employs moniker é not blank, exit.
-Se the routine's compiled flag estiver not verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
+Se the routine é nil, cancele.
+Se the routine's employs moniker é not blank, cancele.
+Se the routine's compiled flag estiver not verde, cancele.
 Put the routine into the current routine.
 Transmogrify the routine's fragments.
 
 Etapas necessárias para que se transmogrify some routines:
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Get um routine from the routines.
 Se the routine é nil, break.
 Transmogrify the routine.
@@ -5706,8 +5707,8 @@ An texto hexadecimal called data [literals only].
 The writing timer é um timer.
 
 Etapas necessárias para que se skip any trailing noise in um substring:
-Se the substring é blank, exit.
-Se the substring's last's target é not noise, exit.
+Se the substring é blank, cancele.
+Se the substring's last's target é not noise, cancele.
 Subtract 1 from the substring's last.
 Repeat.
 
@@ -5715,7 +5716,7 @@ Repeat.
 \ to put the xxx uv a/the yyy into zzz
 \ internally we turn this into "to put a/the yyy's xxx into zzz"
 Etapas necessárias para que se compile the header of um routine given um rider (reverse-possessive function):
-Se the compiler's abort flag estiver verde, exit.
+Se the compiler's abort flag estiver verde, cancele.
 Set the routine's function flag.
 Adicione um monikette to the routine's monikettes given "put".
 Move the rider (compiler rules). \ skip "put" or "poner"
