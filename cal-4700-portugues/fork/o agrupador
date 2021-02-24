@@ -1,4 +1,4 @@
-\ the compiler (el compilador) copyright © 2006, 2017, 2018 the osmosian order y Pablo Cayuela (SAL-1016)
+\ the compiler (el compilador) copyright © 2006-2021 the osmosian order
 
 \ firstparam=esp+4/ebp+8, secondparam=esp+8/ebp+12, etc...
 
@@ -139,7 +139,7 @@ Etapas necessárias para que se adicione um entry to some imports usando um impor
 Find um import usando the import name.
 Se the import for inexistente, adicione the import to the imports usando the import name.
 Find the entry usando the entry name e the import's entries.
-Se the entry for not inexistente, cancele.
+Se the entry não for inexistente, cancele.
 Create the entry.
 Posponha the entry to the import's entries.
 Coloque the entry name into the entry's name.
@@ -257,7 +257,7 @@ Create the monikette.
 Posponha the monikette to the monikettes.
 Coloque the expression's phrase into the monikette's string.
 Coloque the expression's variable into the monikette's variable.
-Se the expression's variable for not inexistente, coloque the expression's type into the monikette's type.
+Se the expression's variable não for inexistente, coloque the expression's type into the monikette's type.
 
 \# Unifica o sentido de diferentes termos usados em proposições, verbos e conjunções.
 Etapas necessárias para que se adicione um monikette to some monikettes usando um string:
@@ -286,6 +286,8 @@ Se the string for "é", coloque "is/are" into the monikette's string; exit.
 Se the string for "está", coloque "is/are" into the monikette's string; exit.
 Se the string for "for", coloque "is/are" into the monikette's string; exit. 
 Se the string for "estiver", coloque "is/are" into the monikette's string; exit.
+\Se the string for "tem", coloque "is/are" into the monikette's string; exit.
+Se the string for "tiver", coloque "is/are" into the monikette's string; exit.
 Se the string for "are", coloque "is/are" into the monikette's string; exit.
 Se the string for "são", coloque "is/are" into the monikette's string; exit.
 Se the string for "estão", coloque "is/are" into the monikette's string; exit.
@@ -360,7 +362,7 @@ Adicione um fragment usando the push address tag e the other variable.
 Adicione another fragment usando the push address tag e the variable.
 Find um routine usando "coloque" e the variable's type e "into" e the other variable's type.
 Se the routine for inexistente, find the routine usando "convert" e the variable's type e "to" e the other variable's type.
-Se the routine for not inexistente, adicione um third fragment usando the call internal tag e the routine; exit.
+Se the routine não for inexistente, adicione um third fragment usando the call internal tag e the routine; exit.
 \ error message
 Adicione um monikette to some monikettes usando "coloque/convert".
 Adicione another monikette to the monikettes usando the variable's type.
@@ -496,7 +498,7 @@ Adicione 6 to the address.
 
 Etapas necessárias para que se address um fragment usando um address (prolog):
 Adicione 3 to the address.
-Se the current routine's local size for not 0, adicione 10 to the address.
+Se the current routine's local size não for 0, adicione 10 to the address.
 Se the current routine's callback sinal estiver verde, adicione 3 to the address.
 
 Etapas necessárias para que se address um fragment usando um address (push value):
@@ -628,14 +630,14 @@ Repeat.
 Etapas necessárias para que se posponha um monikette to um moniker:
 Se the monikette for inexistente, cancele.
 Se the moniker estiver not blank, posponha the space pedaço to the moniker.
-Se the monikette's type for not inexistente, posponha "[" e the monikette's type's name e "]" to the moniker (fast); exit.
+Se the monikette's type não for inexistente, posponha "[" e the monikette's type's name e "]" to the moniker (fast); exit.
 Se the monikette's string estiver not blank, posponha the monikette's string to the moniker; exit.
 
 Etapas necessárias para que se posponha um monikette to um moniker (while bubbling):
 Se the monikette for inexistente, cancele.
 Se the moniker estiver not blank, posponha the space pedaço to the moniker.
 Se the monikette's current substring estiver not blank, posponha the monikette's current substring to the moniker; exit.
-Se the monikette's current type for not inexistente, posponha "[" e the monikette's current type's name e "]" to the moniker (fast); exit.
+Se the monikette's current type não for inexistente, posponha "[" e the monikette's current type's name e "]" to the moniker (fast); exit.
 
 Etapas necessárias para que se posponha um número to um buffer (as hex with separator):
 Convert the número to um nibble string.
@@ -827,7 +829,7 @@ Se the variable's kind for "global", attach $C7C2 e the variable's address to th
 Se the variable's kind for "literal", attach $C7C2 e the variable's address to the texto hexadecimal; exit. \ mov edx,the variable's address
 Se the variable's kind for "local", attach $8D95 e the variable's offset to the texto hexadecimal; exit. \ lea edx,[ebp+the variable's offset]
 Se the variable's kind for "scratch", attach $8B95 e the variable's offset to the texto hexadecimal; exit. \ mov edx,[ebp+the variable's offset]
-Se the variable's kind for not "parameter", abort with "Erro interno - attach address loading code to um texto hexadecimal usando um variable"; exit.
+Se the variable's kind não for "parameter", abort with "Erro interno - attach address loading code to um texto hexadecimal usando um variable"; exit.
 Se the variable's by-value sinal estiver verde, attach $8D95 e the variable's offset to the texto hexadecimal; exit. \ lea edx,[ebp+the variable's offset]
 Attach $8B95 e the variable's offset to the texto hexadecimal. \ mov edx,[ebp+the variable's offset]
 
@@ -930,8 +932,8 @@ Adicione um prototype string's magnitude to the other address.
 Adicione the image base to the other address.
 Coloque 0 into the prototype string's first.
 Coloque -1 into the prototype string's last.
-Se the length for not 0, coloque the other address into the prototype string's first.
-Se the length for not 0, coloque the prototype string's first plus the length minus 1 into the prototype string's last.
+Se the length não for 0, coloque the other address into the prototype string's first.
+Se the length não for 0, coloque the prototype string's first plus the length minus 1 into the prototype string's last.
 Blurt pedaços usando the prototype string's whereabouts e the prototype string's magnitude e the buffer e the address.
 Adicione the prototype string's magnitude to the address.
 Blurt the variable's data into the buffer at the address.
@@ -957,7 +959,7 @@ An built-in type é um type.
 
 Etapas necessárias para que se calculate the length of um type:
 Se the type for inexistente, cancele.
-Se the type's length for not -1, cancele.
+Se the type's length não for -1, cancele.
 Calculate the length of the type's base type.
 Se the type's fields are empty, coloque the type's base type's length into the type's length; exit.
 Coloque 0 into the type's length.
@@ -1028,7 +1030,7 @@ Se the compiler's sinal de alerta estiver presente, cancele.
 Se the type for inexistente, cancele.
 Se the type's target name estiver not blank, check por invalid optional info on the type (target).
 Se the type's fields are not empty, check por invalid optional info on the type (fields).
-Se the type's scale for not 0, check por invalid optional info on the type (scale).
+Se the type's scale não for 0, check por invalid optional info on the type (scale).
 
 Etapas necessárias para que se check por invalid optional info on um type (fields):
 Se the compiler's sinal de alerta estiver presente, cancele.
@@ -1062,7 +1064,7 @@ Se the compiler's sinal de alerta estiver presente, cancele.
 Se the routine's compiled sinal estiver verde, cancele.
 Abra the routine's compiled sinal.
 Slap um rider on the routine's routine body.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Se the rider's token é the semi-colon pedaço, compile the body of the routine usando the rider (alternate wording); exit. \ *** alternate wording
 Se the rider's token é any employ, compile the body of the routine usando the rider (employ); exit.
 Coloque the current routine into um saved routine.
@@ -1108,7 +1110,7 @@ Compile the body of the routine.
 
 Etapas necessárias para que se compile the body of um routine usando um rider (alternate wording): \ *** alternate wording
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules). \ *** do we need this?
+Mova the rider (compiler rules). \ *** do we need this?
 Coloque the routine's next into um target routine.
 Se the target routine for inexistente, abort with "Você definiu uma palavra alternativa aqui, mas eu não tenho certeza pra que ela serve." e the rider; exit.
 Coloque the target routine's moniker into the routine's employs moniker.
@@ -1116,12 +1118,12 @@ Compile the body of the target routine.
 
 Etapas necessárias para que se compile the body of um routine usando um rider (employ):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile um routine reference usando the rider.
 Convert the routine reference to the routine's employs moniker.
 Destroy the routine reference.
-Se the rider's token for not ".", abort with "Employ statments devem terminar com um ponto, não com '" then the rider's token then "'." e the rider; exit.
-Move the rider (compiler rules).
+Se the rider's token não for ".", abort with "Employ statments devem terminar com um ponto, não com '" then the rider's token then "'." e the rider; exit.
+Mova the rider (compiler rules).
 Se the rider's token estiver not blank, abort with "Somente um employ" e the rider; exit.
 Find another routine usando the routine's employs moniker e the routine index.
 Se the other routine for inexistente, abort with "Não consigo encontrar um rotina '" then the routine's employs moniker then "' que você está tentando empregar." e the routine's locus; exit.
@@ -1131,7 +1133,7 @@ Etapas necessárias para que se compile the call'd part usando um rider e um vari
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the variable for inexistente, cancele.
 Coloque the variable's name into the variable's type name.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan the variable's name usando the rider.
 
 Etapas necessárias para que se compile um directory:
@@ -1286,7 +1288,7 @@ Etapas necessárias para que se compile um directory (write the exe):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Show status "Gerando arquivo executável...".
 Start the writing timer.
-Write the compiler's exe to the compiler's exe path.
+Escreva the compiler's exe to the compiler's exe path.
 Se the i/o error estiver not blank, abort with the i/o error.
 Stop the writing timer.
 
@@ -1296,7 +1298,7 @@ Compile um term usando the rider.
 Coloque the term into the expression.
 Loop.
 Se the compiler's sinal de alerta estiver presente, cancele.
-Se the rider's token for not any operator, cancele.
+Se the rider's token não for any operator, cancele.
 Se the rider's token é any divided, compile the expression usando the rider (divided); repeat.
 Se the rider's token é any minus, compile the expression usando the rider (minus); repeat.
 Se the rider's token é any plus, compile the expression usando the rider (plus); repeat.
@@ -1305,10 +1307,10 @@ Se the rider's token é any times, compile the expression usando the rider (times
 
 Etapas necessárias para que se compile um expression usando um rider (divided):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
-Se the rider's token for not any by, abort with "Você deve usar o termo 'divided BY'." e the rider; exit.
+Mova the rider (compiler rules).
+Se the rider's token não for any by, abort with "Você deve usar o termo 'divided BY'." e the rider; exit.
 Se the expression's variable for inexistente, abort with "Termo 'divided by' inválido, há um erro na variável: '" then the expression's phrase then "'." e the rider; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile um term usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the term's variable for inexistente, abort with "O seu 'divided by',está errado. Não dá pra dividir por '" then the term's phrase then "'." e the rider; exit.
@@ -1321,7 +1323,7 @@ Limpe the expression's phrase.
 Etapas necessárias para que se compile um expression usando um rider (minus):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the expression's variable for inexistente, abort with "O seu 'minus', está errado. Não consigo subtrair o(a) '" then the expression's phrase then "'." e the rider; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile um term usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the term's variable for inexistente, abort with "O seu 'minus', está errado. Não consigo diminuir do(a) '" then the term's phrase then "'." e the rider; exit.
@@ -1334,7 +1336,7 @@ Limpe the expression's phrase.
 Etapas necessárias para que se compile um expression usando um rider (plus):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the expression's variable for inexistente, abort with "O seu 'plus', está errado. Não consigo somar o '" then the expression's phrase then "'." e the rider; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile um term usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the term's variable for inexistente, abort with "O seu 'plus',  está errado. Não consigo somar um '" then the term's phrase then "'." e the rider; exit.
@@ -1347,7 +1349,7 @@ Limpe the expression's phrase.
 Etapas necessárias para que se compile um expression usando um rider (then):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the expression's variable for inexistente, abort with "O seu 'then', está errado. Eu não entendi o que é o(a) '" then the expression's phrase then "'." e the rider; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile um term usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the term's variable for inexistente, abort with "O seu 'then', está errado. Eu não sei o que é o(a) '" then the term's phrase then "'." e the rider; exit.
@@ -1361,7 +1363,7 @@ Limpe the expression's phrase.
 Etapas necessárias para que se compile um expression usando um rider (times):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the expression's variable for inexistente, abort with "O seu 'times', está errado. Eu não sei como multiplicar o '" then the expression's phrase then "'." e the rider; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile um term usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the term's variable for inexistente, abort with "O seu 'times', está errado. Eu não sei como multiplicar um '" then the term's phrase then "'." e the rider; exit.
@@ -1375,7 +1377,7 @@ Etapas necessárias para que se compile the header of um routine:
 Se the routine for inexistente, cancele.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Slap um rider on the routine's routine header.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Se the rider's token é any decide, compile the header of the routine usando the rider (decider); exit.
 Se the rider é the start of any reverse-possessive function, compile the header of the routine usando the rider (reverse-possessive function); exit.
 Se the rider é the start of any function, compile the header of the routine usando the rider (function); exit.
@@ -1384,7 +1386,7 @@ Compile the header of the routine usando the rider (procedure).
 
 Etapas necessárias para que se compile the header of um routine usando um rider (callback):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Abra the routine's callback sinal.
 Compile the routine's monikettes e the routine's parameters usando the rider.
 Convert the routine's monikettes to the routine's moniker.
@@ -1393,9 +1395,9 @@ Catalogue the routine usando the routine's monikettes e the routine index.
 
 Etapas necessárias para que se compile the header of um routine usando um rider (decider):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
-Se the rider's token for not any conditional, abort with "It's 'Decide IF.' Sempre dizemos, 'Decide IF'. Certo?" e the rider; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
+Se the rider's token não for any conditional, abort with "It's 'Decide IF.' Sempre dizemos, 'Decide IF'. Certo?" e the rider; exit.
+Mova the rider (compiler rules).
 Abra the routine's decider sinal.
 Compile the routine's monikettes e the routine's parameters usando the rider.
 Se any of the routine's monikettes are negative words, abort with "Não consigo me dar bem com palavras negativas nos decider names." e the rider; exit.
@@ -1407,21 +1409,21 @@ Etapas necessárias para que se compile the header of um routine usando um rider 
 Se the compiler's sinal de alerta estiver presente, cancele.
 Abra the routine's function sinal.
 Adicione um monikette to the routine's monikettes usando "coloque".
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Se the rider's token é any indefinite article, abra um sinal.
 Se the sinal estiver verde, compile the routine's monikettes e the routine's parameters usando the rider (indefinite article).
 Se the sinal estiver not verde, compile the routine's monikettes e the routine's parameters usando the rider (definite article).
-Se the rider's token for not any possessive, abort with "Tá faltando um 's por aqui (ou está no lugar errado)." e the rider; exit. \ not translated - no possessives in Spanish
-Move the rider (compiler rules).
+Se the rider's token não for any possessive, abort with "Tá faltando um 's por aqui (ou está no lugar errado)." e the rider; exit. \ not translated - no possessives in Spanish
+Mova the rider (compiler rules).
 Scan um name usando the rider.
 Adicione another monikette to the routine's monikettes usando "'s " then the name.
-Se the rider's token for not "into", abort with "Eu estava esperando um palavra 'into', mas encontrei um palavra '" then the rider's token then "'." e the rider; exit. \ not translated - no possessives in Spanish
+Se the rider's token não for "into", abort with "Eu estava esperando um palavra 'into', mas encontrei um palavra '" then the rider's token then "'." e the rider; exit. \ not translated - no possessives in Spanish
 Adicione um third monikette to the routine's monikettes usando "into".
 Convert the routine's monikettes to um moniker.
 Se the moniker estiver in the routine index, abort with "Eu já sei como '" then the moniker then "'." e the routine's locus; exit. \ not translated - no possessives in Spanish
 Catalogue the routine usando the routine's monikettes e the routine index.
-Move the rider (compiler rules).
-Se the rider's token for not any indefinite article, abort with "Estava esperando um artigo indefinido, mas achei isso aqui: '" then the rider's token then "'." e the rider; exit. \ not translated - no possessives in Spanish
+Mova the rider (compiler rules).
+Se the rider's token não for any indefinite article, abort with "Estava esperando um artigo indefinido, mas achei isso aqui: '" then the rider's token then "'." e the rider; exit. \ not translated - no possessives in Spanish
 Compile the routine's monikettes e the routine's parameters usando the rider (indefinite article).
 Se the rider's token estiver not blank, abort with "Tem comandos extras no fim dessa função." e the rider; exit. \ not translated - no possessives in Spanish
 Convert the routine's monikettes to the routine's moniker.
@@ -1455,7 +1457,7 @@ Etapas necessárias para que se compile um literal usando um rider (sinal):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Convert the rider's token to um sinal.
 Convert the sinal to the literal's data.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Coloque "sinal" into the literal's type name.
 Resolve the literal.
 
@@ -1464,7 +1466,7 @@ Se the compiler's sinal de alerta estiver presente, cancele.
 Coloque the rider's token into um nibble substring.
 Adicione 1 to the nibble substring's first.
 Convert the nibble substring to the literal's data.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Coloque "texto hexadecimal" into the literal's type name.
 Resolve the literal.
 
@@ -1472,7 +1474,7 @@ Etapas necessárias para que se compile um literal usando um rider (numeric - int
 Se the compiler's sinal de alerta estiver presente, cancele.
 Convert the rider's token to um número.
 Convert the número to the literal's data.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Coloque "número" into the literal's type name.
 Resolve the literal.
 
@@ -1480,14 +1482,14 @@ Etapas necessárias para que se compile um literal usando um rider (numeric - rat
 Se the compiler's sinal de alerta estiver presente, cancele.
 Convert the rider's token to um ratio.
 Convert the ratio to the literal's data.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Coloque "ratio" into the literal's type name.
 Resolve the literal.
 
 Etapas necessárias para que se compile um literal usando um rider (numeric - with unit of measure):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Convert the rider's token to um ratio.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan um name usando the rider.
 Find um type usando the name e the type index.
 Se the type for inexistente, abort with "'" then the name then "' é uma unidade de medida inexistente." e the literal's locus; exit.
@@ -1512,7 +1514,7 @@ Se the rider's token é any mixed literal, compile the literal usando the rider (
 Etapas necessárias para que se compile um literal usando um rider (endereço de memória):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Convert 0 to the literal's data. \ was nil
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Coloque "endereço de memória" into the literal's type name.
 Resolve the literal.
 
@@ -1520,7 +1522,7 @@ Etapas necessárias para que se compile um literal usando um rider (string):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Coloque the rider's token into the literal's data.
 Unquote the literal's data.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Coloque "string" into the literal's type name.
 Resolve the literal.
 
@@ -1534,7 +1536,7 @@ Abort with "'" then the rider's token then "' não é um nome de função que eu con
 
 Etapas necessárias para que se compile some monikettes e some parameters usando um rider (definite article):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan um name usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Anteponha "the " to the name.
@@ -1548,7 +1550,7 @@ Se the rider's token for "outra", coloque "segunda" into the parameter's name.
 Se the rider's token for "outro", coloque "segundo" into the parameter's name.
 \CAL
 Se the rider's token for "another", coloque "other" into the parameter's name.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan um name usando the rider.
 Extend the parameter's name with the name.
 Se the rider's token é any called, compile the call'd part usando the rider e the parameter.
@@ -1559,12 +1561,12 @@ Adicione um monikette to the monikettes usando the parameter's type.
 Etapas necessárias para que se compile some monikettes e some parameters usando um rider (monikette string):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Adicione um monikette to the monikettes usando the rider's token.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 
 Etapas necessárias para que se compile some monikettes usando um rider:
 Se the compiler's sinal de alerta estiver presente, cancele.
-Se the rider está on any monikette string, adicione um monikette to the monikettes usando the rider's token; move the rider (compiler rules); repeat.
-Se the rider's token for not the start of any expression, cancele.
+Se the rider está on any monikette string, adicione um monikette to the monikettes usando the rider's token; mova the rider (compiler rules); repeat.
+Se the rider's token não for the start of any expression, cancele.
 Compile um expression usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Adicione another monikette to the monikettes usando the expression.
@@ -1572,8 +1574,8 @@ Repeat.
 
 \Etapas necessárias para que se compile some monikettes usando um rider:
 \Se the compiler's sinal de alerta estiver presente, cancele.
-\Se the rider's token é any monikette string, adicione um monikette to the monikettes usando the rider's token; move the rider (compiler rules); repeat.
-\Se the rider's token for not the start of any expression, cancele.
+\Se the rider's token é any monikette string, adicione um monikette to the monikettes usando the rider's token; mova the rider (compiler rules); repeat.
+\Se the rider's token não for the start of any expression, cancele.
 \Compile um expression usando the rider.
 \Se the compiler's sinal de alerta estiver presente, cancele.
 \Adicione another monikette to the monikettes usando the expression.
@@ -1584,23 +1586,23 @@ Se the compiler's sinal de alerta estiver presente, cancele.
 Se the rider's token é any conditional, compile the next statement usando the rider (if); exit.
 Se the rider's token é any loop, compile the next statement usando the rider (loop); exit.
 Se the rider's token é any privatize, compile the next statement usando the rider (privatize); exit.
-Se the rider's token for not the start of any statement, abort with "Eu esperava uma declaração aqui, mas encontrei: '" then the rider's token then "'." e the rider; exit.
+Se the rider's token não for the start of any statement, abort with "Eu esperava uma declaração aqui, mas encontrei: '" then the rider's token then "'." e the rider; exit.
 Compile the next statement usando the rider (other).
-Se the rider's token for not the period pedaço, abort with "Acho que tá faltando um pontinho por aqui." e the rider; exit.
-Move the rider (compiler rules).
+Se the rider's token não for the period pedaço, abort with "Acho que tá faltando um pontinho por aqui." e the rider; exit.
+Mova the rider (compiler rules).
 
 Etapas necessárias para que se compile the next statement usando um rider (break):
 Adicione um fragment usando the break tag.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 
 Etapas necessárias para que se compile the next statement usando um rider (call - external):
 Coloque the rider's token into um string.
 Unquote the string.
-Move the rider (compiler rules).
-Se the rider's token for not any string literal, abort with "Cara, você precisa colocar os nomes entre aspas, mas você colocou '" then the rider's token then "'." e the rider; exit.
+Mova the rider (compiler rules).
+Se the rider's token não for any string literal, abort with "Cara, você precisa colocar os nomes entre aspas, mas você colocou '" then the rider's token then "'." e the rider; exit.
 Coloque the rider's token into another string.
 Unquote the other string.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Adicione um entry to the imports usando the string e the other string.
 Se the rider's token for "with", compile the next statement usando the rider (call - with clause).
 Se the rider's token for "returning", compile the next statement usando the rider returning um term (call - returning part).
@@ -1624,8 +1626,8 @@ Adicione another fragment usando the save eax tag e the term's variable.
 Etapas necessárias para que se compile the next statement usando um rider (call - internal):
 Compile some monikettes usando the rider.
 Find um routine usando the monikettes.
-Se the routine for not inexistente, adicione push fragments usando the monikettes.
-Se the routine for not inexistente, destroy the monikettes; adicione um fragment usando the call internal tag e the routine; exit.
+Se the routine não for inexistente, adicione push fragments usando the monikettes.
+Se the routine não for inexistente, destroy the monikettes; adicione um fragment usando the call internal tag e the routine; exit.
 Convert the monikettes to um moniker.
 Destroy the monikettes.
 \Coloque "Eu ainda não aprendi como"  into a reply.
@@ -1636,64 +1638,64 @@ Abort with "Eu ainda não aprendi como '" then the moniker then "'." e the rider.
 
 Etapas necessárias para que se compile the next statement usando um rider (call - with clause): \ this guy é recursise so parameters obtenha passed right to left
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile um expression usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the expression's variable for inexistente, abort with "Eu não entendo um variável: '" then the expression's phrase then "'." e the rider; exit.
-Se the expression's type for not value pushable, abort with "'" then the expression's type's name then "' não pode ser processado corretamente." e the rider; exit.
+Se the expression's type não for value pushable, abort with "'" then the expression's type's name then "' não pode ser processado corretamente." e the rider; exit.
 Se the rider's token é any and, compile the next statement usando the rider (call - with clause).
 Adicione um fragment usando the push value tag e the expression's variable.
 
 Etapas necessárias para que se compile the next statement usando um rider (call):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Se the rider's token é any string literal, compile the next statement usando the rider (call - external); exit.
 Compile the next statement usando the rider (call - indirect).  
 
 Etapas necessárias para que se compile the next statement usando um rider (exit):
 Se the current routine's decider sinal estiver verde, abort with "O que a palvra 'exit' significa aqui? Sim? Não? Talvez?" e the rider; exit.
 Adicione um fragment usando the exit tag.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 
 Etapas necessárias para que se compile the next statement usando um rider (if):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile some monikettes usando the rider.
 Remove any negatives from the monikettes returning um sinal.
 Find um routine usando the monikettes.
-Se the routine for not inexistente, adicione push fragments usando the monikettes.
+Se the routine não for inexistente, adicione push fragments usando the monikettes.
 Se the routine for inexistente, convert the monikettes to um moniker.
 Destroy the monikettes.
 Se the routine for inexistente, abort with "Preciso de um decider que tenha como palavras: '" then the moniker then "'." e the rider; exit.
 Se the routine's decider sinal estiver not verde, abort with "Cara eu vou precisar de um decider aqui, blz?" e the rider; exit.
-Se the rider's token for not the comma pedaço, abort with "Acho que você esqueceu de uma vírgula, eu achei isso aqui: '" then the rider's token then "'." e the rider; exit.
+Se the rider's token não for the comma pedaço, abort with "Acho que você esqueceu de uma vírgula, eu achei isso aqui: '" then the rider's token then "'." e the rider; exit.
 Adicione um fragment usando the call internal tag e the routine.
 Se the sinal estiver verde, adicione another fragment usando the not tag.
 Adicione um third fragment usando the jump false tag.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Loop.
 Compile the next statement usando the rider (other).
 Se the compiler's sinal de alerta estiver presente, cancele.
-Se the rider's token é the semi-colon pedaço, move the rider (compiler rules); repeat.
-Se the rider's token for not the period pedaço, abort with "Você precisa usar um ponto ao invés de usar o termo '" then the rider's token then "'." e the rider; exit.
-Move the rider (compiler rules).
+Se the rider's token é the semi-colon pedaço, mova the rider (compiler rules); repeat.
+Se the rider's token não for the period pedaço, abort with "Você precisa usar um ponto ao invés de usar o termo '" then the rider's token then "'." e the rider; exit.
+Mova the rider (compiler rules).
 Adicione um fourth fragment usando the end if tag.
 
 Etapas necessárias para que se compile the next statement usando um rider (intel):
-Move the rider (compiler rules).
-Se the rider's token for not any hex literal, abort with "Eu preciso de um pouco de machine code, mas o que eu achei foi '" then the rider's token then "'." e the rider; exit.
+Mova the rider (compiler rules).
+Se the rider's token não for any hex literal, abort with "Eu preciso de um pouco de machine code, mas o que eu achei foi '" then the rider's token then "'." e the rider; exit.
 Adicione um fragment usando the intel tag.
 Coloque the rider's token into um nibble substring.
 Adicione 1 to the nibble substring's first.
 Convert the nibble substring to the fragment's code.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 
 Etapas necessárias para que se compile the next statement usando um rider (loop):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Adicione um fragment usando the loop tag.
-Move the rider (compiler rules).
-Se the rider's token for not the period pedaço, abort with "Parece que alguém esqueceu de colocar um ponto por aí." e the rider; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
+Se the rider's token não for the period pedaço, abort with "Parece que alguém esqueceu de colocar um ponto por aí." e the rider; exit.
+Mova the rider (compiler rules).
 
 Etapas necessárias para que se compile the next statement usando um rider (other):
 Se the compiler's sinal de alerta estiver presente, cancele.
@@ -1713,16 +1715,16 @@ Se the rider's token é any employ, abort with "'Empregue' deve ser o único imper
 Compile the next statement usando the rider (call - internal).
 
 Etapas necessárias para que se compile the next statement usando um rider (point):
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile um term usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the term's variable for inexistente, abort with "Acho que o termo '" then the term's phrase then "' está vazio." e the rider; exit.
 Se the term's kind for "literal", abort with "Você usou o tipo errado de variável aqui (literal)." e the rider.
-Se the term's type's length for not 4, abort with "Você usou uma variável de comprimento errado (<>4)." e the rider.
-Se the rider's token for not "to", abort with "Acho que faltou um 'to', mas você usou '" then the rider's token then "'." e the rider; exit.
-Move the rider (compiler rules).
-Se the rider's token for not "routine", abort with "Acho que faltou a palavra 'routine'. Você usou o termo '" then the rider's token then "'." e the rider; exit.
-Move the rider (compiler rules).
+Se the term's type's length não for 4, abort with "Você usou uma variável de comprimento errado (<>4)." e the rider.
+Se the rider's token não for "to", abort with "Acho que faltou um 'to', mas você usou '" then the rider's token then "'." e the rider; exit.
+Mova the rider (compiler rules).
+Se the rider's token não for "routine", abort with "Acho que faltou a palavra 'routine'. Você usou o termo '" then the rider's token then "'." e the rider; exit.
+Mova the rider (compiler rules).
 Compile um routine reference usando the rider.
 Convert the routine reference to um moniker.
 Destroy the routine reference.
@@ -1733,11 +1735,11 @@ Coloque the term's variable into the fragment's variable.
 
 Etapas necessárias para que se compile the next statement usando um rider (privatize):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile um term usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the term's variable for inexistente, abort with "Comando 'privatize', Inválido. Eu acho que o termo da variável '" then the term's phrase then "' está vazio." e the rider; exit.
-Se the term's kind for not "parameter", abort with "Você só pode privatizar parâmetros." e the rider; exit.
+Se the term's kind não for "parameter", abort with "Você só pode privatizar parâmetros." e the rider; exit.
 Adicione um local to the current routine's locals usando "local" e the rider's token's first.
 Coloque the term's name into the local's name.
 Coloque the term's nickname into the local's nickname.
@@ -1746,25 +1748,25 @@ Resolve the local.
 Anteponha "original " to the term's name.
 Se the term's nickname estiver not blank, Anteponha "original " to the term's nickname.
 Adicione several fragments usando "coloque" e the term's variable e "into" e the local e the rider's token's first.
-Se the rider's token for not the period pedaço, abort with "Você vive esquecendo dos pontos né?." e the rider; exit.
-Move the rider (compiler rules).
+Se the rider's token não for the period pedaço, abort with "Você vive esquecendo dos pontos né?." e the rider; exit.
+Mova the rider (compiler rules).
 
 Etapas necessárias para que se compile the next statement usando um rider (push):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile um expression usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the expression's variable for inexistente, abort with "Comando 'push' inválido, um expressão '" then the expression's phrase then "' parece estar vazia." e the rider; exit.
-Se the expression's type for not value pushable, abort with "Valores do tipo '" then the expression's type's name then "' não podem ser pushed." e the rider; exit.
+Se the expression's type não for value pushable, abort with "Valores do tipo '" then the expression's type's name then "' não podem ser pushed." e the rider; exit.
 Adicione um fragment usando the push value tag e the expression's variable.
 
 Etapas necessárias para que se compile the next statement usando um rider (repeat):
 Adicione um fragment usando the repeat tag.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 
 \Etapas necessárias para que se compile the next statement usando um rider (say):
 \Se the current routine's decider sinal estiver not verde, compile the next statement usando the rider (call - internal); exit.
-\Move the rider (compiler rules).
+\Mova the rider (compiler rules).
 \Compile um expression usando the rider.
 \Se the compiler's sinal de alerta estiver presente, cancele.
 \Se the expression's variable for inexistente, abort with "No es válido este 'diga', no entiendo la variable '" then the expression's phrase then "'." e the rider; exit.
@@ -1774,23 +1776,23 @@ Move the rider (compiler rules).
 
 Etapas necessárias para que se compile the next statement usando um rider (say):
 Se the current routine's decider sinal estiver not verde, compile the next statement usando the rider (call - internal); exit.
-Move the rider (compiler rules).
-Se the rider's token for not any decider literal, abort with "Você precisa terminar com um yes ou no." e the rider; exit.
+Mova the rider (compiler rules).
+Se the rider's token não for any decider literal, abort with "Você precisa terminar com um yes ou no." e the rider; exit.
 Feche um sinal. Se the rider's token é any positive decider literal, abra the sinal.
-Move the rider (compiler rules).
-Se the rider's token for not the period pedaço, abort with "Faltou um ponto. Você usou o termo: '" then the rider's token then "'." e the rider; exit.
+Mova the rider (compiler rules).
+Se the rider's token não for the period pedaço, abort with "Faltou um ponto. Você usou o termo: '" then the rider's token then "'." e the rider; exit.
 Adicione um fragment usando the load eax tag e the sinal.
 Adicione another fragment usando the exit tag.
 
 Etapas necessárias para que se compile the next statement usando um rider returning um term (call - returning part):
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile the term usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the term's variable for inexistente, abort with "Eu não compreendi o termo da variável '" then the term's phrase then "'. Ela parece estar vazia." e the rider; exit.
-Se the term's type for not value pushable, abort with "Uma varíavel de 1, 2, ou 4-pedaços é necessária na 'returning' clause." e the rider.
+Se the term's type não for value pushable, abort with "Uma varíavel de 1, 2, ou 4-pedaços é necessária na 'returning' clause." e the rider.
 
 Etapas necessárias para que se compile um routine reference usando um rider:
-Se the rider's token for "to", move the rider (compiler rules).
+Se the rider's token for "to", mova the rider (compiler rules).
 Se the rider é the start of any function, compile the routine reference usando the rider (function); exit.
 Se the rider's token é any decide, compile the routine reference usando the rider (decide).
 Loop.
@@ -1803,13 +1805,13 @@ Se the rider está on any monikette string, compile the routine reference usando 
 Abort with "'" then the rider's token then "' não é válido em  um employ statement." e the rider.
 
 Etapas necessárias para que se compile um routine reference usando um rider (decide):
-Move the rider (compiler rules).
-Se the rider's token for not any conditional, abort with "Sempre use DECIDE IF, ao invés de apenas DECIDE com '" then the rider's token then "' logo em seguida." e the rider; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
+Se the rider's token não for any conditional, abort with "Sempre use DECIDE IF, ao invés de apenas DECIDE com '" then the rider's token then "' logo em seguida." e the rider; exit.
+Mova the rider (compiler rules).
 
 Etapas necessárias para que se compile um routine reference usando um rider (definite article):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan um name usando the rider.
 Anteponha "the " to the name.
 Adicione um monikette to the routine reference usando the name.
@@ -1817,23 +1819,23 @@ Adicione um monikette to the routine reference usando the name.
 Etapas necessárias para que se compile um routine reference usando um rider (function):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Adicione um monikette to the routine reference usando "coloque".
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Se the rider's token é any indefinite article, abra um sinal.
 Se the sinal estiver verde, compile the routine reference usando the rider (indefinite article).
 Se the sinal estiver not verde, compile the routine reference usando the rider (definite article).
-Se the rider's token for not any possessive, abort with "Eu estava esperando un 's, mas apareceu '" then the rider's token then "'." e the rider; exit. \ not translated - no possessives in Spanish
-Move the rider (compiler rules).
+Se the rider's token não for any possessive, abort with "Eu estava esperando un 's, mas apareceu '" then the rider's token then "'." e the rider; exit. \ not translated - no possessives in Spanish
+Mova the rider (compiler rules).
 Scan um name usando the rider.
 Adicione another monikette to the routine reference usando "'s " then the name.
-Se the rider's token for not "into", abort with "E estava esperando um palavra 'into', mas encontrei '" then the rider's token then "'." e the rider; exit. \ not translated - no possessives in Spanish
+Se the rider's token não for "into", abort with "E estava esperando um palavra 'into', mas encontrei '" then the rider's token then "'." e the rider; exit. \ not translated - no possessives in Spanish
 Adicione um third monikette to the routine reference usando "into".
-Move the rider (compiler rules).
-Se the rider's token for not any indefinite article, abort with "Eu estava esperando um artigo indefinido mas encontrei isso: '" then the rider's token then "'." e the rider; exit. \ not translated - no possessives in Spanish
+Mova the rider (compiler rules).
+Se the rider's token não for any indefinite article, abort with "Eu estava esperando um artigo indefinido mas encontrei isso: '" then the rider's token then "'." e the rider; exit. \ not translated - no possessives in Spanish
 Compile the routine reference usando the rider (indefinite article).
 
 Etapas necessárias para que se compile um routine reference usando um rider (indefinite article):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan um name usando the rider.
 Find um type e um nickname usando the name.
 Se the type for inexistente, abort with "Employ statement inválido, Eu não sei o que é '" then the name then "'." e the rider; exit.
@@ -1842,7 +1844,7 @@ Adicione um monikette to the routine reference usando the type.
 Etapas necessárias para que se compile um routine reference usando um rider (monikette string):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Adicione um monikette to the routine reference usando the rider's token.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 
 Etapas necessárias para que se compile um term usando um rider:
 Limpe the term.
@@ -1860,9 +1862,9 @@ Se the rider's token for "/", compile the term usando the rider (runtime ratio).
 Etapas necessárias para que se compile um term usando um rider (as part):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the term's variable for inexistente, abort with "Comando 'as'inválido. Eu acho que um variável '" then the term's phrase then "' está vaiza." e the rider; exit.
-Move the rider (compiler rules).
-Se the rider's token for not any indefinite article, abort with "Tá faltando um artigo indefinido depois do 'como', mas você escreveu '" then the rider's token then "' no lugar disso." e the rider; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
+Se the rider's token não for any indefinite article, abort with "Tá faltando um artigo indefinido depois do 'como', mas você escreveu '" then the rider's token then "' no lugar disso." e the rider; exit.
+Mova the rider (compiler rules).
 Scan um type name usando the rider.
 Find um type usando the type name e the type index.
 Se the type for inexistente, abort with "Eu não sei em qual tipo o '" then the type name then "' se encaixa." e the rider; exit.
@@ -1907,7 +1909,7 @@ Compile the term usando the rider (possessives).
 
 Etapas necessárias para que se compile um term usando um rider (negated term):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile another term usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the other term's variable for inexistente, abort with "Negate inválido, um variável '" then the other term's phrase then "' parece estar vazia." e the rider; exit.
@@ -1926,7 +1928,7 @@ Se the rider's token for "outra", coloque "segunda" into the local's name.
 Se the rider's token for "outro", coloque "segundo" into the local's name.
 \CAL
 Se the rider's token for "another", coloque "other" into the local's name.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan um name usando the rider.
 Extend the local's name with the name.
 Se the rider's token é any called, compile the call'd part usando the rider e the local.
@@ -1940,7 +1942,7 @@ Compile the term usando the rider (possessives).
 
 Etapas necessárias para que se compile um term usando um rider (posigated term):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile the term usando the rider.
 Se the term's variable for inexistente, abort with "Posigate inválido, o termo da variável'" then the term's phrase then "' parece estar vazio." e the rider; exit.
 Limpe the term's phrase.
@@ -1971,7 +1973,7 @@ Limpe the term's phrase.
 
 Etapas necessárias para que se compile um term usando um rider (possessive): \ similar to "compile um term usando um rider (reverse-possessive)
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan um name usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the name é any magnitude, compile the term usando the rider (possessive - magnitude); exit.
@@ -1981,14 +1983,14 @@ Compile the term usando the rider e the name (possessive - field).
 
 Etapas necessárias para que se compile um term usando um rider (possessives):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Se the rider's token for not any possessive, cancele.
+Se the rider's token não for any possessive, cancele.
 Compile the term usando the rider (possessive).
 Repeat.  
 
 Etapas necessárias para que se compile um term usando um rider (runtime ratio):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the term's variable for inexistente, abort with "Você usou o / (proporção da execução) da forma errada, erro de termo vazio na variável '" then the term's phrase then "'." e the rider; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Compile another term usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the other term's variable for inexistente, abort with "Uso inválido da /, termo vazio da variável: '" then the other term's phrase then "'." e the rider; exit.
@@ -2000,7 +2002,7 @@ Limpe the term's phrase.
 Etapas necessárias para que se compile um term usando um rider (variable):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the current routine for inexistente, abort with "Erro de tarefa vazia, nada pra pull da pilha aqui." e the rider; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan um name usando the rider.
 Se the rider está on any reverse-possessive, compile the term usando the rider e the name (reverse-possessive); exit.
 Find um variable usando the name.
@@ -2011,12 +2013,12 @@ Compile the term usando the rider (possessives).
 
 Etapas necessárias para que se compile um term usando um rider e um field name (reverse-possessive):  \ this é recursive \ dahn version 2
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules). \ past the reverse-possessive starter
-\Se the rider's token for not "del", Move the rider (compiler rules). \ past the reverse-possessive starter \ gerry added "if" part
+Mova the rider (compiler rules). \ past the reverse-possessive starter
+\Se the rider's token não for "del", Mova the rider (compiler rules). \ past the reverse-possessive starter \ gerry added "if" part
 \Se the rider's token for "del", adicione 1 to the rider's token's first. \ makes "del" look like "de el"
-Se the rider's token for not any article, abort with "Esperaba un artículo, pero encontré '" then the rider's token then "'."; exit.
+Se the rider's token não for any article, abort with "Esperaba un artículo, pero encontré '" then the rider's token then "'."; exit.
 Coloque the rider's token into um article token.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan um name usando the rider. 
 Se the rider está on any reverse-possessive, abra um reverse-possessive sinal.
 Se the reverse-possessive sinal estiver verde, compile the term usando the rider e the name (reverse-possessive).
@@ -2061,12 +2063,12 @@ Compile the term usando the rider e the field name (possessive - field).
 Etapas necessárias para que se compile um term usando um rider e um field term:
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the field term's dereference sinal estiver verde, compile the term usando the rider (dereference).  
-Se the field term's function for not inexistente, compile the term usando the rider e the field term (function); exit.
+Se the field term's function não for inexistente, compile the term usando the rider e the field term (function); exit.
 Se the term's kind for "scratch", compile the term usando the rider e the field term (in place); exit.
 Coloque the field term's field into um field.
 Adicione um scratch usando the field's type's name e the rider's token's first.
 Adicione um fragment usando the load address tag e the term's variable e the scratch.
-Se the field's offset for not 0, adicione um third fragment usando the increment tag e the scratch e the field's offset.
+Se the field's offset não for 0, adicione um third fragment usando the increment tag e the scratch e the field's offset.
 Coloque the scratch into the term's variable.
 Limpe the term's phrase.
 
@@ -2088,14 +2090,14 @@ Se the compiler's sinal de alerta estiver presente, cancele.
 Coloque the field term's field into um field.
 Coloque the field's type's name into the term's type name.
 Coloque the field's type into the term's type.
-Se the field's offset for not 0, adicione um third fragment usando the increment tag e the term's variable e the field's offset.
+Se the field's offset não for 0, adicione um third fragment usando the increment tag e the term's variable e the field's offset.
 Limpe the term's phrase.
 
 Etapas necessárias para que se compile um term usando um rider e um name (possessive - field):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Se the term's variable for not inexistente, coloque the term's type into um type.
+Se the term's variable não for inexistente, coloque the term's type into um type.
 Find um field term usando the term's phrase e the type e the name.
-Se the field term for not empty, compile the term usando the rider e the field term; exit.
+Se the field term não for empty, compile the term usando the rider e the field term; exit.
 Se the term's variable for inexistente, abort with "Erro: variável vazia '" then the term's phrase then "'." e the rider; exit.
 Se the type can be reduced to "endereço de memória", coloque the type's target type into the type.
 Se the type for inexistente, abort with "Não existe o campo '" then the name then "' no tipo '" then the term's type's name then "'." e the rider; exit.
@@ -2301,8 +2303,8 @@ Se the pedaço for 247, say yes.
 Say no.
 
 Etapas necessárias para que se determine se um field term é empty:
-Se the field term's field for not inexistente, say no.
-Se the field term's function for not inexistente, say no.
+Se the field term's field não for inexistente, say no.
+Se the field term's function não for inexistente, say no.
 Say yes.
 
 Etapas necessárias para que se determine se some fields should be finalized:
@@ -2324,7 +2326,7 @@ Say yes.
 
 Etapas necessárias para que se determine se um monikette é bubbled out:
 Se the monikette for inexistente, say yes.
-Se the monikette's current type for not inexistente, say no.
+Se the monikette's current type não for inexistente, say no.
 Se the monikette's current substring estiver not blank, say no.
 Say yes.
 
@@ -2359,12 +2361,12 @@ Say yes.
 
 Etapas necessárias para que se determine se um rider é followed por [via] any unit of measure:
 Privatize the rider.
-Move the rider (compiler rules).
-Se the rider for not on any name starter, say no.
+Mova the rider (compiler rules).
+Se the rider não for on any name starter, say no.
 Scan um name usando the rider.
 Find um type usando the name e the type index.
 Se the type for inexistente, say no.
-Se the name for not "times", say yes. \ special because times é um infix operator e um unit of measure
+Se the name não for "times", say yes. \ special because times é um infix operator e um unit of measure
 Se the rider's token é the start of any expression, say no.
 Say yes.
 
@@ -2374,7 +2376,7 @@ Say no.
 
 Etapas necessárias para que se determine se um rider está on any possessive:
 Se the rider's source estiver blank, say no.
-Se the rider's source's first's target for not the single-quote pedaço, say no.
+Se the rider's source's first's target não for the single-quote pedaço, say no.
 Se the rider está on any possessive (type 1 - single-quote, s, non-glom-byte), say yes.
 Se the rider está on any possessive (type 2 - preceding s, single-quote, non-glom-byte), say yes.
 Say no.
@@ -2384,52 +2386,52 @@ Se the rider's source does not start with "'s", say no.
 Privatize the rider.
 Adicione 2 to the rider's source's first.
 Se the rider's source estiver blank, say yes.
-Se the rider's source's first's target for not any glom pedaço, say yes.
+Se the rider's source's first's target não for any glom pedaço, say yes.
 Say no.
 
 Etapas necessárias para que se determine se um rider está on any possessive (type 2 - preceding s, single-quote, non-glom-byte):
 Privatize the rider.
 Se the rider's source's first é the rider's original substring's first, say no.
 Subtract 1 from the rider's source's first.
-Se the rider's source's first's target for not the little-s pedaço or the big-s pedaço, say no.
+Se the rider's source's first's target não for the little-s pedaço or the big-s pedaço, say no.
 Adicione 2 to the rider's source's first.
 Se the rider's source estiver blank, say yes.
-Se the rider's source's first's target for not any glom pedaço, say yes.
+Se the rider's source's first's target não for any glom pedaço, say yes.
 Say no.
 
 Etapas necessárias para que se determine se um rider está on any simile: \ added for invisible turtle project ***
 Privatize the rider.
 Se the rider's token for "LIKE", say yes.
-Se the rider's token for not "AS", say no.
-Move the rider (compiler rules).
+Se the rider's token não for "AS", say no.
+Mova the rider (compiler rules).
 Se the rider's token é any indefinite article, say no.
 Say yes.
 
 Etapas necessárias para que se determine se um rider é the start of any function:
 Se the compiler's sinal de alerta estiver presente, say no.
 Se the rider's token for "Ponha", say yes.
-\Se the rider's token for not any coloque, say no.
-Se the rider's token for not "coloque", say no.
+\Se the rider's token não for any coloque, say no.
+Se the rider's token não for "coloque", say no.
 Privatize the rider.
-Move the rider (compiler rules).
-Se the rider's token for not any article, say no.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
+Se the rider's token não for any article, say no.
+Mova the rider (compiler rules).
 Scan um name usando the rider.
 Se the rider's token é any possessive, say yes.
 Say no.
 
 Etapas necessárias para que se determine se um string é any contraction giving another string (portuguese rules - "no"):
-Se the string for not "no", say no.
+Se the string não for "no", say no.
 Se the other string for "say", say no.
 Se the other string for "diga", say no.
-Se the other string for "dizer", say no.
+\Se the other string for "dizer", say no.
 Say yes.
 
 Etapas necessárias para que se determine se um string ends with any consonant e another string:
 Slap um substring on the string.
 Subtract the other string's length from the substring's last.
 Se the substring estiver blank, say no.
-Se the substring's last's target for not any consonant, say no.
+Se the substring's last's target não for any consonant, say no.
 Se the string does not end with the other string, say no.
 Say yes.
 
@@ -2437,18 +2439,18 @@ Etapas necessárias para que se determine se um string ends with any vowel e anot
 Slap um substring on the string.
 Subtract the other string's length from the substring's last.
 Se the substring estiver blank, say no.
-Se the substring's last's target for not any vowel, say no.
+Se the substring's last's target não for any vowel, say no.
 Se the string does not end with the other string, say no.
 Say yes.
 
 Etapas necessárias para que se determine se um string ends with any consonant:
 Se the string estiver blank, say no.
-Se the string's last's target for not any consonant, say no.
+Se the string's last's target não for any consonant, say no.
 Say yes.
 
 Etapas necessárias para que se determine se um string ends with any vowel:
 Se the string estiver blank, say no.
-Se the string's last's target for not any vowel, say no.
+Se the string's last's target não for any vowel, say no.
 Say yes.
 
 Etapas necessárias para que se determine se um string é any plus:
@@ -2598,32 +2600,40 @@ Say no.
 Etapas necessárias para que se determine se um string é any decider literal:
 \PAL
 Se the string for "sim", say yes.
+Se the string for "positivo", say yes.
+Se the string for "positivamente", say yes.
 Se the string for "não", say yes.
+Se the string for "negativo", say yes.
+Se the string for "negativamente", say yes.
 \CAL
 Se the string for "yes", say yes.
-Se the string for "yep", say yes.
-Se the string for "yea", say yes.
+\Se the string for "yep", say yes.
+\Se the string for "yea", say yes.
 Se the string for "no", say yes.
-Se the string for "nay", say yes.
-Se the string for "nope", say yes.
+\Se the string for "nay", say yes.
+\Se the string for "nope", say yes.
 Say no.
 
 Etapas necessárias para que se determine se um string é any positive decider literal:
 \PAL
 Se the string for "sim", say yes.
+Se the string for "positivo", say yes.
+Se the string for "positivamente", say yes.
 \CAL
 Se the string for "yes", say yes.
-Se the string for "yep", say yes.
-Se the string for "yea", say yes.
+\Se the string for "yep", say yes.
+\Se the string for "yea", say yes.
 Say no.
 
 Etapas necessárias para que se determine se um string é any negative decider literal:
 \PAL
 Se the string for "não", say yes.
+Se the string for "negativo", say yes.
+Se the string for "negativamente", say yes.
 \CAL
 Se the string for "no", say yes.
-Se the string for "nay", say yes.
-Se the string for "nope", say yes.
+\Se the string for "nay", say yes.
+\Se the string for "nope", say yes.
 Say no.
 
 Etapas necessárias para que se determine se um string é any hex literal:
@@ -2643,17 +2653,17 @@ Say no.
 
 Etapas necessárias para que se determine se um rider está on any definite article:
 Se the rider está on any portuguese to, say no.
-Se the rider's token for not any definite article, say no.
+Se the rider's token não for any definite article, say no.
 Say yes.
 
 Etapas necessárias para que se determine se um rider está on any indefinite article:
 Se the rider está on any portuguese to, say no.
-Se the rider's token for not any indefinite article, say no.
+Se the rider's token não for any indefinite article, say no.
 Say yes.
 
 Etapas necessárias para que se determine se um rider está on any portuguese to:
-Se the rider's token for not "a", say no.
-Privatize the rider. Move the rider (compiler rules).
+Se the rider's token não for "a", say no.
+Privatize the rider. Mova the rider (compiler rules).
 Se the rider's token é any article, say yes.
 Say no.
 
@@ -2696,7 +2706,7 @@ Se the string é any hex literal, say yes.
 Say no.
 
 Etapas necessárias para que se determine se um string é any mark:
-Se the string's length for not 1, say no.
+Se the string's length não for 1, say no.
 Se the string's first's target é any mark, say yes.
 Say no.
 
@@ -2892,7 +2902,7 @@ Se the substring for "durante", say yes. \ during
 Se the substring for "em", say yes. \ in
 Se the substring for "entre", say yes. \ between
 Se the substring for "até", say yes. \ until
-Se the substring for "esquerda", say yes. \ left
+Se the substring for "esestá querendoda", say yes. \ left
 Se the substring for "mediante", say yes. \ through
 Se the substring for "para", say yes. \ to
 Se the substring for "via", say yes. \ by
@@ -3146,15 +3156,15 @@ Privatize the rider.
 \que figura
 \incorporada
 \inerente
-Se the rider's token for not "integrada de", say no.
-Se the rider's token for not "interna de", say no.
-Se the rider's token for not "interno de", say no.
-Se the rider's token for not "do registro de", say no.
-Se the rider's token for not "que está dentro de", say no.
-Se the rider's token for not "de dentro do registro de", say no.
-Se the rider's token for not "de dentro de", say no.
-Se the rider's token for not "que faz parte de", say no.
-Move the rider (compiler rules).
+Se the rider's token não for "integrada de", say no.
+Se the rider's token não for "interna de", say no.
+Se the rider's token não for "interno de", say no.
+Se the rider's token não for "do registro de", say no.
+Se the rider's token não for "que está dentro de", say no.
+Se the rider's token não for "de dentro do registro de", say no.
+Se the rider's token não for "de dentro de", say no.
+Se the rider's token não for "que faz parte de", say no.
+Mova the rider (compiler rules).
 Se the rider's token é any article, say yes.
 Say no.
 
@@ -3164,7 +3174,7 @@ Se the string's first's target é the double-quote pedaço, say yes.
 Say no.
 
 Etapas necessárias para que se determine se um string é any symbol:
-Se the string's length for not 1, say no.
+Se the string's length não for 1, say no.
 Se the string's first's target é any symbol, say yes.
 Say no.
 
@@ -3178,8 +3188,8 @@ Se the string for "for", say yes. \ "be"
 Se the string for "forem", say yes. \ "be"
 Se the string for "estiver", say yes. \ "be"
 Se the string for "estiverem", say yes. \ "be"
-Se the string for "é", say yes. \ "is" for not \ isn't: "to be" conjugated in the singular third person (3ps) present, perm.
-Se the string for "está", say yes. \ "is" for not \ isn't: "to be" conjugated in the singular third person (3ps) present, temp.
+Se the string for "é", say yes. \ "is" não for \ isn't: "to be" conjugated in the singular third person (3ps) present, perm.
+Se the string for "está", say yes. \ "is" não for \ isn't: "to be" conjugated in the singular third person (3ps) present, temp.
 Se the string for "são", say yes. \ "are" are not \ aren't: "to be" conjugated in the plural third person (3pp) present, perm.
 Se the string for "estão", say yes. \ "are" are not \ aren't: "to be" conjugated in the plural third person (3pp) present, temp.
 Se the string for "foi", say yes. \ "was" was not \ wasn't: only used in Noodle (3ps) past, perm.
@@ -3216,7 +3226,7 @@ Se the string for "finalizar", say yes. \ "ends" does not end \ doesn't end
 Se the string for "parece", say yes. \ "looks" does not look \ doesn't look
 Se the string for "necessita", say yes. \ "needs" does not need \ doesn't need: not used in CAL
 Se the string for "necessitar", say yes. \ "needs" does not need \ doesn't need: not used in CAL
-Se the string for "requer", say yes. \ "needs" does not need \ doesn't need: not used in CAL
+Se the string for "reestá querendo", say yes. \ "needs" does not need \ doesn't need: not used in CAL
 \CAL
 Se the string for "are", say yes. \ are not \ aren't
 Se the string for "be", say yes. \
@@ -3225,7 +3235,7 @@ Se the string for "cannot", say yes.
 \Se the string for "could", say yes. \ could not \ couldn't
 \Se the string for "do", say yes. \ does not \ don't
 Se the string for "does", say yes. \ does not \ doesn't
-Se the string for "is", say yes. \ for not \ isn't
+Se the string for "is", say yes. \ não for \ isn't
 Se the string for "may", say yes. \ may not \ mayn't
 Se the string for "should", say yes. \ should not \ shouldn't
 Se the string for "was", say yes. \ was not \ wasn't
@@ -3434,7 +3444,7 @@ Subtract 1 from the string's last.
 Repeat.
 
 Etapas necessárias para que se determine se um term é empty:
-Se the term's variable for not inexistente, say no.
+Se the term's variable não for inexistente, say no.
 Se the term's phrase estiver not blank, say no.
 Say yes.
 
@@ -3600,22 +3610,22 @@ Repeat.
 Etapas necessárias para que se find um field term usando um phrase e um type e um name:
 Limpe the field term.
 Find the field term usando the type e the name.
-Se the field term's field for not inexistente, cancele.
+Se the field term's field não for inexistente, cancele.
 Se the phrase estiver not blank, find um routine usando "coloque" e the phrase e "'s " then the name e "into".
-Se the routine for not inexistente, coloque the routine into the field term's function; exit.
+Se the routine não for inexistente, coloque the routine into the field term's function; exit.
 Se the type for inexistente, cancele.
 Find the routine usando "coloque" e the type e "'s " then the name e "into".
-Se the routine for not inexistente, abra the field term's push sinal; coloque the routine into the field term's function; exit.
+Se the routine não for inexistente, abra the field term's push sinal; coloque the routine into the field term's function; exit.
 \  code below por looking deep within endereço de memórias - um debatable feature
-\  if the type's target type for not inexistente, find the routine usando "coloque" e the type's target type e "'s " then the name e "into".
-\  if the routine for not inexistente, abra the field term's dereference sinal; coloque the routine into the field term's function; exit.
+\  if the type's target type não for inexistente, find the routine usando "coloque" e the type's target type e "'s " then the name e "into".
+\  if the routine não for inexistente, abra the field term's dereference sinal; coloque the routine into the field term's function; exit.
 
 Etapas necessárias para que se find um field term usando um type e um name:
 Se the type for inexistente, cancele.
 Find um field usando the name e the type's fields.
-Se the field for not inexistente, coloque the field into the field term's field; exit.
-Se the type's target type for not inexistente, find the field usando the name e the type's target type's fields.
-Se the field for not inexistente, abra the field term's dereference sinal; coloque the field into the field term's field; exit.
+Se the field não for inexistente, coloque the field into the field term's field; exit.
+Se the type's target type não for inexistente, find the field usando the name e the type's target type's fields.
+Se the field não for inexistente, abra the field term's dereference sinal; coloque the field into the field term's field; exit.
 
 Etapas necessárias para que se find um fragment usando another fragment e um tag:
 Coloque the other fragment into the fragment.
@@ -3658,9 +3668,9 @@ Slap the monikette's current substring on the monikette's string.
 Loop.
 Posponha the monikette to the moniker (while bubbling).
 Find um refer usando the moniker e the index.
-Se the refer for not inexistente, coloque the refer's endereço de memória into the routine.
-Se the refer for not inexistente, find the routine usando the moniker e the monikette's next e the index.
-Se the routine for not inexistente, pare.
+Se the refer não for inexistente, coloque the refer's endereço de memória into the routine.
+Se the refer não for inexistente, find the routine usando the moniker e the monikette's next e the index.
+Se the routine não for inexistente, pare.
 Bubble the monikette.
 Se the monikette é bubbled out, pare.
 Coloque the original moniker into the moniker.
@@ -3733,13 +3743,13 @@ Etapas necessárias para que se find um type e um nickname usando um name:
 Esvazie the type.
 Limpe the nickname.
 Find the type e the nickname usando the name (forward).
-Se the type for not inexistente, cancele.
+Se the type não for inexistente, cancele.
 Find the type e the nickname usando the name (backward).
 \Slap um substring on the name.
 \Loop.
 \Se the substring estiver blank, cancele.
 \Find the type usando the substring e the type index.
-\Se the type for not inexistente, pare.
+\Se the type não for inexistente, pare.
 \Skip to the next word in the substring.
 \Repeat.
 \Coloque the name's first into another substring's first.
@@ -3754,7 +3764,7 @@ Slap um substring on the name.
 Loop.
 Se the substring estiver blank, cancele.
 Find the type usando the substring e the type index.
-Se the type for not inexistente, pare.
+Se the type não for inexistente, pare.
 Skip to the previous word in the substring.
 Repeat.
 Coloque the name's last into another substring's last.
@@ -3769,7 +3779,7 @@ Slap um substring on the name.
 Loop.
 Se the substring estiver blank, cancele.
 Find the type usando the substring e the type index.
-Se the type for not inexistente, pare.
+Se the type não for inexistente, pare.
 Skip to the next word in the substring.
 Repeat.
 Coloque the name's first into another substring's first.
@@ -3780,11 +3790,11 @@ Se the other substring estiver blank, coloque the substring into the nickname.
 Etapas necessárias para que se find um variable usando um name:
 Se the current routine for inexistente, esvazie the variable; exit.
 Find the variable usando the name e the current routine's locals.
-Se the variable for not inexistente, cancele.
+Se the variable não for inexistente, cancele.
 Find the variable usando the name e the current routine's parameters.
-Se the variable for not inexistente, cancele.
+Se the variable não for inexistente, cancele.
 Find the variable usando the name e the global index.
-Se the variable for not inexistente, cancele.
+Se the variable não for inexistente, cancele.
 Find the variable usando the name e the literal index.
 
 Etapas necessárias para que se find um variable usando um name e some variables:
@@ -3800,11 +3810,11 @@ Repeat.
 \Etapas necessárias para que se find um variable usando um name:
 \Se the current routine for inexistente, esvazie the variable; exit.
 \Find the variable usando the name e the current routine's locals.
-\Se the variable for not inexistente, cancele.
+\Se the variable não for inexistente, cancele.
 \Find the variable usando the name e the current routine's parameters.
-\Se the variable for not inexistente, cancele.
+\Se the variable não for inexistente, cancele.
 \Find the variable usando the name e the global index.
-\Se the variable for not inexistente, cancele.
+\Se the variable não for inexistente, cancele.
 \ Find the variable usando the name e the literal index.
 
 \Etapas necessárias para que se find um variable usando um name e some variables:
@@ -3834,7 +3844,7 @@ Convert the compiler's name count to another string.
 Posponha the other string to the name.
 
 Etapas necessárias para que se obtenha um address usando um routine:
-Se the routine's address for not 0, coloque the routine's address into the address; exit.
+Se the routine's address não for 0, coloque the routine's address into the address; exit.
 Coloque -1 into the routine's address.
 Find another routine usando the routine's employs moniker e the routine index.
 Se the other routine for inexistente, abort with "Eu não consegui encontrar um tarefa '" then the routine's employs moniker then "' que você está tentando employ." e the routine's locus; exit.
@@ -3895,7 +3905,7 @@ Catalogue the literal usando the literal's name e the literal index.
 
 Etapas necessárias para que se catalogue um partial moniker usando um index (special):
 Find um refer usando the partial moniker e the index.
-Se the refer for not inexistente, cancele.
+Se the refer não for inexistente, cancele.
 Catalogue the partial moniker in the index.
 
 Etapas necessárias para que se catalogue um routine por utility use:
@@ -3909,12 +3919,12 @@ Convert the monikettes to um moniker.
 Destroy the monikettes.
 Se the moniker estiver in the routine index, cancele.
 Find um refer usando the moniker e the utility index.
-Se the refer for not inexistente, coloque nil into the refer's endereço de memória; exit.
+Se the refer não for inexistente, coloque nil into the refer's endereço de memória; exit.
 Catalogue the routine usando the moniker e the utility index.
 
 Etapas necessárias para que se catalogue um routine usando um moniker e um index (special):
 Find um refer usando the moniker e the index.
-Se the refer for not inexistente, coloque the routine into the refer's endereço de memória; exit.
+Se the refer não for inexistente, coloque the routine into the refer's endereço de memória; exit.
 Catalogue the routine usando the moniker e the index.
 
 Etapas necessárias para que se catalogue um routine usando some monikettes e um index:
@@ -4091,7 +4101,7 @@ List the utility index under "UTILITY INDEX:" in the compiler's listing.
 List the imports under "IMPORTS:" in the compiler's listing.
 List the source files under "SOURCE FILES:" in the compiler's listing.
 List the timers under "TIMERS:" in the compiler's listing.
-Write the compiler's listing to the compiler's listing path.
+Escreva the compiler's listing to the compiler's listing path.
 
 Etapas necessárias para que se list um mensagem de erro in um buffer:
 Se the mensagem de erro estiver blank, cancele.
@@ -4350,31 +4360,31 @@ An variable (reference),
 An current type (reference),
 An current substring.
 
-Etapas necessárias para que se move um rider (code rules - comment):
+Etapas necessárias para que se mova um rider (code rules - comment):
 Bump the rider.
 Se the rider's source estiver blank, cancele.
-Se the rider's source's first's target for not the return pedaço, repeat.
+Se the rider's source's first's target não for the return pedaço, repeat.
 
-Etapas necessárias para que se move um rider (code rules - glom):
+Etapas necessárias para que se mova um rider (code rules - glom):
 Bump the rider.
 Se the rider's source estiver blank, cancele.
 Se the rider está on any possessive, cancele.
 Se the rider's source's first's target é any glom pedaço, repeat.
 
-Etapas necessárias para que se move um rider (code rules - mark):
+Etapas necessárias para que se mova um rider (code rules - mark):
 Bump the rider.
 
-Etapas necessárias para que se move um rider (code rules - noise):
+Etapas necessárias para que se mova um rider (code rules - noise):
 Bump the rider.
 Se the rider's source estiver blank, cancele.
 Se the rider's source's first's target é noise, repeat.
 
-Etapas necessárias para que se move um rider (code rules - possessive):
+Etapas necessárias para que se mova um rider (code rules - possessive):
 Bump the rider.
 Se the rider's source estiver blank, cancele.
 Se the rider's source starts with "s", bump the rider.
 
-Etapas necessárias para que se move um rider (code rules - qualifier):
+Etapas necessárias para que se mova um rider (code rules - qualifier):
 Se the rider's source estiver blank, cancele.
 Se the rider's source's first's target é the return pedaço, pare.
 Se the rider's source's first's target é the left-paren pedaço, adicione 1 to um count.
@@ -4383,7 +4393,7 @@ Bump the rider.
 Se the count for 0, pare.
 Repeat.
 
-Etapas necessárias para que se move um rider (code rules - remark):
+Etapas necessárias para que se mova um rider (code rules - remark):
 Se the rider's source estiver blank, cancele.
 Se the rider's source's first's target é the return pedaço, pare.
 Se the rider's source's first's target é the left-bracket pedaço, adicione 1 to um count.
@@ -4392,7 +4402,7 @@ Bump the rider.
 Se the count for 0, pare.
 Repeat.  
 
-Etapas necessárias para que se move um rider (code rules - string):
+Etapas necessárias para que se mova um rider (code rules - string):
 Bump the rider.
 Se the rider's source estiver blank, cancele.
 Se the rider's source's first's target é the return pedaço, cancele.
@@ -4400,24 +4410,24 @@ Se the rider está on any nested double-quote, bump the rider; repeat.
 Se the rider's source's first's target é the double-quote pedaço, bump the rider; exit.
 Repeat.
 
-Etapas necessárias para que se move um rider (code rules - symbol):
+Etapas necessárias para que se mova um rider (code rules - symbol):
 Bump the rider.
 
-Etapas necessárias para que se move um rider (code rules):
+Etapas necessárias para que se mova um rider (code rules):
 Position the rider's token on the rider's source.
 Se the rider's source estiver blank, cancele.
-Se the rider's source's first's target é noise, move the rider (code rules - noise); exit.
-Se the rider's source's first's target é the backslash pedaço, move the rider (code rules - comment); exit.
-Se the rider's source's first's target é the left-bracket pedaço, move the rider (code rules - remark); exit.
-Se the rider's source's first's target é the double-quote pedaço, move the rider (code rules - string); exit.
-Se the rider's source's first's target é the left-paren pedaço, move the rider (code rules - qualifier); exit.
-Se the rider's source's first's target é any mark, move the rider (code rules - mark); exit.
-Se the rider está on any possessive, move the rider (code rules - possessive); exit.
-Move the rider (code rules - glom).
+Se the rider's source's first's target é noise, mova the rider (code rules - noise); exit.
+Se the rider's source's first's target é the backslash pedaço, mova the rider (code rules - comment); exit.
+Se the rider's source's first's target é the left-bracket pedaço, mova the rider (code rules - remark); exit.
+Se the rider's source's first's target é the double-quote pedaço, mova the rider (code rules - string); exit.
+Se the rider's source's first's target é the left-paren pedaço, mova the rider (code rules - qualifier); exit.
+Se the rider's source's first's target é any mark, mova the rider (code rules - mark); exit.
+Se the rider está on any possessive, mova the rider (code rules - possessive); exit.
+Mova the rider (code rules - glom).
 
-Etapas necessárias para que se move um rider (compiler rules):
+Etapas necessárias para que se mova um rider (compiler rules):
 Se the compiler's sinal de alerta estiver verde, limpe o rider's token; exit.
-Move the rider returning um error string (code rules).
+Mova the rider returning um error string (code rules).
 Se the error string estiver not blank, abort with the error string e the rider's token's first; exit.
 \Se the rider's token for "del", unbump the rider; exit. \ Spanish contraction "del"; fudged to "de l", short por "de el"
 \Se the rider's token for "al", unbump the rider; exit. \ Spanish contraction "al"; fudged to "a l", short por "a el"
@@ -4426,25 +4436,25 @@ Se the rider's token's first's target é noise, repeat.
 Se the rider's token's first's target é the backslash pedaço, repeat.
 Se the rider's token's first's target é the left-bracket pedaço, repeat.
 
-Etapas necessárias para que se move um rider returning um error string (code rules - validate qualifier):
+Etapas necessárias para que se mova um rider returning um error string (code rules - validate qualifier):
 Se the rider's token's length é less than 2, coloque "Qualifiers need to end with ')'." into the error string; exit.
-Se the rider's token's last's target for not the right-paren pedaço, coloque "Qualifiers need to end with ')'." into the error string; exit.
+Se the rider's token's last's target não for the right-paren pedaço, coloque "Qualifiers need to end with ')'." into the error string; exit.
 
-Etapas necessárias para que se move um rider returning um error string (code rules - validate remark):
+Etapas necessárias para que se mova um rider returning um error string (code rules - validate remark):
 Se the rider's token's length é less than 2, coloque "Remarks need to end with ']'." into the error string; exit.
-Se the rider's token's last's target for not the right-bracket pedaço, coloque "Remarks need to end with ']'." into the error string; exit.
+Se the rider's token's last's target não for the right-bracket pedaço, coloque "Remarks need to end with ']'." into the error string; exit.
 
-Etapas necessárias para que se move um rider returning um error string (code rules - validate string):
+Etapas necessárias para que se mova um rider returning um error string (code rules - validate string):
 Se the rider's token's length é less than 2, coloque "Strings need to end with '""'." into the error string; exit.
-Se the rider's token's last's target for not the double-quote pedaço, coloque "Strings need to end with '""'." into the error string; exit.
+Se the rider's token's last's target não for the double-quote pedaço, coloque "Strings need to end with '""'." into the error string; exit.
 
-Etapas necessárias para que se move um rider returning um error string (code rules):
+Etapas necessárias para que se mova um rider returning um error string (code rules):
 Limpe the error string.
-Move the rider (code rules).
+Mova the rider (code rules).
 Se the rider's token estiver blank, cancele.
-Se the rider's token's first's target é the left-bracket pedaço, move the rider returning the error string (code rules - validate remark); exit.
-Se the rider's token's first's target é the double-quote pedaço, move the rider returning the error string (code rules - validate string); exit.
-Se the rider's token's first's target é the left-paren pedaço, move the rider returning the error string (code rules - validate qualifier); exit.
+Se the rider's token's first's target é the left-bracket pedaço, mova the rider returning the error string (code rules - validate remark); exit.
+Se the rider's token's first's target é the double-quote pedaço, mova the rider returning the error string (code rules - validate string); exit.
+Se the rider's token's first's target é the left-paren pedaço, mova the rider returning the error string (code rules - validate qualifier); exit.
 
 An nibble substring é um substring.
 
@@ -4460,7 +4470,7 @@ Loop.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Obtenha um local from the routine's locals.
 Se the local for inexistente, cancele.
-Se the local's previous for not inexistente, coloque the local's previous' offset into the local's offset.
+Se the local's previous não for inexistente, coloque the local's previous' offset into the local's offset.
 Coloque the local's type's length into um length.
 Se the local's kind for "scratch", coloque um endereço de memória's magnitude into the length.
 Round the length up to the nearest multiple of 4.
@@ -4485,7 +4495,7 @@ Obtenha um parameter from the routine's parameters.
 Se the parameter for inexistente, cancele.
 Se the routine's callback sinal estiver verde, abra the parameter's by-value sinal.
 Se the parameter's previous for inexistente, coloque 8 into the parameter's offset. \ skip the return address e saved ebp
-Se the parameter's previous for not inexistente, coloque the parameter's previous' offset plus 4 into the parameter's offset. \ all parameters are 4 pedaço endereço de memórias or 4 pedaço values por callbacks
+Se the parameter's previous não for inexistente, coloque the parameter's previous' offset plus 4 into the parameter's offset. \ all parameters are 4 pedaço endereço de memórias or 4 pedaço values por callbacks
 Adicione 4 to the routine's parameter size.
 Repeat.
 
@@ -4579,7 +4589,7 @@ An phrase é um string.
 Etapas necessárias para que se pluralize um string (portuguese rules):
 Slap um rider on the string.
 Loop.
-Move the rider (spell checking rules).
+Mova the rider (spell checking rules).
 Se the rider's token estiver blank, pare.
 Se um plural string estiver not blank, posponha " " to the plural string.
 Posponha the rider's token to the plural string.
@@ -4851,8 +4861,8 @@ Etapas necessárias para que se load some source files:
 Loop.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Obtenha um item from the compiler's directory.
-Se the item for not found, pare.
-Se the item's kind for not "file", repeat.
+Se the item não for found, pare.
+Se the item's kind não for "file", repeat.
 Se the item's extension estiver not blank, repeat.
 Se the item looks reamish, repeat.
 Adicione um source file to the source files usando the item's path.
@@ -4868,8 +4878,8 @@ Slap um rider on the string.
 Loop.
 Se the rider's source estiver blank, cancele.
 Position the rider's token on the rider's source.
-Move the rider (code rules).
-Se the rider's token's first's target for not any glom pedaço, posponha the rider's token to the other string; repeat.
+Mova the rider (code rules).
+Se the rider's token's first's target não for any glom pedaço, posponha the rider's token to the other string; repeat.
 Posponha the rider's token to the other string giving the third string (portuguese contractions e synonyms rules).
 Coloque the rider's token into the third string.
 Repeat.
@@ -4879,7 +4889,7 @@ Obtenha um monikette from the monikettes.
 Se the monikette for inexistente, cancele.
 Se the monikette's type for inexistente, repeat.
 Reduce the monikette's type to um type por utility use.
-Se the type for not inexistente, coloque the type into the monikette's type.
+Se the type não for inexistente, coloque the type into the monikette's type.
 Repeat.
 
 Etapas necessárias para que se reduce um type to another type por utility use:
@@ -4943,8 +4953,8 @@ Etapas necessárias para que se resolve um field:
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the field for inexistente, cancele.
 Resolve the field como um variable.
-Se the field's nickname for not any valid field name, limpe o field's nickname.
-Se the field's name for not any valid field name, abort with "'" then the field's name then "' é um field name inválido." e the field's locus; exit.
+Se the field's nickname não for any valid field name, limpe o field's nickname.
+Se the field's name não for any valid field name, abort with "'" then the field's name then "' é um field name inválido." e the field's locus; exit.
 
 Etapas necessárias para que se resolve um global:
 Se the global for inexistente, cancele.
@@ -4957,8 +4967,8 @@ Etapas necessárias para que se resolve um global (compile body):
 Se the global for inexistente, cancele.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Slap um rider on the global's global body.
-Move the rider (compiler rules).
-Se the rider's token for not any literal, abort with "Erro de tipo. O tipo: '" then the rider's token then "' tem que ser do tipo literal." e the rider; exit.
+Mova the rider (compiler rules).
+Se the rider's token não for any literal, abort with "Erro de tipo. O tipo: '" then the rider's token then "' tem que ser do tipo literal." e the rider; exit.
 Compile um literal usando the rider.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the rider's token estiver not blank, abort with "Acho que era bom colocar um ponto por aqui, né?" e the rider; exit.
@@ -4976,7 +4986,7 @@ Repeat.
 Etapas necessárias para que se resolve um type (base type):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the type for inexistente, cancele.
-Se the type's base type for not inexistente, cancele.
+Se the type's base type não for inexistente, cancele.
 Find the type's base type usando the type's base name e the type index.
 Se the type's base type for inexistente, abort with "Base type inválido:'" then the type's base name then "'." e the type's locus; exit.
 Abra the type's cooking sinal.
@@ -4984,10 +4994,10 @@ Se the type's base type's cooking sinal estiver verde, abort with "Definição rec
 Resolve the type's base type (base type).
 Feche the type's cooking sinal.
 
-Etapas necessárias para que se resolve um type (expand coisa): \ type's base type for not resolved yet
+Etapas necessárias para que se resolve um type (expand coisa): \ type's base type não for resolved yet
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the type for inexistente, cancele.
-Se the type's base type for not inexistente, cancele.
+Se the type's base type não for inexistente, cancele.
 Se the type's name for "coisa", cancele.
 \Se the type's name for "elemento", cancele.
 Se the type cannot be reduced to "coisa" using the base name, cancele.
@@ -5035,7 +5045,7 @@ Catalogue the type usando the type's plural name.
 
 Etapas necessárias para que se resolve um type (optional info - endereço de memória):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Se the type's target type for not inexistente, cancele.
+Se the type's target type não for inexistente, cancele.
 Se the type's target name estiver blank, coloque the type's base type's target type into the type's target type; exit.
 Find the type's target type usando the type's target name e the type index.
 Se the type's target type for inexistente, abort with "Não sei bem pra que coisa você está pointing at." e the type's locus; exit.
@@ -5113,10 +5123,10 @@ Repeat.
 Etapas necessárias para que se resolve um variable:
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the variable for inexistente, cancele.
-Se the variable's type for not inexistente, cancele.
+Se the variable's type não for inexistente, cancele.
 Se the variable's type name estiver not blank, resolve the variable (explicit type name); exit.
 Find the variable's type e the variable's nickname usando the variable's name.
-Se the variable's type for not inexistente, coloque the variable's type's name into the variable's type name; exit.
+Se the variable's type não for inexistente, coloque the variable's type's name into the variable's type name; exit.
 Abort with "Não achei o tipo da variável '" then the variable's name then "'." e the variable's locus.
 
 Etapas necessárias para que se resolve um variable (explicit type name):
@@ -5171,19 +5181,19 @@ Se the rider's token for "para", scan any optional info por the type usando the 
 Se the rider's token é any with, scan any optional info por the type usando the rider (conjunto); exit.
 
 Etapas necessárias para que se scan any optional info por um type usando um rider (endereço de memória):
-Move the rider (compiler rules).
-Se the rider's token for not any indefinite article, abort with "A palavra 'to' precisa de um artigo indefinido depois dela, não de um '" then the rider's token then "'." e the rider; exit. 
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
+Se the rider's token não for any indefinite article, abort with "A palavra 'to' precisa de um artigo indefinido depois dela, não de um '" then the rider's token then "'." e the rider; exit. 
+Mova the rider (compiler rules).
 Scan the type's target name usando the rider.
 
 Etapas necessárias para que se scan any optional info por um type usando um rider (conjunto):
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan the type's fields usando the rider.
 
 Etapas necessárias para que se scan any pauses usando um rider:
 Se the compiler's sinal de alerta estiver presente, cancele.
-Se the rider's token for not any pause, cancele.
-Move the rider (compiler rules).
+Se the rider's token não for any pause, cancele.
+Mova the rider (compiler rules).
 Repeat.
 
 Etapas necessárias para que se scan um field usando um rider:
@@ -5199,41 +5209,41 @@ Se the rider's token é any reference, scan the field usando the rider (reference
 
 Etapas necessárias para que se scan um field usando um rider (called part):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Se the field's type name estiver blank, coloque the field's name into the field's type name. \ pedaço array type name already filled in
 Scan the field's name usando the rider.
 
 Etapas necessárias para que se scan um field usando um rider (redefine part):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
-Se the rider's token for not any definite article, abort with "Eu estava esperando o artigo 'the', mas o que encontrei foi '" then the rider's token then "'." e the rider; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
+Se the rider's token não for any definite article, abort with "Eu estava esperando o artigo 'the', mas o que encontrei foi '" then the rider's token then "'." e the rider; exit.
+Mova the rider (compiler rules).
 Scan the field's redefinition target name usando the rider.
 
 Etapas necessárias para que se scan um field usando um rider (reference part):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Abra the field's reference sinal.
 
 Etapas necessárias para que se scan um field usando um rider (type part - pedaço array):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Convert the rider's token to um ratio.
 Reduce the ratio.
-Se the ratio's denominator for not 1, abort with "Você tem que especificar um número completo de pedaços para um pedaço array" e the rider; exit.
+Se the ratio's denominator não for 1, abort with "Você tem que especificar um número completo de pedaços para um pedaço array" e the rider; exit.
 Coloque the ratio's numerator into the field's count.
-Move the rider (compiler rules).
-Se the rider's token for not "pedaço" or "pedaços", abort with "Você precisa usar a palavra 'pedaços' depois de um counted field designator." e the rider; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
+Se the rider's token não for "pedaço" or "pedaços", abort with "Você precisa usar a palavra 'pedaços' depois de um counted field designator." e the rider; exit.
+Mova the rider (compiler rules).
 Coloque "pedaço" into the field's type name.
 
 Etapas necessárias para que se scan um field usando um rider (type part - normal):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Se the rider's token for not any indefinite article, abort with "Falta por um artigo idefinido aqui, mas você colocou isso: '" then the rider's token then "'." e the rider; exit.
+Se the rider's token não for any indefinite article, abort with "Falta por um artigo idefinido aqui, mas você colocou isso: '" then the rider's token then "'." e the rider; exit.
 Se the rider's token for "another", coloque "other" into the field's name.
 \PAL
 Se the rider's token for "outra", coloque "segunda" into the field's name.
 Se the rider's token for "outro", coloque "segundo" into the field's name.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan um name usando the rider.
 Extend the field's name with the name.
 
@@ -5246,7 +5256,7 @@ Etapas necessárias para que se scan some fields usando um rider:
 Se the compiler's sinal de alerta estiver presente, cancele.
 Adicione um field to the fields usando "field" e the rider's token's first.
 Scan the field usando the rider.
-Se the rider's token for not any pause, cancele.
+Se the rider's token não for any pause, cancele.
 Scan any pauses usando the rider.
 Repeat.
 
@@ -5261,54 +5271,54 @@ Se the rider's token estiver blank, cancele.
 Se the rider's token é the colon pedaço, cancele.
 Se the rider's token é the period pedaço, cancele.
 Coloque the rider's token's last into the global body's last.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Repeat.
 
 Etapas necessárias para que se scan um global usando um rider:
 Se the compiler's sinal de alerta estiver presente, cancele.
 Adicione the global to the globals usando "global" e the rider's token's first.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan the global's name usando the rider.
 Se the rider's token é any has, scan the global usando the rider (has or have); exit.
-Se the rider's token for not any is, abort with "Eu preciso de um 'is' ou de um 'are' mas só pude achar o termo: '" then the rider's token then "'." e the rider; exit.
-Move the rider (compiler rules).
-Se the rider's token for not any indefinite article, scan the global usando the rider (literal term); exit.
-Move the rider (compiler rules).
+Se the rider's token não for any is, abort with "Eu preciso de um 'is' ou de um 'are' mas só pude achar o termo: '" then the rider's token then "'." e the rider; exit.
+Mova the rider (compiler rules).
+Se the rider's token não for any indefinite article, scan the global usando the rider (literal term); exit.
+Mova the rider (compiler rules).
 Scan the global's type name usando the rider.  
 Se the rider's token é the start of any optional info, scan the global usando the rider (optional info); exit.
 Se the rider's token é any equal, scan the global usando the rider (data part); exit.
-Se the rider's token for not the period pedaço, abort with "Toda definição precisa terminar com um ponto. Inclusive essa." e the rider; exit. 
-Move the rider (compiler rules).
+Se the rider's token não for the period pedaço, abort with "Toda definição precisa terminar com um ponto. Inclusive essa." e the rider; exit. 
+Mova the rider (compiler rules).
 Catalogue the global.
 
 Etapas necessárias para que se scan um global usando um rider (data part):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
-Se the rider's token for not any to, abort with "Depois da palavra 'equal' você precisa por um palavra  'to'. Você colocou ; '" then the rider's token then "'." e the rider; exit. 
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
+Se the rider's token não for any to, abort with "Depois da palavra 'equal' você precisa por um palavra  'to'. Você colocou ; '" then the rider's token then "'." e the rider; exit. 
+Mova the rider (compiler rules).
 Scan the global's global body usando the rider.
-Se the rider's token for not the period pedaço, abort with "Falta terminar um frase com um ponto." e the rider; exit. 
-Move the rider (compiler rules).
+Se the rider's token não for the period pedaço, abort with "Falta terminar um frase com um ponto." e the rider; exit. 
+Mova the rider (compiler rules).
 Catalogue the global.
 
 Etapas necessárias para que se scan um global usando um rider (has or have):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Coloque "~inline " then the global's name then " type" into um name.
 Coloque the name then "s" into um plural name.
 Adicione um type to the types usando the name e the plural name e "conjunto" e the global's locus. \mudar aqui
 Catalogue the type.
 Coloque the type's name into the global's type name.
 Scan the type's fields usando the rider.
-Se the rider's token for not the period pedaço, abort with "Aprenda a escrever direito. Cadê o ponto?." e the rider; exit. 
-Move the rider (compiler rules).
+Se the rider's token não for the period pedaço, abort with "Aprenda a escrever direito. Cadê o ponto?." e the rider; exit. 
+Mova the rider (compiler rules).
 Catalogue the global.
 
 Etapas necessárias para que se scan um global usando um rider (literal term):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Scan the global's global body usando the rider.
-Se the rider's token for not the period pedaço, abort with "Aprenda a escrever corretamente. Cadê o ponto?." e the rider; exit. 
-Move the rider (compiler rules).
+Se the rider's token não for the period pedaço, abort with "Aprenda a escrever corretamente. Cadê o ponto?." e the rider; exit. 
+Mova the rider (compiler rules).
 Catalogue the global.
 
 Etapas necessárias para que se scan um global usando um rider (optional info):
@@ -5319,19 +5329,19 @@ Adicione um type to the types usando the name e the plural name e the global's t
 Catalogue the type.
 Coloque the type's name into the global's type name.
 Scan any optional info por the type usando the rider.
-Se the rider's token for not the period pedaço, abort with "Tá na hora de aprender a escrever direito. Cadê o ponto?." e the rider; exit. 
-Move the rider (compiler rules).
+Se the rider's token não for the period pedaço, abort with "Tá na hora de aprender a escrever direito. Cadê o ponto?." e the rider; exit. 
+Mova the rider (compiler rules).
 Catalogue the global.
 
 Etapas necessárias para que se scan um name usando um rider:
 Limpe the name.
 Se the compiler's sinal de alerta estiver presente, cancele.
-Se the rider está on any name starter, extend the name with the rider's token; move the rider (compiler rules).
+Se the rider está on any name starter, extend the name with the rider's token; mova the rider (compiler rules).
 Loop.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the rider está on any name ender, pare.
 Extend the name with the rider's token.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Repeat.
 Se the name estiver blank, abort with "Acho que faltou colocar um nome por aqui. Você escreveu '" then the rider's token then "'." e the rider; exit.
 
@@ -5345,37 +5355,37 @@ Se the compiler's sinal de alerta estiver presente, cancele.
 Se the rider's token estiver blank, cancele.
 Coloque the rider's token's last into the routine body's last.
 Se the rider's token é the colon pedaço, abort with "Acho que faltou um ponto lá em cima. É melhor você ir lá dar uma olhada." e the rider; exit.
-Se the rider's token for not the period pedaço, move the rider (compiler rules); repeat.
-Move the rider (compiler rules).
+Se the rider's token não for the period pedaço, mova the rider (compiler rules); repeat.
+Mova the rider (compiler rules).
 Se the rider's token é the start of any definition, cancele.
 Repeat.
 
 Etapas necessárias para que se scan um routine usando um rider:  \ Define o cabeçalho de rotina.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Adicione the routine to the routines usando the rider's token's first.
-Move the rider (compiler rules). \ skip the "Passos" e obtenha the next token
-Se the rider's token for "necessários" or "necessárias", move the rider (compiler rules). 
-Se the rider's token for not "para", abort with "Você precisa escrever 'para' antes de '" then the rider's token then "' nesse tipo de rotina." e the rider; exit.
-Move the rider (compiler rules). \ skip the "para" e obtenha the next token
-Se the rider's token for "que", move the rider (compiler rules). 
-\Se the rider's token for not "que", abort with "Você precisa colocar um 'que' antes da palavra '" then the rider's token then "'." e the rider; exit.
-\Move the rider (compiler rules). \ skip the "que" e obtenha the next token
-Se the rider's token for "se", move the rider (compiler rules). 
-\Se the rider's token for not "se", abort with "Você precisa colocar um 'se' antes da palavra '" then the rider's token then "'." e the rider; exit.
-\Move the rider (compiler rules).  \ skip the "se" e obtenha the next token
+Mova the rider (compiler rules). \ skip the "Passos" e obtenha the next token
+Se the rider's token for "necessários" or "necessárias", mova the rider (compiler rules). 
+Se the rider's token não for "para", abort with "Você precisa escrever 'para' antes de '" then the rider's token then "' nesse tipo de rotina." e the rider; exit.
+Mova the rider (compiler rules). \ skip the "para" e obtenha the next token
+Se the rider's token for "que", mova the rider (compiler rules). 
+\Se the rider's token não for "que", abort with "Você precisa colocar um 'que' antes da palavra '" then the rider's token then "'." e the rider; exit.
+\Mova the rider (compiler rules). \ skip the "que" e obtenha the next token
+Se the rider's token for "se", mova the rider (compiler rules). 
+\Se the rider's token não for "se", abort with "Você precisa colocar um 'se' antes da palavra '" then the rider's token then "'." e the rider; exit.
+\Mova the rider (compiler rules).  \ skip the "se" e obtenha the next token
 Scan the routine's routine header usando the rider.
 Se the rider's token é the semi-colon pedaço, scan the routine usando the rider (alternate wording); exit.  \ *** por alternate wordings
-Se the rider's token for not the colon pedaço, abort with "O nome dessa função está escrito errado.." e the routine's locus; exit.
-Move the rider (compiler rules).
+Se the rider's token não for the colon pedaço, abort with "O nome dessa função está escrito errado.." e the routine's locus; exit.
+Mova the rider (compiler rules).
 Scan the routine's routine body usando the rider.
 
 Etapas necessárias para que se scan um routine usando um rider (alternate wording):  \ *** por alternate wordings
 Privatize the rider.
-Move the rider (compiler rules).
-Se the rider's token for not the start of any routine, abort with "Esse ponto e vírgula tá no lugar errado." e the original rider; exit.
+Mova the rider (compiler rules).
+Se the rider's token não for the start of any routine, abort with "Esse ponto e vírgula tá no lugar errado." e the original rider; exit.
 Coloque the original rider's token's first into the routine's routine body's first.
 Coloque the original rider's token's last into the routine's routine body's last.
-Move the original rider (compiler rules).
+Mova the original rider (compiler rules).
 
 Etapas necessárias para que se scan um routine header usando um rider:
 Se the compiler's sinal de alerta estiver presente, cancele.
@@ -5389,14 +5399,14 @@ Se the rider's token é the semi-colon pedaço, cancele. \ *** alternate wordings
 Se the rider's token é the colon pedaço, cancele.
 Se the rider's token é the period pedaço, cancele.
 Coloque the rider's token's last into the routine header's last.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Repeat.
 
 Etapas necessárias para que se scan um source file:
 Se the source file for inexistente, cancele.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Slap um rider on the source file's buffer.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Loop.
 Se the compiler's sinal de alerta estiver presente, cancele.
 Se the rider's token estiver blank, cancele.
@@ -5418,45 +5428,45 @@ Se the compiler's sinal de alerta estiver presente, cancele.
 Se the rider's token é any portuguese indefinite article, abra um portuguese sinal.
 Se the rider's token é any english indefinite article, abra um english sinal.
 Adicione the type to the types usando the rider's token's first.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan the type's name usando the rider.
 Coloque the type's name into the type's plural name.
 Se the portuguese sinal estiver verde, pluralize the type's plural name (portuguese rules).
 Se the english sinal estiver verde, pluralize the type's plural name (english rules).
 Se the english sinal estiver not verde, pluralize the type's plural name (portuguese rules).
 Se the rider's token é any has, scan the type usando the rider (has or have); exit.
-Se the rider's token for not any is, abort with "Eu esperava um 'is' ou um 'are', mas só achei um : '" then the rider's token then "'." e the rider; exit.
+Se the rider's token não for any is, abort with "Eu esperava um 'is' ou um 'are', mas só achei um : '" then the rider's token then "'." e the rider; exit.
 \Pluralize the type's plural name.
 \Se the rider's token for "has" or "have", scan the type usando the rider (has or have); exit.
-\Se the rider's token for not "is" or "are", abort with "I was expecting um 'is' or 'are', but I found '" then the rider's token then "'." e the rider; exit.
+\Se the rider's token não for "is" or "are", abort with "I was expecting um 'is' or 'are', but I found '" then the rider's token then "'." e the rider; exit.
 
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Se the rider's token é any numeric literal, scan the type usando the rider (unit of measure); exit.
-Se the rider's token for not any indefinite article, abort with "Faltou um artigo indefinido, lembra? '" then the rider's token then "'." e the rider; exit. 
-Move the rider (compiler rules).
+Se the rider's token não for any indefinite article, abort with "Faltou um artigo indefinido, lembra? '" then the rider's token then "'." e the rider; exit. 
+Mova the rider (compiler rules).
 Scan the type's base name usando the rider.
 Scan any optional info por the type usando the rider.
-Se the rider's token for not the period pedaço, abort with "Você precisa usar um ponto para definir um tipo, lembra? Você usou '" then the rider's token then "'." e the rider; exit.
-Move the rider (compiler rules).
+Se the rider's token não for the period pedaço, abort with "Você precisa usar um ponto para definir um tipo, lembra? Você usou '" then the rider's token then "'." e the rider; exit.
+Mova the rider (compiler rules).
 Catalogue the type.
 
 Etapas necessárias para que se scan um type usando um rider (has or have):
 Se the compiler's sinal de alerta estiver presente, cancele.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Coloque "conjunto" into the type's base name. \\mudar aqui
 Scan the type's fields usando the rider.
-Se the rider's token for not the period pedaço, abort with "Ao invés de usar o ponto para definir  tipo, você usou '" then the rider's token then "'." e the rider; exit.
-Move the rider (compiler rules).
+Se the rider's token não for the period pedaço, abort with "Ao invés de usar o ponto para definir  tipo, você usou '" then the rider's token then "'." e the rider; exit.
+Mova the rider (compiler rules).
 Catalogue the type.
 
 Etapas necessárias para que se scan um type usando um rider (unit of measure):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Convert the rider's token to the type's scale.
 Se the type's scale for 0, abort with "Zero é um tipo de escala inválido." e the type's locus; exit.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
 Scan the type's base name usando the rider.
-Se the rider's token for not the period pedaço, abort with "Os tipos precisam terminar com um ponto, não com '" then the rider's token then "'." e the rider; exit.
-Move the rider (compiler rules).
+Se the rider's token não for the period pedaço, abort with "Os tipos precisam terminar com um ponto, não com '" then the rider's token then "'." e the rider; exit.
+Mova the rider (compiler rules).
 Catalogue the type.
 
 The scanning timer é um timer.
@@ -5484,7 +5494,7 @@ Etapas necessárias para que se abra the compiled sinal in um variable:
 Se the variable for inexistente, cancele.
 Se the variable's compiled sinal estiver verde, cancele.
 Abra the variable's compiled sinal.
-Se the variable's kind for not "global", cancele.
+Se the variable's kind não for "global", cancele.
 Se the variable's literal for inexistente, cancele.
 Find um routine usando "coloque" e the variable's literal's type e "into" e the variable's type.
 Se the routine for inexistente, find the routine usando "convert" e the variable's literal's type e "to" e the variable's type; abra um sinal.
@@ -5575,7 +5585,7 @@ Attach $E9 e the other fragment's address to the fragment. \ jmp the destination
 
 Etapas necessárias para que se transmogrify um fragment (increment):
 Se the fragment's variable for inexistente, abort with "Erro interno - transmogrify um fragment (increment)"; exit.
-Se the fragment's variable's kind for not "scratch", abort with "Erro interno 2 - transmogrify um fragment (increment)"; exit.
+Se the fragment's variable's kind não for "scratch", abort with "Erro interno 2 - transmogrify um fragment (increment)"; exit.
 Attach $8185 e the fragment's variable's offset e the fragment's número to the fragment's code. \ adicione [ebp+the fragment's variable's offset],the fragment's número
 
 Etapas necessárias para que se transmogrify um fragment (jump false):
@@ -5592,7 +5602,7 @@ Attach $8995 e the fragment's other variable's offset to the fragment's code. \ 
 \Attach address loading code to the fragment's code usando the fragment's variable. \ coloque address into edx
 \Se the fragment's variable for inexistente, abort with "Internal error - transmogrify um fragment (load eax)"; exit.
 \Se the fragment's variable's type for inexistente, abort with "Internal error 2 - transmogrify um fragment (load eax)"; exit.
-\Se the fragment's variable's type's length for not 4, abort with "Internal error 3 - transmogrify um fragment (load eax)"; exit.
+\Se the fragment's variable's type's length não for 4, abort with "Internal error 3 - transmogrify um fragment (load eax)"; exit.
 \Attach $8B02 to the fragment's code. \ mov eax,[edx]
 
 Etapas necessárias para que se transmogrify um fragment (load eax):
@@ -5600,7 +5610,7 @@ Attach $B8 e the fragment's sinal to the fragment's code. \ mov eax,sinal
 \Attach address loading code to the fragment's code usando the fragment's variable. \ coloque address into edx
 \Se the fragment's variable for inexistente, abort with "Internal error - transmogrify um fragment (load eax)"; exit.
 \Se the fragment's variable's type for inexistente, abort with "Internal error 2 - transmogrify um fragment (load eax)"; exit.
-\Se the fragment's variable's type's length for not 4, abort with "Internal error 3 - transmogrify um fragment (load eax)"; exit.
+\Se the fragment's variable's type's length não for 4, abort with "Internal error 3 - transmogrify um fragment (load eax)"; exit.
 \Attach $8B02 to the fragment's code. \ mov eax,[edx]
 
 Etapas necessárias para que se transmogrify um fragment (not):
@@ -5610,7 +5620,7 @@ Etapas necessárias para que se transmogrify um fragment (prolog):
 Attach $55 to the fragment's code. \ push ebp
 Attach $8BEC to the fragment's code. \ mov ebp,esp
 Coloque the current routine's local size dividido por 4 into um número.
-Se the número for not 0, attach $B9 e the número e $6A004975FB to the fragment's code. \ mov ecx,number; loop: push 0; dec ecx; jnz loop
+Se the número não for 0, attach $B9 e the número e $6A004975FB to the fragment's code. \ mov ecx,number; loop: push 0; dec ecx; jnz loop
 Se the current routine's callback sinal estiver verde, attach $535657 to the fragment's code. \ push ebx, esi, edi
 
 Etapas necessárias para que se transmogrify um fragment (push address):
@@ -5713,32 +5723,32 @@ The writing timer é um timer.
 
 Etapas necessárias para que se skip any trailing noise in um substring:
 Se the substring estiver blank, cancele.
-Se the substring's last's target for not noise, cancele.
+Se the substring's last's target não for noise, cancele.
 Subtract 1 from the substring's last.
 Repeat.
 
 \ dahn - reverse functions
 \ to coloque the xxx uv a/the yyy into zzz
-\ internally we turn this into "to coloque a/the yyy's xxx into zzz"
+\ internally we vire this into "to coloque a/the yyy's xxx into zzz"
 Etapas necessárias para que se compile the header of um routine usando um rider (reverse-possessive function):
 Se the compiler's sinal de alerta estiver presente, cancele.
 Abra the routine's function sinal.
 Adicione um monikette to the routine's monikettes usando "coloque".
-Move the rider (compiler rules). \ skip "coloque" or "poner"
-Move the rider (compiler rules). \ skip "the" or Portuguese definite article
+Mova the rider (compiler rules). \ skip "coloque" or "poner"
+Mova the rider (compiler rules). \ skip "the" or Portuguese definite article
 Scan um name usando the rider. \ field name
-Move the rider (compiler rules). \ skip "uv" or "de"
+Mova the rider (compiler rules). \ skip "uv" or "de"
 Se the rider's token é any indefinite article, abra um sinal.
 Se the sinal estiver verde, compile the routine's monikettes e the routine's parameters usando the rider (indefinite article).
 Se the sinal estiver not verde, compile the routine's monikettes e the routine's parameters usando the rider (definite article).
 Adicione another monikette to the routine's monikettes usando "'s " then the name.
-Se the rider's token for not any reverse-possessive function into, abort with "Esperava a palavra 'em', mas encontrei '" then the rider's token then "'." e the rider; exit.
+Se the rider's token não for any reverse-possessive function into, abort with "Esperava a palavra 'em', mas encontrei '" then the rider's token then "'." e the rider; exit.
 Adicione um third monikette to the routine's monikettes usando "into".
 Convert the routine's monikettes to um moniker.
 Se the moniker estiver in the routine index, abort with "Já sei como '" then the moniker then "'." e the routine's locus; exit.
 Catalogue the routine usando the routine's monikettes e the routine index.
-Move the rider (compiler rules).
-Se the rider's token for not any indefinite article, abort with "Esperava um artigo indefinido, mas encontrei '" then the rider's token then "'." e the rider; exit.
+Mova the rider (compiler rules).
+Se the rider's token não for any indefinite article, abort with "Esperava um artigo indefinido, mas encontrei '" then the rider's token then "'." e the rider; exit.
 Compile the routine's monikettes e the routine's parameters usando the rider (indefinite article).
 Se the rider's token estiver not blank, abort with "Existem outras coisas no final desta função." e the rider; exit.
 Convert the routine's monikettes to the routine's moniker.
@@ -5748,12 +5758,12 @@ Catalogue the routine usando the routine's monikettes e the routine index. \ por
 \ to coloque the xxx uv a/the yyy into zzz
 Etapas necessárias para que se determine se um rider é the start of any reverse-possessive function:
 Se the compiler's sinal de alerta estiver verde, say no.
-Se the rider's token for not any coloque, say no.
+Se the rider's token não for any coloque, say no.
 Privatize the rider.
-Move the rider (compiler rules).
-Se the rider's token for not any definite article, say no.
-Move the rider (compiler rules).
+Mova the rider (compiler rules).
+Se the rider's token não for any definite article, say no.
+Mova the rider (compiler rules).
 Scan um name usando the rider.
-Se the rider for not on any reverse-possessive, say no.
+Se the rider não for on any reverse-possessive, say no.
 Say yes.
 \finalmente
