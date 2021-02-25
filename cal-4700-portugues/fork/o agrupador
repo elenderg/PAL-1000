@@ -80,7 +80,7 @@ Se the type's target type for inexistente, cancele.
 Adicione uma routine to the routines usando nil.
 Posponha "deallocate um " then the type's name to the routine's header string.
 Posponha "if the " then the type's name then " for inexistente, cancele. " to the routine's body string.
-Se the type's target type deveria ser finalized, posponha "~finalize the " then the type's name then "'s target. " to the routine's body string.
+Se the type's target type deveria ser finalizado, posponha "~finalize the " then the type's name then "'s target. " to the routine's body string.
 Posponha "unassign the " then the type's name then "." to the routine's body string.
 Lance the routine's routine header on the routine's header string.
 Lance the routine's routine body on the routine's body string.
@@ -89,7 +89,7 @@ Compile the header of the routine.
 Etapas necessárias para que se adicione the destroy routine por um type:
 Se the type for inexistente, cancele.
 Se the compiler's sinal de alerta estiver presente, cancele.
-Se the type não deveria ser forgotten, cancele.
+Se the type não deveria ser ignorado, cancele.
 Se the type pode ser reduzido para "coisas", adicione the destroy routine por the type (coisas); exit.
 Se the type pode ser reduzido para "endereço de memória", adicione the destroy routine por the type (endereço de memória); exit.
 
@@ -107,7 +107,7 @@ Percorra.
 Obtenha um field from the type's target type's fields.
 Se the field for inexistente, pare.
 Se the field's reference sinal estiver verde, repita.
-Se the field's type não deveria ser forgotten, repita.
+Se the field's type não deveria ser ignorado, repita.
 Posponha "destroy the " then the type's name then "'s " then the field's name then ". " to the routine's body string.
 Repita.
 Posponha "deallocate the " then the type's name then ". " to the routine's body string. \ traduzir aqui
@@ -154,7 +154,7 @@ Coloque the reference sinal into the field's reference sinal.
 Etapas necessárias para que se adicione the finalize routine por um type:
 Se the type for inexistente, cancele.
 Se the compiler's sinal de alerta estiver presente, cancele.
-Se the type não deveria ser finalized, cancele.
+Se the type não deveria ser finalizado, cancele.
 Se the type's name for "string", adicione the finalize routine por the type (string); exit.
 Se the type pode ser reduzido para "string", cancele. \ prevents generation of finalizer por derived string types
 Adicione the finalize routine por the type (conjunto).
@@ -168,7 +168,7 @@ Posponha "intel $50. " to the routine's body string. \ push eax
 Percorra.
 Obtenha um field from the type's fields.
 Se the field for inexistente, pare.
-Se the field's type não deveria ser finalized, repita.
+Se the field's type não deveria ser finalizado, repita.
 Posponha "~finalize the " then the type's name then "'s " then the field's name then ". " to the routine's body string.
 Repita.
 Posponha "intel $58." to the routine's body string. \ pop eax
@@ -294,6 +294,8 @@ Se the string for "estão", coloque "is/are" into the monikette's string; exit.
 Se the string for "is", coloque "is/are" into the monikette's string; exit.
 Se the string for "forem", coloque "is/are" into the monikette's string; exit.
 Se the string for "estiverem", coloque "is/are" into the monikette's string; exit.
+Se the string for "puder", coloque "pode" into the monikette's string; exit.
+Se the string for "puderem", coloque "pode" into the monikette's string; exit.
 \\ allocates e destroys
 \Se the string for "alojar", coloque "allocate" into the monikette's string; exit.
 Se the string for "aloje", coloque "allocate" into the monikette's string; exit.
@@ -614,7 +616,7 @@ Etapas necessárias para que se posponha the global finalizers to um string:
 Obtenha um global from the globals.
 Se the global for inexistente, cancele.
 Se the global's compiled sinal estiver not verde, repita.
-Se the global's type não deveria ser finalized, repita.
+Se the global's type não deveria ser finalizado, repita.
 Posponha "~finalize the " then the global's name then ". " to the string.
 Repita.
 
@@ -1088,7 +1090,7 @@ Percorra.
 Obtenha uma variable from the routine's locals.
 Se the variable for inexistente, pare.
 Se the variable's kind for "scratch", repita.
-Se the variable's type não deveria ser finalized, repita.
+Se the variable's type não deveria ser finalizado, repita.
 Adicione another fragment usando the push address tag e the variable.
 Find another routine usando "~finalize" e the variable's type.
 Se the other routine for inexistente, abort with "Erro interno - compile the body of uma routine (epilog)"; exit.
@@ -2307,10 +2309,10 @@ Se the field term's field não for inexistente, say no.
 Se the field term's function não for inexistente, say no.
 Say yes.
 
-Etapas necessárias para que se determine se some fields deveria ser finalized:
+Etapas necessárias para que se determine se some fields deveria ser finalizado:
 Obtenha um field from the fields.
 Se the field for inexistente, say no.
-Se the field's type deveria ser finalized, say yes.
+Se the field's type deveria ser finalizado, say yes.
 Repita.
 
 Etapas necessárias para que se determine se um item looks reamish:
@@ -3207,6 +3209,8 @@ Se the string for "superam", say yes. \ beats, exceeds
 Se the string for "excede", say yes. \ beats, exceeds
 Se the string for "excedem", say yes. \ beats, exceeds
 Se the string for "pode", say yes. \ it "can" cannot \ can't: only case in CAL (3ps)
+Se the string for "puder", say yes. \ it "can" cannot \ can't: only case in CAL (3ps)
+Se the string for "puderem", say yes. \ it "can" cannot \ can't: only case in CAL (3ps)
 Se the string for "podem", say yes. \ they "can" cannot \ can't: not used in CAL (3pp) added just in case 
 Se the string for "poderia", say yes. \ it "could" could not \ couldn't: not used in CAL (3ps) added just in case
 Se the string for "poderia", say yes. \ they "could" could not \ couldn't:  not used in CAL (3pp) added just in case
@@ -3484,14 +3488,14 @@ Se the type's length for 2, say yes.
 Se the type's length for 1, say yes.
 Say no.
 
-Etapas necessárias para que se determine se um type deveria ser finalized:
+Etapas necessárias para que se determine se um type deveria ser finalizado:
 Se the type for inexistente, say no.
 Se the type pode ser reduzido para "substring", say no.
 Se the type pode ser reduzido para "string", say yes.
-Se the type's fields deveria ser finalized, say yes.
+Se the type's fields deveria ser finalizado, say yes.
 Say no.
 
-Etapas necessárias para que se determine se um type deveria ser forgotten:
+Etapas necessárias para que se determine se um type deveria ser ignorado:
 Se the type for inexistente, say no.
 \PAL
 \Se the type's name for "elemento", say no.
@@ -3503,7 +3507,7 @@ Se the type pode ser reduzido para "coisas", say yes.
 Se the type não pode ser reduzido para "endereço de memória", say no.
 Se the type's target type for inexistente, say no.
 Se the type's target type não pode ser reduzido para "endereço de memória", say yes.
-Se the type's target type não deveria ser forgotten, say no.
+Se the type's target type não deveria ser ignorado, say no.
 Say yes.
 
 Etapas necessárias para que se determine se uma variable é duplicated in some variables:
