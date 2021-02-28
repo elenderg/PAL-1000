@@ -456,8 +456,8 @@ Coloque the name into the type's name.
 Coloque the plural name into the type's plural name.
 Coloque the base name into the type's base name.
 
-Etapas necessárias para que se adicione uma variable to alguns variables usando um kind e um locus:
-Crie the variable usando the kind.
+Etapas necessárias para que se adicione uma variable to alguns variables usando um categoria e um locus:
+Crie the variable usando the categoria.
 Posponha the variable to the variables.
 Coloque the locus into the variable's locus.
 
@@ -837,11 +837,11 @@ Posponha the string to the other string.
 
 Etapas necessárias para que se attach address loading code to um texto hexadecimal usando uma variable: \ loads into edx
 Se the variable for inexistente, attach $C7C200000000 to the texto hexadecimal; exit. \ mov edx,0
-Se the variable's kind for "global", attach $C7C2 e the variable's address to the texto hexadecimal; exit. \ mov edx,the variable's address
-Se the variable's kind for "literal", attach $C7C2 e the variable's address to the texto hexadecimal; exit. \ mov edx,the variable's address
-Se the variable's kind for "local", attach $8D95 e the variable's offset to the texto hexadecimal; exit. \ lea edx,[ebp+the variable's offset]
-Se the variable's kind for "scratch", attach $8B95 e the variable's offset to the texto hexadecimal; exit. \ mov edx,[ebp+the variable's offset]
-Se the variable's kind não for "parameter", abort with "Erro interno - attach address loading code to um texto hexadecimal usando uma variable"; exit.
+Se the variable's categoria for "global", attach $C7C2 e the variable's address to the texto hexadecimal; exit. \ mov edx,the variable's address
+Se the variable's categoria for "literal", attach $C7C2 e the variable's address to the texto hexadecimal; exit. \ mov edx,the variable's address
+Se the variable's categoria for "local", attach $8D95 e the variable's offset to the texto hexadecimal; exit. \ lea edx,[ebp+the variable's offset]
+Se the variable's categoria for "scratch", attach $8B95 e the variable's offset to the texto hexadecimal; exit. \ mov edx,[ebp+the variable's offset]
+Se the variable's categoria não for "parameter", abort with "Erro interno - attach address loading code to um texto hexadecimal usando uma variable"; exit.
 Se the variable's by-value sinal estiver verde, attach $8D95 e the variable's offset to the texto hexadecimal; exit. \ lea edx,[ebp+the variable's offset]
 Attach $8B95 e the variable's offset to the texto hexadecimal. \ mov edx,[ebp+the variable's offset]
 
@@ -1099,7 +1099,7 @@ Adicione um fragment usando the finalize tag.
 Percorra.
 Obtenha uma variable from the routine's locals.
 Se the variable for inexistente, pare.
-Se the variable's kind for "scratch", repita.
+Se the variable's categoria for "scratch", repita.
 Se the variable's type não deveria ser finalizado, repita.
 Adicione another fragment usando the push address tag e the variable.
 Encontre another routine usando "~finalize" e the variable's type.
@@ -1731,7 +1731,7 @@ Mova the percorredor (compilador rules).
 Compile um term usando the percorredor.
 Se the compilador's sinal de alerta estiver presente, cancele.
 Se the term's variable for inexistente, abort with "Acho que o termo '" then the term's phrase then "' está vazio." e the percorredor; exit.
-Se the term's kind for "literal", abort with "Você usou o tipo errado de variável aqui (literal)." e the percorredor.
+Se the term's categoria for "literal", abort with "Você usou o tipo errado de variável aqui (literal)." e the percorredor.
 Se the term's type's length não for 4, abort with "Você usou uma variável de comprimento errado (<>4)." e the percorredor.
 Se the percorredor's token não for "to", abort with "Acho que faltou um 'to', mas você usou '" then the percorredor's token then "'." e the percorredor; exit.
 Mova the percorredor (compilador rules).
@@ -1751,7 +1751,7 @@ Mova the percorredor (compilador rules).
 Compile um term usando the percorredor.
 Se the compilador's sinal de alerta estiver presente, cancele.
 Se the term's variable for inexistente, abort with "Comando 'privatize', Inválido. Eu acho que o termo da variável '" then the term's phrase then "' está vazio." e the percorredor; exit.
-Se the term's kind não for "parameter", abort with "Você só pode privatizar parâmetros." e the percorredor; exit.
+Se the term's categoria não for "parameter", abort with "Você só pode privatizar parâmetros." e the percorredor; exit.
 Adicione um local to the current routine's locals usando "local" e the percorredor's token's first.
 Coloque the term's name into the local's name.
 Coloque the term's nickname into the local's nickname.
@@ -1905,7 +1905,7 @@ Etapas necessárias para que se compile um term usando um percorredor (dereferenc
 Se the compilador's sinal de alerta estiver presente, cancele.
 Se the term's variable for inexistente, abort with "Dereference inválido, um variável '" then the term's phrase then "' parece estar vazia." e the percorredor; exit.
 Se the term's type's target type for inexistente, abort with "Não consegui identificar o tipo desse target." e the percorredor; exit.
-Se the term's kind for "scratch", compile the term usando the percorredor (dereference - in place); exit.
+Se the term's categoria for "scratch", compile the term usando the percorredor (dereference - in place); exit.
 Adicione um scratch usando the term's type's target type's name e the percorredor's token's first.
 Adicione um fragment usando the load address tag e the term's variable e the scratch.
 Adicione another fragment usando the dereference tag e the scratch.
@@ -2076,7 +2076,7 @@ Etapas necessárias para que se compile um term usando um percorredor e um field 
 Se the compilador's sinal de alerta estiver presente, cancele.
 Se the field term's dereference sinal estiver verde, compile the term usando the percorredor (dereference).  
 Se the field term's function não for inexistente, compile the term usando the percorredor e the field term (function); exit.
-Se the term's kind for "scratch", compile the term usando the percorredor e the field term (in place); exit.
+Se the term's categoria for "scratch", compile the term usando the percorredor e the field term (in place); exit.
 Coloque the field term's field into um field.
 Adicione um scratch usando the field's type's name e the percorredor's token's first.
 Adicione um fragment usando the load address tag e the term's variable e the scratch.
@@ -2241,9 +2241,9 @@ Allocate memory por the type.
 Coloque 0/1 into the type's scale.
 Coloque -1 into the type's length.
 
-Etapas necessárias para que se crie uma variable usando um kind:
+Etapas necessárias para que se crie uma variable usando um categoria:
 Allocate memory por the variable.
-Coloque the kind into the variable's kind.
+Coloque the categoria into the variable's categoria.
 Coloque 1 into the variable's count.
 
 The current header address é um address.
@@ -4337,7 +4337,7 @@ List the types in the depósito.
 Etapas necessárias para que se list uma variable in um depósito:
 Se the variable for inexistente, cancele.
 Posponha "/variable" to the depósito (with separator).
-Posponha the variable's kind to the depósito (with separator).
+Posponha the variable's categoria to the depósito (with separator).
 Posponha the variable's compiled sinal to the depósito (with separator).
 Posponha the variable's name to the depósito (with separator).
 Posponha the variable's nickname to the depósito (with separator).
@@ -4504,7 +4504,7 @@ Obtenha um local from the routine's locals.
 Se the local for inexistente, cancele.
 Se the local's previous não for inexistente, coloque the local's previous' offset into the local's offset.
 Coloque the local's type's length into um length.
-Se the local's kind for "scratch", coloque um endereço de memória's magnitude into the length.
+Se the local's categoria for "scratch", coloque um endereço de memória's magnitude into the length.
 Round the length up to the nearest multiple of 4.
 Subtraia the length from the local's offset.
 Adicione the length to the routine's local size.
@@ -4894,7 +4894,7 @@ Percorra.
 Se the compilador's sinal de alerta estiver presente, cancele.
 Obtenha um item from the compilador's directory.
 Se the item não for found, pare.
-Se the item's kind não for "file", repita.
+Se the item's categoria não for "file", repita.
 Se the item's extension não estiver em branco, repita.
 Se the item looks reamish, repita.
 Adicione um source file to the source files usando the item's path.
@@ -5526,7 +5526,7 @@ Etapas necessárias para que se abra the compiled sinal in uma variable:
 Se the variable for inexistente, cancele.
 Se the variable's compiled sinal estiver verde, cancele.
 Abra the variable's compiled sinal.
-Se the variable's kind não for "global", cancele.
+Se the variable's categoria não for "global", cancele.
 Se the variable's literal for inexistente, cancele.
 Encontre uma routine usando "coloque" e the variable's literal's type e "into" e the variable's type.
 Se the routine for inexistente, encontre the routine usando "convert" e the variable's literal's type e "to" e the variable's type; abra um sinal.
@@ -5617,7 +5617,7 @@ Attach $E9 e the other fragment's address to the fragment. \ jmp the destination
 
 Etapas necessárias para que se transmogrify um fragment (increment):
 Se the fragment's variable for inexistente, abort with "Erro interno - transmogrify um fragment (increment)"; exit.
-Se the fragment's variable's kind não for "scratch", abort with "Erro interno 2 - transmogrify um fragment (increment)"; exit.
+Se the fragment's variable's categoria não for "scratch", abort with "Erro interno 2 - transmogrify um fragment (increment)"; exit.
 Attach $8185 e the fragment's variable's offset e the fragment's número to the fragment's code. \ adicione [ebp+the fragment's variable's offset],the fragment's número
 
 Etapas necessárias para que se transmogrify um fragment (jump false):
@@ -5736,7 +5736,7 @@ The utility index é um index.
 
 An variable é uma coisa with
 An locus (reference),
-An kind [literal, global, local, parameter, scratch],
+An categoria [literal, global, local, parameter, scratch],
 An compiled sinal,
 An name, um nickname, um type name,
 An type (reference), \ actual type on literal, global, local; dereferenced type on parameters e scratches
