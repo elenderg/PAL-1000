@@ -177,7 +177,7 @@ Coloque o picture's gpbitmap's height menos 1 times o tpp into o picture's caixa
 Coloque o picture's caixa into o picture's uncropped caixa.
 
 Etapas necessárias para que se ajuste spacing usando um string:
-Se o current canvas não for o printer canvas, cancele.
+Se o quadro atual não for o printer canvas, cancele.
 Call "gdi32.dll" "SetTextCharacterExtra" with o printer canvas e 0.
 Call "gdi32.dll" "GetCurrentObject" with o printer canvas e 6 [obj_font] returning um handle.
 Call "gdi32.dll" "SelectObject" with o memory canvas e o handle.
@@ -439,7 +439,7 @@ Call "gdi32.dll" "SetViewportExtEx" with o printer canvas e o pair's número x e 
 Call "gdi32.dll" "SetWindowOrgEx" with o printer canvas e 0 e 0 e nil.
 Call "gdi32.dll" "SetWindowExtEx" with o printer canvas e o tpi e o tpi e nil.
 Call "gdi32.dll" "StartPage" with o printer canvas.
-Coloque o printer canvas into o current canvas.
+Coloque o printer canvas into o quadro atual.
 Call "gdi32.dll" "GetDeviceCaps" with o printer canvas e 88 [logpixelsx] returning um número.
 Coloque o tpp into o saved tpp.
 Coloque o tpi dividido por o número into o tpp.
@@ -2003,22 +2003,22 @@ Call "gdi32.dll" "SelectObject" with o canvas e o hpen.
 Etapas necessárias para que se crie um hrgn usando um caixa:
 Isole o caixa.
 Adicione o tpp to o caixa's right-base.
-Call "gdi32.dll" "BeginPath" with o current canvas.
-Call "gdi32.dll" "Rectangle" with o current canvas e o caixa's left e o topo desta caixa e o caixa's right e a base desta caixa.
-Call "gdi32.dll" "EndPath" with o current canvas.
-Call "gdi32.dll" "PathToRegion" with o current canvas returning o hrgn.
+Call "gdi32.dll" "BeginPath" with o quadro atual.
+Call "gdi32.dll" "Rectangle" with o quadro atual e o caixa's left e o topo desta caixa e o caixa's right e a base desta caixa.
+Call "gdi32.dll" "EndPath" with o quadro atual.
+Call "gdi32.dll" "PathToRegion" with o quadro atual returning o hrgn.
 
 Etapas necessárias para que se crie um hrgn usando um ellipse:
 Coloque o ellipse's caixa into um caixa.
-Call "gdi32.dll" "BeginPath" with o current canvas.
-Call "gdi32.dll" "Ellipse" with o current canvas e o caixa's left e o topo desta caixa e o caixa's right e a base desta caixa.
-Call "gdi32.dll" "EndPath" with o current canvas.
-Call "gdi32.dll" "PathToRegion" with o current canvas returning o hrgn.
+Call "gdi32.dll" "BeginPath" with o quadro atual.
+Call "gdi32.dll" "Ellipse" with o quadro atual e o caixa's left e o topo desta caixa e o caixa's right e a base desta caixa.
+Call "gdi32.dll" "EndPath" with o quadro atual.
+Call "gdi32.dll" "PathToRegion" with o quadro atual returning o hrgn.
 
 Etapas necessárias para que se crie um hrgn usando um polygon:
 Se o polygon for inexistente, coloque 0 into o hrgn; exit.
 Crie um vértice array usando os vértices deste polygon.
-Call "gdi32.dll" "LPtoDP" with o current canvas e o vértice array's spot endereço de memória e o vértice array's contagem.
+Call "gdi32.dll" "LPtoDP" with o quadro atual e o vértice array's spot endereço de memória e o vértice array's contagem.
 Call "gdi32.dll" "CreatePolygonRgn" with o vértice array's spot endereço de memória e o vértice array's contagem e 2 [winding] returning o hrgn.
 Destroy o vértice array.
 
@@ -2026,10 +2026,10 @@ Etapas necessárias para que se crie um hrgn usando um caixa arredondada:
 Se o caixa arredondada's radius for 0, crie o hrgn usando o caixa arredondada como um caixa; exit.
 Coloque o caixa arredondada into um caixa.
 Coloque o caixa arredondada's radius times 2 into um diameter número.
-Call "gdi32.dll" "BeginPath" with o current canvas.
-Call "gdi32.dll" "RoundRect" with o current canvas e o caixa's left e o topo desta caixa e o caixa's right e a base desta caixa e o diameter e o diameter.
-Call "gdi32.dll" "EndPath" with o current canvas.
-Call "gdi32.dll" "PathToRegion" with o current canvas returning o hrgn.
+Call "gdi32.dll" "BeginPath" with o quadro atual.
+Call "gdi32.dll" "RoundRect" with o quadro atual e o caixa's left e o topo desta caixa e o caixa's right e a base desta caixa e o diameter e o diameter.
+Call "gdi32.dll" "EndPath" with o quadro atual.
+Call "gdi32.dll" "PathToRegion" with o quadro atual returning o hrgn.
 
 Etapas necessárias para que se crie um index usando um bucket contagem:
 Allocate memory por o index.
@@ -2236,11 +2236,11 @@ The tecla Ctrl é uma tecla igual a 17.
 
 The currency-sign pedaço é um pedaço igual a 164.
 
-The current canvas é um canvas.
+The quadro atual é um canvas.
 
-The current event é um event.
+The evento atual é um event.
 
-The current rainbow cor número é um número [1 to 6 indicating, respectively, red, orange, yellow, green, blue, purple].
+The número atual da cor do arco-íris é um número [1 to 6 indicating, respectively, red, orange, yellow, green, blue, purple].
 
 An cursor é um handle.
 
@@ -4247,14 +4247,14 @@ Draw o caixa with o black cor e o clear cor.
 Etapas necessárias para que se draw um caixa (focus style):
 Isole o caixa.
 Adicione o tpp to o caixa's right-base.
-Call "gdi32.dll" "LPtoDP" with o current canvas e o caixa's whereabouts e 2.
+Call "gdi32.dll" "LPtoDP" with o quadro atual e o caixa's whereabouts e 2.
 Convert o white cor to um corref.
-Call "gdi32.dll" "SetBkColor" with o current canvas e o corref.
+Call "gdi32.dll" "SetBkColor" with o quadro atual e o corref.
 Convert o black cor to another corref.
-Call "gdi32.dll" "SetTextColor" with o current canvas e o other corref.
-Call "gdi32.dll" "SetMapMode" with o current canvas e 1 [mm_text].
-Call "user32.dll" "DrawFocusRect" with o current canvas e o caixa's whereabouts.
-Normalize o current canvas.
+Call "gdi32.dll" "SetTextColor" with o quadro atual e o other corref.
+Call "gdi32.dll" "SetMapMode" with o quadro atual e 1 [mm_text].
+Call "user32.dll" "DrawFocusRect" with o quadro atual e o caixa's whereabouts.
+Normalize o quadro atual.
 
 Etapas necessárias para que se draw um caixa in um cor;
 Etapas necessárias para que se draw um caixa with um cor:
@@ -4263,12 +4263,12 @@ Draw o caixa with a cor e o clear cor.
 Etapas necessárias para que se draw um caixa with um border cor e um fill cor:
 Se o pdf state's página alarme estiver verde, draw o caixa with o border e o fill (pdf style); exit.
 Isole o caixa.
-Crie o hpen of o current canvas usando o border.
-Crie o hbrush of o current canvas usando o fill.
+Crie o hpen of o quadro atual usando o border.
+Crie o hbrush of o quadro atual usando o fill.
 Se o border é clear, adicione o tpp to o caixa's left-top.
-Call "gdi32.dll" "Rectangle" with o current canvas e o caixa's left e o topo desta caixa e o caixa's right e a base desta caixa.
-Destroy o hbrush of o current canvas.
-Destroy o hpen of o current canvas.
+Call "gdi32.dll" "Rectangle" with o quadro atual e o caixa's left e o topo desta caixa e o caixa's right e a base desta caixa.
+Destroy o hbrush of o quadro atual.
+Destroy o hpen of o quadro atual.
 
 Etapas necessárias para que se draw um caixa with um border cor e um fill cor (pdf style):
 Se o border e o fill are clear, cancele.
@@ -4310,11 +4310,11 @@ Repita.
 
 Etapas necessárias para que se draw um console:
 Se o console for inexistente, cancele.
-Save o current canvas.
+Save o quadro atual.
 Mask only outside o console's caixa.
 Draw o console's caixa with o console's border e o console's fill.
 Draw o console's text.
-Restore o current canvas.
+Restore o quadro atual.
 
 Etapas necessárias para que se draw um dot alguns twips wide on o current spot with um cor:
 Make o dot o twips wide.
@@ -4336,12 +4336,12 @@ Draw o ellipse with a cor e o clear cor.
 Etapas necessárias para que se draw um ellipse with um border cor e um fill cor:
 Se o pdf state's página alarme estiver verde, draw o ellipse with o border e o fill (pdf style); exit.
 Isole o ellipse.
-Crie o hpen of o current canvas usando o border.
-Crie o hbrush of o current canvas usando o fill.
+Crie o hpen of o quadro atual usando o border.
+Crie o hbrush of o quadro atual usando o fill.
 Se o border é clear, adicione o tpp to o ellipse's left-top.
-Call "gdi32.dll" "Ellipse" with o current canvas e o ellipse's left e o ellipse's topo e o ellipse's right e o ellipse's base.
-Destroy o hbrush of o current canvas.
-Destroy o hpen of o current canvas.
+Call "gdi32.dll" "Ellipse" with o quadro atual e o ellipse's left e o ellipse's topo e o ellipse's right e o ellipse's base.
+Destroy o hbrush of o quadro atual.
+Destroy o hpen of o quadro atual.
 
 Etapas necessárias para que se draw um ellipse with um border cor e um fill cor (pdf style):
 Se o border e o fill are clear, cancele.
@@ -4510,12 +4510,12 @@ Stroke o twips.
 
 Etapas necessárias para que se draw um line with um cor:
 Se o pdf state's página alarme estiver verde, draw o line with a cor (pdf style); exit.
-Crie o hpen of o current canvas usando a cor.
-Call "gdi32.dll" "MoveToEx" with o current canvas e o line's start's coordenada x e o line's start's coordenada y e nil.
-Call "gdi32.dll" "LineTo" with o current canvas e o line's end's coordenada x e o line's end's coordenada y.
+Crie o hpen of o quadro atual usando a cor.
+Call "gdi32.dll" "MoveToEx" with o quadro atual e o line's start's coordenada x e o line's start's coordenada y e nil.
+Call "gdi32.dll" "LineTo" with o quadro atual e o line's end's coordenada x e o line's end's coordenada y.
 Convert a cor to um corref.
-Call "gdi32.dll" "SetPixelV" with o current canvas e o line's end's coordenada x e o line's end's coordenada y e o corref.
-Destroy o hpen of o current canvas.
+Call "gdi32.dll" "SetPixelV" with o quadro atual e o line's end's coordenada x e o line's end's coordenada y e o corref.
+Destroy o hpen of o quadro atual.
 
 Etapas necessárias para que se draw um line with uma cor (pdf style):
 Se a cor é clear, cancele.
@@ -4573,13 +4573,13 @@ Coloque o original caixa into o context's caixa. \ *** original caixa? ou indent
 Etapas necessárias para que se draw um picture:
 Se o pdf state's página alarme estiver verde, draw o picture (pdf style); exit.
 Se o picture for inexistente, cancele.
-Save o current canvas.
+Save o quadro atual.
 Mask outside o picture's caixa.
-Call "gdiplus.dll" "GdipCreateFromHDC" with o current canvas e um gpgraphic's whereabouts.
+Call "gdiplus.dll" "GdipCreateFromHDC" with o quadro atual e um gpgraphic's whereabouts.
 Call "gdiplus.dll" "GdipSetPageUnit" with o gpgraphic e 2 [pixels].
 Draw o picture on o gpgraphic at o picture's uncropped caixa's left e o picture's uncropped caixa's topo.
 Call "gdiplus.dll" "GdipDeleteGraphics" with o gpgraphic.
-Restore o current canvas.
+Restore o quadro atual.
 
 Etapas necessárias para que se draw um picture (pdf style):
 Se o picture for inexistente, cancele.
@@ -4637,31 +4637,31 @@ Draw o polygon with a cor e a cor.
 Etapas necessárias para que se draw um polygon with uma cor (border only):
 Se o polygon for inexistente, cancele.
 Se a cor é clear, cancele.
-Crie o hpen of o current canvas usando a cor.
+Crie o hpen of o quadro atual usando a cor.
 Obtenha um vértice from os vértices deste polygon.
 Se o vértice for inexistente, cancele.
-Call "gdi32.dll" "MoveToEx" with o current canvas e o vértice's coordenada x e o vértice's coordenada y e nil.
+Call "gdi32.dll" "MoveToEx" with o quadro atual e o vértice's coordenada x e o vértice's coordenada y e nil.
 Percorra.
 Obtenha o vértice from os vértices deste polygon.
 Se o vértice for inexistente, pare.
-Call "gdi32.dll" "LineTo" with o current canvas e o vértice's coordenada x e o vértice's coordenada y.
+Call "gdi32.dll" "LineTo" with o quadro atual e o vértice's coordenada x e o vértice's coordenada y.
 Repita.
-Destroy o hpen of o current canvas.
+Destroy o hpen of o quadro atual.
 Se o polygon's vértices' first's spot é o polygon's vértices' last's spot, cancele.
 Convert a cor to um corref.
-Call "gdi32.dll" "SetPixelV" with o current canvas e o polygon's vértices' last's coordenada x e o polygon's vértices' last's coordenada y e o corref.
+Call "gdi32.dll" "SetPixelV" with o quadro atual e o polygon's vértices' last's coordenada x e o polygon's vértices' last's coordenada y e o corref.
 
 Etapas necessárias para que se draw um polygon with uma cor (fill only):
 Se o polygon for inexistente, cancele.
 Se a cor é clear, cancele.
-Crie o hpen of o current canvas usando o clear cor.
-Crie o hbrush of o current canvas usando a cor.
-Call "gdi32.dll" "SetPolyFillMode" with o current canvas e 2 [winding].
+Crie o hpen of o quadro atual usando o clear cor.
+Crie o hbrush of o quadro atual usando a cor.
+Call "gdi32.dll" "SetPolyFillMode" with o quadro atual e 2 [winding].
 Crie um vértice array usando os vértices deste polygon.
-Call "gdi32.dll" "Polygon" with o current canvas e o vértice array's spot endereço de memória e o vértice array's contagem.
+Call "gdi32.dll" "Polygon" with o quadro atual e o vértice array's spot endereço de memória e o vértice array's contagem.
 Destroy o vértice array.
-Destroy o hbrush of o current canvas.
-Destroy o hpen of o current canvas.
+Destroy o hbrush of o quadro atual.
+Destroy o hpen of o quadro atual.
 
 Etapas necessárias para que se draw um quarter circle about alguns twips wide;
 Etapas necessárias para que se draw um quarter circle usando um size:
@@ -4705,14 +4705,14 @@ Draw o caixa arredondada with o black cor e o clear cor.
 Etapas necessárias para que se draw um caixa arredondada with um border cor e um fill cor:
 Se o pdf state's página alarme estiver verde, draw o caixa arredondada with o border e o fill (pdf style); exit.
 Isole o caixa arredondada.
-Crie o hpen of o current canvas usando o border.
-Crie o hbrush of o current canvas usando o fill.
+Crie o hpen of o quadro atual usando o border.
+Crie o hbrush of o quadro atual usando o fill.
 Se o border é clear, adicione o tpp to o caixa arredondada's left-top.
 Coloque o caixa arredondada's radius times 2 into um diameter número.
-Call "gdi32.dll" "RoundRect" with o current canvas e o caixa arredondada's left e o caixa arredondada's topo e o caixa arredondada's right e o caixa arredondada's base
+Call "gdi32.dll" "RoundRect" with o quadro atual e o caixa arredondada's left e o caixa arredondada's topo e o caixa arredondada's right e o caixa arredondada's base
 And o diameter e o diameter.
-Destroy o hbrush of o current canvas.
-Destroy o hpen of o current canvas.
+Destroy o hbrush of o quadro atual.
+Destroy o hpen of o quadro atual.
 
 Etapas necessárias para que se draw um caixa arredondada with um border cor e um fill cor (pdf style):
 Se o border e o fill are clear, cancele.
@@ -4790,7 +4790,7 @@ Draw o spot with o black cor.
 
 Etapas necessárias para que se draw um spot with um cor:
 Convert a cor to um corref.
-Call "gdi32.dll" "SetPixelV" with o current canvas e a coordenada x deste spot e a coordenada y deste spot e o corref.
+Call "gdi32.dll" "SetPixelV" with o quadro atual e a coordenada x deste spot e a coordenada y deste spot e o corref.
 
 Etapas necessárias para que se draw um star usando um point contagem e um size:
 Coloque 1 e o point contagem into um fração.
@@ -4835,8 +4835,8 @@ Draw o string at o spot with a cor e o default font.
 
 Etapas necessárias para que se draw um string at um spot with uma cor e um font:
 Se o pdf state's página alarme estiver verde, draw o string at o spot with a cor e o font (pdf style); exit.
-Defina o corref of o current canvas usando a cor.
-Crie o hfont of o current canvas usando o font.
+Defina o corref of o quadro atual usando a cor.
+Crie o hfont of o quadro atual usando o font.
 Ajuste spacing usando o string.
 Coloque o string's first into um subtexto's first.
 Coloque o first deste subtexto mais o text cutoff menos 1 into o last deste subtexto.
@@ -4844,12 +4844,12 @@ Isole o spot.
 Percorra.
 Se o subtexto estiver em branco, pare.
 Se o last deste subtexto for maior do que o string's last, coloque o string's last into o last deste subtexto.
-Call "gdi32.dll" "TextOutA" with o current canvas e a coordenada x deste spot e a coordenada y deste spot e o first deste subtexto e o subtexto's length.
-Obtenha um width usando o subtexto e o current canvas.
+Call "gdi32.dll" "TextOutA" with o quadro atual e a coordenada x deste spot e a coordenada y deste spot e o first deste subtexto e o subtexto's length.
+Obtenha um width usando o subtexto e o quadro atual.
 Adicione o width to a coordenada x deste spot.
 Mova o subtexto usando o text cutoff.
 Repita.
-Destroy o hfont of o current canvas.
+Destroy o hfont of o quadro atual.
 
 Etapas necessárias para que se draw um string at um spot with uma cor e uma font (pdf style):
 Se o string estiver em branco, cancele.
@@ -4917,26 +4917,26 @@ Draw o string in o center of o caixa with o black cor e o font.
 
 Etapas necessárias para que se draw um terminal:
 Se o terminal for inexistente, cancele.
-Save o current canvas.
+Save o quadro atual.
 Mask only outside o terminal's caixa.
 Draw e fill o terminal's caixa with o black cor.
 Escreva o terminal's quoras in o terminal's caixa.
-Restore o current canvas.
+Restore o quadro atual.
 
 Etapas necessárias para que se draw um text:
 Se o text for inexistente, cancele.
-Save o current canvas.
+Save o quadro atual.
 Mask outside o text's caixa.
 Draw any visible rows of o text.
-Restore o current canvas.
+Restore o quadro atual.
 
 Etapas necessárias para que se draw um text (editing):
 Se o text for inexistente, cancele.
-Save o current canvas.
+Save o quadro atual.
 Mask outside o text's caixa.
 Draw any visible rows of o text (editing).
 Draw o caret in o text.
-Restore o current canvas.
+Restore o quadro atual.
 
 An drive é um string. \ start of path to first slash = c:\ ou start of path to fourth slash = \\computer\share\
 
@@ -5151,7 +5151,7 @@ Repita.
 Etapas necessárias para que se end um sheet:
 Se o pdf state's documento alarme estiver verde, end o sheet (pdf style); exit.
 Call "gdi32.dll" "EndPage" with o printer canvas.
-Coloque o memory canvas into o current canvas.
+Coloque o memory canvas into o quadro atual.
 Coloque o saved tpp into o tpp.
 
 Etapas necessárias para que se end um sheet (pdf style - finish o current contents):
@@ -5391,7 +5391,7 @@ Call "gdiplus.dll" "GdipGetImageGraphicsContext" with o gpbitmap e um gpgraphic'
 Call "gdiplus.dll" "GdipGetDC" with o gpgraphic e um bitmap canvas' whereabouts.
 Normalize o bitmap canvas.
 Call "gdi32.dll" "BitBlt" with o bitmap canvas e 0 e 0 e o caixa's width e o caixa's height
-And o current canvas e o caixa's left e o topo desta caixa e 13369376 [srccopy].
+And o quadro atual e o caixa's left e o topo desta caixa e 13369376 [srccopy].
 Call "gdiplus.dll" "GdipReleaseDC" with o gpgraphic e o bitmap canvas.
 Call "gdiplus.dll" "GdipDeleteGraphics" with o gpgraphic.
 Crie o picture usando o gpbitmap.
@@ -5571,7 +5571,7 @@ Call "user32.dll" "TranslateMessage" with o msg's whereabouts.
 Call "user32.dll" "DispatchMessageA" with o msg's whereabouts.
 Repita.
 Desmanche o event queue.
-Destroy o current event.
+Destroy o evento atual.
 
 Etapas necessárias para que se finalize winsock:
 Call "ws2_32.dll" "WSACleanup".
@@ -5981,7 +5981,7 @@ Coloque o spot e o other spot into um line.
 Coloque o line's center into o center.
 
 Etapas necessárias para que se obtenha uma cor usando um spot:
-Call "gdi32.dll" "GetPixel" with o current canvas e a coordenada x deste spot e a coordenada y deste spot returning um corref.
+Call "gdi32.dll" "GetPixel" with o quadro atual e a coordenada x deste spot e a coordenada y deste spot returning um corref.
 Convert o corref to a cor.
 
 Etapas necessárias para que se obtenha um column# usando um row e um spot e um text:
@@ -6165,7 +6165,7 @@ Call "gdi32.dll" "GetOutlineTextMetricsA" with o memory canvas e 0 e 0 returning
 Assign um poutlinetextmetric usando o result.
 Call "gdi32.dll" "GetOutlineTextMetricsA" with o memory canvas e o result e o poutlinetextmetric.
 Coloque o poutlinetextmetric's target into o outlinetextmetric.
-Destroy o hfont of o current canvas.
+Destroy o hfont of o quadro atual.
 Unassign o poutlinetextmetric.
 
 Etapas necessárias para que se obtenha uma position usando um spot e um text:
@@ -7285,7 +7285,7 @@ Se o endereço de memória não for inexistente, call o endereço de memória with o 
 Etapas necessárias para que se initialize o canvases:
 Initialize o tela canvas.
 Initialize o memory canvas.
-Coloque o memory canvas into o current canvas.
+Coloque o memory canvas into o quadro atual.
 
 Etapas necessárias para que se initialize o cgi:
 Call "kernel32.dll" "AllocConsole".
@@ -8534,7 +8534,7 @@ Mask inside o hrgn.
 Destroy o hrgn.
 
 Etapas necessárias para que se mask inside um hrgn:
-Call "gdi32.dll" "ExtSelectClipRgn" with o current canvas e o hrgn e 4 [rgn_diff].
+Call "gdi32.dll" "ExtSelectClipRgn" with o quadro atual e o hrgn e 4 [rgn_diff].
 
 Etapas necessárias para que se mask inside um polygon:
 Crie um hrgn usando o polygon.
@@ -8591,7 +8591,7 @@ Mask outside o hrgn.
 Destroy o hrgn.
 
 Etapas necessárias para que se mask outside um hrgn:
-Call "gdi32.dll" "ExtSelectClipRgn" with o current canvas e o hrgn e 1 [rgn_and].
+Call "gdi32.dll" "ExtSelectClipRgn" with o quadro atual e o hrgn e 1 [rgn_and].
 
 Etapas necessárias para que se mask outside um polygon:
 Crie um hrgn usando o polygon.
@@ -9834,14 +9834,14 @@ Coloque 875 into o pastel cor's lightness.
 Coloque o pastel cor into o context's cor.
 
 Etapas necessárias para que se escolha aleatoriamente um rainbow cor:
-Adicione 1 to o current rainbow cor número.
-Se o current rainbow cor número for maior do que 6, coloque 1 into o current rainbow cor número.
-Se o current rainbow cor número for 1, coloque o red cor into o rainbow cor.
-Se o current rainbow cor número for 2, coloque o orange cor into o rainbow cor.
-Se o current rainbow cor número for 3, coloque o yellow cor into o rainbow cor.
-Se o current rainbow cor número for 4, coloque o green cor into o rainbow cor.
-Se o current rainbow cor número for 5, coloque o blue cor into o rainbow cor.
-Se o current rainbow cor número for 6, coloque o purple cor into o rainbow cor.
+Adicione 1 to o número atual da cor do arco-íris.
+Se o número atual da cor do arco-íris for maior do que 6, coloque 1 into o número atual da cor do arco-íris.
+Se o número atual da cor do arco-íris for 1, coloque o red cor into o rainbow cor.
+Se o número atual da cor do arco-íris for 2, coloque o orange cor into o rainbow cor.
+Se o número atual da cor do arco-íris for 3, coloque o yellow cor into o rainbow cor.
+Se o número atual da cor do arco-íris for 4, coloque o green cor into o rainbow cor.
+Se o número atual da cor do arco-íris for 5, coloque o blue cor into o rainbow cor.
+Se o número atual da cor do arco-íris for 6, coloque o purple cor into o rainbow cor.
 Coloque o rainbow cor into o context's cor.
 
 Etapas necessárias para que se escolha aleatoriamente um solid cor:
@@ -11389,7 +11389,7 @@ Enque o event.
 
 Etapas necessárias para que se atualize o tela usando um caixa:
 Call "gdi32.dll" "BitBlt" with o tela canvas e o caixa's left e o topo desta caixa e o caixa's width e o caixa's height 
-And o current canvas e o caixa's left e o topo desta caixa e 13369376 [srccopy].
+And o quadro atual e o caixa's left e o topo desta caixa e 13369376 [srccopy].
 
 The registered pedaço é um pedaço igual a 174.
 
@@ -11638,7 +11638,7 @@ Intel $8B8508000000. \ mov eax,[ebp+8] \ o endereço de memória
 Intel $C70000000000. \ mov [eax],0
 
 Etapas necessárias para que se reset o rainbow cors:
-Coloque 0 into o current rainbow cor número.
+Coloque 0 into o número atual da cor do arco-íris.
 
 Etapas necessárias para que se reset um cronômetro:
 Coloque 0 into o cronômetro's contagem.
@@ -12367,14 +12367,14 @@ Convert a cor to um corref.
 Call "gdi32.dll" "SetTextColor" with o canvas e o corref.
 
 Etapas necessárias para que se defina o drawing origin to um spot:
-Call "gdi32.dll" "GetDeviceCaps" with o current canvas e 112 [physicaloffsetx] returning um pair's número x.
-Call "gdi32.dll" "GetDeviceCaps" with o current canvas e 113 [physicaloffsety] returning o número y deste pair.
+Call "gdi32.dll" "GetDeviceCaps" with o quadro atual e 112 [physicaloffsetx] returning um pair's número x.
+Call "gdi32.dll" "GetDeviceCaps" with o quadro atual e 113 [physicaloffsety] returning o número y deste pair.
 Negate o pair.
-Se o current canvas não for o printer canvas, limpe o pair.
-Call "gdi32.dll" "SetViewportOrgEx" with o current canvas e o pair's número x e o pair's número y e nil.
+Se o quadro atual não for o printer canvas, limpe o pair.
+Call "gdi32.dll" "SetViewportOrgEx" with o quadro atual e o pair's número x e o pair's número y e nil.
 Isole o spot.
-Call "gdi32.dll" "LPtoDP" with o current canvas e o spot's whereabouts e 1.
-Call "gdi32.dll" "SetViewportOrgEx" with o current canvas e a coordenada x deste spot e a coordenada y deste spot e nil.
+Call "gdi32.dll" "LPtoDP" with o quadro atual e o spot's whereabouts e 1.
+Call "gdi32.dll" "SetViewportOrgEx" with o quadro atual e a coordenada x deste spot e a coordenada y deste spot e nil.
 
 Etapas necessárias para que se acione um alarme;
 Etapas necessárias para que se ative um alarme;
@@ -12440,10 +12440,10 @@ The shift-out pedaço é um pedaço igual a 14.
 
 Etapas necessárias para que se mostre um console:
 Se o console for inexistente, cancele.
-Save o current canvas.
+Save o quadro atual.
 Draw o console.
 Atualize o tela usando o console's caixa.
-Restore o current canvas.
+Restore o quadro atual.
 
 Etapas necessárias para que se mostre um cursor:
 Call "user32.dll" "SetCursor" with o cursor.
@@ -12453,10 +12453,10 @@ Repita.
 
 Etapas necessárias para que se mostre um terminal:
 Se o terminal for inexistente, cancele.
-Save o current canvas.
+Save o quadro atual.
 Draw o terminal.
 Atualize o tela usando o terminal's caixa.
-Restore o current canvas.
+Restore o quadro atual.
 
 Etapas necessárias para que se shrink um caixa por alguns twips;
 Etapas necessárias para que se indent um caixa alguns twips;
@@ -16536,7 +16536,7 @@ Etapas necessárias para que se unlock um gpbitmap usando um bitmapdata:
 Call "gdiplus.dll" "GdipBitmapUnlockBits" with o gpbitmap e o bitmapdata's whereabouts.
 
 Etapas necessárias para que se unmask everything:
-Call "gdi32.dll" "SelectClipRgn" with o current canvas e 0.
+Call "gdi32.dll" "SelectClipRgn" with o quadro atual e 0.
 
 Etapas necessárias para que se unmask inside um caixa:
 Crie um hrgn usando o caixa.
@@ -16549,7 +16549,7 @@ Unmask inside o hrgn.
 Destroy o hrgn.
 
 Etapas necessárias para que se unmask inside um hrgn:
-Call "gdi32.dll" "ExtSelectClipRgn" with o current canvas e o hrgn e 2 [rgn_or].
+Call "gdi32.dll" "ExtSelectClipRgn" with o quadro atual e o hrgn e 2 [rgn_or].
 
 Etapas necessárias para que se unmask inside um polygon:
 Crie um hrgn usando o polygon.
@@ -16573,11 +16573,11 @@ Destroy o hrgn.
 
 Etapas necessárias para que se unmask outside um hrgn:
 Crie um old hrgn usando o zero caixa.
-Call "gdi32.dll" "GetClipRgn" with o current canvas e o old hrgn returning um número.
+Call "gdi32.dll" "GetClipRgn" with o quadro atual e o old hrgn returning um número.
 Se o número não for 1, limpe o old hrgn.
-Call "gdi32.dll" "SelectClipRgn" with o current canvas e 0.
-Call "gdi32.dll" "ExtSelectClipRgn" with o current canvas e o hrgn e 4 [rgn_diff].
-Call "gdi32.dll" "ExtSelectClipRgn" with o current canvas e o old hrgn e 2 [rgn_or].
+Call "gdi32.dll" "SelectClipRgn" with o quadro atual e 0.
+Call "gdi32.dll" "ExtSelectClipRgn" with o quadro atual e o hrgn e 4 [rgn_diff].
+Call "gdi32.dll" "ExtSelectClipRgn" with o quadro atual e o old hrgn e 2 [rgn_or].
 Destroy o old hrgn.
 
 Etapas necessárias para que se unmask outside um polygon:
@@ -16749,8 +16749,8 @@ Coloque o event queue's first into o event.
 Se o event for inexistente, repita.
 Remove o event from o event queue.
 Se o event's categoria for "fechamento do programa", destroy o event; exit.
-Destroy o current event.
-Coloque o event into o current event.
+Destroy o evento atual.
+Coloque o event into o evento atual.
 
 
 Etapas necessárias para que se aguarde por alguns grains of sand;
