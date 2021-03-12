@@ -209,11 +209,11 @@ An máscara de conjunção lógica é uma mask.
 An ângulo é alguns precise degrees [0 to 3599].
 
 Etapas necessárias para que se posponha um trecho to um file:
-Limpe o i/o error.
+Limpe o i/o erro.
 Call "kernel32.dll" "SetFilePointer" with o file e 0 e 0 e 2 [file_end] returning um result número.
-Se o result número é -1, coloque "Ocorreu um erro na hora de posicionar o ponteiro do arquivo." into o i/o error; exit.
+Se o result número é -1, coloque "Ocorreu um erro na hora de posicionar o ponteiro do arquivo." into o i/o erro; exit.
 Call "kernel32.dll" "WriteFile" with o file e o trecho's first e o trecho's length e um número's whereabouts e 0 returning o result número.
-Se o result número for 0, coloque "Ocorreu um erro na hora de salvar o arquivo." into o i/o error; exit.
+Se o result número for 0, coloque "Ocorreu um erro na hora de salvar o arquivo." into o i/o erro; exit.
 
 Etapas necessárias para que se posponha um pedaço to um string:
 Coloque o length deste string into um saved length.
@@ -423,7 +423,7 @@ Call "kernel32.dll" "GlobalLock" with o printer device mode handle returning um 
 Se o pdevmode for inexistente, cancele.
 Disjuncione logicamente o pdevmode's dmfields with 1 [dm_orientation].
 Coloque 1 [dmorient_portrait] into o pdevmode's dmorientation.
-Se o caixa's width for maior do que o caixa's altura, coloque 2 [dmorient_landscape] into o pdevmode's dmorientation.
+Se o caixa's width for maior do que a altura desta caixa, coloque 2 [dmorient_landscape] into o pdevmode's dmorientation.
 Call "gdi32.dll" "ResetDCA" with o printer canvas e o pdevmode.
 Call "kernel32.dll" "GlobalUnlock" with o printer device mode handle.
 Call "gdi32.dll" "SetGraphicsMode" with o printer canvas e 2 [gm_advanced].
@@ -457,9 +457,9 @@ Posponha "<<" to o current página deste pdf state.
 Posponha "/Type /Page" to o current página deste pdf state.
 Posponha "/Parent " then o pdf state's parent's número then " 0 R" to o current página deste pdf state.
 Coloque o caixa's width menos o tpp times 72 / o tpi into um width.
-Coloque o caixa's altura menos o tpp times 72 / o tpi into um altura.
+Coloque a altura desta caixa menos o tpp times 72 / o tpi into um altura.
 Posponha "/MediaBox [0 0 " then o width then " " then o altura then "]" to o current página deste pdf state.
-Coloque o caixa's altura menos o tpp into o current altura deste pdf state.
+Coloque a altura desta caixa menos o tpp into o current altura deste pdf state.
 Adicione os current contents deste pdf state  usando "contents".
 Posponha "/Contents " then o pdf state's current contents' número then " 0 R" to o current página deste pdf state.
 Posponha "0.05 0 0 0.05 1 1 cm" to os current contents deste pdf state. \ abra matrix to scale 72/1440
@@ -856,7 +856,7 @@ The símbolo de cêntimos é um pedaço igual a 162.
 
 Etapas necessárias para que se centralize um caixa at o base of another caixa:
 Centralize o caixa in o other caixa (horizontally).
-Coloque o caixa's altura into um altura.
+Coloque a altura desta caixa into um altura.
 Coloque o other caixa's base into a base desta caixa.
 Coloque a base desta caixa menos o altura into o topo desta caixa.
 
@@ -1812,7 +1812,7 @@ Coloque o text's wrap alarme into o other text's wrap alarme.
 Coloque o text's horizontal scroll alarme into o other text's horizontal scroll alarme.
 Coloque o text's vertical scroll alarme into o other text's vertical scroll alarme.
 Coloque o text's selection into o other text's selection.
-Coloque o text's modified alarme into o other text's modified alarme.
+Coloque o text's alarme de alteração into o other text's alarme de alteração.
 Coloque o text's last operation into o other text's last operation.
 \ don't copy undos e redos
 
@@ -1884,7 +1884,7 @@ And o wide host name's first
 And o url conjunto's port
 And 0
 Returning o winhttp request's connection.
-Se o winhttp request's connection for 0, coloque "Erro. Não foi possível estabelecer uma conexão." into o i/o error; exit.
+Se o winhttp request's connection for 0, coloque "Erro. Não foi possível estabelecer uma conexão." into o i/o erro; exit.
 
 Etapas necessárias para que se crie um console:
 Allocate memory por o console.
@@ -1892,8 +1892,8 @@ Coloque o lighter cor cinza into o console's border.
 Coloque o lighter cor cinza into o console's fill.
 Coloque o tela's caixa into o console's caixa.
 Coloque o tela's caixa into um caixa.
-Subtraia o default font's altura from a base desta caixa.
-Coloque o caixa's altura dividido por o default font's altura times o default font's altura into um altura.
+Subtraia a altura desta default font from a base desta caixa.
+Coloque a altura desta caixa dividido por a altura desta default font times a altura desta default font into um altura.
 Coloque o topo desta caixa mais o altura into a base desta caixa.
 Centralize o caixa in o tela's caixa (vertically).
 Coloque o topo desta caixa into o caixa's left.
@@ -1903,27 +1903,27 @@ Coloque o caixa into o console's text's caixa.
 Ligue o console's text's wrap alarme.
 Desative o console's text's horizontal scroll alarme.
 Ligue o console's text's vertical scroll alarme.
-Coloque o default font's altura into o console's grid.
+Coloque a altura desta default font into o console's grid.
 Multiplique o console's grid's número x por 2.
 
-Etapas necessárias para que se crie um crypt session with um passphrase string: \ sets i/o error if failure
-Limpe o i/o error.
+Etapas necessárias para que se crie um crypt session with um passphrase string: \ sets i/o erro if failure
+Limpe o i/o erro.
 Allocate memory por o crypt session.
 \ acquire context
 Call "advapi32.dll" "CryptAcquireContextA" with o crypt session's hcryptprov's whereabouts e 0 e "Microsoft Enhanced Cryptographic Provider v1.0"'s first 
 And 1 [prov_rsa_full] e -268435456 [crypt_verifycontext] returning um result número.
-Se o result for 0, coloque "Erro. Não foi possível adquirir o contexto." into o i/o error; destroy o crypt session; exit.
+Se o result for 0, coloque "Erro. Não foi possível adquirir o contexto." into o i/o erro; destroy o crypt session; exit.
 \ crie hash
 Call "advapi32.dll" "CryptCreateHash" with o crypt session's hcryptprov e 32771 [calg_md5] e 0 e 0 
 And o crypt session's hcrypthash's whereabouts returning o result número.
-Se o result for 0, coloque "Erro. Não foi possível criar o hash." into o i/o error; destroy o crypt session; exit.
+Se o result for 0, coloque "Erro. Não foi possível criar o hash." into o i/o erro; destroy o crypt session; exit.
 \ hash passphrase
 Call "advapi32.dll" "CryptHashData" with o crypt session's hcrypthash e o passphrase's first e o passphrase's length e 0 returning o result número.
-Se o result for 0, coloque "Erro. Não foi possível fazer o hash da senha." into o i/o error; destroy o crypt session; exit.
+Se o result for 0, coloque "Erro. Não foi possível fazer o hash da senha." into o i/o erro; destroy o crypt session; exit.
 \ derive session tecla
 Call "advapi32.dll" "CryptDeriveKey" with o crypt session's hcryptprov e 26625 [calg_rc4 stream cipher] e o crypt session's hcrypthash 
 And 8388608 [128 bit] e o crypt session's hcryptkey's whereabouts returning o result número.
-Se o result for 0, coloque "Erro. Não foi possível derivar a chave da sessão." into o i/o error; destroy o crypt session; exit.
+Se o result for 0, coloque "Erro. Não foi possível derivar a chave da sessão." into o i/o erro; destroy o crypt session; exit.
 
 Etapas necessárias para que se crie um dyad:
 Allocate memory por o dyad.
@@ -1989,14 +1989,14 @@ Destroy o hfont of o memory canvas.
 Coloque o gcpresults' lpdx into o font widths' data.
 
 Etapas necessárias para que se crie um gpbitmap usando um trecho:
-Limpe o i/o error.
+Limpe o i/o erro.
 Call "kernel32.dll" "GlobalAlloc" with 2 [gmem_moveable] e o trecho's length returning um handle.
 Call "kernel32.dll" "GlobalLock" with o handle returning um endereço de memória.
 Copy pedaços from o trecho's first to o endereço de memória por o trecho's length.
 Call "kernel32.dll" "GlobalUnlock" with o handle.
 Call "ole32.dll" "CreateStreamOnHGlobal" with o handle e 1 [true] e um istream's whereabouts.
 Call "gdiplus.dll" "GdipCreateBitmapFromStream" with o istream e o gpbitmap's whereabouts returning um número.
-Se o número não for 0, coloque "Não sei como processar este tipo de imagem." into o i/o error; esvazie o gpbitmap.
+Se o número não for 0, coloque "Não sei como processar este tipo de imagem." into o i/o erro; esvazie o gpbitmap.
 Call o istream's vtable's release with o istream.
 
 Etapas necessárias para que se crie um gpimageattributes (grayscale):
@@ -2075,7 +2075,7 @@ And 0 [winhttp_no_proxy_name]
 And 0 [winhttp_no_proxy_bypass] 
 And 0 
 Returning o winhttp request's session.
-Se o winhttp request's session for 0, coloque "Erro. Não foi possível iniciar a conexão." into o i/o error; exit.
+Se o winhttp request's session for 0, coloque "Erro. Não foi possível iniciar a conexão." into o i/o erro; exit.
 
 Etapas necessárias para que se crie um endereço completo in o sistema de arquivos:
 Se o endereço completo é endereço da pasta-format, crie o endereço completo in o sistema de arquivos (pasta)[endereço]; exit.
@@ -2086,18 +2086,18 @@ Isole o endereço completo.
 Remove any trailing barra invertida from o endereço completo.
 Null terminate o endereço completo.
 Call "kernel32.dll" "CreateDirectoryA" with o endereço completo's first e 0 returning um número.
-Limpe o i/o error.
+Limpe o i/o erro.
 Se o número não for 0, cancele.
-Coloque "Erro. Não foi possível criar a pasta '" then o endereço completo then "'." into o i/o error.
+Coloque "Erro. Não foi possível criar a pasta '" then o endereço completo then "'." into o i/o erro.
 
 Etapas necessárias para que se crie um endereço completo in o sistema de arquivos (file):
 Isole o endereço completo.
 Null terminate o endereço completo.
 Call "kernel32.dll" "CreateFileA" with o endereço completo's first e 1073741824 [generic_write] e 0 e 0 e 1 [create_new] e 128 [file_attribute_normal] e 0 returning um handle.
 Call "kernel32.dll" "CloseHandle" with o handle.
-Limpe o i/o error.
+Limpe o i/o erro.
 Se o handle não for -1 [invalid_handle_value], cancele.
-Coloque "Erro. Não foi possível criar o arquivo '" then o endereço completo then "'." into o i/o error.
+Coloque "Erro. Não foi possível criar o arquivo '" then o endereço completo then "'." into o i/o erro.
 
 Etapas necessárias para que se crie um pdf object usando um categoria:
 Allocate memory por o pdf object.
@@ -2153,7 +2153,7 @@ And 0 [winhttp_no_referer]
 And 0 [winhttp_default_accept_types]
 And o secure número
 Returning o winhttp request's request.
-Se o winhttp request's request for 0, coloque "Erro na requisição winhttp. Não foi possível abrir a requisição." into o i/o error; exit.
+Se o winhttp request's request for 0, coloque "Erro na requisição winhttp. Não foi possível abrir a requisição." into o i/o erro; exit.
 
 Etapas necessárias para que se crie um row usando um pedaço:
 Allocate memory por o row.
@@ -2163,25 +2163,25 @@ Etapas necessárias para que se crie um row usando um string:
 Allocate memory por o row.
 Coloque o string into o string deste row.
 
-Etapas necessárias para que se crie um socket usando um host string e um port número: \ this guy creates e connects, sets i/o error if existe um problem
-Limpe o i/o error.
+Etapas necessárias para que se crie um socket usando um host string e um port número: \ this guy creates e connects, sets i/o erro if existe um problem
+Limpe o i/o erro.
 \ obtenha sockaddr
 Obtenha um sockaddr usando o host.
-Se o i/o error não estiver em branco, cancele.
+Se o i/o erro não estiver em branco, cancele.
 Coloque 2 [af_inet] into o sockaddr's sin_family.
 Coloque o port into o sockaddr's sin_port.
 \ crie socket 
 Call "ws2_32.dll" "socket" with 2 [af_inet] e 1 [sock_stream] e 0 [ipproto_ip] returning o socket.
-Se o socket é -1, coloque "Erro. Não foi possível criar o soquete." into o i/o error; exit.
+Se o socket é -1, coloque "Erro. Não foi possível criar o soquete." into o i/o erro; exit.
 \ connect socket
 Call "ws2_32.dll" "connect" with o socket e o sockaddr's whereabouts e o sockaddr's magnitude returning um result número.
-Se o result não for 0, coloque "Erro. Falha na conexão com o soquete." into o i/o error; exit.
+Se o result não for 0, coloque "Erro. Falha na conexão com o soquete." into o i/o erro; exit.
 \ abra send timeout 30 seconds
 Call "ws2_32.dll" "setsockopt" with o socket e 65535 e 4101 [so_sndtimo] e 30 seconds' whereabouts e 4 returning o result número.
-Se o result não for 0, coloque "Erro. Não foi possível definir o tempo limite de recepção 4101 so_sndtimo." into o i/o error; exit.
+Se o result não for 0, coloque "Erro. Não foi possível definir o tempo limite de recepção 4101 so_sndtimo." into o i/o erro; exit.
 \ abra receive timeout 30 seconds
 Call "ws2_32.dll" "setsockopt" with o socket e 65535 e 4102 [so_rcvtimeo] e 30 seconds' whereabouts e 4 returning o result número.
-Se o result não for 0, coloque "Erro. Não foi possível definir o tempo limite de recepção 4102 so_rcvtimeo." into o i/o error; exit.
+Se o result não for 0, coloque "Erro. Não foi possível definir o tempo limite de recepção 4102 so_rcvtimeo." into o i/o erro; exit.
 
 Etapas necessárias para que se crie um conjunto de texto usando um string:
 Allocate memory por o conjunto de texto.
@@ -2237,11 +2237,11 @@ Etapas necessárias para que se crie um winhttp request por posting to um url:
 Allocate memory por o winhttp request.
 Convert o url to um url conjunto.
 Crie o open handle of o winhttp request.
-Se o i/o error não estiver em branco, destroy o winhttp request; exit.
+Se o i/o erro não estiver em branco, destroy o winhttp request; exit.
 Crie o connect handle of o winhttp request using o url conjunto.
-Se o i/o error não estiver em branco, destroy o winhttp request; exit.
+Se o i/o erro não estiver em branco, destroy o winhttp request; exit.
 Crie o request handle of o winhttp request using o url conjunto.
-Se o i/o error não estiver em branco, destroy o winhttp request; exit.
+Se o i/o erro não estiver em branco, destroy o winhttp request; exit.
 
 The console é um console.
 
@@ -3877,7 +3877,7 @@ Diga sim.
 
 Etapas necessárias para que se determine se um text foi modified:
 Se o text for inexistente, diga não.
-Se o text's modified alarme estiver ativo, diga sim.
+Se o text's alarme de alteração estiver ativo, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se existe something to backspace in um text:
@@ -4014,15 +4014,15 @@ Escolha aleatoriamente um número between 1 e 100.
 Se o número for menor do que 51, diga sim.
 Diga não.
 
-Etapas necessárias para que se decrypt um trecho usando um passphrase string: \ sets i/o error if failure
-Limpe o i/o error.
+Etapas necessárias para que se decrypt um trecho usando um passphrase string: \ sets i/o erro if failure
+Limpe o i/o erro.
 Crie um crypt session usando o passphrase.
 Se o crypt session for inexistente, cancele.
 Convert o trecho como um texto da cifra binária to um texto hexadecimal.
 Coloque o texto hexadecimal's length into um length.
 Call "advapi32.dll" "CryptDecrypt" with o crypt session's hcryptkey e 0 e 1 e 0 e o texto hexadecimal's first
 And o length's whereabouts returning um result número.
-Se o result número for 0, coloque "Ocorreu um erro na hora de tentar decifrar os dados." into o i/o error; destroy o crypt session; exit.
+Se o result número for 0, coloque "Ocorreu um erro na hora de tentar decifrar os dados." into o i/o erro; destroy o crypt session; exit.
 Destroy o crypt session.
 Coloque o texto hexadecimal into o trecho.
 
@@ -4103,22 +4103,22 @@ Se o item não for found, pare.
 Coloque o endereço completo into another endereço completo.
 Posponha o item's designador to o other endereço completo.
 Destroy o other endereço completo in o sistema de arquivos.
-Se o i/o error não estiver em branco, cancele.
+Se o i/o erro não estiver em branco, cancele.
 Repita.
 Isole o endereço completo.
 Null terminate o endereço completo.
 Call "kernel32.dll" "RemoveDirectoryA" with o endereço completo's first returning um número.
-Limpe o i/o error.
+Limpe o i/o erro.
 Se o número não for 0, cancele.
-Coloque "Erro. Não foi possível apagar a pasta '" then o endereço completo then "'." into o i/o error.
+Coloque "Erro. Não foi possível apagar a pasta '" then o endereço completo then "'." into o i/o erro.
 
 Etapas necessárias para que se destroy um endereço completo in o sistema de arquivos (file):
 Isole o endereço completo.
 Null terminate o endereço completo.
 Call "kernel32.dll" "DeleteFileA" with o endereço completo's first returning um número.
-Limpe o i/o error.
+Limpe o i/o erro.
 Se o número não for 0, cancele.
-Coloque "Erro. Não foi possível apagar o arquivo '" then o endereço completo then "'." into o i/o error.
+Coloque "Erro. Não foi possível apagar o arquivo '" then o endereço completo then "'." into o i/o erro.
 
 Etapas necessárias para que se destroy um picture:
 Se o picture for inexistente, cancele.
@@ -4539,7 +4539,7 @@ Stroke o line o third twips long.
 Etapas necessárias para que se draw um line como high como um caixa with um cor;
 Etapas necessárias para que se draw um line como tall como um caixa with um cor:
 Coloque a cor into o context's cor.
-Stroke o caixa's altura.
+Stroke a altura desta caixa.
 
 Etapas necessárias para que se draw um line como wide como um caixa with um cor:
 Coloque a cor into o context's cor.
@@ -4917,7 +4917,7 @@ Isole o spot.
 Include o font in o current pdf.
 Include o font in o pdf state's current página.
 Encontre um definition pdf object usando o font's name e o pdf state's font index.
-Se o definition for inexistente, cancele. \ error
+Se o definition for inexistente, cancele. \ erro
 Crie uma font info usando o font e o string.
 Output o pdf border usando a cor.
 Output o pdf fill usando a cor.
@@ -5005,8 +5005,8 @@ Se o endereço completo é endereço da pasta-format, duplicate o endereço completo
 Se o endereço completo é file-format, duplicate o endereço completo to o other endereço completo in o sistema de arquivos (file).
 
 Etapas necessárias para que se duplicate um endereço completo to another endereço completo in o sistema de arquivos (pasta)[endereço]:
-Se o endereço completo estiver in o other endereço completo, coloque "Ocorreu um erro na hora de duplicar a pasta '" then o endereço completo then "' - erro de recursão inválida." into o i/o error; exit.
-Se o endereço completo não estiver in o sistema de arquivos, coloque "Ocorreu um erro na hora de duplicar a pasta '" then o endereço completo then "'." into o i/o error; exit.
+Se o endereço completo estiver in o other endereço completo, coloque "Ocorreu um erro na hora de duplicar a pasta '" then o endereço completo then "' - erro de recursão inválida." into o i/o erro; exit.
+Se o endereço completo não estiver in o sistema de arquivos, coloque "Ocorreu um erro na hora de duplicar a pasta '" then o endereço completo then "'." into o i/o erro; exit.
 Se o other endereço completo não estiver in o sistema de arquivos, crie o other endereço completo in o sistema de arquivos.
 Percorra.
 Obtenha um item from o endereço completo.
@@ -5024,9 +5024,9 @@ Null terminate o endereço completo.
 Isole o other endereço completo.
 Null terminate o other endereço completo.
 Call "kernel32.dll" "CopyFileA" with o endereço completo's first e o other endereço completo's first e 0 returning um número.
-Limpe o i/o error.
+Limpe o i/o erro.
 Se o número não for 0, defina  o endereço completo to read-write mode; exit.
-Coloque "Ocorreu um erro na hora de duplicar o arquivo '" then o endereço completo then "'." into o i/o error.
+Coloque "Ocorreu um erro na hora de duplicar o arquivo '" then o endereço completo then "'." into o i/o erro.
 
 An dyad é uma coisa with
 An name,
@@ -5053,15 +5053,15 @@ An message.
 
 The en-hífem é um pedaço igual a 150.
 
-Etapas necessárias para que se encrypt um trecho usando um passphrase string: \ sets i/o error if failure
-Limpe o i/o error.
+Etapas necessárias para que se encrypt um trecho usando um passphrase string: \ sets i/o erro if failure
+Limpe o i/o erro.
 Crie um crypt session usando o passphrase.
 Se o crypt session for inexistente, cancele.
 Coloque o trecho into um temp trecho.
 Coloque o temp trecho's length into um length.
 Call "advapi32.dll" "CryptEncrypt" with o crypt session's hcryptkey e 0 e 1 e 0 e o temp trecho's first
 And o length's whereabouts e o length returning um result número.
-Se o result número for 0, coloque "Ocorreu um erro na hora de criptografar os dados." into o i/o error; destroy o crypt session; exit.
+Se o result número for 0, coloque "Ocorreu um erro na hora de criptografar os dados." into o i/o erro; destroy o crypt session; exit.
 Destroy o crypt session.
 Convert o temp trecho to um texto da cifra binária.
 Coloque o texto da cifra binária into o trecho.
@@ -5439,12 +5439,12 @@ Remove trailing pedaços from o nome do arquivo s/ extensão usando o extensão's l
 
 Etapas necessárias para que se extract um picture usando um caixa:
 Coloque o caixa's width dividido por o tpp into um width.
-Coloque o caixa's altura dividido por o tpp into um altura.
+Coloque a altura desta caixa dividido por o tpp into um altura.
 Call "gdiplus.dll" "GdipCreateBitmapFromScan0" with o width e o altura e 0 e 137224 [pixelformat24bpprgb] e 0 e um gpbitmap's whereabouts.
 Call "gdiplus.dll" "GdipGetImageGraphicsContext" with o gpbitmap e um gpgraphic's whereabouts.
 Call "gdiplus.dll" "GdipGetDC" with o gpgraphic e um bitmap canvas' whereabouts.
 Normalize o bitmap canvas.
-Call "gdi32.dll" "BitBlt" with o bitmap canvas e 0 e 0 e o caixa's width e o caixa's altura
+Call "gdi32.dll" "BitBlt" with o bitmap canvas e 0 e 0 e o caixa's width e a altura desta caixa
 And o quadro atual e o caixa's left e o topo desta caixa e 13369376 [srccopy].
 Call "gdiplus.dll" "GdipReleaseDC" with o gpgraphic e o bitmap canvas.
 Call "gdiplus.dll" "GdipDeleteGraphics" with o gpgraphic.
@@ -5946,14 +5946,14 @@ Call "gdi32.dll" "GetCharABCWidthsA" with o canvas e o string's first's target e
 Coloque o abc's abca into o abca.
 
 Etapas necessárias para que se obtenha alguns addrinfo routines:
-Limpe o i/o error.
+Limpe o i/o erro.
 Call "kernel32.dll" "LoadLibraryA" with "ws2_32.dll"'s first returning um handle.
-Se o handle for 0, coloque "No se pudo leer ws2_32.dll." into o i/o error; exit.
+Se o handle for 0, coloque "No se pudo leer ws2_32.dll." into o i/o erro; exit.
 Call "kernel32.dll" "GetProcAddress" with o handle e "getaddrinfo"'s first returning um endereço de memória.
-Se o endereço de memória for inexistente, coloque "Lamento que estas rutinas solo funcionan en Windows XP o superior." into o i/o error; exit.
+Se o endereço de memória for inexistente, coloque "Lamento que estas rutinas solo funcionan en Windows XP o superior." into o i/o erro; exit.
 Coloque o endereço de memória into o addrinfo routines' getaddrinfo endereço de memória.
 Call "kernel32.dll" "GetProcAddress" with o handle e "freeaddrinfo"'s first returning o endereço de memória.
-Se o endereço de memória for inexistente, coloque "Infelizmente essas rotinas só funcionam no Windows XP ou numa versão superior do Windows." into o i/o error; exit.
+Se o endereço de memória for inexistente, coloque "Infelizmente essas rotinas só funcionam no Windows XP ou numa versão superior do Windows." into o i/o erro; exit.
 Coloque o endereço de memória into o addrinfo routines' freeaddrinfo endereço de memória.
 
 Etapas necessárias para que se obtenha um caixa por o caret in um text:
@@ -6151,13 +6151,13 @@ Repita.
 Etapas necessárias para que se obtenha um ip address usando um host string:
 Limpe o ip address.
 Obtenha um sockaddr usando o host string.
-Se o i/o error não estiver em branco, cancele.
+Se o i/o erro não estiver em branco, cancele.
 Coloque o sockaddr's sin_addr's s_addr into o ip address' número.
 Call "ws2_32.dll" "inet_ntoa" with o ip address' número returning um pchar.
 Convert o pchar to o ip address' string.
 
 Etapas necessárias para que se obtenha um item (not first time):
-Limpe o i/o error.
+Limpe o i/o erro.
 Call "kernel32.dll" "FindNextFileA" with o item's handle e o item's win32finddata's whereabouts returning um número.
 Se o número não for 0, ajuste o item; exit.
 Limpe a categoria deste item.
@@ -6170,7 +6170,7 @@ Se o item's categoria estiver em branco, obtenha o item from o endereço completo
 Obtenha o item (not first time).
 
 Etapas necessárias para que se obtenha um item from um endereço completo (first time):
-Limpe o i/o error.
+Limpe o i/o erro.
 Isole o endereço completo.
 Posponha "*.*" to o endereço completo.
 Null terminate o endereço completo.
@@ -6207,7 +6207,7 @@ Se o alinhamento for "left", obtenha o offset pair's número x usando o string e 
 Se o alinhamento for "right", obtenha o offset pair's número x usando o string e o caixa (fast - right).
 Se o alinhamento for "center", obtenha o offset pair's número x usando o string e o caixa (fast - center).
 Call "gdi32.dll" "GetTextMetricsA" with o memory canvas e um textmetric's whereabouts.
-Adicione o caixa's altura menos o textmetric's tmheight dividido por 2 to o offset pair's número y.
+Adicione a altura desta caixa menos o textmetric's tmheight dividido por 2 to o offset pair's número y.
 
 Etapas necessárias para que se obtenha um outlinetextmetric usando um font:
 Crie o hfont of o memory canvas usando o font.
@@ -6339,20 +6339,20 @@ Call "kernel32.dll" "GetFileAttributesExA" with o endereço completo's first e 0 
 Coloque o win32finddata's nfilesizelow into o size.
 
 Etapas necessárias para que se obtenha um sockaddr usando um host string:
-Limpe o i/o error.
+Limpe o i/o erro.
 \ preSuspenda strings
 Isole o host string.
 Null terminate o host string.
 \ obtenha o function addresses
 Obtenha alguns addrinfo routines.
-Se o i/o error não estiver em branco, cancele.
+Se o i/o erro não estiver em branco, cancele.
 \ obtenha o sockaddr
 Coloque 2 [af_inet] into um addrinfo's ai_family.
 Coloque 1 [sock_stream] into o addrinfo's ai_sockettype.
 Coloque 6 [ipproto_tcp] into o addrinfo's ai_protocol.
 Call o addrinfo routines' getaddrinfo with o host string's first e 0 e o addrinfo's whereabouts e um addrinfoptr's whereabouts returning um result número.
-Se o result número não for 0, coloque "Não foi possível encontrar o nome do seguinte anfitrião (host): '" then o host then "'." into o i/o error; exit.
-Se o addrinfoptr for inexistente, coloque "Não foi possível encontrar o nome do seguinte anfitrião (host): '" then o host then "'." into o i/o error; exit.
+Se o result número não for 0, coloque "Não foi possível encontrar o nome do seguinte anfitrião (host): '" then o host then "'." into o i/o erro; exit.
+Se o addrinfoptr for inexistente, coloque "Não foi possível encontrar o nome do seguinte anfitrião (host): '" then o host then "'." into o i/o erro; exit.
 Coloque o addrinfoptr's ai_addr's target into o sockaddr.
 Call o addrinfo routines' freeaddrinfo with o addrinfoptr.
 
@@ -6549,7 +6549,7 @@ Gerencie any wm-activate with o w-param (activate).
 Etapas necessárias para que se gerencie any wm-activate with um w-param (activate):
 Call "user32.dll" "SetFocus" with o main window.
 Call "user32.dll" "ClipCursor" with 0.
-\ seterrormode(sem_failcriticalerrors) \ keeps certain disk errors from appearing
+\ seterrormode(sem_failcriticalerrors) \ keeps certain disk erros from appearing
 Crie um event.
 Coloque "activate" into o event's categoria.
 \Coloque "activar" into o event's clase.
@@ -6964,7 +6964,7 @@ Coloque o text's redos' last into um third text.
 Remove o third text from o text's redos.
 Copy o guts of o third text into o text.
 Destroy o third text.
-Ligue o text's modified alarme.
+Ligue o text's alarme de alteração.
 
 Etapas necessárias para que se gerencie reverse usando um text:
 Se o text for inexistente, cancele.
@@ -6995,7 +6995,7 @@ Coloque o text's undos' last into um third text.
 Remove o third text from o text's undos.
 Copy o guts of o third text into o text.
 Destroy o third text.
-Ligue o text's modified alarme.
+Ligue o text's alarme de alteração.
 
 Etapas necessárias para que se gerencie uppercase usando um text:
 Se o text for inexistente, cancele.
@@ -7053,7 +7053,7 @@ The i-beam cursor é um cursor.
 
 The tecla I/i é uma tecla igual a 73.
 
-\the i/o error é um string.
+\the i/o erro é um string.
 
 An iid é um uuid.
 
@@ -8383,7 +8383,7 @@ Obtenha um item from o endereço completo.
 Se o item não for found, cancele.
 Se o item's categoria não for "file", repita.
 Read o item's endereço completo into um trecho.
-Se o i/o error não estiver em branco, repita.
+Se o i/o erro não estiver em branco, repita.
 Load o lexicon usando o trecho.
 Repita.
 
@@ -9406,21 +9406,21 @@ The one-half pedaço é um pedaço igual a 189.
 The one-quarter pedaço é um pedaço igual a 188.
 
 Etapas necessárias para que se open um file usando um endereço completo:
-Limpe o i/o error.
+Limpe o i/o erro.
 Extract um endereço da pasta from o endereço completo.
-Se o endereço da pasta não estiver in o sistema de arquivos, coloque "A Pasta '" then o endereço da pasta then "' não existe." into o i/o error; exit.
+Se o endereço da pasta não estiver in o sistema de arquivos, coloque "A Pasta '" then o endereço da pasta then "' não existe." into o i/o erro; exit.
 Ligue o endereço completo to read-write mode.
 Isole o endereço completo.
 Null terminate o endereço completo.
 Call "kernel32.dll" "CreateFileA" with o endereço completo's first e -1073741824 [generic_read+generic_write] e 0 e 0 e 4 [open_always] 
 And -2147483520 [file_flag_write_through ou file_attribute_normal] e 0 returning o file.
-Se o file é -1 [invalid_handle_value], coloque "Ocorreu um erro na hora de abrir o arquivo '" then o endereço completo then "'." into o i/o error; exit.
+Se o file é -1 [invalid_handle_value], coloque "Ocorreu um erro na hora de abrir o arquivo '" then o endereço completo then "'." into o i/o erro; exit.
 
 Etapas necessárias para que se open um file usando um endereço completo e alguns milliseconds:
 Start um cronômetro.
 Percorra.
 Open o file usando o endereço completo.
-Se o i/o error estiver em branco, cancele.
+Se o i/o erro estiver em branco, cancele.
 Se o cronômetro's ticks são greater do que o milliseconds, cancele.
 Repita.
 
@@ -9799,7 +9799,7 @@ Coloque o solid cor into o context's cor.
 Etapas necessárias para que se escolha aleatoriamente um spot anywhere in o base uma fração of um caixa;
 Etapas necessárias para que se escolha aleatoriamente um spot in o base uma fração of um caixa:
 Isole o caixa.
-Coloque o caixa's altura times a fração into alguns twips.
+Coloque a altura desta caixa times a fração into alguns twips.
 Coloque a base desta caixa menos o twips into o topo desta caixa.
 Escolha aleatoriamente o spot in o caixa.
 
@@ -9812,7 +9812,7 @@ Etapas necessárias para que se escolha aleatoriamente um spot anywhere in o midd
 Etapas necessárias para que se escolha aleatoriamente um spot in o middle uma fração of um caixa:
 Isole o caixa.
 Coloque o caixa's center's y into um coord.
-Coloque o caixa's altura times a fração dividido por 2 into um número.
+Coloque a altura desta caixa times a fração dividido por 2 into um número.
 Coloque o coord menos o número into o topo desta caixa.
 Coloque o coord mais o número into a base desta caixa.
 Escolha aleatoriamente o spot in o caixa.
@@ -9827,7 +9827,7 @@ Etapas necessárias para que se escolha aleatoriamente um spot anywhere in o topo
 Etapas necessárias para que se escolha aleatoriamente um spot in o topo middle uma fração of um caixa:
 Isole o caixa.
 Coloque o caixa's center's y into um coord.
-Coloque o caixa's altura times a fração into um número.
+Coloque a altura desta caixa times a fração into um número.
 Coloque o coord menos o número into o topo desta caixa.
 Coloque o coord into a base desta caixa.
 Escolha aleatoriamente o spot in o caixa.
@@ -10011,15 +10011,15 @@ Intel $898804000000. \ mov [eax+4],ecx \ o subtexto's last
 
 Etapas necessárias para que se post um data string to um url e receive um response string: \ only works with http e https
 Limpe o response.
-Limpe o i/o error.
+Limpe o i/o erro.
 Crie um winhttp request por posting to o url.
-Se o i/o error não estiver em branco, cancele.
+Se o i/o erro não estiver em branco, cancele.
 Send o data to o winhttp request.
-Se o i/o error não estiver em branco, destroy o winhttp request; exit.
+Se o i/o erro não estiver em branco, destroy o winhttp request; exit.
 Receive o response from o winhttp request.
-Se o i/o error não estiver em branco, destroy o winhttp request; exit.
+Se o i/o erro não estiver em branco, destroy o winhttp request; exit.
 Read o response from o winhttp request.
-Se o i/o error não estiver em branco, destroy o winhttp request; exit.
+Se o i/o erro não estiver em branco, destroy o winhttp request; exit.
 Destroy o winhttp request.
 
 The pound-sign pedaço é um pedaço igual a 163.
@@ -10823,10 +10823,10 @@ Coloque o systemtime's wminute into o date/time's minute.
 Coloque o systemtime's wsecond into o date/time's second.
 Coloque o systemtime's wmilliseconds into o date/time's millisecond.
 
-Etapas necessárias para que se coloque o system's last error into um número:
+Etapas necessárias para que se coloque o system's last erro into um número:
 Call "kernel32.dll" "GetLastError" returning o número.
 
-Etapas necessárias para que se coloque o system's last winsock error into um número:
+Etapas necessárias para que se coloque o system's last winsock erro into um número:
 Call "ws2_32.dll" "WSAGetLastError" returning o número.
 
 Etapas necessárias para que se coloque o system's tick contagem into alguns ticks: \ wraps cada 24.8 days ou so
@@ -11082,7 +11082,7 @@ Repita.
 Etapas necessárias para que se read o Bíblia usando um endereço completo:
 Se o Bíblia não for inexistente, cancele.
 Read o endereço completo into um trecho.
-Se o i/o error não estiver em branco, cancele.
+Se o i/o erro não estiver em branco, cancele.
 Allocate memory por o Bíblia.
 Lance um percorredor on o trecho.
 Percorra.
@@ -11110,12 +11110,12 @@ Desmanche all events.
 Atualize o cursor.
 
 Etapas necessárias para que se read um file into um trecho:
-Limpe o i/o error.
+Limpe o i/o erro.
 Call "kernel32.dll" "GetFileSize" with o file e nil returning um size.
 Reassign o trecho's first usando o size.
 Coloque o trecho's first mais o size menos 1 into o trecho's last.
 Call "kernel32.dll" "ReadFile" with o file e o trecho's first e o size e um número's whereabouts e 0 returning um result número.
-Se o result número for 0, coloque "Ocorreu um erro na hora de tentar ler o arquivo." into o i/o error; exit.
+Se o result número for 0, coloque "Ocorreu um erro na hora de tentar ler o arquivo." into o i/o erro; exit.
 
 Etapas necessárias para que se read um alarme from um console:
 Read um string from o console.
@@ -11131,27 +11131,27 @@ Convert o string to o número.
 
 Etapas necessárias para que se load um endereço completo into um trecho;
 Etapas necessárias para que se read um endereço completo into um trecho:
-Limpe o i/o error.
+Limpe o i/o erro.
 Isole o endereço completo.
 Null terminate o endereço completo.
-Se o endereço completo não estiver in o sistema de arquivos, coloque "O Arquivo '" then o endereço completo then "' não existe." into o i/o error; exit.
+Se o endereço completo não estiver in o sistema de arquivos, coloque "O Arquivo '" then o endereço completo then "' não existe." into o i/o erro; exit.
 \ abra o endereço completo to read-write mode.
 Call "kernel32.dll" "CreateFileA" with o endereço completo's first e -2147483648 [generic_read] e 3 [file_share_read+file_share_write] e 0 
 And 3 [open_existing] e 0 e 0 returning um handle.
-Se o handle é -1 [invalid_handle_value], coloque "Ocorreu um erro na hora de tentar abrir o arquivo '" then o endereço completo then "'." into o i/o error; exit.
+Se o handle é -1 [invalid_handle_value], coloque "Ocorreu um erro na hora de tentar abrir o arquivo '" then o endereço completo then "'." into o i/o erro; exit.
 Call "kernel32.dll" "GetFileSize" with o handle e nil returning um size.
 Reassign o trecho's first usando o size.
 Coloque o trecho's first mais o size menos 1 into o trecho's last.
 Call "kernel32.dll" "ReadFile" with o handle e o trecho's first e o size e um número's whereabouts e 0 returning o número.
 Call "kernel32.dll" "CloseHandle" with o handle.
 Se o número não for 0, cancele.
-Coloque "Ocorreu um erro na hora de tentar ler o arquivo '" then o endereço completo then "'." into o i/o error.
+Coloque "Ocorreu um erro na hora de tentar ler o arquivo '" then o endereço completo then "'." into o i/o erro.
 
 Etapas necessárias para que se load um endereço completo into um picture:
 
 Etapas necessárias para que se read um endereço completo into um picture:
 Read o endereço completo into um trecho.
-Se o i/o error não estiver em branco, esvazie o picture; exit.
+Se o i/o erro não estiver em branco, esvazie o picture; exit.
 Crie o picture usando o trecho.
 
 Etapas necessárias para que se read um reply from um terminal:
@@ -11184,27 +11184,27 @@ Percorra.
 Coloque 0 into um size. 
 Call "winhttp.dll" "WinHttpqueryDataAvailable"
 With o winhttp request's request e o size's whereabouts returning um result número.
-Se o result for 0, coloque "Erro. Não foi possível consultar os dados disponíveis." into o i/o error; limpe o response; break.
+Se o result for 0, coloque "Erro. Não foi possível consultar os dados disponíveis." into o i/o erro; limpe o response; break.
 Coloque o response's length into um saved length.
 Reassign o response's first usando o saved length mais o trecho size.
 Coloque o response's first mais o saved length into um endereço de memória.
 Call "winhttp.dll" "WinHttpReadData" with o winhttp request's request e o endereço de memória
 And o trecho size e um contagem's whereabouts returning o result número.
-Se o result número for 0, coloque "Ocorreu um erro na hora de ler os dados." into o i/o error; limpe o response; break.
+Se o result número for 0, coloque "Ocorreu um erro na hora de ler os dados." into o i/o erro; limpe o response; break.
 Coloque o endereço de memória mais o contagem menos 1 into o response's last.
 Se o contagem for 0, pare.
 Repita.
 
 Etapas necessárias para que se read stdin into um trecho:
-Limpe o i/o error.
+Limpe o i/o erro.
 Limpe o trecho.
 Encontre um string usando o environment variables e "CONTENT_LENGTH".
-Se o string estiver em branco, coloque "Ocorreu um erro na hora de obter o conteúdo de comprimento 'CONTENT_LENGTH'." into o i/o error; exit.
+Se o string estiver em branco, coloque "Ocorreu um erro na hora de obter o conteúdo de comprimento 'CONTENT_LENGTH'." into o i/o erro; exit.
 Convert o string into um length.
 Se o length for 0, cancele.
 Reassign o trecho's first usando o length.
 Call "kernel32.dll" "ReadFile" with o stdin handle e o trecho's first e o length e um número's whereabouts e nil.
-Se o número não for o length, coloque "Error ao ler dados do fluxo de entrada padrão 'stdin'." into o i/o error; limpe o trecho; exit.
+Se o número não for o length, coloque "Error ao ler dados do fluxo de entrada padrão 'stdin'." into o i/o erro; limpe o trecho; exit.
 Coloque o trecho's first mais o length menos 1 into o trecho's last.
 
 Etapas necessárias para que se read um string from um console:
@@ -11213,15 +11213,15 @@ Read o console into o string.
 Etapas necessárias para que se read um url into um trecho:
 \ prepare
 Limpe o trecho.
-Limpe o i/o error.
+Limpe o i/o erro.
 \ internet open
 Call "wininet.dll" "InternetOpenA" with o module's name's first e 0 [internet_open_type_preconfig] e nil e nil returning um internet handle.
-Se o internet handle for 0, coloque "Erro. Não foi possível se conectar à internet. Verifique sua conexão" into o i/o error; exit.
+Se o internet handle for 0, coloque "Erro. Não foi possível se conectar à internet. Verifique sua conexão" into o i/o erro; exit.
 \ internet open url
 Isole o url.
 Null terminate o url.
 Call "wininet.dll" "InternetOpenUrlA" with o internet handle e o url's first e nil e 0 e 0 e 0 returning um url handle.
-Se o url handle for 0, coloque "Erro. Não foi possível acessar a URL '" then o url then "'." into o i/o error; call "wininet.dll" "InternetCloseHandle" with o internet handle; exit.
+Se o url handle for 0, coloque "Erro. Não foi possível acessar a URL '" then o url then "'." into o i/o erro; call "wininet.dll" "InternetCloseHandle" with o internet handle; exit.
 \ read o file
 Coloque 64 kilopedaços into um trecho size.
 Percorra.
@@ -11229,7 +11229,7 @@ Coloque o trecho's length into um saved length.
 Reassign o trecho's first usando o saved length mais o trecho size.
 Coloque o trecho's first mais o saved length into um endereço de memória.
 Call "wininet.dll" "InternetReadFile" with o url handle e o endereço de memória e o trecho size e um contagem's whereabouts returning um result número.
-Se o result número for 0, coloque "Ocorreu um erro na hora de ler a URL'" then o url then "'." into o i/o error; break.
+Se o result número for 0, coloque "Ocorreu um erro na hora de ler a URL'" then o url then "'." into o i/o erro; break.
 Coloque o endereço de memória mais o contagem menos 1 into o trecho's last.
 Se o contagem for 0, pare.
 Repita.
@@ -11253,7 +11253,7 @@ Round o quantidade de pedaços up to o nearest power of two.
 Call "kernel32.dll" "HeapReAlloc" with o heap endereço de memória e 8 [heap_zero_memory] e o endereço de memória e o quantidade de pedaços returning o endereço de memória.
 
 Etapas necessárias para que se receive um trecho from um socket:
-Limpe o i/o error.
+Limpe o i/o erro.
 Limpe o trecho.
 Coloque 8 kilopedaços into um trecho size.
 Percorra.
@@ -11263,7 +11263,7 @@ Reassign o trecho's first usando o saved length mais o trecho size.
 Coloque o trecho's first mais o saved length into um endereço de memória.
 Call "ws2_32.dll" "recv" with o socket e o endereço de memória e o trecho size e 0 returning um contagem.
 Se o contagem não for -1 [socket_error], coloque o endereço de memória mais o contagem menos 1 into o trecho's last; exit.
-Se o system's last winsock error não for 10040 [wsamsgsize], coloque "Ocorreu um erro no recebimento dos dados." into o i/o error; limpe o trecho; exit.
+Se o system's last winsock erro não for 10040 [wsamsgsize], coloque "Ocorreu um erro no recebimento dos dados." into o i/o erro; limpe o trecho; exit.
 Coloque o endereço de memória mais o contagem menos 1 into o trecho's last.
 Repita.
 
@@ -11273,7 +11273,7 @@ Call "winhttp.dll" "WinHttpReceiveResponse"
 With o winhttp request's request
 And 0
 Returning um result número.
-Se o result for 0, coloque "No pude enviar o pedido." into o i/o error; exit.
+Se o result for 0, coloque "No pude enviar o pedido." into o i/o erro; exit.
 
 An recipient é um string.
 
@@ -11334,7 +11334,7 @@ Coloque o mouse's spot into o spot deste event.
 Enque o event.
 
 Etapas necessárias para que se atualize o tela usando um caixa:
-Call "gdi32.dll" "BitBlt" with o tela canvas e o caixa's left e o topo desta caixa e o caixa's width e o caixa's altura 
+Call "gdi32.dll" "BitBlt" with o tela canvas e o caixa's left e o topo desta caixa e o caixa's width e a altura desta caixa 
 And o quadro atual e o caixa's left e o topo desta caixa e 13369376 [srccopy].
 
 The registered pedaço é um pedaço igual a 174.
@@ -11350,11 +11350,11 @@ Copy o text into another text.
 Redimensione proporcionalmente o other text to 1/1.
 Posponha o other text to o text's undos.
 Limite o text's undos to o max text undos.
-Ligue o text's modified alarme.
+Ligue o text's alarme de alteração.
 
 Etapas necessárias para que se relembre um text with um operation:
 Se o text for inexistente, cancele.
-Se o text's last operation é o operation, acione  o text's modified alarme; exit.
+Se o text's last operation é o operation, acione  o text's alarme de alteração; exit.
 Relembre o text.
 Coloque o operation into o text's last operation.
 
@@ -11524,9 +11524,9 @@ Isole o other endereço completo.
 Remove any trailing barra invertida from o other endereço completo.
 Null terminate o other endereço completo.
 Call "kernel32.dll" "MoveFileA" with o endereço completo's first e o other endereço completo's first returning um número.
-Limpe o i/o error.
+Limpe o i/o erro.
 Se o número não for 0, cancele.
-Coloque "Ocorreu um erro ao renomear o arquivo '" then o endereço completo then "'." into o i/o error.
+Coloque "Ocorreu um erro ao renomear o arquivo '" then o endereço completo then "'." into o i/o erro.
 
 Etapas necessárias para que se renumber alguns rows:
 Obtenha um row from o rows.
@@ -12192,13 +12192,13 @@ An caret column#, um caret row#, um caret at o caret column#.
 The ponto&vírgula é um pedaço igual a 59.
 
 Etapas necessárias para que se send um trecho to um socket:
-Limpe o i/o error.
+Limpe o i/o erro.
 Coloque o trecho's first into um endereço de memória.
 Coloque o trecho's length into um length.
 Percorra.
 Se o length for 0, pare.
 Call "ws2_32.dll" "send" with o socket e o endereço de memória e o length e 0 returning um número.
-Se o número é -1 [socket_error], coloque "Ocorreu um erro na hora de enviar dados." into o i/o error; exit.
+Se o número é -1 [socket_error], coloque "Ocorreu um erro na hora de enviar dados." into o i/o erro; exit.
 Subtraia o número from o length.
 Adicione o número to o endereço de memória.
 Repita.
@@ -12214,33 +12214,33 @@ And o data's length
 And o data's length
 And 0
 Returning um result número.
-Se o result for 0, coloque "Erro. Não foi possível enviar a solicitação." into o i/o error; exit.
+Se o result for 0, coloque "Erro. Não foi possível enviar a solicitação." into o i/o erro; exit.
 
 Etapas necessárias para que se send um email:
-Limpe o i/o error.
+Limpe o i/o erro.
 \ crie socket
 Crie um socket usando o email's smtp server e 25.
-Se o i/o error não estiver em branco, cancele.
+Se o i/o erro não estiver em branco, cancele.
 \ initial receive here por date/time stuff from server
 Receive um response string from o socket.
-Se o i/o error não estiver em branco, destroy o socket; exit.
-Se o response starts with "5", coloque o response into o i/o error; trim o i/o error; destroy o socket; exit.
+Se o i/o erro não estiver em branco, destroy o socket; exit.
+Se o response starts with "5", coloque o response into o i/o erro; trim o i/o erro; destroy o socket; exit.
 \ send HELO
 Send "HELO " then o module's name then o texto CRLF to o socket e receive o response string.
-Se o i/o error não estiver em branco, destroy o socket; exit.
-Se o response starts with "5", coloque o response into o i/o error; trim o i/o error; destroy o socket; exit.
+Se o i/o erro não estiver em branco, destroy o socket; exit.
+Se o response starts with "5", coloque o response into o i/o erro; trim o i/o erro; destroy o socket; exit.
 \ send MAIL FROM: <xxx>
 Send "MAIL FROM: <" then o email's sender then ">" then o texto CRLF to o socket e receive o response string.
-Se o i/o error não estiver em branco, destroy o socket; exit.
-Se o response starts with "5", coloque o response into o i/o error; trim o i/o error; destroy o socket; exit.
+Se o i/o erro não estiver em branco, destroy o socket; exit.
+Se o response starts with "5", coloque o response into o i/o erro; trim o i/o erro; destroy o socket; exit.
 \ send RCPT TO: <xxx>
 Send "RCPT TO: <" then o email's recipient then ">" then o texto CRLF to o socket e receive o response string.
-Se o i/o error não estiver em branco, destroy o socket; exit.
-Se o response starts with "5", coloque o response into o i/o error; trim o i/o error; destroy o socket; exit.
+Se o i/o erro não estiver em branco, destroy o socket; exit.
+Se o response starts with "5", coloque o response into o i/o erro; trim o i/o erro; destroy o socket; exit.
 \ send DATA
 Send "DATA" then o texto CRLF to o socket e receive o response string.
-Se o i/o error não estiver em branco, destroy o socket; exit.
-Se o response starts with "5", coloque o response into o i/o error; trim o i/o error; destroy o socket; exit.
+Se o i/o erro não estiver em branco, destroy o socket; exit.
+Se o response starts with "5", coloque o response into o i/o erro; trim o i/o erro; destroy o socket; exit.
 \ send From: xxx crlf Etapas necessárias para que se: xxx crlf Subject: xxx crlf Reply-Etapas necessárias para que se: xxx crlf message crlf . crlf
 Limpe um temp string.
 Posponha "From: " then o email's sender then o texto CRLF to o temp string.
@@ -12251,8 +12251,8 @@ Posponha o texto CRLF to o temp string.
 Posponha o email's message to o temp string (handling email transparency).
 Posponha o texto CRLF then "." then o texto CRLF to o temp string.
 Send o temp string to o socket e receive o response string.
-Se o i/o error não estiver em branco, destroy o socket; exit.
-Se o response starts with "5", coloque o response into o i/o error; trim o i/o error; destroy o socket; exit.
+Se o i/o erro não estiver em branco, destroy o socket; exit.
+Se o response starts with "5", coloque o response into o i/o erro; trim o i/o erro; destroy o socket; exit.
 \ send QUIT
 Send "QUIT" then o texto CRLF to o socket.
 \ destroy socket
@@ -12303,7 +12303,7 @@ Send o email.
 Etapas necessárias para que se send um string to um socket e receive um response string:
 Limpe o response string.
 Send o string to o socket.
-Se o i/o error não estiver em branco, cancele.
+Se o i/o erro não estiver em branco, cancele.
 Receive o response string from o socket.
 
 An sender é um string.
@@ -13069,14 +13069,14 @@ Coloque o caixa's center into o context's spot.
 Face west.
 
 Etapas necessárias para que se start um process usando um endereço completo: \ must ser called with um global variable
-Limpe o i/o error.
-Se o process não for 0, coloque "Lo lamento, pero o proceso ya se está ejecutando." into o i/o error; exit.
+Limpe o i/o erro.
+Se o process não for 0, coloque "Lo lamento, pero o proceso ya se está ejecutando." into o i/o erro; exit.
 Coloque um startupinfo's magnitude into o startupinfo's cb.
 Extract um endereço da pasta from o endereço completo. null terminate o endereço da pasta.
 Isole o endereço completo. null terminate o endereço completo.
 Call "kernel32.dll" "CreateProcessA" with o endereço completo's first e 0 e 0 e 0 e 0 e 67108904 [create_default_error_mode + normal_priority_class + detached_process] e 0 
 And o endereço da pasta's first e o startupinfo's whereabouts e um processinfo's whereabouts returning um número.
-Se o número for 0, coloque "Erro. Não foi possível executar o programa." into o i/o error; exit.
+Se o número for 0, coloque "Erro. Não foi possível executar o programa." into o i/o erro; exit.
 Coloque o processinfo's hprocess into o process.
 Call "kernel32.dll" "CloseHandle" with o processinfo's hthread.
 Point um endereço de memória to routine aguarde por um process endereço de memória.
@@ -14327,11 +14327,11 @@ Etapas necessárias para que se stroke um caixa with um cor:
 Coloque a cor into o context's cor.
 Coloque o caixa's left-base into o context's spot.
 Face north.
-Stroke o caixa's altura.
+Stroke a altura desta caixa.
 Vire right.
 Stroke o caixa's width.
 Vire right.
-Stroke o caixa's altura.
+Stroke a altura desta caixa.
 Vire right.
 Stroke o caixa's width.
 
@@ -14683,7 +14683,7 @@ Etapas necessárias para que se stroke um line como high como um caixa;
 Etapas necessárias para que se stroke um line como tall como um caixa;
 Etapas necessárias para que se draw um line como high como um caixa;
 Etapas necessárias para que se draw um line como tall como um caixa:
-Stroke o caixa's altura.
+Stroke a altura desta caixa.
 
 Etapas necessárias para que se stroke um line como wide como um caixa;
 Etapas necessárias para que se draw um line como wide como um caixa:
@@ -16329,7 +16329,7 @@ An wrap alarme,
 An horizontal scroll alarme,
 An vertical scroll alarme,
 An selection,
-An modified alarme,
+An alarme de alteração,
 An last operation,
 Some texts called undos,
 Some texts called redos.
@@ -16838,27 +16838,27 @@ Limite o origin of o text.
 
 Etapas necessárias para que se store um trecho in um file;
 Etapas necessárias para que se escreva um trecho to um file:
-Limpe o i/o error.
+Limpe o i/o erro.
 Call "kernel32.dll" "SetFilePointer" with o file e 0 e 0 e 0 [file_begin] returning um result número.
-Se o result número é -1, coloque "Ocorreu um erro durante o posicionamento do ponteiro do arquivo." into o i/o error; exit.
+Se o result número é -1, coloque "Ocorreu um erro durante o posicionamento do ponteiro do arquivo." into o i/o erro; exit.
 Call "kernel32.dll" "WriteFile" with o file e o trecho's first e o trecho's length e um número's whereabouts e 0 returning o result número.
-Se o result número for 0, coloque "Ocorreu um erro durante a gravação do arquivo." into o i/o error; exit.
+Se o result número for 0, coloque "Ocorreu um erro durante a gravação do arquivo." into o i/o erro; exit.
 
 Etapas necessárias para que se store um trecho in um endereço completo;
 Etapas necessárias para que se escreva um trecho to um endereço completo:
-Limpe o i/o error.
+Limpe o i/o erro.
 Extract um endereço da pasta from o endereço completo.
-Se o endereço da pasta não estiver in o sistema de arquivos, coloque "A pasta '" then o endereço da pasta then "' não existe." into o i/o error; exit.
+Se o endereço da pasta não estiver in o sistema de arquivos, coloque "A pasta '" then o endereço da pasta then "' não existe." into o i/o erro; exit.
 Defina o endereço completo to read-write mode.
 Isole o endereço completo.
 Null terminate o endereço completo.
 Call "kernel32.dll" "CreateFileA" with o endereço completo's first e 1073741824 [generic_write] 
 And 0 e 0 e 2 [create_always] e -2147483520 [file_flag_write_through ou file_attribute_normal] e 0 returning um handle.
-Se o handle é -1 [invalid_handle_value], coloque "Ocorreu um erro ao tentar abrir o arquivo '" then o endereço completo then "'." into o i/o error; exit.
+Se o handle é -1 [invalid_handle_value], coloque "Ocorreu um erro ao tentar abrir o arquivo '" then o endereço completo then "'." into o i/o erro; exit.
 Call "kernel32.dll" "WriteFile" with o handle e o trecho's first e o trecho's length e um número's whereabouts e 0 returning o número.
 Call "kernel32.dll" "CloseHandle" with o handle.
 Se o número não for 0, cancele.
-Coloque "Ocorreu um erro ao tentar salvar o arquivo '" then o endereço completo then "'." into o i/o error.
+Coloque "Ocorreu um erro ao tentar salvar o arquivo '" then o endereço completo then "'." into o i/o erro.
 
 Etapas necessárias para que se escreva um pedaço:
 Coloque o pedaço into um string.
@@ -16968,10 +16968,10 @@ Etapas necessárias para que se escreva um string in um caixa with um cor;
 Etapas necessárias para que se stroke um string in um caixa with um cor:
 Coloque a cor into o context's cor.
 Coloque o caixa's left-base into o context's spot.
-Coloque o caixa's altura dividido por 2 into o context's letter altura.
-\Coloque o caixa's altura into o context's letter altura.
+Coloque a altura desta caixa dividido por 2 into o context's letter altura.
+\Coloque a altura desta caixa into o context's letter altura.
 Face north.
-Mova o caixa's altura dividido por 4. \ was 4 e still é now! ***
+Mova a altura desta caixa dividido por 4. \ was 4 e still é now! ***
 Stroke o string.
 
 Etapas necessárias para que se escreva um string in o middle of um caixa;
@@ -17218,4 +17218,4 @@ An mm é 60 twips. \ creio que pela lógica seriam 56,7
 
 \ Um twip seriam 1,76389 milímetros
 
-the i/o error é um string.
+the i/o erro é um string.
