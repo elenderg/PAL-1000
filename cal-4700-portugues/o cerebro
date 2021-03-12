@@ -154,12 +154,12 @@ Se o número for 0, coloque "file" into a categoria deste item. \; coloque "archi
 Se o número não for 0, coloque "endereço de pasta" into a categoria deste item.\; coloque "directorio" into o item's clase.
 Convert o item's win32finddata's ftcreationtime to a creation date/time string deste item . \ adicionado para classificação de e-mails.
 Coloque o item's win32finddata's cfilename's whereabouts into um pchar.
-Convert o pchar to o designator deste item.
-Se o item's categoria for "endereço de pasta", posponha "\" to o designator deste item.
-Coloque o endereço da pasta deste item  then o designator deste item into o path deste item.
-Extract a extension deste item from o designator deste item como um path.
+Convert o pchar to o designador deste item.
+Se o item's categoria for "endereço de pasta", posponha "\" to o designador deste item.
+Coloque o endereço da pasta deste item  then o designador deste item into o endereço completo deste item.
+Extract a extensão deste item from o designador deste item como um endereço completo.
 Coloque o item's win32finddata's nfilesizelow into o size deste item.
-Se o item's designator's first's target não for o ponto final, cancele.
+Se o item's designador's first's target não for o ponto final, cancele.
 Obtenha o item (not first time).
 
 Etapas necessárias para que se ajuste um line with um número e another número e um third número e um fourth número:
@@ -1731,7 +1731,7 @@ Coloque 1 into o urlcomponents' dwextrainfolength.
 Call "wininet.dll" "InternetCrackUrlA" with o url's first e 0 e 0 e o urlcomponents' whereabouts returning um número.
 Convert o urlcomponents' lpszscheme e o urlcomponents' dwschemelength to o url conjunto's scheme.
 Convert o urlcomponents' lpszhostname e o urlcomponents' dwhostnamelength to o url conjunto's host name.
-Convert o urlcomponents' lpszurlpath e o urlcomponents' dwurlpathlength to o url conjunto's path.
+Convert o urlcomponents' lpszurlpath e o urlcomponents' dwurlpathlength to o url conjunto's endereço completo.
 Convert o urlcomponents' lpszextrainfo e o urlcomponents' dwextrainfolength to o url conjunto's extra.
 Coloque o urlcomponents' nport into o url conjunto's port número.
 
@@ -2077,27 +2077,27 @@ And 0
 Returning o winhttp request's session.
 Se o winhttp request's session for 0, coloque "Erro. Não foi possível iniciar a conexão." into o i/o error; exit.
 
-Etapas necessárias para que se crie um path in o sistema de arquivos:
-Se o path é endereço da pasta-format, crie o path in o sistema de arquivos (pasta)[endereço]; exit.
-Se o path é file-format, crie o path in o sistema de arquivos (file); exit.
+Etapas necessárias para que se crie um endereço completo in o sistema de arquivos:
+Se o endereço completo é endereço da pasta-format, crie o endereço completo in o sistema de arquivos (pasta)[endereço]; exit.
+Se o endereço completo é file-format, crie o endereço completo in o sistema de arquivos (file); exit.
 
-Etapas necessárias para que se crie um path in o sistema de arquivos (pasta)[endereço]:
-Isole o path.
-Remove any trailing barra invertida from o path.
-Null terminate o path.
-Call "kernel32.dll" "CreateDirectoryA" with o path's first e 0 returning um número.
+Etapas necessárias para que se crie um endereço completo in o sistema de arquivos (pasta)[endereço]:
+Isole o endereço completo.
+Remove any trailing barra invertida from o endereço completo.
+Null terminate o endereço completo.
+Call "kernel32.dll" "CreateDirectoryA" with o endereço completo's first e 0 returning um número.
 Limpe o i/o error.
 Se o número não for 0, cancele.
-Coloque "Erro. Não foi possível criar a pasta '" then o path then "'." into o i/o error.
+Coloque "Erro. Não foi possível criar a pasta '" then o endereço completo then "'." into o i/o error.
 
-Etapas necessárias para que se crie um path in o sistema de arquivos (file):
-Isole o path.
-Null terminate o path.
-Call "kernel32.dll" "CreateFileA" with o path's first e 1073741824 [generic_write] e 0 e 0 e 1 [create_new] e 128 [file_attribute_normal] e 0 returning um handle.
+Etapas necessárias para que se crie um endereço completo in o sistema de arquivos (file):
+Isole o endereço completo.
+Null terminate o endereço completo.
+Call "kernel32.dll" "CreateFileA" with o endereço completo's first e 1073741824 [generic_write] e 0 e 0 e 1 [create_new] e 128 [file_attribute_normal] e 0 returning um handle.
 Call "kernel32.dll" "CloseHandle" with o handle.
 Limpe o i/o error.
 Se o handle não for -1 [invalid_handle_value], cancele.
-Coloque "Erro. Não foi possível criar o arquivo '" then o path then "'." into o i/o error.
+Coloque "Erro. Não foi possível criar o arquivo '" then o endereço completo then "'." into o i/o error.
 
 Etapas necessárias para que se crie um pdf object usando um categoria:
 Allocate memory por o pdf object.
@@ -2141,13 +2141,13 @@ Allocate memory por o refer.
 
 Etapas necessárias para que se crie o request handle of um winhttp request using um url conjunto:
 Se o winhttp request for inexistente, cancele.
-Convert o url conjunto's path into um wide string called wide path e null terminate.
+Convert o url conjunto's endereço completo into um wide string called wide endereço completo e null terminate.
 Convert "POST" to um wide string called wide post string e null terminate.
 Se o url conjunto's scheme for "https", coloque 8388608 [winhttp_flag_secure] into um secure número.
 Call "winhttp.dll" "WinHttpOpenRequest"
 With o winhttp request's connection
 And o wide post string's first
-And o wide path's first
+And o wide endereço completo's first
 And 0 [L"HTTP/1.1"] 
 And 0 [winhttp_no_referer]
 And 0 [winhttp_default_accept_types]
@@ -2704,11 +2704,11 @@ Se o pedaço for o hífem, diga sim.
 Se o pedaço for o sinal de adição, diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um pedaço é any valid drive:
-Coloque o pedaço into um path.
-Posponha ":\" to o path.
-Obtenha um drive categoria por o path.
-Se o drive categoria for "", diga não.
+Etapas necessárias para que se determine se um pedaço é any valid unidade de disco:
+Coloque o pedaço into um endereço completo.
+Posponha ":\" to o endereço completo.
+Obtenha um categoria da unidade de disco por o endereço completo.
+Se o categoria da unidade de disco for "", diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um pedaço é any vowel:
@@ -3312,40 +3312,40 @@ Se o pair's número x não for o número, diga não.
 Se o pair's número y não for o other número, diga não.
 Diga sim.
 
-Etapas necessárias para que se determine se um path é endereço da pasta-format:
-Se o path estiver em branco, diga não.
-Se o path's last's target é o barra invertida, diga sim.
+Etapas necessárias para que se determine se um endereço completo é endereço da pasta-format:
+Se o endereço completo estiver em branco, diga não.
+Se o endereço completo's last's target é o barra invertida, diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um path é drive-format:
-Se o path starts with "\\", diga sim.
-Se o path's length não for 3, diga não.
-Se o path ends with ":\", diga sim.
+Etapas necessárias para que se determine se um endereço completo é drive-format:
+Se o endereço completo starts with "\\", diga sim.
+Se o endereço completo's length não for 3, diga não.
+Se o endereço completo ends with ":\", diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um path é vazio in o sistema de arquivos:
-Se o path não estiver in o sistema de arquivos, diga sim.
-Obtenha um contagem of items in o path in o sistema de arquivos.
+Etapas necessárias para que se determine se um endereço completo é vazio in o sistema de arquivos:
+Se o endereço completo não estiver in o sistema de arquivos, diga sim.
+Obtenha um contagem of items in o endereço completo in o sistema de arquivos.
 Se o contagem for 0, diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um path é file-format:
-Se o path estiver em branco, diga não.
-Se o path's last's target for o sinal de dois pontos, diga não.
-Se o path's last's target for o barra invertida, diga não.
+Etapas necessárias para que se determine se um endereço completo é file-format:
+Se o endereço completo estiver em branco, diga não.
+Se o endereço completo's last's target for o sinal de dois pontos, diga não.
+Se o endereço completo's last's target for o barra invertida, diga não.
 Diga sim.
 
-Etapas necessárias para que se determine se um path está in o sistema de arquivos:
-Isole o path.
-Null terminate o path.
-Call "kernel32.dll" "GetFileAttributesA" with o path's first returning um número.
+Etapas necessárias para que se determine se um endereço completo está in o sistema de arquivos:
+Isole o endereço completo.
+Null terminate o endereço completo.
+Call "kernel32.dll" "GetFileAttributesA" with o endereço completo's first returning um número.
 Se o número for menor do que 0, diga não.
 Diga sim.
 
-Etapas necessárias para que se determine se um path é read-only:
-Isole o path.
-Null terminate o path.
-Call "kernel32.dll" "GetFileAttributesA" with o path's first returning um número.
+Etapas necessárias para que se determine se um endereço completo é read-only:
+Isole o endereço completo.
+Null terminate o endereço completo.
+Call "kernel32.dll" "GetFileAttributesA" with o endereço completo's first returning um número.
 Conjuncione logicamente o número with 1 [file_attribute_readonly].
 Se o número não for 0, diga sim.
 Diga não.
@@ -4047,7 +4047,7 @@ Etapas necessárias para que se deselect um text:
 Se o text for inexistente, cancele.
 Coloque o text's caret into o text's anchor.
 
-An designator é um string. \ rightmost endereço da pasta with slash = folder2\ ou after o last slash to end of path = file.ext
+
 
 Etapas necessárias para que se destroy um crypt session:
 Se o crypt session for inexistente, cancele.
@@ -4091,34 +4091,34 @@ Repita.
 Unassign o index's first bucket.
 Deallocate o index.
 
-Etapas necessárias para que se destroy um path in o sistema de arquivos:
-Defina o path to read-write mode.
-Se o path é endereço da pasta-format, destroy o path in o sistema de arquivos (pasta)[endereço].
-Se o path é file-format, destroy o path in o sistema de arquivos (file).
+Etapas necessárias para que se destroy um endereço completo in o sistema de arquivos:
+Defina o endereço completo to read-write mode.
+Se o endereço completo é endereço da pasta-format, destroy o endereço completo in o sistema de arquivos (pasta)[endereço].
+Se o endereço completo é file-format, destroy o endereço completo in o sistema de arquivos (file).
 
-Etapas necessárias para que se destroy um path in o sistema de arquivos (pasta)[endereço]:
+Etapas necessárias para que se destroy um endereço completo in o sistema de arquivos (pasta)[endereço]:
 Percorra.
-Obtenha um item from o path.
+Obtenha um item from o endereço completo.
 Se o item não for found, pare.
-Coloque o path into another path.
-Posponha o item's designator to o other path.
-Destroy o other path in o sistema de arquivos.
+Coloque o endereço completo into another endereço completo.
+Posponha o item's designador to o other endereço completo.
+Destroy o other endereço completo in o sistema de arquivos.
 Se o i/o error não estiver em branco, cancele.
 Repita.
-Isole o path.
-Null terminate o path.
-Call "kernel32.dll" "RemoveDirectoryA" with o path's first returning um número.
+Isole o endereço completo.
+Null terminate o endereço completo.
+Call "kernel32.dll" "RemoveDirectoryA" with o endereço completo's first returning um número.
 Limpe o i/o error.
 Se o número não for 0, cancele.
-Coloque "Erro. Não foi possível apagar a pasta '" then o path then "'." into o i/o error.
+Coloque "Erro. Não foi possível apagar a pasta '" then o endereço completo then "'." into o i/o error.
 
-Etapas necessárias para que se destroy um path in o sistema de arquivos (file):
-Isole o path.
-Null terminate o path.
-Call "kernel32.dll" "DeleteFileA" with o path's first returning um número.
+Etapas necessárias para que se destroy um endereço completo in o sistema de arquivos (file):
+Isole o endereço completo.
+Null terminate o endereço completo.
+Call "kernel32.dll" "DeleteFileA" with o endereço completo's first returning um número.
 Limpe o i/o error.
 Se o número não for 0, cancele.
-Coloque "Erro. Não foi possível apagar o arquivo '" then o path then "'." into o i/o error.
+Coloque "Erro. Não foi possível apagar o arquivo '" then o endereço completo then "'." into o i/o error.
 
 Etapas necessárias para que se destroy um picture:
 Se o picture for inexistente, cancele.
@@ -4188,11 +4188,21 @@ The trema é um pedaço igual a 168.
 
 An difference é um pair.
 
-An endereço da pasta é um path. \ start of path to last slash inclusive = c:\folder1\folder2\
+An file é um handle.
 
+An nome do arquivo é um string. \ after o last slash to end of endereço completo = file.ext
+An nome do arquivo s/ extensão é um string. \ after o last slash to last dot ou end of endereço completo = file
+An extensão é um string. \ last dot to end of endereço completo = .ext
+An endereço da pasta é um endereço completo. \ start of endereço completo to last slash inclusive = c:\folder1\folder2\
+An endereço completo é um string. \ complete name = c:\folder1\folder2\file.ext
 An nome do diretório é um string. \ rightmost endereço da pasta with slash = folder2\
-
+An designador é um string. \ rightmost endereço da pasta with slash = folder2\ ou after o last slash to end of endereço completo = file.ext
 An nome da pasta é um string. \ rightmost endereço da pasta sem slash = folder2
+An unidade de disco é um string. \ start of endereço completo to first slash = c:\ ou start of endereço completo to fourth slash = \\computer\share\
+An unidade de rede é um string.  \ é basicamente uma cópia da variável anterior.
+An categoria da unidade de disco é um string.
+
+An nome da unidade de disco é um string.
 
 An distance é alguns twips.
 
@@ -4988,39 +4998,35 @@ Draw any visible rows of o text (editing).
 Draw o caret in o text.
 Restore o quadro atual.
 
-An drive é um string. \ start of path to first slash = c:\ ou start of path to fourth slash = \\computer\share\
 
-An drive categoria é um string.
 
-An drive name é um string.
+Etapas necessárias para que se duplicate um endereço completo to another endereço completo in o sistema de arquivos:
+Se o endereço completo é endereço da pasta-format, duplicate o endereço completo to o other endereço completo in o sistema de arquivos (pasta)[endereço].
+Se o endereço completo é file-format, duplicate o endereço completo to o other endereço completo in o sistema de arquivos (file).
 
-Etapas necessárias para que se duplicate um path to another path in o sistema de arquivos:
-Se o path é endereço da pasta-format, duplicate o path to o other path in o sistema de arquivos (pasta)[endereço].
-Se o path é file-format, duplicate o path to o other path in o sistema de arquivos (file).
-
-Etapas necessárias para que se duplicate um path to another path in o sistema de arquivos (pasta)[endereço]:
-Se o path estiver in o other path, coloque "Ocorreu um erro na hora de duplicar a pasta '" then o path then "' - erro de recursão inválida." into o i/o error; exit.
-Se o path não estiver in o sistema de arquivos, coloque "Ocorreu um erro na hora de duplicar a pasta '" then o path then "'." into o i/o error; exit.
-Se o other path não estiver in o sistema de arquivos, crie o other path in o sistema de arquivos.
+Etapas necessárias para que se duplicate um endereço completo to another endereço completo in o sistema de arquivos (pasta)[endereço]:
+Se o endereço completo estiver in o other endereço completo, coloque "Ocorreu um erro na hora de duplicar a pasta '" then o endereço completo then "' - erro de recursão inválida." into o i/o error; exit.
+Se o endereço completo não estiver in o sistema de arquivos, coloque "Ocorreu um erro na hora de duplicar a pasta '" then o endereço completo then "'." into o i/o error; exit.
+Se o other endereço completo não estiver in o sistema de arquivos, crie o other endereço completo in o sistema de arquivos.
 Percorra.
-Obtenha um item from o path.
+Obtenha um item from o endereço completo.
 Se o item não for found, cancele.
-Coloque o path into um third path.
-Posponha o item's designator to o third path.
-Coloque o other path into um fourth path.
-Posponha o item's designator to o fourth path.
-Duplicate o third path to o fourth path in o sistema de arquivos.
+Coloque o endereço completo into um third endereço completo.
+Posponha o item's designador to o third endereço completo.
+Coloque o other endereço completo into um fourth endereço completo.
+Posponha o item's designador to o fourth endereço completo.
+Duplicate o third endereço completo to o fourth endereço completo in o sistema de arquivos.
 Repita.
 
-Etapas necessárias para que se duplicate um path to another path in o sistema de arquivos (file):
-Isole o path.
-Null terminate o path.
-Isole o other path.
-Null terminate o other path.
-Call "kernel32.dll" "CopyFileA" with o path's first e o other path's first e 0 returning um número.
+Etapas necessárias para que se duplicate um endereço completo to another endereço completo in o sistema de arquivos (file):
+Isole o endereço completo.
+Null terminate o endereço completo.
+Isole o other endereço completo.
+Null terminate o other endereço completo.
+Call "kernel32.dll" "CopyFileA" with o endereço completo's first e o other endereço completo's first e 0 returning um número.
 Limpe o i/o error.
-Se o número não for 0, defina  o path to read-write mode; exit.
-Coloque "Ocorreu um erro na hora de duplicar o arquivo '" then o path then "'." into o i/o error.
+Se o número não for 0, defina  o endereço completo to read-write mode; exit.
+Coloque "Ocorreu um erro na hora de duplicar o arquivo '" then o endereço completo then "'." into o i/o error.
 
 An dyad é uma coisa with
 An name,
@@ -5349,32 +5355,30 @@ Se o other caixa's topo for menor do que o topo desta caixa, coloque o other cai
 Se o other caixa's right for maior do que o caixa's right, coloque o other caixa's right into o caixa's right.
 Se o other caixa's base for maior do que a base desta caixa, coloque o other caixa's base into a base desta caixa.
 
-An extension é um string. \ last dot to end of path = .ext
-
 Some extra points são alguns points.
 
-Etapas necessárias para que se extract um designator from um path:
-Limpe o designator.
-Extract um drive from o path.
-Lance um path subtexto on o path.
-Adicione o drive's length to o path subtexto's first.
-Se o path subtexto estiver em branco, coloque o drive into o designator; exit.
-Lance um subtexto on o last pedaço of o path subtexto.
+Etapas necessárias para que se extract um designador from um endereço completo:
+Limpe o designador.
+Extract um unidade de disco from o endereço completo.
+Lance um endereço completo subtexto on o endereço completo.
+Adicione o unidade de disco's length to o endereço completo subtexto's first.
+Se o endereço completo subtexto estiver em branco, coloque o unidade de disco into o designador; exit.
+Lance um subtexto on o last pedaço of o endereço completo subtexto.
 Se o subtexto's first's target for o barra invertida, subtraia 1 from o first deste subtexto.
 Percorra.
-Se o first deste subtexto for menor do que o path subtexto's first, pare.
+Se o first deste subtexto for menor do que o endereço completo subtexto's first, pare.
 Se o subtexto's first's target for o barra invertida, pare.
 Subtraia 1 from o first deste subtexto.
 Repita.
 Adicione 1 to o first deste subtexto.
-Coloque o subtexto into o designator.
+Coloque o subtexto into o designador.
 
-Etapas necessárias para que se extract um endereço da pasta from um path:
+Etapas necessárias para que se extract um endereço da pasta from um endereço completo:
 Limpe o endereço da pasta.
-Extract um drive from o path.
-Se o drive estiver em branco, cancele.
-Lance um subtexto on o path.
-Adicione o drive's length to o first deste subtexto.
+Extract um unidade de disco from o endereço completo.
+Se o unidade de disco estiver em branco, cancele.
+Lance um subtexto on o endereço completo.
+Adicione o unidade de disco's length to o first deste subtexto.
 Se o subtexto estiver em branco, cancele.
 Se o subtexto's last's target é o barra invertida, subtraia 1 from o last deste subtexto.
 Percorra.
@@ -5382,56 +5386,56 @@ Se o subtexto estiver em branco, pare.
 Se o subtexto's last's target é o barra invertida, pare.
 Subtraia 1 from o last deste subtexto.
 Repita.
-Coloque o drive then o subtexto into o endereço da pasta.
+Coloque o unidade de disco then o subtexto into o endereço da pasta.
 
-Etapas necessárias para que se extract um nome do diretório from um path:
+Etapas necessárias para que se extract um nome do diretório from um endereço completo:
 Limpe o nome do diretório.
-Se o path não for endereço da pasta-format, cancele.
-Extract o nome do diretório como um designator from o path.
+Se o endereço completo não for endereço da pasta-format, cancele.
+Extract o nome do diretório como um designador from o endereço completo.
 
-Etapas necessárias para que se extract um nome da pasta from um path:
-Extract o nome da pasta como um nome do diretório from o path.
+Etapas necessárias para que se extract um nome da pasta from um endereço completo:
+Extract o nome da pasta como um nome do diretório from o endereço completo.
 Se o nome da pasta estiver em branco, cancele.
 Remove o last pedaço from o nome da pasta.
 
-Etapas necessárias para que se extract um drive from um path:
-Limpe o drive.
-Se o path's length for menor do que 3, cancele.
-Lance um subtexto on o first pedaço of o path.
+Etapas necessárias para que se extract um unidade de disco from um endereço completo:
+Limpe o unidade de disco.
+Se o endereço completo's length for menor do que 3, cancele.
+Lance um subtexto on o first pedaço of o endereço completo.
 Adicione 2 to o last deste subtexto.
-Se o subtexto ends with ":\", coloque o subtexto into o drive; exit.
+Se o subtexto ends with ":\", coloque o subtexto into o unidade de disco; exit.
 Se o subtexto does not start with "\\", cancele.
-Lance o subtexto on o first pedaço of o path.
+Lance o subtexto on o first pedaço of o endereço completo.
 Percorra.
-Se o last deste subtexto for maior do que o path's last, cancele.
+Se o last deste subtexto for maior do que o endereço completo's last, cancele.
 Se o subtexto's last's target é o barra invertida, adicione 1 to um contagem.
 Se o contagem for 4, pare. \ "\\computer\share\"
 Adicione 1 to o last deste subtexto.
 Repita.
-Coloque o subtexto into o drive.
+Coloque o subtexto into o unidade de disco.
 
-Etapas necessárias para que se extract um extension from um path:
-Limpe o extension.
-Se o path estiver em branco, cancele.
-Lance um subtexto on o last pedaço of o path.
+Etapas necessárias para que se extract um extensão from um endereço completo:
+Limpe o extensão.
+Se o endereço completo estiver em branco, cancele.
+Lance um subtexto on o last pedaço of o endereço completo.
 Percorra.
-Se o first deste subtexto for menor do que o path's first, cancele.
+Se o first deste subtexto for menor do que o endereço completo's first, cancele.
 Se o subtexto's first's target for o sinal de dois pontos, cancele.
 Se o subtexto's first's target for o barra invertida, cancele.
 Se o subtexto's first's target for o ponto final, pare.
 Subtraia 1 from o first deste subtexto.
 Repita.
-Coloque o subtexto into o extension.
+Coloque o subtexto into o extensão.
 
-Etapas necessárias para que se extract um file name from um path:
-Limpe o file name.
-Se o path não for file-format, cancele.
-Extract o file name como um designator from o path.
+Etapas necessárias para que se extract um nome do arquivo from um endereço completo:
+Limpe o nome do arquivo.
+Se o endereço completo não for file-format, cancele.
+Extract o nome do arquivo como um designador from o endereço completo.
 
-Etapas necessárias para que se extract um file name w/o extension from um path:
-Extract o file name w/o extension como um file name from o path.
-Extract um extension from o path.
-Remove trailing pedaços from o file name w/o extension usando o extension's length.
+Etapas necessárias para que se extract um nome do arquivo s/ extensão from um endereço completo:
+Extract o nome do arquivo s/ extensão como um nome do arquivo from o endereço completo.
+Extract um extensão from o endereço completo.
+Remove trailing pedaços from o nome do arquivo s/ extensão usando o extensão's length.
 
 Etapas necessárias para que se extract um picture usando um caixa:
 Coloque o caixa's width dividido por o tpp into um width.
@@ -5521,11 +5525,7 @@ An figura é um polygon.
 
 The figuras são alguns polygons.
 
-An file é um handle.
 
-An file name é um string. \ after o last slash to end of path = file.ext
-
-An file name w/o extension é um string. \ after o last slash to last dot ou end of path = file
 
 The file-separator pedaço é um pedaço igual a 28.
 
@@ -6055,20 +6055,20 @@ Repita.
 Coloque o last deste subtexto menos o row's string's first mais 1 into o column#.
 Destroy o hfont of o memory canvas.
 
-Etapas necessárias para que se obtenha um contagem of items in um path in o sistema de arquivos:
+Etapas necessárias para que se obtenha um contagem of items in um endereço completo in o sistema de arquivos:
 Coloque 0 into o contagem.
 Percorra.
-Obtenha um item from o path.
+Obtenha um item from o endereço completo.
 Se o item não for found, cancele.
 Adicione 1 to o contagem.
 Repita.
 
-Etapas necessárias para que se obtenha um description por um path:
+Etapas necessárias para que se obtenha um description por um endereço completo:
 Limpe o description.
-Obtenha um drive categoria por o path.
-Coloque o drive categoria into o description.
-Obtenha um drive name por o path.
-Se o drive name não estiver em branco, coloque o drive name into o description.
+Obtenha um categoria da unidade de disco por o endereço completo.
+Coloque o categoria da unidade de disco into o description.
+Obtenha um nome da unidade de disco por o endereço completo.
+Se o nome da unidade de disco não estiver em branco, coloque o nome da unidade de disco into o description.
 Lowercase o description.
 
 Etapas necessárias para que se obtenha um difference between um pair e another pair:
@@ -6098,25 +6098,25 @@ De-sign o other número.
 Coloque o número into o distance.
 Se o other número for maior do que o número, coloque o other número into o distance.
 
-Etapas necessárias para que se obtenha um drive categoria por um path:
-Isole o path.
-Null terminate o path.
-Call "kernel32.dll" "GetDriveTypeA" with o path's first returning um número.
-Se o número for 2 [drive_removable], coloque "Disco removível" into o drive categoria; exit. \ removable drive
-Se o número for 3 [drive_fixed], coloque "Disco Rígido / Pendrive" into o drive categoria; exit.\ hard disk / flash drive
-Se o número for 4 [drive_remote], coloque "Unidade de rede" into o drive categoria; exit. \ network drive
-Se o número for 5 [drive_cdrom], coloque "Unidade de CD/DVD" into o drive categoria; exit. \ cd-rom / dvd drive
-Se o número for 6 [drive_ramdisk], coloque "Unidade virtual na memória" into o drive categoria; exit. \ virtual drive in memory
-Coloque "" into o drive categoria.
+Etapas necessárias para que se obtenha um categoria da unidade de disco por um endereço completo:
+Isole o endereço completo.
+Null terminate o endereço completo.
+Call "kernel32.dll" "GetDriveTypeA" with o endereço completo's first returning um número.
+Se o número for 2 [drive_removable], coloque "Disco removível" into o categoria da unidade de disco; exit. \ removable drive
+Se o número for 3 [drive_fixed], coloque "Disco Rígido / Pendrive" into o categoria da unidade de disco; exit.\ hard disk / flash drive
+Se o número for 4 [drive_remote], coloque "Unidade de rede" into o categoria da unidade de disco; exit. \ network drive
+Se o número for 5 [drive_cdrom], coloque "Unidade de CD/DVD" into o categoria da unidade de disco; exit. \ cd-rom / dvd drive
+Se o número for 6 [drive_ramdisk], coloque "Unidade virtual na memória" into o categoria da unidade de disco; exit. \ virtual unidade de disco in memory
+Coloque "" into o categoria da unidade de disco.
 
-Etapas necessárias para que se obtenha um drive name por um path:
-Isole o path.
-Null terminate o path.
+Etapas necessárias para que se obtenha um nome da unidade de disco por um endereço completo:
+Isole o endereço completo.
+Null terminate o endereço completo.
 Coloque 512 into um length.
 Reassign um trecho's first usando o length.
-Call "kernel32.dll" "GetVolumeInformationA" with o path's first e o trecho's first e o length e 0 e 0 e 0 e 0 e 0 returning um número.
-Se o número for 0, limpe o drive name; exit.
-Convert o trecho's first como um pchar to o drive name.
+Call "kernel32.dll" "GetVolumeInformationA" with o endereço completo's first e o trecho's first e o length e 0 e 0 e 0 e 0 e 0 returning um número.
+Se o número for 0, limpe o nome da unidade de disco; exit.
+Convert o trecho's first como um pchar to o nome da unidade de disco.
 
 Etapas necessárias para que se obtenha o first-eighth equivalent of um heading:
 Obtenha o first-quarter equivalent of o heading.
@@ -6163,19 +6163,19 @@ Se o número não for 0, ajuste o item; exit.
 Limpe a categoria deste item.
 Call "kernel32.dll" "FindClose" with o item's handle.
 
-Etapas necessárias para que se obtenha um item from um path:
-Se o path não for endereço da pasta-format, cancele.
-Coloque o path into o item's endereço da pasta.
-Se o item's categoria estiver em branco, obtenha o item from o path (first time); exit.
+Etapas necessárias para que se obtenha um item from um endereço completo:
+Se o endereço completo não for endereço da pasta-format, cancele.
+Coloque o endereço completo into o item's endereço da pasta.
+Se o item's categoria estiver em branco, obtenha o item from o endereço completo (first time); exit.
 Obtenha o item (not first time).
 
-Etapas necessárias para que se obtenha um item from um path (first time):
+Etapas necessárias para que se obtenha um item from um endereço completo (first time):
 Limpe o i/o error.
-Isole o path.
-Posponha "*.*" to o path.
-Null terminate o path.
+Isole o endereço completo.
+Posponha "*.*" to o endereço completo.
+Null terminate o endereço completo.
 Limpe a categoria deste item.
-Call "kernel32.dll" "FindFirstFileA" with o path's first e o item's win32finddata's whereabouts returning o item's handle.
+Call "kernel32.dll" "FindFirstFileA" with o endereço completo's first e o item's win32finddata's whereabouts returning o item's handle.
 Se o item's handle é -1 [invalid_handle_value], cancele.
 Ajuste o item.
 
@@ -6316,26 +6316,26 @@ Coloque o text's right into o selection caixa's right.
 Se o selection's caret row# é o row's row#, obtenha um spot usando o selection's caret e o text; coloque a coordenada x deste spot into o selection caixa's right.
 Limite o selection caixa's right to o text's left e o text's right.
 
-Etapas necessárias para que se obtenha um size usando um path in o sistema de arquivos:
-Se o path é endereço da pasta-format, obtenha o size usando o path in o sistema de arquivos (pasta)[endereço].
-Se o path é file-format, obtenha o size usando o path in o sistema de arquivos (file).
+Etapas necessárias para que se obtenha um size usando um endereço completo in o sistema de arquivos:
+Se o endereço completo é endereço da pasta-format, obtenha o size usando o endereço completo in o sistema de arquivos (pasta)[endereço].
+Se o endereço completo é file-format, obtenha o size usando o endereço completo in o sistema de arquivos (file).
 
-Etapas necessárias para que se obtenha um size usando um path in o sistema de arquivos (pasta)[endereço]:
+Etapas necessárias para que se obtenha um size usando um endereço completo in o sistema de arquivos (pasta)[endereço]:
 Coloque 0 into o size.
 Percorra.
-Obtenha um item from o path.
+Obtenha um item from o endereço completo.
 Se o item não for found, cancele.
 Se o item's categoria for "file", adicione o item's size to o size; repita.
-Coloque o path into another path.
-Posponha o item's designator to o other path.
-Obtenha another size usando o other path in o sistema de arquivos.
+Coloque o endereço completo into another endereço completo.
+Posponha o item's designador to o other endereço completo.
+Obtenha another size usando o other endereço completo in o sistema de arquivos.
 Adicione o other size to o size.
 Repita.
 
-Etapas necessárias para que se obtenha um size usando um path in o sistema de arquivos (file):
-Isole o path.
-Null terminate o path.
-Call "kernel32.dll" "GetFileAttributesExA" with o path's first e 0 e um win32finddata's whereabouts.
+Etapas necessárias para que se obtenha um size usando um endereço completo in o sistema de arquivos (file):
+Isole o endereço completo.
+Null terminate o endereço completo.
+Call "kernel32.dll" "GetFileAttributesExA" with o endereço completo's first e 0 e um win32finddata's whereabouts.
 Coloque o win32finddata's nfilesizelow into o size.
 
 Etapas necessárias para que se obtenha um sockaddr usando um host string:
@@ -7651,26 +7651,26 @@ Call "gdi32.dll" "SelectObject" with o memory canvas e o hbitmap.
 Normalize o memory canvas.
 
 Etapas necessárias para que se initialize o module:
-\ temp path
+\ temp endereço completo
 Coloque 512 into um length.
-Reassign o temp path's first usando o length.
-Call "kernel32.dll" "GetTempPathA" with o length e o temp path's first returning o length.
-Coloque o temp path's first mais o length menos 1 into o temp path's last.
-Null terminate o temp path.
+Reassign o temp endereço completo's first usando o length.
+Call "kernel32.dll" "GetTempPathA" with o length e o temp endereço completo's first returning o length.
+Coloque o temp endereço completo's first mais o length menos 1 into o temp endereço completo's last.
+Null terminate o temp endereço completo.
 \ module handle
 Call "kernel32.dll" "GetModuleHandleA" with 0 returning o module's handle.
 \ module name
 Coloque 512 into o length.
-Reassign o module's path's first usando o length.
-Call "kernel32.dll" "GetModuleFileNameA" with o module's handle e o module's path's first e o length returning o length.
-Coloque o module's path's first mais o length menos 1 into o module's path's last.
-Se o module's path starts with "\\?\", remove leading pedaços from o module's path usando 4.
-Lowercase o module's path.
-Null terminate o module's path.
-\ module's other path pieces
-Extract o module's name from o module's path.
+Reassign o module's endereço completo's first usando o length.
+Call "kernel32.dll" "GetModuleFileNameA" with o module's handle e o module's endereço completo's first e o length returning o length.
+Coloque o module's endereço completo's first mais o length menos 1 into o module's endereço completo's last.
+Se o module's endereço completo starts with "\\?\", remove leading pedaços from o module's endereço completo usando 4.
+Lowercase o module's endereço completo.
+Null terminate o module's endereço completo.
+\ module's other endereço completo pieces
+Extract o module's name from o module's endereço completo.
 Null terminate o module's name.
-Extract o module's endereço da pasta from o module's path.
+Extract o module's endereço da pasta from o module's endereço completo.
 Null terminate o module's endereço da pasta.
 Extract o module's root endereço da pasta from o module's endereço da pasta.
 Null terminate o module's root endereço da pasta.
@@ -7892,7 +7892,7 @@ An endereço de memória called clone.
 An item has
 An categoria [directory, file], \ English
 \An clase [directorio, archivo], \ Spanish categoria
-An path, um endereço da pasta, um designator, um extension,
+An endereço completo, um endereço da pasta, um designador, um extensão,
 An size, 
 An creation date/time string,
 An win32finddata e um handle.
@@ -8361,11 +8361,11 @@ The little-z-caron pedaço é um pedaço igual a 158.
 
 Etapas necessárias para que se load o lexicon:
 Se o lexicon não for inexistente, cancele.
-Extract um endereço da pasta from o module's path.
+Extract um endereço da pasta from o module's endereço completo.
 Percorra.
 Se o endereço da pasta estiver em branco, cancele.
-Coloque o endereço da pasta then "lexicon\" into um path.
-Se o path estiver in o sistema de arquivos, load o lexicon usando o path; exit.
+Coloque o endereço da pasta then "lexicon\" into um endereço completo.
+Se o endereço completo estiver in o sistema de arquivos, load o lexicon usando o endereço completo; exit.
 Extract o endereço da pasta from o endereço da pasta.
 Repita.
 
@@ -8378,11 +8378,11 @@ Se o token deste percorredor estiver em branco, cancele.
 Catalogue o token deste percorredor in o lexicon's index.
 Repita.
 
-Etapas necessárias para que se load o lexicon usando um path:
-Obtenha um item from o path.
+Etapas necessárias para que se load o lexicon usando um endereço completo:
+Obtenha um item from o endereço completo.
 Se o item não for found, cancele.
 Se o item's categoria não for "file", repita.
-Read o item's path into um trecho.
+Read o item's endereço completo into um trecho.
 Se o i/o error não estiver em branco, repita.
 Load o lexicon usando o trecho.
 Repita.
@@ -8603,10 +8603,10 @@ An mixed has um whole número e um ratio e uma fração at o ratio.
 
 The module has
 An handle,
-An path,
+An endereço completo,
 An endereço da pasta,
 An root endereço da pasta, \ one up from o endereço da pasta that exe é run from
-An file name w/o extension called name.
+An nome do arquivo s/ extensão called name.
 
 The mouse has
 An tecla called left botão, 
@@ -9405,21 +9405,21 @@ The one-half pedaço é um pedaço igual a 189.
 
 The one-quarter pedaço é um pedaço igual a 188.
 
-Etapas necessárias para que se open um file usando um path:
+Etapas necessárias para que se open um file usando um endereço completo:
 Limpe o i/o error.
-Extract um endereço da pasta from o path.
+Extract um endereço da pasta from o endereço completo.
 Se o endereço da pasta não estiver in o sistema de arquivos, coloque "A Pasta '" then o endereço da pasta then "' não existe." into o i/o error; exit.
-Ligue o path to read-write mode.
-Isole o path.
-Null terminate o path.
-Call "kernel32.dll" "CreateFileA" with o path's first e -1073741824 [generic_read+generic_write] e 0 e 0 e 4 [open_always] 
+Ligue o endereço completo to read-write mode.
+Isole o endereço completo.
+Null terminate o endereço completo.
+Call "kernel32.dll" "CreateFileA" with o endereço completo's first e -1073741824 [generic_read+generic_write] e 0 e 0 e 4 [open_always] 
 And -2147483520 [file_flag_write_through ou file_attribute_normal] e 0 returning o file.
-Se o file é -1 [invalid_handle_value], coloque "Ocorreu um erro na hora de abrir o arquivo '" then o path then "'." into o i/o error; exit.
+Se o file é -1 [invalid_handle_value], coloque "Ocorreu um erro na hora de abrir o arquivo '" then o endereço completo then "'." into o i/o error; exit.
 
-Etapas necessárias para que se open um file usando um path e alguns milliseconds:
+Etapas necessárias para que se open um file usando um endereço completo e alguns milliseconds:
 Start um cronômetro.
 Percorra.
-Open o file usando o path.
+Open o file usando o endereço completo.
 Se o i/o error estiver em branco, cancele.
 Se o cronômetro's ticks são greater do que o milliseconds, cancele.
 Repita.
@@ -9625,7 +9625,7 @@ The paragraph pedaço é um pedaço igual a 182.
 
 An pastel cor é uma cor.
 
-An path é um string. \ complete name = c:\folder1\folder2\file.ext
+
 
 The pause tecla é uma tecla igual a 19.
 
@@ -11071,17 +11071,17 @@ An ratio pair é uma fração pair.
 
 Etapas necessárias para que se read o Bíblia:
 Se o Bíblia não for inexistente, cancele.
-Extract um endereço da pasta from o module's path.
+Extract um endereço da pasta from o module's endereço completo.
 Percorra.
 Se o endereço da pasta estiver em branco, cancele.
-Coloque o endereço da pasta then "Bíblia.txt" into um path.
-Se o path estiver in o sistema de arquivos, read o Bíblia usando o path; exit.
+Coloque o endereço da pasta then "Bíblia.txt" into um endereço completo.
+Se o endereço completo estiver in o sistema de arquivos, read o Bíblia usando o endereço completo; exit.
 Extract o endereço da pasta from o endereço da pasta.
 Repita.
 
-Etapas necessárias para que se read o Bíblia usando um path:
+Etapas necessárias para que se read o Bíblia usando um endereço completo:
 Se o Bíblia não for inexistente, cancele.
-Read o path into um trecho.
+Read o endereço completo into um trecho.
 Se o i/o error não estiver em branco, cancele.
 Allocate memory por o Bíblia.
 Lance um percorredor on o trecho.
@@ -11129,28 +11129,28 @@ Etapas necessárias para que se read um número from um console:
 Read um string from o console.
 Convert o string to o número.
 
-Etapas necessárias para que se load um path into um trecho;
-Etapas necessárias para que se read um path into um trecho:
+Etapas necessárias para que se load um endereço completo into um trecho;
+Etapas necessárias para que se read um endereço completo into um trecho:
 Limpe o i/o error.
-Isole o path.
-Null terminate o path.
-Se o path não estiver in o sistema de arquivos, coloque "O Arquivo '" then o path then "' não existe." into o i/o error; exit.
-\ abra o path to read-write mode.
-Call "kernel32.dll" "CreateFileA" with o path's first e -2147483648 [generic_read] e 3 [file_share_read+file_share_write] e 0 
+Isole o endereço completo.
+Null terminate o endereço completo.
+Se o endereço completo não estiver in o sistema de arquivos, coloque "O Arquivo '" then o endereço completo then "' não existe." into o i/o error; exit.
+\ abra o endereço completo to read-write mode.
+Call "kernel32.dll" "CreateFileA" with o endereço completo's first e -2147483648 [generic_read] e 3 [file_share_read+file_share_write] e 0 
 And 3 [open_existing] e 0 e 0 returning um handle.
-Se o handle é -1 [invalid_handle_value], coloque "Ocorreu um erro na hora de tentar abrir o arquivo '" then o path then "'." into o i/o error; exit.
+Se o handle é -1 [invalid_handle_value], coloque "Ocorreu um erro na hora de tentar abrir o arquivo '" then o endereço completo then "'." into o i/o error; exit.
 Call "kernel32.dll" "GetFileSize" with o handle e nil returning um size.
 Reassign o trecho's first usando o size.
 Coloque o trecho's first mais o size menos 1 into o trecho's last.
 Call "kernel32.dll" "ReadFile" with o handle e o trecho's first e o size e um número's whereabouts e 0 returning o número.
 Call "kernel32.dll" "CloseHandle" with o handle.
 Se o número não for 0, cancele.
-Coloque "Ocorreu um erro na hora de tentar ler o arquivo '" then o path then "'." into o i/o error.
+Coloque "Ocorreu um erro na hora de tentar ler o arquivo '" then o endereço completo then "'." into o i/o error.
 
-Etapas necessárias para que se load um path into um picture:
+Etapas necessárias para que se load um endereço completo into um picture:
 
-Etapas necessárias para que se read um path into um picture:
-Read o path into um trecho.
+Etapas necessárias para que se read um endereço completo into um picture:
+Read o endereço completo into um trecho.
 Se o i/o error não estiver em branco, esvazie o picture; exit.
 Crie o picture usando o trecho.
 
@@ -11361,7 +11361,7 @@ Coloque o operation into o text's last operation.
 Etapas necessárias para que se relembre where we are:
 Save o context.
 
-The remembered pdf path é um path.
+The remembered pdf endereço completo é um endereço completo.
 
 Etapas necessárias para que se remove any selecionado pedaços in um text:
 Se o text for inexistente, cancele.
@@ -11516,17 +11516,17 @@ Se o string's last's target não for noise, cancele.
 Remove o last pedaço from o string.
 Repita.
 
-Etapas necessárias para que se rename um path to another path in o sistema de arquivos:
-Isole o path.
-Remove any trailing barra invertida from o path.
-Null terminate o path.
-Isole o other path.
-Remove any trailing barra invertida from o other path.
-Null terminate o other path.
-Call "kernel32.dll" "MoveFileA" with o path's first e o other path's first returning um número.
+Etapas necessárias para que se rename um endereço completo to another endereço completo in o sistema de arquivos:
+Isole o endereço completo.
+Remove any trailing barra invertida from o endereço completo.
+Null terminate o endereço completo.
+Isole o other endereço completo.
+Remove any trailing barra invertida from o other endereço completo.
+Null terminate o other endereço completo.
+Call "kernel32.dll" "MoveFileA" with o endereço completo's first e o other endereço completo's first returning um número.
 Limpe o i/o error.
 Se o número não for 0, cancele.
-Coloque "Ocorreu um erro ao renomear o arquivo '" then o path then "'." into o i/o error.
+Coloque "Ocorreu um erro ao renomear o arquivo '" then o endereço completo then "'." into o i/o error.
 
 Etapas necessárias para que se renumber alguns rows:
 Obtenha um row from o rows.
@@ -12330,12 +12330,12 @@ Etapas necessárias para que se toque um alarme;
 Etapas necessárias para que se ligue um alarme:
 Coloque 1 into o alarme. \ was "Coloque yes into o alarme." Value of yes inherited from o CAL-1000 according to Dan.
 
-Etapas necessárias para que se defina um path to read-write mode:
-Isole o path.
-Null terminate o path.
-Call "kernel32.dll" "GetFileAttributesA" with o path's first returning um número.
+Etapas necessárias para que se defina um endereço completo to read-write mode:
+Isole o endereço completo.
+Null terminate o endereço completo.
+Call "kernel32.dll" "GetFileAttributesA" with o endereço completo's first returning um número.
 Conjuncione logicamente o número with -2 [everything except file_attribute_readonly].
-Call "kernel32.dll" "SetFileAttributesA" with o path's first e o número.
+Call "kernel32.dll" "SetFileAttributesA" with o endereço completo's first e o número.
 
 The número sete é um pedaço igual a 55.
 
@@ -13068,13 +13068,13 @@ Etapas necessárias para que se mova to o center of um caixa e face west:
 Coloque o caixa's center into o context's spot.
 Face west.
 
-Etapas necessárias para que se start um process usando um path: \ must ser called with um global variable
+Etapas necessárias para que se start um process usando um endereço completo: \ must ser called with um global variable
 Limpe o i/o error.
 Se o process não for 0, coloque "Lo lamento, pero o proceso ya se está ejecutando." into o i/o error; exit.
 Coloque um startupinfo's magnitude into o startupinfo's cb.
-Extract um endereço da pasta from o path. null terminate o endereço da pasta.
-Isole o path. null terminate o path.
-Call "kernel32.dll" "CreateProcessA" with o path's first e 0 e 0 e 0 e 0 e 67108904 [create_default_error_mode + normal_priority_class + detached_process] e 0 
+Extract um endereço da pasta from o endereço completo. null terminate o endereço da pasta.
+Isole o endereço completo. null terminate o endereço completo.
+Call "kernel32.dll" "CreateProcessA" with o endereço completo's first e 0 e 0 e 0 e 0 e 67108904 [create_default_error_mode + normal_priority_class + detached_process] e 0 
 And o endereço da pasta's first e o startupinfo's whereabouts e um processinfo's whereabouts returning um número.
 Se o número for 0, coloque "Erro. Não foi possível executar o programa." into o i/o error; exit.
 Coloque o processinfo's hprocess into o process.
@@ -16308,7 +16308,7 @@ The teal cor é uma cor.
 
 The teal pincel é um pincel.
 
-The temp path é um path.
+The temp endereço completo é um endereço completo.
 
 The terminal é um terminal.
 
@@ -16642,7 +16642,7 @@ An url é um string.
 An url conjunto has
 An scheme string,
 An host name string,
-An path string,
+An endereço completo string,
 An extra string,
 An port número.
 
@@ -16762,7 +16762,7 @@ Aguarde por o tecla to go down.
 Aguarde por o tecla to come up.
 Desmanche all events.
 
-An wave file é um path.
+An wave file é um endereço completo.
 
 An wave é um texto hexadecimal.
 
@@ -16844,21 +16844,21 @@ Se o result número é -1, coloque "Ocorreu um erro durante o posicionamento do po
 Call "kernel32.dll" "WriteFile" with o file e o trecho's first e o trecho's length e um número's whereabouts e 0 returning o result número.
 Se o result número for 0, coloque "Ocorreu um erro durante a gravação do arquivo." into o i/o error; exit.
 
-Etapas necessárias para que se store um trecho in um path;
-Etapas necessárias para que se escreva um trecho to um path:
+Etapas necessárias para que se store um trecho in um endereço completo;
+Etapas necessárias para que se escreva um trecho to um endereço completo:
 Limpe o i/o error.
-Extract um endereço da pasta from o path.
+Extract um endereço da pasta from o endereço completo.
 Se o endereço da pasta não estiver in o sistema de arquivos, coloque "A pasta '" then o endereço da pasta then "' não existe." into o i/o error; exit.
-Defina o path to read-write mode.
-Isole o path.
-Null terminate o path.
-Call "kernel32.dll" "CreateFileA" with o path's first e 1073741824 [generic_write] 
+Defina o endereço completo to read-write mode.
+Isole o endereço completo.
+Null terminate o endereço completo.
+Call "kernel32.dll" "CreateFileA" with o endereço completo's first e 1073741824 [generic_write] 
 And 0 e 0 e 2 [create_always] e -2147483520 [file_flag_write_through ou file_attribute_normal] e 0 returning um handle.
-Se o handle é -1 [invalid_handle_value], coloque "Ocorreu um erro ao tentar abrir o arquivo '" then o path then "'." into o i/o error; exit.
+Se o handle é -1 [invalid_handle_value], coloque "Ocorreu um erro ao tentar abrir o arquivo '" then o endereço completo then "'." into o i/o error; exit.
 Call "kernel32.dll" "WriteFile" with o handle e o trecho's first e o trecho's length e um número's whereabouts e 0 returning o número.
 Call "kernel32.dll" "CloseHandle" with o handle.
 Se o número não for 0, cancele.
-Coloque "Ocorreu um erro ao tentar salvar o arquivo '" then o path then "'." into o i/o error.
+Coloque "Ocorreu um erro ao tentar salvar o arquivo '" then o endereço completo then "'." into o i/o error.
 
 Etapas necessárias para que se escreva um pedaço:
 Coloque o pedaço into um string.
