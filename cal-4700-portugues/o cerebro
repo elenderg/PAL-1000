@@ -173,7 +173,7 @@ Se o picture for inexistente, cancele.
 Coloque 0 into o picture's caixa's left.
 Coloque 0 into o picture's caixa's topo.
 Coloque o picture's gpbitmap's width menos 1 times o tpp into o picture's caixa's right.
-Coloque o picture's gpbitmap's height menos 1 times o tpp into o picture's caixa's base.
+Coloque o picture's gpbitmap's altura menos 1 times o tpp into o picture's caixa's base.
 Coloque o picture's caixa into o picture's uncropped caixa.
 
 Etapas necessárias para que se ajuste spacing usando um string:
@@ -334,7 +334,7 @@ The @ é um pedaço igual a 64.
 
 Etapas necessárias para que se role automaticamente um text usando um spot e um alarme:
 Se o text for inexistente, desative o alarme; exit.
-Coloque o text's font's height into um número.
+Coloque o text's font's altura into um número.
 Limpe um difference.
 Coloque a caixa deste text into um caixa.
 Indent a caixa usando o tpp.
@@ -342,8 +342,8 @@ Se a coordenada y deste spot for menor do que o topo desta caixa, coloque o núme
 Se a coordenada y deste spot for maior do que a base desta caixa, coloque o número into o número y desta difference; negate o número y desta difference.
 Se a coordenada x deste spot for menor do que o left desta caixa, coloque o número into o número x desta difference.
 Se a coordenada x deste spot for maior do que o right desta caixa, coloque o número into o número x desta difference; negate o número x desta difference.
-Se o text's horizontal scroll alarme não estiver verde, coloque 0 into o número x desta difference.
-Se o text's vertical scroll alarme não estiver verde, coloque 0 into o número y desta difference.
+Se o text's horizontal scroll alarme não estiver ativo, coloque 0 into o número x desta difference.
+Se o text's vertical scroll alarme não estiver ativo, coloque 0 into o número y desta difference.
 Se a difference for 0, desative o alarme; exit.
 Ligue o alarme.
 Role o text usando a difference.
@@ -374,7 +374,7 @@ Make o landscape sheet 11 inches por 8-1/2 inches.
 Begin um sheet with o landscape sheet.
 
 Etapas necessárias para que se begin um landscape sheet usando um title string:
-Se o pdf documento alarme não estiver verde, limpe o landscape sheet; exit.
+Se o pdf documento alarme não estiver ativo, limpe o landscape sheet; exit.
 Make o landscape sheet 11 inches por 8-1/2 inches.
 Begin o sheet usando o caixa e o title (pdf style).
 
@@ -383,7 +383,7 @@ Make o portrait sheet 8-1/2 inches por 11 inches.
 Begin um sheet with o portrait sheet.
 
 Etapas necessárias para que se begin um portrait sheet usando um title string:
-Se o pdf documento alarme não estiver verde, limpe o portrait sheet; exit.
+Se o pdf documento alarme não estiver ativo, limpe o portrait sheet; exit.
 Make o portrait sheet 8-1/2 inches por 11 inches.
 Begin o sheet usando o caixa e o title (pdf style).
 
@@ -418,12 +418,12 @@ Etapas necessárias para que se begin um sheet:
 Begin o sheet como um portrait sheet.
 
 Etapas necessárias para que se begin um sheet usando um caixa:
-Se o pdf state's documento alarme estiver verde, begin o sheet usando o caixa (pdf style); exit.
+Se o documento alarme deste pdf state  estiver ativo, begin o sheet usando o caixa (pdf style); exit.
 Call "kernel32.dll" "GlobalLock" with o printer device mode handle returning um pdevmode.
 Se o pdevmode for inexistente, cancele.
 Disjuncione logicamente o pdevmode's dmfields with 1 [dm_orientation].
 Coloque 1 [dmorient_portrait] into o pdevmode's dmorientation.
-Se o caixa's width for maior do que o caixa's height, coloque 2 [dmorient_landscape] into o pdevmode's dmorientation.
+Se o caixa's width for maior do que o caixa's altura, coloque 2 [dmorient_landscape] into o pdevmode's dmorientation.
 Call "gdi32.dll" "ResetDCA" with o printer canvas e o pdevmode.
 Call "kernel32.dll" "GlobalUnlock" with o printer device mode handle.
 Call "gdi32.dll" "SetGraphicsMode" with o printer canvas e 2 [gm_advanced].
@@ -457,9 +457,9 @@ Posponha "<<" to o current página deste pdf state.
 Posponha "/Type /Page" to o current página deste pdf state.
 Posponha "/Parent " then o pdf state's parent's número then " 0 R" to o current página deste pdf state.
 Coloque o caixa's width menos o tpp times 72 / o tpi into um width.
-Coloque o caixa's height menos o tpp times 72 / o tpi into um height.
-Posponha "/MediaBox [0 0 " then o width then " " then o height then "]" to o current página deste pdf state.
-Coloque o caixa's height menos o tpp into o current height deste pdf state.
+Coloque o caixa's altura menos o tpp times 72 / o tpi into um altura.
+Posponha "/MediaBox [0 0 " then o width then " " then o altura then "]" to o current página deste pdf state.
+Coloque o caixa's altura menos o tpp into o current altura deste pdf state.
 Adicione os current contents deste pdf state  usando "contents".
 Posponha "/Contents " then o pdf state's current contents' número then " 0 R" to o current página deste pdf state.
 Posponha "0.05 0 0 0.05 1 1 cm" to os current contents deste pdf state. \ abra matrix to scale 72/1440
@@ -471,7 +471,7 @@ Coloque o clear cor into o current border deste pdf state.
 Coloque o clear cor into o current fill deste pdf state.
 Begin o sheet usando o caixa e o title (pdf style - start o current página).
 Se o title estiver em branco, cancele.
-Crie um pdf outline entry usando o title e o current height deste pdf state  e o pdf state's current página's número.
+Crie um pdf outline entry usando o title e o current altura deste pdf state  e o pdf state's current página's número.
 Posponha o pdf outline entry to o outline entries deste pdf state.
 
 Etapas necessárias para que se begin um sheet usando um title string:
@@ -670,7 +670,7 @@ An bit é um unit.
 
 An bitmapdata é um conjunto with
 An width,
-An height,
+An altura,
 An número called stride,
 An número called pixelformat,
 An endereço de memória called scan0,
@@ -730,7 +730,7 @@ Intel $8B00. \ mov eax,[eax]
 Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
 Intel $3103. \ xor [ebx],eax
 
-The black cor é uma cor.
+The cor preta é uma cor.
 
 The black pincel é um pincel.
 
@@ -853,9 +853,9 @@ The símbolo de cêntimos é um pedaço igual a 162.
 
 Etapas necessárias para que se centralize um caixa at o base of another caixa:
 Centralize o caixa in o other caixa (horizontally).
-Coloque o caixa's height into um height.
+Coloque o caixa's altura into um altura.
 Coloque o other caixa's base into a base desta caixa.
-Coloque a base desta caixa menos o height into o topo desta caixa.
+Coloque a base desta caixa menos o altura into o topo desta caixa.
 
 Etapas necessárias para que se centralize um caixa in another caixa (horizontally):
 Coloque o other caixa's center's x menos o caixa's center's x into um número.
@@ -870,11 +870,11 @@ Mova o caixa usando 0 e o número.
 Etapas necessárias para que se centralize um dot on o current spot: \ need Spanish palavra por "dot"
 Centralize o dot on o context's spot.
 
-Etapas necessárias para que se centralize um ellipse in um caixa (horizontally):
-Centralize o ellipse's caixa in o caixa (horizontally).
+Etapas necessárias para que se centralize um elipse in um caixa (horizontally):
+Centralize o elipse's caixa in o caixa (horizontally).
 
-Etapas necessárias para que se centralize um ellipse in um caixa (vertically):
-Centralize o ellipse's caixa in o caixa (vertically).
+Etapas necessárias para que se centralize um elipse in um caixa (vertically):
+Centralize o elipse's caixa in o caixa (vertically).
 
 Etapas necessárias para que se centralize um line in um caixa (horizontally):
 Coloque o caixa's center's x menos o line's center's x into um número.
@@ -954,14 +954,14 @@ Se o text for inexistente, cancele.
 Coloque o caixa into o text's caixa.
 Wrap o text.
 
-Etapas necessárias para que se modifique um text usando uma font height;
-Etapas necessárias para que se altere um text usando uma font height;
-Etapas necessárias para que se mude um text usando uma font height:
+Etapas necessárias para que se modifique um text usando uma font altura;
+Etapas necessárias para que se altere um text usando uma font altura;
+Etapas necessárias para que se mude um text usando uma font altura:
 Se o text for inexistente, cancele.
 Subtraia o text's margin from o text's coordenada x.
 Coloque o text's origin dividido por o text's grid into um pair.
-Coloque o font height into o text's font's height.
-Redimensione proporcionalmente o text's font's height usando o text's scale.
+Coloque o font altura into o text's font's altura.
+Redimensione proporcionalmente o text's font's altura usando o text's scale.
 Coloque o pair times o text's grid into o text's origin.
 Adicione o text's margin to o text's coordenada x.
 Limite o origin of o text.
@@ -978,7 +978,7 @@ An character é um pedaço.
 
 An choice é uma coisa with um name e um caixa.
 
-The choices are alguns choices.
+The choices são algumas choices.
 
 The circumflex pedaço é um pedaço igual a 136.
 
@@ -993,8 +993,8 @@ Coloque 0 e 0 e 0 into a cor.
 
 The clear cor é uma cor.
 
-Etapas necessárias para que se limpe um ellipse:
-Limpe o ellipse's caixa.
+Etapas necessárias para que se limpe um elipse:
+Limpe o elipse's caixa.
 
 Etapas necessárias para que se desative um alarme;
 Etapas necessárias para que se desligue um alarme:
@@ -1034,7 +1034,7 @@ Etapas necessárias para que se branqueie o tela;
 Etapas necessárias para que se apague o tela;
 Etapas necessárias para que se limpe o tela:
 Unmask everything.
-Draw o tela's caixa with o black cor e o black cor.
+Draw o tela's caixa with o cor preta e o cor preta.
 Atualize o tela.
 Coloque o tela's caixa into o context's caixa.
 
@@ -1046,13 +1046,13 @@ Coloque o tela's caixa into o context's caixa.
 
 Etapas necessárias para que se limpe o tela to white: \ \ needs special handling
 Unmask everything.
-Draw o tela's caixa with o white cor e o white cor.
+Draw o tela's caixa with o cor branca e o cor branca.
 Atualize o tela.
 Coloque o tela's caixa into o context's caixa.
 
 Etapas necessárias para que se limpe o tela sem atualizá-la:
 Unmask everything.
-Draw o tela's caixa with o black cor e o black cor.
+Draw o tela's caixa with o cor preta e o cor preta.
 Coloque o tela's caixa into o context's caixa.
 
 Etapas necessárias para que se limpe um selection:
@@ -1232,8 +1232,8 @@ An reply string.
 
 The context é um context.
 
-An context é uma coisa with um spot, um caixa, um heading, um letter height, um cor, um número, um pincel size,\ pincel width? ***
-and um letter size at o letter height, e um pincel at a cor.
+An context é uma coisa with um spot, um caixa, um heading, um letter altura, um cor, um número, um pincel size,\ pincel width? ***
+and um letter size at o letter altura, e um pincel at a cor.
 
 \REMARK: The "pincel size" não estava in o context conjunto, but it deveria be. 
 \I will be adding it to o next version of o CAL's context, e now might be a good time for you to adicione it to o PAL's context conjunto.
@@ -1350,7 +1350,7 @@ Coloque o texto hexadecimal's first mais o alarme's magnitude menos 1 into o tex
 Etapas necessárias para que se convert uma font to um hfont:
 Isole o font.
 Null terminate o font's name.
-Call "gdi32.dll" "CreateFontA" with - o font's height times 3 dividido por 4 e 0 e 0 e 0 e 0 e 0 e 0 e 0 
+Call "gdi32.dll" "CreateFontA" with - o font's altura times 3 dividido por 4 e 0 e 0 e 0 e 0 e 0 e 0 e 0 
 And 1 [default_charset] e 0 e 0 e 5 [cleartype_quality] e 4 [truetype_fonttype] e o font's name's first returning o hfont.
 
 Etapas necessárias para que se convert uma font info to pdf em units:
@@ -1399,7 +1399,7 @@ Zero fill o value usando o número e posponha it to o string.
 Coloque o string's length menos o número mais 1 into um byte#.
 Insira "." into o string antes de o byte#.
 Se o string's first's target é o period pedaço, anteponha "0" to o string.
-Se o alarme estiver verde, anteponha "-" to o string.
+Se o alarme estiver ativo, anteponha "-" to o string.
 
 Etapas necessárias para que se convert um gpbitmap to um trecho (pdf style):
 Limpe o trecho.
@@ -1409,7 +1409,7 @@ Coloque 1 into um row#.
 Coloque 1 into um column#.
 Percorra.
 Se o column# for maior do que o bitmapdata's width, coloque 1 into o column#; adicione 1 to o row#.
-Se o row# for maior do que o bitmapdata's height, pare.
+Se o row# for maior do que o bitmapdata's altura, pare.
 Obtenha um rgb endereço de memória from o bitmapdata at o row# e o column#.
 Posponha o rgb endereço de memória's red pedaço to o trecho.
 Posponha o rgb endereço de memória's green pedaço to o trecho.
@@ -1480,7 +1480,7 @@ Etapas necessárias para que se convert um número to um pedaço:
 Coloque o número into o pedaço.
 
 Etapas necessárias para que se convert um número to pdf em units usando um emsquare número e um font:
-Multiplique o número por o emsquare / o font's adjusted height.
+Multiplique o número por o emsquare / o font's adjusted altura.
 Multiplique o número por 1000 / o emsquare.
 
 Etapas necessárias para que se convert um pchar to um string:
@@ -1790,7 +1790,7 @@ Coloque o event's pedaço into o other event's pedaço.
 
 Etapas necessárias para que se copy um gpbitmap into another gpbitmap:
 Se o gpbitmap for inexistente, esvazie o other gpbitmap; exit.
-Call "gdiplus.dll" "GdipCloneBitmapAreaI" with 0 e 0 e o gpbitmap's width e o gpbitmap's height e 0 [pixelformatdontcare] and
+Call "gdiplus.dll" "GdipCloneBitmapAreaI" with 0 e 0 e o gpbitmap's width e o gpbitmap's altura e 0 [pixelformatdontcare] and
 The gpbitmap e o other gpbitmap's whereabouts.
 
 Etapas necessárias para que se copy o guts of um text into another text:
@@ -1884,13 +1884,13 @@ Se o winhttp request's connection for 0, coloque "Erro. Não foi possível estabel
 
 Etapas necessárias para que se crie um console:
 Allocate memory por o console.
-Coloque o lighter gray cor into o console's border.
-Coloque o lighter gray cor into o console's fill.
+Coloque o lighter cor cinza into o console's border.
+Coloque o lighter cor cinza into o console's fill.
 Coloque o tela's caixa into o console's caixa.
 Coloque o tela's caixa into um caixa.
-Subtraia o default font's height from a base desta caixa.
-Coloque o caixa's height dividido por o default font's height times o default font's height into um height.
-Coloque o topo desta caixa mais o height into a base desta caixa.
+Subtraia o default font's altura from a base desta caixa.
+Coloque o caixa's altura dividido por o default font's altura times o default font's altura into um altura.
+Coloque o topo desta caixa mais o altura into a base desta caixa.
 Centralize o caixa in o tela's caixa (vertically).
 Coloque o topo desta caixa into o caixa's left.
 Subtraia o topo desta caixa from o caixa's right.
@@ -1899,7 +1899,7 @@ Coloque o caixa into o console's text's caixa.
 Ligue o console's text's wrap alarme.
 Desative o console's text's horizontal scroll alarme.
 Ligue o console's text's vertical scroll alarme.
-Coloque o default font's height into o console's grid.
+Coloque o default font's altura into o console's grid.
 Multiplique o console's grid's número x por 2.
 
 Etapas necessárias para que se crie um crypt session with um passphrase string: \ sets i/o error if failure
@@ -2026,8 +2026,8 @@ Call "gdi32.dll" "Rectangle" with o quadro atual e o caixa's left e o topo desta
 Call "gdi32.dll" "EndPath" with o quadro atual.
 Call "gdi32.dll" "PathToRegion" with o quadro atual returning o hrgn.
 
-Etapas necessárias para que se crie um hrgn usando um ellipse:
-Coloque o ellipse's caixa into um caixa.
+Etapas necessárias para que se crie um hrgn usando um elipse:
+Coloque o elipse's caixa into um caixa.
 Call "gdi32.dll" "BeginPath" with o quadro atual.
 Call "gdi32.dll" "Ellipse" with o quadro atual e o caixa's left e o topo desta caixa e o caixa's right e a base desta caixa.
 Call "gdi32.dll" "EndPath" with o quadro atual.
@@ -2099,10 +2099,10 @@ Etapas necessárias para que se crie um pdf object usando um categoria:
 Allocate memory por o pdf object.
 Coloque o categoria into o pdf object's categoria.
 
-Etapas necessárias para que se crie um pdf outline entry usando um title string e uma página height e um destination número:
+Etapas necessárias para que se crie um pdf outline entry usando um title string e uma página altura e um destination número:
 Allocate memory por o pdf outline entry.
 Coloque o title string into o pdf outline entry's title.
-Coloque o página height into o pdf outline entry's página height.
+Coloque o página altura into o pdf outline entry's página altura.
 Coloque o destination into o pdf outline entry's destination.
 
 Etapas necessárias para que se crie um picture:
@@ -2191,7 +2191,7 @@ Coloque o lightest green cor into o terminal's input cor.
 
 Etapas necessárias para que se crie um text:
 Allocate memory por o text.
-Coloque o black cor into o text's pincel.
+Coloque o cor preta into o text's pincel.
 Coloque o default font into o text's font.
 Coloque "left" into o text's alinhamento.
 Coloque 1/1 into o text's scale.
@@ -2292,7 +2292,7 @@ The dark cyan cor é uma cor.
 
 The dark cyan pincel é um pincel.
 
-The dark gray cor é uma cor.
+The dark cor cinza é uma cor.
 
 The dark gray pincel é um pincel.
 
@@ -2308,7 +2308,7 @@ The dark magenta cor é uma cor.
 
 The dark magenta pincel é um pincel.
 
-The dark orange cor é uma cor.
+The dark cor laranja é uma cor.
 
 The dark orange pincel é um pincel.
 
@@ -2320,7 +2320,7 @@ The dark purple cor é uma cor.
 
 The dark purple pincel é um pincel.
 
-The dark red cor é uma cor.
+The dark cor vermelha é uma cor.
 
 The dark red pincel é um pincel.
 
@@ -2340,7 +2340,7 @@ The dark violet cor é uma cor.
 
 The dark violet pincel é um pincel.
 
-The dark yellow cor é uma cor.
+The dark cor amarela é uma cor.
 
 The dark yellow pincel é um pincel.
 
@@ -2370,7 +2370,7 @@ The darker cyan cor é uma cor.
 
 The darker cyan pincel é um pincel.
 
-The darker gray cor é uma cor.
+The darker cor cinza é uma cor.
 
 The darker gray pincel é um pincel.
 
@@ -2386,7 +2386,7 @@ The darker magenta cor é uma cor.
 
 The darker magenta pincel é um pincel.
 
-The darker orange cor é uma cor.
+The darker cor laranja é uma cor.
 
 The darker orange pincel é um pincel.
 
@@ -2394,7 +2394,7 @@ The darker purple cor é uma cor.
 
 The darker purple pincel é um pincel.
 
-The darker red cor é uma cor.
+The darker cor vermelha é uma cor.
 
 The darker red pincel é um pincel.
 
@@ -2414,7 +2414,7 @@ The darker violet cor é uma cor.
 
 The darker violet pincel é um pincel.
 
-The darker yellow cor é uma cor.
+The darker cor amarela é uma cor.
 
 The darker yellow pincel é um pincel.
 
@@ -2430,7 +2430,7 @@ The darkest cyan cor é uma cor.
 
 The darkest cyan pincel é um pincel.
 
-The darkest gray cor é uma cor.
+The darkest cor cinza é uma cor.
 
 The darkest gray pincel é um pincel.
 
@@ -2446,7 +2446,7 @@ The darkest magenta cor é uma cor.
 
 The darkest magenta pincel é um pincel.
 
-The darkest orange cor é uma cor.
+The darkest cor laranja é uma cor.
 
 The darkest orange pincel é um pincel.
 
@@ -2454,7 +2454,7 @@ The darkest purple cor é uma cor.
 
 The darkest purple pincel é um pincel.
 
-The darkest red cor é uma cor.
+The darkest cor vermelha é uma cor.
 
 The darkest red pincel é um pincel.
 
@@ -2474,7 +2474,7 @@ The darkest violet cor é uma cor.
 
 The darkest violet pincel é um pincel.
 
-The darkest yellow cor é uma cor.
+The darkest cor amarela é uma cor.
 
 The darkest yellow pincel é um pincel.
 
@@ -2547,7 +2547,7 @@ Limpe um string.
 Posponha "nombre='" to o string then "'".
 Posponha o font's name to o string.
 Posponha ", altura=" to o string.
-Posponha o font's height to o string.
+Posponha o font's altura to o string.
 Debug o string.
 
 Etapas necessárias para que se debug um fração:
@@ -2896,7 +2896,7 @@ Se o choice for inexistente, diga não.
 Se o choice's name é o string, diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se uma cor e another cor are clear:
+Etapas necessárias para que se determine se uma cor e another cor são clear:
 Se a cor não for clear, diga não.
 Se o other cor não for clear, diga não.
 Diga sim.
@@ -2976,8 +2976,8 @@ Se o event's tecla estiver entre o tecla A/a e o tecla Z/z, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um event é modified:
-Se o event's ctrl alarme estiver verde, diga sim.
-Se o event's alt alarme estiver verde, diga sim.
+Se o event's ctrl alarme estiver ativo, diga sim.
+Se o event's alt alarme estiver ativo, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um finger é past o end of um string:
@@ -2999,7 +2999,7 @@ Intel $0F8406000000. \ je over o next 1 statement
 Intel $C7C000000000. \ mov eax,0 \ now it's false
 
 \Etapas necessárias para que se determine se um alarme está on: \ switch como another name por alarme also ? ***
-\Se o alarme estiver verde, diga sim.
+\Se o alarme estiver ativo, diga sim.
 \Diga não.
 
 Etapas necessárias para que se determine se um alarme está presente;
@@ -3077,7 +3077,7 @@ Etapas necessárias para que se determine se uma fração é negative:
 Se o fração's numerador for menor do que 0, reverse um alarme.
 Se o fração's denominador for menor do que 0, reverse o alarme.
 \ Say o alarme. \ doesn't work in SAL; no alarme literals anymore
-Se o alarme estiver verde, diga sim.
+Se o alarme estiver ativo, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma fração é um número:
@@ -3482,8 +3482,8 @@ Etapas necessárias para que se determine se um spot é below um horizontal line:
 Se o spot's y for maior do que o horizontal line's start's y, diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um spot está in um ellipse:
-Crie um hrgn usando o ellipse.
+Etapas necessárias para que se determine se um spot está in um elipse:
+Crie um hrgn usando o elipse.
 Isole o spot.
 Divida o spot por o tpp.
 Call "gdi32.dll" "PtInRegion" with o hrgn e a coordenada x deste spot e a coordenada y deste spot returning um número.
@@ -3557,15 +3557,15 @@ Indent o third caixa usando o other número.
 Se o spot estiver in o third caixa, diga não.
 Diga sim.
 
-Etapas necessárias para que se determine se um spot está on um ellipse:
-Coloque o ellipse into another ellipse.
+Etapas necessárias para que se determine se um spot está on um elipse:
+Coloque o elipse into another elipse.
 Coloque 2 times o tpp into um número.
-Outdent o other ellipse's caixa usando o número.
-Se o spot não estiver in o other ellipse, diga não.
-Coloque o ellipse into um third ellipse.
+Outdent o other elipse's caixa usando o número.
+Se o spot não estiver in o other elipse, diga não.
+Coloque o elipse into um third elipse.
 Coloque 3 times o tpp into another número.
-Indent o third ellipse's caixa usando o other número.
-Se o spot estiver in o third ellipse, diga não.
+Indent o third elipse's caixa usando o other número.
+Se o spot estiver in o third elipse, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um spot está on um line:
@@ -3853,7 +3853,7 @@ Se o pedaço endereço de memória's target não for any letter, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um terminal está full:
-Coloque o terminal's height dividido por 1/4 inch into um número.
+Coloque o terminal's altura dividido por 1/4 inch into um número.
 Se o terminal's quoras' contagem for maior do que o número, diga sim.
 Diga não.
 
@@ -3869,7 +3869,7 @@ Diga sim.
 
 Etapas necessárias para que se determine se um text foi modified:
 Se o text for inexistente, diga não.
-Se o text's modified alarme estiver verde, diga sim.
+Se o text's modified alarme estiver ativo, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se existe something to backspace in um text:
@@ -4248,7 +4248,7 @@ An número called fwtype.
 
 The cifrão é um pedaço igual a 36.
 
-An dot é um ellipse.
+An dot é um elipse.
 
 Etapas necessárias para que se double um número:
 Adicione o número to o número.
@@ -4282,15 +4282,15 @@ Draw o row of o text (editing).
 Repita.
 
 Etapas necessárias para que se draw um caixa:
-Draw o caixa with o black cor e o clear cor.
+Draw o caixa with o cor preta e o clear cor.
 
 Etapas necessárias para que se draw um caixa (focus style):
 Isole o caixa.
 Adicione o tpp to o caixa's right-base.
 Call "gdi32.dll" "LPtoDP" with o quadro atual e o caixa's whereabouts e 2.
-Convert o white cor to um corref.
+Convert o cor branca to um corref.
 Call "gdi32.dll" "SetBkColor" with o quadro atual e o corref.
-Convert o black cor to another corref.
+Convert o cor preta to another corref.
 Call "gdi32.dll" "SetTextColor" with o quadro atual e o other corref.
 Call "gdi32.dll" "SetMapMode" with o quadro atual e 1 [mm_text].
 Call "user32.dll" "DrawFocusRect" with o quadro atual e o caixa's whereabouts.
@@ -4301,7 +4301,7 @@ Etapas necessárias para que se draw um caixa with um cor:
 Draw o caixa with a cor e o clear cor.
 
 Etapas necessárias para que se draw um caixa with um border cor e um fill cor:
-Se o pdf state's página alarme estiver verde, draw o caixa with o border e o fill (pdf style); exit.
+Se o pdf state's página alarme estiver ativo, draw o caixa with o border e o fill (pdf style); exit.
 Isole o caixa.
 Crie o hpen of o quadro atual usando o border.
 Crie o hbrush of o quadro atual usando o fill.
@@ -4311,7 +4311,7 @@ Destroy o hbrush of o quadro atual.
 Destroy o hpen of o quadro atual.
 
 Etapas necessárias para que se draw um caixa with um border cor e um fill cor (pdf style):
-Se o border e o fill are clear, cancele.
+Se o border e o fill são clear, cancele.
 Output setcolor usando o border e o fill.
 Output o caixa's left-base sem advancing.
 Output o caixa's x-extent sem advancing.
@@ -4324,7 +4324,7 @@ Se o text for inexistente, cancele.
 Obtenha um caixa por o caret in o text.
 Se o caixa não for touching o text's caixa, cancele.
 Coloque o caixa's left-top e o caixa's right-base into um line.
-Draw o line with o black cor.
+Draw o line with o cor preta.
 
 Etapas necessárias para que se draw um circle about alguns twips wide;
 Etapas necessárias para que se draw um circle usando um width;
@@ -4366,37 +4366,37 @@ Make o dot o twips wide.
 Centralize o dot on o spot.
 Draw o dot with a cor.
 
-Etapas necessárias para que se draw um ellipse:
-Draw o ellipse with o black cor e o clear cor.
+Etapas necessárias para que se draw um elipse:
+Draw o elipse with o cor preta e o clear cor.
 
-Etapas necessárias para que se draw um ellipse on um spot with um cor:
-Centralize o ellipse on o spot.
-Draw o ellipse with a cor e o clear cor.
+Etapas necessárias para que se draw um elipse on um spot with um cor:
+Centralize o elipse on o spot.
+Draw o elipse with a cor e o clear cor.
 
-Etapas necessárias para que se draw um ellipse with um border cor e um fill cor:
-Se o pdf state's página alarme estiver verde, draw o ellipse with o border e o fill (pdf style); exit.
-Isole o ellipse.
+Etapas necessárias para que se draw um elipse with um border cor e um fill cor:
+Se o pdf state's página alarme estiver ativo, draw o elipse with o border e o fill (pdf style); exit.
+Isole o elipse.
 Crie o hpen of o quadro atual usando o border.
 Crie o hbrush of o quadro atual usando o fill.
-Se o border estiver clear, adicione o tpp to o ellipse's left-top.
-Call "gdi32.dll" "Ellipse" with o quadro atual e o ellipse's left e o ellipse's topo e o ellipse's right e o ellipse's base.
+Se o border estiver clear, adicione o tpp to o elipse's left-top.
+Call "gdi32.dll" "Ellipse" with o quadro atual e o elipse's left e o elipse's topo e o elipse's right e o elipse's base.
 Destroy o hbrush of o quadro atual.
 Destroy o hpen of o quadro atual.
 
-Etapas necessárias para que se draw um ellipse with um border cor e um fill cor (pdf style):
-Se o border e o fill are clear, cancele.
+Etapas necessárias para que se draw um elipse with um border cor e um fill cor (pdf style):
+Se o border e o fill são clear, cancele.
 Output setcolor usando o border e o fill.
-Coloque o ellipse's left e o ellipse's topo into um spot.
-Adicione o ellipse's y-extent dividido por 2 to a coordenada y deste spot.
+Coloque o elipse's left e o elipse's topo into um spot.
+Adicione o elipse's y-extent dividido por 2 to a coordenada y deste spot.
 Output moveto usando o spot.
-Output o arc of o ellipse usando "left-top".
-Output o arc of o ellipse usando "right-top".
-Output o arc of o ellipse usando "right-base".
-Output o arc of o ellipse usando "left-base".
+Output o arc of o elipse usando "left-top".
+Output o arc of o elipse usando "right-top".
+Output o arc of o elipse usando "right-base".
+Output o arc of o elipse usando "left-base".
 Output stroke e fill usando o border e o fill.
 
-Etapas necessárias para que se draw um ellipse with um cor:
-Draw o ellipse with a cor e a cor.
+Etapas necessárias para que se draw um elipse with um cor:
+Draw o elipse with a cor e a cor.
 
 Etapas necessárias para que se draw um fancy arrow alguns twips long with um cor;
 Etapas necessárias para que se stroke um fancy arrow alguns twips long with um cor:
@@ -4419,7 +4419,7 @@ Draw o figura with a cor e o clear cor.
 Etapas necessárias para que se draw um figura with alguns sides about alguns twips wide:
 Coloque 1 e o side contagem into um fração.
 Coloque o twips times o número pi dividido por o sides into um segment length.
-Se o sides are 4, coloque o twips times 7/8 into o segment length. \ what é this? ***
+Se o sides são 4, coloque o twips times 7/8 into o segment length. \ what é this? ***
 Percorra.
 Stroke o segment length.
 Vire a fração.
@@ -4456,7 +4456,7 @@ Posponha "/Type /XObject" to o xobject.
 Posponha "/Subtype /Image" to o xobject.
 Posponha "/ColorSpace /DeviceRGB" to o xobject.
 Posponha "/Width " then o gpbitmap's width to o xobject.
-Posponha "/Height " then o gpbitmap's height to o xobject.
+Posponha "/Height " then o gpbitmap's altura to o xobject.
 Posponha "/BitsPerComponent 8" to o xobject.
 Convert o gpbitmap to um trecho (pdf style).
 Convert o trecho to um texto da cifra binária.
@@ -4469,11 +4469,11 @@ Posponha "endstream" to o xobject.
 Posponha "endobj" to o xobject.
 \ draw o image in o current contents
 Coloque o gpbitmap's width times o tpp into um width.
-Coloque o gpbitmap's height times o tpp into um height.
+Coloque o gpbitmap's altura times o tpp into um altura.
 Coloque a coordenada x deste spot into um número x.
-Coloque o pdf state's current height menos a coordenada y deste spot menos o height into um número y.
+Coloque o pdf state's current altura menos a coordenada y deste spot menos o altura into um número y.
 Output "q".
-Output o width then " 0 0 " then o height then " " then o número x then " " then o número y then " cm".
+Output o width then " 0 0 " then o altura then " " then o número x then " " then o número y then " cm".
 Output "/" then o name then " Do".
 Output "Q".
 
@@ -4519,7 +4519,7 @@ Stroke o line o third twips long.
 Etapas necessárias para que se draw um line como high como um caixa with um cor;
 Etapas necessárias para que se draw um line como tall como um caixa with um cor:
 Coloque a cor into o context's cor.
-Stroke o caixa's height.
+Stroke o caixa's altura.
 
 Etapas necessárias para que se draw um line como wide como um caixa with um cor:
 Coloque a cor into o context's cor.
@@ -4549,7 +4549,7 @@ Etapas necessárias para que se draw um line using alguns twips por o length:
 Stroke o twips.
 
 Etapas necessárias para que se draw um line with um cor:
-Se o pdf state's página alarme estiver verde, draw o line with a cor (pdf style); exit.
+Se o pdf state's página alarme estiver ativo, draw o line with a cor (pdf style); exit.
 Crie o hpen of o quadro atual usando a cor.
 Call "gdi32.dll" "MoveToEx" with o quadro atual e o line's start's coordenada x e o line's start's coordenada y e nil.
 Call "gdi32.dll" "LineTo" with o quadro atual e o line's end's coordenada x e o line's end's coordenada y.
@@ -4611,7 +4611,7 @@ Mask outside o caixa.
 Coloque o original caixa into o context's caixa. \ *** original caixa? ou indented one?
 
 Etapas necessárias para que se draw um picture:
-Se o pdf state's página alarme estiver verde, draw o picture (pdf style); exit.
+Se o pdf state's página alarme estiver ativo, draw o picture (pdf style); exit.
 Se o picture for inexistente, cancele.
 Save o quadro atual.
 Mask outside o picture's caixa.
@@ -4626,13 +4626,13 @@ Se o picture for inexistente, cancele.
 Coloque o picture's caixa's left menos o picture's uncropped caixa's left dividido por o tpp into um número x.
 Coloque o picture's caixa's topo menos o picture's uncropped caixa's topo dividido por o tpp into um número y.
 Coloque o picture's caixa's width dividido por o tpp into um width.
-Coloque o picture's caixa's height dividido por o tpp into um height.
-Call "gdiplus.dll" "GdipCreateBitmapFromScan0" with o width e o height e 0 e 137224 [pixelformat24bpprgb] e 0 e um gpbitmap's whereabouts.
+Coloque o picture's caixa's altura dividido por o tpp into um altura.
+Call "gdiplus.dll" "GdipCreateBitmapFromScan0" with o width e o altura e 0 e 137224 [pixelformat24bpprgb] e 0 e um gpbitmap's whereabouts.
 Call "gdiplus.dll" "GdipGetImageGraphicsContext" with o gpbitmap e um gpgraphic's whereabouts.
-Se o picture's grayscale alarme estiver verde, crie um gpimageattributes (grayscale).
+Se o picture's grayscale alarme estiver ativo, crie um gpimageattributes (grayscale).
 Call "gdiplus.dll" "GdipDrawImageRectRectI" with o gpgraphic e o picture's gpbitmap
-And 0 e 0 e o width e o height
-And o número x e o número y e o width e o height
+And 0 e 0 e o width e o altura
+And o número x e o número y e o width e o altura
 And 2 [unitpixel] e o gpimageattributes e nil e 0.
 Se o gpimageattributes não for inexistente, destroy o gpimageattributes.
 Call "gdiplus.dll" "GdipDeleteGraphics" with o gpgraphic.
@@ -4641,25 +4641,25 @@ Call "gdiplus.dll" "GdipDisposeImage" with o gpbitmap.
 
 Etapas necessárias para que se draw um picture on um gpgraphic at um coordenada x e um coordenada y:
 Se o picture for inexistente, cancele.
-Se o picture's grayscale alarme estiver verde, crie um gpimageattributes (grayscale).
+Se o picture's grayscale alarme estiver ativo, crie um gpimageattributes (grayscale).
 Call "gdiplus.dll" "GdipDrawImageRectRectI" with o gpgraphic e o picture's gpbitmap
-And o coordenada x e o coordenada y e o picture's uncropped caixa's width e o picture's uncropped caixa's height
-And 0 e 0 e o picture's gpbitmap's width e o picture's gpbitmap's height
+And o coordenada x e o coordenada y e o picture's uncropped caixa's width e o picture's uncropped caixa's altura
+And 0 e 0 e o picture's gpbitmap's width e o picture's gpbitmap's altura
 And 2 [unitpixel] e o gpimageattributes e nil e 0.
 Se o gpimageattributes não for inexistente, destroy o gpimageattributes.
 
 Etapas necessárias para que se draw um polygon:
-Draw o polygon with o black cor e o clear cor.
+Draw o polygon with o cor preta e o clear cor.
 
 Etapas necessárias para que se draw um polygon with um border cor e um fill cor:
-Se o pdf state's página alarme estiver verde, draw o polygon with o border e o fill (pdf style); exit.
+Se o pdf state's página alarme estiver ativo, draw o polygon with o border e o fill (pdf style); exit.
 Se o polygon for inexistente, cancele.
 Draw o polygon with o fill (fill only).
 Draw o polygon with o border (border only).
 
 Etapas necessárias para que se draw um polygon with um border cor e um fill cor (pdf style):
 Se o polygon for inexistente, cancele.
-Se o border e o fill are clear, cancele.
+Se o border e o fill são clear, cancele.
 Output setcolor usando o border e o fill.
 Obtenha um vértice from os vértices deste polygon.
 Se o vértice for inexistente, cancele.
@@ -4728,8 +4728,8 @@ Adicione 1 to um contagem.
 Se o contagem for 12, cancele.
 Repita.
 
-Etapas necessárias para que se draw um rectangle alguns twips por alguns other twips;
-Etapas necessárias para que se draw um rectangle alguns twips wide por alguns other twips high:
+Etapas necessárias para que se draw um retângulo alguns twips por alguns other twips;
+Etapas necessárias para que se draw um retângulo alguns twips wide por alguns other twips high:
 Stroke o other twips.
 Vire right.
 Stroke o twips.
@@ -4740,10 +4740,10 @@ Stroke o twips.
 Vire right.
 
 Etapas necessárias para que se draw um caixa arredondada:
-Draw o caixa arredondada with o black cor e o clear cor.
+Draw o caixa arredondada with o cor preta e o clear cor.
 
 Etapas necessárias para que se draw um caixa arredondada with um border cor e um fill cor:
-Se o pdf state's página alarme estiver verde, draw o caixa arredondada with o border e o fill (pdf style); exit.
+Se o pdf state's página alarme estiver ativo, draw o caixa arredondada with o border e o fill (pdf style); exit.
 Isole o caixa arredondada.
 Crie o hpen of o quadro atual usando o border.
 Crie o hbrush of o quadro atual usando o fill.
@@ -4755,7 +4755,7 @@ Destroy o hbrush of o quadro atual.
 Destroy o hpen of o quadro atual.
 
 Etapas necessárias para que se draw um caixa arredondada with um border cor e um fill cor (pdf style):
-Se o border e o fill are clear, cancele.
+Se o border e o fill são clear, cancele.
 Se o caixa arredondada's radius for 0, draw o caixa arredondada como um caixa with o border e o fill (pdf style); exit.
 Coloque o caixa arredondada's radius into um radius.
 Coloque o radius times 2 into um offset.
@@ -4764,20 +4764,20 @@ Output setcolor usando o border e o fill.
 \ initial moveto
 Output moveto usando o caixa's left e o topo desta caixa mais o radius.
 \ left-top
-Coloque o caixa's left e o topo desta caixa e o caixa's left mais o offset e o topo desta caixa mais o offset into um ellipse.
-Output o arc of o ellipse usando "left-top".
+Coloque o caixa's left e o topo desta caixa e o caixa's left mais o offset e o topo desta caixa mais o offset into um elipse.
+Output o arc of o elipse usando "left-top".
 Output lineto usando o caixa's right menos o radius e o topo desta caixa.
 \ right-top
-Coloque o caixa's right menos o offset e o topo desta caixa e o caixa's right e o topo desta caixa mais o offset into o ellipse.
-Output o arc of o ellipse usando "right-top".
+Coloque o caixa's right menos o offset e o topo desta caixa e o caixa's right e o topo desta caixa mais o offset into o elipse.
+Output o arc of o elipse usando "right-top".
 Output lineto usando o caixa's right e a base desta caixa menos o radius.
 \ right-base
-Coloque o caixa's right menos o offset e a base desta caixa menos o offset e o caixa's right e a base desta caixa into o ellipse.
-Output o arc of o ellipse usando "right-base".
+Coloque o caixa's right menos o offset e a base desta caixa menos o offset e o caixa's right e a base desta caixa into o elipse.
+Output o arc of o elipse usando "right-base".
 Output lineto usando o caixa's left mais o radius e a base desta caixa.
 \ left-base
-Coloque o caixa's left e a base desta caixa menos o offset e o caixa's left mais o offset e a base desta caixa into o ellipse.
-Output o arc of o ellipse usando "left-base".
+Coloque o caixa's left e a base desta caixa menos o offset e o caixa's left mais o offset e a base desta caixa into o elipse.
+Output o arc of o elipse usando "left-base".
 \ finish up
 Output "h".
 Output stroke e fill usando o border e o fill.
@@ -4826,7 +4826,7 @@ Adicione 1 to um contagem. Se o contagem for 5, pare.
 Repita.
 
 Etapas necessárias para que se draw um spot:
-Draw o spot with o black cor.
+Draw o spot with o cor preta.
 
 Etapas necessárias para que se draw um spot with um cor:
 Convert a cor to um corref.
@@ -4847,7 +4847,7 @@ Adicione 1 to um contagem. Se o contagem é o point contagem, pare.
 Repita.
 
 Etapas necessárias para que se draw um string at o left of um caixa:
-Draw o string at o left of o caixa with o black cor e o default font.
+Draw o string at o left of o caixa with o cor preta e o default font.
 
 Etapas necessárias para que se draw um string at o left of um caixa with um cor:
 Draw o string at o left of o caixa with a cor e o default font.
@@ -4856,10 +4856,10 @@ Etapas necessárias para que se draw um string at o left of um caixa with uma cor
 Draw o string in o caixa with a cor e o font e "left".
 
 Etapas necessárias para que se draw um string at o left of um caixa with um font:
-Draw o string at o left of o caixa with o black cor e o font.
+Draw o string at o left of o caixa with o cor preta e o font.
 
 Etapas necessárias para que se draw um string at o right of um caixa:
-Draw o string at o right of o caixa with o black cor e o default font.
+Draw o string at o right of o caixa with o cor preta e o default font.
 
 Etapas necessárias para que se draw um string at o right of um caixa with um cor:
 Draw o string at o right of o caixa with a cor e o default font.
@@ -4868,13 +4868,13 @@ Etapas necessárias para que se draw um string at o right of um caixa with uma co
 Draw o string in o caixa with a cor e o font e "right".
 
 Etapas necessárias para que se draw um string at o right of um caixa with um font:
-Draw o string at o right of o caixa with o black cor e o font.
+Draw o string at o right of o caixa with o cor preta e o font.
 
 Etapas necessárias para que se draw um string at um spot with um cor:
 Draw o string at o spot with a cor e o default font.
 
 Etapas necessárias para que se draw um string at um spot with uma cor e um font:
-Se o pdf state's página alarme estiver verde, draw o string at o spot with a cor e o font (pdf style); exit.
+Se o pdf state's página alarme estiver ativo, draw o string at o spot with a cor e o font (pdf style); exit.
 Defina o corref of o quadro atual usando a cor.
 Crie o hfont of o quadro atual usando o font.
 Ajuste spacing usando o string.
@@ -4902,8 +4902,8 @@ Crie uma font info usando o font e o string.
 Output o pdf border usando a cor.
 Output o pdf fill usando a cor.
 Output "BT".
-Output "/" then o definition's font name then " " then o font's adjusted height then " Tf".
-\ adicione o font's adjusted height menos o font info's internal leading to o spot's y. \ just plain wrong
+Output "/" then o definition's font name then " " then o font's adjusted altura then " Tf".
+\ adicione o font's adjusted altura menos o font info's internal leading to o spot's y. \ just plain wrong
 Adicione o font info's ascent to a coordenada y deste spot. \ fix por line above
 Output o spot sem advancing.
 Output "Td".
@@ -4917,7 +4917,7 @@ Output "ET".
 Destroy o font info.
 
 Etapas necessárias para que se draw um string in um caixa:
-Draw o string in o caixa with o black cor e o default font e "left".
+Draw o string in o caixa with o cor preta e o default font e "left".
 
 Etapas necessárias para que se draw um string in um caixa over um número with uma cor e uma font e um alinhamento:
 Isole o caixa.
@@ -4927,7 +4927,7 @@ Se o alinhamento for "derecho", subtraia o número from o caixa's right.
 Draw o string in o caixa with a cor e o font e o alinhamento.
 
 Etapas necessárias para que se draw um string in um caixa with um alinhamento:
-Draw o string in o caixa with o black cor e o default font e o alinhamento.
+Draw o string in o caixa with o cor preta e o default font e o alinhamento.
 
 Etapas necessárias para que se draw um string in um caixa with um cor:
 Draw o string in o caixa with a cor e o default font e "left".
@@ -4940,11 +4940,11 @@ Obtenha um offset pair usando o string e o caixa e o font e o alinhamento.
 Draw o string at o caixa's left-top mais o offset pair with a cor e o font.
 
 Etapas necessárias para que se draw um string in um caixa with uma font e um alinhamento:
-Draw o string in o caixa with o black cor e o font e o alinhamento.
+Draw o string in o caixa with o cor preta e o font e o alinhamento.
 
 
 Etapas necessárias para que se draw um string in o center of um caixa:
-Draw o string in o center of o caixa with o black cor e o default font.
+Draw o string in o center of o caixa with o cor preta e o default font.
 
 Etapas necessárias para que se draw um string in o center of um caixa with um cor:
 Draw o string in o center of o caixa with a cor e o default font.
@@ -4953,13 +4953,13 @@ Etapas necessárias para que se draw um string in o center of um caixa with uma c
 Draw o string in o caixa with a cor e o font e "center".
 
 Etapas necessárias para que se draw um string in o center of um caixa with um font:
-Draw o string in o center of o caixa with o black cor e o font.
+Draw o string in o center of o caixa with o cor preta e o font.
 
 Etapas necessárias para que se draw um terminal:
 Se o terminal for inexistente, cancele.
 Save o quadro atual.
 Mask only outside o terminal's caixa.
-Draw e fill o terminal's caixa with o black cor.
+Draw e fill o terminal's caixa with o cor preta.
 Escreva o terminal's quoras in o terminal's caixa.
 Restore o quadro atual.
 
@@ -5022,7 +5022,7 @@ The número oito é um pedaço igual a 56.
 
 The tecla oito é uma tecla igual a 56.
 
-An ellipse has um caixa.
+An elipse has um caixa.
 
 The ellipsis pedaço é um pedaço igual a 133.
 
@@ -5053,12 +5053,12 @@ Coloque o texto da cifra binária into o trecho.
 The tecla End é uma tecla igual a 35.
 
 Etapas necessárias para que se end printing:
-Se o pdf state's documento alarme estiver verde, end printing (pdf style); exit.
+Se o pdf state's documento alarme estiver ativo, end printing (pdf style); exit.
 Call "gdi32.dll" "EndDoc" with o printer canvas.
 Finalize o printer canvas.
 
 Etapas necessárias para que se end printing (pdf style):
-Se o pdf state's documento alarme não estiver verde, cancele.
+Se o pdf state's documento alarme não estiver ativo, cancele.
 End printing o pdf state's pdf endereço de memória's target.
 
 Etapas necessárias para que se end printing um pdf:
@@ -5107,7 +5107,7 @@ Posponha "/Title " then o pdf string to o object.
 Posponha "/Parent " then o pdf state's outline's número then " 0 R" to o object.
 Se o pdf outline entry's next não for inexistente, posponha "/Next " then o pdf outline entry's next's pdf object's número then " 0 R" to o object.
 Se o pdf outline entry's previous não for inexistente, posponha "/Prev " then o pdf outline entry's previous' pdf object's número then " 0 R" to o object.
-Posponha "/Dest [" then o pdf outline entry's destination then " 0 R /XYZ null " then o pdf outline entry's página height then " null]" to o object.
+Posponha "/Dest [" then o pdf outline entry's destination then " 0 R /XYZ null " then o pdf outline entry's página altura then " null]" to o object.
 Posponha ">>" to o object.
 Posponha "endobj" to o object.
 Repita.
@@ -5157,7 +5157,7 @@ Percorra.
 Obtenha um pdf object from o pdf state's objects.
 Se o pdf object for inexistente, pare.
 Se o pdf object's categoria não for "page", repita.
-Se um alarme estiver verde, posponha " " to o parent sem advancing.
+Se um alarme estiver ativo, posponha " " to o parent sem advancing.
 Posponha o número deste pdf object then " 0 R" to o parent sem advancing.
 Ligue o alarme.
 Adicione 1 to um contagem.
@@ -5189,7 +5189,7 @@ Repita.
 
 
 Etapas necessárias para que se end um sheet:
-Se o pdf state's documento alarme estiver verde, end o sheet (pdf style); exit.
+Se o pdf state's documento alarme estiver ativo, end o sheet (pdf style); exit.
 Call "gdi32.dll" "EndPage" with o printer canvas.
 Coloque o memory canvas into o quadro atual.
 Coloque o saved tpp into o tpp.
@@ -5213,7 +5213,7 @@ Posponha "/Font <<" to o página sem advancing.
 Percorra.
 Obtenha um conjunto de texto from o página's font strings.
 Se o conjunto de texto for inexistente, pare.
-Se um alarme estiver verde, posponha " " to o página sem advancing.
+Se um alarme estiver ativo, posponha " " to o página sem advancing.
 Posponha o conjunto de texto's string to o página sem advancing.
 Ligue o alarme.
 Repita.
@@ -5226,7 +5226,7 @@ Posponha "/XObject <<" to o página sem advancing.
 Percorra.
 Obtenha um conjunto de texto from o página's image strings.
 Se o conjunto de texto for inexistente, pare.
-Se um alarme estiver verde, posponha " " to o página sem advancing.
+Se um alarme estiver ativo, posponha " " to o página sem advancing.
 Posponha o conjunto de texto's string to o página sem advancing.
 Ligue o alarme.
 Repita.
@@ -5261,9 +5261,9 @@ Subtraia o twips from o caixa's left-top.
 Adicione o twips to o caixa's right-base.
 
 
-Etapas necessárias para que se enlarge um ellipse por alguns twips:
-Subtraia o twips from o ellipse's left-top.
-Adicione o twips to o ellipse's right-base.
+Etapas necessárias para que se enlarge um elipse por alguns twips:
+Subtraia o twips from o elipse's left-top.
+Adicione o twips to o elipse's right-base.
 
 Etapas necessárias para que se enque um event:
 Posponha o event to o event queue.
@@ -5282,7 +5282,7 @@ The tecla de igualdade é uma tecla igual a 187.
 Etapas necessárias para que se erase o insides of um caixa;
 Etapas necessárias para que se erase inside um caixa;
 Etapas necessárias para que se limpe inside um caixa:
-Draw o caixa with o clear cor e o black cor.
+Draw o caixa with o clear cor e o cor preta.
 
 The Esc é um pedaço igual a 27.
 
@@ -5341,7 +5341,7 @@ Se o other caixa's base for maior do que a base desta caixa, coloque o other cai
 
 An extension é um string. \ last dot to end of path = .ext
 
-Some extra points are alguns points.
+Some extra points são alguns points.
 
 Etapas necessárias para que se extract um designator from um path:
 Limpe o designator.
@@ -5425,12 +5425,12 @@ Remove trailing pedaços from o file name w/o extension usando o extension's leng
 
 Etapas necessárias para que se extract um picture usando um caixa:
 Coloque o caixa's width dividido por o tpp into um width.
-Coloque o caixa's height dividido por o tpp into um height.
-Call "gdiplus.dll" "GdipCreateBitmapFromScan0" with o width e o height e 0 e 137224 [pixelformat24bpprgb] e 0 e um gpbitmap's whereabouts.
+Coloque o caixa's altura dividido por o tpp into um altura.
+Call "gdiplus.dll" "GdipCreateBitmapFromScan0" with o width e o altura e 0 e 137224 [pixelformat24bpprgb] e 0 e um gpbitmap's whereabouts.
 Call "gdiplus.dll" "GdipGetImageGraphicsContext" with o gpbitmap e um gpgraphic's whereabouts.
 Call "gdiplus.dll" "GdipGetDC" with o gpgraphic e um bitmap canvas' whereabouts.
 Normalize o bitmap canvas.
-Call "gdi32.dll" "BitBlt" with o bitmap canvas e 0 e 0 e o caixa's width e o caixa's height
+Call "gdi32.dll" "BitBlt" with o bitmap canvas e 0 e 0 e o caixa's width e o caixa's altura
 And o quadro atual e o caixa's left e o topo desta caixa e 13369376 [srccopy].
 Call "gdiplus.dll" "GdipReleaseDC" with o gpgraphic e o bitmap canvas.
 Call "gdiplus.dll" "GdipDeleteGraphics" with o gpgraphic.
@@ -5509,7 +5509,7 @@ The feminúmero nove é um pedaço igual a 170.
 
 An figura é um polygon.
 
-The figuras are alguns polygons.
+The figuras são alguns polygons.
 
 An file é um handle.
 
@@ -5536,9 +5536,9 @@ Intel $8A00. \ mov al,[eax]
 Intel $FC. \ cld
 Intel $F3AA. \ rep stosb
 
-Etapas necessárias para que se fill um ellipse on um spot with um cor:
-Centralize o ellipse on o spot.
-Draw o ellipse with o clear cor e a cor.
+Etapas necessárias para que se fill um elipse on um spot with um cor:
+Centralize o elipse on o spot.
+Draw o elipse with o clear cor e a cor.
 
 Etapas necessárias para que se fill um string with um pedaço usando um contagem:
 Reassign o string's first usando o contagem.
@@ -5653,7 +5653,7 @@ Coloque o last deste subtexto menos o row's string's first mais 2 into o text's 
 Coloque o row's row# into o text's caret row#.
 
 Etapas necessárias para que se encontre next usando um text e um alarme:
-Se o text's wrap alarme estiver verde, encontre next usando o text e o alarme (wrapped text); exit.
+Se o text's wrap alarme estiver ativo, encontre next usando o text e o alarme (wrapped text); exit.
 Desative o alarme.
 Se o text for inexistente, cancele.
 Se o find string's length for 0, cancele.
@@ -5662,7 +5662,7 @@ Obtenha um row from o text's rows.
 Se o row for inexistente, cancele.
 Se o row's row# for menor do que o find anchor's row#, repita.
 Encontre next usando o row e o text e o alarme.
-Se o alarme estiver verde, cancele.
+Se o alarme estiver ativo, cancele.
 Repita.
 
 Etapas necessárias para que se encontre next usando um text e um alarme (wrapped text):
@@ -5708,7 +5708,7 @@ Obtenha um row from o text's rows.
 Se o row for inexistente, cancele.
 Se o row's row# for menor do que o find anchor's row#, repita.
 Encontre o next misspelling usando o row e o text e o alarme.
-Se o alarme estiver verde, cancele.
+Se o alarme estiver ativo, cancele.
 Repita.
 
 Etapas necessárias para que se encontre um pdf object usando um categoria:
@@ -5855,9 +5855,9 @@ Remove o event from o event queue.
 Destroy o event.
 Repita.
 
-An font has um name e um height.
+An font has um name e um altura.
 
-An font height é alguns twips. \ indicates line height - o letters will fit nicely in um caixa of this height
+An font altura é alguns twips. \ indicates line altura - o letters will fit nicely in um caixa of this altura
 
 An font info é uma coisa with \ used por pdf conversion
 An font,
@@ -5950,11 +5950,11 @@ Etapas necessárias para que se obtenha um caixa por o caret in um text:
 Se o text for inexistente, zero o caixa; exit.
 Obtenha um spot usando o text's caret e o text.
 Coloque o spot e o spot into o caixa.
-Adicione o text's row height to a base desta caixa.
+Adicione o text's row altura to a base desta caixa.
 Ajuste o caixa usando 0 e o tpp e 0 e - o tpp.
 Coloque o text's globalized origin into um origin.
 Se o caixa's left for menor do que o origin's coordenada x, coloque o origin's coordenada x into o caixa's left; coloque o origin's coordenada x into o caixa's right.
-Se o text's wrap alarme não estiver verde, cancele.
+Se o text's wrap alarme não estiver ativo, cancele.
 Limite o caixa's left to o text's left e o text's right.
 Limite o caixa's right to o text's left e o text's right.
 
@@ -5967,9 +5967,9 @@ Etapas necessárias para que se obtenha um caixa usando um row e um text:
 Se o text for inexistente, zero o caixa; exit.
 Se o row for inexistente, zero o caixa; exit.
 Coloque o text's globalized origin into o caixa's left-top.
-Adicione o row's row# menos 1 times o text's row height to o topo desta caixa.
+Adicione o row's row# menos 1 times o text's row altura to o topo desta caixa.
 Coloque o text's right into o caixa's right.
-Coloque o topo desta caixa mais o text's row height into a base desta caixa.
+Coloque o topo desta caixa mais o text's row altura into a base desta caixa.
 
 Etapas necessárias para que se obtenha um bucket usando um bucket# e um index:
 \ if o index for inexistente, esvazie o bucket; exit. \ to make compilador faster
@@ -6197,7 +6197,7 @@ Se o alinhamento for "left", obtenha o offset pair's número x usando o string e 
 Se o alinhamento for "right", obtenha o offset pair's número x usando o string e o caixa (fast - right).
 Se o alinhamento for "center", obtenha o offset pair's número x usando o string e o caixa (fast - center).
 Call "gdi32.dll" "GetTextMetricsA" with o memory canvas e um textmetric's whereabouts.
-Adicione o caixa's height menos o textmetric's tmheight dividido por 2 to o offset pair's número y.
+Adicione o caixa's altura menos o textmetric's tmheight dividido por 2 to o offset pair's número y.
 
 Etapas necessárias para que se obtenha um outlinetextmetric usando um font:
 Crie o hfont of o memory canvas usando o font.
@@ -6281,7 +6281,7 @@ Etapas necessárias para que se obtenha um row usando um spot e um text:
 Se o text for inexistente, esvazie o row; exit.
 Coloque a coordenada y deste spot into um coordenada y.
 Limite o coordenada y to o text's topo e o text's base.
-Coloque o coordenada y menos o text's globalized origin's coordenada y dividido por o text's row height mais 1 into um row#.
+Coloque o coordenada y menos o text's globalized origin's coordenada y dividido por o text's row altura mais 1 into um row#.
 Limite o row# to 1 e o text's row contagem.
 Obtenha o row usando o row# e o text.
 
@@ -6425,8 +6425,8 @@ Etapas necessárias para que se obtenha um width usando um pedaço e alguns font w
 Coloque o pedaço into um número.
 Obtenha o width usando o número e o font widths.
 
-Etapas necessárias para que se obtenha um width usando um número e alguns font widths: \ indexes are 0 based
-Se o font widths are nil, limpe o width; exit.
+Etapas necessárias para que se obtenha um width usando um número e alguns font widths: \ indexes são 0 based
+Se o font widths são nil, limpe o width; exit.
 Coloque o font widths' data into um número endereço de memória.
 Adicione o número times o número's magnitude to o número endereço de memória.
 Coloque o número endereço de memória's target into o width.
@@ -6486,7 +6486,7 @@ An gprect é um conjunto with
 An número called x,
 An número called y,
 An número called width,
-An número called height.
+An número called altura.
 
 The gptoken é um gptoken.
 
@@ -6494,7 +6494,7 @@ An gptoken é um número.
 
 An grain é 10 milliseconds.
 
-The gray cor é uma cor.
+The cor cinza é uma cor.
 
 The gray pincel é um pincel.
 
@@ -6780,9 +6780,9 @@ Role o text to o caret.
 Etapas necessárias para que se gerencie um event usando um text (down-arrow tecla):
 Se o text for inexistente, cancele.
 Se o caret of o text é on o last line, acione um alarme.
-Se o alarme estiver verde, mova o caret to o last pedaço of o text.
-Se o alarme não estiver verde, mova o caret down in o text.
-Se o event's shift alarme não estiver verde, deselect o text.
+Se o alarme estiver ativo, mova o caret to o last pedaço of o text.
+Se o alarme não estiver ativo, mova o caret down in o text.
+Se o event's shift alarme não estiver ativo, deselect o text.
 Limpe o text's last operation.
 Role o text to o caret.
 
@@ -6790,7 +6790,7 @@ Etapas necessárias para que se gerencie um event usando um text (tecla End):
 Se o text for inexistente, cancele.
 Se o event é modified, mova o caret to o last pedaço of o text.
 Se o event não for modified, mova o caret to o last pedaço of o current row of o text.
-Se o event's shift alarme não estiver verde, deselect o text.
+Se o event's shift alarme não estiver ativo, deselect o text.
 Limpe o text's last operation.
 Role o text to o caret.
 
@@ -6810,7 +6810,7 @@ Etapas necessárias para que se gerencie um event usando um text (home tecla):
 Se o text for inexistente, cancele.
 Se o event é modified, mova o caret to o first pedaço of o text.
 Se o event não for modified, mova o caret to o first pedaço of o current row of o text.
-Se o event's shift alarme não estiver verde, deselect o text.
+Se o event's shift alarme não estiver ativo, deselect o text.
 Limpe o text's last operation.
 Role o text to o caret.
 
@@ -6824,7 +6824,7 @@ Etapas necessárias para que se gerencie um event usando um text (left-arrow tecl
 Se o text for inexistente, cancele.
 Se o event é modified, jump o caret left in o text.
 Se o event não for modified, mova o caret left in o text.
-Se o event's shift alarme não estiver verde, deselect o text.
+Se o event's shift alarme não estiver ativo, deselect o text.
 Limpe o text's last operation.
 Role o text to o caret.
 
@@ -6832,14 +6832,14 @@ Etapas necessárias para que se gerencie um event usando um text (page-down tecla
 Se o text for inexistente, cancele.
 Role o text down one página.
 Mova o caret down one página in o text.
-Se o event's shift alarme não estiver verde, deselect o text.
+Se o event's shift alarme não estiver ativo, deselect o text.
 Limpe o text's last operation.
 
 Etapas necessárias para que se gerencie um event usando um text (page-up tecla):
 Se o text for inexistente, cancele.
 Role o text up one página.
 Mova o caret up one página in o text.
-Se o event's shift alarme não estiver verde, deselect o text.
+Se o event's shift alarme não estiver ativo, deselect o text.
 Limpe o text's last operation.
 
 Etapas necessárias para que se gerencie um event usando um text (printable tecla):
@@ -6853,7 +6853,7 @@ Etapas necessárias para que se gerencie um event usando um text (right-arrow tec
 Se o text for inexistente, cancele.
 Se o event é modified, jump o caret right in o text.
 Se o event não for modified, mova o caret right in o text.
-Se o event's shift alarme não estiver verde, deselect o text.
+Se o event's shift alarme não estiver ativo, deselect o text.
 Limpe o text's last operation.
 Role o text to o caret.
 
@@ -6869,7 +6869,7 @@ Role o text to o caret.
 Etapas necessárias para que se gerencie um event usando um text (up-arrow tecla):
 Se o text for inexistente, cancele.
 Mova o caret up in o text.
-Se o event's shift alarme não estiver verde, deselect o text.
+Se o event's shift alarme não estiver ativo, deselect o text.
 Limpe o text's last operation.
 Role o text to o caret.
 
@@ -6889,16 +6889,16 @@ Se o event for inexistente, cancele.
 Gerencie o event usando o terminal.
 Repita.
 
-Etapas necessárias para que se gerencie font height usando um text e um caixa e uma font height:
+Etapas necessárias para que se gerencie font altura usando um text e um caixa e uma font altura:
 Se o text for inexistente, cancele.
-Relembre o text with "font height".
+Relembre o text with "font altura".
 Mude o text usando o caixa.
-Mude o text usando o font height.
+Mude o text usando o font altura.
 
-Etapas necessárias para que se gerencie font height usando um text e uma font height:
+Etapas necessárias para que se gerencie font altura usando um text e uma font altura:
 Se o text for inexistente, cancele.
-Relembre o text with "font height".
-Mude o text usando o font height.
+Relembre o text with "font altura".
+Mude o text usando o font altura.
 
 Etapas necessárias para que se gerencie font name usando um text e uma font name:
 Se o text for inexistente, cancele.
@@ -7010,7 +7010,7 @@ The heap contagem é um número.
 
 The heap endereço de memória é um endereço de memória.
 
-An height é alguns twips.
+An altura é alguns twips.
 
 An texto hexadecimal é um string.
 
@@ -7093,24 +7093,24 @@ Etapas necessárias para que se make um dot between alguns twips e alguns other t
 Escolha aleatoriamente alguns third twips between o twips e o other twips.
 Make o dot o third twips wide.
 
-Etapas necessárias para que se imagine um ellipse usando um caixa;
-Etapas necessárias para que se make um ellipse usando um caixa:
-Coloque o caixa into o ellipse's caixa.
+Etapas necessárias para que se imagine um elipse usando um caixa;
+Etapas necessárias para que se make um elipse usando um caixa:
+Coloque o caixa into o elipse's caixa.
 
-Etapas necessárias para que se imagine um ellipse alguns twips por alguns other twips;
-Etapas necessárias para que se make um ellipse alguns twips por alguns other twips:
-Coloque 0 into o ellipse's left.
-Coloque 0 into o ellipse's topo.
-Coloque o twips into o ellipse's right.
-Coloque o other twips into o ellipse's base.
+Etapas necessárias para que se imagine um elipse alguns twips por alguns other twips;
+Etapas necessárias para que se make um elipse alguns twips por alguns other twips:
+Coloque 0 into o elipse's left.
+Coloque 0 into o elipse's topo.
+Coloque o twips into o elipse's right.
+Coloque o other twips into o elipse's base.
 
-Etapas necessárias para que se imagine um ellipse with um left coord e um topo coord e um right coord e um base coord;
-Etapas necessárias para que se make um ellipse with um left coord e um topo coord e um right coord e um base coord:
-Coloque o left coord e o topo coord e o right coord e o base coord into o ellipse.
+Etapas necessárias para que se imagine um elipse with um left coord e um topo coord e um right coord e um base coord;
+Etapas necessárias para que se make um elipse with um left coord e um topo coord e um right coord e um base coord:
+Coloque o left coord e o topo coord e o right coord e o base coord into o elipse.
 
-Etapas necessárias para que se imagine um ellipse with um spot e another spot;
-Etapas necessárias para que se make um ellipse with um spot e another spot:
-Coloque o spot e o other spot into o ellipse.
+Etapas necessárias para que se imagine um elipse with um spot e another spot;
+Etapas necessárias para que se make um elipse with um spot e another spot:
+Coloque o spot e o other spot into o elipse.
 
 Etapas necessárias para que se imagine um figura using um string e um spot;
 Etapas necessárias para que se make um figura using um string e um spot;
@@ -7332,41 +7332,41 @@ Call "kernel32.dll" "AllocConsole".
 Call "kernel32.dll" "GetStdHandle" with -10 [std_input_handle] returning o stdin handle.
 Call "kernel32.dll" "GetStdHandle" with -11 [std_output_handle] returning o stdout handle.
 
-Etapas necessárias para que se initialize o cors:
+Etapas necessárias para que se initialize as cors: \\ Aqui você muda não só o nome, mas as tonalidades das cores
 Coloque 1 into o pincel size.
 Call "gdi32.dll" "GetStockObject" with 8 [null_pen] returning o null hpen.
 Call "gdi32.dll" "GetStockObject" with 5 [null_brush] returning o null hbrush.
 Coloque -1 e 0 e 0 into o clear cor.
-Coloque 0 e 0 e 1000 into o white cor.
-Coloque 0 e 0 e 875 into o lightest gray cor.
-Coloque 0 e 0 e 750 into o lighter gray cor.
-Coloque 0 e 0 e 625 into o light gray cor.
-Coloque 0 e 0 e 500 into o gray cor.
-Coloque 0 e 0 e 375 into o dark gray cor.
-Coloque 0 e 0 e 250 into o darker gray cor.
-Coloque 0 e 0 e 125 into o darkest gray cor.
-Coloque 0 e 0 e 0 into o black cor.
-Coloque 0 e 1000 e 875 into o lightest red cor.
-Coloque 0 e 1000 e 750 into o lighter red cor.
-Coloque 0 e 1000 e 625 into o light red cor.
-Coloque 0 e 1000 e 500 into o red cor.
-Coloque 0 e 1000 e 375 into o dark red cor.
-Coloque 0 e 1000 e 250 into o darker red cor.
-Coloque 0 e 1000 e 125 into o darkest red cor.
-Coloque 300 e 1000 e 875 into o lightest orange cor.
-Coloque 300 e 1000 e 750 into o lighter orange cor.
-Coloque 300 e 1000 e 625 into o light orange cor.
-Coloque 300 e 1000 e 500 into o orange cor.
-Coloque 300 e 1000 e 375 into o dark orange cor.
-Coloque 300 e 1000 e 250 into o darker orange cor.
-Coloque 300 e 1000 e 125 into o darkest orange cor.
-Coloque 600 e 1000 e 875 into o lightest yellow cor.
-Coloque 600 e 1000 e 750 into o lighter yellow cor.
-Coloque 600 e 1000 e 625 into o light yellow cor.
-Coloque 600 e 1000 e 500 into o yellow cor.
-Coloque 600 e 1000 e 375 into o dark yellow cor.
-Coloque 600 e 1000 e 250 into o darker yellow cor.
-Coloque 600 e 1000 e 125 into o darkest yellow cor.
+Coloque 0 e 0 e 1000 into o cor branca.
+Coloque 0 e 0 e 875 into o lightest cor cinza.
+Coloque 0 e 0 e 750 into o lighter cor cinza.
+Coloque 0 e 0 e 625 into o light cor cinza.
+Coloque 0 e 0 e 500 into o cor cinza.
+Coloque 0 e 0 e 375 into o dark cor cinza.
+Coloque 0 e 0 e 250 into o darker cor cinza.
+Coloque 0 e 0 e 125 into o darkest cor cinza.
+Coloque 0 e 0 e 0 into o cor preta.
+Coloque 0 e 1000 e 875 into o lightest cor vermelha.
+Coloque 0 e 1000 e 750 into o lighter cor vermelha.
+Coloque 0 e 1000 e 625 into o light cor vermelha.
+Coloque 0 e 1000 e 500 into o cor vermelha.
+Coloque 0 e 1000 e 375 into o dark cor vermelha.
+Coloque 0 e 1000 e 250 into o darker cor vermelha.
+Coloque 0 e 1000 e 125 into o darkest cor vermelha.
+Coloque 300 e 1000 e 875 into o lightest cor laranja.
+Coloque 300 e 1000 e 750 into o lighter cor laranja.
+Coloque 300 e 1000 e 625 into o light cor laranja.
+Coloque 300 e 1000 e 500 into o cor laranja.
+Coloque 300 e 1000 e 375 into o dark cor laranja.
+Coloque 300 e 1000 e 250 into o darker cor laranja.
+Coloque 300 e 1000 e 125 into o darkest cor laranja.
+Coloque 600 e 1000 e 875 into o lightest cor amarela.
+Coloque 600 e 1000 e 750 into o lighter cor amarela.
+Coloque 600 e 1000 e 625 into o light cor amarela.
+Coloque 600 e 1000 e 500 into o cor amarela.
+Coloque 600 e 1000 e 375 into o dark cor amarela.
+Coloque 600 e 1000 e 250 into o darker cor amarela.
+Coloque 600 e 1000 e 125 into o darkest cor amarela.
 Coloque 900 e 1000 e 875 into o lightest lime cor.
 Coloque 900 e 1000 e 750 into o lighter lime cor.
 Coloque 900 e 1000 e 625 into o light lime cor.
@@ -7432,46 +7432,46 @@ Coloque 3300 e 1000 e 250 into o darker violet cor.
 Coloque 3300 e 1000 e 125 into o darkest violet cor.
 Coloque 0 e 0 e 800 into o hilite cor.
 \ special cors
-Coloque o lightest orange cor into o tan cor.
-Coloque o dark orange cor into o brown cor.
-Coloque o darker orange cor into o dark brown cor.
-Coloque o darkest orange cor into o darker brown cor.
-Coloque o darkest orange cor into o darkest brown cor.
-Coloque o lightest red cor into o pink cor.
-Coloque o lighter red cor into o dark pink cor.
+Coloque o lightest cor laranja into o tan cor.
+Coloque o dark cor laranja into o brown cor.
+Coloque o darker cor laranja into o dark brown cor.
+Coloque o darkest cor laranja into o darker brown cor.
+Coloque o darkest cor laranja into o darkest brown cor.
+Coloque o lightest cor vermelha into o pink cor.
+Coloque o lighter cor vermelha into o dark pink cor.
 Coloque 500 e 1000 e 500 into o gold cor.
 \ cors como pincels
 Coloque o clear cor into o clear pincel.
-Coloque o white cor into o white pincel.
-Coloque o black cor into o black pincel.
-Coloque o lightest gray cor into o lightest gray pincel.
-Coloque o lighter gray cor into o lighter gray pincel.
-Coloque o light gray cor into o light gray pincel.
-Coloque o gray cor into o gray pincel.
-Coloque o dark gray cor into o dark gray pincel.
-Coloque o darker gray cor into o darker gray pincel.
-Coloque o darkest gray cor into o darkest gray pincel.
-Coloque o lightest red cor into o lightest red pincel.
-Coloque o lighter red cor into o lighter red pincel.
-Coloque o light red cor into o light red pincel.
-Coloque o red cor into o red pincel.
-Coloque o dark red cor into o dark red pincel.
-Coloque o darker red cor into o darker red pincel.
-Coloque o darkest red cor into o darkest red pincel.
-Coloque o lightest orange cor into o lightest orange pincel.
-Coloque o lighter orange cor into o lighter orange pincel.
-Coloque o light orange cor into o light orange pincel.
-Coloque o orange cor into o orange pincel.
-Coloque o dark orange cor into o dark orange pincel.
-Coloque o darker orange cor into o darker orange pincel.
-Coloque o darkest orange cor into o darkest orange pincel.
-Coloque o lightest yellow cor into o lightest yellow pincel.
-Coloque o lighter yellow cor into o lighter yellow pincel.
-Coloque o light yellow cor into o light yellow pincel.
-Coloque o yellow cor into o yellow pincel.
-Coloque o dark yellow cor into o dark yellow pincel.
-Coloque o darker yellow cor into o darker yellow pincel.
-Coloque o darkest yellow cor into o darkest yellow pincel.
+Coloque o cor branca into o white pincel.
+Coloque o cor preta into o black pincel.
+Coloque o lightest cor cinza into o lightest gray pincel.
+Coloque o lighter cor cinza into o lighter gray pincel.
+Coloque o light cor cinza into o light gray pincel.
+Coloque o cor cinza into o gray pincel.
+Coloque o dark cor cinza into o dark gray pincel.
+Coloque o darker cor cinza into o darker gray pincel.
+Coloque o darkest cor cinza into o darkest gray pincel.
+Coloque o lightest cor vermelha into o lightest red pincel.
+Coloque o lighter cor vermelha into o lighter red pincel.
+Coloque o light cor vermelha into o light red pincel.
+Coloque o cor vermelha into o red pincel.
+Coloque o dark cor vermelha into o dark red pincel.
+Coloque o darker cor vermelha into o darker red pincel.
+Coloque o darkest cor vermelha into o darkest red pincel.
+Coloque o lightest cor laranja into o lightest orange pincel.
+Coloque o lighter cor laranja into o lighter orange pincel.
+Coloque o light cor laranja into o light orange pincel.
+Coloque o cor laranja into o orange pincel.
+Coloque o dark cor laranja into o dark orange pincel.
+Coloque o darker cor laranja into o darker orange pincel.
+Coloque o darkest cor laranja into o darkest orange pincel.
+Coloque o lightest cor amarela into o lightest yellow pincel.
+Coloque o lighter cor amarela into o lighter yellow pincel.
+Coloque o light cor amarela into o light yellow pincel.
+Coloque o cor amarela into o yellow pincel.
+Coloque o dark cor amarela into o dark yellow pincel.
+Coloque o darker cor amarela into o darker yellow pincel.
+Coloque o darkest cor amarela into o darkest yellow pincel.
 Coloque o lightest lime cor into o lightest lime pincel.
 Coloque o lighter lime cor into o lighter lime pincel.
 Coloque o light lime cor into o light lime pincel.
@@ -7559,111 +7559,7 @@ Coloque o sky cor into o sky blue pincel.
 Coloque o dark sky cor into o dark sky blue pincel.
 Coloque o darker sky cor into o darker sky blue pincel.
 Coloque o darkest sky cor into o darkest sky blue pincel.
-\\ Spanish cors
-\Coloque o black cor into a cor negro.
-\Coloque o white cor into a cor blanco.
-\Coloque o clear cor into a cor claro.
-\Coloque o lightest gray cor into a cor gris muy muy claro.
-\Coloque o lighter gray cor into a cor gris muy claro.
-\Coloque o light gray cor into a cor gris claro.
-\Coloque o gray cor into a cor gris.
-\Coloque o dark gray cor into a cor gris oscuro.
-\Coloque o darker gray cor into a cor gris muy oscuro.
-\Coloque o darkest gray cor into a cor gris muy muy oscuro.
-\Coloque o lightest red cor into a cor rojo muy muy claro.
-\Coloque o lighter red cor into a cor rojo muy claro.
-\Coloque o light red cor into a cor rojo claro.
-\Coloque o red cor into a cor rojo.
-\Coloque o dark red cor into a cor rojo oscuro.
-\Coloque o darker red cor into a cor rojo muy oscuro.
-\Coloque o darkest red cor into a cor rojo muy muy oscuro.
-\Coloque o lightest orange cor into a cor naranja muy muy claro.
-\Coloque o lighter orange cor into a cor naranja muy claro.
-\Coloque o light orange cor into a cor naranja claro.
-\Coloque o orange cor into a cor naranja.
-\Coloque o dark orange cor into a cor naranja oscuro.
-\Coloque o darker orange cor into a cor naranja muy oscuro.
-\Coloque o darkest orange cor into a cor naranja muy muy oscuro.
-\Coloque o lightest yellow cor into a cor amarillo muy muy claro.
-\Coloque o lighter yellow cor into a cor amarillo muy claro.
-\Coloque o light yellow cor into a cor amarillo claro.
-\Coloque o yellow cor into a cor amarillo.
-\Coloque o dark yellow cor into a cor amarillo oscuro.
-\Coloque o darker yellow cor into a cor amarillo muy oscuro.
-\Coloque o darkest yellow cor into a cor amarillo muy muy oscuro.
-\Coloque o lightest lime cor into a cor lima muy muy claro.
-\Coloque o lighter lime cor into a cor lima muy claro.
-\Coloque o light lime cor into a cor lima claro.
-\Coloque o lime cor into a cor lima.
-\Coloque o dark lime cor into a cor lima oscuro.
-\Coloque o darker lime cor into a cor lima muy oscuro.
-\Coloque o darkest lime cor into a cor lima muy muy oscuro.
-\Coloque o lightest green cor into a cor verde muy muy claro.
-\Coloque o lighter green cor into a cor verde muy claro.
-\Coloque o light green cor into a cor verde claro.
-\Coloque o green cor into a cor verde.
-\Coloque o dark green cor into a cor verde oscuro.
-\Coloque o darker green cor into a cor verde muy oscuro.
-\Coloque o darkest green cor into a cor verde muy muy oscuro.
-\Coloque o lightest teal cor into a cor menta muy muy claro.
-\Coloque o lighter teal cor into a cor menta muy claro.
-\Coloque o light teal cor into a cor menta claro.
-\Coloque o teal cor into a cor menta.
-\Coloque o dark teal cor into a cor menta oscuro.
-\Coloque o darker teal cor into a cor menta muy oscuro.
-\Coloque o darkest teal cor into a cor menta muy muy oscuro.
-\Coloque o lightest cyan cor into a cor cian muy muy claro.
-\Coloque o lighter cyan cor into a cor cian muy claro.
-\Coloque o light cyan cor into a cor cian claro.
-\Coloque o cyan cor into a cor cian.
-\Coloque o dark cyan cor into a cor cian oscuro.
-\Coloque o darker cyan cor into a cor cian muy oscuro.
-\Coloque o darkest cyan cor into a cor cian muy muy oscuro.
-\Coloque o lightest sky cor into a cor celeste muy muy claro.
-\Coloque o lighter sky cor into a cor celeste muy claro.
-\Coloque o light sky cor into a cor celeste claro.
-\Coloque o sky cor into a cor celeste.
-\Coloque o dark sky cor into a cor celeste oscuro.
-\Coloque o darker sky cor into a cor celeste muy oscuro.
-\Coloque o darkest sky cor into a cor celeste muy muy oscuro.
-\Coloque o lightest blue cor into a cor azul muy muy claro.
-\Coloque o lighter blue cor into a cor azul muy claro.
-\Coloque o light blue cor into a cor azul claro.
-\Coloque o blue cor into a cor azul.
-\Coloque o dark blue cor into a cor azul oscuro.
-\Coloque o darker blue cor into a cor azul muy oscuro.
-\Coloque o darkest blue cor into a cor azul muy muy oscuro.
-\Coloque o lightest purple cor into a cor púrpura muy muy claro.
-\Coloque o lighter purple cor into a cor púrpura muy claro.
-\Coloque o light purple cor into a cor púrpura claro.
-\Coloque o purple cor into a cor púrpura.
-\Coloque o dark purple cor into a cor púrpura oscuro.
-\Coloque o darker purple cor into a cor púrpura muy oscuro.
-\Coloque o darkest purple cor into a cor púrpura muy muy oscuro.
-\Coloque o lightest magenta cor into a cor magenta muy muy claro.
-\Coloque o lighter magenta cor into a cor magenta muy claro.
-\Coloque o light magenta cor into a cor magenta claro.
-\Coloque o magenta cor into a cor magenta.
-\Coloque o dark magenta cor into a cor magenta oscuro.
-\Coloque o darker magenta cor into a cor magenta muy oscuro.
-\Coloque o darkest magenta cor into a cor magenta muy muy oscuro.
-\Coloque o lightest violet cor into a cor fucsia muy muy claro.
-\Coloque o lighter violet cor into a cor fucsia muy claro.
-\Coloque o light violet cor into a cor fucsia claro.
-\Coloque o violet cor into a cor fucsia.
-\Coloque o dark violet cor into a cor fucsia oscuro.
-\Coloque o darker violet cor into a cor fucsia muy oscuro.
-\Coloque o darkest violet cor into a cor fucsia muy muy oscuro.
-\\ Spanish special cors
-\Coloque o lightest orange cor into a cor marrón muy muy claro.
-\Coloque o lighter orange cor into a cor marrón muy claro.
-\Coloque o light orange cor into a cor marrón claro.
-\Coloque o orange cor into a cor marrón.
-\Coloque o dark orange cor into a cor marrón oscuro.
-\Coloque o darker orange cor into a cor marrón muy oscuro.
-\Coloque o darkest orange cor into a cor marrón muy muy oscuro.
-\Coloque o pink cor into a cor rosado.
-\Coloque o gold cor into a cor oro.
+
 
 Etapas necessárias para que se initialize with:
 Call "ole32.dll" "CoInitializeEx" with 0 e 2 [coinit_apartmentthreaded].
@@ -7673,7 +7569,7 @@ Allocate memory por o context.
 Coloque o tela's center into o context's spot.
 Coloque 0 into o context's heading.
 Coloque o green cor into o context's cor.
-Coloque o small letter height into o context's letter height.
+Coloque o small letter altura into o context's letter altura.
 \Coloque 1/60 second into o delay. ***
 Seed o random número generator.
 
@@ -7729,9 +7625,9 @@ Call "gdi32.dll" "AddFontMemResourceEx" with o osmosian font source's first e o 
 Returning o osmosian font resource.
 Coloque "osmosian" e 1/4 inch into o default font.
 \ stroked fonts below
-Coloque 1/8 inch into o small letter height.
-Coloque 1/4 inch into o medium letter height.
-Coloque 1/2 inch into o large letter height.
+Coloque 1/8 inch into o small letter altura.
+Coloque 1/4 inch into o medium letter altura.
+Coloque 1/2 inch into o large letter altura.
 
 Etapas necessárias para que se initialize gdi+:
 Coloque 1 into um gdiplusstartupinput's gdiplusversion.
@@ -7740,7 +7636,7 @@ Call "gdiplus.dll" "GdiplusStartup" with o gptoken's whereabouts e o gdiplusstar
 Etapas necessárias para que se initialize o memory canvas:
 Call "gdi32.dll" "CreateCompatibleDC" with o tela canvas returning o memory canvas.
 Call "gdi32.dll" "GetCurrentObject" with o memory canvas e 7 [obj_bitmap] returning o saved memory hbitmap.
-Call "gdi32.dll" "CreateCompatibleBitmap" with o tela canvas e o tela's pixel width e o tela's pixel height returning um hbitmap.
+Call "gdi32.dll" "CreateCompatibleBitmap" with o tela canvas e o tela's pixel width e o tela's pixel altura returning um hbitmap.
 Call "gdi32.dll" "SelectObject" with o memory canvas e o hbitmap.
 Normalize o memory canvas.
 
@@ -7788,16 +7684,16 @@ Coloque o printdlgex's hdc into o printer canvas.
 
 Etapas necessárias para que se initialize o tela:
 Call "user32.dll" "GetSystemMetrics" with 0 [sm_cxscreen] returning o tela's pixel width.
-Call "user32.dll" "GetSystemMetrics" with 1 [sm_cyscreen] returning o tela's pixel height.
+Call "user32.dll" "GetSystemMetrics" with 1 [sm_cyscreen] returning o tela's pixel altura.
 Coloque 96 into o ppi.
 Coloque o tpi dividido por o ppi into o tpp.
 Coloque o tela's pixel width times o tpp into um width.
-Coloque o tela's pixel height times o tpp into um height.
-Coloque 0 e 0 e o width e o height into o tela's caixa.
+Coloque o tela's pixel altura times o tpp into um altura.
+Coloque 0 e 0 e o width e o altura into o tela's caixa.
 Subtraia o tpp from o tela's right-base.
 \ new below
 \Coloque o tela's caixa into la pantalla's caja.
-\Coloque o tela's pixel height into la pantalla's pixel height.
+\Coloque o tela's pixel altura into la pantalla's pixel altura.
 \Coloque o tela's pixel width into la pantalla's pixel width.
 
 Etapas necessárias para que se initialize o tela canvas:
@@ -7817,7 +7713,7 @@ Coloque o module's handle into o window class' hinstance.
 Coloque o module's name's first into o window class' lpszclassname.
 Call "user32.dll" "RegisterClassExA" with o window class's whereabouts.
 Call "user32.dll" "CreateWindowExA" with 0 e o module's name's first e o module's name's first e -2147483648 [ws_popup] 
-And 0 e 0 e o tela's pixel width e o tela's pixel height e 0 e 0 e o module's handle e 0.
+And 0 e 0 e o tela's pixel width e o tela's pixel altura e 0 e 0 e o module's handle e 0.
 Call "user32.dll" "ShowWindow" with o main window e 1 [sw_shownormal].
 
 Etapas necessárias para que se initialize winsock:
@@ -8028,7 +7924,7 @@ An l-param é um número.
 
 An landscape sheet é um sheet.
 
-The large letter height é um letter height.
+The large letter altura é um letter altura.
 
 The maior número é 2147483647.
 
@@ -8062,7 +7958,7 @@ An length é alguns twips.
 
 The less-do que-sign pedaço é um pedaço igual a 60.
 
-An letter height é alguns twips. \ indicates actual height of um typical uppercase letter
+An letter altura é alguns twips. \ indicates actual altura of um typical uppercase letter
 
 An letter é um pedaço.
 An letra é um pedaço.
@@ -8079,7 +7975,7 @@ The light cyan cor é uma cor.
 
 The light cyan pincel é um pincel.
 
-The light gray cor é uma cor.
+The light cor cinza é uma cor.
 
 The light gray pincel é um pincel.
 
@@ -8095,7 +7991,7 @@ The light magenta cor é uma cor.
 
 The light magenta pincel é um pincel.
 
-The light orange cor é uma cor.
+The light cor laranja é uma cor.
 
 The light orange pincel é um pincel.
 
@@ -8103,7 +7999,7 @@ The light purple cor é uma cor.
 
 The light purple pincel é um pincel.
 
-The light red cor é uma cor.
+The light cor vermelha é uma cor.
 
 The light red pincel é um pincel.
 
@@ -8123,7 +8019,7 @@ The light violet cor é uma cor.
 
 The light violet pincel é um pincel.
 
-The light yellow cor é uma cor.
+The light cor amarela é uma cor.
 
 The light yellow pincel é um pincel.
 
@@ -8158,7 +8054,7 @@ The lighter cyan cor é uma cor.
 
 The lighter cyan pincel é um pincel.
 
-The lighter gray cor é uma cor.
+The lighter cor cinza é uma cor.
 
 The lighter gray pincel é um pincel.
 
@@ -8174,7 +8070,7 @@ The lighter magenta cor é uma cor.
 
 The lighter magenta pincel é um pincel.
 
-The lighter orange cor é uma cor.
+The lighter cor laranja é uma cor.
 
 The lighter orange pincel é um pincel.
 
@@ -8182,7 +8078,7 @@ The lighter purple cor é uma cor.
 
 The lighter purple pincel é um pincel.
 
-The lighter red cor é uma cor.
+The lighter cor vermelha é uma cor.
 
 The lighter red pincel é um pincel.
 
@@ -8202,7 +8098,7 @@ The lighter violet cor é uma cor.
 
 The lighter violet pincel é um pincel.
 
-The lighter yellow cor é uma cor.
+The lighter cor amarela é uma cor.
 
 The lighter yellow pincel é um pincel.
 
@@ -8214,7 +8110,7 @@ The lightest cyan cor é uma cor.
 
 The lightest cyan pincel é um pincel.
 
-The lightest gray cor é uma cor.
+The lightest cor cinza é uma cor.
 
 The lightest gray pincel é um pincel.
 
@@ -8230,7 +8126,7 @@ The lightest magenta cor é uma cor.
 
 The lightest magenta pincel é um pincel.
 
-The lightest orange cor é uma cor.
+The lightest cor laranja é uma cor.
 
 The lightest orange pincel é um pincel.
 
@@ -8238,7 +8134,7 @@ The lightest purple cor é uma cor.
 
 The lightest purple pincel é um pincel.
 
-The lightest red cor é uma cor.
+The lightest cor vermelha é uma cor.
 
 The lightest red pincel é um pincel.
 
@@ -8258,7 +8154,7 @@ The lightest violet cor é uma cor.
 
 The lightest violet pincel é um pincel.
 
-The lightest yellow cor é uma cor.
+The lightest cor amarela é uma cor.
 
 The lightest yellow pincel é um pincel.
 
@@ -8287,7 +8183,7 @@ Se o número for maior do que o third número, coloque o third número into o númer
 Etapas necessárias para que se limite o origin of um text:
 Se o text for inexistente, cancele.
 Limite o text's coordenada x to o menor número e o text's margin.
-Coloque o text's row contagem menos 1 times o text's row height into um número.
+Coloque o text's row contagem menos 1 times o text's row altura into um número.
 Limite o text's coordenada y to - o número e 0.
 
 Etapas necessárias para que se limite um spot to um caixa:
@@ -8568,8 +8464,8 @@ Crie um hrgn usando o caixa.
 Mask inside o hrgn.
 Destroy o hrgn.
 
-Etapas necessárias para que se mask inside um ellipse:
-Crie um hrgn usando o ellipse.
+Etapas necessárias para que se mask inside um elipse:
+Crie um hrgn usando o elipse.
 Mask inside o hrgn.
 Destroy o hrgn.
 
@@ -8592,9 +8488,9 @@ Etapas necessárias para que se mask only inside um caixa:
 Unmask everything.
 Mask inside o caixa.
 
-Etapas necessárias para que se mask only inside um ellipse:
+Etapas necessárias para que se mask only inside um elipse:
 Unmask everything.
-Mask inside o ellipse.
+Mask inside o elipse.
 
 Etapas necessárias para que se mask only inside um polygon:
 Unmask everything.
@@ -8608,9 +8504,9 @@ Etapas necessárias para que se mask only outside um caixa:
 Unmask everything.
 Mask outside o caixa.
 
-Etapas necessárias para que se mask only outside um ellipse:
+Etapas necessárias para que se mask only outside um elipse:
 Unmask everything.
-Mask outside o ellipse.
+Mask outside o elipse.
 
 Etapas necessárias para que se mask only outside um polygon:
 Unmask everything.
@@ -8625,8 +8521,8 @@ Crie um hrgn usando o caixa.
 Mask outside o hrgn.
 Destroy o hrgn.
 
-Etapas necessárias para que se mask outside um ellipse:
-Crie um hrgn usando o ellipse.
+Etapas necessárias para que se mask outside um elipse:
+Crie um hrgn usando o elipse.
 Mask outside o hrgn.
 Destroy o hrgn.
 
@@ -8645,7 +8541,7 @@ Destroy o hrgn.
 
 The max text undos é um contagem igual a 32.
 
-The medium letter height é um letter height.
+The medium letter altura é um letter altura.
 
 An megabyte é 1024 kilobytes.
 
@@ -8744,8 +8640,8 @@ Redimensione proporcionalmente o other difference usando a fração pair.
 Subtraia a difference from o other difference.
 Mova o caixa usando o other difference.
 
-Some x-twips are alguns twips.
-Some y-twips are alguns twips.
+Some x-twips são alguns twips.
+Some y-twips são alguns twips.
 
 Etapas necessárias para que se mova um caixa usando alguns x-twips e alguns y-twips:
 Adicione o x-twips to o caixa's left.
@@ -8894,27 +8790,27 @@ Subtraia o text's rows/box from o text's caret row#.
 Adicione 1 to o text's caret row#.
 Limite o caret in o text.
 
-Etapas necessárias para que se mova um ellipse down alguns twips:
-Mova o ellipse usando 0 e o twips.
+Etapas necessárias para que se mova um elipse down alguns twips:
+Mova o elipse usando 0 e o twips.
 
-Etapas necessárias para que se mova um ellipse usando um pair:
-Mova o ellipse usando o pair's x e o pair's y.
+Etapas necessárias para que se mova um elipse usando um pair:
+Mova o elipse usando o pair's x e o pair's y.
 
-Etapas necessárias para que se mova um ellipse usando alguns x-twips e alguns y-twips:
-Mova o ellipse's caixa usando o x-twips e o y-twips.
+Etapas necessárias para que se mova um elipse usando alguns x-twips e alguns y-twips:
+Mova o elipse's caixa usando o x-twips e o y-twips.
 
-Etapas necessárias para que se mova um ellipse left alguns twips:
-Mova o ellipse usando - o twips e 0.
+Etapas necessárias para que se mova um elipse left alguns twips:
+Mova o elipse usando - o twips e 0.
 
-Etapas necessárias para que se mova um ellipse right alguns twips:
-Mova o ellipse usando o twips e 0.
+Etapas necessárias para que se mova um elipse right alguns twips:
+Mova o elipse usando o twips e 0.
 
-Etapas necessárias para que se mova um ellipse to um spot:
-Obtenha um difference between o spot e o ellipse's left-top.
-Mova o ellipse usando a difference.
+Etapas necessárias para que se mova um elipse to um spot:
+Obtenha um difference between o spot e o elipse's left-top.
+Mova o elipse usando a difference.
 
-Etapas necessárias para que se mova um ellipse up alguns twips:
-Mova o ellipse usando 0 e - o twips.
+Etapas necessárias para que se mova um elipse up alguns twips:
+Mova o elipse usando 0 e - o twips.
 
 Etapas necessárias para que se mova um finger over um número:
 Se o finger for inexistente, cancele.
@@ -9169,11 +9065,11 @@ Etapas necessárias para que se mova um spot up alguns twips:
 Mova o spot usando 0 e - o twips.
 
 Etapas necessárias para que se mova alguns squares:
-Mova o square size times o squares dividido por 1 square. \ squares are scaled up por precision hence o division at o end
+Mova o square size times o squares dividido por 1 square. \ squares são scaled up por precision hence o division at o end
 
 Etapas necessárias para que se mova alguns squares diagonally;
 Etapas necessárias para que se mova alguns squares slantways:
-Mova o square size times o squares times o raiz de dois dividido por 1 square. \ squares are scaled up por precision hence o division at o end
+Mova o square size times o squares times o raiz de dois dividido por 1 square. \ squares são scaled up por precision hence o division at o end
 
 Etapas necessárias para que se mova um subtexto usando um número:
 Adicione o número to o first deste subtexto.
@@ -9268,12 +9164,12 @@ Mova o vértice usando 0 e - o twips.
 Etapas necessárias para que se mova um window left:
 Call "user32.dll" "GetWindowRect" with o main window e um caixa's whereabouts.
 Subtraia o tela's pixel width from o caixa's left.
-Call "user32.dll" "MoveWindow" with o window e o caixa's left e o topo desta caixa e o tela's pixel width e o tela's pixel height e 1.
+Call "user32.dll" "MoveWindow" with o window e o caixa's left e o topo desta caixa e o tela's pixel width e o tela's pixel altura e 1.
 
 Etapas necessárias para que se mova um window right:
 Call "user32.dll" "GetWindowRect" with o main window e um caixa's whereabouts.
 Adicione o tela's pixel width to o caixa's left.
-Call "user32.dll" "MoveWindow" with o window e o caixa's left e o topo desta caixa e o tela's pixel width e o tela's pixel height e 1.
+Call "user32.dll" "MoveWindow" with o window e o caixa's left e o topo desta caixa e o tela's pixel width e o tela's pixel altura e 1.
 
 An ms é 1 millisecond.
 
@@ -9339,7 +9235,7 @@ The negative-acknowledge pedaço é um pedaço igual a 21.
 
 The next letter é um letter igual a 65 [the big-a byte].
 
-An cifra binária é um pedaço. \ only low order 4 bits are valid
+An cifra binária é um pedaço. \ only low order 4 bits são valid
 
 An texto da cifra binária é um string. \ $0010A0...
 
@@ -9381,8 +9277,8 @@ Call "gdi32.dll" "SetViewportExtEx" with o canvas e o ppi e o ppi e nil.
 Call "gdi32.dll" "SetWindowOrgEx" with o canvas e 0 e 0 e nil.
 Call "gdi32.dll" "SetWindowExtEx" with o canvas e o tpi e o tpi e nil.
 
-Etapas necessárias para que se normalize um ellipse:
-Normalize o ellipse's caixa.
+Etapas necessárias para que se normalize um elipse:
+Normalize o elipse's caixa.
 
 Etapas necessárias para que se normalize uma fração e another fração:
 Obtenha um mínimo múltiplo comum usando o fração's denominador e o other fração's denominador.
@@ -9515,12 +9411,12 @@ Start um cronômetro.
 Percorra.
 Open o file usando o path.
 Se o i/o error estiver em branco, cancele.
-Se o cronômetro's ticks are greater do que o milliseconds, cancele.
+Se o cronômetro's ticks são greater do que o milliseconds, cancele.
 Repita.
 
 An operation é um string.
 
-The orange cor é uma cor.
+The cor laranja é uma cor.
 
 The orange pincel é um pincel.
 
@@ -9591,28 +9487,28 @@ An endereço de memória called otmpfullname.
 An x-offset é um offset.
 An y-offset é um offset.
 
-Etapas necessárias para que se output o arc of um ellipse usando um string:
+Etapas necessárias para que se output o arc of um elipse usando um string:
 Coloque 2761/10000 into um fração. \ 2/3*(sqrt(2)-1)
-Coloque o ellipse's center into um center spot.
-Coloque o ellipse's x-extent dividido por 2 into um half width.
-Coloque o ellipse's y-extent dividido por 2 into um half height.
-Coloque o ellipse's x-extent times a fração into um x-offset.
-Coloque o ellipse's y-extent times a fração into um y-offset.
+Coloque o elipse's center into um center spot.
+Coloque o elipse's x-extent dividido por 2 into um half width.
+Coloque o elipse's y-extent dividido por 2 into um half altura.
+Coloque o elipse's x-extent times a fração into um x-offset.
+Coloque o elipse's y-extent times a fração into um y-offset.
 \ control point 1
-Se o string for "left-top", coloque o ellipse's left e o center's coordenada y menos o y-offset into um first control spot. 
-Se o string for "right-top", coloque o center's coordenada x mais o x-offset e o ellipse's topo into o first control spot.
-Se o string for "right-base", coloque o ellipse's right e o center's coordenada y mais o y-offset into o first control spot.
-Se o string for "left-base", coloque o center's coordenada x menos o x-offset e o ellipse's base into o first control spot.
+Se o string for "left-top", coloque o elipse's left e o center's coordenada y menos o y-offset into um first control spot. 
+Se o string for "right-top", coloque o center's coordenada x mais o x-offset e o elipse's topo into o first control spot.
+Se o string for "right-base", coloque o elipse's right e o center's coordenada y mais o y-offset into o first control spot.
+Se o string for "left-base", coloque o center's coordenada x menos o x-offset e o elipse's base into o first control spot.
 \ control point 2
-Se o string for "left-top", coloque o center's coordenada x menos o x-offset e o ellipse's topo into um second control spot.
-Se o string for "right-top", coloque o ellipse's right e o center's coordenada y menos o y-offset into o second control spot.
-Se o string for "right-base", coloque o center's coordenada x mais o x-offset e o ellipse's base into o second control spot.
-Se o string for "left-base", coloque o ellipse's left e o center's coordenada y mais o y-offset into o second control spot.
+Se o string for "left-top", coloque o center's coordenada x menos o x-offset e o elipse's topo into um second control spot.
+Se o string for "right-top", coloque o elipse's right e o center's coordenada y menos o y-offset into o second control spot.
+Se o string for "right-base", coloque o center's coordenada x mais o x-offset e o elipse's base into o second control spot.
+Se o string for "left-base", coloque o elipse's left e o center's coordenada y mais o y-offset into o second control spot.
 \ ending point
-Se o string for "left-top", coloque o ellipse's left mais o half width e o ellipse's topo into um ending spot.
-Se o string for "right-top", coloque o ellipse's right e o ellipse's topo mais o half height into o ending spot.
-Se o string for "right-base", coloque o ellipse's right menos o half width e o ellipse's base into o ending spot.
-Se o string for "left-base", coloque o ellipse's left e o ellipse's base menos o half height into o ending spot.
+Se o string for "left-top", coloque o elipse's left mais o half width e o elipse's topo into um ending spot.
+Se o string for "right-top", coloque o elipse's right e o elipse's topo mais o half altura into o ending spot.
+Se o string for "right-base", coloque o elipse's right menos o half width e o elipse's base into o ending spot.
+Se o string for "left-base", coloque o elipse's left e o elipse's base menos o half altura into o ending spot.
 \ spit it out
 Output o first control spot sem advancing.
 Output o second control spot sem advancing.
@@ -9668,7 +9564,7 @@ Se o border não for clear, output o pdf border usando o border.
 
 Etapas necessárias para que se output um spot sem advancing:
 Output a coordenada x deste spot sem advancing.
-Output o pdf state's current height menos a coordenada y deste spot sem advancing.
+Output o pdf state's current altura menos a coordenada y deste spot sem advancing.
 
 Etapas necessárias para que se output um string:
 Posponha o string to o pdf state's current contents.
@@ -9742,7 +9638,7 @@ Some conjunto de textos called image strings [page].
 An pdf outline entry é uma coisa with
 An pdf object (reference),
 An title string,
-An página height,
+An página altura,
 An destination número.
 
 An pdf endereço de memória é um endereço de memória to um pdf.
@@ -9760,7 +9656,7 @@ An root pdf object (reference),
 An parent pdf object (reference),
 An current contents pdf object (reference),
 An current página pdf object (reference),
-An current height,
+An current altura,
 An current border cor,
 An current fill cor,
 An font index.
@@ -9844,10 +9740,10 @@ Etapas necessárias para que se escolha aleatoriamente um heading:
 Escolha aleatoriamente o heading between 0 e 3839.
 Coloque o heading into o context's heading.
 
-Etapas necessárias para que se escolha aleatoriamente um letter height between alguns twips e alguns other twips:
+Etapas necessárias para que se escolha aleatoriamente um letter altura between alguns twips e alguns other twips:
 Escolha aleatoriamente um random número between o twips e o other twips.
-Coloque o random número into o letter height.
-Coloque o random número into o context's letter height.
+Coloque o random número into o letter altura.
+Coloque o random número into o context's letter altura.
 
 Etapas necessárias para que se escolha aleatoriamente um letter of o alphabet: \ coloque letter into context? ***
 Escolha aleatoriamente um número between 65 e 90.
@@ -9876,9 +9772,9 @@ Coloque o pastel cor into o context's cor.
 Etapas necessárias para que se escolha aleatoriamente um rainbow cor:
 Adicione 1 to o número atual da cor do arco-íris.
 Se o número atual da cor do arco-íris for maior do que 6, coloque 1 into o número atual da cor do arco-íris.
-Se o número atual da cor do arco-íris for 1, coloque o red cor into o rainbow cor.
-Se o número atual da cor do arco-íris for 2, coloque o orange cor into o rainbow cor.
-Se o número atual da cor do arco-íris for 3, coloque o yellow cor into o rainbow cor.
+Se o número atual da cor do arco-íris for 1, coloque o cor vermelha into o rainbow cor.
+Se o número atual da cor do arco-íris for 2, coloque o cor laranja into o rainbow cor.
+Se o número atual da cor do arco-íris for 3, coloque o cor amarela into o rainbow cor.
 Se o número atual da cor do arco-íris for 4, coloque o green cor into o rainbow cor.
 Se o número atual da cor do arco-íris for 5, coloque o blue cor into o rainbow cor.
 Se o número atual da cor do arco-íris for 6, coloque o purple cor into o rainbow cor.
@@ -9893,7 +9789,7 @@ Coloque o solid cor into o context's cor.
 Etapas necessárias para que se escolha aleatoriamente um spot anywhere in o base uma fração of um caixa;
 Etapas necessárias para que se escolha aleatoriamente um spot in o base uma fração of um caixa:
 Isole o caixa.
-Coloque o caixa's height times a fração into alguns twips.
+Coloque o caixa's altura times a fração into alguns twips.
 Coloque a base desta caixa menos o twips into o topo desta caixa.
 Escolha aleatoriamente o spot in o caixa.
 
@@ -9906,7 +9802,7 @@ Etapas necessárias para que se escolha aleatoriamente um spot anywhere in o midd
 Etapas necessárias para que se escolha aleatoriamente um spot in o middle uma fração of um caixa:
 Isole o caixa.
 Coloque o caixa's center's y into um coord.
-Coloque o caixa's height times a fração dividido por 2 into um número.
+Coloque o caixa's altura times a fração dividido por 2 into um número.
 Coloque o coord menos o número into o topo desta caixa.
 Coloque o coord mais o número into a base desta caixa.
 Escolha aleatoriamente o spot in o caixa.
@@ -9921,7 +9817,7 @@ Etapas necessárias para que se escolha aleatoriamente um spot anywhere in o topo
 Etapas necessárias para que se escolha aleatoriamente um spot in o topo middle uma fração of um caixa:
 Isole o caixa.
 Coloque o caixa's center's y into um coord.
-Coloque o caixa's height times a fração into um número.
+Coloque o caixa's altura times a fração into um número.
 Coloque o coord menos o número into o topo desta caixa.
 Coloque o coord into a base desta caixa.
 Escolha aleatoriamente o spot in o caixa.
@@ -9971,7 +9867,7 @@ Escolha aleatoriamente a coordenada x deste spot within o distance of o other sp
 Escolha aleatoriamente a coordenada y deste spot within o distance of o other spot's coordenada y.
 Coloque o spot into o context's spot.
 
-Etapas necessárias para que se escolha aleatoriamente alguns twips between alguns min twips e alguns other twips; \ are all these necessary? ***
+Etapas necessárias para que se escolha aleatoriamente alguns twips between alguns min twips e alguns other twips; \ são all these necessary? ***
 Etapas necessárias para que se escolha aleatoriamente um número between alguns min twips e alguns other twips;
 Etapas necessárias para que se escolha aleatoriamente um número between um min número e um max número;
 Etapas necessárias para que se escolha aleatoriamente um número from um min número to um max número;
@@ -10028,7 +9924,7 @@ Coloque 875 into o really really light cor's luminosidade.
 Coloque o really really light cor into o context's cor.
 
 An picture é uma coisa with
-\ all caixaes are in twits
+\ all caixas são in twits
 An caixa [location of cropped picture on o página], 
 An uncropped caixa [location of entire picture on o página],
 An grayscale alarme,
@@ -10038,7 +9934,7 @@ An texto hexadecimal called data [original pedaços in original format],
 An gpbitmap.
 
 An imagem é uma coisa with
-\ all caixas are in twits
+\ all caixas são in twits
 An caixa [location of cropped picture on o página], 
 An uncropped caixa [location of entire picture on o página],
 An grayscale alarme,
@@ -10048,7 +9944,7 @@ An texto hexadecimal called data [original pedaços in original format],
 An gpbitmap.
 
 \An figura é uma coisa with
-\ all caixaes are in twits
+\ all caixaes são in twits
 \An caixa [location of cropped picture on o página], 
 \An uncropped caixa [location of entire picture on o página],
 \An grayscale alarme,
@@ -10280,10 +10176,10 @@ Etapas necessárias para que se coloque um caixa's center-top into um spot:
 Coloque o caixa's center's coordenada x into a coordenada x deste spot.
 Coloque o topo desta caixa into a coordenada y deste spot.
 
-Etapas necessárias para que se coloque um caixa's height into um height:
-Coloque a base desta caixa into o height.
-Subtraia o topo desta caixa from o height.
-Adicione o tpp to o height.
+Etapas necessárias para que se coloque um caixa's altura into um altura:
+Coloque a base desta caixa into o altura.
+Subtraia o topo desta caixa from o altura.
+Adicione o tpp to o altura.
 
 Etapas necessárias para que se coloque um caixa's left line into um line:
 Coloque o caixa's left e o topo desta caixa into o line's start.
@@ -10326,9 +10222,9 @@ Etapas necessárias para que se coloque um caixa's x-extent into um width:
 Coloque o caixa's right into o width.
 Subtraia o caixa's left from o width.
 
-Etapas necessárias para que se coloque um caixa's y-extent into um height:
-Coloque a base desta caixa into o height.
-Subtraia o topo desta caixa from o height.
+Etapas necessárias para que se coloque um caixa's y-extent into um altura:
+Coloque a base desta caixa into o altura.
+Subtraia o topo desta caixa from o altura.
 
 Etapas necessárias para que se coloque um pedaço e um número into um fração:
 Coloque o pedaço into o fração's numerador.
@@ -10411,17 +10307,17 @@ Etapas necessárias para que se coloque eax into um wyrd:
 Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o wyrd
 Intel $668903. \ mov [ebx],ax
 
-Etapas necessárias para que se coloque um ellipse in o middle of um caixa;
-Etapas necessárias para que se centralize um ellipse in um caixa:
-Centralize o ellipse in o caixa (horizontally).
-Centralize o ellipse in o caixa (vertically).
+Etapas necessárias para que se coloque um elipse in o middle of um caixa;
+Etapas necessárias para que se centralize um elipse in um caixa:
+Centralize o elipse in o caixa (horizontally).
+Centralize o elipse in o caixa (vertically).
 
-Etapas necessárias para que se coloque um ellipse into another ellipse:
-Coloque o ellipse's caixa into o other ellipse's caixa.
+Etapas necessárias para que se coloque um elipse into another elipse:
+Coloque o elipse's caixa into o other elipse's caixa.
 
-Etapas necessárias para que se coloque um ellipse on um spot;
-Etapas necessárias para que se centralize um ellipse on um spot:
-Centralize o ellipse's caixa on o spot.
+Etapas necessárias para que se coloque um elipse on um spot;
+Etapas necessárias para que se centralize um elipse on um spot:
+Centralize o elipse's caixa on o spot.
 
 Etapas necessárias para que se coloque um finger on o first character of um string:
 Coloque o string's first into o finger.
@@ -10447,16 +10343,16 @@ Intel $8B03. \ mov eax,[ebx]
 
 Etapas necessárias para que se coloque um alarme into um string;
 Etapas necessárias para que se convert um alarme to um string:
-Se o alarme estiver verde, coloque "yes" into o string; exit. \ has to ser english por externalized reams
+Se o alarme estiver ativo, coloque "yes" into o string; exit. \ has to ser english por externalized reams
 Coloque "no" into o string.
 
 Etapas necessárias para que se coloque uma font into another font:
 Coloque o font's name into o other font's name.
-Coloque o font's height into o other font's height.
+Coloque o font's altura into o other font's altura.
 
 Etapas necessárias para que se coloque alguns font widths into um trecho: \ used por pdf conversion
 Limpe o trecho.
-Se o font widths are nil, cancele.
+Se o font widths são nil, cancele.
 Coloque o font widths' data into um número endereço de memória.
 Percorra.
 Se um contador é past o font widths' contagem, pare.
@@ -10466,8 +10362,8 @@ Se o contagem é evenly divisible por 16, posponha o texto CRLF to o trecho.
 Adicione um número's magnitude to o número endereço de memória.
 Repita.
 
-Etapas necessárias para que se coloque um font's adjusted height into um height:
-Coloque o font's height times 3/4 into o height.
+Etapas necessárias para que se coloque um font's adjusted altura into um altura:
+Coloque o font's altura times 3/4 into o altura.
 
 Etapas necessárias para que se coloque uma fração into another fração:
 Coloque o fração's numerador into o other fração's numerador.
@@ -10498,11 +10394,11 @@ Etapas necessárias para que se coloque um gpimage's gprect into um gprect:
 Coloque 0 into o gprect's x.
 Coloque 0 into o gprect's y.
 Coloque o gpimage's width into o gprect's width.
-Coloque o gpimage's height into o gprect's height.
+Coloque o gpimage's altura into o gprect's altura.
 
-Etapas necessárias para que se coloque um gpimage's height into um height:
-Se o gpimage for inexistente, coloque 0 into o height; exit.
-Call "gdiplus.dll" "GdipGetImageHeight" with o gpimage e o height's whereabouts.
+Etapas necessárias para que se coloque um gpimage's altura into um altura:
+Se o gpimage for inexistente, coloque 0 into o altura; exit.
+Call "gdiplus.dll" "GdipGetImageHeight" with o gpimage e o altura's whereabouts.
 
 Etapas necessárias para que se coloque um gpimage's width into um width:
 Se o gpimage for inexistente, coloque 0 into o width; exit.
@@ -10512,7 +10408,7 @@ Etapas necessárias para que se coloque um gprect into another gprect:
 Coloque o gprect's x into o other gprect's x.
 Coloque o gprect's y into o other gprect's y.
 Coloque o gprect's width into o other gprect's width.
-Coloque o gprect's height into o other gprect's height.
+Coloque o gprect's altura into o other gprect's altura.
 
 Etapas necessárias para que se coloque um matiz e um saturação e um luminosidade into um cor:
 Coloque o matiz into o cor's matiz.
@@ -10554,11 +10450,11 @@ Coloque o topo into o topo desta caixa.
 Coloque o right into o caixa's right.
 Coloque o base into a base desta caixa.
 
-Etapas necessárias para que se coloque um left coord e um topo coord e um right coord e um base coord into um ellipse:
-Coloque o left into o ellipse's left.
-Coloque o topo into o ellipse's topo.
-Coloque o right into o ellipse's right.
-Coloque o base into o ellipse's base.
+Etapas necessárias para que se coloque um left coord e um topo coord e um right coord e um base coord into um elipse:
+Coloque o left into o elipse's left.
+Coloque o topo into o elipse's topo.
+Coloque o right into o elipse's right.
+Coloque o base into o elipse's base.
 
 Etapas necessárias para que se coloque o left of um caixa into um vertical line;
 Etapas necessárias para que se coloque o left edge of um caixa into um vertical line;
@@ -10625,9 +10521,9 @@ Call "user32.dll" "GetCursorPos" with o spot's whereabouts.
 Call "user32.dll" "ScreenToClient" with o main window e o spot's whereabouts. \ in case window é on another monitor.
 Call "gdi32.dll" "DPtoLP" with o tela canvas e o spot's whereabouts e 1.
 
-Etapas necessárias para que se coloque um name e um height into um font:
+Etapas necessárias para que se coloque um name e um altura into um font:
 Coloque o name into o font's name.
-Coloque o height into o font's height.
+Coloque o altura into o font's altura.
 
 Etapas necessárias para que se coloque um name into um font:
 Coloque o name into o font's name.
@@ -10757,9 +10653,9 @@ Etapas necessárias para que se coloque um polygon's center-top into um spot:
 Se o polygon for inexistente, limpe o spot; exit.
 Coloque o polygon's caixa's center-top into o spot.
 
-Etapas necessárias para que se coloque um polygon's height into um height:
-Se o polygon for inexistente, limpe o height; exit.
-Coloque o polygon's caixa's height into o height.
+Etapas necessárias para que se coloque um polygon's altura into um altura:
+Se o polygon for inexistente, limpe o altura; exit.
+Coloque o polygon's caixa's altura into o altura.
 
 Etapas necessárias para que se coloque um polygon's left-base into um spot:
 Se o polygon for inexistente, limpe o spot; exit.
@@ -10793,9 +10689,9 @@ Etapas necessárias para que se coloque um polygon's x-extent into um width:
 Se o polygon for inexistente, limpe o width; exit.
 Coloque o polygon's caixa's x-extent into o width.
 
-Etapas necessárias para que se coloque um polygon's y-extent into um height:
-Se o polygon for inexistente, limpe o height; exit.
-Coloque o polygon's caixa's y-extent into o height.
+Etapas necessárias para que se coloque um polygon's y-extent into um altura:
+Se o polygon for inexistente, limpe o altura; exit.
+Coloque o polygon's caixa's y-extent into o altura.
 
 Etapas necessárias para que se coloque um percorredor into another percorredor:
 Copy pedaços from o percorredor's whereabouts to o other percorredor's whereabouts por o percorredor's magnitude.
@@ -10834,9 +10730,9 @@ Etapas necessárias para que se coloque um spot e another spot into um caixa:
 Coloque o spot into o caixa's left-top.
 Coloque o other spot into o caixa's right-base.
 
-Etapas necessárias para que se coloque um spot e another spot into um ellipse:
-Coloque o spot into o ellipse's left-top.
-Coloque o other spot into o ellipse's right-base.
+Etapas necessárias para que se coloque um spot e another spot into um elipse:
+Coloque o spot into o elipse's left-top.
+Coloque o other spot into o elipse's right-base.
 
 Etapas necessárias para que se coloque um spot e another spot into um line:
 Coloque o spot into o line's start.
@@ -10970,8 +10866,8 @@ Globalize o spot usando o text's left-top.
 
 Etapas necessárias para que se coloque um text's grid into um grid:
 Se o text for inexistente, limpe o grid; exit.
-Coloque o text's font's height times 4 into o grid's número x.
-Coloque o text's font's height into o grid's número y.
+Coloque o text's font's altura times 4 into o grid's número x.
+Coloque o text's font's altura into o grid's número y.
 
 Etapas necessárias para que se coloque um text's normalized selection into um selection:
 Se o text for inexistente, cancele.
@@ -10983,13 +10879,13 @@ Se o text for inexistente, coloque 0 into o contagem; exit.
 Se o text's rows estiverem vazio, coloque 0 into o contagem; exit.
 Coloque o text's rows' last's row# into o contagem.
 
-Etapas necessárias para que se coloque um text's row height into um height:
-Se o text for inexistente, coloque 0 into o height; exit.
-Coloque o text's font's height into o height.
+Etapas necessárias para que se coloque um text's row altura into um altura:
+Se o text for inexistente, coloque 0 into o altura; exit.
+Coloque o text's font's altura into o altura.
 
 Etapas necessárias para que se coloque um text's rows/box into um contagem:
 Se o text for inexistente, coloque 0 into o contagem; exit.
-Coloque o text's caixa's height dividido por o text's row height into o contagem.
+Coloque o text's caixa's altura dividido por o text's row altura into o contagem.
 
 Etapas necessárias para que se coloque um text's selecionado pedaço contagem into um contagem:
 Coloque 0 into o contagem.
@@ -11373,8 +11269,8 @@ An recipient é um string.
 
 The conjunto-separator pedaço é um pedaço igual a 30.
 
-An rectangle é um figura.
-An skinny rectangle é um rectangle.
+An retângulo é um figura.
+An skinny retângulo é um retângulo.
 An diamond é um figura.
 An desert landscape é um coisa.
 An octagon é um figura.
@@ -11406,7 +11302,7 @@ An cube é um figura.
 An yew tree é um figura.
 An tree é um figura.
 
-The red cor é uma cor.
+The cor vermelha é uma cor.
 
 The red pincel é um pincel.
 
@@ -11428,7 +11324,7 @@ Coloque o mouse's spot into o spot deste event.
 Enque o event.
 
 Etapas necessárias para que se atualize o tela usando um caixa:
-Call "gdi32.dll" "BitBlt" with o tela canvas e o caixa's left e o topo desta caixa e o caixa's width e o caixa's height 
+Call "gdi32.dll" "BitBlt" with o tela canvas e o caixa's left e o topo desta caixa e o caixa's width e o caixa's altura 
 And o quadro atual e o caixa's left e o topo desta caixa e 13369376 [srccopy].
 
 The registered pedaço é um pedaço igual a 174.
@@ -11688,22 +11584,22 @@ Coloque 0 into o cronômetro's total ticks.
 Etapas necessárias para que se redimensione um caixa usando um ratio pair;
 Etapas necessárias para que se redimensione um caixa usando uma fração pair:
 Coloque o caixa's x-extent into um width.
-Coloque o caixa's y-extent into um height.
+Coloque o caixa's y-extent into um altura.
 Redimensione proporcionalmente o width usando a fração pair's fração.
-Redimensione proporcionalmente o height usando a fração pair's other fração.
+Redimensione proporcionalmente o altura usando a fração pair's other fração.
 Coloque o caixa's left mais o width into o caixa's right.
-Coloque o topo desta caixa mais o height into a base desta caixa.
+Coloque o topo desta caixa mais o altura into a base desta caixa.
 
 Etapas necessárias para que se redimensione um caixa usando um twip pair:
 Adicione o twip pair's número x to o caixa's right.
 Adicione o twip pair's número y to a base desta caixa.
 
-Etapas necessárias para que se redimensione um ellipse usando um ratio pair;
-Etapas necessárias para que se redimensione um ellipse usando uma fração pair:
-Redimensione o ellipse's caixa usando a fração pair.
+Etapas necessárias para que se redimensione um elipse usando um ratio pair;
+Etapas necessárias para que se redimensione um elipse usando uma fração pair:
+Redimensione o elipse's caixa usando a fração pair.
 
-Etapas necessárias para que se redimensione um ellipse usando um twip pair:
-Redimensione o ellipse's caixa usando o twip pair.
+Etapas necessárias para que se redimensione um elipse usando um twip pair:
+Redimensione o elipse's caixa usando o twip pair.
 
 Etapas necessárias para que se redimensione um line usando um ratio pair;
 Etapas necessárias para que se redimensione um line usando uma fração pair:
@@ -11722,15 +11618,15 @@ Redimensione o other caixa usando o twip pair.
 Make uma fração pair usando o other caixa e o caixa.
 Redimensione o line usando a fração pair.
 
-Etapas necessárias para que se redimensione um picture to um width por um height:
+Etapas necessárias para que se redimensione um picture to um width por um altura:
 Se o picture for inexistente, cancele.
 Coloque o width dividido por o tpp into um pixel width.
-Coloque o height dividido por o tpp into um pixel height.
-Call "gdiplus.dll" "GdipCreateBitmapFromScan0" with o pixel width e o pixel height e 0 e 137224 [pixelformat24bpprgb] e 0 e um gpbitmap's whereabouts.
+Coloque o altura dividido por o tpp into um pixel altura.
+Call "gdiplus.dll" "GdipCreateBitmapFromScan0" with o pixel width e o pixel altura e 0 e 137224 [pixelformat24bpprgb] e 0 e um gpbitmap's whereabouts.
 Call "gdiplus.dll" "GdipGetImageGraphicsContext" with o gpbitmap e um gpgraphic's whereabouts.
 Call "gdiplus.dll" "GdipDrawImageRectRectI" with o gpgraphic e o picture's gpbitmap
-And 0 e 0 e o pixel width e o pixel height
-And 0 e 0 e o picture's gpbitmap's width menos 1 e o picture's gpbitmap's height menos 1
+And 0 e 0 e o pixel width e o pixel altura
+And 0 e 0 e o picture's gpbitmap's width menos 1 e o picture's gpbitmap's altura menos 1
 And 2 [unitpixel] e nil e nil e 0.
 Call "gdiplus.dll" "GdipDeleteGraphics" with o gpgraphic.
 Destroy o picture's gpbitmap.
@@ -11782,7 +11678,7 @@ Obtenha um saved context from o context stack.
 Se o saved context for inexistente, cancele.
 Coloque o saved context's spot into o context's spot.
 Coloque o saved context's heading into o context's heading.
-Coloque o saved context's letter height into o context's letter height.
+Coloque o saved context's letter altura into o context's letter altura.
 Coloque o saved context's cor into o context's cor.
 Coloque o saved context's número into o context's número.
 Remove o saved context from o context stack.
@@ -11803,8 +11699,8 @@ Posponha o other rows to o text's rows.
 Renumber o text's rows.
 
 Etapas necessárias para que se reverse um cor:
-Se a cor é o black cor, coloque o white cor into o cor; exit.
-Se a cor é o white cor, coloque o black cor into o cor; exit.
+Se a cor é o cor preta, coloque o cor branca into o cor; exit.
+Se a cor é o cor branca, coloque o cor preta into o cor; exit.
 Coloque 1000 menos o cor's luminosidade into o cor's luminosidade.
 \Coloque 1000 menos o cor's saturação into o cor's saturação.
 Adicione 1800 to o cor's matiz. Normalize o cor's matiz.
@@ -11878,8 +11774,8 @@ Coloque o other caixa's left menos o center's coordenada x mais o center's coord
 Coloque o center's coordenada y menos o other caixa's base mais o center's coordenada x into o caixa's left.
 Coloque o other caixa's right menos o center's coordenada x mais o center's coordenada y into a base desta caixa.
 
-Etapas necessárias para que se rotate um ellipse:
-Rotate o ellipse's caixa.
+Etapas necessárias para que se rotate um elipse:
+Rotate o elipse's caixa.
 
 Etapas necessárias para que se rotate um gpimage:
 Se o gpimage for inexistente, cancele.
@@ -11901,7 +11797,7 @@ Rotate o line's end around o center.
 Etapas necessárias para que se rotate um picture:
 Se o picture for inexistente, cancele.
 Adicione 900 to o picture's ângulo de rotação.
-Se o picture's mirror alarme estiver verde, adicione 1800 to o picture's ângulo de rotação.
+Se o picture's mirror alarme estiver ativo, adicione 1800 to o picture's ângulo de rotação.
 Normalize o picture's ângulo de rotação.
 Rotate o picture's caixa.
 Rotate o picture's uncropped caixa.
@@ -12000,7 +11896,7 @@ Etapas necessárias para que se save um context:
 Allocate memory por um saved context.
 Coloque o context's spot into o saved context's spot.
 Coloque o context's heading into o saved context's heading.
-Coloque o context's letter height into o saved context's letter height.
+Coloque o context's letter altura into o saved context's letter altura.
 Coloque o context's cor into o saved context's cor.
 Coloque o context's número into o saved context's número.
 Anteponha o saved context to o context stack.
@@ -12015,8 +11911,8 @@ Say o string.
 
 Etapas necessárias para que se say um string;
 Etapas necessárias para que se speak um string:
-Se o silent alarme estiver verde, cancele.
-\Se la bandera silenciosa estiver verde, cancele.
+Se o silent alarme estiver ativo, cancele.
+\Se la bandera silenciosa estiver ativo, cancele.
 Se o talker for inexistente, cancele.
 Se o string estiver em branco, cancele.
 Convert o string to um wide string.
@@ -12025,8 +11921,8 @@ Call o talker's vtable's speak with o talker e o wide string's first e 17 [svsfd
 
 Etapas necessárias para que se say um string e wait;
 Etapas necessárias para que se speak um string e wait:
-Se o silent alarme estiver verde, cancele.
-Se la bandera silenciosa estiver verde, cancele.
+Se o silent alarme estiver ativo, cancele.
+Se la bandera silenciosa estiver ativo, cancele.
 Se o talker for inexistente, cancele.
 Se o string estiver em branco, cancele.
 Convert o string to um wide string.
@@ -12045,19 +11941,19 @@ Etapas necessárias para que se redimensione proporcionalmente um caixa to um per
 Coloque o percent / 100 into um fração.
 Redimensione proporcionalmente o caixa usando a fração.
 
-Etapas necessárias para que se redimensione proporcionalmente um ellipse usando um ratio;
-Etapas necessárias para que se redimensione proporcionalmente um ellipse usando um fração:
+Etapas necessárias para que se redimensione proporcionalmente um elipse usando um ratio;
+Etapas necessárias para que se redimensione proporcionalmente um elipse usando um fração:
 Se a fração for 1/1, cancele.
-Redimensione proporcionalmente o ellipse's caixa usando a fração.
+Redimensione proporcionalmente o elipse's caixa usando a fração.
 
-Etapas necessárias para que se redimensione proporcionalmente um ellipse to um percent:
+Etapas necessárias para que se redimensione proporcionalmente um elipse to um percent:
 Coloque o percent / 100 into um fração.
-Redimensione proporcionalmente o ellipse usando a fração.
+Redimensione proporcionalmente o elipse usando a fração.
 
 Etapas necessárias para que se redimensione proporcionalmente uma font usando um ratio;
 Etapas necessárias para que se redimensione proporcionalmente uma font usando um fração:
 Se a fração for 1/1, cancele.
-Redimensione proporcionalmente o font's height usando a fração.
+Redimensione proporcionalmente o font's altura usando a fração.
 
 Etapas necessárias para que se redimensione proporcionalmente uma fração usando another fração;
 Etapas necessárias para que se multiplique uma fração por another fração:
@@ -12158,8 +12054,8 @@ Redimensione proporcionalmente o vértice's coordenada y usando a fração.
 The tela canvas é um canvas.
 \The tela canvas é um canvas.
 
-The tela has um caixa, um pixel height e um pixel width.
-\The screen has um caixa, um pixel height e um pixel width.
+The tela has um caixa, um pixel altura e um pixel width.
+\The screen has um caixa, um pixel altura e um pixel width.
 
 Etapas necessárias para que se role um console usando um event:
 Se o console for inexistente, cancele.
@@ -12176,9 +12072,9 @@ Repita.
 
 Etapas necessárias para que se role um text to o base:
 Se o text for inexistente, cancele.
-Se o text's vertical scroll alarme não estiver verde, cancele.
+Se o text's vertical scroll alarme não estiver ativo, cancele.
 Coloque o text's row contagem menos 1 into um número.
-Coloque - o número times o text's row height into o text's coordenada y.
+Coloque - o número times o text's row altura into o text's coordenada y.
 Limite o origin of o text.
 
 Etapas necessárias para que se role um text to o caret:
@@ -12199,10 +12095,10 @@ Coloque o text's margin into o text's coordenada x.
 Obtenha um caixa por o caret in o text.
 Se o caixa é inside o text's caixa, cancele.
 Ajuste o caixa usando 0 e - o tpp e 0 e o tpp. \ caret caixaes don't fill entire row
-Coloque o text's caixa's y-extent dividido por 2 into um height.
-Round o height down to o nearest multiple of o text's row height.
-Coloque o text's caixa's topo mais o height into um topo coord.
-Coloque o topo mais o text's row height into um base coord.
+Coloque o text's caixa's y-extent dividido por 2 into um altura.
+Round o altura down to o nearest multiple of o text's row altura.
+Coloque o text's caixa's topo mais o altura into um topo coord.
+Coloque o topo mais o text's row altura into um base coord.
 Se o topo desta caixa for menor do que o topo, coloque o topo menos o topo desta caixa into um difference's número y.
 Se a base desta caixa for maior do que o base, coloque o base menos a base desta caixa into o difference's número y.
 Se o caixa's left for menor do que o text's left, coloque o text's left menos o caixa's left into o difference's número x.
@@ -12212,43 +12108,43 @@ Role o text usando a difference.
 
 Etapas necessárias para que se role um text down one line:
 Se o text for inexistente, cancele.
-Se o text's vertical scroll alarme não estiver verde, cancele.
-Coloque - o text's row height into um difference's número y.
+Se o text's vertical scroll alarme não estiver ativo, cancele.
+Coloque - o text's row altura into um difference's número y.
 Role o text usando a difference.
 
 Etapas necessárias para que se role um text down one página:
 Se o text for inexistente, cancele.
-Se o text's vertical scroll alarme não estiver verde, cancele.
+Se o text's vertical scroll alarme não estiver ativo, cancele.
 Subtraia o text's caixa's y-extent from o text's coordenada y.
-Adicione o text's row height to o text's coordenada y.
+Adicione o text's row altura to o text's coordenada y.
 Limite o origin of o text.
 
 Etapas necessárias para que se role um text usando um difference:
 Se o text for inexistente, cancele.
 Isole a difference.
-Se o text's horizontal scroll alarme não estiver verde, coloque 0 into o difference's número x.
-Se o text's vertical scroll alarme não estiver verde, coloque 0 into o difference's número y.
+Se o text's horizontal scroll alarme não estiver ativo, coloque 0 into o difference's número x.
+Se o text's vertical scroll alarme não estiver ativo, coloque 0 into o difference's número y.
 Se a difference for 0, cancele.
 Mova o text's origin usando a difference.
 Limite o origin of o text.
 
 Etapas necessárias para que se role um text to o topo:
 Se o text for inexistente, cancele.
-Se o text's vertical scroll alarme não estiver verde, cancele.
+Se o text's vertical scroll alarme não estiver ativo, cancele.
 Coloque 0 into o text's coordenada y.
 Limite o origin of o text.
 
 Etapas necessárias para que se role um text up one line:
 Se o text for inexistente, cancele.
-Se o text's vertical scroll alarme não estiver verde, cancele.
-Coloque o text's row height into um difference's número y.
+Se o text's vertical scroll alarme não estiver ativo, cancele.
+Coloque o text's row altura into um difference's número y.
 Role o text usando a difference.
 
 Etapas necessárias para que se role um text up one página:
 Se o text for inexistente, cancele.
-Se o text's vertical scroll alarme não estiver verde, cancele.
+Se o text's vertical scroll alarme não estiver ativo, cancele.
 Adicione o text's caixa's y-extent to o text's coordenada y.
-Subtraia o text's row height from o text's coordenada y.
+Subtraia o text's row altura from o text's coordenada y.
 Limite o origin of o text.
 
 The scrolllock tecla é uma tecla igual a 145.
@@ -12636,7 +12532,7 @@ Intel $898804000000. \ mov [eax+4],ecx \ o subtexto's last
 
 The slash pedaço é um pedaço igual a 47.
 
-The small letter height é um letter height.
+The small letter altura é um letter altura.
 
 The ponto mediano é um pedaço igual a 183.
 
@@ -12660,7 +12556,7 @@ Divida a difference por 2.
 Adicione a difference to o left vértice's spot.
 Coloque o right vértice into o left vértice.
 Repita.
-Se o alarme não estiver verde, cancele.
+Se o alarme não estiver ativo, cancele.
 Destroy o polygon's first vértice usando o polygon.
 Destroy o polygon's last vértice usando o polygon.
 
@@ -12762,7 +12658,7 @@ Coloque o text's rows' first into um row.
 Se o row for inexistente, cancele.
 Remove o row from o text's rows.
 Se o row of o text estiver selecionado, acione um alarme; posponha o row to o selecionado rows; repita.
-Se o alarme estiver verde, posponha o row to o other rows; repita.
+Se o alarme estiver ativo, posponha o row to o other rows; repita.
 Posponha o row to o rows.
 Repita.
 
@@ -13322,7 +13218,7 @@ An string# é um número.
 Etapas necessárias para que se draw o turtle text grid: \ this é called por o temporary line in o "Stoke a ___ glyph" routine
 Save o context. Coloque o pincel size into an saved pincel size. \ see REMARK below
 Use o light gray pincel.
-Coloque o context's letter height dividido por 4 into an size.
+Coloque o context's letter altura dividido por 4 into an size.
 Vire around. Mova o size. Vire around.
 Draw o turtle text grid caixaes.
 Vire right. Mova o size. Vire left.
@@ -13330,7 +13226,7 @@ Draw o turtle text grid caixaes.
 Restore o context. Coloque o saved pincel size into o pincel size. \ see REMARK below
  
 Etapas necessárias para que se draw o turtle text grid caixaes: \ this é called from o routine above to draw one column of grid caixaes
-Coloque o context's letter height dividido por 4 into an size.
+Coloque o context's letter altura dividido por 4 into an size.
 Save o context.
 Use o skinny pincel.
 Percorra.
@@ -14421,16 +14317,16 @@ Etapas necessárias para que se stroke um caixa with um cor:
 Coloque a cor into o context's cor.
 Coloque o caixa's left-base into o context's spot.
 Face north.
-Stroke o caixa's height.
+Stroke o caixa's altura.
 Vire right.
 Stroke o caixa's width.
 Vire right.
-Stroke o caixa's height.
+Stroke o caixa's altura.
 Vire right.
 Stroke o caixa's width.
 
 Etapas necessárias para que se stroke um pedaço: \\ Essa rotina aqui "DESENHA" uma letra. 
-Coloque o context's letter height dividido por 4 into o square size. \ ***
+Coloque o context's letter altura dividido por 4 into o square size. \ ***
 \Draw o turtle text grid. \ for testing -- adicione me now, delete me later -- see below
 \LETRAS MAIÚSCULAS
 Se o pedaço for o acento grave, stroke o accent glyph.
@@ -14777,7 +14673,7 @@ Etapas necessárias para que se stroke um line como high como um caixa;
 Etapas necessárias para que se stroke um line como tall como um caixa;
 Etapas necessárias para que se draw um line como high como um caixa;
 Etapas necessárias para que se draw um line como tall como um caixa:
-Stroke o caixa's height.
+Stroke o caixa's altura.
 
 Etapas necessárias para que se stroke um line como wide como um caixa;
 Etapas necessárias para que se draw um line como wide como um caixa:
@@ -16150,11 +16046,11 @@ Stroke 9/2 square.
 Restore o context.
 
 Etapas necessárias para que se stroke alguns squares:
-Stroke o square size times o squares dividido por 1 square. \ squares are scaled up por precision hence o division at o end
+Stroke o square size times o squares dividido por 1 square. \ squares são scaled up por precision hence o division at o end
 
 Etapas necessárias para que se stroke alguns squares diagonally;
 Etapas necessárias para que se stroke alguns squares slantways:
-Stroke o square size times o squares times o raiz de dois dividido por 1 square. \ squares are scaled up por precision hence o division at o end
+Stroke o square size times o squares times o raiz de dois dividido por 1 square. \ squares são scaled up por precision hence o division at o end
 
 Etapas necessárias para que se stroke o three glyph:
 Save o context.
@@ -16529,7 +16425,7 @@ Vire right a fração.
 
 Etapas necessárias para que se vire alguns degrees:
 Coloque o degrees times 10 e 3600 into um fração.
-\Se o degrees are negative, vire left o fração; exit.
+\Se o degrees são negative, vire left o fração; exit.
 Vire right a fração.
 
 Etapas necessárias para que se vire right uma fração igual to um número over another número:
@@ -16586,8 +16482,8 @@ Crie um hrgn usando o caixa.
 Unmask inside o hrgn.
 Destroy o hrgn.
 
-Etapas necessárias para que se unmask inside um ellipse:
-Crie um hrgn usando o ellipse.
+Etapas necessárias para que se unmask inside um elipse:
+Crie um hrgn usando o elipse.
 Unmask inside o hrgn.
 Destroy o hrgn.
 
@@ -16609,8 +16505,8 @@ Crie um hrgn usando o caixa.
 Unmask outside o hrgn.
 Destroy o hrgn.
 
-Etapas necessárias para que se unmask outside um ellipse:
-Crie um hrgn usando o ellipse.
+Etapas necessárias para que se unmask outside um elipse:
+Crie um hrgn usando o elipse.
 Unmask outside o hrgn.
 Destroy o hrgn.
 
@@ -16734,12 +16630,12 @@ Etapas necessárias para que se use o pincel grosso:
 Etapas necessárias para que se use o fat pincel:
 Coloque 3 into o pincel size.
 
-Etapas necessárias para que se use um letter height:
-Coloque o letter height into o context's letter height.
+Etapas necessárias para que se use um letter altura:
+Coloque o letter altura into o context's letter altura.
 
-Etapas necessárias para que se use um letter height of alguns twips:
-Coloque o twips into o letter height.
-Coloque o twips into o context's letter height.
+Etapas necessárias para que se use um letter altura of alguns twips:
+Coloque o twips into o letter altura.
+Coloque o twips into o context's letter altura.
 
 Etapas necessárias para que se use um pincel:
 Coloque o pincel into o context's pincel.
@@ -16831,7 +16727,7 @@ An wave file é um path.
 
 An wave é um texto hexadecimal.
 
-The white cor é uma cor.
+The cor branca é uma cor.
 
 The white pincel é um pincel.
 
@@ -16878,7 +16774,7 @@ An palavra é um subtexto.
 
 Etapas necessárias para que se wrap um text:
 Se o text for inexistente, cancele.
-Se o text's wrap alarme não estiver verde, cancele.
+Se o text's wrap alarme não estiver ativo, cancele.
 Convert o text's anchor to um posicionamento absoluto usando o text.
 Convert o text's caret to another posicionamento absoluto usando o text.
 Coloque o text's scale into um fração.
@@ -16966,14 +16862,14 @@ Convert o número to um string.
 Escreva o string on o console.
 
 Etapas necessárias para que se escreva alguns quoras in um caixa:
-\Draw o caixa with o red cor e o clear cor. \ temp ***
+\Draw o caixa with o cor vermelha e o clear cor. \ temp ***
 Coloque o caixa into um quora caixa.
 Coloque o quora caixa's topo mais 1/4 inch into o quora caixa's base.
 Percorra.
 Obtenha um quora from o quoras.
 Se o quora for inexistente, pare.
 \draw really fast. ***
-\ Draw o quora caixa with o yellow cor. \ temp ***
+\ Draw o quora caixa with o cor amarela. \ temp ***
 Escreva o quora's string in o quora caixa with o quora's cor.
 Mova o quora caixa down 1/4 inch.
 Repita.
@@ -17033,20 +16929,20 @@ Etapas necessárias para que se escreva um string in um caixa with um cor;
 Etapas necessárias para que se stroke um string in um caixa with um cor:
 Coloque a cor into o context's cor.
 Coloque o caixa's left-base into o context's spot.
-Coloque o caixa's height dividido por 2 into o context's letter height.
-\Coloque o caixa's height into o context's letter height.
+Coloque o caixa's altura dividido por 2 into o context's letter altura.
+\Coloque o caixa's altura into o context's letter altura.
 Face north.
-Mova o caixa's height dividido por 4. \ was 4 e still é now! ***
+Mova o caixa's altura dividido por 4. \ was 4 e still é now! ***
 Stroke o string.
 
 Etapas necessárias para que se escreva um string in o middle of um caixa;
 Etapas necessárias para que se stroke um string in o middle of um caixa:
-Coloque o context's letter height dividido por 4 into um square size. \ was 4 ***
-\ glyphs are two squares wide mais one square of intercharacter spacing. no spacing at o end.
+Coloque o context's letter altura dividido por 4 into um square size. \ was 4 ***
+\ glyphs são two squares wide mais one square of intercharacter spacing. no spacing at o end.
 Coloque o string's length times o square size times 3 menos o square size into um width.
 Divida o width por 2.
 Start in o middle of o caixa.
-Mova down o context's letter height dividido por 2. \ was 2 ***
+Mova down o context's letter altura dividido por 2. \ was 2 ***
 Mova left o width.
 Face north.
 Stroke o string.
@@ -17107,36 +17003,36 @@ Stroke o string.
 
 Etapas necessárias para que se escreva um string with uma cor at o base of um caixa;
 Etapas necessárias para que se stroke um string with uma cor at o base of um caixa:
-Coloque o context's letter height dividido por 4 into um square size. \ ***
-\ glyphs are two squares wide mais one square of intercharacter spacing. no spacing at o end.
+Coloque o context's letter altura dividido por 4 into um square size. \ ***
+\ glyphs são two squares wide mais one square of intercharacter spacing. no spacing at o end.
 Coloque o string's length times o square size times 3 menos o square size into um width.
 Divida o width por 2.
 Start in o middle of o base of o caixa.
-Mova up o context's letter height times 2. \ was sem o times 2 ***
+Mova up o context's letter altura times 2. \ was sem o times 2 ***
 Mova left o width.
 Face north.
 Stroke o string with a cor.
 
 Etapas necessárias para que se escreva um string with uma cor at o topo of um caixa;
 Etapas necessárias para que se stroke um string with uma cor at o topo of um caixa:
-Coloque o context's letter height dividido por 4 into um square size. \ ***
-\ glyphs are two squares wide mais one square of intercharacter spacing. no spacing at o end.
+Coloque o context's letter altura dividido por 4 into um square size. \ ***
+\ glyphs são two squares wide mais one square of intercharacter spacing. no spacing at o end.
 Coloque o string's length times o square size times 3 menos o square size into um width.
 Divida o width por 2.
 Start in o middle of o topo of o caixa.
-Mova down o context's letter height times 4. \ was times 2 ***
+Mova down o context's letter altura times 4. \ was times 2 ***
 Mova left o width.
 Face north.
 Stroke o string with a cor.
 
 Etapas necessárias para que se escreva um string with uma cor in o middle of um caixa;
 Etapas necessárias para que se stroke um string with uma cor in o middle of um caixa:
-Coloque o context's letter height dividido por 4 into um square size. \ was 4 ***
-\ glyphs are two squares wide mais one square of intercharacter spacing. no spacing at o end.
+Coloque o context's letter altura dividido por 4 into um square size. \ was 4 ***
+\ glyphs são two squares wide mais one square of intercharacter spacing. no spacing at o end.
 Coloque o string's length times o square size times 3 menos o square size into um width.
 Divida o width por 2.
 Start in o middle of o caixa.
-Mova down o context's letter height dividido por 2. \ was 2 ***
+Mova down o context's letter altura dividido por 2. \ was 2 ***
 Mova left o width.
 Face north.
 Stroke o string with a cor.
@@ -17156,8 +17052,8 @@ Etapas necessárias para que se escreva um string with uma cor alguns twips down 
 Etapas necessárias para que se escreva um string with uma cor alguns twips down from o topo center of um caixa;
 Etapas necessárias para que se stroke um string with uma cor alguns twips down from o topo of um caixa;
 Etapas necessárias para que se stroke um string with uma cor alguns twips down from o topo center of um caixa:
-Coloque o context's letter height dividido por 4 into um square size. \ was 4 ***
-\ glyphs are two squares wide mais one square of intercharacter spacing. no spacing at o end.
+Coloque o context's letter altura dividido por 4 into um square size. \ was 4 ***
+\ glyphs são two squares wide mais one square of intercharacter spacing. no spacing at o end.
 Coloque o string's length times o square size times 3 menos o square size into um width.
 Divida o width por 2.
 Start in o middle of o topo of o caixa.
@@ -17167,7 +17063,7 @@ Face north.
 Stroke o string with a cor.
 
 Etapas necessárias para que se escreva um string with uma font e um size e uma cor e um spot:
-Coloque o size into o font's height.
+Coloque o size into o font's altura.
 Coloque o string's width into um width.
 Coloque o spot e o spot into um caixa.
 Subtraia o width dividido por 2 from o caixa's left.
@@ -17188,7 +17084,7 @@ Etapas necessárias para que se use big-size letters;
 Etapas necessárias para que se use big sized letters;
 Etapas necessárias para que se use big-sized letters;
 Etapas necessárias para que se use large letters:
-Coloque o large letter height into o context's letter height.
+Coloque o large letter altura into o context's letter altura.
 
 Etapas necessárias para que se use letras de tamanho médio;
 Etapas necessárias para que se use letras médias;
@@ -17198,7 +17094,7 @@ Etapas necessárias para que se use medium-size letters;
 Etapas necessárias para que se use medium sized letters;
 Etapas necessárias para que se use medium-sized letters;
 Etapas necessárias para que se use medium letters:
-Coloque o medium letter height into o context's letter height.
+Coloque o medium letter altura into o context's letter altura.
 
 Etapas necessárias para que se escreva with small letters;
 Etapas necessárias para que se use small size letters;
@@ -17206,7 +17102,7 @@ Etapas necessárias para que se use small-size letters;
 Etapas necessárias para que se use small sized letters;
 Etapas necessárias para que se use small-sized letters;
 Etapas necessárias para que se use small letters:
-Coloque o small letter height into o context's letter height.
+Coloque o small letter altura into o context's letter altura.
 
 An wsadata é um conjunto with
 An wyrd called wversion,
@@ -17225,7 +17121,7 @@ An xor-mask é um mask.
 
 The tecla Y/y é uma tecla igual a 89.
 
-The yellow cor é uma cor.
+The cor amarela é uma cor.
 
 The yellow pincel é um pincel.
 

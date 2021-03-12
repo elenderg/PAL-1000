@@ -106,7 +106,7 @@ Se o type's target type puder ser reduzido para "coisas", posponha "destroy o " 
 Percorra.
 Obtenha um field from o type's target type's fields.
 Se o field for inexistente, pare.
-Se o field's reference alarme estiver verde, repita.
+Se o field's reference alarme estiver ativo, repita.
 Se o field's type não deveria ser ignorado, repita.
 Posponha "destroy o " then o type's name then "'s " then o field's name then ". " to o routine's body string.
 Repita.
@@ -505,13 +505,13 @@ Se o fragment's tag for o call indirect tag, adicione 8 to o address; exit.
 Se o fragment's tag for o routine address tag, adicione 12 to o address; exit.
 
 Etapas necessárias para que se address um fragment usando um address (epilog):
-Se o rotina selecionada's callback alarme estiver verde, adicione 3 to o address.
+Se o rotina selecionada's callback alarme estiver ativo, adicione 3 to o address.
 Adicione 6 to o address.
 
 Etapas necessárias para que se address um fragment usando um address (prolog):
 Adicione 3 to o address.
 Se o rotina selecionada's local size não for 0, adicione 10 to o address.
-Se o rotina selecionada's callback alarme estiver verde, adicione 3 to o address.
+Se o rotina selecionada's callback alarme estiver ativo, adicione 3 to o address.
 
 Etapas necessárias para que se address um fragment usando um address (push value):
 Adicione 6 to o address.
@@ -574,8 +574,8 @@ An address é um número.
 Etapas necessárias para que se address uma routine usando um address:
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Se a routine for inexistente, cancele.
-Se o routine's employs moniker não estiver em branco, cancele. \ employs are addressed later
-Se o routine's compiled alarme não estiver verde, cancele.
+Se o routine's employs moniker não estiver em branco, cancele. \ employs são addressed later
+Se o routine's compiled alarme não estiver ativo, cancele.
 Coloque o routine into a rotina selecionada.
 Coloque o image base mais o address into o routine's address.
 Address o routine's fragments usando o address.
@@ -591,7 +591,7 @@ Repita.
 Etapas necessárias para que se address uma variable usando um address:
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Se o variable for inexistente, cancele.
-Se o variable's compiled alarme não estiver verde, cancele.
+Se o variable's compiled alarme não estiver ativo, cancele.
 Coloque o image base mais o address into o variable's address.
 Adicione o variable's type's length to o address.
 Se o variable's type puder ser reduzido para "string", adicione o variable's data's length mais 1 to o address.
@@ -625,7 +625,7 @@ Posponha o string to o trecho (with separator).
 Etapas necessárias para que se posponha o global finalizers to um string:
 Obtenha um global from o globals.
 Se o global for inexistente, cancele.
-Se o global's compiled alarme não estiver verde, repita.
+Se o global's compiled alarme não estiver ativo, repita.
 Se o global's type não deveria ser finalizado, repita.
 Posponha "~finalize o " then o global's name then ". " to o string.
 Repita.
@@ -634,7 +634,7 @@ Etapas necessárias para que se posponha o global initializers to um string:
 Obtenha um global from o globals.
 Se o global for inexistente, cancele.
 Se o global's literal for inexistente, repita.
-Se o global's compiled alarme não estiver verde, repita.
+Se o global's compiled alarme não estiver ativo, repita.
 Desative um alarme.
 Posponha o global's initializer string to o string.
 Repita.
@@ -842,7 +842,7 @@ Se o variable's categoria for "literal", attach $C7C2 e o variable's address to 
 Se o variable's categoria for "local", attach $8D95 e o variable's offset to o texto hexadecimal; exit. \ lea edx,[ebp+the variable's offset]
 Se o variable's categoria for "scratch", attach $8B95 e o variable's offset to o texto hexadecimal; exit. \ mov edx,[ebp+the variable's offset]
 Se o variable's categoria não for "parameter", abort with "Erro interno - attach address loading code to um texto hexadecimal usando uma variable"; exit.
-Se o variable's by-value alarme estiver verde, attach $8D95 e o variable's offset to o texto hexadecimal; exit. \ lea edx,[ebp+the variable's offset]
+Se o variable's by-value alarme estiver ativo, attach $8D95 e o variable's offset to o texto hexadecimal; exit. \ lea edx,[ebp+the variable's offset]
 Attach $8B95 e o variable's offset to o texto hexadecimal. \ mov edx,[ebp+the variable's offset]
 
 Etapas necessárias para que se attach um texto hexadecimal e um address to um fragment: \ call ou jump
@@ -918,7 +918,7 @@ Etapas necessárias para que se blurt um pe header into um trecho:
 Blurt pedaços usando o pe header's whereabouts e o pe header's magnitude e o trecho e 256.
 
 Etapas necessárias para que se blurt uma routine into um trecho:
-Se o routine's compiled alarme não estiver verde, cancele.
+Se o routine's compiled alarme não estiver ativo, cancele.
 Blurt o routine's fragments into o trecho.
 
 Etapas necessárias para que se blurt alguns routines into um trecho:
@@ -931,7 +931,7 @@ Etapas necessárias para que se blurt um string into um trecho at um address:
 Blurt pedaços usando o string's first e o string's length e o trecho e o address.
 
 Etapas necessárias para que se blurt uma variable into um trecho:
-Se o variable's compiled alarme não estiver verde, cancele.
+Se o variable's compiled alarme não estiver ativo, cancele.
 Se o variable's type puder ser reduzido para "string", blurt o variable into o trecho (as um string); exit.
 Coloque o variable's address menos o image base into um address.
 Blurt o variable's data into o trecho at o address.
@@ -1073,7 +1073,7 @@ Compile o body of o routine called "finalize after run".
 Etapas necessárias para que se compile o body of uma routine:
 Se a routine for inexistente, cancele.
 Se o alarme de alerta deste compilador foi ativado, cancele.
-Se o routine's compiled alarme estiver verde, cancele.
+Se o routine's compiled alarme estiver ativo, cancele.
 Ligue o routine's compiled alarme.
 Lance um percorredor on o routine's instruções.
 Mova o percorredor (compilador rules).
@@ -1423,8 +1423,8 @@ Ligue o routine's function alarme.
 Adicione um monikette to o routine's monikettes usando "coloque".
 Mova o percorredor (compilador rules).
 Se o token deste percorredor for any indefinite article, acione um alarme.
-Se o alarme estiver verde, compile o routine's monikettes e o routine's parameters usando o percorredor (indefinite article).
-Se o alarme não estiver verde, compile o routine's monikettes e o routine's parameters usando o percorredor (definite article).
+Se o alarme estiver ativo, compile o routine's monikettes e o routine's parameters usando o percorredor (indefinite article).
+Se o alarme não estiver ativo, compile o routine's monikettes e o routine's parameters usando o percorredor (definite article).
 Se o token deste percorredor não for any possessive, abort with "Tá faltando um 's por aqui (ou está no lugar errado)." e o percorredor; exit. \ not translated - no possessives in Spanish
 Mova o percorredor (compilador rules).
 Examine um name usando o percorredor.
@@ -1665,7 +1665,7 @@ Se o token deste percorredor for any string literal, compile o next statement us
 Compile o next statement usando o percorredor (call - indirect). 
 
 Etapas necessárias para que se compile o next statement usando um percorredor (exit):
-Se o rotina selecionada's decider alarme estiver verde, abort with "O que a palvra 'exit' significa aqui? Sim? Não? Talvez?" e o percorredor; exit.
+Se o rotina selecionada's decider alarme estiver ativo, abort with "O que a palvra 'exit' significa aqui? Sim? Não? Talvez?" e o percorredor; exit.
 Adicione um fragment usando o exit tag.
 Mova o percorredor (compilador rules).
 
@@ -1679,10 +1679,10 @@ Se o routine não for inexistente, adicione push fragments usando o monikettes.
 Se a routine for inexistente, convert o monikettes to um moniker.
 Destroy o monikettes.
 Se a routine for inexistente, abort with "Preciso de um decider que tenha como palavras: '" then o moniker then "'." e o percorredor; exit.
-Se o routine's decider alarme não estiver verde, abort with "Cara eu vou precisar de um decider aqui, blz?" e o percorredor; exit.
+Se o routine's decider alarme não estiver ativo, abort with "Cara eu vou precisar de um decider aqui, blz?" e o percorredor; exit.
 Se o token deste percorredor não for o comma pedaço, abort with "Acho que você esqueceu de uma vírgula, eu achei isso aqui: '" then o token deste percorredor then "'." e o percorredor; exit.
 Adicione um fragment usando o call internal tag e o routine.
-Se o alarme estiver verde, adicione another fragment usando o not tag.
+Se o alarme estiver ativo, adicione another fragment usando o not tag.
 Adicione um third fragment usando o jump false tag.
 Mova o percorredor (compilador rules).
 Percorra.
@@ -1777,7 +1777,7 @@ Adicione um fragment usando o repeat tag.
 Mova o percorredor (compilador rules).
 
 \Etapas necessárias para que se compile o next statement usando um percorredor (say):
-\Se o rotina selecionada's decider alarme não estiver verde, compile o next statement usando o percorredor (call - internal); exit.
+\Se o rotina selecionada's decider alarme não estiver ativo, compile o next statement usando o percorredor (call - internal); exit.
 \Mova o percorredor (compilador rules).
 \Compile um expression usando o percorredor.
 \Se o alarme de alerta deste compilador foi ativado, cancele.
@@ -1787,7 +1787,7 @@ Mova o percorredor (compilador rules).
 \Adicione another fragment usando o exit tag.
 
 Etapas necessárias para que se compile o next statement usando um percorredor (say):
-Se o rotina selecionada's decider alarme não estiver verde, compile o next statement usando o percorredor (call - internal); exit.
+Se o rotina selecionada's decider alarme não estiver ativo, compile o next statement usando o percorredor (call - internal); exit.
 Mova o percorredor (compilador rules).
 Se o token deste percorredor não for any decider literal, abort with "Você precisa terminar com um yes ou no." e o percorredor; exit.
 Desative um alarme. Se o token deste percorredor for any positive decider literal, acione o alarme.
@@ -1833,8 +1833,8 @@ Se o alarme de alerta deste compilador foi ativado, cancele.
 Adicione um monikette to o routine reference usando "coloque".
 Mova o percorredor (compilador rules).
 Se o token deste percorredor for any indefinite article, acione um alarme.
-Se o alarme estiver verde, compile o routine reference usando o percorredor (indefinite article).
-Se o alarme não estiver verde, compile o routine reference usando o percorredor (definite article).
+Se o alarme estiver ativo, compile o routine reference usando o percorredor (indefinite article).
+Se o alarme não estiver ativo, compile o routine reference usando o percorredor (definite article).
 Se o token deste percorredor não for any possessive, abort with "Eu estava esperando un 's, mas apareceu '" then o token deste percorredor then "'." e o percorredor; exit. \ not translated - no possessives in Spanish
 Mova o percorredor (compilador rules).
 Examine um name usando o percorredor.
@@ -2033,8 +2033,8 @@ Coloque o token deste percorredor into um article token.
 Mova o percorredor (compilador rules).
 Examine um name usando o percorredor. 
 Se o percorredor está on any reverse-possessive, acione  um reverse-possessive alarme.
-Se o reverse-possessive alarme estiver verde, compile o term usando o percorredor e o name (reverse-possessive).
-Se o reverse-possessive alarme não estiver verde, compile o term usando o percorredor e o name e o article (reverse-possessive preSuspenda to unwind).
+Se o reverse-possessive alarme estiver ativo, compile o term usando o percorredor e o name (reverse-possessive).
+Se o reverse-possessive alarme não estiver ativo, compile o term usando o percorredor e o name e o article (reverse-possessive preSuspenda to unwind).
 Compile o term usando o field name e o percorredor (reverse-possessive).
 
 Etapas necessárias para que se compile um term usando um percorredor e uma variable name e um article token (reverse-possessive preSuspenda to unwind): \ dahn version 2
@@ -2074,7 +2074,7 @@ Compile o term usando o percorredor e o field name (possessive - field).
 
 Etapas necessárias para que se compile um term usando um percorredor e um field term:
 Se o alarme de alerta deste compilador foi ativado, cancele.
-Se o field term's dereference alarme estiver verde, compile o term usando o percorredor (dereference). 
+Se o field term's dereference alarme estiver ativo, compile o term usando o percorredor (dereference). 
 Se o field term's function não for inexistente, compile o term usando o percorredor e o field term (function); exit.
 Se o term's categoria for "scratch", compile o term usando o percorredor e o field term (in place); exit.
 Coloque o field term's field into um field.
@@ -2092,7 +2092,7 @@ Se o parameter for inexistente, abort with "Erro interno na função compile um te
 Se o parameter's type for inexistente, abort with "Erro interno 2 na função compile um term usando um percorredor e um field term (function) - tipo do parâmetro inexistente." e o percorredor; exit.
 Adicione um intermediate usando o parameter's type's name e o percorredor's token's first.
 Adicione um fragment usando o push address tag e o intermediate.
-Se o field term's push alarme estiver verde, adicione another fragment usando o push address tag e o term's variable.
+Se o field term's push alarme estiver ativo, adicione another fragment usando o push address tag e o term's variable.
 Adicione um third fragment usando o call internal tag e o routine.
 Coloque o intermediate into o term's variable.
 Limpe o term's phrase.
@@ -2256,7 +2256,7 @@ The current thunk address é um address.
 
 The data zona é um zona.
 
-Etapas necessárias para que se determine se any of alguns monikettes are negative palavras:
+Etapas necessárias para que se determine se any of alguns monikettes são negative palavras:
 Obtenha um monikette from o monikettes.
 Se o monikette for inexistente, diga não.
 Se o monikette's string for any negative palavra, diga sim.
@@ -3222,8 +3222,8 @@ Se o string for "estiver", diga sim. \ "be"
 Se o string for "estiverem", diga sim. \ "be"
 Se o string for "é", diga sim. \ "is" não for \ isn't: "to be" conjugated in o singular third person (3ps) present, perm.
 Se o string for "está", diga sim. \ "is" não for \ isn't: "to be" conjugated in o singular third person (3ps) present, temp.
-Se o string for "são", diga sim. \ "are" are not \ aren't: "to be" conjugated in o plural third person (3pp) present, perm.
-Se o string for "estão", diga sim. \ "are" are not \ aren't: "to be" conjugated in o plural third person (3pp) present, temp.
+Se o string for "são", diga sim. \ "are" são not \ aren't: "to be" conjugated in o plural third person (3pp) present, perm.
+Se o string for "estão", diga sim. \ "are" são not \ aren't: "to be" conjugated in o plural third person (3pp) present, temp.
 Se o string for "foi", diga sim. \ "was" was not \ wasn't: only used in Noodle (3ps) past, perm.
 Se o string for "estava", diga sim. \ "was" was not \ wasn't: only used in Noodle (3ps) past, temp.
 Se o string for "foram", diga sim. \ "were" were not \ weren't?: not used in CAL (3pp) past, perm.
@@ -3262,7 +3262,7 @@ Se o string for "necessita", diga sim. \ "needs" does not need \ doesn't need: n
 Se o string for "necessitar", diga sim. \ "needs" does not need \ doesn't need: not used in CAL
 Se o string for "requer", diga sim. \ "needs" does not need \ doesn't need: not used in CAL
 \CAL
-Se o string for "are", diga sim. \ are not \ aren't
+Se o string for "are", diga sim. \ são not \ aren't
 Se o string for "be", diga sim. \
 Se o string for "can", diga sim. \ cannot \ can't
 Se o string for "cannot", diga sim. 
@@ -3404,6 +3404,8 @@ Diga não.
 Etapas necessárias para que se determine se um string é any call:
 \PAL
 Se o string for "chame", diga sim.
+\Se o string for "repasse", diga sim.
+\Se o string for "informe", diga sim.
 \CAL
 Se o string for "call", diga sim.
 Diga não.
@@ -3417,7 +3419,7 @@ Diga não.
 
 Etapas necessárias para que se determine se um string é any employ:
 \PAL
-Se o string for "empregar", diga sim.
+Se o string for "empregue", diga sim.
 \CAL
 Se o string for "employ", diga sim.
 Diga não.
@@ -3498,7 +3500,7 @@ Diga sim.
 Etapas necessárias para que se determine se um type puder ser reduzido para um string using o base name:
 Se o type for inexistente, diga não.
 Se o type's name for o string, diga sim.
-Se o type's cooking alarme estiver verde, diga não.
+Se o type's cooking alarme estiver ativo, diga não.
 Ligue o type's cooking alarme.
 Encontre um base type usando o type's base name e o type index.
 Se o base type for inexistente, desative o type's cooking alarme; diga não.
@@ -3914,7 +3916,7 @@ The global index é um index.
 
 An global é uma variable.
 
-The globals are alguns globals.
+The globals são alguns globals.
 
 The image base é um address igual a 4194304 [$00400000].
 
@@ -3934,7 +3936,7 @@ An name,
 An import header,
 Some entries.
 
-The imports are alguns imports.
+The imports são alguns imports.
 
 The increment tag é uma tag igual a 10.
 
@@ -3958,7 +3960,7 @@ Catalogue o partial moniker in o index.
 Etapas necessárias para que se catalogue uma routine por utility use:
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Se a routine for inexistente, cancele.
-Se o routine's function alarme estiver verde, cancele.
+Se o routine's function alarme estiver ativo, cancele.
 Se o routine's parameters' contagem for 0, cancele.
 Copy o routine's monikettes into alguns monikettes.
 Reduce o monikettes por utility use.
@@ -4385,7 +4387,7 @@ The literal index é um index.
 
 An literal é uma variable.
 
-The literals are alguns literals.
+The literals são alguns literals.
 
 The load address tag é uma tag igual a 13.
 
@@ -4473,7 +4475,7 @@ Se o percorredor estiver on any possessive, mova o percorredor (code rules - pos
 Mova o percorredor (code rules - glom).
 
 Etapas necessárias para que se mova um percorredor (compilador rules):
-Se o alarme de alerta deste compilador estiver verde, limpe o percorredor's token; exit.
+Se o alarme de alerta deste compilador estiver ativo, limpe o percorredor's token; exit.
 Mova o percorredor returning um error string (code rules).
 Se o error string não estiver em branco, abort with o error string e o percorredor's token's first; exit.
 \Se o token deste percorredor for "del", unbump o percorredor; exit. \ Spanish contraction "del"; fudged to "de l", short por "de el"
@@ -4511,7 +4513,7 @@ The not tag é uma tag igual a 16.
 
 Etapas necessárias para que se offset o locals in uma routine:
 Se a routine for inexistente, cancele.
-Se o routine's compiled alarme não estiver verde, cancele.
+Se o routine's compiled alarme não estiver ativo, cancele.
 Limpe o routine's local size.
 Percorra.
 Se o alarme de alerta deste compilador foi ativado, cancele.
@@ -4534,15 +4536,15 @@ Repita.
 
 Etapas necessárias para que se offset o parameters in uma routine:
 Se a routine for inexistente, cancele.
-Se o routine's compiled alarme não estiver verde, cancele.
+Se o routine's compiled alarme não estiver ativo, cancele.
 Limpe o routine's parameter size.
 Percorra.
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Obtenha um parameter from o routine's parameters.
 Se o parameter for inexistente, cancele.
-Se o routine's callback alarme estiver verde, acione  o parameter's by-value alarme.
+Se o routine's callback alarme estiver ativo, acione  o parameter's by-value alarme.
 Se o parameter's previous for inexistente, coloque 8 into o parameter's offset. \ skip o return address e saved ebp
-Se o parameter's previous não for inexistente, coloque o parameter's previous' offset mais 4 into o parameter's offset. \ all parameters are 4 pedaço endereço de memórias ou 4 pedaço values por callbacks
+Se o parameter's previous não for inexistente, coloque o parameter's previous' offset mais 4 into o parameter's offset. \ all parameters são 4 pedaço endereço de memórias ou 4 pedaço values por callbacks
 Adicione 4 to o routine's parameter size.
 Repita.
 
@@ -5041,7 +5043,7 @@ Se o type's base type não for inexistente, cancele.
 Encontre o type's base type usando o type's base name e o type index.
 Se o type's base type for inexistente, abort with "Base type inválido:'" then o type's base name then "'." e o type's locus; exit.
 Ligue o type's cooking alarme.
-Se o type's base type's cooking alarme estiver verde, abort with "Definição recursiva com '" then o type's base name then "'." e o type's locus; exit.
+Se o type's base type's cooking alarme estiver ativo, abort with "Definição recursiva com '" then o type's base name then "'." e o type's locus; exit.
 Resolva o type's base type (base type).
 Desative o type's cooking alarme.
 
@@ -5111,9 +5113,9 @@ Se o field for inexistente, pare.
 Se o field é duplicated in o type's fields, abort with "O campo '" then o field's name then "' está definido mais de uma vez." e o field's locus; exit.
 Resolva o field.
 Se o alarme de alerta deste compilador foi ativado, cancele.
-Se o field's type's cooking alarme estiver verde, abort with "Recursive definition no: '" then o field's type's name then "'." e o field's locus; exit.
+Se o field's type's cooking alarme estiver ativo, abort with "Recursive definition no: '" then o field's type's name then "'." e o field's locus; exit.
 Resolva o field's type (optional info). \ de novo
-Se o field's reference alarme não estiver verde, repita.
+Se o field's reference alarme não estiver ativo, repita.
 Se o field's type não puder ser reduzido para "endereço de memória", abort with "Não entendi o parâmetro '(reference)' nesse campo '" then o field's name then "'..." e o field's locus; exit.
 Repita.
 Eliminate duplicate nicknames from o type's fields.
@@ -5132,7 +5134,7 @@ Coloque o base type's base type into o type's base type.
 Etapas necessárias para que se resolva um type (optional info):
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Se o type for inexistente, cancele.
-Se o type's optional info resolved alarme estiver verde, cancele.
+Se o type's optional info resolved alarme estiver ativo, cancele.
 Se o type's base type for o type, cancele. \ por built in types
 Check por invalid optional info on o type.
 Ligue o type's cooking alarme.
@@ -5221,7 +5223,7 @@ An address.
 
 An routine reference é alguns monikettes.
 
-The routines are alguns routines.
+The routines são algumas routines.
 
 The save eax tag é uma tag igual a 20.
 
@@ -5482,9 +5484,9 @@ Adicione o type to o types usando o percorredor's token's first.
 Mova o percorredor (compilador rules).
 Examine o type's name usando o percorredor.
 Coloque o type's name into o type's plural name.
-Se o portuguese alarme estiver verde, pluralize o type's plural name (portuguese rules).
-Se o english alarme estiver verde, pluralize o type's plural name (english rules).
-Se o english alarme não estiver verde, pluralize o type's plural name (portuguese rules).
+Se o portuguese alarme estiver ativo, pluralize o type's plural name (portuguese rules).
+Se o english alarme estiver ativo, pluralize o type's plural name (english rules).
+Se o english alarme não estiver ativo, pluralize o type's plural name (portuguese rules).
 Se o token deste percorredor for any has, examine o type usando o percorredor (has ou have); exit.
 Se o token deste percorredor não for any is, abort with "Eu esperava um 'is' ou um 'are', mas só achei um : '" then o token deste percorredor then "'." e o percorredor; exit.
 \Pluralize o type's plural name.
@@ -5544,7 +5546,7 @@ Repita.
 Etapas necessárias para que se ative o compiled alarme in uma variable;
 Etapas necessárias para que se ligue o compiled alarme in uma variable:
 Se o variable for inexistente, cancele.
-Se o variable's compiled alarme estiver verde, cancele.
+Se o variable's compiled alarme estiver ativo, cancele.
 Ligue o variable's compiled alarme.
 Se o variable's categoria não for "global", cancele.
 Se o variable's literal for inexistente, cancele.
@@ -5552,8 +5554,8 @@ Encontre uma routine usando "coloque" e o variable's literal's type e "into" e o
 Se a routine for inexistente, encontre o routine usando "convert" e o variable's literal's type e "to" e o variable's type; acione um alarme.
 Se a routine for inexistente, abort with "O tipo dessa variável global e desse literal não são compatíveis." e o variable's locus; exit.
 Compile o body of o routine.
-Se o alarme estiver verde, coloque "convert o " then o variable's literal's name then " to o " then o variable's name then ". " into o variable's initializer string.
-Se o alarme não estiver verde, coloque "coloque o " then o variable's literal's name then " into o " then o variable's name then ". " into o variable's initializer string.
+Se o alarme estiver ativo, coloque "convert o " then o variable's literal's name then " to o " then o variable's name then ". " into o variable's initializer string.
+Se o alarme não estiver ativo, coloque "coloque o " then o variable's literal's name then " into o " then o variable's name then ". " into o variable's initializer string.
 
 Etapas necessárias para que se skip to o next palavra in um subtexto:
 Se o subtexto estiver em branco, cancele.
@@ -5571,7 +5573,7 @@ Skip any trailing noise in o subtexto.
 
 An source file é uma coisa with um path e um trecho.
 
-The source files are alguns source files.
+The source files são alguns source files.
 
 An tag é um número.
 
@@ -5625,7 +5627,7 @@ Attach $8B12 to o fragment's code. \ mov edx,[edx]
 Attach $8995 e o fragment's variable's offset to o fragment's code. \ mov [ebp+the fragment's variable's offset],edx
 
 Etapas necessárias para que se transmogrify um fragment (epilog):
-Se o rotina selecionada's callback alarme estiver verde, attach $5F5E5B to o fragment's code. \ pop edi, esi, ebx
+Se o rotina selecionada's callback alarme estiver ativo, attach $5F5E5B to o fragment's code. \ pop edi, esi, ebx
 Attach $8BE5 to o fragment's code. \ mov esp,ebp
 Attach $5D to o fragment's code. \ pop ebp
 Attach $C2 e o rotina selecionada's parameter size to o fragment's code. \ ret o rotina selecionada's parameter size
@@ -5673,7 +5675,7 @@ Attach $55 to o fragment's code. \ push ebp
 Attach $8BEC to o fragment's code. \ mov ebp,esp
 Coloque o rotina selecionada's local size dividido por 4 into um número.
 Se o número não for 0, attach $B9 e o número e $6A004975FB to o fragment's code. \ mov ecx,number; loop: push 0; dec ecx; jnz loop
-Se o rotina selecionada's callback alarme estiver verde, attach $535657 to o fragment's code. \ push ebx, esi, edi
+Se o rotina selecionada's callback alarme estiver ativo, attach $535657 to o fragment's code. \ push ebx, esi, edi
 
 Etapas necessárias para que se transmogrify um fragment (push address):
 Attach address loading code to o fragment's code usando o fragment's variable. \ coloque address into edx
@@ -5721,7 +5723,7 @@ Etapas necessárias para que se transmogrify uma routine:
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Se a routine for inexistente, cancele.
 Se o routine's employs moniker não estiver em branco, cancele.
-Se o routine's compiled alarme não estiver verde, cancele.
+Se o routine's compiled alarme não estiver ativo, cancele.
 Coloque o routine into a rotina selecionada.
 Transmogrify o routine's fragments.
 
@@ -5750,7 +5752,7 @@ An optional info resolved alarme.
 
 An type name é um name.
 
-The types are alguns types.
+The types são alguns types.
 
 The utility index é um index.
 
@@ -5791,8 +5793,8 @@ Mova o percorredor (compilador rules). \ skip "the" ou Portuguese definite artic
 Examine um name usando o percorredor. \ field name
 Mova o percorredor (compilador rules). \ skip "uv" ou "de"
 Se o token deste percorredor for any indefinite article, acione um alarme.
-Se o alarme estiver verde, compile o routine's monikettes e o routine's parameters usando o percorredor (indefinite article).
-Se o alarme não estiver verde, compile o routine's monikettes e o routine's parameters usando o percorredor (definite article).
+Se o alarme estiver ativo, compile o routine's monikettes e o routine's parameters usando o percorredor (indefinite article).
+Se o alarme não estiver ativo, compile o routine's monikettes e o routine's parameters usando o percorredor (definite article).
 Adicione another monikette to o routine's monikettes usando "'s " then o name.
 Se o token deste percorredor não for any reverse-possessive function into, abort with "Esperava a palavra 'em', mas encontrei '" then o token deste percorredor then "'." e o percorredor; exit.
 Adicione um third monikette to o routine's monikettes usando "into".
@@ -5809,7 +5811,7 @@ Catalogue o routine usando o routine's monikettes e o routine index. \ por emplo
 \ dahn - reverse functions
 \ to coloque o xxx uv a/the yyy into zzz
 Etapas necessárias para que se determine se um percorredor é o start of any reverse-possessive function:
-Se o alarme de alerta deste compilador estiver verde, diga não.
+Se o alarme de alerta deste compilador estiver ativo, diga não.
 Se o token deste percorredor não for any coloque, diga não.
 Isole o percorredor.
 Mova o percorredor (compilador rules).
