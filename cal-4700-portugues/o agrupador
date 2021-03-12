@@ -40,7 +40,7 @@ Se o target type deste type for inexistente, cancele.
 Adicione uma routine to o routines usando nil.
 Posponha "allocate memory por um " then o name deste type to o header string desta routine. \ traduzir aqui
 Posponha "assign o " then o name deste type then " usando " to o body string desta routine.
-Posponha o type's target type's length then "." to o body string desta routine.
+Posponha o length deste target type deste type then "." to o body string desta routine.
 Lance o routine header desta routine on o header string desta routine.
 Lance as instruções desta routine on o body string desta routine.
 Compile o header of o routine.
@@ -106,9 +106,9 @@ Se o target type deste type puder ser reduzido para "coisas", posponha "destroy 
 Percorra.
 Obtenha um field from os fields deste target type deste type.
 Se o field for inexistente, pare.
-Se o field's reference alarme estiver ativo, repita.
-Se o field's type não deveria ser ignorado, repita.
-Posponha "destroy o " then o name deste type then "'s " then o field's name then ". " to o body string desta routine.
+Se o reference alarme deste field estiver ativo, repita.
+Se o type deste field não deveria ser ignorado, repita.
+Posponha "destroy o " then o name deste type then "'s " then o name deste field then ". " to o body string desta routine.
 Repita.
 Posponha "deallocate o " then o name deste type then ". " to o body string desta routine. \ traduzir aqui
 Lance o routine header desta routine on o header string desta routine.
@@ -119,14 +119,14 @@ Etapas necessárias para que se adicione o destroy routine por um type (coisas):
 Se o type for inexistente, cancele.
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Coloque "Erro interno na hora de executar a tarefa de destruição de tipos" into a reply.
-Se o type's fields' first for inexistente, abort with "Erro interno na rotina 'adicione um forget routine por um type (coisas)'"; [Say o reply;] exit. \Adicionado Say o reply
-Se o type's fields' first's type for inexistente, abort with "Erro interno 2 na rotina 'adicione o forget routine por um type (coisas)'"; exit.
+Se o first deste fields deste type for inexistente, abort with "Erro interno na rotina 'adicione um forget routine por um type (coisas)'"; [Say o reply;] exit. \Adicionado Say o reply
+Se o type deste first deste fields deste type for inexistente, abort with "Erro interno 2 na rotina 'adicione o forget routine por um type (coisas)'"; exit.
 Coloque "destroy [" then o name deste type then "]" into um moniker.
 Se o moniker estiver in o routine index, cancele.
 Adicione uma routine to o routines usando nil.
 Posponha "destroy um " then o name deste type to o header string desta routine.
 Posponha "if o " then o name deste type then "'s first for inexistente, cancele. " to o body string desta routine.
-Coloque o type's fields' first's type's name into um name.
+Coloque o name deste type deste first deste fields deste type into um name.
 Posponha "coloque o " then o name deste type then "'s first into um " then o name then ". " to o body string desta routine.
 Posponha "remove o " then o name then " from o " then o name deste type then ". " to o body string desta routine.
 Posponha "destroy o " then o name then ". " to o body string desta routine.
@@ -138,18 +138,18 @@ Compile o header of o routine.
 Etapas necessárias para que se adicione um entry to alguns imports usando um import name e um entry name:
 Encontre um import usando o import name.
 Se o import for inexistente, adicione o import to o imports usando o import name.
-Encontre o entry usando o entry name e o import's entries.
+Encontre o entry usando o entry name e as entries deste import.
 Se o entry não for inexistente, cancele.
 Crie o entry.
-Posponha o entry to o import's entries.
-Coloque o entry name into o entry's name.
+Posponha o entry to as entries deste import.
+Coloque o entry name into o name desta entry.
 
 Etapas necessárias para que se adicione um field to alguns fields usando um name e um nickname e um type name e um reference alarme:
 Adicione o field to o fields usando "field" e nil.
-Coloque o name into o field's name.
+Coloque o name into o name deste field.
 Coloque o nickname into o field's nickname.
-Coloque o type name into o field's type name.
-Coloque o reference alarme into o field's reference alarme.
+Coloque o type name into o type name deste field.
+Coloque o reference alarme into o reference alarme deste field.
 
 Etapas necessárias para que se adicione o finalize routine por um type:
 Se o type for inexistente, cancele.
@@ -168,8 +168,8 @@ Posponha "intel $50. " to o body string desta routine. \ push eax
 Percorra.
 Obtenha um field from o type's fields.
 Se o field for inexistente, pare.
-Se o field's type não deveria ser finalizado, repita.
-Posponha "~finalize o " then o name deste type then "'s " then o field's name then ". " to o body string desta routine.
+Se o type deste field não deveria ser finalizado, repita.
+Posponha "~finalize o " then o name deste type then "'s " then o name deste field then ". " to o body string desta routine.
 Repita.
 Posponha "intel $58." to o body string desta routine. \ pop eax
 Lance o routine header desta routine on o header string desta routine.
@@ -453,7 +453,7 @@ Crie o type.
 Posponha o type to o types.
 Coloque o locus into o type's locus.
 Coloque o name into o type's name.
-Coloque o plural name into o type's plural name.
+Coloque o plural name into o plural name deste type.
 Coloque o base name into o type's base name.
 
 Etapas necessárias para que se adicione uma variable to alguns variables usando um categoria e um locus:
@@ -472,8 +472,8 @@ Address o entry.
 Repita.
 
 Etapas necessárias para que se address um entry:
-Coloque o endereço do nome usado atualmente into o entry's name address.
-Coloque o entry's name's length mais 3 into um número.
+Coloque o endereço do nome usado atualmente into o  name address desta entry.
+Coloque o length deste name deste entry mais 3 into um número.
 Round o número up to o nearest multiple of 2.
 Adicione o número to o endereço do nome usado atualmente.
 Coloque o current thunk address into o entry's thunk address.
@@ -549,7 +549,7 @@ Round o número up to o nearest multiple of 2.
 Adicione o número to o endereço do nome usado atualmente.
 Adicione um import header's magnitude to o endereço do cabeçalho usado atualmente.
 Coloque o current thunk address into o import's import header's first thunk memory address.
-Address o import's entries.
+Address as entries deste import.
 Adicione 4 to o current thunk address.
 
 Etapas necessárias para que se address alguns imports usando um address:
@@ -616,7 +616,7 @@ Advance o trecho.
 
 Etapas necessárias para que se posponha um entry to um trecho (with separator):
 Se o entry for inexistente, posponha "" to o trecho (with separator); exit.
-Posponha o entry's name to o trecho (with separator).
+Posponha o name desta entry to o trecho (with separator).
 
 Etapas necessárias para que se posponha um alarme to um trecho (with separator):
 Convert o alarme to um string.
@@ -888,9 +888,9 @@ Blurt o entry into o trecho.
 Repita.
 
 Etapas necessárias para que se blurt um entry into um trecho:
-Blurt pedaços usando o entry's name address's whereabouts e 4 e o trecho e o entry's thunk address.
-Coloque o entry's name address mais 2 into um address.
-Blurt o entry's name into o trecho at o address.
+Blurt pedaços usando o whereabouts deste name address desta entry e 4 e o trecho e o thunk address desta entry.
+Coloque o name address desta entry mais 2 into um address.
+Blurt o name desta entry into o trecho at o address.
 
 Etapas necessárias para que se blurt um fragment into um trecho:
 Se o fragment's code estiver em branco, cancele.
@@ -906,7 +906,7 @@ Repita.
 Etapas necessárias para que se blurt um import into um trecho:
 Blurt pedaços usando o import's import header's whereabouts e o import's import header's magnitude e o trecho e o import's header address.
 Blurt o import's name into o trecho at o import's name address.
-Blurt o import's entries into o trecho.
+Blurt as entries deste import into o trecho.
 
 Etapas necessárias para que se blurt alguns imports into um trecho:
 Obtenha um import from o imports.
@@ -2101,7 +2101,7 @@ Etapas necessárias para que se compile um term usando um percorredor e um field 
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Coloque o field term's field into um field.
 Coloque o field's type's name into o term's type name.
-Coloque o field's type into o term's type.
+Coloque o type deste field into o term's type.
 Se o field's offset não for 0, adicione um third fragment usando o increment tag e o term's variable e o field's offset.
 Limpe o term's phrase.
 
@@ -2117,7 +2117,7 @@ Percorra.
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Obtenha um field from o type's fields.
 Se o field for inexistente, abort with "Não tem nenhum campo '" then o name then "' no tipo '" then o term's type's name then "'." e o percorredor; exit.
-Encontre um deep field term usando "" e o field's type e o name.
+Encontre um deep field term usando "" e o type deste field e o name.
 Se o deep field term estiver vazio, repita.
 Coloque o field into um first field term's field.
 Se o term's type puder ser reduzido para "endereço de memória", acione  o first field term's dereference alarme.
@@ -2166,13 +2166,13 @@ Etapas necessárias para que se copy um field into another field:
 Se o field for inexistente, esvazie o other field; exit.
 Allocate memory por o other field.
 Coloque o field's locus into o other field's locus.
-Coloque o field's name into o other field's name.
+Coloque o name deste field into o other field's name.
 Coloque o field's nickname into o other field's nickname.
-Coloque o field's type name into o other field's type name.
-Coloque o field's type into o other field's type.
+Coloque o type name deste field into o other field's type name.
+Coloque o type deste field into o other field's type.
 Coloque o field's contagem into o other field's contagem.
 Coloque o field's redefinition target name into o other field's redefinition target name.
-Coloque o field's reference alarme into o other field's reference alarme.
+Coloque o reference alarme deste field into o other field's reference alarme.
 Coloque o field's offset into o other field's offset.
 
 Etapas necessárias para que se copy alguns fields into alguns other fields:
@@ -2322,7 +2322,7 @@ Diga sim.
 Etapas necessárias para que se determine se alguns fields deveria ser finalizado:
 Obtenha um field from o fields.
 Se o field for inexistente, diga não.
-Se o field's type deveria ser finalizado, diga sim.
+Se o type deste field deveria ser finalizado, diga sim.
 Repita.
 
 Etapas necessárias para que se determine se um item looks reamish:
@@ -2679,6 +2679,8 @@ Etapas necessárias para que se determine se um string é any pronome demonstrativ
 \CEL
 Se o string for "este", diga sim.
 Se o string for "esta", diga sim.
+Se o string for "estes", diga sim.
+Se o string for "estas", diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um string é any pronome demonstrativo abrangente:
@@ -2687,6 +2689,10 @@ Se o string for "esse", diga sim.
 Se o string for "essa", diga sim.
 Se o string for "aquele", diga sim.
 Se o string for "aquela", diga sim.
+Se o string for "esses", diga sim.
+Se o string for "essas", diga sim.
+Se o string for "aqueles", diga sim.
+Se o string for "aquelas", diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um percorredor está on any definite article:
@@ -3664,7 +3670,7 @@ Esvazie o entry.
 Percorra.
 Obtenha o entry from o entries.
 Se o entry for inexistente, cancele.
-Se o entry's name for o string, cancele.
+Se o name desta entry for o string, cancele.
 Repita.
 
 Etapas necessárias para que se encontre um field term usando um phrase e um type e um name:
@@ -3917,7 +3923,7 @@ Coloque 0 into o contagem.
 Percorra.
 Obtenha um import from o imports.
 Se o import for inexistente, cancele.
-Adicione o import's entries' contagem to o contagem.
+Adicione a contagem desta entries deste import to o contagem.
 Adicione 1 to o contagem.
 Repita.
 
@@ -4186,8 +4192,8 @@ Repita.
 Etapas necessárias para que se list um entry in um trecho:
 Se o entry for inexistente, cancele.
 Posponha "/entry" to o trecho (with separator).
-Posponha o entry's name to o trecho (with separator).
-Posponha o entry's address to o trecho (as hex with separator).
+Posponha o name desta entry to o trecho (with separator).
+Posponha o address desta entry to o trecho (as hex with separator).
 Advance o trecho.
 
 Etapas necessárias para que se list um fragment in um trecho:
@@ -4214,7 +4220,7 @@ Se o import for inexistente, cancele.
 Posponha "/import" to o trecho (with separator).
 Posponha o import's name to o trecho (with separator).
 Advance o trecho.
-List o import's entries in o trecho.
+List as entries deste import in o trecho.
 Advance o trecho.
 
 Etapas necessárias para que se list alguns imports in um trecho:
@@ -4339,7 +4345,7 @@ Etapas necessárias para que se list um type in um trecho:
 Se o type for inexistente, cancele.
 Posponha "/type" to o trecho (with separator).
 Posponha o name deste type to o trecho (with separator).
-Posponha o type's plural name to o trecho (with separator).
+Posponha o plural name deste type to o trecho (with separator).
 Posponha o type's length to o trecho (as hex with separator).
 Posponha o type's base name to o trecho (with separator).
 Posponha o type's base type to o trecho (with separator).
@@ -5018,7 +5024,7 @@ Se o alarme de alerta deste compilador foi ativado, cancele.
 Se o field for inexistente, cancele.
 Resolva o field como uma variable.
 Se o field's nickname não for any valid field name, limpe o field's nickname.
-Se o field's name não for any valid field name, abort with "'" then o field's name then "' é um field name inválido." e o field's locus; exit.
+Se o name deste field não for any valid field name, abort with "'" then o name deste field then "' é um field name inválido." e o field's locus; exit.
 
 Etapas necessárias para que se resolva um global:
 Se o global for inexistente, cancele.
@@ -5087,7 +5093,7 @@ Catalogue o conjunto type.
 \ fix up original type to look like um endereço de memória
 Coloque o name deste conjunto type  into o target name deste type.
 \ adicione chain type
-Adicione um chain type to o types usando o type's plural name e "" e o base type's plural name.
+Adicione um chain type to o types usando o plural name deste type e "" e o plural name deste base type.
 Adicione um third field to o chain type's fields usando "first " then o name deste type e "first" e o name deste type e o alarme de ignição.
 Adicione um third portuguese field to o chain type's fields usando "primeiro " then o name deste type e "primeiro" e o name deste type e o alarme de ignição.
 Coloque "first " then o name deste type into o third portuguese field's redefinition target name.
@@ -5103,9 +5109,9 @@ Catalogue o chain type.
 Etapas necessárias para que se resolva um type (registro de plurais):
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Se o type for inexistente, cancele.
-Se o type's plural name estiver em branco, cancele.
+Se o plural name deste type estiver em branco, cancele.
 Se o type puder ser reduzido para "coisa" using o base name, cancele.
-Catalogue o type usando o type's plural name.
+Catalogue o type usando o plural name deste type.
 
 Etapas necessárias para que se resolva um type (optional info - endereço de memória):
 Se o alarme de alerta deste compilador foi ativado, cancele.
@@ -5121,13 +5127,13 @@ Percorra.
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Obtenha um field from o type's fields (backwards).
 Se o field for inexistente, pare.
-Se o field é duplicated in o type's fields, abort with "O campo '" then o field's name then "' está definido mais de uma vez." e o field's locus; exit.
+Se o field é duplicated in o type's fields, abort with "O campo '" then o name deste field then "' está definido mais de uma vez." e o field's locus; exit.
 Resolva o field.
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Se o field's type's cooking alarme estiver ativo, abort with "Recursive definition no: '" then o field's type's name then "'." e o field's locus; exit.
-Resolva o field's type (optional info). \ de novo
-Se o field's reference alarme não estiver ativo, repita.
-Se o field's type não puder ser reduzido para "endereço de memória", abort with "Não entendi o parâmetro '(reference)' nesse campo '" then o field's name then "'..." e o field's locus; exit.
+Resolva o type deste field (optional info). \ de novo
+Se o reference alarme deste field não estiver ativo, repita.
+Se o type deste field não puder ser reduzido para "endereço de memória", abort with "Não entendi o parâmetro '(reference)' nesse campo '" then o name deste field then "'..." e o field's locus; exit.
 Repita.
 Eliminate duplicate nicknames from o type's fields.
 Se o type não puder ser reduzido para "coisa conjunto", cancele.
@@ -5274,8 +5280,8 @@ Se o token deste percorredor for any reference, examine o field usando o percorr
 Etapas necessárias para que se examine um field usando um percorredor (called part):
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Mova o percorredor (compilador rules).
-Se o field's type name estiver em branco, coloque o field's name into o field's type name. \ pedaço array type name already filled in
-Examine o field's name usando o percorredor.
+Se o type name deste field estiver em branco, coloque o name deste field into o type name deste field. \ pedaço array type name already filled in
+Examine o name deste field usando o percorredor.
 
 Etapas necessárias para que se examine um field usando um percorredor (redefine part):
 Se o alarme de alerta deste compilador foi ativado, cancele.
@@ -5287,7 +5293,7 @@ Examine o field's redefinition target name usando o percorredor.
 Etapas necessárias para que se examine um field usando um percorredor (reference part):
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Mova o percorredor (compilador rules).
-Ligue o field's reference alarme.
+Ligue o reference alarme deste field.
 
 Etapas necessárias para que se examine um field usando um percorredor (type part - pedaço array):
 Se o alarme de alerta deste compilador foi ativado, cancele.
@@ -5298,18 +5304,18 @@ Coloque o ratio's numerador into o field's contagem.
 Mova o percorredor (compilador rules).
 Se o token deste percorredor não for "pedaço" ou "pedaços", abort with "Você precisa usar a palavra 'pedaços' depois de um counted field designador." e o percorredor; exit.
 Mova o percorredor (compilador rules).
-Coloque "pedaço" into o field's type name.
+Coloque "pedaço" into o type name deste field.
 
 Etapas necessárias para que se examine um field usando um percorredor (type part - normal):
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Se o token deste percorredor não for any indefinite article, abort with "Falta por um artigo idefinido aqui, mas você colocou isso: '" then o token deste percorredor then "'." e o percorredor; exit.
-Se o token deste percorredor for "another", coloque "other" into o field's name.
+Se o token deste percorredor for "another", coloque "other" into o name deste field.
 \PAL
-Se o token deste percorredor for "outra", coloque "segunda" into o field's name.
-Se o token deste percorredor for "outro", coloque "segundo" into o field's name.
+Se o token deste percorredor for "outra", coloque "segunda" into o name deste field.
+Se o token deste percorredor for "outro", coloque "segundo" into o name deste field.
 Mova o percorredor (compilador rules).
 Examine um name usando o percorredor.
-Extend o field's name with o name.
+Extend o name deste field with o name.
 
 Etapas necessárias para que se examine um field usando um percorredor (type part):
 Se o alarme de alerta deste compilador foi ativado, cancele.
@@ -5494,13 +5500,13 @@ Se o token deste percorredor for any english indefinite article, acione  um engl
 Adicione o type to o types usando o percorredor's token's first.
 Mova o percorredor (compilador rules).
 Examine o name deste type usando o percorredor.
-Coloque o name deste type into o type's plural name.
-Se o portuguese alarme estiver ativo, pluralize o type's plural name (portuguese rules).
-Se o english alarme estiver ativo, pluralize o type's plural name (english rules).
-Se o english alarme não estiver ativo, pluralize o type's plural name (portuguese rules).
+Coloque o name deste type into o plural name deste type.
+Se o portuguese alarme estiver ativo, pluralize o plural name deste type (portuguese rules).
+Se o english alarme estiver ativo, pluralize o plural name deste type (english rules).
+Se o english alarme não estiver ativo, pluralize o plural name deste type (portuguese rules).
 Se o token deste percorredor for any has, examine o type usando o percorredor (has ou have); exit.
 Se o token deste percorredor não for any is, abort with "Eu esperava um 'is' ou um 'are', mas só achei um : '" then o token deste percorredor then "'." e o percorredor; exit.
-\Pluralize o type's plural name.
+\Pluralize o plural name deste type.
 \Se o token deste percorredor for "has" ou "have", examine o type usando o percorredor (has ou have); exit.
 \Se o token deste percorredor não for "is" ou "are", abort with "I was expecting um 'is' ou 'are', but I found '" then o token deste percorredor then "'." e o percorredor; exit.
 
