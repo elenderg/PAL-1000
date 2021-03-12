@@ -19,8 +19,8 @@ Extract um nome do arquivo from o abort endereço completo deste compilador.
 Anteponha "Erro no " then o nome do arquivo then ". " to a mensagem de erro deste compilador.
 
 Etapas necessárias para que se abort with um string e um percorredor:
-Se o token deste percorredor não estiver em branco, abort with o string e o percorredor's token's first; exit.
-Abort with o string e o percorredor's source's last.
+Se o token deste percorredor não estiver em branco, abort with o string e o first deste token deste percorredor; exit.
+Abort with o string e o last deste source deste percorredor.
 
 Etapas necessárias para que se adicione o allocate e deallocate e finalize e destroy routines:
 Se o alarme de alerta deste compilador foi ativado, cancele.
@@ -36,27 +36,27 @@ Etapas necessárias para que se adicione o allocate routine por um type:
 Se o type for inexistente, cancele.
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Se o type não puder ser reduzido para "endereço de memória", cancele.
-Se o type's target type for inexistente, cancele.
+Se o target type deste type for inexistente, cancele.
 Adicione uma routine to o routines usando nil.
-Posponha "allocate memory por um " then o type's name to o routine's header string. \ traduzir aqui
-Posponha "assign o " then o type's name then " usando " to o routine's body string.
-Posponha o type's target type's length then "." to o routine's body string.
-Lance o routine's routine header on o routine's header string.
-Lance as instruções desta routine on o routine's body string.
+Posponha "allocate memory por um " then o name deste type to o header string desta routine. \ traduzir aqui
+Posponha "assign o " then o name deste type then " usando " to o body string desta routine.
+Posponha o type's target type's length then "." to o body string desta routine.
+Lance o routine header desta routine on o header string desta routine.
+Lance as instruções desta routine on o body string desta routine.
 Compile o header of o routine.
 
 Etapas necessárias para que se adicione e compile o initialize before run e run e finalize after run routine:
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Adicione uma routine to o routines usando nil.
-Posponha "~initialize before run e run e finalize after run" to o routine's header string.
-Posponha "initialize before run. " to o routine's body string.
-Posponha o global initializers to o routine's body string.
-Posponha "nosso programa seja executado. " to o routine's body string. \ traduzir
-Posponha o global finalizers to o routine's body string.
-Posponha "finalize after run. " to o routine's body string.
-Posponha "call ""kernel32.dll"" ""ExitProcess"" with 0. " to o routine's body string.
-Lance o routine's routine header on o routine's header string.
-Lance as instruções desta routine on o routine's body string.
+Posponha "~initialize before run e run e finalize after run" to o header string desta routine.
+Posponha "initialize before run. " to o body string desta routine.
+Posponha o global initializers to o body string desta routine.
+Posponha "nosso programa seja executado. " to o body string desta routine. \ traduzir
+Posponha o global finalizers to o body string desta routine.
+Posponha "finalize after run. " to o body string desta routine.
+Posponha "call ""kernel32.dll"" ""ExitProcess"" with 0. " to o body string desta routine.
+Lance o routine header desta routine on o header string desta routine.
+Lance as instruções desta routine on o body string desta routine.
 Compile o header of o routine.
 Compile o body of o routine.
 
@@ -68,22 +68,22 @@ Adicione um fourth built-in type usando "conjunto" e "conjuntos" e 0.
 
 Etapas necessárias para que se adicione um built-in type usando um name e um plural name e um length:
 Adicione o built-in type to o types usando o name e o plural name e o name.
-Coloque o length into o built-in type's length.
-Coloque o built-in type into o built-in type's base type.
+Coloque o length into o length deste built-in type.
+Coloque o built-in type into o base type deste built-in type.
 Catalogue o built-in type.
 
 Etapas necessárias para que se adicione o deallocate routine por um type:
 Se o type for inexistente, cancele.
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Se o type não puder ser reduzido para "endereço de memória", cancele.
-Se o type's target type for inexistente, cancele.
+Se o target type deste type for inexistente, cancele.
 Adicione uma routine to o routines usando nil.
-Posponha "deallocate um " then o type's name to o routine's header string.
-Posponha "if o " then o type's name then " for inexistente, cancele. " to o routine's body string.
-Se o type's target type deveria ser [estar] finalizado, posponha "~finalize o " then o type's name then "'s target. " to o routine's body string.
-Posponha "unassign o " then o type's name then "." to o routine's body string.
-Lance o routine's routine header on o routine's header string.
-Lance as instruções desta routine on o routine's body string.
+Posponha "deallocate um " then o name deste type to o header string desta routine.
+Posponha "if o " then o name deste type then " for inexistente, cancele. " to o body string desta routine.
+Se o target type deste type deveria ser [estar] finalizado, posponha "~finalize o " then o name deste type then "'s target. " to o body string desta routine.
+Posponha "unassign o " then o name deste type then "." to o body string desta routine.
+Lance o routine header desta routine on o header string desta routine.
+Lance as instruções desta routine on o body string desta routine.
 Compile o header of o routine.
 
 Etapas necessárias para que se adicione o destroy routine por um type:
@@ -96,23 +96,23 @@ Se o type puder ser reduzido para "endereço de memória", adicione o destroy rout
 Etapas necessárias para que se adicione o destroy routine por um type (endereço de memória):
 Se o type for inexistente, cancele.
 Se o alarme de alerta deste compilador foi ativado, cancele.
-Coloque "destroy [" then o type's name then "]" into um moniker.
+Coloque "destroy [" then o name deste type then "]" into um moniker.
 Se o moniker estiver in o routine index, cancele.
 Adicione uma routine to o routines usando nil.
-Posponha "destroy um " then o type's name to o routine's header string.
-Posponha "if o " then o type's name then " for inexistente, cancele. " to o routine's body string.
-Se o type's target type puder ser reduzido para "endereço de memória", posponha "destroy o " then o type's name then "'s target. " to o routine's body string.
-Se o type's target type puder ser reduzido para "coisas", posponha "destroy o " then o type's name then "'s target. " to o routine's body string.
+Posponha "destroy um " then o name deste type to o header string desta routine.
+Posponha "if o " then o name deste type then " for inexistente, cancele. " to o body string desta routine.
+Se o target type deste type puder ser reduzido para "endereço de memória", posponha "destroy o " then o name deste type then "'s target. " to o body string desta routine.
+Se o target type deste type puder ser reduzido para "coisas", posponha "destroy o " then o name deste type then "'s target. " to o body string desta routine.
 Percorra.
-Obtenha um field from o type's target type's fields.
+Obtenha um field from os fields deste target type deste type.
 Se o field for inexistente, pare.
 Se o field's reference alarme estiver ativo, repita.
 Se o field's type não deveria ser ignorado, repita.
-Posponha "destroy o " then o type's name then "'s " then o field's name then ". " to o routine's body string.
+Posponha "destroy o " then o name deste type then "'s " then o field's name then ". " to o body string desta routine.
 Repita.
-Posponha "deallocate o " then o type's name then ". " to o routine's body string. \ traduzir aqui
-Lance o routine's routine header on o routine's header string.
-Lance as instruções desta routine on o routine's body string.
+Posponha "deallocate o " then o name deste type then ". " to o body string desta routine. \ traduzir aqui
+Lance o routine header desta routine on o header string desta routine.
+Lance as instruções desta routine on o body string desta routine.
 Compile o header of o routine.
 
 Etapas necessárias para que se adicione o destroy routine por um type (coisas):
@@ -121,18 +121,18 @@ Se o alarme de alerta deste compilador foi ativado, cancele.
 Coloque "Erro interno na hora de executar a tarefa de destruição de tipos" into a reply.
 Se o type's fields' first for inexistente, abort with "Erro interno na rotina 'adicione um forget routine por um type (coisas)'"; [Say o reply;] exit. \Adicionado Say o reply
 Se o type's fields' first's type for inexistente, abort with "Erro interno 2 na rotina 'adicione o forget routine por um type (coisas)'"; exit.
-Coloque "destroy [" then o type's name then "]" into um moniker.
+Coloque "destroy [" then o name deste type then "]" into um moniker.
 Se o moniker estiver in o routine index, cancele.
 Adicione uma routine to o routines usando nil.
-Posponha "destroy um " then o type's name to o routine's header string.
-Posponha "if o " then o type's name then "'s first for inexistente, cancele. " to o routine's body string.
+Posponha "destroy um " then o name deste type to o header string desta routine.
+Posponha "if o " then o name deste type then "'s first for inexistente, cancele. " to o body string desta routine.
 Coloque o type's fields' first's type's name into um name.
-Posponha "coloque o " then o type's name then "'s first into um " then o name then ". " to o routine's body string.
-Posponha "remove o " then o name then " from o " then o type's name then ". " to o routine's body string.
-Posponha "destroy o " then o name then ". " to o routine's body string.
-Posponha "repeat. " to o routine's body string.
-Lance o routine's routine header on o routine's header string.
-Lance as instruções desta routine on o routine's body string.
+Posponha "coloque o " then o name deste type then "'s first into um " then o name then ". " to o body string desta routine.
+Posponha "remove o " then o name then " from o " then o name deste type then ". " to o body string desta routine.
+Posponha "destroy o " then o name then ". " to o body string desta routine.
+Posponha "repeat. " to o body string desta routine.
+Lance o routine header desta routine on o header string desta routine.
+Lance as instruções desta routine on o body string desta routine.
 Compile o header of o routine.
 
 Etapas necessárias para que se adicione um entry to alguns imports usando um import name e um entry name:
@@ -155,7 +155,7 @@ Etapas necessárias para que se adicione o finalize routine por um type:
 Se o type for inexistente, cancele.
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Se o type não deveria ser finalizado, cancele.
-Se o type's name for "string", adicione o finalize routine por o type (string); exit.
+Se o name deste type for "string", adicione o finalize routine por o type (string); exit.
 Se o type puder ser reduzido para "string", cancele. \ prevents generation of finalizer por derived string types
 Adicione o finalize routine por o type (conjunto).
 
@@ -163,29 +163,29 @@ Etapas necessárias para que se adicione o finalize routine por um type (conjunto
 Se o type for inexistente, cancele.
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Adicione uma routine to o routines usando nil.
-Posponha "~finalize um " then o type's name to o routine's header string.
-Posponha "intel $50. " to o routine's body string. \ push eax
+Posponha "~finalize um " then o name deste type to o header string desta routine.
+Posponha "intel $50. " to o body string desta routine. \ push eax
 Percorra.
 Obtenha um field from o type's fields.
 Se o field for inexistente, pare.
 Se o field's type não deveria ser finalizado, repita.
-Posponha "~finalize o " then o type's name then "'s " then o field's name then ". " to o routine's body string.
+Posponha "~finalize o " then o name deste type then "'s " then o field's name then ". " to o body string desta routine.
 Repita.
-Posponha "intel $58." to o routine's body string. \ pop eax
-Lance o routine's routine header on o routine's header string.
-Lance as instruções desta routine on o routine's body string.
+Posponha "intel $58." to o body string desta routine. \ pop eax
+Lance o routine header desta routine on o header string desta routine.
+Lance as instruções desta routine on o body string desta routine.
 Compile o header of o routine.
 
 Etapas necessárias para que se adicione o finalize routine por um type (string):
 Se o type for inexistente, cancele.
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Adicione uma routine to o routines usando nil.
-Posponha "~finalize um " then o type's name to o routine's header string.
-Posponha "intel $50. " to o routine's body string. \ push eax
-Posponha "unassign o string's first. " to o routine's body string.
-Posponha "intel $58." to o routine's body string. \ pop eax
-Lance o routine's routine header on o routine's header string.
-Lance as instruções desta routine on o routine's body string.
+Posponha "~finalize um " then o name deste type to o header string desta routine.
+Posponha "intel $50. " to o body string desta routine. \ push eax
+Posponha "unassign o string's first. " to o body string desta routine.
+Posponha "intel $58." to o body string desta routine. \ pop eax
+Lance o routine header desta routine on o header string desta routine.
+Lance as instruções desta routine on o body string desta routine.
 Compile o header of o routine.
 
 Etapas necessárias para que se adicione um fragment usando uma tag:
@@ -716,7 +716,7 @@ Posponha "?" to o trecho (with separator).
 
 Etapas necessárias para que se posponha um type to um trecho (with separator):
 Se o type for inexistente, posponha "" to o trecho (with separator); exit.
-Posponha o type's name to o trecho (with separator).
+Posponha o name deste type to o trecho (with separator).
 
 Etapas necessárias para que se posponha uma variable to um trecho (with separator):
 Se o variable for inexistente, posponha "" to o trecho (with separator); exit.
@@ -1512,7 +1512,7 @@ Multiplique o final ratio por o ratio.
 Reduce o final ratio.
 Se o final ratio's denominador for 0, abort with "Parece que essa é uma unidade de medida inválida." e o literal's locus.
 Coloque o final ratio's numerador dividido por o final ratio's denominador into um número.
-Coloque o type's name into o literal's type name.
+Coloque o name deste type into o literal's type name.
 Convert o número to o literal's data.
 Resolva o literal.
 
@@ -1880,7 +1880,7 @@ Mova o percorredor (compilador rules).
 Examine um type name usando o percorredor.
 Encontre um type usando o type name e o type index.
 Se o type for inexistente, abort with "Eu não sei em qual tipo o '" then o type name then "' se encaixa." e o percorredor; exit.
-Adicione um scratch usando o type's name e o percorredor's token's first.
+Adicione um scratch usando o name deste type e o percorredor's token's first.
 Adicione um fragment usando o load address tag e o term's variable e o scratch.
 Coloque o scratch into o term's variable.
 Limpe o term's phrase.
@@ -2111,7 +2111,7 @@ Se o term's variable não for inexistente, coloque o term's type into um type.
 Encontre um field term usando o term's phrase e o type e o name.
 Se o field term não for vazio, compile o term usando o percorredor e o field term; exit.
 Se o term's variable for inexistente, abort with "Erro: variável vazia '" then o term's phrase then "'." e o percorredor; exit.
-Se o type puder ser reduzido para "endereço de memória", coloque o type's target type into o type.
+Se o type puder ser reduzido para "endereço de memória", coloque o target type deste type into o type.
 Se o type for inexistente, abort with "Não existe o campo '" then o name then "' no tipo '" then o term's type's name then "'." e o percorredor; exit.
 Percorra.
 Se o alarme de alerta deste compilador foi ativado, cancele.
@@ -3510,7 +3510,7 @@ Diga sim.
 
 Etapas necessárias para que se determine se um type puder ser reduzido para um string using o base name:
 Se o type for inexistente, diga não.
-Se o type's name for o string, diga sim.
+Se o name deste type for o string, diga sim.
 Se o type's cooking alarme estiver ativo, diga não.
 Ligue o type's cooking alarme.
 Encontre um base type usando o type's base name e o type index.
@@ -3524,7 +3524,7 @@ Se o type for inexistente, diga não.
 Isole o type.
 Percorra.
 Se o type for inexistente, diga não.
-Se o type's name for o type name, diga sim.
+Se o name deste type for o type name, diga sim.
 Se o type's base type for o type, diga não.
 Coloque o type's base type into o type.
 Repita.
@@ -3552,16 +3552,16 @@ Diga não.
 Etapas necessárias para que se determine se um type deveria ser ignorado:
 Se o type for inexistente, diga não.
 \PAL
-\Se o type's name for "elemento", diga não.
-\Se o type's name for "elementos", diga não.
+\Se o name deste type for "elemento", diga não.
+\Se o name deste type for "elementos", diga não.
 \CAL
-Se o type's name for "coisa", diga não.
-Se o type's name for "coisas", diga não.
+Se o name deste type for "coisa", diga não.
+Se o name deste type for "coisas", diga não.
 Se o type puder ser reduzido para "coisas", diga sim.
 Se o type não puder ser reduzido para "endereço de memória", diga não.
-Se o type's target type for inexistente, diga não.
-Se o type's target type não puder ser reduzido para "endereço de memória", diga sim.
-Se o type's target type não deveria ser ignorado, diga não.
+Se o target type deste type for inexistente, diga não.
+Se o target type deste type não puder ser reduzido para "endereço de memória", diga sim.
+Se o target type deste type não deveria ser ignorado, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se uma variable é duplicated in alguns variables:
@@ -3677,14 +3677,14 @@ Se o type for inexistente, cancele.
 Encontre o routine usando "coloque" e o type e "'s " then o name e "into".
 Se o routine não for inexistente, acione  o field term's push alarme; coloque o routine into o field term's function; exit.
 \ code below por looking deep within endereço de memórias - um debatable feature
-\ if o type's target type não for inexistente, encontre o routine usando "coloque" e o type's target type e "'s " then o name e "into".
+\ if o target type deste type não for inexistente, encontre o routine usando "coloque" e o target type deste type e "'s " then o name e "into".
 \ if o routine não for inexistente, acione  o field term's dereference alarme; coloque o routine into o field term's function; exit.
 
 Etapas necessárias para que se encontre um field term usando um type e um name:
 Se o type for inexistente, cancele.
 Encontre um field usando o name e o type's fields.
 Se o field não for inexistente, coloque o field into o field term's field; exit.
-Se o type's target type não for inexistente, encontre o field usando o name e o type's target type's fields.
+Se o target type deste type não for inexistente, encontre o field usando o name e os fields deste target type deste type.
 Se o field não for inexistente, acione  o field term's dereference alarme; coloque o field into o field term's field; exit.
 
 Etapas necessárias para que se encontre um fragment usando another fragment e uma tag:
@@ -4338,13 +4338,13 @@ Advance o trecho.
 Etapas necessárias para que se list um type in um trecho:
 Se o type for inexistente, cancele.
 Posponha "/type" to o trecho (with separator).
-Posponha o type's name to o trecho (with separator).
+Posponha o name deste type to o trecho (with separator).
 Posponha o type's plural name to o trecho (with separator).
 Posponha o type's length to o trecho (as hex with separator).
 Posponha o type's base name to o trecho (with separator).
 Posponha o type's base type to o trecho (with separator).
 Posponha o type's target name to o trecho (with separator).
-Posponha o type's target type to o trecho (with separator).
+Posponha o target type deste type to o trecho (with separator).
 Posponha o type's scale to o trecho (with separator).
 Advance o trecho.
 List o type's fields in o trecho.
@@ -5062,42 +5062,42 @@ Etapas necessárias para que se resolva um type (expand coisa): \ type's base typ
 Se o alarme de alerta deste compilador foi ativado, cancele.
 Se o type for inexistente, cancele.
 Se o type's base type não for inexistente, cancele.
-Se o type's name for "coisa", cancele.
-\Se o type's name for "elemento", cancele.
+Se o name deste type for "coisa", cancele.
+\Se o name deste type for "elemento", cancele.
 Se o type não puder ser reduzido para "coisa" using o base name, cancele.
 Encontre um base type usando o type's base name e o type index.
 \ adicione coisa conjunto - o número of secret fields é hard coded in two places: search por "do que 4" \ was 6
-Coloque o type's name then " conjunto" into um name.
-Coloque o type's name then " conjuntos" into um plural name.
+Coloque o name deste type then " conjunto" into um name.
+Coloque o name deste type then " conjuntos" into um plural name.
 Coloque o base type's name then " conjunto" into um base name.
 Adicione um conjunto type to o types usando o name e o plural name e o base name.
-Adicione um field to o conjunto type's fields usando "next " then o type's name e "next" e o type's name e o alarme de ignição.
+Adicione um field to o conjunto type's fields usando "next " then o name deste type e "next" e o name deste type e o alarme de ignição.
 \PAL
-Adicione um portuguese field to o conjunto type's fields usando "seguinte " then o type's name e "seguinte" e o type's name e o alarme de ignição.
-Coloque "next " then o type's name into o portuguese field's redefinition target name.
-\Adicione um portuguese reverse field to o conjunto type's fields usando o type's name then " seguinte" e "seguinte" e o type's name e o alarme de ignição.
-\Coloque "next " then o type's name into o portuguese reverse field's redefinition target name.
-Adicione another field to o conjunto type's fields usando "previous " then o type's name e "previous" e o type's name e o alarme de ignição.
-\Adicione another portuguese field to o conjunto type's fields usando "anterior " then o type's name e "anterior" e o type's name e o alarme de ignição.
-\Coloque "previous " then o type's name into o other portuguese field's redefinition target name.
-Adicione another portuguese reverse field to o conjunto type's fields usando o type's name then " anterior" e "anterior" e o type's name e o alarme de ignição.
-Coloque "previous " then o type's name into o other portuguese reverse field's redefinition target name.
+Adicione um portuguese field to o conjunto type's fields usando "seguinte " then o name deste type e "seguinte" e o name deste type e o alarme de ignição.
+Coloque "next " then o name deste type into o portuguese field's redefinition target name.
+\Adicione um portuguese reverse field to o conjunto type's fields usando o name deste type then " seguinte" e "seguinte" e o name deste type e o alarme de ignição.
+\Coloque "next " then o name deste type into o portuguese reverse field's redefinition target name.
+Adicione another field to o conjunto type's fields usando "previous " then o name deste type e "previous" e o name deste type e o alarme de ignição.
+\Adicione another portuguese field to o conjunto type's fields usando "anterior " then o name deste type e "anterior" e o name deste type e o alarme de ignição.
+\Coloque "previous " then o name deste type into o other portuguese field's redefinition target name.
+Adicione another portuguese reverse field to o conjunto type's fields usando o name deste type then " anterior" e "anterior" e o name deste type e o alarme de ignição.
+Coloque "previous " then o name deste type into o other portuguese reverse field's redefinition target name.
 Se o type's fields não estiverem vazio, posponha o type's fields to o conjunto type's fields.
 Catalogue o conjunto type.
 \ fix up original type to look like um endereço de memória
-Coloque o conjunto type's name into o type's target name.
+Coloque o name deste conjunto type  into o target name deste type.
 \ adicione chain type
 Adicione um chain type to o types usando o type's plural name e "" e o base type's plural name.
-Adicione um third field to o chain type's fields usando "first " then o type's name e "first" e o type's name e o alarme de ignição.
-Adicione um third portuguese field to o chain type's fields usando "primeiro " then o type's name e "primeiro" e o type's name e o alarme de ignição.
-Coloque "first " then o type's name into o third portuguese field's redefinition target name.
-Adicione um third feminine portuguese field to o chain type's fields usando "primeira " then o type's name e "primeira" e o type's name e o alarme de ignição.
-Coloque "first " then o type's name into o third feminine portuguese field's redefinition target name.
-Adicione um fourth field to o chain type's fields usando "last " then o type's name e "last" e o type's name e o alarme de ignição.
-Adicione um fourth portuguese field to o chain type's fields usando "último " then o type's name e "último" e o type's name e o alarme de ignição.
-Coloque "last " then o type's name into o fourth portuguese field's redefinition target name.
-Adicione um fourth portuguese feminine field to o chain type's fields usando "última " then o type's name e "última" e o type's name e o alarme de ignição.
-Coloque "last " then o type's name into o fourth portuguese feminine field's redefinition target name.
+Adicione um third field to o chain type's fields usando "first " then o name deste type e "first" e o name deste type e o alarme de ignição.
+Adicione um third portuguese field to o chain type's fields usando "primeiro " then o name deste type e "primeiro" e o name deste type e o alarme de ignição.
+Coloque "first " then o name deste type into o third portuguese field's redefinition target name.
+Adicione um third feminine portuguese field to o chain type's fields usando "primeira " then o name deste type e "primeira" e o name deste type e o alarme de ignição.
+Coloque "first " then o name deste type into o third feminine portuguese field's redefinition target name.
+Adicione um fourth field to o chain type's fields usando "last " then o name deste type e "last" e o name deste type e o alarme de ignição.
+Adicione um fourth portuguese field to o chain type's fields usando "último " then o name deste type e "último" e o name deste type e o alarme de ignição.
+Coloque "last " then o name deste type into o fourth portuguese field's redefinition target name.
+Adicione um fourth portuguese feminine field to o chain type's fields usando "última " then o name deste type e "última" e o name deste type e o alarme de ignição.
+Coloque "last " then o name deste type into o fourth portuguese feminine field's redefinition target name.
 Catalogue o chain type.
 
 Etapas necessárias para que se resolva um type (registro de plurais):
@@ -5109,10 +5109,10 @@ Catalogue o type usando o type's plural name.
 
 Etapas necessárias para que se resolva um type (optional info - endereço de memória):
 Se o alarme de alerta deste compilador foi ativado, cancele.
-Se o type's target type não for inexistente, cancele.
+Se o target type deste type não for inexistente, cancele.
 Se o type's target name estiver em branco, coloque o type's base type's target type into o type's target type; exit.
-Encontre o type's target type usando o type's target name e o type index.
-Se o type's target type for inexistente, abort with "Não sei bem pra que coisa você está pointing at." e o type's locus; exit.
+Encontre o target type deste type usando o type's target name e o type index.
+Se o target type deste type for inexistente, abort with "Não sei bem pra que coisa você está pointing at." e o type's locus; exit.
 
 Etapas necessárias para que se resolva um type (optional info - conjunto):
 Se o alarme de alerta deste compilador foi ativado, cancele.
@@ -5372,7 +5372,7 @@ Coloque "~inline " then o global's name then " type" into um name.
 Coloque o name then "s" into um plural name.
 Adicione um type to o types usando o name e o plural name e "conjunto" e o global's locus. \mudar aqui
 Catalogue o type.
-Coloque o type's name into o global's type name.
+Coloque o name deste type into o global's type name.
 Examine o type's fields usando o percorredor.
 Se o token deste percorredor não for o ponto final, abort with "Aprenda a escrever direito. Cadê o ponto?." e o percorredor; exit. 
 Mova o percorredor (compilador rules).
@@ -5391,7 +5391,7 @@ Coloque "~inline " then o global's name then " type" into um name.
 Coloque o name then "s" into um plural name.
 Adicione um type to o types usando o name e o plural name e o global's type name e o global's locus.
 Catalogue o type.
-Coloque o type's name into o global's type name.
+Coloque o name deste type into o global's type name.
 Examine any optional info por o type usando o percorredor.
 Se o token deste percorredor não for o ponto final, abort with "Tá na hora de aprender a escrever direito. Cadê o ponto?." e o percorredor; exit. 
 Mova o percorredor (compilador rules).
@@ -5437,7 +5437,7 @@ Se o token deste percorredor for "que", mova o percorredor (compilador rules).
 Se o token deste percorredor for "se", mova o percorredor (compilador rules). 
 \Se o token deste percorredor não for "se", abort with "Você precisa colocar um 'se' antes da palavra '" then o token deste percorredor then "'." e o percorredor; exit.
 \Mova o percorredor (compilador rules). \ skip o "se" e obtenha o next token
-Examine o routine's routine header usando o percorredor.
+Examine o routine header desta routine usando o percorredor.
 Se o token deste percorredor for o ponto&vírgula, examine o routine usando o percorredor (alternate palavraing); exit. \ *** por alternate palavraings
 Se o token deste percorredor não for o sinal de dois pontos, abort with "O nome dessa função está escrito errado.." e o routine's locus; exit.
 Mova o percorredor (compilador rules).
@@ -5493,8 +5493,8 @@ Se o token deste percorredor for any portuguese indefinite article, acione  um p
 Se o token deste percorredor for any english indefinite article, acione  um english alarme.
 Adicione o type to o types usando o percorredor's token's first.
 Mova o percorredor (compilador rules).
-Examine o type's name usando o percorredor.
-Coloque o type's name into o type's plural name.
+Examine o name deste type usando o percorredor.
+Coloque o name deste type into o type's plural name.
 Se o portuguese alarme estiver ativo, pluralize o type's plural name (portuguese rules).
 Se o english alarme estiver ativo, pluralize o type's plural name (english rules).
 Se o english alarme não estiver ativo, pluralize o type's plural name (portuguese rules).
