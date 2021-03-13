@@ -97,7 +97,7 @@ Etapas necessárias para que se adicione o destroy routine por um type (endereço 
 Se o type for inexistente, cancele.
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Coloque "destroy [" then o name deste type then "]" into um moniker.
-Se o moniker estiver in o routine index, cancele.
+Se o moniker estiver in o catálogo geral de rotinas, cancele.
 Adicione uma routine to o routines usando nil.
 Posponha "destroy um " then o name deste type to o header string desta routine.
 Posponha "if o " then o name deste type then " for inexistente, cancele. " to o body string desta routine.
@@ -122,7 +122,7 @@ Coloque "Erro interno na hora de executar a tarefa de destruição de tipos" into 
 Se o first destes fields deste type for inexistente, abort with "Erro interno na rotina 'adicione um forget routine por um type (coisas)'"; [Say o reply;] exit. \Adicionado Say o reply
 Se o type deste first destes fields deste type for inexistente, abort with "Erro interno 2 na rotina 'adicione o forget routine por um type (coisas)'"; exit.
 Coloque "destroy [" then o name deste type then "]" into um moniker.
-Se o moniker estiver in o routine index, cancele.
+Se o moniker estiver in o catálogo geral de rotinas, cancele.
 Adicione uma routine to o routines usando nil.
 Posponha "destroy um " then o name deste type to o header string desta routine.
 Posponha "if o " then o name deste type then "'s first for inexistente, cancele. " to o body string desta routine.
@@ -365,7 +365,7 @@ Obtenha um monikette from o monikettes (backwards).
 Se o monikette for inexistente, cancele.
 Se a variable deste monikette for inexistente, repita.
 Se o subtexto atual deste monikette não estiver em branco, repita.
-Se o current type deste monikette for inexistente, repita.
+Se o type atual deste monikette for inexistente, repita.
 Adicione um fragment usando o push address tag e a variable deste monikette.
 Repita.
 
@@ -649,7 +649,7 @@ Etapas necessárias para que se posponha um monikette to um moniker (while bubbli
 Se o monikette for inexistente, cancele.
 Se o moniker não estiver em branco, posponha o space pedaço to o moniker.
 Se o subtexto atual deste monikette não estiver em branco, posponha o subtexto atual deste monikette to o moniker; exit.
-Se o current type deste monikette não for inexistente, posponha "[" e o monikette's current type's name e "]" to o moniker (fast); exit.
+Se o type atual deste monikette não for inexistente, posponha "[" e o monikette's type atual's name e "]" to o moniker (fast); exit.
 
 Etapas necessárias para que se posponha um número to um trecho (as hex with separator):
 Convert o número to um texto da cifra binária.
@@ -843,7 +843,7 @@ Se a categoria desta variable for "literal", attach $C7C2 e o address desta vari
 Se a categoria desta variable for "local", attach $8D95 e o offset desta variable to o texto hexadecimal; exit. \ lea edx,[ebp+the variable's offset]
 Se a categoria desta variable for "scratch", attach $8B95 e o offset desta variable to o texto hexadecimal; exit. \ mov edx,[ebp+the variable's offset]
 Se a categoria desta variable não for "parameter", abort with "Erro interno - attach address loading code to um texto hexadecimal usando uma variable"; exit.
-Se o by-value alarme desta variable  estiver ativo, attach $8D95 e o offset desta variable to o texto hexadecimal; exit. \ lea edx,[ebp+the variable's offset]
+Se o by-value alarme desta variable estiver ativo, attach $8D95 e o offset desta variable to o texto hexadecimal; exit. \ lea edx,[ebp+the variable's offset]
 Attach $8B95 e o offset desta variable to o texto hexadecimal. \ mov edx,[ebp+the variable's offset]
 
 Etapas necessárias para que se attach um texto hexadecimal e um address to um fragment:
@@ -966,9 +966,9 @@ The break tag é uma tag igual a 1.
 Etapas necessárias para que se bubble um monikette:
 Se o monikette for inexistente, cancele.
 Se o monikette's subtexto atual não estiver em branco, limpe o monikette's subtexto atual; exit.
-Se o monikette's current type for inexistente, cancele.
-Se o monikette's current type for any built-in type, coloque nil into o monikette's current type; exit.
-Coloque o monikette's current type's base type into o monikette's current type.
+Se o monikette's type atual for inexistente, cancele.
+Se o monikette's type atual for any built-in type, coloque nil into o monikette's type atual; exit.
+Coloque o monikette's type atual's base type into o monikette's type atual.
 
 An built-in type é um type.
 
@@ -1119,7 +1119,7 @@ Adicione another fragment usando o loop tag.
 
 Etapas necessárias para que se compile o body of o routine called um string:
 Se o alarme de alerta deste compilador estiver ativado, cancele.
-Encontre uma routine usando o string e o routine index.
+Encontre uma routine usando o string e o catálogo geral de rotinas.
 Se a routine for inexistente, abort with "Eu preciso de uma função para fazer '" then o string then "'."; exit.
 Compile o body of o routine.
 
@@ -1141,7 +1141,7 @@ Destroy o routine reference.
 Se o token deste percorredor não for ".", abort with "Employ statments devem terminar com um ponto, não com '" then o token deste percorredor then "'." e o percorredor; exit.
 Mova o percorredor (compilador rules).
 Se o token deste percorredor não estiver em branco, abort with "Somente um employ" e o percorredor; exit.
-Encontre another routine usando o routine's employs moniker e o routine index.
+Encontre another routine usando o routine's employs moniker e o catálogo geral de rotinas.
 Se o other routine for inexistente, abort with "Não consigo encontrar um rotina '" then o routine's employs moniker then "' que você está tentando empregar." e o routine's locus; exit.
 Compile o body of o other routine.
 
@@ -1194,10 +1194,10 @@ Coloque o address into o import zona's base.
 Address o imports usando o address.
 Coloque o address menos o import zona's base into o import zona's length.
 Round o address up to o nearest multiple of 4096.
-Coloque o address into o data zona's base.
+Coloque o address into o zona de dados's base.
 Address o globals usando o address.
 Address o literals usando o address.
-Coloque o address menos o data zona's base into o data zona's length.
+Coloque o address menos o zona de dados's base into o zona de dados's length.
 Round o address up to o nearest multiple of 4096.
 Coloque o address into o code zona's base.
 Address o routines usando o address.
@@ -1232,8 +1232,8 @@ Se o alarme de alerta deste compilador estiver ativado, cancele.
 Mostre painel de informações "Catalogando tarefas...".
 Start o indexing utilities cronômetro.
 Catalogue o routines por utility use.
-Scrub o utility index.
-Catalogue novamente o utility index.
+Scrub o catálogo de rotinas úteis.
+Catalogue novamente o catálogo de rotinas úteis.
 Suspenda o indexing utilities cronômetro.
 
 Etapas necessárias para que se compile um endereço da pasta (link):
@@ -1406,8 +1406,8 @@ Mova o percorredor (compilador rules).
 Ligue o routine's callback alarme.
 Compile o routine's monikettes e o routine's parameters usando o percorredor.
 Convert o routine's monikettes to o routine's moniker.
-Se o routine's moniker estiver in o routine index, abort with "Você já tinha escrito um função '" then o routine's moniker then "'." e o routine's locus; exit.
-Catalogue o routine usando o routine's monikettes e o routine index.
+Se o routine's moniker estiver in o catálogo geral de rotinas, abort with "Você já tinha escrito um função '" then o routine's moniker then "'." e o routine's locus; exit.
+Catalogue o routine usando o routine's monikettes e o catálogo geral de rotinas.
 
 Etapas necessárias para que se compile o header of uma routine usando um percorredor (decider):
 Se o alarme de alerta deste compilador estiver ativado, cancele.
@@ -1418,17 +1418,17 @@ Ligue o routine's decider alarme.
 Compile o routine's monikettes e o routine's parameters usando o percorredor.
 Se any of o routine's monikettes forem negative palavras, abort with "Não consigo me dar bem com palavras negativas em nomes de funções decisoras." e o percorredor; exit.
 Convert o routine's monikettes to o routine's moniker.
-Se o routine's moniker estiver in o routine index, abort with "Você já me contou como'" then o routine's moniker then "'." e o routine's locus; exit.
-Catalogue o routine usando o routine's monikettes e o routine index.
+Se o routine's moniker estiver in o catálogo geral de rotinas, abort with "Você já me contou como'" then o routine's moniker then "'." e o routine's locus; exit.
+Catalogue o routine usando o routine's monikettes e o catálogo geral de rotinas.
 
 Etapas necessárias para que se compile o header of uma routine usando um percorredor (function):
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Ligue o routine's function alarme.
 Adicione um monikette to o routine's monikettes usando "coloque".
 Mova o percorredor (compilador rules).
-Se o token deste percorredor for any indefinite article, acione um alarme.
-Se o alarme estiver ativo, compile o routine's monikettes e o routine's parameters usando o percorredor (indefinite article).
-Se o alarme não estiver ativo, compile o routine's monikettes e o routine's parameters usando o percorredor (definite article).
+Se o token deste percorredor for any artigo indefinido, acione um alarme.
+Se o alarme estiver ativo, compile o routine's monikettes e o routine's parameters usando o percorredor (artigo indefinido).
+Se o alarme não estiver ativo, compile o routine's monikettes e o routine's parameters usando o percorredor (artigo definido).
 Se o token deste percorredor não for any possessive, abort with "Tá faltando um 's por aqui (ou está no lugar errado)." e o percorredor; exit. \ not translated - no possessives in Spanish
 Mova o percorredor (compilador rules).
 Examine um name usando o percorredor.
@@ -1436,21 +1436,21 @@ Adicione another monikette to o routine's monikettes usando "'s " then o name.
 Se o token deste percorredor não for "into", abort with "Eu estava esperando um palavra 'into', mas encontrei um palavra '" then o token deste percorredor then "'." e o percorredor; exit. \ not translated - no possessives in Spanish
 Adicione um third monikette to o routine's monikettes usando "into".
 Convert o routine's monikettes to um moniker.
-Se o moniker estiver in o routine index, abort with "Eu já sei como '" then o moniker then "'." e o routine's locus; exit. \ not translated - no possessives in Spanish
-Catalogue o routine usando o routine's monikettes e o routine index.
+Se o moniker estiver in o catálogo geral de rotinas, abort with "Eu já sei como '" then o moniker then "'." e o routine's locus; exit. \ not translated - no possessives in Spanish
+Catalogue o routine usando o routine's monikettes e o catálogo geral de rotinas.
 Mova o percorredor (compilador rules).
-Se o token deste percorredor não for any indefinite article, abort with "Estava esperando um artigo indefinido, mas achei isso aqui: '" then o token deste percorredor then "'." e o percorredor; exit. \ not translated - no possessives in Spanish
-Compile o routine's monikettes e o routine's parameters usando o percorredor (indefinite article).
+Se o token deste percorredor não for any artigo indefinido, abort with "Estava esperando um artigo indefinido, mas achei isso aqui: '" then o token deste percorredor then "'." e o percorredor; exit. \ not translated - no possessives in Spanish
+Compile o routine's monikettes e o routine's parameters usando o percorredor (artigo indefinido).
 Se o token deste percorredor não estiver em branco, abort with "Tem comandos extras no fim dessa função." e o percorredor; exit. \ not translated - no possessives in Spanish
 Convert o routine's monikettes to o routine's moniker.
-Catalogue o routine usando o routine's monikettes e o routine index. \ por employs
+Catalogue o routine usando o routine's monikettes e o catálogo geral de rotinas. \ por employs
 
 Etapas necessárias para que se compile o header of uma routine usando um percorredor (procedure):
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Compile o routine's monikettes e o routine's parameters usando o percorredor.
 Convert o routine's monikettes to o routine's moniker.
-Se o routine's moniker estiver in o routine index, abort with "Você já escreveu como fazer '" then o routine's moniker then "'." e o routine's locus; exit.
-Catalogue o routine usando o routine's monikettes e o routine index.
+Se o routine's moniker estiver in o catálogo geral de rotinas, abort with "Você já escreveu como fazer '" then o routine's moniker then "'." e o routine's locus; exit.
+Catalogue o routine usando o routine's monikettes e o catálogo geral de rotinas.
 
 Etapas necessárias para que se compile o headers of alguns routines:
 Se o alarme de alerta deste compilador estiver ativado, cancele.
@@ -1507,7 +1507,7 @@ Se o alarme de alerta deste compilador estiver ativado, cancele.
 Convert o token deste percorredor to um ratio.
 Mova o percorredor (compilador rules).
 Examine um name usando o percorredor.
-Encontre um type usando o name e o type index.
+Encontre um type usando o name e o catálogo de tipos.
 Se o type for inexistente, abort with "'" then o name then "' é uma unidade de medida inexistente." e o literal's locus; exit.
 Se o type não puder ser reduzido para "número", abort with "'" then o name then "' é uma unidade de medida inválida." e o literal's locus; exit.
 Coloque o type's scale into um final ratio.
@@ -1545,12 +1545,12 @@ Resolva o literal.
 Etapas necessárias para que se compile alguns monikettes e alguns parameters usando um percorredor:
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Se o token deste percorredor estiver em branco, cancele.
-Se o token deste percorredor for any definite article, compile o monikettes e o parameters usando o percorredor (definite article); repita.
-Se o percorredor estiver on any indefinite article, compile o monikettes e o parameters usando o percorredor (indefinite article); repita.
+Se o token deste percorredor for any artigo definido, compile o monikettes e o parameters usando o percorredor (artigo definido); repita.
+Se o percorredor estiver on any artigo indefinido, compile o monikettes e o parameters usando o percorredor (artigo indefinido); repita.
 Se o percorredor estiver on any monikette string, compile o monikettes e o parameters usando o percorredor (monikette string); repita.
 Abort with "'" then o token deste percorredor then "' não é um nome de função que eu conheça." e o percorredor.
 
-Etapas necessárias para que se compile alguns monikettes e alguns parameters usando um percorredor (definite article):
+Etapas necessárias para que se compile alguns monikettes e alguns parameters usando um percorredor (artigo definido):
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Mova o percorredor (compilador rules).
 Examine um name usando o percorredor.
@@ -1558,7 +1558,7 @@ Se o alarme de alerta deste compilador estiver ativado, cancele.
 Anteponha "the " to o name.
 Adicione um monikette to o monikettes usando o name.
 
-Etapas necessárias para que se compile alguns monikettes e alguns parameters usando um percorredor (indefinite article):
+Etapas necessárias para que se compile alguns monikettes e alguns parameters usando um percorredor (artigo indefinido):
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Adicione um parameter to o parameters usando "parameter" e o percorredor's token's first.
 \PAL
@@ -1745,7 +1745,7 @@ Mova o percorredor (compilador rules).
 Compile uma routine reference usando o percorredor.
 Convert o routine reference to um moniker.
 Destroy o routine reference.
-Encontre uma routine usando o moniker e o routine index.
+Encontre uma routine usando o moniker e o catálogo geral de rotinas.
 Se a routine for inexistente, abort with "Não achei a tarefa '" then o moniker then "' que você falou." e o percorredor; exit.
 Adicione um fragment usando o routine address tag e o routine.
 Coloque o term's variable into o fragment's variable.
@@ -1816,8 +1816,8 @@ Percorra.
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Se o token deste percorredor estiver em branco, cancele.
 Se o token deste percorredor for ".", cancele.
-Se o token deste percorredor for any definite article, compile o routine reference usando o percorredor (definite article); repita.
-Se o token deste percorredor for any indefinite article, compile o routine reference usando o percorredor (indefinite article); repita.
+Se o token deste percorredor for any artigo definido, compile o routine reference usando o percorredor (artigo definido); repita.
+Se o token deste percorredor for any artigo indefinido, compile o routine reference usando o percorredor (artigo indefinido); repita.
 Se o percorredor está on any monikette string, compile o routine reference usando o percorredor (monikette string); repita.
 Abort with "'" then o token deste percorredor then "' não é válido em um employ statement." e o percorredor.
 
@@ -1826,7 +1826,7 @@ Mova o percorredor (compilador rules).
 Se o token deste percorredor não for any conditional, abort with "Sempre use DECIDE IF, ao invés de apenas DECIDE com '" then o token deste percorredor then "' logo em seguida." e o percorredor; exit.
 Mova o percorredor (compilador rules).
 
-Etapas necessárias para que se compile uma routine reference usando um percorredor (definite article):
+Etapas necessárias para que se compile uma routine reference usando um percorredor (artigo definido):
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Mova o percorredor (compilador rules).
 Examine um name usando o percorredor.
@@ -1837,9 +1837,9 @@ Etapas necessárias para que se compile uma routine reference usando um percorred
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Adicione um monikette to o routine reference usando "coloque".
 Mova o percorredor (compilador rules).
-Se o token deste percorredor for any indefinite article, acione um alarme.
-Se o alarme estiver ativo, compile o routine reference usando o percorredor (indefinite article).
-Se o alarme não estiver ativo, compile o routine reference usando o percorredor (definite article).
+Se o token deste percorredor for any artigo indefinido, acione um alarme.
+Se o alarme estiver ativo, compile o routine reference usando o percorredor (artigo indefinido).
+Se o alarme não estiver ativo, compile o routine reference usando o percorredor (artigo definido).
 Se o token deste percorredor não for any possessive, abort with "Eu estava esperando un 's, mas apareceu '" then o token deste percorredor then "'." e o percorredor; exit. \ not translated - no possessives in Spanish
 Mova o percorredor (compilador rules).
 Examine um name usando o percorredor.
@@ -1847,10 +1847,10 @@ Adicione another monikette to o routine reference usando "'s " then o name.
 Se o token deste percorredor não for "into", abort with "E estava esperando um palavra 'into', mas encontrei '" then o token deste percorredor then "'." e o percorredor; exit. \ not translated - no possessives in Spanish
 Adicione um third monikette to o routine reference usando "into".
 Mova o percorredor (compilador rules).
-Se o token deste percorredor não for any indefinite article, abort with "Eu estava esperando um artigo indefinido mas encontrei isso: '" then o token deste percorredor then "'." e o percorredor; exit. \ not translated - no possessives in Spanish
-Compile o routine reference usando o percorredor (indefinite article).
+Se o token deste percorredor não for any artigo indefinido, abort with "Eu estava esperando um artigo indefinido mas encontrei isso: '" then o token deste percorredor then "'." e o percorredor; exit. \ not translated - no possessives in Spanish
+Compile o routine reference usando o percorredor (artigo indefinido).
 
-Etapas necessárias para que se compile uma routine reference usando um percorredor (indefinite article):
+Etapas necessárias para que se compile uma routine reference usando um percorredor (artigo indefinido):
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Mova o percorredor (compilador rules).
 Examine um name usando o percorredor.
@@ -1880,10 +1880,10 @@ Etapas necessárias para que se compile um term usando um percorredor (as part):
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Se o term's variable for inexistente, abort with "Comando 'as'inválido. Eu acho que um variável '" then o term's phrase then "' está vaiza." e o percorredor; exit.
 Mova o percorredor (compilador rules).
-Se o token deste percorredor não for any indefinite article, abort with "Tá faltando um artigo indefinido depois do 'como', mas você escreveu '" then o token deste percorredor then "' no lugar disso." e o percorredor; exit.
+Se o token deste percorredor não for any artigo indefinido, abort with "Tá faltando um artigo indefinido depois do 'como', mas você escreveu '" then o token deste percorredor then "' no lugar disso." e o percorredor; exit.
 Mova o percorredor (compilador rules).
 Examine um type name usando o percorredor.
-Encontre um type usando o type name e o type index.
+Encontre um type usando o type name e o catálogo de tipos.
 Se o type for inexistente, abort with "Eu não sei em qual tipo o '" then o type name then "' se encaixa." e o percorredor; exit.
 Adicione um scratch usando o name deste type e o percorredor's token's first.
 Adicione um fragment usando o load address tag e o term's variable e o scratch.
@@ -2041,15 +2041,15 @@ Mova o percorredor (compilador rules).
 Examine um name usando o percorredor. 
 Se o percorredor está on any reverse-possessive, acione um reverse-possessive alarme.
 Se o reverse-possessive alarme estiver ativo, compile o term usando o percorredor e o name (reverse-possessive).
-Se o reverse-possessive alarme não estiver ativo, compile o term usando o percorredor e o name e o article (reverse-possessive preSuspenda to unwind).
+Se o reverse-possessive alarme não estiver ativo, compile o term usando o percorredor e o name e o article (reverse-possessive prepare to unwind).
 Compile o term usando o field name e o percorredor (reverse-possessive).
 
-Etapas necessárias para que se compile um term usando um percorredor e uma variable name e um article token (reverse-possessive preSuspenda to unwind):
+Etapas necessárias para que se compile um term usando um percorredor e uma variable name e um article token (reverse-possessive prepare to unwind):
 \ dahn version 2
-Se o article for o start of any variable, compile o term usando o percorredor e o variable name e o article (reverse-possessive preSuspenda to unwind existing variable); exit.
-Compile o term usando o percorredor e o variable name (reverse-possessive preSuspenda to unwind new local).
+Se o article for o start of any variable, compile o term usando o percorredor e o variable name e o article (reverse-possessive prepare to unwind existing variable); exit.
+Compile o term usando o percorredor e o variable name (reverse-possessive prepare to unwind new local).
 
-Etapas necessárias para que se compile um term usando um percorredor e uma variable name e um article token (reverse-possessive preSuspenda to unwind existing variable):
+Etapas necessárias para que se compile um term usando um percorredor e uma variable name e um article token (reverse-possessive prepare to unwind existing variable):
 \ dahn version 2
 Encontre uma variable usando o variable name.
 Se o variable for inexistente, abort with "No se pudo encontrar una variable con el nombre '" then o variable name then "'.".
@@ -2057,7 +2057,7 @@ Coloque o variable into o term's variable.
 Coloque "the " into o term's phrase.
 Posponha o variable name to o term's phrase.
 
-Etapas necessárias para que se compile um term usando um percorredor e uma variable name (reverse-possessive preSuspenda to unwind new local):
+Etapas necessárias para que se compile um term usando um percorredor e uma variable name (reverse-possessive prepare to unwind new local):
 \ dahn version 2
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Adicione um local to o rotina utilizada atualmente's locals usando "local" e o percorredor's token's first.
@@ -2167,26 +2167,26 @@ Etapas necessárias para que se convert um parte da cifra binária to um string:
 Employ convert um texto da cifra binária to um texto hexadecimal.
 
 Etapas necessárias para que se convert um term por concatenation usando um percorredor:
-\ used por right-side THEN operand
-Se o term's variable for inexistente, abort with "Erro: variável do termo está vazia '" then o term's phrase then "'." e o percorredor; exit.
-Se o term's type puder ser reduzido para "string", cancele.
-Adicione um intermediate usando "string" e o percorredor's token's first.
-Adicione o coloque ou convert fragments usando o term's variable e o intermediate e o percorredor's token's first.
-Coloque o intermediate into o term's variable.
-Limpe o term's phrase.
+\ used for right-side THEN operand
+Se a variable deste term for inexistente, abort with "Erro: variável do termo está vazia '" then a phrase deste term then "'." e o percorredor; exit.
+Se o type deste term puder ser reduzido para "string", cancele.
+Adicione um intermediate usando "string" e o first deste token deste percorredor.
+Adicione o coloque ou convert fragments usando a variable deste term e o intermediate e o first deste token deste percorredor.
+Coloque o intermediate into a variable deste term.
+Limpe a phrase deste term.
 
 Etapas necessárias para que se copy um field into another field:
 Se o field for inexistente, esvazie o other field; exit.
 Allocate memory por o other field.
-Coloque o field's locus into o other field's locus.
+Coloque o locus deste field into o other field's locus.
 Coloque o name deste field into o other field's name.
-Coloque o field's nickname into o other field's nickname.
+Coloque o nickname deste field into o other field's nickname.
 Coloque o type name deste field into o other field's type name.
 Coloque o type deste field into o other field's type.
 Coloque o field's contagem into o other field's contagem.
-Coloque o field's redefinition target name into o other field's redefinition target name.
+Coloque o redefinition target name deste field into o other field's redefinition target name.
 Coloque o reference alarme deste field into o other field's reference alarme.
-Coloque o field's offset into o other field's offset.
+Coloque o offset deste field into o other field's offset.
 
 Etapas necessárias para que se copy alguns fields into alguns other fields:
 Obtenha um field from o fields.
@@ -2196,7 +2196,7 @@ Posponha o other field to o other fields.
 Repita.
 
 Etapas necessárias para que se copy alguns fields into alguns other fields (data fields only):
-Se o fields' contagem for menor do que 4, cancele. \ por english next e prev e spanish next e prev redefinitions
+Se a contagem destes fields for menor do que 4, cancele. \ for english next e prev e spanish next e prev redefinitions
 \Se o fields' first for inexistente, cancele.
 \Se o fields' first's next for inexistente, cancele.
 \Se o fields' first's next's next for inexistente, cancele.
@@ -2204,7 +2204,8 @@ Se o fields' contagem for menor do que 4, cancele. \ por english next e prev e s
 \Se o fields' first's next's next's next for inexistente, cancele.
 \Se o fields' first's next's next's next's next for inexistente, cancele.
 \Se o fields' first's next's next's next's next's next for inexistente, cancele.
-Coloque o fields' first's next's next's next's next into um field. \ english next e prev e spanish next e prev redefinitions
+\Coloque o fields' first's next's next's next's next into um field. 
+Coloque o next deste next deste next deste next deste first destes fields into um field.\ english next e prev e spanish next e prev redefinitions
 Percorra.
 Se o field for inexistente, cancele.
 Copy o field into another field.
@@ -2215,11 +2216,11 @@ Repita.
 Etapas necessárias para que se copy um monikette into another monikette:
 Se o monikette for inexistente, esvazie o other monikette; exit.
 Allocate memory por o other monikette.
-Coloque o monikette's string into o other monikette's string.
-Coloque o monikette's type into o other monikette's type.
-Coloque o monikette's variable into o other monikette's variable.
+Coloque o string deste monikette into o other monikette's string.
+Coloque o type deste monikette into o other monikette's type.
+Coloque a variable deste monikette into o other monikette's variable.
 \ don't copy subtexto
-Coloque o monikette's current type into o other monikette's current type.
+Coloque o type atual deste monikette into o other monikette's type atual.
 
 Etapas necessárias para que se copy alguns monikettes into alguns other monikettes:
 Destroy o other monikettes.
@@ -2235,7 +2236,7 @@ Allocate memory por o entry.
 
 Etapas necessárias para que se crie um fragment usando uma tag:
 Allocate memory por o fragment.
-Coloque o tag into o fragment's tag.
+Coloque o tag into a tag deste fragment.
 
 Etapas necessárias para que se crie um import:
 Allocate memory por o import.
@@ -2251,13 +2252,13 @@ Allocate memory por o source file.
 
 Etapas necessárias para que se crie um type:
 Allocate memory por o type.
-Coloque 0/1 into o type's scale.
-Coloque -1 into o type's length.
+Coloque 0/1 into o scale deste type.
+Coloque -1 into o length deste type.
 
 Etapas necessárias para que se crie uma variable usando um categoria:
 Allocate memory por o variable.
-Coloque o categoria into o variable's categoria.
-Coloque 1 into o variable's contagem.
+Coloque o categoria into a categoria desta variable.
+Coloque 1 into o contagem desta variable.
 
 The endereço do cabeçalho usado atualmente é um address.
 
@@ -2267,18 +2268,18 @@ The rotina utilizada atualmente é uma routine.
 
 The current thunk address é um address.
 
-The data zona é um zona.
+The zona de dados é um zona.
 
 Etapas necessárias para que se determine se any of alguns monikettes são negative palavras:
 Obtenha um monikette from o monikettes.
 Se o monikette for inexistente, diga não.
-Se o monikette's string for any negative palavra, diga sim.
+Se o string deste monikette for any negative palavra, diga sim.
 Repita.
 
 Etapas necessárias para que se determine se um pedaço é any glom pedaço:
 Se o pedaço for any letter, diga sim.
 Se o pedaço for any digit, diga sim.
-Se o pedaço for o tilde pedaço, diga sim.
+Se o pedaço for o acento til, diga sim.
 Se o pedaço for o sinal de arroba, diga sim.
 Se o pedaço for o número-sign pedaço, diga sim.
 Se o pedaço for o sinal de porcentagem, diga sim.
@@ -2300,7 +2301,7 @@ Se o pedaço for o question-mark pedaço, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um pedaço é any stressed vowel:
-Se o pedaço estiver in "áãâàéèêëíîìïóõôöúùüûý", diga sim.
+Se o pedaço estiver in "áãâàéèêëíîìïóõôöúùüûý", diga sim. \ na verdade a rotina apenas identifica caracteres acentuados
 Diga não.
 
 Etapas necessárias para que se determine se um pedaço é any symbol:
@@ -2328,10 +2329,11 @@ Se o pedaço for 247, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um field term é vazio:
-Se o field term's field não for inexistente, diga não.
-Se o field term's function não for inexistente, diga não.
+Se o field deste field term não for inexistente, diga não.
+Se a function deste field term não for inexistente, diga não.
 Diga sim.
 
+Etapas necessárias para que se determine se alguns fields deveriam ser finalizados;
 Etapas necessárias para que se determine se alguns fields deveria ser finalizado:
 Obtenha um field from o fields.
 Se o field for inexistente, diga não.
@@ -2339,20 +2341,20 @@ Se o type deste field deveria ser finalizado, diga sim.
 Repita.
 
 Etapas necessárias para que se determine se um item looks reamish:
-Load o item's endereço completo into um trecho.
+Load o endereço completo deste item into um trecho.
 Se o trecho starts with "ream cal", diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um moniker estiver in um index:
 Encontre um refer usando o moniker e o index.
 Se o refer for inexistente, diga não.
-Se o refer's endereço de memória for inexistente, diga não.
+Se o endereço de memória deste refer for inexistente, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um monikette é bubbled out:
 Se o monikette for inexistente, diga sim.
-Se o monikette's current type não for inexistente, diga não.
-Se o monikette's subtexto atual não estiver em branco, diga não.
+Se o type atual deste monikette não for inexistente, diga não.
+Se o subtexto atual deste monikette não estiver em branco, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um name é any magnitude:
@@ -2389,7 +2391,7 @@ Isole o percorredor.
 Mova o percorredor (compilador rules).
 Se o percorredor não for on any name starter, diga não.
 Examine um name usando o percorredor.
-Encontre um type usando o name e o type index.
+Encontre um type usando o name e o catálogo de tipos.
 Se o type for inexistente, diga não.
 Se o name não for "times", diga sim. \ special because times é um infix operator e um unit of measure
 \Se o name não for "vezes", diga sim. 
@@ -2397,32 +2399,32 @@ Se o token deste percorredor for o start of any expression, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um percorredor está on any nested double-quote:
-Se o percorredor's source starts with """""", diga sim.
+Se o source deste percorredor starts with """""", diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um percorredor está on any possessive:
-Se o percorredor's source estiver em branco, diga não.
-Se o percorredor's source's first's target não for o single-quote pedaço, diga não.
-Se o percorredor está on any possessive (type 1 - single-quote, s, non-glom-byte), diga sim.
-Se o percorredor está on any possessive (type 2 - preceding s, single-quote, non-glom-byte), diga sim.
+Se o source deste percorredor estiver em branco, diga não.
+Se o target deste first deste source deste percorredor não for o single-quote pedaço, diga não.
+Se o percorredor estiver on any possessive (type 1 - single-quote, s, non-glom-byte), diga sim.
+Se o percorredor estiver on any possessive (type 2 - preceding s, single-quote, non-glom-byte), diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um percorredor está on any possessive (type 1 - single-quote, s, non-glom-byte):
-Se o percorredor's source does not start with "'s", diga não.
+Se o source deste percorredor does not start with "'s", diga não.
 Isole o percorredor.
-Adicione 2 to o percorredor's source's first.
-Se o percorredor's source estiver em branco, diga sim.
-Se o percorredor's source's first's target não for any glom pedaço, diga sim.
+Adicione 2 to o first deste source deste percorredor .
+Se o source deste percorredor estiver em branco, diga sim.
+Se o target deste first deste source deste percorredor não for any glom pedaço, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um percorredor está on any possessive (type 2 - preceding s, single-quote, non-glom-byte):
 Isole o percorredor.
-Se o percorredor's source's first for o percorredor's original subtexto's first, diga não.
-Subtraia 1 from o percorredor's source's first.
-Se o percorredor's source's first's target não for o little-s pedaço ou o S maiúsculo, diga não.
-Adicione 2 to o percorredor's source's first.
-Se o percorredor's source estiver em branco, diga sim.
-Se o percorredor's source's first's target não for any glom pedaço, diga sim.
+Se o first deste source deste percorredor for o first deste subtexto original deste percorredor, diga não.
+Subtraia 1 from o first deste source deste percorredor.
+Se o target deste first deste source deste percorredor não for o little-s pedaço ou o S maiúsculo, diga não.
+Adicione 2 to o first deste source deste percorredor.
+Se o source deste percorredor estiver em branco, diga sim.
+Se o target deste first deste source deste percorredor não for any glom pedaço, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um percorredor está on any simile:
@@ -2431,7 +2433,7 @@ Isole o percorredor.
 Se o token deste percorredor for "LIKE", diga sim.
 Se o token deste percorredor não for "AS", diga não.
 Mova o percorredor (compilador rules).
-Se o token deste percorredor for any indefinite article, diga não.
+Se o token deste percorredor for any artigo indefinido, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um percorredor é o start of any function:
@@ -2458,7 +2460,7 @@ Etapas necessárias para que se determine se um string ends with any consonant e 
 Lance um subtexto on o string.
 Subtraia o other string's length from o last deste subtexto.
 Se o subtexto estiver em branco, diga não.
-Se o subtexto's last's target não for any consonant, diga não.
+Se o target deste last deste subtexto não for any consonant, diga não.
 Se o string does not end with o other string, diga não.
 Diga sim.
 
@@ -2466,18 +2468,18 @@ Etapas necessárias para que se determine se um string ends with any vowel e anot
 Lance um subtexto on o string.
 Subtraia o other string's length from o last deste subtexto.
 Se o subtexto estiver em branco, diga não.
-Se o subtexto's last's target não for any vowel, diga não.
+Se o target deste last deste subtexto não for any vowel, diga não.
 Se o string does not end with o other string, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um string ends with any consonant:
 Se o string estiver em branco, diga não.
-Se o string's last's target não for any consonant, diga não.
+Se o target deste last deste string não for any consonant, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um string ends with any vowel:
 Se o string estiver em branco, diga não.
-Se o string's last's target não for any vowel, diga não.
+Se o target deste last deste string não for any vowel, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um string é any plus:
@@ -2576,8 +2578,8 @@ Se o string for "with", diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um string é any article:
-Se o string for any indefinite article, diga sim.
-Se o string for any definite article, diga sim.
+Se o string for any artigo indefinido, diga sim.
+Se o string for any artigo definido, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um string é any conjunction:
@@ -2669,27 +2671,27 @@ Diga não.
 
 Etapas necessárias para que se determine se um string é any hex literal:
 Se o string estiver em branco, diga não.
-Se o string's first's target for o cifrão, diga sim.
+Se o target deste first deste string for o cifrão, diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um string é any definite article:
+Etapas necessárias para que se determine se um string é any artigo definido:
 \PAL
 Se o string for "o", diga sim.
 Se o string for "a", diga sim.
 Se o string for "os", diga sim.
 Se o string for "as", diga sim.
-Se o string for any pronome demonstrativo de abrangência específica, diga sim.
+Se o string for any pronome demonstrativo adjacente, diga sim.
 \CAL
 Se o string for "the", diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um string é any pronome demonstrativo:
 \CEL
-Se o string for any pronome demonstrativo de abrangência específica, diga sim.
+Se o string for any pronome demonstrativo adjacente, diga sim.
 Se o string for any pronome demonstrativo abrangente, diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um string é any pronome demonstrativo de abrangência específica:
+Etapas necessárias para que se determine se um string é any pronome demonstrativo adjacente:
 \CEL
 Se o string for "este", diga sim.
 Se o string for "esta", diga sim.
@@ -2709,27 +2711,27 @@ Se o string for "aqueles", diga sim.
 Se o string for "aquelas", diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um percorredor está on any definite article:
-Se o percorredor está on any portuguese to, diga não.
-Se o token deste percorredor não for any definite article, diga não.
+Etapas necessárias para que se determine se um percorredor está on any artigo definido:
+Se o percorredor estiver on any preposição conectiva, diga não.
+Se o token deste percorredor não for any artigo definido, diga não.
 Diga sim.
 
-Etapas necessárias para que se determine se um percorredor está on any indefinite article:
-Se o percorredor está on any portuguese to, diga não.
-Se o token deste percorredor não for any indefinite article, diga não.
+Etapas necessárias para que se determine se um percorredor está on any artigo indefinido:
+Se o percorredor estiver on any preposição conectiva, diga não.
+Se o token deste percorredor não for any artigo indefinido, diga não.
 Diga sim.
 
-Etapas necessárias para que se determine se um percorredor está on any portuguese to:
+Etapas necessárias para que se determine se um percorredor está on any preposição conectiva:
 Se o token deste percorredor não for "a", diga não.
 Isole o percorredor. Mova o percorredor (compilador rules).
 Se o token deste percorredor for any article, diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um string é any indefinite article:
+Etapas necessárias para que se determine se um string é any artigo indefinido:
 \PAL
-Se o string for any portuguese indefinite article, diga sim.
+Se o string for any artigo definido português, diga sim.
 \CAL
-Se o string for any english indefinite article, diga sim.
+Se o string for any artigo definido inglês, diga sim.
 \Se o string for "a", diga sim.
 Se o string for "an", diga sim.
 Se o string for "another", diga sim.
@@ -2737,7 +2739,7 @@ Se o string for "some", diga sim.
 Se o string for any pronome demonstrativo abrangente, diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um string é any portuguese indefinite article:
+Etapas necessárias para que se determine se um string é any artigo definido português:
 \PAL
 Se o string for "um", diga sim.
 Se o string for "uma", diga sim.
@@ -2749,7 +2751,7 @@ Se o string for "alguns", diga sim.
 Se o string for "algumas", diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um string é any english indefinite article:
+Etapas necessárias para que se determine se um string é any artigo definido inglês:
 \CAL
 Se o string for "an", diga sim.
 Se o string for "another", diga sim.
@@ -2765,14 +2767,14 @@ Se o string for any hex literal, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um string é any mark:
-Se o string's length não for 1, diga não.
-Se o string's first's target for any mark, diga sim.
+Se o length deste string não for 1, diga não.
+Se o target deste first deste string for any mark, diga sim.
 Diga não.
 
 \Etapas necessárias para que se determine se um string é any monikette string:
 \Se o string estiver em branco, diga não.
 \Se o string for "the", diga não.
-\Se o string é any indefinite article, diga não.
+\Se o string é any artigo indefinido, diga não.
 \Se o string é any possessive, diga não.
 \Se o string é any literal, diga não.
 \Se o string é any mark, diga não.
@@ -2781,8 +2783,8 @@ Diga não.
 
 Etapas necessárias para que se determine se um percorredor está on any monikette string:
 Se o token deste percorredor estiver em branco, diga não.
-Se o percorredor estiver on any definite article, diga não.
-Se o percorredor estiver on any indefinite article, diga não.
+Se o percorredor estiver on any artigo definido, diga não.
+Se o percorredor estiver on any artigo indefinido, diga não.
 Se o token deste percorredor for any possessive, diga não.
 Se o token deste percorredor for any literal, diga não.
 Se o token deste percorredor for any mark, diga não.
@@ -2827,10 +2829,10 @@ Se o token deste percorredor for any symbol, diga sim.
 Se o token deste percorredor for any article, diga sim.
 Se o token deste percorredor for any conjunction, diga sim.
 Se o token deste percorredor for any possessive, diga sim.
-Se o percorredor está on any reverse-possessive, diga sim.
+Se o percorredor estiver on any reverse-possessive, diga sim.
 Se o token deste percorredor for any verb, diga sim.
 Se o token deste percorredor for any operator, diga sim.
-Se o percorredor está on any preposition, diga sim.
+Se o percorredor estiver on any preposition, diga sim.
 Se o token deste percorredor for any qualifier, diga sim.
 Se o token deste percorredor for any literal, diga sim.
 Se o token deste percorredor for any called, diga sim.
@@ -2902,7 +2904,7 @@ Se o string for "divided", diga sim.
 Se o string for "then", diga sim.
 Diga não.
 
-\Etapas necessárias para que se determine se um string é any english indefinite article:
+\Etapas necessárias para que se determine se um string é any artigo definido inglês:
 \Se o string for "a", diga sim.
 \Se o string for "an", diga sim.
 \Se o string for "another", diga sim.
@@ -2938,7 +2940,7 @@ Diga não.
 Etapas necessárias para que se determine se um percorredor está on any preposition:
 Coloque o token deste percorredor into um subtexto.
 \PAL
-Se o percorredor está on any portuguese to, diga sim. \ "a" followed por um article for "to" in portuguese
+Se o percorredor estiver on any preposição conectiva, diga sim. \ "a" followed por um article for "to" in portuguese
 Se o subtexto for "abaixo", diga sim. \ down
 Se o subtexto for "acima", diga sim. \ up
 Se o subtexto for "ante", diga sim. \ antes de
@@ -3196,7 +3198,7 @@ Diga não.
 
 Etapas necessárias para que se determine se um string é any qualifier:
 Se o string estiver em branco, diga não.
-Se o string's first's target for o left-paren pedaço, diga sim.
+Se o target deste first deste string for o left-paren pedaço, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um string é any reverse-possessive:
@@ -3235,12 +3237,12 @@ Diga não.
 
 Etapas necessárias para que se determine se um string é any string literal:
 Se o string estiver em branco, diga não.
-Se o string's first's target for o aspas duplas, diga sim.
+Se o target deste first deste string for as aspas duplas, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um string é any symbol:
-Se o string's length não for 1, diga não.
-Se o string's first's target for any symbol, diga sim.
+Se o length deste string não for 1, diga não.
+Se o target deste first deste string for any symbol, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um string é any verb:
@@ -3328,8 +3330,8 @@ Se o string for "Etapas", diga sim.
 \CAL
 Se o string for "to", diga sim.
 \default
-Se o string for any indefinite article, diga sim.
-Se o string for any definite article, diga sim.
+Se o string for any artigo indefinido, diga sim.
+Se o string for any artigo definido, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um string é any conditional:
@@ -3405,7 +3407,7 @@ Diga não.
 
 Etapas necessárias para que se determine se um string é any repeat:
 \PAL
-Se o string for "repetir", diga sim. \# muito usado em pseudo-codigo
+\Se o string for "repetir", diga sim. \# muito usado em pseudo-codigo
 Se o string for "repita", diga sim. \# muito usado em pseudo-codigo
 \CAL
 Se o string for "repeat", diga sim.
@@ -3416,7 +3418,7 @@ Etapas necessárias para que se determine se um string é any say:
 Se o string for "diga", diga sim. \# modo imperativo
 Se o string for "responda", diga sim. \# modo imperativo
 Se o string for "informe", diga sim. \# modo imperativo
-Se o string for "dizer", diga sim. \# modo infinitivo opcional.
+\Se o string for "dizer", diga sim. \# modo infinitivo opcional.
 \CAL
 Se o string for "say", diga sim.
 Diga não.
@@ -3428,7 +3430,6 @@ Se o string for "decida", diga sim.
 \Se o string for "escolha", diga sim.
 Se o string for "determine", diga sim.
 Se o string for "conclua", diga sim.
-Se o string for "esclareça", diga sim.
 Se o string for "esclareça", diga sim.
 Se o string for "descubra", diga sim.
 Se o string for "analise", diga sim.
@@ -3473,17 +3474,17 @@ Diga não.
 
 Etapas necessárias para que se determine se um string é o start of any expression:
 Se o string for any sign, diga sim.
-Se o string for any indefinite article, diga sim.
-Se o string for any definite article, diga sim.
+Se o string for any artigo indefinido, diga sim.
+Se o string for any artigo definido, diga sim.
 Se o string for any literal, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um string é o start of any global:
-Se o string for any definite article, diga sim.
+Se o string for any artigo definido, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um string é o start of any new local:
-Se o string for any indefinite article, diga sim.
+Se o string for any artigo indefinido, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um string é o start of any optional info:
@@ -3498,10 +3499,10 @@ Etapas necessárias para que se determine se um string é o start of any routine:
 \PAL
 Se o string for "Passos", diga sim.
 Se o string for "Etapas", diga sim.
-Se o string for "Etapas Etapas necessárias para que se", diga sim.
-Se o string for "Passos Etapas necessárias para que se", diga sim.
+Se o string for "Etapas necessárias para que se", diga sim. \verificar depois
+Se o string for "Passos necessários para que se", diga sim.
 \CAL
-Se o string for "to", diga sim.
+Se o string for "to", diga sim. \verificar se pode ser excluído
 Diga não.
 
 Etapas necessárias para que se determine se um string é o start of any statement:
@@ -3512,11 +3513,11 @@ Se o string estiver em branco, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um string é o start of any type:
-Se o string for any indefinite article, diga sim.
+Se o string for any artigo indefinido, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um string é o start of any variable:
-Se o string for any definite article, diga sim.
+Se o string for any artigo definido, diga sim.
 \Se o string for "do", diga sim. \ this é iffy, here por reverse-possessives
 Diga não.
 
@@ -3524,24 +3525,24 @@ Etapas necessárias para que se determine se um string has any stressed vowel:
 Isole o string.
 Percorra.
 Se o string estiver em branco, diga não.
-Se o string's last's target for any stressed vowel, diga sim.
-Subtraia 1 from o string's last.
+Se o target deste last deste string for any stressed vowel, diga sim.
+Subtraia 1 from o last deste string.
 Repita.
 
 Etapas necessárias para que se determine se um term é vazio:
-Se o term's variable não for inexistente, diga não.
-Se o term's phrase não estiver em branco, diga não.
+Se a variable deste term não for inexistente, diga não.
+Se a phrase deste term não estiver em branco, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um type puder ser reduzido para um string using o base name:
 Se o type for inexistente, diga não.
 Se o name deste type for o string, diga sim.
-Se o type's cooking alarme estiver ativo, diga não.
-Ligue o type's cooking alarme.
-Encontre um base type usando o type's base name e o type index.
-Se o base type for inexistente, desative o type's cooking alarme; diga não.
-Se o base type puder ser reduzido para o string using o base name, desative o type's cooking alarme; say yes.
-Desative o type's cooking alarme.
+Se o cooking alarme deste type estiver ativo, diga não.
+Ligue o cooking alarme deste type.
+Encontre um base type usando o base name deste type e o catálogo de tipos.
+Se o base type for inexistente, desative o cooking alarme deste type; diga não.
+Se o base type puder ser reduzido para o string using o base name, desative o cooking alarme deste type; say yes.
+Desative o cooking alarme deste type.
 Diga não.
 
 Etapas necessárias para que se determine se um type puder ser reduzido para um type name:
@@ -3551,27 +3552,27 @@ Percorra.
 Se o type for inexistente, diga não.
 Se o name deste type for o type name, diga sim.
 Se o type's base type for o type, diga não.
-Coloque o type's base type into o type.
+Coloque o base type deste type into o type.
 Repita.
 
 Etapas necessárias para que se determine se um type é any built-in type:
 Se o type for inexistente, diga não.
-Se o type for o type's base type, diga sim.
+Se o type for o base type deste type, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um type é value pushable:
 Se o type for inexistente, diga não.
-Se o type for inexistente, diga não.
-Se o type's length for 4, diga sim.
-Se o type's length for 2, diga sim.
-Se o type's length for 1, diga sim.
+Se o type for inexistente, diga não. \\ repetido?
+Se o length deste type for 4, diga sim.
+Se o length deste type for 2, diga sim.
+Se o length deste type for 1, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um type deveria ser finalizado:
 Se o type for inexistente, diga não.
 Se o type puder ser reduzido para "subtexto", diga não.
 Se o type puder ser reduzido para "string", diga sim.
-Se o type's fields deveria ser finalizado, diga sim.
+Se os fields deste type deveriam ser finalizados, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um type deveria ser ignorado:
@@ -3594,30 +3595,93 @@ Obtenha another variable from o variables.
 Se o other variable for inexistente, diga não.
 Se o other variable's name estiver em branco, repita.
 Se o other variable for o variable, repita.
-Se o other variable's name for o variable's name, diga sim.
+Se o other variable's name for o name desta variable, diga sim.
 Repita.
 
 The dereference tag é uma tag igual a 5.
 
 An dos header é um conjunto with
-An wyrd called signature,
-An wyrd called numberofbytesonlastpage,
+An wyrd called signature, \\ The value of this word is 5A4DH (with the 4DH coming first). 
+\\ Signature Word. This contains a 'magic number' which provides a simple check that the file really is a DOS .EXE file;
+\\ it follows that the filename extension does not in fact have to be .EXE, as long as programs check this word. 
+\\The value of this word is 5A4DH (with the 4DH coming first). 
+\\These two bytes represent the character string 'MZ', the initials of Mark Zibowski, a Microsoft employee at the time the file format was designed.
+An wyrd called numberofbytesonlastpage, \\ The last page may contain between 1 and 512 bytes
+\\Last Page Size. 
+\\The file occupies a number of 512 byte pages. 
+\\The last page may contain between 1 and 512 bytes. 
+\\This word indicates the number of bytes actually used in the last page, 
+\\with the special case of a full page being represented by a value of zero (since the last page is never empty).
 An wyrd called numberofpages,
+\\ File Pages. 
+\\This word contains a count of the number of pages required to hold the file. 
+\\For example, if the file contains 1024 bytes, this word would contain 0002H; 
+\\if the file contains 1025 bytes, this word would contain 0003H. 
+\\The Last Page Size field is used to determine the number of valid bytes in the final page. 
+\\Thus, if the file contains 1024 bytes, the Last Page Size field contains 0000H, because no bytes overflow into a final partly used page. 
+\\If the file contains 1025 bytes, then the Last Page Size field contains 0001H, because the final page contains only one valid byte (the 1025th byte).
 An wyrd called relocuss,
+\\ Relocation Items. 
+\\ This word gives the number of entries that exist in the relocation pointer table. 
+\\It is quite in order for this value to be zero, in which case there are no relocation entries.
 An wyrd called sizeofheaderinparagraphs,
+\\ Header Paragraphs. 
+\\This word gives the size of the .EXE header in paragraphs. 
+\\It indicates the offset of the program's compiled/assembled and linked image (the load module) within the .EXE file. 
+\\The size of the load module can be deduced by subtracting this value (converted to bytes) from the overall file size 
+\\derived from combining the File Pages and Last Page Size values. 
+\\The header always spans an even number of paragraphs.
 An wyrd called minimumextraparagraphs,
+\\ MINALLOC. 
+\\This word indicates the minimum number of paragraphs the program requires to begin execution. 
+\\This is in addition to the memory required to hold the load module. 
+\\This value normally represents the total size of any uninitialised data and/or stack segments that are linked at the end of a program. 
+\\This space is not directly included in the load module, since there are no particular initialising values and it would simply waste disk space.
 An wyrd called maximumextraparagraphs,
+\\ MAXALLOC. 
+\\This word indicates the maximum number of paragraphs that the program would like allocated to it before it begins execution. 
+\\This indicates additional memory over and above that required by the load module and the value specified by MINALLOC. 
+\\If the request cannot be satisfied, the program is allocated as much memory as is available.
 An wyrd called initialrelativess,
+\\ Initial SS value. 
+\\This word contains the paragraph address of the stack segment relative to the start of the load module. 
+\\At load time, this value is relocated by adding the address of the start segment of the program to it, 
+\\and the resulting value is placed in the SS register before the program is started. 
+\\In DOS, the start segment of the program is the first segment boundary in memory after the PSP.
 An wyrd called initialsp,
+\\ Initial SP value. 
+\\This word contains the absolute value that must be loaded into the SP register before the program is given control. 
+\\Since the actual stack segment is determined by the loader, and this is merely a value within that segment, it does not need to be relocated.
 An wyrd called initialchecksum,
+\\ Complemented Checksum. 
+\\This word contains a checksum of the contents of the .EXE file. 
+\\ Its value is rarely checked, but its purpose is to ensure the integrity of the data within the file. 
+\\ Full details of how it is calculated appear in the section on checksum calculation.
 An wyrd called initialip,
-An wyrd called initialirelativecs,
+\\ Initial IP value. 
+\\This word contains the absolute value that should be loaded into the IP register in order to transfer control to the program. 
+\\Since the actual code segment is determined by the loader, and this is merely a value within that segment, it does not need to be relocated.
+An wyrd called initialirelativecs, 
+\\ Pre-relocated initial CS value. 
+\\ This word contains the initial value, relative to the start of the load module, that should be placed in the CS register in order to transfer control to the program. 
+\\ At load time, this value is relocated by adding the address of the start segment of the program to it, and the resulting value is placed in the CS register
+\\ when control is transferred.
 An wyrd called addressofrelocationtableinfile,
+\\ Relocation table offset. 
+\\ This word gives the offset from the start of the file to the relocation pointer table. 
+\\ This value must be used to locate the relocation pointer table (rather than assuming a fixed location) 
+\\because variable-length information pertaining to program overlays can occur before this table, causing its position to vary. 
+\\A value of 40H in this field generally indicates a different kind of executable file, not a DOS 'MZ' type.
 An wyrd called overlynumber,
-8 pedaços called resveredbytes,
-An wyrd called oemidentifier,
-An wyrd called oeminfo,
-20 pedaços called reservedwords, 
+\\ Overlay number. 
+\\ This word is normally set to 0000H, because few programs actually have overlays. 
+\\It changes only in files containing programs that use overlays; see the note below.
+8 pedaços called resveredbytes, \\ Specifies reserved words for the program (known in winnt.h as e_res[4]), usually set to zero by the linker. 
+\\In this case, just use a single reserved1 set to zero; if not zero create four reserved1 with the correct value.
+An wyrd called oemidentifier, \\ Specifies the identifier for the OEM for e_oeminfo.
+An wyrd called oeminfo, \\ Specifies the OEM information for a specific value of e_oeminfo.
+20 pedaços called reservedwords, \\ Specifies reserved words for the program (known in winnt.h as e_res[10]), usually set to zero by the linker. 
+\\In this case, just use a single reserved1 set to zero; if not zero create ten reserved1 with the correct value.
 An número called addressofpeheaderinfile.
 
 Etapas necessárias para que se eliminate duplicate nicknames from alguns variables:
@@ -3636,11 +3700,11 @@ Repita.
 Etapas necessárias para que se eliminate duplicate nicknames usando uma variable e um index:
 Se o variable for inexistente, cancele.
 Se o index for inexistente, cancele.
-Encontre another variable usando o variable's nickname e o index.
-Se o other variable for inexistente, encontre o other variable usando o variable's name e o index.
-Se o other variable for inexistente, catalogue o variable usando o variable's nickname e o index; exit.
+Encontre another variable usando o nickname desta variable e o index.
+Se o other variable for inexistente, encontre o other variable usando o name desta variable e o index.
+Se o other variable for inexistente, catalogue o variable usando o nickname desta variable e o index; exit.
 Limpe o other variable's nickname.
-Limpe o variable's nickname.
+Limpe o nickname desta variable.
 
 The end if tag é uma tag igual a 6.
 
@@ -3670,11 +3734,11 @@ An function routine (reference),
 An push alarme.
 
 Etapas necessárias para que se finalize o compilador:
-Destroy o utility index.
-Destroy o routine index.
-Destroy o literal index.
-Destroy o global index.
-Destroy o type index.
+Destroy o catálogo de rotinas úteis.
+Destroy o catálogo geral de rotinas.
+Destroy o catálogo de variáveis hexadecimais.
+Destroy o catálogo de variáveis globais.
+Destroy o catálogo de tipos.
 Destroy o imports.
 Destroy o routines.
 Destroy o literals.
@@ -3695,37 +3759,37 @@ Repita.
 Etapas necessárias para que se encontre um field term usando um phrase e um type e um name:
 Limpe o field term.
 Encontre o field term usando o type e o name.
-Se o field term's field não for inexistente, cancele.
+Se o field deste field term não for inexistente, cancele.
 Se o phrase não estiver em branco, encontre uma routine usando "coloque" e o phrase e "'s " then o name e "into".
-Se o routine não for inexistente, coloque o routine into o field term's function; exit.
+Se o routine não for inexistente, coloque o routine into o function deste field term; exit.
 Se o type for inexistente, cancele.
 Encontre o routine usando "coloque" e o type e "'s " then o name e "into".
-Se o routine não for inexistente, acione o field term's push alarme; coloque o routine into o field term's function; exit.
-\ code below por looking deep within endereço de memórias - um debatable feature
+Se o routine não for inexistente, acione o field term's push alarme; coloque o routine into o function deste field term; exit.
+\ code below for looking deep within endereço de memórias - a debatable feature
 \ if o target type deste type não for inexistente, encontre o routine usando "coloque" e o target type deste type e "'s " then o name e "into".
 \ if o routine não for inexistente, acione o field term's dereference alarme; coloque o routine into o field term's function; exit.
 
 Etapas necessárias para que se encontre um field term usando um type e um name:
 Se o type for inexistente, cancele.
-Encontre um field usando o name e o type's fields.
-Se o field não for inexistente, coloque o field into o field term's field; exit.
+Encontre um field usando o name e os fields deste type.
+Se o field não for inexistente, coloque o field into o field deste field term; exit.
 Se o target type deste type não for inexistente, encontre o field usando o name e os fields deste target type deste type.
-Se o field não for inexistente, acione o field term's dereference alarme; coloque o field into o field term's field; exit.
+Se o field não for inexistente, acione o dereference alarme deste field term; coloque o field into o field deste field term; exit.
 
 Etapas necessárias para que se encontre um fragment usando another fragment e uma tag:
 Coloque o other fragment into o fragment.
 Percorra.
 Se o fragment for inexistente, cancele.
-Se o fragment's tag for o tag, cancele.
-Coloque o fragment's next into o fragment.
+Se o tag deste fragment for o tag, cancele.
+Coloque o next deste fragment into o fragment.
 Repita.
 
 Etapas necessárias para que se encontre um fragment usando another fragment e uma tag (backwards):
 Coloque o other fragment into o fragment.
 Percorra.
 Se o fragment for inexistente, cancele.
-Se o fragment's tag for o tag, cancele.
-Coloque o fragment's previous into o fragment.
+Se o tag deste fragment for o tag, cancele.
+Coloque o previous deste fragment into o fragment.
 Repita.
 
 Etapas necessárias para que se encontre um import usando um string:
@@ -3733,7 +3797,7 @@ Esvazie o import.
 Percorra.
 Obtenha o import from o imports.
 Se o import for inexistente, cancele.
-Se o import's name for o string, cancele.
+Se o name deste import for o string, cancele.
 Repita.
 
 Etapas necessárias para que se encontre um endereço completo e um row# usando um endereço de memória do pedaço :
@@ -3741,20 +3805,20 @@ Limpe o endereço completo.
 Coloque 0 into o row#.
 Encontre um source file usando o endereço de memória do pedaço .
 Se o source file for inexistente, cancele.
-Coloque o source file's endereço completo into o endereço completo.
+Coloque o endereço completo deste source file into o endereço completo.
 Encontre o row# usando o source file e o endereço de memória do pedaço .
 
 Etapas necessárias para que se encontre uma routine usando um moniker e um monikette e um index:
 Se o monikette for inexistente, cancele.
 Esvazie o routine.
 Isole o moniker.
-Coloque o monikette's type into o monikette's current type.
-Lance o monikette's subtexto atual on o monikette's string.
+Coloque o type deste monikette into o type atual deste monikette.
+Lance o subtexto atual deste monikette on o string deste monikette.
 Percorra.
 Posponha o monikette to o moniker (while bubbling).
 Encontre um refer usando o moniker e o index.
-Se o refer não for inexistente, coloque o refer's endereço de memória into o routine.
-Se o refer não for inexistente, encontre o routine usando o moniker e o monikette's next e o index.
+Se o refer não for inexistente, coloque o endereço de memória deste refer into o routine.
+Se o refer não for inexistente, encontre o routine usando o moniker e o next deste monikette e o index.
 Se o routine não for inexistente, pare.
 Bubble o monikette.
 Se o monikette estiver bubbled out, pare.
@@ -3763,7 +3827,7 @@ Repita.
 
 Etapas necessárias para que se encontre uma routine usando alguns monikettes:
 Esvazie o routine.
-Encontre o routine usando um moniker e o monikettes' first e o routine index.
+Encontre o routine usando um moniker e o first destes monikettes e o catálogo geral de rotinas.
 
 Etapas necessárias para que se encontre uma routine usando um string e another string e um third string e um fourth string:
 Adicione um monikette to alguns monikettes usando o string.
@@ -3812,7 +3876,7 @@ Coloque 1 into o row#.
 Percorra.
 Se o subtexto estiver em branco, cancele.
 Se o first deste subtexto for o endereço de memória do pedaço , cancele.
-Se o subtexto's first's target for o return pedaço, adicione 1 to o row#.
+Se o target deste first deste subtexto for o return pedaço, adicione 1 to o row#.
 Adicione 1 to o first deste subtexto.
 Repita.
 
@@ -3821,8 +3885,8 @@ Se o endereço de memória do pedaço for inexistente, esvazie o source file; exit.
 Percorra.
 Obtenha o source file from o source files.
 Se o source file for inexistente, cancele.
-Se o endereço de memória do pedaço for menor do que o source file's trecho's first, repita.
-Se o endereço de memória do pedaço for maior do que o source file's trecho's last, repita.
+Se o endereço de memória do pedaço for menor do que o first deste trecho deste source file, repita.
+Se o endereço de memória do pedaço for maior do que o last deste trecho deste source file, repita.
 
 Etapas necessárias para que se encontre um type e um nickname usando um name:
 Esvazie o type.
@@ -3833,7 +3897,7 @@ Encontre o type e o nickname usando o name (backward).
 \Lance um subtexto on o name.
 \Percorra.
 \Se o subtexto estiver em branco, cancele.
-\Encontre o type usando o subtexto e o type index.
+\Encontre o type usando o subtexto e o catálogo de tipos.
 \Se o type não for inexistente, pare.
 \Skip to o next palavra in o subtexto.
 \Repita.
@@ -3848,11 +3912,11 @@ Limpe o nickname.
 Lance um subtexto on o name.
 Percorra.
 Se o subtexto estiver em branco, cancele.
-Encontre o type usando o subtexto e o type index.
+Encontre o type usando o subtexto e o catálogo de tipos.
 Se o type não for inexistente, pare.
 Skip to o previous palavra in o subtexto.
 Repita.
-Coloque o name's last into another subtexto's last.
+Coloque o last deste name into another subtexto's last .
 Coloque o last deste subtexto mais 2 into o other subtexto's first.
 Se o other subtexto não estiver em branco, coloque o other subtexto into o nickname.
 Se o other subtexto estiver em branco, coloque o subtexto into o nickname.
@@ -3864,7 +3928,7 @@ Limpe o nickname.
 Lance um subtexto on o name.
 Percorra.
 Se o subtexto estiver em branco, cancele.
-Encontre o type usando o subtexto e o type index.
+Encontre o type usando o subtexto e o catálogo de tipos.
 Se o type não for inexistente, pare.
 Skip to o next palavra in o subtexto.
 Repita.
@@ -3875,21 +3939,21 @@ Se o other subtexto estiver em branco, coloque o subtexto into o nickname.
 
 Etapas necessárias para que se encontre uma variable usando um name:
 Se a rotina utilizada atualmente for inexistente, esvazie o variable; exit.
-Encontre o variable usando o name e o rotina utilizada atualmente's locals.
+Encontre o variable usando o name e os locals desta rotina utilizada atualmente.
 Se o variable não for inexistente, cancele.
-Encontre o variable usando o name e o rotina utilizada atualmente's parameters.
+Encontre o variable usando o name e os parameters desta rotina utilizada atualmente.
 Se o variable não for inexistente, cancele.
-Encontre o variable usando o name e o global index.
+Encontre o variable usando o name e o catálogo de variáveis globais.
 Se o variable não for inexistente, cancele.
-Encontre o variable usando o name e o literal index.
+Encontre o variable usando o name e o catálogo de variáveis hexadecimais.
 
-Etapas necessárias para que se encontre uma variable usando um name e alguns variables:
+Etapas necessárias para que se encontre uma variable usando um name e algumas variables:
 Esvazie o variable.
 Percorra.
 Obtenha o variable from o variables.
 Se o variable for inexistente, cancele.
-Se o variable's name for o name, cancele.
-Se o variable's nickname for o name, cancele.
+Se o name desta variable for o name, cancele.
+Se o nickname desta variable for o name, cancele.
 Repita.
 
 
@@ -3899,9 +3963,9 @@ Repita.
 \Se o variable não for inexistente, cancele.
 \Encontre o variable usando o name e o rotina utilizada atualmente's parameters.
 \Se o variable não for inexistente, cancele.
-\Encontre o variable usando o name e o global index.
+\Encontre o variable usando o name e o catálogo de variáveis globais.
 \Se o variable não for inexistente, cancele.
-\ Encontre o variable usando o name e o literal index.
+\ Encontre o variable usando o name e o catálogo de variáveis hexadecimais.
 
 \Etapas necessárias para que se encontre uma variable usando um name e alguns variables:
 \esvazie o variable.
@@ -3925,31 +3989,31 @@ An texto hexadecimal called code.
 
 Etapas necessárias para que se gere um name usando um string:
 Coloque o string into o name.
-Adicione 1 to o compilador's name contagem.
-Convert o compilador's name contagem to another string.
+Adicione 1 to o name contagem deste compilador.
+Convert o name contagem deste compilador to another string.
 Posponha o other string to o name.
 
 Etapas necessárias para que se obtenha um address usando uma routine:
-Se o routine's address não for 0, coloque o routine's address into o address; exit.
-Coloque -1 into o routine's address.
-Encontre another routine usando o routine's employs moniker e o routine index.
-Se o other routine for inexistente, abort with "Eu não consegui encontrar um tarefa '" then o routine's employs moniker then "' que você está tentando employ." e o routine's locus; exit.
+Se o address desta routine não for 0, coloque o address desta routine into o address; exit.
+Coloque -1 into o address desta routine.
+Encontre another routine usando o employs moniker desta routine e o catálogo geral de rotinas.
+Se o other routine for inexistente, abort with "Eu não consegui encontrar uma tarefa '" then o employs moniker desta routine then "' que você está tentando employ." e o locus desta routine; exit.
 Se o other routine's address for -1, abort with "Referência recursiva na cláusula employ." e o routine's locus; exit. \Bora traduzir
 Obtenha o address usando o other routine.
-Coloque o address into o routine's address.
+Coloque o address into o address desta routine.
 
 Etapas necessárias para que se obtenha um contagem usando alguns imports (all entries mais markers):
 Coloque 0 into o contagem.
 Percorra.
 Obtenha um import from o imports.
 Se o import for inexistente, cancele.
-Adicione a contagem desta entries deste import to o contagem.
+Adicione a contagem destas entries deste import to o contagem.
 Adicione 1 to o contagem.
 Repita.
 
 An global body é um subtexto.
 
-The global index é um index.
+The catálogo de variáveis globais é um index.
 
 An global é uma variable.
 
@@ -3960,11 +4024,29 @@ The image base é um address igual a 4194304 [$00400000].
 The import zona é um zona.
 
 An import header é um conjunto with
-An address called original first thunk,
-An número called timestamp,
-An address called forwarder chain,
-An address called name memory address,
-An address called first thunk memory address.
+An address called original first thunk, \ consulte https://www.linkedin.com/pulse/why-pe-need-original-first-thunkoft-milad-kahsari-alhadi/
+\ https://stackoverflow.com/questions/42413937/why-pe-need-original-first-thunkoft#:~:text=The%20original%20first%20thunk%20is,%2C%20user32%20etc)%20are%20known.
+\Thunks are the defnitive pieces of codes in an operating system that handle the transitions between 16 and 32-bit code.
+\ Thus they ensure backward compatibility between the calls made by the application.
+\ The OS is subjected with this facility for backward compatibility, so that the 16 bit applications can run smoothly in 32 bit environment.
+\ The original first thunk is needed if the imports are bound but the imported .DLL does not match.
+\ On a fresh unpatched version of Windows, all addresses of all functions in the base .DLLs (ntdll, kernel32, user32 etc) are known. 
+\Take shell32 for example, it links to kernel32!CreateProcess and the true address of CreateProcess can be stored directly in shell32. 
+\This is called import binding and lets the loader skip the step where it looks up all the addresses of the imported functions.
+\This does not work if the imported .DLL has not been loaded at its preferred address nor if the .DLL has changed (security update etc). 
+\If this happens then the loader has to look up the functions "the normal way" and the original first thunk array has to be used
+\ because that is the only place where the RVAs of the function names are stored.
+\ If import binding is not used then the original first thunk array is optional and might not be present.
+\ ASLR has probably made this optimization irrelevant.
+An número called timestamp, \ Set to zero until bound; then this feld is set to the TimeDateStamp of the exporting DLL's 'FileHeader'
+An address called forwarder chain, \ Forwarder Chain: The 32-bit index of the frst forwarder in the list of imported functions
+An address called name memory address, 
+\It holds the RVA [Relative Virtual Address] of the dll to be loaded into memory. It is a dword value. 
+\It is comprised of : RVA = Image Base + Endian Order 
+\Note: As we know OllyDbg gives the result in the Big Endian order where as the x86 architecture holds the address in the Little Endian order, 
+\ so the address gets exchanged reversibly in the di tuples
+An address called first thunk memory address. 
+\ Once the API is linked and gets loaded into memory the frst thunk which is a RVA points to the Import Address Table [IAT]
 
 An import é uma coisa with
 An name address,
@@ -3980,14 +4062,14 @@ The increment tag é uma tag igual a 10.
 Etapas necessárias para que se catalogue um global:
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Se o global for inexistente, cancele.
-Se o global's name estiver in o global index, abort with "'" then o global's name then "' é uma variável global duplicada." e o global's locus; exit.
-Catalogue o global usando o global's name e o global index.
+Se o name deste global estiver in o catálogo de variáveis globais, abort with "'" then o name deste global then "' é uma variável global duplicada." e o locus deste global; exit.
+Catalogue o global usando o name deste global e o catálogo de variáveis globais.
 
 Etapas necessárias para que se catalogue um literal:
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Se o literal for inexistente, cancele.
-Se o literal's name estiver in o literal index, abort with "Erro interno no nome do literal na função index um literal" e o literal's locus; exit.
-Catalogue o literal usando o literal's name e o literal index.
+Se o name deste literal estiver in o catálogo de variáveis hexadecimais, abort with "Erro interno no nome do literal na função index um literal" e o literal's locus; exit.
+Catalogue o literal usando o name deste literal e o catálogo de variáveis hexadecimais.
 
 Etapas necessárias para que se catalogue um partial moniker usando um index (special):
 Encontre um refer usando o partial moniker e o index.
@@ -3997,20 +4079,20 @@ Catalogue o partial moniker in o index.
 Etapas necessárias para que se catalogue uma routine por utility use:
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Se a routine for inexistente, cancele.
-Se o routine's function alarme estiver ativo, cancele.
-Se o routine's parameters' contagem for 0, cancele.
-Copy o routine's monikettes into alguns monikettes.
+Se o function alarme desta routine estiver ativo, cancele.
+Se o contagem destes parameters desta routine for 0, cancele.
+Copy os monikettes desta routine into alguns monikettes.
 Reduce o monikettes por utility use.
 Convert o monikettes to um moniker.
 Destroy o monikettes.
-Se o moniker estiver in o routine index, cancele.
-Encontre um refer usando o moniker e o utility index.
-Se o refer não for inexistente, coloque nil into o refer's endereço de memória; exit.
-Catalogue o routine usando o moniker e o utility index.
+Se o moniker estiver in o catálogo geral de rotinas, cancele.
+Encontre um refer usando o moniker e o catálogo de rotinas úteis.
+Se o refer não for inexistente, coloque nil into o endereço de memória deste refer; exit.
+Catalogue o routine usando o moniker e o catálogo de rotinas úteis.
 
 Etapas necessárias para que se catalogue uma routine usando um moniker e um index (special):
 Encontre um refer usando o moniker e o index.
-Se o refer não for inexistente, coloque o routine into o refer's endereço de memória; exit.
+Se o refer não for inexistente, coloque o routine into o endereço de memória deste refer; exit.
 Catalogue o routine usando o moniker e o index.
 
 Etapas necessárias para que se catalogue uma routine usando alguns monikettes e um index:
@@ -4020,7 +4102,7 @@ Percorra.
 Obtenha um monikette from o monikettes.
 Se o monikette for inexistente, cancele.
 Posponha o monikette to o partial moniker.
-Se o monikette for o monikettes' last, pare.
+Se o monikette for o last destes monikettes, pare.
 Catalogue o partial moniker usando o index (special).
 Repita.
 Catalogue o routine usando o partial moniker como um moniker e o index (special).
@@ -4035,14 +4117,14 @@ Repita.
 Etapas necessárias para que se catalogue um type:
 Se o type for inexistente, cancele.
 Se o alarme de alerta deste compilador estiver ativado, cancele.
-Catalogue o type usando o type's name.
+Catalogue o type usando o name deste type.
 
 Etapas necessárias para que se catalogue um type usando um name:
 Se o type for inexistente, cancele.
 Se o alarme de alerta deste compilador estiver ativado, cancele.
-Encontre um existing type usando o name e o type index.
-Se o existing type for inexistente, catalogue o type usando o name e o type index; exit.
-Coloque o type's locus into um locus.
+Encontre um existing type usando o name e o catálogo de tipos.
+Se o existing type for inexistente, catalogue o type usando o name e o catálogo de tipos; exit.
+Coloque o locus deste type into um locus.
 Se o locus for inexistente, coloque o existing type's locus into o locus. \ point o erro to um type in o source code, not um generated type
 Abort with "Acho que já vi o tipo '" then o name then "' em algum lugar antes; você deve ter duplicado ele." e o locus.
 
@@ -4051,20 +4133,20 @@ The indexing utilities cronômetro é um cronômetro.
 Etapas necessárias para que se initialize o compilador:
 
 Etapas necessárias para que se initialize o compilador usando um endereço da pasta:
-Coloque o endereço da pasta into o compilador's endereço da pasta.
-Coloque 0 into o compilador's name contagem.
+Coloque o endereço da pasta into o endereço da pasta deste compilador.
+Coloque 0 into o name contagem deste compilador.
 Desative o alarme de alerta deste compilador.
 Limpe a mensagem de erro deste compilador.
 Limpe o abort endereço completo deste compilador.
 Coloque 0 into o abort row# deste compilador.
 Esvazie a rotina utilizada atualmente.
-Crie o type index with 13001 [buckets]. \ was 4027
-Crie o global index with 13001 [buckets]. \ was 4027
-Crie o literal index with 13001 [buckets]. \ was 4027
-Crie o routine index with 13001 [buckets]. \ was 7919
-Crie o utility index with 13001 [buckets]. \ was 4027
+Crie o catálogo de tipos with 13001 [buckets]. \ was 4027
+Crie o catálogo de variáveis globais with 13001 [buckets]. \ was 4027
+Crie o catálogo de variáveis hexadecimais with 13001 [buckets]. \ was 4027
+Crie o catálogo geral de rotinas with 13001 [buckets]. \ was 7919
+Crie o catálogo de rotinas úteis with 13001 [buckets]. \ was 4027
 
-Etapas necessárias para que se initialize um dos header:
+Etapas necessárias para que se initialize um dos header: \ vou alterar depois
 Coloque 23117 [$5A4D] into o dos header's signature.
 Coloque 64 [$0040] into o dos header's addressofrelocationtableinfile.
 Coloque 256 [$00000100] into o dos header's addressofpeheaderinfile.
@@ -4088,10 +4170,10 @@ Coloque -536870880 [$E0000020] into o pe header's code section's characteristics
 
 Etapas necessárias para que se initialize um pe header (data section):
 Copy pedaços from "data "'s first to o pe header's data section's name's whereabouts por 6.
-Coloque o data zona's length into o pe header's data section's sizeinbytes.
-Coloque o data zona's base into o pe header's data section's addressinmemory.
-Coloque o data zona's length into o pe header's data section's sizeinfile.
-Coloque o data zona's base into o pe header's data section's addressinfile.
+Coloque o zona de dados's length into o pe header's data section's sizeinbytes.
+Coloque o zona de dados's base into o pe header's data section's addressinmemory.
+Coloque o zona de dados's length into o pe header's data section's sizeinfile.
+Coloque o zona de dados's base into o pe header's data section's addressinfile.
 Coloque -1073741760 [$C0000040] into o pe header's data section's characteristics. \ initialized, readable, writable
 
 Etapas necessárias para que se initialize um pe header (directories):
@@ -4110,13 +4192,13 @@ Coloque -1073741760 [$C0000040] into o pe header's idata section's characteristi
 Etapas necessárias para que se initialize um pe header (optional header):
 Coloque 267 [$010B] into o pe header's magicnumber.
 Coloque o code zona's length into o pe header's sizeofcodeinfile.
-Coloque o data zona's length into o pe header's sizeofinitializeddatainfile.
+Coloque o zona de dados's length into o pe header's sizeofinitializeddatainfile.
 Coloque 0 into o pe header's sizeofuninitializeddatainfile.
-Encontre uma routine usando "~initialize before run e run e finalize after run" e o routine index.
+Encontre uma routine usando "~initialize before run e run e finalize after run" e o catálogo geral de rotinas.
 Se a routine for inexistente, abort with "Erro interno: não achei a tarefa de inicialização"; exit.
 Coloque o routine's address menos o image base into o pe header's addressofentrypointinmemory.
 Coloque o code zona's base into o pe header's addressofcodeinmemory.
-Coloque o data zona's base into o pe header's addressofinitializeddatainmemory.
+Coloque o zona de dados's base into o pe header's addressofinitializeddatainmemory.
 Coloque o image base into o pe header's imagebase.
 Coloque 4096 [$00001000] into o pe header's memoryalignment.
 Coloque 4096 [$00001000] into o pe header's filealignment.
@@ -4179,11 +4261,11 @@ List o types under "TYPES:" in o compilador's listing.
 List o globals under "GLOBALS:" in o compilador's listing.
 List o literals under "LITERALS:" in o compilador's listing.
 List o routines under "ROUTINES:" in o compilador's listing.
-List o type index under "TYPE INDEX:" in o compilador's listing.
-List o global index under "GLOBAL INDEX:" in o compilador's listing.
-List o literal index under "LITERAL INDEX:" in o compilador's listing.
-List o routine index under "ROUTINE INDEX:" in o compilador's listing.
-List o utility index under "UTILITY INDEX:" in o compilador's listing.
+List o catálogo de tipos under "TYPE INDEX:" in o compilador's listing.
+List o catálogo de variáveis globais under "GLOBAL INDEX:" in o compilador's listing.
+List o catálogo de variáveis hexadecimais under "LITERAL INDEX:" in o compilador's listing.
+List o catálogo geral de rotinas under "ROUTINE INDEX:" in o compilador's listing.
+List o catálogo de rotinas úteis under "catálogo de rotinas úteis:" in o compilador's listing.
 List o imports under "IMPORTS:" in o compilador's listing.
 List o source files under "SOURCE FILES:" in o compilador's listing.
 List o cronômetros under "TIMERS:" in o compilador's listing.
@@ -4420,7 +4502,7 @@ Se o variables estiverem vazio, cancele.
 List o variables in o trecho.
 Advance o trecho.
 
-The literal index é um index.
+The catálogo de variáveis hexadecimais é um index.
 
 An literal é uma variable.
 
@@ -4443,7 +4525,7 @@ An string,
 An type (reference),
 An variable (reference),
 \ por bubbling
-An current type (reference),
+An type atual (reference),
 An subtexto atual.
 
 Etapas necessárias para que se mova um percorredor (code rules - comment):
@@ -4926,7 +5008,7 @@ Coloque o compilador's endereço da pasta then o designador then ".exe" into o en
 Etapas necessárias para que se coloque o compilador's exe size into um size:
 Coloque 4096 [section base] into o size.
 Adicione o import zona's size to o size.
-Adicione o data zona's size to o size.
+Adicione o zona de dados's size to o size.
 Adicione o code zona's size to o size.
 
 Etapas necessárias para que se coloque o compilador's listing endereço completo into um endereço completo:
@@ -4998,22 +5080,22 @@ Se o other type's base type for o other type, esvazie o other type; exit.
 Coloque o other type's base type into o other type.
 Repita.
 
-Etapas necessárias para que se catalogue novamente o utility index:
+Etapas necessárias para que se catalogue novamente o catálogo de rotinas úteis:
 Se o alarme de alerta deste compilador estiver ativado, cancele.
-Obtenha um bucket usando o utility index.
+Obtenha um bucket usando o catálogo de rotinas úteis.
 Se o bucket for inexistente, cancele.
 Se o bucket's refers estiverem vazio, repita.
-Catalogue novamente o utility index usando o bucket's refers.
+Catalogue novamente o catálogo de rotinas úteis usando o bucket's refers.
 Repita.
 
-Etapas necessárias para que se catalogue novamente o utility index usando alguns refers:
+Etapas necessárias para que se catalogue novamente o catálogo de rotinas úteis usando alguns refers:
 Obtenha um refer from o refers.
 Se o refer for inexistente, cancele.
 Coloque o refer's endereço de memória into uma routine.
 Se a routine for inexistente, abort with "Erro interno na função: index o utility routines usando alguns refers"; exit.
 Copy o routine's monikettes into alguns monikettes.
 Reduce o monikettes por utility use.
-Catalogue o routine usando o monikettes e o routine index.
+Catalogue o routine usando o monikettes e o catálogo geral de rotinas.
 Destroy o monikettes.
 Repita.
 
@@ -5078,7 +5160,7 @@ Etapas necessárias para que se resolva um type (base type):
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Se o type for inexistente, cancele.
 Se o type's base type não for inexistente, cancele.
-Encontre o type's base type usando o type's base name e o type index.
+Encontre o type's base type usando o type's base name e o catálogo de tipos.
 Se o type's base type for inexistente, abort with "Base type inválido:'" then o type's base name then "'." e o type's locus; exit.
 Ligue o type's cooking alarme.
 Se o type's base type's cooking alarme estiver ativo, abort with "Definição recursiva com '" then o type's base name then "'." e o type's locus; exit.
@@ -5093,7 +5175,7 @@ Se o type's base type não for inexistente, cancele.
 Se o name deste type for "coisa", cancele.
 \Se o name deste type for "elemento", cancele.
 Se o type não puder ser reduzido para "coisa" using o base name, cancele.
-Encontre um base type usando o type's base name e o type index.
+Encontre um base type usando o type's base name e o catálogo de tipos.
 \ adicione coisa conjunto - o número of secret fields é hard coded in two places: search por "do que 4" \ was 6
 Coloque o name deste type then " conjunto" into um name.
 Coloque o name deste type then " conjuntos" into um plural name.
@@ -5139,7 +5221,7 @@ Etapas necessárias para que se resolva um type (optional info - endereço de memó
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Se o target type deste type não for inexistente, cancele.
 Se o type's target name estiver em branco, coloque o type's base type's target type into o type's target type; exit.
-Encontre o target type deste type usando o type's target name e o type index.
+Encontre o target type deste type usando o type's target name e o catálogo de tipos.
 Se o target type deste type for inexistente, abort with "Não sei bem pra que coisa você está pointing at." e o type's locus; exit.
 
 Etapas necessárias para que se resolva um type (optional info - conjunto):
@@ -5222,7 +5304,7 @@ Se o variable's type não for inexistente, coloque o variable's type's name into 
 Abort with "Não achei o tipo da variável '" then o variable's name then "'." e o variable's locus.
 
 Etapas necessárias para que se resolva uma variable (explicit type name):
-Encontre o variable's type usando o variable's type name e o type index.
+Encontre o variable's type usando o variable's type name e o catálogo de tipos.
 Se o variable's type for inexistente, abort with "Não achei o nome do tipo da variável '" then o variable's type name then "'." e o variable's locus; exit.
 
 The resolving globals cronômetro é um cronômetro.
@@ -5232,8 +5314,8 @@ The resolving types cronômetro é um cronômetro.
 Etapas necessárias para que se round up zona sizes:
 Coloque o import zona's length into o import zona's size.
 Round o import zona's size up to o nearest multiple of 4096.
-Coloque o data zona's length into o data zona's size.
-Round o data zona's size up to o nearest multiple of 4096.
+Coloque o zona de dados's length into o zona de dados's size.
+Round o zona de dados's size up to o nearest multiple of 4096.
 Coloque o code zona's length into o code zona's size.
 Round o code zona's size up to o nearest multiple of 4096.
 
@@ -5243,7 +5325,7 @@ An instruções é um subtexto.
 
 An routine header é um subtexto.
 
-The routine index é um index.
+The catálogo geral de rotinas é um index.
 
 An routine é uma coisa with
 An locus (reference),
@@ -5274,7 +5356,7 @@ Se o token deste percorredor for any with, examine any optional info por o type 
 
 Etapas necessárias para que se examine any optional info por um type usando um percorredor (endereço de memória):
 Mova o percorredor (compilador rules).
-Se o token deste percorredor não for any indefinite article, abort with "A palavra 'to' precisa de um artigo indefinido depois dela, não de um '" then o token deste percorredor then "'." e o percorredor; exit. 
+Se o token deste percorredor não for any artigo indefinido, abort with "A palavra 'to' precisa de um artigo indefinido depois dela, não de um '" then o token deste percorredor then "'." e o percorredor; exit. 
 Mova o percorredor (compilador rules).
 Examine o type's target name usando o percorredor.
 
@@ -5308,7 +5390,7 @@ Examine o name deste field usando o percorredor.
 Etapas necessárias para que se examine um field usando um percorredor (redefine part):
 Se o alarme de alerta deste compilador estiver ativado, cancele.
 Mova o percorredor (compilador rules).
-Se o token deste percorredor não for any definite article, abort with "Eu estava esperando o artigo 'the', mas o que encontrei foi '" then o token deste percorredor then "'." e o percorredor; exit.
+Se o token deste percorredor não for any artigo definido, abort with "Eu estava esperando o artigo 'the', mas o que encontrei foi '" then o token deste percorredor then "'." e o percorredor; exit.
 Mova o percorredor (compilador rules).
 Examine o field's redefinition target name usando o percorredor.
 
@@ -5330,7 +5412,7 @@ Coloque "pedaço" into o type name deste field.
 
 Etapas necessárias para que se examine um field usando um percorredor (type part - normal):
 Se o alarme de alerta deste compilador estiver ativado, cancele.
-Se o token deste percorredor não for any indefinite article, abort with "Falta por um artigo idefinido aqui, mas você colocou isso: '" then o token deste percorredor then "'." e o percorredor; exit.
+Se o token deste percorredor não for any artigo indefinido, abort with "Falta por um artigo idefinido aqui, mas você colocou isso: '" then o token deste percorredor then "'." e o percorredor; exit.
 Se o token deste percorredor for "another", coloque "other" into o name deste field.
 \PAL
 Se o token deste percorredor for "outra", coloque "segunda" into o name deste field.
@@ -5374,7 +5456,7 @@ Examine o global's name usando o percorredor.
 Se o token deste percorredor for any has, examine o global usando o percorredor (has ou have); exit.
 Se o token deste percorredor não for any is, abort with "Eu preciso de um 'is' ou de um 'are' mas só pude achar o termo: '" then o token deste percorredor then "'." e o percorredor; exit.
 Mova o percorredor (compilador rules).
-Se o token deste percorredor não for any indefinite article, examine o global usando o percorredor (literal term); exit.
+Se o token deste percorredor não for any artigo indefinido, examine o global usando o percorredor (literal term); exit.
 Mova o percorredor (compilador rules).
 Examine o global's type name usando o percorredor. 
 Se o token deste percorredor for o start of any optional info, examine o global usando o percorredor (optional info); exit.
@@ -5519,8 +5601,8 @@ Repita.
 
 Etapas necessárias para que se examine um type usando um percorredor:
 Se o alarme de alerta deste compilador estiver ativado, cancele.
-Se o token deste percorredor for any portuguese indefinite article, acione um portuguese alarme.
-Se o token deste percorredor for any english indefinite article, acione um english alarme.
+Se o token deste percorredor for any artigo definido português, acione um portuguese alarme.
+Se o token deste percorredor for any artigo definido inglês, acione um english alarme.
 Adicione o type to o types usando o percorredor's token's first.
 Mova o percorredor (compilador rules).
 Examine o name deste type usando o percorredor.
@@ -5536,7 +5618,7 @@ Se o token deste percorredor não for any is, abort with "Eu esperava um 'is' ou 
 
 Mova o percorredor (compilador rules).
 Se o token deste percorredor for any numeric literal, examine o type usando o percorredor (unit of measure); exit.
-Se o token deste percorredor não for any indefinite article, abort with "Faltou um artigo indefinido, lembra? '" then o token deste percorredor then "'." e o percorredor; exit. 
+Se o token deste percorredor não for any artigo indefinido, abort with "Faltou um artigo indefinido, lembra? '" then o token deste percorredor then "'." e o percorredor; exit. 
 Mova o percorredor (compilador rules).
 Examine o type's base name usando o percorredor.
 Examine any optional info por o type usando o percorredor.
@@ -5777,7 +5859,7 @@ Repita.
 
 The transmogrifying cronômetro é um cronômetro.
 
-The type index é um index.
+The catálogo de tipos é um index.
 
 An type é uma coisa with
 An locus (reference),
@@ -5795,7 +5877,7 @@ An type name é um name.
 
 The types são alguns types.
 
-The utility index é um index.
+The catálogo de rotinas úteis é um index.
 
 An variable é uma coisa with
 An locus (reference),
@@ -5830,24 +5912,24 @@ Se o alarme de alerta deste compilador estiver ativado, cancele.
 Ligue o routine's function alarme.
 Adicione um monikette to o routine's monikettes usando "coloque".
 Mova o percorredor (compilador rules). \ skip "coloque" ou "poner"
-Mova o percorredor (compilador rules). \ skip "the" ou Portuguese definite article
+Mova o percorredor (compilador rules). \ skip "the" ou Portuguese artigo definido
 Examine um name usando o percorredor. \ field name
 Mova o percorredor (compilador rules). \ skip "uv" ou "de"
-Se o token deste percorredor for any indefinite article, acione um alarme.
-Se o alarme estiver ativo, compile o routine's monikettes e o routine's parameters usando o percorredor (indefinite article).
-Se o alarme não estiver ativo, compile o routine's monikettes e o routine's parameters usando o percorredor (definite article).
+Se o token deste percorredor for any artigo indefinido, acione um alarme.
+Se o alarme estiver ativo, compile o routine's monikettes e o routine's parameters usando o percorredor (artigo indefinido).
+Se o alarme não estiver ativo, compile o routine's monikettes e o routine's parameters usando o percorredor (artigo definido).
 Adicione another monikette to o routine's monikettes usando "'s " then o name.
 Se o token deste percorredor não for any reverse-possessive function into, abort with "Esperava a palavra 'em', mas encontrei '" then o token deste percorredor then "'." e o percorredor; exit.
 Adicione um third monikette to o routine's monikettes usando "into".
 Convert o routine's monikettes to um moniker.
-Se o moniker estiver in o routine index, abort with "Já sei como '" then o moniker then "'." e o routine's locus; exit.
-Catalogue o routine usando o routine's monikettes e o routine index.
+Se o moniker estiver in o catálogo geral de rotinas, abort with "Já sei como '" then o moniker then "'." e o routine's locus; exit.
+Catalogue o routine usando o routine's monikettes e o catálogo geral de rotinas.
 Mova o percorredor (compilador rules).
-Se o token deste percorredor não for any indefinite article, abort with "Esperava um artigo indefinido, mas encontrei '" then o token deste percorredor then "'." e o percorredor; exit.
-Compile o routine's monikettes e o routine's parameters usando o percorredor (indefinite article).
+Se o token deste percorredor não for any artigo indefinido, abort with "Esperava um artigo indefinido, mas encontrei '" then o token deste percorredor then "'." e o percorredor; exit.
+Compile o routine's monikettes e o routine's parameters usando o percorredor (artigo indefinido).
 Se o token deste percorredor não estiver em branco, abort with "Existem outras coisas no final desta função." e o percorredor; exit.
 Convert o routine's monikettes to o routine's moniker.
-Catalogue o routine usando o routine's monikettes e o routine index. \ por employs
+Catalogue o routine usando o routine's monikettes e o catálogo geral de rotinas. \ por employs
 
 \ dahn - reverse functions
 \ to coloque o xxx uv a/the yyy into zzz
@@ -5856,7 +5938,7 @@ Se o alarme de alerta deste compilador estiver ativo, diga não.
 Se o token deste percorredor não for any coloque, diga não.
 Isole o percorredor.
 Mova o percorredor (compilador rules).
-Se o token deste percorredor não for any definite article, diga não.
+Se o token deste percorredor não for any artigo definido, diga não.
 Mova o percorredor (compilador rules).
 Examine um name usando o percorredor.
 Se o percorredor não for on any reverse-possessive, diga não.
