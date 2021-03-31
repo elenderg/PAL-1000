@@ -215,7 +215,7 @@ Etapas necessárias para que se posponha um trecho to um file:
 Limpe o i/o erro.
 Call "kernel32.dll" "SetFilePointer" with o file e 0 e 0 e 2 [file_end] returning um result número.
 Se o result número é -1, coloque "Ocorreu um erro na hora de posicionar o ponteiro do arquivo." into o i/o erro; exit.
-Call "kernel32.dll" "WriteFile" with o file e o first deste trecho e o length deste trecho e um número's whereabouts e 0 returning o result número.
+Call "kernel32.dll" "WriteFile" with o file e o first deste trecho e o length deste trecho e um whereabouts desse número e 0 returning o result número.
 Se o result número for 0, coloque "Ocorreu um erro na hora de salvar o arquivo." into o i/o erro; exit.
 
 Etapas necessárias para que se posponha um pedaço to um string:
@@ -12676,7 +12676,7 @@ Coloque o número into o wyrd.
 Coloque o original número into o other wyrd.
 
 Etapas necessárias para que se split a rows of um text into alguns rows e alguns selecionado rows e alguns other rows:
-Se o text for inexistente, limpe a rows; limpe o selecionado rows; limpe o other rows; exit.
+Se o text for inexistente, limpe as rows; limpe o selecionado rows; limpe as other rows; exit.
 Percorra.
 Coloque o first destas rows deste text into um row.
 Se a row for inexistente, cancele.
@@ -12697,10 +12697,10 @@ Se o last deste subtexto for maior do que o last deste string, cancele.
 Adicione 1 to o last deste subtexto.
 Se o target deste last deste subtexto for o separator pedaço, pare.
 Repita.
-Coloque o first deste subtexto into o left's first.
-Coloque o last deste subtexto menos 1 into o left's last.
-Coloque o last deste subtexto mais 1 into o right's first.
-Coloque o last deste string into o right's last.
+Coloque o first deste subtexto into o first deste left.
+Coloque o last deste subtexto menos 1 into o last deste left.
+Coloque o last deste subtexto mais 1 into o first deste right.
+Coloque o last deste string into o last deste right.
 
 Etapas necessárias para que se split um string into alguns conjunto de textos usando um separator pedaço:
 Destroy o conjunto de textos.
@@ -12716,7 +12716,7 @@ Adicione "" to o conjunto de textos.
 
 Etapas necessárias para que se split alguns coisas into alguns left coisas e alguns right coisas:
 Se o coisas estiverem vazio, limpe o left coisas; limpe o right coisas; exit.
-Coloque o coisas' contagem dividido por 2 into um contagem.
+Coloque a contagem destas coisas dividido por 2 into um contagem.
 Percorra.
 Obtenha uma coisa from as coisas.
 Se o contagem for 0, pare.
@@ -12730,13 +12730,13 @@ Limpe o right coisas.
 Se a coisa for inexistente, swap o coisas with o left coisas; exit.
 Se o previous desta coisa for inexistente, swap o coisas with o left coisas; exit.
 \ abra up o left chain
-Coloque o first destas coisas into o left coisas' first.
-Coloque o previous desta coisa into o left coisas' last.
-Esvazie o coisa's previous' next.
+Coloque o first destas coisas into o first destas left coisas.
+Coloque o previous desta coisa into o last destas left coisas.
+Esvazie o next deste previous desta coisa.
 \ abra up o right chain
-Coloque a coisa into o right coisas' first.
+Coloque a coisa into o first destas right coisas.
 Esvazie o previous desta coisa.
-Coloque o last destas coisas into o right coisas' last.
+Coloque o last destas coisas into o last destas right coisas.
 \ fix o original chain
 Limpe as coisas.
 
@@ -12759,7 +12759,7 @@ The square size é alguns twips.
 Etapas necessárias para que se square up any selection in um text:
 Se o text for inexistente, cancele.
 Se nothing estiver selecionado in o text, cancele.
-Normalize o text's selection.
+Normalize a selection deste text.
 Obtenha um row usando o caret row# deste text e o text.
 Coloque 1 into o anchor column# deste text.
 Se o caret column# deste text não for 1, adicione 1 to o caret row# deste text; coloque 1 into o caret column# deste text.
@@ -13085,17 +13085,18 @@ Face west.
 Etapas necessárias para que se start um process usando um endereço completo:
 \ must ser called with um global variable
 Limpe o i/o erro.
-Se o process não for 0, coloque "Lo lamento, pero o proceso ya se está ejecutando." into o i/o erro; exit.
-Coloque um startupinfo's magnitude into o startupinfo's cb.
-Extract um endereço da pasta from o endereço completo. null terminate o endereço da pasta.
+Se o process não for 0, coloque "Erro. Este processo já está sendo executado." into o i/o erro; exit.
+Coloque um startupinfo's magnitude into o cb desta startupinfo.
+Extract um endereço da pasta from o endereço completo.
+Null terminate o endereço da pasta.
 Isole o endereço completo. null terminate o endereço completo.
 Call "kernel32.dll" "CreateProcessA" with o first deste endereço completo e 0 e 0 e 0 e 0 e 67108904 [create_default_error_mode + normal_priority_class + detached_process] e 0 
-And o endereço da pasta's first e o startupinfo's whereabouts e um processinfo's whereabouts returning um número.
+And o first deste endereço da pasta e o whereabouts desta startupinfo e um processinfo's whereabouts returning um número.
 Se o número for 0, coloque "Erro. Não foi possível executar o programa." into o i/o erro; exit.
-Coloque o processinfo's hprocess into o process.
-Call "kernel32.dll" "CloseHandle" with o processinfo's hthread.
+Coloque o hprocess deste processinfo into o process.
+Call "kernel32.dll" "CloseHandle" with o hthread deste processinfo.
 Point um endereço de memória to routine aguarde por um process endereço de memória.
-Call "kernel32.dll" "CreateThread" with 0 e 0 e o endereço de memória e o process's whereabouts e 0 e another número's whereabouts returning um handle.
+Call "kernel32.dll" "CreateThread" with 0 e 0 e o endereço de memória e o whereabouts deste process e 0 e another número's whereabouts returning um handle.
 Call "kernel32.dll" "CloseHandle" with o handle. \ does not end o thread, just dumps o handle
 
 Etapas necessárias para que se start um cronômetro:
@@ -14504,7 +14505,7 @@ Se o pedaço for o número dois, stroke o two glyph.
 Se o pedaço for o underscore pedaço, stroke o underscore glyph.
 Se o pedaço for o vertical-bar pedaço, stroke o vertical-bar glyph.
 Se o pedaço for o número zero, stroke o zero glyph.
-\ Atualize o tela. \ *** questionable doesn't work screws up console.
+\ Atualize o tela. \ *** questionable does not work screws up console.
 
 Etapas necessárias para que se stroke o caret glyph:
 Save o context.
