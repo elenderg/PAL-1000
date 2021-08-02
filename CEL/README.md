@@ -16,7 +16,7 @@ Glossário
 
 ## INTRODUÇÃO
 
-Seja bem-vindo ao PAL - *Portuguese Compiler And Linker*. A função principal do PAL é transformar arquivos de texto em português simples em programas executáveis compatíveis com a sistema operacional Windows. O código fonte do PAL  apenas 25.000 linhas escritas totalmente em português  é surpreendentemente amplo e abrangente. O código está distribuído nos seis arquivos a seguir:
+Seja bem-vindo ao PAL - *Portuguese Compiler And Linker*. A função principal do PAL é transformar arquivos de texto em português simples em programas executáveis compatíveis com a sistema operacional Windows. O código fonte do PAL - apenas 25.000 linhas escritas totalmente em português - é surpreendentemente amplo e abrangente. O código está distribuído nos seis arquivos a seguir:
 
 1. O **Ambiente de Trabalho**, uma pequena interface de usuário com menus e abas;
 2. O **Explorador de Arquivos**, que fornece acesso direto ao sistema de arquivos;
