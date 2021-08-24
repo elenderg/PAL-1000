@@ -26,7 +26,7 @@ Muito obrigado pelo seu interesse em contribuir !. Todos os tipos de contribuiç
 
 Por favor, certifique-se de ler a seção relevante antes de fazer sua contribuição! Isso tornará muito mais fácil para nós, mantenedores, tirar o máximo proveito disso e suavizar a experiência de todos os envolvidos. 💚
 
-A [equipe do projeto](#Junte-se-à-equipe-do-projeto) aguarda suas contribuições. 🙌🏾✨
+A [equipe do projeto](#Junte-se-à-equipe-do-projeto) aguarda suas contribuições. 🏾✨
 
 ## Solicitar ajuda
 
