@@ -4747,20 +4747,20 @@ Um PE header é um conjunto com
 \Immediately following is a PE file header and optional header. Beyond that, all the section headers appear, followed by all of the section bodies. 
 \Closing out the file are a few segunda regions of miscellaneous information, including relocation information, symbol table information, line number information, and string table data. 
 \ O MS-DOS header occupies the first 64 bytes of the PE file. A structure representing its content is described below:
-Um número called signature,
-Um wyrd called machinetype, \ O number that identifies the type of target machine. For more information, see https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#machine-types
-Um wyrd called numberofsections, \ O number of sections. This indicates the size of the section table, which immediately follows the headers.
-Um número called timestamp, \ O low 32 bits of the number of seconds since 00:00 January 1, 1970 (a C run-time time_t value), which indicates when the file was created.
-Um número called pointertosymboltable, \ O file offset of the COFF symbol table, or zero if no COFF symbol table is present. 
+Um número called Signature,
+Um wyrd called MachineType, \ O number that identifies the type of target machine. For more information, see https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#machine-types
+Um wyrd called NumberOfSections, \ O number of sections. This indicates the size of the section table, which immediately follows the headers.
+Um número called TimeStamp, \ O low 32 bits of the number of seconds since 00:00 January 1, 1970 (a C run-time time_t value), which indicates when the file was created.
+Um número called PointerToSymbolTable, \ O file offset of the COFF symbol table, or zero if no COFF symbol table is present. 
 \This value should be zero for an image because COFF debugging information is deprecated.
-Um número called numberofsymbols, \ O number of entries em the symbol table. 
+Um número called NumberOfSymbols, \ O number of entries em the symbol table. 
 \This data can be used para locate the string table, which immediately follows the symbol table. 
 \This value should be zero for an image because COFF debugging information is deprecated.
-Um wyrd called sizeofoptionalheaderinbytes, \ O size of the optional header, which is required for executable files but not for object files. 
+Um wyrd called SizeOfOptionalHeaderInBytes, \ O size of the optional header, which is required for executable files but not for object files. 
 \This value should be zero for an object file. For a description of the header format, see https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#optional-header-image-only
-Um wyrd called characteristics, \ O flags that indicate the attributes of the file. For specific flag values, see https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#characteristics
+Um wyrd called Characteristics, \ O flags that indicate the attributes of the file. For specific flag values, see https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#characteristics
 \ optional header
-Um wyrd called magicnumber, \ O optional header magic number determines whether an image is a PE32 or PE32+ executable.
+Um wyrd called MagicNumber, \ O optional header magic number determines whether an image is a PE32 or PE32+ executable.
 \PE32+ images allow for a 64-bit address space while limiting the image size para 2 gigabytes. Other PE32+ modifications are addressed em their respective sections.
 \ O unsigned integer that identifies the state of the image file. 
 \O most common number is 0x10B, which identifies it as a normal executable file. 0x107 identifies it as a ROM image, and 0x20B identifies it as a PE32+ executable.
@@ -4772,12 +4772,12 @@ Um wyrd called magicnumber, \ O optional header magic number determines whether 
 \O final campo, e_lfanew, is a 4-byte offset para the file where the PE file header is located. 
 \It is necessary para use this offset para locate the PE header em the file. 
 \For PE files em Windows NT, the PE file header occurs soon after the MS-DOS header com only the real-mode stub program between them.
-Um pedaço called majorlinkerversion, \ Indicates version of the linker that linked this image.
-Um pedaço called minorlinkerversion, \ Indicates version of the linker that linked this image.
-Um número called sizeofcodeinfile, \ Size of executable code. O size of the code (caixa de texto) section, or the sum of all code sections if there are multiple sections.
-Um número called sizeofinitializeddatainfile, \ Size of initialized data. O size of the initialized data section, or the sum of all such sections if there are multiple data sections.
-Um número called sizeofuninitializeddatainfile, \ Size of uninitialized data. O size of the uninitialized data section (BSS), or the sum of all such sections if there are multiple BSS sections.
-Um número called addressofentrypointinmemory, \ Of the standard campos, the AddressOfEntryPoint campo is the most interesting for the PE file format. 
+Um pedaço called MajorLinkerVersion, \ Indicates version of the linker that linked this image.
+Um pedaço called MinorLinkerVersion, \ Indicates version of the linker that linked this image.
+Um número called SizeOfCodeInFile, \ Size of executable code. O size of the code (caixa de texto) section, or the sum of all code sections if there are multiple sections.
+Um número called SizeOfInitializedDataInFile, \ Size of initialized data. O size of the initialized data section, or the sum of all such sections if there are multiple data sections.
+Um número called SizeOfUninitializedDataInFile, \ Size of uninitialized data. O size of the uninitialized data section (BSS), or the sum of all such sections if there are multiple BSS sections.
+Um número called AddressOfEntryPointInMemory, \ Of the standard campos, the AddressOfEntryPoint campo is the most interesting for the PE file format. 
 \This campo indicates the location of the entry point for the application and, perhaps more importantly para system hackers, the location of the end of the Import Address Table (IAT). 
 \O address of the entry point relative para the image base when the executable file is loaded para memory. 
 \For program images, this is the starting address. For device drivers, this is the address of the initialization function. 
@@ -4814,21 +4814,21 @@ Um número called sizeofimageinmemory, \ O size (in bytes) of the image, includin
 Um número called sizeofallheadersinfile, \ O combined size of an MS-DOS stub, PE header, and section headers rounded up para a multiple of FileAlignment.
 \ This campo indicates how much space em the file is used for representing all the file headers, 
 \ including the MS-DOS header, PE file header, PE optional header, and PE section headers. O section bodies begin at this location em the file.
-Um número called checksum, \ O image file checksum. 
+Um número called CheckSum, \ O image file checksum. 
 \ O algorithm for computing the checksum is incorporated para IMAGHELP.DLL. 
 \ O following are checked for validation at load time: all drivers, any DLL loaded at boot time, and any DLL that is loaded à critical Windows process.
 \ A checksum value is used para validate the executable file at load time. 
 \ O value is set and verified by the linker. O algorithm used for creating these checksum values is proprietary information and will not be published.
-Um wyrd called subsystem, \ Field used para identify the target subsystem for this executable (O subsystem that is required para run this image). 
+Um wyrd called Subsystem, \ Field used para identify the target subsystem for this executable (O subsystem that is required para run this image). 
 \Each of the possible subsystem values are listed em the WINNT.H file immediately after the IMAGE_OPTIONAL_HEADER structure.
 \For more information, see https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#windows-subsystem
-Um wyrd called dllcharacteristics, \ Flags used para indicate if a DLL image includes entry points for process and thread initialization and termination.
+Um wyrd called DllCharacteristics, \ Flags used para indicate if a DLL image includes entry points for process and thread initialization and termination.
 \ For more information, see https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#dll-characteristics
 Um número called maxstack, \These campos control the amount of address space para reserve and commit for the stack and default heap. 
 Um número called minstack, \Both the stack and heap have default values of 1 page committed and 16 pages reserved. 
 Um número called maxheap, \These values are set com the linker switches -STACKSIZE: and -HEAPSIZE:. 
 Um número called minheap, 
-Um número called loaderflags, \ TReserved, must be zero. Tells the loader whether para break sobre load, debug sobre load, or the default, which is para let things run normally.
+Um número called LoaderFlags, \ TReserved, must be zero. Tells the loader whether para break sobre load, debug sobre load, or the default, which is para let things run normally.
 \ directories (16 address e size pairs)
 Um número called numberofdirectories,
 8 pedaços called directory0,
