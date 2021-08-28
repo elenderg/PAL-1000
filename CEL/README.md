@@ -68,9 +68,9 @@ O Explorador De Arquivos mostra o sistema de arquivos do Windows como ele realme
 A B C D E G G I J K ... W X Y Z 3 itens
 ```
 ```
-a:\ (unidade de disquete)<br/>  
-c:\ (disco rígido)<br/>  
-d:\ (unidade de cd-rom)<br/>  
+a:\ (unidade de disquete)  
+c:\ (disco rígido)  
+d:\ (unidade de cd-rom)  
 ```
 
 Cada área de trabalho está inicialmente posicionada no nível mais baixo, como mostrado acima.
