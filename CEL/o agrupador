@@ -73,10 +73,11 @@ Compile o header of a routine.
 Compile o body of a routine.
 
 Etapas necessárias para que se adicione o built-in types:
-Adicione um built-in type usando "byte" e "bytes" e 1. \ que tal octeto?
+Adicione um built-in type usando "byte" e "bytes" e 1.
 Adicione um segundo built-in type usando "record" e "records" e 0.
 Adicione um terceiro built-in type usando "pedaço" e "pedaços" e 1.
 Adicione um quarto built-in type usando "conjunto" e "conjuntos" e 0.
+Adicione um quinto built-in type usando "octeto" e "octetos" e 1.
 
 Etapas necessárias para que se adicione um built-in type usando um nome e um plural nome e um length:
 Adicione o built-in type para os types usando o nome e o plural nome e o nome.
@@ -178,14 +179,19 @@ Se o type for inexistente, cancele.
 Se o detector de erros deste compilador estiver ativado, cancele.
 Adicione uma routine para as routines usando nil.
 Posponha "~finalize um " seguido de o nome deste type para o header string desta routine.
-Posponha "Intel $50. " para o body string desta routine. \ push eax
+Posponha "Intel $50. " para o body string desta routine. \ push eax -> push the 4 bytes at address EAX onto the stack
+\The push instruction places its operand onto the top of the hardware supported stack in memory. 
+\Specifically, push first decrements ESP by 4, then places its operand into the contents of the 32-bit location at address [ESP]. 
+\ESP (the stack pointer) is decremented by push since the x86 stack grows down - i.e. the stack grows from high addresses to lower addresses.
 Percorra.
 Obtenha um campo from os campos deste type.
 Se o campo for inexistente, pare.
 Se o type deste campo não deveria ser [estar] finalizado, repita.
 Posponha "~finalize o " seguido de o nome deste type seguido de "'s " seguido de o nome deste campo seguido de ". " para o body string desta routine.
 Repita.
-Posponha "Intel $58." para o body string desta routine. \ pop eax
+Posponha "Intel $58." para o body string desta routine. \ pop eax -> pop the top element of the stack into memory at the four bytes starting at location EAX.
+\ The pop instruction removes the 4-byte data element from the top of the hardware-supported stack into the specified operand (i.e. register or memory location). 
+\It first moves the 4 bytes located at memory location [SP] into the specified register or memory location, and then increments memory location [SP] by 4.
 Lance a routine header desta routine sobre o header string desta routine.
 Lance as instruções desta routine sobre o body string desta routine.
 Compile o header of a routine.
@@ -195,9 +201,14 @@ Se o type for inexistente, cancele.
 Se o detector de erros deste compilador estiver ativado, cancele.
 Adicione uma routine para as routines usando nil.
 Posponha "~finalize um " seguido de o nome deste type para o header string desta routine.
-Posponha "Intel $50. " para o body string desta routine. \ push eax
-Posponha "unassign o string's first. " para o body string desta routine. \\ traduzir string aqui
-Posponha "Intel $58." para o body string desta routine. \ pop eax
+Posponha "Intel $50. " para o body string desta routine. \ push eax -> push the 4 bytes at address eax on the stack
+\ Specifically, push first decrements ESP by 4, then places its operand into the contents of the 32-bit location at address [ESP]. 
+\ESP (the stack pointer) is decremented by push since the x86 stack grows down - i.e. the stack grows from high addresses to lower addresses.
+Posponha "unassign o string's first . " para o body string desta routine. \\ traduzir string aqui
+\Posponha "unassign o texto's first. " para o body string desta routine. \\ traduzir string aqui
+Posponha "Intel $58." para o body string desta routine. \ pop eax -> pop the top element of the stack into memory at the four bytes starting at location EAX.
+\ The pop instruction removes the 4-byte data element from the top of the hardware-supported stack into the specified operand (i.e. register or memory location). 
+\ It first moves the 4 bytes located at memory location [SP] into the specified register or memory location, and then increments memory location [SP] by 4.
 Lance a routine header desta routine sobre o header string desta routine.
 Lance as instruções desta routine sobre o body string desta routine.
 Compile o header of a routine.
@@ -895,70 +906,70 @@ Posponha o terceiro texto hexadecimal para a segunda texto hexadecimal.
 Etapas necessárias para que se attach um texto hexadecimal para uma segunda texto hexadecimal:
 Employ posponha um string para uma segunda string.
 
-Etapas necessárias para que se blurt pedaços usando um endereço de memória e um length e um trecho e um offset:
+Etapas necessárias para que se disponibilize pedaços usando um endereço de memória e um length e um trecho e um offset:
 Atribua o first deste trecho mais o offset para uma segunda endereço de memória.
 Copie pedaços from o endereço de memória para a segunda endereço de memória pelo length.
 
-Etapas necessárias para que se blurt um DOS header para um trecho:
-Blurt pedaços usando o endereçamento deste DOS header e o magnitude deste DOS header e o trecho e 0.
+Etapas necessárias para que se disponibilize um DOS header para um trecho:
+Disponibilize pedaços usando o endereçamento deste DOS header e o magnitude deste DOS header e o trecho e 0.
 
-Etapas necessárias para que se blurt alguns entries para um trecho:
+Etapas necessárias para que se disponibilize alguns entries para um trecho:
 Obtenha um entry from o entries.
 Se a entry for inexistente, cancele.
-Blurt a entry ao trecho.
+Disponibilize a entry ao trecho.
 Repita.
 
-Etapas necessárias para que se blurt um entry para um trecho:
-Blurt pedaços usando o endereçamento deste nome address desta entry e 4 e o trecho e o thunk address desta entry.
+Etapas necessárias para que se disponibilize um entry para um trecho:
+Disponibilize pedaços usando o endereçamento deste nome address desta entry e 4 e o trecho e o thunk address desta entry.
 Atribua o nome address desta entry mais 2 para um address.
-Blurt o nome desta entry ao trecho at o address.
+Disponibilize o nome desta entry ao trecho at o address.
 
-Etapas necessárias para que se blurt um fragment para um trecho:
+Etapas necessárias para que se disponibilize um fragment para um trecho:
 Se o código deste fragment estiver em branco, cancele.
 Atribua o address deste fragment menos o image base para um address.
-Blurt o código deste fragment ao trecho at o address.
+Disponibilize o código deste fragment ao trecho at o address.
 
-Etapas necessárias para que se blurt alguns fragments para um trecho:
+Etapas necessárias para que se disponibilize alguns fragments para um trecho:
 Obtenha um fragment from o fragments.
 Se o fragment for inexistente, cancele.
-Blurt o fragment ao trecho.
+Disponibilize o fragment ao trecho.
 Repita.
 
-Etapas necessárias para que se blurt um import para um trecho:
-Blurt pedaços usando o endereçamento deste import header deste import e o magnitude deste import header deste import e o trecho e o header address deste import.
-Blurt o nome deste import ao trecho at o nome address deste import.
-Blurt as entries deste import ao trecho.
+Etapas necessárias para que se disponibilize um import para um trecho:
+Disponibilize pedaços usando o endereçamento deste import header deste import e o magnitude deste import header deste import e o trecho e o header address deste import.
+Disponibilize o nome deste import ao trecho at o nome address deste import.
+Disponibilize as entries deste import ao trecho.
 
-Etapas necessárias para que se blurt alguns imports para um trecho:
+Etapas necessárias para que se disponibilize alguns imports para um trecho:
 Obtenha um import from o imports.
 Se o import for inexistente, cancele.
-Blurt o import ao trecho.
+Disponibilize o import ao trecho.
 Repita.
 
-Etapas necessárias para que se blurt um PE header para um trecho:
-Blurt pedaços usando o endereçamento deste PE header e o magnitude deste PE header e o trecho e 256.
+Etapas necessárias para que se disponibilize um PE header para um trecho:
+Disponibilize pedaços usando o endereçamento deste PE header e o magnitude deste PE header e o trecho e 256.
 
-Etapas necessárias para que se blurt uma routine para um trecho:
+Etapas necessárias para que se disponibilize uma routine para um trecho:
 Se o compiled detector desta routine não estiver ativo, cancele.
-Blurt os fragments desta routine ao trecho.
+Disponibilize os fragments desta routine ao trecho.
 
-Etapas necessárias para que se blurt alguns routines para um trecho:
+Etapas necessárias para que se disponibilize alguns routines para um trecho:
 Obtenha uma routine from as routines.
 Se a routine for inexistente, cancele.
-Blurt a routine ao trecho.
+Disponibilize a routine ao trecho.
 Repita.
 
-Etapas necessárias para que se blurt um string para um trecho at um address:
-Blurt pedaços usando o first deste string e o length deste string e o trecho e o address.
+Etapas necessárias para que se disponibilize um string para um trecho at um address:
+Disponibilize pedaços usando o first deste string e o length deste string e o trecho e o address.
 
-Etapas necessárias para que se blurt uma variável para um trecho:
+Etapas necessárias para que se disponibilize uma variável para um trecho:
 Se o compiled detector desta variável não estiver ativo, cancele.
-Se o type desta variável puder ser reduzido para "string", blurt o variável ao trecho (como um texto); exit.
-Se o type desta variável puder ser reduzido para "texto", blurt o variável ao trecho (como um texto); exit.
+Se o type desta variável puder ser reduzido para "string", disponibilize o variável ao trecho (como um texto); exit.
+Se o type desta variável puder ser reduzido para "texto", disponibilize o variável ao trecho (como um texto); exit.
 Atribua o address desta variável menos o image base para um address. \ Atribua a diferença entre o endreço da variável e a base da imagem em um endereço.
-Blurt o data desta variável ao trecho at o address.
+Disponibilize o data desta variável ao trecho at o address.
 
-Etapas necessárias para que se blurt uma variável para um trecho (como um texto):
+Etapas necessárias para que se disponibilize uma variável para um trecho (como um texto):
 Atribua o address desta variável menos o image base para um address.
 Atribua o length deste data desta variável para um length.
 Atribua o address para uma segunda address.
@@ -968,14 +979,14 @@ Atribua 0 ao first deste prototype string.
 Atribua -1 ao last deste prototype string.
 Se o length não for 0, atribua a segunda address ao first deste prototype string.
 Se o length não for 0, atribua o first deste prototype string mais o length menos 1 ao last deste prototype string.
-Blurt pedaços usando o endereçamento deste prototype string e a magnitude deste prototype string e o trecho e o address.
+Disponibilize pedaços usando o endereçamento deste prototype string e a magnitude deste prototype string e o trecho e o address.
 Adicione a magnitude deste prototype string para o address.
-Blurt os data desta variável ao trecho at o address.
+Disponibilize os data desta variável ao trecho at o address.
 
-Etapas necessárias para que se blurt alguns variáveis para um trecho:
+Etapas necessárias para que se disponibilize alguns variáveis para um trecho:
 Obtenha uma variável from o variáveis.
 Se o variável for inexistente, cancele.
-Blurt o variável ao trecho.
+Disponibilize o variável ao trecho.
 Repita.
 
 Um zona é um conjunto com um base address, um length e um size.
@@ -1395,6 +1406,7 @@ Compile um termo usando o percorredor. \\ aqui que deve compilar o termo
 Se o detector de erros deste compilador estiver ativado, cancele.
 Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "O seu 'then', está errado. Eu não achei a variável do termo: " seguido de a phrase deste termo seguido de "." e o percorredor; exit.
 Adicione um intermediate usando "string" e o first deste token deste percorredor.
+\Adicione um intermediate usando "texto" e o first deste token deste percorredor.
 Adicione o atribua ou converta fragments usando a variável desta expression e o intermediate e o first deste token deste percorredor.
 Converta o termo por concatenation usando o percorredor. \\ aqui faz a concatenação
 Adicione several fragments usando "posponha" e a variável deste termo e "para" e o intermediate e o first deste token deste percorredor.
@@ -1565,6 +1577,7 @@ Atribua o token deste percorredor a os data deste literal.
 Unquote os data deste literal.
 Mova o percorredor (usando diretrizes do compilador).
 Atribua "string" ao type nome deste literal.
+\Atribua "texto" ao type nome deste literal.
 Resolva o literal.
 
 Etapas necessárias para que se compile alguns monikettes e alguns parâmetros usando um percorredor:
@@ -2203,7 +2216,9 @@ Etapas necessárias para que se converta um termo por concatenation usando um per
 \ used for right-side seguido de operand
 Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Erro: a variável do termo está vazia: " seguido de a phrase deste termo seguido de "." e o percorredor; exit.
 Se o type deste termo puder ser reduzido para "string", cancele.
+Se o type deste termo puder ser reduzido para "texto", cancele.
 Adicione um intermediate usando "string" e o first deste token deste percorredor.
+\Adicione um intermediate usando "texto" e o first deste token deste percorredor.
 Adicione o atribua ou converta fragments usando a variável deste termo e o intermediate e o first deste token deste percorredor.
 Atribua o intermediate à variável deste termo.
 Limpe a phrase deste termo.
@@ -3019,6 +3034,7 @@ Se o subtexto for "ante", diga sim. \ antes de
 Se o subtexto for "antes", diga sim. \ antes de
 Se o subtexto for "perante", diga sim. \ antes de
 Se o subtexto for "debaixo", diga sim. \ below
+Se o subtexto for "depois", diga sim. \ under
 Se o subtexto for "sob", diga sim. \ below
 Se o subtexto for "acerca", diga sim. \ near
 Se o subtexto for "próximo", diga sim. \ near
@@ -3268,6 +3284,7 @@ Se o string for "wide", diga sim.
 Se o string for "with", diga sim.
 Se o string for "within", diga sim.
 Se o string for "without", diga sim.
+Se o string for "depois", diga sim. \ under
 Diga não.
 
 Etapas necessárias para que se determine se um string é any qualifier:
@@ -3625,6 +3642,7 @@ Etapas necessárias para que se determine se um type deveria ser [estar] finaliza
 Se o type for inexistente, diga não.
 Se o type puder ser reduzido para "subtexto", diga não.
 Se o type puder ser reduzido para "string", diga sim.
+Se o type puder ser reduzido para "texto", diga sim.
 Se os campos deste type deveriam ser finalizados, diga sim.
 Diga não.
 
@@ -4303,12 +4321,12 @@ Round up zona sizes.
 Initialize um DOS header.
 Initialize um PE header.
 Fill o exe deste compilador com o null pedaço usando o exe size deste compilador.
-Blurt o DOS header ao exe deste compilador.
-Blurt o PE header ao exe deste compilador.
-Blurt o imports ao exe deste compilador.
-Blurt os globals ao exe deste compilador.
-Blurt os literals ao exe deste compilador.
-Blurt as routines ao exe deste compilador.
+Disponibilize o DOS header ao exe deste compilador.
+Disponibilize o PE header ao exe deste compilador.
+Disponibilize os imports ao exe deste compilador.
+Disponibilize os globals ao exe deste compilador.
+Disponibilize os literals ao exe deste compilador.
+Disponibilize as routines ao exe deste compilador.
 
 O linking temporizador é um temporizador.
 
@@ -5297,6 +5315,7 @@ Percorra.
 Se a segunda type for inexistente, cancele.
 Se o nome deste segunda type for "texto hexadecimal", cancele.
 Se o nome deste segunda type for "string", cancele.
+Se o nome deste segunda type for "texto", cancele.
 Se o nome deste segunda type for "número", cancele.
 Se o nome deste segunda type for "endereço de memória", cancele.
 Se o nome deste segunda type for "coisa", esvazie a segunda type; exit.
