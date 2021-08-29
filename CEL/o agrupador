@@ -167,8 +167,10 @@ Etapas necessárias para que se adicione a finalize routine por um type:
 Se o type for inexistente, cancele.
 Se o detector de erros deste compilador estiver ativado, cancele.
 Se o type não deveria ser [estar] finalizado, cancele.
-Se o nome deste type for "string", adicione a finalize routine pelo type (string); exit.
+Se o nome deste type for "string", adicione a finalize routine pelo type (texto); exit.
+Se o nome deste type for "texto", adicione a finalize routine pelo type (texto); exit.
 Se o type puder ser reduzido para "string", cancele. \ prevents generation of finalizer por derived string types
+Se o type puder ser reduzido para "texto", cancele.
 Adicione a finalize routine pelo type (conjunto).
 
 Etapas necessárias para que se adicione a finalize routine por um type (conjunto):
@@ -188,7 +190,7 @@ Lance a routine header desta routine sobre o header string desta routine.
 Lance as instruções desta routine sobre o body string desta routine.
 Compile o header of a routine.
 
-Etapas necessárias para que se adicione a finalize routine por um type (string):
+Etapas necessárias para que se adicione a finalize routine por um type (texto):
 Se o type for inexistente, cancele.
 Se o detector de erros deste compilador estiver ativado, cancele.
 Adicione uma routine para as routines usando nil.
@@ -511,7 +513,7 @@ Se a tag deste fragment for a repeat tag, adicione 5 para o address; exit.
 Se a tag deste fragment for a break tag, adicione 5 para o address; exit.
 Se a tag deste fragment for a prolog tag, address o fragment usando o address (prolog); exit.
 Se a tag deste fragment for a epilog tag, address o fragment usando o address (epilog); exit.
-Se a tag deste fragment for a Intel tag, adicione o length deste code deste fragment para o address; exit.
+Se a tag deste fragment for a Intel tag, adicione o length deste código deste fragment para o address; exit.
 Se a tag deste fragment for a push value tag, address o fragment usando o address (push value); exit.
 Se a tag deste fragment for a call external tag, adicione 6 para o address; exit.
 Se a tag deste fragment for a load eax tag, adicione 5 para o address; exit. \ was 8 when "load eax" took em variáveis; now "load eax" only does um immediate value
@@ -610,6 +612,7 @@ Se o compiled detector desta variável não estiver ativo, cancele.
 Atribua o image base mais o address ao address desta variável.
 Adicione o length deste type desta variável para o address.
 Se o type desta variável puder ser reduzido para "string", adicione o length deste data desta variável mais 1 para o address.
+Se o type desta variável puder ser reduzido para "texto", adicione o length deste data desta variável mais 1 para o address.
 Round o address up para o nearest multiple of 4.
 
 Etapas necessárias para que se address alguns variáveis usando um address:
@@ -850,14 +853,14 @@ Se o string for "rascunhar", posponha "esboçar" para a segunda string; exit.
 Se o string for "antepor", posponha "prepor" para a segunda string; exit.
 Posponha o string para a segunda string.
 
-Etapas necessárias para que se attach address loading code para um texto hexadecimal usando uma variável:
+Etapas necessárias para que se attach address loading código para um texto hexadecimal usando uma variável:
 \ loads para edx
 Se o variável for inexistente, attach $C7C200000000 para o texto hexadecimal; exit. \ mov edx,0
 Se a categoria desta variável for "global", attach $C7C2 e o address desta variável para o texto hexadecimal; exit. \ mov edx,the address da variável
 Se a categoria desta variável for "literal", attach $C7C2 e o address desta variável para o texto hexadecimal; exit. \ mov edx,the address da variável
 Se a categoria desta variável for "local", attach $8D95 e o offset desta variável para o texto hexadecimal; exit. \ lea edx,[ebp+ the offset da variável]
 Se a categoria desta variável for "scratch", attach $8B95 e o offset desta variável para o texto hexadecimal; exit. \ mov edx, [ebp+ the offset da variável]
-Se a categoria desta variável não for "parâmetro", apresente uma mensagem de erro contendo "Erro interno - attach address loading code para um texto hexadecimal usando uma variável"; exit.
+Se a categoria desta variável não for "parâmetro", apresente uma mensagem de erro contendo "Erro interno - attach address loading código para um texto hexadecimal usando uma variável"; exit.
 Se o by-value detector desta variável estiver ativo, attach $8D95 e o offset desta variável para o texto hexadecimal; exit. \ lea edx,[ebp+the offset da variável]
 Attach $8B95 e o offset desta variável para o texto hexadecimal. \ mov edx,[ebp+ the offset da variável]
 
@@ -865,10 +868,10 @@ Etapas necessárias para que se attach um texto hexadecimal e um address para um 
 \ call ou jump
 Atribua o address para um número.
 Subtraia o address deste fragment from o número.
-Subtraia o length deste code deste fragment from o número.
+Subtraia o length deste código deste fragment from o número.
 Subtraia o length deste texto hexadecimal from o número.
 Subtraia 4 from o número.
-Attach o texto hexadecimal e o número para o code deste fragment.
+Attach o texto hexadecimal e o número para o código deste fragment.
 
 Etapas necessárias para que se attach um texto hexadecimal e um número e uma segunda texto hexadecimal para um terceiro texto hexadecimal:
 Posponha o texto hexadecimal para o terceiro texto hexadecimal.
@@ -911,9 +914,9 @@ Atribua o nome address desta entry mais 2 para um address.
 Blurt o nome desta entry ao trecho at o address.
 
 Etapas necessárias para que se blurt um fragment para um trecho:
-Se o code deste fragment estiver em branco, cancele.
+Se o código deste fragment estiver em branco, cancele.
 Atribua o address deste fragment menos o image base para um address.
-Blurt o code deste fragment ao trecho at o address.
+Blurt o código deste fragment ao trecho at o address.
 
 Etapas necessárias para que se blurt alguns fragments para um trecho:
 Obtenha um fragment from o fragments.
@@ -950,11 +953,12 @@ Blurt pedaços usando o first deste string e o length deste string e o trecho e o
 
 Etapas necessárias para que se blurt uma variável para um trecho:
 Se o compiled detector desta variável não estiver ativo, cancele.
-Se o type desta variável puder ser reduzido para "string", blurt o variável ao trecho (as um string); exit.
+Se o type desta variável puder ser reduzido para "string", blurt o variável ao trecho (como um texto); exit.
+Se o type desta variável puder ser reduzido para "texto", blurt o variável ao trecho (como um texto); exit.
 Atribua o address desta variável menos o image base para um address. \ Atribua a diferença entre o endreço da variável e a base da imagem em um endereço.
 Blurt o data desta variável ao trecho at o address.
 
-Etapas necessárias para que se blurt uma variável para um trecho (as um string):
+Etapas necessárias para que se blurt uma variável para um trecho (como um texto):
 Atribua o address desta variável menos o image base para um address.
 Atribua o length deste data desta variável para um length.
 Atribua o address para uma segunda address.
@@ -1081,7 +1085,7 @@ Etapas necessárias para que se limpe um termo:
 Esvazie o variável deste termo.
 Limpe o phrase deste termo.
 
-O code zona é um zona.
+O código zona é um zona.
 
 Etapas necessárias para que se compile o bodies of as routines:
 Compile o body of a routine denominado "initialize before run".
@@ -1214,9 +1218,9 @@ Address os globals usando o address.
 Address os literals usando o address.
 Atribua o address menos a base desta zona de dados ao length desta zona de dados.
 Round o address up para o nearest multiple of 4096.
-Atribua o address à base desta code zona.
+Atribua o address à base desta código zona.
 Address as routines usando o address.
-Atribua o address menos a base desta code zona ao length desta code zona.
+Atribua o address menos a base desta código zona ao length desta código zona.
 Suspenda o addressing temporizador.
 
 Etapas necessárias para que se compile um endereço da pasta (calculate lengths e offsets of types):
@@ -1487,7 +1491,7 @@ Adicione o literal para os literals usando o first deste token deste percorredor
 Se o token deste percorredor for any hex literal, compile o literal usando o percorredor (hex); exit.
 Se o token deste percorredor for any numeric literal, compile o literal usando o percorredor (numeric); exit.
 Se o token deste percorredor for any endereço de memória literal, compile o literal usando o percorredor (endereço de memória); exit.
-Se o token deste percorredor for any string literal, compile o literal usando o percorredor (string); exit.
+Se o token deste percorredor for any string literal, compile o literal usando o percorredor (texto); exit.
 Apresente uma mensagem de erro contendo "Erro interno - compile um termo usando um percorredor (literal)" e o percorredor.
 
 Etapas necessárias para que se compile um literal usando um percorredor (detector):
@@ -1555,7 +1559,7 @@ Mova o percorredor (usando diretrizes do compilador).
 Atribua "endereço de memória" ao type nome deste literal.
 Resolva o literal.
 
-Etapas necessárias para que se compile um literal usando um percorredor (string):
+Etapas necessárias para que se compile um literal usando um percorredor (texto):
 Se o detector de erros deste compilador estiver ativado, cancele.
 Atribua o token deste percorredor a os data deste literal.
 Unquote os data deste literal.
@@ -1736,11 +1740,11 @@ Adicione um quarto fragment usando o end if tag.
 
 Etapas necessárias para que se compile o próximo satement usando um percorredor (Intel):
 Mova o percorredor (usando diretrizes do compilador).
-Se o token deste percorredor não for any hex literal, apresente uma mensagem de erro contendo "Eu preciso de um pouco de machine code, mas o que eu achei foi: " seguido de o token deste percorredor seguido de "." e o percorredor; exit.
+Se o token deste percorredor não for any hex literal, apresente uma mensagem de erro contendo "Eu preciso de um pouco de machine código, mas o que eu achei foi: " seguido de o token deste percorredor seguido de "." e o percorredor; exit.
 Adicione um fragment usando o Intel tag.
 Atribua o token deste percorredor para um parte da cifra binária.
 Adicione 1 para o first desta parte da cifra binária.
-Converta o parte da cifra binária para o code deste fragment.
+Converta o parte da cifra binária para o código deste fragment.
 Mova o percorredor (usando diretrizes do compilador).
 
 Etapas necessárias para que se compile o próximo satement usando um percorredor (loop):
@@ -3709,7 +3713,7 @@ Um wyrd denominado InitialChecksum,
 Um wyrd denominado InitialIP,
 \\ Initial IP value.
 \\This word contains the absolute value that should be loaded para the IP register em order para transfer control para the program.
-\\Since the actual code segment is determined by the loader, and this is merely a value within that segment, it does not need para be relocated.
+\\Since the actual código segment is determined by the loader, and this is merely a value within that segment, it does not need para be relocated.
 Um wyrd denominado InitialiRelativeCS, 
 \\ Pre-relocated initial CS value.
 \\ This word contains the initial value, relative para the start of the load module, that should be placed em the CS register em order para transfer control para the program.
@@ -3816,7 +3820,7 @@ Se a routine não for inexistente, atribua a routine à function deste campo termo
 Se o type for inexistente, cancele.
 Encontre a routine usando "atribua" e o type e "'s " seguido de o nome e "para".
 Se a routine não for inexistente, acione o push detector deste campo termo; atribua a routine ao function deste campo termo; exit.
-\ code below for looking deep within endereço de memórias - a debatable feature
+\ código below for looking deep within endereço de memórias - a debatable feature
 \ Se o target type deste type não for inexistente, encontre a routine usando "atribua" e o target type deste type e "'s " seguido de o nome e "para".
 \ Se a routine não for inexistente, acione o dereference detector deste campo termo; atribua a routine à function deste campo termo; exit.
 
@@ -4028,6 +4032,8 @@ Repita.
 \Repita.
 
 An fragment é uma coisa com
+\ we have three lists in the compiler memory — types, variables, and routines 
+\ each routine consists of a series of logical instructions called “fragments.” There are just 22 fragment types:
 Uma tag [break, call external, call indirect, call internal, dereference, end if, epilog, exit, finalize, increment, Intel, jump false, load address, load eax, loop, not, prolog, push address, push value, save eax, repeat, routine address],
 Uma variável (reference) [call indirect, dereference, increment, load address, load eax, pop, push address, push value, routine address, save eax],
 Uma segunda variável (reference) [load address],
@@ -4036,7 +4042,7 @@ Uma entry (reference) [call external],
 Um número [increment],
 Um detector [load eax], \SAL
 Um address,
-Um texto hexadecimal denominado code.
+Um texto hexadecimal denominado código.
 
 Etapas necessárias para que se gere um nome usando um string:
 Atribua o string ao nome.
@@ -4077,7 +4083,7 @@ O import zona é um zona.
 Um import header é um conjunto com
 Um address denominado original first thunk, \ consulte https://www.linkedin.com/pulse/why-pe-need-original-first-thunkoft-milad-kahsari-alhadi/
 \ https://stackoverflow.com/questions/42413937/why-pe-need-original-first-thunkoft#:~:text=The%20original%20first%20thunk%20is,%2C%20user32%20etc)%20are%20known.
-\Thunks are the defnitive pieces of codes em an operating system that handle the transitions between 16 and 32-bit code.
+\Thunks are the defnitive pieces of codes em an operating system that handle the transitions between 16 and 32-bit código.
 \ Thus they ensure backward compatibility between the calls made by the application.
 \ O OS is subjected com this facility for backward compatibility, so that the 16 bit applications can run smoothly em 32 bit environment.
 \ O original first thunk is needed if the imports are bound but the imported .DLL does not match.
@@ -4176,7 +4182,7 @@ Se o detector de erros deste compilador estiver ativado, cancele.
 Encontre um existing type usando o nome e o catálogo de tipos.
 Se o existing type for inexistente, catalogue o type usando o nome e o catálogo de tipos; exit.
 Atribua o local de aparição deste type para um local de aparição.
-Se o local de aparição for inexistente, atribua o local de aparição deste existing type ao local de aparição. \ point o erro para um type no source code, not um generated type
+Se o local de aparição for inexistente, atribua o local de aparição deste existing type ao local de aparição. \ point o erro para um type no source código, not um generated type
 Apresente uma mensagem de erro contendo "Acho que já vi o tipo: " seguido de o nome seguido de "' em algum lugar antes; você deve ter duplicado ele." e o local de aparição.
 
 O indexing utilities temporizador é um temporizador.
@@ -4210,15 +4216,15 @@ Initialize o PE header (version information).
 Initialize o PE header (directories).
 Initialize o PE header (import section).
 Initialize o PE header (data section).
-Initialize o PE header (code section).
+Initialize o PE header (código section).
 
-Etapas necessárias para que se initialize um PE header (code section):
-Copie pedaços from "code "'s first para o endereçamento deste nome desta code section deste PE header por 6.
-Atribua o length desta code zona ao sizeinbytes desta code section deste PE header.
-Atribua a base desta code zona ao addressinmemory desta code section deste PE header.
-Atribua o length desta code zona ao sizeinfile desta code section deste PE header.
-Atribua a base desta code zona ao addressinfile desta code section deste PE header.
-Atribua -536870880 [$E0000020] para as characteristics desta code section deste PE header. \ executable, readable, writable, code object
+Etapas necessárias para que se initialize um PE header (código section):
+Copie pedaços from "código "'s first para o endereçamento deste nome desta código section deste PE header por 6.
+Atribua o length desta código zona ao sizeinbytes desta código section deste PE header.
+Atribua a base desta código zona ao addressinmemory desta código section deste PE header.
+Atribua o length desta código zona ao sizeinfile desta código section deste PE header.
+Atribua a base desta código zona ao addressinfile desta código section deste PE header.
+Atribua -536870880 [$E0000020] para as characteristics desta código section deste PE header. \ executable, readable, writable, código object
 
 Etapas necessárias para que se initialize um PE header (data section):
 Copie pedaços from "data "'s first para o endereçamento deste nome desta data section deste PE header por 6.
@@ -4243,13 +4249,13 @@ Atribua -1073741760 [$C0000040] para as characteristics desta idata section dest
 
 Etapas necessárias para que se initialize um PE header (optional header):
 Atribua 267 [$010B] ao magicnumber deste PE header.
-Atribua o length desta code zona ao sizeofcodeinfile deste PE header.
+Atribua o length desta código zona ao sizeofcodeinfile deste PE header.
 Atribua o length desta zona de dados ao sizeofinitializeddatainfile deste PE header.
 Atribua 0 ao sizeofuninitializeddatainfile deste PE header.
 Encontre uma routine usando "~initialize before run e run e finalize after run" e o catálogo geral de rotinas.
 Se a routine for inexistente, apresente uma mensagem de erro contendo "Erro interno: não achei a tarefa de inicialização"; exit.
 Atribua o address desta routine menos o image base ao addressofentrypointinmemory deste PE header.
-Atribua a base desta code zona ao addressofcodeinmemory deste PE header.
+Atribua a base desta código zona ao addressofcodeinmemory deste PE header.
 Atribua a base desta zona de dados ao addressofinitializeddatainmemory deste PE header.
 Atribua o image base à imagebase deste PE header.
 Atribua 4096 [$00001000] ao memoryalignment deste PE header.
@@ -4359,7 +4365,7 @@ Posponha a routine deste fragment para o trecho (with separator).
 Posponha a entry desta fragment para o trecho (with separator).
 Posponha o número deste fragment para o trecho (as hex com separator).
 Posponha o address deste fragment para o trecho (as hex com separator).
-Converta o code deste fragment para um cifra hexadecimal.
+Converta o código deste fragment para um cifra hexadecimal.
 Posponha o cifra hexadecimal para o trecho (with separator).
 Advance o trecho.
 
@@ -4593,31 +4599,31 @@ Um subtexto atual.
 
 Um cabeçalho semi-expandido é um cabeçalho expandido.
 
-Etapas necessárias para que se mova um percorredor (code rules - comment):
+Etapas necessárias para que se mova um percorredor (código rules - comment):
 Avance o percorredor.
 Se o source deste percorredor estiver em branco, cancele.
 Se o target deste first deste source deste percorredor não for o return pedaço, repita.
 
-Etapas necessárias para que se mova um percorredor (code rules - glom):
+Etapas necessárias para que se mova um percorredor (código rules - glom):
 Avance o percorredor.
 Se o source deste percorredor estiver em branco, cancele.
 Se o percorredor estiver sobre any possessive, cancele.
 Se o target deste first deste source deste percorredor for any glom pedaço, repita.
 
-Etapas necessárias para que se mova um percorredor (code rules - mark):
+Etapas necessárias para que se mova um percorredor (código rules - mark):
 Avance o percorredor.
 
-Etapas necessárias para que se mova um percorredor (code rules - noise):
+Etapas necessárias para que se mova um percorredor (código rules - noise):
 Avance o percorredor.
 Se o source deste percorredor estiver em branco, cancele.
 Se o target deste first deste source deste percorredor for noise, repita.
 
-Etapas necessárias para que se mova um percorredor (code rules - possessive):
+Etapas necessárias para que se mova um percorredor (código rules - possessive):
 Avance o percorredor.
 Se o source deste percorredor estiver em branco, cancele.
 Se o source deste percorredor starts com "s", avance o percorredor.
 
-Etapas necessárias para que se mova um percorredor (code rules - qualifier):
+Etapas necessárias para que se mova um percorredor (código rules - qualifier):
 Se o source deste percorredor estiver em branco, cancele.
 Se o target deste first deste source deste percorredor for o return pedaço, pare.
 Se o target deste first deste source deste percorredor for o parênteses esquerdo, adicione 1 para uma contagem.
@@ -4626,7 +4632,7 @@ Avance o percorredor.
 Se o contagem for 0, pare.
 Repita.
 
-Etapas necessárias para que se mova um percorredor (code rules - remark):
+Etapas necessárias para que se mova um percorredor (código rules - remark):
 Se o source deste percorredor estiver em branco, cancele.
 Se o target deste first deste source deste percorredor for o return pedaço, pare.
 Se o target deste first deste source deste percorredor for o colchete esquerdo, adicione 1 para uma contagem.
@@ -4635,7 +4641,7 @@ Avance o percorredor.
 Se o contagem for 0, pare.
 Repita.
 
-Etapas necessárias para que se mova um percorredor (code rules - string):
+Etapas necessárias para que se mova um percorredor (código rules - string):
 Avance o percorredor.
 Se o source deste percorredor estiver em branco, cancele.
 Se o target deste first deste source deste percorredor for o return pedaço, cancele.
@@ -4643,24 +4649,24 @@ Se o percorredor estiver sobre any nested double-quote, avance o percorredor; re
 Se o target deste first deste source deste percorredor for as aspas duplas, avance o percorredor; exit.
 Repita.
 
-Etapas necessárias para que se mova um percorredor (code rules - symbol):
+Etapas necessárias para que se mova um percorredor (código rules - symbol):
 Avance o percorredor.
 
-Etapas necessárias para que se mova um percorredor (code rules):
+Etapas necessárias para que se mova um percorredor (código rules):
 Position o token deste percorredor sobre o source deste percorredor.
 Se o source deste percorredor estiver em branco, cancele.
-Se o target deste first deste source deste percorredor for noise, mova o percorredor (code rules - noise); exit.
-Se o target deste first deste source deste percorredor for a barra invertida, mova o percorredor (code rules - comment); exit.
-Se o target deste first deste source deste percorredor for o colchete esquerdo, mova o percorredor (code rules - remark); exit.
-Se o target deste first deste source deste percorredor for as aspas duplas, mova o percorredor (code rules - string); exit.
-Se o target deste first deste source deste percorredor for o parênteses esquerdo, mova o percorredor (code rules - qualifier); exit.
-Se o target deste first deste source deste percorredor for any mark, mova o percorredor (code rules - mark); exit.
-Se o percorredor estiver sobre any possessive, mova o percorredor (code rules - possessive); exit.
-Mova o percorredor (code rules - glom).
+Se o target deste first deste source deste percorredor for noise, mova o percorredor (código rules - noise); exit.
+Se o target deste first deste source deste percorredor for a barra invertida, mova o percorredor (código rules - comment); exit.
+Se o target deste first deste source deste percorredor for o colchete esquerdo, mova o percorredor (código rules - remark); exit.
+Se o target deste first deste source deste percorredor for as aspas duplas, mova o percorredor (código rules - string); exit.
+Se o target deste first deste source deste percorredor for o parênteses esquerdo, mova o percorredor (código rules - qualifier); exit.
+Se o target deste first deste source deste percorredor for any mark, mova o percorredor (código rules - mark); exit.
+Se o percorredor estiver sobre any possessive, mova o percorredor (código rules - possessive); exit.
+Mova o percorredor (código rules - glom).
 
 Etapas necessárias para que se mova um percorredor (usando diretrizes do compilador): \ talvez aqui conserte o subtraia
 Se o detector de erros deste compilador estiver ativo, limpe o token deste percorredor; exit.
-Mova o percorredor devolvendo um erro string (code rules).
+Mova o percorredor devolvendo um erro string (código rules).
 Se o erro string não estiver em branco, apresente uma mensagem de erro contendo o erro string e o first deste token deste percorredor; exit.
 \Se o token deste percorredor for "del", recue o percorredor; exit. \ Spanish contraction "del"; fudged para "de l", short por "de el"
 \Se o token deste percorredor for "al", recue o percorredor; exit. \ Spanish contraction "al"; fudged para "a l", short por "a el"
@@ -4669,25 +4675,25 @@ Se o target deste first deste token deste percorredor for noise, repita.
 Se o target deste first deste token deste percorredor for a barra invertida, repita.
 Se o target deste first deste token deste percorredor for o colchete esquerdo, repita.
 
-Etapas necessárias para que se mova um percorredor devolvendo um erro string (code rules - validate qualifier):
+Etapas necessárias para que se mova um percorredor devolvendo um erro string (código rules - validate qualifier):
 Se o length deste token deste percorredor for menor do que 2, atribua "Qualificadores devem terminar com parêntese ')'." ao erro string; exit.
 Se o target deste last deste token deste percorredor não for o parênteses direito, atribua "Qualificadores precisam terminar com um parêntese ')'." ao erro string; exit.
 
-Etapas necessárias para que se mova um percorredor devolvendo um erro string (code rules - validate remark):
+Etapas necessárias para que se mova um percorredor devolvendo um erro string (código rules - validate remark):
 Se o length deste token deste percorredor for menor do que 2, atribua "Observações devem terminar com um colchete ']'." ao erro string; exit.
 Se o target deste last deste token deste percorredor não for o right-bracket pedaço, atribua "Observações precisam terminar com um colchete ']'." ao erro string; exit.
 
-Etapas necessárias para que se mova um percorredor devolvendo um erro string (code rules - validate string):
+Etapas necessárias para que se mova um percorredor devolvendo um erro string (código rules - validate string):
 Se o length deste token deste percorredor for menor do que 2, atribua "Textos precisam terminar com aspas: ""." ao erro string; exit.
 Se o target deste last deste token deste percorredor não for as aspas duplas, atribua "Textos devem terminar com aspas: ""." ao erro string; exit.
 
-Etapas necessárias para que se mova um percorredor devolvendo um erro string (code rules):
+Etapas necessárias para que se mova um percorredor devolvendo um erro string (código rules):
 Limpe o erro string.
-Mova o percorredor (code rules).
+Mova o percorredor (código rules).
 Se o token deste percorredor estiver em branco, cancele.
-Se o target deste first deste token deste percorredor for o colchete esquerdo, mova o percorredor devolvendo o erro string (code rules - validate remark); exit.
-Se o target deste first deste token deste percorredor for as aspas duplas, mova o percorredor devolvendo o erro string (code rules - validate string); exit.
-Se o target deste first deste token deste percorredor for o parênteses esquerdo, mova o percorredor devolvendo o erro string (code rules - validate qualifier); exit.
+Se o target deste first deste token deste percorredor for o colchete esquerdo, mova o percorredor devolvendo o erro string (código rules - validate remark); exit.
+Se o target deste first deste token deste percorredor for as aspas duplas, mova o percorredor devolvendo o erro string (código rules - validate string); exit.
+Se o target deste first deste token deste percorredor for o parênteses esquerdo, mova o percorredor devolvendo o erro string (código rules - validate qualifier); exit.
 
 Um parte da cifra binária é um subtexto.
 
@@ -4889,12 +4895,12 @@ Um número denominado ImageDirectoryEntryImportSize,
 112 pedaços denominado Directories2-15,
 Um PE section header denominado Idata Section,
 Um PE section header denominado Data Section,
-Um PE section header denominado Code Section. \ https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#section-flags
+Um PE section header denominado código Section. \ https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#section-flags
 
 Um PE section header é um conjunto com
 \ Section headers are located sequentially right after the optional header em the PE file format. Each section header is 40 bytes com no padding between them. 
 \O PE file specification consists of the headers defined so far and a generic object denominado a section. 
-\Sections contain the content of the file, including code, data, resources, and segunda executable information. 
+\Sections contain the content of the file, including código, data, resources, and segunda executable information. 
 \Each section has a header and a body (the raw data). Section headers are described below, but section bodies lack a rigid file structure. 
 \They can be organized em almost any way a linker wishes para organize them, as long as the header is filled com enough information para be able para decipher the data.
 8 pedaços denominado Nome, \ Each section header has a nome campo up para eight characters long, for which the first character must be a period.
@@ -4905,7 +4911,7 @@ Um número denominado AddressInFile,
 12 pedaços denominado Reserved,
 Um número denominado Characteristics. \ Defines the section characteristics. These values are found both em WINNT.H and em the Portable Executable Format specification.
 \Value	Definition
-\0x00000020	Code section
+\0x00000020	código section
 \0x00000040	Initialized data section
 \0x00000080	Uninitialized data section
 \0x04000000	Section cannot be cached
@@ -5231,7 +5237,7 @@ Etapas necessárias para que se atribua o exe size deste compilador para um size:
 Atribua 4096 [section base] ao size.
 Adicione o size desta import zona para o size.
 Adicione o size desta zona de dados para o size.
-Adicione o size desta code zona para o size.
+Adicione o size desta código zona para o size.
 
 Etapas necessárias para que se atribua o listagem endereço completo deste compilador para um endereço completo:
 Extract um designador from o endereço da pasta deste compilador.
@@ -5271,7 +5277,7 @@ Lance um percorredor sobre o string.
 Percorra.
 Se o source deste percorredor estiver em branco, cancele.
 Position o token deste percorredor sobre o source deste percorredor.
-Mova o percorredor (code rules).
+Mova o percorredor (código rules).
 Se o target deste first deste token deste percorredor não for any glom pedaço, posponha o token deste percorredor para a segunda string; repita.
 Posponha o token deste percorredor para a segunda string usando o terceiro string (portuguese contractions e synonyms rules).
 Atribua o token deste percorredor ao terceiro string.
@@ -5535,8 +5541,8 @@ Atribua o length desta import zona ao size desta import zona.
 Round o size desta import zona up para o nearest multiple of 4096.
 Atribua o length desta zona de dados ao size desta zona de dados.
 Round o size desta zona de dados up para o nearest multiple of 4096.
-Atribua o length desta code zona ao size desta code zona.
-Round o size desta code zona up para o nearest multiple of 4096.
+Atribua o length desta código zona ao size desta código zona.
+Round o size desta código zona up para o nearest multiple of 4096.
 
 O routine address tag é uma tag igual a 22.
 
@@ -5957,26 +5963,28 @@ Se o next deste terceiro fragment for inexistente, apresente a mensagem de erro 
 Attach $E9 e o address deste next deste terceiro fragment para o fragment. \ JMP o address da destination
 
 Etapas necessárias para que se transmogrify um fragment (call external):
-Attach $FF15 e o address desta entry deste fragment para o code deste fragment. \ call [o address desta entry deste fragment ]
+Attach $FF15 e o address desta entry deste fragment para o código deste fragment. \ call [o address desta entry deste fragment ]
+\ The above routine generates the machine code for a call to the Windows operating system. 
+\The op code is specified, in hexadecimal ($FF15) and the rest of the instruction is the address of the entry address of the target routine, which is appended to the op code.
 
 Etapas necessárias para que se transmogrify um fragment (call indirect):
-Attach address loading code para o code deste fragment usando o variável deste fragment. \ coloca address para edx
-Attach $FF12 para o code deste fragment. \ call [edx]
+Attach address loading código para o código deste fragment usando o variável deste fragment. \ coloca address para edx
+Attach $FF12 para o código deste fragment. \ call [edx]
 
 Etapas necessárias para que se transmogrify um fragment (call internal):
 Obtenha um address usando o routine deste fragment.
 Attach $E8 e o address para o fragment. \ call o address da routine do fragment 
 
 Etapas necessárias para que se transmogrify um fragment (dereference):
-Attach $8B95 e o offset desta variável deste fragment para o code deste fragment. \ mov edx,[ebp+ o offset desta variável deste fragment]
-Attach $8B12 para o code deste fragment. \ mov edx,[edx]
-Attach $8995 e o offset desta variável deste fragment para o code deste fragment. \ mov [ebp+ o offset desta variável deste fragment]
+Attach $8B95 e o offset desta variável deste fragment para o código deste fragment. \ mov edx,[ebp+ o offset desta variável deste fragment]
+Attach $8B12 para o código deste fragment. \ mov edx,[edx]
+Attach $8995 e o offset desta variável deste fragment para o código deste fragment. \ mov [ebp+ o offset desta variável deste fragment]
 
 Etapas necessárias para que se transmogrify um fragment (epilog):
-Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, attach $5F5E5B para o code deste fragment. \ pop edi, esi, ebx
-Attach $8BE5 para o code deste fragment. \ mov esp,ebp
-Attach $5D para o code deste fragment. \ pop ebp
-Attach $C2 e o parâmetro size desta rotina utilizada atualmente para o code deste fragment. \ ret o parâmetro size da rotina utilizada atualmente
+Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, attach $5F5E5B para o código deste fragment. \ pop edi, esi, ebx
+Attach $8BE5 para o código deste fragment. \ mov esp,ebp
+Attach $5D para o código deste fragment. \ pop ebp
+Attach $C2 e o parâmetro size desta rotina utilizada atualmente para o código deste fragment. \ ret o parâmetro size da rotina utilizada atualmente
 
 Etapas necessárias para que se transmogrify um fragment (exit):
 Encontre um segundo fragment usando o fragment e o finalize tag.
@@ -5986,55 +5994,57 @@ Attach $E9 e o address deste segundo fragment para o fragment. \ jmp o address d
 Etapas necessárias para que se transmogrify um fragment (increment):
 Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (increment)"; exit.
 Se a categoria desta variável deste fragment não for "scratch", apresente a mensagem de erro contendo "Erro interno 2 - transmogrify um fragment (increment)"; exit.
-Attach $8185 e o offset desta variável deste fragment e o número deste fragment para o code deste fragment. \ add [ebp+ o offset desta variável deste fragment], o número deste fragment
+Attach $8185 e o offset desta variável deste fragment e o número deste fragment para o código deste fragment. \ add [ebp+ o offset desta variável deste fragment], o número deste fragment
 
 Etapas necessárias para que se transmogrify um fragment (jump false):
 Encontre um segundo fragment usando o fragment e o end if tag.
 Se o segundo fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (jump false)"; exit.
-Attach $83F800 para o code deste fragment. \ cmp eax,0
+Attach $83F800 para o código deste fragment. \ cmp eax,0
 Attach $0F84 e o address deste segundo fragment para o fragment. \ je o address da destination
 
 Etapas necessárias para que se transmogrify um fragment (load address):
-Attach address loading code para o code deste fragment usando a variável deste fragment. \ atribua address para edx
-Attach $8995 e o offset desta segunda variável deste fragment para o code deste fragment. \ mov [ebp+ o offset desta variável deste fragment],edx
+Attach address loading código para o código deste fragment usando a variável deste fragment. \ atribua address para edx
+Attach $8995 e o offset desta segunda variável deste fragment para o código deste fragment. \ mov [ebp+ o offset desta variável deste fragment],edx
 
 \Etapas necessárias para que se transmogrify um fragment (load eax):
-\Attach address loading code para o code deste fragment usando a variável deste fragment. \ atribua address para edx
+\Attach address loading código para o código deste fragment usando a variável deste fragment. \ atribua address para edx
 \Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Internal erro - transmogrify um fragment (load eax)"; exit.
 \Se o type desta variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Internal erro 2 - transmogrify um fragment (load eax)"; exit.
 \Se o length deste type desta variável deste fragment não for 4, apresente uma mensagem de erro contendo "Internal erro 3 - transmogrify um fragment (load eax)"; exit.
-\Attach $8B02 para o code deste fragment. \ mov eax,[edx]
+\Attach $8B02 para o código deste fragment. \ mov eax,[edx]
 
 Etapas necessárias para que se transmogrify um fragment (load eax):
-Attach $B8 e o detector deste fragment para o code deste fragment. \ mov eax,detector
-\Attach address loading code para o code deste fragment usando a variável do fragment. \ atribua address para edx
+Attach $B8 e o detector deste fragment para o código deste fragment. \ mov eax,detector
+\Attach address loading código para o código deste fragment usando a variável do fragment. \ atribua address para edx
 \Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Internal erro - transmogrify um fragment (load eax)"; exit.
 \Se o type desta variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Internal erro 2 - transmogrify um fragment (load eax)"; exit.
 \Se o length deste type desta variável deste fragment não for 4, apresente uma mensagem de erro contendo "Internal erro 3 - transmogrify um fragment (load eax)"; exit.
-\Attach $8B02 para o code deste fragment. \ mov eax,[edx]
+\Attach $8B02 para o código deste fragment. \ mov eax,[edx]
 
 Etapas necessárias para que se transmogrify um fragment (not):
-Attach $83F001 para o code deste fragment. \ xor eax,1
+Attach $83F001 para o código deste fragment. \ xor eax,1
 
 Etapas necessárias para que se transmogrify um fragment (prolog):
-Attach $55 para o code deste fragment. \ push ebp
-Attach $8BEC para o code deste fragment. \ mov ebp,esp
+Attach $55 para o código deste fragment. \ push ebp -> saves the contents of the EBP register on the stack.
+Attach $8BEC para o código deste fragment. \ mov ebp,esp -> puts the contents of the ESP register into the EBP register
 Atribua o local size desta rotina utilizada atualmente dividido por 4 para um número.
-Se o número não for 0, attach $B9 e o número e $6A004975FB para o code deste fragment. \ mov ecx,number; loop: push 0; dec ecx; jnz loop
-Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, attach $535657 para o code deste fragment. \ push ebx, esi, edi
+Se o número não for 0, attach $B9 \ mov ecx,number;  -> sets up the loop that will clear enough space on the stack for the routine’s local variables
+e o número e $6A004975FB \loop: push 0; dec ecx; jnz loop -> a loop that pushes enough zeros onto the stack to initialize the local variables.
+para o código deste fragment. 
+Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, attach $535657 para o código deste fragment. \ push ebx, esi, edi ->  save the EBX, ESI, and EDI registers on the stack.
 
 Etapas necessárias para que se transmogrify um fragment (push address):
-Attach address loading code para o code deste fragment usando a variável deste fragment. \ atribua address para edx
-Attach $52 para o code deste fragment. \ push edx
+Attach address loading código para o código deste fragment usando a variável deste fragment. \ atribua address para edx
+Attach $52 para o código deste fragment. \ push edx
 
 Etapas necessárias para que se transmogrify um fragment (push value):
-Attach address loading code para o code deste fragment usando a variável deste fragment. \ atribua address para edx
+Attach address loading código para o código deste fragment usando a variável deste fragment. \ atribua address para edx
 Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (push value)"; exit.
 Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - transmogrify um fragment (push value)"; exit.
 Atribua o length deste type desta variável deste fragment para um length.
-Se o length for 4, attach $FF32 para o code deste fragment; exit. \ push [edx]
-Se o length for 2, attach $66FF32 para o code deste fragment; exit. \ push palavra ptr [edx]
-Se o length for 1, attach $0FB61252 para o code deste fragment; exit. \ movzxb edx,[edx]; push edx
+Se o length for 4, attach $FF32 para o código deste fragment; exit. \ push [edx]
+Se o length for 2, attach $66FF32 para o código deste fragment; exit. \ push palavra ptr [edx]
+Se o length for 1, attach $0FB61252 para o código deste fragment; exit. \ movzxb edx,[edx]; push edx
 Apresente a mensagem de erro contendo "Erro interno 3 - transmogrify um fragment (push value)".
 
 Etapas necessárias para que se transmogrify um fragment (repeat):
@@ -6043,19 +6053,19 @@ Se o segundo fragment for inexistente, apresente uma mensagem de erro contendo "
 Attach $E9 e o address deste segundo fragment para o fragment. \ jmp o address da destination 
 
 Etapas necessárias para que se transmogrify um fragment (routine address):
-Attach address loading code para o code deste fragment usando a variável deste fragment. \ atribua address para edx
+Attach address loading código para o código deste fragment usando a variável deste fragment. \ atribua address para edx
 Se a routine deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (routine address)"; exit.
 Obtenha um address usando a routine deste fragment.
-Attach $C702 e o address para o code deste fragment. \ mov [edx],the address
+Attach $C702 e o address para o código deste fragment. \ mov [edx],the address
 
 Etapas necessárias para que se transmogrify um fragment (save eax):
-Attach address loading code para o code deste fragment usando a variável deste fragment. \ atribua address para edx
+Attach address loading código para o código deste fragment usando a variável deste fragment. \ atribua address para edx
 Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (save eax)"; exit.
 Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - transmogrify um fragment (save eax)"; exit.
 Atribua o length deste type desta variável deste fragment para um length.
-Se o length for 4, attach $8902 para o code deste fragment; exit. \ mov [edx],eax
-Se o length for 2, attach $668902 para o code deste fragment; exit. \ mov [edx],ax
-Se o length for 1, attach $8802 para o code deste fragment; exit. \ mov [edx],al
+Se o length for 4, attach $8902 para o código deste fragment; exit. \ mov [edx],eax
+Se o length for 2, attach $668902 para o código deste fragment; exit. \ mov [edx],ax
+Se o length for 1, attach $8802 para o código deste fragment; exit. \ mov [edx],al
 Apresente a mensagem de erro contendo "Erro interno 3 - transmogrify um fragment (save eax)".
 
 Etapas necessárias para que se transmogrify alguns fragments:
