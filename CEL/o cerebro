@@ -139,15 +139,40 @@ Etapas necessárias para que se adicione um string para uns conjunto de textos:
 Crie um conjunto de texto usando o string.
 Posponha o conjunto de texto para o conjunto de textos.
 
-Um addrinfo é um conjunto com \documentar isso com calma depois
-Um número denominado ai_flags,
-Um número denominado ai_family,
-Um número denominado ai_sockettype,
-Um número denominado ai_protocol,
-Um número denominado ai_addrlen,
-Um pchar denominado ai_canonname,
-Um sockaddrptr denominado ai_addr,
-Um addrinfoptr denominado ai_next.
+Um addrinfo é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/ws2def/ns-ws2def-addrinfoa
+\A estrutura addrinfo é usada pela função getaddrinfo para armazenar informações de endereço de host.
+Um número denominado ai_flags, \Tipo: int
+\ Sinalizadores que indicam opções usadas na função getaddrinfo.
+\ Os valores com suporte para o membro ai_flags são definidos no arquivo de cabeçalho Ws2def.h no Windows SDK para Windows 7 e posterior. 
+\ Esses valores são definidos no arquivo de cabeçalho Ws2tcpip.h no Windows SDK para Windows Server 2008 e Windows Vista. 
+\ Esses valores são definidos no arquivo de cabeçalho Ws2tcpip.h no Platform SDK para Windows Server 2003 e Windows XP. 
+\ Os valores com suporte para o membro ai_flags podem ser uma combinação XOR de valores hexadecimais.
+Um número denominado ai_family, \A família do endereço. Os valores possíveis para a família de endereços são definidos no arquivo de cabeçalho Winsock2.h.
+\ No Windows SDK lançado para Windows Vista e posterior, a organização dos arquivos de cabeçalho foi alterada e os valores possíveis para a família de endereços são definidos no arquivo de cabeçalho Ws2def.h.
+\  Observe que o arquivo de cabeçalho Ws2def.h é automaticamente incluído no Winsock2.h e nunca deve ser usado diretamente.
+\Os valores atualmente suportados são AF_INET ou AF_INET6, que são os formatos da família de endereços da Internet para IPv4 e IPv6. 
+\Outras opções para a família de endereços (AF_NETBIOS para uso com NetBIOS, por exemplo) são suportadas se um provedor de serviços Windows Sockets para a família de endereços estiver instalado. 
+\Observe que os valores para a família de endereço AF_ e constantes da família de protocolo PF_ são idênticos (por exemplo, AF_UNSPEC e PF_UNSPEC), portanto, qualquer constante pode ser usada.
+Um número denominado ai_sockettype, \ O tipo de soquete. Os valores possíveis para o tipo de soquete são definidos no arquivo de cabeçalho Winsock2.h.
+\No Windows Sockets 2, novos tipos de soquete foram introduzidos. 
+\Um aplicativo pode descobrir dinamicamente os atributos de cada protocolo de transporte disponível por meio da função WSAEnumProtocols. 
+\Portanto, um aplicativo pode determinar o tipo de soquete possível e as opções de protocolo para uma família de endereços e usar essas informações ao especificar este parâmetro. 
+\As definições de tipo de soquete nos arquivos de cabeçalho Winsock2.he Ws2def.h serão atualizadas periodicamente conforme novos tipos de soquete, famílias de endereços e protocolos são definidos.
+\ No Windows Sockets 1.1, os únicos tipos de soquete possíveis são SOCK_DATAGRAM (2) e SOCK_STREAM (1) .
+Um número denominado ai_protocol, \ O tipo de protocolo. As opções possíveis são específicas para a família de endereços e tipo de soquete especificados. 
+\Os valores possíveis para o ai_protocol são definidos nos arquivos de cabeçalho Winsock2.h e Wsrm.h.
+\No Windows SDK lançado para Windows Vista e posterior, a organização dos arquivos de cabeçalho foi alterada e esse membro pode ser um dos valores do tipo de enumeração IPPROTO definido no arquivo de cabeçalho Ws2def.h. 
+\Observe que o arquivo de cabeçalho Ws2def.h é automaticamente incluído no Winsock2.h e nunca deve ser usado diretamente.
+\Se um valor de 0 for especificado para ai_protocol, o chamador não deseja especificar um protocolo e o provedor de serviços escolherá o ai_protocol a ser usado. 
+\Para protocolos diferentes de IPv4 e IPv6, defina ai_protocol como zero.
+\ Se o membro ai_family for 26 (AF_IRDA), então o ai_protocol deve ser 0.
+Um número denominado ai_addrlen, \O comprimento, em bytes, do buffer apontado pelo membro ai_addr.
+Um pchar denominado ai_canonname, \O nome canônico do host.
+Um sockaddrptr denominado ai_addr, \Um ponteiro para uma estrutura sockaddr. 
+\O membro ai_addr em cada estrutura addrinfo retornada aponta para uma estrutura de endereço de soquete preenchida. 
+\O comprimento, em bytes, de cada estrutura addrinfo retornada é especificado no membro ai_addrlen.
+Um addrinfoptr denominado ai_next. \Um ponteiro para a próxima estrutura em uma lista vinculada. 
+\Este parâmetro é definido como NULL na última estrutura addrinfo de uma lista vinculada.
 
 Some addrinfo routines é um conjunto com
 Um getaddrinfo endereço de memória,
@@ -2336,10 +2361,16 @@ O texto CRLF é um string igual a $0D0A.
 
 O sinal de adição é um pedaço igual a 43.
 
-Um crypt session é uma coisa com \documentar isso com calma depois
-Um hcryptprov endereço de memória,
-Um hcrypthash endereço de memória,
-Um hcryptkey endereço de memória.
+Uma crypt session é uma coisa com \documentar isso com calma depois
+Um hcryptprov endereço de memória, \ O tipo de dados HCRYPTPROV é usado para representar identificadores para CSPs. 
+\Esses identificadores são usados para indicar qual módulo CSP executa operações específicas.
+Um hcrypthash endereço de memória, \O tipo de dados HCRYPTHASH é usado para representar identificadores para objetos hash. Esses identificadores indicam ao módulo CSP qual hash está sendo usado em uma operação específica. O
+\ módulo CSP não permite a manipulação direta dos valores de hash. 
+\Em vez disso, o usuário manipula os valores de hash por meio do identificador de hash.
+Um hcryptkey endereço de memória. \O tipo de dados HCRYPTKEY é usado para representar identificadores para chaves criptográficas. 
+\Esses identificadores são usados para indicar ao módulo CSP qual chave está sendo usada em uma operação específica. 
+\O módulo CSP não permite o acesso direto aos valores-chave. 
+\Em vez disso, o usuário executa funções usando o valor da chave por meio do identificador de chave.
 
 A tecla Ctrl é uma tecla igual a 17.
 
@@ -2349,11 +2380,11 @@ O quadro atual é um canvas.
 
 O evento atual é um event.
 
-O número atual da cor do arco-íris é um número [esse número vai de 1 a 6 indicating, respectively, red, orange, yellow, green, blue, purple].
+O número atual da cor do arco-íris é um número [esse número vai de 1 a 6 indicando, respectivamente, vermelho, laranja, amarelo, verde, azul, roxo].
 
 Um cursor é um número identificador.
 
-Etapas necessárias para que se cut um número em half:
+Etapas necessárias para que se corte um número pela metade:
 Divida o número por 2.
 
 A cor azul piscina é uma cor.
