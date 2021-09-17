@@ -33,12 +33,12 @@ A etiqueta de finalização é uma etiqueta igual a 9.
 A etiqueta de acréscimo é uma etiqueta igual a 10.
 O Intel etiqueta é uma etiqueta igual a 11.
 O jump false etiqueta é uma etiqueta igual a 12.
-O load address etiqueta é uma etiqueta igual a 13.
+O load endereço etiqueta é uma etiqueta igual a 13.
 O load eax etiqueta é uma etiqueta igual a 14.
 O loop etiqueta é uma etiqueta igual a 15.
 A etiqueta de negação é uma etiqueta igual a 16.
 O prolog etiqueta é uma etiqueta igual a 17.
-O push address etiqueta é uma etiqueta igual a 18.
+O push endereço etiqueta é uma etiqueta igual a 18.
 O push value etiqueta é uma etiqueta igual a 19.
 O save eax etiqueta é uma etiqueta igual a 20.
 A etiqueta de repetição é uma etiqueta igual a 21.
@@ -133,7 +133,7 @@ Se o target type deste type for inexistente, cancele.
 Adicione uma rotina para as rotinas usando nil.
 Posponha "Desaloque um " seguido de o nome deste type para o header string desta rotina.
 Posponha "Se o " seguido de o nome deste type seguido de " for inexistente, cancele. " para o body string desta rotina.
-Se o target type deste type deveria ser [estar] finalizado, posponha "~finalize o " seguido de o nome deste type seguido de "'s target. " para o body string desta rotina.
+Se o target type deste type deveria ser finalizado, posponha "~finalize o " seguido de o nome deste type seguido de "'s target. " para o body string desta rotina.
 Posponha "Unassign o " seguido de o nome deste type seguido de "." para o body string desta rotina.
 Lance a cabeçalho de rotina desta rotina sobre o header string desta rotina.
 Lance as instruções desta rotina sobre o body string desta rotina.
@@ -193,7 +193,7 @@ Encontre um import usando o import nome.
 Se o import for inexistente, adicione o import para o imports usando o import nome.
 Encontre a entry usando a entry nome e as entries deste import.
 Se a entry não for inexistente, cancele.
-Crie o entry.
+Crie a entry.
 Posponha a entry para as entries deste import.
 Atribua a entry nome ao nome desta entry.
 
@@ -207,7 +207,7 @@ Atribua o reference detector ao reference detector deste campo.
 Etapas necessárias para que se adicione a rotina de finalização por um type:
 Se o type for inexistente, cancele.
 Se o detector de erros deste compilador estiver ativado, cancele.
-Se o type não deveria ser [estar] finalizado, cancele.
+Se o type não deveria ser finalizado, cancele.
 Se o nome deste type for "string", adicione a rotina de finalização pelo type (texto); exit.
 Se o nome deste type for "texto", adicione a rotina de finalização pelo type (texto); exit.
 Se o type puder ser reduzido para "string", cancele. \ prevents generation of finalizer por derived string types
@@ -226,7 +226,7 @@ Posponha "Intel $50. " para o body string desta rotina. \ push eax -> push the 4
 Percorra.
 Obtenha um campo desde os campos deste type.
 Se o campo for inexistente, pare.
-Se o type deste campo não deveria ser [estar] finalizado, repita.
+Se o type deste campo não deveria ser finalizado, repita.
 Posponha "~finalize o " seguido de o nome deste type seguido de "'s " seguido de o nome deste campo seguido de ". " para o body string desta rotina.
 Repita.
 Posponha "Intel $58." para o body string desta rotina. \ pop eax -> pop the top element of the stack into memory at the four bytes starting at location EAX.
@@ -241,8 +241,8 @@ Se o type for inexistente, cancele.
 Se o detector de erros deste compilador estiver ativado, cancele.
 Adicione uma rotina para as rotinas usando nil.
 Posponha "~finalize um " seguido de o nome deste type para o header string desta rotina.
-Posponha "Intel $50. " para o body string desta rotina. \ push eax -> push the 4 bytes at address eax on the stack
-\ Specifically, push first decrements ESP by 4, then places its operand into the contents of the 32-bit location at address [ESP]. 
+Posponha "Intel $50. " para o body string desta rotina. \ push eax -> push the 4 bytes at endereço eax on the stack
+\ Specifically, push first decrements ESP by 4, then places its operand into the contents of the 32-bit location at endereço [ESP]. 
 \ESP (the stack pointer) is decremented by push since the x86 stack grows para baixo - i.e. the stack grows desde high addresses to lower addresses.
 Posponha "unassign a string's first . " para o body string desta rotina. \\ traduzir string aqui
 \Posponha "unassign o texto's first. " para o body string desta rotina. \\ traduzir string aqui
@@ -435,12 +435,12 @@ Se o monikette for inexistente, cancele.
 Se a variável deste monikette for inexistente, repita.
 Se o subtexto atual deste monikette não estiver em branco, repita.
 Se o type atual deste monikette for inexistente, repita.
-Adicione um fragment usando o push address etiqueta e a variável deste monikette.
+Adicione um fragment usando o push endereço etiqueta e a variável deste monikette.
 Repita.
 
 Etapas necessárias para que se adicione o atribua ou converta fragments usando uma variável e uma segunda variável e um local de aparição:
-Adicione um fragment usando o push address etiqueta e a segunda variável.
-Adicione um segundo fragment usando o push address etiqueta e o variável.
+Adicione um fragment usando o push endereço etiqueta e a segunda variável.
+Adicione um segundo fragment usando o push endereço etiqueta e o variável.
 Encontre uma rotina usando "atribua" e o type desta variável e "para" e o type desta segunda variável.
 Se a rotina for inexistente, encontre a rotina usando "converta" e o type desta variável e "para" e o type desta segunda variável.
 Se a rotina não for inexistente, adicione um terceiro fragment usando a etiqueta de demanda interna e a rotina; exit.
@@ -466,8 +466,8 @@ Atribua o type nome ao type nome deste scratch.
 Resolva o scratch.
 
 Etapas necessárias para que se adicione several fragments usando uma string e uma variável e uma segunda string e uma segunda variável e um local de aparição:
-Adicione um fragment usando o push address etiqueta e a segunda variável.
-Adicione um segundo fragment usando o push address etiqueta e o variável.
+Adicione um fragment usando o push endereço etiqueta e a segunda variável.
+Adicione um segundo fragment usando o push endereço etiqueta e o variável.
 Adicione um monikette para uns monikettes usando a string.
 Adicione uma segunda monikette para os monikettes usando o type desta variável.
 Adicione um terceiro monikette para os monikettes usando a segunda string.
@@ -479,9 +479,9 @@ Se a rotina for inexistente, apresente uma mensagem de erro contendo "Eu não sei
 Adicione um terceiro fragment usando a etiqueta de demanda interna e a rotina.
 
 Etapas necessárias para que se adicione several fragments usando uma string e uma variável e uma segunda string e uma segunda variável e um terceiro string e um terceiro variável e um endereço de memória do pedaço :
-Adicione um fragment usando o push address etiqueta e o terceiro variável.
-Adicione um segundo fragment usando o push address etiqueta e a segunda variável.
-Adicione um terceiro fragment usando o push address etiqueta e o variável.
+Adicione um fragment usando o push endereço etiqueta e o terceiro variável.
+Adicione um segundo fragment usando o push endereço etiqueta e a segunda variável.
+Adicione um terceiro fragment usando o push endereço etiqueta e o variável.
 Adicione um monikette para uns monikettes usando a string.
 Adicione uma segunda monikette para os monikettes usando o type desta variável.
 Adicione um terceiro monikette para os monikettes usando a segunda string.
@@ -500,7 +500,7 @@ Posponha o source file para o source files.
 Atribua o endereço completo ao endereço completo deste source file.
 
 Etapas necessárias para que se adicione two fragments usando uma string e uma variável e um local de aparição:
-Adicione um fragment usando o push address etiqueta e o variável.
+Adicione um fragment usando o push endereço etiqueta e o variável.
 Adicione um monikette para uns monikettes usando a string.
 Adicione uma segunda monikette para os monikettes usando o type desta variável.
 Encontre uma rotina usando os monikettes.
@@ -532,144 +532,144 @@ Atribua o local de aparição ao local de aparição desta variável.
 
 
 
-Etapas necessárias para que se address uns entries:
+Etapas necessárias para que se enderece uns entries:
 Obtenha um entry desde o entries.
 Se a entry for inexistente, cancele.
-Address o entry.
+Enderece o entry.
 Repita.
 
-Etapas necessárias para que se address um entry:
-Atribua o endereço do nome usado atualmente ao nome address desta entry.
+Etapas necessárias para que se enderece um entry:
+Atribua o endereço do nome usado atualmente ao nome endereço desta entry.
 Atribua o quantidade de caracteres deste nome deste entry mais 3 para um número.
 Arredonde o número para cima para o múltiplo imediato of 2.
 Adicione o número para o endereço do nome usado atualmente.
-Atribua o current thunk address ao thunk address desta entry.
-Atribua o image base mais o current thunk address ao address desta entry.
-Adicione 4 para o current thunk address.
+Atribua o current previamente calculado endereço ao previamente calculado endereço desta entry.
+Atribua o image base mais o current previamente calculado endereço ao endereço desta entry.
+Adicione 4 para o current previamente calculado endereço.
 
-Etapas necessárias para que se address um fragment usando um address:
+Etapas necessárias para que se enderece um fragment usando um endereço:
 Se o detector de erros deste compilador estiver ativado, cancele.
 Se o fragment for inexistente, cancele.
-Atribua o image base mais o address ao address deste fragment.
-Se a etiqueta deste fragment for a push address etiqueta, adicione 7 para o address; exit.
-Se a etiqueta deste fragment for a etiqueta de demanda interna, adicione 5 para o address; exit.
-Se a etiqueta deste fragment for a load address etiqueta, adicione 12 para o address; exit.
-Se a etiqueta deste fragment for a etiqueta de acréscimo, adicione 10 para o address; exit.
-Se a etiqueta deste fragment for a dereference etiqueta, adicione 14 para o address; exit.
-Se a etiqueta deste fragment for a jump false etiqueta, adicione 9 para o address; exit.
-Se a etiqueta deste fragment for a etiqueta de negação, adicione 3 para o address; exit.
-Se a etiqueta deste fragment for a exit etiqueta, adicione 5 para o address; exit.
-Se a etiqueta deste fragment for a etiqueta de repetição, adicione 5 para o address; exit.
-Se a etiqueta deste fragment for a break etiqueta, adicione 5 para o address; exit.
-Se a etiqueta deste fragment for a prolog etiqueta, address o fragment usando o address (prolog); exit.
-Se a etiqueta deste fragment for a epilog etiqueta, address o fragment usando o address (epilog); exit.
-Se a etiqueta deste fragment for a Intel etiqueta, adicione o quantidade de caracteres deste código deste fragment para o address; exit.
-Se a etiqueta deste fragment for a push value etiqueta, address o fragment usando o address (push value); exit.
-Se a etiqueta deste fragment for a etiqueta de demanda externa, adicione 6 para o address; exit.
-Se a etiqueta deste fragment for a load eax etiqueta, adicione 5 para o address; exit. \ was 8 when "load eax" took em variáveis; now "load eax" only does um immediate value
-Se a etiqueta deste fragment for a save eax etiqueta, address o fragment usando o address (save eax); exit.
-Se a etiqueta deste fragment for a etiqueta de demanda indireta, adicione 8 para o address; exit.
-Se a etiqueta deste fragment for a etiqueta de endereço de rotina, adicione 12 para o address; exit.
+Atribua o image base mais o endereço ao endereço deste fragment.
+Se a etiqueta deste fragment for a push endereço etiqueta, adicione 7 para o endereço; exit.
+Se a etiqueta deste fragment for a etiqueta de demanda interna, adicione 5 para o endereço; exit.
+Se a etiqueta deste fragment for a load endereço etiqueta, adicione 12 para o endereço; exit.
+Se a etiqueta deste fragment for a etiqueta de acréscimo, adicione 10 para o endereço; exit.
+Se a etiqueta deste fragment for a dereference etiqueta, adicione 14 para o endereço; exit.
+Se a etiqueta deste fragment for a jump false etiqueta, adicione 9 para o endereço; exit.
+Se a etiqueta deste fragment for a etiqueta de negação, adicione 3 para o endereço; exit.
+Se a etiqueta deste fragment for a exit etiqueta, adicione 5 para o endereço; exit.
+Se a etiqueta deste fragment for a etiqueta de repetição, adicione 5 para o endereço; exit.
+Se a etiqueta deste fragment for a break etiqueta, adicione 5 para o endereço; exit.
+Se a etiqueta deste fragment for a prolog etiqueta, enderece o fragment usando o endereço (prolog); exit.
+Se a etiqueta deste fragment for a epilog etiqueta, enderece o fragment usando o endereço (epilog); exit.
+Se a etiqueta deste fragment for a Intel etiqueta, adicione o quantidade de caracteres deste código deste fragment para o endereço; exit.
+Se a etiqueta deste fragment for a push value etiqueta, enderece o fragment usando o endereço (push value); exit.
+Se a etiqueta deste fragment for a etiqueta de demanda externa, adicione 6 para o endereço; exit.
+Se a etiqueta deste fragment for a load eax etiqueta, adicione 5 para o endereço; exit. \ was 8 when "load eax" took em variáveis; now "load eax" only does um immediate value
+Se a etiqueta deste fragment for a save eax etiqueta, enderece o fragment usando o endereço (save eax); exit.
+Se a etiqueta deste fragment for a etiqueta de demanda indireta, adicione 8 para o endereço; exit.
+Se a etiqueta deste fragment for a etiqueta de endereço de rotina, adicione 12 para o endereço; exit.
 
-Etapas necessárias para que se address um fragment usando um address (epilog):
-Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, adicione 3 para o address.
-Adicione 6 para o address.
+Etapas necessárias para que se enderece um fragment usando um endereço (epilog):
+Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, adicione 3 para o endereço.
+Adicione 6 para o endereço.
 
-Etapas necessárias para que se address um fragment usando um address (prolog):
-Adicione 3 para o address.
-Se o local size desta rotina utilizada atualmente não for 0, adicione 10 para o address.
-Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, adicione 3 para o address.
+Etapas necessárias para que se enderece um fragment usando um endereço (prolog):
+Adicione 3 para o endereço.
+Se o local size desta rotina utilizada atualmente não for 0, adicione 10 para o endereço.
+Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, adicione 3 para o endereço.
 
-Etapas necessárias para que se address um fragment usando um address (push value):
-Adicione 6 para o address.
-Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - address um fragment usando um address (push value)"; exit.
-Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - address um fragment usando um address (push value)"; exit.
+Etapas necessárias para que se enderece um fragment usando um endereço (push value):
+Adicione 6 para o endereço.
+Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - endereço um fragment usando um endereço (push value)"; exit.
+Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - endereço um fragment usando um endereço (push value)"; exit.
 Atribua o quantidade de caracteres deste type desta variável deste fragment para um quantidade de caracteres.
-Se o quantidade de caracteres for 4, adicione 2 para o address; exit.
-Se o quantidade de caracteres for 2, adicione 3 para o address; exit.
-Se o quantidade de caracteres for 1, adicione 4 para o address; exit.
-Apresente a mensagem de erro contendo "Erro interno 3 - address um fragment usando um address (push value)".
+Se o quantidade de caracteres for 4, adicione 2 para o endereço; exit.
+Se o quantidade de caracteres for 2, adicione 3 para o endereço; exit.
+Se o quantidade de caracteres for 1, adicione 4 para o endereço; exit.
+Apresente a mensagem de erro contendo "Erro interno 3 - endereço um fragment usando um endereço (push value)".
 
-Etapas necessárias para que se address um fragment usando um address (save eax):
-Adicione 6 para o address.
-Se o variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - address um fragment usando um address (push value)"; exit.
-Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - address um fragment usando um address (push value)"; exit.
+Etapas necessárias para que se enderece um fragment usando um endereço (save eax):
+Adicione 6 para o endereço.
+Se o variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - endereço um fragment usando um endereço (push value)"; exit.
+Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - endereço um fragment usando um endereço (push value)"; exit.
 Atribua o quantidade de caracteres deste type desta variável deste fragment para um quantidade de caracteres.
-Se o quantidade de caracteres for 4, adicione 2 para o address; exit.
-Se o quantidade de caracteres for 2, adicione 3 para o address; exit.
-Se o quantidade de caracteres for 1, adicione 2 para o address; exit.
-Apresente a mensagem de erro contendo "Erro interno 3 - address um fragment usando um address (push value)".
+Se o quantidade de caracteres for 4, adicione 2 para o endereço; exit.
+Se o quantidade de caracteres for 2, adicione 3 para o endereço; exit.
+Se o quantidade de caracteres for 1, adicione 2 para o endereço; exit.
+Apresente a mensagem de erro contendo "Erro interno 3 - endereço um fragment usando um endereço (push value)".
 
-Etapas necessárias para que se address uns fragments usando um address:
+Etapas necessárias para que se enderece uns fragments usando um endereço:
 Se o detector de erros deste compilador estiver ativado, cancele.
 Obtenha um fragment desde o fragments.
 Se o fragment for inexistente, cancele.
-Address o fragment usando o address.
+Enderece o fragment usando o endereço.
 Repita.
 
-Etapas necessárias para que se address um import:
-Atribua o endereço do nome usado atualmente ao nome address deste import.
-Atribua o endereço do cabeçalho usado atualmente ao header address deste import.
-Atribua o endereço do nome usado atualmente ao nome memory address deste import header deste import.
+Etapas necessárias para que se enderece um import:
+Atribua o endereço do nome usado atualmente ao nome endereço deste import.
+Atribua o endereço do cabeçalho usado atualmente ao header endereço deste import.
+Atribua o endereço do nome usado atualmente ao nome memory endereço deste import header deste import.
 Atribua o quantidade de caracteres deste nome deste import mais 1 para um número.
 Arredonde o número para cima para o múltiplo imediato of 2.
 Adicione o número para o endereço do nome usado atualmente.
 Adicione a magnitude desse import header para o endereço do cabeçalho usado atualmente. \ tenho que traduzir com calma isso depois
-Atribua o current thunk address ao first thunk memory address deste import header deste import.
-Address as entries deste import.
-Adicione 4 para o current thunk address.
+Atribua o current previamente calculado endereço ao first previamente calculado memory endereço deste import header deste import.
+Enderece as entries deste import.
+Adicione 4 para o current previamente calculado endereço.
 
-Etapas necessárias para que se address uns imports usando um address:
-Atribua o address ao endereço do cabeçalho usado atualmente.
+Etapas necessárias para que se enderece uns imports usando um endereço:
+Atribua o endereço ao endereço do cabeçalho usado atualmente.
 Atribua as contagem destes imports para uma contagem.
 Adicione 1 para a contagem.
 Multiplique a contagem pela magnitude desse import header.
-Atribua o address mais a contagem ao current thunk address.
+Atribua o endereço mais a contagem ao current previamente calculado endereço.
 Obtenha uma segunda contagem usando o imports (all entries mais markers).
 Multiplique a segunda contagem por 4.
-Atribua o current thunk address mais a segunda contagem ao endereço do nome usado atualmente.
+Atribua o current previamente calculado endereço mais a segunda contagem ao endereço do nome usado atualmente.
 Percorra.
 Obtenha um import desde o imports.
 Se o import for inexistente, pare.
-Address o import.
+Enderece o import.
 Repita.
-Atribua o endereço do nome usado atualmente menos o address para um número.
-Adicione o número para o address.
+Atribua o endereço do nome usado atualmente menos o endereço para um número.
+Adicione o número para o endereço.
 
-Um address é um número.
+Um endereço é um número.
 
-Etapas necessárias para que se address uma rotina usando um address:
+Etapas necessárias para que se enderece uma rotina usando um endereço:
 Se o detector de erros deste compilador estiver ativado, cancele.
 Se a rotina for inexistente, cancele.
 Se o employs cabeçalho expandido desta rotina não estiver em branco, cancele. \ employs são addressed later
 Se o compiled detector desta rotina não estiver ativo, cancele.
 Atribua a rotina à rotina utilizada atualmente.
-Atribua o image base mais o address ao address desta rotina.
-Address os fragments desta rotina usando o address.
-Arredonde o address para cima para o múltiplo imediato of 4.
+Atribua o image base mais o endereço ao endereço desta rotina.
+Enderece os fragments desta rotina usando o endereço.
+Arredonde o endereço para cima para o múltiplo imediato of 4.
 
-Etapas necessárias para que se address uns rotinas usando um address:
+Etapas necessárias para que se enderece uns rotinas usando um endereço:
 Se o detector de erros deste compilador estiver ativado, cancele.
 Obtenha uma rotina desde as rotinas.
 Se a rotina for inexistente, pare.
-Address a rotina usando o address.
+Enderece a rotina usando o endereço.
 Repita.
 
-Etapas necessárias para que se address uma variável usando um address:
+Etapas necessárias para que se enderece uma variável usando um endereço:
 Se o detector de erros deste compilador estiver ativado, cancele.
 Se o variável for inexistente, cancele.
 Se o compiled detector desta variável não estiver ativo, cancele.
-Atribua o image base mais o address ao address desta variável.
-Adicione o quantidade de caracteres deste type desta variável para o address.
-Se o type desta variável puder ser reduzido para "string", adicione o quantidade de caracteres deste data desta variável mais 1 para o address.
-Se o type desta variável puder ser reduzido para "texto", adicione o quantidade de caracteres deste data desta variável mais 1 para o address.
-Arredonde o address para cima para o múltiplo imediato of 4.
+Atribua o image base mais o endereço ao endereço desta variável.
+Adicione o quantidade de caracteres deste type desta variável para o endereço.
+Se o type desta variável puder ser reduzido para "string", adicione o quantidade de caracteres deste data desta variável mais 1 para o endereço.
+Se o type desta variável puder ser reduzido para "texto", adicione o quantidade de caracteres deste data desta variável mais 1 para o endereço.
+Arredonde o endereço para cima para o múltiplo imediato of 4.
 
-Etapas necessárias para que se address uns variáveis usando um address:
+Etapas necessárias para que se enderece uns variáveis usando um endereço:
 Se o detector de erros deste compilador estiver ativado, cancele.
 Obtenha uma variável desde o variáveis.
 Se o variável for inexistente, cancele.
-Address o variável usando o address.
+Enderece o variável usando o endereço.
 Repita.
 
 
@@ -694,7 +694,7 @@ Etapas necessárias para que se posponha o global finalizers para uma string:
 Obtenha um global desde o globals.
 Se o global for inexistente, cancele.
 Se o compiled detector deste global não estiver ativo, repita.
-Se o type deste global não deveria ser [estar] finalizado, repita.
+Se o type deste global não deveria ser finalizado, repita.
 Posponha "~finalize o " seguido de o nome deste global seguido de ". " para a string.
 Repita.
 
@@ -737,15 +737,15 @@ Posponha o cabeçalho expandido deste rotina para o trecho (com separator).
 
 Etapas necessárias para que se posponha uma string e uma segunda string e um terceiro string para um quarto string (fast):
 Atribua o quantidade de caracteres deste quarto string para um quantidade de caracteres.
-Adicione o quantidade de caracteres deste string para o quantidade de caracteres.
+Adicione o quantidade de caracteres desta string para o quantidade de caracteres.
 Adicione o quantidade de caracteres desta segunda string para o quantidade de caracteres.
 Adicione o quantidade de caracteres deste terceiro string para o quantidade de caracteres.
 Reassign um endereço de memória usando o quantidade de caracteres.
 Atribua o endereço de memória para um endereço de memória do pedaço .
 Copie pedaços desde o first deste quarto string para o endereço de memória do pedaço pelo quantidade de caracteres deste quarto string.
 Adicione o quantidade de caracteres deste quarto string para o endereço de memória do pedaço .
-Copie pedaços desde o first deste string para o endereço de memória do pedaço pelo quantidade de caracteres deste string.
-Adicione o quantidade de caracteres deste string para o endereço de memória do pedaço .
+Copie pedaços desde o first endereço de memória do pedaço desta string para o endereço de memória do pedaço pelo quantidade de caracteres desta string.
+Adicione o quantidade de caracteres desta string para o endereço de memória do pedaço .
 Copie pedaços desde o first desta segunda string para o endereço de memória do pedaço pelo quantidade de caracteres desta segunda string.
 Adicione o quantidade de caracteres desta segunda string para o endereço de memória do pedaço .
 Copie pedaços desde o first deste terceiro string para o endereço de memória do pedaço pelo quantidade de caracteres deste terceiro string.
@@ -770,16 +770,16 @@ Se a etiqueta for a etiqueta de finalização, posponha "finalize" para o trecho (
 Se a etiqueta for a etiqueta de acréscimo, posponha "increment" para o trecho (com separator); exit.
 Se a etiqueta for a Intel etiqueta, posponha "Intel" para o trecho (com separator); exit.
 Se a etiqueta for a jump false etiqueta, posponha "jump false" para o trecho (com separator); exit.
-Se a etiqueta for a load address etiqueta, posponha "load address" para o trecho (com separator); exit.
+Se a etiqueta for a load endereço etiqueta, posponha "load endereço" para o trecho (com separator); exit.
 Se a etiqueta for a load eax etiqueta, posponha "load eax" para o trecho (com separator); exit.
 Se a etiqueta for a loop etiqueta, posponha "loop" para o trecho (com separator); exit.
 Se a etiqueta for a etiqueta de negação, posponha "not" para o trecho (com separator); exit.
 Se a etiqueta for a prolog etiqueta, posponha "prolog" para o trecho (com separator); exit.
-Se a etiqueta for a push address etiqueta, posponha "push address" para o trecho (com separator); exit.
+Se a etiqueta for a push endereço etiqueta, posponha "push endereço" para o trecho (com separator); exit.
 Se a etiqueta for a push value etiqueta, posponha "push value" para o trecho (com separator); exit.
 Se a etiqueta for a save eax etiqueta, posponha "save eax" para o trecho (com separator); exit.
 Se a etiqueta for a etiqueta de repetição, posponha "repeat" para o trecho (com separator); exit.
-Se a etiqueta for a etiqueta de endereço de rotina, posponha "rotina address" para o trecho (com separator); exit.
+Se a etiqueta for a etiqueta de endereço de rotina, posponha "rotina endereço" para o trecho (com separator); exit.
 Posponha "?" para o trecho (com separator).
 
 Etapas necessárias para que se posponha um type para um trecho (com separator):
@@ -903,21 +903,21 @@ Se a string for "rascunhar", posponha "esboçar" para a segunda string; exit.
 Se a string for "antepor", posponha "prepor" para a segunda string; exit.
 Posponha a string para a segunda string.
 
-Etapas necessárias para que se attach address loading código para um texto hexadecimal usando uma variável:
+Etapas necessárias para que se attach endereço loading código para um texto hexadecimal usando uma variável:
 \ loads para edx
 Se o variável for inexistente, attach $C7C200000000 para o texto hexadecimal; exit. \ mov edx,0
-Se a categoria desta variável for "global", attach $C7C2 e o address desta variável para o texto hexadecimal; exit. \ mov edx,the address da variável
-Se a categoria desta variável for "literal", attach $C7C2 e o address desta variável para o texto hexadecimal; exit. \ mov edx,the address da variável
+Se a categoria desta variável for "global", attach $C7C2 e o endereço desta variável para o texto hexadecimal; exit. \ mov edx,the endereço da variável
+Se a categoria desta variável for "literal", attach $C7C2 e o endereço desta variável para o texto hexadecimal; exit. \ mov edx,the endereço da variável
 Se a categoria desta variável for "local", attach $8D95 e o offset desta variável para o texto hexadecimal; exit. \ lea edx,[ebp+ the offset da variável]
 Se a categoria desta variável for "scratch", attach $8B95 e o offset desta variável para o texto hexadecimal; exit. \ mov edx, [ebp+ the offset da variável]
-Se a categoria desta variável não for "parâmetro", apresente uma mensagem de erro contendo "Erro interno - attach address loading código para um texto hexadecimal usando uma variável"; exit.
+Se a categoria desta variável não for "parâmetro", apresente uma mensagem de erro contendo "Erro interno - attach endereço loading código para um texto hexadecimal usando uma variável"; exit.
 Se o by-value detector desta variável estiver ativo, attach $8D95 e o offset desta variável para o texto hexadecimal; exit. \ lea edx,[ebp+the offset da variável]
 Attach $8B95 e o offset desta variável para o texto hexadecimal. \ mov edx,[ebp+ the offset da variável]
 
-Etapas necessárias para que se attach um texto hexadecimal e um address para um fragment:
+Etapas necessárias para que se attach um texto hexadecimal e um endereço para um fragment:
 \ call ou jump
-Atribua o address para um número.
-Subtraia o address deste fragment desde o número.
+Atribua o endereço para um número.
+Subtraia o endereço deste fragment desde o número.
 Subtraia o quantidade de caracteres deste código deste fragment desde o número.
 Subtraia o quantidade de caracteres deste texto hexadecimal desde o número.
 Subtraia 4 desde o número.
@@ -952,21 +952,21 @@ Copie pedaços desde o endereço de memória para a segunda endereço de memória pel
 Etapas necessárias para que se disponibilize um DOS header para um trecho:
 Disponibilize pedaços usando o endereçamento deste DOS header e o magnitude deste DOS header e o trecho e 0.
 
-Etapas necessárias para que se disponibilize uns entries para um trecho:
+Etapas necessárias para que se disponibilize umas entries para um trecho:
 Obtenha um entry desde o entries.
 Se a entry for inexistente, cancele.
 Disponibilize a entry ao trecho.
 Repita.
 
 Etapas necessárias para que se disponibilize um entry para um trecho:
-Disponibilize pedaços usando o endereçamento deste nome address desta entry e 4 e o trecho e o thunk address desta entry.
-Atribua o nome address desta entry mais 2 para um address.
-Disponibilize o nome desta entry ao trecho at o address.
+Disponibilize pedaços usando o endereçamento deste nome endereço desta entry e 4 e o trecho e o previamente calculado endereço desta entry.
+Atribua o nome endereço desta entry mais 2 para um endereço.
+Disponibilize o nome desta entry ao trecho at o endereço.
 
 Etapas necessárias para que se disponibilize um fragment para um trecho:
 Se o código deste fragment estiver em branco, cancele.
-Atribua o address deste fragment menos o image base para um address.
-Disponibilize o código deste fragment ao trecho at o address.
+Atribua o endereço deste fragment menos o image base para um endereço.
+Disponibilize o código deste fragment ao trecho at o endereço.
 
 Etapas necessárias para que se disponibilize uns fragments para um trecho:
 Obtenha um fragment desde o fragments.
@@ -975,8 +975,8 @@ Disponibilize o fragment ao trecho.
 Repita.
 
 Etapas necessárias para que se disponibilize um import para um trecho:
-Disponibilize pedaços usando o endereçamento deste import header deste import e o magnitude deste import header deste import e o trecho e o header address deste import.
-Disponibilize o nome deste import ao trecho at o nome address deste import.
+Disponibilize pedaços usando o endereçamento deste import header deste import e o magnitude deste import header deste import e o trecho e o header endereço deste import.
+Disponibilize o nome deste import ao trecho at o nome endereço deste import.
 Disponibilize as entries deste import ao trecho.
 
 Etapas necessárias para que se disponibilize uns imports para um trecho:
@@ -998,29 +998,29 @@ Se a rotina for inexistente, cancele.
 Disponibilize a rotina ao trecho.
 Repita.
 
-Etapas necessárias para que se disponibilize uma string para um trecho at um address:
-Disponibilize pedaços usando o first deste string e o quantidade de caracteres deste string e o trecho e o address.
+Etapas necessárias para que se disponibilize uma string para um trecho at um endereço:
+Disponibilize pedaços usando o first endereço de memória do pedaço desta string e o quantidade de caracteres desta string e o trecho e o endereço.
 
 Etapas necessárias para que se disponibilize uma variável para um trecho:
 Se o compiled detector desta variável não estiver ativo, cancele.
 Se o type desta variável puder ser reduzido para "string", disponibilize o variável ao trecho (como um texto); exit.
 Se o type desta variável puder ser reduzido para "texto", disponibilize o variável ao trecho (como um texto); exit.
-Atribua o address desta variável menos o image base para um address. \ Atribua a diferença entre o endreço da variável e a base da imagem em um endereço.
-Disponibilize o data desta variável ao trecho at o address.
+Atribua o endereço desta variável menos o image base para um endereço. \ Atribua a diferença entre o endreço da variável e a base da imagem em um endereço.
+Disponibilize o data desta variável ao trecho at o endereço.
 
 Etapas necessárias para que se disponibilize uma variável para um trecho (como um texto):
-Atribua o address desta variável menos o image base para um address.
+Atribua o endereço desta variável menos o image base para um endereço.
 Atribua o quantidade de caracteres deste data desta variável para um quantidade de caracteres.
-Atribua o address para um segundo address.
-Adicione a magnitude desse prototype string para o segundo address.
-Adicione o image base para o segundo address.
+Atribua o endereço para um segundo endereço.
+Adicione a magnitude desse prototype string para o segundo endereço.
+Adicione o image base para o segundo endereço.
 Atribua 0 ao first deste prototype string.
 Atribua -1 ao last deste prototype string.
-Se o quantidade de caracteres não for 0, atribua o segundo address ao first deste prototype string.
+Se o quantidade de caracteres não for 0, atribua o segundo endereço ao first deste prototype string.
 Se o quantidade de caracteres não for 0, atribua o first deste prototype string mais o quantidade de caracteres menos 1 ao last deste prototype string.
-Disponibilize pedaços usando o endereçamento deste prototype string e a magnitude deste prototype string e o trecho e o address.
-Adicione a magnitude deste prototype string para o address.
-Disponibilize os data desta variável ao trecho at o address.
+Disponibilize pedaços usando o endereçamento deste prototype string e a magnitude deste prototype string e o trecho e o endereço.
+Adicione a magnitude deste prototype string para o endereço.
+Disponibilize os data desta variável ao trecho at o endereço.
 
 Etapas necessárias para que se disponibilize uns variáveis para um trecho:
 Obtenha uma variável desde o variáveis.
@@ -1028,7 +1028,7 @@ Se o variável for inexistente, cancele.
 Disponibilize o variável ao trecho.
 Repita.
 
-Um zona é um conjunto com um base address, um quantidade de caracteres e um size.
+Um zona é um conjunto com um base endereço, um quantidade de caracteres e um size.
 
 
 
@@ -1166,8 +1166,8 @@ Percorra.
 Obtenha uma variável desde os locals desta rotina.
 Se o variável for inexistente, pare.
 Se a categoria desta variável for "scratch", repita.
-Se o type desta variável não deveria ser [estar] finalizado, repita.
-Adicione um segundo fragment usando o push address etiqueta e o variável.
+Se o type desta variável não deveria ser finalizado, repita.
+Adicione um segundo fragment usando o push endereço etiqueta e o variável.
 Encontre uma segunda rotina usando "~finalize" e o type desta variável.
 Se a segunda rotina for inexistente, apresente uma mensagem de erro contendo "Erro interno - compile o body of uma rotina (epilog)"; exit.
 Adicione um terceiro fragment usando a etiqueta de demanda interna e a segunda rotina.
@@ -1252,19 +1252,19 @@ Etapas necessárias para que se compile um endereço da pasta (address):
 Se o detector de erros deste compilador estiver ativado, cancele.
 Mostre painel de informações "Obtendo endereço dos itens...".
 Start o temporizador de endereçamento.
-Atribua 4096 para um address.
-Atribua o address à base address desta import zona.
-Address o imports usando o address.
-Atribua o address menos a base address desta import zona ao quantidade de caracteres desta import zona.
-Arredonde o address para cima para o múltiplo imediato of 4096.
-Atribua o address à base address desta zona de dados.
-Address os globals usando o address.
-Address os literals usando o address.
-Atribua o address menos a base address desta zona de dados ao quantidade de caracteres desta zona de dados.
-Arredonde o address para cima para o múltiplo imediato of 4096.
-Atribua o address à base address desta código zona.
-Address as rotinas usando o address.
-Atribua o address menos a base address desta código zona ao quantidade de caracteres desta código zona.
+Atribua 4096 para um endereço.
+Atribua o endereço à base endereço desta import zona.
+Enderece o imports usando o endereço.
+Atribua o endereço menos a base endereço desta import zona ao quantidade de caracteres desta import zona.
+Arredonde o endereço para cima para o múltiplo imediato of 4096.
+Atribua o endereço à base endereço desta zona de dados.
+Enderece os globals usando o endereço.
+Enderece os literals usando o endereço.
+Atribua o endereço menos a base endereço desta zona de dados ao quantidade de caracteres desta zona de dados.
+Arredonde o endereço para cima para o múltiplo imediato of 4096.
+Atribua o endereço à base endereço desta código zona.
+Enderece as rotinas usando o endereço.
+Atribua o endereço menos a base endereço desta código zona ao quantidade de caracteres desta código zona.
 Suspenda o temporizador de endereçamento.
 
 Etapas necessárias para que se compile um endereço da pasta (calculate lengths e offsets of types):
@@ -1981,7 +1981,7 @@ Examine um type nome usando o percorredor.
 Encontre um type usando o type nome e o catálogo de tipos.
 Se o type for inexistente, apresente a mensagem de erro contendo "Eu não sei em qual tipo o: " seguido de o type nome seguido de "' se encaixa." e o percorredor; exit.
 Adicione um scratch usando o nome deste type e o first deste vocábulo deste percorredor.
-Adicione um fragment usando o load address etiqueta e a variável deste termo e o scratch.
+Adicione um fragment usando o load endereço etiqueta e a variável deste termo e o scratch.
 Atribua o scratch à variável deste termo.
 Limpe a phrase deste termo.
 
@@ -2007,7 +2007,7 @@ Se a variável deste termo for inexistente, apresente uma mensagem de erro conten
 Se o target type deste type deste termo for inexistente, apresente a mensagem de erro contendo "Não consegui identificar o tipo desse target." e o percorredor; exit.
 Se a categoria deste termo for "scratch", compile o termo usando o percorredor (dereference - em place); exit.
 Adicione um scratch usando o nome deste target type deste type deste termo e o first deste vocábulo deste percorredor.
-Adicione um fragment usando o load address etiqueta e a variável deste termo e o scratch.
+Adicione um fragment usando o load endereço etiqueta e a variável deste termo e o scratch.
 Adicione um segundo fragment usando o dereference etiqueta e o scratch.
 Atribua o scratch ao variável deste termo.
 Limpe o phrase deste termo.
@@ -2081,7 +2081,7 @@ Etapas necessárias para que se compile um termo usando um percorredor (possessiv
 Se o detector de erros deste compilador estiver ativado, cancele.
 Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Você usou endereçamento da forma errada, erro no termo da variável: " seguido de a phrase deste termo seguido de "." e o percorredor; exit.
 Adicione um intermediate usando "endereço de memória" e o first deste vocábulo deste percorredor.
-Adicione um fragment usando o load address etiqueta e a variável deste termo e o intermediate.
+Adicione um fragment usando o load endereço etiqueta e a variável deste termo e o intermediate.
 Atribua o intermediate à variável deste termo.
 Limpe a phrase deste termo.
 
@@ -2190,7 +2190,7 @@ Se o function deste campo termo não for inexistente, compile o termo usando o pe
 Se a categoria deste termo for "scratch", compile o termo usando o percorredor e o campo termo (in place); exit.
 Atribua o campo deste campo termo para um campo.
 Adicione um scratch usando o nome deste type deste campo e o first deste vocábulo deste percorredor.
-Adicione um fragment usando o load address etiqueta e a variável deste termo e o scratch.
+Adicione um fragment usando o load endereço etiqueta e a variável deste termo e o scratch.
 Se o offset deste campo não for 0, adicione um terceiro fragment usando a etiqueta de acréscimo e o scratch e o offset deste campo.
 Atribua o scratch à variável deste termo.
 Limpe a phrase deste termo.
@@ -2202,8 +2202,8 @@ Atribua o last destes parâmetros desta rotina para um parâmetro.
 Se o parâmetro for inexistente, apresente uma mensagem de erro contendo "Erro interno na função compile um termo usando um percorredor e um campo termo (função) - parâmetro vazio." e o percorredor; exit.
 Se o type deste parâmetro for inexistente, apresente a mensagem de erro contendo "Erro interno 2 na função compile um termo usando um percorredor e um campo termo (função) - tipo do parâmetro inexistente." e o percorredor; exit.
 Adicione um intermediate usando o nome deste type deste parâmetro e o first deste vocábulo deste percorredor.
-Adicione um fragment usando o push address etiqueta e o intermediate.
-Se o push detector deste campo termo estiver ativo, adicione um segundo fragment usando o push address etiqueta e a variável deste termo.
+Adicione um fragment usando o push endereço etiqueta e o intermediate.
+Se o push detector deste campo termo estiver ativo, adicione um segundo fragment usando o push endereço etiqueta e a variável deste termo.
 Adicione um terceiro fragment usando a etiqueta de demanda interna e a rotina.
 Atribua o intermediate à variável deste termo.
 Limpe a phrase deste termo.
@@ -2348,13 +2348,13 @@ Aloque memória para o variável.
 Atribua o categoria à categoria desta variável.
 Atribua 1 à contagem desta variável.
 
-O endereço do cabeçalho usado atualmente é um address.
+O endereço do cabeçalho usado atualmente é um endereço.
 
-O endereço do nome usado atualmente é um address.
+O endereço do nome usado atualmente é um endereço.
 
 O rotina utilizada atualmente é uma rotina.
 
-O current thunk address é um address.
+O current previamente calculado endereço é um endereço.
 
 O zona de dados é um zona.
 
@@ -2425,10 +2425,10 @@ Se a function deste campo termo não for inexistente, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se uns campos deveriam ser finalizados;
-Etapas necessárias para que se determine se uns campos deveria ser [estar] finalizado:
+Etapas necessárias para que se determine se uns campos deveria ser finalizado:
 Obtenha um campo desde o campos.
 Se o campo for inexistente, diga não.
-Se o type deste campo deveria ser [estar] finalizado, diga sim.
+Se o type deste campo deveria ser finalizado, diga sim.
 Repita.
 
 Etapas necessárias para que se determine se um item parece ser encadernável:
@@ -2516,7 +2516,7 @@ Diga não.
 
 Etapas necessárias para que se determine se um percorredor está sobre algum tipo de possessive (type 2 - preceding s, single-quote, non-glom-byte):
 Isole o percorredor.
-Se o first deste source deste percorredor for o first deste subtexto original deste percorredor, diga não.
+Se o first deste source deste percorredor for o first endereço de memória do pedaço deste subtexto original deste percorredor, diga não.
 Subtraia 1 desde o first deste source deste percorredor.
 Se o target deste first deste source deste percorredor não for o s minúsculo ou o S maiúsculo, diga não.
 Adicione 2 para o first deste source deste percorredor.
@@ -2555,28 +2555,28 @@ Diga sim.
 
 Etapas necessárias para que se determine se uma string termina com algum tipo de consonant e uma segunda string:
 Lance um subtexto sobre a string.
-Subtraia o quantidade de caracteres desta segunda string desde o last deste subtexto.
+Subtraia o quantidade de caracteres desta segunda string desde o last endereço de memória do pedaço deste subtexto.
 Se o subtexto estiver em branco, diga não.
-Se o target deste last deste subtexto não for algum tipo de consonant, diga não.
+Se o target deste last endereço de memória do pedaço deste subtexto não for algum tipo de consonant, diga não.
 Se a string does not end com a segunda string, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se uma string termina com algum tipo de vogal e uma segunda string:
 Lance um subtexto sobre a string.
-Subtraia o quantidade de caracteres desta segunda string desde o last deste subtexto.
+Subtraia o quantidade de caracteres desta segunda string desde o last endereço de memória do pedaço deste subtexto.
 Se o subtexto estiver em branco, diga não.
-Se o target deste last deste subtexto não for algum tipo de vogal, diga não.
+Se o target deste last endereço de memória do pedaço deste subtexto não for algum tipo de vogal, diga não.
 Se a string does not end com a segunda string, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se uma string termina com algum tipo de consonant:
 Se a string estiver em branco, diga não.
-Se o target deste last deste string não for algum tipo de consonant, diga não.
+Se o target deste last endereço de memória do pedaço desta string não for algum tipo de consonant, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se uma string termina com algum tipo de vogal:
 Se a string estiver em branco, diga não.
-Se o target deste last deste string não for algum tipo de vogal, diga não.
+Se o target deste last endereço de memória do pedaço desta string não for algum tipo de vogal, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se uma string é algum operator de adição:
@@ -2789,7 +2789,7 @@ Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de hex literal:
 Se a string estiver em branco, diga não.
-Se o target deste first deste string for o cifrão, diga sim.
+Se o target deste first endereço de memória do pedaço desta string for o cifrão, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de artigo definido:
@@ -2892,8 +2892,8 @@ Se a string for algum tipo de hex literal, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de mark:
-Se o quantidade de caracteres deste string não for 1, diga não.
-Se o target deste first deste string for algum tipo de mark, diga sim.
+Se o quantidade de caracteres desta string não for 1, diga não.
+Se o target deste first endereço de memória do pedaço desta string for algum tipo de mark, diga sim.
 Diga não.
 
 \Etapas necessárias para que se determine se uma string é algum tipo de monikette string:
@@ -3309,7 +3309,7 @@ Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de qualifier:
 Se a string estiver em branco, diga não.
-Se o target deste first deste string for o parênteses esquerdo, diga sim.
+Se o target deste first endereço de memória do pedaço desta string for o parênteses esquerdo, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de reverse-possessive:
@@ -3326,12 +3326,12 @@ Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de string literal:
 Se a string estiver em branco, diga não.
-Se o target deste first deste string for as aspas duplas, diga sim.
+Se o target deste first endereço de memória do pedaço desta string for as aspas duplas, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de symbol:
-Se o quantidade de caracteres deste string não for 1, diga não.
-Se o target deste first deste string for algum tipo de symbol, diga sim.
+Se o quantidade de caracteres desta string não for 1, diga não.
+Se o target deste first endereço de memória do pedaço desta string for algum tipo de symbol, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de verb:
@@ -3618,8 +3618,8 @@ Etapas necessárias para que se determine se uma string has algum tipo de stresse
 Isole a string.
 Percorra.
 Se a string estiver em branco, diga não.
-Se o target deste last deste string for algum tipo de stressed vogal, diga sim.
-Subtraia 1 desde o last deste string.
+Se o target deste last endereço de memória do pedaço desta string for algum tipo de stressed vogal, diga sim.
+Subtraia 1 desde o last endereço de memória do pedaço desta string.
 Repita.
 
 Etapas necessárias para que se determine se uma termo está vazia;
@@ -3664,7 +3664,7 @@ Se o quantidade de caracteres deste type for 2, diga sim.
 Se o quantidade de caracteres deste type for 1, diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um type deveria ser [estar] finalizado:
+Etapas necessárias para que se determine se um type deveria ser  finalizado:
 Se o type for inexistente, diga não.
 Se o type puder ser reduzido para "subtexto", diga não.
 Se o type puder ser reduzido para "string", diga sim.
@@ -3672,20 +3672,31 @@ Se o type puder ser reduzido para "texto", diga sim.
 Se os campos deste type deveriam ser finalizados, diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um type deveria ser ignorado:
+Etapas necessárias para que se determine se um type deveria ser ignorado:  \ ie, can be destroyed/needs a destroy routine generated for it
+\The phrase "should be forgotten" means "ought to be forgotten" which really means "needs to have a destroy routine automatically generated for it". See page 93 of the manual.
 Se o type for inexistente, diga não.
 \PAL
 \Se o nome deste type for "elemento", diga não.
 \Se o nome deste type for "elementos", diga não.
 \CAL
-Se o nome deste type for "coisa", diga não.
-Se o nome deste type for "coisas", diga não.
-Se o type puder ser reduzido para "coisas", diga sim.
-Se o type não puder ser reduzido para "endereço de memória", diga não.
-Se o target type deste type for inexistente, diga não.
-Se o target type deste type não puder ser reduzido para "endereço de memória", diga sim.
-Se o target type deste type não deveria ser ignorado, diga não.
-Diga sim.
+Se o nome deste type for "coisa", diga não. \ no, because this is the built-in type which we don't ever allocate or destroy, it exists so we can "magically" add next and previous fields to anything defined as a "thing"
+Se o nome deste type for "coisas", diga não. \ no, because this is the built-in type we "magically" generate to anchor lists of things, same as above.
+Se o type puder ser reduzido para "coisas", diga sim. \ yes, because (though it seems to contradict the line immediately above) this is a an actual list of things that we can destroy, for example "some pages".
+Se o type não puder ser reduzido para "endereço de memória", diga não. \ \ no, because a pointer variable is a static variable (it is the address in the variable that is dynamic); the pointer variable itself is not something that can be dynamically allocated, so no destroy is necessary
+Se o target type deste type for inexistente, diga não. \ no, because it's a pointer to nothing, so there's nothing to destroy.
+Se o target type deste type não puder ser reduzido para "endereço de memória", diga sim.\ yes, because it's a pointer to something allocated, not a pointer to another pointer. Pointers to pointers are handled with the next recursive line
+Se o target type deste type não deveria ser ignorado, diga não.\ no, because it's a pointer to something that shouldn't be destroyed. For example, a pointer to a thing
+Diga sim.\ The last condition is the hardest to wrap one's head around since it is recursive.
+
+\Etapas necessárias para que se determine se um type deveria ser finalizado:\The phrase "should be finalized" means "ought to be/needs to be automatically deallocated".
+\\The phrase "should be finalized" means "ought to be/needs to be automatically deallocated".
+\Se o type for inexistente, diga não.
+\Se o type puder ser reduzido para "subtexto", diga não. \ substrings point to (parts of) real strings that get deallocated elsewhere
+\Se o type puder ser reduzido para "string", diga sim. \\ the normal case for strings
+\Se o type puder ser reduzido para "texto", diga sim. \PAL
+\Se os campos deste type deveriam ser finalizados, diga sim.\ this is for strings inside records
+\Diga não.
+
 
 Etapas necessárias para que se determine se uma variável está duplicada em umas variáveis:
 Obtenha uma segunda variável desde o variáveis.
@@ -3741,7 +3752,7 @@ Um wyrd denominado MamixmumExtraParagraphsNeeded,
 \\If the request cannot be satisfied, the program is allocated as much memory as is available.
 Um wyrd denominado InitialRelativeSS,
 \\ Initial SS value.
-\\This word contains the parágrafo address of the stack segment relative para the start of the load module.
+\\This word contains the paragraph address of the stack segment relative para the start of the load module.
 \\At load time, this value is relocated by adding the address of the start segment of the program para it, 
 \\and the resulting value is placed em the SS register before the program is started.
 \\In DOS, the start segment of the program is the first segment boundary em memory after the PSP.
@@ -3807,21 +3818,22 @@ Limpe o nickname desta variável.
 
 
 An entry é uma coisa com
-Um nome address,
-Um thunk address,
+Um nome endereço,
+Um previamente calculado endereço, \ consulte https://en.wikipedia.org/wiki/Thunk e http://ftp.informatik.rwth-aachen.de/jargon300/previamente calculado.html para mais informações
+\ Em programação de computador , um previamente calculado é uma sub-rotina usada para injetar um cálculo em outra sub-rotina. 
+\Thunks são usados principalmente para atrasar um cálculo até que seu resultado seja necessário ou para inserir operações no início ou no final de outra sub-rotina. 
+\Eles têm muitos outros usos na geração de código do compilador e em programação modular .
 Um nome,
-Um address.
+Um endereço.
 
-
-
-Um expression é um termo.
+Uma expression é um termo.
 
 Etapas necessárias para que se extend uma string com uma segunda string:
 Se a segunda string estiver em branco, cancele.
 Se a string não estiver em branco, posponha o caractere de espaço para a string.
 Posponha a segunda string para a string.
 
-\An campo é uma variável.
+
 Um campo é uma variável.
 
 Um campo termo é um conjunto com
@@ -3836,17 +3848,17 @@ Destrua o catálogo geral de rotinas.
 Destrua o catálogo de variáveis hexadecimais.
 Destrua o catálogo de variáveis globais.
 Destrua o catálogo de tipos.
-Destrua o imports.
+Destrua os imports.
 Destrua as rotinas.
-Destrua o literals.
-Destrua o globals.
-Destrua o types.
-Destrua o source files.
+Destrua os literals.
+Destrua os globals.
+Destrua os types.
+Destrua os source files.
 
 
 
 Etapas necessárias para que se encontre um entry usando uma string e uns entries:
-Esvazie o entry.
+Esvazie a entry.
 Percorra.
 Obtenha a entry desde o entries.
 Se a entry for inexistente, cancele.
@@ -3972,9 +3984,9 @@ Lance um subtexto sobre o trecho deste source file.
 Atribua 1 ao número da linha.
 Percorra.
 Se o subtexto estiver em branco, cancele.
-Se o first deste subtexto for o endereço de memória do pedaço , cancele.
-Se o target deste first deste subtexto for o return pedaço, adicione 1 para o número da linha.
-Adicione 1 para o first deste subtexto.
+Se o first endereço de memória do pedaço deste subtexto for o endereço de memória do pedaço , cancele.
+Se o target deste first endereço de memória do pedaço deste subtexto for o return pedaço, adicione 1 para o número da linha.
+Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
 
 Etapas necessárias para que se encontre um source file usando um endereço de memória do pedaço :
@@ -3999,7 +4011,7 @@ Encontre o type e o nickname usando o nome (backward).
 \Skip para o next palavra no subtexto.
 \Repita.
 \Atribua o first deste nome para first deste uma segunda subtexto. \ pode estar errado
-\Atribua o first deste subtexto menos 2 ao last desta segunda subtexto.
+\Atribua o first endereço de memória do pedaço deste subtexto menos 2 ao last desta segunda subtexto.
 \Se a segunda subtexto não estiver em branco, atribua a segunda subtexto ao nickname.
 \Se a segunda subtexto estiver em branco, atribua o subtexto ao nickname.
 
@@ -4014,7 +4026,7 @@ Se o type não for inexistente, pare.
 Skip para o previous palavra no subtexto.
 Repita.
 Atribua o last deste nome para o last desse segunda subtexto.
-Atribua o last deste subtexto mais 2 ao first desta segunda subtexto.
+Atribua o last endereço de memória do pedaço deste subtexto mais 2 ao first desta segunda subtexto.
 Se a segunda subtexto não estiver em branco, atribua a segunda subtexto ao nickname.
 Se a segunda subtexto estiver em branco, atribua o subtexto ao nickname.
 
@@ -4030,7 +4042,7 @@ Se o type não for inexistente, pare.
 Skip para o next palavra no subtexto.
 Repita.
 Atribua o first deste nome para o first desse segunda subtexto.
-Atribua o first deste subtexto menos 2 ao last desta segunda subtexto.
+Atribua o first endereço de memória do pedaço deste subtexto menos 2 ao last desta segunda subtexto.
 Se a segunda subtexto não estiver em branco, atribua a segunda subtexto ao nickname.
 Se a segunda subtexto estiver em branco, atribua o subtexto ao nickname.
 
@@ -4082,7 +4094,7 @@ Uma rotina (reference) [call internal, rotina address],
 Uma entry (reference) [call external],
 Um número [increment],
 Um detector [load eax], \SAL
-Um address,
+Um endereço,
 Um texto hexadecimal denominado código.
 
 Etapas necessárias para que se gere um nome usando uma string:
@@ -4091,14 +4103,14 @@ Adicione 1 para a contagem de nomes deste compilador.
 Converta a contagem de nomes deste compilador para uma segunda string.
 Posponha a segunda string para o nome.
 
-Etapas necessárias para que se obtenha um address usando uma rotina:
-Se o address desta rotina não for 0, atribua o address desta rotina ao address; exit.
-Atribua -1 ao address desta rotina.
+Etapas necessárias para que se obtenha um endereço usando uma rotina:
+Se o endereço desta rotina não for 0, atribua o endereço desta rotina ao endereço; exit.
+Atribua -1 ao endereço desta rotina.
 Encontre uma segunda rotina usando o employs cabeçalho expandido desta rotina e o catálogo geral de rotinas.
 Se a segunda rotina for inexistente, apresente uma mensagem de erro contendo "Eu não consegui encontrar uma tarefa: " seguido de o employs cabeçalho expandido desta rotina seguido de "' que você está tentando employ." e o local de aparição desta rotina; exit.
-Se o address desta segunda rotina for -1, apresente a mensagem de erro contendo "Referência recursiva na cláusula employ." e o local de aparição desta rotina; exit. \Bora traduzir
-Obtenha o address usando a segunda rotina.
-Atribua o address ao address desta rotina.
+Se o endereço desta segunda rotina for -1, apresente a mensagem de erro contendo "Referência recursiva na cláusula employ." e o local de aparição desta rotina; exit. \Bora traduzir
+Obtenha o endereço usando a segunda rotina.
+Atribua o endereço ao endereço desta rotina.
 
 Etapas necessárias para que se obtenha uma contagem usando uns imports (all entries mais markers):
 Atribua 0 à contagem.
@@ -4117,12 +4129,12 @@ An global é uma variável.
 
 O globals são uns globals.
 
-O image base é um address igual a 4194304 [$00400000].
+O image base é um endereço igual a 4194304 [$00400000].
 
 O import zona é um zona.
 
 Um import header é um conjunto com
-Um address denominado original first thunk, \ consulte https://www.linkedin.com/pulse/why-pe-need-original-first-thunkoft-milad-kahsari-alhadi/
+Um endereço denominado original first previamente calculado, \ consulte https://www.linkedin.com/pulse/why-pe-need-original-first-thunkoft-milad-kahsari-alhadi/
 \ https://stackoverflow.com/questions/42413937/why-pe-need-original-first-thunkoft#:~:text=The%20original%20first%20thunk%20is,%2C%20user32%20etc)%20are%20known.
 \Thunks are the defnitive pieces of codes em an operating system that handle the transitions between 16 and 32-bit código.
 \ Thus they ensure backward compatibility between the calls made by the application.
@@ -4137,18 +4149,18 @@ Um address denominado original first thunk, \ consulte https://www.linkedin.com/
 \ If import binding is not used seguido de the original first thunk array is optional and might not be present.
 \ ASLR has probably made this optimization irrelevant.
 Um número denominado TimeStamp, \ Set para zero until bound; seguido de this feld is set para the TimeDateStamp of the exporting FileHeader da DLL
-Um address denominado forwarder chain, \ Forwarder Chain: O 32-bit catálogo of the frst forwarder em the liste of imported functions
-Um address denominado nome memory address, 
+Um endereço denominado forwarder chain, \ Forwarder Chain: O 32-bit catálogo of the frst forwarder em the liste of imported functions
+Um endereço denominado nome memory endereço, 
 \It holds the RVA [Relative Virtual Address] of the dll para be loaded para memory. It is a dword value.
 \It is comprised of : RVA = Image Base + Endian Order 
-\Note: As we know OllyDbg gives the result em the Big Endian order where as the x86 architecture holds the address em the Little Endian order, 
-\ so the address gets exchanged reversibly em the di tuples
-Um address denominado first thunk memory address.
-\ Once the API is linked and gets loaded para memory the frst thunk which is a RVA points para the Import Address Table [IAT]
+\Note: As we know OllyDbg gives the result em the Big Endian order where as the x86 architecture holds the endereço em the Little Endian order, 
+\ so the Address gets exchanged reversibly em the di tuples
+Um endereço denominado first previamente calculado memory endereço.
+\ Once the API is linked and gets loaded para memory the frst previamente calculado which is a RVA points para the Import Enderece Table [IAT]
 
 An import é uma coisa com
-Um nome address,
-Um header address,
+Um nome endereço,
+Um header endereço,
 Um nome,
 Um import header,
 Some entries.
@@ -4263,30 +4275,30 @@ Inicialize o PE header (Code Section).
 Etapas necessárias para que se inicialize um PE header (Code Section):
 Copie pedaços desde "código "'s first para o endereçamento deste nome desta Code Section deste PE header por 6.
 Atribua o quantidade de caracteres desta código zona ao SizeInBytes desta Code Section deste PE header.
-Atribua a base address desta código zona ao AddressInMemory desta Code Section deste PE header.
+Atribua o base endereço desta código zona ao AddressInMemory desta Code Section deste PE header.
 Atribua o quantidade de caracteres desta código zona ao SizeInFile desta Code Section deste PE header.
-Atribua a base address desta código zona ao AddressInFile desta Code Section deste PE header.
+Atribua o base endereço desta código zona ao AddressInFile desta Code Section deste PE header.
 Atribua -536870880 [$E0000020] para as Characteristics desta Code Section deste PE header. \ executable, readable, writable, código object
 
 Etapas necessárias para que se inicialize um PE header (data section):
 Copie pedaços desde "data "'s first para o endereçamento deste nome desta data section deste PE header por 6.
 Atribua o quantidade de caracteres desta zona de dados ao SizeInBytes desta data section deste PE header.
-Atribua a base address desta zona de dados ao AddressInMemory desta data section deste PE header.
+Atribua o base endereço desta zona de dados ao AddressInMemory desta data section deste PE header.
 Atribua o quantidade de caracteres desta zona de dados ao SizeInFile desta data section deste PE header.
-Atribua a base address desta zona de dados ao AddressInFile desta data section deste PE header.
+Atribua o base endereço desta zona de dados ao AddressInFile desta data section deste PE header.
 Atribua -1073741760 [$C0000040] para as Characteristics desta data section deste PE header. \ initialized, readable, writable
 
 Etapas necessárias para que se inicialize um PE header (directories):
 Atribua 16 [$00000010] ao numberofdirectories deste PE header.
-Atribua a base address desta import zona ao imagedirectoryentryimportaddress deste PE header.
+Atribua o base endereço desta import zona ao imagedirectoryentryimportaddress deste PE header.
 Atribua o quantidade de caracteres desta import zona ao ImageDirectoryEntryImportSize deste PE header.
 
 Etapas necessárias para que se inicialize um PE header (import section):
 Copie pedaços desde "idata "'s first para o endereçamento deste nome desta idata section deste PE header por 6.
 Atribua o quantidade de caracteres desta import zona ao SizeInBytes desta idata section deste PE header.
-Atribua a base address desta import zona ao AddressInMemory desta idata section deste PE header.
+Atribua o base endereço desta import zona ao AddressInMemory desta idata section deste PE header.
 Atribua o quantidade de caracteres desta import zona ao SizeInFile desta idata section deste PE header.
-Atribua a base address desta import zona ao AddressInFile desta idata section deste PE header.
+Atribua o base endereço desta import zona ao AddressInFile desta idata section deste PE header.
 Atribua -1073741760 [$C0000040] para as Characteristics desta idata section deste PE header. \ initialized, readable, writable
 
 Etapas necessárias para que se inicialize um PE header (optional header):
@@ -4296,9 +4308,9 @@ Atribua o quantidade de caracteres desta zona de dados ao SizeOfInitializedDataI
 Atribua 0 ao SizeOfUninitializedDataInFile deste PE header.
 Encontre uma rotina usando "~initialize before run e run e finalize after run" e o catálogo geral de rotinas.
 Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro interno: não achei a tarefa de inicialização"; exit.
-Atribua o address desta rotina menos o image base ao AddressOfEntryPointInMemory deste PE header.
-Atribua a base address desta código zona ao AddressOfCodeInMemory deste PE header.
-Atribua a base address desta zona de dados ao AddressOfInitializedDataInMemory deste PE header.
+Atribua o endereço desta rotina menos o image base ao AddressOfEntryPointInMemory deste PE header.
+Atribua o base endereço desta código zona ao AddressOfCodeInMemory deste PE header.
+Atribua o base endereço desta zona de dados ao AddressOfInitializedDataInMemory deste PE header.
 Atribua o image base à imagebase deste PE header.
 Atribua 4096 [$00001000] ao MemoryAlignment deste PE header.
 Atribua 4096 [$00001000] ao FileAlignment deste PE header.
@@ -4394,7 +4406,7 @@ Etapas necessárias para que se liste um entry em um trecho:
 Se a entry for inexistente, cancele.
 Posponha "/entry" para o trecho (com separator).
 Posponha o nome desta entry para o trecho (com separator).
-Posponha o address desta entry para o trecho (as hex com separator).
+Posponha o endereço desta entry para o trecho (as hex com separator).
 Advance o trecho.
 
 Etapas necessárias para que se liste um fragment em um trecho:
@@ -4405,7 +4417,7 @@ Posponha a segunda variável deste fragment para o trecho (com separator).
 Posponha a rotina deste fragment para o trecho (com separator).
 Posponha a entry desta fragment para o trecho (com separator).
 Posponha o número deste fragment para o trecho (as hex com separator).
-Posponha o address deste fragment para o trecho (as hex com separator).
+Posponha o endereço deste fragment para o trecho (as hex com separator).
 Converta o código deste fragment para um cifra hexadecimal.
 Posponha o cifra hexadecimal para o trecho (com separator).
 Advance o trecho.
@@ -4477,7 +4489,7 @@ Posponha o detector de função desta rotina para o trecho (com separator).
 Posponha o employs cabeçalho expandido desta rotina para o trecho (com separator).
 Posponha o parâmetro size desta rotina para o trecho (com separator).
 Posponha o local size desta rotina para o trecho (com separator).
-Posponha o address desta rotina para o trecho (as hex com separator).
+Posponha o endereço desta rotina para o trecho (as hex com separator).
 Advance o trecho.
 Liste os parâmetros desta rotina no trecho.
 Liste os locals desta rotina no trecho.
@@ -4578,7 +4590,7 @@ Posponha o nome desta variável para o trecho (com separator).
 Posponha o nickname desta variável para o trecho (com separator).
 Posponha o type nome desta variável para o trecho (com separator).
 Posponha o type desta variável para o trecho (com separator).
-Posponha o address desta variável [or offset] para o trecho (as hex com separator).
+Posponha o endereço desta variável [or offset] para o trecho (as hex com separator).
 Posponha o by-value detector desta variável para o trecho (com separator).
 Posponha a contagem desta variável para o trecho (com separator).
 Posponha o reference detector desta variável para o trecho (com separator).
@@ -4908,7 +4920,7 @@ Um wyrd denominado DllCharacteristics,
  \ Flags used para indicate if a DLL image includes entry points for process and thread initialization and termination.
 \ Para obter mais informações, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#dll-Characteristics
 Um número denominado MaxStack, [SizeOfStackReserve]
-\These campos control the amount of address space para reserve and commit for the stack and default heap. 
+\These fields control the amount of address space para reserve and commit for the stack and default heap. 
 \ O tamanho da pilha a ser reservada. Somente SizeOfStackCommit está comprometido; 
 \o restante é disponibilizado uma página por vez até que o tamanho da reserva seja atingido.
 Um número denominado MinStack, [SizeOfStackCommit]
@@ -4964,11 +4976,11 @@ Um phrase é uma string.
 \Se o lexicon for inexistente, mostre erro "I can't find algum tipo de lecksicon."; diga não.
 \Se a string estiver em branco, diga não.
 \Lance um subtexto sobre a string.
-\Atribua o last deste subtexto ao first deste subtexto.
+\Atribua o last endereço de memória do pedaço deste subtexto ao first endereço de memória do pedaço deste subtexto.
 \Percorra.
-\Se o first deste subtexto é o first deste string, pare.
-\Se o target deste first deste subtexto for o caractere de espaço, adicione 1 para o first deste subtexto; break.
-\Subtraia 1 desde o first deste subtexto.
+\Se o first endereço de memória do pedaço deste subtexto é o first endereço de memória do pedaço desta string, pare.
+\Se o target deste first endereço de memória do pedaço deste subtexto for o caractere de espaço, adicione 1 para o first endereço de memória do pedaço deste subtexto; break.
+\Subtraia 1 desde o first endereço de memória do pedaço deste subtexto.
 \Repita.
 \Se o subtexto estiver no catálogo deste lexicon, diga sim.
 \Diga não.
@@ -5039,7 +5051,7 @@ Posponha "s" para a string.
 Etapas necessárias para que se pluralize uma string (portuguese rules - palavras terminadas com "ão"):
 \# acentos em sílabas prévias
 Lance um subtexto sobre a string.
-Subtraia 2 desde o last deste subtexto.
+Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.
 Se o subtexto has algum tipo de stressed vogal, posponha "s" para a string; exit.
 \# regra padrão
 Remove os last dois pedaços desde a string.
@@ -5061,7 +5073,7 @@ Etapas necessárias para que se pluralize uma string (portuguese rules - palavras
 \# acentos em sílabas prévias
 Se a string for "pixel", posponha "pixels" para a string; exit.
 Lance um subtexto sobre a string.
-Subtraia 2 desde o last deste subtexto.
+Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.
 Se o subtexto has algum tipo de stressed vogal, remove o last pedaço desde a string; posponha "is" para a string; exit.
 Remove os last dois pedaços desde a string.
 Posponha "éis" para a string.
@@ -5069,7 +5081,7 @@ Posponha "éis" para a string.
 Etapas necessárias para que se pluralize uma string (portuguese rules - palavras terminadas com "il"):
 \# acentos em sílabas prévias
 Lance um subtexto sobre a string.
-Subtraia 2 desde o last deste subtexto.
+Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.
 Se o subtexto has algum tipo de stressed vogal, remove os last dois pedaços desde a string; posponha "eis" para a string; exit.
 Remove o last pedaço desde a string.
 Posponha "s" para a string.
@@ -5077,7 +5089,7 @@ Posponha "s" para a string.
 Etapas necessárias para que se pluralize uma string (portuguese rules - palavras terminadas com "ol"):
 \# acentos em sílabas prévias
 Lance um subtexto sobre a string.
-Subtraia 2 desde o last deste subtexto.
+Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.
 Se o subtexto has algum tipo de stressed vogal, remove o last pedaço desde a string; posponha "is" para a string; exit.
 Remove os last dois pedaços desde a string.
 Posponha "óis" para a string.
@@ -5097,7 +5109,7 @@ Etapas necessárias para que se pluralize uma string (portuguese rules - palavras
 \Se a string termina com "úr", remove os last dois pedaços desde a string; posponha "ures" para a string; exit.
 \# acentos em sílabas prévias
 Lance um subtexto sobre a string.
-Subtraia 2 desde o last deste subtexto.
+Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.
 Se o subtexto has algum tipo de stressed vogal, posponha "es" para a string; exit.
 \# hiatos
 Se a string termina com "air", remove os last dois pedaços desde a string; posponha "íres" para a string; exit.
@@ -5131,7 +5143,7 @@ Posponha "es" para a string.
 Etapas necessárias para que se pluralize uma string (portuguese rules - palavras terminadas com "is/us"):
 \# acentos em sílabas prévias
 Lance um subtexto sobre a string.
-Subtraia 2 desde o last deste subtexto.
+Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.
 Se o subtexto has algum tipo de stressed vogal, cancele.
 \# hiatos
 Se a string termina com "ais", remove os last dois pedaços desde a string; posponha "íses" para a string; exit.
@@ -5160,7 +5172,7 @@ Se a string termina com "ôz", remove os last dois pedaços desde a string; pospon
 Se a string termina com "úz", remove os last dois pedaços desde a string; posponha "uzes" para a string; exit.
 \# acentos em sílabas prévias
 Lance um subtexto sobre a string.
-Subtraia 2 desde o last deste subtexto.
+Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.
 Se o subtexto has algum tipo de stressed vogal, posponha "es" para a string; exit.
 \# hiatos
 Se a string termina com "aiz", remove os last dois pedaços desde a string; posponha "ízes" para a string; exit.
@@ -5608,7 +5620,7 @@ Some locals, um local size,
 Um cabeçalho de rotina, um header string,
 Um instruções, um body string,
 Some fragments,
-Um address.
+Um endereço.
 
 Um rotina reference é uns monikettes.
 
@@ -5954,15 +5966,15 @@ Se o detector não estiver ativo, atribua "atribua o " seguido de o nome deste li
 
 Etapas necessárias para que se skip para o next palavra em um subtexto:
 Se o subtexto estiver em branco, cancele.
-Se o target deste first deste subtexto for irrelevante, pare.
-Adicione 1 para o first deste subtexto.
+Se o target deste first endereço de memória do pedaço deste subtexto for irrelevante, pare.
+Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
 Skip algum tipo de leading noise no subtexto.
 
 Etapas necessárias para que se skip para o previous palavra em um subtexto:
 Se o subtexto estiver em branco, cancele.
-Se o target deste last deste subtexto for irrelevante, pare.
-Subtraia 1 desde o last deste subtexto.
+Se o target deste last endereço de memória do pedaço deste subtexto for irrelevante, pare.
+Subtraia 1 desde o last endereço de memória do pedaço deste subtexto.
 Repita.
 Skip algum tipo de trailing noise no subtexto.
 
@@ -5977,9 +5989,9 @@ Um termo é um conjunto com uma variável e um phrase.
 Etapas necessárias para que se transmogrify um fragment:
 Se o detector de erros deste compilador estiver ativado, cancele.
 Se o fragment for inexistente, cancele.
-Se a etiqueta deste fragment for o push address etiqueta, transmogrify o fragment (push address); exit.
+Se a etiqueta deste fragment for o push endereço etiqueta, transmogrify o fragment (push endereço); exit.
 Se a etiqueta deste fragment for a etiqueta de demanda interna, transmogrify o fragment (call internal); exit.
-Se a etiqueta deste fragment for o load address etiqueta, transmogrify o fragment (load address); exit.
+Se a etiqueta deste fragment for o load endereço etiqueta, transmogrify o fragment (load endereço); exit.
 Se a etiqueta deste fragment for a etiqueta de acréscimo, transmogrify o fragment (increment); exit.
 Se a etiqueta deste fragment for o dereference etiqueta, transmogrify o fragment (dereference); exit.
 Se a etiqueta deste fragment for o jump false etiqueta, transmogrify o fragment (jump false); exit.
@@ -5994,7 +6006,7 @@ Se a etiqueta deste fragment for a etiqueta de demanda externa, transmogrify o f
 Se a etiqueta deste fragment for o load eax etiqueta, transmogrify o fragment (load eax); exit.
 Se a etiqueta deste fragment for o save eax etiqueta, transmogrify o fragment (save eax); exit.
 Se a etiqueta deste fragment for a etiqueta de demanda indireta, transmogrify o fragment (call indirect); exit.
-Se a etiqueta deste fragment for a etiqueta de endereço de rotina, transmogrify o fragment (rotina address); exit.
+Se a etiqueta deste fragment for a etiqueta de endereço de rotina, transmogrify o fragment (rotina endereço); exit.
 
 Etapas necessárias para que se transmogrify um fragment (break):
 Atribua a etiqueta de repetição para uma etiqueta.
@@ -6003,20 +6015,20 @@ Se o segundo fragment for inexistente, atribua a etiqueta de finalização ao etiq
 Encontre um terceiro fragment usando o last deste fragments desta rotina utilizada atualmente e a etiqueta (backwards).
 Se o terceiro fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (break)"; exit.
 Se o next deste terceiro fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - transmogrify um fragment (break)"; exit.
-Attach $E9 e o address deste next deste terceiro fragment para o fragment. \ JMP o address da destination
+Attach $E9 e o endereço deste next deste terceiro fragment para o fragment. \ JMP o endereço da destination
 
 Etapas necessárias para que se transmogrify um fragment (call external):
-Attach $FF15 e o address desta entry deste fragment para o código deste fragment. \ call [o address desta entry deste fragment ]
+Attach $FF15 e o endereço desta entry deste fragment para o código deste fragment. \ call [o endereço desta entry deste fragment ]
 \ The above rotina generates the machine code for a call to the Windows operating system. 
 \The op code is specified, in hexadecimal ($FF15) and the rest of the instruction is the address of the entry address of the target rotina, which is appended to the op code.
 
 Etapas necessárias para que se transmogrify um fragment (call indirect):
-Attach address loading código para o código deste fragment usando o variável deste fragment. \ coloca address para edx
+Attach endereço loading código para o código deste fragment usando o variável deste fragment. \ coloca endereço para edx
 Attach $FF12 para o código deste fragment. \ call [edx]
 
 Etapas necessárias para que se transmogrify um fragment (call internal):
-Obtenha um address usando o rotina deste fragment.
-Attach $E8 e o address para o fragment. \ call o address da rotina do fragment 
+Obtenha um endereço usando o rotina deste fragment.
+Attach $E8 e o endereço para o fragment. \ call o address da rotina do fragment 
 
 Etapas necessárias para que se transmogrify um fragment (dereference):
 Attach $8B95 e o offset desta variável deste fragment para o código deste fragment. \ mov edx,[ebp+ o offset desta variável deste fragment]
@@ -6032,7 +6044,7 @@ Attach $C2 e o parâmetro size desta rotina utilizada atualmente para o código de
 Etapas necessárias para que se transmogrify um fragment (exit):
 Encontre um segundo fragment usando o fragment e a etiqueta de finalização.
 Se o segundo fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (exit)"; exit.
-Attach $E9 e o address deste segundo fragment para o fragment. \ jmp o address da destination
+Attach $E9 e o endereço deste segundo fragment para o fragment. \ jmp o address da destination
 
 Etapas necessárias para que se transmogrify um fragment (increment):
 Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (increment)"; exit.
@@ -6043,14 +6055,14 @@ Etapas necessárias para que se transmogrify um fragment (jump false):
 Encontre um segundo fragment usando o fragment e o end if etiqueta.
 Se o segundo fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (jump false)"; exit.
 Attach $83F800 para o código deste fragment. \ cmp eax,0
-Attach $0F84 e o address deste segundo fragment para o fragment. \ je o address da destination
+Attach $0F84 e o endereço deste segundo fragment para o fragment. \ je o address da destination
 
-Etapas necessárias para que se transmogrify um fragment (load address):
-Attach address loading código para o código deste fragment usando a variável deste fragment. \ atribua address para edx
+Etapas necessárias para que se transmogrify um fragment (load endereço):
+Attach endereço loading código para o código deste fragment usando a variável deste fragment. \ atribua endereço para edx
 Attach $8995 e o offset desta segunda variável deste fragment para o código deste fragment. \ mov [ebp+ o offset desta variável deste fragment],edx
 
 \Etapas necessárias para que se transmogrify um fragment (load eax):
-\Attach address loading código para o código deste fragment usando a variável deste fragment. \ atribua address para edx
+\Attach endereço loading código para o código deste fragment usando a variável deste fragment. \ atribua endereço para edx
 \Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Internal erro - transmogrify um fragment (load eax)"; exit.
 \Se o type desta variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Internal erro 2 - transmogrify um fragment (load eax)"; exit.
 \Se o quantidade de caracteres deste type desta variável deste fragment não for 4, apresente uma mensagem de erro contendo "Internal erro 3 - transmogrify um fragment (load eax)"; exit.
@@ -6058,7 +6070,7 @@ Attach $8995 e o offset desta segunda variável deste fragment para o código dest
 
 Etapas necessárias para que se transmogrify um fragment (load eax):
 Attach $B8 e o detector deste fragment para o código deste fragment. \ mov eax,detector
-\Attach address loading código para o código deste fragment usando a variável do fragment. \ atribua address para edx
+\Attach endereço loading código para o código deste fragment usando a variável do fragment. \ atribua endereço para edx
 \Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Internal erro - transmogrify um fragment (load eax)"; exit.
 \Se o type desta variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Internal erro 2 - transmogrify um fragment (load eax)"; exit.
 \Se o quantidade de caracteres deste type desta variável deste fragment não for 4, apresente uma mensagem de erro contendo "Internal erro 3 - transmogrify um fragment (load eax)"; exit.
@@ -6071,17 +6083,17 @@ Etapas necessárias para que se transmogrify um fragment (prolog):
 Attach $55 para o código deste fragment. \ push ebp -> saves the contents of the EBP register on the stack.
 Attach $8BEC para o código deste fragment. \ mov ebp,esp -> puts the contents of the ESP register into the EBP register
 Atribua o local size desta rotina utilizada atualmente dividido por 4 para um número.
-Se o número não for 0, attach $B9 \ mov ecx,number;  -> sets para cima the loop that will clear enough space on the stack for the routine’s local variables
+Se o número não for 0, attach $B9 \ mov ecx,number;  -> sets up the loop that will clear enough space on the stack for the routine?s local variables
 e o número e $6A004975FB \loop: push 0; dec ecx; jnz loop -> a loop that pushes enough zeros onto the stack to initialize the local variables.
 para o código deste fragment. 
 Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, attach $535657 para o código deste fragment. \ push ebx, esi, edi ->  save the EBX, ESI, and EDI registers on the stack.
 
-Etapas necessárias para que se transmogrify um fragment (push address):
-Attach address loading código para o código deste fragment usando a variável deste fragment. \ atribua address para edx
+Etapas necessárias para que se transmogrify um fragment (push endereço):
+Attach endereço loading código para o código deste fragment usando a variável deste fragment. \ atribua endereço para edx
 Attach $52 para o código deste fragment. \ push edx
 
 Etapas necessárias para que se transmogrify um fragment (push value):
-Attach address loading código para o código deste fragment usando a variável deste fragment. \ atribua address para edx
+Attach endereço loading código para o código deste fragment usando a variável deste fragment. \ atribua endereço para edx
 Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (push value)"; exit.
 Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - transmogrify um fragment (push value)"; exit.
 Atribua o quantidade de caracteres deste type desta variável deste fragment para um quantidade de caracteres.
@@ -6093,16 +6105,16 @@ Apresente a mensagem de erro contendo "Erro interno 3 - transmogrify um fragment
 Etapas necessárias para que se transmogrify um fragment (repeat):
 Encontre um segundo fragment usando o fragment e o loop etiqueta (backwards).
 Se o segundo fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (repeat)"; exit.
-Attach $E9 e o address deste segundo fragment para o fragment. \ jmp o address da destination 
+Attach $E9 e o endereço deste segundo fragment para o fragment. \ jmp o address da destination 
 
-Etapas necessárias para que se transmogrify um fragment (rotina address):
-Attach address loading código para o código deste fragment usando a variável deste fragment. \ atribua address para edx
-Se a rotina deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (rotina address)"; exit.
-Obtenha um address usando a rotina deste fragment.
-Attach $C702 e o address para o código deste fragment. \ mov [edx],the address
+Etapas necessárias para que se transmogrify um fragment (rotina endereço):
+Attach endereço loading código para o código deste fragment usando a variável deste fragment. \ atribua endereço para edx
+Se a rotina deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (rotina endereço)"; exit.
+Obtenha um endereço usando a rotina deste fragment.
+Attach $C702 e o endereço para o código deste fragment. \ mov [edx],the endereço
 
 Etapas necessárias para que se transmogrify um fragment (save eax):
-Attach address loading código para o código deste fragment usando a variável deste fragment. \ atribua address para edx
+Attach endereço loading código para o código deste fragment usando a variável deste fragment. \ atribua endereço para edx
 Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transmogrify um fragment (save eax)"; exit.
 Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - transmogrify um fragment (save eax)"; exit.
 Atribua o quantidade de caracteres deste type desta variável deste fragment para um quantidade de caracteres.
@@ -6161,8 +6173,8 @@ Um categoria [literal, global, local, parâmetro, scratch],
 Um compiled detector,
 Um nome, um nickname, um type nome,
 Um type (reference), \ actual type sobre literal, global, local; dereferenced type sobre parâmetros e scratches
-Um address [globals e literals only] ou 
-Um offset at o address [locals, parâmetros, e campos only],
+Um endereço [globals e literals only] ou 
+Um offset at o endereço [locals, parâmetros, e campos only],
 Um contagem [campos only],
 Um reference detector [campos only],
 Um redefinition target nome [campos only],
@@ -6176,8 +6188,8 @@ Um texto hexadecimal denominado data [literals only].
 
 Etapas necessárias para que se skip algum tipo de trailing noise em um subtexto:
 Se o subtexto estiver em branco, cancele.
-Se o target deste last deste subtexto não for irrelevante, cancele.
-Subtraia 1 desde o last deste subtexto.
+Se o target deste last endereço de memória do pedaço deste subtexto não for irrelevante, cancele.
+Subtraia 1 desde o last endereço de memória do pedaço deste subtexto.
 Repita.
 
 \ dahn - reverse functions
