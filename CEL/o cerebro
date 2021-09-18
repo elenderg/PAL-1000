@@ -549,7 +549,7 @@ Um big-endian unsigned wyrd é um conjunto com 2 pedaços.
 
 Um código binário é uma string.
 
-An bit é uma unit.
+An bit é uma unidade.
 
 Um bitmapdata é um conjunto com
 Um largura,
@@ -5488,22 +5488,75 @@ Um fração pair é um conjunto com uma fração e uma segunda fração.
 
 Um máximo divisor comum é um número.
 
-Um gcpresults é um conjunto com
-Um número denominado lstructsize,
-Um pchar denominado lpoutstring,
-Um endereço numérico denominado lporder,
-Um endereço numérico denominado lpdx,
-Um endereço numérico denominado lpcaretpos,
-Um endereço de memória denominado lpclass,
-Um endereço de memória denominado lpglyphs,
-Um número denominado nglyphs,
-Um número denominado maxfit.
+Um gcpresults é um conjunto com \GCP_RESULTS https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-gcp_resultsa
+\ A estrutura GCP_RESULTS contém informações sobre os caracteres em uma string. 
+\Essa estrutura recebe os resultados da função GetCharacterPlacement. 
+\Para alguns idiomas, o primeiro elemento nas matrizes pode conter mais informações dependentes do idioma.
+Um número denominado lStructSize, \O tamanho, em bytes, da estrutura.
+Um pchar denominado lpOutString, \Um ponteiro para o buffer que recebe a string de saída ou é NULL se a string de saída não for necessária.
+\ A string de saída é uma versão da string original que está na ordem em que será exibida em um dispositivo especificado. 
+\Normalmente, a string de saída é idêntica à string original, 
+\mas pode ser diferente se a string precisar ser reordenada e a sinalização GCP_REORDER for definida
+\ ou se a string original exceder a extensão máxima e a sinalização GCP_MAXEXTENT for definida.
+Um endereço numérico denominado lpOrder, \Um ponteiro para a matriz que recebe índices de ordenação ou é NULL se os índices de ordenação não forem necessários. 
+\No entanto, seu significado depende dos outros elementos de GCP_RESULTS. 
+\Se os índices de glifos devem ser retornados, os índices são para a matriz lpGlyphs; se os índices de glifos não forem retornados e lpOrder for solicitado, os índices serão para lpOutString. 
+\Por exemplo, no último caso, o valor de lpOrder [i] é a posição de lpString [i] na string de saída lpOutString.
+\Isso normalmente é usado quando GetFontLanguageInfo retorna a sinalização GCP_REORDER, que indica que a string original precisa ser reordenada. 
+\Por exemplo, em hebraico, em que o texto é executado da direita para a esquerda, a matriz lpOrder fornece as localizações exatas de cada elemento na string original.
+Um endereço numérico denominado lpDx, \Um ponteiro para a matriz que recebe as distâncias entre células de caracteres adjacentes ou é NULL se essas distâncias não forem necessárias. 
+\Se a renderização de glifos for feita, as distâncias serão para os glifos, não para os caracteres, portanto, a matriz resultante pode ser usada com a função ExtTextOut.
+\As distâncias nesta matriz estão em ordem de exibição.
+Um endereço numérico denominado lpCaretPos, \Um ponteiro para a matriz que recebe os valores da posição do cursor ou é NULL se as posições do cursor não forem necessárias. 
+\Cada valor especifica a posição do cursor imediatamente antes do caractere correspondente. 
+\Em alguns idiomas, a posição do cursor para cada caractere pode não ser imediatamente à esquerda do caractere. 
+\Por exemplo, em hebraico, em que o texto segue da direita para a esquerda, a posição do cursor é à direita do caractere. 
+\Se a ordenação de glifos for feita, lpCaretPos corresponderá à string original, não à string de saída. 
+\Isso significa que alguns valores adjacentes podem ser iguais.
+\Os valores nesta matriz estão na ordem de entrada.
+Um endereço de memória denominado lpClass, \Um ponteiro para a matriz que contém e / ou recebe classificações de caracteres. 
+\Os valores indicam como dispor os caracteres na string e são semelhantes (mas não idênticos) aos valores CT_CTYPE2 retornados pela função GetStringTypeEx.
+\ Favor ver mais detalhes na documentação daMicrosoft
+Um endereço de memória denominado lpGlyphs, \Um ponteiro para a matriz que recebe os valores que identificam os glifos usados para renderizar a string ou é NULL se a renderização de glifos não for necessária.
+\ O número de glifos na matriz pode ser menor que o número de caracteres na string original se a string contiver glifos ligados. 
+\Além disso, se a reordenação for necessária, a ordem dos glifos pode não ser sequencial.
+\Este array é útil se mais de uma operação está sendo feita em uma string que tem qualquer forma de ligação, kerning ou troca de ordem. 
+\Usar os valores nesta matriz para operações subsequentes economiza o tempo necessário para gerar os índices de glifo todas as vezes.
+\Esta matriz sempre contém índices de glifo e o valor ETO_GLYPH_INDEX deve sempre ser usado quando esta matriz é usada com a função ExtTextOut.
+\Quando GCP_LIGATE é usado, você pode limitar o número de caracteres que serão ligados entre si. (Em árabe, por exemplo, ligaduras de três caracteres são comuns). 
+\Isso é feito definindo o máximo necessário em lpGcpResults-> lpGlyphs [0]. Se nenhum máximo for necessário, você deve definir este campo como zero.
+\Para idiomas como o árabe, onde GetFontLanguageInfo retorna o sinalizador GCP_GLYPHSHAPE, os glifos de um caractere serão diferentes dependendo se o caractere está no início, meio ou final de uma palavra. 
+\Normalmente, o primeiro caractere na string de entrada também será o primeiro caractere em uma palavra, e o último caractere na string de entrada será tratado como o último caractere em uma palavra. 
+\No entanto, se a string exibida for um subconjunto da string completa, como ao exibir uma seção de texto rolado, isso pode não ser verdade. 
+\Nestes casos, é desejável forçar o primeiro ou o último caractere a serem moldados como não sendo formas iniciais ou finais. 
+\Para fazer isso, novamente, o primeiro local na matriz lpGlyphs é usado executando uma operação OR do valor de ligação acima com os valores GCPGLYPH_LINKBEFORE e / ou GCPGLYPH_LINKAFTER. 
+\Por exemplo, um valor de GCPGLYPH_LINKBEFORE | 2 significa que ligaduras de dois caracteres são o máximo necessário e o primeiro caractere da string deve ser tratado como se estivesse no meio de uma palavra.
+Um número denominado nGlyphs, \Na entrada, esse membro deve ser definido com o tamanho das matrizes apontadas pelos membros do ponteiro da matriz. 
+\Na saída, é definido como o número de glifos preenchidos nas matrizes de saída. 
+\Se a substituição de glifo não for necessária (ou seja, cada caractere de entrada é mapeado para exatamente um glifo), esse membro é o mesmo que na entrada.
+Um número denominado nMaxFit. \O número de caracteres que cabem nas extensões especificadas pelo parâmetro nMaxExtent da função GetCharacterPlacement. 
+\Se o valor GCP_MAXEXTENT ou GCP_JUSTIFY for definido, esse valor pode ser menor que o número de caracteres na string original. 
+\Este membro é definido independentemente de o valor GCP_MAXEXTENT ou GCP_JUSTIFY ser especificado. 
+\Ao contrário de nGlyphs, que especifica o número de glifos de saída, nMaxFit se refere ao número de caracteres da string de entrada. Para os idiomas latinos da SBCS, será o mesmo.
 
-Um gdiplusstartupinput é um conjunto com
-Um número denominado gdiplusversion,
-Um endereço de memória denominado debugeventcallback,
-Um número denominado suppressbackgroundthread,
-Um número denominado suppressexternalcodecs.
+Um GdiplusStartupInput é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/gdiplusinit/ns-gdiplusinit-gdiplusstartupinput
+\A estrutura GdiplusStartupInput contém um bloco de argumentos que são exigidos pela função GdiplusStartup.
+Um número denominado GdiplusVersion, \ Especifica a versão do GDI +. Deve ser igual a 1.
+Um endereço de memória denominado DebugEventCallback, \ Ponteiro para uma função de retorno de chamada que GDI + pode chamar, em compilações de depuração, para asserções e avisos. 
+\O valor padrão é NULL.
+Um número denominado SuppressBackgroundThread, \ Valor booleano que especifica se o thread de segundo plano GDI + deve ser suprimido. 
+\Se você definir este membro como TRUE, então GdiplusStartup retorna (em seu parâmetro de saída) um ponteiro para uma função de gancho e um ponteiro para uma função de desengate. 
+\Você deve chamar essas funções apropriadamente para substituir o thread em segundo plano. 
+\Se você não quiser ser responsável por chamar as funções hook e unhook, defina este membro como FALSE. O valor padrão é falso.
+Um número denominado SuppressExternalCodecs. \ Valor booleano que especifica se você deseja que o GDI + suprima codecs de imagem externos. 
+\GDI + versão 1.0 não oferece suporte a codecs de imagem externos, portanto, este campo é ignorado. O valor padrão é falso.
+\A estrutura GdiplusStartupInput fornece um construtor que define o membro GdiplusVersion como 1 e permite que você especifique valores para os outros três membros.
+\ Todos os parâmetros do construtor são opcionais, portanto, você pode declarar uma variável do tipo GdiplusStartupInput sem passar nenhum argumento para o construtor, 
+\e todos os membros serão inicializados com os valores padrão apropriados.
+\Se você definir o membro SuppressBackgroundThread como TRUE no parâmetro de entrada de GdiplusStartup, 
+\deverá chamar as funções de gancho e desengate retornadas no parâmetro de saída retornado por essa função. 
+\Chame essas funções antes e depois do loop de mensagem principal do aplicativo; ou seja, um loop de mensagem que está ativo durante o tempo de vida do GDI +. 
+\Chame a função de gancho antes do início do loop e chame a função unhook após o término do loop.
 
 Um figura geométrica é um figura.
 
@@ -6065,15 +6118,15 @@ Mova a localização usando o pair.
 Etapas necessárias para que se go back para where we were:
 Restore o context.
 
-Um gpbitmap é um gpimage.
+Um GpBitmap é um GpImage.
 
-Um gpgraphic é um endereço de memória.
+Um GpGraphic é um endereço de memória.
 
-Um gpimage é um endereço de memória.
+Um GpImage é um endereço de memória.
 
-An gpimageattributes é um endereço de memória.
+An GpImageAttributes é um endereço de memória.
 
-Um gprect é um conjunto com
+Um GpRect é um conjunto com
 Um número denominado x,
 Um número denominado y,
 Um número denominado largura,

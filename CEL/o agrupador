@@ -1141,7 +1141,7 @@ Se a rotina for inexistente, cancele.
 Se o detector de erros deste compilador estiver ativado, cancele.
 Se o compiled detector desta rotina estiver ativo, cancele.
 Ligue o compiled detector desta rotina.
-Lance um percorredor sobre o instruções desta rotina.
+Lance um percorredor sobre as instruções desta rotina.
 Mova o percorredor (usando diretrizes do compilador).
 Se o vocábulo deste percorredor for o ponto&vírgula, compile o body of a rotina usando o percorredor (sobrecarga de métodos); exit. \ *** alternate palavraing
 Se o vocábulo deste percorredor for algum tipo de employ, compile o body of a rotina usando o percorredor (employ); exit.
@@ -2650,15 +2650,11 @@ Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de operador de atribuição de estruturas compostas:
 \PAL
-Se a string for "que tem", diga sim.
-Se a string for "contendo", diga sim.
 Se a string for "tem", diga sim.
-Se a string for "que têm", diga sim.
-Se a string for "que possui", diga sim.
-Se a string for "que possuem", diga sim.
 \CAL
 Se a string for "has", diga sim.
 Se a string for "have", diga sim.
+\Se a string for "possui", diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de operador de atribuição simples:
@@ -2689,6 +2685,10 @@ Etapas necessárias para que se determine se uma string é algum tipo de com:
 \PAL
 Se a string for "com", diga sim.
 Se a string for "contendo", diga sim.
+Se a string for "que tem", diga sim.
+Se a string for "que têm", diga sim.
+Se a string for "que possui", diga sim.
+Se a string for "que possuem", diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de article:
@@ -3663,12 +3663,13 @@ Se o quantidade de caracteres deste type for 2, diga sim.
 Se o quantidade de caracteres deste type for 1, diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um type deveria ser  finalizado:
+Etapas necessárias para que se determine se um type deveria ser  finalizado: \The phrase "should be finalized" means "ought to be/needs to be automatically deallocated".
+\The phrase "should be finalized" means "ought to be/needs to be automatically deallocated".
 Se o type for inexistente, diga não.
-Se o type puder ser reduzido para "subtexto", diga não.
-Se o type puder ser reduzido para "string", diga sim.
-Se o type puder ser reduzido para "texto", diga sim.
-Se os campos deste type deveriam ser finalizados, diga sim.
+Se o type puder ser reduzido para "subtexto", diga não.\  substrings point to (parts of) real strings that get deallocated elsewhere
+Se o type puder ser reduzido para "string", diga sim.\ the normal case for strings
+Se o type puder ser reduzido para "texto", diga sim.\ the normal case for strings
+Se os campos deste type deveriam ser finalizados, diga sim.\ this is for strings inside records
 Diga não.
 
 Etapas necessárias para que se determine se um type deveria ser ignorado:  \ ie, can be destroyed/needs a destroy routine generated for it
@@ -3687,14 +3688,6 @@ Se o target type deste type não puder ser reduzido para "endereço de memória", d
 Se o target type deste type não deveria ser ignorado, diga não.\ no, because it's a pointer to something that shouldn't be destroyed. For example, a pointer to a thing
 Diga sim.\ The last condition is the hardest to wrap one's head around since it is recursive.
 
-\Etapas necessárias para que se determine se um type deveria ser finalizado:\The phrase "should be finalized" means "ought to be/needs to be automatically deallocated".
-\\The phrase "should be finalized" means "ought to be/needs to be automatically deallocated".
-\Se o type for inexistente, diga não.
-\Se o type puder ser reduzido para "subtexto", diga não. \ substrings point to (parts of) real strings that get deallocated elsewhere
-\Se o type puder ser reduzido para "string", diga sim. \\ the normal case for strings
-\Se o type puder ser reduzido para "texto", diga sim. \PAL
-\Se os campos deste type deveriam ser finalizados, diga sim.\ this is for strings inside records
-\Diga não.
 
 
 Etapas necessárias para que se determine se uma variável está duplicada em umas variáveis:
@@ -4796,7 +4789,7 @@ Repita.
 
 
 
-An parâmetro é uma variável.
+Um parâmetro é uma variável.
 
 Um PE header é um conjunto com
 \ O formato Portable Executable (PE) éum formato de arquivos executáveis / dll files que apareceu no Windows NT. 
@@ -5143,6 +5136,7 @@ Se a string termina com "ús", remove os last dois pedaços desde a string; pospon
 \# palavras terminadas com "is", "us"
 Se a string termina com "is", pluralize a string (portuguese rules - palavras terminadas com "is/us"); exit.
 Se a string termina com "us", pluralize a string (portuguese rules - palavras terminadas com "is/us"); exit.
+\Se a string termina com "ts", exit.
 \# regra padrão
 Posponha "es" para a string.
 
@@ -5605,34 +5599,37 @@ Arredonde o size desta zona de dados para cima para o múltiplo imediato of 4096.
 Atribua o quantidade de caracteres desta código zona ao size desta código zona.
 Arredonde o size desta código zona para cima para o múltiplo imediato of 4096.
 
-
-
-An instruções é um subtexto.
+Uma instrução é um subtexto.
+\Umas instruções são umas instruções.
 
 Um cabeçalho de rotina é um subtexto.
 
 O catálogo geral de rotinas é um catálogo.
 
-Um rotina é uma coisa com
+Uma rotina é uma coisa com
 Um local de aparição (reference),
 Um detector de compatibilidade,
 Um detector de deliberação,
 Um detector de função,
 Um compiled detector,
 Um nickname catálogo,
-Um cabeçalho expandido, uns monikettes, uns parâmetros, um parâmetro size,
+Um cabeçalho expandido, 
+Uns monikettes, 
+Uns parâmetros, 
+Um parâmetro size,
 Um employs cabeçalho expandido,
-Some locals, um local size,
-Um cabeçalho de rotina, um header string,
-Um instruções, um body string,
+Some locals, 
+Um local size,
+Um cabeçalho de rotina, 
+Um header string,
+Umas instruções, 
+Um body string,
 Some fragments,
 Um endereço.
 
 Um rotina reference é uns monikettes.
 
-O rotinas são umas rotinas.
-
-
+As rotinas são umas rotinas.
 
 Etapas necessárias para que se examine algum tipo de optional info por um type usando um percorredor:
 Se o detector de erros deste compilador estiver ativado, cancele.
