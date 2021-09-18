@@ -2648,7 +2648,7 @@ Se a string for "em", diga sim.
 Se a string for "then", diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se uma string é algum tipo de has:
+Etapas necessárias para que se determine se uma string é algum tipo de operador de atribuição de estruturas compostas:
 \PAL
 Se a string for "que tem", diga sim.
 Se a string for "contendo", diga sim.
@@ -2661,7 +2661,7 @@ Se a string for "has", diga sim.
 Se a string for "have", diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se uma string é algum tipo de is:
+Etapas necessárias para que se determine se uma string é algum tipo de operador de atribuição simples:
 \PAL
 Se a string for "é", diga sim.
 Se a string for "está", diga sim.
@@ -2671,13 +2671,14 @@ Se a string for "for", diga sim.
 Se a string for "forem", diga sim.
 Se a string for "estiverem", diga sim.
 Se a string for "estarem", diga sim.
-\Se a string for "seja", diga sim.
+Se a string for "possui", diga sim.
+\Se a string for "tem", diga sim.
 \CAL
 Se a string for "is", diga sim.
 Se a string for "are", diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se uma string é algum tipo de operador de atribuição:
+Etapas necessárias para que se determine se uma string é algum tipo de operador de atribuição composto:
 \PAL
 Se a string for "igual", diga sim.
 \CAL
@@ -2688,8 +2689,6 @@ Etapas necessárias para que se determine se uma string é algum tipo de com:
 \PAL
 Se a string for "com", diga sim.
 Se a string for "contendo", diga sim.
-\CAL
-Se a string for "com", diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de article:
@@ -2954,7 +2953,7 @@ Se o vocábulo deste percorredor for algum tipo de qualifier, diga sim.
 Se o vocábulo deste percorredor for algum tipo de literal, diga sim.
 Se o vocábulo deste percorredor for algum tipo de called, diga sim.
 \Se o vocábulo deste percorredor for "equal", diga sim.
-Se o vocábulo deste percorredor for algum tipo de operador de atribuição, diga sim.
+Se o vocábulo deste percorredor for algum tipo de operador de atribuição composto, diga sim.
 Se o vocábulo deste percorredor estiver em branco, diga sim.
 \ Portuguese trouble makers
 Se o vocábulo deste percorredor for algum tipo de advérbio de negação, diga sim.
@@ -2974,7 +2973,7 @@ Se o vocábulo deste percorredor for algum tipo de qualifier, diga não.
 Se o vocábulo deste percorredor for algum tipo de literal, diga não.
 Se o vocábulo deste percorredor for algum tipo de called, diga sim.
 \Se o vocábulo deste percorredor for "equal", diga sim.
-Se o vocábulo deste percorredor for algum tipo de operador de atribuição, diga sim.
+Se o vocábulo deste percorredor for algum tipo de operador de atribuição composto, diga sim.
 Se o vocábulo deste percorredor estiver em branco, diga não.
 Diga sim.
 
@@ -5031,8 +5030,9 @@ Se a string for "melhor", cancele.
 Se a string for "pior", cancele.
 \# palavras terminadas com "ão"
 Se a string termina com "ão", pluralize a string (portuguese rules - palavras terminadas com "ão"); exit.
+\# palavras terminadas com "d"
+Se a string termina com "d", pluralize a string (portuguese rules - palavras terminadas com outras consoantes); exit.
 \# palavras terminadas com "l"
-Se a string termina com "d", pluralize a string (portuguese rules - palavras terminadas com "d"); exit.
 Se a string termina com "l", pluralize a string (portuguese rules - palavras terminadas com "l"); exit.
 \# palavra terminadas com "m"
 Se a string termina com "m", remove o last pedaço desde a string; posponha "ns" para a string; exit.
@@ -5042,6 +5042,8 @@ Se a string termina com "n", posponha "es" para a string; exit.
 Se a string termina com "r", pluralize a string (portuguese rules - palavras terminadas com "r"); exit.
 \# palavras terminadas com "s"
 Se a string termina com "s", pluralize a string (portuguese rules - palavras terminadas com "s"); exit.
+\# palavras terminadas com "t"
+Se a string termina com "t", pluralize a string (portuguese rules - palavras terminadas com outras consoantes); exit.
 \# palavra terminadas com "x"
 Se a string termina com "x", pluralize a string (portuguese rules - palavras terminadas com "x"); exit.
 \# palavras terminadas com "z"
@@ -5058,7 +5060,7 @@ Se o subtexto has algum tipo de stressed vogal, posponha "s" para a string; exit
 Remove os last dois pedaços desde a string.
 Posponha "ões" para a string.
 
-Etapas necessárias para que se pluralize uma string (portuguese rules - palavras terminadas com "d"):
+Etapas necessárias para que se pluralize uma string (portuguese rules - palavras terminadas com outras consoantes):
 Posponha "s" para a string.
 
 Etapas necessárias para que se pluralize uma string (portuguese rules - palavras terminadas com "l"):
@@ -5739,14 +5741,14 @@ Se o detector de erros deste compilador estiver ativado, cancele.
 Adicione o global para os globals usando "global" e o first deste vocábulo deste percorredor.
 Mova o percorredor (usando diretrizes do compilador).
 Examine o nome deste global usando o percorredor.
-Se o vocábulo deste percorredor for algum tipo de has, examine o global usando o percorredor (has ou have); exit.
-Se o vocábulo deste percorredor não for algum tipo de is, apresente uma mensagem de erro contendo "Eu preciso de um 'is' ou de um 'are' mas só pude achar o termo: " seguido de o vocábulo deste percorredor seguido de "." e o percorredor; exit.
+Se o vocábulo deste percorredor for algum tipo de operador de atribuição de estruturas compostas, examine o global usando o percorredor (has ou have); exit.
+Se o vocábulo deste percorredor não for algum tipo de operador de atribuição simples, apresente uma mensagem de erro contendo "Eu preciso de um 'is' ou de um 'are' mas só pude achar o termo: " seguido de o vocábulo deste percorredor seguido de "." e o percorredor; exit.
 Mova o percorredor (usando diretrizes do compilador).
 Se o vocábulo deste percorredor não for algum tipo de artigo indefinido, examine o global usando o percorredor (literal termo); exit.
 Mova o percorredor (usando diretrizes do compilador).
 Examine o type nome deste global usando o percorredor.
 Se o vocábulo deste percorredor for o start of algum tipo de optional info, examine o global usando o percorredor (optional info); exit.
-Se o vocábulo deste percorredor for algum tipo de operador de atribuição, examine o global usando o percorredor (data part); exit.
+Se o vocábulo deste percorredor for algum tipo de operador de atribuição composto, examine o global usando o percorredor (data part); exit.
 Se o vocábulo deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Toda definição precisa terminar com um ponto. Inclusive essa." e o percorredor; exit.
 Mova o percorredor (usando diretrizes do compilador).
 Catalogue o global.
@@ -5898,8 +5900,8 @@ Atribua o nome deste type ao plural nome deste type.
 Se o portuguese detector estiver ativo, pluralize o plural nome deste type (portuguese rules).
 Se o english detector estiver ativo, pluralize o plural nome deste type (english rules).
 Se o english detector não estiver ativo, pluralize o plural nome deste type (portuguese rules).
-Se o vocábulo deste percorredor for algum tipo de has, examine o type usando o percorredor (has ou have); exit.
-Se o vocábulo deste percorredor não for algum tipo de is, apresente uma mensagem de erro contendo "Eu esperava um 'is' ou um 'are', mas só achei um " seguido de o vocábulo deste percorredor seguido de "." e o percorredor; exit.
+Se o vocábulo deste percorredor for algum tipo de operador de atribuição de estruturas compostas, examine o type usando o percorredor (has ou have); exit.
+Se o vocábulo deste percorredor não for algum tipo de operador de atribuição simples, apresente uma mensagem de erro contendo "Eu esperava um 'is' ou um 'are', mas só achei um " seguido de o vocábulo deste percorredor seguido de "." e o percorredor; exit.
 \Pluralize o plural nome deste type.
 \Se o vocábulo deste percorredor for "has" ou "have", examine o type usando o percorredor (has ou have); exit.
 \Se o vocábulo deste percorredor não for "is" ou "are", apresente uma mensagem de erro contendo "I was expecting um 'is' ou 'are', but I found: " seguido de o vocábulo deste percorredor seguido de "." e o percorredor; exit.
