@@ -224,24 +224,28 @@ Um istream é um endereço de memória para um istream object.
 Um istream object é um conjunto com um istream vtable denominado vtable.
 
 Um istream vtable é um endereço de memória para um istream vtable conjunto.
-
+\Uma vtable (tabela de método virtual) é uma tabela de ponteiros de função. 
+\O vtable é como o COM vincula uma chamada de método à sua implementação em tempo de execução. N
+\ão por coincidência, vtables são a forma como a maioria dos compiladores C ++ implementa métodos virtuais.
 Um istream vtable conjunto é um conjunto com
 \ iunknown \https://docs.microsoft.com/en-us/windows/win32/api/objidl/nn-objidl-istream
-Um endereço de memória denominado queryinterface,
-Um endereço de memória denominado addref,
-Um endereço de memória denominado release, \ function(this:istream):number; stdcall;
+Um endereço de memória denominado queryinterface,\https://docs.microsoft.com/en-us/windows/win32/com/queryinterface--navigating-in-an-object
+Um endereço de memória denominado addref, \Incrementa a contagem de referência de um ponteiro de interface para um objeto COM. Você deve chamar este método sempre que fizer uma cópia de um ponteiro de interface
+Um endereço de memória denominado release, \ Diminui a contagem de referência para uma interface em um objeto COM.
+\function(this:istream):number; stdcall;
 \ istream
-Um endereço de memória denominado read,
-Um endereço de memória denominado write,
-Um endereço de memória denominado seek,
-Um endereço de memória denominado setsize,
-Um endereço de memória denominado copyto,
-Um endereço de memória denominado commit,
-Um endereço de memória denominado revert,
-Um endereço de memória denominado lockregion,
-Um endereço de memória denominado unlockregion,
-Um endereço de memória denominado stat,
-Um endereço de memória denominado clone.
+Um endereço de memória denominado read,\O método Read lê um número especificado de bytes do objeto stream para a memória, começando no ponteiro de busca atual.
+Um endereço de memória denominado write,\O método Write grava um número especificado de bytes no objeto de fluxo, começando no ponteiro de busca atual.
+Um endereço de memória denominado seek, \Muda o ponteiro de busca para um novo local. O novo local é relativo ao início, ao final do fluxo ou ao ponteiro de busca atual.
+Um endereço de memória denominado setsize, \Altera o tamanho do objeto de fluxo.
+Um endereço de memória denominado copyto, \Copia um número especificado de bytes do ponteiro de busca atual no fluxo para o ponteiro de busca atual em outro fluxo.
+Um endereço de memória denominado commit, \O método Commit garante que todas as alterações feitas em um objeto de fluxo aberto no modo transacionado sejam refletidas no armazenamento pai.
+Um endereço de memória denominado revert, \O método Revert descarta todas as alterações feitas em um fluxo transacionado desde a última chamada IStream :: Commit. 
+\Em fluxos abertos em modo direto e fluxos usando a implementação de arquivo composto COM de IStream :: Revert, este método não tem efeito.
+Um endereço de memória denominado lockregion, \O método LockRegion restringe o acesso a um intervalo especificado de bytes no fluxo.
+Um endereço de memória denominado unlockregion,\O método UnlockRegion remove a restrição de acesso em um intervalo de bytes anteriormente restrito com IStream :: LockRegion.
+Um endereço de memória denominado stat,\O método Stat recupera a estrutura STATSTG para este fluxo.
+Um endereço de memória denominado clone. \O método Clone cria um novo objeto de fluxo com seu próprio ponteiro de busca que faz referência aos mesmos bytes que o fluxo original.
 
 Um OUTLINETEXTMETRIC é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-outlinetextmetrica
 \A estrutura OUTLINETEXTMETRIC contém métricas que descrevem uma fonte TrueType.
@@ -284,7 +288,6 @@ Um endereço de memória denominado otmpFaceName, \ O deslocamento do início da es
 Um endereço de memória denominado otmpStyleName, \ O deslocamento do início da estrutura para uma string especificando o nome do estilo da fonte.
 Um endereço de memória denominado otmpFullName. \ O deslocamento do início da estrutura para uma string especificando o nome completo da fonte. Este nome é exclusivo para a fonte e geralmente contém um número de versão ou outras informações de identificação.
 
-
 Um PANOSE é um conjunto com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-panose
 \A estrutura PANOSE descreve os valores de classificação de fonte PANOSE para uma fonte TrueType. 
 \Essas características são então usadas para associar a fonte a outras fontes de aparência semelhante, mas com nomes diferentes.
@@ -308,27 +311,74 @@ Um pedaço denominado bXHeight.
 An PRINTDLGEX é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/commdlg/ns-commdlg-printdlgexw
 \Contém informações que a função PrintDlgEx usa para inicializar a folha de propriedades de impressão. 
 \Depois que o usuário fecha a folha de propriedades, o sistema usa essa estrutura para retornar informações sobre as seleções do usuário.
-Um número denominado lStructSize,
-Um window denominado hwndOwner,
-Um número identificador denominado hDevMode,
-Um número identificador denominado hDevNames,
-Um canvas denominado hDC,
-Um número denominado Flags,
-Um número denominado Flags2,
-Um número denominado ExclusionFlags,
-Um número denominado nPageRanges,
-Um número denominado nMaxPageRanges,
-Um endereço de memória denominado lpPageRanges,
-Um número denominado nMinPage,
-Um número denominado nMaxPage,
-Um número denominado nCopies,
-Um número identificador denominado hInstance,
-Um endereço de memória denominado lpPrintTemplateName,
-Um endereço de memória denominado lpCallback,
-Um número denominado nPropertyPages,
-Um endereço de memória denominado lphPropertyPages,
-Um número denominado nStartPage,
-Um número denominado dwResultAction.
+Um número denominado lStructSize,\O tamanho da estrutura, em bytes.
+Um window denominado hwndOwner,\Um identificador para a janela que possui a folha de propriedades. Este membro deve ser um identificador de janela válido; não pode ser NULL.
+Um número identificador denominado hDevMode,\Um identificador para um objeto de memória global móvel que contém uma estrutura DEVMODE. 
+\Se hDevMode não for NULL na entrada, você deve alocar um bloco móvel de memória para a estrutura DEVMODE e inicializar seus membros. 
+\A função PrintDlgEx usa os dados de entrada para inicializar os controles na folha de propriedades. 
+\Quando PrintDlgEx retorna, os membros DEVMODE indicam a entrada do usuário.
+\Se hDevMode for NULL na entrada, PrintDlgEx aloca memória para a estrutura DEVMODE, inicializa seus membros para indicar a entrada do usuário e retorna um identificador que a identifica.
+Um número identificador denominado hDevNames,\Um identificador para um objeto de memória global móvel que contém uma estrutura DEVNAMES. 
+\Se hDevNames não for NULL na entrada, você deve alocar um bloco móvel de memória para a estrutura DEVNAMES e inicializar seus membros. 
+\A função PrintDlgEx usa os dados de entrada para inicializar os controles na folha de propriedades. 
+\Quando PrintDlgEx retorna, os membros DEVNAMES contêm informações para a impressora escolhida pelo usuário.
+\ Você pode usar essas informações para criar um contexto de dispositivo ou um contexto de informações.
+\O membro hDevNames pode ser NULL, nesse caso, PrintDlgEx aloca memória para a estrutura DEVNAMES, inicializa seus membros para indicar a entrada do usuário e retorna um identificador que o identifica.
+Um canvas denominado hDC,\Um identificador para um contexto de dispositivo ou um contexto de informações, dependendo se o membro Flags especifica o sinalizador PD_RETURNDC ou PC_RETURNIC. 
+\Se nenhum sinalizador for especificado, o valor deste membro é indefinido. Se ambos os sinalizadores forem especificados, PD_RETURNDC tem prioridade.
+Um número denominado Flags,\Um conjunto de sinalizadores de bits que você pode usar para inicializar a folha de propriedades Imprimir. 
+\Quando a função PrintDlgEx retorna, ela define esses sinalizadores para indicar a entrada do usuário. 
+\Para garantir que PrintDlg ou PrintDlgEx retorne os valores corretos nos membros dmCopies e dmCollate da estrutura DEVMODE, defina PD_RETURNDC = TRUE e PD_USEDEVMODECOPIESANDCOLLATE = TRUE. 
+\Ao fazer isso, o membro nCopies da estrutura PRINTDLG é sempre 1 e PD_COLLATE é sempre FALSE.
+\Para garantir que PrintDlg ou PrintDlgEx retorne os valores corretos em nCopies e PD_COLLATE, defina PD_RETURNDC = TRUE e PD_USEDEVMODECOPIESANDCOLLATE = FALSE. 
+\Ao fazer isso, dmCopies é sempre 1 e dmCollate é sempre FALSE.
+\Começando com o Windows Vista, quando você chama PrintDlg ou PrintDlgEx com PD_RETURNDC definido como TRUE e PD_USEDEVMODECOPIESANDCOLLATE definido como FALSE, 
+\a função PrintDlg ou PrintDlgEx define o número de cópias no membro nCopies da estrutura PRINTDLG e define o número de cópias no estrutura representada pelo membro hDC da estrutura PRINTDLG.
+\Ao fazer chamadas para GDI, você deve ignorar o valor de nCopies, considerar o valor como 1 e usar o hDC retornado para evitar a impressão de cópias duplicadas.
+Um número denominado Flags2,\Tipo: DWORD
+Um número denominado ExclusionFlags,\Um conjunto de sinalizadores de bits que podem excluir itens das páginas de propriedades do driver da impressora na folha de propriedades Imprimir. 
+\Este valor é usado apenas se o sinalizador PD_EXCLUSIONFLAGS estiver definido no membro Sinalizadores. 
+\Os sinalizadores de exclusão devem ser usados apenas se o item a ser excluído for incluído na página Geral ou em uma página definida pelo aplicativo na folha de propriedades Imprimir. 
+Um número denominado nPageRanges,\Na entrada, defina este membro com o número inicial de intervalos de páginas especificados na matriz lpPageRanges. 
+\Quando a função PrintDlgEx retorna, nPageRanges indica o número de intervalos de páginas especificados pelo usuário armazenados na matriz lpPageRanges. 
+\Se o sinalizador PD_NOPAGENUMS for especificado, este valor não é válido.
+Um número denominado nMaxPageRanges,\O tamanho, em elementos da matriz, do buffer lpPageRanges. 
+\Este valor indica o número máximo de intervalos de páginas que podem ser armazenados na matriz. 
+\Se o sinalizador PD_NOPAGENUMS for especificado, este valor não é válido. 
+\Se o sinalizador PD_NOPAGENUMS não for especificado, esse valor deve ser maior que zero.
+Um endereço de memória denominado lpPageRanges,\Ponteiro para um buffer que contém uma matriz de estruturas PRINTPAGERANGE.
+\ Na entrada, a matriz contém os intervalos de páginas iniciais a serem exibidos no controle de edição de páginas. 
+\Quando a função PrintDlgEx retorna, a matriz contém os intervalos de páginas especificados pelo usuário. 
+\Se o sinalizador PD_NOPAGENUMS for especificado, este valor não é válido. 
+\Se o sinalizador PD_NOPAGENUMS não for especificado, lpPageRanges deve ser diferente de NULL.
+Um número denominado nMinPage,\O valor mínimo para os intervalos de páginas especificados no controle de edição Pages. Se o sinalizador PD_NOPAGENUMS for especificado, este valor não é válido.
+Um número denominado nMaxPage,\O valor máximo para os intervalos de páginas especificados no controle de edição Pages. Se o sinalizador PD_NOPAGENUMS for especificado, este valor não é válido.
+Um número denominado nCopies,\Contém o número inicial de cópias para o controle de edição de cópias se hDevMode for NULL; caso contrário, o membro dmCopies da estrutura DEVMODE contém o valor inicial. 
+\Quando PrintDlgEx retorna, nCopies contém o número real de cópias que o aplicativo deve imprimir. 
+\Este valor depende se o aplicativo ou o driver da impressora é responsável pela impressão de várias cópias. 
+\Se o sinalizador PD_USEDEVMODECOPIESANDCOLLATE é definido no membro Flags, nCopies é sempre 1 no retorno e o driver de impressora é responsável por imprimir várias cópias. 
+\Se o sinalizador não for definido, o aplicativo é responsável por imprimir a quantidade de cópias especificada pela nCopies. 
+\Para obter mais informações, consulte a descrição do sinalizador PD_USEDEVMODECOPIESANDCOLLATE.
+Um número identificador denominado hInstance,\Se o sinalizador PD_ENABLEPRINTTEMPLATE é definido no membro Flags, hInstance é um identificador para o aplicativo ou instância do módulo que contém o modelo de caixa de diálogo nomeado pelo membro lpPrintTemplateName. 
+\Se o sinalizador PD_ENABLEPRINTTEMPLATEHANDLE é definido no membro Flags, hInstance é um identificador para um objeto de memória que contém um modelo de caixa de diálogo. 
+\Se nenhum dos sinalizadores de modelo for definido no membro Flags, hInstance deve ser NULL.
+Um endereço de memória denominado lpPrintTemplateName,\O nome do recurso de modelo de caixa de diálogo no módulo identificado pelo membro hInstance. 
+\Este modelo substitui o modelo de caixa de diálogo padrão na parte inferior da página Geral. O modelo padrão contém controles semelhantes aos da caixa de diálogo Imprimir. 
+\Este membro é ignorado, a menos que o sinalizador PD_ENABLEPRINTTEMPLATE seja definido no membro Sinalizadores.
+Um endereço de memória denominado lpCallback,\Um ponteiro para um objeto de retorno de chamada definido pelo aplicativo.
+\O objeto deve conter a classe IPrintDialogCallback para receber mensagens para a caixa de diálogo filho na parte inferior da página Geral.
+\O objeto de retorno de chamada também deve conter a classe IObjectWithSite para receber um ponteiro para a interface IPrintDialogServices. 
+\A função PrintDlgEx chama IUnknown :: QueryInterface no objeto de retorno de chamada para IID_IPrintDialogCallback e IID_IObjectWithSite para determinar quais interfaces têm suporte.
+\Se você não deseja recuperar nenhuma das informações de retorno de chamada, defina lpCallback como NULL.
+Um número denominado nPropertyPages,\O número de identificadores de página de propriedade na matriz lphPropertyPages.
+Um endereço de memória denominado lphPropertyPages,\Contém uma matriz de alças de página de propriedades para adicionar à folha de propriedades Imprimir.
+\As páginas de propriedades adicionais seguem a página Geral. Use a função CreatePropertySheetPage para criar essas páginas adicionais. 
+\Quando a função PrintDlgEx retorna, todos os identificadores HPROPSHEETPAGE na matriz lphPropertyPages foram destruídos. Se nPropertyPages for zero, lphPropertyPages deve ser NULL.
+Um número denominado nStartPage,\A página de propriedades que é exibida inicialmente. Para exibir a página Geral, especifique START_PAGE_GENERAL. 
+\Caso contrário, especifique o índice baseado em zero de uma página de propriedades na matriz especificada no membro lphPropertyPages. 
+\Para consistência, é recomendado que a folha de propriedades sempre seja iniciada na página Geral.
+Um número denominado dwResultAction.\Na entrada, defina este membro como zero. Se a função PrintDlgEx retornar S_OK, dwResultAction conterá o resultado da caixa de diálogo. 
+\Se PrintDlgEx retornar um erro, este membro deve ser ignorado.
 
 Um SOCKADDR é um conjunto com \ A estrutura SOCKADDR_IN especifica um endereço de transporte e uma porta para a família de endereços AF_INET.
 \ Todos os dados na estrutura SOCKADDR_IN, exceto para a família de endereços (parâmetro sin*_family), devem ser especificados na ordem de byte da rede (big-endian).
