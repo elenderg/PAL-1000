@@ -391,27 +391,43 @@ Um in_addr denominado sin_addr, \ Uma estrutura IN_ADDR que contém um endereço d
 
 Um sockaddrptr é um endereço de memória para um sockaddr.
 
-Um startupinfo é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/ns-processthreadsapi-startupinfoa
-Um número denominado cb,
-Um endereço de memória denominado lIsoled,
-Um endereço de memória denominado lpDesktop,
-Um endereço de memória denominado lpTitle,
-Um número denominado dwX,
-Um número denominado dwY,
-Um número denominado dwXSize,
-Um número denominado dwYSize,
-Um número denominado dwXCountChars,
-Um número denominado dwYCountChars,
-Um número denominado dwFillAttribute,
-Um número denominado dwFlags,
-Um wyrd denominado wShowWindow,
-Um wyrd denominado cbReserved2,
-Um endereço de memória denominado lIsoled2,
-Um número identificador denominado hStdInput,
-Um número identificador denominado hStdOutput,
-Um número identificador denominado hStdError.
+Um STARTUPINFO é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/ns-processthreadsapi-startupinfoa
+\Especifica a estação da janela, a área de trabalho, as alças padrão e a aparência da janela principal para um processo no momento da criação.
+Um número denominado cb,\O tamanho da estrutura, em bytes.
+Um endereço de memória denominado lIsoled,\Reservado; deve ser NULL.
+Um endereço de memória denominado lpDesktop,\O nome da área de trabalho ou o nome da área de trabalho e da estação de janela para este processo. 
+\Uma barra invertida na string indica que a string inclui os nomes da estação de trabalho e da janela.
+\Para maiores informações, consulte https://docs.microsoft.com/en-us/windows/win32/winstation/thread-connection-to-a-desktop
+Um endereço de memória denominado lpTitle, \Para processos de console, este é o título exibido na barra de título se uma nova janela de console for criada. 
+\Se NULL, o nome do arquivo executável é usado como título da janela. 
+\Este parâmetro deve ser NULL para processos de GUI ou console que não criam uma nova janela de console.
+Um número denominado dwX,\Caso dwFlags especifique o valor de STARTF_USEPOSITION, este membro é o deslocamento x do canto superior esquerdo de uma janela se uma nova janela for criada, em pixels. 
+\Caso contrário, este membro é ignorado. \O deslocamento é a partir do canto superior esquerdo da tela.
+\ Para processos GUI, a posição especificada é usada na primeira vez que o novo processo chama CreateWindow para criar uma janela sobreposta se o parâmetro x de CreateWindow for CW_USEDEFAULT.
+Um número denominado dwY, \Caso dwFlags especifique o valor de STARTF_USEPOSITION, este membro é o deslocamento y do canto superior esquerdo de uma janela se uma nova janela for criada, em pixels. 
+\Caso contrário, este membro é ignorado.
+Um número denominado dwXSize,\Se dwFlags especificar STARTF_USESIZE, esse membro terá a largura da janela se uma nova janela for criada, em pixels. Caso contrário, este membro é ignorado.
+Um número denominado dwYSize,\Se dwFlags especifica STARTF_USESIZE, este membro é a altura da janela se uma nova janela for criada, em pixels. Caso contrário, este membro é ignorado.
+Um número denominado dwXCountChars,\Se dwFlags especifica STARTF_USECOUNTCHARS, se uma nova janela de console é criada em um processo de console, este membro especifica a largura do buffer de tela, em colunas de caracteres.
+Um número denominado dwYCountChars,\Se dwFlags especifica STARTF_USECOUNTCHARS, se uma nova janela de console é criada em um processo de console, este membro especifica a altura do buffer de tela, em linhas de caracteres.
+Um número denominado dwFillAttribute,\Se dwFlags especifica STARTF_USEFILLATTRIBUTE, este membro é o texto inicial e as cores do plano de fundo se uma nova janela de console for criada em um aplicativo de console.
+Um número denominado dwFlags,\Um campo de bits que determina se determinados membros STARTUPINFO são usados quando o processo cria uma janela.
+Um wyrd denominado wShowWindow,\Se dwFlags especifica STARTF_USESHOWWINDOW, este membro pode ser qualquer um dos valores que podem ser especificados no parâmetro nCmdShow para a função ShowWindow, exceto para SW_SHOWDEFAULT.
+Um wyrd denominado cbReserved2,\Reservados para uso do C Run-time; deve ser zero.
+Um endereço de memória denominado lIsoled2,\Reservados para uso do C Run-time; deve ser zero.
+Um número identificador denominado hStdInput,\Se dwFlags especifica STARTF_USESTDHANDLES, este membro é o identificador de entrada padrão para o processo. 
+\Se STARTF_USESTDHANDLES não for especificado, o padrão para a entrada padrão é o buffer do teclado.
+\Se dwFlags especifica STARTF_USEHOTKEY, este membro especifica um valor de tecla de atalho que é enviado como o parâmetro wParam de uma mensagem WM_SETHOTKEY para a primeira janela de nível superior elegível criada pelo aplicativo que possui o processo. 
+\Se a janela for criada com o estilo de janela WS_POPUP, ela não será elegível, a menos que o estilo de janela estendida WS_EX_APPWINDOW também seja definido. 
+\Para obter mais informações, consulte CreateWindowEx. https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-createwindowexa
+Um número identificador denominado hStdOutput, \Se dwFlags especifica STARTF_USESTDHANDLES, este membro é o identificador de saída padrão para o processo. 
+\Caso contrário, este membro é ignorado e o padrão para a saída padrão é o buffer da janela do console.
+\Se um processo for iniciado a partir da barra de tarefas ou lista de atalhos, o sistema define hStdOutput como um identificador para o monitor que contém a barra de tarefas ou lista de atalhos usada para iniciar o processo. 
+\OBS: Esse comportamento foi introduzido no Windows 8 e no Windows Server 2012.
+Um número identificador denominado hStdError.\Se dwFlags especifica STARTF_USESTDHANDLES, este membro é o identificador de erro padrão para o processo. 
+\Caso contrário, este membro é ignorado e o padrão para o erro padrão é o buffer da janela do console.
 
-Um systemtime é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-systemtime
+Um SYSTEMTIME é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-systemtime
 \Especifica uma data e hora, usando membros individuais para o mês, dia, ano, dia da semana, hora, minuto, segundo e milissegundo. 
 \A hora está na hora universal coordenada (UTC) ou na hora local, dependendo da função que está sendo chamada.
 Um wyrd denominado wYear, \ O ano. Os valores válidos para este membro são de 1601 a 30827.
@@ -435,7 +451,7 @@ Um endereço de memória denominado setnotifycallbackfunction,
 Um endereço de memória denominado setnotifycallbackinterface,
 Um endereço de memória denominado setnotifywin32event,
 Um endereço de memória denominado waitfornotifyevent,
-Um endereço de memória denominado getnotifyevendu quedle,
+Um endereço de memória denominado GetNotifyEventHandle,\Recupera um identificador para um evento de notificação.
 Um endereço de memória denominado setinterest,
 Um endereço de memória denominado getevents,
 Um endereço de memória denominado getinfo,
