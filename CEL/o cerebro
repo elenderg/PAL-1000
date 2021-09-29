@@ -14,6 +14,15 @@
 \Etapas necessárias para que se inicialize o Component Object Model:
 \Mande os códigos 0 e 2 para a função "CoInitializeEx" da biblioteca "ole32.dll" [coinit_aparthreaded].
 
+Etapas necessárias para que se avance um percorredor até o próximo espaço:
+Avance o percorredor.
+Se o target deste last deste segmento inicial deste percorredor não for o caractere de espaço, repita.
+
+Etapas necessárias para que se recue um percorredor até encontrar o próximo espaço:
+Recue o percorredor.
+Recue o percorredor.
+Se o target deste first deste segmento final deste percorredor não for o caractere de espaço, repita.
+
 A contagem total é um número igual a 0.
 
 O detector de ignição é um detector igual a 1.
@@ -125,7 +134,7 @@ Converta o ftCreationTime deste WIN32FINDDATA deste item para a creation date/ti
 Atribua o endereçamento deste cFileName deste WIN32FINDDATA deste item a um pchar.
 Converta o pchar para o designador deste item.
 Se a categoria deste item for "endereço de pasta", posponha "\" para o designador deste item.
-Atribua o endereço da pasta deste item seguido de o designador deste item ao endereço completo deste item.
+Atribua o endereço da pasta deste item junto com o designador deste item ao endereço completo deste item.
 Extraia a extensão deste item desde o designador deste item como um endereço completo.
 Atribua o nFileSizeLow deste WIN32FINDDATA deste item ao size deste item.
 Se o target deste first deste designador deste item não for o ponto final, cancele.
@@ -296,9 +305,9 @@ Se a string estiver em branco, cancele.
 Lance um percorredor sobre a string.
 Percorra.
 Mova o percorredor (text file rules).
-Se o vocábulo subtexto deste percorredor estiver em branco, cancele.
-Se o vocábulo subtexto deste percorredor começa com ".", posponha "." para a segunda string.
-Posponha o vocábulo subtexto deste percorredor para a segunda string.
+Se o segmento inicial deste percorredor estiver em branco, cancele.
+Se o segmento inicial deste percorredor começa com ".", posponha "." para a segunda string.
+Posponha o segmento inicial deste percorredor para a segunda string.
 Repita.
 
 Etapas necessárias para que se posponha uma string para uma segunda string usando uma contagem:
@@ -459,13 +468,13 @@ Adicione o current página deste pdf state usando "page".
 Posponha o número desta current página deste pdf state seguido de " 0 obj" para o current página deste pdf state.
 Posponha "<<" para o current página deste pdf state.
 Posponha "/Type /Page" para o current página deste pdf state.
-Posponha "/Parent " seguido de o número deste parent deste pdf state seguido de " 0 R" para o current página deste pdf state.
+Posponha "/Parent " junto com o número deste parent deste pdf state seguido de " 0 R" para o current página deste pdf state.
 Atribua a largura desta caixa menos o tpp times 72 / o tpi a um largura.
 Atribua a altura desta caixa menos o tpp times 72 / o tpi a uma altura.
-Posponha "/MediaBox [0 0 " seguido de o largura seguido de " " seguido de o altura seguido de "]" para o current página deste pdf state.
+Posponha "/MediaBox [0 0 " junto com o largura seguido de " " junto com o altura seguido de "]" para o current página deste pdf state.
 Atribua a altura desta caixa menos o tpp ao current altura deste pdf state.
 Adicione os current contents deste pdf state usando "contents".
-Posponha "/Contents " seguido de o número destes current contents deste pdf state seguido de " 0 R" para o current página deste pdf state.
+Posponha "/Contents " junto com o número destes current contents deste pdf state seguido de " 0 R" para o current página deste pdf state.
 Posponha "0.05 0 0 0.05 1 1 cm" para os current contents deste pdf state. \ abra matrix para scale 72/1440
 Posponha "13 w 0 J 0 j 0 i" para os current contents deste pdf state. \ pincelwidth, linecap, linejoin, flatness \ 15 w sobre pincelwidth comes out para wide
 
@@ -589,17 +598,17 @@ Se o número for maior do que o terceiro número, atribua o segundo número ao núme
 
 Etapas necessárias para que se avance um percorredor:
 Intel $8B9D08000000. \ mov ebx,[ebp+8] \ comando de movimentação do percorredor?
-Intel $FF8314000000. \ inc [ebx+20] \ aumenta o valor do last endereço de memória do pedaço deste vocábulo subtexto deste percorredor.
-Intel $FF8308000000. \ inc [ebx+8] \ aumenta o valor do first endereço de memória do pedaço deste source subtexto deste percorredor.
+Intel $FF8314000000. \ inc [ebx+20] \ aumenta o valor do last endereço de memória do pedaço deste segmento inicial deste percorredor.
+Intel $FF8308000000. \ inc [ebx+8] \ aumenta o valor do first endereço de memória do pedaço deste segmento final deste percorredor.
 
 Etapas necessárias para que se recue um percorredor:
 Intel $8B9D08000000. \ mov ebx,[ebp+8] \ comando de movimentação do percorredor?
-Intel $FF8B14000000. \ dec [ebx+20] \ reduz o valor do last endereço de memória do pedaço deste vocábulo subtexto deste percorredor.
-Intel $FF8B08000000. \ dec [ebx+8] \ reduz o valor do first endereço de memória do pedaço deste source subtexto deste percorredor.
+Intel $FF8B14000000. \ dec [ebx+20] \ reduz o valor do last endereço de memória do pedaço deste segmento inicial deste percorredor.
+Intel $FF8B08000000. \ dec [ebx+8] \ reduz o valor do first endereço de memória do pedaço deste segmento final deste percorredor.
 
 Etapas necessárias para que se avance um percorredor por um número:
-Adicione o número para o last endereço de memória do pedaço deste vocábulo subtexto deste percorredor.
-Adicione o número para o first endereço de memória do pedaço deste source subtexto deste percorredor.
+Adicione o número para o last endereço de memória do pedaço deste segmento inicial deste percorredor.
+Adicione o número para o first endereço de memória do pedaço deste segmento final deste percorredor.
 
 Etapas necessárias para que se buzz:
 Call "kernel32.dll" "Beep" com 220 e 200.
@@ -810,8 +819,8 @@ Atribua 0 e 0 ao par de números.
 
 Etapas necessárias para que se limpe um percorredor:
 Limpe o subtexto original deste percorredor.
-Limpe o source subtexto deste percorredor.
-Limpe o vocábulo subtexto deste percorredor.
+Limpe o segmento final deste percorredor.
+Limpe o segmento inicial deste percorredor.
 
 Etapas necessárias para que se erase a tela;
 \Etapas necessárias para que se branqueie a tela;
@@ -872,7 +881,7 @@ Atribua 0 ao wyrd.
 Etapas necessárias para que se close um file:
 Call "kernel32.dll" "CloseHandle" com o file.
 
-Um CLSID é um UUID.
+Um CLSID é um UUID. \ Class ID
 
 Etapas necessárias para que se avise:
 Toque o som de aviso.
@@ -1072,7 +1081,7 @@ Se o pedaço estiver entre 65 e 90, atribua o pedaço ao query pedaço; exit. \ A-Z
 Se o pedaço estiver entre 97 e 122, atribua o pedaço ao query pedaço; exit. \ a-z
 Se o pedaço for 32, atribua "+" ao query pedaço; exit. \ space
 Converta o pedaço para um cifra hexadecimal.
-Atribua "%" seguido de o cifra hexadecimal ao query pedaço.
+Atribua "%" junto com o cifra hexadecimal ao query pedaço.
 
 Etapas necessárias para que se converta uma cor para um código da cor:
 Se a cor estiver clear, atribua 16777215 [$00FFFFFF] ao código da cor; exit. \ pincel preto becomes white
@@ -1364,7 +1373,7 @@ Obtenha um original largura usando o target deste last endereço de memória do pe
 Atribua o original largura menos o current largura a um offset.
 Se o offset for 0, adicione 1 para o last endereço de memória do pedaço deste subtexto; adicione 1 para o current byte#; repita.
 Converta o subtexto para um pdf string.
-Posponha o pdf string seguido de " " seguido de o offset seguido de " " para o trecho.
+Posponha o pdf string seguido de " " junto com o offset seguido de " " para o trecho.
 Atribua o last endereço de memória do pedaço deste subtexto mais 1 ao last endereço de memória do pedaço deste subtexto.
 Atribua o last endereço de memória do pedaço deste subtexto ao first endereço de memória do pedaço deste subtexto.
 Adicione 1 para o current byte#.
@@ -1476,8 +1485,8 @@ Etapas necessárias para que se converta uma string para uns rows:
 Lance um percorredor sobre a string.
 Percorra.
 Mova o percorredor (text file rules).
-Se o vocábulo subtexto deste percorredor estiver em branco, pare.
-Crie uma row usando o vocábulo subtexto deste percorredor.
+Se o segmento inicial deste percorredor estiver em branco, pare.
+Crie uma row usando o segmento inicial deste percorredor.
 Posponha a row para a rows.
 Se o target deste last endereço de memória do pedaço desta string desta row for o linefeed pedaço, atribua o return pedaço ao target deste last endereço de memória do pedaço desta string desta row. 
 \ *dahn new para handle lines terminated por just linefeed
@@ -1866,7 +1875,7 @@ Modifique através do caractere NUL o endereço completo.
 Call "kernel32.dll" "CreateDirectoryA" com o first deste endereço completo e 0 devolvendo um número.
 Limpe o erro do fluxo de entrada/saída.
 Se o número não for 0, cancele.
-Atribua "Erro. Não foi possível criar a seguinte pasta: " seguido de o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
+Atribua "Erro. Não foi possível criar a seguinte pasta: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
 
 Etapas necessárias para que se crie um endereço completo no sistema de arquivos (arquivo):
 Isole o endereço completo.
@@ -1875,7 +1884,7 @@ Call "kernel32.dll" "CreateFileA" com o first deste endereço completo e 10737418
 Call "kernel32.dll" "CloseHandle" com o número identificador.
 Limpe o erro do fluxo de entrada/saída.
 Se o número identificador não for -1 [invalid_handle_value], cancele.
-Atribua "Erro. Não foi possível criar o seguinte arquivo: " seguido de o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
+Atribua "Erro. Não foi possível criar o seguinte arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
 
 Etapas necessárias para que se crie um pdf object usando um categoria:
 Aloque memória para o pdf object.
@@ -2157,7 +2166,7 @@ Produza o relatório de informações usando a string.
 Etapas necessárias para que se produza o relatório de erros usando um número e um segundo número;
 Etapas necessárias para que se produza o relatório de bugs usando um número e um segundo número;
 Etapas necessárias para que se produza o relatório de informações usando um número e um segundo número:
-Produza o relatório de informações usando o número seguido de ", " seguido de o segundo número.
+Produza o relatório de informações usando o número seguido de ", " junto com o segundo número.
 
 Etapas necessárias para que se produza o relatório de erros usando um par de números;
 Etapas necessárias para que se produza o relatório de bugs usando um par de números;
@@ -2173,7 +2182,7 @@ Etapas necessárias para que se produza o relatório de erros usando um endereço d
 Etapas necessárias para que se produza o relatório de bugs usando um endereço de memória;
 Etapas necessárias para que se produza o relatório de informações usando um endereço de memória:
 Converta o endereço de memória para um cifra hexadecimal.
-Produza o relatório de informações usando "$" seguido de o cifra hexadecimal.
+Produza o relatório de informações usando "$" junto com o cifra hexadecimal.
 
 Etapas necessárias para que se produza o relatório de erros usando um espaço de cor RGB;
 Etapas necessárias para que se produza o relatório de bugs usando um espaço de cor RGB;
@@ -3474,14 +3483,14 @@ Etapas necessárias para que se determine se uns coisas estão vazio:
 Se o first destas coisas for inexistente, diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se um vocábulo é numeric:
-Isole o vocábulo.
-Remove algum tipo de leading noise desde o vocábulo.
-Se o vocábulo estiver em branco, diga não.
+Etapas necessárias para que se determine se um segmento inicial é numeric:
+Isole o segmento inicial.
+Remove algum tipo de leading noise desde o segmento inicial.
+Se o segmento inicial estiver em branco, diga não.
 Percorra.
-Obtenha um pedaço desde o vocábulo.
+Obtenha um pedaço desde o segmento inicial.
 Se o pedaço não for algum tipo de digit, diga não.
-Se o vocábulo estiver em branco, diga sim.
+Se o segmento inicial estiver em branco, diga sim.
 Repita.
 
 Etapas necessárias para que se determine se o usuário está clicking em umas choices;
@@ -3502,15 +3511,7 @@ Encontre uma choice usando a localização deste mouse.
 Se a choice can't ser found, diga não.
 Diga sim.
 
-Etapas necessárias para que se determine se o usuário clicou em um command:
-Se a localização deste mouse estiver em este command, diga sim.
-Diga não.
 
-Etapas necessárias para que se determine se o mouse está em cima de um command:
-Atribua a localização deste mouse a uma localização.
-Se a localização estiver em este command, diga sim.
-\Se a localização deste mouse estiver na caixa arredondada deste command, diga sim.
-Diga não.
 
 Etapas necessárias para que se determine se we pode encontre um endereço de memória:
 \ deveria ser "can" not "ca", compilador bug
@@ -3686,7 +3687,7 @@ Modifique através do caractere NUL o endereço completo.
 Call "kernel32.dll" "RemoveDirectoryA" com o first deste endereço completo devolvendo um número.
 Limpe o erro do fluxo de entrada/saída.
 Se o número não for 0, cancele.
-Atribua "Erro. Não foi possível apagar a pasta: " seguido de o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
+Atribua "Erro. Não foi possível apagar a pasta: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
 
 Etapas necessárias para que se destrua uma endereço completo no sistema de arquivos (arquivo):
 Isole o endereço completo.
@@ -3694,7 +3695,7 @@ Modifique através do caractere NUL o endereço completo.
 Call "kernel32.dll" "DeleteFileA" com o first deste endereço completo devolvendo um número.
 Limpe o erro do fluxo de entrada/saída.
 Se o número não for 0, cancele.
-Atribua "Erro. Não foi possível apagar o arquivo: " seguido de o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
+Atribua "Erro. Não foi possível apagar o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
 
 Etapas necessárias para que se destrua uma imagem:
 Se o imagem for inexistente, cancele.
@@ -3983,9 +3984,9 @@ Etapas necessárias para que se pinte um gpbitmap at uma localização (pdf style):
 Se o gpbitmap for inexistente, cancele.
 \ adicione xobject
 Adicione um xobject pdf object usando "image object".
-Atribua "I" seguido de o número deste xobject a um nome.
+Atribua "I" junto com o número deste xobject a um nome.
 \ adicione para image resources em current página
-Atribua "/" seguido de o nome seguido de " " seguido de o número deste xobject seguido de " 0 R" a uma string.
+Atribua "/" junto com o nome seguido de " " junto com o número deste xobject seguido de " 0 R" a uma string.
 Crie um new conjunto de texto usando a string.
 Posponha o new conjunto de texto para os image strings desta current página deste pdf state.
 \ finish setting para cima xobject
@@ -3994,13 +3995,13 @@ Posponha "<<" para o xobject.
 Posponha "/Type /XObject" para o xobject.
 Posponha "/Subtype /Image" para o xobject.
 Posponha "/ColorSpace /DeviceRGB" para o xobject.
-Posponha "/Width " seguido de o largura deste gpbitmap para o xobject.
-Posponha "/Height " seguido de a altura deste gpbitmap para o xobject.
+Posponha "/Width " junto com o largura deste gpbitmap para o xobject.
+Posponha "/Height " junto com a altura deste gpbitmap para o xobject.
 Posponha "/BitsPerComponent 8" para o xobject.
 Converta o gpbitmap para um trecho (pdf style).
 Converta o trecho para um cifra hexadecimal.
 Posponha "/Filter /ASCIIHexDecode" para o xobject.
-Posponha "/Length " seguido de a quantidade de caracteres deste cifra hexadecimal para o xobject.
+Posponha "/Length " junto com a quantidade de caracteres deste cifra hexadecimal para o xobject.
 Posponha ">>" para o xobject.
 Posponha "stream" para o xobject.
 Posponha o cifra hexadecimal para o xobject.
@@ -4012,8 +4013,8 @@ Atribua a altura deste gpbitmap times o tpp a uma altura.
 Atribua a coordenada x desta localização a um número x.
 Atribua a current altura deste pdf state menos a coordenada y desta localização menos o altura a um número y.
 Output "q".
-Output o largura seguido de " 0 0 " seguido de o altura seguido de " " seguido de o número x seguido de " " seguido de o número y seguido de " cm".
-Output "/" seguido de o nome seguido de " Do".
+Output o largura seguido de " 0 0 " junto com o altura seguido de " " junto com o número x seguido de " " junto com o número y seguido de " cm".
+Output "/" junto com o nome seguido de " Do".
 Output "Q".
 
 Etapas necessárias para que se pinte um half circle about uns twips wide;
@@ -4430,7 +4431,7 @@ Crie uma font info usando o font e a string.
 Output o pdf border usando a cor.
 Output o pdf fill usando a cor.
 Output "BT".
-Output "/" seguido de o nome da fonte desta definition seguido de " " seguido de a adjusted altura desta font seguido de " Tf".
+Output "/" junto com o nome da fonte desta definition seguido de " " junto com a adjusted altura desta font seguido de " Tf".
 \ adicione a adjusted altura desta font menos o internal leading desta font info para o y do localização. \ just plain wrong
 Adicione o ascent desta font info para a coordenada y desta localização. \ fix por line above
 Output a localização sem passar pra próxima linha.
@@ -4510,8 +4511,8 @@ Se o endereço completo é endereço da pasta-format, duplicate o endereço completo
 Se o endereço completo é file-format, duplicate o endereço completo para a segunda endereço completo no sistema de arquivos (arquivo).
 
 Etapas necessárias para que se duplicate um endereço completo para uma segunda endereço completo no sistema de arquivos (pasta)[endereço]:
-Se o endereço completo estiver no segunda endereço completo, atribua "Ocorreu um erro na hora de duplicar a pasta: " seguido de o endereço completo seguido de ". - erro de recursão inválida." ao erro do fluxo de entrada/saída; exit.
-Se o endereço completo não estiver no sistema de arquivos, atribua "Ocorreu um erro na hora de duplicar a pasta: " seguido de o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
+Se o endereço completo estiver no segunda endereço completo, atribua "Ocorreu um erro na hora de duplicar a pasta: " junto com o endereço completo seguido de ". - erro de recursão inválida." ao erro do fluxo de entrada/saída; exit.
+Se o endereço completo não estiver no sistema de arquivos, atribua "Ocorreu um erro na hora de duplicar a pasta: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
 Se a segunda endereço completo não estiver no sistema de arquivos, crie a segunda endereço completo no sistema de arquivos.
 Percorra.
 Obtenha um item desde o endereço completo.
@@ -4531,7 +4532,7 @@ Modifique através do caractere NUL a segunda endereço completo.
 Call "kernel32.dll" "CopyFileA" com o first deste endereço completo e o first desta segunda endereço completo e 0 devolvendo um número.
 Limpe o erro do fluxo de entrada/saída.
 Se o número não for 0, defina o endereço completo para read-write mode; exit.
-Atribua "Ocorreu um erro na hora de duplicar o arquivo: " seguido de o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
+Atribua "Ocorreu um erro na hora de duplicar o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
 
 An dyad é uma coisa com
 Um nome,
@@ -4584,13 +4585,13 @@ Destrua os objects deste pdf state.
 Desative o documento detector deste pdf state.
 
 Etapas necessárias para que se end printing um pdf (append footer):
-Posponha "startxref" seguido de o texto CRLF para o pdf.
-Posponha o xref offset deste pdf state seguido de o texto CRLF para o pdf.
+Posponha "startxref" junto com o texto CRLF para o pdf.
+Posponha o xref offset deste pdf state junto com o texto CRLF para o pdf.
 Posponha "%%EOF" para o pdf.
 
 Etapas necessárias para que se end printing um pdf (append header):
-Posponha "%PDF-1.3" seguido de o texto CRLF para o pdf.
-Posponha "%âãÏÓ" seguido de o texto CRLF para o pdf.
+Posponha "%PDF-1.3" junto com o texto CRLF para o pdf.
+Posponha "%âãÏÓ" junto com o texto CRLF para o pdf.
 Posponha o texto CRLF para o pdf.
 
 Etapas necessárias para que se end printing um pdf (append o outline entries - crie o objects):
@@ -4610,11 +4611,11 @@ Atribua o pdf object desta pdf outline entry a um object pdf object.
 Posponha o número deste object seguido de " 0 obj" para o object.
 Posponha "<<" para o object.
 Converta o title deste pdf outline entry para um pdf string.
-Posponha "/Title " seguido de o pdf string para o object.
-Posponha "/Parent " seguido de o número deste outline deste pdf state seguido de " 0 R" para o object.
-Se o next desta pdf outline entry não for inexistente, posponha "/Next " seguido de o número deste pdf object deste next desta pdf outline entry seguido de " 0 R" para o object.
-Se o previous desta pdf outline entry não for inexistente, posponha "/Prev " seguido de o número deste pdf object deste previous desta pdf outline entry seguido de " 0 R" para o object.
-Posponha "/Dest [" seguido de o destination deste pdf outline entry seguido de " 0 R /XYZ null " seguido de a página altura deste pdf outline entry seguido de " null]" para o object.
+Posponha "/Title " junto com o pdf string para o object.
+Posponha "/Parent " junto com o número deste outline deste pdf state seguido de " 0 R" para o object.
+Se o next desta pdf outline entry não for inexistente, posponha "/Next " junto com o número deste pdf object deste next desta pdf outline entry seguido de " 0 R" para o object.
+Se o previous desta pdf outline entry não for inexistente, posponha "/Prev " junto com o número deste pdf object deste previous desta pdf outline entry seguido de " 0 R" para o object.
+Posponha "/Dest [" junto com o destination deste pdf outline entry seguido de " 0 R /XYZ null " junto com a página altura deste pdf outline entry seguido de " null]" para o object.
 Posponha ">>" para o object.
 Posponha "endobj" para o object.
 Repita.
@@ -4628,32 +4629,32 @@ End printing o pdf (append o outline entries).
 Posponha o número deste outline seguido de " 0 obj" para o outline.
 Posponha "<<" para o outline.
 Posponha "/Type /Outlines" para o outline.
-Posponha "/First " seguido de o número deste pdf object deste first destas outline entries deste pdf state seguido de " 0 R" para o outline.
-Posponha "/Last " seguido de o número deste pdf object deste last destas outline entries deste pdf state seguido de " 0 R" para o outline.
-Posponha "/Count " seguido de a contagem destas outline entries deste pdf state para o outline.
+Posponha "/First " junto com o número deste pdf object deste first destas outline entries deste pdf state seguido de " 0 R" para o outline.
+Posponha "/Last " junto com o número deste pdf object deste last destas outline entries deste pdf state seguido de " 0 R" para o outline.
+Posponha "/Count " junto com a contagem destas outline entries deste pdf state para o outline.
 Posponha ">>" para o outline.
 Posponha "endobj" para o outline.
 
 Etapas necessárias para que se end printing um pdf (append trailer):
-Posponha "trailer" seguido de o texto CRLF para o pdf.
-Posponha "<<" seguido de o texto CRLF para o pdf.
+Posponha "trailer" junto com o texto CRLF para o pdf.
+Posponha "<<" junto com o texto CRLF para o pdf.
 Atribua a contagem destes objects deste pdf state mais 1 a uma contagem.
-Posponha "/Size " seguido de a contagem seguido de o texto CRLF para o pdf.
-Posponha "/Root " seguido de o número deste root deste pdf state seguido de " 0 R" seguido de o texto CRLF para o pdf.
-Posponha ">>" seguido de o texto CRLF para o pdf.
+Posponha "/Size " junto com a contagem junto com o texto CRLF para o pdf.
+Posponha "/Root " junto com o número deste root deste pdf state seguido de " 0 R" junto com o texto CRLF para o pdf.
+Posponha ">>" junto com o texto CRLF para o pdf.
 Posponha o texto CRLF para o pdf.
 
 Etapas necessárias para que se end printing um pdf (append xref table):
 Atribua a quantidade de caracteres deste pdf ao xref offset deste pdf state.
-Posponha "xref" seguido de o texto CRLF para o pdf.
+Posponha "xref" junto com o texto CRLF para o pdf.
 Atribua a contagem destes objects deste pdf state mais 1 a uma contagem.
-Posponha "0 " seguido de a contagem seguido de o texto CRLF para o pdf.
-Posponha "0000000000 65535 f" seguido de o texto CRLF para o pdf.
+Posponha "0 " junto com a contagem junto com o texto CRLF para o pdf.
+Posponha "0000000000 65535 f" junto com o texto CRLF para o pdf.
 Percorra.
 Obtenha um pdf object desde os objects deste pdf state.
 Se o pdf object for inexistente, pare.
 Zero fill o offset deste pdf object usando 10 e posponha it para o pdf.
-Posponha " 00000 n" seguido de o texto CRLF para o pdf.
+Posponha " 00000 n" junto com o texto CRLF para o pdf.
 Repita.
 Posponha o texto CRLF para o pdf.
 
@@ -4671,17 +4672,17 @@ Adicione 1 para uma contagem.
 Se a contagem for uniformemente divisível por 20, posponha o texto CRLF seguido de " " para o parent sem passar pra próxima linha.
 Repita.
 Posponha "]" para o parent.
-Posponha "/Count " seguido de a contagem para o parent.
+Posponha "/Count " junto com a contagem para o parent.
 Posponha ">>" para o parent.
 Posponha "endobj" para o parent.
 
 Etapas necessárias para que se end printing um pdf (finish o root):
 Atribua o root deste pdf state a um root pdf object.
-Posponha "/Pages " seguido de o número deste parent deste pdf state seguido de " 0 R" para o root.
+Posponha "/Pages " junto com o número deste parent deste pdf state seguido de " 0 R" para o root.
 Encontre um pdf object usando "page".
-Posponha "/OpenAction [" seguido de o número deste pdf object seguido de " 0 R /XYZ null null 1]" para o root.
+Posponha "/OpenAction [" junto com o número deste pdf object seguido de " 0 R /XYZ null null 1]" para o root.
 Posponha "/PageMode /UseNone" para o root.
-Se o outline deste pdf state não for inexistente, posponha "/Outlines " seguido de o número deste outline deste pdf state seguido de " 0 R" para o root.
+Se o outline deste pdf state não for inexistente, posponha "/Outlines " junto com o número deste outline deste pdf state seguido de " 0 R" para o root.
 Posponha ">>" para o root.
 Posponha "endobj" para o root.
 
@@ -4704,7 +4705,7 @@ Atribua os current contents deste pdf state a um content pdf object.
 Atribua os data deste content a um trecho.
 Limpe os data deste content.
 Posponha o número deste content seguido de " 0 obj" para o content.
-Posponha "<</Length " seguido de a quantidade de caracteres deste trecho seguido de " >>" para o content.
+Posponha "<</Length " junto com a quantidade de caracteres deste trecho seguido de " >>" para o content.
 Posponha "stream" para o content.
 Posponha o trecho para os data deste content.
 Posponha "endstream" para o content.
@@ -4841,7 +4842,7 @@ Se o subtexto estiver em branco, pare.
 Se o target deste last endereço de memória do pedaço deste subtexto for a barra invertida, pare.
 Subtraia 1 desde o last endereço de memória do pedaço deste subtexto.
 Repita.
-Atribua a unidade de disco seguido de o subtexto ao endereço da pasta.
+Atribua a unidade de disco junto com o subtexto ao endereço da pasta.
 
 Etapas necessárias para que se extraia um nome do diretório desde um endereço completo:
 Limpe o nome do diretório.
@@ -4981,7 +4982,7 @@ Atribua o first endereço de memória do pedaço desta string mais a contagem menos
 Etapas necessárias para que se finalize after run:
 Se a contagem do heap for 0, cancele.
 Atribua a contagem do heap a uma contagem.
-Atribua a contagem seguido de " drip(s)." a uma string.
+Atribua "Você esqueceu de destruir " junto com a contagem seguido de " elemento(s) no heap." a uma string.
 Produza o relatório de informações usando a string.
 
 Etapas necessárias para que se finalize o canvases:
@@ -5146,16 +5147,16 @@ Desative o detector.
 Se o text for inexistente, cancele.
 Se a row for inexistente, cancele.
 Lance um percorredor sobre a string deste row.
-Se o número da linha desta row é o número da linha deste find anchor, adicione o column# deste find anchor menos 1 para o first deste source subtexto deste percorredor.
-Se o first deste source subtexto deste percorredor não for o first endereço de memória do pedaço desta string desta row, skip palavra characters no source subtexto deste percorredor.
+Se o número da linha desta row é o número da linha deste find anchor, adicione o column# deste find anchor menos 1 para o first deste segmento final deste percorredor.
+Se o first deste segmento final deste percorredor não for o first endereço de memória do pedaço desta string desta row, skip palavra characters no segmento final deste percorredor.
 Percorra.
 Mova o percorredor (spell checking rules).
-Se o vocábulo subtexto deste percorredor estiver em branco, cancele.
-Se o vocábulo subtexto deste percorredor não estiver escrito incorretamente, repita.
+Se o segmento inicial deste percorredor estiver em branco, cancele.
+Se o segmento inicial deste percorredor não estiver escrito incorretamente, repita.
 Ligue o detector.
-Atribua o first deste vocábulo subtexto deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 1 ao anchor column# deste text.
+Atribua o first deste segmento inicial deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 1 ao anchor column# deste text.
 Atribua o número da linha desta row ao anchor número da linha deste text .
-Atribua o last deste vocábulo subtexto deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 2 ao caret column# deste text.
+Atribua o last deste segmento inicial deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 2 ao caret column# deste text.
 Atribua o número da linha desta row ao número de linhas do cursor deste text.
 
 Etapas necessárias para que se encontre o next misspelling em um text usando um detector:
@@ -5776,8 +5777,8 @@ Atribua 2 [af_inet] ao ai_family desse addrinfo.
 Atribua 1 [sock_stream] ao ai_sockettype deste addrinfo.
 Atribua 6 [ipproto_tcp] ao ai_protocol deste addrinfo.
 Call o getaddrinfo destas addrinfo routines com o first deste host string e 0 e o endereçamento deste addrinfo e o endereçamento desse addrinfoptr devolvendo um result número.
-Se o result número não for 0, atribua "Não foi possível encontrar o nome do seguinte anfitrião (host): " seguido de o host seguido de "." ao erro do fluxo de entrada/saída; exit.
-Se o addrinfoptr for inexistente, atribua "Não foi possível encontrar o nome do seguinte anfitrião (host): " seguido de o host seguido de "." ao erro do fluxo de entrada/saída; exit.
+Se o result número não for 0, atribua "Não foi possível encontrar o nome do seguinte anfitrião (host): " junto com o host seguido de "." ao erro do fluxo de entrada/saída; exit.
+Se o addrinfoptr for inexistente, atribua "Não foi possível encontrar o nome do seguinte anfitrião (host): " junto com o host seguido de "." ao erro do fluxo de entrada/saída; exit.
 Atribua o target deste ai_addr deste addrinfoptr ao sockaddr.
 Call o freeaddrinfo destas addrinfo routines com o addrinfoptr.
 
@@ -5842,14 +5843,14 @@ Se  as coisas estiverem vazio, esvazie a coisa; exit.
 Se a coisa for inexistente, atribua o last destas coisas à coisa; exit.
 Atribua o previous desta coisa à coisa.
 
-Etapas necessárias para que se obtenha um vocábulo desde um reply:
+Etapas necessárias para que se obtenha um segmento inicial desde um reply:
 Remove algum tipo de leading noise desde o reply.
-Limpe o vocábulo.
+Limpe o segmento inicial.
 Percorra.
 Se o reply estiver em branco, cancele.
 Obtenha um pedaço desde o reply.
 Se o pedaço for o caractere de espaço, cancele.
-Posponha o pedaço para o vocábulo.
+Posponha o pedaço para o segmento inicial.
 Repita.
 
 Etapas necessárias para que se obtenha um largura usando um pedaço e um canvas:
@@ -5939,7 +5940,7 @@ Crie uma row usando o return pedaço.
 Posponha a row para as rows deste text.
 Renumber as rows deste text.
 
-Um guid é um uuid.
+Um guid é um UUID. \ identificador único global
 
 O hand cursor é um cursor.
 
@@ -6453,7 +6454,7 @@ O i-beam cursor é um cursor.
 
 \the erro do fluxo de entrada/saída é uma string.
 
-Um iid é um uuid.
+Um iid é um UUID. \ Um interface identifier é um Identificador único universal
 
 Etapas necessárias para que se imagine uma caixa uns twips por uns segunda twips;
 Etapas necessárias para que se make uma caixa uns twips por uns segunda twips:
@@ -6631,8 +6632,8 @@ Adicione um stream pdf object usando "font stream".
 Posponha o número deste stream seguido de " 0 obj" para o stream.
 Posponha "<<" para o stream sem passar pra próxima linha.
 Posponha "/Filter /ASCIIHexDecode" para o stream sem passar pra próxima linha.
-Posponha " /Length " seguido de a quantidade de caracteres deste cifra hexadecimal para o stream sem passar pra próxima linha.
-Posponha " /Length1 " seguido de a quantidade de caracteres deste trecho para o stream sem passar pra próxima linha.
+Posponha " /Length " junto com a quantidade de caracteres deste cifra hexadecimal para o stream sem passar pra próxima linha.
+Posponha " /Length1 " junto com a quantidade de caracteres deste trecho para o stream sem passar pra próxima linha.
 Posponha ">>" para o stream.
 Posponha "stream" para o stream.
 Posponha o cifra hexadecimal para o stream.
@@ -6640,21 +6641,21 @@ Posponha "endstream" para o stream.
 Posponha "endobj" para o stream.
 \ descriptor
 Adicione um descriptor pdf object usando "font descriptor".
-Atribua "F" seguido de o número deste descriptor a uma nome da fonte.
+Atribua "F" junto com o número deste descriptor a uma nome da fonte.
 Atribua o nome desta font a uma font base nome.
 Replace o caractere de espaço com o underline no font base nome.
 Posponha o número deste descriptor seguido de " 0 obj" para o descriptor.
 Posponha "<<" para o descriptor.
 Posponha "/Type /FontDescriptor" para o descriptor.
-Posponha "/FontNomeie /" seguido de o font base nome para o descriptor.
-Posponha "/FontFile2 " seguido de o número deste stream seguido de " 0 R" para o descriptor.
-Posponha "/alarmes " seguido de o flags deste font info para o descriptor.
-Posponha "/FontBBox [" seguido de a font caixa desta font info seguido de "]" para o descriptor.
-Posponha "/Ascent " seguido de o ascent desta font info para o descriptor.
-Posponha "/Descent " seguido de o descent desta font info para o descriptor.
-Posponha "/CapHeight " seguido de o capheight desta font info para o descriptor.
-Posponha "/ItalicAngle " seguido de o italicangle desta font info para o descriptor.
-Posponha "/StemV " seguido de o stemv desta font info para o descriptor.
+Posponha "/FontNomeie /" junto com o font base nome para o descriptor.
+Posponha "/FontFile2 " junto com o número deste stream seguido de " 0 R" para o descriptor.
+Posponha "/alarmes " junto com o flags deste font info para o descriptor.
+Posponha "/FontBBox [" junto com a font caixa desta font info seguido de "]" para o descriptor.
+Posponha "/Ascent " junto com o ascent desta font info para o descriptor.
+Posponha "/Descent " junto com o descent desta font info para o descriptor.
+Posponha "/CapHeight " junto com o capheight desta font info para o descriptor.
+Posponha "/ItalicAngle " junto com o italicangle desta font info para o descriptor.
+Posponha "/StemV " junto com o stemv desta font info para o descriptor.
 Posponha ">>" para o descriptor.
 Posponha "endobj" para o descriptor.
 \ definition
@@ -6664,10 +6665,10 @@ Posponha o número desta definition seguido de " 0 obj" para o definition.
 Posponha "<<" para o definition.
 Posponha "/Type /Font" para o definition.
 Posponha "/Subtype /TrueType" para o definition.
-Posponha "/Nomeie /" seguido de o nome da fonte para o definition.
-Posponha "/BaseFont /" seguido de o font base nome para o definition.
+Posponha "/Nomeie /" junto com o nome da fonte para o definition.
+Posponha "/BaseFont /" junto com o font base nome para o definition.
 Posponha "/Encoding /WinAnsiEncoding" para o definition.
-Posponha "/FontDescriptor " seguido de o número deste descriptor seguido de " 0 R" para o definition.
+Posponha "/FontDescriptor " junto com o número deste descriptor seguido de " 0 R" para o definition.
 Posponha "/FirstChar 0" para o definition.
 Posponha "/LastChar 255" para o definition.
 Atribua as font larguras desta font info a uma segunda trecho.
@@ -6682,7 +6683,7 @@ Etapas necessárias para que se include uma font em um pdf object:
 Se o pdf object for inexistente, cancele.
 Encontre uma font pdf object usando o nome desta font e o font catálogo deste pdf state.
 Se o font pdf object for inexistente, cancele.
-Atribua "/" seguido de o nome da fonte deste font pdf object seguido de " " seguido de o número deste font pdf object seguido de " 0 R" a uma string.
+Atribua "/" junto com o nome da fonte deste font pdf object seguido de " " junto com o número deste font pdf object seguido de " 0 R" a uma string.
 Encontre um conjunto de texto usando a string e os font strings deste pdf object.
 Se o conjunto de texto não for inexistente, cancele.
 Crie um new conjunto de texto usando a string.
@@ -7216,8 +7217,8 @@ Se o lexicon for inexistente, crie o lexicon.
 Lance um percorredor sobre o trecho.
 Percorra.
 Mova o percorredor (catálogo lexicon rules).
-Se o vocábulo subtexto deste percorredor estiver em branco, cancele.
-Catalogue o vocábulo subtexto deste percorredor no catálogo deste lexicon.
+Se o segmento inicial deste percorredor estiver em branco, cancele.
+Catalogue o segmento inicial deste percorredor no catálogo deste lexicon.
 Repita.
 
 Etapas necessárias para que se carregue o lexicon usando um endereço completo:
@@ -7772,75 +7773,75 @@ Etapas necessárias para que se mova um polígono para cima uns twips:
 Mova o polígono usando 0 e - os twips.
 
 Etapas necessárias para que se mova um percorredor (catálogo lexicon rules):
-Skip algum tipo de leading noise no source subtexto deste percorredor.
-Posicione o vocábulo subtexto deste percorredor sobre o source subtexto deste percorredor.
+Skip algum tipo de leading noise no segmento final deste percorredor.
+Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 Percorra.
-Se o source subtexto deste percorredor estiver em branco, cancele.
+Se o segmento final deste percorredor estiver em branco, cancele.
 Avance o percorredor.
-Se o target deste first deste source subtexto deste percorredor for irrelevante, cancele.
+Se o target deste first deste segmento final deste percorredor for irrelevante, cancele.
 Repita.
 
 Etapas necessárias para que se mova um percorredor (quoted string rules):
 Avance o percorredor.
-Se o source subtexto deste percorredor estiver em branco, cancele.
-Se o target deste first deste source subtexto deste percorredor não for as aspas duplas, repita.
-Se o first deste source subtexto deste percorredor é o last deste source subtexto deste percorredor, avance o percorredor; exit.
+Se o segmento final deste percorredor estiver em branco, cancele.
+Se o target deste first deste segmento final deste percorredor não for as aspas duplas, repita.
+Se o first deste segmento final deste percorredor é o last deste segmento final deste percorredor, avance o percorredor; exit.
 Avance o percorredor.
-Se o target deste first deste source subtexto deste percorredor não for as aspas duplas, cancele.
+Se o target deste first deste segmento final deste percorredor não for as aspas duplas, cancele.
 Repita.
 
 Etapas necessárias para que se mova um percorredor (spell checking rules):
-Skip algum tipo de non-alfanumérico pedaços no source subtexto deste percorredor.
-Posicione o vocábulo subtexto deste percorredor sobre o source subtexto deste percorredor.
+Skip algum tipo de non-alfanumérico pedaços no segmento final deste percorredor.
+Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 Percorra.
-Se o source subtexto deste percorredor estiver em branco, cancele.
+Se o segmento final deste percorredor estiver em branco, cancele.
 Avance o percorredor.
-Se o source subtexto deste percorredor está sobre alguma espécie de contração, avance o percorredor; repita.
-Se o target deste first deste source subtexto deste percorredor não for alfanumérico, cancele.
+Se o segmento final deste percorredor está sobre alguma espécie de contração, avance o percorredor; repita.
+Se o target deste first deste segmento final deste percorredor não for alfanumérico, cancele.
 Repita.
 
 Etapas necessárias para que se mova um percorredor (text file rules):
-Posicione o vocábulo subtexto deste percorredor sobre o source subtexto deste percorredor.
+Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 Percorra.
-Se o source subtexto deste percorredor estiver em branco, cancele.
-Se o target deste first deste source subtexto deste percorredor for o return pedaço, avance o percorredor; break.
-Se o target deste first deste source subtexto deste percorredor for o linefeed pedaço, avance o percorredor; exit. \ *dahn new para handle lines terminated por just linefeed
+Se o segmento final deste percorredor estiver em branco, cancele.
+Se o target deste first deste segmento final deste percorredor for o return pedaço, avance o percorredor; break.
+Se o target deste first deste segmento final deste percorredor for o linefeed pedaço, avance o percorredor; exit. \ *dahn new para handle lines terminated por just linefeed
 Avance o percorredor.
 Repita.
-Se o source subtexto deste percorredor estiver em branco, cancele.
-Se o target deste first deste source subtexto deste percorredor for o linefeed pedaço, adicione 1 para o first deste source subtexto deste percorredor.
+Se o segmento final deste percorredor estiver em branco, cancele.
+Se o target deste first deste segmento final deste percorredor for o linefeed pedaço, adicione 1 para o first deste segmento final deste percorredor.
 
 Etapas necessárias para que se mova um percorredor (word wrapping rules):
-Posicione o vocábulo subtexto deste percorredor sobre o source subtexto deste percorredor.
-Se o source subtexto deste percorredor estiver em branco, cancele.
-Se o target deste first deste source subtexto deste percorredor for o return pedaço, avance o percorredor; exit.
+Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+Se o segmento final deste percorredor estiver em branco, cancele.
+Se o target deste first deste segmento final deste percorredor for o return pedaço, avance o percorredor; exit.
 Percorra.
-Se o source subtexto deste percorredor estiver em branco, cancele.
-Se o target deste first deste source subtexto deste percorredor for o return pedaço, cancele.
-Se o vocábulo subtexto deste percorredor estiver em branco, avance o percorredor; repita.
-Se o target deste first deste source subtexto deste percorredor for like o target deste last deste vocábulo subtexto deste percorredor, avance o percorredor; repita.
+Se o segmento final deste percorredor estiver em branco, cancele.
+Se o target deste first deste segmento final deste percorredor for o return pedaço, cancele.
+Se o segmento inicial deste percorredor estiver em branco, avance o percorredor; repita.
+Se o target deste first deste segmento final deste percorredor for like o target deste last deste segmento inicial deste percorredor, avance o percorredor; repita.
 
 Etapas necessárias para que se mova um percorredor usando uma caixa (word wrapping rules):
-Skip algum tipo de leading linefeed pedaço no source subtexto deste percorredor.
-Posicione o vocábulo subtexto deste percorredor sobre o source subtexto deste percorredor.
-Se o source subtexto deste percorredor estiver em branco, cancele.
+Skip algum tipo de leading linefeed pedaço no segmento final deste percorredor.
+Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+Se o segmento final deste percorredor estiver em branco, cancele.
 Lance uma segundo percorredor sobre o percorredor.
 Percorra.
-Se o source subtexto deste percorredor estiver em branco, cancele.
+Se o segmento final deste percorredor estiver em branco, cancele.
 Mova a segundo percorredor (word wrapping rules).
-Se o vocábulo desta segundo percorredor estiver em branco, cancele.
-Se o target deste first deste vocábulo desta segundo percorredor for o return pedaço, avance o percorredor; exit.
-Se o target deste first deste vocábulo desta segundo percorredor for whitespace, avance o percorredor pelo quantidade de caracteres deste vocábulo desta segundo percorredor; repita.
-Se o vocábulo subtexto deste percorredor estiver em branco, avance o percorredor pelo quantidade de caracteres deste vocábulo desta segundo percorredor; repita.
-Se o vocábulo subtexto deste percorredor seguido de o vocábulo desta segundo percorredor forem wider do que a caixa, cancele.
-Avance o percorredor pelo quantidade de caracteres deste vocábulo desta segundo percorredor.
+Se o segmento inicial desta segundo percorredor estiver em branco, cancele.
+Se o target deste first deste segmento inicial desta segundo percorredor for o return pedaço, avance o percorredor; exit.
+Se o target deste first deste segmento inicial desta segundo percorredor for whitespace, avance o percorredor pelo quantidade de caracteres deste segmento inicial desta segundo percorredor; repita.
+Se o segmento inicial deste percorredor estiver em branco, avance o percorredor pelo quantidade de caracteres deste segmento inicial desta segundo percorredor; repita.
+Se o segmento inicial deste percorredor junto com o segmento inicial desta segundo percorredor forem wider do que a caixa, cancele.
+Avance o percorredor pelo quantidade de caracteres deste segmento inicial desta segundo percorredor.
 Repita.
 
 Etapas necessárias para que se mova um percorredor usando um separator pedaço:
-Posicione o vocábulo subtexto deste percorredor sobre o source subtexto deste percorredor.
+Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 Percorra.
-Se o source subtexto deste percorredor estiver em branco, cancele.
-Se o target deste first deste source subtexto deste percorredor for o separator pedaço, adicione 1 para o first deste source subtexto deste percorredor; exit.
+Se o segmento final deste percorredor estiver em branco, cancele.
+Se o target deste first deste segmento final deste percorredor for o separator pedaço, adicione 1 para o first deste segmento final deste percorredor; exit.
 Avance o percorredor.
 Repita.
 
@@ -8174,13 +8175,13 @@ Um offset é um número.
 Etapas necessárias para que se abra um file usando um endereço completo:
 Limpe o erro do fluxo de entrada/saída.
 Extraia um endereço da pasta desde o endereço completo.
-Se o endereço da pasta não estiver no sistema de arquivos, atribua "A Pasta: " seguido de o endereço da pasta seguido de " não existe." ao erro do fluxo de entrada/saída; exit.
+Se o endereço da pasta não estiver no sistema de arquivos, atribua "A Pasta: " junto com o endereço da pasta seguido de " não existe." ao erro do fluxo de entrada/saída; exit.
 Ligue o endereço completo para read-write mode.
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
 Call "kernel32.dll" "CreateFileA" com o first deste endereço completo e -1073741824 [generic_read+generic_write] e 0 e 0 e 4 [open_always] 
 And -2147483520 [file_flag_write_through ou file_attribute_normal] e 0 devolvendo o file.
-Se o file é -1 [invalid_handle_value], atribua "Ocorreu um erro na hora de abrir o arquivo: " seguido de o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
+Se o file é -1 [invalid_handle_value], atribua "Ocorreu um erro na hora de abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
 
 Etapas necessárias para que se abra um file usando um endereço completo e uns milliseconds:
 Start um temporizador.
@@ -8261,7 +8262,7 @@ Atribua o espectro verde deste espaço de cor RGB / 255 à fração.
 Converta a fração para um green string usando 4.
 Atribua o espectro azul deste espaço de cor RGB / 255 à fração.
 Converta a fração para um blue string usando 4.
-Output o red string seguido de " " seguido de o green string seguido de " " seguido de o blue string sem passar pra próxima linha.
+Output o red string seguido de " " junto com o green string seguido de " " junto com o blue string sem passar pra próxima linha.
 
 Etapas necessárias para que se output lineto usando uma localização:
 Output a localização sem passar pra próxima linha.
@@ -9052,7 +9053,7 @@ Se o mixed for 0, posponha "0" para a string; exit.
 Se o whole número deste mixed não for 0, posponha o whole número deste mixed para a string.
 Se o fração deste mixed for 0, cancele.
 Se a string não estiver em branco, posponha o hífem para a string.
-Posponha o numerador deste mixed seguido de "/" seguido de o denominador deste mixed para a string.
+Posponha o numerador deste mixed seguido de "/" junto com o denominador deste mixed para a string.
 
 Etapas necessárias para que se atribua uma par de números fracionários para uma segundo par de números fracionários:
 Atribua a fração deste par de números fracionários à fração deste segundo par de números fracionários.
@@ -9244,8 +9245,8 @@ Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o wyrd
 Intel $668903. \ mov [ebx],ax
 
 Etapas necessárias para que se atribua um número sobre o stack:
-Converta o número para um vocábulo.
-Atribua o vocábulo sobre o stack.
+Converta o número para um segmento inicial.
+Atribua o segmento inicial sobre o stack.
 
 Etapas necessárias para que se atribua um número over um segundo número em uma fração;
 Etapas necessárias para que se atribua um número e um segundo número para uma fração:
@@ -9626,9 +9627,9 @@ Atribua a contagem de ticks do sistema a uns segunda ticks.
 Subtraia os start ticks deste temporizador desde os segunda ticks.
 Adicione os segunda ticks para os ticks.
 
-Etapas necessárias para que se atribua um vocábulo sobre o stack:
+Etapas necessárias para que se atribua um segmento inicial sobre o stack:
 Aloque memória por um stack entry.
-Atribua o vocábulo à string desta stack entry.
+Atribua o segmento inicial à string desta stack entry.
 Anteponha o stack entry para o stack.
 
 Etapas necessárias para que se atribua o topo of uma caixa para um horizontal line;
@@ -9741,10 +9742,10 @@ Se o erro do fluxo de entrada/saída não estiver em branco, cancele.
 Aloque memória para o Bíblia.
 Lance um percorredor sobre o trecho.
 Percorra.
-Se o source subtexto deste percorredor estiver em branco, cancele.
+Se o segmento final deste percorredor estiver em branco, cancele.
 Aloque memória por um verse. Posponha o verse para os verses desta Bíblia.
 Mova o percorredor (text file rules).
-Atribua o vocábulo subtexto deste percorredor à string deste verse.
+Atribua o segmento inicial deste percorredor à string deste verse.
 Remove algum tipo de leading noise desde a string deste verse.
 Remove algum tipo de trailing noise desde a string deste verse.
 Repita.
@@ -9789,18 +9790,18 @@ Etapas necessárias para que se read um endereço completo para um trecho:
 Limpe o erro do fluxo de entrada/saída.
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Se o endereço completo não estiver no sistema de arquivos, atribua "O Arquivo: " seguido de o endereço completo seguido de " não existe." ao erro do fluxo de entrada/saída; exit.
+Se o endereço completo não estiver no sistema de arquivos, atribua "O Arquivo: " junto com o endereço completo seguido de " não existe." ao erro do fluxo de entrada/saída; exit.
 \ abra o endereço completo para read-write mode.
 Call "kernel32.dll" "CreateFileA" com o first deste endereço completo e -2147483648 [generic_read] e 3 [file_share_read+file_share_write] e 0 
 And 3 [open_existing] e 0 e 0 devolvendo um número identificador.
-Se o número identificador for -1 [invalid_handle_value], atribua "Ocorreu um erro na hora de tentar abrir o arquivo: " seguido de o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
+Se o número identificador for -1 [invalid_handle_value], atribua "Ocorreu um erro na hora de tentar abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
 Call "kernel32.dll" "GetFileSize" com o número identificador e nil devolvendo um size.
 Reassign o first deste trecho usando o size.
 Atribua o first deste trecho mais o size menos 1 ao last deste trecho.
 Call "kernel32.dll" "ReadFile" com o número identificador e o first deste trecho e o size e o endereçamento desse número e 0 devolvendo o número.
 Call "kernel32.dll" "CloseHandle" com o número identificador.
 Se o número não for 0, cancele.
-Atribua "Ocorreu um erro na hora de tentar ler o arquivo: " seguido de o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
+Atribua "Ocorreu um erro na hora de tentar ler o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
 
 Etapas necessárias para que se carregue um endereço completo para um imagem:
 
@@ -9875,7 +9876,7 @@ Se o internet handle for 0, atribua "Erro. Não foi possível se conectar à intern
 Isole o url.
 Modifique através do caractere NUL o url.
 Call "wininet.dll" "InternetOpenUrlA" com o internet handle e o first desta url e nil e 0 e 0 e 0 devolvendo um url número identificador.
-Se o url handle for 0, atribua "Erro. Não foi possível acessar a URL: " seguido de o url seguido de "." ao erro do fluxo de entrada/saída; call "wininet.dll" "InternetCloseHandle" com o internet handle; exit.
+Se o url handle for 0, atribua "Erro. Não foi possível acessar a URL: " junto com o url seguido de "." ao erro do fluxo de entrada/saída; call "wininet.dll" "InternetCloseHandle" com o internet handle; exit.
 \ read o file
 Atribua 64 kilopedaços a um trecho size.
 Percorra.
@@ -9883,7 +9884,7 @@ Atribua a quantidade de caracteres deste trecho a uma quantidade de caracteres a
 Reassign o first deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
 Atribua o first deste trecho mais a quantidade de caracteres armazenados a um endereço de memória.
 Call "wininet.dll" "InternetReadFile" com o url handle e o endereço de memória e o trecho size e o endereçamento dessa contagem devolvendo um result número.
-Se o result número for 0, atribua "Ocorreu um erro na hora de ler a URL: " seguido de o url seguido de "." ao erro do fluxo de entrada/saída; break.
+Se o result número for 0, atribua "Ocorreu um erro na hora de ler a URL: " junto com o url seguido de "." ao erro do fluxo de entrada/saída; break.
 Atribua o endereço de memória mais a contagem menos 1 ao last deste trecho.
 Se a contagem for 0, pare.
 Repita.
@@ -10012,7 +10013,7 @@ Atribua o first endereço de memória do pedaço deste subtexto mais o anchor colum
 Obtenha uma segunda row usando o número de linhas do cursor desta seleção e o text.
 Lance uma segunda subtexto sobre a string desta segunda row.
 Atribua o first desta segunda subtexto mais o caret column# desta seleção menos 1 ao first desta segunda subtexto.
-Atribua o subtexto seguido de a segunda subtexto à string desta row.
+Atribua o subtexto junto com a segunda subtexto à string desta row.
 Remove as rows of o text between o next desta row e a segunda row.
 Atribua o anchor desta seleção ao caret deste text.
 Desselecione o text.
@@ -10164,7 +10165,7 @@ Modifique através do caractere NUL a segunda endereço completo.
 Call "kernel32.dll" "MoveFileA" com o first deste endereço completo e o first desta segunda endereço completo devolvendo um número.
 Limpe o erro do fluxo de entrada/saída.
 Se o número não for 0, cancele.
-Atribua "Ocorreu um erro ao renomear o arquivo: " seguido de o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
+Atribua "Ocorreu um erro ao renomear o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
 
 Etapas necessárias para que se renumber uns rows:
 Obtenha uma row desde a rows.
@@ -10387,8 +10388,10 @@ Um endereço de memória RGB é um endereço de memória para um espaço de cor RGB.
 
 Um percorredor é um conjunto com \ conserte "avance um percorredor" e "recue um percorredor" se você alterar isso aqui
 Um subtexto original,
-Um source subtexto, 
-Um vocábulo subtexto.
+Um segmento final, 
+Um segmento inicial.
+
+Um segmento final é um subtexto.
 
 Um deslocamento vertical é um número.
 Um deslocamento horizontal é um número.
@@ -10830,35 +10833,35 @@ Receive um response string desde o socket.
 Se o erro do fluxo de entrada/saída não estiver em branco, destrua o socket; exit.
 Se o response começa com "5", atribua o response ao erro do fluxo de entrada/saída; trim o erro do fluxo de entrada/saída; destrua o socket; exit.
 \ send HELO
-Send "HELO " seguido de o nome deste module seguido de o texto CRLF para o socket e receive o response string.
+Send "HELO " junto com o nome deste module junto com o texto CRLF para o socket e receive o response string.
 Se o erro do fluxo de entrada/saída não estiver em branco, destrua o socket; exit.
 Se o response começa com "5", atribua o response ao erro do fluxo de entrada/saída; trim o erro do fluxo de entrada/saída; destrua o socket; exit.
 \ send MAIL FROM: <xxx>
-Send "MAIL FROM: <" seguido de o sender deste email seguido de ">" seguido de o texto CRLF para o socket e receive o response string.
+Send "MAIL FROM: <" junto com o sender deste email seguido de ">" junto com o texto CRLF para o socket e receive o response string.
 Se o erro do fluxo de entrada/saída não estiver em branco, destrua o socket; exit.
 Se o response começa com "5", atribua o response ao erro do fluxo de entrada/saída; trim o erro do fluxo de entrada/saída; destrua o socket; exit.
 \ send RCPT TO: <xxx>
-Send "RCPT TO: <" seguido de o recipient deste email seguido de ">" seguido de o texto CRLF para o socket e receive o response string.
+Send "RCPT TO: <" junto com o recipient deste email seguido de ">" junto com o texto CRLF para o socket e receive o response string.
 Se o erro do fluxo de entrada/saída não estiver em branco, destrua o socket; exit.
 Se o response começa com "5", atribua o response ao erro do fluxo de entrada/saída; trim o erro do fluxo de entrada/saída; destrua o socket; exit.
 \ send DATA
-Send "DATA" seguido de o texto CRLF para o socket e receive o response string.
+Send "DATA" junto com o texto CRLF para o socket e receive o response string.
 Se o erro do fluxo de entrada/saída não estiver em branco, destrua o socket; exit.
 Se o response começa com "5", atribua o response ao erro do fluxo de entrada/saída; trim o erro do fluxo de entrada/saída; destrua o socket; exit.
 \ send From: xxx crlf To: xxx crlf Subject: xxx crlf Reply-To: xxx crlf message crlf . crlf
 Limpe um temp string.
-Posponha "De: " seguido de o sender deste email seguido de o texto CRLF para o temp string.
-Posponha "Para: " seguido de o recipient deste email seguido de o texto CRLF para o temp string.
-Posponha "Assunto: " seguido de o subject deste email seguido de o texto CRLF ao temp string.
-Posponha "Reply-To: " seguido de o sender deste email seguido de o texto CRLF ao temp string.
+Posponha "De: " junto com o sender deste email junto com o texto CRLF para o temp string.
+Posponha "Para: " junto com o recipient deste email junto com o texto CRLF para o temp string.
+Posponha "Assunto: " junto com o subject deste email junto com o texto CRLF ao temp string.
+Posponha "Reply-To: " junto com o sender deste email junto com o texto CRLF ao temp string.
 Posponha o texto CRLF para o temp string.
 Posponha a message deste email para o temp string (handling email transparency).
-Posponha o texto CRLF seguido de "." seguido de o texto CRLF para o temp string.
+Posponha o texto CRLF seguido de "." junto com o texto CRLF para o temp string.
 Send o temp string para o socket e receive o response string.
 Se o erro do fluxo de entrada/saída não estiver em branco, destrua o socket; exit.
 Se o response começa com "5", atribua o response ao erro do fluxo de entrada/saída; trim o erro do fluxo de entrada/saída; destrua o socket; exit.
 \ send QUIT
-Send "QUIT" seguido de o texto CRLF para o socket.
+Send "QUIT" junto com o texto CRLF para o socket.
 \ destrua socket
 Destrua o socket.
 
@@ -11080,13 +11083,13 @@ Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
 
 Etapas necessárias para que se lance um percorredor sobre um segundo percorredor:
-Lance o source subtexto deste percorredor sobre o source subtexto deste segundo percorredor.
-Posicione o vocábulo subtexto deste percorredor sobre o source subtexto deste percorredor.
+Lance o segmento final deste percorredor sobre o segmento final deste segundo percorredor.
+Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 
 Etapas necessárias para que se lance um percorredor sobre uma string:
 Lance o subtexto original deste percorredor sobre a string.
-Lance o source subtexto deste percorredor sobre a string.
-Posicione o vocábulo subtexto deste percorredor sobre o source subtexto deste percorredor.
+Lance o segmento final deste percorredor sobre a string.
+Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 
 Etapas necessárias para que se lance um subtexto sobre algum tipo de pedaços selecionados em uma row of um text:
 Limpe o subtexto.
@@ -11195,10 +11198,10 @@ Se o trecho estiver em branco, cancele.
 Lance um percorredor sobre o trecho.
 Percorra.
 Mova o percorredor usando o & comercial.
-Se o vocábulo subtexto deste percorredor estiver em branco, cancele.
+Se o segmento inicial deste percorredor estiver em branco, cancele.
 Crie um dyad.
 Posponha o dyad para o dyads.
-Split o vocábulo subtexto deste percorredor a um nome subtexto e um query subtexto usando o sinal de igualdade.
+Split o segmento inicial deste percorredor a um nome subtexto e um query subtexto usando o sinal de igualdade.
 Atribua o nome subtexto ao nome deste dyad.
 Converta o query subtexto como um texto de consulta ao value deste dyad.
 Repita.
@@ -11254,8 +11257,8 @@ Se a string estiver em branco, cancele.
 Lance um percorredor sobre a string.
 Percorra.
 Mova o percorredor usando o separator pedaço.
-Adicione o vocábulo subtexto deste percorredor para o conjunto de textos.
-Se o source subtexto deste percorredor estiver em branco, pare.
+Adicione o segmento inicial deste percorredor para o conjunto de textos.
+Se o segmento final deste percorredor estiver em branco, pare.
 Repita.
 Se o target deste last endereço de memória do pedaço desta string não for o separator pedaço, cancele.
 Adicione "" para o conjunto de textos.
@@ -11695,7 +11698,7 @@ Etapas necessárias para que se start uns twips above uma localização:
 Atribua a coordenada y desta localização ao y deste context.
 Subtraia os twips desde a coordenada y deste context.
 
-Etapas necessárias para que se carregue as biliotecas padrão do sistema;
+Etapas necessárias para que se carregue as bibliotecas padrão do sistema;
 Etapas necessárias para que se start para cima:
 inicialize o Component Object Model.
 Inicialize winsock.
@@ -11903,7 +11906,7 @@ Um temporizador é um conjunto com uma contagem, uns start ticks e uns total tick
 
 Some times é um número. \ this é um fluke, I think -- see "suavize um polígono uns times"
 
-Um vocábulo é uma string.
+Um segmento inicial é um subtexto.
 
 Um topo é uns twips.
 
@@ -12216,7 +12219,8 @@ Se o talker for inexistente, cancele.
 Call o waituntildone desta vtable deste talker com o talker e -1.
 
 Etapas necessárias para que se aguarde until we hit um tecla;
-Etapas necessárias para que se aguarde por um tecla:
+Etapas necessárias para que se aguarde por uma tecla;
+Etapas necessárias para que se aguarde uma tecla ser pressionada;
 Etapas necessárias para que se aguarde uma tecla:
 Aguarde pela tecla para go para baixo.
 Aguarde pela tecla para come para cima.
@@ -12246,8 +12250,8 @@ Lance um percorredor sobre a string.
 Crie o número da fonte of o memory canvas usando o font deste text.
 Percorra.
 Mova o percorredor usando a caixa deste text (word wrapping rules).
-Se o vocábulo subtexto deste percorredor estiver em branco, pare.
-Crie uma row usando o vocábulo subtexto deste percorredor.
+Se o segmento inicial deste percorredor estiver em branco, pare.
+Crie uma row usando o segmento inicial deste percorredor.
 Posponha a row para as rows deste text.
 Repita.
 Destrua o número da fonte of o memory canvas.
@@ -12269,17 +12273,17 @@ Etapas necessárias para que se store um trecho em um endereço completo;
 Etapas necessárias para que se escreva um trecho para um endereço completo:
 Limpe o erro do fluxo de entrada/saída.
 Extraia um endereço da pasta desde o endereço completo.
-Se o endereço da pasta não estiver no sistema de arquivos, atribua "A pasta: " seguido de o endereço da pasta seguido de " não existe." ao erro do fluxo de entrada/saída; exit.
+Se o endereço da pasta não estiver no sistema de arquivos, atribua "A pasta: " junto com o endereço da pasta seguido de " não existe." ao erro do fluxo de entrada/saída; exit.
 Defina o endereço completo para read-write mode.
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
 Call "kernel32.dll" "CreateFileA" com o first deste endereço completo e 1073741824 [generic_write] 
 And 0 e 0 e 2 [create_always] e -2147483520 [file_flag_write_through ou file_attribute_normal] e 0 devolvendo um número identificador.
-Se o número identificador for -1 [invalid_handle_value], atribua "Ocorreu um erro ao tentar abrir o arquivo: " seguido de o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
+Se o número identificador for -1 [invalid_handle_value], atribua "Ocorreu um erro ao tentar abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
 Call "kernel32.dll" "WriteFile" com o número identificador e o first deste trecho e a quantidade de caracteres deste trecho e um número's endereçamento e 0 devolvendo o número.
 Call "kernel32.dll" "CloseHandle" com o número identificador.
 Se o número não for 0, cancele.
-Atribua "Ocorreu um erro ao tentar salvar o arquivo: " seguido de o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
+Atribua "Ocorreu um erro ao tentar salvar o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
 
 Etapas necessárias para que se escreva um pedaço:
 Atribua o pedaço a uma string.
