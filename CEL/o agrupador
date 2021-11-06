@@ -803,15 +803,18 @@ Se a string for "dos", diga sim.
 Se a string for "das", diga sim.
 Diga não.
 
-Etapas necessárias para que se determine se uma string está precisando ser decomposta:
-Se a string for algum tipo de contração de preposição com artigo definido, lance um percorredor sobre a string; recue o percorredor até encontrar o próximo espaço; escreva a string para "E:\0\log.txt".
-Se o segmento inicial deste percorredor for "seguido", diga sim.
-Se o segmento inicial deste percorredor for "seguido do", diga sim.
-Se o segmento inicial deste percorredor for "seguida", diga sim.
-Se o segmento inicial deste percorredor for "junto", diga sim.
-Se o segmento inicial deste percorredor for "acompanhado", diga sim.
+Etapas necessárias para que se determine se uma string é algum tipo de operador de concatenação contraído usando um percorredor:
+Se o segmento inicial deste percorredor de contrações for "seguido", mova o percorredor (usando diretrizes do compilador).
+Se o segmento inicial deste percorredor de contrações for "seguida", mova o percorredor (usando diretrizes do compilador).
+Se o segmento inicial deste percorredor de contrações for "junto", mova o percorredor (usando diretrizes do compilador).
+Se o segmento inicial deste percorredor de contrações for "acompanhado", mova o percorredor (usando diretrizes do compilador).
 \Se o segmento inicial deste percorredor for uma variável, recue o percorredor.
-Se o segmento inicial deste percorredor for uma phrase, diga não.
+Se o segmento inicial deste percorredor de contrações for algum tipo de contração de preposição com artigo definido, diga sim.
+Diga não.
+
+Etapas necessárias para que se determine se uma string está precisando ser decomposta:
+Lance um percorredor sobre a string.
+Se a string for algum tipo de operador de concatenação contraído usando o percorredor, diga sim.
 Diga não.
 
 Etapas necessárias para que se posponha uma string para uma segunda string usando um terceiro string (para expandir contrações):
@@ -1898,7 +1901,7 @@ Mova o percorredor (usando diretrizes do compilador).
 Compile o termo usando o percorredor.
 Se o detector de erros deste compilador estiver ativado, cancele.
 Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Eu não compreendi o termo da variável: " junto com a phrase deste termo seguido de "'. Ela parece estar vazia." e o percorredor; exit.
-Se o type deste termo não for value pushable, apresente a mensagem de erro contendo "Uma varíavel de 1, 2, ou 4-pedaços é necessária na 'devolvendo' clause." e o percorredor.
+Se o type deste termo não for value pushable, apresente a mensagem de erro contendo "Uma varíavel de 1, 2, ou 4 bytes é necessária na 'devolvendo' clause." e o percorredor.
 
 Etapas necessárias para que se compile uma rotina reference usando um percorredor:
 Se o segmento inicial deste percorredor for "para", mova o percorredor (usando diretrizes do compilador).
@@ -2128,8 +2131,7 @@ Etapas necessárias para que se compile um termo usando um percorredor e um campo
 \ dahn version 2
 Se o detector de erros deste compilador estiver ativado, cancele.
 Mova o percorredor (usando diretrizes do compilador). \ past o reverse-possessive starter
-\Se o segmento inicial deste percorredor não for "del", Mova o percorredor (usando diretrizes do compilador). \ past o reverse-possessive starter \ gerry added "if" part
-\Se o segmento inicial deste percorredor for "del", adicione 1 para o first deste segmento inicial deste percorredor. \ makes "del" look like "de el"
+\Se o segmento inicial deste percorredor não for "del", mova o percorredor (usando diretrizes do compilador). \ past o reverse-possessive starter \ gerry added "if" part
 Se o segmento inicial deste percorredor não for algum tipo de artigo, apresente uma mensagem de erro contendo "O compilador esperava encontrar un artigo, mas encontrou: " junto com o segmento inicial deste percorredor seguido de "."; exit.
 Atribua o segmento inicial deste percorredor para um article segmento inicial.
 Mova o percorredor (usando diretrizes do compilador).
@@ -3543,6 +3545,15 @@ Se a string for "point", diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de employ:
+\ Employs servem para usar uma rotina 
+\exemplos:
+\To raise a flag: Employ set a flag.
+\To decide if a flag is raised: Employ decide if a flag is set.
+\ Acho que uma boa tradução seria:
+\ Etapas necessárias para que se ative um detector: Faça uso da rotina "defina um detector".
+\ (troquei a palavra "flag" por "detector" e a palavra "raise" por "ativar"
+\ então ao invés de "empregue" usaríamos "faça uso da rotina" ou "lance mão da rotina"
+\Estou pensando em retirar isso já que já temos a sobrecarga demétodos disponível
 \PAL
 Se a string for "empregue", diga sim.
 \CAL
@@ -4707,7 +4718,7 @@ Se o detector de erros deste compilador estiver ativo, limpe o segmento inicial 
 Mova o percorredor devolvendo um erro string (englobando tudo).
 Se o erro string não estiver em branco, apresente uma mensagem de erro contendo o erro string e o first deste segmento inicial deste percorredor; exit.
 \Se o segmento inicial deste percorredor for "del", recue o percorredor; exit. \ Spanish contraction "del"; fudged para "de l", short por "de el"
-\Se o segmento inicial deste percorredor for "al", recue o percorredor; exit. \ Spanish contraction "al"; fudged para "a l", short por "a el"
+\Se o segmento inicial deste percorredor for algum tipo de contração de preposição com artigo definido, determine se essa contração precisa ser desfeita usando o percorredor. \ Spanish contraction "al"; fudged para "a l", short por "a el"
 Se o segmento inicial deste percorredor estiver em branco, cancele.
 Se o target deste first deste segmento inicial deste percorredor for irrelevante, repita.
 Se o target deste first deste segmento inicial deste percorredor for a barra invertida, repita.
@@ -5319,18 +5330,19 @@ Adicione um source file para o source files usando o endereço completo deste ite
 Carregue o source file.
 Repita.
 
+O percorredor de contrações é um percorredor.
 
 Etapas necessárias para que se parse uma string para uma segunda string (para expandir contrações):
 Limpe a segunda string.
 Limpe uma terceira string.
-Lance um percorredor sobre a string.
+Lance o percorredor de contrações sobre a string.
 Percorra.
-Se o segmento final deste percorredor estiver em branco, cancele.
-Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
-Mova o percorredor (englobando tudo).
-Se o target deste first deste segmento inicial deste percorredor não for algum tipo de glom pedaço, posponha o segmento inicial deste percorredor para a segunda string; repita.
-Posponha o segmento inicial deste percorredor para a segunda string usando a terceira string (para expandir contrações).
-Atribua o segmento inicial deste percorredor à terceira string.
+Se o segmento final deste percorredor de contrações estiver em branco, cancele.
+Posicione o segmento inicial deste percorredor de contrações sobre o segmento final deste percorredor de contrações. 
+Mova o percorredor de contrações (englobando tudo).
+Se o target deste first deste segmento inicial deste percorredor de contrações não for algum tipo de glom pedaço, posponha o segmento inicial deste percorredor de contrações para a segunda string; repita.
+Posponha o segmento inicial deste percorredor de contrações para a segunda string usando a terceira string (para expandir contrações).
+Atribua o segmento inicial deste percorredor de contrações à terceira string.
 Repita.
 
 Etapas necessárias para que se reduce uns monikettes por utility use:

@@ -600,6 +600,8 @@ Um número denominado dwReserved1,
 \ Este nome está no formato clássico de nome de arquivo 8.3.
 
 Uma window class é um conjunto com
+\Os dois campos mais importantes na estrutura WNDCLASS são o segundo e o último.
+\Esta estrutura inclui dois campos que são ponteiros para cadeias de caracteres
 \Contém informações de classe de janela. 
 \É usado com as funções RegisterClassEx e GetClassInfoEx.
 \A estrutura WNDCLASSEX é semelhante à estrutura WNDCLASS. 
@@ -612,7 +614,7 @@ Um número denominado cbSize,
 Um número denominado style,
 \ O (s) estilo (s) da classe. 
 \ Este membro pode ser qualquer combinação dos estilos de classe. https://docs.microsoft.com/en-us/windows/desktop/winmsg/about-window-classes
-Um endereço de memória denominado lpfnWndProc,
+Um endereço de memória denominado lpfnWndProc, \O prefixo lpfn significa "ponteiro longo" para uma função.
 \ Um ponteiro para o procedimento da janela.
 \Você deve usar a função CallWindowProc para chamar o procedimento de janela. 
 \Para obter mais informações, consulte https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/ms633573(v=vs.85)
@@ -661,16 +663,14 @@ Um hbrush denominado hbrBackground,
 \ Para determinar se o plano de fundo deve ser pintado, um aplicativo pode processar a mensagem WM_ERASEBKGND https://docs.microsoft.com/en-us/windows/desktop/winmsg/wm-erasebkgnd
 \ ou testar o membro fErase da estrutura PAINTSTRUCT https://docs.microsoft.com/en-us/windows/desktop/api/winuser/ns-winuser-paintstruct
 \ preenchida pela função BeginPaint. https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-beginpaint
-Um endereço de memória denominado lpszMenuName,
+Um endereço de memória denominado lpszMenuName, \O prefixo lpsz é um "ponteiro longo" para uma string terminada em zero (NUL).
 \ Ponteiro para uma cadeia de caracteres terminada em nulo que especifica o nome do recurso do menu da classe, conforme o nome aparece no arquivo de recurso. 
 \ Se você usar um número inteiro para identificar o menu, use a macro MAKEINTRESOURCE. https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-makeintresourcea
 \ Se este membro for NULL, as janelas pertencentes a esta classe não terão menu padrão.
 Um endereço de memória denominado lpszClassName,
-\ Um ponteiro para uma string terminada em nulo ou é um átomo. 
-\Se este parâmetro for um átomo, ele deve ser um átomo de classe criado por uma chamada anterior à função RegisterClass ou RegisterClassEx.  https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-registerclassa
-\O átomo deve estar na palavra de ordem inferior de lpszClassName; a palavra de ordem superior deve ser zero.
-\Se lpszClassName for uma string, ele especifica o nome da classe da janela.  https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-registerclassexa
-\O nome da classe pode ser qualquer nome registrado com RegisterClass ou RegisterClassEx, ou qualquer um dos nomes de classe de controle predefinidos. 
+\ Um ponteiro para uma string terminada em nulo. 
+\Esse campo é o nome do texto da classe da janela.
+\Isso pode ser o que você quiser. Em programas que criam apenas uma janela, o nome da classe da janela é comumente definido como o nome do programa.
 \O comprimento máximo para lpszClassName é 256. 
 \Se lpszClassName for maior que o comprimento máximo, a função RegisterClassEx falhará.
 Um hicon denominado hIconSm.
