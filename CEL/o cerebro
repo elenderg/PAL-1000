@@ -16,12 +16,12 @@
 
 Etapas necessárias para que se avance um percorredor até o próximo espaço:
 Avance o percorredor.
-Se o target deste last deste segmento inicial deste percorredor não for o caractere de espaço, repita.
+Se o conteúdo deste last deste segmento inicial deste percorredor não for o caractere de espaço, repita.
 
 Etapas necessárias para que se recue um percorredor até encontrar o próximo espaço:
 Recue o percorredor.
 Recue o percorredor.
-Se o target deste first deste segmento final deste percorredor não for o caractere de espaço, repita.
+Se o conteúdo deste first deste segmento final deste percorredor não for o caractere de espaço, repita.
 
 Etapas necessárias para que se recue um percorredor por um número:
 Subtraia o número desde o first endereço de memória do pedaço deste segmento inicial deste percorredor.
@@ -141,7 +141,7 @@ Se a categoria deste item for "endereço de pasta", posponha "\" para o designado
 Atribua o endereço da pasta deste item junto com o designador deste item ao endereço completo deste item.
 Extraia a extensão deste item desde o designador deste item como um endereço completo.
 Atribua o nFileSizeLow deste WIN32FINDDATA deste item ao size deste item.
-Se o target deste first deste designador deste item não for o ponto final, cancele.
+Se o conteúdo deste first deste designador deste item não for o ponto final, cancele.
 Obtenha o item (not first time).
 
 Etapas necessárias para que se ajuste um line com um número e um segundo número e um terceiro número e um quarto número:
@@ -263,7 +263,7 @@ Etapas necessárias para que se posponha um pedaço para uma string:
 Atribua a quantidade de caracteres desta string a uma quantidade de caracteres armazenados.
 Reassign o first endereço de memória do pedaço desta string usando a quantidade de caracteres desta string mais 1.
 Atribua o first endereço de memória do pedaço desta string mais a quantidade de caracteres armazenados ao last endereço de memória do pedaço desta string.
-Atribua o pedaço para o target deste last endereço de memória do pedaço desta string.
+Atribua o pedaço para o conteúdo deste last endereço de memória do pedaço desta string.
 
 Etapas necessárias para que se posponha um pedaço para uma string usando uma contagem:
 Isole a contagem.
@@ -639,10 +639,10 @@ Etapas necessárias para que se capitalize uma string:
 Lance um subtexto sobre a string.
 Percorra.
 Se o subtexto estiver em branco, cancele.
-Se o target deste first endereço de memória do pedaço deste subtexto não for irrelevante, pare.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for irrelevante, pare.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
-Uppercase o target deste first endereço de memória do pedaço deste subtexto.
+Uppercase o conteúdo deste first endereço de memória do pedaço deste subtexto.
 
 Etapas necessárias para que se capitalize um text:
 Se o text for inexistente, cancele.
@@ -986,25 +986,53 @@ Intel $8B9D1C000000. \ mov ebx,[ebp+28] \ o número
 Intel $8903. \ mov [ebx],eax
 
 Etapas necessárias para que se compativelmente handle algum tipo de message com um window um message número um w-param e um l-param:
-Se a message for 006, execute algum tipo de wm-activate com o w-param; atribua 0 para EAX; exit.
-Se a message for 258, execute algum tipo de wm-char com o w-param e o l-param; atribua 0 para EAX; exit.
-Se a message for 001, execute algum tipo de wm-create com o window; atribua 0 para EAX; exit.
+Se a message for 006, execute algum tipo de WM-ACTIVATE com o w-param; 
+\Enviado para a janela que está sendo ativada e a janela que está sendo desativada. 
+\Se as janelas usarem a mesma fila de entrada, a mensagem será enviada de forma síncrona, 
+\primeiro para o procedimento de janela da janela de nível superior que está sendo desativada e,
+\em seguida, para o procedimento de janela da janela de nível superior que está sendo ativada. 
+\Se as janelas usarem filas de entrada diferentes, a mensagem será enviada de forma assíncrona, portanto, a janela será ativada imediatamente.
+   atribua 0 para EAX; exit.
+Se a message for 258 [hex 102], execute algum tipo de WM-CHAR com o w-param e o l-param; 
+\ Essa menagem é enviada para a janela com o foco do teclado quando uma mensagem WM_KEYDOWN é traduzida pela função TranslateMessage. 
+\A mensagem WM_CHAR contém o código de caractere da tecla que foi pressionada.
+atribua 0 para EAX; exit.
+Se a message for 001, execute algum tipo de wm-create com o window; 
+\Enviado quando um aplicativo solicita que uma janela seja criada chamando a função CreateWindowEx ou CreateWindow. 
+\(A mensagem é enviada antes de a função retornar.) 
+\O procedimento de janela da nova janela recebe essa mensagem depois que a janela é criada, mas antes que a janela se torne visível.
+\Uma janela recebe essa mensagem por meio de sua função WindowProc.
+atribua 0 para EAX; exit.
 Se a message for 002, execute algum tipo de wm-destroy; atribua 0 para EAX; exit.
-Se a message for 256, execute algum tipo de wm-keydown com o w-param e o l-param; atribua 0 para EAX; exit.
-Se a message for 513, execute algum tipo de wm-lbuttondown com o l-param; atribua 0 para EAX; exit.
-Se a message for 515, execute algum tipo de wm-lbuttondblclk com o l-param; atribua 0 para EAX; exit.
-Se a message for 015, execute algum tipo de wm-paint com o window; atribua 0 para EAX; exit.
-Se a message for 516, execute algum tipo de wm-rbuttondown com o l-param; atribua 0 para EAX; exit.
-Se a message for 518, execute algum tipo de wm-rbuttondblclk com o l-param; atribua 0 para EAX; exit.
-Se a message for 032, execute algum tipo de wm-setcursor; atribua 1 para EAX; exit.
-Se a message for 260, execute algum tipo de wm-syskeydown com o w-param e o l-param; atribua 0 para EAX; exit.
+Se a message for 256 [Hex 100], execute algum tipo de WM-KEYDOWN 
+\Essa menagem é enviada para a janela com o foco do teclado quando uma tecla não pertencente ao sistema é pressionada. 
+\Uma tecla que não é do sistema é aquela que é pressionada quando a tecla ALT não está pressionada.
+com o w-param \O código de tecla virtual da tecla não pertencente ao sistema. Consulte Códigos de teclas virtualis -> https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+e o l-param; \Pode ser a contagem de repetição, um código de varredura, sinalizador de chave estendida, código de contexto, sinalizador de estado-chave anterior e sinalizador de estado de transição,
+\ veja detalhes aqui: https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-keydown
+ atribua 0 para EAX; exit.
+Se a message for 513 [Hex 201], execute algum tipo de WM-LBUTTONDOWN
+\Postado quando o usuário pressiona o botão esquerdo do mouse enquanto o cursor está na área do cliente de uma janela. 
+\Se o mouse não for capturado, a mensagem será postada na janela abaixo do cursor. 
+\Caso contrário, a mensagem é postada na janela que capturou o mouse.
+\Uma janela recebe essa mensagem por meio de sua função WindowProc.
+\ o w-param Indica se as teclas virtuais estão pressionadas ou não, podendo ser mais de uma
+ com o l-param;  \A word de ordem inferior especifica a coordenada x do cursor. A coordenada é relativa ao canto superior esquerdo da área do cliente.
+\A word de ordem superior especifica a coordenada y do cursor. A coordenada é relativa ao canto superior esquerdo da área do cliente.
+ atribua 0 para EAX; exit.
+Se a message for 515 [Hex 203], execute algum tipo de wm-lbuttondblclk com o l-param; atribua 0 para EAX; exit.
+Se a message for 015 [Hex F], execute algum tipo de wm-paint com o window; atribua 0 para EAX; exit.
+Se a message for 516 [Hex 204], execute algum tipo de wm-rbuttondown com o l-param; atribua 0 para EAX; exit.
+Se a message for 518 [Hex 206], execute algum tipo de wm-rbuttondblclk com o l-param; atribua 0 para EAX; exit.
+Se a message for 032 [Hex 20], execute algum tipo de wm-setcursor; atribua 1 para EAX; exit.
+Se a message for 260 [Hex 104], execute algum tipo de wm-syskeydown com o w-param e o l-param; atribua 0 para EAX; exit.
 Call "user32.dll" "DefWindowProcA" com o window e o message e o w-param e o l-param.
 
 Etapas necessárias para que se compativelmente aguarde por um process endereço de memória:
-Call "kernel32.dll" "WaitForSingleObject" com o target deste process endereço de memória e -1 [infinite].
-Call "kernel32.dll" "CloseHandle" com o target deste process endereço de memória.
-Atribua 0 ao target deste process endereço de memória.
-Call "user32.dll" "GetForegroundWindow" devolvendo um window.
+Call "kernel32.dll" "WaitForSingleObject" com o conteúdo deste process endereço de memória e -1 [tTmpo em milisegundos.  O valor -1 informa que a função retornará apenas quando o objeto for sinalizado.].
+Call "kernel32.dll" "CloseHandle" com o conteúdo deste process endereço de memória.
+Atribua 0 ao conteúdo deste process endereço de memória. \ conteúdo = conteúdo
+Call "user32.dll" "GetForegroundWindow" devolvendo uma window.
 Se a window for a main window, atribua 0 para EAX; exit.
 Call "user32.dll" "ShowWindow" com a main window e 6 [sw_minimize].
 Call "user32.dll" "ShowWindow" com a main window e 9 [sw_restore].
@@ -1168,7 +1196,7 @@ Obtenha um outlinetextmetric usando a font destas font larguras.
 Atribua os data desta font larguras a um endereço numérico.
 Percorra.
 Se um contador é past a contagem destas font larguras, pare.
-Converta o target deste endereço numérico para pdf em units usando o otmemsquare deste outlinetextmetric e a font destas font larguras.
+Converta o conteúdo deste endereço numérico para pdf em units usando o otmemsquare deste outlinetextmetric e a font destas font larguras.
 Adicione a magnitude desse número para o endereço numérico.
 Repita.
 
@@ -1194,7 +1222,7 @@ Multiplique o value pela fração.
 Zero fill o value usando o número e posponha it para a string.
 Atribua a quantidade de caracteres desta string menos o número mais 1 a um byte#.
 Insira "." à string antes de o byte#.
-Se o target deste first endereço de memória do pedaço desta string for o ponto final, anteponha "0" para a string.
+Se o conteúdo deste first endereço de memória do pedaço desta string for o ponto final, anteponha "0" para a string.
 Se o detector estiver ativo, anteponha "-" para a string.
 
 Etapas necessárias para que se converta um gpbitmap para um trecho (pdf style):
@@ -1264,10 +1292,10 @@ Se a quantidade de caracteres deste cifra hexadecimal for ímpar, anteponha o núm
 Lance um subtexto sobre o cifra hexadecimal.
 Percorra.
 Se o subtexto estiver em branco, cancele.
-Converta o target deste first endereço de memória do pedaço deste subtexto para uma cifra binária.
+Converta o conteúdo deste first endereço de memória do pedaço deste subtexto para uma cifra binária.
 Desloque a cifra binária left 4 bits.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
-Converta o target deste first endereço de memória do pedaço deste subtexto para uma segunda cifra binária.
+Converta o conteúdo deste first endereço de memória do pedaço deste subtexto para uma segunda cifra binária.
 Disjuncione logicamente a cifra binária com a segunda cifra binária.
 Posponha a cifra binária para o texto hexadecimal.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
@@ -1285,8 +1313,8 @@ Limpe a string.
 Se o pchar for inexistente, cancele.
 Isole o pchar.
 Percorra.
-Se o target deste pchar for o null pedaço, cancele.
-Posponha o target deste pchar para a string.
+Se o conteúdo deste pchar for o null pedaço, cancele.
+Posponha o conteúdo deste pchar para a string.
 Adicione 1 para o pchar.
 Repita.
 
@@ -1335,14 +1363,14 @@ Se o texto de consulta estiver em branco, cancele.
 Lance um subtexto sobre o texto de consulta.
 Percorra.
 Se o subtexto estiver em branco, cancele.
-Se o target deste first endereço de memória do pedaço deste subtexto for o sinal de adição, posponha " " para a string; adicione 1 para o first endereço de memória do pedaço deste subtexto; repita.
-Se o target deste first endereço de memória do pedaço deste subtexto não for o sinal de porcentagem, posponha o target deste first endereço de memória do pedaço deste subtexto para a string; adicione 1 para o first endereço de memória do pedaço deste subtexto; repita.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o sinal de adição, posponha " " para a string; adicione 1 para o first endereço de memória do pedaço deste subtexto; repita.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for o sinal de porcentagem, posponha o conteúdo deste first endereço de memória do pedaço deste subtexto para a string; adicione 1 para o first endereço de memória do pedaço deste subtexto; repita.
 Se a quantidade de caracteres deste subtexto for menor do que 3, cancele.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
-Converta o target deste first endereço de memória do pedaço deste subtexto para uma cifra binária.
+Converta o conteúdo deste first endereço de memória do pedaço deste subtexto para uma cifra binária.
 Desloque a cifra binária left 4 bits.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
-Converta o target deste first endereço de memória do pedaço deste subtexto para uma segunda cifra binária.
+Converta o conteúdo deste first endereço de memória do pedaço deste subtexto para uma segunda cifra binária.
 Disjuncione logicamente a cifra binária com a segunda cifra binária.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Posponha a cifra binária para a string.
@@ -1354,7 +1382,7 @@ Percorra.
 Obtenha uma row desde a rows.
 Se a row for inexistente, cancele.
 Posponha a string deste row para a string.
-Se o target deste last endereço de memória do pedaço desta string é o return pedaço, posponha o linefeed pedaço para a string; repita.
+Se o conteúdo deste last endereço de memória do pedaço desta string é o return pedaço, posponha o linefeed pedaço para a string; repita.
 Repita.
 
 Etapas necessárias para que se converta uns rows para uma string (no linefeed additions):
@@ -1373,7 +1401,7 @@ Percorra.
 Se o first endereço de memória do pedaço deste subtexto for maior do que o last endereço de memória do pedaço desta string, pare.
 Se o last endereço de memória do pedaço deste subtexto é o last endereço de memória do pedaço desta string, pare.
 Obtenha um current largura usando o current byte# e as font larguras desta actual font info.
-Obtenha um original largura usando o target deste last endereço de memória do pedaço deste subtexto e o font larguras desta original font info.
+Obtenha um original largura usando o conteúdo deste last endereço de memória do pedaço deste subtexto e o font larguras desta original font info.
 Atribua o original largura menos o current largura a um offset.
 Se o offset for 0, adicione 1 para o last endereço de memória do pedaço deste subtexto; adicione 1 para o current byte#; repita.
 Converta o subtexto para um pdf string.
@@ -1399,7 +1427,7 @@ Limpe a fração.
 Se a string estiver em branco, cancele.
 Se a string for algum tipo de integer, converta a string para o numerador desta fração; exit.
 Lance um subtexto sobre a string.
-Se o target deste first endereço de memória do pedaço deste subtexto for tipo de sinal aritmético, adicione 1 para o first endereço de memória do pedaço deste subtexto.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for tipo de sinal aritmético, adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Se o subtexto estiver em branco, cancele.
 Split o subtexto a um integer subtexto e uma fração subtexto usando o hífem.
 Se o integer subtexto estiver em branco, atribua o subtexto à fração subtexto.
@@ -1414,14 +1442,14 @@ Se o denominador número for 0, cancele.
 Se o whole número não for 0, adicione o denominador número times o whole número para o numerador número.
 Atribua o numerador número ao numerador desta fração.
 Atribua o denominador número ao denominador desta fração.
-Se o target deste first endereço de memória do pedaço desta string for o hífem, negate a fração.
+Se o conteúdo deste first endereço de memória do pedaço desta string for o hífem, negate a fração.
 
 Etapas necessárias para que se converta uma string para um cifra hexadecimal:
 Limpe o cifra hexadecimal.
 Lance um subtexto sobre a string.
 Percorra.
 Se o subtexto estiver em branco, cancele.
-Converta o target deste first endereço de memória do pedaço deste subtexto para uma segunda cifra hexadecimal.
+Converta o conteúdo deste first endereço de memória do pedaço deste subtexto para uma segunda cifra hexadecimal.
 Posponha a segunda cifra hexadecimal para o cifra hexadecimal.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
@@ -1430,16 +1458,16 @@ Etapas necessárias para que se converta uma string para um número:
 Atribua 0 ao número.
 Lance um subtexto sobre a string.
 Se o subtexto estiver em branco, cancele.
-Se o target deste first endereço de memória do pedaço deste subtexto for tipo de sinal aritmético, adicione 1 para o first endereço de memória do pedaço deste subtexto.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for tipo de sinal aritmético, adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Percorra.
 Se o subtexto estiver em branco, pare.
 Multiplique o número por 10.
-Atribua o target deste first endereço de memória do pedaço deste subtexto a um segundo número.
+Atribua o conteúdo deste first endereço de memória do pedaço deste subtexto a um segundo número.
 Subtraia 48 desde o segundo número.
 Adicione o segundo número para o número.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
-Se o target deste first endereço de memória do pedaço desta string for o hífem, negate o número.
+Se o conteúdo deste first endereço de memória do pedaço desta string for o hífem, negate o número.
 
 Etapas necessárias para que se converta uma string para um número between um segundo número e um terceiro número:
 Converta a string para o número.
@@ -1452,10 +1480,10 @@ Subtraia 1 desde o first endereço de memória do pedaço deste subtexto.
 Percorra.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Se o subtexto estiver em branco, pare.
-Se o target deste first endereço de memória do pedaço deste subtexto for o parênteses esquerdo, posponha "\(" para o pdf string; repita.
-Se o target deste first endereço de memória do pedaço deste subtexto for o parênteses direito, posponha "\)" para o pdf string; repita.
-Se o target deste first endereço de memória do pedaço deste subtexto for a barra invertida, posponha "\\" para o pdf string; repita.
-Posponha o target deste first endereço de memória do pedaço deste subtexto para o pdf string.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o parênteses esquerdo, posponha "\(" para o pdf string; repita.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o parênteses direito, posponha "\)" para o pdf string; repita.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for a barra invertida, posponha "\\" para o pdf string; repita.
+Posponha o conteúdo deste first endereço de memória do pedaço deste subtexto para o pdf string.
 Repita.
 Posponha ")" para o pdf string.
 
@@ -1468,7 +1496,7 @@ Atribua 24 a um contagem de deslocamentos.
 Percorra.
 Se o subtexto estiver em branco, cancele.
 Se o contagem de deslocamentos for menor do que 0, cancele.
-Atribua o target deste first endereço de memória do pedaço deste subtexto a um número.
+Atribua o conteúdo deste first endereço de memória do pedaço deste subtexto a um número.
 Desloque o número left o contagem de deslocamentos.
 Disjuncione logicamente o endereço de memória como um número com o número.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
@@ -1480,7 +1508,7 @@ Limpe o texto de consulta.
 Lance um subtexto sobre a string.
 Percorra.
 Se o subtexto estiver em branco, pare.
-Converta o target deste first endereço de memória do pedaço deste subtexto para um query pedaço.
+Converta o conteúdo deste first endereço de memória do pedaço deste subtexto para um query pedaço.
 Posponha o query pedaço para o texto de consulta.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
@@ -1492,7 +1520,7 @@ Mova o percorredor (text file rules).
 Se o segmento inicial deste percorredor estiver em branco, pare.
 Crie uma row usando o segmento inicial deste percorredor.
 Posponha a row para a rows.
-Se o target deste last endereço de memória do pedaço desta string desta row for o linefeed pedaço, atribua o return pedaço ao target deste last endereço de memória do pedaço desta string desta row. 
+Se o conteúdo deste last endereço de memória do pedaço desta string desta row for o linefeed pedaço, atribua o return pedaço ao conteúdo deste last endereço de memória do pedaço desta string desta row. 
 \ *dahn new para handle lines terminated por just linefeed
 Repita.
 Renumber a rows.
@@ -1506,7 +1534,7 @@ Limpe o wide string.
 Lance um subtexto sobre a string.
 Percorra.
 Se o subtexto estiver em branco, cancele.
-Posponha o target deste first endereço de memória do pedaço deste subtexto para o wide string.
+Posponha o conteúdo deste first endereço de memória do pedaço deste subtexto para o wide string.
 Posponha o null pedaço para o wide string.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
@@ -1764,9 +1792,9 @@ Atribua o original abc endereço de memória a um abc endereço de memória.
 Atribua o data destes font larguras a um endereço numérico.
 Percorra.
 Se um contador é past 256, pare.
-Atribua o abca deste abc endereço de memória ao target deste endereço numérico .
-Adicione o abcb deste abc endereço de memória para o target deste endereço numérico .
-Adicione o abcc deste abc endereço de memória para o target deste endereço numérico .
+Atribua o abca deste abc endereço de memória ao conteúdo deste endereço numérico .
+Adicione o abcb deste abc endereço de memória para o conteúdo deste endereço numérico .
+Adicione o abcc deste abc endereço de memória para o conteúdo deste endereço numérico .
 Adicione a magnitude deste abc para o abc endereço de memória.
 Adicione a magnitude deste número para o endereço numérico.
 Repita.
@@ -2006,7 +2034,7 @@ Atribua a localização endereço de memória deste vértice array a uma localização 
 Percorra.
 Obtenha um vértice desde o vértices.
 Se o vértice for inexistente, cancele.
-Atribua a localização deste vértice ao target desta localização endereço de memória.
+Atribua a localização deste vértice ao conteúdo desta localização endereço de memória.
 Adicione a magnitude desta localização deste vértice para a localização endereço de memória.
 Repita.
 
@@ -2082,7 +2110,7 @@ De-sign o número y deste par de números.
 
 Etapas necessárias para que se de-sign uma string:
 Se a string estiver em branco, cancele.
-Se o target deste first endereço de memória do pedaço desta string for tipo de sinal aritmético, remove o first pedaço desde a string.
+Se o conteúdo deste first endereço de memória do pedaço desta string for tipo de sinal aritmético, remove o first pedaço desde a string.
 
 Um relatório de informações é uma string.
 Um relatório de bugs é uma string.
@@ -2360,7 +2388,7 @@ Lowercase o pedaço.
 Lance um subtexto sobre a string.
 Percorra.
 Se o subtexto estiver em branco, diga não.
-Atribua o target deste first endereço de memória do pedaço deste subtexto a um segundo pedaço.
+Atribua o conteúdo deste first endereço de memória do pedaço deste subtexto a um segundo pedaço.
 Lowercase o segundo pedaço.
 Se o segundo pedaço é o pedaço, diga sim.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
@@ -2443,7 +2471,7 @@ Etapas necessárias para que se determine se um pedaço é uma string:
 Se a quantidade de caracteres desta string não for 1, diga não.
 Isole o pedaço.
 Lowercase o pedaço.
-Atribua o target deste first endereço de memória do pedaço desta string a um segundo pedaço.
+Atribua o conteúdo deste first endereço de memória do pedaço desta string a um segundo pedaço.
 Lowercase o segundo pedaço.
 Se o pedaço for o segundo pedaço, diga sim.
 Diga não.
@@ -2894,7 +2922,7 @@ Diga sim.
 
 Etapas necessárias para que se determine se um endereço completo é endereço da pasta-format:
 Se o endereço completo estiver em branco, diga não.
-Se o target deste last deste endereço completo for a barra invertida, diga sim.
+Se o conteúdo deste last deste endereço completo for a barra invertida, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se um endereço completo é drive-format:
@@ -2914,8 +2942,8 @@ Diga não.
 
 Etapas necessárias para que se determine se um endereço completo é file-format:
 Se o endereço completo estiver em branco, diga não.
-Se o target deste last deste endereço completo for o sinal de dois pontos, diga não.
-Se o target deste last deste endereço completo for a barra invertida, diga não.
+Se o conteúdo deste last deste endereço completo for o sinal de dois pontos, diga não.
+Se o conteúdo deste last deste endereço completo for a barra invertida, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um endereço completo está no sistema de arquivos:
@@ -3019,7 +3047,7 @@ Se a row for inexistente, diga sim.
 Lance um subtexto sobre a string deste row.
 Percorra.
 Se o subtexto estiver em branco, diga sim.
-Se o target deste first endereço de memória do pedaço deste subtexto não for irrelevante, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for irrelevante, diga não.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
 
@@ -3249,13 +3277,13 @@ Diga não.
 Etapas necessárias para que se determine se uma string does start com um pedaço;
 Etapas necessárias para que se determine se uma string começa com um pedaço:
 Se a string estiver em branco, diga não.
-Se o target deste first endereço de memória do pedaço desta string for o pedaço, diga sim.
+Se o conteúdo deste first endereço de memória do pedaço desta string for o pedaço, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma string does end com um pedaço; \ adicionado por Mike Gonta
 Etapas necessárias para que se determine se uma string termina com um pedaço:
 Se a string estiver em branco, diga não.
-Se o target deste last endereço de memória do pedaço desta string for o pedaço, diga sim.
+Se o conteúdo deste last endereço de memória do pedaço desta string for o pedaço, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma string é uma segunda string (accent-free compare):
@@ -3273,8 +3301,8 @@ Etapas necessárias para que se determine se uma string é algum tipo de fração li
 Etapas necessárias para que se determine se uma string é algum tipo de ratio literal:
 Lance um subtexto sobre a string.
 Se o subtexto estiver em branco, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto não for algum tipo de indicador numérico, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto for tipo de sinal aritmético, adicione 1 para o first endereço de memória do pedaço deste subtexto.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for algum tipo de indicador numérico, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for tipo de sinal aritmético, adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Split o subtexto a um numerador subtexto e um denominador subtexto usando o slash pedaço.
 Se o numerador subtexto não for algum tipo de integer literal, diga não.
 Se o denominador subtexto não for algum tipo de integer literal, diga não.
@@ -3284,10 +3312,10 @@ Diga sim.
 \ parece ser uma duplicata da rotina abaixo
 \Lance um subtexto sobre a string.
 \Se o subtexto estiver em branco, diga não.
-\Se o target deste first endereço de memória do pedaço deste subtexto for tipo de sinal aritmético, adicione 1 para o first endereço de memória do pedaço deste subtexto.
+\Se o conteúdo deste first endereço de memória do pedaço deste subtexto for tipo de sinal aritmético, adicione 1 para o first endereço de memória do pedaço deste subtexto.
 \Se o subtexto estiver em branco, diga não.
 \Percorra.
-\Se o target deste first endereço de memória do pedaço deste subtexto não for algum tipo de digit, diga não.
+\Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for algum tipo de digit, diga não.
 \Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 \Se o subtexto estiver em branco, diga sim.
 \Repita.
@@ -3296,10 +3324,10 @@ Etapas necessárias para que se determine se uma string é algum tipo de integer;
 Etapas necessárias para que se determine se uma string é algum tipo de integer literal:
 Lance um subtexto sobre a string.
 Se o subtexto estiver em branco, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto for tipo de sinal aritmético, adicione 1 para o first endereço de memória do pedaço deste subtexto.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for tipo de sinal aritmético, adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Se o subtexto estiver em branco, diga não.
 Percorra.
-Se o target deste first endereço de memória do pedaço deste subtexto não for algum tipo de digit, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for algum tipo de digit, diga não.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Se o subtexto estiver em branco, diga sim.
 Repita.
@@ -3307,8 +3335,8 @@ Repita.
 Etapas necessárias para que se determine se uma string é algum tipo de mixed literal:
 Lance um subtexto sobre a string.
 Se o subtexto estiver em branco, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto não for algum tipo de indicador numérico, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto for tipo de sinal aritmético, adicione 1 para o first endereço de memória do pedaço deste subtexto.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for algum tipo de indicador numérico, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for tipo de sinal aritmético, adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Split o subtexto a um integer subtexto e uma fração subtexto usando o hífem.
 Se o integer subtexto não for algum tipo de integer literal, diga não.
 Se a fração subtexto não for algum tipo de fração literal, diga não.
@@ -3316,7 +3344,7 @@ Diga sim.
 
 Etapas necessárias para que se determine se uma string é algum tipo de numeric literal:
 Se a string estiver em branco, diga não.
-Se o target deste first endereço de memória do pedaço desta string não for algum tipo de indicador numérico, diga não.
+Se o conteúdo deste first endereço de memória do pedaço desta string não for algum tipo de indicador numérico, diga não.
 Se a string é algum tipo de integer literal, diga sim.
 Se a string é algum tipo de fração literal, diga sim.
 Se a string é algum tipo de mixed literal, diga sim.
@@ -3324,7 +3352,7 @@ Diga não.
 
 Etapas necessárias para que se determine se uma string é tipo de sinal aritmético:
 Se a quantidade de caracteres desta string não for 1, diga não.
-Se o target deste first endereço de memória do pedaço desta string é tipo de sinal aritmético, diga sim.
+Se o conteúdo deste first endereço de memória do pedaço desta string é tipo de sinal aritmético, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma string é algum tipo de palavra:
@@ -3334,8 +3362,8 @@ Subtraia 1 desde o first endereço de memória do pedaço deste subtexto.
 Percorra.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Se o subtexto estiver em branco, diga sim.
-Se o target deste first endereço de memória do pedaço deste subtexto for algum tipo de letra, repita.
-Se o target deste first endereço de memória do pedaço deste subtexto for o single-quote pedaço, repita.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for algum tipo de letra, repita.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o single-quote pedaço, repita.
 Diga não.
 
 Etapas necessárias para que se determine se uma string está em branco:
@@ -3355,24 +3383,24 @@ Intel $B800000000. \ mov eax,0
 
 Etapas necessárias para que se determine se uma string é um pedaço:
 Se a quantidade de caracteres desta string não for 1, diga não.
-Se o target deste first endereço de memória do pedaço desta string é o pedaço, diga sim.
+Se o conteúdo deste first endereço de memória do pedaço desta string é o pedaço, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma string é dos-compatible:
 Se a string estiver em branco, diga não.
-Se o target deste first endereço de memória do pedaço desta string é o ponto final, diga não.
+Se o conteúdo deste first endereço de memória do pedaço desta string é o ponto final, diga não.
 Lance um subtexto sobre a string.
 Percorra.
 Se o subtexto estiver em branco, diga sim.
-Se o target deste first endereço de memória do pedaço deste subtexto for o slash pedaço, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto for a barra invertida, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto for o sinal de dois pontos, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto for o asterisco, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto for o ponto de interrogação, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto for as aspas duplas, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto for o símbolo menor do que, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto for o símbolo maior do que, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto for o barra vertical, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o slash pedaço, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for a barra invertida, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o sinal de dois pontos, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o asterisco, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o ponto de interrogação, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for as aspas duplas, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o símbolo menor do que, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o símbolo maior do que, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o barra vertical, diga não.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
 
@@ -3439,8 +3467,8 @@ Diga não.
 Etapas necessárias para que se determine se um subtexto está sobre alguma espécie de contração:
 Atribua o first endereço de memória do pedaço deste subtexto mais 1 a um endereço de memória do pedaço .
 Se o endereço de memória do pedaço for maior do que o last endereço de memória do pedaço deste subtexto, diga não.
-Se o target deste first endereço de memória do pedaço deste subtexto não for o single-quote pedaço, diga não.
-Se o target deste endereço de memória do pedaço não for algum tipo de letra, diga não.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for o single-quote pedaço, diga não.
+Se o conteúdo deste endereço de memória do pedaço não for algum tipo de letra, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um terminal está full:
@@ -4364,8 +4392,8 @@ Etapas necessárias para que se pinte uma localização com uma cor:
 Converta a cor para um código da cor.
 Call "gdi32.dll" "SetPixelV" com o quadro atual e a coordenada x desta localização e a coordenada y desta localização e o código da cor.
 
-Etapas necessárias para que se pinte um star usando um point contagem e um size:
-Atribua 1 e o point contagem a um fração.
+Etapas necessárias para que se pinte um star usando uma point contagem e um size:
+Atribua 1 e a point contagem a um fração.
 Percorra.
 Vire right 1/48 of o way.
 Pinte o size.
@@ -4571,7 +4599,7 @@ Finalize o printer canvas.
 
 Etapas necessárias para que se end printing (pdf style):
 Se o documento detector deste pdf state não estiver ativo, cancele.
-End printing o target deste pdf endereço de memória deste pdf state.
+End printing o conteúdo deste pdf endereço de memória deste pdf state.
 
 Etapas necessárias para que se end printing um pdf:
 End printing o pdf (finish o parent).
@@ -4824,10 +4852,10 @@ Lance um endereço completo subtexto sobre o endereço completo.
 Adicione a quantidade de caracteres desta unidade de disco para o first deste endereço completo subtexto.
 Se o endereço completo subtexto estiver em branco, atribua o unidade de disco ao designador; exit.
 Lance um subtexto sobre o last pedaço of o endereço completo subtexto.
-Se o target deste first endereço de memória do pedaço deste subtexto for a barra invertida, subtraia 1 desde o first endereço de memória do pedaço deste subtexto.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for a barra invertida, subtraia 1 desde o first endereço de memória do pedaço deste subtexto.
 Percorra.
 Se o first endereço de memória do pedaço deste subtexto for menor do que o first deste endereço completo subtexto, pare.
-Se o target deste first endereço de memória do pedaço deste subtexto for a barra invertida, pare.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for a barra invertida, pare.
 Subtraia 1 desde o first endereço de memória do pedaço deste subtexto.
 Repita.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
@@ -4840,10 +4868,10 @@ Se o unidade de disco estiver em branco, cancele.
 Lance um subtexto sobre o endereço completo.
 Adicione a quantidade de caracteres desta unidade de disco para o first endereço de memória do pedaço deste subtexto.
 Se o subtexto estiver em branco, cancele.
-Se o target deste last endereço de memória do pedaço deste subtexto for a barra invertida, subtraia 1 desde o last endereço de memória do pedaço deste subtexto.
+Se o conteúdo deste last endereço de memória do pedaço deste subtexto for a barra invertida, subtraia 1 desde o last endereço de memória do pedaço deste subtexto.
 Percorra.
 Se o subtexto estiver em branco, pare.
-Se o target deste last endereço de memória do pedaço deste subtexto for a barra invertida, pare.
+Se o conteúdo deste last endereço de memória do pedaço deste subtexto for a barra invertida, pare.
 Subtraia 1 desde o last endereço de memória do pedaço deste subtexto.
 Repita.
 Atribua a unidade de disco junto com o subtexto ao endereço da pasta.
@@ -4868,7 +4896,7 @@ Se o subtexto não começa com "\\", cancele.
 Lance o subtexto sobre o first pedaço of o endereço completo.
 Percorra.
 Se o last endereço de memória do pedaço deste subtexto for maior do que o last deste endereço completo, cancele.
-Se o target deste last endereço de memória do pedaço deste subtexto for a barra invertida, adicione 1 para uma contagem.
+Se o conteúdo deste last endereço de memória do pedaço deste subtexto for a barra invertida, adicione 1 para uma contagem.
 Se a contagem for 4, pare. \ "\\computer\share\"
 Adicione 1 para o last endereço de memória do pedaço deste subtexto.
 Repita.
@@ -4880,9 +4908,9 @@ Se o endereço completo estiver em branco, cancele.
 Lance um subtexto sobre o last pedaço of o endereço completo.
 Percorra.
 Se o first endereço de memória do pedaço deste subtexto for menor do que o first deste endereço completo, cancele.
-Se o target deste first endereço de memória do pedaço deste subtexto for o sinal de dois pontos, cancele.
-Se o target deste first endereço de memória do pedaço deste subtexto for a barra invertida, cancele.
-Se o target deste first endereço de memória do pedaço deste subtexto for o ponto final, pare.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o sinal de dois pontos, cancele.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for a barra invertida, cancele.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o ponto final, pare.
 Subtraia 1 desde o first endereço de memória do pedaço deste subtexto.
 Repita.
 Atribua o subtexto ao extensão.
@@ -4932,7 +4960,7 @@ Se a row for inexistente, cancele.
 Lance um subtexto sobre algum tipo de pedaços selecionados na row of o text.
 Se o subtexto estiver em branco, repita.
 Posponha o subtexto para a string.
-Se o target deste last endereço de memória do pedaço deste subtexto for o return pedaço, posponha o linefeed pedaço para a string.
+Se o conteúdo deste last endereço de memória do pedaço deste subtexto for o return pedaço, posponha o linefeed pedaço para a string.
 Repita.
 
 Etapas necessárias para que se face algum tipo de way you want;
@@ -5359,15 +5387,15 @@ Etapas necessárias para que se obtenha um abca e um abcc usando uma string e um 
 Atribua 0 ao abca.
 Atribua 0 ao abcc.
 Se a quantidade de caracteres desta string for menor do que 1, cancele.
-Call "gdi32.dll" "GetCharABCWidthsA" com o canvas e o target deste first endereço de memória do pedaço desta string e o target deste first endereço de memória do pedaço desta string e o endereçamento desse abc.
+Call "gdi32.dll" "GetCharABCWidthsA" com o canvas e o conteúdo deste first endereço de memória do pedaço desta string e o conteúdo deste first endereço de memória do pedaço desta string e o endereçamento desse abc.
 Atribua o abca deste abc ao abca.
-Call "gdi32.dll" "GetCharABCWidthsA" com o canvas e o target deste last endereço de memória do pedaço desta string e o target deste last endereço de memória do pedaço desta string e o endereçamento desse segunda abc.
+Call "gdi32.dll" "GetCharABCWidthsA" com o canvas e o conteúdo deste last endereço de memória do pedaço desta string e o conteúdo deste last endereço de memória do pedaço desta string e o endereçamento desse segunda abc.
 Atribua o abcc desta segunda abc ao abcc.
 
 Etapas necessárias para que se obtenha um abca usando uma string e um canvas:
 Atribua 0 ao abca.
 Se a quantidade de caracteres desta string for menor do que 1, cancele.
-Call "gdi32.dll" "GetCharABCWidthsA" com o canvas e o target deste first endereço de memória do pedaço desta string e o target deste first endereço de memória do pedaço desta string e o endereçamento desse abc.
+Call "gdi32.dll" "GetCharABCWidthsA" com o canvas e o conteúdo deste first endereço de memória do pedaço desta string e o conteúdo deste first endereço de memória do pedaço desta string e o endereçamento desse abc.
 Atribua o abca deste abc ao abca.
 
 Etapas necessárias para que se obtenha uns addrinfo routines:
@@ -5435,7 +5463,7 @@ Se o bucket# for 0, cancele.
 Adicione 5381 para o bucket#.
 Lance um subtexto sobre a string.
 Percorra.
-Atribua o target deste first endereço de memória do pedaço deste subtexto a um pedaço.
+Atribua o conteúdo deste first endereço de memória do pedaço deste subtexto a um pedaço.
 Lowercase o pedaço.
 Atribua o bucket# a um número.
 Desloque o bucket# left 5 bits.
@@ -5449,12 +5477,12 @@ Divida o bucket# pela contagem de buckets deste catálogo usando um quotient e o 
 
 Etapas necessárias para que se obtenha um pedaço desde uma string:
 Se a string estiver em branco, atribua o null pedaço ao pedaço; exit.
-Atribua o target deste first endereço de memória do pedaço desta string ao pedaço.
+Atribua o conteúdo deste first endereço de memória do pedaço desta string ao pedaço.
 Remove o first pedaço desde a string.
 
 Etapas necessárias para que se obtenha um pedaço desde uma string (backwards):
 Se a string estiver em branco, atribua o null pedaço ao pedaço; exit.
-Atribua o target deste last endereço de memória do pedaço desta string ao pedaço.
+Atribua o conteúdo deste last endereço de memória do pedaço desta string ao pedaço.
 Remove o last pedaço desde a string.
 
 Etapas necessárias para que se obtenha um center localização usando uma localização e uma segunda localização:
@@ -5477,7 +5505,7 @@ Percorra.
 Se o last endereço de memória do pedaço deste subtexto é o last endereço de memória do pedaço desta string desta row, pare.
 Obtenha um largura usando o subtexto e o memory canvas.
 Adicione o start largura para o largura.
-Obtenha uma segunda largura usando o target deste last endereço de memória do pedaço deste subtexto e o memory canvas.
+Obtenha uma segunda largura usando o conteúdo deste last endereço de memória do pedaço deste subtexto e o memory canvas.
 Divida a segunda largura por 2.
 Subtraia a segunda largura desde o largura.
 Se a coordenada x desta localização for menor do que o largura, pare.
@@ -5645,7 +5673,7 @@ Crie o número da fonte of o memory canvas usando o font.
 Call "gdi32.dll" "GetOutlineTextMetricsA" com o memory canvas e 0 e 0 devolvendo um result número.
 Assign um poutlinetextmetric usando o result.
 Call "gdi32.dll" "GetOutlineTextMetricsA" com o memory canvas e o result e o poutlinetextmetric.
-Atribua o target deste poutlinetextmetric ao outlinetextmetric.
+Atribua o conteúdo deste poutlinetextmetric ao outlinetextmetric.
 Destrua o número da fonte of o quadro atual.
 Unassign o poutlinetextmetric.
 
@@ -5788,7 +5816,7 @@ Atribua 6 [ipproto_tcp] ao ai_protocol deste addrinfo.
 Call o getaddrinfo destas addrinfo routines com o first deste host string e 0 e o endereçamento deste addrinfo e o endereçamento desse addrinfoptr devolvendo um result número.
 Se o result número não for 0, atribua "Não foi possível encontrar o nome do seguinte anfitrião (host): " junto com o host seguido de "." ao erro do fluxo de entrada/saída; exit.
 Se o addrinfoptr for inexistente, atribua "Não foi possível encontrar o nome do seguinte anfitrião (host): " junto com o host seguido de "." ao erro do fluxo de entrada/saída; exit.
-Atribua o target deste ai_addr deste addrinfoptr ao sockaddr.
+Atribua o conteúdo deste ai_addr deste addrinfoptr ao sockaddr.
 Call o freeaddrinfo destas addrinfo routines com o addrinfoptr.
 
 Etapas necessárias para que se obtenha uma localização usando uma position e um text:
@@ -5875,7 +5903,7 @@ Etapas necessárias para que se obtenha um largura usando um número e uns font la
 Se o font larguras são nil, limpe o largura; exit.
 Atribua o data destes font larguras a um endereço numérico.
 Adicione o número times a magnitude deste número para o endereço numérico.
-Atribua o target deste endereço numérico ao largura.
+Atribua o conteúdo deste endereço numérico ao largura.
 
 Etapas necessárias para que se obtenha um largura usando uma string e um canvas:
 \ assumes font é already selecionado em canvas
@@ -6541,10 +6569,10 @@ Lance um subtexto sobre a string.
 Percorra.
 Skip algum tipo de leading noise no subtexto.
 Se a quantidade de caracteres deste subtexto for menor do que 2, cancele.
-Atribua o target deste first endereço de memória do pedaço deste subtexto a um pedaço.
+Atribua o conteúdo deste first endereço de memória do pedaço deste subtexto a um pedaço.
 Atribua o pedaço menos o 'a' minúsculo ao y desse localização.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
-Atribua o target deste first endereço de memória do pedaço deste subtexto ao pedaço.
+Atribua o conteúdo deste first endereço de memória do pedaço deste subtexto ao pedaço.
 Atribua o pedaço menos o 'a' minúsculo ao x desta localização.
 Multiplique a localização por 24 px.
 Adicione o x deste center localização menos 299 pixels para o x desta localização.
@@ -6898,9 +6926,14 @@ Call "ole32.dll" "CoCreateInstance" com o endereçamento deste clsid e 0 e 7 [cls
 Etapas necessárias para que se inicialize a window: \\ para inicializar a janela
 Atribua a magnitude [tamanho em bytes] dessa window class [estrutura] ao cbsize deste window class.
 Atribua 40 [cs_owndc + cs_dblclks] ao style deste window class.
-Point o lpfnwndproc deste window class para rotina handle algum tipo de message com um window um message número um w-param e um l-param.
-Atribua o número identificador deste module ao hinstance desta window class.
-Atribua o first deste nome deste module ao lpszclassname desta window class.
+\o valor cs_owndc Aloca um contexto de dispositivo exclusivo para cada janela da classe.
+\ o valor cs_dblclks permite que o windows informe ao programa que aquele é um clique duplo (ao invés de dois cliques)
+Point o lpfnWndProc deste window class para rotina handle algum tipo de message com um window um message número um W-Param e um L-Param.
+\ Isso define o procedimento da classe dessa janela como sendo WndProc
+\LPARAM é um typedef para um LONG_PTR que é um número inteiro (32 bits com sinal) em win32 e __int64 (64 bits com sinal) em x86_64.
+\WPARAM é um typedef para um UINT_PTR que é um número sem sinal (32 bits sem sinal) em win32 e __int64 sem sinal (64 bits sem sinal) em x86_64.
+Atribua o número identificador deste module ao hInstance desta window class.
+Atribua o first deste nome deste module ao lpszClassName desta window class.
 Call "user32.dll" "RegisterClassExA" \ Antes de criar uma janela, você deve registrar uma classe pra essa janela chamando a função RegisterClass.
 com o endereçamento deste window class. \Esta função requer um único parâmetro, que é um ponteiro para uma estrutura do tipo WNDCLASS.
 Call "user32.dll" "CreateWindowExA" com 
@@ -7061,8 +7094,8 @@ Mova o caret left para algum tipo de non-noise pedaço no text.
 Se o caret column# deste text for 1, cancele.
 Obtenha uma row usando o número de linhas do cursor deste text e o text.
 Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 2 a um endereço de memória do pedaço .
-Se o target deste endereço de memória do pedaço for alfanumérico, mova o caret left para algum tipo de non-alfanumérico pedaço no text.
-Se o target deste endereço de memória do pedaço não for alfanumérico, mova o caret left para algum tipo de non-symbolic pedaço no text.
+Se o conteúdo deste endereço de memória do pedaço for alfanumérico, mova o caret left para algum tipo de non-alfanumérico pedaço no text.
+Se o conteúdo deste endereço de memória do pedaço não for alfanumérico, mova o caret left para algum tipo de non-symbolic pedaço no text.
 Mova o caret left para algum tipo de non-noise pedaço no text.
 
 Etapas necessárias para que se jump o caret right em um text:
@@ -7071,8 +7104,8 @@ Mova o caret right para algum tipo de non-noise pedaço no text.
 Obtenha uma row usando o número de linhas do cursor deste text e o text.
 Se o caret column# deste text é a quantidade de caracteres desta string desta row, cancele.
 Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 1 a um endereço de memória do pedaço .
-Se o target deste endereço de memória do pedaço é alfanumérico, mova o caret right para algum tipo de non-alfanumérico pedaço no text.
-Se o target deste endereço de memória do pedaço não for alfanumérico, mova o caret right para algum tipo de non-symbolic pedaço no text.
+Se o conteúdo deste endereço de memória do pedaço é alfanumérico, mova o caret right para algum tipo de non-alfanumérico pedaço no text.
+Se o conteúdo deste endereço de memória do pedaço não for alfanumérico, mova o caret right para algum tipo de non-symbolic pedaço no text.
 Mova o caret right para algum tipo de non-noise pedaço no text.
 
 Um key é um número.
@@ -7249,14 +7282,14 @@ Translate o pedaço usando o tabela de caracteres minúsculos ascii .
 
 Etapas necessárias para que se lowercase o character depois de um finger e atribua it para uma string:
 Se o finger for inexistente, cancele.
-Atribua o target deste finger à string.
+Atribua o conteúdo deste finger à string.
 Lowercase a string.
 
 Etapas necessárias para que se lowercase uma string:
 Lance um subtexto sobre a string.
 Percorra.
 Se o subtexto estiver em branco, cancele.
-Lowercase o target deste first endereço de memória do pedaço deste subtexto.
+Lowercase o conteúdo deste first endereço de memória do pedaço deste subtexto.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
 
@@ -7427,7 +7460,7 @@ Obtenha uma row usando o anchor número da linha deste text e o text.
 Percorra.
 Se o anchor column# deste text for 1, cancele.
 Atribua o first endereço de memória do pedaço desta string desta row mais o anchor column# deste text menos 2 a um endereço de memória do pedaço .
-Se o target deste endereço de memória do pedaço não for alfanumérico, cancele.
+Se o conteúdo deste endereço de memória do pedaço não for alfanumérico, cancele.
 Subtraia 1 desde o anchor column# deste text.
 Repita.
 
@@ -7534,7 +7567,7 @@ Obtenha uma row usando o número de linhas do cursor deste text e o text.
 Percorra.
 Se o caret column# deste text for 1, cancele.
 Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 2 a um endereço de memória do pedaço .
-Se o target deste endereço de memória do pedaço não for alfanumérico, cancele.
+Se o conteúdo deste endereço de memória do pedaço não for alfanumérico, cancele.
 Subtraia 1 desde o caret column# deste text.
 Repita.
 
@@ -7544,7 +7577,7 @@ Obtenha uma row usando o número de linhas do cursor deste text e o text.
 Percorra.
 Se o caret column# deste text for 1, cancele.
 Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 2 a um endereço de memória do pedaço .
-Se o target deste endereço de memória do pedaço não for irrelevante, cancele.
+Se o conteúdo deste endereço de memória do pedaço não for irrelevante, cancele.
 Subtraia 1 desde o caret column# deste text.
 Repita.
 
@@ -7554,7 +7587,7 @@ Obtenha uma row usando o número de linhas do cursor deste text e o text.
 Percorra.
 Se o caret column# deste text for 1, cancele.
 Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 2 a um endereço de memória do pedaço .
-Se o target deste endereço de memória do pedaço não for symbolic, cancele.
+Se o conteúdo deste endereço de memória do pedaço não for symbolic, cancele.
 Subtraia 1 desde o caret column# deste text.
 Repita.
 
@@ -7569,7 +7602,7 @@ Obtenha uma row usando o número de linhas do cursor deste text e o text.
 Percorra.
 Se o caret column# deste text é a quantidade de caracteres desta string desta row, cancele.
 Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 1 a um endereço de memória do pedaço .
-Se o target deste endereço de memória do pedaço não for alfanumérico, cancele.
+Se o conteúdo deste endereço de memória do pedaço não for alfanumérico, cancele.
 Adicione 1 para o caret column# deste text.
 Repita.
 
@@ -7579,7 +7612,7 @@ Obtenha uma row usando o número de linhas do cursor deste text e o text.
 Percorra.
 Se o caret column# deste text é a quantidade de caracteres desta string desta row, cancele.
 Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 1 a um endereço de memória do pedaço .
-Se o target deste endereço de memória do pedaço não for irrelevante, cancele.
+Se o conteúdo deste endereço de memória do pedaço não for irrelevante, cancele.
 Adicione 1 para o caret column# deste text.
 Repita.
 
@@ -7589,7 +7622,7 @@ Obtenha uma row usando o número de linhas do cursor deste text e o text.
 Percorra.
 Se o caret column# deste text é a quantidade de caracteres desta string desta row, cancele.
 Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 1 a um endereço de memória do pedaço .
-Se o target deste endereço de memória do pedaço não for symbolic, cancele.
+Se o conteúdo deste endereço de memória do pedaço não for symbolic, cancele.
 Adicione 1 para o caret column# deste text.
 Repita.
 
@@ -7762,16 +7795,16 @@ Posicione o segmento inicial deste percorredor sobre o segmento final deste perc
 Percorra.
 Se o segmento final deste percorredor estiver em branco, cancele.
 Avance o percorredor.
-Se o target deste first deste segmento final deste percorredor for irrelevante, cancele.
+Se o conteúdo deste first deste segmento final deste percorredor for irrelevante, cancele.
 Repita.
 
 Etapas necessárias para que se mova um percorredor (quoted string rules):
 Avance o percorredor.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Se o target deste first deste segmento final deste percorredor não for as aspas duplas, repita.
+Se o conteúdo deste first deste segmento final deste percorredor não for as aspas duplas, repita.
 Se o first deste segmento final deste percorredor é o last deste segmento final deste percorredor, avance o percorredor; exit.
 Avance o percorredor.
-Se o target deste first deste segmento final deste percorredor não for as aspas duplas, cancele.
+Se o conteúdo deste first deste segmento final deste percorredor não for as aspas duplas, cancele.
 Repita.
 
 Etapas necessárias para que se mova um percorredor (spell checking rules):
@@ -7781,29 +7814,29 @@ Percorra.
 Se o segmento final deste percorredor estiver em branco, cancele.
 Avance o percorredor.
 Se o segmento final deste percorredor está sobre alguma espécie de contração, avance o percorredor; repita.
-Se o target deste first deste segmento final deste percorredor não for alfanumérico, cancele.
+Se o conteúdo deste first deste segmento final deste percorredor não for alfanumérico, cancele.
 Repita.
 
 Etapas necessárias para que se mova um percorredor (text file rules):
 Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 Percorra.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Se o target deste first deste segmento final deste percorredor for o return pedaço, avance o percorredor; break.
-Se o target deste first deste segmento final deste percorredor for o linefeed pedaço, avance o percorredor; exit. \ *dahn new para handle lines terminated por just linefeed
+Se o conteúdo deste first deste segmento final deste percorredor for o return pedaço, avance o percorredor; break.
+Se o conteúdo deste first deste segmento final deste percorredor for o linefeed pedaço, avance o percorredor; exit. \ *dahn new para handle lines terminated por just linefeed
 Avance o percorredor.
 Repita.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Se o target deste first deste segmento final deste percorredor for o linefeed pedaço, adicione 1 para o first deste segmento final deste percorredor.
+Se o conteúdo deste first deste segmento final deste percorredor for o linefeed pedaço, adicione 1 para o first deste segmento final deste percorredor.
 
 Etapas necessárias para que se mova um percorredor (word wrapping rules):
 Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Se o target deste first deste segmento final deste percorredor for o return pedaço, avance o percorredor; exit.
+Se o conteúdo deste first deste segmento final deste percorredor for o return pedaço, avance o percorredor; exit.
 Percorra.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Se o target deste first deste segmento final deste percorredor for o return pedaço, cancele.
+Se o conteúdo deste first deste segmento final deste percorredor for o return pedaço, cancele.
 Se o segmento inicial deste percorredor estiver em branco, avance o percorredor; repita.
-Se o target deste first deste segmento final deste percorredor for like o target deste last deste segmento inicial deste percorredor, avance o percorredor; repita.
+Se o conteúdo deste first deste segmento final deste percorredor for like o conteúdo deste last deste segmento inicial deste percorredor, avance o percorredor; repita.
 
 Etapas necessárias para que se mova um percorredor usando uma caixa (word wrapping rules):
 Skip algum tipo de leading linefeed pedaço no segmento final deste percorredor.
@@ -7814,8 +7847,8 @@ Percorra.
 Se o segmento final deste percorredor estiver em branco, cancele.
 Mova a segundo percorredor (word wrapping rules).
 Se o segmento inicial desta segundo percorredor estiver em branco, cancele.
-Se o target deste first deste segmento inicial desta segundo percorredor for o return pedaço, avance o percorredor; exit.
-Se o target deste first deste segmento inicial desta segundo percorredor for whitespace, avance o percorredor pelo quantidade de caracteres deste segmento inicial desta segundo percorredor; repita.
+Se o conteúdo deste first deste segmento inicial desta segundo percorredor for o return pedaço, avance o percorredor; exit.
+Se o conteúdo deste first deste segmento inicial desta segundo percorredor for whitespace, avance o percorredor pelo quantidade de caracteres deste segmento inicial desta segundo percorredor; repita.
 Se o segmento inicial deste percorredor estiver em branco, avance o percorredor pelo quantidade de caracteres deste segmento inicial desta segundo percorredor; repita.
 Se o segmento inicial deste percorredor junto com o segmento inicial desta segundo percorredor forem wider do que a caixa, cancele.
 Avance o percorredor pelo quantidade de caracteres deste segmento inicial desta segundo percorredor.
@@ -7825,7 +7858,7 @@ Etapas necessárias para que se mova um percorredor usando um separator pedaço:
 Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 Percorra.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Se o target deste first deste segmento final deste percorredor for o separator pedaço, adicione 1 para o first deste segmento final deste percorredor; exit.
+Se o conteúdo deste first deste segmento final deste percorredor for o separator pedaço, adicione 1 para o first deste segmento final deste percorredor; exit.
 Avance o percorredor.
 Repita.
 
@@ -8137,7 +8170,7 @@ Atribua a quantidade de caracteres desta string a uma quantidade de caracteres a
 Reassign o first endereço de memória do pedaço desta string usando a quantidade de caracteres armazenados mais 1.
 Atribua o first endereço de memória do pedaço desta string mais a quantidade de caracteres armazenados menos 1 ao last endereço de memória do pedaço desta string.
 Atribua o last endereço de memória do pedaço desta string mais 1 a um endereço de memória do pedaço .
-Atribua o null pedaço ao target deste endereço de memória do pedaço.
+Atribua o null pedaço ao conteúdo deste endereço de memória do pedaço.
 
 Etapas necessárias para que se modifique através do caractere NUL um wide string:
 Atribua a quantidade de caracteres deste wide string a uma quantidade de caracteres armazenados.
@@ -8190,8 +8223,8 @@ Percorra.
 Obtenha uma row desde as rows deste text.
 Se a row for inexistente, cancele.
 Se a row of o text não estiver selecionado, repita.
-Se o target deste first endereço de memória do pedaço desta string desta row for o caractere de espaço, remove o first pedaço desde a string deste row.
-Se o target deste first endereço de memória do pedaço desta string desta row for o caractere de espaço, remove o first pedaço desde a string deste row.
+Se o conteúdo deste first endereço de memória do pedaço desta string desta row for o caractere de espaço, remove o first pedaço desde a string deste row.
+Se o conteúdo deste first endereço de memória do pedaço desta string desta row for o caractere de espaço, remove o first pedaço desde a string deste row.
 Repita.
 
 Etapas necessárias para que se outdent uma caixa uns twips;
@@ -8708,7 +8741,7 @@ Atribua a quantidade de caracteres desta string a uma quantidade de caracteres a
 Reassign o first endereço de memória do pedaço desta string usando a quantidade de caracteres desta string mais 1.
 Copie pedaços desde o first endereço de memória do pedaço desta string para o first endereço de memória do pedaço desta string mais 1 pelo quantidade de caracteres armazenados.
 Atribua o first endereço de memória do pedaço desta string mais a quantidade de caracteres armazenados ao last endereço de memória do pedaço desta string.
-Atribua o pedaço ao target deste first endereço de memória do pedaço desta string.
+Atribua o pedaço ao conteúdo deste first endereço de memória do pedaço desta string.
 
 Etapas necessárias para que se anteponha uma string para uma segunda string:
 Atribua a quantidade de caracteres desta segunda string mais a quantidade de caracteres desta string a uma quantidade de caracteres agrupados.
@@ -8906,7 +8939,7 @@ Intel $8903. \ mov [ebx],eax
 Etapas necessárias para que se atribua um pedaço para uma string:
 Atribua 1 a uma quantidade de caracteres.
 Reassign o first endereço de memória do pedaço desta string usando a quantidade de caracteres.
-Atribua o pedaço ao target deste first endereço de memória do pedaço desta string.
+Atribua o pedaço ao conteúdo deste first endereço de memória do pedaço desta string.
 Atribua o first endereço de memória do pedaço desta string ao last endereço de memória do pedaço desta string.
 
 Etapas necessárias para que se atribua um pedaço para um wyrd:
@@ -8917,7 +8950,7 @@ Intel $668903. \ mov [ebx],ah
 
 Etapas necessárias para que se atribua o character depois de um finger para um character:
 Se o finger for inexistente, limpe o character; exit.
-Atribua o target deste finger ao character.
+Atribua o conteúdo deste finger ao character.
 
 Etapas necessárias para que se atribua uma cor para uma segunda cor:
 Atribua a matiz desta cor à matiz desta segunda cor.
@@ -9013,7 +9046,7 @@ Se o font larguras forem inexistente, cancele.
 Atribua o data destes font larguras a um endereço numérico.
 Percorra.
 Se um contador é past a contagem destas font larguras, pare.
-Posponha o target deste endereço numérico seguido de " " para o trecho.
+Posponha o conteúdo deste endereço numérico seguido de " " para o trecho.
 Adicione 1 para uma contagem.
 Se a contagem for uniformemente divisível por 16, posponha o texto CRLF para o trecho.
 Adicione a magnitude desse número para o endereço numérico.
@@ -9408,7 +9441,7 @@ Atribua o endereço de memória ao first desta segunda string.
 Atribua o first desta segunda string mais a quantidade de caracteres armazenados menos 1 ao last desta segunda string.
 
 Etapas necessárias para que se atribua uma string para uma letra:
-Atribua o target deste first endereço de memória do pedaço desta string à letra.
+Atribua o conteúdo deste first endereço de memória do pedaço desta string à letra.
 
 Etapas necessárias para que se atribua uma string para um text:
 Se o text for inexistente, cancele.
@@ -9682,8 +9715,8 @@ Atribua as aspas duplas a uma segunda string.
 Lance um subtexto sobre a string.
 Percorra.
 Se o subtexto estiver em branco, pare.
-Posponha o target deste first endereço de memória do pedaço deste subtexto para a segunda string.
-Se o target deste first endereço de memória do pedaço deste subtexto for as aspas duplas, posponha as aspas duplas para a segunda string.
+Posponha o conteúdo deste first endereço de memória do pedaço deste subtexto para a segunda string.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for as aspas duplas, posponha as aspas duplas para a segunda string.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
 Posponha as aspas duplas para a segunda string.
@@ -9737,7 +9770,7 @@ Repita.
 Etapas necessárias para que se read um pedaço desde um console:
 Read uma string desde o console.
 Se a string estiver em branco, atribua o null pedaço ao pedaço; exit.
-Atribua o target deste first endereço de memória do pedaço desta string ao pedaço.
+Atribua o conteúdo deste first endereço de memória do pedaço desta string ao pedaço.
 
 Etapas necessárias para que se read um console para uma string:
 Se o console for inexistente, limpe a string; exit.
@@ -10004,17 +10037,17 @@ Desvencilhe-se de o text.
 
 Etapas necessárias para que se remove algum tipo de trailing barra invertida desde uma string:
 Se a string estiver em branco, cancele.
-Se o target deste last endereço de memória do pedaço desta string não for a barra invertida, cancele.
+Se o conteúdo deste last endereço de memória do pedaço desta string não for a barra invertida, cancele.
 Remove o last pedaço desde a string.
 
 Etapas necessárias para que se remove algum tipo de trailing linefeed pedaço desde uma string:
 Se a string estiver em branco, cancele.
-Se o target deste last endereço de memória do pedaço desta string não for o linefeed pedaço, cancele.
+Se o conteúdo deste last endereço de memória do pedaço desta string não for o linefeed pedaço, cancele.
 Remove o last pedaço desde a string.
 
 Etapas necessárias para que se remove algum tipo de trailing return pedaço desde uma string:
 Se a string estiver em branco, cancele.
-Se o target deste last endereço de memória do pedaço desta string não for o return pedaço, cancele.
+Se o conteúdo deste last endereço de memória do pedaço desta string não for o return pedaço, cancele.
 Remove o last pedaço desde a string.
 
 Etapas necessárias para que se remova pedaços de uma string usando um subtexto:
@@ -10096,7 +10129,7 @@ Remova pedaços de a string usando o subtexto.
 Etapas necessárias para que se remove leading noise desde uma string;
 Etapas necessárias para que se remove algum tipo de leading noise desde uma string:
 Se a string estiver em branco, cancele.
-Se o target deste first endereço de memória do pedaço desta string não for irrelevante, cancele.
+Se o conteúdo deste first endereço de memória do pedaço desta string não for irrelevante, cancele.
 Remove o first pedaço desde a string.
 Repita.
 
@@ -10135,7 +10168,7 @@ Remova pedaços de a string usando o subtexto.
 Etapas necessárias para que se remove trailing noise desde uma string;
 Etapas necessárias para que se remove algum tipo de trailing noise desde uma string:
 Se a string estiver em branco, cancele.
-Se o target deste last endereço de memória do pedaço desta string não for irrelevante, cancele.
+Se o conteúdo deste last endereço de memória do pedaço desta string não for irrelevante, cancele.
 Remove o last pedaço desde a string.
 Repita.
 
@@ -10162,8 +10195,8 @@ Etapas necessárias para que se replace um pedaço com um segundo pedaço em uma st
 Lance um subtexto sobre a string.
 Percorra.
 Se o subtexto estiver em branco, cancele.
-Se o target deste first endereço de memória do pedaço deste subtexto não for o pedaço, adicione 1 para o first endereço de memória do pedaço deste subtexto; repita.
-Atribua o segundo pedaço ao target deste first endereço de memória do pedaço deste subtexto.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for o pedaço, adicione 1 para o first endereço de memória do pedaço deste subtexto; repita.
+Atribua o segundo pedaço ao conteúdo deste first endereço de memória do pedaço deste subtexto.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
 
@@ -11041,18 +11074,18 @@ Um size é uns twips.
 
 Etapas necessárias para que se skip algum tipo de leading linefeed pedaço em um subtexto:
 Se o subtexto estiver em branco, cancele.
-Se o target deste first endereço de memória do pedaço deste subtexto não for o linefeed pedaço, cancele.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for o linefeed pedaço, cancele.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 
 Etapas necessárias para que se skip algum tipo de leading noise em um subtexto:
 Se o subtexto estiver em branco, cancele.
-Se o target deste first endereço de memória do pedaço deste subtexto não for irrelevante, cancele.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for irrelevante, cancele.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
 
 Etapas necessárias para que se skip algum tipo de non-alfanumérico pedaços em um subtexto:
 Se o subtexto estiver em branco, cancele.
-Se o target deste first endereço de memória do pedaço deste subtexto for alfanumérico, cancele.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for alfanumérico, cancele.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
 
@@ -11062,7 +11095,7 @@ Escreva "" sobre o terminal.
 Etapas necessárias para que se skip palavra characters em um subtexto:
 Se o subtexto estiver em branco, cancele.
 Se o subtexto está sobre alguma espécie de contração, adicione 1 para o first endereço de memória do pedaço deste subtexto; repita.
-Se o target deste first endereço de memória do pedaço deste subtexto não for alfanumérico, cancele.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for alfanumérico, cancele.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
 
@@ -11228,7 +11261,7 @@ Atribua o first endereço de memória do pedaço deste subtexto menos 1 ao last end
 Percorra.
 Se o last endereço de memória do pedaço deste subtexto for maior do que o last endereço de memória do pedaço desta string, cancele.
 Adicione 1 para o last endereço de memória do pedaço deste subtexto.
-Se o target deste last endereço de memória do pedaço deste subtexto for o separator pedaço, pare.
+Se o conteúdo deste last endereço de memória do pedaço deste subtexto for o separator pedaço, pare.
 Repita.
 Atribua o first endereço de memória do pedaço deste subtexto ao first deste left.
 Atribua o last endereço de memória do pedaço deste subtexto menos 1 ao last deste left.
@@ -11244,7 +11277,7 @@ Mova o percorredor usando o separator pedaço.
 Adicione o segmento inicial deste percorredor para o conjunto de textos.
 Se o segmento final deste percorredor estiver em branco, pare.
 Repita.
-Se o target deste last endereço de memória do pedaço desta string não for o separator pedaço, cancele.
+Se o conteúdo deste last endereço de memória do pedaço desta string não for o separator pedaço, cancele.
 Adicione "" para o conjunto de textos.
 
 Etapas necessárias para que se split uns coisas para uns left coisas e uns right coisas:
@@ -12069,13 +12102,13 @@ Destrua o hrgn.
 Etapas necessárias para que se remova aspas de uma string:
 Lance um subtexto sobre a string.
 Se o subtexto estiver em branco, pare.
-Se o target deste first endereço de memória do pedaço deste subtexto não for as aspas duplas, cancele.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for as aspas duplas, cancele.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Percorra.
 Se o subtexto estiver em branco, pare.
 Se o first endereço de memória do pedaço deste subtexto é o last endereço de memória do pedaço deste subtexto, pare.
-Posponha o target deste first endereço de memória do pedaço deste subtexto para uma segunda string.
-Se o target deste first endereço de memória do pedaço deste subtexto for as aspas duplas, adicione 1 para o first endereço de memória do pedaço deste subtexto.
+Posponha o conteúdo deste first endereço de memória do pedaço deste subtexto para uma segunda string.
+Se o conteúdo deste first endereço de memória do pedaço deste subtexto for as aspas duplas, adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
 Atribua a segunda string à string.
@@ -12110,14 +12143,14 @@ Intel $8901. \ mov [ecx],eax
 
 Etapas necessárias para que se uppercase o character depois de um finger e atribua it para uma string:
 Se o finger for inexistente, cancele.
-Atribua o target deste finger à string.
+Atribua o conteúdo deste finger à string.
 Uppercase a string.
 
 Etapas necessárias para que se uppercase uma string:
 Lance um subtexto sobre a string.
 Percorra.
 Se o subtexto estiver em branco, cancele.
-Uppercase o target deste first endereço de memória do pedaço deste subtexto.
+Uppercase o conteúdo deste first endereço de memória do pedaço deste subtexto.
 Adicione 1 para o first endereço de memória do pedaço deste subtexto.
 Repita.
 
