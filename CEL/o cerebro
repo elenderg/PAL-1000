@@ -1543,8 +1543,8 @@ Etapas necessárias para que se converta uma string para um wide string e modifiq
 Converta a string para a wide string.
 Modifique através do caractere NUL a wide string.
 
-Etapas necessárias para que se converta uma URL para um URL conjunto:
-Isole o URL.
+Etapas necessárias para que se converta uma URL para uma URL simplificada:
+Isole a URL.
 Modifique através do caractere NUL a URL.
 Atribua a magnitude desses URL_COMPONENTS ao dwStructSize destes URL_COMPONENTS.
 Atribua 1 ao dwSchemeLength destes URL_COMPONENTS.
@@ -1552,11 +1552,11 @@ Atribua 1 ao dwHostNameLength destes URL_COMPONENTS.
 Atribua 1 ao dwUrlPathLength destes URL_COMPONENTS.
 Atribua 1 ao dwExtraInfoLength destes URL_COMPONENTS.
 Call "wininet.dll" "InternetCrackUrlA" com o first desta URL e 0 e 0 e o endereçamento destes URL_COMPONENTS devolvendo um número.
-Converta o lpszScheme destes URL_COMPONENTS e o dwSchemeLength destes URL_COMPONENTS para o scheme string deste URL conjunto.
-Converta o lpszHostName destes URL_COMPONENTS e o dwHostNameLength destes URL_COMPONENTS para o host nome string deste URL conjunto.
-Converta o lpszUrlPath destes URL_COMPONENTS e o dwUrlPathLength destes URL_COMPONENTS para o endereço completo string deste URL conjunto.
-Converta o lpszExtraInfo destes URL_COMPONENTS e o dwExtraInfoLength destes URL_COMPONENTS para a extra string deste URL conjunto.
-Atribua o nPort destes URL_COMPONENTS ao número de porta deste URL conjunto.
+Converta o lpszScheme destes URL_COMPONENTS e o dwSchemeLength destes URL_COMPONENTS para o nome do protocolo desta URL simplificada.
+Converta o lpszHostName destes URL_COMPONENTS e o dwHostNameLength destes URL_COMPONENTS para o nome de host desta URL simplificada.
+Converta o lpszUrlPath destes URL_COMPONENTS e o dwUrlPathLength destes URL_COMPONENTS para o endereço de recurso desta URL simplificada.
+Converta o lpszExtraInfo destes URL_COMPONENTS e o dwExtraInfoLength destes URL_COMPONENTS para a parâmetro de consulta desta URL simplificada.
+Atribua o nPort destes URL_COMPONENTS ao número de porta desta URL simplificada.
 
 Etapas necessárias para que se converta um wyrd para um cifra hexadecimal:
 Split o wyrd a um pedaço e um segundo pedaço.
@@ -1696,13 +1696,13 @@ Uma contagem é um número.
 
 Um contador é um número.
 
-Etapas necessárias para que se crie o connect handle of um winhttp request using um URL conjunto:
+Etapas necessárias para que se crie o connect handle of um winhttp request using uma URL simplificada:
 Se o winhttp request for inexistente, cancele.
-Converta o host nome string deste URL conjunto a um wide string denominado wide host nome e modifique através do caractere NUL.
+Converta o nome de host desta URL simplificada a um wide string denominado wide host nome e modifique através do caractere NUL.
 Call "winhttp.dll" "WinHttpConnect" com 
 o session número identificador desta request deste winhttp
  e o first endereço de memória do pedaço deste wide host nome 
- e o número de porta deste URL conjunto 
+ e o número de porta desta URL simplificada 
  e 0 
  devolvendo o connection número identificador deste winhttp request.
 Se o connection número identificador deste winhttp request for 0, atribua "Erro. Não foi possível estabelecer uma conexão." ao erro do fluxo de entrada/saída; exit.
@@ -1968,11 +1968,11 @@ Aloque memória para o quora.
 Etapas necessárias para que se crie um refer:
 Aloque memória para o refer.
 
-Etapas necessárias para que se crie o request handle of um winhttp request using um URL conjunto:
+Etapas necessárias para que se crie o request handle of um winhttp request using uma URL simplificada:
 Se o winhttp request for inexistente, cancele.
-Converta o endereço completo string deste URL conjunto a um wide string denominado wide endereço completo e modifique através do caractere NUL.
+Converta o endereço de recurso desta URL simplificada a um wide string denominado wide endereço completo e modifique através do caractere NUL.
 Converta "POST" para um wide string denominado wide post string e modifique através do caractere NUL.
-Se o scheme string deste URL conjunto for "https", atribua 8388608 [winhttp_flag_secure] a um secure número.
+Se o nome do protocolo desta URL simplificada for "https", atribua 8388608 [WINHTTP_FLAG_SECURE] a um secure número.
 Call "winhttp.dll" "WinHttpOpenRequest" com 
 o connection número identificador deste winhttp request
     e o first deste wide post string
@@ -2065,12 +2065,12 @@ Atribua a coordenada Y à coordenada y deste vértice.
 
 Etapas necessárias para que se crie um winhttp request por posting para um URL:
 Aloque memória para o winhttp request.
-Converta o URL para um URL conjunto.
+Converta o URL para uma URL simplificada.
 Crie o abra handle of o winhttp request.
 Se o erro do fluxo de entrada/saída não estiver em branco, destrua o winhttp request; exit.
-Crie o connect handle of o winhttp request using o URL conjunto.
+Crie o connect handle of o winhttp request using o URL simplificada.
 Se o erro do fluxo de entrada/saída não estiver em branco, destrua o winhttp request; exit.
-Crie o request handle of o winhttp request using o URL conjunto.
+Crie o request handle of o winhttp request using o URL simplificada.
 Se o erro do fluxo de entrada/saída não estiver em branco, destrua o winhttp request; exit.
 
 O console é um console.
@@ -10595,7 +10595,11 @@ Se o talker for inexistente, cancele.
 Se a string estiver em branco, cancele.
 Converta a string para um wide string.
 Modifique através do caractere NUL a wide string.
-Call o speak desta vtable deste talker com o talker e o first deste wide string e 17 [svsfdefault+svsflagsasyn+svsfisnotxml] e 0.
+Call o speak desta vtable deste talker com 
+o talker 
+e o first deste wide string 
+e 17 [SVSFDefault+SVSFlagsAsync +SVSFIsNotXML] 
+e 0.
 
 Etapas necessárias para que se say uma string e wait;
 Etapas necessárias para que se speak uma string e wait:
@@ -12198,13 +12202,22 @@ Wrap o text.
 An URL é uma string.
 
 Um número de porta é um número.
+Um nome de protocolo é uma string.
+Um nome de host é uma string.
+Um parâmetro de consulta é uma string.
+Um endereço de recurso é uma string.
 
-Um URL conjunto é um conjunto com
-Uma scheme string,
-Uma host nome string,
-Uma endereço completo string,
-Uma extra string,
-Um número de porta. \16 bits geralmente
+Um URL simplificada é um conjunto com
+Uma nome do protocolo,\lpszScheme? dwFlags? 
+\exemplo: http / ftp / https / etc
+Uma nome de host, \lpszHostName ?  
+\exemplo: www.google.com ou mail.stackoverflow.com
+Uma endereço de recurso, \lpszUrlPath?
+\ exemplo: index.html ou /css/style.css ou questions/SubmitQuestion.aspx
+Uma parâmetro de consulta, \lpszExtraInfo?
+\ exemplo: ?useLiveData=1&internal=0
+Um número de porta. \ nPort?
+\números de porca ocupam (geralmente) 16 bits
 
 Etapas necessárias para que se use uma cor:
 Atribua a cor à cor deste context.
@@ -12267,7 +12280,7 @@ Aguarde pela tecla Esc.
 
 Etapas necessárias para que se aguarde until speaking é done:
 Se o talker for inexistente, cancele.
-Call o waituntildone desta vtable deste talker com o talker e -1.
+Call o WaitUntilDone  desta vtable [SpVoice] deste talker com o talker e -1.
 
 Etapas necessárias para que se aguarde until we hit um tecla;
 Etapas necessárias para que se aguarde por uma tecla;
