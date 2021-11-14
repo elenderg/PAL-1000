@@ -1834,7 +1834,7 @@ Etapas necessárias para que se crie um gpbitmap usando um trecho:
 Limpe o erro do fluxo de entrada/saída.
 Call "kernel32.dll" "GlobalAlloc" com 2 [gmem_moveable] e a quantidade de caracteres deste trecho devolvendo um número identificador.
 Call "kernel32.dll" "GlobalLock" com o número identificador devolvendo um endereço de memória.
-Copie pedaços desde o first deste trecho para o endereço de memória pelo quantidade de caracteres deste trecho.
+Copie pedaços desde o first endereço de memória do pedaço deste trecho para o endereço de memória pelo quantidade de caracteres deste trecho.
 Call "kernel32.dll" "GlobalUnlock" com o número identificador.
 Call "ole32.dll" "CreateStreamOnHGlobal" com o número identificador e 1 [true] e o endereçamento desse istream.
 Call "gdiplus.dll" "GdipCreateBitmapFromStream" com o istream e o endereçamento deste gpbitmap devolvendo um número.
@@ -1843,7 +1843,13 @@ Call o release deste vtable deste istream com o istream.
 
 Etapas necessárias para que se crie um gpimageattributes (grayscale):
 Call "gdiplus.dll" "GdipCreateImageAttributes" com o endereçamento destes gpimageattributes.
-Call "gdiplus.dll" "GdipSetImageAttributesColorMatrix" com o gpimageattributes e 0 [coloradjusttypedefault] e 1 And o first deste grayscale cor matrix e 0 e 0 [colormatrixflagsdefault].
+Call "gdiplus.dll" "GdipSetImageAttributesColorMatrix" com 
+o gpimageattributes
+ e 0 [coloradjusttypedefault] 
+ e 1 
+ e o first deste grayscale cor matrix 
+ e 0 
+ e 0 [colormatrixflagsdefault].
 
 Etapas necessárias para que se crie o hbrush of um canvas usando uma cor:
 Converta a cor para um código da cor.
@@ -1934,7 +1940,15 @@ Atribua "Erro. Não foi possível criar a seguinte pasta: " junto com o endereço c
 Etapas necessárias para que se crie um endereço completo no sistema de arquivos (arquivo):
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Call "kernel32.dll" "CreateFileA" com o first deste endereço completo e 1073741824 [generic_write] e 0 e 0 e 1 [create_new] e 128 [file_attribute_normal] e 0 devolvendo um número identificador.
+Call "kernel32.dll" "CreateFileA" com 
+o first deste endereço completo 
+e 1073741824 [generic_write] 
+e 0 
+e 0 
+e 1 [create_new] 
+e 128 [file_attribute_normal] 
+e 0 
+devolvendo um número identificador.
 Call "kernel32.dll" "CloseHandle" com o número identificador.
 Limpe o erro do fluxo de entrada/saída.
 Se o número identificador não for -1 [invalid_handle_value], cancele.
@@ -3680,7 +3694,14 @@ Crie um crypt session usando o passphrase.
 Se o crypt session for inexistente, cancele.
 Converta o trecho como um cifra hexadecimal para um texto hexadecimal.
 Atribua a quantidade de caracteres deste texto hexadecimal a uma quantidade de caracteres.
-Call "advapi32.dll" "CryptDecrypt" com a hcryptkey desta crypt session e 0 e 1 e 0 e o first deste texto hexadecimal And o endereçamento deste quantidade de caracteres devolvendo um result número.
+Call "advapi32.dll" "CryptDecrypt" com 
+a hcryptkey desta crypt session 
+e 0 
+e 1 
+e 0 
+e o first deste texto hexadecimal 
+e o endereçamento deste quantidade de caracteres 
+devolvendo um result número.
 Se o result número for 0, atribua "Ocorreu um erro na hora de tentar decifrar os dados." ao erro do fluxo de entrada/saída; destrua o crypt session; exit.
 Destrua o crypt session.
 Atribua o texto hexadecimal ao trecho.
@@ -4597,12 +4618,14 @@ Posponha o designador deste item para o quarto endereço completo.
 Duplicate o terceiro endereço completo para o quarto endereço completo no sistema de arquivos.
 Repita.
 
-Etapas necessárias para que se duplicate um endereço completo para uma segunda endereço completo no sistema de arquivos (arquivo):
+Etapas necessárias para que se duplicate um endereço completo para um segundo endereço completo no sistema de arquivos (arquivo):
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Isole a segunda endereço completo.
-Modifique através do caractere NUL a segunda endereço completo.
-Call "kernel32.dll" "CopyFileA" com o first deste endereço completo e o first desta segunda endereço completo e 0 devolvendo um número.
+Isole o segundo endereço completo.
+Modifique através do caractere NUL o segundo endereço completo.
+Call "kernel32.dll" "CopyFileA" com 
+o first deste endereço completo 
+e o first deste segundo endereço completo e 0 devolvendo um número.
 Limpe o erro do fluxo de entrada/saída.
 Se o número não for 0, defina o endereço completo para read-write mode; exit.
 Atribua "Ocorreu um erro na hora de duplicar o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
@@ -4627,7 +4650,15 @@ Crie um crypt session usando o passphrase.
 Se o crypt session for inexistente, cancele.
 Atribua o trecho a um temp trecho.
 Atribua a quantidade de caracteres deste temp trecho a uma quantidade de caracteres.
-Call "advapi32.dll" "CryptEncrypt" com a hcryptkey desta crypt session e 0 e 1 e 0 e o first deste temp trecho And o endereçamento deste quantidade de caracteres e a quantidade de caracteres devolvendo um result número.
+Call "advapi32.dll" "CryptEncrypt" com 
+a hcryptkey desta crypt session 
+e 0 
+e 1 
+e 0 
+e o first endereço de memória do pedaço deste temp trecho 
+e o endereçamento deste quantidade de caracteres 
+e a quantidade de caracteres 
+devolvendo um result número.
 Se o result número for 0, atribua "Ocorreu um erro na hora de criptografar os dados." ao erro do fluxo de entrada/saída; destrua o crypt session; exit.
 Destrua o crypt session.
 Converta o temp trecho para um cifra hexadecimal.
@@ -5220,14 +5251,14 @@ Desative o detector.
 Se o text for inexistente, cancele.
 Se a row for inexistente, cancele.
 Lance um percorredor sobre a string deste row.
-Se o número da linha desta row é o número da linha deste find anchor, adicione o column# deste find anchor menos 1 para o first deste segmento final deste percorredor.
-Se o first deste segmento final deste percorredor não for o first endereço de memória do pedaço desta string desta row, skip palavra characters no segmento final deste percorredor.
+Se o número da linha desta row for o número da linha deste find anchor, adicione o column# deste find anchor menos 1 para o first endereço de memória do pedaço deste segmento final deste percorredor.
+Se o first endereço de memória do pedaço deste segmento final deste percorredor não for o first endereço de memória do pedaço desta string desta row, skip palavra characters no segmento final deste percorredor.
 Percorra.
 Mova o percorredor (spell checking rules).
 Se o segmento inicial deste percorredor estiver em branco, cancele.
 Se o segmento inicial deste percorredor não estiver escrito incorretamente, repita.
 Ligue o detector.
-Atribua o first deste segmento inicial deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 1 ao anchor column# deste text.
+Atribua o first endereço de memória do pedaço deste segmento inicial deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 1 ao anchor column# deste text.
 Atribua o número da linha desta row ao anchor número da linha deste text .
 Atribua o last deste segmento inicial deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 2 ao caret column# deste text.
 Atribua o número da linha desta row ao número de linhas do cursor deste text.
@@ -5614,7 +5645,15 @@ Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
 Atribua 512 a uma quantidade de caracteres.
 Reassign o first desse trecho usando a quantidade de caracteres.
-Call "kernel32.dll" "GetVolumeInformationA" com o first deste endereço completo e o first deste trecho e a quantidade de caracteres e 0 e 0 e 0 e 0 e 0 devolvendo um número.
+Call "kernel32.dll" "GetVolumeInformationA" com 
+o first deste endereço completo 
+e o first endereço de memória do pedaço deste trecho
+ e a quantidade de caracteres 
+ e 0 
+ e 0 
+ e 0 
+ e 0 
+ e 0 devolvendo um número.
 Se o número for 0, limpe o nome da unidade de disco; exit.
 Converta o first deste trecho como um pchar para o nome da unidade de disco.
 
@@ -5675,7 +5714,10 @@ Isole o endereço completo.
 Posponha "*.*" para o endereço completo.
 Modifique através do caractere NUL o endereço completo.
 Limpe a categoria deste item.
-Call "kernel32.dll" "FindFirstFileA" com o first deste endereço completo e o endereçamento deste WIN32FINDDATA deste item devolvendo o número identificador deste item.
+Call "kernel32.dll" "FindFirstFileA" com 
+o first deste endereço completo 
+e o endereçamento deste WIN32FINDDATA deste item 
+devolvendo o número identificador deste item.
 Se o número identificador deste item for -1 [invalid_handle_value], cancele.
 Ajuste o item.
 
@@ -5854,7 +5896,11 @@ Se o erro do fluxo de entrada/saída não estiver em branco, cancele.
 Atribua 2 [af_inet] ao ai_family desse addrinfo.
 Atribua 1 [sock_stream] ao ai_sockettype deste addrinfo.
 Atribua 6 [ipproto_tcp] ao ai_protocol deste addrinfo.
-Call o getaddrinfo destas addrinfo routines com o first deste host string e 0 e o endereçamento deste addrinfo e o endereçamento desse addrinfoptr devolvendo um result número.
+Call o getaddrinfo destas addrinfo routines com 
+o first endereço de memória do pedaço desta host string 
+e 0 e o endereçamento deste addrinfo
+ e o endereçamento desse addrinfoptr 
+ devolvendo um result número.
 Se o result número não for 0, atribua "Não foi possível encontrar o nome do seguinte anfitrião (host): " junto com o host seguido de "." ao erro do fluxo de entrada/saída; exit.
 Se o addrinfoptr for inexistente, atribua "Não foi possível encontrar o nome do seguinte anfitrião (host): " junto com o host seguido de "." ao erro do fluxo de entrada/saída; exit.
 Atribua o conteúdo deste ai_addr deste addrinfoptr ao sockaddr.
@@ -6908,15 +6954,22 @@ Etapas necessárias para que se inicialize o module:
 \ temp endereço completo
 Atribua 512 a uma quantidade de caracteres.
 Reassign o first deste temp endereço completo usando a quantidade de caracteres.
-Call "kernel32.dll" "GetTempPathA" com a quantidade de caracteres e o first deste temp endereço completo devolvendo a quantidade de caracteres.
+Call "kernel32.dll" "GetTempPathA" com 
+a quantidade de caracteres 
+e o first deste temp endereço completo 
+devolvendo a quantidade de caracteres.
 Atribua o first deste temp endereço completo mais a quantidade de caracteres menos 1 ao last deste temp endereço completo.
 Modifique através do caractere NUL o temp endereço completo.
 \ module handle
 Call "kernel32.dll" "GetModuleHandleA" com 0 devolvendo o número identificador deste module.
 \ module nome
-Atribua 512 ao quantidade de caracteres.
+Atribua 512 à quantidade de caracteres.
 Reassign o first deste endereço completo deste module usando a quantidade de caracteres.
-Call "kernel32.dll" "GetModuleFileNameA" com o número identificador deste module e o first deste endereço completo deste module e a quantidade de caracteres devolvendo a quantidade de caracteres.
+Call "kernel32.dll" "GetModuleFileNameA" com 
+o número identificador deste module 
+e o first deste endereço completo deste module 
+e a quantidade de caracteres 
+devolvendo a quantidade de caracteres.
 Atribua o first deste endereço completo deste module mais a quantidade de caracteres menos 1 ao last deste endereço completo deste module.
 Se o endereço completo deste module começa com "\\?\", remove leading pedaços desde o endereço completo deste module usando 4.
 Lowercase o endereço completo deste module.
@@ -7021,14 +7074,14 @@ Atribua o first desta segunda subtexto mais o byte# menos 1 ao first desta segun
 Atribua a quantidade de caracteres desta segunda string mais a quantidade de caracteres desta string a uma quantidade de caracteres agrupados.
 Reassign um endereço de memória usando a quantidade de caracteres agrupados.
 Atribua o endereço de memória ao first desse terceiro subtexto.
-Copie pedaços desde o first endereço de memória do pedaço deste subtexto para o first deste terceiro subtexto pelo quantidade de caracteres deste subtexto.
-Adicione a quantidade de caracteres deste subtexto para o first deste terceiro subtexto.
-Copie pedaços desde o first endereço de memória do pedaço desta string para o first deste terceiro subtexto pelo quantidade de caracteres desta string.
-Adicione a quantidade de caracteres desta string para o first deste terceiro subtexto.
-Copie pedaços desde o first desta segunda subtexto para o first deste terceiro subtexto pelo quantidade de caracteres desta segunda subtexto.
-Unassign o first desta segunda string. \ dont use atribua uma string a uma string para prevent extra allocating e copying
+Copie pedaços desde o first endereço de memória do pedaço deste subtexto para o first endereço de memória do pedaço deste terceiro subtexto pelo quantidade de caracteres deste subtexto.
+Adicione a quantidade de caracteres deste subtexto para o first endereço de memória do pedaço deste terceiro subtexto.
+Copie pedaços desde o first endereço de memória do pedaço desta string para o first endereço de memória do pedaço deste terceiro subtexto pelo quantidade de caracteres desta string.
+Adicione a quantidade de caracteres desta string para o first endereço de memória do pedaço deste terceiro subtexto.
+Copie pedaços desde o first endereço de memória do pedaço deste segunda subtexto para o first endereço de memória do pedaço deste terceiro subtexto pelo quantidade de caracteres desta segunda subtexto.
+Unassign o first endereço de memória do pedaço desta segunda string. \ dont use atribua uma string a uma string para prevent extra allocating e copying
 Atribua o endereço de memória ao first desta segunda string.
-Atribua o first desta segunda string mais a quantidade de caracteres agrupados menos 1 ao last desta segunda string.
+Atribua o first endereço de memória do pedaço desta segunda string mais a quantidade de caracteres agrupados menos 1 ao last endereço de memória do pedaço desta segunda string.
 
 Etapas necessárias para que se insira uma string Para um text:
 Se o text for inexistente, cancele.
@@ -7836,16 +7889,16 @@ Posicione o segmento inicial deste percorredor sobre o segmento final deste perc
 Percorra.
 Se o segmento final deste percorredor estiver em branco, cancele.
 Avance o percorredor.
-Se o conteúdo deste first deste segmento final deste percorredor for irrelevante, cancele.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for irrelevante, cancele.
 Repita.
 
 Etapas necessárias para que se mova um percorredor (quoted string rules):
 Avance o percorredor.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Se o conteúdo deste first deste segmento final deste percorredor não for as aspas duplas, repita.
-Se o first deste segmento final deste percorredor é o last deste segmento final deste percorredor, avance o percorredor; exit.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor não for as aspas duplas, repita.
+Se o first endereço de memória do pedaço deste segmento final deste percorredor for o last endereço de memória do pedaço deste segmento final deste percorredor, avance o percorredor; exit.
 Avance o percorredor.
-Se o conteúdo deste first deste segmento final deste percorredor não for as aspas duplas, cancele.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor não for as aspas duplas, cancele.
 Repita.
 
 Etapas necessárias para que se mova um percorredor (spell checking rules):
@@ -7855,41 +7908,41 @@ Percorra.
 Se o segmento final deste percorredor estiver em branco, cancele.
 Avance o percorredor.
 Se o segmento final deste percorredor está sobre alguma espécie de contração, avance o percorredor; repita.
-Se o conteúdo deste first deste segmento final deste percorredor não for alfanumérico, cancele.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor não for alfanumérico, cancele.
 Repita.
 
 Etapas necessárias para que se mova um percorredor (text file rules):
 Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 Percorra.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Se o conteúdo deste first deste segmento final deste percorredor for o return pedaço, avance o percorredor; break.
-Se o conteúdo deste first deste segmento final deste percorredor for o linefeed pedaço, avance o percorredor; exit. \ *dahn new para handle lines terminated por just linefeed
+Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o return pedaço, avance o percorredor; break.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o linefeed pedaço, avance o percorredor; exit. \ *dahn new para handle lines terminated por just linefeed
 Avance o percorredor.
 Repita.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Se o conteúdo deste first deste segmento final deste percorredor for o linefeed pedaço, adicione 1 para o first deste segmento final deste percorredor.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o linefeed pedaço, adicione 1 para o first endereço de memória do pedaço deste segmento final deste percorredor.
 
 Etapas necessárias para que se mova um percorredor (word wrapping rules):
 Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Se o conteúdo deste first deste segmento final deste percorredor for o return pedaço, avance o percorredor; exit.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o return pedaço, avance o percorredor; exit.
 Percorra.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Se o conteúdo deste first deste segmento final deste percorredor for o return pedaço, cancele.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o return pedaço, cancele.
 Se o segmento inicial deste percorredor estiver em branco, avance o percorredor; repita.
-Se o conteúdo deste first deste segmento final deste percorredor for like o conteúdo deste last deste segmento inicial deste percorredor, avance o percorredor; repita.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for like o conteúdo deste last endereço de memória do pedaço deste segmento inicial deste percorredor, avance o percorredor; repita.
 
 Etapas necessárias para que se mova um percorredor usando uma caixa (word wrapping rules):
 Skip algum tipo de leading linefeed pedaço no segmento final deste percorredor.
 Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Lance uma segundo percorredor sobre o percorredor.
+Lance um segundo percorredor sobre o percorredor.
 Percorra.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Mova a segundo percorredor (word wrapping rules).
-Se o segmento inicial desta segundo percorredor estiver em branco, cancele.
-Se o conteúdo deste first deste segmento inicial desta segundo percorredor for o return pedaço, avance o percorredor; exit.
-Se o conteúdo deste first deste segmento inicial desta segundo percorredor for whitespace, avance o percorredor pelo quantidade de caracteres deste segmento inicial desta segundo percorredor; repita.
+Mova o segundo percorredor (word wrapping rules).
+Se o segmento inicial deste segundo percorredor estiver em branco, cancele.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento inicial desta segundo percorredor for o return pedaço, avance o percorredor; exit.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento inicial desta segundo percorredor for whitespace, avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor; repita.
 Se o segmento inicial deste percorredor estiver em branco, avance o percorredor pelo quantidade de caracteres deste segmento inicial desta segundo percorredor; repita.
 Se o segmento inicial deste percorredor junto com o segmento inicial desta segundo percorredor forem wider do que a caixa, cancele.
 Avance o percorredor pelo quantidade de caracteres deste segmento inicial desta segundo percorredor.
@@ -7899,7 +7952,7 @@ Etapas necessárias para que se mova um percorredor usando um separator pedaço:
 Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 Percorra.
 Se o segmento final deste percorredor estiver em branco, cancele.
-Se o conteúdo deste first deste segmento final deste percorredor for o separator pedaço, adicione 1 para o first deste segmento final deste percorredor; exit.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o separator pedaço, adicione 1 para o first endereço de memória do pedaço deste segmento final deste percorredor; exit.
 Avance o percorredor.
 Repita.
 
@@ -8237,9 +8290,16 @@ Se o endereço da pasta não estiver no sistema de arquivos, atribua "A Pasta: " j
 Ligue o endereço completo para read-write mode.
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Call "kernel32.dll" "CreateFileA" com o first deste endereço completo e -1073741824 [generic_read+generic_write] e 0 e 0 e 4 [open_always] 
-And -2147483520 [file_flag_write_through ou file_attribute_normal] e 0 devolvendo o file.
-Se o file é -1 [invalid_handle_value], atribua "Ocorreu um erro na hora de abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
+Call "kernel32.dll" "CreateFileA" com 
+o first deste endereço completo 
+e -1073741824 [generic_read+generic_write] 
+e 0 
+e 0 
+e 4 [open_always] 
+e -2147483520 [file_flag_write_through ou file_attribute_normal] 
+e 0 
+devolvendo o file.
+Se o file for -1 [invalid_handle_value], atribua "Ocorreu um erro na hora de abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
 
 Etapas necessárias para que se abra um file usando um endereço completo e uns milliseconds:
 Start um temporizador.
@@ -8823,21 +8883,26 @@ Um process é um número identificador.
 
 Um process endereço de memória é um endereço de memória para um process.
 
-Um processinfo é um conjunto com
-Um número identificador denominado hprocess,
-Um número identificador denominado hthread,
-Um número denominado dwprocessid,
-Um número denominado dwthreadid.
-
 Um punch line é uma string.
 
 Etapas necessárias para que se atribua o actual data of uma font para um trecho:
 \ only works com true/abra type fonts
 Crie o número da fonte of o memory canvas usando o font.
-Call "gdi32.dll" "GetFontData" com o memory canvas e 0 e 0 e nil e 0 devolvendo uma contagem.
-Reassign o first deste trecho usando a contagem.
-Call "gdi32.dll" "GetFontData" com o memory canvas e 0 e 0 e o first deste trecho e a contagem.
-Atribua o first deste trecho mais a contagem menos 1 ao last deste trecho.
+Call "gdi32.dll" "GetFontData" com 
+o memory canvas 
+e 0 
+e 0 
+e nil 
+e 0 
+devolvendo uma contagem.
+Reassign o first endereço de memória do pedaço deste trecho usando a contagem.
+Call "gdi32.dll" "GetFontData" com 
+o memory canvas 
+e 0 
+e 0 
+e o first endereço de memória do pedaço deste trecho 
+e a contagem.
+Atribua o first endereço de memória do pedaço deste trecho mais a contagem menos 1 ao last deste trecho.
 Destrua o número da fonte of o memory canvas.
 
 Etapas necessárias para que se atribua o base of uma caixa para um horizontal line;
@@ -9827,8 +9892,8 @@ Call "kernel32.dll" "GetFileSize" com
 o file 
 e nil 
 devolvendo um size. \o valor de retorno é uma double word de ordem inferior do tamanho do arquivo
-Reassign o first deste trecho usando o size.
-Atribua o first deste trecho mais o size menos 1 ao last deste trecho.
+Reassign o first endereço de memória do pedaço deste trecho usando o size.
+Atribua o first endereço de memória do pedaço deste trecho mais o size menos 1 ao last endereço de memória do pedaço deste trecho.
 Call "kernel32.dll" "ReadFile" com 
 o file 
 e o first endereço de memória do pedaço deste trecho 
@@ -9855,15 +9920,31 @@ Etapas necessárias para que se read um endereço completo para um trecho:
 Limpe o erro do fluxo de entrada/saída.
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Se o endereço completo não estiver no sistema de arquivos, atribua "O Arquivo: " junto com o endereço completo seguido de " não existe." ao erro do fluxo de entrada/saída; exit.
+Se o endereço completo não estiver no sistema de arquivos, atribua "O Arquivo: '" junto com o endereço completo seguido de "' não existe." ao erro do fluxo de entrada/saída; exit.
 \ abra o endereço completo para read-write mode.
-Call "kernel32.dll" "CreateFileA" com o first deste endereço completo e -2147483648 [generic_read] e 3 [file_share_read+file_share_write] e 0 
-And 3 [open_existing] e 0 e 0 devolvendo um número identificador.
+Call "kernel32.dll" "CreateFileA" com 
+o first deste endereço completo 
+e -2147483648 [generic_read] 
+e 3 [file_share_read+file_share_write] 
+e 0 
+e 3 [open_existing] 
+e 0 
+e 0 
+devolvendo um número identificador.
 Se o número identificador for -1 [invalid_handle_value], atribua "Ocorreu um erro na hora de tentar abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
-Call "kernel32.dll" "GetFileSize" com o número identificador e nil devolvendo um size.
-Reassign o first deste trecho usando o size.
-Atribua o first deste trecho mais o size menos 1 ao last deste trecho.
-Call "kernel32.dll" "ReadFile" com o número identificador e o first deste trecho e o size e o endereçamento desse número e 0 devolvendo o número.
+Call "kernel32.dll" "GetFileSize" com 
+o número identificador 
+e nil 
+devolvendo um size.
+Reassign o first endereço de memória do pedaço deste trecho usando o size.
+Atribua o first endereço de memória do pedaço deste trecho mais o size menos 1 ao last deste trecho.
+Call "kernel32.dll" "ReadFile" com 
+o número identificador 
+e o first endereço de memória do pedaço deste trecho 
+e o size 
+e o endereçamento desse número 
+e 0 
+devolvendo o número.
 Call "kernel32.dll" "CloseHandle" com o número identificador.
 Se o número não for 0, cancele.
 Atribua "Ocorreu um erro na hora de tentar ler o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
@@ -9927,10 +10008,15 @@ Encontre uma string usando o environment variáveis e "CONTENT_LENGTH".
 Se a string estiver em branco, atribua "Ocorreu um erro na hora de obter o conteúdo de comprimento CONTENT_LENGTH." ao erro do fluxo de entrada/saída; exit.
 Converta a string a uma quantidade de caracteres.
 Se a quantidade de caracteres for 0, cancele.
-Reassign o first deste trecho usando a quantidade de caracteres.
-Call "kernel32.dll" "ReadFile" com o stdin handle e o first deste trecho e a quantidade de caracteres e o endereçamento desse número e nil.
+Reassign o first endereço de memória do pedaço deste trecho usando a quantidade de caracteres.
+Call "kernel32.dll" "ReadFile" com 
+o stdin handle 
+e o first endereço de memória do pedaço deste trecho 
+e a quantidade de caracteres 
+e o endereçamento desse número 
+e nil.
 Se o número não for a quantidade de caracteres, atribua "Erro ao ler dados do fluxo de entrada padrão stdin." ao erro do fluxo de entrada/saída; limpe o trecho; exit.
-Atribua o first deste trecho mais a quantidade de caracteres menos 1 ao last deste trecho.
+Atribua o first endereço de memória do pedaço deste trecho mais a quantidade de caracteres menos 1 ao last deste trecho.
 
 Etapas necessárias para que se read uma string desde um console:
 Read o console à string.
@@ -9940,20 +10026,37 @@ Etapas necessárias para que se read um URL para um trecho:
 Limpe o trecho.
 Limpe o erro do fluxo de entrada/saída.
 \ internet abra
-Call "wininet.dll" "InternetOpenA" com o first deste nome deste module e 0 [internet_open_type_preconfig] e nil e nil devolvendo um internet número identificador.
+Call "wininet.dll" "InternetOpenA" com 
+o first deste nome deste module 
+e 0 [internet_open_type_preconfig] 
+e nil 
+e nil 
+devolvendo um internet número identificador.
 Se o internet handle for 0, atribua "Erro. Não foi possível se conectar à internet. Verifique sua conexão" ao erro do fluxo de entrada/saída; exit.
 \ internet abra URL
 Isole o URL.
 Modifique através do caractere NUL o URL.
-Call "wininet.dll" "InternetOpenUrlA" com o internet handle e o first desta URL e nil e 0 e 0 e 0 devolvendo um URL número identificador.
+Call "wininet.dll" "InternetOpenUrlA" com 
+o internet handle 
+e o first desta URL 
+e nil 
+e 0 
+e 0 
+e 0 
+devolvendo um URL número identificador.
 Se o URL handle for 0, atribua "Erro. Não foi possível acessar a URL: " junto com o URL seguido de "." ao erro do fluxo de entrada/saída; call "wininet.dll" "InternetCloseHandle" com o internet handle; exit.
 \ read o file
 Atribua 64 kilobytes a um trecho size.
 Percorra.
 Atribua a quantidade de caracteres deste trecho a uma quantidade de caracteres armazenados.
-Reassign o first deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
-Atribua o first deste trecho mais a quantidade de caracteres armazenados a um endereço de memória.
-Call "wininet.dll" "InternetReadFile" com o URL handle e o endereço de memória e o trecho size e o endereçamento dessa contagem devolvendo um result número.
+Reassign o first endereço de memória do pedaço deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
+Atribua o first endereço de memória do pedaço deste trecho mais a quantidade de caracteres armazenados a um endereço de memória.
+Call "wininet.dll" "InternetReadFile" com 
+o URL handle 
+e o endereço de memória 
+e o trecho size 
+e o endereçamento dessa contagem 
+devolvendo um result número.
 Se o result número for 0, atribua "Ocorreu um erro na hora de ler a URL: " junto com o URL seguido de "." ao erro do fluxo de entrada/saída; break.
 Atribua o endereço de memória mais a contagem menos 1 ao last deste trecho.
 Se a contagem for 0, pare.
@@ -9976,13 +10079,18 @@ Atribua 8 kilobytes a um trecho size.
 Percorra.
 Atribua 0 a um size.
 Atribua a quantidade de caracteres deste trecho a uma quantidade de caracteres armazenados.
-Reassign o first deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
-Atribua o first deste trecho mais a quantidade de caracteres armazenados a um endereço de memória.
-Call "ws2_32.dll" "recv" com o socket e o endereço de memória e o trecho size e 0 devolvendo uma contagem.
-Se a contagem não for -1 [socket_error], atribua o endereço de memória mais a contagem menos 1 ao last deste trecho; exit.
+Reassign o first endereço de memória do pedaço deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
+Atribua o first endereço de memória do pedaço deste trecho mais a quantidade de caracteres armazenados a um endereço de memória.
+Call "ws2_32.dll" "recv" com
+ o socket 
+ e o endereço de memória 
+ e o trecho size 
+ e 0 
+ devolvendo uma contagem.
+Se a contagem não for -1 [socket_error], atribua o endereço de memória mais a contagem menos 1 ao last endereço de memória do pedaço deste trecho; exit.
 Se o last winsock erro do system não for 10040 [wsamsgsize], atribua "Ocorreu um erro no recebimento dos dados." ao erro do fluxo de entrada/saída; limpe o trecho; exit.
 \Se o last winsock erro desse system não for 10040 [wsamsgsize], atribua "Ocorreu um erro no recebimento dos dados." ao erro do fluxo de entrada/saída; limpe o trecho; exit.
-Atribua o endereço de memória mais a contagem menos 1 ao last deste trecho.
+Atribua o endereço de memória mais a contagem menos 1 ao last endereço de memória do pedaço deste trecho.
 Repita.
 
 Etapas necessárias para que se receive o response desde um winhttp request:
@@ -10876,7 +10984,7 @@ Um caret column#, um número de linhas do cursor, um caret at o caret column#.
 
 Etapas necessárias para que se send um trecho para um socket:
 Limpe o erro do fluxo de entrada/saída.
-Atribua o first deste trecho a um endereço de memória.
+Atribua o first endereço de memória do pedaço deste trecho a um endereço de memória.
 Atribua a quantidade de caracteres deste trecho a uma quantidade de caracteres.
 Percorra.
 Se a quantidade de caracteres for 0, pare.
@@ -11305,20 +11413,20 @@ Posponha a row para a rows.
 Repita.
 
 Etapas necessárias para que se split uma string para um left subtexto e um right subtexto usando um separator pedaço:
-Limpe o left.
-Limpe o right.
+Limpe o left .
+Limpe o right subtexto.
 Se a string estiver em branco, cancele.
-Atribua o first endereço de memória do pedaço desta string ao first desse subtexto.
+Atribua o first endereço de memória do pedaço desta string ao first endereço de memória do pedaço desse subtexto.
 Atribua o first endereço de memória do pedaço deste subtexto menos 1 ao last endereço de memória do pedaço deste subtexto.
 Percorra.
 Se o last endereço de memória do pedaço deste subtexto for maior do que o last endereço de memória do pedaço desta string, cancele.
 Adicione 1 para o last endereço de memória do pedaço deste subtexto.
 Se o conteúdo deste last endereço de memória do pedaço deste subtexto for o separator pedaço, pare.
 Repita.
-Atribua o first endereço de memória do pedaço deste subtexto ao first deste left.
-Atribua o last endereço de memória do pedaço deste subtexto menos 1 ao last deste left.
-Atribua o last endereço de memória do pedaço deste subtexto mais 1 ao first deste right.
-Atribua o last endereço de memória do pedaço desta string ao last deste right.
+Atribua o first endereço de memória do pedaço deste subtexto ao first endereço de memória do pedaço deste left subtexto.
+Atribua o last endereço de memória do pedaço deste subtexto menos 1 ao last endereço de memória do pedaço deste left subtexto.
+Atribua o last endereço de memória do pedaço deste subtexto mais 1 ao first endereço de memória do pedaço deste right subtexto.
+Atribua o last endereço de memória do pedaço desta string ao last endereço de memória do pedaço deste right subtexto.
 
 Etapas necessárias para que se split uma string para uns conjunto de textos usando um separator pedaço:
 Destrua o conjunto de textos.
@@ -11708,13 +11816,29 @@ Atribua a magnitude dessa startupinfo ao cb desta startupinfo.
 Extraia um endereço da pasta desde o endereço completo.
 Modifique através do caractere NUL o endereço da pasta.
 Isole o endereço completo. modifique através do caractere NUL o endereço completo.
-Call "kernel32.dll" "CreateProcessA" com o first deste endereço completo e 0 e 0 e 0 e 0 e 67108904 [create_default_error_mode + normal_priority_class + detached_process] e 0 
-And o first deste endereço da pasta e o endereçamento desta startupinfo e um processinfo's endereçamento devolvendo um número.
+Call "kernel32.dll" "CreateProcessA" com 
+o first deste endereço completo 
+e 0 
+e 0 
+e 0 
+e 0 
+e 67108904 [create_default_error_mode + normal_priority_class + detached_process] 
+e 0 
+e o first deste endereço da pasta 
+e o endereçamento desta startupinfo 
+e o endereçamento dessa PROCESS_INFORMATION 
+devolvendo um número.
 Se o número for 0, atribua "Erro. Não foi possível executar o programa." ao erro do fluxo de entrada/saída; exit.
-Atribua o hprocess deste processinfo ao process.
-Call "kernel32.dll" "CloseHandle" com o hthread deste processinfo.
-Point um endereço de memória para rotina aguarde por um process endereço de memória.
-Call "kernel32.dll" "CreateThread" com 0 e 0 e o endereço de memória e o endereçamento deste process e 0 e um segundo número's endereçamento devolvendo um número identificador.
+Atribua o hprocess deste PROCESS_INFORMATION ao process.
+Call "kernel32.dll" "CloseHandle" com o hthread deste PROCESS_INFORMATION.
+Point um endereço de memória para rotina aguarde por um process endereço de memória. \redirecione
+Call "kernel32.dll" "CreateThread" com 0 
+e 0 
+e o endereço de memória 
+e o endereçamento deste process 
+e 0 
+e o endereçamento desse segundo número
+devolvendo um número identificador.
 Call "kernel32.dll" "CloseHandle" com o número identificador. \ does not end o thread, just dumps o handle
 
 Etapas necessárias para que se start um temporizador:
@@ -12344,9 +12468,20 @@ Limite o origin of o text.
 Etapas necessárias para que se store um trecho em um file;
 Etapas necessárias para que se escreva um trecho para um file:
 Limpe o erro do fluxo de entrada/saída.
-Call "kernel32.dll" "SetFilePointer" com o file e 0 e 0 e 0 [file_begin] devolvendo um result número.
-Se o result número é -1, atribua "Ocorreu um erro durante o posicionamento do ponteiro do arquivo." ao erro do fluxo de entrada/saída; exit.
-Call "kernel32.dll" "WriteFile" com o file e o first deste trecho e a quantidade de caracteres deste trecho e um número's endereçamento e 0 devolvendo o result número.
+Call "kernel32.dll" "SetFilePointer" com 
+o file 
+e 0 
+e 0 
+e 0 [file_begin] 
+devolvendo um result número.
+Se o result número for -1, atribua "Ocorreu um erro durante o posicionamento do ponteiro do arquivo." ao erro do fluxo de entrada/saída; exit.
+Call "kernel32.dll" "WriteFile" com 
+o file e 
+o first endereço de memória do pedaço deste trecho 
+e a quantidade de caracteres deste trecho 
+e o endereçamento desse número 
+e 0 
+devolvendo o result número.
 Se o result número for 0, atribua "Ocorreu um erro durante a gravação do arquivo." ao erro do fluxo de entrada/saída; exit.
 
 Etapas necessárias para que se store um trecho em um endereço completo;
