@@ -311,10 +311,10 @@ Se a string estiver em branco, cancele.
 Atribua a quantidade de caracteres desta string a uma quantidade de caracteres agrupados.
 Atribua a quantidade de caracteres desta segunda string a uma quantidade de caracteres armazenados.
 Adicione a quantidade de caracteres armazenados para a quantidade de caracteres agrupados.
-Reassign o first desta segunda string usando a quantidade de caracteres agrupados.
-Atribua o first desta segunda string mais a quantidade de caracteres armazenados a um endereço de memória.
+Reassign o first endereço de memória do pedaço desta segunda string usando a quantidade de caracteres agrupados.
+Atribua o first endereço de memória do pedaço desta segunda string mais a quantidade de caracteres armazenados a um endereço de memória.
 Copie pedaços desde o first endereço de memória do pedaço desta string para o endereço de memória pelo quantidade de caracteres desta string.
-Atribua o first desta segunda string mais a quantidade de caracteres agrupados menos 1 ao last desta segunda string.
+Atribua o first endereço de memória do pedaço desta segunda string mais a quantidade de caracteres agrupados menos 1 ao last endereço de memória do pedaço desta segunda string.
 
 Etapas necessárias para que se posponha uma string para uma segunda string (handling email transparency):
 Se a string estiver em branco, cancele.
@@ -910,7 +910,7 @@ Etapas necessárias para que se compare uma string para uma segunda string usando
 Intel $8BB508000000. \ mov esi,[ebp+8] \ a string
 Intel $8B36. \ mov esi,[esi] \ o first endereço de memória do pedaço desta string
 Intel $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda string
-Intel $8B3F. \ mov edi,[edi] \ o first desta segunda string
+Intel $8B3F. \ mov edi,[edi] \ o first endereço de memória do pedaço desta segunda string
 Intel $8B8510000000. \ mov eax,[ebp+16] \ a quantidade de caracteres desta string
 Intel $8B00. \ mov eax,[eax]
 Intel $8B9514000000. \ mov edx,[ebp+20] \ a quantidade de caracteres desta segunda string
@@ -1185,8 +1185,22 @@ Atribua o first deste texto hexadecimal mais a magnitude deste detector menos 1 
 Etapas necessárias para que se converta uma font para um número da fonte:
 Isole o font.
 Modifique através do caractere NUL o nome desta font.
-Call "gdi32.dll" "CreateFontA" com - a altura desta font times 3 dividido por 4 e 0 e 0 e 0 e 0 e 0 e 0 e 0 
-And 1 [default_charset] e 0 e 0 e 5 [cleartype_quality] e 4 [truetype_fonttype] e o first deste nome desta font devolvendo o número da fonte.
+Call "gdi32.dll" "CreateFontA" com
+ - a altura desta font times 3 dividido por 4 
+e 0 
+e 0 
+e 0 
+e 0 
+e 0 
+e 0 
+e 0 
+e 1 [default_charset] 
+e 0 
+e 0 
+e 5 [cleartype_quality] 
+e 4 [truetype_fonttype] 
+e o first deste nome desta font 
+devolvendo o número da fonte.
 
 Etapas necessárias para que se converta uma font info para pdf em units:
 Se o font info for inexistente, cancele.
@@ -1539,7 +1553,9 @@ Renumber a rows.
 
 Etapas necessárias para que se converta uma string para um uuid:
 Converta a string para um wide string e modifique através do caractere NUL.
-Call "ole32.dll" "CLSIDFromString" com o first deste wide string e o endereçamento deste uuid.
+Call "ole32.dll" "CLSIDFromString" com 
+o first deste wide string 
+e o endereçamento deste uuid.
 
 Etapas necessárias para que se converta uma string para um wide string:
 Limpe a wide string.
@@ -1932,7 +1948,10 @@ Etapas necessárias para que se crie um endereço completo no sistema de arquivos 
 Isole o endereço completo.
 Remove algum tipo de trailing barra invertida desde o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Call "kernel32.dll" "CreateDirectoryA" com o first deste endereço completo e 0 devolvendo um número.
+Call "kernel32.dll" "CreateDirectoryA" com 
+o first deste endereço completo 
+e 0 
+devolvendo um número.
 Limpe o erro do fluxo de entrada/saída.
 Se o número não for 0, cancele.
 Atribua "Erro. Não foi possível criar a seguinte pasta: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
@@ -2000,13 +2019,13 @@ Converta o endereço de recurso desta URL simplificada a um wide string denominad
 Converta "POST" para um wide string denominado wide post string e modifique através do caractere NUL.
 Se o nome do protocolo desta URL simplificada for "https", atribua 8388608 [WINHTTP_FLAG_SECURE] a um secure número.
 Call "winhttp.dll" "WinHttpOpenRequest" com 
-o connection número identificador deste winhttp request
-    e o first deste wide post string
-    e o first deste wide endereço completo 
-    e 0 [L"HTTP/1.1"] 
-    e 0 [winhttp_no_referer]
-    e 0 [winhttp_default_accept_types] 
-    e o secure número 
+o connection número identificador deste winhttp request 
+e o first deste wide post string 
+e o first deste wide endereço completo 
+e 0 [L"HTTP/1.1"] 
+e 0 [winhttp_no_referer] 
+e 0 [winhttp_default_accept_types] 
+e o secure número 
 devolvendo o request número identificador deste winhttp request.
 Se o request número identificador deste winhttp request for 0, atribua "Erro ao chamar a função 'WinHttpOpenRequest' da biblioteca 'winhttp.dll'. Não foi possível abrir a requisição." ao erro do fluxo de entrada/saída; exit.
 
@@ -3476,7 +3495,7 @@ Etapas necessárias para que se determine se uma string estiver em uma segunda st
 Lance um subtexto sobre a segunda string.
 Atribua o first endereço de memória do pedaço deste subtexto mais a quantidade de caracteres desta string menos 1 ao last endereço de memória do pedaço deste subtexto.
 Percorra.
-Se o last endereço de memória do pedaço deste subtexto for maior do que o last desta segunda string, diga não.
+Se o last endereço de memória do pedaço deste subtexto for maior do que o last endereço de memória do pedaço desta segunda string, diga não.
 Se o subtexto é a string, diga sim.
 Mova o subtexto usando 1.
 Repita.
@@ -4501,7 +4520,7 @@ Se a página detector deste pdf state estiver ativo, pinte a string at a localiza
 Defina o código da cor of o quadro atual usando a cor.
 Crie o número da fonte of o quadro atual usando o font.
 Ajuste spacing usando a string.
-Atribua o first endereço de memória do pedaço desta string ao first desse subtexto.
+Atribua o first endereço de memória do pedaço desta string ao first endereço de memória do pedaço desse subtexto.
 Atribua o first endereço de memória do pedaço deste subtexto mais o text cutoff menos 1 ao last endereço de memória do pedaço deste subtexto.
 Isole a localização.
 Percorra.
@@ -4625,7 +4644,9 @@ Isole o segundo endereço completo.
 Modifique através do caractere NUL o segundo endereço completo.
 Call "kernel32.dll" "CopyFileA" com 
 o first deste endereço completo 
-e o first deste segundo endereço completo e 0 devolvendo um número.
+e o first deste segundo endereço completo 
+e 0 
+devolvendo um número.
 Limpe o erro do fluxo de entrada/saída.
 Se o número não for 0, defina o endereço completo para read-write mode; exit.
 Atribua "Ocorreu um erro na hora de duplicar o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
@@ -5233,7 +5254,7 @@ Desative o detector.
 Se o text for inexistente, cancele.
 Converta o find anchor para um posicionamento absoluto denominado offset usando o text.
 Extraia uma string desde o text (no linefeed additions).
-Atribua o first endereço de memória do pedaço desta string mais o offset menos 1 ao first desse subtexto.
+Atribua o first endereço de memória do pedaço desta string mais o offset menos 1 ao first endereço de memória do pedaço desse subtexto.
 Atribua o first endereço de memória do pedaço deste subtexto mais a quantidade de caracteres deste find string menos 1 ao last endereço de memória do pedaço deste subtexto.
 Percorra.
 Se o last endereço de memória do pedaço deste subtexto for maior do que o last endereço de memória do pedaço desta string, cancele.
@@ -5260,7 +5281,7 @@ Se o segmento inicial deste percorredor não estiver escrito incorretamente, repi
 Ligue o detector.
 Atribua o first endereço de memória do pedaço deste segmento inicial deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 1 ao anchor column# deste text.
 Atribua o número da linha desta row ao anchor número da linha deste text .
-Atribua o last deste segmento inicial deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 2 ao caret column# deste text.
+Atribua o last endereço de memória do pedaço deste segmento inicial deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 2 ao caret column# deste text.
 Atribua o número da linha desta row ao número de linhas do cursor deste text.
 
 Etapas necessárias para que se encontre o next misspelling em um text usando um detector:
@@ -5358,7 +5379,11 @@ Isole o nome.
 Modifique através do caractere NUL o nome.
 Atribua 32767 a uma quantidade de caracteres. \ max size por environment variável
 Reassign o first deste value usando a quantidade de caracteres.
-Call "kernel32.dll" "GetEnvironmentVariableA" com o first deste nome e o first deste value e a quantidade de caracteres devolvendo a quantidade de caracteres.
+Call "kernel32.dll" "GetEnvironmentVariableA" com 
+o first deste nome 
+e o first deste value 
+e a quantidade de caracteres 
+devolvendo a quantidade de caracteres.
 Atribua o first deste value mais a quantidade de caracteres menos 1 ao last deste value.
 
 Um finger é um endereço de memória do pedaço .
@@ -5637,14 +5662,14 @@ Se o número for 2 [drive_removable], atribua "Disco removível" à categoria da un
 Se o número for 3 [drive_fixed], atribua "Disco Rígido / Pendrive" à categoria da unidade de disco; exit.\ hard disk / flash drive
 Se o número for 4 [drive_remote], atribua "Unidade de rede" à categoria da unidade de disco; exit. \ network drive
 Se o número for 5 [drive_cdrom], atribua "Unidade de CD/DVD" à categoria da unidade de disco; exit. \ cd-rom / dvd drive
-Se o número for 6 [drive_ramdisk], atribua "Unidade virtual na memória" à categoria da unidade de disco; exit. \ virtual unidade de disco em memory
+Se o número for 6 [drive_ramdisk], atribua "Unidade de disco RAM" à categoria da unidade de disco; exit. \ virtual unidade de disco em memory
 Atribua "" à categoria da unidade de disco.
 
 Etapas necessárias para que se obtenha um nome da unidade de disco por um endereço completo:
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
 Atribua 512 a uma quantidade de caracteres.
-Reassign o first desse trecho usando a quantidade de caracteres.
+Reassign o first endereço de memória do pedaço desse trecho usando a quantidade de caracteres.
 Call "kernel32.dll" "GetVolumeInformationA" com 
 o first deste endereço completo 
 e o first endereço de memória do pedaço deste trecho
@@ -5881,7 +5906,10 @@ Repita.
 Etapas necessárias para que se obtenha um size usando um endereço completo no sistema de arquivos (arquivo):
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Call "kernel32.dll" "GetFileAttributesExA" com o first deste endereço completo e 0 e o endereçamento desse WIN32FINDDATA.
+Call "kernel32.dll" "GetFileAttributesExA" com 
+o first deste endereço completo 
+e 0 
+e o endereçamento desse WIN32FINDDATA.
 Atribua o nFileSizeLow deste WIN32FINDDATA ao size.
 
 Etapas necessárias para que se obtenha um sockaddr usando um host string:
@@ -5912,7 +5940,7 @@ Se o text for inexistente, cancele.
 Obtenha uma row usando o número da linha desta position e o text.
 Obtenha uma caixa usando a row e o text.
 Atribua a coordenada superior desta caixa à coordenada y desta localização.
-Atribua o first endereço de memória do pedaço desta string desta row ao first desse subtexto.
+Atribua o first endereço de memória do pedaço desta string desta row ao first endereço de memória do pedaço desse subtexto.
 Atribua o first endereço de memória do pedaço deste subtexto mais o column# desta position menos 2 ao last endereço de memória do pedaço deste subtexto.
 Obtenha um largura usando o subtexto e o memory canvas e o font deste text.
 Atribua a coordenada esquerda desta caixa mais o largura à coordenada x desta localização.
@@ -7069,18 +7097,18 @@ Isole o byte#.
 Limite o byte# para 1 e a quantidade de caracteres desta segunda string mais 1.
 Lance um subtexto sobre a segunda string. \ left side
 Atribua o first endereço de memória do pedaço deste subtexto mais o byte# menos 2 ao last endereço de memória do pedaço deste subtexto.
-Lance uma segunda subtexto sobre a segunda string. \ right side
-Atribua o first desta segunda subtexto mais o byte# menos 1 ao first desta segunda subtexto.
+Lance uma segundo subtexto sobre a segunda string. \ right side
+Atribua o first endereço de memória do pedaço deste segundo subtexto mais o byte# menos 1 ao first endereço de memória do pedaço deste segundo subtexto.
 Atribua a quantidade de caracteres desta segunda string mais a quantidade de caracteres desta string a uma quantidade de caracteres agrupados.
 Reassign um endereço de memória usando a quantidade de caracteres agrupados.
-Atribua o endereço de memória ao first desse terceiro subtexto.
+Atribua o endereço de memória ao first endereço de memória do pedaço desse terceiro subtexto.
 Copie pedaços desde o first endereço de memória do pedaço deste subtexto para o first endereço de memória do pedaço deste terceiro subtexto pelo quantidade de caracteres deste subtexto.
 Adicione a quantidade de caracteres deste subtexto para o first endereço de memória do pedaço deste terceiro subtexto.
 Copie pedaços desde o first endereço de memória do pedaço desta string para o first endereço de memória do pedaço deste terceiro subtexto pelo quantidade de caracteres desta string.
 Adicione a quantidade de caracteres desta string para o first endereço de memória do pedaço deste terceiro subtexto.
-Copie pedaços desde o first endereço de memória do pedaço deste segunda subtexto para o first endereço de memória do pedaço deste terceiro subtexto pelo quantidade de caracteres desta segunda subtexto.
+Copie pedaços desde o first endereço de memória do pedaço deste segundo subtexto para o first endereço de memória do pedaço deste terceiro subtexto pelo quantidade de caracteres desta segundo subtexto.
 Unassign o first endereço de memória do pedaço desta segunda string. \ dont use atribua uma string a uma string para prevent extra allocating e copying
-Atribua o endereço de memória ao first desta segunda string.
+Atribua o endereço de memória ao first endereço de memória do pedaço desta segunda string.
 Atribua o first endereço de memória do pedaço desta segunda string mais a quantidade de caracteres agrupados menos 1 ao last endereço de memória do pedaço desta segunda string.
 
 Etapas necessárias para que se insira uma string Para um text:
@@ -8780,22 +8808,36 @@ Um gpbitmap.
 \Um gpbitmap.
 
 Etapas necessárias para que se toque um wave:
-Call "winmm.dll" "PlaySound" com o first desta wave e 0 e 5 [snd_memory+snd_async].
+Call "winmm.dll" "PlaySound" com 
+o first desta wave 
+e 0 
+e 5 [snd_memory+snd_async].
 
 Etapas necessárias para que se toque um wave e wait:
-Call "winmm.dll" "PlaySound" com o first desta wave e 0 e 4 [snd_memory+snd_sync].
+Call "winmm.dll" "PlaySound" com 
+o first desta wave 
+e 0 
+e 4 [snd_memory+snd_sync].
 
 Etapas necessárias para que se toque um wave file:
 Isole o wave file.
 Modifique através do caractere NUL o wave file.
-Call "winmm.dll" "PlaySound" com o first deste wave file e 0 e 131073 [snd_filename+snd_async].
+Call "winmm.dll" "PlaySound" com 
+o first deste wave file 
+e 0 
+e 131073 [snd_filename+snd_async].
 
 Etapas necessárias para que se toque um wave file e wait:
 Isole o wave file.
 Modifique através do caractere NUL o wave file.
-Call "winmm.dll" "PlaySound" com o first deste wave file e 0 e 131072 [snd_filename+snd_sync].
+Call "winmm.dll" "PlaySound" com 
+o first deste wave file 
+e 0 
+e 131072 [snd_filename+snd_sync].
 
-An point é um número [0 para 3839; por dividing um circle A compass points; 0 é noon; 960 points per quarter].
+An point é um número. \cujos valores vão desde 0 até 3839;  servem para dividir um ciírculo. 
+\Nesse sistema de pontos de bússola, o número 0 representa o norte, cada quadrante tem 960 pontos
+\ Perfazendo um total de 3840 pontos
 
 Um endereço de memória é um conjunto com 4 pedaços.
 
@@ -8808,9 +8850,9 @@ Um position é um par de números com um column# e um número da linha.
 Etapas necessárias para que se posicione um subtexto sobre uma string:
 Intel $8B8508000000. \ mov eax,[ebp+8] \ o subtexto
 Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ a string
-\ atribua o first endereço de memória do pedaço desta string ao first deste subtexto
-Intel $8B8B00000000. \ mov ecx,[ebx+0] \ o first do string
-Intel $898800000000. \ mov [eax+0],ecx \ o first do subtexto
+\ atribua o first endereço de memória do pedaço desta string ao first  endereço de memória do pedaço deste subtexto
+Intel $8B8B00000000. \ mov ecx,[ebx+0] \ o first  endereço de memória do pedaço da string
+Intel $898800000000. \ mov [eax+0],ecx \ o first  endereço de memória do pedaço do subtexto
 \ atribua o first endereço de memória do pedaço desta string menos 1 ao last endereço de memória do pedaço deste subtexto
 Intel $49. \ dec ecx
 Intel $898804000000. \ mov [eax+4],ecx \ o last endereço de memória do pedaço deste subtexto
@@ -8845,13 +8887,13 @@ Atribua o pedaço ao conteúdo deste first endereço de memória do pedaço desta str
 Etapas necessárias para que se anteponha uma string para uma segunda string:
 Atribua a quantidade de caracteres desta segunda string mais a quantidade de caracteres desta string a uma quantidade de caracteres agrupados.
 Reassign um endereço de memória usando a quantidade de caracteres agrupados.
-Atribua o endereço de memória ao first desse subtexto.
+Atribua o endereço de memória ao first endereço de memória do pedaço desse subtexto.
 Copie pedaços desde o first endereço de memória do pedaço desta string para o first endereço de memória do pedaço deste subtexto pelo quantidade de caracteres desta string.
 Adicione a quantidade de caracteres desta string para o first endereço de memória do pedaço deste subtexto.
 Copie pedaços desde o first desta segunda string para o first endereço de memória do pedaço deste subtexto pelo quantidade de caracteres desta segunda string.
-Unassign o first desta segunda string. \ para que se esvazie extra allocates e copies
-Atribua o endereço de memória ao first desta segunda string.
-Atribua o first desta segunda string mais a quantidade de caracteres agrupados menos 1 ao last desta segunda string.
+Unassign o first endereço de memória do pedaço desta segunda string. \ para que se esvazie extra allocates e copies
+Atribua o endereço de memória ao first endereço de memória do pedaço desta segunda string.
+Atribua o first endereço de memória do pedaço desta segunda string mais a quantidade de caracteres agrupados menos 1 ao last endereço de memória do pedaço desta segunda string.
 
 Etapas necessárias para que se anteponha uma coisa para uns coisas:
 Se a coisa for inexistente, cancele.
@@ -8902,7 +8944,7 @@ e 0
 e 0 
 e o first endereço de memória do pedaço deste trecho 
 e a contagem.
-Atribua o first endereço de memória do pedaço deste trecho mais a contagem menos 1 ao last deste trecho.
+Atribua o first endereço de memória do pedaço deste trecho mais a contagem menos 1 ao last endereço de memória do pedaço deste trecho.
 Destrua o número da fonte of o memory canvas.
 
 Etapas necessárias para que se atribua o base of uma caixa para um horizontal line;
@@ -9540,9 +9582,9 @@ Etapas necessárias para que se atribua uma string para uma segunda string:
 Atribua a quantidade de caracteres desta string a uma quantidade de caracteres armazenados.
 Assign um endereço de memória usando a quantidade de caracteres armazenados.
 Copie pedaços desde o first endereço de memória do pedaço desta string para o endereço de memória pelo quantidade de caracteres armazenados.
-Unassign o first desta segunda string.
-Atribua o endereço de memória ao first desta segunda string.
-Atribua o first desta segunda string mais a quantidade de caracteres armazenados menos 1 ao last desta segunda string.
+Unassign o first endereço de memória do pedaço desta segunda string.
+Atribua o endereço de memória ao first endereço de memória do pedaço desta segunda string.
+Atribua o first endereço de memória do pedaço desta segunda string mais a quantidade de caracteres armazenados menos 1 ao last endereço de memória do pedaço desta segunda string.
 
 Etapas necessárias para que se atribua uma string para uma letra:
 Atribua o conteúdo deste first endereço de memória do pedaço desta string à letra.
@@ -9594,8 +9636,8 @@ Etapas necessárias para que se atribua a largura dessa string para uma largura:
 Obtenha o largura usando a string e o memory canvas e a fonte padrão.
 
 \ \ leave out - causes Spanish string atribuas para resolva here instead of "Atribua uma string a uma segunda string"
-Etapas necessárias para que se atribua um subtexto para uma segunda subtexto:
-Copie pedaços desde o endereçamento deste subtexto para o endereçamento desta segunda subtexto pela magnitude deste subtexto.
+Etapas necessárias para que se atribua um subtexto para uma segundo subtexto:
+Copie pedaços desde o endereçamento deste subtexto para o endereçamento desta segundo subtexto pela magnitude deste subtexto.
 
 Etapas necessárias para que se atribua o date/time do system para um date/time:
 Call "kernel32.dll" "GetLocalTime" com o endereçamento desse systemtime.
@@ -9937,7 +9979,7 @@ o número identificador
 e nil 
 devolvendo um size.
 Reassign o first endereço de memória do pedaço deste trecho usando o size.
-Atribua o first endereço de memória do pedaço deste trecho mais o size menos 1 ao last deste trecho.
+Atribua o first endereço de memória do pedaço deste trecho mais o size menos 1 ao last endereço de memória do pedaço deste trecho.
 Call "kernel32.dll" "ReadFile" com 
 o número identificador 
 e o first endereço de memória do pedaço deste trecho 
@@ -9984,8 +10026,10 @@ Limpe a response string.
 Atribua 8 kilobytes a um trecho size.
 Percorra.
 Atribua 0 a um size.
-Call "winhttp.dll" "WinHttpqueryDataAvailable"
-With o request número identificador deste winhttp request e o endereçamento deste size devolvendo um result número.
+Call "winhttp.dll" "WinHttpqueryDataAvailable" com 
+o request número identificador deste winhttp request 
+e o endereçamento deste size 
+devolvendo um result número.
 Se o result número for 0, atribua "Erro. Não foi possível consultar os dados disponíveis." ao erro do fluxo de entrada/saída; limpe a response; break.
 Atribua a quantidade de caracteres desta response a uma quantidade de caracteres armazenados.
 Reassign o first desta response string usando a quantidade de caracteres armazenados mais o trecho size.
@@ -10016,7 +10060,7 @@ e a quantidade de caracteres
 e o endereçamento desse número 
 e nil.
 Se o número não for a quantidade de caracteres, atribua "Erro ao ler dados do fluxo de entrada padrão stdin." ao erro do fluxo de entrada/saída; limpe o trecho; exit.
-Atribua o first endereço de memória do pedaço deste trecho mais a quantidade de caracteres menos 1 ao last deste trecho.
+Atribua o first endereço de memória do pedaço deste trecho mais a quantidade de caracteres menos 1 ao last endereço de memória do pedaço deste trecho.
 
 Etapas necessárias para que se read uma string desde um console:
 Read o console à string.
@@ -10058,12 +10102,14 @@ e o trecho size
 e o endereçamento dessa contagem 
 devolvendo um result número.
 Se o result número for 0, atribua "Ocorreu um erro na hora de ler a URL: " junto com o URL seguido de "." ao erro do fluxo de entrada/saída; break.
-Atribua o endereço de memória mais a contagem menos 1 ao last deste trecho.
+Atribua o endereço de memória mais a contagem menos 1 ao last endereço de memória do pedaço deste trecho.
 Se a contagem for 0, pare.
 Repita.
 \ clean para cima
-Call "wininet.dll" "InternetCloseHandle" com o URL número identificador.
-Call "wininet.dll" "InternetCloseHandle" com o internet número identificador.
+Call "wininet.dll" "InternetCloseHandle" com 
+o URL número identificador.
+Call "wininet.dll" "InternetCloseHandle" com 
+o internet número identificador.
 
 Etapas necessárias para que se reassign um endereço de memória usando um quantidade de pedaços:
 Se o endereço de memória for inexistente, assign o endereço de memória usando o quantidade de pedaços; exit.
@@ -10189,9 +10235,9 @@ Obtenha uma row usando o anchor número da linha desta seleção e o text.
 Lance um subtexto sobre a string deste row.
 Atribua o first endereço de memória do pedaço deste subtexto mais o anchor column# desta seleção menos 2 ao last endereço de memória do pedaço deste subtexto.
 Obtenha uma segunda row usando o número de linhas do cursor desta seleção e o text.
-Lance uma segunda subtexto sobre a string desta segunda row.
-Atribua o first desta segunda subtexto mais o caret column# desta seleção menos 1 ao first desta segunda subtexto.
-Atribua o subtexto junto com a segunda subtexto à string desta row.
+Lance um segundo subtexto sobre a string desta segunda row.
+Atribua o first endereço de memória do pedaço deste segundo subtexto mais o caret column# desta seleção menos 1 ao first endereço de memória do pedaço deste segundo subtexto.
+Atribua o subtexto junto com o segundo subtexto à string desta row.
 Remove as rows of o text between o next desta row e a segunda row.
 Atribua o anchor desta seleção ao caret deste text.
 Desvencilhe-se de o text.
@@ -10333,14 +10379,17 @@ Se o conteúdo deste last endereço de memória do pedaço desta string não for irre
 Remove o last pedaço desde a string.
 Repita.
 
-Etapas necessárias para que se rename um endereço completo para uma segunda endereço completo no sistema de arquivos:
+Etapas necessárias para que se rename um endereço completo para um segundo endereço completo no sistema de arquivos:
 Isole o endereço completo.
 Remove algum tipo de trailing barra invertida desde o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Isole a segunda endereço completo.
-Remove algum tipo de trailing barra invertida desde a segunda endereço completo.
-Modifique através do caractere NUL a segunda endereço completo.
-Call "kernel32.dll" "MoveFileA" com o first deste endereço completo e o first desta segunda endereço completo devolvendo um número.
+Isole o segundo endereço completo.
+Remove algum tipo de trailing barra invertida desde o segundo endereço completo.
+Modifique através do caractere NUL o segundo endereço completo.
+Call "kernel32.dll" "MoveFileA" com 
+o first deste endereço completo 
+e o first deste segundo endereço completo 
+devolvendo um número.
 Limpe o erro do fluxo de entrada/saída.
 Se o número não for 0, cancele.
 Atribua "Ocorreu um erro ao renomear o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
@@ -10733,7 +10782,11 @@ Se o talker for inexistente, cancele.
 Se a string estiver em branco, cancele.
 Converta a string para um wide string.
 Modifique através do caractere NUL a wide string.
-Call o speak desta vtable deste talker com o talker e o first deste wide string e 16 [svsfdefault+svsfisnotxml] e 0.
+Call o speak desta vtable deste talker com 
+o talker 
+e o first deste wide string 
+e 16 [svsfdefault+svsfisnotxml] 
+e 0.
 
 Etapas necessárias para que se redimensione proporcionalmente uma caixa usando um ratio;
 Etapas necessárias para que se redimensione proporcionalmente uma caixa usando um fração:
@@ -11116,9 +11169,13 @@ Atribua 1 ao detector. \ era "Atribua sim ao detector." O valor binário do termo
 Etapas necessárias para que se defina um endereço completo para read-write mode:
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Call "kernel32.dll" "GetFileAttributesA" com o first deste endereço completo devolvendo um número.
+Call "kernel32.dll" "GetFileAttributesA" com 
+o first deste endereço completo 
+devolvendo um número.
 Conjuncione logicamente o número com -2 [everything except file_attribute_readonly].
-Call "kernel32.dll" "SetFileAttributesA" com o first deste endereço completo e o número.
+Call "kernel32.dll" "SetFileAttributesA" com 
+o first deste endereço completo 
+e o número.
 
 Um sheet é uma caixa.
 
@@ -12492,8 +12549,13 @@ Se o endereço da pasta não estiver no sistema de arquivos, atribua "A pasta: " j
 Defina o endereço completo para read-write mode.
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Call "kernel32.dll" "CreateFileA" com o first deste endereço completo e 1073741824 [generic_write] 
-And 0 e 0 e 2 [create_always] e -2147483520 [file_flag_write_through ou file_attribute_normal] e 0 devolvendo um número identificador.
+Call "kernel32.dll" "CreateFileA" com 
+o first deste endereço completo 
+e 1073741824 [generic_write] 
+And 0 e 0 e 2 [create_always] 
+e -2147483520 [file_flag_write_through ou file_attribute_normal] 
+e 0 
+devolvendo um número identificador.
 Se o número identificador for -1 [invalid_handle_value], atribua "Ocorreu um erro ao tentar abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
 Call "kernel32.dll" "WriteFile" com 
 o número identificador 
