@@ -177,17 +177,23 @@ o printer canvas \ Um identificador para o contexto do dispositivo.
 e 0.  \ A quantidade de espaço extra, em unidades lógicas, a ser adicionada a cada caractere. 
 \Se o modo de mapeamento atual não for MM_TEXT, o parâmetro nCharExtra será transformado e arredondado para o pixel mais próximo.
 \quero traduzir esse comando como: Mande o printer canvas e o código 0 para a função "SetTextCharacterExtra" da biblioteca "gdi32.dll".
-Call "gdi32.dll" "GetCurrentObject" com o printer canvas \ Um identificador para o contexto do dispositivo.
+Call "gdi32.dll" "GetCurrentObject" com 
+o printer canvas \ Um identificador para o contexto do dispositivo.
 e 6 [obj_font]  \ O tipo de objeto a ser consultado. Este parâmetro pode ser vários valores.
 \ OBJ_FONT -> Retorna a fonte selecionada no momento.
 devolvendo um número identificador. \ Se a função for bem-sucedida, o valor de retorno é um identificador para o objeto especificado. Se a função falhar, o valor de retorno será NULL.
-Call "gdi32.dll" "SelectObject" com o memory canvas \ Um identificador para o contexto do dispositivo.
+Call "gdi32.dll" "SelectObject" com 
+o memory canvas \ Um identificador para o contexto do dispositivo.
 e o número identificador. \ Uma identificador para o objeto a ser selecionado. Nesse caso é o número do comando anterior, retornado pelo GetCurrentObject acima
 Obtenha um largura usando a string e o memory canvas.
-Call "gdi32.dll" "SelectObject" com o memory canvas e o null número da fonte.
+Call "gdi32.dll" "SelectObject" com 
+o memory canvas 
+e o null número da fonte.
 Obtenha uma segunda largura usando a string e o printer canvas.
 Atribua o largura menos a segunda largura dividido pelo quantidade de caracteres desta string a um número.
-Call "gdi32.dll" "SetTextCharacterExtra" com o printer canvas e o número.
+Call "gdi32.dll" "SetTextCharacterExtra" com 
+o printer canvas e 
+o número.
 
 Etapas necessárias para que se align um text usando um alinhamento:
 Atribua o alinhamento ao alinhamento deste text.
@@ -373,7 +379,11 @@ Etapas necessárias para que se assign um endereço de memória usando um quantidad
 Se o quantidade de pedaços for 0, esvazie o endereço de memória; exit.
 Isole o quantidade de pedaços.
 Arredonde o quantidade de pedaços para cima para o nearest power of two.
-Call "kernel32.dll" "HeapAlloc" com o endereço heap e 8 [heap_zero_memory] e o quantidade de pedaços devolvendo o endereço de memória.
+Call "kernel32.dll" "HeapAlloc" com 
+o endereço heap 
+e 8 [heap_zero_memory] 
+e a quantidade de pedaços 
+devolvendo o endereço de memória.
 Se o endereço de memória não for inexistente, adicione 1 para a contagem do heap; exit.
 
 Etapas necessárias para que se role automaticamente um text usando uma localização e um detector:
@@ -396,7 +406,8 @@ Aguarde por 50 milliseconds.
 Um baseline é um número.
 
 Etapas necessárias para que se beep:
-Call "user32.dll" "MessageBeep" com 0.
+Call "user32.dll" "MessageBeep" com 
+0.
 
 Etapas necessárias para que se begin um landscape sheet:
 Make o landscape sheet 1056 pixels por 816 pixels.
@@ -420,7 +431,9 @@ Etapas necessárias para que se begin printing:
 Inicialize o printer canvas.
 Atribua a magnitude desse docinfo ao cbsize deste docinfo.
 Atribua o first deste nome deste module ao lpszdocname deste docinfo.
-Call "gdi32.dll" "StartDocA" com o printer canvas e o endereçamento deste docinfo.
+Call "gdi32.dll" "StartDocA" com 
+o printer canvas 
+e o endereçamento deste docinfo.
 
 Etapas necessárias para que se begin printing um pdf:
 Ligue o documento detector deste pdf state.
@@ -448,28 +461,71 @@ Begin o sheet como um portrait sheet.
 
 Etapas necessárias para que se begin um sheet usando uma caixa:
 Se o documento detector deste pdf state estiver ativo, begin o sheet usando a caixa (pdf style); exit.
-Call "kernel32.dll" "GlobalLock" com o número identificador do modo de dispositivo da impressora devolvendo um pdevmode.
+Call "kernel32.dll" "GlobalLock" com 
+o número identificador do modo de dispositivo da impressora 
+devolvendo um pdevmode.
 Se o pdevmode for inexistente, cancele.
 Disjuncione logicamente o dmfields deste pdevmode usando 1 [dm_orientation].
 Atribua 1 [dmorient_portrait] ao dmorientation deste pdevmode .
 Se a largura desta caixa for maior do que a altura desta caixa, atribua 2 [dmorient_landscape] ao dmorientation deste pdevmode .
-Call "gdi32.dll" "ResetDCA" com o printer canvas e o pdevmode.
-Call "kernel32.dll" "GlobalUnlock" com o número identificador do modo de dispositivo da impressora.
-Call "gdi32.dll" "SetGraphicsMode" com o printer canvas e 2 [gm_advanced].
-Call "gdi32.dll" "SetBkMode" com o printer canvas e 1 [transparent].
-Call "gdi32.dll" "SetMapMode" com o printer canvas e 8 [mm_anisotropic].
-Call "gdi32.dll" "GetDeviceCaps" com o printer canvas e 112 [physicaloffsetx] devolvendo o número X desse par de números.
-Call "gdi32.dll" "GetDeviceCaps" com o printer canvas e 113 [physicaloffsety] devolvendo o número Y deste par de números.
+Call "gdi32.dll" "ResetDCA" com 
+o printer canvas 
+e o pdevmode.
+Call "kernel32.dll" "GlobalUnlock" com 
+o número identificador do modo de dispositivo da impressora.
+Call "gdi32.dll" "SetGraphicsMode" com 
+o printer canvas 
+e 2 [gm_advanced].
+Call "gdi32.dll" "SetBkMode" com 
+o printer canvas 
+e 1 [transparent].
+Call "gdi32.dll" "SetMapMode" com 
+o printer canvas 
+e 8 [mm_anisotropic].
+Call "gdi32.dll" "GetDeviceCaps" com 
+o printer canvas 
+e 112 [physicaloffsetx] 
+devolvendo o número X desse par de números.
+Call "gdi32.dll" "GetDeviceCaps" com 
+o printer canvas 
+e 113 [physicaloffsety] 
+devolvendo o número Y deste par de números.
 Negate o par de números.
-Call "gdi32.dll" "SetViewportOrgEx" com o printer canvas e o número X deste par de números e o número Y deste par de números e nil.
-Call "gdi32.dll" "GetDeviceCaps" com o printer canvas e 88 [logpixelsx] devolvendo o número X deste par de números.
-Call "gdi32.dll" "GetDeviceCaps" com o printer canvas e 90 [logpixelsy] devolvendo o número Y deste par de números.
-Call "gdi32.dll" "SetViewportExtEx" com o printer canvas e o número X deste par de números e o número Y deste par de números e nil.
-Call "gdi32.dll" "SetWindowOrgEx" com o printer canvas e 0 e 0 e nil.
-Call "gdi32.dll" "SetWindowExtEx" com o printer canvas e o tpi e o tpi e nil.
-Call "gdi32.dll" "StartPage" com o printer canvas.
+Call "gdi32.dll" "SetViewportOrgEx" com 
+o printer canvas 
+e o número X deste par de números 
+e o número Y deste par de números 
+e nil.
+Call "gdi32.dll" "GetDeviceCaps" com 
+o printer canvas 
+e 88 [logpixelsx] 
+devolvendo o número X deste par de números.
+Call "gdi32.dll" "GetDeviceCaps" com 
+o printer canvas 
+e 90 [logpixelsy] 
+devolvendo o número Y deste par de números.
+Call "gdi32.dll" "SetViewportExtEx" com 
+o printer canvas 
+e o número X deste par de números 
+e o número Y deste par de números 
+e nil.
+Call "gdi32.dll" "SetWindowOrgEx" com 
+o printer canvas 
+e 0 
+e 0 
+e nil.
+Call "gdi32.dll" "SetWindowExtEx" com 
+o printer canvas 
+e o tpi 
+e o tpi 
+e nil.
+Call "gdi32.dll" "StartPage" com 
+o printer canvas.
 Atribua o printer canvas ao quadro atual.
-Call "gdi32.dll" "GetDeviceCaps" com o printer canvas e 88 [logpixelsx] devolvendo um número.
+Call "gdi32.dll" "GetDeviceCaps" com 
+o printer canvas 
+e 88 [logpixelsx] 
+devolvendo um número.
 Atribua o tpp ao saved tpp.
 Atribua o tpi dividido pelo número ao tpp.
 
@@ -627,7 +683,9 @@ Adicione o número para o last endereço de memória do pedaço deste segmento inici
 Adicione o número para o first endereço de memória do pedaço deste segmento final deste percorredor.
 
 Etapas necessárias para que se buzz:
-Call "kernel32.dll" "Beep" com 220 e 200.
+Call "kernel32.dll" "Beep" com 
+220 
+e 200.
 
 Um quantidade de pedaços é uma contagem.
 
@@ -895,7 +953,8 @@ Etapas necessárias para que se limpe um wyrd:
 Atribua 0 ao wyrd.
 
 Etapas necessárias para que se close um file:
-Call "kernel32.dll" "CloseHandle" com o file.
+Call "kernel32.dll" "CloseHandle" com 
+o file.
 
 Um CLSID é um UUID. \ Class ID
 
@@ -1038,16 +1097,28 @@ Se a message for 516 [Hex 204], execute algum tipo de wm-rbuttondown com o l-par
 Se a message for 518 [Hex 206], execute algum tipo de wm-rbuttondblclk com o l-param; atribua 0 para EAX; exit.
 Se a message for 032 [Hex 20], execute algum tipo de wm-setcursor; atribua 1 para EAX; exit.
 Se a message for 260 [Hex 104], execute algum tipo de wm-syskeydown com o w-param e o l-param; atribua 0 para EAX; exit.
-Call "user32.dll" "DefWindowProcA" com o window e o message e o w-param e o l-param.
+Call "user32.dll" "DefWindowProcA" com 
+a window 
+e a message 
+e 
+o w-param 
+e o l-param.
 
 Etapas necessárias para que se compativelmente aguarde por um process endereço de memória:
-Call "kernel32.dll" "WaitForSingleObject" com o conteúdo deste process endereço de memória e -1 [tTmpo em milisegundos.  O valor -1 informa que a função retornará apenas quando o objeto for sinalizado.].
+Call "kernel32.dll" "WaitForSingleObject" com 
+o conteúdo deste process endereço de memória 
+e -1 [tempo em milisegundos.  O valor -1 informa que a função retornará apenas quando o objeto for sinalizado.].
 Call "kernel32.dll" "CloseHandle" com o conteúdo deste process endereço de memória.
 Atribua 0 ao conteúdo deste process endereço de memória. \ conteúdo = conteúdo
-Call "user32.dll" "GetForegroundWindow" devolvendo uma window.
+Call "user32.dll" "GetForegroundWindow" 
+devolvendo uma window.
 Se a window for a main window, atribua 0 para EAX; exit.
-Call "user32.dll" "ShowWindow" com a main window e 6 [sw_minimize].
-Call "user32.dll" "ShowWindow" com a main window e 9 [sw_restore].
+Call "user32.dll" "ShowWindow" com 
+a main window 
+e 6 [sw_minimize].
+Call "user32.dll" "ShowWindow" com 
+a main window 
+e 9 [sw_restore].
 Atribua 0 para EAX. \ abra return value of thread
 
 \Um console é uma coisa com 
@@ -1128,7 +1199,7 @@ Converta o pedaço para um cifra hexadecimal.
 Atribua "%" junto com a cifra hexadecimal ao query pedaço.
 
 Etapas necessárias para que se converta uma cor para um código da cor:
-Se a cor estiver clear, atribua 16777215 [$00FFFFFF] ao código da cor; exit. \ pincel preto becomes white
+Se a cor estiver clear, atribua 16777215 [$00FFFFFF] ao código da cor; exit. \ a cor transparente fica branca 
 Isole a cor.
 Redimensione proporcionalmente a saturação desta cor usando 240/1000.
 Limite a saturação desta cor para 1 e 239.
@@ -1136,14 +1207,22 @@ Redimensione proporcionalmente a luminosidade desta cor usando 240/1000.
 Limite a luminosidade desta cor para 1 e 239.
 Redimensione proporcionalmente a matiz desta cor usando 240/3600.
 Limite a matiz desta cor para 1 e 239.
-Call "shlwapi.dll" "ColorHLSToRGB" com a matiz desta cor e a luminosidade desta cor e a saturação desta cor devolvendo o código da cor.
+Call "shlwapi.dll" "ColorHLSToRGB" com 
+a matiz desta cor 
+e a luminosidade desta cor 
+e a saturação desta cor 
+devolvendo o código da cor.
 
 Etapas necessárias para que se converta uma cor para um espaço de cor RGB:
 Converta a cor para um código da cor.
 Converta o código da cor para o espaço de cor RGB.
 
 Etapas necessárias para que se converta um código da cor para uma cor:
-Call "shlwapi.dll" "ColorRGBToHLS" com o código da cor e um endereçamento desse wyrd e uma segunda endereçamento desse wyrd e um terceiro endereçamento deste wyrd.
+Call "shlwapi.dll" "ColorRGBToHLS" com 
+o código da cor e 
+um endereçamento desse wyrd 
+e um segundo endereçamento desse wyrd 
+e um terceiro endereçamento deste wyrd.
 Atribua o wyrd à matiz desta cor.
 Atribua a segunda wyrd à luminosidade desta cor.
 Atribua o terceiro wyrd à saturação desta cor.
@@ -1165,7 +1244,10 @@ Atribua o código da cor ao espectro azul deste espaço de cor RGB.
 
 Etapas necessárias para que se converta um filetime para uma string:
 Limpe a string.
-Call "kernel32.dll" "FileTimeToSystemTime" com o endereçamento deste filetime e o endereçamento desse systemtime devolvendo um número.
+Call "kernel32.dll" "FileTimeToSystemTime" com 
+o endereçamento deste filetime 
+e o endereçamento desse systemtime 
+devolvendo um número.
 Se o número for 0, cancele.
 Atribua o wyear deste systemtime ao year desse date/time.
 Atribua o wmonth deste systemtime ao month deste date/time.
@@ -1281,7 +1363,10 @@ Etapas necessárias para que se converta um l-param para um tecla:
 Atribua o l-param à tecla.
 Desloque a tecla right 16 bits.
 Conjuncione logicamente a tecla com 255.
-Call "user32.dll" "MapVirtualKeyA" com a tecla e 1 devolvendo a tecla.
+Call "user32.dll" "MapVirtualKeyA" com 
+a tecla 
+e 1 
+devolvendo a tecla.
 Se o numlock tecla was not toggled, cancele.
 Se a tecla for a tecla Insert, atribua o numpad-tecla zero à tecla; exit.
 Se a tecla for a tecla Delete, atribua o numpad-period tecla à tecla; exit.
@@ -1579,7 +1664,12 @@ Atribua 1 ao dwSchemeLength destes URL_COMPONENTS.
 Atribua 1 ao dwHostNameLength destes URL_COMPONENTS.
 Atribua 1 ao dwUrlPathLength destes URL_COMPONENTS.
 Atribua 1 ao dwExtraInfoLength destes URL_COMPONENTS.
-Call "wininet.dll" "InternetCrackUrlA" com o first desta URL e 0 e 0 e o endereçamento destes URL_COMPONENTS devolvendo um número.
+Call "wininet.dll" "InternetCrackUrlA" com 
+o first desta URL 
+e 0 
+e 0 
+e o endereçamento destes URL_COMPONENTS 
+devolvendo um número.
 Converta o lpszScheme destes URL_COMPONENTS e o dwSchemeLength destes URL_COMPONENTS para o nome do protocolo desta URL simplificada.
 Converta o lpszHostName destes URL_COMPONENTS e o dwHostNameLength destes URL_COMPONENTS para o nome de host desta URL simplificada.
 Converta o lpszUrlPath destes URL_COMPONENTS e o dwUrlPathLength destes URL_COMPONENTS para o endereço de recurso desta URL simplificada.
@@ -1633,20 +1723,27 @@ Intel $47. \ inc edi
 Intel $49. \ dec ecx
 Intel $0F85F3FFFFFF. \ jnz forward
 
-Etapas necessárias para que se copie um event para um segunda event: \ mudar o "segunda" aqui
-Se o event for inexistente, esvazie a segunda event; exit.
-Crie a segunda event.
-Atribua a categoria deste event à categoria desta segunda event.
-Atribua o detector de tecla Shift deste event ao detector de tecla Shift desta segunda event.
-Atribua o detector de tecla ctrl deste event ao detector de tecla ctrl desta segunda event.
-Atribua o detector de tecla alt deste event ao detector de tecla alt desta segunda event.
-Atribua a localização deste event à localização desta segunda event.
-Atribua a tecla deste event à tecla desta segunda event.
-Atribua o pedaço deste event ao pedaço desta segunda event.
+Etapas necessárias para que se copie um event para um segundo event: \ mudar o "segunda" aqui
+Se o event for inexistente, esvazie a segundo event; exit.
+Crie a segundo event.
+Atribua a categoria deste event à categoria deste segundo event.
+Atribua o detector de tecla Shift deste event ao detector de tecla Shift deste segundo event.
+Atribua o detector de tecla ctrl deste event ao detector de tecla Ctrl deste segundo event.
+Atribua o detector de tecla alt deste event ao detector de tecla Alt deste segundo event.
+Atribua a localização deste event à localização deste segundo event.
+Atribua a tecla deste event à tecla deste segundo event.
+Atribua o pedaço deste event ao pedaço deste segundo event.
 
-Etapas necessárias para que se copie um gpbitmap Para uma segunda gpbitmap:
+Etapas necessárias para que se copie um gpbitmap Para uma segunda gpbitmap: \verificar
 Se o gpbitmap for inexistente, esvazie a segunda gpbitmap; exit.
-Call "gdiplus.dll" "GdipCloneBitmapAreaI" com 0 e 0 e o largura deste gpbitmap e a altura deste gpbitmap e 0 [pixelformatdontcare] and the gpbitmap e o endereçamento desta segunda gpbitmap.
+Call "gdiplus.dll" "GdipCloneBitmapAreaI" com 
+0 
+e 0 
+e a largura deste gpbitmap 
+e a altura deste gpbitmap 
+e 0 [pixelformatdontcare] 
+e o gpbitmap 
+e o endereçamento desta segunda gpbitmap.
 
 Etapas necessárias para que se copie o guts of um text Para uma segunda text:
 Se o text for inexistente, cancele.
@@ -1760,17 +1857,34 @@ Etapas necessárias para que se crie um crypt session com um passphrase string:
 Limpe o erro do fluxo de entrada/saída.
 Aloque memória para o crypt session.
 \ acquire context
-Call "advapi32.dll" "CryptAcquireContextA" com o endereçamento deste HCRYPTPROV deste crypt session e 0 e "Microsoft Enhanced Cryptographic Provider v1.0"'s first endereço de memória do pedaço And 1 [prov_rsa_full] e -268435456 [crypt_verifycontext] devolvendo um result número.
-Se o result for 0, atribua "Erro. Não foi possível adquirir o contexto." ao erro do fluxo de entrada/saída; destrua o crypt session; exit.
+Call "advapi32.dll" "CryptAcquireContextA" com 
+o endereçamento deste HCRYPTPROV deste crypt session 
+e 0 
+e "Microsoft Enhanced Cryptographic Provider v1.0"'s first endereço de memória do pedaço 
+e 1 [prov_rsa_full] 
+e -268435456 [crypt_verifycontext] 
+devolvendo um result número.
+Se o result número for 0, atribua "Erro. Não foi possível adquirir o contexto." ao erro do fluxo de entrada/saída; destrua o crypt session; exit.
 \ crie hash
 Call "advapi32.dll" "CryptCreateHash" com o HCRYPTPROV deste crypt session e 32771 [calg_md5] e 0 e 0 And o endereçamento deste HCRYPTHASH deste crypt session devolvendo o result número.
-Se o result for 0, atribua "Erro. Não foi possível criar o hash." ao erro do fluxo de entrada/saída; destrua o crypt session; exit.
+Se o result número for 0, atribua "Erro. Não foi possível criar o hash." ao erro do fluxo de entrada/saída; destrua o crypt session; exit.
 \ hash passphrase
-Call "advapi32.dll" "CryptHashData" com o HCRYPTHASH deste crypt session e o first desta passphrase e a quantidade de caracteres desta passphrase e 0 devolvendo o result número.
-Se o result for 0, atribua "Erro. Não foi possível fazer o hash da senha." ao erro do fluxo de entrada/saída; destrua o crypt session; exit.
+Call "advapi32.dll" "CryptHashData" com 
+o HCRYPTHASH deste crypt session 
+e o first desta passphrase 
+e a quantidade de caracteres desta passphrase 
+e 0 
+devolvendo o result número.
+Se o result número for 0, atribua "Erro. Não foi possível fazer o hash da senha." ao erro do fluxo de entrada/saída; destrua o crypt session; exit.
 \ derive session tecla
-Call "advapi32.dll" "CryptDeriveKey" com o HCRYPTPROV deste crypt session e 26625 [calg_rc4 stream cipher] e o HCRYPTHASH deste crypt session And 8388608 [128 bit] e o endereçamento deste hcryptkey desta crypt session devolvendo o result número.
-Se o result for 0, atribua "Erro. Não foi possível derivar a chave da sessão." ao erro do fluxo de entrada/saída; destrua o crypt session; exit.
+Call "advapi32.dll" "CryptDeriveKey" com 
+o HCRYPTPROV deste crypt session 
+e 26625 [calg_rc4 stream cipher] 
+e o HCRYPTHASH deste crypt session 
+e 8388608 [128 bit] 
+e o endereçamento deste hcryptkey desta crypt session 
+devolvendo o result número.
+Se o result número for 0, atribua "Erro. Não foi possível derivar a chave da sessão." ao erro do fluxo de entrada/saída; destrua o crypt session; exit.
 
 Etapas necessárias para que se crie um dyad:
 Aloque memória para o dyad.
@@ -1835,30 +1949,48 @@ Unassign o original abc endereço de memória.
 
 Etapas necessárias para que se crie uns font larguras usando uma font e uma string:
 Aloque memória para o font larguras.
-Atribua o font à font destas font larguras.
+Atribua a font à font destas font larguras.
 Atribua a quantidade de caracteres desta string à contagem destas font larguras.
 Se a string estiver em branco, cancele.
 Atribua a magnitude desse gcpresults ao lstructsize destes gcpresults.
 Atribua a quantidade de caracteres desta string ao nglyphs destes gcpresults.
 Assign o lpdx destes gcpresults usando a quantidade de caracteres desta string times a magnitude desse número.
-Crie o número da fonte of o memory canvas usando o font.
-Call "gdi32.dll" "GetCharacterPlacementA" com o memory canvas e o first endereço de memória do pedaço desta string And a quantidade de caracteres desta string e 0 e o endereçamento deste gcpresults e 0.
+Crie o número da fonte of o memory canvas usando a font.
+Call "gdi32.dll" "GetCharacterPlacementA" com 
+o memory canvas 
+e o first endereço de memória do pedaço desta string 
+e a quantidade de caracteres desta string 
+e 0 
+e o endereçamento deste gcpresults 
+e 0.
 Destrua o número da fonte of o memory canvas.
 Atribua o lpdx destes gcpresults ao data destes font larguras.
 
 Etapas necessárias para que se crie um gpbitmap usando um trecho:
 Limpe o erro do fluxo de entrada/saída.
-Call "kernel32.dll" "GlobalAlloc" com 2 [gmem_moveable] e a quantidade de caracteres deste trecho devolvendo um número identificador.
-Call "kernel32.dll" "GlobalLock" com o número identificador devolvendo um endereço de memória.
+Call "kernel32.dll" "GlobalAlloc" com 
+2 [gmem_moveable] 
+e a quantidade de caracteres deste trecho 
+devolvendo um número identificador.
+Call "kernel32.dll" "GlobalLock" com 
+o número identificador devolvendo um endereço de memória.
 Copie pedaços desde o first endereço de memória do pedaço deste trecho para o endereço de memória pelo quantidade de caracteres deste trecho.
-Call "kernel32.dll" "GlobalUnlock" com o número identificador.
-Call "ole32.dll" "CreateStreamOnHGlobal" com o número identificador e 1 [true] e o endereçamento desse istream.
-Call "gdiplus.dll" "GdipCreateBitmapFromStream" com o istream e o endereçamento deste gpbitmap devolvendo um número.
+Call "kernel32.dll" "GlobalUnlock" com 
+o número identificador.
+Call "ole32.dll" "CreateStreamOnHGlobal" com 
+o número identificador 
+e 1 [true] 
+e o endereçamento desse istream.
+Call "gdiplus.dll" "GdipCreateBitmapFromStream" com 
+o istream 
+e o endereçamento deste gpbitmap 
+devolvendo um número.
 Se o número não for 0, atribua "Não sei como processar este tipo de imagem." ao erro do fluxo de entrada/saída; esvazie o gpbitmap.
 Call o release deste vtable deste istream com o istream.
 
 Etapas necessárias para que se crie um gpimageattributes (grayscale):
-Call "gdiplus.dll" "GdipCreateImageAttributes" com o endereçamento destes gpimageattributes.
+Call "gdiplus.dll" "GdipCreateImageAttributes" com 
+o endereçamento destes gpimageattributes.
 Call "gdiplus.dll" "GdipSetImageAttributesColorMatrix" com 
 o gpimageattributes
  e 0 [coloradjusttypedefault] 
@@ -1870,51 +2002,97 @@ o gpimageattributes
 Etapas necessárias para que se crie o hbrush of um canvas usando uma cor:
 Converta a cor para um código da cor.
 Se a cor estiver clear, atribua o null hbrush a um hbrush.
-Se a cor não estiver clear, call "gdi32.dll" "CreateSolidBrush" com o código da cor devolvendo o hbrush.
-Call "gdi32.dll" "SelectObject" com o canvas e o hbrush.
+Se a cor não estiver clear, call "gdi32.dll" "CreateSolidBrush" com 
+o código da cor 
+devolvendo o hbrush.
+Call "gdi32.dll" "SelectObject" com 
+o canvas 
+e o hbrush.
 
 Etapas necessárias para que se crie o número da fonte of um canvas usando um font:
 Converta a font para um número da fonte.
-Call "gdi32.dll" "SelectObject" com o canvas e o número da fonte.
+Call "gdi32.dll" "SelectObject" com 
+o canvas 
+e o número da fonte.
 
 Etapas necessárias para que se crie o hpen of um canvas usando uma cor:
 Converta a cor para um código da cor.
 Se a cor estiver clear, atribua o null hpen a um hpen.
 Atribua o tpp times o grossura do pincel a um número.
 Se o canvas for o printer canvas, atribua 1 pixel times o grossura do pincel ao número.
-Se a cor não estiver clear, call "gdi32.dll" "CreatePen" com 0 [ps_solid] e o número e o código da cor devolvendo o hpen.
-Call "gdi32.dll" "SelectObject" com o canvas e o hpen.
+Se a cor não estiver clear, call "gdi32.dll" "CreatePen" com 
+0 [ps_solid] 
+e o número 
+e o código da cor 
+devolvendo o hpen.
+Call "gdi32.dll" "SelectObject" com 
+o canvas 
+e o hpen.
 
 Etapas necessárias para que se crie um hrgn usando uma caixa:
 Isole a caixa.
 Adicione o tpp para o canto inferior direito desta caixa.
-Call "gdi32.dll" "BeginPath" com o quadro atual.
-Call "gdi32.dll" "Rectangle" com o quadro atual e a coordenada esquerda desta caixa e a coordenada superior desta caixa e a coordenada direita desta caixa e a coordenada inferior desta caixa.
-Call "gdi32.dll" "EndPath" com o quadro atual.
-Call "gdi32.dll" "PathToRegion" com o quadro atual devolvendo o hrgn.
+Call "gdi32.dll" "BeginPath" com 
+o quadro atual.
+Call "gdi32.dll" "Rectangle" com 
+o quadro atual 
+e a coordenada esquerda desta caixa 
+e a coordenada superior desta caixa 
+e a coordenada direita desta caixa 
+e a coordenada inferior desta caixa.
+Call "gdi32.dll" "EndPath" com 
+o quadro atual.
+Call "gdi32.dll" "PathToRegion" com 
+o quadro atual devolvendo o hrgn.
 
 Etapas necessárias para que se crie um hrgn usando um elipse:
 Atribua a caixa desta elipse a uma caixa.
-Call "gdi32.dll" "BeginPath" com o quadro atual.
-Call "gdi32.dll" "Ellipse" com o quadro atual e a coordenada esquerda desta caixa e a coordenada superior desta caixa e a coordenada direita desta caixa e a coordenada inferior desta caixa.
-Call "gdi32.dll" "EndPath" com o quadro atual.
-Call "gdi32.dll" "PathToRegion" com o quadro atual devolvendo o hrgn.
+Call "gdi32.dll" "BeginPath" com 
+o quadro atual.
+Call "gdi32.dll" "Ellipse" com 
+o quadro atual 
+e a coordenada esquerda desta caixa 
+e a coordenada superior desta caixa 
+e a coordenada direita desta caixa 
+e a coordenada inferior desta caixa.
+Call "gdi32.dll" "EndPath" com 
+o quadro atual.
+Call "gdi32.dll" "PathToRegion" com 
+o quadro atual 
+devolvendo o hrgn.
 
 Etapas necessárias para que se crie um hrgn usando um polígono:
 Se o polígono for inexistente, atribua 0 ao hrgn; exit.
 Crie um vértice array usando os vértices deste polígono.
-Call "gdi32.dll" "LPtoDP" com o quadro atual e a localização endereço de memória deste vértice array e a contagem deste vértice array.
-Call "gdi32.dll" "CreatePolygonRgn" com a localização endereço de memória deste vértice array e a contagem deste vértice array e 2 [winding] devolvendo o hrgn.
+Call "gdi32.dll" "LPtoDP" com 
+o quadro atual 
+e a localização endereço de memória deste vértice array 
+e a contagem deste vértice array.
+Call "gdi32.dll" "CreatePolygonRgn" com 
+a localização endereço de memória deste vértice array 
+e a contagem deste vértice array 
+e 2 [winding] devolvendo o hrgn.
 Destrua o vértice array.
 
 Etapas necessárias para que se crie um hrgn usando uma caixa arredondada:
 Se o raio desta caixa arredondada for 0, crie o hrgn usando a caixa arredondada como uma caixa; exit.
 Atribua a caixa arredondada a uma caixa.
 Atribua o raio desta caixa arredondada times 2 a um diameter número.
-Call "gdi32.dll" "BeginPath" com o quadro atual.
-Call "gdi32.dll" "RoundRect" com o quadro atual e a coordenada esquerda desta caixa e a coordenada superior desta caixa e a coordenada direita desta caixa e a coordenada inferior desta caixa e o diameter e o diameter.
-Call "gdi32.dll" "EndPath" com o quadro atual.
-Call "gdi32.dll" "PathToRegion" com o quadro atual devolvendo o hrgn.
+Call "gdi32.dll" "BeginPath" com 
+o quadro atual.
+Call "gdi32.dll" "RoundRect" com 
+o quadro atual 
+e a coordenada esquerda desta caixa 
+e a coordenada superior desta caixa 
+e a coordenada direita desta caixa 
+e a coordenada inferior desta caixa 
+e o diameter 
+e o diameter.
+Call "gdi32.dll" "EndPath" com 
+o quadro atual.
+Call "gdi32.dll" "PathToRegion" com 
+o quadro atual 
+devolvendo o hrgn.
 
 Etapas necessárias para que se crie um catálogo usando uma contagem de buckets:
 Aloque memória para o catálogo.
@@ -1968,7 +2146,8 @@ e 1 [create_new]
 e 128 [file_attribute_normal] 
 e 0 
 devolvendo um número identificador.
-Call "kernel32.dll" "CloseHandle" com o número identificador.
+Call "kernel32.dll" "CloseHandle" com 
+o número identificador.
 Limpe o erro do fluxo de entrada/saída.
 Se o número identificador não for -1 [invalid_handle_value], cancele.
 Atribua "Erro. Não foi possível criar o seguinte arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
@@ -2046,17 +2225,36 @@ Se o erro do fluxo de entrada/saída não estiver em branco, cancele.
 Atribua 2 [af_inet] ao sin_family deste sockaddr.
 Atribua o port ao sin_port deste sockaddr.
 \ crie socket 
-Call "ws2_32.dll" "socket" com 2 [af_inet] e 1 [sock_stream] e 0 [ipproto_ip] devolvendo o socket.
-Se o socket é -1, atribua "Erro. Não foi possível criar o soquete." ao erro do fluxo de entrada/saída; exit.
+Call "ws2_32.dll" "socket" com 
+2 [af_inet] 
+e 1 [sock_stream] 
+e 0 [ipproto_ip] 
+devolvendo o socket.
+Se o socket for -1, atribua "Erro. Não foi possível criar o soquete." ao erro do fluxo de entrada/saída; exit.
 \ connect socket
-Call "ws2_32.dll" "connect" com o socket e o endereçamento deste sockaddr e a magnitude deste sockaddr devolvendo um result número.
-Se o result não for 0, atribua "Erro. Falha na conexão com o soquete." ao erro do fluxo de entrada/saída; exit.
+Call "ws2_32.dll" "connect" com 
+o socket 
+e o endereçamento deste sockaddr 
+e a magnitude deste sockaddr 
+devolvendo um result número.
+Se o result número não for 0, atribua "Erro. Falha na conexão com o soquete." ao erro do fluxo de entrada/saída; exit.
 \ abra send timeout 30 seconds
-Call "ws2_32.dll" "setsockopt" com o socket e 65535 e 4101 [so_sndtimo] e 30 seconds' endereçamento e 4 devolvendo o result número.
-Se o result não for 0, atribua "Erro. Não foi possível definir o tempo limite de recepção 4101 so_sndtimo." ao erro do fluxo de entrada/saída; exit.
+Call "ws2_32.dll" "setsockopt" com 
+o socket 
+e 65535 
+e 4101 [SO_SNDTIMEO]  \O tempo limite, em milissegundos, para bloquear chamadas enviadas.
+e 30 seconds' endereçamento 
+e 4 devolvendo o result número.
+Se o result número não for 0, atribua "Erro na função 'setsockopt' da biblioteca 'Ws2_32.dll'. Valor do parâmetro optname: SO_SNDTIMEO (4101)." ao erro do fluxo de entrada/saída; exit.
 \ abra receive timeout 30 seconds
-Call "ws2_32.dll" "setsockopt" com o socket e 65535 e 4102 [so_rcvtimeo] e 30 seconds' endereçamento e 4 devolvendo o result número.
-Se o result não for 0, atribua "Erro. Não foi possível definir o tempo limite de recepção 4102 so_rcvtimeo." ao erro do fluxo de entrada/saída; exit.
+Call "ws2_32.dll" "setsockopt" com 
+o socket 
+e 65535 
+e 4102 [SO_RCVTIMEO (optname)]  \Define o tempo limite, em milissegundos, para bloquear chamadas recebidas.
+e 30 seconds' endereçamento e 
+4 
+devolvendo o result número.
+Se o result número não for 0, atribua "Erro na função 'setsockopt' da biblioteca 'Ws2_32.dll'. Não foi possível definir o tempo limite de recepção. Valor do parâmetro optname: SO_RCVTIMEO (4102) ." ao erro do fluxo de entrada/saída; exit.
 
 Etapas necessárias para que se crie um conjunto de texto usando uma string:
 Aloque memória para o conjunto de texto.
@@ -2307,7 +2505,11 @@ Etapas necessárias para que se produza o relatório de bugs usando uma string;
 Etapas necessárias para que se produza o relatório de informações usando uma string:
 Isole a string.
 Modifique através do caractere NUL a string.
-Call "user32.dll" "MessageBoxA" com 0 e o first endereço de memória do pedaço desta string e "debug"'s first endereço de memória do pedaço e 0. 
+Call "user32.dll" "MessageBoxA" com 
+0 
+e o first endereço de memória do pedaço desta string 
+e "debug"'s first endereço de memória do pedaço 
+e 0. 
 \\  Chame função "MessageBoxA" contida na biblioteca "user32.dll" informando os parâmetros a seguir: 0, o primeiro caractere do texto em questão, o primeiro caractere do "debug" e 0.
 
 Etapas necessárias para que se produza o relatório de erros usando uma string (quoted);
@@ -2849,25 +3051,33 @@ Se a tecla Ctrl was para baixo, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se uma tecla está sendo pressionada:
-Call "user32.dll" "GetAsyncKeyState" com a tecla devolvendo um wyrd.
+Call "user32.dll" "GetAsyncKeyState" com 
+a tecla 
+devolvendo um wyrd.
 Atribua o wyrd a um número.
 Se o número for menor do que 0, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma tecla está sendo pressionado:
-Call "user32.dll" "GetAsyncKeyState" com a tecla devolvendo um wyrd.
+Call "user32.dll" "GetAsyncKeyState" com 
+a tecla 
+devolvendo um wyrd.
 Atribua o wyrd a um número.
 Se o número for menor do que 0, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma tecla was para baixo:
-Call "user32.dll" "GetKeyState" com a tecla devolvendo um wyrd.
+Call "user32.dll" "GetKeyState" com 
+a tecla 
+devolvendo um wyrd.
 Atribua o wyrd a um número.
 Se o número for menor do que 0, diga sim.
 Diga não.
 
 Etapas necessárias para que se determine se uma tecla was toggled:
-Call "user32.dll" "GetKeyState" com a tecla devolvendo um wyrd.
+Call "user32.dll" "GetKeyState" com 
+a tecla 
+devolvendo um wyrd.
 Atribua o wyrd a um número.
 Conjuncione logicamente o número com 1.
 Se o número for 1, diga sim.
@@ -3023,14 +3233,18 @@ Diga sim.
 Etapas necessárias para que se determine se um endereço completo está no sistema de arquivos:
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Call "kernel32.dll" "GetFileAttributesA" com o first deste endereço completo devolvendo um número.
+Call "kernel32.dll" "GetFileAttributesA" com 
+o first deste endereço completo 
+devolvendo um número.
 Se o número for menor do que 0, diga não.
 Diga sim.
 
 Etapas necessárias para que se determine se um endereço completo é read-only:
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Call "kernel32.dll" "GetFileAttributesA" com o first deste endereço completo devolvendo um número.
+Call "kernel32.dll" "GetFileAttributesA" com 
+o first deste endereço completo 
+devolvendo um número.
 Conjuncione logicamente o número com 1 [file_attribute_readonly].
 Se o número não for 0, diga sim.
 Diga não.
@@ -3179,7 +3393,11 @@ Etapas necessárias para que se determine se uma localização está em um elipse:
 Crie um hrgn usando a elipse.
 Isole a localização.
 Divida a localização pelo tpp.
-Call "gdi32.dll" "PtInRegion" com o hrgn e a coordenada X desta localização e a coordenada Y desta localização devolvendo um número.
+Call "gdi32.dll" "PtInRegion" com 
+o hrgn 
+e a coordenada X desta localização 
+e a coordenada Y desta localização 
+devolvendo um número.
 Destrua o hrgn.
 Se o número for 0, diga não.
 Diga sim.
@@ -3192,9 +3410,17 @@ Diga não.
 Etapas necessárias para que se determine se uma localização está em um polígono:
 Se o polígono for inexistente, diga não.
 Crie um vértice array usando os vértices deste polígono.
-Call "gdi32.dll" "CreatePolygonRgn" com a localização endereço de memória deste vértice array e a contagem deste vértice array e 2 [winding] devolvendo um hrgn.
-Call "gdi32.dll" "PtInRegion" com o hrgn e a coordenada X desta localização e a coordenada Y desta localização devolvendo um número.
-Call "gdi32.dll" "DeleteObject" com o hrgn.
+Call "gdi32.dll" "CreatePolygonRgn" com 
+a localização endereço de memória deste vértice array 
+e a contagem deste vértice array 
+e 2 [winding] devolvendo um hrgn.
+Call "gdi32.dll" "PtInRegion" com 
+o hrgn 
+e a coordenada X desta localização 
+e a coordenada Y desta localização 
+devolvendo um número.
+Call "gdi32.dll" "DeleteObject" com 
+o hrgn.
 Destrua o vértice array.
 Se o número for 0, diga não.
 Diga sim.
@@ -3209,9 +3435,21 @@ Etapas necessárias para que se determine se uma localização está em uma caixa ar
 Isole a caixa arredondada.
 Adicione o tpp para a canto inferior direito desta caixa arredondada.
 Atribua o raio desta caixa arredondada times 2 a um diameter número.
-Call "gdi32.dll" "CreateRoundRectRgn" com a coordenada esquerda desta caixa arredondada e a coordenada superior desta caixa arredondada e a coordenada direita desta caixa arredondada e a coordenada inferior desta caixa arredondada And o diameter e o diameter devolvendo um hrgn.
-Call "gdi32.dll" "PtInRegion" com o hrgn e a coordenada X desta localização e a coordenada Y desta localização devolvendo um número.
-Call "gdi32.dll" "DeleteObject" com o hrgn.
+Call "gdi32.dll" "CreateRoundRectRgn" com 
+a coordenada esquerda desta caixa arredondada 
+e a coordenada superior desta caixa arredondada 
+e a coordenada direita desta caixa arredondada 
+e a coordenada inferior desta caixa arredondada 
+e o diameter 
+e o diameter 
+devolvendo um hrgn.
+Call "gdi32.dll" "PtInRegion" com 
+o hrgn 
+e a coordenada X desta localização 
+e a coordenada Y desta localização 
+devolvendo um número.
+Call "gdi32.dll" "DeleteObject" com 
+o hrgn.
 Se o número for 0, diga não.
 Diga sim.
 
@@ -3581,7 +3819,9 @@ Se o caret column# deste text não for a quantidade de caracteres desta string de
 Diga não.
 
 Etapas necessárias para que se determine se existe text sobre o área de transferência do Windows:
-Call "user32.dll" "IsClipboardFormatAvailable" com 1 [cf_text] devolvendo um número.
+Call "user32.dll" "IsClipboardFormatAvailable" com 
+1 [cf_text] 
+devolvendo um número.
 Se o número for 0, diga não.
 Diga sim.
 
@@ -3741,9 +3981,13 @@ Atribua o caret deste text ao anchor deste text.
 
 Etapas necessárias para que se destrua um crypt session:
 Se o crypt session for inexistente, cancele.
-Call "advapi32.dll" "CryptDestroyKey" com a hcryptkey desta crypt session.
-Call "advapi32.dll" "CryptDestroyHash" com o hcrypthash desta crypt session.
-Call "advapi32.dll" "CryptReleaseContext" com o hcryptprov desta crypt session e 0.
+Call "advapi32.dll" "CryptDestroyKey" com 
+a hcryptkey desta crypt session.
+Call "advapi32.dll" "CryptDestroyHash" com 
+o hcrypthash desta crypt session.
+Call "advapi32.dll" "CryptReleaseContext" com 
+o hcryptprov desta crypt session 
+e 0.
 Desaloque o crypt session.
 
 Etapas necessárias para que se destrua um gpimage:
@@ -3757,19 +4001,32 @@ Call "gdiplus.dll" "GdipDisposeImageAttributes" com o gpimageattributes.
 Esvazie o gpimageattributes.
 
 Etapas necessárias para que se destrua o hbrush of um canvas:
-Call "gdi32.dll" "SelectObject" com o canvas e o null hbrush devolvendo um hbrush.
-Call "gdi32.dll" "DeleteObject" com o hbrush.
+Call "gdi32.dll" "SelectObject" com 
+o canvas 
+e o null hbrush 
+devolvendo um hbrush.
+Call "gdi32.dll" "DeleteObject" com 
+o hbrush.
 
 Etapas necessárias para que se destrua o número da fonte of um canvas:
-Call "gdi32.dll" "SelectObject" com o canvas e o null número da fonte devolvendo um número da fonte.
-Call "gdi32.dll" "DeleteObject" com o número da fonte.
+Call "gdi32.dll" "SelectObject" com 
+o canvas 
+e o null número da fonte 
+devolvendo um número da fonte.
+Call "gdi32.dll" "DeleteObject" com 
+o número da fonte.
 
 Etapas necessárias para que se destrua o hpen of um canvas:
-Call "gdi32.dll" "SelectObject" com o canvas e o null hpen devolvendo um hpen.
-Call "gdi32.dll" "DeleteObject" com o hpen.
+Call "gdi32.dll" "SelectObject" com 
+o canvas 
+e o null hpen 
+devolvendo um hpen.
+Call "gdi32.dll" "DeleteObject" com 
+o hpen.
 
 Etapas necessárias para que se destrua um hrgn:
-Call "gdi32.dll" "DeleteObject" com o hrgn.
+Call "gdi32.dll" "DeleteObject" com 
+o hrgn.
 
 Etapas necessárias para que se destrua um catálogo:
 Se o catálogo for inexistente, cancele.
@@ -3797,7 +4054,9 @@ Se o erro do fluxo de entrada/saída não estiver em branco, cancele.
 Repita.
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Call "kernel32.dll" "RemoveDirectoryA" com o first deste endereço completo devolvendo um número.
+Call "kernel32.dll" "RemoveDirectoryA" com 
+o first deste endereço completo 
+devolvendo um número.
 Limpe o erro do fluxo de entrada/saída.
 Se o número não for 0, cancele.
 Atribua "Erro. Não foi possível apagar a pasta: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
@@ -3805,7 +4064,9 @@ Atribua "Erro. Não foi possível apagar a pasta: " junto com o endereço completo 
 Etapas necessárias para que se destrua uma endereço completo no sistema de arquivos (arquivo):
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Call "kernel32.dll" "DeleteFileA" com o first deste endereço completo devolvendo um número.
+Call "kernel32.dll" "DeleteFileA" com 
+o first deste endereço completo 
+devolvendo um número.
 Limpe o erro do fluxo de entrada/saída.
 Se o número não for 0, cancele.
 Atribua "Erro. Não foi possível apagar o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
@@ -3816,7 +4077,8 @@ Destrua o gpbitmap desta imagem.
 Desaloque o imagem.
 
 Etapas necessárias para que se destrua um socket:
-Call "ws2_32.dll" "closesocket" com o socket.
+Call "ws2_32.dll" "closesocket" com 
+o socket.
 
 Etapas necessárias para que se destrua um vértice usando um polígono:
 Se o vértice for inexistente, cancele.
@@ -3827,9 +4089,12 @@ Destrua o vértice.
 
 Etapas necessárias para que se destrua um winhttp request:
 Se o winhttp request for inexistente, cancele.
-Call "winhttp.dll" "WinHttpCloseHandle" com o request número identificador deste winhttp request.
-Call "winhttp.dll" "WinHttpCloseHandle" com o connection número identificador deste winhttp request.
-Call "winhttp.dll" "WinHttpCloseHandle" com o session número identificador desta request deste winhttp.
+Call "winhttp.dll" "WinHttpCloseHandle" com 
+o request número identificador deste winhttp request.
+Call "winhttp.dll" "WinHttpCloseHandle" com 
+o connection número identificador deste winhttp request.
+Call "winhttp.dll" "WinHttpCloseHandle" com 
+o session número identificador desta request deste winhttp.
 Deallocate o winhttp request.
 
 Um difference é um par de números.
@@ -3940,13 +4205,23 @@ Pinte a caixa com a cor preta e a cor branca.
 Etapas necessárias para que se pinte uma caixa (focus style):
 Isole a caixa.
 Adicione o tpp para o canto inferior direito desta caixa.
-Call "gdi32.dll" "LPtoDP" com o quadro atual e o endereçamento desta caixa e 2.
-Converta a cor branca para um código da cor.
-Call "gdi32.dll" "SetBkColor" com o quadro atual e o código da cor.
-Converta a cor preta para uma segunda código da cor.
-Call "gdi32.dll" "SetTextColor" com o quadro atual e a segunda código da cor.
-Call "gdi32.dll" "SetMapMode" com o quadro atual e 1 [mm_text].
-Call "user32.dll" "DrawFocusRect" com o quadro atual e o endereçamento desta caixa.
+Call "gdi32.dll" "LPtoDP" com 
+o quadro atual 
+e o endereçamento desta caixa e 2.
+Converta a cor branca para um código da cor. \código de pigmento/tonalidade?
+Call "gdi32.dll" "SetBkColor" com 
+o quadro atual 
+e o código da cor.
+Converta a cor preta para um segundo código da cor.
+Call "gdi32.dll" "SetTextColor" com 
+o quadro atual 
+e o segundo código da cor.
+Call "gdi32.dll" "SetMapMode" com 
+o quadro atual 
+e 1 [mm_text].
+Call "user32.dll" "DrawFocusRect" com 
+o quadro atual 
+e o endereçamento desta caixa.
 Normalize o quadro atual.
 
 Etapas necessárias para que se pinte uma caixa em uma cor:
@@ -3959,7 +4234,12 @@ Isole a caixa.
 Crie o hpen of o quadro atual usando a cor da borda.
 Crie o hbrush of o quadro atual usando a cor de preenchimento.
 Se a cor da borda estiver clear, adicione o tpp para o canto superior esquerdo desta caixa.
-Call "gdi32.dll" "Rectangle" com o quadro atual e a coordenada esquerda desta caixa e a coordenada superior desta caixa e a coordenada direita desta caixa e a coordenada inferior desta caixa.
+Call "gdi32.dll" "Rectangle" com 
+o quadro atual 
+e a coordenada esquerda desta caixa 
+e a coordenada superior desta caixa 
+e a coordenada direita desta caixa 
+e a coordenada inferior desta caixa.
 Destrua o hbrush of o quadro atual.
 Destrua o hpen of o quadro atual.
 
@@ -4032,7 +4312,12 @@ Isole a elipse.
 Crie o hpen of o quadro atual usando a cor da borda.
 Crie o hbrush of o quadro atual usando a cor de preenchimento.
 Se a cor da borda estiver clear, adicione o tpp para o canto superior esquerdo desta elipse.
-Call "gdi32.dll" "Ellipse" com o quadro atual e a coordenada esquerda desta elipse e a coordenada superior desta elipse e a coordenada direita desta elipse e a coordenada inferior desta elipse.
+Call "gdi32.dll" "Ellipse" com 
+o quadro atual 
+e a coordenada esquerda desta elipse 
+e a coordenada superior desta elipse 
+e a coordenada direita desta elipse 
+e a coordenada inferior desta elipse.
 Destrua o hbrush of o quadro atual.
 Destrua o hpen of o quadro atual.
 
@@ -4200,10 +4485,21 @@ Pinte os twips.
 Etapas necessárias para que se pinte um line com uma cor:
 Se a página detector deste pdf state estiver ativo, pinte o line com a cor (pdf style); exit.
 Crie o hpen of o quadro atual usando a cor.
-Call "gdi32.dll" "MoveToEx" com o quadro atual e a coordenada X desta start desta line e a coordenada Y desta start desta line e nil.
-Call "gdi32.dll" "LineTo" com o quadro atual e a coordenada X deste end desta line e a coordenada Y deste end desta line.
+Call "gdi32.dll" "MoveToEx" com 
+o quadro atual 
+e a coordenada X desta start desta line 
+e a coordenada Y desta start desta line 
+e nil.
+Call "gdi32.dll" "LineTo" com 
+o quadro atual 
+e a coordenada X deste end desta line 
+e a coordenada Y deste end desta line.
 Converta a cor para um código da cor.
-Call "gdi32.dll" "SetPixelV" com o quadro atual e a coordenada X deste end desta line e a coordenada Y deste end desta line e o código da cor.
+Call "gdi32.dll" "SetPixelV" com 
+o quadro atual 
+e a coordenada X deste end desta line 
+e a coordenada Y deste end desta line 
+e o código da cor.
 Destrua o hpen of o quadro atual.
 
 Etapas necessárias para que se pinte um line com uma cor (pdf style):
@@ -4255,17 +4551,22 @@ Etapas necessárias para que se atribua masking tape around uma caixa:
 Isole a caixa.
 Indent a caixa 1 pixel.
 Cubra externamente a caixa.
-Atribua o original caixa à caixa deste context. \ *** original caixa ? ou indented one?
+Atribua a original caixa à caixa deste context. \ *** original caixa ? ou indented one?
 
 Etapas necessárias para que se pinte um imagem:
 Se a página detector deste pdf state estiver ativo, pinte o imagem (pdf style); exit.
 Se o imagem for inexistente, cancele.
 Save o quadro atual.
 Cubra externamente a caixa desta imagem.
-Call "gdiplus.dll" "GdipCreateFromHDC" com o quadro atual e o endereçamento desse gpgraphic.
-Call "gdiplus.dll" "GdipSetPageUnit" com o gpgraphic e 2 [pixels].
+Call "gdiplus.dll" "GdipCreateFromHDC" com 
+o quadro atual 
+e o endereçamento desse gpgraphic.
+Call "gdiplus.dll" "GdipSetPageUnit" com 
+o gpgraphic 
+e 2 [pixels].
 Pinte o imagem sobre o gpgraphic at a coordenada esquerda desta caixa intacta desta imagem e a coordenada superior desta caixa intacta desta imagem.
-Call "gdiplus.dll" "GdipDeleteGraphics" com o gpgraphic.
+Call "gdiplus.dll" "GdipDeleteGraphics" com 
+o gpgraphic.
 Restore o quadro atual.
 
 Etapas necessárias para que se pinte um imagem (pdf style):
@@ -4274,19 +4575,56 @@ Atribua a coordenada esquerda desta caixa desta imagem menos a coordenada esquer
 Atribua a coordenada superior desta caixa desta imagem menos a coordenada superior desta caixa intacta desta imagem dividido pelo tpp a um número Y.
 Atribua a largura desta caixa desta imagem dividido pelo tpp a um largura.
 Atribua a altura desta caixa desta imagem dividido pelo tpp a uma altura.
-Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com o largura e o altura e 0 e 137224 [pixelformat24bpprgb] e 0 e o endereçamento desse gpbitmap.
-Call "gdiplus.dll" "GdipGetImageGraphicsContext" com o gpbitmap e o endereçamento desse gpgraphic.
+Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com 
+                                     a largura e 
+                                     a altura 
+                                     e 0 
+                                     e 137224 [pixelformat24bpprgb] 
+                                     e 0 
+                                     e o endereçamento desse gpbitmap.
+Call "gdiplus.dll" "GdipGetImageGraphicsContext" com 
+o gpbitmap 
+e o endereçamento desse gpgraphic.
 Se o grayscale detector desta imagem estiver ativo, crie um gpimageattributes (grayscale).
-Call "gdiplus.dll" "GdipDrawImageRectRectI" com o gpgraphic e o gpbitmap desta imagem and 0 e 0 e o largura e o altura and o número X e o número Y e o largura e o altura and 2 [unitpixel] e o gpimageattributes e nil e 0.
+Call "gdiplus.dll" "GdipDrawImageRectRectI" com 
+                                                                                                     o gpgraphic 
+                                                                                                     e o gpbitmap desta imagem 
+                                                                                                     e 0 
+                                                                                                     e 0 
+                                                                                                     e a largura 
+                                                                                                     e a altura 
+                                                                                                     e o número X 
+                                                                                                     e o número Y 
+                                                                                                     e a largura 
+                                                                                                     e a altura 
+                                                                                                     e 2 [unitpixel] 
+                                                                                                     e o gpimageattributes 
+                                                                                                     e nil 
+                                                                                                     e 0.
 Se o gpimageattributes não for inexistente, destrua o gpimageattributes.
-Call "gdiplus.dll" "GdipDeleteGraphics" com o gpgraphic.
+Call "gdiplus.dll" "GdipDeleteGraphics" com 
+o gpgraphic.
 Pinte o gpbitmap at o canto superior esquerdo desta caixa desta imagem (pdf style).
-Call "gdiplus.dll" "GdipDisposeImage" com o gpbitmap.
+Call "gdiplus.dll" "GdipDisposeImage" com 
+o gpbitmap.
 
 Etapas necessárias para que se pinte um imagem sobre um gpgraphic at uma coordenada X e uma coordenada Y:
 Se o imagem for inexistente, cancele.
 Se o grayscale detector desta imagem estiver ativo, crie um gpimageattributes (grayscale).
-Call "gdiplus.dll" "GdipDrawImageRectRectI" com o gpgraphic e o gpbitmap desta imagem And a coordenada X e a coordenada Y e a largura desta caixa intacta desta imagem e a altura desta caixa intacta desta imagem And 0 e 0 e a largura deste gpbitmap desta imagem e a altura deste gpbitmap desta imagem And 2 [unitpixel] e o gpimageattributes e nil e 0.
+Call "gdiplus.dll" "GdipDrawImageRectRectI" com 
+o gpgraphic 
+e o gpbitmap desta imagem 
+e a coordenada X 
+e a coordenada Y 
+e a largura desta caixa intacta desta imagem 
+e a altura desta caixa intacta desta imagem 
+e 0 
+e 0 
+e a largura deste gpbitmap desta imagem 
+e a altura deste gpbitmap desta imagem 
+e 2 [unitpixel] 
+e o gpimageattributes 
+e nil e 0.
 Se o gpimageattributes não for inexistente, destrua o gpimageattributes.
 
 Etapas necessárias para que se pinte um polígono:
@@ -4321,25 +4659,41 @@ Se a cor estiver clear, cancele.
 Crie o hpen of o quadro atual usando a cor.
 Obtenha um vértice desde os vértices deste polígono.
 Se o vértice for inexistente, cancele.
-Call "gdi32.dll" "MoveToEx" com o quadro atual e a coordenada X deste vértice e a coordenada Y deste vértice e nil.
+Call "gdi32.dll" "MoveToEx" com 
+o quadro atual 
+e a coordenada X deste vértice 
+e a coordenada Y deste vértice 
+e nil.
 Percorra.
 Obtenha o vértice desde os vértices deste polígono.
 Se o vértice for inexistente, pare.
-Call "gdi32.dll" "LineTo" com o quadro atual e a coordenada X deste vértice e a coordenada Y deste vértice.
+Call "gdi32.dll" "LineTo" com 
+o quadro atual 
+e a coordenada X deste vértice 
+e a coordenada Y deste vértice.
 Repita.
 Destrua o hpen of o quadro atual.
 Se a localização deste first destes vértices deste polígono for a localização deste last destes vértices deste polígono, cancele.
 Converta a cor para um código da cor.
-Call "gdi32.dll" "SetPixelV" com o quadro atual e a coordenada X deste last destes vértices deste polígono e a coordenada Y deste last destes vértices deste polígono e o código da cor.
+Call "gdi32.dll" "SetPixelV" com 
+o quadro atual 
+e a coordenada X deste last destes vértices deste polígono 
+e a coordenada Y deste last destes vértices deste polígono 
+e o código da cor.
 
 Etapas necessárias para que se pinte um polígono com uma cor (fill only):
 Se o polígono for inexistente, cancele.
 Se a cor estiver clear, cancele.
 Crie o hpen of o quadro atual usando a cor preta.
 Crie o hbrush of o quadro atual usando a cor.
-Call "gdi32.dll" "SetPolyFillMode" com o quadro atual e 2 [winding].
+Call "gdi32.dll" "SetPolyFillMode" com 
+o quadro atual 
+e 2 [winding].
 Crie um vértice array usando os vértices deste polígono.
-Call "gdi32.dll" "Polygon" com o quadro atual e a localização endereço de memória deste vértice array e a contagem deste vértice array.
+Call "gdi32.dll" "Polygon" com 
+o quadro atual 
+e a localização endereço de memória deste vértice array 
+e a contagem deste vértice array.
 Destrua o vértice array.
 Destrua o hbrush of o quadro atual.
 Destrua o hpen of o quadro atual.
@@ -4390,7 +4744,12 @@ Crie o hpen of o quadro atual usando a cor da borda.
 Crie o hbrush of o quadro atual usando a cor de preenchimento.
 Se a cor da borda estiver clear, adicione o tpp para o canto superior esquerdo desta caixa arredondada.
 Atribua o raio desta caixa arredondada times 2 a um diameter número.
-Call "gdi32.dll" "RoundRect" com o quadro atual e a coordenada esquerda desta caixa arredondada e a coordenada superior desta caixa arredondada e a coordenada direita desta caixa arredondada e a coordenada inferior desta caixa arredondada 
+Call "gdi32.dll" "RoundRect" com 
+o quadro atual 
+e a coordenada esquerda desta caixa arredondada 
+e a coordenada superior desta caixa arredondada 
+e a coordenada direita desta caixa arredondada 
+e a coordenada inferior desta caixa arredondada 
 And o diameter e o diameter.
 Destrua o hbrush of o quadro atual.
 Destrua o hpen of o quadro atual.
@@ -4471,7 +4830,11 @@ Pinte a localização com a cor preta.
 
 Etapas necessárias para que se pinte uma localização com uma cor:
 Converta a cor para um código da cor.
-Call "gdi32.dll" "SetPixelV" com o quadro atual e a coordenada X desta localização e a coordenada Y desta localização e o código da cor.
+Call "gdi32.dll" "SetPixelV" com 
+o quadro atual 
+e a coordenada X desta localização 
+e a coordenada Y desta localização 
+e o código da cor.
 
 Etapas necessárias para que se pinte um star usando uma point contagem e um size:
 Atribua 1 e a point contagem a um fração.
@@ -4526,7 +4889,12 @@ Isole a localização.
 Percorra.
 Se o subtexto estiver em branco, pare.
 Se o last endereço de memória do pedaço deste subtexto for maior do que o last endereço de memória do pedaço desta string, atribua o last endereço de memória do pedaço desta string ao last endereço de memória do pedaço deste subtexto.
-Call "gdi32.dll" "TextOutA" com o quadro atual e a coordenada X desta localização e a coordenada Y desta localização e o first endereço de memória do pedaço deste subtexto e a quantidade de caracteres deste subtexto.
+Call "gdi32.dll" "TextOutA" com 
+o quadro atual 
+e a coordenada X desta localização 
+e a coordenada Y desta localização 
+e o first endereço de memória do pedaço deste subtexto 
+e a quantidade de caracteres deste subtexto.
 Obtenha um largura usando o subtexto e o quadro atual.
 Adicione o largura para a coordenada X desta localização.
 Mova o subtexto usando o text cutoff.
@@ -5021,14 +5389,32 @@ Remove trailing pedaços desde o nome do arquivo s/ extensão usando a quantidade 
 Etapas necessárias para que se extraia um imagem usando uma caixa:
 Atribua a largura desta caixa dividido pelo tpp a um largura.
 Atribua a altura desta caixa dividido pelo tpp a uma altura.
-Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com o largura e o altura e 0 e 137224 [pixelformat24bpprgb] e 0 e o endereçamento desse gpbitmap.
-Call "gdiplus.dll" "GdipGetImageGraphicsContext" com o gpbitmap e o endereçamento desse gpgraphic.
-Call "gdiplus.dll" "GdipGetDC" com o gpgraphic e o endereçamento desse bitmap canvas.
+Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com 
+a largura 
+e a altura 
+e 0 
+e 137224 [pixelformat24bpprgb] 
+e 0 
+e o endereçamento desse gpbitmap.
+Call "gdiplus.dll" "GdipGetImageGraphicsContext" com 
+o gpbitmap 
+e o endereçamento desse gpgraphic.
+Call "gdiplus.dll" "GdipGetDC" com 
+o gpgraphic 
+e o endereçamento desse bitmap canvas.
 Normalize o bitmap canvas.
-Call "gdi32.dll" "BitBlt" com o bitmap canvas e 0 e 0 e a largura desta caixa e a altura desta caixa 
+Call "gdi32.dll" "BitBlt" com 
+o bitmap canvas 
+e 0 
+e 0 
+e a largura desta caixa 
+e a altura desta caixa 
 And o quadro atual e a coordenada esquerda desta caixa e a coordenada superior desta caixa e 13369376 [srccopy].
-Call "gdiplus.dll" "GdipReleaseDC" com o gpgraphic e o bitmap canvas.
-Call "gdiplus.dll" "GdipDeleteGraphics" com o gpgraphic.
+Call "gdiplus.dll" "GdipReleaseDC" com 
+o gpgraphic 
+e o bitmap canvas.
+Call "gdiplus.dll" "GdipDeleteGraphics" com 
+o gpgraphic.
 Crie o imagem usando o gpbitmap.
 Atribua a caixa à caixa desta imagem.
 Atribua a caixa à caixa intacta desta imagem.
@@ -5129,22 +5515,32 @@ Destrua o context stack.
 Destrua o context.
 
 Etapas necessárias para que se finalize os cursors:
-Call "user32.dll" "DestroyCursor" com o i-beam cursor. \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-destroycursor
-Call "user32.dll" "DestroyCursor" com o hand cursor.
-Call "user32.dll" "DestroyCursor" com a seta do mouse.
+Call "user32.dll" "DestroyCursor" com 
+o i-beam cursor. \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-destroycursor
+Call "user32.dll" "DestroyCursor" com 
+o hand cursor.
+Call "user32.dll" "DestroyCursor" com 
+a seta do mouse.
 
 Etapas necessárias para que se finalize as fonts:
 \Call "gdi32.dll" "RemoveFontMemResourceEx" com o osmosian font resource.
 \Call "gdi32.dll" "RemoveFontMemResourceEx" com o Segoe UI resource.
-Call "gdi32.dll" "RemoveFontMemResourceEx" com o recurso de fonte Tahoma. \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-removefontmemresourceex
+Call "gdi32.dll" "RemoveFontMemResourceEx" com 
+o recurso de fonte Tahoma. \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-removefontmemresourceex
 
 Etapas necessárias para que se finalize gdi+:
-Call "gdiplus.dll" "GdiplusShutdown" com o gptoken. \https://docs.microsoft.com/en-us/windows/win32/api/gdiplusinit/nf-gdiplusinit-gdiplusshutdown
+Call "gdiplus.dll" "GdiplusShutdown" com 
+o gptoken. \https://docs.microsoft.com/en-us/windows/win32/api/gdiplusinit/nf-gdiplusinit-gdiplusshutdown
 
 Etapas necessárias para que se finalize o memory canvas:
-Call "gdi32.dll" "SelectObject" com o memory canvas e o saved memory hbitmap devolvendo um hbitmap. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
-Call "gdi32.dll" "DeleteObject" com o hbitmap. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
-Call "gdi32.dll" "DeleteDC" com o memory canvas. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deletedc
+Call "gdi32.dll" "SelectObject" com 
+o memory canvas 
+e o saved memory hbitmap 
+devolvendo um hbitmap. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
+Call "gdi32.dll" "DeleteObject" com 
+o hbitmap. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
+Call "gdi32.dll" "DeleteDC" com 
+o memory canvas. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deletedc
 
 Etapas necessárias para que se finalize o module:
 
@@ -5168,7 +5564,8 @@ Call a release desta vtable deste talker com o talker.
 Atribua nil ao talker.
 
 Etapas necessárias para que se finalize o window:
-Call "user32.dll" "DestroyWindow" com a main window. \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-destroywindow
+Call "user32.dll" "DestroyWindow" com 
+a main window. \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-destroywindow
 Percorra.
 Call "user32.dll" "GetMessageA" \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getmessagea
 com o endereçamento dessa msg \Um ponteiro para uma estrutura MSG que recebe informações da mensagem da fila de mensagens do segmento.
@@ -5402,7 +5799,9 @@ Normalize o ângulo de rotação desta imagem.
 Flip o gpbitmap desta imagem.
 
 Etapas necessárias para que se flip um gpimage:
-Call "gdiplus.dll" "GdipImageRotateFlip" com o gpimage e 6 [rotatenoneflipy aka rotate180flipx].
+Call "gdiplus.dll" "GdipImageRotateFlip" com 
+o gpimage 
+e 6 [rotatenoneflipy aka rotate180flipx].
 
 Etapas necessárias para que se flip um imagem:
 Se o imagem for inexistente, cancele.
@@ -5428,9 +5827,14 @@ Desmanche algum tipo de messages.
 Desmanche a fila de eventos.
 
 Etapas necessárias para que se desmanche algum tipo de messages:
-Call "user32.dll" "PeekMessageA" com o endereçamento dessa msg e 0 e 0 e 0 e 1 [pm_remove] devolvendo um número.
+Call "user32.dll" "PeekMessageA" com 
+o endereçamento dessa msg 
+e 0 
+e 0 
+e 0 
+e 1 [pm_remove] devolvendo um número.
 Se o número for 0, cancele.
-Se a message desta msg for 15 [wm_paint], call "user32.dll" "ValidateRect" com a main window e 0.
+Se a message desta msg for 15 [wm_paint], call "user32.dll" "ValidateRect" com a main window e 0. \ que tal ter uma rotina específica para isso?
 Repita.
 
 Etapas necessárias para que se desmanche um fila de eventos:
@@ -5466,7 +5870,7 @@ Um endereço numérico denominado data.
 
 Um pé são 12 polegadas.
 
-Etapas necessárias para que se format um número e um singular string ou um plural string Para uma string:
+Etapas necessárias para que se format um número e um singular string ou um plural string Para uma string: \verificar
 Converta o número para a string.
 Posponha o caractere de espaço para a string.
 Se o número for 1, posponha o singular para a string.
@@ -5484,30 +5888,45 @@ Etapas necessárias para que se obtenha um abca e um abcc usando uma string e um 
 Atribua 0 ao abca.
 Atribua 0 ao abcc.
 Se a quantidade de caracteres desta string for menor do que 1, cancele.
-Call "gdi32.dll" "GetCharABCWidthsA" com o canvas e o conteúdo deste first endereço de memória do pedaço desta string e o conteúdo deste first endereço de memória do pedaço desta string e o endereçamento desse abc.
+Call "gdi32.dll" "GetCharABCWidthsA" com 
+o canvas 
+e o conteúdo deste first endereço de memória do pedaço desta string 
+e o conteúdo deste first endereço de memória do pedaço desta string 
+e o endereçamento desse abc.
 Atribua o abca deste abc ao abca.
-Call "gdi32.dll" "GetCharABCWidthsA" com o canvas e o conteúdo deste last endereço de memória do pedaço desta string e o conteúdo deste last endereço de memória do pedaço desta string e o endereçamento desse segunda abc.
+Call "gdi32.dll" "GetCharABCWidthsA" com 
+o canvas 
+e o conteúdo deste last endereço de memória do pedaço desta string 
+e o conteúdo deste last endereço de memória do pedaço desta string 
+e o endereçamento desse segunda abc.
 Atribua o abcc desta segunda abc ao abcc.
 
 Etapas necessárias para que se obtenha um abca usando uma string e um canvas:
 Atribua 0 ao abca.
 Se a quantidade de caracteres desta string for menor do que 1, cancele.
-Call "gdi32.dll" "GetCharABCWidthsA" com o canvas e o conteúdo deste first endereço de memória do pedaço desta string e o conteúdo deste first endereço de memória do pedaço desta string e o endereçamento desse abc.
+Call "gdi32.dll" "GetCharABCWidthsA" com 
+o canvas 
+e o conteúdo deste first endereço de memória do pedaço desta string 
+e o conteúdo deste first endereço de memória do pedaço desta string 
+e o endereçamento desse abc.
 Atribua o abca deste abc ao abca.
 
 Etapas necessárias para que se obtenha uns addrinfo routines:
 Limpe o erro do fluxo de entrada/saída.
 Call "kernel32.dll" "LoadLibraryA" com "ws2_32.dll"'s first endereço de memória do pedaço devolvendo um número identificador.
-Se o número identificador for 0, atribua "No se pudo leer ws2_32.dll." ao erro do fluxo de entrada/saída; exit.
+Se o número identificador for 0, atribua "Não foi possível obter o valor do endereço de memória da biblioteca ws2_32.dll." ao erro do fluxo de entrada/saída; exit.
 Call "kernel32.dll" "GetProcAddress" com 
 o número identificador \Um identificador para o módulo DLL que contém a função ou variável. 
 \A função LoadLibrary, LoadLibraryEx, LoadPackagedLibrary ou GetModuleHandle retorna esse identificador.
 e "getaddrinfo"'s first endereço de memória do pedaço [ponteiro para uma string constante]  \ O nome da função ou variável, ou o valor ordinal da função. 
 \Se este parâmetro for um valor ordinal, ele deve estar contido na word de ordem inferior; a word de ordem superior deve ser zero.
 devolvendo um endereço de memória. \ obtendo/recebendo/aguardando como resultado
-Se o endereço de memória for inexistente, atribua "Lamento que estas rutinas solo funcionan en Windows XP o superior." ao erro do fluxo de entrada/saída; exit.
+Se o endereço de memória for inexistente, atribua "Infelizmente essa rotinas só funciona no Windows XP ou superior." ao erro do fluxo de entrada/saída; exit.
 Atribua o endereço de memória ao getaddrinfo endereço de memória destas addrinfo routines.
-Call "kernel32.dll" "GetProcAddress" com o número identificador e "freeaddrinfo"'s first endereço de memória do pedaço [ponteiro para uma string constante]  devolvendo o endereço de memória.
+Call "kernel32.dll" "GetProcAddress" com 
+o número identificador 
+e "freeaddrinfo"'s first endereço de memória do pedaço [ponteiro para uma string constante] 
+devolvendo o endereço de memória.
 Se o endereço de memória for inexistente, atribua "Infelizmente essas rotinas só funcionam no Windows XP ou numa versão superior do Windows." ao erro do fluxo de entrada/saída; exit.
 Atribua o endereço de memória ao freeaddrinfo endereço de memória destas addrinfo routines.
 
@@ -5587,7 +6006,11 @@ Atribua a localização e a segunda localização a um line.
 Atribua o center desta line ao center.
 
 Etapas necessárias para que se obtenha uma cor usando uma localização:
-Call "gdi32.dll" "GetPixel" com o quadro atual e a coordenada X desta localização e a coordenada Y desta localização devolvendo um código da cor.
+Call "gdi32.dll" "GetPixel" com 
+o quadro atual 
+e a coordenada X desta localização 
+e a coordenada Y desta localização 
+devolvendo um código da cor.
 Converta o código da cor para a cor.
 
 Etapas necessárias para que se obtenha um column# usando uma row e uma localização e um text:
@@ -5657,12 +6080,14 @@ Se o segundo número for maior do que o número, atribua o segundo número ao dista
 Etapas necessárias para que se obtenha um categoria da unidade de disco por um endereço completo:
 Isole o endereço completo.
 Modifique através do caractere NUL o endereço completo.
-Call "kernel32.dll" "GetDriveTypeA" com o first deste endereço completo devolvendo um número.
+Call "kernel32.dll" "GetDriveTypeA" com 
+o first deste endereço completo 
+devolvendo um número.
 Se o número for 2 [drive_removable], atribua "Disco removível" à categoria da unidade de disco; exit. \ removable drive
 Se o número for 3 [drive_fixed], atribua "Disco Rígido / Pendrive" à categoria da unidade de disco; exit.\ hard disk / flash drive
 Se o número for 4 [drive_remote], atribua "Unidade de rede" à categoria da unidade de disco; exit. \ network drive
 Se o número for 5 [drive_cdrom], atribua "Unidade de CD/DVD" à categoria da unidade de disco; exit. \ cd-rom / dvd drive
-Se o número for 6 [drive_ramdisk], atribua "Unidade de disco RAM" à categoria da unidade de disco; exit. \ virtual unidade de disco em memory
+Se o número for 6 [drive_ramdisk], atribua "Unidade de disco RAM" à categoria da unidade de disco; exit. \ unidade virtual de disco criada a partir da RAM
 Atribua "" à categoria da unidade de disco.
 
 Etapas necessárias para que se obtenha um nome da unidade de disco por um endereço completo:
@@ -5717,15 +6142,21 @@ Limpe o Endereço IP.
 Obtenha um sockaddr usando o host string.
 Se o erro do fluxo de entrada/saída não estiver em branco, cancele.
 Atribua o s_addr deste sin_addr deste sockaddr ao número deste Endereço IP.
-Call "ws2_32.dll" "inet_ntoa" com o número deste Endereço IP devolvendo um pchar.
+Call "ws2_32.dll" "inet_ntoa" com 
+o número deste Endereço IP 
+devolvendo um pchar.
 Converta o pchar para a string deste Endereço IP.
 
 Etapas necessárias para que se obtenha um item (not first time):
 Limpe o erro do fluxo de entrada/saída.
-Call "kernel32.dll" "FindNextFileA" com o número identificador deste item e o endereçamento deste WIN32FINDDATA deste item devolvendo um número.
+Call "kernel32.dll" "FindNextFileA" com 
+o número identificador deste item 
+e o endereçamento deste WIN32FINDDATA deste item 
+devolvendo um número.
 Se o número não for 0, ajuste o item; exit.
 Limpe a categoria deste item.
-Call "kernel32.dll" "FindClose" com o número identificador deste item.
+Call "kernel32.dll" "FindClose" com 
+o número identificador deste item.
 
 Etapas necessárias para que se obtenha um item desde um endereço completo:
 Se o endereço completo não for endereço da pasta-format, cancele.
@@ -5748,7 +6179,11 @@ Ajuste o item.
 
 Etapas necessárias para que se obtenha um mínimo múltiplo comum usando um número e um segundo número:
 Obtenha um máximo divisor comum usando o número e o segundo número.
-Call "kernel32.dll" "MulDiv" com o número e o segundo número e o máximo divisor comum devolvendo o mínimo múltiplo comum.
+Call "kernel32.dll" "MulDiv" com 
+o número 
+e o segundo número 
+e o máximo divisor comum 
+devolvendo o mínimo múltiplo comum.
 
 Etapas necessárias para que se obtenha um letra desde o alphabet:
 Atribua o next letra ao letra.
@@ -5773,14 +6208,23 @@ Etapas necessárias para que se obtenha um offset par de números usando uma strin
 Se o alinhamento for "left", obtenha o número X deste offset par de números usando a string e a caixa (fast - left).
 Se o alinhamento for "right", obtenha o número X deste offset par de números usando a string e a caixa (fast - right).
 Se o alinhamento for "center", obtenha o número X deste offset par de números usando a string e a caixa (fast - center).
-Call "gdi32.dll" "GetTextMetricsA" com o memory canvas e o endereçamento desse textmetric.
+Call "gdi32.dll" "GetTextMetricsA" com 
+o memory canvas 
+e o endereçamento desse textmetric.
 Adicione a altura desta caixa menos a tmheight deste textmetric dividido por 2 para o número Y deste offset par de números.
 
 Etapas necessárias para que se obtenha um outlinetextmetric usando um font:
 Crie o número da fonte of o memory canvas usando o font.
-Call "gdi32.dll" "GetOutlineTextMetricsA" com o memory canvas e 0 e 0 devolvendo um result número.
+Call "gdi32.dll" "GetOutlineTextMetricsA" com 
+o memory canvas 
+e 0 
+e 0 
+devolvendo um result número.
 Assign um poutlinetextmetric usando o result.
-Call "gdi32.dll" "GetOutlineTextMetricsA" com o memory canvas e o result e o poutlinetextmetric.
+Call "gdi32.dll" "GetOutlineTextMetricsA" com 
+o memory canvas 
+e o result 
+e o poutlinetextmetric.
 Atribua o conteúdo deste poutlinetextmetric ao outlinetextmetric.
 Destrua o número da fonte of o quadro atual.
 Unassign o poutlinetextmetric.
@@ -5970,19 +6414,25 @@ Atribua o first endereço de memória do pedaço deste subtexto ao last endereço de
 Etapas necessárias para que se obtenha uma string desde o stack:
 Limpe a string.
 Obtenha um stack entry desde o stack.
-Se o stack entry for inexistente, atribua "ERROR" à string; exit.
+Se o stack entry for inexistente, atribua "ERRO" à string; exit.
 Atribua a string desta stack entry para a string.
 Remove o stack entry desde o stack.
 Destrua o stack entry.
 
-Etapas necessárias para que se obtenha uma string desde o área de transferência do Windows:
+Etapas necessárias para que se obtenha uma string desde a área de transferência do Windows:
 Limpe a string.
-Call "user32.dll" "OpenClipboard" com a main window.
-Call "user32.dll" "GetClipboardData" com 1 [cf_text] devolvendo um número identificador.
+Call "user32.dll" "OpenClipboard" com 
+a main window.
+Call "user32.dll" "GetClipboardData" com 
+1 [cf_text] 
+devolvendo um número identificador.
 Se o número identificador for 0, call "user32.dll" "CloseClipboard"; exit.
-Call "kernel32.dll" "GlobalLock" com o número identificador devolvendo um pchar.
+Call "kernel32.dll" "GlobalLock" com 
+o número identificador 
+devolvendo um pchar.
 Converta o pchar para a string.
-Call "kernel32.dll" "GlobalUnlock" com o número identificador.
+Call "kernel32.dll" "GlobalUnlock" com 
+o número identificador.
 Call "user32.dll" "CloseClipboard".
 
 Etapas necessárias para que se obtenha uma coisa desde umas coisas:
@@ -6006,8 +6456,12 @@ Posponha o pedaço para o segmento inicial.
 Repita.
 
 Etapas necessárias para que se obtenha um largura usando um pedaço e um canvas:
-Call "gdi32.dll" "GetTextExtentPoint32A" com o canvas e o endereçamento deste pedaço e 1 e o endereçamento desse par de números.
-Atribua o número X deste par de números ao largura.
+Call "gdi32.dll" "GetTextExtentPoint32A" com 
+o canvas 
+e o endereçamento deste pedaço 
+e 1 
+e o endereçamento desse par de números.
+Atribua o número X deste par de números à largura.
 
 Etapas necessárias para que se obtenha um largura usando um pedaço e uns font larguras:
 Atribua o pedaço a um número.
@@ -6022,7 +6476,11 @@ Atribua o conteúdo deste endereço numérico ao largura.
 
 Etapas necessárias para que se obtenha um largura usando uma string e um canvas:
 \ assumes font é already selecionado em canvas
-Call "gdi32.dll" "GetTextExtentPoint32A" com o canvas e o first endereço de memória do pedaço desta string e a quantidade de caracteres desta string e o endereçamento desse par de números.
+Call "gdi32.dll" "GetTextExtentPoint32A" com 
+o canvas 
+e o first endereço de memória do pedaço desta string 
+e a quantidade de caracteres desta string 
+e o endereçamento desse par de números.
 Atribua o número X deste par de números ao largura.
 
 Etapas necessárias para que se obtenha um largura usando uma string e um canvas e um font:
@@ -6108,21 +6566,31 @@ Se o número for 0, execute algum tipo de wm-activate com o w-param (deactivate);
 Execute algum tipo de wm-activate com o w-param (activate).
 
 Etapas necessárias para que se execute algum tipo de wm-activate com um w-param (activate):
-Call "user32.dll" "SetFocus" com a main window.
-Call "user32.dll" "ClipCursor" com 0.
+Call "user32.dll" "SetFocus" com 
+a main window.
+Call "user32.dll" "ClipCursor" com 
+0.
 \ seterrormode(sem_failcriticalerrors) \ keeps certain disk erros desde appearing
 Crie um event.
 Atribua "activate" à categoria deste event.
 \Atribua "activar" à categoria deste event.
 Enfileire o event.
-Call "user32.dll" "PostMessageA" com a main window e 0 [wm_null] e 0 e 0.
+Call "user32.dll" "PostMessageA" com 
+a main window 
+e 0 [wm_null] 
+e 0 
+e 0.
 
 Etapas necessárias para que se execute algum tipo de wm-activate com um w-param (deactivate):
 Crie um event.
 Atribua "deactivate" à categoria deste event.
 \Atribua "desactivar" à categoria deste event.
 Enfileire o event.
-Call "user32.dll" "PostMessageA" com a main window e 0 [wn_null] e 0 e 0.
+Call "user32.dll" "PostMessageA" com 
+a main window 
+e 0 [wn_null] 
+e 0 
+e 0.
 
 Etapas necessárias para que se execute algum tipo de wm-char com um w-param e um l-param:
 \Se a tecla Alt was para baixo, cancele. \ removed por Spanish teclaboard AltGr e ctrl+alt characters
@@ -6141,7 +6609,8 @@ Etapas necessárias para que se execute algum tipo de wm-create com um window:
 Atribua a window à main window.
 
 Etapas necessárias para que se execute algum tipo de wm-destroy:
-Call "user32.dll" "PostQuitMessage" com 0.
+Call "user32.dll" "PostQuitMessage" com 
+0.
 
 Etapas necessárias para que se execute algum tipo de wm-lbuttondblclk com um l-param:
 Crie um event.
@@ -6164,8 +6633,12 @@ Converta o l-param para a localização deste event.
 Enfileire o event.
 
 Etapas necessárias para que se execute algum tipo de wm-paint com um window:
-Call "user32.dll" "BeginPaint" com o window e o endereçamento desse paintstruct.
-Call "user32.dll" "EndPaint" com o window e o endereçamento desta paintstruct.
+Call "user32.dll" "BeginPaint" com 
+a window 
+e o endereçamento desse paintstruct.
+Call "user32.dll" "EndPaint" com 
+a window 
+e o endereçamento desta paintstruct.
 Crie um event.
 Atribua "atualização de tela" à categoria deste event.
 \Atribua "refrescar" à categoria deste event.
@@ -6586,7 +7059,9 @@ Um número da fonte é um número identificador.
 Um hicon é um número identificador.
 
 Etapas necessárias para que se hide o cursor:
-Call "user32.dll" "ShowCursor" com 0 devolvendo um número.
+Call "user32.dll" "ShowCursor" com 
+0 
+devolvendo um número.
 Se o número for menor do que 0, cancele.
 Repita.
 
@@ -6813,23 +7288,23 @@ Posponha "endobj" para o descriptor.
 \ definition
 Adicione um definition pdf object usando "font definition".
 Atribua o nome da fonte ao nome da fonte desta definition.
-Posponha o número desta definition seguido de " 0 obj" para o definition.
-Posponha "<<" para o definition.
-Posponha "/Type /Font" para o definition.
-Posponha "/Subtype /TrueType" para o definition.
-Posponha "/Nomeie /" junto com o nome da fonte para o definition.
-Posponha "/BaseFont /" junto com o font base nome para o definition.
-Posponha "/Encoding /WinAnsiEncoding" para o definition.
-Posponha "/FontDescriptor " junto com o número deste descriptor seguido de " 0 R" para o definition.
-Posponha "/FirstChar 0" para o definition.
-Posponha "/LastChar 255" para o definition.
+Posponha o número desta definition seguido de " 0 obj" para a definition.
+Posponha "<<" para a definition.
+Posponha "/Type /Font" para a definition.
+Posponha "/Subtype /TrueType" para a definition.
+Posponha "/Nomeie /" junto com o nome da fonte para a definition.
+Posponha "/BaseFont /" junto com o font base nome para a definition.
+Posponha "/Encoding /WinAnsiEncoding" para a definition.
+Posponha "/FontDescriptor " junto com o número deste descriptor seguido de " 0 R" para a definition.
+Posponha "/FirstChar 0" para a definition.
+Posponha "/LastChar 255" para a definition.
 Atribua as font larguras desta font info a uma segunda trecho.
-Posponha "/Widths [" para o definition.
-Posponha a segunda trecho seguido de "]" para o definition.
-Posponha ">>" para o definition.
-Posponha "endobj" para o definition.
+Posponha "/Widths [" para a definition.
+Posponha a segunda trecho seguido de "]" para a definition.
+Posponha ">>" para a definition.
+Posponha "endobj" para a definition.
 Atribua o font info à font info desta definition.
-Catalogue o definition usando o nome desta font e o font catálogo deste pdf state.
+Catalogue a definition usando o nome desta font e o font catálogo deste pdf state.
 
 Etapas necessárias para que se include uma font em um pdf object:
 Se o pdf object for inexistente, cancele.
@@ -6876,9 +7351,15 @@ Crie o terminal na caixa desta tela.
 
 Etapas necessárias para que se initialize before run:
 Call "user32.dll" "DisableProcessWindowsGhosting".
-Call "kernel32.dll" "GetProcessHeap" devolvendo o endereço heap.
-Call "kernel32.dll" "LoadLibraryA" com "kernel32.dll"'s first endereço de memória do pedaço devolvendo um número identificador.
-Se o número identificador não for 0, call "kernel32.dll" "GetProcAddress" com o número identificador e "HeapSetInformation"'s first endereço de memória do pedaço devolvendo um endereço de memória.
+Call "kernel32.dll" "GetProcessHeap" 
+devolvendo o endereço heap.
+Call "kernel32.dll" "LoadLibraryA" com 
+"kernel32.dll"'s first endereço de memória do pedaço 
+devolvendo um número identificador.
+Se o número identificador não for 0, call "kernel32.dll" "GetProcAddress" com 
+o número identificador 
+e "HeapSetInformation"'s first endereço de memória do pedaço 
+devolvendo um endereço de memória.
 Se o endereço de memória não for inexistente, call o endereço de memória com o endereço heap e 0 e 2's endereçamento e 4.
 
 Etapas necessárias para que se inicialize o canvases:
@@ -6888,11 +7369,17 @@ Atribua o memory canvas ao quadro atual.
 
 Etapas necessárias para que se inicialize o cgi:
 Call "kernel32.dll" "AllocConsole".
-Call "kernel32.dll" "GetStdHandle" com -10 [std_input_handle] devolvendo o número identificador do fluxo de entrada padrão.
-Call "kernel32.dll" "GetStdHandle" com -11 [std_output_handle] devolvendo o número identificador do fluxo de saída padrão.
+Call "kernel32.dll" "GetStdHandle" com 
+-10 [std_input_handle] 
+devolvendo o número identificador do fluxo de entrada padrão.
+Call "kernel32.dll" "GetStdHandle" com 
+-11 [std_output_handle] 
+devolvendo o número identificador do fluxo de saída padrão.
 
 Etapas necessárias para que se inicialize o Component Object Model:
-Call "ole32.dll" "CoInitializeEx" com 0 e 2 [coinit_apartmentthreaded].
+Call "ole32.dll" "CoInitializeEx" com 
+0 
+e 2 [coinit_apartmentthreaded].
 
 Etapas necessárias para que se inicialize um context:
 Aloque memória para o context.
@@ -6904,41 +7391,57 @@ Atribua o tamanho de letra pequena à tamanho da letra deste context.
 Seed o random número generator.
 
 Etapas necessárias para que se inicialize os cursors:
-Inicialize o cursors (seta do mouse).
-Inicialize o cursors (hand cursor).
-Inicialize o cursors (i-beam cursor).
+Inicialize os cursors (seta do mouse).
+Inicialize os cursors (hand cursor).
+Inicialize os cursors (i-beam cursor).
 \Atribua a seta do mouse ao cursor flecha.
 \Atribua o hand cursor ao cursor mano.
 \Atribua o i-beam cursor ao cursor rayo-i.
 Hide o cursor.
 
 Etapas necessárias para que se inicialize os cursors (seta do mouse):
-Posponha $00000000000000004000000060000000 para um máscara de disjunção exclusiva.
-Posponha $70000000780000007C0000007E000000 para o máscara de disjunção exclusiva.
-Posponha $7F0000007F8000007C0000006C000000 para o máscara de disjunção exclusiva.
-Posponha $46000000060000000300000003000000 para o máscara de disjunção exclusiva.
-Posponha $01800000018000000000000000000000 para o máscara de disjunção exclusiva.
-Posponha $00 para o máscara de disjunção exclusiva usando 48.
-Posponha $7FFFFFFF3FFFFFFF1FFFFFFF0FFFFFFF para um máscara de conjunção lógica.
-Posponha $07FFFFFF03FFFFFF01FFFFFF00FFFFFF para o máscara de conjunção lógica.
-Posponha $007FFFFF003FFFFF001FFFFF01FFFFFF para o máscara de conjunção lógica.
-Posponha $10FFFFFF30FFFFFF787FFFFFF87FFFFF para o máscara de conjunção lógica.
-Posponha $FC3FFFFFFC3FFFFFFE7FFFFFFFFFFFFF para o máscara de conjunção lógica.
-Posponha $FF para o máscara de conjunção lógica usando 48.
-Call "user32.dll" "CreateCursor" com o número identificador deste module e 0 e 0 e 32 e 32 e o first desta máscara de conjunção lógica e o first desta máscara de disjunção exclusiva devolvendo a seta do mouse.
+Posponha $00000000000000004000000060000000 para uma máscara de disjunção exclusiva.
+Posponha $70000000780000007C0000007E000000 para a máscara de disjunção exclusiva.
+Posponha $7F0000007F8000007C0000006C000000 para a máscara de disjunção exclusiva.
+Posponha $46000000060000000300000003000000 para a máscara de disjunção exclusiva.
+Posponha $01800000018000000000000000000000 para a máscara de disjunção exclusiva.
+Posponha $00 para a máscara de disjunção exclusiva usando 48.
+Posponha $7FFFFFFF3FFFFFFF1FFFFFFF0FFFFFFF para uma máscara de conjunção lógica.
+Posponha $07FFFFFF03FFFFFF01FFFFFF00FFFFFF para a máscara de conjunção lógica.
+Posponha $007FFFFF003FFFFF001FFFFF01FFFFFF para a máscara de conjunção lógica.
+Posponha $10FFFFFF30FFFFFF787FFFFFF87FFFFF para a máscara de conjunção lógica.
+Posponha $FC3FFFFFFC3FFFFFFE7FFFFFFFFFFFFF para a máscara de conjunção lógica.
+Posponha $FF para a máscara de conjunção lógica usando 48.
+Call "user32.dll" "CreateCursor" com 
+o número identificador deste module 
+e 0 
+e 0 
+e 32 
+e 32 
+e o first desta máscara de conjunção lógica 
+e o first desta máscara de disjunção exclusiva 
+devolvendo a seta do mouse.
 
 Etapas necessárias para que se inicialize o cursors (hand cursor):
-Posponha $000000000180000019B0000019B00000 para um máscara de disjunção exclusiva.
-Posponha $0DB200000DB6000007F6000067FE0000 para o máscara de disjunção exclusiva.
-Posponha $7FFC00003FFC00001FFC00001FF80000 para o máscara de disjunção exclusiva.
-Posponha $0FF8000007F0000003F0000003F00000 para o máscara de disjunção exclusiva.
-Posponha $00 para o máscara de disjunção exclusiva usando 64.
-Posponha $FE7FFFFFE40FFFFFC007FFFFC005FFFF para um máscara de conjunção lógica.
-Posponha $E000FFFFE000FFFF9000FFFF0000FFFF para o máscara de conjunção lógica.
-Posponha $0001FFFF8001FFFFC001FFFFC003FFFF para o máscara de conjunção lógica.
-Posponha $E003FFFFF007FFFFF807FFFFF807FFFF para o máscara de conjunção lógica.
-Posponha $FF para o máscara de conjunção lógica usando 64.
-Call "user32.dll" "CreateCursor" com o número identificador deste module e 2 e 1 e 32 e 32 e o first desta máscara de conjunção lógica e o first desta máscara de disjunção exclusiva devolvendo o hand cursor.
+Posponha $000000000180000019B0000019B00000 para uma máscara de disjunção exclusiva.
+Posponha $0DB200000DB6000007F6000067FE0000 para a máscara de disjunção exclusiva.
+Posponha $7FFC00003FFC00001FFC00001FF80000 para a máscara de disjunção exclusiva.
+Posponha $0FF8000007F0000003F0000003F00000 para a máscara de disjunção exclusiva.
+Posponha $00 para a máscara de disjunção exclusiva usando 64.
+Posponha $FE7FFFFFE40FFFFFC007FFFFC005FFFF para uma máscara de conjunção lógica.
+Posponha $E000FFFFE000FFFF9000FFFF0000FFFF para a máscara de conjunção lógica.
+Posponha $0001FFFF8001FFFFC001FFFFC003FFFF para a máscara de conjunção lógica.
+Posponha $E003FFFFF007FFFFF807FFFFF807FFFF para a máscara de conjunção lógica.
+Posponha $FF para a máscara de conjunção lógica usando 64.
+Call "user32.dll" "CreateCursor" com 
+o número identificador deste module 
+e 2 
+e 1 
+e 32 
+e 32 
+e o first desta máscara de conjunção lógica 
+e o first desta máscara de disjunção exclusiva 
+devolvendo o hand cursor.
 
 Etapas necessárias para que se inicialize o cursors (i-beam cursor):
 Posponha $EE000000100000001000000010000000 para um máscara de disjunção exclusiva.
@@ -6947,13 +7450,28 @@ Posponha $10000000100000001000000010000000 para o máscara de disjunção exclusiva
 Posponha $100000001000000010000000EE000000 para o máscara de disjunção exclusiva.
 Posponha $00 para o máscara de disjunção exclusiva usando 64.
 Posponha $FF para um máscara de conjunção lógica usando 128.
-Call "user32.dll" "CreateCursor" com o número identificador deste module e 3 e 7 e 32 e 32 e o first desta máscara de conjunção lógica e o first desta máscara de disjunção exclusiva devolvendo o i-beam cursor.
+Call "user32.dll" "CreateCursor" com 
+o número identificador deste module 
+e 3 
+e 7 
+e 32 
+e 32 
+e o first desta máscara de conjunção lógica 
+e o first desta máscara de disjunção exclusiva 
+devolvendo o i-beam cursor.
 
 Etapas necessárias para que se inicialize as fonts:
-Call "gdi32.dll" "GetStockObject" com 11 [ansi_fixed_font] devolvendo o null número da fonte.
+Call "gdi32.dll" "GetStockObject" com 
+11 [ansi_fixed_font] 
+devolvendo o null número da fonte.
 \Call "gdi32.dll" "AddFontMemResourceEx" com o first desta osmosian font source e a quantidade de caracteres desta osmosian font source e 0 e o endereçamento desse número devolvendo o osmosian font resource.
 \Call "gdi32.dll" "AddFontMemResourceEx" com o first desta fonte Segoe UI e a quantidade de caracteres desta fonte Segoe UI e 0 e o endereçamento desse número devolvendo o Segoe UI resource.
-Call "gdi32.dll" "AddFontMemResourceEx" com o first desta fonte Tahoma e a quantidade de caracteres desta fonte Tahoma e 0 e o endereçamento desse número devolvendo o recurso de fonte Tahoma.
+Call "gdi32.dll" "AddFontMemResourceEx" com 
+o first desta fonte Tahoma 
+e a quantidade de caracteres desta fonte Tahoma 
+e 0 
+e o endereçamento desse número 
+devolvendo o recurso de fonte Tahoma.
 \Atribua "Segoe UI" e 1/6 polegada à fonte padrão.
 \Atribua "osmosian" e 24 pixels à fonte padrão.
 Atribua "Tahoma" e 20 pixels à fonte padrão.
@@ -6964,7 +7482,10 @@ Atribua 48 pixels ao tamanho de letra grande.
 
 Etapas necessárias para que se inicialize gdi+:
 Atribua 1 ao GdiplusVersion desse GdiplusStartupInput.
-Call "gdiplus.dll" "GdiplusStartup" com o endereçamento deste gptoken e o endereçamento deste GdiplusStartupInput e 0.
+Call "gdiplus.dll" "GdiplusStartup" com 
+o endereçamento deste gptoken 
+e o endereçamento deste GdiplusStartupInput 
+e 0.
 \Windows GDI+ é uma API baseada em classe para programadores C/C++. 
 \Ela permite que os aplicativos usem elementos gráficos e texto formatado na exibição de vídeo e na impressora. 
 \Aplicativos baseados na API do Microsoft Win32 não acessam diretamente o hardware gráfico. 
@@ -6972,10 +7493,20 @@ Call "gdiplus.dll" "GdiplusStartup" com o endereçamento deste gptoken e o endere
 \GDI+ também é suportado pelo Microsoft Win64.
 
 Etapas necessárias para que se inicialize o memory canvas:
-Call "gdi32.dll" "CreateCompatibleDC" com o tela canvas devolvendo o memory canvas.
-Call "gdi32.dll" "GetCurrentObject" com o memory canvas e 7 [obj_bitmap] devolvendo o saved memory hbitmap.
-Call "gdi32.dll" "CreateCompatibleBitmap" com o tela canvas e a pixel largura desta tela e a pixel altura desta tela devolvendo um hbitmap.
-Call "gdi32.dll" "SelectObject" com o memory canvas e o hbitmap.
+Call "gdi32.dll" "CreateCompatibleDC" com 
+o tela canvas 
+devolvendo o memory canvas.
+Call "gdi32.dll" "GetCurrentObject" com 
+o memory canvas 
+e 7 [obj_bitmap] 
+devolvendo o saved memory hbitmap.
+Call "gdi32.dll" "CreateCompatibleBitmap" com 
+o tela canvas 
+e a pixel largura desta tela 
+e a pixel altura desta tela devolvendo um hbitmap.
+Call "gdi32.dll" "SelectObject" com 
+o memory canvas 
+e o hbitmap.
 Normalize o memory canvas.
 
 Etapas necessárias para que se inicialize o module:
@@ -6989,7 +7520,9 @@ devolvendo a quantidade de caracteres.
 Atribua o first deste temp endereço completo mais a quantidade de caracteres menos 1 ao last deste temp endereço completo.
 Modifique através do caractere NUL o temp endereço completo.
 \ module handle
-Call "kernel32.dll" "GetModuleHandleA" com 0 devolvendo o número identificador deste module.
+Call "kernel32.dll" "GetModuleHandleA" com 
+0 
+devolvendo o número identificador deste module.
 \ module nome
 Atribua 512 à quantidade de caracteres.
 Reassign o first deste endereço completo deste module usando a quantidade de caracteres.
@@ -7012,7 +7545,9 @@ Modifique através do caractere NUL o root endereço da pasta deste module.
 Etapas necessárias para que se inicialize o mouse:
 Atribua 1 ao botão esquerdo deste mouse.
 Atribua 2 ao botão direito deste mouse.
-Call "user32.dll" "GetSystemMetrics" com 23 [sm_swapbutton] devolvendo um número.
+Call "user32.dll" "GetSystemMetrics" com 
+23 [sm_swapbutton] 
+devolvendo um número.
 Se o número for 0, cancele.
 Permute o botão esquerdo deste mouse com o botão direito deste mouse.
 
@@ -7021,14 +7556,20 @@ Atribua a magnitude [quantidade de bytes] desse printdlgex ao lstructsize deste 
 Atribua a main window ao hwndowner deste printdlgex.
 Atribua 1288 [pd_returndc + pd_returndefault + pd_nopageenums] ao flags deste printdlgex.
 Atribua -1 [start_page_general] ao nstartpage deste printdlgex.
-Call "comdlg32.dll" "PrintDlgExA" com o endereçamento deste printdlgex.
-Call "kernel32.dll" "GlobalFree" com o hdevnames deste printdlgex.
+Call "comdlg32.dll" "PrintDlgExA" com 
+o endereçamento deste printdlgex.
+Call "kernel32.dll" "GlobalFree" com 
+o hdevnames deste printdlgex.
 Atribua o hdevmode deste printdlgex ao número identificador do modo de dispositivo da impressora.
 Atribua o hdc deste printdlgex ao printer canvas.
 
 Etapas necessárias para que se inicialize o tela:
-Call "user32.dll" "GetSystemMetrics" com 0 [sm_cxscreen] devolvendo a pixel largura desta tela.
-Call "user32.dll" "GetSystemMetrics" com 1 [sm_cyscreen] devolvendo a pixel altura desta tela.
+Call "user32.dll" "GetSystemMetrics" com 
+0 [sm_cxscreen] 
+devolvendo a pixel largura desta tela.
+Call "user32.dll" "GetSystemMetrics" com 
+1 [sm_cyscreen] 
+devolvendo a pixel altura desta tela.
 Atribua 96 ao ppi.
 Atribua o tpi dividido pelo ppi ao tpp.
 Atribua a pixel largura desta tela times o tpp a um largura.
@@ -7037,13 +7578,20 @@ Atribua 0 e 0 e o largura e o altura à caixa desta tela.
 Subtraia o tpp desde o canto inferior direito desta tela.
 
 Etapas necessárias para que se inicialize o tela canvas:
-Call "user32.dll" "GetDC" com a main window devolvendo o tela canvas.
+Call "user32.dll" "GetDC" com 
+a main window 
+devolvendo o tela canvas.
 Normalize o tela canvas.
 
 Etapas necessárias para que se inicialize um talker:
 Converta "{96749377-3391-11D2-9EE3-00C04F797396}" [clsid_spvoice] para um clsid.
 Converta "{6C44DF74-72B9-4992-A1EC-EF996E0422D4}" [iid_ispvoice] para um iid.
-Call "ole32.dll" "CoCreateInstance" com o endereçamento deste clsid e 0 e 7 [clsctx_all] e o endereçamento deste iid e o endereçamento deste talker.
+Call "ole32.dll" "CoCreateInstance" com 
+o endereçamento deste clsid 
+e 0 
+e 7 [clsctx_all] 
+e o endereçamento deste iid 
+e o endereçamento deste talker.
 
 Etapas necessárias para que se inicialize a window: \\ para inicializar a janela
 Atribua a magnitude [tamanho em bytes] dessa window class [estrutura] ao cbsize deste window class.
@@ -7074,10 +7622,14 @@ e 0  \\ opcional. Informa o número identificador do controle pai da janela (se e
 e 0 \\ a mesma coisa, só que identifica o número do menu da janela.
 e o número identificador deste module  \\ descrição auto explicável
 e 0. \\ aqui é um ponteiro que passa a informação pra janela. Usamos um valor nulo pq não precisamos dele.
-Call "user32.dll" "ShowWindow" com a main window e 1 [sw_shownormal].
+Call "user32.dll" "ShowWindow" com 
+a main window 
+e 1 [sw_shownormal].
 
 Etapas necessárias para que se inicialize winsock:
-Call "ws2_32.dll" "WSAStartup" com 2 e o endereçamento desse wsadata.
+Call "ws2_32.dll" "WSAStartup" com 
+2 
+e o endereçamento desse wsadata.
 
 Um input é um event.
 
@@ -7106,7 +7658,7 @@ Copie pedaços desde o first endereço de memória do pedaço deste subtexto para o 
 Adicione a quantidade de caracteres deste subtexto para o first endereço de memória do pedaço deste terceiro subtexto.
 Copie pedaços desde o first endereço de memória do pedaço desta string para o first endereço de memória do pedaço deste terceiro subtexto pelo quantidade de caracteres desta string.
 Adicione a quantidade de caracteres desta string para o first endereço de memória do pedaço deste terceiro subtexto.
-Copie pedaços desde o first endereço de memória do pedaço deste segundo subtexto para o first endereço de memória do pedaço deste terceiro subtexto pelo quantidade de caracteres desta segundo subtexto.
+Copie pedaços desde o first endereço de memória do pedaço deste segundo subtexto para o first endereço de memória do pedaço deste terceiro subtexto pelo quantidade de caracteres deste segundo subtexto.
 Unassign o first endereço de memória do pedaço desta segunda string. \ dont use atribua uma string a uma string para prevent extra allocating e copying
 Atribua o endereço de memória ao first endereço de memória do pedaço desta segunda string.
 Atribua o first endereço de memória do pedaço desta segunda string mais a quantidade de caracteres agrupados menos 1 ao last endereço de memória do pedaço desta segunda string.
@@ -7381,9 +7933,14 @@ Mova a localização usando o par de números.
 
 Etapas necessárias para que se lock um gpbitmap usando um bitmapdata (24-bit espaço de cor RGB):
 Atribua o gprect deste gpbitmap a um gprect.
-Call "gdiplus.dll" "GdipBitmapLockBits" com o gpbitmap e o endereçamento deste gprect e 3 [imagelockmoderead ou imagelockmodewrite] And 137224 [pixelformat24bpprgb] e o endereçamento deste bitmapdata.
+Call "gdiplus.dll" "GdipBitmapLockBits" com
+ o gpbitmap 
+ e o endereçamento deste gprect 
+ e 3 [imagelockmoderead ou imagelockmodewrite] 
+ e 137224 [pixelformat24bpprgb] 
+ e o endereçamento deste bitmapdata.
 
-Um logbrush é um conjunto com
+Um logbrush é um conjunto com \ documentar
 Um número denominado lbstyle,
 Um código da cor denominado lbcolor,
 Um número denominado lbhatch.
@@ -7450,7 +8007,9 @@ Cubra internamente o hrgn.
 Destrua o hrgn.
 
 Etapas necessárias para que se cubra internamente um hrgn:
-Call "gdi32.dll" "ExtSelectClipRgn" com o quadro atual e o hrgn e 4 [rgn_diff].
+Call "gdi32.dll" "ExtSelectClipRgn" com 
+o quadro atual 
+e o hrgn e 4 [rgn_diff].
 
 Etapas necessárias para que se cubra internamente um polígono:
 Crie um hrgn usando o polígono.
@@ -7507,7 +8066,9 @@ Cubra externamente o hrgn.
 Destrua o hrgn.
 
 Etapas necessárias para que se cubra externamente um hrgn:
-Call "gdi32.dll" "ExtSelectClipRgn" com o quadro atual e o hrgn e 1 [rgn_and].
+Call "gdi32.dll" "ExtSelectClipRgn" com 
+o quadro atual 
+e o hrgn e 1 [rgn_and].
 
 Etapas necessárias para que se cubra externamente um polígono:
 Crie um hrgn usando o polígono.
@@ -7529,12 +8090,12 @@ O memory canvas é um canvas.
 
 Um message é uma string.
 
-
-
 An millisecond é um número.
 
 Etapas necessárias para que se minimize um window:
-Call "user32.dll" "ShowWindow" com o window e 6 [sw_minimize].
+Call "user32.dll" "ShowWindow" com 
+a window 
+e 6 [sw_minimize].
 
 Um minute é 60 seconds.
 
@@ -7544,7 +8105,9 @@ Reverse o mirror detector desta imagem.
 Mirror o gpbitmap desta imagem.
 
 Etapas necessárias para que se mirror um gpimage:
-Call "gdiplus.dll" "GdipImageRotateFlip" com o gpimage e 4 [rotatenoneflipx].
+Call "gdiplus.dll" "GdipImageRotateFlip" com 
+o gpimage 
+e 4 [rotatenoneflipx].
 
 Etapas necessárias para que se mirror um imagem:
 Se o imagem for inexistente, cancele.
@@ -7969,11 +8532,11 @@ Percorra.
 Se o segmento final deste percorredor estiver em branco, cancele.
 Mova o segundo percorredor (word wrapping rules).
 Se o segmento inicial deste segundo percorredor estiver em branco, cancele.
-Se o conteúdo deste first endereço de memória do pedaço deste segmento inicial desta segundo percorredor for o return pedaço, avance o percorredor; exit.
-Se o conteúdo deste first endereço de memória do pedaço deste segmento inicial desta segundo percorredor for whitespace, avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor; repita.
-Se o segmento inicial deste percorredor estiver em branco, avance o percorredor pelo quantidade de caracteres deste segmento inicial desta segundo percorredor; repita.
-Se o segmento inicial deste percorredor junto com o segmento inicial desta segundo percorredor forem wider do que a caixa, cancele.
-Avance o percorredor pelo quantidade de caracteres deste segmento inicial desta segundo percorredor.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento inicial deste segundo percorredor for o return pedaço, avance o percorredor; exit.
+Se o conteúdo deste first endereço de memória do pedaço deste segmento inicial deste segundo percorredor for whitespace, avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor; repita.
+Se o segmento inicial deste percorredor estiver em branco, avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor; repita.
+Se o segmento inicial deste percorredor junto com o segmento inicial deste segundo percorredor forem wider do que a caixa, cancele.
+Avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor.
 Repita.
 
 Etapas necessárias para que se mova um percorredor usando um separator pedaço:
@@ -8135,15 +8698,31 @@ Atribua a localização à localização deste vértice.
 Etapas necessárias para que se mova um vértice para cima uns twips:
 Mova o vértice usando 0 e - os twips.
 
-Etapas necessárias para que se mova um window left:
-Call "user32.dll" "GetWindowRect" com a main window e o endereçamento dessa caixa.
+Etapas necessárias para que se mova uma window left:
+Call "user32.dll" "GetWindowRect" com 
+a main window 
+e o endereçamento dessa caixa.
 Subtraia a pixel largura desta tela desde a coordenada esquerda desta caixa.
-Call "user32.dll" "MoveWindow" com o window e a coordenada esquerda desta caixa e a coordenada superior desta caixa e a pixel largura desta tela e a pixel altura desta tela e 1.
+Call "user32.dll" "MoveWindow" com 
+a window 
+e a coordenada esquerda desta caixa 
+e a coordenada superior desta caixa 
+e a pixel largura desta tela 
+e a pixel altura desta tela 
+e 1.
 
-Etapas necessárias para que se mova um window right:
-Call "user32.dll" "GetWindowRect" com a main window e o endereçamento dessa caixa.
+Etapas necessárias para que se mova uma window right:
+Call "user32.dll" "GetWindowRect" com 
+a main window 
+e o endereçamento dessa caixa.
 Adicione a pixel largura desta tela para a coordenada esquerda desta caixa.
-Call "user32.dll" "MoveWindow" com o window e a coordenada esquerda desta caixa e a coordenada superior desta caixa e a pixel largura desta tela e a pixel altura desta tela e 1.
+Call "user32.dll" "MoveWindow" com 
+a window 
+e a coordenada esquerda desta caixa 
+e a coordenada superior desta caixa 
+e a pixel largura desta tela 
+e a pixel altura desta tela 
+e 1.
 
 Um ms é 1 millisecond.
 
@@ -8165,11 +8744,14 @@ Etapas necessárias para que se multiplique um número por um fração;
 Etapas necessárias para que se redimensione proporcionalmente um número usando um ratio;
 Etapas necessárias para que se redimensione proporcionalmente um número usando um fração:
 Se o denominador desta fração for 0, cancele.
-Call "kernel32.dll" "MulDiv" com o número e o numerador desta fração e o denominador desta fração devolvendo o número.
+Call "kernel32.dll" "MulDiv" com 
+o número e o numerador desta fração 
+e o denominador desta fração 
+devolvendo o número.
 
-Etapas necessárias para que se multiplique um par de números por uma segunda par de números:
-Multiplique o número X deste par de números pelo número X desta segunda par de números.
-Multiplique o número Y deste par de números pelo número Y desta segunda par de números.
+Etapas necessárias para que se multiplique um par de números por um segundo par de números:
+Multiplique o número X deste par de números pelo número X deste segundo par de números.
+Multiplique o número Y deste par de números pelo número Y deste segundo par de números.
 
 Etapas necessárias para que se multiplique um par de números por um número:
 Multiplique o número X deste par de números pelo número.
@@ -8233,13 +8815,35 @@ Se a coordenada direita desta caixa for menor do que a coordenada esquerda desta
 Se a coordenada inferior desta caixa for menor do que a coordenada superior desta caixa, permute a coordenada superior desta caixa com a coordenada inferior desta caixa.
 
 Etapas necessárias para que se normalize um canvas:
-Call "gdi32.dll" "SetGraphicsMode" com o canvas e 2 [gm_advanced].
-Call "gdi32.dll" "SetBkMode" com o canvas e 1 [transparent].
-Call "gdi32.dll" "SetMapMode" com o canvas e 8 [mm_anisotropic].
-Call "gdi32.dll" "SetViewportOrgEx" com o canvas e 0 e 0 e nil.
-Call "gdi32.dll" "SetViewportExtEx" com o canvas e o ppi e o ppi e nil.
-Call "gdi32.dll" "SetWindowOrgEx" com o canvas e 0 e 0 e nil.
-Call "gdi32.dll" "SetWindowExtEx" com o canvas e o tpi e o tpi e nil.
+Call "gdi32.dll" "SetGraphicsMode" com 
+o canvas 
+e 2 [gm_advanced].
+Call "gdi32.dll" "SetBkMode" com 
+o canvas 
+e 1 [transparent].
+Call "gdi32.dll" "SetMapMode" com 
+o canvas 
+e 8 [mm_anisotropic].
+Call "gdi32.dll" "SetViewportOrgEx" com 
+o canvas 
+e 0 
+e 0 
+e nil.
+Call "gdi32.dll" "SetViewportExtEx" com 
+o canvas 
+e o ppi 
+e o ppi 
+e nil.
+Call "gdi32.dll" "SetWindowOrgEx" com 
+o canvas 
+e 0 
+e 0 
+e nil.
+Call "gdi32.dll" "SetWindowExtEx" com 
+o canvas 
+e o tpi 
+e o tpi 
+e nil.
 
 Etapas necessárias para que se normalize um elipse:
 Normalize a caixa desta elipse.
@@ -9234,11 +9838,15 @@ Atribua a altura desta gpimage à altura deste gprect.
 
 Etapas necessárias para que se atribua a altura desse gpimage para uma altura:
 Se o gpimage for inexistente, atribua 0 ao altura; exit.
-Call "gdiplus.dll" "GdipGetImageHeight" com o gpimage e o endereçamento desta altura.
+Call "gdiplus.dll" "GdipGetImageHeight" com 
+o gpimage 
+e o endereçamento desta altura.
 
 Etapas necessárias para que se atribua a largura desse gpimage para uma largura:
 Se o gpimage for inexistente, atribua 0 ao largura; exit.
-Call "gdiplus.dll" "GdipGetImageWidth" com o gpimage e o endereçamento desta largura.
+Call "gdiplus.dll" "GdipGetImageWidth" com 
+o gpimage 
+e o endereçamento desta largura.
 
 Etapas necessárias para que se atribua um gprect para uma segunda gprect:
 Atribua o x deste gprect ao x desta segunda gprect.
@@ -9353,9 +9961,15 @@ Arredonde a difference para o múltiplo imediato of o tpp.
 Mova o line usando a difference.
 
 Etapas necessárias para que se atribua a localização deste mouse para uma localização:
-Call "user32.dll" "GetCursorPos" com o endereçamento desta localização.
-Call "user32.dll" "ScreenToClient" com a main window e o endereçamento desta localização. \ caso a janela principal esteja em um segundo monitor.
-Call "gdi32.dll" "DPtoLP" com o tela canvas e o endereçamento desta localização e 1.
+Call "user32.dll" "GetCursorPos" com 
+o endereçamento desta localização.
+Call "user32.dll" "ScreenToClient" com 
+a main window 
+e o endereçamento desta localização. \ caso a janela principal esteja em um segundo monitor.
+Call "gdi32.dll" "DPtoLP" com 
+o tela canvas 
+e o endereçamento desta localização 
+e 1.
 
 Etapas necessárias para que se atribua um nome e uma altura para um font:
 Atribua o nome ao nome desta font.
@@ -9529,7 +10143,7 @@ Se o polígono for inexistente, limpe o altura; exit.
 Atribua o y-extent desta caixa deste polígono ao altura.
 
 Etapas necessárias para que se atribua um percorredor para uma segundo percorredor:
-Copie pedaços desde o endereçamento deste percorredor para o endereçamento desta segundo percorredor pela magnitude deste percorredor.
+Copie pedaços desde o endereçamento deste percorredor para o endereçamento deste segundo percorredor pela magnitude deste percorredor.
 
 Etapas necessárias para que se atribua o right of uma caixa para uma vertical line;
 Etapas necessárias para que se atribua o right edge of uma caixa para uma vertical line;
@@ -9601,14 +10215,23 @@ Converta a string para as rows deste text.
 Wrap o text.
 
 Etapas necessárias para que se atribua uma string sobre o área de transferência do Windows:
-Call "user32.dll" "OpenClipboard" com a main window.
+Call "user32.dll" "OpenClipboard" com 
+a main window.
 Call "user32.dll" "EmptyClipboard".
 Atribua a quantidade de caracteres desta string mais 1 a um número.
-Call "kernel32.dll" "GlobalAlloc" com 66 [ghnd] e o número devolvendo um número identificador.
-Call "kernel32.dll" "GlobalLock" com o número identificador devolvendo um endereço de memória.
+Call "kernel32.dll" "GlobalAlloc" com 
+66 [ghnd] 
+e o número 
+devolvendo um número identificador.
+Call "kernel32.dll" "GlobalLock" com 
+o número identificador 
+devolvendo um endereço de memória.
 Copie pedaços desde o first endereço de memória do pedaço desta string para o endereço de memória pelo quantidade de caracteres desta string.
-Call "kernel32.dll" "GlobalUnlock" com o número identificador.
-Call "user32.dll" "SetClipboardData" com 1 [cf_text] e o número identificador.
+Call "kernel32.dll" "GlobalUnlock" com 
+o número identificador.
+Call "user32.dll" "SetClipboardData" com 
+1 [cf_text] 
+e o número identificador.
 Call "user32.dll" "CloseClipboard".
 
 Etapas necessárias para que se atribua a quantidade de caracteres dessa string para uma quantidade de caracteres:
@@ -9636,8 +10259,8 @@ Etapas necessárias para que se atribua a largura dessa string para uma largura:
 Obtenha o largura usando a string e o memory canvas e a fonte padrão.
 
 \ \ leave out - causes Spanish string atribuas para resolva here instead of "Atribua uma string a uma segunda string"
-Etapas necessárias para que se atribua um subtexto para uma segundo subtexto:
-Copie pedaços desde o endereçamento deste subtexto para o endereçamento desta segundo subtexto pela magnitude deste subtexto.
+Etapas necessárias para que se atribua um subtexto para um segundo subtexto:
+Copie pedaços desde o endereçamento deste subtexto para o endereçamento deste segundo subtexto pela magnitude deste subtexto.
 
 Etapas necessárias para que se atribua o date/time do system para um date/time:
 Call "kernel32.dll" "GetLocalTime" com o endereçamento desse systemtime.
@@ -10116,7 +10739,12 @@ Se o endereço de memória for inexistente, assign o endereço de memória usando o 
 Se o quantidade de pedaços for 0, unassign o endereço de memória; exit.
 Isole o quantidade de pedaços.
 Arredonde o quantidade de pedaços para cima para o nearest power of two.
-Call "kernel32.dll" "HeapReAlloc" com o endereço heap e 8 [heap_zero_memory] e o endereço de memória e o quantidade de pedaços devolvendo o endereço de memória.
+Call "kernel32.dll" "HeapReAlloc" com 
+o endereço heap 
+e 8 [heap_zero_memory] 
+e o endereço de memória 
+e o quantidade de pedaços 
+devolvendo o endereço de memória.
 
 Etapas necessárias para que se receive um trecho desde um socket:
 Limpe o erro do fluxo de entrada/saída.
@@ -10201,8 +10829,16 @@ Atribua a localização deste mouse à localização deste event.
 Enfileire o event.
 
 Etapas necessárias para que se atualize o tela usando uma caixa:
-Call "gdi32.dll" "BitBlt" com o tela canvas e a coordenada esquerda desta caixa e a coordenada superior desta caixa e a largura desta caixa e a altura desta caixa 
-And o quadro atual e a coordenada esquerda desta caixa e a coordenada superior desta caixa e 13369376 [srccopy].
+Call "gdi32.dll" "BitBlt" com 
+o tela canvas 
+e a coordenada esquerda desta caixa 
+e a coordenada superior desta caixa 
+e a largura desta caixa 
+e a altura desta caixa 
+e o quadro atual 
+e a coordenada esquerda desta caixa 
+e a coordenada superior desta caixa 
+e 13369376 [srccopy].
 
 Um resto é um número.
 
@@ -10415,8 +11051,8 @@ O reply é um reply.
 Um reply é uma string.
 
 Etapas necessárias para que se reenfileire um event:
-Copie o event a uma segunda event.
-Enfileire a segunda event.
+Copie o event a uma segundo event.
+Enfileire a segundo event.
 
 Etapas necessárias para que se reset o alphabet:
 Atribua o 'A' maiúsculo ao next letra.
@@ -10498,9 +11134,19 @@ Etapas necessárias para que se redimensione um imagem para um largura por uma al
 Se o imagem for inexistente, cancele.
 Atribua o largura dividido pelo tpp a um pixel largura.
 Atribua o altura dividido pelo tpp a um pixel altura.
-Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com o pixel largura e o pixel altura e 0 e 137224 [pixelformat24bpprgb] e 0 e o endereçamento desse gpbitmap.
-Call "gdiplus.dll" "GdipGetImageGraphicsContext" com o gpbitmap e o endereçamento desse gpgraphic.
-Call "gdiplus.dll" "GdipDrawImageRectRectI" com o gpgraphic e o gpbitmap desta imagem.
+Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com 
+a pixel largura 
+e a pixel altura 
+e 0 
+e 137224 [pixelformat24bpprgb] 
+e 0 
+e o endereçamento desse gpbitmap.
+Call "gdiplus.dll" "GdipGetImageGraphicsContext" com 
+o gpbitmap 
+e o endereçamento desse gpgraphic.
+Call "gdiplus.dll" "GdipDrawImageRectRectI" com
+ o gpgraphic 
+ e o gpbitmap desta imagem.
 And 0 e 0 e o pixel largura e o pixel altura
 And 0 e 0 e a largura deste gpbitmap desta imagem menos 1 e a altura deste gpbitmap desta imagem menos 1
 And 2 [unitpixel] e nil e nil e 0.
@@ -10547,7 +11193,12 @@ Se a contagem deste temporizador não for 1, cancele.
 Atribua a contagem de ticks do sistema aos start ticks deste temporizador. \ a tick contagem deste system
 
 Etapas necessárias para que se restore um canvas:
-Call "gdi32.dll" "RestoreDC" com o canvas e -1. \ need para use -1, windows documentoation é wrong
+Call "gdi32.dll" "RestoreDC" com 
+o canvas [hdc]
+e -1. \ nSavedDC - O estado salvo a ser restaurado. 
+\Se este parâmetro for positivo, ele representa uma instância específica do estado a ser restaurado. 
+\Se este parâmetro for negativo, ele representa uma instância relativa ao estado atual. 
+\Nesse caso, o valor -1 restaura o estado salvo mais recentemente.
 
 Etapas necessárias para que se restore um context:
 Obtenha um saved context desde o context stack.
@@ -10560,8 +11211,10 @@ Atribua o número deste saved context ao número deste context.
 Remove o saved context desde o context stack.
 Destrua o saved context.
 
-Etapas necessárias para que se restore um window:
-Call "user32.dll" "ShowWindow" com o window e 9 [sw_restore].
+Etapas necessárias para que se restore uma window:
+Call "user32.dll" "ShowWindow" com 
+a window 
+e 9 [sw_restore].
 
 Etapas necessárias para que se reverse algum tipo de rows selecionadas of um text:
 Se o text for inexistente, cancele.
@@ -10631,7 +11284,9 @@ Rotate a caixa desta elipse.
 
 Etapas necessárias para que se rotate um gpimage:
 Se o gpimage for inexistente, cancele.
-Call "gdiplus.dll" "GdipImageRotateFlip" com o gpimage e 1 [rotate90flipnone].
+Call "gdiplus.dll" "GdipImageRotateFlip" com 
+o gpimage 
+e 1 [rotate90flipnone].
 
 Etapas necessárias para que se rotate um gpimage usando um ângulo:
 \ ângulo pode ser 0, 900, 1800, 2700
@@ -10640,7 +11295,9 @@ Atribua 0 [rotatenoneflipnone] a um número.
 Se o ângulo for 900, atribua 1 [rotate90flipnone] ao número.
 Se o ângulo for 1800, atribua 2 [rotate180flipnone ] ao número.
 Se o ângulo for 2700, atribua 3 [rotate270flipnone ] ao número.
-Call "gdiplus.dll" "GdipImageRotateFlip" com o gpimage e o número.
+Call "gdiplus.dll" "GdipImageRotateFlip" com 
+o gpimage 
+e o número.
 
 Etapas necessárias para que se rotate um line:
 Atribua o center desta line a um center localização.
@@ -10937,6 +11594,12 @@ Atribua a contagem de linhas deste text menos 1 a um número.
 Atribua - o número times a altura da linha deste text à coordenada y deste text.
 Limite o origin of o text.
 
+Multiplique o número por -1.
+Multiplique o número pela altura da linha deste texto.
+Adicione 2 ao número.
+Atribua o número à Coordenada Y deste texto.
+
+
 Etapas necessárias para que se role um text para o caret:
 Se o text for inexistente, cancele.
 Se o column# deste caret deste text for 1, atribua a margin deste text à coordenada x deste text.
@@ -11041,7 +11704,12 @@ Atribua o first endereço de memória do pedaço deste trecho a um endereço de memó
 Atribua a quantidade de caracteres deste trecho a uma quantidade de caracteres.
 Percorra.
 Se a quantidade de caracteres for 0, pare.
-Call "ws2_32.dll" "send" com o socket e o endereço de memória e a quantidade de caracteres e 0 devolvendo um número.
+Call "ws2_32.dll" "send" com 
+o socket 
+e o endereço de memória 
+e a quantidade de caracteres 
+e 0 
+devolvendo um número.
 Se o número é -1 [socket_error], atribua "Ocorreu um erro na hora de enviar dados." ao erro do fluxo de entrada/saída; exit.
 Subtraia o número desde a quantidade de caracteres.
 Adicione o número para o endereço de memória.
@@ -11049,8 +11717,14 @@ Repita.
 
 Etapas necessárias para que se send um data string para um winhttp request:
 Se o winhttp request for inexistente, cancele.
-Call "winhttp.dll" "WinHttpSendRequest" com o request número identificador deste winhttp request 
-And 0 [winhttp_no_additional_headers] And 0 And o first destes data And a quantidade de caracteres destes data And a quantidade de caracteres destes data And 0 devolvendo um result número.
+Call "winhttp.dll" "WinHttpSendRequest" com 
+o request número identificador deste winhttp request 
+e 0 [winhttp_no_additional_headers] 
+e 0 e o first destes data 
+e a quantidade de caracteres destes data 
+e a quantidade de caracteres destes data 
+e 0 
+devolvendo um result número.
 Se o result for 0, atribua "Erro. Não foi possível enviar a solicitação." ao erro do fluxo de entrada/saída; exit.
 
 Etapas necessárias para que se send um email:
@@ -11147,17 +11821,35 @@ Um sender é uma string.
 
 Etapas necessárias para que se defina o código da cor of um canvas usando uma cor:
 Converta a cor para um código da cor.
-Call "gdi32.dll" "SetTextColor" com o canvas e o código da cor.
+Call "gdi32.dll" "SetTextColor" com 
+o canvas e o código da cor.
 
 Etapas necessárias para que se defina o drawing origin para uma localização:
-Call "gdi32.dll" "GetDeviceCaps" com o quadro atual e 112 [physicaloffsetx] devolvendo o número X desse par de números.
-Call "gdi32.dll" "GetDeviceCaps" com o quadro atual e 113 [physicaloffsety] devolvendo o número Y deste par de números.
+Call "gdi32.dll" "GetDeviceCaps" com 
+o quadro atual 
+e 112 [physicaloffsetx] 
+devolvendo o número X desse par de números.
+Call "gdi32.dll" "GetDeviceCaps" com 
+o quadro atual 
+e 113 [physicaloffsety] 
+devolvendo o número Y deste par de números.
 Negate o par de números.
 Se o quadro atual não for o printer canvas, limpe o par de números.
-Call "gdi32.dll" "SetViewportOrgEx" com o quadro atual e o número X deste par de números e o número Y deste par de números e nil.
+Call "gdi32.dll" "SetViewportOrgEx" com 
+o quadro atual 
+e o número X deste par de números 
+e o número Y deste par de números 
+e nil.
 Isole a localização.
-Call "gdi32.dll" "LPtoDP" com o quadro atual e o endereçamento desta localização e 1.
-Call "gdi32.dll" "SetViewportOrgEx" com o quadro atual e a coordenada X desta localização e a coordenada Y desta localização e nil.
+Call "gdi32.dll" "LPtoDP" com 
+o quadro atual 
+e o endereçamento desta localização 
+e 1.
+Call "gdi32.dll" "SetViewportOrgEx" com 
+o quadro atual 
+e a coordenada X desta localização 
+e a coordenada Y desta localização 
+e nil.
 
 Etapas necessárias para que se acione um detector;
 Etapas necessárias para que se ative um detector;
@@ -11224,7 +11916,8 @@ Restore o quadro atual.
 
 Etapas necessárias para que se mostre um cursor:
 Call "user32.dll" "SetCursor" com o cursor.
-Call "user32.dll" "ShowCursor" com 1 devolvendo um número.
+Call "user32.dll" "ShowCursor" com 1 
+devolvendo um número.
 Se o número for maior do que 0, cancele.
 Repita.
 
@@ -11887,7 +12580,8 @@ e o endereçamento dessa PROCESS_INFORMATION
 devolvendo um número.
 Se o número for 0, atribua "Erro. Não foi possível executar o programa." ao erro do fluxo de entrada/saída; exit.
 Atribua o hprocess deste PROCESS_INFORMATION ao process.
-Call "kernel32.dll" "CloseHandle" com o hthread deste PROCESS_INFORMATION.
+Call "kernel32.dll" "CloseHandle" com 
+o hthread deste PROCESS_INFORMATION.
 Point um endereço de memória para rotina aguarde por um process endereço de memória. \redirecione
 Call "kernel32.dll" "CreateThread" com 0 
 e 0 
@@ -11896,7 +12590,8 @@ e o endereçamento deste process
 e 0 
 e o endereçamento desse segundo número
 devolvendo um número identificador.
-Call "kernel32.dll" "CloseHandle" com o número identificador. \ does not end o thread, just dumps o handle
+Call "kernel32.dll" "CloseHandle" com 
+o número identificador. \ does not end o thread, just dumps o handle
 
 Etapas necessárias para que se start um temporizador:
 Reset o temporizador.
@@ -12000,7 +12695,9 @@ O número identificador do fluxo de saída padrão é um número identificador.
 
 Etapas necessárias para que se suspenda um process:
 Se o process for 0, cancele.
-Call "kernel32.dll" "TerminateProcess" com o process e 0.
+Call "kernel32.dll" "TerminateProcess" com 
+o process 
+e 0.
 Atribua 0 ao process.
 
 Etapas necessárias para que se suspenda um temporizador:
@@ -12267,7 +12964,11 @@ Vire right a fração.
 
 Etapas necessárias para que se unassign um endereço de memória:
 Se o endereço de memória for inexistente, cancele.
-Call "kernel32.dll" "HeapFree" com o endereço heap e 0 [no options] e o endereço de memória devolvendo um número.
+Call "kernel32.dll" "HeapFree" com 
+o endereço heap 
+e 0 [no options] e 
+o endereço de memória 
+devolvendo um número.
 Se o número for 0, cancele.
 Esvazie o endereço de memória.
 Subtraia 1 desde a contagem do heap.
@@ -12275,10 +12976,14 @@ Subtraia 1 desde a contagem do heap.
 An unit é um número.
 
 Etapas necessárias para que se unlock um gpbitmap usando um bitmapdata:
-Call "gdiplus.dll" "GdipBitmapUnlockBits" com o gpbitmap e o endereçamento deste bitmapdata.
+Call "gdiplus.dll" "GdipBitmapUnlockBits" com 
+o gpbitmap e 
+o endereçamento deste bitmapdata.
 
 Etapas necessárias para que se mostre tudo:
-Call "gdi32.dll" "SelectClipRgn" com o quadro atual e 0.
+Call "gdi32.dll" "SelectClipRgn" com 
+o quadro atual 
+e 0.
 
 Etapas necessárias para que se mostre dentro de uma caixa:
 Crie um hrgn usando a caixa.
@@ -12291,7 +12996,9 @@ Mostre dentro de o hrgn.
 Destrua o hrgn.
 
 Etapas necessárias para que se mostre dentro de um hrgn:
-Call "gdi32.dll" "ExtSelectClipRgn" com o quadro atual e o hrgn e 2 [rgn_or].
+Call "gdi32.dll" "ExtSelectClipRgn" com 
+o quadro atual e 
+o hrgn e 2 [rgn_or].
 
 Etapas necessárias para que se mostre dentro de um polígono:
 Crie um hrgn usando o polígono.
@@ -12315,11 +13022,22 @@ Destrua o hrgn.
 
 Etapas necessárias para que se mostre fora de um hrgn:
 Crie um old hrgn usando o zero caixa.
-Call "gdi32.dll" "GetClipRgn" com o quadro atual e o old hrgn devolvendo um número.
+Call "gdi32.dll" "GetClipRgn" com 
+o quadro atual e 
+o old hrgn 
+devolvendo um número.
 Se o número não for 1, limpe o old hrgn.
-Call "gdi32.dll" "SelectClipRgn" com o quadro atual e 0.
-Call "gdi32.dll" "ExtSelectClipRgn" com o quadro atual e o hrgn e 4 [rgn_diff].
-Call "gdi32.dll" "ExtSelectClipRgn" com o quadro atual e o old hrgn e 2 [rgn_or].
+Call "gdi32.dll" "SelectClipRgn" com 
+o quadro atual 
+e 0.
+Call "gdi32.dll" "ExtSelectClipRgn" com 
+o quadro atual 
+e o hrgn 
+e 4 [rgn_diff].
+Call "gdi32.dll" "ExtSelectClipRgn" com 
+o quadro atual 
+e o old hrgn 
+e 2 [rgn_or].
 Destrua o old hrgn.
 
 Etapas necessárias para que se mostre fora de um polígono:
@@ -12461,7 +13179,7 @@ Etapas necessárias para que se aguarde uns milliseconds;
 Etapas necessárias para que se espere uns milliseconds;
 Etapas necessárias para que se aguarde por uns milliseconds:
 Se o milliseconds forem menor do que ou igual para 0, cancele.
-Call "kernel32.dll" "Sleep" com o milliseconds. \ https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-sleep
+Call "kernel32.dll" "Sleep" com os milliseconds. \ https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-sleep
 
 Etapas necessárias para que se aguarde por uma tecla para come back para cima:
 Se a tecla estiver sendo pressionada, repita.
@@ -12564,7 +13282,8 @@ e a quantidade de caracteres deste trecho
 e o endereçamento desse número 
 e 0 
 devolvendo o número.
-Call "kernel32.dll" "CloseHandle" com o número identificador.
+Call "kernel32.dll" "CloseHandle" com 
+o número identificador.
 Se o número não for 0, cancele.
 Atribua "Ocorreu um erro ao tentar salvar o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
 
@@ -12573,7 +13292,12 @@ Atribua o pedaço a uma string.
 Escreva a string.
 
 Etapas necessárias para que se escreva um pedaço para stdout:
-Call "kernel32.dll" "WriteFile" com o stdout handle e o endereçamento deste pedaço e 1 e um número's endereçamento e nil.
+Call "kernel32.dll" "WriteFile" com 
+o stdout handle 
+e o endereçamento deste pedaço 
+e 1 
+e o endereçamento desse número 
+e nil.
 
 Etapas necessárias para que se escreva um pedaço sem passar pra próxima linha:
 Atribua o pedaço a uma string.
@@ -12726,7 +13450,12 @@ Etapas necessárias para que se pinte uma string um raio desde o middle of uma ca
 Pinte a string usando o center desta caixa e o raio.
 
 Etapas necessárias para que se escreva uma string para stdout:
-Call "kernel32.dll" "WriteFile" com o stdout handle e o first endereço de memória do pedaço desta string e a quantidade de caracteres desta string e um número's endereçamento e nil.
+Call "kernel32.dll" "WriteFile" com 
+o stdout handle 
+e o first endereço de memória do pedaço desta string 
+e a quantidade de caracteres desta string 
+e o endereçamento desse número 
+e nil.
 
 Etapas necessárias para que se escreva uma string while turning uma fração of o way;
 Etapas necessárias para que se escreva uma string while turning uma fração of o way around;
@@ -12848,10 +13577,17 @@ Um máscara de disjunção exclusiva é um mask.
 
 Etapas necessárias para que se yield para windows:
 Se a fila de eventos não for vazio, cancele.
-Call "user32.dll" "GetMessageA" com um msg's endereçamento e 0 e 0 e 0 devolvendo um número.
+Call "user32.dll" "GetMessageA" com 
+o endereçamento dessa msg 
+e 0 
+e 0 
+e 0 
+devolvendo um número.
 Se o número for 0, cancele.
-Call "user32.dll" "TranslateMessage" com o endereçamento desta msg.
-Call "user32.dll" "DispatchMessageA" com o endereçamento desta msg.
+Call "user32.dll" "TranslateMessage" com 
+o endereçamento desta msg.
+Call "user32.dll" "DispatchMessageA" com 
+o endereçamento desta msg.
 
 Etapas necessárias para que se zero uma caixa:
 \ was clear uma caixa, got confounded com "clear uma caixa " (which deveria pinte a caixa all black como does "clear o tela")
