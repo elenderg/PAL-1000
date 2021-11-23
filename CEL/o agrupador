@@ -51,15 +51,15 @@ A etiqueta de repetição é uma etiqueta igual a 21.
 A etiqueta de endereço de rotina é uma etiqueta igual a 22.
 
 O compilador é um conjunto com
-Um endereço da pasta,
-Um temporizador,
-Um detector de erros, 
-Um mensagem de erro,
-Um endereço completo do arquivo de erro,
-Um número da linha de erro,
-Uma contagem de nomes,
-Um trecho exe,
-Um listagem trecho.
+  Um endereço da pasta,
+  Um temporizador,
+  Um detector de erros, 
+  Um mensagem de erro,
+  Um endereço completo do arquivo de erro,
+  Um número da linha de erro,
+  Uma contagem de nomes,
+  Um trecho exe,
+  Um listagem trecho.
 
 Etapas necessárias para que se apresente uma mensagem de erro contendo uma string:
   Se o detector de erros deste compilador estiver ativado, cancele.
@@ -1029,7 +1029,10 @@ Etapas necessárias para que se disponibilize uns variáveis para um trecho:
   Repita. [o código acima]
 
 Um endereço base é um endereço.
-Uma zona é um conjunto com um endereço base, uma quantidade de caracteres e um size.
+Uma zona é um conjunto com 
+  Um endereço base, 
+  Uma quantidade de caracteres e 
+  Um size.
 
 Etapas necessárias para que se bubble um monikette:
   Se o monikette for inexistente, cancele.
@@ -2135,9 +2138,9 @@ Etapas necessárias para que se compile um termo usando um percorredor e um campo
   Atribua o segmento inicial deste percorredor para um article segmento inicial.
   Mova o percorredor (usando diretrizes do compilador).
   Examine um nome usando o percorredor.
-  Se o percorredor está sobre algum tipo de reverse-possessive, acione um reverse-possessive detector.
+  Se o percorredor estiver sobre algum tipo de reverse-possessive, acione um reverse-possessive detector.
   Se o reverse-possessive detector estiver ativo, compile o termo usando o percorredor e o nome (possessivo reverso).
-  Se o reverse-possessive detector não estiver ativo, compile o termo usando o percorredor e o nome e o article (reversão de contrações do possessivo).
+  Se o reverse-possessive detector não estiver ativo, compile o termo usando o percorredor e o nome e o article (reversão de contrações do possessivo).\ não entendi
   Compile o termo usando o campo nome e o percorredor (possessivo reverso).
 
 Etapas necessárias para que se compile um termo usando um percorredor e uma variável nome e um article segmento inicial (reversão de contrações do possessivo):
@@ -3718,89 +3721,80 @@ Etapas necessárias para que se determine se uma variável está duplicada em umas 
   
 
 Um DOS header é um conjunto com
-Um wyrd denominado Signature, 
-    \\ Signature Word. This contains a "magic number" which provides a simple check that the file really is a DOS .EXE file;
-    \\ it follows that the filename extension does not in fact have to be .EXE, as long as programs check this word.
-    \\The value of this word is 5A4DH (com the 4DH coming first).
-    \\These two bytes represent the character string "MZ", the initials of Mark Zibowski, a Microsoft employee at the time the file format was designed.
-Um wyrd denominado NumberOfBytesOnLastPage, \\ O last page may contain between 1 and 512 bytes
-    \\Last Page Size.
-    \\O file occupies a number of 512 byte pages.
-    \\O last page may contain between 1 and 512 bytes.
-    \\This word indicates the number of bytes actually used em the last page, 
-    \\com the special case of a full page being represented by a value of zero (since the last page is never empty).
-Um wyrd denominado NumberOfPages,
-    \\ File Pages.
-    \\This word contains a count of the number of pages required para hold the file.
-    \\For example, if the file contains 1024 bytes, this word would contain 0002H; 
-    \\if the file contains 1025 bytes, this word would contain 0003H.
-    \\O Last Page Size campo is used para determine the number of valid bytes em the final page.
-    \\Thus, if the file contains 1024 bytes, the Last Page Size campo contains 0000H, because no bytes overflow à final partly used page.
-    \\If the file contains 1025 bytes, seguido de the Last Page Size campo contains 0001H, because the final page contains only one valid byte (the 1025th byte).
-Um wyrd denominado Relocations,
-    \\ Relocation Items.
-    \\ This word gives the number of entries that exist em the relocation pointer table.
-    \\It is quite em order for this value para be zero, em which case there are no relocation entries.
-Um wyrd denominado SizeOfHeaderInParagraphs,
-    \\ Header Paragraphs.
-    \\This word gives the size of the .EXE header em parágrafos.
-    \\It indicates the offset of the compiled/assembled and linked image do program (the load module) within the .EXE file.
-    \\O size of the load module can be deduced by subtracting this value (converted para bytes) desde the overall file size 
-    \\derived desde combining the File Pages and Last Page Size values.
-    \\O header always spans an even number of parágrafos.
-Um wyrd denominado MinimumExtraParagraphsNeeded,
-    \\ MINALLOC.
-    \\This word indicates the minimum number of parágrafos the program requires para begin execution.
-    \\This is em addition para the memory required para hold the load module.
-    \\This value normally represents the total size of algum tipo de uninitialised data and/or stack segments that are linked at the end of a program.
-    \\This space is not directly included em the load module, since there are no particular initialising values and it would simply waste disk space.
-Um wyrd denominado MamixmumExtraParagraphsNeeded,
+  Uma word denominado Signature, \\ Uma Word . Ela contém um "número mágico" que serve pra dizer se esse é realmente um arquivo do MS-DOS;
+  \\ O valor desta word deve ser 5A4DH (com o 4DH vindo primeiro).
+  \\ Esses dois bytes representam a string "MZ", iniciais de Mark Zibowski, nome de um funcionário da Microsoft na época em que o formato do arquivo foi projetado.
+  Uma word denominado NumberOfBytesOnLastPage, \\A última página do cabeçalho pode conter entre 1 e 512 bytes
+  \\Esta word indica o número de bytes realmente usados na última página,  
+  \\ uma página inteira é representada por um valor zero (já que a última página nunca estará vazia).
+  Uma word denominado NumberOfPages, \\ File Pages.
+  \\Esta word contém uma contagem do número de páginas necessárias para armazenar o arquivo.
+  \\Por exemplo, se o arquivo contiver 1024 bytes, essa word conterá 0002H;
+  \\se o arquivo contiver 1025 bytes, esta word conterá 0003H.
+  \\O campo Tamanho da última página é usado para determinar o número de bytes válidos na página final.
+  \\Portanto, se o arquivo contiver 1024 bytes, o campo Tamanho da última página conterá 0000H, porque nenhum byte poderá ser extrapolado para a página final mesmo que parcialmente usada.
+  \\Se o arquivo contiver 1025 bytes, o campo Tamanho da última página conterá 0001H, porque a página final contém apenas um byte válido (o 1025º byte).
+  Uma word denominado Relocations,\\ Itens de realocação.
+  \\ Esta word fornece o número de entradas que existem na tabela de indicadores de realocação.
+  \\ É perfeitamente adequado que este valor seja zero, nos casos em que não há entradas de relocação.
+  Uma word denominado SizeOfHeaderInParagraphs,\\ Parágrafos do cabeçalho.
+  \\ Esta palavra dá o tamanho do cabeçalho .EXE em paragrafos.
+  \\ Indica o deslocamento da imagem compilada / montada e vinculada do programa (o módulo de carregamento) dentro do arquivo .EXE.
+  \\ O tamanho do módulo de carregamento pode ser deduzido subtraindo este valor (convertido em bytes) 
+  \\do tamanho geral do arquivo derivado da combinação dos valores de Páginas de arquivo e Tamanho da última página.
+  \\ O cabeçalho sempre abrange um número par de parágrafos.
+  Uma word denominado MinimumExtraParagraphsNeeded,
+  \\ Esta word indica o número mínimo de parágrafos que o programa requer para iniciar a execução.
+   \\ Isso é um acréscimo à memória necessária para armazenar o módulo de carregamento.
+   \\ Este valor normalmente representa o tamanho total de algum tipo de dados não inicializados e / ou segmentos de pilha que estão ligados no final de um programa.
+   \\ Este espaço não é incluído diretamente no módulo de carregamento, uma vez que não há valores de inicialização particulares e isso simplesmente desperdiçaria espaço em disco.
+  Uma word denominado MamixmumExtraParagraphsNeeded,
     \\ MAXALLOC.
     \\This word indicates the maximum number of parágrafos that the program would like allocated para it before it begins execution.
     \\This indicates additional memory over and above that required by the load module and the value specified by MINALLOC.
     \\If the request cannot be satisfied, the program is allocated as much memory as is available.
-Um wyrd denominado InitialRelativeSS,
+  Uma word denominado InitialRelativeSS,
     \\ Initial SS value.
     \\This word contains the paragraph address of the stack segment relative para the start of the load module.
     \\At load time, this value is relocated by adding the address of the start segment of the program para it, 
     \\and the resulting value is placed em the SS register before the program is started.
     \\In DOS, the start segment of the program is the first segment boundary em memory after the PSP.
-Um wyrd denominado InitialSP,
+  Uma word denominado InitialSP,
     \\ Initial SP value.
     \\This word contains the absolute value that must be loaded para the SP register before the program is given control.
     \\Since the actual stack segment is determined by the loader, and this is merely a value within that segment, it does not need para be relocated.
-Um wyrd denominado InitialChecksum,
+  Uma word denominado InitialChecksum,
     \\ Complemented Checksum.
     \\This word contains a checksum of the contents of the .EXE file.
     \\ Its value is rarely checked, but its purpose is para ensure the integrity of the data within the file.
     \\ Full details of how it is calculated appear em the section sobre checksum calculation.
-Um wyrd denominado InitialIP,
+  Uma word denominado InitialIP,
     \\ Initial IP value.
     \\This word contains the absolute value that should be loaded para the IP register em order para transfer control para the program.
     \\Since the actual código segment is determined by the loader, and this is merely a value within that segment, it does not need para be relocated.
-Um wyrd denominado InitialiRelativeCS, 
+  Uma word denominado InitialiRelativeCS, 
     \\ Pre-relocated initial CS value.
     \\ This word contains the initial value, relative para the start of the load module, that should be placed em the CS register em order para transfer control para the program.
     \\ At load time, this value is relocated by adding the address of the start segment of the program para it, and the resulting value is placed em the CS register
     \\ when control is transferred.
-Um wyrd denominado AddressOfRelocationTableInFile, \ 
+  Uma word denominado AddressOfRelocationTableInFile, \ 
     \\ O “addressofrelocationtableinfile” é um ponteiro para a tabela de tamanha variável de DLLs necessária para este programa.
     \\ Relocation table offset.
     \\ This word gives the offset desde the start of the file para the relocation pointer table.
     \\ This value must be used para locate the relocation pointer table (rather than assuming a fixed location) 
     \\because variável-length information pertaining para program overlays can occur before this table, causing its position para vary.
     \\A value of 40H em this campo generally indicates a different kind of executable file, not a DOS "MZ" type.
-Um wyrd denominado OverlyNumber,
+  Uma word denominado OverlyNumber,
     \\ Overlay number.
     \\ This word is normally set para 0000H, because few programs actually have overlays.
     \\It changes only em files containing programs that use overlays; see the note below.
-  8 pedaços denominado ReservedBytes, \\ Specifies Reserved words for the program (known em winnt.h as e_res[4]), usually set para zero by the linker.
+  8 pedaços denominados ReservedBytes, \\ Specifies Reserved words for the program (known em winnt.h as e_res[4]), usually set para zero by the linker.
     \\In this case, just use a single reserved1 set para zero; if not zero create four reserved1 com the correct value.
-Um wyrd denominado OEM_Identifier, \\ Specifies the identifier for the OEM for e_oeminfo.
-Um wyrd denominado OEM_Info, \\ Specifies the OEM information for a specific value of e_oeminfo.
-  20 pedaços denominado ReservedWords, \\ Specifies Reserved words for the program (known em winnt.h as e_res[10]), usually set para zero by the linker.
+Uma word denominado OEM_Identifier, \\ Specifies the identifier for the OEM for e_oeminfo.
+Uma word denominado OEM_Info, \\ Specifies the OEM information for a specific value of e_oeminfo.
+  20 pedaços denominados ReservedWords, \\ Specifies Reserved words for the program (known em winnt.h as e_res[10]), usually set para zero by the linker.
     \\In this case, just use a single reserved1 set para zero; if not zero create ten reserved1 com the correct value.
-Um número denominado Address_Of_PE_Header_In_File. \\ O “addressofpeheaderinfile” é um ponteiro para o “PE Header”, uma versão revisada e estendida do Cabeçalho DOS introduzida com o advento do Windows. Os outros 16 campos do cabeçalho DOS não são usados.
+  Um número denominado Address_Of_PE_Header_In_File. \\ O “addressofpeheaderinfile” é um ponteiro para o “PE Header”, uma versão revisada e estendida do Cabeçalho DOS introduzida com o advento do Windows. Os outros 16 campos do cabeçalho DOS não são usados.
 
 Etapas necessárias para que se eliminate duplicate nicknames desde umas variáveis:
   Crie um catálogo usando 101.
@@ -4820,10 +4814,10 @@ Um PE header é um conjunto com
     \ tipo informações de relocação, tabela de símbolos, número de linhas e dados da tabela de strings. 
     \ O cabeçalho MS-DOS ocupa os primeiros 64 bytes do arquivo. A estrutura básica está representada abaixo:
 Um número denominado Signature,
-Um wyrd denominado MachineType, 
+Uma word denominado MachineType, 
     \ O número que identifica o tipo de computador de destino. 
     \Para obter mais informações, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#machine-types
-Um wyrd denominado NumberOfSections,
+Uma word denominado NumberOfSections,
     \ O número de seções. Isso indica o tamanho da tabela da seção, que segue imediatamente os cabeçalhos.
 Um número denominado TimeStamp, 
     \ Os 32 low bits do número de segundos que se passaram desde 00:00 horas do dia 01/01/1970. (um valor time_t de tempo de execução do C)
@@ -4836,14 +4830,14 @@ Um número denominado NumberOfSymbols,
     \ O número de entradas na tabela de símbolos.
     \ Esses dados podem ser usados para localizar a tabela de cadeia de caracteres, que segue imediatamente a tabela de símbolos.
     \ Esse valor deve ser zero para uma imagem porque as informações de depuração de COFF foram descontinuadas.
-Um wyrd denominado SizeOfOptionalHeaderInBytes,
+Uma word denominado SizeOfOptionalHeaderInBytes,
      \ O tamanho do header opcional, que é necessário para arquivos executáveis, mas não para arquivos de objeto.
     \ Esse valor deve ser zero para um arquivo-objeto. Para ver uma descrição do formato do header, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#optional-header-image-only
-Um wyrd denominado Characteristics, 
+Uma word denominado Characteristics, 
     \ Os sinalizadores que indicam os atributos do arquivo. 
     \Para valores de sinalizador específicos, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#Characteristics
     \ optional header
-Um wyrd denominado MagicNumber, 
+Uma word denominado MagicNumber, 
     \O número mágico do cabeçalho opcional determina se uma imagem é um PE32 ou PE32 + executável.
     \ As imagens PE32 + permitem um espaço de endereço de 64 bits, limitando o tamanho da imagem a 2 gigabytes. 
     \ Outras modificações PE32 + são abordadas em suas respectivas seções.
@@ -4885,17 +4879,17 @@ Um número denominado FileAlignment,
     \ O fator de alinhamento (em bytes) usado para alinhar os dados brutos das seções no arquivo de imagem. 
     \O valor deve ser uma potência de 2 entre 512 e 64 K, inclusive. O padrão é 512. 
     \Se SectionAlignment for menor que o tamanho da página da arquitetura, FileAlignment deverá corresponder a SectionAlignment.
-Um wyrd denominado OS_MajorVersion, [MajorOperatingSystemVersion]
+Uma word denominado OS_MajorVersion, [MajorOperatingSystemVersion]
     \ O número de versão principal do sistema operacional Windows NT.
-Um wyrd denominado OS_MinorVersion, [MinorOperatingSystemVersion]
+Uma word denominado OS_MinorVersion, [MinorOperatingSystemVersion]
     \ O número de versão secundária do sistema operacional necessário.
-Um wyrd denominado UserMajorVersion,  [MajorImageVersion]
+Uma word denominado UserMajorVersion,  [MajorImageVersion]
     \ O número de versão principal do programa.
-Um wyrd denominado UserMinorVersion, [MinorImageVersion]
+Uma word denominado UserMinorVersion, [MinorImageVersion]
      \ O número de versão secundária do programa.
-Um wyrd denominado SubsystemMajorVersion, [MajorSubsystemVersion]
+Uma word denominado SubsystemMajorVersion, [MajorSubsystemVersion]
     \ O número de versão principal do subsistema Win32 do Windows NT.
-Um wyrd denominado SubsystemMinorVersion, [MinorSubsystemVersion]
+Uma word denominado SubsystemMinorVersion, [MinorSubsystemVersion]
     \ O número de secundária principal do subsistema.
 Um número denominado Reserved,  [Win32VersionValue]
     \ Reservado, deve ser zero. Unknown purpose, currently not used by the system and set para zero by the linker.
@@ -4921,11 +4915,11 @@ Um número denominado CheckSum,
     \todos os drivers, qualquer DLL carregada no momento da inicialização e qualquer DLL carregada em um processo Windows crítico.
     \ A checksum value is used para validate the executable file at load time. 
     \ O value is set and verified by the linker. O algorithm used for creating these checksum values is proprietary information and will not be published.
-Um wyrd denominado Subsystem, 
+Uma word denominado Subsystem, 
     \ Field used para identify the target Subsystem for this executable O subsistema necessário para executar esta imagem. 
     \Each of the possible Subsystem values are listed em the WINNT.H file immediately after the IMAGE_OPTIONAL_HEADER structure.
     \Para obter mais informações, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#windows-Subsystem
-Um wyrd denominado DllCharacteristics,
+Uma word denominado DllCharacteristics,
      \ Flags used para indicate if a DLL image includes entry points for process and thread initialization and termination.
     \ Para obter mais informações, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#dll-Characteristics
 Um número denominado MaxStack, [SizeOfStackReserve]
@@ -4946,10 +4940,10 @@ Um número denominado LoaderFlags,
     \ directories (16 address e size pairs)
 Um número denominado NumberOfDirectories, [NumberOfRvaAndSizes]
     \ O número de entradas de diretório de dados no restante do header opcional. Cada uma descreve uma localização e um tamanho.
-  8 pedaços denominado Directory0,
+  8 pedaços denominados Directory0,
 Um número denominado ImageDirectoryEntryImportAddress,
 Um número denominado ImageDirectoryEntryImportSize,
-  112 pedaços denominado Directories2-15,
+  112 pedaços denominados Directories2-15,
 Um PE Section Header denominado Idata Section,
 Um PE Section Header denominado Data Section,
 Um PE Section Header denominado Code Section. \ https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#section-flags
@@ -4960,12 +4954,12 @@ Um PE Section Header é um conjunto com
     \Sections contain the content of the file, including código, data, resources, and segunda executable information. 
     \Each section has a header and a body (the raw data). Section headers are described below, but section bodies lack a rigid file structure. 
     \They can be organized em almost algum tipo de way a linker wishes para organize them, as long as the header is filled com enough information para be able para decipher the data.
-  8 pedaços denominado Nome, \ Each section header has a nome campo para cima para eight characters long, for which the first character must be a period.
+  8 pedaços denominados Nome, \ Each section header has a nome campo para cima para eight characters long, for which the first character must be a period.
 Um número denominado SizeInBytes,
 Um número denominado AddressInMemory,
 Um número denominado SizeInFile,
 Um número denominado AddressInFile,
-  12 pedaços denominado Reserved,
+  12 pedaços denominados Reserved,
 Um número denominado Characteristics. \ Defines the section Characteristics. 
     \These values are found both em WINNT.H and in the Portable Executable Format specification.
     \Value	Definition
@@ -6173,16 +6167,16 @@ Etapas necessárias para que se transforme em código hexadecimal umas rotinas:
 O catálogo de tipos é um catálogo.
 
 Um type é uma coisa com
-Um local de aparição (reference),
-Um nome, um plural nome,
-Um cabeçalho semi-expandido,
+  Um local de aparição (reference),
+  Um nome, um plural nome,
+  Um cabeçalho semi-expandido,
   Uma quantidade de caracteres,
-Um base nome, um base type (reference),
-Um conteúdo nome, um conteúdo type (reference) [endereço de memórias only],
-Um scale ratio,
+  Um base nome, um base type (reference),
+  Um conteúdo nome, um conteúdo type (reference) [endereço de memórias only],
+  Um scale ratio,
   Some campos [records only],
-Um cooking detector,
-Um optional info resolved detector.
+  Um cooking detector,
+  Um optional info resolved detector.
 
 Um type nome é um nome.
 
