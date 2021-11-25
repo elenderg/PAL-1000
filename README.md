@@ -47,7 +47,7 @@ Ao lado dos botões existe uma barra que exibe informações diversas, dependend
  <img src="docs/Imagens-Para-o-Readme/quantidadedelinhasselecionadas.png">
  
 
-No momento o programa ainda não possui barra de rolagem nem botões de Maximizar, Minimizar ou Fechar. (Para sair do Programa, pressione <kbd>Alt+F</kbd>, para Fechar um arquivo, pressione <kbd>Ctrl + W</kbd> . Para descer linhas utilize a seta para baixo ↓ ou clique com o botão direito do mouse e arraste.
+No momento o programa ainda não possui barra de rolagem nem botões de Maximizar, Minimizar ou Fechar. (Para sair do Programa, pressione <kbd>Alt+F</kbd>, para Fechar um arquivo, pressione <kbd>Ctrl + W</kbd> . Para descer linhas utilize a seta para baixo <kbd>↓</kbd> ou clique com o botão direito do mouse e arraste.
 
 Existem projetos como o [CAL-4018](https://github.com/Folds/english) que adicionam esses elementos, porém o foco agora é traduzir a interface e a linguagem para o Português Brasileiro.
  <img src="docs/Imagens-Para-o-Readme/cal4018.png">
