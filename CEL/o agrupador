@@ -1029,6 +1029,7 @@ Etapas necessárias para que se disponibilize uns variáveis para um trecho:
   Repita. [o código acima]
 
 Um endereço base é um endereço.
+
 Uma zona é um conjunto com 
   Um endereço base, 
   Uma quantidade de caracteres e 
@@ -3820,14 +3821,14 @@ Etapas necessárias para que se eliminate duplicate nicknames usando uma variável
 
   
 
-  An entry é uma coisa com
-Um nome endereço,
-Um previamente calculado endereço, \ consulte https://en.wikipedia.org/wiki/Thunk e http://ftp.informatik.rwth-aachen.de/jargon300/previamente calculado.html para mais informações
-    \ Em programação de computador , um previamente calculado é uma sub-rotina usada para injetar um cálculo em outra sub-rotina. 
-    \Thunks são usados principalmente para atrasar um cálculo até que seu resultado seja necessário ou para inserir operações no início ou no final de outra sub-rotina. 
-    \Eles têm muitos outros usos na geração de código do compilador e em programação modular .
-Um nome,
-Um endereço.
+An entry é uma coisa com
+  Um nome endereço,
+  Um previamente calculado endereço, \ consulte https://en.wikipedia.org/wiki/Thunk e http://ftp.informatik.rwth-aachen.de/jargon300/previamente calculado.html para mais informações
+  \ Em programação de computador , um previamente calculado é uma sub-rotina usada para injetar um cálculo em outra sub-rotina. 
+  \Thunks são usados principalmente para atrasar um cálculo até que seu resultado seja necessário ou para inserir operações no início ou no final de outra sub-rotina. 
+  \Eles têm muitos outros usos na geração de código do compilador e em programação modular .
+  Um nome,
+  Um endereço.
 
 Uma expression é um termo.
 
@@ -3840,10 +3841,10 @@ Etapas necessárias para que se extend uma string com uma segunda string:
 Um campo é uma variável.
 
 Um campo termo é um conjunto com
-Um dereference detector,
-Um campo (reference),
-Um function rotina (reference),
-Um push detector.
+  Um dereference detector,
+  Um campo (reference),
+  Uma function rotina (reference),
+  Um push detector.
 
 Etapas necessárias para que se finalize o compilador:
   Destrua o catálogo de rotinas úteis.
@@ -4087,18 +4088,18 @@ Etapas necessárias para que se encontre uma variável usando um nome e umas variá
       \Se o nickname desta variável for o nome, cancele.
     \Repita. [o código acima]
 
-  An fragment é uma coisa com
-    \ we have three lists in the compiler memory — types, variables, and rotinas 
-    \ each rotina consists of a series of logical instructions called “fragments.” There are just 22 fragment types:
-Uma etiqueta [break, call external, call indirect, call internal, dereference, end if, epilog, exit, finalize, increment, Intel, jump false, load address, load eax, loop, not, prolog, push address, push value, save eax, repeat, rotina address],
-Uma variável (reference) [call indirect, dereference, increment, load address, load eax, pop, push address, push value, rotina address, save eax],
-Uma segunda variável (reference) [load address],
-Uma rotina (reference) [call internal, rotina address],
-Uma entry (reference) [call external],
-Um número [increment],
-Um detector [load eax], \SAL
-Um endereço,
-Um texto hexadecimal denominado código.
+An fragment é uma coisa com
+  \ we have three lists in the compiler memory — types, variables, and rotinas 
+  \ each rotina consists of a series of logical instructions called “fragments.” There are just 22 fragment types:
+  Uma etiqueta [break, call external, call indirect, call internal, dereference, end if, epilog, exit, finalize, increment, Intel, jump false, load address, load eax, loop, not, prolog, push address, push value, save eax, repeat, rotina address],
+  Uma variável (reference) [call indirect, dereference, increment, load address, load eax, pop, push address, push value, rotina address, save eax],
+  Uma segunda variável (reference) [load address],
+  Uma rotina (reference) [call internal, rotina address],
+  Uma entry (reference) [call external],
+  Um número [increment],
+  Um detector [load eax], \SAL
+  Um endereço,
+  Um texto hexadecimal denominado código.
 
 Etapas necessárias para que se gere um nome usando uma string:
   Atribua a string ao nome.
@@ -4137,40 +4138,27 @@ O image base é um endereço igual a 4194304 [$00400000].
 O import zona é um zona.
 
 Um import header é um conjunto com
-Um endereço denominado original first previamente calculado, \ consulte https://www.linkedin.com/pulse/why-pe-need-original-first-thunkoft-milad-kahsari-alhadi/
-    \ https://stackoverflow.com/questions/42413937/why-pe-need-original-first-thunkoft#:~:text=The%20original%20first%20thunk%20is,%2C%20user32%20etc)%20are%20known.
-    \Thunks are the defnitive pieces of codes em an operating system that handle the transitions between 16 and 32-bit código.
-    \ Thus they ensure backward compatibility between the calls made by the application.
-    \ O OS is subjected com this facility for backward compatibility, so that the 16 bit applications can run smoothly em 32 bit environment.
-    \ O original first thunk is needed if the imports are bound but the imported .DLL does not match.
-    \ On a fresh unpatched version of Windows, all addresses of all functions em the base .DLLs (ntdll, kernel32, user32 etc) are known.
-    \Take shell32 for example, it links para kernel32!CreateProcess and the true address of CreateProcess can be stored directly em shell32.
-    \This is denominado import binding and lets the loader skip the step where it looks para cima all the addresses of the imported functions.
-    \This does not work if the imported .DLL has not been loaded at its preferred address nor if the .DLL has changed (security update etc).
-    \If this happens seguido de the loader has para look para cima the functions "the normal way" and the original first thunk array has para be used
-    \ because that is the only place where the RVAs of the function names are stored.
-    \ If import binding is not used seguido de the original first thunk array is optional and might not be present.
-    \ ASLR has probably made this optimization irrelevant.
-Um número denominado TimeStamp, \ Set para zero until bound; seguido de this feld is set para the TimeDateStamp of the exporting FileHeader da DLL
-Um endereço denominado forwarder chain, \ Forwarder Chain: O 32-bit catálogo of the frst forwarder em the liste of imported functions
-Um endereço denominado nome memory endereço, 
-    \It holds the RVA [Relative Virtual Address] of the dll para be loaded para memory. It is a dword value.
-    \It is comprised of : RVA = Image Base + Endian Order 
-    \Note: As we know OllyDbg gives the result em the Big Endian order where as the x86 architecture holds the endereço em the Little Endian order, 
-    \ so the Address gets exchanged reversibly em the di tuples
-Um endereço denominado first previamente calculado memory endereço.
-    \ Once the API is linked and gets loaded para memory the frst previamente calculado which is a RVA points para the Import Enderece Table [IAT]
+\traduzir isso aqui
+  Um endereço denominado original first previamente calculado, \ consulte https://www.linkedin.com/pulse/why-pe-need-original-first-thunkoft-milad-kahsari-alhadi/
+  \ https://stackoverflow.com/questions/42413937/why-pe-need-original-first-thunkoft#:~:text=The%20original%20first%20thunk%20is,%2C%20user32%20etc)%20are%20known.
+  \ Thunks são as partes definitivas dos códigos em um sistema operacional que manipula as transições entre o código de 16 e 32 bits.
+  \ Assim, eles garantem a compatibilidade com versões anteriores entre as chamadas feitas pelo aplicativo.
+  \ O OS está sujeito a esta facilidade para compatibilidade com versões anteriores, de modo que os aplicativos de 16 bits possam funcionar sem problemas em ambientes de 32 bits.
+  Um número denominado TimeStamp, \ Set para zero until bound; seguido de this feld is set para the TimeDateStamp of the exporting FileHeader da DLL
+  Um endereço denominado forwarder chain, \ Forwarder Chain: O 32-bit catálogo of the frst forwarder em the liste of imported functions
+  Um endereço denominado nome memory endereço, 
+  \Esse endereço contém o RVA [Endereço Virtual Relativo] da dll a ser carregada na memória. É um valor dword.
+  \É composto por: RVA = Base da Imagem + Ordem Endian
+  Um endereço denominado first previamente calculado memory endereço.
 
-  An import é uma coisa com
-Um nome endereço,
-Um header endereço,
-Um nome,
-Um import header,
+An import é uma coisa com
+  Um nome endereço,
+  Um header endereço,
+  Um nome,
+  Um import header,
   Some entries.
 
-O imports são uns imports.
-
-  
+Os imports são uns imports.
 
 Etapas necessárias para que se catalogue um global:
   Se o detector de erros deste compilador estiver ativado, cancele.
@@ -4643,12 +4631,12 @@ Um cabeçalho expandido é uma string.    \ moniker
     \ ? makes it easy to expand prepositions (like "to" para "para"); and
     \ ? shows how the compiler interpreted various phrases in error messages.
 Um monikette é uma coisa com
-Um string,
-Um type (reference),
-Um variável (reference),
-    \ por bubbling
-Um type atual (reference),
-Um subtexto atual.
+  Um string,
+  Um type (reference),
+  Um variável (reference),
+  \ para bubbling
+  Um type atual (reference),
+  Um subtexto atual.
 
 Um cabeçalho semi-expandido é um cabeçalho expandido.
 
@@ -4803,175 +4791,176 @@ Etapas necessárias para que se offset o parâmetros em umas rotinas:
 Um parâmetro é uma variável.
 
 Um PE header é um conjunto com
-    \ O formato Portable Executable (PE) éum formato de arquivos executáveis / dll files que apareceu no Windows NT. 
-    \ELe é baseado na especificação COFF (Common Object File Format).
-    \Pra manter a compatibilidade como MS-DOS e Windows, o formato de arquivo PE mantém o antigo cabeçalho MZ do MS-DOS.
-    \ Ele é organizado como um fluxo linear de dados.
-    \ Começando com um cabçalho do MS-DOS, um real-mode program stub, e uma assinatura de arquivo PE. 
-    \ Logo em seguida vem o cabçalho do arquivo PE podendo também haver um cabeçalho opcional.
-    \ Além disso temos o cabeçalho de cada seção, seguido pelo corpo de cada seção. 
-    \Encerrando o arquivo existem regiões adicionais com informações variadas
-    \ tipo informações de relocação, tabela de símbolos, número de linhas e dados da tabela de strings. 
-    \ O cabeçalho MS-DOS ocupa os primeiros 64 bytes do arquivo. A estrutura básica está representada abaixo:
-Um número denominado Signature,
-Uma word denominado MachineType, 
-    \ O número que identifica o tipo de computador de destino. 
-    \Para obter mais informações, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#machine-types
-Uma word denominado NumberOfSections,
-    \ O número de seções. Isso indica o tamanho da tabela da seção, que segue imediatamente os cabeçalhos.
-Um número denominado TimeStamp, 
-    \ Os 32 low bits do número de segundos que se passaram desde 00:00 horas do dia 01/01/1970. (um valor time_t de tempo de execução do C)
-    \ serve pra indicar quando o arquivo foi criado.
-Um número denominado PointerToSymbolTable, 
-    \ O número do deslocamento de arquivo da tabela de símbolos COFF ou 
-    \ o numero zero se nenhuma tabela de símbolos COFF estiver presente. 
-    \ Esse valor deve ser zero para uma imagem porque as informações de depuração de COFF foram descontinuadas.
-Um número denominado NumberOfSymbols, 
-    \ O número de entradas na tabela de símbolos.
-    \ Esses dados podem ser usados para localizar a tabela de cadeia de caracteres, que segue imediatamente a tabela de símbolos.
-    \ Esse valor deve ser zero para uma imagem porque as informações de depuração de COFF foram descontinuadas.
-Uma word denominado SizeOfOptionalHeaderInBytes,
-     \ O tamanho do header opcional, que é necessário para arquivos executáveis, mas não para arquivos de objeto.
-    \ Esse valor deve ser zero para um arquivo-objeto. Para ver uma descrição do formato do header, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#optional-header-image-only
-Uma word denominado Characteristics, 
-    \ Os sinalizadores que indicam os atributos do arquivo. 
-    \Para valores de sinalizador específicos, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#Characteristics
-    \ optional header
-Uma word denominado MagicNumber, 
-    \O número mágico do cabeçalho opcional determina se uma imagem é um PE32 ou PE32 + executável.
-    \ As imagens PE32 + permitem um espaço de endereço de 64 bits, limitando o tamanho da imagem a 2 gigabytes. 
-    \ Outras modificações PE32 + são abordadas em suas respectivas seções.
-    \ É um inteiro sem sinal que identifica o estado do arquivo de imagem. 
-    \ O valor mais comum é 0x10B, que o identifica como um arquivo executável normal. 
-    \0x107 o identifica como uma imagem de ROM e 0x20B a identifica como um PE32 + executável.
-    \ Esse campo é usado para identificar arquivos compatíveis com o tipo de arquivo do MS-DOS. 
-    \ Os executáveis compatíveis com MS-DOS usam o valor 0x5A4D, que é o valor das letras MZ na tabela ASCII
-Um pedaço denominado MajorLinkerVersion, 
-    \ Indica a version do linker que vinculou a imagem - O número da versão principal do vinculador.
-Um pedaço denominado MinorLinkerVersion, 
-    \ Indica a version do linker que vinculou a imagem - O número da versão secundária do vinculador.
-Um número denominado SizeOfCodeInFile, 
-    \O tamanho da seção de código (texto) ou a soma de todas as seções de código se houver várias seções.
-Um número denominado SizeOfInitializedDataInFile,
-     \ O tamanho da seção de dados inicializados ou a soma de todas essas seções, se houver várias seções de dados.
-Um número denominado SizeOfUninitializedDataInFile, 
-    \ O tamanho da seção de dados não inicializado (BSS) ou a soma de todas essas seções, se houver várias seções BSS.
-Um número denominado AddressOfEntryPointInMemory, 
-    \Esse campo indica a localização do fim da Import Address Table (IAT). 
-    \ É um número que contém endereço do ponto de entrada relativo à imagem base quando o arquivo executável é carregado na memória. 
-    \Para imagens de programa, esse é o endereço inicial. 
-    \Para drivers de dispositivo, esse é o endereço da função de inicialização. 
-    \Um ponto de entrada [entry point] é opcional para DLLs. 
-    \Quando nenhum ponto de entrada está presente, esse campo deve ser zero.
-Um número denominado AddressOfCodeInMemory,  [BaseOfCode]
-    \ O endereço relativo à base da imagem da seção de início de código quando ela é carregada na memória.
-Um número denominado AddressOfInitializedDataInMemory, [BaseOfData]
-    \ O endereço relativo à base da imagem da seção de início de dados quando ela é carregada na memória.
-Um número denominado ImageBase, 
-    \ O endereço preferencial do primeiro byte de imagem quando carregado na memória; deve ser um múltiplo de 64 K. 
-    \O padrão para DLLs é 0x10000000. o padrão para Windows CE EXEs é 0x00010000. 
-    \ O padrão para Windows NT, Windows 2000, Windows XP, Windows 95, Windows 98 e Windows Me é 0x00400000.
-Um número denominado MemoryAlignment, [SectionAlignment]
-    \ O alinhamento (em bytes) das seções quando elas são carregadas na memória. 
-    \Ele deve ser maior ou igual a FileAlignment. 
-    \O padrão é o tamanho da página para a arquitetura.
-Um número denominado FileAlignment, 
-    \ O fator de alinhamento (em bytes) usado para alinhar os dados brutos das seções no arquivo de imagem. 
-    \O valor deve ser uma potência de 2 entre 512 e 64 K, inclusive. O padrão é 512. 
-    \Se SectionAlignment for menor que o tamanho da página da arquitetura, FileAlignment deverá corresponder a SectionAlignment.
-Uma word denominado OS_MajorVersion, [MajorOperatingSystemVersion]
-    \ O número de versão principal do sistema operacional Windows NT.
-Uma word denominado OS_MinorVersion, [MinorOperatingSystemVersion]
-    \ O número de versão secundária do sistema operacional necessário.
-Uma word denominado UserMajorVersion,  [MajorImageVersion]
-    \ O número de versão principal do programa.
-Uma word denominado UserMinorVersion, [MinorImageVersion]
-     \ O número de versão secundária do programa.
-Uma word denominado SubsystemMajorVersion, [MajorSubsystemVersion]
-    \ O número de versão principal do subsistema Win32 do Windows NT.
-Uma word denominado SubsystemMinorVersion, [MinorSubsystemVersion]
-    \ O número de secundária principal do subsistema.
-Um número denominado Reserved,  [Win32VersionValue]
-    \ Reservado, deve ser zero. Unknown purpose, currently not used by the system and set para zero by the linker.
-Um número denominado SizeOfImageInMemory, [SizeOfImage]
-    \ O tamanho (em bytes) da imagem, incluindo todos os headers, pois a imagem é carregada na memória. Ele deve ser um múltiplo de SectionAlignment.
-    \ Indicates the amount of address space para reserve em the address space for the loaded executable image. 
-    \This number is influenced greatly by SectionAlignment. 
-    \For example, consider a system having a fixed page size of 4096 bytes. 
-    \If you have an executable com 11 sections, each less than 4096 bytes, aligned sobre a 65,536-byte boundary, the SizeOfImage campo would be set para 11 * 65,536 = 720,896 (176 pages). 
-    \O same file linked com 4096-byte alignment would result em 11 * 4096 = 45,056 (11 pages) for the SizeOfImage campo. 
-    \This is a simple example em which each section requires less than a page of memory. 
-    \In reality, the linker determines the exact SizeOfImage by figuring each section individually. 
-    \It first determines how many bytes the section requires, seguido de it rounds para cima para the nearest page boundary, and finally it rounds page count para the nearest SectionAlignment boundary. 
-    \O total is seguido de the sum of each individual requirement da section.
-Um número denominado SizeOfAllHeadersInFile, [SizeOfHeaders]
-    \ O tamanho combinado de um stub do MS-DOS, o header PE e os headers da seção arredondados para um múltiplo de FileAlignment.
-    \ This campo indicates how much space em the file is used for representing all the file headers, 
-    \ including the MS-DOS header, PE file header, PE optional header, and PE Section Headers. O section bodies begin at this location em the file.
-Um número denominado CheckSum, 
-    \ A verificação de arquivo de imagem. 
-    \O algoritmo para calcular a verificação é incorporado em IMAGHELP.DLL. 
-    \Os seguintes são verificados quanto à validação no tempo de carregamento: 
-    \todos os drivers, qualquer DLL carregada no momento da inicialização e qualquer DLL carregada em um processo Windows crítico.
-    \ A checksum value is used para validate the executable file at load time. 
-    \ O value is set and verified by the linker. O algorithm used for creating these checksum values is proprietary information and will not be published.
-Uma word denominado Subsystem, 
-    \ Field used para identify the target Subsystem for this executable O subsistema necessário para executar esta imagem. 
-    \Each of the possible Subsystem values are listed em the WINNT.H file immediately after the IMAGE_OPTIONAL_HEADER structure.
-    \Para obter mais informações, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#windows-Subsystem
-Uma word denominado DllCharacteristics,
-     \ Flags used para indicate if a DLL image includes entry points for process and thread initialization and termination.
-    \ Para obter mais informações, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#dll-Characteristics
-Um número denominado MaxStack, [SizeOfStackReserve]
-    \These fields control the amount of address space para reserve and commit for the stack and default heap. 
-    \ O tamanho da pilha a ser reservada. Somente SizeOfStackCommit está comprometido; 
-    \o restante é disponibilizado uma página por vez até que o tamanho da reserva seja atingido.
-Um número denominado MinStack, [SizeOfStackCommit]
-    \Both the stack and heap have default values of 1 page committed and 16 pages Reserved. 
-    \ O tamanho da pilha a ser confirmada.
-Um número denominado MaxHeap, [SizeOfHeapReserve]
-    \These values are set com the linker switches -STACKSIZE: and -HEAPSIZE:. 
-    \O tamanho do espaço de heap local a ser reservado. 
-    \Somente SizeOfHeapCommit está comprometido; o restante é disponibilizado uma página por vez até que o tamanho da reserva seja atingido.
-Um número denominado MinHeap, [SizeOfHeapCommit]
-    \ O tamanho do espaço de heap local a ser confirmado.
-Um número denominado LoaderFlags, 
-    \ Reservado, deve ser zero. Tells the loader whether para break sobre load, debug over load, or the default, which is para let things run normally.
-    \ directories (16 address e size pairs)
-Um número denominado NumberOfDirectories, [NumberOfRvaAndSizes]
-    \ O número de entradas de diretório de dados no restante do header opcional. Cada uma descreve uma localização e um tamanho.
+  \ O formato Portable Executable (PE) éum formato de arquivos executáveis / dll files que apareceu no Windows NT. 
+  \Ele é baseado na especificação COFF (Common Object File Format).
+  \Pra manter a compatibilidade como MS-DOS e Windows, o formato de arquivo PE mantém o antigo cabeçalho MZ do MS-DOS.
+  \ Ele é organizado como um fluxo linear de dados.
+  \ Começando com um cabçalho do MS-DOS, um real-mode program stub, e uma assinatura de arquivo PE. 
+  \ Logo em seguida vem o cabçalho do arquivo PE podendo também haver um cabeçalho opcional.
+  \ Além disso temos o cabeçalho de cada seção, seguido pelo corpo de cada seção. 
+  \Encerrando o arquivo existem regiões adicionais com informações variadas
+  \ por exemplo, informações de relocação, tabela de símbolos, número de linhas e dados da tabela de strings. 
+  \ O cabeçalho MS-DOS ocupa os primeiros 64 bytes do arquivo. A estrutura básica está representada abaixo:
+  Um número denominado Signature,
+  Uma word denominado MachineType, 
+  \ O número que identifica o tipo de computador de destino. 
+  \Para obter mais informações, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#machine-types
+  Uma word denominado NumberOfSections,
+  \ O número de seções. Isso indica o tamanho da tabela da seção, que segue imediatamente os cabeçalhos.
+  Um número denominado TimeStamp, 
+  \ Os 32 low bits do número de segundos que se passaram desde 00:00 horas do dia 01/01/1970. (um valor time_t de tempo de execução do C)
+   \ serve pra indicar quando o arquivo foi criado.
+  Um número denominado PointerToSymbolTable, 
+  \ O número do deslocamento de arquivo da tabela de símbolos COFF ou 
+  \ o numero zero se nenhuma tabela de símbolos COFF estiver presente. 
+  \ Esse valor deve ser zero para uma imagem porque as informações de depuração de COFF foram descontinuadas.
+  Um número denominado NumberOfSymbols, 
+  \ O número de entradas na tabela de símbolos.
+  \ Esses dados podem ser usados para localizar a tabela de cadeia de caracteres, que segue imediatamente a tabela de símbolos.
+  \ Esse valor deve ser zero para uma imagem porque as informações de depuração de COFF foram descontinuadas.
+  Uma word denominado SizeOfOptionalHeaderInBytes,
+   \ O tamanho do header opcional, que é necessário para arquivos executáveis, mas não para arquivos de objeto.
+  \ Esse valor deve ser zero para um arquivo-objeto. Para ver uma descrição do formato do header, consulte:
+  \ https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#optional-header-image-only
+  Uma word denominado Characteristics, 
+  \ Os sinalizadores que indicam os atributos do arquivo. 
+  \Para valores de sinalizador específicos, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#Characteristics
+  \ optional header
+  Uma word denominado MagicNumber, 
+  \O número mágico do cabeçalho opcional determina se uma imagem é um PE32 ou PE32 + executável.
+  \ As imagens PE32 + permitem um espaço de endereço de 64 bits, limitando o tamanho da imagem a 2 gigabytes. 
+  \ Outras modificações PE32 + são abordadas em suas respectivas seções.
+  \ É um inteiro sem sinal que identifica o estado do arquivo de imagem. 
+  \ O valor mais comum é 0x10B, que o identifica como um arquivo executável normal. 
+  \0x107 o identifica como uma imagem de ROM e 0x20B a identifica como um PE32 + executável.
+  \ Esse campo é usado para identificar arquivos compatíveis com o tipo de arquivo do MS-DOS. 
+  \ Os executáveis compatíveis com MS-DOS usam o valor 0x5A4D, que é o valor das letras MZ na tabela ASCII
+  Um pedaço denominado MajorLinkerVersion, 
+  \ Indica a version do linker que vinculou a imagem - O número da versão principal do vinculador.
+  Um pedaço denominado MinorLinkerVersion, 
+  \ Indica a version do linker que vinculou a imagem - O número da versão secundária do vinculador.
+  Um número denominado SizeOfCodeInFile, 
+  \O tamanho da seção de código (texto) ou a soma de todas as seções de código se houver várias seções.
+  Um número denominado SizeOfInitializedDataInFile,
+   \ O tamanho da seção de dados inicializados ou a soma de todas essas seções, se houver várias seções de dados.
+  Um número denominado SizeOfUninitializedDataInFile, 
+  \ O tamanho da seção de dados não inicializado (BSS) ou a soma de todas essas seções, se houver várias seções BSS.
+  Um número denominado AddressOfEntryPointInMemory, 
+  \Esse campo indica a localização do fim da Import Address Table (IAT). 
+  \ É um número que contém endereço do ponto de entrada relativo à imagem base quando o arquivo executável é carregado na memória. 
+  \Para imagens de programa, esse é o endereço inicial. 
+  \Para drivers de dispositivo, esse é o endereço da função de inicialização. 
+  \Um ponto de entrada [entry point] é opcional para DLLs. 
+  \Quando nenhum ponto de entrada está presente, esse campo deve ser zero.
+  Um número denominado AddressOfCodeInMemory,  [BaseOfCode]
+  \ O endereço relativo à base da imagem da seção de início de código quando ela é carregada na memória.
+  Um número denominado AddressOfInitializedDataInMemory, [BaseOfData]
+  \ O endereço relativo à base da imagem da seção de início de dados quando ela é carregada na memória.
+  Um número denominado ImageBase, 
+  \ O endereço preferencial do primeiro byte de imagem quando carregado na memória; deve ser um múltiplo de 64 K. 
+  \O padrão para DLLs é 0x10000000. o padrão para Windows CE EXEs é 0x00010000. 
+  \ O padrão para Windows NT, Windows 2000, Windows XP, Windows 95, Windows 98 e Windows Me é 0x00400000.
+  Um número denominado MemoryAlignment, [SectionAlignment]
+  \ O alinhamento (em bytes) das seções quando elas são carregadas na memória. 
+  \Ele deve ser maior ou igual a FileAlignment. 
+  \O padrão é o tamanho da página para a arquitetura.
+  Um número denominado FileAlignment, 
+  \ O fator de alinhamento (em bytes) usado para alinhar os dados brutos das seções no arquivo de imagem. 
+  \O valor deve ser uma potência de 2 entre 512 e 64 K, inclusive. O padrão é 512. 
+  \Se SectionAlignment for menor que o tamanho da página da arquitetura, FileAlignment deverá corresponder a SectionAlignment.
+  Uma word denominado OS_MajorVersion, [MajorOperatingSystemVersion]
+  \ O número de versão principal do sistema operacional Windows NT.
+  Uma word denominado OS_MinorVersion, [MinorOperatingSystemVersion]
+  \ O número de versão secundária do sistema operacional necessário.
+  Uma word denominado UserMajorVersion,  [MajorImageVersion]
+  \ O número de versão principal do programa.
+  Uma word denominado UserMinorVersion, [MinorImageVersion]
+  \ O número de versão secundária do programa.
+  Uma word denominado SubsystemMajorVersion, [MajorSubsystemVersion]
+  \ O número de versão principal do subsistema Win32 do Windows NT.
+  Uma word denominado SubsystemMinorVersion, [MinorSubsystemVersion]
+  \ O número de secundária principal do subsistema.
+  Um número denominado Reserved,  [Win32VersionValue]
+  \ Reservado, deve ser zero. Unknown purpose, currently not used by the system and set para zero by the linker.
+  Um número denominado SizeOfImageInMemory, [SizeOfImage]
+  \ O tamanho (em bytes) da imagem, incluindo todos os headers, pois a imagem é carregada na memória. Ele deve ser um múltiplo de SectionAlignment.
+  \ Indicates the amount of address space para reserve em the address space for the loaded executable image. 
+  \This number is influenced greatly by SectionAlignment. 
+  \For example, consider a system having a fixed page size of 4096 bytes. 
+  \If you have an executable com 11 sections, each less than 4096 bytes, aligned sobre a 65,536-byte boundary, the SizeOfImage campo would be set para 11 * 65,536 = 720,896 (176 pages). 
+   \The same file linked com 4096-byte alignment would result em 11 * 4096 = 45,056 (11 pages) for the SizeOfImage campo. 
+  \This is a simple example em which each section requires less than a page of memory. 
+  \In reality, the linker determines the exact SizeOfImage by figuring each section individually. 
+  \It first determines how many bytes the section requires, seguido de it rounds para cima para the nearest page boundary, and finally it rounds page count para the nearest SectionAlignment boundary. 
+  \O total is seguido de the sum of each individual requirement da section.
+  Um número denominado SizeOfAllHeadersInFile, [SizeOfHeaders]
+  \ O tamanho combinado de um stub do MS-DOS, o header PE e os headers da seção arredondados para um múltiplo de FileAlignment.
+  \ This campo indicates how much space em the file is used for representing all the file headers, 
+  \ including the MS-DOS header, PE file header, PE optional header, and PE Section Headers. O section bodies begin at this location em the file.
+  Um número denominado CheckSum, 
+  \ A verificação de arquivo de imagem. 
+  \O algoritmo para calcular a verificação é incorporado em IMAGHELP.DLL. 
+  \Os seguintes são verificados quanto à validação no tempo de carregamento: 
+  \todos os drivers, qualquer DLL carregada no momento da inicialização e qualquer DLL carregada em um processo Windows crítico.
+  \ A checksum value is used para validate the executable file at load time. 
+  \ O value is set and verified by the linker. O algorithm used for creating these checksum values is proprietary information and will not be published.
+  Uma word denominado Subsystem, 
+  \ Field used para identify the target Subsystem for this executable O subsistema necessário para executar esta imagem. 
+  \Each of the possible Subsystem values are listed em the WINNT.H file immediately after the IMAGE_OPTIONAL_HEADER structure.
+  \Para obter mais informações, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#windows-Subsystem
+  Uma word denominado DllCharacteristics,
+  \ Flags used para indicate if a DLL image includes entry points for process and thread initialization and termination.
+  \ Para obter mais informações, consulte https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#dll-Characteristics
+  Um número denominado MaxStack, [SizeOfStackReserve]
+  \These fields control the amount of address space para reserve and commit for the stack and default heap. 
+  \ O tamanho da pilha a ser reservada. Somente SizeOfStackCommit está comprometido; 
+  \o restante é disponibilizado uma página por vez até que o tamanho da reserva seja atingido.
+  Um número denominado MinStack, [SizeOfStackCommit]
+  \Both the stack and heap have default values of 1 page committed and 16 pages Reserved. 
+  \ O tamanho da pilha a ser confirmada.
+  Um número denominado MaxHeap, [SizeOfHeapReserve]
+  \These values are set com the linker switches -STACKSIZE: and -HEAPSIZE:. 
+  \O tamanho do espaço de heap local a ser reservado. 
+  \Somente SizeOfHeapCommit está comprometido; o restante é disponibilizado uma página por vez até que o tamanho da reserva seja atingido.
+  Um número denominado MinHeap, [SizeOfHeapCommit]
+  \ O tamanho do espaço de heap local a ser confirmado.
+  Um número denominado LoaderFlags, 
+  \ Reservado, deve ser zero. Tells the loader whether para break sobre load, debug over load, or the default, which is para let things run normally.
+  \ directories (16 address e size pairs)
+  Um número denominado NumberOfDirectories, [NumberOfRvaAndSizes]
+  \ O número de entradas de diretório de dados no restante do header opcional. Cada uma descreve uma localização e um tamanho.
   8 pedaços denominados Directory0,
-Um número denominado ImageDirectoryEntryImportAddress,
-Um número denominado ImageDirectoryEntryImportSize,
+  Um número denominado ImageDirectoryEntryImportAddress,
+  Um número denominado ImageDirectoryEntryImportSize,
   112 pedaços denominados Directories2-15,
-Um PE Section Header denominado Idata Section,
-Um PE Section Header denominado Data Section,
-Um PE Section Header denominado Code Section. \ https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#section-flags
+  Um PE Section Header denominado Idata Section,
+  Um PE Section Header denominado Data Section,
+  Um PE Section Header denominado Code Section. \ https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#section-flags
 
 Um PE Section Header é um conjunto com
-    \ Section headers are located sequentially right after the optional header em the PE file format. Each section header is 40 bytes com no padding between them. 
-    \O PE file specification consists of the headers defined so far and a generic object denominado a section. 
-    \Sections contain the content of the file, including código, data, resources, and segunda executable information. 
-    \Each section has a header and a body (the raw data). Section headers are described below, but section bodies lack a rigid file structure. 
-    \They can be organized em almost algum tipo de way a linker wishes para organize them, as long as the header is filled com enough information para be able para decipher the data.
+  \ Section headers are located sequentially right after the optional header em the PE file format. Each section header is 40 bytes com no padding between them. 
+  \O PE file specification consists of the headers defined so far and a generic object denominado a section. 
+  \Sections contain the content of the file, including código, data, resources, and segunda executable information. 
+  \Each section has a header and a body (the raw data). Section headers are described below, but section bodies lack a rigid file structure. 
+  \They can be organized em almost algum tipo de way a linker wishes para organize them, as long as the header is filled com enough information para be able para decipher the data.
   8 pedaços denominados Nome, \ Each section header has a nome campo para cima para eight characters long, for which the first character must be a period.
-Um número denominado SizeInBytes,
-Um número denominado AddressInMemory,
-Um número denominado SizeInFile,
-Um número denominado AddressInFile,
+  Um número denominado SizeInBytes,
+  Um número denominado AddressInMemory,
+  Um número denominado SizeInFile,
+  Um número denominado AddressInFile,
   12 pedaços denominados Reserved,
-Um número denominado Characteristics. \ Defines the section Characteristics. 
-    \These values are found both em WINNT.H and in the Portable Executable Format specification.
-    \Value	Definition
-    \0x00000020	Code Section
-    \0x00000040	Initialized data section
-    \0x00000080	Uninitialized data section
-    \0x04000000	Section cannot be cached
-    \0x08000000	Section is not pageable
-    \0x10000000	Section is shared
-    \0x20000000	Executable section
-    \0x40000000	Readable section
-    \0x80000000	Writable section
+  Um número denominado Characteristics. \ Defines the section Characteristics. 
+  \These values are found both em WINNT.H and in the Portable Executable Format specification.
+  \Value -> Definition
+  \0x00000020 -> Code Section
+  \0x00000040 -> Initialized data section
+  \0x00000080 -> Uninitialized data section
+  \0x04000000 -> Section cannot be cached
+  \0x08000000 -> Section is not pageable
+  \0x10000000 -> Section is shared
+  \0x20000000 -> Executable section
+  \0x40000000 -> Readable section
+  \0x80000000 -> Writable section
 
 Uma phrase é uma string.
 
@@ -5287,13 +5276,9 @@ Etapas necessárias para que se pluralize uma string:
   Se a string termina com "z", posponha "es" para a string; exit.
   Posponha "s" para a string.
 
-  
-
-Um prototype string é um conjunto com um first endereço de memória do pedaço e um last endereço de memória do pedaço .
-
-  
-
-  
+Uma prototype string é um conjunto com 
+  Um first endereço de memória do pedaço e 
+  Um last endereço de memória do pedaço .
 
 Etapas necessárias para que se atribua o endereço exe completo deste compilador para um endereço completo:
   Extraia um designador desde o endereço da pasta deste compilador.
@@ -5619,25 +5604,25 @@ Um cabeçalho de rotina é um subtexto.
 O catálogo geral de rotinas é um catálogo.
 
 Uma rotina é uma coisa com
-Um local de aparição (reference),
-Um detector de compatibilidade,
-Um detector de deliberação,
-Um detector de função,
-Um compiled detector,
-Um nickname catálogo,
-Um cabeçalho expandido, 
+  Um local de aparição (reference),
+  Um detector de compatibilidade,
+  Um detector de deliberação,
+  Um detector de função,
+  Um compiled detector,
+  Um nickname catálogo,
+  Um cabeçalho expandido, 
   Uns monikettes, 
   Uns parâmetros, 
-Um parâmetro size,
-Um employs cabeçalho expandido,
+  Um parâmetro size,
+  Um employs cabeçalho expandido,
   Some locals, 
-Um local size,
-Um cabeçalho de rotina, 
-Um header string,
-Umas instruções, 
-Um body string,
+  Um local size,
+  Um cabeçalho de rotina, 
+  Um header string,
+  Umas instruções, 
+  Um body string,
   Some fragments,
-Um endereço.
+  Um endereço.
 
 Um rotina reference é uns monikettes.
 
@@ -5993,15 +5978,17 @@ Etapas necessárias para que se skip para o previous palavra em um subtexto:
   Repita. [o código acima]
   Skip algum tipo de trailing noise no subtexto.
 
-  An source file é uma coisa com um endereço completo e um trecho.
+An source file é uma coisa com 
+  Um endereço completo e 
+  Um trecho.
 
   Os source files são uns source files.
 
 Uma etiqueta é um número.
 
 Um termo é um conjunto com 
-Uma variável e 
-Uma phrase.
+  Uma variável e 
+  Uma phrase.
 
 Etapas necessárias para que se transforme em código hexadecimal um fragment:
   Se o detector de erros deste compilador estiver ativado, cancele.
@@ -6180,28 +6167,28 @@ Um type é uma coisa com
 
 Um type nome é um nome.
 
-  Os types são uns types.
+Os types são uns types.
 
 O catálogo de rotinas úteis é um catálogo.
 
-Um variável é uma coisa com
-Um local de aparição (reference),
-Um categoria [literal, global, local, parâmetro, scratch],
-Um compiled detector,
-Um nome, um nickname, um type nome,
-Um type (reference), \ actual type sobre literal, global, local; dereferenced type sobre parâmetros e scratches
-Um endereço [globals e literals only] ou 
-Um offset at o endereço [locals, parâmetros, e campos only],
-Um contagem [campos only],
-Um reference detector [campos only],
-Um redefinition conteúdo nome [campos only],
-Um by-value detector [parâmetros only],
-Um global body [globals only],
-Um initializer string [globals only],
-Um literal (reference) [globals only - constant com which to initalize the global],
-Um texto hexadecimal denominado data [literals only].
-
-  
+Uma variável é uma coisa com
+  Um local de aparição (reference),
+  Um categoria [literal, global, local, parâmetro, scratch],
+  Um compiled detector,
+  Um nome, 
+  Um nickname, 
+  Um type nome,
+  Um type (reference), \ actual type sobre literal, global, local; dereferenced type sobre parâmetros e scratches
+  Um endereço [globals e literals only] ou 
+  Um offset at o endereço [locals, parâmetros, e campos only],
+  Um contagem [campos only],
+  Um reference detector [campos only],
+  Um redefinition conteúdo nome [campos only],
+  Um by-value detector [parâmetros only],
+  Um global body [globals only],
+  Um initializer string [globals only],
+  Um literal (reference) [globals only - constant com which to initalize the global],
+  Um texto hexadecimal denominado data [literals only].
 
 Etapas necessárias para que se skip algum tipo de trailing noise em um subtexto:
   Se o subtexto estiver em branco, cancele.
