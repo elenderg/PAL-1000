@@ -7924,35 +7924,9 @@ Uma MSG é um conjunto com
   Um número denominado time,
   Uma localização denominado pt.
 
-Etapas necessárias para que se multiplique um endereço de memória por um número;
-Etapas necessárias para que se multiplique um número por um segundo número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
-  Intel $F72B.\ mul [ebx] \ means mul eax,[ebx] but é weird form
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8903. \ mov [ebx],eax
-
 Um nome é uma string.
 
-Etapas necessárias para que se negate um fração:
-  Negate o numerador desta fração.
-
-Etapas necessárias para que se negate um número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
-  Intel $F718.\ neg [eax]
-
-Etapas necessárias para que se negate um par de números:
-  Negate o número X deste par de números.
-  Negate o número Y deste par de números.
-
-O next letra é um letra igual a 65 [the big-a byte].
-
-Uma cifra binária é um pedaço. \ somente são válidos os 4 bits de ordem inferior. Exemplo: No byte 0101 1010 somente a parte "1010" é válida. 
-    \ é um "low order nibble" ou uma sucessão de bytes de ordem inferior
-
-Um cifra hexadecimal é uma string. \ Exemplo: $0010A0... O cifrão serve para indicar ao compilador que se trata de um valor hexadecimal. 
-    \Em outras linguagens costuma-se usar um # (como no css #a1b2e3; ou um 0x, por exemplo 0xA1B2FF...
+A next letra é um letra igual a 65 [the big-a byte].
 
 Etapas necessárias para que se redimensione cuidadosamente [sem perder qualidade] uma imagem usando um par de números racionais;
 Etapas necessárias para que se redimensione cuidadosamente [sem perder qualidade] uma imagem usando um par de números fracionários:
@@ -8063,16 +8037,6 @@ Etapas necessárias para que se modifique através do caractere NUL um wide string
   Atribua a quantidade de caracteres deste wide string a uma quantidade de caracteres armazenados.
   Reassign o first desta wide string usando a quantidade de caracteres armazenados mais 2.
   Atribua o first desta wide string mais a quantidade de caracteres armazenados menos 1 ao last deste wide string.
-
-Um número é um conjunto com
-  Um first pedaço,
-  Um second pedaço,
-  Um terceiro pedaço,
-  Um quarto pedaço,
-  Uma low word at o first pedaço,
-  Uma high word at o terceiro pedaço.
-
-Um endereço numérico é um endereço de memória para um número.
 
 Um offset é um número.
 
@@ -8383,34 +8347,6 @@ Etapas necessárias para que se escolha aleatoriamente uma localização within um 
   Escolha aleatoriamente a coordenada Y desta localização within o distance of a coordenada Y desta segunda localização.
   Atribua a localização à localização deste context.
 
-Etapas necessárias para que se escolha aleatoriamente uns twips between uns min twips e uns segunda twips; \ são all these necessary? ***
-Etapas necessárias para que se escolha aleatoriamente um número between uns min twips e uns segunda twips;
-Etapas necessárias para que se escolha aleatoriamente um número between um min número e um max número;
-Etapas necessárias para que se escolha aleatoriamente um número desde um min número para um max número;
-Etapas necessárias para que se defina um número para something between um segundo número e um terceiro número;
-Etapas necessárias para que se escolha aleatoriamente um random número between um min número e um max número:
-  Atribua o endereçamento deste seed para EAX.
-    \ atribua address of randseed A ecx
-  Intel $8BC8. \ mov ecx,eax
-    \ calculate zero based max
-  Intel $8B8510000000. \ mov eax,[ebp+16] \ o max
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o min
-  Intel $2B03. \ sub eax,[ebx]
-  Intel $40. \ inc eax
-    \ ajuste randseed
-  Intel $691105840808. \ imul edx,[ecx],134775813
-  Intel $42. \ inc edx
-  Intel $8911. \ mov [ecx],edx
-    \ mul adjusted randseed pelo zero based max
-  Intel $F7E2. \ mul edx
-    \ adicione o min para an-zero base o número
-  Intel $0313. \ adicione edx,[ebx] o min
-    \ store o result
-  Intel $8B9D08000000. \ mov ebx,[ebp+08] \ o random número
-  Intel $8913. \ mov [ebx],edx
-  Atribua o random número ao número deste context.
-
 Etapas necessárias para que se escolha aleatoriamente um cor muito escura;
 Etapas necessárias para que se escolha aleatoriamente um really cor escura:
   Escolha aleatoriamente a matiz desta really cor escura between 0 e 3599.
@@ -8501,21 +8437,9 @@ An point é um número. \cujos valores vão desde 0 até 3839;  servem para dividir 
     \Nesse sistema de pontos de bússola, o número 0 representa o norte, cada quadrante tem 960 pontos
     \ Perfazendo um total de 3840 pontos
 
-Um endereço de memória é um conjunto com 4 pedaços.
-
 Um polígono é uma coisa com uns vértices.
 
 Um position é um par de números com um column# e um número da linha.
-
-Etapas necessárias para que se posicione um subtexto sobre uma string:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o subtexto
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ a string
-    \ atribua o first endereço de memória do pedaço desta string ao first  endereço de memória do pedaço deste subtexto
-  Intel $8B8B00000000. \ mov ecx,[ebx+0] \ o first  endereço de memória do pedaço da string
-  Intel $898800000000. \ mov [eax+0],ecx \ o first  endereço de memória do pedaço do subtexto
-    \ atribua o first endereço de memória do pedaço desta string menos 1 ao last endereço de memória do pedaço deste subtexto
-  Intel $49. \ dec ecx
-  Intel $898804000000. \ mov [eax+4],ecx \ o last endereço de memória do pedaço deste subtexto
 
 Etapas necessárias para que se anteponha um pedaço para uma string:
   Atribua a quantidade de caracteres desta string a uma quantidade de caracteres armazenados.
@@ -8678,33 +8602,11 @@ Etapas necessárias para que se atribua o y-extent dessa caixa para uma altura:
   Atribua a coordenada inferior desta caixa ao altura.
   Subtraia a coordenada superior desta caixa desde o altura.
 
-Etapas necessárias para que se atribua um pedaço para um segundo pedaço:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o byte
-  Intel $8A00. \ mov al,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ a segunda byte
-  Intel $8803. \ mov [ebx],al
-
-Etapas necessárias para que se atribua um pedaço para eax:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $0FB603. \ movzx eax,byte ptr [ebx]
-
-Etapas necessárias para que se atribua um pedaço para um número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o byte
-  Intel $0FB600. \ movzx eax,byte ptr [eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o número
-  Intel $8903. \ mov [ebx],eax
-
 Etapas necessárias para que se atribua um pedaço para uma string:
   Atribua 1 a uma quantidade de caracteres.
   Reassign o first endereço de memória do pedaço desta string usando a quantidade de caracteres.
   Atribua o pedaço ao conteúdo deste first endereço de memória do pedaço desta string.
   Atribua o first endereço de memória do pedaço desta string ao last endereço de memória do pedaço desta string.
-
-Etapas necessárias para que se atribua um pedaço para um word:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o byte
-  Intel $660FB600. \ movzx eax,byte ptr [eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o word
-  Intel $668903. \ mov [ebx],ah
 
 Etapas necessárias para que se atribua o character depois de um finger para um character:
   Se o finger for inexistente, limpe o character; exit.
@@ -8741,20 +8643,6 @@ Etapas necessárias para que se atribua a string dessa date/time para uma string:
   Posponha ":" para a string.
   Zero fill o millisecond deste date/time usando 3 e posponha it para a string.
 
-Etapas necessárias para que se atribua eax para um pedaço:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8803. \ mov [ebx],al
-
-Etapas necessárias para que se atribua eax para um detector;
-Etapas necessárias para que se atribua eax para um endereço de memória;
-Etapas necessárias para que se atribua eax para um número:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8903. \ mov [ebx],eax
-
-Etapas necessárias para que se atribua eax para um word:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o word
-  Intel $668903. \ mov [ebx],ax
-
 Etapas necessárias para que se atribua uma elipse no middle of uma caixa;
 Etapas necessárias para que se centralize uma elipse em uma caixa:
   Centralize a elipse na caixa (horizontalmente).
@@ -8769,29 +8657,6 @@ Etapas necessárias para que se centralize um elipse sobre uma localização:
 
 Etapas necessárias para que se atribua um finger sobre o first character of uma string:
   Atribua o first endereço de memória do pedaço desta string ao finger.
-
-Etapas necessárias para que se atribua um detector para uma segundo detector;
-Etapas necessárias para que se atribua um detector para um número;
-Etapas necessárias para que se atribua um endereço de memória para um número;
-Etapas necessárias para que se atribua um endereço de memória para um segundo endereço de memória;
-Etapas necessárias para que se atribua um número para um detector;
-Etapas necessárias para que se atribua um número para um endereço de memória;
-Etapas necessárias para que se atribua um número para um segundo número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o 1º valor (ebp+8) no registrador eax
-  Intel $8B00. \ mov eax,[eax] -> ebp=8 representa o 1º parâmetro da função. ebp+12 representa o 2º parâmetro
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> salva o 2º valor (ebp+12) no registrador ebx
-  Intel $8903. \ mov [ebx],eax -> salva eax em ebx
-
-Etapas necessárias para que se atribua um detector para eax;
-Etapas necessárias para que se atribua um endereço de memória para eax;
-Etapas necessárias para que se atribua um número para eax:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] -> salva o número (ebp+8) no registrador ebx
-  Intel $8B03. \ mov eax,[ebx] -> salva ebx em eax
-
-Etapas necessárias para que se atribua um detector para uma string;
-Etapas necessárias para que se converta um detector para uma string:
-  Se o detector estiver ativo, atribua "yes" à string; exit. \ no momento tem que ser inglês por conta das externalized reams
-  Atribua "no" à string.
 
 Etapas necessárias para que se atribua o gprect desse gpimage para um gprect:
   Atribua 0 ao x deste gprect.
@@ -8927,12 +8792,6 @@ Etapas necessárias para que se atribua um número para um big-endian unsigned wor
   Atribua o número a um word.
   Atribua o word ao big-endian unsigned word.
 
-Etapas necessárias para que se atribua um número para um pedaço:
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> atribui o número (ebp+8) ao registrador eax
-  Intel $8B00. \ mov eax,[eax] -> ebp+8 representa o primeiro argumento da função (o número).
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> atribui o byte (ebp+12) ao registrador ebx
-  Intel $8803. \ mov [ebx],al
-
 Etapas necessárias para que se atribua um número para uma string;
 Etapas necessárias para que se converta um número para uma string:
   Limpe a string.
@@ -8947,12 +8806,6 @@ Etapas necessárias para que se converta um número para uma string:
     Atribua o quotient ao número.
   Repita. [o código acima]
   Se o original número for menor do que 0, anteponha o hífem para a string.
-
-Etapas necessárias para que se atribua um número para um word:
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> atribui o número (ebp+8) ao registrador eax
-  Intel $8B00. \ mov eax,[eax] -> ebp+8 representa o primeiro argumento da função (o número).
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> atribui a word (ebp+12) ao registrador ebx
-  Intel $668903. \ mov [ebx],ax
 
 Etapas necessárias para que se atribua um número sobre o stack:
   Converta o número para um segmento inicial.
@@ -9158,25 +9011,6 @@ Etapas necessárias para que se atribua uma string sobre o área de transferência 
     e O número identificador.
   Call "user32.dll" "CloseClipboard".
 
-Etapas necessárias para que se atribua a quantidade de caracteres dessa string para uma quantidade de caracteres:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] -> salva a string (ebp+8) no registrador eax
-  \ Carrega default result
-  Intel $B900000000. \ mov ecx,0 -> zera o registrador ecx
-  \ if first for 0, store 0
-  Intel $833B00. \ cmp [ebx],0 -> compara a string com 0. 
-  Intel $0F8414000000. \ je store it
-  \ if last for menor do que first, store 0
-  Intel $8B5304. \ mov edx,[ebx+4] -> atribui o last endereço de memória ao registrador edx
-  Intel $3B13. \ cmp edx,[ebx] -> compara edc com ebx
-  Intel $0F8C09000000. \ jl store it
-  \ calcula a  quantidade de caracteres
-  Intel $8B8B04000000. \ mov ecx,[ebx+4] ->atribui o last endereço de memória ao registrador ecx
-  Intel $2B0B. \ sub ecx,[ebx] \ subtrai o registrador ebx do ecx
-  Intel $41. \ inc ecx \ adiciona 1 ao registrador ecx
-  \ STORE IT:
-  Intel $8B950C000000. \ mov edx,[ebp+12] \ atribui a quantidade de caracteres (ebp+12) ao registrador edx
-  Intel $890A. \ mov [edx],ecx -> atribui o valor de ecx ao registrador edx
-
 Etapas necessárias para que se atribua a largura dessa string para uma largura:
   \Consegui traduzir como:
   \Etapas necessárias para que se atribua uma largura desse string para uma segunda largura:
@@ -9352,35 +9186,6 @@ Etapas necessárias para que se atribua o topo side of uma caixa para um horizont
 Etapas necessárias para que se atribua o topo of uma caixa para um line:
   Make a line com o canto superior esquerdo desta caixa e o canto superior direito desta caixa.
 
-Etapas necessárias para que se atribua um word para uma segunda word:
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva a 1ª word (ebp+8) no registrador eax
-  Intel $668B00. \ mov ax,[eax] -> salva o endereço da 1ª word no registrador ax
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> salva a 2ª word (ebp+12) no registrador ebx
-  Intel $668903. \ mov [ebx],ax -> Atribui o endereço da 1ª word para a 2ª word
-
-Etapas necessárias para que se atribua um word para um big-endian unsigned word:
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva a word (ebp+8) no registrador eax
-  Intel $668B00. \ mov ax,word ptr [eax]  -> ebp+8 é o 1º parâmetro da função. 
-  Intel $86E0. \ xchg al,ah -> ebp+12 é o 2º parâmetro da função
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> salva a o big-endian unsigned word  (ebp+12) no registrador ebx
-  Intel $668903. \ mov word ptr [ebx],ax
-
-Etapas necessárias para que se atribua um word para um pedaço:
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva a word (ebp+8) no registrador eax
-  Intel $668B00. \ mov ax,[eax] -> ebp+8 é o 1º parâmetro da função. ebp+12 é o 2º parâmetro
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> salva o byte (ebp+12) no registrador ebx
-  Intel $8803. \ mov [ebx],al
-
-Etapas necessárias para que se atribua um word para eax:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] -> salva a word (ebp+8) no registrador ebx
-  Intel $0FBF03. \ movsx eax,word ptr [ebx]
-
-Etapas necessárias para que se atribua um word para um número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva a word (ebp+8) no registrador eax
-  Intel $0FBF00. \ movsx eax,word ptr [eax] -> ebp+8 é o 1º parâmetro da função. ebp+12 é o 2º parâmetro
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> salva o número (ebp+12) no registrador ebx
-  Intel $8903. \ mov [ebx],eax -> atribui a word ao número
-
 Uma coordenada X é uma coordenada.
 Uma coordenada Y é uma coordenada.
 
@@ -9413,18 +9218,6 @@ Etapas necessárias para que se quote uma string:
   Repita. [o código acima]
   Posponha as aspas duplas para a segunda string.
   Atribua a segunda string à string.
-
-Etapas necessárias para que se reassign um endereço de memória usando um quantidade de pedaços:
-  Se o endereço de memória for inexistente, assign o endereço de memória usando o quantidade de pedaços; exit.
-  Se o quantidade de pedaços for 0, unassign o endereço de memória; exit.
-  Isole o quantidade de pedaços.
-  Arredonde o quantidade de pedaços para cima para o nearest power of two.
-  Call "kernel32.dll" "HeapReAlloc" com 
-    O endereço heap 
-    e 8 [HEAP_ZERO_MEMORY] 
-    e O endereço de memória 
-    e A quantidade de pedaços 
-    devolvendo o endereço de memória.
 
 Um recipient é uma string.
 
@@ -9713,13 +9506,7 @@ Etapas necessárias para que se reset o origin of um text:
   Atribua a margin deste text à coordenada x deste text.
   Atribua 0 à coordenada y deste text.
 
-Etapas necessárias para que se reset um endereço de memória;
-Etapas necessárias para que se reset um endereço de memória pelo next time around;
-Etapas necessárias para que se esvazie um endereço de memória:
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o endereço de memória (ebp+8) no registrador eax
-  Intel $C70000000000. \ mov [eax],0 -> zera o registrador eax
-
-Etapas necessárias para que se reset o rainbow cors:
+Etapas necessárias para que se reset as rainbow cors:
   Atribua 0 ao número atual da cor do arco-íris.
 
 Etapas necessárias para que se reset um temporizador:
@@ -9996,19 +9783,6 @@ Etapas necessárias para que se arredonde um número para cima para o múltiplo ime
   Divida o número pelo segundo número usando um quotient e um resto.
   Se o resto for 0, cancele.
   Adicione o segundo número menos o resto para o número.
-
-Etapas necessárias para que se arredonde um número para cima para o nearest power of two:
-  Intel $8B8D08000000. \ mov ecx,[ebp+8] \ o número
-  Intel $8B09. \ mov ecx,[ecx]
-  Intel $49. \ dec ecx
-  Intel $0FBDC9. \ bsr ecx,ecx
-  Intel $41. \ inc ecx
-  Intel $81F904000000. \ cmp ecx,4
-  Intel $0F8F05000000. \ jg over o next 1 statement
-  Intel $B904000000. \ mov ecx,4
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
-  Intel $C70001000000. \ mov [eax],1
-  Intel $D320. \ shl [eax],ecx 
 
 Etapas necessárias para que se arredonde um par de números para uma segunda par de números:
   Arredonde o par de números para o múltiplo imediato of a segunda par de números.
@@ -10516,42 +10290,6 @@ Etapas necessárias para que se defina um endereço completo para read-write mode:
     e O número.
 
 Um sheet é uma caixa.
-
-Etapas necessárias para que se desloque um pedaço left uns bits:
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] -> salva a quantidade de bits informada (ebp+12) no registrador ecx
-  Intel $8B09. \ mov ecx,[ecx] -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o byte (ebp+8) no registrador eax
-  Intel $D220. \ shl ptr [eax],ecx -> efetua o deslocamento dos bits para a esquerda (shl)
-
-Etapas necessárias para que se desloque um pedaço right uns bits:
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] -> salva a quantidade de bits informada (ebp+12) no registrador ecx
-  Intel $8B09. \ mov ecx,[ecx] -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o byte (ebp+8) no registrador eax
-  Intel $D228. \ shr ptr [eax],ecx -> efetua o deslocamento dos bits para a direita (shr)
-
-Etapas necessárias para que se desloque um número left uns bits:
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] -> salva a quantidade de bits informada (ebp+12) no registrador ecx
-  Intel $8B09. \ mov ecx,[ecx] -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o número (ebp+8) no registrador eax
-  Intel $D320. \ shl [eax],ecx -> efetua o deslocamento do número para a esquerda (shl)
-
-Etapas necessárias para que se desloque um número right uns bits:
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] -> salva a quantidade de bits informada (ebp+12) no registrador ecx
-  Intel $8B09. \ mov ecx,[ecx] -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o número (ebp+8) no registrador eax
-  Intel $D328. \ shr [eax],ecx -> efetua o deslocamento do número para a direita (shr)
-
-Etapas necessárias para que se desloque um word left uns bits:
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] -> salva a quantidade de bits informada (ebp+12) no registrador ecx
-  Intel $8B09. \ mov ecx,[ecx] -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ salva a word (ebp+8) no registrador eax
-  Intel $66D320. \ shl word ptr [eax],ecx \ shr word ptr [eax],ecx -> efetua o deslocamento dos bits para a esquerda (shl)
-
-Etapas necessárias para que se desloque um word right uns bits:
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] -> salva a quantidade de bits informada (ebp+12) no registrador ecx
-  Intel $8B09. \ mov ecx,[ecx] -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ salva a word (ebp+8) no registrador eax
-  Intel $66D328. \ shr word ptr [eax],ecx -> efetua o deslocamento dos bits  para a direita (shr)
 
 Etapas necessárias para que se mostre um console:
   Se o console for inexistente, cancele.
@@ -11338,74 +11076,10 @@ Um subject é uma string.
     \Um substring é uma string.
 Um subtexto é uma string.
 
-Etapas necessárias para que se subtraia um pedaço desde um segundo pedaço:
-  Intel $8B8508000000. \ mov eax,[ebp+8]  -> Salva o 1º byte (ebp+8) no registrador eax
-  Intel $0FB600. \ movzx eax,[eax] -> ebp+8 é onde fica o valor do 1º argumento da função. ebp+12 é o 2º argumento
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> Salva o 2º byte (ebp+12) no registrador ebx
-  Intel $2803. \ sub [ebx],al -> subtrai o 1º byte do 2º byte
-
-Etapas necessárias para que se subtraia um pedaço desde um número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> Salva o byte (ebp+8) no registrador eax
-  Intel $0FB600. \ movzx eax,[eax] -> ebp+8 é onde fica o valor do 1º argumento da função. ebp+12 é o 2º argumento
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> Salva o número (ebp+12) no registrador ebx
-  Intel $2903. \ sub [ebx],eax -> subtrai o byte do número
-
-Etapas necessárias para que se subtraia uma fração desde uma segunda fração:
-  Isole a fração.
-  Normalize a fração e a segunda fração.
-  Subtraia o numerador desta fração desde o numerador desta segunda fração.
-  Reduce a segunda fração.
-
-Etapas necessárias para que se subtraia um número e um segundo número desde um par de números:
-  Subtraia o número desde o x deste par de números.
-  Subtraia o segundo número desde o y deste par de números.
-
-Etapas necessárias para que se subtraia um número desde um pedaço:
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> Salva o número (ebp+8) no registrador eax
-  Intel $8B00. \ mov eax,[eax] -> ebp+8 é onde fica o valor do 1º argumento da função. ebp+12 é o 2º argumento
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> Salva o byte (ebp+12) no registrador ebx
-  Intel $0FB60B. \ movzx ecx,[ebx] -> Salva o endereço de ebx em ecx. E "zero extende", ou seja
-  \se houver disparidade entre o valor do byte e do número e for preciso expandir a quantidade de bits,  o espaço restante é preenchido com zeros
-  Intel $2BC8. \ sub ecx,eax -> subtrai o número do byte
-  Intel $880B. \ mov [ebx],cl -> salva o valor no endereço de memória salvo no registrador ebx
-
-Etapas necessárias para que se subtraia um número desde um fração:
-  Subtraia o número / 1 desde a fração.
-
-Etapas necessárias para que se subtraia um número desde um par de números:
-  Subtraia o número desde o número X deste par de números.
-  Subtraia o número desde o número Y deste par de números.
-
-Etapas necessárias para que se subtraia um par de números desde uma segunda par de números:
-  Subtraia o número X deste par de números desde o número X desta segunda par de números.
-  Subtraia o número Y deste par de números desde o número Y desta segunda par de números.
-
-Etapas necessárias para que se subtraia um endereço de memória desde um segundo endereço de memória;
-Etapas necessárias para que se subtraia um número desde um endereço de memória;
-Etapas necessárias para que se subtraia um número desde um segundo número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] -> Salva o 1º número/endereço (ebp+8) no registrador eax
-  Intel $8B00. \ mov eax,[eax] -> ebp+8 é onde fica o valor do 1º argumento da função. ebp+12 é o 2º argumento
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> Salva o 2º número/endereço (ebp+12) no registrador ebx
-  Intel $2903. \ sub [ebx],eax -> subtrai o 1º valor do 2º
-
 Etapas necessárias para que se permute uma cor com uma segunda cor:
   Permute a matiz desta cor com a matiz desta segunda cor.
   Permute a saturação desta cor com a saturação desta segunda cor.
   Permute a luminosidade desta cor com a luminosidade desta segunda cor.
-
-Etapas necessárias para que se permute um par de números com uma segunda par de números:
-  Permute o número X deste par de números com o número X desta segunda par de números.
-  Permute o número Y deste par de números com o número Y desta segunda par de números.
-
-Etapas necessárias para que se permute um endereço de memória com um segundo endereço de memória;
-Etapas necessárias para que se permute um número com um segundo número:
-  Atribua o número a um terceiro número.
-  Atribua o segundo número ao número.
-  Atribua o terceiro número ao segundo número.
-
-Etapas necessárias para que se permute uns coisas com uns segunda coisas:
-  Permute o first destas coisas com o first destas segunda coisas.
-  Permute o last destas coisas com o last destas segunda coisas.
 
 Etapas necessárias para que se take off all o masking tape:
   Mostre tudo.
@@ -11451,16 +11125,6 @@ An text é uma coisa com
   Uma última operação,
   Some texts denominado undos,
   Some texts denominado redos.
-
-Uma coisa é um endereço de memória para uma coisa conjunto.
-
-Uma coisa conjunto é um conjunto com 
-  Uma next coisa e 
-  Uma previous coisa.
-
-Some coisas é um conjunto com 
-  Uma first coisa e 
-  Uma last coisa.
 
 An tick é um número.
 
@@ -11574,19 +11238,6 @@ Etapas necessárias para que se vire right uns points:
   Atribua o points e 3840 a um fração.
   Vire right a fração.
 
-Etapas necessárias para que se unassign um endereço de memória:
-  Se o endereço de memória for inexistente, cancele.
-  Call "kernel32.dll" "HeapFree" com 
-    O endereço heap 
-    e 0 [no options] e 
-  o endereço de memória 
-    devolvendo um número.
-  Se o número for 0, cancele.
-  Esvazie o endereço de memória.
-  Subtraia 1 desde a contagem do heap.
-
-An unit é um número.
-
 Etapas necessárias para que se unlock um gpbitmap usando um bitmapdata:
   Call "gdiplus.dll" "GdipBitmapUnlockBits" com 
     O gpbitmap e 
@@ -11694,15 +11345,7 @@ Etapas necessárias para que se uppercase algum tipo de pedaços selecionados em u
   Repita. [o código acima]
 
 Etapas necessárias para que se uppercase um pedaço:
-  Translate o pedaço using o tabela de caracteres maiúsculos ascii .
-
-Etapas necessárias para que se translate um pedaço using um translation texto hexadecimal:
-  Intel $8B8D08000000. \ mov ecx,[ebp+8] \ o endereço de memória do pedaço 
-  Intel $8B01. \ mov eax,[ecx] \ o byte
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o tabela de tradução
-  Intel $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
-  Intel $D7. \ xlat al,[ebx]
-  Intel $8901. \ mov [ecx],eax
+  Translate o pedaço using a tabela de caracteres maiúsculos ascii .
 
 Etapas necessárias para que se uppercase o character depois de um finger e atribua it para uma string:
   Se o finger for inexistente, cancele.
@@ -12186,12 +11829,6 @@ Etapas necessárias para que se escreva com letras de tamanho pequeno;
 Etapas necessárias para que se use letras pequenas:
   Atribua o tamanho de letra pequena ao tamanho da letra deste context.
 
-Uma word é um conjunto com 
-  Um pedaço inicial [high byte] e 
-  Um pedaço final [low byte].
-
-Um máscara de disjunção exclusiva é um mask.
-
 Etapas necessárias para que se yield para windows:
   Se a fila de eventos não for vazio, cancele.
   Call "user32.dll" "GetMessageA" com 
@@ -12231,13 +11868,13 @@ O zero localização é uma localização.
 
 Um tabela de tradução é um texto hexadecimal.
 
-O tabela ascii é uma tabela de tradução igual a $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798999A9B9C9D9E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6D7D8D9DADBDCDDDEDFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF.
+A tabela ascii é uma tabela de tradução igual a $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798999A9B9C9D9E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6D7D8D9DADBDCDDDEDFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF.
 
-O tabela de caracteres minúsculos s/ acento ascii é uma tabela de tradução igual a $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F406162636465666768696A6B6C6D6E6F707172737475767778797A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788899A8B9C8D9E8F909192939495969798999A9B9C9D9E79A0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBF616161616161E6636565656569696969F06E6F6F6F6F6FD7F87575757579FEDF616161616161E6636565656569696969F06E6F6F6F6F6FF7F87575757579FE79.
+A tabela de caracteres minúsculos s/ acento ascii é uma tabela de tradução igual a $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F406162636465666768696A6B6C6D6E6F707172737475767778797A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788899A8B9C8D9E8F909192939495969798999A9B9C9D9E79A0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBF616161616161E6636565656569696969F06E6F6F6F6F6FD7F87575757579FEDF616161616161E6636565656569696969F06E6F6F6F6F6FF7F87575757579FE79.
 
-O tabela de caracteres minúsculos ascii é uma tabela de tradução igual a $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F406162636465666768696A6B6C6D6E6F707172737475767778797A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788899A8B9C8D9E8F909192939495969798999A9B9C9D9EFFA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6D7F8F9FAFBFCFDFEDFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF.
+A tabela de caracteres minúsculos ascii é uma tabela de tradução igual a $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F406162636465666768696A6B6C6D6E6F707172737475767778797A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788899A8B9C8D9E8F909192939495969798999A9B9C9D9EFFA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6D7F8F9FAFBFCFDFEDFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF.
 
-O tabela de caracteres maiúsculos ascii é uma tabela de tradução igual a $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F604142434445464748494A4B4C4D4E4F505152535455565758595A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798998A9B8C9D8E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6D7D8D9DADBDCDDDEDFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6F7D8D9DADBDCDDDE9F.
+A tabela de caracteres maiúsculos ascii é uma tabela de tradução igual a $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F604142434445464748494A4B4C4D4E4F505152535455565758595A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798998A9B8C9D8E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6D7D8D9DADBDCDDDEDFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6F7D8D9DADBDCDDDE9F.
 
 O erro do fluxo de entrada/saída é uma string.
 
