@@ -44,18 +44,6 @@ O sinal de desligamento é um detector igual a 0.
 
 Um posicionamento absoluto é um número.
 
-Etapas necessárias para que se adicione um pedaço para um segundo pedaço:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o byte 67 8B 45 08
-  Intel $0FB600. \ movzx eax,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo byte 67 8B 5D 0C
-  Intel $0003. \ add [ebx],al
-
-Etapas necessárias para que se adicione um pedaço para um número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o byte
-  Intel $0FB600. \ movzx eax,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o número
-  Intel $0103. \ adicione [ebx],eax
-
 Etapas necessárias para que se adicione uma fração para uma segunda fração:
   Isole a fração.
   Normalize a fração e a segunda fração.
@@ -84,13 +72,7 @@ Etapas necessárias para que se adicione um número para um segundo número e um te
   Adicione o número para o segundo número.
   Adicione o terceiro número para o quarto número.
 
-Etapas necessárias para que se adicione um número para um pedaço:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o byte
-  Intel $0FB60B. \ movzx ecx,[ebx]
-  Intel $03C8. \ adicione ecx,eax
-  Intel $880B. \ mov [ebx],cl
+
 
 Etapas necessárias para que se adicione um número para um fração:
   Adicione o número / 1 para a fração.
@@ -98,13 +80,6 @@ Etapas necessárias para que se adicione um número para um fração:
 Etapas necessárias para que se adicione um número para um par de números:
   Adicione o número para o número X deste par de números.
   Adicione o número para o número Y deste par de números.
-
-Etapas necessárias para que se adicione um número para um endereço de memória;
-Etapas necessárias para que se adicione um número para um segundo número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
-  Intel $0103. \ adicione [ebx],eax
 
 Etapas necessárias para que se adicione um par de números para uma segunda par de números:
   Adicione o número X deste par de números para o número X desta segunda par de números.
@@ -433,60 +408,6 @@ An bit é uma unidade.
 \Um endereço de memória denominado scan0,
 \Um número denominado Reserved.
 
-Etapas necessárias para que se conjuncione logicamente um pedaço com um segundo pedaço:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo byte
-  Intel $8A00. \ mov al,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $2003. \ e [ebx],al
-
-Etapas necessárias para que se conjuncione logicamente um pedaço com um número:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $2003. \ e [ebx],al
-
-Etapas necessárias para que se conjuncione logicamente um número com um segundo número:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $2103. \ e [ebx],eax
-
-Etapas necessárias para que se disjuncione logicamente um pedaço com um segundo pedaço:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo byte
-  Intel $8A00. \ mov al,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $0803. \ ou [ebx],al
-
-Etapas necessárias para que se disjuncione logicamente um pedaço com um número:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $0803. \ ou [ebx],al
-
-Etapas necessárias para que se disjuncione logicamente um número com um segundo número:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $0903. \ ou [ebx],eax
-
-Etapas necessárias para que se disjuncione seletivamente um pedaço com um segundo pedaço:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ a segunda byte
-  Intel $8A00. \ mov al,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $3003. \ xor [ebx],al
-
-Etapas necessárias para que se disjuncione seletivamente um pedaço com um número:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $3003. \ ou [ebx],al
-
-Etapas necessárias para que se disjuncione seletivamente um número com um segundo número:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $3103. \ xor [ebx],eax
-
 Uma caixa é um conjunto com
   Uma coordenada esquerda , 
   Uma coordenada superior, 
@@ -519,16 +440,6 @@ Etapas necessárias para que se avance um número:
 Etapas necessárias para que se avance um número limiting it para um segundo número e um terceiro número:
   Adicione 1 para o número.
   Se o número for maior do que o terceiro número, atribua o segundo número ao número.
-
-Etapas necessárias para que se avance um percorredor:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ comando de movimentação do percorredor?
-  Intel $FF8314000000. \ inc [ebx+20] \ aumenta o valor do last endereço de memória do pedaço deste segmento inicial deste percorredor.
-  Intel $FF8308000000. \ inc [ebx+8] \ aumenta o valor do first endereço de memória do pedaço deste segmento final deste percorredor.
-
-Etapas necessárias para que se recue um percorredor:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ comando de movimentação do percorredor?
-  Intel $FF8B14000000. \ dec [ebx+20] \ reduz o valor do last endereço de memória do pedaço deste segmento inicial deste percorredor.
-  Intel $FF8B08000000. \ dec [ebx+8] \ reduz o valor do first endereço de memória do pedaço deste segmento final deste percorredor.
 
 Etapas necessárias para que se avance um percorredor por um número:
   Adicione o número para o last endereço de memória do pedaço deste segmento inicial deste percorredor.
@@ -813,100 +724,11 @@ Um CLSID é um UUID. \ Class ID
 Etapas necessárias para que se avise:
   Toque o som de aviso.
 
-O som de aviso é uma wave igual a $524946463A02000057415645666D74201200000001000100401F0000401F000001000800000066616374040000000702000064617461070200007F7F807F7F807F7F808080807F807F7F80817F81817E7E827E7D847C79877D5F6D99B2A25D608269A5979869667F7D8D738C7D8C5E7E878F767A75868D84797278829A7D7E857A73929271657492907D7E7D787E8B887C758388827E817F7C7B89897C7A7E84838183827E7A8488877D7E8181808484817C7F84838181807E7F8283807E8081808182807F7F81818081807F7F8081818080807F7F808180807F80808080807F8080807F8080808080807F7F7F7F7F8080807F7F7F7C7B8182817C7B7D7E8082807D7D7C7F8281807F7C7D808082807E7E7E7D7E807D7B7C7B7D7D7B7A7979797875727269797A490F4571FFF4FF0C001297FBF492525BB0F5B26A001C69BEE5BA76476F9EBD953C3757BAC9BB705C7F9AA883645D7897AA9B806977959588696976999B83766F828C907F7375828E91877B757D868B837A757C858D8880787B8187847B7A7D8788807B79808486817D7C7F8384817D7C7F8484817B7B7D83847F7C7B7E8182827D7C7C8082817D7C7D7F81807F7D7D7F82817F7B7B7E8081807E7D7D7F80807E7D7D7E80807E7D7D7E7F807F7D7D7E7F807F7E7D7E7E80807F7E7D7E80807F7E7E7E7F7F7E7E7E7F7F7F7F7E7E7F7F807F7F7E7E7E7F8080807E7E7E80807F7E7E7F8081807F7F7E7F7F80807F7E7F8081807F7E7E7E80808080807F807F7F7F7F7F7F7F80808080807F7F7F808080807F80808180807F80808100.
-
 Um column# é um número.
 
-Etapas necessárias para que se compare uma string para uma segunda string usando uma quantidade de caracteres e uma segunda quantidade de caracteres e uma tabela de tradução (equal only):
-  Intel $8BB508000000. \ mov esi,[ebp+8] \ a string
-  Intel $8B36. \ mov esi,[esi] \ o first endereço de memória do pedaço desta string
-  Intel $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda string
-  Intel $8B3F. \ mov edi,[edi] \ o first endereço de memória do pedaço desta segunda string
-  Intel $8B8510000000. \ mov eax,[ebp+16] \ a quantidade de caracteres desta string
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9514000000. \ mov edx,[ebp+20] \ a quantidade de caracteres desta segunda string
-  Intel $8B12. \ mov edx,[edx]
-  Intel $3BD0. \ cmp eax,edx \ if o differ do quantidade de caracteres, diga não.
-  Intel $0F852B000000. \ jne [Se as condições acima não puderem ser satisfeitas, então:] Diga não. \ ************************************ was 2C
-  Intel $8BC8. \ mov ecx,eax \ atribua quantidade de caracteres A ecx 
-  Intel $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
-  Intel $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
-    \ loop:
-  Intel $85C9. \ test ecx,ecx
-  Intel $0F8424000000. \ jz say yes \ ************************************ was 25
-     \ fetch e translate o current pedaço no segunda string
-  Intel $8A07. \ mov al,[edi]
-  Intel $D7. \ xlat al,[ebx]
-  Intel $C1E008. \ shl eax,8 C1 E0 08
-    \ fetch e translate o current pedaço no string
-  Intel $8A06. \ mov al,[esi]
-  Intel $D7. \ xlat al,[ebx]
-     \ compare o two translated pedaços
-  Intel $38E0. \ cmp al,ah
-  Intel $0F8508000000. \ jne [Se as condições acima não puderem ser satisfeitas, então:] Diga não. \ ************************************
-  Intel $46. \ inc esi
-  Intel $47. \ inc edi
-  Intel $49. \ dec ecx
-  Intel $E9DFFFFFFF. \ jmp loop \ ************************************ was DE
-    \[Se as condições acima não puderem ser satisfeitas, então:] Diga não.:
-  Intel $C7C000000000. \ mov eax,0
-  Intel $E906000000. \ jmp end
-    \SAY YES:
-  Intel $C7C001000000. \ mov eax,1
-
-    \ dahn - spanish strings 2 - which table para use?
 Etapas necessárias para que se compare uma string para uma segunda string usando uma quantidade de caracteres e uma segunda quantidade de caracteres devolvendo um número:
   Compare a string para a segunda string usando a quantidade de caracteres e a segunda quantidade de caracteres e o tabela de caracteres minúsculos ascii devolvendo o número.
     \Compare a string para a segunda string usando a quantidade de caracteres e a segunda quantidade de caracteres e o tabela de caracteres minúsculos s/ acento ascii devolvendo o número.
-
-Etapas necessárias para que se compare uma string para uma segunda string usando uma quantidade de caracteres e uma segunda quantidade de caracteres e uma tabela de tradução devolvendo um número:
-  Intel $8BB508000000. \ mov esi,[ebp+8] \ a string
-  Intel $8B36. \ mov esi,[esi] \ o first do string
-  Intel $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda string
-  Intel $8B3F. \ mov edi,[edi] \ o first do segunda string
-  Intel $8B8510000000. \ mov eax,[ebp+16] \ a quantidade de caracteres do string
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9514000000. \ mov edx,[ebp+20] \ a quantidade de caracteres do segunda string
-  Intel $8B12. \ mov edx,[edx]
-  Intel $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
-  Intel $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
-    \ obtenha o minimum quantidade de caracteres
-  Intel $8BC8. \ mov ecx,eax
-  Intel $3BCA. \ cmp ecx,edx
-  Intel $0F8602000000. \ jbe L2
-  Intel $8BCA. \ mov ecx,edx
-    \ if o minimum quantidade de caracteres for 0, jump para L5
-  Intel $85C9. \ test ecx,ecx
-  Intel $0F8428000000. \ jz L5
-    \L2:
-    \ loop:
-    \ fetch e translate o current pedaço no string
-  Intel $8A06. \ mov al,[esi]
-  Intel $D7. \ xlat al,[ebx]
-  Intel $88C2. \ mov dl,al
-    \ fetch e translate o current pedaço no segunda string
-  Intel $8A07. \ mov al,[edi]
-  Intel $D7. \ xlat al,[ebx]
-  Intel $88C6. \ mov dh,al
-    \L3:
-    \ compare o two translated pedaços
-  Intel $38F2. \ cmp dl,dh
-  Intel $0F8510000000. \ jne L4
-  Intel $46. \ inc esi
-  Intel $47. \ inc edi
-  Intel $49. \ dec ecx
-  Intel $85C9. \ test ecx,ecx
-  Intel $0F8405000000. \ jz L4
-  Intel $E9DEFFFFFF. \ jmp L2
-    \L4:
-    \ Carregue pedaços para EAX e edx por final compare
-  Intel $0FB6C2. \ movzx eax,dl
-  Intel $0FB6D6. \ movzx edx,dh
-    \L5:
-    \ subtraia either o lengths ou os last dois pedaços para abra o eax para <0, =0, >0
-  Intel $2BC2. \ sub eax,edx
-  Intel $8B9D1C000000. \ mov ebx,[ebp+28] \ o número
-  Intel $8903. \ mov [ebx],eax
 
 Etapas necessárias para que se compativelmente handle algum tipo de message com um window um message número um w-param e um l-param:
   Se a message for 006, execute algum tipo de WM-ACTIVATE com o w-param; 
@@ -1463,45 +1285,6 @@ Etapas necessárias para que se converta um word para um cifra hexadecimal:
   Posponha a segunda cifra hexadecimal para o cifra hexadecimal.
 
 Uma coordenada é uns twips.
-
-Etapas necessárias para que se copie pedaços desde um endereço de memória para um segundo endereço de memória por um quantidade de pedaços:
-    \ copie handling overlap com 1 pedaço moves
-  Intel $8BB508000000. \ mov esi,[ebp+8] \ o endereço de memória
-  Intel $8B36. \ mov esi,[esi]
-  Intel $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda endereço de memória
-  Intel $8B3F. \ mov edi,[edi]
-  Intel $8B8D10000000. \ mov ecx,[ebp+16] \ o número
-  Intel $8B09. \ mov ecx,[ecx]
-    \ check por something para copiar
-  Intel $81F900000000. \ cmp ecx,0
-  Intel $0F8E39000000. \ jle end
-    \ check por no overlap
-  Intel $3BF7. \ cmp esi,edi
-  Intel $0F8D24000000. \ jge forward
-  Intel $8BC6. \ mov eax,esi
-  Intel $03C1. \ adicione eax,ecx
-  Intel $3BC7. \ cmp eax,edi
-  Intel $0F8E18000000. \ jle forward
-    \ copia backward
-  Intel $03F1. \ adicione esi,ecx
-  Intel $4E. \ dec esi
-  Intel $03F9. \ adicione edi,ecx
-  Intel $4F. \ dec esi
-    \ backward
-  Intel $8A16. \ mov dl,[esi]
-  Intel $8817. \ mov [edi],dl
-  Intel $4E. \ dec esi
-  Intel $4F. \ dec edi
-  Intel $49. \ dec ecx
-  Intel $0F85F3FFFFFF. \ jnz backward
-  Intel $E90D000000. \ jmp end
-    \ forward: copia forward
-  Intel $8A16. \ mov dl,[esi]
-  Intel $8817. \ mov [edi],dl
-  Intel $46. \ inc esi
-  Intel $47. \ inc edi
-  Intel $49. \ dec ecx
-  Intel $0F85F3FFFFFF. \ jnz forward
 
 Etapas necessárias para que se copie um event para um segundo event: \ mudar o "segunda" aqui
   Se o event for inexistente, esvazie a segundo event; exit.
@@ -2095,8 +1878,6 @@ Etapas necessárias para que se crie um winhttp request por posting para um URL:
 
 O console é um console.
 
-O texto CRLF é uma string igual a $0D0A.
-
 O quadro atual é um canvas.
 
 O evento atual é um event.
@@ -2332,15 +2113,6 @@ Etapas necessárias para que se determine se um pedaço é alfanumérico:
   Se o pedaço for algum tipo de digit, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas necessárias para que se determine se um pedaço é um segundo pedaço:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $8A1B. \ mov bl,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o outro byte
-  Intel $3A19. \ cmp bl,[ecx]
-  Intel $0F8406000000. \ je over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
-
 Etapas necessárias para que se determine se um pedaço é um segundo pedaço ou um terceiro pedaço:
   Se o pedaço for o segundo pedaço, diga sim.
   Se o pedaço for o terceiro pedaço, diga sim.
@@ -2404,37 +2176,6 @@ Etapas necessárias para que se determine se um pedaço está entre um número e um 
   Se o pedaço for maior do que o segundo número, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas necessárias para que se determine se um pedaço é maior que um segundo pedaço;
-Etapas necessárias para que se determine se um pedaço é maior do que um segundo pedaço:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $8A1B. \ mov bl,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
-  Intel $3A19. \ cmp bl,[ecx]
-  Intel $0F8706000000. \ ja over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
-
-Etapas necessárias para que se determine se um pedaço é maior que um número;
-Etapas necessárias para que se determine se um pedaço é maior do que um número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $0FB61B. \ movzx ebx,byte ptr [ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8F06000000. \ jg over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
-
-Etapas necessárias para que se determine se um pedaço é maior do que ou igual para um segundo pedaço;
-Etapas necessárias para que se determine se um pedaço é maior que ou igual para um segundo pedaço;
-Etapas necessárias para que se determine se um pedaço é maior ou igual para um segundo pedaço:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $8A1B. \ mov bl,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
-  Intel $3A19. \ cmp bl,[ecx]
-  Intel $0F8306000000. \ ja over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
-
 Etapas necessárias para que se determine se um pedaço estiver em uma string:
   Isole o pedaço.
   Lowercase o pedaço.
@@ -2443,46 +2184,15 @@ Etapas necessárias para que se determine se um pedaço estiver em uma string:
     Se o subtexto estiver em branco, diga não.
     Atribua o conteúdo deste first endereço de memória do pedaço deste subtexto a um segundo pedaço.
     Lowercase o segundo pedaço.
-    Se o segundo pedaço é o pedaço, diga sim.
+    Se o segundo pedaço for o pedaço, diga sim.
     Adicione 1 para o first endereço de memória do pedaço deste subtexto.
   Repita. [o código acima]
 
-Etapas necessárias para que se determine se um pedaço é menor que um segundo pedaço;
-Etapas necessárias para que se determine se um pedaço é menor do que um segundo pedaço:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $8A1B. \ mov bl,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
-  Intel $3A19. \ cmp bl,[ecx]
-  Intel $0F8206000000. \ jb over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
-
-Etapas necessárias para que se determine se um pedaço é menor que um número;
-Etapas necessárias para que se determine se um pedaço é menor do que um número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $0FB61B. \ movzx ebx,byte ptr [ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8C06000000. \ jl over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
-
-Etapas necessárias para que se determine se um pedaço é menor do que ou igual para um segundo pedaço;
-Etapas necessárias para que se determine se um pedaço é menor que ou igual para um segundo pedaço;
-Etapas necessárias para que se determine se um pedaço é menor ou igual para um segundo pedaço:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $8A1B. \ mov bl,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
-  Intel $3A19. \ cmp bl,[ecx]
-  Intel $0F8606000000. \ jbe over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
-
 Etapas necessárias para que se determine se um pedaço é like um segundo pedaço:
     \ used internally por palavra wrap
-  Se o pedaço é whitespace, acione um detector.
-  Se o segundo pedaço é whitespace, acione uma segundo detector.
-  Se o detector é a segundo detector, diga sim.
+  Se o pedaço for whitespace, acione um detector.
+  Se o segundo pedaço for whitespace, acione uma segundo detector.
+  Se o detector for a segundo detector, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas necessárias para que se determine se um pedaço é irrelevante:
@@ -2495,15 +2205,6 @@ Etapas necessárias para que se determine se um pedaço é irrelevante:
   Se o pedaço for 144, diga sim.
   Se o pedaço for 157, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
-
-Etapas necessárias para que se determine se um pedaço é um número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $0FB61B. \ movzx ebx,byte ptr [ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8406000000. \ je over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas necessárias para que se determine se um pedaço é um número ou um segundo número:
   Se o pedaço for o número, diga sim.
@@ -2669,19 +2370,6 @@ Etapas necessárias para que se determine se um finger é past o end of uma string
   Se o finger for inexistente, diga sim.
   Se o finger for maior do que o last endereço de memória do pedaço desta string, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
-
-Etapas necessárias para que se determine se um detector é um número;
-Etapas necessárias para que se determine se um detector é um segundo detector;
-Etapas necessárias para que se determine se um endereço de memória é um número;
-Etapas necessárias para que se determine se um endereço de memória é um segunda endereço de memória;
-Etapas necessárias para que se determine se um número é um segundo número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8B1B. \ mov ebx,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8406000000. \ je over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
 
     \Etapas necessárias para que se determine se um detector está on:
     \ switch como uma segunda nome por detector also ? ***
@@ -3035,58 +2723,9 @@ Etapas necessárias para que se determine se um endereço de memória does exist:
   Se o endereço de memória for inexistente, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas necessárias para que se determine se um endereço de memória é maior do que um segundo endereço de memória;
-Etapas necessárias para que se determine se um número é maior do que um segundo número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8B1B. \ mov ebx,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8F06000000. \ jg over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
 
-Etapas necessárias para que se determine se um endereço de memória é maior do que ou igual para um segundo endereço de memória;
-Etapas necessárias para que se determine se um endereço de memória é maior que ou igual para um segundo endereço de memória;
-Etapas necessárias para que se determine se um endereço de memória é maior ou igual para um segundo endereço de memória;
-Etapas necessárias para que se determine se um número é um segundo número ou more;
-Etapas necessárias para que se determine se um número é maior do que ou igual para um segundo número;
-Etapas necessárias para que se determine se um número é maior que ou igual para um segundo número;
-Etapas necessárias para que se determine se um número é maior ou igual para um segundo número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8B1B. \ mov ebx,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8D06000000. \ jge over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
 
-Etapas necessárias para que se determine se um endereço de memória é menor do que um segundo endereço de memória;
-Etapas necessárias para que se determine se um endereço de memória é menor que um segundo endereço de memória;
-Etapas necessárias para que se determine se um número é menor que um segundo número;
-Etapas necessárias para que se determine se um número é menor do que um segundo número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8B1B. \ mov ebx,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8C06000000. \ jl over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
 
-Etapas necessárias para que se determine se um endereço de memória é menor do que ou igual para um segundo endereço de memória;
-Etapas necessárias para que se determine se um endereço de memória é menor que ou igual para um segundo endereço de memória;
-Etapas necessárias para que se determine se um endereço de memória é menor ou igual para um segundo endereço de memória;
-Etapas necessárias para que se determine se um número é um segundo número ou menos;
-Etapas necessárias para que se determine se um número é um segundo número ou menor;
-Etapas necessárias para que se determine se um número é menor do que ou igual para um segundo número;
-Etapas necessárias para que se determine se um número é menor que ou igual para um segundo número;
-Etapas necessárias para que se determine se um número é menor ou igual para um segundo número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8B1B. \ mov ebx,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8E06000000. \ jle over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas necessárias para que se determine se um endereço de memória é missing;
 Etapas necessárias para que se determine se um endereço de memória é null e esvazie:
@@ -3455,20 +3094,7 @@ Etapas necessárias para que se determine se uma string é algum tipo de palavra:
     Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o single-quote pedaço, repita.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas necessárias para que se determine se uma string está em branco:
-    \ assume true
-  Intel $B801000000. \ mov eax,1
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ a string
-    \ if first for 0, exit
-  Intel $833B00. \ cmp [ebx],0
-  Intel $0F8410000000. \ je end
-    \ if last for menor do que first, exit
-  Intel $8B5304. \ mov edx,[ebx+4] \ last endereço de memória
-  Intel $3B13. \ cmp edx,[ebx]
-  Intel $0F8C05000000. \ jl end
-    \ [Se as condições acima não puderem ser satisfeitas, então:] Diga não.:
-  Intel $B800000000. \ mov eax,0
-    \ END:
+
 
 Etapas necessárias para que se determine se uma string é um pedaço:
   Se a quantidade de caracteres desta string não for 1, diga não.
@@ -3918,30 +3544,6 @@ Etapas necessárias para que se divida um par de números por um número:
 Etapas necessárias para que se divida um par de números por um número e um segundo número:
   Divida o número X deste par de números pelo número.
   Divida o número Y deste par de números pelo segundo número.
-
-Etapas necessárias para que se divida um endereço de memória por um número;
-Etapas necessárias para que se divida um número por um segundo número:
-  Se o segundo número for 0, atribua o maior número ao número; exit.
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $99. \ cdq
-  Intel $F73B. \ div [ebx] \ means div eax,[ebx] but é weird form
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8903. \ mov [ebx],eax
-
-Etapas necessárias para que se divida um endereço de memória por um número usando um quotient e um resto;
-Etapas necessárias para que se divida um número por um segundo número usando um quotient e um resto:
-  Se o segundo número for 0, atribua o maior número ao quotient; atribua 0 ao resto; exit.
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $99. \ cdq
-  Intel $F73B. \ idiv [ebx] \ means idiv eax,[ebx] but é weird form
-  Intel $8B9D10000000. \ mov ebx,[ebp+16] \ o quotient
-  Intel $8903. \ mov [ebx],eax
-  Intel $8B9D14000000. \ mov ebx,[ebp+20] \ o resto
-  Intel $8913. \ mov [ebx],edx
 
 \Um docinfo é um conjunto com
 \Um número denominado cbsize,
@@ -4772,16 +4374,6 @@ As figuras são uns polígonos.
 
 Etapas necessárias para que se fill uma caixa com uma cor:
   Pinte a caixa com a cor preta e a cor.
-
-Etapas necessárias para que se fill pedaços com um pedaço starting at um endereço de memória por um quantidade de pedaços:
-  Intel $8BBD0C000000. \ mov edi,[ebp+12] \ o endereço de memória
-  Intel $8B3F. \ mov edi,[edi]
-  Intel $8B8D10000000. \ mov ecx,[ebp+16] \ a contagem
-  Intel $8B09. \ mov ecx,[ecx]
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o byte
-  Intel $8A00. \ mov al,[eax]
-  Intel $FC. \ cld
-  Intel $F3AA. \ rep stosb
 
 Etapas necessárias para que se fill um elipse sobre uma localização com uma cor:
   Centralize a elipse sobre a localização.
@@ -5809,8 +5401,6 @@ O gptoken é um gptoken.
 Um gptoken é um número.
 
 An grain é 10 milliseconds.
-
-O grayscale cor matrix é um texto hexadecimal igual a $8716993E8716993E8716993E0000000000000000A245163FA245163FA245163F0000000000000000D578E93DD578E93DD578E93D00000000000000000000000000000000000000000000803F00000000000000000000000000000000000000000000803F.
 
 Um malha é um par de números.
 
@@ -7295,8 +6885,6 @@ O tamanho de letra médio é um tamanho da letra.
 
 O memory canvas é um canvas.
 
-Uma message é uma string.
-
 Etapas necessárias para que se minimize um window:
   Call "user32.dll" "ShowWindow" com 
     A window 
@@ -7319,16 +6907,6 @@ Etapas necessárias para que se mirror um imagem:
   Mova a caixa intacta desta imagem usando o par de números.
   Mirror o gpbitmap no imagem.
 
-Etapas necessárias para que se mirror um polígono:
-  Se o polígono for inexistente, cancele.
-  Atribua a caixa deste polígono a uma caixa.
-  Percorra. [o código abaixo]
-    Obtenha um vértice desde os vértices deste polígono.
-    Se o vértice for inexistente, cancele.
-    Subtraia a coordenada esquerda desta caixa desde a coordenada X deste vértice.
-    Atribua a coordenada direita desta caixa menos a coordenada X deste vértice à coordenada x deste vértice.
-  Repita. [o código acima]
-
 Etapas necessárias para que se mova o anchor left para algum tipo de non-alfanumérico pedaço em um text:
   Se o text for inexistente, cancele.
   Obtenha uma row usando o anchor número da linha deste text e o text.
@@ -7338,73 +6916,6 @@ Etapas necessárias para que se mova o anchor left para algum tipo de non-alfanum
     Se o conteúdo deste endereço de memória do pedaço não for alfanumérico, cancele.
     Subtraia 1 desde o anchor column# deste text.
   Repita. [o código acima]
-
-Etapas necessárias para que se mova back uns twips:
-  Vire around.
-  Mova os twips.
-  Vire around.
-
-Etapas necessárias para que se mova uma caixa para o base of uma segunda caixa:
-  Mova a caixa para baixo a coordenada inferior desta segunda caixa menos a coordenada inferior desta caixa.
-
-Etapas necessárias para que se mova uma caixa close para o left side of uma segunda caixa;
-Etapas necessárias para que se mova uma caixa close para o left of uma segunda caixa:
-  Mova a caixa para o left of a segunda caixa.
-  Escolha aleatoriamente uma quantidade de caracteres between 0 e a largura desta caixa times 3/4.
-  Mova a caixa right a quantidade de caracteres.
-
-Etapas necessárias para que se mova uma caixa para baixo uns twips:
-  Mova a caixa usando 0 e os twips.
-
-Etapas necessárias para que se mova uma caixa usando um par de números:
-  Mova a caixa usando o número X deste par de números e o número Y deste par de números.
-
-Etapas necessárias para que se mova uma caixa usando um par de números racionais e uma localização;
-Etapas necessárias para que se mova uma caixa usando uma par de números fracionários e uma localização:
-  Obtenha um difference between o canto superior esquerdo desta caixa e a localização.
-  Atribua a difference a uma segunda difference.
-  Redimensione proporcionalmente a segunda difference usando o par de números fracionários.
-  Subtraia a difference desde a segunda difference.
-  Mova a caixa usando a segunda difference.
-
-Some  x-twips são uns twips.
-Some  y-twips são uns twips.
-
-Etapas necessárias para que se mova uma caixa usando uns x-twips e uns y-twips:
-  Adicione o x-twips para a coordenada esquerda desta caixa.
-  Adicione o y-twips para a coordenada superior desta caixa.
-  Adicione o x-twips para a coordenada direita desta caixa.
-  Adicione o y-twips para a coordenada inferior desta caixa.
-
-Etapas necessárias para que se mova uma caixa left para uma coordenada:
-  Mova a caixa left a coordenada esquerda desta caixa menos a coordenada.
-
-Etapas necessárias para que se mova uma caixa para o left side of uma segunda caixa;
-Etapas necessárias para que se mova uma caixa para o left of uma segunda caixa:
-  Mova a caixa left a coordenada esquerda desta caixa menos a coordenada esquerda desta segunda caixa.
-
-Etapas necessárias para que se mova uma caixa left uns twips:
-  Mova a caixa usando - os twips e 0.
-
-Etapas necessárias para que se mova uma caixa para o right side of uma segunda caixa;
-Etapas necessárias para que se mova uma caixa para o right of uma segunda caixa:
-  Mova a caixa right a coordenada direita desta segunda caixa menos a coordenada direita desta caixa.
-
-Etapas necessárias para que se mova uma caixa right uns twips:
-  Mova a caixa usando os twips e 0.
-
-Etapas necessárias para que se mova uma caixa para uma localização:
-  Obtenha um difference between a localização e o canto superior esquerdo desta caixa.
-  Mova a caixa usando a difference.
-
-Etapas necessárias para que se mova uma caixa para o topo left corner of uma segunda caixa:
-  Mova a caixa para a coordenada esquerda desta segunda caixa-top.
-
-Etapas necessárias para que se mova uma caixa para o topo of uma segunda caixa:
-  Mova a caixa para cima a coordenada superior desta caixa menos a coordenada superior desta segunda caixa.
-
-Etapas necessárias para que se mova uma caixa para cima uns twips:
-  Mova a caixa usando 0 e - os twips.
 
 Etapas necessárias para que se mova o caret para baixo em um text:
   Se o text for inexistente, cancele.
@@ -7517,83 +7028,9 @@ Etapas necessárias para que se mova o caret para cima one página em um text:
   Adicione 1 para o número de linhas do cursor deste text.
   Limite o caret no text.
 
-Etapas necessárias para que se mova um elipse para baixo uns twips:
-  Mova a elipse usando 0 e os twips.
-
-Etapas necessárias para que se mova um elipse usando um par de números:
-  Mova a elipse usando o x deste par de números e o y deste par de números.
-
-Etapas necessárias para que se mova um elipse usando uns x-twips e uns y-twips:
-  Mova a caixa desta elipse usando o x-twips e o y-twips.
-
-Etapas necessárias para que se mova um elipse left uns twips:
-  Mova a elipse usando - os twips e 0.
-
-Etapas necessárias para que se mova um elipse right uns twips:
-  Mova a elipse usando os twips e 0.
-
-Etapas necessárias para que se mova um elipse para uma localização:
-  Obtenha um difference between a localização e o canto superior esquerdo desta elipse.
-  Mova a elipse usando a difference.
-
-Etapas necessárias para que se mova um elipse para cima uns twips:
-  Mova a elipse usando 0 e - os twips.
-
 Etapas necessárias para que se mova um finger over um número:
   Se o finger for inexistente, cancele.
   Adicione 1 para o finger.
-
-Etapas necessárias para que se mova para o left uns twips e para baixo uns segunda twips;
-Etapas necessárias para que se mova left uns twips e para baixo uns segunda twips;
-Etapas necessárias para que se mova uns twips para o left e uns segunda twips para baixo;
-Etapas necessárias para que se mova uns twips left e uns segunda twips para baixo:
-  Mova a localização deste context left os twips.
-  Mova a localização deste context para baixo a segunda twips.
-
-Etapas necessárias para que se mova para o left uns twips e para cima uns segunda twips;
-Etapas necessárias para que se mova left uns twips e para cima uns segunda twips;
-Etapas necessárias para que se mova uns twips para o left e uns segunda twips para cima;
-Etapas necessárias para que se mova uns twips left e uns segunda twips para cima:
-  Mova a localização deste context left os twips.
-  Mova a localização deste context para cima a segunda twips.
-
-Etapas necessárias para que se mova um line para baixo uns twips:
-  Mova o line usando 0 e os twips.
-
-Etapas necessárias para que se mova um line usando um par de números:
-  Mova o line usando o x deste par de números e o y deste par de números.
-
-Etapas necessárias para que se mova um line usando uns x-twips e uns y-twips:
-  Adicione o x-twips para a coordenada X desta start desta line.
-  Adicione o y-twips para a coordenada Y desta start desta line.
-  Adicione o x-twips para a coordenada X deste end desta line.
-  Adicione o y-twips para a coordenada Y deste end desta line.
-
-Etapas necessárias para que se mova um line left uns twips:
-  Mova o line usando - os twips e 0.
-
-Etapas necessárias para que se mova um line para uma localização:
-  Obtenha um difference between a localização e o start desta line.
-  Mova o line usando a difference.
-
-Etapas necessárias para que se mova um line uns twips para o right;
-Etapas necessárias para que se mova um line right uns twips:
-  Mova o line usando os twips e 0.
-
-Etapas necessárias para que se mova um line para cima uns twips:
-  Mova o line usando 0 e - os twips.
-
-Etapas necessárias para que se mova para o middle;
-Etapas necessárias para que se start no middle;
-Etapas necessárias para que se mova para o center;
-Etapas necessárias para que se start no center:
-  Atribua o center desta caixa deste context à localização deste context.
-
-Etapas necessárias para que se mova para o middle of uma caixa;
-Etapas necessárias para que se start no middle of uma caixa;
-Etapas necessárias para que se mova para o center of uma caixa;
-Etapas necessárias para que se start no center of uma caixa:
-  Atribua o center desta caixa à localização deste context.
 
 Etapas necessárias para que se mova um imagem para baixo uns twips:
   Mova o imagem usando 0 e os twips.
@@ -7620,179 +7057,6 @@ Etapas necessárias para que se mova um imagem para uma localização:
 Etapas necessárias para que se mova um imagem para cima uns twips:
   Mova o imagem usando 0 e - os twips.
 
-Etapas necessárias para que se mova um polígono para baixo uns twips:
-  Mova o polígono usando 0 e os twips.
-
-Etapas necessárias para que se mova um polígono usando um par de números:
-  Mova o polígono usando o número X deste par de números e o número Y deste par de números.
-
-Etapas necessárias para que se mova um polígono usando uns x-twips e uns y-twips:
-  Se o polígono for inexistente, cancele.
-  Percorra. [o código abaixo]
-    Obtenha um vértice desde os vértices deste polígono.
-    Se o vértice for inexistente, cancele.
-    Mova o vértice usando o x-twips e o y-twips.
-  Repita. [o código acima]
-
-Etapas necessárias para que se mova um polígono left uns twips:
-  Mova o polígono usando - os twips e 0.
-
-Etapas necessárias para que se mova um polígono left uns twips e para baixo uns segunda twips:
-  Mova o polígono left os twips.
-  Mova o polígono para baixo a segunda twips.
-
-Etapas necessárias para que se mova um polígono left uns twips e para cima uns segunda twips:
-  Mova o polígono left os twips.
-  Mova o polígono para cima a segunda twips.
-
-Etapas necessárias para que se mova um polígono right uns twips:
-  Mova o polígono usando os twips e 0.
-
-Etapas necessárias para que se mova um polígono right uns twips e para baixo uns segunda twips:
-  Mova o polígono right os twips.
-  Mova o polígono para baixo a segunda twips.
-
-Etapas necessárias para que se mova um polígono right uns twips e para cima uns segunda twips:
-  Mova o polígono right os twips.
-  Mova o polígono para cima a segunda twips.
-
-Etapas necessárias para que se mova um polígono para uma localização:
-  Se o polígono for inexistente, cancele.
-  Obtenha um difference between a localização e o canto superior esquerdo desta caixa deste polígono.
-  Mova o polígono usando a difference.
-
-Etapas necessárias para que se mova um polígono para cima uns twips:
-  Mova o polígono usando 0 e - os twips.
-
-Etapas necessárias para que se mova um percorredor (catálogo dicionário léxico rules):
-  Skip algum tipo de leading noise no segmento final deste percorredor.
-  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
-  Percorra. [o código abaixo]
-    Se o segmento final deste percorredor estiver em branco, cancele.
-    Avance o percorredor.
-    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for irrelevante, cancele.
-  Repita. [o código acima]
-
-Etapas necessárias para que se mova um percorredor (quoted string rules):
-  Avance o percorredor.
-  Se o segmento final deste percorredor estiver em branco, cancele.
-  Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor não for as aspas duplas, repita.
-  Se o first endereço de memória do pedaço deste segmento final deste percorredor for o last endereço de memória do pedaço deste segmento final deste percorredor, avance o percorredor; exit.
-  Avance o percorredor.
-  Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor não for as aspas duplas, cancele.
-  Repita. [o código acima]
-
-Etapas necessárias para que se mova um percorredor (spell checking rules):
-  Skip algum tipo de non-alfanumérico pedaços no segmento final deste percorredor.
-  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
-  Percorra. [o código abaixo]
-    Se o segmento final deste percorredor estiver em branco, cancele.
-    Avance o percorredor.
-    Se o segmento final deste percorredor está sobre alguma espécie de contração, avance o percorredor; repita.
-    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor não for alfanumérico, cancele.
-  Repita. [o código acima]
-
-Etapas necessárias para que se mova um percorredor (text file rules):
-  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
-  Percorra. [o código abaixo]
-    Se o segmento final deste percorredor estiver em branco, cancele.
-    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o return pedaço, avance o percorredor; break.
-    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o linefeed pedaço, avance o percorredor; exit. 
-  \ *dahn new to handle lines terminated por just linefeed
-    Avance o percorredor.
-  Repita. [o código acima]
-  Se o segmento final deste percorredor estiver em branco, cancele.
-  Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o linefeed pedaço, adicione 1 para o first endereço de memória do pedaço deste segmento final deste percorredor.
-
-Etapas necessárias para que se mova um percorredor (word wrapping rules):
-  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
-  Se o segmento final deste percorredor estiver em branco, cancele.
-  Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o return pedaço, avance o percorredor; exit.
-  Percorra. [o código abaixo]
-    Se o segmento final deste percorredor estiver em branco, cancele.
-    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o return pedaço, cancele.
-    Se o segmento inicial deste percorredor estiver em branco, avance o percorredor; repita.
-    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for like o conteúdo deste last endereço de memória do pedaço deste segmento inicial deste percorredor, 
-      avance o percorredor; repita.
-
-Etapas necessárias para que se mova um percorredor usando uma caixa (word wrapping rules):
-  Skip algum tipo de leading linefeed pedaço no segmento final deste percorredor.
-  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
-  Se o segmento final deste percorredor estiver em branco, cancele.
-  Lance um segundo percorredor sobre o percorredor.
-  Percorra. [o código abaixo]
-    Se o segmento final deste percorredor estiver em branco, cancele.
-    Mova o segundo percorredor (word wrapping rules).
-    Se o segmento inicial deste segundo percorredor estiver em branco, cancele.
-    Se o conteúdo deste first endereço de memória do pedaço deste segmento inicial deste segundo percorredor for o return pedaço, avance o percorredor; exit.
-    Se o conteúdo deste first endereço de memória do pedaço deste segmento inicial deste segundo percorredor for whitespace, avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor; repita.
-    Se o segmento inicial deste percorredor estiver em branco, avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor; repita.
-    Se o segmento inicial deste percorredor junto com o segmento inicial deste segundo percorredor forem wider do que a caixa, cancele.
-    Avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor.
-  Repita. [o código acima]
-
-Etapas necessárias para que se mova um percorredor usando um separator pedaço:
-  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
-  Percorra. [o código abaixo]
-    Se o segmento final deste percorredor estiver em branco, cancele.
-    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o separator pedaço, adicione 1 para o first endereço de memória do pedaço deste segmento final deste percorredor; exit.
-    Avance o percorredor.
-  Repita. [o código acima]
-
-Etapas necessárias para que se mova para o right uns twips e para baixo uns segunda twips;
-Etapas necessárias para que se mova right uns twips e para baixo uns segunda twips;
-Etapas necessárias para que se mova uns twips para o right e uns segunda twips para baixo;
-Etapas necessárias para que se mova uns twips right e uns segunda twips para baixo:
-  Mova a localização deste context right os twips.
-  Mova a localização deste context para baixo a segunda twips.
-
-Etapas necessárias para que se mova para o right uns twips e para cima uns segunda twips;
-Etapas necessárias para que se mova right uns twips e para cima uns segunda twips;
-Etapas necessárias para que se mova uns twips para o right e uns segunda twips para cima;
-Etapas necessárias para que se mova uns twips right e uns segunda twips para cima:
-  Mova a localização deste context right os twips.
-  Mova a localização deste context para cima a segunda twips.
-
-Etapas necessárias para que se mova para uma localização:
-  Atribua a localização à localização deste context.
-
-Etapas necessárias para que se mova uma localização about uns twips em algum tipo de direction:
-  Escolha aleatoriamente uma segunda localização within os twips of a localização.
-  Atribua a segunda localização à localização.
-
-Etapas necessárias para que se mova uma localização para uma segunda localização:
-  Atribua a segunda localização à localização.
-
-Etapas necessárias para que se mova uma localização usando um par de números:
-  Mova a localização usando o número X deste par de números e o número Y deste par de números.
-
-Etapas necessárias para que se mova uma localização usando uns x-twips e uns y-twips:
-  Adicione o x-twips para a coordenada X desta localização.
-  Adicione o y-twips para a coordenada Y desta localização.
-
-Etapas necessárias para que se mova uma localização uns twips para baixo;
-Etapas necessárias para que se mova uma localização para baixo uns twips:
-  Mova a localização usando 0 e os twips.
-
-Etapas necessárias para que se mova uma localização uns twips para o left;
-Etapas necessárias para que se mova uma localização uns twips left;
-Etapas necessárias para que se mova uma localização left uns twips:
-  Mova a localização usando - os twips e 0.
-
-Etapas necessárias para que se mova uma localização uns twips right;
-Etapas necessárias para que se mova uma localização uns twips para o right;
-Etapas necessárias para que se mova uma localização right uns twips:
-  Mova a localização usando os twips e 0.
-
-Etapas necessárias para que se mova uma localização uns twips para o right e uns segunda twips para baixo;
-Etapas necessárias para que se mova uma localização uns twips right e uns segunda twips para baixo:
-  Adicione os twips para o x desta localização.
-  Adicione a segunda twips para o y desta localização.
-
-Etapas necessárias para que se mova uma localização uns twips para cima;
-Etapas necessárias para que se mova uma localização para cima uns twips:
-  Mova a localização usando 0 e - os twips.
-
 Etapas necessárias para que se mova uns squares:
   Mova o square size times o squares dividido por 1 square. \ squares são scaled para cima por precision hence o division at o end
 
@@ -7804,30 +7068,6 @@ Etapas necessárias para que se mova um subtexto usando um número:
   Adicione o número para o first endereço de memória do pedaço deste subtexto.
   Adicione o número para o last endereço de memória do pedaço deste subtexto.
 
-Etapas necessárias para que se mova um text para baixo uns twips:
-  Mova o text usando 0 e os twips.
-
-Etapas necessárias para que se mova um text usando um par de números:
-  Mova o text usando o número X deste par de números e o número Y deste par de números.
-
-Etapas necessárias para que se mova um text usando uns x-twips e uns y-twips:
-  Se o text for inexistente, cancele.
-  Mova a caixa deste text usando o x-twips e o y-twips.
-
-Etapas necessárias para que se mova um text left uns twips:
-  Mova o text usando - os twips e 0.
-
-Etapas necessárias para que se mova um text right uns twips:
-  Mova o text usando os twips e 0.
-
-Etapas necessárias para que se mova um text para uma localização:
-  Se o text for inexistente, cancele.
-  Obtenha um difference between a localização e o canto superior esquerdo deste text.
-  Mova o text usando a difference.
-
-Etapas necessárias para que se mova um text para cima uns twips:
-  Mova o text usando 0 e - os twips.
-
 Etapas necessárias para que se mova uma coisa desde uns coisas para uns segunda coisas:
   Se a coisa for inexistente, cancele.
   Isole o coisa.
@@ -7838,57 +7078,6 @@ Etapas necessárias para que se mova uns coisas para uns segunda coisas:
   Atribua o first destas coisas ao first destas segunda coisas.
   Atribua o last destas coisas ao last destas segunda coisas.
   Limpe as coisas.
-
-Etapas necessárias para que se mova uns twips:
-    \Aguarde pelo delay. ***
-  Atribua a localização deste context ao start dessa line.
-  Atribua a localização deste context ao end desta line.
-  Obtenha um deslocamento vertical e um deslocamento horizontal usando a orientação deste context.
-  Adicione o deslocamento horizontal times os twips dividido por 10000 para a coordenada X deste end desta line.
-  Adicione o deslocamento vertical times os twips dividido por 10000 para a coordenada Y deste end desta line.
-  Atribua o end desta line à localização deste context.
-
-Etapas necessárias para que se mova uns twips para baixo;
-Etapas necessárias para que se mova para baixo uns twips:
-  Adicione os twips para a coordenada Y deste context.
-
-Etapas necessárias para que se mova uns twips para o left;
-Etapas necessárias para que se mova uns twips left;
-Etapas necessárias para que se mova left uns twips:
-  Subtraia os twips desde a coordenada X deste context.
-
-Etapas necessárias para que se mova uns twips para o right;
-Etapas necessárias para que se mova uns twips right;
-Etapas necessárias para que se mova right uns twips:
-  Adicione os twips para a coordenada X deste context.
-
-Etapas necessárias para que se mova uns twips para cima;
-Etapas necessárias para que se mova para cima uns twips:
-  Subtraia os twips desde a coordenada Y deste context.
-
-Etapas necessárias para que se mova um vértice para baixo uns twips:
-  Mova o vértice usando 0 e os twips.
-
-Etapas necessárias para que se mova um vértice usando um par de números:
-  Mova o vértice usando o número X deste par de números e o número Y deste par de números.
-
-Etapas necessárias para que se mova um vértice usando uns x-twips e uns y-twips:
-  Se o vértice for inexistente, cancele.
-  Adicione o x-twips para a coordenada X deste vértice.
-  Adicione o y-twips para a coordenada Y deste vértice.
-
-Etapas necessárias para que se mova um vértice left uns twips:
-  Mova o vértice usando - os twips e 0.
-
-Etapas necessárias para que se mova um vértice right uns twips:
-  Mova o vértice usando os twips e 0.
-
-Etapas necessárias para que se mova um vértice para uma localização:
-  Se o vértice for inexistente, cancele.
-  Atribua a localização à localização deste vértice.
-
-Etapas necessárias para que se mova um vértice para cima uns twips:
-  Mova o vértice usando 0 e - os twips.
 
 Etapas necessárias para que se mova uma window left:
   Call "user32.dll" "GetWindowRect" com 
@@ -7915,18 +7104,6 @@ Etapas necessárias para que se mova uma window right:
     e A pixel largura desta tela 
     e A pixel altura desta tela 
     e 1.
-
-Uma MSG é um conjunto com
-  Uma window denominado hwnd,
-  Um número denominado message,
-  Um w-param denominado wparam,
-  Um l-param denominado lparam,
-  Um número denominado time,
-  Uma localização denominado pt.
-
-Um nome é uma string.
-
-A next letra é um letra igual a 65 [the big-a byte].
 
 Etapas necessárias para que se redimensione cuidadosamente [sem perder qualidade] uma imagem usando um par de números racionais;
 Etapas necessárias para que se redimensione cuidadosamente [sem perder qualidade] uma imagem usando um par de números fracionários:
@@ -8054,13 +7231,6 @@ Etapas necessárias para que se outdent algum tipo de rows selecionadas em um tex
     Se o conteúdo deste first endereço de memória do pedaço desta string desta row for o caractere de espaço, remove o first pedaço desde a string deste row.
   Repita. [o código acima]
 
-Etapas necessárias para que se outdent uma caixa uns twips;
-Etapas necessárias para que se outdent uma caixa usando uns twips:
-  Subtraia os twips desde a coordenada esquerda desta caixa.
-  Subtraia os twips desde a coordenada superior desta caixa.
-  Adicione os twips para a coordenada direita desta caixa.
-  Adicione os twips para a coordenada inferior desta caixa.
-
 Um outdent é um número.
 
 Etapas necessárias para que se outline uma caixa com uma cor:
@@ -8135,8 +7305,6 @@ Etapas necessárias para que se output stroke e fill usando uma cor da borda e um
   Se a cor da borda estiver clear, atribua "f" à string. \ fill
   Output a string.
 
-Um pabc é um endereço de memória para um abc.
-
 \Um paintstruct é um conjunto com
 \Um hdc denominado hdc,
 \Um número denominado ferase,
@@ -8156,227 +7324,12 @@ Um pchar é um endereço de memória do pedaço.
 
 Um pdevmode é um endereço de memória para um devmode.
 
-A grossura do pincel é um número.
-
-Etapas necessárias para que se escolha aleatoriamente um brilho between um percent e uma segunda percent;
-Etapas necessárias para que se vary uma luminosidade between um percent e uma segunda percent;
-Etapas necessárias para que se escolha aleatoriamente uam luminosidade between um percent e uma segunda percent:
-  Escolha aleatoriamente um número between o percent e a segunda percent.
-  Atribua o número times 10 à luminosidade.
-  Atribua a luminosidade à luminosidade deste context.
-
-Etapas necessárias para que se escolha aleatoriamente uma cor amarronzada:
-  Escolha aleatoriamente a matiz desta cor amarronzada between 250 e 350.
-  Escolha aleatoriamente a saturação desta cor amarronzada between 500 e 1000.
-  Escolha aleatoriamente o brilho desta cor amarronzada between 125 e 375.
-  Atribua a cor amarronzada à cor deste context.
-
-Etapas necessárias para que se escolha aleatoriamente uma cor amarronzada about uns percent of o time:
-    \ *** generalize this por all cors
-  Escolha aleatoriamente um número between 1 e 100.
-  Se o número for maior do que o percent, cancele.
-  Escolha aleatoriamente a cor amarronzada.
-  Atribua a cor amarronzada à cor deste context.
-
-Etapas necessárias para que se escolha aleatoriamente uma cor:
-  Escolha aleatoriamente a matiz desta cor between 0 e 3600.
-  Escolha aleatoriamente a saturação desta cor between 0 e 1000.
-  Escolha aleatoriamente a luminosidade desta cor between 0 e 1000.
-  Atribua a cor à cor deste context.
-
-Etapas necessárias para que se escolha aleatoriamente uma cor between uma segunda cor e um terceiro cor:
-  Escolha aleatoriamente a matiz desta cor between a matiz desta segunda cor e a matiz desta terceiro cor.
-  Escolha aleatoriamente a saturação desta cor between a saturação desta segunda cor e a saturação desta terceiro cor.
-  Escolha aleatoriamente a luminosidade desta cor between a luminosidade desta segunda cor e a luminosidade desta terceiro cor.
-  Atribua a cor à cor deste context.
-
-Etapas necessárias para que se escolha aleatoriamente uma cor like uma segunda cor:
-  Atribua a segunda cor à cor.
-  Escolha aleatoriamente um número between -100 e 100.
-  Adicione o número para a matiz desta cor.
-  Limite a matiz desta cor para 0 e 3599.
-  Defina a saturação desta cor para something between 100 e 1000.
-  Defina a luminosidade desta cor para something between 0 e 800.
-  Atribua a cor à cor deste context.
-
-Etapas necessárias para que se escolha aleatoriamente uma cor escura:
-    \Etapas necessárias para que se escolha aleatoriamente uma cor escura:
-  Escolha aleatoriamente a matiz desta cor escura between 0 e 3599.
-  Atribua 1000 à saturação desta cor escura.
-  Atribua 375 à luminosidade desta cor escura.
-  Atribua a cor escura à cor deste context.
-
-Etapas necessárias para que se escolha aleatoriamente uma cor esverdeada:
-  Escolha aleatoriamente a matiz desta cor esverdeada between 900 e 1200.
-  Escolha aleatoriamente a saturação desta cor esverdeada between 500 e 1000.
-  Escolha aleatoriamente o brilho desta cor esverdeada between 250 e 875.
-  Atribua a cor esverdeada à cor deste context.
-
-Etapas necessárias para que se escolha aleatoriamente uma cor esverdeada about uns percent of o time:
-    \ *** generalize this por all cors
-  Escolha aleatoriamente um número between 1 e 100.
-  Se o número for maior do que o percent, cancele.
-  Escolha aleatoriamente a cor esverdeada.
-  Atribua a cor esverdeada à cor deste context.
-
-Etapas necessárias para que se escolha aleatoriamente uma orientação:
-  Escolha aleatoriamente a orientação between 0 e 3839.
-  Atribua a orientação à orientação deste context.
-
-Etapas necessárias para que se escolha aleatoriamente um tamanho da letra between uns twips e uns segunda twips:
-  Escolha aleatoriamente um random número between os twips e a segunda twips.
-  Atribua o random número ao tamanho da letra.
-  Atribua o random número à tamanho da letra deste context.
-
-Etapas necessárias para que se escolha aleatoriamente um letra of o alphabet:
-    \ atribua letra A context? ***
-  Escolha aleatoriamente um número between 65 e 90.
-  Atribua o número ao letra.
-
-Etapas necessárias para que se escolha aleatoriamente um claro cor:
-  Escolha aleatoriamente a matiz desta claro cor between 0 e 3599.
-  Atribua 1000 à saturação desta claro cor.
-  Atribua 625 à luminosidade desta claro cor.
-  Atribua o claro cor à cor deste context.
-
 Etapas necessárias para que se escolha aleatoriamente um número within um quantia of um segundo número:
   Escolha aleatoriamente o número between o segundo número menos o quantia e o segundo número mais o quantia.
   Atribua o número ao número deste context.
 
-Etapas necessárias para que se escolha aleatoriamente uma cor pastel:
-  Escolha aleatoriamente a matiz desta cor pastel between 0 e 3599.
-  Atribua 1000 à saturação desta cor pastel.
-  Atribua 875 à luminosidade desta cor pastel.
-  Atribua a cor pastel à cor deste context.
-
-Etapas necessárias para que se escolha aleatoriamente um rainbow cor:
-  Adicione 1 para o número atual da cor do arco-íris.
-  Se o número atual da cor do arco-íris for maior do que 6, atribua 1 ao número atual da cor do arco-íris.
-  Se o número atual da cor do arco-íris for 1, atribua a cor vermelha ao rainbow cor.
-  Se o número atual da cor do arco-íris for 2, atribua a cor laranja ao rainbow cor.
-  Se o número atual da cor do arco-íris for 3, atribua a cor amarela ao rainbow cor.
-  Se o número atual da cor do arco-íris for 4, atribua a cor verde ao rainbow cor.
-  Se o número atual da cor do arco-íris for 5, atribua a cor azul ao rainbow cor.
-  Se o número atual da cor do arco-íris for 6, atribua a cor púrpura ao rainbow cor.
-  Atribua o rainbow cor à cor deste context.
-
-Etapas necessárias para que se escolha aleatoriamente um solid cor:
-  Escolha aleatoriamente o matiz desta solid cor between 0 e 3599.
-  Atribua 1000 à saturação desta solid cor.
-  Atribua 500 à luminosidade desta solid cor.
-  Atribua o solid cor à cor deste context.
-
-Etapas necessárias para que se escolha aleatoriamente uma localização anywhere no base uma fração of uma caixa;
-Etapas necessárias para que se escolha aleatoriamente uma localização no base uma fração of uma caixa:
-  Isole a caixa.
-  Atribua a altura desta caixa times a fração a uns twips.
-  Atribua a coordenada inferior desta caixa menos os twips à coordenada superior desta caixa.
-  Escolha aleatoriamente a localização na caixa.
-
-Etapas necessárias para que se escolha aleatoriamente uma localização anywhere em uma caixa:
-  Escolha aleatoriamente a coordenada X desta localização between a coordenada esquerda desta caixa e a coordenada direita desta caixa.
-  Escolha aleatoriamente a coordenada Y desta localização between a coordenada superior desta caixa e a coordenada inferior desta caixa.
-  Atribua a localização à localização deste context.
-
-Etapas necessárias para que se escolha aleatoriamente uma localização anywhere no middle uma fração of uma caixa;
-Etapas necessárias para que se escolha aleatoriamente uma localização no middle uma fração of uma caixa:
-  Isole a caixa.
-  Atribua o y deste center desta caixa a uma coordenada.
-  Atribua a altura desta caixa times a fração dividido por 2 a um número.
-  Atribua a coordenada menos o número à coordenada superior desta caixa.
-  Atribua a coordenada mais o número à coordenada inferior desta caixa.
-  Escolha aleatoriamente a localização na caixa.
-
-Etapas necessárias para que se escolha aleatoriamente uma localização anywhere no topo half of uma caixa;
-Etapas necessárias para que se escolha aleatoriamente uma localização no topo half of uma caixa:
-  Isole a caixa.
-  Atribua o y deste center desta caixa à coordenada inferior desta caixa.
-  Escolha aleatoriamente a localização na caixa.
-
-Etapas necessárias para que se escolha aleatoriamente uma localização anywhere no topo middle uma fração of uma caixa;
-Etapas necessárias para que se escolha aleatoriamente uma localização no topo middle uma fração of uma caixa:
-  Isole a caixa.
-  Atribua o y deste center desta caixa a uma coordenada.
-  Atribua a altura desta caixa times a fração a um número.
-  Atribua a coordenada menos o número à coordenada superior desta caixa.
-  Atribua a coordenada à coordenada inferior desta caixa.
-  Escolha aleatoriamente a localização na caixa.
-
-Etapas necessárias para que se escolha aleatoriamente uma localização anywhere sobre um horizontal line;
-Etapas necessárias para que se escolha aleatoriamente uma localização sobre um horizontal line:
-  Escolha aleatoriamente a coordenada X desta localização between o horizontal x deste start desta line e o x deste end desta horizontal line.
-  Atribua o y desta horizontal line ao y desta localização.
-
-Etapas necessárias para que se escolha aleatoriamente uma localização em uma caixa:
-  Escolha aleatoriamente a coordenada X desta localização between a coordenada esquerda desta caixa e a coordenada direita desta caixa.
-  Escolha aleatoriamente a coordenada Y desta localização between a coordenada superior desta caixa e a coordenada inferior desta caixa.
-  Atribua a localização à localização deste context.
-
-Etapas necessárias para que se escolha aleatoriamente uma localização em uma caixa about uns twips above o middle;
-Etapas necessárias para que se escolha aleatoriamente uma localização em uma caixa about uns twips above o center:
-  Atribua a caixa a um bounding caixa.
-  Atribua os twips dividido por 2 a uns segunda twips.
-  Atribua o y deste center desta caixa menos a segunda twips à coordenada inferior desta bounding caixa.
-  Atribua a coordenada inferior desta bounding caixa menos os twips à coordenada superior desta bounding caixa.
-  Escolha aleatoriamente a localização anywhere no bounding caixa.
-
-Etapas necessárias para que se escolha aleatoriamente uma localização em uma caixa about uns twips below o middle;
-Etapas necessárias para que se escolha aleatoriamente uma localização em uma caixa about uns twips below o center:
-  Atribua a caixa a um bounding caixa.
-  Atribua os twips dividido por 2 a uns segunda twips.
-  Atribua o y deste center desta caixa mais a segunda twips à coordenada superior desta bounding caixa.
-  Atribua a coordenada superior desta bounding caixa mais os twips à coordenada inferior desta bounding caixa.
-  Escolha aleatoriamente a localização anywhere no bounding caixa.
-
-Etapas necessárias para que se escolha aleatoriamente uma localização em uma caixa uns twips para uns segunda twips above o middle;
-Etapas necessárias para que se escolha aleatoriamente uma localização em uma caixa uns twips para uns segunda twips above o center:
-  Atribua a caixa a um bounding caixa.
-  Atribua o y deste center desta caixa menos os twips à coordenada inferior desta bounding caixa.
-  Atribua a coordenada inferior desta bounding caixa menos a segunda twips à coordenada superior desta bounding caixa.
-  Escolha aleatoriamente a localização anywhere no bounding caixa.
-
-Etapas necessárias para que se escolha aleatoriamente uma localização em uma caixa uns twips para uns segunda twips below o middle;
-Etapas necessárias para que se escolha aleatoriamente uma localização em uma caixa uns twips para uns segunda twips below o center:
-  Atribua a caixa a um bounding caixa.
-  Atribua o y deste center desta caixa mais os twips à coordenada superior desta bounding caixa.
-  Atribua a coordenada superior desta bounding caixa mais a segunda twips à coordenada inferior desta bounding caixa.
-  Escolha aleatoriamente a localização anywhere no bounding caixa.
-
-Etapas necessárias para que se escolha aleatoriamente uma localização within um distance of uma segunda localização:
-  Escolha aleatoriamente a coordenada X desta localização within o distance of a coordenada X desta segunda localização.
-  Escolha aleatoriamente a coordenada Y desta localização within o distance of a coordenada Y desta segunda localização.
-  Atribua a localização à localização deste context.
-
-Etapas necessárias para que se escolha aleatoriamente um cor muito escura;
-Etapas necessárias para que se escolha aleatoriamente um really cor escura:
-  Escolha aleatoriamente a matiz desta really cor escura between 0 e 3599.
-  Atribua 500 à saturação desta really cor escura.
-  Atribua 250 à luminosidade desta really cor escura.
-  Atribua o really cor escura à cor deste context.
-
-Etapas necessárias para que se escolha aleatoriamente um cor muito clara;
-Etapas necessárias para que se escolha aleatoriamente um really claro cor:
-  Escolha aleatoriamente a matiz desta really claro cor between 0 e 3599.
-  Atribua 1000 à saturação desta really claro cor.
-  Atribua 750 à luminosidade desta really claro cor.
-  Atribua o really claro cor à cor deste context.
-
-Etapas necessárias para que se escolha aleatoriamente um cor escuríssima;
-Etapas necessárias para que se escolha aleatoriamente um really really cor escura:
-  Escolha aleatoriamente a matiz desta really really cor escura between 0 e 3599.
-  Atribua 500 à saturação desta really really cor escura.
-  Atribua 125 à luminosidade desta really really cor escura.
-  Atribua o really really cor escura à cor deste context.
-
-    \Etapas necessárias para que se escolha aleatoriamente uma cor claríssima;
-Etapas necessárias para que se escolha aleatoriamente uma cor claríssima:
-  Escolha aleatoriamente a matiz desta cor claríssima between 0 e 3599.
-  Atribua 1000 à saturação desta cor claríssima.
-  Atribua 875 à luminosidade desta cor claríssima.
-  Atribua a cor claríssima à cor deste context.
-
 Uma imagem é uma coisa com
-    \ as caixas estão em twits
+\ as caixas estão em twits
 Um caixa [location of cropped imagem sobre a página], 
 Um caixa intacta [location of entire imagem sobre a página],
 Um grayscale detector,
@@ -8433,32 +7386,6 @@ Etapas necessárias para que se toque um wave file e wait:
     e 0 
     e 131072 [snd_filename+snd_sync].
 
-An point é um número. \cujos valores vão desde 0 até 3839;  servem para dividir um ciírculo. 
-    \Nesse sistema de pontos de bússola, o número 0 representa o norte, cada quadrante tem 960 pontos
-    \ Perfazendo um total de 3840 pontos
-
-Um polígono é uma coisa com uns vértices.
-
-Um position é um par de números com um column# e um número da linha.
-
-Etapas necessárias para que se anteponha um pedaço para uma string:
-  Atribua a quantidade de caracteres desta string a uma quantidade de caracteres armazenados.
-  Reassign o first endereço de memória do pedaço desta string usando a quantidade de caracteres desta string mais 1.
-  Copie pedaços desde o first endereço de memória do pedaço desta string para o first endereço de memória do pedaço desta string mais 1 pelo quantidade de caracteres armazenados.
-  Atribua o first endereço de memória do pedaço desta string mais a quantidade de caracteres armazenados ao last endereço de memória do pedaço desta string.
-  Atribua o pedaço ao conteúdo deste first endereço de memória do pedaço desta string.
-
-Etapas necessárias para que se anteponha uma string para uma segunda string:
-  Atribua a quantidade de caracteres desta segunda string mais a quantidade de caracteres desta string a uma quantidade de caracteres agrupados.
-  Reassign um endereço de memória usando a quantidade de caracteres agrupados.
-  Atribua o endereço de memória ao first endereço de memória do pedaço desse subtexto.
-  Copie pedaços desde o first endereço de memória do pedaço desta string para o first endereço de memória do pedaço deste subtexto pelo quantidade de caracteres desta string.
-  Adicione a quantidade de caracteres desta string para o first endereço de memória do pedaço deste subtexto.
-  Copie pedaços desde o first desta segunda string para o first endereço de memória do pedaço deste subtexto pelo quantidade de caracteres desta segunda string.
-  Unassign o first endereço de memória do pedaço desta segunda string. \ para que se esvazie extra allocates e copies
-  Atribua o endereço de memória ao first endereço de memória do pedaço desta segunda string.
-  Atribua o first endereço de memória do pedaço desta segunda string mais a quantidade de caracteres agrupados menos 1 ao last endereço de memória do pedaço desta segunda string.
-
 Etapas necessárias para que se anteponha uma coisa para uns coisas:
   Se a coisa for inexistente, cancele.
   Atribua o first destas coisas ao next desta coisa.
@@ -8487,135 +7414,9 @@ Um process endereço de memória é um endereço de memória para um process.
 
 Um punch line é uma string.
 
-Etapas necessárias para que se atribua o base of uma caixa para um horizontal line;
-Etapas necessárias para que se atribua o base edge of uma caixa para um horizontal line;
-Etapas necessárias para que se atribua o base side of uma caixa para um horizontal line:
-  Atribua o canto inferior esquerdo desta caixa ao start desta horizontal line.
-  Atribua o canto inferior direito desta caixa ao end desta horizontal line.
-
-Etapas necessárias para que se atribua o base of uma caixa para um line:
-  Make o line com o canto inferior esquerdo desta caixa e o canto inferior direito desta caixa.
-
-Etapas necessárias para que se atribua uma caixa e um raio para uma caixa arredondada:
-  Atribua a coordenada esquerda desta caixa à coordenada esquerda desta caixa arredondada.
-  Atribua a coordenada superior desta caixa à coordenada superior desta caixa arredondada.
-  Atribua a coordenada direita desta caixa à coordenada direita desta caixa arredondada.
-  Atribua a coordenada inferior desta caixa à coordenada inferior desta caixa arredondada.
-  Atribua o raio ao raio desta caixa arredondada.
-
-Etapas necessárias para que se atribua uma caixa no center of uma segunda caixa;
-Etapas necessárias para que se centralize uma caixa em uma segunda caixa:
-  Centralize a caixa no segunda caixa (horizontalmente).
-  Centralize a caixa no segunda caixa (verticalmente).
-
-Etapas necessárias para que se atribua uma caixa no center of a tela;
-Etapas necessárias para que se centralize uma caixa sobre a tela:
-  Centralize a caixa na caixa desta tela.
-
-Etapas necessárias para que se atribua uma caixa para uma segunda caixa:
-  Atribua a coordenada esquerda desta caixa à coordenada esquerda desta segunda caixa.
-  Atribua a coordenada superior desta caixa à coordenada superior desta segunda caixa.
-  Atribua a coordenada direita desta caixa à coordenada direita desta segunda caixa.
-  Atribua a coordenada inferior desta caixa à coordenada inferior desta segunda caixa.
-
-Etapas necessárias para que se atribua uma caixa sobre uma localização;
-Etapas necessárias para que se centralize uma caixa sobre uma localização:
-  Obtenha um difference between a localização e o center desta caixa.
-  Arredonde a difference para o múltiplo imediato of o tpp.
-  Mova a caixa usando a difference.
-
-Etapas necessárias para que se atribua uma caixa uns twips por uns segunda twips no center of uma segunda caixa;
-Etapas necessárias para que se centralize uma caixa uns twips por uns segunda twips em uma segunda caixa:
-  Make a caixa os twips pelo segunda twips.
-  Centralize a caixa no segunda caixa.
-
-Etapas necessárias para que se atribua a linha de baixo dessa caixa para uma horizontal line:
-    \ e "vertical" por left e right
-  Atribua a coordenada esquerda desta caixa e a coordenada inferior desta caixa ao start desta horizontal line.
-  Atribua a coordenada direita desta caixa e a coordenada inferior desta caixa ao end desta horizontal line.
-
-Etapas necessárias para que se atribua o base-center dessa caixa para uma localização:
-    \ *** need these sem dashs too
-  Atribua a coordenada X deste center desta caixa ao x desta localização.
-  Atribua a coordenada inferior desta caixa ao y desta localização.
-
-Etapas necessárias para que se atribua o center dessa caixa para uma localização:
-  Atribua a coordenada esquerda desta caixa mais a coordenada direita desta caixa à coordenada x desta localização.
-  Atribua a coordenada superior desta caixa mais a coordenada inferior desta caixa à coordenada y desta localização.
-  Divida a localização por 2.
-
-Etapas necessárias para que se atribua o center-base dessa caixa para uma localização:
-  Atribua a coordenada X deste center desta caixa à coordenada x desta localização.
-  Atribua a coordenada inferior desta caixa à coordenada y desta localização.
-
-Etapas necessárias para que se atribua o center-top dessa caixa para uma localização:
-  Atribua a coordenada X deste center desta caixa à coordenada x desta localização.
-  Atribua a coordenada superior desta caixa à coordenada y desta localização.
-
-Etapas necessárias para que se atribua a altura dessa caixa para uma altura:
-  Atribua a coordenada inferior desta caixa ao altura.
-  Subtraia a coordenada superior desta caixa desde o altura.
-  Adicione o tpp para o altura.
-
-Etapas necessárias para que se atribua a left line dessa caixa para um line:
-  Atribua a coordenada esquerda desta caixa e a coordenada superior desta caixa ao start desta line.
-  Atribua a coordenada esquerda desta caixa e a coordenada inferior desta caixa ao end desta line.
-
-Etapas necessárias para que se atribua a canto inferior esquerdo dessa caixa para uma localização:
-  Atribua a coordenada esquerda desta caixa à coordenada x desta localização.
-  Atribua a coordenada inferior desta caixa à coordenada y desta localização.
-
-Etapas necessárias para que se atribua o left-center dessa caixa para uma localização:
-  Atribua a coordenada esquerda desta caixa à coordenada x desta localização.
-  Atribua a coordenada Y deste center desta caixa à coordenada y desta localização.
-
-Etapas necessárias para que se atribua o right line dessa caixa para uma line:
-  Atribua a coordenada direita desta caixa e a coordenada superior desta caixa ao start desta line.
-  Atribua a coordenada direita desta caixa e a coordenada inferior desta caixa ao end desta line.
-
-Etapas necessárias para que se atribua o right-center dessa caixa para uma localização:
-  Atribua a coordenada direita desta caixa à coordenada x desta localização.
-  Atribua a coordenada Y deste center desta caixa à coordenada y desta localização.
-
-Etapas necessárias para que se atribua o canto superior direito dessa caixa para uma localização:
-  Atribua a coordenada direita desta caixa à coordenada x desta localização.
-  Atribua a coordenada superior desta caixa à coordenada y desta localização.
-
-Etapas necessárias para que se atribua a linha de cima dessa caixa para uma horizontal line:
-  Atribua a coordenada esquerda desta caixa e a coordenada superior desta caixa ao start desta horizontal line.
-  Atribua a coordenada direita desta caixa e a coordenada superior desta caixa ao end desta horizontal line.
-
-Etapas necessárias para que se atribua o topo-center dessa caixa para uma localização:
-  Atribua a coordenada X deste center desta caixa à coordenada x desta localização.
-  Atribua a coordenada superior desta caixa à coordenada y desta localização.
-
-Etapas necessárias para que se atribua a largura dessa caixa para uma largura:
-  Atribua a coordenada direita desta caixa ao largura.
-  Subtraia a coordenada esquerda desta caixa desde o largura.
-  Adicione o tpp para o largura.
-
-Etapas necessárias para que se atribua o x-extent dessa caixa para uma largura:
-  Atribua a coordenada direita desta caixa ao largura.
-  Subtraia a coordenada esquerda desta caixa desde o largura.
-
-Etapas necessárias para que se atribua o y-extent dessa caixa para uma altura:
-  Atribua a coordenada inferior desta caixa ao altura.
-  Subtraia a coordenada superior desta caixa desde o altura.
-
-Etapas necessárias para que se atribua um pedaço para uma string:
-  Atribua 1 a uma quantidade de caracteres.
-  Reassign o first endereço de memória do pedaço desta string usando a quantidade de caracteres.
-  Atribua o pedaço ao conteúdo deste first endereço de memória do pedaço desta string.
-  Atribua o first endereço de memória do pedaço desta string ao last endereço de memória do pedaço desta string.
-
 Etapas necessárias para que se atribua o character depois de um finger para um character:
   Se o finger for inexistente, limpe o character; exit.
   Atribua o conteúdo deste finger ao character.
-
-Etapas necessárias para que se atribua uma cor para uma segunda cor:
-  Atribua a matiz desta cor à matiz desta segunda cor.
-  Atribua a saturação desta cor à saturação desta segunda cor.
-  Atribua a luminosidade desta cor à luminosidade desta segunda cor.
 
 Etapas necessárias para que se atribua um date/time para uma segunda date/time:
   Atribua o year deste date/time ao year desta segunda date/time.
@@ -8643,52 +7444,8 @@ Etapas necessárias para que se atribua a string dessa date/time para uma string:
   Posponha ":" para a string.
   Zero fill o millisecond deste date/time usando 3 e posponha it para a string.
 
-Etapas necessárias para que se atribua uma elipse no middle of uma caixa;
-Etapas necessárias para que se centralize uma elipse em uma caixa:
-  Centralize a elipse na caixa (horizontalmente).
-  Centralize a elipse na caixa (verticalmente).
-
-Etapas necessárias para que se atribua um elipse para uma segunda elipse:
-  Atribua a caixa desta elipse à caixa desta segunda elipse.
-
-Etapas necessárias para que se atribua um elipse sobre uma localização;
-Etapas necessárias para que se centralize um elipse sobre uma localização:
-  Centralize a caixa desta elipse sobre a localização.
-
 Etapas necessárias para que se atribua um finger sobre o first character of uma string:
   Atribua o first endereço de memória do pedaço desta string ao finger.
-
-Etapas necessárias para que se atribua o gprect desse gpimage para um gprect:
-  Atribua 0 ao x deste gprect.
-  Atribua 0 ao y deste gprect.
-  Atribua a largura desta gpimage ao largura deste gprect.
-  Atribua a altura desta gpimage à altura deste gprect.
-
-Etapas necessárias para que se atribua a altura desse gpimage para uma altura:
-  Se o gpimage for inexistente, atribua 0 ao altura; exit.
-  Call "gdiplus.dll" "GdipGetImageHeight" com 
-    O gpimage 
-    e O endereçamento desta altura.
-
-Etapas necessárias para que se atribua a largura desse gpimage para uma largura:
-  Se o gpimage for inexistente, atribua 0 ao largura; exit.
-  Call "gdiplus.dll" "GdipGetImageWidth" com 
-    O gpimage 
-    e O endereçamento desta largura.
-
-Etapas necessárias para que se atribua um gprect para uma segunda gprect:
-  Atribua o x deste gprect ao x desta segunda gprect.
-  Atribua o y deste gprect ao y desta segunda gprect.
-  Atribua o largura deste gprect ao largura desta segunda gprect.
-  Atribua a altura deste gprect à altura desta segunda gprect.
-
-Etapas necessárias para que se atribua um matiz e um saturação e um luminosidade para uma cor:
-  Atribua o matiz à matiz desta cor.
-  Se a matiz desta cor não for -1, limite a matiz desta cor para 0 e 3599. \ -1 é transparente
-  Atribua o saturação à saturação desta cor.
-  Limite a saturação desta cor para 0 e 1000.
-  Atribua o luminosidade à luminosidade desta cor.
-  Limite a luminosidade desta cor para 0 e 1000.
 
 Etapas necessárias para que se atribua a contagem desse catálogo para uma contagem:
   Atribua 0 à contagem.
@@ -8708,85 +7465,6 @@ Etapas necessárias para que se atribua a used contagem de buckets desse catálogo
     Se os refers deste bucket estiverem vazio, repita.
     Adicione 1 para a contagem.
   Repita. [o código acima]
-
-Etapas necessárias para que se atribua uma coordenada esquerda e uma coordenada superior e uma coordenada direita e uma coordenada inferior e um raio para uma caixa arredondada:
-  Atribua a coordenada esquerda à coordenada esquerda desta caixa arredondada.
-  Atribua a coordenada superior à coordenada superior desta caixa arredondada.
-  Atribua a coordenada direita à coordenada direita desta caixa arredondada.
-  Atribua a coordenada inferior à coordenada inferior desta caixa arredondada.
-  Atribua o raio ao raio desta caixa arredondada.
-
-Etapas necessárias para que se atribua uma coordenada esquerda e uma coordenada superior e uma coordenada direita e uma coordenada inferior para uma caixa:
-  Atribua a coordenada esquerda à coordenada esquerda desta caixa.
-  Atribua a coordenada superior à coordenada superior desta caixa.
-  Atribua a coordenada direita à coordenada direita desta caixa.
-  Atribua a coordenada inferior à coordenada inferior desta caixa.
-
-Etapas necessárias para que se atribua uma coordenada esquerda e uma coordenada superior e uma coordenada direita e uma coordenada inferior para um elipse:
-  Atribua a coordenada esquerda à coordenada esquerda desta elipse.
-  Atribua a coordenada superior à coordenada superior desta elipse.
-  Atribua a coordenada direita à coordenada direita desta elipse.
-  Atribua a coordenada inferior à coordenada inferior desta elipse.
-
-Etapas necessárias para que se atribua a coordenada esquerda of uma caixa para um vertical line;
-Etapas necessárias para que se atribua a coordenada esquerda edge of uma caixa para um vertical line;
-Etapas necessárias para que se atribua a coordenada esquerda side of uma caixa para um vertical line:
-  Atribua o canto superior esquerdo desta caixa ao start desta vertical line.
-  Atribua o canto inferior esquerdo desta caixa ao end desta vertical line.
-
-Etapas necessárias para que se atribua um line no middle of uma caixa;
-Etapas necessárias para que se centralize um line em uma caixa:
-  Centralize o line na caixa (horizontalmente).
-  Centralize o line na caixa (verticalmente).
-
-Etapas necessárias para que se atribua um line para uma segunda line:
-  Atribua o start desta line ao start desta segunda line.
-  Atribua o end desta line ao end desta segunda line.
-
-Etapas necessárias para que se atribua a base dessa line para uma coordenada:
-  Atribua o y deste start desta line à coordenada.
-  Se o y deste end desta line for maior do que o y deste start desta line, atribua o y deste end desta line à coordenada.
-
-Etapas necessárias para que se atribua a caixa dessa line para uma caixa:
-  Atribua o start desta line ao canto superior esquerdo desta caixa.
-  Atribua o end desta line ao canto inferior direito desta caixa.
-  Normalize a caixa.
-
-Etapas necessárias para que se atribua o center dessa line para uma localização:
-  Atribua a coordenada X desta start desta line mais a coordenada X deste end desta line à coordenada x desta localização.
-  Atribua a coordenada Y desta start desta line mais a coordenada Y deste end desta line à coordenada y desta localização.
-  Divida a localização por 2.
-
-Etapas necessárias para que se atribua a coordenada esquerda dessa line para uma coordenada:
-  Atribua a coordenada X desta start desta line à coordenada.
-  Se a coordenada X deste end desta line for menor do que a coordenada X desta start desta line, atribua a coordenada X deste end desta line à coordenada.
-
-Etapas necessárias para que se atribua o right dessa line para uma coordenada:
-  Atribua a coordenada X desta start desta line à coordenada.
-  Se a coordenada X deste end desta line for maior do que a coordenada X desta start desta line, atribua a coordenada X deste end desta line à coordenada.
-
-Etapas necessárias para que se atribua o topo dessa line para uma coordenada:
-  Atribua a coordenada Y desta start desta line à coordenada.
-  Se a coordenada Y deste end desta line for menor do que a coordenada Y desta start desta line, atribua a coordenada Y deste end desta line à coordenada.
-
-Etapas necessárias para que se atribua masking tape below um figura:
-  Se a figura for inexistente, cancele.
-  Se a contagem destes vértices desta figura for menor do que 2, cancele.
-  Copie a figura para uma segunda figura.
-  Atribua a coordenada inferior desta tela à  coordenada y desse localização.
-  Atribua a coordenada X deste last desta figura à coordenada x desta localização.
-  Posponha a localização para a segunda figura.
-  Atribua a coordenada X deste first desta figura à coordenada x desta localização.
-  Posponha a localização para a segunda figura.
-  Posponha a localização deste first desta figura para a segunda figura.
-  Cubra internamente a segunda figura.
-  Destrua a segunda figura.
-
-Etapas necessárias para que se atribua o middle of uma line sobre uma localização;
-Etapas necessárias para que se centralize uma line sobre uma localização:
-  Obtenha um difference between a localização e o center desta line.
-  Arredonde a difference para o múltiplo imediato of o tpp.
-  Mova a line usando a difference.
 
 Etapas necessárias para que se atribua um número para um big-endian unsigned word:
   Atribua o número a um word.
@@ -8837,104 +7515,6 @@ Etapas necessárias para que se centralize um imagem sobre uma localização:
   Arredonde a difference para o múltiplo imediato of o tpp.
   Mova o imagem usando a difference.
 
-Etapas necessárias para que se atribua um polígono no middle of uma caixa;
-Etapas necessárias para que se centralize um polígono em uma caixa:
-  Se o polígono for inexistente, cancele.
-  Centralize o polígono na caixa (horizontalmente).
-  Centralize o polígono na caixa (verticalmente).
-
-Etapas necessárias para que se atribua um polígono no middle of o tela;
-Etapas necessárias para que se centralize um polígono sobre o tela:
-  Centralize o polígono na caixa desta tela.
-
-Etapas necessárias para que se atribua um polígono sobre uma localização;
-Etapas necessárias para que se centralize um polígono sobre uma localização:
-  Se o polígono for inexistente, cancele.
-  Obtenha um difference between a localização e o center desta caixa deste polígono.
-  Arredonde a difference para o múltiplo imediato of o tpp.
-  Mova o polígono usando a difference.
-
-Etapas necessárias para que se atribua a caixa desse polígono para uma caixa:
-  Se o polígono for inexistente, zero a caixa; exit.
-  Se os vértices deste polígono estiverem vazio, zero a caixa; exit.
-  Atribua o maior número e o maior número e o menor número e o menor número ao caixa.
-  Percorra. [o código abaixo]
-    Obtenha um vértice desde os vértices deste polígono.
-    Se o vértice for inexistente, pare.
-    Se a coordenada X deste vértice for menor do que a coordenada esquerda desta caixa, atribua a coordenada X deste vértice à coordenada esquerda desta caixa.
-    Se a coordenada Y deste vértice for menor do que a coordenada superior desta caixa, atribua a coordenada Y deste vértice à coordenada superior desta caixa.
-    Se a coordenada X deste vértice for maior do que a coordenada direita desta caixa, atribua a coordenada X deste vértice à coordenada direita desta caixa.
-    Se a coordenada Y deste vértice for maior do que a coordenada inferior desta caixa, atribua a coordenada Y deste vértice à coordenada inferior desta caixa.
-  Repita. [o código acima]
-
-Etapas necessárias para que se atribua o center desse polígono para uma localização:
-  Se o polígono for inexistente, limpe a localização; exit.
-  Atribua o center desta caixa deste polígono à localização.
-
-Etapas necessárias para que se atribua o center-base desse polígono para uma localização:
-  Se o polígono for inexistente, limpe a localização; exit.
-  Atribua o center-base  desta caixa deste polígono à localização.
-
-Etapas necessárias para que se atribua o center-top desse polígono para uma localização:
-  Se o polígono for inexistente, limpe a localização; exit.
-  Atribua o center-top desta caixa deste polígono à localização.
-
-Etapas necessárias para que se atribua a altura desse polígono para uma altura:
-  Se o polígono for inexistente, limpe o altura; exit.
-  Atribua a altura desta caixa deste polígono à altura.
-
-Etapas necessárias para que se atribua o canto inferior esquerdo desse polígono para uma localização:
-  Se o polígono for inexistente, limpe a localização; exit.
-  Atribua o canto inferior esquerdo desta caixa deste polígono à localização.
-
-Etapas necessárias para que se atribua o left-center desse polígono para uma localização:
-  Se o polígono for inexistente, limpe a localização; exit.
-  Atribua o left-center desta caixa deste polígono à localização.
-
-Etapas necessárias para que se atribua o canto superior esquerdo desse polígono para uma localização:
-  Se o polígono for inexistente, limpe a localização; exit.
-  Atribua o canto superior esquerdo desta caixa deste polígono à localização.
-
-Etapas necessárias para que se atribua o canto inferior direito desse polígono para uma localização:
-  Se o polígono for inexistente, limpe a localização; exit.
-  Atribua o canto inferior direito desta caixa deste polígono à localização.
-
-Etapas necessárias para que se atribua o right-center desse polígono para uma localização:
-  Se o polígono for inexistente, limpe a localização; exit.
-  Atribua o right-center desta caixa deste polígono à localização.
-
-Etapas necessárias para que se atribua o canto superior direito desse polígono para uma localização:
-  Se o polígono for inexistente, limpe a localização; exit.
-  Atribua o canto superior direito desta caixa deste polígono à localização.
-
-Etapas necessárias para que se atribua a largura desse polígono para uma largura:
-  Se o polígono for inexistente, limpe o largura; exit.
-  Atribua a largura desta caixa deste polígono à largura.
-
-Etapas necessárias para que se atribua o x-extent desse polígono para uma largura:
-  Se o polígono for inexistente, limpe o largura; exit.
-  Atribua o x-extent desta caixa deste polígono ao largura.
-
-Etapas necessárias para que se atribua o y-extent desse polígono para uma altura:
-  Se o polígono for inexistente, limpe o altura; exit.
-  Atribua o y-extent desta caixa deste polígono ao altura.
-
-Etapas necessárias para que se atribua um percorredor para uma segundo percorredor:
-  Copie pedaços desde o endereçamento deste percorredor para o endereçamento deste segundo percorredor pela magnitude deste percorredor.
-
-Etapas necessárias para que se atribua o right of uma caixa para uma vertical line;
-Etapas necessárias para que se atribua o right edge of uma caixa para uma vertical line;
-Etapas necessárias para que se atribua o right side of uma caixa para uma vertical line:
-  Atribua o canto superior direito desta caixa ao start desta vertical line.
-  Atribua o canto inferior direito desta caixa ao end desta vertical line.
-
-Etapas necessárias para que se atribua uma caixa arredondada para uma segunda caixa arredondada:
-  Atribua a coordenada esquerda desta caixa arredondada à coordenada esquerda desta segunda caixa arredondada.
-  Atribua a coordenada superior desta caixa arredondada à coordenada superior desta segunda caixa arredondada.
-  Atribua a coordenada direita desta caixa arredondada à coordenada direita desta segunda caixa arredondada.
-  Atribua a coordenada inferior desta caixa arredondada à coordenada inferior desta segunda caixa arredondada.
-  Atribua o raio desta caixa arredondada ao raio desta segunda caixa arredondada.
-
 Etapas necessárias para que se atribua o working string dessa row para um subtexto:
   Se a row for inexistente, limpe o subtexto; exit.
   Lance o subtexto sobre a string deste row.
@@ -8946,36 +7526,6 @@ Etapas necessárias para que se atribua uma seleção para uma segunda seleção:
 
 Etapas necessárias para que se atribua um sockaddr para uma segunda sockaddr:
   Copie pedaços desde o endereçamento deste sockaddr para o endereçamento desta segunda sockaddr pela magnitude deste sockaddr.
-
-Etapas necessárias para que se atribua uma localização e uma segunda localização e um raio para uma caixa arredondada:
-  Atribua a localização ao canto superior esquerdo desta caixa arredondada.
-  Atribua a segunda localização à canto inferior direito desta caixa arredondada.
-  Atribua o raio ao raio desta caixa arredondada.
-
-Etapas necessárias para que se atribua uma localização e uma segunda localização para uma caixa:
-  Atribua a localização ao canto superior esquerdo desta caixa.
-  Atribua a segunda localização ao canto inferior direito desta caixa.
-
-Etapas necessárias para que se atribua uma localização e uma segunda localização para uma elipse:
-  Atribua a localização ao canto superior esquerdo desta elipse.
-  Atribua a segunda localização ao canto inferior direito desta elipse.
-
-Etapas necessárias para que se atribua uma localização e uma segunda localização para uma line:
-  Atribua a localização ao start desta line.
-  Atribua a segunda localização ao end desta line.
-
-Etapas necessárias para que se atribua uma localização no middle of uma caixa;
-Etapas necessárias para que se centralize uma localização em uma caixa:
-  Centralize a localização na caixa (horizontalmente).
-  Centralize a localização na caixa (verticalmente).
-
-Etapas necessárias para que se atribua uma string para uma segunda string:
-  Atribua a quantidade de caracteres desta string a uma quantidade de caracteres armazenados.
-  Assign um endereço de memória usando a quantidade de caracteres armazenados.
-  Copie pedaços desde o first endereço de memória do pedaço desta string para o endereço de memória pelo quantidade de caracteres armazenados.
-  Unassign o first endereço de memória do pedaço desta segunda string.
-  Atribua o endereço de memória ao first endereço de memória do pedaço desta segunda string.
-  Atribua o first endereço de memória do pedaço desta segunda string mais a quantidade de caracteres armazenados menos 1 ao last endereço de memória do pedaço desta segunda string.
 
 Etapas necessárias para que se atribua uma string para uma letra:
   Atribua o conteúdo deste first endereço de memória do pedaço desta string à letra.
@@ -9177,24 +7727,6 @@ Etapas necessárias para que se atribua um segmento inicial sobre o stack:
   Atribua o segmento inicial à string desta stack entry.
   Anteponha o stack entry para o stack.
 
-Etapas necessárias para que se atribua o topo of uma caixa para um horizontal line;
-Etapas necessárias para que se atribua o topo edge of uma caixa para um horizontal line;
-Etapas necessárias para que se atribua o topo side of uma caixa para um horizontal line:
-  Atribua o canto superior esquerdo desta caixa ao start desta horizontal line.
-  Atribua o canto superior direito desta caixa ao end desta horizontal line.
-
-Etapas necessárias para que se atribua o topo of uma caixa para um line:
-  Make a line com o canto superior esquerdo desta caixa e o canto superior direito desta caixa.
-
-Uma coordenada X é uma coordenada.
-Uma coordenada Y é uma coordenada.
-
-Etapas necessárias para que se atribua uma coordenada X e uma coordenada Y e uma segunda coordenada X e uma segunda coordenada Y para uma line:
-  Atribua a coordenada X à coordenada x desta start desta line.
-  Atribua a coordenada Y à coordenada y desta start desta line.
-  Atribua a segunda coordenada X à coordenada x deste end desta line.
-  Atribua a segunda coordenada Y à coordenada y deste end desta line.
-
 Etapas necessárias para que se quit;
 Etapas necessárias para que se relinquish control:
   Desmanche a fila de eventos.
@@ -9219,47 +7751,11 @@ Etapas necessárias para que se quote uma string:
   Posponha as aspas duplas para a segunda string.
   Atribua a segunda string à string.
 
-Um recipient é uma string.
-
-\formas geométricas
-Um retângulo é um figura.
-Um skinny retângulo é um retângulo.
-Um diamond é um figura.
-Uma desert landscape é uma coisa.
-Um octagon é um figura.
-Um arco é um figura.
-Um circle é um figura.
-Uma fractal forest é uma coisa.
-Uma joke é uma coisa.
-Um triangle é um figura.
-Um heptagon é um figura. \ 7 lados
-Um nonagon é um figura. \ 9 lados
-Um decagon é um figura. \ 10 lados
-Um hexagon é um figura.
-Um koch curve é um figura.
-Uma twelve-sided figura é um figura.
-Um half circle é um figura.
-Uma half circle flower é um figura.
-Um quarter circle é um figura.
-Uma spiral é um figura.
-Uma leaf é um figura.
-Uma half leaf é um figura.
-Uma five pointed star é um figura.
-Um six pointed star é um figura.
-Um left crescent é um figura.
-Um right crescent é um figura.
-Um pinceltagon é um figura.
-Um solid é um figura.
-Uma star é uma coisa.
-Um cube é um figura.
-Uma yew tree é um figura.
-Uma tree é um figura.
-
 An refer é uma coisa com 
   Uma string e 
   Um endereço de memória (reference).
 
-Etapas necessárias para que se atualize o tela usando uma caixa:
+Etapas necessárias para que se atualize a tela usando uma caixa:
   Call "gdi32.dll" "BitBlt" com 
     O tela canvas 
     e A coordenada esquerda desta caixa 
@@ -9304,31 +7800,6 @@ Etapas necessárias para que se remove algum tipo de pedaços selecionados em um t
   Remove as rows of o text between o next desta row e a segunda row.
   Atribua o anchor desta seleção ao caret deste text.
   Desvencilhe-se de o text.
-
-Etapas necessárias para que se remove algum tipo de trailing barra invertida desde uma string:
-  Se a string estiver em branco, cancele.
-  Se o conteúdo deste last endereço de memória do pedaço desta string não for a barra invertida, cancele.
-  Remove o last pedaço desde a string.
-
-Etapas necessárias para que se remove algum tipo de trailing linefeed pedaço desde uma string:
-  Se a string estiver em branco, cancele.
-  Se o conteúdo deste last endereço de memória do pedaço desta string não for o linefeed pedaço, cancele.
-  Remove o last pedaço desde a string.
-
-Etapas necessárias para que se remove algum tipo de trailing return pedaço desde uma string:
-  Se a string estiver em branco, cancele.
-  Se o conteúdo deste last endereço de memória do pedaço desta string não for o return pedaço, cancele.
-  Remove o last pedaço desde a string.
-
-Etapas necessárias para que se remova pedaços de uma string usando um subtexto:
-  Se a string estiver em branco, cancele.
-  Se o subtexto estiver em branco, cancele.
-  Atribua o last endereço de memória do pedaço desta string menos o last endereço de memória do pedaço deste subtexto a uma quantidade de caracteres.
-  Atribua o last endereço de memória do pedaço deste subtexto mais 1 a um endereço de memória.
-  Copie pedaços desde o endereço de memória para o first endereço de memória do pedaço deste subtexto pelo quantidade de caracteres.
-  Atribua a quantidade de caracteres desta string menos a quantidade de caracteres deste subtexto a um new quantidade de caracteres.
-  Reassign o first endereço de memória do pedaço desta string usando o new quantidade de caracteres.
-  Atribua o first endereço de memória do pedaço desta string mais o new quantidade de caracteres menos 1 ao last endereço de memória do pedaço desta string.
 
 Etapas necessárias para que se remova pedaços de um text (backspace over um return):
   Se o text for inexistente, cancele.
@@ -9686,13 +8157,6 @@ Etapas necessárias para que se reverse uns coisas:
     Mova a coisa desde a segunda coisas para as coisas.
   Repita. [o código acima]
 
-Um espaço de cor RGB é um conjunto com
-  Um pedaço denominado espectro azul,
-  Um pedaço denominado espectro verde,
-  Um pedaço denominado espectro vermelho.
-
-Um endereço de memória RGB é um endereço de memória para um espaço de cor RGB.
-
 Um deslocamento vertical é um número.
 Um deslocamento horizontal é um número.
 
@@ -9812,8 +8276,6 @@ An row é uma coisa com
   Uma string.
 
 Um número da linha é um número.
-
-Um saturação é um número [0 para 1000].
 
 Etapas necessárias para que se save um canvas:
   Call "gdi32.dll" "SaveDC" com o canvas.
@@ -10418,18 +8880,6 @@ Etapas necessárias para que se lance um subtexto sobre o last pedaço of uma stri
   Se a string estiver em branco, cancele.
   Atribua o last endereço de memória do pedaço desta string ao first endereço de memória do pedaço deste subtexto.
 
-Etapas necessárias para que se lance um subtexto sobre uma string:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o subtexto
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ a string
-    \ atribua o first endereço de memória do pedaço desta string ao first do subtexto
-  Intel $8B8B00000000. \ mov ecx,[ebx+0] \ o first endereço de memória do pedaço desta string
-  Intel $898800000000. \ mov [eax+0],ecx \ o first do subtexto
-    \ atribua o last endereço de memória do pedaço desta string ao last endereço de memória do pedaço deste subtexto
-  Intel $8B8B04000000. \ mov ecx,[ebx+4] \ o last do string
-  Intel $898804000000. \ mov [eax+4],ecx \ o last endereço de memória do pedaço deste subtexto
-
-O tamanho de letra pequena é um tamanho da letra.
-
 Etapas necessárias para que se suavize um polígono:
   Se o polígono for inexistente, cancele.
   Se a contagem destes vértices deste polígono for menor do que 3, cancele.
@@ -10490,13 +8940,6 @@ Etapas necessárias para que se classifique uns rows:
     Se a string desta left row for maior do que a string desta right row, mova a right row desde as right rows para as rows; repita.
     Mova a left row desde as left rows para as rows.
   Repita. [o código acima]
-
-Etapas necessárias para que se providencie espaçamento adequado entre caracteres:
-  Vire right.
-  Mova 3 squares.
-  Vire left.
-
-O texto de espaço é uma string igual a " ".
 
 Etapas necessárias para que se split um trecho para uns dyads:
   Destrua o dyads.
@@ -11055,8 +9498,6 @@ Uma string é um conjunto com
   Um first endereço de memória do pedaço e 
   Um last endereço de memória do pedaço.
 
-An conjunto de texto é uma coisa com uma string.
-
 An string# é um número.
 
 Etapas necessárias para que se pinte uma caixa com uma cor:
@@ -11072,14 +9513,6 @@ Etapas necessárias para que se pinte uma caixa com uma cor:
   Pinte a largura desta caixa.
 
 Um subject é uma string.
-
-    \Um substring é uma string.
-Um subtexto é uma string.
-
-Etapas necessárias para que se permute uma cor com uma segunda cor:
-  Permute a matiz desta cor com a matiz desta segunda cor.
-  Permute a saturação desta cor com a saturação desta segunda cor.
-  Permute a luminosidade desta cor com a luminosidade desta segunda cor.
 
 Etapas necessárias para que se take off all o masking tape:
   Mostre tudo.
@@ -11313,61 +9746,12 @@ Etapas necessárias para que se mostre fora de uma caixa arredondada:
   Mostre fora de o hrgn.
   Destrua o hrgn.
 
-Etapas necessárias para que se remova aspas de uma string:
-  Lance um subtexto sobre a string.
-  Se o subtexto estiver em branco, pare.
-  Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for as aspas duplas, cancele.
-  Adicione 1 para o first endereço de memória do pedaço deste subtexto.
-  Percorra. [o código abaixo]
-    Se o subtexto estiver em branco, pare.
-    Se o first endereço de memória do pedaço deste subtexto é o last endereço de memória do pedaço deste subtexto, pare.
-    Posponha o conteúdo deste first endereço de memória do pedaço deste subtexto para uma segunda string.
-    Se o conteúdo deste first endereço de memória do pedaço deste subtexto for as aspas duplas, adicione 1 para o first endereço de memória do pedaço deste subtexto.
-    Adicione 1 para o first endereço de memória do pedaço deste subtexto.
-  Repita. [o código acima]
-  Atribua a segunda string à string.
-
 Etapas necessárias para que se update o tela;
 Etapas necessárias para que se mostre it;
 Etapas necessárias para que se mostre it all;
 Etapas necessárias para que se mostre reveal o canvas;
 Etapas necessárias para que se atualize o tela:
   Atualize o tela usando a caixa desta tela.
-
-Etapas necessárias para que se uppercase algum tipo de pedaços selecionados em um text:
-  Se o text for inexistente, cancele.
-  Percorra. [o código abaixo]
-    Obtenha uma row desde as rows deste text.
-    Se a row for inexistente, cancele.
-    Se a row of o text não estiver selecionado, repita.
-    Lance um subtexto sobre algum tipo de pedaços selecionados na row of o text.
-    Uppercase o subtexto.
-  Repita. [o código acima]
-
-Etapas necessárias para que se uppercase um pedaço:
-  Translate o pedaço using a tabela de caracteres maiúsculos ascii .
-
-Etapas necessárias para que se uppercase o character depois de um finger e atribua it para uma string:
-  Se o finger for inexistente, cancele.
-  Atribua o conteúdo deste finger à string.
-  Uppercase a string.
-
-Etapas necessárias para que se uppercase uma string:
-  Lance um subtexto sobre a string.
-  Percorra. [o código abaixo]
-    Se o subtexto estiver em branco, cancele.
-    Uppercase o conteúdo deste first endereço de memória do pedaço deste subtexto.
-    Adicione 1 para o first endereço de memória do pedaço deste subtexto.
-  Repita. [o código acima]
-
-Etapas necessárias para que se uppercase um text:
-  Se o text for inexistente, cancele.
-  Percorra. [o código abaixo]
-    Obtenha uma row desde as rows deste text.
-    Se a row for inexistente, pare.
-    Uppercase a string deste row.
-  Repita. [o código acima]
-  Wrap o text.
 
 An URL é uma string.
 
@@ -11378,39 +9762,11 @@ Um parâmetro de consulta é uma string.
 Um endereço de recurso é uma string.
 
 Um URL simplificada é um conjunto com
-  Um nome do protocolo,\lpszScheme? dwFlags? 
-  \exemplo: http / ftp / https / etc
-  Um nome de host, \lpszHostName ?  
-  \exemplo: www.google.com ou mail.stackoverflow.com
-  Um endereço de recurso, \lpszUrlPath?
-  \ exemplo: index.html ou /css/style.css ou questions/SubmitQuestion.aspx
-  Um parâmetro de consulta, \lpszExtraInfo?
-  \ exemplo: ?useLiveData=1&internal=0
-  Um número de porta. \ nPort?
-  \números de porca ocupam (geralmente) 16 bits
-
-Etapas necessárias para que se use uma cor:
-  Atribua a cor à cor deste context.
-
-Etapas necessárias para que se use o pincel grosso:
-  Atribua 3 ao grossura do pincel.
-
-Etapas necessárias para que se use um tamanho da letra:
-  Atribua o tamanho da letra à tamanho da letra deste context.
-
-Etapas necessárias para que se use um tamanho da letra of uns twips:
-  Atribua os twips ao tamanho da letra.
-  Atribua os twips à tamanho da letra deste context.
-
-Etapas necessárias para que se use um pincel:
-  Atribua o pincel ao pincel deste context.
-
-Etapas necessárias para que se use o skinny pincel:
-  Atribua 1 ao grossura do pincel.
-
-Etapas necessárias para que se use small pointy letras:
-    \ como opposed para "roundy letras" not yet implemented
-  Use small letras.
+  Um nome do protocolo,\lpszScheme? dwFlags? -> exemplo: http / ftp / https / etc
+  Um nome de host, \lpszHostName ?  -> exemplo: www.google.com ou mail.stackoverflow.com
+  Um endereço de recurso, \lpszUrlPath? -> exemplo: index.html ou /css/style.css ou questions/SubmitQuestion.aspx
+  Um parâmetro de consulta, \lpszExtraInfo? -> exemplo: ?useLiveData=1&internal=0
+  Um número de porta. \ nPort? -. números de porta ocupam (geralmente) 16 bits
 
 Um vértice array é um endereço de memória para um vértice array conjunto.
 
@@ -11441,18 +9797,6 @@ Etapas necessárias para que se aguarde por uns milliseconds:
   Se o milliseconds forem menor do que ou igual para 0, cancele.
   Call "kernel32.dll" "Sleep" com os milliseconds. \ https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-sleep
 
-Etapas necessárias para que se aguarde por uma tecla para come back para cima:
-  Se a tecla estiver sendo pressionada, repita.
-
-Etapas necessárias para que se aguarde por uma tecla para come para cima:
-  Se a tecla estiver sendo pressionada, repita.
-
-Etapas necessárias para que se aguarde por uma tecla para go para baixo:
-  Se a tecla não estiver sendo pressionada, repita.
-
-Etapas necessárias para que se aguarde sobre that there tecla com o ESC sobre it:
-  Aguarde pela tecla Esc.
-
 Etapas necessárias para que se aguarde until speaking é done:
   Se o talker for inexistente, cancele.
   Call o WaitUntilDone  desta vtable [SpVoice] deste talker com o talker e -1.
@@ -11469,11 +9813,7 @@ Um wave file é um endereço completo.
 
 Um wave é um texto hexadecimal.
 
-Uma wide string é uma string.
-
 Uma largura é uns twips.
-
-Um palavra é um subtexto.
 
 Etapas necessárias para que se wrap um text:
   Se o text for inexistente, cancele.
@@ -11605,230 +9945,6 @@ Etapas necessárias para que se escreva uns quoras em uma caixa: \descomentar pra
     Mova o quora caixa para baixo 24 px.
   Repita. [o código acima]
 
-Etapas necessárias para que se escreva uma string;
-Etapas necessárias para que se pinte uma string:
-  Isole a string.
-  Percorra. [o código abaixo]
-  Se a string estiver em branco, cancele.
-    Obtenha um pedaço desde a string.
-    Pinte o pedaço.
-    Se a string não estiver em branco, providencie espaçamento adequado entre caracteres.
-  Repita. [o código acima]
-
-Etapas necessárias para que se escreva uma string around um center localização at um raio;
-Etapas necessárias para que se escreva uma string usando um center localização e um raio;
-Etapas necessárias para que se pinte uma string around um center localização at um raio;
-Etapas necessárias para que se pinte uma string usando um center localização e um raio:
-  Isole a string.
-  Atribua 1 e a quantidade de caracteres desta string a uma fração.
-  Percorra. [o código abaixo]
-    Se a string estiver em branco, cancele.
-    Obtenha um pedaço desde a string.
-    Start at o center localização.
-    Mova o raio.
-    Pinte o pedaço.
-    Vire a fração.
-  Repita. [o código acima]
-
-Etapas necessárias para que se escreva uma string at uma localização com uma cor:
-    \Etapas necessárias para que se pinte uma string at uma localização com uma cor:
-  Start at a localização.
-  Atribua a cor à cor deste context.
-  Pinte a string.
-
-Etapas necessárias para que se escreva uma string sobre um console:
-  Se o console for inexistente, cancele.
-  Insira a string ao text deste console.
-  Insira o return pedaço ao text deste console.
-  Wrap o text deste console.
-  Role o text deste console para o caret.
-  Mostre o console.
-
-Etapas necessárias para que se escreva uma string para um console sem passar pra próxima linha;
-Etapas necessárias para que se escreva uma string sobre um console sem passar pra próxima linha:
-  Se o console for inexistente, cancele.
-  Insira a string ao text deste console.
-  Wrap o text deste console.
-  Role o text deste console para o caret.
-  Mostre o console.
-
-Etapas necessárias para que se escreva uma string em uma caixa:
-    \Etapas necessárias para que se pinte uma string em uma caixa:
-  Pinte a string na caixa com a cor deste context.
-
-Etapas necessárias para que se escreva uma string em uma caixa com uma cor:
-    \Etapas necessárias para que se pinte uma string em uma caixa com uma cor:
-  Atribua a cor à cor deste context.
-  Atribua o canto inferior esquerdo desta caixa à localização deste context.
-  Atribua a altura desta caixa dividido por 2 à tamanho da letra deste context.
-    \Atribua a altura desta caixa à tamanho da letra deste context.
-  Face north.
-  Mova a altura desta caixa dividido por 4. \ was 4 e still é now! ***
-  Pinte a string.
-
-Etapas necessárias para que se escreva uma string no middle of uma caixa;
-Etapas necessárias para que se pinte uma string no middle of uma caixa:
-  Atribua a tamanho da letra deste context dividido por 4 a um square size. \ was 4 ***
-    \ caracteres são two squares wide mais one square of intercharacter spacing. no spacing at o end.
-  Atribua a quantidade de caracteres desta string times o square size times 3 menos o square size a um largura.
-  Divida o largura por 2.
-  Start no middle of a caixa.
-  Mova para baixo a tamanho da letra deste context dividido por 2. \ was 2 ***
-  Mova left o largura.
-  Face north.
-  Pinte a string.
-
-Etapas necessárias para que se escreva uma string no middle of o tela:
-  Pinte a string no middle of a caixa desta tela.
-  Atualize o tela.
-
-Etapas necessárias para que se escreva uma string sobre um terminal:
-  Se o terminal for inexistente, cancele.
-  Adicione um quora para o terminal.
-  Atribua a string à string deste quora.
-  Atribua a output cor deste terminal à cor deste quora.
-  Mostre o terminal.
-
-Etapas necessárias para que se escreva uma string um raio away desde um center localização;
-Etapas necessárias para que se escreva uma string um raio around um center localização;
-Etapas necessárias para que se escreva uma string about um raio desde um center localização;
-Etapas necessárias para que se escreva uma string um raio desde um center localização;
-Etapas necessárias para que se pinte uma string um raio away desde um center localização;
-Etapas necessárias para que se pinte uma string um raio around um center localização;
-Etapas necessárias para que se pinte uma string about um raio desde um center localização;
-Etapas necessárias para que se pinte uma string um raio desde um center localização:
-  Pinte a string usando o center localização e o raio.
-
-Etapas necessárias para que se escreva uma string um raio away desde o middle of uma caixa;
-Etapas necessárias para que se escreva uma string um raio around o middle of uma caixa;
-Etapas necessárias para que se escreva uma string about um raio desde o middle of uma caixa;
-Etapas necessárias para que se escreva uma string um raio desde o middle of uma caixa;
-Etapas necessárias para que se pinte uma string um raio away desde o middle of uma caixa;
-Etapas necessárias para que se pinte uma string um raio around o middle of uma caixa;
-Etapas necessárias para que se pinte uma string about um raio desde o middle of uma caixa;
-Etapas necessárias para que se pinte uma string um raio desde o middle of uma caixa:
-  Pinte a string usando o center desta caixa e o raio.
-
-Etapas necessárias para que se escreva uma string para stdout:
-  Call "kernel32.dll" "WriteFile" com 
-    O stdout handle 
-    e O first endereço de memória do pedaço desta string 
-    e A quantidade de caracteres desta string 
-    e O endereçamento desse número 
-    e nil.
-
-Etapas necessárias para que se escreva uma string while turning uma fração of o way;
-Etapas necessárias para que se escreva uma string while turning uma fração of o way around;
-Etapas necessárias para que se escreva uma string while turning um fração;
-Etapas necessárias para que se pinte uma string while turning uma fração of o way;
-Etapas necessárias para que se pinte uma string while turning uma fração of o way around;
-Etapas necessárias para que se pinte uma string while turning um fração:
-  Isole a string.
-  Percorra. [o código abaixo]
-    Se a string estiver em branco, cancele.
-    Obtenha um pedaço desde a string.
-    Pinte o pedaço.
-    Vire a fração.
-    Se a string não estiver em branco, providencie espaçamento adequado entre caracteres.
-  Repita. [o código acima]
-
-Etapas necessárias para que se escreva uma string com uma cor;
-Etapas necessárias para que se pinte uma string com uma cor:
-  Atribua a cor à cor deste context.
-  Pinte a string.
-
-Etapas necessárias para que se escreva uma string com uma cor at o base of uma caixa;
-Etapas necessárias para que se pinte uma string com uma cor at o base of uma caixa:
-  Atribua a tamanho da letra deste context dividido por 4 a um square size. \ ***
-    \ caracteres são two squares wide mais one square of intercharacter spacing. no spacing at o end.
-  Atribua a quantidade de caracteres desta string times o square size times 3 menos o square size a um largura.
-  Divida o largura por 2.
-  Start no middle of o base of a caixa.
-  Mova para cima a tamanho da letra deste context times 2. \ was sem o times 2 ***
-  Mova left o largura.
-  Face north.
-  Pinte a string com a cor.
-
-Etapas necessárias para que se escreva uma string com uma cor at o topo of uma caixa;
-Etapas necessárias para que se pinte uma string com uma cor at o topo of uma caixa:
-  Atribua a tamanho da letra deste context dividido por 4 a um square size. \ ***
-    \ caracteres são two squares wide mais one square of intercharacter spacing. no spacing at o end.
-  Atribua a quantidade de caracteres desta string times o square size times 3 menos o square size a um largura.
-  Divida o largura por 2.
-  Start no middle of o topo of a caixa.
-  Mova para baixo a tamanho da letra deste context times 4. \ was times 2 ***
-  Mova left o largura.
-  Face north.
-  Pinte a string com a cor.
-
-Etapas necessárias para que se escreva uma string com uma cor no middle of uma caixa;
-Etapas necessárias para que se pinte uma string com uma cor no middle of uma caixa:
-  Atribua a tamanho da letra deste context dividido por 4 a um square size. \ was 4 ***
-    \ caracteres são two squares wide mais one square of intercharacter spacing. no spacing at o end.
-  Atribua a quantidade de caracteres desta string times o square size times 3 menos o square size a um largura.
-  Divida o largura por 2.
-  Start no middle of a caixa.
-  Mova para baixo a tamanho da letra deste context dividido por 2. \ was 2 ***
-  Mova left o largura.
-  Face north.
-  Pinte a string com a cor.
-
-Etapas necessárias para que se escreva uma string com uma cor um raio away desde um center localização;
-Etapas necessárias para que se escreva uma string com uma cor um raio around um center localização;
-Etapas necessárias para que se escreva uma string com uma cor about um raio desde um center localização;
-Etapas necessárias para que se escreva uma string com uma cor um raio desde um center localização;
-Etapas necessárias para que se pinte uma string com uma cor um raio away desde um center localização;
-Etapas necessárias para que se pinte uma string com uma cor um raio around um center localização;
-Etapas necessárias para que se pinte uma string com uma cor about um raio desde um center localização;
-Etapas necessárias para que se pinte uma string com uma cor um raio desde um center localização:
-  Atribua a cor à cor deste context.
-  Pinte a string usando o center localização e o raio.
-
-Etapas necessárias para que se escreva uma string com uma cor uns twips para baixo desde o topo of uma caixa;
-Etapas necessárias para que se escreva uma string com uma cor uns twips para baixo desde o topo center of uma caixa;
-Etapas necessárias para que se pinte uma string com uma cor uns twips para baixo desde o topo of uma caixa;
-Etapas necessárias para que se pinte uma string com uma cor uns twips para baixo desde o topo center of uma caixa:
-  Atribua a tamanho da letra deste context dividido por 4 a um square size. \ was 4 ***
-    \ caracteres são two squares wide mais one square of intercharacter spacing. no spacing at o end.
-  Atribua a quantidade de caracteres desta string times o square size times 3 menos o square size a um largura.
-  Divida o largura por 2.
-  Start no middle of o topo of a caixa.
-  Mova para baixo os twips.
-  Mova left o largura.
-  Face north.
-  Pinte a string com a cor.
-
-Etapas necessárias para que se escreva uma string com uma font e um size e uma cor e uma localização:
-  Atribua o size à altura desta font.
-  Atribua o largura desta string a um largura.
-  Atribua a localização e a localização a uma caixa.
-  Subtraia o largura dividido por 2 desde a coordenada esquerda desta caixa.
-  Adicione o largura dividido por 2 para a coordenada direita desta caixa.
-  Subtraia o size dividido por 2 desde a coordenada superior desta caixa.
-  Adicione o size dividido por 2 para a coordenada inferior desta caixa.
-  Pinte a string na caixa com a cor e o font e "center".
-  Atualize o tela.
-
-Etapas necessárias para que se use letras de tamanho grande;
-Etapas necessárias para que se escreva com letras grandes;
-Etapas necessárias para que se escreva com letras de tamanho grande;
-Etapas necessárias para que se use letras grandes:
-  Atribua o tamanho de letra grande ao tamanho da letra deste context.
-
-Etapas necessárias para que se use letras de tamanho médio;
-Etapas necessárias para que se use letras de tamanho regular;
-Etapas necessárias para que se escreva com letras de tamanho médio;
-Etapas necessárias para que se escreva com letras de tamanho normal;
-Etapas necessárias para que se escreva com letras de tamanho regular;
-Etapas necessárias para que se use letras de tamanho normal:
-  Atribua o tamanho de letra médio à tamanho da letra deste context.
-
-Etapas necessárias para que se use letras de tamanho pequeno;
-Etapas necessárias para que se escreva com letras pequenas;
-Etapas necessárias para que se escreva com letras de tamanho pequeno;
-Etapas necessárias para que se use letras pequenas:
-  Atribua o tamanho de letra pequena ao tamanho da letra deste context.
-
 Etapas necessárias para que se yield para windows:
   Se a fila de eventos não for vazio, cancele.
   Call "user32.dll" "GetMessageA" com 
@@ -11857,24 +9973,9 @@ Etapas necessárias para que se zero fill um número usando uma contagem e posponh
   Zero fill a segunda string usando a contagem.
   Posponha a segunda string para a string.
 
-Etapas necessárias para que se zero fill uma string usando uma contagem:
-  Se a quantidade de caracteres desta string for maior do que ou igual à contagem, cancele.
-  Anteponha o número zero para a string.
-  Repita. [o código acima]
-
 O zero line é um line. \ tracer
 
 O zero localização é uma localização.
-
-Um tabela de tradução é um texto hexadecimal.
-
-A tabela ascii é uma tabela de tradução igual a $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798999A9B9C9D9E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6D7D8D9DADBDCDDDEDFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF.
-
-A tabela de caracteres minúsculos s/ acento ascii é uma tabela de tradução igual a $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F406162636465666768696A6B6C6D6E6F707172737475767778797A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788899A8B9C8D9E8F909192939495969798999A9B9C9D9E79A0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBF616161616161E6636565656569696969F06E6F6F6F6F6FD7F87575757579FEDF616161616161E6636565656569696969F06E6F6F6F6F6FF7F87575757579FE79.
-
-A tabela de caracteres minúsculos ascii é uma tabela de tradução igual a $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F406162636465666768696A6B6C6D6E6F707172737475767778797A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788899A8B9C8D9E8F909192939495969798999A9B9C9D9EFFA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6D7F8F9FAFBFCFDFEDFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF.
-
-A tabela de caracteres maiúsculos ascii é uma tabela de tradução igual a $000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F604142434445464748494A4B4C4D4E4F505152535455565758595A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798998A9B8C9D8E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6D7D8D9DADBDCDDDEDFC0C1C2C3C4C5C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5D6F7D8D9DADBDCDDDE9F.
 
 O erro do fluxo de entrada/saída é uma string.
 

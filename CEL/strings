@@ -1,0 +1,379 @@
+Uma wide string é uma string.
+Um subtexto é uma string.
+Um recipient é uma string.
+Uma message é uma string.
+Uma palavra é um subtexto. \ não confundir com word
+An conjunto de texto é uma coisa com uma string.
+Um nome é uma string.
+O texto de espaço é uma string igual a " ".
+
+Etapas necessárias para que se mova um percorredor (catálogo dicionário léxico rules):
+  Skip algum tipo de leading noise no segmento final deste percorredor.
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Percorra. [o código abaixo]
+    Se o segmento final deste percorredor estiver em branco, cancele.
+    Avance o percorredor.
+    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for irrelevante, cancele.
+  Repita. [o código acima]
+
+Etapas necessárias para que se mova um percorredor (quoted string rules):
+  Avance o percorredor.
+  Se o segmento final deste percorredor estiver em branco, cancele.
+  Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor não for as aspas duplas, repita.
+  Se o first endereço de memória do pedaço deste segmento final deste percorredor for o last endereço de memória do pedaço deste segmento final deste percorredor, avance o percorredor; exit.
+  Avance o percorredor.
+  Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor não for as aspas duplas, cancele.
+  Repita. [o código acima]
+
+Etapas necessárias para que se mova um percorredor (spell checking rules):
+  Skip algum tipo de non-alfanumérico pedaços no segmento final deste percorredor.
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Percorra. [o código abaixo]
+    Se o segmento final deste percorredor estiver em branco, cancele.
+    Avance o percorredor.
+    Se o segmento final deste percorredor está sobre alguma espécie de contração, avance o percorredor; repita.
+    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor não for alfanumérico, cancele.
+  Repita. [o código acima]
+
+Etapas necessárias para que se mova um percorredor (text file rules):
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Percorra. [o código abaixo]
+    Se o segmento final deste percorredor estiver em branco, cancele.
+    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o return pedaço, avance o percorredor; break.
+    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o linefeed pedaço, avance o percorredor; exit. 
+  \ *dahn new to handle lines terminated por just linefeed
+    Avance o percorredor.
+  Repita. [o código acima]
+  Se o segmento final deste percorredor estiver em branco, cancele.
+  Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o linefeed pedaço, adicione 1 para o first endereço de memória do pedaço deste segmento final deste percorredor.
+
+Etapas necessárias para que se mova um percorredor (word wrapping rules):
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Se o segmento final deste percorredor estiver em branco, cancele.
+  Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o return pedaço, avance o percorredor; exit.
+  Percorra. [o código abaixo]
+    Se o segmento final deste percorredor estiver em branco, cancele.
+    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o return pedaço, cancele.
+    Se o segmento inicial deste percorredor estiver em branco, avance o percorredor; repita.
+    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for like o conteúdo deste last endereço de memória do pedaço deste segmento inicial deste percorredor, 
+      avance o percorredor; repita.
+
+Etapas necessárias para que se mova um percorredor usando uma caixa (word wrapping rules):
+  Skip algum tipo de leading linefeed pedaço no segmento final deste percorredor.
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Se o segmento final deste percorredor estiver em branco, cancele.
+  Lance um segundo percorredor sobre o percorredor.
+  Percorra. [o código abaixo]
+    Se o segmento final deste percorredor estiver em branco, cancele.
+    Mova o segundo percorredor (word wrapping rules).
+    Se o segmento inicial deste segundo percorredor estiver em branco, cancele.
+    Se o conteúdo deste first endereço de memória do pedaço deste segmento inicial deste segundo percorredor for o return pedaço, avance o percorredor; exit.
+    Se o conteúdo deste first endereço de memória do pedaço deste segmento inicial deste segundo percorredor for whitespace, avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor; repita.
+    Se o segmento inicial deste percorredor estiver em branco, avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor; repita.
+    Se o segmento inicial deste percorredor junto com o segmento inicial deste segundo percorredor forem wider do que a caixa, cancele.
+    Avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor.
+  Repita. [o código acima]
+
+Etapas necessárias para que se mova um percorredor usando um separator pedaço:
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Percorra. [o código abaixo]
+    Se o segmento final deste percorredor estiver em branco, cancele.
+    Se o conteúdo deste first endereço de memória do pedaço deste segmento final deste percorredor for o separator pedaço, adicione 1 para o first endereço de memória do pedaço deste segmento final deste percorredor; exit.
+    Avance o percorredor.
+  Repita. [o código acima]
+
+Etapas necessárias para que se escolha aleatoriamente um letra of o alphabet:
+  \ atribua letra A context? ***
+  Escolha aleatoriamente um número between 65 e 90.
+  Atribua o número à letra.
+
+Etapas necessárias para que se atribua um percorredor para um segundo percorredor:
+  Copie pedaços desde o endereçamento deste percorredor para o endereçamento deste segundo percorredor pela magnitude deste percorredor.
+
+Etapas necessárias para que se atribua um pedaço para uma string:
+  Atribua 1 a uma quantidade de caracteres.
+  Reassign o first endereço de memória do pedaço desta string usando a quantidade de caracteres.
+  Atribua o pedaço ao conteúdo deste first endereço de memória do pedaço desta string.
+  Atribua o first endereço de memória do pedaço desta string ao last endereço de memória do pedaço desta string.
+
+Etapas necessárias para que se atribua uma string para uma segunda string:
+  Atribua a quantidade de caracteres desta string a uma quantidade de caracteres armazenados.
+  Assign um endereço de memória usando a quantidade de caracteres armazenados.
+  Copie pedaços desde o first endereço de memória do pedaço desta string para o endereço de memória pelo quantidade de caracteres armazenados.
+  Unassign o first endereço de memória do pedaço desta segunda string.
+  Atribua o endereço de memória ao first endereço de memória do pedaço desta segunda string.
+  Atribua o first endereço de memória do pedaço desta segunda string mais a quantidade de caracteres armazenados menos 1 ao last endereço de memória do pedaço desta segunda string.
+
+Etapas necessárias para que se remova aspas de uma string:
+  Lance um subtexto sobre a string.
+  Se o subtexto estiver em branco, pare.
+  Se o conteúdo deste first endereço de memória do pedaço deste subtexto não for as aspas duplas, cancele.
+  Adicione 1 para o first endereço de memória do pedaço deste subtexto.
+  Percorra. [o código abaixo]
+    Se o subtexto estiver em branco, pare.
+    Se o first endereço de memória do pedaço deste subtexto é o last endereço de memória do pedaço deste subtexto, pare.
+    Posponha o conteúdo deste first endereço de memória do pedaço deste subtexto para uma segunda string.
+    Se o conteúdo deste first endereço de memória do pedaço deste subtexto for as aspas duplas, adicione 1 para o first endereço de memória do pedaço deste subtexto.
+    Adicione 1 para o first endereço de memória do pedaço deste subtexto.
+  Repita. [o código acima]
+  Atribua a segunda string à string.
+
+Etapas necessárias para que se uppercase algum tipo de pedaços selecionados em um text:
+  Se o text for inexistente, cancele.
+  Percorra. [o código abaixo]
+    Obtenha uma row desde as rows deste text.
+    Se a row for inexistente, cancele.
+    Se a row of o text não estiver selecionado, repita.
+    Lance um subtexto sobre algum tipo de pedaços selecionados na row of o text.
+    Uppercase o subtexto.
+  Repita. [o código acima]
+
+Etapas necessárias para que se uppercase um pedaço:
+  Translate o pedaço using o tabela de caracteres maiúsculos ascii .
+
+Etapas necessárias para que se anteponha um pedaço para uma string:
+  Atribua a quantidade de caracteres desta string a uma quantidade de caracteres armazenados.
+  Reassign o first endereço de memória do pedaço desta string usando a quantidade de caracteres desta string mais 1.
+  Copie pedaços desde o first endereço de memória do pedaço desta string para o first endereço de memória do pedaço desta string mais 1 pelo quantidade de caracteres armazenados.
+  Atribua o first endereço de memória do pedaço desta string mais a quantidade de caracteres armazenados ao last endereço de memória do pedaço desta string.
+  Atribua o pedaço ao conteúdo deste first endereço de memória do pedaço desta string.
+
+Etapas necessárias para que se anteponha uma string para uma segunda string:
+  Atribua a quantidade de caracteres desta segunda string mais a quantidade de caracteres desta string a uma quantidade de caracteres agrupados.
+  Reassign um endereço de memória usando a quantidade de caracteres agrupados.
+  Atribua o endereço de memória ao first endereço de memória do pedaço desse subtexto.
+  Copie pedaços desde o first endereço de memória do pedaço desta string para o first endereço de memória do pedaço deste subtexto pelo quantidade de caracteres desta string.
+  Adicione a quantidade de caracteres desta string para o first endereço de memória do pedaço deste subtexto.
+  Copie pedaços desde o first desta segunda string para o first endereço de memória do pedaço deste subtexto pelo quantidade de caracteres desta segunda string.
+  Unassign o first endereço de memória do pedaço desta segunda string. \ para que se esvazie extra allocates e copies
+  Atribua o endereço de memória ao first endereço de memória do pedaço desta segunda string.
+  Atribua o first endereço de memória do pedaço desta segunda string mais a quantidade de caracteres agrupados menos 1 ao last endereço de memória do pedaço desta segunda string.
+
+Etapas necessárias para que se uppercase o character depois de um finger e atribua it para uma string:
+  Se o finger for inexistente, cancele.
+  Atribua o conteúdo deste finger à string.
+  Uppercase a string.
+
+Etapas necessárias para que se uppercase uma string:
+  Lance um subtexto sobre a string.
+  Percorra. [o código abaixo]
+    Se o subtexto estiver em branco, cancele.
+    Uppercase o conteúdo deste first endereço de memória do pedaço deste subtexto.
+    Adicione 1 para o first endereço de memória do pedaço deste subtexto.
+  Repita. [o código acima]
+
+Etapas necessárias para que se uppercase um text:
+  Se o text for inexistente, cancele.
+  Percorra. [o código abaixo]
+    Obtenha uma row desde as rows deste text.
+    Se a row for inexistente, pare.
+    Uppercase a string deste row.
+  Repita. [o código acima]
+  Wrap o text.
+
+Etapas necessárias para que se escreva uma string;
+Etapas necessárias para que se pinte uma string:
+  Isole a string.
+  Percorra. [o código abaixo]
+  Se a string estiver em branco, cancele.
+    Obtenha um pedaço desde a string.
+    Pinte o pedaço.
+    Se a string não estiver em branco, providencie espaçamento adequado entre caracteres.
+  Repita. [o código acima]
+
+Etapas necessárias para que se escreva uma string around um center localização at um raio;
+Etapas necessárias para que se escreva uma string usando um center localização e um raio;
+Etapas necessárias para que se pinte uma string around um center localização at um raio;
+Etapas necessárias para que se pinte uma string usando um center localização e um raio:
+  Isole a string.
+  Atribua 1 e a quantidade de caracteres desta string a uma fração.
+  Percorra. [o código abaixo]
+    Se a string estiver em branco, cancele.
+    Obtenha um pedaço desde a string.
+    Start at o center localização.
+    Mova o raio.
+    Pinte o pedaço.
+    Vire a fração.
+  Repita. [o código acima]
+
+Etapas necessárias para que se escreva uma string at uma localização com uma cor:
+\Etapas necessárias para que se pinte uma string at uma localização com uma cor:
+  Start at a localização.
+  Atribua a cor à cor deste context.
+  Pinte a string.
+
+Etapas necessárias para que se escreva uma string sobre um console:
+  Se o console for inexistente, cancele.
+  Insira a string ao text deste console.
+  Insira o return pedaço ao text deste console.
+  Wrap o text deste console.
+  Role o text deste console para o caret.
+  Mostre o console.
+
+Etapas necessárias para que se escreva uma string para um console sem passar pra próxima linha;
+Etapas necessárias para que se escreva uma string sobre um console sem passar pra próxima linha:
+  Se o console for inexistente, cancele.
+  Insira a string ao text deste console.
+  Wrap o text deste console.
+  Role o text deste console para o caret.
+  Mostre o console.
+
+Etapas necessárias para que se escreva uma string em uma caixa:
+    \Etapas necessárias para que se pinte uma string em uma caixa:
+  Pinte a string na caixa com a cor deste context.
+
+Etapas necessárias para que se escreva uma string em uma caixa com uma cor:
+    \Etapas necessárias para que se pinte uma string em uma caixa com uma cor:
+  Atribua a cor à cor deste context.
+  Atribua o canto inferior esquerdo desta caixa à localização deste context.
+  Atribua a altura desta caixa dividido por 2 à tamanho da letra deste context.
+    \Atribua a altura desta caixa à tamanho da letra deste context.
+  Face north.
+  Mova a altura desta caixa dividido por 4. \ was 4 e still é now! ***
+  Pinte a string.
+
+Etapas necessárias para que se escreva uma string no middle of uma caixa;
+Etapas necessárias para que se pinte uma string no middle of uma caixa:
+  Atribua a tamanho da letra deste context dividido por 4 a um square size. \ was 4 ***
+    \ caracteres são two squares wide mais one square of intercharacter spacing. no spacing at o end.
+  Atribua a quantidade de caracteres desta string times o square size times 3 menos o square size a um largura.
+  Divida o largura por 2.
+  Start no middle of a caixa.
+  Mova para baixo a tamanho da letra deste context dividido por 2. \ was 2 ***
+  Mova left o largura.
+  Face north.
+  Pinte a string.
+
+Etapas necessárias para que se escreva uma string no middle of a tela:
+  Pinte a string no middle of a caixa desta tela.
+  Atualize o tela.
+
+Etapas necessárias para que se escreva uma string sobre um terminal:
+  Se o terminal for inexistente, cancele.
+  Adicione um quora para o terminal.
+  Atribua a string à string deste quora.
+  Atribua a output cor deste terminal à cor deste quora.
+  Mostre o terminal.
+
+Etapas necessárias para que se escreva uma string while turning uma fração of o way;
+Etapas necessárias para que se escreva uma string while turning uma fração of o way around;
+Etapas necessárias para que se escreva uma string while turning um fração;
+Etapas necessárias para que se pinte uma string while turning uma fração of o way;
+Etapas necessárias para que se pinte uma string while turning uma fração of o way around;
+Etapas necessárias para que se pinte uma string while turning um fração:
+  Isole a string.
+  Percorra. [o código abaixo]
+    Se a string estiver em branco, cancele.
+    Obtenha um pedaço desde a string.
+    Pinte o pedaço.
+    Vire a fração.
+    Se a string não estiver em branco, providencie espaçamento adequado entre caracteres.
+  Repita. [o código acima]
+
+Etapas necessárias para que se escreva uma string com uma cor;
+Etapas necessárias para que se pinte uma string com uma cor:
+  Atribua a cor à cor deste context.
+  Pinte a string.
+
+Etapas necessárias para que se escreva uma string com uma cor at o base of uma caixa;
+Etapas necessárias para que se pinte uma string com uma cor at o base of uma caixa:
+  Atribua a tamanho da letra deste context dividido por 4 a um square size. \ ***
+    \ caracteres são two squares wide mais one square of intercharacter spacing. no spacing at o end.
+  Atribua a quantidade de caracteres desta string times o square size times 3 menos o square size a um largura.
+  Divida o largura por 2.
+  Start no middle of o base of a caixa.
+  Mova para cima a tamanho da letra deste context times 2. \ was sem o times 2 ***
+  Mova left o largura.
+  Face north.
+  Pinte a string com a cor.
+
+Etapas necessárias para que se escreva uma string com uma cor at o topo of uma caixa;
+Etapas necessárias para que se pinte uma string com uma cor at o topo of uma caixa:
+  Atribua a tamanho da letra deste context dividido por 4 a um square size. \ ***
+    \ caracteres são two squares wide mais one square of intercharacter spacing. no spacing at o end.
+  Atribua a quantidade de caracteres desta string times o square size times 3 menos o square size a um largura.
+  Divida o largura por 2.
+  Start no middle of o topo of a caixa.
+  Mova para baixo a tamanho da letra deste context times 4. \ was times 2 ***
+  Mova left o largura.
+  Face north.
+  Pinte a string com a cor.
+
+Etapas necessárias para que se escreva uma string com uma cor no middle of uma caixa;
+Etapas necessárias para que se pinte uma string com uma cor no middle of uma caixa:
+  Atribua a tamanho da letra deste context dividido por 4 a um square size. \ was 4 ***
+    \ caracteres são two squares wide mais one square of intercharacter spacing. no spacing at o end.
+  Atribua a quantidade de caracteres desta string times o square size times 3 menos o square size a um largura.
+  Divida o largura por 2.
+  Start no middle of a caixa.
+  Mova para baixo a tamanho da letra deste context dividido por 2. \ was 2 ***
+  Mova left o largura.
+  Face north.
+  Pinte a string com a cor.
+
+Etapas necessárias para que se escreva uma string com uma cor um raio away desde um center localização;
+Etapas necessárias para que se escreva uma string com uma cor um raio around um center localização;
+Etapas necessárias para que se escreva uma string com uma cor about um raio desde um center localização;
+Etapas necessárias para que se escreva uma string com uma cor um raio desde um center localização;
+Etapas necessárias para que se pinte uma string com uma cor um raio away desde um center localização;
+Etapas necessárias para que se pinte uma string com uma cor um raio around um center localização;
+Etapas necessárias para que se pinte uma string com uma cor about um raio desde um center localização;
+Etapas necessárias para que se pinte uma string com uma cor um raio desde um center localização:
+  Atribua a cor à cor deste context.
+  Pinte a string usando o center localização e o raio.
+
+Etapas necessárias para que se escreva uma string com uma font e um size e uma cor e uma localização:
+  Atribua o size à altura desta font.
+  Atribua o largura desta string a um largura.
+  Atribua a localização e a localização a uma caixa.
+  Subtraia a largura dividido por 2 desde a coordenada esquerda desta caixa.
+  Adicione a largura dividido por 2 para a coordenada direita desta caixa.
+  Subtraia o size dividido por 2 desde a coordenada superior desta caixa.
+  Adicione o size dividido por 2 para a coordenada inferior desta caixa.
+  Pinte a string na caixa com a cor e o font e "center".
+  Atualize a tela.
+
+Etapas necessárias para que se escreva uma string com uma cor uns twips para baixo desde o topo of uma caixa;
+Etapas necessárias para que se escreva uma string com uma cor uns twips para baixo desde o topo center of uma caixa;
+Etapas necessárias para que se pinte uma string com uma cor uns twips para baixo desde o topo of uma caixa;
+Etapas necessárias para que se pinte uma string com uma cor uns twips para baixo desde o topo center of uma caixa:
+  Atribua a tamanho da letra deste context dividido por 4 a um square size. \ was 4 ***
+    \ caracteres são two squares wide mais one square of intercharacter spacing. no spacing at o end.
+  Atribua a quantidade de caracteres desta string times o square size times 3 menos o square size a um largura.
+  Divida o largura por 2.
+  Start no middle of o topo of a caixa.
+  Mova para baixo os twips.
+  Mova left o largura.
+  Face north.
+  Pinte a string com a cor.
+
+Etapas necessárias para que se zero fill uma string usando uma contagem:
+  Se a quantidade de caracteres desta string for maior do que ou igual à contagem, cancele.
+  Anteponha o número zero para a string.
+  Repita. [o código acima]
+  
+
+Etapas necessárias para que se remove algum tipo de trailing barra invertida desde uma string:
+  Se a string estiver em branco, cancele.
+  Se o conteúdo deste last endereço de memória do pedaço desta string não for a barra invertida, cancele.
+  Remove o last pedaço desde a string.
+
+Etapas necessárias para que se remove algum tipo de trailing linefeed pedaço desde uma string:
+  Se a string estiver em branco, cancele.
+  Se o conteúdo deste last endereço de memória do pedaço desta string não for o linefeed pedaço, cancele.
+  Remove o last pedaço desde a string.
+
+Etapas necessárias para que se remove algum tipo de trailing return pedaço desde uma string:
+  Se a string estiver em branco, cancele.
+  Se o conteúdo deste last endereço de memória do pedaço desta string não for o return pedaço, cancele.
+  Remove o last pedaço desde a string.
+
+Etapas necessárias para que se remova pedaços de uma string usando um subtexto:
+  Se a string estiver em branco, cancele.
+  Se o subtexto estiver em branco, cancele.
+  Atribua o last endereço de memória do pedaço desta string menos o last endereço de memória do pedaço deste subtexto a uma quantidade de caracteres.
+  Atribua o last endereço de memória do pedaço deste subtexto mais 1 a um endereço de memória.
+  Copie pedaços desde o endereço de memória para o first endereço de memória do pedaço deste subtexto pelo quantidade de caracteres.
+  Atribua a quantidade de caracteres desta string menos a quantidade de caracteres deste subtexto a um new quantidade de caracteres.
+  Reassign o first endereço de memória do pedaço desta string usando o new quantidade de caracteres.
+  Atribua o first endereço de memória do pedaço desta string mais o new quantidade de caracteres menos 1 ao last endereço de memória do pedaço desta string.
