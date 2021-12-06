@@ -17,11 +17,11 @@ Uma word é um conjunto com
   Um pedaço final [low byte].
 
 Um número é um conjunto com
-  Um first pedaço,
-  Um second pedaço,
+  Um primeiro pedaço,
+  Um segundo pedaço,
   Um terceiro pedaço,
   Um quarto pedaço, \ 4 bytes = 32 bits +
-  Uma low word at o first pedaço, \ 
+  Uma low word at o primeiro pedaço, \ 
   Uma high word at o terceiro pedaço.
 
 Uma máscara de disjunção exclusiva é uma mask.
@@ -308,12 +308,12 @@ Etapas para que se posicione um subtexto sobre uma string:
   Intel $49. \ dec ecx
   Intel $898804000000. \ mov [eax+4],ecx \ o last endereço de memória do pedaço deste subtexto
 
-Etapas para que se escolha aleatoriamente uns twips between uns min twips e uns segunda twips; \ são all these necessary? ***
-Etapas para que se escolha aleatoriamente um número between uns min twips e uns segunda twips;
-Etapas para que se escolha aleatoriamente um número between um min número e um max número;
+Etapas para que se escolha aleatoriamente uns twips entre uns min twips e uns segunda twips; \ são all these necessary? ***
+Etapas para que se escolha aleatoriamente um número entre uns min twips e uns segunda twips;
+Etapas para que se escolha aleatoriamente um número entre um min número e um max número;
 Etapas para que se escolha aleatoriamente um número desde um min número para um max número;
-Etapas para que se defina um número para something between um segundo número e um terceiro número;
-Etapas para que se escolha aleatoriamente um random número between um min número e um max número:
+Etapas para que se defina um número para something entre um segundo número e um terceiro número;
+Etapas para que se escolha aleatoriamente um número aleatório entre um min número e um max número:
   Atribua o endereçamento deste seed para EAX.
     \ atribua address of randseed A ecx
   Intel $8BC8. \ mov ecx,eax
@@ -332,9 +332,9 @@ Etapas para que se escolha aleatoriamente um random número between um min número
     \ adicione o min para an-zero base o número
   Intel $0313. \ adicione edx,[ebx] o min
     \ store o result
-  Intel $8B9D08000000. \ mov ebx,[ebp+08] \ o random número
+  Intel $8B9D08000000. \ mov ebx,[ebp+08] \ o número aleatório
   Intel $8913. \ mov [ebx],edx
-  Atribua o random número ao número deste context.
+  Atribua o número aleatório ao número deste context.
 
 Etapas para que se multiplique um endereço de memória por um número;
 Etapas para que se multiplique um número por um segundo número:
@@ -796,15 +796,15 @@ Etapas para que se divida um número por um segundo número:
   Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
   Intel $8903. \ mov [ebx],eax
 
-Etapas para que se divida um endereço de memória por um número usando um quotient e um resto;
-Etapas para que se divida um número por um segundo número usando um quotient e um resto:
-  Se o segundo número for 0, atribua o maior número ao quotient; atribua 0 ao resto; exit.
+Etapas para que se divida um endereço de memória por um número usando um quociente e um resto;
+Etapas para que se divida um número por um segundo número usando um quociente e um resto:
+  Se o segundo número for 0, atribua o maior número ao quociente; atribua 0 ao resto; exit.
   Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
   Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
   Intel $8B00. \ mov eax,[eax]
   Intel $99. \ cdq
   Intel $F73B. \ idiv [ebx] \ means idiv eax,[ebx] but é weird form
-  Intel $8B9D10000000. \ mov ebx,[ebp+16] \ o quotient
+  Intel $8B9D10000000. \ mov ebx,[ebp+16] \ o quociente
   Intel $8903. \ mov [ebx],eax
   Intel $8B9D14000000. \ mov ebx,[ebp+20] \ o resto
   Intel $8913. \ mov [ebx],edx
