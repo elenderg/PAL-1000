@@ -1,12 +1,12 @@
 O número identificador do modo de dispositivo da impressora é um número identificador.
 O printer canvas é um canvas.
-
+A seta do mouse é um cursor.
 
 Etapas para que se read stdin para um trecho:
   Limpe o erro do fluxo de entrada/saída.
   Limpe o trecho.
   Encontre uma string usando o environment variáveis e "CONTENT_LENGTH".
-  Se a string estiver em branco, atribua "Ocorreu um erro na hora de obter o conteúdo de comprimento CONTENT_LENGTH." ao erro do fluxo de entrada/saída; exit.
+  Se a string estiver em branco, atribua "Ocorreu um erro na hora de obter o conteúdo de comprimento CONTENT_LENGTH." ao erro do fluxo de entrada/saída; volte.
   Converta a string a uma quantidade de caracteres.
   Se a quantidade de caracteres for 0, cancele.
   Reassign o first endereço de memória do pedaço deste trecho usando a quantidade de caracteres.
@@ -16,7 +16,7 @@ Etapas para que se read stdin para um trecho:
     e A quantidade de caracteres 
     e O endereçamento desse número 
     e nil.
-  Se o número não for a quantidade de caracteres, atribua "Erro ao ler dados do fluxo de entrada padrão stdin." ao erro do fluxo de entrada/saída; limpe o trecho; exit.
+  Se o número não for a quantidade de caracteres, atribua "Erro ao ler dados do fluxo de entrada padrão stdin." ao erro do fluxo de entrada/saída; limpe o trecho; volte.
   Atribua o first endereço de memória do pedaço deste trecho mais a quantidade de caracteres menos 1 ao last endereço de memória do pedaço deste trecho.
 
 Etapas para que se read uma string desde um console:
@@ -37,7 +37,7 @@ Etapas para que se read um endereço completo para um trecho:
   Limpe o erro do fluxo de entrada/saída.
   Isole o endereço completo.
   Modifique através do caractere NUL o endereço completo.
-  Se o endereço completo não estiver no sistema de arquivos, atribua "O Arquivo: '" junto com o endereço completo seguido de "' não existe." ao erro do fluxo de entrada/saída; exit.
+  Se o endereço completo não estiver no sistema de arquivos, atribua "O Arquivo: '" junto com o endereço completo seguido de "' não existe." ao erro do fluxo de entrada/saída; volte.
   \ abra o endereço completo para read-write mode.
   Call "kernel32.dll" "CreateFileA" com 
     O first deste endereço completo 
@@ -48,7 +48,7 @@ Etapas para que se read um endereço completo para um trecho:
     e 0 
     e 0 
     devolvendo um número identificador.
-  Se o número identificador for -1 [INVALID_HANDLE_VALUE], atribua "Ocorreu um erro ao tentar abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
+  Se o número identificador for -1 [INVALID_HANDLE_VALUE], atribua "Ocorreu um erro ao tentar abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; volte.
   Call "kernel32.dll" "GetFileSize" com 
     O número identificador 
     e nil 
@@ -69,11 +69,11 @@ Etapas para que se read um endereço completo para um trecho:
 Etapas para que se carregue um endereço completo para um imagem;
 Etapas para que se read um endereço completo para um imagem:
   Read o endereço completo a um trecho.
-  Se o erro do fluxo de entrada/saída não estiver em branco, esvazie a imagem; exit.
+  Se o erro do fluxo de entrada/saída não estiver em branco, esvazie a imagem; volte.
   Crie a imagem usando o trecho.
 
 Etapas para que se read uma reply desde um terminal:
-  Se o terminal for inexistente, limpe o reply; exit.
+  Se o terminal for inexistente, limpe o reply; volte.
   Desmanche all events.
   Limpe o reply deste terminal.
   Adicione um quora para o terminal.
@@ -120,8 +120,8 @@ Etapas para que se read um file para um trecho:
     e O size 
     e O endereçamento desse número 
     e 0 
-    devolvendo um result número.
-  Se o result número for 0, atribua "Ocorreu um erro ao tentar ler o arquivo." ao erro do fluxo de entrada/saída; exit.
+    devolvendo um número resultante.
+  Se o número resultante for 0, atribua "Ocorreu um erro ao tentar ler o arquivo." ao erro do fluxo de entrada/saída; volte.
 
 Etapas para que se read a Bíblia:
   Se a Bíblia não for inexistente, cancele.
@@ -129,7 +129,7 @@ Etapas para que se read a Bíblia:
   Percorra. [o código abaixo]
     Se o endereço da pasta estiver em branco, cancele.
     Atribua o endereço da pasta seguido de "Bíblia.txt" a um endereço completo.
-    Se o endereço completo estiver no sistema de arquivos, read a Bíblia usando o endereço completo; exit.
+    Se o endereço completo estiver no sistema de arquivos, read a Bíblia usando o endereço completo; volte.
     Extraia o endereço da pasta desde o endereço da pasta.
   Repita. [o código acima]
 
@@ -150,11 +150,11 @@ Etapas para que se read a Bíblia usando um endereço completo:
 
 Etapas para que se read um pedaço desde um console:
   Read uma string desde o console.
-  Se a string estiver em branco, atribua o null pedaço ao pedaço; exit.
+  Se a string estiver em branco, atribua o null pedaço ao pedaço; volte.
   Atribua o conteúdo deste first endereço de memória do pedaço desta string ao pedaço.
 
 Etapas para que se read um console para uma string:
-  Se o console for inexistente, limpe a string; exit.
+  Se o console for inexistente, limpe a string; volte.
   Desmanche all events.
   Limpe o reply deste console.
   Mostre o console.
@@ -185,7 +185,7 @@ Etapas para que se abra um file usando um endereço completo e uns milliseconds:
 Etapas para que se abra um file usando um endereço completo:
   Limpe o erro do fluxo de entrada/saída.
   Extraia um endereço da pasta desde o endereço completo.
-  Se o endereço da pasta não estiver no sistema de arquivos, atribua "A Pasta: " junto com o endereço da pasta seguido de " não existe." ao erro do fluxo de entrada/saída; exit.
+  Se o endereço da pasta não estiver no sistema de arquivos, atribua "A Pasta: " junto com o endereço da pasta seguido de " não existe." ao erro do fluxo de entrada/saída; volte.
   Ligue o endereço completo para read-write mode.
   Isole o endereço completo.
   Modifique através do caractere NUL o endereço completo.
@@ -198,7 +198,7 @@ Etapas para que se abra um file usando um endereço completo:
     e -2147483520 [FILE_FLAG_WRITE_THROUGH ou FILE_ATTRIBUTE_NORMAL] 
     e 0 
     devolvendo o file.
-  Se o file for -1 [INVALID_HANDLE_VALUE], atribua "Erro ao abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; exit.
+  Se o file for -1 [INVALID_HANDLE_VALUE], atribua "Erro ao abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; volte.
 
 O module é um conjunto com
   Um número identificador,

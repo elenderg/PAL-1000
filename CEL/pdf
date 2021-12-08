@@ -244,7 +244,7 @@ Etapas para que se end um sheet (pdf style):
   End o sheet (pdf style - finish o current contents).
 
 Etapas para que se end printing:
-  Se o documento detector deste pdf state estiver ativo, end printing (pdf style); exit.
+  Se o documento detector deste pdf state estiver ativo, end printing (pdf style); volte.
   Call "gdi32.dll" "EndDoc" com o printer canvas.
   Finalize o printer canvas.
 
@@ -390,7 +390,7 @@ Etapas para que se pinte uma string at uma localização com uma cor e uma font (p
   Output "BT".
   Output "/" junto com o nome da fonte desta definition seguido de " " junto com a adjusted altura desta font seguido de " Tf".
     \ adicione a adjusted altura desta font menos o internal leading desta font info para o y do localização. \ just plain wrong
-  Adicione o ascent desta font info para a coordenada Y desta localização. \ fix por line above
+  Adicione o ascent desta font info para a coordenada Y desta localização. \ fix por linha reta above
   Output a localização sem passar pra próxima linha.
   Output "Td".
   Output "[" sem passar pra próxima linha.
@@ -403,10 +403,10 @@ Etapas para que se pinte uma string at uma localização com uma cor e uma font (p
   Destrua o font info.
 
 Etapas para que se pinte uma string at uma localização com uma cor e um font:
-  Se a página detector deste pdf state estiver ativo, pinte a string at a localização com a cor e o font (pdf style); exit.
+  Se a página detector deste pdf state estiver ativo, pinte a string at a localização com a cor e o font (pdf style); volte.
   Defina o código da cor of o quadro atual usando a cor.
   Crie o número da fonte of o quadro atual usando o font.
-  Ajuste spacing usando a string.
+  Ajuste espaçamento  da fonte usando a string.
   Atribua o first endereço de memória do pedaço desta string ao first endereço de memória do pedaço desse subtexto.
   Atribua o first endereço de memória do pedaço deste subtexto mais o text cutoff menos 1 ao last endereço de memória do pedaço deste subtexto.
   Isole a localização.
@@ -427,7 +427,7 @@ Etapas para que se pinte uma string at uma localização com uma cor e um font:
 
 Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de preenchimento (pdf style):
   Se a cor da borda e a cor de preenchimento são clear, cancele.
-  Se o raio desta caixa arredondada for 0, pinte a caixa arredondada como uma caixa com a cor da borda e a cor de preenchimento (pdf style); exit.
+  Se o raio desta caixa arredondada for 0, pinte a caixa arredondada como uma caixa com a cor da borda e a cor de preenchimento (pdf style); volte.
   Atribua o raio desta caixa arredondada a um raio.
   Atribua o raio times 2 a um offset.
   Atribua a caixa arredondada a uma caixa.
@@ -454,11 +454,11 @@ Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
   Output stroke e fill usando a cor da borda e a cor de preenchimento.
 
 Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de preenchimento:
-  Se a página detector deste pdf state estiver ativo, pinte a caixa arredondada com a cor da borda e a cor de preenchimento (pdf style); exit.
+  Se a página detector deste pdf state estiver ativo, pinte a caixa arredondada com a cor da borda e a cor de preenchimento (pdf style); volte.
   Isole a caixa arredondada.
   Crie o hpen of o quadro atual usando a cor da borda.
   Crie o hbrush of o quadro atual usando a cor de preenchimento.
-  Se a cor da borda estiver clear, adicione o tpp para o canto superior esquerdo desta caixa arredondada.
+  Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta caixa arredondada.
   Atribua o raio desta caixa arredondada times 2 a um diameter número.
   Call "gdi32.dll" "RoundRect" com 
     O quadro atual 
@@ -471,7 +471,7 @@ Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
   Destrua o hpen of o quadro atual.
 
 Etapas para que se pinte um polígono com uma cor da borda e uma cor de preenchimento:
-  Se a página detector deste pdf state estiver ativo, pinte o polígono com a cor da borda e a cor de preenchimento (pdf style); exit.
+  Se a página detector deste pdf state estiver ativo, pinte o polígono com a cor da borda e a cor de preenchimento (pdf style); volte.
   Se o polígono for inexistente, cancele.
   Pinte o polígono com a cor de preenchimento (fill only).
   Pinte o polígono com a cor da borda (border only).
@@ -492,24 +492,24 @@ Etapas para que se pinte um polígono com uma cor da borda e uma cor de preenchim
 
 Etapas para que se pinte um imagem (pdf style):
   Se o imagem for inexistente, cancele.
-  Atribua a coordenada esquerda desta caixa desta imagem menos a coordenada esquerda desta caixa intacta desta imagem dividido pelo tpp a um número X.
-  Atribua a coordenada superior desta caixa desta imagem menos a coordenada superior desta caixa intacta desta imagem dividido pelo tpp a um número Y.
-  Atribua a largura desta caixa desta imagem dividido pelo tpp a um largura.
-  Atribua a altura desta caixa desta imagem dividido pelo tpp a uma altura.
+  Atribua a coordenada esquerda desta caixa desta imagem menos a coordenada esquerda desta caixa intacta desta imagem dividido pelo quantidade de twips/pixel a um número X.
+  Atribua a coordenada superior desta caixa desta imagem menos a coordenada superior desta caixa intacta desta imagem dividido pelo quantidade de twips/pixel a um número Y.
+  Atribua a largura desta caixa desta imagem dividido pelo quantidade de twips/pixel a um largura.
+  Atribua a altura desta caixa desta imagem dividido pelo quantidade de twips/pixel a uma altura.
   Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com 
                                        A largura e 
                                        A altura 
                                        e 0 
                                        e 137224 [PixelFormat24bppRGB] 
                                        e 0 
-                                       e O endereçamento desse gpbitmap.
+                                       e O endereçamento desse gpBitmap.
   Call "gdiplus.dll" "GdipGetImageGraphicsContext" com 
-    O gpbitmap 
+    O gpBitmap 
     e O endereçamento desse gpgraphic.
   Se o grayscale detector desta imagem estiver ativo, crie um GpImageAttributes (grayscale).
   Call "gdiplus.dll" "GdipDrawImageRectRectI" com 
                                                                                                        O gpgraphic 
-                                                                                                       e O gpbitmap desta imagem 
+                                                                                                       e O gpBitmap desta imagem 
                                                                                                        e 0 
                                                                                                        e 0 
                                                                                                        e A largura 
@@ -525,12 +525,12 @@ Etapas para que se pinte um imagem (pdf style):
   Se o gpimageattributes não for inexistente, destrua o gpimageattributes.
   Call "gdiplus.dll" "GdipDeleteGraphics" com 
     O gpgraphic.
-  Pinte o gpbitmap at o canto superior esquerdo desta caixa desta imagem (pdf style).
+  Pinte o gpBitmap at o canto superior esquerdo desta caixa desta imagem (pdf style).
   Call "gdiplus.dll" "GdipDisposeImage" com 
-    O gpbitmap.
+    O gpBitmap.
 
 Etapas para que se pinte um imagem:
-  Se a página detector deste pdf state estiver ativo, pinte a imagem (pdf style); exit.
+  Se a página detector deste pdf state estiver ativo, pinte a imagem (pdf style); volte.
   Se o imagem for inexistente, cancele.
   Save o quadro atual.
   Cubra externamente a caixa desta imagem.
@@ -545,35 +545,35 @@ Etapas para que se pinte um imagem:
     O gpgraphic.
   Restore o quadro atual.
 
-Etapas para que se pinte uma line com uma cor (pdf style):
+Etapas para que se pinte uma linha reta com uma cor (pdf style):
   Se a cor estiver clear, cancele.
   Output setcolor usando a cor e a cor preta.
-  Output moveto usando o start desta line.
-  Output lineto usando o end desta line.
+  Output moveto usando o localização inicial desta linha reta.
+  Output lineto usando o localização final desta linha reta.
   Output stroke e fill usando a cor e a cor preta.
 
-Etapas para que se pinte uma line com uma cor:
-  Se a página detector deste pdf state estiver ativo, pinte a line com a cor (pdf style); exit.
+Etapas para que se pinte uma linha reta com uma cor:
+  Se a página detector deste pdf state estiver ativo, pinte a linha reta com a cor (pdf style); volte.
   Crie o hpen of o quadro atual usando a cor.
   Call "gdi32.dll" "MoveToEx" com 
     O quadro atual 
-    e A coordenada X desta start desta line 
-    e A coordenada Y desta start desta line 
+    e A coordenada X desta localização inicial desta linha reta 
+    e A coordenada Y desta localização inicial desta linha reta 
     e nil.
   Call "gdi32.dll" "LineTo" com 
     O quadro atual 
-    e A coordenada X deste end desta line 
-    e A coordenada Y deste end desta line.
+    e A coordenada X desta localização final desta linha reta 
+    e A coordenada Y desta localização final desta linha reta.
   Converta a cor para um código da cor.
   Call "gdi32.dll" "SetPixelV" com 
     O quadro atual 
-    e A coordenada X deste end desta line 
-    e A coordenada Y deste end desta line 
+    e A coordenada X desta localização final desta linha reta 
+    e A coordenada Y desta localização final desta linha reta 
     e O código da cor.
   Destrua o hpen of o quadro atual.
 
-Etapas para que se pinte um gpbitmap at uma localização (pdf style):
-  Se o gpbitmap for inexistente, cancele.
+Etapas para que se pinte um gpBitmap at uma localização (pdf style):
+  Se o gpBitmap for inexistente, cancele.
     \ adicione xobject
   Adicione um xobject pdf object usando "image object".
   Atribua "I" junto com o número deste xobject a um nome.
@@ -587,10 +587,10 @@ Etapas para que se pinte um gpbitmap at uma localização (pdf style):
   Posponha "/Type /XObject" para o xobject.
   Posponha "/Subtype /Image" para o xobject.
   Posponha "/ColorSpace /DeviceRGB" para o xobject.
-  Posponha "/Width " junto com o largura deste gpbitmap para o xobject.
-  Posponha "/Height " junto com a altura deste gpbitmap para o xobject.
+  Posponha "/Width " junto com o largura deste gpBitmap para o xobject.
+  Posponha "/Height " junto com a altura deste gpBitmap para o xobject.
   Posponha "/BitsPerComponent 8" para o xobject.
-  Converta o gpbitmap para um trecho (pdf style).
+  Converta o gpBitmap para um trecho (pdf style).
   Converta o trecho para um cifra hexadecimal.
   Posponha "/Filter /ASCIIHexDecode" para o xobject.
   Posponha "/Length " junto com a quantidade de caracteres deste cifra hexadecimal para o xobject.
@@ -600,8 +600,8 @@ Etapas para que se pinte um gpbitmap at uma localização (pdf style):
   Posponha "endstream" para o xobject.
   Posponha "endobj" para o xobject.
     \ pinte o image no current contents
-  Atribua o largura deste gpbitmap times o tpp a um largura.
-  Atribua a altura deste gpbitmap times o tpp a uma altura.
+  Atribua o largura deste gpBitmap times a quantidade de twips/pixel a um largura.
+  Atribua a altura deste gpBitmap times a quantidade de twips/pixel a uma altura.
   Atribua a coordenada X desta localização a um número X.
   Atribua a current altura deste pdf state menos a coordenada Y desta localização menos o altura a um número Y.
   Output "q".
@@ -622,11 +622,11 @@ Etapas para que se pinte um elipse com uma cor da borda e uma cor de preenchimen
   Output stroke e fill usando a cor da borda e a cor de preenchimento.
 
 Etapas para que se pinte um elipse com uma cor da borda e uma cor de preenchimento:
-  Se a página detector deste pdf state estiver ativo, pinte a elipse com a cor da borda e a cor de preenchimento (pdf style); exit.
+  Se a página detector deste pdf state estiver ativo, pinte a elipse com a cor da borda e a cor de preenchimento (pdf style); volte.
   Isole a elipse.
   Crie o hpen of o quadro atual usando a cor da borda.
   Crie o hbrush of o quadro atual usando a cor de preenchimento.
-  Se a cor da borda estiver clear, adicione o tpp para o canto superior esquerdo desta elipse.
+  Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta elipse.
   Call "gdi32.dll" "Ellipse" com 
     O quadro atual 
     e A coordenada esquerda desta elipse 
@@ -646,11 +646,11 @@ Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimen
   Output stroke e fill usando a cor da borda e a cor de preenchimento.
 
 Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimento:
-  Se a página detector deste pdf state estiver ativo, pinte a caixa com a cor da borda e a cor de preenchimento (pdf style); exit.
+  Se a página detector deste pdf state estiver ativo, pinte a caixa com a cor da borda e a cor de preenchimento (pdf style); volte.
   Isole a caixa.
   Crie o hpen of o quadro atual usando a cor da borda.
   Crie o hbrush of o quadro atual usando a cor de preenchimento.
-  Se a cor da borda estiver clear, adicione o tpp para o canto superior esquerdo desta caixa.
+  Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta caixa.
   Call "gdi32.dll" "Rectangle" com 
     O quadro atual 
     e A coordenada esquerda desta caixa 
@@ -709,10 +709,10 @@ Etapas para que se converta um número para pdf em units usando um emsquare númer
   Multiplique o número pelo emsquare / a adjusted altura desta font.
   Multiplique o número por 1000 / o emsquare.
 
-Etapas para que se converta um gpbitmap para um trecho (pdf style):
+Etapas para que se converta um gpBitmap para um trecho (pdf style):
   Limpe o trecho.
-  Se o gpbitmap for inexistente, cancele.
-  Lock o gpbitmap usando um bitmapdata (24-bit espaço de cor RGB).
+  Se o gpBitmap for inexistente, cancele.
+  Lock o gpBitmap usando um bitmapdata (24-bit espaço de cor RGB).
   Atribua 1 a um número da linha.
   Atribua 1 a um column#.
   Percorra. [o código abaixo]
@@ -724,14 +724,14 @@ Etapas para que se converta um gpbitmap para um trecho (pdf style):
     Posponha o espectro azul deste endereço de memória RGB para o trecho.
     Adicione 1 para o column#.
   Repita. [o código acima]
-  Unlock o gpbitmap usando o bitmapdata.
+  Unlock o gpBitmap usando o bitmapdata.
 
 Etapas para que se converta umas font larguras para pdf em units:
-  Obtenha um outlinetextmetric usando a font destas font larguras.
+  Obtenha um OutlineTextmetric usando a font destas font larguras.
   Atribua os data desta font larguras a um endereço numérico.
   Percorra. [o código abaixo]
     Se um contador estiver past a contagem destas font larguras, pare.
-    Converta o conteúdo deste endereço numérico para pdf em units usando o otmemsquare deste outlinetextmetric e a font destas font larguras.
+    Converta o conteúdo deste endereço numérico para pdf em units usando o otmemsquare deste OutlineTextmetric e a font destas font larguras.
     Adicione a magnitude desse número para o endereço numérico.
   Repita. [o código acima]
 
@@ -750,38 +750,38 @@ Etapas para que se converta uma font info para pdf em units:
   Permute a coordenada superior desta font caixa desta font info com a coordenada inferior desta font caixa desta font info.
   Converta as font larguras desta font info para pdf em units.
 
-Etapas para que se begin um sheet usando uma caixa e um title string (pdf style - start o current página):
+Etapas para que se inicie um sheet usando uma caixa e um title string (pdf style - start o current página):
   Adicione o current página deste pdf state usando "page".
   Posponha o número desta current página deste pdf state seguido de " 0 obj" para o current página deste pdf state.
   Posponha "<<" para o current página deste pdf state.
   Posponha "/Type /Page" para o current página deste pdf state.
   Posponha "/Parent " junto com o número deste parent deste pdf state seguido de " 0 R" para o current página deste pdf state.
-  Atribua a largura desta caixa menos o tpp times 72 / o tpi a um largura.
-  Atribua a altura desta caixa menos o tpp times 72 / o tpi a uma altura.
+  Atribua a largura desta caixa menos a quantidade de twips/pixel times 72 / o tpi a um largura.
+  Atribua a altura desta caixa menos a quantidade de twips/pixel times 72 / o tpi a uma altura.
   Posponha "/MediaBox [0 0 " junto com o largura seguido de " " junto com o altura seguido de "]" para o current página deste pdf state.
-  Atribua a altura desta caixa menos o tpp ao current altura deste pdf state.
+  Atribua a altura desta caixa menos a quantidade de twips/pixel ao current altura deste pdf state.
   Adicione os current contents deste pdf state usando "contents".
   Posponha "/Contents " junto com o número destes current contents deste pdf state seguido de " 0 R" para o current página deste pdf state.
   Posponha "0.05 0 0 0.05 1 1 cm" para os current contents deste pdf state. \ abra matrix para scale 72/1440
   Posponha "13 w 0 J 0 j 0 i" para os current contents deste pdf state. \ pincelwidth, linecap, linejoin, flatness \ 15 w sobre pincelwidth comes out para wide
 
-Etapas para que se begin um sheet usando uma caixa e um title string (pdf style):
+Etapas para que se inicie um sheet usando uma caixa e um title string (pdf style):
   Ligue a página detector deste pdf state.
   Atribua a cor preta ao cor da borda atual deste pdf state.
   Atribua a cor preta à cor de preenchimento atual deste pdf state.
-  Begin o sheet usando a caixa e o title (pdf style - start o current página).
+  Inicie o sheet usando a caixa e o title (pdf style - start o current página).
   Se o title estiver em branco, cancele.
   Crie um pdf outline entry usando o title e o current altura deste pdf state e o número desta current página deste pdf state.
   Posponha o pdf outline entry para o outline entries deste pdf state.
 
-Etapas para que se begin um sheet usando uma caixa (pdf style):
-  Begin o sheet usando a caixa e "" (pdf style).
+Etapas para que se inicie um sheet usando uma caixa (pdf style):
+  Inicie o sheet usando a caixa e "" (pdf style).
 
-Etapas para que se begin um sheet usando uma caixa e um title string:
-  Begin o sheet usando a caixa e o title (pdf style).
+Etapas para que se inicie um sheet usando uma caixa e um title string:
+  Inicie o sheet usando a caixa e o title (pdf style).
 
-Etapas para que se begin um sheet usando uma caixa:
-  Se o documento detector deste pdf state estiver ativo, begin o sheet usando a caixa (pdf style); exit.
+Etapas para que se inicie um sheet usando uma caixa:
+  Se o documento detector deste pdf state estiver ativo, inicie o sheet usando a caixa (pdf style); volte.
   Call "kernel32.dll" "GlobalLock" com 
     O número identificador do modo de dispositivo da impressora 
     devolvendo um pdevmode.
@@ -847,39 +847,39 @@ Etapas para que se begin um sheet usando uma caixa:
     O printer canvas 
     e 88 [LOGPIXELSX] 
     devolvendo um número.
-  Atribua o tpp ao saved tpp.
-  Atribua o tpi dividido pelo número ao tpp.
+  Atribua a quantidade de twips/pixel ao saved quantidade de twips/pixel .
+  Atribua o tpi dividido pelo número ao quantidade de twips/pixel .
 
-Etapas para que se begin printing um pdf:
+Etapas para que se inicie a impressão um pdf:
   Ligue o documento detector deste pdf state.
   Atribua 0 ao object número deste pdf state.
   Crie o font catálogo deste pdf state usando 113.
-  Begin printing o pdf (start o root).
-  Begin printing o pdf (start o parent).
+  Inicie a impressão o pdf (start o root).
+  Inicie a impressão o pdf (start o parent).
 
-Etapas para que se begin printing um pdf (start o parent):
+Etapas para que se inicie a impressão um pdf (start o parent):
   Adicione um parent pdf object usando "parent".
   Atribua o parent ao parent deste pdf state.
   Posponha o número deste parent seguido de " 0 obj" para o parent.
   Posponha "<<" para o parent.
   Posponha "/Type /Pages" para o parent.
 
-Etapas para que se begin printing um pdf (start o root):
+Etapas para que se inicie a impressão um pdf (start o root):
   Adicione um root pdf object usando "root".
   Atribua o root ao root deste pdf state.
   Posponha o número deste root seguido de " 0 obj" para o root.
   Posponha "<<" para o root.
   Posponha "/Type /Catalog" para o root.
 
-Etapas para que se begin um portrait sheet usando um title string:
-  Se o pdf documento detector não estiver ativo, limpe o portrait sheet; exit.
+Etapas para que se inicie um portrait sheet usando um title string:
+  Se o pdf documento detector não estiver ativo, limpe o portrait sheet; volte.
   Make o portrait sheet 816 pixels por 1056 pixels.
-  Begin o sheet usando a caixa e o title (pdf style).
+  Inicie o sheet usando a caixa e o title (pdf style).
 
-Etapas para que se begin um landscape sheet usando um title string:
-  Se o pdf documento detector não estiver ativo, limpe o landscape sheet; exit.
+Etapas para que se inicie um landscape sheet usando um title string:
+  Se o pdf documento detector não estiver ativo, limpe o landscape sheet; volte.
   Make o landscape sheet 1056 pixels por 816 pixels.
-  Begin o sheet usando a caixa e o title (pdf style).
+  Inicie o sheet usando a caixa e o title (pdf style).
 
 Etapas para que se posponha uma string para um pdf object:
     \ this guys adds CRLF
@@ -896,8 +896,8 @@ Etapas para que se adicione um pdf object usando um categoria:
   Atribua o object número deste pdf state ao número deste pdf object.
 
 Etapas para que se end um sheet:
-  Se o documento detector deste pdf state estiver ativo, end o sheet (pdf style); exit.
+  Se o documento detector deste pdf state estiver ativo, end o sheet (pdf style); volte.
   Call "gdi32.dll" "EndPage" com o printer canvas.
   Atribua o memory canvas ao quadro atual.
-  Atribua o saved tpp ao tpp.
+  Atribua o saved quantidade de twips/pixel ao quantidade de twips/pixel .
 
