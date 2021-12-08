@@ -1,6 +1,6 @@
 O remembered pdf endereço completo é um endereço completo.
 
-Um portrait sheet é um sheet.
+Um folha modo retrato é uma folha.
 
 O pdf state é um pdf state.
 
@@ -40,7 +40,7 @@ An pdf object é uma coisa com
 
 An pdf outline entry é uma coisa com
   Um pdf object (reference),
-  Um title string,
+  Um título de índice remissivo,
   Um página altura,
   Um destination número.
 
@@ -190,7 +190,7 @@ Etapas para que se encontre um pdf object usando um categoria:
     Se a categoria deste pdf object for a categoria, pare.
   Repita. [o código acima]
 
-Etapas para que se end um sheet (pdf style - finish o current contents):
+Etapas para que se end uma folha (pdf style - finish o current contents):
   Atribua os current contents deste pdf state a um content pdf object.
   Atribua os data deste content a um trecho.
   Limpe os data deste content.
@@ -202,7 +202,7 @@ Etapas para que se end um sheet (pdf style - finish o current contents):
   Posponha "endobj" para o content.
   Desative a página detector deste pdf state.
 
-Etapas para que se end um sheet (pdf style - finish o current página - font resources):
+Etapas para que se end uma folha (pdf style - finish o current página - font resources):
   Atribua a current página deste pdf state a uma página pdf object.
   Se as font strings desta página estiverem vazio, cancele.
   Posponha "/Font <<" para a página sem passar pra próxima linha.
@@ -215,7 +215,7 @@ Etapas para que se end um sheet (pdf style - finish o current página - font reso
   Repita. [o código acima]
   Posponha ">>" para a página.
 
-Etapas para que se end um sheet (pdf style - finish o current página - image resources):
+Etapas para que se end uma folha (pdf style - finish o current página - image resources):
   Atribua a current página deste pdf state a uma página pdf object.
   Se as image strings desta página estiverem vazio, cancele.
   Posponha "/XObject <<" para a página sem passar pra próxima linha.
@@ -228,25 +228,25 @@ Etapas para que se end um sheet (pdf style - finish o current página - image res
   Repita. [o código acima]
   Posponha ">>" para a página.
 
-Etapas para que se end um sheet (pdf style - finish o current página):
+Etapas para que se end uma folha (pdf style - finish o current página):
   Atribua a current página deste pdf state a uma página pdf object.
   Posponha "/Resources" para a página.
   Posponha "<<" para a página.
   Posponha "/ProcSet [/PDF /Text /ImageC]" para a página.
-  End o sheet (pdf style - finish o current página - font resources).
-  End o sheet (pdf style - finish o current página - image resources).
+  End a folha (pdf style - finish o current página - font resources).
+  End a folha (pdf style - finish o current página - image resources).
   Posponha ">>" para a página. \ end resources
   Posponha ">>" para a página. \ end página
   Posponha "endobj" para a página.
 
-Etapas para que se end um sheet (pdf style):
-  End o sheet (pdf style - finish o current página).
-  End o sheet (pdf style - finish o current contents).
+Etapas para que se end uma folha (pdf style):
+  End a folha (pdf style - finish o current página).
+  End a folha (pdf style - finish o current contents).
 
 Etapas para que se end printing:
   Se o documento detector deste pdf state estiver ativo, end printing (pdf style); volte.
-  Call "gdi32.dll" "EndDoc" com o printer canvas.
-  Finalize o printer canvas.
+  Call "gdi32.dll" "EndDoc" com a área de impressão.
+  Finalize a área de impressão.
 
 Etapas para que se end printing (pdf style):
   Se o documento detector deste pdf state não estiver ativo, cancele.
@@ -293,7 +293,7 @@ Etapas para que se end printing um pdf (append o outline entries):
     Atribua o pdf object desta pdf outline entry a um object pdf object.
     Posponha o número deste object seguido de " 0 obj" para o object.
     Posponha "<<" para o object.
-    Converta o title deste pdf outline entry para um pdf string.
+    Converta o título de índice remissivo deste pdf outline entry para um pdf string.
     Posponha "/Title " junto com o pdf string para o object.
     Posponha "/Parent " junto com o número deste outline deste pdf state seguido de " 0 R" para o object.
     Se o next desta pdf outline entry não for inexistente, posponha "/Next " junto com o número deste pdf object deste next desta pdf outline entry seguido de " 0 R" para o object.
@@ -377,7 +377,7 @@ Etapas para que se end printing um pdf (offset e posponha objects):
   Posponha o texto CRLF para o pdf.
   Repita. [o código acima]
 
-Etapas para que se pinte uma string at uma localização com uma cor e uma font (pdf style):
+Etapas para que se pinte uma string sob uma localização com uma cor e uma font (pdf style):
   Se a string estiver em branco, cancele.
   Isole a localização.
   Include o font no current pdf.
@@ -402,8 +402,8 @@ Etapas para que se pinte uma string at uma localização com uma cor e uma font (p
   Output "ET".
   Destrua o font info.
 
-Etapas para que se pinte uma string at uma localização com uma cor e um font:
-  Se a página detector deste pdf state estiver ativo, pinte a string at a localização com a cor e o font (pdf style); volte.
+Etapas para que se pinte uma string sob uma localização com uma cor e um font:
+  Se a página detector deste pdf state estiver ativo, pinte a string sob a localização com a cor e o font (pdf style); volte.
   Defina o código da cor of o quadro atual usando a cor.
   Crie o número da fonte of o quadro atual usando o font.
   Ajuste espaçamento  da fonte usando a string.
@@ -491,7 +491,7 @@ Etapas para que se pinte um polígono com uma cor da borda e uma cor de preenchim
   Output stroke e fill usando a cor da borda e a cor de preenchimento.
 
 Etapas para que se pinte um imagem (pdf style):
-  Se o imagem for inexistente, cancele.
+  Se a imagem for inexistente, cancele.
   Atribua a coordenada esquerda desta caixa desta imagem menos a coordenada esquerda desta caixa intacta desta imagem dividido pelo quantidade de twips/pixel a um número X.
   Atribua a coordenada superior desta caixa desta imagem menos a coordenada superior desta caixa intacta desta imagem dividido pelo quantidade de twips/pixel a um número Y.
   Atribua a largura desta caixa desta imagem dividido pelo quantidade de twips/pixel a um largura.
@@ -525,13 +525,13 @@ Etapas para que se pinte um imagem (pdf style):
   Se o gpimageattributes não for inexistente, destrua o gpimageattributes.
   Call "gdiplus.dll" "GdipDeleteGraphics" com 
     O gpgraphic.
-  Pinte o gpBitmap at o canto superior esquerdo desta caixa desta imagem (pdf style).
+  Pinte o gpBitmap sob o canto superior esquerdo desta caixa desta imagem (pdf style).
   Call "gdiplus.dll" "GdipDisposeImage" com 
     O gpBitmap.
 
 Etapas para que se pinte um imagem:
   Se a página detector deste pdf state estiver ativo, pinte a imagem (pdf style); volte.
-  Se o imagem for inexistente, cancele.
+  Se a imagem for inexistente, cancele.
   Save o quadro atual.
   Cubra externamente a caixa desta imagem.
   Call "gdiplus.dll" "GdipCreateFromHDC" com 
@@ -540,7 +540,7 @@ Etapas para que se pinte um imagem:
   Call "gdiplus.dll" "GdipSetPageUnit" com 
     O gpgraphic 
     e 2 [pixels].
-  Pinte o imagem sobre o gpgraphic at a coordenada esquerda desta caixa intacta desta imagem e a coordenada superior desta caixa intacta desta imagem.
+  Pinte a imagem sobre o gpgraphic sob a coordenada esquerda desta caixa intacta desta imagem e a coordenada superior desta caixa intacta desta imagem.
   Call "gdiplus.dll" "GdipDeleteGraphics" com 
     O gpgraphic.
   Restore o quadro atual.
@@ -548,8 +548,8 @@ Etapas para que se pinte um imagem:
 Etapas para que se pinte uma linha reta com uma cor (pdf style):
   Se a cor estiver clear, cancele.
   Output setcolor usando a cor e a cor preta.
-  Output moveto usando o localização inicial desta linha reta.
-  Output lineto usando o localização final desta linha reta.
+  Output moveto usando a localização inicial desta linha reta.
+  Output lineto usando a localização final desta linha reta.
   Output stroke e fill usando a cor e a cor preta.
 
 Etapas para que se pinte uma linha reta com uma cor:
@@ -572,7 +572,7 @@ Etapas para que se pinte uma linha reta com uma cor:
     e O código da cor.
   Destrua o hpen of o quadro atual.
 
-Etapas para que se pinte um gpBitmap at uma localização (pdf style):
+Etapas para que se pinte um gpBitmap sob uma localização (pdf style):
   Se o gpBitmap for inexistente, cancele.
     \ adicione xobject
   Adicione um xobject pdf object usando "image object".
@@ -664,9 +664,9 @@ Etapas para que se crie um pdf object usando um categoria:
   Aloque memória para o pdf object.
   Atribua o categoria à categoria deste pdf object.
 
-Etapas para que se crie um pdf outline entry usando um title string e uma página altura e um destination número:
+Etapas para que se crie um pdf outline entry usando um título de índice remissivo e uma página altura e um destination número:
   Aloque memória para o pdf outline entry.
-  Atribua o title string ao title deste pdf outline entry.
+  Atribua o título de índice remissivo ao título de índice remissivo deste pdf outline entry.
   Atribua a página altura ao página altura deste pdf outline entry.
   Atribua o destination ao destination deste pdf outline entry.
 
@@ -718,7 +718,7 @@ Etapas para que se converta um gpBitmap para um trecho (pdf style):
   Percorra. [o código abaixo]
     Se o column# for maior do que o largura deste bitmapdata, atribua 1 ao column#; adicione 1 para o número da linha.
     Se o número da linha for maior do que a altura deste bitmapdata, pare.
-    Obtenha um endereço de memória RGB desde o bitmapdata at o número da linha e o column#.
+    Obtenha um endereço de memória RGB desde o bitmapdata sob o número da linha e o column#.
     Posponha o espectro vermelho deste endereço de memória RGB para o trecho.
     Posponha o espectro verde deste endereço de memória RGB para o trecho.
     Posponha o espectro azul deste endereço de memória RGB para o trecho.
@@ -750,7 +750,7 @@ Etapas para que se converta uma font info para pdf em units:
   Permute a coordenada superior desta font caixa desta font info com a coordenada inferior desta font caixa desta font info.
   Converta as font larguras desta font info para pdf em units.
 
-Etapas para que se inicie um sheet usando uma caixa e um title string (pdf style - start o current página):
+Etapas para que se inicie uma folha usando uma caixa e um título de índice remissivo (pdf style - start o current página):
   Adicione o current página deste pdf state usando "page".
   Posponha o número desta current página deste pdf state seguido de " 0 obj" para o current página deste pdf state.
   Posponha "<<" para o current página deste pdf state.
@@ -765,23 +765,23 @@ Etapas para que se inicie um sheet usando uma caixa e um title string (pdf style
   Posponha "0.05 0 0 0.05 1 1 cm" para os current contents deste pdf state. \ abra matrix para scale 72/1440
   Posponha "13 w 0 J 0 j 0 i" para os current contents deste pdf state. \ pincelwidth, linecap, linejoin, flatness \ 15 w sobre pincelwidth comes out para wide
 
-Etapas para que se inicie um sheet usando uma caixa e um title string (pdf style):
+Etapas para que se inicie uma folha usando uma caixa e um título de índice remissivo (pdf style):
   Ligue a página detector deste pdf state.
   Atribua a cor preta ao cor da borda atual deste pdf state.
   Atribua a cor preta à cor de preenchimento atual deste pdf state.
-  Inicie o sheet usando a caixa e o title (pdf style - start o current página).
-  Se o title estiver em branco, cancele.
-  Crie um pdf outline entry usando o title e o current altura deste pdf state e o número desta current página deste pdf state.
+  Inicie a folha usando a caixa e o título de índice remissivo (pdf style - start o current página).
+  Se o título de índice remissivo estiver em branco, cancele.
+  Crie um pdf outline entry usando o título de índice remissivo e o current altura deste pdf state e o número desta current página deste pdf state.
   Posponha o pdf outline entry para o outline entries deste pdf state.
 
-Etapas para que se inicie um sheet usando uma caixa (pdf style):
-  Inicie o sheet usando a caixa e "" (pdf style).
+Etapas para que se inicie uma folha usando uma caixa (pdf style):
+  Inicie a folha usando a caixa e "" (pdf style).
 
-Etapas para que se inicie um sheet usando uma caixa e um title string:
-  Inicie o sheet usando a caixa e o title (pdf style).
+Etapas para que se inicie uma folha usando uma caixa e um título de índice remissivo:
+  Inicie a folha usando a caixa e o título de índice remissivo (pdf style).
 
-Etapas para que se inicie um sheet usando uma caixa:
-  Se o documento detector deste pdf state estiver ativo, inicie o sheet usando a caixa (pdf style); volte.
+Etapas para que se inicie uma folha usando uma caixa:
+  Se o documento detector deste pdf state estiver ativo, inicie a folha usando a caixa (pdf style); volte.
   Call "kernel32.dll" "GlobalLock" com 
     O número identificador do modo de dispositivo da impressora 
     devolvendo um pdevmode.
@@ -790,61 +790,61 @@ Etapas para que se inicie um sheet usando uma caixa:
   Atribua 1 [DMORIENT_PORTRAIT] ao dmorientation deste pdevmode .
   Se a largura desta caixa for maior do que a altura desta caixa, atribua 2 [DMORIENT_LANDSCAPE] ao dmorientation deste pdevmode .
   Call "gdi32.dll" "ResetDCA" com 
-    O printer canvas 
+    A área de impressão 
     e O pdevmode.
   Call "kernel32.dll" "GlobalUnlock" com 
     O número identificador do modo de dispositivo da impressora.
   Call "gdi32.dll" "SetGraphicsMode" com 
-    O printer canvas 
+    A área de impressão 
     e 2 [GM_ADVANCED].
   Call "gdi32.dll" "SetBkMode" com 
-    O printer canvas 
+    A área de impressão 
     e 1 [TRANSPARENT].
   Call "gdi32.dll" "SetMapMode" com 
-    O printer canvas 
+    A área de impressão 
     e 8 [MM_ANISOTROPIC].
   Call "gdi32.dll" "GetDeviceCaps" com 
-    O printer canvas 
+    A área de impressão 
     e 112 [PHYSICALOFFSETX] 
     devolvendo o número X desse par de números.
   Call "gdi32.dll" "GetDeviceCaps" com 
-    O printer canvas 
+    A área de impressão 
     e 113 [PHYSICALOFFSETY] 
     devolvendo o número Y deste par de números.
   Negate o par de números.
   Call "gdi32.dll" "SetViewportOrgEx" com 
-    O printer canvas 
+    A área de impressão 
     e O número X deste par de números 
     e O número Y deste par de números 
     e nil.
   Call "gdi32.dll" "GetDeviceCaps" com 
-    O printer canvas 
+    A área de impressão 
     e 88 [LOGPIXELSX] 
     devolvendo o número X deste par de números.
   Call "gdi32.dll" "GetDeviceCaps" com 
-    O printer canvas 
+    A área de impressão 
     e 90 [LOGPIXELSY] 
     devolvendo o número Y deste par de números.
   Call "gdi32.dll" "SetViewportExtEx" com 
-    O printer canvas 
+    A área de impressão 
     e O número X deste par de números 
     e O número Y deste par de números 
     e nil.
   Call "gdi32.dll" "SetWindowOrgEx" com 
-    O printer canvas 
+    A área de impressão 
     e 0 
     e 0 
     e nil.
   Call "gdi32.dll" "SetWindowExtEx" com 
-    O printer canvas 
+    A área de impressão 
     e O tpi 
     e O tpi 
     e nil.
   Call "gdi32.dll" "StartPage" com 
-    O printer canvas.
-  Atribua o printer canvas ao quadro atual.
+    A área de impressão.
+  Atribua a área de impressão ao quadro atual.
   Call "gdi32.dll" "GetDeviceCaps" com 
-    O printer canvas 
+    A área de impressão 
     e 88 [LOGPIXELSX] 
     devolvendo um número.
   Atribua a quantidade de twips/pixel ao saved quantidade de twips/pixel .
@@ -871,15 +871,15 @@ Etapas para que se inicie a impressão um pdf (start o root):
   Posponha "<<" para o root.
   Posponha "/Type /Catalog" para o root.
 
-Etapas para que se inicie um portrait sheet usando um title string:
-  Se o pdf documento detector não estiver ativo, limpe o portrait sheet; volte.
-  Make o portrait sheet 816 pixels por 1056 pixels.
-  Inicie o sheet usando a caixa e o title (pdf style).
+Etapas para que se inicie uma folha modo retrato usando um título de índice remissivo:
+  Se o pdf documento detector não estiver ativo, limpe a folha modo retrato; volte.
+  Faça a folha modo retrato 816 pixels por 1056 pixels.
+  Inicie a folha usando a caixa e o título de índice remissivo (pdf style).
 
-Etapas para que se inicie um landscape sheet usando um title string:
-  Se o pdf documento detector não estiver ativo, limpe o landscape sheet; volte.
-  Make o landscape sheet 1056 pixels por 816 pixels.
-  Inicie o sheet usando a caixa e o title (pdf style).
+Etapas para que se inicie uma folha modo paisagem usando um título de índice remissivo:
+  Se o pdf documento detector não estiver ativo, limpe a folha modo paisagem; volte.
+  Faça a folha modo paisagem 1056 pixels por 816 pixels.
+  Inicie a folha usando a caixa e o título de índice remissivo (pdf style).
 
 Etapas para que se posponha uma string para um pdf object:
     \ this guys adds CRLF
@@ -895,9 +895,9 @@ Etapas para que se adicione um pdf object usando um categoria:
   Adicione 1 para o object número deste pdf state.
   Atribua o object número deste pdf state ao número deste pdf object.
 
-Etapas para que se end um sheet:
-  Se o documento detector deste pdf state estiver ativo, end o sheet (pdf style); volte.
-  Call "gdi32.dll" "EndPage" com o printer canvas.
+Etapas para que se end uma folha:
+  Se o documento detector deste pdf state estiver ativo, end a folha (pdf style); volte.
+  Call "gdi32.dll" "EndPage" com a área de impressão.
   Atribua o memory canvas ao quadro atual.
   Atribua o saved quantidade de twips/pixel ao quantidade de twips/pixel .
 
