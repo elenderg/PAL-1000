@@ -4227,12 +4227,10 @@ Etapas para que se catalogue um type usando um nome:
   Se o existing type for inexistente, catalogue o type usando o nome e o catálogo de tipos; volte.
   Atribua o local de aparição deste type para um local de aparição.
   Se o local de aparição for inexistente, atribua o local de aparição deste existing type ao local de aparição. \ point o erro para um type no source código, not um generated type
-  Apresente uma mensagem de erro contendo "Acho que já vi o tipo: " junto com o nome seguido de "' em um lugar antes; você deve ter duplicado ele." e o local de aparição.
-
-  
+  Se o local de aparição não for inexistente, Apresente uma mensagem de erro contendo "Acho que já vi o tipo: " junto com o nome seguido de "' em um lugar antes; você deve ter duplicado ele." e o local de aparição.
 
 Etapas para que se inicialize o compilador:
-    \Sim, essa rotina é vazia, apenas para ficar "simétrico" nas chamadas de rotina
+\Sim, essa rotina não tem nada, serve apenas para fazer com que o código fique "simétrico"
 
 Etapas para que se inicialize o compilador usando um endereço da pasta:
   Atribua o endereço da pasta ao endereço da pasta deste compilador.
@@ -4631,7 +4629,7 @@ Um cabeçalho expandido é uma string.    \ moniker
     \ ? makes it easy to expand prepositions (like "to" para "para"); and
     \ ? shows how the compiler interpreted various phrases in error messages.
 Um monikette é uma coisa com
-  Um string,
+  Uma string,
   Um type (reference),
   Um variável (reference),
   \ para bubbling
@@ -4985,7 +4983,7 @@ Etapas para que se pluralize uma string (portuguese rules):
     Se o segmento inicial deste percorredor estiver em branco, pare.
     Se um plural string não estiver em branco, posponha " " para o plural string.
     Posponha o segmento inicial deste percorredor para o plural string.
-    Se o segmento inicial deste percorredor for "de", acione um detector; repita. \ aqui identifica um termo composto. Falta implementar.
+    Se o segmento inicial deste percorredor for "de ", acione um detector. \ aqui identifica um termo composto. Falta implementar.
     Se o detector não estiver ativo, pluralize o plural string (português - regras comuns) .
     \ Se o detector estiver ativo, pluralize o plural string (substantivos compostos).
   Repita. [o código acima]
@@ -4996,19 +4994,9 @@ Etapas para que se pluralize uma string (português - regras comuns) :
     \# https://www.normaculta.com.br/singular-e-plural/
     \# palavras que são exceções às regras
   Se a string for "bit", atribua "bits" à string; volte.
-  Se a string for "cidadão", posponha "s" para a string; volte.
-  Se a string for "irmão", posponha "s" para a string; volte.
-  Se a string for "cristão", posponha "s" para a string; volte.
-  Se a string for "refrão", posponha "s" para a string; volte.
-  Se a string for "pão", remove o last pedaço desde a string; posponha "es" para a string; volte.
-  Se a string for "capitão", remove o last pedaço desde a string; posponha "es" para a string; volte.
-  Se a string for "alemão", remove o last pedaço desde a string; posponha "es" para a string; volte.
-  Se a string for "charlatão", remove o last pedaço desde a string; posponha "es" para a string; volte.
   Se a string for "caráter", atribua "carateres" à string; volte.
   Se a string for "júnior", atribua "juniores" à string; volte.
   Se a string for "sênior", atribua "seniores" à string; volte.
-  Se a string for "mão", atribua "mãos" à string; volte.
-  Se a string for "são", atribua "sãos" à string; volte.
     \# advérbios principais
   Se a string for "muito", cancele.
   Se a string for "pouco", cancele.
@@ -5043,7 +5031,8 @@ Etapas para que se pluralize uma string (português - regras comuns) :
     \# palavras terminadas com "z"
   Se a string termina com "z", pluralize a string (portuguese rules - palavras terminadas com "z"); volte.
     \# regra padrão
-  Posponha "s" para a string.
+  [Se as condições acima não puderem ser satisfeitas, então:] Posponha "s" para a string.
+  Volte.
 
 Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "ão"):
     \# acentos em sílabas prévias
@@ -5051,11 +5040,17 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
   Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.
   Se o subtexto has algum tipo de stressed vogal, posponha "s" para a string; volte.
     \# regra padrão
+  \A maioria dos substantivos terminados em -ão forma o plural com -ões:
+  \opinião - opiniões;
+  \coração - corações;
+  \eleição - eleições.
   Remove os last dois pedaços desde a string.
   Posponha "ões" para a string.
+  Volte.
 
 Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com outras consoantes):
   Posponha "s" para a string.
+  Volte.
 
 Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "l"):
     \# palavras terminadas com "al"
@@ -5077,6 +5072,7 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
   Se o subtexto has algum tipo de stressed vogal, remove o last pedaço desde a string; posponha "is" para a string; volte.
   Remove os last dois pedaços desde a string.
   Posponha "éis" para a string.
+  Volte.
 
 Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "il"):
     \# acentos em sílabas prévias
@@ -5085,6 +5081,7 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
   Se o subtexto has algum tipo de stressed vogal, remove os last dois pedaços desde a string; posponha "eis" para a string; volte.
   Remove o last pedaço desde a string.
   Posponha "s" para a string.
+  Volte.
 
 Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "ol"):
     \# acentos em sílabas prévias
@@ -5093,6 +5090,7 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
   Se o subtexto has algum tipo de stressed vogal, remove o last pedaço desde a string; posponha "is" para a string; volte.
   Remove os last dois pedaços desde a string.
   Posponha "óis" para a string.
+  Volte.
 
 Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "r"):
     \# hiatos acentuados
@@ -5116,6 +5114,7 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
   Se a string termina com "aur", remove os last dois pedaços desde a string; posponha "úres" para a string; volte.
     \# regra padrão
   Posponha "es" para a string.
+  Volte.
 
 Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "s"):
     \# proparoxítonas/paroxítonas terminadas com "as", "es", "os"
@@ -5140,6 +5139,7 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
     \Se a string termina com "ts", exit.
     \# regra padrão
   Posponha "es" para a string.
+  Volte.
 
 Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "is/us"):
     \# acentos em sílabas prévias
@@ -5151,6 +5151,7 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
   Se a string termina com "aus", remove os last dois pedaços desde a string; posponha "úses" para a string; volte.
     \# regra padrão
   Posponha "es" para a string.
+  Volte.
 
 Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "x"):
   Se a string for "px", posponha "pxs" para a string; volte.
@@ -5180,6 +5181,7 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
   Se a string termina com "auz", remove os last dois pedaços desde a string; posponha "úzes" para a string; volte.
     \# regra padrão
   Posponha "es" para a string.
+  Volte.
 
 Etapas para que se pluralize uma string (english rules); \ plural inglês
 Etapas para que se pluralize uma string:
