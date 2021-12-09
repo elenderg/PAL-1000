@@ -4985,7 +4985,7 @@ Etapas para que se pluralize uma string (portuguese rules):
     Posponha o segmento inicial deste percorredor para o plural string.
     Se o segmento inicial deste percorredor for "de ", acione um detector. \ aqui identifica um termo composto. Falta implementar.
     Se o detector não estiver ativo, pluralize o plural string (português - regras comuns) .
-    \ Se o detector estiver ativo, pluralize o plural string (substantivos compostos).
+    \Se o detector estiver ativo, pluralize o plural string (substantivos compostos).
   Repita. [o código acima]
   Atribua o plural string à string.
 
@@ -5011,35 +5011,61 @@ Etapas para que se pluralize uma string (português - regras comuns) :
   Se a string for "melhor", cancele.
   Se a string for "pior", cancele.
     \# palavras terminadas com "ão"
-  Se a string termina com "ão", pluralize a string (portuguese rules - palavras terminadas com "ão"); volte.
+  Se a string termina com "ão", pluralize a string (plural de palavras terminadas com "ão"); volte.
     \# palavras terminadas com "d"
-  Se a string termina com "d", pluralize a string (portuguese rules - palavras terminadas com outras consoantes); volte.
+  Se a string termina com "d", pluralize a string (plural de palavras terminadas com outras letras); volte.
     \# palavras terminadas com "l"
-  Se a string termina com "l", pluralize a string (portuguese rules - palavras terminadas com "l"); volte.
+  Se a string termina com "l", pluralize a string (plural de palavras terminadas com "l"); volte.
     \# palavra terminadas com "m"
   Se a string termina com "m", remove o last pedaço desde a string; posponha "ns" para a string; volte.
     \# palavra terminadas com "n" (essa regra é preferível porque mantém o acento da palavra, se houver)
   Se a string termina com "n", posponha "es" para a string; volte.
     \# palavras terminadas com "r"
-  Se a string termina com "r", pluralize a string (portuguese rules - palavras terminadas com "r"); volte.
+  Se a string termina com "r", pluralize a string (plural de palavras terminadas com "r"); volte.
     \# palavras terminadas com "s"
-  Se a string termina com "s", pluralize a string (portuguese rules - palavras terminadas com "s"); volte.
+  Se a string termina com "s", pluralize a string (plural de palavras terminadas com "s"); volte.
     \# palavras terminadas com "t"
-  Se a string termina com "t", pluralize a string (portuguese rules - palavras terminadas com outras consoantes); volte.
+  Se a string termina com "t", pluralize a string (plural de palavras terminadas com outras letras); volte.
     \# palavra terminadas com "x"
-  Se a string termina com "x", pluralize a string (portuguese rules - palavras terminadas com "x"); volte.
+  Se a string termina com "x", pluralize a string (plural de palavras terminadas com "x"); volte.
     \# palavras terminadas com "z"
-  Se a string termina com "z", pluralize a string (portuguese rules - palavras terminadas com "z"); volte.
+  Se a string termina com "z", pluralize a string (plural de palavras terminadas com "z"); volte.
     \# regra padrão
   [Se as condições acima não puderem ser satisfeitas, então:] Posponha "s" para a string.
   Volte.
 
-Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "ão"):
-    \# acentos em sílabas prévias
+Etapas para que se pluralize uma string (plural de palavras terminadas com "ão"):
+  \A formação do plural dos substantivos terminados -ão pode ser feita de três formas distintas: -ões, -ãos, -ães.
+  \Alguns substantivos terminados em -ão admitem duas (ou até três) formas no plural:
+  \refrão - refrãos ou refrães;
+  \corrimão - corrimões ou corrimãos;
+  \guardião - guardiões ou guardiães;
+  \vilão - vilões, vilãos ou vilães.
+  Se a string for "cidadão", posponha "s" para a string; volte.
+  Se a string for "irmão", posponha "s" para a string; volte.
+  Se a string for "cristão", posponha "s" para a string; volte.
+  Se a string for "refrão", posponha "s" para a string; volte.
+  Se a string for "mão", posponha "s" para a string; volte.
+  Se a string for "são", posponha "s" para a string; volte.
+  \-ão no singular para -ães no plural:
+  \Alguns substantivos terminados em -ão formam o plural com -ães.
+  Se a string for "pão", remove o last pedaço desde a string; posponha "es" para a string; volte.
+  Se a string for "capitão", remove o last pedaço desde a string; posponha "es" para a string; volte.
+  Se a string for "alemão", remove o last pedaço desde a string; posponha "es" para a string; volte.
+  Se a string for "charlatão", remove o last pedaço desde a string; posponha "es" para a string; volte.
+  \TODOS os substantivos paroxítonos terminados em -ão formam o plural com -ãos. 
+  \ALGUNS substantivos oxítonos também têm o seu plural formado segundo essa regra:
+  \órfão - órfãos;
+  \sótão - sótãos;
+  \órgão - órgãos;
+  \cidadão - cidadãos;
+  \irmão - irmãos;
+  \cristão - cristãos.
   Lance um subtexto sobre a string.
-  Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.
-  Se o subtexto has algum tipo de stressed vogal, posponha "s" para a string; volte.
-    \# regra padrão
+  Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.   \ remove o "ão". Acho que não precisa
+  \caso encontre acentos em sílabas prévias, faça o seguinte
+  Se o subtexto has algum tipo de stressed vogal, posponha "s" para a string; volte. \-> exemplo: órgão
+  \# regra padrão
   \A maioria dos substantivos terminados em -ão forma o plural com -ões:
   \opinião - opiniões;
   \coração - corações;
@@ -5048,25 +5074,32 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
   Posponha "ões" para a string.
   Volte.
 
-Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com outras consoantes):
+Etapas para que se pluralize uma string (plural de palavras terminadas com outras letras):
   Posponha "s" para a string.
   Volte.
 
-Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "l"):
+Etapas para que se pluralize uma string (plural de palavras terminadas com "l"):
     \# palavras terminadas com "al"
-  Se a string termina com "al", remove o last pedaço desde a string; posponha "is" para a string; volte.
+  Se a string termina com "al", pluralize a string (plural de palavras terminadas com "al"); volte. \ MAL -> MALES
     \# palavras terminadas com "el"
-  Se a string termina com "el", pluralize a string (portuguese rules - palavras terminadas com "el"); volte.
+  Se a string termina com "el", pluralize a string (plural de palavras terminadas com "el"); volte. \PASTEL - PASTÉIS
     \# palavras terminadas com "il"
-  Se a string termina com "il", pluralize a string (portuguese rules - palavras terminadas com "il"); volte.
+  Se a string termina com "il", pluralize a string (plural de palavras terminadas com "il"); volte. \-> FUZIL -> FUZIS
     \# palavras terminadas com "ol"
-  Se a string termina com "ol", pluralize a string (portuguese rules - palavras terminadas com "ol"); volte.
+  Se a string termina com "ol", pluralize a string (plural de palavras terminadas com "ol"); volte. \- LENÇOL -> LENÇÓIS
     \# palavras terminadas com "ul"
-  Se a string termina com "ul", remove o last pedaço desde a string; posponha "is" para a string; volte.
+  Se a string termina com "ul", pluralize a string (plural de palavras terminadas com "ul"); volte. \ AZUL -> AZUIS \ Cônsul - cônsules
+  Volte.
 
-Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "el"):
-    \# acentos em sílabas prévias
-  Se a string for "pixel", posponha "pixels" para a string; volte.
+Etapas para que se pluralize uma string (plural de palavras terminadas com "al"):
+  Se a string for "mal", atribua "males" para a string; volte.
+  Remove o last pedaço desde a string.
+  Posponha "is" para a string.
+  Volte.
+
+Etapas para que se pluralize uma string (plural de palavras terminadas com "el"):
+  \Se a string for "pixel", atribua "pixels" para a string; volte.
+  \# acentos em sílabas prévias
   Lance um subtexto sobre a string.
   Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.
   Se o subtexto has algum tipo de stressed vogal, remove o last pedaço desde a string; posponha "is" para a string; volte.
@@ -5074,7 +5107,13 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
   Posponha "éis" para a string.
   Volte.
 
-Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "il"):
+Etapas para que se pluralize uma string (plural de palavras terminadas com "il"):
+  Se a string for "canil", atribua "canis" para a string; volte.
+  Se a string for "covil", atribua "covis" para a string; volte.
+  Se a string for "funil", atribua "funis" para a string; volte.
+  Se a string for "barril", atribua "barris" para a string; volte.
+  Se a string for "fuzil", atribua "fuzis" para a string; volte.
+  Se a string for "redil", atribua "redis" para a string; volte.
     \# acentos em sílabas prévias
   Lance um subtexto sobre a string.
   Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.
@@ -5083,7 +5122,7 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
   Posponha "s" para a string.
   Volte.
 
-Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "ol"):
+Etapas para que se pluralize uma string (plural de palavras terminadas com "ol"):
     \# acentos em sílabas prévias
   Lance um subtexto sobre a string.
   Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.
@@ -5092,7 +5131,13 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
   Posponha "óis" para a string.
   Volte.
 
-Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "r"):
+Etapas para que se pluralize uma string (plural de palavras terminadas com "ul"):
+  Se a string for "cônsul", atribua "cônsules" para a string; volte.
+  Remove o last pedaço desde a string.
+  Posponha "is" para a string.
+  Volte.
+
+Etapas para que se pluralize uma string (plural de palavras terminadas com "r"):
     \# hiatos acentuados
     \Se a string termina com "aír", posponha "es" para a string; volte.
     \Se a string termina com "aúr", posponha "es" para a string; volte.
@@ -5116,11 +5161,15 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
   Posponha "es" para a string.
   Volte.
 
-Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "s"):
+Etapas para que se pluralize uma string (plural de palavras terminadas com "s"):
+\Quando os substantivos terminados em -s são paroxítonos, a formação do plural fica invariável:.
     \# proparoxítonas/paroxítonas terminadas com "as", "es", "os"
-  Se a string termina com "as", cancele.
-  Se a string termina com "es", cancele.
-  Se a string termina com "os", cancele.
+  Se a string termina com "as", volte. \atlas
+  \Se a string termina com "as", posponha "-plural" para a string; volte. \atlas
+  Se a string termina com "es", volte. \atlas
+  \Se a string termina com "es", posponha "-plural" para a string; volte.\pires
+  Se a string termina com "os", volte. \atlas
+  \Se a string termina com "os", posponha "-plural" para a string; volte. \óculos
     \# hiatos acentuados
   Se a string termina com "aís", posponha "es" para a string; volte.
   Se a string termina com "aús", posponha "es" para a string; volte.
@@ -5134,32 +5183,32 @@ Etapas para que se pluralize uma string (portuguese rules - palavras terminadas 
   Se a string termina com "ôs", remove os last dois pedaços desde a string; posponha "oses" para a string; volte.
   Se a string termina com "ús", remove os last dois pedaços desde a string; posponha "uses" para a string; volte.
     \# palavras terminadas com "is", "us"
-  Se a string termina com "is", pluralize a string (portuguese rules - palavras terminadas com "is/us"); volte.
-  Se a string termina com "us", pluralize a string (portuguese rules - palavras terminadas com "is/us"); volte.
+  Se a string termina com "is", pluralize a string (plural de palavras terminadas com "is" ou com "us"); volte.
+  Se a string termina com "us", pluralize a string (plural de palavras terminadas com "is" ou com "us"); volte. \ônibus / vírus
     \Se a string termina com "ts", exit.
     \# regra padrão
   Posponha "es" para a string.
   Volte.
 
-Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "is/us"):
+Etapas para que se pluralize uma string (plural de palavras terminadas com "is" ou com "us"):
     \# acentos em sílabas prévias
   Lance um subtexto sobre a string.
   Subtraia 2 desde o last endereço de memória do pedaço deste subtexto.
   Se o subtexto has algum tipo de stressed vogal, cancele.
     \# hiatos
-  Se a string termina com "ais", remove os last dois pedaços desde a string; posponha "íses" para a string; volte.
+  Se a string termina com "ais", remove os last dois pedaços desde a string; posponha "íses" para a string; volte. \cais não varia....
   Se a string termina com "aus", remove os last dois pedaços desde a string; posponha "úses" para a string; volte.
     \# regra padrão
   Posponha "es" para a string.
   Volte.
 
-Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "x"):
+Etapas para que se pluralize uma string  (plural de palavras terminadas com "x"):
   Se a string for "px", posponha "pxs" para a string; volte.
   Se a string for "fax", posponha "faxes" para a string; volte.
-  Cancele.
+  Volte.
     \Posponha "es" para a string.
 
-Etapas para que se pluralize uma string (portuguese rules - palavras terminadas com "z"):
+Etapas para que se pluralize uma string (plural de palavras terminadas com "z"):
     \# hiatos acentuados
   Se a string termina com "aíz", posponha "es" para a string; volte.
   Se a string termina com "aúz", posponha "es" para a string; volte.
@@ -5895,11 +5944,13 @@ Etapas para que se examine um type usando um percorredor:
   Mova o percorredor (usando diretrizes do compilador).
   Examine o nome deste type usando o percorredor.
   Atribua o nome deste type ao plural nome deste type.
-  Se o portuguese detector estiver ativo, pluralize o plural nome deste type (portuguese rules).
-  Se o english detector estiver ativo, pluralize o plural nome deste type (english rules).
-  Se o english detector não estiver ativo, pluralize o plural nome deste type (portuguese rules).
+  Atribua 0 a uma contagem.
+  Se o portuguese detector estiver ativo, pluralize o plural nome deste type (portuguese rules); adicione 1 à contagem.
+  Se o english detector estiver ativo, pluralize o plural nome deste type (english rules); adicione 1 à contagem.
+  Se a contagem for igual ou maior do que 2, apresente uma mensagem de erro contendo "Erro, não foi possível detectar o idioma desta variável" e o local de aparição deste type; cancele.
+  \Se o english detector não estiver ativo, pluralize o plural nome deste type (portuguese rules).
   Se o segmento inicial deste percorredor for algum tipo de operador de atribuição de estruturas compostas, examine o type usando o percorredor (has ou have); volte.
-  Se o segmento inicial deste percorredor não for algum tipo de operador de atribuição simples, apresente uma mensagem de erro contendo "Eu esperava um 'is' ou um 'are', mas só achei um " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; volte.
+  Se o segmento inicial deste percorredor não for algum tipo de operador de atribuição simples, apresente a mensagem de erro contendo "Eu esperava um 'is' ou um 'are', mas só achei um " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; volte.
     \Pluralize o plural nome deste type.
     \Se o segmento inicial deste percorredor for "has" ou "have", examine o type usando o percorredor (has ou have); volte.
     \Se o segmento inicial deste percorredor não for "is" ou "are", apresente uma mensagem de erro contendo "I was expecting um 'is' ou 'are', but I found: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; volte.
