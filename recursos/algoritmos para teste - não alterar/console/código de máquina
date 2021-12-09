@@ -1,0 +1,826 @@
+\Um programa em código de máquina consiste de uma sequência de bytes que correspondem a instruções a serem executadas pelo processador. 
+\As instruções do processador, chamadas de opcodes, são representadas por valores em hexadecimal.[
+\Para se programar em código de máquina, deve-se obter os códigos de instruções do processador utilizado contendo opcodes, operandos e formatos de cada instrução.
+\Por esse motivo foi criada uma linguagem de programação chamada Assembly, composta de códigos mnemônicos que expressam as mesmas instruções do processador, 
+\embora escritos em acrônimos da língua inglesa, tais como MOV ou REP, em vez de opcodes.
+
+Um endereço de memória é um conjunto com 4 pedaços.
+Um endereço numérico é um endereço de memória para um número.
+Uma cifra binária é um pedaço. \ somente são válidos os 4 bits de ordem inferior. Exemplo: No byte 0101 1010 somente a parte "1010" é válida. 
+ \ é um "low order nibble" ou uma sucessão de bytes de ordem inferior
+O texto CRLF é uma string igual a $0D0A.
+Um cifra hexadecimal é uma string. \ Exemplo: $0010A0... O cifrão serve para indicar ao compilador que se trata de um valor hexadecimal. 
+ \Em outras linguagens costuma-se usar um # (como no css #a1b2e3; ou um 0x, por exemplo 0xA1B2FF...
+
+Uma word é um conjunto com 
+  Um pedaço inicial [high byte] e 
+  Um pedaço final [low byte].
+
+Um número é um conjunto com
+  Um primeiro pedaço,
+  Um segundo pedaço,
+  Um terceiro pedaço,
+  Um quarto pedaço, \ 4 bytes = 32 bits +
+  Uma low word sob o primeiro pedaço, \ 
+  Uma high word sob o terceiro pedaço.
+
+Uma máscara de disjunção exclusiva é uma mask.
+
+Etapas para que se unassign um endereço de memória:
+  Se o endereço de memória for inexistente, cancele.
+  Call "kernel32.dll" "HeapFree" com 
+    O endereço heap 
+    e 0 [no options] e 
+  o endereço de memória 
+    devolvendo um número.
+  Se o número for 0, cancele.
+  Esvazie o endereço de memória.
+  Subtraia 1 desde a contagem do heap.
+
+An unit é um número.
+
+Uma coisa é um endereço de memória para uma coisa conjunto.
+\An conjunto de texto é uma coisa com uma string.
+Uma coisa conjunto é um conjunto com 
+  Uma next coisa e 
+  Uma previous coisa.
+
+Some coisas é um conjunto com 
+  Uma first coisa e 
+  Uma last coisa.
+
+Etapas para que se permute um par de números com um segundo par de números:
+  Permute o número X deste par de números com o número X desta segundo par de números.
+  Permute o número Y deste par de números com o número Y desta segundo par de números.
+
+Etapas para que se permute um endereço de memória com um segundo endereço de memória;
+Etapas para que se permute um número com um segundo número:
+  Atribua o número a um terceiro número.
+  Atribua o segundo número ao número.
+  Atribua o terceiro número ao segundo número.
+
+Etapas para que se permute umas coisas com umas segunda coisas:
+  Permute o first destas coisas com o first destas segunda coisas.
+  Permute o last destas coisas com o last destas segunda coisas.
+
+Etapas para que se subtraia uma fração desde uma segunda fração:
+  Isole a fração.
+  Normalize a fração e a segunda fração.
+  Subtraia o numerador desta fração desde o numerador desta segunda fração.
+  Reduza a segunda fração.
+
+Etapas para que se subtraia um número e um segundo número desde um par de números:
+  Subtraia o número desde o x deste par de números.
+  Subtraia o segundo número desde o y deste par de números.
+
+Etapas para que se subtraia um número desde um fração:
+  Subtraia o número / 1 desde a fração.
+
+Etapas para que se subtraia um número desde um par de números:
+  Subtraia o número desde o número X deste par de números.
+  Subtraia o número desde o número Y deste par de números.
+
+Etapas para que se subtraia um par de números desde um segundo par de números:
+  Subtraia o número X deste par de números desde o número X desta segundo par de números.
+  Subtraia o número Y deste par de números desde o número Y desta segundo par de números.
+
+\ CONCEITOS GERAIS DE ASSEMBLY:
+\ ANTES DE SE TRABALHAR COM UM VALOR, DEVE-SE MOVÊ-LO PARA UM REGISTRADOR.
+\ OS REGISTRADORES MAIS USADOS SÃO eax, ebx, ecx e assim por diante
+\ EXISTEM REGISTRADORES DE USO GERAL E DE USO ESPECÍFICO
+\ NO GERAL ebp+8 SE REFERE AO 1º ARGUMENTO DE UMA FUNÇÃO
+\ ebp+12 SE REFERE AO 2º ARGUMENTO E ASSIM POR DIANTE
+
+Etapas para que se subtraia um pedaço desde um segundo pedaço:
+  Intel $8B8508000000. \ mov eax,[ebp+8]  -> Salva o 1º byte (ebp+8) no registrador eax
+  Intel $0FB600. \ movzx eax,[eax] -> ebp+8 é onde fica o valor do 1º argumento da função. ebp+12 é o 2º argumento
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> Salva o 2º byte (ebp+12) no registrador ebx
+  Intel $2803. \ sub [ebx],al -> subtrai o 1º byte do 2º byte
+
+Etapas para que se subtraia um pedaço desde um número:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> Salva o byte (ebp+8) no registrador eax
+  Intel $0FB600. \ movzx eax,[eax] -> ebp+8 é onde fica o valor do 1º argumento da função. ebp+12 é o 2º argumento
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> Salva o número (ebp+12) no registrador ebx
+  Intel $2903. \ sub [ebx],eax -> subtrai o byte do número
+
+Etapas para que se subtraia um número desde um pedaço:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> Salva o número (ebp+8) no registrador eax
+  Intel $8B00. \ mov eax,[eax] -> ebp+8 é onde fica o valor do 1º argumento da função. ebp+12 é o 2º argumento
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> Salva o byte (ebp+12) no registrador ebx
+  Intel $0FB60B. \ movzx ecx,[ebx] -> Salva o endereço de ebx em ecx. E "zero extende", ou seja
+  \se houver disparidade entre o valor do byte e do número e for preciso expandir a quantidade de bits,  o espaço restante é preenchido com zeros
+  Intel $2BC8. \ sub ecx,eax -> subtrai o número do byte
+  Intel $880B. \ mov [ebx],cl -> salva o valor no endereço de memória salvo no registrador ebx
+
+Etapas para que se subtraia um endereço de memória desde um segundo endereço de memória;
+Etapas para que se subtraia um número desde um endereço de memória;
+Etapas para que se subtraia um número desde um segundo número:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> Salva o 1º número/endereço (ebp+8) no registrador eax
+  Intel $8B00. \ mov eax,[eax] -> ebp+8 é onde fica o valor do 1º argumento da função. ebp+12 é o 2º argumento
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> Salva o 2º número/endereço (ebp+12) no registrador ebx
+  Intel $2903. \ sub [ebx],eax -> subtrai o 1º valor do 2º
+
+Etapas para que se desloque um pedaço left uns bits:
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] -> salva a quantidade de bits informada (ebp+12) no registrador ecx
+  Intel $8B09. \ mov ecx,[ecx] -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o byte (ebp+8) no registrador eax
+  Intel $D220. \ shl ptr [eax],ecx -> efetua o deslocamento dos bits para a esquerda (comando shl)
+
+Etapas para que se desloque um pedaço right uns bits:
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] -> salva a quantidade de bits informada (ebp+12) no registrador ecx
+  Intel $8B09. \ mov ecx,[ecx] -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o byte (ebp+8) no registrador eax
+  Intel $D228. \ shr ptr [eax],ecx -> efetua o deslocamento dos bits para a direita (comando shr)
+
+Etapas para que se desloque um número left uns bits:
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] -> salva a quantidade de bits informada (ebp+12) no registrador ecx
+  Intel $8B09. \ mov ecx,[ecx] -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o número (ebp+8) no registrador eax
+  Intel $D320. \ shl [eax],ecx -> efetua o deslocamento do número para a esquerda (comando shl)
+
+Etapas para que se desloque um número right uns bits:
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] -> salva a quantidade de bits informada (ebp+12) no registrador ecx
+  Intel $8B09. \ mov ecx,[ecx] -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o número (ebp+8) no registrador eax
+  Intel $D328. \ shr [eax],ecx -> efetua o deslocamento do número para a direita (comando shr)
+
+Etapas para que se desloque um word left uns bits:
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] -> salva a quantidade de bits informada (ebp+12) no registrador ecx
+  Intel $8B09. \ mov ecx,[ecx] -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ salva a word (ebp+8) no registrador eax
+  Intel $66D320. \ shl word ptr [eax],ecx \ shr word ptr [eax],ecx -> efetua o deslocamento dos bits para a esquerda (comando shl)
+
+Etapas para que se desloque um word right uns bits:
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] -> salva a quantidade de bits informada (ebp+12) no registrador ecx
+  Intel $8B09. \ mov ecx,[ecx] -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ salva a word (ebp+8) no registrador eax
+  Intel $66D328. \ shr word ptr [eax],ecx -> efetua o deslocamento dos bits  para a direita (comando shr)
+
+Etapas para que se arredonde um número para cima para o nearest power of two:
+  Intel $8B8D08000000. \ mov ecx,[ebp+8] -> salva o número (ebp+8) no registrador ecx
+  Intel $8B09. \ mov ecx,[ecx] 
+  Intel $49. \ dec ecx -> diminui o valor de ecx
+  Intel $0FBDC9. \ bsr ecx,ecx ->Bit scan reverse- Pesquisa no operando de origem (segundo operando) pelo conjunto de bits mais significativo (1 bit)
+  \Se encontrar, o índice de bit é armazenado no operando de destino (primeiro operando).
+  Intel $41. \ inc ecx -> aumenta o valor de ecx
+  Intel $81F904000000. \ cmp ecx,4 -> compara o valor de ecx
+  Intel $0F8F05000000. \ jg over the next 1 statement (Jump short if greater)
+  Intel $B904000000. \ mov ecx,4
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
+  Intel $C70001000000. \ mov [eax],1
+  Intel $D320. \ shl [eax],ecx 
+
+Etapas para que se reset um endereço de memória;
+Etapas para que se reset um endereço de memória pelo next time around;
+Etapas para que se esvazie um endereço de memória:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o endereço de memória (ebp+8) no registrador eax
+  Intel $C70000000000. \ mov [eax],0 -> zera o registrador eax
+
+Etapas para que se atribua uma word para uma segunda word:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva a 1ª word (ebp+8) no registrador eax
+  Intel $668B00. \ mov ax,[eax] -> salva o endereço da 1ª word no registrador ax
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> salva a 2ª word (ebp+12) no registrador ebx
+  Intel $668903. \ mov [ebx],ax -> Atribui o endereço da 1ª word para a 2ª word
+
+Etapas para que se atribua um word para um word big-endian unsigned:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva a word (ebp+8) no registrador eax
+  Intel $668B00. \ mov ax,word ptr [eax]  -> ebp+8 é o 1º parâmetro da função. 
+  Intel $86E0. \ xchg al,ah -> ebp+12 é o 2º parâmetro da função
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> salva a o word big-endian unsigned  (ebp+12) no registrador ebx
+  Intel $668903. \ mov word ptr [ebx],ax
+
+Etapas para que se atribua um word para um pedaço:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva a word (ebp+8) no registrador eax
+  Intel $668B00. \ mov ax,[eax] -> ebp+8 é o 1º parâmetro da função. ebp+12 é o 2º parâmetro
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> salva o byte (ebp+12) no registrador ebx
+  Intel $8803. \ mov [ebx],al
+
+Etapas para que se atribua um word para eax:
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] -> salva a word (ebp+8) no registrador ebx
+  Intel $0FBF03. \ movsx eax,word ptr [ebx]
+
+Etapas para que se atribua um word para um número:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva a word (ebp+8) no registrador eax
+  Intel $0FBF00. \ movsx eax,word ptr [eax] -> ebp+8 é o 1º parâmetro da função. ebp+12 é o 2º parâmetro
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> salva o número (ebp+12) no registrador ebx
+  Intel $8903. \ mov [ebx],eax -> atribui a word ao número
+
+Etapas para que se atribua a quantidade de caracteres dessa string para uma quantidade de caracteres:
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] -> salva a string (ebp+8) no registrador eax
+  \ Carrega default result
+  Intel $B900000000. \ mov ecx,0 -> zera o registrador ecx
+  \ if first for 0, store 0
+  Intel $833B00. \ cmp [ebx],0 -> compara a string com 0. 
+  Intel $0F8414000000. \ je store it
+  \ if last for menor do que first, store 0
+  Intel $8B5304. \ mov edx,[ebx+4] -> atribui o last endereço de memória ao registrador edx
+  Intel $3B13. \ cmp edx,[ebx] -> compara edc com ebx
+  Intel $0F8C09000000. \ jl store it
+  \ calcula a  quantidade de caracteres
+  Intel $8B8B04000000. \ mov ecx,[ebx+4] ->atribui o last endereço de memória ao registrador ecx
+  Intel $2B0B. \ sub ecx,[ebx] \ subtrai o registrador ebx do ecx
+  Intel $41. \ inc ecx \ adiciona 1 ao registrador ecx
+  \ STORE IT:
+  Intel $8B950C000000. \ mov edx,[ebp+12] \ atribui a quantidade de caracteres (ebp+12) ao registrador edx
+  Intel $890A. \ mov [edx],ecx -> atribui o valor de ecx ao registrador edx
+
+Etapas para que se atribua um número para uma word:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> atribui o número (ebp+8) ao registrador eax
+  Intel $8B00. \ mov eax,[eax] -> ebp+8 representa o primeiro argumento da função (o número).
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> atribui a word (ebp+12) ao registrador ebx
+  Intel $668903. \ mov [ebx],ax
+
+Etapas para que se atribua um número para um pedaço:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> atribui o número (ebp+8) ao registrador eax
+  Intel $8B00. \ mov eax,[eax] -> ebp+8 representa o primeiro argumento da função (o número).
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> atribui o byte (ebp+12) ao registrador ebx
+  Intel $8803. \ mov [ebx],al
+
+Etapas para que se atribua um detector para um segundo detector;
+Etapas para que se atribua um detector para um número;
+Etapas para que se atribua um endereço de memória para um número;
+Etapas para que se atribua um endereço de memória para um segundo endereço de memória;
+Etapas para que se atribua um número para um detector;
+Etapas para que se atribua um número para um endereço de memória;
+Etapas para que se atribua um número para um segundo número:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o 1º valor (ebp+8) no registrador eax
+  Intel $8B00. \ mov eax,[eax] -> ebp=8 representa o 1º parâmetro da função. ebp+12 representa o 2º parâmetro
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> salva o 2º valor (ebp+12) no registrador ebx
+  Intel $8903. \ mov [ebx],eax -> salva eax em ebx
+
+Etapas para que se atribua um detector para eax;
+Etapas para que se atribua um endereço de memória para eax;
+Etapas para que se atribua um número para eax:
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] -> salva o número (ebp+8) no registrador ebx
+  Intel $8B03. \ mov eax,[ebx] -> salva ebx em eax
+
+Etapas para que se atribua eax para um pedaço:
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] -> salva o byte (ebp+8) no registrador ebx
+  Intel $8803. \ mov [ebx],al -> atribui o al para o endereço de ebx
+
+Etapas para que se atribua eax para um detector;
+Etapas para que se atribua eax para um endereço de memória;
+Etapas para que se atribua eax para um número:
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] -> salva o número (ebp+8) no registrador ebx
+  Intel $8903. \ mov [ebx],eax -> atribui eax ao endereço de ebx
+
+Etapas para que se atribua eax para um word:
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] -> salva a word (ebp+8) no registrador ebx
+  Intel $668903. \ mov [ebx],ax -> atribui o ax para o endereço do ebx
+
+Etapas para que se atribua um pedaço para uma word:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o byte (ebp+8) no registrador eax
+  Intel $660FB600. \ movzx eax,byte ptr [eax]
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ->  salva a word (ebp+12) no registrador ebx
+  Intel $668903. \ mov [ebx],ah
+
+Etapas para que se atribua um pedaço para um segundo pedaço:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o 1º byte (ebp+8) no registrador eax
+  Intel $8A00. \ mov al,[eax]
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> salva o 2º byte (ebp+12) no registrador ebx
+  Intel $8803. \ mov [ebx],al
+
+Etapas para que se atribua um pedaço para eax:
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] -> salva o byte (ebp+8) no registrador eax
+  Intel $0FB603. \ movzx eax,byte ptr [ebx]
+
+Etapas para que se atribua um pedaço para um número:
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o byte (ebp+8) no registrador eax
+  Intel $0FB600. \ movzx eax,byte ptr [eax]
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ->  salva o número (ebp+12) no registrador ebx
+  Intel $8903. \ mov [ebx],eax
+
+Etapas para que se translate um pedaço using um translation texto hexadecimal:
+  Intel $8B8D08000000. \ mov ecx,[ebp+8]  -> salva o endereço do byte (ebp+8) no registrador ecx 
+  Intel $8B01. \ mov eax,[ecx] \ o byte
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] salva o endereço da tabela (ebp+12) no registrador ebx 
+  Intel $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
+  Intel $D7. \ xlat al,[ebx]
+  Intel $8901. \ mov [ecx],eax
+
+Etapas para que se posicione um subtexto sobre uma string:
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ o subtexto
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ a string
+  \ atribua o first endereço de memória do pedaço desta string ao first endereço de memória do pedaço deste subtexto
+  Intel $8B8B00000000. \ mov ecx,[ebx+0] \ o first  endereço de memória do pedaço da string
+  Intel $898800000000. \ mov [eax+0],ecx \ o first  endereço de memória do pedaço do subtexto
+  \ atribua o first endereço de memória do pedaço desta string menos 1 ao last endereço de memória do pedaço deste subtexto
+  Intel $49. \ dec ecx
+  Intel $898804000000. \ mov [eax+4],ecx \ o last endereço de memória do pedaço deste subtexto
+
+Etapas para que se escolha aleatoriamente uns twips entre uns min twips e uns segundo twips; \ precisa de tudo isso? ***
+Etapas para que se escolha aleatoriamente um número entre uns min twips e uns segundo twips;
+Etapas para que se escolha aleatoriamente um número entre um min número e um max número;
+Etapas para que se escolha aleatoriamente um número desde um min número para um max número;
+Etapas para que se defina um número para something entre um segundo número e um terceiro número;
+Etapas para que se escolha aleatoriamente um número aleatório entre um min número e um max número:
+  Atribua o endereçamento deste seed para EAX.
+    \ atribua address of randseed A ecx
+  Intel $8BC8. \ mov ecx,eax
+    \ calculate zero based max
+  Intel $8B8510000000. \ mov eax,[ebp+16] \ o max
+  Intel $8B00. \ mov eax,[eax]
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o min
+  Intel $2B03. \ sub eax,[ebx]
+  Intel $40. \ inc eax
+    \ ajuste randseed
+  Intel $691105840808. \ imul edx,[ecx],134775813
+  Intel $42. \ inc edx
+  Intel $8911. \ mov [ecx],edx
+    \ mul adjusted randseed pelo zero based max
+  Intel $F7E2. \ mul edx
+    \ adicione o min para an-zero base o número
+  Intel $0313. \ adicione edx,[ebx] o min
+    \ store o result
+  Intel $8B9D08000000. \ mov ebx,[ebp+08] \ o número aleatório
+  Intel $8913. \ mov [ebx],edx
+  Atribua o número aleatório ao número deste context.
+
+Etapas para que se multiplique um endereço de memória por um número;
+Etapas para que se multiplique um número por um segundo número:
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
+  Intel $8B00. \ mov eax,[eax]
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
+  Intel $F72B.\ mul [ebx] \ means mul eax,[ebx] but é weird form
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Intel $8903. \ mov [ebx],eax
+
+Etapas para que se negate um número:
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
+  Intel $F718.\ neg [eax]
+
+Etapas para que se negate um par de números:
+  Negate o número X deste par de números.
+  Negate o número Y deste par de números.
+
+Etapas para que se negate uma fração:
+  Negate o numerador desta fração.
+
+Etapas para que se atribua um detector para uma string;
+Etapas para que se converta um detector para uma string:
+  Se o detector estiver ativo, atribua "yes" à string; volte. \ no momento tem que ser inglês por conta das externalized reams
+  Atribua "no" à string.
+
+Etapas para que se reassign um endereço de memória usando um quantidade de pedaços:
+  Se o endereço de memória for inexistente, assign o endereço de memória usando o quantidade de pedaços; volte.
+  Se o quantidade de pedaços for 0, unassign o endereço de memória; volte.
+  Isole o quantidade de pedaços.
+  Arredonde o quantidade de pedaços para cima para o nearest power of two.
+  Call "kernel32.dll" "HeapReAlloc" com 
+    O endereço heap 
+    e 8 [HEAP_ZERO_MEMORY] 
+    e O endereço de memória 
+    e A quantidade de pedaços 
+    devolvendo o endereço de memória.
+
+Etapas para que se mostre olá mundo no console:
+  Intel $B403. \mov    ah,0x3
+  Intel $CD10. \int    0x10
+  Intel $B001. \mov    al,0x1
+  Intel $B30A. \mov    bl,0xa
+  Intel $B90B00BD13.  \mov    ecx,0x13bd000b
+  Intel $01B413CD10C34F. \add    DWORD PTR [ebx+edx*1+0x4fc310cd],esi
+  Intel $69206D756E64.  \ imul   esp,DWORD PTR [eax],0x646e756d
+  Intel $6D. \  outs   dx,DWORD PTR ds:[esi]
+  Intel $21. \   .byte 0x21
+  Intel $0D.  \   .byte 0xd
+  Intel $0A.  \   .byte 0xa
+
+Etapas para que se adicione um pedaço para um segundo pedaço:
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ o byte 67 8B 45 08
+  Intel $0FB600. \ movzx eax,[eax]
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo byte 67 8B 5D 0C
+  Intel $0003. \ add [ebx],al
+
+Etapas para que se adicione um pedaço para um número:
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ o byte
+  Intel $0FB600. \ movzx eax,[eax]
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o número
+  Intel $0103. \ adicione [ebx],eax
+
+Etapas para que se adicione um número para um pedaço:
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
+  Intel $8B00. \ mov eax,[eax]
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o byte
+  Intel $0FB60B. \ movzx ecx,[ebx]
+  Intel $03C8. \ adicione ecx,eax
+  Intel $880B. \ mov [ebx],cl
+
+Etapas para que se adicione um número para um endereço de memória;
+Etapas para que se adicione um número para um segundo número:
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
+  Intel $8B00. \ mov eax,[eax]
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
+  Intel $0103. \ adicione [ebx],eax
+
+Etapas para que se conjuncione logicamente um pedaço com um segundo pedaço:
+  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo byte
+  Intel $8A00. \ mov al,[eax]
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $2003. \ e [ebx],al
+
+Etapas para que se conjuncione logicamente um pedaço com um número:
+  Intel $8B850C000000. \ mov eax,[ebp+12] \ o número
+  Intel $8B00. \ mov eax,[eax]
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $2003. \ e [ebx],al
+
+Etapas para que se conjuncione logicamente um número com um segundo número:
+  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo número
+  Intel $8B00. \ mov eax,[eax]
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Intel $2103. \ e [ebx],eax
+
+Etapas para que se disjuncione logicamente um pedaço com um segundo pedaço:
+  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo byte
+  Intel $8A00. \ mov al,[eax]
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $0803. \ ou [ebx],al
+
+Etapas para que se disjuncione logicamente um pedaço com um número:
+  Intel $8B850C000000. \ mov eax,[ebp+12] \ o número
+  Intel $8B00. \ mov eax,[eax]
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $0803. \ ou [ebx],al
+
+Etapas para que se disjuncione logicamente um número com um segundo número:
+  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo número
+  Intel $8B00. \ mov eax,[eax]
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Intel $0903. \ ou [ebx],eax
+
+Etapas para que se disjuncione seletivamente um pedaço com um segundo pedaço:
+  Intel $8B850C000000. \ mov eax,[ebp+12] \ a segunda byte
+  Intel $8A00. \ mov al,[eax]
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $3003. \ xor [ebx],al
+
+Etapas para que se disjuncione seletivamente um pedaço com um número:
+  Intel $8B850C000000. \ mov eax,[ebp+12] \ o número
+  Intel $8B00. \ mov eax,[eax]
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $3003. \ ou [ebx],al
+
+Etapas para que se disjuncione seletivamente um número com um segundo número:
+  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo número
+  Intel $8B00. \ mov eax,[eax]
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Intel $3103. \ xor [ebx],eax
+
+Etapas para que se avance um percorredor:
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ comando de movimentação do percorredor?
+  Intel $FF8314000000. \ inc [ebx+20] \ aumenta o valor do last endereço de memória do pedaço deste segmento inicial deste percorredor.
+  Intel $FF8308000000. \ inc [ebx+8] \ aumenta o valor do first endereço de memória do pedaço deste segmento final deste percorredor.
+
+Etapas para que se recue um percorredor:
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ comando de movimentação do percorredor?
+  Intel $FF8B14000000. \ dec [ebx+20] \ reduz o valor do last endereço de memória do pedaço deste segmento inicial deste percorredor.
+  Intel $FF8B08000000. \ dec [ebx+8] \ reduz o valor do first endereço de memória do pedaço deste segmento final deste percorredor.
+
+Etapas para que se compare uma string para uma segunda string usando uma quantidade de caracteres e uma segunda quantidade de caracteres e uma tabela de tradução (equal only):
+  Intel $8BB508000000. \ mov esi,[ebp+8] \ a string
+  Intel $8B36. \ mov esi,[esi] \ o first endereço de memória do pedaço desta string
+  Intel $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda string
+  Intel $8B3F. \ mov edi,[edi] \ o first endereço de memória do pedaço desta segunda string
+  Intel $8B8510000000. \ mov eax,[ebp+16] \ a quantidade de caracteres desta string
+  Intel $8B00. \ mov eax,[eax]
+  Intel $8B9514000000. \ mov edx,[ebp+20] \ a quantidade de caracteres desta segunda string
+  Intel $8B12. \ mov edx,[edx]
+  Intel $3BD0. \ cmp eax,edx \ if o differ do quantidade de caracteres, diga não.
+  Intel $0F852B000000. \ jne [Se as condições acima não puderem ser satisfeitas, então:] Diga não. \ ************************************ was 2C
+  Intel $8BC8. \ mov ecx,eax \ atribua quantidade de caracteres A ecx 
+  Intel $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
+  Intel $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
+    \ loop:
+  Intel $85C9. \ test ecx,ecx
+  Intel $0F8424000000. \ jz say yes \ ************************************ was 25
+     \ fetch e translate o current pedaço no segunda string
+  Intel $8A07. \ mov al,[edi]
+  Intel $D7. \ xlat al,[ebx]
+  Intel $C1E008. \ shl eax,8 C1 E0 08
+    \ fetch e translate o current pedaço no string
+  Intel $8A06. \ mov al,[esi]
+  Intel $D7. \ xlat al,[ebx]
+     \ compare o two translated pedaços
+  Intel $38E0. \ cmp al,ah
+  Intel $0F8508000000. \ jne [Se as condições acima não puderem ser satisfeitas, então:] Diga não. \ ************************************
+  Intel $46. \ inc esi
+  Intel $47. \ inc edi
+  Intel $49. \ dec ecx
+  Intel $E9DFFFFFFF. \ jmp loop \ ************************************ was DE
+    \[Se as condições acima não puderem ser satisfeitas, então:] Diga não.:
+  Intel $C7C000000000. \ mov eax,0
+  Intel $E906000000. \ jmp end
+    \SAY YES:
+  Intel $C7C001000000. \ mov eax,1
+
+    \ dahn - spanish strings 2 - which table para use?
+
+Etapas para que se compare uma string para uma segunda string usando uma quantidade de caracteres e uma segunda quantidade de caracteres e uma tabela de tradução devolvendo um número:
+  Intel $8BB508000000. \ mov esi,[ebp+8] \ a string
+  Intel $8B36. \ mov esi,[esi] \ o first do string
+  Intel $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda string
+  Intel $8B3F. \ mov edi,[edi] \ o first do segunda string
+  Intel $8B8510000000. \ mov eax,[ebp+16] \ a quantidade de caracteres do string
+  Intel $8B00. \ mov eax,[eax]
+  Intel $8B9514000000. \ mov edx,[ebp+20] \ a quantidade de caracteres do segunda string
+  Intel $8B12. \ mov edx,[edx]
+  Intel $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
+  Intel $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
+    \ obtenha o minimum quantidade de caracteres
+  Intel $8BC8. \ mov ecx,eax
+  Intel $3BCA. \ cmp ecx,edx
+  Intel $0F8602000000. \ jbe L2
+  Intel $8BCA. \ mov ecx,edx
+    \ if o minimum quantidade de caracteres for 0, jump para L5
+  Intel $85C9. \ test ecx,ecx
+  Intel $0F8428000000. \ jz L5
+    \L2:
+    \ loop:
+    \ fetch e translate o current pedaço no string
+  Intel $8A06. \ mov al,[esi]
+  Intel $D7. \ xlat al,[ebx]
+  Intel $88C2. \ mov dl,al
+    \ fetch e translate o current pedaço no segunda string
+  Intel $8A07. \ mov al,[edi]
+  Intel $D7. \ xlat al,[ebx]
+  Intel $88C6. \ mov dh,al
+    \L3:
+    \ compare o two translated pedaços
+  Intel $38F2. \ cmp dl,dh
+  Intel $0F8510000000. \ jne L4
+  Intel $46. \ inc esi
+  Intel $47. \ inc edi
+  Intel $49. \ dec ecx
+  Intel $85C9. \ test ecx,ecx
+  Intel $0F8405000000. \ jz L4
+  Intel $E9DEFFFFFF. \ jmp L2
+    \L4:
+    \ Carregue pedaços para EAX e edx por final compare
+  Intel $0FB6C2. \ movzx eax,dl
+  Intel $0FB6D6. \ movzx edx,dh
+    \L5:
+    \ subtraia either o lengths ou os last dois pedaços para abra o eax para <0, =0, >0
+  Intel $2BC2. \ sub eax,edx
+  Intel $8B9D1C000000. \ mov ebx,[ebp+28] \ o número
+  Intel $8903. \ mov [ebx],eax
+
+Etapas para que se determine se um pedaço é um segundo pedaço:
+  Intel $C7C001000000. \ mov eax,1 \ assume true
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $8A1B. \ mov bl,[ebx]
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o outro byte
+  Intel $3A19. \ cmp bl,[ecx]
+  Intel $0F8406000000. \ je over o next 1 statement
+  Intel $C7C000000000. \ mov eax,0 \ now it is false
+
+Etapas para que se determine se um pedaço é maior que um segundo pedaço;
+Etapas para que se determine se um pedaço é maior do que um segundo pedaço:
+  Intel $C7C001000000. \ mov eax,1 \ assume true
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $8A1B. \ mov bl,[ebx]
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
+  Intel $3A19. \ cmp bl,[ecx]
+  Intel $0F8706000000. \ ja over o next 1 statement
+  Intel $C7C000000000. \ mov eax,0 \ now it is false
+
+Etapas para que se determine se um pedaço é maior que um número;
+Etapas para que se determine se um pedaço é maior do que um número:
+  Intel $C7C001000000. \ mov eax,1 \ assume true
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $0FB61B. \ movzx ebx,byte ptr [ebx]
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o número
+  Intel $3B19. \ cmp ebx,[ecx]
+  Intel $0F8F06000000. \ jg over o next 1 statement
+  Intel $C7C000000000. \ mov eax,0 \ now it is false
+
+Etapas para que se determine se um pedaço é maior do que ou igual para um segundo pedaço;
+Etapas para que se determine se um pedaço é maior que ou igual para um segundo pedaço;
+Etapas para que se determine se um pedaço é maior ou igual para um segundo pedaço:
+  Intel $C7C001000000. \ mov eax,1 \ assume true
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $8A1B. \ mov bl,[ebx]
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
+  Intel $3A19. \ cmp bl,[ecx]
+  Intel $0F8306000000. \ ja over o next 1 statement
+  Intel $C7C000000000. \ mov eax,0 \ now it is false
+
+Etapas para que se determine se um pedaço é menor que um segundo pedaço;
+Etapas para que se determine se um pedaço é menor do que um segundo pedaço:
+  Intel $C7C001000000. \ mov eax,1 \ assume true
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $8A1B. \ mov bl,[ebx]
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
+  Intel $3A19. \ cmp bl,[ecx]
+  Intel $0F8206000000. \ jb over o next 1 statement
+  Intel $C7C000000000. \ mov eax,0 \ now it is false
+
+Etapas para que se determine se um pedaço é menor que um número;
+Etapas para que se determine se um pedaço é menor do que um número:
+  Intel $C7C001000000. \ mov eax,1 \ assume true
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $0FB61B. \ movzx ebx,byte ptr [ebx]
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o número
+  Intel $3B19. \ cmp ebx,[ecx]
+  Intel $0F8C06000000. \ jl over o next 1 statement
+  Intel $C7C000000000. \ mov eax,0 \ now it is false
+
+Etapas para que se determine se um pedaço é menor do que ou igual para um segundo pedaço;
+Etapas para que se determine se um pedaço é menor que ou igual para um segundo pedaço;
+Etapas para que se determine se um pedaço é menor ou igual para um segundo pedaço:
+  Intel $C7C001000000. \ mov eax,1 \ assume true
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $8A1B. \ mov bl,[ebx]
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
+  Intel $3A19. \ cmp bl,[ecx]
+  Intel $0F8606000000. \ jbe over o next 1 statement
+  Intel $C7C000000000. \ mov eax,0 \ now it is false
+
+Etapas para que se determine se um pedaço é um número:
+  Intel $C7C001000000. \ mov eax,1 \ assume true
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Intel $0FB61B. \ movzx ebx,byte ptr [ebx]
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o número
+  Intel $3B19. \ cmp ebx,[ecx]
+  Intel $0F8406000000. \ je over o next 1 statement
+  Intel $C7C000000000. \ mov eax,0 \ now it is false
+
+Etapas para que se determine se um detector é um número;
+Etapas para que se determine se um detector é um segundo detector;
+Etapas para que se determine se um endereço de memória é um número;
+Etapas para que se determine se um endereço de memória é um segunda endereço de memória;
+Etapas para que se determine se um número é um segundo número:
+  Intel $C7C001000000. \ mov eax,1 \ assume true
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Intel $8B1B. \ mov ebx,[ebx]
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
+  Intel $3B19. \ cmp ebx,[ecx]
+  Intel $0F8406000000. \ je over o next 1 statement
+  Intel $C7C000000000. \ mov eax,0 \ now it is false
+
+Etapas para que se determine se um endereço de memória é maior do que um segundo endereço de memória;
+Etapas para que se determine se um número é maior do que um segundo número:
+  Intel $C7C001000000. \ mov eax,1 \ assume true
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Intel $8B1B. \ mov ebx,[ebx]
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
+  Intel $3B19. \ cmp ebx,[ecx]
+  Intel $0F8F06000000. \ jg over o next 1 statement
+  Intel $C7C000000000. \ mov eax,0 \ now it is false
+
+Etapas para que se determine se um endereço de memória é maior do que ou igual para um segundo endereço de memória;
+Etapas para que se determine se um endereço de memória é maior que ou igual para um segundo endereço de memória;
+Etapas para que se determine se um endereço de memória é maior ou igual para um segundo endereço de memória;
+Etapas para que se determine se um número é um segundo número ou more;
+Etapas para que se determine se um número é maior do que ou igual para um segundo número;
+Etapas para que se determine se um número é maior que ou igual para um segundo número;
+Etapas para que se determine se um número é maior ou igual para um segundo número:
+  Intel $C7C001000000. \ mov eax,1 \ assume true
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Intel $8B1B. \ mov ebx,[ebx]
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
+  Intel $3B19. \ cmp ebx,[ecx]
+  Intel $0F8D06000000. \ jge over o next 1 statement
+  Intel $C7C000000000. \ mov eax,0 \ now it is false
+
+Etapas para que se determine se um endereço de memória é menor do que um segundo endereço de memória;
+Etapas para que se determine se um endereço de memória é menor que um segundo endereço de memória;
+Etapas para que se determine se um número é menor que um segundo número;
+Etapas para que se determine se um número é menor do que um segundo número:
+  Intel $C7C001000000. \ mov eax,1 \ assume true
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Intel $8B1B. \ mov ebx,[ebx]
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
+  Intel $3B19. \ cmp ebx,[ecx]
+  Intel $0F8C06000000. \ jl over o next 1 statement
+  Intel $C7C000000000. \ mov eax,0 \ now it is false
+
+Etapas para que se determine se um endereço de memória é menor do que ou igual para um segundo endereço de memória;
+Etapas para que se determine se um endereço de memória é menor que ou igual para um segundo endereço de memória;
+Etapas para que se determine se um endereço de memória é menor ou igual para um segundo endereço de memória;
+Etapas para que se determine se um número é um segundo número ou menos;
+Etapas para que se determine se um número é um segundo número ou menor;
+Etapas para que se determine se um número é menor do que ou igual para um segundo número;
+Etapas para que se determine se um número é menor que ou igual para um segundo número;
+Etapas para que se determine se um número é menor ou igual para um segundo número:
+  Intel $C7C001000000. \ mov eax,1 \ assume true
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Intel $8B1B. \ mov ebx,[ebx]
+  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
+  Intel $3B19. \ cmp ebx,[ecx]
+  Intel $0F8E06000000. \ jle over o next 1 statement
+  Intel $C7C000000000. \ mov eax,0 \ now it is false
+
+Etapas para que se determine se uma string está em branco:
+    \ assume true
+  Intel $B801000000. \ mov eax,1
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ a string
+    \ if first for 0, exit
+  Intel $833B00. \ cmp [ebx],0
+  Intel $0F8410000000. \ je end
+    \ if last for menor do que first, exit
+  Intel $8B5304. \ mov edx,[ebx+4] \ last endereço de memória
+  Intel $3B13. \ cmp edx,[ebx]
+  Intel $0F8C05000000. \ jl end
+    \ [Se as condições acima não puderem ser satisfeitas, então:] Diga não.:
+  Intel $B800000000. \ mov eax,0
+    \ END:
+
+Etapas para que se fill pedaços com um pedaço starting sob um endereço de memória por um quantidade de pedaços:
+  Intel $8BBD0C000000. \ mov edi,[ebp+12] \ o endereço de memória
+  Intel $8B3F. \ mov edi,[edi]
+  Intel $8B8D10000000. \ mov ecx,[ebp+16] \ a contagem
+  Intel $8B09. \ mov ecx,[ecx]
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ o byte
+  Intel $8A00. \ mov al,[eax]
+  Intel $FC. \ cld
+  Intel $F3AA. \ rep stosb
+
+Etapas para que se copie pedaços desde um endereço de memória para um segundo endereço de memória por um quantidade de pedaços:
+    \ copie handling overlap com 1 pedaço moves
+  Intel $8BB508000000. \ mov esi,[ebp+8] \ o endereço de memória
+  Intel $8B36. \ mov esi,[esi]
+  Intel $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda endereço de memória
+  Intel $8B3F. \ mov edi,[edi]
+  Intel $8B8D10000000. \ mov ecx,[ebp+16] \ o número
+  Intel $8B09. \ mov ecx,[ecx]
+    \ check por something para copiar
+  Intel $81F900000000. \ cmp ecx,0
+  Intel $0F8E39000000. \ jle end
+    \ check por no overlap
+  Intel $3BF7. \ cmp esi,edi
+  Intel $0F8D24000000. \ jge forward
+  Intel $8BC6. \ mov eax,esi
+  Intel $03C1. \ adicione eax,ecx
+  Intel $3BC7. \ cmp eax,edi
+  Intel $0F8E18000000. \ jle forward
+    \ copia backward
+  Intel $03F1. \ adicione esi,ecx
+  Intel $4E. \ dec esi
+  Intel $03F9. \ adicione edi,ecx
+  Intel $4F. \ dec esi
+    \ backward
+  Intel $8A16. \ mov dl,[esi]
+  Intel $8817. \ mov [edi],dl
+  Intel $4E. \ dec esi
+  Intel $4F. \ dec edi
+  Intel $49. \ dec ecx
+  Intel $0F85F3FFFFFF. \ jnz backward
+  Intel $E90D000000. \ jmp end
+    \ forward: copia forward
+  Intel $8A16. \ mov dl,[esi]
+  Intel $8817. \ mov [edi],dl
+  Intel $46. \ inc esi
+  Intel $47. \ inc edi
+  Intel $49. \ dec ecx
+  Intel $0F85F3FFFFFF. \ jnz forward
+
+Etapas para que se lance um subtexto sobre uma string: \assembly
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ o subtexto
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ a string
+    \ atribua o first endereço de memória do pedaço desta string ao first do subtexto
+  Intel $8B8B00000000. \ mov ecx,[ebx+0] \ o first endereço de memória do pedaço desta string
+  Intel $898800000000. \ mov [eax+0],ecx \ o first do subtexto
+    \ atribua o last endereço de memória do pedaço desta string ao last endereço de memória do pedaço deste subtexto
+  Intel $8B8B04000000. \ mov ecx,[ebx+4] \ o last do string
+  Intel $898804000000. \ mov [eax+4],ecx \ o last endereço de memória do pedaço deste subtexto
+
+Etapas para que se divida um endereço de memória por um número;
+Etapas para que se divida um número por um segundo número:
+  Se o segundo número for 0, atribua o maior número ao número; volte.
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
+  Intel $8B00. \ mov eax,[eax]
+  Intel $99. \ cdq
+  Intel $F73B. \ div [ebx] \ means div eax,[ebx] but é weird form
+  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Intel $8903. \ mov [ebx],eax
+
+Etapas para que se divida um endereço de memória por um número usando um quociente e um resto;
+Etapas para que se divida um número por um segundo número usando um quociente e um resto:
+  Se o segundo número for 0, atribua o maior número ao quociente; atribua 0 ao resto; volte.
+  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
+  Intel $8B00. \ mov eax,[eax]
+  Intel $99. \ cdq
+  Intel $F73B. \ idiv [ebx] \ means idiv eax,[ebx] but é weird form
+  Intel $8B9D10000000. \ mov ebx,[ebp+16] \ o quociente
+  Intel $8903. \ mov [ebx],eax
+  Intel $8B9D14000000. \ mov ebx,[ebp+20] \ o resto
+  Intel $8913. \ mov [ebx],edx
+
+O som de aviso é uma wave igual a $524946463A02000057415645666D74201200000001000100401F0000401F000001000800000066616374040000000702000064617461070200007F7F807F7F807F7F808080807F807F7F80817F81817E7E827E7D847C79877D5F6D99B2A25D608269A5979869667F7D8D738C7D8C5E7E878F767A75868D84797278829A7D7E857A73929271657492907D7E7D787E8B887C758388827E817F7C7B89897C7A7E84838183827E7A8488877D7E8181808484817C7F84838181807E7F8283807E8081808182807F7F81818081807F7F8081818080807F7F808180807F80808080807F8080807F8080808080807F7F7F7F7F8080807F7F7F7C7B8182817C7B7D7E8082807D7D7C7F8281807F7C7D808082807E7E7E7D7E807D7B7C7B7D7D7B7A7979797875727269797A490F4571FFF4FF0C001297FBF492525BB0F5B26A001C69BEE5BA76476F9EBD953C3757BAC9BB705C7F9AA883645D7897AA9B806977959588696976999B83766F828C907F7375828E91877B757D868B837A757C858D8880787B8187847B7A7D8788807B79808486817D7C7F8384817D7C7F8484817B7B7D83847F7C7B7E8182827D7C7C8082817D7C7D7F81807F7D7D7F82817F7B7B7E8081807E7D7D7F80807E7D7D7E80807E7D7D7E7F807F7D7D7E7F807F7E7D7E7E80807F7E7D7E80807F7E7E7E7F7F7E7E7E7F7F7F7F7E7E7F7F807F7F7E7E7E7F8080807E7E7E80807F7E7E7F8081807F7F7E7F7F80807F7E7F8081807F7E7E7E80808080807F807F7F7F7F7F7F7F80808080807F7F7F808080807F80808180807F80808100.
+
+O grayscale cor matrix é um texto hexadecimal igual a $8716993E8716993E8716993E0000000000000000A245163FA245163FA245163F0000000000000000D578E93DD578E93DD578E93D00000000000000000000000000000000000000000000803F00000000000000000000000000000000000000000000803F.
+
+
+
+
+
+
+
+
+
+
+
+

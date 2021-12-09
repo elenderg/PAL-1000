@@ -1,0 +1,903 @@
+O remembered pdf endereço completo é um endereço completo.
+
+Um folha modo retrato é uma folha.
+
+O pdf state é um pdf state.
+
+Uma pdf string é uma string. \ string surrounded por ( ) e has \( por left paren, \) por right paren, \\ por barra invertida
+
+Um pdf é um trecho.
+
+Um pdf endereço de memória é um endereço de memória para um pdf.
+
+Some  font larguras é uma coisa com \ used na pdf conversion
+  Uma font,
+  Uma contagem,
+  Um endereço numérico denominado data.
+
+Uma font info é uma coisa com \ used na pdf conversion
+  Uma font,
+  Um emsquare número,
+  Um internal leading número,
+  Um flags número,
+  Um ascent número,
+  Um descent número,
+  Um capheight número,
+  Um italicangle número,
+  Um stemv número,
+  Uma font caixa,
+  Some font larguras.
+
+An pdf object é uma coisa com
+  Uma categoria [contents, font definition, font descriptor, font streamoutline, image object, outline entry, página, parent, root],
+  Um número,
+  Um offset,
+  Um data trecho,
+  Um nome da fonte [font definition],
+  Um font info [font definition],
+  Some conjunto de textos denominado font strings [page],
+  Some conjunto de textos denominado image strings [page].
+
+An pdf outline entry é uma coisa com
+  Um pdf object (reference),
+  Um título de índice remissivo,
+  Um página altura,
+  Um destination número.
+
+Um pdf state é um conjunto com
+  Um pdf endereço de memória,
+  Um documento detector,
+  Um página detector,
+  Um object número,
+  Some pdf objects denominado objects,
+  Um xref offset,
+  Um outline pdf object (reference),
+  Some pdf outline entries denominado outline entries,
+  Um root pdf object (reference),
+  Um parent pdf object (reference),
+  Um current contents pdf object (reference),
+  Um current página pdf object (reference),
+  Um current altura,
+  Uma cor da borda atual,
+  Uma cor de preenchimento atual,
+  Um font catálogo.
+
+\Etapas para que se output a pdf border usando uma cor:
+\  Se a cor for a cor da borda atual deste pdf state, cancele.
+\  Output a cor sem passar pra próxima linha.
+\  Output " RG".
+\  Atribua a cor à cor da borda atual deste pdf state.
+
+\Etapas para que se output o pdf fill usando uma cor:
+\  Se a cor for a cor de preenchimento atual deste pdf state, cancele.
+\  Output a cor sem passar pra próxima linha.
+\  Output " rg".
+\  Atribua a cor à cor de preenchimento atual deste pdf state.
+
+Etapas para que se atribua umas font larguras para um trecho:
+  \ usado na conversão de pdf 
+  Limpe o trecho.
+  Se o font larguras forem inexistente, cancele.
+  Atribua o data destes font larguras a um endereço numérico.
+  Percorra. [o código abaixo]
+    Se um contador estiver past a contagem destas font larguras, pare.
+    Posponha o conteúdo deste endereço numérico seguido de " " para o trecho.
+    Adicione 1 para uma contagem.
+    Se a contagem for uniformemente divisível por 16, posponha o texto CRLF para o trecho.
+    Adicione a magnitude desse número para o endereço numérico.
+  Repita. [o código acima]
+
+Etapas para que se output uma localização sem passar pra próxima linha:
+  Output a coordenada X desta localização sem passar pra próxima linha.
+  Output a current altura deste pdf state menos a coordenada Y desta localização sem passar pra próxima linha.
+
+Etapas para que se output uma string:
+  Posponha a string para os current contents deste pdf state.
+
+Etapas para que se output uma string sem passar pra próxima linha:
+  Posponha a string para os current contents deste pdf state sem passar pra próxima linha.
+
+Etapas para que se output o pdf border usando uma cor:
+  Se a cor for a cor da borda atual deste pdf state, cancele.
+  Output a cor sem passar pra próxima linha.
+  Output " RG".
+  Atribua a cor à cor da borda atual deste pdf state.
+
+Etapas para que se output o pdf fill usando uma cor:
+  Se a cor for a cor de preenchimento atual deste pdf state, cancele.
+  Output a cor sem passar pra próxima linha.
+  Output " rg".
+  Atribua a cor à cor de preenchimento atual deste pdf state.
+
+Etapas para que se output setcolor usando uma cor da borda e uma cor de preenchimento:
+  Se a cor de preenchimento não estiver clear, output o pdf fill usando a cor de preenchimento.
+  Se a cor da borda não estiver clear, output o pdf border usando a cor da borda.
+
+Etapas para que se include uma font no current pdf:
+  Encontre um pdf object usando o nome desta font e o font catálogo deste pdf state.
+  Se o pdf object não for inexistente, cancele.
+  Crie uma font info usando o font.
+  Converta o font info para pdf em units.
+    \ stream
+  Atribua o actual data of o font a um trecho.
+  Converta o trecho para um cifra hexadecimal.
+  Adicione um stream pdf object usando "font stream".
+  Posponha o número deste stream seguido de " 0 obj" para o stream.
+  Posponha "<<" para o stream sem passar pra próxima linha.
+  Posponha "/Filter /ASCIIHexDecode" para o stream sem passar pra próxima linha.
+  Posponha " /Length " junto com a quantidade de caracteres deste cifra hexadecimal para o stream sem passar pra próxima linha.
+  Posponha " /Length1 " junto com a quantidade de caracteres deste trecho para o stream sem passar pra próxima linha.
+  Posponha ">>" para o stream.
+  Posponha "stream" para o stream.
+  Posponha a cifra hexadecimal para o stream.
+  Posponha "endstream" para o stream.
+  Posponha "endobj" para o stream.
+    \ descriptor
+  Adicione um descriptor pdf object usando "font descriptor".
+  Atribua "F" junto com o número deste descriptor a uma nome da fonte.
+  Atribua o nome desta font a uma font base nome.
+  Replace o caractere de espaço com o underline no font base nome.
+  Posponha o número deste descriptor seguido de " 0 obj" para o descriptor.
+  Posponha "<<" para o descriptor.
+  Posponha "/Type /FontDescriptor" para o descriptor.
+  Posponha "/FontNomeie /" junto com o font base nome para o descriptor.
+  Posponha "/FontFile2 " junto com o número deste stream seguido de " 0 R" para o descriptor.
+  Posponha "/alarmes " junto com o flags deste font info para o descriptor.
+  Posponha "/FontBBox [" junto com a font caixa desta font info seguido de "]" para o descriptor.
+  Posponha "/Ascent " junto com o ascent desta font info para o descriptor.
+  Posponha "/Descent " junto com o descent desta font info para o descriptor.
+  Posponha "/CapHeight " junto com o capheight desta font info para o descriptor.
+  Posponha "/ItalicAngle " junto com o italicangle desta font info para o descriptor.
+  Posponha "/StemV " junto com o stemv desta font info para o descriptor.
+  Posponha ">>" para o descriptor.
+  Posponha "endobj" para o descriptor.
+    \ definition
+  Adicione um definition pdf object usando "font definition".
+  Atribua o nome da fonte ao nome da fonte desta definition.
+  Posponha o número desta definition seguido de " 0 obj" para a definition.
+  Posponha "<<" para a definition.
+  Posponha "/Type /Font" para a definition.
+  Posponha "/Subtype /TrueType" para a definition.
+  Posponha "/Nomeie /" junto com o nome da fonte para a definition.
+  Posponha "/BaseFont /" junto com o font base nome para a definition.
+  Posponha "/Encoding /WinAnsiEncoding" para a definition.
+  Posponha "/FontDescriptor " junto com o número deste descriptor seguido de " 0 R" para a definition.
+  Posponha "/FirstChar 0" para a definition.
+  Posponha "/LastChar 255" para a definition.
+  Atribua as font larguras desta font info a uma segunda trecho.
+  Posponha "/Widths [" para a definition.
+  Posponha a segunda trecho seguido de "]" para a definition.
+  Posponha ">>" para a definition.
+  Posponha "endobj" para a definition.
+  Atribua o font info à font info desta definition.
+  Catalogue a definition usando o nome desta font e o font catálogo deste pdf state.
+
+Etapas para que se include uma font em um pdf object:
+  Se o pdf object for inexistente, cancele.
+  Encontre uma font pdf object usando o nome desta font e o font catálogo deste pdf state.
+  Se o font pdf object for inexistente, cancele.
+  Atribua "/" junto com o nome da fonte deste font pdf object seguido de " " junto com o número deste font pdf object seguido de " 0 R" a uma string.
+  Encontre um conjunto de texto usando a string e os font strings deste pdf object.
+  Se o conjunto de texto não for inexistente, cancele.
+  Crie um new conjunto de texto usando a string.
+  Posponha o new conjunto de texto para os font strings deste pdf object.
+
+Etapas para que se encontre um pdf object usando um categoria:
+  Esvazie o pdf object.
+  Percorra. [o código abaixo]
+    Obtenha o pdf object usando os objects deste pdf state.
+    Se o pdf object for inexistente, pare.
+    Se a categoria deste pdf object for a categoria, pare.
+  Repita. [o código acima]
+
+Etapas para que se end uma folha (pdf style - finish o current contents):
+  Atribua os current contents deste pdf state a um content pdf object.
+  Atribua os data deste content a um trecho.
+  Limpe os data deste content.
+  Posponha o número deste content seguido de " 0 obj" para o content.
+  Posponha "<</Length " junto com a quantidade de caracteres deste trecho seguido de " >>" para o content.
+  Posponha "stream" para o content.
+  Posponha o trecho para os data deste content.
+  Posponha "endstream" para o content.
+  Posponha "endobj" para o content.
+  Desative a página detector deste pdf state.
+
+Etapas para que se end uma folha (pdf style - finish o current página - font resources):
+  Atribua a current página deste pdf state a uma página pdf object.
+  Se as font strings desta página estiverem vazio, cancele.
+  Posponha "/Font <<" para a página sem passar pra próxima linha.
+  Percorra. [o código abaixo]
+    Obtenha um conjunto de texto desde as font strings desta página.
+    Se o conjunto de texto for inexistente, pare.
+    Se um detector estiver ativo, posponha " " para a página sem passar pra próxima linha.
+    Posponha a string deste conjunto de texto para a página sem passar pra próxima linha.
+    Ligue o detector.
+  Repita. [o código acima]
+  Posponha ">>" para a página.
+
+Etapas para que se end uma folha (pdf style - finish o current página - image resources):
+  Atribua a current página deste pdf state a uma página pdf object.
+  Se as image strings desta página estiverem vazio, cancele.
+  Posponha "/XObject <<" para a página sem passar pra próxima linha.
+  Percorra. [o código abaixo]
+    Obtenha um conjunto de texto desde as image strings desta página.
+    Se o conjunto de texto for inexistente, pare.
+    Se um detector estiver ativo, posponha " " para a página sem passar pra próxima linha.
+    Posponha a string deste conjunto de texto para a página sem passar pra próxima linha.
+    Ligue o detector.
+  Repita. [o código acima]
+  Posponha ">>" para a página.
+
+Etapas para que se end uma folha (pdf style - finish o current página):
+  Atribua a current página deste pdf state a uma página pdf object.
+  Posponha "/Resources" para a página.
+  Posponha "<<" para a página.
+  Posponha "/ProcSet [/PDF /Text /ImageC]" para a página.
+  End a folha (pdf style - finish o current página - font resources).
+  End a folha (pdf style - finish o current página - image resources).
+  Posponha ">>" para a página. \ end resources
+  Posponha ">>" para a página. \ end página
+  Posponha "endobj" para a página.
+
+Etapas para que se end uma folha (pdf style):
+  End a folha (pdf style - finish o current página).
+  End a folha (pdf style - finish o current contents).
+
+Etapas para que se end printing:
+  Se o documento detector deste pdf state estiver ativo, end printing (pdf style); volte.
+  Call "gdi32.dll" "EndDoc" com a área de impressão.
+  Finalize a área de impressão.
+
+Etapas para que se end printing (pdf style):
+  Se o documento detector deste pdf state não estiver ativo, cancele.
+  End printing o conteúdo deste pdf endereço de memória deste pdf state.
+
+Etapas para que se end printing um pdf:
+  End printing o pdf (finish o parent).
+  End printing o pdf (append o outline).
+  End printing o pdf (finish o root).
+  Limpe o pdf.
+  End printing o pdf (append header).
+  End printing o pdf (offset e posponha objects).
+  End printing o pdf (append xref table).
+  End printing o pdf (append trailer).
+  End printing o pdf (append footer).
+  Destrua o font catálogo deste pdf state.
+  Destrua as outline entries deste pdf state.
+  Destrua os objects deste pdf state.
+  Desative o documento detector deste pdf state.
+
+Etapas para que se end printing um pdf (append footer):
+  Posponha "startxref" junto com o texto CRLF para o pdf.
+  Posponha o xref offset deste pdf state junto com o texto CRLF para o pdf.
+  Posponha "%%EOF" para o pdf.
+
+Etapas para que se end printing um pdf (append header):
+  Posponha "%PDF-1.3" junto com o texto CRLF para o pdf.
+  Posponha "%âãÏÓ" junto com o texto CRLF para o pdf.
+  Posponha o texto CRLF para o pdf.
+
+Etapas para que se end printing um pdf (append o outline entries - crie o objects):
+  Obtenha um pdf outline entry desde as outline entries deste pdf state.
+  Se o pdf outline entry for inexistente, cancele.
+  Adicione um entry pdf object usando "outline entry".
+  Atribua a entry ao pdf object desta pdf outline entry.
+  Repita. [o código acima]
+
+Etapas para que se end printing um pdf (append o outline entries):
+  Se as outline entries deste pdf state estiverem vazio, cancele.
+  End printing o pdf (append o outline entries - crie o objects).
+  Percorra. [o código abaixo]
+    Obtenha um pdf outline entry desde as outline entries deste pdf state.
+    Se o pdf outline entry for inexistente, cancele.
+    Atribua o pdf object desta pdf outline entry a um object pdf object.
+    Posponha o número deste object seguido de " 0 obj" para o object.
+    Posponha "<<" para o object.
+    Converta o título de índice remissivo deste pdf outline entry para um pdf string.
+    Posponha "/Title " junto com o pdf string para o object.
+    Posponha "/Parent " junto com o número deste outline deste pdf state seguido de " 0 R" para o object.
+    Se o next desta pdf outline entry não for inexistente, posponha "/Next " junto com o número deste pdf object deste next desta pdf outline entry seguido de " 0 R" para o object.
+    Se o previous desta pdf outline entry não for inexistente, posponha "/Prev " junto com o número deste pdf object deste previous desta pdf outline entry seguido de " 0 R" para o object.
+    Posponha "/Dest [" junto com o destination deste pdf outline entry seguido de " 0 R /XYZ null " junto com a página altura deste pdf outline entry seguido de " null]" para o object.
+    Posponha ">>" para o object.
+    Posponha "endobj" para o object.
+  Repita. [o código acima]
+
+Etapas para que se end printing um pdf (append o outline):
+  Esvazie o outline deste pdf state.
+  Se as outline entries deste pdf state estiverem vazio, cancele.
+  Adicione um outline pdf object usando "outline".
+  Atribua o outline ao outline deste pdf state.
+  End printing o pdf (append o outline entries).
+  Posponha o número deste outline seguido de " 0 obj" para o outline.
+  Posponha "<<" para o outline.
+  Posponha "/Type /Outlines" para o outline.
+  Posponha "/First " junto com o número deste pdf object deste first destas outline entries deste pdf state seguido de " 0 R" para o outline.
+  Posponha "/Last " junto com o número deste pdf object deste last destas outline entries deste pdf state seguido de " 0 R" para o outline.
+  Posponha "/Count " junto com a contagem destas outline entries deste pdf state para o outline.
+  Posponha ">>" para o outline.
+  Posponha "endobj" para o outline.
+
+Etapas para que se end printing um pdf (append trailer):
+  Posponha "trailer" junto com o texto CRLF para o pdf.
+  Posponha "<<" junto com o texto CRLF para o pdf.
+  Atribua a contagem destes objects deste pdf state mais 1 a uma contagem.
+  Posponha "/Size " junto com a contagem junto com o texto CRLF para o pdf.
+  Posponha "/Root " junto com o número deste root deste pdf state seguido de " 0 R" junto com o texto CRLF para o pdf.
+  Posponha ">>" junto com o texto CRLF para o pdf.
+  Posponha o texto CRLF para o pdf.
+
+Etapas para que se end printing um pdf (append xref table):
+  Atribua a quantidade de caracteres deste pdf ao xref offset deste pdf state.
+  Posponha "xref" junto com o texto CRLF para o pdf.
+  Atribua a contagem destes objects deste pdf state mais 1 a uma contagem.
+  Posponha "0 " junto com a contagem junto com o texto CRLF para o pdf.
+  Posponha "0000000000 65535 f" junto com o texto CRLF para o pdf.
+  Percorra. [o código abaixo]
+    Obtenha um pdf object desde os objects deste pdf state.
+    Se o pdf object for inexistente, pare.
+    Zero fill o offset deste pdf object usando 10 e posponha it para o pdf.
+    Posponha " 00000 n" junto com o texto CRLF para o pdf.
+  Repita. [o código acima]
+  Posponha o texto CRLF para o pdf.
+
+Etapas para que se end printing um pdf (finish o parent):
+  Atribua o parent deste pdf state a um parent pdf object.
+  Posponha "/Kids [" para o parent sem passar pra próxima linha.
+  Percorra. [o código abaixo]
+    Obtenha um pdf object desde os objects deste pdf state.
+    Se o pdf object for inexistente, pare.
+    Se a categoria deste pdf object não for "page", repita.
+    Se um detector estiver ativo, posponha " " para o parent sem passar pra próxima linha.
+    Posponha o número deste pdf object seguido de " 0 R" para o parent sem passar pra próxima linha.
+    Ligue o detector.
+    Adicione 1 para uma contagem.
+    Se a contagem for uniformemente divisível por 20, posponha o texto CRLF seguido de " " para o parent sem passar pra próxima linha.
+  Repita. [o código acima]
+  Posponha "]" para o parent.
+  Posponha "/Count " junto com a contagem para o parent.
+  Posponha ">>" para o parent.
+  Posponha "endobj" para o parent.
+
+Etapas para que se end printing um pdf (finish o root):
+  Atribua o root deste pdf state a um root pdf object.
+  Posponha "/Pages " junto com o número deste parent deste pdf state seguido de " 0 R" para o root.
+  Encontre um pdf object usando "page".
+  Posponha "/OpenAction [" junto com o número deste pdf object seguido de " 0 R /XYZ null null 1]" para o root.
+  Posponha "/PageMode /UseNone" para o root.
+  Se o outline deste pdf state não for inexistente, posponha "/Outlines " junto com o número deste outline deste pdf state seguido de " 0 R" para o root.
+  Posponha ">>" para o root.
+  Posponha "endobj" para o root.
+
+Etapas para que se end printing um pdf (offset e posponha objects):
+  Obtenha um pdf object desde os objects deste pdf state.
+  Se o pdf object for inexistente, pare.
+  Atribua a quantidade de caracteres deste pdf ao offset deste pdf object.
+  Posponha o data deste pdf object para o pdf.
+  Posponha o texto CRLF para o pdf.
+  Repita. [o código acima]
+
+Etapas para que se pinte uma string sob uma localização com uma cor e uma font (pdf style):
+  Se a string estiver em branco, cancele.
+  Isole a localização.
+  Include o font no current pdf.
+  Include o font na current página deste pdf state.
+  Encontre um definition pdf object usando o nome desta font e o font catálogo deste pdf state.
+  Se o definition for inexistente, cancele. \ erro
+  Crie uma font info usando o font e a string.
+  Output o pdf border usando a cor.
+  Output o pdf fill usando a cor.
+  Output "BT".
+  Output "/" junto com o nome da fonte desta definition seguido de " " junto com a adjusted altura desta font seguido de " Tf".
+    \ adicione a adjusted altura desta font menos o internal leading desta font info para o y do localização. \ just plain wrong
+  Adicione o ascent desta font info para a coordenada Y desta localização. \ fix por linha reta above
+  Output a localização sem passar pra próxima linha.
+  Output "Td".
+  Output "[" sem passar pra próxima linha.
+  Converta o font info para pdf em units.
+  Converta a string e o font info e a font info desta definition a um trecho por pdf output.
+  Output o trecho sem passar pra próxima linha.
+  Output "]" sem passar pra próxima linha.
+  Output " TJ".
+  Output "ET".
+  Destrua o font info.
+
+Etapas para que se pinte uma string sob uma localização com uma cor e um font:
+  Se a página detector deste pdf state estiver ativo, pinte a string sob a localização com a cor e o font (pdf style); volte.
+  Defina o código da cor of o quadro atual usando a cor.
+  Crie o número da fonte of o quadro atual usando o font.
+  Ajuste espaçamento  da fonte usando a string.
+  Atribua o first endereço de memória do pedaço desta string ao first endereço de memória do pedaço desse subtexto.
+  Atribua o first endereço de memória do pedaço deste subtexto mais o text cutoff menos 1 ao last endereço de memória do pedaço deste subtexto.
+  Isole a localização.
+  Percorra. [o código abaixo]
+    Se o subtexto estiver em branco, pare.
+    Se o last endereço de memória do pedaço deste subtexto for maior do que o last endereço de memória do pedaço desta string, atribua o last endereço de memória do pedaço desta string ao last endereço de memória do pedaço deste subtexto.
+    Call "gdi32.dll" "TextOutA" com 
+      O quadro atual 
+      e A coordenada X desta localização 
+      e A coordenada Y desta localização 
+      e O first endereço de memória do pedaço deste subtexto 
+      e A quantidade de caracteres deste subtexto.
+    Obtenha um largura usando o subtexto e o quadro atual.
+    Adicione o largura para a coordenada X desta localização.
+    Mova o subtexto usando o text cutoff.
+  Repita. [o código acima]
+  Destrua o número da fonte of o quadro atual.
+
+Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de preenchimento (pdf style):
+  Se a cor da borda e a cor de preenchimento são clear, cancele.
+  Se o raio desta caixa arredondada for 0, pinte a caixa arredondada como uma caixa com a cor da borda e a cor de preenchimento (pdf style); volte.
+  Atribua o raio desta caixa arredondada a um raio.
+  Atribua o raio times 2 a um offset.
+  Atribua a caixa arredondada a uma caixa.
+  Output setcolor usando a cor da borda e a cor de preenchimento.
+    \ initial moveto
+  Output moveto usando a coordenada esquerda desta caixa e a coordenada superior desta caixa mais o raio.
+    \ canto superior esquerdo
+  Atribua a coordenada esquerda desta caixa e a coordenada superior desta caixa e a coordenada esquerda desta caixa mais o offset e a coordenada superior desta caixa mais o offset a um elipse.
+  Output o arco of a elipse usando "canto superior esquerdo".
+  Output lineto usando a coordenada direita desta caixa menos o raio e a coordenada superior desta caixa.
+    \ canto superior direito
+  Atribua a coordenada direita desta caixa menos o offset e a coordenada superior desta caixa e a coordenada direita desta caixa e a coordenada superior desta caixa mais o offset ao elipse.
+  Output o arco of a elipse usando "canto superior direito".
+  Output lineto usando a coordenada direita desta caixa e a coordenada inferior desta caixa menos o raio.
+    \ canto inferior direito
+  Atribua a coordenada direita desta caixa menos o offset e a coordenada inferior desta caixa menos o offset e a coordenada direita desta caixa e a coordenada inferior desta caixa ao elipse.
+  Output o arco of a elipse usando "canto inferior direito".
+  Output lineto usando a coordenada esquerda desta caixa mais o raio e a coordenada inferior desta caixa.
+    \ canto inferior esquerdo 
+  Atribua a coordenada esquerda desta caixa e a coordenada inferior desta caixa menos o offset e a coordenada esquerda desta caixa mais o offset e a coordenada inferior desta caixa ao elipse.
+  Output o arco of a elipse usando "canto inferior esquerdo ".
+    \ finish para cima
+  Output "h".
+  Output stroke e fill usando a cor da borda e a cor de preenchimento.
+
+Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de preenchimento:
+  Se a página detector deste pdf state estiver ativo, pinte a caixa arredondada com a cor da borda e a cor de preenchimento (pdf style); volte.
+  Isole a caixa arredondada.
+  Crie o hpen of o quadro atual usando a cor da borda.
+  Crie o hbrush of o quadro atual usando a cor de preenchimento.
+  Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta caixa arredondada.
+  Atribua o raio desta caixa arredondada times 2 a um diameter número.
+  Call "gdi32.dll" "RoundRect" com 
+    O quadro atual 
+    e A coordenada esquerda desta caixa arredondada 
+    e A coordenada superior desta caixa arredondada 
+    e A coordenada direita desta caixa arredondada 
+    e A coordenada inferior desta caixa arredondada 
+  And o diameter e o diameter.
+  Destrua o hbrush of o quadro atual.
+  Destrua o hpen of o quadro atual.
+
+Etapas para que se pinte um polígono com uma cor da borda e uma cor de preenchimento:
+  Se a página detector deste pdf state estiver ativo, pinte o polígono com a cor da borda e a cor de preenchimento (pdf style); volte.
+  Se o polígono for inexistente, cancele.
+  Pinte o polígono com a cor de preenchimento (fill only).
+  Pinte o polígono com a cor da borda (border only).
+
+Etapas para que se pinte um polígono com uma cor da borda e uma cor de preenchimento (pdf style):
+  Se o polígono for inexistente, cancele.
+  Se a cor da borda e a cor de preenchimento são clear, cancele.
+  Output setcolor usando a cor da borda e a cor de preenchimento.
+  Obtenha um vértice desde os vértices deste polígono.
+  Se o vértice for inexistente, cancele.
+  Output moveto usando a localização deste vértice.
+  Percorra. [o código abaixo]
+    Obtenha o vértice desde os vértices deste polígono.
+    Se o vértice for inexistente, pare.
+    Output lineto usando a localização deste vértice.
+  Repita. [o código acima]
+  Output stroke e fill usando a cor da borda e a cor de preenchimento.
+
+Etapas para que se pinte um imagem (pdf style):
+  Se a imagem for inexistente, cancele.
+  Atribua a coordenada esquerda desta caixa desta imagem menos a coordenada esquerda desta caixa intacta desta imagem dividido pelo quantidade de twips/pixel a um número X.
+  Atribua a coordenada superior desta caixa desta imagem menos a coordenada superior desta caixa intacta desta imagem dividido pelo quantidade de twips/pixel a um número Y.
+  Atribua a largura desta caixa desta imagem dividido pelo quantidade de twips/pixel a um largura.
+  Atribua a altura desta caixa desta imagem dividido pelo quantidade de twips/pixel a uma altura.
+  Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com 
+                                       A largura e 
+                                       A altura 
+                                       e 0 
+                                       e 137224 [PixelFormat24bppRGB] 
+                                       e 0 
+                                       e O endereçamento desse gpBitmap.
+  Call "gdiplus.dll" "GdipGetImageGraphicsContext" com 
+    O gpBitmap 
+    e O endereçamento desse gpgraphic.
+  Se o grayscale detector desta imagem estiver ativo, crie um GpImageAttributes (grayscale).
+  Call "gdiplus.dll" "GdipDrawImageRectRectI" com 
+                                                                                                       O gpgraphic 
+                                                                                                       e O gpBitmap desta imagem 
+                                                                                                       e 0 
+                                                                                                       e 0 
+                                                                                                       e A largura 
+                                                                                                       e A altura 
+                                                                                                       e O número X 
+                                                                                                       e O número Y 
+                                                                                                       e A largura 
+                                                                                                       e A altura 
+                                                                                                       e 2 [unitpixel] 
+                                                                                                       e O gpimageattributes 
+                                                                                                       e nil 
+                                                                                                       e 0.
+  Se o gpimageattributes não for inexistente, destrua o gpimageattributes.
+  Call "gdiplus.dll" "GdipDeleteGraphics" com 
+    O gpgraphic.
+  Pinte o gpBitmap sob o canto superior esquerdo desta caixa desta imagem (pdf style).
+  Call "gdiplus.dll" "GdipDisposeImage" com 
+    O gpBitmap.
+
+Etapas para que se pinte um imagem:
+  Se a página detector deste pdf state estiver ativo, pinte a imagem (pdf style); volte.
+  Se a imagem for inexistente, cancele.
+  Save o quadro atual.
+  Cubra externamente a caixa desta imagem.
+  Call "gdiplus.dll" "GdipCreateFromHDC" com 
+    O quadro atual 
+    e O endereçamento desse gpgraphic.
+  Call "gdiplus.dll" "GdipSetPageUnit" com 
+    O gpgraphic 
+    e 2 [pixels].
+  Pinte a imagem sobre o gpgraphic sob a coordenada esquerda desta caixa intacta desta imagem e a coordenada superior desta caixa intacta desta imagem.
+  Call "gdiplus.dll" "GdipDeleteGraphics" com 
+    O gpgraphic.
+  Restore o quadro atual.
+
+Etapas para que se pinte uma linha reta com uma cor (pdf style):
+  Se a cor estiver clear, cancele.
+  Output setcolor usando a cor e a cor preta.
+  Output moveto usando a localização inicial desta linha reta.
+  Output lineto usando a localização final desta linha reta.
+  Output stroke e fill usando a cor e a cor preta.
+
+Etapas para que se pinte uma linha reta com uma cor:
+  Se a página detector deste pdf state estiver ativo, pinte a linha reta com a cor (pdf style); volte.
+  Crie o hpen of o quadro atual usando a cor.
+  Call "gdi32.dll" "MoveToEx" com 
+    O quadro atual 
+    e A coordenada X desta localização inicial desta linha reta 
+    e A coordenada Y desta localização inicial desta linha reta 
+    e nil.
+  Call "gdi32.dll" "LineTo" com 
+    O quadro atual 
+    e A coordenada X desta localização final desta linha reta 
+    e A coordenada Y desta localização final desta linha reta.
+  Converta a cor para um código da cor.
+  Call "gdi32.dll" "SetPixelV" com 
+    O quadro atual 
+    e A coordenada X desta localização final desta linha reta 
+    e A coordenada Y desta localização final desta linha reta 
+    e O código da cor.
+  Destrua o hpen of o quadro atual.
+
+Etapas para que se pinte um gpBitmap sob uma localização (pdf style):
+  Se o gpBitmap for inexistente, cancele.
+    \ adicione xobject
+  Adicione um xobject pdf object usando "image object".
+  Atribua "I" junto com o número deste xobject a um nome.
+    \ adicione para image resources em current página
+  Atribua "/" junto com o nome seguido de " " junto com o número deste xobject seguido de " 0 R" a uma string.
+  Crie um new conjunto de texto usando a string.
+  Posponha o new conjunto de texto para os image strings desta current página deste pdf state.
+    \ finish setting para cima xobject
+  Posponha o número deste xobject seguido de " 0 obj" para o xobject.
+  Posponha "<<" para o xobject.
+  Posponha "/Type /XObject" para o xobject.
+  Posponha "/Subtype /Image" para o xobject.
+  Posponha "/ColorSpace /DeviceRGB" para o xobject.
+  Posponha "/Width " junto com o largura deste gpBitmap para o xobject.
+  Posponha "/Height " junto com a altura deste gpBitmap para o xobject.
+  Posponha "/BitsPerComponent 8" para o xobject.
+  Converta o gpBitmap para um trecho (pdf style).
+  Converta o trecho para um cifra hexadecimal.
+  Posponha "/Filter /ASCIIHexDecode" para o xobject.
+  Posponha "/Length " junto com a quantidade de caracteres deste cifra hexadecimal para o xobject.
+  Posponha ">>" para o xobject.
+  Posponha "stream" para o xobject.
+  Posponha a cifra hexadecimal para o xobject.
+  Posponha "endstream" para o xobject.
+  Posponha "endobj" para o xobject.
+    \ pinte o image no current contents
+  Atribua o largura deste gpBitmap times a quantidade de twips/pixel a um largura.
+  Atribua a altura deste gpBitmap times a quantidade de twips/pixel a uma altura.
+  Atribua a coordenada X desta localização a um número X.
+  Atribua a current altura deste pdf state menos a coordenada Y desta localização menos o altura a um número Y.
+  Output "q".
+  Output o largura seguido de " 0 0 " junto com o altura seguido de " " junto com o número X seguido de " " junto com o número Y seguido de " cm".
+  Output "/" junto com o nome seguido de " Do".
+  Output "Q".
+
+Etapas para que se pinte um elipse com uma cor da borda e uma cor de preenchimento (pdf style):
+  Se a cor da borda e a cor de preenchimento são clear, cancele.
+  Output setcolor usando a cor da borda e a cor de preenchimento.
+  Atribua a coordenada esquerda desta elipse e a coordenada superior desta elipse a uma localização.
+  Adicione o y-extent desta elipse dividido por 2 para a coordenada Y desta localização.
+  Output moveto usando a localização.
+  Output o arco of a elipse usando "canto superior esquerdo".
+  Output o arco of a elipse usando "canto superior direito".
+  Output o arco of a elipse usando "canto inferior direito".
+  Output o arco of a elipse usando "canto inferior esquerdo ".
+  Output stroke e fill usando a cor da borda e a cor de preenchimento.
+
+Etapas para que se pinte um elipse com uma cor da borda e uma cor de preenchimento:
+  Se a página detector deste pdf state estiver ativo, pinte a elipse com a cor da borda e a cor de preenchimento (pdf style); volte.
+  Isole a elipse.
+  Crie o hpen of o quadro atual usando a cor da borda.
+  Crie o hbrush of o quadro atual usando a cor de preenchimento.
+  Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta elipse.
+  Call "gdi32.dll" "Ellipse" com 
+    O quadro atual 
+    e A coordenada esquerda desta elipse 
+    e A coordenada superior desta elipse 
+    e A coordenada direita desta elipse 
+    e A coordenada inferior desta elipse.
+  Destrua o hbrush of o quadro atual.
+  Destrua o hpen of o quadro atual.
+
+Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimento (pdf style):
+  Se a cor da borda e a cor de preenchimento são clear, cancele.
+  Output setcolor usando a cor da borda e a cor de preenchimento.
+  Output o canto inferior esquerdo desta caixa sem passar pra próxima linha.
+  Output o x-extent desta caixa sem passar pra próxima linha.
+  Output o y-extent desta caixa sem passar pra próxima linha.
+  Output "re".
+  Output stroke e fill usando a cor da borda e a cor de preenchimento.
+
+Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimento:
+  Se a página detector deste pdf state estiver ativo, pinte a caixa com a cor da borda e a cor de preenchimento (pdf style); volte.
+  Isole a caixa.
+  Crie o hpen of o quadro atual usando a cor da borda.
+  Crie o hbrush of o quadro atual usando a cor de preenchimento.
+  Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta caixa.
+  Call "gdi32.dll" "Rectangle" com 
+    O quadro atual 
+    e A coordenada esquerda desta caixa 
+    e A coordenada superior desta caixa 
+    e A coordenada direita desta caixa 
+    e A coordenada inferior desta caixa.
+  Destrua o hbrush of o quadro atual.
+  Destrua o hpen of o quadro atual.
+
+Etapas para que se crie um pdf object usando um categoria:
+  Aloque memória para o pdf object.
+  Atribua o categoria à categoria deste pdf object.
+
+Etapas para que se crie um pdf outline entry usando um título de índice remissivo e uma página altura e um destination número:
+  Aloque memória para o pdf outline entry.
+  Atribua o título de índice remissivo ao título de índice remissivo deste pdf outline entry.
+  Atribua a página altura ao página altura deste pdf outline entry.
+  Atribua o destination ao destination deste pdf outline entry.
+
+Etapas para que se converta uma string para um pdf string:
+  Atribua "(" ao pdf string.
+  Lance um subtexto sobre a string.
+  Subtraia 1 desde o first endereço de memória do pedaço deste subtexto.
+  Percorra. [o código abaixo]
+    Adicione 1 para o first endereço de memória do pedaço deste subtexto.
+    Se o subtexto estiver em branco, pare.
+    Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o parênteses esquerdo, posponha "\(" para o pdf string; repita.
+    Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o parênteses direito, posponha "\)" para o pdf string; repita.
+    Se o conteúdo deste first endereço de memória do pedaço deste subtexto for a barra invertida, posponha "\\" para o pdf string; repita.
+    Posponha o conteúdo deste first endereço de memória do pedaço deste subtexto para o pdf string.
+  Repita. [o código acima]
+  Posponha ")" para o pdf string.
+
+Etapas para que se converta uma string e um actual font info e um original font info Para um trecho por pdf output:
+  Limpe o trecho.
+  Atribua 0 a um current byte#.
+  Lance um subtexto sobre o first pedaço of a string.
+  Percorra. [o código abaixo]
+    Se o first endereço de memória do pedaço deste subtexto for maior do que o last endereço de memória do pedaço desta string, pare.
+    Se o last endereço de memória do pedaço deste subtexto é o last endereço de memória do pedaço desta string, pare.
+    Obtenha um current largura usando o current byte# e as font larguras desta actual font info.
+    Obtenha um original largura usando o conteúdo deste last endereço de memória do pedaço deste subtexto e o font larguras desta original font info.
+    Atribua o original largura menos o current largura a um offset.
+    Se o offset for 0, adicione 1 para o last endereço de memória do pedaço deste subtexto; adicione 1 para o current byte#; repita.
+    Converta o subtexto para um pdf string.
+    Posponha o pdf string seguido de " " junto com o offset seguido de " " para o trecho.
+    Atribua o last endereço de memória do pedaço deste subtexto mais 1 ao last endereço de memória do pedaço deste subtexto.
+    Atribua o last endereço de memória do pedaço deste subtexto ao first endereço de memória do pedaço deste subtexto.
+    Adicione 1 para o current byte#.
+  Repita. [o código acima]
+  Se o first endereço de memória do pedaço deste subtexto for maior do que o last endereço de memória do pedaço desta string, cancele.
+  Converta o subtexto para uma segunda pdf string.
+  Posponha a segunda pdf string para o trecho.
+
+Etapas para que se converta um número para pdf em units usando um emsquare número e um font:
+  Multiplique o número pelo emsquare / a adjusted altura desta font.
+  Multiplique o número por 1000 / o emsquare.
+
+Etapas para que se converta um gpBitmap para um trecho (pdf style):
+  Limpe o trecho.
+  Se o gpBitmap for inexistente, cancele.
+  Lock o gpBitmap usando um bitmapdata (24-bit espaço de cor RGB).
+  Atribua 1 a um número da linha.
+  Atribua 1 a um número de coluna.
+  Percorra. [o código abaixo]
+    Se o número de coluna for maior do que o largura deste bitmapdata, atribua 1 ao número de coluna; adicione 1 para o número da linha.
+    Se o número da linha for maior do que a altura deste bitmapdata, pare.
+    Obtenha um endereço de memória RGB desde o bitmapdata sob o número da linha e o número de coluna.
+    Posponha o espectro vermelho deste endereço de memória RGB para o trecho.
+    Posponha o espectro verde deste endereço de memória RGB para o trecho.
+    Posponha o espectro azul deste endereço de memória RGB para o trecho.
+    Adicione 1 para o número de coluna.
+  Repita. [o código acima]
+  Unlock o gpBitmap usando o bitmapdata.
+
+Etapas para que se converta umas font larguras para pdf em units:
+  Obtenha um OutlineTextmetric usando a font destas font larguras.
+  Atribua os data desta font larguras a um endereço numérico.
+  Percorra. [o código abaixo]
+    Se um contador estiver past a contagem destas font larguras, pare.
+    Converta o conteúdo deste endereço numérico para pdf em units usando o otmemsquare deste OutlineTextmetric e a font destas font larguras.
+    Adicione a magnitude desse número para o endereço numérico.
+  Repita. [o código acima]
+
+Etapas para que se converta uma font info para pdf em units:
+  Se o font info for inexistente, cancele.
+  Converta o internal leading desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
+  Converta o ascent desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
+  Converta o descent desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
+  Converta o capheight desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
+    \ converta o italicangle desta font info para pdf em units usando o emsquare desta font info e o font desta font info. \não sei porque está comentado
+  Converta o stemv desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
+  Converta a coordenada esquerda desta font caixa desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
+  Converta a coordenada superior desta font caixa desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
+  Converta a coordenada direita desta font caixa desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
+  Converta a coordenada inferior desta font caixa desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
+  Permute a coordenada superior desta font caixa desta font info com a coordenada inferior desta font caixa desta font info.
+  Converta as font larguras desta font info para pdf em units.
+
+Etapas para que se inicie uma folha usando uma caixa e um título de índice remissivo (pdf style - start o current página):
+  Adicione o current página deste pdf state usando "page".
+  Posponha o número desta current página deste pdf state seguido de " 0 obj" para o current página deste pdf state.
+  Posponha "<<" para o current página deste pdf state.
+  Posponha "/Type /Page" para o current página deste pdf state.
+  Posponha "/Parent " junto com o número deste parent deste pdf state seguido de " 0 R" para o current página deste pdf state.
+  Atribua a largura desta caixa menos a quantidade de twips/pixel times 72 / o tpi a um largura.
+  Atribua a altura desta caixa menos a quantidade de twips/pixel times 72 / o tpi a uma altura.
+  Posponha "/MediaBox [0 0 " junto com o largura seguido de " " junto com o altura seguido de "]" para o current página deste pdf state.
+  Atribua a altura desta caixa menos a quantidade de twips/pixel ao current altura deste pdf state.
+  Adicione os current contents deste pdf state usando "contents".
+  Posponha "/Contents " junto com o número destes current contents deste pdf state seguido de " 0 R" para o current página deste pdf state.
+  Posponha "0.05 0 0 0.05 1 1 cm" para os current contents deste pdf state. \ abra matrix para scale 72/1440
+  Posponha "13 w 0 J 0 j 0 i" para os current contents deste pdf state. \ pincelwidth, linecap, linejoin, flatness \ 15 w sobre pincelwidth comes out para wide
+
+Etapas para que se inicie uma folha usando uma caixa e um título de índice remissivo (pdf style):
+  Ligue a página detector deste pdf state.
+  Atribua a cor preta ao cor da borda atual deste pdf state.
+  Atribua a cor preta à cor de preenchimento atual deste pdf state.
+  Inicie a folha usando a caixa e o título de índice remissivo (pdf style - start o current página).
+  Se o título de índice remissivo estiver em branco, cancele.
+  Crie um pdf outline entry usando o título de índice remissivo e o current altura deste pdf state e o número desta current página deste pdf state.
+  Posponha o pdf outline entry para o outline entries deste pdf state.
+
+Etapas para que se inicie uma folha usando uma caixa (pdf style):
+  Inicie a folha usando a caixa e "" (pdf style).
+
+Etapas para que se inicie uma folha usando uma caixa e um título de índice remissivo:
+  Inicie a folha usando a caixa e o título de índice remissivo (pdf style).
+
+Etapas para que se inicie uma folha usando uma caixa:
+  Se o documento detector deste pdf state estiver ativo, inicie a folha usando a caixa (pdf style); volte.
+  Call "kernel32.dll" "GlobalLock" com 
+    O número identificador do modo de dispositivo da impressora 
+    devolvendo um pdevmode.
+  Se o pdevmode for inexistente, cancele.
+  Disjuncione logicamente o dmfields deste pdevmode usando 1 [DM_ORIENTATION].
+  Atribua 1 [DMORIENT_PORTRAIT] ao dmorientation deste pdevmode .
+  Se a largura desta caixa for maior do que a altura desta caixa, atribua 2 [DMORIENT_LANDSCAPE] ao dmorientation deste pdevmode .
+  Call "gdi32.dll" "ResetDCA" com 
+    A área de impressão 
+    e O pdevmode.
+  Call "kernel32.dll" "GlobalUnlock" com 
+    O número identificador do modo de dispositivo da impressora.
+  Call "gdi32.dll" "SetGraphicsMode" com 
+    A área de impressão 
+    e 2 [GM_ADVANCED].
+  Call "gdi32.dll" "SetBkMode" com 
+    A área de impressão 
+    e 1 [TRANSPARENT].
+  Call "gdi32.dll" "SetMapMode" com 
+    A área de impressão 
+    e 8 [MM_ANISOTROPIC].
+  Call "gdi32.dll" "GetDeviceCaps" com 
+    A área de impressão 
+    e 112 [PHYSICALOFFSETX] 
+    devolvendo o número X desse par de números.
+  Call "gdi32.dll" "GetDeviceCaps" com 
+    A área de impressão 
+    e 113 [PHYSICALOFFSETY] 
+    devolvendo o número Y deste par de números.
+  Negate o par de números.
+  Call "gdi32.dll" "SetViewportOrgEx" com 
+    A área de impressão 
+    e O número X deste par de números 
+    e O número Y deste par de números 
+    e nil.
+  Call "gdi32.dll" "GetDeviceCaps" com 
+    A área de impressão 
+    e 88 [LOGPIXELSX] 
+    devolvendo o número X deste par de números.
+  Call "gdi32.dll" "GetDeviceCaps" com 
+    A área de impressão 
+    e 90 [LOGPIXELSY] 
+    devolvendo o número Y deste par de números.
+  Call "gdi32.dll" "SetViewportExtEx" com 
+    A área de impressão 
+    e O número X deste par de números 
+    e O número Y deste par de números 
+    e nil.
+  Call "gdi32.dll" "SetWindowOrgEx" com 
+    A área de impressão 
+    e 0 
+    e 0 
+    e nil.
+  Call "gdi32.dll" "SetWindowExtEx" com 
+    A área de impressão 
+    e O tpi 
+    e O tpi 
+    e nil.
+  Call "gdi32.dll" "StartPage" com 
+    A área de impressão.
+  Atribua a área de impressão ao quadro atual.
+  Call "gdi32.dll" "GetDeviceCaps" com 
+    A área de impressão 
+    e 88 [LOGPIXELSX] 
+    devolvendo um número.
+  Atribua a quantidade de twips/pixel ao saved quantidade de twips/pixel .
+  Atribua o tpi dividido pelo número ao quantidade de twips/pixel .
+
+Etapas para que se inicie a impressão um pdf:
+  Ligue o documento detector deste pdf state.
+  Atribua 0 ao object número deste pdf state.
+  Crie o font catálogo deste pdf state usando 113.
+  Inicie a impressão o pdf (start o root).
+  Inicie a impressão o pdf (start o parent).
+
+Etapas para que se inicie a impressão um pdf (start o parent):
+  Adicione um parent pdf object usando "parent".
+  Atribua o parent ao parent deste pdf state.
+  Posponha o número deste parent seguido de " 0 obj" para o parent.
+  Posponha "<<" para o parent.
+  Posponha "/Type /Pages" para o parent.
+
+Etapas para que se inicie a impressão um pdf (start o root):
+  Adicione um root pdf object usando "root".
+  Atribua o root ao root deste pdf state.
+  Posponha o número deste root seguido de " 0 obj" para o root.
+  Posponha "<<" para o root.
+  Posponha "/Type /Catalog" para o root.
+
+Etapas para que se inicie uma folha modo retrato usando um título de índice remissivo:
+  Se o pdf documento detector não estiver ativo, limpe a folha modo retrato; volte.
+  Faça a folha modo retrato 816 pixels por 1056 pixels.
+  Inicie a folha usando a caixa e o título de índice remissivo (pdf style).
+
+Etapas para que se inicie uma folha modo paisagem usando um título de índice remissivo:
+  Se o pdf documento detector não estiver ativo, limpe a folha modo paisagem; volte.
+  Faça a folha modo paisagem 1056 pixels por 816 pixels.
+  Inicie a folha usando a caixa e o título de índice remissivo (pdf style).
+
+Etapas para que se posponha uma string para um pdf object:
+    \ this guys adds CRLF
+  Posponha a string para o data deste pdf object.
+  Posponha o texto CRLF para o data deste pdf object.
+
+Etapas para que se posponha uma string para um pdf object sem passar pra próxima linha:
+  Posponha a string para o data deste pdf object.
+
+Etapas para que se adicione um pdf object usando um categoria:
+  Crie o pdf object usando o categoria.
+  Posponha o pdf object para os objects deste pdf state.
+  Adicione 1 para o object número deste pdf state.
+  Atribua o object número deste pdf state ao número deste pdf object.
+
+Etapas para que se end uma folha:
+  Se o documento detector deste pdf state estiver ativo, end a folha (pdf style); volte.
+  Call "gdi32.dll" "EndPage" com a área de impressão.
+  Atribua o memory canvas ao quadro atual.
+  Atribua o saved quantidade de twips/pixel ao quantidade de twips/pixel .
+
