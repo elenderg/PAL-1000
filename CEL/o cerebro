@@ -24,7 +24,7 @@ Um intervalo é um número.
 An text é uma coisa com 
   Uma caixa,
   Uma origem,
-  Um pincel cor,
+  Uma pincel cor,
   Uma font,
   Um alinhamento,
   Some rows,
@@ -674,7 +674,7 @@ Etapas para que se mude um text usando uma altura da fonte:
   Redimensione proporcionalmente a altura desta font deste text usando a scale deste text.
   Atribua o par de números times a malha deste text à origem deste text.
   Adicione a margem deste text para a coordenada X deste text.
-  Limite o origem of o text.
+  Limite a origem of o text.
   Wrap o text.
 
 Etapas para que se modifique um text usando uma nome da fonte;
@@ -766,7 +766,7 @@ Etapas para que se limpe uma seleção:
   Limpe o caret desta seleção.
 
 Etapas para que se limpe o stack:
-  \ stack needs work
+  \ necessário aprimoramentos
   Destrua o stack.
 
 Etapas para que se limpe uma string:
@@ -791,81 +791,97 @@ Etapas para que se close um file:
   Call "kernel32.dll" "CloseHandle" com 
     O file.
 
-Um CLSID é um UUID. \ Class ID
-\Uma Class ID (CLSID) é um número (grande) de 128 bits que representa uma ID exclusiva para um aplicativo de software ou componente de aplicativo. 
-\As CLSIDs são utilizadas pelo Windows para identificar componentes de software sem que seja preciso conhecer o "nome" desses componentes.
-
 Etapas para que se avise:
   Toque o som de aviso.
 
-Um column# é um número.
+Um número de coluna é um número.
 
 Etapas para que se compare uma string para uma segunda string usando uma quantidade de caracteres e uma segunda quantidade de caracteres devolvendo um número:
   Compare a string para a segunda string usando a quantidade de caracteres e a segunda quantidade de caracteres e o tabela de caracteres minúsculos ascii devolvendo o número.
     \Compare a string para a segunda string usando a quantidade de caracteres e a segunda quantidade de caracteres e o tabela de caracteres minúsculos s/ acento ascii devolvendo o número.
 
-Etapas para que se compativelmente handle algum tipo de message com um window um message número um w-param e um l-param:
-  Se a message for 006, execute algum tipo de WM-ACTIVATE com o w-param; 
+Etapas para que se compativelmente handle algum tipo de message com um janela do programa um message número um wParam e um lParam:
+  Se a message for 006, execute algum tipo de WM_ACTIVATE com o wParam; 
     \Enviado para a janela que está sendo ativada e a janela que está sendo desativada. 
     \Se as janelas usarem a mesma fila de entrada, a mensagem será enviada de forma síncrona, 
     \primeiro para o procedimento de janela da janela de nível superior que está sendo desativada e,
     \em seguida, para o procedimento de janela da janela de nível superior que está sendo ativada. 
     \Se as janelas usarem filas de entrada diferentes, a mensagem será enviada de forma assíncrona, portanto, a janela será ativada imediatamente.
      Atribua 0 para EAX; volte.
-  Se a message for 258 [hex 102], execute algum tipo de WM-CHAR com o w-param e o l-param; 
-    \ Essa menagem é enviada para a janela com o foco do teclado quando uma mensagem WM_KEYDOWN é traduzida pela função TranslateMessage. 
+  Se a message for 258 [hex 102], execute algum tipo de WM_CHAR com o wParam e o lParam; 
+    \ Essa mesagem é enviada para a janela com o foco do teclado quando uma mensagem WM_KEYDOWN é traduzida pela função TranslateMessage. 
     \A mensagem WM_CHAR contém o código de caractere da tecla que foi pressionada.
   atribua 0 para EAX; volte.
-  Se a message for 001, execute algum tipo de wm-create com o window; 
+  Se a message for 001, execute algum tipo de WM_CREATE com a janela do programa; 
     \Enviado quando um aplicativo solicita que uma janela seja criada chamando a função CreateWindowEx ou CreateWindow. 
     \(A mensagem é enviada antes de a função retornar.) 
     \O procedimento de janela da nova janela recebe essa mensagem depois que a janela é criada, mas antes que a janela se torne visível.
     \Uma janela recebe essa mensagem por meio de sua função WindowProc.
   atribua 0 para EAX; volte.
-  Se a message for 002, execute algum tipo de wm-destroy; atribua 0 para EAX; volte.
-  Se a message for 256 [Hex 100], execute algum tipo de WM-KEYDOWN 
+  Se a message for 002, execute algum tipo de WM_DESTROY; atribua 0 para EAX; volte.
+  \ Enviado quando uma janela está sendo destruída. 
+  \É enviado para o procedimento de janela da janela sendo destruída após a janela ser removida da tela. 
+  \Essa mensagem é enviada primeiro para a janela que está sendo destruída e, em seguida, para as janelas filhas (se houver) à medida que são destruídas. 
+  \Durante o processamento da mensagem, pode-se supor que todas as janelas filho ainda existam.
+  Se a message for 256 [Hex 100], execute algum tipo de WM_KEYDOWN 
     \Essa menagem é enviada para a janela com o foco do teclado quando uma tecla não pertencente ao sistema é pressionada. 
     \Uma tecla que não é do sistema é aquela que é pressionada quando a tecla ALT não está pressionada.
-  com o w-param \O código de tecla virtual da tecla não pertencente ao sistema. Consulte Códigos de teclas virtualis -> https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
-    e O l-param; \Pode ser a contagem de repetição, um código de varredura, sinalizador de chave estendida, código de contexto, sinalizador de estado-chave anterior e sinalizador de estado de transição,
+  com O wParam \O código de tecla virtual da tecla não pertencente ao sistema. Consulte Códigos de teclas virtualis -> https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+    e O lParam; \Pode ser a contagem de repetição, um código de varredura, sinalizador de chave estendida, código de contexto, sinalizador de estado-chave anterior e sinalizador de estado de transição,
     \ veja detalhes aqui: https://docs.microsoft.com/en-us/windows/win32/inputdev/wm-keydown
    atribua 0 para EAX; volte.
-  Se a message for 513 [Hex 201], execute algum tipo de WM-LBUTTONDOWN
+  Se a message for 513 [Hex 201], execute algum tipo de WM_LBUTTONDOWN
     \Postado quando o usuário pressiona o botão esquerdo do mouse enquanto o cursor está na área do cliente de uma janela. 
     \Se o mouse não for capturado, a mensagem será postada na janela abaixo do cursor. 
     \Caso contrário, a mensagem é postada na janela que capturou o mouse.
     \Uma janela recebe essa mensagem por meio de sua função WindowProc.
-    \ o w-param Indica se as teclas virtuais estão pressionadas ou não, podendo ser mais de uma
-   com o l-param;    \A word de ordem inferior especifica a coordenada X do cursor. A coordenada é relativa ao canto superior esquerdo da área do cliente.
+    \ o wParam Indica se as teclas virtuais estão pressionadas ou não, podendo ser mais de uma
+   com o lParam;    \A word de ordem inferior especifica a coordenada X do cursor. A coordenada é relativa ao canto superior esquerdo da área do cliente.
     \A word de ordem superior especifica a coordenada Y do cursor. A coordenada é relativa ao canto superior esquerdo da área do cliente.
    atribua 0 para EAX; volte.
-  Se a message for 515 [Hex 203], execute algum tipo de wm-lbuttondblclk com o l-param; atribua 0 para EAX; volte.
-  Se a message for 015 [Hex F], execute algum tipo de wm-paint com o window; atribua 0 para EAX; volte.
-  Se a message for 516 [Hex 204], execute algum tipo de wm-rbuttondown com o l-param; atribua 0 para EAX; volte.
-  Se a message for 518 [Hex 206], execute algum tipo de wm-rbuttondblclk com o l-param; atribua 0 para EAX; volte.
-  Se a message for 032 [Hex 20], execute algum tipo de wm-setcursor; atribua 1 para EAX; volte.
-  Se a message for 260 [Hex 104], execute algum tipo de wm-syskeydown com o w-param e o l-param; atribua 0 para EAX; volte.
+  Se a message for 515 [Hex 203], execute algum tipo de WM_LBUTTONDBLCLK com o lParam; atribua 0 para EAX; volte.
+  \Postado quando o usuário clica duas vezes com o botão esquerdo do mouse enquanto o cursor está na área do cliente de uma janela. 
+  \\Se o mouse não for capturado, a mensagem será postada na janela abaixo do cursor. Caso contrário, a mensagem é postada na janela que capturou o mouse.
+  Se a message for 015 [Hex F], execute algum tipo de WM_PAINT com o janela do programa; atribua 0 para EAX; volte.
+  \A mensagem WM_PAINT é enviada quando o sistema ou outro aplicativo faz uma solicitação para pintar uma parte da janela de um aplicativo. 
+  \A mensagem é enviada quando a função UpdateWindow ou RedrawWindow é chamada 
+  \ou pela função DispatchMessage quando o aplicativo obtém uma mensagem WM_PAINT usando a função GetMessage ou PeekMessage .
+  Se a message for 516 [Hex 204], execute algum tipo de WM_RBUTTONDOWN com o lParam; atribua 0 para EAX; volte.
+  \Postado quando o usuário pressiona o botão direito do mouse enquanto o cursor está na área do cliente de uma janela. 
+  \Se o mouse não for capturado, a mensagem será postada na janela abaixo do cursor. Caso contrário, a mensagem é postada na janela que capturou o mouse.
+  Se a message for 518 [Hex 206], execute algum tipo de WM_RBUTTONDBLCLK com o lParam; atribua 0 para EAX; volte.
+  \Postado quando o usuário clica duas vezes com o botão direito do mouse enquanto o cursor está na área do cliente de uma janela. 
+  \Se o mouse não for capturado, a mensagem será postada na janela abaixo do cursor. Caso contrário, a mensagem é postada na janela que capturou o mouse.
+  Se a message for 032 [Hex 20], execute algum tipo de WM_SETCURSOR; atribua 1 para EAX; volte.
+  \Enviado para uma janela se o mouse fizer com que o cursor se mova dentro de uma janela e a entrada do mouse não for capturada.
+  Se a message for 260 [Hex 104], execute algum tipo de WM_SYSKEYDOWN com o wParam e o lParam; atribua 0 para EAX; volte.
+  \Postado na janela com o foco do teclado quando o usuário pressiona a tecla F10 (que ativa a barra de menus) ou mantém pressionada a tecla ALT e pressiona outra tecla. 
+  \Também ocorre quando nenhuma janela tem o foco do teclado; neste caso, a mensagem WM_SYSKEYDOWN é enviada para a janela ativa. 
+  \A janela que recebe a mensagem pode distinguir entre esses dois contextos, verificando o código de contexto no parâmetro lParam .
   Call "user32.dll" "DefWindowProcA" com 
-    A window 
+    A janela do programa 
     e A message 
-    e 
-  o w-param 
-    e O l-param.
+    e O wParam 
+    e O lParam.
 
 Etapas para que se compativelmente aguarde por um process endereço de memória:
-  Call "kernel32.dll" "WaitForSingleObject" com 
-    O conteúdo deste process endereço de memória 
-    e -1 [tempo em milisegundos.  O valor -1 informa que a função retornará apenas quando o objeto for sinalizado.].
-  Call "kernel32.dll" "CloseHandle" com o conteúdo deste process endereço de memória.
-  Atribua 0 ao conteúdo deste process endereço de memória. \ conteúdo = conteúdo
-  Call "user32.dll" "GetForegroundWindow" 
-    devolvendo uma window.
-  Se a window for a main window, atribua 0 para EAX; volte.
+  Call "kernel32.dll" "WaitForSingleObject" com  \Espera até que o objeto especificado esteja no estado sinalizado ou o intervalo de tempo limite expire.
+    O conteúdo deste process endereço de memória  \o número identificador do objeto
+    e -1 [intervalo de tempo limite, em milisegundos.  O valor -1 informa que a função retornará apenas quando o objeto for sinalizado.].
+  Call "kernel32.dll" "CloseHandle" com  \Fecha um identificador de objeto aberto.
+    O conteúdo deste process endereço de memória. \Um identificador válido para um objeto aberto.
+  Atribua 0 ao conteúdo deste process endereço de memória. \  
+  Call "user32.dll" "GetForegroundWindow"  \Recupera um identificador para a janela do primeiro plano (a janela com a qual o usuário está trabalhando atualmente). 
+  \O sistema atribui uma prioridade um pouco mais alta ao encadeamento que cria a janela de primeiro plano do que aos outros encadeamentos.
+    devolvendo uma janela do programa. \O valor de retorno é um identificador para a janela do primeiro plano. 
+	\A janela de primeiro plano pode ser NULL em certas circunstâncias, como quando uma janela está perdendo a ativação.
+  Se a janela do programa for a janela principal do programa, atribua 0 para EAX; volte.
+  Call "user32.dll" "ShowWindow" com  \Define o estado de exibição da janela especificada.
+    A janela principal do programa 
+    e 6 [SW_MINIMIZE]. \Controla como a janela deve ser exibida. 
+	\SW_MINIMIZE Minimiza a janela especificada e ativa a próxima janela de nível superior na ordem Z.
   Call "user32.dll" "ShowWindow" com 
-    A main window 
-    e 6 [SW_MINIMIZE].
-  Call "user32.dll" "ShowWindow" com 
-    A main window 
+    A janela principal do programa 
     e 9 [SW_RESTORE].
   Atribua 0 para EAX. \ abra return value of thread
 
@@ -878,12 +894,12 @@ Etapas para que se compativelmente aguarde por um process endereço de memória:
     \a reply string.
 
 Um console é uma coisa com 
-Um caixa, 
-Um cor da borda,
-Um cor de preenchimento, 
-Um text, 
-Um malha, 
-Um reply string.
+  Uma caixa, 
+  Uma cor da borda,
+  Uma cor de preenchimento, 
+  Um text, 
+  Uma malha, 
+  Um reply string.
 
 O context é um context.
 
@@ -898,7 +914,7 @@ Etapas para que se converta um posicionamento absoluto para uma position usando 
     Obtenha uma row desde as rows deste text.
     Se a row for inexistente, limpe o position; volte.
     Atribua o número da linha desta row ao número da linha desta position.
-    Atribua o posicionamento absoluto ao column# desta position.
+    Atribua o posicionamento absoluto ao número de coluna desta position.
     Subtraia a quantidade de caracteres desta string desta row desde o posicionamento absoluto.
     Se o posicionamento absoluto for menor do que 1, cancele.
   Repita. [o código acima]
@@ -1062,9 +1078,9 @@ Etapas para que se converta um texto hexadecimal para um número:
   Se a quantidade de caracteres deste texto hexadecimal não for a magnitude deste número, limpe o número; volte.
   Copie pedaços desde o first deste texto hexadecimal para o endereçamento destte número pela magnitude deste número.
 
-Etapas para que se converta um l-param para um tecla:
-    \ assumes l-param desde wm_char message
-  Atribua o l-param à tecla.
+Etapas para que se converta um lParam para um tecla:
+    \ assumes lParam desde wm_char message
+  Atribua o lParam à tecla.
   Desloque a tecla right 16 bits.
   Conjuncione logicamente a tecla com 255.
   Call "user32.dll" "MapVirtualKeyA" com 
@@ -1084,8 +1100,8 @@ Etapas para que se converta um l-param para um tecla:
   Se a tecla for a seta pra baixo, atribua o numpad-tecla dois à tecla; volte.
   Se a tecla for a tecla Clear, atribua o numpad-tecla cinco à tecla; volte.
 
-Etapas para que se converta um l-param para uma localização:
-  Split o l-param a um word e uma segunda word.
+Etapas para que se converta um lParam para uma localização:
+  Split o lParam a um word e uma segunda word.
   Atribua o word à coordenada y desta localização.
   Atribua a segunda word à coordenada x desta localização.
   Multiplique a localização pelo quantidade de twips/pixel .
@@ -1163,7 +1179,7 @@ Etapas para que se converta uma position para um posicionamento absoluto usando 
     Obtenha uma row desde as rows deste text.
     Se a row for inexistente, cancele.
     Se o número da linha desta row for menor do que o número da linha desta position, adicione a quantidade de caracteres desta string desta row para o posicionamento absoluto; repita.
-  Adicione o column# desta position para o posicionamento absoluto.
+  Adicione o número de coluna desta position para o posicionamento absoluto.
 
 Etapas para que se converta uns precise degrees para uns points:
   Atribua os precise degrees times 3600 dividido por 3840 ao points.
@@ -1460,13 +1476,13 @@ Etapas para que se crie o connect handle of um winhttp request using uma URL sim
 
 Etapas para que se crie um console:
   Aloque memória para o console.
-  Atribua a cor cinza muito claro à cor da borda deste console.
-  Atribua a cor cinza muito claro à cor de preenchimento deste console.
+  Atribua a cor de borda de janela à cor da borda deste console.
+  Atribua a cor preta à cor de preenchimento deste console.
   Atribua a caixa desta tela à caixa deste console.
   Atribua a caixa desta tela a uma caixa.
   Subtraia a altura desta fonte padrão desde a coordenada inferior desta caixa.
   Atribua a altura desta caixa dividido pela altura desta fonte padrão times a altura desta fonte padrão a uma altura.
-  Atribua a coordenada superior desta caixa mais o altura à coordenada inferior desta caixa.
+  Atribua a coordenada superior desta caixa mais a altura à coordenada inferior desta caixa.
   Centralize a caixa na caixa desta tela (verticalmente).
   Atribua a coordenada superior desta caixa à coordenada esquerda desta caixa.
   Subtraia a coordenada superior desta caixa desde a coordenada direita desta caixa.
@@ -1896,7 +1912,7 @@ Etapas para que se crie um text:
   Atribua "left" ao alinhamento deste text.
   Atribua 1/1 à scale deste text.
   Garanta one row no text.
-  Reset o origem of o text.
+  Reset a origem of o text.
   Reset o caret of o text.
   Desvencilhe-se de o text.
 
@@ -2326,14 +2342,14 @@ Etapas para que se determine se um pedaço é whitespace:
 Etapas para que se determine se o caret of um text é sob o beginning:
   Se o text for inexistente, diga não.
   Se o número de linhas do cursor deste text não for 1, diga não.
-  Se o caret column# deste text não for 1, diga não.
+  Se o caret número de coluna deste text não for 1, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se o caret of um text é sob o end:
   Se o text for inexistente, diga não.
   Se o número de linhas do cursor deste text não for a contagem destas rows deste text, diga não.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
-  Se o caret column# deste text não for a quantidade de caracteres desta string desta row, diga não.
+  Se o caret número de coluna deste text não for a quantidade de caracteres desta string desta row, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se o caret of um text está sobre o first linha reta:
@@ -2578,7 +2594,7 @@ Etapas para que se determine se uma tecla é algum tipo de symbol tecla:
   Se a tecla estiver entre 219 e 222, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se uma tecla é algum tipo de wm-char tecla:
+Etapas para que se determine se uma tecla é algum tipo de WM_CHAR tecla:
   Se a tecla não for algum tipo de printable tecla , diga não.
   Se a tecla Alt was para baixo, diga não.
   Se a tecla Ctrl was para baixo, diga não.
@@ -2621,8 +2637,8 @@ Etapas para que se determine se uma tecla was para cima:
   Se a tecla was para baixo, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se uma tecla com um l-param é algum tipo de comando de repetiçãoed escape ou modifier tecla:
-  Atribua o l-param a um número.
+Etapas para que se determine se uma tecla com um lParam é algum tipo de comando de repetiçãoed escape ou modifier tecla:
+  Atribua o lParam a um número.
   Conjuncione logicamente o número com 1073741824 [$40000000].
   Se o número for 0, diga não.
   Se a tecla for a tecla Esc, diga sim.
@@ -2832,7 +2848,7 @@ Etapas para que se determine se uma row of um text está selecionado:
   Se o número da linha desta row for menor do que o anchor número da linha desta seleção, diga não.
   Se o número da linha desta row for maior do que o número de linhas do cursor desta seleção, diga não.
   Se o número da linha desta row não for o número de linhas do cursor desta seleção, diga sim.
-  Se o caret column# desta seleção for 1, diga não.
+  Se o caret número de coluna desta seleção for 1, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se uma row of um text é visível:
@@ -3279,7 +3295,7 @@ Etapas para que se determine se existe something para backspace em um text:
   Se o text for inexistente, diga não.
   Se something estiver selecionado no text, diga sim.
   Se o número de linhas do cursor deste text não for 1, diga sim.
-  Se o caret column# deste text não for 1, diga sim.
+  Se o caret número de coluna deste text não for 1, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se existe something para remove em um text:
@@ -3287,7 +3303,7 @@ Etapas para que se determine se existe something para remove em um text:
   Se something estiver selecionado no text, diga sim.
   Se o número de linhas do cursor deste text não for a contagem de linhas deste text, diga sim.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
-  Se o caret column# deste text não for a quantidade de caracteres desta string desta row, diga sim.
+  Se o caret número de coluna deste text não for a quantidade de caracteres desta string desta row, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se existe text sobre o área de transferência do Windows:
@@ -3710,8 +3726,9 @@ Etapas para que se pinte um console:
   Save o quadro atual.
   Cubra somente fora de a caixa deste console .
   Pinte a caixa deste console com a cor da borda deste console e a cor de preenchimento deste console.
+  Atribua a cor branca ao pincel cor deste text deste console.
   Pinte o text deste console.
-  Restore o quadro atual.
+  Restaure o quadro atual.
 
 Etapas para que se pinte um dot uns twips wide sobre a localização atual com uma cor:
   Faça o dot os twips wide.
@@ -3723,17 +3740,17 @@ Etapas para que se pinte um dot uns twips wide sobre uma localização com uma cor
   Centralize o dot sobre a localização.
   Pinte o dot com a cor.
 
-Etapas para que se pinte um elipse:
+Etapas para que se pinte uma elipse:
   Pinte a elipse com a cor preta e a cor branca.
 
-Etapas para que se pinte um elipse sobre uma localização com uma cor:
+Etapas para que se pinte uma elipse sobre uma localização com uma cor:
   Centralize a elipse sobre a localização.
   Pinte a elipse com a cor e a cor preta.
 
 Etapas para que se pinte uma elipse com uma cor:
   Pinte a elipse com a cor e a cor.
 
-Etapas para que se pinte uma fancy arrow uns twips long com uma cor:
+Etapas para que se pinte uma flecha estilizada uns twips long com uma cor:
   Atribua a cor à cor deste context.
   Save o context.
   Pinte os twips.
@@ -3742,10 +3759,10 @@ Etapas para que se pinte uma fancy arrow uns twips long com uma cor:
   Save o context.
   Vire left 1/8 of o way.
   Pinte um spiral starting com os twips dividido por 4.
-  Restore o context.
+  Restaure o context.
   Vire right 1/8 of o way.
   Pinte uma segunda spiral backwards starting com os twips dividido por 4.
-  Restore o context.
+  Restaure o context.
 
 Etapas para que se pinte um figura com uma cor:
   Pinte a figura com a cor e a cor preta.
@@ -4136,14 +4153,14 @@ Etapas para que se pinte um terminal:
   Cubra somente fora de a caixa deste terminal.
   Pinte e fill a caixa deste terminal com a cor preta.
   Escreva os quoras deste terminal na caixa deste terminal.
-  Restore o quadro atual.
+  Restaure o quadro atual.
 
 Etapas para que se pinte um text:
   Se o text for inexistente, cancele.
   Save o quadro atual.
   Cubra externamente a caixa deste text.
   Pinte algum tipo de visível rows of o text.
-  Restore o quadro atual.
+  Restaure o quadro atual.
 
 Etapas para que se pinte um text (editing):
   Se o text for inexistente, cancele.
@@ -4151,7 +4168,7 @@ Etapas para que se pinte um text (editing):
   Cubra externamente a caixa deste text.
   Pinte algum tipo de visível rows of o text (editing).
   Pinte o caret no text.
-  Restore o quadro atual.
+  Restaure o quadro atual.
 
 Etapas para que se duplicate um endereço completo para uma segunda endereço completo no sistema de arquivos:
   Se o endereço completo é endereço da pasta-format, duplicate o endereço completo para a segunda endereço completo no sistema de arquivos (pasta)[endereço].
@@ -4422,7 +4439,7 @@ Etapas para que se face south:
 Etapas para que se face west:
   Atribua 2880 à orientação deste context.
 
-Um fancy arrow é um figura.
+Um flecha estilizada é um figura.
 
 Um figura é um polígono.
 
@@ -4518,9 +4535,9 @@ Etapas para que se finalize um talker:
   Call a release desta vtable deste talker com o talker.
   Atribua nil ao talker.
 
-Etapas para que se finalize o window:
+Etapas para que se finalize o janela do programa:
   Call "user32.dll" "DestroyWindow" com 
-    A main window. \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-destroywindow
+    A janela principal do programa. \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-destroywindow
   Percorra. [o código abaixo]
   Call "user32.dll" "GetMessageA" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getmessagea
       o endereçamento dessa msg \Um ponteiro para uma estrutura MSG que recebe informações da mensagem da fila de mensagens do segmento.
@@ -4576,16 +4593,16 @@ Etapas para que se encontre next usando uma row e um text e um detector:
   Se a row for inexistente, cancele.
   Lance um subtexto sobre a string deste row.
   Atribua o first endereço de memória do pedaço deste subtexto mais a quantidade de caracteres deste find string menos 1 ao last endereço de memória do pedaço deste subtexto.
-  Se o número da linha desta row for o número da linha deste find anchor, mova o subtexto usando o column# deste find anchor menos 1.
+  Se o número da linha desta row for o número da linha deste find anchor, mova o subtexto usando o número de coluna deste find anchor menos 1.
   Percorra. [o código abaixo]
     Se o last endereço de memória do pedaço deste subtexto for maior do que ou igual ao last endereço de memória do pedaço desta string desta row, cancele.
     Se o subtexto for o find string (accent-free compare), pare. \ for spanish incremental find
     Mova o subtexto usando 1.
   Repita. [o código acima]
   Ligue o detector.
-  Atribua o first endereço de memória do pedaço deste subtexto menos o first endereço de memória do pedaço desta string desta row mais 1 ao anchor column# deste text.
+  Atribua o first endereço de memória do pedaço deste subtexto menos o first endereço de memória do pedaço desta string desta row mais 1 ao anchor número de coluna deste text.
   Atribua o número da linha desta row ao anchor número da linha deste text .
-  Atribua o last endereço de memória do pedaço deste subtexto menos o first endereço de memória do pedaço desta string desta row mais 2 ao caret column# deste text.
+  Atribua o last endereço de memória do pedaço deste subtexto menos o first endereço de memória do pedaço desta string desta row mais 2 ao caret número de coluna deste text.
   Atribua o número da linha desta row ao número de linhas do cursor deste text.
 
 Etapas para que se encontre next usando um text e um detector:
@@ -4624,16 +4641,16 @@ Etapas para que se encontre o next misspelling usando uma row e um text e um det
   Se o text for inexistente, cancele.
   Se a row for inexistente, cancele.
   Lance um percorredor sobre a string deste row.
-  Se o número da linha desta row for o número da linha deste find anchor, adicione o column# deste find anchor menos 1 para o first endereço de memória do pedaço deste segmento final deste percorredor.
+  Se o número da linha desta row for o número da linha deste find anchor, adicione o número de coluna deste find anchor menos 1 para o first endereço de memória do pedaço deste segmento final deste percorredor.
   Se o first endereço de memória do pedaço deste segmento final deste percorredor não for o first endereço de memória do pedaço desta string desta row, skip palavra characters no segmento final deste percorredor.
   Percorra. [o código abaixo]
     Mova o percorredor (spell checking rules).
     Se o segmento inicial deste percorredor estiver em branco, cancele.
     Se o segmento inicial deste percorredor não estiver escrito incorretamente, repita.
   Ligue o detector.
-  Atribua o first endereço de memória do pedaço deste segmento inicial deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 1 ao anchor column# deste text.
+  Atribua o first endereço de memória do pedaço deste segmento inicial deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 1 ao anchor número de coluna deste text.
   Atribua o número da linha desta row ao anchor número da linha deste text .
-  Atribua o last endereço de memória do pedaço deste segmento inicial deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 2 ao caret column# deste text.
+  Atribua o last endereço de memória do pedaço deste segmento inicial deste percorredor menos o first endereço de memória do pedaço desta string desta row mais 2 ao caret número de coluna deste text.
   Atribua o número da linha desta row ao número de linhas do cursor deste text.
 
 Etapas para que se encontre o next misspelling em um text usando um detector:
@@ -4783,7 +4800,7 @@ Etapas para que se desmanche algum tipo de messages:
     e 0 
     e 1 [PM_REMOVE] devolvendo um número.
   Se o número for 0, cancele.
-  Se a message desta msg for 15 [WM_PAINT], call "user32.dll" "ValidateRect" com a main window e 0. \ que tal ter uma rotina específica para isso?
+  Se a message desta msg for 15 [WM_PAINT], call "user32.dll" "ValidateRect" com a janela principal do programa e 0. \ que tal ter uma rotina específica para isso?
   Repita. [o código acima]
 
 Etapas para que se desmanche um fila de eventos:
@@ -4952,14 +4969,14 @@ Etapas para que se obtenha uma cor usando uma localização:
     devolvendo um código da cor.
   Converta o código da cor para a cor.
 
-Etapas para que se obtenha um column# usando uma row e uma localização e um text:
-  Atribua 0 ao column#.
+Etapas para que se obtenha um número de coluna usando uma row e uma localização e um text:
+  Atribua 0 ao número de coluna.
   Se o text for inexistente, cancele.
   Se a row for inexistente, cancele.
   Obtenha uma caixa usando a row e o text.
-  Se a coordenada Y desta localização for maior do que a coordenada inferior desta caixa, atribua a quantidade de caracteres desta string desta row ao column#; volte. \ only happens sobre last row of text
+  Se a coordenada Y desta localização for maior do que a coordenada inferior desta caixa, atribua a quantidade de caracteres desta string desta row ao número de coluna; volte. \ only happens sobre last row of text
   Crie o número da fonte of o memory canvas usando o font deste text.
-  Obtenha um start largura e um subtexto usando a row e a localização e o text (for "get um column# usando uma row...").
+  Obtenha um start largura e um subtexto usando a row e a localização e o text (for "get um número de coluna usando uma row...").
   Percorra. [o código abaixo]
     Se o last endereço de memória do pedaço deste subtexto é o last endereço de memória do pedaço desta string desta row, pare.
     Obtenha um largura usando o subtexto e o memory canvas.
@@ -4970,7 +4987,7 @@ Etapas para que se obtenha um column# usando uma row e uma localização e um text
     Se a coordenada X desta localização for menor do que o largura, pare.
     Adicione 1 para o last endereço de memória do pedaço deste subtexto.
   Repita. [o código acima]
-  Atribua o last endereço de memória do pedaço deste subtexto menos o first endereço de memória do pedaço desta string desta row mais 1 ao column#.
+  Atribua o last endereço de memória do pedaço deste subtexto menos o first endereço de memória do pedaço desta string desta row mais 1 ao número de coluna.
   Destrua o número da fonte of o memory canvas.
 
 Etapas para que se obtenha uma contagem of items em um endereço completo no sistema de arquivos:
@@ -5156,13 +5173,13 @@ Etapas para que se obtenha uma position usando uma localização e um text:
   Se o text for inexistente, limpe o position; volte.
   Obtenha uma row usando a localização e o text.
   Atribua o número da linha desta row ao número da linha desta position.
-  Obtenha o column# desta position usando a row e a localização e o text.
+  Obtenha o número de coluna desta position usando a row e a localização e o text.
 
-Etapas para que se obtenha um endereço de memória RGB desde um bitmapdata sob um número da linha e um column#:
+Etapas para que se obtenha um endereço de memória RGB desde um bitmapdata sob um número da linha e um número de coluna:
     \ 1 based
   Atribua o scan0 deste bitmapdata ao endereço de memória RGB.
   Adicione o número da linha menos 1 times o stride deste bitmapdata para o endereço de memória RGB.
-  Adicione o column# menos 1 times a magnitude desse espaço de cor RGB para o endereço de memória RGB.
+  Adicione o número de coluna menos 1 times a magnitude desse espaço de cor RGB para o endereço de memória RGB.
 
 Etapas para que se obtenha um deslocamento vertical e um deslocamento horizontal usando uma orientação: \deslocamento horizontal e vertical?
     \ veja https://pt.wikipedia.org/wiki/Trigonometria_racional
@@ -5308,13 +5325,13 @@ Etapas para que se obtenha uma localização usando uma position e um text:
   Obtenha uma caixa usando a row e o text.
   Atribua a coordenada superior desta caixa à coordenada y desta localização.
   Atribua o first endereço de memória do pedaço desta string desta row ao first endereço de memória do pedaço desse subtexto.
-  Atribua o first endereço de memória do pedaço deste subtexto mais o column# desta position menos 2 ao last endereço de memória do pedaço deste subtexto.
+  Atribua o first endereço de memória do pedaço deste subtexto mais o número de coluna desta position menos 2 ao last endereço de memória do pedaço deste subtexto.
   Obtenha um largura usando o subtexto e o memory canvas e o font deste text.
   Atribua a coordenada esquerda desta caixa mais o largura à coordenada x desta localização.
   Obtenha um offset par de números usando o working string desta row e a caixa e a font deste text e o alinhamento deste text.
   Adicione o número X deste offset par de números para a coordenada X desta localização.
 
-Etapas para que se obtenha um start largura e um subtexto usando uma row e uma localização e um text (for "get um column# usando uma row..."):
+Etapas para que se obtenha um start largura e um subtexto usando uma row e uma localização e um text (for "get um número de coluna usando uma row..."):
   Limpe o start largura.
   Limpe o subtexto.
   Se o text for inexistente, cancele.
@@ -5345,7 +5362,7 @@ Etapas para que se obtenha uma string desde o stack:
 Etapas para que se obtenha uma string desde a área de transferência do Windows:
   Limpe a string.
   Call "user32.dll" "OpenClipboard" com 
-    A main window.
+    A janela principal do programa.
   Call "user32.dll" "GetClipboardData" com 
   1 [CF_TEXT] 
     devolvendo um número identificador.
@@ -5440,7 +5457,7 @@ Etapas para que se globalize uma localização usando um par de números:
   Mova a localização usando o par de números.
 
 Etapas para que se go back para where we were:
-  Restore o context.
+  Restaure o context.
 
 Um GpBitmap é um GpImage.
 
@@ -5480,15 +5497,15 @@ Etapas para que se mude alinhamento usando um text e um alinhamento:
   Relembre o text com "alinhamento".
   Alinhe o text usando o alinhamento.
 
-Etapas para que se execute algum tipo de wm-activate com um w-param:
-  Split o w-param a um word e uma segunda word.
+Etapas para que se execute algum tipo de WM_ACTIVATE com um wParam:
+  Split o wParam a um word e uma segunda word.
   Atribua a segunda word a um número.
-  Se o número for 0, execute algum tipo de wm-activate com o w-param (deactivate); volte.
-  Execute algum tipo de wm-activate com o w-param (activate).
+  Se o número for 0, execute algum tipo de WM_ACTIVATE com o wParam (deactivate); volte.
+  Execute algum tipo de WM_ACTIVATE com o wParam (activate).
 
-Etapas para que se execute algum tipo de wm-activate com um w-param (activate):
+Etapas para que se execute algum tipo de WM_ACTIVATE com um wParam (activate):
   Call "user32.dll" "SetFocus" com 
-    A main window.
+    A janela principal do programa.
   Call "user32.dll" "ClipCursor" com 
   0.
     \ seterrormode(sem_failcriticalerrors) \ keeps certain disk erros desde appearing
@@ -5497,102 +5514,102 @@ Etapas para que se execute algum tipo de wm-activate com um w-param (activate):
     \Atribua "activar" à categoria deste event.
   Enfileire o event.
   Call "user32.dll" "PostMessageA" com 
-    A main window 
+    A janela principal do programa 
     e 0 [wm_null] 
     e 0 
     e 0.
 
-Etapas para que se execute algum tipo de wm-activate com um w-param (deactivate):
+Etapas para que se execute algum tipo de WM_ACTIVATE com um wParam (deactivate):
   Crie um event.
   Atribua "deactivate" à categoria deste event.
     \Atribua "desactivar" à categoria deste event.
   Enfileire o event.
   Call "user32.dll" "PostMessageA" com 
-    A main window 
+    A janela principal do programa 
     e 0 [wn_null] 
     e 0 
     e 0.
 
-Etapas para que se execute algum tipo de wm-char com um w-param e um l-param:
+Etapas para que se execute algum tipo de WM_CHAR com um wParam e um lParam:
     \Se a tecla Alt was para baixo, cancele. \ removed por Spanish teclaboard AltGr e ctrl+alt characters
     \Se a tecla Ctrl was para baixo, cancele. \ removed por Spanish teclaboard AltGr e ctrl+alt characters
-  Atribua o w-param a um pedaço.
+  Atribua o wParam a um pedaço.
   Se o pedaço não for printable, cancele.
   Crie um event.
   Atribua "pressionamento de tecla" à categoria deste event.
     \Atribua "tecla abajo" à categoria deste event.
   Se a tecla Shift was para baixo, acione o detector de tecla Shift deste event.
   Atribua o pedaço ao pedaço deste event.
-  Converta o l-param para a tecla deste event.
+  Converta o lParam para a tecla deste event.
   Enfileire o event.
 
-Etapas para que se execute algum tipo de wm-create com um window:
-  Atribua a window à main window.
+Etapas para que se execute algum tipo de WM_CREATE com um janela do programa:
+  Atribua a janela do programa à janela principal do programa.
 
-Etapas para que se execute algum tipo de wm-destroy:
+Etapas para que se execute algum tipo de WM_DESTROY:
   Call "user32.dll" "PostQuitMessage" com 
   0.
 
-Etapas para que se execute algum tipo de wm-lbuttondblclk com um l-param:
+Etapas para que se execute algum tipo de WM_LBUTTONDBLCLK com um lParam:
   Crie um event.
   Atribua "clique duplo" à categoria deste event.
     \Atribua "clic izquierdo doble" à categoria deste event.
   Se a tecla Alt was para baixo, acione o detector de tecla alt deste event.
   Se a tecla Ctrl was para baixo, acione o detector de tecla ctrl deste event.
   Se a tecla Shift was para baixo, acione o detector de tecla Shift deste event.
-  Converta o l-param para a localização deste event.
+  Converta o lParam para a localização deste event.
   Enfileire o event.
 
-Etapas para que se execute algum tipo de wm-lbuttondown com um l-param:
+Etapas para que se execute algum tipo de WM_LBUTTONDOWN com um lParam:
   Crie um event.
   Atribua "clique" à categoria deste event.
     \Atribua "clic izquierdo" à categoria deste event.
   Se a tecla Alt was para baixo, acione o detector de tecla alt deste event.
   Se a tecla Ctrl was para baixo, acione o detector de tecla ctrl deste event.
   Se a tecla Shift was para baixo, acione o detector de tecla Shift deste event.
-  Converta o l-param para a localização deste event.
+  Converta o lParam para a localização deste event.
   Enfileire o event.
 
-Etapas para que se execute algum tipo de wm-paint com um window:
+Etapas para que se execute algum tipo de WM_PAINT com um janela do programa:
   Call "user32.dll" "BeginPaint" com 
-    A window 
+    A janela do programa 
     e O endereçamento desse paintstruct.
   Call "user32.dll" "EndPaint" com 
-    A window 
+    A janela do programa 
     e O endereçamento desta paintstruct.
   Crie um event.
   Atribua "atualização de tela" à categoria deste event.
     \Atribua "refrescar" à categoria deste event.
   Enfileire o event.
 
-Etapas para que se execute algum tipo de wm-rbuttondblclk com um l-param:
+Etapas para que se execute algum tipo de WM_RBUTTONDBLCLK com um lParam:
   Crie um event.
   Atribua "clique direito duplo" à categoria deste event.
     \Atribua "clic derecho doble" à categoria deste event.
   Se a tecla Alt was para baixo, acione o detector de tecla alt deste event.
   Se a tecla Ctrl was para baixo, acione o detector de tecla ctrl deste event.
   Se a tecla Shift was para baixo, acione o detector de tecla Shift deste event.
-  Converta o l-param para a localização deste event.
+  Converta o lParam para a localização deste event.
   Enfileire o event.
 
-Etapas para que se execute algum tipo de wm-rbuttondown com um l-param:
+Etapas para que se execute algum tipo de WM_RBUTTONDOWN com um lParam:
   Crie um event.
   Atribua "clique direito" à categoria deste event.
     \Atribua "clic derecho" à categoria deste event.
   Se a tecla Alt was para baixo, acione o detector de tecla alt deste event.
   Se a tecla Ctrl was para baixo, acione o detector de tecla ctrl deste event.
   Se a tecla Shift was para baixo, acione o detector de tecla Shift deste event.
-  Converta o l-param para a localização deste event.
+  Converta o lParam para a localização deste event.
   Enfileire o event.
 
-Etapas para que se execute algum tipo de wm-setcursor:
+Etapas para que se execute algum tipo de WM_SETCURSOR:
   Atualize o cursor.
 
-Etapas para que se execute algum tipo de wm-syskeydown com um w-param e um l-param;
-Etapas para que se execute algum tipo de wm-keydown com um w-param e um l-param:
-  Atribua o w-param a um tecla.
-  Se a tecla com o l-param é algum tipo de comando de repetiçãoed escape ou modifier tecla, cancele.
-  Se a tecla for algum tipo de wm-char tecla, cancele.
+Etapas para que se execute algum tipo de WM_SYSKEYDOWN com um wParam e um lParam;
+Etapas para que se execute algum tipo de WM_KEYDOWN com um wParam e um lParam:
+  Atribua o wParam a um tecla.
+  Se a tecla com o lParam é algum tipo de comando de repetiçãoed escape ou modifier tecla, cancele.
+  Se a tecla for algum tipo de WM_CHAR tecla, cancele.
   Crie um event.
   Atribua "pressionamento de tecla" à categoria deste event.
     \Atribua "tecla abajo" à categoria deste event.
@@ -5827,7 +5844,7 @@ Etapas para que se execute um event usando um text (tecla Tab):
   Relembre o text com "insert".
   Remove algum tipo de pedaços selecionados no text.
   Insira o caractere de espaço ao text.
-  Divida o caret column# deste text por 2 usando um quociente e um resto.
+  Divida o caret número de coluna deste text por 2 usando um quociente e um resto.
   Se o resto for 0, insira o caractere de espaço ao text.
   Role o text para o caret.
 
@@ -6408,7 +6425,7 @@ Etapas para que se inicialize o mouse:
 
 Etapas para que se inicialize a área de impressão:
   Atribua a magnitude [quantidade de bytes] desse printdlgex ao lstructsize deste printdlgex.
-  Atribua a main window ao hwndowner deste printdlgex.
+  Atribua a janela principal do programa ao hwndowner deste printdlgex.
   Atribua 1288 [PD_RETURNDC + PD_RETURNDEFAULT + PD_NOPAGENUMS] ao flags deste printdlgex.
   Atribua -1 [START_PAGE_GENERAL] ao nstartpage deste printdlgex.
   Call "comdlg32.dll" "PrintDlgExA" com 
@@ -6434,7 +6451,7 @@ Etapas para que se inicialize o tela:
 
 Etapas para que se inicialize o tela canvas:
   Call "user32.dll" "GetDC" com 
-    A main window 
+    A janela principal do programa 
     devolvendo o tela canvas.
   Normalize o tela canvas.
 
@@ -6448,21 +6465,21 @@ Etapas para que se inicialize um talker:
     e O endereçamento deste iid 
     e O endereçamento deste talker.
 
-Etapas para que se inicialize a window: \\ para inicializar a janela
-  Atribua a magnitude [tamanho em bytes] dessa window class [estrutura] ao cbSize deste window class.
-  Atribua 40 [CS_OWNDC + CS_DBLCLKS] ao style deste window class.
+Etapas para que se inicialize a janela do programa: \\ para inicializar a janela
+  Atribua a magnitude [tamanho em bytes] dessa janela do programa class [estrutura] ao cbSize deste janela do programa class.
+  Atribua 40 [CS_OWNDC + CS_DBLCLKS] ao style deste janela do programa class.
     \o valor cs_owndc Aloca um contexto de dispositivo exclusivo para cada janela da classe.
     \ o valor cs_dblclks permite que o windows informe ao programa que aquele é um clique duplo (ao invés de dois cliques)
-  Point o lpfnWndProc deste window class para rotina handle algum tipo de message com um window um message número um W-Param e um L-Param.
+  Point o lpfnWndProc deste janela do programa class para rotina handle algum tipo de message com um janela do programa um message número um wParam e um lParam.
     \ Isso define o procedimento da classe dessa janela como sendo WndProc
     \LPARAM é um typedef para um LONG_PTR que é um número inteiro (32 bits com sinal) em win32 e __int64 (64 bits com sinal) em x86_64.
     \WPARAM é um typedef para um UINT_PTR que é um número sem sinal (32 bits sem sinal) em win32 e __int64 sem sinal (64 bits sem sinal) em x86_64.
-  Atribua o número identificador deste module ao hInstance desta window class.
-  Atribua o first deste nome deste module ao lpszClassName desta window class.
+  Atribua o número identificador deste module ao hInstance desta janela do programa class.
+  Atribua o first deste nome deste module ao lpszClassName desta janela do programa class.
   Call "user32.dll" "RegisterClassExA" \ Antes de criar uma janela, você deve registrar uma classe pra essa janela chamando a função RegisterClass.
-  com o endereçamento deste window class. \Esta função requer um único parâmetro, que é um ponteiro para uma estrutura do tipo WNDCLASS.
+  com o endereçamento deste janela do programa class. \Esta função requer um único parâmetro, que é um ponteiro para uma estrutura do tipo WNDCLASS.
   Call "user32.dll" "CreateWindowExA" com 
-  0    \\  o estilo opcional da janela, como transparências por exemplo. veja mais detalhes em  https://docs.microsoft.com/en-us/windows/desktop/winmsg/extended-window-styles
+  0    \\  o estilo opcional da janela, como transparências por exemplo. veja mais detalhes em  https://docs.microsoft.com/en-us/windows/desktop/winmsg/extended-janela do programa-styles
     e O first deste nome deste module    \\ O nome da classe da janela
     e O first deste nome deste module    \\ O texto da janela
     e 2147483648 [13565952  WS_OVERLAPPEDWINDOW]  [-2147483648 = WS_POPUP]     \\  aqui define o tipo da janela. Use valores em decimal;  
@@ -6478,7 +6495,7 @@ Etapas para que se inicialize a window: \\ para inicializar a janela
     e O número identificador deste module    \\ descrição auto explicável
     e 0. \\ aqui é um ponteiro que passa a informação pra janela. Usamos um valor nulo pq não precisamos dele.
   Call "user32.dll" "ShowWindow" com 
-    A main window 
+    A janela principal do programa 
     e 1 [SW_SHOWNORMAL].
 
 Etapas para que se inicialize winsock:
@@ -6521,9 +6538,9 @@ Etapas para que se insira uma string Para uma segunda string antes de um byte#:
 Etapas para que se insira uma string Para um text:
   Se o text for inexistente, cancele.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
-  Atribua a quantidade de caracteres desta string desta row menos o caret column# deste text a um número.
+  Atribua a quantidade de caracteres desta string desta row menos o caret número de coluna deste text a um número.
   Atribua a string deste row a uma segunda string.
-  Insira a string ao segunda string antes de o caret column# deste text.
+  Insira a string ao segunda string antes de o caret número de coluna deste text.
   Converta a segunda string para uns rows.
   Atribua o last destas rows a uma segunda row.
   Insira a rows A as rows deste text antes de a row.
@@ -6531,7 +6548,7 @@ Etapas para que se insira uma string Para um text:
   Destrua a row.
   Renumber as rows deste text.
   Atribua o número da linha desta segunda row ao número de linhas do cursor deste text.
-  Atribua a quantidade de caracteres desta string desta segunda row menos o número ao caret column# deste text.
+  Atribua a quantidade de caracteres desta string desta segunda row menos o número ao caret número de coluna deste text.
   Desvencilhe-se de o text.
 
 Etapas para que se insira uma coisa para uns coisas after uma segunda coisa:
@@ -6624,9 +6641,9 @@ Um item é um conjunto com
 Etapas para que se jump o caret left em um text:
   Se o text for inexistente, cancele.
   Mova o caret left para algum tipo de non-noise pedaço no text.
-  Se o caret column# deste text for 1, cancele.
+  Se o caret número de coluna deste text for 1, cancele.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
-  Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 2 a um endereço de memória do pedaço .
+  Atribua o first endereço de memória do pedaço desta string desta row mais o caret número de coluna deste text menos 2 a um endereço de memória do pedaço .
   Se o conteúdo deste endereço de memória do pedaço for alfanumérico, mova o caret left para algum tipo de non-alfanumérico pedaço no text.
   Se o conteúdo deste endereço de memória do pedaço não for alfanumérico, mova o caret left para algum tipo de non-symbolic pedaço no text.
   Mova o caret left para algum tipo de non-noise pedaço no text.
@@ -6635,8 +6652,8 @@ Etapas para que se jump o caret right em um text:
   Se o text for inexistente, cancele.
   Mova o caret right para algum tipo de non-noise pedaço no text.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
-  Se o caret column# deste text é a quantidade de caracteres desta string desta row, cancele.
-  Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 1 a um endereço de memória do pedaço .
+  Se o caret número de coluna deste text é a quantidade de caracteres desta string desta row, cancele.
+  Atribua o first endereço de memória do pedaço desta string desta row mais o caret número de coluna deste text menos 1 a um endereço de memória do pedaço .
   Se o conteúdo deste endereço de memória do pedaço é alfanumérico, mova o caret right para algum tipo de non-alfanumérico pedaço no text.
   Se o conteúdo deste endereço de memória do pedaço não for alfanumérico, mova o caret right para algum tipo de non-symbolic pedaço no text.
   Mova o caret right para algum tipo de non-noise pedaço no text.
@@ -6647,7 +6664,7 @@ Um kilobyte é 1024 units.
 
 Um categoria é uma string.
 
-Um l-param é um número.
+Um lParam é um número.
 
 Um folha modo paisagem é uma folha.
 
@@ -6703,13 +6720,13 @@ Etapas para que se limite o caret em um text:
   Se o text for inexistente, cancele.
   Limite o número de linhas do cursor deste text para 1 e a contagem de linhas deste text.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
-  Limite o caret column# deste text para 1 e a quantidade de caracteres desta string desta row.
+  Limite o caret número de coluna deste text para 1 e a quantidade de caracteres desta string desta row.
 
 Etapas para que se limite um número para um segundo número e um terceiro número:
   Se o número for menor do que o segundo número, atribua o segundo número ao número; volte.
   Se o número for maior do que o terceiro número, atribua o terceiro número ao número.
 
-Etapas para que se limite o origem of um text:
+Etapas para que se limite a origem of um text:
   Se o text for inexistente, cancele.
   Limite a coordenada X deste text para o menor número e a margem deste text.
   Atribua a contagem de linhas deste text menos 1 times a altura da linha deste text a um número.
@@ -6845,7 +6862,7 @@ Etapas para que se lowercase um text:
   Repita. [o código acima]
   Wrap o text.
 
-A main window é um window.
+A janela principal do programa é um janela do programa.
 
 Etapas para que se faça uma fração com um número e um segundo número:
   Atribua o número ao numerador desta fração.
@@ -6950,9 +6967,9 @@ O tamanho de letra médio é um tamanho da letra.
 
 O memory canvas é um canvas.
 
-Etapas para que se minimize um window:
+Etapas para que se minimize um janela do programa:
   Call "user32.dll" "ShowWindow" com 
-    A window 
+    A janela do programa 
     e 6 [SW_MINIMIZE].
 
 Etapas para que se mirror o gpBitmap em um imagem:
@@ -6976,10 +6993,10 @@ Etapas para que se mova o anchor left para algum tipo de non-alfanumérico pedaço
   Se o text for inexistente, cancele.
   Obtenha uma row usando o anchor número da linha deste text e o text.
   Percorra. [o código abaixo]
-    Se o anchor column# deste text for 1, cancele.
-    Atribua o first endereço de memória do pedaço desta string desta row mais o anchor column# deste text menos 2 a um endereço de memória do pedaço .
+    Se o anchor número de coluna deste text for 1, cancele.
+    Atribua o first endereço de memória do pedaço desta string desta row mais o anchor número de coluna deste text menos 2 a um endereço de memória do pedaço .
     Se o conteúdo deste endereço de memória do pedaço não for alfanumérico, cancele.
-    Subtraia 1 desde o anchor column# deste text.
+    Subtraia 1 desde o anchor número de coluna deste text.
   Repita. [o código acima]
 
 Etapas para que se mova o caret para baixo em um text:
@@ -6995,7 +7012,7 @@ Etapas para que se mova o caret para baixo one página em um text:
 
 Etapas para que se mova o caret para o first pedaço of o current row of um text:
   Se o text for inexistente, cancele.
-  Atribua 1 ao caret column# deste text.
+  Atribua 1 ao caret número de coluna deste text.
 
 Etapas para que se mova o caret para o first pedaço of um text:
   Se o text for inexistente, cancele.
@@ -7004,82 +7021,82 @@ Etapas para que se mova o caret para o first pedaço of um text:
 Etapas para que se mova o caret para o last pedaço of o current row of um text:
   Se o text for inexistente, cancele.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
-  Atribua a quantidade de caracteres desta string desta row ao caret column# deste text.
+  Atribua a quantidade de caracteres desta string desta row ao caret número de coluna deste text.
 
 Etapas para que se mova o caret para o last pedaço of um text:
   Se o text for inexistente, cancele.
   Atribua a contagem de linhas deste text ao número de linhas do cursor deste text.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
-  Atribua a quantidade de caracteres desta string desta row ao caret column# deste text.
+  Atribua a quantidade de caracteres desta string desta row ao caret número de coluna deste text.
 
 Etapas para que se mova o caret left para algum tipo de non-alfanumérico pedaço em um text:
   Se o text for inexistente, cancele.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
   Percorra. [o código abaixo]
-    Se o caret column# deste text for 1, cancele.
-    Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 2 a um endereço de memória do pedaço .
+    Se o caret número de coluna deste text for 1, cancele.
+    Atribua o first endereço de memória do pedaço desta string desta row mais o caret número de coluna deste text menos 2 a um endereço de memória do pedaço .
     Se o conteúdo deste endereço de memória do pedaço não for alfanumérico, cancele.
-    Subtraia 1 desde o caret column# deste text.
+    Subtraia 1 desde o caret número de coluna deste text.
   Repita. [o código acima]
 
 Etapas para que se mova o caret left para algum tipo de non-noise pedaço em um text:
   Se o text for inexistente, cancele.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
   Percorra. [o código abaixo]
-    Se o caret column# deste text for 1, cancele.
-    Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 2 a um endereço de memória do pedaço .
+    Se o caret número de coluna deste text for 1, cancele.
+    Atribua o first endereço de memória do pedaço desta string desta row mais o caret número de coluna deste text menos 2 a um endereço de memória do pedaço .
     Se o conteúdo deste endereço de memória do pedaço não for irrelevante, cancele.
-    Subtraia 1 desde o caret column# deste text.
+    Subtraia 1 desde o caret número de coluna deste text.
   Repita. [o código acima]
 
 Etapas para que se mova o caret left para algum tipo de non-symbolic pedaço em um text:
   Se o text for inexistente, cancele.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
   Percorra. [o código abaixo]
-    Se o caret column# deste text for 1, cancele.
-    Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 2 a um endereço de memória do pedaço .
+    Se o caret número de coluna deste text for 1, cancele.
+    Atribua o first endereço de memória do pedaço desta string desta row mais o caret número de coluna deste text menos 2 a um endereço de memória do pedaço .
     Se o conteúdo deste endereço de memória do pedaço não for symbolic, cancele.
-    Subtraia 1 desde o caret column# deste text.
+    Subtraia 1 desde o caret número de coluna deste text.
   Repita. [o código acima]
 
 Etapas para que se mova o caret left em um text:
   Se o text for inexistente, cancele.
-  Subtraia 1 desde o caret column# deste text.
+  Subtraia 1 desde o caret número de coluna deste text.
   Limite o caret no text.
 
 Etapas para que se mova o caret right para algum tipo de non-alfanumérico pedaço em um text:
   Se o text for inexistente, cancele.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
   Percorra. [o código abaixo]
-    Se o caret column# deste text é a quantidade de caracteres desta string desta row, cancele.
-    Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 1 a um endereço de memória do pedaço .
+    Se o caret número de coluna deste text é a quantidade de caracteres desta string desta row, cancele.
+    Atribua o first endereço de memória do pedaço desta string desta row mais o caret número de coluna deste text menos 1 a um endereço de memória do pedaço .
     Se o conteúdo deste endereço de memória do pedaço não for alfanumérico, cancele.
-    Adicione 1 para o caret column# deste text.
+    Adicione 1 para o caret número de coluna deste text.
   Repita. [o código acima]
 
 Etapas para que se mova o caret right para algum tipo de non-noise pedaço em um text:
   Se o text for inexistente, cancele.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
   Percorra. [o código abaixo]
-    Se o caret column# deste text é a quantidade de caracteres desta string desta row, cancele.
-    Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 1 a um endereço de memória do pedaço .
+    Se o caret número de coluna deste text é a quantidade de caracteres desta string desta row, cancele.
+    Atribua o first endereço de memória do pedaço desta string desta row mais o caret número de coluna deste text menos 1 a um endereço de memória do pedaço .
     Se o conteúdo deste endereço de memória do pedaço não for irrelevante, cancele.
-    Adicione 1 para o caret column# deste text.
+    Adicione 1 para o caret número de coluna deste text.
   Repita. [o código acima]
 
 Etapas para que se mova o caret right para algum tipo de non-symbolic pedaço em um text:
   Se o text for inexistente, cancele.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
   Percorra. [o código abaixo]
-    Se o caret column# deste text é a quantidade de caracteres desta string desta row, cancele.
-    Atribua o first endereço de memória do pedaço desta string desta row mais o caret column# deste text menos 1 a um endereço de memória do pedaço .
+    Se o caret número de coluna deste text é a quantidade de caracteres desta string desta row, cancele.
+    Atribua o first endereço de memória do pedaço desta string desta row mais o caret número de coluna deste text menos 1 a um endereço de memória do pedaço .
     Se o conteúdo deste endereço de memória do pedaço não for symbolic, cancele.
-    Adicione 1 para o caret column# deste text.
+    Adicione 1 para o caret número de coluna deste text.
   Repita. [o código acima]
 
 Etapas para que se mova o caret right em um text:
   Se o text for inexistente, cancele.
-  Adicione 1 para o caret column# deste text.
+  Adicione 1 para o caret número de coluna deste text.
   Limite o caret no text.
 
 Etapas para que se mova o caret para cima em um text:
@@ -7144,26 +7161,26 @@ Etapas para que se mova uns coisas para uns segunda coisas:
   Atribua o last destas coisas ao last destas segunda coisas.
   Limpe as coisas.
 
-Etapas para que se mova uma window left:
+Etapas para que se mova uma janela do programa left:
   Call "user32.dll" "GetWindowRect" com 
-    A main window 
+    A janela principal do programa 
     e O endereçamento dessa caixa.
   Subtraia a pixel largura desta tela desde a coordenada esquerda desta caixa.
   Call "user32.dll" "MoveWindow" com 
-    A window 
+    A janela do programa 
     e A coordenada esquerda desta caixa 
     e A coordenada superior desta caixa 
     e A pixel largura desta tela 
     e A pixel altura desta tela 
     e 1.
 
-Etapas para que se mova uma window right:
+Etapas para que se mova uma janela do programa right:
   Call "user32.dll" "GetWindowRect" com 
-    A main window 
+    A janela principal do programa 
     e O endereçamento dessa caixa.
   Adicione a pixel largura desta tela para a coordenada esquerda desta caixa.
   Call "user32.dll" "MoveWindow" com 
-    A window 
+    A janela do programa 
     e A coordenada esquerda desta caixa 
     e A coordenada superior desta caixa 
     e A pixel largura desta tela 
@@ -7255,7 +7272,7 @@ Etapas para que se normalize um imagem:
 Etapas para que se normalize uma seleção:
   Se o anchor número da linha desta seleção for menor do que o número de linhas do cursor desta seleção, cancele.
   Se o anchor número da linha desta seleção for maior do que o número de linhas do cursor desta seleção, permute o anchor desta seleção com o caret desta seleção; volte.
-  Se o anchor column# desta seleção for maior do que o caret column# desta seleção, permute o anchor column# desta seleção com o caret column# desta seleção.
+  Se o anchor número de coluna desta seleção for maior do que o caret número de coluna desta seleção, permute o anchor número de coluna desta seleção com o caret número de coluna desta seleção.
 
 Etapas para que se normalize um text:
   Se o text for inexistente, cancele.
@@ -7598,7 +7615,7 @@ Etapas para que se atribua uma string para uma letra:
 Etapas para que se atribua uma string para um text:
   Se o text for inexistente, cancele.
   Destrua as rows deste text.
-  Reset o origem of o text.
+  Reset a origem of o text.
   Reset o caret of o text.
   Desvencilhe-se de o text.
   Isole a string.
@@ -7608,7 +7625,7 @@ Etapas para que se atribua uma string para um text:
 
 Etapas para que se atribua uma string sobre o área de transferência do Windows:
   Call "user32.dll" "OpenClipboard" com 
-    A main window.
+    A janela principal do programa.
   Call "user32.dll" "EmptyClipboard".
   Atribua a quantidade de caracteres desta string mais 1 a um número.
   Call "kernel32.dll" "GlobalAlloc" com 
@@ -7741,7 +7758,7 @@ Etapas para que se atribua a selecionado contagem de linhas desse text para uma 
   Se o anchor número da linha desta seleção é o número de linhas do cursor desta seleção, cancele.
   Atribua o número de linhas do cursor desta seleção à contagem.
   Subtraia o anchor número da linha desta seleção desde a contagem.
-  Se o caret column# desta seleção não for 1, adicione 1 para a contagem.
+  Se o caret número de coluna desta seleção não for 1, adicione 1 para a contagem.
 
 Etapas para que se atribua o painel de informações string desse text para uma string:
   Se o text for inexistente, limpe a string; volte.
@@ -7751,7 +7768,7 @@ Etapas para que se atribua o painel de informações string desse text para uma st
   Se a segunda contagem não for 0, format a segunda contagem e "pedaço" ou "pedaços" à string; volte.
   Converta o número de linhas do cursor deste text para a string.
   Posponha ":" para a string.
-  Posponha o caret column# deste text para a string.
+  Posponha o caret número de coluna deste text para a string.
 
 Etapas para que se atribua uma coisa sob o end of uns coisas;
 Etapas para que se posponha uma coisa para uns coisas:
@@ -7855,10 +7872,10 @@ Etapas para que se remove algum tipo de pedaços selecionados em um text:
   Normalize a seleção.
   Obtenha uma row usando o anchor número da linha desta seleção e o text.
   Lance um subtexto sobre a string deste row.
-  Atribua o first endereço de memória do pedaço deste subtexto mais o anchor column# desta seleção menos 2 ao last endereço de memória do pedaço deste subtexto.
+  Atribua o first endereço de memória do pedaço deste subtexto mais o anchor número de coluna desta seleção menos 2 ao last endereço de memória do pedaço deste subtexto.
   Obtenha uma segunda row usando o número de linhas do cursor desta seleção e o text.
   Lance um segundo subtexto sobre a string desta segunda row.
-  Atribua o first endereço de memória do pedaço deste segundo subtexto mais o caret column# desta seleção menos 1 ao first endereço de memória do pedaço deste segundo subtexto.
+  Atribua o first endereço de memória do pedaço deste segundo subtexto mais o caret número de coluna desta seleção menos 1 ao first endereço de memória do pedaço deste segundo subtexto.
   Atribua o subtexto junto com o segundo subtexto à string desta row.
   Remove as rows of o text entre o next desta row e a segunda row.
   Atribua o anchor desta seleção ao caret deste text.
@@ -7874,14 +7891,14 @@ Etapas para que se remova pedaços de um text (backspace over um return):
 Etapas para que se remova pedaços de um text (backspace com jump):
   Se o text for inexistente, cancele.
   Se something estiver selecionado no text, remove algum tipo de pedaços selecionados no text; volte.
-  Se o caret column# deste text for 1, remova pedaços de o text (backspace over um return); volte.
+  Se o caret número de coluna deste text for 1, remova pedaços de o text (backspace over um return); volte.
   Jump o caret left no text.
   Remove algum tipo de pedaços selecionados no text.
 
 Etapas para que se remova pedaços de um text (backspace):
   Se o text for inexistente, cancele.
   Se something estiver selecionado no text, remove algum tipo de pedaços selecionados no text; volte.
-  Se o caret column# deste text for 1, remova pedaços de o text (backspace over um return); volte.
+  Se o caret número de coluna deste text for 1, remova pedaços de o text (backspace over um return); volte.
   Mova o caret left no text.
   Remove algum tipo de pedaços selecionados no text.
 
@@ -7895,7 +7912,7 @@ Etapas para que se remova pedaços de um text (forward delete com jump):
   Se o text for inexistente, cancele.
   Se something estiver selecionado no text, remove algum tipo de pedaços selecionados no text; volte.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
-  Se o caret column# deste text é a quantidade de caracteres desta string desta row, remova pedaços de o text (forward delete um return); volte.
+  Se o caret número de coluna deste text é a quantidade de caracteres desta string desta row, remova pedaços de o text (forward delete um return); volte.
   Jump o caret right no text.
   Remove algum tipo de pedaços selecionados no text.
 
@@ -7903,7 +7920,7 @@ Etapas para que se remova pedaços de um text (forward delete):
   Se o text for inexistente, cancele.
   Se something estiver selecionado no text, remove algum tipo de pedaços selecionados no text; volte.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
-  Se o caret column# deste text é a quantidade de caracteres desta string desta row, remova pedaços de o text (forward delete um return); volte.
+  Se o caret número de coluna deste text é a quantidade de caracteres desta string desta row, remova pedaços de o text (forward delete um return); volte.
   Mova o caret right no text.
   Remove algum tipo de pedaços selecionados no text.
 
@@ -8023,7 +8040,7 @@ Etapas para que se reset o caret of um text:
   Atribua 1 e 1 ao caret deste text.
 
 Etapas para que se reset o context:
-  Restore o context.
+  Restaure o context.
   Save o context.
 
 Etapas para que se reset uma contagem:
@@ -8035,7 +8052,7 @@ Etapas para que se reset o drawing origem:
 Etapas para que se reset um detector:
   Desative o detector.
 
-Etapas para que se reset o origem of um text:
+Etapas para que se reset a origem of um text:
   Se o text for inexistente, cancele.
   Atribua a margem deste text à coordenada x deste text.
   Atribua 0 à coordenada y deste text.
@@ -8154,7 +8171,7 @@ Etapas para que se restart um temporizador:
   Se a contagem deste temporizador não for 1, cancele.
   Atribua a contagem de intervalos do sistema aos intervalos iniciais deste temporizador. \ a intervalo contagem deste system
 
-Etapas para que se restore um canvas:
+Etapas para que se restaure um canvas:
   Call "gdi32.dll" "RestoreDC" com 
     O canvas [HDC]
     e -1. \ nSavedDC - O estado salvo a ser restaurado. 
@@ -8162,7 +8179,7 @@ Etapas para que se restore um canvas:
     \Se este parâmetro for negativo, ele representa uma instância relativa ao estado atual. 
     \Nesse caso, o valor -1 restaura o estado salvo mais recentemente.
 
-Etapas para que se restore um context:
+Etapas para que se restaure um context:
   Obtenha um saved context desde o context stack.
   Se o saved context for inexistente, cancele.
   Atribua a localização deste saved context à localização deste context.
@@ -8173,9 +8190,9 @@ Etapas para que se restore um context:
   Remove o saved context desde o context stack.
   Destrua o saved context.
 
-Etapas para que se restore uma window:
+Etapas para que se restaure uma janela do programa:
   Call "user32.dll" "ShowWindow" com 
-    A window 
+    A janela do programa 
     e 9 [SW_RESTORE].
 
 Etapas para que se reverse algum tipo de rows selecionadas of um text:
@@ -8531,7 +8548,7 @@ Etapas para que se role um text para o base:
   Se o vertical scroll detector deste text não estiver ativo, cancele.
   Atribua a contagem de linhas deste text menos 1 a um número.
   Atribua - o número times a altura da linha deste text à coordenada y deste text.
-  Limite o origem of o text.
+  Limite a origem of o text.
 
   Multiplique o número por -1.
   Multiplique o número pela altura da linha deste texto.
@@ -8540,7 +8557,7 @@ Etapas para que se role um text para o base:
 
 Etapas para que se role um text para o caret:
   Se o text for inexistente, cancele.
-  Se o column# deste caret deste text for 1, atribua a margem deste text à coordenada x deste text.
+  Se o número de coluna deste caret deste text for 1, atribua a margem deste text à coordenada x deste text.
   Obtenha uma caixa pelo caret no text.
   Ajuste a caixa usando 0 e - a quantidade de twips/pixel e 0 e a quantidade de twips/pixel . \ caret caixas do not fill entire row
   Se a coordenada superior desta caixa for menor do que a coordenada superior deste text, atribua a coordenada superior deste text menos a coordenada superior desta caixa ao número Y dessa difference.
@@ -8578,7 +8595,7 @@ Etapas para que se role um text para baixo one página:
   Se o vertical scroll detector deste text não estiver ativo, cancele.
   Subtraia o y-extent desta caixa deste text desde a coordenada Y deste text.
   Adicione a altura da linha deste text para a coordenada Y deste text.
-  Limite o origem of o text.
+  Limite a origem of o text.
 
 Etapas para que se role um text usando um difference:
   Se o text for inexistente, cancele.
@@ -8593,7 +8610,7 @@ Etapas para que se role um text para o topo:
   Se o text for inexistente, cancele.
   Se o vertical scroll detector deste text não estiver ativo, cancele.
   Atribua 0 à coordenada y deste text.
-  Limite o origem of o text.
+  Limite a origem of o text.
 
 Etapas para que se role um text para cima one linha reta:
   Se o text for inexistente, cancele.
@@ -8606,7 +8623,7 @@ Etapas para que se role um text para cima one página:
   Se o vertical scroll detector deste text não estiver ativo, cancele.
   Adicione o y-extent desta caixa deste text para a coordenada Y deste text.
   Subtraia a altura da linha deste text desde a coordenada Y deste text.
-  Limite o origem of o text.
+  Limite a origem of o text.
 
 Um sector é um par de números com 
   Uma coordenada X e 
@@ -8624,19 +8641,19 @@ Etapas para que se selecione um número da linha usando um text:
   Obtenha uma row usando o número da linha e o text.
   Se a row for inexistente, cancele.
   Atribua o número da linha ao anchor número da linha deste text .
-  Atribua 1 ao anchor column# deste text.
+  Atribua 1 ao anchor número de coluna deste text.
   Atribua o número da linha ao número de linhas do cursor deste text.
-  Atribua a quantidade de caracteres desta string desta row ao caret column# deste text.
+  Atribua a quantidade de caracteres desta string desta row ao caret número de coluna deste text.
 
 Um caixa de seleção é uma caixa.
 
 Uma seleção é um conjunto com 
-  Um anchor column#,
+  Um anchor número de coluna,
   Um anchor número da linha, 
-  Um anchor sob o anchor column#,
-  Um caret column#, 
+  Um anchor sob o anchor número de coluna,
+  Um caret número de coluna, 
   Um número de linhas do cursor, 
-  Um caret sob o caret column#.
+  Um caret sob o caret número de coluna.
 
 Etapas para que se send um trecho para um socket:
   Limpe o erro do fluxo de entrada/saída.
@@ -8816,7 +8833,7 @@ Etapas para que se mostre um console:
   Save o quadro atual.
   Pinte o console.
   Atualize o tela usando a caixa deste console.
-  Restore o quadro atual.
+  Restaure o quadro atual.
 
 Etapas para que se mostre um cursor:
   Call "user32.dll" "SetCursor" com o cursor.
@@ -8830,7 +8847,7 @@ Etapas para que se mostre um terminal:
   Save o quadro atual.
   Pinte o terminal.
   Atualize o tela usando a caixa deste terminal.
-  Restore o quadro atual.
+  Restaure o quadro atual.
 
 Etapas para que se shrink uma caixa por uns twips;
 Etapas para que se indent uma caixa uns twips;
@@ -8857,7 +8874,7 @@ Etapas para que se shut para baixo:
   Finalize o mouse.
   Finalize os cursors.
   Finalize as fonts.
-  Finalize a window.
+  Finalize a janela do programa.
   Finalize o tela.
   Finalize as cors.
   Finalize o module.
@@ -8925,8 +8942,8 @@ Etapas para que se lance um subtexto sobre algum tipo de pedaços selecionados em
   Se a row of o text não estiver selecionado, cancele.
   Lance o subtexto sobre a string deste row.
   Atribua a normalized seleção deste text a uma seleção.
-  Se o número da linha desta row é o número de linhas do cursor desta seleção, atribua o first endereço de memória do pedaço deste subtexto mais o caret column# desta seleção menos 2 ao last endereço de memória do pedaço deste subtexto.
-  Se o número da linha desta row é o anchor número da linha desta seleção, atribua o first endereço de memória do pedaço deste subtexto mais o anchor column# desta seleção menos 1 ao first endereço de memória do pedaço deste subtexto.
+  Se o número da linha desta row é o número de linhas do cursor desta seleção, atribua o first endereço de memória do pedaço deste subtexto mais o caret número de coluna desta seleção menos 2 ao last endereço de memória do pedaço deste subtexto.
+  Se o número da linha desta row é o anchor número da linha desta seleção, atribua o first endereço de memória do pedaço deste subtexto mais o anchor número de coluna desta seleção menos 1 ao first endereço de memória do pedaço deste subtexto.
 
 Etapas para que se lance um subtexto sobre o first pedaço of uma string:
   Lance o subtexto sobre a string.
@@ -9115,11 +9132,11 @@ Etapas para que se square para cima algum tipo de seleção em um text:
   Se nada estiver selecionado no text, cancele.
   Normalize a seleção deste text.
   Obtenha uma row usando o número de linhas do cursor deste text e o text.
-  Atribua 1 ao anchor column# deste text.
-  Se o caret column# deste text não for 1, adicione 1 para o número de linhas do cursor deste text; atribua 1 ao caret column# deste text.
+  Atribua 1 ao anchor número de coluna deste text.
+  Se o caret número de coluna deste text não for 1, adicione 1 para o número de linhas do cursor deste text; atribua 1 ao caret número de coluna deste text.
   Se o número de linhas do cursor deste text for menor do que ou igual à contagem de linhas deste text, cancele.
   Atribua a contagem de linhas deste text ao número da linha deste caret deste text.
-  Atribua a quantidade de caracteres desta string desta row ao column# deste caret deste text.
+  Atribua a quantidade de caracteres desta string desta row ao número de coluna deste caret deste text.
 
 
 
@@ -9511,7 +9528,7 @@ Etapas para que se start para cima:
   Inicialize o module.
   Inicialize as cors.
   Inicialize o tela.
-  Inicialize a window.
+  Inicialize a janela do programa.
   Inicialize as fonts.
   Inicialize os cursors.
   Inicialize o mouse.
@@ -9819,7 +9836,7 @@ Um vértice é uma coisa com
   Uma coordenada Y, 
   Uma localização sob a coordenada X.
 
-Um w-param é um número.
+Um wParam é um número.
 
 Etapas para que se aguarde por um event;
 Etapas para que se desenfileire um event:
@@ -9878,7 +9895,7 @@ Etapas para que se wrap um text:
   Redimensione proporcionalmente o text para a fração.
   Converta o posicionamento absoluto para o anchor deste text usando o text.
   Converta a segunda posicionamento absoluto para o caret deste text usando o text.
-  Limite o origem of o text.
+  Limite a origem of o text.
 
 Etapas para que se store um trecho em um file;
 Etapas para que se escreva um trecho para um file:

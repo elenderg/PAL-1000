@@ -46,7 +46,7 @@ A etiqueta de negação é uma etiqueta igual a 16.
 A prolog etiqueta é uma etiqueta igual a 17.
 A push endereço etiqueta é uma etiqueta igual a 18.
 A push value etiqueta é uma etiqueta igual a 19.
-A save eax etiqueta é uma etiqueta igual a 20.
+A etiqueta de atribuição do registrador EAX é uma etiqueta igual a 20.
 A etiqueta de repetição é uma etiqueta igual a 21.
 A etiqueta de endereço de rotina é uma etiqueta igual a 22.
 
@@ -573,7 +573,7 @@ Etapas para que se enderece um fragment usando um endereço:
   Se a etiqueta deste fragment for a push value etiqueta, enderece o fragment usando o endereço (push value); volte.
   Se a etiqueta deste fragment for a etiqueta de demanda externa, adicione 6 para o endereço; volte.
   Se a etiqueta deste fragment for a load eax etiqueta, adicione 5 para o endereço; volte. \ was 8 when "load eax" took em variáveis; now "load eax" only does um immediate value
-  Se a etiqueta deste fragment for a save eax etiqueta, enderece o fragment usando o endereço (save eax); volte.
+  Se a etiqueta deste fragment for a etiqueta de atribuição do registrador EAX, enderece o fragment usando o endereço (registrador EAX); volte.
   Se a etiqueta deste fragment for a etiqueta de demanda indireta, adicione 8 para o endereço; volte.
   Se a etiqueta deste fragment for a etiqueta de endereço de rotina, adicione 12 para o endereço; volte.
 
@@ -596,7 +596,7 @@ Etapas para que se enderece um fragment usando um endereço (push value):
   Se a quantidade de caracteres for 1, adicione 4 para o endereço; volte.
   Apresente a mensagem de erro contendo "Erro interno 3 - endereço um fragment usando um endereço (push value)".
 
-Etapas para que se enderece um fragment usando um endereço (save eax):
+Etapas para que se enderece um fragment usando um endereço (registrador EAX):
   Adicione 6 para o endereço.
   Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - endereço um fragment usando um endereço (push value)"; volte.
   Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - endereço um fragment usando um endereço (push value)"; volte.
@@ -783,7 +783,7 @@ Etapas para que se posponha uma etiqueta para um trecho (as um fragment etiqueta
   Se a etiqueta for a prolog etiqueta, posponha "prolog" para o trecho (com separator); volte.
   Se a etiqueta for a push endereço etiqueta, posponha "push endereço" para o trecho (com separator); volte.
   Se a etiqueta for a push value etiqueta, posponha "push value" para o trecho (com separator); volte.
-  Se a etiqueta for a save eax etiqueta, posponha "save eax" para o trecho (com separator); volte.
+  Se a etiqueta for a etiqueta de atribuição do registrador EAX, posponha "save eax" para o trecho (com separator); volte.
   Se a etiqueta for a etiqueta de repetição, posponha "repeat" para o trecho (com separator); volte.
   Se a etiqueta for a etiqueta de endereço de rotina, posponha "rotina endereço" para o trecho (com separator); volte.
   Posponha "?" para o trecho (com separator).
@@ -1708,7 +1708,7 @@ Etapas para que se compile a próxima instrução usando um percorredor (call - ext
   Adicione um fragment usando a etiqueta de demanda externa e o entry.
   Se o termo estiver vazio, cancele.
   Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Não entendi bem o que é: " junto com a phrase deste termo seguido de "." e o percorredor; volte.
-  Adicione um segundo fragment usando o save eax etiqueta e a variável deste termo.
+  Adicione um segundo fragment usando o etiqueta de atribuição do registrador EAX e a variável deste termo.
 
 Etapas para que se compile a próxima instrução usando um percorredor (call - indirect):
   Compile um expression usando o percorredor.
@@ -1721,7 +1721,7 @@ Etapas para que se compile a próxima instrução usando um percorredor (call - ind
   Adicione um fragment usando a etiqueta de demanda indireta e a variável desta expression.
   Se o termo estiver vazio, cancele.
   Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Acho que essa varíavel é inválida: " junto com a phrase deste termo seguido de "." e o percorredor; volte.
-  Adicione um segundo fragment usando o save eax etiqueta e a variável deste termo.
+  Adicione um segundo fragment usando o etiqueta de atribuição do registrador EAX e a variável deste termo.
 
 Etapas para que se compile a próxima instrução usando um percorredor (call - internal):
   Compile uns monikettes usando o percorredor.
@@ -6010,7 +6010,7 @@ Etapas para que se transforme em código hexadecimal um fragment:
   Se a etiqueta deste fragment for o push value etiqueta, transforme em código hexadecimal o fragment (push value); volte.
   Se a etiqueta deste fragment for a etiqueta de demanda externa, transforme em código hexadecimal o fragment (call external); volte.
   Se a etiqueta deste fragment for o load eax etiqueta, transforme em código hexadecimal o fragment (load eax); volte.
-  Se a etiqueta deste fragment for o save eax etiqueta, transforme em código hexadecimal o fragment (save eax); volte.
+  Se a etiqueta deste fragment for o etiqueta de atribuição do registrador EAX, transforme em código hexadecimal o fragment (registrador EAX); volte.
   Se a etiqueta deste fragment for a etiqueta de demanda indireta, transforme em código hexadecimal o fragment (call indirect); volte.
   Se a etiqueta deste fragment for a etiqueta de endereço de rotina, transforme em código hexadecimal o fragment (rotina endereço); volte.
 
@@ -6119,15 +6119,15 @@ Etapas para que se transforme em código hexadecimal um fragment (rotina endereço
   Obtenha um endereço usando a rotina deste fragment.
   Acrescente $C702 e o endereço para o código deste fragment. \ mov [edx],the endereço
 
-Etapas para que se transforme em código hexadecimal um fragment (save eax):
+Etapas para que se transforme em código hexadecimal um fragment (registrador EAX):
   Acrescente endereço loading código para o código deste fragment usando a variável deste fragment. \ atribua endereço para edx
-  Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transforme em código hexadecimal um fragment (save eax)"; volte.
-  Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - transforme em código hexadecimal um fragment (save eax)"; volte.
+  Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transforme em código hexadecimal um fragment (registrador EAX)"; volte.
+  Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - transforme em código hexadecimal um fragment (registrador EAX)"; volte.
   Atribua a quantidade de caracteres deste type desta variável deste fragment para uma quantidade de caracteres.
   Se a quantidade de caracteres for 4, acrescente $8902 para o código deste fragment; volte. \ mov [edx],eax
   Se a quantidade de caracteres for 2, acrescente $668902 para o código deste fragment; volte. \ mov [edx],ax
   Se a quantidade de caracteres for 1, acrescente $8802 para o código deste fragment; volte. \ mov [edx],al
-  Apresente a mensagem de erro contendo "Erro interno 3 - transforme em código hexadecimal um fragment (save eax)".
+  Apresente a mensagem de erro contendo "Erro interno 3 - transforme em código hexadecimal um fragment (registrador EAX)".
 
 Etapas para que se transforme em código hexadecimal uns fragments:
   Se o detector de erros deste compilador estiver ativado, cancele.
