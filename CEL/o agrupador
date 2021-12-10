@@ -783,7 +783,7 @@ Etapas para que se posponha uma etiqueta para um trecho (as um fragment etiqueta
   Se a etiqueta for a prolog etiqueta, posponha "prolog" para o trecho (com separator); volte.
   Se a etiqueta for a push endereço etiqueta, posponha "push endereço" para o trecho (com separator); volte.
   Se a etiqueta for a push value etiqueta, posponha "push value" para o trecho (com separator); volte.
-  Se a etiqueta for a etiqueta de atribuição do registrador EAX, posponha "save eax" para o trecho (com separator); volte.
+  Se a etiqueta for a etiqueta de atribuição do registrador EAX, posponha "salve eax" para o trecho (com separator); volte.
   Se a etiqueta for a etiqueta de repetição, posponha "repeat" para o trecho (com separator); volte.
   Se a etiqueta for a etiqueta de endereço de rotina, posponha "rotina endereço" para o trecho (com separator); volte.
   Posponha "?" para o trecho (com separator).
@@ -4091,8 +4091,8 @@ Etapas para que se encontre uma variável usando um nome e umas variáveis:
 An fragment é uma coisa com
   \ we have three lists in the compiler memory — types, variables, and rotinas 
   \ each rotina consists of a series of logical instructions called “fragments.” There are just 22 fragment types:
-  Uma etiqueta [break, call external, call indirect, call internal, dereference, end if, epilog, exit, finalize, increment, Intel, jump false, load address, load eax, loop, not, prolog, push address, push value, save eax, repeat, rotina address],
-  Uma variável (reference) [call indirect, dereference, increment, load address, load eax, pop, push address, push value, rotina address, save eax],
+  Uma etiqueta [break, call external, call indirect, call internal, dereference, end if, epilog, exit, finalize, increment, Intel, jump false, load address, load eax, loop, not, prolog, push address, push value, salve eax, repeat, rotina address],
+  Uma variável (reference) [call indirect, dereference, increment, load address, load eax, pop, push address, push value, rotina address, salve eax],
   Uma segunda variável (reference) [load address],
   Uma rotina (reference) [call internal, rotina address],
   Uma entry (reference) [call external],
@@ -6145,7 +6145,7 @@ Etapas para que se transforme em código hexadecimal um fragment (prolog):
   Se o número não for 0, acrescente $B9 \ mov ecx,number;  -> sets up the loop that will clear enough space on the stack for the routine's local variables
     e O número e $6A004975FB \loop: push 0; dec ecx; jnz loop -> a loop that pushes enough zeros onto the stack to initialize the local variables.
   para o código deste fragment. 
-  Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, acrescente $535657 para o código deste fragment. \ push ebx, esi, edi ->  save the EBX, ESI, and EDI registers on the stack.
+  Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, acrescente $535657 para o código deste fragment. \ push ebx, esi, edi ->  salve the EBX, ESI, and EDI registers on the stack.
 
 Etapas para que se transforme em código hexadecimal um fragment (push endereço):
   Acrescente endereço loading código para o código deste fragment usando a variável deste fragment. \ atribua endereço para edx
