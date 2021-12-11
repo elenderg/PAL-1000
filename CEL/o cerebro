@@ -224,23 +224,30 @@ Etapas para que se ajuste uma imagem (extraindo as caixas do gpBitmap):
 
 Etapas para que se ajuste espaçamento da fonte usando uma string:
   Se o quadro atual não for a área de impressão, cancele.
-  Call "gdi32.dll" "SetTextCharacterExtra" com 
-    A área de impressão \ Um identificador para o contexto do dispositivo.
-    e 0.    \ A quantidade de espaço extra, em unidades lógicas, a ser adicionada a cada caractere. 
-    \Se o modo de mapeamento atual não for MM_TEXT, o parâmetro nCharExtra será transformado e arredondado para o pixel mais próximo.
+  Call "gdi32.dll" "SetTextCharacterExtra" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-settextcharacterextra
+  \A função SetTextCharacterExtra define o espaçamento entre caracteres e adiciona espaço extra para cada célula de caractere na fonte selecionada, 
+  \incluindo o caractere de quebra,  quando o sistema grava uma linha de texto.
+    A área de impressão  [hdc]\ Um identificador para o contexto do dispositivo.
+    e 0. [extra]   \ A quantidade de espaço extra, em unidades lógicas, a ser adicionada a cada caractere. 
     \quero traduzir esse comando como: Mande a área de impressão e o código 0 para a função "SetTextCharacterExtra" da biblioteca "gdi32.dll".
-  Call "gdi32.dll" "GetCurrentObject" com 
-    A área de impressão \ Um identificador para o contexto do dispositivo.
-    e 6 [obj_font]    \ O tipo de objeto a ser consultado. Este parâmetro pode ser vários valores.
+  Call "gdi32.dll" "GetCurrentObject" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcurrentobject
+  \A função GetCurrentObject retorna um identificador que identifica a caneta, pincel, paleta, bitmap ou fonte atual e a função GetObject inicializa uma estrutura contendo os atributos desse objeto. 
+  \Algumas impressoras fornecem canetas, pincéis e fontes residentes que podem ser usados para melhorar a velocidade de desenho em um aplicativo.
+    A área de impressão [hdc] \ Um identificador para o contexto do dispositivo.
+    e 6 [type OBJ_FONT]    \ O tipo de objeto a ser consultado. Este parâmetro pode ser vários valores.
     \ OBJ_FONT -> Retorna a fonte selecionada no momento.
-    devolvendo um número identificador. \ Se a função for bem-sucedida, o valor de retorno é um identificador para o objeto especificado. Se a função falhar, o valor de retorno será NULL.
-  Call "gdi32.dll" "SelectObject" com 
-    O memory canvas \ Um identificador para o contexto do dispositivo.
-    e O número identificador. \ Um identificador para o objeto a ser selecionado. Nesse caso é o número do comando anterior, retornado pelo GetCurrentObject acima
+    devolvendo um número identificador. [h] \ Se a função for bem-sucedida, o valor de retorno é um identificador para o objeto especificado. Se a função falhar, o valor de retorno será NULL.
+  Call "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
+  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
+    O memory canvas [hdc] \ Um identificador para o contexto do dispositivo.
+    e O número identificador. [h] \ Um identificador para o objeto a ser selecionado. Nesse caso é o número do comando anterior (a fonte selecionada no momento), retornado pelo GetCurrentObject acima
   Obtenha um largura usando a string e o memory canvas.
   Call "gdi32.dll" "SelectObject" com 
     O memory canvas 
-    e O null número da fonte.
+    e O null número da fonte.  [h] \ Um identificador para o objeto a ser selecionado. 
+    \Nesse caso é também é um número identificador de fonte, mas  este valor é o da função GetStockObject 
+	\O sistema oferece seis fontes de estoque. Uma fonte de estoque é uma fonte lógica que um aplicativo pode obter chamando a função GetStockObject e especificando a fonte solicitada. 
+    \Esse valor corresponde à ANSI_FIXED_FONT que especifica uma fonte monoespaçada baseada no conjunto de caracteres ANSI do Windows. Uma fonte Courier é normalmente usada.
   Obtenha uma segunda largura usando a string e a área de impressão.
   Atribua o largura menos a segunda largura dividido pelo quantidade de caracteres desta string a um número.
   Call "gdi32.dll" "SetTextCharacterExtra" com 
@@ -262,70 +269,47 @@ Um ângulo é uns precise degrees. [cujos valores variam ente 0 e 3599]
 
 Etapas para que se posponha um trecho para um file:
   Limpe o erro do fluxo de entrada/saída.
-  Call "kernel32.dll" "SetFilePointer" \Esta função armazena o ponteiro do arquivo em dois valores LONG.
-  com o file \ Um número identificador do arquivo.
-    \Esse identificador de arquivo deve ser criado com o direito de acesso GENERIC_READ ou GENERIC_WRITE. 
-    \Para obter mais informações sobre direitos de acesso, consulte https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-security-and-access-rights
-    e 0 [lDistanceToMove]
-    \Os 32 bits de ordem inferior de um valor com sinal que especifica o número de bytes para mover o ponteiro do arquivo.
-    \Se lpDistanceToMoveHigh não for NULL, lpDistanceToMoveHigh e lDistanceToMove formam um único valor de 64 bits com sinal que especifica a distância a ser movida.
-    \Se lpDistanceToMoveHigh for NULL, lDistanceToMove será um valor de 32 bits com sinal. 
-    \Um valor positivo para lDistanceToMove move o ponteiro do arquivo para frente no arquivo e um valor negativo move o ponteiro para trás no arquivo .
-    e 0 [lpDistanceToMoveHigh]
-    \ Um ponteiro para os 32 bits de ordem superior da distância de 64 bits com sinal a ser movida.
-    \Se você não precisa de 32 bits de alta ordem, este ponteiro deve ser definido como NULL.
-    \ Quando não é NULL, esse parâmetro também recebe o DWORD de ordem superior do novo valor do ponteiro do arquivo.
-    \ Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-setfilepointer
-    e 2 [file_end] [dwMoveMethod]
-    \ O ponto de partida para o movimento do ponteiro do arquivo.
+  Call "kernel32.dll" "SetFilePointer" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-setfilepointer
+  \Esta função armazena o ponteiro do arquivo em dois valores LONG.
+  \Quando um arquivo é aberto, o Windows associa um ponteiro de arquivo com o fluxo padrão. 
+  \Esse ponteiro de arquivo é um valor de deslocamento que especifica o próximo byte a ser lido ou o local para receber o próximo byte escrito.
+    O file [hFile]\ O número identificador do arquivo.
+    e 0 [lDistanceToMove] \ Um valor positivo para lDistanceToMove move o ponteiro do arquivo para frente no arquivo 
+    \e um valor negativo move o ponteiro para trás no arquivo .
+    e 0 [lpDistanceToMoveHigh] \Serve apenas para operações com 64 bits. Quando não é utilizado, esse valor deve ser 0 (NULL).        
+    e 2 [file_end] [dwMoveMethod] \ O ponto de partida para o movimento do ponteiro do arquivo.
     \ Este parâmetro pode ser um dos seguintes valores.
     \0 = FILE_BEGIN ->  O ponto de partida é zero ou o início do arquivo.
     \ 1 = FILE_CURRENT -> O ponto de partida é o valor atual do ponteiro do arquivo.
     \ 2 = FILE_END -> O ponto de partida é a posição atual de fim de arquivo.
     devolvendo um número resultante.
     \Se a função for bem-sucedida e lpDistanceToMoveHigh for NULL, o valor de retorno será o DWORD de ordem inferior do novo ponteiro de arquivo. 
-    \Obs: Se a função retornar um valor diferente de INVALID_SET_FILE_POINTER, a chamada para SetFilePointer foi bem-sucedida.
+    \Obs: Se a função retornar qualquer valor que não seja -1 (INVALID_SET_FILE_POINTER), isso significa que a chamada para SetFilePointer foi bem-sucedida.
   Se o número resultante for -1, atribua "Ocorreu um erro na hora de posicionar o ponteiro do arquivo." ao erro do fluxo de entrada/saída; volte.
-    \ Se um novo ponteiro de arquivo for um valor negativo, a função falhará, o ponteiro de arquivo não será movido e o código retornado por GetLastError será ERROR_NEGATIVE_SEEK.
-  Call "kernel32.dll" "WriteFile" com \ Grava dados no arquivo ou dispositivo de entrada / saída (E / S) especificado.
-    \ Esta função foi projetada para operação síncrona e assíncrona.
-    O file [hFile]
-    \ Um identificador para o arquivo ou dispositivo de E / S 
+    \ Se o ponteiro de arquivo for um valor negativo, a função falhará, o ponteiro de arquivo não será movido e o código retornado por GetLastError será ERROR_NEGATIVE_SEEK.
+    \Observação: Como o valor -1 (INVALID_SET_FILE_POINTER) é um valor válido para o DWORD de ordem inferior do novo ponteiro de arquivo, 
+   \O certo seria verificar o valor de retorno da função e o código de erro retornado por GetLastError para determinar se um erro ocorreu ou não. 
+    \Se ocorreu um erro, o valor de retorno de SetFilePointer será -1 (INVALID_SET_FILE_POINTER) e a função GetLastError retornará um valor diferente de 0 (NO_ERROR ). 	    
+  Call "kernel32.dll" "WriteFile" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile
+  \ Essa função serve pra gravar dados no arquivo ou dispositivo de entrada / saída (E/S) especificado.
+    O file [hFile]     \ Um identificador para o arquivo ou dispositivo de E/S 
     \(por exemplo, um arquivo, fluxo de arquivo, disco físico, volume, buffer de console, unidade de fita, soquete, recurso de comunicação, processador de mensagens ou canal).
-    \ O parâmetro hFile deve ter sido criado com o acesso de gravação. 
-    \Para obter mais informações, consulte os sites
-    \ https://docs.microsoft.com/en-us/windows/desktop/SecAuthZ/generic-access-rights
-    \ https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-security-and-access-rights
-    \ Para operações de gravação assíncrona, hFile pode ser qualquer identificador aberto com a função CreateFile usando o sinalizador FILE_FLAG_OVERLAPPED 
-    \ou um identificador de soquete retornado pelo soquete ou função de aceitação.
-    e O first deste trecho [lpBuffer]
-    \ Um ponteiro para o buffer que contém os dados a serem gravados no arquivo ou dispositivo.
-    \ Este buffer deve permanecer válido durante a operação de gravação. 
-    \ O chamador não deve usar esse buffer até que a operação de gravação seja concluída.
-    e A quantidade de caracteres deste trecho [nNumberOfBytesToWrite]
-    \ O número de bytes a serem gravados no arquivo ou dispositivo.
+    e O first endereço de memória do pedaço deste trecho [lpBuffer]  \ Um ponteiro para o buffer que contém os dados a serem gravados no arquivo ou dispositivo.
+    e A quantidade de caracteres deste trecho [nNumberOfBytesToWrite] \ O número de bytes a serem gravados no arquivo ou dispositivo.
     \ Um valor zero especifica uma operação de gravação nula. 
     \O comportamento de uma operação de gravação nula depende do sistema de arquivos subjacente ou da tecnologia de comunicação.
-    e um endereçamento desse número [lpNumberOfBytesWritten]
-    \Um ponteiro para a variável que recebe o número de bytes gravados ao usar um parâmetro hFile síncrono. 
+    [Creio que seja preciso corrigir o texto abaixo]
+    e um [o] endereçamento desse número [lpNumberOfBytesWritten]     \Um ponteiro para a variável que recebe o número de bytes gravados ao usar um parâmetro hFile síncrono. 
     \ WriteFile define esse valor como zero antes de fazer qualquer trabalho ou verificação de erro.
     \ Use NULL para este parâmetro se esta for uma operação assíncrona para evitar resultados potencialmente errôneos.
-    \Este parâmetro pode ser NULL somente quando o parâmetro lpOverlapped não for NULL.
-    e 0 [lpOverlapped]
-    \Um ponteiro para uma estrutura OVERLAPPED é necessário se o parâmetro hFile foi aberto com FILE_FLAG_OVERLAPPED, caso contrário, este parâmetro pode ser NULL.
-    \ Para um hFile que oferece suporte a deslocamentos de byte, se você usar este parâmetro, deverá especificar um deslocamento de byte no qual iniciar a gravação no arquivo ou dispositivo. 
-    \Esse deslocamento é especificado definindo os membros Offset e OffsetHigh da estrutura OVERLAPPED. 
-    \Para um hFile que não oferece suporte a deslocamentos de byte, Offset e OffsetHigh são ignorados.
-    \Para gravar no final do arquivo, especifique os membros Offset e OffsetHigh da estrutura OVERLAPPED como 0xFFFFFFFF. 
-    \Isso é funcionalmente equivalente a chamar anteriormente a função CreateFile para abrir hFile usando o acesso FILE_APPEND_DATA.
-    \ Para obter mais informações sobre diferentes combinações de lpOverlapped e FILE_FLAG_OVERLAPPED, consulte:
-    \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile#remarks
-    \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile#synchronization-and-file-position
-    devolvendo o número resultante.
-    \ Se a função for bem-sucedida, o valor de retorno será diferente de 0 (VERDADEIRO).
+    \Este parâmetro pode ser NULL somente quando o próximo parâmetro [lpOverlapped] não for 0 (NULL).
+    e 0 [lpOverlapped]  \ utilizado somente quando se deseja gravar em outro lugar do arquivo, como por exemplo, no final. 
+    \ Se não for o caso, esse parâmetro pode ser 0 (NULL)
+    devolvendo o número resultante. \ Se a função for bem-sucedida, o valor de retorno será diferente de 0 (VERDADEIRO).
     \ Se a função falhar ou estiver sendo concluída de forma assíncrona, o valor de retorno será 0 (FALSO). 
     \Para obter informações de erro estendidas, chame a função GetLastError.
-    \ Nota: O código GetLastError ERROR_IO_PENDING não é uma falha; indica que a operação de gravação está com conclusão pendente de forma assíncrona. 
+    \ Nota: Se GetLastError fornecer um valor igual a 997 ou -2147023899 (ERROR_IO_PENDING), isso não indica uma falha na gravação do arquivo; 
+    \indica apenas que a operação de gravação ainda está com conclusão pendente devido ser uma operação de gravação de forma assíncrona. 
     \ Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile#remarks
   Se o número resultante for 0, atribua "Ocorreu um erro na hora de salvar o arquivo." ao erro do fluxo de entrada/saída; volte.
 
@@ -421,11 +405,13 @@ Etapas para que se assign um endereço de memória usando um quantidade de pedaços
   Se o quantidade de pedaços for 0, esvazie o endereço de memória; volte.
   Isole o quantidade de pedaços.
   Arredonde o quantidade de pedaços para cima para o nearest power of two.
-  Call "kernel32.dll" "HeapAlloc" com 
-    O endereço heap 
-    e 8 [HEAP_ZERO_MEMORY] 
-    e A quantidade de pedaços 
-    devolvendo o endereço de memória.
+  Call "kernel32.dll" "HeapAlloc" com \https://docs.microsoft.com/en-us/windows/win32/api/heapapi/nf-heapapi-heapalloc
+  \Aloca um bloco de memória de um heap. A memória alocada não é móvel.
+    O endereço heap [hHeap] \ Um identificador para o heap do qual a memória será alocada. Esse identificador é retornado pela função HeapCreate ou GetProcessHeap .
+    e 8 [dwFlags ] \As opções de alocação de heap. A especificação de qualquer um desses valores substituirá o valor correspondente especificado quando o heap foi criado com HeapCreate . 
+    [8 = HEAP_ZERO_MEMORY]  \A memória alocada será inicializada em zero. Caso contrário, a memória não é inicializada para zero.
+    e A quantidade de pedaços [dwBytes] \O número de bytes a serem alocados.
+    devolvendo o endereço de memória. [LPVOID ] \Se a função for bem-sucedida, o valor de retorno é um ponteiro para o bloco de memória alocado.
   Se o endereço de memória não for inexistente, adicione 1 para a contagem do heap; volte.
 
 Etapas para que se role automaticamente um text usando uma localização e um detector:
@@ -3682,7 +3668,7 @@ Etapas para que se pinte uma caixa (focus style):
     e O segundo código da cor.
   Call "gdi32.dll" "SetMapMode" com 
     O quadro atual 
-    e 1 [MM_TEXT].
+    e 1 [MM_TEXT]. \ o modo de mapeamento para o contexto de dispositivo do seu aplicativo
   Call "user32.dll" "DrawFocusRect" com 
     O quadro atual 
     e O endereçamento desta caixa.
@@ -9953,13 +9939,14 @@ Etapas para que se escreva um pedaço:
   Atribua o pedaço a uma string.
   Escreva a string.
 
-Etapas para que se escreva um pedaço para stdout:
-  Call "kernel32.dll" "WriteFile" com 
-    O stdout handle 
-    e O endereçamento deste pedaço 
-    e 1 
-    e O endereçamento desse número 
-    e nil.
+Etapas para que se escreva um pedaço para StdOut:
+  Call "kernel32.dll" "WriteFile" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile
+    O stdout handle [hFile] \Um identificador para o arquivo ou dispositivo de E / S
+  \(por exemplo, um arquivo, fluxo de arquivo, disco físico, volume, buffer de console, unidade de fita, soquete, recurso de comunicação, processador de mensagens ou canal).
+    e O endereçamento deste pedaço [lpBuffer] \Um ponteiro para o buffer que contém os dados a serem gravados no arquivo ou dispositivo.
+    e 1 [nNumberOfBytesToWrite] \ representa o nº de bytes a serem gravados no arquivo ou dispositivo.
+    e O endereçamento desse número [lpNumberOfBytesWritten]  \Um ponteiro para a variável que recebe o número de bytes gravados ao usar um parâmetro hFile síncrono . 
+    e nil. [lpOverlapped] \ serve pra especificar se deseja gravar em outra região, por exemplo o final do arquivo. 
 
 Etapas para que se escreva um pedaço sem passar pra próxima linha:
   Atribua o pedaço a uma string.
@@ -9995,20 +9982,20 @@ Etapas para que se escreva um número sobre um console:
   Escreva a string sobre o console.
 
 Etapas para que se escreva uns quoras em uma caixa: \descomentar pra ver o que acontece
-    \Pinte a caixa com a cor vermelha e a cor preta. \ temp ***
-  Atribua a caixa a um quora caixa.
+  \Pinte a caixa com a cor vermelha e a cor preta. \ temp ***
+  Atribua a caixa a uma quora caixa.
   Atribua a coordenada superior desta quora caixa mais 24 pixels à coordenada inferior desta quora caixa.
   Percorra. [o código abaixo]
     Obtenha um quora desde o quoras.
     Se o quora for inexistente, pare.
-    \pinte really fast. ***
-    \ Pinte o quora caixa com a cor amarela. \ temp ***
+  \pinte really fast. ***
+    Pinte o quora caixa com a cor amarela. \ temp ***
     Escreva a string deste quora no quora caixa com a cor deste quora.
     Mova o quora caixa para baixo 24 px.
   Repita. [o código acima]
 
 Etapas para que se yield para windows:
-  Se a fila de eventos não for vazio, cancele.
+  Se a fila de eventos não estiver vazio, cancele.
   Call "user32.dll" "GetMessageA" com 
     O endereçamento dessa msg 
     e 0 
