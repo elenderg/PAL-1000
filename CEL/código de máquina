@@ -28,12 +28,13 @@ Uma máscara de disjunção exclusiva é uma mask.
 
 Etapas para que se unassign um endereço de memória:
   Se o endereço de memória for inexistente, cancele.
-  Call "kernel32.dll" "HeapFree" com 
-    O endereço heap 
-    e 0 [no options] e 
-  o endereço de memória 
-    devolvendo um número.
-  Se o número for 0, cancele.
+  Call "kernel32.dll" "HeapFree" com  \https://docs.microsoft.com/en-us/windows/win32/api/heapapi/nf-heapapi-heapfree
+  \Libera um bloco de memória alocado de um heap pela função HeapAlloc ou HeapReAlloc.
+    O endereço heap [hHeap] \Um identificador para o heap cujo bloco de memória deve ser liberado. Esse identificador é retornado pela função HeapCreate ou GetProcessHeap.
+    e 0 [dwFlags no options] e  \As opções de liberação de heap.
+  o endereço de memória [lpMem] \Um ponteiro para o bloco de memória a ser liberado. Este ponteiro é retornado pela função HeapAlloc ou HeapReAlloc. Este ponteiro pode ser NULL.
+    devolvendo um número. \ Se a função for bem-sucedida, o valor de retorno será diferente de zero. 
+  Se o número for 0, cancele. \Se a função falhar, o valor de retorno é zero.
   Esvazie o endereço de memória.
   Subtraia 1 desde a contagem do heap.
 
@@ -366,22 +367,27 @@ Etapas para que se reassign um endereço de memória usando um quantidade de pedaç
   Se o quantidade de pedaços for 0, unassign o endereço de memória; volte.
   Isole o quantidade de pedaços.
   Arredonde o quantidade de pedaços para cima para o nearest power of two.
-  Call "kernel32.dll" "HeapReAlloc" com 
-    O endereço heap 
-    e 8 [HEAP_ZERO_MEMORY] 
-    e O endereço de memória 
-    e A quantidade de pedaços 
-    devolvendo o endereço de memória.
+  Call "kernel32.dll" "HeapReAlloc" com  \https://docs.microsoft.com/en-us/windows/win32/api/heapapi/nf-heapapi-heaprealloc
+  \Realoca um bloco de memória de um heap. Esta função permite redimensionar um bloco de memória e alterar outras propriedades do bloco de memória. A memória alocada não é móvel.
+    O endereço heap [hHeap] \Um identificador para o heap do qual a memória deve ser realocada. Esse identificador é retornado pela função HeapCreate ou GetProcessHeap.
+    e 8 [HEAP_ZERO_MEMORY]  [dwFlags] \As opções de realocação de heap. Se a solicitação de realocação for para um tamanho maior, 
+	\a região adicional da memória além do tamanho original será inicializada para zero. O conteúdo do bloco de memória até seu tamanho original não é afetado.
+    e O endereço de memória [lpMem] \Um ponteiro para o bloco de memória que a função realoca. Este ponteiro é retornado por uma chamada anterior para a função HeapAlloc ou HeapReAlloc.
+    e A quantidade de pedaços [dwBytes] \O novo tamanho do bloco de memória, em bytes. O tamanho de um bloco de memória pode ser aumentado ou diminuído usando esta função.
+  \Se o heap especificado pelo parâmetro hHeap for um heap "não expansível", dwBytes deve ser menor que 0x7FFF8. 
+  \Você pode criar um heap não expansível chamando a função HeapCreate com um valor diferente de zero.
+    devolvendo o endereço de memória. \Se a função for bem-sucedida, o valor de retorno é um ponteiro para o bloco de memória realocado.
+  \Se a função falhar e você não tiver especificado HEAP_GENERATE_EXCEPTIONS nas dwFlags (o que é o caso aqui), o valor de retorno será NULL.
 
 Etapas para que se mostre olá mundo no console:
-  Intel $B403. \mov    ah,0x3
-  Intel $CD10. \int    0x10
-  Intel $B001. \mov    al,0x1
-  Intel $B30A. \mov    bl,0xa
-  Intel $B90B00BD13.  \mov    ecx,0x13bd000b
-  Intel $01B413CD10C34F. \add    DWORD PTR [ebx+edx*1+0x4fc310cd],esi
-  Intel $69206D756E64.  \ imul   esp,DWORD PTR [eax],0x646e756d
-  Intel $6D. \  outs   dx,DWORD PTR ds:[esi]
+  Intel $B403. \mov  ah,0x3
+  Intel $CD10. \int  0x10
+  Intel $B001. \mov  al,0x1
+  Intel $B30A. \mov  bl,0xa
+  Intel $B90B00BD13.  \mov  ecx,0x13bd000b
+  Intel $01B413CD10C34F. \add  DWORD PTR [ebx+edx*1+0x4fc310cd],esi
+  Intel $69206D756E64.  \ imul esp,DWORD PTR [eax],0x646e756d
+  Intel $6D. \  outs dx,DWORD PTR ds:[esi]
   Intel $21. \   .byte 0x21
   Intel $0D.  \   .byte 0xd
   Intel $0A.  \   .byte 0xa

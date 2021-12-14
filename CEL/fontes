@@ -20,22 +20,28 @@ Etapas para que se atribua a adjusted altura dessa font para uma altura:
   Atribua a altura desta font times 3/4 à altura.
 
 Etapas para que se atribua o actual data of uma font para um trecho:
-  \ only works com true/open type fonts
+  \ só funciona com fonts true type e open type
   Crie o número da fonte of o memory canvas usando a font.
-  Call "gdi32.dll" "GetFontData" com 
-    O memory canvas 
-    e 0 
-    e 0 
-    e nil 
-    e 0 
-    devolvendo uma contagem.
+  Call "gdi32.dll" "GetFontData" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getfontdata
+  \A função GetFontData recupera dados métricos de fonte para uma fonte TrueType.
+    O memory canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e 0 [dwTable] \O nome de uma tabela de métricas de fonte da qual os dados da fonte devem ser recuperados. 
+    \Este parâmetro pode identificar uma das tabelas métricas documentadas na especificação TrueType Font Files publicada pela Microsoft Corporation. 
+    \Se este parâmetro for zero, as informações são recuperadas começando no início do arquivo para arquivos de fonte TrueType ou do início dos dados para a fonte atualmente selecionada para arquivos TrueType Collection. 
+    \Para recuperar os dados do início do arquivo para arquivos TrueType Collection, especifique 'ttcf' (0x66637474).
+    e 0 [dwOffset] \O deslocamento do início da tabela de métricas de fonte até o local onde a função deve começar a recuperar as informações. 
+	\Se este parâmetro for zero, as informações são recuperadas começando no início da tabela especificada pelo parâmetro dwTable. 
+	\Se este valor for maior ou igual ao tamanho da tabela, ocorrerá um erro.
+    e nil [pvBuffer] \Um ponteiro para um buffer que recebe as informações da fonte. Se este parâmetro for NULL, a função retorna o tamanho do buffer necessário para os dados da fonte.
+    e 0 [cjBuffer] \O tamanho, em bytes, das informações a serem recuperadas. Se este parâmetro for zero, GetFontData retorna o tamanho dos dados especificados no parâmetro dwTable.
+    devolvendo uma contagem. \Se a função for bem-sucedida, o valor de retorno será o número de bytes retornados. Se a função falhar, o valor de retorno é -1 (GDI_ERROR).
   Reassign o first endereço de memória do pedaço deste trecho usando a contagem.
   Call "gdi32.dll" "GetFontData" com 
-    O memory canvas 
-    e 0 
-    e 0 
-    e O first endereço de memória do pedaço deste trecho 
-    e A contagem.
+    O memory canvas [hdc]
+    e 0 [dwTable]
+    e 0 [dwOffset]
+    e O first endereço de memória do pedaço deste trecho [pvBuffer]
+    e A contagem. [cjBuffer]
   Atribua o first endereço de memória do pedaço deste trecho mais a contagem menos 1 ao last endereço de memória do pedaço deste trecho.
   Destrua o número da fonte of o memory canvas.
 
