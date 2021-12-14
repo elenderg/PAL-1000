@@ -817,7 +817,7 @@ Etapas para que se compativelmente handle algum tipo de message com um janela do
   \Caso contrário, a mensagem é postada na janela que capturou o mouse.
   \Uma janela recebe essa mensagem por meio de sua função WindowProc.
   \ o wParam Indica se as teclas virtuais estão pressionadas ou não, podendo ser mais de uma
-   com o lParam;    \ especifica a coordenada do cursor. A coordenada é relativa ao canto superior esquerdo da área do cliente.
+   com o lParam;  \ especifica a coordenada do cursor. A coordenada é relativa ao canto superior esquerdo da área do cliente.
    atribua 0 para EAX; volte.
   Se a message for 515 [WM_LBUTTONDBLCLK Hex 203], execute algum tipo de WM_LBUTTONDBLCLK com o lParam; atribua 0 para EAX; volte.
   \Postado quando o usuário clica duas vezes com o botão esquerdo do mouse enquanto o cursor está na área do cliente de uma janela. 
@@ -998,7 +998,7 @@ Etapas para que se converta um detector para um texto hexadecimal:
   Atribua o first deste texto hexadecimal mais a magnitude deste detector menos 1 ao last deste texto hexadecimal.
 
 Etapas para que se converta uma font para um número da fonte:
-  Isole o font.
+  Isole a font.
   Termine com o caractere NULL o nome desta font.
   Call "gdi32.dll" "CreateFontA" com
    - a altura desta font times 3 dividido por 4 
@@ -1518,13 +1518,13 @@ Etapas para que se crie um event:
   Aloque memória para o event.
 
 Etapas para que se crie uma font info usando um font:
-  Crie o font info usando o font (basic data).
-  Crie as font larguras desta font info usando o font.
+  Crie a font info usando a font (basic data).
+  Crie as font larguras desta font info usando a font.
 
 Etapas para que se crie uma font info usando uma font (basic data):
-  Aloque memória para o font info.
-  Atribua o font ao font desta font info.
-  Obtenha um OutlineTextmetric usando o font.
+  Aloque memória para a font info.
+  Atribua a font ao font desta font info.
+  Obtenha um OutlineTextmetric usando a font.
   Atribua 32 ao flags deste font info. \ could ser updated com um more information
   Atribua o tminternalleading destes otmtextmetrics deste OutlineTextmetric ao internal leading desta font info.
   Atribua o otmemsquare deste OutlineTextmetric ao emsquare desta font info.
@@ -1537,15 +1537,15 @@ Etapas para que se crie uma font info usando uma font (basic data):
 
 Etapas para que se crie uma font info usando uma font e uma string:
   \ cria larguras baseadas nos caracteres da string
-  Crie o font info usando a font (basic data).
-  Crie as font larguras desta font info usando o font e a string.
+  Crie a font info usando a font (basic data).
+  Crie as font larguras desta font info usando a font e a string.
 
 Etapas para que se crie uns font larguras usando um font:
-  Aloque memória para o font larguras.
-  Atribua o font à font destas font larguras.
+  Aloque memória para a font larguras.
+  Atribua a font à font destas font larguras.
   Atribua 256 à contagem destas font larguras.
   Assign o data destes font larguras usando a contagem destas font larguras times a magnitude desse número.
-  Crie o número da fonte of o memory canvas usando o font.
+  Crie o número da fonte of o memory canvas usando a font.
   Assign um original abc endereço de memória usando 256 times a magnitude desse abc.
   Call "gdi32.dll" "GetCharABCWidthsA" com 
     O memory canvas \ Um identificador para o contexto do dispositivo.
@@ -1556,7 +1556,7 @@ Etapas para que se crie uns font larguras usando um font:
     e 
   o original abc endereço de memória. \ Um ponteiro para uma matriz de estruturas ABC que recebe as larguras dos caracteres, em unidades lógicas. 
     \Esta matriz deve conter, no mínimo, a mesma quantidade estruturas ABC que a quantidade de caracteres no intervalo especificado pelos parâmetros uFirstChar e uLastChar.
-    \ Para mais informações, veja os sistes abaixo: 
+    \ Para mais informações, veja os sites abaixo: 
     \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-abc
     \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcharabcwidthsa
   Destrua o número da fonte of o memory canvas.
@@ -1573,7 +1573,7 @@ Etapas para que se crie uns font larguras usando um font:
   Unassign o original abc endereço de memória.
 
 Etapas para que se crie uns font larguras usando uma font e uma string:
-  Aloque memória para o font larguras.
+  Aloque memória para a font larguras.
   Atribua a font à font destas font larguras.
   Atribua a quantidade de caracteres desta string à contagem destas font larguras.
   Se a string estiver em branco, cancele.
@@ -1840,11 +1840,11 @@ Etapas para que se crie um socket usando um host string e um número de porta:
   Se o erro do fluxo de entrada/saída não estiver em branco, cancele.
   Atribua 2 [AF_INET ] ao sin_family deste sockaddr.
   Atribua o port ao sin_port deste sockaddr.
-    \ crie socket 
+  \ cria o socket 
   Call "ws2_32.dll" "socket" com \https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket
   \A função de soquete cria um soquete que está vinculado a um provedor de serviços de transporte específico.
     2 [af AF_INET ]  
-    \ A família de endereços para o endereço de transporte. AF_INET  é usado para endereços ipv4
+    \ A família de endereços para o endereço de transporte. AF_INET é usado para endereços ipv4
     e 1 [type SOCK_STREAM ]  
     \Um tipo de soquete que fornece fluxos de bytes sequenciados, confiáveis, bidirecionais e baseados em conexão com um mecanismo de transmissão de dados OOB. 
     \Este tipo de soquete usa o TCP para a família de endereços da Internet
@@ -1866,18 +1866,18 @@ Etapas para que se crie um socket usando um host string e um número de porta:
   \A função setsockopt define uma opção de socket.
     O socket [s] \Um descritor que identifica um soquete.
     e 65535 [level] \O nível em que a opção é definida (por exemplo, SOL_SOCKET).
-    e 4101 [optname SO_SNDTIMEO]  \A opção de soquete para a qual o valor deve ser definido (por exemplo, SO_BROADCAST). 
+    e 4101 [optname SO_SNDTIMEO 0x00001005]  \A opção de soquete para a qual o valor deve ser definido (por exemplo, SO_BROADCAST). 
     \O parâmetro optname deve ser uma opção de soquete definida dentro do nível especificado, ou o comportamento é indefinido.
     \O tempo limite, em milissegundos, para bloquear chamadas enviadas.
     e 30 seconds' endereçamento [*optval] \Um ponteiro para o buffer no qual o valor da opção solicitada é especificado.
     e 4 [optlen] \O tamanho, em bytes, do buffer apontado pelo parâmetro optval.
     devolvendo o número resultante.
   Se o número resultante não for 0 [SOCKET_ERROR ], atribua "Erro na função 'setsockopt' da biblioteca 'Ws2_32.dll'. Valor do parâmetro optname: SO_SNDTIMEO (4101)." ao erro do fluxo de entrada/saída; volte.
-    \ abra receive timeout 30 seconds
+  \ abra receive timeout 30 seconds
   Call "ws2_32.dll" "setsockopt" com 
     O socket 
     e 65535 
-    e 4102 [SO_RCVTIMEO (optname)]    \Define o tempo limite, em milissegundos, para bloquear chamadas recebidas.
+    e 4102 [optname SO_RCVTIMEO  0x00001006]    \Define o tempo limite, em milissegundos, para bloquear chamadas recebidas.
     e 30 seconds' endereçamento e 
     4 
     devolvendo o número resultante.
@@ -4083,10 +4083,10 @@ Etapas para que se pinte uma string sob o left of uma caixa com uma cor:
   Pinte a string sob o left of a caixa com a cor e a fonte padrão.
 
 Etapas para que se pinte uma string sob o left of uma caixa com uma cor e um font:
-  Pinte a string na caixa com a cor e o font e "left".
+  Pinte a string na caixa com a cor e a font e "left".
 
 Etapas para que se pinte uma string sob o left of uma caixa com um font:
-  Pinte a string sob o left of a caixa com a cor preta e o font.
+  Pinte a string sob o left of a caixa com a cor preta e a font.
 
 Etapas para que se pinte uma string sob o right of uma caixa:
   Pinte a string sob o right of a caixa com a cor preta e a fonte padrão.
@@ -4095,10 +4095,10 @@ Etapas para que se pinte uma string sob o right of uma caixa com uma cor:
   Pinte a string sob o right of a caixa com a cor e a fonte padrão.
 
 Etapas para que se pinte uma string sob o right of uma caixa com uma cor e um font:
-  Pinte a string na caixa com a cor e o font e "right".
+  Pinte a string na caixa com a cor e a font e "right".
 
 Etapas para que se pinte uma string sob o right of uma caixa com um font:
-  Pinte a string sob o right of a caixa com a cor preta e o font.
+  Pinte a string sob o right of a caixa com a cor preta e a font.
 
 Etapas para que se pinte uma string sob uma localização com uma cor:
   Pinte a string sob a localização com a cor e a fonte padrão.
@@ -4111,7 +4111,7 @@ Etapas para que se pinte uma string em uma caixa over um número com uma cor e um
   Se o alinhamento for "left", adicione o número para a coordenada esquerda desta caixa.
   Se o alinhamento for "zquierda", adicione o número para a coordenada esquerda desta caixa.
   Se o alinhamento for "derecho", subtraia o número desde a coordenada direita desta caixa.
-  Pinte a string na caixa com a cor e o font e o alinhamento.
+  Pinte a string na caixa com a cor e a font e o alinhamento.
 
 Etapas para que se pinte uma string em uma caixa com um alinhamento:
   Pinte a string na caixa com a cor preta e a fonte padrão e o alinhamento.
@@ -4123,11 +4123,11 @@ Etapas para que se pinte uma string em uma caixa com uma cor e um alinhamento:
   Pinte a string na caixa com a cor e a fonte padrão e o alinhamento.
 
 Etapas para que se pinte uma string em uma caixa com uma cor e uma font e um alinhamento:
-  Obtenha um offset par de números usando a string e a caixa e o font e o alinhamento.
-  Pinte a string sob o canto superior esquerdo desta caixa mais o offset par de números com a cor e o font.
+  Obtenha um offset par de números usando a string e a caixa e a font e o alinhamento.
+  Pinte a string sob o canto superior esquerdo desta caixa mais o offset par de números com a cor e a font.
 
 Etapas para que se pinte uma string em uma caixa com uma font e um alinhamento:
-  Pinte a string na caixa com a cor preta e o font e o alinhamento.
+  Pinte a string na caixa com a cor preta e a font e o alinhamento.
 
 Etapas para que se pinte uma string no center of uma caixa:
   Pinte a string no center of a caixa com a cor preta e a fonte padrão.
@@ -4136,10 +4136,10 @@ Etapas para que se pinte uma string no center of uma caixa com uma cor:
   Pinte a string no center of a caixa com a cor e a fonte padrão.
 
 Etapas para que se pinte uma string no center of uma caixa com uma cor e um font:
-  Pinte a string na caixa com a cor e o font e "center".
+  Pinte a string na caixa com a cor e a font e "center".
 
 Etapas para que se pinte uma string no center of uma caixa com um font:
-  Pinte a string no center of a caixa com a cor preta e o font.
+  Pinte a string no center of a caixa com a cor preta e a font.
 
 Etapas para que se pinte um terminal:
   Se o terminal for inexistente, cancele.
@@ -4959,7 +4959,7 @@ Etapas para que se obtenha um número de coluna usando uma row e uma localização 
   Se a row for inexistente, cancele.
   Obtenha uma caixa usando a row e o text.
   Se a coordenada Y desta localização for maior do que a coordenada inferior desta caixa, atribua a quantidade de caracteres desta string desta row ao número de coluna; volte. \ only happens sobre last row of text
-  Crie o número da fonte of o memory canvas usando o font deste text.
+  Crie o número da fonte of o memory canvas usando a font deste text.
   Obtenha um start largura e um subtexto usando a row e a localização e o text (for "get um número de coluna usando uma row...").
   Percorra. [o código abaixo]
     Se o last endereço de memória do pedaço deste subtexto é o last endereço de memória do pedaço desta string desta row, pare.
@@ -5140,8 +5140,8 @@ Etapas para que se obtenha um número desde a stack:
   Destrua a stack entry.
 
 Etapas para que se obtenha um offset par de números usando uma string e uma caixa e uma font e um alinhamento:
-  Crie o número da fonte of o memory canvas usando o font.
-  Obtenha o offset par de números usando a string e a caixa e o font e o alinhamento (fast).
+  Crie o número da fonte of o memory canvas usando a font.
+  Obtenha o offset par de números usando a string e a caixa e a font e o alinhamento (fast).
   Destrua o número da fonte of o memory canvas.
 
 Etapas para que se obtenha um offset par de números usando uma string e uma caixa e uma font e um alinhamento (fast):
@@ -5310,7 +5310,7 @@ Etapas para que se obtenha uma localização usando uma position e um text:
   Atribua a coordenada superior desta caixa à coordenada y desta localização.
   Atribua o first endereço de memória do pedaço desta string desta row ao first endereço de memória do pedaço desse subtexto.
   Atribua o first endereço de memória do pedaço deste subtexto mais o número de coluna desta position menos 2 ao last endereço de memória do pedaço deste subtexto.
-  Obtenha um largura usando o subtexto e o memory canvas e o font deste text.
+  Obtenha um largura usando o subtexto e o memory canvas e a font deste text.
   Atribua a coordenada esquerda desta caixa mais o largura à coordenada x desta localização.
   Obtenha um offset par de números usando o working string desta row e a caixa e a font deste text e o alinhamento deste text.
   Adicione o número X deste offset par de números para a coordenada X desta localização.
@@ -5389,11 +5389,11 @@ Etapas para que se obtenha um largura usando um pedaço e um canvas:
 
 Etapas para que se obtenha um largura usando um pedaço e uns font larguras:
   Atribua o pedaço a um número.
-  Obtenha o largura usando o número e o font larguras.
+  Obtenha o largura usando o número e a font larguras.
 
 Etapas para que se obtenha um largura usando um número e uns font larguras:
   \ indexes são 0 based
-  Se o font larguras são nil, limpe o largura; volte.
+  Se a font larguras são nil, limpe o largura; volte.
   Atribua o data destes font larguras a um endereço numérico.
   Adicione o número times a magnitude deste número para o endereço numérico.
   Atribua o conteúdo deste endereço numérico ao largura.
@@ -5408,13 +5408,13 @@ Etapas para que se obtenha um largura usando uma string e um canvas:
   Atribua o número X deste par de números ao largura.
 
 Etapas para que se obtenha um largura usando uma string e um canvas e um font:
-  Crie o número da fonte of o canvas usando o font.
+  Crie o número da fonte of o canvas usando a font.
   Obtenha o largura usando a string e o canvas.
   Destrua o número da fonte of o canvas.
 
 Etapas para que se obtenha um largura usando uma string e um font:
   \ assumes memory canvas
-  Obtenha o largura usando a string e o memory canvas e o font.
+  Obtenha o largura usando a string e o memory canvas e a font.
 
 Etapas para que se obtenha uma coordenada X usando uma string e uma caixa (fast - center):
   Obtenha um largura usando a string e o memory canvas.
@@ -6307,20 +6307,20 @@ Etapas para que se inicialize o cursors (i-beam cursor):
 
 Etapas para que se inicialize as fonts:
   Call "gdi32.dll" "GetStockObject" com 
-  11 [ANSI_FIXED_FONT] 
+  11 [ANSI_FIXED_FONT 0x0000000B] 
     devolvendo o null número da fonte.
-    \Call "gdi32.dll" "AddFontMemResourceEx" com o first desta osmosian font source e a quantidade de caracteres desta osmosian font source e 0 e o endereçamento desse número devolvendo o osmosian font resource.
-    \Call "gdi32.dll" "AddFontMemResourceEx" com o first desta fonte Segoe UI e a quantidade de caracteres desta fonte Segoe UI e 0 e o endereçamento desse número devolvendo o Segoe UI resource.
+  \Call "gdi32.dll" "AddFontMemResourceEx" com o first desta osmosian font source e a quantidade de caracteres desta osmosian font source e 0 e o endereçamento desse número devolvendo o osmosian font resource.
+  \Call "gdi32.dll" "AddFontMemResourceEx" com o first desta fonte Segoe UI e a quantidade de caracteres desta fonte Segoe UI e 0 e o endereçamento desse número devolvendo o Segoe UI resource.
   Call "gdi32.dll" "AddFontMemResourceEx" com 
     O first desta fonte Tahoma 
     e A quantidade de caracteres desta fonte Tahoma 
     e 0 
     e O endereçamento desse número 
     devolvendo o recurso de fonte Tahoma.
-    \Atribua "Segoe UI" e 1/6 polegada à fonte padrão.
-    \Atribua "osmosian" e 24 pixels à fonte padrão.
+  \Atribua "Segoe UI" e 1/6 polegada à fonte padrão.
+  \Atribua "osmosian" e 24 pixels à fonte padrão.
   Atribua "Tahoma" e 20 pixels à fonte padrão.
-    \ stroked fonts below
+  \ stroked fonts below
   Atribua 12 pixels ao tamanho de letra pequena.
   Atribua 24 pixels ao tamanho de letra médio.
   Atribua 48 pixels ao tamanho de letra grande.
@@ -6452,21 +6452,22 @@ Etapas para que se inicialize a janela do programa: \\ para inicializar a janela
   Call "user32.dll" "RegisterClassExA" \ Antes de criar uma janela, você deve registrar uma classe pra essa janela chamando a função RegisterClass.
   com o endereçamento deste janela do programa class. \Esta função requer um único parâmetro, que é um ponteiro para uma estrutura do tipo WNDCLASS.
   Call "user32.dll" "CreateWindowExA" com 
-  0    \\  o estilo opcional da janela, como transparências por exemplo. veja mais detalhes em  https://docs.microsoft.com/en-us/windows/desktop/winmsg/extended-janela do programa-styles
+  0  \ o estilo opcional da janela, como transparências por exemplo. veja mais detalhes em  https://docs.microsoft.com/en-us/windows/desktop/winmsg/extended-janela do programa-styles
     e O first deste nome deste module  \\ O nome da classe da janela
     e O first deste nome deste module  \\ O texto da janela
-    e 2147483648 [13565952  WS_OVERLAPPEDWINDOW]  [-2147483648 = WS_POPUP]   \\  aqui define o tipo da janela. Use valores em decimal;  
-    \\para isso Converta os valores hexadecimais da lista  https://www.autoitscript.com/autoit3/docs/appendix/GUIStyles.htm para decimal;
-    \\ O valor na documentação do windows está em hexadecimal (ou em string), mas esse compilador usa números inteiros (longint). 
-    \\ Para colocar a barra padrão, use o valor 13565952
+    e 2147483648 [13565952  WS_OVERLAPPEDWINDOW 0x00CF0000]   [-2147483648 = WS_POPUP 0x80000000] \\  aqui define o tipo da janela. Use valores em decimal;  
+    \para isso Converta os valores hexadecimais da lista  https://www.autoitscript.com/autoit3/docs/appendix/GUIStyles.htm para decimal;
+    \outra opção é usar o site https://www.magnumdb.com/
+    \ O valor na documentação do windows está em hexadecimal (ou em string), mas esse compilador usa números inteiros (longint). 
+    \ Para colocar a barra padrão, use o valor 13565952
     e 0  \\ posição horizontal inicial da janela
     e 0  \\  posição vertical inicial da janela
     e A pixel largura desta tela  \\ A largura da janela em pixels;
     e A pixel altura desta tela  \\ A altura da janela em pixels
-    e 0    \\ opcional. Informa o número identificador do controle pai da janela (se existir) ou da janela em si
-    e 0 \\ a mesma coisa, só que identifica o número do menu da janela.
+    e 0  \ opcional. Informa o número identificador do controle pai da janela (se existir) ou da janela em si
+    e 0 \ a mesma coisa, só que identifica o número do menu da janela.
     e O número identificador deste module  \\ descrição auto explicável
-    e 0. \\ aqui é um ponteiro que passa a informação pra janela. Usamos um valor nulo pq não precisamos dele.
+    e 0. \ aqui é um ponteiro que passa a informação pra janela. Usamos um valor nulo pq não precisamos dele.
   Call "user32.dll" "ShowWindow" com 
     A janela principal do programa 
     e 1 [SW_SHOWNORMAL].
@@ -7428,13 +7429,13 @@ Etapas para que se anteponha uma coisa para uns coisas:
   Se  as coisas estiverem vazio, atribua a coisa ao last destas coisas.
   Atribua a coisa ao first destas coisas.
 
-    \Etapas para que se anteponha uns coisas para umas segunda coisas:
-    \ bug found por Mike Gonta - corrected version below
-    \Obtenha uma coisa desde  as coisas (backwards).
-    \Se a coisa for inexistente, cancele.
-    \Remove a coisa desde as coisas.
-    \Anteponha a coisa para a segunda coisas.
-    \Repita. [o código acima]
+\Etapas para que se anteponha uns coisas para umas segunda coisas:
+\ bug found por Mike Gonta - corrected version below
+\Obtenha uma coisa desde  as coisas (backwards).
+\Se a coisa for inexistente, cancele.
+\Remove a coisa desde as coisas.
+\Anteponha a coisa para a segunda coisas.
+\Repita. [o código acima]
 
 Etapas para que se anteponha uns coisas para umas segunda coisas:
   Atribua o last destas coisas a uma coisa.
@@ -7601,7 +7602,7 @@ Etapas para que se atribua a largura dessa string para uma largura:
   \Etapas para que se atribua uma largura desse string para uma segunda largura:
   Obtenha o largura usando a string e o memory canvas e a fonte padrão.
 
-    \ \ leave out - causes Spanish string atribuas para resolva here instead of "Atribua uma string a uma segunda string"
+\\leave out - causes Spanish string atribuas para resolva here instead of "Atribua uma string a uma segunda string"
 Etapas para que se atribua um subtexto para um segundo subtexto:
   Copie pedaços desde o endereçamento deste subtexto para o endereçamento deste segundo subtexto pela magnitude deste subtexto.
 
@@ -7623,7 +7624,7 @@ Etapas para que se atribua o last winsock erro do system para um número:
   Call "ws2_32.dll" "WSAGetLastError" devolvendo o número.
 
 Etapas para que se atribua a contagem de intervalos do sistema para uns intervalos:
-    \ wraps cada 24.8 days ou so
+  \ wraps cada 24.8 days ou so
   Call "kernel32.dll" "GetTickCount" devolvendo os intervalos.
   Conjuncione logicamente os intervalos com o maior número.
 
@@ -7652,7 +7653,7 @@ Etapas para que se atribua a first linha reta desse text para uma string:
   Remove o last pedaço desde a string.
 
 Etapas para que se atribua a first non-em branco linha reta desse text para uma string:
-    \ *** new
+  \ *** new
   Limpe a string.
   Se o text for inexistente, cancele.
   Percorra. [o código abaixo]
@@ -7774,7 +7775,7 @@ Um quora é uma coisa com \ quora é abreviação de "question or answer"
   uma cor. 
 
 Etapas para que se quote uma string:
-    \ inserts leading, trailing e nested double-quotes
+  \ inserts leading, trailing e nested double-quotes
   Atribua as aspas duplas a uma segunda string.
   Lance um subtexto sobre a string.
   Percorra. [o código abaixo]
@@ -8170,7 +8171,7 @@ Etapas para que se reverse um detector:
   Atribua 1 ao detector.
 
 Etapas para que se reverse uma string:
-    \ could ser more efficient
+  \ podia ser more efficient
   Isole a string.
   Limpe o original string.
   Percorra. [o código abaixo]
@@ -8208,7 +8209,7 @@ Etapas para que se rotate um gpimage:
     e 1 [Rotate90FlipNone].
 
 Etapas para que se rotate um gpimage usando um ângulo:
-    \ ângulo pode ser 0, 900, 1800, 2700
+  \ o ângulo pode ser 0, 900, 1800, 2700
   Se o gpimage for inexistente, cancele.
   Atribua 0 [RotateNoneFlipNone] a um número.
   Se o ângulo for 900, atribua 1 [Rotate90FlipNone] ao número.
@@ -8328,7 +8329,6 @@ Etapas para que se say um número:
 Etapas para que se say uma string;
 Etapas para que se speak uma string:
   Se o silent detector estiver ativo, cancele.
-    \Se la bandera silenciosa estiver ativo, cancele.
   Se o talker for inexistente, cancele.
   Se a string estiver em branco, cancele.
   Converta a string para um wide string.
@@ -8336,7 +8336,7 @@ Etapas para que se speak uma string:
   Call o speak desta vtable deste talker com 
     O talker 
     e O first deste wide string 
-    e 17 [SVSFDefault+SVSFlagsAsync +SVSFIsNotXML] 
+    e 17 [SVSFDefault+SVSFlagsAsync +SVSFIsNotXML]  \https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ms720892(v=vs.85)
     e 0.
 
 Etapas para que se say uma string e wait;
@@ -8642,7 +8642,7 @@ Etapas para que se send um email:
   \ crie socket
   Crie um socket usando o smtp server deste email e 25.
   Se o erro do fluxo de entrada/saída não estiver em branco, cancele.
-    \ initial receive here por date/time stuff desde server
+  \ initial receive here por date/time stuff desde server
   Receive um response string desde o socket.
   Se o erro do fluxo de entrada/saída não estiver em branco, destrua o socket; volte.
   Se o response começa com "5", atribua o response ao erro do fluxo de entrada/saída; trim o erro do fluxo de entrada/saída; destrua o socket; volte.
@@ -8931,8 +8931,8 @@ Etapas para que se suavize um polígono:
   Destrua o last vértice deste polígono usando o polígono.
 
 Etapas para que se suavize um polígono uns times; 
-Etapas para que se suavize um polígono uns vezes:
-    \ this use para "times" é um fluke, I think -- see "some times é um número"
+Etapas para que se suavize um polígono umas vezes:
+  \ this use para "times" é um fluke, I think -- see "some times é um número"
   Isole o times.
   Percorra. [o código abaixo]
     Se o times for 0, cancele.
@@ -9055,15 +9055,15 @@ Etapas para que se separe uns coisas para uns left coisas e uns right coisas sob
   Limpe o right coisas.
   Se a coisa for inexistente, permute  as coisas com o left coisas; volte.
   Se o previous desta coisa for inexistente, permute  as coisas com o left coisas; volte.
-    \ abra para cima o left chain
+  \ abra para cima o left chain
   Atribua o first destas coisas ao first destas left coisas.
   Atribua o previous desta coisa ao last destas left coisas.
   Esvazie o next deste previous desta coisa.
-    \ abra para cima o right chain
+  \ abra para cima o right chain
   Atribua a coisa ao first destas right coisas.
   Esvazie o previous desta coisa.
   Atribua o last destas coisas ao last destas right coisas.
-    \ fix o original chain
+  \ fix o original chain
   Limpe as coisas.
 
 Etapas para que se separe um word para um pedaço e um segundo pedaço:
@@ -9427,7 +9427,7 @@ Etapas para que se start um temporizador:
   Restart o temporizador.
 
 Etapas para que se start uns twips above o middle of o base of uma caixa:
-    \ incomplete abra of these
+  \ incomplete abra of these
   Atribua a coordenada X deste center desta caixa à coordenada x desta localização deste context.
   Atribua a coordenada inferior desta caixa menos os twips à coordenada y desta localização deste context.
 
@@ -9592,7 +9592,7 @@ Etapas para que se vire uma fração igual para um número over um segundo número:
   Atribua o segundo número à coordenada inferior desta fração.
   Vire a fração.
 
-    \Etapas para que se vire uma fração do caminho;
+\Etapas para que se vire uma fração do caminho;
 Etapas para que se vire uma fração of o caminho;
 Etapas para que se vire uma fração of o caminho around;
 Etapas para que se vire uma fração:
@@ -9602,11 +9602,11 @@ Etapas para que se vire uma fração:
 
 Etapas para que se vire pra left;
 Etapas para que se vire para a left;
-    \Etapas para que se vire à left;
+\Etapas para que se vire à left;
 Etapas para que se vire left:
   Vire -1/4.
 
-    \Etapas para que se vire à left uma fração igual para um número over um segundo número;
+\Etapas para que se vire à left uma fração igual para um número over um segundo número;
 Etapas para que se vire pra left uma fração igual para um número over um segundo número;
 Etapas para que se vire para a left uma fração igual para um número over um segundo número;
 Etapas para que se vire left uma fração igual para um número over um segundo número:
@@ -9614,8 +9614,8 @@ Etapas para que se vire left uma fração igual para um número over um segundo núm
   Atribua o segundo número à coordenada inferior desta fração.
   Vire left a fração.
 
-    \Etapas para que se vire uma fração à left do caminho;
-    \Etapas para que se vire uma fração pra left do caminho;
+\Etapas para que se vire uma fração à left do caminho;
+\Etapas para que se vire uma fração pra left do caminho;
 Etapas para que se vire uma fração para a left do caminho;
 Etapas para que se vire left uma fração of o caminho;
 Etapas para que se vire left uma fração of o caminho around;
@@ -9624,21 +9624,21 @@ Etapas para que se vire left um fração:
   Negate a fração.
   Vire a fração.
 
-    \Etapas para que se vire à left uns points;
+\Etapas para que se vire à left uns points;
 Etapas para que se vire pra left uns points;
 Etapas para que se vire para a left uns points;
 Etapas para que se vire left uns points:
   Atribua o points e 3840 a um fração.
   Vire left a fração.
 
-    \Etapas para que se vire à right;
+\Etapas para que se vire à right;
 Etapas para que se vire pra right;
 Etapas para que se vire para a right;
 Etapas para que se vire right:
   Vire 1/4.
 
-    \Etapas para que se vire uns degrees à right;
-    \Etapas para que se vire uns degrees pra right;
+\Etapas para que se vire uns degrees à right;
+\Etapas para que se vire uns degrees pra right;
 Etapas para que se vire uns degrees para a right;
 Etapas para que se vire right uns degrees:
   Atribua o degrees times 10 e 3600 a um fração.
@@ -9646,10 +9646,10 @@ Etapas para que se vire right uns degrees:
 
 Etapas para que se vire uns degrees:
   Atribua o degrees times 10 e 3600 a um fração.
-    \Se o degrees forem negative, vire left o fração; volte.
+  \Se o degrees forem negative, vire left o fração; volte.
   Vire right a fração.
 
-    \Etapas para que se vire à right uma fração igual para um número over um segundo número;
+\Etapas para que se vire à right uma fração igual para um número over um segundo número;
 Etapas para que se vire pra right uma fração igual para um número over um segundo número;
 Etapas para que se vire para a right uma fração igual para um número over um segundo número;
 Etapas para que se vire right uma fração igual para um número over um segundo número:
@@ -9657,7 +9657,7 @@ Etapas para que se vire right uma fração igual para um número over um segundo nú
   Atribua o segundo número à coordenada inferior desta fração.
   Vire right a fração.
 
-    \Etapas para que se vire à right uma fração of o caminho;
+\Etapas para que se vire à right uma fração of o caminho;
 Etapas para que se vire pra right uma fração of o caminho;
 Etapas para que se vire para a right uma fração of o caminho;
 Etapas para que se vire right uma fração of o caminho;
@@ -9673,8 +9673,8 @@ Etapas para que se vire right uma fração uns percentual of o time:
   Se o número for maior do que o percentual, cancele.
   Vire right a fração.
 
-    \Etapas para que se vire uns points à right;
-    \Etapas para que se vire uns points pra right;
+\Etapas para que se vire uns points à right;
+\Etapas para que se vire uns points pra right;
 Etapas para que se vire uns points para a right;
 Etapas para que se vire right uns points:
   Atribua o points e 3840 a um fração.
@@ -9837,7 +9837,7 @@ Etapas para que se wrap um text:
   Posponha o retorno de carro para a string.
   Destrua as rows deste text.
   Lance um percorredor sobre a string.
-  Crie o número da fonte of o memory canvas usando o font deste text.
+  Crie o número da fonte of o memory canvas usando a font deste text.
   Percorra. [o código abaixo]
     Mova o percorredor usando a caixa deste text (word wrapping rules).
     Se o segmento inicial deste percorredor estiver em branco, pare.

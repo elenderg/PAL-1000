@@ -315,23 +315,23 @@ Etapas para que se escolha aleatoriamente um número desde um min número para um 
 Etapas para que se defina um número para something entre um segundo número e um terceiro número;
 Etapas para que se escolha aleatoriamente um número aleatório entre um min número e um max número:
   Atribua o endereçamento deste seed para EAX.
-    \ atribua address of randseed A ecx
+  \ atribua address of randseed A ecx
   Intel $8BC8. \ mov ecx,eax
-    \ calculate zero based max
+  \ calculate zero based max
   Intel $8B8510000000. \ mov eax,[ebp+16] \ o max
   Intel $8B00. \ mov eax,[eax]
   Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o min
   Intel $2B03. \ sub eax,[ebx]
   Intel $40. \ inc eax
-    \ ajuste randseed
+  \ ajuste randseed
   Intel $691105840808. \ imul edx,[ecx],134775813
   Intel $42. \ inc edx
   Intel $8911. \ mov [ecx],edx
-    \ mul adjusted randseed pelo zero based max
+  \ mul adjusted randseed pelo zero based max
   Intel $F7E2. \ mul edx
-    \ adicione o min para an-zero base o número
+  \ adicione o min para an-zero base o número
   Intel $0313. \ adicione edx,[ebx] o min
-    \ store o result
+  \ store o result
   Intel $8B9D08000000. \ mov ebx,[ebp+08] \ o número aleatório
   Intel $8913. \ mov [ebx],edx
   Atribua o número aleatório ao número deste context.
@@ -491,30 +491,30 @@ Etapas para que se compare uma string para uma segunda string usando uma quantid
   Intel $8BC8. \ mov ecx,eax \ atribua quantidade de caracteres A ecx 
   Intel $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
   Intel $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
-    \ loop:
+  \ loop:
   Intel $85C9. \ test ecx,ecx
   Intel $0F8424000000. \ jz say yes \ ************************************ was 25
-     \ fetch e translate o current pedaço no segunda string
+   \ fetch e translate o current pedaço no segunda string
   Intel $8A07. \ mov al,[edi]
   Intel $D7. \ xlat al,[ebx]
   Intel $C1E008. \ shl eax,8 C1 E0 08
-    \ fetch e translate o current pedaço no string
+  \ fetch e translate o current pedaço no string
   Intel $8A06. \ mov al,[esi]
   Intel $D7. \ xlat al,[ebx]
-     \ compare o two translated pedaços
+   \ compare o two translated pedaços
   Intel $38E0. \ cmp al,ah
-  Intel $0F8508000000. \ jne [Se as condições acima não puderem ser satisfeitas, então:] Diga não. \ ************************************
+  Intel $0F8508000000. \ jne  Diga não. \ ************************************
   Intel $46. \ inc esi
   Intel $47. \ inc edi
   Intel $49. \ dec ecx
   Intel $E9DFFFFFFF. \ jmp loop \ ************************************ was DE
-    \[Se as condições acima não puderem ser satisfeitas, então:] Diga não.:
+  \ Diga não.:
   Intel $C7C000000000. \ mov eax,0
   Intel $E906000000. \ jmp end
-    \SAY YES:
+  \DIGA SIM
   Intel $C7C001000000. \ mov eax,1
 
-    \ Rotina nova criada pelo Dahn para - spanish strings 2 - which table para use?
+ \ Rotina nova criada pelo Dahn - spanish strings 2 - which table to use?
 
 Etapas para que se compare uma string para uma segunda string usando uma quantidade de caracteres e uma segunda quantidade de caracteres e uma tabela de tradução devolvendo um número:
   Intel $8BB508000000. \ mov esi,[ebp+8] \ a string
@@ -527,26 +527,26 @@ Etapas para que se compare uma string para uma segunda string usando uma quantid
   Intel $8B12. \ mov edx,[edx]
   Intel $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
   Intel $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
-    \ obtenha o minimum quantidade de caracteres
+  \ obtenha o minimum quantidade de caracteres
   Intel $8BC8. \ mov ecx,eax
   Intel $3BCA. \ cmp ecx,edx
   Intel $0F8602000000. \ jbe L2
   Intel $8BCA. \ mov ecx,edx
-    \ if o minimum quantidade de caracteres for 0, jump para L5
+  \ if o minimum quantidade de caracteres for 0, jump para L5
   Intel $85C9. \ test ecx,ecx
   Intel $0F8428000000. \ jz L5
-    \L2:
-    \ loop:
-    \ fetch e translate o current pedaço no string
+  \L2:
+  \ loop:
+  \ fetch e translate o current pedaço no string
   Intel $8A06. \ mov al,[esi]
   Intel $D7. \ xlat al,[ebx]
   Intel $88C2. \ mov dl,al
-    \ fetch e translate o current pedaço no segunda string
+  \ fetch e translate o current pedaço no segunda string
   Intel $8A07. \ mov al,[edi]
   Intel $D7. \ xlat al,[ebx]
   Intel $88C6. \ mov dh,al
-    \L3:
-    \ compare o two translated pedaços
+  \L3:
+  \ compare o two translated pedaços
   Intel $38F2. \ cmp dl,dh
   Intel $0F8510000000. \ jne L4
   Intel $46. \ inc esi
@@ -555,12 +555,12 @@ Etapas para que se compare uma string para uma segunda string usando uma quantid
   Intel $85C9. \ test ecx,ecx
   Intel $0F8405000000. \ jz L4
   Intel $E9DEFFFFFF. \ jmp L2
-    \L4:
-    \ Carregue pedaços para EAX e edx por final compare
+  \L4:
+  \ Carregue pedaços para EAX e edx por final compare
   Intel $0FB6C2. \ movzx eax,dl
   Intel $0FB6D6. \ movzx edx,dh
-    \L5:
-    \ subtraia either o lengths ou os last dois pedaços para abra o eax para <0, =0, >0
+  \L5:
+  \ subtraia either o lengths ou os last dois pedaços para abra o eax para <0, =0, >0
   Intel $2BC2. \ sub eax,edx
   Intel $8B9D1C000000. \ mov ebx,[ebp+28] \ o número
   Intel $8903. \ mov [ebx],eax
@@ -716,19 +716,19 @@ Etapas para que se determine se um número é menor ou igual para um segundo númer
   Intel $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se uma string está em branco:
-    \ assume true
+  \ assume true
   Intel $B801000000. \ mov eax,1
   Intel $8B9D08000000. \ mov ebx,[ebp+8] \ a string
     \ if first for 0, exit
   Intel $833B00. \ cmp [ebx],0
   Intel $0F8410000000. \ je end
-    \ if last for menor do que first, exit
+  \ if last for menor do que first, exit
   Intel $8B5304. \ mov edx,[ebx+4] \ last endereço de memória
   Intel $3B13. \ cmp edx,[ebx]
   Intel $0F8C05000000. \ jl end
-    \ [Se as condições acima não puderem ser satisfeitas, então:] Diga não.:
+  \Diga não.:
   Intel $B800000000. \ mov eax,0
-    \ END:
+  \ END:
 
 Etapas para que se fill pedaços com um pedaço starting sob um endereço de memória por um quantidade de pedaços:
   Intel $8BBD0C000000. \ mov edi,[ebp+12] \ o endereço de memória
@@ -748,22 +748,22 @@ Etapas para que se copie pedaços desde um endereço de memória para um segundo en
   Intel $8B3F. \ mov edi,[edi]
   Intel $8B8D10000000. \ mov ecx,[ebp+16] \ o número
   Intel $8B09. \ mov ecx,[ecx]
-    \ check por something para copiar
+  \ check por something para copiar
   Intel $81F900000000. \ cmp ecx,0
   Intel $0F8E39000000. \ jle end
-    \ check por no overlap
+  \ check por no overlap
   Intel $3BF7. \ cmp esi,edi
   Intel $0F8D24000000. \ jge forward
   Intel $8BC6. \ mov eax,esi
   Intel $03C1. \ adicione eax,ecx
   Intel $3BC7. \ cmp eax,edi
   Intel $0F8E18000000. \ jle forward
-    \ copia backward
+  \ copia backward
   Intel $03F1. \ adicione esi,ecx
   Intel $4E. \ dec esi
   Intel $03F9. \ adicione edi,ecx
   Intel $4F. \ dec esi
-    \ backward
+  \ backward
   Intel $8A16. \ mov dl,[esi]
   Intel $8817. \ mov [edi],dl
   Intel $4E. \ dec esi
@@ -771,7 +771,7 @@ Etapas para que se copie pedaços desde um endereço de memória para um segundo en
   Intel $49. \ dec ecx
   Intel $0F85F3FFFFFF. \ jnz backward
   Intel $E90D000000. \ jmp end
-    \ forward: copia forward
+  \ forward: copia forward
   Intel $8A16. \ mov dl,[esi]
   Intel $8817. \ mov [edi],dl
   Intel $46. \ inc esi
@@ -782,10 +782,10 @@ Etapas para que se copie pedaços desde um endereço de memória para um segundo en
 Etapas para que se lance um subtexto sobre uma string: \assembly
   Intel $8B8508000000. \ mov eax,[ebp+8] \ o subtexto
   Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ a string
-    \ atribua o first endereço de memória do pedaço desta string ao first do subtexto
+  \ atribua o first endereço de memória do pedaço desta string ao first do subtexto
   Intel $8B8B00000000. \ mov ecx,[ebx+0] \ o first endereço de memória do pedaço desta string
   Intel $898800000000. \ mov [eax+0],ecx \ o first do subtexto
-    \ atribua o last endereço de memória do pedaço desta string ao last endereço de memória do pedaço deste subtexto
+  \ atribua o last endereço de memória do pedaço desta string ao last endereço de memória do pedaço deste subtexto
   Intel $8B8B04000000. \ mov ecx,[ebx+4] \ o last do string
   Intel $898804000000. \ mov [eax+4],ecx \ o last endereço de memória do pedaço deste subtexto
 

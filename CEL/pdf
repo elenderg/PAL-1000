@@ -77,7 +77,7 @@ Um pdf state é um conjunto com
 Etapas para que se atribua umas font larguras para um trecho:
   \ usado na conversão de pdf 
   Limpe o trecho.
-  Se o font larguras forem inexistente, cancele.
+  Se a font larguras forem inexistente, cancele.
   Atribua o data destes font larguras a um endereço numérico.
   Percorra. [o código abaixo]
     Se um contador estiver past a contagem destas font larguras, pare.
@@ -114,12 +114,12 @@ Etapas para que se output setcolor usando uma cor da borda e uma cor de preenchi
   Se a cor da borda não estiver clear, output o pdf border usando a cor da borda.
 
 Etapas para que se include uma font no current pdf:
-  Encontre um pdf object usando o nome desta font e o font catálogo deste pdf state.
+  Encontre um pdf object usando o nome desta font e a font catálogo deste pdf state.
   Se o pdf object não for inexistente, cancele.
-  Crie uma font info usando o font.
-  Converta o font info para pdf em units.
-    \ stream
-  Atribua o actual data of o font a um trecho.
+  Crie uma font info usando a font.
+  Converta a font info para pdf em units.
+  \ stream
+  Atribua o actual data of a font a um trecho.
   Converta o trecho para um cifra hexadecimal.
   Adicione um stream pdf object usando "font stream".
   Posponha o número deste stream seguido de " 0 obj" para o stream.
@@ -132,7 +132,7 @@ Etapas para que se include uma font no current pdf:
   Posponha a cifra hexadecimal para o stream.
   Posponha "endstream" para o stream.
   Posponha "endobj" para o stream.
-    \ descriptor
+  \ descriptor
   Adicione um descriptor pdf object usando "font descriptor".
   Atribua "F" junto com o número deste descriptor a uma nome da fonte.
   Atribua o nome desta font a uma font base nome.
@@ -140,7 +140,7 @@ Etapas para que se include uma font no current pdf:
   Posponha o número deste descriptor seguido de " 0 obj" para o descriptor.
   Posponha "<<" para o descriptor.
   Posponha "/Type /FontDescriptor" para o descriptor.
-  Posponha "/FontNomeie /" junto com o font base nome para o descriptor.
+  Posponha "/FontNomeie /" junto com a font base nome para o descriptor.
   Posponha "/FontFile2 " junto com o número deste stream seguido de " 0 R" para o descriptor.
   Posponha "/alarmes " junto com o flags deste font info para o descriptor.
   Posponha "/FontBBox [" junto com a font caixa desta font info seguido de "]" para o descriptor.
@@ -151,7 +151,7 @@ Etapas para que se include uma font no current pdf:
   Posponha "/StemV " junto com o stemv desta font info para o descriptor.
   Posponha ">>" para o descriptor.
   Posponha "endobj" para o descriptor.
-    \ definition
+  \ definition
   Adicione um definition pdf object usando "font definition".
   Atribua o nome da fonte ao nome da fonte desta definition.
   Posponha o número desta definition seguido de " 0 obj" para a definition.
@@ -159,7 +159,7 @@ Etapas para que se include uma font no current pdf:
   Posponha "/Type /Font" para a definition.
   Posponha "/Subtype /TrueType" para a definition.
   Posponha "/Nomeie /" junto com o nome da fonte para a definition.
-  Posponha "/BaseFont /" junto com o font base nome para a definition.
+  Posponha "/BaseFont /" junto com a font base nome para a definition.
   Posponha "/Encoding /WinAnsiEncoding" para a definition.
   Posponha "/FontDescriptor " junto com o número deste descriptor seguido de " 0 R" para a definition.
   Posponha "/FirstChar 0" para a definition.
@@ -169,13 +169,13 @@ Etapas para que se include uma font no current pdf:
   Posponha a segunda trecho seguido de "]" para a definition.
   Posponha ">>" para a definition.
   Posponha "endobj" para a definition.
-  Atribua o font info à font info desta definition.
-  Catalogue a definition usando o nome desta font e o font catálogo deste pdf state.
+  Atribua a font info à font info desta definition.
+  Catalogue a definition usando o nome desta font e a font catálogo deste pdf state.
 
 Etapas para que se include uma font em um pdf object:
   Se o pdf object for inexistente, cancele.
-  Encontre uma font pdf object usando o nome desta font e o font catálogo deste pdf state.
-  Se o font pdf object for inexistente, cancele.
+  Encontre uma font pdf object usando o nome desta font e a font catálogo deste pdf state.
+  Se a font pdf object for inexistente, cancele.
   Atribua "/" junto com o nome da fonte deste font pdf object seguido de " " junto com o número deste font pdf object seguido de " 0 R" a uma string.
   Encontre um conjunto de texto usando a string e os font strings deste pdf object.
   Se o conjunto de texto não for inexistente, cancele.
@@ -262,7 +262,7 @@ Etapas para que se end printing um pdf:
   End printing o pdf (append xref table).
   End printing o pdf (append trailer).
   End printing o pdf (append footer).
-  Destrua o font catálogo deste pdf state.
+  Destrua a font catálogo deste pdf state.
   Destrua as outline entries deste pdf state.
   Destrua os objects deste pdf state.
   Desative o documento detector deste pdf state.
@@ -380,32 +380,32 @@ Etapas para que se end printing um pdf (offset e posponha objects):
 Etapas para que se pinte uma string sob uma localização com uma cor e uma font (pdf style):
   Se a string estiver em branco, cancele.
   Isole a localização.
-  Include o font no current pdf.
-  Include o font na current página deste pdf state.
-  Encontre um definition pdf object usando o nome desta font e o font catálogo deste pdf state.
+  Include a font no current pdf.
+  Include a font na current página deste pdf state.
+  Encontre um definition pdf object usando o nome desta font e a font catálogo deste pdf state.
   Se o definition for inexistente, cancele. \ erro
-  Crie uma font info usando o font e a string.
+  Crie uma font info usando a font e a string.
   Output o pdf border usando a cor.
   Output o pdf fill usando a cor.
   Output "BT".
   Output "/" junto com o nome da fonte desta definition seguido de " " junto com a adjusted altura desta font seguido de " Tf".
-    \ adicione a adjusted altura desta font menos o internal leading desta font info para o y do localização. \ just plain wrong
+  \ adicione a adjusted altura desta font menos o internal leading desta font info para o y do localização. \ just plain wrong
   Adicione o ascent desta font info para a coordenada Y desta localização. \ fix por linha reta above
   Output a localização sem passar pra próxima linha.
   Output "Td".
   Output "[" sem passar pra próxima linha.
-  Converta o font info para pdf em units.
-  Converta a string e o font info e a font info desta definition a um trecho por pdf output.
+  Converta a font info para pdf em units.
+  Converta a string e a font info e a font info desta definition a um trecho por pdf output.
   Output o trecho sem passar pra próxima linha.
   Output "]" sem passar pra próxima linha.
   Output " TJ".
   Output "ET".
-  Destrua o font info.
+  Destrua a font info.
 
 Etapas para que se pinte uma string sob uma localização com uma cor e um font:
-  Se a página detector deste pdf state estiver ativo, pinte a string sob a localização com a cor e o font (pdf style); volte.
+  Se a página detector deste pdf state estiver ativo, pinte a string sob a localização com a cor e a font (pdf style); volte.
   Defina o código da cor of o quadro atual usando a cor.
-  Crie o número da fonte of o quadro atual usando o font.
+  Crie o número da fonte of o quadro atual usando a font.
   Ajuste espaçamento  da fonte usando a string.
   Atribua o first endereço de memória do pedaço desta string ao first endereço de memória do pedaço desse subtexto.
   Atribua o first endereço de memória do pedaço deste subtexto mais o text cutoff menos 1 ao last endereço de memória do pedaço deste subtexto.
@@ -432,24 +432,24 @@ Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
   Atribua o raio times 2 a um offset.
   Atribua a caixa arredondada a uma caixa.
   Output setcolor usando a cor da borda e a cor de preenchimento.
-    \ initial moveto
+  \ initial moveto
   Output moveto usando a coordenada esquerda desta caixa e a coordenada superior desta caixa mais o raio.
-    \ canto superior esquerdo
+  \ canto superior esquerdo
   Atribua a coordenada esquerda desta caixa e a coordenada superior desta caixa e a coordenada esquerda desta caixa mais o offset e a coordenada superior desta caixa mais o offset a um elipse.
   Output o arco of a elipse usando "canto superior esquerdo".
   Output lineto usando a coordenada direita desta caixa menos o raio e a coordenada superior desta caixa.
-    \ canto superior direito
+  \ canto superior direito
   Atribua a coordenada direita desta caixa menos o offset e a coordenada superior desta caixa e a coordenada direita desta caixa e a coordenada superior desta caixa mais o offset ao elipse.
   Output o arco of a elipse usando "canto superior direito".
   Output lineto usando a coordenada direita desta caixa e a coordenada inferior desta caixa menos o raio.
-    \ canto inferior direito
+  \ canto inferior direito
   Atribua a coordenada direita desta caixa menos o offset e a coordenada inferior desta caixa menos o offset e a coordenada direita desta caixa e a coordenada inferior desta caixa ao elipse.
   Output o arco of a elipse usando "canto inferior direito".
   Output lineto usando a coordenada esquerda desta caixa mais o raio e a coordenada inferior desta caixa.
-    \ canto inferior esquerdo 
+  \ canto inferior esquerdo 
   Atribua a coordenada esquerda desta caixa e a coordenada inferior desta caixa menos o offset e a coordenada esquerda desta caixa mais o offset e a coordenada inferior desta caixa ao elipse.
   Output o arco of a elipse usando "canto inferior esquerdo ".
-    \ finish para cima
+  \ finish para cima
   Output "h".
   Output stroke e fill usando a cor da borda e a cor de preenchimento.
 
@@ -574,14 +574,14 @@ Etapas para que se pinte uma linha reta com uma cor:
 
 Etapas para que se pinte um gpBitmap sob uma localização (pdf style):
   Se o gpBitmap for inexistente, cancele.
-    \ adicione xobject
+  \ adicione xobject
   Adicione um xobject pdf object usando "image object".
   Atribua "I" junto com o número deste xobject a um nome.
-    \ adicione para image resources em current página
+  \ adicione para image resources em current página
   Atribua "/" junto com o nome seguido de " " junto com o número deste xobject seguido de " 0 R" a uma string.
   Crie um new conjunto de texto usando a string.
   Posponha o new conjunto de texto para os image strings desta current página deste pdf state.
-    \ finish setting para cima xobject
+  \ finish setting para cima xobject
   Posponha o número deste xobject seguido de " 0 obj" para o xobject.
   Posponha "<<" para o xobject.
   Posponha "/Type /XObject" para o xobject.
@@ -599,7 +599,7 @@ Etapas para que se pinte um gpBitmap sob uma localização (pdf style):
   Posponha a cifra hexadecimal para o xobject.
   Posponha "endstream" para o xobject.
   Posponha "endobj" para o xobject.
-    \ pinte o image no current contents
+  \ pinte o image no current contents
   Atribua o largura deste gpBitmap times a quantidade de twips/pixel a um largura.
   Atribua a altura deste gpBitmap times a quantidade de twips/pixel a uma altura.
   Atribua a coordenada X desta localização a um número X.
@@ -692,7 +692,7 @@ Etapas para que se converta uma string e um actual font info e um original font 
     Se o first endereço de memória do pedaço deste subtexto for maior do que o last endereço de memória do pedaço desta string, pare.
     Se o last endereço de memória do pedaço deste subtexto é o last endereço de memória do pedaço desta string, pare.
     Obtenha um current largura usando o current byte# e as font larguras desta actual font info.
-    Obtenha um original largura usando o conteúdo deste last endereço de memória do pedaço deste subtexto e o font larguras desta original font info.
+    Obtenha um original largura usando o conteúdo deste last endereço de memória do pedaço deste subtexto e a font larguras desta original font info.
     Atribua o original largura menos o current largura a um offset.
     Se o offset for 0, adicione 1 para o last endereço de memória do pedaço deste subtexto; adicione 1 para o current byte#; repita.
     Converta o subtexto para um pdf string.
@@ -736,17 +736,17 @@ Etapas para que se converta umas font larguras para pdf em units:
   Repita. [o código acima]
 
 Etapas para que se converta uma font info para pdf em units:
-  Se o font info for inexistente, cancele.
-  Converta o internal leading desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
-  Converta o ascent desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
-  Converta o descent desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
-  Converta o capheight desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
-    \ converta o italicangle desta font info para pdf em units usando o emsquare desta font info e o font desta font info. \não sei porque está comentado
-  Converta o stemv desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
-  Converta a coordenada esquerda desta font caixa desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
-  Converta a coordenada superior desta font caixa desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
-  Converta a coordenada direita desta font caixa desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
-  Converta a coordenada inferior desta font caixa desta font info para pdf em units usando o emsquare desta font info e o font desta font info.
+  Se a font info for inexistente, cancele.
+  Converta o internal leading desta font info para pdf em units usando o emsquare desta font info e a font desta font info.
+  Converta o ascent desta font info para pdf em units usando o emsquare desta font info e a font desta font info.
+  Converta o descent desta font info para pdf em units usando o emsquare desta font info e a font desta font info.
+  Converta o capheight desta font info para pdf em units usando o emsquare desta font info e a font desta font info.
+  \ Converta o italicangle desta font info para pdf em units usando o emsquare desta font info e a font desta font info. \não sei porque está comentado
+  Converta o stemv desta font info para pdf em units usando o emsquare desta font info e a font desta font info.
+  Converta a coordenada esquerda desta font caixa desta font info para pdf em units usando o emsquare desta font info e a font desta font info.
+  Converta a coordenada superior desta font caixa desta font info para pdf em units usando o emsquare desta font info e a font desta font info.
+  Converta a coordenada direita desta font caixa desta font info para pdf em units usando o emsquare desta font info e a font desta font info.
+  Converta a coordenada inferior desta font caixa desta font info para pdf em units usando o emsquare desta font info e a font desta font info.
   Permute a coordenada superior desta font caixa desta font info com a coordenada inferior desta font caixa desta font info.
   Converta as font larguras desta font info para pdf em units.
 
@@ -853,7 +853,7 @@ Etapas para que se inicie uma folha usando uma caixa:
 Etapas para que se inicie a impressão um pdf:
   Ligue o documento detector deste pdf state.
   Atribua 0 ao object número deste pdf state.
-  Crie o font catálogo deste pdf state usando 113.
+  Crie a font catálogo deste pdf state usando 113.
   Inicie a impressão o pdf (start o root).
   Inicie a impressão o pdf (start o parent).
 
@@ -882,7 +882,7 @@ Etapas para que se inicie uma folha modo paisagem usando um título de índice rem
   Inicie a folha usando a caixa e o título de índice remissivo (pdf style).
 
 Etapas para que se posponha uma string para um pdf object:
-    \ this guys adds CRLF
+  \ this guys adds CRLF
   Posponha a string para o data deste pdf object.
   Posponha o texto CRLF para o data deste pdf object.
 
