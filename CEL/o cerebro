@@ -243,7 +243,8 @@ Etapas para que se ajuste espaçamento da fonte usando uma string:
     e O número identificador. [h] \ Um identificador para o objeto a ser selecionado. Nesse caso é o número do comando anterior (a fonte selecionada no momento), retornado pelo GetCurrentObject acima
   Obtenha um largura usando a string e o memory canvas.
   Call "gdi32.dll" "SelectObject" com 
-    O memory canvas 
+  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
+    O memory canvas [hdc] \ Um identificador para o contexto do dispositivo.
     e O null número da fonte.  [h] \ Um identificador para o objeto a ser selecionado. 
     \Nesse caso é também é um número identificador de fonte, mas  este valor é o da função GetStockObject 
     \O sistema oferece seis fontes de estoque. Uma fonte de estoque é uma fonte lógica que um aplicativo pode obter chamando a função GetStockObject e especificando a fonte solicitada. 
@@ -435,8 +436,10 @@ Etapas para que se role automaticamente um text usando uma localização e um dete
 
 
 Etapas para que se faça bi-bi:
-  Call "user32.dll" "MessageBeep" com 
-  0.
+  Call "user32.dll" "MessageBeep" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-messagebeep
+  \Reproduz um som waveform. O som waveform para cada tipo de som é identificado por uma entrada no registro.
+  0. [uType] \O som a ser reproduzido. Os sons são definidos pelo usuário por meio do aplicativo de painel de controle de Som e, a seguir, armazenados no registro.
+  \O valor 0 é o som especificado como o som Beep padrão do Windows.
   Call "user32.dll" "MessageBeep" com 
   0.
 
@@ -453,9 +456,10 @@ Etapas para que se inicie a impressão:
   Inicialize a área de impressão.
   Atribua a magnitude desse DOCINFO ao cbSize deste DOCINFO.
   Atribua o first deste nome deste module ao lpszDocName deste DOCINFO.
-  Call "gdi32.dll" "StartDocA" com 
-    A área de impressão 
-    e O endereçamento deste DOCINFO.
+  Call "gdi32.dll" "StartDocA" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-startdoca
+  \A função StartDoc inicia um trabalho de impressão.
+    A área de impressão [hdc] \Um identificador para o contexto do dispositivo para o trabalho de impressão.
+    e O endereçamento deste DOCINFO. [*lpdi] \Um ponteiro para uma estrutura DOCINFO contendo o nome do arquivo de documento e o nome do arquivo de saída.
 
 Etapas para que se inicie uma folha:
   Inicie a folha como uma folha modo retrato.
@@ -509,9 +513,10 @@ Etapas para que se avance um percorredor por um número:
   Adicione o número para o first endereço de memória do pedaço deste segmento final deste percorredor.
 
 Etapas para que se assobie:
-  Call "kernel32.dll" "Beep" com 
-  220 
-    e 200.
+  Call "kernel32.dll" "Beep" com \https://docs.microsoft.com/en-us/windows/win32/api/utilapiset/nf-utilapiset-beep
+  \Gera tons simples no alto-falante. A função é síncrona; ele executa uma espera alertável e não retorna o controle para seu chamador até que o som termine.
+  220 [dwFreq] \A frequência do som, em hertz. Este parâmetro deve estar no intervalo de 37 a 32.767 (0x25 a 0x7FFF).
+    e 200. [dwDuration] \A duração do som, em milissegundos
 
 Um quantidade de pedaços é uma contagem.
 
@@ -774,8 +779,11 @@ Etapas para que se limpe uma word:
   Atribua 0 ao word.
 
 Etapas para que se close um file:
-  Call "kernel32.dll" "CloseHandle" com 
-    O file.
+  Call "kernel32.dll" "CloseHandle" com \ https://docs.microsoft.com/en-us/windows/win32/api/handleapi/nf-handleapi-closehandle
+  \Fecha um identificador de objeto aberto.
+  \Em geral, CloseHandle invalida o identificador do objeto especificado, diminui a contagem do identificador do objeto e executa verificações de retenção do objeto. 
+  \Depois que o último identificador para um objeto é fechado, o objeto é removido do sistema. .
+    O file. [hObject] \Um identificador válido para um objeto aberto.
 
 Etapas para que se avise:
   Toque o som de aviso.
@@ -838,31 +846,39 @@ Etapas para que se compativelmente handle algum tipo de message com um janela do
   \Postado na janela com o foco do teclado quando o usuário pressiona a tecla F10 (que ativa a barra de menus) ou mantém pressionada a tecla ALT e pressiona outra tecla. 
   \Também ocorre quando nenhuma janela tem o foco do teclado; neste caso, a mensagem WM_SYSKEYDOWN é enviada para a janela ativa. 
   \A janela que recebe a mensagem pode distinguir entre esses dois contextos, verificando o código de contexto no parâmetro lParam .
-  Call "user32.dll" "DefWindowProcA" com 
-    A janela do programa 
-    e A message 
-    e O wParam 
-    e O lParam.
+  Call "user32.dll" "DefWindowProcA" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-defwindowproca
+  \Chama o procedimento de janela padrão para fornecer processamento padrão para todas as mensagens de janela que um aplicativo não processa. 
+  \Esta função garante que todas as mensagens sejam processadas. DefWindowProc é chamado com os mesmos parâmetros recebidos pelo procedimento de janela.
+    A janela do programa [hWnd] \Um identificador para o procedimento de janela que recebeu a mensagem.
+    e A message [Msg] \A mensagem em si.
+    e O wParam [wParam] \Informações adicionais da mensagem. O conteúdo deste parâmetro depende do valor do parâmetro Msg.
+    e O lParam. [lParam] \Informações adicionais da mensagem. O conteúdo deste parâmetro depende do valor do parâmetro Msg.
 
 Etapas para que se compativelmente aguarde por um process endereço de memória:
-  Call "kernel32.dll" "WaitForSingleObject" com  \Espera até que o objeto especificado esteja no estado sinalizado ou o intervalo de tempo limite expire.
-    O conteúdo deste process endereço de memória  \o número identificador do objeto
-    e -1 [intervalo de tempo limite, em milisegundos.  O valor -1 informa que a função retornará apenas quando o objeto for sinalizado.].
-  Call "kernel32.dll" "CloseHandle" com  \Fecha um identificador de objeto aberto.
-    O conteúdo deste process endereço de memória. \Um identificador válido para um objeto aberto.
+  Call "kernel32.dll" "WaitForSingleObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-waitforsingleobject
+  \Espera até que o objeto especificado esteja no estado sinalizado ou o intervalo de tempo limite expire.
+    O conteúdo deste process endereço de memória [hHandle]  \o número identificador do objeto
+    e -1. [dwMilliseconds]  \intervalo de tempo limite, em milisegundos.  O valor -1 informa que a função retornará apenas quando o objeto for sinalizado.]
+  Call "kernel32.dll" "CloseHandle" com  \ https://docs.microsoft.com/en-us/windows/win32/api/handleapi/nf-handleapi-closehandle
+  \Fecha um identificador de objeto aberto.
+    O conteúdo deste process endereço de memória. [hObject]  \Um identificador válido para um objeto aberto.
   Atribua 0 ao conteúdo deste process endereço de memória. \  
-  Call "user32.dll" "GetForegroundWindow"  \Recupera um identificador para a janela do primeiro plano (a janela com a qual o usuário está trabalhando atualmente). 
+  Call "user32.dll" "GetForegroundWindow" \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getforegroundwindow
+  \Recupera um identificador para a janela do primeiro plano (a janela com a qual o usuário está trabalhando atualmente). 
   \O sistema atribui uma prioridade um pouco mais alta ao encadeamento que cria a janela de primeiro plano do que aos outros encadeamentos.
     devolvendo uma janela do programa. \O valor de retorno é um identificador para a janela do primeiro plano. 
 	\A janela de primeiro plano pode ser NULL em certas circunstâncias, como quando uma janela está perdendo a ativação.
   Se a janela do programa for a janela principal do programa, atribua 0 para EAX; volte.
-  Call "user32.dll" "ShowWindow" com  \Define o estado de exibição da janela especificada.
-    A janela principal do programa 
-    e 6 [SW_MINIMIZE]. \Controla como a janela deve ser exibida. 
+  Call "user32.dll" "ShowWindow" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-showwindow
+ \Define o estado de exibição da janela especificada.
+    A janela principal do programa [hWnd]
+    e 6 [nCmdShow SW_MINIMIZE]. \Controla como a janela deve ser exibida. 
 	\SW_MINIMIZE Minimiza a janela especificada e ativa a próxima janela de nível superior na ordem Z.
   Call "user32.dll" "ShowWindow" com 
-    A janela principal do programa 
-    e 9 [SW_RESTORE].
+    A janela principal do programa [hWnd] 
+    e 9 [nCmdShow SW_RESTORE]. \Ativa e exibe a janela. 
+    \Se a janela for minimizada ou maximizada, o sistema a restaurará para seu tamanho e posição originais. 
+    \Um aplicativo deve especificar este sinalizador ao restaurar uma janela minimizada.
   Atribua 0 para EAX. \ abra return value of thread
 
 Um console é uma coisa com 
@@ -940,22 +956,23 @@ Etapas para que se converta uma cor para um código da cor:
   Limite a luminosidade desta cor para 1 e 239.
   Redimensione proporcionalmente a matiz desta cor usando 240/3600.
   Limite a matiz desta cor para 1 e 239.
-  Call "shlwapi.dll" "ColorHLSToRGB" com 
-    A matiz desta cor 
-    e A luminosidade desta cor 
-    e A saturação desta cor 
-    devolvendo o código da cor.
+  Call "shlwapi.dll" "ColorHLSToRGB" com \https://docs.microsoft.com/en-us/windows/win32/api/shlwapi/nf-shlwapi-colorhlstorgb
+  \ Converte cores de matiz-luminância-saturação (HLS) para o formato RGB.
+    A matiz desta cor [wHue] \O valor de matiz HLS original.
+    e A luminosidade desta cor  [wLuminance] \O valor de luminância HLS original.
+    e A saturação desta cor [wSaturation] \O valor de saturação HLS original.
+    devolvendo o código da cor. [COLORREF] \Retorna o valor RGB.
 
 Etapas para que se converta uma cor para um espaço de cor RGB:
   Converta a cor para um código da cor.
   Converta o código da cor para o espaço de cor RGB.
 
 Etapas para que se converta um código da cor para uma cor:
-  Call "shlwapi.dll" "ColorRGBToHLS" com 
-    O código da cor e 
-    O endereçamento desse word 
-    e O endereçamento dessa segunda word 
-    e O endereçamento desse terceiro word.
+  Call "shlwapi.dll" "ColorRGBToHLS" com \https://docs.microsoft.com/en-us/windows/win32/api/shlwapi/nf-shlwapi-colorrgbtohls
+    O código da cor e [clrRGB] \ A cor RGB original.
+    O endereçamento desse word [*pwHue] \ Um ponteiro para um valor que, quando esse método retorna com êxito, recebe o valor de matiz HLS.
+    e O endereçamento dessa segunda word [*pwLuminance] \ Um ponteiro para um valor que, quando este método retorna com sucesso, recebe o valor de luminância HLS.
+    e O endereçamento desse terceiro word.[*pwSaturation] \ Um ponteiro para um valor que, quando este método retorna com sucesso, recebe o valor de saturação HLS.
   Atribua o word à matiz desta cor.
   Atribua a segunda word à luminosidade desta cor.
   Atribua o terceiro word à saturação desta cor.
@@ -977,11 +994,12 @@ Etapas para que se converta um código da cor para um espaço de cor RGB:
 
 Etapas para que se converta um filetime para uma string:
   Limpe a string.
-  Call "kernel32.dll" "FileTimeToSystemTime" com 
-    O endereçamento deste filetime 
-    e O endereçamento desse SYSTEMTIME 
-    devolvendo um número.
-  Se o número for 0, cancele.
+  Call "kernel32.dll" "FileTimeToSystemTime" com \https://docs.microsoft.com/en-us/windows/win32/api/timezoneapi/nf-timezoneapi-filetimetosystemtime
+  \ Converte a hora do arquivo em formato de hora do sistema. A hora do sistema é baseada na hora universal coordenada (UTC).
+    O endereçamento deste filetime [*lpFileTime] \ Um ponteiro para uma estrutura FILETIME contendo a hora do arquivo a ser convertida para o formato de data e hora do sistema (UTC).
+    e O endereçamento desse SYSTEMTIME [lpSystemTime] \ Um ponteiro para uma estrutura SYSTEMTIME para receber a hora do arquivo convertido.
+    devolvendo um número. \ Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+  Se o número for 0, cancele. \Se a função falhar, o valor de retorno é zero.
   Atribua o wYear deste SYSTEMTIME ao year desse date/time.
   Atribua o wMonth deste SYSTEMTIME ao month deste date/time.
   Atribua o wDayOfWeek deste SYSTEMTIME ao week day deste date/time.
@@ -1000,22 +1018,37 @@ Etapas para que se converta um detector para um texto hexadecimal:
 Etapas para que se converta uma font para um número da fonte:
   Isole a font.
   Termine com o caractere NULL o nome desta font.
-  Call "gdi32.dll" "CreateFontA" com
-   - a altura desta font times 3 dividido por 4 
-    e 0 
-    e 0 
-    e 0 
-    e 0 
-    e 0 
-    e 0 
-    e 0 
-    e 1 [DEFAULT_CHARSET] 
-    e 0 
-    e 0 
-    e 5 [CLEARTYPE_QUALITY] 
-    e 4 [TRUETYPE_FONTTYPE] 
-    e O first deste nome desta font 
-    devolvendo o número da fonte.
+  Call "gdi32.dll" "CreateFontA" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createfonta
+  \A função CreateFont cria uma fonte lógica com as características especificadas. A fonte lógica pode ser posteriormente selecionada como a fonte para qualquer dispositivo.
+   - a altura desta font times 3 [e depois] dividido por 4 [cHeight] \A altura, em unidades lógicas, da célula ou caractere da fonte. 
+   \O valor da altura do caractere (também conhecido como altura EM) é o valor da altura da célula do caractere menos o principal valor interno.
+   \Para todas as comparações de altura, o mapeador de fonte procura a maior fonte que não exceda o tamanho solicitado.
+    \Esse mapeamento ocorre quando a fonte é usada pela primeira vez.
+    e 0 [cWidth] \A largura média, em unidades lógicas, de caracteres na fonte solicitada. 
+   \Se este valor for zero, o mapeador de fonte escolhe um valor de correspondência mais próximo. 
+   \O valor de correspondência mais próximo é determinado 
+   \comparando os valores absolutos da diferença entre a proporção de aspecto do dispositivo atual e a proporção de aspecto digitalizado das fontes disponíveis.
+    e 0 [cEscapement] \O ângulo, em décimos de graus, entre o vetor de escape e o eixo x do dispositivo. 
+    \O vetor de escape é paralelo à linha de base de uma linha de texto.
+    e 0 [cOrientation] \O ângulo, em décimos de graus, entre a linha de base de cada personagem e o eixo x do dispositivo.
+    e 0 [cWeight] \A espessura da fonte no intervalo de 0 a 1000. Por exemplo, 400 é normal e 700 é negrito. Se este valor for zero, um peso padrão é usado.
+    e 0 [bItalic] \Especifica uma fonte em itálico se definida como TRUE.
+    e 0 [bUnderline] \Especifica uma fonte sublinhada se definida como TRUE.
+    e 0 [bStrikeOut] \Especifica uma fonte riscada se definida como TRUE.
+    e 1 [iCharSet = DEFAULT_CHARSET]  \O conjunto de caracteres. 
+    \DEFAULT_CHARSET é definido com um valor baseado na localidade do sistema atual. 
+    \Por exemplo, quando a localidade do sistema é inglês (Estados Unidos), ela é definida como ANSI_CHARSET.
+    e 0 [iOutPrecision] \A precisão de saída. 
+    \A precisão da saída define o quanto a saída deve corresponder à altura, largura, orientação do caractere, escape, densidade e tipo de fonte da fonte solicitada.
+    e 0 [iClipPrecision] \A precisão do recorte. A precisão de recorte define como recortar caracteres que estão parcialmente fora da região de recorte.
+    e 5 [iQuality = CLEARTYPE_QUALITY]  \A qualidade da saída. 
+    \A qualidade de saída define com que cuidado o GDI deve tentar corresponder os atributos de fonte lógica aos de uma fonte física real.
+    \Se CLEARTYPE_QUALITY for definido, o texto é renderizado (quando possível) usando o método de suavização ClearType.
+    e 4 [iPitchAndFamily = TRUETYPE_FONTTYPE]  \O pitch e a família da fonte.
+    e O first deste nome desta font [pszFaceName] \Um ponteiro para uma string terminada em nulo que especifica o nome do tipo da fonte. 
+	\O comprimento desta string não deve exceder 32 caracteres, incluindo o caractere nulo de terminação.
+    devolvendo o número da fonte. \Se a função for bem-sucedida, o valor de retorno é um identificador para uma fonte lógica.
+    \Se a função falhar, o valor de retorno será NULL.
 
 Etapas para que se converta uma fração para um texto hexadecimal:
   Reassign o first deste texto hexadecimal usando a magnitude desta fração.
@@ -1054,11 +1087,17 @@ Etapas para que se converta um lParam para um tecla:
   \ assumes lParam desde wm_char message
   Atribua o lParam à tecla.
   Desloque a tecla right 16 bits.
+  \https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
   Conjuncione logicamente a tecla com 255. \11111111 ou FF
-  Call "user32.dll" "MapVirtualKeyA" com 
-    A tecla 
-    e 1 
-    devolvendo a tecla.
+  Call "user32.dll" "MapVirtualKeyA" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeya
+  \Traduz (mapeia) um código de tecla virtual em um código de varredura ou valor de caractere, ou traduz um código de varredura em um código de tecla virtual.
+    A tecla [uCode] \O código de chave virtual ou código de leitura de uma chave. 
+    \Como esse valor é interpretado depende do valor do parâmetro uMapType.
+    \A partir do Windows Vista, o byte alto do valor uCode pode conter 0xe0 ou 0xe1 para especificar o código de verificação estendida.
+    e 1 [uMapType MAPVK_VSC_TO_VK]  \A tradução a ser executada. O valor deste parâmetro depende do valor do parâmetro uCode.
+    \ Usando MAPVK_VSC_TO_VK, O parâmetro uCode é um código de varredura e é traduzido em um código de tecla virtual que não distingue entre as teclas esquerda e direita. Se não houver tradução, a função retorna 0.
+    devolvendo a tecla. \O valor de retorno é um código de varredura, um código de chave virtual ou um valor de caractere, dependendo do valor de uCode e uMapType. 
+    \Se não houver tradução, o valor de retorno é zero.
   Se a tecla NumLock was not toggled, cancele.
   Se a tecla for a tecla Insert, atribua a tecla zero do teclado numérico à tecla; volte.
   Se a tecla for a tecla Delete, atribua a numpad-period tecla à tecla; volte.
@@ -1291,9 +1330,10 @@ Etapas para que se converta uma string para uns rows:
 
 Etapas para que se converta uma string para um UUID:
   Converta a string para um wide string e termine com o caractere NULL.
-  Call "ole32.dll" "CLSIDFromString" com 
-    O first deste wide string 
-    e O endereçamento deste UUID.
+  Call "ole32.dll" "CLSIDFromString" com \https://docs.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-clsidfromstring
+  \Converte uma seqüência de caracteres gerada pela função StringFromCLSID de volta pro CLSID original.
+    O first endereço de memória do pedaço desta wide string [lpsz] \A representação da seqüência de caracteres do CLSID.
+    e O endereçamento deste UUID. [pclsid] \Um ponteiro para o CLSID.
 
 Etapas para que se converta uma string para um wide string:
   Limpe a wide string.
@@ -1317,12 +1357,13 @@ Etapas para que se converta uma URL para uma URL simplificada:
   Atribua 1 ao dwHostNameLength destes URL_COMPONENTS.
   Atribua 1 ao dwUrlPathLength destes URL_COMPONENTS.
   Atribua 1 ao dwExtraInfoLength destes URL_COMPONENTS.
-  Call "wininet.dll" "InternetCrackUrlA" com 
-    O first desta URL 
-    e 0 
-    e 0 
-    e O endereçamento destes URL_COMPONENTS 
-    devolvendo um número.
+  Call "wininet.dll" "InternetCrackUrlA" com \https://docs.microsoft.com/en-us/windows/win32/api/wininet/nf-wininet-internetcrackurla
+  \"Racha" um URL em suas partes componentes.
+    O first desta URL [lpszUrl] \ Ponteiro para uma string que contém a URL canônica a ser quebrada.
+    e 0 [dwUrlLength] \ Tamanho da string lpszUrl, em TCHARs, ou zero se lpszUrl for uma string ASCIIZ.
+    e 0 [dwFlags] \ Controla a operação.
+    e O endereçamento destes URL_COMPONENTS [lpUrlComponents] \Pointer to a URL_COMPONENTS structure that receives the URL components.
+    devolvendo um número. \Retorna TRUE se a função for bem-sucedida ou FALSE caso contrário.
   Converta o lpszScheme destes URL_COMPONENTS e o dwSchemeLength destes URL_COMPONENTS para o nome do protocolo desta URL simplificada.
   Converta o lpszHostName destes URL_COMPONENTS e o dwHostNameLength destes URL_COMPONENTS para o nome de host desta URL simplificada.
   Converta o lpszUrlPath destes URL_COMPONENTS e o dwUrlPathLength destes URL_COMPONENTS para o endereço de recurso desta URL simplificada.
@@ -7268,8 +7309,8 @@ Etapas para que se termine com o caractere NULL uma string:
 
 Etapas para que se termine com o caractere NULL um wide string:
   Atribua a quantidade de caracteres deste wide string a uma quantidade de caracteres armazenados.
-  Reassign o first desta wide string usando a quantidade de caracteres armazenados mais 2.
-  Atribua o first desta wide string mais a quantidade de caracteres armazenados menos 1 ao last deste wide string.
+  Reassign o first endereço de memória do pedaço desta wide string usando a quantidade de caracteres armazenados mais 2.
+  Atribua o first endereço de memória do pedaço desta wide string mais a quantidade de caracteres armazenados menos 1 ao last deste wide string.
 
 Um offset é um número.
 
@@ -8335,7 +8376,7 @@ Etapas para que se speak uma string:
   Termine com o caractere NULL a wide string.
   Call o speak desta vtable deste talker com 
     O talker 
-    e O first deste wide string 
+    e O first endereço de memória do pedaço desta wide string 
     e 17 [SVSFDefault+SVSFlagsAsync +SVSFIsNotXML]  \https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ms720892(v=vs.85)
     e 0.
 
@@ -8349,7 +8390,7 @@ Etapas para que se speak uma string e wait:
   Termine com o caractere NULL a wide string.
   Call o speak desta vtable deste talker com 
     O talker 
-    e O first deste wide string 
+    e O first endereço de memória do pedaço desta wide string 
     e 16 [SVSFDefault+SVSFIsNotXML] 
     e 0.
 
