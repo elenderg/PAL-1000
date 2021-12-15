@@ -251,20 +251,23 @@ Etapas para que se ajuste espaçamento da fonte usando uma string:
     \Esse valor corresponde à ANSI_FIXED_FONT que especifica uma fonte monoespaçada baseada no conjunto de caracteres ANSI do Windows. Uma fonte Courier é normalmente usada.
   Obtenha uma segunda largura usando a string e a área de impressão.
   Atribua o largura menos a segunda largura dividido pelo quantidade de caracteres desta string a um número.
-  Call "gdi32.dll" "SetTextCharacterExtra" com 
-    A área de impressão e 
-    O número.
+  Call "gdi32.dll" "SetTextCharacterExtra" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-settextcharacterextra
+    \A função SetTextCharacterExtra define o espaçamento entre caracteres. 
+    \O espaçamento entre caracteres é adicionado a cada caractere, incluindo caracteres de quebra, quando o sistema grava uma linha de texto.
+    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
+    e O número. [extra] \A quantidade de espaço extra, em unidades lógicas, a ser adicionada a cada caractere. 
+    \Se o modo de mapeamento atual não for MM_TEXT, o parâmetro nCharExtra é transformado e arredondado para o pixel mais próximo.
 
 Etapas para que se alinhe um text usando um alinhamento:
   Atribua o alinhamento ao alinhamento deste text.
 
-Um alinhamento é uma string [center, left, ou right].
+Um alinhamento é uma string [centro, esquerda ou direita].
 
-Um quantia é um número.
+Uma quantia é um número.
 
-Um anchor é um position.
+Uma anchor é um position.
 
-Um máscara de conjunção lógica é uma mask.
+Uma máscara de conjunção lógica é uma mask.
 
 Um ângulo é uns precise degrees. [cujos valores variam ente 0 e 3599]
 
@@ -290,7 +293,7 @@ Etapas para que se posponha um trecho para um file:
     \ Se o ponteiro de arquivo for um valor negativo, a função falhará, o ponteiro de arquivo não será movido e o código retornado por GetLastError será ERROR_NEGATIVE_SEEK.
     \Observação: Como o valor -1 (INVALID_SET_FILE_POINTER) é um valor válido para o DWORD de ordem inferior do novo ponteiro de arquivo, 
    \O certo seria verificar o valor de retorno da função e o código de erro retornado por GetLastError para determinar se um erro ocorreu ou não. 
-    \Se ocorreu um erro, o valor de retorno de SetFilePointer será -1 (INVALID_SET_FILE_POINTER) e a função GetLastError retornará um valor diferente de 0 (NO_ERROR ). 	    
+    \Se ocorreu um erro, o valor de retorno de SetFilePointer será -1 (INVALID_SET_FILE_POINTER) e a função GetLastError retornará um valor diferente de 0 (NO_ERROR ).  
   Call "kernel32.dll" "WriteFile" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile
   \ Essa função serve pra gravar dados no arquivo ou dispositivo de entrada / saída (E/S) especificado.
     O file [hFile]  \ Um identificador para o arquivo ou dispositivo de E/S 
@@ -514,11 +517,11 @@ Etapas para que se avance um percorredor por um número:
 
 Etapas para que se assobie:
   Call "kernel32.dll" "Beep" com \https://docs.microsoft.com/en-us/windows/win32/api/utilapiset/nf-utilapiset-beep
-  \Gera tons simples no alto-falante. A função é síncrona; ele executa uma espera alertável e não retorna o controle para seu chamador até que o som termine.
-  220 [dwFreq] \A frequência do som, em hertz. Este parâmetro deve estar no intervalo de 37 a 32.767 (0x25 a 0x7FFF).
+    \Gera tons simples no alto-falante. A função é síncrona; ele executa uma espera alertável e não retorna o controle para seu chamador até que o som termine.
+    220 [dwFreq] \A frequência do som, em hertz. Este parâmetro deve estar no intervalo de 37 a 32.767 (0x25 a 0x7FFF).
     e 200. [dwDuration] \A duração do som, em milissegundos
 
-Um quantidade de pedaços é uma contagem.
+Uma quantidade de pedaços é uma contagem.
 
 Um endereço de memória do pedaço é um endereço de memória para um pedaço.
 
@@ -682,7 +685,7 @@ Uma choice é uma coisa com um nome e uma caixa.
 As choices são umas choices.
 
 Etapas para que se limpe uma caixa:
-  Atribua 0 e 0 e 0 e 0 ao caixa. \ caderno depends sobre this
+  Atribua 0 e 0 e 0 e 0 ao caixa. \ caderno depends disso
 
 Etapas para que se limpe um pedaço:
   Atribua o caractere null ao pedaço.
@@ -695,7 +698,7 @@ Etapas para que se limpe um elipse:
 
 Etapas para que se desative um detector;
 Etapas para que se desligue um detector:
-  Atribua 0 ao detector. \ was "Atribua no ao detector." Value of "no" inherited desde o CAL-1000 according para Dan.
+  Atribua 0 ao detector. \ era "Atribua no ao detector." O valor da keyword "no" estava no executável do CAL-1000, de acordo com o  Dahn.
 
 Etapas para que se limpe uma font:
   Atribua "" e 0 à font.
@@ -867,15 +870,15 @@ Etapas para que se compativelmente aguarde por um process endereço de memória:
   \Recupera um identificador para a janela do primeiro plano (a janela com a qual o usuário está trabalhando atualmente). 
   \O sistema atribui uma prioridade um pouco mais alta ao encadeamento que cria a janela de primeiro plano do que aos outros encadeamentos.
     devolvendo uma janela do programa. \O valor de retorno é um identificador para a janela do primeiro plano. 
-	\A janela de primeiro plano pode ser NULL em certas circunstâncias, como quando uma janela está perdendo a ativação.
+   \A janela de primeiro plano pode ser NULL em certas circunstâncias, como quando uma janela está perdendo a ativação.
   Se a janela do programa for a janela principal do programa, atribua 0 para EAX; volte.
   Call "user32.dll" "ShowWindow" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-showwindow
  \Define o estado de exibição da janela especificada.
-    A janela principal do programa [hWnd]
+    A janela principal do programa [hWnd] \Um número identificador para a janela.
     e 6 [nCmdShow SW_MINIMIZE]. \Controla como a janela deve ser exibida. 
-	\SW_MINIMIZE Minimiza a janela especificada e ativa a próxima janela de nível superior na ordem Z.
+    \SW_MINIMIZE Minimiza a janela especificada e ativa a próxima janela de nível superior na ordem Z.
   Call "user32.dll" "ShowWindow" com 
-    A janela principal do programa [hWnd] 
+    A janela principal do programa [hWnd]  \Um número identificador para a janela.
     e 9 [nCmdShow SW_RESTORE]. \Ativa e exibe a janela. 
     \Se a janela for minimizada ou maximizada, o sistema a restaurará para seu tamanho e posição originais. 
     \Um aplicativo deve especificar este sinalizador ao restaurar uma janela minimizada.
@@ -1046,7 +1049,7 @@ Etapas para que se converta uma font para um número da fonte:
     \Se CLEARTYPE_QUALITY for definido, o texto é renderizado (quando possível) usando o método de suavização ClearType.
     e 4 [iPitchAndFamily = TRUETYPE_FONTTYPE]  \O pitch e a família da fonte.
     e O first deste nome desta font [pszFaceName] \Um ponteiro para uma string terminada em nulo que especifica o nome do tipo da fonte. 
-	\O comprimento desta string não deve exceder 32 caracteres, incluindo o caractere nulo de terminação.
+    \O comprimento desta string não deve exceder 32 caracteres, incluindo o caractere nulo de terminação.
     devolvendo o número da fonte. \Se a função for bem-sucedida, o valor de retorno é um identificador para uma fonte lógica.
     \Se a função falhar, o valor de retorno será NULL.
 
@@ -1358,8 +1361,8 @@ Etapas para que se converta uma URL para uma URL simplificada:
   Atribua 1 ao dwUrlPathLength destes URL_COMPONENTS.
   Atribua 1 ao dwExtraInfoLength destes URL_COMPONENTS.
   Call "wininet.dll" "InternetCrackUrlA" com \https://docs.microsoft.com/en-us/windows/win32/api/wininet/nf-wininet-internetcrackurla
-  \"Racha" um URL em suas partes componentes.
-    O first desta URL [lpszUrl] \ Ponteiro para uma string que contém a URL canônica a ser quebrada.
+  \"Racha" uma URL em suas partes componentes.
+    O first endereço de memória do pedaço desta URL [lpszUrl] \ Ponteiro para uma string que contém a URL canônica a ser quebrada.
     e 0 [dwUrlLength] \ Tamanho da string lpszUrl, em TCHARs, ou zero se lpszUrl for uma string ASCIIZ.
     e 0 [dwFlags] \ Controla a operação.
     e O endereçamento destes URL_COMPONENTS [lpUrlComponents] \Pointer to a URL_COMPONENTS structure that receives the URL components.
@@ -1379,8 +1382,8 @@ Etapas para que se converta um word para um cifra hexadecimal:
 Uma coordenada é uns twips.
 
 Etapas para que se copie um event para um segundo event: \ mudar o "segunda" aqui
-  Se o event for inexistente, esvazie a segundo event; volte.
-  Crie a segundo event.
+  Se o event for inexistente, esvazie o segundo event; volte.
+  Crie o segundo event.
   Atribua a categoria deste event à categoria deste segundo event.
   Atribua o detector de tecla Shift deste event ao detector de tecla Shift deste segundo event.
   Atribua o detector de tecla ctrl deste event ao detector de tecla Ctrl deste segundo event.
@@ -1389,34 +1392,34 @@ Etapas para que se copie um event para um segundo event: \ mudar o "segunda" aqu
   Atribua a tecla deste event à tecla deste segundo event.
   Atribua o pedaço deste event ao pedaço deste segundo event.
 
-Etapas para que se copie um gpBitmap Para uma segunda gpBitmap: \verificar
-  Se o gpBitmap for inexistente, esvazie a segunda gpBitmap; volte.
+Etapas para que se copie um gpBitmap Para um segundo gpBitmap: \verificar
+  Se o gpBitmap for inexistente, esvazie o segundo gpBitmap; volte.
   Call "gdiplus.dll" "GdipCloneBitmapAreaI" com 
-  0 
-    e 0 
-    e A largura deste gpBitmap 
-    e A altura deste gpBitmap 
-    e 0 [PixelFormatDontCare] 
-    e O gpBitmap 
-    e O endereçamento desta segunda gpBitmap.
+    0 [x]
+    e 0 [y]
+    e A largura deste gpBitmap [width]
+    e A altura deste gpBitmap [height]
+    e 0 [format = PixelFormatDontCare] 
+    e O gpBitmap [*srcBitmap]
+    e O endereçamento deste segundo gpBitmap. [**dstBitmap]
 
-Etapas para que se copie o guts of um text Para uma segunda text:
+Etapas para que se copie o guts of um text Para um segundo text:
   Se o text for inexistente, cancele.
-  Se a segunda text for inexistente, cancele.
-  Atribua a caixa deste text à caixa desta segunda text.
-  Atribua a origem deste text à origem desta segunda text.
-  Atribua o pincel deste text ao pincel desta segunda text.
-  Atribua a font deste text à font desta segunda text.
-  Atribua o alinhamento deste text ao alinhamento desta segunda text.
-  Copie as rows deste text para as rows desta segunda text.
-  Atribua a margem deste text à margem desta segunda text.
-  Atribua a scale deste text à scale desta segunda text.
-  Atribua o wrap detector deste text ao wrap detector desta segunda text.
-  Atribua o horizontal scroll detector deste text ao horizontal scroll detector desta segunda text.
-  Atribua o vertical scroll detector deste text ao vertical scroll detector desta segunda text.
-  Atribua a seleção deste text à seleção desta segunda text.
-  Atribua o detector de alteração deste text ao detector de alteração desta segunda text.
-  Atribua o última operação deste text ao última operação desta segunda text.
+  Se o segundo text for inexistente, cancele.
+  Atribua a caixa deste text à caixa deste segundo text.
+  Atribua a origem deste text à origem deste segundo text.
+  Atribua o pincel deste text ao pincel deste segundo text.
+  Atribua a font deste text à font deste segundo text.
+  Atribua o alinhamento deste text ao alinhamento deste segundo text.
+  Copie as rows deste text para as rows deste segundo text.
+  Atribua a margem deste text à margem deste segundo text.
+  Atribua a scale deste text à scale deste segundo text.
+  Atribua o wrap detector deste text ao wrap detector deste segundo text.
+  Atribua o horizontal scroll detector deste text ao horizontal scroll detector deste segundo text.
+  Atribua o vertical scroll detector deste text ao vertical scroll detector deste segundo text.
+  Atribua a seleção deste text à seleção deste segundo text.
+  Atribua o detector de alteração deste text ao detector de alteração deste segundo text.
+  Atribua o última operação deste text ao última operação deste segundo text.
   \ dont copie undos e redos
 
 O número de cópias é um número.
@@ -1432,10 +1435,10 @@ Etapas para que se copie uma imagem Para uma segunda imagem:
   Atribua os data desta imagem aos data desta segunda imagem.
   Copie o gpBitmap desta imagem ao gpBitmap desta segunda imagem.
 
-Etapas para que se copie um polígono Para uma segunda polígono:
-  Se o polígono for inexistente, esvazie a segunda polígono; volte.
-  Aloque memória para o segunda polígono.
-  Copie os vértices deste polígono aos vértices desta segunda polígono.
+Etapas para que se copie um polígono Para um segundo polígono:
+  Se o polígono for inexistente, esvazie o segundo polígono; volte.
+  Aloque memória para o segundo polígono.
+  Copie os vértices deste polígono aos vértices deste segundo polígono.
 
 Etapas para que se copie uma row Para uma segunda row:
   Se a row for inexistente, esvazie a segunda row; volte.
@@ -1452,40 +1455,49 @@ Etapas para que se copie uns rows Para uns segunda rows:
     Posponha a segunda row para a segunda rows.
   Repita. [o código acima]
 
-Etapas para que se copie um text Para uma segunda text:
-  Se o text for inexistente, esvazie a segunda text; volte.
-  Aloque memória para o segunda text.
-  Copie o guts of o text ao segunda text.
+Etapas para que se copie um text Para um segundo text:
+  Se o text for inexistente, esvazie o segundo text; volte.
+  Aloque memória para o segundo text.
+  Copie o guts of o text ao segundo text.
 
-Etapas para que se copie um vértice Para uma segunda vértice:
-  Se o vértice for inexistente, esvazie a segunda vértice; volte.
-  Aloque memória para o segunda vértice.
-  Atribua a coordenada X deste vértice à coordenada x desta segunda vértice.
-  Atribua a coordenada Y deste vértice à coordenada y desta segunda vértice.
+Etapas para que se copie um vértice Para um segundo vértice:
+  Se o vértice for inexistente, esvazie o segundo vértice; volte.
+  Aloque memória para o segundo vértice.
+  Atribua a coordenada X deste vértice à coordenada x deste segundo vértice.
+  Atribua a coordenada Y deste vértice à coordenada y deste segundo vértice.
 
-Etapas para que se copie uns vértices Para uns segunda vértices:
-  Destrua os segunda vértices.
+Etapas para que se copie uns vértices Para uns segundo vértices:
+  Destrua os segundo vértices.
   Percorra. [o código abaixo]
     Obtenha um vértice desde o vértices.
     Se o vértice for inexistente, cancele.
-    Copie o vértice a uma segunda vértice.
-    Posponha a segunda vértice para a segunda vértices.
+    Copie o vértice a um segundo vértice.
+    Posponha o segundo vértice para o segundo vértices.
   Repita. [o código acima]
 
 Uma contagem é um número.
 
 Um contador é um número.
 
-Etapas para que se crie o connect handle of um winhttp request using uma URL simplificada:
-  Se o winhttp request for inexistente, cancele.
+Etapas para que se crie o connect handle of um requisição WinHTTP using uma URL simplificada:
+  Se o requisição WinHTTP for inexistente, cancele.
   Converta o nome de host desta URL simplificada a um wide string denominado wide host nome e termine com o caractere NULL.
-  Call "winhttp.dll" "WinHttpConnect" com 
-    O session número identificador desta request deste winhttp
-   e o first endereço de memória do pedaço deste wide host nome 
-   e o número de porta desta URL simplificada 
-   e 0 
-     devolvendo o connection número identificador deste winhttp request.
-  Se o connection número identificador deste winhttp request for 0, atribua "Erro. Não foi possível estabelecer uma conexão." ao erro do fluxo de entrada/saída; volte.
+  Call "WinHTTP.dll" "WinHttpConnect" com \https://docs.microsoft.com/en-us/windows/win32/api/WinHTTP/nf-WinHTTP-winhttpconnect
+    \A função WinHttpConnect faz 2 coisas:
+    \1. Especifica o servidor de destino inicial de uma solicitação HTTP e;
+    \2. Retorna um identificador de conexão HINTERNET de uma sessão HTTP para esse destino inicial.
+    O número identificador de sessão deste número identificador de requisição desta requisição WinHTTP [hSession] 
+    \Um identificador de sessão WinHTTP HINTERNET válido retornado por uma chamada anterior para WinHttpOpen.
+    e o first endereço de memória do pedaço deste wide host nome [pswzServerName] 
+    \Ponteiro para uma string terminada em nulo que contém o nome do host de um servidor HTTP. 
+    \Como alternativa, a string pode conter o endereço IP do site em ASCII, por exemplo, 10.0.1.45. 
+    \Observe que WinHttp não aceita nomes de host internacionais sem convertê-los primeiro para Punycode.
+    e o número de porta desta URL simplificada [nServerPort] \ 80 = http / 443 = https
+    \Inteiro não assinado que especifica a porta TCP / IP no servidor ao qual a conexão é feita. Este parâmetro pode ser qualquer número de porta TCP / IP válido
+    e 0 [dwReserved] \Este parâmetro é reservado e seu valor deve ser igual 0.
+    devolvendo o número identificador de conexão deste requisição WinHTTP.
+    \Retorna um identificador de conexão válido para a sessão HTTP se a conexão for bem-sucedida ou NULL caso contrário.
+  Se o número identificador de conexão deste requisição WinHTTP for 0, atribua "Erro. Não foi possível estabelecer uma conexão." ao erro do fluxo de entrada/saída; volte.
 
 Etapas para que se crie um console:
   Aloque memória para o console.
@@ -1544,8 +1556,8 @@ Etapas para que se crie um crypt session com um passphrase string:
   \Os dados da base podem ser uma senha ou quaisquer outros dados do usuário.
     O HCRYPTPROV deste crypt session [hProv] \Um identificador HCRYPTPROV de um CSP criado por uma chamada para CryptAcquireContext.
     e 26625 [CALG_RC4  Stream Cipher Algid] \Uma estrutura ALG_ID que identifica o algoritmo de criptografia simétrica para o qual a chave deve ser gerada. 
-	\Os algoritmos disponíveis provavelmente serão diferentes para cada CSP. 
-	\Para obter mais informações sobre qual identificador de algoritmo é usado pelos diferentes provedores para as especificações de chave AT_KEYEXCHANGE e AT_SIGNATURE, consulte ALG_ID. 
+    \Os algoritmos disponíveis provavelmente serão diferentes para cada CSP. 
+    \Para obter mais informações sobre qual identificador de algoritmo é usado pelos diferentes provedores para as especificações de chave AT_KEYEXCHANGE e AT_SIGNATURE, consulte ALG_ID. 
     e O HCRYPTHASH deste crypt session [hBaseData] \Um identificador para um objeto hash que foi alimentado com os dados de base exatos.
     e 8388608 [dwFlags Key length: 128 bit]  \Especifica o tipo de chave gerada. Os tamanhos de uma chave de sessão podem ser definidos quando a chave é gerada. O tamanho da chave, representando o comprimento do módulo da chave em bits, é definido com os 16 bits superiores deste parâmetro. Assim, se uma chave de sessão RC4 de 128 bits deve ser gerada, o valor 0x00800000 é combinado com qualquer outro valor predefinido dwFlags com um operati bit a bit OR
     e O endereçamento deste hcryptkey desta crypt session  [phKey] \Um ponteiro para uma variável HCRYPTKEY para receber o endereço do identificador da chave recém-gerada.
@@ -1773,17 +1785,17 @@ Etapas para que se crie o dicionário léxico:
   Aloque memória para o dicionário léxico.
   Crie o catálogo deste dicionário léxico usando 4027.
 
-Etapas para que se crie o abra handle of um winhttp request:
-  Se o winhttp request for inexistente, cancele.
+Etapas para que se crie o abra handle of um requisição WinHTTP:
+  Se o requisição WinHTTP for inexistente, cancele.
   Converta o nome deste module para um wide string denominado wide module nome e termine com o caractere NULL.
-  Call "winhttp.dll" "WinHttpOpen" com 
+  Call "WinHTTP.dll" "WinHttpOpen" com 
     O first endereço de memória do pedaço deste wide module nome 
     e 0 [WINHTTP_ACCESS_TYPE_DEFAULT_PROXY] 
     e 0 [WINHTTP_NO_PROXY_NAME] 
     e 0 [WINHTTP_NO_PROXY_BYPASS] 
     e 0 
-    devolvendo o session número identificador desta request deste winhttp.
-  Se a session desta request deste winhttp for 0, atribua "Erro. Não foi possível iniciar a conexão." ao erro do fluxo de entrada/saída; volte.
+    devolvendo o número identificador de sessão desta número identificador de requisição deste WinHTTP.
+  Se a session desta número identificador de requisição deste WinHTTP for 0, atribua "Erro. Não foi possível iniciar a conexão." ao erro do fluxo de entrada/saída; volte.
 
 Etapas para que se crie um endereço completo no sistema de arquivos:
   Se o endereço completo for endereço da pasta-format, crie o endereço completo no sistema de arquivos (pasta)[endereço]; volte.
@@ -1836,7 +1848,7 @@ Etapas para que se crie um imagem usando um gpBitmap:
   Atribua o gpBitmap ao gpBitmap desta imagem.
   Ajuste a imagem (extraindo as caixas do gpBitmap).
 
-Etapas para que se crie um imagem usando um URL:
+Etapas para que se crie um imagem usando uma URL:
   Read o URL a um trecho.
   Crie a imagem usando o trecho.
 
@@ -1849,21 +1861,21 @@ Etapas para que se crie um quora:
 Etapas para que se crie um refer:
   Aloque memória para o refer.
 
-Etapas para que se crie o request handle of um winhttp request using uma URL simplificada:
-  Se o winhttp request for inexistente, cancele.
+Etapas para que se crie o request handle of um requisição WinHTTP using uma URL simplificada:
+  Se o requisição WinHTTP for inexistente, cancele.
   Converta o endereço de recurso desta URL simplificada a um wide string denominado wide endereço completo e termine com o caractere NULL.
   Converta "POST" para um wide string denominado wide post string e termine com o caractere NULL.
   Se o nome do protocolo desta URL simplificada for "https", atribua 8388608 [WINHTTP_FLAG_SECURE] a um secure número.
-  Call "winhttp.dll" "WinHttpOpenRequest" com 
-    O connection número identificador deste winhttp request 
+  Call "WinHTTP.dll" "WinHttpOpenRequest" com 
+    O número identificador de conexão deste requisição WinHTTP 
     e O first deste wide post string 
     e O first deste wide endereço completo 
     e 0 [L"HTTP/1.1"] 
     e 0 [WINHTTP_NO_REFERER] 
     e 0 [WINHTTP_DEFAULT_ACCEPT_TYPES] 
     e O secure número 
-    devolvendo o request número identificador deste winhttp request.
-  Se o request número identificador deste winhttp request for 0, atribua "Erro ao chamar a função 'WinHttpOpenRequest' da biblioteca 'winhttp.dll'. Não foi possível abrir a requisição." ao erro do fluxo de entrada/saída; volte.
+    devolvendo o número identificador de requisição deste requisição WinHTTP.
+  Se o número identificador de requisição deste requisição WinHTTP for 0, atribua "Erro ao chamar a função 'WinHttpOpenRequest' da biblioteca 'WinHTTP.dll'. Não foi possível abrir a requisição." ao erro do fluxo de entrada/saída; volte.
 
 Etapas para que se crie uma row usando um pedaço:
   Aloque memória para a row.
@@ -1974,15 +1986,15 @@ Etapas para que se crie um vértice usando uma coordenada X e uma coordenada Y:
   Atribua a coordenada X à coordenada x deste vértice.
   Atribua a coordenada Y à coordenada y deste vértice.
 
-Etapas para que se crie um winhttp request por posting para um URL:
-  Aloque memória para o winhttp request.
+Etapas para que se crie um requisição WinHTTP por posting para uma URL:
+  Aloque memória para o requisição WinHTTP.
   Converta o URL para uma URL simplificada.
-  Crie o abra handle of o winhttp request.
-  Se o erro do fluxo de entrada/saída não estiver em branco, destrua o winhttp request; volte.
-  Crie o connect handle of o winhttp request using o URL simplificada.
-  Se o erro do fluxo de entrada/saída não estiver em branco, destrua o winhttp request; volte.
-  Crie o request handle of o winhttp request using o URL simplificada.
-  Se o erro do fluxo de entrada/saída não estiver em branco, destrua o winhttp request; volte.
+  Crie o abra handle of o requisição WinHTTP.
+  Se o erro do fluxo de entrada/saída não estiver em branco, destrua o requisição WinHTTP; volte.
+  Crie o connect handle of o requisição WinHTTP using o URL simplificada.
+  Se o erro do fluxo de entrada/saída não estiver em branco, destrua o requisição WinHTTP; volte.
+  Crie o request handle of o requisição WinHTTP using o URL simplificada.
+  Se o erro do fluxo de entrada/saída não estiver em branco, destrua o requisição WinHTTP; volte.
 
 O console é um console.
 
@@ -2309,8 +2321,8 @@ Etapas para que se determine se um pedaço estiver em uma string:
 Etapas para que se determine se um pedaço é like um segundo pedaço:
   \ used internally para palavra wrap
   Se o pedaço for whitespace, acione um detector.
-  Se o segundo pedaço for whitespace, acione uma segundo detector.
-  Se o detector for a segundo detector, diga sim.
+  Se o segundo pedaço for whitespace, acione um segundo detector.
+  Se o detector for o segundo detector, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se um pedaço é irrelevante:
@@ -2772,9 +2784,9 @@ Etapas para que se determine se um número é prime:
     Se o segundo número for maior do que 1, repita.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se um par de números é uma segundo par de números:
-  Se o número X deste par de números não for o número X desta segundo par de números, diga não.
-  Se o número Y deste par de números não for o número Y desta segundo par de números, diga não.
+Etapas para que se determine se um par de números é um segundo par de números:
+  Se o número X deste par de números não for o número X deste segundo par de números, diga não.
+  Se o número Y deste par de números não for o número Y deste segundo par de números, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se um par de números é um número:
@@ -3611,15 +3623,15 @@ Etapas para que se destrua um vértice usando um polígono:
   Remove o vértice desde os vértices deste polígono.
   Destrua o vértice.
 
-Etapas para que se destrua um winhttp request:
-  Se o winhttp request for inexistente, cancele.
-  Call "winhttp.dll" "WinHttpCloseHandle" com 
-    O request número identificador deste winhttp request.
-  Call "winhttp.dll" "WinHttpCloseHandle" com 
-    O connection número identificador deste winhttp request.
-  Call "winhttp.dll" "WinHttpCloseHandle" com 
-    O session número identificador desta request deste winhttp.
-  Deallocate o winhttp request.
+Etapas para que se destrua um requisição WinHTTP:
+  Se o requisição WinHTTP for inexistente, cancele.
+  Call "WinHTTP.dll" "WinHttpCloseHandle" com 
+    O número identificador de requisição deste requisição WinHTTP.
+  Call "WinHTTP.dll" "WinHttpCloseHandle" com 
+    O número identificador de conexão deste requisição WinHTTP.
+  Call "WinHTTP.dll" "WinHttpCloseHandle" com 
+    O número identificador de sessão desta número identificador de requisição deste WinHTTP.
+  Deallocate o requisição WinHTTP.
 
 Um difference é um par de números.
 
@@ -3654,9 +3666,9 @@ Etapas para que se divida um número por um fração:
   Flip a fração.
   Multiplique o número pela fração.
 
-Etapas para que se divida um par de números por uma segundo par de números:
-  Divida o número X deste par de números pelo número X desta segundo par de números.
-  Divida o número Y deste par de números pelo número Y desta segundo par de números.
+Etapas para que se divida um par de números por um segundo par de números:
+  Divida o número X deste par de números pelo número X deste segundo par de números.
+  Divida o número Y deste par de números pelo número Y deste segundo par de números.
 
 Etapas para que se divida um par de números por um número:
   Divida o número X deste par de números pelo número.
@@ -5031,12 +5043,12 @@ Etapas para que se obtenha um description por um endereço completo:
   Se o nome da unidade de disco não estiver em branco, atribua o nome da unidade de disco ao description.
   Lowercase o description.
 
-Etapas para que se obtenha um difference entre um par de números e uma segundo par de números:
+Etapas para que se obtenha um difference entre um par de números e um segundo par de números:
   Atribua o par de números à difference.
-  Subtraia a segundo par de números desde a difference.
+  Subtraia o segundo par de números desde a difference.
 
-Etapas para que se obtenha um difference entre um par de números e uma segundo par de números usando um malha par de números:
-  Obtenha a difference entre o par de números e a segundo par de números.
+Etapas para que se obtenha um difference entre um par de números e um segundo par de números usando um malha par de números:
+  Obtenha a difference entre o par de números e o segundo par de números.
   Arredonde a difference para a malha.
 
 Etapas para que se obtenha um distance entre uma localização e uma segunda localização (approximate):
@@ -5946,8 +5958,8 @@ Etapas para que se efetue alteração de cor usando um text e uma cor:
 Etapas para que se execute redo usando um text:
   Se o text for inexistente, cancele.
   Se o last destes redos deste text for inexistente, cancele.
-  Copie o text a uma segunda text.
-  Posponha a segunda text para os undos deste text.
+  Copie o text a um segundo text.
+  Posponha o segundo text para os undos deste text.
   Atribua o last destes redos deste text a um terceiro text.
   Remove o terceiro text desde os redos deste text.
   Copie o guts of o terceiro text ao text.
@@ -5977,8 +5989,8 @@ Etapas para que se execute classifique algum tipo de rows selecionadas usando um
 Etapas para que se execute undo usando um text:
   Se o text for inexistente, cancele.
   Se o last destes undos deste text for inexistente, cancele.
-  Copie o text a uma segunda text.
-  Posponha a segunda text para os redos deste text.
+  Copie o text a um segundo text.
+  Posponha o segundo text para os redos deste text.
   Atribua o last destes undos deste text a um terceiro text.
   Remove o terceiro text desde os undos deste text.
   Copie o guts of o terceiro text ao text.
@@ -6527,8 +6539,8 @@ Etapas para que se insira um pedaço Para um text:
 
 Etapas para que se insira uma localização Para um polígono after um vértice:
   Se o polígono for inexistente, cancele.
-  Crie uma segunda vértice usando a localização.
-  Insira a segunda vértice aos vértices deste polígono after o vértice.
+  Crie um segundo vértice usando a localização.
+  Insira o segundo vértice aos vértices deste polígono after o vértice.
 
 Etapas para que se insira uma string Para uma segunda string antes de um byte#:
   Se a quantidade de caracteres desta string for 0, cancele.
@@ -6536,7 +6548,7 @@ Etapas para que se insira uma string Para uma segunda string antes de um byte#:
   Limite o byte# para 1 e a quantidade de caracteres desta segunda string mais 1.
   Lance um subtexto sobre a segunda string. \ left side
   Atribua o first endereço de memória do pedaço deste subtexto mais o byte# menos 2 ao last endereço de memória do pedaço deste subtexto.
-  Lance uma segundo subtexto sobre a segunda string. \ right side
+  Lance um segundo subtexto sobre a segunda string. \ right side
   Atribua o first endereço de memória do pedaço deste segundo subtexto mais o byte# menos 1 ao first endereço de memória do pedaço deste segundo subtexto.
   Atribua a quantidade de caracteres desta segunda string mais a quantidade de caracteres desta string a uma quantidade de caracteres agrupados.
   Reassign um endereço de memória usando a quantidade de caracteres agrupados.
@@ -6596,26 +6608,26 @@ Etapas para que se insira uns coisas para uns segunda coisas antes de um coisa:
     Insira a segunda coisa ao segunda coisas antes de o coisa.
   Repita. [o código acima]
 
-Etapas para que se insira um vértice para um polígono after uma segunda vértice:
+Etapas para que se insira um vértice para um polígono after um segundo vértice:
   Se o polígono for inexistente, cancele.
   Se o vértice for inexistente, cancele.
-  Insira o vértice aos vértices deste polígono after a segunda vértice.
+  Insira o vértice aos vértices deste polígono after o segundo vértice.
 
 Etapas para que se insira um vértice para um polígono sob uma localização:
   Se o polígono for inexistente, cancele.
   Se o vértice for inexistente, cancele.
   Percorra. [o código abaixo]
-    Obtenha uma segunda vértice desde os vértices deste polígono.
-    Se a segunda vértice for inexistente, cancele.
-    Se o next desta segunda vértice for inexistente, cancele.
-    Atribua a localização desta segunda vértice e a localização deste next desta segunda vértice a uma linha reta.
+    Obtenha um segundo vértice desde os vértices deste polígono.
+    Se o segundo vértice for inexistente, cancele.
+    Se o next deste segundo vértice for inexistente, cancele.
+    Atribua a localização deste segundo vértice e a localização deste next deste segundo vértice a uma linha reta.
     Se a localização não estiver sobre a linha reta, repita.
-  Insira o vértice aos vértices deste polígono after a segunda vértice.
+  Insira o vértice aos vértices deste polígono after o segundo vértice.
 
-Etapas para que se insira um vértice para um polígono antes de uma segunda vértice:
+Etapas para que se insira um vértice para um polígono antes de um segundo vértice:
   Se o polígono for inexistente, cancele.
   Se o vértice for inexistente, cancele.
-  Insira o vértice aos vértices deste polígono antes de a segunda vértice.
+  Insira o vértice aos vértices deste polígono antes de o segundo vértice.
 
 Etapas para que se intersect uma caixa com uma segunda caixa usando um terceiro caixa:
   \ caixas does not touch
@@ -7573,9 +7585,9 @@ Etapas para que se atribua o absolute value desse número para um segundo número:
 Etapas para que se atribua um OutlineTextmetric para uma segunda OutlineTextmetric:
   Copie pedaços desde o endereçamento deste OutlineTextmetric para o endereçamento desta segunda OutlineTextmetric pela magnitude deste OutlineTextmetric.
 
-Etapas para que se atribua o absolute value desse par de números para uma segundo par de números:
+Etapas para que se atribua o absolute value desse par de números para um segundo par de números:
   Atribua o par de números ao segundo par de números.
-  De-sign a segundo par de números.
+  De-sign o segundo par de números.
 
 \ unclear why this does not get called properly when I replace hoja apaisada com caja ***
 
@@ -7845,9 +7857,9 @@ Etapas para que se atualize a tela usando uma caixa:
 Etapas para que se relembre um text:
   Se o text for inexistente, cancele.
   Destrua os redos deste text.
-  Copie o text a uma segunda text.
-  Redimensione proporcionalmente a segunda text para 1/1.
-  Posponha a segunda text para os undos deste text.
+  Copie o text a um segundo text.
+  Redimensione proporcionalmente o segundo text para 1/1.
+  Posponha o segundo text para os undos deste text.
   Limite os undos deste text para o max text undos.
   Ligue o detector de alteração deste text.
 
@@ -8024,8 +8036,8 @@ A reply é uma reply.
 Uma reply é uma string.
 
 Etapas para que se reenfileire um event:
-  Copie o event a uma segundo event.
-  Enfileire a segundo event.
+  Copie o event a um segundo event.
+  Enfileire o segundo event.
 
 Etapas para que se reset o alphabet:
   Atribua o 'A' maiúsculo ao next letra.
@@ -8320,12 +8332,12 @@ Etapas para que se arredonde um número para cima para o múltiplo imediato of um 
   Se o resto for 0, cancele.
   Adicione o segundo número menos o resto para o número.
 
-Etapas para que se arredonde um par de números para uma segundo par de números:
-  Arredonde o par de números para o múltiplo imediato of a segundo par de números.
+Etapas para que se arredonde um par de números para um segundo par de números:
+  Arredonde o par de números para o múltiplo imediato of o segundo par de números.
 
-Etapas para que se arredonde um par de números para o múltiplo imediato of uma segundo par de números:
-  Arredonde o número X deste par de números para o múltiplo imediato of o número X desta segundo par de números.
-  Arredonde o número Y deste par de números para o múltiplo imediato of o número Y desta segundo par de números.
+Etapas para que se arredonde um par de números para o múltiplo imediato of um segundo par de números:
+  Arredonde o número X deste par de números para o múltiplo imediato of o número X deste segundo par de números.
+  Arredonde o número Y deste par de números para o múltiplo imediato of o número Y deste segundo par de números.
 
 Etapas para que se arredonde um par de números para o múltiplo imediato of um número:
   Arredonde o número X deste par de números para o múltiplo imediato of o número.
@@ -8666,10 +8678,10 @@ Etapas para que se send um trecho para um socket:
     Adicione o número para o endereço de memória.
   Repita. [o código acima]
 
-Etapas para que se send um data string para um winhttp request:
-  Se o winhttp request for inexistente, cancele.
-  Call "winhttp.dll" "WinHttpSendRequest" com 
-    O request número identificador deste winhttp request 
+Etapas para que se send um data string para um requisição WinHTTP:
+  Se o requisição WinHTTP for inexistente, cancele.
+  Call "WinHTTP.dll" "WinHttpSendRequest" com 
+    O número identificador de requisição deste requisição WinHTTP 
     e 0 [WINHTTP_NO_ADDITIONAL_HEADERS] 
     e 0 e o first destes data 
     e A quantidade de caracteres destes data 
@@ -9809,7 +9821,7 @@ Um nome de host é uma string.
 Um parâmetro de consulta é uma string.
 Um endereço de recurso é uma string.
 
-Um URL simplificada é um conjunto com
+Uma URL simplificada é um conjunto com
   Um nome do protocolo,\lpszScheme? dwFlags? -> exemplo: http / ftp / https / etc
   Um nome de host, \lpszHostName ?  -> exemplo: www.google.com ou mail.stackoverflow.com
   Um endereço de recurso, \lpszUrlPath? -> exemplo: index.html ou /css/style.css ou questions/SubmitQuestion.aspx

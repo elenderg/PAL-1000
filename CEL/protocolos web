@@ -1,22 +1,22 @@
 Um query pedaço é um texto de consulta.
 Um texto de consulta é uma string.
 
-Etapas para que se read uma response string desde um winhttp request:
-  Se o winhttp request for inexistente, cancele.
+Etapas para que se read uma response string desde um requisição WinHTTP:
+  Se o requisição WinHTTP for inexistente, cancele.
   Limpe a response string.
   Atribua 8 kilobytes a um trecho size.
   Percorra. [o código abaixo]
     Atribua 0 a um size.
-    Call "winhttp.dll" "WinHttpqueryDataAvailable" com 
-      O request número identificador deste winhttp request 
+    Call "WinHTTP.dll" "WinHttpqueryDataAvailable" com 
+      O número identificador de requisição deste requisição WinHTTP 
       e O endereçamento deste size 
       devolvendo um número resultante.
     Se o número resultante for 0, atribua "Erro. Não foi possível consultar os dados disponíveis." ao erro do fluxo de entrada/saída; limpe a response; pare.
     Atribua a quantidade de caracteres desta response a uma quantidade de caracteres armazenados.
     Reassign o first desta response string usando a quantidade de caracteres armazenados mais o trecho size.
     Atribua o first desta response string mais a quantidade de caracteres armazenados a um endereço de memória.
-    Call "winhttp.dll" "WinHttpReadData" com 
-      O request número identificador deste winhttp request 
+    Call "WinHTTP.dll" "WinHttpReadData" com 
+      O número identificador de requisição deste requisição WinHTTP 
       e O endereço de memória 
       e O trecho size 
       e O endereçamento dessa contagem 
@@ -26,7 +26,7 @@ Etapas para que se read uma response string desde um winhttp request:
     Se a contagem for 0, pare.
   Repita. [o código acima]
 
-Etapas para que se read um URL para um trecho:
+Etapas para que se read uma URL para um trecho:
   \ prepare
   Limpe o trecho.
   Limpe o erro do fluxo de entrada/saída.
@@ -36,20 +36,20 @@ Etapas para que se read um URL para um trecho:
     e 0 [INTERNET_OPEN_TYPE_PRECONFIG] 
     e nil 
     e nil 
-    devolvendo um internet número identificador.
-  Se o internet número identificador for 0, atribua "Erro. Não foi possível se conectar à internet. Verifique sua conexão" ao erro do fluxo de entrada/saída; volte.
+    devolvendo um número identificador da URL da internet.
+  Se o número identificador da URL da internet for 0, atribua "Erro. Não foi possível se conectar à internet. Verifique sua conexão" ao erro do fluxo de entrada/saída; volte.
  \ internet abra URL
   Isole a URL.
   termine com o caractere NULL a URL.
   Call "wininet.dll" "InternetOpenUrlA" com 
-    O internet número identificador 
-    e O first desta URL 
+    O número identificador da URL da internet 
+    e O first endereço de memória do pedaço desta URL 
     e nil 
     e 0 
     e 0 
     e 0 
-    devolvendo um URL número identificador.
-  Se o URL número identificador for 0, atribua "Erro. Não foi possível acessar a URL: " junto com o URL seguido de "." ao erro do fluxo de entrada/saída; call "wininet.dll" "InternetCloseHandle" com o internet número identificador; volte.
+    devolvendo um número identificador da URL.
+  Se o número identificador da URL for 0, atribua "Erro. Não foi possível acessar a URL: " junto com o URL seguido de "." ao erro do fluxo de entrada/saída; call "wininet.dll" "InternetCloseHandle" com o número identificador da URL da internet; volte.
   \ read o file
   Atribua 64 kilobytes a um trecho size.
   Percorra. [o código abaixo]
@@ -57,7 +57,7 @@ Etapas para que se read um URL para um trecho:
     Reassign o first endereço de memória do pedaço deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
     Atribua o first endereço de memória do pedaço deste trecho mais a quantidade de caracteres armazenados a um endereço de memória.
     Call "wininet.dll" "InternetReadFile" com 
-      O URL número identificador 
+      O número identificador da URL 
       e O endereço de memória 
       e O trecho size 
       e O endereçamento dessa contagem 
@@ -68,14 +68,14 @@ Etapas para que se read um URL para um trecho:
   Repita. [o código acima]
   \ clean para cima
   Call "wininet.dll" "InternetCloseHandle" com 
-    O URL número identificador.
+    O número identificador da URL.
   Call "wininet.dll" "InternetCloseHandle" com 
-    O internet número identificador.
+    O número identificador da URL da internet.
 
-Etapas para que se receive o response desde um winhttp request:
-  Se o winhttp request for inexistente, cancele.
-  Call "winhttp.dll" "WinHttpReceiveResponse" com
-    A request número identificador deste winhttp request
+Etapas para que se receive o response desde um requisição WinHTTP:
+  Se o requisição WinHTTP for inexistente, cancele.
+  Call "WinHTTP.dll" "WinHttpReceiveResponse" com
+    A número identificador de requisição deste requisição WinHTTP
     e 0
     devolvendo um número resultante.
   Se o número resultante for 0, atribua "A solicitação não pode ser enviada." ao erro do fluxo de entrada/saída; volte.
@@ -101,19 +101,19 @@ Etapas para que se receive um trecho desde um socket:
     Atribua o endereço de memória mais a contagem menos 1 ao last endereço de memória do pedaço deste trecho.
   Repita. [o código acima]
 
-Etapas para que se post um data string para um URL e receive um response string:
+Etapas para que se post um data string para uma URL e receive um response string:
   \ only works com http e https
   Limpe o response.
   Limpe o erro do fluxo de entrada/saída.
-  Crie um winhttp request por posting para o URL.
+  Crie um requisição WinHTTP por posting para o URL.
   Se o erro do fluxo de entrada/saída não estiver em branco, cancele.
-  Send o data para o winhttp request.
-  Se o erro do fluxo de entrada/saída não estiver em branco, destrua o winhttp request; volte.
-  Receive o response desde o winhttp request.
-  Se o erro do fluxo de entrada/saída não estiver em branco, destrua o winhttp request; volte.
-  Read o response desde o winhttp request.
-  Se o erro do fluxo de entrada/saída não estiver em branco, destrua o winhttp request; volte.
-  Destrua o winhttp request.
+  Send o data para o requisição WinHTTP.
+  Se o erro do fluxo de entrada/saída não estiver em branco, destrua o requisição WinHTTP; volte.
+  Receive o response desde o requisição WinHTTP.
+  Se o erro do fluxo de entrada/saída não estiver em branco, destrua o requisição WinHTTP; volte.
+  Read o response desde o requisição WinHTTP.
+  Se o erro do fluxo de entrada/saída não estiver em branco, destrua o requisição WinHTTP; volte.
+  Destrua o requisição WinHTTP.
 
 
 
