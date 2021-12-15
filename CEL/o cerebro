@@ -1519,37 +1519,71 @@ Etapas para que se crie um console:
   Atribua a altura desta fonte padrão ao malha deste console.
   Multiplique o número X deste malha deste console por 2.
 
-Etapas para que se crie um crypt session com um passphrase string:
-  \ sets erro do fluxo de entrada/saída if failure
+O nome do provedor criptográfico é uma string.
+  
+Etapas para que se crie um crypt session com uma passphrase string:
+  \ define o erro do fluxo de entrada/saída em caso de falha
   Limpe o erro do fluxo de entrada/saída.
   Aloque memória para o crypt session.
-  \ acquire context
-  Call "advapi32.dll" "CryptAcquireContextA" com 
-    O endereçamento deste HCRYPTPROV deste crypt session 
-    e 0 
-    e "Microsoft Enhanced Cryptographic Provider v1.0"'s first endereço de memória do pedaço 
-    e 1 [PROV_RSA_FULL] 
-    e -268435456 [CRYPT_VERIFYCONTEXT] 
-    devolvendo um número resultante.
-  Se o número resultante for 0, atribua "Erro. Não foi possível adquirir o contexto." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
-  \ crie hash
-  Call "advapi32.dll" "CryptCreateHash" com 
-    o HCRYPTPROV deste crypt session 
-    e 32771 [CALG_MD5] 
-    e 0 
-    e 0 
-    e o endereçamento deste HCRYPTHASH deste crypt session 
-    devolvendo o número resultante.
-  Se o número resultante for 0, atribua "Erro. Não foi possível criar o hash." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
+  Atribua "Microsoft Enhanced Cryptographic Provider v1.0" ao nome do provedor criptográfico. [MS_ENHANCED_PROV] \https://docs.microsoft.com/en-us/windows/win32/seccertenroll/cryptoapi-cryptographic-service-providers
+  \ aquisição do contexto
+  Call "advapi32.dll" "CryptAcquireContextA" com \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptacquirecontexta
+    \A função CryptAcquireContext é usada para adquirir um identificador para um contêiner de chave específico em um determinado provedor de serviços criptográficos (CSP). 
+    \Este identificador retornado é usado em chamadas para funções CryptoAPI que usam o CSP selecionado.
+    O endereçamento deste HCRYPTPROV deste crypt session [*phProv] \Um ponteiro para um identificador de um provedor de serviços criptográficos (CSP). 
+    e 0 [szContainer] \O nome do contêiner de chave. Esta é uma string terminada em nulo que identifica o contêiner de chave para o CSP.
+    \Na maioria dos casos, quando dwFlags é definido como -268435456 (CRYPT_VERIFYCONTEXT), pszContainer deve ser definido como NULL.
+    e o first endereço de memória do pedaço deste nome do provedor criptográfico [szProvider]  
+    \Uma string terminada em nulo que contém o nome do CSP a ser usado.
+    \Se este parâmetro for NULL, o provedor padrão do usuário será usado. 
+    \Para obter mais informações, consulte Contextos do provedor de serviços criptográficos.
+    \Para obter uma lista de provedores criptográficos disponíveis, consulte Nomes de provedores criptográficos.
+    e 1 [dwProvType PROV_RSA_FULL]  \Especifica o tipo de provedor a ser adquirido. 
+    \Os tipos de provedor definidos são discutidos em Tipos de provedor criptográfico.
+    \O tipo de provedor PROV_RSA_FULL oferece suporte a assinaturas digitais e criptografia de dados. 
+    \É considerado um CSP de propósito geral. O algoritmo de chave pública RSA é usado para todas as operações de chave pública.
+    e -268435456 [dwFlags CRYPT_VERIFYCONTEXT]  \Valores de sinalização. 
+    \Este parâmetro geralmente é definido como zero, mas existe uma gama de valores possíveis.
+    \CRYPT_VERIFYCONTEXT
+    \Esta opção se destina a aplicativos que usam chaves efêmeras ou aplicativos que não requerem acesso a chaves privadas persistentes, 
+    \como aplicativos que executam apenas hash, criptografia e verificação de assinatura digital. 
+    \Apenas os aplicativos que criam assinaturas ou decriptografam mensagens precisam de acesso a uma chave privada. 
+   \Na maioria dos casos, é esse sinalizador deve ser escolhido.
+    devolvendo um número resultante. \Se a função for bem-sucedida, ela retornará um valor diferente de zero (VERDADEIRO).
+    \Se a função falhar, ele retorna zero (FALSO).
+  Se o número resultante for 0, atribua "Erro. Não foi possível adquirir o identificador do contêiner de chave do provedor de serviços criptográficos ." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
+  \ criação do hash
+  Call "advapi32.dll" "CryptCreateHash" com \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptcreatehash
+    \A função CryptCreateHash inicializa o hash de um fluxo de dados. 
+    \Ele cria e retorna ao aplicativo de chamada um identificador para um objeto hash do provedor de serviços de criptografia (CSP).
+    o HCRYPTPROV deste crypt session [hProv] \Um identificador para um CSP criado por uma chamada feita para a função CryptAcquireContext acima.
+    e 32771 [Algid CALG_MD5]  \Um valor ALG_ID que identifica o algoritmo de hash a ser usado. 
+    \O tipo de dados ALG_ID especifica um identificador de algoritmo. Os parâmetros desse tipo de dados são passados para a maioria das funções na CryptoAPI.
+    \Os valores válidos para este parâmetro variam, dependendo do CSP usado.
+    \CALG_MD5 é um Algoritmo de hash MD5. Este algoritmo é suportado pelo Microsoft Base Cryptographic Provider.
+    e 0 [hKey] \A chave para o hash é passada neste parâmetro. Para algoritmos não chaveados, este parâmetro deve ser definido como zero.
+    e 0 [dwFlags] \O seguinte valor de sinalizador é definido:
+    \Valor CRYPT_SECRETDIGEST (0x00000001)  Significado: Este sinalizador não é usado.
+    e o endereçamento deste HCRYPTHASH deste crypt session [*phHash] \O endereço para o qual a função copia um identificador para o novo objeto hash.
+    devolvendo o número resultante. \Se a função for bem-sucedida, ela retornará TRUE.
+    \Se a função falhar, ele retornará FALSE.
+  Se o número resultante for 0, atribua "Erro. Não foi possível criar o hash da senha." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
   \ hash passphrase
-  Call "advapi32.dll" "CryptHashData" com 
-    O HCRYPTHASH deste crypt session 
-    e O first desta passphrase 
-    e A quantidade de caracteres desta passphrase 
-    e 0 
-    devolvendo o número resultante.
-  Se o número resultante for 0, atribua "Erro. Não foi possível fazer o hash da senha." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
- \ derive session tecla
+  Call "advapi32.dll" "CryptHashData" com \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-crypthashdata
+    \A função CryptHashData adiciona dados a um objeto hash especificado. 
+    \ Esta função e CryptHashSessionKey podem ser chamadas várias vezes para calcular o hash de fluxos de dados longos ou descontínuos.
+    O HCRYPTHASH deste crypt session [hHash] \O número dentificador do objeto hash.
+    e O first desta passphrase [*pbData] \Um ponteiro para um buffer que contém os dados a serem adicionados ao objeto hash.
+    e A quantidade de caracteres desta passphrase [dwDataLen] \Número de bytes de dados a serem adicionados. 
+    \Deve ser zero se o sinalizador CRYPT_USERDATA estiver definido.
+    e 0 [dwFlags] \Todos os provedores criptográficos da Microsoft ignoram esse parâmetro. 
+    \Para qualquer CSP que não ignore este parâmetro, se este sinalizador for definido, o CSP solicita que o usuário insira os dados diretamente. 
+   \Esses dados são adicionados ao hash. O aplicativo não tem permissão para acessar os dados. 
+    \Este sinalizador pode ser usado para permitir que o usuário insira um PIN no sistema.
+    devolvendo o número resultante. \Se a função for bem-sucedida, o valor de retorno será TRUE.
+    \Se a função falhar, o valor de retorno será FALSE.
+  Se o número resultante for 0, atribua "Erro. Não foi possível adicionar dados ao hash da senha." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
+ \ gera a chave da sessão criptográfica
   Call "advapi32.dll" "CryptDeriveKey" com  \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptderivekey
   \A função CryptDeriveKey gera chaves de sessão criptográficas derivadas de um valor de dados base. 
   \Esta função garante que quando o mesmo provedor de serviços criptográficos (CSP) e algoritmos são usados, as chaves geradas a partir da mesma base de dados são idênticas. 
@@ -1561,7 +1595,8 @@ Etapas para que se crie um crypt session com um passphrase string:
     e O HCRYPTHASH deste crypt session [hBaseData] \Um identificador para um objeto hash que foi alimentado com os dados de base exatos.
     e 8388608 [dwFlags Key length: 128 bit]  \Especifica o tipo de chave gerada. Os tamanhos de uma chave de sessão podem ser definidos quando a chave é gerada. O tamanho da chave, representando o comprimento do módulo da chave em bits, é definido com os 16 bits superiores deste parâmetro. Assim, se uma chave de sessão RC4 de 128 bits deve ser gerada, o valor 0x00800000 é combinado com qualquer outro valor predefinido dwFlags com um operati bit a bit OR
     e O endereçamento deste hcryptkey desta crypt session  [phKey] \Um ponteiro para uma variável HCRYPTKEY para receber o endereço do identificador da chave recém-gerada.
-    devolvendo o número resultante.
+    devolvendo o número resultante. \Se a função for bem-sucedida, o valor de retorno será TRUE.
+    \Se a função falhar, o valor de retorno será FALSE.
   Se o número resultante for 0, atribua "Erro. Não foi possível derivar a chave da sessão." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
 
 Etapas para que se crie um dyad:
@@ -1578,78 +1613,95 @@ Etapas para que se crie uma font info usando uma font (basic data):
   Aloque memória para a font info.
   Atribua a font ao font desta font info.
   Obtenha um OutlineTextmetric usando a font.
-  Atribua 32 ao flags deste font info. \ could ser updated com um more information
-  Atribua o tminternalleading destes otmtextmetrics deste OutlineTextmetric ao internal leading desta font info.
-  Atribua o otmemsquare deste OutlineTextmetric ao emsquare desta font info.
-  Atribua o tmascent deste otmtextmetrics deste OutlineTextmetric ao ascent desta font info.
-  Atribua - o tmdescent deste otmtextmetrics deste OutlineTextmetric ao descent desta font info.
-  Atribua o otmscapemheight deste OutlineTextmetric ao capheight desta font info.
-  Atribua o otmitalicangle deste OutlineTextmetric ao italicangle desta font info.
-  Atribua 0 ao stemv desta font info. \ dont know where para obtenha this desde
-  Atribua o otmrcfontbox deste OutlineTextmetric ao font caixa desta font info.
+  Atribua 32 aos flags deste font info. \ poderia ser atualizado com mais uma informação
+  Atribua o tmInternalLeading destes otmTextMetrics deste OutlineTextmetric ao internal leading desta font info.
+  Atribua o otmEMSquare deste OutlineTextmetric ao emsquare desta font info.
+  Atribua o tmAscent deste otmTextMetrics deste OutlineTextmetric ao ascent desta font info.
+  Atribua - o tmDescent deste otmTextMetrics deste OutlineTextmetric ao descent desta font info.
+  Atribua o otmsCapEmHeight deste OutlineTextmetric ao capheight desta font info.
+  Atribua o otmItalicAngle deste OutlineTextmetric ao italicangle desta font info.
+  Atribua 0 ao StemV desta font info. \ dont know where para obtenha this desde
+  Atribua o otmrcFontBox deste OutlineTextmetric ao font caixa desta font info.
 
 Etapas para que se crie uma font info usando uma font e uma string:
   \ cria larguras baseadas nos caracteres da string
   Crie a font info usando a font (basic data).
   Crie as font larguras desta font info usando a font e a string.
 
-Etapas para que se crie uns font larguras usando um font:
+Etapas para que se crie umas font larguras usando um font:
   Aloque memória para a font larguras.
   Atribua a font à font destas font larguras.
   Atribua 256 à contagem destas font larguras.
   Assign o data destes font larguras usando a contagem destas font larguras times a magnitude desse número.
   Crie o número da fonte of o memory canvas usando a font.
-  Assign um original abc endereço de memória usando 256 times a magnitude desse abc.
-  Call "gdi32.dll" "GetCharABCWidthsA" com 
-    O memory canvas \ Um identificador para o contexto do dispositivo.
-    e 
-  0 \ O primeiro caractere do grupo de caracteres consecutivos da fonte atual.
-    e 
-  255 \O último caractere no grupo de caracteres consecutivos da fonte atual.
-    e 
-  o original abc endereço de memória. \ Um ponteiro para uma matriz de estruturas ABC que recebe as larguras dos caracteres, em unidades lógicas. 
+  Assign um original ABC endereço de memória usando 256 times a magnitude desse ABC.
+  Call "gdi32.dll" "GetCharABCWidthsA" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcharabcwidthsa
+    \ A função GetCharABCWidths recupera as larguras, em unidades lógicas, de caracteres consecutivos em um intervalo especificado da fonte TrueType atual. 
+    \ Esta função é só funciona com fontes TrueType.
+    O memory canvas [hdc] \ Um identificador para o contexto do dispositivo.
+    e 0 [wFirst] \ O primeiro caractere do grupo de caracteres consecutivos da fonte atual.
+    e 255 [wLast] \O último caractere no grupo de caracteres consecutivos da fonte atual.
+    e o original ABC endereço de memória. [lpABC] \ Um ponteiro para uma matriz de estruturas ABC que recebe as larguras dos caracteres, em unidades lógicas. 
     \Esta matriz deve conter, no mínimo, a mesma quantidade estruturas ABC que a quantidade de caracteres no intervalo especificado pelos parâmetros uFirstChar e uLastChar.
-    \ Para mais informações, veja os sites abaixo: 
-    \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-abc
-    \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcharabcwidthsa
+    \ Para obter mais informações, veja o site abaixo: 
+    \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-ABC
   Destrua o número da fonte of o memory canvas.
-  Atribua o original abc endereço de memória a um abc endereço de memória.
+  Atribua o original ABC endereço de memória a um ABC endereço de memória.
   Atribua o data destes font larguras a um endereço numérico.
   Percorra. [o código abaixo]
     Se um contador estiver past 256, pare.
-    Atribua o abca deste abc endereço de memória ao conteúdo deste endereço numérico .
-    Adicione o abcb deste abc endereço de memória para o conteúdo deste endereço numérico .
-    Adicione o abcc deste abc endereço de memória para o conteúdo deste endereço numérico .
-    Adicione a magnitude deste abc para o abc endereço de memória.
+    Atribua o abcA deste ABC endereço de memória ao conteúdo deste endereço numérico .
+    Adicione o abcB deste ABC endereço de memória para o conteúdo deste endereço numérico .
+    Adicione o abcC deste ABC endereço de memória para o conteúdo deste endereço numérico .
+    Adicione a magnitude deste ABC para o ABC endereço de memória.
     Adicione a magnitude deste número para o endereço numérico.
   Repita. [o código acima]
-  Unassign o original abc endereço de memória.
+  Unassign o original ABC endereço de memória.
 
 Etapas para que se crie uns font larguras usando uma font e uma string:
   Aloque memória para a font larguras.
   Atribua a font à font destas font larguras.
   Atribua a quantidade de caracteres desta string à contagem destas font larguras.
   Se a string estiver em branco, cancele.
-  Atribua a magnitude desse gcpresults ao lstructsize destes gcpresults.
-  Atribua a quantidade de caracteres desta string ao nglyphs destes gcpresults.
-  Assign o lpdx destes gcpresults usando a quantidade de caracteres desta string times a magnitude desse número.
+  Atribua a magnitude desse GcpResults ao lstructsize destes GcpResults.
+  Atribua a quantidade de caracteres desta string ao nglyphs destes GcpResults.
+  Assign o lpDX destes GcpResults usando a quantidade de caracteres desta string times a magnitude desse número.
   Crie o número da fonte of o memory canvas usando a font.
-  Call "gdi32.dll" "GetCharacterPlacementA" com 
-    O memory canvas 
-    e O first endereço de memória do pedaço desta string 
-    e A quantidade de caracteres desta string 
-    e 0 
-    e O endereçamento deste gcpresults 
-    e 0.
+  Call "gdi32.dll" "GetCharacterPlacementA" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcharacterplacementa
+    \A função GetCharacterPlacement recupera informações sobre uma string de caracteres, tais como larguras de caracteres, posicionamento de circunflexo, ordenação dentro da string e renderização de glifo.
+    \A função copia as informações para a estrutura GCP_RESULTS especificada ou para uma ou mais matrizes especificadas pela estrutura.
+    \Embora essa função já tenha sido adequada para trabalhar com cadeias de caracteres, 
+    \ a necessidade de trabalhar com um número crescente de linguagens e sistemas de escrita a tornou obsoleta. 
+    \Ela foi substituído pela funcionalidade do módulo Uniscribe. Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/Intl/uniscribe
+    O memory canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e O first endereço de memória do pedaço desta string [lpString] \Um ponteiro para a sequência de caracteres a ser processada. 
+    \A string acima não precisa ser terminada em zero, pois nCount especifica o comprimento da string.
+    e A quantidade de caracteres desta string [nCount] \O comprimento da string apontada por lpString.
+    e 0 [nMexExtent] \A extensão máxima (em unidades lógicas) na qual a string é processada. 
+    \Os caracteres que, se processados, excederiam essa extensão são ignorados. 
+     \Os cálculos para qualquer pedido obrigatório ou matrizes de glifos aplicam-se apenas aos caracteres incluídos. 
+     \ Este parâmetro é usado apenas se o valor GCP_MAXEXTENT for especificado no parâmetro dwFlags.
+     \ Conforme a função processa a string de entrada, cada caractere e sua extensão são adicionados à saída, à extensão e à outras matrizes
+     \  apenas se a extensão total ainda não tiver excedido o máximo. Assim que o limite for atingido, o processamento será interrompido.
+    e O endereçamento deste GcpResults [lpResults] \Um ponteiro para uma estrutura GCP_RESULTS que recebe os resultados da função.
+    e 0. [dwFlags] \ serve para especificar como processar a string nas matrizes necessárias. nesse caso não foi especificado (valor nulo/ inválido)
   Destrua o número da fonte of o memory canvas.
-  Atribua o lpdx destes gcpresults ao data destes font larguras.
+  Atribua o lpDX destes GcpResults ao data destes font larguras.
 
 Etapas para que se crie um gpBitmap usando um trecho:
   Limpe o erro do fluxo de entrada/saída.
-  Call "kernel32.dll" "GlobalAlloc" com 
-  2 [GMEM_MOVEABLE] 
-    e A quantidade de caracteres deste trecho 
-    devolvendo um número identificador.
+  Call "kernel32.dll" "GlobalAlloc" com \https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalalloc
+    \Aloca o número especificado de bytes do heap.
+  2 [uFlags GMEM_MOVEABLE] \Os atributos de alocação de memória. Se zero for especificado, o padrão é GMEM_FIXED.
+  \GMEM_MOVEABLE = 0x0002
+   \Aloca memória móvel. Os blocos de memória nunca são movidos na memória física, mas podem ser movidos dentro do heap padrão.
+    \O valor de retorno é um identificador para o objeto de memória. Para converter o identificador em um ponteiro, use a função GlobalLock.
+    \Este valor não pode ser combinado com GMEM_FIXED.
+    e A quantidade de caracteres deste trecho [dwBytes] \O número de bytes a serem alocados. 
+    \Se este parâmetro for zero e o parâmetro uFlags especificar GMEM_MOVEABLE, 
+    \a função retornará um identificador para um objeto de memória que está marcado como descartado.
+    devolvendo um número identificador. \Se a função for bem-sucedida, o valor de retorno será um identificador para o objeto de memória recém-alocado.
+    \Se a função falhar, o valor de retorno será NULL. T
   Call "kernel32.dll" "GlobalLock" com 
     O número identificador devolvendo um endereço de memória.
   Copie pedaços desde o first endereço de memória do pedaço deste trecho para o endereço de memória pelo quantidade de caracteres deste trecho.
@@ -3302,10 +3354,10 @@ Etapas para que se determine se uma string está escrito incorretamente:
 
 Etapas para que se determine se uma string é wider do que uma caixa:
   \ presume que a font esteja selecionada no memory canvas
-  Obtenha um abca e um abcc usando a string e o memory canvas.
+  Obtenha um abcA e um abcC usando a string e o memory canvas.
   Obtenha um largura usando a string e o memory canvas.
-  Subtraia o abca desde o largura.
-  Subtraia o abcc desde o largura.
+  Subtraia o abcA desde o largura.
+  Subtraia o abcC desde o largura.
   Se o largura for maior do que a largura desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
@@ -4877,32 +4929,32 @@ Um máximo divisor comum é um número.
 
 Um figura geométrica é um figura.
 
-Etapas para que se obtenha um abca e um abcc usando uma string e um canvas:
-  Atribua 0 ao abca.
-  Atribua 0 ao abcc.
+Etapas para que se obtenha um abcA e um abcC usando uma string e um canvas:
+  Atribua 0 ao abcA.
+  Atribua 0 ao abcC.
   Se a quantidade de caracteres desta string for menor do que 1, cancele.
   Call "gdi32.dll" "GetCharABCWidthsA" com 
     O canvas 
     e O conteúdo deste first endereço de memória do pedaço desta string 
     e O conteúdo deste first endereço de memória do pedaço desta string 
-    e O endereçamento desse abc.
-  Atribua o abca deste abc ao abca.
+    e O endereçamento desse ABC.
+  Atribua o abcA deste ABC ao abcA.
   Call "gdi32.dll" "GetCharABCWidthsA" com 
     O canvas 
     e O conteúdo deste last endereço de memória do pedaço desta string 
     e O conteúdo deste last endereço de memória do pedaço desta string 
-    e O endereçamento desse segunda abc.
-  Atribua o abcc desta segunda abc ao abcc.
+    e O endereçamento desse segunda ABC.
+  Atribua o abcC desta segunda ABC ao abcC.
 
-Etapas para que se obtenha um abca usando uma string e um canvas:
-  Atribua 0 ao abca.
+Etapas para que se obtenha um abcA usando uma string e um canvas:
+  Atribua 0 ao abcA.
   Se a quantidade de caracteres desta string for menor do que 1, cancele.
   Call "gdi32.dll" "GetCharABCWidthsA" com 
     O canvas 
     e O conteúdo deste first endereço de memória do pedaço desta string 
     e O conteúdo deste first endereço de memória do pedaço desta string 
-    e O endereçamento desse abc.
-  Atribua o abca deste abc ao abca.
+    e O endereçamento desse ABC.
+  Atribua o abcA deste ABC ao abcA.
 
 Etapas para que se obtenha uns addrinfo routines:
   Limpe o erro do fluxo de entrada/saída.
@@ -5471,19 +5523,19 @@ Etapas para que se obtenha um largura usando uma string e um font:
 
 Etapas para que se obtenha uma coordenada X usando uma string e uma caixa (fast - center):
   Obtenha um largura usando a string e o memory canvas.
-  Obtenha um abca e um abcc usando a string e o memory canvas.
-  Atribua o largura menos o abca menos o abcc ao largura.
-  Atribua a largura desta caixa menos o largura dividido por 2 menos o abca à coordenada x.
+  Obtenha um abcA e um abcC usando a string e o memory canvas.
+  Atribua o largura menos o abcA menos o abcC ao largura.
+  Atribua a largura desta caixa menos o largura dividido por 2 menos o abcA à coordenada x.
 
 Etapas para que se obtenha uma coordenada X usando uma string e uma caixa (fast - left):
-  Obtenha um abca usando a string e o memory canvas.
-  Atribua - o abca à coordenada x.
+  Obtenha um abcA usando a string e o memory canvas.
+  Atribua - o abcA à coordenada x.
 
 Etapas para que se obtenha uma coordenada X usando uma string e uma caixa (fast - right):
-  Obtenha um abca e um abcc usando a string e o memory canvas.
+  Obtenha um abcA e um abcC usando a string e o memory canvas.
   Obtenha um largura usando a string e o memory canvas.
-  Atribua o largura menos o abca menos o abcc ao largura.
-  Atribua a largura desta caixa menos o largura menos o abca à coordenada x.
+  Atribua o largura menos o abcA menos o abcC ao largura.
+  Atribua a largura desta caixa menos o largura menos o abcA à coordenada x.
 
 Um gigabyte é 1024 megabytes.
 
