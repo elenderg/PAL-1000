@@ -1701,76 +1701,130 @@ Etapas para que se crie um gpBitmap usando um trecho:
     \Se este parâmetro for zero e o parâmetro uFlags especificar GMEM_MOVEABLE, 
     \a função retornará um identificador para um objeto de memória que está marcado como descartado.
     devolvendo um número identificador. \Se a função for bem-sucedida, o valor de retorno será um identificador para o objeto de memória recém-alocado.
-    \Se a função falhar, o valor de retorno será NULL. T
-  Call "kernel32.dll" "GlobalLock" com 
-    O número identificador devolvendo um endereço de memória.
+    \Se a função falhar, o valor de retorno será NULL. 
+\A função GlobalLock bloqueia um objeto de memória global e aumenta a contagem de bloqueios em um. 
+\A função GlobalUnlock o desbloqueia e diminui a contagem de bloqueios em um. 
+\Para obter a contagem de bloqueios de um objeto de memória global, use a função GlobalFlags.
+  Call "kernel32.dll" "GlobalLock" com \https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globallock
+    \Bloqueia um objeto de memória global e retorna um ponteiro para o primeiro byte do bloco de memória do objeto.
+    \Observação: As funções globais têm maior sobrecarga e fornecem menos recursos do que outras funções de gerenciamento de memória. 
+    \Novos aplicativos devem usar as funções de heap, a menos que a documentação indique que uma função global deve ser usada.
+    O número identificador [hMem] \Um identificador para o objeto de memória global. Nese caso o identificador é número identificador retornado pela função GlobalAlloc .
+    devolvendo um endereço de memória. \Se a função for bem-sucedida, o valor de retorno é um ponteiro para o primeiro byte do bloco de memória.
+    \Se a função falhar, o valor de retorno será NULL.
+\Observações
+\As estruturas de dados internas para cada objeto de memória incluem uma contagem de bloqueio que é inicialmente zero. 
+\Para objetos de memória móvel, GlobalLock aumenta a contagem em um e a função GlobalUnlock diminui a contagem em um. 
+\Cada chamada bem-sucedida que um processo faz ao GlobalLock para um objeto deve ser correspondida por uma chamada correspondente ao GlobalUnlock. 
+\A memória bloqueada não será movida ou descartada, a menos que o objeto de memória seja realocado usando a função GlobalReAlloc. 
+\O bloco de memória de um objeto de memória bloqueado permanece bloqueado até que sua contagem de bloqueios diminua para zero, momento em que pode ser movido ou descartado.
   Copie pedaços desde o first endereço de memória do pedaço deste trecho para o endereço de memória pelo quantidade de caracteres deste trecho.
-  Call "kernel32.dll" "GlobalUnlock" com 
-    O número identificador.
-  Call "ole32.dll" "CreateStreamOnHGlobal" com 
-    O número identificador 
-    e 1 [TRUE] 
-    e O endereçamento desse istream.
+  Call "kernel32.dll" "GlobalUnlock" com \https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalunlock
+    \Diminui a contagem de bloqueios associada a um objeto de memória que foi alocado com GMEM_MOVEABLE. Esta função não tem efeito em objetos de memória alocados com GMEM_FIXED.
+    O número identificador. [hMem] \Um identificador para o objeto de memória global. Nese caso o identificador é número identificador retornado pela função GlobalAlloc .
+    \Se o objeto de memória ainda estiver bloqueado após diminuir a contagem de bloqueios, o valor de retorno será um valor diferente de zero. 
+    \Se o objeto de memória for desbloqueado após diminuir a contagem de bloqueios, a função retornará zero e GetLastError retornará 0 (NO_ERROR).
+    \Um processo não deve depender do valor de retorno para determinar o número de vezes que ele deve subsequentemente chamar GlobalUnlock para um objeto de memória.
+  Call "ole32.dll" "CreateStreamOnHGlobal" com \https://docs.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-createstreamonhglobal
+    \A função CreateStreamOnHGlobal cria um objeto de fluxo que usa um identificador de memória HGLOBAL para armazenar o conteúdo do fluxo. 
+    \Este objeto é a implementação da interface IStream fornecida por OLE.
+    \O objeto de fluxo retornado oferece suporte para leitura e gravação, não é transacionado e não oferece suporte para bloqueio de região. 
+    \O objeto chama a função GlobalReAlloc para aumentar o bloco de memória conforme necessário.
+    \Dica: Considere o uso da função SHCreateMemStream, que produz melhor desempenho,
+    O número identificador [hGlobal] \Um identificador de memória alocado pela função GlobalAlloc ou, se NULL, um novo identificador deve ser alocado. 
+    \O identificador deve ser alocado como móvel e não descartável.
+    e 1 [fDeleteOnRelease = TRUE] \Um valor que indica se o identificador subjacente para este objeto de fluxo deve ser liberado automaticamente quando o objeto de fluxo é liberado. 
+    \Se definido como FALSE, o chamador deve liberar o hGlobal após a versão final. 
+    \Se definido como TRUE, a versão final irá liberar automaticamente o identificador subjacente.
+    e O endereçamento desse istream. [*ppstm] \O endereço da variável de ponteiro IStream*  (LPSTREAM) que recebe o ponteiro de interface para o novo objeto de fluxo. Seu valor não pode ser NULL.
+    \Observações
+    \Se hGlobal for NULL, a função aloca um novo identificador de memória e o fluxo está inicialmente vazio.
+    \Se hGlobal não for NULL, o conteúdo inicial do fluxo será o conteúdo atual do bloco de memória. 
+    \Portanto, CreateStreamOnHGlobal pode ser usado para abrir um fluxo existente na memória. 
+    \O identificador de memória e seu conteúdo não são perturbados pela criação do novo objeto de fluxo.
+    \O tamanho inicial do fluxo é o tamanho de hGlobal conforme retornado pela função GlobalSize. 
+    \Por causa do arredondamento, este não é necessariamente o mesmo tamanho que foi originalmente alocado para o identificador.
   Call "gdiplus.dll" "GdipCreateBitmapFromStream" com 
-    O istream 
-    e O endereçamento deste gpBitmap 
+    O istream [stream] \Ponteiro para uma interface IStream COM.
+    e O endereçamento deste gpBitmap [**bitmap] \Ponteiro para uma variável DWORD (endereçamento) que recebe um ponteiro para um objeto Bitmap (o gpBitmap).
     devolvendo um número.
   Se o número não for 0, atribua "Não sei como processar este tipo de imagem." ao erro do fluxo de entrada/saída; esvazie o gpBitmap.
   Call o release deste vtable deste istream com o istream.
 
-Etapas para que se crie um GpImageAttributes (grayscale):
+Etapas para que se crie um GpImageAttributes (escala de cinza):
   Call "gdiplus.dll" "GdipCreateImageAttributes" com 
-    O endereçamento destes GpImageAttributes.
+    \Um objeto ImageAttributes contém informações sobre como as cores de bitmap e metarquivo são manipuladas durante a renderização.
+    O endereçamento destes GpImageAttributes. [**imageattr] \Ponteiro para uma variável (GpImageAttributes).
+    \Essa variável contém um ponteiro para o objeto ImageAttributes. 
+    \( ou seja, o número identificador do objeto ImageAttributes)
   Call "gdiplus.dll" "GdipSetImageAttributesColorMatrix" com 
-    O GpImageAttributes
-   e 0 [ColorAdjustTypeDefault ] 
-   e 1 
-   e o first deste grayscale cor matrix 
-   e 0 
-   e 0 [ColorMatrixFlagsDefault].
+    O GpImageAttributes [ imageattr] \Ponteiro para o objeto ImageAttributes.
+   e 0 [type = ColorAdjustTypeDefault ] \Elemento da enumeração ColorAdjustType que especifica a categoria para a qual a matriz de ajuste de cor é definida. O valor padrão é ColorAdjustTypeDefault.
+   e 1 [enableFlag] \Valor booleano que especifica se um ajuste de cor separado está habilitado para a categoria especificada pelo parâmetro type (ColorAdjustTypeDefault).
+   e o first desta matriz de tons de cinza [colorMatrix] \Ponteiro para uma matriz 5x5 de ajuste de cor .
+   e 0 [grayMatrix] \Especifica uma matriz a ser usada para ajustar os tons de cinza quando o valor do parâmetro flags é igual ColorMatrixFlagsAltGray.
+   e 0 [flags = ColorMatrixFlagsDefault]. \Elemento da enumeração ColorMatrixFlags que especifica o tipo de imagem e a cor que serão afetados pela matriz de ajuste de cor.
 
-Etapas para que se crie o hbrush of um canvas usando uma cor:
+Etapas para que se crie o HBRUSH of um canvas usando uma cor:
   Converta a cor para um código da cor.
-  Se a cor estiver clear, atribua o null hbrush a um hbrush.
-  Se a cor não estiver clear, call "gdi32.dll" "CreateSolidBrush" com 
-    O código da cor 
-    devolvendo o hbrush.
-  Call "gdi32.dll" "SelectObject" com 
-    O canvas 
-    e O hbrush.
+  Se a cor for clear, atribua o null HBRUSH a um HBRUSH.
+  Se a cor não for clear, Call "gdi32.dll" "CreateSolidBrush" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createsolidbrush
+    \A função CreateSolidBrush cria um pincel lógico que possui a cor sólida especificada.
+    O código da cor [color] \A cor do pincel. Para criar um valor de cor COLORREF, use a macro RGB.
+    devolvendo o HBRUSH. \Se a função for bem-sucedida, o valor de retorno identifica um pincel lógico.
+    \Se a função falhar, o valor de retorno será NULL.
+    \Um pincel sólido é um bitmap que o sistema usa para pintar o interior de formas preenchidas.
+     \Depois que um aplicativo cria um pincel chamando CreateSolidBrush, ele pode selecionar esse pincel em qualquer contexto de dispositivo chamando a função SelecionarObjeto
+  Call "gdi32.dll" "SelectObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
+  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
+    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e O HBRUSH. [h] \Um identificador para o objeto a ser selecionado.
 
 Etapas para que se crie o número da fonte of um canvas usando um font:
   Converta a font para um número da fonte.
-  Call "gdi32.dll" "SelectObject" com 
-    O canvas 
-    e O número da fonte.
+  Call "gdi32.dll" "SelectObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
+  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
+    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e O número da fonte. [h] \Um número identificador para o objeto a ser selecionado.
 
 Etapas para que se crie o hpen of um canvas usando uma cor:
   Converta a cor para um código da cor.
   Se a cor estiver clear, atribua o null hpen a um hpen.
   Atribua a quantidade de twips/pixel times o grossura do pincel a um número.
   Se o canvas for a área de impressão, atribua 1 pixel times o grossura do pincel ao número.
-  Se a cor não estiver clear, call "gdi32.dll" "CreatePen" com 
-  0 [PS_SOLID] 
-    e O número 
-    e O código da cor 
-    devolvendo o hpen.
-  Call "gdi32.dll" "SelectObject" com 
-    O canvas 
-    e O hpen.
+  Se a cor não estiver clear, Call "gdi32.dll" "CreatePen" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpen
+  \A função CreatePen cria uma caneta lógica que possui o estilo, largura e cor especificados. 
+  \A caneta pode ser posteriormente selecionada em um contexto de dispositivo e usada para desenhar linhas e curvas.
+    0 [iStyle = PS_SOLID]  \O estilo da caneta. PS_SOLID = A linha da caneta é "sólida" (sem traços ou pontilhados).
+    e O número [cWidth] \A largura da caneta, em unidades lógicas. Se nWidth é zero, a caneta tem um único pixel de largura, independentemente da transformação atual.
+    e O código da cor [color]  \Uma referência de cor para a cor da caneta. Para gerar uma estrutura COLORREF, use a macro RGB.
+    devolvendo o hpen. \Se a função for bem-sucedida, o valor de retorno é um identificador que identifica uma caneta lógica.
+    \Se a função falhar, o valor de retorno será NULL.
+     \Depois que um aplicativo cria uma caneta lógica, ele pode selecionar essa caneta em um contexto de dispositivo chamando a função SelecionarObjeto. 
+      \Depois que uma caneta é selecionada em um contexto de dispositivo, ela pode ser usada para desenhar linhas e curvas.
+  Call "gdi32.dll" "SelectObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
+  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
+    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e O hpen. [h] \Um número identificador para o objeto a ser selecionado.
 
 Etapas para que se crie um hRgn usando uma caixa:
   Isole a caixa.
   Adicione a quantidade de twips/pixel para o canto inferior direito desta caixa.
-  Call "gdi32.dll" "BeginPath" com 
-    O quadro atual.
-  Call "gdi32.dll" "Rectangle" com 
-    O quadro atual 
-    e A coordenada esquerda desta caixa 
-    e A coordenada superior desta caixa 
-    e A coordenada direita desta caixa 
-    e A coordenada inferior desta caixa.
-  Call "gdi32.dll" "EndPath" com 
+  Call "gdi32.dll" "BeginPath" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-beginpath
+  \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
+    O quadro atual.[hdc] \Um identificador para o contexto do dispositivo.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+  Call "gdi32.dll" "Rectangle" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-rectangle
+  \A função Retângulo desenha um retângulo. O retângulo é delineado com a caneta (pincel) atual e preenchido com o pincel (brush) atual.
+    O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
+    e A coordenada esquerda desta caixa [left] \A coordenada x, em coordenadas lógicas, do canto superior esquerdo do retângulo.
+    e A coordenada superior desta caixa [top] \A coordenada y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
+    e A coordenada direita desta caixa [right] \A coordenada x, em coordenadas lógicas, do canto inferior direito do retângulo.
+    e A coordenada inferior desta caixa.[bottom] \A coordenada y, em coordenadas lógicas, do canto inferior direito do retângulo.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+    Call "gdi32.dll" "EndPath" com 
     O quadro atual.
   Call "gdi32.dll" "PathToRegion" com 
     O quadro atual devolvendo o hRgn.
@@ -3588,13 +3642,13 @@ Etapas para que se destrua um GpImageAttributes:
   Call "gdiplus.dll" "GdipDisposeImageAttributes" com o GpImageAttributes.
   Esvazie o GpImageAttributes.
 
-Etapas para que se destrua o hbrush of um canvas:
+Etapas para que se destrua o HBRUSH of um canvas:
   Call "gdi32.dll" "SelectObject" com 
     O canvas 
-    e O null hbrush 
-    devolvendo um hbrush.
+    e O null HBRUSH 
+    devolvendo um HBRUSH.
   Call "gdi32.dll" "DeleteObject" com 
-    O hbrush.
+    O HBRUSH.
 
 Etapas para que se destrua o número da fonte of um canvas:
   Call "gdi32.dll" "SelectObject" com 
@@ -4004,7 +4058,7 @@ Etapas para que se atribua masking tape around uma caixa:
 
 Etapas para que se pinte uma imagem sobre um gpgraphic sob uma coordenada X e uma coordenada Y:
   Se a imagem for inexistente, cancele.
-  Se o grayscale detector desta imagem estiver ativo, crie um GpImageAttributes (grayscale).
+  Se o grayscale detector desta imagem estiver ativo, crie um GpImageAttributes (escala de cinza).
   Call "gdiplus.dll" "GdipDrawImageRectRectI" com 
     O gpgraphic 
     e O gpBitmap desta imagem 
@@ -4059,7 +4113,7 @@ Etapas para que se pinte um polígono com uma cor (fill only):
   Se o polígono for inexistente, cancele.
   Se a cor estiver clear, cancele.
   Crie o hpen of o quadro atual usando a cor preta.
-  Crie o hbrush of o quadro atual usando a cor.
+  Crie o HBRUSH of o quadro atual usando a cor.
   Call "gdi32.dll" "SetPolyFillMode" com 
     O quadro atual 
     e 2 [WINDING].
@@ -4069,7 +4123,7 @@ Etapas para que se pinte um polígono com uma cor (fill only):
     e A localização endereço de memória deste vértice array 
     e A contagem deste vértice array.
   Destrua o vértice array.
-  Destrua o hbrush of o quadro atual.
+  Destrua o HBRUSH of o quadro atual.
   Destrua o hpen of o quadro atual.
 
 Etapas para que se pinte um quarter circle about uns twips wide;
@@ -4889,7 +4943,7 @@ Etapas para que se desmanche algum tipo de messages:
     e 0 
     e 1 [PM_REMOVE] devolvendo um número.
   Se o número for 0, cancele.
-  Se a message desta msg for 15 [WM_PAINT], call "user32.dll" "ValidateRect" com a janela principal do programa e 0. \ que tal ter uma rotina específica para isso?
+  Se a message desta msg for 15 [WM_PAINT], Call "user32.dll" "ValidateRect" com a janela principal do programa e 0. \ que tal ter uma rotina específica para isso?
   Repita. [o código acima]
 
 Etapas para que se desmanche um fila de eventos:
@@ -5455,7 +5509,7 @@ Etapas para que se obtenha uma string desde a área de transferência do Windows:
   Call "user32.dll" "GetClipboardData" com 
   1 [CF_TEXT] 
     devolvendo um número identificador.
-  Se o número identificador for 0, call "user32.dll" "CloseClipboard"; volte.
+  Se o número identificador for 0, Call "user32.dll" "CloseClipboard"; volte.
   Call "kernel32.dll" "GlobalLock" com 
     O número identificador 
     devolvendo um endereçamento de caractere.
@@ -6058,7 +6112,7 @@ Etapas para que se execute uppercase usando um text:
 
 Um hbitmap é um número identificador.
 
-Um hbrush é um número identificador.
+Um HBRUSH é um número identificador.
 
 Um hdc é um número identificador.
 
@@ -6303,11 +6357,11 @@ Etapas para que se initialize before run:
   Call "kernel32.dll" "LoadLibraryA" com 
   "kernel32.dll"'s first endereço de memória do pedaço 
     devolvendo um número identificador.
-  Se o número identificador não for 0, call "kernel32.dll" "GetProcAddress" com 
+  Se o número identificador não for 0, Call "kernel32.dll" "GetProcAddress" com 
     O número identificador 
     e "HeapSetInformation"'s first endereço de memória do pedaço 
     devolvendo um endereço de memória.
-  Se o endereço de memória não for inexistente, call o endereço de memória com o endereço heap e 0 e 2's endereçamento e 4.
+  Se o endereço de memória não for inexistente, Call o endereço de memória com o endereço heap e 0 e 2's endereçamento e 4.
 
 Etapas para que se inicialize o canvases:
   Inicialize o tela canvas.
@@ -7360,7 +7414,7 @@ Etapas para que se normalize um text:
 Etapas para que se normalize um vertical linha reta:
   Se a localização final desta linha reta for menor do que a localização inicial desta linha reta, permute a localização final desta linha reta com a localização inicial desta linha reta.
 
-O null hbrush é um hbrush.
+O null HBRUSH é um HBRUSH.
 
 O null hpen é um hpen.
 
