@@ -484,10 +484,10 @@ Uma caixa é um conjunto com
   Uma coordenada X do canto superior esquerdo , 
   Uma coordenada Y do canto superior esquerdo, 
   Uma coordenada X do canto inferior direito, 
-  Uma coordenada Y do canto inferior direito,
+  Uma coordenada Y do canto inferior direito,  \verificar a possibilidade de remover o conteúdo abaixo
   Um canto superior esquerdo localização sob a coordenada X do canto superior esquerdo , e 
   Um canto inferior direito localização sob a coordenada X do canto inferior direito, e
-  Uma topo-left localização sob a coordenada X do canto superior esquerdo , e  \verificar a possibilidade de remover o comentário abaixo
+  Uma topo-left localização sob a coordenada X do canto superior esquerdo , e 
   Uma base-right localização sob a coordenada X do canto inferior direito. 
 
 Um brilho é uma luminosidade.
@@ -693,7 +693,7 @@ Etapas para que se limpe um pedaço:
 Etapas para que se limpe uma cor:
   Atribua 0 e 0 e 0 à cor.
 
-Etapas para que se limpe um elipse:
+Etapas para que se limpe uma elipse:
   Limpe a caixa desta elipse.
 
 Etapas para que se desative um detector;
@@ -1807,16 +1807,17 @@ Etapas para que se crie o hpen of um canvas usando uma cor:
     O canvas [hdc] \Um identificador para o contexto do dispositivo.
     e O hpen. [h] \Um número identificador para o objeto a ser selecionado.
 
-Etapas para que se crie um hRgn usando uma caixa:
+Etapas para que se crie um hRgn usando uma caixa: 
+  \hRgn = número identificador da região que será desenhada na tela
   Isole a caixa.
   Adicione a quantidade de twips/pixel para o canto inferior direito desta caixa.
   Call "gdi32.dll" "BeginPath" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-beginpath
-  \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
+    \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
     O quadro atual.[hdc] \Um identificador para o contexto do dispositivo.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "Rectangle" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-rectangle
-  \A função Retângulo desenha um retângulo. O retângulo é delineado com a caneta (pincel) atual e preenchido com o pincel (brush) atual.
+    \A função Retângulo desenha um retângulo. O retângulo é delineado com a caneta (pincel) atual e preenchido com o pincel (brush) atual.
     O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
@@ -1824,40 +1825,59 @@ Etapas para que se crie um hRgn usando uma caixa:
     e A coordenada Y do canto inferior direito desta caixa.[bottom] \A coordenada Y, em coordenadas lógicas, do canto inferior direito do retângulo.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
-    Call "gdi32.dll" "EndPath" com 
-    O quadro atual.
-  Call "gdi32.dll" "PathToRegion" com 
-    O quadro atual devolvendo o hRgn.
+  Call "gdi32.dll" "EndPath" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpath
+    \A função EndPath fecha um suporte de caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
+    O quadro atual. [hdc] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+  Call "gdi32.dll" "PathToRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-pathtoregion
+  \A função PathToRegion cria uma região do caminho que é selecionado no contexto de dispositivo especificado. A região resultante usa coordenadas do dispositivo.
+    O quadro atual [hdc] \Identificador para um contexto de dispositivo que contém um caminho fechado.
+   devolvendo o hRgn. \Se a função for bem-sucedida, o valor de retorno é um identificador válido para a região.
+    \ Se a função falhar, o valor de retorno é zero.
 
-Etapas para que se crie um hRgn usando um elipse:
-  Atribua a caixa desta elipse a uma caixa.
-  Call "gdi32.dll" "BeginPath" com 
-    O quadro atual.
-  Call "gdi32.dll" "Ellipse" com 
-    O quadro atual 
-    e A coordenada X do canto superior esquerdo desta caixa 
-    e A coordenada Y do canto superior esquerdo desta caixa 
-    e A coordenada X do canto inferior direito desta caixa 
-    e A coordenada Y do canto inferior direito desta caixa.
-  Call "gdi32.dll" "EndPath" com 
-    O quadro atual.
-  Call "gdi32.dll" "PathToRegion" com 
-    O quadro atual 
-    devolvendo o hRgn.
+Etapas para que se crie um hRgn usando uma elipse:
+  \hRgn = número identificador da região que será desenhada na tela
+  Atribua a caixa desta elipse a uma caixa. \ No windows, toda elipse é desenhada dentro de uma caixa
+  Call "gdi32.dll" "BeginPath" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-beginpath
+    \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
+    O quadro atual.[hdc] \Um identificador para o contexto do dispositivo.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+  Call "gdi32.dll" "Ellipse" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ellipse
+  \A função Ellipse desenha uma elipse. O centro da elipse é o centro do retângulo delimitador especificado. A elipse é delineada com a caneta atual e preenchida com o pincel atual.
+    O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
+    e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
+    e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
+    e A coordenada X do canto inferior direito desta caixa [right] \A coordenada X, em coordenadas lógicas, do canto inferior direito do retângulo.
+    e A coordenada Y do canto inferior direito desta caixa.[bottom] \A coordenada Y, em coordenadas lógicas, do canto inferior direito do retângulo.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+  Call "gdi32.dll" "EndPath" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpath
+    \A função EndPath fecha um suporte de caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
+    O quadro atual. [hdc] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+  Call "gdi32.dll" "PathToRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-pathtoregion
+  \A função PathToRegion cria uma região do caminho que é selecionado no contexto de dispositivo especificado. A região resultante usa coordenadas do dispositivo.
+    O quadro atual [hdc] \Identificador para um contexto de dispositivo que contém um caminho fechado.
+   devolvendo o hRgn. \Se a função for bem-sucedida, o valor de retorno é um identificador válido para a região.
+    \ Se a função falhar, o valor de retorno é zero.
 
 Etapas para que se crie um hRgn usando um polígono:
+  \hRgn = número identificador da região que será desenhada na tela
   Se o polígono for inexistente, atribua 0 ao hRgn; volte.
-  Crie um vértice array usando os vértices deste polígono.
+  [caso o polígono exista] Crie uma série de vértices usando os vértices deste polígono.
   Call "gdi32.dll" "LPtoDP" com 
     O quadro atual 
-    e A localização endereço de memória deste vértice array 
-    e A contagem deste vértice array.
+    e A localização endereço de memória desta série de vértices 
+    e A contagem desta série de vértices.
   Call "gdi32.dll" "CreatePolygonRgn" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpolypolygonrgn
-    A localização endereço de memória deste vértice array 
-    e A contagem deste vértice array 
+    A localização endereço de memória desta série de vértices 
+    e A contagem desta série de vértices 
     e 2 [WINDING]  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpolypolygonrgn#parameters
     devolvendo o hRgn.
-  Destrua o vértice array.
+  Destrua a série de vértices.
 
 Etapas para que se crie um hRgn usando uma caixa arredondada:
   Se o raio desta caixa arredondada for 0, crie o hRgn usando a caixa arredondada como uma caixa; volte.
@@ -2066,16 +2086,16 @@ Etapas para que se crie um text:
 Etapas para que se crie um vértice:
   Aloque memória para o vértice.
 
-Etapas para que se crie um vértice array usando uma contagem:
+Etapas para que se crie uma série de vértices usando uma contagem:
   Isole a contagem.
-  Aloque memória para o vértice array.
-  Atribua a contagem à contagem deste vértice array.
+  Aloque memória para a série de vértices.
+  Atribua a contagem à contagem desta série de vértices.
   Multiplique a contagem pela magnitude desse localização.
-  Assign a localização endereço de memória deste vértice array usando a contagem.
+  Assign a localização endereço de memória desta série de vértices usando a contagem.
 
-Etapas para que se crie um vértice array usando uns vértices:
-  Crie o vértice array usando a contagem destes vértices.
-  Atribua a localização endereço de memória deste vértice array a uma localização endereço de memória.
+Etapas para que se crie uma série de vértices usando uns vértices:
+  Crie a série de vértices usando a contagem destes vértices.
+  Atribua a localização endereço de memória desta série de vértices a uma localização endereço de memória.
   Percorra. [o código abaixo]
     Obtenha um vértice desde o vértices.
     Se o vértice for inexistente, cancele.
@@ -3041,7 +3061,7 @@ Etapas para que se determine se uma localização é below um horizontal linha reta
   Se a coordenada Y desta localização for maior do que o horizontal y desta localização inicial desta linha reta, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se uma localização está em um elipse:
+Etapas para que se determine se uma localização está em uma elipse:
   Crie um hRgn usando a elipse.
   Isole a localização.
   Divida a localização pelo quantidade de twips/pixel .
@@ -3061,10 +3081,10 @@ Etapas para que se determine se uma localização está em um imagem:
 
 Etapas para que se determine se uma localização está em um polígono:
   Se o polígono for inexistente, diga não.
-  Crie um vértice array usando os vértices deste polígono.
+  Crie uma série de vértices usando os vértices deste polígono.
   Call "gdi32.dll" "CreatePolygonRgn" com 
-    A localização endereço de memória deste vértice array 
-    e A contagem deste vértice array 
+    A localização endereço de memória desta série de vértices 
+    e A contagem desta série de vértices 
     e 2 [WINDING] devolvendo um hRgn.
   Call "gdi32.dll" "PtInRegion" com 
     O hRgn 
@@ -3073,7 +3093,7 @@ Etapas para que se determine se uma localização está em um polígono:
     devolvendo um número.
   Call "gdi32.dll" "DeleteObject" com 
     O hRgn.
-  Destrua o vértice array.
+  Destrua a série de vértices.
   Se o número for 0, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
@@ -3791,7 +3811,7 @@ Etapas para que se divida um par de números por um número e um segundo número:
 \Um endereço de memória denominado lpszdatadtype,
 \Um número denominado fwtype.
 
-Um dot é um elipse.
+Um dot é uma elipse.
 
 Etapas para que se double um número:
   Adicione o número para o número.
@@ -4117,12 +4137,12 @@ Etapas para que se pinte um polígono com uma cor (fill only):
   Call "gdi32.dll" "SetPolyFillMode" com 
     O quadro atual 
     e 2 [WINDING].
-  Crie um vértice array usando os vértices deste polígono.
+  Crie uma série de vértices usando os vértices deste polígono.
   Call "gdi32.dll" "Polygon" com 
     O quadro atual 
-    e A localização endereço de memória deste vértice array 
-    e A contagem deste vértice array.
-  Destrua o vértice array.
+    e A localização endereço de memória desta série de vértices 
+    e A contagem desta série de vértices.
+  Destrua a série de vértices.
   Destrua o HBRUSH of o quadro atual.
   Destrua o hpen of o quadro atual.
 
@@ -4391,7 +4411,7 @@ Etapas para que se enlarge uma caixa por uns twips:
   Subtraia os twips desde o canto superior esquerdo desta caixa.
   Adicione os twips para o canto inferior direito desta caixa.
 
-Etapas para que se enlarge um elipse por uns twips:
+Etapas para que se enlarge uma elipse por uns twips:
   Subtraia os twips desde o canto superior esquerdo desta elipse.
   Adicione os twips para o canto inferior direito desta elipse.
 
@@ -4595,7 +4615,7 @@ As figuras são uns polígonos.
 Etapas para que se fill uma caixa com uma cor:
   Pinte a caixa com a cor preta e a cor.
 
-Etapas para que se fill um elipse sobre uma localização com uma cor:
+Etapas para que se fill uma elipse sobre uma localização com uma cor:
   Centralize a elipse sobre a localização.
   Pinte a elipse com a cor preta e a cor.
 
@@ -6199,23 +6219,23 @@ Etapas para que se faça um dot entre uns twips e uns segunda twips wide:
   Escolha aleatoriamente uns terceiro twips entre os twips e a segunda twips.
   Faça o dot o terceiro twips wide.
 
-Etapas para que se imagine um elipse usando uma caixa;
-Etapas para que se faça um elipse usando uma caixa:
+Etapas para que se imagine uma elipse usando uma caixa;
+Etapas para que se faça uma elipse usando uma caixa:
   Atribua a caixa à caixa desta elipse.
 
-Etapas para que se imagine um elipse uns twips por uns segunda twips;
-Etapas para que se faça um elipse uns twips por uns segunda twips:
+Etapas para que se imagine uma elipse uns twips por uns segunda twips;
+Etapas para que se faça uma elipse uns twips por uns segunda twips:
   Atribua 0 à coordenada X do canto superior esquerdo desta elipse.
   Atribua 0 à coordenada Y do canto superior esquerdo desta elipse.
   Atribua os twips à coordenada X do canto inferior direito desta elipse.
   Atribua a segunda twips à coordenada Y do canto inferior direito desta elipse.
 
-Etapas para que se imagine um elipse com uma coordenada X do canto superior esquerdo e uma coordenada Y do canto superior esquerdo e uma coordenada X do canto inferior direito e uma coordenada Y do canto inferior direito;
-Etapas para que se faça um elipse com uma coordenada X do canto superior esquerdo e uma coordenada Y do canto superior esquerdo e uma coordenada X do canto inferior direito e uma coordenada Y do canto inferior direito:
+Etapas para que se imagine uma elipse com uma coordenada X do canto superior esquerdo e uma coordenada Y do canto superior esquerdo e uma coordenada X do canto inferior direito e uma coordenada Y do canto inferior direito;
+Etapas para que se faça uma elipse com uma coordenada X do canto superior esquerdo e uma coordenada Y do canto superior esquerdo e uma coordenada X do canto inferior direito e uma coordenada Y do canto inferior direito:
   Atribua a coordenada X do canto superior esquerdo e a coordenada Y do canto superior esquerdo e a coordenada X do canto inferior direito e a coordenada Y do canto inferior direito ao elipse.
 
-Etapas para que se imagine um elipse com uma localização e uma segunda localização;
-Etapas para que se faça um elipse com uma localização e uma segunda localização:
+Etapas para que se imagine uma elipse com uma localização e uma segunda localização;
+Etapas para que se faça uma elipse com uma localização e uma segunda localização:
   Atribua a localização e a segunda localização ao elipse.
 
 Etapas para que se imagine uma figura using uma string e uma localização;
@@ -7015,7 +7035,7 @@ Etapas para que se cubra internamente uma caixa:
   Cubra internamente o hRgn.
   Destrua o hRgn.
 
-Etapas para que se cubra internamente um elipse:
+Etapas para que se cubra internamente uma elipse:
   Crie um hRgn usando a elipse.
   Cubra internamente o hRgn.
   Destrua o hRgn.
@@ -7041,7 +7061,7 @@ Etapas para que se cubra somente dentro de uma caixa:
   Exponha tudo.
   Cubra internamente a caixa.
 
-Etapas para que se cubra somente dentro de um elipse:
+Etapas para que se cubra somente dentro de uma elipse:
   Exponha tudo.
   Cubra internamente a elipse.
 
@@ -7057,7 +7077,7 @@ Etapas para que se cubra somente fora de uma caixa:
   Exponha tudo.
   Cubra externamente a caixa.
 
-Etapas para que se cubra somente fora de um elipse:
+Etapas para que se cubra somente fora de uma elipse:
   Exponha tudo.
   Cubra externamente a elipse.
 
@@ -7074,7 +7094,7 @@ Etapas para que se cubra externamente uma caixa:
   Cubra externamente o hRgn.
   Destrua o hRgn.
 
-Etapas para que se cubra externamente um elipse:
+Etapas para que se cubra externamente uma elipse:
   Crie um hRgn usando a elipse.
   Cubra externamente o hRgn.
   Destrua o hRgn.
@@ -7374,7 +7394,7 @@ Etapas para que se normalize um canvas:
     e O tpi 
     e nil.
 
-Etapas para que se normalize um elipse:
+Etapas para que se normalize uma elipse:
   Normalize a caixa desta elipse.
 
 Etapas para que se normalize uma fração e uma segunda fração:
@@ -8188,11 +8208,11 @@ Etapas para que se redimensione uma caixa usando um twip par de números:
   Adicione o número X deste twip par de números para a coordenada X do canto inferior direito desta caixa.
   Adicione o número Y deste twip par de números para a coordenada Y do canto inferior direito desta caixa.
 
-Etapas para que se redimensione um elipse usando um par de números racionais;
-Etapas para que se redimensione um elipse usando uma par de números fracionários:
+Etapas para que se redimensione uma elipse usando um par de números racionais;
+Etapas para que se redimensione uma elipse usando uma par de números fracionários:
   Redimensione a caixa desta elipse usando o par de números fracionários.
 
-Etapas para que se redimensione um elipse usando um twip par de números:
+Etapas para que se redimensione uma elipse usando um twip par de números:
   Redimensione a caixa desta elipse usando o twip par de números.
 
 Etapas para que se redimensione um linha reta usando um par de números racionais;
@@ -8358,7 +8378,7 @@ Etapas para que se rotate uma caixa:
   Atribua a coordenada Y deste center menos a coordenada Y do canto inferior direito desta segunda caixa mais a coordenada X deste center à coordenada X do canto superior esquerdo desta caixa.
   Atribua a coordenada X do canto inferior direito desta segunda caixa menos a coordenada X deste center mais a coordenada Y deste center à coordenada Y do canto inferior direito desta caixa.
 
-Etapas para que se rotate um elipse:
+Etapas para que se rotate uma elipse:
   Rotate a caixa desta elipse.
 
 Etapas para que se rotate um GpImage:
@@ -8524,12 +8544,12 @@ Etapas para que se redimensione proporcionalmente uma caixa para um percentual:
   Atribua o percentual / 100 a um fração.
   Redimensione proporcionalmente a caixa usando a fração.
 
-Etapas para que se redimensione proporcionalmente um elipse usando um ratio;
-Etapas para que se redimensione proporcionalmente um elipse usando um fração:
+Etapas para que se redimensione proporcionalmente uma elipse usando um ratio;
+Etapas para que se redimensione proporcionalmente uma elipse usando um fração:
   Se a fração for 1/1, cancele.
   Redimensione proporcionalmente a caixa desta elipse usando a fração.
 
-Etapas para que se redimensione proporcionalmente um elipse para um percentual:
+Etapas para que se redimensione proporcionalmente uma elipse para um percentual:
   Atribua o percentual / 100 a um fração.
   Redimensione proporcionalmente a elipse usando a fração.
 
@@ -9934,9 +9954,9 @@ Uma URL simplificada é um conjunto com
   Um parâmetro de consulta, \lpszExtraInfo? -> exemplo: ?useLiveData=1&internal=0
   Um número de porta. \ nPort? -. números de porta ocupam (geralmente) 16 bits
 
-Um vértice array é um endereço de memória para um vértice array conjunto.
+Um série de vértices é um endereço de memória para uma série de vértices conjunto.
 
-Um vértice array conjunto é um conjunto com 
+Um série de vértices conjunto é um conjunto com 
   Uma contagem e 
   Uma localização endereço de memória.
 
