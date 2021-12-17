@@ -1867,14 +1867,18 @@ Etapas para que se crie um hRgn usando uma elipse:
 Etapas para que se crie um hRgn usando um polígono:
   \hRgn = número identificador da região que será desenhada na tela
   Se o polígono for inexistente, atribua 0 ao hRgn; volte.
-  [caso o polígono exista] Crie uma série de vértices usando os vértices deste polígono.
-  Call "gdi32.dll" "LPtoDP" com 
-    O quadro atual 
-    e A localização endereço de memória desta série de vértices 
-    e A contagem desta série de vértices.
+  [caso o polígono exista, então:] Crie uma série de vértices usando os vértices deste polígono.
+  Call "gdi32.dll" "LPtoDP" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-lptodp
+  \A função LPtoDP converte coordenadas lógicas em coordenadas de dispositivo.
+  \A conversão depende do modo de mapeamento do contexto do dispositivo, das configurações das origens e extensões da janela e da janela de visualização e da transformação do mundo.
+    O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
+    e O endereço de memória da localização desta série de vértices [lppt] \Um ponteiro para uma matriz de estruturas POINT. 
+    \As coordenadas x e as coordenadas y contidas em cada uma das estruturas POINT serão transformadas.
+    \A estrutura POINT define as coordenadas X e Y de um ponto.
+    e A quantidade de vértices desta série de vértices. [c] \O número de pontos na matriz/série de vértices.
   Call "gdi32.dll" "CreatePolygonRgn" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpolypolygonrgn
-    A localização endereço de memória desta série de vértices 
-    e A contagem desta série de vértices 
+    O endereço de memória da localização desta série de vértices 
+    e A quantidade de vértices desta série de vértices 
     e 2 [WINDING]  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpolypolygonrgn#parameters
     devolvendo o hRgn.
   Destrua a série de vértices.
@@ -2089,18 +2093,18 @@ Etapas para que se crie um vértice:
 Etapas para que se crie uma série de vértices usando uma contagem:
   Isole a contagem.
   Aloque memória para a série de vértices.
-  Atribua a contagem à contagem desta série de vértices.
+  Atribua a contagem à quantidade de vértices desta série de vértices.
   Multiplique a contagem pela magnitude desse localização.
-  Assign a localização endereço de memória desta série de vértices usando a contagem.
+  Assign o endereço de memória da localização desta série de vértices usando a contagem.
 
 Etapas para que se crie uma série de vértices usando uns vértices:
   Crie a série de vértices usando a contagem destes vértices.
-  Atribua a localização endereço de memória desta série de vértices a uma localização endereço de memória.
+  Atribua o endereço de memória da localização desta série de vértices a um endereço de memória da localização.
   Percorra. [o código abaixo]
     Obtenha um vértice desde o vértices.
     Se o vértice for inexistente, cancele.
-    Atribua a localização deste vértice ao conteúdo desta localização endereço de memória.
-    Adicione a magnitude desta localização deste vértice para a localização endereço de memória.
+    Atribua a localização deste vértice ao conteúdo deste endereço de memória da localização.
+    Adicione a magnitude desta localização deste vértice para o endereço de memória da localização.
   Repita. [o código acima]
 
 Etapas para que se crie um vértice usando uma localização:
@@ -3083,8 +3087,8 @@ Etapas para que se determine se uma localização está em um polígono:
   Se o polígono for inexistente, diga não.
   Crie uma série de vértices usando os vértices deste polígono.
   Call "gdi32.dll" "CreatePolygonRgn" com 
-    A localização endereço de memória desta série de vértices 
-    e A contagem desta série de vértices 
+    O endereço de memória da localização desta série de vértices 
+    e A quantidade de vértices desta série de vértices 
     e 2 [WINDING] devolvendo um hRgn.
   Call "gdi32.dll" "PtInRegion" com 
     O hRgn 
@@ -4140,8 +4144,8 @@ Etapas para que se pinte um polígono com uma cor (fill only):
   Crie uma série de vértices usando os vértices deste polígono.
   Call "gdi32.dll" "Polygon" com 
     O quadro atual 
-    e A localização endereço de memória desta série de vértices 
-    e A contagem desta série de vértices.
+    e O endereço de memória da localização desta série de vértices 
+    e A quantidade de vértices desta série de vértices.
   Destrua a série de vértices.
   Destrua o HBRUSH of o quadro atual.
   Destrua o hpen of o quadro atual.
@@ -9257,7 +9261,7 @@ Uma localização é um par de números com
   Uma left sob a coordenada X e 
   Um topo sob a coordenada Y.
 
-Uma localização endereço de memória é um endereço de memória para uma localização.
+Uma endereço de memória da localização é um endereço de memória para uma localização.
 
 Etapas para que se square para cima algum tipo de seleção em um text:
   Se o text for inexistente, cancele.
@@ -9956,9 +9960,11 @@ Uma URL simplificada é um conjunto com
 
 Um série de vértices é um endereço de memória para uma série de vértices conjunto.
 
+Uma quantidade de vértices é um número.
+
 Um série de vértices conjunto é um conjunto com 
-  Uma contagem e 
-  Uma localização endereço de memória.
+  Uma quantidade de vértices e 
+  Uma endereço de memória da localização.
 
 Um vértice é uma coisa com 
   Uma coordenada X, 
