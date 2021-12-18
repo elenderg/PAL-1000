@@ -85,7 +85,7 @@ An context é uma coisa com
 
 An byte# é um número.
 
-An canvas é um hdc. \ hdc = handle device context
+An canvas é um HDC. \ HDC = handle device context
 
 An bucket# é um número.
 
@@ -227,24 +227,24 @@ Etapas para que se ajuste espaçamento da fonte usando uma string:
   Call "gdi32.dll" "SetTextCharacterExtra" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-settextcharacterextra
   \A função SetTextCharacterExtra define o espaçamento entre caracteres e adiciona espaço extra para cada célula de caractere na fonte selecionada, 
   \incluindo o caractere de quebra,  quando o sistema grava uma linha de texto.
-    A área de impressão  [hdc]\ Um identificador para o contexto do dispositivo.
+    A área de impressão  [HDC]\ Um identificador para o contexto do dispositivo.
     e 0. [extra]   \ A quantidade de espaço extra, em unidades lógicas, a ser adicionada a cada caractere. 
     \quero traduzir esse comando como: Mande a área de impressão e o código 0 para a função "SetTextCharacterExtra" da biblioteca "gdi32.dll".
   Call "gdi32.dll" "GetCurrentObject" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcurrentobject
   \A função GetCurrentObject retorna um identificador que identifica a caneta, pincel, paleta, bitmap ou fonte atual e a função GetObject inicializa uma estrutura contendo os atributos desse objeto. 
   \Algumas impressoras fornecem canetas, pincéis e fontes residentes que podem ser usados para melhorar a velocidade de desenho em um aplicativo.
-    A área de impressão [hdc] \ Um identificador para o contexto do dispositivo.
+    A área de impressão [HDC] \ Um identificador para o contexto do dispositivo.
     e 6 [type OBJ_FONT]    \ O tipo de objeto a ser consultado. Este parâmetro pode ser vários valores.
     \ OBJ_FONT -> Retorna a fonte selecionada no momento.
     devolvendo um número identificador. [h] \ Se a função for bem-sucedida, o valor de retorno é um identificador para o objeto especificado. Se a função falhar, o valor de retorno será NULL.
   Call "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O memory canvas [hdc] \ Um identificador para o contexto do dispositivo.
+    O memory canvas [HDC] \ Um identificador para o contexto do dispositivo.
     e O número identificador. [h] \ Um identificador para o objeto a ser selecionado. Nesse caso é o número do comando anterior (a fonte selecionada no momento), retornado pelo GetCurrentObject acima
   Obtenha um largura usando a string e o memory canvas.
   Call "gdi32.dll" "SelectObject" com 
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O memory canvas [hdc] \ Um identificador para o contexto do dispositivo.
+    O memory canvas [HDC] \ Um identificador para o contexto do dispositivo.
     e O null número da fonte.  [h] \ Um identificador para o objeto a ser selecionado. 
     \Nesse caso é também é um número identificador de fonte, mas  este valor é o da função GetStockObject 
     \O sistema oferece seis fontes de estoque. Uma fonte de estoque é uma fonte lógica que um aplicativo pode obter chamando a função GetStockObject e especificando a fonte solicitada. 
@@ -254,7 +254,7 @@ Etapas para que se ajuste espaçamento da fonte usando uma string:
   Call "gdi32.dll" "SetTextCharacterExtra" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-settextcharacterextra
     \A função SetTextCharacterExtra define o espaçamento entre caracteres. 
     \O espaçamento entre caracteres é adicionado a cada caractere, incluindo caracteres de quebra, quando o sistema grava uma linha de texto.
-    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
+    A área de impressão [HDC] \Um identificador para o contexto do dispositivo.
     e O número. [extra] \A quantidade de espaço extra, em unidades lógicas, a ser adicionada a cada caractere. 
     \Se o modo de mapeamento atual não for MM_TEXT, o parâmetro nCharExtra é transformado e arredondado para o pixel mais próximo.
 
@@ -461,7 +461,7 @@ Etapas para que se inicie a impressão:
   Atribua o first deste nome deste module ao lpszDocName deste DOCINFO.
   Call "gdi32.dll" "StartDocA" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-startdoca
   \A função StartDoc inicia um trabalho de impressão.
-    A área de impressão [hdc] \Um identificador para o contexto do dispositivo para o trabalho de impressão.
+    A área de impressão [HDC] \Um identificador para o contexto do dispositivo para o trabalho de impressão.
     e O endereçamento deste DOCINFO. [*lpdi] \Um ponteiro para uma estrutura DOCINFO contendo o nome do arquivo de documento e o nome do arquivo de saída.
 
 Etapas para que se inicie uma folha:
@@ -1644,7 +1644,7 @@ Etapas para que se crie umas font larguras usando um font:
   Call "gdi32.dll" "GetCharABCWidthsA" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcharabcwidthsa
     \ A função GetCharABCWidths recupera as larguras, em unidades lógicas, de caracteres consecutivos em um intervalo especificado da fonte TrueType atual. 
     \ Esta função é só funciona com fontes TrueType.
-    O memory canvas [hdc] \ Um identificador para o contexto do dispositivo.
+    O memory canvas [HDC] \ Um identificador para o contexto do dispositivo.
     e 0 [wFirst] \ O primeiro caractere do grupo de caracteres consecutivos da fonte atual.
     e 255 [wLast] \O último caractere no grupo de caracteres consecutivos da fonte atual.
     e o original ABC endereço de memória. [lpABC] \ Um ponteiro para uma matriz de estruturas ABC que recebe as larguras dos caracteres, em unidades lógicas. 
@@ -1679,7 +1679,7 @@ Etapas para que se crie uns font larguras usando uma font e uma string:
     \Embora essa função já tenha sido adequada para trabalhar com cadeias de caracteres, 
     \ a necessidade de trabalhar com um número crescente de linguagens e sistemas de escrita a tornou obsoleta. 
     \Ela foi substituído pela funcionalidade do módulo Uniscribe. Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/Intl/uniscribe
-    O memory canvas [hdc] \Um identificador para o contexto do dispositivo.
+    O memory canvas [HDC] \Um identificador para o contexto do dispositivo.
     e O first endereço de memória do pedaço desta string [lpString] \Um ponteiro para a sequência de caracteres a ser processada. 
     \A string acima não precisa ser terminada em zero, pois nCount especifica o comprimento da string.
     e A quantidade de caracteres desta string [nCount] \O comprimento da string apontada por lpString.
@@ -1783,14 +1783,14 @@ Etapas para que se crie o HBRUSH of um canvas usando uma cor:
      \Depois que um aplicativo cria um pincel chamando CreateSolidBrush, ele pode selecionar esse pincel em qualquer contexto de dispositivo chamando a função SelecionarObjeto
   Call "gdi32.dll" "SelectObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    O canvas [HDC] \Um identificador para o contexto do dispositivo.
     e O HBRUSH. [h] \Um identificador para o objeto a ser selecionado.
 
 Etapas para que se crie o número da fonte of um canvas usando um font:
   Converta a font para um número da fonte.
   Call "gdi32.dll" "SelectObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    O canvas [HDC] \Um identificador para o contexto do dispositivo.
     e O número da fonte. [h] \Um número identificador para o objeto a ser selecionado.
 
 Etapas para que se crie o hpen of um canvas usando uma cor:
@@ -1810,7 +1810,7 @@ Etapas para que se crie o hpen of um canvas usando uma cor:
       \Depois que uma caneta é selecionada em um contexto de dispositivo, ela pode ser usada para desenhar linhas e curvas.
   Call "gdi32.dll" "SelectObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    O canvas [HDC] \Um identificador para o contexto do dispositivo.
     e O hpen. [h] \Um número identificador para o objeto a ser selecionado.
 
 Etapas para que se crie um hRgn usando uma caixa: 
@@ -1819,12 +1819,12 @@ Etapas para que se crie um hRgn usando uma caixa:
   Adicione a quantidade de twips/pixel para o canto inferior direito desta caixa.
   Call "gdi32.dll" "BeginPath" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-beginpath
     \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
-    O quadro atual.[hdc] \Um identificador para o contexto do dispositivo.
+    O quadro atual.[HDC] \Um identificador para o contexto do dispositivo.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "Rectangle" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-rectangle
     \A função Retângulo desenha um retângulo. O retângulo é delineado com a caneta (pincel) atual e preenchido com o pincel (brush) atual.
-    O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
+    O quadro atual [HDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada X do canto inferior direito desta caixa [right] \A coordenada X, em coordenadas lógicas, do canto inferior direito do retângulo.
@@ -1833,12 +1833,12 @@ Etapas para que se crie um hRgn usando uma caixa:
     \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "EndPath" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpath
     \A função EndPath fecha um suporte de caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
-    O quadro atual. [hdc] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
+    O quadro atual. [HDC] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "PathToRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-pathtoregion
   \A função PathToRegion cria uma região do caminho que é selecionado no contexto de dispositivo especificado. A região resultante usa coordenadas do dispositivo.
-    O quadro atual [hdc] \Identificador para um contexto de dispositivo que contém um caminho fechado.
+    O quadro atual [HDC] \Identificador para um contexto de dispositivo que contém um caminho fechado.
    devolvendo o hRgn. \Se a função for bem-sucedida, o valor de retorno é um identificador válido para a região.
     \ Se a função falhar, o valor de retorno é zero.
 
@@ -1847,12 +1847,12 @@ Etapas para que se crie um hRgn usando uma elipse:
   Atribua a caixa desta elipse a uma caixa. \ No windows, toda elipse é desenhada dentro de uma caixa
   Call "gdi32.dll" "BeginPath" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-beginpath
     \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
-    O quadro atual.[hdc] \Um identificador para o contexto do dispositivo.
+    O quadro atual.[HDC] \Um identificador para o contexto do dispositivo.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "Ellipse" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ellipse
   \A função Ellipse desenha uma elipse. O centro da elipse é o centro do retângulo delimitador especificado. A elipse é delineada com a caneta atual e preenchida com o pincel atual.
-    O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
+    O quadro atual [HDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada X do canto inferior direito desta caixa [right] \A coordenada X, em coordenadas lógicas, do canto inferior direito do retângulo.
@@ -1861,12 +1861,12 @@ Etapas para que se crie um hRgn usando uma elipse:
     \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "EndPath" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpath
     \A função EndPath fecha um suporte de caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
-    O quadro atual. [hdc] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
+    O quadro atual. [HDC] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "PathToRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-pathtoregion
   \A função PathToRegion cria uma região do caminho que é selecionado no contexto de dispositivo especificado. A região resultante usa coordenadas do dispositivo.
-    O quadro atual [hdc] \Identificador para um contexto de dispositivo que contém um caminho fechado.
+    O quadro atual [HDC] \Identificador para um contexto de dispositivo que contém um caminho fechado.
    devolvendo o hRgn. \Se a função for bem-sucedida, o valor de retorno é um identificador válido para a região.
     \ Se a função falhar, o valor de retorno é zero.
 
@@ -1877,7 +1877,7 @@ Etapas para que se crie um hRgn usando um polígono:
   Call "gdi32.dll" "LPtoDP" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-lptodp
   \A função LPtoDP converte coordenadas lógicas em coordenadas de dispositivo.
   \A conversão depende do modo de mapeamento do contexto do dispositivo, das configurações das origens e extensões da janela e da janela de visualização e da transformação do mundo.
-    O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
+    O quadro atual [HDC] \Um identificador para o contexto do dispositivo.
     e O endereço de memória da localização desta série de vértices [lppt] \Um ponteiro para uma matriz de estruturas POINT. 
     \As coordenadas x e as coordenadas y contidas em cada uma das estruturas POINT serão transformadas.
     \A estrutura POINT define as coordenadas X e Y de um ponto.
@@ -1926,12 +1926,12 @@ Etapas para que se crie um hRgn usando uma caixa arredondada:
   Atribua o raio desta caixa arredondada times 2 a um diameter número.
   Call "gdi32.dll" "BeginPath" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-beginpath
     \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
-    O quadro atual.[hdc] \Um identificador para o contexto do dispositivo.
+    O quadro atual.[HDC] \Um identificador para o contexto do dispositivo.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "RoundRect" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-roundrect
   \A função RoundRect desenha um retângulo com cantos arredondados. O retângulo é delineado com a caneta atual e preenchido com o pincel atual.
-    O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
+    O quadro atual [HDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada X do canto inferior direito desta caixa [right] \A coordenada X, em coordenadas lógicas, do canto inferior direito do retângulo.
@@ -1944,12 +1944,12 @@ Etapas para que se crie um hRgn usando uma caixa arredondada:
     \Para obter um exemplo, consulte https://docs.microsoft.com/en-us/windows/desktop/gdi/using-filled-shapes
   Call "gdi32.dll" "EndPath" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpath
     \A função EndPath fecha um suporte de caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
-    O quadro atual. [hdc] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
+    O quadro atual. [HDC] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "PathToRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-pathtoregion
   \A função PathToRegion cria uma região do caminho que é selecionado no contexto de dispositivo especificado. A região resultante usa coordenadas do dispositivo.
-    O quadro atual [hdc] \Identificador para um contexto de dispositivo que contém um caminho fechado.
+    O quadro atual [HDC] \Identificador para um contexto de dispositivo que contém um caminho fechado.
    devolvendo o hRgn. \Se a função for bem-sucedida, o valor de retorno é um identificador válido para a região.
     \ Se a função falhar, o valor de retorno é zero.
 
@@ -4900,10 +4900,10 @@ Etapas para que se finalize gdi+:
 Etapas para que se finalize o memory canvas:
   Call "gdi32.dll" "SelectObject" com 
     O memory canvas 
-    e O saved memory hbitmap 
-    devolvendo um hbitmap. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
+    e O saved memory HBITMAP 
+    devolvendo um HBITMAP. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   Call "gdi32.dll" "DeleteObject" com 
-    O hbitmap. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
+    O HBITMAP. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
   Call "gdi32.dll" "DeleteDC" com 
     O memory canvas. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deletedc
 
@@ -6360,15 +6360,15 @@ Etapas para que se execute uppercase usando um text:
   Uppercase algum tipo de pedaços selecionados no text.
   Wrap o text.
 
-Um hbitmap é um número identificador.
+Um HBITMAP é um número identificador.
 
 Um HBRUSH é um número identificador.
 
-Um hdc é um número identificador.
+Um HDC é um número identificador.
 
 Um orientação é uns points.
 
-O contagem do heap é um número.
+A contagem do heap é um número.
 
 O endereço heap é um endereço de memória.
 
@@ -6378,7 +6378,7 @@ Um texto hexadecimal é uma string.
 
 Um número da fonte é um número identificador.
 
-Um hicon é um número identificador.
+Um HICON é um número identificador.
 
 Etapas para que se oculte o cursor:
   Call "user32.dll" "ShowCursor" com 
@@ -6753,14 +6753,14 @@ Etapas para que se inicialize o memory canvas:
   Call "gdi32.dll" "GetCurrentObject" com 
     O memory canvas 
     e 7 [OBJ_BITMAP] 
-    devolvendo o saved memory hbitmap.
+    devolvendo o saved memory HBITMAP.
   Call "gdi32.dll" "CreateCompatibleBitmap" com 
     O tela canvas 
     e A pixel largura desta tela 
-    e A pixel altura desta tela devolvendo um hbitmap.
+    e A pixel altura desta tela devolvendo um HBITMAP.
   Call "gdi32.dll" "SelectObject" com 
     O memory canvas 
-    e O hbitmap.
+    e O HBITMAP.
   Normalize o memory canvas.
 
 Etapas para que se inicialize o module:
@@ -6815,7 +6815,7 @@ Etapas para que se inicialize a área de impressão:
   Call "kernel32.dll" "GlobalFree" com 
     O hdevnames deste printdlgex.
   Atribua o hdevmode deste printdlgex ao número identificador do modo de dispositivo da impressora.
-  Atribua o hdc deste printdlgex ao área de impressão.
+  Atribua o HDC deste printdlgex ao área de impressão.
 
 Etapas para que se inicialize o tela:
   Call "user32.dll" "GetSystemMetrics" com 
@@ -7771,7 +7771,7 @@ Etapas para que se output stroke e fill usando uma cor da borda e uma cor de pre
   Output a string.
 
 \Um paintstruct é um conjunto com
-\Um hdc denominado hdc,
+\Um HDC denominado HDC,
 \Um número denominado ferase,
 \Um caixa denominado rcpaint,
 \Um número denominado frestore,
@@ -8727,7 +8727,7 @@ Etapas para que se salve um context:
   Atribua o número deste context ao número deste saved context.
   Anteponha o saved context para o context stack.
 
-O saved memory hbitmap é um hbitmap.
+O saved memory HBITMAP é um HBITMAP.
 
 O saved quantidade de twips/pixel é um número.
 
