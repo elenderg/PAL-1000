@@ -1876,32 +1876,76 @@ Etapas para que se crie um hRgn usando um polígono:
     \As coordenadas x e as coordenadas y contidas em cada uma das estruturas POINT serão transformadas.
     \A estrutura POINT define as coordenadas X e Y de um ponto.
     e A quantidade de vértices desta série de vértices. [c] \O número de pontos na matriz/série de vértices.
+  \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+  \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "CreatePolygonRgn" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpolypolygonrgn
-    O endereço de memória da localização desta série de vértices 
-    e A quantidade de vértices desta série de vértices 
-    e 2 [WINDING]  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpolypolygonrgn#parameters
-    devolvendo o hRgn.
+  \A função CreatePolygonRgn cria uma região poligonal.
+    O endereço de memória da localização desta série de vértices  [*pptl] \Um ponteiro para uma matriz de estruturas POINT que definem os vértices do polígono em unidades lógicas. 
+   \O polígono é presumido como sendo um polígono fechado. Cada vértice pode ser especificado apenas uma vez.
+    e A quantidade de vértices desta série de vértices [cPoint] \O número de pontos na matriz.
+    e 2 [iMode = WINDING] \O modo de preenchimento usado para determinar quais pixels estão na região.  -> exemplo: https://docs.microsoft.com/en-us/windows/win32/gdi/images/csrgn-03.png
+    \Este parâmetro pode ser um dos seguintes valores.
+    \ ALTERNATE ou Seleciona o modo alternativo (preenche a área entre os lados ímpares e pares do polígono em cada linha de varredura).
+    \WINDING = Seleciona o modo de enrolamento (preenche qualquer região com um valor de enrolamento diferente de zero).
+    \Para obter mais informações sobre esses modos, consulte a função SetPolyFillMode, ou leia mais abaixo:
+    
+    \Um aplicativo preenche o interior de uma região chamando a função FillRgn e fornecendo um identificador que identifica um pincel específico. 
+    \Quando um aplicativo chama FillRgn, o sistema preenche a região com o pincel usando o modo de preenchimento atual para o contexto de dispositivo especificado. 
+    \Existem dois modos de preenchimento: alternado e enrolamento. 
+    \O aplicativo pode definir o modo de preenchimento para um contexto de dispositivo chamando a função SetPolyFillMode. 
+    \O aplicativo pode recuperar o modo de preenchimento atual para um contexto de dispositivo chamando a função GetPolyFillMode.
+    
+    \Modo Alternativo
+    \Para determinar quais pixels o sistema destaca quando o modo alternativo é especificado, execute o seguinte teste:
+    \Selecione um pixel no interior da região.
+    \Desenhe um raio imaginário, na direção x positiva, desse pixel em direção ao infinito.
+    \Cada vez que o raio cruza uma linha limite, aumente um valor de contagem.
+    \O sistema destaca o pixel se o valor da contagem for um número ímpar.
+    
+    \Modo de enrolamento
+    \Para determinar quais pixels o sistema destaca quando o modo de enrolamento é especificado, execute o seguinte teste:
+    \Determine a direção em que cada linha de limite é desenhada.
+    \Selecione um pixel no interior da região.
+    \Desenhe um raio imaginário, na direção x positiva, do pixel em direção ao infinito.
+    \Cada vez que o raio intercepta uma linha limite com um componente y positivo, aumente um valor de contagem. 
+    \Cada vez que o raio cruza uma linha limite com um componente y negativo, diminua o valor de contagem.
+    \O sistema destaca o pixel se o valor da contagem for diferente de zero.
+    devolvendo o hRgn. \Se a função for bem-sucedida, o valor de retorno será o número identificador da região.
+    \Se a função falhar, o valor de retorno será NULL.
   Destrua a série de vértices.
 
 Etapas para que se crie um hRgn usando uma caixa arredondada:
-  Se o raio desta caixa arredondada for 0, crie o hRgn usando a caixa arredondada como uma caixa; volte.
+  Se o raio desta caixa arredondada for 0, crie o hRgn usando a caixa arredondada como [se fosse] uma caixa [normal]; volte.
   Atribua a caixa arredondada a uma caixa.
   Atribua o raio desta caixa arredondada times 2 a um diameter número.
-  Call "gdi32.dll" "BeginPath" com 
-    O quadro atual.
-  Call "gdi32.dll" "RoundRect" com 
-    O quadro atual 
-    e A coordenada X do canto superior esquerdo desta caixa 
-    e A coordenada Y do canto superior esquerdo desta caixa 
-    e A coordenada X do canto inferior direito desta caixa 
-    e A coordenada Y do canto inferior direito desta caixa 
-    e O diameter 
-    e O diameter.
-  Call "gdi32.dll" "EndPath" com 
-    O quadro atual.
-  Call "gdi32.dll" "PathToRegion" com 
-    O quadro atual 
-    devolvendo o hRgn.
+  Call "gdi32.dll" "BeginPath" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-beginpath
+    \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
+    O quadro atual.[hdc] \Um identificador para o contexto do dispositivo.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+  Call "gdi32.dll" "RoundRect" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-roundrect
+  \A função RoundRect desenha um retângulo com cantos arredondados. O retângulo é delineado com a caneta atual e preenchido com o pincel atual.
+    O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
+    e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
+    e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
+    e A coordenada X do canto inferior direito desta caixa [right] \A coordenada X, em coordenadas lógicas, do canto inferior direito do retângulo.
+    e A coordenada Y do canto inferior direito desta caixa [bottom] \A coordenada Y, em coordenadas lógicas, do canto inferior direito do retângulo.
+    e O diameter [width] \A largura, em coordenadas lógicas, da elipse usada para desenhar os cantos arredondados.
+    e O diameter. [height] \A altura, em coordenadas lógicas, da elipse usada para desenhar os cantos arredondados.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+    \Observação: A posição atual não é usada nem atualizada por esta função.
+    \Para obter um exemplo, consulte https://docs.microsoft.com/en-us/windows/desktop/gdi/using-filled-shapes
+  Call "gdi32.dll" "EndPath" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpath
+    \A função EndPath fecha um suporte de caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
+    O quadro atual. [hdc] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+  Call "gdi32.dll" "PathToRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-pathtoregion
+  \A função PathToRegion cria uma região do caminho que é selecionado no contexto de dispositivo especificado. A região resultante usa coordenadas do dispositivo.
+    O quadro atual [hdc] \Identificador para um contexto de dispositivo que contém um caminho fechado.
+   devolvendo o hRgn. \Se a função for bem-sucedida, o valor de retorno é um identificador válido para a região.
+    \ Se a função falhar, o valor de retorno é zero.
 
 Etapas para que se crie um catálogo usando uma contagem de buckets:
   Aloque memória para o catálogo.
@@ -1918,14 +1962,38 @@ Etapas para que se crie o dicionário léxico:
 Etapas para que se crie o abra handle of um requisição WinHTTP:
   Se o requisição WinHTTP for inexistente, cancele.
   Converta o nome deste module para um wide string denominado wide module nome e termine com o caractere NULL.
-  Call "WinHTTP.dll" "WinHttpOpen" com 
-    O first endereço de memória do pedaço deste wide module nome 
-    e 0 [WINHTTP_ACCESS_TYPE_DEFAULT_PROXY] 
-    e 0 [WINHTTP_NO_PROXY_NAME] 
-    e 0 [WINHTTP_NO_PROXY_BYPASS] 
-    e 0 
-    devolvendo o número identificador de sessão desta número identificador de requisição deste WinHTTP.
-  Se a session desta número identificador de requisição deste WinHTTP for 0, atribua "Erro. Não foi possível iniciar a conexão." ao erro do fluxo de entrada/saída; volte.
+  Call "WinHTTP.dll" "WinHttpOpen" com \https://docs.microsoft.com/en-us/windows/win32/api/winhttp/nf-winhttp-winhttpopen
+  \A função WinHttpOpen inicializa, para um aplicativo, o uso de funções WinHTTP e retorna um identificador de sessão WinHTTP.
+  \A função WinHttpOpen é a primeira das funções WinHTTP chamadas por um aplicativo. 
+  \Ela inicializa estruturas de dados WinHTTP internas e prepara-as para chamadas futuras do aplicativo.
+    O first endereço de memória do pedaço deste wide module nome [pszAgentW] \Opcional. 
+    \Trata-se de um ponteiro para uma variável de string que contém o nome do aplicativo ou entidade que chama as funções WinHTTP. 
+    \Este nome é usado como o agente do usuário no protocolo HTTP.
+    e 0 [dwAccessType = WINHTTP_ACCESS_TYPE_DEFAULT_PROXY] \Tipo de acesso requerido
+    \A Opção WINHTTP_ACCESS_TYPE_DEFAULT_PROXY recupera o proxy estático ou a configuração direta do registro. 
+    \WINHTTP_ACCESS_TYPE_DEFAULT_PROXY não herda as configurações de proxy do navegador.
+    \A configuração do proxy WinHTTP é definida por um desses mecanismos.
+    \pelo utilitário proxycfg.exe no Windows XP e Windows Server 2003 ou anterior.
+    \pelo utilitário netsh.exe no Windows Vista e Windows Server 2008 ou posterior.
+    \pela função WinHttpSetDefaultProxyConfiguration em todas as plataformas.
+    \Importante O uso desta opção está obsoleto no Windows 8.1 e nas versões mais recentes do Windows.
+    \Em vez disso, use o valor 4 que representa a opção WINHTTP_ACCESS_TYPE_AUTOMATIC_PROXY.
+    \Obs: só é possível usa a opção WINHTTP_ACCESS_TYPE_AUTOMATIC_PROXYno Windows 8.1 e nas versões mais recentes do Windows.
+    e 0 [pszProxyW = WINHTTP_NO_PROXY_NAME] 
+    \Um ponteiro para uma variável de seqüência de caracteres que contém o nome do servidor proxy a ser usado 
+    \quando o acesso do proxy é especificado, definindo dwAccessType como 3 (WINHTTP_ACCESS_TYPE_NAMED_PROXY).
+    \Se dwAccessType não estiver definido como WINHTTP_ACCESS_TYPE_NAMED_PROXY, este parâmetro deve ser definido como 0 (WINHTTP_NO_PROXY_NAME).
+    e 0 [pszProxyBypassW = WINHTTP_NO_PROXY_BYPASS] 
+    \Um ponteiro para uma variável de seqüência de caracteres que contém uma lista opcional delimitada por ponto-e-vírgula de nomes de host ou endereços IP,
+    \ou ambos, que não deve ser roteado por meio do proxy quando dwAccessType é definido como WINHTTP_ACCESS_TYPE_NAMED_PROXY. 
+    \A lista pode conter caracteres curinga. Não use uma string vazia, porque a função WinHttpOpen a usa como a lista de ignorar proxy. 
+    \Se este parâmetro especificar a macro "<local>" na lista como a única entrada, esta função ignora qualquer nome de host que não contenha um ponto. 
+    \Se dwAccessType não estiver definido como WINHTTP_ACCESS_TYPE_NAMED_PROXY, este parâmetro deve ser definido como WINHTTP_NO_PROXY_BYPASS.
+    e 0 [dwFlags] \Valor inteiro longo sem sinal que contém os sinalizadores que indicam várias opções que afetam o comportamento desta função.
+    \ Em tese, os únicos valores disponíveis seriam 268435456 (WINHTTP_FLAG_ASYNC) e 805306368 (WINHTTP_FLAG_SECURE_DEFAULTS)
+    devolvendo o número identificador de sessão deste número identificador de requisição desta requisição WinHTTP.
+    \Retorna um identificador de sessão válido se for bem-sucedido ou NULL caso contrário.
+  Se o número identificador de sessão deste número identificador de requisição desta requisição WinHTTP for 0, atribua "Erro. Não foi possível iniciar a conexão." ao erro do fluxo de entrada/saída; volte.
 
 Etapas para que se crie um endereço completo no sistema de arquivos:
   Se o endereço completo for endereço da pasta-format, crie o endereço completo no sistema de arquivos (pasta)[endereço]; volte.
@@ -3760,7 +3828,7 @@ Etapas para que se destrua um requisição WinHTTP:
   Call "WinHTTP.dll" "WinHttpCloseHandle" com 
     O número identificador de conexão deste requisição WinHTTP.
   Call "WinHTTP.dll" "WinHttpCloseHandle" com 
-    O número identificador de sessão desta número identificador de requisição deste WinHTTP.
+    O número identificador de sessão deste número identificador de requisição desta requisição WinHTTP.
   Deallocate o requisição WinHTTP.
 
 Um difference é um par de números.
