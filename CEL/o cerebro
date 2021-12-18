@@ -590,13 +590,13 @@ Etapas para que se centralize um linha reta em uma caixa (verticalmente):
   Arredonde o número para o múltiplo imediato of a quantidade de twips/pixel .
   Mova o linha reta usando 0 e o número.
 
-Etapas para que se centralize um imagem em uma caixa (horizontalmente):
+Etapas para que se centralize uma imagem em uma caixa (horizontalmente):
   Se a imagem for inexistente, cancele.
   Atribua a coordenada X deste center desta caixa menos a coordenada X deste center desta caixa desta imagem a um número.
   Arredonde o número para o múltiplo imediato of a quantidade de twips/pixel .
   Mova a imagem usando o número e 0.
 
-Etapas para que se centralize um imagem em uma caixa (verticalmente):
+Etapas para que se centralize uma imagem em uma caixa (verticalmente):
   Se a imagem for inexistente, cancele.
   Atribua a coordenada Y deste center desta caixa menos a coordenada Y deste center desta caixa desta imagem a um número.
   Arredonde o número para o múltiplo imediato of a quantidade de twips/pixel .
@@ -2003,36 +2003,96 @@ Etapas para que se crie um endereço completo no sistema de arquivos (pasta)[ende
   Isole o endereço completo.
   Remove algum tipo de trailing barra invertida desde o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "CreateDirectoryA" com 
-    O first deste endereço completo 
-    e 0 
-    devolvendo um número.
+  Call "kernel32.dll" "CreateDirectoryA" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createdirectorya
+  \Cria um novo diretório. Se o sistema de arquivos subjacente oferecer suporte à segurança em arquivos e diretórios, a função aplicará um descritor de segurança especificado ao novo diretório.
+  \Para especificar um diretório de modelo, use a função CreateDirectoryEx.
+    O first deste endereço completo [lpPathName] \O caminho do diretório a ser criado.
+  \Para a versão ANSI desta função, há um limite de tamanho de string padrão para caminhos de 248 caracteres (MAX_PATH - espaço suficiente para um nome de arquivo 8.3). 
+  \Para estender esse limite para 32.767 caracteres largos, chame a versão Unicode da função e acrescente "\\? \" ao caminho. 
+  \Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file
+  \Dica A partir do Windows 10, versão 1607, para a versão unicode desta função (CreateDirectoryW), você pode optar por remover a limitação de 248 caracteres sem incluir "\\? \" no início. 
+  \O limite de 255 caracteres por segmento de caminho ainda se aplica. 
+    \Consulte a seção "Limitação de comprimento máximo do caminho" do site acima para obter detalhes.
+    e 0 [lpSecurityAttributes] \Um ponteiro para uma estrutura SECURITY_ATTRIBUTES. https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)
+    \O membro lpSecurityDescriptor da estrutura especifica um descritor de segurança para o novo diretório. 
+    \Se lpSecurityAttributes for NULL, o diretório obterá um descritor de segurança padrão. 
+    \As ACLs no descritor de segurança padrão para um diretório são herdadas de seu diretório pai.
+    \O sistema de arquivos de destino deve suportar segurança em arquivos e diretórios para que este parâmetro tenha efeito. 
+    \(Isso é indicado quando GetVolumeInformation retorna FS_PERSISTENT_ACLS.) https://docs.microsoft.com/en-us/windows/desktop/api/fileapi/nf-fileapi-getvolumeinformationa
+    devolvendo um número. \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+  \Se a função falhar, o valor de retorno é zero.
   Limpe o erro do fluxo de entrada/saída.
-  Se o número não for 0, cancele.
-  Atribua "Erro. Não foi possível criar a seguinte pasta: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
+  Se o número não for 0, volte. \Se o número for 0, então faça o seguinte:
+  Atribua "Erro. Não foi possível criar a pasta '" junto com o endereço completo seguido de "'. Provavelmente a pasta já existe no sistema de arquivos ou você não tem permissão de escrita" ao erro do fluxo de entrada/saída.
 
 Etapas para que se crie um endereço completo no sistema de arquivos (arquivo):
   Isole o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "CreateFileA" com 
-    O first deste endereço completo 
-    e 1073741824 [GENERIC_WRITE] 
-    e 0 
-    e 0 
-    e 1 [CREATE_NEW] 
-    e 128 [FILE_ATTRIBUTE_NORMAL] 
-    e 0 
-    devolvendo um número identificador.
-  Call "kernel32.dll" "CloseHandle" com 
-    O número identificador.
+  Call "kernel32.dll" "CreateFileA" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilea
+  \Cria ou abre um arquivo ou dispositivo de E/S. 
+  \Os dispositivos de E / S mais comumente usados são os seguintes: 
+  \arquivo, fluxo de arquivo, diretório, disco físico, volume, buffer de console, unidade de fita, recurso de comunicação, slot de correio e canal. 
+  \A função retorna um identificador que pode ser usado para acessar o arquivo ou dispositivo para vários tipos de E / S, 
+  \dependendo do arquivo ou dispositivo e dos sinalizadores e atributos especificados.
+    O first deste endereço completo [lpFileName] \ O nome do arquivo ou dispositivo a ser criado ou aberto. 
+    \Você pode usar barras (/) ou barras invertidas (\) neste nome.
+  \Na versão ANSI desta função, o nome é limitado a MAX_PATH caracteres.
+  \Para estender esse limite para 32.767 caracteres largos, chame a versão Unicode da função e acrescente "\\? \" ao caminho. 
+  \Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file
+  \Para obter informações sobre nomes de dispositivos especiais, consulte https://docs.microsoft.com/en-us/windows/desktop/FileIO/defining-an-ms-dos-device-name
+  \Para criar um fluxo de arquivo, especifique o nome do arquivo, dois pontos e o nome do fluxo. 
+  \Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-streams
+  \Dica A partir do Windows 10, versão 1607, para a versão Unicode desta função (CreateFileW), você pode optar por remover a limitação MAX_PATH sem acrescentar "\\? \". 
+  \Consulte a seção "Limitação de comprimento máximo do caminho" do site https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file  para detalhes
+    e 1073741824 [dwDesiredAccess = GENERIC_WRITE] \O acesso solicitado ao arquivo ou dispositivo, que pode ser resumido como leitura, gravação, ambos ou nenhum zero).
+    \Os valores mais comumente usados são -2147483648 (GENERIC_READ), 1073741824 (GENERIC_WRITE) ou ambos -1073741824 (GENERIC_READ | GENERIC_WRITE). 
+    \Para obter mais informações, consulte os sites:
+    \https://docs.microsoft.com/en-us/windows/desktop/SecAuthZ/generic-access-rights
+    \https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-security-and-access-rights
+    \https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-access-rights-constants
+    \https://docs.microsoft.com/en-us/windows/desktop/SecAuthZ/access-mask
+    \Se este parâmetro for zero, o aplicativo pode consultar certos metadados, como arquivo, diretório ou atributos de dispositivo sem acessar esse arquivo ou dispositivo, 
+    \mesmo se o acesso GENERIC_READ tivesse sido negado.
+    e 0 [dwShareMode] \O modo de compartilhamento solicitado do arquivo ou dispositivo, que pode ser lido, escrito, ambos, excluir, todos ou nenhum. 
+    \Os pedidos de acesso a atributos ou atributos estendidos não são afetados por este sinalizador.
+    \O valor 0 impede que outros processos abram esse arquivo ou dispositivo se solicitarem acesso de exclusão, leitura ou gravação.
+  \Se este parâmetro for 0 e CreateFile for bem-sucedido, o arquivo ou dispositivo não pode ser compartilhado e não pode ser aberto novamente até que o identificador para o arquivo ou dispositivo seja fechado.   
+    e 0 [lpSecurityAttributes] \Um ponteiro para uma estrutura SECURITY_ATTRIBUTES que contém dois membros de dados separados, mas relacionados: 
+    \https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)
+    \um descritor de segurança opcional e um valor booleano que determina se o identificador retornado pode ser herdado por processos filho.
+    \Este parâmetro pode ser NULL.
+    \Se este parâmetro for NULL, o identificador retornado por CreateFile não pode ser herdado por nenhum processo filho que o aplicativo possa criar 
+    \e o arquivo ou dispositivo associado ao identificador retornado obtém um descritor de segurança padrão.
+    e 1 [dwCreationDisposition = CREATE_NEW] \Uma ação a ser executada em um arquivo ou dispositivo existente ou não.
+    \Para dispositivos diferentes de arquivos, este parâmetro geralmente é definido como OPEN_EXISTING.
+    \O valor 1 (CREATE_NEW) cria um novo arquivo, apenas se ainda não existir.
+    \Se o arquivo especificado existir, a função falhará e o código do último erro será definido como ERROR_FILE_EXISTS (80).
+    \Se o arquivo especificado não existir e for um caminho válido para um local gravável, um novo arquivo será criado.
+    e 128 [dwFlagsAndAttributes = FILE_ATTRIBUTE_NORMAL] \Os atributos e sinalizadores de arquivo ou dispositivo, sendo que FILE_ATTRIBUTE_NORMAL é o valor padrão mais comum para arquivos.
+  \Quando o valor é 128 (FILE_ATTRIBUTE_NORMAL) o arquivo não possui outros atributos definidos. Este atributo é válido apenas se usado sozinho.
+  \Este parâmetro pode incluir qualquer combinação dos atributos de arquivo disponíveis (FILE_ATTRIBUTE_ *). 
+  \Todos os outros atributos de arquivo substituem FILE_ATTRIBUTE_NORMAL.
+  \Para obter acesso mais avançado aos atributos de arquivo, consulte https://docs.microsoft.com/en-us/windows/desktop/api/fileapi/nf-fileapi-setfileattributesa
+  \Para obter uma lista completa de todos os atributos de arquivo com seus valores e descrições, consulte https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-attribute-constants
+    e 0 [hTemplateFile] \Um identificador válido para um arquivo de modelo com o direito de acesso GENERIC_READ. 
+    \O arquivo de modelo fornece atributos de arquivo e atributos estendidos para o arquivo que está sendo criado.
+    \Este parâmetro pode ser NULL.
+    \Ao abrir um arquivo existente, CreateFile ignora este parâmetro
+    devolvendo um número identificador. \Se a função for bem-sucedida, o valor de retorno será um identificador aberto para o arquivo, dispositivo, canal nomeado ou slot de correio especificado.
+    \Se a função falhar, o valor de retorno é -1 (INVALID_HANDLE_VALUE).
+  Call "kernel32.dll" "CloseHandle" com \https://docs.microsoft.com/en-us/windows/win32/api/handleapi/nf-handleapi-closehandle
+  \Fecha um identificador de objeto aberto.
+    O número identificador. [hObject] \Um identificador válido para um objeto aberto.
+    \Se o aplicativo estiver sendo executado em um depurador, a função lançará uma exceção se receber um valor de identificador inválido ou um valor de pseudo-identificador. 
+    \Isso pode acontecer se você fechar um identificador duas vezes ou se você chamar CloseHandle em um identificador retornado pela função FindFirstFile em vez de chamar a função FindClose.
   Limpe o erro do fluxo de entrada/saída.
-  Se o número identificador não for -1 [INVALID_HANDLE_VALUE], cancele.
-  Atribua "Erro. Não foi possível criar o seguinte arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
+  Se o número identificador não for -1 [INVALID_HANDLE_VALUE], cancele. \ Ver comentário acima
+  Atribua "Erro. Não foi possível criar o arquivo '" junto com o endereço completo seguido de "'." ao erro do fluxo de entrada/saída.
 
-Etapas para que se crie um imagem:
+Etapas para que se crie uma imagem:
   Aloque memória para a imagem.
 
-Etapas para que se crie um imagem usando um trecho:
+Etapas para que se crie uma imagem usando um trecho:
   Crie um gpBitmap usando o trecho.
   Se o gpBitmap for inexistente, esvazie a imagem; volte.
   Aloque memória para a imagem.
@@ -2040,13 +2100,13 @@ Etapas para que se crie um imagem usando um trecho:
   Atribua o gpBitmap ao gpBitmap desta imagem.
   Ajuste a imagem (extraindo as caixas do gpBitmap).
 
-Etapas para que se crie um imagem usando um gpBitmap:
+Etapas para que se crie uma imagem usando um gpBitmap:
   Se o gpBitmap for inexistente, esvazie a imagem; volte.
   Aloque memória para a imagem.
   Atribua o gpBitmap ao gpBitmap desta imagem.
   Ajuste a imagem (extraindo as caixas do gpBitmap).
 
-Etapas para que se crie um imagem usando uma URL:
+Etapas para que se crie uma imagem usando uma URL:
   Read o URL a um trecho.
   Crie a imagem usando o trecho.
 
@@ -3146,7 +3206,7 @@ Etapas para que se determine se uma localização está em uma elipse:
   Se o número for 0, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se uma localização está em um imagem:
+Etapas para que se determine se uma localização está em uma imagem:
   Se a imagem for inexistente, diga não.
   Se a localização estiver na caixa desta imagem, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
@@ -3256,7 +3316,7 @@ Etapas para que se determine se uma localização está sobre uma linha reta:
     Se a distance for maior do que a segunda distance, atribua a segunda linha reta ao linha reta.
   Repita. [o código acima]
 
-Etapas para que se determine se uma localização está sobre um imagem:
+Etapas para que se determine se uma localização está sobre uma imagem:
   Se a imagem for inexistente, diga não.
   Se a localização estiver sobre a caixa desta imagem, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
@@ -4602,7 +4662,7 @@ Etapas para que se extraia um nome do arquivo s/ extensão desde um endereço comp
   Extraia um extensão desde o endereço completo.
   Remove trailing pedaços desde o nome do arquivo s/ extensão usando a quantidade de caracteres desta extensão.
 
-Etapas para que se extraia um imagem usando uma caixa:
+Etapas para que se extraia uma imagem usando uma caixa:
   Atribua a largura desta caixa dividido pelo quantidade de twips/pixel a um largura.
   Atribua a altura desta caixa dividido pelo quantidade de twips/pixel a uma altura.
   Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com 
@@ -4992,7 +5052,7 @@ Um detector é uma coisa com 4 pedaços. \é um conjunto com
 Etapas para que se flip um fração:
   Permute o numerador desta fração com o denominador desta fração.
 
-Etapas para que se flip o gpBitmap em um imagem:
+Etapas para que se flip o gpBitmap em uma imagem:
   Se a imagem for inexistente, cancele.
   Reverse o mirror detector desta imagem.
   Adicione 1800 para o ângulo de rotação desta imagem.
@@ -5004,7 +5064,7 @@ Etapas para que se flip um GpImage:
     O GpImage 
     e 6 [RotateNoneFlipY aka Rotate180FlipX].
 
-Etapas para que se flip um imagem:
+Etapas para que se flip uma imagem:
   Se a imagem for inexistente, cancele.
   Atribua a coordenada Y deste center desta caixa desta imagem menos a coordenada Y deste center desta caixa intacta desta imagem ao número Y desse par de números.
   Multiplique o número Y deste par de números por 2.
@@ -7197,7 +7257,7 @@ Etapas para que se minimize um janela do programa:
     A janela do programa 
     e 6 [SW_MINIMIZE].
 
-Etapas para que se mirror o gpBitmap em um imagem:
+Etapas para que se mirror o gpBitmap em uma imagem:
   Se a imagem for inexistente, cancele.
   Reverse o mirror detector desta imagem.
   Mirror o gpBitmap desta imagem.
@@ -7207,7 +7267,7 @@ Etapas para que se mirror um GpImage:
     O GpImage 
     e 4 [RotateNoneFlipX].
 
-Etapas para que se mirror um imagem:
+Etapas para que se mirror uma imagem:
   Se a imagem for inexistente, cancele.
   Atribua a coordenada X deste center desta caixa desta imagem menos a coordenada X deste center desta caixa intacta desta imagem ao número X desse par de números.
   Multiplique o número X deste par de números por 2.
@@ -7339,29 +7399,29 @@ Etapas para que se mova um finger over um número:
   Se o finger for inexistente, cancele.
   Adicione 1 para o finger.
 
-Etapas para que se mova um imagem para baixo uns twips:
+Etapas para que se mova uma imagem para baixo uns twips:
   Mova a imagem usando 0 e os twips.
 
-Etapas para que se mova um imagem usando um par de números:
+Etapas para que se mova uma imagem usando um par de números:
   Mova a imagem usando o número X deste par de números e o número Y deste par de números.
 
-Etapas para que se mova um imagem usando uns x-twips e uns y-twips:
+Etapas para que se mova uma imagem usando uns x-twips e uns y-twips:
   Se a imagem for inexistente, cancele.
   Mova a caixa desta imagem usando o x-twips e o y-twips.
   Mova a caixa intacta desta imagem usando o x-twips e o y-twips.
 
-Etapas para que se mova um imagem left uns twips:
+Etapas para que se mova uma imagem left uns twips:
   Mova a imagem usando - os twips e 0.
 
-Etapas para que se mova um imagem right uns twips:
+Etapas para que se mova uma imagem right uns twips:
   Mova a imagem usando os twips e 0.
 
-Etapas para que se mova um imagem para uma localização:
+Etapas para que se mova uma imagem para uma localização:
   Se a imagem for inexistente, cancele.
   Obtenha um difference entre a localização e o canto superior esquerdo desta imagem.
   Mova a imagem usando a difference.
 
-Etapas para que se mova um imagem para cima uns twips:
+Etapas para que se mova uma imagem para cima uns twips:
   Mova a imagem usando 0 e - os twips.
 
 Etapas para que se mova uns squares:
@@ -7421,7 +7481,7 @@ Etapas para que se redimensione cuidadosamente [sem perder qualidade] uma imagem
   Se a coordenada X do canto inferior direito desta imagem for menor do que a coordenada X do canto superior esquerdo desta imagem, mirror o gpBitmap no imagem.
   Se a coordenada Y do canto inferior direito desta imagem for menor do que a coordenada Y do canto superior esquerdo desta imagem, flip o gpBitmap no imagem.
 
-Etapas para que se redimensione cuidadosamente [sem perder qualidade] um imagem usando um twip par de números:
+Etapas para que se redimensione cuidadosamente [sem perder qualidade] uma imagem usando um twip par de números:
   Se a imagem for inexistente, cancele.
   Atribua a caixa desta imagem a uma caixa.
   Redimensione a caixa usando o twip par de números.
@@ -7489,7 +7549,7 @@ Etapas para que se normalize um matiz:
   Atribua o resto ao matiz.
   Se o matiz for menor do que 0, adicione 3600 para o matiz.
 
-Etapas para que se normalize um imagem:
+Etapas para que se normalize uma imagem:
   Se a imagem for inexistente, cancele.
   Normalize a caixa desta imagem.
   Normalize a caixa intacta desta imagem.
@@ -7789,14 +7849,14 @@ Etapas para que se atribua o absolute value desse par de números para um segundo
 
 \ unclear why this does not get called properly when I replace hoja apaisada com caja ***
 
-Etapas para que se atribua um imagem no middle of uma caixa;
-Etapas para que se centralize um imagem em uma caixa:
+Etapas para que se atribua uma imagem no middle of uma caixa;
+Etapas para que se centralize uma imagem em uma caixa:
   Se a imagem for inexistente, cancele.
   Centralize a imagem na caixa (horizontalmente).
   Centralize a imagem na caixa (verticalmente).
 
-Etapas para que se atribua um imagem sobre uma localização;
-Etapas para que se centralize um imagem sobre uma localização:
+Etapas para que se atribua uma imagem sobre uma localização;
+Etapas para que se centralize uma imagem sobre uma localização:
   Se a imagem for inexistente, cancele.
   Obtenha um difference entre a localização e o center desta caixa desta imagem.
   Arredonde a difference para o múltiplo imediato of a quantidade de twips/pixel .
@@ -8304,7 +8364,7 @@ Etapas para que se redimensione um linha reta usando um twip par de números:
   Faça uma par de números fracionários usando a segunda caixa e a caixa.
   Redimensione o linha reta usando o par de números fracionários.
 
-Etapas para que se redimensione um imagem para um largura por uma altura:
+Etapas para que se redimensione uma imagem para um largura por uma altura:
   Se a imagem for inexistente, cancele.
   Atribua a largura dividido pelo quantidade de twips/pixel a um pixel largura.
   Atribua a altura dividido pelo quantidade de twips/pixel a um pixel altura.
@@ -8475,7 +8535,7 @@ Etapas para que se rotate um linha reta:
   Rotate a localização inicial desta linha reta around o center.
   Rotate a localização final desta linha reta around o center.
 
-Etapas para que se rotate um imagem:
+Etapas para que se rotate uma imagem:
   Se a imagem for inexistente, cancele.
   Adicione 900 para o ângulo de rotação desta imagem.
   Se o mirror detector desta imagem estiver ativo, adicione 1800 para o ângulo de rotação desta imagem.
@@ -8661,14 +8721,14 @@ Etapas para que se redimensione proporcionalmente um par de números para um perc
   Atribua o percentual / 100 a um fração.
   Redimensione proporcionalmente o par de números usando a fração.
 
-Etapas para que se redimensione proporcionalmente um imagem usando um ratio;
-Etapas para que se redimensione proporcionalmente um imagem usando um fração:
+Etapas para que se redimensione proporcionalmente uma imagem usando um ratio;
+Etapas para que se redimensione proporcionalmente uma imagem usando um fração:
   Se a imagem for inexistente, cancele.
   Se a fração for 1/1, cancele.
   Redimensione proporcionalmente a caixa desta imagem usando a fração.
   Redimensione proporcionalmente a caixa intacta desta imagem usando a fração.
 
-Etapas para que se redimensione proporcionalmente um imagem para um percentual:
+Etapas para que se redimensione proporcionalmente uma imagem para um percentual:
   Se a imagem for inexistente, cancele.
   Atribua o percentual / 100 a um fração.
   Redimensione proporcionalmente a imagem usando a fração.
