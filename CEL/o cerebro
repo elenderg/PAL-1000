@@ -1893,21 +1893,18 @@ Etapas para que se crie um hRgn usando um polígono:
     \Este parâmetro pode ser um dos seguintes valores.
     \ ALTERNATE ou Seleciona o modo alternativo (preenche a área entre os lados ímpares e pares do polígono em cada linha de varredura).
     \WINDING = Seleciona o modo de enrolamento (preenche qualquer região com um valor de enrolamento diferente de zero).
-    \Para obter mais informações sobre esses modos, consulte a função SetPolyFillMode, ou leia mais abaixo:
-    
+    \Para obter mais informações sobre esses modos, consulte a função SetPolyFillMode, ou leia mais abaixo:    
     \Um aplicativo preenche o interior de uma região chamando a função FillRgn e fornecendo um identificador que identifica um pincel específico. 
     \Quando um aplicativo chama FillRgn, o sistema preenche a região com o pincel usando o modo de preenchimento atual para o contexto de dispositivo especificado. 
     \Existem dois modos de preenchimento: alternado e enrolamento. 
     \O aplicativo pode definir o modo de preenchimento para um contexto de dispositivo chamando a função SetPolyFillMode. 
-    \O aplicativo pode recuperar o modo de preenchimento atual para um contexto de dispositivo chamando a função GetPolyFillMode.
-    
+    \O aplicativo pode recuperar o modo de preenchimento atual para um contexto de dispositivo chamando a função GetPolyFillMode.    
     \Modo Alternativo
     \Para determinar quais pixels o sistema destaca quando o modo alternativo é especificado, execute o seguinte teste:
     \Selecione um pixel no interior da região.
     \Desenhe um raio imaginário, na direção x positiva, desse pixel em direção ao infinito.
     \Cada vez que o raio cruza uma linha limite, aumente um valor de contagem.
-    \O sistema destaca o pixel se o valor da contagem for um número ímpar.
-    
+    \O sistema destaca o pixel se o valor da contagem for um número ímpar.    
     \Modo de enrolamento
     \Para determinar quais pixels o sistema destaca quando o modo de enrolamento é especificado, execute o seguinte teste:
     \Determine a direção em que cada linha de limite é desenhada.
@@ -2893,7 +2890,7 @@ Etapas para que se determine se um input é um clique:
   Se a categoria deste input não for "clique", diga não.
   Atribua o input ao clique.
 
-Etapas para que se determine se um item é found:
+Etapas para que se determine se um item é encontrado:
   Se a categoria deste item não estiver em branco, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
@@ -3184,37 +3181,54 @@ Etapas para que se determine se um endereço completo é file-format:
 Etapas para que se determine se um endereço completo está no sistema de arquivos:
   Isole o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "GetFileAttributesA" com 
-    O first deste endereço completo 
-    devolvendo um número.
-  Se o número for menor do que 0, diga não.
+  Call "kernel32.dll" "GetFileAttributesA" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getfileattributesa
+  \Obtém atributos do sistema de arquivos para um arquivo ou diretório especificado.
+  \Para obter mais informações sobre o atributo obtido, use a função GetFileAttributesEx.
+  \Os atributos de arquivo são valores de metadados armazenados pelo sistema de arquivos em disco 
+  \e são usados pelo sistema e estão disponíveis para desenvolvedores por meio de várias APIs de E/S de arquivo.
+    O first deste endereço completo [lpFileName] \O nome do arquivo ou diretório.
+    \Na versão ANSI desta função, o nome é limitado a MAX_PATH caracteres. 
+    \Para estender esse limite para 32.767 caracteres largos, chame a versão Unicode da função (GetFileAttributesW) e acrescente "\\? \" Ao caminho. 
+    \Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file
+    \A partir do Windows 10, versão 1607, para a versão Unicode desta função (GetFileAttributesW), 
+    \você pode optar por remover a limitação de caracteres MAX_PATH sem incluir "\\? \" No início.
+    devolvendo um número. \Se a função for bem-sucedida, o valor de retorno conterá os atributos do arquivo ou diretório especificado. 
+    \Para obter uma lista de valores de atributo e suas descrições, consulte https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-attribute-constants
+    \Se a função falhar, o valor de retorno é -1 (INVALID_FILE_ATTRIBUTES).
+  Se o número for menor do que 0, diga não. \Acho que pode melhorar isso aqui
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se um endereço completo é read-only:
+Etapas para que se determine se um endereço completo é somente leitura:
   Isole o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "GetFileAttributesA" com 
-    O first deste endereço completo 
-    devolvendo um número.
-  Conjuncione logicamente o número com 1 [FILE_ATTRIBUTE_READONLY].
+  Call "kernel32.dll" "GetFileAttributesA" com  \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getfileattributesa
+  \Obtém atributos do sistema de arquivos para um arquivo ou diretório especificado.
+  \Para obter mais informações sobre o atributo obtido, use a função GetFileAttributesEx.
+  \Os atributos de arquivo são valores de metadados armazenados pelo sistema de arquivos em disco 
+  \e são usados pelo sistema e estão disponíveis para desenvolvedores por meio de várias APIs de E/S de arquivo.
+    O first deste endereço completo [lpFileName] \O nome do arquivo ou diretório.
+    \Na versão ANSI desta função, o nome é limitado a MAX_PATH caracteres. 
+    \Para estender esse limite para 32.767 caracteres largos, chame a versão Unicode da função (GetFileAttributesW) e acrescente "\\? \" Ao caminho. 
+    \Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file
+    \A partir do Windows 10, versão 1607, para a versão Unicode desta função (GetFileAttributesW), 
+    \você pode optar por remover a limitação de caracteres MAX_PATH sem incluir "\\? \" No início.
+    devolvendo um número. \Se a função for bem-sucedida, o valor de retorno conterá os atributos do arquivo ou diretório especificado. 
+    \Para obter uma lista de valores de atributo e suas descrições, consulte https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-attribute-constants
+    \Se a função falhar, o valor de retorno é -1 (INVALID_FILE_ATTRIBUTES).
+  Conjuncione logicamente o número com 1 [FILE_ATTRIBUTE_READONLY]. \Um arquivo que é somente leitura. 
+  \Os aplicativos podem ler o arquivo, mas não podem gravá-lo ou excluí-lo. Este regra não é respeitada em diretórios, a não ser que sejam diretórios de sistema
   Se o número não for 0, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se um endereço de memória pode ser found;
-Etapas para que se determine se um endereço de memória está coming;
-\Etapas para que se determine se um endereço de memória é found;
-Etapas para que se determine se um endereço de memória foi found;
-Etapas para que se determine se um endereço de memória existe;
-Etapas para que se determine se um endereço de memória does exist:
+Etapas para que se determine se um endereço de memória pode ser encontrado;
+\Etapas para que se determine se um endereço de memória é encontrado;
+Etapas para que se determine se um endereço de memória foi encontrado;
+Etapas para que se determine se um endereço de memória existe:
   Se o endereço de memória for inexistente, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-
-
-
-
-Etapas para que se determine se um endereço de memória é missing;
-Etapas para que se determine se um endereço de memória é null e esvazie:
+Etapas para que se determine se um endereço de memória está sumido do mapa;
+Etapas para que se determine se um endereço de memória é null e vazio:
   Se o endereço de memória for inexistente, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
@@ -3295,12 +3309,14 @@ Etapas para que se determine se uma localização está em uma elipse:
   Crie um hRgn usando a elipse.
   Isole a localização.
   Divida a localização pelo quantidade de twips/pixel .
-  Call "gdi32.dll" "PtInRegion" com 
-    O hRgn 
-    e A coordenada X desta localização 
-    e A coordenada Y desta localização 
-    devolvendo um número.
+  Call "gdi32.dll" "PtInRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ptinregion
+  \A função PtInRegion determina se o ponto especificado está dentro da região especificada.
+    O hRgn [hrgn] \O número identificador da região a ser examinada.
+    e A coordenada X desta localização [x] \Especifica a coordenada x do ponto em unidades lógicas.
+    e A coordenada Y desta localização [y] \Especifica a coordenada y do ponto em unidades lógicas.
+    devolvendo um número. \Se o ponto especificado estiver na região, o valor de retorno será diferente de zero.
   Destrua o hRgn.
+  \Se o ponto especificado não estiver na região, o valor de retorno é zero.
   Se o número for 0, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
@@ -3312,18 +3328,51 @@ Etapas para que se determine se uma localização está em uma imagem:
 Etapas para que se determine se uma localização está em um polígono:
   Se o polígono for inexistente, diga não.
   Crie uma série de vértices usando os vértices deste polígono.
-  Call "gdi32.dll" "CreatePolygonRgn" com 
-    O endereço de memória da localização desta série de vértices 
-    e A quantidade de vértices desta série de vértices 
-    e 2 [WINDING] devolvendo um hRgn.
-  Call "gdi32.dll" "PtInRegion" com 
-    O hRgn 
-    e A coordenada X desta localização 
-    e A coordenada Y desta localização 
-    devolvendo um número.
-  Call "gdi32.dll" "DeleteObject" com 
-    O hRgn.
+  Call "gdi32.dll" "CreatePolygonRgn" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpolypolygonrgn
+  \A função CreatePolygonRgn cria uma região poligonal.
+    O endereço de memória da localização desta série de vértices  [*pptl] \Um ponteiro para uma matriz de estruturas POINT que definem os vértices do polígono em unidades lógicas. 
+   \O polígono é presumido como sendo um polígono fechado. Cada vértice pode ser especificado apenas uma vez.
+    e A quantidade de vértices desta série de vértices [cPoint] \O número de pontos na matriz.
+    e 2 [iMode = WINDING] \O modo de preenchimento usado para determinar quais pixels estão na região.  -> exemplo: https://docs.microsoft.com/en-us/windows/win32/gdi/images/csrgn-03.png
+    \Este parâmetro pode ser um dos seguintes valores.
+    \ ALTERNATE ou Seleciona o modo alternativo (preenche a área entre os lados ímpares e pares do polígono em cada linha de varredura).
+    \WINDING = Seleciona o modo de enrolamento (preenche qualquer região com um valor de enrolamento diferente de zero).
+    \Para obter mais informações sobre esses modos, consulte a função SetPolyFillMode, ou leia mais abaixo:    
+    \Um aplicativo preenche o interior de uma região chamando a função FillRgn e fornecendo um identificador que identifica um pincel específico. 
+    \Quando um aplicativo chama FillRgn, o sistema preenche a região com o pincel usando o modo de preenchimento atual para o contexto de dispositivo especificado. 
+    \Existem dois modos de preenchimento: alternado e enrolamento. 
+    \O aplicativo pode definir o modo de preenchimento para um contexto de dispositivo chamando a função SetPolyFillMode. 
+    \O aplicativo pode recuperar o modo de preenchimento atual para um contexto de dispositivo chamando a função GetPolyFillMode.    
+    \Modo Alternativo
+    \Para determinar quais pixels o sistema destaca quando o modo alternativo é especificado, execute o seguinte teste:
+    \Selecione um pixel no interior da região.
+    \Desenhe um raio imaginário, na direção x positiva, desse pixel em direção ao infinito.
+    \Cada vez que o raio cruza uma linha limite, aumente um valor de contagem.
+    \O sistema destaca o pixel se o valor da contagem for um número ímpar.    
+    \Modo de enrolamento
+    \Para determinar quais pixels o sistema destaca quando o modo de enrolamento é especificado, execute o seguinte teste:
+    \Determine a direção em que cada linha de limite é desenhada.
+    \Selecione um pixel no interior da região.
+    \Desenhe um raio imaginário, na direção x positiva, do pixel em direção ao infinito.
+    \Cada vez que o raio intercepta uma linha limite com um componente y positivo, aumente um valor de contagem. 
+    \Cada vez que o raio cruza uma linha limite com um componente y negativo, diminua o valor de contagem.
+    \O sistema destaca o pixel se o valor da contagem for diferente de zero.
+    devolvendo um hRgn. \Se a função for bem-sucedida, o valor de retorno será o número identificador da região.
+    \Se a função falhar, o valor de retorno será NULL.
+  Call "gdi32.dll" "PtInRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ptinregion
+  \A função PtInRegion determina se o ponto especificado está dentro da região especificada.
+    O hRgn [hrgn] \O número identificador da região a ser examinada.
+    e A coordenada X desta localização [x] \Especifica a coordenada x do ponto em unidades lógicas.
+    e A coordenada Y desta localização [y] \Especifica a coordenada y do ponto em unidades lógicas.
+    devolvendo um número. \Se o ponto especificado estiver na região, o valor de retorno será diferente de zero.
+    \Se o ponto especificado não estiver na região, o valor de retorno é zero.
+  Call "gdi32.dll" "DeleteObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
+  \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
+  \Depois que o objeto é excluído, o identificador especificado não é mais válido.
+    O hRgn. [ho] \Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
   Destrua a série de vértices.
+  \Se o identificador especificado não é válido ou está atualmente selecionado em um DC, o valor de retorno é zero.
   Se o número for 0, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
@@ -3337,21 +3386,29 @@ Etapas para que se determine se uma localização está em uma caixa arredondada:
   Isole a caixa arredondada.
   Adicione a quantidade de twips/pixel para a canto inferior direito desta caixa arredondada.
   Atribua o raio desta caixa arredondada times 2 a um diameter número.
-  Call "gdi32.dll" "CreateRoundRectRgn" com 
-    A coordenada X do canto superior esquerdo desta caixa arredondada 
-    e A coordenada Y do canto superior esquerdo desta caixa arredondada 
-    e A coordenada X do canto inferior direito desta caixa arredondada 
-    e A coordenada Y do canto inferior direito desta caixa arredondada 
-    e O diameter 
-    e O diameter 
-    devolvendo um hRgn.
-  Call "gdi32.dll" "PtInRegion" com 
-    O hRgn 
-    e A coordenada X desta localização 
-    e A coordenada Y desta localização 
-    devolvendo um número.
-  Call "gdi32.dll" "DeleteObject" com 
-    O hRgn.
+  Call "gdi32.dll" "CreateRoundRectRgn" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createroundrectrgn
+  \A função CreateRoundRectRgn cria uma região retangular com cantos arredondados.
+    A coordenada X do canto superior esquerdo desta caixa arredondada [x1] \todas as coordenadas estão em unidades de dispositivo
+    e A coordenada Y do canto superior esquerdo desta caixa arredondada [y2]
+    e A coordenada X do canto inferior direito desta caixa arredondada [x2]
+    e A coordenada Y do canto inferior direito desta caixa arredondada [y2]
+    e O diameter [w] \Especifica a largura da elipse (em unidades de dispositivo) usada para criar os cantos arredondados .
+    e O diameter [h] \Especifica a altura da elipse (em unidades de dispositivo) usada para criar os cantos arredondados .
+    devolvendo um hRgn. \Se a função for bem-sucedida, o valor de retorno será o identificador para a região.
+    \Se a função falhar, o valor de retorno será NULL.
+  Call "gdi32.dll" "PtInRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ptinregion
+  \A função PtInRegion determina se o ponto especificado está dentro da região especificada.
+    O hRgn [hrgn] \O número identificador da região a ser examinada.
+    e A coordenada X desta localização [x] \Especifica a coordenada x do ponto em unidades lógicas.
+    e A coordenada Y desta localização [y] \Especifica a coordenada y do ponto em unidades lógicas.
+    devolvendo um número. \Se o ponto especificado estiver na região, o valor de retorno será diferente de zero.
+    \Se o ponto especificado estiver na região, o valor de retorno será diferente de zero.
+    \Se o ponto especificado não estiver na região, o valor de retorno é zero.
+  Call "gdi32.dll" "DeleteObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
+  \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
+  \Depois que o objeto é excluído, o identificador especificado não é mais válido.
+    O hRgn. [ho] \Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
   Se o número for 0, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
@@ -3708,9 +3765,17 @@ Etapas para que se determine se existe something para remove em um text:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se existe text sobre o área de transferência do Windows:
-  Call "user32.dll" "IsClipboardFormatAvailable" com 
-  1 [CF_TEXT] 
+  Call "user32.dll" "IsClipboardFormatAvailable" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-isclipboardformatavailable
+  \Determina se a área de transferência contém dados no formato especificado.
+  1 [format = CF_TEXT]  \Um formato de área de transferência padrão ou registrado. 
+  \Para obter uma descrição dos formatos padrão da área de transferência, consulte https://docs.microsoft.com/en-us/windows/win32/dataxchg/standard-clipboard-formats
+  \CF_TEXT = Formato de texto. 
+  \Cada linha termina com uma combinação de retorno de carro / avanço de linha (CR-LF). 
+  \Um caractere nulo sinaliza o fim dos dados. 
+  \Use este formato para texto ANSI.
     devolvendo um número.
+    \Se o formato da área de transferência estiver disponível, o valor de retorno será diferente de zero.
+    \Se o formato da área de transferência não estiver disponível, o valor de retorno será zero.
   Se o número for 0, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
@@ -3746,7 +3811,7 @@ Etapas para que se determine se o usuário clicou em umas choices:
   Percorra. [o código abaixo]
   Se o botão esquerdo deste mouse não estiver para baixo, diga não.
   Encontre uma choice usando a localização deste mouse.
-  Se a choice can't ser found, diga não.
+  Se a choice can't ser encontrado, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
   
@@ -3917,8 +3982,11 @@ Etapas para que se destrua o hpen of um canvas:
     O hpen.
 
 Etapas para que se destrua um hRgn:
-  Call "gdi32.dll" "DeleteObject" com 
-    O hRgn.
+  Call "gdi32.dll" "DeleteObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
+  \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
+  \Depois que o objeto é excluído, o identificador especificado não é mais válido.
+    O hRgn. [ho] \Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
 
 Etapas para que se destrua um catálogo:
   Se o catálogo for inexistente, cancele.
@@ -3938,7 +4006,7 @@ Etapas para que se destrua um endereço completo no sistema de arquivos:
 Etapas para que se destrua um endereço completo no sistema de arquivos (pasta)[endereço]:
   Percorra. [o código abaixo]
     Obtenha um item desde o endereço completo.
-    Se o item não for found, pare.
+    Se o item não for encontrado, pare.
     Atribua o endereço completo a uma segunda endereço completo.
     Posponha o designador deste item para a segunda endereço completo.
     Destrua a segunda endereço completo no sistema de arquivos.
@@ -4583,7 +4651,7 @@ Etapas para que se duplicate um endereço completo para uma segunda endereço comp
   Se a segunda endereço completo não estiver no sistema de arquivos, crie a segunda endereço completo no sistema de arquivos.
   Percorra. [o código abaixo]
     Obtenha um item desde o endereço completo.
-    Se o item não for found, cancele.
+    Se o item não for encontrado, cancele.
     Atribua o endereço completo a um terceiro endereço completo.
     Posponha o designador deste item para o terceiro endereço completo.
     Atribua a segunda endereço completo a um quarto endereço completo.
@@ -4968,7 +5036,7 @@ Etapas para que se encontre uma choice usando uma localização:
   Start com nada no choice.
   Percorra. [o código abaixo]
     Obtenha o [first/next] choice desde as choices.
-    Se o choice for missing, cancele.
+    Se o choice estiver sumido do mapa, cancele.
     Se a localização estiver na caixa desta choice, pare.
   Repita. [o código acima]
 
@@ -5387,7 +5455,7 @@ Etapas para que se obtenha uma contagem of items em um endereço completo no sist
   Atribua 0 à contagem.
   Percorra. [o código abaixo]
     Obtenha um item desde o endereço completo.
-    Se o item não for found, cancele.
+    Se o item não for encontrado, cancele.
     Adicione 1 para a contagem.
   Repita. [o código acima]
 
@@ -5672,7 +5740,7 @@ Etapas para que se obtenha um size usando um endereço completo no sistema de arq
   Atribua 0 ao size.
   Percorra. [o código abaixo]
     Obtenha um item desde o endereço completo.
-    Se o item não for found, cancele.
+    Se o item não for encontrado, cancele.
     Se a categoria deste item for "arquivo", adicione o size deste item para o size; repita.
     Atribua o endereço completo a uma segunda endereço completo.
     Posponha o designador deste item para a segunda endereço completo.
@@ -7142,7 +7210,7 @@ Etapas para que se liste umas choices em uma caixa;
 Etapas para que se pinte umas choices em uma caixa:
   \Pinte really fast. ***
   Obtenha uma [first/next] choice desde as choices.
-  Se a choice estiver missing [because we have drawn them all], cancele.
+  Se a choice estiver sumido do mapa [because we have drawn them all], cancele.
   Atribua a coordenada X do canto superior esquerdo desta caixa mais 24 pixels à coordenada X do canto superior esquerdo desta choice.
   Atribua a coordenada X do canto inferior direito desta caixa menos 24 pixels à coordenada X do canto inferior direito desta choice.
   Se a choice for o first desta choice, atribua a coordenada Y do canto superior esquerdo desta caixa mais 24 pixels à coordenada Y do canto superior esquerdo desta choice.
@@ -7178,7 +7246,7 @@ Etapas para que se carregue o dicionário léxico usando um trecho:
 
 Etapas para que se carregue o dicionário léxico usando um endereço completo:
   Obtenha um item desde o endereço completo.
-  Se o item não for found, cancele.
+  Se o item não for encontrado, cancele.
   Se a categoria deste item não for "arquivo", repita.
   Read o endereço completo deste item a um trecho.
   Se o erro do fluxo de entrada/saída não estiver em branco, repita.
@@ -7839,7 +7907,7 @@ Etapas para que se anteponha uma coisa para uns coisas:
   Atribua a coisa ao first destas coisas.
 
 \Etapas para que se anteponha uns coisas para umas segunda coisas:
-\ bug found por Mike Gonta - corrected version debaixo of
+\ bug encontrado por Mike Gonta - corrected version debaixo of
 \Obtenha uma coisa desde  as coisas (backwards).
 \Se a coisa for inexistente, cancele.
 \Remove a coisa desde as coisas.
