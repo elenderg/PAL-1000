@@ -976,7 +976,7 @@ Etapas para que se converta um código da cor para uma cor:
     O endereçamento desse word [*pwHue] \ Um ponteiro para um valor que, quando esse método retorna com êxito, recebe o valor de matiz HLS.
     e O endereçamento dessa segunda word [*pwLuminance] \ Um ponteiro para um valor que, quando este método retorna com sucesso, recebe o valor de luminância HLS.
     e O endereçamento desse terceiro word.[*pwSaturation] \ Um ponteiro para um valor que, quando este método retorna com sucesso, recebe o valor de saturação HLS.
-  Atribua o word à matiz desta cor.
+  Atribua a word à matiz desta cor.
   Atribua a segunda word à luminosidade desta cor.
   Atribua o terceiro word à saturação desta cor.
   Redimensione proporcionalmente a matiz desta cor usando 3600/240.
@@ -1101,7 +1101,7 @@ Etapas para que se converta um lParam para um tecla:
     \ Usando MAPVK_VSC_TO_VK, O parâmetro uCode é um código de varredura e é traduzido em um código de tecla virtual que não distingue entre as teclas esquerda e direita. Se não houver tradução, a função retorna 0.
     devolvendo a tecla. \O valor de retorno é um código de varredura, um código de chave virtual ou um valor de caractere, dependendo do valor de uCode e uMapType. 
     \Se não houver tradução, o valor de retorno é zero.
-  Se a tecla NumLock was not toggled, cancele.
+  Se a tecla NumLock não estiver ativada, cancele.
   Se a tecla for a tecla Insert, atribua a tecla zero do teclado numérico à tecla; volte.
   Se a tecla for a tecla Delete, atribua a numpad-period tecla à tecla; volte.
   Se a tecla for a tecla Home, atribua a tecla sete do teclado numérico à tecla; volte.
@@ -1116,7 +1116,7 @@ Etapas para que se converta um lParam para um tecla:
 
 Etapas para que se converta um lParam para uma localização:
   Separe o lParam a um word e uma segunda word.
-  Atribua o word à coordenada Y desta localização.
+  Atribua a word à coordenada Y desta localização.
   Atribua a segunda word à coordenada X desta localização.
   Multiplique a localização pelo quantidade de twips/pixel .
 
@@ -1176,7 +1176,7 @@ Etapas para que se converta um número para um texto hexadecimal:
 Etapas para que se converta um endereço de memória para um cifra hexadecimal;
 Etapas para que se converta um número para um cifra hexadecimal:
   Separe o número a um word e uma segunda word.
-  Converta o word para o cifra hexadecimal.
+  Converta a word para o cifra hexadecimal.
   Converta a segunda word para uma segunda cifra hexadecimal.
   Posponha a segunda cifra hexadecimal para o cifra hexadecimal.
 
@@ -1374,7 +1374,7 @@ Etapas para que se converta uma URL para uma URL simplificada:
   Atribua o nPort destes URL_COMPONENTS ao número de porta desta URL simplificada.
 
 Etapas para que se converta um word para um cifra hexadecimal:
-  Separe o word a um pedaço e um segundo pedaço.
+  Separe a word a um pedaço e um segundo pedaço.
   Converta o pedaço para o cifra hexadecimal.
   Converta o segundo pedaço para uma segunda cifra hexadecimal.
   Posponha a segunda cifra hexadecimal para o cifra hexadecimal.
@@ -1386,8 +1386,8 @@ Etapas para que se copie um event para um segundo event: \ mudar o "segunda" aqu
   Crie o segundo event.
   Atribua a categoria deste event à categoria deste segundo event.
   Atribua o detector de tecla Shift deste event ao detector de tecla Shift deste segundo event.
-  Atribua o detector de tecla ctrl deste event ao detector de tecla Ctrl deste segundo event.
-  Atribua o detector de tecla alt deste event ao detector de tecla Alt deste segundo event.
+  Atribua o detector de tecla Ctrl deste event ao detector de tecla Ctrl deste segundo event.
+  Atribua o detector de tecla Alt deste event ao detector de tecla Alt deste segundo event.
   Atribua a localização deste event à localização deste segundo event.
   Atribua a tecla deste event à tecla deste segundo event.
   Atribua o pedaço deste event ao pedaço deste segundo event.
@@ -2125,16 +2125,30 @@ Etapas para que se crie o número identificador da requisição of uma requisição W
   Converta o endereço de recurso desta URL simplificada para uma string composta de caracteres amplos denominada endereço composto de caracteres amplos e termine com o caractere NULL.
   Converta "POST" para uma string composta de caracteres amplos denominado POST composto de caracteres amplos e termine com o caractere NULL.
   Se o nome do protocolo desta URL simplificada for "https", atribua 8388608 [WINHTTP_FLAG_SECURE] a um secure número.
-  Call "WinHTTP.dll" "WinHttpOpenRequest" com 
-    O número identificador de conexão desta requisição WinHTTP 
-    e O first deste POST composto de caracteres amplos 
-    e O first deste endereço composto de caracteres amplos 
-    e 0 [L"HTTP/1.1"] 
-    e 0 [WINHTTP_NO_REFERER] 
-    e 0 [WINHTTP_DEFAULT_ACCEPT_TYPES] 
-    e O secure número 
-    devolvendo o número identificador de requisição desta requisição WinHTTP.
-  Se o número identificador de requisição desta requisição WinHTTP for 0, atribua "Erro ao chamar a função 'WinHttpOpenRequest' da biblioteca 'WinHTTP.dll'. Não foi possível abrir a requisição." ao erro do fluxo de entrada/saída; volte.
+  Call "WinHTTP.dll" "WinHttpOpenRequest" com \ https://docs.microsoft.com/en-us/windows/win32/api/winhttp/nf-winhttp-winhttpopenrequest
+  \A função WinHttpOpenRequest cria um identificador de solicitação HTTP.
+    O número identificador de conexão desta requisição WinHTTP [hConnect] \Número identificador de conexão HINTERNET de uma sessão HTTP retornada pela função WinHttpConnect.
+    \Para detalhes consulte HINTERNET: https://docs.microsoft.com/en-us/windows/desktop/WinHttp/hinternet-handles-in-winhttp
+    \e também a função WinHttpConnect https://docs.microsoft.com/en-us/windows/desktop/api/winhttp/nf-winhttp-winhttpconnect
+    e O first deste POST composto de caracteres amplos [pwszVerb] \Ponteiro para uma string que contém o verbo HTTP a ser usado na solicitação. 
+    \Se este parâmetro for NULL, a função usará GET como o verbo HTTP. 
+    \Observação: Esta string deve estar toda em maiúsculas. 
+    \Muitos servidores tratam os verbos HTTP com distinção entre maiúsculas e minúsculas, e
+    \as Solicitações de Comentários (RFCs) da Internet Engineering Task Force (IETF) soletram esses verbos usando apenas caracteres maiúsculos.
+    e O first deste endereço composto de caracteres amplos [pwszObjectName] 
+    \Ponteiro para uma string que contém o nome do recurso de destino do verbo HTTP especificado. 
+    \Geralmente é um nome de arquivo, um módulo executável ou um especificador de pesquisa.
+    e 0 [pwszVersion = L"HTTP/1.1"] \Ponteiro para uma string que contém a versão HTTP. Se este parâmetro for NULL, a função usará HTTP / 1.1.
+    e 0 [pwszReferrer = WINHTTP_NO_REFERER]  \Ponteiro para uma string que especifica a URL do documento a partir do qual a URL na solicitação pwszObjectName foi obtida. 
+    \Se este parâmetro for definido como WINHTTP_NO_REFERER, nenhum documento de referência será especificado.
+    e 0 [*ppwszAcceptTypes = WINHTTP_DEFAULT_ACCEPT_TYPES]  \Ponteiro para uma matriz terminada em nulo de ponteiros de string que especifica os tipos de mídia aceitos pelo cliente. 
+    \Se este parâmetro for definido como WINHTTP_DEFAULT_ACCEPT_TYPES, nenhum tipo será aceito pelo cliente. 
+    \Normalmente, os servidores lidam com a falta de tipos aceitos como indicação de que o cliente aceita apenas documentos do tipo "text / *"; 
+    \ou seja, apenas documentos de texto - sem imagens ou outros arquivos binários. 
+    \Para obter uma lista de tipos de mídia válidos, consulte Tipos de mídia definidos pela IANA em http://www.iana.org/assignments/media-types/
+    e O secure número [dwFlags] \Valor inteiro longo sem sinal que contém os valores dos sinalizadores da Internet
+    devolvendo o número identificador de requisição desta requisição WinHTTP. \Retorna um identificador de solicitação HTTP válido se for bem-sucedido ou NULL se não for.
+  Se o número identificador de requisição desta requisição WinHTTP for 0, atribua "Erro ao chamar a função 'WinHttpOpenRequest' da biblioteca 'WinHTTP.dll'. Não foi possível obter o número identificador da requisição." ao erro do fluxo de entrada/saída; volte.
 
 Etapas para que se crie uma row usando um pedaço:
   Aloque memória para a row.
@@ -2154,25 +2168,27 @@ Etapas para que se crie um socket usando um host string e um número de porta:
   Atribua o port ao sin_port deste sockaddr.
   \ cria o socket 
   Call "ws2_32.dll" "socket" com \https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket
-  \A função de soquete cria um soquete que está vinculado a um provedor de serviços de transporte específico.
-    2 [af AF_INET ]  
-    \ A família de endereços para o endereço de transporte. AF_INET é usado para endereços ipv4
-    e 1 [type SOCK_STREAM ]  
-    \Um tipo de soquete que fornece fluxos de bytes sequenciados, confiáveis, bidirecionais e baseados em conexão com um mecanismo de transmissão de dados OOB. 
-    \Este tipo de soquete usa o TCP para a família de endereços da Internet
-    e 0 [protocol IPPROTO_IP]  
-   \O protocolo a ser usado. Se um valor de 0 for especificado, o chamador não deseja especificar um protocolo e o provedor de serviços escolherá o protocolo a ser usado.
+  \A função de soquete cria um soquete (encaixe/tomada) que está vinculado a um provedor de serviços de transporte específico.
+    2 [af = AF_INET ] \ Valor da família de endereços do endereço de transporte. 
+    \O valor AF_INET é usado para endereços IPV4
+    e 1 [type = SOCK_STREAM ]  \O tipo do novo soquete.
+    \SOCK_STREAM é um tipo de soquete que fornece fluxos de bytes sequenciados, confiáveis, bidirecionais e baseados em conexão com um mecanismo de transmissão de dados OOB. 
+    \Este tipo de soquete usa o TCP para a família de endereços da Internet (ipv4 e ipv6)
+    e 0 [protocol = IPPROTO_IP] \O protocolo a ser usado. 
+   \Se um valor de 0 for especificado, o chamador não deseja especificar um protocolo e o provedor de serviços escolherá o protocolo a ser usado.
    \Normalmente, existe apenas um único protocolo para oferecer suporte a um determinado tipo de soquete dentro de uma determinada família de protocolos; nesse caso, o protocolo pode ser especificado como 0.
-    devolvendo o socket. \WSAAPI 
-  Se o socket for -1 [INVALID_SOCKET ], atribua "Erro. Não foi possível criar o soquete." ao erro do fluxo de entrada/saída; volte.
+    devolvendo o socket. \Se nenhum erro ocorrer, o socket retorna um descritor referenciando o novo socket. WSAAPI 
+  \Caso contrário, um valor de INVALID_SOCKET é retornado
+  Se o socket for -1 [INVALID_SOCKET ], atribua "Erro. O soquete informado não é um soquete válido." ao erro do fluxo de entrada/saída; volte.
   \ connect socket
   Call "ws2_32.dll" "connect" com \https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-connect
   \A função connect estabelece uma conexão com um soquete especificado.
     O socket [s] \Um descritor que identifica um soquete não conectado.
     e O endereçamento deste sockaddr [*name] \Um ponteiro para a estrutura sockaddr com a qual a conexão deve ser estabelecida.
+    \https://docs.microsoft.com/en-us/windows/desktop/WinSock/sockaddr-2
     e A magnitude deste sockaddr [namelen] \O comprimento, em bytes, da estrutura sockaddr apontada pelo parâmetro name.
-    devolvendo um número resultante.
-  Se o número resultante não for 0 [SOCKET_ERROR], atribua "Erro. Falha na conexão com o soquete." ao erro do fluxo de entrada/saída; volte.
+    devolvendo um número resultante.\Se nenhum erro ocorrer, a conexão retorna zero. Caso contrário, retorna SOCKET_ERROR
+  Se o número resultante não for 0 [SOCKET_ERROR], atribua "Erro. Não foi possível estabelecer uma conexão com o soquete informado." ao erro do fluxo de entrada/saída; volte.
   \ abra send timeout 30 seconds
   Call "ws2_32.dll" "setsockopt" com \https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-setsockopt
   \A função setsockopt define uma opção de socket.
@@ -2183,17 +2199,21 @@ Etapas para que se crie um socket usando um host string e um número de porta:
     \O tempo limite, em milissegundos, para bloquear chamadas enviadas.
     e 30 seconds' endereçamento [*optval] \Um ponteiro para o buffer no qual o valor da opção solicitada é especificado.
     e 4 [optlen] \O tamanho, em bytes, do buffer apontado pelo parâmetro optval.
-    devolvendo o número resultante.
-  Se o número resultante não for 0 [SOCKET_ERROR ], atribua "Erro na função 'setsockopt' da biblioteca 'Ws2_32.dll'. Valor do parâmetro optname: SO_SNDTIMEO (4101)." ao erro do fluxo de entrada/saída; volte.
+    devolvendo o número resultante. \Se nenhum erro ocorrer, setsockopt retorna zero. Caso contrário, um valor de SOCKET_ERROR é retornado
+  Se o número resultante não for 0 [SOCKET_ERROR ], atribua "Erro na função 'setsockopt' da biblioteca 'ws2_32.dll'. Não foi possível definiro tempo limite de envio SO_SNDTIMEO (4101) do soquete. " ao erro do fluxo de entrada/saída; volte.
   \ abra receive timeout 30 seconds
-  Call "ws2_32.dll" "setsockopt" com 
-    O socket 
-    e 65535 
+  Call "ws2_32.dll" "setsockopt" com \https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-setsockopt
+  \A função setsockopt define uma opção de socket.
+    O socket [s] \Um descritor que identifica um soquete.
+    e 65535 [level] \O nível em que a opção é definida (por exemplo, SOL_SOCKET).
     e 4102 [optname SO_RCVTIMEO  0x00001006]    \Define o tempo limite, em milissegundos, para bloquear chamadas recebidas.
-    e 30 seconds' endereçamento e 
-    4 
-    devolvendo o número resultante.
-  Se o número resultante não for 0, atribua "Erro na função 'setsockopt' da biblioteca 'Ws2_32.dll'. Não foi possível definir o tempo limite de recepção. Valor do parâmetro optname: SO_RCVTIMEO (4102) ." ao erro do fluxo de entrada/saída; volte.
+    \A opção de soquete para a qual o valor deve ser definido (por exemplo, SO_BROADCAST). 
+    \O parâmetro optname deve ser uma opção de soquete definida dentro do nível especificado, ou o comportamento é indefinido.
+    \O tempo limite, em milissegundos, para bloquear chamadas enviadas.
+    e 30 seconds' endereçamento [*optval] \Um ponteiro para o buffer no qual o valor da opção solicitada é especificado.
+    e 4 [optlen] \O tamanho, em bytes, do buffer apontado pelo parâmetro optval.
+    devolvendo o número resultante. \Se nenhum erro ocorrer, setsockopt retorna zero. Caso contrário, um valor de SOCKET_ERROR é retornado
+  Se o número resultante não for 0, atribua "Erro na função 'setsockopt' da biblioteca 'ws2_32.dll'. Não foi possível definir o tempo limite de recepção  SO_RCVTIMEO (4102)  do soquete." ao erro do fluxo de entrada/saída; volte.
 
 Etapas para que se crie um conjunto de texto usando uma string:
   Aloque memória para o conjunto de texto.
@@ -2444,6 +2464,7 @@ Etapas para que se produza o relatório de informações usando um relatório:
   Isole o relatório.
   Termine com o caractere NULL o relatório.
   Atribua "Detalhes: " a um relatório de erros.
+  \Chame função "MessageBoxA" contida na biblioteca "user32.dll" informando os parâmetros a seguir: 0, o primeiro caractere do texto em questão, o primeiro caractere de "debug" e 0.
   Call "user32.dll" "MessageBoxA" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-messageboxa
   \Exibe uma caixa de diálogo modal que contém um ícone do sistema, um conjunto de botões e uma breve mensagem específica do aplicativo, como status ou informações de erro. 
   \A caixa de mensagem retorna um valor inteiro que indica em qual botão o usuário clicou.
@@ -2453,7 +2474,10 @@ Etapas para que se produza o relatório de informações usando um relatório:
     \Se a string consistir em mais de uma linha, você pode separar as linhas usando um retorno de carro e / ou um caractere de avanço de linha entre cada linha.
     e O first endereço de memória do pedaço deste relatório de erros [lpCaption] \ O título da caixa de diálogo. Se este parâmetro for NULL, o título padrão é Erro.
     e 0. [uType] \O conteúdo e o comportamento da caixa de diálogo. Quando o valor é igual a 0 a caixa de mensagem contém apenas um botão: OK. Este é o  valor padrão.
-  \  Chame função "MessageBoxA" contida na biblioteca "user32.dll" informando os parâmetros a seguir: 0, o primeiro caractere do texto em questão, o primeiro caractere de "debug" e 0.
+    \Se a caixa de mensagem tiver um botão Cancelar, a função retornará o valor IDCANCEL se a tecla ESC for pressionada ou o botão Cancelar for selecionado. 
+    \Se a caixa de mensagem não tiver o botão Cancelar, pressionar ESC não terá efeito - a menos que um botão MB_OK esteja presente. 
+    \Se um botão MB_OK for exibido e o usuário pressionar ESC, o valor de retorno será IDOK.
+    \Se a função falhar, o valor de retorno é zero.
 
 Etapas para que se produza o relatório de erros usando um relatório (com aspas);
 Etapas para que se produza o relatório de panes usando um relatório (com aspas);
@@ -2470,7 +2494,7 @@ Etapas para que se produza o relatório de panes usando uma word;
 Etapas para que se produza o relatório de falhas usando uma word;
 Etapas para que se produza o relatório de bugs usando uma word;
 Etapas para que se produza o relatório de informações usando uma word:
-  Atribua o word a um número.
+  Atribua a word a um número.
   Converta o número para um relatório.
   Produza o relatório de informações usando o relatório.
 
@@ -2720,8 +2744,8 @@ Etapas para que se determine se um contador é past um número:
   Se o contador for maior do que o número, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se a localização atual está above ou below uma caixa:
-  Se a localização deste context é above ou below a caixa, diga sim.
+Etapas para que se determine se a localização atual está acima of  ou below uma caixa:
+  Se a localização deste context está acima of  ou below a caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se a localização atual está left ou right of uma caixa:
@@ -2751,8 +2775,8 @@ Etapas para que se determine se um event é algum tipo de atalho de tecla:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se um event foi alterado:
-  Se o detector de tecla ctrl deste event estiver ativo, diga sim.
-  Se o detector de tecla alt deste event estiver ativo, diga sim.
+  Se o detector de tecla Ctrl deste event estiver ativo, diga sim.
+  Se o detector de tecla Alt deste event estiver ativo, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se um finger é past o end of uma string:
@@ -2875,7 +2899,7 @@ Etapas para que se determine se uma tecla é algum tipo de letra tecla:
   Se a tecla estiver entre 65 e 90, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se uma tecla é algum tipo de modifier tecla:
+Etapas para que se determine se uma tecla é algum tipo de tecla modificadora:
   Se a tecla for a tecla Alt, diga sim.
   Se a tecla for a tecla Ctrl, diga sim.
   Se a tecla for a tecla Shift, diga sim.
@@ -2900,65 +2924,132 @@ Etapas para que se determine se uma tecla é algum tipo de symbol tecla:
 
 Etapas para que se determine se uma tecla é algum tipo de WM_CHAR tecla:
   Se a tecla não for algum tipo de tecla imprimível , diga não.
-  Se a tecla Alt was para baixo, diga não.
-  Se a tecla Ctrl was para baixo, diga não.
+  Se a tecla Alt está para baixo, diga não.
+  Se a tecla Ctrl está para baixo, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se uma tecla está sendo pressionada:
-  Call "user32.dll" "GetAsyncKeyState" com 
-    A tecla 
-    devolvendo um word.
-  Atribua o word a um número.
-  Se o número for menor do que 0, diga sim.
+Etapas para que se determine se uma tecla [ou botão do mouse] está sendo pressionado;
+Etapas para que se determine se uma [determinada] tecla [específica] está sendo pressionada:
+  Call "user32.dll" "GetAsyncKeyState" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getasynckeystate
+  \GetAsyncKeyState Determina se uma tecla está ativada ou desativada no momento em que a função é chamada e se a tecla foi pressionada após uma chamada anterior para GetAsyncKeyState.
+    A tecla [vKey] \O código de tecla virtual. Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/inputdev/virtual-key-codes
+    \Você pode diferenciar as teclas iguais do teclado se precisar saber se uma tecla específica está sendo pressionada . 
+    devolvendo um word. \Se a função for bem-sucedida, o valor de retorno especifica se a tecla foi pressionada desde a última chamada para GetAsyncKeyState e se a tecla está ativada ou desativada. 
+    \Se o bit mais significativo estiver definido, a tecla está sendo pressionada e, 
+    \se o bit menos significativo estiver definido, a tecla foi pressionada após a chamada anterior para GetAsyncKeyState. 
+    \No entanto, você não deve confiar neste último comportamento;
+    \Embora o bit menos significativo do valor de retorno indique se a tecla foi pressionada desde a última consulta, devido à natureza multitarefa preemptiva do Windows, 
+    \outro aplicativo pode chamar GetAsyncKeyState e receber o bit "pressionado recentemente" em vez de seu aplicativo. 
+    \O comportamento do bit menos significativo do valor de retorno é retido estritamente para compatibilidade com aplicativos do Windows de 16 bits (que não são preemptivos) e não deve ser considerado.
+    \A função GetAsyncKeyState também funciona com botões do mouse. 
+    \No entanto, ela verifica o estado dos botões físicos do mouse, não os botões lógicos do mouse para os quais os botões físicos estão mapeados. 
+    \Por exemplo, a chamada GetAsyncKeyState (VK_LBUTTON) sempre retorna o estado do botão físico esquerdo do mouse, 
+    \independentemente de estar mapeado para o botão lógico esquerdo ou direito do mouse. 
+    \Você pode determinar o mapeamento atual do sistema de botões físicos do mouse para botões lógicos do mouse chamando GetSystemMetrics (SM_SWAPBUTTON).
+    \que retorna TRUE se os botões do mouse foram trocados.
+  Atribua a word a um número.
+  \O valor de retorno é zero para os seguintes casos:
+  \A área de trabalho atual não é a área de trabalho ativa
+  \O segmento de primeiro plano pertence a outro processo e a área de trabalho não permite que a operação seja realizada
+  Se o número for menor do que 0, diga sim. \Se o bit mais significativo estiver definido (ou seja, se o número for negativo), a tecla está sendo pressionada
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se uma tecla está sendo pressionado:
-  Call "user32.dll" "GetAsyncKeyState" com 
-    A tecla 
-    devolvendo um word.
-  Atribua o word a um número.
+Etapas para que se determine se uma tecla está para baixo:
+  Call "user32.dll" "GetKeyState" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getkeystate
+  \Recupera o status da tecla virtual especificada. 
+  \O status especifica se a tecla está para cima, para baixo ou alternada (ligada, desligada - alternando cada vez que a tecla é pressionada).
+    A tecla [nVirtKey] \Uma chave virtual. Se a chave virtual desejada for uma letra ou dígito (A-Z, a-z ou 0-9), nVirtKey deve ser definido com o valor ASCII desse caractere. 
+    \Para as demais teclas, deve ser um código de tecla virtual.
+    \Se um layout de teclado diferente do inglês for usado, as teclas virtuais com valores no intervalo ASCII A a Z e 0 a 9 serão usadas para especificar a maioria das teclas de caracteres. 
+    \Por exemplo, para o layout de teclado alemão, a tecla virtual de valor ASCII O (0x4F) se refere à tecla "o", enquanto VK_OEM_1 se refere à tecla "ö (o com trema)".
+    devolvendo um word. \O valor de retorno especifica o status da tecla virtual especificada, da seguinte maneira:
+    \Se o bit de ordem superior for 1, a tecla está para baixo; caso contrário, está para cima.
+    \Se o bit de ordem inferior for 1, a chave está alternada. 
+    \Uma tecla, como a tecla CAPS LOCK, está alternada se estiver ativada. 
+    \A tecla está desligada e não alternada se o bit de ordem inferior for 0. 
+    \Uma luz indicadora da tecla de alternância (se houver) no teclado ficará acesa quando a tecla for alternada e desligada quando a tecla for desativada.
+  Atribua a word a um número.
   Se o número for menor do que 0, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+\O status da tecla retornada por esta função muda conforme um thread lê as mensagens principais de sua fila de mensagens. 
+\O status não reflete o estado do nível de interrupção associado ao hardware. Use a função GetAsyncKeyState da rotina acima para recuperar essas informações.
+\Um aplicativo chama GetKeyState em resposta a uma mensagem de entrada do teclado. Esta função recupera o estado da tecla quando a mensagem de entrada foi gerada.
+\Para recuperar informações de estado para todas as chaves virtuais, use a função GetKeyboardState.
 
-Etapas para que se determine se uma tecla was para baixo:
-  Call "user32.dll" "GetKeyState" com 
-    A tecla 
-    devolvendo um word.
-  Atribua o word a um número.
-  Se o número for menor do que 0, diga sim.
-[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+\GetAsyncKeyState () obtém o estado da chave de forma assíncrona, ou seja, sem esperar por nada, ou seja, AGORA.
+\GetKeyState () obtém o estado da chave de forma síncrona, é o estado da chave que você está prestes a ler. 
+\Ele é enfileirado no buffer do teclado junto com os pressionamentos de tecla propriamente ditos.
 
-Etapas para que se determine se uma tecla was toggled:
-  Call "user32.dll" "GetKeyState" com 
-    A tecla 
-    devolvendo um word.
-  Atribua o word a um número.
+\A entrada do teclado no Windows é armazenada em buffer. 
+\Isso garante que o usuário possa continuar digitando, mesmo se o programa estiver temporariamente sem resposta. 
+\Sempre ocorre, até certo ponto, nenhuma perda de digitação dessa maneira. 
+\As teclas são adicionadas à fila de mensagens, o loop de mensagens do programa os recupera com GetMessage () posteriormente.
+\Junto com o pressionamento de tecla, o windows também armazena o estado de todas as outras teclas. 
+\Para garantir que, quando a mensagem for finalmente recuperada, você possa dizer com segurança quais outras chaves estavam desativadas. 
+\Muito importante para as teclas modificadoras, por exemplo. 
+\Um pressionamento de tecla de atalho como Ctrl + A não funcionaria de forma confiável de outra forma.
+\Portanto, geralmente você sempre usa GetKeyState(), obtém o estado das chaves conforme foram gravadas originalmente. 
+\Ou GetKeyboardState (), você obtém a lista inteira. 
+\Usar GetAsyncKeyState () é muito menos comum, não depende do estado de buffer, necessário apenas se o aplicativo tiver um tratamento de mensagens muito incomum. 
+\Pode ser apropriado em um jogo, talvez.
+
+\GetKeyState retorna o estado da tecla virtual. 
+\Em outras palavras, GetKeyState relata o estado do teclado com base nas mensagens que você recuperou de sua fila de entrada. 
+\Este não é o mesmo que o estado físico do teclado:
+\Se o usuário digitou anteriormente, GetKeyState não relata essas alterações até que você use a função PeekMessage ou a função GetMessage para recuperar a mensagem de sua fila de entrada.
+\Se o usuário mudou para outro programa, a função GetKeyState não verá a entrada que o usuário digitou naquele outro programa, uma vez que essa entrada não foi enviada para a fila de entrada.
+\Quando você deve usar GetKeyState e quando deve usar GetAsyncKeyState?
+\Para o trabalho de interface do usuário, quase sempre você deseja GetKeyState.
+
+\Se você está respondendo a uma mensagem de entrada e deseja saber quais teclas foram pressionadas no momento em que a entrada foi gerada, você deseja usar GetKeyState. 
+\Por exemplo, se você deseja distinguir um clique esquerdo do mouse de Alt + LeftClick, você deve usar GetKeyState para consultar o estado da tecla Alt (conhecido como VK_MENU por razões históricas). 
+\Isso porque você deseja saber se a tecla Alt estava pressionada quando o usuário clicou com o mouse, não se a tecla está pressionada neste exato instante. 
+\Se o usuário liberou a tecla Alt entre o momento em que clicou e o momento em que você processou a mensagem, é irrelevante. 
+\Você se preocupa se a tecla Alt estava pressionada no momento do clique.
+
+Etapas para que se determine se uma tecla está ligada;
+Etapas para que se determine se uma tecla está alternada;
+Etapas para que se determine se uma tecla está ativada:
+  Call "user32.dll" "GetKeyState" com  \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getkeystate
+  \Recupera o status da tecla virtual especificada. 
+  \O status especifica se a tecla está para cima, para baixo ou alternada (ligada, desligada - alternando cada vez que a tecla é pressionada).
+    A tecla [nVirtKey] \Uma chave virtual. Se a chave virtual desejada for uma letra ou dígito (A-Z, a-z ou 0-9), nVirtKey deve ser definido com o valor ASCII desse caractere. 
+    \Para as demais teclas, deve ser um código de tecla virtual.
+    \Se um layout de teclado diferente do inglês for usado, as teclas virtuais com valores no intervalo ASCII A a Z e 0 a 9 serão usadas para especificar a maioria das teclas de caracteres. 
+    \Por exemplo, para o layout de teclado alemão, a tecla virtual de valor ASCII O (0x4F) se refere à tecla "o", enquanto VK_OEM_1 se refere à tecla "ö (o com trema)".
+    devolvendo um word. \O valor de retorno especifica o status da tecla virtual especificada, da seguinte maneira:
+    \Se o bit de ordem superior for 1, a tecla está para baixo; caso contrário, está para cima.
+    \Se o bit de ordem inferior for 1, a chave está alternada. 
+    \Uma tecla, como a tecla CAPS LOCK, está alternada se estiver ativada. 
+    \A tecla está desligada e não alternada se o bit de ordem inferior for 0. 
+    \Uma luz indicadora da tecla de alternância (se houver) no teclado ficará acesa quando a tecla for alternada e desligada quando a tecla for desativada.
+  Atribua a word a um número.
   Conjuncione logicamente o número com 1.
   Se o número for 1, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se uma tecla was para cima:
-  Se a tecla was para baixo, diga não.
+Etapas para que se determine se uma tecla está para cima:
+  Se a tecla está para baixo, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se uma tecla com um lParam é algum comando de repetiçãoed escape ou modifier tecla:
+Etapas para que se determine se uma tecla com um lParam é alguma tecla de cancelamento ou tecla modificadora:
   Atribua o lParam a um número.
   Conjuncione logicamente o número com 1073741824 [$40000000].
   Se o número for 0, diga não.
   Se a tecla for a tecla Esc, diga sim.
-  Se a tecla for algum tipo de modifier tecla, diga sim.
+  Se a tecla for algum tipo de tecla modificadora, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se o left mouse botão está para baixo:
+Etapas para que se determine se o botão esquerdo do mouse está para baixo:
   Se o botão esquerdo deste mouse estiver sendo pressionado, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se um linha reta está above uma caixa:
+Etapas para que se determine se um linha reta está acima of  uma caixa:
   Se a coordenada Y desta localização inicial desta linha reta for maior do que ou igual à coordenada Y do canto superior esquerdo desta caixa, diga não.
   Se a coordenada Y desta localização final desta linha reta for maior do que ou igual à coordenada Y do canto superior esquerdo desta caixa, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se um linha reta está above uma coordenada:
+Etapas para que se determine se um linha reta está acima of  uma coordenada:
   Se a coordenada Y desta localização inicial desta linha reta for maior do que ou igual à coordenada, diga não.
   Se a coordenada Y desta localização final desta linha reta for maior do que ou igual à coordenada, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
@@ -3173,16 +3264,16 @@ Etapas para que se determine se something está selecionado em um text:
   Se o anchor deste text for o caret deste text, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se uma localização é above uma caixa:
+Etapas para que se determine se uma localização está acima of  uma caixa:
   Se a coordenada Y desta localização for menor do que a coordenada Y do canto superior esquerdo desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se uma localização é above um horizontal linha reta:
+Etapas para que se determine se uma localização está acima of  um horizontal linha reta:
   Se a coordenada Y desta localização for menor do que o horizontal y desta localização inicial desta linha reta, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se uma localização é above ou below uma caixa:
-  Se a localização é above a caixa, diga sim.
+Etapas para que se determine se uma localização está acima of  ou below uma caixa:
+  Se a localização está acima of  a caixa, diga sim.
   Se a localização é below a caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
@@ -3667,24 +3758,24 @@ Etapas para que se determine se we did encontre um endereço de memória:
   Se o endereço de memória for inexistente, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se we're above uma caixa:
+Etapas para que se determine se we're acima of  uma caixa:
   Se a coordenada Y deste context for menor do que a coordenada Y do canto superior esquerdo desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se we're above uma coordenada:
+Etapas para que se determine se we're acima of  uma coordenada:
   Se a coordenada Y deste context for menor do que a coordenada, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se we're above um horizontal linha reta:
-  Se a localização deste context é above o horizontal linha reta, diga sim.
+Etapas para que se determine se we're acima of  um horizontal linha reta:
+  Se a localização deste context está acima of  o horizontal linha reta, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se we're above ou below uma caixa:
+Etapas para que se determine se we're acima of  ou below uma caixa:
   Se a coordenada Y deste context for menor do que a coordenada Y do canto superior esquerdo desta caixa, diga sim.
   Se a coordenada Y deste context for maior do que a coordenada Y do canto inferior direito desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se we're above uma localização:
+Etapas para que se determine se we're acima of  uma localização:
   Se a coordenada Y deste context for menor do que a coordenada Y desta localização, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
@@ -5825,13 +5916,13 @@ Etapas para que se execute algum tipo de WM_ACTIVATE com um wParam (deactivate):
     e 0.
 
 Etapas para que se execute algum tipo de WM_CHAR com um wParam e um lParam:
-  \Se a tecla Alt was para baixo, cancele. \ removed por Spanish teclado AltGr e ctrl+alt characters
-  \Se a tecla Ctrl was para baixo, cancele. \ removed por Spanish teclado AltGr e ctrl+alt characters
+  \Se a tecla Alt está para baixo, cancele. \ removed por Spanish teclado AltGr e ctrl+alt characters
+  \Se a tecla Ctrl está para baixo, cancele. \ removed por Spanish teclado AltGr e ctrl+alt characters
   Atribua o wParam a um pedaço.
   Se o pedaço não for imprimível, cancele.
   Crie um event.
   Atribua "pressionamento de tecla" à categoria deste event. \traduzido
-  Se a tecla Shift was para baixo, acione o detector de tecla Shift deste event.
+  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste event.
   Atribua o pedaço ao pedaço deste event.
   Converta o lParam para a tecla deste event.
   Enfileire o event.
@@ -5846,18 +5937,18 @@ Etapas para que se execute algum tipo de WM_DESTROY:
 Etapas para que se execute algum tipo de WM_LBUTTONDBLCLK com um lParam:
   Crie um event.
   Atribua "clique duplo" à categoria deste event. \traduzido
-  Se a tecla Alt was para baixo, acione o detector de tecla alt deste event.
-  Se a tecla Ctrl was para baixo, acione o detector de tecla ctrl deste event.
-  Se a tecla Shift was para baixo, acione o detector de tecla Shift deste event.
+  Se a tecla Alt está para baixo, acione o detector de tecla Alt deste event.
+  Se a tecla Ctrl está para baixo, acione o detector de tecla Ctrl deste event.
+  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste event.
   Converta o lParam para a localização deste event.
   Enfileire o event.
 
 Etapas para que se execute algum tipo de WM_LBUTTONDOWN com um lParam:
   Crie um event.
   Atribua "clique" à categoria deste event. \traduzido
-  Se a tecla Alt was para baixo, acione o detector de tecla alt deste event.
-  Se a tecla Ctrl was para baixo, acione o detector de tecla ctrl deste event.
-  Se a tecla Shift was para baixo, acione o detector de tecla Shift deste event.
+  Se a tecla Alt está para baixo, acione o detector de tecla Alt deste event.
+  Se a tecla Ctrl está para baixo, acione o detector de tecla Ctrl deste event.
+  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste event.
   Converta o lParam para a localização deste event.
   Enfileire o event.
 
@@ -5875,18 +5966,18 @@ Etapas para que se execute algum tipo de WM_PAINT com um janela do programa:
 Etapas para que se execute algum tipo de WM_RBUTTONDBLCLK com um lParam:
   Crie um event.
   Atribua "clique direito duplo" à categoria deste event.
-  Se a tecla Alt was para baixo, acione o detector de tecla alt deste event.
-  Se a tecla Ctrl was para baixo, acione o detector de tecla ctrl deste event.
-  Se a tecla Shift was para baixo, acione o detector de tecla Shift deste event.
+  Se a tecla Alt está para baixo, acione o detector de tecla Alt deste event.
+  Se a tecla Ctrl está para baixo, acione o detector de tecla Ctrl deste event.
+  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste event.
   Converta o lParam para a localização deste event.
   Enfileire o event.
 
 Etapas para que se execute algum tipo de WM_RBUTTONDOWN com um lParam:
   Crie um event.
   Atribua "clique direito" à categoria deste event.
-  Se a tecla Alt was para baixo, acione o detector de tecla alt deste event.
-  Se a tecla Ctrl was para baixo, acione o detector de tecla ctrl deste event.
-  Se a tecla Shift was para baixo, acione o detector de tecla Shift deste event.
+  Se a tecla Alt está para baixo, acione o detector de tecla Alt deste event.
+  Se a tecla Ctrl está para baixo, acione o detector de tecla Ctrl deste event.
+  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste event.
   Converta o lParam para a localização deste event.
   Enfileire o event.
 
@@ -5896,13 +5987,13 @@ Etapas para que se execute algum tipo de WM_SETCURSOR:
 Etapas para que se execute algum tipo de WM_SYSKEYDOWN com um wParam e um lParam;
 Etapas para que se execute algum tipo de WM_KEYDOWN com um wParam e um lParam:
   Atribua o wParam a um tecla.
-  Se a tecla com o lParam é algum comando de repetiçãoed escape ou modifier tecla, cancele.
+  Se a tecla com o lParam é alguma tecla de cancelamento ou tecla modificadora, cancele.
   Se a tecla for algum tipo de WM_CHAR tecla, cancele.
   Crie um event.
   Atribua "pressionamento de tecla" à categoria deste event.
-  Se a tecla Alt was para baixo, acione o detector de tecla alt deste event.
-  Se a tecla Ctrl was para baixo, acione o detector de tecla ctrl deste event.
-  Se a tecla Shift was para baixo, acione o detector de tecla Shift deste event.
+  Se a tecla Alt está para baixo, acione o detector de tecla Alt deste event.
+  Se a tecla Ctrl está para baixo, acione o detector de tecla Ctrl deste event.
+  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste event.
   Atribua a tecla à tecla deste event.
   Enfileire o event.
 
@@ -7816,7 +7907,7 @@ Etapas para que se atribua a used contagem de buckets desse catálogo para uma co
 
 Etapas para que se atribua um número para um word big-endian unsigned:
   Atribua o número a um word.
-  Atribua o word ao word big-endian unsigned.
+  Atribua a word ao word big-endian unsigned.
 
 Etapas para que se atribua um número para uma string;
 Etapas para que se converta um número para uma string:
@@ -9379,9 +9470,9 @@ Etapas para que se separe uns coisas para uns left coisas e uns right coisas sob
   Limpe as coisas.
 
 Etapas para que se separe um word para um pedaço e um segundo pedaço:
-  Isole o word.
-  Desloque o word right 8 bits.
-  Atribua o word ao pedaço.
+  Isole a word.
+  Desloque a word right 8 bits.
+  Atribua a word ao pedaço.
   Atribua o original word ao segundo pedaço.
 
 Uma localização é um par de números com 
@@ -9738,7 +9829,7 @@ Etapas para que se start um temporizador:
   Reset o temporizador.
   Restart o temporizador.
 
-Etapas para que se start uns twips above o middle of o base of uma caixa:
+Etapas para que se start uns twips acima of  o middle of o base of uma caixa:
   \ incomplete abra of these
   Atribua a coordenada X deste center desta caixa à coordenada X desta localização deste context.
   Atribua a coordenada Y do canto inferior direito desta caixa menos os twips à coordenada Y desta localização deste context.
@@ -9780,7 +9871,7 @@ Etapas para que se start uns twips para cima desde uma coordenada:
   Atribua a coordenada menos os twips ao y deste context.
 
 Etapas para que se start uns twips para cima desde uma localização;
-Etapas para que se start uns twips above uma localização:
+Etapas para que se start uns twips acima of  uma localização:
   Atribua a coordenada Y desta localização ao y deste context.
   Subtraia os twips desde a coordenada Y deste context.
 
