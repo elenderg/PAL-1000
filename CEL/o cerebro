@@ -1014,9 +1014,9 @@ Etapas para que se converta um filetime para uma string:
   Atribua a string deste date/time à string.
 
 Etapas para que se converta um detector para um texto hexadecimal:
-  Reassign o first deste texto hexadecimal usando a magnitude deste detector.
-  Copie pedaços desde o endereçamento deste detector para o first deste texto hexadecimal pela magnitude deste detector.
-  Atribua o first deste texto hexadecimal mais a magnitude deste detector menos 1 ao last deste texto hexadecimal.
+  Reassign o first endereço de memória do pedaço deste texto hexadecimal usando a magnitude deste detector.
+  Copie pedaços desde o endereçamento deste detector para o first endereço de memória do pedaço deste texto hexadecimal pela magnitude deste detector.
+  Atribua o first endereço de memória do pedaço deste texto hexadecimal mais a magnitude deste detector menos 1 ao last deste texto hexadecimal.
 
 Etapas para que se converta uma font para um número da fonte:
   Isole a font.
@@ -1054,9 +1054,9 @@ Etapas para que se converta uma font para um número da fonte:
     \Se a função falhar, o valor de retorno será NULL.
 
 Etapas para que se converta uma fração para um texto hexadecimal:
-  Reassign o first deste texto hexadecimal usando a magnitude desta fração.
-  Copie pedaços desde o endereçamento desta fração para o first deste texto hexadecimal pela magnitude desta fração.
-  Atribua o first deste texto hexadecimal mais a magnitude desta fração menos 1 ao last deste texto hexadecimal.
+  Reassign o first endereço de memória do pedaço deste texto hexadecimal usando a magnitude desta fração.
+  Copie pedaços desde o endereçamento desta fração para o first endereço de memória do pedaço deste texto hexadecimal pela magnitude desta fração.
+  Atribua o first endereço de memória do pedaço deste texto hexadecimal mais a magnitude desta fração menos 1 ao last deste texto hexadecimal.
 
 Etapas para que se converta uma fração para um mixed:
   Se o denominador desta fração for 0, atribua 0 ao whole número deste mixed; atribua 0 ao ratio deste mixed; volte.
@@ -1080,11 +1080,11 @@ Etapas para que se converta uma fração para uma string usando um número:
 
 Etapas para que se converta um texto hexadecimal para um fração:
   Se a quantidade de caracteres deste texto hexadecimal não for a magnitude desta fração, atribua 0 e 1 ao ratio; volte.
-  Copie pedaços desde o first deste texto hexadecimal para o endereçamento desta fração pela magnitude desta fração.
+  Copie pedaços desde o first endereço de memória do pedaço deste texto hexadecimal para o endereçamento desta fração pela magnitude desta fração.
 
 Etapas para que se converta um texto hexadecimal para um número:
   Se a quantidade de caracteres deste texto hexadecimal não for a magnitude deste número, limpe o número; volte.
-  Copie pedaços desde o first deste texto hexadecimal para o endereçamento destte número pela magnitude deste número.
+  Copie pedaços desde o first endereço de memória do pedaço deste texto hexadecimal para o endereçamento destte número pela magnitude deste número.
 
 Etapas para que se converta um lParam para um tecla:
   \ assumes lParam desde wm_char message
@@ -1169,9 +1169,9 @@ Etapas para que se converta um endereço de memória e uma quantidade de caractere
 
 Etapas para que se converta um endereço de memória para um texto hexadecimal;
 Etapas para que se converta um número para um texto hexadecimal:
-  Reassign o first deste texto hexadecimal usando a magnitude deste número.
-  Copie pedaços desde o endereçamento deste número para o first deste texto hexadecimal pela magnitude deste número.
-  Atribua o first deste texto hexadecimal mais a magnitude deste número menos 1 ao last deste texto hexadecimal.
+  Reassign o first endereço de memória do pedaço deste texto hexadecimal usando a magnitude deste número.
+  Copie pedaços desde o endereçamento deste número para o first endereço de memória do pedaço deste texto hexadecimal pela magnitude deste número.
+  Atribua o first endereço de memória do pedaço deste texto hexadecimal mais a magnitude deste número menos 1 ao last deste texto hexadecimal.
 
 Etapas para que se converta um endereço de memória para uma cifra hexadecimal;
 Etapas para que se converta um número para uma cifra hexadecimal:
@@ -1600,7 +1600,7 @@ Etapas para que se crie um crypt session com uma passphrase string:
     \Para obter mais informações sobre qual identificador de algoritmo é usado pelos diferentes provedores para as especificações de chave AT_KEYEXCHANGE e AT_SIGNATURE, consulte ALG_ID. 
     e O HCRYPTHASH deste crypt session [hBaseData] \Um identificador para um objeto hash que foi alimentado com os dados de base exatos.
     e 8388608 [dwFlags Key length: 128 bit]  \Especifica o tipo de chave gerada. Os tamanhos de uma chave de sessão podem ser definidos quando a chave é gerada. O tamanho da chave, representando o comprimento do módulo da chave em bits, é definido com os 16 bits superiores deste parâmetro. Assim, se uma chave de sessão RC4 de 128 bits deve ser gerada, o valor 0x00800000 é combinado com qualquer outro valor predefinido dwFlags com um operati bit a bit OR
-    e O endereçamento deste hcryptkey desta crypt session  [phKey] \Um ponteiro para uma variável HCRYPTKEY para receber o endereço do identificador da chave recém-gerada.
+    e O endereçamento deste hCryptKey desta crypt session  [phKey] \Um ponteiro para uma variável HCRYPTKEY para receber o endereço do identificador da chave recém-gerada.
     devolvendo o número resultante. \Se a função for bem-sucedida, o valor de retorno será TRUE.
     \Se a função falhar, o valor de retorno será FALSE.
   Se o número resultante for 0, atribua "Erro. Não foi possível derivar a chave da sessão." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
@@ -3903,22 +3903,49 @@ Etapas para que se determine se you feel like it:
   Se o número for menor do que 51, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se decrypt um trecho usando um passphrase string:
+Etapas para que se decifre um trecho usando uma passphrase string:
   \ sets erro do fluxo de entrada/saída if failure
   Limpe o erro do fluxo de entrada/saída.
   Crie uma crypt session usando o passphrase.
   Se a crypt session for inexistente, cancele.
   Converta o trecho como uma cifra hexadecimal para um texto hexadecimal.
   Atribua a quantidade de caracteres deste texto hexadecimal a uma quantidade de caracteres.
-  Call "advapi32.dll" "CryptDecrypt" com 
-    A hcryptkey desta crypt session 
-    e 0 
-    e 1 
-    e 0 
-    e O first deste texto hexadecimal 
-    e O endereçamento deste quantidade de caracteres 
-    devolvendo um número resultante.
-  Se o número resultante for 0, atribua "Ocorreu um erro na hora de tentar decifrar os dados." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
+  Call "advapi32.dll" "CryptDecrypt" com \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptdecrypt
+  \A função CryptDecrypt descriptografa os dados criptografados anteriormente usando a função CryptEncrypt.
+  \Importante: Esta API está obsoleta. 
+  \Softwares deveriam começar a usar APIs de criptografia de última geração. 
+  \A Microsoft pode remover esta API em versões futuras.
+    A hCryptKey desta crypt session [hKey] \Um identificador para a chave a ser usada para a descriptografia. 
+    \Um aplicativo pode obter esse identificador usando a função CryptGenKey ou CryptImportKey.
+    \https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptgenkey
+    \https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptimportkey
+    \Esta chave especifica o algoritmo de descriptografia a ser usado.
+    e 0 [hHash] \Um identificador para um objeto hash. 
+    \Se os dados devem ser descriptografados e hasheadps simultaneamente, um identificador para um objeto hash é passado neste parâmetro. 
+    \O valor do hash é atualizado com o texto simples descriptografado. 
+    \Esta opção é útil ao descriptografar e verificar uma assinatura simultaneamente.
+    \Antes de chamar CryptDecrypt, o aplicativo deve obter um identificador para o objeto hash chamando a função CryptCreateHash. 
+    \https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptcreatehash
+    \Depois que a descriptografia for concluída, o valor de hash pode ser obtido usando a função CryptGetHashParam, 
+    \https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptgethashparam
+    \ele também pode ser assinado usando a função CryptSignHash 
+    \https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptsignhasha
+    \ou pode ser usado para verificar uma assinatura digital usando a função CryptVerifySignature.
+    \https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptverifysignaturea
+    \Se nenhum hash for feito, este parâmetro deve ser zero.
+    e 1 [Final] \Um valor booleano que especifica se esta é a última seção de uma série que está sendo descriptografada. 
+    \Este valor é TRUE se este for o último ou único bloco. Se este não for o último bloco, o valor é FALSE.
+    e 0 [dwFlags] \ não define nenhuma opção
+    e O first endereço de memória do pedaço deste texto hexadecimal [*pbData] \Um ponteiro para um buffer que contém os dados a serem descriptografados. 
+    \Depois que a descriptografia foi executada, o texto simples é colocado de volta neste mesmo buffer.
+    \O número de bytes criptografados neste buffer é especificado por pdwDataLen abaixo
+    e O endereçamento deste quantidade de caracteres [*pdwDataLen] \Um ponteiro para um valor DWORD que indica o comprimento do buffer pbData. 
+    \Antes de chamar essa função, o aplicativo de chamada define o valor DWORD como o número de bytes a serem descriptografados. 
+    \Ao retornar, o valor DWORD contém o número de bytes do texto simples descriptografado.
+    \Quando uma cifra de bloco é usada, esse comprimento de dados deve ser um múltiplo do tamanho do bloco, a menos que esta seja a seção final dos dados a ser descriptografada e o parâmetro Final seja TRUE.
+    devolvendo um número resultante. \Se a função for bem-sucedida, ela retornará um valor diferente de zero (VERDADEIRO).
+    \Se a função falhar, ele retornará zero (FALSO).
+  Se o número resultante for 0, atribua "Ocorreu um erro ao tentar decifrar os dados." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
   Destrua o crypt session.
   Atribua o texto hexadecimal ao trecho.
 
@@ -3938,8 +3965,15 @@ Etapas para que se desvencilhe-se de um text:
 
 Etapas para que se destrua um crypt session:
   Se o crypt session for inexistente, cancele.
-  Call "advapi32.dll" "CryptDestroyKey" com 
-    A hcryptkey desta crypt session.
+  Call "advapi32.dll" "CryptDestroyKey" com \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptdestroykey
+  \A função CryptDestroyKey libera o identificador referenciado pelo parâmetro hKey.
+  \Se o identificador se referir a uma chave de sessão ou a uma chave pública que foi importada para o provedor de serviços de criptografia (CSP) por meio de CryptImportKey, 
+  \essa função destrói a chave e libera a memória que a chave usou. 
+  \Muitos CSPs sobrescrevem a memória onde a chave estava armazenada antes de liberá-la. 
+  \No entanto, o par de chaves pública / privada subjacente não é destruído por esta função. Apenas o identificador é destruído.
+    A hCryptKey desta crypt session.[hKey] \O número identificador da chave a ser destruída.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
   Call "advapi32.dll" "CryptDestroyHash" com 
     O hcrypthash desta crypt session.
   Call "advapi32.dll" "CryptReleaseContext" com 
@@ -4692,7 +4726,7 @@ Etapas para que se encrypt um trecho usando um passphrase string:
   Atribua o trecho a um temp trecho.
   Atribua a quantidade de caracteres deste temp trecho a uma quantidade de caracteres.
   Call "advapi32.dll" "CryptEncrypt" com 
-    A hcryptkey desta crypt session 
+    A hCryptKey desta crypt session 
     e 0 
     e 1 
     e 0 
