@@ -85,7 +85,7 @@ An context é uma coisa com
 
 An byte# é um número.
 
-An canvas é um HDC. \ HDC = handle device context
+An canvas é um hDC. \ hDC = handle device context
 
 An bucket# é um número.
 
@@ -224,37 +224,37 @@ Etapas para que se ajuste uma imagem (extraindo as caixas do gpBitmap):
 
 Etapas para que se ajuste espaçamento da fonte usando uma string:
   Se o quadro atual não for a área de impressão, cancele.
-  Call "gdi32.dll" "SetTextCharacterExtra" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-settextcharacterextra
+  Call "gdi32.dll" "SetTextCharacterExtra" com  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-settextcharacterextra
   \A função SetTextCharacterExtra define o espaçamento entre caracteres e adiciona espaço extra para cada célula de caractere na fonte selecionada, 
   \incluindo o caractere de quebra,  quando o sistema grava uma linha de texto.
-    A área de impressão  [HDC]\ Um identificador para o contexto do dispositivo.
+    A área de impressão  [hDC]\ Um identificador para o contexto do dispositivo.
     e 0. [extra]   \ A quantidade de espaço extra, em unidades lógicas, a ser adicionada a cada caractere. 
     \quero traduzir esse comando como: Mande a área de impressão e o código 0 para a função "SetTextCharacterExtra" da biblioteca "gdi32.dll".
-  Call "gdi32.dll" "GetCurrentObject" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcurrentobject
+  Call "gdi32.dll" "GetCurrentObject" com  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcurrentobject
   \A função GetCurrentObject retorna um identificador que identifica a caneta, pincel, paleta, bitmap ou fonte atual e a função GetObject inicializa uma estrutura contendo os atributos desse objeto. 
   \Algumas impressoras fornecem canetas, pincéis e fontes residentes que podem ser usados para melhorar a velocidade de desenho em um aplicativo.
-    A área de impressão [HDC] \ Um identificador para o contexto do dispositivo.
+    A área de impressão [hDC] \ Um identificador para o contexto do dispositivo.
     e 6 [type OBJ_FONT]    \ O tipo de objeto a ser consultado. Este parâmetro pode ser vários valores.
     \ OBJ_FONT -> Retorna a fonte selecionada no momento.
     devolvendo um número identificador. [h] \ Se a função for bem-sucedida, o valor de retorno é um identificador para o objeto especificado. Se a função falhar, o valor de retorno será NULL.
   Call "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O memory canvas [HDC] \ Um identificador para o contexto do dispositivo.
+    O memory canvas [hDC] \ Um identificador para o contexto do dispositivo.
     e O número identificador. [h] \ Um identificador para o objeto a ser selecionado. Nesse caso é o número do comando anterior (a fonte selecionada no momento), retornado pelo GetCurrentObject acima
   Obtenha um largura usando a string e o memory canvas.
   Call "gdi32.dll" "SelectObject" com 
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O memory canvas [HDC] \ Um identificador para o contexto do dispositivo.
+    O memory canvas [hDC] \ Um identificador para o contexto do dispositivo.
     e O null número da fonte.  [h] \ Um identificador para o objeto a ser selecionado. 
     \Nesse caso é também é um número identificador de fonte, mas  este valor é o da função GetStockObject 
     \O sistema oferece seis fontes de estoque. Uma fonte de estoque é uma fonte lógica que um aplicativo pode obter chamando a função GetStockObject e especificando a fonte solicitada. 
     \Esse valor corresponde à ANSI_FIXED_FONT que especifica uma fonte monoespaçada baseada no conjunto de caracteres ANSI do Windows. Uma fonte Courier é normalmente usada.
   Obtenha uma segunda largura usando a string e a área de impressão.
   Atribua a largura menos a segunda largura dividido pelo quantidade de caracteres desta string a um número.
-  Call "gdi32.dll" "SetTextCharacterExtra" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-settextcharacterextra
+  Call "gdi32.dll" "SetTextCharacterExtra" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-settextcharacterextra
     \A função SetTextCharacterExtra define o espaçamento entre caracteres. 
     \O espaçamento entre caracteres é adicionado a cada caractere, incluindo caracteres de quebra, quando o sistema grava uma linha de texto.
-    A área de impressão [HDC] \Um identificador para o contexto do dispositivo.
+    A área de impressão [hDC] \Um identificador para o contexto do dispositivo.
     e O número. [extra] \A quantidade de espaço extra, em unidades lógicas, a ser adicionada a cada caractere. 
     \Se o modo de mapeamento atual não for MM_TEXT, o parâmetro nCharExtra é transformado e arredondado para o pixel mais próximo.
 
@@ -273,7 +273,7 @@ Um ângulo é uns precise degrees. [cujos valores variam ente 0 e 3599]
 
 Etapas para que se posponha um trecho para um file:
   Limpe o erro do fluxo de entrada/saída.
-  Call "kernel32.dll" "SetFilePointer" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-setfilepointer
+  Call "kernel32.dll" "SetFilePointer" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-setfilepointer
   \Esta função armazena o ponteiro do arquivo em dois valores LONG.
   \Quando um arquivo é aberto, o Windows associa um ponteiro de arquivo com o fluxo padrão. 
   \Esse ponteiro de arquivo é um valor de deslocamento que especifica o próximo byte a ser lido ou o local para receber o próximo byte escrito.
@@ -294,7 +294,7 @@ Etapas para que se posponha um trecho para um file:
     \Observação: Como o valor -1 (INVALID_SET_FILE_POINTER) é um valor válido para o DWORD de ordem inferior do novo ponteiro de arquivo, 
    \O certo seria verificar o valor de retorno da função e o código de erro retornado por GetLastError para determinar se um erro ocorreu ou não. 
     \Se ocorreu um erro, o valor de retorno de SetFilePointer será -1 (INVALID_SET_FILE_POINTER) e a função GetLastError retornará um valor diferente de 0 (NO_ERROR ).  
-  Call "kernel32.dll" "WriteFile" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile
+  Call "kernel32.dll" "WriteFile" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile
   \ Essa função serve pra gravar dados no arquivo ou dispositivo de entrada / saída (E/S) especificado.
     O file [hFile]  \ Um identificador para o arquivo ou dispositivo de E/S 
     \(por exemplo, um arquivo, fluxo de arquivo, disco físico, volume, buffer de console, unidade de fita, soquete, recurso de comunicação, processador de mensagens ou canal).
@@ -409,7 +409,7 @@ Etapas para que se assign um endereço de memória usando um quantidade de pedaços
   Se o quantidade de pedaços for 0, esvazie o endereço de memória; volte.
   Isole o quantidade de pedaços.
   Arredonde o quantidade de pedaços para cima para o nearest power of two.
-  Call "kernel32.dll" "HeapAlloc" com \https://docs.microsoft.com/en-us/windows/win32/api/heapapi/nf-heapapi-heapalloc
+  Call "kernel32.dll" "HeapAlloc" com \ https://docs.microsoft.com/en-us/windows/win32/api/heapapi/nf-heapapi-heapalloc
   \Aloca um bloco de memória de um heap. A memória alocada não é móvel.
     O endereço heap [hHeap] \ Um identificador para o heap do qual a memória será alocada. Esse identificador é retornado pela função HeapCreate ou GetProcessHeap .
     e 8 [dwFlags ] \As opções de alocação de heap. A especificação de qualquer um desses valores substituirá o valor correspondente especificado quando o heap foi criado com HeapCreate . 
@@ -459,9 +459,9 @@ Etapas para que se inicie a impressão:
   Inicialize a área de impressão.
   Atribua a magnitude desse DOCINFO ao cbSize deste DOCINFO.
   Atribua o first deste nome deste module ao lpszDocName deste DOCINFO.
-  Call "gdi32.dll" "StartDocA" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-startdoca
+  Call "gdi32.dll" "StartDocA" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-startdoca
   \A função StartDoc inicia um trabalho de impressão.
-    A área de impressão [HDC] \Um identificador para o contexto do dispositivo para o trabalho de impressão.
+    A área de impressão [hDC] \Um identificador para o contexto do dispositivo para o trabalho de impressão.
     e O endereçamento deste DOCINFO. [*lpdi] \Um ponteiro para uma estrutura DOCINFO contendo o nome do arquivo de documento e o nome do arquivo de saída.
 
 Etapas para que se inicie uma folha:
@@ -516,7 +516,7 @@ Etapas para que se avance um percorredor por um número:
   Adicione o número para o first endereço de memória do pedaço deste segmento final deste percorredor.
 
 Etapas para que se assobie:
-  Call "kernel32.dll" "Beep" com \https://docs.microsoft.com/en-us/windows/win32/api/utilapiset/nf-utilapiset-beep
+  Call "kernel32.dll" "Beep" com \ https://docs.microsoft.com/en-us/windows/win32/api/utilapiset/nf-utilapiset-beep
     \Gera tons simples no alto-falante. A função é síncrona; ele executa uma espera alertável e não retorna o controle para seu chamador até que o som termine.
     220 [dwFreq] \A frequência do som, em hertz. Este parâmetro deve estar no intervalo de 37 a 32.767 (0x25 a 0x7FFF).
     e 200. [dwDuration] \A duração do som, em milissegundos
@@ -580,15 +580,15 @@ Etapas para que se centralize uma elipse em uma caixa (horizontalmente):
 Etapas para que se centralize uma elipse em uma caixa (verticalmente):
   Centralize a caixa desta elipse na caixa (verticalmente).
 
-Etapas para que se centralize um linha reta em uma caixa (horizontalmente):
+Etapas para que se centralize uma linha reta em uma caixa (horizontalmente):
   Atribua a coordenada X deste center desta caixa menos a coordenada X deste center desta linha reta a um número.
   Arredonde o número para o múltiplo imediato of a quantidade de twips/pixel .
-  Mova o linha reta usando o número e 0.
+  Mova a linha reta usando o número e 0.
 
-Etapas para que se centralize um linha reta em uma caixa (verticalmente):
+Etapas para que se centralize uma linha reta em uma caixa (verticalmente):
   Atribua a coordenada Y deste center desta caixa menos a coordenada Y deste center desta linha reta a um número.
   Arredonde o número para o múltiplo imediato of a quantidade de twips/pixel .
-  Mova o linha reta usando 0 e o número.
+  Mova a linha reta usando 0 e o número.
 
 Etapas para que se centralize uma imagem em uma caixa (horizontalmente):
   Se a imagem for inexistente, cancele.
@@ -849,7 +849,7 @@ Etapas para que se compativelmente handle algum tipo de message com um janela do
   \Postado na janela com o foco do teclado quando o usuário pressiona a tecla F10 (que ativa a barra de menus) ou mantém pressionada a tecla ALT e pressiona outra tecla. 
   \Também ocorre quando nenhuma janela tem o foco do teclado; neste caso, a mensagem WM_SYSKEYDOWN é enviada para a janela ativa. 
   \A janela que recebe a mensagem pode distinguir entre esses dois contextos, verificando o código de contexto no parâmetro lParam .
-  Call "user32.dll" "DefWindowProcA" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-defwindowproca
+  Call "user32.dll" "DefWindowProcA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-defwindowproca
   \Chama o procedimento de janela padrão para fornecer processamento padrão para todas as mensagens de janela que um aplicativo não processa. 
   \Esta função garante que todas as mensagens sejam processadas. DefWindowProc é chamado com os mesmos parâmetros recebidos pelo procedimento de janela.
     A janela do programa [hWnd] \Um identificador para o procedimento de janela que recebeu a mensagem.
@@ -959,7 +959,7 @@ Etapas para que se converta uma cor para um código da cor:
   Limite a luminosidade desta cor para 1 e 239.
   Redimensione proporcionalmente a matiz desta cor usando 240/3600.
   Limite a matiz desta cor para 1 e 239.
-  Call "shlwapi.dll" "ColorHLSToRGB" com \https://docs.microsoft.com/en-us/windows/win32/api/shlwapi/nf-shlwapi-colorhlstorgb
+  Call "shlwapi.dll" "ColorHLSToRGB" com \ https://docs.microsoft.com/en-us/windows/win32/api/shlwapi/nf-shlwapi-colorhlstorgb
   \ Converte cores de matiz-luminância-saturação (HLS) para o formato RGB.
     A matiz desta cor [wHue] \O valor de matiz HLS original.
     e A luminosidade desta cor  [wLuminance] \O valor de luminância HLS original.
@@ -971,7 +971,7 @@ Etapas para que se converta uma cor para um espaço de cor RGB:
   Converta o código da cor para o espaço de cor RGB.
 
 Etapas para que se converta um código da cor para uma cor:
-  Call "shlwapi.dll" "ColorRGBToHLS" com \https://docs.microsoft.com/en-us/windows/win32/api/shlwapi/nf-shlwapi-colorrgbtohls
+  Call "shlwapi.dll" "ColorRGBToHLS" com \ https://docs.microsoft.com/en-us/windows/win32/api/shlwapi/nf-shlwapi-colorrgbtohls
     O código da cor e [clrRGB] \ A cor RGB original.
     O endereçamento desse word [*pwHue] \ Um ponteiro para um valor que, quando esse método retorna com êxito, recebe o valor de matiz HLS.
     e O endereçamento dessa segunda word [*pwLuminance] \ Um ponteiro para um valor que, quando este método retorna com sucesso, recebe o valor de luminância HLS.
@@ -997,7 +997,7 @@ Etapas para que se converta um código da cor para um espaço de cor RGB:
 
 Etapas para que se converta um filetime para uma string:
   Limpe a string.
-  Call "kernel32.dll" "FileTimeToSystemTime" com \https://docs.microsoft.com/en-us/windows/win32/api/timezoneapi/nf-timezoneapi-filetimetosystemtime
+  Call "kernel32.dll" "FileTimeToSystemTime" com \ https://docs.microsoft.com/en-us/windows/win32/api/timezoneapi/nf-timezoneapi-filetimetosystemtime
   \ Converte a hora do arquivo em formato de hora do sistema. A hora do sistema é baseada na hora universal coordenada (UTC).
     O endereçamento deste filetime [*lpFileTime] \ Um ponteiro para uma estrutura FILETIME contendo a hora do arquivo a ser convertida para o formato de data e hora do sistema (UTC).
     e O endereçamento desse SYSTEMTIME [lpSystemTime] \ Um ponteiro para uma estrutura SYSTEMTIME para receber a hora do arquivo convertido.
@@ -1021,7 +1021,7 @@ Etapas para que se converta um detector para um texto hexadecimal:
 Etapas para que se converta uma font para um número da fonte:
   Isole a font.
   Termine com o caractere NULL o nome desta font.
-  Call "gdi32.dll" "CreateFontA" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createfonta
+  Call "gdi32.dll" "CreateFontA" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createfonta
   \A função CreateFont cria uma fonte lógica com as características especificadas. A fonte lógica pode ser posteriormente selecionada como a fonte para qualquer dispositivo.
    - a altura desta font times 3 [e depois] dividido por 4 [cHeight] \A altura, em unidades lógicas, da célula ou caractere da fonte. 
    \O valor da altura do caractere (também conhecido como altura EM) é o valor da altura da célula do caractere menos o principal valor interno.
@@ -1090,9 +1090,9 @@ Etapas para que se converta um lParam para um tecla:
   \ assumes lParam desde wm_char message
   Atribua o lParam à tecla.
   Desloque a tecla right 16 bits.
-  \https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+  \ https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
   Conjuncione logicamente a tecla com 255. \11111111 ou FF
-  Call "user32.dll" "MapVirtualKeyA" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeya
+  Call "user32.dll" "MapVirtualKeyA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mapvirtualkeya
   \Traduz (mapeia) um código de tecla virtual em um código de varredura ou valor de caractere, ou traduz um código de varredura em um código de tecla virtual.
     A tecla [uCode] \O código de chave virtual ou código de leitura de uma chave. 
     \Como esse valor é interpretado depende do valor do parâmetro uMapType.
@@ -1333,7 +1333,7 @@ Etapas para que se converta uma string para uns rows:
 
 Etapas para que se converta uma string para um UUID:
   Converta a string para uma string composta de caracteres amplos e termine com o caractere NULL.
-  Call "ole32.dll" "CLSIDFromString" com \https://docs.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-clsidfromstring
+  Call "ole32.dll" "CLSIDFromString" com \ https://docs.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-clsidfromstring
   \Converte uma seqüência de caracteres gerada pela função StringFromCLSID de volta pro CLSID original.
     O first endereço de memória do pedaço desta string composta de caracteres amplos [lpsz] \A representação da seqüência de caracteres do CLSID.
     e O endereçamento deste UUID. [pclsid] \Um ponteiro para o CLSID.
@@ -1365,7 +1365,7 @@ Etapas para que se converta uma URL para uma URL simplificada:
   Atribua 1 ao dwHostNameLength destes URL_COMPONENTS.
   Atribua 1 ao dwUrlPathLength destes URL_COMPONENTS.
   Atribua 1 ao dwExtraInfoLength destes URL_COMPONENTS.
-  Call "wininet.dll" "InternetCrackUrlA" com \https://docs.microsoft.com/en-us/windows/win32/api/wininet/nf-wininet-internetcrackurla
+  Call "wininet.dll" "InternetCrackUrlA" com \ https://docs.microsoft.com/en-us/windows/win32/api/wininet/nf-wininet-internetcrackurla
   \"Racha" uma URL em suas partes componentes.
     O first endereço de memória do pedaço desta URL [lpszUrl] \ Ponteiro para uma string que contém a URL canônica a ser quebrada.
     e 0 [dwUrlLength] \ Tamanho da string lpszUrl, em TCHARs, ou zero se lpszUrl for uma string ASCIIZ.
@@ -1488,7 +1488,7 @@ Um contador é um número.
 Etapas para que se crie o connect handle of uma requisição WinHTTP using uma URL simplificada:
   Se a requisição WinHTTP for inexistente, cancele.
   Converta o nome de host desta URL simplificada a uma string composta de caracteres amplos denominado wide host nome e termine com o caractere NULL.
-  Call "WinHTTP.dll" "WinHttpConnect" com \https://docs.microsoft.com/en-us/windows/win32/api/WinHTTP/nf-WinHTTP-winhttpconnect
+  Call "WinHTTP.dll" "WinHttpConnect" com \ https://docs.microsoft.com/en-us/windows/win32/api/WinHTTP/nf-WinHTTP-winhttpconnect
     \A função WinHttpConnect faz 2 coisas:
     \1. Especifica o servidor de destino inicial de uma solicitação HTTP e;
     \2. Retorna um identificador de conexão HINTERNET de uma sessão HTTP para esse destino inicial.
@@ -1531,12 +1531,12 @@ Etapas para que se crie um crypt session com uma passphrase string:
   \ define o erro do fluxo de entrada/saída em caso de falha
   Limpe o erro do fluxo de entrada/saída.
   Aloque memória para o crypt session.
-  Atribua "Microsoft Enhanced Cryptographic Provider v1.0" ao nome do provedor criptográfico. [MS_ENHANCED_PROV] \https://docs.microsoft.com/en-us/windows/win32/seccertenroll/cryptoapi-cryptographic-service-providers
+  Atribua "Microsoft Enhanced Cryptographic Provider v1.0" ao nome do provedor criptográfico. [MS_ENHANCED_PROV] \ https://docs.microsoft.com/en-us/windows/win32/seccertenroll/cryptoapi-cryptographic-service-providers
   \ aquisição do contexto
-  Call "advapi32.dll" "CryptAcquireContextA" com \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptacquirecontexta
+  Call "advapi32.dll" "CryptAcquireContextA" com \ https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptacquirecontexta
     \A função CryptAcquireContext é usada para adquirir um identificador para um contêiner de chave específico em um determinado provedor de serviços criptográficos (CSP). 
     \Este identificador retornado é usado em chamadas para funções CryptoAPI que usam o CSP selecionado.
-    O endereçamento deste HCRYPTPROV deste crypt session [*phProv] \Um ponteiro para um identificador de um provedor de serviços criptográficos (CSP). 
+    O endereçamento deste hCryptProv deste crypt session [*phProv] \Um ponteiro para um identificador de um provedor de serviços criptográficos (CSP). 
     e 0 [szContainer] \O nome do contêiner de chave. Esta é uma string terminada em nulo que identifica o contêiner de chave para o CSP.
     \Na maioria dos casos, quando dwFlags é definido como -268435456 (CRYPT_VERIFYCONTEXT), pszContainer deve ser definido como NULL.
     e o first endereço de memória do pedaço deste nome do provedor criptográfico [szProvider]  
@@ -1559,10 +1559,10 @@ Etapas para que se crie um crypt session com uma passphrase string:
     \Se a função falhar, ele retorna zero (FALSO).
   Se o número resultante for 0, atribua "Erro. Não foi possível adquirir o identificador do contêiner de chave do provedor de serviços criptográficos ." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
   \ criação do hash
-  Call "advapi32.dll" "CryptCreateHash" com \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptcreatehash
+  Call "advapi32.dll" "CryptCreateHash" com \ https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptcreatehash
     \A função CryptCreateHash inicializa o hash de um fluxo de dados. 
     \Ele cria e retorna ao aplicativo de chamada um identificador para um objeto hash do provedor de serviços de criptografia (CSP).
-    o HCRYPTPROV deste crypt session [hProv] \Um identificador para um CSP criado por uma chamada feita para a função CryptAcquireContext acima.
+    o hCryptProv deste crypt session [hProv] \Um identificador para um CSP criado por uma chamada feita para a função CryptAcquireContext acima.
     e 32771 [Algid CALG_MD5]  \Um valor ALG_ID que identifica o algoritmo de hash a ser usado. 
     \O tipo de dados ALG_ID especifica um identificador de algoritmo. Os parâmetros desse tipo de dados são passados para a maioria das funções na CryptoAPI.
     \Os valores válidos para este parâmetro variam, dependendo do CSP usado.
@@ -1575,7 +1575,7 @@ Etapas para que se crie um crypt session com uma passphrase string:
     \Se a função falhar, ele retornará FALSE.
   Se o número resultante for 0, atribua "Erro. Não foi possível criar o hash da senha." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
   \ hash passphrase
-  Call "advapi32.dll" "CryptHashData" com \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-crypthashdata
+  Call "advapi32.dll" "CryptHashData" com \ https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-crypthashdata
     \A função CryptHashData adiciona dados a um objeto hash especificado. 
     \ Esta função e CryptHashSessionKey podem ser chamadas várias vezes para calcular o hash de fluxos de dados longos ou descontínuos.
     O HCRYPTHASH deste crypt session [hHash] \O número dentificador do objeto hash.
@@ -1590,11 +1590,11 @@ Etapas para que se crie um crypt session com uma passphrase string:
     \Se a função falhar, o valor de retorno será FALSE.
   Se o número resultante for 0, atribua "Erro. Não foi possível adicionar dados ao hash da senha." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
  \ gera a chave da sessão criptográfica
-  Call "advapi32.dll" "CryptDeriveKey" com  \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptderivekey
+  Call "advapi32.dll" "CryptDeriveKey" com  \ https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptderivekey
   \A função CryptDeriveKey gera chaves de sessão criptográficas derivadas de um valor de dados base. 
   \Esta função garante que quando o mesmo provedor de serviços criptográficos (CSP) e algoritmos são usados, as chaves geradas a partir da mesma base de dados são idênticas. 
   \Os dados da base podem ser uma senha ou quaisquer outros dados do usuário.
-    O HCRYPTPROV deste crypt session [hProv] \Um identificador HCRYPTPROV de um CSP criado por uma chamada para CryptAcquireContext.
+    O hCryptProv deste crypt session [hProv] \Um identificador hCryptProv de um CSP criado por uma chamada para CryptAcquireContext.
     e 26625 [CALG_RC4  Stream Cipher Algid] \Uma estrutura ALG_ID que identifica o algoritmo de criptografia simétrica para o qual a chave deve ser gerada. 
     \Os algoritmos disponíveis provavelmente serão diferentes para cada CSP. 
     \Para obter mais informações sobre qual identificador de algoritmo é usado pelos diferentes provedores para as especificações de chave AT_KEYEXCHANGE e AT_SIGNATURE, consulte ALG_ID. 
@@ -1641,10 +1641,10 @@ Etapas para que se crie umas font larguras usando um font:
   Assign o data destes font larguras usando a contagem destas font larguras times a magnitude desse número.
   Crie o número da fonte of o memory canvas usando a font.
   Assign um original ABC endereço de memória usando 256 times a magnitude desse ABC.
-  Call "gdi32.dll" "GetCharABCWidthsA" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcharabcwidthsa
+  Call "gdi32.dll" "GetCharABCWidthsA" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcharabcwidthsa
     \ A função GetCharABCWidths recupera as larguras, em unidades lógicas, de caracteres consecutivos em um intervalo especificado da fonte TrueType atual. 
     \ Esta função é só funciona com fontes TrueType.
-    O memory canvas [HDC] \ Um identificador para o contexto do dispositivo.
+    O memory canvas [hDC] \ Um identificador para o contexto do dispositivo.
     e 0 [wFirst] \ O primeiro caractere do grupo de caracteres consecutivos da fonte atual.
     e 255 [wLast] \O último caractere no grupo de caracteres consecutivos da fonte atual.
     e o original ABC endereço de memória. [lpABC] \ Um ponteiro para uma matriz de estruturas ABC que recebe as larguras dos caracteres, em unidades lógicas. 
@@ -1673,13 +1673,13 @@ Etapas para que se crie uns font larguras usando uma font e uma string:
   Atribua a quantidade de caracteres desta string ao nglyphs destes GcpResults.
   Assign o lpDX destes GcpResults usando a quantidade de caracteres desta string times a magnitude desse número.
   Crie o número da fonte of o memory canvas usando a font.
-  Call "gdi32.dll" "GetCharacterPlacementA" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcharacterplacementa
+  Call "gdi32.dll" "GetCharacterPlacementA" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcharacterplacementa
     \A função GetCharacterPlacement recupera informações sobre uma string de caracteres, tais como larguras de caracteres, posicionamento de circunflexo, ordenação dentro da string e renderização de glifo.
     \A função copia as informações para a estrutura GCP_RESULTS especificada ou para uma ou mais matrizes especificadas pela estrutura.
     \Embora essa função já tenha sido adequada para trabalhar com cadeias de caracteres, 
     \ a necessidade de trabalhar com um número crescente de linguagens e sistemas de escrita a tornou obsoleta. 
     \Ela foi substituído pela funcionalidade do módulo Uniscribe. Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/Intl/uniscribe
-    O memory canvas [HDC] \Um identificador para o contexto do dispositivo.
+    O memory canvas [hDC] \Um identificador para o contexto do dispositivo.
     e O first endereço de memória do pedaço desta string [lpString] \Um ponteiro para a sequência de caracteres a ser processada. 
     \A string acima não precisa ser terminada em zero, pois nCount especifica o comprimento da string.
     e A quantidade de caracteres desta string [nCount] \O comprimento da string apontada por lpString.
@@ -1696,7 +1696,7 @@ Etapas para que se crie uns font larguras usando uma font e uma string:
 
 Etapas para que se crie um gpBitmap usando um trecho:
   Limpe o erro do fluxo de entrada/saída.
-  Call "kernel32.dll" "GlobalAlloc" com \https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalalloc
+  Call "kernel32.dll" "GlobalAlloc" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalalloc
     \Aloca o número especificado de bytes do heap.
   2 [uFlags GMEM_MOVEABLE] \Os atributos de alocação de memória. Se zero for especificado, o padrão é GMEM_FIXED.
   \GMEM_MOVEABLE = 0x0002
@@ -1711,7 +1711,7 @@ Etapas para que se crie um gpBitmap usando um trecho:
 \A função GlobalLock bloqueia um objeto de memória global e aumenta a contagem de bloqueios em um. 
 \A função GlobalUnlock o desbloqueia e diminui a contagem de bloqueios em um. 
 \Para obter a contagem de bloqueios de um objeto de memória global, use a função GlobalFlags.
-  Call "kernel32.dll" "GlobalLock" com \https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globallock
+  Call "kernel32.dll" "GlobalLock" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globallock
     \Bloqueia um objeto de memória global e retorna um ponteiro para o primeiro byte do bloco de memória do objeto.
     \Observação: As funções globais têm maior sobrecarga e fornecem menos recursos do que outras funções de gerenciamento de memória. 
     \Novos aplicativos devem usar as funções de heap, a menos que a documentação indique que uma função global deve ser usada.
@@ -1725,13 +1725,13 @@ Etapas para que se crie um gpBitmap usando um trecho:
 \A memória bloqueada não será movida ou descartada, a menos que o objeto de memória seja realocado usando a função GlobalReAlloc. 
 \O bloco de memória de um objeto de memória bloqueado permanece bloqueado até que sua contagem de bloqueios diminua para zero, momento em que pode ser movido ou descartado.
   Copie pedaços desde o first endereço de memória do pedaço deste trecho para o endereço de memória pelo quantidade de caracteres deste trecho.
-  Call "kernel32.dll" "GlobalUnlock" com \https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalunlock
+  Call "kernel32.dll" "GlobalUnlock" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalunlock
     \Diminui a contagem de bloqueios associada a um objeto de memória que foi alocado com GMEM_MOVEABLE. Esta função não tem efeito em objetos de memória alocados com GMEM_FIXED.
     O número identificador. [hMem] \Um identificador para o objeto de memória global. Nese caso o identificador é número identificador retornado pela função GlobalAlloc .
     \Se o objeto de memória ainda estiver bloqueado após diminuir a contagem de bloqueios, o valor de retorno será um valor diferente de zero. 
     \Se o objeto de memória for desbloqueado após diminuir a contagem de bloqueios, a função retornará zero e GetLastError retornará 0 (NO_ERROR).
     \Um processo não deve depender do valor de retorno para determinar o número de vezes que ele deve subsequentemente chamar GlobalUnlock para um objeto de memória.
-  Call "ole32.dll" "CreateStreamOnHGlobal" com \https://docs.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-createstreamonhglobal
+  Call "ole32.dll" "CreateStreamOnHGlobal" com \ https://docs.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-createstreamonhglobal
     \A função CreateStreamOnHGlobal cria um objeto de fluxo que usa um identificador de memória HGLOBAL para armazenar o conteúdo do fluxo. 
     \Este objeto é a implementação da interface IStream fornecida por OLE.
     \O objeto de fluxo retornado oferece suporte para leitura e gravação, não é transacionado e não oferece suporte para bloqueio de região. 
@@ -1755,7 +1755,7 @@ Etapas para que se crie um gpBitmap usando um trecho:
     e O endereçamento deste gpBitmap [**bitmap] \Ponteiro para uma variável DWORD (endereçamento) que recebe um ponteiro para um objeto Bitmap (o gpBitmap).
     devolvendo um número.
   Se o número não for 0, atribua "Não sei como processar este tipo de imagem." ao erro do fluxo de entrada/saída; esvazie o gpBitmap.
-  Call o release deste vtable deste istream com o istream.
+  Call o release deste vtable deste istream com o istream. \verificar isso com calma
 
 Etapas para que se crie um GpImageAttributes (escala de cinza):
   Call "gdiplus.dll" "GdipCreateImageAttributes" com 
@@ -1771,26 +1771,26 @@ Etapas para que se crie um GpImageAttributes (escala de cinza):
    e 0 [grayMatrix] \Especifica uma matriz a ser usada para ajustar os tons de cinza quando o valor do parâmetro flags é igual ColorMatrixFlagsAltGray.
    e 0 [flags = ColorMatrixFlagsDefault]. \Elemento da enumeração ColorMatrixFlags que especifica o tipo de imagem e a cor que serão afetados pela matriz de ajuste de cor.
 
-Etapas para que se crie o HBRUSH of um canvas usando uma cor:
+Etapas para que se crie o hBrush of um canvas usando uma cor:
   Converta a cor para um código da cor.
-  Se a cor for clear, atribua o null HBRUSH a um HBRUSH.
-  Se a cor não for clear, Call "gdi32.dll" "CreateSolidBrush" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createsolidbrush
+  Se a cor for clear, atribua o null hBrush a um hBrush.
+  Se a cor não for clear, Call "gdi32.dll" "CreateSolidBrush" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createsolidbrush
     \A função CreateSolidBrush cria um pincel lógico que possui a cor sólida especificada.
     O código da cor [color] \A cor do pincel. Para criar um valor de cor COLORREF, use a macro RGB.
-    devolvendo o HBRUSH. \Se a função for bem-sucedida, o valor de retorno identifica um pincel lógico.
+    devolvendo o hBrush. \Se a função for bem-sucedida, o valor de retorno identifica um pincel lógico.
     \Se a função falhar, o valor de retorno será NULL.
     \Um pincel sólido é um bitmap que o sistema usa para pintar o interior de formas preenchidas.
      \Depois que um aplicativo cria um pincel chamando CreateSolidBrush, ele pode selecionar esse pincel em qualquer contexto de dispositivo chamando a função SelecionarObjeto
-  Call "gdi32.dll" "SelectObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
+  Call "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O canvas [HDC] \Um identificador para o contexto do dispositivo.
-    e O HBRUSH. [h] \Um identificador para o objeto a ser selecionado.
+    O canvas [hDC] \Um identificador para o contexto do dispositivo.
+    e O hBrush. [h] \Um identificador para o objeto a ser selecionado.
 
 Etapas para que se crie o número da fonte of um canvas usando um font:
   Converta a font para um número da fonte.
-  Call "gdi32.dll" "SelectObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
+  Call "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O canvas [HDC] \Um identificador para o contexto do dispositivo.
+    O canvas [hDC] \Um identificador para o contexto do dispositivo.
     e O número da fonte. [h] \Um número identificador para o objeto a ser selecionado.
 
 Etapas para que se crie o hpen of um canvas usando uma cor:
@@ -1798,7 +1798,7 @@ Etapas para que se crie o hpen of um canvas usando uma cor:
   Se a cor estiver clear, atribua o null hpen a um hpen.
   Atribua a quantidade de twips/pixel times o grossura do pincel a um número.
   Se o canvas for a área de impressão, atribua 1 pixel times o grossura do pincel ao número.
-  Se a cor não estiver clear, Call "gdi32.dll" "CreatePen" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpen
+  Se a cor não estiver clear, Call "gdi32.dll" "CreatePen" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpen
   \A função CreatePen cria uma caneta lógica que possui o estilo, largura e cor especificados. 
   \A caneta pode ser posteriormente selecionada em um contexto de dispositivo e usada para desenhar linhas e curvas.
     0 [iStyle = PS_SOLID]  \O estilo da caneta. PS_SOLID = A linha da caneta é "sólida" (sem traços ou pontilhados).
@@ -1808,83 +1808,83 @@ Etapas para que se crie o hpen of um canvas usando uma cor:
     \Se a função falhar, o valor de retorno será NULL.
      \Depois que um aplicativo cria uma caneta lógica, ele pode selecionar essa caneta em um contexto de dispositivo chamando a função SelecionarObjeto. 
       \Depois que uma caneta é selecionada em um contexto de dispositivo, ela pode ser usada para desenhar linhas e curvas.
-  Call "gdi32.dll" "SelectObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
+  Call "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O canvas [HDC] \Um identificador para o contexto do dispositivo.
+    O canvas [hDC] \Um identificador para o contexto do dispositivo.
     e O hpen. [h] \Um número identificador para o objeto a ser selecionado.
 
 Etapas para que se crie um hRgn usando uma caixa: 
-  \hRgn = número identificador da região que será desenhada na tela
+  \ hRgn = número identificador da região que será desenhada na tela
   Isole a caixa.
   Adicione a quantidade de twips/pixel para o canto inferior direito desta caixa.
-  Call "gdi32.dll" "BeginPath" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-beginpath
+  Call "gdi32.dll" "BeginPath" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-beginpath
     \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
-    O quadro atual.[HDC] \Um identificador para o contexto do dispositivo.
+    O quadro atual.[hDC] \Um identificador para o contexto do dispositivo.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
-  Call "gdi32.dll" "Rectangle" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-rectangle
+  Call "gdi32.dll" "Rectangle" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-rectangle
     \A função Retângulo desenha um retângulo. O retângulo é delineado com a caneta (pincel) atual e preenchido com o pincel (brush) atual.
-    O quadro atual [HDC] \Um identificador para o contexto do dispositivo.
+    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada X do canto inferior direito desta caixa [right] \A coordenada X, em coordenadas lógicas, do canto inferior direito do retângulo.
     e A coordenada Y do canto inferior direito desta caixa.[bottom] \A coordenada Y, em coordenadas lógicas, do canto inferior direito do retângulo.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
-  Call "gdi32.dll" "EndPath" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpath
+  Call "gdi32.dll" "EndPath" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpath
     \A função EndPath fecha um suporte de caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
-    O quadro atual. [HDC] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
+    O quadro atual. [hDC] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
-  Call "gdi32.dll" "PathToRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-pathtoregion
+  Call "gdi32.dll" "PathToRegion" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-pathtoregion
   \A função PathToRegion cria uma região do caminho que é selecionado no contexto de dispositivo especificado. A região resultante usa coordenadas do dispositivo.
-    O quadro atual [HDC] \Identificador para um contexto de dispositivo que contém um caminho fechado.
+    O quadro atual [hDC] \Identificador para um contexto de dispositivo que contém um caminho fechado.
    devolvendo o hRgn. \Se a função for bem-sucedida, o valor de retorno é um identificador válido para a região.
     \ Se a função falhar, o valor de retorno é zero.
 
 Etapas para que se crie um hRgn usando uma elipse:
-  \hRgn = número identificador da região que será desenhada na tela
+  \ hRgn = número identificador da região que será desenhada na tela
   Atribua a caixa desta elipse a uma caixa. \ No windows, toda elipse é desenhada dentro de uma caixa
-  Call "gdi32.dll" "BeginPath" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-beginpath
+  Call "gdi32.dll" "BeginPath" com  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-beginpath
     \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
-    O quadro atual.[HDC] \Um identificador para o contexto do dispositivo.
+    O quadro atual.[hDC] \Um identificador para o contexto do dispositivo.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
-  Call "gdi32.dll" "Ellipse" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ellipse
+  Call "gdi32.dll" "Ellipse" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ellipse
   \A função Ellipse desenha uma elipse. O centro da elipse é o centro do retângulo delimitador especificado. A elipse é delineada com a caneta atual e preenchida com o pincel atual.
-    O quadro atual [HDC] \Um identificador para o contexto do dispositivo.
+    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada X do canto inferior direito desta caixa [right] \A coordenada X, em coordenadas lógicas, do canto inferior direito do retângulo.
     e A coordenada Y do canto inferior direito desta caixa.[bottom] \A coordenada Y, em coordenadas lógicas, do canto inferior direito do retângulo.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
-  Call "gdi32.dll" "EndPath" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpath
+  Call "gdi32.dll" "EndPath" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpath
     \A função EndPath fecha um suporte de caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
-    O quadro atual. [HDC] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
+    O quadro atual. [hDC] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
-  Call "gdi32.dll" "PathToRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-pathtoregion
+  Call "gdi32.dll" "PathToRegion" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-pathtoregion
   \A função PathToRegion cria uma região do caminho que é selecionado no contexto de dispositivo especificado. A região resultante usa coordenadas do dispositivo.
-    O quadro atual [HDC] \Identificador para um contexto de dispositivo que contém um caminho fechado.
+    O quadro atual [hDC] \Identificador para um contexto de dispositivo que contém um caminho fechado.
    devolvendo o hRgn. \Se a função for bem-sucedida, o valor de retorno é um identificador válido para a região.
     \ Se a função falhar, o valor de retorno é zero.
 
 Etapas para que se crie um hRgn usando um polígono:
-  \hRgn = número identificador da região que será desenhada na tela
+  \ hRgn = número identificador da região que será desenhada na tela
   Se o polígono for inexistente, atribua 0 ao hRgn; volte.
   [caso o polígono exista, então:] Crie uma série de vértices usando os vértices deste polígono.
-  Call "gdi32.dll" "LPtoDP" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-lptodp
+  Call "gdi32.dll" "LPtoDP" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-lptodp
   \A função LPtoDP converte coordenadas lógicas em coordenadas de dispositivo.
   \A conversão depende do modo de mapeamento do contexto do dispositivo, das configurações das origens e extensões da janela e da janela de visualização e da transformação do mundo.
-    O quadro atual [HDC] \Um identificador para o contexto do dispositivo.
+    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
     e O endereço de memória da localização desta série de vértices [lppt] \Um ponteiro para uma matriz de estruturas POINT. 
     \As coordenadas x e as coordenadas y contidas em cada uma das estruturas POINT serão transformadas.
     \A estrutura POINT define as coordenadas X e Y de um ponto.
     e A quantidade de vértices desta série de vértices. [c] \O número de pontos na matriz/série de vértices.
   \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
   \Se a função falhar, o valor de retorno é zero.
-  Call "gdi32.dll" "CreatePolygonRgn" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpolypolygonrgn
+  Call "gdi32.dll" "CreatePolygonRgn" com  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpolypolygonrgn
   \A função CreatePolygonRgn cria uma região poligonal.
     O endereço de memória da localização desta série de vértices  [*pptl] \Um ponteiro para uma matriz de estruturas POINT que definem os vértices do polígono em unidades lógicas. 
    \O polígono é presumido como sendo um polígono fechado. Cada vértice pode ser especificado apenas uma vez.
@@ -1921,14 +1921,14 @@ Etapas para que se crie um hRgn usando uma caixa arredondada:
   Se o raio desta caixa arredondada for 0, crie o hRgn usando a caixa arredondada como [se fosse] uma caixa [normal]; volte.
   Atribua a caixa arredondada a uma caixa.
   Atribua o raio desta caixa arredondada times 2 a um diameter número.
-  Call "gdi32.dll" "BeginPath" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-beginpath
+  Call "gdi32.dll" "BeginPath" com  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-beginpath
     \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
-    O quadro atual.[HDC] \Um identificador para o contexto do dispositivo.
+    O quadro atual.[hDC] \Um identificador para o contexto do dispositivo.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
-  Call "gdi32.dll" "RoundRect" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-roundrect
+  Call "gdi32.dll" "RoundRect" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-roundrect
   \A função RoundRect desenha um retângulo com cantos arredondados. O retângulo é delineado com a caneta atual e preenchido com o pincel atual.
-    O quadro atual [HDC] \Um identificador para o contexto do dispositivo.
+    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada X do canto inferior direito desta caixa [right] \A coordenada X, em coordenadas lógicas, do canto inferior direito do retângulo.
@@ -1939,14 +1939,14 @@ Etapas para que se crie um hRgn usando uma caixa arredondada:
     \Se a função falhar, o valor de retorno é zero.
     \Observação: A posição atual não é usada nem atualizada por esta função.
     \Para obter um exemplo, consulte https://docs.microsoft.com/en-us/windows/desktop/gdi/using-filled-shapes
-  Call "gdi32.dll" "EndPath" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpath
+  Call "gdi32.dll" "EndPath" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpath
     \A função EndPath fecha um suporte de caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
-    O quadro atual. [HDC] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
+    O quadro atual. [hDC] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
-  Call "gdi32.dll" "PathToRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-pathtoregion
+  Call "gdi32.dll" "PathToRegion" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-pathtoregion
   \A função PathToRegion cria uma região do caminho que é selecionado no contexto de dispositivo especificado. A região resultante usa coordenadas do dispositivo.
-    O quadro atual [HDC] \Identificador para um contexto de dispositivo que contém um caminho fechado.
+    O quadro atual [hDC] \Identificador para um contexto de dispositivo que contém um caminho fechado.
    devolvendo o hRgn. \Se a função for bem-sucedida, o valor de retorno é um identificador válido para a região.
     \ Se a função falhar, o valor de retorno é zero.
 
@@ -1965,7 +1965,7 @@ Etapas para que se crie o dicionário léxico:
 Etapas para que se crie o número identificador de abertura of uma requisição WinHTTP:
   Se a requisição WinHTTP for inexistente, cancele.
   Converta o nome deste module para uma string composta de caracteres amplos denominado wide module nome e termine com o caractere NULL.
-  Call "WinHTTP.dll" "WinHttpOpen" com \https://docs.microsoft.com/en-us/windows/win32/api/winhttp/nf-winhttp-winhttpopen
+  Call "WinHTTP.dll" "WinHttpOpen" com \ https://docs.microsoft.com/en-us/windows/win32/api/winhttp/nf-winhttp-winhttpopen
   \A função WinHttpOpen inicializa, para um aplicativo, o uso de funções WinHTTP e retorna um identificador de sessão WinHTTP.
   \A função WinHttpOpen é a primeira das funções WinHTTP chamadas por um aplicativo. 
   \Ela inicializa estruturas de dados WinHTTP internas e prepara-as para chamadas futuras do aplicativo.
@@ -2006,7 +2006,7 @@ Etapas para que se crie um endereço completo no sistema de arquivos (pasta)[ende
   Isole o endereço completo.
   Remove algum tipo de trailing barra invertida desde o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "CreateDirectoryA" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createdirectorya
+  Call "kernel32.dll" "CreateDirectoryA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createdirectorya
   \Cria um novo diretório. Se o sistema de arquivos subjacente oferecer suporte à segurança em arquivos e diretórios, a função aplicará um descritor de segurança especificado ao novo diretório.
   \Para especificar um diretório de modelo, use a função CreateDirectoryEx.
     O first deste endereço completo [lpPathName] \O caminho do diretório a ser criado.
@@ -2031,7 +2031,7 @@ Etapas para que se crie um endereço completo no sistema de arquivos (pasta)[ende
 Etapas para que se crie um endereço completo no sistema de arquivos (arquivo):
   Isole o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "CreateFileA" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilea
+  Call "kernel32.dll" "CreateFileA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilea
   \Cria ou abre um arquivo ou dispositivo de E/S. 
   \Os dispositivos de E / S mais comumente usados são os seguintes: 
   \arquivo, fluxo de arquivo, diretório, disco físico, volume, buffer de console, unidade de fita, recurso de comunicação, slot de correio e canal. 
@@ -2050,10 +2050,10 @@ Etapas para que se crie um endereço completo no sistema de arquivos (arquivo):
     e 1073741824 [dwDesiredAccess = GENERIC_WRITE] \O acesso solicitado ao arquivo ou dispositivo, que pode ser resumido como leitura, gravação, ambos ou nenhum zero).
     \Os valores mais comumente usados são -2147483648 (GENERIC_READ), 1073741824 (GENERIC_WRITE) ou ambos -1073741824 (GENERIC_READ | GENERIC_WRITE). 
     \Para obter mais informações, consulte os sites:
-    \https://docs.microsoft.com/en-us/windows/desktop/SecAuthZ/generic-access-rights
-    \https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-security-and-access-rights
-    \https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-access-rights-constants
-    \https://docs.microsoft.com/en-us/windows/desktop/SecAuthZ/access-mask
+    \ https://docs.microsoft.com/en-us/windows/desktop/SecAuthZ/generic-access-rights
+    \ https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-security-and-access-rights
+    \ https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-access-rights-constants
+    \ https://docs.microsoft.com/en-us/windows/desktop/SecAuthZ/access-mask
     \Se este parâmetro for zero, o aplicativo pode consultar certos metadados, como arquivo, diretório ou atributos de dispositivo sem acessar esse arquivo ou dispositivo, 
     \mesmo se o acesso GENERIC_READ tivesse sido negado.
     e 0 [dwShareMode] \O modo de compartilhamento solicitado do arquivo ou dispositivo, que pode ser lido, escrito, ambos, excluir, todos ou nenhum. 
@@ -2061,7 +2061,7 @@ Etapas para que se crie um endereço completo no sistema de arquivos (arquivo):
     \O valor 0 impede que outros processos abram esse arquivo ou dispositivo se solicitarem acesso de exclusão, leitura ou gravação.
   \Se este parâmetro for 0 e CreateFile for bem-sucedido, o arquivo ou dispositivo não pode ser compartilhado e não pode ser aberto novamente até que o identificador para o arquivo ou dispositivo seja fechado.   
     e 0 [lpSecurityAttributes] \Um ponteiro para uma estrutura SECURITY_ATTRIBUTES que contém dois membros de dados separados, mas relacionados: 
-    \https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)
+    \ https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)
     \um descritor de segurança opcional e um valor booleano que determina se o identificador retornado pode ser herdado por processos filho.
     \Este parâmetro pode ser NULL.
     \Se este parâmetro for NULL, o identificador retornado por CreateFile não pode ser herdado por nenhum processo filho que o aplicativo possa criar 
@@ -2083,13 +2083,25 @@ Etapas para que se crie um endereço completo no sistema de arquivos (arquivo):
     \Ao abrir um arquivo existente, CreateFile ignora este parâmetro
     devolvendo um número identificador. \Se a função for bem-sucedida, o valor de retorno será um identificador aberto para o arquivo, dispositivo, canal nomeado ou slot de correio especificado.
     \Se a função falhar, o valor de retorno é -1 (INVALID_HANDLE_VALUE).
-  Call "kernel32.dll" "CloseHandle" com \https://docs.microsoft.com/en-us/windows/win32/api/handleapi/nf-handleapi-closehandle
+  Call "kernel32.dll" "CloseHandle" com \ https://docs.microsoft.com/en-us/windows/win32/api/handleapi/nf-handleapi-closehandle
   \Fecha um identificador de objeto aberto.
+  \CloseHandle deve ser usado quando você terminar com o objeto. 
+  \Em geral, CloseHandle invalida o identificador do objeto especificado, diminui a contagem do identificador do objeto e executa verificações de retenção do objeto. 
+  \Depois que o último identificador para um objeto é fechado, o objeto é removido do sistema.
     O número identificador. [hObject] \Um identificador válido para um objeto aberto.
     \Se o aplicativo estiver sendo executado em um depurador, a função lançará uma exceção se receber um valor de identificador inválido ou um valor de pseudo-identificador. 
     \Isso pode acontecer se você fechar um identificador duas vezes ou se você chamar CloseHandle em um identificador retornado pela função FindFirstFile em vez de chamar a função FindClose.
   Limpe o erro do fluxo de entrada/saída.
-  Se o número identificador não for -1 [INVALID_HANDLE_VALUE], cancele. \ Ver comentário acima
+  \Geralmente, um aplicativo deve chamar CloseHandle uma vez para cada identificador que abre. 
+  \Geralmente não é necessário chamar CloseHandle se uma função que usa um identificador falhar com ERROR_INVALID_HANDLE, 
+  \porque esse erro geralmente indica que o identificador já está invalidado. 
+  \No entanto, algumas funções usam ERROR_INVALID_HANDLE para indicar que o próprio objeto não é mais válido. 
+  \Por exemplo, uma função que tenta usar um identificador para um arquivo em uma rede pode falhar com ERROR_INVALID_HANDLE se a conexão de rede for interrompida, 
+  \porque o objeto de arquivo não está mais disponível. 
+  \Nesse caso, o aplicativo deve fechar o identificador.
+  \Se a função CloseHandle for bem-sucedida, o valor de retorno será diferente de zero.
+  \Se a função CloseHandle  falhar, o valor de retorno será zero.
+  Se o número identificador [da função CreateFileA] não for -1 [INVALID_HANDLE_VALUE], cancele. \ Se a função CreateFileA falhar, o valor de retorno é -1 (INVALID_HANDLE_VALUE).
   Atribua "Erro. Não foi possível criar o arquivo '" junto com o endereço completo seguido de "'." ao erro do fluxo de entrada/saída.
 
 Etapas para que se crie uma imagem:
@@ -2170,7 +2182,7 @@ Etapas para que se crie um socket usando um host string e um número de porta:
   Atribua 2 [AF_INET ] ao sin_family deste sockaddr.
   Atribua o port ao sin_port deste sockaddr.
   \ cria o socket 
-  Call "ws2_32.dll" "socket" com \https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket
+  Call "ws2_32.dll" "socket" com \ https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-socket
   \A função de soquete cria um soquete (encaixe/tomada) que está vinculado a um provedor de serviços de transporte específico.
     2 [af = AF_INET ] \ Valor da família de endereços do endereço de transporte. 
     \O valor AF_INET é usado para endereços IPV4
@@ -2184,16 +2196,16 @@ Etapas para que se crie um socket usando um host string e um número de porta:
   \Caso contrário, um valor de INVALID_SOCKET é retornado
   Se o socket for -1 [INVALID_SOCKET ], atribua "Erro. O soquete informado não é um soquete válido." ao erro do fluxo de entrada/saída; volte.
   \ connect socket
-  Call "ws2_32.dll" "connect" com \https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-connect
+  Call "ws2_32.dll" "connect" com \ https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-connect
   \A função connect estabelece uma conexão com um soquete especificado.
     O socket [s] \Um descritor que identifica um soquete não conectado.
     e O endereçamento deste sockaddr [*name] \Um ponteiro para a estrutura sockaddr com a qual a conexão deve ser estabelecida.
-    \https://docs.microsoft.com/en-us/windows/desktop/WinSock/sockaddr-2
+    \ https://docs.microsoft.com/en-us/windows/desktop/WinSock/sockaddr-2
     e A magnitude deste sockaddr [namelen] \O comprimento, em bytes, da estrutura sockaddr apontada pelo parâmetro name.
     devolvendo um número resultante.\Se nenhum erro ocorrer, a conexão retorna zero. Caso contrário, retorna SOCKET_ERROR
   Se o número resultante não for 0 [SOCKET_ERROR], atribua "Erro. Não foi possível estabelecer uma conexão com o soquete informado." ao erro do fluxo de entrada/saída; volte.
   \ abra send timeout 30 seconds
-  Call "ws2_32.dll" "setsockopt" com \https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-setsockopt
+  Call "ws2_32.dll" "setsockopt" com \ https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-setsockopt
   \A função setsockopt define uma opção de socket.
     O socket [s] \Um descritor que identifica um soquete.
     e 65535 [level] \O nível em que a opção é definida (por exemplo, SOL_SOCKET).
@@ -2205,7 +2217,7 @@ Etapas para que se crie um socket usando um host string e um número de porta:
     devolvendo o número resultante. \Se nenhum erro ocorrer, setsockopt retorna zero. Caso contrário, um valor de SOCKET_ERROR é retornado
   Se o número resultante não for 0 [SOCKET_ERROR ], atribua "Erro na função 'setsockopt' da biblioteca 'ws2_32.dll'. Não foi possível definiro tempo limite de envio SO_SNDTIMEO (4101) do soquete. " ao erro do fluxo de entrada/saída; volte.
   \ abra receive timeout 30 seconds
-  Call "ws2_32.dll" "setsockopt" com \https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-setsockopt
+  Call "ws2_32.dll" "setsockopt" com \ https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-setsockopt
   \A função setsockopt define uma opção de socket.
     O socket [s] \Um descritor que identifica um soquete.
     e 65535 [level] \O nível em que a opção é definida (por exemplo, SOL_SOCKET).
@@ -2468,7 +2480,7 @@ Etapas para que se produza o relatório de informações usando um relatório:
   Termine com o caractere NULL o relatório.
   Atribua "Detalhes: " a um relatório de erros.
   \Chame função "MessageBoxA" contida na biblioteca "user32.dll" informando os parâmetros a seguir: 0, o primeiro caractere do texto em questão, o primeiro caractere de "debug" e 0.
-  Call "user32.dll" "MessageBoxA" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-messageboxa
+  Call "user32.dll" "MessageBoxA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-messageboxa
   \Exibe uma caixa de diálogo modal que contém um ícone do sistema, um conjunto de botões e uma breve mensagem específica do aplicativo, como status ou informações de erro. 
   \A caixa de mensagem retorna um valor inteiro que indica em qual botão o usuário clicou.
     0 [hWnd] \Um identificador para a janela do proprietário da caixa de mensagem a ser criada. 
@@ -2933,7 +2945,7 @@ Etapas para que se determine se uma tecla é algum tipo de WM_CHAR tecla:
 
 Etapas para que se determine se uma tecla [ou botão do mouse] está sendo pressionado;
 Etapas para que se determine se uma [determinada] tecla [específica] está sendo pressionada:
-  Call "user32.dll" "GetAsyncKeyState" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getasynckeystate
+  Call "user32.dll" "GetAsyncKeyState" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getasynckeystate
   \GetAsyncKeyState Determina se uma tecla está ativada ou desativada no momento em que a função é chamada e se a tecla foi pressionada após uma chamada anterior para GetAsyncKeyState.
     A tecla [vKey] \O código de tecla virtual. Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/inputdev/virtual-key-codes
     \Você pode diferenciar as teclas iguais do teclado se precisar saber se uma tecla específica está sendo pressionada . 
@@ -2958,7 +2970,7 @@ Etapas para que se determine se uma [determinada] tecla [específica] está sendo 
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma tecla está para baixo:
-  Call "user32.dll" "GetKeyState" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getkeystate
+  Call "user32.dll" "GetKeyState" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getkeystate
   \Recupera o status da tecla virtual especificada. 
   \O status especifica se a tecla está para cima, para baixo ou alternada (ligada, desligada - alternando cada vez que a tecla é pressionada).
     A tecla [nVirtKey] \Uma chave virtual. Se a chave virtual desejada for uma letra ou dígito (A-Z, a-z ou 0-9), nVirtKey deve ser definido com o valor ASCII desse caractere. 
@@ -3013,7 +3025,7 @@ Etapas para que se determine se uma tecla está para baixo:
 Etapas para que se determine se uma tecla está ligada;
 Etapas para que se determine se uma tecla está alternada;
 Etapas para que se determine se uma tecla está ativada:
-  Call "user32.dll" "GetKeyState" com  \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getkeystate
+  Call "user32.dll" "GetKeyState" com  \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getkeystate
   \Recupera o status da tecla virtual especificada. 
   \O status especifica se a tecla está para cima, para baixo ou alternada (ligada, desligada - alternando cada vez que a tecla é pressionada).
     A tecla [nVirtKey] \Uma chave virtual. Se a chave virtual desejada for uma letra ou dígito (A-Z, a-z ou 0-9), nVirtKey deve ser definido com o valor ASCII desse caractere. 
@@ -3047,28 +3059,28 @@ Etapas para que se determine se o botão esquerdo do mouse está para baixo:
   Se o botão esquerdo deste mouse estiver sendo pressionado, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se um linha reta está acima of uma caixa:
+Etapas para que se determine se uma linha reta está acima of uma caixa:
   Se a coordenada Y desta localização inicial desta linha reta for maior do que ou igual à coordenada Y do canto superior esquerdo desta caixa, diga não.
   Se a coordenada Y desta localização final desta linha reta for maior do que ou igual à coordenada Y do canto superior esquerdo desta caixa, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se um linha reta está acima of uma coordenada:
+Etapas para que se determine se uma linha reta está acima of uma coordenada:
   Se a coordenada Y desta localização inicial desta linha reta for maior do que ou igual à coordenada, diga não.
   Se a coordenada Y desta localização final desta linha reta for maior do que ou igual à coordenada, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se um linha reta está debaixo of uma caixa:
+Etapas para que se determine se uma linha reta está debaixo of uma caixa:
   Se a coordenada Y desta localização inicial desta linha reta for menor do que ou igual à coordenada Y do canto inferior direito desta caixa, diga não.
   Se a coordenada Y desta localização final desta linha reta for menor do que ou igual à coordenada Y do canto inferior direito desta caixa, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se um linha reta está debaixo of uma coordenada:
+Etapas para que se determine se uma linha reta está debaixo of uma coordenada:
   Se a coordenada Y desta localização inicial desta linha reta for menor do que ou igual à coordenada, diga não.
   Se a coordenada Y desta localização final desta linha reta for menor do que ou igual à coordenada, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se um linha reta está still em uma caixa;
-Etapas para que se determine se um linha reta está em uma caixa:
+Etapas para que se determine se uma linha reta está still em uma caixa;
+Etapas para que se determine se uma linha reta está em uma caixa:
   Se a localização inicial desta linha reta não estiver na caixa, diga não.
   Se a localização final desta linha reta não estiver na caixa, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
@@ -3181,7 +3193,7 @@ Etapas para que se determine se um endereço completo é file-format:
 Etapas para que se determine se um endereço completo está no sistema de arquivos:
   Isole o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "GetFileAttributesA" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getfileattributesa
+  Call "kernel32.dll" "GetFileAttributesA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getfileattributesa
   \Obtém atributos do sistema de arquivos para um arquivo ou diretório especificado.
   \Para obter mais informações sobre o atributo obtido, use a função GetFileAttributesEx.
   \Os atributos de arquivo são valores de metadados armazenados pelo sistema de arquivos em disco 
@@ -3201,7 +3213,7 @@ Etapas para que se determine se um endereço completo está no sistema de arquivos
 Etapas para que se determine se um endereço completo é somente leitura:
   Isole o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "GetFileAttributesA" com  \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getfileattributesa
+  Call "kernel32.dll" "GetFileAttributesA" com  \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getfileattributesa
   \Obtém atributos do sistema de arquivos para um arquivo ou diretório especificado.
   \Para obter mais informações sobre o atributo obtido, use a função GetFileAttributesEx.
   \Os atributos de arquivo são valores de metadados armazenados pelo sistema de arquivos em disco 
@@ -3309,7 +3321,7 @@ Etapas para que se determine se uma localização está em uma elipse:
   Crie um hRgn usando a elipse.
   Isole a localização.
   Divida a localização pelo quantidade de twips/pixel .
-  Call "gdi32.dll" "PtInRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ptinregion
+  Call "gdi32.dll" "PtInRegion" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ptinregion
   \A função PtInRegion determina se o ponto especificado está dentro da região especificada.
     O hRgn [hrgn] \O número identificador da região a ser examinada.
     e A coordenada X desta localização [x] \Especifica a coordenada x do ponto em unidades lógicas.
@@ -3328,7 +3340,7 @@ Etapas para que se determine se uma localização está em uma imagem:
 Etapas para que se determine se uma localização está em um polígono:
   Se o polígono for inexistente, diga não.
   Crie uma série de vértices usando os vértices deste polígono.
-  Call "gdi32.dll" "CreatePolygonRgn" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpolypolygonrgn
+  Call "gdi32.dll" "CreatePolygonRgn" com  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpolypolygonrgn
   \A função CreatePolygonRgn cria uma região poligonal.
     O endereço de memória da localização desta série de vértices  [*pptl] \Um ponteiro para uma matriz de estruturas POINT que definem os vértices do polígono em unidades lógicas. 
    \O polígono é presumido como sendo um polígono fechado. Cada vértice pode ser especificado apenas uma vez.
@@ -3359,14 +3371,14 @@ Etapas para que se determine se uma localização está em um polígono:
     \O sistema destaca o pixel se o valor da contagem for diferente de zero.
     devolvendo um hRgn. \Se a função for bem-sucedida, o valor de retorno será o número identificador da região.
     \Se a função falhar, o valor de retorno será NULL.
-  Call "gdi32.dll" "PtInRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ptinregion
+  Call "gdi32.dll" "PtInRegion" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ptinregion
   \A função PtInRegion determina se o ponto especificado está dentro da região especificada.
     O hRgn [hrgn] \O número identificador da região a ser examinada.
     e A coordenada X desta localização [x] \Especifica a coordenada x do ponto em unidades lógicas.
     e A coordenada Y desta localização [y] \Especifica a coordenada y do ponto em unidades lógicas.
     devolvendo um número. \Se o ponto especificado estiver na região, o valor de retorno será diferente de zero.
     \Se o ponto especificado não estiver na região, o valor de retorno é zero.
-  Call "gdi32.dll" "DeleteObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
+  Call "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
   \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
   \Depois que o objeto é excluído, o identificador especificado não é mais válido.
     O hRgn. [ho] \Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
@@ -3386,7 +3398,7 @@ Etapas para que se determine se uma localização está em uma caixa arredondada:
   Isole a caixa arredondada.
   Adicione a quantidade de twips/pixel para a canto inferior direito desta caixa arredondada.
   Atribua o raio desta caixa arredondada times 2 a um diameter número.
-  Call "gdi32.dll" "CreateRoundRectRgn" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createroundrectrgn
+  Call "gdi32.dll" "CreateRoundRectRgn" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createroundrectrgn
   \A função CreateRoundRectRgn cria uma região retangular com cantos arredondados.
     A coordenada X do canto superior esquerdo desta caixa arredondada [x1] \todas as coordenadas estão em unidades de dispositivo
     e A coordenada Y do canto superior esquerdo desta caixa arredondada [y2]
@@ -3396,7 +3408,7 @@ Etapas para que se determine se uma localização está em uma caixa arredondada:
     e O diameter [h] \Especifica a altura da elipse (em unidades de dispositivo) usada para criar os cantos arredondados .
     devolvendo um hRgn. \Se a função for bem-sucedida, o valor de retorno será o identificador para a região.
     \Se a função falhar, o valor de retorno será NULL.
-  Call "gdi32.dll" "PtInRegion" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ptinregion
+  Call "gdi32.dll" "PtInRegion" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ptinregion
   \A função PtInRegion determina se o ponto especificado está dentro da região especificada.
     O hRgn [hrgn] \O número identificador da região a ser examinada.
     e A coordenada X desta localização [x] \Especifica a coordenada x do ponto em unidades lógicas.
@@ -3404,7 +3416,7 @@ Etapas para que se determine se uma localização está em uma caixa arredondada:
     devolvendo um número. \Se o ponto especificado estiver na região, o valor de retorno será diferente de zero.
     \Se o ponto especificado estiver na região, o valor de retorno será diferente de zero.
     \Se o ponto especificado não estiver na região, o valor de retorno é zero.
-  Call "gdi32.dll" "DeleteObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
+  Call "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
   \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
   \Depois que o objeto é excluído, o identificador especificado não é mais válido.
     O hRgn. [ho] \Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
@@ -3482,8 +3494,8 @@ Etapas para que se determine se uma localização está sobre um polígono:
     Obtenha um vértice desde os vértices deste polígono.
     Se o vértice for inexistente, diga não.
     Se o next deste vértice for inexistente, diga não.
-    Atribua a localização deste vértice e a localização deste next deste vértice a um linha reta.
-    Se a localização estiver sobre o linha reta, diga sim.
+    Atribua a localização deste vértice e a localização deste next deste vértice a uma linha reta.
+    Se a localização estiver sobre a linha reta, diga sim.
   Repita. [o código acima]
 
 Etapas para que se determine se uma localização está sobre uma caixa arredondada:
@@ -3764,8 +3776,9 @@ Etapas para que se determine se existe something para remove em um text:
   Se o caret número de coluna deste text não for a quantidade de caracteres desta string desta row, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
+Etapas para que se determine se há text na área de transferência do Windows;
 Etapas para que se determine se existe text sobre o área de transferência do Windows:
-  Call "user32.dll" "IsClipboardFormatAvailable" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-isclipboardformatavailable
+  Call "user32.dll" "IsClipboardFormatAvailable" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-isclipboardformatavailable
   \Determina se a área de transferência contém dados no formato especificado.
   1 [format = CF_TEXT]  \Um formato de área de transferência padrão ou registrado. 
   \Para obter uma descrição dos formatos padrão da área de transferência, consulte https://docs.microsoft.com/en-us/windows/win32/dataxchg/standard-clipboard-formats
@@ -3910,28 +3923,28 @@ Etapas para que se decifre um trecho usando uma passphrase string:
   Se a crypt session for inexistente, cancele.
   Converta o trecho como uma cifra hexadecimal para um texto hexadecimal.
   Atribua a quantidade de caracteres deste texto hexadecimal a uma quantidade de caracteres.
-  Call "advapi32.dll" "CryptDecrypt" com \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptdecrypt
+  Call "advapi32.dll" "CryptDecrypt" com \ https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptdecrypt
   \A função CryptDecrypt descriptografa os dados criptografados anteriormente usando a função CryptEncrypt.
   \Importante: Esta API está obsoleta. 
   \Softwares deveriam começar a usar APIs de criptografia de última geração. 
   \A Microsoft pode remover esta API em versões futuras.
     A hCryptKey desta crypt session [hKey] \Um identificador para a chave a ser usada para a descriptografia. 
     \Um aplicativo pode obter esse identificador usando a função CryptGenKey ou CryptImportKey.
-    \https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptgenkey
-    \https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptimportkey
+    \ https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptgenkey
+    \ https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptimportkey
     \Esta chave especifica o algoritmo de descriptografia a ser usado.
     e 0 [hHash] \Um identificador para um objeto hash. 
     \Se os dados devem ser descriptografados e hasheadps simultaneamente, um identificador para um objeto hash é passado neste parâmetro. 
     \O valor do hash é atualizado com o texto simples descriptografado. 
     \Esta opção é útil ao descriptografar e verificar uma assinatura simultaneamente.
     \Antes de chamar CryptDecrypt, o aplicativo deve obter um identificador para o objeto hash chamando a função CryptCreateHash. 
-    \https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptcreatehash
+    \ https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptcreatehash
     \Depois que a descriptografia for concluída, o valor de hash pode ser obtido usando a função CryptGetHashParam, 
-    \https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptgethashparam
+    \ https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptgethashparam
     \ele também pode ser assinado usando a função CryptSignHash 
-    \https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptsignhasha
+    \ https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptsignhasha
     \ou pode ser usado para verificar uma assinatura digital usando a função CryptVerifySignature.
-    \https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptverifysignaturea
+    \ https://docs.microsoft.com/en-us/windows/desktop/api/wincrypt/nf-wincrypt-cryptverifysignaturea
     \Se nenhum hash for feito, este parâmetro deve ser zero.
     e 1 [Final] \Um valor booleano que especifica se esta é a última seção de uma série que está sendo descriptografada. 
     \Este valor é TRUE se este for o último ou único bloco. Se este não for o último bloco, o valor é FALSE.
@@ -3965,7 +3978,7 @@ Etapas para que se desvencilhe-se de um text:
 
 Etapas para que se destrua um crypt session:
   Se o crypt session for inexistente, cancele.
-  Call "advapi32.dll" "CryptDestroyKey" com \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptdestroykey
+  Call "advapi32.dll" "CryptDestroyKey" com \ https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptdestroykey
   \A função CryptDestroyKey libera o identificador referenciado pelo parâmetro hKey.
   \Se o identificador se referir a uma chave de sessão ou a uma chave pública que foi importada para o provedor de serviços de criptografia (CSP) por meio de CryptImportKey, 
   \essa função destrói a chave e libera a memória que a chave usou. 
@@ -3974,49 +3987,99 @@ Etapas para que se destrua um crypt session:
     A hCryptKey desta crypt session.[hKey] \O número identificador da chave a ser destruída.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
-  Call "advapi32.dll" "CryptDestroyHash" com 
-    O hcrypthash desta crypt session.
-  Call "advapi32.dll" "CryptReleaseContext" com 
-    O hcryptprov desta crypt session 
-    e 0.
+  Call "advapi32.dll" "CryptDestroyHash" com \ https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptdestroyhash
+  \A função CryptDestroyHash destrói o objeto hash referenciado pelo parâmetro hHash. 
+  \Depois que um objeto hash é destruído, ele não pode mais ser usado.
+ \Para ajudar a garantir a segurança, recomendamos que os objetos hash sejam destruídos depois de usados.
+  \Importante: Esta API está obsoleta. O softwares deveriam começar a usar APIs de criptografia de última geração. A Microsoft pode remover esta API em versões futuras.
+  \Quando um objeto hash é destruído, muitos CSPs sobrescrevem a memória no CSP onde o objeto hash foi mantido. A memória CSP é então liberada.
+  \Deve haver uma correspondência um para um entre as chamadas para CryptCreateHash e CryptDestroyHash.
+  \Todos os objetos hash que foram criados usando um CSP específico devem ser destruídos antes que o identificador CSP seja liberado com a função CryptReleaseContext.
+    O hcrypthash desta crypt session. [hHash] \O identificador do objeto hash a ser destruído.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+  Call "advapi32.dll" "CryptReleaseContext" com \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptreleasecontext
+  \A função CryptReleaseContext libera o identificador de um provedor de serviços criptográficos (CSP) e um contêiner de chave. 
+  \A cada chamada para esta função, a contagem de referência no CSP é reduzida em um. 
+  \Quando a contagem de referência chega a zero, o contexto é totalmente liberado e não pode mais ser usado por nenhuma função no aplicativo.
+  \Um aplicativo chama essa função após terminar o uso do CSP. 
+  \Depois que essa função é chamada, o identificador CSP liberado não é mais válido. 
+  \Esta função não destrói contêineres de chaves ou pares de chaves.
+  \Importante: Esta API está obsoleta. O softwares deveriam começar a usar APIs de criptografia de última geração. A Microsoft pode remover esta API em versões futuras.
+  \Depois que essa função for chamada, a sessão CSP é concluída e todas as chaves de sessão existentes e objetos hash criados usando o identificador hProv não são mais válidos. 
+  \Na prática, todos esses objetos devem ser destruídos com chamadas para CryptDestroyKey e CryptDestroyHash antes de CryptReleaseContext ser chamado.
+    O hCryptProv desta crypt session [hProv] \Identificador de um provedor de serviços criptográficos (CSP) criado por uma chamada para CryptAcquireContext.
+    e 0. [dwFlags] \Reservado para uso futuro e deve ser zero. 
+    \Se dwFlags não estiver definido como zero, esta função retornará FALSE, mas o CSP será liberado
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero (VERDADEIRO).
+    \Se a função falhar, o valor de retorno é zero (FALSO)..
   Desaloque o crypt session.
 
 Etapas para que se destrua um GpImage:
   Se o GpImage for inexistente, cancele.
-  Call "gdiplus.dll" "GdipDisposeImage" com o GpImage.
+  Call "gdiplus.dll" "GdipDisposeImage" com o GpImage. [*image]
+  \GpImage é um ponteiro para o objeto Imagem que será descartado.
+  \Geralmente refere-se a uma imagem criada pelas funções GdipLoadImageFromFile, GdipLoadImageFromStream e outras funções construtoras de imagem.
+  \Obs: A função retorna o valor GpStatus, sendo que o valor 0 significa que função foi bem-sucedida.
   Esvazie o GpImage.
 
 Etapas para que se destrua um GpImageAttributes:
   Se o GpImageAttributes for inexistente, cancele.
-  Call "gdiplus.dll" "GdipDisposeImageAttributes" com o GpImageAttributes.
+  Call "gdiplus.dll" "GdipDisposeImageAttributes" com o GpImageAttributes. [*imageattr]
+  \GpImageAttributes é um ponteiro para o objeto ImageAttributes a ser descartado.
+  \O Objeto ImageAttributes é retornado por uma das duas funções para criar objetos ImageAttributes .
+  \Esta função destrói o objeto ImageAttributes e libera os recursos associados.
+  \Cada chamada bem-sucedida para uma das duas funções para criar objetos ImageAttributes deve corresponder a uma chamada para essa função.
+  \As funções para criar um ImageAttributes são as seguintes:
+  \GdipCloneImageAttributes
+  \GdipCreateImageAttributes
+  \Obs: A função retorna o valor GpStatus, sendo que o valor 0 significa que função foi bem-sucedida.
+  \Ou seja, se a função for bem-sucedida, ela retornará 0, que é uma constante da enumeração de status .
+   \Se a função falhar, ela retornará um dos outros valores da enumeração de status .
   Esvazie o GpImageAttributes.
 
-Etapas para que se destrua o HBRUSH of um canvas:
-  Call "gdi32.dll" "SelectObject" com 
-    O canvas 
-    e O null HBRUSH 
-    devolvendo um HBRUSH.
-  Call "gdi32.dll" "DeleteObject" com 
-    O HBRUSH.
+Etapas para que se destrua o hBrush of um canvas:
+  Call "gdi32.dll" "SelectObject" com  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
+  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
+    O canvas [hDC] \Um identificador para o contexto do dispositivo.
+    e O null hBrush  [h] \O número identificador do objeto a ser selecionado.
+    devolvendo um hBrush. \Se o objeto selecionado não for uma região e a função for bem-sucedida, o valor de retorno é um identificador para o objeto que está sendo substituído.
+    \Se o objeto selecionado for uma região e a função for bem-sucedida, o valor de retorno será
+    \1 (NULLREGION quando a região estiver vazia.)
+    \2 (SIMPLEREGION - quando a região consistir em um único retângulo.)
+    \3 (COMPLEXREGION - quando a região consistir em mais de um retângulo.)
+  Call "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
+  \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
+  \Depois que o objeto é excluído, o identificador especificado não é mais válido.
+    O hBrush. \Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
 
 Etapas para que se destrua o número da fonte of um canvas:
-  Call "gdi32.dll" "SelectObject" com 
-    O canvas 
-    e O null número da fonte 
-    devolvendo um número da fonte.
-  Call "gdi32.dll" "DeleteObject" com 
-    O número da fonte.
+  Call "gdi32.dll" "SelectObject" com  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
+  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
+    O canvas [hDC] \Um identificador para o contexto do dispositivo.
+    e O null número da fonte [h] \O número identificador do objeto a ser selecionado.
+    devolvendo um número da fonte.\Se o objeto selecionado não for uma região e a função for bem-sucedida, o valor de retorno é um identificador para o objeto que está sendo substituído.
+  Call "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
+  \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
+  \Depois que o objeto é excluído, o identificador especificado não é mais válido.
+    O número da fonte.\Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
 
 Etapas para que se destrua o hpen of um canvas:
-  Call "gdi32.dll" "SelectObject" com 
-    O canvas 
-    e O null hpen 
-    devolvendo um hpen.
-  Call "gdi32.dll" "DeleteObject" com 
-    O hpen.
+  Call "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
+  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
+    O canvas [hDC] \Um identificador para o contexto do dispositivo.
+    e O null hpen  [h] \O número identificador do objeto a ser selecionado.
+    devolvendo um hpen.\Se o objeto selecionado não for uma região e a função for bem-sucedida, o valor de retorno é um identificador para o objeto que está sendo substituído.
+  Call "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
+  \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
+  \Depois que o objeto é excluído, o identificador especificado não é mais válido.
+    O hpen.\Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
 
 Etapas para que se destrua um hRgn:
-  Call "gdi32.dll" "DeleteObject" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
+  Call "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
   \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
   \Depois que o objeto é excluído, o identificador especificado não é mais válido.
     O hRgn. [ho] \Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
@@ -4048,21 +4111,24 @@ Etapas para que se destrua um endereço completo no sistema de arquivos (pasta)[e
   Repita. [o código acima]
   Isole o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "RemoveDirectoryA" com 
-    O first deste endereço completo 
-    devolvendo um número.
+  Call "kernel32.dll" "RemoveDirectoryA" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-removedirectorya
+  \A função RemoveDirectoryA exclui um diretório vazio existente.
+    O first deste endereço completo [lpPathName] \O caminho do diretório a ser removido. 
+    \Este caminho deve especificar um diretório vazio e o processo de chamada deve ter acesso de exclusão ao diretório.
+    devolvendo um número. \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
   Limpe o erro do fluxo de entrada/saída.
-  Se o número não for 0, cancele.
-  Atribua "Erro. Não foi possível apagar a pasta: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
+  Se o número não for 0, volte. \Se a função falhar, o valor de retorno é zero.
+  Atribua "Erro. Não foi possível apagar a pasta '" junto com o endereço completo seguido de "'." ao erro do fluxo de entrada/saída.
 
 Etapas para que se destrua uma endereço completo no sistema de arquivos (arquivo):
   Isole o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "DeleteFileA" com 
-    O first deste endereço completo 
-    devolvendo um número.
+  Call "kernel32.dll" "DeleteFileA" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-deletefilea
+  \A função DeleteFileA exclui um arquivo existente.
+    O first deste endereço completo [lpFileName] \O nome do arquivo a ser excluído.
+    devolvendo um número. \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
   Limpe o erro do fluxo de entrada/saída.
-  Se o número não for 0, cancele.
+  Se o número não for 0, volte. \Se a função falhar, o valor de retorno é zero (0).
   Atribua "Erro. Não foi possível apagar o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
 
 Etapas para que se destrua uma imagem:
@@ -4070,9 +4136,18 @@ Etapas para que se destrua uma imagem:
   Destrua o gpBitmap desta imagem.
   Desaloque a imagem.
 
-Etapas para que se destrua um socket:
-  Call "ws2_32.dll" "closesocket" com 
-    O socket.
+Etapas para que se destrua um socket: 
+
+  Call "ws2_32.dll" "closesocket" com \https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-closesocket
+  \A função closesocket fecha um socket existente.
+    O socket.[s] \Um descritor que identifica o soquete a ser fechado.
+\Se nenhum erro ocorrer, closesocket retorna zero. 
+\Caso contrário, um valor de SOCKET_ERROR é retornado e um código de erro específico pode ser recuperado chamando WSAGetLastError.
+\A função closesocket fecha um socket. 
+\Use-o para liberar o descritor de soquete passado no parâmetro s. 
+\Observe que o descritor de socket passado no parâmetro s pode ser imediatamente reutilizado pelo sistema assim que a função closesocket for emitida. 
+\Como resultado, não é confiável esperar que referências adicionais ao descritor de soquete passado no parâmetro s falhem com o erro WSAENOTSOCK. 
+\Um cliente Winsock nunca deve emitir closesocket em s simultaneamente com outra chamada de função Winsock
 
 Etapas para que se destrua um vértice usando um polígono:
   Se o vértice for inexistente, cancele.
@@ -4083,29 +4158,35 @@ Etapas para que se destrua um vértice usando um polígono:
 
 Etapas para que se destrua uma requisição WinHTTP:
   Se a requisição WinHTTP for inexistente, cancele.
+  Call "WinHTTP.dll" "WinHttpCloseHandle" com \https://docs.microsoft.com/en-us/windows/win32/api/winhttp/nf-winhttp-winhttpclosehandle
+  \A função WinHttpCloseHandle fecha um único identificador HINTERNET. 
+  \O Microsoft Windows HTTP Services (WinHTTP) usa identificadores para controlar as configurações e as informações necessárias ao usar o protocolo HTTP. 
+  \Cada identificador mantém informações pertinentes a uma sessão HTTP, uma conexão com um servidor HTTP ou um recurso específico.
+  \Os identificadores criados e usados pelo WinHTTP são chamados de identificadores HINTERNET.
+  \Para mais detalhes, consulte https://docs.microsoft.com/en-us/windows/win32/winhttp/hinternet-handles-in-winhttp
+    O número identificador de requisição [hInternet] desta requisição WinHTTP. 
+    \Um identificador HINTERNET válido a ser fechado.
   Call "WinHTTP.dll" "WinHttpCloseHandle" com 
-    O número identificador de requisição desta requisição WinHTTP.
+    O número identificador de conexão [hInternet] desta requisição WinHTTP.
   Call "WinHTTP.dll" "WinHttpCloseHandle" com 
-    O número identificador de conexão desta requisição WinHTTP.
-  Call "WinHTTP.dll" "WinHttpCloseHandle" com 
-    O número identificador de sessão deste número identificador de requisição desta requisição WinHTTP.
+    O número identificador de sessão [hInternet] deste número identificador de requisição desta requisição WinHTTP.
+    \O valor de retorno da função WinHttpCloseHandle é TRUE se o identificador for fechado com sucesso, caso contrário é FALSE.
   Deallocate a requisição WinHTTP.
 
-Um difference é um par de números.
+Uma difference é um par de números.
 
 Um file é um número identificador.
-
-Um nome do arquivo é uma string. \ after o last slash para end of endereço completo = file.ext
-Um nome do arquivo s/ extensão é uma string. \ after o last slash para last dot ou end of endereço completo = file
-Um extensão é uma string. \ last dot para end of endereço completo = .ext
-Um endereço da pasta é um endereço completo. \ start of endereço completo para last slash inclusive = c:\folder1\folder2\
-Um endereço completo é uma string. \ complete nome = c:\folder1\folder2\file.ext
-Um nome do diretório é uma string. \ rightmost endereço da pasta com slash = folder2\
-Um designador é uma string. \ rightmost endereço da pasta com slash = folder2\ ou after o last slash para end of endereço completo = file.ext
-Um nome da pasta é uma string. \ rightmost endereço da pasta sem slash = folder2
-Um unidade de disco é uma string. \ start of endereço completo para first slash = c:\ ou start of endereço completo para quarto slash = \\computer\share\
-Um unidade de rede é uma string. \ é basicamente o número de cópias da variável anterior.
-Um categoria da unidade de disco é uma string.
+Um nome do arquivo é uma string. \ é o nome que vem depois da barra / até o final da extensão. Exemplo: arquivo.txt
+Um nome do arquivo s/ extensão é uma string. \ Auto explicativo. 
+Um extensão é uma string. \ Contém o ponto. Exemplo: .txt
+Um endereço da pasta é um endereço completo. \ Exemplo: c:\pasta1\pasta2\
+Um endereço completo é uma string. \Endereço completo do arquivo. Exemplo: c:\pasta1\pasta2\arquivo.txt
+Um nome do diretório é uma string. \ nome da pasta com a barra no final. Exemplo = pasta2\
+Um designador é uma string. \  pode ser igual ao nome do diretório ou igual ao nome do arquivo, se houver
+Um nome da pasta é uma string. \ nome da pasta sem a barra no final. Exemplo = pasta2
+Um unidade de disco é uma string. \ Exemplo: c:\ ou  \\NomeDoPC\DiretórioCompartilhado\
+Um unidade de rede é uma string. \ é basicamente a cópia da variável anterior. Nome diferente pra evitar confusão.
+Um categoria da unidade de disco é uma string. \HD, Pen-drive, Disquete, DVD, etc
 Um nome da unidade de disco é uma string.
 
 Um distance é uns twips.
@@ -4175,35 +4256,68 @@ Etapas para que se pinte uma caixa:
 Etapas para que se pinte uma caixa (focus style):
   Isole a caixa.
   Adicione a quantidade de twips/pixel para o canto inferior direito desta caixa.
-  Call "gdi32.dll" "LPtoDP" com 
-    O quadro atual 
-    e O endereçamento desta caixa e 2.
-  Converta a cor branca para um código da cor. \código de pigmento/tonalidade?
-  Call "gdi32.dll" "SetBkColor" com 
-    O quadro atual 
-    e O código da cor.
+  Call "gdi32.dll" "LPtoDP" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-lptodp
+  \A função LPtoDP converte coordenadas lógicas em coordenadas de dispositivo. 
+  \A conversão depende do modo de mapeamento do contexto do dispositivo, 
+  \das configurações das origens e extensões da janela e da janela de visualização e da transformação do mundo.
+    O quadro atual [hdc] \O número identificador do contexto do dispositivo.
+    e O endereçamento desta caixa [lppt] \Um ponteiro para uma matriz de estruturas POINT. 
+    \ https://docs.microsoft.com/en-us/previous-versions/dd162805(v=vs.85)
+    \As coordenadas x e y contidas em cada uma das estruturas POINT serão transformadas.
+    e 2. [c] \O número de pontos na matriz.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
+  Converta a cor branca para um código da cor. \ sugestões de termo: código de pigmento/tonalidade
+  Call "gdi32.dll" "SetBkColor" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setbkcolor
+  \A função SetBkColor define a cor de fundo atual para o valor da cor especificada 
+  \ou para a cor física mais próxima se o dispositivo não puder representar o valor da cor especificada.
+  \Esta função preenche as lacunas entre as linhas estilizadas desenhadas com uma caneta criada pela função CreatePen; 
+  \ela não preenche as lacunas entre as linhas estilizadas desenhadas com uma caneta criada pela função ExtCreatePen. 
+  \A função SetBkColor também define as cores de fundo para TextOut e ExtTextOut.
+  \Se o modo de fundo for OPACO, a cor de fundo será usada para preencher as lacunas 
+  \entre as linhas estilizadas, lacunas entre as linhas hachuradas em pincéis e células de caracteres. 
+  \A cor de fundo também é usada ao converter bitmaps coloridos em monocromáticos e vice-versa.
+    O quadro atual [hdc] \O número identificador do contexto do dispositivo.
+    e O código da cor. [color] \A nova cor de fundo. Para criar um valor COLORREF, use a macro RGB.
+    \Se a função for bem-sucedida, o valor de retorno especifica a cor de fundo anterior como um valor COLORREF.
+    \Se a função falhar, o valor de retorno é CLR_INVALID.
   Converta a cor preta para um segundo código da cor.
-  Call "gdi32.dll" "SetTextColor" com 
-    O quadro atual 
-    e O segundo código da cor.
-  Call "gdi32.dll" "SetMapMode" com 
-    O quadro atual 
-    e 1 [MM_TEXT]. \ o modo de mapeamento para o contexto de dispositivo do seu aplicativo
-  Call "user32.dll" "DrawFocusRect" com 
-    O quadro atual 
-    e O endereçamento desta caixa.
+  Call "gdi32.dll" "SetTextColor" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-settextcolor
+  \A função SetTextColor define a cor do texto para o contexto de dispositivo especificado para a cor especificada.
+  \A cor do texto é usada para desenhar a face de cada caractere escrito pelas funções TextOut e ExtTextOut. 
+  \A cor do texto também é usada na conversão de bitmaps coloridos em monocromáticos e vice-versa.
+    O quadro atual [hdc] \O número identificador do contexto do dispositivo.
+    e O segundo código da cor. [color] \A cor do texto.
+    \Se a função for bem-sucedida, o valor de retorno é uma referência de cor para a cor do texto anterior como um valor COLORREF.
+    \Se a função falhar, o valor de retorno é CLR_INVALID.
+  Call "gdi32.dll" "SetMapMode" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setmapmode
+  \A função SetMapMode define o modo de mapeamento do contexto de dispositivo especificado. 
+  \O modo de mapeamento define a unidade de medida usada para transformar unidades de espaço de página em unidades de espaço de dispositivo 
+  \e também define a orientação dos eixos x e y do dispositivo.
+    O quadro atual [hdc] \O número identificador do contexto do dispositivo.
+    e 1 [iMode = MM_TEXT]. \iMode refere-se ao novo modo de mapeamento. / o modo de mapeamento para o contexto de dispositivo do seu aplicativo
+    \Com o valor MM_TEXT, cada unidade lógica é mapeada para um pixel de dispositivo. 
+    \O modo MM_TEXT permite que os aplicativos funcionem em pixels de dispositivo, cujo tamanho varia de acordo com a resolução da tela/monitor
+    \ x (positivo) fica à direita; y (positivo) fica embaixo.
+    \Se a função for bem-sucedida, o valor de retorno identifica o modo de mapeamento anterior.
+    \Se a função falhar, o valor de retorno é zero.
+  Call "user32.dll" "DrawFocusRect" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-drawfocusrect
+  \A função DrawFocusRect desenha um retângulo estilizado. 
+  \A estilização é utilizada para indicar que o retângulo está sob o foco atual.
+    O quadro atual [hdc] \O número identificador do contexto do dispositivo.
+    e O endereçamento desta caixa.[*lprc] \Um ponteiro para uma estrutura RECT que especifica as coordenadas lógicas do retângulo.
+    \https://docs.microsoft.com/en-us/windows/win32/api/windef/ns-windef-rect
   Normalize o quadro atual.
 
+\Etapas para que se pinte uma caixa de uma cor;
 Etapas para que se pinte uma caixa em uma cor:
-  \Etapas para que se pinte uma caixa com uma cor:
-  Pinte a caixa com a cor e a cor preta.
+  Pinte a caixa com a cor [preenchimento] e a cor preta [borda].
 
 Etapas para que se pinte o caret em um text:
   Se o text for inexistente, cancele.
   Obtenha uma caixa pelo caret no text.
   Se a caixa não estiver touching a caixa deste text, cancele.
-  Atribua o canto superior esquerdo desta caixa e o canto inferior direito desta caixa a um linha reta.
-  Pinte o linha reta com a cor preta.
+  Atribua o canto superior esquerdo desta caixa e o canto inferior direito desta caixa a uma linha reta.
+  Pinte a linha reta com a cor preta.
 
 Etapas para que se pinte um circle about uns twips wide;
 Etapas para que se pinte um circle usando um largura;
@@ -4326,31 +4440,31 @@ Etapas para que se pinte um hexagon usando um side quantidade de caracteres:
   Adicione 1 para uma contagem. Se a contagem for 6, pare.
   Repita. [o código acima]
 
-Etapas para que se pinte um linha reta:
-  Pinte o linha reta com a cor deste context.
+Etapas para que se pinte uma linha reta:
+  Pinte a linha reta com a cor deste context.
 
-Etapas para que se pinte um linha reta around uns twips long; \ "around" é significante here
-Etapas para que se pinte um linha reta about uns twips long: \ "about" é significante here
+Etapas para que se pinte uma linha reta around uns twips long; \ "around" é significante here
+Etapas para que se pinte uma linha reta about uns twips long: \ "about" é significante here
   \ "about" é significant here
   Atribua os twips dividido por 2 a uns segunda twips.
   Escolha aleatoriamente uns terceiro twips entre os twips menos a segunda twips e os twips mais a segunda twips.
-  Pinte o linha reta o terceiro twips long.
+  Pinte a linha reta o terceiro twips long.
 
-Etapas para que se pinte um linha reta como tall como uma caixa com uma cor:
+Etapas para que se pinte uma linha reta como tall como uma caixa com uma cor:
   Atribua a cor à cor deste context.
   Pinte a altura desta caixa.
 
-Etapas para que se pinte um linha reta como wide como uma caixa com uma cor:
+Etapas para que se pinte uma linha reta como wide como uma caixa com uma cor:
   Atribua a cor à cor deste context.
   Pinte a largura desta caixa.
 
-Etapas para que se pinte um linha reta entre uns twips e uns segunda twips long;
-Etapas para que se pinte um linha reta entre uns twips para uns segunda twips long;
-Etapas para que se pinte um linha reta uns twips para uns segunda twips long:
+Etapas para que se pinte uma linha reta entre uns twips e uns segunda twips long;
+Etapas para que se pinte uma linha reta entre uns twips para uns segunda twips long;
+Etapas para que se pinte uma linha reta uns twips para uns segunda twips long:
   Escolha aleatoriamente uns terceiro twips entre os twips e a segunda twips.
-  Pinte o linha reta o terceiro twips long.
+  Pinte a linha reta o terceiro twips long.
 
-Etapas para que se pinte um linha reta uns twips long:
+Etapas para que se pinte uma linha reta uns twips long:
   \Aguarde pelo delay. ***
   Atribua a localização deste context ao localização inicial desta linha reta.
   Atribua a localização deste context ao localização final desta linha reta.
@@ -4358,28 +4472,28 @@ Etapas para que se pinte um linha reta uns twips long:
   Adicione o deslocamento horizontal times os twips dividido por 10000 para a coordenada X desta localização final desta linha reta.
   Adicione o deslocamento vertical times os twips dividido por 10000 para a coordenada Y desta localização final desta linha reta.
   Atribua a localização final desta linha reta à localização deste context.
-  Pinte o linha reta com a cor deste context.
+  Pinte a linha reta com a cor deste context.
   \Se o delay for positive, atualize o tela.
 
-Etapas para que se pinte um linha reta using uns twips como a quantidade de caracteres;
-Etapas para que se pinte um linha reta using uns twips pelo quantidade de caracteres:
+Etapas para que se pinte uma linha reta using uns twips como a quantidade de caracteres;
+Etapas para que se pinte uma linha reta using uns twips pelo quantidade de caracteres:
   Pinte os twips.
 
-Etapas para que se pinte um linha reta com uma cor around uns twips long; \ "around" é significant here
-Etapas para que se pinte um linha reta com uma cor about uns twips long:\ "about" é significant here
+Etapas para que se pinte uma linha reta com uma cor around uns twips long; \ "around" é significant here
+Etapas para que se pinte uma linha reta com uma cor about uns twips long:\ "about" é significant here
   Atribua os twips dividido por 2 a uns segunda twips.
   Escolha aleatoriamente uns terceiro twips entre os twips menos a segunda twips e os twips mais a segunda twips.
-  Pinte o linha reta com a cor o terceiro twips long.
+  Pinte a linha reta com a cor o terceiro twips long.
 
-Etapas para que se pinte um linha reta com uma cor uns twips long:
+Etapas para que se pinte uma linha reta com uma cor uns twips long:
   Atribua a cor à cor deste context.
   Atribua a localização deste context ao localização inicial desta linha reta.
   Pinte os twips.
   Atribua a localização deste context ao localização final desta linha reta.
 
-Etapas para que se pinte um linha reta com uma cor uns twips para uns segunda twips long:
+Etapas para que se pinte uma linha reta com uma cor uns twips para uns segunda twips long:
   Escolha aleatoriamente uns terceiro twips entre os twips e a segunda twips.
-  Pinte o linha reta com a cor o terceiro twips long.
+  Pinte a linha reta com a cor o terceiro twips long.
 
 Etapas para que se pinte um número em uma caixa com uma cor:
   Atribua o número a uma string.
@@ -4465,7 +4579,7 @@ Etapas para que se pinte um polígono com uma cor (fill only):
   Se o polígono for inexistente, cancele.
   Se a cor estiver clear, cancele.
   Crie o hpen of o quadro atual usando a cor preta.
-  Crie o HBRUSH of o quadro atual usando a cor.
+  Crie o hBrush of o quadro atual usando a cor.
   Call "gdi32.dll" "SetPolyFillMode" com 
     O quadro atual 
     e 2 [WINDING].
@@ -4475,7 +4589,7 @@ Etapas para que se pinte um polígono com uma cor (fill only):
     e O endereço de memória da localização desta série de vértices 
     e A quantidade de vértices desta série de vértices.
   Destrua a série de vértices.
-  Destrua o HBRUSH of o quadro atual.
+  Destrua o hBrush of o quadro atual.
   Destrua o hpen of o quadro atual.
 
 Etapas para que se pinte um quarter circle about uns twips wide;
@@ -4997,24 +5111,24 @@ Etapas para que se finalize as fonts:
 
 Etapas para que se finalize gdi+:
   Call "gdiplus.dll" "GdiplusShutdown" com 
-    O gpToken. \https://docs.microsoft.com/en-us/windows/win32/api/gdiplusinit/nf-gdiplusinit-gdiplusshutdown
+    O gpToken. \ https://docs.microsoft.com/en-us/windows/win32/api/gdiplusinit/nf-gdiplusinit-gdiplusshutdown
 
 Etapas para que se finalize o memory canvas:
   Call "gdi32.dll" "SelectObject" com 
     O memory canvas 
-    e O saved memory HBITMAP 
-    devolvendo um HBITMAP. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
+    e O saved memory hBitMap 
+    devolvendo um hBitMap. \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   Call "gdi32.dll" "DeleteObject" com 
-    O HBITMAP. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
+    O hBitMap. \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
   Call "gdi32.dll" "DeleteDC" com 
-    O memory canvas. \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deletedc
+    O memory canvas. \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deletedc
 
 Etapas para que se finalize o module:
 
 Etapas para que se finalize o mouse:
 
 Etapas para que se finalize a área de impressão:
-  Call "kernel32.dll" "GlobalFree" com \https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalfree
+  Call "kernel32.dll" "GlobalFree" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalfree
     o número identificador do modo de dispositivo da impressora.
     \ Um identificador para o objeto de memória global. 
     \Esse identificador é retornado pela função GlobalAlloc ou GlobalReAlloc. 
@@ -5032,9 +5146,9 @@ Etapas para que se finalize um talker:
 
 Etapas para que se finalize o janela do programa:
   Call "user32.dll" "DestroyWindow" com 
-    A janela principal do programa. \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-destroywindow
+    A janela principal do programa. \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-destroywindow
   Percorra. [o código abaixo]
-  Call "user32.dll" "GetMessageA" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getmessagea
+  Call "user32.dll" "GetMessageA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getmessagea
       o endereçamento dessa msg \Um ponteiro para uma estrutura MSG que recebe informações da mensagem da fila de mensagens do segmento.
       e 0 \Um identificador para a janela cujas mensagens devem ser recuperadas. A janela deve pertencer ao segmento atual.
     \Se hWnd for NULL, GetMessage recuperará mensagens para qualquer janela que pertença ao segmento atual 
@@ -5053,9 +5167,9 @@ Etapas para que se finalize o janela do programa:
     \\ Execute a função "GetMessageA" da biblioteca "user32.dll" usando como argumentos os seguintes parâmetros: 
     \\ o endereçamento dessa msg e os valores 0, 0 e 0, esperando um número como resultado.
     Se o número for menor do que 1, pare.
-    Call "user32.dll" "TranslateMessage" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-translatemessage
+    Call "user32.dll" "TranslateMessage" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-translatemessage
       o endereçamento desta msg. \Um ponteiro para uma estrutura MSG que contém informações de mensagem recuperadas da fila de mensagens do thread de chamada usando a função GetMessage ou PeekMessage.
-    Call "user32.dll" "DispatchMessageA" com \https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-dispatchmessagea
+    Call "user32.dll" "DispatchMessageA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-dispatchmessagea
       o endereçamento desta msg. \Um ponteiro para uma estrutura que contém a mensagem.
   Repita. [o código acima]
   Desmanche a fila de eventos.
@@ -5393,7 +5507,7 @@ Etapas para que se obtenha uma caixa pelo caret em um text:
   Limite a coordenada X do canto superior esquerdo desta caixa para a coordenada X do canto superior esquerdo deste text e a coordenada X do canto inferior direito deste text.
   Limite a coordenada X do canto inferior direito desta caixa para a coordenada X do canto superior esquerdo deste text e a coordenada X do canto inferior direito deste text.
 
-Etapas para que se obtenha uma caixa por um linha reta:
+Etapas para que se obtenha uma caixa por uma linha reta:
   Atribua a localização inicial desta linha reta ao canto superior esquerdo desta caixa.
   Atribua a localização final desta linha reta ao canto inferior direito desta caixa.
   Normalize a caixa.
@@ -5453,7 +5567,7 @@ Etapas para que se obtenha um pedaço desde uma string (backwards):
   Remove o last pedaço desde a string.
 
 Etapas para que se obtenha um center localização usando uma localização e uma segunda localização:
-  Atribua a localização e a segunda localização a um linha reta.
+  Atribua a localização e a segunda localização a uma linha reta.
   Atribua o center desta linha reta ao center.
 
 Etapas para que se obtenha uma cor usando uma localização:
@@ -6462,11 +6576,11 @@ Etapas para que se execute uppercase usando um text:
   Uppercase algum tipo de pedaços selecionados no text.
   Wrap o text.
 
-Um HBITMAP é um número identificador.
+Um hBitMap é um número identificador.
 
-Um HBRUSH é um número identificador.
+Um hBrush é um número identificador.
 
-Um HDC é um número identificador.
+Um hDC é um número identificador.
 
 Um orientação é uns points.
 
@@ -6480,7 +6594,7 @@ Um texto hexadecimal é uma string.
 
 Um número da fonte é um número identificador.
 
-Um HICON é um número identificador.
+Um hIcon é um número identificador.
 
 Etapas para que se oculte o cursor:
   Call "user32.dll" "ShowCursor" com 
@@ -6489,7 +6603,7 @@ Etapas para que se oculte o cursor:
   Se o número for menor do que 0, cancele.
   Repita. [o código acima]
 
-Um horizontal linha reta é um linha reta.
+Um horizontal linha reta é uma linha reta.
 
 Um hour é 60 minutes.
 
@@ -6597,52 +6711,52 @@ Etapas para que se imagine um horizontal linha reta uma fração of o caminho para
 Etapas para que se faça um horizontal linha reta uma fração of o caminho para cima desde o base of uma caixa:
   Imagine o horizontal linha reta across a caixa a fração of o caminho para cima desde o base.
 
-Etapas para que se imagine um linha reta across o base of uma caixa;
-Etapas para que se faça um linha reta across o base of uma caixa;
-Etapas para que se imagine um linha reta along o base of uma caixa;
-Etapas para que se faça um linha reta along o base of uma caixa:
+Etapas para que se imagine uma linha reta across o base of uma caixa;
+Etapas para que se faça uma linha reta across o base of uma caixa;
+Etapas para que se imagine uma linha reta along o base of uma caixa;
+Etapas para que se faça uma linha reta along o base of uma caixa:
   Atribua a coordenada Y do canto inferior direito desta caixa linha reta ao linha reta.
 
-Etapas para que se imagine um linha reta across uma caixa uma fração of o caminho para cima desde o base;
-Etapas para que se faça um linha reta across uma caixa uma fração of o caminho para cima desde o base:
+Etapas para que se imagine uma linha reta across uma caixa uma fração of o caminho para cima desde o base;
+Etapas para que se faça uma linha reta across uma caixa uma fração of o caminho para cima desde o base:
   Atribua a coordenada X do canto superior esquerdo desta caixa ao x desta localização inicial desta linha reta.
   Atribua a coordenada X do canto inferior direito desta caixa ao x desta localização final desta linha reta.
   Atribua a coordenada Y do canto inferior direito desta caixa times a fração a uns twips.
   Atribua a coordenada Y do canto inferior direito desta caixa menos os twips ao y desta localização inicial desta linha reta.
   Atribua a coordenada Y do canto inferior direito desta caixa menos os twips ao y desta localização final desta linha reta.
 
-Etapas para que se imagine um linha reta across o topo of uma caixa;
-Etapas para que se faça um linha reta across o topo of uma caixa;
-Etapas para que se imagine um linha reta along o topo of uma caixa;
-Etapas para que se faça um linha reta along o topo of uma caixa:
+Etapas para que se imagine uma linha reta across o topo of uma caixa;
+Etapas para que se faça uma linha reta across o topo of uma caixa;
+Etapas para que se imagine uma linha reta along o topo of uma caixa;
+Etapas para que se faça uma linha reta along o topo of uma caixa:
   Atribua a coordenada Y do canto superior esquerdo desta caixa linha reta ao linha reta.
 
-Etapas para que se imagine um linha reta no middle of uma caixa;
-Etapas para que se faça um linha reta no middle of uma caixa;
-Etapas para que se imagine um linha reta across o middle of uma caixa;
-Etapas para que se faça um linha reta across o middle of uma caixa;
-Etapas para que se imagine um linha reta no center of uma caixa;
-Etapas para que se faça um linha reta no center of uma caixa;
-Etapas para que se imagine um linha reta across o center of uma caixa;
-Etapas para que se faça um linha reta across o center of uma caixa:
+Etapas para que se imagine uma linha reta no middle of uma caixa;
+Etapas para que se faça uma linha reta no middle of uma caixa;
+Etapas para que se imagine uma linha reta across o middle of uma caixa;
+Etapas para que se faça uma linha reta across o middle of uma caixa;
+Etapas para que se imagine uma linha reta no center of uma caixa;
+Etapas para que se faça uma linha reta no center of uma caixa;
+Etapas para que se imagine uma linha reta across o center of uma caixa;
+Etapas para que se faça uma linha reta across o center of uma caixa:
   Atribua a coordenada X do canto superior esquerdo desta caixa ao x desta localização inicial desta linha reta.
   Atribua a coordenada X do canto inferior direito desta caixa ao x desta localização final desta linha reta.
   Atribua o y deste center desta caixa ao y desta localização inicial desta linha reta.
   Atribua o y deste center desta caixa ao y desta localização final desta linha reta.
 
-Etapas para que se imagine um linha reta uns twips para cima desde o base of uma caixa;
-Etapas para que se faça um linha reta uns twips para cima desde o base of uma caixa:
+Etapas para que se imagine uma linha reta uns twips para cima desde o base of uma caixa;
+Etapas para que se faça uma linha reta uns twips para cima desde o base of uma caixa:
   Atribua a coordenada X do canto superior esquerdo desta caixa ao x desta localização inicial desta linha reta.
   Atribua a coordenada X do canto inferior direito desta caixa ao x desta localização final desta linha reta.
   Atribua a coordenada Y do canto inferior direito desta caixa menos os twips ao y desta localização inicial desta linha reta.
   Atribua a coordenada Y do canto inferior direito desta caixa menos os twips ao y desta localização final desta linha reta.
 
-Etapas para que se imagine um linha reta com uma localização e uma segunda localização;
-Etapas para que se faça um linha reta com uma localização e uma segunda localização:
+Etapas para que se imagine uma linha reta com uma localização e uma segunda localização;
+Etapas para que se faça uma linha reta com uma localização e uma segunda localização:
   Atribua a localização e a segunda localização ao linha reta.
 
-Etapas para que se imagine um linha reta com uma coordenada X e uma coordenada Y e uma segunda coordenada X e uma segunda coordenada Y;
-Etapas para que se faça um linha reta com uma coordenada X e uma coordenada Y e uma segunda coordenada X e uma segunda coordenada Y:
+Etapas para que se imagine uma linha reta com uma coordenada X e uma coordenada Y e uma segunda coordenada X e uma segunda coordenada Y;
+Etapas para que se faça uma linha reta com uma coordenada X e uma coordenada Y e uma segunda coordenada X e uma segunda coordenada Y:
   Atribua a coordenada X e a coordenada Y e a segunda coordenada X e a segunda coordenada Y ao linha reta.
 
 Etapas para que se imagine uma caixa arredondada desde uma caixa e um raio;
@@ -6855,14 +6969,14 @@ Etapas para que se inicialize o memory canvas:
   Call "gdi32.dll" "GetCurrentObject" com 
     O memory canvas 
     e 7 [OBJ_BITMAP] 
-    devolvendo o saved memory HBITMAP.
+    devolvendo o saved memory hBitMap.
   Call "gdi32.dll" "CreateCompatibleBitmap" com 
     O tela canvas 
     e A pixel largura desta tela 
-    e A pixel altura desta tela devolvendo um HBITMAP.
+    e A pixel altura desta tela devolvendo um hBitMap.
   Call "gdi32.dll" "SelectObject" com 
     O memory canvas 
-    e O HBITMAP.
+    e O hBitMap.
   Normalize o memory canvas.
 
 Etapas para que se inicialize o module:
@@ -6917,7 +7031,7 @@ Etapas para que se inicialize a área de impressão:
   Call "kernel32.dll" "GlobalFree" com 
     O hdevnames deste printdlgex.
   Atribua o hdevmode deste printdlgex ao número identificador do modo de dispositivo da impressora.
-  Atribua o HDC deste printdlgex ao área de impressão.
+  Atribua o hDC deste printdlgex ao área de impressão.
 
 Etapas para que se inicialize o tela:
   Call "user32.dll" "GetSystemMetrics" com 
@@ -7766,7 +7880,7 @@ Etapas para que se normalize um text:
 Etapas para que se normalize um vertical linha reta:
   Se a localização final desta linha reta for menor do que a localização inicial desta linha reta, permute a localização final desta linha reta com a localização inicial desta linha reta.
 
-O null HBRUSH é um HBRUSH.
+O null hBrush é um hBrush.
 
 O null hpen é um hpen.
 
@@ -7873,7 +7987,7 @@ Etapas para que se output stroke e fill usando uma cor da borda e uma cor de pre
   Output a string.
 
 \Um paintstruct é um conjunto com
-\Um HDC denominado HDC,
+\Um hDC denominado hDC,
 \Um número denominado ferase,
 \Um caixa denominado rcpaint,
 \Um número denominado frestore,
@@ -8547,8 +8661,8 @@ Etapas para que se redimensione uma elipse usando uma par de números fracionário
 Etapas para que se redimensione uma elipse usando um twip par de números:
   Redimensione a caixa desta elipse usando o twip par de números.
 
-Etapas para que se redimensione um linha reta usando um par de números racionais;
-Etapas para que se redimensione um linha reta usando uma par de números fracionários:
+Etapas para que se redimensione uma linha reta usando um par de números racionais;
+Etapas para que se redimensione uma linha reta usando uma par de números fracionários:
   Atribua a caixa desta linha reta a uma caixa.
   Subtraia o canto superior esquerdo desta caixa desde a localização inicial desta linha reta.
   Redimensione proporcionalmente a localização inicial desta linha reta usando o par de números fracionários.
@@ -8557,12 +8671,12 @@ Etapas para que se redimensione um linha reta usando uma par de números fracioná
   Redimensione proporcionalmente a localização final desta linha reta usando o par de números fracionários.
   Adicione o canto superior esquerdo desta caixa para a localização final desta linha reta.
 
-Etapas para que se redimensione um linha reta usando um twip par de números:
+Etapas para que se redimensione uma linha reta usando um twip par de números:
   Atribua a caixa desta linha reta a uma caixa.
   Atribua a caixa a uma segunda caixa.
   Redimensione a segunda caixa usando o twip par de números.
   Faça uma par de números fracionários usando a segunda caixa e a caixa.
-  Redimensione o linha reta usando o par de números fracionários.
+  Redimensione a linha reta usando o par de números fracionários.
 
 Etapas para que se redimensione uma imagem para um largura por uma altura:
   Se a imagem for inexistente, cancele.
@@ -8638,7 +8752,7 @@ Etapas para que se restart um temporizador:
 
 Etapas para que se restaure um canvas:
   Call "gdi32.dll" "RestoreDC" com 
-    O canvas [HDC]
+    O canvas [hDC]
     e -1. \ nSavedDC - O estado salvo a ser restaurado. 
     \Se este parâmetro for positivo, ele representa uma instância específica do estado a ser restaurado. 
     \Se este parâmetro for negativo, ele representa uma instância relativa ao estado atual. 
@@ -8730,7 +8844,7 @@ Etapas para que se rotate um GpImage usando um ângulo:
     O GpImage 
     e O número.
 
-Etapas para que se rotate um linha reta:
+Etapas para que se rotate uma linha reta:
   Atribua o center desta linha reta a um center localização.
   Rotate a localização inicial desta linha reta around o center.
   Rotate a localização final desta linha reta around o center.
@@ -8829,7 +8943,7 @@ Etapas para que se salve um context:
   Atribua o número deste context ao número deste saved context.
   Anteponha o saved context para o context stack.
 
-O saved memory HBITMAP é um HBITMAP.
+O saved memory hBitMap é um hBitMap.
 
 O saved quantidade de twips/pixel é um número.
 
@@ -8847,7 +8961,7 @@ Etapas para que se speak uma string:
   Call o speak desta vtable deste talker com 
     O talker 
     e O first endereço de memória do pedaço desta string composta de caracteres amplos 
-    e 17 [SVSFDefault+SVSFlagsAsync +SVSFIsNotXML]  \https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ms720892(v=vs.85)
+    e 17 [SVSFDefault+SVSFlagsAsync +SVSFIsNotXML]  \ https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ms720892(v=vs.85)
     e 0.
 
 Etapas para que se say uma string e wait;
@@ -8896,15 +9010,15 @@ Etapas para que se multiplique uma fração por uma segunda fração:
   Multiplique o denominador desta fração pelo denominador desta segunda fração.
   Reduza a fração.
 
-Etapas para que se redimensione proporcionalmente um linha reta usando um ratio;
-Etapas para que se redimensione proporcionalmente um linha reta usando um fração:
+Etapas para que se redimensione proporcionalmente uma linha reta usando um ratio;
+Etapas para que se redimensione proporcionalmente uma linha reta usando um fração:
   Se a fração for 1/1, cancele.
   Redimensione proporcionalmente a localização inicial desta linha reta usando a fração.
   Redimensione proporcionalmente a localização final desta linha reta usando a fração.
 
-Etapas para que se redimensione proporcionalmente um linha reta para um percentual:
+Etapas para que se redimensione proporcionalmente uma linha reta para um percentual:
   Atribua o percentual / 100 a um fração.
-  Redimensione proporcionalmente o linha reta usando a fração.
+  Redimensione proporcionalmente a linha reta usando a fração.
 
 Etapas para que se redimensione proporcionalmente um par de números usando um ratio;
 Etapas para que se redimensione proporcionalmente um par de números usando um fração:
@@ -9381,7 +9495,7 @@ Etapas para que se skip algum tipo de non-alfanumérico pedaços em um subtexto:
   Adicione 1 para o first endereço de memória do pedaço deste subtexto.
   Repita. [o código acima]
 
-Etapas para que se skip um linha reta sobre o terminal:
+Etapas para que se skip uma linha reta sobre o terminal:
   Escreva "" sobre o terminal.
 
 Etapas para que se skip palavra characters em um subtexto:
@@ -9500,8 +9614,8 @@ Etapas para que se separe um pedaço para uma cifra binária e uma segunda cifra b
   Atribua o pedaço ao segunda cifra binária.
   Conjuncione logicamente a segunda cifra binária com 15.
 
-Etapas para que se separe um linha reta para uma segunda linha reta e um terceiro linha reta:
-  Isole o linha reta.
+Etapas para que se separe uma linha reta para uma segunda linha reta e um terceiro linha reta:
+  Isole a linha reta.
   Atribua o center desta linha reta a um center localização.
   Atribua a localização inicial desta linha reta e o center ao segunda linha reta.
   Atribua o center e a localização final desta linha reta ao terceiro linha reta.
@@ -10420,7 +10534,7 @@ Etapas para que se escreva um pedaço:
   Escreva a string.
 
 Etapas para que se escreva um pedaço para StdOut:
-  Call "kernel32.dll" "WriteFile" com \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile
+  Call "kernel32.dll" "WriteFile" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile
     O stdout handle [hFile] \Um identificador para o arquivo ou dispositivo de E / S
   \(por exemplo, um arquivo, fluxo de arquivo, disco físico, volume, buffer de console, unidade de fita, soquete, recurso de comunicação, processador de mensagens ou canal).
     e O endereçamento deste pedaço [lpBuffer] \Um ponteiro para o buffer que contém os dados a serem gravados no arquivo ou dispositivo.
@@ -10502,7 +10616,7 @@ Etapas para que se zero fill um número usando uma contagem e posponha it para um
   Zero fill a segunda string usando a contagem.
   Posponha a segunda string para a string.
 
-O zero linha reta é um linha reta. \ tracer
+O zero linha reta é uma linha reta. \ tracer
 
 O zero localização é uma localização.
 
