@@ -1793,9 +1793,9 @@ Etapas para que se crie o número da fonte of um canvas usando um font:
     O canvas [hDC] \Um identificador para o contexto do dispositivo.
     e O número da fonte. [h] \Um número identificador para o objeto a ser selecionado.
 
-Etapas para que se crie o hpen of um canvas usando uma cor:
+Etapas para que se crie o hPen of um canvas usando uma cor:
   Converta a cor para um código da cor.
-  Se a cor estiver clear, atribua o null hpen a um hpen.
+  Se a cor estiver clear, atribua o null hPen a um hPen.
   Atribua a quantidade de twips/pixel times o grossura do pincel a um número.
   Se o canvas for a área de impressão, atribua 1 pixel times o grossura do pincel ao número.
   Se a cor não estiver clear, Call "gdi32.dll" "CreatePen" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createpen
@@ -1804,14 +1804,14 @@ Etapas para que se crie o hpen of um canvas usando uma cor:
     0 [iStyle = PS_SOLID]  \O estilo da caneta. PS_SOLID = A linha da caneta é "sólida" (sem traços ou pontilhados).
     e O número [cWidth] \A largura da caneta, em unidades lógicas. Se nWidth é zero, a caneta tem um único pixel de largura, independentemente da transformação atual.
     e O código da cor [color]  \Uma referência de cor para a cor da caneta. Para gerar uma estrutura COLORREF, use a macro RGB.
-    devolvendo o hpen. \Se a função for bem-sucedida, o valor de retorno é um identificador que identifica uma caneta lógica.
+    devolvendo o hPen. \Se a função for bem-sucedida, o valor de retorno é um identificador que identifica uma caneta lógica.
     \Se a função falhar, o valor de retorno será NULL.
      \Depois que um aplicativo cria uma caneta lógica, ele pode selecionar essa caneta em um contexto de dispositivo chamando a função SelecionarObjeto. 
       \Depois que uma caneta é selecionada em um contexto de dispositivo, ela pode ser usada para desenhar linhas e curvas.
   Call "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
     O canvas [hDC] \Um identificador para o contexto do dispositivo.
-    e O hpen. [h] \Um número identificador para o objeto a ser selecionado.
+    e O hPen. [h] \Um número identificador para o objeto a ser selecionado.
 
 Etapas para que se crie um hRgn usando uma caixa: 
   \ hRgn = número identificador da região que será desenhada na tela
@@ -4066,16 +4066,16 @@ Etapas para que se destrua o número da fonte of um canvas:
     O número da fonte.\Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
 
-Etapas para que se destrua o hpen of um canvas:
+Etapas para que se destrua o hPen of um canvas:
   Call "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
     O canvas [hDC] \Um identificador para o contexto do dispositivo.
-    e O null hpen  [h] \O número identificador do objeto a ser selecionado.
-    devolvendo um hpen.\Se o objeto selecionado não for uma região e a função for bem-sucedida, o valor de retorno é um identificador para o objeto que está sendo substituído.
+    e O null hPen  [h] \O número identificador do objeto a ser selecionado.
+    devolvendo um hPen.\Se o objeto selecionado não for uma região e a função for bem-sucedida, o valor de retorno é um identificador para o objeto que está sendo substituído.
   Call "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deleteobject
   \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
   \Depois que o objeto é excluído, o identificador especificado não é mais válido.
-    O hpen.\Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    O hPen.\Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
 
 Etapas para que se destrua um hRgn:
@@ -4137,17 +4137,16 @@ Etapas para que se destrua uma imagem:
   Desaloque a imagem.
 
 Etapas para que se destrua um socket: 
-
   Call "ws2_32.dll" "closesocket" com \https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-closesocket
   \A função closesocket fecha um socket existente.
     O socket.[s] \Um descritor que identifica o soquete a ser fechado.
-\Se nenhum erro ocorrer, closesocket retorna zero. 
-\Caso contrário, um valor de SOCKET_ERROR é retornado e um código de erro específico pode ser recuperado chamando WSAGetLastError.
-\A função closesocket fecha um socket. 
-\Use-o para liberar o descritor de soquete passado no parâmetro s. 
-\Observe que o descritor de socket passado no parâmetro s pode ser imediatamente reutilizado pelo sistema assim que a função closesocket for emitida. 
-\Como resultado, não é confiável esperar que referências adicionais ao descritor de soquete passado no parâmetro s falhem com o erro WSAENOTSOCK. 
-\Um cliente Winsock nunca deve emitir closesocket em s simultaneamente com outra chamada de função Winsock
+  \Se nenhum erro ocorrer, closesocket retorna zero. 
+  \Caso contrário, um valor de SOCKET_ERROR é retornado e um código de erro específico pode ser recuperado chamando WSAGetLastError.
+  \A função closesocket fecha um socket. 
+  \Use-o para liberar o descritor de soquete passado no parâmetro s. 
+  \Observe que o descritor de socket passado no parâmetro s pode ser imediatamente reutilizado pelo sistema assim que a função closesocket for emitida. 
+  \Como resultado, não é confiável esperar que referências adicionais ao descritor de soquete passado no parâmetro s falhem com o erro WSAENOTSOCK. 
+  \Um cliente Winsock nunca deve emitir closesocket em s simultaneamente com outra chamada de função Winsock
 
 Etapas para que se destrua um vértice usando um polígono:
   Se o vértice for inexistente, cancele.
@@ -4561,7 +4560,7 @@ Etapas para que se pinte um polígono com uma cor:
 Etapas para que se pinte um polígono com uma cor (border only):
   Se o polígono for inexistente, cancele.
   Se a cor estiver clear, cancele.
-  Crie o hpen of o quadro atual usando a cor.
+  Crie o hPen of o quadro atual usando a cor.
   Obtenha um vértice desde os vértices deste polígono.
   Se o vértice for inexistente, cancele.
   Call "gdi32.dll" "MoveToEx" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-movetoex
@@ -4587,34 +4586,55 @@ Etapas para que se pinte um polígono com uma cor (border only):
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Repita. [o código acima]
-  Destrua o hpen of o quadro atual.
+  Destrua o hPen of o quadro atual.
   Se a localização deste first destes vértices deste polígono for a localização deste last destes vértices deste polígono, cancele.
   Converta a cor para um código da cor.
-  Call "gdi32.dll" "SetPixelV" com 
-    O quadro atual 
-    e A coordenada X deste last destes vértices deste polígono 
-    e A coordenada Y deste last destes vértices deste polígono 
-    e O código da cor.
+  Call "gdi32.dll" "SetPixelV" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setpixelv
+  \A função SetPixelV define o pixel nas coordenadas especificadas para a aproximação mais próxima da cor especificada. 
+  \O ponto deve estar na região de recorte e na parte visível da superfície do dispositivo.
+  \Observação: Nem todos os dispositivos suportam a função SetPixelV. 
+  \Para obter mais informações, consulte a descrição do recurso RC_BITBLT na função GetDeviceCaps.
+  \SetPixelV é mais rápido do que SetPixel porque não precisa retornar o valor da cor do ponto realmente pintado.
+    O quadro atual [hdc] \O identificador do contexto do dispositivo.
+    e A coordenada X deste last destes vértices deste polígono [x] \A coordenada x, em unidades lógicas, do ponto a ser definido.
+    e A coordenada Y deste last destes vértices deste polígono [y] \A coordenada y, em unidades lógicas, do ponto a ser definido.
+    e O código da cor.[color] \A cor a ser usada para pintar o ponto. Para criar um valor de cor COLORREF, use a macro RGB.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
 
-Etapas para que se pinte um polígono com uma cor (fill only):
+Etapas para que se pinte um polígono com uma cor (apenas a cor de preenchimento):
   Se o polígono for inexistente, cancele.
   Se a cor estiver clear, cancele.
-  Crie o hpen of o quadro atual usando a cor preta.
+  Crie o hPen of o quadro atual usando a cor preta.
   Crie o hBrush of o quadro atual usando a cor.
-  Call "gdi32.dll" "SetPolyFillMode" com 
-    O quadro atual 
-    e 2 [WINDING].
+  Call "gdi32.dll" "SetPolyFillMode" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setpolyfillmode
+  \A função SetPolyFillMode define o modo de preenchimento do polígono para funções que preenchem polígonos.
+    O quadro atual [hdc] \O identificador do contexto do dispositivo.
+    e 2 [mode = WINDING].\O novo modo de preenchimento.
+    \WINDING seleciona o modo de enrolamento (preenche qualquer região com um valor de enrolamento diferente de zero).
+    \Em geral, os modos diferem apenas nos casos em que um polígono complexo e sobreposto deve ser preenchido
+    \(por exemplo, um polígono de cinco lados que forma uma estrela de cinco pontas com um pentágono no centro). 
+    \Nesses casos, o modo ALTERNATE preenche todas as outras regiões fechadas dentro do polígono (ou seja, as pontas da estrela), 
+    \enquanto o modo WINDING preenche todas as regiões (ou seja, as pontas e o pentágono).
+    \Quando o modo de preenchimento é ALTERNATIVO, o GDI preenche a área entre os lados ímpares e pares do polígono em cada linha de varredura. 
+    \Ou seja, o GDI preenche a área entre o primeiro e o segundo lado, entre o terceiro e o quarto lado e assim por diante.
+    \Quando o modo de preenchimento é WINDING, GDI preenche qualquer região que tenha um valor de enrolamento diferente de zero. 
+    \Este valor é definido como o número de vezes que uma caneta usada para desenhar o polígono contornaria a região. 
+    \A direção de cada aresta do polígono é importante.
+    \O valor de retorno especifica o modo de preenchimento anterior. Se ocorrer um erro, o valor de retorno é zero.
   Crie uma série de vértices usando os vértices deste polígono.
-  Call "gdi32.dll" "Polygon" com 
-    O quadro atual 
-    e O endereço de memória da localização desta série de vértices 
-    e A quantidade de vértices desta série de vértices.
+  Call "gdi32.dll" "Polygon" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-polygon
+  \A função Polygon desenha um polígono que consiste em dois ou mais vértices conectados por linhas retas. 
+  \O polígono é delineado usando a caneta atual e preenchido usando o pincel atual e o modo de preenchimento de polígono.
+    O quadro atual [hdc] \O identificador do contexto do dispositivo.
+    e O endereço de memória da localização desta série de vértices [*apt] \Um ponteiro para uma matriz de estruturas POINT que especificam os vértices do polígono, em coordenadas lógicas.
+    \https://docs.microsoft.com/en-us/previous-versions/dd162805(v=vs.85)
+    e A quantidade de vértices desta série de vértices. [cpt] \O número de vértices na matriz. Este valor deve ser maior ou igual a 2.
   Destrua a série de vértices.
   Destrua o hBrush of o quadro atual.
-  Destrua o hpen of o quadro atual.
+  Destrua o hPen of o quadro atual.
 
-Etapas para que se pinte um quarter círculo about uns twips wide;
-Etapas para que se pinte um quarter círculo usando um size:
+Etapas para que se pinte um quadrante circular about uns twips wide;
+Etapas para que se pinte um quadrante circular usando um size:
   Atribua o size times o número pi dividido por 48 a uma quantidade de caracteres do segmento.
   Adicione 1 para a quantidade de caracteres do segmento.
   Percorra. [o código abaixo]
@@ -4624,11 +4644,11 @@ Etapas para que se pinte um quarter círculo usando um size:
     Se a contagem for 12, cancele.
   Repita. [o código acima]
 
-Etapas para que se pinte um quarter círculo entre uns twips e uns segunda twips wide:
+Etapas para que se pinte um quadrante circular entre uns twips e uns segunda twips wide:
   Escolha aleatoriamente uns terceiro twips entre os twips e a segunda twips.
-  Pinte um quarter círculo usando o terceiro twips.
+  Pinte um quadrante circular usando o terceiro twips.
 
-Etapas para que se pinte um quarter círculo usando um size (counterclockwise):
+Etapas para que se pinte um quadrante circular usando um size (counterclockwise):
   Atribua o size times o número pi dividido por 48 a uma quantidade de caracteres do segmento.
   Adicione 1 para a quantidade de caracteres do segmento.
   Percorra. [o código abaixo]
@@ -6628,7 +6648,7 @@ Um horizontal linha reta é uma linha reta.
 
 Um hour é 60 minutes.
 
-Um hpen é um número identificador.
+Um hPen é um número identificador.
 
 Um hRgn é um número identificador.
 
@@ -7903,7 +7923,7 @@ Etapas para que se normalize um vertical linha reta:
 
 O null hBrush é um hBrush.
 
-O null hpen é um hpen.
+O null hPen é um hPen.
 
 Etapas para que se termine com o caractere NULL uma string:
   Atribua a quantidade de caracteres desta string a uma quantidade de caracteres armazenados.
