@@ -13,8 +13,8 @@ Etapas para que se read uma response string desde uma requisição WinHTTP:
       devolvendo um número resultante.
     Se o número resultante for 0, atribua "Erro. Não foi possível consultar os dados disponíveis." ao erro do fluxo de entrada/saída; limpe a response; pare.
     Atribua a quantidade de caracteres desta response a uma quantidade de caracteres armazenados.
-    Reassign o first endereço de memória do pedaço desta response string usando a quantidade de caracteres armazenados mais o trecho size.
-    Atribua o first endereço de memória do pedaço desta response string mais a quantidade de caracteres armazenados a um endereço de memória.
+    Reassign o caractere inicial desta response string usando a quantidade de caracteres armazenados mais o trecho size.
+    Atribua o caractere inicial desta response string mais a quantidade de caracteres armazenados a um endereço de memória.
     Call "WinHTTP.dll" "WinHttpReadData" com 
       O número identificador de requisição desta requisição WinHTTP 
       e O endereço de memória 
@@ -22,7 +22,7 @@ Etapas para que se read uma response string desde uma requisição WinHTTP:
       e O endereçamento dessa contagem 
       devolvendo o número resultante.
     Se o número resultante for 0, atribua "Ocorreu um erro na hora de ler os dados." ao erro do fluxo de entrada/saída; limpe o response; pare.
-    Atribua o endereço de memória mais a contagem menos 1 ao last endereço de memória do pedaço desta response string.
+    Atribua o endereço de memória mais a contagem menos 1 ao caractere final desta response string.
     Se a contagem for 0, pare.
   Repita. [o código acima]
 
@@ -32,7 +32,7 @@ Etapas para que se read uma URL para um trecho:
   Limpe o erro do fluxo de entrada/saída.
   \ internet abra
   Call "wininet.dll" "InternetOpenA" com 
-    O first endereço de memória do pedaço deste nome deste module 
+    O caractere inicial deste nome deste module 
     e 0 [INTERNET_OPEN_TYPE_PRECONFIG] 
     e nil 
     e nil 
@@ -43,7 +43,7 @@ Etapas para que se read uma URL para um trecho:
   termine com o caractere NULL a URL.
   Call "wininet.dll" "InternetOpenUrlA" com 
     O número identificador da URL da internet 
-    e O first endereço de memória do pedaço desta URL 
+    e O caractere inicial desta URL 
     e nil 
     e 0 
     e 0 
@@ -54,8 +54,8 @@ Etapas para que se read uma URL para um trecho:
   Atribua 64 kilobytes a um trecho size.
   Percorra. [o código abaixo]
     Atribua a quantidade de caracteres deste trecho a uma quantidade de caracteres armazenados.
-    Reassign o first endereço de memória do pedaço deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
-    Atribua o first endereço de memória do pedaço deste trecho mais a quantidade de caracteres armazenados a um endereço de memória.
+    Reassign o caractere inicial deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
+    Atribua o caractere inicial deste trecho mais a quantidade de caracteres armazenados a um endereço de memória.
     Call "wininet.dll" "InternetReadFile" com 
       O número identificador da URL 
       e O endereço de memória 
@@ -63,7 +63,7 @@ Etapas para que se read uma URL para um trecho:
       e O endereçamento dessa contagem 
       devolvendo um número resultante.
     Se o número resultante for 0, atribua "Ocorreu um erro na hora de ler a URL: " junto com o URL seguido de "." ao erro do fluxo de entrada/saída; pare.
-    Atribua o endereço de memória mais a contagem menos 1 ao last endereço de memória do pedaço deste trecho.
+    Atribua o endereço de memória mais a contagem menos 1 ao caractere final deste trecho.
     Se a contagem for 0, pare.
   Repita. [o código acima]
   \ clean para cima
@@ -87,18 +87,18 @@ Etapas para que se receive um trecho desde um socket:
   Percorra. [o código abaixo]
     Atribua 0 a um size.
     Atribua a quantidade de caracteres deste trecho a uma quantidade de caracteres armazenados.
-    Reassign o first endereço de memória do pedaço deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
-    Atribua o first endereço de memória do pedaço deste trecho mais a quantidade de caracteres armazenados a um endereço de memória.
+    Reassign o caractere inicial deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
+    Atribua o caractere inicial deste trecho mais a quantidade de caracteres armazenados a um endereço de memória.
     Call "ws2_32.dll" "recv" com
       O socket 
       e O endereço de memória 
       e O trecho size 
       e 0 
       devolvendo uma contagem.
-    Se a contagem não for -1 [SOCKET_ERROR], atribua o endereço de memória mais a contagem menos 1 ao last endereço de memória do pedaço deste trecho; volte.
+    Se a contagem não for -1 [SOCKET_ERROR], atribua o endereço de memória mais a contagem menos 1 ao caractere final deste trecho; volte.
     Se o last winsock erro do system não for 10040 [WSAMSGSIZE], atribua "Ocorreu um erro no recebimento dos dados." ao erro do fluxo de entrada/saída; limpe o trecho; volte.
   \Se o last winsock erro desse system não for 10040 [WSAMSGSIZE], atribua "Ocorreu um erro no recebimento dos dados." ao erro do fluxo de entrada/saída; limpe o trecho; volte.
-    Atribua o endereço de memória mais a contagem menos 1 ao last endereço de memória do pedaço deste trecho.
+    Atribua o endereço de memória mais a contagem menos 1 ao caractere final deste trecho.
   Repita. [o código acima]
 
 Etapas para que se post um data string para uma URL e receive um response string:

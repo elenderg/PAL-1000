@@ -9,16 +9,16 @@ Etapas para que se read stdin para um trecho:
   Se a string estiver em branco, atribua "Ocorreu um erro na hora de obter o conteúdo de comprimento CONTENT_LENGTH." ao erro do fluxo de entrada/saída; volte.
   Converta a string a uma quantidade de caracteres.
   Se a quantidade de caracteres for 0, cancele.
-  Reassign o first endereço de memória do pedaço deste trecho usando a quantidade de caracteres.
+  Reassign o caractere inicial deste trecho usando a quantidade de caracteres.
   Call "kernel32.dll" "ReadFile" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-readfile
   \Lê dados do arquivo especificado ou dispositivo de entrada / saída (E / S). As leituras ocorrem na posição especificada pelo ponteiro do arquivo, se suportado pelo dispositivo.
     O stdin handle [hFile] \Um identificador para o dispositivo (por exemplo, um arquivo, fluxo de arquivo, disco físico, volume, buffer de console, unidade de fita, soquete, recurso de comunicação, slot de correio ou canal).
-    e O first endereço de memória do pedaço deste trecho [lpBuffer] \Um ponteiro para o buffer que recebe os dados lidos de um arquivo ou dispositivo.
+    e O caractere inicial deste trecho [lpBuffer] \Um ponteiro para o buffer que recebe os dados lidos de um arquivo ou dispositivo.
     e A quantidade de caracteres [nNumberOfBytesToRead] \O número máximo de bytes a serem lidos.
     e O endereçamento desse número [lpNumberOfBytesRead] \Um ponteiro para a variável que recebe o número de bytes lidos ao usar um parâmetro hFile síncrono.
     e nil. [lpOverlapped] \Um ponteiro para uma estrutura OVERLAPPED é necessário se o parâmetro hFile foi aberto com FILE_FLAG_OVERLAPPED, caso contrário, pode ser NULL.
   Se o número não for a quantidade de caracteres, atribua "Erro ao ler dados do fluxo de entrada padrão stdin." ao erro do fluxo de entrada/saída; limpe o trecho; volte.
-  Atribua o first endereço de memória do pedaço deste trecho mais a quantidade de caracteres menos 1 ao last endereço de memória do pedaço deste trecho.
+  Atribua o caractere inicial deste trecho mais a quantidade de caracteres menos 1 ao caractere final deste trecho.
 
 Etapas para que se read uma string desde um console:
   Read o console à string.
@@ -41,7 +41,7 @@ Etapas para que se read um endereço completo para um trecho:
   Se o endereço completo não estiver no sistema de arquivos, atribua "O Arquivo: '" junto com o endereço completo seguido de "' não existe." ao erro do fluxo de entrada/saída; volte.
   \ abra o endereço completo para read-write mode.
   Call "kernel32.dll" "CreateFileA" com 
-    O first endereço de memória do pedaço deste endereço completo 
+    O caractere inicial deste endereço completo 
     e -2147483648 [GENERIC_READ] 
     e 3 [FILE_SHARE_READ+FILE_SHARE_WRITE] 
     e 0 
@@ -54,11 +54,11 @@ Etapas para que se read um endereço completo para um trecho:
     O número identificador 
     e nil 
     devolvendo um size.
-  Reassign o first endereço de memória do pedaço deste trecho usando o size.
-  Atribua o first endereço de memória do pedaço deste trecho mais o size menos 1 ao last endereço de memória do pedaço deste trecho.
+  Reassign o caractere inicial deste trecho usando o size.
+  Atribua o caractere inicial deste trecho mais o size menos 1 ao caractere final deste trecho.
   Call "kernel32.dll" "ReadFile" com 
     O número identificador 
-    e O first endereço de memória do pedaço deste trecho 
+    e O caractere inicial deste trecho 
     e O size 
     e O endereçamento desse número 
     e 0 
@@ -112,11 +112,11 @@ Etapas para que se read um file para um trecho:
     O file 
     e nil 
     devolvendo um size. \o valor de retorno é uma double word de ordem inferior do tamanho do arquivo
-  Reassign o first endereço de memória do pedaço deste trecho usando o size.
-  Atribua o first endereço de memória do pedaço deste trecho mais o size menos 1 ao last endereço de memória do pedaço deste trecho.
+  Reassign o caractere inicial deste trecho usando o size.
+  Atribua o caractere inicial deste trecho mais o size menos 1 ao caractere final deste trecho.
   Call "kernel32.dll" "ReadFile" com 
     O file 
-    e O first endereço de memória do pedaço deste trecho 
+    e O caractere inicial deste trecho 
     e O size 
     e O endereçamento desse número 
     e 0 
@@ -151,7 +151,7 @@ Etapas para que se read a Bíblia usando um endereço completo:
 Etapas para que se read um pedaço desde um console:
   Read uma string desde o console.
   Se a string estiver em branco, atribua o caractere null ao pedaço; volte.
-  Atribua o conteúdo deste first endereço de memória do pedaço desta string ao pedaço.
+  Atribua o conteúdo deste caractere inicial desta string ao pedaço.
 
 Etapas para que se read um console para uma string:
   Se o console for inexistente, limpe a string; volte.
@@ -190,7 +190,7 @@ Etapas para que se abra um file usando um endereço completo:
   Isole o endereço completo.
   termine com o caractere NULL o endereço completo.
   Call "kernel32.dll" "CreateFileA" com 
-    O first endereço de memória do pedaço deste endereço completo 
+    O caractere inicial deste endereço completo 
     e -1073741824 [GENERIC_READ+GENERIC_WRITE] 
     e 0 
     e 0 

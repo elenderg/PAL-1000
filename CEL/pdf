@@ -407,17 +407,17 @@ Etapas para que se pinte uma string sob uma localização com uma cor e um font:
   Defina o código da cor of o quadro atual usando a cor.
   Crie o número da fonte of o quadro atual usando a font.
   Ajuste espaçamento  da fonte usando a string.
-  Atribua o first endereço de memória do pedaço desta string ao first endereço de memória do pedaço desse subtexto.
-  Atribua o first endereço de memória do pedaço deste subtexto mais o text cutoff menos 1 ao last endereço de memória do pedaço deste subtexto.
+  Atribua o caractere inicial desta string ao caractere inicial desse subtexto.
+  Atribua o caractere inicial deste subtexto mais o text cutoff menos 1 ao caractere final deste subtexto.
   Isole a localização.
   Percorra. [o código abaixo]
     Se o subtexto estiver em branco, pare.
-    Se o last endereço de memória do pedaço deste subtexto for maior do que o last endereço de memória do pedaço desta string, atribua o last endereço de memória do pedaço desta string ao last endereço de memória do pedaço deste subtexto.
+    Se o caractere final deste subtexto for maior do que o caractere final desta string, atribua o caractere final desta string ao caractere final deste subtexto.
     Call "gdi32.dll" "TextOutA" com 
       O quadro atual 
       e A coordenada X desta localização 
       e A coordenada Y desta localização 
-      e O first endereço de memória do pedaço deste subtexto 
+      e O caractere inicial deste subtexto 
       e A quantidade de caracteres deste subtexto.
     Obtenha uma largura usando o subtexto e o quadro atual.
     Adicione a largura para a coordenada X desta localização.
@@ -679,14 +679,14 @@ Etapas para que se crie um pdf outline entry usando um título de índice remissiv
 Etapas para que se converta uma string para um pdf string:
   Atribua "(" ao pdf string.
   Lance um subtexto sobre a string.
-  Subtraia 1 desde o first endereço de memória do pedaço deste subtexto.
+  Subtraia 1 desde o caractere inicial deste subtexto.
   Percorra. [o código abaixo]
-    Adicione 1 para o first endereço de memória do pedaço deste subtexto.
+    Adicione 1 para o caractere inicial deste subtexto.
     Se o subtexto estiver em branco, pare.
-    Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o parênteses esquerdo, posponha "\(" para o pdf string; repita.
-    Se o conteúdo deste first endereço de memória do pedaço deste subtexto for o parênteses direito, posponha "\)" para o pdf string; repita.
-    Se o conteúdo deste first endereço de memória do pedaço deste subtexto for a barra invertida, posponha "\\" para o pdf string; repita.
-    Posponha o conteúdo deste first endereço de memória do pedaço deste subtexto para o pdf string.
+    Se o conteúdo deste caractere inicial deste subtexto for o parênteses esquerdo, posponha "\(" para o pdf string; repita.
+    Se o conteúdo deste caractere inicial deste subtexto for o parênteses direito, posponha "\)" para o pdf string; repita.
+    Se o conteúdo deste caractere inicial deste subtexto for a barra invertida, posponha "\\" para o pdf string; repita.
+    Posponha o conteúdo deste caractere inicial deste subtexto para o pdf string.
   Repita. [o código acima]
   Posponha ")" para o pdf string.
 
@@ -695,19 +695,19 @@ Etapas para que se converta uma string e um actual font info e um original font 
   Atribua 0 a um current byte#.
   Lance um subtexto sobre o first pedaço of a string.
   Percorra. [o código abaixo]
-    Se o first endereço de memória do pedaço deste subtexto for maior do que o last endereço de memória do pedaço desta string, pare.
-    Se o last endereço de memória do pedaço deste subtexto é o last endereço de memória do pedaço desta string, pare.
+    Se o caractere inicial deste subtexto for maior do que o caractere final desta string, pare.
+    Se o caractere final deste subtexto é o caractere final desta string, pare.
     Obtenha um current largura usando o current byte# e as font larguras desta actual font info.
-    Obtenha um original largura usando o conteúdo deste last endereço de memória do pedaço deste subtexto e a font larguras desta original font info.
+    Obtenha um original largura usando o conteúdo deste caractere final deste subtexto e a font larguras desta original font info.
     Atribua o original largura menos o current largura a um offset.
-    Se o offset for 0, adicione 1 para o last endereço de memória do pedaço deste subtexto; adicione 1 para o current byte#; repita.
+    Se o offset for 0, adicione 1 para o caractere final deste subtexto; adicione 1 para o current byte#; repita.
     Converta o subtexto para um pdf string.
     Posponha o pdf string seguido de " " junto com o offset seguido de " " para o trecho.
-    Atribua o last endereço de memória do pedaço deste subtexto mais 1 ao last endereço de memória do pedaço deste subtexto.
-    Atribua o last endereço de memória do pedaço deste subtexto ao first endereço de memória do pedaço deste subtexto.
+    Atribua o caractere final deste subtexto mais 1 ao caractere final deste subtexto.
+    Atribua o caractere final deste subtexto ao caractere inicial deste subtexto.
     Adicione 1 para o current byte#.
   Repita. [o código acima]
-  Se o first endereço de memória do pedaço deste subtexto for maior do que o last endereço de memória do pedaço desta string, cancele.
+  Se o caractere inicial deste subtexto for maior do que o caractere final desta string, cancele.
   Converta o subtexto para uma segunda pdf string.
   Posponha a segunda pdf string para o trecho.
 
