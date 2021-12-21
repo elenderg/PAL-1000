@@ -10,7 +10,7 @@
 \ Já quando um texto é transformado em um campo de texto, o caractere LF é removido.
 \ Existe sempre uma linha, no mínimo.
 \ Existe sempre um caractere CR no fim da ultima linha.
-\obs: tentar traduzir linha reta como reta. Assim, row pode ser traduzido como linha.
+\Assim, row pode ser traduzido como linha.
 
 \o verbo "criar" envolve alocação de memória
 \o verbo fazer usa a memória já alocada
@@ -38,6 +38,26 @@ An text é uma coisa com
   Uma última operação,
   Some texts denominado undos,
   Some texts denominado redos.
+
+Um campo de texto é uma coisa com
+  Uma caixa,
+  Uma origem,
+  Uma pincel cor,
+  Uma font,
+  Um alinhamento,
+  Some rows,
+  Uma margem,
+  Uma scale fração,
+  Um wrap detector,
+  Um horizontal scroll detector,
+  Um vertical scroll detector,
+  Uma seleção,
+  Um detector de alteração,
+  Uma última operação,
+  Some texts denominado undos,
+  Some texts denominado redos.
+
+Os campos de textos são uns campos des textos. \preciso consertar esse plural bugado
 
 An string# é um número.
 
@@ -4721,13 +4741,19 @@ Etapas para que se pinte uma localização:
 
 Etapas para que se pinte uma localização com uma cor:
   Converta a cor para um código da cor.
-  Call "gdi32.dll" "SetPixelV" com 
-    O quadro atual 
-    e A coordenada X desta localização 
-    e A coordenada Y desta localização 
-    e O código da cor.
+  Call "gdi32.dll" "SetPixelV" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setpixelv
+  \A função SetPixelV define o pixel nas coordenadas especificadas para a aproximação mais próxima da cor especificada. 
+  \O ponto deve estar na região de recorte e na parte visível da superfície do dispositivo.
+  \Observação: Nem todos os dispositivos suportam a função SetPixelV. 
+  \Para obter mais informações, consulte a descrição do recurso RC_BITBLT na função GetDeviceCaps.
+  \SetPixelV é mais rápido do que SetPixel porque não precisa retornar o valor da cor do ponto realmente pintado.
+    O quadro atual [hdc] \O identificador do contexto do dispositivo.
+    e A coordenada X desta localização [x] \A coordenada x, em unidades lógicas, do ponto a ser definido.
+    e A coordenada Y desta localização [y] \A coordenada y, em unidades lógicas, do ponto a ser definido.
+    e O código da cor.\A cor a ser usada para pintar o ponto. Para criar um valor de cor COLORREF, use a macro RGB.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
 
-Etapas para que se pinte um star usando uma point contagem e um size:
+Etapas para que se pinte uma estrela usando uma point contagem e um size:
   Atribua 1 e a point contagem a um fração.
   Percorra. [o código abaixo]
     Vire right 1/48 of o caminho.
@@ -4853,16 +4879,16 @@ Etapas para que se duplicate um endereço completo para um segundo endereço compl
   Termine com o caractere NULL o endereço completo.
   Isole o segundo endereço completo.
   Termine com o caractere NULL o segundo endereço completo.
-  Call "kernel32.dll" "CopyFileA" com 
-    O first deste endereço completo 
-    e O first deste segundo endereço completo 
-    e 0 
-    devolvendo um número.
+  Call "kernel32.dll" "CopyFileA" com \https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-copyfilea
+  \A função CopyFileA copia um arquivo existente para um novo arquivo.
+    O first deste endereço completo [lpExistingFileName] \ O nome de um arquivo existente.
+    e O first deste segundo endereço completo [lpNewFileName] \ O nome do novo arquivo.
+    e 0 [bFailIfExists] \Se este parâmetro for TRUE e o novo arquivo especificado por lpNewFileName já existir, a função falhará. 
+    \Se este parâmetro for FALSE e o novo arquivo já existir, a função sobrescreve o arquivo existente e é bem-sucedida.
+    devolvendo um número. \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
   Limpe o erro do fluxo de entrada/saída.
-  Se o número não for 0, defina o endereço completo para read-write mode; volte.
+  Se o número não for 0, defina o endereço completo para read-write mode; volte. \Se a função falhar, o valor de retorno é zero.
   Atribua "Ocorreu um erro na hora de duplicar o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
-
-
 
 Uma elipse é um conjunto com uma caixa.
 
@@ -4880,16 +4906,49 @@ Etapas para que se encrypt um trecho usando um passphrase string:
   Se o crypt session for inexistente, cancele.
   Atribua o trecho a um temp trecho.
   Atribua a quantidade de caracteres deste temp trecho a uma quantidade de caracteres.
-  Call "advapi32.dll" "CryptEncrypt" com 
-    A hCryptKey desta crypt session 
-    e 0 
-    e 1 
-    e 0 
-    e O first endereço de memória do pedaço deste temp trecho 
-    e O endereçamento deste quantidade de caracteres 
-    e A quantidade de caracteres 
-    devolvendo um número resultante.
-  Se o número resultante for 0, atribua "Ocorreu um erro na hora de criptografar os dados." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
+  Call "advapi32.dll" "CryptEncrypt" com \https://docs.microsoft.com/en-us/windows/win32/api/wincrypt/nf-wincrypt-cryptencrypt
+  \A função CryptEncrypt criptografa os dados. 
+  \O algoritmo usado para criptografar os dados é designado pela chave mantida pelo módulo CSP e é referenciado pelo parâmetro hKey
+  \Importante Esta API está obsoleta. 
+  \O software novo e o existente devem começar a usar APIs de criptografia de última geração. 
+  \A Microsoft pode remover esta API em versões futuras.
+    A hCryptKey desta crypt session [hKey] \o número identificador da chave de criptografia. 
+    \Um aplicativo obtém esse identificador usando a função CryptGenKey ou CryptImportKey.
+    \A chave especifica o algoritmo de criptografia usado.
+    e 0 [hHash] \Um identificador para um objeto hash. 
+    \Se os dados tiverem que ser criptografados e criptografados simultaneamente, um identificador para um objeto hash pode ser passado no parâmetro hHash. 
+    \O valor hash é atualizado com o texto simples passado. Esta opção é útil ao gerar texto assinado e criptografado.
+    \Antes de chamar CryptEncrypt, o aplicativo deve obter um identificador para o objeto hash chamando a função CryptCreateHash. 
+    \Depois que a criptografia for concluída, o valor do hash pode ser obtido usando a função CryptGetHashParam 
+    \ou o hash pode ser assinado usando a função CryptSignHash.
+    \Se nenhum hash deve ser feito, este parâmetro deve ser NULL.
+    e 1 [Final] \Um valor booleano que especifica se esta é a última seção de uma série que está sendo criptografada. 
+    \Final é definido como TRUE para o último ou único bloco e como FALSE se houver mais blocos a serem criptografados.
+    e 0 [dwFlags] \reservado para uso futuro
+    e O first endereço de memória do pedaço deste temp trecho [*pbData] \Um ponteiro para um buffer que contém o texto simples a ser criptografado. 
+    \O texto simples neste buffer é substituído pelo texto cifrado criado por esta função.
+    \O parâmetro pdwDataLen aponta para uma variável que contém o comprimento, em bytes, do texto simples. 
+    \O parâmetro dwBufLen contém o tamanho total, em bytes, desse buffer.
+    \Se este parâmetro contiver NULL, esta função calculará o tamanho necessário para o texto cifrado e o colocará no valor apontado pelo parâmetro pdwDataLen.
+    e O endereçamento deste quantidade de caracteres [*pdwDataLen] \Um ponteiro para um valor DWORD que, na entrada, contém o comprimento, em bytes, do texto sem formatação no buffer pbData. 
+    \Na saída, este DWORD contém o comprimento, em bytes, do texto cifrado gravado no buffer pbData.
+    \Se o buffer alocado para pbData não for grande o suficiente para conter os dados criptografados, 
+    \GetLastError retorna ERROR_MORE_DATA e armazena o tamanho do buffer necessário, em bytes, no valor DWORD apontado por pdwDataLen.
+    \Se pbData for NULL, nenhum erro será retornado e a função armazenará o tamanho dos dados criptografados, em bytes, no valor DWORD apontado por pdwDataLen. 
+    \Isso permite que um aplicativo determine o tamanho correto do buffer.
+    \Quando uma cifra de bloco é usada, esse comprimento de dados deve ser um múltiplo do tamanho do bloco, 
+    \a menos que esta seja a seção final dos dados a serem criptografados e o parâmetro Final seja TRUE.
+    e A quantidade de caracteres [dwBufLen] \Especifica o tamanho total, em bytes, do buffer pbData de entrada.
+    \Observe que, dependendo do algoritmo usado, o texto criptografado pode ser maior do que o texto simples original. 
+    \Nesse caso, o buffer pbData precisa ser grande o suficiente para conter o texto criptografado e qualquer preenchimento.
+    \Como regra, se uma cifra de fluxo for usada, o texto cifrado terá o mesmo tamanho do texto simples. 
+    \Se uma cifra de bloco for usada, o texto cifrado terá um comprimento de bloco maior do que o texto simples.
+    devolvendo um número resultante. \Se a função for bem-sucedida, ela retornará um valor diferente de zero (VERDADEIRO).
+    \Se a função falhar, ele retornará zero (FALSO).
+  Se o número resultante for 0, atribua "Ocorreu um erro ao criptografar os dados." ao erro do fluxo de entrada/saída; destrua o crypt session; volte.
+  \Se uma grande quantidade de dados deve ser criptografada, isso pode ser feito em seções chamando CryptEncrypt repetidamente. 
+  \O parâmetro Final deve ser definido como TRUE na última chamada para CryptEncrypt, 
+  \para que o mecanismo de criptografia possa terminar corretamente o processo de criptografia.
   Destrua o crypt session.
   Converta o temp trecho para uma cifra hexadecimal.
   Atribua a cifra hexadecimal ao trecho.
@@ -4911,9 +4970,9 @@ Etapas para que se limpe inside uma caixa:
   Pinte a caixa com a cor preta e a cor branca.
 
 Etapas para que se estime um deslocamento vertical e um deslocamento horizontal usando uma orientação:
-  Atribua a orientação a um low orientação.
-  Arredonde o low orientação para baixo para o múltiplo imediato of 20.
-  Obtenha um low deslocamento vertical e um low deslocamento horizontal usando o low orientação.
+  Atribua a orientação a uma low orientação.
+  Arredonde a low orientação para baixo para o múltiplo imediato of 20.
+  Obtenha um low deslocamento vertical e um low deslocamento horizontal usando a low orientação.
   Atribua a orientação a um high orientação.
   Arredonde o high orientação para cima para o múltiplo imediato of 20.
   Obtenha um high deslocamento vertical e um high deslocamento horizontal usando o high orientação.
@@ -4935,7 +4994,7 @@ Etapas para que se extend uma caixa para include uma segunda caixa:
   Se a coordenada X do canto inferior direito desta segunda caixa for maior do que a coordenada X do canto inferior direito desta caixa, atribua a coordenada X do canto inferior direito desta segunda caixa à coordenada X do canto inferior direito desta caixa.
   Se a coordenada Y do canto inferior direito desta segunda caixa for maior do que a coordenada Y do canto inferior direito desta caixa, atribua a coordenada Y do canto inferior direito desta segunda caixa à coordenada Y do canto inferior direito desta caixa.
 
-Some  extra points são uns points.
+Some extra points são uns points.
 
 Etapas para que se extraia um designador desde um endereço completo:
   Limpe o designador.
@@ -5021,26 +5080,73 @@ Etapas para que se extraia uma imagem usando uma caixa:
   Atribua a largura desta caixa dividido pelo quantidade de twips/pixel a uma largura.
   Atribua a altura desta caixa dividido pelo quantidade de twips/pixel a uma altura.
   Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com 
-    A largura 
-    e A altura 
-    e 0 
-    e 137224 [pixelformat24bpprgb] 
-    e 0 
-    e O endereçamento desse gpBitmap.
+    A largura [width] \Valor inteiro longo que especifica a largura, em pixels, do bitmap.
+    e A altura [height] \ especifica a altura, em pixels, do bitmap.
+    e 0 [stride] \especifica o deslocamento de byte entre o início de uma linha de varredura e a próxima. 
+    \Isso é geralmente (mas não necessariamente) o número de bytes no formato de pixel (por exemplo, 2 para 16 bits por pixel) multiplicado pela largura do bitmap. 
+    \O valor passado para este parâmetro deve ser um múltiplo de quatro.
+    e 137224 [format = PixelFormat24bppRGB] \Especifica o formato de pixel do bitmap. 
+    \PixelFormat24bppRGB Especifica que o formato é de 24 bits por pixel; 8 bits cada são usados para os componentes vermelho, verde e azul.
+    e 0 [scan0] \O parâmetro scan0 é tratado como uma matriz de bytes. Ponteiro para uma matriz de bytes que contém os dados de pixel. 
+    \O chamador é responsável por alocar e liberar o bloco de memória apontado por este parâmetro.
+    e O endereçamento desse gpBitmap. [*bitmap] \Ponteiro para uma variável DWORD que recives um ponteiro para um objeto Bitmap.
   Call "gdiplus.dll" "GdipGetImageGraphicsContext" com 
-    O gpBitmap 
-    e O endereçamento desse gpgraphic.
+  \Esta função é usada para criar um objeto Graphics associado a um objeto de imagem.
+  \A função falhará se a imagem for baseada em um metarquivo que foi aberto para leitura
+  \(com as funções GdipLoadImageFromFile, GdipLoadImageFromFileICM, GdipCreateMetafileFromFile, GdipCreateMetafileFromWmfFile). 
+  \Para abrir um metarquivo para escrita, use funções em metarquivos que usam um identificador de contexto de dispositivo (hdc).
+  \A função também falhará se a imagem usar um dos seguintes formatos de pixel:
+    \#PixelFormatUndefined
+    \# PixelFormatDontCare
+    \# PixelFormat1bppIndexed
+    \# PixelFormat4bppIndexed
+    \# PixelFormat8bppIndexed
+    \# PixelFormat16bppGrayScale
+    \# PixelFormat16bppARGB1555
+    O gpBitmap [*image] \Ponteiro para um objeto de imagem que será associado ao novo objeto *graphics.
+    e O endereçamento desse gpgraphic. [**graphics] \Ponteiro para uma variável que recebe um ponteiro para o novo objeto Graphics.
+    \*graphics receberá um ponteiro para um objeto Graphics associado à imagem.
+    \Se a função for bem-sucedida, ela retornará #Ok, que é uma constante da enumeração de status.
+    \Se a função falhar, ela retornará um dos outros valores da enumeração de status.
   Call "gdiplus.dll" "GdipGetDC" com 
-    O gpgraphic 
-    e O endereçamento desse bitmap canvas.
+  \Esta função é usada para encontrar o identificador do contexto do dispositivo associado ao gráfico.
+    O gpgraphic [graphics] \Identificador para um objeto Graphics criado pelas funções GdipCreateFromHDC, 
+    \GdipCreateFromHDC2, GdipCreateFromHWND ou GdipGetImageGraphicsContext.
+    e O endereçamento desse bitmap canvas.[hdc] \Identificador do contexto de dispositivo associado a este objeto Graphics
+    \Cada chamada para a função GdipGetDC deve ser emparelhada com uma chamada para a função GdipReleaseDC. 
+    \Não chame nenhuma função Graphics entre as chamadas para GdipGetDC e GdipReleaseDC. 
+    \Se você tentar chamar uma função Graphics entre GdipGetDC e GdipReleaseDC, o método falhará e retornará ObjectBusy.
+    \Quaisquer alterações de estado feitas no contexto do dispositivo entre GdipGetDC e GdipReleaseDC serão ignoradas pelo GDI + 
+    \e não serão refletidas na renderização feita pelo GDI +.
+    \Se a função for bem-sucedida, ela retornará 0, que é uma constante da enumeração de status.
+    \Se a função falhar, ela retornará um dos outros valores da enumeração de status.
   Normalize o bitmap canvas.
-  Call "gdi32.dll" "BitBlt" com 
-    O bitmap canvas 
-    e 0 
-    e 0 
-    e A largura desta caixa 
-    e A altura desta caixa 
-  And o quadro atual e a coordenada X do canto superior esquerdo desta caixa e a coordenada Y do canto superior esquerdo desta caixa e 13369376 [srccopy].
+  Call "gdi32.dll" "BitBlt" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-bitblt
+  \A função BitBlt executa uma transferência de bloco de bits dos dados de cor 
+  \correspondentes a um retângulo de pixels do contexto de dispositivo de origem especificado 
+  \para um contexto de dispositivo de destino.
+  \BitBlt só faz recorte no controlador de domínio de destino.
+  \Se uma rotação ou transformação de cisalhamento estiver em vigor no contexto do dispositivo de origem, BitBlt retornará um erro. 
+  \Se outras transformações existirem no contexto do dispositivo de origem
+   \(e uma transformação correspondente não estiver em vigor no contexto do dispositivo de destino), 
+   \o retângulo no contexto do dispositivo de destino será esticado, compactado ou girado, conforme necessário.
+   \Se os formatos de cor dos contextos de dispositivo de origem e destino não corresponderem, a função 
+   \BitBlt converte o formato de cor de origem para corresponder ao formato de destino.
+   \Quando um metarquivo avançado está sendo gravado, 
+   \ocorre um erro se o contexto do dispositivo de origem identifica um contexto de dispositivo de metarquivo avançado.
+    O bitmap canvas [hdc] \Um identificador para o contexto do dispositivo de destino.
+    e 0 [x] \A coordenada x, em unidades lógicas, do canto superior esquerdo do retângulo de destino.
+    e 0 [y] \A coordenada y, em unidades lógicas, do canto superior esquerdo do retângulo de destino.
+    e A largura desta caixa [cx] \A largura, em unidades lógicas, dos retângulos de origem e destino.
+    e A altura desta caixa [cy] \A altura, em unidades lógicas, dos retângulos de origem e destino.
+   e o quadro atual  [hdcSrc] \Um identificador para o contexto do dispositivo de origem.
+   e a coordenada X do canto superior esquerdo desta caixa [x1] \A coordenada x, em unidades lógicas, do canto superior esquerdo do retângulo de origem.
+   e a coordenada Y do canto superior esquerdo desta caixa [y1] \A coordenada y, em unidades lógicas, do canto superior esquerdo do retângulo de origem.
+   e 13369376 [rop = SRCCOPY]. \Um código de operação de varredura. 
+   \Esses códigos definem como os dados de cor do retângulo de origem devem ser combinados com os dados de cor do retângulo de destino para obter a cor final.
+   \SRCCOPY = Copia o retângulo de origem diretamente para o retângulo de destino.
+   \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+   \Se a função falhar, o valor de retorno é zero.
   Call "gdiplus.dll" "GdipReleaseDC" com 
     O gpgraphic 
     e O bitmap canvas.
