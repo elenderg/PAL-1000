@@ -68,7 +68,7 @@ Um pdf state é um conjunto com
 \  Output " RG".
 \  Atribua a cor à cor da borda atual deste pdf state.
 
-\Etapas para que se output o pdf fill usando uma cor:
+\Etapas para que se output o pdf preencha usando uma cor:
 \  Se a cor for a cor de preenchimento atual deste pdf state, cancele.
 \  Output a cor sem passar pra próxima linha.
 \  Output " rg".
@@ -103,14 +103,14 @@ Etapas para que se output o pdf border usando uma cor:
   Output " RG".
   Atribua a cor à cor da borda atual deste pdf state.
 
-Etapas para que se output o pdf fill usando uma cor:
+Etapas para que se output o pdf preencha usando uma cor:
   Se a cor for a cor de preenchimento atual deste pdf state, cancele.
   Output a cor sem passar pra próxima linha.
   Output " rg".
   Atribua a cor à cor de preenchimento atual deste pdf state.
 
 Etapas para que se output setcolor usando uma cor da borda e uma cor de preenchimento:
-  Se a cor de preenchimento não estiver clear, output o pdf fill usando a cor de preenchimento.
+  Se a cor de preenchimento não estiver clear, output o pdf preencha usando a cor de preenchimento.
   Se a cor da borda não estiver clear, output o pdf border usando a cor da borda.
 
 Etapas para que se include uma font no current pdf:
@@ -336,7 +336,7 @@ Etapas para que se end printing um pdf (append xref table):
   Percorra. [o código abaixo]
     Obtenha um pdf object desde os objects deste pdf state.
     Se o pdf object for inexistente, pare.
-    Zero fill o offset deste pdf object usando 10 e posponha it para o pdf.
+    Zero preencha o offset deste pdf object usando 10 e posponha it para o pdf.
     Posponha " 00000 n" junto com o texto CRLF para o pdf.
   Repita. [o código acima]
   Posponha o texto CRLF para o pdf.
@@ -386,7 +386,7 @@ Etapas para que se pinte uma string sob uma localização com uma cor e uma font (
   Se o definition for inexistente, cancele. \ erro
   Crie uma font info usando a font e a string.
   Output o pdf border usando a cor.
-  Output o pdf fill usando a cor.
+  Output o pdf preencha usando a cor.
   Output "BT".
   Output "/" junto com o nome da fonte desta definition seguido de " " junto com a adjusted altura desta font seguido de " Tf".
   \ adicione a adjusted altura desta font menos o internal leading desta font info para o y do localização. \ just plain wrong
@@ -451,7 +451,7 @@ Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
   Output o arco of a elipse usando "canto inferior esquerdo ".
   \ finish para cima
   Output "h".
-  Output stroke e fill usando a cor da borda e a cor de preenchimento.
+  Output stroke e preencha usando a cor da borda e a cor de preenchimento.
 
 Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de preenchimento:
   Se a página detector deste pdf state estiver ativo, pinte a caixa arredondada com a cor da borda e a cor de preenchimento (pdf style); volte.
@@ -488,7 +488,7 @@ Etapas para que se pinte um polígono com uma cor da borda e uma cor de preenchim
     Se o vértice for inexistente, pare.
     Output lineto usando a localização deste vértice.
   Repita. [o código acima]
-  Output stroke e fill usando a cor da borda e a cor de preenchimento.
+  Output stroke e preencha usando a cor da borda e a cor de preenchimento.
 
 Etapas para que se pinte uma imagem (pdf style):
   Se a imagem for inexistente, cancele.
@@ -505,10 +505,10 @@ Etapas para que se pinte uma imagem (pdf style):
                                        e O endereçamento desse gpBitmap.
   Call "gdiplus.dll" "GdipGetImageGraphicsContext" com 
     O gpBitmap 
-    e O endereçamento desse gpgraphic.
+    e O endereçamento desse gpGraphic.
   Se o grayscale detector desta imagem estiver ativo, crie um GpImageAttributes (escala de cinza).
   Call "gdiplus.dll" "GdipDrawImageRectRectI" com 
-                                                                                                       O gpgraphic 
+                                                                                                       O gpGraphic 
                                                                                                        e O gpBitmap desta imagem 
                                                                                                        e 0 
                                                                                                        e 0 
@@ -524,7 +524,7 @@ Etapas para que se pinte uma imagem (pdf style):
                                                                                                        e 0.
   Se o GpImageAttributes não for inexistente, destrua o GpImageAttributes.
   Call "gdiplus.dll" "GdipDeleteGraphics" com 
-    O gpgraphic.
+    O gpGraphic.
   Pinte o gpBitmap sob o canto superior esquerdo desta caixa desta imagem (pdf style).
   Call "gdiplus.dll" "GdipDisposeImage" com 
     O gpBitmap.
@@ -536,13 +536,13 @@ Etapas para que se pinte uma imagem:
   Cubra externamente a caixa desta imagem.
   Call "gdiplus.dll" "GdipCreateFromHDC" com 
     O quadro atual 
-    e O endereçamento desse gpgraphic.
+    e O endereçamento desse gpGraphic.
   Call "gdiplus.dll" "GdipSetPageUnit" com 
-    O gpgraphic 
+    O gpGraphic 
     e 2 [pixels].
-  Pinte a imagem sobre o gpgraphic sob a coordenada X do canto superior esquerdo desta caixa intacta desta imagem e a coordenada Y do canto superior esquerdo desta caixa intacta desta imagem.
+  Pinte a imagem sobre o gpGraphic sob a coordenada X do canto superior esquerdo desta caixa intacta desta imagem e a coordenada Y do canto superior esquerdo desta caixa intacta desta imagem.
   Call "gdiplus.dll" "GdipDeleteGraphics" com 
-    O gpgraphic.
+    O gpGraphic.
   Restaure o quadro atual.
 
 Etapas para que se pinte uma linha reta com uma cor (pdf style):
@@ -550,7 +550,7 @@ Etapas para que se pinte uma linha reta com uma cor (pdf style):
   Output setcolor usando a cor e a cor preta.
   Output moveto usando a localização inicial desta linha reta.
   Output lineto usando a localização final desta linha reta.
-  Output stroke e fill usando a cor e a cor preta.
+  Output stroke e preencha usando a cor e a cor preta.
 
 Etapas para que se pinte uma linha reta com uma cor:
   Se a página detector deste pdf state estiver ativo, pinte a linha reta com a cor (pdf style); volte.
@@ -625,7 +625,7 @@ Etapas para que se pinte uma elipse com uma cor da borda e uma cor de preenchime
   Output o arco of a elipse usando "canto superior direito".
   Output o arco of a elipse usando "canto inferior direito".
   Output o arco of a elipse usando "canto inferior esquerdo ".
-  Output stroke e fill usando a cor da borda e a cor de preenchimento.
+  Output stroke e preencha usando a cor da borda e a cor de preenchimento.
 
 Etapas para que se pinte uma elipse com uma cor da borda e uma cor de preenchimento:
   Se a página detector deste pdf state estiver ativo, pinte a elipse com a cor da borda e a cor de preenchimento (pdf style); volte.
@@ -649,7 +649,7 @@ Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimen
   Output o x-extent desta caixa sem passar pra próxima linha.
   Output o y-extent desta caixa sem passar pra próxima linha.
   Output "re".
-  Output stroke e fill usando a cor da borda e a cor de preenchimento.
+  Output stroke e preencha usando a cor da borda e a cor de preenchimento.
 
 Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimento:
   Se a página detector deste pdf state estiver ativo, pinte a caixa com a cor da borda e a cor de preenchimento (pdf style); volte.
