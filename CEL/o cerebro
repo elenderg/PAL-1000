@@ -5248,7 +5248,17 @@ Etapas para que se finalize o cgi:
 Etapas para que se finalize as cors:
 
 Etapas para que se finalize COM:
-  Call "ole32.dll" "CoUninitialize".
+  Call "ole32.dll" "CoUninitialize". \https://docs.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-couninitialize
+  \A função CoUninitialize fecha a biblioteca COM no thread atual, 
+  \descarrega todas as DLLs carregadas pelo thread, 
+  \libera quaisquer outros recursos que o thread mantém 
+  \e força o fechamento de todas as conexões RPC no thread.
+  \Um thread deve chamar CoUninitialize uma vez para cada chamada bem-sucedida feita para a função CoInitialize ou CoInitializeEx, incluindo qualquer chamada que retorna S_FALSE. 
+  \Apenas a chamada CoUninitialize correspondente à chamada CoInitialize ou CoInitializeEx que inicializou a biblioteca pode fechá-la.
+  \CoUninitialize deve ser chamado no encerramento do aplicativo, como a última chamada feita para a biblioteca COM depois que o aplicativo oculta suas janelas principais e cai em seu loop de mensagem principal. 
+  \Se houver conversas abertas restantes, CoUninitialize inicia um loop de mensagem modal e despacha todas as mensagens pendentes dos contêineres ou servidor para este aplicativo COM. 
+  \Ao despachar as mensagens, CoUninitialize garante que o aplicativo não feche antes de receber todas as mensagens pendentes. 
+  \Mensagens não COM são descartadas.
 
 Etapas para que se finalize um context:
   Destrua as choices.
@@ -5598,9 +5608,10 @@ Etapas para que se encontre um value string usando uns dyads e um nome:
 Etapas para que se encontre uma value string usando o environment variáveis e um nome:
   Isole o nome.
   Termine com o caractere NULL o nome.
-  Atribua 32767 a uma quantidade de caracteres. \ max size por environment variável
+  Atribua 32767 a uma quantidade de caracteres. \ max size de environment variável
   Reassign o first  endereço de memória do pedaço desta value string usando a quantidade de caracteres.
-  Call "kernel32.dll" "GetEnvironmentVariableA" com 
+  Call "kernel32.dll" "GetEnvironmentVariableA" com \https://docs.microsoft.com/en-us/windows/win32/api/processenv/nf-processenv-getenvironmentvariablea
+  \Recupera o conteúdo da variável especificada do bloco de ambiente do processo de chamada.
     O caractere inicial deste nome 
     e O caractere inicial desta value string
     e A quantidade de caracteres 
