@@ -3,6 +3,13 @@
 \Para se programar em código de máquina, deve-se obter os códigos de instruções do processador utilizado contendo opcodes, operandos e formatos de cada instrução.
 \Por esse motivo foi criada uma linguagem de programação chamada Assembly, composta de códigos mnemônicos que expressam as mesmas instruções do processador, 
 \embora escritos em acrônimos da língua inglesa, tais como MOV ou REP, em vez de opcodes.
+\all parameters are passed by reference
+\All parameters passed to Plain English routines are passed by reference, though parameters passed to DLLs use the C convention (the order is reversed and "simple" types are passed by value
+\"The whole system is built on just two, compiler-defined types: BYTE and RECORD. 
+\All the other types are constructed from these, and are defined in the "Noodle" library {a file, loaded by the compiler}. 
+\The idea was to put as much as we could in the library, and as little as possible in the compiler. 
+\The compiler is aware of a few other types -- like NUMBER, STRING, SUBSTRING, THING -- mostly for memory management purposes, but all the other the type definitions are built up from BYTE and RECORD in the library." These are extended to support BYTE, WYRD, POINTER, FLAG, and RECORD.
+
 
 Um endereço de memória é um conjunto com 4 pedaços.
 Um endereço numérico é um endereço de memória para um número.
@@ -303,8 +310,8 @@ Etapas para que se posicione um subtexto sobre uma string:
   Intel $8B8508000000. \ mov eax,[ebp+8] \ o subtexto
   Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ a string
   \ atribua o caractere inicial desta string ao caractere inicial deste subtexto
-  Intel $8B8B00000000. \ mov ecx,[ebx+0] \ o first  endereço de memória do pedaço da string
-  Intel $898800000000. \ mov [eax+0],ecx \ o first  endereço de memória do pedaço do subtexto
+  Intel $8B8B00000000. \ mov ecx,[ebx+0] \ o caractere inicial da string
+  Intel $898800000000. \ mov [eax+0],ecx \ o caractere inicial do subtexto
   \ atribua o caractere inicial desta string menos 1 ao caractere final deste subtexto
   Intel $49. \ dec ecx
   Intel $898804000000. \ mov [eax+4],ecx \ o caractere final deste subtexto
@@ -414,10 +421,11 @@ Etapas para que se adicione um número para um pedaço:
 
 Etapas para que se adicione um número para um endereço de memória;
 Etapas para que se adicione um número para um segundo número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
-  Intel $0103. \ adicione [ebx],eax
+\ poderia ser escrito também assim:  Intel $8B85080000008B008B9D0C0000000103.
+  Intel $8B8508000000. \ mov eax,[ebp+8] -> salva o valor do endereço atual da pilha do processador + 8 no registrador de acumulação (eax)
+  Intel $8B00. \ mov eax,[eax] ->  load memory pointed to by accumulator into accumulator
+  Intel $8B9D0C000000. \ mov ebx,[ebp+12] -> load the current stack address + 12 into working register
+  Intel $0103. \ adicione [ebx],eax ->add accumulator to memory pointed to by working register
 
 Etapas para que se conjuncione logicamente um pedaço com um segundo pedaço:
   Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo byte
