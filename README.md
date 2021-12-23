@@ -15,14 +15,14 @@ A documentação original (em inglês) está disponível [aqui](http://www.osmos
 
 # Estrutura dos Arquivos
 
-O compilador é composto de basicamente 6 arquivos:
+O projeto é composto de basicamente 6 arquivos:
 
  1. The compiler (que contém as funções do compilador)
  2. The desktop (contém as funções de gerenciamento das cores, botões e demais aspectos da interface geral do programa)
- 3. The editor (contém as funções relacionadas ao editor de texto integrado da ADI)
+ 3. The editor (contém as funções relacionadas ao editor de texto integrado da IDE/ADI)
  4. The finder (contém as funções do explorador de arquivos)
  5. The noodle (contém as definições necessárias para o funcionamento do compilador)
- 6. The writer (contém funções para o editor de manuais da plataforma)
+ 6. The writer (contém funções para o editor WYSIWYG da plataforma)
 
 
 ## Funcionamento
