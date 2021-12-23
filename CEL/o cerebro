@@ -5638,8 +5638,13 @@ Etapas para que se flip o gpBitmap em uma imagem:
 
 Etapas para que se flip um GpImage:
   Call "gdiplus.dll" "GdipImageRotateFlip" com 
-    O GpImage 
-    e 6 [RotateNoneFlipY aka Rotate180FlipX].
+  \A função GdipImageRotateFlip gira e/ou inverte a imagem. É a imagem que sofre a transformação e não o gráfico no qual será exibida.
+   \O ângulo e a inversão são definidos por uma das constantes da enumeração RotateFlipType .
+    O GpImage [*image] \Ponteiro para o objeto Image .
+    e 6 [rfType = RotateNoneFlipY aka Rotate180FlipX]. \ Elemento da enumeração RotateFlipType que especifica o tipo de rotação e o tipo de inversão.
+    \#RotateNoneFlipY = # Rotate180FlipX Especifica nenhuma rotação seguida por uma inversão vertical.
+    \Se a função for bem-sucedida, ela retornará 0, que é uma constante da enumeração de status .
+    \Se a função falhar, ela retornará um dos outros valores da enumeração de status .
 
 Etapas para que se flip uma imagem:
   Se a imagem for inexistente, cancele.
@@ -5665,13 +5670,21 @@ Etapas para que se desmanche all events:
   Desmanche a fila de eventos.
 
 Etapas para que se desmanche algum tipo de messages:
-  Call "user32.dll" "PeekMessageA" com 
-    O endereçamento dessa MSG 
-    e 0 
-    e 0 
-    e 0 
-    e 1 [PM_REMOVE] devolvendo um número.
-  Se o número for 0, cancele.
+  Call "user32.dll" "PeekMessageA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-peekmessagea
+  \Despacha as mensagens enviadas recebidas, verifica a fila de mensagens do thread para uma mensagem postada e recupera a mensagem (se houver).
+    O endereçamento dessa MSG [lpMsg] \ Um ponteiro para uma estrutura MSG que recebe informações da mensagem.
+    e 0 [hWnd] \ Um identificador para a janela cujas mensagens devem ser recuperadas. A janela deve pertencer ao segmento atual.
+    \Se hWnd for NULL , PeekMessage recupera mensagens para qualquer janela que pertença ao segmento atual e todas as mensagens na fila de mensagens do segmento atual cujo valor hwnd é NULL (consulte a estrutura MSG ). 
+    \Portanto, se hWnd for NULL , as mensagens da janela e as mensagens do thread serão processadas.
+    e 0 [wMsgFilterMin] \ O valor da primeira mensagem no intervalo de mensagens a serem examinadas. 
+    \Use WM_KEYFIRST (0x0100) para especificar a primeira mensagem do teclado ou WM_MOUSEFIRST (0x0200) para especificar a primeira mensagem do mouse.
+    \Se wMsgFilterMin e wMsgFilterMax forem zero, PeekMessage retorna todas as mensagens disponíveis (ou seja, nenhuma filtragem de intervalo é executada).
+    e 0 [wMsgFilterMax] \ O valor da última mensagem no intervalo de mensagens a serem examinadas. 
+    \Use WM_KEYLAST para especificar a última mensagem do teclado ou WM_MOUSELAST para especificar a última mensagem do mouse.
+    e 1 [wRemoveMsg = PM_REMOVE] \ Especifica como as mensagens devem ser tratadas. 
+    \PM_REMOVE = As mensagens não são removidas da fila após o processamento por PeekMessage .
+    devolvendo um número. \Se uma mensagem estiver disponível, o valor de retorno será diferente de zero.
+  Se o número for 0, cancele. \Se nenhuma mensagem estiver disponível, o valor de retorno é zero.
   Se a message desta MSG for 15 [WM_PAINT], Call "user32.dll" "ValidateRect" com a janela principal do programa e 0. \ que tal ter uma rotina específica para isso?
   Repita. [o código acima]
 
@@ -5716,11 +5729,15 @@ Etapas para que se obtenha um abcA e um abcC usando uma string e um canvas:
   Atribua 0 ao abcA.
   Atribua 0 ao abcC.
   Se a quantidade de caracteres desta string for menor do que 1, cancele.
-  Call "gdi32.dll" "GetCharABCWidthsA" com 
-    O canvas 
-    e O conteúdo deste caractere inicial desta string 
-    e O conteúdo deste caractere inicial desta string 
-    e O endereçamento desse ABC.
+  Call "gdi32.dll" "GetCharABCWidthsA" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcharabcwidthsa
+  \A função GetCharABCWidths recupera as larguras, em unidades lógicas, de caracteres consecutivos em um intervalo especificado da fonte TrueType atual. 
+  \Esta função é funciona apenas com fontes TrueType.
+    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e O conteúdo deste caractere inicial desta string [wFirst] \ O primeiro caractere no grupo de caracteres consecutivos da fonte atual.
+    e O conteúdo deste caractere inicial desta string [wLast] \ O último caractere no grupo de caracteres consecutivos da fonte atual.
+    e O endereçamento desse ABC. [lpABC] \ Um ponteiro para uma matriz de estruturas ABC que recebe as larguras dos caracteres, em unidades lógicas. 
+    \Esta matriz tem que conter, a mesma quantidade de estruturas ABC que a quantidade de caracteres no intervalo especificado pelos parâmetros uFirstChar e uLastChar .
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
   Atribua o abcA deste ABC ao abcA.
   Call "gdi32.dll" "GetCharABCWidthsA" com 
     O canvas 
