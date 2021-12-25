@@ -5973,15 +5973,33 @@ Etapas para que se obtenha um nome da unidade de disco por um endereço completo:
   Termine com o caractere NULL o endereço completo.
   Atribua 512 a uma quantidade de caracteres.
   Reassign o caractere inicial desse trecho usando a quantidade de caracteres.
-  Call "kernel32.dll" "GetVolumeInformationA" com 
-    O caractere inicial deste endereço completo 
-    e O caractere inicial deste trecho
-   e A quantidade de caracteres 
-   e 0 
-   e 0 
-   e 0 
-   e 0 
-   e 0 devolvendo um número.
+  Call "kernel32.dll" "GetVolumeInformationA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getvolumeinformationa
+  \Recupera informações sobre o sistema de arquivos e o volume associado ao diretório raiz especificado.
+    O caractere inicial deste endereço completo [lpRootPathName] \ Um ponteiro para uma string que contém o diretório raiz do volume a ser descrito.
+    \Se este parâmetro for NULL, a raiz do diretório atual será usada. 
+    \Uma barra invertida final é necessária. 
+    \Por exemplo,  \\MyServer\MyShare fica "\\MyServer\MyShare\" e a unidade C fica "C:\".
+    e O caractere inicial deste trecho [lpVolumeNameBuffer] \ Um ponteiro para um buffer que recebe o nome de um volume especificado. 
+    \O tamanho do buffer é especificado pelo parâmetro nVolumeNameSize
+   e A quantidade de caracteres [nVolumeNameSize] \ O comprimento de um buffer de nome de volume, em TCHARs. 
+   \O tamanho máximo do buffer é MAX_PATH + 1. Este parâmetro é ignorado se o buffer do nome do volume não for fornecido.
+   e 0 [lpVolumeSerialNumber] \ Um ponteiro para uma variável que recebe o número de série do volume.
+   \Este parâmetro pode ser NULL se o número de série não for necessário.
+   \Esta função retorna o número de série do volume que o sistema operacional atribui quando um disco rígido é formatado.
+   e 0 [lpMaximumComponentLength] \ Um ponteiro para uma variável que recebe o comprimento máximo, em TCHARs, 
+   \de um componente de nome de arquivo que um sistema de arquivo especificado suporta.
+   \Um componente de nome de arquivo é a parte de um nome de arquivo entre barras invertidas.
+   \O valor armazenado na variável para a qual * lpMaximumComponentLength aponta 
+   \é usado para indicar que um sistema de arquivos especificado oferece suporte a nomes longos. 
+   \Por exemplo, para um sistema de arquivos FAT que suporta nomes longos, a função armazena o valor 255, em vez do indicador 8.3 anterior.
+   e 0 [lpFileSystemFlags] \ Um ponteiro para uma variável que recebe sinalizadores associados ao sistema de arquivos especificado.
+   e 0 [lpFileSystemNameBuffer] \ Um ponteiro para um buffer que recebe o nome do sistema de arquivos, por exemplo, o sistema de arquivos FAT ou NTFS. 
+   \O tamanho do buffer é especificado pelo parâmetro nFileSystemNameSize.
+   e 0 [nFileSystemNameSize] \O comprimento do buffer do nome do sistema de arquivos, em TCHARs. 
+   \O tamanho máximo do buffer é MAX_PATH + 1.
+   \Este parâmetro é ignorado se o buffer do nome do sistema de arquivos não for fornecido.
+   devolvendo um número. \Se todas as informações solicitadas forem recuperadas, o valor de retorno será diferente de zero.
+  \Se nem todas as informações solicitadas forem recuperadas, o valor de retorno será zero.
   Se o número for 0, limpe o nome da unidade de disco; volte.
   Converta o caractere inicial deste trecho como um endereçamento de caractere para o nome da unidade de disco.
 
@@ -5996,8 +6014,7 @@ Etapas para que se obtenha o first-quarter equivalent of uma orientação:
   Subtraia 960 desde a orientação.
   Repita. [o código acima]
 
-Etapas para que se obtenha fresh random números;
-Etapas para que se obtenha new random números;
+Etapas para que se obtenha novos números aleatórios;
 Etapas para que se seed o número aleatório generator:
   Atribua a contagem de intervalos do sistema à seed.
 
@@ -6020,21 +6037,31 @@ Etapas para que se obtenha um Endereço IP usando um host string:
   Obtenha um sockaddr usando o host string.
   Se o erro do fluxo de entrada/saída não estiver em branco, cancele.
   Atribua o s_addr deste sin_addr deste sockaddr ao número deste Endereço IP.
-  Call "ws2_32.dll" "inet_ntoa" com 
-    O número deste Endereço IP 
-    devolvendo um endereçamento de caractere.
+  Call "ws2_32.dll" "inet_ntoa" com \ https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-inet_ntoa
+  \A função inet_ntoa converte um endereço de rede da Internet (Ipv4) em uma string ASCII no formato decimal com pontos padrão da Internet.
+  \A função inet_ntoa usa uma estrutura de endereço da Internet especificada pelo parâmetro in e retorna uma string ASCII terminada em NULL 
+  \que representa o endereço em notação de "." (ponto)  como em "192.168.16.0", um exemplo de um endereço IPv4 em notação decimal com pontos.
+    O número deste Endereço IP [in] \auto explicativo
+    devolvendo um endereçamento de caractere. 
+    \Se nenhum erro ocorrer, inet_ntoa retorna um ponteiro de caractere para um buffer estático contendo o endereço de texto na notação padrão ". ''. 
+    \Caso contrário, ele retorna NULL.
   Converta o endereçamento de caractere para a string deste Endereço IP.
 
 Etapas para que se obtenha um item (novamente):
   Limpe o erro do fluxo de entrada/saída.
-  Call "kernel32.dll" "FindNextFileA" com 
-    O número identificador deste item 
-    e O endereçamento deste WIN32FINDDATA deste item 
-    devolvendo um número.
+  Call "kernel32.dll" "FindNextFileA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-findnextfilea
+  \Continua uma pesquisa de arquivo que ocorreu em uma chamada anterior para as funções FindFirstFile, FindFirstFileEx ou FindFirstFileTransacted.
+    O número identificador deste item [hFindFile] \ O identificador de pesquisa retornado por uma chamada anterior para a função FindFirstFile ou FindFirstFileEx.
+    e O endereçamento deste WIN32FINDDATA deste item [lpFindFileData] \ Um ponteiro para a estrutura WIN32_FIND_DATA que recebe informações sobre o arquivo ou subdiretório encontrado.
+    devolvendo um número. \Se a função for bem-sucedida, o valor de retorno será diferente de zero e o parâmetro lpFindFileData conterá informações sobre o próximo arquivo ou diretório encontrado.
+    \Se a função falhar, o valor de retorno é zero e o conteúdo de lpFindFileData é indeterminado.
   Se o número não for 0, ajuste o item; volte.
   Limpe a categoria deste item.
-  Call "kernel32.dll" "FindClose" com 
-    O número identificador deste item.
+  Call "kernel32.dll" "FindClose" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-findclose
+  \Fecha um identificador de pesquisa de arquivo aberto pelas funções FindFirstFile, FindFirstFileEx, FindFirstFileNameW, 
+  \FindFirstFileNameTransactedW, FindFirstFileTransacted, FindFirstStreamTransactedW ou FindFirstStreamW.
+    O número identificador deste item. [hFindFile] \ O identificador de pesquisa de arquivo.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
 
 Etapas para que se obtenha um item desde um endereço completo:
   Se o endereço completo não for endereço da pasta-format, cancele.
