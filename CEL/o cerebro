@@ -95,13 +95,11 @@ An context é uma coisa com
   Uma caixa, 
   Uma orientação, 
   Um tamanho da letra, 
-  Uma cor, 
-  Um número, 
-  Uma grossura do pincel,\ pincel largura? ***
-  e um letra size sob o tamanho da letra, 
-  e um pincel sob a cor.
-  \REMARK: A "grossura do pincel" não estava no context conjunto, but it deveria be.
-  \I will be adding it para o next version of o CAL context, e now might be a good time for you para adicione it para o PAL context conjunto.
+  Uma cor, um pincel sob a cor,
+  Um número e
+  Uma grossura do pincel.\ largura?
+  \OBS: A "grossura do pincel" não estava originalmente nessa estrutura, mas deveria.
+  
 
 An byte# é um número.
 
@@ -409,7 +407,7 @@ Etapas para que se posponha uma string para uma segunda string usando uma contag
   Repita. [o código acima]
 
 Etapas para que se posponha uns coisas para uns segunda coisas:
-  Atribua o first destas coisas a uma coisa.
+  Atribua a first coisa destas coisas a uma coisa.
   Se a coisa for inexistente, cancele.
   Remove a coisa desde as coisas.
   Posponha a coisa para a segunda coisas.
@@ -803,8 +801,8 @@ Etapas para que se limpe um terminal:
   Destrua os quoras deste terminal.
 
 Etapas para que se limpe umas coisas:
-  Esvazie o first destas coisas.
-  Esvazie o last destas coisas.
+  Esvazie a first coisa destas coisas.
+  Esvazie a last coisa destas coisas.
 
 Etapas para que se limpe uma word:
   Atribua 0 ao word.
@@ -1427,15 +1425,17 @@ Etapas para que se copie um event para um segundo event: \ mudar o "segunda" aqu
 
 Etapas para que se copie um gpBitmap Para um segundo gpBitmap: \verificar
   Se o gpBitmap for inexistente, esvazie o segundo gpBitmap; volte.
-  Call "gdiplus.dll" "GdipCloneBitmapAreaI" com 
+  Call "gdiplus.dll" "GdipCloneBitmapAreaI" com \https://docs.microsoft.com/en-us/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-bitmap-clone(int_int_int_int_pixelformat)
     0 [x] \Valor longo que especifica a coordenada x do canto superior esquerdo do retângulo que especifica a parte deste bitmap a ser copiada.
     e 0 [y] \Valor longo que especifica a coordenada y do canto superior esquerdo do retângulo que especifica a parte deste bitmap a ser copiada.
     e A largura deste gpBitmap [width] \Valor longo que especifica a largura do retângulo que especifica a parte deste bitmap a ser copiada.
     e A altura deste gpBitmap [height] \Valor longo que especifica a altura do retângulo que especifica a parte da imagem a ser copiada.
     e 0 [format = PixelFormatDontCare]  \Valor inteiro longo que especifica o formato de pixel do novo bitmap.
     \O valor 0 não especifica o formato do pixel.
+    \https://docs.microsoft.com/en-us/windows/win32/gdiplus/-gdiplus-constant-image-pixel-format-constants
     e O gpBitmap [*srcBitmap] \Ponteiro para o objeto Bitmap de origem.
     e O endereçamento deste segundo gpBitmap. [**dstBitmap] \Ponteiro para uma variável DWORD que recebeu um ponteiro para o objeto Bitmap clonado.
+    \Este método retorna um ponteiro para o novo objeto Bitmap.
 
 Etapas para que se copie as propriedades of um text Para um segundo text:
   Se o text for inexistente, cancele.
@@ -1778,7 +1778,12 @@ Etapas para que se crie um gpBitmap usando um trecho:
     \O identificador de memória e seu conteúdo não são perturbados pela criação do novo objeto de fluxo.
     \O tamanho inicial do fluxo é o tamanho de hGlobal conforme retornado pela função GlobalSize. 
     \Por causa do arredondamento, este não é necessariamente o mesmo tamanho que foi originalmente alocado para o identificador.
-  Call "gdiplus.dll" "GdipCreateBitmapFromStream" com 
+  Call "gdiplus.dll" "GdipCreateBitmapFromStream" com \https://docs.microsoft.com/en-us/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-bitmap-bitmap(istream_bool)
+  \Cria um objeto Bitmapbaseado em um um stream. https://docs.microsoft.com/en-us/windows/win32/api/objidl/nn-objidl-istream
+  \A interface IStream permite ler e gravar dados em objetos de fluxo. 
+  \Os objetos de fluxo contêm os dados em um objeto de armazenamento estruturado, onde os armazenamentos fornecem a estrutura. 
+  \Dados simples podem ser gravados diretamente em um fluxo, mas, mais frequentemente, os fluxos são elementos aninhados em um objeto de armazenamento. 
+  \Eles são semelhantes ao arquivo padrão
     O istream [stream] \Ponteiro para uma interface IStream COM.
     e O endereçamento deste gpBitmap [**bitmap] \Ponteiro para uma variável DWORD (endereçamento) que recebe um ponteiro para um objeto Bitmap (o gpBitmap).
     devolvendo um número.
@@ -2732,7 +2737,7 @@ Etapas para que se determine se o cursor de texto of um text está sobre o first 
 
 Etapas para que se determine se o cursor de texto of um text está sobre o last linha reta:
   Se o text for inexistente, diga não.
-  Se as rows deste text estiverem vazio, diga não.
+  Se as rows deste text estiverem vazias, diga não.
   Se o número de linhas do cursor deste text não for o número da linha desta last row deste text, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
@@ -2924,7 +2929,7 @@ Etapas para que se determine se um catálogo está vazio:
   Percorra. [o código abaixo]
     Obtenha um bucket usando o catálogo.
     Se o bucket for inexistente, diga sim.
-    Se os refers deste bucket não estiverem vazio, diga não.
+    Se os refers deste bucket não estiverem vazios, diga não.
   Repita. [o código acima]
 
 Etapas para que se determine se um input é um clique:
@@ -3826,7 +3831,7 @@ Etapas para que se determine se umas coisas estão vazios;
 Etapas para que se determine se umas coisas estão vazias;
 Etapas para que se determine se umas coisas estão vazia;
 Etapas para que se determine se uns coisas estão vazio:
-  Se o first destas coisas for inexistente, diga sim.
+  Se a first coisa destas coisas for inexistente, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se um segmento inicial é numeric:
@@ -5759,19 +5764,40 @@ Etapas para que se obtenha um abcA usando uma string e um canvas:
 Etapas para que se obtenha uns addrinfo routines:
   Limpe o erro do fluxo de entrada/saída.
   Atribua "ws2_32.dll" a uma nova string.
-  Call "kernel32.dll" "LoadLibraryA" com o caractere inicial desta nova string devolvendo um número identificador.
-  Se o número identificador for 0, atribua "Não foi possível obter o valor do endereço de memória da biblioteca ws2_32.dll." ao erro do fluxo de entrada/saída; volte.
-  Call "kernel32.dll" "GetProcAddress" com 
-    O número identificador \Um identificador para o módulo DLL que contém a função ou variável. 
+  Call "kernel32.dll" "LoadLibraryA" com \ https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibrarya
+  \Carrega o módulo especificado no espaço de endereço do processo de chamada. 
+  \O módulo especificado pode fazer com que outros módulos sejam carregados.
+    O caractere inicial desta nova string [lpLibFileName] \O nome do módulo. 
+    \Pode ser um módulo de biblioteca (um arquivo .dll) ou um módulo executável (um arquivo .exe). 
+    \O nome especificado é o nome do arquivo do módulo e não está relacionado ao nome armazenado no próprio módulo de biblioteca, 
+    \conforme especificado pela palavra-chave LIBRARY no arquivo de definição de módulo (.def).
+    \Se a string especifica um caminho completo, a função pesquisa apenas esse caminho para o módulo.
+    \Se a string especifica um caminho relativo ou um nome de módulo sem um caminho, 
+    \a função usa uma estratégia de pesquisa padrão para encontrar o módulo.
+    \Se a função não conseguir encontrar o módulo, a função falha. 
+    \Ao especificar um caminho, certifique-se de usar barras invertidas (\), não barras (/).
+    \Se a string especifica um nome de módulo sem um caminho e a extensão do nome do arquivo é omitida, 
+    \a função anexa a extensão da biblioteca padrão .dll ao nome do módulo. 
+    \Para evitar que a função acrescente .dll ao nome do módulo, inclua um caractere de ponto final (.) na string do nome do módulo.
+    devolvendo um número identificador. \Se a função for bem-sucedida, o valor de retorno é um identificador para o módulo.
+    \Se a função falhar, o valor de retorno será NULL.
+  Se o número identificador for 0, atribua "A função LoadLibraryA da biblioteca ws2_32.dll retornou um erro. Não foi possível obteridentificador do módulo a ser carregado." ao erro do fluxo de entrada/saída; volte.
+  Atribua "getaddrinfo" a uma nova string.
+  Call "kernel32.dll" "GetProcAddress" com \https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getprocaddress
+  \Recupera o endereço de uma função ou variável exportada da biblioteca de vínculo dinâmico (DLL) especificada.
+    O número identificador [hModule] \Um identificador para o módulo DLL que contém a função ou variável. 
     \A função LoadLibrary, LoadLibraryEx, LoadPackagedLibrary ou GetModuleHandle retorna esse identificador.
-    e "getaddrinfo"'s caractere inicial [ponteiro para uma string constante]  \ O nome da função ou variável, ou o valor ordinal da função. 
+    e o caractere inicial desta nova string [lpProcName] [ponteiro para uma string constante]  \ O nome da função ou variável, ou o valor ordinal da função. 
     \Se este parâmetro for um valor ordinal, ele deve estar contido na word de ordem inferior; a word de ordem superior deve ser zero.
     devolvendo um endereço de memória. \ obtendo/recebendo/aguardando como resultado
-  Se o endereço de memória for inexistente, atribua "Infelizmente essa rotinas só funciona no Windows XP ou superior." ao erro do fluxo de entrada/saída; volte.
+    \Se a função for bem-sucedida, o valor de retorno será o endereço da função ou variável exportada.
+    \Se a função falhar, o valor de retorno será NULL.
+  Se o endereço de memória for inexistente, atribua "Infelizmente essa rotinas só funcionam no Windows XP ou superior." ao erro do fluxo de entrada/saída; volte.
   Atribua o endereço de memória ao getaddrinfo endereço de memória destas addrinfo routines.
+  Atribua "freeaddrinfo" a uma string atual.
   Call "kernel32.dll" "GetProcAddress" com 
-    O número identificador 
-    e "freeaddrinfo"'s caractere inicial [ponteiro para uma string constante] 
+    O número identificador [hModule]
+    e o caractere inicial desta  string atual [lpProcName = ponteiro para uma string constante] 
     devolvendo o endereço de memória.
   Se o endereço de memória for inexistente, atribua "Infelizmente essas rotinas só funcionam no Windows XP ou numa versão superior do Windows." ao erro do fluxo de entrada/saída; volte.
   Atribua o endereço de memória ao freeaddrinfo endereço de memória destas addrinfo routines.
@@ -5852,11 +5878,12 @@ Etapas para que se obtenha um center localização usando uma localização e uma se
   Atribua o center desta linha reta ao center.
 
 Etapas para que se obtenha uma cor usando uma localização:
-  Call "gdi32.dll" "GetPixel" com 
-    O quadro atual 
-    e A coordenada X desta localização 
-    e A coordenada Y desta localização 
-    devolvendo um código da cor.
+  Call "gdi32.dll" "GetPixel" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getpixel
+    O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
+    e A coordenada X desta localização [x] \A coordenada x, em unidades lógicas, do pixel a ser examinado.
+    e A coordenada Y desta localização [y] \A coordenada y, em unidades lógicas, do pixel a ser examinado.
+    devolvendo um código da cor. \O valor de retorno é o valor COLORREF que especifica o RGB do pixel. 
+    \Se o pixel estiver fora da região de recorte atual, o valor de retorno é CLR_INVALID (-1, 4294967295 ou 0xFFFFFFFF definido em Wingdi.h).
   Converta o código da cor para a cor.
 
 Etapas para que se obtenha um número de coluna usando uma row e uma localização e um text:
@@ -5926,9 +5953,14 @@ Etapas para que se obtenha um distance entre uma localização e uma segunda local
 Etapas para que se obtenha um categoria da unidade de disco por um endereço completo:
   Isole o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "GetDriveTypeA" com 
-    O caractere inicial deste endereço completo 
-    devolvendo um número.
+  Call "kernel32.dll" "GetDriveTypeA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getdrivetypea
+  \Determina se uma unidade de disco é removível, fixa, CD-ROM, disco RAM ou unidade de rede.
+  \Para determinar se uma unidade é do tipo USB, chame SetupDiGetDeviceRegistryProperty e especifique a propriedade SPDRP_REMOVAL_POLICY.
+    O caractere inicial deste endereço completo [lpRootPathName] \O diretório raiz da unidade.
+    \Uma barra invertida final é necessária. Se este parâmetro for NULL, a função usará a raiz do diretório atual.
+    devolvendo um número. \O valor de retorno especifica o tipo de unidade, que pode ser um dos seguintes valores.
+    \0 = O tipo de unidade não pode ser determinado.
+    \1 = O caminho raiz é inválido; por exemplo, não há volume montado no caminho especificado.
   Se o número for 2 [DRIVE_REMOVABLE], atribua "Disco removível" à categoria da unidade de disco; volte. \ removable drive
   Se o número for 3 [DRIVE_FIXED], atribua "Disco Rígido / Pendrive" à categoria da unidade de disco; volte.\ hard disk / flash drive
   Se o número for 4 [DRIVE_REMOTE], atribua "Unidade de rede" à categoria da unidade de disco; volte. \ network drive
@@ -6266,14 +6298,14 @@ Etapas para que se obtenha uma string desde a área de transferência do Windows:
   Call "user32.dll" "CloseClipboard".
 
 Etapas para que se obtenha uma coisa desde umas coisas:
-  Se  as coisas estiverem vazio, esvazie a coisa; volte.
-  Se a coisa for inexistente, atribua o first destas coisas à coisa; volte.
-  Atribua o next desta coisa à coisa.
+  Se  as coisas estiverem vazias, esvazie a coisa; volte.
+  Se a coisa for inexistente, atribua a first coisa destas coisas à coisa; volte.
+  Atribua o next coisa desta coisa à coisa.
 
 Etapas para que se obtenha uma coisa desde umas coisas (backwards):
-  Se  as coisas estiverem vazio, esvazie a coisa; volte.
-  Se a coisa for inexistente, atribua o last destas coisas à coisa; volte.
-  Atribua o previous desta coisa à coisa.
+  Se  as coisas estiverem vazias, esvazie a coisa; volte.
+  Se a coisa for inexistente, atribua a last coisa destas coisas à coisa; volte.
+  Atribua o previous coisa desta coisa à coisa.
 
 Etapas para que se obtenha um segmento inicial desde um reply:
   Remove algum tipo de leading noise desde o reply.
@@ -6373,7 +6405,7 @@ Uma malha é um par de números.
 
 Etapas para que se garanta one row em um text:
   Se o text for inexistente, cancele.
-  Se as rows deste text não estiverem vazio, cancele.
+  Se as rows deste text não estiverem vazias, cancele.
   Crie uma row usando o retorno de carro.
   Posponha a row para as rows deste text.
   Renumere as rows deste text.
@@ -7438,9 +7470,9 @@ Etapas para que se insira uma coisa para uns coisas after uma segunda coisa:
 
 Etapas para que se insira uma coisa para uns coisas antes de uma segunda coisa:
   Se a coisa for inexistente, cancele.
-  Se as coisas estiverem vazio, posponha a coisa para as coisas; volte.
+  Se as coisas estiverem vazias, posponha a coisa para as coisas; volte.
   Se a segunda coisa for inexistente, posponha a coisa para as coisas; volte.
-  Se a segunda coisa for o first destas coisas, anteponha a coisa para as coisas; volte.
+  Se a segunda coisa for a first coisa destas coisas, anteponha a coisa para as coisas; volte.
   Atribua a coisa a uma new coisa.
   Atribua a segunda coisa a uma previous coisa.
   Atribua a new coisa ao next deste previous desta previous coisa.
@@ -7450,12 +7482,12 @@ Etapas para que se insira uma coisa para uns coisas antes de uma segunda coisa:
 
 Etapas para que se insira uns coisas para uns segunda coisas after um coisa:
   Se a coisa for inexistente, anteponha  as coisas para a segunda coisas; volte.
-  Insira  as coisas ao segunda coisas antes de o next desta coisa.
+  Insira  as coisas ao segunda coisas antes de o next coisa desta coisa.
 
 Etapas para que se insira uns coisas para uns segunda coisas antes de um coisa:
   Isole o coisa.
   Percorra. [o código abaixo]
-    Atribua o first destas coisas a uma segunda coisa.
+    Atribua a first coisa destas coisas a uma segunda coisa.
     Se a segunda coisa for inexistente, cancele.
     Remove a segunda coisa desde as coisas.
     Insira a segunda coisa ao segunda coisas antes de o coisa.
@@ -8037,8 +8069,8 @@ Etapas para que se mova uma coisa desde uns coisas para uns segunda coisas:
   Posponha a coisa para a segunda coisas.
 
 Etapas para que se mova uns coisas para uns segunda coisas:
-  Atribua o first destas coisas ao first destas segunda coisas.
-  Atribua o last destas coisas ao last destas segunda coisas.
+  Atribua a first coisa destas coisas ao first destas segunda coisas.
+  Atribua a last coisa destas coisas ao last destas segunda coisas.
   Limpe as coisas.
 
 Etapas para que se mova uma janela do programa left:
@@ -8330,10 +8362,10 @@ Etapas para que se toque um wave file e wait:
 
 Etapas para que se anteponha uma coisa para uns coisas:
   Se a coisa for inexistente, cancele.
-  Atribua o first destas coisas ao next desta coisa.
-  Se  as coisas não for vazio, atribua a coisa ao previous deste first destas coisas.
-  Se  as coisas estiverem vazio, atribua a coisa ao last destas coisas.
-  Atribua a coisa ao first destas coisas.
+  Atribua a first coisa destas coisas ao next coisa desta coisa.
+  Se  as coisas não for vazias, atribua a coisa ao previous deste first coisa destas coisas.
+  Se  as coisas estiverem vazias, atribua a coisa ao last coisa destas coisas.
+  Atribua a coisa ao first coisa destas coisas.
 
 \Etapas para que se anteponha uns coisas para umas segunda coisas:
 \ bug encontrado por Mike Gonta - corrected version debaixo of
@@ -8344,7 +8376,7 @@ Etapas para que se anteponha uma coisa para uns coisas:
 \Repita. [o código acima]
 
 Etapas para que se anteponha uns coisas para umas segunda coisas:
-  Atribua o last destas coisas a uma coisa.
+  Atribua a last coisa destas coisas a uma coisa.
   Se a coisa for inexistente, cancele.
   Remove a coisa desde as coisas.
   Anteponha a coisa para a segunda coisas.
@@ -8404,7 +8436,7 @@ Etapas para que se atribua a used contagem de buckets desse catálogo para uma co
   Percorra. [o código abaixo]
     Obtenha um bucket usando o catálogo.
     Se o bucket for inexistente, cancele.
-    Se os refers deste bucket estiverem vazio, repita.
+    Se os refers deste bucket estiverem vazios, repita.
     Adicione 1 para a contagem.
   Repita. [o código acima]
 
@@ -8589,7 +8621,7 @@ Etapas para que se atribua a normalized seleção desse text para uma seleção:
 
 Etapas para que se atribua a contagem de linhas desse text para uma contagem:
   Se o text for inexistente, atribua 0 à contagem; volte.
-  Se as rows deste text estiverem vazio, atribua 0 à contagem; volte.
+  Se as rows deste text estiverem vazias, atribua 0 à contagem; volte.
   Atribua o número da linha deste last destas rows deste text à contagem.
 
 Etapas para que se atribua a altura da linha desse text para uma altura:
@@ -8633,14 +8665,14 @@ Etapas para que se atribua o painel de informações string desse text para uma st
 Etapas para que se atribua uma coisa sob o end of uns coisas;
 Etapas para que se posponha uma coisa para uns coisas:
   Se a coisa for inexistente, cancele.
-  Atribua o last destas coisas ao previous desta coisa.
-  Se as coisas não estiverem vazio, atribua a coisa ao next deste last destas coisas.
-  Se as coisas estiverem vazio, atribua a coisa ao first destas coisas.
-  Atribua a coisa ao last destas coisas.
+  Atribua a last coisa destas coisas ao previous coisa desta coisa.
+  Se as coisas não estiverem vazias, atribua a coisa ao next deste last coisa destas coisas.
+  Se as coisas estiverem vazias, atribua a coisa ao first coisa destas coisas.
+  Atribua a coisa ao last coisa destas coisas.
 
 Etapas para que se atribua umas coisas para umas segunda coisas:
-  Atribua o first destas coisas ao first destas segunda coisas.
-  Atribua o last destas coisas ao last destas segunda coisas.
+  Atribua a first coisa destas coisas ao first destas segunda coisas.
+  Atribua a last coisa destas coisas ao last destas segunda coisas.
 
 Etapas para que se atribua a contagem dessas coisas  para uma contagem:
   Atribua 0 à contagem.
@@ -8832,12 +8864,12 @@ Etapas para que se remove a rows of um text entre uma row e uma segunda row:
 
 Etapas para que se remove uma coisa desde uns coisas:
   Se a coisa for inexistente, cancele.
-  Se a coisa for o first destas coisas, atribua o next desta coisa ao first destas coisas.
-  Se a coisa for o last destas coisas, atribua o previous desta coisa ao last destas coisas.
-  Se o next desta coisa não for inexistente, atribua o previous desta coisa ao previous deste next desta coisa.
-  Se o previous desta coisa não for inexistente, atribua o next desta coisa ao next deste previous desta coisa.
-  Esvazie o next desta coisa.
-  Esvazie o previous desta coisa.
+  Se a coisa for a first coisa destas coisas, atribua o next coisa desta coisa ao first coisa destas coisas.
+  Se a coisa for a last coisa destas coisas, atribua o previous coisa desta coisa ao last coisa destas coisas.
+  Se o next coisa desta coisa não for inexistente, atribua o previous coisa desta coisa ao previous deste next coisa desta coisa.
+  Se o previous coisa desta coisa não for inexistente, atribua o next coisa desta coisa ao next deste previous coisa desta coisa.
+  Esvazie o next coisa desta coisa.
+  Esvazie o previous coisa desta coisa.
 
 Etapas para que se remove trailing pedaços desde uma string usando uma contagem:
   Isole a contagem.
@@ -9948,7 +9980,7 @@ Etapas para que se separe uma string para uns conjunto de textos usando um separ
   Adicione "" para o conjunto de textos.
 
 Etapas para que se separe uns coisas para uns left coisas e uns right coisas:
-  Se  as coisas estiverem vazio, limpe o left coisas; limpe o right coisas; volte.
+  Se  as coisas estiverem vazias, limpe o left coisas; limpe o right coisas; volte.
   Atribua a contagem destas coisas dividido por 2 a uma contagem.
   Percorra. [o código abaixo]
     Obtenha uma coisa desde as coisas.
@@ -9961,15 +9993,15 @@ Etapas para que se separe uns coisas para uns left coisas e uns right coisas sob
   Limpe o left coisas.
   Limpe o right coisas.
   Se a coisa for inexistente, permute  as coisas com o left coisas; volte.
-  Se o previous desta coisa for inexistente, permute  as coisas com o left coisas; volte.
+  Se o previous coisa desta coisa for inexistente, permute  as coisas com o left coisas; volte.
   \ abra para cima o left chain
-  Atribua o first destas coisas ao first destas left coisas.
-  Atribua o previous desta coisa ao last destas left coisas.
-  Esvazie o next deste previous desta coisa.
+  Atribua a first coisa destas coisas ao first destas left coisas.
+  Atribua o previous coisa desta coisa ao last destas left coisas.
+  Esvazie o next deste previous coisa desta coisa.
   \ abra para cima o right chain
   Atribua a coisa ao first destas right coisas.
-  Esvazie o previous desta coisa.
-  Atribua o last destas coisas ao last destas right coisas.
+  Esvazie o previous coisa desta coisa.
+  Atribua a last coisa destas coisas ao last destas right coisas.
   \ fix o original chain
   Limpe as coisas.
 
@@ -10867,7 +10899,7 @@ Etapas para que se escreva uns quoras em uma caixa: \descomentar pra ver o que a
   Repita. [o código acima]
 
 Etapas para que se yield para windows:
-  Se a fila de eventos não estiver vazio, cancele.
+  Se a fila de eventos não estiver vazia, cancele.
   Call "user32.dll" "GetMessageA" com 
     O endereçamento dessa MSG 
     e 0 
