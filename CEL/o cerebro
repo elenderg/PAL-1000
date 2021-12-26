@@ -7296,21 +7296,52 @@ Etapas para que se inicialize os canvases:
   Atribua o memory canvas ao quadro atual.
 
 Etapas para que se inicialize o cgi:
-  Call "kernel32.dll" "AllocConsole".
-  Call "kernel32.dll" "GetStdHandle" com 
-  -10 [STD_INPUT_HANDLE] 
+  Call "kernel32.dll" "AllocConsole". \ https://docs.microsoft.com/pt-br/windows/console/allocconsole
+  \Aloca um novo console para o processo de chamada.
+  Call "kernel32.dll" "GetStdHandle" com \ https://docs.microsoft.com/pt-br/windows/console/getstdhandle
+  \Recupera um identificador para o dispositivo padrão especificado (entrada padrão, saída padrão ou erro padrão).
+  -10 [nStdHandle = STD_INPUT_HANDLE] \ O desvio padrão. 
+  \STD_INPUT_HANDLE é o dispositivo de entrada padrão. Inicialmente, esse é o buffer de entrada do console, CONIN$.
     devolvendo o número identificador do fluxo de entrada padrão.
+    \Se a função for bem-sucedida, o valor retornado será um identificador para o dispositivo especificado
+\    ou um identificador redirecionado definido por uma chamada anterior para SetStdHandle. 
+    \Os identificadores retornados por GetStdHandle podem ser usados por aplicativos que precisam fazer a leitura do console ou a gravação nele. 
+    \Quando um console é criado, o identificador de entrada padrão é um identificador para o buffer de entrada do console, 
+    \e os identificadores de saída padrão e de erro padrão são identificadores do buffer de tela ativo do console. 
+    \Esses identificadores podem ser usados pelas funções ReadFile e WriteFile 
+    \ou por qualquer uma das funções de console que acessam o buffer de entrada do console ou um buffer de saída
   Call "kernel32.dll" "GetStdHandle" com 
-  -11 [STD_OUTPUT_HANDLE] 
+  -11 [nStdHandle = STD_OUTPUT_HANDLE] \ STD_OUTPUT_HANDLE é o dispositivo de saída padrão. ,
+  \Inicialmente, esse é o buffer de tela do console ativo, CONOUT$.
     devolvendo o número identificador do fluxo de saída padrão.
 
 \Etapas para que se inicialize o Component Object Model:
 \Mande os códigos 0 e 2 para a função "CoInitializeEx" da biblioteca "ole32.dll" [COINIT_APARTMENTTHREADED].
 
 Etapas para que se inicialize o Component Object Model:
-  Call "ole32.dll" "CoInitializeEx" com 
-  0 
-    e 2 [COINIT_APARTMENTTHREADED].
+  Call "ole32.dll" "CoInitializeEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-coinitializeex
+  \Inicializa a biblioteca COM para uso pelo thread de chamada, 
+  \define o modelo de simultaneidade do thread e 
+  \cria um novo compartimento para o thread, se necessário.
+  0 [pvReserved] \Este parâmetro é reservado e deve ser NULL.
+    e 2 [dwCoInit = COINIT_APARTMENTTHREADED]. \O modelo de simultaneidade e as opções de inicialização para o encadeamento. 
+    \Os valores para este parâmetro são retirados da enumeração COINIT. 
+    \ https://docs.microsoft.com/en-us/windows/win32/api/objbase/ne-objbase-coinit
+    \Qualquer combinação de valores de COINIT pode ser usada, 
+    \exceto que os sinalizadores COINIT_APARTMENTTHREADED e COINIT_MULTITHREADED não podem ser definidos juntos. 
+    \O padrão é COINIT_MULTITHREADED.
+    \COINIT_APARTMENTTHREADED inicializa o thread para simultaneidade de objetos apartment-threaded
+    \Quando um thread é inicializado por meio de uma chamada para CoInitializeEx, 
+    \você escolhe se deseja inicializá-lo como thread de apartamento ou multithread, 
+    \designando um dos membros de COINIT como seu segundo parâmetro. 
+    \Isso designa como as chamadas de entrada para qualquer objeto criado por esse thread são tratadas, ou seja, a simultaneidade do objeto.
+    \O threading de apartamento, enquanto permite vários threads de execução, 
+    \serializa todas as chamadas de entrada exigindo que as chamadas para métodos de objetos criados por esse thread 
+    \sempre sejam executados no mesmo thread, ou seja, o apartment / thread que os criou. 
+    \Além disso, as chamadas podem chegar apenas nos limites da fila de mensagens. 
+    \Por causa dessa serialização, normalmente não é necessário gravar o controle de simultaneidade no código do objeto, 
+    \a não ser para evitar chamadas para PeekMessage e SendMessage durante o processamento 
+    \que não devem ser interrompidas por outras invocações de método ou chamadas para outros objetos no mesmo apartamento /thread.
 
 Etapas para que se inicialize um context:
   Aloque memória para o context.
@@ -7343,15 +7374,18 @@ Etapas para que se inicialize os cursors (seta do mouse):
   Posponha $10FFFFFF30FFFFFF787FFFFFF87FFFFF para a máscara de conjunção lógica.
   Posponha $FC3FFFFFFC3FFFFFFE7FFFFFFFFFFFFF para a máscara de conjunção lógica.
   Posponha $FF para a máscara de conjunção lógica usando 48.
-  Call "user32.dll" "CreateCursor" com 
-    O número identificador deste module 
-    e 0 
-    e 0 
-    e 32 
-    e 32 
-    e O caractere inicial desta máscara de conjunção lógica 
-    e O caractere inicial desta máscara de disjunção exclusiva 
-    devolvendo a seta do mouse.
+  Call "user32.dll" "CreateCursor" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-createcursor
+  \Cria um cursor com o tamanho, padrões de bits e ponto de acesso especificados.
+    O número identificador deste module [hInst] \ Um identificador para a instância atual do aplicativo que cria o cursor.
+    e 0 [xHotSpot] \ A posição horizontal do ponto de acesso do cursor.
+    e 0 [yHotSpot] \ A posição vertical do ponto de acesso do cursor.
+    e 32 [nWidth] \ A largura do cursor, em pixels.
+    e 32 [nHeight] \ A altura do cursor, em pixels.
+    e O caractere inicial desta máscara de conjunção lógica [*pvANDPlane] 
+    \ Uma matriz de bytes que contém os valores de bit para a máscara AND do cursor, como em um bitmap monocromático dependente de dispositivo.
+    e O caractere inicial desta máscara de disjunção exclusiva [*pvXORPlane] 
+    \ Uma matriz de bytes que contém os valores de bit para a máscara XOR do cursor, como em um bitmap monocromático dependente de dispositivo.
+    devolvendo a seta do mouse. \Se a função for bem-sucedida, o valor de retorno é um identificador para o cursor.
 
 Etapas para que se inicialize o cursors (hand cursor):
   Posponha $000000000180000019B0000019B00000 para uma máscara de disjunção exclusiva.
@@ -7364,15 +7398,18 @@ Etapas para que se inicialize o cursors (hand cursor):
   Posponha $0001FFFF8001FFFFC001FFFFC003FFFF para a máscara de conjunção lógica.
   Posponha $E003FFFFF007FFFFF807FFFFF807FFFF para a máscara de conjunção lógica.
   Posponha $FF para a máscara de conjunção lógica usando 64.
-  Call "user32.dll" "CreateCursor" com 
-    O número identificador deste module 
-    e 2 
-    e 1 
-    e 32 
-    e 32 
-    e O caractere inicial desta máscara de conjunção lógica 
-    e O caractere inicial desta máscara de disjunção exclusiva 
-    devolvendo o hand cursor.
+  Call "user32.dll" "CreateCursor" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-createcursor
+  \Cria um cursor com o tamanho, padrões de bits e ponto de acesso especificados.
+    O número identificador deste module [hInst] \ Um identificador para a instância atual do aplicativo que cria o cursor.
+    e 2 [xHotSpot] \ A posição horizontal do ponto de acesso do cursor.
+    e 1 [yHotSpot] \ A posição vertical do ponto de acesso do cursor.
+    e 32 [nWidth] \ A largura do cursor, em pixels.
+    e 32 [nHeight] \ A altura do cursor, em pixels.
+    e O caractere inicial desta máscara de conjunção lógica [*pvANDPlane] 
+    \ Uma matriz de bytes que contém os valores de bit para a máscara AND do cursor, como em um bitmap monocromático dependente de dispositivo.
+    e O caractere inicial desta máscara de disjunção exclusiva [*pvXORPlane] 
+    \ Uma matriz de bytes que contém os valores de bit para a máscara XOR do cursor, como em um bitmap monocromático dependente de dispositivo.
+    devolvendo o hand cursor. \Se a função for bem-sucedida, o valor de retorno é um identificador para o cursor.
 
 Etapas para que se inicialize o cursors (i-beam cursor):
   Posponha $EE000000100000001000000010000000 para um máscara de disjunção exclusiva.
@@ -7381,63 +7418,86 @@ Etapas para que se inicialize o cursors (i-beam cursor):
   Posponha $100000001000000010000000EE000000 para o máscara de disjunção exclusiva.
   Posponha $00 para o máscara de disjunção exclusiva usando 64.
   Posponha $FF para um máscara de conjunção lógica usando 128.
-  Call "user32.dll" "CreateCursor" com 
-    O número identificador deste module 
-    e 3 
-    e 7 
-    e 32 
-    e 32 
-    e O caractere inicial desta máscara de conjunção lógica 
-    e O caractere inicial desta máscara de disjunção exclusiva 
-    devolvendo o i-beam cursor.
+  Call "user32.dll" "CreateCursor" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-createcursor
+  \Cria um cursor com o tamanho, padrões de bits e ponto de acesso especificados.
+    O número identificador deste module [hInst] \ Um identificador para a instância atual do aplicativo que cria o cursor.
+    e 3 [xHotSpot] \ A posição horizontal do ponto de acesso do cursor.
+    e 7 [yHotSpot] \ A posição vertical do ponto de acesso do cursor.
+   e 32 [nWidth] \ A largura do cursor, em pixels.
+    e 32 [nHeight] \ A altura do cursor, em pixels.
+    e O caractere inicial desta máscara de conjunção lógica [*pvANDPlane] 
+    \ Uma matriz de bytes que contém os valores de bit para a máscara AND do cursor, como em um bitmap monocromático dependente de dispositivo.
+    e O caractere inicial desta máscara de disjunção exclusiva [*pvXORPlane] 
+    \ Uma matriz de bytes que contém os valores de bit para a máscara XOR do cursor, como em um bitmap monocromático dependente de dispositivo.
+    devolvendo o i-beam cursor. \Se a função for bem-sucedida, o valor de retorno é um identificador para o cursor.
 
 Etapas para que se inicialize as fonts:
-  Call "gdi32.dll" "GetStockObject" com 
-  11 [ANSI_FIXED_FONT 0x0000000B] 
-    devolvendo o null número da fonte.
+  Call "gdi32.dll" "GetStockObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getstockobject
+  \A função GetStockObject recupera um identificador para uma das canetas, pincéis, fontes ou paletas de estoque.
+  11 [i = ANSI_FIXED_FONT 0x0000000B] \ O tipo de objeto de estoque.
+  \ANSI_FIXED_FONT = Fonte do sistema de pitch fixo (monoespaçada) do Windows.
+    devolvendo o null número da fonte. \Se a função for bem-sucedida, o valor de retorno é um identificador para o objeto lógico solicitado.
+    \Se a função falhar, o valor de retorno será NULL.
   \Call "gdi32.dll" "AddFontMemResourceEx" com o caractere inicial desta osmosian font source e a quantidade de caracteres desta osmosian font source e 0 e o endereçamento desse número devolvendo o osmosian font resource.
   \Call "gdi32.dll" "AddFontMemResourceEx" com o caractere inicial desta fonte Segoe UI e a quantidade de caracteres desta fonte Segoe UI e 0 e o endereçamento desse número devolvendo o Segoe UI resource.
-  Call "gdi32.dll" "AddFontMemResourceEx" com 
-    O caractere inicial desta fonte Tahoma 
-    e A quantidade de caracteres desta fonte Tahoma 
-    e 0 
-    e O endereçamento desse número 
-    devolvendo o recurso de fonte Tahoma.
+  Call "gdi32.dll" "AddFontMemResourceEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-addfontmemresourceex
+  \A função AddFontMemResourceEx adiciona o recurso de fonte de uma imagem de memória ao sistema.
+    O caractere inicial desta fonte Tahoma [pFileView] \ Um ponteiro para um recurso de fonte.
+    e A quantidade de caracteres desta fonte Tahoma [cjSize] \ O número de bytes no recurso de fonte apontado por pbFont.
+    e 0 [pvResrved] \ Reservado. Deve ser 0.
+    e O endereçamento desse número [*pNumFonts] \ Um ponteiro para uma variável que especifica o número de fontes instaladas.
+    devolvendo o recurso de fonte Tahoma. \Se a função for bem-sucedida, o valor de retorno especifica o identificador para a fonte adicionada. 
+    \Este identificador identifica exclusivamente as fontes que foram instaladas no sistema. Se a função falhar, o valor de retorno é zero.
   \Atribua "Segoe UI" e 1/6 polegada à fonte padrão.
   \Atribua "osmosian" e 24 pixels à fonte padrão.
   Atribua "Tahoma" e 20 pixels à fonte padrão.
-  \ stroked fonts debaixo of
+  \ stroked fonts abaixo
   Atribua 12 pixels ao tamanho de letra pequena.
   Atribua 24 pixels ao tamanho de letra médio.
   Atribua 48 pixels ao tamanho de letra grande.
 
 Etapas para que se inicialize gdi+:
   Atribua 1 ao GdiplusVersion desse GdiplusStartupInput.
-  Call "gdiplus.dll" "GdiplusStartup" com 
-    O endereçamento deste gpToken 
-    e O endereçamento deste GdiplusStartupInput 
-    e 0.
+  Call "gdiplus.dll" "GdiplusStartup" com \ https://docs.microsoft.com/en-us/windows/win32/api/gdiplusinit/nf-gdiplusinit-gdiplusstartup
+  \A função GdiplusStartup inicializa o Windows GDI +. 
+    O endereçamento deste gpToken [*token] \ Ponteiro para um ULONG_PTR que recebe um token. 
+    \ o token é passado para GdiplusShutdown quando terminar de usar GDI +. https://docs.microsoft.com/en-us/windows/desktop/api/gdiplusinit/nf-gdiplusinit-gdiplusshutdown
+    e O endereçamento deste GdiplusStartupInput [*input] \ Ponteiro para uma estrutura GdiplusStartupInput que contém a versão GDI +,
+    \https://docs.microsoft.com/en-us/windows/win32/api/gdiplusinit/ns-gdiplusinit-gdiplusstartupinput 
+    \um ponteiro para uma função de retorno de chamada de depuração, 
+    \um valor booleano que especifica se deve suprimir o thread de segundo plano 
+    \e um valor booleano que especifica se deve suprimir codecs de imagem externos.
+    e 0. [*output] \ Ponteiro para uma estrutura GdiplusStartupOutput 
+    \que recebe um ponteiro para uma função de gancho de notificação 
+    \e um ponteiro para uma função de desbloqueio de notificação. 
+    \Se o membro de dados SuppressBackgroundThread do parâmetro de entrada for FALSE, esse parâmetro pode ser NULL.
+    \https://docs.microsoft.com/en-us/windows/win32/api/gdiplusinit/ns-gdiplusinit-gdiplusstartupoutput
     \Windows GDI+ é uma API baseada em classe para programadores C/C++. 
     \Ela permite que os aplicativos usem elementos gráficos e texto formatado na exibição de vídeo e na impressora. 
     \Aplicativos baseados na API do Microsoft Win32 não acessam diretamente o hardware gráfico. 
     \Em vez disso, GDI+ interage com drivers de dispositivo em nome de aplicativos. 
-    \GDI+ também é suportado pelo Microsoft Win64.
 
 Etapas para que se inicialize o memory canvas:
-  Call "gdi32.dll" "CreateCompatibleDC" com 
-    O tela canvas 
-    devolvendo o memory canvas.
-  Call "gdi32.dll" "GetCurrentObject" com 
-    O memory canvas 
-    e 7 [OBJ_BITMAP] 
+  Call "gdi32.dll" "CreateCompatibleDC" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createcompatibledc
+  \A função CreateCompatibleDC cria um contexto de dispositivo de memória (DC) compatível com o dispositivo especificado.
+    O tela canvas [hdc] \ Um identificador para um DC existente. 
+    \Se esse identificador for NULL, a função criará uma memória DC compatível com a tela atual do aplicativo.
+    devolvendo o memory canvas. \Se a função for bem-sucedida, o valor de retorno é o identificador para um DC de memória.
+  Call "gdi32.dll" "GetCurrentObject" com \ 
+  \
+    O memory canvas [] \ 
+    e 7 [OBJ_BITMAP] \
     devolvendo o saved memory hBitMap.
-  Call "gdi32.dll" "CreateCompatibleBitmap" com 
-    O tela canvas 
-    e A pixel largura desta tela 
-    e A pixel altura desta tela devolvendo um hBitMap.
-  Call "gdi32.dll" "SelectObject" com 
-    O memory canvas 
-    e O hBitMap.
+  Call "gdi32.dll" "CreateCompatibleBitmap" com \ 
+  \
+    O tela canvas [] \ 
+    e A pixel largura desta tela [] \ 
+    e A pixel altura desta tela [] \ 
+    devolvendo um hBitMap.
+  Call "gdi32.dll" "SelectObject" com \ 
+  \
+    O memory canvas [] \ 
+    e O hBitMap. [] \ 
   Normalize o memory canvas.
 
 Etapas para que se inicialize o module:
