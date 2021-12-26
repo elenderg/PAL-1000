@@ -1736,9 +1736,9 @@ Etapas para que se crie um gpBitmap usando um trecho:
     \a função retornará um identificador para um objeto de memória que está marcado como descartado.
     devolvendo um número identificador. \Se a função for bem-sucedida, o valor de retorno será um identificador para o objeto de memória recém-alocado.
     \Se a função falhar, o valor de retorno será NULL. 
-\A função GlobalLock bloqueia um objeto de memória global e aumenta a contagem de bloqueios em um. 
-\A função GlobalUnlock o desbloqueia e diminui a contagem de bloqueios em um. 
-\Para obter a contagem de bloqueios de um objeto de memória global, use a função GlobalFlags.
+    \A função GlobalLock bloqueia um objeto de memória global e aumenta a contagem de bloqueios em um. 
+    \A função GlobalUnlock o desbloqueia e diminui a contagem de bloqueios em um. 
+    \Para obter a contagem de bloqueios de um objeto de memória global, use a função GlobalFlags.
   Call "kernel32.dll" "GlobalLock" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globallock
     \Bloqueia um objeto de memória global e retorna um ponteiro para o primeiro byte do bloco de memória do objeto.
     \Observação: As funções globais têm maior sobrecarga e fornecem menos recursos do que outras funções de gerenciamento de memória. 
@@ -1754,7 +1754,8 @@ Etapas para que se crie um gpBitmap usando um trecho:
 \O bloco de memória de um objeto de memória bloqueado permanece bloqueado até que sua contagem de bloqueios diminua para zero, momento em que pode ser movido ou descartado.
   Copie pedaços desde o caractere inicial deste trecho para o endereço de memória pelo quantidade de caracteres deste trecho.
   Call "kernel32.dll" "GlobalUnlock" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalunlock
-    \Diminui a contagem de bloqueios associada a um objeto de memória que foi alocado com GMEM_MOVEABLE. Esta função não tem efeito em objetos de memória alocados com GMEM_FIXED.
+    \Diminui a contagem de bloqueios associada a um objeto de memória que foi alocado com GMEM_MOVEABLE. 
+    \Esta função não tem efeito em objetos de memória alocados com GMEM_FIXED.
     O número identificador. [hMem] \Um identificador para o objeto de memória global. Nese caso o identificador é número identificador retornado pela função GlobalAlloc .
     \Se o objeto de memória ainda estiver bloqueado após diminuir a contagem de bloqueios, o valor de retorno será um valor diferente de zero. 
     \Se o objeto de memória for desbloqueado após diminuir a contagem de bloqueios, a função retornará zero e GetLastError retornará 0 (NO_ERROR).
@@ -6075,26 +6076,40 @@ Etapas para que se obtenha um item desde um endereço completo (pela primeira vez
   Posponha "*.*" para o endereço completo.
   Termine com o caractere NULL o endereço completo.
   Limpe a categoria deste item.
-  Call "kernel32.dll" "FindFirstFileA" com 
-    O caractere inicial deste endereço completo 
-    e O endereçamento deste WIN32FINDDATA deste item 
-    devolvendo o número identificador deste item.
+  Call "kernel32.dll" "FindFirstFileA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-findfirstfilea
+  \Pesquisa um diretório por um arquivo ou subdiretório por um nome que corresponda a um nome específico (ou nome parcial se curingas forem usados).
+    O caractere inicial deste endereço completo [lpFileName] \ O diretório ou caminho e o nome do arquivo. 
+    \O nome do arquivo pode incluir caracteres curinga, como por exemplo, um asterisco (*) ou um ponto de interrogação (?).
+    \Este parâmetro não pode ser NULL 
+    \nem pode ser uma string inválida (por exemplo, uma string vazia ou uma string sem o caractere nulo final) 
+    \ nem pode terminar com uma barra invertida (\).
+    \Se a string terminar com um caractere curinga, ponto (.) Ou nome de diretório, 
+    \o usuário deve ter permissões de acesso à raiz e a todos os subdiretórios no caminho.
+    e O endereçamento deste WIN32FINDDATA deste item [lpFindFileData] 
+    \ Um ponteiro para a estrutura WIN32_FIND_DATA que recebe informações sobre um arquivo ou diretório encontrado.
+    devolvendo o número identificador deste item. \
   Se o número identificador deste item for -1 [INVALID_HANDLE_VALUE], cancele.
   Ajuste o item.
 
 Etapas para que se obtenha um mínimo múltiplo comum usando um número e um segundo número:
   Obtenha um máximo divisor comum usando o número e o segundo número.
-  Call "kernel32.dll" "MulDiv" com 
-    O número 
-    e O segundo número 
-    e O máximo divisor comum 
-    devolvendo o mínimo múltiplo comum.
+  Call "kernel32.dll" "MulDiv" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-muldiv
+  \Multiplica dois valores de 32 bits e, em seguida, divide o resultado de 64 bits por um terceiro valor de 32 bits. 
+  \O resultado final é arredondado para o número inteiro mais próximo.
+    O número [nNumber] \ O multiplicando.
+    e O segundo número [nNumerator] \ O multiplicador.
+    e O máximo divisor comum [nDenominator] \ O número pelo qual o resultado da operação de multiplicação deve ser dividido.
+    devolvendo o mínimo múltiplo comum. 
+    \Se a função for bem-sucedida, o valor de retorno é o resultado da multiplicação e divisão, arredondado para o número inteiro mais próximo. 
+    \Se o resultado for um meio inteiro positivo (termina em 0,5), ele será arredondado para cima. 
+    \Se o resultado for um meio inteiro negativo, ele será arredondado para baixo.
+    \Se um ocorrer uma extrapolação de valores ou nDenominator era 0, o valor de retorno é -1.
 
-Etapas para que se obtenha um letra desde o alphabet:
-  Atribua o next letra ao letra.
-  Avance o next letra limitando-a para o 'A' maiúsculo e o Z maiúsculo.
-  Adicione 1 para o next letra.
-  Se o next letra for maior do que o Z maiúsculo, atribua o 'A' maiúsculo à next letra.
+Etapas para que se obtenha uma letra desde o alphabet:
+  Atribua a next letra à letra.
+  Avance a next letra limitando-a para o 'A' maiúsculo e o Z maiúsculo.
+  Adicione 1 para a next letra.
+  Se a next letra for maior do que o Z maiúsculo, atribua o 'A' maiúsculo à next letra.
 
 Etapas para que se obtenha um número desde a stack:
   Atribua 0 ao número.
@@ -6113,10 +6128,13 @@ Etapas para que se obtenha um offset par de números usando uma string e uma caix
   Se o alinhamento for "left", obtenha o número X deste offset par de números usando a string e a caixa (fast - left).
   Se o alinhamento for "right", obtenha o número X deste offset par de números usando a string e a caixa (fast - right).
   Se o alinhamento for "center", obtenha o número X deste offset par de números usando a string e a caixa (fast - center).
-  Call "gdi32.dll" "GetTextMetricsA" com 
-    O memory canvas 
-    e O endereçamento desse textmetric.
-  Adicione a altura desta caixa menos a tmheight deste textmetric dividido por 2 para o número Y deste offset par de números.
+  Call "gdi32.dll" "GetTextMetricsA" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-gettextmetricsa
+  \A função GetTextMetrics preenche o buffer especificado com as métricas para a fonte atualmente selecionada.
+    O memory canvas [hdc] \Um identificador para o contexto do dispositivo
+    e O endereçamento desse TEXTMETRIC. [lptm] \Um ponteiro para a estrutura TEXTMETRIC que recebe as métricas de texto.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+  Adicione a altura desta caixa menos a tmHeight deste TEXTMETRIC dividido por 2 para o número Y deste offset par de números.
 
 Etapas para que se obtenha uma position usando uma localização e um text:
   Se o text for inexistente, limpe o position; volte.
@@ -6239,10 +6257,15 @@ Etapas para que se obtenha um size usando um endereço completo no sistema de arq
 Etapas para que se obtenha um size usando um endereço completo no sistema de arquivos (arquivo):
   Isole o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "GetFileAttributesExA" com 
-    O caractere inicial deste endereço completo 
-    e 0 
-    e O endereçamento desse WIN32FINDDATA.
+  Call "kernel32.dll" "GetFileAttributesExA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getfileattributesexa
+  \Recupera atributos de um arquivo ou de um diretório especificado.
+    O caractere inicial deste endereço completo [lpFileName] \O nome do arquivo ou diretório.
+    e 0 [fInfoLevelId] \Uma classe de informações de atributos a serem recuperadas.
+    \Este parâmetro aceita os valores da enumeração GET_FILEEX_INFO_LEVELS. https://docs.microsoft.com/en-us/windows/desktop/api/minwinbase/ne-minwinbase-get_fileex_info_levels
+    \Se fInfoLevelId for GetFileExInfoStandard ele representa uma estrutura WIN32_FILE_ATTRIBUTE_DATA.
+    \https://docs.microsoft.com/en-us/windows/win32/api/fileapi/ns-fileapi-win32_file_attribute_data
+    e O endereçamento desse WIN32FINDDATA. [lpFileInformation] \Um ponteiro para um buffer que recebe as informações do atributo.
+   \O tipo de informações de atributo armazenadas neste buffer é determinado pelo valor de fInfoLevelId.
   Atribua o nFileSizeLow deste WIN32FINDDATA ao size.
 
 Etapas para que se obtenha um sockaddr usando um host string:
@@ -6254,9 +6277,12 @@ Etapas para que se obtenha um sockaddr usando um host string:
   Obtenha uns addrinfo routines.
   Se o erro do fluxo de entrada/saída não estiver em branco, cancele.
   \ obtenha o sockaddr
-  Atribua 2 [AF_INET] ao ai_family desse addrinfo.
-  Atribua 1 [SOCK_STREAM] ao ai_sockettype deste addrinfo.
-  Atribua 6 [IPPROTO_TCP] ao ai_protocol deste addrinfo.
+  Atribua 2 [AF_INET] ao ai_family desse addrinfo. \A família de endereços do protocolo da Internet versão 4 (IPv4).
+  Atribua 1 [SOCK_STREAM] ao ai_sockettype deste addrinfo. 
+  \\Fornece fluxos de bytes sequenciados, confiáveis, bidirecionais e baseados em conexão com um mecanismo de transmissão de dados OOB. 
+  \Usa o Transmission Control Protocol (TCP) para a família de endereços da Internet (AF_INET ou AF_INET6).
+  Atribua 6 [IPPROTO_TCP] ao ai_protocol deste addrinfo. \O protocolo de controle de transmissão (TCP). 
+  \Este é um valor possível quando o membro ai_family é AF_INET ou AF_INET6 e o ??membro ai_socktype é SOCK_STREAM.
   Call o getaddrinfo destas addrinfo routines com 
     O caractere inicial desta host string 
     e 0 e o endereçamento deste addrinfo
@@ -6310,19 +6336,37 @@ Etapas para que se obtenha uma string desde o stack:
 
 Etapas para que se obtenha uma string desde a área de transferência do Windows:
   Limpe a string.
-  Call "user32.dll" "OpenClipboard" com 
-    A janela principal do programa.
-  Call "user32.dll" "GetClipboardData" com 
-  1 [CF_TEXT] 
-    devolvendo um número identificador.
+  Call "user32.dll" "OpenClipboard" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-openclipboard
+  \Abre a área de transferência para exame e impede que outros aplicativos modifiquem o conteúdo da área de transferência.
+    A janela principal do programa. [hWndNewOwner] \Um identificador para a janela a ser associada à área de transferência aberta. 
+    \Se este parâmetro for NULL, a área de transferência aberta será associada à tarefa atual.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+    \O OpenClipboard falhará se outra janela estiver com a área de transferência aberta.
+    \Um aplicativo deve chamar a função CloseClipboard após cada chamada bem-sucedida para OpenClipboard.
+  Call "user32.dll" "GetClipboardData" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getclipboarddata
+  \Recupera dados da área de transferência em um formato especificado. A área de transferência deve ter sido aberta anteriormente.
+  1 [uFormat = CF_TEXT] \Um formato de área de transferência. 
+  \Para obter uma descrição dos formatos padrão da área de transferência, consulte
+  \ https://docs.microsoft.com/en-us/windows/desktop/dataxchg/clipboard-formats
+    devolvendo um número identificador. 
+    \Se a função for bem-sucedida, o valor de retorno será o identificador para um objeto da área de transferência no formato especificado.
+    \Se a função falhar, o valor de retorno será NULL.
   Se o número identificador for 0, Call "user32.dll" "CloseClipboard"; volte.
-  Call "kernel32.dll" "GlobalLock" com 
-    O número identificador 
-    devolvendo um endereçamento de caractere.
+  \CloseClipboard fecha a área de transferência. Isso permite que outras janelas acessem a área de transferência.
+  Call "kernel32.dll" "GlobalLock" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globallock
+    \Bloqueia um objeto de memória global e retorna um ponteiro para o primeiro byte do bloco de memória do objeto.
+    \Observação: As funções globais têm maior sobrecarga e fornecem menos recursos do que outras funções de gerenciamento de memória. 
+    \Novos aplicativos devem usar as funções de heap, a menos que a documentação indique que uma função global deve ser usada.
+    O número identificador  [hMem] \Um identificador para o objeto de memória global. 
+    devolvendo um endereçamento de caractere. \Se a função for bem-sucedida, o valor de retorno é um ponteiro para o primeiro byte do bloco de memória.
+    \Se a função falhar, o valor de retorno será NULL.
   Converta o endereçamento de caractere para a string.
-  Call "kernel32.dll" "GlobalUnlock" com 
-    O número identificador.
-  Call "user32.dll" "CloseClipboard".
+  Call "kernel32.dll" "GlobalUnlock" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalunlock
+    \Diminui a contagem de bloqueios associada a um objeto de memória que foi alocado com GMEM_MOVEABLE. 
+    \Esta função não tem efeito em objetos de memória alocados com GMEM_FIXED.
+    O número identificador. [hMem] \Um identificador para o objeto de memória global
+  Call "user32.dll" "CloseClipboard".  \CloseClipboard fecha a área de transferência. Isso permite que outras janelas acessem a área de transferência.
 
 Etapas para que se obtenha uma coisa desde umas coisas:
   Se  as coisas estiverem vazias, esvazie a coisa; volte.
@@ -6345,11 +6389,17 @@ Etapas para que se obtenha um segmento inicial desde um reply:
   Repita. [o código acima]
 
 Etapas para que se obtenha uma largura usando um pedaço e um canvas:
-  Call "gdi32.dll" "GetTextExtentPoint32A" com 
-    O canvas 
-    e O endereçamento deste pedaço 
-    e 1 
-    e O endereçamento desse par de números.
+  Call "gdi32.dll" "GetTextExtentPoint32A" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-gettextextentpoint32a
+  \A função GetTextExtentPoint32 calcula a largura e a altura da seqüência de caracteres de texto especificada.
+    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e O endereçamento deste pedaço [lpString] \ Um ponteiro para um buffer que especifica a string de texto. 
+    \A string não precisa ter terminação nula, porque o parâmetro c especifica o comprimento da string.
+    e 1 [c] \ O comprimento da string apontada por lpString.
+    \ https://docs.microsoft.com/en-us/windows/win32/gdi/specifying-length-of-text-output-string
+    e O endereçamento desse par de números. [psizl] \ Um ponteiro para uma estrutura SIZE que recebe as dimensões da string, em unidades lógicas.
+    \A estrutura SIZE especifica a largura e a altura de um retângulo.
+    \ https://docs.microsoft.com/en-us/previous-versions/dd145106(v=vs.85)
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
   Atribua o número X deste par de números à largura.
 
 Etapas para que se obtenha uma largura usando um pedaço e uns font larguras:
@@ -6365,11 +6415,17 @@ Etapas para que se obtenha uma largura usando um número e uns font larguras:
 
 Etapas para que se obtenha uma largura usando uma string e um canvas:
   \ presume que a font já esteja selecionada no canvas
-  Call "gdi32.dll" "GetTextExtentPoint32A" com 
-    O canvas 
-    e O caractere inicial desta string 
-    e A quantidade de caracteres desta string 
-    e O endereçamento desse par de números.
+  Call "gdi32.dll" "GetTextExtentPoint32A" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-gettextextentpoint32a
+  \A função GetTextExtentPoint32 calcula a largura e a altura da seqüência de caracteres de texto especificada.
+    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e O caractere inicial desta string [lpString] \ Um ponteiro para um buffer que especifica a string de texto. 
+    \A string não precisa ter terminação nula, porque o parâmetro c especifica o comprimento da string.
+    e A quantidade de caracteres desta string [c] \ O comprimento da string apontada por lpString.
+    \ https://docs.microsoft.com/en-us/windows/win32/gdi/specifying-length-of-text-output-string
+    e O endereçamento desse par de números. [psizl] \ Um ponteiro para uma estrutura SIZE que recebe as dimensões da string, em unidades lógicas.
+    \A estrutura SIZE especifica a largura e a altura de um retângulo.
+    \ https://docs.microsoft.com/en-us/previous-versions/dd145106(v=vs.85)
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
   Atribua o número X deste par de números ao largura.
 
 Etapas para que se obtenha uma largura usando uma string e um canvas e um font:
@@ -6414,8 +6470,6 @@ Um GpGraphic é um endereço de memória.
 
 Um GpImage é um endereço de memória.
 
-
-
 Um GpRect é um conjunto com
   Um número denominado x,
   Um número denominado y,
@@ -6426,8 +6480,6 @@ O gpToken é um gpToken.
 
 Um gpToken é um número.
 
-
-
 Uma malha é um par de números.
 
 Etapas para que se garanta one row em um text:
@@ -6437,7 +6489,14 @@ Etapas para que se garanta one row em um text:
   Posponha a row para as rows deste text.
   Renumere as rows deste text.
 
-Um guid é um UUID. \ identificador único global
+Um GUID é um UUID. \ identificador único global
+\Um GUID identifica um objeto, como interfaces COM, um objeto de classe COM ou um vetor de ponto de entrada do gerenciador (EPV). 
+\Um GUID é um valor de 128 bits que consiste em 
+\um grupo de 8 dígitos hexadecimais, 
+\seguido por três grupos de 4 dígitos hexadecimais cada, 
+\seguido por um grupo de 12 dígitos hexadecimais. 
+\O seguinte GUID de exemplo mostra os agrupamentos de dígitos hexadecimais em um GUID: 6B29FC40-CA47-1067-B31D-00DD010662DA.
+\A estrutura GUID armazena um GUID.
 
 O hand cursor é um cursor.
 
@@ -6453,29 +6512,56 @@ Etapas para que se execute algum tipo de WM_ACTIVATE com um wParam:
   Execute algum tipo de WM_ACTIVATE com o wParam (activate).
 
 Etapas para que se execute algum tipo de WM_ACTIVATE com um wParam (activate):
-  Call "user32.dll" "SetFocus" com 
-    A janela principal do programa.
-  Call "user32.dll" "ClipCursor" com 
-  0.
+  Call "user32.dll" "SetFocus" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setfocus
+  \Define o foco do teclado para a janela especificada. A janela deve ser anexada à fila de mensagens do segmento de chamada.
+    A janela principal do programa.[hWnd] \Um identificador para a janela que receberá a entrada do teclado. 
+    \Se este parâmetro for NULL, os pressionamentos de tecla serão ignorados.
+    \Se a função for bem-sucedida, o valor de retorno é o identificador para a janela que anteriormente tinha o foco do teclado. 
+    \Se o parâmetro hWnd for inválido ou a janela não estiver anexada à fila de mensagens do thread de chamada, o valor de retorno será NULL.
+  Call "user32.dll" "ClipCursor" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-clipcursor
+  \Limita o cursor a uma área retangular na tela. 
+  \Se uma posição subsequente do cursor (definida pela função SetCursorPos ou pelo mouse) ficar fora do retângulo, 
+  \o sistema ajusta automaticamente a posição para manter o cursor dentro da área retangular.
+  0. [*lpRect] \Um ponteiro para a estrutura que contém as coordenadas da tela dos cantos superior esquerdo e inferior direito do retângulo de confinamento. 
+  \Se este parâmetro for NULL, o cursor ficará livre para se mover em qualquer lugar da tela.
+  \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
   \ seterrormode(sem_failcriticalerrors) \ keeps certain disk erros desde appearing
+  \https://docs.microsoft.com/en-us/windows/win32/api/errhandlingapi/nf-errhandlingapi-seterrormode
+  \Função SetErrorMode Controla se o sistema tratará os tipos especificados de erros graves ou se o processo os tratará.
+  \SEM_FAILCRITICALERRORS 0x0001 = O sistema não exibe a caixa de mensagem do manipulador de erros críticos. 
+  \Em vez disso, o sistema envia o erro para o processo de chamada.
+  \A prática recomendada é que todos os aplicativos chamem a função SetErrorMode de todo o processo com um parâmetro SEM_FAILCRITICALERRORS na inicialização. 
+  \Isso evita que os diálogos do modo de erro travem o aplicativo.
   Crie um event.
   Atribua "activate" à categoria deste event. \pode ser traduzido
   Enfileire o event.
-  Call "user32.dll" "PostMessageA" com 
-    A janela principal do programa 
-    e 0 [wm_null] 
-    e 0 
-    e 0.
+  Call "user32.dll" "PostMessageA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-postmessagea
+  \Coloca (posta) uma mensagem na fila de mensagens 
+  \associada ao encadeamento que criou a janela especificada e retorna sem esperar que o encadeamento processe a mensagem.
+    A janela principal do programa [hWnd] \Um identificador para a janela cujo procedimento de janela é para receber a mensagem.
+    e 0 [Msg = WM_NULL]  \A mensagem a ser postada. WM_NULL Não executa nenhuma operação. 
+    \Um aplicativo envia a mensagem WM_NULL se quiser postar uma mensagem que a janela do destinatário irá ignorar.
+    \Uma janela recebe essa mensagem por meio de sua função WindowProc.
+    e 0 [wParam] \Informações adicionais específicas da mensagem.
+    e 0. [lParam] \Informações adicionais específicas da mensagem.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
 
 Etapas para que se execute algum tipo de WM_ACTIVATE com um wParam (deactivate):
   Crie um event.
   Atribua "deactivate" à categoria deste event. \pode ser traduzido
   Enfileire o event.
-  Call "user32.dll" "PostMessageA" com 
-    A janela principal do programa 
-    e 0 [wn_null] 
-    e 0 
-    e 0.
+  Call "user32.dll" "PostMessageA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-postmessagea
+  \Coloca (posta) uma mensagem na fila de mensagens 
+  \associada ao encadeamento que criou a janela especificada e retorna sem esperar que o encadeamento processe a mensagem.
+    A janela principal do programa [hWnd] \Um identificador para a janela cujo procedimento de janela é para receber a mensagem.
+    e 0 [Msg = WM_NULL]  \A mensagem a ser postada. WM_NULL Não executa nenhuma operação. 
+    \Um aplicativo envia a mensagem WM_NULL se quiser postar uma mensagem que a janela do destinatário irá ignorar.
+    \Uma janela recebe essa mensagem por meio de sua função WindowProc.
+    e 0 [wParam] \Informações adicionais específicas da mensagem.
+    e 0. [lParam] \Informações adicionais específicas da mensagem.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
 
 Etapas para que se execute algum tipo de WM_CHAR com um wParam e um lParam:
   \Se a tecla Alt está para baixo, cancele. \ removed por Spanish teclado AltGr e ctrl+alt characters
@@ -6493,34 +6579,46 @@ Etapas para que se execute algum tipo de WM_CREATE com um janela do programa:
   Atribua a janela do programa à janela principal do programa.
 
 Etapas para que se execute algum tipo de WM_DESTROY:
-  Call "user32.dll" "PostQuitMessage" com 
-  0.
+  Call "user32.dll" "PostQuitMessage" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-postquitmessage
+  \Indica ao sistema que um thread fez uma solicitação para encerrar (sair). 
+  \Normalmente é usado em resposta a uma mensagem WM_DESTROY.
+  \ https://docs.microsoft.com/en-us/windows/win32/winmsg/wm-destroy
+  0. [nExitCode] \ O código de saída do aplicativo. Este valor é usado como o parâmetro wParam da mensagem WM_QUIT.
+  \ https://docs.microsoft.com/en-us/windows/win32/winmsg/wm-quit
+  
 
 Etapas para que se execute algum tipo de WM_LBUTTONDBLCLK com um lParam:
   Crie um event.
   Atribua "clique duplo" à categoria deste event. \traduzido
-  Se a tecla Alt está para baixo, acione o detector de tecla Alt deste event.
-  Se a tecla Ctrl está para baixo, acione o detector de tecla Ctrl deste event.
-  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste event.
+  Se a tecla Alt estiver para baixo, acione o detector de tecla Alt deste event.
+  Se a tecla Ctrl estiver para baixo, acione o detector de tecla Ctrl deste event.
+  Se a tecla Shift estiver para baixo, acione o detector de tecla Shift deste event.
   Converta o lParam para a localização deste event.
   Enfileire o event.
 
 Etapas para que se execute algum tipo de WM_LBUTTONDOWN com um lParam:
   Crie um event.
   Atribua "clique" à categoria deste event. \traduzido
-  Se a tecla Alt está para baixo, acione o detector de tecla Alt deste event.
-  Se a tecla Ctrl está para baixo, acione o detector de tecla Ctrl deste event.
-  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste event.
+  Se a tecla Alt estiver para baixo, acione o detector de tecla Alt deste event.
+  Se a tecla Ctrl estiver para baixo, acione o detector de tecla Ctrl deste event.
+  Se a tecla Shift estiver para baixo, acione o detector de tecla Shift deste event.
   Converta o lParam para a localização deste event.
   Enfileire o event.
 
 Etapas para que se execute algum tipo de WM_PAINT com um janela do programa:
-  Call "user32.dll" "BeginPaint" com 
-    A janela do programa 
-    e O endereçamento desse paintstruct.
-  Call "user32.dll" "EndPaint" com 
-    A janela do programa 
-    e O endereçamento desta paintstruct.
+  Call "user32.dll" "BeginPaint" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-beginpaint
+  \ A função BeginPaint prepara a janela especificada para pintura e preenche uma estrutura PAINTSTRUCT com informações sobre a pintura.
+    A janela do programa [hWnd] \Um número identificador para a janela a ser repintada.
+    e O endereçamento desse paintstruct.[lpPaint] \Pointer to the PAINTSTRUCT structure that will receive painting information.
+    \https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-paintstruct
+    \Se a função for bem-sucedida, o valor de retorno é o identificador para um contexto de dispositivo de exibição para a janela especificada.
+    \Se a função falhar, o valor de retorno é NULL, indicando que nenhum contexto de dispositivo de exibição está disponível.
+  Call "user32.dll" "EndPaint" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-endpaint
+  \A função EndPaint marca o fim da pintura na janela especificada. 
+  \Esta função é necessária para cada chamada à função BeginPaint, mas somente após a conclusão da pintura.
+    A janela do programa [hWnd] \número identificador para a janela que foi repintada.
+    e O endereçamento desta paintstruct. [*lpPaint] \Ponteiro para uma estrutura PAINTSTRUCT que contém as informações de pintura recuperadas por BeginPaint.
+    \O valor de retorno é sempre diferente de zero.
   Crie um event.
   Atribua "atualização de tela" à categoria deste event.
   Enfileire o event.
@@ -6937,9 +7035,13 @@ Um número da fonte é um número identificador.
 Um hIcon é um número identificador.
 
 Etapas para que se oculte o cursor:
-  Call "user32.dll" "ShowCursor" com 
-  0 
-    devolvendo um número.
+  Call "user32.dll" "ShowCursor" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-showcursor
+  \Exibe ou oculta o cursor.
+  0 [bShow] \Se bShow for TRUE, a contagem de exibição é incrementada em um. Se bShow for FALSE, a contagem de exibição é diminuída em um.
+    devolvendo um número. \O valor de retorno especifica o novo contador de exibição.
+    \Esta função define um contador interno de exibição que determina se o cursor deve ser exibido. 
+    \O cursor é exibido apenas se a contagem de exibição for maior ou igual a 0. 
+    \Se um mouse for instalado, a contagem de exibição inicial será 0. Se nenhum mouse estiver instalado, a contagem de exibição será -1.
   Se o número for menor do que 0, cancele.
   Repita. [o código acima]
 
@@ -6953,11 +7055,9 @@ Um hRgn é um número identificador.
 
 Um matiz é uns precise degrees [0 para 3599].
 
-  
-
 O i-beam cursor é um cursor.
 
-Um iid é um UUID. \ Um interface identifier é um Identificador único universal
+Um IID é um UUID. \ Um interface identifier é um Identificador único universal
 
 Etapas para que se imagine uma caixa uns twips por uns segunda twips;
 Etapas para que se faça uma caixa uns twips por uns segunda twips:
@@ -7157,19 +7257,40 @@ Etapas para que se initalize o terminal:
   Crie o terminal na caixa desta tela.
 
 Etapas para que se initialize before run:
-  Call "user32.dll" "DisableProcessWindowsGhosting".
-  Call "kernel32.dll" "GetProcessHeap" 
-    devolvendo o endereço heap.
-  Call "kernel32.dll" "LoadLibraryA" com 
-  "kernel32.dll"'s caractere inicial 
-    devolvendo um número identificador.
-  Se o número identificador não for 0, Call "kernel32.dll" "GetProcAddress" com 
-    O número identificador 
-    e "HeapSetInformation"'s caractere inicial 
-    devolvendo um endereço de memória.
-  Se o endereço de memória não for inexistente, Atribua 1 a um novo número; Call o endereço de memória com o endereço heap e 0 e o endereçamento deste novo número e 4.
+  Call "user32.dll" "DisableProcessWindowsGhosting".\ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-disableprocesswindowsghosting
+  \Desativa o recurso de imagem fantasma da janela para o processo de chamada da GUI. 
+  \O fantasma de janela é um recurso do Gerenciador do Windows 
+  \que permite ao usuário minimizar, mover ou fechar a janela principal de um aplicativo que não está respondendo.
+  Call "kernel32.dll" "GetProcessHeap" \ https://docs.microsoft.com/en-us/windows/win32/api/heapapi/nf-heapapi-getprocessheap
+  \Recupera um identificador para o heap padrão do processo de chamada. 
+  \Esse identificador pode então ser usado em chamadas subsequentes para as funções de heap.
+    devolvendo o endereço heap. \Se a função for bem-sucedida, o valor de retorno será um identificador para o heap do processo de chamada.
+    \Se a função falhar, o valor de retorno será NULL.
+    Atribua "kernel32.dll" a uma nova string.
+    Atribua "HeapSetInformation.dll" a uma novíssima string.
+  Call "kernel32.dll" "LoadLibraryA" com \ https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibrarya
+  \Carrega o módulo especificado no espaço de endereço do processo de chamada. 
+  \O módulo especificado pode fazer com que outros módulos sejam carregados.
+    O caractere inicial desta nova string [lpLibFileName] \O nome do módulo. 
+    \Pode ser um módulo de biblioteca (um arquivo .dll) ou um módulo executável (um arquivo .exe).
+    devolvendo um número identificador. \Se a função for bem-sucedida, o valor de retorno é um identificador para o módulo.
+    \Se a função falhar, o valor de retorno será NULL.
+  Se o número identificador não for 0, Call "kernel32.dll" "GetProcAddress" com \ https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getprocaddress
+  \Recupera o endereço de uma função ou variável exportada da biblioteca de vínculo dinâmico (DLL) especificada.
+    O número identificador [hModule] \Um identificador para o módulo DLL que contém a função ou variável.
+    e o caractere inicial desta novíssima string [lpProcName] \O nome da função ou variável, ou o valor ordinal da função. 
+    \Se este parâmetro for um valor ordinal, ele deve estar na word de ordem inferior; a word de ordem superior deve ser zero.
+    devolvendo um endereço de memória. \Se a função for bem-sucedida, o valor de retorno será o endereço da função ou variável exportada.
+    \Se a função falhar, o valor de retorno será NULL.
+  Se o endereço de memória não for inexistente, 
+     Atribua 1 a um novo número; 
+    Call o endereço de memória com 
+        o endereço heap 
+        e 0 
+        e o endereçamento deste novo número 
+        e 4.
 
-Etapas para que se inicialize o canvases:
+Etapas para que se inicialize os canvases:
   Inicialize o tela canvas.
   Inicialize o memory canvas.
   Atribua o memory canvas ao quadro atual.
@@ -7395,12 +7516,12 @@ Etapas para que se inicialize o tela canvas:
 
 Etapas para que se inicialize um talker:
   Converta "{96749377-3391-11D2-9EE3-00C04F797396}" [CLSID_SpVoice] para um clsid.
-  Converta "{6C44DF74-72B9-4992-A1EC-EF996E0422D4}" [IID_ISpVoice] para um iid.
+  Converta "{6C44DF74-72B9-4992-A1EC-EF996E0422D4}" [IID_ISpVoice] para um IID.
   Call "ole32.dll" "CoCreateInstance" com 
     O endereçamento deste clsid 
     e 0 
     e 7 [CLSCTX_ALL] 
-    e O endereçamento deste iid 
+    e O endereçamento deste IID 
     e O endereçamento deste talker.
 
 Etapas para que se inicialize a janela do programa: \\ para inicializar a janela
