@@ -257,12 +257,14 @@ Etapas para que se ajuste espaçamento da fonte usando uma string:
     e 0. [extra]   \ A quantidade de espaço extra, em unidades lógicas, a ser adicionada a cada caractere. 
     \quero traduzir esse comando como: Mande a área de impressão e o código 0 para a função "SetTextCharacterExtra" da biblioteca "gdi32.dll".
   Call "gdi32.dll" "GetCurrentObject" com  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcurrentobject
-  \A função GetCurrentObject retorna um identificador que identifica a caneta, pincel, paleta, bitmap ou fonte atual e a função GetObject inicializa uma estrutura contendo os atributos desse objeto. 
+  \A função GetCurrentObject retorna um identificador que identifica a caneta, pincel, paleta, bitmap ou fonte atual 
+  \e a função GetObject inicializa uma estrutura contendo os atributos desse objeto. 
   \Algumas impressoras fornecem canetas, pincéis e fontes residentes que podem ser usados para melhorar a velocidade de desenho em um aplicativo.
     A área de impressão [hDC] \ Um identificador para o contexto do dispositivo.
-    e 6 [type OBJ_FONT]    \ O tipo de objeto a ser consultado. Este parâmetro pode ser vários valores.
+    e 6 [type OBJ_FONT]  \ O tipo de objeto a ser consultado. Este parâmetro pode ser vários valores.
     \ OBJ_FONT -> Retorna a fonte selecionada no momento.
-    devolvendo um número identificador. [h] \ Se a função for bem-sucedida, o valor de retorno é um identificador para o objeto especificado. Se a função falhar, o valor de retorno será NULL.
+    devolvendo um número identificador. [h] \ Se a função for bem-sucedida, o valor de retorno é um identificador para o objeto especificado. 
+    \Se a função falhar, o valor de retorno será NULL.
   Call "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
     O memory canvas [hDC] \ Um identificador para o contexto do dispositivo.
@@ -1697,7 +1699,7 @@ Etapas para que se crie uns font larguras usando uma font e uma string:
   Atribua a font à font destas font larguras.
   Atribua a quantidade de caracteres desta string à contagem destas font larguras.
   Se a string estiver em branco, cancele.
-  Atribua a magnitude desse GcpResults ao lstructsize destes GcpResults.
+  Atribua a magnitude desse GcpResults ao lStructSize destes GcpResults.
   Atribua a quantidade de caracteres desta string ao nglyphs destes GcpResults.
   Assign o lpDX destes GcpResults usando a quantidade de caracteres desta string times a magnitude desse número.
   Crie o número da fonte of o memory canvas usando a font.
@@ -3813,7 +3815,7 @@ Etapas para que se determine se existe something para remove em um text:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se há text na área de transferência do Windows;
-Etapas para que se determine se existe text sobre o área de transferência do Windows:
+Etapas para que se determine se existe text sobre a área de transferência do Windows:
   Call "user32.dll" "IsClipboardFormatAvailable" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-isclipboardformatavailable
   \Determina se a área de transferência contém dados no formato especificado.
   1 [format = CF_TEXT]  \Um formato de área de transferência padrão ou registrado. 
@@ -6669,14 +6671,14 @@ Etapas para que se efetue cópias usando um text:
   Se o text for inexistente, cancele.
   Se nada estiver selecionado no text, cancele.
   Extraia uma string desde o text (trecho selecionado).
-  Atribua a string sobre o área de transferência do Windows.
+  Atribua a string sobre a área de transferência do Windows.
 
 Etapas para que se execute cut usando um text:
   Se o text for inexistente, cancele.
   Se nada estiver selecionado no text, cancele.
   Relembre o text.
   Extraia uma string desde o text (trecho selecionado).
-  Atribua a string sobre o área de transferência do Windows.
+  Atribua a string sobre a área de transferência do Windows.
   Remove qualquer trecho selecionado no text.
   Wrap o text.
   Role o text para o cursor de texto.
@@ -6952,7 +6954,7 @@ Etapas para que se execute outdent usando um text:
 
 Etapas para que se execute paste usando um text:
   Se o text for inexistente, cancele.
-  Se não existir text sobre o área de transferência do Windows, cancele.
+  Se não existir text sobre a área de transferência do Windows, cancele.
   Relembre o text.
   Remove qualquer trecho selecionado no text.
   Obtenha uma string desde o área de transferência do Windows.
@@ -7483,45 +7485,69 @@ Etapas para que se inicialize o memory canvas:
     O tela canvas [hdc] \ Um identificador para um DC existente. 
     \Se esse identificador for NULL, a função criará uma memória DC compatível com a tela atual do aplicativo.
     devolvendo o memory canvas. \Se a função for bem-sucedida, o valor de retorno é o identificador para um DC de memória.
-  Call "gdi32.dll" "GetCurrentObject" com \ 
-  \
-    O memory canvas [] \ 
-    e 7 [OBJ_BITMAP] \
-    devolvendo o saved memory hBitMap.
-  Call "gdi32.dll" "CreateCompatibleBitmap" com \ 
-  \
-    O tela canvas [] \ 
-    e A pixel largura desta tela [] \ 
-    e A pixel altura desta tela [] \ 
-    devolvendo um hBitMap.
-  Call "gdi32.dll" "SelectObject" com \ 
-  \
-    O memory canvas [] \ 
-    e O hBitMap. [] \ 
+  Call "gdi32.dll" "GetCurrentObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcurrentobject
+  \A função GetCurrentObject retorna um identificador que identifica a caneta, pincel, paleta, bitmap ou fonte atual 
+  \e a função GetObject inicializa uma estrutura contendo os atributos desse objeto. 
+  \Algumas impressoras fornecem canetas, pincéis e fontes residentes que podem ser usados para melhorar a velocidade de desenho em um aplicativo.
+    O memory canvas [hDC] \ Um identificador para o contexto do dispositivo.
+    e 7 [OBJ_BITMAP] \ O tipo de objeto a ser consultado. Este parâmetro pode ser vários valores.
+    \OBJ_BITMAP Retorna o bitmap selecionado atualmente.
+    devolvendo o saved memory hBitMap. [h] \ Se a função for bem-sucedida, o valor de retorno é um identificador para o objeto especificado. 
+    \Se a função falhar, o valor de retorno será NULL.
+  Call "gdi32.dll" "CreateCompatibleBitmap" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createcompatiblebitmap
+  \A função CreateCompatibleBitmap cria um bitmap compatível com o dispositivo que está associado ao contexto de dispositivo especificado.
+    O tela canvas [hdc] \ Um identificador para um contexto de dispositivo.
+    e A pixel largura desta tela [cx] \ A largura do bitmap, em pixels.
+    e A pixel altura desta tela [xy] \ A altura do bitmap, em pixels.
+    devolvendo um hBitMap. \ Se a função for bem-sucedida, o valor de retorno é um identificador para o bitmap compatível (DDB).
+    \Se a função falhar, o valor de retorno será NULL.
+  Call "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-selectobject
+  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
+    O memory canvas [hdc] \ Um identificador para um contexto de dispositivo.
+    e O hBitMap. [h] \ Um identificador para o objeto a ser selecionado.
+    \Os bitmaps só podem ser selecionados em DCs de memória. Um único bitmap não pode ser selecionado em mais de um DC ao mesmo tempo.
   Normalize o memory canvas.
 
 Etapas para que se inicialize o module:
   \ temp endereço completo
   Atribua 512 a uma quantidade de caracteres.
   Reassign o caractere inicial deste temp endereço completo usando a quantidade de caracteres.
-  Call "kernel32.dll" "GetTempPathA" com 
-    A quantidade de caracteres 
-    e O caractere inicial deste temp endereço completo 
-    devolvendo a quantidade de caracteres.
+  Call "kernel32.dll" "GetTempPathA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-gettemppatha
+  \Recupera o caminho do diretório designado para arquivos temporários.
+    A quantidade de caracteres [nBufferLength] \ O tamanho do buffer de string identificado por lpBuffer, em TCHARs.
+    e O caractere inicial deste temp endereço completo [lpBuffer] \ Um ponteiro para um buffer de string 
+    \que recebe a string terminada em nulo especificando o caminho do arquivo temporário. 
+    \A string retornada termina com uma barra invertida, por exemplo, "C:\TEMP\".
+    devolvendo a quantidade de caracteres. \Se a função for bem-sucedida, o valor de retorno é o comprimento, 
+    \em TCHARs, da string copiada para lpBuffer, sem incluir o caractere nulo de terminação. 
+    \Se o valor de retorno for maior que nBufferLength, o valor de retorno será o comprimento, em TCHARs, do buffer necessário para conter o caminho.
+    \Se a função falhar, o valor de retorno é zero.
   Atribua o caractere inicial deste temp endereço completo mais a quantidade de caracteres menos 1 ao caractere final deste temp endereço completo.
   Termine com o caractere NULL o temp endereço completo.
   \ module handle
-  Call "kernel32.dll" "GetModuleHandleA" com 
-  0 
-    devolvendo o número identificador deste module.
+  Call "kernel32.dll" "GetModuleHandleA" com \ https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulehandlea
+  \Recupera um identificador de módulo para o módulo especificado. O módulo deve ter sido carregado pelo processo de chamada.
+  0 [lpModuleName] \ O nome do módulo carregado (um arquivo .dll ou .exe). 
+  \Se a extensão do nome do arquivo for omitida, a extensão da biblioteca padrão .dll será anexada. 
+  \A string do nome do arquivo pode incluir um caractere de ponto final (.) Para indicar que o nome do módulo não tem extensão. 
+  \A string não precisa especificar um caminho. 
+  \Ao especificar um caminho, certifique-se de usar barras invertidas (\), não barras (/). 
+  \O nome é comparado (independentemente de maiúsculas e minúsculas) aos nomes dos módulos atualmente mapeados no espaço de endereço do processo de chamada.
+  \Se este parâmetro for NULL, GetModuleHandle retorna um identificador para o arquivo usado para criar o processo de chamada (arquivo .exe).
+    devolvendo o número identificador deste module. \
   \ module nome
   Atribua 512 à quantidade de caracteres.
   Reassign o caractere inicial deste endereço completo deste module usando a quantidade de caracteres.
-  Call "kernel32.dll" "GetModuleFileNameA" com 
-    O número identificador deste module 
-    e O caractere inicial deste endereço completo deste module 
-    e A quantidade de caracteres 
-    devolvendo a quantidade de caracteres.
+  Call "kernel32.dll" "GetModuleFileNameA" com \ https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulefilenamea
+  \ Recupera o caminho totalmente qualificado para o arquivo que contém o módulo especificado. O módulo deve ter sido carregado pelo processo atual.
+    O número identificador deste module [hModule] \ Um identificador para o módulo carregado cujo caminho está sendo solicitado. 
+    \Se este parâmetro for NULL, GetModuleFileName recupera o caminho do arquivo executável do processo atual.
+    e O caractere inicial deste endereço completo deste module [lpFilename] \ Um ponteiro para um buffer que recebe o caminho totalmente qualificado do módulo. 
+    \Se o comprimento do caminho for menor que o tamanho que o parâmetro nSize especifica, 
+    \a função é bem-sucedida e o caminho é retornado como uma string terminada em nulo.
+    e A quantidade de caracteres  [nSize] \ O tamanho do buffer lpFilename, em TCHARs.
+    devolvendo a quantidade de caracteres. 
+    \Se a função for bem-sucedida, o valor de retorno será o comprimento da string copiada para o buffer, em caracteres, não incluindo o caractere nulo de terminação.
   Atribua o caractere inicial deste endereço completo deste module mais a quantidade de caracteres menos 1 ao caractere final deste endereço completo deste module.
   Se o endereço completo deste module começa com "\\?\", remove leading pedaços desde o endereço completo deste module usando 4.
   Lowercase o endereço completo deste module.
@@ -7536,30 +7562,68 @@ Etapas para que se inicialize o module:
 Etapas para que se inicialize o mouse:
   Atribua 1 ao botão esquerdo deste mouse.
   Atribua 2 ao botão direito deste mouse.
-  Call "user32.dll" "GetSystemMetrics" com 
-  23 [SM_SWAPBUTTON] 
-    devolvendo um número.
-  Se o número for 0, cancele.
+  Call "user32.dll" "GetSystemMetrics" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics
+  \Recupera a métrica do sistema especificada ou a definição de configuração do sistema.
+  \Observe que todas as dimensões recuperadas por GetSystemMetrics estão em pixels.
+  23 [nIndex = SM_SWAPBUTTON] \ A métrica do sistema ou definição de configuração a ser recuperada.
+  \SM_SWAPBUTTON (23) recebe um valor diferente de 0 se os cliques dos botões esquerdo e direito do mouse estiverem invertidos; caso contrário seu valor será 0.
+    devolvendo um número. \ Se a função for bem-sucedida, o valor de retorno será a métrica do sistema ou definição de configuração solicitada.
+  Se o número for 0, volte.
   Permute o botão esquerdo deste mouse com o botão direito deste mouse.
 
 Etapas para que se inicialize a área de impressão:
-  Atribua a magnitude [quantidade de bytes] desse printdlgex ao lstructsize deste printdlgex.
-  Atribua a janela principal do programa ao hwndowner deste printdlgex.
-  Atribua 1288 [PD_RETURNDC + PD_RETURNDEFAULT + PD_NOPAGENUMS] ao flags deste printdlgex.
-  Atribua -1 [START_PAGE_GENERAL] ao nstartpage deste printdlgex.
-  Call "comdlg32.dll" "PrintDlgExA" com 
-    O endereçamento deste printdlgex.
-  Call "kernel32.dll" "GlobalFree" com 
-    O hdevnames deste printdlgex.
-  Atribua o hdevmode deste printdlgex ao número identificador do modo de dispositivo da impressora.
-  Atribua o hDC deste printdlgex à área de impressão.
+  Atribua a magnitude [quantidade de bytes] desse PrintDlgEx ao lStructSize deste PrintDlgEx.
+  Atribua a janela principal do programa ao hwndowner deste PrintDlgEx.
+  Atribua 1288 \ resultado da combinação da disjunção lógica dos valores 256 | 1024 | 8
+  \ O significado de cada valor está descrito, sequenciadamente, abaixo
+  [PD_RETURNDC (256)] \ Faz com que PrintDlg retorne um contexto de dispositivo que corresponda às seleções feitas pelo usuário na caixa de diálogo. 
+  \O contexto do dispositivo é retornado em hDC.
+  [+ PD_RETURNDEFAULT (1024)] \ Se este sinalizador for definido, a função PrintDlg não exibe a caixa de diálogo. 
+  \Em vez disso, ele define os membros hDevNames e hDevMode para manipular as estruturas DEVMODE e DEVNAMES que são inicializadas para a impressora padrão do sistema. 
+  \Ambos hDevNames e hDevMode devem ser NULL ou PrintDlg retornará um erro.
+  [+ PD_NOPAGENUMS (8)] \ Desativa o botão de opção Páginas e os controles de edição associados. 
+  \Além disso, faz com que a caixa de seleção Agrupar apareça na caixa de diálogo.
+ ao flags deste PrintDlgEx.
+  Atribua -1 [START_PAGE_GENERAL] ao nStartPage deste PrintDlgEx. \A página de propriedades que é exibida inicialmente. 
+  \Para exibir a página Geral, especifique START_PAGE_GENERAL.
+  Call "comdlg32.dll" "PrintDlgExA" com \ https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/ms646942(v=vs.85)
+  \ Exibe uma folha de propriedades de impressão que permite ao usuário especificar as propriedades de um determinado trabalho de impressão. 
+  \Uma folha de propriedades de impressão possui uma página Geral que contém controles semelhantes à caixa de diálogo Imprimir. 
+  \A folha de propriedades também pode ter páginas de propriedades adicionais específicas do aplicativo e do driver, bem como a página Geral.
+    O endereçamento deste PrintDlgEx. [lppd] \ Um ponteiro para uma estrutura PRINTDLGEX que contém informações usadas para inicializar a folha de propriedades. 
+    \Quando PrintDlgEx retorna, esta estrutura contém informações sobre as seleções do usuário.
+    \Essa estrutura deve ser declarada dinamicamente usando uma função de alocação de memória.
+  Call "kernel32.dll" "GlobalFree" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalfree
+  \A função GlobalFree libera o objeto de memória global especificado e invalida seu identificador
+    O hDevNames deste PrintDlgEx.[hMem] \ O número identificador do objeto de memória global. 
+    \Esse identificador é retornado pela função GlobalAlloc ou GlobalReAlloc. 
+    \Não é seguro liberar memória alocada com LocalAlloc.
+    \As funções globais têm maior sobrecarga e fornecem menos recursos do que outras funções de gerenciamento de memória. 
+    \Novos aplicativos devem usar as funções de heap, a menos que a documentação indique que uma função global deve ser usada. 
+    \Para obter mais informações, consulte Funções globais e locais.
+    \Se o processo examinar ou modificar a memória depois de liberada, 
+    \pode ocorrer corrupção de heap ou pode ser gerada uma exceção de violação de acesso (EXCEPTION_ACCESS_VIOLATION).
+    \A função GlobalFree irá liberar um objeto de memória bloqueado. 
+    \Um objeto de memória bloqueado possui uma contagem de bloqueio maior que zero. 
+    \A função GlobalLock bloqueia um objeto de memória global e aumenta a contagem de bloqueios em 1. 
+    \A função GlobalUnlock o desbloqueia e diminui a contagem de bloqueios em 1. 
+    \Para obter a contagem de bloqueios de um objeto de memória global, use a função GlobalFlags.
+    \Se um aplicativo estiver sendo executado em uma versão de depuração do sistema, 
+    \a função GlobalFree emitirá uma mensagem informando que um objeto bloqueado está sendo liberado. 
+    \Se você estiver depurando o aplicativo, GlobalFree entrará em um ponto de interrupção antes de liberar um objeto bloqueado. 
+    \Isso permite que você verifique o comportamento pretendido e, em seguida, continue a execução.
+  Atribua o hDevMode deste PrintDlgEx ao número identificador do modo de dispositivo da impressora.
+  Atribua o hDC deste PrintDlgEx à área de impressão.
 
-Etapas para que se inicialize o tela:
-  Call "user32.dll" "GetSystemMetrics" com 
-  0 [sm_cxscreen] 
+Etapas para que se inicialize a tela:
+  Call "user32.dll" "GetSystemMetrics" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getsystemmetrics
+  \Recupera a métrica do sistema especificada ou a definição de configuração do sistema.
+  \Observe que todas as dimensões recuperadas por GetSystemMetrics estão em pixels.
+  0 [nIndex = SM_CXSCREEN] \ A métrica do sistema ou definição de configuração a ser recuperada.
+  \SM_CXSCREEN = A largura da tela do monitor principal, em pixels.
     devolvendo a pixel largura desta tela.
   Call "user32.dll" "GetSystemMetrics" com 
-  1 [sm_cyscreen] 
+  1 [nIndex = SM_CYSCREEN] \A altura da tela do monitor principal, em pixels.
     devolvendo a pixel altura desta tela.
   Atribua 96 ao ppi.
   Atribua o tpi dividido pelo ppi ao quantidade de twips/pixel .
@@ -7569,59 +7633,116 @@ Etapas para que se inicialize o tela:
   Subtraia a quantidade de twips/pixel desde o canto inferior direito desta tela.
 
 Etapas para que se inicialize o tela canvas:
-  Call "user32.dll" "GetDC" com 
-    A janela principal do programa 
-    devolvendo o tela canvas.
+  Call "user32.dll" "GetDC" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdc
+  \A função GetDC recupera um identificador para um contexto de dispositivo (DC) para a área do cliente de uma janela especificada ou para a tela inteira. 
+  \Você pode usar o identificador retornado em funções GDI subseqüentes para desenhar no DC. 
+  \O contexto do dispositivo é uma estrutura de dados opaca, cujos valores são usados internamente pelo GDI.
+  \Um contexto de dispositivo (DC) é uma estrutura de dados que contém informações dos atributos de desenho de um dispositivo de saída, 
+  \tais como uma placa de vídeo ou uma impressora, e usada nas práticas de programação gráfica do Windows.
+  \Para desenhar algo em uma janela, o programador deve obter o contexto do dispositivo da janela. 
+  \Todo o desenho e pintura são feitos no identificador de contexto do dispositivo.
+  \UM CONTEXTO DE DISPOSITIVO É UMA ESTRUTURA QUE DEFINE UM CONJUNTO DE OBJETOS GRÁFICOS E SEUS ATRIBUTOS ASSOCIADOS E OS MODOS GRÁFICOS QUE AFETAM A SAÍDA. 
+  \Os objetos gráficos incluem uma caneta para desenho de linha, um pincel para pintar e preencher, um bitmap para copiar ou rolar partes da tela, 
+  \uma paleta para definir o conjunto de cores disponíveis, uma região para recorte e outras operações e um caminho para operações de pintura e desenho.
+  \Podemos desenhar algo na janela do evento WM_PAINT. 
+  \O evento WM_PAINT é enviado pela estrutura da GUI do Win32 no momento do desenho da janela ou quando uma parte da janela requer uma atualização.
+  \O programador deve obter o contexto do dispositivo usando a chamada de API BeginPaint () e,
+  \em seguida, o desenho pode ser feito usando várias chamadas GDI. No final das chamadas GDI, os programadores devem chamar EndPaint ().
+  \O contexto do dispositivo é uma abstração do Windows para acessar qualquer hardware de saída, como adaptadores gráficos ou impressoras que exibem texto e desenhos gráficos. 
+  \O sistema operacional Windows retorna um identificador para o contexto de dispositivo do dispositivo. 
+  \O contexto do dispositivo é uma estrutura no modo kernel do sistema operacional onde ele armazena os atributos e outras propriedades do dispositivo. 
+  \O hardware pode variar em muitos aspectos, mas o contexto do dispositivo é comum para todos, para qualquer tipo de dispositivo específico.
+  \O que é um DC? Um Device Context (DC) é o núcleo da GDI (Graphics Device Interface), biblioteca gráfica do Windows. 
+  \Nos bastidores, o DC é a interface entre nossos aplicativos e o hardware de saída, no entanto, ao desenvolver com eles raramente vemos esse aspecto
+  \e podemos apenas pensar neles como um suporte para vários objetos de desenho e propriedades. 
+  \Como o próprio nome sugere, um DC coloca todos os objetos que ele contém no contexto de um dispositivo específico 
+  \que e irá descobrir como formatar esses objetos para serem compatíveis e eficientes com o dispositivo desejado. 
+  \Um DC também armazena informações sobre o dispositivo que está vinculado e o que é capaz de renderizar, 
+  \além de conter várias propriedades que podem afetar o resultado de várias rotinas de desenho.
+  \O que é um contexto de dispositivo? O contexto de um dispositivo é o estado atual do hardware do dispositivo. 
+  \O driver do dispositivo gerencia o contexto do dispositivo para um processo em nome do processo. 
+  \O driver deve manter um contexto de dispositivo separado para cada processo que acessa o dispositivo. 
+  \O driver do dispositivo tem a responsabilidade de restaurar o contexto correto do dispositivo quando um processo acessa o dispositivo.
+  \Realmente, ... o que é um contexto de dispositivo ???
+  \Um contexto de dispositivo é uma estrutura de dados do Windows que contém informações sobre os atributos de desenho de um dispositivo, como um monitor ou uma impressora. 
+  \Todas as chamadas de desenho são feitas por meio de um objeto de contexto de dispositivo, que encapsula as APIs do Windows para desenhar linhas, formas e texto. 
+  \Contextos de dispositivo permitem desenho independente de dispositivo no Windows. 
+  \Os contextos do dispositivo podem ser usados para desenhar na tela, na impressora ou em um metarquivo.
+    A janela principal do programa [hWnd] \Um identificador para a janela cujo DC deve ser recuperado.
+    devolvendo o tela canvas. \Se a função for bem-sucedida, o valor de retorno é um identificador para o controlador de domínio para a área de cliente da janela especificada.
   Normalize o tela canvas.
 
 Etapas para que se inicialize um talker:
-  Converta "{96749377-3391-11D2-9EE3-00C04F797396}" [CLSID_SpVoice] para um clsid.
+  Converta "{96749377-3391-11D2-9EE3-00C04F797396}" [CLSID_SpVoice] para um CLSID.
   Converta "{6C44DF74-72B9-4992-A1EC-EF996E0422D4}" [IID_ISpVoice] para um IID.
-  Call "ole32.dll" "CoCreateInstance" com 
-    O endereçamento deste clsid 
-    e 0 
-    e 7 [CLSCTX_ALL] 
-    e O endereçamento deste IID 
-    e O endereçamento deste talker.
+  Call "ole32.dll" "CoCreateInstance" com \ https://docs.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-cocreateinstance
+  \Cria e inicializa por padrão um único objeto da classe associada a um CLSID especificado.
+    O endereçamento deste CLSID [rclsid] \O CLSID associado aos dados e ao código que serão usados para criar o objeto.
+    e 0 [pUnkOuter] \Se NULL, indica que o objeto não está sendo criado como parte de um agregado.
+    e 7 [dwClsContext = CLSCTX_ALL] \ Contexto no qual o código que gerencia o objeto recém-criado será executado. Os valores são retirados da enumeração CLSCTX.
+    \ https://docs.microsoft.com/en-us/windows/desktop/api/wtypesbase/ne-wtypesbase-clsctx
+    \CLSCTX_ALL = /*CLSCTX_INPROC_SERVER*/1 | /*CLSCTX_INPROC_HANDLER*/2 | /*CLSCTX_LOCAL_SERVER*/4 | /*CLSCTX_REMOTE_SERVER*/16;
+    \CLSCTX_INPROC_SERVER = O código que cria e gerencia objetos dessa classe é uma DLL que é executada no mesmo processo do chamador da função que especifica o contexto da classe.
+    \CLSCTX_INPROC_HANDLER = O código que gerencia objetos desta classe é um manipulador em processo. 
+    \Esta é uma DLL que é executada no processo do cliente e implementa estruturas do lado do cliente desta classe quando as instâncias da classe são acessadas remotamente.
+    \CLSCTX_LOCAL_SERVER = O código EXE que cria e gerencia objetos dessa classe é executado na mesma máquina, mas é carregado em um espaço de processo separado.
+    \CLSCTX_REMOTE_SERVER Um contexto remoto. O código LocalServer32 ou LocalService que cria e gerencia objetos dessa classe é executado em um computador diferente.
+    \https://docs.microsoft.com/en-us/windows/win32/com/localservice
+    \https://docs.microsoft.com/en-us/windows/win32/com/localserver32
+    e O endereçamento deste IID [riid] \Uma referência ao identificador da interface a ser usada para se comunicar com o objeto.
+    e O endereçamento deste talker.[*ppv] \Endereço da variável de ponteiro que recebe o ponteiro de interface solicitado em riid. 
+    \Após o retorno bem-sucedido, * ppv contém o ponteiro de interface solicitado. Em caso de falha, * ppv contém NULL.
 
 Etapas para que se inicialize a janela do programa: \\ para inicializar a janela
   Atribua a magnitude [tamanho em bytes] dessa janela do programa class [estrutura] ao cbSize deste janela do programa class.
   Atribua 40 [CS_OWNDC + CS_DBLCLKS] ao style deste janela do programa class.
-    \o valor cs_owndc Aloca um contexto de dispositivo exclusivo para cada janela da classe.
-    \ o valor cs_dblclks permite que o windows informe ao programa que aquele é um clique duplo (ao invés de dois cliques)
+  \O valor CS_OWNDC aloca um contexto de dispositivo exclusivo para cada janela da classe.
+  \O valor CS_DBLCLKS permite que o windows informe ao programa que aquele é um clique duplo (ao invés de dois cliques separados)
   Point o lpfnWndProc deste janela do programa class para rotina handle algum tipo de message com um janela do programa um message número um wParam e um lParam.
-    \ Isso define o procedimento da classe dessa janela como sendo WndProc
-    \LPARAM é um typedef para um LONG_PTR que é um número inteiro (32 bits com sinal) em win32 e __int64 (64 bits com sinal) em x86_64.
-    \WPARAM é um typedef para um UINT_PTR que é um número sem sinal (32 bits sem sinal) em win32 e __int64 sem sinal (64 bits sem sinal) em x86_64.
+  \Isso define o procedimento da classe dessa janela como sendo WndProc
+  \LPARAM é um typedef para um LONG_PTR que é um número inteiro (32 bits com sinal) no win32 e __int64 (64 bits com sinal) no x86_64.
+  \WPARAM é um typedef para um UINT_PTR que é um número (32 bits sem sinal) no win32 e __int64 (64 bits sem sinal) no x86_64.
   Atribua o número identificador deste module ao hInstance desta janela do programa class.
   Atribua o caractere inicial deste nome deste module ao lpszClassName desta janela do programa class.
-  Call "user32.dll" "RegisterClassExA" \ Antes de criar uma janela, você deve registrar uma classe pra essa janela chamando a função RegisterClass.
-  com o endereçamento deste janela do programa class. \Esta função requer um único parâmetro, que é um ponteiro para uma estrutura do tipo WNDCLASS.
-  Call "user32.dll" "CreateWindowExA" com 
-  0  \ o estilo opcional da janela, como transparências por exemplo. veja mais detalhes em  https://docs.microsoft.com/en-us/windows/desktop/winmsg/extended-janela do programa-styles
-    e O caractere inicial deste nome deste module  \\ O nome da classe da janela
-    e O caractere inicial deste nome deste module  \\ O texto da janela
-    e 2147483648 [13565952  WS_OVERLAPPEDWINDOW 0x00CF0000]   [-2147483648 = WS_POPUP 0x80000000] \\  aqui define o tipo da janela. Use valores em decimal;  
+  Call "user32.dll" "RegisterClassExA" \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-registerclassexa
+  \Registra uma classe de janela para uso subsequente em chamadas para a função CreateWindow ou CreateWindowEx.
+  \Antes de criar uma janela, você deve registrar uma classe pra essa janela chamando a função RegisterClass.
+  com o endereçamento deste janela do programa class. [*unnamedParam1] \Esta função requer um único parâmetro, que é um ponteiro para uma estrutura do tipo WNDCLASS.
+  \Você deve preencher a estrutura com os valores apropriados antes de passá-la para a função.
+  Call "user32.dll" "CreateWindowExA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-createwindowexa
+  \Cria uma janela sobreposta, pop-up ou filha com um estilo de janela estendida; caso contrário, essa função é idêntica à função CreateWindow. 
+  \Para obter mais informações sobre como criar uma janela e para obter descrições completas dos outros parâmetros de CreateWindowEx, consulte 
+  \https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-createwindowa 
+    0 [dwExStyle] \ o estilo opcional da janela, como transparências por exemplo. 
+    \Veja mais detalhes em https://docs.microsoft.com/en-us/windows/win32/winmsg/extended-window-styles
+    e O caractere inicial deste nome deste module [lpClassName]  \O nome da classe da janela
+    e O caractere inicial deste nome deste module  [lpWindowName] \O texto do título da janela
+    e 2147483648 [dwStyle]  [-2147483648 = WS_POPUP 0x80000000] \\  aqui define o tipo da janela. Use valores em decimal;  
+    [13565952  WS_OVERLAPPEDWINDOW 0x00CF0000]  
     \para isso Converta os valores hexadecimais da lista  https://www.autoitscript.com/autoit3/docs/appendix/GUIStyles.htm para decimal;
-    \outra opção é usar o site https://www.magnumdb.com/
+    \outra opção mais fácil é usar o site https://www.magnumdb.com/
     \ O valor na documentação do windows está em hexadecimal (ou em string), mas esse compilador usa números inteiros (longint). 
     \ Para colocar a barra padrão, use o valor 13565952
-    e 0  \\ posição horizontal inicial da janela
-    e 0  \\  posição vertical inicial da janela
-    e A pixel largura desta tela  \\ A largura da janela em pixels;
-    e A pixel altura desta tela  \\ A altura da janela em pixels
-    e 0  \ opcional. Informa o número identificador do controle pai da janela (se existir) ou da janela em si
-    e 0 \ a mesma coisa, só que identifica o número do menu da janela.
-    e O número identificador deste module  \\ descrição auto explicável
-    e 0. \ aqui é um ponteiro que passa a informação pra janela. Usamos um valor nulo pq não precisamos dele.
-  Call "user32.dll" "ShowWindow" com 
-    A janela principal do programa 
-    e 1 [SW_SHOWNORMAL].
+    e 0 [x] \posição horizontal inicial da janela
+    e 0 [y] \posição vertical inicial da janela
+    e A pixel largura desta tela [nWidth] \ A largura da janela em pixels;
+    e A pixel altura desta tela  [nHeight] \ A altura da janela em pixels
+    e 0 [hWndParent] \ opcional. Informa o número identificador do controle pai da janela (se existir) ou da janela em si
+    e 0 [hMenu] \ Um identificador para um menu
+    e O número identificador deste module [hInstance] \ Um identificador para a instância do módulo a ser associado à janela.
+    e 0. [lpParam] \ aqui é um ponteiro que passa uma informação extra pra janela. Usamos um valor nulo porque não precisamos passar mais nenhuma informação.
+  Call "user32.dll" "ShowWindow" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-showwindow
+  \Define o estado de exibição da janela especificada.
+    A janela principal do programa [hWnd] \Um identificador da janela.
+    e 1 [nCmdShow = SW_SHOWNORMAL]. \Controla como a janela deve ser exibida.
+    \SW_SHOWNORMAL Ativa e exibe uma janela. Se a janela for minimizada ou maximizada, o sistema a restaurará para seu tamanho e posição originais. 
+    \Um aplicativo deve especificar este sinalizador ao exibir a janela pela primeira vez.
 
 Etapas para que se inicialize winsock:
-  Call "ws2_32.dll" "WSAStartup" com 
-  2 
-    e O endereçamento desse wsadata.
+  Call "ws2_32.dll" "WSAStartup" com \ https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-wsastartup
+  \A função WSAStartup inicia o uso da DLL Winsock por um processo.
+    2 [wVersionRequired] \ a versão do Windows Sockets
+    e O endereçamento desse wsadata. [lpWSAData] \ Um ponteiro para a estrutura de dados WSADATA que deve receber detalhes da implementação do Windows Sockets.
 
 Um input é um event.
 
@@ -7932,14 +8053,21 @@ Etapas para que se localize uma localização usando um par de números:
   Negate o par de números.
   Mova a localização usando o par de números.
 
-Etapas para que se lock um gpBitmap usando um BitmapData (24-bit espaço de cor RGB):
+Etapas para que se lock um gpBitmap usando um BitmapData (espaço de cor RGB de 24 bits):
   Atribua o gprect deste gpBitmap a um gprect.
-  Call "gdiplus.dll" "GdipBitmapLockBits" com
-   o gpBitmap 
-   e o endereçamento deste gprect 
-   e 3 [ImageLockModeRead ou ImageLockModeWrite] 
-   e 137224 [PixelFormat24bppRGB] 
-   e o endereçamento deste BitmapData.
+  Call "gdiplus.dll" "GdipBitmapLockBits" com \ https://docs.microsoft.com/en-us/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-bitmap-lockbits
+  \Bloqueia uma parte retangular deste bitmap e fornece um buffer temporário que você pode usar para ler ou gravar dados de pixel em um formato especificado. 
+  \Todos os dados de pixel que você grava no buffer são copiados para o objeto Bitmap quando você chama GdipBitmapUnlockBits.
+   o gpBitmap [bitmap] \ Ponteiro para o objeto Bitmap.
+   e o endereçamento deste gprect [*rect] \ Ponteiro para um retângulo que especifica a parte do bitmap a ser bloqueada.
+   e 3 [flags = ImageLockModeRead + ImageLockModeWrite] 
+   \ Conjunto de sinalizadores que especificam se a parte bloqueada do bitmap está disponível para leitura ou gravação e se o chamador já alocou um buffer. 
+   \Sinalizadores individuais são definidos na enumeração ImageLockMode.
+   \3 Especifica que uma parte da imagem está bloqueada para eitura e gravação.
+   \https://docs.microsoft.com/en-us/windows/desktop/api/gdiplusimaging/ne-gdiplusimaging-imagelockmode
+   e 137224 [format = PixelFormat24bppRGB] \ Número inteiro que especifica o formato dos dados de pixel no buffer temporário. 
+   \O formato de pixel do buffer temporário não precisa ser igual ao formato de pixel deste objeto Bitmap.
+   e o endereçamento deste BitmapData. [lockedBitmapData] \Ponteiro para um objeto BitmapData.
 
 \Um logbrush é um conjunto com \ documentar
 \Um número denominado lbstyle,
@@ -8008,9 +8136,12 @@ Etapas para que se cubra internamente uma elipse:
   Destrua o hRgn.
 
 Etapas para que se cubra internamente um hRgn:
-  Call "gdi32.dll" "ExtSelectClipRgn" com 
-    O quadro atual 
-    e O hRgn e 4 [RGN_DIFF].
+  Call "gdi32.dll" "ExtSelectClipRgn" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-extselectcliprgn
+  \A função ExtSelectClipRgn combina a região especificada com a região de recorte atual usando o modo especificado.
+    O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
+    e O hRgn [hrgn] \Um identificador para a região a ser selecionada.
+    e 4 [mode = RGN_DIFF]. \A operação a ser executada.
+    \RGN_DIFF = A nova região de recorte combina as áreas da região de recorte atual com as áreas excluídas da região identificada por hrgn.
 
 Etapas para que se cubra internamente um polígono:
   Crie um hRgn usando o polígono.
@@ -8067,9 +8198,12 @@ Etapas para que se cubra externamente uma elipse:
   Destrua o hRgn.
 
 Etapas para que se cubra externamente um hRgn:
-  Call "gdi32.dll" "ExtSelectClipRgn" com 
-    O quadro atual 
-    e O hRgn e 1 [RGN_AND].
+  Call "gdi32.dll" "ExtSelectClipRgn" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-extselectcliprgn
+  \A função ExtSelectClipRgn combina a região especificada com a região de recorte atual usando o modo especificado.
+    O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
+    e O hRgn [hrgn] \ Uma alça para a região a ser selecionada.
+    e 1 [mode = RGN_AND]. \A operação a ser executada.
+    \RGN_AND = A nova região de recorte combina as áreas sobrepostas da região de recorte atual e a região identificada por hrgn.
 
 Etapas para que se cubra externamente um polígono:
   Crie um hRgn usando o polígono.
@@ -8088,9 +8222,11 @@ O tamanho de letra médio é um tamanho da letra.
 O memory canvas é um canvas.
 
 Etapas para que se minimize um janela do programa:
-  Call "user32.dll" "ShowWindow" com 
-    A janela do programa 
-    e 6 [SW_MINIMIZE].
+  Call "user32.dll" "ShowWindow" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-showwindow
+  \Define o estado de exibição da janela especificada.
+    A janela do programa [hWnd] \Uma maçaneta para a janela.
+    e 6 [nCmdShow = SW_MINIMIZE]. \ Controla como a janela deve ser exibida.
+    \SW_MINIMIZE = Minimiza a janela especificada e ativa a próxima janela de nível superior no modo de ordenação Z.
 
 Etapas para que se mirror o gpBitmap em uma imagem:
   Se a imagem for inexistente, cancele.
@@ -8098,9 +8234,21 @@ Etapas para que se mirror o gpBitmap em uma imagem:
   Mirror o gpBitmap desta imagem.
 
 Etapas para que se mirror um GpImage:
-  Call "gdiplus.dll" "GdipImageRotateFlip" com 
-    O GpImage 
-    e 4 [RotateNoneFlipX].
+  Call "gdiplus.dll" "GdipImageRotateFlip" com \ https://docs.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-image-rotateflip
+  \ Gira e vira a imagem.
+    O GpImage [*image] \Ponteiro para o objeto Imagem.
+    e 4 [rotateFlipType = RotateNoneFlipX]. \Elemento da enumeração RotateFlipType que especifica o tipo de rotação e o tipo de inversão.
+    \ https://docs.microsoft.com/en-us/windows/win32/api/gdiplusimaging/ne-gdiplusimaging-rotatefliptype
+    \Tipo de rotação e inversão:
+    \0 - Sem rotação e sem inversão (uma rotação de 180 graus, uma inversão horizontal e, em seguida, uma inversão vertical)
+    \1 - Uma rotação de 90 graus sem inversão (uma rotação de 270 graus, uma inversão horizontal e depois uma inversão vertical)
+    \2 - Uma rotação de 180 graus sem inversão (sem rotação, uma inversão horizontal seguida de uma inversão vertical)
+    \3 - Uma rotação de 270 graus sem inversão (uma rotação de 90 graus, uma inversão horizontal e depois uma inversão vertical)
+    \4 - Sem rotação e inversão horizontal (rotação de 180 graus seguida de inversão vertical)
+    \5 - Uma rotação de 90 graus seguida por uma inversão horizontal (uma rotação de 270 graus seguida por uma inversão vertical)
+    \6 - Uma rotação de 180 graus seguida por uma inversão horizontal (sem rotação e inversão vertical)
+    \7 - Uma rotação de 270 graus seguida por uma inversão horizontal (uma rotação de 90 graus seguida por uma inversão vertical)
+
 
 Etapas para que se mirror uma imagem:
   Se a imagem for inexistente, cancele.
@@ -8282,30 +8430,42 @@ Etapas para que se mova uns coisas para uns segunda coisas:
   Limpe as coisas.
 
 Etapas para que se mova uma janela do programa left:
-  Call "user32.dll" "GetWindowRect" com 
-    A janela principal do programa 
-    e O endereçamento dessa caixa.
+  Call "user32.dll" "GetWindowRect" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getwindowrect
+  \ Recupera as dimensões do retângulo delimitador da janela especificada.
+  \ As dimensões são fornecidas em coordenadas de tela que são relativas ao canto superior esquerdo da tela.
+    A janela principal do programa [hWnd] \Um identificador para a janela.
+    e O endereçamento dessa caixa. [lpRect] 
+    \Um ponteiro para uma estrutura RECT que recebe as coordenadas da tela dos cantos superior esquerdo e inferior direito da janela.
+    \ https://docs.microsoft.com/en-us/windows/win32/api/windef/ns-windef-rect
   Subtraia a pixel largura desta tela desde a coordenada X do canto superior esquerdo desta caixa.
-  Call "user32.dll" "MoveWindow" com 
-    A janela do programa 
-    e A coordenada X do canto superior esquerdo desta caixa 
-    e A coordenada Y do canto superior esquerdo desta caixa 
-    e A pixel largura desta tela 
-    e A pixel altura desta tela 
-    e 1.
+  Call "user32.dll" "MoveWindow" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-movewindow
+  \Altera a posição e as dimensões da janela especificada. Para uma janela de nível superior, a posição e as dimensões são relativas ao canto superior esquerdo da tela. 
+  \Para uma janela-filha, eles são relativos ao canto superior esquerdo da área do cliente da janela-pai.
+    A janela do programa [hWnd] \ Um identificador para a janela.
+    e A coordenada X do canto superior esquerdo desta caixa [X] \ A nova posição do lado esquerdo da janela.
+    e A coordenada Y do canto superior esquerdo desta caixa [Y] \ A nova posição da parte superior da janela.
+    e A pixel largura desta tela [nWidth] \ A nova largura da janela.
+    e A pixel altura desta tela [nHeight] \ A nova altura da janela.
+    e 1. [bRepaint] \ Indica se a janela deve ser repintada. Se este parâmetro for TRUE, a janela receberá uma mensagem.
 
 Etapas para que se mova uma janela do programa right:
-  Call "user32.dll" "GetWindowRect" com 
-    A janela principal do programa 
-    e O endereçamento dessa caixa.
-  Adicione a pixel largura desta tela para a coordenada X do canto superior esquerdo desta caixa.
-  Call "user32.dll" "MoveWindow" com 
-    A janela do programa 
-    e A coordenada X do canto superior esquerdo desta caixa 
-    e A coordenada Y do canto superior esquerdo desta caixa 
-    e A pixel largura desta tela 
-    e A pixel altura desta tela 
-    e 1.
+  Call "user32.dll" "GetWindowRect" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getwindowrect
+  \ Recupera as dimensões do retângulo delimitador da janela especificada.
+  \ As dimensões são fornecidas em coordenadas de tela que são relativas ao canto superior esquerdo da tela.
+    A janela principal do programa [hWnd] \Um identificador para a janela.
+    e O endereçamento dessa caixa. [lpRect] 
+    \Um ponteiro para uma estrutura RECT que recebe as coordenadas da tela dos cantos superior esquerdo e inferior direito da janela.
+    \ https://docs.microsoft.com/en-us/windows/win32/api/windef/ns-windef-rect
+  Adicione a pixel largura desta tela para a coordenada X do canto superior esquerdo desta caixa. 
+  Call "user32.dll" "MoveWindow" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-movewindow
+  \Altera a posição e as dimensões da janela especificada. Para uma janela de nível superior, a posição e as dimensões são relativas ao canto superior esquerdo da tela. 
+  \Para uma janela-filha, eles são relativos ao canto superior esquerdo da área do cliente da janela-pai.
+    A janela do programa [hWnd] \ Um identificador para a janela.
+    e A coordenada X do canto superior esquerdo desta caixa [X] \ A nova posição do lado esquerdo da janela.
+    e A coordenada Y do canto superior esquerdo desta caixa [Y] \ A nova posição da parte superior da janela.
+    e A pixel largura desta tela [nWidth] \ A nova largura da janela.
+    e A pixel altura desta tela [nHeight] \ A nova altura da janela.
+    e 1. [bRepaint] \ Indica se a janela deve ser repintada. Se este parâmetro for TRUE, a janela receberá uma mensagem.
 
 Etapas para que se redimensione cuidadosamente [sem perder qualidade] uma imagem usando um par de números racionais;
 Etapas para que se redimensione cuidadosamente [sem perder qualidade] uma imagem usando um par de números fracionários:
@@ -8331,35 +8491,59 @@ Etapas para que se normalize uma caixa:
   Se a coordenada Y do canto inferior direito desta caixa for menor do que a coordenada Y do canto superior esquerdo desta caixa, permute a coordenada Y do canto superior esquerdo desta caixa com a coordenada Y do canto inferior direito desta caixa.
 
 Etapas para que se normalize um canvas:
-  Call "gdi32.dll" "SetGraphicsMode" com 
-    O canvas 
-    e 2 [GM_ADVANCED].
-  Call "gdi32.dll" "SetBkMode" com 
-    O canvas 
-    e 1 [TRANSPARENT].
-  Call "gdi32.dll" "SetMapMode" com 
-    O canvas 
-    e 8 [MM_ANISOTROPIC ].
-  Call "gdi32.dll" "SetViewportOrgEx" com 
-    O canvas 
-    e 0 
-    e 0 
-    e nil.
-  Call "gdi32.dll" "SetViewportExtEx" com 
-    O canvas 
-    e O ppi 
-    e O ppi 
-    e nil.
-  Call "gdi32.dll" "SetWindowOrgEx" com 
-    O canvas 
-    e 0 
-    e 0 
-    e nil.
-  Call "gdi32.dll" "SetWindowExtEx" com 
-    O canvas 
-    e O tpi 
-    e O tpi 
-    e nil.
+  Call "gdi32.dll" "SetGraphicsMode" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setgraphicsmode
+  \A função SetGraphicsMode define o modo gráfico para o contexto de dispositivo especificado.
+    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e 2. [iMode = GM_ADVANCED] \O modo gráfico. 
+    \GM_ADVANCED = Define o modo gráfico avançado que permite transformações mundiais. 
+    \Este valor deve ser especificado se o aplicativo irá definir ou modificar a transformação do mundo para o contexto de dispositivo especificado. 
+    \Neste modo, todos os gráficos, incluindo saída de texto, estão totalmente em conformidade com a transformação de mundo para o dispositivo especificado no contexto do dispositivo.
+  Call "gdi32.dll" "SetBkMode" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setbkmode
+  \A função SetBkMode define o modo de mistura de plano de fundo do contexto de dispositivo especificado. 
+    O canvas [hdc] \Um identificador para o contexto do dispositivo. 
+    \O modo de mistura de plano de fundo é usado com texto, pincéis hachurados e estilos de caneta que não são linhas sólidas.
+    e 1. [mode = TRANSPARENT] \ O modo do plano de fundo.
+    \TRANSPARENT = O fundo permanece intocado.
+  Call "gdi32.dll" "SetMapMode" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setmapmode
+  \A função SetMapMode define o modo de mapeamento do contexto de dispositivo especificado. 
+  \O modo de mapeamento define a unidade de medida usada para transformar unidades de espaço de página em unidades de espaço de dispositivo 
+  \e também define a orientação dos eixos x e y do dispositivo.
+    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e 8. [iMode = MM_ANISOTROPIC ] \O novo modo de mapeamento.
+    \MM_ANISOTROPIC = As unidades lógicas são mapeadas para unidades arbitrárias com eixos escalonados arbitrariamente. 
+    \Use as funções SetWindowExtEx e SetViewportExtEx para especificar as unidades, orientação e escala.
+  Call "gdi32.dll" "SetViewportOrgEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setviewportorgex
+  \A função SetViewportOrgEx especifica qual ponto do dispositivo mapeia para a origem da janela (0,0).
+    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e 0 [x] \A coordenada x, em unidades de dispositivo, da nova origem da janela de exibição.
+    e 0 [y] \A coordenada y, em unidades de dispositivo, da nova origem da janela de exibição.
+    e nil. [lppt] \Um ponteiro para uma estrutura POINT que recebe a origem da viewport anterior, nas coordenadas do dispositivo. 
+    \Se lpPoint for NULL, este parâmetro não será usado.
+    \ https://docs.microsoft.com/en-us/previous-versions/dd162805(v=vs.85)
+  Call "gdi32.dll" "SetViewportExtEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setviewportextex
+  \A função SetViewportExtEx define as extensões horizontal e vertical da janela de visualização para um contexto de dispositivo usando os valores especificados.
+    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e O ppi [x] \A extensão horizontal, em unidades de dispositivo, da janela de visualização.
+    e O ppi [y] \A extensão vertical, em unidades de dispositivo, da janela de visualização.
+    e nil. [lpsz] \Um ponteiro para uma estrutura SIZE que recebe as extensões da janela de visualização anterior, em unidades de dispositivo. 
+    \Se lpSize for NULL, este parâmetro não será usado.
+    \ https://docs.microsoft.com/en-us/previous-versions/dd145106(v=vs.85)
+  Call "gdi32.dll" "SetWindowOrgEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setwindoworgex
+  \A função SetWindowOrgEx especifica qual ponto da janela mapeia para a origem da janela de visualização (0,0).
+    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e 0 [x] \A coordenada x, em unidades lógicas, da nova origem da janela.
+    e 0 [y] \A coordenada y, em unidades lógicas, da nova origem da janela.
+    e nil. [lppt] \Um ponteiro para uma estrutura POINT que recebe a origem anterior da janela, em unidades lógicas. 
+    \Se lpPoint for NULL, este parâmetro não será usado.
+    \ https://docs.microsoft.com/en-us/previous-versions/dd162805(v=vs.85)
+  Call "gdi32.dll" "SetWindowExtEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setwindowextex
+  \ A função SetWindowExtEx define as extensões horizontal e vertical da janela para um contexto de dispositivo usando os valores especificados.
+    O canvas [hdc] \Um identificador para o contexto do dispositivo.
+    e O tpi [x] \A extensão horizontal da janela em unidades lógicas.
+    e O tpi [y] \A extensão vertical da janela em unidades lógicas.
+    e nil. [lpsz] \Um ponteiro para uma estrutura SIZE que recebe as extensões da janela anterior, em unidades lógicas. 
+    \Se lpSize for NULL, este parâmetro não será usado.
+    \ https://docs.microsoft.com/en-us/previous-versions/dd145106(v=vs.85)
 
 Etapas para que se normalize uma elipse:
   Normalize a caixa desta elipse.
@@ -8541,32 +8725,52 @@ Um texto hexadecimal denominado data [original pedaços em original format],
 Um gpBitmap.
 
 Etapas para que se toque um wave:
-  Call "winmm.dll" "PlaySound" com 
-    O caractere inicial desta wave 
-    e 0 
-    e 5 [SND_MEMORY+SND_ASYNC].
+  Call "winmm.dll" "PlaySound" com \ https://docs.microsoft.com/en-us/previous-versions//dd743680(v=vs.85)
+  \A função PlaySound reproduz um som especificado pelo nome de arquivo, recurso ou evento do sistema fornecido.
+  \(Um evento do sistema pode estar associado a um som no registro ou no arquivo WIN.INI.)
+    O caractere inicial desta wave [pszSound] \ Uma string que especifica o som a ser reproduzido.
+    e 0 [hmod] \ Identificador para o arquivo executável que contém o recurso a ser carregado. 
+    \Este parâmetro deve ser NULL, a menos que SND_RESOURCE seja especificado em fdwSound.
+    e 5. [fdwSound = SND_MEMORY+SND_ASYNC] \Opções de reprodução de som.
+    \SND_MEMORY = O parâmetro pszSound aponta para um som carregado na memória.
+    \SND_ASYNC = O som é reproduzido de forma assíncrona e o PlaySound retorna imediatamente após o início do som.
 
 Etapas para que se toque um wave e wait:
-  Call "winmm.dll" "PlaySound" com 
-    O caractere inicial desta wave 
-    e 0 
-    e 4 [SND_MEMORY+SND_SYNC].
+  Call "winmm.dll" "PlaySound" com \ https://docs.microsoft.com/en-us/previous-versions//dd743680(v=vs.85)
+  \A função PlaySound reproduz um som especificado pelo nome de arquivo, recurso ou evento do sistema fornecido.
+  \(Um evento do sistema pode estar associado a um som no registro ou no arquivo WIN.INI.)
+    O caractere inicial desta wave [pszSound] \ Uma string que especifica o som a ser reproduzido.
+    e 0 [hmod] \ Identificador para o arquivo executável que contém o recurso a ser carregado. 
+    \Este parâmetro deve ser NULL, a menos que SND_RESOURCE seja especificado em fdwSound.
+    e 4. [fdwSound = SND_MEMORY+SND_SYNC] \Opções de reprodução de som.
+    \SND_MEMORY = O parâmetro pszSound aponta para um som carregado na memória.
+    \SND_SYNC = O som é reproduzido de forma síncrona e o PlaySound retorna após a conclusão do evento de som. Este é o comportamento padrão.
 
 Etapas para que se toque um wave file:
   Isole o wave file.
   Termine com o caractere NULL o wave file.
-  Call "winmm.dll" "PlaySound" com 
-    O caractere inicial deste wave file 
-    e 0 
-    e 131073 [snd_filename+snd_async].
+  Call "winmm.dll" "PlaySound" com \ https://docs.microsoft.com/en-us/previous-versions//dd743680(v=vs.85)
+  \A função PlaySound reproduz um som especificado pelo nome de arquivo, recurso ou evento do sistema fornecido.
+  \(Um evento do sistema pode estar associado a um som no registro ou no arquivo WIN.INI.)
+    O caractere inicial deste wave file [pszSound] \ Uma string que especifica o som a ser reproduzido.
+    e 0 [hmod] \ Identificador para o arquivo executável que contém o recurso a ser carregado. 
+    \Este parâmetro deve ser NULL, a menos que SND_RESOURCE seja especificado em fdwSound.
+    e 131073. [fdwSound = SND_FILENAME+SND_ASYNC] \Opções de reprodução de som.
+    \SND_FILENAME = O parâmetro pszSound é um nome de arquivo.
+    \SND_ASYNC = O som é reproduzido de forma assíncrona e o PlaySound retorna imediatamente após o início do som.
 
 Etapas para que se toque um wave file e wait:
   Isole o wave file.
   Termine com o caractere NULL o wave file.
-  Call "winmm.dll" "PlaySound" com 
-    O caractere inicial deste wave file 
-    e 0 
-    e 131072 [snd_filename+snd_sync].
+  Call "winmm.dll" "PlaySound" com \ https://docs.microsoft.com/en-us/previous-versions//dd743680(v=vs.85)
+  \A função PlaySound reproduz um som especificado pelo nome de arquivo, recurso ou evento do sistema fornecido.
+  \(Um evento do sistema pode estar associado a um som no registro ou no arquivo WIN.INI.)
+    O caractere inicial deste wave file [pszSound] \ Uma string que especifica o som a ser reproduzido.
+    e 0 [hmod] \ Identificador para o arquivo executável que contém o recurso a ser carregado. 
+    \Este parâmetro deve ser NULL, a menos que SND_RESOURCE seja especificado em fdwSound.
+    e 131072. [fdwSound = SND_FILENAME+SND_SYNC] \Opções de reprodução de som.
+    \SND_FILENAME = O parâmetro pszSound é um nome de arquivo.
+    \SND_SYNC = O som é reproduzido de forma síncrona e o PlaySound retorna após a conclusão do evento de som. Este é o comportamento padrão.
 
 Etapas para que se anteponha uma coisa para uns coisas:
   Se a coisa for inexistente, cancele.
@@ -8576,7 +8780,7 @@ Etapas para que se anteponha uma coisa para uns coisas:
   Atribua a coisa ao first coisa destas coisas.
 
 \Etapas para que se anteponha uns coisas para umas segunda coisas:
-\ bug encontrado por Mike Gonta - corrected version debaixo of
+\ bug encontrado por Mike Gonta - corrected version abaixo
 \Obtenha uma coisa desde  as coisas (backwards).
 \Se a coisa for inexistente, cancele.
 \Remove a coisa desde as coisas.
@@ -8723,25 +8927,43 @@ Etapas para que se atribua uma string para um text:
   Converta a string para as rows deste text.
   Wrap o text.
 
-Etapas para que se atribua uma string sobre o área de transferência do Windows:
-  Call "user32.dll" "OpenClipboard" com 
-    A janela principal do programa.
-  Call "user32.dll" "EmptyClipboard".
+Etapas para que se atribua uma string sobre a área de transferência do Windows:
+  Call "user32.dll" "OpenClipboard" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-openclipboard
+  \Abre a área de transferência para exame e impede que outros aplicativos modifiquem o conteúdo da área de transferência.
+    A janela principal do programa. [hWndNewOwner] \Um identificador para a janela a ser associada à área de transferência aberta.
+    \A janela identificada pelo parâmetro hWndNewOwner não se torna o proprietário da área de transferência, a menos que a função EmptyClipboard seja chamada.
+  Call "user32.dll" "EmptyClipboard". \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-emptyclipboard
+  \Esvazia a área de transferência e libera identificadores para os dados da área de transferência. 
+  \A função então atribui a propriedade da área de transferência à janela que está com a área de transferência aberta.
   Atribua a quantidade de caracteres desta string mais 1 a um número.
-  Call "kernel32.dll" "GlobalAlloc" com 
-  66 [GHND - 0x0042 - unifica GMEM_MOVEABLE e GMEM_ZEROINIT.] 
-    e O número 
-    devolvendo um número identificador.
-  Call "kernel32.dll" "GlobalLock" com 
-    O número identificador 
-    devolvendo um endereço de memória.
+  Call "kernel32.dll" "GlobalAlloc" com  \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalalloc
+    \Aloca o número especificado de bytes do heap.
+  66 [uFlags = GHND - 0x0042 - unifica GMEM_MOVEABLE e GMEM_ZEROINIT.] \Os atributos de alocação de memória.
+  \GMEM_MOVEABLE Aloca memória móvel. Os blocos de memória nunca são movidos na memória física, mas podem ser movidos dentro do heap padrão.
+  \O valor de retorno de GMEM_MOVEABLE é um identificador para o objeto de memória.
+  \GMEM_ZEROINIT Inicializa o conteúdo da memória para zero.
+    e O número [dwBytes] \O número de bytes a serem alocados.
+    devolvendo um número identificador. \Se a função for bem-sucedida, o valor de retorno será um identificador para o objeto de memória recém-alocado.
+  Call "kernel32.dll" "GlobalLock" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globallock
+    O número identificador [hMem] \Um identificador para o objeto de memória global. 
+    devolvendo um endereço de memória. \Se a função for bem-sucedida, o valor de retorno é um ponteiro para o primeiro byte do bloco de memória.
   Copie pedaços desde o caractere inicial desta string para o endereço de memória pelo quantidade de caracteres desta string.
-  Call "kernel32.dll" "GlobalUnlock" com 
-    O número identificador.
-  Call "user32.dll" "SetClipboardData" com 
-  1 [CF_TEXT] 
-    e O número identificador.
-  Call "user32.dll" "CloseClipboard".
+  Call "kernel32.dll" "GlobalUnlock" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalunlock
+  \Diminui a contagem de bloqueios associada a um objeto de memória que foi alocado com GMEM_MOVEABLE. 
+  \Esta função não tem efeito em objetos de memória alocados com GMEM_FIXED.
+    O número identificador. [hMem] \Um identificador para o objeto de memória global
+  Call "user32.dll" "SetClipboardData" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setclipboarddata
+  \Coloca dados na área de transferência em um formato de área de transferência especificado.
+  \A janela deve ser o proprietário da área de transferência atual e o aplicativo deve ter chamado a função OpenClipboard.
+    1 [uFormat = CF_TEXT] \ O formato da área de transferência.
+   \Este parâmetro pode ser um formato registrado ou qualquer um dos formatos padrão da área de transferência. 
+    \Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/dataxchg/clipboard-formats
+    \e https://docs.microsoft.com/en-us/windows/desktop/dataxchg/clipboard-formats
+    e O número identificador. [hMem] \Um identificador para os dados no formato especificado. 
+    \Se a função for bem-sucedida, o valor de retorno é o identificador para os dados.
+  Call "user32.dll" "CloseClipboard". \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-closeclipboard
+  \Fecha a área de transferência.
+  
 
 Etapas para que se atribua a largura dessa string para uma largura:
   \Consegui traduzir como:
@@ -8753,7 +8975,10 @@ Etapas para que se atribua um subtexto para um segundo subtexto:
   Copie pedaços desde o endereçamento deste subtexto para o endereçamento deste segundo subtexto pela magnitude deste subtexto.
 
 Etapas para que se atribua o date/time do system para um date/time:
-  Call "kernel32.dll" "GetLocalTime" com o endereçamento desse SYSTEMTIME.
+  Call "kernel32.dll" "GetLocalTime" com \ https://docs.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getlocaltime
+  \Recupera a data e hora atuais no horário local.
+    o endereçamento desse SYSTEMTIME. [lpSystemTime] \Um ponteiro para uma estrutura SYSTEMTIME para receber a data e hora local atuais.
+    \ https://docs.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-systemtime
   Atribua o wYear deste SYSTEMTIME ao year deste date/time.
   Atribua o wMonth deste SYSTEMTIME ao month deste date/time.
   Atribua o wDayOfWeek deste SYSTEMTIME ao week day deste date/time.
@@ -8763,21 +8988,34 @@ Etapas para que se atribua o date/time do system para um date/time:
   Atribua o wSecond deste SYSTEMTIME ao second deste date/time.
   Atribua os wMilliseconds deste SYSTEMTIME ao millisecond deste date/time.
 
-Etapas para que se atribua o last erro do system para um número:
-  Call "kernel32.dll" "GetLastError" devolvendo o número.
+Etapas para que se atribua o último erro do sistema para um número:
+  Call "kernel32.dll" "GetLastError" devolvendo o número. \ https://docs.microsoft.com/en-us/windows/win32/api/errhandlingapi/nf-errhandlingapi-getlasterror
+  \Recupera o valor do código do último erro do segmento de chamada. 
+  \O código do último erro é mantido por thread. 
+  \Threads múltiplos não substituem o código do último erro uns dos outros.
+  \O valor de retorno é o último código de erro do segmento de chamada. 
+  \A maioria das funções que definem o código do último erro do encadeamento o definem quando falham. 
+  \Algumas funções definem o código do último erro como 0 em caso de sucesso e outras não definem nada.
 
-Etapas para que se atribua o last winsock erro do system para um número:
-  Call "ws2_32.dll" "WSAGetLastError" devolvendo o número.
+Etapas para que se atribua o último erro do windows sockets para um número:
+  Call "ws2_32.dll" "WSAGetLastError" devolvendo o número.\ https://docs.microsoft.com/en-us/windows/win32/api/winsock/nf-winsock-wsagetlasterror
+  \A função WSAGetLastError retorna o status de erro da última operação do Windows Sockets que falhou.
+  \O valor de retorno indica o código de erro para a última operação do Windows Sockets deste thread que falhou.
 
 Etapas para que se atribua a contagem de intervalos do sistema para uns intervalos:
-  \ wraps cada 24.8 days ou so
-  Call "kernel32.dll" "GetTickCount" devolvendo os intervalos.
+  \ reinicia a cada 24 dias, 19 horas e 12 minutos aproximadamente (32 bits)
+  Call "kernel32.dll" "GetTickCount" devolvendo os intervalos. \ https://docs.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-gettickcount
+  \Recupera o número de milissegundos decorridos desde que o sistema foi iniciado, até 49 dias, 16 horas e 48 minutos
+  \O valor de retorno é o número de milissegundos decorridos desde que o sistema foi iniciado.
+  \O modo de contagem da função GetTickCount está limitado ao modo de contagem do cronômetro do sistema, 
+  \que normalmente fica na faixa de 10 milissegundos a 16 milissegundos.
+  \Se você precisar de um cronômetro de resolução mais alta, use um cronômetro de multimídia ou um cronômetro de alta resolução.
   Conjuncione logicamente os intervalos com o maior número.
 
 Etapas para que se atribua um terminal no middle of uma caixa;
 Etapas para que se centralize um terminal em uma caixa:
   Isole a caixa.
-  Indent a caixa 24 px.
+  Indent a caixa 24 px.  \ afaste a caixa 24 px pra direit seria um comando melhor
   Atribua a caixa à caixa deste terminal.
 
 Etapas para que se atribua um text no middle of uma caixa;
@@ -8798,7 +9036,7 @@ Etapas para que se atribua a first linha reta desse text para uma string:
   Atribua a string desta first row deste text à string.
   Remove o last pedaço desde a string.
 
-Etapas para que se atribua a first non-em branco linha reta desse text para uma string:
+Etapas para que se atribua a first linha reta contendo texto desse text para uma string:
   \ *** new
   Limpe a string.
   Se o text for inexistente, cancele.
@@ -8806,7 +9044,7 @@ Etapas para que se atribua a first non-em branco linha reta desse text para uma 
     Obtenha uma row desde as rows deste text.
     Se a row for inexistente, cancele.
     Atribua a string deste row à string.
-    Remove o last pedaço desde a string. \ cr ou space (see text rules)
+    Remove o last pedaço desde a string. \ cr ou space (see text rules no começo do arquivo)
     Remove algum tipo de leading noise desde a string.
     Remove algum tipo de trailing noise desde a string.
   Se a string estiver em branco, repita.
@@ -8936,16 +9174,32 @@ Etapas para que se quote uma string:
 
 
 Etapas para que se atualize a tela usando uma caixa:
-  Call "gdi32.dll" "BitBlt" com 
-    O tela canvas 
-    e A coordenada X do canto superior esquerdo desta caixa 
-    e A coordenada Y do canto superior esquerdo desta caixa 
-    e A largura desta caixa 
-    e A altura desta caixa 
-    e O quadro atual 
-    e A coordenada X do canto superior esquerdo desta caixa 
-    e A coordenada Y do canto superior esquerdo desta caixa 
-    e 13369376 [SRCCOPY].
+  Call "gdi32.dll" "BitBlt" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-bitblt
+  \A função BitBlt executa uma transferência de bloco de bits dos dados de cor 
+  \correspondentes a um retângulo de pixels do contexto de dispositivo de origem especificado 
+  \para um contexto de dispositivo de destino.
+  \BitBlt só faz recorte no controlador de domínio de destino.
+  \Se uma rotação ou transformação de cisalhamento estiver em vigor no contexto do dispositivo de origem, BitBlt retornará um erro. 
+  \Se outras transformações existirem no contexto do dispositivo de origem
+   \(e uma transformação correspondente não estiver em vigor no contexto do dispositivo de destino), 
+   \o retângulo no contexto do dispositivo de destino será esticado, compactado ou girado, conforme necessário.
+   \Se os formatos de cor dos contextos de dispositivo de origem e destino não corresponderem, a função 
+   \BitBlt converte o formato de cor de origem para corresponder ao formato de destino.
+   \Quando um metarquivo avançado está sendo gravado, 
+   \ocorre um erro se o contexto do dispositivo de origem identifica um contexto de dispositivo de metarquivo avançado.
+    O tela canvas [hdc] \Um identificador para o contexto do dispositivo de destino.
+    e A coordenada X do canto superior esquerdo desta caixa [x] \A coordenada x, em unidades lógicas, do canto superior esquerdo do retângulo de destino.
+    e A coordenada Y do canto superior esquerdo desta caixa [y] \A coordenada y, em unidades lógicas, do canto superior esquerdo do retângulo de destino.
+    e A largura desta caixa [cx] \A largura, em unidades lógicas, dos retângulos de origem e destino.
+    e A altura desta caixa [cy] \A altura, em unidades lógicas, dos retângulos de origem e destino.
+    e O quadro atual [hdcSrc] \Um identificador para o contexto do dispositivo de origem.
+    e A coordenada X do canto superior esquerdo desta caixa [x1] \A coordenada x, em unidades lógicas, do canto superior esquerdo do retângulo de origem.
+    e A coordenada Y do canto superior esquerdo desta caixa [y1] \A coordenada y, em unidades lógicas, do canto superior esquerdo do retângulo de origem.
+   e 13369376 [rop = SRCCOPY]. \Um código de operação de varredura. 
+   \Esses códigos definem como os dados de cor do retângulo de origem devem ser combinados com os dados de cor do retângulo de destino para obter a cor final.
+   \SRCCOPY = Copia o retângulo de origem diretamente para o retângulo de destino.
+   \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+   \Se a função falhar, o valor de retorno é zero.
 
 Etapas para que se relembre um text:
   Se o text for inexistente, cancele.
@@ -9100,15 +9354,23 @@ Etapas para que se rename um endereço completo para um segundo endereço completo
   Isole o segundo endereço completo.
   Remove algum tipo de trailing barra invertida desde o segundo endereço completo.
   Termine com o caractere NULL o segundo endereço completo.
-  Call "kernel32.dll" "MoveFileA" com 
-    O caractere inicial deste endereço completo 
-    e O caractere inicial deste segundo endereço completo 
-    devolvendo um número.
+  Call "kernel32.dll" "MoveFileA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-movefilea
+  \Move um arquivo ou um diretório existente 
+    O caractere inicial deste endereço completo [lpExistingFileName] \ O nome atual do arquivo ou diretório no computador local.
+    e O caractere inicial deste segundo endereço completo [lpNewFileName] \ O novo nome do arquivo ou diretório. 
+    \O novo nome ainda não deve existir. 
+    \Um novo arquivo pode estar em um sistema de arquivos ou unidade diferente. 
+    \Um novo diretório deve estar na mesma unidade.
+    \A função MoveFile moverá (renomeará) um arquivo ou diretório (incluindo seus filhos) no mesmo diretório ou entre diretórios. 
+    \A única ressalva é que a função MoveFile falhará nas movimentações de diretório quando o destino estiver em um volume diferente.
+    \Se um arquivo for movido entre os volumes, MoveFile não move o descritor de segurança com o arquivo. 
+    \O arquivo será atribuído ao descritor de segurança padrão no diretório de destino.
+    devolvendo um número. \ Se a função for bem-sucedida, o valor de retorno será diferente de zero.
   Limpe o erro do fluxo de entrada/saída.
-  Se o número não for 0, cancele.
+  Se o número não for 0, volte.
   Atribua "Ocorreu um erro ao renomear o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
 
-Etapas para que se renumere uns rows:
+Etapas para que se renumere umas rows:
   Obtenha uma row desde a rows.
   Se a row for inexistente, cancele.
   Adicione 1 para um número da linha.
@@ -9203,13 +9465,19 @@ Etapas para que se redimensione uma imagem para uma largura por uma altura:
   Se a imagem for inexistente, cancele.
   Atribua a largura dividido pelo quantidade de twips/pixel a um pixel largura.
   Atribua a altura dividido pelo quantidade de twips/pixel a um pixel altura.
-  Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com 
-    A pixel largura 
-    e A pixel altura 
-    e 0 
-    e 137224 [pixelformat24bpprgb] 
-    e 0 
-    e O endereçamento desse gpBitmap.
+  Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com \ 
+  \Cria um objeto Bitmap com base em uma matriz de bytes junto com informações de tamanho e formato.
+    A pixel largura [width] \ Número inteiro que especifica a largura, em pixels, do bitmap.
+    e A pixel altura [height] \  Número inteiro que especifica a altura, em pixels, do bitmap.
+    e 0 [stride] \ Número inteiro que especifica o deslocamento de byte entre o início de uma linha de varredura e a próxima. 
+    \Isso é geralmente (mas não necessariamente) o número de bytes no formato de pixel (por exemplo, 2 para 16 bits por pixel) multiplicado pela largura do bitmap. 
+    \O valor passado para este parâmetro deve ser um múltiplo de quatro.
+    e 137224 [format = PixelFormat24bppRGB] \Número inteiro que especifica o formato de pixel do bitmap. 
+    \
+    \O tipo de dados PixelFormat e constantes que representam vários formatos de pixel são definidos em Gdipluspixelformats.h. 
+    \Para obter mais informações sobre constantes de formato de pixel, consulte https://docs.microsoft.com/en-us/windows/desktop/gdiplus/-gdiplus-constant-image-pixel-format-constants
+    e 0 [*scan0] \ 
+    e O endereçamento desse gpBitmap. [*bitmap] \ 
   Call "gdiplus.dll" "GdipGetImageGraphicsContext" com 
     O gpBitmap 
     e O endereçamento desse gpGraphic.
