@@ -730,7 +730,17 @@ Etapas para que se converta um gpBitmap para um trecho (pdf style):
     Posponha o espectro azul deste endereço de memória RGB para o trecho.
     Adicione 1 para o número de coluna.
   Repita. [o código acima]
-  Unlock o gpBitmap usando o BitmapData.
+  Desbloqueie o gpBitmap usando o BitmapData.
+
+Etapas para que se desbloqueie um gpBitmap usando um BitmapData:
+  Call "gdiplus.dll" "GdipBitmapUnlockBits" com 
+  \ Desbloqueia uma parte deste bitmap que foi bloqueado anteriormente por uma chamada para GdipBitmapLockBits.
+    O gpBitmap [bitmap] \ Ponteiro para o objeto Bitmap.
+    e O endereçamento deste BitmapData. [lockedBitmapData] \ Ponteiro para uma estrutura BitmapData que foi passada anteriormente para GdipBitmapLockBits.
+    \GdipBitmapLockBits e GdipBitmapUnlockBits devem ser usados como um par. 
+    \Uma chamada para GdipBitmapLockBits estabelece um buffer temporário que você pode usar para ler ou gravar dados de pixel em um formato especificado. 
+    \Depois de gravar no buffer temporário, uma chamada para GdipBitmapUnlockBits copia os dados de pixel do buffer para o objeto Bitmap. 
+    \Se o formato de pixel do buffer temporário for diferente do formato de pixel do objeto Bitmap, os dados de pixel são convertidos apropriadamente.
 
 Etapas para que se converta umas font larguras para pdf em units:
   Obtenha um OutlineTextmetric usando a font destas font larguras.

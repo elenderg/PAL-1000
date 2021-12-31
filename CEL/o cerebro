@@ -308,8 +308,8 @@ Etapas para que se posponha um trecho para um file:
     O file [hFile]\ O número identificador do arquivo.
     e 0 [lDistanceToMove] \ Um valor positivo para lDistanceToMove move o ponteiro do arquivo para frente no arquivo 
     \e um valor negativo move o ponteiro para trás no arquivo .
-    e 0 [lpDistanceToMoveHigh] \Serve apenas para operações com 64 bits. Quando não é utilizado, esse valor deve ser 0 (NULL).        
-    e 2 [file_end] [dwMoveMethod] \ O ponto de partida para o movimento do ponteiro do arquivo.
+    e 0 [lpDistanceToMoveHigh] \Serve apenas para operações com 64 bits. Quando não é utilizado, esse valor deve ser 0 (NULL). 
+    e 2 [dwMoveMethod = FILE_END] \ O ponto de partida para o movimento do ponteiro do arquivo.
     \ Este parâmetro pode ser um dos seguintes valores.
     \0 = FILE_BEGIN ->  O ponto de partida é zero ou o início do arquivo.
     \ 1 = FILE_CURRENT -> O ponto de partida é o valor atual do ponteiro do arquivo.
@@ -5645,7 +5645,7 @@ Etapas para que se flip o gpBitmap em uma imagem:
   Flip o gpBitmap desta imagem.
 
 Etapas para que se flip um GpImage:
-  Call "gdiplus.dll" "GdipImageRotateFlip" com 
+  Call "gdiplus.dll" "GdipImageRotateFlip" com \ https://docs.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-image-rotateflip
   \A função GdipImageRotateFlip gira e/ou inverte a imagem. É a imagem que sofre a transformação e não o gráfico no qual será exibida.
    \O ângulo e a inversão são definidos por uma das constantes da enumeração RotateFlipType .
     O GpImage [*image] \Ponteiro para o objeto Image .
@@ -8236,6 +8236,8 @@ Etapas para que se mirror o gpBitmap em uma imagem:
 Etapas para que se mirror um GpImage:
   Call "gdiplus.dll" "GdipImageRotateFlip" com \ https://docs.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-image-rotateflip
   \ Gira e vira a imagem.
+  \A função GdipImageRotateFlip gira e/ou inverte a imagem. É a imagem que sofre a transformação e não o gráfico no qual será exibida.
+   \O ângulo e a inversão são definidos por uma das constantes da enumeração RotateFlipType .
     O GpImage [*image] \Ponteiro para o objeto Imagem.
     e 4 [rotateFlipType = RotateNoneFlipX]. \Elemento da enumeração RotateFlipType que especifica o tipo de rotação e o tipo de inversão.
     \ https://docs.microsoft.com/en-us/windows/win32/api/gdiplusimaging/ne-gdiplusimaging-rotatefliptype
@@ -9419,6 +9421,8 @@ Etapas para que se reset a origem of um text:
   Atribua a margem deste text à coordenada X deste text.
   Atribua 0 à coordenada Y deste text.
 
+Etapas para que se zere um temporizador;
+Etapas para que se redefina um temporizador;
 Etapas para que se reset um temporizador:
   Atribua 0 à contagem deste temporizador.
   Atribua 0 aos intervalos iniciais deste temporizador.
@@ -9479,25 +9483,36 @@ Etapas para que se redimensione uma imagem para uma largura por uma altura:
     e 0 [*scan0] \ 
     e O endereçamento desse gpBitmap. [*bitmap] \ 
   Call "gdiplus.dll" "GdipGetImageGraphicsContext" com 
-    O gpBitmap 
-    e O endereçamento desse gpGraphic.
+  \Cria um objeto Graphics associado a um objeto Image.
+    O gpBitmap [*image] \Ponteiro para um objeto Image que será associado ao novo objeto Graphics.
+    \ https://docs.microsoft.com/en-us/windows/desktop/api/gdiplusheaders/nl-gdiplusheaders-image
+    e O endereçamento desse gpGraphic. [**graphics] \Ponteiro para um vafriável que recebe um ponteiro para o novo objeto Graphics.
   Call "gdiplus.dll" "GdipDrawImageRectRectI" com
-   O gpGraphic 
-   e O gpBitmap desta imagem
-   e 0 
-   e 0 
-   e A pixel largura 
-   e A pixel altura
-   e 0 
-   e 0 
-   e A largura deste gpBitmap desta imagem menos 1 
-   e A altura deste gpBitmap desta imagem menos 1
-   e 2 [unitpixel] 
-   e nil 
-   e nil 
-   e 0.
+  \Desenha uma imagem em um local especificado.
+   O gpGraphic [*graphics] \ Ponteiro para o objeto Graphics.
+   e O gpBitmap desta imagem[*image] \ Ponteiro para um objeto Image que especifica a imagem a ser desenhada.
+   \ https://docs.microsoft.com/en-us/windows/desktop/api/gdiplusheaders/nl-gdiplusheaders-image
+   [*destPoints] \ Ponteiro para uma matriz de objetos Point que especificam a área, em um paralelogramo, na qual desenhar a imagem.
+   \ https://docs.microsoft.com/en-us/windows/desktop/api/gdiplustypes/nl-gdiplustypes-point
+   e 0 [dstx] \ valor inteiro que especifica a coordenada x do canto superior esquerdo da área de desenho da imagem.
+   e 0 [dsty] \ valor inteiro que especifica a coordenada y do canto superior esquerdo da área de desenho da imagem.
+   [/*destPoints]
+   [count] \ Número inteiro que especifica o número de elementos na matriz denominada destPoints.
+   e A pixel largura [dstwidth ] \ valor inteiro que especifica a largura da área de desenho a ser desenhada.
+   e A pixel altura [dstheight] \ valor inteiro que especifica a altura da área de desenho a ser desenhada.
+   [/count]
+   e 0 [srcx]  \ especifica a coordenada x do canto superior esquerdo da parte da imagem de origem a ser desenhada.
+   e 0 [srcy]  \especifica a coordenada y do canto superior esquerdo da parte da imagem de origem a ser desenhada.
+   e A largura deste gpBitmap desta imagem menos 1 [srcwidth] \ valor inteiro que especifica a largura da parte da imagem de origem a ser desenhada.
+   e A altura deste gpBitmap desta imagem menos 1[srcheight] \ valor inteiro que especifica a altura da parte da imagem de origem a ser desenhada.
+   e 2 [srcUnit = UnitPixel] \Elemento da enumeração da unidade que especifica a unidade de medida da imagem. O valor padrão é UnitPixel.
+   e nil [*imageAttributes] \ Ponteiro para uma estrutura ImageAttributes que especifica os atributos de cor e tamanho da imagem a ser desenhada. O valor padrão é NULL.
+   \ https://docs.microsoft.com/en-us/windows/desktop/api/gdiplusimageattributes/nl-gdiplusimageattributes-imageattributes
+   e nil [callback] \ Método de retorno de chamada usado para cancelar o desenho em andamento. O valor padrão é NULL.
+   e 0. [*callbackData] \ Ponteiro para dados adicionais usados pelo método especificado pelo parâmetro de retorno de chamada. O valor padrão é NULL.
   Call "gdiplus.dll" "GdipDeleteGraphics" com 
-   O gpGraphic.
+  \Exclui o objeto Graphics especificado.
+   O gpGraphic. [*graphics] \ Ponteiro para o objeto Graphics.
   Destrua o gpBitmap desta imagem.
   Atribua o gpBitmap ao gpBitmap desta imagem.
   Ajuste a imagem (extraindo as caixas do gpBitmap).
@@ -9534,15 +9549,16 @@ Etapas para que se redimensione um text usando um twip par de números:
   Redimensione a caixa deste text usando o twip par de números.
   Wrap o text.
 
-Etapas para que se restart um temporizador:
+Etapas para que se reinicie um temporizador:
   Adicione 1 para a contagem deste temporizador.
   Se a contagem deste temporizador não for 1, cancele.
   Atribua a contagem de intervalos do sistema aos intervalos iniciais deste temporizador. \ a intervalo contagem deste system
 
 Etapas para que se restaure um canvas:
-  Call "gdi32.dll" "RestoreDC" com 
+  Call "gdi32.dll" "RestoreDC" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-restoredc
+  \ A função RestoreDC restaura um contexto de dispositivo (DC) para o estado especificado.
     O canvas [hDC]
-    e -1. \ nSavedDC - O estado salvo a ser restaurado. 
+    e -1. [nSavedDC] \ O estado salvo a ser restaurado. 
     \Se este parâmetro for positivo, ele representa uma instância específica do estado a ser restaurado. 
     \Se este parâmetro for negativo, ele representa uma instância relativa ao estado atual. 
     \Nesse caso, o valor -1 restaura o estado salvo mais recentemente.
@@ -9559,9 +9575,13 @@ Etapas para que se restaure um context:
   Destrua o saved context.
 
 Etapas para que se restaure uma janela do programa:
-  Call "user32.dll" "ShowWindow" com 
-    A janela do programa 
-    e 9 [SW_RESTORE].
+  Call "user32.dll" "ShowWindow" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-showwindow
+  \ Define o estado de exibição da janela especificada.
+    A janela do programa [hWnd] \ O número identificador da janela
+    e 9 [nCmdShow = SW_RESTORE]. \Controla como a janela deve ser exibida.
+    \SW_RESTORE (9) Ativa e exibe a janela. 
+    \Se a janela for minimizada ou maximizada, o sistema a restaurará para seu tamanho e posição originais. 
+    \Um aplicativo deve especificar este sinalizador ao restaurar uma janela minimizada.
 
 Etapas para que se reverse algum tipo de rows selecionadas of um text:
   Se o text for inexistente, cancele.
@@ -9618,9 +9638,21 @@ Etapas para que se rotate uma elipse:
 
 Etapas para que se rotate um GpImage:
   Se o GpImage for inexistente, cancele.
-  Call "gdiplus.dll" "GdipImageRotateFlip" com 
-    O GpImage 
-    e 1 [Rotate90FlipNone].
+  Call "gdiplus.dll" "GdipImageRotateFlip" com \ https://docs.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-image-rotateflip
+  \A função GdipImageRotateFlip gira e/ou inverte a imagem. É a imagem que sofre a transformação e não o gráfico no qual será exibida.
+  \O ângulo e a inversão são definidos por uma das constantes da enumeração RotateFlipType .
+    O GpImage  [*image] \Ponteiro para o objeto Image .
+    e 1 [Rotate90FlipNone].  \ Elemento da enumeração RotateFlipType que especifica o tipo de rotação e o tipo de inversão.
+    \ https://docs.microsoft.com/en-us/windows/win32/api/gdiplusimaging/ne-gdiplusimaging-rotatefliptype
+    \Tipo de rotação e inversão:
+    \0 - Sem rotação e sem inversão (uma rotação de 180 graus, uma inversão horizontal e, em seguida, uma inversão vertical)
+    \1 - Uma rotação de 90 graus sem inversão (uma rotação de 270 graus, uma inversão horizontal e depois uma inversão vertical)
+    \2 - Uma rotação de 180 graus sem inversão (sem rotação, uma inversão horizontal seguida de uma inversão vertical)
+    \3 - Uma rotação de 270 graus sem inversão (uma rotação de 90 graus, uma inversão horizontal e depois uma inversão vertical)
+    \4 - Sem rotação e inversão horizontal (rotação de 180 graus seguida de inversão vertical)
+    \5 - Uma rotação de 90 graus seguida por uma inversão horizontal (uma rotação de 270 graus seguida por uma inversão vertical)
+    \6 - Uma rotação de 180 graus seguida por uma inversão horizontal (sem rotação e inversão vertical)
+    \7 - Uma rotação de 270 graus seguida por uma inversão horizontal (uma rotação de 90 graus seguida por uma inversão vertical)
 
 Etapas para que se rotate um GpImage usando um ângulo:
   \ o ângulo pode ser 0, 900, 1800, 2700
@@ -9629,9 +9661,21 @@ Etapas para que se rotate um GpImage usando um ângulo:
   Se o ângulo for 900, atribua 1 [Rotate90FlipNone] ao número.
   Se o ângulo for 1800, atribua 2 [Rotate180FlipNone ] ao número.
   Se o ângulo for 2700, atribua 3 [Rotate270FlipNone ] ao número.
-  Call "gdiplus.dll" "GdipImageRotateFlip" com 
-    O GpImage 
-    e O número.
+  Call "gdiplus.dll" "GdipImageRotateFlip" com \ https://docs.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-image-rotateflip
+  \A função GdipImageRotateFlip gira e/ou inverte a imagem. É a imagem que sofre a transformação e não o gráfico no qual será exibida.
+  \O ângulo e a inversão são definidos por uma das constantes da enumeração RotateFlipType .
+    O GpImage  [*image] \Ponteiro para o objeto Image .
+    e O número. \ Elemento da enumeração RotateFlipType que especifica o tipo de rotação e o tipo de inversão.
+    \ https://docs.microsoft.com/en-us/windows/win32/api/gdiplusimaging/ne-gdiplusimaging-rotatefliptype
+    \Tipo de rotação e inversão:
+    \0 - Sem rotação e sem inversão (uma rotação de 180 graus, uma inversão horizontal e, em seguida, uma inversão vertical)
+    \1 - Uma rotação de 90 graus sem inversão (uma rotação de 270 graus, uma inversão horizontal e depois uma inversão vertical)
+    \2 - Uma rotação de 180 graus sem inversão (sem rotação, uma inversão horizontal seguida de uma inversão vertical)
+    \3 - Uma rotação de 270 graus sem inversão (uma rotação de 90 graus, uma inversão horizontal e depois uma inversão vertical)
+    \4 - Sem rotação e inversão horizontal (rotação de 180 graus seguida de inversão vertical)
+    \5 - Uma rotação de 90 graus seguida por uma inversão horizontal (uma rotação de 270 graus seguida por uma inversão vertical)
+    \6 - Uma rotação de 180 graus seguida por uma inversão horizontal (sem rotação e inversão vertical)
+    \7 - Uma rotação de 270 graus seguida por uma inversão horizontal (uma rotação de 90 graus seguida por uma inversão vertical)
 
 Etapas para que se rotate uma linha reta:
   Atribua o center desta linha reta a um center localização.
@@ -9721,7 +9765,12 @@ Um caixa arredondada é uma caixa com
 Um número da linha é um número.
 
 Etapas para que se salve um canvas:
-  Call "gdi32.dll" "SaveDC" com o canvas.
+  Call "gdi32.dll" "SaveDC" com \ \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-savedc
+  \A função SaveDC salva o estado atual do contexto de dispositivo especificado (DC) 
+  \copiando dados que descrevem objetos selecionados e modos gráficos 
+  \(como bitmap, pincel, paleta, fonte, caneta, região, modo de desenho e modo de mapeamento) para um contexto pilha.
+    o canvas. [hdc] \Um identificador para o DC cujo estado deve ser salvo.
+
 
 Etapas para que se salve um context:
   Aloque memória para um saved context.
@@ -9732,9 +9781,9 @@ Etapas para que se salve um context:
   Atribua o número deste context ao número deste saved context.
   Anteponha o saved context para o context stack.
 
-O saved memory hBitMap é um hBitMap.
+A saved memory hBitMap é um hBitMap.
 
-O saved quantidade de twips/pixel é um número.
+A saved quantidade de twips/pixel é um número.
 
 Etapas para que se say um número:
   Atribua o número a uma string.
@@ -9747,10 +9796,14 @@ Etapas para que se speak uma string:
   Se a string estiver em branco, cancele.
   Converta a string para uma string composta de caracteres amplos.
   Termine com o caractere NULL a string composta de caracteres amplos.
-  Call o speak desta vtable deste talker com 
+  Call o speak [o método speak] desta vtable deste talker com 
+  \O método Speak inicia a fala de uma string de texto, um arquivo de texto, um arquivo XML ou um arquivo de onda pela voz.
     O talker 
     e O caractere inicial desta string composta de caracteres amplos 
-    e 17 [SVSFDefault+SVSFlagsAsync +SVSFIsNotXML]  \ https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ms720892(v=vs.85)
+    e 17 [SVSFDefault Especifica que as configurações padrão devem ser usadas.]
+    [SVSFlagsAsync Especifica que a chamada de fala deve ser assíncrona. Ou seja, ele retornará imediatamente após a solicitação de fala ser colocada na fila.]
+    [SVSFIsNotXML = O texto de entrada não será analisado para marcação XML.]
+    [SVSFDefault+SVSFlagsAsync +SVSFIsNotXML = 17]  \ https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ms720892(v=vs.85)
     e 0.
 
 Etapas para que se say uma string e wait;
@@ -9761,10 +9814,13 @@ Etapas para que se speak uma string e wait:
   Se a string estiver em branco, cancele.
   Converta a string para uma string composta de caracteres amplos.
   Termine com o caractere NULL a string composta de caracteres amplos.
-  Call o speak desta vtable deste talker com 
+  Call o speak [método speak] desta vtable deste talker com 
+  \O método Speak inicia a fala de uma string de texto, um arquivo de texto, um arquivo XML ou um arquivo de onda pela voz.
     O talker 
     e O caractere inicial desta string composta de caracteres amplos 
-    e 16 [SVSFDefault+SVSFIsNotXML] 
+    e 16 [ SVSFDefault Especifica que as configurações padrão devem ser usadas.]    
+    [SVSFIsNotXML = O texto de entrada não será analisado para marcação XML.]
+    [SVSFDefault+SVSFIsNotXML = 16]  \ https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ms720892(v=vs.85)
     e 0.
 
 Etapas para que se redimensione proporcionalmente uma caixa usando um ratio;
@@ -10028,29 +10084,45 @@ Etapas para que se send um trecho para um socket:
   Atribua a quantidade de caracteres deste trecho a uma quantidade de caracteres.
   Percorra. [o código abaixo]
   Se a quantidade de caracteres for 0, pare.
-    Call "ws2_32.dll" "send" com 
-       O socket 
-       e O endereço de memória 
-       e A quantidade de caracteres 
-       e 0 
-       devolvendo um número.
-    Se o número for -1 [SOCKET_ERROR ], atribua "Ocorreu um erro na hora de enviar dados." ao erro do fluxo de entrada/saída; volte.
+    Call "ws2_32.dll" "send" com \ https://docs.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-send
+    \ A função send envia dados em um soquete conectado.
+       O socket [s] \ Um descritor que identifica um soquete conectado.
+       e O endereço de memória [*buf] \ Um ponteiro para um buffer que contém os dados a serem transmitidos.
+       e A quantidade de caracteres [len] \ O comprimento, em bytes, dos dados no buffer apontados pelo parâmetro buf.
+       e 0 [flags] \ Um conjunto de sinalizadores que especificam a maneira como a chamada é feita. Este parâmetro é construído usando o a disjunção lógica
+       devolvendo um número. \ Se nenhum erro ocorrer, a função send retorna o número total de bytes enviados, que pode ser menor que o número solicitado para envio no parâmetro len. 
+       \Caso contrário, o valor -1 (SOCKET_ERROR) é retornado.
+    Se o número for -1 [SOCKET_ERROR ], atribua "Ocorreu um erro ao enviar os dado para o soquete." ao erro do fluxo de entrada/saída; volte.
     Subtraia o número desde a quantidade de caracteres.
     Adicione o número para o endereço de memória.
   Repita. [o código acima]
 
 Etapas para que se send um data string para uma requisição WinHTTP:
   Se a requisição WinHTTP for inexistente, cancele.
-  Call "WinHTTP.dll" "WinHttpSendRequest" com 
-    O número identificador de requisição desta requisição WinHTTP 
-    e 0 [WINHTTP_NO_ADDITIONAL_HEADERS] 
-    e 0 
-    e O caractere inicial desta data string
-    e A quantidade de caracteres destes data string
-    e A quantidade de caracteres destes data string
-    e 0 
-    devolvendo um número resultante.
-  Se o result for 0, atribua "Erro. Não foi possível enviar a solicitação." ao erro do fluxo de entrada/saída; volte.
+  Call "WinHTTP.dll" "WinHttpSendRequest" com \ https://docs.microsoft.com/en-us/windows/win32/api/winhttp/nf-winhttp-winhttpsendrequest
+  \ A função WinHttpSendRequest envia a solicitação especificada ao servidor HTTP.
+    O número identificador de requisição desta requisição WinHTTP [hRequest] \ Um identificador HINTERNET retornado por WinHttpOpenRequest.
+    \ https://docs.microsoft.com/en-us/windows/win32/winhttp/hinternet-handles-in-winhttp
+    \ https://docs.microsoft.com/en-us/windows/win32/api/winhttp/nf-winhttp-winhttpopenrequest
+    e 0 [lpszHeaders = WINHTTP_NO_ADDITIONAL_HEADERS] \Um ponteiro para uma string que contém os cabeçalhos adicionais a serem anexados à solicitação.
+    \Este parâmetro pode ser WINHTTP_NO_ADDITIONAL_HEADERS se não houver cabeçalhos adicionais para anexar.
+    e 0 [dwHeadersLength] \valor que contém o comprimento, em caracteres, dos cabeçalhos adicionais. 
+    \Se este parâmetro for -1L e pwszHeaders não for NULL, esta função pressupõe que pwszHeaders tem terminação nula e o comprimento é calculado.
+    e O caractere inicial desta data string [lpOptional] \Um ponteiro para um buffer que contém quaisquer dados opcionais para enviar imediatamente após os cabeçalhos da solicitação. 
+    \Este parâmetro é geralmente usado para operações POST e PUT. Os dados opcionais podem ser o recurso ou dados postados no servidor. 
+    \Este parâmetro pode ser WINHTTP_NO_REQUEST_DATA se não houver dados opcionais para enviar.
+    \Se o parâmetro dwOptionalLength for 0, esse parâmetro será ignorado e definido como NULL.
+    e A quantidade de caracteres destes data string [dwOptionalLength] \valor que contém o comprimento, em bytes, dos dados opcionais. 
+    \Este parâmetro pode ser zero se não houver dados opcionais para enviar.
+    \Este parâmetro deve conter um comprimento válido quando o parâmetro lpOptional não é NULL. 
+    \Caso contrário, lpOptional é ignorado e definido como NULL.
+    e A quantidade de caracteres destes data string [dwTotalLength] \valor que contém o comprimento, em bytes, do total de dados enviados. 
+    \Este parâmetro especifica o cabeçalho Content-Length da solicitação. 
+    \Se o valor desse parâmetro for maior que o comprimento especificado por dwOptionalLength, WinHttpWriteData pode ser usado para enviar dados adicionais.
+    e 0 [dwContext] \Um ponteiro para uma variável de tamanho de ponteiro 
+    \que contém um valor definido pelo aplicativo que é passado, com o identificador de solicitação, para qualquer função de retorno de chamada.
+    devolvendo um número resultante. \Retorna TRUE se for bem-sucedido ou FALSE caso contrário.
+  Se o número resultante for 0, atribua "Erro. Não foi possível enviar a solicitação." ao erro do fluxo de entrada/saída; volte.
 
 Etapas para que se send um email:
   Limpe o erro do fluxo de entrada/saída.
@@ -10146,30 +10218,48 @@ Um sender é uma string.
 
 Etapas para que se defina o código da cor of um canvas usando uma cor:
   Converta a cor para um código da cor.
-  Call "gdi32.dll" "SetTextColor" com 
-    O canvas e o código da cor.
+  Call "gdi32.dll" "SetTextColor" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-settextcolor
+  \A função SetTextColor define a cor do texto para o contexto de dispositivo especificado para a cor especificada.
+  \A cor do texto é usada para desenhar a face de cada caractere escrito pelas funções TextOut e ExtTextOut. 
+  \A cor do texto também é usada na conversão de bitmaps coloridos em monocromáticos e vice-versa.
+    O canvas [hdc] \O número identificador do contexto do dispositivo.
+    e O código da cor.\A cor do texto.
+    \Se a função for bem-sucedida, o valor de retorno é uma referência de cor para a cor do texto anterior como um valor COLORREF.
+    \Se a função falhar, o valor de retorno é CLR_INVALID.
 
 Etapas para que se defina o drawing origem para uma localização:
-  Call "gdi32.dll" "GetDeviceCaps" com 
-    O quadro atual 
-    e 112 [PhysicalOffsetYX] 
-    devolvendo o número X desse par de números.
+  Call "gdi32.dll" "GetDeviceCaps" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getdevicecaps
+  \ A função GetDeviceCaps recupera informações específicas do dispositivo para o dispositivo especificado.
+    O quadro atual [hdc] \O número identificador do contexto do dipositivo
+    e 112 [index = PhysicalOffsetYX]  \O item a ser devolvido.
+    \PHYSICALOFFSETY = Para dispositivos de impressão: a distância da borda superior da página física até a borda superior da área imprimível, em unidades de dispositivo. 
+    \Por exemplo, uma impressora configurada para imprimir a 600 dpi em papel de 8,5 por 11 polegadas, 
+    \que não pode imprimir no papel de 0,5 polegada superior, tem um deslocamento físico vertical de 300 unidades de dispositivo.
+    \PHYSICALOFFSETX = a mesma coisa, só que referente a distância da borda esquerda da página física até a borda esquerda da área imprimível, em unidades de dispositivo.
+    devolvendo o número X desse par de números. \O valor de retorno especifica o valor do item desejado.
   Call "gdi32.dll" "GetDeviceCaps" com 
     O quadro atual 
     e 113 [PhysicalOffsetY ] 
     devolvendo o número Y deste par de números.
   Negate o par de números.
   Se o quadro atual não for a área de impressão, limpe o par de números.
-  Call "gdi32.dll" "SetViewportOrgEx" com 
-    O quadro atual 
-    e O número X deste par de números 
-    e O número Y deste par de números 
-    e nil.
+  Call "gdi32.dll" "SetViewportOrgEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setviewportorgex
+  \ A função SetViewportOrgEx especifica qual ponto do dispositivo mapeia para a origem da janela (0,0).
+    O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
+    e O número X deste par de números [x] \A coordenada x, em unidades de dispositivo, da nova origem da janela de exibição.
+    e O número Y deste par de números  [y] \A coordenada y, em unidades de dispositivo, da nova origem da janela de visualização.
+    e nil. [lppt] \Um ponteiro para uma estrutura POINT que recebe a origem da viewport anterior, nas coordenadas do dispositivo. Se lpPoint for NULL, este parâmetro não será usado.
+    \ https://docs.microsoft.com/en-us/previous-versions/dd162805(v=vs.85)
   Isole a localização.
-  Call "gdi32.dll" "LPtoDP" com 
-    O quadro atual 
-    e O endereçamento desta localização 
-    e 1.
+  Call "gdi32.dll" "LPtoDP" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-lptodp
+  \A função LPtoDP converte coordenadas lógicas em coordenadas de dispositivo.
+  \A conversão depende do modo de mapeamento do contexto do dispositivo, das configurações das origens e extensões da janela e da janela de visualização e da transformação do mundo.
+    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
+    e O endereçamento desta localização [lppt] \Um ponteiro para uma matriz de estruturas POINT. 
+    \As coordenadas x e as coordenadas y contidas em cada uma das estruturas POINT serão transformadas.
+    \A estrutura POINT define as coordenadas X e Y de um ponto.
+    e 1. [c] \O número de pontos na matriz.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "SetViewportOrgEx" com 
     O quadro atual 
     e A coordenada X desta localização 
@@ -10186,15 +10276,22 @@ Etapas para que se ligue um detector:
 Etapas para que se defina um endereço completo para read-write mode:
   Isole o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "GetFileAttributesA" com 
-    O caractere inicial deste endereço completo 
-    devolvendo um número.
-  Conjuncione logicamente o número com -2 [everything except FILE_ATTRIBUTE_READONLY].
-  Call "kernel32.dll" "SetFileAttributesA" com 
-    O caractere inicial deste endereço completo 
-    e O número.
+  Call "kernel32.dll" "GetFileAttributesA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getfileattributesa
+  \Obtém atributos do sistema de arquivos para um arquivo ou diretório especificado.
+  \Para obter mais informações sobre o atributo obtido, use a função GetFileAttributesEx.
+  \Os atributos de arquivo são valores de metadados armazenados pelo sistema de arquivos em disco 
+  \e são usados pelo sistema e estão disponíveis para desenvolvedores por meio de várias APIs de E/S de arquivo.
+    O caractere inicial deste endereço completo [lpFileName] \O nome do arquivo ou diretório.
+    devolvendo um número.\Se a função for bem-sucedida, o valor de retorno conterá os atributos do arquivo ou diretório especificado. 
+    \Para obter uma lista de valores de atributo e suas descrições, consulte https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-attribute-constants
+  Conjuncione logicamente o número com -2 [todos os atributos com exceção de FILE_ATTRIBUTE_READONLY].
+  Call "kernel32.dll" "SetFileAttributesA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-setfileattributesa
+  \ Define os atributos de um arquivo ou diretório.
+    O caractere inicial deste endereço completo [lpFileName] \O nome do arquivo cujos atributos devem ser definidos.
+    e O número. [dwFileAttributes] \Os atributos de arquivo a serem definidos para o arquivo.
+    \Este parâmetro pode ser um ou mais valores, combinados usando a disjunção lógica (OR)
 
-Um folha é uma caixa.
+Um folha é uma caixa. \ Uma folha de papel virtual consiste de um retângulo
 
 Etapas para que se mostre um console:
   Se o console for inexistente, cancele.
@@ -10204,10 +10301,19 @@ Etapas para que se mostre um console:
   Restaure o quadro atual.
 
 Etapas para que se mostre um cursor:
-  Call "user32.dll" "SetCursor" com o cursor.
-  Call "user32.dll" "ShowCursor" com 1 
-    devolvendo um número.
-  Se o número for maior do que 0, cancele.
+  Call "user32.dll" "SetCursor" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setcursor
+  \ Define o formato do cursor.
+    o cursor. [hCursor] \O número identificador do cursor. 
+    \O cursor deve ter sido criado pela função CreateCursor ou carregado pela função LoadCursor ou LoadImage. 
+    \Se este parâmetro for NULL, o cursor será removido da tela.
+  Call "user32.dll" "ShowCursor" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-showcursor
+  \ Exibe ou oculta o cursor.
+    1 [bShow] \ Se bShow for TRUE, a contagem de exibição é incrementada em um. Se bShow for FALSE, a contagem de exibição é diminuída em um.
+    devolvendo um número. \O valor de retorno especifica o novo contador de exibição.
+    \Esta função define um contador interno de exibição que determina se o cursor deve ser exibido. 
+    \O cursor é exibido apenas se a contagem de exibição for maior ou igual a 0. 
+    \Se um mouse for instalado, a contagem de exibição inicial será 0. Se nenhum mouse estiver instalado, a contagem de exibição será -1.
+  Se o número for maior do que 0, volte.
   Repita. [o código acima]
 
 Etapas para que se mostre um terminal:
@@ -10232,7 +10338,7 @@ Etapas para que se feche o nosso programa;
 Etapas para que se feche nosso programa;
 Etapas para que se feche tudo;
 Etapas para que se shut para baixo:
-  Destrua o Bíblia.
+  Destrua a Bíblia.
   Destrua o stack.
   Destrua o dicionário léxico.
   Destrua o console.
@@ -10810,36 +10916,128 @@ Etapas para que se start um process usando um endereço completo:
   Extraia um endereço da pasta desde o endereço completo.
   Termine com o caractere NULL o endereço da pasta.
   Isole o endereço completo. termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "CreateProcessA" com 
-    O caractere inicial deste endereço completo 
-    e 0 
-    e 0 
-    e 0 
-    e 0 
-    e 67108904 [CREATE_DEFAULT_ERROR_MODE + NORMAL_PRIORITY_CLASS + DETACHED_PROCESS] 
-    e 0 
-    e O caractere inicial deste endereço da pasta 
-    e O endereçamento desta startupinfo 
-    e O endereçamento dessa PROCESS_INFORMATION 
-    devolvendo um número.
+  Call "kernel32.dll" "CreateProcessA" com \ https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessa
+  \ Cria um novo processo e seu thread principal. O novo processo é executado no contexto de segurança do processo de chamada.
+    O caractere inicial deste endereço completo [lpApplicationName] \ O nome do módulo a ser executado. 
+    \Este módulo pode ser um aplicativo baseado no Windows. 
+    \Pode ser algum outro tipo de módulo (por exemplo, MS-DOS ou OS / 2) se o subsistema apropriado estiver disponível no computador local.
+    \A string pode especificar o caminho completo e o nome do arquivo do módulo a ser executado ou pode especificar um nome parcial. 
+    \No caso de um nome parcial, a função usa a unidade e o diretório atuais para completar a especificação. 
+    \A função não usará o caminho de pesquisa. 
+    \Este parâmetro deve incluir a extensão do nome do arquivo; nenhuma extensão padrão é assumida.
+    \O parâmetro lpApplicationName pode ser NULL. 
+    \Nesse caso, o nome do módulo deve ser o primeiro token delimitado por espaço em branco na string lpCommandLine. 
+    \Se você estiver usando um nome de arquivo longo que contém um espaço, use strings entre aspas para indicar onde o nome do arquivo termina e os argumentos começam; 
+    \caso contrário, o nome do arquivo é ambíguo. 
+    \Por exemplo, considere a string "c:\program files\sub dir\program name". 
+    \Essa string pode ser interpretada de várias maneiras. 
+    \O sistema tenta interpretar as possibilidades na seguinte ordem:
+    \ c:\program.exe
+    \ c:\program files\sub.exe
+    \ c:\program files\sub dir\program.exe
+     \c:\program files\sub dir\program name.exe
+    e 0 [lpCommandLine] \ A linha de comando a ser executada. 
+    \O parâmetro lpCommandLine pode ser NULL. 
+    \Nesse caso, a função usa a string apontada por lpApplicationName como a linha de comando.
+    \Se lpApplicationName e lpCommandLine não forem NULL, a string terminada em nulo apontada por lpApplicationName especifica o módulo a ser executado 
+    \e a string terminada em nulo apontada por lpCommandLine especifica a linha de comando. 
+    \O novo processo pode usar GetCommandLine para recuperar a linha de comando inteira. 
+    \Os processos do console escritos em C podem usar os argumentos argc e argv para analisar a linha de comando. 
+    \Como argv [0] é o nome do módulo, os programadores C geralmente repetem o nome do módulo como o primeiro token na linha de comando.
+    \Se lpApplicationName for NULL, o primeiro token delimitado por espaço em branco da linha de comando especifica o nome do módulo. 
+    \Se você estiver usando um nome de arquivo longo que contém um espaço, use strings entre aspas para indicar onde o nome do arquivo termina e os argumentos começam
+    \ (consulte a explicação do parâmetro lpApplicationName). 
+    \Se o nome do arquivo não contiver uma extensão, .exe será anexado. 
+    \Portanto, se a extensão do nome do arquivo for .com, este parâmetro deve incluir a extensão .com. 
+    \Se o nome do arquivo terminar em um ponto (.) Sem extensão ou se o nome do arquivo contiver um caminho, .exe não será anexado. 
+    \Se o nome do arquivo não contém um caminho de diretório, o sistema procura o arquivo executável na seguinte sequência:
+    \O diretório de onde o aplicativo foi carregado.
+    \O diretório atual do processo pai.
+    \O diretório do sistema Windows de 32 bits. Use a função GetSystemDirectory para obter o caminho desse diretório.
+    \O diretório do sistema Windows de 16 bits. Não existe uma função que obtenha o caminho deste diretório, mas ele é pesquisado. O nome desse diretório é System.
+    \O diretório do Windows. Use a função GetWindowsDirectory para obter o caminho desse diretório.
+    \Os diretórios listados na variável de ambiente PATH. 
+    \Observe que essa função não pesquisa o caminho por aplicativo especificado pela chave de registro App Paths. 
+    \Para incluir esse caminho por aplicativo na sequência de pesquisa, use a função ShellExecute.
+    \O sistema adiciona um caractere nulo de terminação à string da linha de comando para separar o nome do arquivo dos argumentos. 
+    \Isso divide a string original em duas strings para processamento interno.
+    e 0 [lpProcessAttributes] \ Um ponteiro para uma estrutura SECURITY_ATTRIBUTES. 
+    \ https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)
+    \ A estrutura SECURITY_ATTRIBUTES contém o descritor de segurança para um objeto e especifica se o identificador recuperado especificando essa estrutura é herdável.
+    \ Ou seja, esse valor  determina se o identificador retornado para o novo objeto de processo pode ser herdado por processos filho. 
+    \Se lpProcessAttributes for NULL, o identificador não pode ser herdado
+    \https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)
+    e 0 [lpThreadAttributes] \Idem. Se lpThreadAttributes for NULL, o identificador não pode ser herdado.
+    e 0 [bInheritHandles] \ Se este parâmetro for TRUE, cada identificador herdável no processo de chamada é herdado pelo novo processo. 
+    \Se o parâmetro for FALSE, os identificadores não são herdados. 
+    \Observe que os identificadores herdados têm o mesmo valor e direitos de acesso que os identificador originais.
+    e 67108904 [dwCreationFlags = CREATE_DEFAULT_ERROR_MODE + NORMAL_PRIORITY_CLASS + DETACHED_PROCESS] \Os sinalizadores que controlam a classe de prioridade e a criação do processo. 
+    \Para obter uma lista de valores, consulte https://docs.microsoft.com/en-us/windows/desktop/ProcThread/process-creation-flags
+    \CREATE_DEFAULT_ERROR_MODE 0x04000000 = O novo processo não herda o modo de erro do processo de chamada. 
+    \Em vez disso, o novo processo obtém o modo de erro padrão.
+    \Esse recurso é particularmente útil para aplicativos de shell multithread que são executados com erros físicos desabilitados.
+    \O comportamento padrão é que o novo processo herde o modo de erro do chamador. Definir este sinalizador altera o comportamento padrão.
+    \NORMAL_PRIORITY_CLASS = Processo sem necessidade de agendamento especial.
+    \DETACHED_PROCESS = Para processos de console, o novo processo não herda o console de seu pai (o padrão). 
+    \O novo processo pode chamar a função AllocConsole posteriormente para criar um console. Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/console/creation-of-a-console
+    \Este parâmetro também controla a nova classe de prioridade do processo, que é usada para determinar as prioridades de escalonamento das threads do processo. 
+    \Para obter uma lista de valores, consulte https://docs.microsoft.com/en-us/windows/desktop/api/processthreadsapi/nf-processthreadsapi-getpriorityclass
+    e 0 [lpEnvironment] \ Um ponteiro para o bloco de ambiente do novo processo. 
+    \Se este parâmetro for NULL, o novo processo usa o ambiente do processo de chamada.
+    \Um bloco de ambiente consiste em um bloco com terminação nula de strings com terminação nula. 
+    \Cada string tem o seguinte formato:
+    \nome=valor\0
+    \Como o sinal de igual é usado como separador, ele não deve ser usado no nome de uma variável de ambiente.
+    e O caractere inicial deste endereço da pasta [lpCurrentDirectory] \ O caminho completo para o diretório atual do processo. 
+    \A string também pode especificar um caminho UNC.
+    \Se este parâmetro for NULL, o novo processo terá a mesma unidade e diretório atuais do processo de chamada. 
+    \(Este recurso é fornecido principalmente para shells que precisam iniciar um aplicativo e especificar sua unidade inicial e diretório de trabalho.)
+    e O endereçamento desta startupinfo [lpStartupInfo] \ Um ponteiro para uma estrutura STARTUPINFO.
+    \ https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/ns-processthreadsapi-startupinfoa
+    e O endereçamento dessa PROCESS_INFORMATION [lpProcessInformation] \ Um ponteiro para uma estrutura PROCESS_INFORMATION que recebe informações de identificação sobre o novo processo.
+    \ https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_information
+    devolvendo um número.\Se a função for bem-sucedida, o valor de retorno será diferente de zero.
   Se o número for 0, atribua "Erro. Não foi possível executar o programa." ao erro do fluxo de entrada/saída; volte.
   Atribua o hprocess deste PROCESS_INFORMATION ao process.
-  Call "kernel32.dll" "CloseHandle" com 
-    O hthread deste PROCESS_INFORMATION.
+  Call "kernel32.dll" "CloseHandle" com \ https://docs.microsoft.com/en-us/windows/win32/api/handleapi/nf-handleapi-closehandle
+  \Fecha um identificador de objeto aberto.
+  \Em geral, CloseHandle invalida o identificador do objeto especificado, diminui a contagem do identificador do objeto e executa verificações de retenção do objeto. 
+  \Depois que o último identificador para um objeto é fechado, o objeto é removido do sistema. .
+    O hthread deste PROCESS_INFORMATION. [hObject] \Um identificador válido para um objeto aberto.
+    \Se o aplicativo estiver sendo executado em um depurador, a função lançará uma exceção se receber um valor de identificador inválido ou um valor de pseudo-identificador. 
+    \Isso pode acontecer se você fechar um identificador duas vezes ou se você chamar CloseHandle em um identificador retornado pela função FindFirstFile em vez de chamar a função FindClose.
   Point um endereço de memória para rotina aguarde por um process endereço de memória. \redirecione
-  Call "kernel32.dll" "CreateThread" com 0 
-    e 0 
-    e O endereço de memória 
-    e O endereçamento deste process 
-    e 0 
-    e O endereçamento desse segundo número
-    devolvendo um número identificador.
-  Call "kernel32.dll" "CloseHandle" com 
+  Call "kernel32.dll" "CreateThread" com \ https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createthread
+  \ Cria um thread a ser executado no espaço de endereço virtual do processo de chamada.
+    0 [lpThreadAttributes] \ Um ponteiro para uma estrutura SECURITY_ATTRIBUTES. 
+    \ https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)
+    \ A estrutura SECURITY_ATTRIBUTES contém o descritor de segurança para um objeto e especifica se o identificador recuperado especificando essa estrutura é herdável.
+    \ Ou seja, esse valor  determina se o identificador retornado para o novo objeto de processo pode ser herdado por processos filho. 
+    \Se lpThreadAttributes for NULL, o identificador não pode ser herdado
+    e 0 [dwStackSize] \ O tamanho inicial da pilha, em bytes. 
+    \O sistema arredonda esse valor para a página mais próxima. 
+    \Se este parâmetro for zero, o novo thread usa o tamanho padrão para o executável. 
+    \Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/ProcThread/thread-stack-size.
+    e O endereço de memória [lpStartAddress] \ Um ponteiro para a função definida pelo aplicativo a ser executada pelo thread. 
+    \Este ponteiro representa o endereço inicial do thread. 
+    \Para obter mais informações sobre a função de thread, consulte https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/ms686736(v=vs.85)
+    e O endereçamento deste process [lpParameter] \ Um ponteiro para uma variável a ser passada para o encadeamento.
+    e 0 [dwCreationFlags] \ Os sinalizadores que controlam a criação do segmento.
+    \Quando o valor é igual a 0, o thread é executado imediatamente após a criação.
+    e O endereçamento desse segundo número [lpThreadId] \ Um ponteiro para uma variável que recebe o identificador de thread.
+    devolvendo um número identificador. \ Se a função for bem-sucedida, o valor de retorno é um identificador para o novo thread.
+  Call "kernel32.dll" "CloseHandle" com \ https://docs.microsoft.com/en-us/windows/win32/api/handleapi/nf-handleapi-closehandle
+  \Fecha um identificador de objeto aberto.
+  \Em geral, CloseHandle invalida o identificador do objeto especificado, diminui a contagem do identificador do objeto e executa verificações de retenção do objeto. 
+  \Depois que o último identificador para um objeto é fechado, o objeto é removido do sistema. .
     O número identificador. \ does not end o thread, just dumps o handle
+    [hObject] \Um identificador válido para um objeto aberto.
+    \Se o aplicativo estiver sendo executado em um depurador, a função lançará uma exceção se receber um valor de identificador inválido ou um valor de pseudo-identificador. 
+    \Isso pode acontecer se você fechar um identificador duas vezes ou se você chamar CloseHandle em um identificador retornado pela função FindFirstFile em vez de chamar a função FindClose.
 
 Etapas para que se start um temporizador:
-  Reset o temporizador.
-  Restart o temporizador.
+  Zere o temporizador.
+  Reinicie o temporizador.
 
 Etapas para que se start uns twips acima of o middle of o base of uma caixa:
   \ incomplete abra of these
@@ -10922,9 +11120,14 @@ O número identificador do fluxo de saída padrão é um número identificador.
 
 Etapas para que se suspenda um process:
   Se o process for 0, cancele.
-  Call "kernel32.dll" "TerminateProcess" com 
-    O process 
-    e 0.
+  Call "kernel32.dll" "TerminateProcess" com \ https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-terminateprocess
+  \ Encerra o processo especificado e todos os seus threads.
+    O process [hProcess] \ Um identificador para o processo a ser encerrado.
+    \O identificador deve ter o direito de acesso PROCESS_TERMINATE. 
+    \Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/ProcThread/process-security-and-access-rights
+    e 0. [uExitCode] \ O código de saída a ser usado pelo processo e threads encerrados como resultado desta chamada. 
+    \Use a função GetExitCodeProcess para recuperar o valor de saída de um processo. 
+    \Use a função GetExitCodeThread para recuperar o valor de saída de um encadeamento.
   Atribua 0 ao process.
 
 Etapas para que se suspenda um temporizador:
@@ -10934,8 +11137,6 @@ Etapas para que se suspenda um temporizador:
   Atribua a contagem de intervalos do sistema a uns intervalos.
   Subtraia os intervalos iniciais deste temporizador desde o intervalos.
   Adicione o intervalos para os intervalos totais deste temporizador.
-
-
 
 Etapas para que se pinte uma caixa com uma cor:
   Atribua a cor à cor deste context.
@@ -11091,15 +11292,11 @@ Etapas para que se vire right uns points:
   Atribua o points e 3840 a um fração.
   Vire right a fração.
 
-Etapas para que se unlock um gpBitmap usando um BitmapData:
-  Call "gdiplus.dll" "GdipBitmapUnlockBits" com 
-    O gpBitmap e 
-  o endereçamento deste BitmapData.
-
 Etapas para que se exponha tudo:
-  Call "gdi32.dll" "SelectClipRgn" com 
-    O quadro atual 
-    e 0.
+  Call "gdi32.dll" "SelectClipRgn" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectcliprgn
+  \ A função SelectClipRgn seleciona uma região como a região de recorte atual para o contexto de dispositivo especificado.
+    O quadro atual [hdc] \ Um identificador para o contexto do dispositivo.
+    e 0. [hrgn] \ Um identificador para a região a ser selecionada.
 
 Etapas para que se exponha conteúdo de uma caixa:
   Crie um hRgn usando a caixa.
@@ -11112,9 +11309,12 @@ Etapas para que se exponha conteúdo de uma elipse:
   Destrua o hRgn.
 
 Etapas para que se exponha conteúdo de um hRgn:
-  Call "gdi32.dll" "ExtSelectClipRgn" com 
-    O quadro atual e 
-  o hRgn e 2 [RGN_OR].
+  Call "gdi32.dll" "ExtSelectClipRgn" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-extselectcliprgn
+  \ A função ExtSelectClipRgn combina a região especificada com a região de recorte atual usando o modo especificado.
+    O quadro atual e [hdc] \ Um identificador para o contexto do dispositivo.
+    o hRgn [hrgn] \ Um identificador para a região a ser selecionada.
+    e 2 [mode = RGN_OR]. \ A operação a ser executada. 
+    \ Nesse caso a nova região de recorte combina a região de recorte atual [hdc] e a região selecionada [hrgn].
 
 Etapas para que se exponha conteúdo de um polígono:
   Crie um hRgn usando o polígono.
@@ -11138,22 +11338,29 @@ Etapas para que se exponha exterior de uma elipse:
 
 Etapas para que se exponha exterior de um hRgn:
   Crie um old hRgn usando o zero caixa.
-  Call "gdi32.dll" "GetClipRgn" com 
-    O quadro atual e 
-  o old hRgn 
-    devolvendo um número.
+  Call "gdi32.dll" "GetClipRgn" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcliprgn
+  \ A função GetClipRgn recupera um identificador que identifica a região de recorte definida pelo aplicativo atual para o contexto de dispositivo especificado.
+    O quadro atual e [hdc] \ O identificador do contexto do dispositivo.
+    o old hRgn [hrgn] \ Um identificador para uma região existente antes que a função seja chamada. 
+    \Depois que a função retorna, este parâmetro é um identificador para uma cópia da região de recorte atual.
+    devolvendo um número. \Se a função for bem-sucedida e houver uma região de recorte para o contexto de dispositivo fornecido, o valor de retorno será 1.
   Se o número não for 1, limpe o old hRgn.
-  Call "gdi32.dll" "SelectClipRgn" com 
-    O quadro atual 
-    e 0.
-  Call "gdi32.dll" "ExtSelectClipRgn" com 
-    O quadro atual 
-    e O hRgn 
-    e 4 [RGN_DIFF].
-  Call "gdi32.dll" "ExtSelectClipRgn" com 
-    O quadro atual 
-    e O old hRgn 
-    e 2 [RGN_OR].
+  Call "gdi32.dll" "SelectClipRgn" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectcliprgn
+  \ A função SelectClipRgn seleciona uma região como a região de recorte atual para o contexto de dispositivo especificado.
+    O quadro atual [hdc] \ Um identificador para o contexto do dispositivo.
+    e 0. [hrgn] \ Um identificador para a região a ser selecionada.
+  Call "gdi32.dll" "ExtSelectClipRgn" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-extselectcliprgn
+  \ A função ExtSelectClipRgn combina a região especificada com a região de recorte atual usando o modo especificado.
+    O quadro atual e [hdc] \ Um identificador para o contexto do dispositivo.
+    e O hRgn [hrgn] \ Um identificador para a região a ser selecionada.
+    e 4 [RGN_DIFF]. \ A operação a ser executada. 
+    \ Nesse caso a nova região de recorte combina as áreas da região de recorte atual [hdc] com as áreas excluídas da região identificada por hrgn.
+  Call "gdi32.dll" "ExtSelectClipRgn" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-extselectcliprgn
+  \ A função ExtSelectClipRgn combina a região especificada com a região de recorte atual usando o modo especificado.
+    O quadro atual e [hdc] \ Um identificador para o contexto do dispositivo.
+    e O old hRgn [hrgn] \ Um identificador para a região a ser selecionada.
+    e 2 [mode = RGN_OR]. \ A operação a ser executada. 
+    \ Nesse caso a nova região de recorte combina a região de recorte atual [hdc] e a região selecionada [hrgn].
   Destrua o old hRgn.
 
 Etapas para que se exponha exterior de um polígono:
@@ -11213,14 +11420,16 @@ Etapas para que se aguarde uns milliseconds;
 Etapas para que se espere uns milliseconds;
 Etapas para que se aguarde por uns milliseconds:
   Se o milliseconds forem menor do que ou igual para 0, cancele.
-  Call "kernel32.dll" "Sleep" com os milliseconds. \ https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-sleep
+  Call "kernel32.dll" "Sleep" com \ https://docs.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-sleep
+  \ Suspende a execução do thread atual até que o intervalo de tempo limite expire.
+    os milliseconds. [dwMilliseconds] \ O intervalo de tempo durante o qual a execução deve ser suspensa, em milissegundos.
 
 Etapas para que se aguarde até finalizar a narração;
 Etapas para que se aguarde até que a narração esteja finalizada;
 Etapas para que se aguarde até finalizarmos narração;
 Etapas para que se aguarde até que narração esteja concluída:
   Se o talker for inexistente, cancele.
-  Call o WaitUntilDone  desta vtable [SpVoice] deste talker com o talker e -1.
+  Call o [método] WaitUntilDone desta vtable [SpVoice] deste talker com o talker e -1.
 
 Etapas para que se aguarde até que pressionemos uma tecla;
 Etapas para que se aguarde até pressionarmos uma tecla;
@@ -11269,21 +11478,38 @@ Etapas para que se armazene um trecho em um file;
 Etapas para que se grave um trecho em um file;
 Etapas para que se escreva um trecho para um file:
   Limpe o erro do fluxo de entrada/saída.
-  Call "kernel32.dll" "SetFilePointer" com 
-    O file 
-    e 0 
-    e 0 
-    e 0 [FILE_BEGIN] 
-    devolvendo um número resultante.
-  Se o número resultante for -1, atribua "Ocorreu um erro durante o posicionamento do ponteiro do arquivo." ao erro do fluxo de entrada/saída; volte.
-  Call "kernel32.dll" "WriteFile" com 
-    O file e 
-  o caractere inicial deste trecho 
-    e A quantidade de caracteres deste trecho 
-    e O endereçamento desse número 
-    e 0 
-    devolvendo o número resultante.
-  Se o número resultante for 0, atribua "Ocorreu um erro durante a gravação do arquivo." ao erro do fluxo de entrada/saída; volte.
+  Call "kernel32.dll" "SetFilePointer" com  \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-setfilepointer
+  \Move o ponteiro de arquivo do arquivo especificado.
+  \Esta função armazena o ponteiro do arquivo em dois valores LONG.
+  \Quando um arquivo é aberto, o Windows associa um ponteiro de arquivo com o fluxo padrão. 
+  \Esse ponteiro de arquivo é um valor de deslocamento que especifica o próximo byte a ser lido ou o local para receber o próximo byte escrito.
+    O file [hFile]\ O número identificador do arquivo.
+    e 0 [lDistanceToMove] \ Um valor positivo para lDistanceToMove move o ponteiro do arquivo para frente no arquivo 
+    \e um valor negativo move o ponteiro para trás no arquivo .
+    e 0 [lpDistanceToMoveHigh] \Serve apenas para operações com 64 bits. Quando não é utilizado, esse valor deve ser 0 (NULL). 
+    e 0 [dwMoveMethod = FILE_BEGIN] \ O ponto de partida para o movimento do ponteiro do arquivo. Nesse caso o ponto de partida é zero ou o início do arquivo.
+    devolvendo um número resultante. \Se a função for bem-sucedida e lpDistanceToMoveHigh for NULL, o valor de retorno será o DWORD de ordem inferior do novo ponteiro de arquivo.
+    \Se a função falhar, o valor de retorno é INVALID_SET_FILE_POINTER.
+  Se o número resultante for -1, atribua "Ocorreu um erro ao tentar posicionar o ponteiro no início do arquivo." ao erro do fluxo de entrada/saída; volte.
+  Call "kernel32.dll" "WriteFile" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile
+  \ Essa função serve pra gravar dados no arquivo ou dispositivo de entrada / saída (E/S) especificado.
+    \ Um identificador para o arquivo ou dispositivo de E/S 
+    \(por exemplo, um arquivo, fluxo de arquivo, disco físico, volume, buffer de console, unidade de fita, soquete, recurso de comunicação, processador de mensagens ou canal).
+    O file [hFile]\ O número identificador do arquivo.
+    e O caractere inicial deste trecho [lpBuffer]  \ Um ponteiro para o buffer que contém os dados a serem gravados no arquivo ou dispositivo.
+    e A quantidade de caracteres deste trecho [nNumberOfBytesToWrite] \ O número de bytes a serem gravados no arquivo ou dispositivo.
+    \ Um valor zero especifica uma operação de gravação nula. 
+    \O comportamento de uma operação de gravação nula depende do sistema de arquivos subjacente ou da tecnologia de comunicação.
+    [Creio que seja preciso corrigir o texto abaixo]
+    e O endereçamento desse número [lpNumberOfBytesWritten]  \Um ponteiro para a variável que recebe o número de bytes gravados ao usar um parâmetro hFile síncrono. 
+    \ WriteFile define esse valor como zero antes de fazer qualquer trabalho ou verificação de erro.
+    \ Use NULL para este parâmetro se esta for uma operação assíncrona para evitar resultados potencialmente errôneos.
+    \Este parâmetro pode ser NULL somente quando o próximo parâmetro [lpOverlapped] não for 0 (NULL).
+    e 0 [lpOverlapped]  \ utilizado somente quando se deseja gravar em outro lugar do arquivo, como por exemplo, no final. 
+    \ Se não for o caso, esse parâmetro pode ser 0 (NULL)
+    devolvendo o número resultante. \ Se a função for bem-sucedida, o valor de retorno será diferente de 0 (VERDADEIRO).
+    \ Se a função falhar ou estiver sendo concluída de forma assíncrona, o valor de retorno será 0 (FALSO). 
+  Se o número resultante for 0, atribua "Ocorreu um erro ao tentar gravar o arquivo." ao erro do fluxo de entrada/saída; volte.
 
 Etapas para que se salve um trecho em um endereço completo;
 Etapas para que se armazene um trecho em um endereço completo;
@@ -11295,24 +11521,69 @@ Etapas para que se escreva um trecho para um endereço completo:
   Defina o endereço completo para read-write mode.
   Isole o endereço completo.
   Termine com o caractere NULL o endereço completo.
-  Call "kernel32.dll" "CreateFileA" com 
-    O caractere inicial deste endereço completo 
-    e 1073741824 [GENERIC_WRITE] 
-  And 0 e 0 e 2 [CREATE_ALWAYS] 
-    e -2147483520 [FILE_FLAG_WRITE_THROUGH ou FILE_ATTRIBUTE_NORMAL] 
-    e 0 
-    devolvendo um número identificador.
+  Call "kernel32.dll" "CreateFileA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilea
+  \Cria ou abre um arquivo ou dispositivo de E/S. 
+  \Os dispositivos de E / S mais comumente usados são os seguintes: 
+  \arquivo, fluxo de arquivo, diretório, disco físico, volume, buffer de console, unidade de fita, recurso de comunicação, slot de correio e canal. 
+  \A função retorna um identificador que pode ser usado para acessar o arquivo ou dispositivo para vários tipos de E / S, 
+  \dependendo do arquivo ou dispositivo e dos sinalizadores e atributos especificados.
+    O caractere inicial deste endereço completo [lpFileName] \ O nome do arquivo ou dispositivo a ser criado ou aberto. 
+    \Você pode usar barras (/) ou barras invertidas (\) neste nome.
+    e 1073741824 [dwDesiredAccess = GENERIC_WRITE] \O acesso solicitado ao arquivo ou dispositivo, que pode ser resumido como leitura, gravação, ambos ou nenhum zero).
+    \Os valores mais comumente usados são -2147483648 (GENERIC_READ), 1073741824 (GENERIC_WRITE) ou ambos -1073741824 (GENERIC_READ | GENERIC_WRITE). 
+    \Para obter mais informações, consulte os sites:
+    \ https://docs.microsoft.com/en-us/windows/desktop/SecAuthZ/generic-access-rights
+    \ https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-security-and-access-rights
+    \ https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-access-rights-constants
+    \ https://docs.microsoft.com/en-us/windows/desktop/SecAuthZ/access-mask
+    \Se este parâmetro for zero, o aplicativo pode consultar certos metadados, como arquivo, diretório ou atributos de dispositivo sem acessar esse arquivo ou dispositivo, 
+    \mesmo se o acesso GENERIC_READ tivesse sido negado.
+    e 0 [dwShareMode] \O modo de compartilhamento solicitado do arquivo ou dispositivo, que pode ser lido, escrito, ambos, excluir, todos ou nenhum. 
+    \Os pedidos de acesso a atributos ou atributos estendidos não são afetados por este sinalizador.
+    \O valor 0 impede que outros processos abram esse arquivo ou dispositivo se solicitarem acesso de exclusão, leitura ou gravação.
+  \Se este parâmetro for 0 e CreateFile for bem-sucedido, o arquivo ou dispositivo não pode ser compartilhado e não pode ser aberto novamente até que o identificador para o arquivo ou dispositivo seja fechado.   
+    e 0 [lpSecurityAttributes] \Um ponteiro para uma estrutura SECURITY_ATTRIBUTES que contém dois membros de dados separados, mas relacionados: 
+    \ https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)
+    \um descritor de segurança opcional e um valor booleano que determina se o identificador retornado pode ser herdado por processos filho.
+    \Este parâmetro pode ser NULL.
+    \Se este parâmetro for NULL, o identificador retornado por CreateFile não pode ser herdado por nenhum processo filho que o aplicativo possa criar 
+    \e o arquivo ou dispositivo associado ao identificador retornado obtém um descritor de segurança padrão.
+    e 2 [dwCreationDisposition = CREATE_ALWAYS] \ Uma ação a ser executada em um arquivo ou dispositivo existente ou não.
+    \CREATE_ALWAYS 2 Cria um novo arquivo, sempre. 
+    \Se o arquivo especificado existe e é gravável, a função sobrescreve o arquivo, a função é bem-sucedida e o código do último erro é definido como ERROR_ALREADY_EXISTS (183).
+    \Se o arquivo especificado não existir e for um caminho válido, um novo arquivo será criado, a função será bem-sucedida e o código do último erro será definido como zero.
+    e -2147483520 [dwFlagsAndAttributes = FILE_FLAG_WRITE_THROUGH +FILE_ATTRIBUTE_NORMAL] \ O arquivo ou atributos de dispositivo e sinalizadores,
+    \Este parâmetro também pode conter combinações de sinalizadores para controle de arquivo ou comportamento de armazenamento em cache de dispositivo, 
+    \modos de acesso e outros sinalizadores de propósito especial. 
+    \FILE_FLAG_WRITE_THROUGH 0x80000000 As operações de gravação não passarão por nenhum cache intermediário, elas irão diretamente para o disco.
+    \FILE_ATTRIBUTE_NORMAL 128 (0x80)  O arquivo não possui outros atributos definidos.
+    e 0 [hTemplateFile] \Um identificador válido para um arquivo de modelo com o direito de acesso GENERIC_READ. 
+    \O arquivo de modelo fornece atributos de arquivo e atributos estendidos para o arquivo que está sendo criado.
+    \Este parâmetro pode ser NULL.
+    \Ao abrir um arquivo existente, CreateFile ignora este parâmetro
+    devolvendo um número identificador. \Se a função for bem-sucedida, o valor de retorno será um identificador aberto para o arquivo, dispositivo, canal nomeado ou slot de correio especificado.
+    \Se a função falhar, o valor de retorno é -1 (INVALID_HANDLE_VALUE).
   Se o número identificador for -1 [INVALID_HANDLE_VALUE], atribua "Ocorreu um erro ao tentar abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; volte.
-  Call "kernel32.dll" "WriteFile" com 
-    O número identificador 
-    e O caractere inicial deste trecho 
-    e A quantidade de caracteres deste trecho 
-    e O endereçamento desse número 
-    e 0 
-    devolvendo o número.
-  Call "kernel32.dll" "CloseHandle" com 
-    O número identificador.
+  Call "kernel32.dll" "WriteFile" com  \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile
+  \ Essa função serve pra gravar dados no arquivo ou dispositivo de entrada / saída (E/S) especificado.
+    \ Um identificador para o arquivo ou dispositivo de E/S 
+    \(por exemplo, um arquivo, fluxo de arquivo, disco físico, volume, buffer de console, unidade de fita, soquete, recurso de comunicação, processador de mensagens ou canal).
+    O número identificador [hFile]  \Um identificador para o arquivo ou dispositivo de E/S
+    e O caractere inicial deste trecho [lpBuffer] \Um ponteiro para o buffer que contém os dados a serem gravados no arquivo ou dispositivo.
+    e A quantidade de caracteres deste trecho [nNumberOfBytesToWrite] \ representa o nº de bytes a serem gravados no arquivo ou dispositivo.
+    e O endereçamento desse número [lpNumberOfBytesWritten]  \Um ponteiro para a variável que recebe o número de bytes gravados ao usar um parâmetro hFile síncrono . 
+    e 0 [lpOverlapped] \ serve pra especificar se deseja gravar em outra região, por exemplo o final do arquivo. 
+    devolvendo o número. \Se a função for bem-sucedida, o valor de retorno será diferente de zero (VERDADEIRO).
+    \ verificar o nome da variável acima
+  Call "kernel32.dll" "CloseHandle" com  \ https://docs.microsoft.com/en-us/windows/win32/api/handleapi/nf-handleapi-closehandle
+  \Fecha um identificador de objeto aberto.
+  \Em geral, CloseHandle invalida o identificador do objeto especificado, diminui a contagem do identificador do objeto e executa verificações de retenção do objeto. 
+  \Depois que o último identificador para um objeto é fechado, o objeto é removido do sistema. .
+    O número identificador. [hObject] \Um identificador válido para um objeto aberto.
+    \Se o aplicativo estiver sendo executado em um depurador, a função lançará uma exceção se receber um valor de identificador inválido ou um valor de pseudo-identificador. 
+    \Isso pode acontecer se você fechar um identificador duas vezes ou se você chamar CloseHandle em um identificador retornado pela função FindFirstFile em vez de chamar a função FindClose.
   Se o número não for 0, cancele.
+  \ verificar o nome da variável acima
   Atribua "Ocorreu um erro ao tentar salvar o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
 
 Etapas para que se escreva um pedaço:
@@ -11321,18 +11592,18 @@ Etapas para que se escreva um pedaço:
 
 Etapas para que se escreva um pedaço para StdOut:
   Call "kernel32.dll" "WriteFile" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile
-    O stdout handle [hFile] \Um identificador para o arquivo ou dispositivo de E / S
+    O stdout handle [hFile] \Um identificador para o arquivo ou dispositivo de E/S
   \(por exemplo, um arquivo, fluxo de arquivo, disco físico, volume, buffer de console, unidade de fita, soquete, recurso de comunicação, processador de mensagens ou canal).
     e O endereçamento deste pedaço [lpBuffer] \Um ponteiro para o buffer que contém os dados a serem gravados no arquivo ou dispositivo.
     e 1 [nNumberOfBytesToWrite] \ representa o nº de bytes a serem gravados no arquivo ou dispositivo.
-    e O endereçamento desse número [lpNumberOfBytesWritten]  \Um ponteiro para a variável que recebe o número de bytes gravados ao usar um parâmetro hFile síncrono . 
+    e O endereçamento desse número [lpNumberOfBytesWritten]  \Um ponteiro para a variável que recebe o número de bytes gravados ao usar um parâmetro hFile síncrono. 
     e nil. [lpOverlapped] \ serve pra especificar se deseja gravar em outra região, por exemplo o final do arquivo. 
 
 Etapas para que se escreva um pedaço sem passar pra próxima linha:
   Atribua o pedaço a uma string.
   Escreva a string sem passar pra próxima linha.
 
-     \ will translate para English because "Converta um detector" é used para externalize reams pelo caderno
+\ will translate to English because "Converta um detector" é used para externalize reams pelo caderno
 Etapas para que se escreva um detector:
   Converta o detector para uma string.
   Escreva a string.
@@ -11376,17 +11647,37 @@ Etapas para que se escreva uns quoras em uma caixa: \descomentar pra ver o que a
 
 Etapas para que se yield para windows:
   Se a fila de eventos não estiver vazia, cancele.
-  Call "user32.dll" "GetMessageA" com 
-    O endereçamento dessa MSG 
-    e 0 
-    e 0 
-    e 0 
-    devolvendo um número.
+  Call "user32.dll" "GetMessageA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getmessagea
+  \A função GetMessageA obtém uma mensagem da fila de mensagens do thread de chamada. 
+  \A função despacha mensagens enviadas de entrada até que uma mensagem postada esteja disponível para obtenção.
+    O endereçamento dessa MSG  [lpMsg] \Um ponteiro para uma estrutura MSG que recebe informações da mensagem da fila de mensagens do segmento.
+      \https://docs.microsoft.com/en-us/windows/desktop/api/winuser/ns-winuser-MSG
+      e 0 [hWnd]  \Um identificador para a janela cujas mensagens devem ser recuperadas. A janela deve pertencer ao segmento atual.
+    \Se hWnd for NULL, GetMessage recuperará mensagens para qualquer janela que pertença ao segmento atual 
+    \e quaisquer mensagens na fila de mensagens do segmento atual cujo valor hwnd seja NULL.
+    \Portanto, se hWnd for NULL, tanto as mensagens da janela quanto as mensagens do thread serão processadas.
+      e 0 [wMsgFilterMin] \O valor inteiro do menor valor da mensagem a ser recuperado. 
+      e 0 [wMsgFilterMax] \O valor inteiro do maior valor da mensagem a ser recuperado. 
+    \Se wMsgFilterMin e wMsgFilterMax forem 0, GetMessage retorna todas as mensagens disponíveis (ou seja, nenhuma filtragem de intervalo é executada).
+    devolvendo um número. \Se a função recuperar uma mensagem diferente de WM_QUIT, o valor de retorno será diferente de zero.    
+    \Se houver um erro, o valor de retorno é -1. 
+    \Por exemplo, a função falhará se hWnd for um identificador de janela inválido ou lpMsg for um ponteiro inválido. 
   Se o número for 0, cancele.
-  Call "user32.dll" "TranslateMessage" com 
-    O endereçamento desta MSG.
-  Call "user32.dll" "DispatchMessageA" com 
-    O endereçamento desta MSG.
+  Call "user32.dll" "TranslateMessage" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-translatemessage
+    \Traduz mensagens de teclas virtuais em mensagens de caracteres. 
+    \As mensagens de caracteres são postadas na fila de mensagens do thread de chamada, 
+    \para serem lidas na próxima vez que o thread chamar a função GetMessage ou PeekMessage.
+      o endereçamento desta MSG. [*lpMsg] \Um ponteiro para uma estrutura MSG 
+      \ https://docs.microsoft.com/en-us/windows/desktop/api/winuser/ns-winuser-msg
+      \que contém informações de mensagem recuperadas da fila de mensagens do thread de chamada usando a função GetMessage ou PeekMessage.
+      \Se a mensagem for traduzida (ou seja, uma mensagem de caractere é postada na fila de mensagens do encadeamento), o valor de retorno é diferente de zero.
+      \Se a mensagem for WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN ou WM_SYSKEYUP, o valor de retorno será diferente de zero, independentemente da tradução.
+    \Se a mensagem não for traduzida (ou seja, uma mensagem de caractere não é postada na fila de mensagens do encadeamento), o valor de retorno é zero.
+  Call "user32.dll" "DispatchMessageA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-dispatchmessagea
+    \Envia uma mensagem para um procedimento de janela. Normalmente é usado para despachar uma mensagem recuperada pela função GetMessage.
+      o endereçamento desta MSG.[*lpMsg]  \Um ponteiro para uma estrutura que contém a mensagem.
+      \O valor de retorno especifica o valor retornado pelo procedimento de janela. E
+      \mbora seu significado dependa da mensagem que está sendo despachada, o valor de retorno geralmente é ignorado.
 
 Etapas para que se zero uma caixa:
     \ was clear uma caixa, got confounded com "clear uma caixa " (which deveria pinte a caixa all black como does "clear o tela")
@@ -11407,4 +11698,3 @@ O zero linha reta é uma linha reta. \ tracer
 O zero localização é uma localização.
 
 O erro do fluxo de entrada/saída é uma string.
-
