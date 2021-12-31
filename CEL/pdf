@@ -1,3 +1,5 @@
+\ append poderia ser "acrescente"
+
 O remembered pdf endereço completo é um endereço completo.
 
 Um folha modo retrato é uma folha.
@@ -10,7 +12,7 @@ Um pdf é um trecho.
 
 Um pdf endereço de memória é um endereço de memória para um pdf.
 
-Some  font larguras é uma coisa com \ used na pdf conversion
+Some font larguras é uma coisa com \ used na pdf conversion
   Uma font,
   Uma contagem,
   Um endereço numérico denominado data.
@@ -245,7 +247,9 @@ Etapas para que se end uma folha (pdf style):
 
 Etapas para que se end printing:
   Se o documento detector deste pdf state estiver ativo, end printing (pdf style); volte.
-  Call "gdi32.dll" "EndDoc" com a área de impressão.
+  Call "gdi32.dll" "EndDoc" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-enddoc
+  \ A função EndDoc termina um trabalho de impressão.
+    a área de impressão. [hdc] \Um identificador para o contexto do dispositivo para o trabalho de impressão.
   Finalize a área de impressão.
 
 Etapas para que se end printing (pdf style):
@@ -413,12 +417,13 @@ Etapas para que se pinte uma string sob uma localização com uma cor e um font:
   Percorra. [o código abaixo]
     Se o subtexto estiver em branco, pare.
     Se o caractere final deste subtexto for maior do que o caractere final desta string, atribua o caractere final desta string ao caractere final deste subtexto.
-    Call "gdi32.dll" "TextOutA" com 
-      O quadro atual 
-      e A coordenada X desta localização 
-      e A coordenada Y desta localização 
-      e O caractere inicial deste subtexto 
-      e A quantidade de caracteres deste subtexto.
+    Call "gdi32.dll" "TextOutA" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-textouta
+    \A função TextOut grava uma sequência de caracteres no local especificado, usando a fonte, a cor de fundo e a cor do texto atualmente selecionadas.
+      O quadro atual [hdc] \ Um identificador para o contexto do dispositivo.
+      e A coordenada X desta localização [x] \ A coordenada x, em coordenadas lógicas, do ponto de referência que o sistema usa para alinhar a string.
+      e A coordenada Y desta localização [y] \ A coordenada y, em coordenadas lógicas, do ponto de referência que o sistema usa para alinhar a string.
+      e O caractere inicial deste subtexto [lpString] \ Um ponteiro para a string a ser desenhada. A string não precisa ser terminada em zero, porque cchString especifica o comprimento da string.
+      e A quantidade de caracteres deste subtexto. [c] \ O comprimento da string apontada por lpString, em caracteres.
     Obtenha uma largura usando o subtexto e o quadro atual.
     Adicione a largura para a coordenada X desta localização.
     Mova o subtexto usando o text cutoff.
@@ -460,13 +465,19 @@ Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
   Crie o hBrush of o quadro atual usando a cor de preenchimento.
   Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta caixa arredondada.
   Atribua o raio desta caixa arredondada times 2 a um diameter número.
-  Call "gdi32.dll" "RoundRect" com 
-    O quadro atual 
-    e A coordenada X do canto superior esquerdo desta caixa arredondada 
-    e A coordenada Y do canto superior esquerdo desta caixa arredondada 
-    e A coordenada X do canto inferior direito desta caixa arredondada 
-    e A coordenada Y do canto inferior direito desta caixa arredondada 
-  And o diameter e o diameter.
+  Call "gdi32.dll" "RoundRect" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-roundrect
+  \A função RoundRect desenha um retângulo com cantos arredondados. O retângulo é delineado com a caneta atual e preenchido com o pincel atual.
+    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
+    e A coordenada X do canto superior esquerdo desta caixa arredondada [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
+    e A coordenada Y do canto superior esquerdo desta caixa arredondada [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
+    e A coordenada X do canto inferior direito desta caixa arredondada [right] \A coordenada X, em coordenadas lógicas, do canto inferior direito do retângulo.
+    e A coordenada Y do canto inferior direito desta caixa arredondada [bottom] \A coordenada Y, em coordenadas lógicas, do canto inferior direito do retângulo.
+    e O diameter [width] \A largura, em coordenadas lógicas, da elipse usada para desenhar os cantos arredondados.
+    e O diameter. [height] \A altura, em coordenadas lógicas, da elipse usada para desenhar os cantos arredondados.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+    \Observação: A posição atual não é usada nem atualizada por esta função.
+    \Para obter um exemplo, consulte https://docs.microsoft.com/en-us/windows/desktop/gdi/using-filled-shapes
   Destrua o hBrush of o quadro atual.
   Destrua o hPen of o quadro atual.
 
@@ -497,37 +508,55 @@ Etapas para que se pinte uma imagem (pdf style):
   Atribua a largura desta caixa desta imagem dividido pelo quantidade de twips/pixel a uma largura.
   Atribua a altura desta caixa desta imagem dividido pelo quantidade de twips/pixel a uma altura.
   Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com 
-                                       A largura e 
-                                       A altura 
-                                       e 0 
-                                       e 137224 [PixelFormat24bppRGB] 
-                                       e 0 
-                                       e O endereçamento desse gpBitmap.
+  \ Cria um objeto Bitmap com base em uma matriz de bytes junto com informações de tamanho e formato.
+    A largura [width] \Valor inteiro longo que especifica a largura, em pixels, do bitmap.
+    e A altura [height] \ especifica a altura, em pixels, do bitmap.
+    e 0 [stride] \especifica o deslocamento de byte entre o início de uma linha de varredura e a próxima. 
+    \Isso é geralmente (mas não necessariamente) o número de bytes no formato de pixel (por exemplo, 2 para 16 bits por pixel) multiplicado pela largura do bitmap. 
+    \O valor passado para este parâmetro deve ser um múltiplo de quatro.
+    e 137224 [format = PixelFormat24bppRGB] \Especifica o formato de pixel do bitmap. 
+    \PixelFormat24bppRGB Especifica que o formato é de 24 bits por pixel; 8 bits cada são usados para os componentes vermelho, verde e azul.
+    e 0 [scan0] \O parâmetro scan0 é tratado como uma matriz de bytes. Ponteiro para uma matriz de bytes que contém os dados de pixel. 
+    \O chamador é responsável por alocar e liberar o bloco de memória apontado por este parâmetro.
+    e O endereçamento desse gpBitmap. [*bitmap] \Ponteiro para uma variável DWORD que recives um ponteiro para um objeto Bitmap.
   Call "gdiplus.dll" "GdipGetImageGraphicsContext" com 
     O gpBitmap 
     e O endereçamento desse gpGraphic.
   Se o grayscale detector desta imagem estiver ativo, crie um GpImageAttributes (escala de cinza).
   Call "gdiplus.dll" "GdipDrawImageRectRectI" com 
-                                                                                                       O gpGraphic 
-                                                                                                       e O gpBitmap desta imagem 
-                                                                                                       e 0 
-                                                                                                       e 0 
-                                                                                                       e A largura 
-                                                                                                       e A altura 
-                                                                                                       e O número X 
-                                                                                                       e O número Y 
-                                                                                                       e A largura 
-                                                                                                       e A altura 
-                                                                                                       e 2 [unitpixel] 
-                                                                                                       e O GpImageAttributes 
-                                                                                                       e nil 
-                                                                                                       e 0.
+  \\Desenha uma imagem em um local especificado.
+     O gpGraphic [*graphics] \ Ponteiro para o objeto Graphics.
+     e O gpBitmap desta imagem [*image] \ Ponteiro para um objeto Image que especifica a imagem a ser desenhada.
+   \ https://docs.microsoft.com/en-us/windows/desktop/api/gdiplusheaders/nl-gdiplusheaders-image
+     [*destPoints] \ Ponteiro para uma matriz de objetos Point que especificam a área, em um paralelogramo, na qual desenhar a imagem.
+   \ https://docs.microsoft.com/en-us/windows/desktop/api/gdiplustypes/nl-gdiplustypes-point
+   e 0 [dstx] \ valor inteiro que especifica a coordenada x do canto superior esquerdo da área de desenho da imagem.
+   e 0 [dsty] \ valor inteiro que especifica a coordenada y do canto superior esquerdo da área de desenho da imagem.
+   [/*destPoints]
+   [count] \ Número inteiro que especifica o número de elementos na matriz denominada destPoints.
+     e A largura [dstwidth ] \ valor inteiro que especifica a largura da área de desenho a ser desenhada.
+     e A altura [dstheight] \ valor inteiro que especifica a altura da área de desenho a ser desenhada.
+   [/count]
+     e O número X [srcx]  \ especifica a coordenada x do canto superior esquerdo da parte da imagem de origem a ser desenhada.
+     e O número Y [srcy]  \especifica a coordenada y do canto superior esquerdo da parte da imagem de origem a ser desenhada.
+     e A largura [srcwidth] \ valor inteiro que especifica a largura da parte da imagem de origem a ser desenhada.
+     e A altura [srcheight] \ valor inteiro que especifica a altura da parte da imagem de origem a ser desenhada.
+     e 2 [srcUnit = UnitPixel] \Elemento da enumeração da unidade que especifica a unidade de medida da imagem. O valor padrão é UnitPixel.
+     e O GpImageAttributes [*imageAttributes] \ Ponteiro para uma estrutura ImageAttributes que especifica os atributos de cor e tamanho da imagem a ser desenhada. O valor padrão é NULL.
+   \ https://docs.microsoft.com/en-us/windows/desktop/api/gdiplusimageattributes/nl-gdiplusimageattributes-imageattributes
+     e nil [callback] \ Método de retorno de chamada usado para cancelar o desenho em andamento. O valor padrão é NULL.
+     e 0. [*callbackData] \ Ponteiro para dados adicionais usados pelo método especificado pelo parâmetro de retorno de chamada. O valor padrão é NULL.
   Se o GpImageAttributes não for inexistente, destrua o GpImageAttributes.
   Call "gdiplus.dll" "GdipDeleteGraphics" com 
-    O gpGraphic.
+  \Exclui o objeto Graphics especificado.
+   O gpGraphic. [*graphics] \ Ponteiro para o objeto Graphics.
   Pinte o gpBitmap sob o canto superior esquerdo desta caixa desta imagem (pdf style).
   Call "gdiplus.dll" "GdipDisposeImage" com 
-    O gpBitmap.
+  \Descarta o objeto Image especificado.
+    O gpBitmap.  [*image]
+  \GpImage é um ponteiro para o objeto Imagem que será descartado.
+  \Geralmente refere-se a uma imagem criada pelas funções GdipLoadImageFromFile, GdipLoadImageFromStream e outras funções construtoras de imagem.
+  \Obs: A função retorna o valor GpStatus, sendo que o valor 0 significa que função foi bem-sucedida.
 
 Etapas para que se pinte uma imagem:
   Se a página detector deste pdf state estiver ativo, pinte a imagem (pdf style); volte.
@@ -535,14 +564,23 @@ Etapas para que se pinte uma imagem:
   Salve o quadro atual.
   Cubra externamente a caixa desta imagem.
   Call "gdiplus.dll" "GdipCreateFromHDC" com 
-    O quadro atual 
-    e O endereçamento desse gpGraphic.
+  \ Cria um objeto Graphics associado a um contexto de dispositivo especificado.
+  \ Ao usar esta função para criar um objeto Graphics, certifique-se de que o objeto Graphics seja excluído antes que o contexto do dispositivo seja liberado.
+    O quadro atual [hdc] \ Identificador para um contexto de dispositivo que será associado ao novo objeto Graphics.
+    e O endereçamento desse gpGraphic. [**graphics] \Ponteiro para uma variável que recebe um ponteiro para o novo objeto Graphics criado.
   Call "gdiplus.dll" "GdipSetPageUnit" com 
-    O gpGraphic 
-    e 2 [pixels].
+  \Define a unidade de medida para este objeto Graphics. 
+  \A unidade da página pertence à transformação da página, que converte as coordenadas da página em coordenadas do dispositivo.
+    O gpGraphic [*graphics] \ Ponteiro para o objeto Metafile.
+    \ https://docs.microsoft.com/en-us/windows/win32/api/gdiplusenums/ne-gdiplusenums-metafiletype
+    e 2 [unit = pixels]. \ Elemento da enumeração Unit que especifica a unidade de medida para este objeto Graphics.
+    \ https://docs.microsoft.com/en-us/windows/win32/api/gdiplusenums/ne-gdiplusenums-unit
+    \ https://docs.microsoft.com/en-us/windows/win32/api/gdiplusgraphics/nl-gdiplusgraphics-graphics
   Pinte a imagem sobre o gpGraphic sob a coordenada X do canto superior esquerdo desta caixa intacta desta imagem e a coordenada Y do canto superior esquerdo desta caixa intacta desta imagem.
   Call "gdiplus.dll" "GdipDeleteGraphics" com 
-    O gpGraphic.
+  \ Exclui o objeto Graphics especificado.
+    O gpGraphic. [*graphics] \ponteiro do número identificador do objeto Graphics.
+   \Valor de retorno da funlção: Retorna o valor GpStatus, sendo que o valor 0 significa que a função foi bem sucedida.
   Restaure o quadro atual.
 
 Etapas para que se pinte uma linha reta com uma cor (pdf style):
@@ -555,15 +593,25 @@ Etapas para que se pinte uma linha reta com uma cor (pdf style):
 Etapas para que se pinte uma linha reta com uma cor:
   Se a página detector deste pdf state estiver ativo, pinte a linha reta com a cor (pdf style); volte.
   Crie o hPen of o quadro atual usando a cor.
-  Call "gdi32.dll" "MoveToEx" com 
-    O quadro atual 
-    e A coordenada X desta localização inicial desta linha reta 
-    e A coordenada Y desta localização inicial desta linha reta 
-    e nil.
-  Call "gdi32.dll" "LineTo" com 
-    O quadro atual 
-    e A coordenada X desta localização final desta linha reta 
-    e A coordenada Y desta localização final desta linha reta.
+  Call "gdi32.dll" "MoveToEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-movetoex
+  \A função MoveToEx atualiza a posição atual para o ponto especificado e, opcionalmente, retorna a posição anterior.
+    O quadro atual [hdc] \o número identificador do contexto do dispositivo.
+    e A coordenada X desta localização inicial desta linha reta [x] \Especifica a coordenada x da nova posição, em unidades lógicas.
+    e A coordenada Y desta localização inicial desta linha reta [y] \Especifica a coordenada y da nova posição, em unidades lógicas.
+    e nil. [lppt] \Ponteiro para uma estrutura POINT que recebe a posição atual anterior. 
+    \Se este parâmetro for um ponteiro NULL, a posição anterior não será retornada.
+    \https://docs.microsoft.com/en-us/previous-versions/dd162805(v=vs.85)
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
+  Call "gdi32.dll" "LineTo" com  \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-lineto
+  \A função LineTo desenha uma linha da posição atual até, mas não incluindo, o ponto especificado.
+  \A linha é desenhada usando a caneta atual e, se a caneta for uma caneta geométrica, o pincel atual.
+  \Se LineTo for bem-sucedido, a posição atual será definida como o ponto final especificado.
+    O quadro atual [hdc] \o número identificador do contexto do dispositivo.
+    e A coordenada X desta localização final desta linha reta [x] \Especifica a coordenada x, em unidades lógicas, do ponto final da linha.
+    e A coordenada Y desta localização final desta linha reta. [y] \Especifica a coordenada y, em unidades lógicas, do ponto final da linha.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
   Converta a cor para um código da cor.
   Call "gdi32.dll" "SetPixelV" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setpixelv
   \A função SetPixelV define o pixel nas coordenadas especificadas para a aproximação mais próxima da cor especificada. 
@@ -633,12 +681,15 @@ Etapas para que se pinte uma elipse com uma cor da borda e uma cor de preenchime
   Crie o hPen of o quadro atual usando a cor da borda.
   Crie o hBrush of o quadro atual usando a cor de preenchimento.
   Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta elipse.
-  Call "gdi32.dll" "Ellipse" com 
-    O quadro atual 
-    e A coordenada X do canto superior esquerdo desta elipse 
-    e A coordenada Y do canto superior esquerdo desta elipse 
-    e A coordenada X do canto inferior direito desta elipse 
-    e A coordenada Y do canto inferior direito desta elipse.
+  Call "gdi32.dll" "Ellipse" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ellipse
+  \A função Ellipse desenha uma elipse. O centro da elipse é o centro do retângulo delimitador especificado. A elipse é delineada com a caneta atual e preenchida com o pincel atual.
+    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
+    e A coordenada X do canto superior esquerdo desta elipse [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
+    e A coordenada Y do canto superior esquerdo desta elipse [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
+    e A coordenada X do canto inferior direito desta elipse [right] \A coordenada X, em coordenadas lógicas, do canto inferior direito do retângulo.
+    e A coordenada Y do canto inferior direito desta elipse. [bottom] \A coordenada Y, em coordenadas lógicas, do canto inferior direito do retângulo.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
   Destrua o hBrush of o quadro atual.
   Destrua o hPen of o quadro atual.
 
@@ -657,12 +708,15 @@ Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimen
   Crie o hPen of o quadro atual usando a cor da borda.
   Crie o hBrush of o quadro atual usando a cor de preenchimento.
   Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta caixa.
-  Call "gdi32.dll" "Rectangle" com 
-    O quadro atual 
-    e A coordenada X do canto superior esquerdo desta caixa 
-    e A coordenada Y do canto superior esquerdo desta caixa 
-    e A coordenada X do canto inferior direito desta caixa 
-    e A coordenada Y do canto inferior direito desta caixa.
+  Call "gdi32.dll" "Rectangle" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-rectangle
+    \A função Retângulo desenha um retângulo. O retângulo é delineado com a caneta (pincel) atual e preenchido com o rolo de tinta (brush) atual.
+    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
+    e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
+    e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
+    e A coordenada X do canto inferior direito desta caixa [right] \A coordenada X, em coordenadas lógicas, do canto inferior direito do retângulo.
+    e A coordenada Y do canto inferior direito desta caixa.[bottom] \A coordenada Y, em coordenadas lógicas, do canto inferior direito do retângulo.
+    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
+    \Se a função falhar, o valor de retorno é zero.
   Destrua o hBrush of o quadro atual.
   Destrua o hPen of o quadro atual.
 
@@ -798,64 +852,102 @@ Etapas para que se inicie uma folha usando uma caixa e um título de índice remis
 
 Etapas para que se inicie uma folha usando uma caixa:
   Se o documento detector deste pdf state estiver ativo, inicie a folha usando a caixa (pdf style); volte.
-  Call "kernel32.dll" "GlobalLock" com 
-    O número identificador do modo de dispositivo da impressora 
-    devolvendo um pdevmode.
-  Se o pdevmode for inexistente, cancele.
-  Disjuncione logicamente o dmfields deste pdevmode usando 1 [DM_ORIENTATION].
-  Atribua 1 [DMORIENT_PORTRAIT] ao dmorientation deste pdevmode .
-  Se a largura desta caixa for maior do que a altura desta caixa, atribua 2 [DMORIENT_LANDSCAPE] ao dmorientation deste pdevmode .
-  Call "gdi32.dll" "ResetDCA" com 
-    A área de impressão 
-    e O pdevmode.
-  Call "kernel32.dll" "GlobalUnlock" com 
-    O número identificador do modo de dispositivo da impressora.
-  Call "gdi32.dll" "SetGraphicsMode" com 
-    A área de impressão 
-    e 2 [GM_ADVANCED].
-  Call "gdi32.dll" "SetBkMode" com 
-    A área de impressão 
-    e 1 [TRANSPARENT].
-  Call "gdi32.dll" "SetMapMode" com 
-    A área de impressão 
-    e 8 [MM_ANISOTROPIC].
+  Call "kernel32.dll" "GlobalLock" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globallock
+  \A função GlobalLock bloqueia um objeto de memória global e aumenta a contagem de bloqueios em um. 
+  \Bloqueia um objeto de memória global e retorna um ponteiro para o primeiro byte do bloco de memória do objeto.
+    O número identificador do modo de dispositivo da impressora [hMem] \Um identificador para o objeto de memória global. 
+    devolvendo um pdevmode. \Se a função for bem-sucedida, o valor de retorno é um ponteiro para o primeiro byte do bloco de memória.
+    \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-devmodea
+  Se o pdevmode for inexistente, cancele. \Se a função falhar, o valor de retorno será NULL.
+  Disjuncione logicamente o dmFields deste pdevmode usando 1 [DM_ORIENTATION].
+  Atribua 1 [DMORIENT_PORTRAIT] ao dmOrientation deste pdevmode .
+  Se a largura desta caixa for maior do que a altura desta caixa, atribua 2 [DMORIENT_LANDSCAPE] ao dmOrientation deste pdevmode .
+  Call "gdi32.dll" "ResetDCA" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-resetdca
+  \ A função ResetDC atualiza a impressora especificada ou contexto de dispositivo de plotadora (DC) usando as informações especificadas.
+    A área de impressão [hdc] \O identificador do DC que será atualizado
+    e O pdevmode. [*lpdm] \Um ponteiro para uma estrutura DEVMODE contendo informações sobre o novo DC.
+    \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-devmodea
+  Call "kernel32.dll" "GlobalUnlock" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalunlock
+    \Diminui a contagem de bloqueios associada a um objeto de memória que foi alocado com GMEM_MOVEABLE. 
+    \Esta função não tem efeito em objetos de memória alocados com GMEM_FIXED.
+    O número identificador do modo de dispositivo da impressora.  [hMem] \Um identificador para o objeto de memória global. 
+  Call "gdi32.dll" "SetGraphicsMode" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setgraphicsmode
+  \A função SetGraphicsMode define o modo gráfico para o contexto de dispositivo especificado.
+    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
+    e 2. [iMode = GM_ADVANCED] \O modo gráfico. 
+    \GM_ADVANCED = Define o modo gráfico avançado que permite transformações mundiais. 
+    \Este valor deve ser especificado se o aplicativo irá definir ou modificar a transformação do mundo para o contexto de dispositivo especificado. 
+    \Neste modo, todos os gráficos, incluindo saída de texto, estão totalmente em conformidade com a transformação de mundo para o dispositivo especificado no contexto do dispositivo.
+  Call "gdi32.dll" "SetBkMode" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setbkmode
+  \A função SetBkMode define o modo de mistura de plano de fundo do contexto de dispositivo especificado. 
+    A área de impressão [hdc] \Um identificador para o contexto do dispositivo. 
+    \O modo de mistura de plano de fundo é usado com texto, pincéis hachurados e estilos de caneta que não são linhas sólidas.
+    e 1. [mode = TRANSPARENT] \ O modo do plano de fundo.
+    \TRANSPARENT = O fundo permanece intocado.
+  Call "gdi32.dll" "SetMapMode" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setmapmode
+  \A função SetMapMode define o modo de mapeamento do contexto de dispositivo especificado. 
+  \O modo de mapeamento define a unidade de medida usada para transformar unidades de espaço de página em unidades de espaço de dispositivo 
+  \e também define a orientação dos eixos x e y do dispositivo.
+    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
+    e 8. [iMode = MM_ANISOTROPIC ] \O novo modo de mapeamento.
+    \MM_ANISOTROPIC = As unidades lógicas são mapeadas para unidades arbitrárias com eixos escalonados arbitrariamente. 
+    \Use as funções SetWindowExtEx e SetViewportExtEx para especificar as unidades, orientação e escala.
+  Call "gdi32.dll" "GetDeviceCaps" com  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getdevicecaps
+  \ A função GetDeviceCaps recupera informações específicas do dispositivo para o dispositivo especificado.
+    A área de impressão [hdc] \O número identificador do contexto do dipositivo
+    e 112 [index = PhysicalOffsetX] \O item a ser devolvido.
+    \PHYSICALOFFSETY = Para dispositivos de impressão: a distância da borda superior da página física até a borda superior da área imprimível, em unidades de dispositivo. 
+    \Por exemplo, uma impressora configurada para imprimir a 600 dpi em papel de 8,5 por 11 polegadas, 
+    \que não pode imprimir no papel de 0,5 polegada superior, tem um deslocamento físico vertical de 300 unidades de dispositivo.
+    \PHYSICALOFFSETX = a mesma coisa, só que referente a distância da borda esquerda da página física até a borda esquerda da área imprimível, em unidades de dispositivo.
+    devolvendo o número X desse par de números. \O valor de retorno especifica o valor do item desejado.
   Call "gdi32.dll" "GetDeviceCaps" com 
-    A área de impressão 
-    e 112 [PHYSICALOFFSETX] 
-    devolvendo o número X desse par de números.
-  Call "gdi32.dll" "GetDeviceCaps" com 
-    A área de impressão 
-    e 113 [PHYSICALOFFSETY] 
+    A área de impressão [hdc] 
+    e 113 [PhysicalOffsetY ] 
     devolvendo o número Y deste par de números.
   Negate o par de números.
-  Call "gdi32.dll" "SetViewportOrgEx" com 
-    A área de impressão 
-    e O número X deste par de números 
-    e O número Y deste par de números 
-    e nil.
-  Call "gdi32.dll" "GetDeviceCaps" com 
-    A área de impressão 
-    e 88 [LOGPIXELSX] 
+  Call "gdi32.dll" "SetViewportOrgEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setviewportorgex
+  \ A função SetViewportOrgEx especifica qual ponto do dispositivo mapeia para a origem da janela (0,0).
+    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
+    e O número X deste par de números [x] \A coordenada x, em unidades de dispositivo, da nova origem da janela de exibição.
+    e O número Y deste par de números  [y] \A coordenada y, em unidades de dispositivo, da nova origem da janela de visualização.
+    e nil. [lppt] \Um ponteiro para uma estrutura POINT que recebe a origem da viewport anterior, nas coordenadas do dispositivo. Se lpPoint for NULL, este parâmetro não será usado.
+    \ https://docs.microsoft.com/en-us/previous-versions/dd162805(v=vs.85)
+  Call "gdi32.dll" "GetDeviceCaps" com  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getdevicecaps
+  \ A função GetDeviceCaps recupera informações específicas do dispositivo para o dispositivo especificado.
+    A área de impressão [hdc] \O número identificador do contexto do dipositivo
+    e 88 [index = LOGPIXELSX]  \O item a ser devolvido.
+    \LOGPIXELSX é o número de pixels por polegada lógica ao longo da largura da tela. Em um sistema com vários monitores, este valor é o mesmo para todos os monitores.
     devolvendo o número X deste par de números.
   Call "gdi32.dll" "GetDeviceCaps" com 
     A área de impressão 
     e 90 [LOGPIXELSY] 
+    \ LOGPIXELSY é o número de pixels por polegada lógica ao longo da altura da tela. Em um sistema com vários monitores, este valor é o mesmo para todos os monitores.
     devolvendo o número Y deste par de números.
-  Call "gdi32.dll" "SetViewportExtEx" com 
-    A área de impressão 
-    e O número X deste par de números 
-    e O número Y deste par de números 
-    e nil.
-  Call "gdi32.dll" "SetWindowOrgEx" com 
-    A área de impressão 
-    e 0 
-    e 0 
-    e nil.
-  Call "gdi32.dll" "SetWindowExtEx" com 
-    A área de impressão 
-    e O tpi 
-    e O tpi 
-    e nil.
+  Call "gdi32.dll" "SetViewportExtEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setviewportextex
+  \A função SetViewportExtEx define as extensões horizontal e vertical da janela de visualização para um contexto de dispositivo usando os valores especificados.
+    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
+    e O número X deste par de números [x] \A extensão horizontal, em unidades de dispositivo, da janela de visualização.
+    e O número Y deste par de números [y] \A extensão vertical, em unidades de dispositivo, da janela de visualização.
+    e nil. [lpsz] \Um ponteiro para uma estrutura SIZE que recebe as extensões da janela de visualização anterior, em unidades de dispositivo. 
+    \Se lpSize for NULL, este parâmetro não será usado.
+    \ https://docs.microsoft.com/en-us/previous-versions/dd145106(v=vs.85)
+  Call "gdi32.dll" "SetWindowOrgEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setwindoworgex
+  \A função SetWindowOrgEx especifica qual ponto da janela mapeia para a origem da janela de visualização (0,0).
+    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
+    e 0 [x] \A coordenada x, em unidades lógicas, da nova origem da janela.
+    e 0 [y] \A coordenada y, em unidades lógicas, da nova origem da janela.
+    e nil. [lppt] \Um ponteiro para uma estrutura POINT que recebe a origem anterior da janela, em unidades lógicas. 
+    \Se lpPoint for NULL, este parâmetro não será usado.
+    \ https://docs.microsoft.com/en-us/previous-versions/dd162805(v=vs.85)
+  Call "gdi32.dll" "SetWindowExtEx" com  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setwindowextex
+  \ A função SetWindowExtEx define as extensões horizontal e vertical da janela para um contexto de dispositivo usando os valores especificados.
+    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
+    e O tpi [x] \A extensão horizontal da janela em unidades lógicas.
+    e O tpi [y] \A extensão vertical da janela em unidades lógicas.
+    e nil. [lpsz] \Um ponteiro para uma estrutura SIZE que recebe as extensões da janela anterior, em unidades lógicas. 
+    \Se lpSize for NULL, este parâmetro não será usado.
+    \ https://docs.microsoft.com/en-us/previous-versions/dd145106(v=vs.85)
   Call "gdi32.dll" "StartPage" com 
     A área de impressão.
   Atribua a área de impressão ao quadro atual.

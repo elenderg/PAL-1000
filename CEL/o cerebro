@@ -1745,15 +1745,15 @@ Etapas para que se crie um gpBitmap usando um trecho:
     \Bloqueia um objeto de memória global e retorna um ponteiro para o primeiro byte do bloco de memória do objeto.
     \Observação: As funções globais têm maior sobrecarga e fornecem menos recursos do que outras funções de gerenciamento de memória. 
     \Novos aplicativos devem usar as funções de heap, a menos que a documentação indique que uma função global deve ser usada.
-    O número identificador [hMem] \Um identificador para o objeto de memória global. Nese caso o identificador é número identificador retornado pela função GlobalAlloc .
+    O número identificador [hMem] \Um identificador para o objeto de memória global. Nesse caso o identificador é número identificador retornado pela função GlobalAlloc .
     devolvendo um endereço de memória. \Se a função for bem-sucedida, o valor de retorno é um ponteiro para o primeiro byte do bloco de memória.
     \Se a função falhar, o valor de retorno será NULL.
-\Observações
-\As estruturas de dados internas para cada objeto de memória incluem uma contagem de bloqueio que é inicialmente zero. 
-\Para objetos de memória móvel, GlobalLock aumenta a contagem em um e a função GlobalUnlock diminui a contagem em um. 
-\Cada chamada bem-sucedida que um processo faz ao GlobalLock para um objeto deve ser correspondida por uma chamada correspondente ao GlobalUnlock. 
-\A memória bloqueada não será movida ou descartada, a menos que o objeto de memória seja realocado usando a função GlobalReAlloc. 
-\O bloco de memória de um objeto de memória bloqueado permanece bloqueado até que sua contagem de bloqueios diminua para zero, momento em que pode ser movido ou descartado.
+    \Observações
+    \As estruturas de dados internas para cada objeto de memória incluem uma contagem de bloqueio que é inicialmente zero. 
+    \Para objetos de memória móvel, GlobalLock aumenta a contagem em um e a função GlobalUnlock diminui a contagem em um. 
+    \Cada chamada bem-sucedida que um processo faz ao GlobalLock para um objeto deve ser correspondida por uma chamada correspondente ao GlobalUnlock. 
+    \A memória bloqueada não será movida ou descartada, a menos que o objeto de memória seja realocado usando a função GlobalReAlloc. 
+    \O bloco de memória de um objeto de memória bloqueado permanece bloqueado até que sua contagem de bloqueios diminua para zero, momento em que pode ser movido ou descartado.
   Copie pedaços desde o caractere inicial deste trecho para o endereço de memória pelo quantidade de caracteres deste trecho.
   Call "kernel32.dll" "GlobalUnlock" com \ https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-globalunlock
     \Diminui a contagem de bloqueios associada a um objeto de memória que foi alocado com GMEM_MOVEABLE. 
@@ -1892,7 +1892,7 @@ Etapas para que se crie um hRgn usando uma elipse:
     e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada X do canto inferior direito desta caixa [right] \A coordenada X, em coordenadas lógicas, do canto inferior direito do retângulo.
-    e A coordenada Y do canto inferior direito desta caixa.[bottom] \A coordenada Y, em coordenadas lógicas, do canto inferior direito do retângulo.
+    e A coordenada Y do canto inferior direito desta caixa. [bottom] \A coordenada Y, em coordenadas lógicas, do canto inferior direito do retângulo.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "EndPath" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpath
@@ -4055,7 +4055,9 @@ Etapas para que se destrua um crypt session:
 
 Etapas para que se destrua um GpImage:
   Se o GpImage for inexistente, cancele.
-  Call "gdiplus.dll" "GdipDisposeImage" com o GpImage. [*image]
+  Call "gdiplus.dll" "GdipDisposeImage" com
+\Descarta o objeto Image especificado.  
+  o GpImage. [*image]
   \GpImage é um ponteiro para o objeto Imagem que será descartado.
   \Geralmente refere-se a uma imagem criada pelas funções GdipLoadImageFromFile, GdipLoadImageFromStream e outras funções construtoras de imagem.
   \Obs: A função retorna o valor GpStatus, sendo que o valor 0 significa que função foi bem-sucedida.
@@ -4601,7 +4603,7 @@ Etapas para que se pinte um polígono com uma cor (border only):
   Crie o hPen of o quadro atual usando a cor.
   Obtenha um vértice desde os vértices deste polígono.
   Se o vértice for inexistente, cancele.
-  Call "gdi32.dll" "MoveToEx" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-movetoex
+  Call "gdi32.dll" "MoveToEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-movetoex
   \A função MoveToEx atualiza a posição atual para o ponto especificado e, opcionalmente, retorna a posição anterior.
     O quadro atual [hdc] \o número identificador do contexto do dispositivo.
     e A coordenada X deste vértice [x] \Especifica a coordenada x da nova posição, em unidades lógicas.
@@ -5098,6 +5100,7 @@ Etapas para que se extraia uma imagem usando uma caixa:
   Atribua a largura desta caixa dividido pelo quantidade de twips/pixel a uma largura.
   Atribua a altura desta caixa dividido pelo quantidade de twips/pixel a uma altura.
   Call "gdiplus.dll" "GdipCreateBitmapFromScan0" com 
+  \Cria um objeto Bitmap com base em uma matriz de bytes junto com informações de tamanho e formato.
     A largura [width] \Valor inteiro longo que especifica a largura, em pixels, do bitmap.
     e A altura [height] \ especifica a altura, em pixels, do bitmap.
     e 0 [stride] \especifica o deslocamento de byte entre o início de uma linha de varredura e a próxima. 
@@ -5172,7 +5175,8 @@ Etapas para que se extraia uma imagem usando uma caixa:
    \ que foi criado por uma chamada anterior para o método GdipGetHDC usando o identificador Graphics acima.
    \Valor de retorno: não retorna um valor.
   Call "gdiplus.dll" "GdipDeleteGraphics" com 
-    O gpGraphic. [*graphics] \ponteito do número identificador dobjeto Graphics.
+  \ Exclui o objeto Graphics especificado.
+    O gpGraphic. [*graphics] \ponteiro do número identificador do objeto Graphics.
    \Valor de retorno da funlção: Retorna o valor GpStatus, sendo que o valor 0 significa que a função foi bem sucedida.
   Crie a imagem usando o gpBitmap.
   Atribua a caixa à caixa desta imagem.
@@ -7301,7 +7305,7 @@ Etapas para que se inicialize o cgi:
   Call "kernel32.dll" "AllocConsole". \ https://docs.microsoft.com/pt-br/windows/console/allocconsole
   \Aloca um novo console para o processo de chamada.
   Call "kernel32.dll" "GetStdHandle" com \ https://docs.microsoft.com/pt-br/windows/console/getstdhandle
-  \Recupera um identificador para o dispositivo padrão especificado (entrada padrão, saída padrão ou erro padrão).
+  \A função GetStdHandle recupera um identificador para o dispositivo padrão especificado (entrada padrão, saída padrão ou erro padrão).
   -10 [nStdHandle = STD_INPUT_HANDLE] \ O desvio padrão. 
   \STD_INPUT_HANDLE é o dispositivo de entrada padrão. Inicialmente, esse é o buffer de entrada do console, CONIN$.
     devolvendo o número identificador do fluxo de entrada padrão.
@@ -8085,7 +8089,8 @@ Etapas para que se lowercase qualquer trecho selecionado em um text:
   Repita. [o código acima]
 
 Etapas para que se lowercase um pedaço:
-  \Add 32 to each letter in the string entre "A" and "Z".
+  \Para letras não acentuadas basta que se 
+  \adicione 32 para cada letra entre "A" and "Z" da string.
   Translate o pedaço usando o tabela de caracteres minúsculos ASCII .
 
 Etapas para que se lowercase o character depois de um finger e atribua it para uma string:
@@ -9490,7 +9495,7 @@ Etapas para que se redimensione uma imagem para uma largura por uma altura:
   Call "gdiplus.dll" "GdipDrawImageRectRectI" com
   \Desenha uma imagem em um local especificado.
    O gpGraphic [*graphics] \ Ponteiro para o objeto Graphics.
-   e O gpBitmap desta imagem[*image] \ Ponteiro para um objeto Image que especifica a imagem a ser desenhada.
+   e O gpBitmap desta imagem [*image] \ Ponteiro para um objeto Image que especifica a imagem a ser desenhada.
    \ https://docs.microsoft.com/en-us/windows/desktop/api/gdiplusheaders/nl-gdiplusheaders-image
    [*destPoints] \ Ponteiro para uma matriz de objetos Point que especificam a área, em um paralelogramo, na qual desenhar a imagem.
    \ https://docs.microsoft.com/en-us/windows/desktop/api/gdiplustypes/nl-gdiplustypes-point
@@ -9504,7 +9509,7 @@ Etapas para que se redimensione uma imagem para uma largura por uma altura:
    e 0 [srcx]  \ especifica a coordenada x do canto superior esquerdo da parte da imagem de origem a ser desenhada.
    e 0 [srcy]  \especifica a coordenada y do canto superior esquerdo da parte da imagem de origem a ser desenhada.
    e A largura deste gpBitmap desta imagem menos 1 [srcwidth] \ valor inteiro que especifica a largura da parte da imagem de origem a ser desenhada.
-   e A altura deste gpBitmap desta imagem menos 1[srcheight] \ valor inteiro que especifica a altura da parte da imagem de origem a ser desenhada.
+   e A altura deste gpBitmap desta imagem menos 1 [srcheight] \ valor inteiro que especifica a altura da parte da imagem de origem a ser desenhada.
    e 2 [srcUnit = UnitPixel] \Elemento da enumeração da unidade que especifica a unidade de medida da imagem. O valor padrão é UnitPixel.
    e nil [*imageAttributes] \ Ponteiro para uma estrutura ImageAttributes que especifica os atributos de cor e tamanho da imagem a ser desenhada. O valor padrão é NULL.
    \ https://docs.microsoft.com/en-us/windows/desktop/api/gdiplusimageattributes/nl-gdiplusimageattributes-imageattributes
@@ -10231,7 +10236,7 @@ Etapas para que se defina o drawing origem para uma localização:
   Call "gdi32.dll" "GetDeviceCaps" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getdevicecaps
   \ A função GetDeviceCaps recupera informações específicas do dispositivo para o dispositivo especificado.
     O quadro atual [hdc] \O número identificador do contexto do dipositivo
-    e 112 [index = PhysicalOffsetYX]  \O item a ser devolvido.
+    e 112 [index = PhysicalOffsetX] \O item a ser devolvido.
     \PHYSICALOFFSETY = Para dispositivos de impressão: a distância da borda superior da página física até a borda superior da área imprimível, em unidades de dispositivo. 
     \Por exemplo, uma impressora configurada para imprimir a 600 dpi em papel de 8,5 por 11 polegadas, 
     \que não pode imprimir no papel de 0,5 polegada superior, tem um deslocamento físico vertical de 300 unidades de dispositivo.
