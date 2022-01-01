@@ -1,4 +1,9 @@
 \ append poderia ser "acrescente"
+  \ https://www.adobe.com/technology/pdfs/presentations/KingPDFTutorial.pdf
+  \References
+  \PDF Language Reference Manual (1.5 & 1.4) -> http://partners.adobe.com/asn/tech/pdf (under Technologies/PDF Reference)
+  \PDF/A Draft Specifications => http://www.aiim.org/standards (Select PDF-Archive, ISO PDF-Archive, CD)
+  \PDF Tutorial (Inside PDF) http://home.comcast.net/~jk05/presentations
 
 O remembered pdf endereço completo é um endereço completo.
 
@@ -579,7 +584,7 @@ Etapas para que se pinte uma imagem:
   Pinte a imagem sobre o gpGraphic sob a coordenada X do canto superior esquerdo desta caixa intacta desta imagem e a coordenada Y do canto superior esquerdo desta caixa intacta desta imagem.
   Call "gdiplus.dll" "GdipDeleteGraphics" com 
   \ Exclui o objeto Graphics especificado.
-    O gpGraphic. [*graphics] \ponteiro do número identificador do objeto Graphics.
+    O gpGraphic. [*graphics] \ponteito do número identificador do objeto Graphics.
    \Valor de retorno da funlção: Retorna o valor GpStatus, sendo que o valor 0 significa que a função foi bem sucedida.
   Restaure o quadro atual.
 
@@ -832,8 +837,8 @@ Etapas para que se inicie uma folha usando uma caixa e um título de índice remis
   Atribua a altura desta caixa menos a quantidade de twips/pixel ao current altura deste pdf state.
   Adicione os current contents deste pdf state usando "contents".
   Posponha "/Contents " junto com o número destes current contents deste pdf state seguido de " 0 R" para o current página deste pdf state.
-  Posponha "0.05 0 0 0.05 1 1 cm" para os current contents deste pdf state. \ abra matrix para scale 72/1440
-  Posponha "13 w 0 J 0 j 0 i" para os current contents deste pdf state. \ pincelwidth, linecap, linejoin, flatness \ 15 w sobre pincelwidth comes out para wide
+  Posponha "0.05 0 0 0.05 1 1 cm" para os current contents deste pdf state. \ open matrix to scale 72/1440
+  Posponha "13 w 0 J 0 j 0 i" para os current contents deste pdf state. \ penwidth, linecap, linejoin, flatness \ 15 w sobre penwidth comes out to wide
 
 Etapas para que se inicie uma folha usando uma caixa e um título de índice remissivo (pdf style):
   Ligue a página detector deste pdf state.
@@ -921,7 +926,7 @@ Etapas para que se inicie uma folha usando uma caixa:
     devolvendo o número X deste par de números.
   Call "gdi32.dll" "GetDeviceCaps" com 
     A área de impressão 
-    e 90 [LOGPIXELSY] 
+    e 90 [index = LOGPIXELSY] 
     \ LOGPIXELSY é o número de pixels por polegada lógica ao longo da altura da tela. Em um sistema com vários monitores, este valor é o mesmo para todos os monitores.
     devolvendo o número Y deste par de números.
   Call "gdi32.dll" "SetViewportExtEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-setviewportextex
@@ -948,12 +953,13 @@ Etapas para que se inicie uma folha usando uma caixa:
     e nil. [lpsz] \Um ponteiro para uma estrutura SIZE que recebe as extensões da janela anterior, em unidades lógicas. 
     \Se lpSize for NULL, este parâmetro não será usado.
     \ https://docs.microsoft.com/en-us/previous-versions/dd145106(v=vs.85)
-  Call "gdi32.dll" "StartPage" com 
-    A área de impressão.
+  Call "gdi32.dll" "StartPage" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-startpage
+  \ A função StartPage prepara o driver da impressora para aceitar dados.
+    A área de impressão. [hdc] \ O identificador do contexto do dispositivo para o trabalho de impressão.
   Atribua a área de impressão ao quadro atual.
   Call "gdi32.dll" "GetDeviceCaps" com 
-    A área de impressão 
-    e 88 [LOGPIXELSX] 
+    A área de impressão [hdc]
+    e 88 [index = LOGPIXELSX] 
     devolvendo um número.
   Atribua a quantidade de twips/pixel ao saved quantidade de twips/pixel .
   Atribua o tpi dividido pelo número ao quantidade de twips/pixel .
@@ -965,7 +971,8 @@ Etapas para que se inicie a impressão um pdf:
   Inicie a impressão o pdf (start o root).
   Inicie a impressão o pdf (start o parent).
 
-Etapas para que se inicie a impressão um pdf (start o parent):
+Etapas para que se inicie a impressão um pdf (start o parent): 
+
   Adicione um parent pdf object usando "parent".
   Atribua o parent ao parent deste pdf state.
   Posponha o número deste parent seguido de " 0 obj" para o parent.
@@ -990,7 +997,7 @@ Etapas para que se inicie uma folha modo paisagem usando um título de índice rem
   Inicie a folha usando a caixa e o título de índice remissivo (pdf style).
 
 Etapas para que se posponha uma string para um pdf object:
-  \ this guys adds CRLF
+  \ Adiciona o CRLF ao final da string
   Posponha a string para o data deste pdf object.
   Posponha o texto CRLF para o data deste pdf object.
 
@@ -1005,7 +1012,16 @@ Etapas para que se adicione um pdf object usando um categoria:
 
 Etapas para que se end uma folha:
   Se o documento detector deste pdf state estiver ativo, end a folha (pdf style); volte.
-  Call "gdi32.dll" "EndPage" com a área de impressão.
+  Call "gdi32.dll" "EndPage" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-endpage
+  \ A função EndPage notifica o dispositivo que o aplicativo terminou de gravar em uma página. 
+  \Esta função é normalmente usada para fazer com que o driver de dispositivo avançe para uma nova página.
+    a área de impressão. [hdc] \ O identificador do contexto do dispositivo para o trabalho de impressão.
+    \Quando uma página em um arquivo em spool excede +- 350 MB, pode haver falha na impressão e não é enviada uma mensagem de erro. 
+    \Por exemplo, isso pode ocorrer ao imprimir arquivos EMF grandes. 
+    \O limite de tamanho da página depende de muitos fatores, incluindo:
+    \ A quantidade de memória virtual disponível, 
+    \ A quantidade de memória alocada por processos de chamada 
+    \ e A quantidade de fragmentação no heap do processo.
   Atribua o memory canvas ao quadro atual.
   Atribua o saved quantidade de twips/pixel ao quantidade de twips/pixel .
 
