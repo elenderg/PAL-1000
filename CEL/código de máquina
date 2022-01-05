@@ -98,6 +98,36 @@ Etapas para que se subtraia um par de números desde um segundo par de números:
 \ EXISTEM REGISTRADORES DE USO GERAL E DE USO ESPECÍFICO
 \ NO GERAL ebp+8 SE REFERE AO 1º ARGUMENTO DE UMA FUNÇÃO
 \ ebp+12 SE REFERE AO 2º ARGUMENTO E ASSIM POR DIANTE
+\O registrador ESP é um indicador do topo da pilha - portanto, muda constantemente à medida que a pilha aumenta ou diminui. 
+\EBP é um registrador auxiliar.
+\ Primeiro, colocamos o conteúdo de ebp na pilha. em seguida, copiamos ESP (endereço do topo da pilha atual) para ebp 
+\é por isso que quando nos referimos a outros itens na pilha, usamos o valor constante de ebp (e não alteramos um de esp).
+\Os parâmetros são acessados usando o  do ponteiro salvo de base de pilha EBP
+\[ebp + 16] - 3º parâmetro 'c'
+\[ebp + 12] - 2º parâmetro 'b'
+\[ebp + 8] - 1 º parâmetro 'a'
+\[ebp + 4] - endereço de retorno da função
+\[ebp + 0] - registrador do ponteiro salvo de base de pilha 
+\esp é o topo da pilha.
+\ebp geralmente é definido como esp no início de uma função. 
+\Parâmetros de função e variáveis locais são acessados ao adicionar e subtrair um valor de deslocamento constante do registrador ebp. 
+\Todas as convenções de chamada x86 definem ebp como sendo preservado nas chamadas de função. 
+\O próprio ebp aponta, na verdade, para o ponteiro de base do quadro anterior, o que permite o funcionamento da pilha em um depurador e a visualização de outras variáveis locais de quadros.
+\ESP é o ponteiro da pilha atual, que mudará sempre que uma palavra ou endereço for inserido ou colocado na / fora da pilha. 
+\EBP é uma maneira mais conveniente para o compilador controlar os parâmetros de uma função e as variáveis locais do que usar o ESPdiretamente.
+\Geralmente (e isso pode variar de compilador para compilador), todos os argumentos para uma função sendo chamada são colocados na pilha pela função de chamada 
+\(geralmente na ordem inversa em que são declarados no protótipo da função, mas isso varia) . 
+\Em seguida, a função é chamada, o que coloca o endereço de retorno ( EIP) na pilha.
+\Ao entrar na função, o EBPvalor antigo é colocado na pilha e EBPé definido como o valor de ESP. 
+\Em seguida, o ESPé diminuído (porque a pilha cresce para baixo na memória) para alocar espaço para as variáveis locais e temporárias da função. 
+\A partir desse ponto, durante a execução da função, os argumentos para a função estão localizados na pilha em deslocamentos positivos de EBP
+\(porque foram empurrados antes da chamada da função), e as variáveis locais estão localizadas em deslocamentos negativos de EBP
+\(porque eles foram alocados na pilha após a entrada da função). 
+\É por isso que EBPé chamado de Ponteiro de Quadro , porque aponta para o centro do quadro de chamada de função .
+\Ao sair, tudo que a função precisa fazer é definir ESPo valor de EBP(que desaloca as variáveis locais da pilha e expõe a entrada EBPno topo da pilha), 
+\em seguida, retirar o EBPvalor antigo da pilha e, em seguida, a função retornos (estalar o endereço de retorno em EIP).
+\Ao retornar à função de chamada, ele pode incrementar ESPpara remover os argumentos da função que colocou na pilha antes de chamar a outra função. 
+\Neste ponto, a pilha está de volta ao mesmo estado em que estava antes de invocar a função chamada.
 
 Etapas para que se subtraia um pedaço desde um segundo pedaço:
   Intel $8B8508000000. \ mov eax,[ebp+8] ; -> Salva o 1º byte (ebp+8) no registrador eax
@@ -493,12 +523,12 @@ Etapas para que se disjuncione seletivamente um número com um segundo número:
   Intel $3103. \ xor [ebx],eax
 
 Etapas para que se avance um percorredor:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ comando de movimentação do percorredor?
-  Intel $FF8314000000. \ inc [ebx+20] \ aumenta o valor do caractere final deste segmento inicial deste percorredor.
-  Intel $FF8308000000. \ inc [ebx+8] \ aumenta o valor do caractere inicial deste segmento final deste percorredor.
+  Intel $8B9D08000000. \ mov ebx,DWORD PTR [ebp+0x8] | mov ebx,[ebp+8]  \ salva o percorredor no registrador ebx
+  Intel $FF8314000000. \ inc DWORD PTR [ebx+0x14] | inc [ebx+20] \ aumenta o valor do caractere final deste segmento inicial deste percorredor.
+  Intel $FF8308000000. \ inc DWORD PTR [ebx+0x8] | inc [ebx+8] \ aumenta o valor do caractere inicial deste segmento final deste percorredor.
 
 Etapas para que se recue um percorredor:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ comando de movimentação do percorredor?
+  Intel $8B9D08000000. \ mov ebx,[ebp+8]  \ salva o percorredor no registrador ebx
   Intel $FF8B14000000. \ dec [ebx+20] \ reduz o valor do caractere final deste segmento inicial deste percorredor.
   Intel $FF8B08000000. \ dec [ebx+8] \ reduz o valor do caractere inicial deste segmento final deste percorredor.
 
