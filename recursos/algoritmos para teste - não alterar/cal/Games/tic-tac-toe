@@ -1,0 +1,522 @@
+\ TYPES
+
+A board is a thing with a box and some cells.
+A cell is a thing with a row#, a column#, a location, a box and a mark.
+A location is a string ["center" or "corner" or "side"].
+A player is a thing with a mark. 
+A mark is a string ["X" or "O"].
+A message area is a thing with a box and a message.
+
+\ GLOBAL VARIABLES
+
+The instructions are a message area.
+The board is a board.
+The status is a message area.
+The human is a player.
+The machine is a player.
+The flag is a flag.
+
+\ INFRASTRUCTURE ROUTINES
+
+To run:
+Start up.
+Initialize.
+Handle events.
+Finalize.
+Shut down.
+
+To initialize:
+Create the board.
+Create the instructions.
+Create the status.
+Create the human using "X".
+Create the machine using "O".
+
+To handle events:
+Deque an event.
+If the event is nil, exit.
+Handle the event.
+Repeat.
+
+To finalize:
+Destroy the machine.
+Destroy the human.
+Destroy the status.
+Destroy the instructions.
+Destroy the board.
+
+\ CREATE ROUTINES
+
+To create a board:
+Allocate memory for the board.
+Make the board's box 3 inches by 3 inches.
+Center the board's box in the screen's box.
+Make a box 1 inch by 1 inch.
+Move the box to the board's left-top.
+Put 1 into a row#. Put 1 into a column#.
+Loop.
+Allocate memory for a cell. Append the cell to the board's cells.
+Put the box into the cell's box.
+Put the row# into the cell's row#. Put the column# into the cell's column#.
+Get the cell's location given the row# and the column#.
+Move the box right 1 inch. Add 1 to the column#. If the box is still in the board's box, repeat.
+Move the box to the left of the board's box. Put 1 into the column#.
+Move the box down 1 inch. Add 1 to the row#. If the box is still in the board's box, repeat.
+
+To get a location given a row# and a column#:
+If the row# then the column# is "11", put "corner" into the location.
+If the row# then the column# is "12", put "side" into the location.
+If the row# then the column# is "13", put "corner" into the location.
+If the row# then the column# is "21", put "side" into the location.
+If the row# then the column# is "22", put "center" into the location.
+If the row# then the column# is "23", put "side" into the location.
+If the row# then the column# is "31", put "corner" into the location.
+If the row# then the column# is "32", put "side" into the location.
+If the row# then the column# is "33", put "corner" into the location.
+
+To create the instructions:
+Allocate memory for the instructions.
+Put the screen's left into the instructions's left.
+Put the board's top minus 3/4 inch into the instructions's top.
+Put the board's top minus 1/2 inch into the instructions's bottom.
+Put the screen's right into the instructions's right.
+Put "Click outside the grid for a new game. Press ESC to quit." into the instructions's message.
+
+To create the status:
+Allocate memory for the status.
+Put the screen's left into the status's left.
+Put the board's bottom plus 1/2 inch into the status's top.
+Put the board's bottom plus 3/4 inch into the status's bottom.
+Put the screen's right into the status's right.
+Put "Ready for a new game. Your turn." into the status's message.
+
+To create a player given a mark:
+Allocate memory for the player.
+Put the mark into the player's mark.
+
+\ EVENT HANDLING ROUTINES
+
+To handle an event:
+If the event's kind is "refresh", Show everything; exit.
+If the event's kind is "set cursor", handle the event (set cursor).
+If the event's kind is "key down", handle the event (key down).
+If the event's kind is "left click", handle the event (left click).
+
+To handle an event (key down):
+If the event's key is the escape key, quit; exit.
+If the event's key is the N-key, start over.
+
+To handle an event (left click):
+Find a cell using the event's spot.
+If the cell is nil, start over; exit.
+If the game is over, cluck; exit.
+If the cell is not blank, cluck; exit.
+Put the human's mark in the cell.
+If the game is not over, Respond.
+Update the status.
+Show everything.
+Flush all input.
+
+To handle an event (set cursor):
+Show the arrow cursor.
+
+\ APPARENTLY INTELLIGENT (AI©) RESPONSE ROUTINES
+
+To respond:
+Show "Thinking...".
+Wait 1/2 second.
+Clear the flag.
+Respond by winning. If the flag is set, exit.
+Respond by blocking. If the flag is set, exit.
+Respond to the start-in-a-corner opening. If the flag is set, exit.
+Respond to the start-in-the-center opening. If the flag is set, exit.
+Respond to the start-in-a-side opening. If the flag is set, exit.
+Respond to the opposite-corners gambit. If the flag is set, exit. 
+Respond to the corner-side gambit. If the flag is set, exit.
+Respond to the center-corner gambit. If the flag is set, exit.
+Put the machine's mark in any blank cell.
+
+To respond by winning:
+Get a cell from the board's cells.
+If the cell is nil, exit.
+If the cell is not blank, repeat.
+If the machine can use the cell to win, break.
+Repeat.
+Put the machine's mark into the cell.
+Set the flag.
+
+To respond by blocking:
+Get a cell from the board's cells.
+If the cell is nil, exit.
+If the cell is not blank, repeat.
+If the human can use the cell to win, break.
+Repeat.
+Put the machine's mark into the cell.
+Set the flag.
+
+To respond to the start-in-a-corner opening:
+Get a cell with the human's mark.
+If the cell is nil, exit.
+If the cell is not the only cell with the human's mark, exit.
+If the cell's location is not "corner", exit.
+Put the machine's mark in the center cell.
+Set the flag.
+
+To respond to the start-in-the-center opening:
+Get a cell with the human's mark.
+If the cell is nil, exit.
+If the cell is not the only cell with the human's mark, exit.
+If the cell's location is not "center", exit.
+Put the machine's mark in any corner cell.
+Set the flag.
+
+To respond to the start-in-a-side opening:
+Get a cell with the human's mark.
+If the cell is nil, exit.
+If the cell is not the only cell with the human's mark, exit.
+If the cell's location is not "side", exit.
+Put the machine's mark in any corner cell that is touching the cell.
+Set the flag.
+
+To respond to the corner-side gambit:
+Get a center cell at 2 and 2.
+If the center cell is blank, put the machine's mark in the center cell; set the flag; exit.
+Loop.
+Get a cell from the board's cells.
+If the cell is nil, exit.
+If the cell is not blank, repeat.
+If the cell's location is not "corner", repeat.
+If the human's mark is not in the cell's row#, repeat.
+If the human's mark is not in the cell's column#, repeat.
+Put the machine's mark in the cell.
+Set the flag.
+
+To respond to the opposite-corners gambit:
+Get a cell from the board's cells.
+If the cell is nil, exit.
+If the cell is blank, repeat.
+If the cell's location is not "corner", repeat.
+If the human's mark is not the cell's mark, repeat.
+Find another cell across diagonally from the cell.
+If the human's mark is not the other cell's mark, repeat.
+If all side cells are in use, exit.
+Put the machine's mark in any side cell.
+Set the flag.
+
+To respond to the center-corner gambit:
+Get a center cell at 2 and 2.
+If the center cell's mark is not the human's mark, exit.
+Loop.
+Get a cell from the board's cells.
+If the cell is nil, exit.
+If the cell is blank, repeat.
+If the cell's location is not "corner", repeat.
+If the human's mark is not the cell's mark, repeat.
+If all corner cells are in use, exit.
+Put the machine's mark in any corner cell.
+Set the flag.
+
+To update the status:
+If the human has won, put "The human has won. Beginner's luck, probably." into the status's message; exit.
+If the machine has won, put "The machine has won. The machine is smarter than the human. But not smarter than the human who programmed it." into the status's message; exit.
+If the game is over, put "Game over. Nobody won." into the status's message; exit.
+Put "Your turn." into the status's message.
+
+\ DISPLAY ROUTINES
+
+To show a string:
+Put the string into the status's message.
+Show everything.
+
+To show everything:
+Draw the screen's box with the black color and the black color.
+Draw the instructions.
+Draw the board.
+Draw the status.
+Refresh the screen.
+
+To draw the board:
+Get a cell from the board's cells.
+If the cell is nil, break.
+Draw the cell.
+Repeat.
+Draw the board's box with the black pen.
+
+To draw a cell:
+Outline the cell's box with the dark green pen.
+Put "osmosian" and 1 inch into a font.
+Draw the cell's mark in the center of the cell's box with the darker green pen and the font.
+
+To draw the instructions:
+Put "osmosian" and 1/4 inch into a font.
+Draw the instructions's box with the black color and the black color.
+Draw the instructions's message in the center of the instructions's box with the dark green pen and the font.
+
+To draw the status:
+Put "osmosian" and 1/4 inch into a font.
+Draw the status's box with the black color and the black color.
+Draw the status's message in the center of the status's box with the dark green pen and the font. \ was black
+
+\ HELPER ROUTINES
+
+To start over:
+Clear the board.
+Put "Ready for a new game. Your turn." into the status's message.
+\Update the status.
+Show everything.
+Flush all input.
+
+Show everything.
+
+To clear the board:
+Get a cell from the board's cells.
+If the cell is nil, exit.
+Clear the cell's mark.
+Repeat.
+
+\ FIND ROUTINES
+
+To find a cell given a spot:
+Void the cell.
+Loop.
+Get the cell from the board's cells.
+If the cell is nil, exit.
+If the spot is in the cell's box, exit.
+Repeat.
+
+To find another cell across diagonally from a cell:
+If the cell's row# then the cell's column# is "11", get the other cell at 3 and 3.
+If the cell's row# then the cell's column# is "13", get the other cell at 3 and 1.
+If the cell's row# then the cell's column# is "33", get the other cell at 1 and 1.
+If the cell's row# then the cell's column# is "31", get the other cell at 1 and 3.
+
+\ DECIDERS
+
+To decide if a cell is blank:
+If the cell's mark is blank, say yes.
+Say no.
+
+To decide if a cell is touching a side cell:
+If the cell's row# is the side cell's row#, say yes.
+If the cell's column# is the side cell's column#, say yes.
+Say no.
+
+To decide if a cell is the only cell with a mark:
+Get another cell from the board's cells.
+If the other cell is nil, say yes.
+If the other cell is the cell, repeat.
+If the other cell's mark is the mark, say no.
+Repeat.
+
+To decide if a mark is in a row#:
+Get a cell from the board's cells.
+If the cell is nil, say no.
+If the cell's row# is not the row#, repeat.
+If the cell's mark is the mark, say yes.
+Repeat.
+Say no.
+
+To decide if a mark is in a column#:
+Get a cell from the board's cells.
+If the cell is nil, say no.
+If the cell's column# is not the column#, repeat.
+If the cell's mark is the mark, say yes.
+Repeat.
+Say no.
+
+To decide if a player can use a cell to win:
+If the cell is not blank, say no.
+If the player can complete the cell's row#, say yes.
+If the player can complete the cell's column#, say yes.
+If the player can complete the backslash diagonal using the cell, say yes.
+If the player can complete the slash diagonal using the cell, say yes.
+Say no.
+
+To decide if the game is over:
+If the human has won, say yes.
+If the machine has won, say yes.
+Loop.
+Get a cell from the board's cells.
+If the cell is nil, say yes.
+If the cell is blank, say no.
+Repeat.
+
+To decide if a player has won:
+If the player has completed any row, say yes.
+If the player has completed any column, say yes.
+If the player has completed any diagonal, say yes.
+Say no.
+
+To decide if a player has completed any row:
+Put 1 into a row#.
+Loop.
+If the player has completed the row#, say yes.
+Add 1 to the row#.
+If the row# is less than or equal to 3, repeat.
+Say no.
+
+To decide if a player has completed any column:
+Put 1 into a column#.
+Loop.
+If the player has completed the column#, say yes.
+Add 1 to the column#.
+If the column# is less than or equal to 3, repeat.
+Say no.
+
+To decide if a player has completed a row#:
+Get a cell from the board's cells.
+If the cell is nil, say no.
+If the cell's row# is not the row#, repeat.
+If the cell's mark is not the player's mark, repeat.
+Add 1 to a count.
+If the count is 3, say yes.
+Repeat.
+
+To decide if a player has completed a column#:
+Get a cell from the board's cells.
+If the cell is nil, say no.
+If the cell's column# is not the column#, repeat.
+If the cell's mark is not the player's mark, repeat.
+Add 1 to a count.
+If the count is 3, say yes.
+Repeat.
+
+To decide if a player has completed any diagonal:
+If the player has completed the backslash diagonal, say yes.
+If the player has completed the slash diagonal, say yes.
+Say no.
+
+To decide if a player has completed the backslash diagonal:
+Get a cell from the board's cells.
+If the cell is nil, say no.
+If the cell is not part of the backslash diagonal, repeat.
+If the cell's mark is not the player's mark, say no.
+Add 1 to a count.
+If the count is 3, say yes.
+Repeat.
+
+To decide if a player has completed the slash diagonal:
+Get a cell from the board's cells.
+If the cell is nil, say no.
+If the cell is not part of the slash diagonal, repeat.
+If the cell's mark is not the player's mark, say no.
+Add 1 to a count.
+If the count is 3, say yes.
+Repeat.
+
+To decide if a player can complete a row#:
+Get a cell from the board's cells.
+If the cell is nil, break.
+If the cell's row# is not the row#, repeat.
+If the cell's mark is the player's mark, add 1 to a count.
+Repeat.
+If the count is 2, say yes.
+Say no.
+
+To decide if a player can complete a column#:
+Get a cell from the board's cells.
+If the cell is nil, break.
+If the cell's column# is not the column#, repeat.
+If the cell's mark is the player's mark, add 1 to a count.
+Repeat.
+If the count is 2, say yes.
+Say no.
+
+To decide if a player can complete the backslash diagonal using a cell:
+If the cell is not part of the backslash diagonal, say no.
+Loop.
+Get another cell from the board's cells.
+If the other cell is nil, break.
+If the other cell is not part of the backslash diagonal, repeat.
+If the other cell's mark is the player's mark, add 1 to a count.
+Repeat.
+If the count is 2, say yes.
+Say no.
+
+To decide if a player can complete the slash diagonal using a cell:
+If the cell is not part of the slash diagonal, say no.
+Loop.
+Get another cell from the board's cells.
+If the other cell is nil, break.
+If the other cell is not part of the slash diagonal, repeat.
+If the other cell's mark is the player's mark, add 1 to a count.
+Repeat.
+If the count is 2, say yes.
+Say no.
+
+To decide if all corner cells are in use:
+Get a cell from the board's cells.
+If the cell is nil, say yes.
+If the cell's location is not "corner", repeat.
+If the cell is blank, say no.
+Repeat.
+
+To decide if all side cells are in use:
+Get a cell from the board's cells.
+If the cell is nil, say yes.
+If the cell's location is not "side", repeat.
+If the cell is blank, say no.
+Repeat.
+
+To decide if a cell is part of the backslash diagonal:
+If the cell's row# is the cell's column#, say yes.
+Say no.
+
+To decide if a cell is part of the slash diagonal:
+If the cell's row# plus the cell's column# is 4, say yes.
+Say no.
+
+\ GET AND PUT HELPER ROUTINES
+
+To get a cell with a mark:
+Void the cell.
+Loop.
+Get the cell from the board's cells.
+If the cell is nil, break.
+If the cell is blank, repeat.
+If the cell's mark is the mark, exit.
+Repeat.
+
+To get a cell at a row# and a column#:
+Void the cell.
+Loop.
+Get the cell from the board's cells.
+If the cell is nil, exit.
+If the cell's row# is not the row#, repeat.
+If the cell's column# is not the column#, repeat.
+
+To put a mark in a cell:
+Put the mark in the cell's mark.
+
+To put a mark in the center cell:
+Get a cell at 2 and 2.
+Put the mark in the cell.
+
+To put a mark in any corner cell:
+Get a cell from the board's cells.
+If the cell is nil, exit.
+If the cell is not blank, repeat.
+If the cell's location is not "corner", repeat.
+Put the mark in the cell.
+
+To put a mark in any corner cell that is touching a side cell:
+Get a cell from the board's cells.
+If the cell is nil, exit.
+If the cell is not blank, repeat.
+If the cell's location is not "corner", repeat.
+If the cell is not touching the side cell, repeat.
+Put the mark in the cell.
+
+To put a mark in any side cell:
+Get a cell from the board's cells.
+If the cell is nil, exit.
+If the cell is not blank, repeat.
+If the cell's location is not "side", repeat.
+Put the mark in the cell.
+
+To put a mark in any blank cell:
+Get a cell from the board's cells.
+If the cell is nil, exit.
+If the cell is not blank, repeat.
+Put the mark into the cell.
+
