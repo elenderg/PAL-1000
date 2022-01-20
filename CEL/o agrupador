@@ -68,7 +68,7 @@ O compilador é um conjunto com
   Um listagem trecho.
 
 Etapas para que se apresente uma mensagem de erro contendo uma string:
-  Se o detector de erros deste compilador estiver ativado, cancele.
+  Se o detector de erros deste compilador estiver ativado então cancele.
   Ligue o detector de erros deste compilador.
   Atribua a string à mensagem de erro deste compilador.
 
@@ -1779,9 +1779,10 @@ Etapas para que se compile a próxima instrução usando um percorredor (if):
   Se a rotina não for inexistente, adicione push fragments usando os monikettes.
   Se a rotina for inexistente, converta os monikettes para um cabeçalho expandido.
   Destrua os monikettes.
-  Se a rotina for inexistente, apresente uma mensagem de erro contendo "Preciso de um decider que tenha as palavras: " junto com o cabeçalho expandido seguido de "." e o percorredor; volte.
+  Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro. A rotina: '" junto com o cabeçalho expandido seguido de "' não existe." e o percorredor; volte.
   Se o detector de deliberação desta rotina não estiver ativo, apresente a mensagem de erro contendo "Cara eu vou precisar de um decider aqui, blz?" e o percorredor; volte.
-  Se o segmento inicial deste percorredor não for a vírgula, apresente a mensagem de erro contendo "Acho que você esqueceu de uma vírgula, eu achei isso aqui: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; volte.
+  \ Se o segmento inicial deste percorredor não for a vírgula, apresente a mensagem de erro contendo "Acho que você esqueceu de uma vírgula, eu achei isso aqui: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; volte.
+  Se o segmento inicial deste percorredor não for qualquer if-separator, apresente a mensagem de erro contendo "Acho que você esqueceu de colocar uma vírgula, eu achei isso aqui: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; volte.
   Adicione um fragment usando a etiqueta de demanda interna e a rotina.
   Se o detector estiver ativo, adicione um segundo fragment usando a etiqueta de negação.
   Adicione um terceiro fragment usando o jump false etiqueta.
@@ -1797,6 +1798,11 @@ Etapas para que se compile a próxima instrução usando um percorredor (if):
     Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Você precisa usar um ponto ao invés de usar o termo: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; volte.
   Mova o percorredor (usando diretrizes do compilador).
   Adicione um quarto fragment usando o end if etiqueta.
+
+Etapas para que se determine se um subtexto é qualquer if-separator:
+  Se o subtexto for a vírgula, diga sim.
+  Se o subtexto for "então", diga sim.
+  [Caso contrário] Diga não.
 
 Etapas para que se compile a próxima instrução usando um percorredor (Intel):
   Mova o percorredor (usando diretrizes do compilador).
@@ -2924,7 +2930,10 @@ Etapas para que se determine se um percorredor está sobre algum tipo de monikett
   Se o segmento inicial deste percorredor for algum tipo de literal, diga não.
   Se o segmento inicial deste percorredor for algum tipo de mark, diga não.
   Se o segmento inicial deste percorredor for algum tipo de symbol, diga não.
+  Se o segmento inicial deste percorredor for "então", diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
+
+
 
 Etapas para que se determine se uma string é algum called:
   \PAL
@@ -2964,6 +2973,7 @@ Etapas para que se determine se um percorredor está sobre algum tipo de nome end
   Se o segmento inicial deste percorredor for algum tipo de literal, diga sim.
   Se o segmento inicial deste percorredor for algum called, diga sim.
   \Se o segmento inicial deste percorredor for "equal", diga sim.
+  Se o segmento inicial deste percorredor for "então", diga sim.
   Se o segmento inicial deste percorredor for algum tipo de operador de atribuição composto, diga sim.
   Se o segmento inicial deste percorredor estiver em branco, diga sim.
   \ Portuguese trouble makers
@@ -2984,6 +2994,7 @@ Etapas para que se determine se um percorredor está sobre algum tipo de nome sta
   Se o segmento inicial deste percorredor for algum tipo de literal, diga não.
   Se o segmento inicial deste percorredor for algum called, diga sim.
   \Se o segmento inicial deste percorredor for "equal", diga sim.
+  Se o segmento inicial deste percorredor for "então", diga sim.
   Se o segmento inicial deste percorredor for algum tipo de operador de atribuição composto, diga sim.
   Se o segmento inicial deste percorredor estiver em branco, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
