@@ -1,6 +1,6 @@
-# plain-english-programming-language README
+# plain-english README
 
-This is the README for your extension "plain-english-programming-language". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "plain-english". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
