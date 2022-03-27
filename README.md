@@ -27,7 +27,7 @@ O projeto é composto de basicamente 6 arquivos:
 
 ## Funcionamento
 
-A interface pode parecer confusa para alguns no começo. Existem 26 caracteres de A a Z, cada um correspondendo a um menu específico,  
+A interface do Ambiente Integrado de Deesenvolvimento (ADI) pode parecer confusa para alguns no começo. Existem 26 caracteres de A a Z, cada um correspondendo a um menu específico,  
 <img src="docs/Imagens-Para-o-Readme/menus.png" Alt="Menu do programa">
 - além do botão **＊** que é utilizado para selecionar a paleta de cores. 
  <img src="docs/Imagens-Para-o-Readme/✷.png" Alt="Paleta de cores">
