@@ -24,15 +24,15 @@ Um intervalo é um número.
 Uma caixa de texto é uma coisa com 
   Uma caixa,
   Uma origem,
-  Uma pincel cor,
-  Uma font,
+  Uma cor do pincel,
+  Uma fonte,
   Um alinhamento,
   Some linhas des textos,
   Uma margem,
   Uma scale fração,
-  Um wrap detector,
-  Um horizontal scroll detector,
-  Um vertical scroll detector,
+  Um detector de quebra de texto,
+  Um detector de rolagem horizontal,
+  Um detector de rolagem vertical,
   Uma seleção,
   Um detector de alteração,
   Uma última operação,
@@ -42,15 +42,15 @@ Uma caixa de texto é uma coisa com
 Um campo de texto é uma coisa com
   Uma caixa,
   Uma origem,
-  Uma pincel cor,
-  Uma font,
+  Uma cor do pincel,
+  Uma fonte,
   Um alinhamento,
   Some linhas des textos,
   Uma margem,
   Uma scale fração,
-  Um wrap detector,
-  Um horizontal scroll detector,
-  Um vertical scroll detector,
+  Um detector de quebra de texto,
+  Um detector de rolagem horizontal,
+  Um detector de rolagem vertical,
   Uma seleção,
   Um detector de alteração,
   Uma última operação,
@@ -73,11 +73,9 @@ Uma referência é uma coisa com
   Uma string e 
   Um endereço de memória (reference).
 
-Um grain é 10 milliseconds.
-
 Um GpImageAttributes é um endereço de memória.
 
-Um event é uma coisa com
+Um evento é uma coisa com
 Uma categoria [atualização de tela, mostrar seta, pressionamento de tecla, clique, clique duplo, clique direito, clique direito duplo, deactivate, activate, done], \ 
 Um detector de tecla Shift, 
 Um detector de tecla Ctrl, 
@@ -449,7 +447,7 @@ Etapas para que se assign um endereço de memória usando um quantidade de pedaços
 
 Etapas para que se role automaticamente uma caixa de texto usando uma localização e um detector:
   Se a caixa de texto for inexistente, desative o detector; volte.
-  Atribua a altura desta font desta caixa de texto a um número.
+  Atribua a altura desta fonte desta caixa de texto a um número.
   Limpe um difference.
   Atribua a caixa desta caixa de texto a uma caixa.
   Indent a caixa usando a quantidade de twips/pixel .
@@ -457,8 +455,8 @@ Etapas para que se role automaticamente uma caixa de texto usando uma localizaçã
   Se a coordenada Y desta localização for maior do que a coordenada Y do canto inferior direito desta caixa, atribua o número ao número Y desta difference; negate o número Y desta difference.
   Se a coordenada X desta localização for menor do que a coordenada X do canto superior esquerdo desta caixa, atribua o número ao número X desta difference.
   Se a coordenada X desta localização for maior do que a coordenada X do canto inferior direito desta caixa, atribua o número ao número X desta difference; negate o número X desta difference.
-  Se o horizontal scroll detector desta caixa de texto não estiver ativo, atribua 0 ao número X desta difference.
-  Se o vertical scroll detector desta caixa de texto não estiver ativo, atribua 0 ao número Y desta difference.
+  Se o detector de rolagem horizontal desta caixa de texto não estiver ativo, atribua 0 ao número X desta difference.
+  Se o detector de rolagem vertical desta caixa de texto não estiver ativo, atribua 0 ao número Y desta difference.
   Se a difference for 0, desative o detector; volte.
   Ligue o detector.
   Role a caixa de texto usando a difference.
@@ -693,18 +691,20 @@ Etapas para que se mude uma caixa de texto usando uma altura da fonte:
   Se a caixa de texto for inexistente, cancele.
   Subtraia a margem desta caixa de texto desde a coordenada X desta caixa de texto.
   Atribua a origem desta caixa de texto dividido pela malha desta caixa de texto a um par de números.
-  Atribua a altura da fonte à altura desta font desta caixa de texto.
-  Redimensione proporcionalmente a altura desta font desta caixa de texto usando a scale desta caixa de texto.
+  Atribua a altura da fonte à altura desta fonte desta caixa de texto.
+  Redimensione proporcionalmente a altura desta fonte desta caixa de texto usando a scale desta caixa de texto.
   Atribua o par de números times a malha desta caixa de texto à origem desta caixa de texto.
   Adicione a margem desta caixa de texto para a coordenada X desta caixa de texto.
   Limite a origem of a caixa de texto.
   Wrap a caixa de texto.
 
+Um nome da fonte é um nome.
+
 Etapas para que se modifique uma caixa de texto usando uma nome da fonte;
 Etapas para que se altere uma caixa de texto usando uma nome da fonte;
 Etapas para que se mude uma caixa de texto usando uma nome da fonte:
   Se a caixa de texto for inexistente, cancele.
-  Atribua o nome da fonte ao nome desta font desta caixa de texto.
+  Atribua o nome da fonte ao nome desta fonte desta caixa de texto.
   Wrap a caixa de texto.
 
 Um character é um pedaço.
@@ -729,8 +729,8 @@ Etapas para que se desative um detector;
 Etapas para que se desligue um detector:
   Atribua 0 ao detector. \ era "Atribua no ao detector." O valor da keyword "no" estava no executável do CAL-1000, de acordo com o  Dahn.
 
-Etapas para que se limpe uma font:
-  Atribua "" e 0 à font.
+Etapas para que se limpe uma fonte:
+  Atribua "" e 0 à fonte.
 
 Etapas para que se limpe um fração:
   Atribua 0 e 1 à fração.
@@ -1047,12 +1047,12 @@ Etapas para que se converta um detector para um texto hexadecimal:
   Copie pedaços desde o endereçamento deste detector para o caractere inicial deste texto hexadecimal pela magnitude deste detector.
   Atribua o caractere inicial deste texto hexadecimal mais a magnitude deste detector menos 1 ao caractere final deste texto hexadecimal.
 
-Etapas para que se converta uma font para um número da fonte:
-  Isole a font.
-  Termine com o caractere NULL o nome desta font.
+Etapas para que se converta uma fonte para um número da fonte:
+  Isole a fonte.
+  Termine com o caractere NULL o nome desta fonte.
   Call "gdi32.dll" "CreateFontA" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createfonta
   \A função CreateFont cria uma fonte lógica com as características especificadas. A fonte lógica pode ser posteriormente selecionada como a fonte para qualquer dispositivo.
-   - a altura desta font times 3 [e depois] dividido por 4 [cHeight] \A altura, em unidades lógicas, da célula ou caractere da fonte. 
+   - a altura desta fonte times 3 [e depois] dividido por 4 [cHeight] \A altura, em unidades lógicas, da célula ou caractere da fonte. 
    \O valor da altura do caractere (também conhecido como altura EM) é o valor da altura da célula do caractere menos o principal valor interno.
    \Para todas as comparações de altura, o mapeador de fonte procura a maior fonte que não exceda o tamanho solicitado.
     \Esse mapeamento ocorre quando a fonte é usada pela primeira vez.
@@ -1077,7 +1077,7 @@ Etapas para que se converta uma font para um número da fonte:
     \A qualidade de saída define com que cuidado o GDI deve tentar corresponder os atributos de fonte lógica aos de uma fonte física real.
     \Se CLEARTYPE_QUALITY for definido, o texto é renderizado (quando possível) usando o método de suavização ClearType.
     e 4 [iPitchAndFamily = TRUETYPE_FONTTYPE]  \O pitch e a família da fonte.
-    e O caractere inicial deste nome desta font [pszFaceName] \Um ponteiro para uma string terminada em nulo que especifica o nome do tipo da fonte. 
+    e O caractere inicial deste nome desta fonte [pszFaceName] \Um ponteiro para uma string terminada em nulo que especifica o nome do tipo da fonte. 
     \O comprimento desta string não deve exceder 32 caracteres, incluindo o caractere nulo de terminação.
     devolvendo o número da fonte. \Se a função for bem-sucedida, o valor de retorno é um identificador para uma fonte lógica.
     \Se a função falhar, o valor de retorno será NULL.
@@ -1415,16 +1415,16 @@ Etapas para que se converta um word para uma cifra hexadecimal:
 
 Uma coordenada é uns twips.
 
-Etapas para que se copie um event para um segundo event: \ mudar o "segunda" aqui
-  Se o event for inexistente, esvazie o segundo event; volte.
-  Crie o segundo event.
-  Atribua a categoria deste event à categoria deste segundo event.
-  Atribua o detector de tecla Shift deste event ao detector de tecla Shift deste segundo event.
-  Atribua o detector de tecla Ctrl deste event ao detector de tecla Ctrl deste segundo event.
-  Atribua o detector de tecla Alt deste event ao detector de tecla Alt deste segundo event.
-  Atribua a localização deste event à localização deste segundo event.
-  Atribua a tecla deste event à tecla deste segundo event.
-  Atribua o pedaço deste event ao pedaço deste segundo event.
+Etapas para que se copie um evento para um segundo evento: \ mudar o "segunda" aqui
+  Se o evento for inexistente, esvazie o segundo evento; volte.
+  Crie o segundo evento.
+  Atribua a categoria deste evento à categoria deste segundo evento.
+  Atribua o detector de tecla Shift deste evento ao detector de tecla Shift deste segundo evento.
+  Atribua o detector de tecla Ctrl deste evento ao detector de tecla Ctrl deste segundo evento.
+  Atribua o detector de tecla Alt deste evento ao detector de tecla Alt deste segundo evento.
+  Atribua a localização deste evento à localização deste segundo evento.
+  Atribua a tecla deste evento à tecla deste segundo evento.
+  Atribua o pedaço deste evento ao pedaço deste segundo evento.
 
 Etapas para que se copie um gpBitmap Para um segundo gpBitmap: \verificar
   Se o gpBitmap for inexistente, esvazie o segundo gpBitmap; volte.
@@ -1445,15 +1445,15 @@ Etapas para que se copie as propriedades of uma caixa de texto Para um segundo c
   Se o segundo caixa de texto for inexistente, cancele.
   Atribua a caixa desta caixa de texto à caixa deste segundo caixa de texto.
   Atribua a origem desta caixa de texto à origem deste segundo caixa de texto.
-  Atribua o pincel desta caixa de texto ao pincel deste segundo caixa de texto.
-  Atribua a font desta caixa de texto à font deste segundo caixa de texto.
+  Atribua a cor do pincel desta caixa de texto à cor do pincel desta segundo caixa de texto.
+  Atribua a fonte desta caixa de texto à fonte deste segundo caixa de texto.
   Atribua o alinhamento desta caixa de texto ao alinhamento deste segundo caixa de texto.
   Copie as linhas des textos desta caixa de texto para as linhas des textos deste segundo caixa de texto.
   Atribua a margem desta caixa de texto à margem deste segundo caixa de texto.
   Atribua a scale desta caixa de texto à scale deste segundo caixa de texto.
-  Atribua o wrap detector desta caixa de texto ao wrap detector deste segundo caixa de texto.
-  Atribua o horizontal scroll detector desta caixa de texto ao horizontal scroll detector deste segundo caixa de texto.
-  Atribua o vertical scroll detector desta caixa de texto ao vertical scroll detector deste segundo caixa de texto.
+  Atribua o detector de quebra de texto desta caixa de texto ao detector de quebra de texto deste segundo caixa de texto.
+  Atribua o detector de rolagem horizontal desta caixa de texto ao detector de rolagem horizontal deste segundo caixa de texto.
+  Atribua o detector de rolagem vertical desta caixa de texto ao detector de rolagem vertical deste segundo caixa de texto.
   Atribua a seleção desta caixa de texto à seleção deste segundo caixa de texto.
   Atribua o detector de alteração desta caixa de texto ao detector de alteração deste segundo caixa de texto.
   Atribua o última operação desta caixa de texto ao última operação deste segundo caixa de texto.
@@ -1550,9 +1550,9 @@ Etapas para que se crie um console:
   Subtraia a coordenada Y do canto superior esquerdo desta caixa desde a coordenada X do canto inferior direito desta caixa.
   Crie a caixa de texto deste console.
   Atribua a caixa à caixa desta caixa de texto deste console.
-  Ligue o wrap detector desta caixa de texto deste console.
-  Desative o horizontal scroll detector desta caixa de texto deste console.
-  Ligue o vertical scroll detector desta caixa de texto deste console.
+  Ligue o detector de quebra de texto desta caixa de texto deste console.
+  Desative o detector de rolagem horizontal desta caixa de texto deste console.
+  Ligue o detector de rolagem vertical desta caixa de texto deste console.
   Atribua a altura desta fonte padrão ao malha deste console.
   Multiplique o número X deste malha deste console por 2.
 
@@ -1639,38 +1639,38 @@ Etapas para que se crie um crypt session com uma passphrase string:
 Etapas para que se crie um dyad:
   Aloque memória para o dyad.
 
-Etapas para que se crie um event:
-  Aloque memória para o event.
+Etapas para que se crie um evento:
+  Aloque memória para o evento.
 
-Etapas para que se crie uma font info usando um font:
-  Crie a font info usando a font (basic data).
-  Crie as font larguras desta font info usando a font.
+Etapas para que se crie uma fonte info usando um fonte:
+  Crie a fonte info usando a fonte (basic data).
+  Crie as fonte larguras desta fonte info usando a fonte.
 
-Etapas para que se crie uma font info usando uma font (basic data):
-  Aloque memória para a font info.
-  Atribua a font ao font desta font info.
-  Obtenha um OutlineTextmetric usando a font.
-  Atribua 32 aos flags deste font info. \ poderia ser atualizado com mais uma informação
-  Atribua o tmInternalLeading destes otmTextMetrics deste OutlineTextmetric ao internal leading desta font info.
-  Atribua o otmEMSquare deste OutlineTextmetric ao emsquare desta font info.
-  Atribua o tmAscent deste otmTextMetrics deste OutlineTextmetric ao ascent desta font info.
-  Atribua - o tmDescent deste otmTextMetrics deste OutlineTextmetric ao descent desta font info.
-  Atribua o otmsCapEmHeight deste OutlineTextmetric ao capheight desta font info.
-  Atribua o otmItalicAngle deste OutlineTextmetric ao italicangle desta font info.
-  Atribua 0 ao StemV desta font info. \ dont know where para obtenha this desde
-  Atribua o otmrcFontBox deste OutlineTextmetric ao font caixa desta font info.
+Etapas para que se crie uma fonte info usando uma fonte (basic data):
+  Aloque memória para a fonte info.
+  Atribua a fonte ao fonte desta fonte info.
+  Obtenha um OutlineTextmetric usando a fonte.
+  Atribua 32 aos flags deste fonte info. \ poderia ser atualizado com mais uma informação
+  Atribua o tmInternalLeading destes otmTextMetrics deste OutlineTextmetric ao internal leading desta fonte info.
+  Atribua o otmEMSquare deste OutlineTextmetric ao emsquare desta fonte info.
+  Atribua o tmAscent deste otmTextMetrics deste OutlineTextmetric ao ascent desta fonte info.
+  Atribua - o tmDescent deste otmTextMetrics deste OutlineTextmetric ao descent desta fonte info.
+  Atribua o otmsCapEmHeight deste OutlineTextmetric ao capheight desta fonte info.
+  Atribua o otmItalicAngle deste OutlineTextmetric ao italicangle desta fonte info.
+  Atribua 0 ao StemV desta fonte info. \ dont know where para obtenha this desde
+  Atribua o otmrcFontBox deste OutlineTextmetric ao fonte caixa desta fonte info.
 
-Etapas para que se crie uma font info usando uma font e uma string:
+Etapas para que se crie uma fonte info usando uma fonte e uma string:
   \ cria larguras baseadas nos caracteres da string
-  Crie a font info usando a font (basic data).
-  Crie as font larguras desta font info usando a font e a string.
+  Crie a fonte info usando a fonte (basic data).
+  Crie as fonte larguras desta fonte info usando a fonte e a string.
 
-Etapas para que se crie umas font larguras usando um font:
-  Aloque memória para a font larguras.
-  Atribua a font à font destas font larguras.
-  Atribua 256 à contagem destas font larguras.
-  Assign o data destes font larguras usando a contagem destas font larguras times a magnitude desse número.
-  Crie o número da fonte of o memory canvas usando a font.
+Etapas para que se crie umas fonte larguras usando um fonte:
+  Aloque memória para a fonte larguras.
+  Atribua a fonte à fonte destas fonte larguras.
+  Atribua 256 à contagem destas fonte larguras.
+  Assign o data destes fonte larguras usando a contagem destas fonte larguras times a magnitude desse número.
+  Crie o número da fonte of o memory canvas usando a fonte.
   Assign um original ABC endereço de memória usando 256 times a magnitude desse ABC.
   Call "gdi32.dll" "GetCharABCWidthsA" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcharabcwidthsa
     \ A função GetCharABCWidths recupera as larguras, em unidades lógicas, de caracteres consecutivos em um intervalo especificado da fonte TrueType atual. 
@@ -1684,7 +1684,7 @@ Etapas para que se crie umas font larguras usando um font:
     \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-ABC
   Destrua o número da fonte of o memory canvas.
   Atribua o original ABC endereço de memória a um ABC endereço de memória.
-  Atribua o data destes font larguras a um endereço numérico.
+  Atribua o data destes fonte larguras a um endereço numérico.
   Percorra. [o código abaixo]
     Se um contador estiver past 256, pare.
     Atribua o abcA deste ABC endereço de memória ao conteúdo deste endereço numérico .
@@ -1695,15 +1695,15 @@ Etapas para que se crie umas font larguras usando um font:
   Repita. [o código acima]
   Unassign o original ABC endereço de memória.
 
-Etapas para que se crie uns font larguras usando uma font e uma string:
-  Aloque memória para a font larguras.
-  Atribua a font à font destas font larguras.
-  Atribua a quantidade de caracteres desta string à contagem destas font larguras.
+Etapas para que se crie uns fonte larguras usando uma fonte e uma string:
+  Aloque memória para a fonte larguras.
+  Atribua a fonte à fonte destas fonte larguras.
+  Atribua a quantidade de caracteres desta string à contagem destas fonte larguras.
   Se a string estiver em branco, cancele.
   Atribua a magnitude desse GcpResults ao lStructSize destes GcpResults.
   Atribua a quantidade de caracteres desta string ao nglyphs destes GcpResults.
   Assign o lpDX destes GcpResults usando a quantidade de caracteres desta string times a magnitude desse número.
-  Crie o número da fonte of o memory canvas usando a font.
+  Crie o número da fonte of o memory canvas usando a fonte.
   Call "gdi32.dll" "GetCharacterPlacementA" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcharacterplacementa
     \A função GetCharacterPlacement recupera informações sobre uma string de caracteres, tais como larguras de caracteres, posicionamento de circunflexo, ordenação dentro da string e renderização de glifo.
     \A função copia as informações para a estrutura GCP_RESULTS especificada ou para uma ou mais matrizes especificadas pela estrutura.
@@ -1723,7 +1723,7 @@ Etapas para que se crie uns font larguras usando uma font e uma string:
     e O endereçamento deste GcpResults [lpResults] \Um ponteiro para uma estrutura GCP_RESULTS que recebe os resultados da função.
     e 0. [dwFlags] \ serve para especificar como processar a string nas matrizes necessárias. nesse caso não foi especificado (valor nulo/ inválido)
   Destrua o número da fonte of o memory canvas.
-  Atribua o lpDX destes GcpResults ao data destes font larguras.
+  Atribua o lpDX destes GcpResults ao data destes fonte larguras.
 
 Etapas para que se crie um gpBitmap usando um trecho:
   Limpe o erro do fluxo de entrada/saída.
@@ -1823,8 +1823,8 @@ Etapas para que se crie o hBrush of um canvas usando uma cor:
     O canvas [hDC] \Um identificador para o contexto do dispositivo.
     e O hBrush. [h] \Um identificador para o objeto a ser selecionado.
 
-Etapas para que se crie o número da fonte of um canvas usando um font:
-  Converta a font para um número da fonte.
+Etapas para que se crie o número da fonte of um canvas usando um fonte:
+  Converta a fonte para um número da fonte.
   Call "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-selectobject
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
     O canvas [hDC] \Um identificador para o contexto do dispositivo.
@@ -1860,7 +1860,7 @@ Etapas para que se crie um hRgn usando uma caixa:
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "Rectangle" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-rectangle
-    \A função Retângulo desenha um retângulo. O retângulo é delineado com a caneta (pincel) atual e preenchido com o pincel (brush) atual.
+    \A função Retângulo desenha um retângulo. O retângulo é delineado com a caneta (pincel) atual e preenchido com a cor do pincel (brush) atual.
     O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
@@ -1888,7 +1888,7 @@ Etapas para que se crie um hRgn usando uma elipse:
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "Ellipse" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-ellipse
-  \A função Ellipse desenha uma elipse. O centro da elipse é o centro do retângulo delimitador especificado. A elipse é delineada com a caneta atual e preenchida com o pincel atual.
+  \A função Ellipse desenha uma elipse. O centro da elipse é o centro do retângulo delimitador especificado. A elipse é delineada com a caneta atual e preenchida com a cor do pincel atual.
     O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
@@ -1932,7 +1932,7 @@ Etapas para que se crie um hRgn usando um polígono:
     \WINDING = Seleciona o modo de enrolamento (preenche qualquer região com um valor de enrolamento diferente de zero).
     \Para obter mais informações sobre esses modos, consulte a função SetPolyFillMode, ou leia mais abaixo:    
     \Um aplicativo preenche o interior de uma região chamando a função FillRgn e fornecendo um identificador que identifica um pincel específico. 
-    \Quando um aplicativo chama FillRgn, o sistema preenche a região com o pincel usando o modo de preenchimento atual para o contexto de dispositivo especificado. 
+    \Quando um aplicativo chama FillRgn, o sistema preenche a região com a cor do pincel usando o modo de preenchimento atual para o contexto de dispositivo especificado. 
     \Existem dois modos de preenchimento: alternado e enrolamento. 
     \O aplicativo pode definir o modo de preenchimento para um contexto de dispositivo chamando a função SetPolyFillMode. 
     \O aplicativo pode recuperar o modo de preenchimento atual para um contexto de dispositivo chamando a função GetPolyFillMode.    
@@ -1964,7 +1964,7 @@ Etapas para que se crie um hRgn usando uma caixa arredondada:
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Call "gdi32.dll" "RoundRect" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-roundrect
-  \A função RoundRect desenha um retângulo com cantos arredondados. O retângulo é delineado com a caneta atual e preenchido com o pincel atual.
+  \A função RoundRect desenha um retângulo com cantos arredondados. O retângulo é delineado com a caneta atual e preenchido com a cor do pincel atual.
     O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa [left] \A coordenada X, em coordenadas lógicas, do canto superior esquerdo do retângulo.
     e A coordenada Y do canto superior esquerdo desta caixa [top] \A coordenada Y, em coordenadas lógicas, do canto superior esquerdo do retângulo.
@@ -2281,8 +2281,8 @@ Etapas para que se crie um terminal em uma caixa:
 
 Etapas para que se crie uma caixa de texto:
   Aloque memória para a caixa de texto.
-  Atribua a cor preta ao pincel desta caixa de texto.
-  Atribua a fonte padrão ao font desta caixa de texto.
+  Atribua a cor preta à cor do pincel desta caixa de texto.
+  Atribua a fonte padrão ao fonte desta caixa de texto.
   Atribua "left" ao alinhamento desta caixa de texto.
   Atribua 1/1 à scale desta caixa de texto.
   Garanta one linha de texto no caixa de texto.
@@ -2333,7 +2333,7 @@ O console é um console.
 
 O quadro atual é um canvas.
 
-O evento atual é um event.
+O evento atual é um evento.
 
 Um cursor é um número identificador.
 
@@ -2420,16 +2420,16 @@ Etapas para que se produza o relatório de informações usando um detector:
   Converta o detector para um relatório.
   Produza o relatório de informações usando o relatório.
 
-Etapas para que se produza o relatório de bugs usando uma font;
-Etapas para que se produza o relatório de erros usando uma font;
-Etapas para que se produza o relatório de falhas usando uma font;
-Etapas para que se produza o relatório de panes usando uma font;
-Etapas para que se produza o relatório de informações usando uma font:
+Etapas para que se produza o relatório de bugs usando uma fonte;
+Etapas para que se produza o relatório de erros usando uma fonte;
+Etapas para que se produza o relatório de falhas usando uma fonte;
+Etapas para que se produza o relatório de panes usando uma fonte;
+Etapas para que se produza o relatório de informações usando uma fonte:
   Limpe um relatório.
   Posponha " Nome da fonte = '" para o relatório seguido de "'".
-  Posponha o nome desta font para o relatório.
+  Posponha o nome desta fonte para o relatório.
   Posponha ", Tamanho da fonte = " para o relatório.
-  Posponha a altura desta font para o relatório.
+  Posponha a altura desta fonte para o relatório.
   Produza o relatório de informações usando o relatório.
 
 Etapas para que se produza o relatório de erros usando uma fração;
@@ -2821,16 +2821,16 @@ Etapas para que se determine se um difference está within uma malha:
   Se o número Y desta difference for maior do que ou igual ao número Y desta malha, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-Etapas para que se determine se um event é algum tipo de atalho de tecla:
-  Se o event for inexistente, diga não.
-  Se a categoria deste event não for "pressionamento de tecla", diga não.
-  Se o event não foi alterado, diga não.
-  Se a tecla deste event estiver entre a tecla A/a e a tecla Z/z, diga sim.
+Etapas para que se determine se um evento é algum tipo de atalho de tecla:
+  Se o evento for inexistente, diga não.
+  Se a categoria deste evento não for "pressionamento de tecla", diga não.
+  Se o evento não foi alterado, diga não.
+  Se a tecla deste evento estiver entre a tecla A/a e a tecla Z/z, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se um event foi alterado:
-  Se o detector de tecla Ctrl deste event estiver ativo, diga sim.
-  Se o detector de tecla Alt deste event estiver ativo, diga sim.
+Etapas para que se determine se um evento foi alterado:
+  Se o detector de tecla Ctrl deste evento estiver ativo, diga sim.
+  Se o detector de tecla Alt deste evento estiver ativo, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se um finger é past o end of uma string:
@@ -3390,7 +3390,7 @@ Etapas para que se determine se uma localização está em um polígono:
     \WINDING = Seleciona o modo de enrolamento (preenche qualquer região com um valor de enrolamento diferente de zero).
     \Para obter mais informações sobre esses modos, consulte a função SetPolyFillMode, ou leia mais abaixo:    
     \Um aplicativo preenche o interior de uma região chamando a função FillRgn e fornecendo um identificador que identifica um pincel específico. 
-    \Quando um aplicativo chama FillRgn, o sistema preenche a região com o pincel usando o modo de preenchimento atual para o contexto de dispositivo especificado. 
+    \Quando um aplicativo chama FillRgn, o sistema preenche a região com a cor do pincel usando o modo de preenchimento atual para o contexto de dispositivo especificado. 
     \Existem dois modos de preenchimento: alternado e enrolamento. 
     \O aplicativo pode definir o modo de preenchimento para um contexto de dispositivo chamando a função SetPolyFillMode. 
     \O aplicativo pode recuperar o modo de preenchimento atual para um contexto de dispositivo chamando a função GetPolyFillMode.    
@@ -3765,7 +3765,7 @@ Etapas para que se determine se uma string está escrito incorretamente:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se uma string é wider do que uma caixa:
-  \ presume que a font esteja selecionada no memory canvas
+  \ presume que a fonte esteja selecionada no memory canvas
   Obtenha um abcA e um abcC usando a string e o memory canvas.
   Obtenha uma largura usando a string e o memory canvas.
   Subtraia o abcA desde a largura.
@@ -4001,7 +4001,7 @@ Etapas para que se decifre um trecho usando uma passphrase string:
   Destrua o crypt session.
   Atribua o texto hexadecimal ao trecho.
 
-O fonte padrão é uma font.
+O fonte padrão é uma fonte.
 
 O default smtp server é "localhost".
 
@@ -4387,7 +4387,7 @@ Etapas para que se pinte um console:
   Salve o quadro atual.
   Cubra somente fora de a caixa deste console .
   Pinte a caixa deste console com a cor da borda deste console e a cor de preenchimento deste console.
-  Atribua a cor branca ao pincel cor desta caixa de texto deste console.
+  Atribua a cor branca ao cor do pincel desta caixa de texto deste console.
   Pinte a caixa de texto deste console.
   Restaure o quadro atual.
 
@@ -4619,7 +4619,7 @@ Etapas para que se pinte um polígono com uma cor (border only):
     Se o vértice for inexistente, pare.
     Call "gdi32.dll" "LineTo" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-lineto
     \A função LineTo desenha uma linha da posição atual até, mas não incluindo, o ponto especificado.
-    \A linha é desenhada usando a caneta atual e, se a caneta for uma caneta geométrica, o pincel atual.
+    \A linha é desenhada usando a caneta atual e, se a caneta for uma caneta geométrica, a cor do pincel atual.
     \Se LineTo for bem-sucedido, a posição atual será definida como o ponto final especificado.
       O quadro atual [hdc] \o número identificador do contexto do dispositivo.
       e A coordenada X deste vértice [x] \Especifica a coordenada x, em unidades lógicas, do ponto final da linha.
@@ -4665,7 +4665,7 @@ Etapas para que se pinte um polígono com uma cor (apenas a cor de preenchimento)
   Crie uma série de vértices usando os vértices deste polígono.
   Call "gdi32.dll" "Polygon" com \https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-polygon
   \A função Polygon desenha um polígono que consiste em dois ou mais vértices conectados por linhas retas. 
-  \O polígono é delineado usando a caneta atual e preenchido usando o pincel atual e o modo de preenchimento de polígono.
+  \O polígono é delineado usando a caneta atual e preenchido usando a cor do pincel atual e o modo de preenchimento de polígono.
     O quadro atual [hdc] \O identificador do contexto do dispositivo.
     e O endereço de memória da localização desta série de vértices [*apt] \Um ponteiro para uma matriz de estruturas POINT que especificam os vértices do polígono, em coordenadas lógicas.
     \https://docs.microsoft.com/en-us/previous-versions/dd162805(v=vs.85)
@@ -4720,14 +4720,14 @@ Etapas para que se pinte uma linha de texto of uma caixa de texto:
   Se a caixa de texto for inexistente, cancele.
   Se a linha de texto for inexistente, cancele.
   Obtenha uma caixa usando a linha de texto e a caixa de texto.
-  Pinte o working string desta linha de texto na caixa com o pincel desta caixa de texto e a font desta caixa de texto e o alinhamento desta caixa de texto.
+  Pinte o working string desta linha de texto na caixa com a cor do pincel desta caixa de texto e a fonte desta caixa de texto e o alinhamento desta caixa de texto.
 
 Etapas para que se pinte uma linha de texto of uma caixa de texto (editing):
   Se a caixa de texto for inexistente, cancele.
   Se a linha de texto for inexistente, cancele.
   Pinte a caixa de seleção pela linha de texto of a caixa de texto.
   Obtenha uma caixa usando a linha de texto e a caixa de texto.
-  Pinte o working string desta linha de texto na caixa com o pincel desta caixa de texto e a font desta caixa de texto e o alinhamento desta caixa de texto.
+  Pinte o working string desta linha de texto na caixa com a cor do pincel desta caixa de texto e a fonte desta caixa de texto e o alinhamento desta caixa de texto.
 
 Etapas para que se pinte a caixa de seleção por uma linha de texto of uma caixa de texto:
   Se a caixa de texto for inexistente, cancele.
@@ -4795,11 +4795,11 @@ Etapas para que se pinte uma string sob o left of uma caixa:
 Etapas para que se pinte uma string sob o left of uma caixa com uma cor:
   Pinte a string sob o left of a caixa com a cor e a fonte padrão.
 
-Etapas para que se pinte uma string sob o left of uma caixa com uma cor e um font:
-  Pinte a string na caixa com a cor e a font e "left".
+Etapas para que se pinte uma string sob o left of uma caixa com uma cor e um fonte:
+  Pinte a string na caixa com a cor e a fonte e "left".
 
-Etapas para que se pinte uma string sob o left of uma caixa com um font:
-  Pinte a string sob o left of a caixa com a cor preta e a font.
+Etapas para que se pinte uma string sob o left of uma caixa com um fonte:
+  Pinte a string sob o left of a caixa com a cor preta e a fonte.
 
 Etapas para que se pinte uma string sob o right of uma caixa:
   Pinte a string sob o right of a caixa com a cor preta e a fonte padrão.
@@ -4807,11 +4807,11 @@ Etapas para que se pinte uma string sob o right of uma caixa:
 Etapas para que se pinte uma string sob o right of uma caixa com uma cor:
   Pinte a string sob o right of a caixa com a cor e a fonte padrão.
 
-Etapas para que se pinte uma string sob o right of uma caixa com uma cor e um font:
-  Pinte a string na caixa com a cor e a font e "right".
+Etapas para que se pinte uma string sob o right of uma caixa com uma cor e um fonte:
+  Pinte a string na caixa com a cor e a fonte e "right".
 
-Etapas para que se pinte uma string sob o right of uma caixa com um font:
-  Pinte a string sob o right of a caixa com a cor preta e a font.
+Etapas para que se pinte uma string sob o right of uma caixa com um fonte:
+  Pinte a string sob o right of a caixa com a cor preta e a fonte.
 
 Etapas para que se pinte uma string sob uma localização com uma cor:
   Pinte a string sob a localização com a cor e a fonte padrão.
@@ -4819,12 +4819,12 @@ Etapas para que se pinte uma string sob uma localização com uma cor:
 Etapas para que se pinte uma string em uma caixa:
   Pinte a string na caixa com a cor preta e a fonte padrão e "left".
 
-Etapas para que se pinte uma string em uma caixa over um número com uma cor e uma font e um alinhamento:
+Etapas para que se pinte uma string em uma caixa over um número com uma cor e uma fonte e um alinhamento:
   Isole a caixa.
   Se o alinhamento for "left", adicione o número para a coordenada X do canto superior esquerdo desta caixa.
   Se o alinhamento for "zquierda", adicione o número para a coordenada X do canto superior esquerdo desta caixa.
   Se o alinhamento for "derecho", subtraia o número desde a coordenada X do canto inferior direito desta caixa.
-  Pinte a string na caixa com a cor e a font e o alinhamento.
+  Pinte a string na caixa com a cor e a fonte e o alinhamento.
 
 Etapas para que se pinte uma string em uma caixa com um alinhamento:
   Pinte a string na caixa com a cor preta e a fonte padrão e o alinhamento.
@@ -4835,12 +4835,12 @@ Etapas para que se pinte uma string em uma caixa com uma cor:
 Etapas para que se pinte uma string em uma caixa com uma cor e um alinhamento:
   Pinte a string na caixa com a cor e a fonte padrão e o alinhamento.
 
-Etapas para que se pinte uma string em uma caixa com uma cor e uma font e um alinhamento:
-  Obtenha um offset par de números usando a string e a caixa e a font e o alinhamento.
-  Pinte a string sob o canto superior esquerdo desta caixa mais o offset par de números com a cor e a font.
+Etapas para que se pinte uma string em uma caixa com uma cor e uma fonte e um alinhamento:
+  Obtenha um offset par de números usando a string e a caixa e a fonte e o alinhamento.
+  Pinte a string sob o canto superior esquerdo desta caixa mais o offset par de números com a cor e a fonte.
 
-Etapas para que se pinte uma string em uma caixa com uma font e um alinhamento:
-  Pinte a string na caixa com a cor preta e a font e o alinhamento.
+Etapas para que se pinte uma string em uma caixa com uma fonte e um alinhamento:
+  Pinte a string na caixa com a cor preta e a fonte e o alinhamento.
 
 Etapas para que se pinte uma string no center of uma caixa:
   Pinte a string no center of a caixa com a cor preta e a fonte padrão.
@@ -4848,11 +4848,11 @@ Etapas para que se pinte uma string no center of uma caixa:
 Etapas para que se pinte uma string no center of uma caixa com uma cor:
   Pinte a string no center of a caixa com a cor e a fonte padrão.
 
-Etapas para que se pinte uma string no center of uma caixa com uma cor e um font:
-  Pinte a string na caixa com a cor e a font e "center".
+Etapas para que se pinte uma string no center of uma caixa com uma cor e um fonte:
+  Pinte a string na caixa com a cor e a fonte e "center".
 
-Etapas para que se pinte uma string no center of uma caixa com um font:
-  Pinte a string no center of a caixa com a cor preta e a font.
+Etapas para que se pinte uma string no center of uma caixa com um fonte:
+  Pinte a string no center of a caixa com a cor preta e a fonte.
 
 Etapas para que se pinte um terminal:
   Se o terminal for inexistente, cancele.
@@ -4982,8 +4982,8 @@ Etapas para que se enlarge uma elipse por uns twips:
   Subtraia os twips desde o canto superior esquerdo desta elipse.
   Adicione os twips para o canto inferior direito desta elipse.
 
-Etapas para que se enfileire um event:
-  Posponha o event para a fila de eventos.
+Etapas para que se enfileire um evento:
+  Posponha o evento para a fila de eventos.
 
 Etapas para que se erase o insides of uma caixa;
 Etapas para que se erase inside uma caixa;
@@ -5002,7 +5002,7 @@ Etapas para que se estime um deslocamento vertical e um deslocamento horizontal 
 
 A fila de eventos é uma fila de eventos.
 
-Uma fila de eventos é uns events.
+Uma fila de eventos é uns eventos.
 
 Etapas para que se extend algum tipo de seleção em uma caixa de texto usando uma localização:
   Se a caixa de texto for inexistente, cancele.
@@ -5292,8 +5292,8 @@ Etapas para que se finalize os cursors:
   Call "user32.dll" "DestroyCursor" com 
     A seta do mouse. [hCursor] 
 
-Etapas para que se finalize as fonts:
-  \Call "gdi32.dll" "RemoveFontMemResourceEx" com o osmosian font resource.
+Etapas para que se finalize as fontes:
+  \Call "gdi32.dll" "RemoveFontMemResourceEx" com o osmosian fonte resource.
   \Call "gdi32.dll" "RemoveFontMemResourceEx" com o Segoe UI resource.
   Call "gdi32.dll" "RemoveFontMemResourceEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-RemoveFontMemResourceEx
   \A função RemoveFontMemResourceEx remove as fontes que foram adicionadas a partir de um arquivo de imagem de memória.
@@ -5341,7 +5341,7 @@ Etapas para que se finalize o memory canvas:
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se o identificador especificado não é válido ou está atualmente selecionado em um DC, o valor de retorno é zero.
     \Não exclua um objeto de desenho (caneta ou pincel) enquanto ele ainda estiver selecionado em um DC.
-    \Quando um pincel de padrão é excluído, o bitmap associado ao pincel não é excluído. O bitmap deve ser excluído independentemente.
+    \Quando um pincel de padrão é excluído, o bitmap associado à cor do pincel não é excluído. O bitmap deve ser excluído independentemente.
   Call "gdi32.dll" "DeleteDC" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-deletedc
   \A função DeleteDC exclui o contexto de dispositivo especificado (DC).
     O memory canvas. [hdc] \O identificador do contexto do dispositivo.
@@ -5485,7 +5485,7 @@ Etapas para que se encontre next usando uma linha de texto e uma caixa de texto 
   Atribua o número da linha desta linha de texto ao número de linhas do cursor desta caixa de texto.
 
 Etapas para que se encontre next usando uma caixa de texto e um detector:
-  Se o wrap detector desta caixa de texto estiver ativo, encontre next usando a caixa de texto e o detector (wrapped caixa de texto); volte.
+  Se o detector de quebra de texto desta caixa de texto estiver ativo, encontre next usando a caixa de texto e o detector (wrapped caixa de texto); volte.
   Desative o detector.
   Se a caixa de texto for inexistente, cancele.
   Se a quantidade de caracteres deste texto pesquisado for 0, cancele.
@@ -5678,7 +5678,7 @@ Etapas para que se flip um polígono:
 
 Etapas para que se desmanche all input;
 Etapas para que se desmanche all inputs;
-Etapas para que se desmanche all events:
+Etapas para que se desmanche all eventos:
   Desmanche algum tipo de messages.
   Desmanche a fila de eventos.
 
@@ -5702,19 +5702,19 @@ Etapas para que se desmanche algum tipo de messages:
   Repita. [o código acima]
 
 Etapas para que se desmanche um fila de eventos:
-  Obtenha um event desde a fila de eventos.
-  Se o event for inexistente, cancele.
-  Remove o event desde a fila de eventos.
-  Destrua o event.
+  Obtenha um evento desde a fila de eventos.
+  Se o evento for inexistente, cancele.
+  Remove o evento desde a fila de eventos.
+  Destrua o evento.
   Repita. [o código acima]
 
-Uma font é um conjunto com 
+Uma fonte é um conjunto com 
   Um nome e 
   Uma altura.
 
 Um altura da fonte é uns twips. \ indicates linha reta altura - o letras will fit nicely em uma caixa of this altura
 
-Um font resource é um número identificador.
+Um fonte resource é um número identificador.
 
 Um pé são 12 polegadas.
 
@@ -5818,7 +5818,7 @@ Etapas para que se obtenha uma caixa pelo cursor de texto em uma caixa de texto:
   Ajuste a caixa usando 0 e a quantidade de twips/pixel e 0 e - a quantidade de twips/pixel .
   Atribua a globalized origem desta caixa de texto a um origem.
   Se a coordenada X do canto superior esquerdo desta caixa for menor do que a coordenada X desta origem, atribua a coordenada X desta origem à coordenada X do canto superior esquerdo desta caixa; atribua a coordenada X desta origem à coordenada X do canto inferior direito desta caixa.
-  Se o wrap detector desta caixa de texto não estiver ativo, cancele.
+  Se o detector de quebra de texto desta caixa de texto não estiver ativo, cancele.
   Limite a coordenada X do canto superior esquerdo desta caixa para a coordenada X do canto superior esquerdo desta caixa de texto e a coordenada X do canto inferior direito desta caixa de texto.
   Limite a coordenada X do canto inferior direito desta caixa para a coordenada X do canto superior esquerdo desta caixa de texto e a coordenada X do canto inferior direito desta caixa de texto.
 
@@ -5900,7 +5900,7 @@ Etapas para que se obtenha um número de coluna usando uma linha de texto e uma l
   Se a linha de texto for inexistente, cancele.
   Obtenha uma caixa usando a linha de texto e a caixa de texto.
   Se a coordenada Y desta localização for maior do que a coordenada Y do canto inferior direito desta caixa, atribua a quantidade de caracteres desta string desta linha de texto ao número de coluna; volte. \ only happens sobre last linha de texto of caixa de texto
-  Crie o número da fonte of o memory canvas usando a font desta caixa de texto.
+  Crie o número da fonte of o memory canvas usando a fonte desta caixa de texto.
   Obtenha um start largura e um subtexto usando a linha de texto e a localização e a caixa de texto (for "get um número de coluna usando uma linha de texto...").
   Percorra. [o código abaixo]
     Se o caractere final deste subtexto é o caractere final desta string desta linha de texto, pare.
@@ -6126,12 +6126,12 @@ Etapas para que se obtenha um número desde a stack:
   Remove a stack entry desde o stack.
   Destrua a stack entry.
 
-Etapas para que se obtenha um offset par de números usando uma string e uma caixa e uma font e um alinhamento:
-  Crie o número da fonte of o memory canvas usando a font.
-  Obtenha o offset par de números usando a string e a caixa e a font e o alinhamento (fast).
+Etapas para que se obtenha um offset par de números usando uma string e uma caixa e uma fonte e um alinhamento:
+  Crie o número da fonte of o memory canvas usando a fonte.
+  Obtenha o offset par de números usando a string e a caixa e a fonte e o alinhamento (fast).
   Destrua o número da fonte of o memory canvas.
 
-Etapas para que se obtenha um offset par de números usando uma string e uma caixa e uma font e um alinhamento (fast):
+Etapas para que se obtenha um offset par de números usando uma string e uma caixa e uma fonte e um alinhamento (fast):
   Se o alinhamento for "left", obtenha o número X deste offset par de números usando a string e a caixa (fast - left).
   Se o alinhamento for "right", obtenha o número X deste offset par de números usando a string e a caixa (fast - right).
   Se o alinhamento for "center", obtenha o número X deste offset par de números usando a string e a caixa (fast - center).
@@ -6308,9 +6308,9 @@ Etapas para que se obtenha uma localização usando uma position e uma caixa de te
   Atribua a coordenada Y do canto superior esquerdo desta caixa à coordenada Y desta localização.
   Atribua o caractere inicial desta string desta linha de texto ao caractere inicial desse subtexto.
   Atribua o caractere inicial deste subtexto mais o número de coluna desta position menos 2 ao caractere final deste subtexto.
-  Obtenha uma largura usando o subtexto e o memory canvas e a font desta caixa de texto.
+  Obtenha uma largura usando o subtexto e o memory canvas e a fonte desta caixa de texto.
   Atribua a coordenada X do canto superior esquerdo desta caixa mais a largura à coordenada X desta localização.
-  Obtenha um offset par de números usando o working string desta linha de texto e a caixa e a font desta caixa de texto e o alinhamento desta caixa de texto.
+  Obtenha um offset par de números usando o working string desta linha de texto e a caixa e a fonte desta caixa de texto e o alinhamento desta caixa de texto.
   Adicione o número X deste offset par de números para a coordenada X desta localização.
 
 Etapas para que se obtenha um start largura e um subtexto usando uma linha de texto e uma localização e uma caixa de texto (for "get um número de coluna usando uma linha de texto..."):
@@ -6320,7 +6320,7 @@ Etapas para que se obtenha um start largura e um subtexto usando uma linha de te
   Se a linha de texto for inexistente, cancele.
   Obtenha uma caixa usando a linha de texto e a caixa de texto.
   Lance o subtexto sobre o working string desta linha de texto.
-  Obtenha um offset par de números usando o subtexto e a caixa e a font desta caixa de texto e o alinhamento desta caixa de texto (fast).
+  Obtenha um offset par de números usando o subtexto e a caixa e a fonte desta caixa de texto e o alinhamento desta caixa de texto (fast).
   Atribua a coordenada X desta globalized origem desta caixa de texto mais o número X deste offset par de números ao start largura.
   Atribua o caractere inicial deste subtexto mais a caixa de texto cutoff menos 1 ao caractere final deste subtexto.
   Percorra. [o código abaixo]
@@ -6409,19 +6409,19 @@ Etapas para que se obtenha uma largura usando um pedaço e um canvas:
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
   Atribua o número X deste par de números à largura.
 
-Etapas para que se obtenha uma largura usando um pedaço e uns font larguras:
+Etapas para que se obtenha uma largura usando um pedaço e uns fonte larguras:
   Atribua o pedaço a um número.
-  Obtenha a largura usando o número e a font larguras.
+  Obtenha a largura usando o número e a fonte larguras.
 
-Etapas para que se obtenha uma largura usando um número e uns font larguras:
+Etapas para que se obtenha uma largura usando um número e uns fonte larguras:
   \ indexes são 0 based
-  Se a font larguras são nil, limpe a largura; volte.
-  Atribua o data destes font larguras a um endereço numérico.
+  Se a fonte larguras são nil, limpe a largura; volte.
+  Atribua o data destes fonte larguras a um endereço numérico.
   Adicione o número times a magnitude deste número para o endereço numérico.
   Atribua o conteúdo deste endereço numérico ao largura.
 
 Etapas para que se obtenha uma largura usando uma string e um canvas:
-  \ presume que a font já esteja selecionada no canvas
+  \ presume que a fonte já esteja selecionada no canvas
   Call "gdi32.dll" "GetTextExtentPoint32A" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-gettextextentpoint32a
   \A função GetTextExtentPoint32 calcula a largura e a altura da seqüência de caracteres de texto especificada.
     O canvas [hdc] \Um identificador para o contexto do dispositivo.
@@ -6435,14 +6435,14 @@ Etapas para que se obtenha uma largura usando uma string e um canvas:
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
   Atribua o número X deste par de números ao largura.
 
-Etapas para que se obtenha uma largura usando uma string e um canvas e um font:
-  Crie o número da fonte of o canvas usando a font.
+Etapas para que se obtenha uma largura usando uma string e um canvas e um fonte:
+  Crie o número da fonte of o canvas usando a fonte.
   Obtenha a largura usando a string e o canvas.
   Destrua o número da fonte of o canvas.
 
-Etapas para que se obtenha uma largura usando uma string e um font:
+Etapas para que se obtenha uma largura usando uma string e um fonte:
   \ assumes memory canvas
-  Obtenha a largura usando a string e o memory canvas e a font.
+  Obtenha a largura usando a string e o memory canvas e a fonte.
 
 Etapas para que se obtenha uma coordenada X usando uma string e uma caixa (fast - center):
   Obtenha uma largura usando a string e o memory canvas.
@@ -6539,9 +6539,9 @@ Etapas para que se execute algum tipo de WM_ACTIVATE com um wParam (activate):
   \Em vez disso, o sistema envia o erro para o processo de chamada.
   \A prática recomendada é que todos os aplicativos chamem a função SetErrorMode de todo o processo com um parâmetro SEM_FAILCRITICALERRORS na inicialização. 
   \Isso evita que os diálogos do modo de erro travem o aplicativo.
-  Crie um event.
-  Atribua "activate" à categoria deste event. \pode ser traduzido
-  Enfileire o event.
+  Crie um evento.
+  Atribua "activate" à categoria deste evento. \pode ser traduzido
+  Enfileire o evento.
   Call "user32.dll" "PostMessageA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-postmessagea
   \Coloca (posta) uma mensagem na fila de mensagens 
   \associada ao encadeamento que criou a janela especificada e retorna sem esperar que o encadeamento processe a mensagem.
@@ -6555,9 +6555,9 @@ Etapas para que se execute algum tipo de WM_ACTIVATE com um wParam (activate):
     \Se a função falhar, o valor de retorno é zero.
 
 Etapas para que se execute algum tipo de WM_ACTIVATE com um wParam (deactivate):
-  Crie um event.
-  Atribua "deactivate" à categoria deste event. \pode ser traduzido
-  Enfileire o event.
+  Crie um evento.
+  Atribua "deactivate" à categoria deste evento. \pode ser traduzido
+  Enfileire o evento.
   Call "user32.dll" "PostMessageA" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-postmessagea
   \Coloca (posta) uma mensagem na fila de mensagens 
   \associada ao encadeamento que criou a janela especificada e retorna sem esperar que o encadeamento processe a mensagem.
@@ -6575,12 +6575,12 @@ Etapas para que se execute algum tipo de WM_CHAR com um wParam e um lParam:
   \Se a tecla Ctrl está para baixo, cancele. \ removed por Spanish teclado AltGr e ctrl+alt characters
   Atribua o wParam a um pedaço.
   Se o pedaço não for imprimível, cancele.
-  Crie um event.
-  Atribua "pressionamento de tecla" à categoria deste event. \traduzido
-  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste event.
-  Atribua o pedaço ao pedaço deste event.
-  Converta o lParam para a tecla deste event.
-  Enfileire o event.
+  Crie um evento.
+  Atribua "pressionamento de tecla" à categoria deste evento. \traduzido
+  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste evento.
+  Atribua o pedaço ao pedaço deste evento.
+  Converta o lParam para a tecla deste evento.
+  Enfileire o evento.
 
 Etapas para que se execute algum tipo de WM_CREATE com um janela do programa:
   Atribua a janela do programa à janela principal do programa.
@@ -6595,22 +6595,22 @@ Etapas para que se execute algum tipo de WM_DESTROY:
   
 
 Etapas para que se execute algum tipo de WM_LBUTTONDBLCLK com um lParam:
-  Crie um event.
-  Atribua "clique duplo" à categoria deste event. \traduzido
-  Se a tecla Alt estiver para baixo, acione o detector de tecla Alt deste event.
-  Se a tecla Ctrl estiver para baixo, acione o detector de tecla Ctrl deste event.
-  Se a tecla Shift estiver para baixo, acione o detector de tecla Shift deste event.
-  Converta o lParam para a localização deste event.
-  Enfileire o event.
+  Crie um evento.
+  Atribua "clique duplo" à categoria deste evento. \traduzido
+  Se a tecla Alt estiver para baixo, acione o detector de tecla Alt deste evento.
+  Se a tecla Ctrl estiver para baixo, acione o detector de tecla Ctrl deste evento.
+  Se a tecla Shift estiver para baixo, acione o detector de tecla Shift deste evento.
+  Converta o lParam para a localização deste evento.
+  Enfileire o evento.
 
 Etapas para que se execute algum tipo de WM_LBUTTONDOWN com um lParam:
-  Crie um event.
-  Atribua "clique" à categoria deste event. \traduzido
-  Se a tecla Alt estiver para baixo, acione o detector de tecla Alt deste event.
-  Se a tecla Ctrl estiver para baixo, acione o detector de tecla Ctrl deste event.
-  Se a tecla Shift estiver para baixo, acione o detector de tecla Shift deste event.
-  Converta o lParam para a localização deste event.
-  Enfileire o event.
+  Crie um evento.
+  Atribua "clique" à categoria deste evento. \traduzido
+  Se a tecla Alt estiver para baixo, acione o detector de tecla Alt deste evento.
+  Se a tecla Ctrl estiver para baixo, acione o detector de tecla Ctrl deste evento.
+  Se a tecla Shift estiver para baixo, acione o detector de tecla Shift deste evento.
+  Converta o lParam para a localização deste evento.
+  Enfileire o evento.
 
 Etapas para que se execute algum tipo de WM_PAINT com um janela do programa:
   Call "user32.dll" "BeginPaint" com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-beginpaint
@@ -6626,27 +6626,27 @@ Etapas para que se execute algum tipo de WM_PAINT com um janela do programa:
     A janela do programa [hWnd] \número identificador para a janela que foi repintada.
     e O endereçamento desta paintstruct. [*lpPaint] \Ponteiro para uma estrutura PAINTSTRUCT que contém as informações de pintura recuperadas por BeginPaint.
     \O valor de retorno é sempre diferente de zero.
-  Crie um event.
-  Atribua "atualização de tela" à categoria deste event.
-  Enfileire o event.
+  Crie um evento.
+  Atribua "atualização de tela" à categoria deste evento.
+  Enfileire o evento.
 
 Etapas para que se execute algum tipo de WM_RBUTTONDBLCLK com um lParam:
-  Crie um event.
-  Atribua "clique direito duplo" à categoria deste event.
-  Se a tecla Alt está para baixo, acione o detector de tecla Alt deste event.
-  Se a tecla Ctrl está para baixo, acione o detector de tecla Ctrl deste event.
-  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste event.
-  Converta o lParam para a localização deste event.
-  Enfileire o event.
+  Crie um evento.
+  Atribua "clique direito duplo" à categoria deste evento.
+  Se a tecla Alt está para baixo, acione o detector de tecla Alt deste evento.
+  Se a tecla Ctrl está para baixo, acione o detector de tecla Ctrl deste evento.
+  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste evento.
+  Converta o lParam para a localização deste evento.
+  Enfileire o evento.
 
 Etapas para que se execute algum tipo de WM_RBUTTONDOWN com um lParam:
-  Crie um event.
-  Atribua "clique direito" à categoria deste event.
-  Se a tecla Alt está para baixo, acione o detector de tecla Alt deste event.
-  Se a tecla Ctrl está para baixo, acione o detector de tecla Ctrl deste event.
-  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste event.
-  Converta o lParam para a localização deste event.
-  Enfileire o event.
+  Crie um evento.
+  Atribua "clique direito" à categoria deste evento.
+  Se a tecla Alt está para baixo, acione o detector de tecla Alt deste evento.
+  Se a tecla Ctrl está para baixo, acione o detector de tecla Ctrl deste evento.
+  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste evento.
+  Converta o lParam para a localização deste evento.
+  Enfileire o evento.
 
 Etapas para que se execute algum tipo de WM_SETCURSOR:
   Atualize o cursor.
@@ -6656,13 +6656,13 @@ Etapas para que se execute algum tipo de WM_KEYDOWN com um wParam e um lParam:
   Atribua o wParam a um tecla.
   Se a tecla com o lParam é alguma tecla de cancelamento ou tecla modificadora, cancele.
   Se a tecla for algum tipo de WM_CHAR tecla, cancele.
-  Crie um event.
-  Atribua "pressionamento de tecla" à categoria deste event.
-  Se a tecla Alt está para baixo, acione o detector de tecla Alt deste event.
-  Se a tecla Ctrl está para baixo, acione o detector de tecla Ctrl deste event.
-  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste event.
-  Atribua a tecla à tecla deste event.
-  Enfileire o event.
+  Crie um evento.
+  Atribua "pressionamento de tecla" à categoria deste evento.
+  Se a tecla Alt está para baixo, acione o detector de tecla Alt deste evento.
+  Se a tecla Ctrl está para baixo, acione o detector de tecla Ctrl deste evento.
+  Se a tecla Shift está para baixo, acione o detector de tecla Shift deste evento.
+  Atribua a tecla à tecla deste evento.
+  Enfileire o evento.
 
 Etapas para que se execute capitalize usando uma caixa de texto:
   Se a caixa de texto for inexistente, cancele.
@@ -6688,140 +6688,140 @@ Etapas para que se execute cut usando uma caixa de texto:
   Wrap a caixa de texto.
   Role a caixa de texto para o cursor de texto.
 
-Etapas para que se execute um event usando um console:
+Etapas para que se execute um evento usando um console:
   Se o console for inexistente, cancele. \não falta o clique normal aqui?
-  Se a categoria deste event for "pressionamento de tecla", execute o event usando o console (pressionamento de tecla); volte.
-  Se a categoria deste event for "atualização de tela", execute o event usando o console (atualização de tela); volte.
-  Se a categoria deste event for "clique direito", execute o event usando o console (clique direito); volte.
-  Se a categoria deste event for "mostrar seta", execute o event usando o console (mostrar seta do mouse); volte.
+  Se a categoria deste evento for "pressionamento de tecla", execute o evento usando o console (pressionamento de tecla); volte.
+  Se a categoria deste evento for "atualização de tela", execute o evento usando o console (atualização de tela); volte.
+  Se a categoria deste evento for "clique direito", execute o evento usando o console (clique direito); volte.
+  Se a categoria deste evento for "mostrar seta", execute o evento usando o console (mostrar seta do mouse); volte.
 
-Etapas para que se execute um event usando um console (tecla backspace):
+Etapas para que se execute um evento usando um console (tecla backspace):
   Se o reply deste console estiver em branco, cancele.
-  Se o event foi alterado, cancele.
-  Execute o event usando a caixa de texto deste console (tecla backspace).
+  Se o evento foi alterado, cancele.
+  Execute o evento usando a caixa de texto deste console (tecla backspace).
   Remove o last pedaço desde o reply deste console.
   Mostre o console.
 
-Etapas para que se execute um event usando um console (seta pra baixo):
+Etapas para que se execute um evento usando um console (seta pra baixo):
   Role a caixa de texto deste console para baixo one linha reta.
   Mostre o console.
 
-Etapas para que se execute um event usando um console (tecla End):
+Etapas para que se execute um evento usando um console (tecla End):
   Role a caixa de texto deste console para o base.
   Mostre o console.
 
-Etapas para que se execute um event usando um console (tecla Enter):
-  Execute o event usando a caixa de texto deste console (tecla Enter).
+Etapas para que se execute um evento usando um console (tecla Enter):
+  Execute o evento usando a caixa de texto deste console (tecla Enter).
   Relinquish control.
 
-Etapas para que se execute um event usando um console (tecla Home):
+Etapas para que se execute um evento usando um console (tecla Home):
   Role a caixa de texto deste console para o topo.
   Mostre o console.
 
-Etapas para que se execute um event usando um console (pressionamento de tecla):
-  Se a tecla deste event for a tecla backspace, execute o event usando o console (tecla backspace); volte.
-  Se a tecla deste event for a seta pra baixo, execute o event usando o console (seta pra baixo); volte.
-  Se a tecla deste event for a tecla End, execute o event usando o console (tecla End); volte.
-  Se a tecla deste event for a tecla Enter, execute o event usando o console (tecla Enter); volte.
-  Se a tecla deste event for a tecla Home, execute o event usando o console (tecla Home); volte.
-  Se a tecla deste event for a tecla PgDn, execute o event usando o console (tecla Page Down); volte.
-  Se a tecla deste event for a tecla PgUp, execute o event usando o console (tecla Page Up); volte.
-  Se a tecla deste event for a seta pra cima, execute o event usando o console (seta pra cima); volte.
-  Se o pedaço deste event não for imprimível, cancele.
-  Posponha o pedaço deste event para o reply deste console.
-  Execute o event usando a caixa de texto deste console (caracteres gráficos).
+Etapas para que se execute um evento usando um console (pressionamento de tecla):
+  Se a tecla deste evento for a tecla backspace, execute o evento usando o console (tecla backspace); volte.
+  Se a tecla deste evento for a seta pra baixo, execute o evento usando o console (seta pra baixo); volte.
+  Se a tecla deste evento for a tecla End, execute o evento usando o console (tecla End); volte.
+  Se a tecla deste evento for a tecla Enter, execute o evento usando o console (tecla Enter); volte.
+  Se a tecla deste evento for a tecla Home, execute o evento usando o console (tecla Home); volte.
+  Se a tecla deste evento for a tecla PgDn, execute o evento usando o console (tecla Page Down); volte.
+  Se a tecla deste evento for a tecla PgUp, execute o evento usando o console (tecla Page Up); volte.
+  Se a tecla deste evento for a seta pra cima, execute o evento usando o console (seta pra cima); volte.
+  Se o pedaço deste evento não for imprimível, cancele.
+  Posponha o pedaço deste evento para o reply deste console.
+  Execute o evento usando a caixa de texto deste console (caracteres gráficos).
   Mostre o console.
 
-Etapas para que se execute um event usando um console (tecla Page Down):
+Etapas para que se execute um evento usando um console (tecla Page Down):
   Role a caixa de texto deste console para baixo one página.
   Mostre o console.
 
-Etapas para que se execute um event usando um console (tecla Page Up):
+Etapas para que se execute um evento usando um console (tecla Page Up):
   Role a caixa de texto deste console para cima one página.
   Mostre o console.
 
-Etapas para que se execute um event usando um console (atualização de tela):
+Etapas para que se execute um evento usando um console (atualização de tela):
   Mostre o console.
 
-Etapas para que se execute um event usando um console (clique direito):
+Etapas para que se execute um evento usando um console (clique direito):
   Mostre o hand cursor.
-  Role o console usando o event.
+  Role o console usando o evento.
   Atualize o cursor.
 
-Etapas para que se execute um event usando um console (mostrar seta do mouse):
+Etapas para que se execute um evento usando um console (mostrar seta do mouse):
   Mostre a seta do mouse.
 
-Etapas para que se execute um event usando um console (seta pra cima):
+Etapas para que se execute um evento usando um console (seta pra cima):
   Role a caixa de texto deste console para cima one linha reta.
   Mostre o console.
 
-Etapas para que se execute um event usando um terminal:
+Etapas para que se execute um evento usando um terminal:
   Se o terminal for inexistente, cancele.
-  Se a categoria deste event for "pressionamento de tecla", execute o event usando o terminal (pressionamento de tecla); volte.
-  Se a categoria deste event for "atualização de tela", execute o event usando o terminal (atualização de tela); volte.
-  Se a categoria deste event for "mostrar seta", execute o event usando o terminal (mostrar seta do mouse); volte.
-  Se a categoria deste event for "clique", relinquish control. \ *** added por invisível turtle book questionable
+  Se a categoria deste evento for "pressionamento de tecla", execute o evento usando o terminal (pressionamento de tecla); volte.
+  Se a categoria deste evento for "atualização de tela", execute o evento usando o terminal (atualização de tela); volte.
+  Se a categoria deste evento for "mostrar seta", execute o evento usando o terminal (mostrar seta do mouse); volte.
+  Se a categoria deste evento for "clique", relinquish control. \ *** added por invisível turtle book questionable
 
-Etapas para que se execute um event usando um terminal (tecla backspace):
+Etapas para que se execute um evento usando um terminal (tecla backspace):
   Se o reply deste terminal estiver em branco, cancele.
-  Se o event foi alterado, cancele.
+  Se o evento foi alterado, cancele.
   Remove o last pedaço desde o reply deste terminal.
   Remove o last pedaço desde a string deste last deste quora deste terminal.
   Mostre o terminal.
 
-Etapas para que se execute um event usando um terminal (tecla Enter):
+Etapas para que se execute um evento usando um terminal (tecla Enter):
   Relinquish control. \Abdique
 
-Etapas para que se execute um event usando um terminal (pressionamento de tecla):
-  Se a tecla deste event for a tecla backspace, execute o event usando o terminal (tecla backspace); volte.
-  Se a tecla deste event for a tecla Enter, execute o event usando o terminal (tecla Enter); volte.
-  Se o pedaço deste event não for imprimível, cancele.
-  Posponha o pedaço deste event para o reply deste terminal.
-  Posponha o pedaço deste event para a string deste last deste quora deste terminal.
+Etapas para que se execute um evento usando um terminal (pressionamento de tecla):
+  Se a tecla deste evento for a tecla backspace, execute o evento usando o terminal (tecla backspace); volte.
+  Se a tecla deste evento for a tecla Enter, execute o evento usando o terminal (tecla Enter); volte.
+  Se o pedaço deste evento não for imprimível, cancele.
+  Posponha o pedaço deste evento para o reply deste terminal.
+  Posponha o pedaço deste evento para a string deste last deste quora deste terminal.
   Mostre o terminal.
 
-Etapas para que se execute um event usando um terminal (atualização de tela):
+Etapas para que se execute um evento usando um terminal (atualização de tela):
   Mostre o terminal.
 
-Etapas para que se execute um event usando um terminal (mostrar seta do mouse):
+Etapas para que se execute um evento usando um terminal (mostrar seta do mouse):
   Mostre a seta do mouse.
 
-Etapas para que se execute um event usando uma caixa de texto (tecla backspace):
+Etapas para que se execute um evento usando uma caixa de texto (tecla backspace):
   Se a caixa de texto for inexistente, cancele.
   Se não existir something para backspace no caixa de texto, cancele.
   Relembre a caixa de texto com "backspace".
-  Se o event foi alterado, remova pedaços de a caixa de texto (backspace com jump).
-  Se o event não foi alterado, remova pedaços de a caixa de texto (backspace).
+  Se o evento foi alterado, remova pedaços de a caixa de texto (backspace com jump).
+  Se o evento não foi alterado, remova pedaços de a caixa de texto (backspace).
   Wrap a caixa de texto.
   Role a caixa de texto para o cursor de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (tecla Delete):
+Etapas para que se execute um evento usando uma caixa de texto (tecla Delete):
   Se a caixa de texto for inexistente, cancele.
   Se não existir something para remove no caixa de texto, cancele.
   Relembre a caixa de texto com "delete".
-  Se o event foi alterado, remova pedaços de a caixa de texto (forward delete com jump).
-  Se o event não foi alterado, remova pedaços de a caixa de texto (forward delete).
+  Se o evento foi alterado, remova pedaços de a caixa de texto (forward delete com jump).
+  Se o evento não foi alterado, remova pedaços de a caixa de texto (forward delete).
   Wrap a caixa de texto.
   Role a caixa de texto para o cursor de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (seta pra baixo):
+Etapas para que se execute um evento usando uma caixa de texto (seta pra baixo):
   Se a caixa de texto for inexistente, cancele.
   Se o cursor de texto of a caixa de texto é sobre o last linha reta, acione um detector.
   Se o detector estiver ativo, mova o cursor de texto para o last pedaço of a caixa de texto.
   Se o detector não estiver ativo, mova o cursor de texto para baixo no caixa de texto.
-  Se o detector de tecla Shift deste event não estiver ativo, desvencilhe-se de a caixa de texto.
+  Se o detector de tecla Shift deste evento não estiver ativo, desvencilhe-se de a caixa de texto.
   Limpe a última operação desta caixa de texto.
   Role a caixa de texto para o cursor de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (tecla End):
+Etapas para que se execute um evento usando uma caixa de texto (tecla End):
   Se a caixa de texto for inexistente, cancele.
-  Se o event foi alterado, mova o cursor de texto para o last pedaço of a caixa de texto.
-  Se o event não foi alterado, mova o cursor de texto para o last pedaço of o current linha de texto of a caixa de texto.
-  Se o detector de tecla Shift deste event não estiver ativo, desvencilhe-se de a caixa de texto.
+  Se o evento foi alterado, mova o cursor de texto para o last pedaço of a caixa de texto.
+  Se o evento não foi alterado, mova o cursor de texto para o last pedaço of o current linha de texto of a caixa de texto.
+  Se o detector de tecla Shift deste evento não estiver ativo, desvencilhe-se de a caixa de texto.
   Limpe a última operação desta caixa de texto.
   Role a caixa de texto para o cursor de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (tecla Enter):
+Etapas para que se execute um evento usando uma caixa de texto (tecla Enter):
   Se a caixa de texto for inexistente, cancele.
   Relembre a caixa de texto com "insert return".
   Remove qualquer trecho selecionado no caixa de texto.
@@ -6829,62 +6829,62 @@ Etapas para que se execute um event usando uma caixa de texto (tecla Enter):
   Wrap a caixa de texto.
   Role a caixa de texto para o cursor de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (tecla Esc):
+Etapas para que se execute um evento usando uma caixa de texto (tecla Esc):
   Se a caixa de texto for inexistente, cancele.
   Desvencilhe-se de a caixa de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (tecla Home):
+Etapas para que se execute um evento usando uma caixa de texto (tecla Home):
   Se a caixa de texto for inexistente, cancele.
-  Se o event foi alterado, mova o cursor de texto para o first pedaço of a caixa de texto.
-  Se o event não foi alterado, mova o cursor de texto para o first pedaço of o current linha de texto of a caixa de texto.
-  Se o detector de tecla Shift deste event não estiver ativo, desvencilhe-se de a caixa de texto.
+  Se o evento foi alterado, mova o cursor de texto para o first pedaço of a caixa de texto.
+  Se o evento não foi alterado, mova o cursor de texto para o first pedaço of o current linha de texto of a caixa de texto.
+  Se o detector de tecla Shift deste evento não estiver ativo, desvencilhe-se de a caixa de texto.
   Limpe a última operação desta caixa de texto.
   Role a caixa de texto para o cursor de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (clique duplo):
+Etapas para que se execute um evento usando uma caixa de texto (clique duplo):
   Se a caixa de texto for inexistente, cancele.
   Desvencilhe-se de a caixa de texto.
   Mova o cursor de texto right para algum tipo de non-alfanumérico pedaço no caixa de texto.
   Mova o anchor left para algum tipo de non-alfanumérico pedaço no caixa de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (seta esquerda):
+Etapas para que se execute um evento usando uma caixa de texto (seta esquerda):
   Se a caixa de texto for inexistente, cancele.
-  Se o event foi alterado, jump o cursor de texto left no caixa de texto.
-  Se o event não foi alterado, mova o cursor de texto left no caixa de texto.
-  Se o detector de tecla Shift deste event não estiver ativo, desvencilhe-se de a caixa de texto.
+  Se o evento foi alterado, jump o cursor de texto left no caixa de texto.
+  Se o evento não foi alterado, mova o cursor de texto left no caixa de texto.
+  Se o detector de tecla Shift deste evento não estiver ativo, desvencilhe-se de a caixa de texto.
   Limpe a última operação desta caixa de texto.
   Role a caixa de texto para o cursor de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (tecla Page Down):
+Etapas para que se execute um evento usando uma caixa de texto (tecla Page Down):
   Se a caixa de texto for inexistente, cancele.
   Role a caixa de texto para baixo one página.
   Mova o cursor de texto para baixo one página no caixa de texto.
-  Se o detector de tecla Shift deste event não estiver ativo, desvencilhe-se de a caixa de texto.
+  Se o detector de tecla Shift deste evento não estiver ativo, desvencilhe-se de a caixa de texto.
   Limpe a última operação desta caixa de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (tecla Page Up):
+Etapas para que se execute um evento usando uma caixa de texto (tecla Page Up):
   Se a caixa de texto for inexistente, cancele.
   Role a caixa de texto para cima one página.
   Mova o cursor de texto para cima one página no caixa de texto.
-  Se o detector de tecla Shift deste event não estiver ativo, desvencilhe-se de a caixa de texto.
+  Se o detector de tecla Shift deste evento não estiver ativo, desvencilhe-se de a caixa de texto.
   Limpe a última operação desta caixa de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (caracteres gráficos):
+Etapas para que se execute um evento usando uma caixa de texto (caracteres gráficos):
   Relembre a caixa de texto com "insert".
   Remove qualquer trecho selecionado no caixa de texto.
-  Insira o pedaço deste event ao caixa de texto.
+  Insira o pedaço deste evento ao caixa de texto.
   Wrap a caixa de texto.
   Role a caixa de texto para o cursor de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (seta direita):
+Etapas para que se execute um evento usando uma caixa de texto (seta direita):
   Se a caixa de texto for inexistente, cancele.
-  Se o event foi alterado, jump o cursor de texto right no caixa de texto.
-  Se o event não foi alterado, mova o cursor de texto right no caixa de texto.
-  Se o detector de tecla Shift deste event não estiver ativo, desvencilhe-se de a caixa de texto.
+  Se o evento foi alterado, jump o cursor de texto right no caixa de texto.
+  Se o evento não foi alterado, mova o cursor de texto right no caixa de texto.
+  Se o detector de tecla Shift deste evento não estiver ativo, desvencilhe-se de a caixa de texto.
   Limpe a última operação desta caixa de texto.
   Role a caixa de texto para o cursor de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (tecla Tab):
+Etapas para que se execute um evento usando uma caixa de texto (tecla Tab):
   Se a caixa de texto for inexistente, cancele.
   Relembre a caixa de texto com "insert".
   Remove qualquer trecho selecionado no caixa de texto.
@@ -6893,27 +6893,27 @@ Etapas para que se execute um event usando uma caixa de texto (tecla Tab):
   Se o resto for 0, insira o caractere de espaço ao caixa de texto.
   Role a caixa de texto para o cursor de texto.
 
-Etapas para que se execute um event usando uma caixa de texto (seta pra cima):
+Etapas para que se execute um evento usando uma caixa de texto (seta pra cima):
   Se a caixa de texto for inexistente, cancele.
   Mova o cursor de texto para cima no caixa de texto.
-  Se o detector de tecla Shift deste event não estiver ativo, desvencilhe-se de a caixa de texto.
+  Se o detector de tecla Shift deste evento não estiver ativo, desvencilhe-se de a caixa de texto.
   Limpe a última operação desta caixa de texto.
   Role a caixa de texto para o cursor de texto.
 
-Etapas para que se execute events usando um console:
+Etapas para que se execute eventos usando um console:
   Se o console for inexistente, cancele.
   Percorra. [o código abaixo]
-    Desenfileire um event.
-    Se o event for inexistente, cancele.
-    Execute o event usando o console.
+    Desenfileire um evento.
+    Se o evento for inexistente, cancele.
+    Execute o evento usando o console.
   Repita. [o código acima]
 
-Etapas para que se execute events usando um terminal:
+Etapas para que se execute eventos usando um terminal:
   Se o terminal for inexistente, cancele.
   Percorra. [o código abaixo]
-    Desenfileire um event.
-    Se o event for inexistente, cancele.
-    Execute o event usando o terminal.
+    Desenfileire um evento.
+    Se o evento for inexistente, cancele.
+    Execute o evento usando o terminal.
   Repita. [o código acima]
 
 Etapas para que se mude tamanho usando uma caixa de texto e uma caixa e uma altura da fonte:
@@ -6970,7 +6970,7 @@ Etapas para que se execute paste usando uma caixa de texto:
 Etapas para que se efetue alteração de cor usando uma caixa de texto e uma cor:
   Se a caixa de texto for inexistente, cancele.
   Relembre a caixa de texto com "pincel".
-  Atribua a cor ao pincel desta caixa de texto.
+  Atribua a cor à cor do pincel desta caixa de texto.
 
 Etapas para que se execute redo usando uma caixa de texto:
   Se a caixa de texto for inexistente, cancele.
@@ -7438,14 +7438,14 @@ Etapas para que se inicialize o cursors (i-beam cursor):
     \ Uma matriz de bytes que contém os valores de bit para a máscara XOR do cursor, como em um bitmap monocromático dependente de dispositivo.
     devolvendo o i-beam cursor. \Se a função for bem-sucedida, o valor de retorno é um identificador para o cursor.
 
-Etapas para que se inicialize as fonts:
+Etapas para que se inicialize as fontes:
   Call "gdi32.dll" "GetStockObject" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getstockobject
   \A função GetStockObject recupera um identificador para uma das canetas, pincéis, fontes ou paletas de estoque.
   11 [i = ANSI_FIXED_FONT 0x0000000B] \ O tipo de objeto de estoque.
   \ANSI_FIXED_FONT = Fonte do sistema de pitch fixo (monoespaçada) do Windows.
     devolvendo o null número da fonte. \Se a função for bem-sucedida, o valor de retorno é um identificador para o objeto lógico solicitado.
     \Se a função falhar, o valor de retorno será NULL.
-  \Call "gdi32.dll" "AddFontMemResourceEx" com o caractere inicial desta osmosian font source e a quantidade de caracteres desta osmosian font source e 0 e o endereçamento desse número devolvendo o osmosian font resource.
+  \Call "gdi32.dll" "AddFontMemResourceEx" com o caractere inicial desta osmosian fonte source e a quantidade de caracteres desta osmosian fonte source e 0 e o endereçamento desse número devolvendo o osmosian fonte resource.
   \Call "gdi32.dll" "AddFontMemResourceEx" com o caractere inicial desta fonte Segoe UI e a quantidade de caracteres desta fonte Segoe UI e 0 e o endereçamento desse número devolvendo o Segoe UI resource.
   Call "gdi32.dll" "AddFontMemResourceEx" com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-addfontmemresourceex
   \A função AddFontMemResourceEx adiciona o recurso de fonte de uma imagem de memória ao sistema.
@@ -7458,7 +7458,7 @@ Etapas para que se inicialize as fonts:
   \Atribua "Segoe UI" e 1/6 polegada à fonte padrão.
   \Atribua "osmosian" e 24 pixels à fonte padrão.
   Atribua "Tahoma" e 20 pixels à fonte padrão.
-  \ stroked fonts abaixo
+  \ stroked fontes abaixo
   Atribua 12 pixels ao tamanho de letra pequena.
   Atribua 24 pixels ao tamanho de letra médio.
   Atribua 48 pixels ao tamanho de letra grande.
@@ -7749,7 +7749,7 @@ Etapas para que se inicialize winsock:
     2 [wVersionRequired] \ a versão do Windows Sockets
     e O endereçamento desse wsadata. [lpWSAData] \ Um ponteiro para a estrutura de dados WSADATA que deve receber detalhes da implementação do Windows Sockets.
 
-Um input é um event.
+Um input é um evento.
 
 Etapas para que se insira um pedaço Para uma caixa de texto:
   Se a caixa de texto for inexistente, cancele.
@@ -9065,8 +9065,8 @@ Etapas para que se atribua a globalized origem desse caixa de texto para uma loc
 
 Etapas para que se atribua a malha desse caixa de texto para uma malha:
   Se a caixa de texto for inexistente, limpe a malha; volte.
-  Atribua a altura desta font desta caixa de texto times 4 ao número X desta malha.
-  Atribua a altura desta font desta caixa de texto ao número Y desta malha.
+  Atribua a altura desta fonte desta caixa de texto times 4 ao número X desta malha.
+  Atribua a altura desta fonte desta caixa de texto ao número Y desta malha.
 
 Etapas para que se atribua a normalized seleção desse caixa de texto para uma seleção:
   Se a caixa de texto for inexistente, cancele.
@@ -9080,7 +9080,7 @@ Etapas para que se atribua a contagem de linhas desse caixa de texto para uma co
 
 Etapas para que se atribua a altura da linha desse caixa de texto para uma altura:
   Se a caixa de texto for inexistente, atribua 0 ao altura; volte.
-  Atribua a altura desta font desta caixa de texto ao altura.
+  Atribua a altura desta fonte desta caixa de texto ao altura.
 
 Etapas para que se atribua as linhas des textos/box desse caixa de texto para uma contagem:
   Se a caixa de texto for inexistente, atribua 0 à contagem; volte.
@@ -9158,9 +9158,9 @@ Etapas para que se atribua um segmento inicial sobre o stack:
 Etapas para que se quit;
 Etapas para que se relinquish control:
   Desmanche a fila de eventos.
-  Crie um event.
-  Atribua "fechamento do programa" à categoria deste event.
-  Enfileire o event.
+  Crie um evento.
+  Atribua "fechamento do programa" à categoria deste evento.
+  Enfileire o evento.
 
 Um quora é uma coisa com \ quora é abreviação de "question or answer"
   uma string e 
@@ -9398,9 +9398,9 @@ A reply é uma reply.
 
 Uma reply é uma string.
 
-Etapas para que se reenfileire um event:
-  Copie o event a um segundo event.
-  Enfileire o segundo event.
+Etapas para que se reenfileire um evento:
+  Copie o evento a um segundo evento.
+  Enfileire o segundo evento.
 
 Etapas para que se reset o alphabet:
   Atribua o 'A' maiúsculo ao next letra.
@@ -9850,10 +9850,10 @@ Etapas para que se redimensione proporcionalmente uma elipse para um percentual:
   Atribua o percentual / 100 a um fração.
   Redimensione proporcionalmente a elipse usando a fração.
 
-Etapas para que se redimensione proporcionalmente uma font usando uma proporção;
-Etapas para que se redimensione proporcionalmente uma font usando um fração:
+Etapas para que se redimensione proporcionalmente uma fonte usando uma proporção;
+Etapas para que se redimensione proporcionalmente uma fonte usando um fração:
   Se a fração for 1/1, cancele.
-  Redimensione proporcionalmente a altura desta font usando a fração.
+  Redimensione proporcionalmente a altura desta fonte usando a fração.
 
 Etapas para que se redimensione proporcionalmente uma fração usando uma segunda fração;
 Etapas para que se multiplique uma fração por uma segunda fração:
@@ -9937,7 +9937,7 @@ Etapas para que se redimensione proporcionalmente uma caixa de texto usando um f
   Se a fração for 1/1, cancele.
   Redimensione proporcionalmente a caixa desta caixa de texto usando a fração.
   Redimensione proporcionalmente a origem desta caixa de texto usando a fração.
-  Redimensione proporcionalmente a font desta caixa de texto usando a fração.
+  Redimensione proporcionalmente a fonte desta caixa de texto usando a fração.
   Redimensione proporcionalmente a scale desta caixa de texto usando a fração.
 
 Etapas para que se redimensione proporcionalmente uma caixa de texto para um percentual:
@@ -9959,9 +9959,9 @@ A tela é um conjunto com
   Uma pixel altura e 
   Uma pixel largura.
 
-Etapas para que se role um console usando um event:
+Etapas para que se role um console usando um evento:
   Se o console for inexistente, cancele.
-  Encontre um sector usando a malha deste console e a localização deste event.
+  Encontre um sector usando a malha deste console e a localização deste evento.
   Percorra. [o código abaixo]
     Se o botão direito deste mouse não estiver sendo pressionado, cancele.
     Encontre uma segunda sector usando a malha deste console e a localização deste mouse.
@@ -9974,7 +9974,7 @@ Etapas para que se role um console usando um event:
 
 Etapas para que se role uma caixa de texto para o base:
   Se a caixa de texto for inexistente, cancele.
-  Se o vertical scroll detector desta caixa de texto não estiver ativo, cancele.
+  Se o detector de rolagem vertical desta caixa de texto não estiver ativo, cancele.
   Atribua a contagem de linhas desta caixa de texto menos 1 a um número.
   Atribua - o número times a altura da linha desta caixa de texto à coordenada Y desta caixa de texto.
   Limite a origem of a caixa de texto.
@@ -10015,13 +10015,13 @@ Etapas para que se role uma caixa de texto para o cursor de texto e center it:
 
 Etapas para que se role uma caixa de texto para baixo one linha reta:
   Se a caixa de texto for inexistente, cancele.
-  Se o vertical scroll detector desta caixa de texto não estiver ativo, cancele.
+  Se o detector de rolagem vertical desta caixa de texto não estiver ativo, cancele.
   Atribua - a altura da linha desta caixa de texto ao número Y dessa difference. \ reescrever esse comando
   Role a caixa de texto usando a difference.
 
 Etapas para que se role uma caixa de texto para baixo one página:
   Se a caixa de texto for inexistente, cancele.
-  Se o vertical scroll detector desta caixa de texto não estiver ativo, cancele.
+  Se o detector de rolagem vertical desta caixa de texto não estiver ativo, cancele.
   Subtraia o y-extent desta caixa desta caixa de texto desde a coordenada Y desta caixa de texto.
   Adicione a altura da linha desta caixa de texto para a coordenada Y desta caixa de texto.
   Limite a origem of a caixa de texto.
@@ -10029,27 +10029,27 @@ Etapas para que se role uma caixa de texto para baixo one página:
 Etapas para que se role uma caixa de texto usando um difference:
   Se a caixa de texto for inexistente, cancele.
   Isole a difference.
-  Se o horizontal scroll detector desta caixa de texto não estiver ativo, atribua 0 ao número X desta difference.
-  Se o vertical scroll detector desta caixa de texto não estiver ativo, atribua 0 ao número Y desta difference.
+  Se o detector de rolagem horizontal desta caixa de texto não estiver ativo, atribua 0 ao número X desta difference.
+  Se o detector de rolagem vertical desta caixa de texto não estiver ativo, atribua 0 ao número Y desta difference.
   Se a difference for 0, cancele.
   Mova a origem desta caixa de texto usando a difference.
   Limite a origem of a caixa de texto.
 
 Etapas para que se role uma caixa de texto para o topo:
   Se a caixa de texto for inexistente, cancele.
-  Se o vertical scroll detector desta caixa de texto não estiver ativo, cancele.
+  Se o detector de rolagem vertical desta caixa de texto não estiver ativo, cancele.
   Atribua 0 à coordenada Y desta caixa de texto.
   Limite a origem of a caixa de texto.
 
 Etapas para que se role uma caixa de texto para cima one linha reta:
   Se a caixa de texto for inexistente, cancele.
-  Se o vertical scroll detector desta caixa de texto não estiver ativo, cancele.
+  Se o detector de rolagem vertical desta caixa de texto não estiver ativo, cancele.
   Atribua a altura da linha desta caixa de texto ao número Y dessa difference.
   Role a caixa de texto usando a difference.
 
 Etapas para que se role uma caixa de texto para cima one página:
   Se a caixa de texto for inexistente, cancele.
-  Se o vertical scroll detector desta caixa de texto não estiver ativo, cancele.
+  Se o detector de rolagem vertical desta caixa de texto não estiver ativo, cancele.
   Adicione o y-extent desta caixa desta caixa de texto para a coordenada Y desta caixa de texto.
   Subtraia a altura da linha desta caixa de texto desde a coordenada Y desta caixa de texto.
   Limite a origem of a caixa de texto.
@@ -10353,7 +10353,7 @@ Etapas para que se shut para baixo:
   Finalize os canvases.
   Finalize o mouse.
   Finalize os cursors.
-  Finalize as fonts.
+  Finalize as fontes.
   Finalize a janela do programa.
   Finalize o tela.
   Finalize as cors.
@@ -11101,7 +11101,7 @@ Etapas para que se start para cima:
   Inicialize as cors.
   Inicialize o tela.
   Inicialize a janela do programa.
-  Inicialize as fonts.
+  Inicialize as fontes.
   Inicialize os cursors.
   Inicialize o mouse.
   Inicialize os canvases.
@@ -11412,15 +11412,15 @@ Um vértice é uma coisa com
   Uma coordenada Y, 
   Uma localização sob a coordenada X.
 
-Etapas para que se aguarde por um event;
-Etapas para que se desenfileire um event:
+Etapas para que se aguarde por um evento;
+Etapas para que se desenfileire um evento:
   Yield para windows.
-  Atribua o first desta fila de eventos ao event.
-  Se o event for inexistente, repita.
-  Remove o event desde a fila de eventos.
-  Se a categoria deste event for "fechamento do programa", destrua o event; volte.
+  Atribua o first desta fila de eventos ao evento.
+  Se o evento for inexistente, repita.
+  Remove o evento desde a fila de eventos.
+  Se a categoria deste evento for "fechamento do programa", destrua o evento; volte.
   Destrua o evento atual.
-  Atribua o event ao evento atual.
+  Atribua o evento ao evento atual.
 
 Etapas para que se aguarde uns milliseconds;
 Etapas para que se espere uns milliseconds;
@@ -11446,7 +11446,7 @@ Etapas para que se aguarde uma tecla ser pressionada;
 Etapas para que se aguarde uma tecla:
   Aguarde pela tecla para go para baixo.
   Aguarde pela tecla para come para cima.
-  Desmanche all events.
+  Desmanche all eventos.
 
 Um wave file é um endereço completo.
 
@@ -11456,7 +11456,7 @@ Uma largura é uns twips.
 
 Etapas para que se wrap uma caixa de texto:
   Se a caixa de texto for inexistente, cancele.
-  Se o wrap detector desta caixa de texto não estiver ativo, cancele.
+  Se o detector de quebra de texto desta caixa de texto não estiver ativo, cancele.
   Converta o anchor desta caixa de texto para um posicionamento absoluto usando a caixa de texto.
   Converta o cursor de texto desta caixa de texto para uma segunda posicionamento absoluto usando a caixa de texto.
   Atribua a scale desta caixa de texto a um fração.
@@ -11465,7 +11465,7 @@ Etapas para que se wrap uma caixa de texto:
   Posponha o retorno de carro para a string.
   Destrua as linhas des textos desta caixa de texto.
   Lance um percorredor sobre a string.
-  Crie o número da fonte of o memory canvas usando a font desta caixa de texto.
+  Crie o número da fonte of o memory canvas usando a fonte desta caixa de texto.
   Percorra. [o código abaixo]
     Mova o percorredor usando a caixa desta caixa de texto (word wrapping rules).
     Se o segmento inicial deste percorredor estiver em branco, pare.
