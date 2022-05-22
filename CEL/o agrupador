@@ -739,8 +739,8 @@ Etapas para que se posponha um número para um trecho (com separator):
   Converta o número para uma string.
   Posponha a string para o trecho (com separator).
 
-Etapas para que se posponha um ratio para um trecho (com separator):
-  Converta o ratio para uma string.
+Etapas para que se posponha um proporção para um trecho (com separator):
+  Converta o proporção para uma string.
   Posponha a string para o trecho (com separator).
 
 Etapas para que se posponha uma rotina para um trecho (com separator):
@@ -1115,7 +1115,7 @@ Etapas para que se check por invalid optional info sobre um type:
   Se o type for inexistente, cancele.
   Se o conteúdo nome deste type não estiver em branco, check por invalid optional info sobre o type (conteúdo).
   Se o campos deste type não estiverem vazios, check por invalid optional info sobre o type (campos).
-  Se o scale deste type não for 0, check por invalid optional info sobre o type (scale).
+  Se o proporção de escala deste type não for 0, check por invalid optional info sobre o type (scale).
 
 Etapas para que se check por invalid optional info sobre um type (campos):
   Se o detector de erros deste compilador estiver ativado, cancele.
@@ -1572,28 +1572,28 @@ Etapas para que se compile um literal usando um percorredor (numeric - integer):
   Atribua "número" ao type nome deste literal.
   Resolva o literal.
 
-Etapas para que se compile um literal usando um percorredor (numeric - ratio):
+Etapas para que se compile um literal usando um percorredor (numeric - proporção):
   Se o detector de erros deste compilador estiver ativado, cancele.
-  Converta o segmento inicial deste percorredor para um ratio.
-  Converta o ratio para o data deste literal.
+  Converta o segmento inicial deste percorredor para um proporção.
+  Converta o proporção para o data deste literal.
   Mova o percorredor (usando diretrizes de compilação).
-  Atribua "ratio" ao type nome deste literal.
+  Atribua "proporção" ao type nome deste literal.
   Resolva o literal.
 
 Etapas para que se compile um literal usando um percorredor (numeric - com unidade de medida):
   Se o detector de erros deste compilador estiver ativado, cancele.
-  Converta o segmento inicial deste percorredor para um ratio.
+  Converta o segmento inicial deste percorredor para um proporção.
   Mova o percorredor (usando diretrizes de compilação).
   Examine um nome usando o percorredor.
   Encontre um type usando o nome e o catálogo de tipos.
   Se o type for inexistente, apresente uma mensagem de erro contendo "'" junto com o nome seguido de "' é uma unidade de medida inexistente." e o local de aparição deste literal; volte.
   Se o type não puder ser reduzido para "número", apresente a mensagem de erro contendo "'" junto com o nome seguido de "' é uma unidade de medida inválida." e o local de aparição deste literal; volte.
-  Atribua a scale deste type para um final ratio.
-  Se a scale deste type for 0, atribua 1/1 ao final ratio.
-  Multiplique o final ratio pelo ratio.
-  Reduza o final ratio.
-  Se o denominador deste final ratio for 0, apresente a mensagem de erro contendo "Parece que essa é uma unidade de medida inválida." e o local de aparição deste literal.
-  Atribua o numerador deste final ratio dividido pelo denominador deste final ratio para um número.
+  Atribua a proporção de escala deste type para um final proporção.
+  Se a proporção de escala deste type for 0, atribua 1/1 ao final proporção.
+  Multiplique o final proporção pelo proporção.
+  Reduza o final proporção.
+  Se o denominador deste final proporção for 0, apresente a mensagem de erro contendo "Parece que essa é uma unidade de medida inválida." e o local de aparição deste literal.
+  Atribua o numerador deste final proporção dividido pelo denominador deste final proporção para um número.
   Atribua o nome deste type ao type nome deste literal.
   Converta o número para o data deste literal.
   Resolva o literal.
@@ -1602,8 +1602,8 @@ Etapas para que se compile um literal usando um percorredor (numeric):
   Se o detector de erros deste compilador estiver ativado, cancele.
   Se o percorredor estiver acompanhado por algum tipo de unidade de medida, compile o literal usando o percorredor (numeric - com unidade de medida); volte.
   Se o segmento inicial deste percorredor for algum tipo de integer literal, compile o literal usando o percorredor (numeric - integer); volte.
-  Se o segmento inicial deste percorredor for algum tipo de ratio literal, compile o literal usando o percorredor (numeric - ratio); volte.
-  Se o segmento inicial deste percorredor for algum tipo de mixed literal, compile o literal usando o percorredor (numeric - ratio); volte.
+  Se o segmento inicial deste percorredor for algum tipo de proporção literal, compile o literal usando o percorredor (numeric - proporção); volte.
+  Se o segmento inicial deste percorredor for algum tipo de número misto literal, compile o literal usando o percorredor (numeric - proporção); volte.
 
 Etapas para que se compile um literal usando um percorredor (endereço de memória):
   Se o detector de erros deste compilador estiver ativado, cancele.
@@ -1986,7 +1986,7 @@ Etapas para que se compile um termo usando um percorredor:
   Se o segmento inicial deste percorredor for "quanto", compile o termo usando o percorredor (as part).
   Se o segmento inicial deste percorredor for "como", compile o termo usando o percorredor (as part).
   \Se o segmento inicial deste percorredor for "que nem", compile o termo usando o percorredor (as part).
-  Se o segmento inicial deste percorredor for "/", compile o termo usando o percorredor (runtime ratio).
+  Se o segmento inicial deste percorredor for "/", compile o termo usando o percorredor (runtime proporção).
 
 Etapas para que se compile um termo usando um percorredor (as part):
   Se o detector de erros deste compilador estiver ativado, cancele.
@@ -2119,14 +2119,14 @@ Etapas para que se compile um termo usando um percorredor (possessives):
   Compile o termo usando o percorredor (possessive).
   Repita. [o código acima]
 
-Etapas para que se compile um termo usando um percorredor (runtime ratio):
+Etapas para que se compile um termo usando um percorredor (runtime proporção):
   Se o detector de erros deste compilador estiver ativado, cancele.
   Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Você usou o / (proporção da execução) da forma errada, erro de termo vazio na variável: " junto com a phrase deste termo seguido de "." e o percorredor; volte.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um segundo termo usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, cancele.
   Se a variável deste segundo termo for inexistente, apresente a mensagem de erro contendo "Uso inválido da /, termo vazio da variável: " junto com o phrase deste segundo termo seguido de "." e o percorredor; volte.
-  Adicione um intermediate usando "ratio" e o caractere inicial deste segmento inicial deste percorredor.
+  Adicione um intermediate usando "proporção" e o caractere inicial deste segmento inicial deste percorredor.
   Adicione several fragments usando "atribua" e a variável deste termo e "e" e a variável deste segundo termo e "para" e o intermediate e o caractere inicial deste segmento inicial deste percorredor.
   Atribua o intermediate à variável deste termo.
   Limpe a phrase deste termo.
@@ -2357,7 +2357,7 @@ Etapas para que se crie um source file:
 
 Etapas para que se crie um type:
   Aloque memória para o type.
-  Atribua 0/1 ao scale deste type.
+  Atribua 0/1 ao proporção de escala deste type.
   Atribua -1 ao quantidade de caracteres deste type.
 
 Etapas para que se crie uma variável usando um categoria:
@@ -3839,6 +3839,8 @@ Etapas para que se eliminate duplicate nicknames usando uma variável e um catálo
   Limpe o nickname desta segunda variável.
   Limpe o nickname desta variável.
 
+  
+
 An entry é uma coisa com
   Um nome endereço,
   Um previamente calculado endereço, \ consulte https://en.wikipedia.org/wiki/Thunk e 
@@ -4220,7 +4222,7 @@ Etapas para que se catalogue um type:
   Se o detector de erros deste compilador estiver ativado, cancele.
   Catalogue o type usando o nome deste type.
 
-Etapas para que se catalogue um type usando um nome:
+Etapas para que se catalogue um type usando um nome: \To index a type given a name:
   Se o type for inexistente, cancele.
   Se o detector de erros deste compilador estiver ativado, cancele.
   Encontre um existing type usando o nome e o catálogo de tipos.
@@ -4558,7 +4560,7 @@ Etapas para que se liste um type em um trecho:
   Posponha o base type deste type para o trecho (com separator).
   Posponha o conteúdo nome deste type para o trecho (com separator).
   Posponha o conteúdo type deste type para o trecho (com separator).
-  Posponha a scale deste type para o trecho (com separator).
+  Posponha a proporção de escala deste type para o trecho (com separator).
   Advance o trecho.
   Liste os campos deste type no trecho.
   Advance o trecho.
@@ -4996,11 +4998,10 @@ Etapas para que se pluralize uma string (português - regras comuns) :
   \PAL
   \# https://www.normaculta.com.br/singular-e-plural/
   \# palavras que são exceções às regras
-  Se a string for "bit", atribua "bits" à string; volte.
+  \Se a string for "bit", atribua "bits" à string; volte.
   Se a string for "caráter", atribua "carateres" à string; volte.
   Se a string for "de", atribua "de" à string; volte.
   Se a string for "júnior", atribua "juniores" à string; volte.
-  Se a string for "sênior", atribua "seniores" à string; volte.
   Se a string for "sênior", atribua "seniores" à string; volte.
   \# advérbios principais
   Se a string for "muito", cancele.
@@ -5037,9 +5038,9 @@ Etapas para que se pluralize uma string (português - regras comuns) :
   Se a string termina com "z", pluralize a string (plural de palavras terminadas com "z"); volte.
   Se a string termina com "#", posponha "s" para a string; volte.
   \# regra padrão
-  [Se as condições acima não puderem ser satisfeitas, então:] Posponha "s" para a string.
-  \ Só acrescenta o "s" caso nenhuma das condições acima tenha siddo correspondida. 
-  Volte.
+  [Se as condições acima não puderem ser satisfeitas, então:] 
+  Posponha "s" para a string. \ Só acrescenta o "s" caso nenhuma das condições acima tenha siddo correspondida. 
+  \Volte.
 
 Etapas para que se pluralize uma string (plural de palavras terminadas com "ão"):
   \A formação do plural dos substantivos terminados -ão pode ser feita de três formas distintas: -ões, -ãos, -ães.
@@ -5079,11 +5080,11 @@ Etapas para que se pluralize uma string (plural de palavras terminadas com "ão")
   \eleição - eleições.
   Remove os last dois pedaços desde a string.
   Posponha "ões" para a string.
-  Volte.
+  \Volte.
 
 Etapas para que se pluralize uma string (plural de palavras terminadas com outras letras):
   Posponha "s" para a string.
-  Volte.
+  \Volte.
 
 Etapas para que se pluralize uma string (plural de palavras terminadas com "l"):
   \# palavras terminadas com "al"
@@ -5096,15 +5097,15 @@ Etapas para que se pluralize uma string (plural de palavras terminadas com "l"):
   Se a string termina com "ol", pluralize a string (plural de palavras terminadas com "ol"); volte. \- LENÇOL -> LENÇÓIS
   \# palavras terminadas com "ul"
   Se a string termina com "ul", pluralize a string (plural de palavras terminadas com "ul"); volte. \ AZUL -> AZUIS \ Cônsul - cônsules
-  [Caso a string não seja uma sigla, tipo URL]
+  [Caso a string seja uma sigla, tipo URL]
   Posponha "s" para a string.
-  Volte.
+  \Volte.
 
 Etapas para que se pluralize uma string (plural de palavras terminadas com "al"):
   Se a string for "mal", atribua "males" para a string; volte.
-  Remove o last pedaço desde a string. \remove a letra S
+  Remove o last pedaço desde a string. \remove a letra L
   Posponha "is" para a string.
-  Volte.
+  \Volte.
 
 Etapas para que se pluralize uma string (plural de palavras terminadas com "el"):
   \Se a string for "pixel", atribua "pixels" para a string; volte.
@@ -5114,22 +5115,22 @@ Etapas para que se pluralize uma string (plural de palavras terminadas com "el")
   Se o subtexto has algum tipo de stressed vogal, remove o last pedaço desde a string; posponha "is" para a string; volte.
   Remove os last dois pedaços desde a string.
   Posponha "éis" para a string.
-  Volte.
+  \Volte.
 
 Etapas para que se pluralize uma string (plural de palavras terminadas com "il"):
-  Se a string for "canil", atribua "canis" para a string; volte.
-  Se a string for "covil", atribua "covis" para a string; volte.
-  Se a string for "funil", atribua "funis" para a string; volte.
-  Se a string for "barril", atribua "barris" para a string; volte.
-  Se a string for "fuzil", atribua "fuzis" para a string; volte.
-  Se a string for "redil", atribua "redis" para a string; volte.
+  \Se a string for "canil", atribua "canis" para a string; volte.
+  \Se a string for "covil", atribua "covis" para a string; volte.
+  \Se a string for "funil", atribua "funis" para a string; volte.
+  \Se a string for "barril", atribua "barris" para a string; volte.
+  \Se a string for "fuzil", atribua "fuzis" para a string; volte.
+  \Se a string for "redil", atribua "redis" para a string; volte.
   \# acentos em sílabas prévias
   Lance um subtexto sobre a string.
   Subtraia 2 desde o caractere final deste subtexto.
   Se o subtexto has algum tipo de stressed vogal, remove os last dois pedaços desde a string; posponha "eis" para a string; volte.
-  Remove o last pedaço desde a string.
+  Remove o last pedaço desde a string. \ remove a letra L
   Posponha "s" para a string.
-  Volte.
+  \Volte.
 
 Etapas para que se pluralize uma string (plural de palavras terminadas com "ol"):
   \# acentos em sílabas prévias
@@ -5138,13 +5139,13 @@ Etapas para que se pluralize uma string (plural de palavras terminadas com "ol")
   Se o subtexto has algum tipo de stressed vogal, remove o last pedaço desde a string; posponha "is" para a string; volte.
   Remove os last dois pedaços desde a string.
   Posponha "óis" para a string.
-  Volte.
+  \Volte.
 
 Etapas para que se pluralize uma string (plural de palavras terminadas com "ul"):
-  Se a string for "cônsul", atribua "cônsules" para a string; volte.
-  Remove o last pedaço desde a string.
+  Se a string for "cônsul", atribua "cônsules" à string; volte.
+  Remove o last pedaço desde a string. \ remove o L
   Posponha "is" para a string.
-  Volte.
+  \Volte.
 
 Etapas para que se pluralize uma string (plural de palavras terminadas com "r"):
   \# acentos em sílabas prévias
@@ -5156,17 +5157,17 @@ Etapas para que se pluralize uma string (plural de palavras terminadas com "r"):
   Se a string termina com "aur", remove os last dois pedaços desde a string; posponha "úres" para a string; volte.
   \# regra padrão
   Posponha "es" para a string.
-  Volte.
+  \Volte.
 
 Etapas para que se pluralize uma string (plural de palavras terminadas com "s"):
 \Quando os substantivos terminados em -s são paroxítonos, a formação do plural fica invariável:.
   \# proparoxítonas/paroxítonas terminadas com "as", "es", "os"
-  Se a string termina com "as", posponha "es" para a string; volte. \ atlas
-  \Se a string termina com "as", posponha "-plural" para a string; volte. \ atlas
-  Se a string termina com "es", posponha "es" para a string; volte. \ pires
-  \Se a string termina com "es", posponha "-plural" para a string; volte. \ pires
-  Se a string termina com "os", posponha "es" para a string; volte. \ óculos
-  \Se a string termina com "os", posponha "-plural" para a string; volte.  \óculos
+  Se a string termina com "as", posponha "es" para a string; volte. \atlas
+  \Se a string termina com "as", posponha "-plural" para a string; volte. \atlas
+  Se a string termina com "es",  posponha "es" para a string; volte. \atlas
+  \Se a string termina com "es", posponha "-plural" para a string; volte.\pires
+  Se a string termina com "os",  posponha "es" para a string; volte. \atlas
+  \Se a string termina com "os", posponha "-plural" para a string; volte. \óculos
   \# hiatos acentuados
   Se a string termina com "aís", posponha "es" para a string; volte.
   Se a string termina com "aús", posponha "es" para a string; volte.
@@ -5185,7 +5186,7 @@ Etapas para que se pluralize uma string (plural de palavras terminadas com "s"):
   \Se a string termina com "ts", exit.
   \# regra padrão
   Posponha "es" para a string.
-  Volte.
+  \Volte.
 
 Etapas para que se pluralize uma string (plural de palavras terminadas com "is" ou com "us"):
   \# acentos em sílabas prévias
@@ -5197,13 +5198,13 @@ Etapas para que se pluralize uma string (plural de palavras terminadas com "is" 
   Se a string termina com "aus", remove os last dois pedaços desde a string; posponha "úses" para a string; volte.
   \# regra padrão
   Posponha "es" para a string.
-  Volte.
+  \Volte.
 
 Etapas para que se pluralize uma string  (plural de palavras terminadas com "x"):
-  Se a string for "px", posponha "pxs" para a string; volte.
-  Se a string for "fax", posponha "faxes" para a string; volte.
-  Posponha "s" para a string. \ Presente apenas para exceções
-  Volte.
+  \Se a string for "px", posponha "pxs" para a string; volte.
+  Se a string for "fax", posponha "es" para a string; volte.
+  Posponha "s" para a string. \ tratamento de exceções
+  \Volte.
   
 
 Etapas para que se pluralize uma string (plural de palavras terminadas com "z"):
@@ -5228,7 +5229,7 @@ Etapas para que se pluralize uma string (plural de palavras terminadas com "z"):
   Se a string termina com "auz", remove os last dois pedaços desde a string; posponha "úzes" para a string; volte.
   \# regra padrão
   Posponha "es" para a string.
-  Volte.
+  \Volte.
 
 Etapas para que se pluralize uma string (english rules); \ plural inglês
 Etapas para que se pluralize uma string:
@@ -5575,9 +5576,9 @@ Etapas para que se resolva um type (optional info - conjunto):
 Etapas para que se resolva um type (optional info - scale):
   Se o detector de erros deste compilador estiver ativado, cancele.
   Atribua o base type deste type para um base type.
-  Se a scale deste type for 0, atribua o scale deste base type deste type ao scale deste type; volte.
-  Se a scale deste base type for 0, cancele.
-  Multiplique o scale deste type pela scale deste base type.
+  Se a proporção de escala deste type for 0, atribua o proporção de escala deste base type deste type ao proporção de escala deste type; volte.
+  Se a proporção de escala deste base type for 0, cancele.
+  Multiplique o proporção de escala deste type pela proporção de escala deste base type.
   Atribua o base type deste base type ao base type deste type.
 
 Etapas para que se resolva um type (optional info):
@@ -5731,10 +5732,10 @@ Etapas para que se examine um campo usando um percorredor (reference part):
 
 Etapas para que se examine um campo usando um percorredor (type part - pedaço array):
   Se o detector de erros deste compilador estiver ativado, cancele.
-  Converta o segmento inicial deste percorredor para um ratio.
-  Reduza o ratio.
-  Se o denominador desta ratio não for 1, apresente uma mensagem de erro contendo "Você precisa especificar um número completo de pedaços para um pedaço array" e o percorredor; volte.
-  Atribua o numerador desta ratio à contagem deste campo.
+  Converta o segmento inicial deste percorredor para um proporção.
+  Reduza o proporção.
+  Se o denominador desta proporção não for 1, apresente uma mensagem de erro contendo "Você precisa especificar um número completo de pedaços para um pedaço array" e o percorredor; volte.
+  Atribua o numerador desta proporção à contagem deste campo.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for "pedaço" ou "pedaços", apresente a mensagem de erro contendo "Você precisa usar a palavra 'pedaços' depois de um counted campo designador." e o percorredor; volte.
   Mova o percorredor (usando diretrizes de compilação).
@@ -5977,8 +5978,8 @@ Etapas para que se examine um type usando um percorredor (has ou have):
 
 Etapas para que se examine um type usando um percorredor (unidade de medida):
   Se o detector de erros deste compilador estiver ativado, cancele.
-  Converta o segmento inicial deste percorredor para o scale deste type.
-  Se o scale deste type for 0, apresente uma mensagem de erro contendo "Zero é um tipo de escala inválido." e o local de aparição deste type; volte.
+  Converta o segmento inicial deste percorredor para o proporção de escala deste type.
+  Se o proporção de escala deste type for 0, apresente uma mensagem de erro contendo "Zero é um tipo de escala inválido." e o local de aparição deste type; volte.
   Mova o percorredor (usando diretrizes de compilação).
   Examine o base nome deste type usando o percorredor.
   Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Os tipos precisam terminar com um ponto, não com: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; volte.
@@ -6205,6 +6206,8 @@ Etapas para que se transforme em código hexadecimal umas rotinas:
 
 O catálogo de tipos é um catálogo.
 
+Uma proporção de escala é uma proporção.
+
 Um type é uma coisa com
   Um local de aparição (reference),
   Um nome, um plural nome,
@@ -6212,7 +6215,7 @@ Um type é uma coisa com
   Uma quantidade de caracteres,
   Um base nome, um base type (reference),
   Um conteúdo nome, um conteúdo type (reference) [endereço de memórias only],
-  Um scale ratio,
+  Uma proporção de escala,
   Some campos [records only],
   Um cooking detector,
   Um optional info resolved detector.
