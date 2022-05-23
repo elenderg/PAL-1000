@@ -4990,7 +4990,7 @@ Uma phrase é uma string.
 Etapas para que se pluralize uma string (portuguese rules):
   Lance um percorredor sobre a string.
   Percorra. [o código abaixo]
-    Mova o percorredor (spell checking rules).
+    Mova o percorredor (usando diretrizes de compilação).
     Se o segmento inicial deste percorredor estiver em branco, pare.
     Se uma plural string não estiver em branco, posponha " " para o plural string.
     Posponha o segmento inicial deste percorredor para a plural string.
@@ -5949,24 +5949,23 @@ Etapas para que se examine uns source files:
   Repita. [o código acima]
 
 Etapas para que se examine um type usando um percorredor:
-  Se o detector de erros deste compilador estiver ativado, cancele.
-  Se o segmento inicial deste percorredor for algum tipo de artigo indefinido português, acione um portuguese detector.
-  Se o segmento inicial deste percorredor for algum tipo de artigo indefinido inglês, acione um english detector.
-  Adicione o type para os types usando o caractere inicial deste segmento inicial deste percorredor.
-  Mova o percorredor (usando diretrizes de compilação).
-  Examine o nome deste type usando o percorredor.
-  Atribua o nome deste type ao plural nome deste type.
-  Atribua 0 a uma contagem.
-  Se o portuguese detector estiver ativo, pluralize o plural nome deste type (portuguese rules); adicione 1 à contagem.
+  Se o detector de erros deste compilador estiver ativado, cancele. 
+  Se o segmento inicial deste percorredor for algum tipo de artigo indefinido português, acione um portuguese detector. 
+  Se o segmento inicial deste percorredor for algum tipo de artigo indefinido inglês, acione um english detector. 
+  Adicione o type para os types usando o caractere inicial deste segmento inicial deste percorredor. 
+  Mova o percorredor (usando diretrizes de compilação). 
+  Examine o nome deste type usando o percorredor. 
+  Atribua o nome deste type ao plural nome deste type. 
+  Atribua 0 a uma contagem.  
+  Se o english detector não estiver ativo, pluralize o plural nome deste type (portuguese rules); adicione 1 à contagem.
   Se o english detector estiver ativo, pluralize o plural nome deste type (english rules); adicione 1 à contagem.
-  Se a contagem for igual ou maior do que 2, apresente uma mensagem de erro contendo "Erro, não foi possível detectar o idioma desta variável" e o local de aparição deste type; cancele.
-  \Se o english detector não estiver ativo, pluralize o plural nome deste type (portuguese rules).
-  Se o segmento inicial deste percorredor for algum tipo de operador de atribuição de estruturas compostas, examine o type usando o percorredor (has ou have); volte.
-  Se o segmento inicial deste percorredor não for algum tipo de operador de atribuição simples, apresente a mensagem de erro contendo "Eu esperava um 'is' ou um 'are', mas só achei um " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; volte.
+  \Se o portuguese detector estiver ativo, pluralize o plural nome deste type (portuguese rules); adicione 1 à contagem.
+  Se a contagem for igual ou maior do que 2, apresente uma mensagem de erro contendo "Erro, não foi possível detectar o idioma desta variável" e o local de aparição deste type; cancele.  
+  Se o segmento inicial deste percorredor for algum tipo de operador de atribuição de estruturas compostas, examine o type usando o percorredor (has ou have); volte. \ok
+  Se o segmento inicial deste percorredor não for algum tipo de operador de atribuição simples, apresente a mensagem de erro contendo "Eu esperava um 'é' ou um 'são', mas só achei um " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; volte. \ok  
   \Pluralize o plural nome deste type.
   \Se o segmento inicial deste percorredor for "has" ou "have", examine o type usando o percorredor (has ou have); volte.
   \Se o segmento inicial deste percorredor não for "is" ou "are", apresente uma mensagem de erro contendo "I was expecting um 'is' ou 'are', but I encontrado: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; volte.
-
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor for algum tipo de numeric literal, examine o type usando o percorredor (unidade de medida); volte.
   Se o segmento inicial deste percorredor não for algum tipo de artigo indefinido, apresente a mensagem de erro contendo "Faltou um artigo indefinido, lembra?: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; volte.
