@@ -6,7 +6,7 @@ Etapas para que se read stdin para um trecho:
   Limpe o erro do fluxo de entrada/saída.
   Limpe o trecho.
   Encontre uma string usando o environment variáveis e "CONTENT_LENGTH".
-  Se a string estiver em branco, atribua "Ocorreu um erro na hora de obter o conteúdo de comprimento CONTENT_LENGTH." ao erro do fluxo de entrada/saída; volte.
+  Se a string estiver em branco, atribua "Ocorreu um erro na hora de obter o conteúdo de comprimento CONTENT_LENGTH." ao erro do fluxo de entrada/saída; saia.
   Converta a string a uma quantidade de caracteres.
   Se a quantidade de caracteres for 0, cancele.
   Reassign o caractere inicial deste trecho usando a quantidade de caracteres.
@@ -17,7 +17,7 @@ Etapas para que se read stdin para um trecho:
     e A quantidade de caracteres [nNumberOfBytesToRead] \O número máximo de bytes a serem lidos.
     e O endereçamento desse número [lpNumberOfBytesRead] \Um ponteiro para a variável que recebe o número de bytes lidos ao usar um parâmetro hFile síncrono.
     e nil. [lpOverlapped] \Um ponteiro para uma estrutura OVERLAPPED é necessário se o parâmetro hFile foi aberto com FILE_FLAG_OVERLAPPED, caso contrário, pode ser NULL.
-  Se o número não for a quantidade de caracteres, atribua "Erro ao ler dados do fluxo de entrada padrão stdin." ao erro do fluxo de entrada/saída; limpe o trecho; volte.
+  Se o número não for a quantidade de caracteres, atribua "Erro ao ler dados do fluxo de entrada padrão stdin." ao erro do fluxo de entrada/saída; limpe o trecho; saia.
   Atribua o caractere inicial deste trecho mais a quantidade de caracteres menos 1 ao caractere final deste trecho.
 
 Etapas para que se read uma string desde um console:
@@ -37,8 +37,8 @@ Etapas para que se carregue um endereço completo para um trecho;
 Etapas para que se read um endereço completo para um trecho:
   Limpe o erro do fluxo de entrada/saída.
   Isole o endereço completo.
-  termine com o caractere NULL o endereço completo.
-  Se o endereço completo não estiver no sistema de arquivos, atribua "O Arquivo: '" junto com o endereço completo seguido de "' não existe." ao erro do fluxo de entrada/saída; volte.
+  Anexe o caractere NULL o endereço completo.
+  Se o endereço completo não estiver no sistema de arquivos, atribua "O Arquivo: '" junto com o endereço completo seguido de "' não existe." ao erro do fluxo de entrada/saída; saia.
   \ abra o endereço completo para read-write mode.
   Call "kernel32.dll" "CreateFileA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilea
   \Cria ou abre um arquivo ou dispositivo de E/S. 
@@ -73,7 +73,7 @@ Etapas para que se read um endereço completo para um trecho:
     \Este parâmetro pode ser NULL.
     devolvendo um número identificador. \Se a função for bem-sucedida, o valor de retorno será um identificador aberto para o arquivo, dispositivo, canal nomeado ou slot de correio especificado.
     \Se a função falhar, o valor de retorno é INVALID_HANDLE_VALUE.
-  Se o número identificador for -1 [INVALID_HANDLE_VALUE], atribua "Ocorreu um erro ao tentar abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; volte.
+  Se o número identificador for -1 [INVALID_HANDLE_VALUE], atribua "Ocorreu um erro ao tentar abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; saia.
   Call "kernel32.dll" "GetFileSize" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getfilesize
   \ Recupera o tamanho do arquivo especificado, em bytes.
     O número identificador [hFile] \Um identificador para o arquivo.
@@ -104,11 +104,11 @@ Etapas para que se read um endereço completo para um trecho:
 Etapas para que se carregue um endereço completo para uma imagem;
 Etapas para que se read um endereço completo para uma imagem:
   Read o endereço completo a um trecho.
-  Se o erro do fluxo de entrada/saída não estiver em branco, esvazie a imagem; volte.
+  Se o erro do fluxo de entrada/saída não estiver em branco, esvazie a imagem; saia.
   Crie a imagem usando o trecho.
 
 Etapas para que se read um texto retornado desde um terminal:
-  Se o terminal for inexistente, limpe o texto retornado; volte.
+  Se o terminal for inexistente, limpe o texto retornado; saia.
   Desmanche all eventos.
   Limpe o texto retornado deste terminal.
   Adicione um quora para o terminal.
@@ -160,17 +160,17 @@ Etapas para que se read um file para um trecho:
     e 0 [lpOverlapped] \ Um ponteiro para uma estrutura OVERLAPPED é necessário se o parâmetro hFile foi aberto com FILE_FLAG_OVERLAPPED, caso contrário, pode ser NULL.
     \ https://docs.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-overlapped
     devolvendo um número resultante. \Se a função for bem-sucedida, o valor de retorno será diferente de zero (VERDADEIRO).
-  Se o número resultante for 0, atribua "Ocorreu um erro ao tentar ler o arquivo." ao erro do fluxo de entrada/saída; volte.
+  Se o número resultante for 0, atribua "Ocorreu um erro ao tentar ler o arquivo." ao erro do fluxo de entrada/saída; saia.
 
 Etapas para que se read a Bíblia:
   Se a Bíblia não for inexistente, cancele.
   Extraia um endereço da pasta desde o endereço completo deste module.
-  Percorra. [o código abaixo]
+  Comece. [a executar o código abaixo]
     Se o endereço da pasta estiver em branco, cancele.
     Atribua o endereço da pasta seguido de "Bíblia.txt" a um endereço completo.
-    Se o endereço completo estiver no sistema de arquivos, read a Bíblia usando o endereço completo; volte.
+    Se o endereço completo estiver no sistema de arquivos, read a Bíblia usando o endereço completo; saia.
     Extraia o endereço da pasta desde o endereço da pasta.
-  Repita. [o código acima]
+  Recomece. [percorra novamente o código acima]
 
 Etapas para que se read a Bíblia usando um endereço completo:
   Se o Bíblia não for inexistente, cancele.
@@ -178,22 +178,22 @@ Etapas para que se read a Bíblia usando um endereço completo:
   Se o erro do fluxo de entrada/saída não estiver em branco, cancele.
   Aloque memória para o Bíblia.
   Lance um percorredor sobre o trecho.
-  Percorra. [o código abaixo]
+  Comece. [a executar o código abaixo]
     Se o segmento final deste percorredor estiver em branco, cancele.
     Aloque memória para um verse. Posponha o verse para os verses desta Bíblia.
     Mova o percorredor (caixa de texto file rules).
     Atribua o segmento inicial deste percorredor à string deste verse.
     Remove algum tipo de leading noise desde a string deste verse.
     Remove algum tipo de trailing noise desde a string deste verse.
-  Repita. [o código acima]
+  Recomece. [percorra novamente o código acima]
 
 Etapas para que se read um pedaço desde um console:
   Read uma string desde o console.
-  Se a string estiver em branco, atribua o caractere null ao pedaço; volte.
+  Se a string estiver em branco, atribua o caractere null ao pedaço; saia.
   Atribua o conteúdo deste caractere inicial desta string ao pedaço.
 
 Etapas para que se read um console para uma string:
-  Se o console for inexistente, limpe a string; volte.
+  Se o console for inexistente, limpe a string; saia.
   Desmanche all eventos.
   Limpe o texto retornado deste console.
   Mostre o console.
@@ -224,19 +224,19 @@ Etapas para que se atribua a localização deste mouse para uma localização:
 
 Etapas para que se abra um file usando um endereço completo e uns milliseconds:
   Start um temporizador.
-  Percorra. [o código abaixo]
+  Comece. [a executar o código abaixo]
     Abra o file usando o endereço completo.
     Se o erro do fluxo de entrada/saída estiver em branco, cancele.
     Se os intervalos deste temporizador forem greater do que os milliseconds, cancele.
-  Repita. [o código acima]
+  Recomece. [percorra novamente o código acima]
 
 Etapas para que se abra um file usando um endereço completo:
   Limpe o erro do fluxo de entrada/saída.
   Extraia um endereço da pasta desde o endereço completo.
-  Se o endereço da pasta não estiver no sistema de arquivos, atribua "A Pasta: " junto com o endereço da pasta seguido de " não existe." ao erro do fluxo de entrada/saída; volte.
+  Se o endereço da pasta não estiver no sistema de arquivos, atribua "A Pasta: " junto com o endereço da pasta seguido de " não existe." ao erro do fluxo de entrada/saída; saia.
   Ligue o endereço completo para read-write mode.
   Isole o endereço completo.
-  termine com o caractere NULL o endereço completo.
+  Anexe o caractere NULL o endereço completo.
   Call "kernel32.dll" "CreateFileA" com \ https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilea
   \Cria ou abre um arquivo ou dispositivo de E/S. 
     O caractere inicial deste endereço completo  [lpFileName] \ O nome do arquivo ou dispositivo a ser criado ou aberto. 
@@ -262,7 +262,7 @@ Etapas para que se abra um file usando um endereço completo:
     \Ao abrir um arquivo existente, CreateFile ignora este parâmetro
     devolvendo o file.\Se a função for bem-sucedida, o valor de retorno será um identificador aberto para o arquivo, dispositivo, canal nomeado ou slot de correio especificado.
     \Se a função falhar, o valor de retorno é -1 (INVALID_HANDLE_VALUE).
-  Se o file for -1 [INVALID_HANDLE_VALUE], atribua "Erro ao abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; volte.
+  Se o file for -1 [INVALID_HANDLE_VALUE], atribua "Erro ao abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; saia.
 
 O module é um conjunto com
   Um número identificador,
