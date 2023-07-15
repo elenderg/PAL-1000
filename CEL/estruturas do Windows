@@ -1,11 +1,15 @@
-Um CLSID é um UUID. \ Class ID
+\ Obs: Para entender este arquivo você pode - e deve- consultara documentação da API Win32. Disponível em:
+\ https://learn.microsoft.com/pt-br/windows/win32/api/
+
+Um CLSID é um UUID. 
 \Uma Class ID (CLSID) é um número (grande) de 128 bits que representa uma ID exclusiva para um aplicativo de software ou componente de aplicativo. 
-\As CLSIDs são utilizadas pelo Windows para identificar componentes de software sem que seja preciso conhecer o "nome" desses componentes.
+\Elas são utilizadas pelo Windows para identificar componentes de software sem que seja preciso conhecer o "nome" desses componentes.
 
-Um wParam é um número. \ Um parâmetro de mensagem.
-\WPARAMé um typedef para um UINT_PTR (que é um unsigned int) (32 bits sem sinal) no win32 e unsigned __int64 (64 bits sem sinal) no x86_64.
+Um wParam é um número. \ Um dos parâmetro presentes nas mensagem enviadas pelos aplicativos do Windows.
+\Corresponde a um valor numérico sem sinal de 32 ou 64 bits a depender da versão do windows. 
+\ Este valor é usado por exemplo, para saber se a janela foi minimizada, maximizada ou redimensionada.
 
-Um ABC é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-ABC
+Um ABC é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-ABC
   \ A estrutura ABC contém a largura de um caractere em uma fonte TrueType.
   Um número denominado abcA, \ O espaçamento A do caractere. O espaçamento A é a distância a ser adicionada à posição atual antes de desenhar o glifo do caractere.
   Um número denominado abcB, \ O espaçamento B do caractere. O espaçamento B é a largura da parte desenhada do glifo do caractere.
@@ -14,115 +18,83 @@ Um ABC é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/wi
 
 Um pABC é um endereço de memória para um ABC.
 
-Um ABC endereço de memória é um endereço de memória para um ABC.
-  \ Um ponteiro para uma matriz de estruturas ABC que recebe as larguras dos caracteres, em unidades lógicas. 
-  \Esta matriz deve conter, no mínimo, a mesma quantidade estruturas ABC que a quantidade de caracteres no intervalo especificado pelos parâmetros uFirstChar e uLastChar.
+Um endereço do ABC é um endereço de memória para um ABC.
+  \ Um ponteiro para uma matriz de estruturas ABC que contém as larguras dos caracteres, em unidades lógicas.   
   \ Para mais informações, veja os sistes abaixo: 
-  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-ABC
-  \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-getcharabcwidthsa
+  \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-ABC
+  \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getcharabcwidthsa
 
-Um abcA é um número. \ O espaçamento A do caractere. O espaçamento A é a distância a ser adicionada à posição atual antes de desenhar o glifo do caractere.
+Um abcA é um número. \ O espaçamento A do caractere. 
+\O espaçamento A é a distância a ser adicionada à posição atual antes de desenhar o glifo do caractere.
 
-Um abcC é um número. \ O espaçamento C do caractere. O espaçamento C é a distância a ser adicionada à posição atual para fornecer um espaço em branco à direita do glifo do caractere.
+Um abcC é um número. \ O espaçamento C do caractere. 
+\O espaçamento C é a distância a ser adicionada à posição atual para fornecer um espaço em branco à direita do glifo do caractere.
 
-Um ADDRINFO é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/ws2def/ns-ws2def-addrinfoa
-  \A estrutura addrinfo é usada pela função getaddrinfo para armazenar informações de endereço de host.
-  Um número denominado ai_flags, \Tipo: int
-  \ Sinalizadores que indicam opções usadas na função getaddrinfo.
-  \ Os valores com suporte para o membro ai_flags são definidos no arquivo de cabeçalho Ws2def.h no Windows SDK para Windows 7 e posterior. 
-  \ Esses valores são definidos no arquivo de cabeçalho Ws2tcpip.h no Windows SDK para Windows Server 2008 e Windows Vista. 
-  \ Esses valores são definidos no arquivo de cabeçalho Ws2tcpip.h no Platform SDK para Windows Server 2003 e Windows XP. 
-  \ Os valores com suporte para o membro ai_flags podem ser uma combinação XOR de valores hexadecimais.
-  Um número denominado ai_family, \A família do endereço. Os valores possíveis para a família de endereços são definidos no arquivo de cabeçalho Winsock2.h.
-  \ No Windows SDK lançado para Windows Vista e posterior, a organização dos arquivos de cabeçalho foi alterada e os valores possíveis para a família de endereços são definidos no arquivo de cabeçalho Ws2def.h.
-  \  Observe que o arquivo de cabeçalho Ws2def.h é automaticamente incluído no Winsock2.h e nunca deve ser usado diretamente.
-  \Os valores atualmente suportados são AF_INET ou AF_INET6, que são os formatos da família de endereços da Internet para IPv4 e IPv6. 
-  \Outras opções para a família de endereços (AF_NETBIOS para uso com NetBIOS, por exemplo) são suportadas se um provedor de serviços Windows Sockets para a família de endereços estiver instalado. 
-  \Observe que os valores para a família de endereço AF_ e constantes da família de protocolo PF_ são idênticos (por exemplo, AF_UNSPEC e PF_UNSPEC), portanto, qualquer constante pode ser usada.
-  Um número denominado ai_sockettype, \ O tipo de soquete. Os valores possíveis para o tipo de soquete são definidos no arquivo de cabeçalho Winsock2.h.
-  \No Windows Sockets 2, novos tipos de soquete foram introduzidos. 
-  \Um aplicativo pode descobrir dinamicamente os atributos de cada protocolo de transporte disponível por meio da função WSAEnumProtocols. 
-  \Portanto, um aplicativo pode determinar o tipo de soquete possível e as opções de protocolo para uma família de endereços e usar essas informações ao especificar este parâmetro. 
-  \As definições de tipo de soquete nos arquivos de cabeçalho Winsock2.he Ws2def.h serão atualizadas periodicamente conforme novos tipos de soquete, famílias de endereços e protocolos são definidos.
-  \ No Windows Sockets 1.1, os únicos tipos de soquete possíveis são SOCK_DATAGRAM (2) e SOCK_STREAM (1) .
-  Um número denominado ai_protocol, \ O tipo de protocolo. As opções possíveis são específicas para a família de endereços e tipo de soquete especificados. 
-  \Os valores possíveis para o ai_protocol são definidos nos arquivos de cabeçalho Winsock2.h e Wsrm.h.
-  \No Windows SDK lançado para Windows Vista e posterior, a organização dos arquivos de cabeçalho foi alterada e esse membro pode ser um dos valores do tipo de enumeração IPPROTO definido no arquivo de cabeçalho Ws2def.h. 
-  \Observe que o arquivo de cabeçalho Ws2def.h é automaticamente incluído no Winsock2.h e nunca deve ser usado diretamente.
-  \Se um valor de 0 for especificado para ai_protocol, o chamador não deseja especificar um protocolo e o provedor de serviços escolherá o ai_protocol a ser usado. 
-  \Para protocolos diferentes de IPv4 e IPv6, defina ai_protocol como zero.
-  \ Se o membro ai_family for 26 (AF_IRDA), então o ai_protocol deve ser 0.
+Um AddrInfo é um conjunto com   \ Usada  para armazenar informações de endereço de host.
+\ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/ws2def/ns-ws2def-addrinfoa
+  Um número denominado ai_flags, \ Indicam opções usadas na função getaddrinfo.
+  Um número denominado ai_family, \A família do endereço, por exemplo IPv4, IPv6, NetBIOS, IrDA  ou  Bluetooth
+  Um número denominado ai_sockettype, \ O tipo de soquete. Exemplo: fluxos de byte, datagramas,  soquetes brutos, e outros.   
+  Um número denominado ai_protocol, \ O tipo de protocolo. Exemplos: TCP, UDP, PGM e outros
   Um número denominado ai_addrlen, \O comprimento, em bytes, do buffer apontado pelo membro ai_addr.
   Um endereçamento de caractere denominado ai_canonname, \O nome canônico do host.
   Um sockaddrptr denominado ai_addr, \Um ponteiro para uma estrutura sockaddr. 
-  \O membro ai_addr em cada estrutura addrinfo retornada aponta para uma estrutura de endereço de soquete preenchida. 
-  \O comprimento, em bytes, de cada estrutura addrinfo retornada é especificado no membro ai_addrlen.
-  Um addrinfoptr denominado ai_next. \Um ponteiro para a próxima estrutura em uma lista vinculada. 
-  \Este parâmetro é definido como NULL na última estrutura addrinfo de uma lista vinculada.
-
-Some  addrinfo routines é um conjunto com
-  Um getaddrinfo endereço de memória, \ https://docs.microsoft.com/en-us/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo
-  Um freeaddrinfo endereço de memória. \ https://docs.microsoft.com/en-us/windows/win32/api/ws2tcpip/nf-ws2tcpip-freeaddrinfo
+  Um addrinfoptr denominado ai_next. \Um ponteiro para a próxima estrutura em uma lista vinculada.   
 
 Um addrinfoptr é um endereço de memória para um addrinfo.
 
-Uma crypt session é uma coisa com \documentar isso com calma depois
-  Um hCryptProv endereço de memória, \ O tipo de dados HCRYPTPROV é usado para representar identificadores para CSPs. 
-  \Esses identificadores são usados para indicar qual módulo CSP executa operações específicas.
-  Um hCryptHash endereço de memória, \O tipo de dados HCRYPTHASH é usado para representar identificadores para objetos hash. 
-  \Esses identificadores indicam ao módulo CSP qual hash está sendo usado em uma operação específica.
-  \ O módulo CSP não permite a manipulação direta dos valores de hash. 
-  \Em vez disso, o usuário manipula os valores de hash por meio do identificador de hash.
-  Um hCryptKey endereço de memória. \ usado para representar identificadores para chaves criptográficas. 
-  \Esses identificadores são usados para indicar ao módulo CSP qual chave está sendo usada em uma operação específica. 
-  \O módulo CSP não permite o acesso direto aos valores-chave. 
-  \Em vez disso, o usuário executa funções usando o valor da chave por meio do identificador de chave.
+Some  addrinfo routines é um conjunto com
+  Um GetAddrInfo endereço de memória, \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo
+  Um  FreeAddrInfo endereço de memória. \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/ws2tcpip/nf-ws2tcpip-freeaddrinfo
 
-Um DEVMODE é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-devmodea
-  \A estrutura de dados DEVMODE contém informações sobre a inicialização e o ambiente de uma impressora ou dispositivo de exibição.
-  32 pedaços denominados dmDeviceName, \ Um array de caracteres terminado em zero que especifica o nome "amigável" da impressora ou monitor; 
-  \por exemplo, "PCL / HP LaserJet" no caso de PCL / HP LaserJet. 
-  \Esta string é única entre os drivers de dispositivo. 
-  \Observe que esse nome pode ser truncado para caber na matriz dmDeviceName.
-  Uma word denominado dmSpecVersion, \ O número da versão da especificação de dados de inicialização na qual a estrutura é baseada. 
-  \Para garantir que a versão correta seja usada para qualquer sistema operacional, use DM_SPECVERSION.
-  Uma word denominado dmDriverVersion, \ O número da versão do driver atribuído pelo desenvolvedor do driver.
-  Uma word denominado dmSize,\ Especifica o tamanho, em bytes, da estrutura DEVMODE, sem incluir nenhum dado específico do driver particular que possa seguir os membros públicos da estrutura.
-  \Defina este membro como sizeof (DEVMODE) para indicar a versão da estrutura DEVMODE que está sendo usada.
-  Uma word denominado dmDriverExtra, \ Contém o número de bytes de dados de driver privados que seguem esta estrutura. 
+
+Uma Crypt Session é uma coisa com \
+  Um hCryptProv endereço de memória, \ Número identificador de CSPs. Indica qual módulo CSP executa operações específicas.
+  Um hCryptHash endereço de memória, \ Número identificadores de objetos hash. Indica ao módulo CSP qual hash está sendo usado
+  \ O módulo CSP não permite a manipulação direta dos valores de hash. Em vez disso, o usuário os altera usando o identificador do hash.
+  Um hCryptKey endereço de memória. \ Identificadores de chaves criptográficas.  Indica ao módulo CSP qual chave está sendo usada.
+  \O módulo CSP não permite o acesso direto aos valores-chave. Em vez disso, o usuário executa funções por meio do identificador de chave.
+
+Um DEVMODE é um conjunto com   \ Contém informações sobre a inicialização e o ambiente de uma impressora ou display.
+\ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-devmodea
+  32 pedaços denominados dmDeviceName, \ Uma string terminado em zero que especifica o nome "amigável" da impressora ou monitor; 
+  \por exemplo, "PCL / HP LaserJet" no caso de PCL / HP LaserJet. Esta string é única entre os drivers de dispositivo. 
+  \Esse nome pode ser truncado para caber nos 32 bytes
+  Uma word denominada dmSpecVersion, \ O número da versão da especificação de dados de inicialização na qual a estrutura é baseada.   
+  Uma word denominada dmDriverVersion, \ O número da versão do driver atribuído pelo desenvolvedor do driver.
+  Uma word denominada dmSize,\ O tamanho, em bytes, da estrutura DEVMODE  
+  Uma word denominada dmDriverExtra, \ O número de bytes de dados de driver privados que seguem esta estrutura. 
   \Se um driver de dispositivo não usar informações específicas do dispositivo, defina este membro como zero.
-  Um número denominado dmFields, \ Especifica se determinados membros da estrutura DEVMODE foram inicializados. 
-  \Se um membro é inicializado, seu bit correspondente é definido, caso contrário, o bit é limpo. 
-  \Um driver oferece suporte apenas aos membros DEVMODE apropriados para a impressora ou tecnologia de vídeo.
-  Uma word denominado dmOrientation, \ Somente para dispositivos de impressora, seleciona a orientação do papel. 
+  Um número denominado dmFields, \ Especifica se determinados membros da estrutura DEVMODE foram inicializados.   
+  Uma word denominada dmOrientation, \ Somente para dispositivos de impressora, seleciona a orientação do papel. 
   \Este membro pode ser DMORIENT_PORTRAIT (1) ou DMORIENT_LANDSCAPE (2).
-  Uma word denominado dmPaperSize, \ Somente para dispositivos de impressora, seleciona o tamanho do papel para imprimir. 
+  Uma word denominada dmPaperSize, \ Somente para dispositivos de impressora, seleciona o tamanho do papel para imprimir. 
   \Este membro pode ser definido como zero se o comprimento e a largura do papel forem definidos pelos membros dmPaperLength e dmPaperWidth. 
-  \Caso contrário, o membro dmPaperSize pode ser definido como um valor específico do dispositivo maior ou igual a DMPAPER_USER entre outros valores possíveis.
-  Uma word denominado dmPaperLength, \Apenas para dispositivos de impressora, substitui o comprimento do papel especificado pelo membro dmPaperSize, 
+  \Caso contrário, o membro dmPaperSize pode ser definido como um valor específico do dispositivo maior ou igual a DMPAPER_USER (256) entre outros valores possíveis.
+  Uma word denominada dmPaperLength, \Apenas para dispositivos de impressora, substitui o comprimento do papel especificado pelo membro dmPaperSize, 
   \para tamanhos de papel personalizados ou para dispositivos como impressoras matriciais que podem imprimir em uma página de comprimento arbitrário. 
   \Esses valores, junto com todos os outros valores nesta estrutura que especificam um comprimento físico, estão em décimos de milímetro.
-  Uma word denominado dmPaperWidth, \ Somente para dispositivos de impressora, substitui a largura do papel especificada pelo membro dmPaperSize.
-  Uma word denominado dmScale, \ Especifica o fator pelo qual a saída impressa deve ser dimensionada. 
+  Uma word denominada dmPaperWidth, \ Somente para dispositivos de impressora, substitui a largura do papel especificada pelo membro dmPaperSize.
+  Uma word denominada dmScale, \ Especifica o fator pelo qual a saída impressa deve ser dimensionada. 
   \O tamanho aparente da página é dimensionado do tamanho da página física por um fator de dmScale / 100. 
   \Por exemplo, uma página de tamanho carta com um valor dmScale de 50 conteria tantos dados quanto uma página de 17 por 22 polegadas 
   \porque o texto de saída e os gráficos teriam metade da altura e largura originais.
-  Uma word denominado dmCopies, \ Seleciona o número de cópias impressas se o dispositivo oferecer suporte a cópias de várias páginas.
-  Uma word denominado dmDefaultSource, \ Especifica a origem do papel. 
+  Uma word denominada dmCopies, \ Seleciona o número de cópias impressas se o dispositivo oferecer suporte a cópias de várias páginas.
+  Uma word denominada dmDefaultSource, \ Especifica a origem do papel. 
   \Para recuperar uma lista das origens de papel disponíveis para uma impressora, use a função DeviceCapabilities com o sinalizador DC_BINS.
-  \ Pode ser um valor específico do dispositivo, sendo maior do que ou igual a DMBIN_USER.
-  Uma word denominado dmPrintQuality, \ Especifica a resolução da impressora. Existem quatro valores predefinidos independentes de dispositivo:
+  \ Pode ser um valor específico do dispositivo, sendo maior do que ou igual a DMBIN_USER (256).
+  Uma word denominada dmPrintQuality, \ Especifica a resolução da impressora. Existem quatro valores predefinidos independentes de dispositivo:
   \Se um valor positivo for especificado, ele especifica o número de pontos por polegada (DPI) e, portanto, depende do dispositivo.
-  Uma word denominado dmColor, \ Alterna entre o modo colorido e monocromático em impressoras coloridas.
-  Uma word denominado dmDuplex, \Seleciona impressão duplex ou frente e verso para impressoras com capacidade de impressão duplex.
-  Uma word denominado dmYResolution, \ Especifica a resolução y, em pontos por polegada, da impressora. 
+  Uma word denominada dmColor, \ Alterna entre o modo colorido e monocromático em impressoras coloridas.
+  Uma word denominada dmDuplex, \Seleciona impressão duplex ou frente e verso para impressoras com capacidade de impressão duplex.
+  Uma word denominada dmYResolution, \ Especifica a resolução y, em pontos por polegada, da impressora. 
   \Se a impressora inicializar este membro, o membro dmPrintQuality especifica a resolução x, em pontos por polegada, da impressora.
-  Uma word denominado dmTTOption, \ Especifica como as fontes TrueType devem ser impressas. E
-  Uma word denominado dmCollate, \ Especifica se o agrupamento deve ser usado ao imprimir várias cópias.
+  Uma word denominada dmTTOption, \ Especifica como as fontes TrueType devem ser impressas. E
+  Uma word denominada dmCollate, \ Especifica se o agrupamento deve ser usado ao imprimir várias cópias.
   \ (Este membro é ignorado, a menos que o driver da impressora indique suporte para agrupamento, definindo o membro dmFields como DM_COLLATE.)
   32 pedaços denominados dmFormName, \ Uma matriz de caracteres terminada em zero que especifica o nome do formulário a ser usado; por exemplo, "Carta" ou "Legal".
   \ Um conjunto completo de nomes pode ser recuperado usando a função EnumForms.
-  Uma word denominado dmLogPixels, \ O número de pixels por polegada lógica. Drivers de impressora não usam este membro.
+  Uma word denominada dmLogPixels, \ O número de pixels por polegada lógica. Drivers de impressora não usam este membro.
   Um número denominado dmBitsPerPel, \ Especifica a resolução da cor, em bits por pixel, do dispositivo de exibição (por exemplo: 4 bits para 16 cores, 8 bits para 256 cores ou 16 bits para 65.536 cores). 
   \Os drivers de vídeo usam esse membro, por exemplo, na função ChangeDisplaySettings. Drivers de impressora não usam este membro.
   Um número denominado dmPelsWidth, \ Especifica a largura, em pixels, da superfície visível do dispositivo. 
@@ -134,10 +106,6 @@ Um DEVMODE é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/ap
   Um número denominado dmDisplayFrequency, \ Especifica a frequência, em hertz (ciclos por segundo), do dispositivo de exibição em um modo particular. 
   \Este valor também é conhecido como taxa de atualização vertical do dispositivo de exibição. Drivers de vídeo usam este membro. 
   \É usado, por exemplo, na função ChangeDisplaySettings. Drivers de impressora não usam este membro.
-  \Quando você chama a função EnumDisplaySettings, o membro dmDisplayFrequency pode retornar com o valor 0 ou 1. 
-  \Esses valores representam a taxa de atualização padrão do hardware de vídeo. 
-  \Essa taxa padrão é normalmente definida por interruptores em uma placa de vídeo ou placa-mãe de computador, 
-  \ou por um programa de configuração que não usa funções de vídeo, como ChangeDisplaySettings.
   Um número denominado dmICMMethod, \Especifica como o ICM é tratado. Para um aplicativo não ICM, este membro determina se o ICM está habilitado ou desabilitado. 
   \Para aplicativos ICM, o sistema examina esse membro para determinar como lidar com o suporte ICM.
   Um número denominado dmICMIntent, \ O driver da impressora deve fornecer uma interface de usuário para configurar este membro. 
@@ -149,15 +117,16 @@ Um DEVMODE é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/ap
   Um número denominado dmReserved1, \ Não usado; deve ser zero.
   Um número denominado dmReserved2. \ Não usado; deve ser zero.
 
-Um GcpResults é um conjunto com \GCP_RESULTS https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-gcp_resultsa
+Um GcpResults é um conjunto com 
+\ Documentação: -> GCP_RESULTS https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-gcp_resultsa
   \ A estrutura GCP_RESULTS contém informações sobre os caracteres em uma string. 
   \Essa estrutura recebe os resultados da função GetCharacterPlacement. 
   \Para alguns idiomas, o primeiro elemento nas matrizes pode conter mais informações dependentes do idioma.
   Um número denominado lStructSize, \O tamanho, em bytes, da estrutura.
   Um endereçamento de caractere denominado lpOutString, \Um ponteiro para o buffer que recebe a string de saída ou é NULL se a string de saída não for necessária.
   \ A string de saída é uma versão da string original que está na ordem em que será exibida em um dispositivo especificado. 
-  \Normalmente, a string de saída é idêntica à string original, 
-  \mas pode ser diferente se a string precisar ser reordenada e a sinalização GCP_REORDER for definida
+  \ Normalmente, a string de saída é idêntica à string original, 
+  \ mas pode ser diferente se a string precisar ser reordenada e a sinalização GCP_REORDER for definida
   \ ou se a string original exceder a extensão máxima e a sinalização GCP_MAXEXTENT for definida.
   Um endereço numérico denominado lpOrder, \Um ponteiro para a matriz que recebe índices de ordenação ou é NULL se os índices de ordenação não forem necessários. 
   \No entanto, seu significado depende dos outros elementos de GCP_RESULTS. 
@@ -200,7 +169,7 @@ Um GcpResults é um conjunto com \GCP_RESULTS https://docs.microsoft.com/en-us/wi
   \Este membro é definido independentemente de o valor GCP_MAXEXTENT ou GCP_JUSTIFY ser especificado. 
   \Ao contrário de nGlyphs, que especifica o número de glifos de saída, nMaxFit se refere ao número de caracteres da string de entrada. Para os idiomas latinos da SBCS, será o mesmo.
 
-Um GdiplusStartupInput é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/gdiplusinit/ns-gdiplusinit-gdiplusstartupinput
+Um GdiplusStartupInput é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/gdiplusinit/ns-gdiplusinit-gdiplusstartupinput
   \A estrutura GdiplusStartupInput contém um bloco de argumentos que são exigidos pela função GdiplusStartup.
   Um número denominado GdiplusVersion, \ Especifica a versão do GDI +. Deve ser igual a 1.
   Um endereço de memória denominado DebugEventCallback, \ Ponteiro para uma função de retorno de chamada que GDI + pode chamar, em compilações de depuração, para asserções e avisos. 
@@ -219,7 +188,7 @@ Um GdiplusStartupInput é um conjunto com \ https://docs.microsoft.com/en-us/wind
   \Chame essas funções antes e depois do loop de mensagem principal do aplicativo; ou seja, um loop de mensagem que está ativo durante o tempo de vida do GDI +. 
   \Chame a função de gancho antes do início do loop e chame a função unhook após o término do loop.
 
-Um in_addr é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/inaddr/ns-inaddr-in_addr
+Um in_addr é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/inaddr/ns-inaddr-in_addr
   \A estrutura in_addr representa um endereço IPv4.
   Um pedaço denominado s_b1, \ O endereço IPv4 do host formatado como quatro u_chars.
   Um pedaço denominado s_b2,
@@ -238,8 +207,8 @@ Um istream vtable é um endereço de memória para um istream vtable conjunto.
   \O vtable é como o COM vincula uma chamada de método à sua implementação em tempo de execução. N
   \Não por coincidência, vtables são a forma como a maioria dos compiladores C ++ implementa métodos virtuais.
   Um istream vtable conjunto é um conjunto com
-  \ iunknown \ https://docs.microsoft.com/en-us/windows/win32/api/objidl/nn-objidl-istream
-  Um endereço de memória denominado queryinterface,\https://docs.microsoft.com/en-us/windows/win32/com/queryinterface--navigating-in-an-object
+  \ iunknown \ https://docs.microsoft.com/pt-br/windows/win32/api/objidl/nn-objidl-istream
+  Um endereço de memória denominado queryinterface,\https://docs.microsoft.com/pt-br/windows/win32/com/queryinterface--navigating-in-an-object
   Um endereço de memória denominado addref, \Incrementa a contagem de referência de um ponteiro de interface para um objeto COM. Você deve chamar este método sempre que fizer uma cópia de um ponteiro de interface
   Um endereço de memória denominado release, \ Diminui a contagem de referência para uma interface em um objeto COM.
   \function(this:istream):number; stdcall;
@@ -257,7 +226,7 @@ Um istream vtable é um endereço de memória para um istream vtable conjunto.
   Um endereço de memória denominado stat,\O método Stat recupera a estrutura STATSTG para este fluxo.
   Um endereço de memória denominado clone. \O método Clone cria um novo objeto de fluxo com seu próprio ponteiro de busca que faz referência aos mesmos bytes que o fluxo original.
 
-Um OUTLINETEXTMETRIC é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-outlinetextmetrica
+Um OUTLINETEXTMETRIC é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-outlinetextmetrica
   \A estrutura OUTLINETEXTMETRIC contém métricas que descrevem uma fonte TrueType.
   Um número denominado otmSize, \ O tamanho, em bytes, da estrutura OUTLINETEXTMETRIC.
   Um TEXTMETRIC denominado otmTextMetrics, \ Uma estrutura TEXTMETRIC contendo mais informações sobre a fonte.
@@ -298,7 +267,7 @@ Um OUTLINETEXTMETRIC é um conjunto com \ https://docs.microsoft.com/en-us/window
   Um endereço de memória denominado otmpStyleName, \ O deslocamento do início da estrutura para uma string especificando o nome do estilo da fonte.
   Um endereço de memória denominado otmpFullName. \ O deslocamento do início da estrutura para uma string especificando o nome completo da fonte. Este nome é exclusivo para a fonte e geralmente contém um número de versão ou outras informações de identificação.
 
-Um PANOSE é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-panose
+Um PANOSE é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-panose
   \A estrutura PANOSE descreve os valores de classificação de fonte PANOSE para uma fonte TrueType. 
   \Essas características são então usadas para associar a fonte a outras fontes de aparência semelhante, mas com nomes diferentes.
   \Os arquivos de fonte TrueType incluem números PANOSE, que os aplicativos podem usar para escolher uma fonte que corresponda às suas especificações.
@@ -318,7 +287,7 @@ Um PANOSE é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api
   Um pedaço denominado bMidline,
   Um pedaço denominado bXHeight.
 
-Um PRINTDLGEX é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/commdlg/ns-commdlg-printdlgexw
+Um PRINTDLGEX é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/commdlg/ns-commdlg-printdlgexw
   \Contém informações que a função PrintDlgEx usa para inicializar a folha de propriedades de impressão. 
   \Depois que o usuário fecha a folha de propriedades, o sistema usa essa estrutura para retornar informações sobre as seleções do usuário.
   Um número denominado lStructSize,\O tamanho da estrutura, em bytes.
@@ -394,20 +363,20 @@ Um SOCKADDR é um conjunto com \ A estrutura SOCKADDR_IN especifica um endereço d
   \ Todos os dados na estrutura SOCKADDR_IN, exceto para a família de endereços (parâmetro sin*_family), devem ser especificados na ordem de byte da rede (big-endian).
   \As funções do Winsock usando SOCKADDR não são estritamente interpretadas para serem ponteiros para uma estrutura sockaddr. 
   \A estrutura é interpretada de forma diferente no contexto de famílias de endereços diferentes. 
-  Uma word denominado sin_family, \A família de endereços para o endereço de transporte. Este membro deve sempre ser definido como AF_INET.
+  Uma word denominada sin_family, \A família de endereços para o endereço de transporte. Este membro deve sempre ser definido como AF_INET.
   Um word big-endian unsigned denominado sin_port, \ Um número de porta de protocolo de transporte.
   Um in_addr denominado sin_addr, \ Uma estrutura IN_ADDR que contém um endereço de transporte IPv4.
   8 pedaços denominados sin_zero. \ Reservado para uso do sistema. Um aplicativo WSK deve definir o conteúdo desse array como zero.
 
 Um sockaddrptr é um endereço de memória para um sockaddr.
 
-Um STARTUPINFO é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/ns-processthreadsapi-startupinfoa
+Um STARTUPINFO é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/processthreadsapi/ns-processthreadsapi-startupinfoa
   \Especifica a estação da janela, a área de trabalho, as alças padrão e a aparência da janela principal para um processo no momento da criação.
   Um número denominado cb,\O tamanho da estrutura, em bytes.
   Um endereço de memória denominado lIsoled,\Reservado; deve ser NULL.
   Um endereço de memória denominado lpDesktop,\O nome da área de trabalho ou o nome da área de trabalho e da estação de janela para este processo. 
   \Uma barra invertida na string indica que a string inclui os nomes da estação de trabalho e da janela.
-  \Para maiores informações, consulte https://docs.microsoft.com/en-us/windows/win32/winstation/thread-connection-to-a-desktop
+  \Para maiores informações, consulte https://docs.microsoft.com/pt-br/windows/win32/winstation/thread-connection-to-a-desktop
   Um endereço de memória denominado lpTitle, \Para processos de console, este é o título exibido na barra de título se uma nova janela de console for criada. 
   \Se NULL, o nome do arquivo executável é usado como título da janela. 
   \Este parâmetro deve ser NULL para processos de GUI ou console que não criam uma nova janela de console.
@@ -422,14 +391,14 @@ Um STARTUPINFO é um conjunto com \ https://docs.microsoft.com/en-us/windows/win3
   Um número denominado dwYCountChars,\Se dwFlags especifica STARTF_USECOUNTCHARS, se uma nova janela de console é criada em um processo de console, este membro especifica a altura do buffer de tela, em linhas de caracteres.
   Um número denominado dwFillAttribute,\Se dwFlags especifica STARTF_USEFILLATTRIBUTE, este membro é o texto inicial e as cores do plano de fundo se uma nova janela de console for criada em um aplicativo de console.
   Um número denominado dwFlags,\Um campo de bits que determina se determinados membros STARTUPINFO são usados quando o processo cria uma janela.
-  Uma word denominado wShowWindow,\Se dwFlags especifica STARTF_USESHOWWINDOW, este membro pode ser qualquer um dos valores que podem ser especificados no parâmetro nCmdShow para a função ShowWindow, exceto para SW_SHOWDEFAULT.
-  Uma word denominado cbReserved2,\Reservados para uso do C Run-time; deve ser zero.
+  Uma word denominada wShowWindow,\Se dwFlags especifica STARTF_USESHOWWINDOW, este membro pode ser qualquer um dos valores que podem ser especificados no parâmetro nCmdShow para a função ShowWindow, exceto para SW_SHOWDEFAULT.
+  Uma word denominada cbReserved2,\Reservados para uso do C Run-time; deve ser zero.
   Um endereço de memória denominado lIsoled2,\Reservados para uso do C Run-time; deve ser zero.
   Um número identificador denominado hStdInput,\Se dwFlags especifica STARTF_USESTDHANDLES, este membro é o identificador de entrada padrão para o processo. 
   \Se STARTF_USESTDHANDLES não for especificado, o padrão para a entrada padrão é o buffer do teclado.
   \Se dwFlags especifica STARTF_USEHOTKEY, este membro especifica um valor de tecla de atalho que é enviado como o parâmetro wParam de uma mensagem WM_SETHOTKEY para a primeira janela de nível superior elegível criada pelo aplicativo que possui o processo. 
   \Se a janela for criada com o estilo de janela WS_POPUP, ela não será elegível, a menos que o estilo de janela estendida WS_EX_APPWINDOW também seja definido. 
-  \Para obter mais informações, consulte CreateWindowEx. https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-createwindowexa
+  \Para obter mais informações, consulte CreateWindowEx. https://docs.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-createwindowexa
   Um número identificador denominado hStdOutput, \Se dwFlags especifica STARTF_USESTDHANDLES, este membro é o identificador de saída padrão para o processo. 
   \Caso contrário, este membro é ignorado e o padrão para a saída padrão é o buffer da janela do console.
   \Se um processo for iniciado a partir da barra de tarefas ou lista de atalhos, o sistema define hStdOutput como um identificador para o monitor que contém a barra de tarefas ou lista de atalhos usada para iniciar o processo. 
@@ -437,24 +406,24 @@ Um STARTUPINFO é um conjunto com \ https://docs.microsoft.com/en-us/windows/win3
   Um número identificador denominado hStdError.\Se dwFlags especifica STARTF_USESTDHANDLES, este membro é o identificador de erro padrão para o processo. 
   \Caso contrário, este membro é ignorado e o padrão para o erro padrão é o buffer da janela do console.
 
-Um SYSTEMTIME é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-SYSTEMTIME
+Um SYSTEMTIME é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-SYSTEMTIME
   \Especifica uma data e hora, usando membros individuais para o mês, dia, ano, dia da semana, hora, minuto, segundo e milissegundo. 
   \A hora está na hora universal coordenada (UTC) ou na hora local, dependendo da função que está sendo chamada.
-  Uma word denominado wYear, \ O ano. Os valores válidos para este membro são de 1601 a 30827.
-  Uma word denominado wMonth, \ O mês. De 1 a 12
-  Uma word denominado wDayOfWeek, \ O dia da semana. De 0 a 6, começando no Domingo
-  Uma word denominado wDay, \ O dia do mês. De 1 a 31
-  Uma word denominado wHour, \ A hora. de 0 a 23
-  Uma word denominado wMinute, \ O minuto. De 0 a 59.
-  Uma word denominado wSecond, \ O segundo. De 0 a 59.
-  Uma word denominado wMilliseconds. \ O milissegundo. De 0 a 999.
+  Uma word denominada wYear, \ O ano. Os valores válidos para este membro são de 1601 a 30827.
+  Uma word denominada wMonth, \ O mês. De 1 a 12
+  Uma word denominada wDayOfWeek, \ O dia da semana. De 0 a 6, começando no Domingo
+  Uma word denominada wDay, \ O dia do mês. De 1 a 31
+  Uma word denominada wHour, \ A hora. de 0 a 23
+  Uma word denominada wMinute, \ O minuto. De 0 a 59.
+  Uma word denominada wSecond, \ O segundo. De 0 a 59.
+  Uma word denominada wMilliseconds. \ O milissegundo. De 0 a 999.
 
-Um talker vtable conjunto é um conjunto com \ documentar https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ee413476(v=vs.85)
+Um talker vtable conjunto é um conjunto com \ documentar https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/ee413476(v=vs.85)
   \ iunknown
-  Um endereço de memória denominado QueryInterface,\https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ms719854(v=vs.85)
+  Um endereço de memória denominado QueryInterface,\https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/ms719854(v=vs.85)
   Um endereço de memória denominado AddRef,
   Um endereço de memória denominado Release, \ em this:pspvoice out número
-  \ italker -.https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ms717961(v=vs.85)
+  \ italker -.https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/ms717961(v=vs.85)
   Um endereço de memória denominado SetNotifySink,
   Um endereço de memória denominado SetNotifyWindowMessage,
   Um endereço de memória denominado SetNotifyCallbackFunction,
@@ -462,7 +431,7 @@ Um talker vtable conjunto é um conjunto com \ documentar https://docs.microsoft.
   Um endereço de memória denominado SetNotifyWin32Event,
   Um endereço de memória denominado WaitForNotifyEvent,
   Um endereço de memória denominado GetNotifyEventHandle,\Recupera um identificador para um evento de notificação.
-  \ https://docs.microsoft.com/en-us/previous-versions/windows/desktop/ms717848(v=vs.85)
+  \ https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/ms717848(v=vs.85)
   Um endereço de memória denominado SetInterest,
   Um endereço de memória denominado GetEvents,
   Um endereço de memória denominado GetInfo,
@@ -492,7 +461,7 @@ Um talker vtable conjunto é um conjunto com \ documentar https://docs.microsoft.
   Um endereço de memória denominado IsUISupported,
   Um endereço de memória denominado DisplayUI.
 
-Um TEXTMETRIC é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-textmetrica
+Um TEXTMETRIC é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-textmetrica
   \A estrutura TEXTMETRIC contém informações básicas sobre uma fonte física. 
   \Todos os tamanhos são especificados em unidades lógicas; ou seja, eles dependem do modo de mapeamento atual do contexto de exibição.
   Um número denominado tmHeight, \ A altura (subida + descida) de caracteres.
@@ -535,16 +504,16 @@ Um TEXTMETRIC é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32
   \Uma fonte de dispositivo de impressora PostScript define os bits TMPF_DEVICE, TMPF_VECTOR e TMPF_FIXED_PITCH.
   \Os quatro bits de ordem superior de tmPitchAndFamily designam a família da fonte da fonte. 
   \Um aplicativo pode usar o valor 0xF0 e o operador AND bit a bit para mascarar os quatro bits de ordem inferior de tmPitchAndFamily, obtendo assim um valor que pode ser comparado diretamente com nomes de família de fontes para encontrar uma correspondência idêntica. 
-  \Para obter informações sobre famílias de fontes, consulte a descrição da estrutura LOGFONT. https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/ns-wingdi-logfonta
+  \Para obter informações sobre famílias de fontes, consulte a descrição da estrutura LOGFONT. https://docs.microsoft.com/pt-br/windows/desktop/api/wingdi/ns-wingdi-logfonta
  Um pedaço denominado tmCharSet.\ O conjunto de caracteres da fonte.
 
-Um URL_COMPONENTS é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/WinHTTP/ns-WinHTTP-url_components
+Um URL_COMPONENTS é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/WinHTTP/ns-WinHTTP-url_components
   \Contém as partes constituintes de uma URL. 
   \Essa estrutura é usada com as funções InternetCrackUrl e InternetCreateUrl.
   Um número denominado dwStructSize, \ O ramanho dessa estrutura, em bytes.
   Um endereçamento de caractere denominado lpszScheme, \ Ponteiro para uma string que contém o nome do esquema.
   Um número denominado dwSchemeLength, \ Tamanho do nome do esquema, em TCHARs.
-  Um número denominado nScheme, \ Valor INTERNET_SCHEME que indica o esquema de protocolo da Internet. https://docs.microsoft.com/en-us/windows/win32/api/wininet/ne-wininet-internet_scheme
+  Um número denominado nScheme, \ Valor INTERNET_SCHEME que indica o esquema de protocolo da Internet. https://docs.microsoft.com/pt-br/windows/win32/api/wininet/ne-wininet-internet_scheme
   Um endereçamento de caractere denominado lpszHostName, \ Ponteiro para uma string que contém o nome do host.
   Um número denominado dwHostNameLength, \ Tamanho do nome do host, em TCHARs.
   Um número denominado nPort, \ Número da porta convertido. isto é considerado como um word na documentação do Windows (INTERNET_PORT), mas não funciona. Parece ser um WORD
@@ -563,20 +532,20 @@ Um UUID é um conjunto com
   \A estrutura UUID é um sinônimo typedefizado para a estrutura GUID.
   Um número denominado d1, \unsigned long
   \ Especifica os primeiros 8 dígitos hexadecimais da GUID.
-  Uma word denominado d2, \unsigned short
+  Uma word denominada d2, \unsigned short
   \ Especifica o primeiro grupo de 4 dígitos hexadecimais.
-  Uma word denominado d3, \unsigned short
+  Uma word denominada d3, \unsigned short
   \ Especifica o segundo grupo de 4 dígitos hexadecimais.
   8 pedaços denominados d4. \unsigned char
   \ Array de 8 bytes. 
   \ Os primeiros 2 bytes contêm o terceiro grupo de 4 dígitos hexadecimais. 
   \ Os 6 bytes restantes contêm os 12 dígitos hexadecimais finais.
 
-Um WIN32FINDDATA é um conjunto com \https://docs.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataa
+Um WIN32FINDDATA é um conjunto com \https://docs.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataa
 \Contém informações sobre o arquivo localizado pela função FindFirstFile, FindFirstFileEx ou FindNextFile.
   Um número denominado dwFileAttributes,
   \Os atributos de arquivo de um arquivo.
-  \Para valores possíveis e suas descrições, consulte https://docs.microsoft.com/en-us/windows/desktop/FileIO/file-attribute-constants
+  \Para valores possíveis e suas descrições, consulte https://docs.microsoft.com/pt-br/windows/desktop/FileIO/file-attribute-constants
   \O atributo FILE_ATTRIBUTE_SPARSE_FILE no arquivo é definido se qualquer um dos fluxos do arquivo já foi esparso.
   Um filetime denominado ftCreationTime,
   \Uma estrutura FILETIME que especifica quando um arquivo ou diretório foi criado.
@@ -588,7 +557,7 @@ Um WIN32FINDDATA é um conjunto com \https://docs.microsoft.com/en-us/windows/win
   \Se o sistema de arquivos subjacente não suportar a hora do último acesso, esse membro será zero.
   \No sistema de arquivos FAT, a data especificada para arquivos e diretórios está correta, mas a hora do dia é sempre definida para meia-noite.
   Um filetime denominado ftLastWriteTime,
-  \Uma estrutura FILETIME. https://docs.microsoft.com/en-us/windows/desktop/api/minwinbase/ns-minwinbase-filetime
+  \Uma estrutura FILETIME. https://docs.microsoft.com/pt-br/windows/desktop/api/minwinbase/ns-minwinbase-filetime
   \Para um arquivo, a estrutura especifica quando o arquivo foi gravado, truncado ou substituído pela última vez, por exemplo, quando WriteFile ou SetEndOfFile são usados. 
   \ A data e a hora não são atualizadas quando os atributos do arquivo ou descritores de segurança são alterados.
   \Para um diretório, a estrutura especifica quando o diretório é criado. 
@@ -602,7 +571,7 @@ Um WIN32FINDDATA é um conjunto com \https://docs.microsoft.com/en-us/windows/win
   Um número denominado dwReserved0,
   \Se o membro dwFileAttributes inclui o atributo FILE_ATTRIBUTE_REPARSE_POINT, este membro especifica a marca de ponto de nova análise.
   \Caso contrário, este valor é indefinido e não deve ser usado.
-  \Para obter mais informações, consulte https://docs.microsoft.com/en-us/windows/desktop/FileIO/reparse-point-tags
+  \Para obter mais informações, consulte https://docs.microsoft.com/pt-br/windows/desktop/FileIO/reparse-point-tags
   Um número denominado dwReserved1,
   \Reservado para uso futuro.
   260 pedaços denominados cFileName,
@@ -619,14 +588,14 @@ Uma janela do programa class é um conjunto com
   Um número denominado cbSize,
   \ O tamanho, em bytes, dessa estrutura. 
   \ Defina este membro como sizeof (WNDCLASSEX). 
-  \ Certifique-se de definir esse membro antes de chamar a função GetClassInfoEx. https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-getclassinfoexa
+  \ Certifique-se de definir esse membro antes de chamar a função GetClassInfoEx. https://docs.microsoft.com/pt-br/windows/desktop/api/winuser/nf-winuser-getclassinfoexa
   Um número denominado style,
   \ O (s) estilo (s) da classe. 
-  \ Este membro pode ser qualquer combinação dos estilos de classe. https://docs.microsoft.com/en-us/windows/desktop/winmsg/aproximadamente-janela do programa-classes
+  \ Este membro pode ser qualquer combinação dos estilos de classe. https://docs.microsoft.com/pt-br/windows/desktop/winmsg/aproximadamente-janela do programa-classes
   Um endereço de memória denominado lpfnWndProc, \O prefixo lpfn significa "ponteiro longo" para uma função.
   \ Um ponteiro para o procedimento da janela.
   \Você deve usar a função CallWindowProc para chamar o procedimento de janela. 
-  \Para obter mais informações, consulte https://docs.microsoft.com/en-us/previous-versions/windows/desktop/legacy/ms633573(v=vs.85)
+  \Para obter mais informações, consulte https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/legacy/ms633573(v=vs.85)
   Um número denominado cbClsExtra,
   \ O número de bytes extras a serem alocados seguindo a estrutura da classe da janela. O sistema inicializa os bytes para zero.
   Um número denominado cbWndExtra,
@@ -648,7 +617,7 @@ Uma janela do programa class é um conjunto com
   Um endereço de memória denominado lpszMenuName, \O prefixo lpsz é um "ponteiro longo" para uma string terminada em zero (NUL).
   \ Ponteiro para uma cadeia de caracteres terminada em nulo que especifica o nome do recurso do menu da classe, conforme o nome aparece no arquivo de recurso. 
   \ Se você usar um número inteiro para identificar o menu, use a macro MAKEINTRESOURCE.
-  \ https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-makeintresourcea
+  \ https://docs.microsoft.com/pt-br/windows/desktop/api/winuser/nf-winuser-makeintresourcea
   \ Se este membro for NULL, as janelas pertencentes a esta classe não terão menu padrão.
   Um endereço de memória denominado lpszClassName,
   \ Um ponteiro para uma string terminada em nulo. 
@@ -671,11 +640,11 @@ Uma requisição WinHTTP é uma coisa com
 
 Um WSADATA é um conjunto com
   \A estrutura WSADATA contém informações sobre a implementação do Windows Sockets.
-  Uma word denominado wVersion,
+  Uma word denominada wVersion,
   \ A versão da especificação do Windows Sockets que o Ws2_32.dll espera que a rotina use. 
   \Nessa word, O byte de ordem superior especifica o número da versão secundária; 
   \O byte de ordem inferior especifica o número da versão principal.
-  Uma word denominado wHighVersion,
+  Uma word denominada wHighVersion,
   \ A versão mais recente da especificação do Windows Sockets que o Ws2_32.dll pode oferecer suporte. 
   \O byte de alta ordem especifica o número da versão secundária; o byte de ordem inferior especifica o número da versão principal.
   \Possui o mesmo valor que o membro wVersion caso a versão solicitada no parâmetro wVersionRequested 
@@ -707,13 +676,13 @@ Um WSADATA é um conjunto com
   \Os aplicativos que precisam acessar informações de configuração específicas do fornecedor devem usar getsockopt para recuperar o valor da opção PVD_CONFIG para informações específicas do fornecedor.
 
 Um PROCESS_INFORMATION é um conjunto com
-  \ https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_information
+  \ https://docs.microsoft.com/pt-br/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_information
   Um número identificador denominado hProcess,
   Um número identificador denominado hThread,
   Um número denominado dwProcessId,
   Um número denominado dwThreadId.
   
-Um LOGBRUSH é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-logbrush
+Um LOGBRUSH é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-logbrush
   \ A estrutura LOGBRUSH define o estilo, a cor e o padrão de um pincel. 
 \É usado pelas funções CreateBrushIndirect e ExtCreatePen.
   Um número denominado lbStyle, \O estilo do pincel. Os valores vão de 0 a 8.
@@ -734,12 +703,12 @@ Um LOGBRUSH é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/a
   \Um pincel de padrão definido por uma especificação de bitmap independente de dispositivo (DIB).
   \Se lbStyle for 6 (BS_DIBPATTERNPT) então lbHatch vai ser um  ponteiro para uma packed DIB
   
-Um FILETIME é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/minwinbase/ns-minwinbase-filetime
+Um FILETIME é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-filetime
 \Contém um valor de 64 bits que representa o número de intervalos de 100 nanossegundos desde 1º de janeiro de 1601 (UTC).
   Um número denominado dwLowDateTime, \A parte de ordem inferior do tempo do arquivo.
   Um número denominado dwHighDateTime. \A parte de ordem superior do tempo do arquivo.
 
-Um DOCINFO é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-docinfoa
+Um DOCINFO é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-docinfoa
 \A estrutura DOCINFO contém os nomes dos arquivos de entrada e saída e outras informações usadas pela função StartDoc.
   Um número denominado cbSize, \O tamanho, em bytes, da estrutura.
   Um endereço de memória denominado lpszDocName, \ Ponteiro para uma string terminada em nulo que especifica o nome do documento.
@@ -752,7 +721,7 @@ Um DOCINFO é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/ap
   \Este membro pode ser 0, 1 (DI_APPBANDING) ou 2 (DI_ROPS_READ_DESTINATION)
 
 
-Um BitmapData é um conjunto com \ https://docs.microsoft.com/en-us/dotnet/api/system.drawing.imaging.BitmapData?view=dotnet-plat-ext-6.0
+Um BitmapData é um conjunto com \ https://docs.microsoft.com/pt-br/dotnet/api/system.drawing.imaging.BitmapData?view=dotnet-plat-ext-6.0
 \Especifica os atributos de uma imagem bitmap. 
   Uma Largura, \ A largura em pixels do objeto Bitmap. Isso também pode ser considerado como o número de pixels em uma linha de varredura.
   Uma Altura, \ A altura em pixels do objeto Bitmap. Também conhecido como o número de linhas de varredura.
@@ -764,7 +733,7 @@ Um BitmapData é um conjunto com \ https://docs.microsoft.com/en-us/dotnet/api/sy
   Um endereço de memória denominado Scan0, \o endereço dos primeiros dados de pixel no bitmap. Isso também pode ser considerado a primeira linha de varredura no bitmap.
   Um número denominado Reserved. \Reservado. Não use.
 
-Um PAINTSTRUCT é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-paintstruct
+Um PAINTSTRUCT é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/winuser/ns-winuser-paintstruct
 \A estrutura PAINTSTRUCT contém informações para um aplicativo. 
 \Essas informações podem ser usadas para pintar a área do cliente de uma janela pertencente a esse aplicativo.
   Um hDC denominado hDC, \Um identificador para o display de contexto do dispositivo a ser usado para pintura.
@@ -777,7 +746,7 @@ Um PAINTSTRUCT é um conjunto com \ https://docs.microsoft.com/en-us/windows/win3
   Um número denominado fIncUpdate, \Reservado; usado internamente pelo sistema.
   32 pedaços. \rgbReserved -.Reservado; usado internamente pelo sistema.
 
-Uma MSG é um conjunto com \ https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-MSG
+Uma MSG é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/winuser/ns-winuser-MSG
 \Contém informações de mensagem da fila de mensagens de um encadeamento (thread).
   Uma janela do programa denominado hwnd, \Um identificador para a janela cujo procedimento de janela recebe a mensagem. 
   \Esta variável é NULL quando a mensagem é uma mensagem de thread.
