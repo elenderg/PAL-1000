@@ -32,9 +32,9 @@ A [equipe do projeto](#Junte-se-à-equipe-do-projeto) aguarda suas contribuiçõ
 
 Se você tiver alguma dúvida sobre este projeto, como usá-lo, ou apenas precisar de esclarecimentos sobre algo:
 
-* Comunique seu problema em https://github.com/elenderg/Portugues-Puro/issues
+* Solicite ajuda em https://github.com/elenderg/Portugues-Puro/issues
 * Forneça o máximo de informações possíveis sobre o que está acontecendo.
-* Forneça versões de projeto e plataforma, dependendo do que parece relevante. Caso contrário, esteja pronto para fornecer essas informações se os mantenedores solicitarem.
+* Forneça versões de projeto e plataforma, dependendo do que parece relevante. Se não souber, procure alguém para fornecer essas informações se os mantenedores solicitarem.
 
 Depois de ter feito isso:
 
@@ -46,7 +46,7 @@ Depois de ter feito isso:
 
 Se você encontrar um erro ou bug com o projeto:
 
-* Comunique seu problema em https://github.com/elenderg/Portugues-Puro/issues
+* Comunique o problema em https://github.com/elenderg/Portugues-Puro/issues
 * Inclua as *etapas de reprodução* que outra pessoa pode seguir para recriar o bug ou erro por conta própria.
 * Forneça as versões de projeto e plataforma, dependendo do que parece relevante. Caso contrário, esteja pronto para fornecer essas informações se os mantenedores solicitarem.
 
@@ -62,8 +62,8 @@ Depois de fazer isso:
 
 Se o projeto não fez algo que você precisa ou deseja fazer:
 
-* Comunique seu problema em https://github.com/elenderg/Portugues-Puro/issues
-* Forneça o máximo de contexto possível sobre o que está acontecendo.
+* Comunique sua sugestão de recursp em https://github.com/elenderg/Portugues-Puro/issues
+* Forneça o máximo de contexto possível sobre a funcionalidade desejada.
 * Tente esclarecer por que os recursos e alternativas existentes não funcionariam para você.
 
 Depois de ter feito isso:
