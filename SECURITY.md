@@ -7,8 +7,8 @@ estão sendo atualmente suportadas com atualizações de segurança.
 
 | Versão  | Estágio          |
 | ------- | ------------------ |
-| CAL-4700    | Estável:white_check_mark: |
-| SAL-1016    | Estável:white_check_mark: |
+| CAL-4700    | Estável ✔️ |
+| SAL-1016    | Estável ✔️ |
 | CEL         | Instável ❎ |
 
 
