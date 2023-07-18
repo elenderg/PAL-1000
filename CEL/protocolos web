@@ -1,4 +1,4 @@
-Um query pedaço é um texto de consulta.
+Um query byte é um texto de consulta.
 Um texto de consulta é uma string.
 
 Etapas para que se read uma response string desde uma requisição WinHTTP:
@@ -17,17 +17,17 @@ Etapas para que se read uma response string desde uma requisição WinHTTP:
     Se o número resultante for 0 [FALSE], atribua "Erro. Não foi possível verificar a quantidade de dados disponíveis." ao erro do fluxo de entrada/saída; limpe a response string; pare.
     Atribua a quantidade de caracteres desta response string a uma quantidade de caracteres armazenados.
     Reassign o caractere inicial desta response string usando a quantidade de caracteres armazenados mais o trecho size.
-    Atribua o caractere inicial desta response string mais a quantidade de caracteres armazenados a um endereço de memória.
+    Atribua o caractere inicial desta response string mais a quantidade de caracteres armazenados a um ponteiro.
     Call "WinHTTP.dll" "WinHttpReadData" com \ https://docs.microsoft.com/pt-br/windows/win32/api/winhttp/nf-winhttp-winhttpreaddata
     \ A função WinHttpReadData lê dados de um identificador aberto pela função WinHttpOpenRequest.
       O número identificador de requisição desta requisição WinHTTP [hRequest] \ Um identificador de HINTERNET válido retornado por WinHttpOpenRequest. 
       \ https://docs.microsoft.com/pt-br/windows/win32/winhttp/hinternet-handles-in-winhttp
-      e O endereço de memória [lpBuffer] \ Ponteiro para um buffer que recebe os dados lidos.
+      e O ponteiro [lpBuffer] \ Ponteiro para um buffer que recebe os dados lidos.
       e O trecho size [dwNumberOfBytesToRead] \ valor que contém o número de bytes a serem lidos.
       e O endereçamento dessa contagem [lpdwNumberOfBytesRead] \ Ponteiro para uma variável que recebe o número de bytes lidos.
       devolvendo o número resultante. \ Retorna TRUE se for bem-sucedido ou FALSE caso contrário.
     Se o número resultante for 0 [FALSE], atribua "Ocorreu um erro ao ler os dados da requisição WinHTTP." ao erro do fluxo de entrada/saída; limpe o response; pare.
-    Atribua o endereço de memória mais a contagem menos 1 ao caractere final desta response string.
+    Atribua o ponteiro mais a contagem menos 1 ao caractere final desta response string.
     Se a contagem for 0, pare.
   Recomece. [percorra novamente o código acima]
 
@@ -79,18 +79,18 @@ Etapas para que se read uma URL para um trecho:
   Comece. [a executar o código abaixo]
     Atribua a quantidade de caracteres deste trecho a uma quantidade de caracteres armazenados.
     Reassign o caractere inicial deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
-    Atribua o caractere inicial deste trecho mais a quantidade de caracteres armazenados a um endereço de memória.
+    Atribua o caractere inicial deste trecho mais a quantidade de caracteres armazenados a um ponteiro.
     Call "wininet.dll" "InternetReadFile" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wininet/nf-wininet-internetreadfile
     \ Lê dados de um identificador aberto pela função InternetOpenUrl, FtpOpenFile ou HttpOpenRequest.
       O número identificador da URL [hFile] \Esse identificador é obtido através das funções InternetOpenUrl, FtpOpenFile ou HttpOpenRequest.
-      e O endereço de memória [lpBuffer] \ Ponteiro para um buffer que recebe os dados.
+      e O ponteiro [lpBuffer] \ Ponteiro para um buffer que recebe os dados.
       e O trecho size [dwNumberOfBytesToRead] \ Número de bytes a serem lidos.
       e O endereçamento dessa contagem [lpdwNumberOfBytesRead] \  Ponteiro para uma variável que recebe o número de bytes lidos. 
       \InternetReadFile define esse valor como zero antes de fazer qualquer trabalho ou verificação de erros.
       \ ver se está relacionado com Etapas para que se receive um trecho desde um socket:
       devolvendo um número resultante. \ Retorna TRUE se for bem-sucedido ou FALSE caso contrário.
     Se o número resultante for 0 [FALSE], atribua "Ocorreu um erro ao ler a seguinte URL: " junto com a URL seguido de "." ao erro do fluxo de entrada/saída; pare.
-    Atribua o endereço de memória mais a contagem menos 1 ao caractere final deste trecho.
+    Atribua o ponteiro mais a contagem menos 1 ao caractere final deste trecho.
     Se a contagem for 0, pare.
   Recomece. [percorra novamente o código acima]
   \ clean up
@@ -118,12 +118,12 @@ Etapas para que se receive um trecho desde um socket:
     Atribua 0 a um size.
     Atribua a quantidade de caracteres deste trecho a uma quantidade de caracteres armazenados.
     Reassign o caractere inicial deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
-    Atribua o caractere inicial deste trecho mais a quantidade de caracteres armazenados a um endereço de memória.
+    Atribua o caractere inicial deste trecho mais a quantidade de caracteres armazenados a um ponteiro.
     Call "ws2_32.dll" "recv" com \ https://docs.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-recv
     \ A função recv recebe dados de um soquete conectado ou um soquete vinculado sem conexão.
     \A função recv é usada para ler dados de entrada em soquetes orientados à conexão ou soquetes sem conexão.
       O socket [s] \ O descritor que identifica um soquete conectado.
-      e O endereço de memória [*buf] \Um ponteiro para o buffer para receber os dados de entrada.
+      e O ponteiro [*buf] \Um ponteiro para o buffer para receber os dados de entrada.
       e O trecho size [len] \O comprimento, em bytes, do buffer apontado pelo parâmetro buf.
       e 0 [flags] \Um conjunto de sinalizadores que influenciam o comportamento desta função. Veja as observações abaixo.
       \O parâmetro flags pode ser usado para influenciar o comportamento da invocação da função além das opções especificadas para o socket associado. 
@@ -132,10 +132,10 @@ Etapas para que se receive um trecho desde um socket:
       \Se nenhum erro ocorrer, recv retorna o número de bytes recebidos e o buffer apontado pelo parâmetro buf conterá esses dados recebidos. 
       \Se a conexão foi fechada normalmente, o valor de retorno é zero.
       \Caso contrário, um valor de SOCKET_ERROR é retornado
-    Se a contagem não for -1 [SOCKET_ERROR], atribua o endereço de memória mais a contagem menos 1 ao caractere final deste trecho; saia.
+    Se a contagem não for -1 [SOCKET_ERROR], atribua o ponteiro mais a contagem menos 1 ao caractere final deste trecho; saia.
     Se o último erro do windows sockets não for 10040 [WSAMSGSIZE], atribua "Ocorreu um erro no recebimento dos dados." ao erro do fluxo de entrada/saída; limpe o trecho; saia.
   \Se o last winsock erro desse system não for 10040 [WSAMSGSIZE], atribua "Ocorreu um erro no recebimento dos dados." ao erro do fluxo de entrada/saída; limpe o trecho; saia.
-    Atribua o endereço de memória mais a contagem menos 1 ao caractere final deste trecho.
+    Atribua o ponteiro mais a contagem menos 1 ao caractere final deste trecho.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se post um data string para uma URL e receive um response string:

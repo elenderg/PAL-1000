@@ -72,11 +72,11 @@ Etapas para que se apresente uma mensagem de erro contendo uma string:
   Ligue o detector de erros deste compilador.
   Atribua a string à mensagem de erro deste compilador.
 
-Etapas para que se apresente uma mensagem de erro contendo uma string e um endereço de memória do pedaço:
+Etapas para que se apresente uma mensagem de erro contendo uma string e um ponteiro do byte:
   Se o detector de erros deste compilador estiver ativado, cancele.
   Ligue o detector de erros deste compilador.
   Atribua a string à mensagem de erro deste compilador.
-  Encontre o endereço completo do arquivo de erro deste compilador e o número da linha de erro deste compilador usando o endereço de memória do pedaço .
+  Encontre o endereço completo do arquivo de erro deste compilador e o número da linha de erro deste compilador usando o ponteiro do byte .
   Se o endereço completo do arquivo de erro deste compilador estiver em branco, cancele.
   Extraia um nome do arquivo desde o endereço completo do arquivo de erro deste compilador.
   Anteponha "Erro no " junto com o nome do arquivo seguido de ". " para a mensagem de erro deste compilador.
@@ -98,7 +98,7 @@ Etapas para que se adicione as rotinas de alocação e desalocação e finalização e
 Etapas para que se adicione o rotina de alocação para um type:
   Se o type for inexistente, cancele.
   Se o detector de erros deste compilador estiver ativado, cancele.
-  Se o type não puder ser reduzido para "endereço de memória", cancele.
+  Se o type não puder ser reduzido para "ponteiro", cancele.
   Se o conteúdo type deste type for inexistente, cancele.
   Adicione uma rotina para as rotinas usando nil.
   Posponha "Aloque memória para um " junto com o nome deste type para o header string desta rotina. \ traduzir aqui
@@ -125,11 +125,7 @@ Etapas para que se adicione e compile a rotina de inicialização pré-execução e f
 
 Etapas para que se adicione os built-in types:
   Adicione um built-in type usando "byte" e "bytes" e 1.
-  Adicione um segundo built-in type usando "record" e "records" e 0.
-  Adicione um terceiro built-in type usando "pedaço" e "pedaços" e 1.
-  Adicione um quarto built-in type usando "conjunto" e "conjuntos" e 0.
-  Adicione um quinto built-in type usando "octeto" e "octetos" e 1.
-  Adicione um sexto built-in type usando "estrutura" e "estruturas" e 0.
+  Adicione um sexto built-in type usando "conjunto" e "conjuntos" e 0.
 
 Etapas para que se adicione um built-in type usando um nome e um plural nome e uma quantidade de caracteres:
   Adicione o built-in type para os types usando o nome e o plural nome e o nome.
@@ -140,7 +136,7 @@ Etapas para que se adicione um built-in type usando um nome e um plural nome e u
 Etapas para que se adicione o rotina de desalocação para um type:
   Se o type for inexistente, cancele.
   Se o detector de erros deste compilador estiver ativado, cancele.
-  Se o type não puder ser reduzido para "endereço de memória", cancele.
+  Se o type não puder ser reduzido para "ponteiro", cancele.
   Se o conteúdo type deste type for inexistente, cancele.
   Adicione uma rotina para as rotinas usando nil.
   Posponha "Desaloque um " junto com o nome deste type para o header string desta rotina.
@@ -156,9 +152,9 @@ Etapas para que se adicione o rotina de destruição por um type:
   Se o detector de erros deste compilador estiver ativado, cancele.
   Se o type não deveria ser ignorado, cancele.
   Se o type puder ser reduzido para "coisas", adicione o rotina de destruição pelo type (coisas); saia.
-  Se o type puder ser reduzido para "endereço de memória", adicione o rotina de destruição pelo type (endereço de memória); saia.
+  Se o type puder ser reduzido para "ponteiro", adicione o rotina de destruição pelo type (ponteiro); saia.
 
-Etapas para que se adicione o rotina de destruição por um type (endereço de memória):
+Etapas para que se adicione o rotina de destruição por um type (ponteiro):
   Se o type for inexistente, cancele.
   Se o detector de erros deste compilador estiver ativado, cancele.
   Atribua "Destrua [" junto com o nome deste type seguido de "]" para um cabeçalho expandido.
@@ -166,7 +162,7 @@ Etapas para que se adicione o rotina de destruição por um type (endereço de memó
   Adicione uma rotina para as rotinas usando nil.
   Posponha "Destrua um " junto com o nome deste type para o header string desta rotina.
   Posponha "Se o " junto com o nome deste type seguido de " for inexistente, cancele. " para o body string desta rotina.
-  Se o conteúdo type deste type puder ser reduzido para "endereço de memória", posponha "Destrua o conteúdo de este " junto com o nome deste type seguido de "'. " para o body string desta rotina.
+  Se o conteúdo type deste type puder ser reduzido para "ponteiro", posponha "Destrua o conteúdo de este " junto com o nome deste type seguido de "'. " para o body string desta rotina.
   Se o conteúdo type deste type puder ser reduzido para "coisas", posponha "Destrua o conteúdo de este " junto com o nome deste type seguido de "'. " para o body string desta rotina.
   Comece. [a executar o código abaixo]
     Obtenha um campo desde os campos deste conteúdo type deste type.
@@ -370,6 +366,7 @@ Etapas para que se adicione um monikette para uns monikettes usando uma string: 
   Se a string for "forem", atribua "é" à string deste monikette; saia.
   Se a string for "estiver", atribua "é" à string deste monikette; saia.
   Se a string for "estiverem", atribua "é" à string deste monikette; saia.
+  Se a string for "estamos", atribua "é" à string deste monikette; saia.
   \Se a string for "seja", atribua "é" à string deste monikette; saia.
   \Se a string for "tem", atribua "é" à string deste monikette; saia.
   \Se a string for "tiver", atribua "é" à string deste monikette; saia.
@@ -490,7 +487,7 @@ Etapas para que se adicione several fragments usando uma string e uma variável e
   Se a rotina for inexistente, apresente uma mensagem de erro contendo "Eu não sei como: " junto com o cabeçalho expandido seguido de "." e o local de aparição; saia.
   Adicione um terceiro fragment usando a etiqueta de demanda interna e a rotina.
 
-Etapas para que se adicione several fragments usando uma string e uma variável e uma segunda string e uma segunda variável e um terceiro string e um terceira variável e um endereço de memória do pedaço :
+Etapas para que se adicione several fragments usando uma string e uma variável e uma segunda string e uma segunda variável e um terceiro string e um terceira variável e um ponteiro do byte :
   Adicione um fragment usando o push endereço etiqueta e o terceira variável.
   Adicione um segundo fragment usando o push endereço etiqueta e a segunda variável.
   Adicione um terceiro fragment usando o push endereço etiqueta e a variável.
@@ -503,7 +500,7 @@ Etapas para que se adicione several fragments usando uma string e uma variável e
   Encontre uma rotina usando os monikettes.
   Se a rotina for inexistente, converta os monikettes para um cabeçalho expandido.
   Destrua os monikettes.
-  Se a rotina for inexistente, apresente uma mensagem de erro contendo "Eu não sei como: " junto com o cabeçalho expandido seguido de "." e o endereço de memória do pedaço; saia.
+  Se a rotina for inexistente, apresente uma mensagem de erro contendo "Eu não sei como: " junto com o cabeçalho expandido seguido de "." e o ponteiro do byte; saia.
   Adicione um quarto fragment usando a etiqueta de demanda interna e a rotina.
 
 Etapas para que se adicione um source file para uns sources files usando um endereço completo:
@@ -538,7 +535,7 @@ Etapas para que se adicione um type para uns types usando um nome e um plural no
   Atribua o base nome ao base nome deste type.
 
 Etapas para que se adicione uma variável para uns variáveis usando um categoria e um local de aparição:
-  Crie a variável usando o categoria.
+  Crie a variável usando a categoria.
   Posponha a variável para as variáveis.
   Atribua o local de aparição ao local de aparição desta variável.
 
@@ -752,18 +749,18 @@ Etapas para que se posponha uma string e uma segunda string e uma terceira strin
   Adicione a quantidade de caracteres desta string para a quantidade de caracteres.
   Adicione a quantidade de caracteres desta segunda string para a quantidade de caracteres.
   Adicione a quantidade de caracteres desta terceira string para a quantidade de caracteres.
-  Reassign um endereço de memória usando a quantidade de caracteres.
-  Atribua o endereço de memória para um endereço de memória do pedaço .
-  Copie pedaços desde o caractere inicial desta quarta string para o endereço de memória do pedaço pelo quantidade de caracteres desta quarta string.
-  Adicione a quantidade de caracteres desta quarta string para o endereço de memória do pedaço .
-  Copie pedaços desde o caractere inicial desta string para o endereço de memória do pedaço pelo quantidade de caracteres desta string.
-  Adicione a quantidade de caracteres desta string para o endereço de memória do pedaço .
-  Copie pedaços desde o caractere inicial desta segunda string para o endereço de memória do pedaço pelo quantidade de caracteres desta segunda string.
-  Adicione a quantidade de caracteres desta segunda string para o endereço de memória do pedaço .
-  Copie pedaços desde o caractere inicial desta terceira string para o endereço de memória do pedaço pelo quantidade de caracteres desta terceira string.
+  Reassign um ponteiro usando a quantidade de caracteres.
+  Atribua o ponteiro para um ponteiro do byte .
+  Copie bytes desde o caractere inicial desta quarta string para o ponteiro do byte pelo quantidade de caracteres desta quarta string.
+  Adicione a quantidade de caracteres desta quarta string para o ponteiro do byte .
+  Copie bytes desde o caractere inicial desta string para o ponteiro do byte pelo quantidade de caracteres desta string.
+  Adicione a quantidade de caracteres desta string para o ponteiro do byte .
+  Copie bytes desde o caractere inicial desta segunda string para o ponteiro do byte pelo quantidade de caracteres desta segunda string.
+  Adicione a quantidade de caracteres desta segunda string para o ponteiro do byte .
+  Copie bytes desde o caractere inicial desta terceira string para o ponteiro do byte pelo quantidade de caracteres desta terceira string.
   Unassign o caractere inicial desta quarta string.
-  Atribua o endereço de memória ao caractere inicial desta quarta string.
-  Atribua o endereço de memória mais a quantidade de caracteres menos 1 ao caractere final desta quarta string.
+  Atribua o ponteiro ao caractere inicial desta quarta string.
+  Atribua o ponteiro mais a quantidade de caracteres menos 1 ao caractere final desta quarta string.
 
 Etapas para que se posponha uma string para um trecho (com separator):
   Posponha a string para o trecho.
@@ -868,9 +865,9 @@ Etapas para que se posponha uma string para uma segunda string usando uma tercei
   Se a string for "nessas", posponha "em essas" para a segunda string; saia.
   Se a string for "nesta", posponha "em esta" para a segunda string; saia.
   Se a string for "nestas", posponha "em estas" para a segunda string; saia.
-  Se a string for "donde", posponha "de onde" para a segunda string; saia.
-  Se a string for "dentre", posponha "de entre" para a segunda string; saia.
-  Se a string for "dantes", posponha "de antes" para a segunda string; saia.
+  \Se a string for "donde", posponha "de onde" para a segunda string; saia.
+  \Se a string for "dentre", posponha "de entre" para a segunda string; saia.
+  \Se a string for "dantes", posponha "de antes" para a segunda string; saia.
   Se a string for "dalguém", posponha "de alguém" para a segunda string; saia.
   Se a string for "dalgum", posponha "de um" para a segunda string; saia.
   Se a string for "dalguma", posponha "de uma" para a segunda string; saia.
@@ -949,12 +946,12 @@ Etapas para que se acrescente um texto hexadecimal e um número para um segundo t
 Etapas para que se acrescente um texto hexadecimal para um segundo texto hexadecimal:
   Employ posponha uma string para uma segunda string.
 
-Etapas para que se disponibilize pedaços usando um endereço de memória e uma quantidade de caracteres e um trecho e um offset:
-  Atribua o caractere inicial deste trecho mais o offset para um segundo endereço de memória.
-  Copie pedaços desde o endereço de memória para o segundo endereço de memória pelo quantidade de caracteres.
+Etapas para que se disponibilize bytes usando um ponteiro e uma quantidade de caracteres e um trecho e um offset:
+  Atribua o caractere inicial deste trecho mais o offset para um segundo ponteiro.
+  Copie bytes desde o ponteiro para o segundo ponteiro pelo quantidade de caracteres.
 
 Etapas para que se disponibilize um DOS header para um trecho:
-  Disponibilize pedaços usando o endereçamento deste DOS header e o magnitude deste DOS header e o trecho e 0.
+  Disponibilize bytes usando o endereçamento deste DOS header e o magnitude deste DOS header e o trecho e 0.
 
 Etapas para que se disponibilize umas entries para um trecho:
   Obtenha um entry desde o entries.
@@ -963,7 +960,7 @@ Etapas para que se disponibilize umas entries para um trecho:
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se disponibilize um entry para um trecho:
-  Disponibilize pedaços usando o endereçamento deste nome endereço desta entry e 4 e o trecho e o previamente calculado endereço desta entry.
+  Disponibilize bytes usando o endereçamento deste nome endereço desta entry e 4 e o trecho e o previamente calculado endereço desta entry.
   Atribua o nome endereço desta entry mais 2 para um endereço.
   Disponibilize o nome desta entry ao trecho sob o endereço.
 
@@ -979,7 +976,7 @@ Etapas para que se disponibilize uns fragments para um trecho:
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se disponibilize um import para um trecho:
-  Disponibilize pedaços usando o endereçamento deste import header deste import e o magnitude deste import header deste import e o trecho e o header endereço deste import.
+  Disponibilize bytes usando o endereçamento deste import header deste import e o magnitude deste import header deste import e o trecho e o header endereço deste import.
   Disponibilize o nome deste import ao trecho sob o nome endereço deste import.
   Disponibilize as entries deste import ao trecho.
 
@@ -990,7 +987,7 @@ Etapas para que se disponibilize uns imports para um trecho:
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se disponibilize um PE header para um trecho:
-  Disponibilize pedaços usando o endereçamento deste PE header e o magnitude deste PE header e o trecho e 256.
+  Disponibilize bytes usando o endereçamento deste PE header e o magnitude deste PE header e o trecho e 256.
 
 Etapas para que se disponibilize uma rotina para um trecho:
   Se o compiled detector desta rotina não estiver ativo, cancele.
@@ -1003,7 +1000,7 @@ Etapas para que se disponibilize uns rotinas para um trecho:
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se disponibilize uma string para um trecho sob um endereço:
-  Disponibilize pedaços usando o caractere inicial desta string e a quantidade de caracteres desta string e o trecho e o endereço.
+  Disponibilize bytes usando o caractere inicial desta string e a quantidade de caracteres desta string e o trecho e o endereço.
 
 Etapas para que se disponibilize uma variável para um trecho:
   Se o compiled detector desta variável não estiver ativo, cancele.
@@ -1022,7 +1019,7 @@ Etapas para que se disponibilize uma variável para um trecho (como um texto):
   Atribua -1 ao caractere final desta prototype string.
   Se a quantidade de caracteres não for 0, atribua o segundo endereço ao caractere inicial desta prototype string.
   Se a quantidade de caracteres não for 0, atribua o caractere inicial desta prototype string mais a quantidade de caracteres menos 1 ao caractere final desta prototype string.
-  Disponibilize pedaços usando o endereçamento desta prototype string e a magnitude desta prototype string e o trecho e o endereço.
+  Disponibilize bytes usando o endereçamento desta prototype string e a magnitude desta prototype string e o trecho e o endereço.
   Adicione a magnitude [tamanho em bytes] desta prototype string para o endereço.
   Disponibilize os data desta variável ao trecho sob o endereço.
 
@@ -1119,7 +1116,7 @@ Etapas para que se check por invalid optional info sobre um type:
 
 Etapas para que se check por invalid optional info sobre um type (campos):
   Se o detector de erros deste compilador estiver ativado, cancele.
-  Se o type não puder ser reduzido para "conjunto", apresente uma mensagem de erro contendo "A palavra 'com' só é permitida em conjunto types." e o local de aparição deste type; saia. \\mudar aqui
+  Se o type não puder ser reduzido para "conjunto", apresente uma mensagem de erro contendo "Erro. A palavra 'com' só é permitida em estruturas." e o local de aparição deste type; saia. \\mudar aqui
 
 Etapas para que se check por invalid optional info sobre um type (scale):
   Se o detector de erros deste compilador estiver ativado, cancele.
@@ -1127,10 +1124,10 @@ Etapas para que se check por invalid optional info sobre um type (scale):
 
 Etapas para que se check por invalid optional info sobre um type (conteúdo):
   Se o detector de erros deste compilador estiver ativado, cancele.
-  Se o type não puder ser reduzido para "endereço de memória", apresente uma mensagem de erro contendo "A palavra 'to' só é permitida em endereço de memória types." e o local de aparição deste type; saia.
+  Se o type não puder ser reduzido para "ponteiro", apresente uma mensagem de erro contendo "A palavra 'para' só é permitida em ponteiro." e o local de aparição deste type; saia.
 
 Etapas para que se limpe um campo termo:
-  Preencha pedaços com o caractere null começando sob o endereçamento deste campo termo pelo magnitude deste campo termo.
+  Preencha bytes com o caractere null começando sob o endereçamento deste campo termo pelo magnitude deste campo termo.
 
 Etapas para que se limpe um termo:
   Esvazie a variável deste termo.
@@ -1543,7 +1540,7 @@ Etapas para que se compile um literal usando um percorredor:
   \Se o segmento inicial deste percorredor for algum tipo de detector literal, compile o literal usando o percorredor (detector); saia.
   Se o segmento inicial deste percorredor for algum tipo de hex literal, compile o literal usando o percorredor (hex); saia.
   Se o segmento inicial deste percorredor for algum tipo de numeric literal, compile o literal usando o percorredor (numeric); saia.
-  Se o segmento inicial deste percorredor for algum tipo de endereço de memória literal, compile o literal usando o percorredor (endereço de memória); saia.
+  Se o segmento inicial deste percorredor for algum tipo de ponteiro literal, compile o literal usando o percorredor (ponteiro); saia.
   Se o segmento inicial deste percorredor for algum tipo de string literal, compile o literal usando o percorredor (texto); saia.
   Apresente uma mensagem de erro contendo "Erro interno - compile um termo usando um percorredor (literal)" e o percorredor.
 
@@ -1605,17 +1602,17 @@ Etapas para que se compile um literal usando um percorredor (numeric):
   Se o segmento inicial deste percorredor for algum tipo de proporção literal, compile o literal usando o percorredor (numeric - proporção); saia.
   Se o segmento inicial deste percorredor for algum tipo de número misto literal, compile o literal usando o percorredor (numeric - proporção); saia.
 
-Etapas para que se compile um literal usando um percorredor (endereço de memória):
+Etapas para que se compile um literal usando um percorredor (ponteiro):
   Se o detector de erros deste compilador estiver ativado, cancele.
   Converta 0 para os data deste literal. \ was nil
   Mova o percorredor (usando diretrizes de compilação).
-  Atribua "endereço de memória" ao type nome deste literal.
+  Atribua "ponteiro" ao type nome deste literal.
   Resolva o literal.
 
 Etapas para que se compile um literal usando um percorredor (texto):
   Se o detector de erros deste compilador estiver ativado, cancele.
   Atribua o segmento inicial deste percorredor aos data deste literal.
-  Remova aspas de os data deste literal.
+  Remove aspas de os data deste literal.
   Mova o percorredor (usando diretrizes de compilação).
   Atribua "string" ao type nome deste literal.
   \Atribua "texto" ao type nome deste literal.
@@ -1698,11 +1695,11 @@ Etapas para que se compile a próxima instrução usando um percorredor (break):
 
 Etapas para que se compile a próxima instrução usando um percorredor (Call - external):
   Atribua o segmento inicial deste percorredor para uma string.
-  Remova aspas de a string.
+  Remove aspas de a string.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum tipo de string literal, apresente uma mensagem de erro contendo "Cara, você precisa colocar os nomes entre aspas, mas você colocou: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; saia.
   Atribua o segmento inicial deste percorredor para uma segunda string.
-  Remova aspas de a segunda string.
+  Remove aspas de a segunda string.
   Mova o percorredor (usando diretrizes de compilação).
   Adicione um entry para o imports usando a string e a segunda string.
   Se o segmento inicial deste percorredor for "com", compile a próxima instrução usando o percorredor (Call - cláusula com).
@@ -1722,7 +1719,7 @@ Etapas para que se compile a próxima instrução usando um percorredor (Call - ind
   Compile um expression usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, cancele.
   Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "Eu não sei o que é: " junto com a phrase desta expression seguido de "." e o percorredor; saia.
-  Se o type desta expression não puder ser reduzido para "endereço de memória", apresente a mensagem de erro contendo "Eu preciso de um endereço de memória type nesse CALL statement." e o percorredor; saia.
+  Se o type desta expression não puder ser reduzido para "ponteiro", apresente a mensagem de erro contendo "Eu preciso de um ponteiro type nesse CALL statement." e o percorredor; saia.
   Se o segmento inicial deste percorredor for "com", compile a próxima instrução usando o percorredor (Call - cláusula com).
   Se o segmento inicial deste percorredor for "contendo", compile a próxima instrução usando o percorredor (Call - cláusula com).
   Se o segmento inicial deste percorredor for "devolvendo", compile a próxima instrução usando o percorredor devolvendo um termo (Call - cláusula devolvendo).
@@ -2091,13 +2088,13 @@ Etapas para que se compile um termo usando um percorredor (possessivo - magnitud
 Etapas para que se compile um termo usando um percorredor (possessivo - conteúdo):
   Se o detector de erros deste compilador estiver ativado, cancele.
   Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Você usou o termo 'conteúdo' de forma errada. O termo da variável: " junto com a phrase deste termo seguido de "' parece estar em branco ou não foi devidamente definido." e o percorredor; saia.
-  Se o type deste termo não puder ser reduzido para "endereço de memória", apresente a mensagem de erro contendo "Você só pode usar a palavra 'conteúdo' com valores do tipo 'endereço de memória'." e o percorredor; saia.
+  Se o type deste termo não puder ser reduzido para "ponteiro", apresente a mensagem de erro contendo "Você só pode usar a palavra 'conteúdo' com valores do tipo 'ponteiro'." e o percorredor; saia.
   Compile o termo usando o percorredor (dereference).
 
 Etapas para que se compile um termo usando um percorredor (possessivo - endereçamento):
   Se o detector de erros deste compilador estiver ativado, cancele.
   Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Você usou endereçamento da forma errada, erro no termo da variável: " junto com a phrase deste termo seguido de "." e o percorredor; saia.
-  Adicione um intermediate usando "endereço de memória" e o caractere inicial deste segmento inicial deste percorredor.
+  Adicione um intermediate usando "ponteiro" e o caractere inicial deste segmento inicial deste percorredor.
   Adicione um fragment usando o load endereço etiqueta e a variável deste termo e o intermediate.
   Atribua o intermediate à variável deste termo.
   Limpe a phrase deste termo.
@@ -2238,7 +2235,7 @@ Etapas para que se compile um termo usando um percorredor e um nome (possessive 
   Encontre um campo termo usando o phrase deste termo e o type e o nome.
   Se o campo termo não estiver vazio, compile o termo usando o percorredor e o campo termo; saia.
   Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Erro: variável vazia: " junto com a phrase deste termo seguido de "." e o percorredor; saia.
-  Se o type puder ser reduzido para "endereço de memória", atribua o conteúdo type deste type ao type.
+  Se o type puder ser reduzido para "ponteiro", atribua o conteúdo type deste type ao type.
   Se o type for inexistente, apresente a mensagem de erro contendo "Não existe o campo: " junto com o nome seguido de "' no tipo: " junto com o nome deste type deste termo seguido de "." e o percorredor; saia.
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, cancele.
@@ -2247,7 +2244,7 @@ Etapas para que se compile um termo usando um percorredor e um nome (possessive 
     Encontre um deep campo termo usando "" e o type deste campo e o nome.
     Se o deep campo termo estiver vazio, recomece.
   Atribua o campo para o campo desse first campo termo.
-  Se o type deste termo puder ser reduzido para "endereço de memória", acione o dereference detector deste first campo termo.
+  Se o type deste termo puder ser reduzido para "ponteiro", acione o dereference detector deste first campo termo.
   Compile o termo usando o percorredor e o first campo termo.
   Compile o termo usando o percorredor e o deep campo termo.
 
@@ -2362,7 +2359,7 @@ Etapas para que se crie um type:
 
 Etapas para que se crie uma variável usando um categoria:
   Aloque memória para a variável.
-  Atribua o categoria à categoria desta variável.
+  Atribua a categoria à categoria desta variável.
   Atribua 1 à contagem desta variável.
 
 O endereço do cabeçalho usado atualmente é um endereço.
@@ -2381,57 +2378,57 @@ Etapas para que se determine se alguns of uns monikettes são advérbios de negaçã
   Se a string deste monikette for algum tipo de advérbio de negação, diga sim.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se determine se um pedaço é algum tipo de glom pedaço:
-  Se o pedaço for algum tipo de letra, diga sim.
-  Se o pedaço for algum tipo de digit, diga sim.
-  Se o pedaço for o acento til, diga sim.
-  Se o pedaço for o sinal de arroba, diga sim.
-  Se o pedaço for o símbolo cardinal, diga sim.
-  Se o pedaço for o sinal de porcentagem, diga sim.
-  Se o pedaço for o & comercial, diga sim.
-  Se o pedaço for o underline, diga sim.
-  Se o pedaço for o single-quote pedaço, diga sim.
-  Se o pedaço for o hífem, diga sim.
-  Se o pedaço for o sinal de adição, diga sim.
-  Se o pedaço for o slash pedaço, diga sim.
-  Se o pedaço for o símbolo da Libra Esterlina, diga sim.
+Etapas para que se determine se um byte é algum tipo de glom byte:
+  Se o byte for algum tipo de letra, diga sim.
+  Se o byte for algum tipo de digit, diga sim.
+  Se o byte for o acento til, diga sim.
+  Se o byte for o sinal de arroba, diga sim.
+  Se o byte for o símbolo cardinal, diga sim.
+  Se o byte for o sinal de porcentagem, diga sim.
+  Se o byte for o & comercial, diga sim.
+  Se o byte for o underline, diga sim.
+  Se o byte for o single-quote byte, diga sim.
+  Se o byte for o hífem, diga sim.
+  Se o byte for o sinal de adição, diga sim.
+  Se o byte for o slash byte, diga sim.
+  Se o byte for o símbolo da Libra Esterlina, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se um pedaço é algum tipo de mark:
-  Se o pedaço for o ponto final, diga sim.
-  Se o pedaço for o vírgula, diga sim.
-  Se o pedaço for o ponto&vírgula, diga sim.
-  Se o pedaço for o sinal de dois pontos, diga sim.
-  Se o pedaço for o ponto de exclamação, diga sim.
-  Se o pedaço for o ponto de interrogação, diga sim.
+Etapas para que se determine se um byte é algum tipo de mark:
+  Se o byte for o ponto final, diga sim.
+  Se o byte for o vírgula, diga sim.
+  Se o byte for o ponto&vírgula, diga sim.
+  Se o byte for o sinal de dois pontos, diga sim.
+  Se o byte for o ponto de exclamação, diga sim.
+  Se o byte for o ponto de interrogação, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se um pedaço é algum tipo de stressed vogal:
-  Se o pedaço estiver em "áãâàéèêëíîìïóõôöúùüûý", diga sim. \ na verdade a rotina apenas identifica caracteres acentuados
+Etapas para que se determine se um byte é algum tipo de stressed vogal:
+  Se o byte estiver em "áãâàéèêëíîìïóõôöúùüûý", diga sim. \ na verdade a rotina apenas identifica caracteres acentuados
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se um pedaço é algum tipo de symbol: \ deveria estar no cérebro
-  Se o pedaço for o acento circumflexo, diga sim.
-  Se o pedaço for o barra vertical, diga sim.
-  Se o pedaço for o asterisco, diga sim.
-  Se o pedaço for o sinal de adição, diga sim.
-  Se o pedaço for o hífem, diga sim.
-  Se o pedaço for o slash pedaço, diga sim.
-  Se o pedaço for o símbolo menor do que, diga sim.
-  Se o pedaço for o símbolo maior do que, diga sim.
-  Se o pedaço for a chave esquerda, diga sim.
-  Se o pedaço for a chave direita, diga sim.
-  Se o pedaço for o sinal de igualdade, diga sim.
-  Se o pedaço for 128, diga sim.
-  Se o pedaço for 130, diga sim.
-  Se o pedaço estiver entre 132 e 137, diga sim.
-  Se o pedaço for 139, diga sim.
-  Se o pedaço estiver entre 145 e 153, diga sim.
-  Se o pedaço for 155, diga sim.
-  Se o pedaço estiver entre 161 e 180, diga sim.
-  Se o pedaço estiver entre 183 e 191, diga sim.
-  Se o pedaço for 215, diga sim.
-  Se o pedaço for 247, diga sim.
+Etapas para que se determine se um byte é algum tipo de symbol: \ deveria estar no cérebro
+  Se o byte for o acento circumflexo, diga sim.
+  Se o byte for o barra vertical, diga sim.
+  Se o byte for o asterisco, diga sim.
+  Se o byte for o sinal de adição, diga sim.
+  Se o byte for o hífem, diga sim.
+  Se o byte for o slash byte, diga sim.
+  Se o byte for o símbolo menor do que, diga sim.
+  Se o byte for o símbolo maior do que, diga sim.
+  Se o byte for a chave esquerda, diga sim.
+  Se o byte for a chave direita, diga sim.
+  Se o byte for o sinal de igualdade, diga sim.
+  Se o byte for 128, diga sim.
+  Se o byte for 130, diga sim.
+  Se o byte estiver entre 132 e 137, diga sim.
+  Se o byte for 139, diga sim.
+  Se o byte estiver entre 145 e 153, diga sim.
+  Se o byte for 155, diga sim.
+  Se o byte estiver entre 161 e 180, diga sim.
+  Se o byte estiver entre 183 e 191, diga sim.
+  Se o byte for 215, diga sim.
+  Se o byte for 247, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma campo termo está vazia;
@@ -2458,7 +2455,7 @@ Etapas para que se determine se um item parece ser encadernável:
 Etapas para que se determine se um cabeçalho expandido está em um catálogo:
   Encontre um referência usando o cabeçalho expandido e o catálogo.
   Se o referência for inexistente, diga não.
-  Se o endereço de memória deste referência for inexistente, diga não.
+  Se o ponteiro deste referência for inexistente, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se um monikette é bubbled out:
@@ -2481,9 +2478,9 @@ Etapas para que se determine se um nome é algum tipo de conteúdo:
   \CAL
   Se o nome for "target", diga sim.
   \Este comando é usado apenas com ponteiros (endereços de memória). 
-  \ Serve pra saber para quais valores o ponteiro está apontando, ou seja, o conteúdo do endereço de memória . 
-  \"Um ponteiro de byte" ou "endereço de memória do byte", por exemplo, refere-se ao endereço de um byte. 
-  \"O conteúdo deste endereço de memória do byte" refere-se, portanto aos dados no contidos no byte
+  \ Serve pra saber para quais valores o ponteiro está apontando, ou seja, o conteúdo do ponteiro . 
+  \"Um ponteiro de byte" ou "ponteiro do byte", por exemplo, refere-se ao endereço de um byte. 
+  \"O conteúdo deste ponteiro do byte" refere-se, portanto aos dados no contidos no byte
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se um nome é algum tipo de endereçamento:
@@ -2519,7 +2516,7 @@ Etapas para que se determine se um percorredor está sobre algum tipo de nested d
 
 Etapas para que se determine se um percorredor está sobre algum tipo de possessive:
   Se o segmento final deste percorredor estiver em branco, diga não.
-  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for o single-quote pedaço, diga não. \ apóstrofo
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for o single-quote byte, diga não. \ apóstrofo
   Se o percorredor estiver sobre algum tipo de possessive (type 1 - single-quote, s, non-glom-byte), diga sim.
   Se o percorredor estiver sobre algum tipo de possessive (type 2 - preceding s, single-quote, non-glom-byte), diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
@@ -2529,7 +2526,7 @@ Etapas para que se determine se um percorredor está sobre algum tipo de possessi
   Isole o percorredor.
   Adicione 2 para o caractere inicial deste segmento final deste percorredor.
   Se o segmento final deste percorredor estiver em branco, diga sim.
-  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for algum tipo de glom pedaço, diga sim.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for algum tipo de glom byte, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se um percorredor está sobre algum tipo de possessive (type 2 - preceding s, single-quote, non-glom-byte):
@@ -2539,7 +2536,7 @@ Etapas para que se determine se um percorredor está sobre algum tipo de possessi
   Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for o s minúsculo ou o S maiúsculo, diga não.
   Adicione 2 para o caractere inicial deste segmento final deste percorredor.
   Se o segmento final deste percorredor estiver em branco, diga sim.
-  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for algum tipo de glom pedaço, diga sim.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for algum tipo de glom byte, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se um percorredor está sobre algum tipo de simile:
@@ -2684,6 +2681,7 @@ Etapas para que se determine se uma string é algum tipo de operador de atribuiçã
   Se a string for "está", diga sim.
   Se a string for "são", diga sim.
   Se a string for "estão", diga sim.
+  Se a string for "estamos", diga sim.
   Se a string for "for", diga sim.
   Se a string for "forem", diga sim.
   Se a string for "estiverem", diga sim.
@@ -2905,7 +2903,7 @@ Etapas para que se determine se uma string é algum tipo de artigo indefinido por
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma string é algum tipo de literal:
-  Se a string for algum tipo de endereço de memória literal, diga sim.
+  Se a string for algum tipo de ponteiro literal, diga sim.
   Se a string for algum tipo de numeric literal, diga sim.
   Se a string for algum tipo de string literal, diga sim.
   \Se a string for algum tipo de detector literal, diga sim. ***
@@ -3056,7 +3054,7 @@ Etapas para que se determine se uma string é algum tipo de pause:
   Se a string for ";", diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se uma string é algum tipo de endereço de memória literal:
+Etapas para que se determine se uma string é algum tipo de ponteiro literal:
   \PAL
   Se a string for "nulo", diga sim.
   Se a string for "nula", diga sim.
@@ -3382,6 +3380,7 @@ Etapas para que se determine se uma string é algum tipo de verb:
   Se a string for "forem", diga sim. \ "be"
   Se a string for "estiver", diga sim. \ "be"
   Se a string for "estiverem", diga sim. \ "be"
+  Se a string for "estamos", diga sim. \ "be"  
   Se a string for "é", diga sim. \ "is" não for \ isn't: "to be" conjugated no singular terceiro person (3ps) present, perm.
   Se a string for "está", diga sim. \ "is" não for \ isn't: "to be" conjugated no singular terceiro person (3ps) present, temp.
   Se a string for "são", diga sim. \ "are" são not \ aren't: "to be" conjugated no plural terceiro person (3pp) present, perm.
@@ -3405,7 +3404,7 @@ Etapas para que se determine se uma string é algum tipo de verb:
   Se a string for "podem", diga sim. \ they "can" cannot \ can't: not used em CAL (3pp) added just em case 
   Se a string for "poderia", diga sim. \ it "could" could not \ couldn't: not used em CAL (3ps) added just em case
   Se a string for "poderia", diga sim. \ they "could" could not \ couldn't: not used em CAL (3pp) added just em case
-  Se a string for "podemos", diga sim. \ we "could" could not \ couldn't: only once em Noodle (1pp) "Etapas para que se determine se we could encontre um endereço de memória:"
+  Se a string for "podemos", diga sim. \ we "could" could not \ couldn't: only once em Noodle (1pp) "Etapas para que se determine se we could encontre um ponteiro:"
   Se a string for "tem", diga sim. \ it "has" used em type definitions; (3ps) present
   Se a string for "têm", diga sim. \ they "have" used em type definitions; (3pp) present
   Se a string for "ter", diga sim. \ used em type definitions
@@ -3745,9 +3744,9 @@ Etapas para que se determine se um type deveria ser ignorado:  [ou seja, o compi
   Se o nome deste type for "coisa", diga não. \ no, because this is the built-in type which we don't ever allocate or destroy, it exists so we can "magically" add next and previous fields to anything defined as a "thing"
   Se o nome deste type for "coisas", diga não. \ no, because this is the built-in type we "magically" generate to anchor lists of things, same as above of .
   Se o type puder ser reduzido para "coisas", diga sim. \ yes, because (though it seems to contradict the line immediately above of ) this is a an actual list of things that we can destroy, for example "some pages".
-  Se o type não puder ser reduzido para "endereço de memória", diga não. \ \ no, because a pointer variable is a static variable (it is the address in the variable that is dynamic); the pointer variable itself is not something that can be dynamically allocated, so no destroy is necessary
+  Se o type não puder ser reduzido para "ponteiro", diga não. \ \ no, because a pointer variable is a static variable (it is the address in the variable that is dynamic); the pointer variable itself is not something that can be dynamically allocated, so no destroy is necessary
   Se o conteúdo type deste type for inexistente, diga não. \ no, because it's a pointer to nothing, so there's nothing to destroy.
-  Se o conteúdo type deste type não puder ser reduzido para "endereço de memória", diga sim.\ yes, because it's a pointer to something allocated, not a pointer to another pointer. Pointers to pointers are handled with the next recursive line
+  Se o conteúdo type deste type não puder ser reduzido para "ponteiro", diga sim.\ yes, because it's a pointer to something allocated, not a pointer to another pointer. Pointers to pointers are handled with the next recursive line
   Se o conteúdo type deste type não deveria ser ignorado, diga não.\ no, because it's a pointer to something that shouldn't be destroyed. For example, a pointer to a thing
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.\ The last condition is the hardest to wrap one's head around since it is recursive.
 
@@ -3824,11 +3823,11 @@ Um DOS header é um conjunto com
   \\ Overlay number.
   \\ This word is normally set para 0000H, because few programs actually have overlays.
   \\It changes only em files containing programs that use overlays; see the note debaixo of.
-  8 pedaços denominados ReservedBytes, \\ Specifies Reserved words for the program (known em winnt.h as e_res[4]), usually set para zero by the linker.
+  8 bytes denominados ReservedBytes, \\ Specifies Reserved words for the program (known em winnt.h as e_res[4]), usually set para zero by the linker.
   \\In this case, just use a single reserved1 set para zero; if not zero create four reserved1 com the correct value.
 Uma word denominada OEM_Identifier, \\ Specifies the identifier for the OEM for e_oeminfo.
 Uma word denominada OEM_Info, \\ Specifies the OEM information for a specific value of e_oeminfo.
-  20 pedaços denominados ReservedWords, \\ Specifies Reserved words for the program (known em winnt.h as e_res[10]), usually set para zero by the linker.
+  20 bytes denominados ReservedWords, \\ Specifies Reserved words for the program (known em winnt.h as e_res[10]), usually set para zero by the linker.
   \\In this case, just use a single reserved1 set para zero; if not zero create ten reserved1 com the correct value.
   Um número denominado Address_Of_PE_Header_In_File.   \ O Address_Of_PE_Header_In_File é um ponteiro para o “PE Header”, 
   \Uma versão revisada e estendida do Cabeçalho DOS introduzida com o advento do Windows.
@@ -3951,13 +3950,13 @@ Etapas para que se encontre um import usando uma string:
     Se o nome deste import for a string, cancele.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se encontre um endereço completo e um número da linha usando um endereço de memória do pedaço :
+Etapas para que se encontre um endereço completo e um número da linha usando um ponteiro do byte :
   Limpe o endereço completo.
   Atribua 0 ao número da linha.
-  Encontre um source file usando o endereço de memória do pedaço .
+  Encontre um source file usando o ponteiro do byte .
   Se o source file for inexistente, cancele.
   Atribua o endereço completo deste source file ao endereço completo.
-  Encontre o número da linha usando o source file e o endereço de memória do pedaço .
+  Encontre o número da linha usando o source file e o ponteiro do byte .
 
 Etapas para que se encontre uma rotina usando um cabeçalho expandido e um monikette e um catálogo:
   Se o monikette for inexistente, cancele.
@@ -3968,7 +3967,7 @@ Etapas para que se encontre uma rotina usando um cabeçalho expandido e um monike
   Comece. [a executar o código abaixo]
     Posponha o monikette para o cabeçalho expandido (while bubbling).
     Encontre um referência usando o cabeçalho expandido e o catálogo.
-    Se o referência não for inexistente, atribua o endereço de memória deste referência à rotina.
+    Se o referência não for inexistente, atribua o ponteiro deste referência à rotina.
     Se o referência não for inexistente, encontre a rotina usando o cabeçalho expandido e o next deste monikette e o catálogo.
     Se a rotina não for inexistente, pare.
     Bubble o monikette.
@@ -4020,24 +4019,24 @@ Etapas para que se encontre uma rotina usando uma string e um type e uma segunda
   Encontre a rotina usando os monikettes.
   Destrua os monikettes.
 
-Etapas para que se encontre um número da linha usando um source file e um endereço de memória do pedaço :
-  Se o endereço de memória do pedaço for inexistente, atribua 0 ao número da linha; saia.
+Etapas para que se encontre um número da linha usando um source file e um ponteiro do byte :
+  Se o ponteiro do byte for inexistente, atribua 0 ao número da linha; saia.
   Lance um subtexto sobre o trecho deste source file.
   Atribua 1 ao número da linha.
   Comece. [a executar o código abaixo]
     Se o subtexto estiver em branco, cancele.
-    Se o caractere inicial deste subtexto for o endereço de memória do pedaço , cancele.
+    Se o caractere inicial deste subtexto for o ponteiro do byte , cancele.
     Se o conteúdo deste caractere inicial deste subtexto for o retorno de carro, adicione 1 para o número da linha.
   Adicione 1 para o caractere inicial deste subtexto.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se encontre um source file usando um endereço de memória do pedaço :
-  Se o endereço de memória do pedaço for inexistente, esvazie o source file; saia.
+Etapas para que se encontre um source file usando um ponteiro do byte :
+  Se o ponteiro do byte for inexistente, esvazie o source file; saia.
   Comece. [a executar o código abaixo]
     Obtenha o source file desde os sources files.
     Se o source file for inexistente, cancele.
-    Se o endereço de memória do pedaço for menor do que o caractere inicial deste trecho deste source file, recomece.
-    Se o endereço de memória do pedaço for maior do que o caractere final deste trecho deste source file, recomece.
+    Se o ponteiro do byte for menor do que o caractere inicial deste trecho deste source file, recomece.
+    Se o ponteiro do byte for maior do que o caractere final deste trecho deste source file, recomece.
 
 Etapas para que se encontre um type e um nickname usando um nome:
   Esvazie o type.
@@ -4207,12 +4206,12 @@ Etapas para que se catalogue uma rotina por utility use:
   Destrua os monikettes.
   Se o cabeçalho expandido estiver no catálogo geral de rotinas, cancele.
   Encontre um referência usando o cabeçalho expandido e o catálogo de rotinas úteis.
-  Se o referência não for inexistente, atribua nil ao endereço de memória deste referência; saia.
+  Se o referência não for inexistente, atribua nil ao ponteiro deste referência; saia.
   Catalogue a rotina usando o cabeçalho expandido e o catálogo de rotinas úteis.
 
 Etapas para que se catalogue uma rotina usando um cabeçalho expandido e um catálogo (special):
   Encontre um referência usando o cabeçalho expandido e o catálogo.
-  Se o referência não for inexistente, atribua a rotina ao endereço de memória deste referência; saia.
+  Se o referência não for inexistente, atribua a rotina ao ponteiro deste referência; saia.
   Catalogue a rotina usando o cabeçalho expandido e o catálogo.
 
 Etapas para que se catalogue uma rotina usando uns monikettes e um catálogo:
@@ -4283,7 +4282,7 @@ Etapas para que se inicialize um PE header:
 
 Etapas para que se inicialize um PE header (Code Section):
   Atribua "código " a uma string.
-  Copie pedaços desde o caractere inicial desta string para o endereçamento deste nome desta Code Section deste PE header por 6.
+  Copie bytes desde o caractere inicial desta string para o endereçamento deste nome desta Code Section deste PE header por 6.
   Atribua a quantidade de caracteres desta zona de código ao SizeInBytes desta Code Section deste PE header.
   Atribua o endereço base desta zona de código ao AddressInMemory desta Code Section deste PE header.
   Atribua a quantidade de caracteres desta zona de código ao SizeInFile desta Code Section deste PE header.
@@ -4294,7 +4293,7 @@ Etapas para que se inicialize um PE header (Code Section):
   
 Etapas para que se inicialize um PE header (data section):
   Atribua "data " a uma string.
-  Copie pedaços desde o caractere inicial desta string para o endereçamento deste nome desta data section deste PE header por 6.
+  Copie bytes desde o caractere inicial desta string para o endereçamento deste nome desta data section deste PE header por 6.
   Atribua a quantidade de caracteres desta zona de dados ao SizeInBytes desta data section deste PE header.
   Atribua o endereço base desta zona de dados ao AddressInMemory desta data section deste PE header.
   Atribua a quantidade de caracteres desta zona de dados ao SizeInFile desta data section deste PE header.
@@ -4308,7 +4307,7 @@ Etapas para que se inicialize um PE header (directories):
 
 Etapas para que se inicialize um PE header (import section):
   Atribua "idata " a uma string.
-  Copie pedaços desde o caractere inicial desta string para o endereçamento deste nome desta idata section deste PE header por 6.
+  Copie bytes desde o caractere inicial desta string para o endereçamento deste nome desta idata section deste PE header por 6.
   Atribua a quantidade de caracteres desta import zona ao SizeInBytes desta idata section deste PE header.
   Atribua o endereço base desta import zona ao AddressInMemory desta idata section deste PE header.
   Atribua a quantidade de caracteres desta import zona ao SizeInFile desta idata section deste PE header.
@@ -4482,7 +4481,7 @@ Etapas para que se liste um referência em um trecho:
   Se o referência for inexistente, cancele.
   Posponha "/referência" para o trecho (com separator).
   Posponha a string deste referência para o trecho.
-  Se o endereço de memória deste referência for inexistente, posponha "..." para o trecho.
+  Se o ponteiro deste referência for inexistente, posponha "..." para o trecho.
   Posponha "/" para o trecho.
   Advance o trecho.
 
@@ -4598,7 +4597,7 @@ Etapas para que se liste uns types depois de uma string em um trecho:
 Etapas para que se liste uma variável em um trecho:
   Se a variável for inexistente, cancele.
   Posponha "/variável" para o trecho (com separator).
-  Posponha o categoria desta variável para o trecho (com separator).
+  Posponha a categoria desta variável para o trecho (com separator).
   Posponha o compiled detector desta variável para o trecho (com separator).
   Posponha o nome desta variável para o trecho (com separator).
   Posponha o nickname desta variável para o trecho (com separator).
@@ -4635,7 +4634,7 @@ O literals são uns literals.
 
 An local é uma variável.
 
-Um local de aparição é um endereço de memória do pedaço .
+Um local de aparição é um ponteiro do byte .
 
 Um cabeçalho expandido é uma string.  \ moniker
   \ https://docs.microsoft.com/pt-br/windows/win32/com/monikers
@@ -4670,7 +4669,7 @@ Etapas para que se mova um percorredor (símbolos conectivos):
   Avance o percorredor.
   Se o segmento final deste percorredor estiver em branco, cancele.
   Se o percorredor estiver sobre algum tipo de possessive, cancele.
-  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for algum tipo de glom pedaço, recomece.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for algum tipo de glom byte, recomece.
 
 Etapas para que se mova um percorredor (código rules - mark):
   Avance o percorredor.
@@ -4773,7 +4772,7 @@ Etapas para que se offset o locals em uma rotina:
     Se o local for inexistente, cancele.
     Se o previous deste local não for inexistente, atribua o offset deste previous deste local ao offset deste local.
     Atribua a quantidade de caracteres deste type deste local para uma quantidade de caracteres.
-    Se a categoria deste local for "scratch", atribua a magnitude desse endereço de memória ao quantidade de caracteres.
+    Se a categoria deste local for "scratch", atribua a magnitude desse ponteiro ao quantidade de caracteres.
     Arredonde a quantidade de caracteres para cima para o múltiplo imediato of 4.
     Subtraia a quantidade de caracteres desde o offset deste local.
     Adicione a quantidade de caracteres para o local size desta rotina.
@@ -4796,7 +4795,7 @@ Etapas para que se offset o parâmetros em uma rotina:
     Se o parâmetro for inexistente, cancele.
     Se o detector de compatibilidade desta rotina estiver ativo, acione o by-value detector deste parâmetro.
     Se o previous deste parâmetro for inexistente, atribua 8 ao offset deste parâmetro. \ skip o return address e saved ebp
-    Se o previous deste parâmetro não for inexistente, atribua o offset deste previous deste parâmetro mais 4 ao offset deste parâmetro. \ all parâmetros são 4 endereço de memória do pedaço s ou 4 pedaço values por callbacks
+    Se o previous deste parâmetro não for inexistente, atribua o offset deste previous deste parâmetro mais 4 ao offset deste parâmetro. \ all parâmetros são 4 ponteiro do byte s ou 4 byte values por callbacks
     Adicione 4 para a parâmetro size desta rotina.
   Recomece. [percorra novamente o código acima]
 
@@ -4856,9 +4855,9 @@ Um PE header é um conjunto com
   \0x107 o identifica como uma imagem de ROM e 0x20B a identifica como um PE32 + executável.
   \ Esse campo é usado para identificar arquivos compatíveis com o tipo de arquivo do MS-DOS. 
   \ Os executáveis compatíveis com MS-DOS usam o valor 0x5A4D, que é o valor das letras MZ na tabela ASCII
-  Um pedaço denominado MajorLinkerVersion, 
+  Um byte denominado MajorLinkerVersion, 
   \ Indica a version do linker que vinculou a imagem - O número da versão principal do vinculador.
-  Um pedaço denominado MinorLinkerVersion, 
+  Um byte denominado MinorLinkerVersion, 
   \ Indica a version do linker que vinculou a imagem - O número da versão secundária do vinculador.
   Um número denominado SizeOfCodeInFile, 
   \O tamanho da seção de código (texto) ou a soma de todas as seções de código se houver várias seções.
@@ -4950,21 +4949,21 @@ Um PE header é um conjunto com
   \ directories (16 address e size pairs)
   Um número denominado NumberOfDirectories, [NumberOfRvaAndSizes]
   \ O número de entradas de diretório de dados no restante do header opcional. Cada uma descreve uma localização e um tamanho.
-  8 pedaços denominados Directory0,
+  8 bytes denominados Directory0,
   Um número denominado ImageDirectoryEntryImportAddress,
   Um número denominado ImageDirectoryEntryImportSize,
-  112 pedaços denominados Directories2-15,
+  112 bytes denominados Directories2-15,
   Um PE Section Header denominado Idata Section,
   Um PE Section Header denominado Data Section,
   Um PE Section Header denominado Code Section. \ https://docs.microsoft.com/pt-br/windows/win32/debug/pe-format#section-flags
 
 Um PE Section Header é um conjunto com
-  8 pedaços denominados Nome, \ Each section header has a name fielf up to eight characters long, for which the first character must be a period.
+  8 bytes denominados Nome, \ Each section header has a name fielf up to eight characters long, for which the first character must be a period.
   Um número denominado SizeInBytes,
   Um número denominado AddressInMemory,
   Um número denominado SizeInFile,
   Um número denominado AddressInFile,
-  12 pedaços denominados Reserved,
+  12 bytes denominados Reserved,
   Um número denominado Characteristics. \ Defines the section Characteristics. 
   \These values are encontrado both em WINNT.H and in the Portable Executable Format specification.
 
@@ -5026,7 +5025,7 @@ Etapas para que se pluralize uma string (português - regras comuns) :
   \# palavras terminadas com "l"
   Se a string termina com "l", pluralize a string (terminada com "l"); saia.
   \# palavra terminadas com "m"
-  Se a string termina com "m", remove o last pedaço desde a string; posponha "ns" para a string; saia.
+  Se a string termina com "m", remove o last byte desde a string; posponha "ns" para a string; saia.
   \# palavra terminadas com "n" (essa regra é preferível porque mantém o acento da palavra, se houver)
   Se a string termina com "n", posponha "es" para a string; saia.
   \# palavras terminadas com "r"
@@ -5061,10 +5060,10 @@ Etapas para que se pluralize uma string (terminada com "ão"):
   Se a string for "são", posponha "s" para a string; saia.
   \-ão no singular para -ães no plural:
   \Alguns substantivos terminados em -ão formam o plural com -ães.
-  Se a string for "pão", remove o last pedaço desde a string; posponha "es" para a string; saia.
-  Se a string for "capitão", remove o last pedaço desde a string; posponha "es" para a string; saia.
-  Se a string for "alemão", remove o last pedaço desde a string; posponha "es" para a string; saia.
-  Se a string for "charlatão", remove o last pedaço desde a string; posponha "es" para a string; saia.
+  Se a string for "pão", remove o last byte desde a string; posponha "es" para a string; saia.
+  Se a string for "capitão", remove o last byte desde a string; posponha "es" para a string; saia.
+  Se a string for "alemão", remove o last byte desde a string; posponha "es" para a string; saia.
+  Se a string for "charlatão", remove o last byte desde a string; posponha "es" para a string; saia.
   \TODOS os substantivos paroxítonos terminados em -ão formam o plural com -ãos. 
   \ALGUNS substantivos oxítonos também têm o seu plural formado segundo essa regra:
   \órfão - órfãos;
@@ -5082,7 +5081,7 @@ Etapas para que se pluralize uma string (terminada com "ão"):
   \opinião - opiniões;
   \coração - corações;
   \eleição - eleições.
-  Remove os last dois pedaços desde a string.
+  Remove os last dois bytes desde a string.
   Posponha "ões" para a string.
   \Volte.
 
@@ -5107,7 +5106,7 @@ Etapas para que se pluralize uma string (terminada com "l"):
 
 Etapas para que se pluralize uma string (terminada com "al"):
   Se a string for "mal", atribua "males" para a string; saia.
-  Remove o last pedaço desde a string. \remove a letra L
+  Remove o last byte desde a string. \remove a letra L
   Posponha "is" para a string.
   \Volte.
 
@@ -5116,8 +5115,8 @@ Etapas para que se pluralize uma string (terminada com "el"):
   \# acentos em sílabas prévias
   Lance um subtexto sobre a string.
   Subtraia 2 desde o caractere final deste subtexto. \ remove o el
-  Se o subtexto has algum tipo de stressed vogal, remove o last pedaço desde a string; posponha "is" para a string; saia.
-  Remove os last dois pedaços desde a string.
+  Se o subtexto has algum tipo de stressed vogal, remove o last byte desde a string; posponha "is" para a string; saia.
+  Remove os last dois bytes desde a string.
   Posponha "éis" para a string.
   \Volte.
 
@@ -5131,8 +5130,8 @@ Etapas para que se pluralize uma string (terminada com "il"):
   \# acentos em sílabas prévias
   Lance um subtexto sobre a string.
   Subtraia 2 desde o caractere final deste subtexto.
-  Se o subtexto has algum tipo de stressed vogal, remove os last dois pedaços desde a string; posponha "eis" para a string; saia.
-  Remove o last pedaço desde a string. \ remove a letra L
+  Se o subtexto has algum tipo de stressed vogal, remove os last dois bytes desde a string; posponha "eis" para a string; saia.
+  Remove o last byte desde a string. \ remove a letra L
   Posponha "s" para a string.
   \Volte.
 
@@ -5140,14 +5139,14 @@ Etapas para que se pluralize uma string (terminada com "ol"):
   \# acentos em sílabas prévias
   Lance um subtexto sobre a string.
   Subtraia 2 desde o caractere final deste subtexto.
-  Se o subtexto has algum tipo de stressed vogal, remove o last pedaço desde a string; posponha "is" para a string; saia.
-  Remove os last dois pedaços desde a string.
+  Se o subtexto has algum tipo de stressed vogal, remove o last byte desde a string; posponha "is" para a string; saia.
+  Remove os last dois bytes desde a string.
   Posponha "óis" para a string.
   \Volte.
 
 Etapas para que se pluralize uma string (terminada com "ul"):
   Se a string for "cônsul", atribua "cônsules" à string; saia.
-  Remove o last pedaço desde a string. \ remove o L
+  Remove o last byte desde a string. \ remove o L
   Posponha "is" para a string.
   \Volte.
 
@@ -5157,8 +5156,8 @@ Etapas para que se pluralize uma string (terminada com "r"):
   Subtraia 2 desde o caractere final deste subtexto.
   Se o subtexto has algum tipo de stressed vogal, posponha "es" para a string; saia.
   \# hiatos
-  Se a string termina com "air", remove os last dois pedaços desde a string; posponha "íres" para a string; saia.
-  Se a string termina com "aur", remove os last dois pedaços desde a string; posponha "úres" para a string; saia.
+  Se a string termina com "air", remove os last dois bytes desde a string; posponha "íres" para a string; saia.
+  Se a string termina com "aur", remove os last dois bytes desde a string; posponha "úres" para a string; saia.
   \# regra padrão
   Posponha "es" para a string.
   \Volte.
@@ -5176,14 +5175,14 @@ Etapas para que se pluralize uma string (terminada com "s"):
   Se a string termina com "aís", posponha "es" para a string; saia.
   Se a string termina com "aús", posponha "es" para a string; saia.
   \# oxítonas terminadas com "ás", "âs", "és", "ês", "ís", "ós", "ôs", "ús"
-  Se a string termina com "ás", remove os last dois pedaços desde a string; posponha "ases" para a string; saia.
-  Se a string termina com "âs", remove os last dois pedaços desde a string; posponha "ases" para a string; saia.
-  Se a string termina com "és", remove os last dois pedaços desde a string; posponha "eses" para a string; saia.
-  Se a string termina com "ês", remove os last dois pedaços desde a string; posponha "eses" para a string; saia.
-  Se a string termina com "ís", remove os last dois pedaços desde a string; posponha "ises" para a string; saia.
-  Se a string termina com "ós", remove os last dois pedaços desde a string; posponha "oses" para a string; saia.
-  Se a string termina com "ôs", remove os last dois pedaços desde a string; posponha "oses" para a string; saia.
-  Se a string termina com "ús", remove os last dois pedaços desde a string; posponha "uses" para a string; saia.
+  Se a string termina com "ás", remove os last dois bytes desde a string; posponha "ases" para a string; saia.
+  Se a string termina com "âs", remove os last dois bytes desde a string; posponha "ases" para a string; saia.
+  Se a string termina com "és", remove os last dois bytes desde a string; posponha "eses" para a string; saia.
+  Se a string termina com "ês", remove os last dois bytes desde a string; posponha "eses" para a string; saia.
+  Se a string termina com "ís", remove os last dois bytes desde a string; posponha "ises" para a string; saia.
+  Se a string termina com "ós", remove os last dois bytes desde a string; posponha "oses" para a string; saia.
+  Se a string termina com "ôs", remove os last dois bytes desde a string; posponha "oses" para a string; saia.
+  Se a string termina com "ús", remove os last dois bytes desde a string; posponha "uses" para a string; saia.
   \# palavras terminadas com "is", "us"
   Se a string termina com "is", pluralize a string (terminada com "is" ou com "us"); saia.
   Se a string termina com "us", pluralize a string (terminada com "is" ou com "us"); saia. \ônibus / vírus
@@ -5198,8 +5197,8 @@ Etapas para que se pluralize uma string (terminada com "is" ou com "us"):
   Subtraia 2 desde o caractere final deste subtexto.
   Se o subtexto has algum tipo de stressed vogal, cancele.
   \# hiatos
-  Se a string termina com "ais", remove os last dois pedaços desde a string; posponha "íses" para a string; saia. \cais não varia....
-  Se a string termina com "aus", remove os last dois pedaços desde a string; posponha "úses" para a string; saia.
+  Se a string termina com "ais", remove os last dois bytes desde a string; posponha "íses" para a string; saia. \cais não varia....
+  Se a string termina com "aus", remove os last dois bytes desde a string; posponha "úses" para a string; saia.
   \# regra padrão
   Posponha "es" para a string.
   \Volte.
@@ -5216,21 +5215,21 @@ Etapas para que se pluralize uma string (terminada com "z"):
   Se a string termina com "aíz", posponha "es" para a string; saia.
   Se a string termina com "aúz", posponha "es" para a string; saia.
   \# palavras terminas em "áz", "âz", "éz", "êz", "íz", "óz", "ôz", "úz"
-  Se a string termina com "áz", remove os last dois pedaços desde a string; posponha "azes" para a string; saia.
-  Se a string termina com "âz", remove os last dois pedaços desde a string; posponha "azes" para a string; saia.
-  Se a string termina com "éz", remove os last dois pedaços desde a string; posponha "ezes" para a string; saia.
-  Se a string termina com "êz", remove os last dois pedaços desde a string; posponha "ezes" para a string; saia.
-  Se a string termina com "íz", remove os last dois pedaços desde a string; posponha "izes" para a string; saia.
-  Se a string termina com "óz", remove os last dois pedaços desde a string; posponha "ozes" para a string; saia.
-  Se a string termina com "ôz", remove os last dois pedaços desde a string; posponha "ozes" para a string; saia.
-  Se a string termina com "úz", remove os last dois pedaços desde a string; posponha "uzes" para a string; saia.
+  Se a string termina com "áz", remove os last dois bytes desde a string; posponha "azes" para a string; saia.
+  Se a string termina com "âz", remove os last dois bytes desde a string; posponha "azes" para a string; saia.
+  Se a string termina com "éz", remove os last dois bytes desde a string; posponha "ezes" para a string; saia.
+  Se a string termina com "êz", remove os last dois bytes desde a string; posponha "ezes" para a string; saia.
+  Se a string termina com "íz", remove os last dois bytes desde a string; posponha "izes" para a string; saia.
+  Se a string termina com "óz", remove os last dois bytes desde a string; posponha "ozes" para a string; saia.
+  Se a string termina com "ôz", remove os last dois bytes desde a string; posponha "ozes" para a string; saia.
+  Se a string termina com "úz", remove os last dois bytes desde a string; posponha "uzes" para a string; saia.
   \# acentos em sílabas prévias
   Lance um subtexto sobre a string.
   Subtraia 2 desde o caractere final deste subtexto.
   Se o subtexto has algum tipo de stressed vogal, posponha "es" para a string; saia.
   \# hiatos
-  Se a string termina com "aiz", remove os last dois pedaços desde a string; posponha "ízes" para a string; saia.
-  Se a string termina com "auz", remove os last dois pedaços desde a string; posponha "úzes" para a string; saia.
+  Se a string termina com "aiz", remove os last dois bytes desde a string; posponha "ízes" para a string; saia.
+  Se a string termina com "auz", remove os last dois bytes desde a string; posponha "úzes" para a string; saia.
   \# regra padrão
   Posponha "es" para a string.
   \Volte.
@@ -5258,11 +5257,13 @@ Etapas para que se pluralize uma string:
   Se a string for "preciso", atribua "precisos" à string; saia.
   Se a string for "linha", atribua "linhas" à string; saia.
   Se a string for "fileira", atribua "fileiras" à string; saia.
+  Se a string for "estrutura", atribua "estruturas" à string; saia.
   Se a string for "conjunto", atribua "conjuntos" à string; saia.
   Se a string for "texto", atribua "textos" à string; saia.
   Se a string for "unidade", atribua "unidades" à string; saia.
   Se a string for "polegada", atribua "polegadas" à string; saia.
   Se a string for "endereço", atribua "endereços" à string; saia.
+  Se a string for "ponteiro", atribua "ponteiros" à string; saia.
   Se a string for "comando", atribua "comandos" à string; saia.
   Se a string for "tipo", atribua "tipos" à string; saia.
   Se a string for "nome", atribua "nomes" à string; saia.
@@ -5314,17 +5315,17 @@ Etapas para que se pluralize uma string:
   Se a string for "virus", atribua "viruses" à string; saia.
   Se a string termina com "sh", posponha "es" para a string; saia.
   Se a string termina com "ch", posponha "es" para a string; saia.
-  Se a string termina com "man", remove os last dois pedaços desde a string; posponha "en" para a string; saia.
+  Se a string termina com "man", remove os last dois bytes desde a string; posponha "en" para a string; saia.
   Se a string termina com "child", posponha "ren" para a string; saia.
-  Se a string termina com "ex", remove os last dois pedaços desde a string; posponha "ices" para a string; saia. \ ou adicione ES
-  Se a string termina com "fe", remove os last dois pedaços desde a string; posponha "ves" para a string; saia.
-  Se a string termina com "is", remove os last dois pedaços desde a string; posponha "es" para a string; saia.
-  Se a string termina com "ix", remove os last dois pedaços desde a string; posponha "ices" para a string; saia. \ ou adicione ES
+  Se a string termina com "ex", remove os last dois bytes desde a string; posponha "ices" para a string; saia. \ ou adicione ES
+  Se a string termina com "fe", remove os last dois bytes desde a string; posponha "ves" para a string; saia.
+  Se a string termina com "is", remove os last dois bytes desde a string; posponha "es" para a string; saia.
+  Se a string termina com "ix", remove os last dois bytes desde a string; posponha "ices" para a string; saia. \ ou adicione ES
   Se a string termina com "ma", posponha "ta" para a string; saia. \ ou adicione S
-  Se a string termina com alguma consoante e "y", remove o last pedaço desde a string; posponha "ies" para a string; saia.
+  Se a string termina com alguma consoante e "y", remove o last byte desde a string; posponha "ies" para a string; saia.
   Se a string termina com algum tipo de vogal e "o", posponha "s" para a string; saia.
   Se a string termina com algum tipo de vogal e "y", posponha "s" para a string; saia.
-  Se a string termina com "f", remove o last pedaço desde a string; posponha "ves" para a string; saia.
+  Se a string termina com "f", remove o last byte desde a string; posponha "ves" para a string; saia.
   Se a string termina com "s", posponha "es" para a string; saia.
   Se a string termina com "x", posponha "es" para a string; saia.
   Se a string termina com "z", posponha "es" para a string; saia.
@@ -5384,7 +5385,7 @@ Etapas para que se parse uma string para uma segunda string (para expandir contr
     Se o segmento final deste percorredor de contrações estiver em branco, cancele.
     Posicione o segmento inicial deste percorredor de contrações sobre o segmento final deste percorredor de contrações. 
     Mova o percorredor de contrações (englobando tudo).
-    Se o conteúdo deste caractere inicial deste segmento inicial deste percorredor de contrações não for algum tipo de glom pedaço, posponha o segmento inicial deste percorredor de contrações para a segunda string; recomece.
+    Se o conteúdo deste caractere inicial deste segmento inicial deste percorredor de contrações não for algum tipo de glom byte, posponha o segmento inicial deste percorredor de contrações para a segunda string; recomece.
     Posponha o segmento inicial deste percorredor de contrações para a segunda string usando a terceira string (para expandir contrações).
     Atribua o segmento inicial deste percorredor de contrações à terceira string.
   Recomece. [percorra novamente o código acima]
@@ -5405,7 +5406,7 @@ Etapas para que se reduza um type para um segundo type por utility use:
     Se o nome deste segundo type for "string", cancele.
     Se o nome deste segundo type for "texto", cancele.
     Se o nome deste segundo type for "número", cancele.
-    Se o nome deste segundo type for "endereço de memória", cancele.
+    Se o nome deste segundo type for "ponteiro", cancele.
     Se o nome deste segundo type for "coisa", esvazie o segundo type; saia.
     \PAL
     \Se o nome deste segundo type for "elemento", esvazie o segundo type; saia.
@@ -5424,7 +5425,7 @@ Etapas para que se organize o catálogo de rotinas úteis:
 Etapas para que se organize o catálogo de rotinas úteis usando uns referências:
     Obtenha um referência desde o referências.
     Se o referência for inexistente, cancele.
-    Atribua o endereço de memória deste referência para uma rotina.
+    Atribua o ponteiro deste referência para uma rotina.
     Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro interno na função: organize o catálogo de rotinas úteis usando uns referências"; saia.
     Copie os monikettes desta rotina para uns monikettes.
     Reduza os monikettes por utility use.
@@ -5451,7 +5452,7 @@ Etapas para que se remove algum tipo de negatives desde uns monikettes devolvend
     Se a string deste monikette for "nothing", reverse o detector; atribua "something" à string deste monikette; recomece.
     Se a string deste monikette for "nada", reverse o detector; atribua "something" à string deste monikette; recomece.
     Se a string deste monikette for "won't", reverse o detector; atribua "will" à string deste monikette; recomece.
-    Se a string deste monikette termina com "n't", reverse o detector; remove trailing pedaços desde a string deste monikette usando 3; recomece.
+    Se a string deste monikette termina com "n't", reverse o detector; remove trailing bytes desde a string deste monikette usando 3; recomece.
   Recomece. [percorra novamente o código acima]
 
   
@@ -5495,7 +5496,7 @@ Etapas para que se resolva um type (base type):
   Se o type for inexistente, cancele.
   Se o base type deste type não for inexistente, cancele.
   Encontre o base type deste type usando o base nome deste type e o catálogo de tipos.
-  Se o base type deste type for inexistente, apresente uma mensagem de erro contendo "Base type inválido:'" junto com o base nome deste type seguido de "." e o local de aparição deste type; saia.
+  Se o base type deste type for inexistente, apresente uma mensagem de erro contendo "Erro. Tipo base '" junto com o base nome deste type seguido de "' inválido." e o local de aparição deste type; saia.
   Ligue o cooking detector deste type.
   Se o cooking detector deste base type deste type estiver ativo, apresente a mensagem de erro contendo "Definição recursiva com: " junto com o base nome deste type seguido de "." e o local de aparição deste type; saia.
   Resolva o base type deste type (base type).
@@ -5527,7 +5528,7 @@ Etapas para que se resolva um type (expand coisa): \ base type deste type não es
   Atribua "previous " junto com o nome deste type ao redefinition conteúdo nome deste segundo portuguese reverse campo.
   Se os campos deste type não estiverem vazios, posponha os campos deste type para os campos deste conjunto type.
   Catalogue o conjunto type.
-  \ fix para cima original type para look like um endereço de memória
+  \ fix para cima original type para look like um ponteiro
   Atribua o nome deste conjunto type ao conteúdo nome deste type.
   \ adicione chain type
   Adicione um chain type para os types usando o plural nome deste type e "" e o plural nome deste base type.
@@ -5550,7 +5551,7 @@ Etapas para que se resolva um type (registro de plurais):
   Se o type puder ser reduzido para "coisa" using o base nome, cancele.
   Catalogue o type usando o plural nome deste type.
 
-Etapas para que se resolva um type (optional info - endereço de memória):
+Etapas para que se resolva um type (optional info - ponteiro):
   Se o detector de erros deste compilador estiver ativado, cancele.
   Se o conteúdo type deste type não for inexistente, cancele.
   Se o conteúdo nome deste type estiver em branco, atribua o conteúdo type deste base type deste type ao conteúdo type deste type; saia.
@@ -5564,13 +5565,13 @@ Etapas para que se resolva um type (optional info - conjunto):
     Se o detector de erros deste compilador estiver ativado, cancele.
     Obtenha um campo desde os campos deste type (backwards).
     Se o campo for inexistente, pare.
-    Se o campo estiver duplicada em os campos deste type, apresente uma mensagem de erro contendo "O campo: " junto com o nome deste campo seguido de "' está definido mais de uma vez." e o local de aparição deste campo; saia.
+    Se o campo estiver duplicada em os campos deste type, apresente uma mensagem de erro contendo "O campo '" junto com o nome deste campo seguido de "' está definido mais de uma vez." e o local de aparição deste campo; saia.
     Resolva o campo.
     Se o detector de erros deste compilador estiver ativado, cancele.
-    Se o cooking detector deste type deste campo estiver ativo, apresente a mensagem de erro contendo "Recursive definition no: " junto com o nome deste type deste campo seguido de "." e o local de aparição deste campo; saia.
+    Se o cooking detector deste type deste campo estiver ativo, apresente a mensagem de erro contendo "Definição recursiva encontrada no '" junto com o nome deste type deste campo seguido de "'." e o local de aparição deste campo; saia.
     Resolva o type deste campo (optional info). \ de novo
     Se o reference detector deste campo não estiver ativo, recomece.
-    Se o type deste campo não puder ser reduzido para "endereço de memória", apresente a mensagem de erro contendo "Não entendi o parâmetro '(reference)' nesse campo: " junto com o nome deste campo seguido de "'..." e o local de aparição deste campo; saia.
+    Se o type deste campo não puder ser reduzido para "ponteiro", apresente a mensagem de erro contendo "Não entendi o parâmetro '(reference)' nesse campo: " junto com o nome deste campo seguido de "'..." e o local de aparição deste campo; saia.
   Recomece. [percorra novamente o código acima]
   Eliminate duplicate nicknames desde os campos deste type.
   Se o type não puder ser reduzido para "coisa conjunto", cancele.
@@ -5593,7 +5594,7 @@ Etapas para que se resolva um type (optional info):
   Check por invalid optional info sobre o type.
   Ligue o cooking detector deste type.
   Resolva o base type deste type (optional info).
-  Se o type puder ser reduzido para "endereço de memória", resolva o type (optional info - endereço de memória).
+  Se o type puder ser reduzido para "ponteiro", resolva o type (optional info - ponteiro).
   Se o type puder ser reduzido para "conjunto", resolva o type (optional info - conjunto). \ mudar aqui
   Se o type puder ser reduzido para "número", resolva o type (optional info - scale).
   Desative o cooking detector deste type.
@@ -5683,11 +5684,11 @@ As rotinas são umas rotinas.
 
 Etapas para que se examine algum tipo de optional info por um type usando um percorredor:
   Se o detector de erros deste compilador estiver ativado, cancele.
-  Se o segmento inicial deste percorredor for "to", examine algum tipo de optional info pelo type usando o percorredor (endereço de memória); saia.
-  Se o segmento inicial deste percorredor for "para", examine algum tipo de optional info pelo type usando o percorredor (endereço de memória); saia.
+  Se o segmento inicial deste percorredor for "to", examine algum tipo de optional info pelo type usando o percorredor (ponteiro); saia.
+  Se o segmento inicial deste percorredor for "para", examine algum tipo de optional info pelo type usando o percorredor (ponteiro); saia.
   Se o segmento inicial deste percorredor for algum tipo de com, examine algum tipo de optional info pelo type usando o percorredor (conjunto); saia.
 
-Etapas para que se examine algum tipo de optional info por um type usando um percorredor (endereço de memória):
+Etapas para que se examine algum tipo de optional info por um type usando um percorredor (ponteiro):
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum tipo de artigo indefinido, apresente uma mensagem de erro contendo "A palavra 'to' precisa de um artigo indefinido depois dela, não de um: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; saia.
   Mova o percorredor (usando diretrizes de compilação).
@@ -5722,7 +5723,7 @@ Etapas para que se examine um campo usando um percorredor:
 Etapas para que se examine um campo usando um percorredor (called part):
   Se o detector de erros deste compilador estiver ativado, cancele.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o type nome deste campo estiver em branco, atribua o nome deste campo ao type nome deste campo. \ pedaço array type nome already filled in
+  Se o type nome deste campo estiver em branco, atribua o nome deste campo ao type nome deste campo. \ byte array type nome already filled in
   Examine o nome deste campo usando o percorredor.
 
 Etapas para que se examine um campo usando um percorredor (redefine part):
@@ -5737,16 +5738,16 @@ Etapas para que se examine um campo usando um percorredor (reference part):
   Mova o percorredor (usando diretrizes de compilação).
   Ligue o reference detector deste campo.
 
-Etapas para que se examine um campo usando um percorredor (type part - pedaço array):
+Etapas para que se examine um campo usando um percorredor (type part - byte array):
   Se o detector de erros deste compilador estiver ativado, cancele.
   Converta o segmento inicial deste percorredor para uma proporção.
   Reduza a proporção.
-  Se o denominador desta proporção não for 1, apresente uma mensagem de erro contendo "Você precisa especificar um número completo de pedaços para um pedaço array" e o percorredor; saia.
+  Se o denominador desta proporção não for 1, apresente uma mensagem de erro contendo "Você precisa especificar um número completo de bytes para um byte array" e o percorredor; saia.
   Atribua o numerador desta proporção à contagem deste campo.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for "pedaço" ou "pedaços", apresente a mensagem de erro contendo "Você precisa usar a palavra 'pedaços' depois de um counted campo designador." e o percorredor; saia.
+  Se o segmento inicial deste percorredor não for "byte" ou "bytes", apresente a mensagem de erro contendo "Erro. Você precisa adicionar a palavra 'bytes' depois de um número designador." e o percorredor; saia.
   Mova o percorredor (usando diretrizes de compilação).
-  Atribua "pedaço" ao type nome deste campo.
+  Atribua "byte" ao type nome deste campo.
 
 Etapas para que se examine um campo usando um percorredor (type part - normal):
   Se o detector de erros deste compilador estiver ativado, cancele.
@@ -5767,7 +5768,7 @@ Etapas para que se examine um campo usando um percorredor (type part - normal):
 
 Etapas para que se examine um campo usando um percorredor (type part):
   Se o detector de erros deste compilador estiver ativado, cancele.
-  Se o segmento inicial deste percorredor for algum tipo de numeric literal, examine o campo usando o percorredor (type part - pedaço array); saia.
+  Se o segmento inicial deste percorredor for algum tipo de numeric literal, examine o campo usando o percorredor (type part - byte array); saia.
   Examine o campo usando o percorredor (type part - normal).
 
 Etapas para que se examine uns campos usando um percorredor:
@@ -6009,7 +6010,7 @@ Etapas para que se scrub uns referências:
     Atribua o first referência destes segunda referências para um referência.
     Se o referência for inexistente, cancele.
     Remove o referência desde a segunda referências.
-    Se o endereço de memória deste referência for inexistente, destrua o referência; recomece.
+    Se o ponteiro deste referência for inexistente, destrua o referência; recomece.
     Posponha o referência para os referências.
   Recomece. [percorra novamente o código acima]
 

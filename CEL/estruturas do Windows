@@ -16,9 +16,9 @@ Um ABC é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/wi
   Um número denominado abcC.\ O espaçamento C do caractere. O espaçamento C é a distância a ser adicionada à posição atual para fornecer um espaço em branco à direita do glifo do caractere.
   \ A largura total de um caractere é a soma dos espaços A, B e C. Tanto o espaço A quanto o C podem ser negativos para indicar cavidades ou saliências.
 
-Um pABC é um endereço de memória para um ABC.
+Um pABC é um ponteiro para um ABC.
 
-Um endereço do ABC é um endereço de memória para um ABC.
+Um endereço do ABC é um ponteiro para um ABC.
   \ Um ponteiro para uma matriz de estruturas ABC que contém as larguras dos caracteres, em unidades lógicas.   
   \ Para mais informações, veja os sistes abaixo: 
   \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-ABC
@@ -41,23 +41,23 @@ Um AddrInfo é um conjunto com   \ Usada  para armazenar informações de endereço 
   Um sockaddrptr denominado ai_addr, \Um ponteiro para uma estrutura sockaddr. 
   Um addrinfoptr denominado ai_next. \Um ponteiro para a próxima estrutura em uma lista vinculada.   
 
-Um addrinfoptr é um endereço de memória para um addrinfo.
+Um addrinfoptr é um ponteiro para um addrinfo.
 
 Some  addrinfo routines é um conjunto com
-  Um GetAddrInfo endereço de memória, \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo
-  Um  FreeAddrInfo endereço de memória. \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/ws2tcpip/nf-ws2tcpip-freeaddrinfo
+  Um GetAddrInfo ponteiro, \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo
+  Um  FreeAddrInfo ponteiro. \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/ws2tcpip/nf-ws2tcpip-freeaddrinfo
 
 
 Uma Crypt Session é uma coisa com \
-  Um hCryptProv endereço de memória, \ Número identificador de CSPs. Indica qual módulo CSP executa operações específicas.
-  Um hCryptHash endereço de memória, \ Número identificadores de objetos hash. Indica ao módulo CSP qual hash está sendo usado
+  Um hCryptProv ponteiro, \ Número identificador de CSPs. Indica qual módulo CSP executa operações específicas.
+  Um hCryptHash ponteiro, \ Número identificadores de objetos hash. Indica ao módulo CSP qual hash está sendo usado
   \ O módulo CSP não permite a manipulação direta dos valores de hash. Em vez disso, o usuário os altera usando o identificador do hash.
-  Um hCryptKey endereço de memória. \ Identificadores de chaves criptográficas.  Indica ao módulo CSP qual chave está sendo usada.
+  Um hCryptKey ponteiro. \ Identificadores de chaves criptográficas.  Indica ao módulo CSP qual chave está sendo usada.
   \O módulo CSP não permite o acesso direto aos valores-chave. Em vez disso, o usuário executa funções por meio do identificador de chave.
 
 Um DEVMODE é um conjunto com   \ Contém informações sobre a inicialização e o ambiente de uma impressora ou display.
 \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-devmodea
-  32 pedaços denominados dmDeviceName, \ Uma string terminado em zero que especifica o nome "amigável" da impressora ou monitor; 
+  32 bytes denominados dmDeviceName, \ Uma string terminado em zero que especifica o nome "amigável" da impressora ou monitor; 
   \por exemplo, "PCL / HP LaserJet" no caso de PCL / HP LaserJet. Esta string é única entre os drivers de dispositivo. 
   \Esse nome pode ser truncado para caber nos 32 bytes
   Uma word denominada dmSpecVersion, \ O número da versão da especificação de dados de inicialização na qual a estrutura é baseada.   
@@ -92,7 +92,7 @@ Um DEVMODE é um conjunto com   \ Contém informações sobre a inicialização e o am
   Uma word denominada dmTTOption, \ Especifica como as fontes TrueType devem ser impressas. E
   Uma word denominada dmCollate, \ Especifica se o agrupamento deve ser usado ao imprimir várias cópias.
   \ (Este membro é ignorado, a menos que o driver da impressora indique suporte para agrupamento, definindo o membro dmFields como DM_COLLATE.)
-  32 pedaços denominados dmFormName, \ Uma matriz de caracteres terminada em zero que especifica o nome do formulário a ser usado; por exemplo, "Carta" ou "Legal".
+  32 bytes denominados dmFormName, \ Uma matriz de caracteres terminada em zero que especifica o nome do formulário a ser usado; por exemplo, "Carta" ou "Legal".
   \ Um conjunto completo de nomes pode ser recuperado usando a função EnumForms.
   Uma word denominada dmLogPixels, \ O número de pixels por polegada lógica. Drivers de impressora não usam este membro.
   Um número denominado dmBitsPerPel, \ Especifica a resolução da cor, em bits por pixel, do dispositivo de exibição (por exemplo: 4 bits para 16 cores, 8 bits para 256 cores ou 16 bits para 65.536 cores). 
@@ -144,10 +144,10 @@ Um GcpResults é um conjunto com
   \Se a ordenação de glifos for feita, lpCaretPos corresponderá à string original, não à string de saída. 
   \Isso significa que alguns valores adjacentes podem ser iguais.
   \Os valores nesta matriz estão na ordem de entrada.
-  Um endereço de memória denominado lpClass, \Um ponteiro para a matriz que contém e / ou recebe classificações de caracteres. 
+  Um ponteiro denominado lpClass, \Um ponteiro para a matriz que contém e / ou recebe classificações de caracteres. 
   \Os valores indicam como dispor os caracteres na string e são semelhantes (mas não idênticos) aos valores CT_CTYPE2 retornados pela função GetStringTypeEx.
   \ Favor ver mais detalhes na documentação daMicrosoft
-  Um endereço de memória denominado lpGlyphs, \Um ponteiro para a matriz que recebe os valores que identificam os glifos usados para renderizar a string ou é NULL se a renderização de glifos não for necessária.
+  Um ponteiro denominado lpGlyphs, \Um ponteiro para a matriz que recebe os valores que identificam os glifos usados para renderizar a string ou é NULL se a renderização de glifos não for necessária.
   \ O número de glifos na matriz pode ser menor que o número de caracteres na string original se a string contiver glifos ligados. 
   \Além disso, se a reordenação for necessária, a ordem dos glifos pode não ser sequencial.
   \Este array é útil se mais de uma operação está sendo feita em uma string que tem qualquer forma de ligação, kerning ou troca de ordem. 
@@ -172,7 +172,7 @@ Um GcpResults é um conjunto com
 Um GdiplusStartupInput é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/gdiplusinit/ns-gdiplusinit-gdiplusstartupinput
   \A estrutura GdiplusStartupInput contém um bloco de argumentos que são exigidos pela função GdiplusStartup.
   Um número denominado GdiplusVersion, \ Especifica a versão do GDI +. Deve ser igual a 1.
-  Um endereço de memória denominado DebugEventCallback, \ Ponteiro para uma função de retorno de chamada que GDI + pode chamar, em compilações de depuração, para asserções e avisos. 
+  Um ponteiro denominado DebugEventCallback, \ Ponteiro para uma função de retorno de chamada que GDI + pode chamar, em compilações de depuração, para asserções e avisos. 
   \O valor padrão é NULL.
   Um número denominado SuppressBackgroundThread, \ Valor booleano que especifica se o thread de segundo plano GDI + deve ser suprimido. 
   \Se você definir este membro como TRUE, então GdiplusStartup retorna (em seu parâmetro de saída) um ponteiro para uma função de gancho e um ponteiro para uma função de desengate. 
@@ -190,51 +190,51 @@ Um GdiplusStartupInput é um conjunto com \ https://docs.microsoft.com/pt-br/wind
 
 Um in_addr é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/inaddr/ns-inaddr-in_addr
   \A estrutura in_addr representa um endereço IPv4.
-  Um pedaço denominado s_b1, \ O endereço IPv4 do host formatado como quatro u_chars.
-  Um pedaço denominado s_b2,
-  Um pedaço denominado s_b3,
-  Um pedaço denominado s_b4,
+  Um byte denominado s_b1, \ O endereço IPv4 do host formatado como quatro u_chars.
+  Um byte denominado s_b2,
+  Um byte denominado s_b3,
+  Um byte denominado s_b4,
   Uma word [unsigned] denominado s_w1 sob o s_b1, \O endereço IPv4 do host formatado como dois u_shorts.
   Uma word [unsigned] denominado s_w2 sob o s_b3,
   Um número denominado s_addr sob o s_b1. \Endereço do host formatado como u_long.
 
-Um istream é um endereço de memória para um istream object.
+Um istream é um ponteiro para um istream object.
 
 Um istream object é um conjunto com um istream vtable denominado vtable.
 
-Um istream vtable é um endereço de memória para um istream vtable conjunto.
+Um istream vtable é um ponteiro para um istream vtable conjunto.
   \Uma vtable (tabela de método virtual) é uma tabela de ponteiros de função. 
   \O vtable é como o COM vincula uma chamada de método à sua implementação em tempo de execução. N
   \Não por coincidência, vtables são a forma como a maioria dos compiladores C ++ implementa métodos virtuais.
   Um istream vtable conjunto é um conjunto com
   \ iunknown \ https://docs.microsoft.com/pt-br/windows/win32/api/objidl/nn-objidl-istream
-  Um endereço de memória denominado queryinterface,\https://docs.microsoft.com/pt-br/windows/win32/com/queryinterface--navigating-in-an-object
-  Um endereço de memória denominado addref, \Incrementa a contagem de referência de um ponteiro de interface para um objeto COM. Você deve chamar este método sempre que fizer uma cópia de um ponteiro de interface
-  Um endereço de memória denominado release, \ Diminui a contagem de referência para uma interface em um objeto COM.
+  Um ponteiro denominado queryinterface,\https://docs.microsoft.com/pt-br/windows/win32/com/queryinterface--navigating-in-an-object
+  Um ponteiro denominado addref, \Incrementa a contagem de referência de um ponteiro de interface para um objeto COM. Você deve chamar este método sempre que fizer uma cópia de um ponteiro de interface
+  Um ponteiro denominado release, \ Diminui a contagem de referência para uma interface em um objeto COM.
   \function(this:istream):number; stdcall;
   \ istream
-  Um endereço de memória denominado read,\O método Read lê um número especificado de bytes do objeto stream para a memória, começando no ponteiro de busca atual.
-  Um endereço de memória denominado write,\O método Write grava um número especificado de bytes no objeto de fluxo, começando no ponteiro de busca atual.
-  Um endereço de memória denominado seek, \Muda o ponteiro de busca para um novo local. O novo local é relativo ao início, ao final do fluxo ou ao ponteiro de busca atual.
-  Um endereço de memória denominado setsize, \Altera o tamanho do objeto de fluxo.
-  Um endereço de memória denominado copyto, \Copia um número especificado de bytes do ponteiro de busca atual no fluxo para o ponteiro de busca atual em outro fluxo.
-  Um endereço de memória denominado commit, \O método Commit garante que todas as alterações feitas em um objeto de fluxo aberto no modo transacionado sejam refletidas no armazenamento pai.
-  Um endereço de memória denominado revert, \O método Revert descarta todas as alterações feitas em um fluxo transacionado desde a última chamada IStream :: Commit. 
+  Um ponteiro denominado read,\O método Read lê um número especificado de bytes do objeto stream para a memória, começando no ponteiro de busca atual.
+  Um ponteiro denominado write,\O método Write grava um número especificado de bytes no objeto de fluxo, começando no ponteiro de busca atual.
+  Um ponteiro denominado seek, \Muda o ponteiro de busca para um novo local. O novo local é relativo ao início, ao final do fluxo ou ao ponteiro de busca atual.
+  Um ponteiro denominado setsize, \Altera o tamanho do objeto de fluxo.
+  Um ponteiro denominado copyto, \Copia um número especificado de bytes do ponteiro de busca atual no fluxo para o ponteiro de busca atual em outro fluxo.
+  Um ponteiro denominado commit, \O método Commit garante que todas as alterações feitas em um objeto de fluxo aberto no modo transacionado sejam refletidas no armazenamento pai.
+  Um ponteiro denominado revert, \O método Revert descarta todas as alterações feitas em um fluxo transacionado desde a última chamada IStream :: Commit. 
   \Em fluxos abertos em modo direto e fluxos usando a implementação de arquivo composto COM de IStream :: Revert, este método não tem efeito.
-  Um endereço de memória denominado lockregion, \O método LockRegion restringe o acesso a um intervalo especificado de bytes no fluxo.
-  Um endereço de memória denominado unlockregion,\O método UnlockRegion remove a restrição de acesso em um intervalo de bytes anteriormente restrito com IStream :: LockRegion.
-  Um endereço de memória denominado stat,\O método Stat recupera a estrutura STATSTG para este fluxo.
-  Um endereço de memória denominado clone. \O método Clone cria um novo objeto de fluxo com seu próprio ponteiro de busca que faz referência aos mesmos bytes que o fluxo original.
+  Um ponteiro denominado lockregion, \O método LockRegion restringe o acesso a um intervalo especificado de bytes no fluxo.
+  Um ponteiro denominado unlockregion,\O método UnlockRegion remove a restrição de acesso em um intervalo de bytes anteriormente restrito com IStream :: LockRegion.
+  Um ponteiro denominado stat,\O método Stat recupera a estrutura STATSTG para este fluxo.
+  Um ponteiro denominado clone. \O método Clone cria um novo objeto de fluxo com seu próprio ponteiro de busca que faz referência aos mesmos bytes que o fluxo original.
 
 Um OUTLINETEXTMETRIC é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-outlinetextmetrica
   \A estrutura OUTLINETEXTMETRIC contém métricas que descrevem uma fonte TrueType.
   Um número denominado otmSize, \ O tamanho, em bytes, da estrutura OUTLINETEXTMETRIC.
   Um TEXTMETRIC denominado otmTextMetrics, \ Uma estrutura TEXTMETRIC contendo mais informações sobre a fonte.
-  3 pedaços, \ otmFiller deve certificar-se de que o próximo campo comece no limite DWORD. 
+  3 bytes, \ otmFiller deve certificar-se de que o próximo campo comece no limite DWORD. 
   \Na verdade, existem três bytes de preenchimento, em vez de um único byte, pois OUTLINETEXTMETRIC deve ser compilado com pack(4)
-  Um pedaço denominado otmFiller, \ Um valor que faz com que a estrutura seja alinhada por bytes.
+  Um byte denominado otmFiller, \ Um valor que faz com que a estrutura seja alinhada por bytes.
   Um panose denominado otmPanoseNumber, \ O número PANOSE para esta fonte.
-  1 pedaço, \ needed para alinhe structure
+  1 byte, \ needed para alinhe structure
   Um número denominado otmfsSelection, \ A natureza do padrão da fonte. 0=itálico, 1=sublinhado, 2= plano de fundo trocado com a letra, 3= contorno, 4=tachado, 5=negrito
   Um número denominado otmfsType, \Indica se a fonte está licenciada. As fontes licenciadas não devem ser modificadas ou trocadas.
   Um número denominado otmsCharSlopeRise, \A inclinação do cursor. Este valor é 1 se a inclinação for vertical. 
@@ -249,7 +249,7 @@ Um OUTLINETEXTMETRIC é um conjunto com \ https://docs.microsoft.com/pt-br/window
   Um número denominado otmLineGap, \ O espaçamento entre linhas tipográficas.
   Um número denominado otmsCapEmHeight, \ O Windows não provê esse recurso
   Um número denominado otmsXHeight,\ O Windows não provê esse recurso
-  Um caixa denominado otmrcFontBox, \rect - A caixa delimitadora da fonte.
+  Uma caixa denominado otmrcFontBox, \rect - A caixa delimitadora da fonte.
   Um número denominado otmMacAscent, \ Os caracteres de distância máxima nesta fonte se estendem acima da linha de base para o computador Macintosh.
   Um número denominado otmMacDescent, \ Os caracteres de distância máxima nesta fonte se estendem abaixo da linha de base para o computador Macintosh.
   Um número denominado otmMacLineGap, \ As informações de espaçamento de linha para o computador Macintosh.
@@ -262,10 +262,10 @@ Um OUTLINETEXTMETRIC é um conjunto com \ https://docs.microsoft.com/pt-br/window
   Um número denominado otmsStrikeoutPosition, \A posição do traço do tachado em relação à linha de base desta fonte. Os valores positivos estão acima da linha de base e os valores negativos estão abaixo.
   Um número denominado otmsUnderscoreSize, \ A espessura do caractere de sublinhado para esta fonte.
   Um número denominado otmsUnderscorePosition, \ The position of the underscore character for this fonte.
-  Um endereço de memória denominado otmpFamilyName, \ O deslocamento do início da estrutura para uma string especificando o nome da família da fonte.
-  Um endereço de memória denominado otmpFaceName, \ O deslocamento do início da estrutura para uma string especificando o nome do tipo de fonte. (Este nome de tipo de letra corresponde ao nome especificado na estrutura LOGFONT.)
-  Um endereço de memória denominado otmpStyleName, \ O deslocamento do início da estrutura para uma string especificando o nome do estilo da fonte.
-  Um endereço de memória denominado otmpFullName. \ O deslocamento do início da estrutura para uma string especificando o nome completo da fonte. Este nome é exclusivo para a fonte e geralmente contém um número de versão ou outras informações de identificação.
+  Um ponteiro denominado otmpFamilyName, \ O deslocamento do início da estrutura para uma string especificando o nome da família da fonte.
+  Um ponteiro denominado otmpFaceName, \ O deslocamento do início da estrutura para uma string especificando o nome do tipo de fonte. (Este nome de tipo de letra corresponde ao nome especificado na estrutura LOGFONT.)
+  Um ponteiro denominado otmpStyleName, \ O deslocamento do início da estrutura para uma string especificando o nome do estilo da fonte.
+  Um ponteiro denominado otmpFullName. \ O deslocamento do início da estrutura para uma string especificando o nome completo da fonte. Este nome é exclusivo para a fonte e geralmente contém um número de versão ou outras informações de identificação.
 
 Um PANOSE é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-panose
   \A estrutura PANOSE descreve os valores de classificação de fonte PANOSE para uma fonte TrueType. 
@@ -276,16 +276,16 @@ Um PANOSE é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api
   \Os atributos PANOSE são avaliados individualmente em uma escala. 
   \Os valores resultantes são concatenados para produzir um número.
   \ Dado este número para uma fonte e uma métrica matemática para medir distâncias no espaço PANOSE, um aplicativo pode determinar os vizinhos mais próximos.
-  Um pedaço denominado bFamilyType, \ consulte a documentação oficial para verificar os valores possíveis para estes bytes
-  Um pedaço denominado bSerifStyle,
-  Um pedaço denominado bWeight,
-  Um pedaço denominado bProportion,
-  Um pedaço denominado bContrast,
-  Um pedaço denominado bStrokeVariation,
-  Um pedaço denominado bArmStyle,
-  Um pedaço denominado bLetterform,
-  Um pedaço denominado bMidline,
-  Um pedaço denominado bXHeight.
+  Um byte denominado bFamilyType, \ consulte a documentação oficial para verificar os valores possíveis para estes bytes
+  Um byte denominado bSerifStyle,
+  Um byte denominado bWeight,
+  Um byte denominado bProportion,
+  Um byte denominado bContrast,
+  Um byte denominado bStrokeVariation,
+  Um byte denominado bArmStyle,
+  Um byte denominado bLetterform,
+  Um byte denominado bMidline,
+  Um byte denominado bXHeight.
 
 Um PRINTDLGEX é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/commdlg/ns-commdlg-printdlgexw
   \Contém informações que a função PrintDlgEx usa para inicializar a folha de propriedades de impressão. 
@@ -325,7 +325,7 @@ Um PRINTDLGEX é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32
   \Este valor indica o número máximo de intervalos de páginas que podem ser armazenados na matriz. 
   \Se o sinalizador PD_NOPAGENUMS for especificado, este valor não é válido. 
   \Se o sinalizador PD_NOPAGENUMS não for especificado, esse valor deve ser maior que zero.
-  Um endereço de memória denominado lpPageRanges,\Ponteiro para um buffer que contém uma matriz de estruturas PRINTPAGERANGE.
+  Um ponteiro denominado lpPageRanges,\Ponteiro para um buffer que contém uma matriz de estruturas PRINTPAGERANGE.
   \ Na entrada, a matriz contém os intervalos de páginas iniciais a serem exibidos no controle de edição de páginas. 
   \Quando a função PrintDlgEx retorna, a matriz contém os intervalos de páginas especificados pelo usuário. 
   \Se o sinalizador PD_NOPAGENUMS for especificado, este valor não é válido. 
@@ -341,16 +341,16 @@ Um PRINTDLGEX é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32
   Um número identificador denominado hInstance,\Se o sinalizador PD_ENABLEPRINTTEMPLATE é definido no membro Flags, hInstance é um identificador para o aplicativo ou instância do módulo que contém o modelo de caixa de diálogo nomeado pelo membro lpPrintTemplateName. 
   \Se o sinalizador PD_ENABLEPRINTTEMPLATEHANDLE é definido no membro Flags, hInstance é um identificador para um objeto de memória que contém um modelo de caixa de diálogo. 
   \Se nenhum dos sinalizadores de modelo for definido no membro Flags, hInstance deve ser NULL.
-  Um endereço de memória denominado lpPrintTemplateName,\O nome do recurso de modelo de caixa de diálogo no módulo identificado pelo membro hInstance. 
+  Um ponteiro denominado lpPrintTemplateName,\O nome do recurso de modelo de caixa de diálogo no módulo identificado pelo membro hInstance. 
   \Este modelo substitui o modelo de caixa de diálogo padrão na parte inferior da página Geral. O modelo padrão contém controles semelhantes aos da caixa de diálogo Imprimir. 
   \Este membro é ignorado, a menos que o sinalizador PD_ENABLEPRINTTEMPLATE seja definido no membro Sinalizadores.
-  Um endereço de memória denominado lpCallback,\Um ponteiro para um objeto de retorno de chamada definido pelo aplicativo.
+  Um ponteiro denominado lpCallback,\Um ponteiro para um objeto de retorno de chamada definido pelo aplicativo.
   \O objeto deve conter a classe IPrintDialogCallback para receber mensagens para a caixa de diálogo filho na parte inferior da página Geral.
   \O objeto de retorno de chamada também deve conter a classe IObjectWithSite para receber um ponteiro para a interface IPrintDialogServices. 
   \A função PrintDlgEx chama IUnknown :: QueryInterface no objeto de retorno de chamada para IID_IPrintDialogCallback e IID_IObjectWithSite para determinar quais interfaces têm suporte.
   \Se você não deseja recuperar nenhuma das informações de retorno de chamada, defina lpCallback como NULL.
   Um número denominado nPropertyPages,\O número de identificadores de página de propriedade na matriz lphPropertyPages.
-  Um endereço de memória denominado lphPropertyPages,\Contém uma matriz de alças de página de propriedades para adicionar à folha de propriedades Imprimir.
+  Um ponteiro denominado lphPropertyPages,\Contém uma matriz de alças de página de propriedades para adicionar à folha de propriedades Imprimir.
   \As páginas de propriedades adicionais seguem a página Geral. Use a função CreatePropertySheetPage para criar essas páginas adicionais. 
   \Quando a função PrintDlgEx retorna, todos os identificadores HPROPSHEETPAGE na matriz lphPropertyPages foram destruídos. Se nPropertyPages for zero, lphPropertyPages deve ser NULL.
   Um número denominado nStartPage,\A página de propriedades que é exibida inicialmente. Para exibir a página Geral, especifique START_PAGE_GENERAL. 
@@ -366,18 +366,18 @@ Um SOCKADDR é um conjunto com \ A estrutura SOCKADDR_IN especifica um endereço d
   Uma word denominada sin_family, \A família de endereços para o endereço de transporte. Este membro deve sempre ser definido como AF_INET.
   Um word big-endian unsigned denominado sin_port, \ Um número de porta de protocolo de transporte.
   Um in_addr denominado sin_addr, \ Uma estrutura IN_ADDR que contém um endereço de transporte IPv4.
-  8 pedaços denominados sin_zero. \ Reservado para uso do sistema. Um aplicativo WSK deve definir o conteúdo desse array como zero.
+  8 bytes denominados sin_zero. \ Reservado para uso do sistema. Um aplicativo WSK deve definir o conteúdo desse array como zero.
 
-Um sockaddrptr é um endereço de memória para um sockaddr.
+Um sockaddrptr é um ponteiro para um sockaddr.
 
 Um STARTUPINFO é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/processthreadsapi/ns-processthreadsapi-startupinfoa
   \Especifica a estação da janela, a área de trabalho, as alças padrão e a aparência da janela principal para um processo no momento da criação.
   Um número denominado cb,\O tamanho da estrutura, em bytes.
-  Um endereço de memória denominado lIsoled,\Reservado; deve ser NULL.
-  Um endereço de memória denominado lpDesktop,\O nome da área de trabalho ou o nome da área de trabalho e da estação de janela para este processo. 
+  Um ponteiro denominado lIsoled,\Reservado; deve ser NULL.
+  Um ponteiro denominado lpDesktop,\O nome da área de trabalho ou o nome da área de trabalho e da estação de janela para este processo. 
   \Uma barra invertida na string indica que a string inclui os nomes da estação de trabalho e da janela.
   \Para maiores informações, consulte https://docs.microsoft.com/pt-br/windows/win32/winstation/thread-connection-to-a-desktop
-  Um endereço de memória denominado lpTitle, \Para processos de console, este é o título exibido na barra de título se uma nova janela de console for criada. 
+  Um ponteiro denominado lpTitle, \Para processos de console, este é o título exibido na barra de título se uma nova janela de console for criada. 
   \Se NULL, o nome do arquivo executável é usado como título da janela. 
   \Este parâmetro deve ser NULL para processos de GUI ou console que não criam uma nova janela de console.
   Um número denominado dwX,\Caso dwFlags especifique o valor de STARTF_USEPOSITION, este membro é o deslocamento x do canto superior esquerdo de uma janela se uma nova janela for criada, em pixels. 
@@ -393,7 +393,7 @@ Um STARTUPINFO é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win3
   Um número denominado dwFlags,\Um campo de bits que determina se determinados membros STARTUPINFO são usados quando o processo cria uma janela.
   Uma word denominada wShowWindow,\Se dwFlags especifica STARTF_USESHOWWINDOW, este membro pode ser qualquer um dos valores que podem ser especificados no parâmetro nCmdShow para a função ShowWindow, exceto para SW_SHOWDEFAULT.
   Uma word denominada cbReserved2,\Reservados para uso do C Run-time; deve ser zero.
-  Um endereço de memória denominado lIsoled2,\Reservados para uso do C Run-time; deve ser zero.
+  Um ponteiro denominado lIsoled2,\Reservados para uso do C Run-time; deve ser zero.
   Um número identificador denominado hStdInput,\Se dwFlags especifica STARTF_USESTDHANDLES, este membro é o identificador de entrada padrão para o processo. 
   \Se STARTF_USESTDHANDLES não for especificado, o padrão para a entrada padrão é o buffer do teclado.
   \Se dwFlags especifica STARTF_USEHOTKEY, este membro especifica um valor de tecla de atalho que é enviado como o parâmetro wParam de uma mensagem WM_SETHOTKEY para a primeira janela de nível superior elegível criada pelo aplicativo que possui o processo. 
@@ -420,46 +420,46 @@ Um SYSTEMTIME é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32
 
 Um talker vtable conjunto é um conjunto com \ documentar https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/ee413476(v=vs.85)
   \ iunknown
-  Um endereço de memória denominado QueryInterface,\https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/ms719854(v=vs.85)
-  Um endereço de memória denominado AddRef,
-  Um endereço de memória denominado Release, \ em this:pspvoice out número
+  Um ponteiro denominado QueryInterface,\https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/ms719854(v=vs.85)
+  Um ponteiro denominado AddRef,
+  Um ponteiro denominado Release, \ em this:pspvoice out número
   \ italker -.https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/ms717961(v=vs.85)
-  Um endereço de memória denominado SetNotifySink,
-  Um endereço de memória denominado SetNotifyWindowMessage,
-  Um endereço de memória denominado SetNotifyCallbackFunction,
-  Um endereço de memória denominado SetNotifyCallbackInterface,
-  Um endereço de memória denominado SetNotifyWin32Event,
-  Um endereço de memória denominado WaitForNotifyEvent,
-  Um endereço de memória denominado GetNotifyEventHandle,\Recupera um identificador para um evento de notificação.
+  Um ponteiro denominado SetNotifySink,
+  Um ponteiro denominado SetNotifyWindowMessage,
+  Um ponteiro denominado SetNotifyCallbackFunction,
+  Um ponteiro denominado SetNotifyCallbackInterface,
+  Um ponteiro denominado SetNotifyWin32Event,
+  Um ponteiro denominado WaitForNotifyEvent,
+  Um ponteiro denominado GetNotifyEventHandle,\Recupera um identificador para um evento de notificação.
   \ https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/ms717848(v=vs.85)
-  Um endereço de memória denominado SetInterest,
-  Um endereço de memória denominado GetEvents,
-  Um endereço de memória denominado GetInfo,
-  Um endereço de memória denominado SetOutput,
-  Um endereço de memória denominado GetOutputObjectToken,
-  Um endereço de memória denominado GetOutputStream,
-  Um endereço de memória denominado Pause,
-  Um endereço de memória denominado Resume,
-  Um endereço de memória denominado SetVoice,
-  Um endereço de memória denominado GetVoice,
-  Um endereço de memória denominado Speak, \ em this:pspvoice; pwcs:pwchar; dwflags:number; pulstreamnumber:pnumber out número
-  Um endereço de memória denominado SpeakStream,
-  Um endereço de memória denominado GetStatus,
-  Um endereço de memória denominado Skip,
-  Um endereço de memória denominado SetPriority,
-  Um endereço de memória denominado GetPriority,
-  Um endereço de memória denominado SetAlertBoundary,
-  Um endereço de memória denominado GetAlertBoundary,
-  Um endereço de memória denominado SetRate,
-  Um endereço de memória denominado GetRate,
-  Um endereço de memória denominado SetVolume,
-  Um endereço de memória denominado GetVolume,
-  Um endereço de memória denominado WaitUntilDone,
-  Um endereço de memória denominado SetSyncSpeakTimeout,
-  Um endereço de memória denominado GetSyncSpeakTimeout,
-  Um endereço de memória denominado SpeakCompleteEvent,
-  Um endereço de memória denominado IsUISupported,
-  Um endereço de memória denominado DisplayUI.
+  Um ponteiro denominado SetInterest,
+  Um ponteiro denominado GetEvents,
+  Um ponteiro denominado GetInfo,
+  Um ponteiro denominado SetOutput,
+  Um ponteiro denominado GetOutputObjectToken,
+  Um ponteiro denominado GetOutputStream,
+  Um ponteiro denominado Pause,
+  Um ponteiro denominado Resume,
+  Um ponteiro denominado SetVoice,
+  Um ponteiro denominado GetVoice,
+  Um ponteiro denominado Speak, \ em this:pspvoice; pwcs:pwchar; dwflags:number; pulstreamnumber:pnumber out número
+  Um ponteiro denominado SpeakStream,
+  Um ponteiro denominado GetStatus,
+  Um ponteiro denominado Skip,
+  Um ponteiro denominado SetPriority,
+  Um ponteiro denominado GetPriority,
+  Um ponteiro denominado SetAlertBoundary,
+  Um ponteiro denominado GetAlertBoundary,
+  Um ponteiro denominado SetRate,
+  Um ponteiro denominado GetRate,
+  Um ponteiro denominado SetVolume,
+  Um ponteiro denominado GetVolume,
+  Um ponteiro denominado WaitUntilDone,
+  Um ponteiro denominado SetSyncSpeakTimeout,
+  Um ponteiro denominado GetSyncSpeakTimeout,
+  Um ponteiro denominado SpeakCompleteEvent,
+  Um ponteiro denominado IsUISupported,
+  Um ponteiro denominado DisplayUI.
 
 Um TEXTMETRIC é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-textmetrica
   \A estrutura TEXTMETRIC contém informações básicas sobre uma fonte física. 
@@ -488,14 +488,14 @@ Um TEXTMETRIC é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32
   Um número denominado tmDigitizedAspectX, \ O aspecto horizontal do dispositivo para o qual a fonte foi projetada.
   Um número denominado tmDigitizedAspectY, \ O aspecto vertical do dispositivo para o qual a fonte foi projetada. 
   \A proporção dos membros tmDigitizedAspectX e tmDigitizedAspectY é a proporção do dispositivo para o qual a fonte foi projetada.
-  Um pedaço denominado tmFirstChar, \ O valor do primeiro caractere definido na fonte.
-  Um pedaço denominado tmLastChar, \ O valor do último caractere definido na fonte.
-  Um pedaço denominado tmDefaultChar, \ O valor do caractere a ser substituído por caracteres que não estão na fonte.
-  Um pedaço denominado tmBreakChar, \ O valor do caractere que será usado para definir quebras de palavra para justificação de texto.
-  Um pedaço denominado tmItalic, \ Especifica uma fonte em itálico se for diferente de zero.
-  Um pedaço denominado tmUnderlined, \ Especifica uma fonte sublinhada se for diferente de zero.
-  Um pedaço denominado tmStruckOut, \ Uma fonte tachada se for diferente de zero.
-  Um pedaço denominado tmPitchAndFamily, \ Especifica informações sobre o pitch, a tecnologia e a família de uma fonte física.
+  Um byte denominado tmFirstChar, \ O valor do primeiro caractere definido na fonte.
+  Um byte denominado tmLastChar, \ O valor do último caractere definido na fonte.
+  Um byte denominado tmDefaultChar, \ O valor do caractere a ser substituído por caracteres que não estão na fonte.
+  Um byte denominado tmBreakChar, \ O valor do caractere que será usado para definir quebras de palavra para justificação de texto.
+  Um byte denominado tmItalic, \ Especifica uma fonte em itálico se for diferente de zero.
+  Um byte denominado tmUnderlined, \ Especifica uma fonte sublinhada se for diferente de zero.
+  Um byte denominado tmStruckOut, \ Uma fonte tachada se for diferente de zero.
+  Um byte denominado tmPitchAndFamily, \ Especifica informações sobre o pitch, a tecnologia e a família de uma fonte física.
   \Os quatro bits de ordem inferior deste membro especificam informações sobre o pitch e a tecnologia da fonte. 
   \Uma constante é definida para cada um dos quatro bits.
   \Um aplicativo deve testar cuidadosamente as qualidades codificadas nesses bits de ordem inferior, sem fazer suposições arbitrárias. 
@@ -505,7 +505,7 @@ Um TEXTMETRIC é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32
   \Os quatro bits de ordem superior de tmPitchAndFamily designam a família da fonte da fonte. 
   \Um aplicativo pode usar o valor 0xF0 e o operador AND bit a bit para mascarar os quatro bits de ordem inferior de tmPitchAndFamily, obtendo assim um valor que pode ser comparado diretamente com nomes de família de fontes para encontrar uma correspondência idêntica. 
   \Para obter informações sobre famílias de fontes, consulte a descrição da estrutura LOGFONT. https://docs.microsoft.com/pt-br/windows/desktop/api/wingdi/ns-wingdi-logfonta
- Um pedaço denominado tmCharSet.\ O conjunto de caracteres da fonte.
+ Um byte denominado tmCharSet.\ O conjunto de caracteres da fonte.
 
 Um URL_COMPONENTS é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/WinHTTP/ns-WinHTTP-url_components
   \Contém as partes constituintes de uma URL. 
@@ -536,7 +536,7 @@ Um UUID é um conjunto com
   \ Especifica o primeiro grupo de 4 dígitos hexadecimais.
   Uma word denominada d3, \unsigned short
   \ Especifica o segundo grupo de 4 dígitos hexadecimais.
-  8 pedaços denominados d4. \unsigned char
+  8 bytes denominados d4. \unsigned char
   \ Array de 8 bytes. 
   \ Os primeiros 2 bytes contêm o terceiro grupo de 4 dígitos hexadecimais. 
   \ Os 6 bytes restantes contêm os 12 dígitos hexadecimais finais.
@@ -574,9 +574,9 @@ Um WIN32FINDDATA é um conjunto com \https://docs.microsoft.com/pt-br/windows/win
   \Para obter mais informações, consulte https://docs.microsoft.com/pt-br/windows/desktop/FileIO/reparse-point-tags
   Um número denominado dwReserved1,
   \Reservado para uso futuro.
-  260 pedaços denominados cFileName,
+  260 bytes denominados cFileName,
    \ O nome do arquivo.
-  14 pedaços denominados cAlternateFileName.
+  14 bytes denominados cAlternateFileName.
   \ Um nome alternativo para o arquivo.
   \ Este nome está no formato clássico de nome de arquivo 8.3.
 
@@ -592,7 +592,7 @@ Uma janela do programa class é um conjunto com
   Um número denominado style,
   \ O (s) estilo (s) da classe. 
   \ Este membro pode ser qualquer combinação dos estilos de classe. https://docs.microsoft.com/pt-br/windows/desktop/winmsg/aproximadamente-janela do programa-classes
-  Um endereço de memória denominado lpfnWndProc, \O prefixo lpfn significa "ponteiro longo" para uma função.
+  Um ponteiro denominado lpfnWndProc, \O prefixo lpfn significa "ponteiro longo" para uma função.
   \ Um ponteiro para o procedimento da janela.
   \Você deve usar a função CallWindowProc para chamar o procedimento de janela. 
   \Para obter mais informações, consulte https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/legacy/ms633573(v=vs.85)
@@ -614,12 +614,12 @@ Uma janela do programa class é um conjunto com
   \ Um número identificador do pincel de plano de fundo da classe.
   \ Este membro pode ser um identificador para a cor do pincel a ser usado para pintar o plano de fundo ou pode ser um valor de cor. 
   \ Um valor de cor deve ser uma das seguintes cores padrão do sistema (o valor 1 deve ser adicionado à cor escolhida).  
-  Um endereço de memória denominado lpszMenuName, \O prefixo lpsz é um "ponteiro longo" para uma string terminada em zero (NUL).
+  Um ponteiro denominado lpszMenuName, \O prefixo lpsz é um "ponteiro longo" para uma string terminada em zero (NUL).
   \ Ponteiro para uma cadeia de caracteres terminada em nulo que especifica o nome do recurso do menu da classe, conforme o nome aparece no arquivo de recurso. 
   \ Se você usar um número inteiro para identificar o menu, use a macro MAKEINTRESOURCE.
   \ https://docs.microsoft.com/pt-br/windows/desktop/api/winuser/nf-winuser-makeintresourcea
   \ Se este membro for NULL, as janelas pertencentes a esta classe não terão menu padrão.
-  Um endereço de memória denominado lpszClassName,
+  Um ponteiro denominado lpszClassName,
   \ Um ponteiro para uma string terminada em nulo. 
   \Esse campo é o nome do texto da classe da janela.
   \Isso pode ser o que você quiser. Em programas que criam apenas uma janela, o nome da classe da janela é comumente definido como o nome do programa.
@@ -649,11 +649,11 @@ Um WSADATA é um conjunto com
   \O byte de alta ordem especifica o número da versão secundária; o byte de ordem inferior especifica o número da versão principal.
   \Possui o mesmo valor que o membro wVersion caso a versão solicitada no parâmetro wVersionRequested 
   \(que é passado para a função WSAStartup) seja a versão mais alta da especificação Windows Sockets que o Ws2_32.dll pode suportar.
-  257 pedaços denominados szDescription,
+  257 bytes denominados szDescription,
   \Uma string ASCII terminada em NULL na qual o Ws2_32.dll copia uma descrição da implementação do Windows Sockets. 
   \O texto (até 256 caracteres de comprimento) pode conter qualquer caractere, exceto caracteres de controle e de formatação. 
   \O uso mais provável que um aplicativo teria para este membro é exibi-lo (possivelmente truncado) em uma mensagem de status.
-  127 pedaços denominados szSystemStatus,
+  127 bytes denominados szSystemStatus,
   \ Uma string ASCII terminada em NULL na qual o Ws2_32.dll copia o status ou as informações de configuração relevantes. 
   \O Ws2_32.dll deve usar este parâmetro apenas se as informações forem úteis para o usuário ou equipe de suporte.
   \ Este membro não deve ser considerado uma extensão do parâmetro szDescription .
@@ -668,7 +668,7 @@ Um WSADATA é um conjunto com
   \A arquitetura do Windows Sockets mudou na versão 2 para oferecer suporte a vários provedores, e a estrutura WSADATA não se aplica mais à pilha de um único fornecedor. 
   \Para o tamanho máximo real da mensagem específico para um determinado provedor de serviços do Windows Sockets e tipo de soquete, 
   \os aplicativos devem usar getsockopt para recuperar o valor da opção SO_MAX_MSG_SIZE após a criação de um soquete.
-  Um endereço de memória denominado lpVendorInfo.
+  Um ponteiro denominado lpVendorInfo.
   \Um ponteiro para informações específicas do fornecedor. 
   \Este membro deve ser ignorado para Windows Sockets versão 2 e posterior.
   \O membro lpVendorInfo é mantido para compatibilidade com a especificação 1.1 do Windows Sockets. 
@@ -711,10 +711,10 @@ Um FILETIME é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/a
 Um DOCINFO é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-docinfoa
 \A estrutura DOCINFO contém os nomes dos arquivos de entrada e saída e outras informações usadas pela função StartDoc.
   Um número denominado cbSize, \O tamanho, em bytes, da estrutura.
-  Um endereço de memória denominado lpszDocName, \ Ponteiro para uma string terminada em nulo que especifica o nome do documento.
-  Um endereço de memória denominado lpszOutput, \Ponteiro para uma string terminada em nulo que especifica o nome de um arquivo de saída. 
+  Um ponteiro denominado lpszDocName, \ Ponteiro para uma string terminada em nulo que especifica o nome do documento.
+  Um ponteiro denominado lpszOutput, \Ponteiro para uma string terminada em nulo que especifica o nome de um arquivo de saída. 
   \Se este ponteiro for NULL, a saída será enviada ao dispositivo identificado pelo número identificador de contexto do dispositivo que foi passado para a função StartDoc.
-  Um endereço de memória denominado lpszDatatype, \Ponteiro para uma string terminada em nulo que especifica o tipo de dados usados para registrar o trabalho de impressão. 
+  Um ponteiro denominado lpszDatatype, \Ponteiro para uma string terminada em nulo que especifica o tipo de dados usados para registrar o trabalho de impressão. 
   \Os valores corretos dessa variável podem ser obtidos chamando EnumPrintProcessorDatatypes e podem incluir valores como raw, emf ou XPS_PASS. 
   \Esta variável pode ser NULL. Observe que o tipo de dados solicitado pode ser ignorado.
   Um número denominado fwType. \Especifica informações adicionais sobre o trabalho de impressão. 
@@ -730,7 +730,7 @@ Um BitmapData é um conjunto com \ https://docs.microsoft.com/pt-br/dotnet/api/sy
   \Se a distãncia for positiva, o bitmap é de cima para baixo. Se a distância for negativo, o bitmap é ascendente.
   Um número denominado PixelFormat, \O formato das informações de pixel no objeto Bitmap.
   \O formato define quantos bits de memória são necessários para armazenar as informações de cor de um único pixel.
-  Um endereço de memória denominado Scan0, \o endereço dos primeiros dados de pixel no bitmap. Isso também pode ser considerado a primeira linha de varredura no bitmap.
+  Um ponteiro denominado Scan0, \o endereço dos primeiros dados de pixel no bitmap. Isso também pode ser considerado a primeira linha de varredura no bitmap.
   Um número denominado Reserved. \Reservado. Não use.
 
 Um PAINTSTRUCT é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/winuser/ns-winuser-paintstruct
@@ -740,11 +740,11 @@ Um PAINTSTRUCT é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win3
   Um número denominado fErase, \Indica se o fundo deve ser apagado. Este valor é diferente de zero se o aplicativo deve apagar o plano de fundo. 
   \O aplicativo é responsável por apagar o fundo se uma classe de janela for criada sem um pincel de fundo. 
   \Para obter mais informações, consulte a descrição do membro hbrBackground da estrutura WNDCLASS.
-  Um caixa denominado rcPaint, \Uma estrutura RECT que especifica os cantos superior esquerdo e inferior direito do retângulo em que a pintura é solicitada, 
+  Uma caixa denominado rcPaint, \Uma estrutura RECT que especifica os cantos superior esquerdo e inferior direito do retângulo em que a pintura é solicitada, 
   \em unidades de dispositivo relativas ao canto superior esquerdo da área do cliente.
   Um número denominado fRestore, \Reservado; usado internamente pelo sistema.
   Um número denominado fIncUpdate, \Reservado; usado internamente pelo sistema.
-  32 pedaços. \rgbReserved -.Reservado; usado internamente pelo sistema.
+  32 bytes. \rgbReserved -.Reservado; usado internamente pelo sistema.
 
 Uma MSG é um conjunto com \ https://docs.microsoft.com/pt-br/windows/win32/api/winuser/ns-winuser-MSG
 \Contém informações de mensagem da fila de mensagens de um encadeamento (thread).
