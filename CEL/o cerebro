@@ -298,15 +298,14 @@ Uma máscara de conjunção lógica é uma mask.
 
 Um ângulo é uns precises degrees. [cujos valores variam ente 0 e 3599]
 
-Etapas para que se posponha um trecho para um file:
+Etapas para que se posponha um trecho para um arquivo:
   Limpe o erro do fluxo de entrada/saída.
-  Call "kernel32.dll" "SetFilePointer" com \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-setfilepointer
-  \Esta função armazena o ponteiro do arquivo em dois valores LONG.
+  Call "kernel32.dll" "SetFilePointer" com \Esta função armazena o ponteiro do arquivo em dois valores LONG.
+  \Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-setfilepointer  
   \Quando um arquivo é aberto, o Windows associa um ponteiro de arquivo com o fluxo padrão. 
   \Esse ponteiro de arquivo é um valor de deslocamento que especifica o próximo byte a ser lido ou o local para receber o próximo byte escrito.
-    O file [hFile]\ O número identificador do arquivo.
-    e 0 [lDistanceToMove] \ Um valor positivo para lDistanceToMove move o ponteiro do arquivo para frente no arquivo 
-    \e um valor negativo move o ponteiro para trás no arquivo .
+    O arquivo [hFile]\ O número identificador do arquivo.
+    e 0 [lDistanceToMove] \ Distância 
     e 0 [lpDistanceToMoveHigh] \Serve apenas para operações com 64 bits. Quando não é utilizado, esse valor deve ser 0 (NULL). 
     e 2 [dwMoveMethod = FILE_END] \ O ponto de partida para o movimento do ponteiro do arquivo.
     \ Este parâmetro pode ser um dos seguintes valores.
@@ -318,16 +317,12 @@ Etapas para que se posponha um trecho para um file:
     \Obs: Se a função retornar qualquer valor que não seja -1 (INVALID_SET_FILE_POINTER), isso significa que a chamada para SetFilePointer foi bem-sucedida.
   Se o número resultante for -1, atribua "Ocorreu um erro na hora de posicionar o ponteiro do arquivo." ao erro do fluxo de entrada/saída; saia.
     \ Se o ponteiro de arquivo for um valor negativo, a função falhará, o ponteiro de arquivo não será movido e o código retornado por GetLastError será ERROR_NEGATIVE_SEEK.
-    \Observação: Como o valor -1 (INVALID_SET_FILE_POINTER) é um valor válido para o DWORD de ordem inferior do novo ponteiro de arquivo, 
-   \O certo seria verificar o valor de retorno da função e o código de erro retornado por GetLastError para determinar se um erro ocorreu ou não. 
-    \Se ocorreu um erro, o valor de retorno de SetFilePointer será -1 (INVALID_SET_FILE_POINTER) e a função GetLastError retornará um valor diferente de 0 (NO_ERROR ).  
-  Call "kernel32.dll" "WriteFile" com \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-writefile
-  \ Essa função serve pra gravar dados no arquivo ou dispositivo de entrada / saída (E/S) especificado.
-    O file [hFile]  \ Um identificador para o arquivo ou dispositivo de E/S 
-    \(por exemplo, um arquivo, fluxo de arquivo, disco físico, volume, buffer de console, unidade de fita, soquete, recurso de comunicação, processador de mensagens ou canal).
+  Call "kernel32.dll" "WriteFile" com \ Essa função serve pra gravar dados no arquivo ou dispositivo de entrada / saída (E/S) especificado.
+  \Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-writefile  
+    O arquivo [hFile]  \ Um identificador para o arquivo ou dispositivo de E/S 
     e O caractere inicial deste trecho [lpBuffer]  \ Um ponteiro para o buffer que contém os dados a serem gravados no arquivo ou dispositivo.
     e A quantidade de caracteres deste trecho [nNumberOfBytesToWrite] \ O número de bytes a serem gravados no arquivo ou dispositivo.
-    \ Um valor zero especifica uma operação de gravação nula. 
+    \ Um valor 0 especifica uma operação de gravação nula. 
     \O comportamento de uma operação de gravação nula depende do sistema de arquivos subjacente ou da tecnologia de comunicação.
     [Creio que seja preciso corrigir o texto abaixo]
     e um [o] endereçamento desse número [lpNumberOfBytesWritten]  \Um ponteiro para a variável que recebe o número de bytes gravados ao usar um parâmetro hFile síncrono. 
@@ -338,10 +333,6 @@ Etapas para que se posponha um trecho para um file:
     \ Se não for o caso, esse parâmetro pode ser 0 (NULL)
     devolvendo o número resultante. \ Se a função for bem-sucedida, o valor de retorno será diferente de 0 (VERDADEIRO).
     \ Se a função falhar ou estiver sendo concluída de forma assíncrona, o valor de retorno será 0 (FALSO). 
-    \Para obter informações de erro estendidas, chame a função GetLastError.
-    \ Nota: Se GetLastError fornecer um valor igual a 997 ou -2147023899 (ERROR_IO_PENDING), isso não indica uma falha na gravação do arquivo; 
-    \indica apenas que a operação de gravação ainda está com conclusão pendente devido ser uma operação de gravação de forma assíncrona. 
-    \ Para obter mais informações, consulte https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-writefile#remarks
   Se o número resultante for 0, atribua "Ocorreu um erro na hora de salvar o arquivo." ao erro do fluxo de entrada/saída; saia.
 
 Etapas para que se posponha um byte para uma string:
@@ -393,7 +384,7 @@ Etapas para que se posponha uma string para uma segunda string (handling email t
   Se a string estiver em branco, cancele.
   Lance um percorredor sobre a string.
   Comece. [a executar o código abaixo]
-    Mova o percorredor (caixa de texto file rules).
+    Mova o percorredor (caixa de texto arquivo rules).
     Se o segmento inicial deste percorredor estiver em branco, cancele.
     Se o segmento inicial deste percorredor começa com ".", posponha "." para a segunda string.
     Posponha o segmento inicial deste percorredor para a segunda string.
@@ -808,12 +799,12 @@ Etapas para que se limpe umas coisas:
 Etapas para que se limpe uma word:
   Atribua 0 ao word.
 
-Etapas para que se close um file:
+Etapas para que se close um arquivo:
   Call "kernel32.dll" "CloseHandle" com \ https://docs.microsoft.com/pt-br/windows/win32/api/handleapi/nf-handleapi-closehandle
   \Fecha um identificador de objeto aberto.
   \Em geral, CloseHandle invalida o identificador do objeto especificado, diminui a contagem do identificador do objeto e executa verificações de retenção do objeto. 
   \Depois que o último identificador para um objeto é fechado, o objeto é removido do sistema. .
-    O file. [hObject] \Um identificador válido para um objeto aberto.
+    O arquivo. [hObject] \Um identificador válido para um objeto aberto.
 
 Etapas para que se avise:
   Toque o som de aviso.
@@ -1349,7 +1340,7 @@ Etapas para que se converta uma string para um texto de consulta:
 Etapas para que se converta uma string para umas linhas des textos:
   Lance um percorredor sobre a string.
   Comece. [a executar o código abaixo]
-    Mova o percorredor (caixa de texto file rules).
+    Mova o percorredor (caixa de texto arquivo rules).
     Se o segmento inicial deste percorredor estiver em branco, pare.
     Crie uma linha de texto usando o segmento inicial deste percorredor.
     Posponha a linha de texto para as linhas des textos.
@@ -2025,7 +2016,7 @@ Etapas para que se crie o número identificador de abertura of uma requisição Win
 
 Etapas para que se crie um endereço completo no sistema de arquivos:
   Se o endereço completo for endereço da pasta-format, crie o endereço completo no sistema de arquivos (pasta)[endereço]; saia.
-  Se o endereço completo for file-format, crie o endereço completo no sistema de arquivos (arquivo); saia.
+  Se o endereço completo for arquivo-format, crie o endereço completo no sistema de arquivos (arquivo); saia.
 
 Etapas para que se crie um endereço completo no sistema de arquivos (pasta)[endereço]:
   Isole o endereço completo.
@@ -3211,7 +3202,7 @@ Etapas para que se determine se um endereço completo está vazio no sistema de ar
   Se a contagem for 0, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se um endereço completo é file-format:
+Etapas para que se determine se um endereço completo é arquivo-format:
   Se o endereço completo estiver em branco, diga não.
   Se o conteúdo deste caractere final deste endereço completo for o sinal de dois pontos, diga não.
   Se o conteúdo deste caractere final deste endereço completo for a barra invertida, diga não.
@@ -3606,9 +3597,9 @@ Etapas para que se determine se uma string é uma segunda string (comparação de c
 Etapas para que se determine se uma string é uma segunda string:
   Compare a string para a segunda string usando a quantidade de caracteres desta string e a quantidade de caracteres desta segunda string e o tabela de caracteres minúsculos ascii (equal only).
 
-Etapas para que se determine se uma string é uma segunda string ou um terceiro string:
+Etapas para que se determine se uma string é uma segunda string ou uma terceira string:
   Se a string é a segunda string, diga sim.
-  Se a string é o terceiro string, diga sim.
+  Se a string é a terceira string, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma string é algum tipo de fração literal;
@@ -4135,7 +4126,7 @@ Etapas para que se destrua um catálogo:
 Etapas para que se destrua um endereço completo no sistema de arquivos:
   Defina o endereço completo para read-write mode.
   Se o endereço completo é endereço da pasta-format, destrua o endereço completo no sistema de arquivos (pasta)[endereço].
-  Se o endereço completo é file-format, destrua o endereço completo no sistema de arquivos (arquivo).
+  Se o endereço completo é arquivo-format, destrua o endereço completo no sistema de arquivos (arquivo).
 
 Etapas para que se destrua um endereço completo no sistema de arquivos (pasta)[endereço]:
   Comece. [a executar o código abaixo]
@@ -4211,7 +4202,7 @@ Etapas para que se destrua uma requisição WinHTTP:
 
 Uma difference é um par de números.
 
-Um file é um número identificador.
+Um arquivo é um número identificador.
 Um nome do arquivo é uma string. \ é o nome que vem depois da barra / até o final da extensão. Exemplo: arquivo.txt
 Um nome do arquivo s/ extensão é uma string. \ Auto explicativo. 
 Um extensão é uma string. \ Contém o ponto. Exemplo: .txt
@@ -4882,7 +4873,7 @@ Etapas para que se pinte uma caixa de texto (editing):
 
 Etapas para que se duplicate um endereço completo para uma segunda endereço completo no sistema de arquivos:
   Se o endereço completo é endereço da pasta-format, duplicate o endereço completo para a segunda endereço completo no sistema de arquivos (pasta)[endereço].
-  Se o endereço completo é file-format, duplicate o endereço completo para a segunda endereço completo no sistema de arquivos (arquivo).
+  Se o endereço completo é arquivo-format, duplicate o endereço completo para a segunda endereço completo no sistema de arquivos (arquivo).
 
 Etapas para que se duplicate um endereço completo para uma segunda endereço completo no sistema de arquivos (pasta)[endereço]:
   Se o endereço completo estiver no segunda endereço completo, atribua "Ocorreu um erro na hora de duplicar a pasta: " junto com o endereço completo seguido de ". - erro de recursão inválida." ao erro do fluxo de entrada/saída; saia.
@@ -5092,7 +5083,7 @@ Etapas para que se extraia um extensão desde um endereço completo:
 
 Etapas para que se extraia um nome do arquivo desde um endereço completo:
   Limpe o nome do arquivo.
-  Se o endereço completo não for file-format, cancele.
+  Se o endereço completo não for arquivo-format, cancele.
   Extraia o nome do arquivo como um designador desde o endereço completo.
 
 Etapas para que se extraia um nome do arquivo s/ extensão desde um endereço completo:
@@ -6249,7 +6240,7 @@ Etapas para que se obtenha uma caixa de seleção usando uma linha de texto e uma 
 
 Etapas para que se obtenha um size usando um endereço completo no sistema de arquivos:
   Se o endereço completo for endereço da pasta-format, obtenha o size usando o endereço completo no sistema de arquivos (pasta)[endereço].
-  Se o endereço completo for file-format, obtenha o size usando o endereço completo no sistema de arquivos (arquivo).
+  Se o endereço completo for arquivo-format, obtenha o size usando o endereço completo no sistema de arquivos (arquivo).
 
 Etapas para que se obtenha um size usando um endereço completo no sistema de arquivos (pasta)[endereço]:
   Atribua 0 ao size.
@@ -8757,26 +8748,26 @@ Etapas para que se toque um wave e wait:
     \SND_MEMORY = O parâmetro pszSound aponta para um som carregado na memória.
     \SND_SYNC = O som é reproduzido de forma síncrona e o PlaySound retorna após a conclusão do evento de som. Este é o comportamento padrão.
 
-Etapas para que se toque um wave file:
-  Isole o wave file.
-  Anexe o caractere NULL o wave file.
+Etapas para que se toque um wave arquivo:
+  Isole o wave arquivo.
+  Anexe o caractere NULL o wave arquivo.
   Call "winmm.dll" "PlaySound" com \ https://docs.microsoft.com/pt-br/previous-versions//dd743680(v=vs.85)
   \A função PlaySound reproduz um som especificado pelo nome de arquivo, recurso ou evento do sistema fornecido.
   \(Um evento do sistema pode estar associado a um som no registro ou no arquivo WIN.INI.)
-    O caractere inicial deste wave file [pszSound] \ Uma string que especifica o som a ser reproduzido.
+    O caractere inicial deste wave arquivo [pszSound] \ Uma string que especifica o som a ser reproduzido.
     e 0 [hmod] \ Identificador para o arquivo executável que contém o recurso a ser carregado. 
     \Este parâmetro deve ser NULL, a menos que SND_RESOURCE seja especificado em fdwSound.
     e 131073. [fdwSound = SND_FILENAME+SND_ASYNC] \Opções de reprodução de som.
     \SND_FILENAME = O parâmetro pszSound é um nome de arquivo.
     \SND_ASYNC = O som é reproduzido de forma assíncrona e o PlaySound retorna imediatamente após o início do som.
 
-Etapas para que se toque um wave file e wait:
-  Isole o wave file.
-  Anexe o caractere NULL o wave file.
+Etapas para que se toque um wave arquivo e wait:
+  Isole o wave arquivo.
+  Anexe o caractere NULL o wave arquivo.
   Call "winmm.dll" "PlaySound" com \ https://docs.microsoft.com/pt-br/previous-versions//dd743680(v=vs.85)
   \A função PlaySound reproduz um som especificado pelo nome de arquivo, recurso ou evento do sistema fornecido.
   \(Um evento do sistema pode estar associado a um som no registro ou no arquivo WIN.INI.)
-    O caractere inicial deste wave file [pszSound] \ Uma string que especifica o som a ser reproduzido.
+    O caractere inicial deste wave arquivo [pszSound] \ Uma string que especifica o som a ser reproduzido.
     e 0 [hmod] \ Identificador para o arquivo executável que contém o recurso a ser carregado. 
     \Este parâmetro deve ser NULL, a menos que SND_RESOURCE seja especificado em fdwSound.
     e 131072. [fdwSound = SND_FILENAME+SND_SYNC] \Opções de reprodução de som.
@@ -9634,7 +9625,7 @@ Etapas para que se reverse umas coisas:
 Um deslocamento vertical é um número.
 Um deslocamento horizontal é um número.
 
-Etapas para que se rotate uma caixa:
+Etapas para que se rotacione uma caixa:
   Atribua o centro desta caixa a um centro localização.
   Atribua a caixa a uma segunda caixa.
   Atribua a coordenada Y deste centro menos a coordenada Y do canto superior esquerdo desta segunda caixa mais a coordenada X deste centro à coordenada X do canto inferior direito desta caixa.
@@ -9642,10 +9633,10 @@ Etapas para que se rotate uma caixa:
   Atribua a coordenada Y deste centro menos a coordenada Y do canto inferior direito desta segunda caixa mais a coordenada X deste centro à coordenada X do canto superior esquerdo desta caixa.
   Atribua a coordenada X do canto inferior direito desta segunda caixa menos a coordenada X deste centro mais a coordenada Y deste centro à coordenada Y do canto inferior direito desta caixa.
 
-Etapas para que se rotate uma elipse:
-  Rotate a caixa desta elipse.
+Etapas para que se rotacione uma elipse:
+  Rotacione a caixa desta elipse.
 
-Etapas para que se rotate um GpImage:
+Etapas para que se rotacione um GpImage:
   Se o GpImage for inexistente, cancele.
   Call "gdiplus.dll" "GdipImageRotateFlip" com \ https://docs.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-image-rotateflip
   \A função GdipImageRotateFlip gira e/ou inverte a imagem. É a imagem que sofre a transformação e não o gráfico no qual será exibida.
@@ -9663,7 +9654,7 @@ Etapas para que se rotate um GpImage:
     \6 - Uma rotação de 180 graus seguida por uma inversão horizontal (sem rotação e inversão vertical)
     \7 - Uma rotação de 270 graus seguida por uma inversão horizontal (uma rotação de 90 graus seguida por uma inversão vertical)
 
-Etapas para que se rotate um GpImage usando um ângulo:
+Etapas para que se rotacione um GpImage usando um ângulo:
   \ o ângulo pode ser 0, 900, 1800, 2700
   Se o GpImage for inexistente, cancele.
   Atribua 0 [RotateNoneFlipNone] a um número.
@@ -9686,18 +9677,18 @@ Etapas para que se rotate um GpImage usando um ângulo:
     \6 - Uma rotação de 180 graus seguida por uma inversão horizontal (sem rotação e inversão vertical)
     \7 - Uma rotação de 270 graus seguida por uma inversão horizontal (uma rotação de 90 graus seguida por uma inversão vertical)
 
-Etapas para que se rotate uma linha reta:
+Etapas para que se rotacione uma linha reta:
   Atribua o centro desta linha reta a um centro localização.
-  Rotate a localização inicial desta linha reta around o centro.
-  Rotate a localização final desta linha reta around o centro.
+  Rotacione a localização inicial desta linha reta around o centro.
+  Rotacione a localização final desta linha reta around o centro.
 
-Etapas para que se rotate uma imagem:
+Etapas para que se rotacione uma imagem:
   Se a imagem for inexistente, cancele.
   Adicione 900 para o ângulo de rotação desta imagem.
   Se o mirror detector desta imagem estiver ativo, adicione 1800 para o ângulo de rotação desta imagem.
   Normalize o ângulo de rotação desta imagem.
-  Rotate a caixa desta imagem.
-  Rotate a caixa intacta desta imagem.
+  Rotacione a caixa desta imagem.
+  Rotacione a caixa intacta desta imagem.
   Atribua o centro desta caixa desta imagem a um centro localização.
   Atribua o centro desta caixa intacta desta imagem a uma segunda centro localização.
   Atribua a coordenada Y deste centro menos a coordenada Y desta segunda centro mais a coordenada X deste centro ao número X desse twip par de números.
@@ -9705,25 +9696,25 @@ Etapas para que se rotate uma imagem:
   Atribua a coordenada Y deste centro mais a coordenada X desta segunda centro menos a coordenada X deste centro ao número Y deste twip par de números.
   Subtraia a coordenada Y desta segunda centro desde o número Y deste twip par de números.
   Mova a caixa intacta desta imagem usando o twip par de números.
-  Rotate o gpBitmap desta imagem.
+  Rotacione o gpBitmap desta imagem.
 
-Etapas para que se rotate um polígono:
+Etapas para que se rotacione um polígono:
   Se o polígono for inexistente, cancele.
   Atribua o centro deste polígono a um centro localização.
   Comece. [a executar o código abaixo]
     Obtenha um vértice desde os vértices deste polígono.
     Se o vértice for inexistente, cancele.
-    Rotate a localização deste vértice around o centro.
+    Rotacione a localização deste vértice around o centro.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se rotate uma localização around um centro localização:
+Etapas para que se rotacione uma localização around um centro localização:
   Atribua a localização a uma segunda localização.
   Atribua a coordenada Y deste centro menos a coordenada Y desta segunda localização mais a coordenada X deste centro à coordenada X desta localização.
   Atribua a coordenada X desta segunda localização menos a coordenada X deste centro mais a coordenada Y deste centro à coordenada Y desta localização.
 
-Etapas para que se rotate uma caixa de texto:
+Etapas para que se rotacione uma caixa de texto:
   Se a caixa de texto for inexistente, cancele.
-  Rotate a caixa desta caixa de texto.
+  Rotacione a caixa desta caixa de texto.
   Wrap a caixa de texto.
 
 Etapas para que se arredonde um número para um segundo número:
@@ -11410,7 +11401,7 @@ Etapas para que se aguarde uma tecla:
   Aguarde pela tecla para come para cima.
   Desmanche all eventos.
 
-Um wave file é um endereço completo.
+Um wave arquivo é um endereço completo.
 
 Um wave é um texto hexadecimal.
 
@@ -11441,17 +11432,17 @@ Etapas para que se wrap uma caixa de texto:
   Converta a segunda posicionamento absoluto para o cursor de texto desta caixa de texto usando a caixa de texto.
   Limite a origem of a caixa de texto.
 
-Etapas para que se salve um trecho em um file;
-Etapas para que se armazene um trecho em um file;
-Etapas para que se grave um trecho em um file;
-Etapas para que se escreva um trecho para um file:
+Etapas para que se salve um trecho em um arquivo;
+Etapas para que se armazene um trecho em um arquivo;
+Etapas para que se grave um trecho em um arquivo;
+Etapas para que se escreva um trecho para um arquivo:
   Limpe o erro do fluxo de entrada/saída.
   Call "kernel32.dll" "SetFilePointer" com  \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-setfilepointer
   \Move o ponteiro de arquivo do arquivo especificado.
   \Esta função armazena o ponteiro do arquivo em dois valores LONG.
   \Quando um arquivo é aberto, o Windows associa um ponteiro de arquivo com o fluxo padrão. 
   \Esse ponteiro de arquivo é um valor de deslocamento que especifica o próximo byte a ser lido ou o local para receber o próximo byte escrito.
-    O file [hFile]\ O número identificador do arquivo.
+    O arquivo [hFile]\ O número identificador do arquivo.
     e 0 [lDistanceToMove] \ Um valor positivo para lDistanceToMove move o ponteiro do arquivo para frente no arquivo 
     \e um valor negativo move o ponteiro para trás no arquivo .
     e 0 [lpDistanceToMoveHigh] \Serve apenas para operações com 64 bits. Quando não é utilizado, esse valor deve ser 0 (NULL). 
@@ -11463,7 +11454,7 @@ Etapas para que se escreva um trecho para um file:
   \ Essa função serve pra gravar dados no arquivo ou dispositivo de entrada / saída (E/S) especificado.
     \ Um identificador para o arquivo ou dispositivo de E/S 
     \(por exemplo, um arquivo, fluxo de arquivo, disco físico, volume, buffer de console, unidade de fita, soquete, recurso de comunicação, processador de mensagens ou canal).
-    O file [hFile]\ O número identificador do arquivo.
+    O arquivo [hFile]\ O número identificador do arquivo.
     e O caractere inicial deste trecho [lpBuffer]  \ Um ponteiro para o buffer que contém os dados a serem gravados no arquivo ou dispositivo.
     e A quantidade de caracteres deste trecho [nNumberOfBytesToWrite] \ O número de bytes a serem gravados no arquivo ou dispositivo.
     \ Um valor zero especifica uma operação de gravação nula. 
