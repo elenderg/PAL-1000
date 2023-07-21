@@ -43,7 +43,7 @@ A epilog etiqueta é uma etiqueta igual a 7.
 A exit etiqueta é uma etiqueta igual a 8.
 A etiqueta de finalização é uma etiqueta igual a 9.
 A etiqueta de acréscimo é uma etiqueta igual a 10.
-A Intel etiqueta é uma etiqueta igual a 11.
+A Decodifique etiqueta é uma etiqueta igual a 11.
 A jump false etiqueta é uma etiqueta igual a 12.
 A load endereço etiqueta é uma etiqueta igual a 13.
 A load eax etiqueta é uma etiqueta igual a 14.
@@ -227,7 +227,7 @@ Etapas para que se adicione a rotina de finalização por um type (conjunto):
   Se o detector de erros deste compilador estiver ativado, cancele.
   Adicione uma rotina para as rotinas usando nil.
   Posponha "~finalize um " junto com o nome deste type para o header string desta rotina.
-  Posponha "Intel $50. " para o body string desta rotina. \ push eax -> push the 4 bytes value in EAX onto the stack
+  Posponha "Decodifique $50. " para o body string desta rotina. \ push eax -> push the 4 bytes value in EAX onto the stack
   \The push instruction places its operand onto the top of the hardware supported stack in memory. 
   \Specifically, push first decrements ESP by 4, then places its operand into the contents of the 32-bit location sob address [ESP]. 
   \ESP (the stack pointer) is decremented by push since the x86 stack grows para baixo - i.e. the stack grows desde high addresses to lower addresses.
@@ -237,7 +237,7 @@ Etapas para que se adicione a rotina de finalização por um type (conjunto):
     Se o type deste campo não deveria ser finalizado, recomece.
     Posponha "~finalize o " junto com o nome deste type seguido de "'s " junto com o nome deste campo seguido de ". " para o body string desta rotina.
   Recomece. [percorra novamente o código acima]
-  Posponha "Intel $58." para o body string desta rotina. \ pop eax -> pop the top element of the stack into memory ar the four bytes starting at location EAX.
+  Posponha "Decodifique $58." para o body string desta rotina. \ pop eax -> pop the top element of the stack into memory ar the four bytes starting at location EAX.
   \  \pop 4 bytes off the stack and put them into eax
   \ The pop instruction removes the 4-byte data element desde the top of the hardware-supported stack into the specified operand (i.e. register or memory location). 
   \It first moves the 4 bytes located sob memory location [SP] into the specified register or memory location, and then increments memory location [SP] by 4.
@@ -250,11 +250,11 @@ Etapas para que se adicione a rotina de finalização por um type (texto):
   Se o detector de erros deste compilador estiver ativado, cancele.
   Adicione uma rotina para as rotinas usando nil.
   Posponha "~finalize um " junto com o nome deste type para o header string desta rotina.
-  Posponha "Intel $50. " para o body string desta rotina. \ push eax -> push the 4 bytes value in EAX onto the stack
+  Posponha "Decodifique $50. " para o body string desta rotina. \ push eax -> push the 4 bytes value in EAX onto the stack
   \ Specifically, push first decrements ESP by 4, then places its operand into the contents of the 32-bit location sob endereço [ESP]. 
   \ESP (the stack pointer) is decremented by push since the x86 stack grows para baixo - i.e. the stack grows desde high addresses to lower addresses.
   Posponha "Desassocie o caractere inicial de esta string . " para o body string desta rotina. \\ traduzir string aqui  
-  Posponha "Intel $58." para o body string desta rotina. \ pop eax -> pop the top element of the stack into memory at the four bytes starting at location EAX.
+  Posponha "Decodifique $58." para o body string desta rotina. \ pop eax -> pop the top element of the stack into memory at the four bytes starting at location EAX.
   \pop 4 bytes off the stack and put them into eax
   \ The pop instruction removes the 4-byte data element desde the top of the hardware-supported stack into the specified operand (i.e. register or memory location). 
   \ It first moves the 4 bytes located sob memory location [SP] into the specified register or memory location, and then increments memory location [SP] by 4.
@@ -572,7 +572,7 @@ Etapas para que se enderece um fragment usando um endereço:
   Se a etiqueta deste fragment for a etiqueta de interrupção, adicione 5 para o endereço; saia.
   Se a etiqueta deste fragment for a prolog etiqueta, enderece o fragment usando o endereço (prolog); saia.
   Se a etiqueta deste fragment for a epilog etiqueta, enderece o fragment usando o endereço (epilog); saia.
-  Se a etiqueta deste fragment for a Intel etiqueta, adicione a quantidade de caracteres deste código deste fragment para o endereço; saia.
+  Se a etiqueta deste fragment for a Decodifique etiqueta, adicione a quantidade de caracteres deste código deste fragment para o endereço; saia.
   Se a etiqueta deste fragment for a push value etiqueta, enderece o fragment usando o endereço (push value); saia.
   Se a etiqueta deste fragment for a etiqueta de demanda externa, adicione 6 para o endereço; saia.
   Se a etiqueta deste fragment for a load eax etiqueta, adicione 5 para o endereço; saia. \ was 8 when "load eax" took em variáveis; now "load eax" only does um immediate value
@@ -777,7 +777,7 @@ Etapas para que se posponha uma etiqueta para um trecho (as um fragment etiqueta
   Se a etiqueta for a exit etiqueta, posponha "exit" para o trecho (com separator); saia.
   Se a etiqueta for a etiqueta de finalização, posponha "finalize" para o trecho (com separator); saia.
   Se a etiqueta for a etiqueta de acréscimo, posponha "increment" para o trecho (com separator); saia.
-  Se a etiqueta for a Intel etiqueta, posponha "Intel" para o trecho (com separator); saia.
+  Se a etiqueta for a Decodifique etiqueta, posponha "Decodifique" para o trecho (com separator); saia.
   Se a etiqueta for a jump false etiqueta, posponha "jump false" para o trecho (com separator); saia.
   Se a etiqueta for a load endereço etiqueta, posponha "load endereço" para o trecho (com separator); saia.
   Se a etiqueta for a load eax etiqueta, posponha "load eax" para o trecho (com separator); saia.
@@ -1801,10 +1801,10 @@ Etapas para que se determine se um subtexto é qualquer if-separator:
   Se o subtexto for "então", diga sim.
   [Caso contrário] Diga não.
 
-Etapas para que se compile a próxima instrução usando um percorredor (Intel):
+Etapas para que se compile a próxima instrução usando um percorredor (Decodifique):
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum tipo de hex literal, apresente uma mensagem de erro contendo "Erro: ao invés de código hexadecimal, foi digitado o termo: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; saia.
-  Adicione um fragment usando o Intel etiqueta.
+  Adicione um fragment usando o Decodifique etiqueta.
   Atribua o segmento inicial deste percorredor para um parte da cifra binária.
   Adicione 1 para o caractere inicial desta parte da cifra binária.
   Converta o parte da cifra binária para o código deste fragment.
@@ -1824,7 +1824,7 @@ Etapas para que se compile a próxima instrução usando um percorredor (other):
   Se o segmento inicial deste percorredor for algum comando de repetição, compile a próxima instrução usando o percorredor (repeat); saia.
   Se o segmento inicial deste percorredor for algum comando de interrupção de repetições, compile a próxima instrução usando o percorredor (break); saia.
   Se o segmento inicial deste percorredor for algum comando de confirmação ou negação, compile a próxima instrução usando o percorredor (say); saia.
-  Se o segmento inicial deste percorredor for "Intel", compile a próxima instrução usando o percorredor (Intel); saia.
+  Se o segmento inicial deste percorredor for "Decodifique", compile a próxima instrução usando o percorredor (Decodifique); saia.
   Se o segmento inicial deste percorredor for "push", compile a próxima instrução usando o percorredor (push); saia.
   Se o segmento inicial deste percorredor for algum chamada de biblioteca externa, compile a próxima instrução usando o percorredor (Processe); saia.
   Se o segmento inicial deste percorredor for algum tipo de point, compile a próxima instrução usando o percorredor (point); saia.
@@ -4110,7 +4110,7 @@ Etapas para que se encontre uma variável usando um nome e umas variáveis:
 Um fragment é uma coisa com
   \ we have three lists in the compiler memory — types, variables, and rotinas 
   \ each rotina consists of a series of logical instructions called “fragments.” There are just 22 fragment types:
-  Uma etiqueta [break, Processe external, Processe indirect, Processe internal, dereference, end if, epilog, exit, finalize, increment, Intel, jump false, load address, load eax, loop, not, prolog, push address, push value, salve eax, repeat, rotina address],
+  Uma etiqueta [break, Processe external, Processe indirect, Processe internal, dereference, end if, epilog, exit, finalize, increment, Decodifique, jump false, load address, load eax, loop, not, prolog, push address, push value, salve eax, repeat, rotina address],
   Uma variável (reference) [Processe indirect, dereference, increment, load address, load eax, pop, push address, push value, rotina address, salve eax],
   Uma segunda variável (reference) [load address],
   Uma rotina (reference) [Processe internal, rotina address],

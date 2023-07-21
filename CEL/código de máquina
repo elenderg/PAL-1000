@@ -133,165 +133,165 @@ Etapas para que se subtraia um par de números desde um segundo par de números:
 \Neste ponto, a pilha está de volta ao mesmo estado em que estava antes de invocar a função chamada.
 
 Etapas para que se subtraia um byte desde um segundo byte:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> Salva o 1º byte (ebp+8) no registrador eax
-  Intel $0FB600. \ movzx eax,[eax] ; -> ebp+8  o local onde o processador armazena o valor do 1º argumento da função.
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> Salva o 1º byte (ebp+8) no registrador eax
+  Decodifique $0FB600. \ movzx eax,[eax] ; -> ebp+8  o local onde o processador armazena o valor do 1º argumento da função.
   \ ebp+12 é é o local onde o processador armazena o valor do o 2º argumento da função
   \ A instrução MOVZX (Move with Zero-Extend) copia o conteúdo do operando de origem (registrador ou localização na memória) para o operando de destino (registrador) e zero estende o valor. 
   \O tamanho do valor convertido depende do atributo de tamanho do operando.
   \Ao contrário do que se pode pensar, a instrução movzx (que preenche todos os registradores) na verdade é executada de forma mais rápida do que a instrução mov, 
   \ já que a instrução mov  define apenas as partes inferiores dos registradores.
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> Salva o 2º byte (ebp+12) no registrador ebx
-  Intel $2803. \ sub [ebx],al ; -> subtrai o 1º byte do 2º byte
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> Salva o 2º byte (ebp+12) no registrador ebx
+  Decodifique $2803. \ sub [ebx],al ; -> subtrai o 1º byte do 2º byte
 
 Etapas para que se subtraia um byte desde um número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> Salva o byte (ebp+8) no registrador eax
-  Intel $0FB600. \ movzx eax,[eax] ; -> ebp+8 é o local onde o processador armazena o valor do 1º argumento da função. 
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> Salva o byte (ebp+8) no registrador eax
+  Decodifique $0FB600. \ movzx eax,[eax] ; -> ebp+8 é o local onde o processador armazena o valor do 1º argumento da função. 
   \ ebp+12 é é o local onde o processador armazena o valor do o 2º argumento da função
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> Salva o número (ebp+12) no registrador ebx
-  Intel $2903. \ sub [ebx],eax ; -> subtrai o byte do número
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> Salva o número (ebp+12) no registrador ebx
+  Decodifique $2903. \ sub [ebx],eax ; -> subtrai o byte do número
 
 Etapas para que se subtraia um número desde um byte:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> Salva o número (ebp+8) no registrador eax
-  Intel $8B00. \ mov eax,[eax] ; -> ebp+8 é o local onde o processador armazena o valor do 1º argumento da função.
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> Salva o número (ebp+8) no registrador eax
+  Decodifique $8B00. \ mov eax,[eax] ; -> ebp+8 é o local onde o processador armazena o valor do 1º argumento da função.
   \ ebp+12 é é o local onde o processador armazena o valor do o 2º argumento da função
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> Salva o byte (ebp+12) no registrador ebx
-  Intel $0FB60B. \ movzx ecx,[ebx] ; -> Salva o endereço de ebx em ecx. E "zero extende", ou seja
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> Salva o byte (ebp+12) no registrador ebx
+  Decodifique $0FB60B. \ movzx ecx,[ebx] ; -> Salva o endereço de ebx em ecx. E "zero extende", ou seja
   \se houver disparidade entre o valor do byte e do número e for preciso expandir a quantidade de bits,  o espaço restante é preenchido com zeros
-  Intel $2BC8. \ sub ecx,eax ; -> subtrai o número do byte
-  Intel $880B. \ mov [ebx],cl ; -> salva o valor no ponteiro salvo no registrador ebx
+  Decodifique $2BC8. \ sub ecx,eax ; -> subtrai o número do byte
+  Decodifique $880B. \ mov [ebx],cl ; -> salva o valor no ponteiro salvo no registrador ebx
 
 Etapas para que se subtraia um ponteiro desde um segundo ponteiro;
 Etapas para que se subtraia um número desde um ponteiro;
 Etapas para que se subtraia um número desde um segundo número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> Salva o 1º número/endereço (ebp+8) no registrador eax
-  Intel $8B00. \ mov eax,[eax] ; -> ebp+8 é o local onde o processador armazena o valor do 1º argumento da função.
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> Salva o 1º número/endereço (ebp+8) no registrador eax
+  Decodifique $8B00. \ mov eax,[eax] ; -> ebp+8 é o local onde o processador armazena o valor do 1º argumento da função.
   \ ebp+12 é é o local onde o processador armazena o valor do o 2º argumento da função
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> Salva o 2º número/endereço (ebp+12) no registrador ebx
-  Intel $2903. \ sub [ebx],eax ; -> subtrai o 1º valor do 2º
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> Salva o 2º número/endereço (ebp+12) no registrador ebx
+  Decodifique $2903. \ sub [ebx],eax ; -> subtrai o 1º valor do 2º
 
 Etapas para que se desloque um byte uns bits para a esquerda;
 Etapas para que se desloque um byte para a esquerda uns bits:
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] ; -> salva a quantidade de bits informada (ebp+12) no registrador ecx
-  Intel $8B09. \ mov ecx,[ecx] ; -> ebp+12 é é o local onde o processador armazena o valor do o 2º argumento da função
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] ; -> salva a quantidade de bits informada (ebp+12) no registrador ecx
+  Decodifique $8B09. \ mov ecx,[ecx] ; -> ebp+12 é é o local onde o processador armazena o valor do o 2º argumento da função
   \ebp+8 é o local onde o processador armazena o valor do 1º argumento da função.
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva o byte (ebp+8) no registrador eax
-  Intel $D220. \ shl ptr [eax],ecx ; -> efetua o deslocamento dos bits para a esquerda (comando shl)
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o byte (ebp+8) no registrador eax
+  Decodifique $D220. \ shl ptr [eax],ecx ; -> efetua o deslocamento dos bits para a esquerda (comando shl)
 
 Etapas para que se desloque um byte para a direita uns bits;
 Etapas para que se desloque um byte uns bits para a direita:
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] ; -> salva a quantidade de bits informada (ebp+12) no registrador ecx
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] ; -> salva a quantidade de bits informada (ebp+12) no registrador ecx
   \ ebp+12 é é o local onde o processador armazena o valor do o 2º argumento da função. 
-  Intel $8B09. \ mov ecx,[ecx] ; -> Nessa rotina os "bits" são considerados como um argumento, por isso precisamos do valor do 2º argumento
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva o byte (ebp+8) no registrador eax
+  Decodifique $8B09. \ mov ecx,[ecx] ; -> Nessa rotina os "bits" são considerados como um argumento, por isso precisamos do valor do 2º argumento
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o byte (ebp+8) no registrador eax
    \ebp+8 é o local onde o processador armazena o valor do 1º argumento da função.
-  Intel $D228. \ shr ptr [eax],ecx ; -> efetua o deslocamento dos bits para a direita (comando shr)
+  Decodifique $D228. \ shr ptr [eax],ecx ; -> efetua o deslocamento dos bits para a direita (comando shr)
 
 Etapas para que se desloque um número uns bits para a esquerda;
 Etapas para que se desloque um número para a esquerda uns bits:
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] ; -> salva a quantidade de bits informada (ebp+12) no registrador ecx
-  Intel $8B09. \ mov ecx,[ecx] ; -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva o número (ebp+8) no registrador eax
-  Intel $D320. \ shl [eax],ecx ; -> efetua o deslocamento do número para a esquerda (comando shl)
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] ; -> salva a quantidade de bits informada (ebp+12) no registrador ecx
+  Decodifique $8B09. \ mov ecx,[ecx] ; -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o número (ebp+8) no registrador eax
+  Decodifique $D320. \ shl [eax],ecx ; -> efetua o deslocamento do número para a esquerda (comando shl)
 
 Etapas para que se desloque um número  para a direita uns bits;
 Etapas para que se desloque um número uns bits para a direita:
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] ; -> salva a quantidade de bits informada (ebp+12) no registrador ecx
-  Intel $8B09. \ mov ecx,[ecx] ; -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva o número (ebp+8) no registrador eax
-  Intel $D328. \ shr [eax],ecx ; -> efetua o deslocamento do número para a direita (comando shr)
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] ; -> salva a quantidade de bits informada (ebp+12) no registrador ecx
+  Decodifique $8B09. \ mov ecx,[ecx] ; -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o número (ebp+8) no registrador eax
+  Decodifique $D328. \ shr [eax],ecx ; -> efetua o deslocamento do número para a direita (comando shr)
 
 Etapas para que se desloque um word uns bits para a esquerda;
 Etapas para que se desloque um word para a esquerda uns bits:
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] ; -> salva a quantidade de bits informada (ebp+12) no registrador ecx
-  Intel $8B09. \ mov ecx,[ecx] ; -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ salva a word (ebp+8) no registrador eax
-  Intel $66D320. \ shl word ptr [eax],ecx \ shr word ptr [eax],ecx ; -> efetua o deslocamento dos bits para a esquerda (comando shl)
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] ; -> salva a quantidade de bits informada (ebp+12) no registrador ecx
+  Decodifique $8B09. \ mov ecx,[ecx] ; -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] \ salva a word (ebp+8) no registrador eax
+  Decodifique $66D320. \ shl word ptr [eax],ecx \ shr word ptr [eax],ecx ; -> efetua o deslocamento dos bits para a esquerda (comando shl)
 
 Etapas para que se desloque uma word  para a direita uns bits;
 Etapas para que se desloque uma word uns bits para a direita:
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] ; -> salva a quantidade de bits informada (ebp+12) no registrador ecx
-  Intel $8B09. \ mov ecx,[ecx] ; -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ salva a word (ebp+8) no registrador eax
-  Intel $66D328. \ shr word ptr [eax],ecx ; -> efetua o deslocamento dos bits  para a direita (comando shr)
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] ; -> salva a quantidade de bits informada (ebp+12) no registrador ecx
+  Decodifique $8B09. \ mov ecx,[ecx] ; -> ebp-12 é o 2º parâmetro de uma função. ebp+8 é o 1º parâmetro
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] \ salva a word (ebp+8) no registrador eax
+  Decodifique $66D328. \ shr word ptr [eax],ecx ; -> efetua o deslocamento dos bits  para a direita (comando shr)
 
 Etapas para que se arredonde um número para cima para o próxima potência of two:
-  Intel $8B8D08000000. \ mov ecx,[ebp+8] ; -> salva o número (ebp+8) no registrador ecx
-  Intel $8B09. \ mov ecx,[ecx] 
-  Intel $49. \ dec ecx ; -> diminui o valor de ecx
-  Intel $0FBDC9. \ bsr ecx,ecx ; ->Bit scan reverse- Pesquisa no operando de origem (segundo operando) pelo conjunto de bits mais significativo (1 bit)
+  Decodifique $8B8D08000000. \ mov ecx,[ebp+8] ; -> salva o número (ebp+8) no registrador ecx
+  Decodifique $8B09. \ mov ecx,[ecx] 
+  Decodifique $49. \ dec ecx ; -> diminui o valor de ecx
+  Decodifique $0FBDC9. \ bsr ecx,ecx ; ->Bit scan reverse- Pesquisa no operando de origem (segundo operando) pelo conjunto de bits mais significativo (1 bit)
   \Se encontrar, o índice de bit é armazenado no operando de destino (primeiro operando).
-  Intel $41. \ inc ecx ; -> aumenta o valor de ecx
-  Intel $81F904000000. \ cmp ecx,4 ; -> compara o valor de ecx
-  Intel $0F8F05000000. \ jg over the next 1 statement (Jump short if greater)
-  Intel $B904000000. \ mov ecx,4
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
-  Intel $C70001000000. \ mov [eax],1
-  Intel $D320. \ shl [eax],ecx 
+  Decodifique $41. \ inc ecx ; -> aumenta o valor de ecx
+  Decodifique $81F904000000. \ cmp ecx,4 ; -> compara o valor de ecx
+  Decodifique $0F8F05000000. \ jg over the next 1 statement (Jump short if greater)
+  Decodifique $B904000000. \ mov ecx,4
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o número
+  Decodifique $C70001000000. \ mov [eax],1
+  Decodifique $D320. \ shl [eax],ecx 
 
 Etapas para que se redefina um ponteiro;
 Etapas para que se esvazie um ponteiro:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva o ponteiro (ebp+8) no registrador eax
-  Intel $C70000000000. \ mov [eax],0 ; -> zera o registrador eax
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o ponteiro (ebp+8) no registrador eax
+  Decodifique $C70000000000. \ mov [eax],0 ; -> zera o registrador eax
 
 Etapas para que se atribua uma word para uma segunda word:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva a 1ª word (ebp+8) no registrador eax
-  Intel $668B00. \ mov ax,[eax] ; -> salva o endereço da 1ª word no registrador ax
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva a 2ª word (ebp+12) no registrador ebx
-  Intel $668903. \ mov [ebx],ax ; -> Atribui o endereço da 1ª word para a 2ª word
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva a 1ª word (ebp+8) no registrador eax
+  Decodifique $668B00. \ mov ax,[eax] ; -> salva o endereço da 1ª word no registrador ax
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva a 2ª word (ebp+12) no registrador ebx
+  Decodifique $668903. \ mov [ebx],ax ; -> Atribui o endereço da 1ª word para a 2ª word
 
 Etapas para que se atribua um word para um word big-endian unsigned:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva a word (ebp+8) no registrador eax
-  Intel $668B00. \ mov ax,word ptr [eax]  ; -> ebp+8 é o 1º parâmetro da função. 
-  Intel $86E0. \ xchg al,ah ; -> ebp+12 é o 2º parâmetro da função
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva a a word big-endian unsigned  (ebp+12) no registrador ebx
-  Intel $668903. \ mov word ptr [ebx],ax
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva a word (ebp+8) no registrador eax
+  Decodifique $668B00. \ mov ax,word ptr [eax]  ; -> ebp+8 é o 1º parâmetro da função. 
+  Decodifique $86E0. \ xchg al,ah ; -> ebp+12 é o 2º parâmetro da função
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva a a word big-endian unsigned  (ebp+12) no registrador ebx
+  Decodifique $668903. \ mov word ptr [ebx],ax
 
 Etapas para que se atribua um word para um byte:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva a word (ebp+8) no registrador eax
-  Intel $668B00. \ mov ax,[eax] ; -> ebp+8 é o 1º parâmetro da função. ebp+12 é o 2º parâmetro
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva o byte (ebp+12) no registrador ebx
-  Intel $8803. \ mov [ebx],al
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva a word (ebp+8) no registrador eax
+  Decodifique $668B00. \ mov ax,[eax] ; -> ebp+8 é o 1º parâmetro da função. ebp+12 é o 2º parâmetro
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva o byte (ebp+12) no registrador ebx
+  Decodifique $8803. \ mov [ebx],al
 
 Etapas para que se atribua um word para eax:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva a word (ebp+8) no registrador ebx
-  Intel $0FBF03. \ movsx eax,word ptr [ebx]
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva a word (ebp+8) no registrador ebx
+  Decodifique $0FBF03. \ movsx eax,word ptr [ebx]
 
 Etapas para que se atribua um word para um número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva a word (ebp+8) no registrador eax
-  Intel $0FBF00. \ movsx eax,word ptr [eax] ; -> ebp+8 é o 1º parâmetro da função. ebp+12 é o 2º parâmetro
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva o número (ebp+12) no registrador ebx
-  Intel $8903. \ mov [ebx],eax ; -> atribui a word ao número
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva a word (ebp+8) no registrador eax
+  Decodifique $0FBF00. \ movsx eax,word ptr [eax] ; -> ebp+8 é o 1º parâmetro da função. ebp+12 é o 2º parâmetro
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva o número (ebp+12) no registrador ebx
+  Decodifique $8903. \ mov [ebx],eax ; -> atribui a word ao número
 
 Etapas para que se atribua a quantidade de caracteres dessa string para uma quantidade de caracteres:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva a string (ebp+8) no registrador eax
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva a string (ebp+8) no registrador eax
   \ Carrega default result
-  Intel $B900000000. \ mov ecx,0 ; -> zera o registrador ecx
+  Decodifique $B900000000. \ mov ecx,0 ; -> zera o registrador ecx
   \ if first for 0, store 0
-  Intel $833B00. \ cmp [ebx],0 ; -> compara a string com 0. 
-  Intel $0F8414000000. \ je store it
+  Decodifique $833B00. \ cmp [ebx],0 ; -> compara a string com 0. 
+  Decodifique $0F8414000000. \ je store it
   \ if last for menor do que first, store 0
-  Intel $8B5304. \ mov edx,[ebx+4] ; -> atribui o last ponteiro ao registrador edx
-  Intel $3B13. \ cmp edx,[ebx] ; -> compara edc com ebx
-  Intel $0F8C09000000. \ jl store it
+  Decodifique $8B5304. \ mov edx,[ebx+4] ; -> atribui o last ponteiro ao registrador edx
+  Decodifique $3B13. \ cmp edx,[ebx] ; -> compara edc com ebx
+  Decodifique $0F8C09000000. \ jl store it
   \ calcula a  quantidade de caracteres
-  Intel $8B8B04000000. \ mov ecx,[ebx+4] ; ->atribui o last ponteiro ao registrador ecx
-  Intel $2B0B. \ sub ecx,[ebx] \ subtrai o registrador ebx do ecx
-  Intel $41. \ inc ecx \ adiciona 1 ao registrador ecx
+  Decodifique $8B8B04000000. \ mov ecx,[ebx+4] ; ->atribui o last ponteiro ao registrador ecx
+  Decodifique $2B0B. \ sub ecx,[ebx] \ subtrai o registrador ebx do ecx
+  Decodifique $41. \ inc ecx \ adiciona 1 ao registrador ecx
   \ STORE IT:
-  Intel $8B950C000000. \ mov edx,[ebp+12] \ atribui a quantidade de caracteres (ebp+12) ao registrador edx
-  Intel $890A. \ mov [edx],ecx ; -> atribui o valor de ecx ao registrador edx
+  Decodifique $8B950C000000. \ mov edx,[ebp+12] \ atribui a quantidade de caracteres (ebp+12) ao registrador edx
+  Decodifique $890A. \ mov [edx],ecx ; -> atribui o valor de ecx ao registrador edx
 
 Etapas para que se atribua um número para uma word:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> atribui o número (ebp+8) ao registrador eax
-  Intel $8B00. \ mov eax,[eax] ; -> ebp+8 representa o primeiro argumento da função (o número).
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> atribui a word (ebp+12) ao registrador ebx
-  Intel $668903. \ mov [ebx],ax
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> atribui o número (ebp+8) ao registrador eax
+  Decodifique $8B00. \ mov eax,[eax] ; -> ebp+8 representa o primeiro argumento da função (o número).
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> atribui a word (ebp+12) ao registrador ebx
+  Decodifique $668903. \ mov [ebx],ax
 
 Etapas para que se atribua um número para um byte:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> atribui o número (ebp+8) ao registrador eax
-  Intel $8B00. \ mov eax,[eax] ; -> ebp+8 representa o primeiro argumento da função (o número).
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> atribui o byte (ebp+12) ao registrador ebx
-  Intel $8803. \ mov [ebx],al
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> atribui o número (ebp+8) ao registrador eax
+  Decodifique $8B00. \ mov eax,[eax] ; -> ebp+8 representa o primeiro argumento da função (o número).
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> atribui o byte (ebp+12) ao registrador ebx
+  Decodifique $8803. \ mov [ebx],al
 
 Etapas para que se atribua um detector para um segundo detector;
 Etapas para que se atribua um detector para um número;
@@ -300,70 +300,70 @@ Etapas para que se atribua um ponteiro para um segundo ponteiro;
 Etapas para que se atribua um número para um detector;
 Etapas para que se atribua um número para um ponteiro;
 Etapas para que se atribua um número para um segundo número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva o 1º valor (ebp+8) no registrador eax
-  Intel $8B00. \ mov eax,[eax] ; -> ebp=8 representa o 1º parâmetro da função. ebp+12 representa o 2º parâmetro
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva o 2º valor (ebp+12) no registrador ebx
-  Intel $8903. \ mov [ebx],eax ; -> salva eax em ebx
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o 1º valor (ebp+8) no registrador eax
+  Decodifique $8B00. \ mov eax,[eax] ; -> ebp=8 representa o 1º parâmetro da função. ebp+12 representa o 2º parâmetro
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva o 2º valor (ebp+12) no registrador ebx
+  Decodifique $8903. \ mov [ebx],eax ; -> salva eax em ebx
 
 Etapas para que se atribua um detector para eax;
 Etapas para que se atribua um ponteiro para eax;
 Etapas para que se atribua um número para eax:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva o número (ebp+8) no registrador ebx
-  Intel $8B03. \ mov eax,[ebx] ; -> salva ebx em eax
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva o número (ebp+8) no registrador ebx
+  Decodifique $8B03. \ mov eax,[ebx] ; -> salva ebx em eax
 
 Etapas para que se atribua eax para um byte:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva o byte (ebp+8) no registrador ebx
-  Intel $8803. \ mov [ebx],al ; -> atribui o al para o endereço de ebx
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva o byte (ebp+8) no registrador ebx
+  Decodifique $8803. \ mov [ebx],al ; -> atribui o al para o endereço de ebx
 
 Etapas para que se atribua eax para um detector;
 Etapas para que se atribua eax para um ponteiro;
 Etapas para que se atribua eax para um número:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva o número (ebp+8) no registrador ebx
-  Intel $8903. \ mov [ebx],eax ; -> atribui eax ao endereço de ebx
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva o número (ebp+8) no registrador ebx
+  Decodifique $8903. \ mov [ebx],eax ; -> atribui eax ao endereço de ebx
 
 Etapas para que se atribua eax para um word:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva a word (ebp+8) no registrador ebx
-  Intel $668903. \ mov [ebx],ax ; -> atribui o ax para o endereço do ebx
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva a word (ebp+8) no registrador ebx
+  Decodifique $668903. \ mov [ebx],ax ; -> atribui o ax para o endereço do ebx
 
 Etapas para que se atribua um byte para uma word:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva o byte (ebp+8) no registrador eax
-  Intel $660FB600. \ movzx eax,byte ptr [eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; ->  salva a word (ebp+12) no registrador ebx
-  Intel $668903. \ mov [ebx],ah
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o byte (ebp+8) no registrador eax
+  Decodifique $660FB600. \ movzx eax,byte ptr [eax]
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; ->  salva a word (ebp+12) no registrador ebx
+  Decodifique $668903. \ mov [ebx],ah
 
 Etapas para que se atribua um byte para um segundo byte:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva o 1º byte (ebp+8) no registrador eax
-  Intel $8A00. \ mov al,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva o 2º byte (ebp+12) no registrador ebx
-  Intel $8803. \ mov [ebx],al
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o 1º byte (ebp+8) no registrador eax
+  Decodifique $8A00. \ mov al,[eax]
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva o 2º byte (ebp+12) no registrador ebx
+  Decodifique $8803. \ mov [ebx],al
 
 Etapas para que se atribua um byte para eax:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva o byte (ebp+8) no registrador eax
-  Intel $0FB603. \ movzx eax,byte ptr [ebx]
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva o byte (ebp+8) no registrador eax
+  Decodifique $0FB603. \ movzx eax,byte ptr [ebx]
 
 Etapas para que se atribua um byte para um número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva o byte (ebp+8) no registrador eax
-  Intel $0FB600. \ movzx eax,byte ptr [eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; ->  salva o número (ebp+12) no registrador ebx
-  Intel $8903. \ mov [ebx],eax
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o byte (ebp+8) no registrador eax
+  Decodifique $0FB600. \ movzx eax,byte ptr [eax]
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; ->  salva o número (ebp+12) no registrador ebx
+  Decodifique $8903. \ mov [ebx],eax
 
 Etapas para que se translate um byte using um translation texto hexadecimal:
-  Intel $8B8D08000000. \ mov ecx,[ebp+8]  ; -> salva o endereço do byte (ebp+8) no registrador ecx 
-  Intel $8B01. \ mov eax,[ecx] \ o byte
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] salva o endereço da tabela (ebp+12) no registrador ebx 
-  Intel $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
-  Intel $D7. \ xlat al,[ebx]
-  Intel $8901. \ mov [ecx],eax
+  Decodifique $8B8D08000000. \ mov ecx,[ebp+8]  ; -> salva o endereço do byte (ebp+8) no registrador ecx 
+  Decodifique $8B01. \ mov eax,[ecx] \ o byte
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] salva o endereço da tabela (ebp+12) no registrador ebx 
+  Decodifique $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
+  Decodifique $D7. \ xlat al,[ebx]
+  Decodifique $8901. \ mov [ecx],eax
 
 Etapas para que se posicione um subtexto sobre uma string:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o subtexto
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ a string
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o subtexto
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] \ a string
   \ atribua o caractere inicial desta string ao caractere inicial deste subtexto
-  Intel $8B8B00000000. \ mov ecx,[ebx+0] \ o caractere inicial da string
-  Intel $898800000000. \ mov [eax+0],ecx \ o caractere inicial do subtexto
+  Decodifique $8B8B00000000. \ mov ecx,[ebx+0] \ o caractere inicial da string
+  Decodifique $898800000000. \ mov [eax+0],ecx \ o caractere inicial do subtexto
   \ atribua o caractere inicial desta string menos 1 ao caractere final deste subtexto
-  Intel $49. \ dec ecx
-  Intel $898804000000. \ mov [eax+4],ecx \ o caractere final deste subtexto
+  Decodifique $49. \ dec ecx
+  Decodifique $898804000000. \ mov [eax+4],ecx \ o caractere final deste subtexto
 
 Etapas para que se escolha aleatoriamente uns twips entre uns min twips e uns segundo twips; \ precisa de tudo isso? ***
 Etapas para que se escolha aleatoriamente um número entre uns min twips e uns segundo twips;
@@ -373,38 +373,38 @@ Etapas para que se defina um número para something entre um segundo número e um 
 Etapas para que se escolha aleatoriamente um número aleatório entre um min número e um max número:
   Atribua o endereçamento deste seed para EAX.
   \ atribua address of randseed A ecx
-  Intel $8BC8. \ mov ecx,eax
+  Decodifique $8BC8. \ mov ecx,eax
   \ calculate zero based max
-  Intel $8B8510000000. \ mov eax,[ebp+16] \ o max
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o min
-  Intel $2B03. \ sub eax,[ebx]
-  Intel $40. \ inc eax
+  Decodifique $8B8510000000. \ mov eax,[ebp+16] \ o max
+  Decodifique $8B00. \ mov eax,[eax]
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] \ o min
+  Decodifique $2B03. \ sub eax,[ebx]
+  Decodifique $40. \ inc eax
   \ ajuste randseed
-  Intel $691105840808. \ imul edx,[ecx],134775813
-  Intel $42. \ inc edx
-  Intel $8911. \ mov [ecx],edx
+  Decodifique $691105840808. \ imul edx,[ecx],134775813
+  Decodifique $42. \ inc edx
+  Decodifique $8911. \ mov [ecx],edx
   \ mul adjusted randseed pelo zero based max
-  Intel $F7E2. \ mul edx
+  Decodifique $F7E2. \ mul edx
   \ adicione o min para an-zero base o número
-  Intel $0313. \ adicione edx,[ebx] o min
+  Decodifique $0313. \ adicione edx,[ebx] o min
   \ store o result
-  Intel $8B9D08000000. \ mov ebx,[ebp+08] \ o número aleatório
-  Intel $8913. \ mov [ebx],edx
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+08] \ o número aleatório
+  Decodifique $8913. \ mov [ebx],edx
   Atribua o número aleatório ao número deste contexto.
 
 Etapas para que se multiplique um ponteiro por um número;
 Etapas para que se multiplique um número por um segundo número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
-  Intel $F72B.\ mul [ebx] \ means mul eax,[ebx] but é weird form
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8903. \ mov [ebx],eax
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o número
+  Decodifique $8B00. \ mov eax,[eax]
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
+  Decodifique $F72B.\ mul [ebx] \ means mul eax,[ebx] but é weird form
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Decodifique $8903. \ mov [ebx],eax
 
 Etapas para que se negate um número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
-  Intel $F718.\ neg [eax]
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o número
+  Decodifique $F718.\ neg [eax]
 
 Etapas para que se negate um par de números:
   Negate o número X deste par de números.
@@ -436,300 +436,300 @@ Etapas para que se reassocie um ponteiro usando um quantidade de bytes:
   \Se a função falhar e você não tiver especificado HEAP_GENERATE_EXCEPTIONS nas dwFlags (o que é o caso aqui), o valor de retorno será NULL.
 
 Etapas para que se mostre olá mundo no console:
-  Intel $B403. \mov  ah,0x3
-  Intel $CD10. \int  0x10
-  Intel $B001. \mov  al,0x1
-  Intel $B30A. \mov  bl,0xa
-  Intel $B90B00BD13.  \mov  ecx,0x13bd000b
-  Intel $01B413CD10C34F. \add  DWORD PTR [ebx+edx*1+0x4fc310cd],esi
-  Intel $69206D756E64.  \ imul esp,DWORD PTR [eax],0x646e756d
-  Intel $6D. \  outs dx,DWORD PTR ds:[esi]
-  Intel $21. \   .byte 0x21
-  Intel $0D.  \   .byte 0xd
-  Intel $0A.  \   .byte 0xa
+  Decodifique $B403. \mov  ah,0x3
+  Decodifique $CD10. \int  0x10
+  Decodifique $B001. \mov  al,0x1
+  Decodifique $B30A. \mov  bl,0xa
+  Decodifique $B90B00BD13.  \mov  ecx,0x13bd000b
+  Decodifique $01B413CD10C34F. \add  DWORD PTR [ebx+edx*1+0x4fc310cd],esi
+  Decodifique $69206D756E64.  \ imul esp,DWORD PTR [eax],0x646e756d
+  Decodifique $6D. \  outs dx,DWORD PTR ds:[esi]
+  Decodifique $21. \   .byte 0x21
+  Decodifique $0D.  \   .byte 0xd
+  Decodifique $0A.  \   .byte 0xa
 
 Etapas para que se adicione um byte para um segundo byte:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o byte 67 8B 45 08
-  Intel $0FB600. \ movzx eax,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo byte 67 8B 5D 0C
-  Intel $0003. \ add [ebx],al
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o byte 67 8B 45 08
+  Decodifique $0FB600. \ movzx eax,[eax]
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo byte 67 8B 5D 0C
+  Decodifique $0003. \ add [ebx],al
 
 Etapas para que se adicione um byte para um número:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o byte
-  Intel $0FB600. \ movzx eax,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o número
-  Intel $0103. \ adicione [ebx],eax
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o byte
+  Decodifique $0FB600. \ movzx eax,[eax]
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] \ o número
+  Decodifique $0103. \ adicione [ebx],eax
 
 Etapas para que se adicione um número para um byte:
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o byte
-  Intel $0FB60B. \ movzx ecx,[ebx]
-  Intel $03C8. \ adicione ecx,eax
-  Intel $880B. \ mov [ebx],cl
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o número
+  Decodifique $8B00. \ mov eax,[eax]
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] \ o byte
+  Decodifique $0FB60B. \ movzx ecx,[ebx]
+  Decodifique $03C8. \ adicione ecx,eax
+  Decodifique $880B. \ mov [ebx],cl
 
 Etapas para que se adicione um número para um ponteiro;
 Etapas para que se adicione um número para um segundo número:
-\ poderia ser escrito também assim:  Intel $8B85080000008B008B9D0C0000000103.
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva o valor do endereço atual da pilha do processador + 8 no registrador de acumulação (eax)
-  Intel $8B00. \ mov eax,[eax] ; ->  load memory pointed to by accumulator into accumulator
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> load the current stack address + 12 into working register
-  Intel $0103. \ adicione [ebx],eax ; ->add accumulator to memory pointed to by working register
+\ poderia ser escrito também assim:  Decodifique $8B85080000008B008B9D0C0000000103.
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o valor do endereço atual da pilha do processador + 8 no registrador de acumulação (eax)
+  Decodifique $8B00. \ mov eax,[eax] ; ->  load memory pointed to by accumulator into accumulator
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> load the current stack address + 12 into working register
+  Decodifique $0103. \ adicione [ebx],eax ; ->add accumulator to memory pointed to by working register
 
 Etapas para que se conjuncione logicamente um byte com um segundo byte:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo byte
-  Intel $8A00. \ mov al,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $2003. \ e [ebx],al
+  Decodifique $8B850C000000. \ mov eax,[ebp+12] \ o segundo byte
+  Decodifique $8A00. \ mov al,[eax]
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $2003. \ e [ebx],al
 
 Etapas para que se conjuncione logicamente um byte com um número:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $2003. \ e [ebx],al
+  Decodifique $8B850C000000. \ mov eax,[ebp+12] \ o número
+  Decodifique $8B00. \ mov eax,[eax]
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $2003. \ e [ebx],al
 
 Etapas para que se conjuncione logicamente um número com um segundo número:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $2103. \ e [ebx],eax
+  Decodifique $8B850C000000. \ mov eax,[ebp+12] \ o segundo número
+  Decodifique $8B00. \ mov eax,[eax]
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Decodifique $2103. \ e [ebx],eax
 
 Etapas para que se disjuncione logicamente um byte com um segundo byte:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo byte
-  Intel $8A00. \ mov al,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $0803. \ ou [ebx],al
+  Decodifique $8B850C000000. \ mov eax,[ebp+12] \ o segundo byte
+  Decodifique $8A00. \ mov al,[eax]
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $0803. \ ou [ebx],al
 
 Etapas para que se disjuncione logicamente um byte com um número:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $0803. \ ou [ebx],al
+  Decodifique $8B850C000000. \ mov eax,[ebp+12] \ o número
+  Decodifique $8B00. \ mov eax,[eax]
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $0803. \ ou [ebx],al
 
 Etapas para que se disjuncione logicamente um número com um segundo número:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $0903. \ ou [ebx],eax
+  Decodifique $8B850C000000. \ mov eax,[ebp+12] \ o segundo número
+  Decodifique $8B00. \ mov eax,[eax]
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Decodifique $0903. \ ou [ebx],eax
 
 Etapas para que se disjuncione seletivamente um byte com um segundo byte:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ a segunda byte
-  Intel $8A00. \ mov al,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $3003. \ xor [ebx],al
+  Decodifique $8B850C000000. \ mov eax,[ebp+12] \ a segunda byte
+  Decodifique $8A00. \ mov al,[eax]
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $3003. \ xor [ebx],al
 
 Etapas para que se disjuncione seletivamente um byte com um número:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $3003. \ ou [ebx],al
+  Decodifique $8B850C000000. \ mov eax,[ebp+12] \ o número
+  Decodifique $8B00. \ mov eax,[eax]
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $3003. \ ou [ebx],al
 
 Etapas para que se disjuncione seletivamente um número com um segundo número:
-  Intel $8B850C000000. \ mov eax,[ebp+12] \ o segundo número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $3103. \ xor [ebx],eax
+  Decodifique $8B850C000000. \ mov eax,[ebp+12] \ o segundo número
+  Decodifique $8B00. \ mov eax,[eax]
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Decodifique $3103. \ xor [ebx],eax
 
 Etapas para que se avance um percorredor:
-  Intel $8B9D08000000. \ mov ebx,DWORD PTR [ebp+0x8] | mov ebx,[ebp+8]  \ salva o percorredor no registrador ebx
-  Intel $FF8314000000. \ inc DWORD PTR [ebx+0x14] | inc [ebx+20] \ aumenta o valor do caractere final deste segmento inicial deste percorredor.
-  Intel $FF8308000000. \ inc DWORD PTR [ebx+0x8] | inc [ebx+8] \ aumenta o valor do caractere inicial deste segmento final deste percorredor.
+  Decodifique $8B9D08000000. \ mov ebx,DWORD PTR [ebp+0x8] | mov ebx,[ebp+8]  \ salva o percorredor no registrador ebx
+  Decodifique $FF8314000000. \ inc DWORD PTR [ebx+0x14] | inc [ebx+20] \ aumenta o valor do caractere final deste segmento inicial deste percorredor.
+  Decodifique $FF8308000000. \ inc DWORD PTR [ebx+0x8] | inc [ebx+8] \ aumenta o valor do caractere inicial deste segmento final deste percorredor.
 
 Etapas para que se recue um percorredor:
-  Intel $8B9D08000000. \ mov ebx,[ebp+8]  \ salva o percorredor no registrador ebx
-  Intel $FF8B14000000. \ dec [ebx+20] \ reduz o valor do caractere final deste segmento inicial deste percorredor.
-  Intel $FF8B08000000. \ dec [ebx+8] \ reduz o valor do caractere inicial deste segmento final deste percorredor.
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8]  \ salva o percorredor no registrador ebx
+  Decodifique $FF8B14000000. \ dec [ebx+20] \ reduz o valor do caractere final deste segmento inicial deste percorredor.
+  Decodifique $FF8B08000000. \ dec [ebx+8] \ reduz o valor do caractere inicial deste segmento final deste percorredor.
 
 Etapas para que se compare uma string para uma segunda string usando uma quantidade de caracteres e uma segunda quantidade de caracteres e uma tabela de tradução (equal only):
-  Intel $8BB508000000. \ mov esi,[ebp+8] \ a string
-  Intel $8B36. \ mov esi,[esi] \ o caractere inicial desta string
-  Intel $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda string
-  Intel $8B3F. \ mov edi,[edi] \ o caractere inicial desta segunda string
-  Intel $8B8510000000. \ mov eax,[ebp+16] \ a quantidade de caracteres desta string
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9514000000. \ mov edx,[ebp+20] \ a quantidade de caracteres desta segunda string
-  Intel $8B12. \ mov edx,[edx]
-  Intel $3BD0. \ cmp eax,edx \ if o differ do quantidade de caracteres, diga não.
-  Intel $0F852B000000. \ jne [Se as condições acima não puderem ser satisfeitas, então:] Diga não. \ ************************************ was 2C
-  Intel $8BC8. \ mov ecx,eax \ atribua quantidade de caracteres A ecx 
-  Intel $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
-  Intel $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
+  Decodifique $8BB508000000. \ mov esi,[ebp+8] \ a string
+  Decodifique $8B36. \ mov esi,[esi] \ o caractere inicial desta string
+  Decodifique $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda string
+  Decodifique $8B3F. \ mov edi,[edi] \ o caractere inicial desta segunda string
+  Decodifique $8B8510000000. \ mov eax,[ebp+16] \ a quantidade de caracteres desta string
+  Decodifique $8B00. \ mov eax,[eax]
+  Decodifique $8B9514000000. \ mov edx,[ebp+20] \ a quantidade de caracteres desta segunda string
+  Decodifique $8B12. \ mov edx,[edx]
+  Decodifique $3BD0. \ cmp eax,edx \ if o differ do quantidade de caracteres, diga não.
+  Decodifique $0F852B000000. \ jne [Se as condições acima não puderem ser satisfeitas, então:] Diga não. \ ************************************ was 2C
+  Decodifique $8BC8. \ mov ecx,eax \ atribua quantidade de caracteres A ecx 
+  Decodifique $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
+  Decodifique $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
   \ loop:
-  Intel $85C9. \ test ecx,ecx
-  Intel $0F8424000000. \ jz say yes \ ************************************ was 25
+  Decodifique $85C9. \ test ecx,ecx
+  Decodifique $0F8424000000. \ jz say yes \ ************************************ was 25
    \ fetch e translate o current byte no segunda string
-  Intel $8A07. \ mov al,[edi]
-  Intel $D7. \ xlat al,[ebx]
-  Intel $C1E008. \ shl eax,8 C1 E0 08
+  Decodifique $8A07. \ mov al,[edi]
+  Decodifique $D7. \ xlat al,[ebx]
+  Decodifique $C1E008. \ shl eax,8 C1 E0 08
   \ fetch e translate o current byte no string
-  Intel $8A06. \ mov al,[esi]
-  Intel $D7. \ xlat al,[ebx]
+  Decodifique $8A06. \ mov al,[esi]
+  Decodifique $D7. \ xlat al,[ebx]
    \ compare o two translated bytes
-  Intel $38E0. \ cmp al,ah
-  Intel $0F8508000000. \ jne  Diga não. \ ************************************
-  Intel $46. \ inc esi
-  Intel $47. \ inc edi
-  Intel $49. \ dec ecx
-  Intel $E9DFFFFFFF. \ jmp loop \ ************************************ was DE
+  Decodifique $38E0. \ cmp al,ah
+  Decodifique $0F8508000000. \ jne  Diga não. \ ************************************
+  Decodifique $46. \ inc esi
+  Decodifique $47. \ inc edi
+  Decodifique $49. \ dec ecx
+  Decodifique $E9DFFFFFFF. \ jmp loop \ ************************************ was DE
   \ Diga não.:
-  Intel $C7C000000000. \ mov eax,0
-  Intel $E906000000. \ jmp end
+  Decodifique $C7C000000000. \ mov eax,0
+  Decodifique $E906000000. \ jmp end
   \DIGA SIM
-  Intel $C7C001000000. \ mov eax,1
+  Decodifique $C7C001000000. \ mov eax,1
 
  \ Rotina nova criada pelo Dahn - spanish strings 2 - which table to use?
 
 Etapas para que se compare uma string para uma segunda string usando uma quantidade de caracteres e uma segunda quantidade de caracteres e uma tabela de tradução devolvendo um número:
-  Intel $8BB508000000. \ mov esi,[ebp+8] \ a string
-  Intel $8B36. \ mov esi,[esi] \ o first do string
-  Intel $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda string
-  Intel $8B3F. \ mov edi,[edi] \ o first do segunda string
-  Intel $8B8510000000. \ mov eax,[ebp+16] \ a quantidade de caracteres do string
-  Intel $8B00. \ mov eax,[eax]
-  Intel $8B9514000000. \ mov edx,[ebp+20] \ a quantidade de caracteres do segunda string
-  Intel $8B12. \ mov edx,[edx]
-  Intel $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
-  Intel $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
+  Decodifique $8BB508000000. \ mov esi,[ebp+8] \ a string
+  Decodifique $8B36. \ mov esi,[esi] \ o first do string
+  Decodifique $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda string
+  Decodifique $8B3F. \ mov edi,[edi] \ o first do segunda string
+  Decodifique $8B8510000000. \ mov eax,[ebp+16] \ a quantidade de caracteres do string
+  Decodifique $8B00. \ mov eax,[eax]
+  Decodifique $8B9514000000. \ mov edx,[ebp+20] \ a quantidade de caracteres do segunda string
+  Decodifique $8B12. \ mov edx,[edx]
+  Decodifique $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
+  Decodifique $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
   \ obtenha o minimum quantidade de caracteres
-  Intel $8BC8. \ mov ecx,eax
-  Intel $3BCA. \ cmp ecx,edx
-  Intel $0F8602000000. \ jbe L2
-  Intel $8BCA. \ mov ecx,edx
+  Decodifique $8BC8. \ mov ecx,eax
+  Decodifique $3BCA. \ cmp ecx,edx
+  Decodifique $0F8602000000. \ jbe L2
+  Decodifique $8BCA. \ mov ecx,edx
   \ if o minimum quantidade de caracteres for 0, jump para L5
-  Intel $85C9. \ test ecx,ecx
-  Intel $0F8428000000. \ jz L5
+  Decodifique $85C9. \ test ecx,ecx
+  Decodifique $0F8428000000. \ jz L5
   \L2:
   \ loop:
   \ fetch e translate o current byte no string
-  Intel $8A06. \ mov al,[esi]
-  Intel $D7. \ xlat al,[ebx]
-  Intel $88C2. \ mov dl,al
+  Decodifique $8A06. \ mov al,[esi]
+  Decodifique $D7. \ xlat al,[ebx]
+  Decodifique $88C2. \ mov dl,al
   \ fetch e translate o current byte no segunda string
-  Intel $8A07. \ mov al,[edi]
-  Intel $D7. \ xlat al,[ebx]
-  Intel $88C6. \ mov dh,al
+  Decodifique $8A07. \ mov al,[edi]
+  Decodifique $D7. \ xlat al,[ebx]
+  Decodifique $88C6. \ mov dh,al
   \L3:
   \ compare o two translated bytes
-  Intel $38F2. \ cmp dl,dh
-  Intel $0F8510000000. \ jne L4
-  Intel $46. \ inc esi
-  Intel $47. \ inc edi
-  Intel $49. \ dec ecx
-  Intel $85C9. \ test ecx,ecx
-  Intel $0F8405000000. \ jz L4
-  Intel $E9DEFFFFFF. \ jmp L2
+  Decodifique $38F2. \ cmp dl,dh
+  Decodifique $0F8510000000. \ jne L4
+  Decodifique $46. \ inc esi
+  Decodifique $47. \ inc edi
+  Decodifique $49. \ dec ecx
+  Decodifique $85C9. \ test ecx,ecx
+  Decodifique $0F8405000000. \ jz L4
+  Decodifique $E9DEFFFFFF. \ jmp L2
   \L4:
   \ Carregue bytes para EAX e edx por final compare
-  Intel $0FB6C2. \ movzx eax,dl
-  Intel $0FB6D6. \ movzx edx,dh
+  Decodifique $0FB6C2. \ movzx eax,dl
+  Decodifique $0FB6D6. \ movzx edx,dh
   \L5:
   \ subtraia either o lengths ou os last dois bytes para abra o eax para <0, =0, >0
-  Intel $2BC2. \ sub eax,edx
-  Intel $8B9D1C000000. \ mov ebx,[ebp+28] \ o número
-  Intel $8903. \ mov [ebx],eax
+  Decodifique $2BC2. \ sub eax,edx
+  Decodifique $8B9D1C000000. \ mov ebx,[ebp+28] \ o número
+  Decodifique $8903. \ mov [ebx],eax
 
 Etapas para que se determine se um byte é um segundo byte:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $8A1B. \ mov bl,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o outro byte
-  Intel $3A19. \ cmp bl,[ecx]
-  Intel $0F8406000000. \ je over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
+  Decodifique $C7C001000000. \ mov eax,1 \ assume true
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $8A1B. \ mov bl,[ebx]
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] \ o outro byte
+  Decodifique $3A19. \ cmp bl,[ecx]
+  Decodifique $0F8406000000. \ je over o next 1 statement
+  Decodifique $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se um byte é maior que um segundo byte;
 Etapas para que se determine se um byte é maior do que um segundo byte:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $8A1B. \ mov bl,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
-  Intel $3A19. \ cmp bl,[ecx]
-  Intel $0F8706000000. \ ja over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
+  Decodifique $C7C001000000. \ mov eax,1 \ assume true
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $8A1B. \ mov bl,[ebx]
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
+  Decodifique $3A19. \ cmp bl,[ecx]
+  Decodifique $0F8706000000. \ ja over o next 1 statement
+  Decodifique $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se um byte é maior que um número;
 Etapas para que se determine se um byte é maior do que um número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $0FB61B. \ movzx ebx,byte ptr [ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8F06000000. \ jg over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
+  Decodifique $C7C001000000. \ mov eax,1 \ assume true
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $0FB61B. \ movzx ebx,byte ptr [ebx]
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] \ o número
+  Decodifique $3B19. \ cmp ebx,[ecx]
+  Decodifique $0F8F06000000. \ jg over o next 1 statement
+  Decodifique $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se um byte é maior do que ou igual para um segundo byte;
 Etapas para que se determine se um byte é maior que ou igual para um segundo byte;
 Etapas para que se determine se um byte é maior ou igual para um segundo byte:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $8A1B. \ mov bl,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
-  Intel $3A19. \ cmp bl,[ecx]
-  Intel $0F8306000000. \ ja over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
+  Decodifique $C7C001000000. \ mov eax,1 \ assume true
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $8A1B. \ mov bl,[ebx]
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
+  Decodifique $3A19. \ cmp bl,[ecx]
+  Decodifique $0F8306000000. \ ja over o next 1 statement
+  Decodifique $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se um byte é menor que um segundo byte;
 Etapas para que se determine se um byte é menor do que um segundo byte:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $8A1B. \ mov bl,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
-  Intel $3A19. \ cmp bl,[ecx]
-  Intel $0F8206000000. \ jb over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
+  Decodifique $C7C001000000. \ mov eax,1 \ assume true
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $8A1B. \ mov bl,[ebx]
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
+  Decodifique $3A19. \ cmp bl,[ecx]
+  Decodifique $0F8206000000. \ jb over o next 1 statement
+  Decodifique $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se um byte é menor que um número;
 Etapas para que se determine se um byte é menor do que um número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $0FB61B. \ movzx ebx,byte ptr [ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8C06000000. \ jl over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
+  Decodifique $C7C001000000. \ mov eax,1 \ assume true
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $0FB61B. \ movzx ebx,byte ptr [ebx]
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] \ o número
+  Decodifique $3B19. \ cmp ebx,[ecx]
+  Decodifique $0F8C06000000. \ jl over o next 1 statement
+  Decodifique $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se um byte é menor do que ou igual para um segundo byte;
 Etapas para que se determine se um byte é menor que ou igual para um segundo byte;
 Etapas para que se determine se um byte é menor ou igual para um segundo byte:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $8A1B. \ mov bl,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
-  Intel $3A19. \ cmp bl,[ecx]
-  Intel $0F8606000000. \ jbe over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
+  Decodifique $C7C001000000. \ mov eax,1 \ assume true
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $8A1B. \ mov bl,[ebx]
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] \ a segunda byte
+  Decodifique $3A19. \ cmp bl,[ecx]
+  Decodifique $0F8606000000. \ jbe over o next 1 statement
+  Decodifique $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se um byte é um número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
-  Intel $0FB61B. \ movzx ebx,byte ptr [ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8406000000. \ je over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
+  Decodifique $C7C001000000. \ mov eax,1 \ assume true
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o byte
+  Decodifique $0FB61B. \ movzx ebx,byte ptr [ebx]
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] \ o número
+  Decodifique $3B19. \ cmp ebx,[ecx]
+  Decodifique $0F8406000000. \ je over o next 1 statement
+  Decodifique $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se um detector é um número;
 Etapas para que se determine se um detector é um segundo detector;
 Etapas para que se determine se um ponteiro é um número;
 Etapas para que se determine se um ponteiro é um segunda ponteiro;
 Etapas para que se determine se um número é um segundo número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8B1B. \ mov ebx,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8406000000. \ je over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
+  Decodifique $C7C001000000. \ mov eax,1 \ assume true
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Decodifique $8B1B. \ mov ebx,[ebx]
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
+  Decodifique $3B19. \ cmp ebx,[ecx]
+  Decodifique $0F8406000000. \ je over o next 1 statement
+  Decodifique $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se um ponteiro é maior do que um segundo ponteiro;
 Etapas para que se determine se um número é maior do que um segundo número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8B1B. \ mov ebx,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8F06000000. \ jg over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
+  Decodifique $C7C001000000. \ mov eax,1 \ assume true
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Decodifique $8B1B. \ mov ebx,[ebx]
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
+  Decodifique $3B19. \ cmp ebx,[ecx]
+  Decodifique $0F8F06000000. \ jg over o next 1 statement
+  Decodifique $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se um ponteiro é maior do que ou igual para um segundo ponteiro;
 Etapas para que se determine se um ponteiro é maior que ou igual para um segundo ponteiro;
@@ -742,25 +742,25 @@ Etapas para que se determine se um número é maior que ou igual para um segundo n
 Etapas para que se determine se um número é igual ou maior do que um segundo número;
 Etapas para que se determine se um número é igual ou maior que um segundo número;
 Etapas para que se determine se um número é maior ou igual para um segundo número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8B1B. \ mov ebx,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8D06000000. \ jge over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
+  Decodifique $C7C001000000. \ mov eax,1 \ assume true
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Decodifique $8B1B. \ mov ebx,[ebx]
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
+  Decodifique $3B19. \ cmp ebx,[ecx]
+  Decodifique $0F8D06000000. \ jge over o next 1 statement
+  Decodifique $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se um ponteiro é menor do que um segundo ponteiro;
 Etapas para que se determine se um ponteiro é menor que um segundo ponteiro;
 Etapas para que se determine se um número é menor que um segundo número;
 Etapas para que se determine se um número é menor do que um segundo número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8B1B. \ mov ebx,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8C06000000. \ jl over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
+  Decodifique $C7C001000000. \ mov eax,1 \ assume true
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Decodifique $8B1B. \ mov ebx,[ebx]
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
+  Decodifique $3B19. \ cmp ebx,[ecx]
+  Decodifique $0F8C06000000. \ jl over o next 1 statement
+  Decodifique $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se um ponteiro é menor do que ou igual para um segundo ponteiro;
 Etapas para que se determine se um ponteiro é menor que ou igual para um segundo ponteiro;
@@ -770,111 +770,111 @@ Etapas para que se determine se um número é um segundo número ou menor;
 Etapas para que se determine se um número é menor do que ou igual para um segundo número;
 Etapas para que se determine se um número é menor que ou igual para um segundo número;
 Etapas para que se determine se um número é menor ou igual para um segundo número:
-  Intel $C7C001000000. \ mov eax,1 \ assume true
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8B1B. \ mov ebx,[ebx]
-  Intel $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
-  Intel $3B19. \ cmp ebx,[ecx]
-  Intel $0F8E06000000. \ jle over o next 1 statement
-  Intel $C7C000000000. \ mov eax,0 \ now it is false
+  Decodifique $C7C001000000. \ mov eax,1 \ assume true
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Decodifique $8B1B. \ mov ebx,[ebx]
+  Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] \ o segundo número
+  Decodifique $3B19. \ cmp ebx,[ecx]
+  Decodifique $0F8E06000000. \ jle over o next 1 statement
+  Decodifique $C7C000000000. \ mov eax,0 \ now it is false
 
 Etapas para que se determine se uma string está em branco:
   \ assume true
-  Intel $B801000000. \ mov eax,1
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ a string
+  Decodifique $B801000000. \ mov eax,1
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ a string
     \ if first for 0, exit
-  Intel $833B00. \ cmp [ebx],0
-  Intel $0F8410000000. \ je end
+  Decodifique $833B00. \ cmp [ebx],0
+  Decodifique $0F8410000000. \ je end
   \ if last for menor do que first, exit
-  Intel $8B5304. \ mov edx,[ebx+4] \ last ponteiro
-  Intel $3B13. \ cmp edx,[ebx]
-  Intel $0F8C05000000. \ jl end
+  Decodifique $8B5304. \ mov edx,[ebx+4] \ last ponteiro
+  Decodifique $3B13. \ cmp edx,[ebx]
+  Decodifique $0F8C05000000. \ jl end
   \Diga não.:
-  Intel $B800000000. \ mov eax,0
+  Decodifique $B800000000. \ mov eax,0
   \ END:
 
 Etapas para que se preencha bytes com um byte começando sob um ponteiro por um quantidade de bytes:
-  Intel $8BBD0C000000. \ mov edi,[ebp+12] \ o ponteiro
-  Intel $8B3F. \ mov edi,[edi]
-  Intel $8B8D10000000. \ mov ecx,[ebp+16] \ a contagem
-  Intel $8B09. \ mov ecx,[ecx]
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o byte
-  Intel $8A00. \ mov al,[eax]
-  Intel $FC. \ cld
-  Intel $F3AA. \ rep stosb
+  Decodifique $8BBD0C000000. \ mov edi,[ebp+12] \ o ponteiro
+  Decodifique $8B3F. \ mov edi,[edi]
+  Decodifique $8B8D10000000. \ mov ecx,[ebp+16] \ a contagem
+  Decodifique $8B09. \ mov ecx,[ecx]
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o byte
+  Decodifique $8A00. \ mov al,[eax]
+  Decodifique $FC. \ cld
+  Decodifique $F3AA. \ rep stosb
 
 Etapas para que se copie bytes desde um ponteiro para um segundo ponteiro por um quantidade de bytes:
     \ copie handling overlap com 1 byte moves
-  Intel $8BB508000000. \ mov esi,[ebp+8] \ o ponteiro
-  Intel $8B36. \ mov esi,[esi]
-  Intel $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda ponteiro
-  Intel $8B3F. \ mov edi,[edi]
-  Intel $8B8D10000000. \ mov ecx,[ebp+16] \ o número
-  Intel $8B09. \ mov ecx,[ecx]
+  Decodifique $8BB508000000. \ mov esi,[ebp+8] \ o ponteiro
+  Decodifique $8B36. \ mov esi,[esi]
+  Decodifique $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda ponteiro
+  Decodifique $8B3F. \ mov edi,[edi]
+  Decodifique $8B8D10000000. \ mov ecx,[ebp+16] \ o número
+  Decodifique $8B09. \ mov ecx,[ecx]
   \ check por something para copiar
-  Intel $81F900000000. \ cmp ecx,0
-  Intel $0F8E39000000. \ jle end
+  Decodifique $81F900000000. \ cmp ecx,0
+  Decodifique $0F8E39000000. \ jle end
   \ check por no overlap
-  Intel $3BF7. \ cmp esi,edi
-  Intel $0F8D24000000. \ jge forward
-  Intel $8BC6. \ mov eax,esi
-  Intel $03C1. \ adicione eax,ecx
-  Intel $3BC7. \ cmp eax,edi
-  Intel $0F8E18000000. \ jle forward
+  Decodifique $3BF7. \ cmp esi,edi
+  Decodifique $0F8D24000000. \ jge forward
+  Decodifique $8BC6. \ mov eax,esi
+  Decodifique $03C1. \ adicione eax,ecx
+  Decodifique $3BC7. \ cmp eax,edi
+  Decodifique $0F8E18000000. \ jle forward
   \ copia backward
-  Intel $03F1. \ adicione esi,ecx
-  Intel $4E. \ dec esi
-  Intel $03F9. \ adicione edi,ecx
-  Intel $4F. \ dec esi
+  Decodifique $03F1. \ adicione esi,ecx
+  Decodifique $4E. \ dec esi
+  Decodifique $03F9. \ adicione edi,ecx
+  Decodifique $4F. \ dec esi
   \ backward
-  Intel $8A16. \ mov dl,[esi]
-  Intel $8817. \ mov [edi],dl
-  Intel $4E. \ dec esi
-  Intel $4F. \ dec edi
-  Intel $49. \ dec ecx
-  Intel $0F85F3FFFFFF. \ jnz backward
-  Intel $E90D000000. \ jmp end
+  Decodifique $8A16. \ mov dl,[esi]
+  Decodifique $8817. \ mov [edi],dl
+  Decodifique $4E. \ dec esi
+  Decodifique $4F. \ dec edi
+  Decodifique $49. \ dec ecx
+  Decodifique $0F85F3FFFFFF. \ jnz backward
+  Decodifique $E90D000000. \ jmp end
   \ forward: copia forward
-  Intel $8A16. \ mov dl,[esi]
-  Intel $8817. \ mov [edi],dl
-  Intel $46. \ inc esi
-  Intel $47. \ inc edi
-  Intel $49. \ dec ecx
-  Intel $0F85F3FFFFFF. \ jnz forward
+  Decodifique $8A16. \ mov dl,[esi]
+  Decodifique $8817. \ mov [edi],dl
+  Decodifique $46. \ inc esi
+  Decodifique $47. \ inc edi
+  Decodifique $49. \ dec ecx
+  Decodifique $0F85F3FFFFFF. \ jnz forward
 
 Etapas para que se lance um subtexto sobre uma string: \assembly
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o subtexto
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ a string
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o subtexto
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] \ a string
   \ atribua o caractere inicial desta string ao first do subtexto
-  Intel $8B8B00000000. \ mov ecx,[ebx+0] \ o caractere inicial desta string
-  Intel $898800000000. \ mov [eax+0],ecx \ o first do subtexto
+  Decodifique $8B8B00000000. \ mov ecx,[ebx+0] \ o caractere inicial desta string
+  Decodifique $898800000000. \ mov [eax+0],ecx \ o first do subtexto
   \ atribua o caractere final desta string ao caractere final deste subtexto
-  Intel $8B8B04000000. \ mov ecx,[ebx+4] \ o last do string
-  Intel $898804000000. \ mov [eax+4],ecx \ o caractere final deste subtexto
+  Decodifique $8B8B04000000. \ mov ecx,[ebx+4] \ o last do string
+  Decodifique $898804000000. \ mov [eax+4],ecx \ o caractere final deste subtexto
 
 Etapas para que se divida um ponteiro por um número;
 Etapas para que se divida um número por um segundo número:
   Se o segundo número for 0, atribua o maior número ao número; saia.
-  Intel $8B8508000000. \ mov eax,[ebp+8] \ o número
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
-  Intel $8B00. \ mov eax,[eax]
-  Intel $99. \ cdq
-  Intel $F73B. \ div [ebx] \ means div eax,[ebx] but é weird form
-  Intel $8B9D08000000. \ mov ebx,[ebp+8] \ o número
-  Intel $8903. \ mov [ebx],eax
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o número
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
+  Decodifique $8B00. \ mov eax,[eax]
+  Decodifique $99. \ cdq
+  Decodifique $F73B. \ div [ebx] \ means div eax,[ebx] but é weird form
+  Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ o número
+  Decodifique $8903. \ mov [ebx],eax
 
 Etapas para que se divida um ponteiro por um número usando um quociente e um resto;
 Etapas para que se divida um número por um segundo número usando um quociente e um resto:
   Se o segundo número for 0, atribua o maior número ao quociente; atribua 0 ao resto; saia.
-  Intel $8B8508000000. \ mov eax,[ebp+8] ; -> salva o 1º número (epb+8) no registrador eax
-  Intel $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva o 2º número (epb+12) no registrador ebx
-  Intel $8B00. \ mov eax,[eax] 
-  Intel $99. \ cdq
-  Intel $F73B. \ idiv [ebx] ; -> é a mesma coisa que idiv eax,[ebx] mas está num formato estranho
-  Intel $8B9D10000000. \ mov ebx,[ebp+16] ; ->salva o quociente (ebp+16) no registrador ebx
-  Intel $8903. \ mov [ebx],eax ; -> salva eax no endereço de ebx
-  Intel $8B9D14000000. \ mov ebx,[ebp+20] ; ->salva o resto (ebp+20) no registrador ebx
-  Intel $8913. \ mov [ebx],edx ; -> salva o conteúdo de edx no registrador ebx
+  Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o 1º número (epb+8) no registrador eax
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva o 2º número (epb+12) no registrador ebx
+  Decodifique $8B00. \ mov eax,[eax] 
+  Decodifique $99. \ cdq
+  Decodifique $F73B. \ idiv [ebx] ; -> é a mesma coisa que idiv eax,[ebx] mas está num formato estranho
+  Decodifique $8B9D10000000. \ mov ebx,[ebp+16] ; ->salva o quociente (ebp+16) no registrador ebx
+  Decodifique $8903. \ mov [ebx],eax ; -> salva eax no endereço de ebx
+  Decodifique $8B9D14000000. \ mov ebx,[ebp+20] ; ->salva o resto (ebp+20) no registrador ebx
+  Decodifique $8913. \ mov [ebx],edx ; -> salva o conteúdo de edx no registrador ebx
 
 O som de aviso é uma wave igual a $524946463A02000057415645666D74201200000001000100401F0000401F000001000800000066616374040000000702000064617461070200007F7F807F7F807F7F808080807F807F7F80817F81817E7E827E7D847C79877D5F6D99B2A25D608269A5979869667F7D8D738C7D8C5E7E878F767A75868D84797278829A7D7E857A73929271657492907D7E7D787E8B887C758388827E817F7C7B89897C7A7E84838183827E7A8488877D7E8181808484817C7F84838181807E7F8283807E8081808182807F7F81818081807F7F8081818080807F7F808180807F80808080807F8080807F8080808080807F7F7F7F7F8080807F7F7F7C7B8182817C7B7D7E8082807D7D7C7F8281807F7C7D808082807E7E7E7D7E807D7B7C7B7D7D7B7A7979797875727269797A490F4571FFF4FF0C001297FBF492525BB0F5B26A001C69BEE5BA76476F9EBD953C3757BAC9BB705C7F9AA883645D7897AA9B806977959588696976999B83766F828C907F7375828E91877B757D868B837A757C858D8880787B8187847B7A7D8788807B79808486817D7C7F8384817D7C7F8484817B7B7D83847F7C7B7E8182827D7C7C8082817D7C7D7F81807F7D7D7F82817F7B7B7E8081807E7D7D7F80807E7D7D7E80807E7D7D7E7F807F7D7D7E7F807F7E7D7E7E80807F7E7D7E80807F7E7E7E7F7F7E7E7E7F7F7F7F7E7E7F7F807F7F7E7E7E7F8080807E7E7E80807F7E7E7F8081807F7F7E7F7F80807F7E7F8081807F7E7E7E80808080807F807F7F7F7F7F7F7F80808080807F7F7F808080807F80808180807F80808100.
 
