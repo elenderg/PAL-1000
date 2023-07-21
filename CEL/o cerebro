@@ -108,11 +108,12 @@ Um bucket# é um número.
 Um bit é uma unidade.
 
 Um percorredor é um estrutura com \ Não se esqueça de alterar as rotinas "avance um percorredor" e "recue um percorredor" se você alterar isso aqui
-  Um subtexto original, \ usado para verificar a string original
-  Um segmento final, \ último byte da string.
-  Um segmento inicial. \ primeiro byte da string
+  Um cópia da string original, \ usado para armazenar uma cópia da string original
+  Um segmento final, \ inicialmente igual à string original, ele armazena a última parte da string (diminuindo, portanto, de tamanho a cada vez que o percorredor é movido)
+  Um segmento inicial. \ inicialmente vazio, ele armazena a primeira/próxima palavra da string (quando o percorredor é movido)
   \ 
 
+Uma cópia da string original é um subtexto.
 Um segmento inicial é um subtexto.
 Um segmento final é um subtexto.
 
@@ -739,7 +740,7 @@ Etapas para que se limpe um par de números:
   Atribua 0 e 0 ao par de números.
 
 Etapas para que se limpe um percorredor:
-  Limpe o subtexto original deste percorredor.
+  Limpe a cópia da string original deste percorredor.
   Limpe o segmento final deste percorredor.
   Limpe o segmento inicial deste percorredor.
 
@@ -9033,12 +9034,12 @@ Etapas para que se centralize uma caixa de texto sobre uma localização:
   Arredonde a difference para o múltiplo imediato of a quantidade de twips/pixel .
   Mova a caixa de texto usando a difference.
 
-Etapas para que se atribua a first linha reta desse caixa de texto para uma string:
+Etapas para que se atribua a first linha reta dessa caixa de texto para uma string:
   Se a caixa de texto for inexistente, limpe a string; saia.
   Atribua a string desta first linha de texto desta caixa de texto à string.
   Remove o last byte desde a string.
 
-Etapas para que se atribua a first linha reta contendo texto desse caixa de texto para uma string:
+Etapas para que se atribua a first linha reta contendo texto dessa caixa de texto para uma string:
   \ *** new
   Limpe a string.
   Se a caixa de texto for inexistente, cancele.
@@ -9052,35 +9053,35 @@ Etapas para que se atribua a first linha reta contendo texto desse caixa de text
   Se a string estiver em branco, recomece.
   \Se a string não estiver em branco, pare.
 
-Etapas para que se atribua a globalized origem desse caixa de texto para uma localização:
+Etapas para que se atribua a globalized origem dessa caixa de texto para uma localização:
   Se a caixa de texto for inexistente, limpe a localização; saia.
   Atribua a origem desta caixa de texto à localização.
   Globalize a localização usando o canto superior esquerdo desta caixa de texto.
 
-Etapas para que se atribua a malha desse caixa de texto para uma malha:
+Etapas para que se atribua a malha dessa caixa de texto para uma malha:
   Se a caixa de texto for inexistente, limpe a malha; saia.
   Atribua a altura desta fonte desta caixa de texto times 4 ao número X desta malha.
   Atribua a altura desta fonte desta caixa de texto ao número Y desta malha.
 
-Etapas para que se atribua a normalized seleção desse caixa de texto para uma seleção:
+Etapas para que se atribua a normalized seleção dessa caixa de texto para uma seleção:
   Se a caixa de texto for inexistente, cancele.
   Atribua a seleção desta caixa de texto à seleção.
   Normalize a seleção.
 
-Etapas para que se atribua a contagem de linhas desse caixa de texto para uma contagem:
+Etapas para que se atribua a contagem de linhas dessa caixa de texto para uma contagem:
   Se a caixa de texto for inexistente, atribua 0 à contagem; saia.
   Se as linhas des textos desta caixa de texto estiverem vazias, atribua 0 à contagem; saia.
   Atribua o número da linha deste last linha de texto destas linhas des textos desta caixa de texto à contagem.
 
-Etapas para que se atribua a altura da linha desse caixa de texto para uma altura:
+Etapas para que se atribua a altura da linha dessa caixa de texto para uma altura:
   Se a caixa de texto for inexistente, atribua 0 ao altura; saia.
   Atribua a altura desta fonte desta caixa de texto ao altura.
 
-Etapas para que se atribua as linhas des textos/box desse caixa de texto para uma contagem:
+Etapas para que se atribua as linhas des textos/box dessa caixa de texto para uma contagem:
   Se a caixa de texto for inexistente, atribua 0 à contagem; saia.
   Atribua a altura desta caixa desta caixa de texto dividido pela altura da linha desta caixa de texto à contagem.
 
-Etapas para que se atribua a quantidade de caracteres selecionados desse caixa de texto para uma contagem:
+Etapas para que se atribua a quantidade de caracteres selecionados dessa caixa de texto para uma contagem:
   Atribua 0 à contagem.
   Se a caixa de texto for inexistente, cancele.
   Se nada estiver selecionado na caixa de texto, cancele.
@@ -9091,7 +9092,7 @@ Etapas para que se atribua a quantidade de caracteres selecionados desse caixa d
   Adicione a quantidade de caracteres deste subtexto para a contagem.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se atribua a selecionado contagem de linhas desse caixa de texto para uma contagem:
+Etapas para que se atribua a selecionado contagem de linhas dessa caixa de texto para uma contagem:
   Atribua 0 à contagem.
   Se a caixa de texto for inexistente, cancele.
   Atribua a normalized seleção desta caixa de texto a uma seleção.
@@ -9100,7 +9101,7 @@ Etapas para que se atribua a selecionado contagem de linhas desse caixa de texto
   Subtraia o anchor número da linha desta seleção desde a contagem.
   Se o cursor de texto número de coluna desta seleção não for 1, adicione 1 para a contagem.
 
-Etapas para que se atribua o painel de informações string desse caixa de texto para uma string:
+Etapas para que se atribua o painel de informações string dessa caixa de texto para uma string:
   Se a caixa de texto for inexistente, limpe a string; saia.
   Atribua a selecionado contagem de linhas desta caixa de texto a uma contagem.
   Se a contagem não for 0, format a contagem e "linha selecionada" ou "linhas selecionadas" à string; saia.
@@ -10404,7 +10405,7 @@ Etapas para que se lance um percorredor sobre um segundo percorredor:
   Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 
 Etapas para que se lance um percorredor sobre uma string:
-  Lance o subtexto original deste percorredor sobre a string.
+  Lance a cópia da string original deste percorredor sobre a string.
   Lance o segmento final deste percorredor sobre a string.
   Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
 
