@@ -131,7 +131,14 @@ Etapas para que se uppercase qualquer trecho selecionado em uma caixa de texto:
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se uppercase um byte:
-  Translate o byte using o tabela de caracteres maiúsculos ascii .
+  Translate o byte usando a tabela de caracteres maiúsculos ascii .
+  \ Decodifique $8B8508000000. \ mov eax,[ebp+8] \ Salva o caractere no registrador eax
+  \ Decodifique $803861. \ cmp byte ptr [eax],'a'  \ Compare the byte to the lowercase “a” character
+  \ Decodifique $0F820C000000. \ jb END \  If the byte is before the “a” in the ASCII chart, jump to the end; we’re done
+  \ Decodifique $80387A. \ cmp byte ptr [eax],'z' \ Compare the byte to the lowercase “z” character
+  \ Decodifique $0F8703000000. \ ja END \ If the byte is after the “z” in the ASCII chart, jump to the end; we’re done
+  \ Decodifique $802820. \ sub byte ptr [eax],$20 \ Subtract hex 20 (decimal 32) from the byte
+  \ END
 
 Etapas para que se anteponha um byte para uma string:
   Atribua a quantidade de caracteres desta string a uma quantidade de caracteres armazenados.
