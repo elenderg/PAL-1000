@@ -1,0 +1,277 @@
+O número identificador do modo de dispositivo da impressora é um número identificador.
+A área de impressão é um canvas.
+A seta do mouse é um cursor.
+
+Etapas para que se read stdin para um trecho:
+  Limpe o erro do fluxo de entrada/saída.
+  Limpe o trecho.
+  Encontre uma string usando o environment variáveis e "CONTENT_LENGTH".
+  Se a string estiver em branco, atribua "Ocorreu um erro na hora de obter o conteúdo de comprimento CONTENT_LENGTH." ao erro do fluxo de entrada/saída; retorne.
+  Converta a string a uma quantidade de caracteres.
+  Se a quantidade de caracteres for 0, retorne.
+  Reassocie o caractere inicial deste trecho usando a quantidade de caracteres.
+  Processe "kernel32.dll" "ReadFile" com \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-readfile
+  \Lê dados do arquivo especificado ou dispositivo de entrada / saída (E / S). As leituras ocorrem na posição especificada pelo ponteiro do arquivo, se suportado pelo dispositivo.
+    O stdin handle [hFile] \Um identificador para o dispositivo (por exemplo, um arquivo, fluxo de arquivo, disco físico, volume, buffer de console, unidade de fita, soquete, recurso de comunicação, slot de correio ou canal).
+    e O caractere inicial deste trecho [lpBuffer] \Um ponteiro para o buffer que recebe os dados lidos de um arquivo ou dispositivo.
+    e A quantidade de caracteres [nNumberOfBytesToRead] \O número máximo de bytes a serem lidos.
+    e O endereçamento desse número [lpNumberOfBytesRead] \Um ponteiro para a variável que recebe o número de bytes lidos ao usar um parâmetro hFile síncrono.
+    e nil. [lpOverlapped] \Um ponteiro para uma estrutura OVERLAPPED é necessário se o parâmetro hFile foi aberto com FILE_FLAG_OVERLAPPED, caso contrário, pode ser NULL.
+  Se o número não for a quantidade de caracteres, atribua "Erro ao ler dados do fluxo de entrada padrão stdin." ao erro do fluxo de entrada/saída; limpe o trecho; retorne.
+  Atribua o caractere inicial deste trecho mais a quantidade de caracteres menos 1 ao caractere final deste trecho.
+
+Etapas para que se read uma string desde um console:
+  Read o console à string.
+  
+Etapas para que se atualize o cursor:
+  Crie um evento.
+  Atribua "mostrar seta" à categoria deste evento.
+  \Atribua "cursor" à categoria deste evento.
+  Se a tecla Alt estiver sendo pressionada, acione o detector de tecla Alt deste evento.
+  Se a tecla Ctrl estiver sendo pressionada, acione o detector de tecla Ctrl deste evento.
+  Se a tecla Shift estiver sendo pressionada, acione o detector de tecla Shift deste evento.
+  Atribua a localização deste mouse à localização deste evento.
+  Enfileire o evento.
+
+Etapas para que se carregue um endereço completo para um trecho;
+Etapas para que se read um endereço completo para um trecho:
+  Limpe o erro do fluxo de entrada/saída.
+  Isole o endereço completo.
+  Anexe o caractere NULL o endereço completo.
+  Se o endereço completo não estiver no sistema de arquivos, atribua "O Arquivo: '" junto com o endereço completo seguido de "' não existe." ao erro do fluxo de entrada/saída; retorne.
+  \ abra o endereço completo para read-write mode.
+  Processe "kernel32.dll" "CreateFileA" com \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-createfilea
+  \Cria ou abre um arquivo ou dispositivo de E/S. 
+  \Os dispositivos de E / S mais comumente usados são os seguintes: 
+  \arquivo, fluxo de arquivo, diretório, disco físico, volume, buffer de console, unidade de fita, recurso de comunicação, slot de correio e canal. 
+  \A função retorna um identificador que pode ser usado para acessar o arquivo ou dispositivo para vários tipos de E / S, 
+  \dependendo do arquivo ou dispositivo e dos sinalizadores e atributos especificados.
+    O caractere inicial deste endereço completo [lpFileName] \ O nome do arquivo ou dispositivo a ser criado ou aberto. 
+    \Você pode usar barras (/) ou barras invertidas (\) neste nome.
+    e -2147483648 [dwDesiredAccess = GENERIC_READ] \O acesso solicitado ao arquivo ou dispositivo, que pode ser resumido como leitura, gravação, ambos,  etc).
+    e 3 [dwShareMode = FILE_SHARE_READ+FILE_SHARE_WRITE] \O modo de compartilhamento solicitado do arquivo ou dispositivo, que pode ser lido, escrito, ambos, excluir, todos estes ou nenhum
+    \FILE_SHARE_READ = 0x00000001 Ativa operações subsequentes de abertura em um arquivo ou dispositivo para solicitar acesso de leitura.
+    \Caso contrário, outros processos não poderão abrir o arquivo ou dispositivo se solicitarem acesso de leitura.
+    \Se este sinalizador não for especificado, mas o arquivo ou dispositivo tiver sido aberto para acesso de leitura, a função falhará.
+    \FILE_SHARE_WRITE x00000002 Ativa operações subsequentes de abertura em um arquivo ou dispositivo para solicitar acesso de gravação.
+    \Caso contrário, outros processos não poderão abrir o arquivo ou dispositivo se solicitarem acesso de gravação.
+    \Se este sinalizador não for especificado, mas o arquivo ou dispositivo tiver sido aberto para acesso de gravação ou tiver um mapeamento de arquivo com acesso de gravação, a função falhará.
+    e 0 [lpSecurityAttributes] \Um ponteiro para uma estrutura SECURITY_ATTRIBUTES 
+    \ https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)
+    \que contém dois membros de dados separados, mas relacionados: 
+    \um descritor de segurança opcional e um valor booleano que determina se o identificador retornado pode ser herdado por processos filho.
+    \Este parâmetro pode ser NULL.
+    \Se este parâmetro for NULL, o identificador retornado por CreateFile não pode ser herdado por nenhum processo filho que o aplicativo possa criar 
+    \e o arquivo ou dispositivo associado ao identificador retornado obtém um descritor de segurança padrão.
+    e 3 [dwCreationDisposition = OPEN_EXISTING] \Uma ação a ser executada em um arquivo ou dispositivo existente ou não.
+    \Para dispositivos diferentes de arquivos, este parâmetro geralmente é definido como OPEN_EXISTING.
+    \OPEN_EXISTING 3  Abre um arquivo ou dispositivo, apenas se existir.
+    \Se o arquivo ou dispositivo especificado não existir, a função falha e o código do último erro é definido como ERROR_FILE_NOT_FOUND (2).
+    e 0 [dwFlagsAndAttributes] \Os atributos e sinalizadores de arquivo ou dispositivo, FILE_ATTRIBUTE_NORMAL sendo o valor padrão mais comum para arquivos.
+    e 0 [hTemplateFile] \Um identificador válido para um arquivo de modelo com o direito de acesso GENERIC_READ. 
+    \O arquivo de modelo fornece atributos de arquivo e atributos estendidos para o arquivo que está sendo criado.
+    \Este parâmetro pode ser NULL.
+    devolvendo um número identificador. \Se a função for bem-sucedida, o valor de retorno será um identificador aberto para o arquivo, dispositivo, canal nomeado ou slot de correio especificado.
+    \Se a função falhar, o valor de retorno é INVALID_HANDLE_VALUE.
+  Se o número identificador for -1 [INVALID_HANDLE_VALUE], atribua "Ocorreu um erro ao tentar abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; retorne.
+  Processe "kernel32.dll" "GetFileSize" com \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-getfilesize
+  \ Recupera o tamanho do arquivo especificado, em bytes.
+    O número identificador [hFile] \Um identificador para o arquivo.
+    e nil [lpFileSizeHigh] \Um ponteiro para a variável onde a dword de alta ordem do tamanho do arquivo é retornada. E
+    \ste parâmetro pode ser NULL se o aplicativo não exigir a dword de ordem superior.
+    devolvendo um size. \Se a função for bem-sucedida, o valor de retorno será a palavra dupla de ordem inferior do tamanho do arquivo e, 
+    \se lpFileSizeHigh for diferente de NULL, a função colocará a palavra dupla de ordem superior do tamanho do arquivo na variável apontada por aquele parâmetro.
+  Reassocie o caractere inicial deste trecho usando o size.
+  Atribua o caractere inicial deste trecho mais o size menos 1 ao caractere final deste trecho.
+  Processe "kernel32.dll" "ReadFile" com \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-readfile
+  \Lê dados do arquivo especificado ou dispositivo de entrada / saída (E / S). As leituras ocorrem na posição especificada pelo ponteiro do arquivo, se suportado pelo dispositivo.
+    O número identificador [hFile] \Um identificador para o dispositivo (por exemplo, um arquivo, fluxo de arquivo, disco físico, volume, buffer de console, unidade de fita, soquete, recurso de comunicação, slot de correio ou canal).
+    e O caractere inicial deste trecho [lpBuffer] \Um ponteiro para o buffer que recebe os dados lidos de um arquivo ou dispositivo.
+    e O size [nNumberOfBytesToRead] \O número máximo de bytes a serem lidos.
+    e O endereçamento desse número [lpNumberOfBytesRead] \Um ponteiro para a variável que recebe o número de bytes lidos ao usar um parâmetro hFile síncrono.   
+    e 0 [lpOverlapped] \Um ponteiro para uma estrutura OVERLAPPED é necessário se o parâmetro hFile foi aberto com FILE_FLAG_OVERLAPPED, caso contrário, pode ser NULL.
+    devolvendo o número. \Se a função for bem-sucedida, o valor de retorno será diferente de zero (VERDADEIRO).
+  Processe "kernel32.dll" "CloseHandle" com \ https://docs.microsoft.com/pt-br/windows/win32/api/handleapi/nf-handleapi-closehandle
+  \Fecha um identificador de objeto aberto.
+  \Em geral, CloseHandle invalida o identificador do objeto especificado, diminui a contagem do identificador do objeto e executa verificações de retenção do objeto. 
+  \Depois que o último identificador para um objeto é fechado, o objeto é removido do sistema. .
+    o número identificador.[hObject] \Um identificador válido para um objeto aberto.
+    \Se o aplicativo estiver sendo executado em um depurador, a função lançará uma exceção se receber um valor de identificador inválido ou um valor de pseudo-identificador. 
+    \Isso pode acontecer se você fechar um identificador duas vezes ou se você chamar CloseHandle em um identificador retornado pela função FindFirstFile em vez de chamar a função FindClose.
+  Se o número não for 0, retorne.
+  Atribua "Ocorreu um erro ao tentar ler o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
+
+Etapas para que se carregue um endereço completo para uma imagem;
+Etapas para que se read um endereço completo para uma imagem:
+  Read o endereço completo a um trecho.
+  Se o erro do fluxo de entrada/saída não estiver em branco, esvazie a imagem; retorne.
+  Crie a imagem usando o trecho.
+
+Etapas para que se read um texto retornado desde um terminal:
+  Se o terminal for inexistente, limpe o texto retornado; retorne.
+  Desmanche all eventos.
+  Limpe o texto retornado deste terminal.
+  Adicione um quora para o terminal.
+  Atribua "> " à string deste quora. \ isso aqui pode ajudar
+  Atribua a input cor deste terminal à cor deste quora.
+  Mostre o terminal.
+  Execute eventos usando o terminal.
+  \ mostre o terminal.
+  Atribua o texto retornado deste terminal ao texto retornado.
+  Remove algum tipo de leading noise desde o texto retornado.
+  Remove algum tipo de trailing noise desde o texto retornado.
+  Desmanche all eventos.
+  \ questionable below
+  Crie um evento.
+  Atribua "clique" à categoria deste evento.
+  Atribua a localização deste mouse à localização deste evento.
+  Enfileire o evento.
+  Atualize o cursor. 
+
+Etapas para que se read um detector desde um console:
+  Read uma string desde o console.
+  Converta a string para o detector.
+
+Etapas para que se read uma fração desde um console:
+  Read uma string desde o console.
+  Converta a string para a fração.
+
+Etapas para que se read um número desde um console:
+  Read uma string desde o console.
+  Converta a string para o número.
+
+Etapas para que se read um arquivo para um trecho:
+  Limpe o erro do fluxo de entrada/saída.
+  Processe "kernel32.dll" "GetFileSize" com \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-getfilesize
+  \ Recupera o tamanho do arquivo especificado, em bytes.
+    O arquivo [hFile] \ Um identificador para o arquivo.
+    e nil [lpFileSizeHigh] \ Um ponteiro para a variável onde a dword de alta ordem do tamanho do arquivo é retornada. 
+    \Este parâmetro pode ser NULL se o aplicativo não exigir a dword de ordem superior.
+    devolvendo um size. \o valor de retorno é uma dword de ordem inferior do tamanho do arquivo
+  Reassocie o caractere inicial deste trecho usando o size.
+  Atribua o caractere inicial deste trecho mais o size menos 1 ao caractere final deste trecho.
+  Processe "kernel32.dll" "ReadFile" com \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-readfile
+  \ Lê dados do arquivo especificado ou dispositivo de entrada/saída (E/S). 
+  \As leituras ocorrem na posição especificada pelo ponteiro do arquivo, se suportado pelo dispositivo.
+    O arquivo [hFile] \ Um identificador para o arquivo,
+    e O caractere inicial deste trecho [lpBuffer] \ Um ponteiro para o buffer que recebe os dados lidos de um arquivo
+    e O size [nNumberOfBytesToRead] \ O número máximo de bytes a serem lidos.
+    e O endereçamento desse número [lpNumberOfBytesRead] \ Um ponteiro para a variável que recebe o número de bytes lidos ao usar um parâmetro hFile síncrono.
+    e 0 [lpOverlapped] \ Um ponteiro para uma estrutura OVERLAPPED é necessário se o parâmetro hFile foi aberto com FILE_FLAG_OVERLAPPED, caso contrário, pode ser NULL.
+    \ https://docs.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-overlapped
+    devolvendo um número resultante. \Se a função for bem-sucedida, o valor de retorno será diferente de zero (VERDADEIRO).
+  Se o número resultante for 0, atribua "Ocorreu um erro ao tentar ler o arquivo." ao erro do fluxo de entrada/saída; retorne.
+
+Etapas para que se read a Bíblia:
+  Se a Bíblia não for inexistente, retorne.
+  Extraia um endereço da pasta desde o endereço completo deste module.
+  Comece. [a executar o código abaixo]
+    Se o endereço da pasta estiver em branco, retorne.
+    Atribua o endereço da pasta seguido de "Bíblia.txt" a um endereço completo.
+    Se o endereço completo estiver no sistema de arquivos, read a Bíblia usando o endereço completo; retorne.
+    Extraia o endereço da pasta desde o endereço da pasta.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se read a Bíblia usando um endereço completo:
+  Se o Bíblia não for inexistente, retorne.
+  Read o endereço completo a um trecho.
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Aloque memória para o Bíblia.
+  Lance um percorredor sobre o trecho.
+  Comece. [a executar o código abaixo]
+    Se o segmento final deste percorredor estiver em branco, retorne.
+    Aloque memória para um verse. Posponha o verse para os verses desta Bíblia.
+    Mova o percorredor (caixa de texto arquivo rules).
+    Atribua o segmento inicial deste percorredor à string deste verse.
+    Remove algum tipo de leading noise desde a string deste verse.
+    Remove algum tipo de trailing noise desde a string deste verse.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se read um byte desde um console:
+  Read uma string desde o console.
+  Se a string estiver em branco, atribua o caractere null ao byte; retorne.
+  Atribua o conteúdo deste caractere inicial desta string ao byte.
+
+Etapas para que se read um console para uma string:
+  Se o console for inexistente, limpe a string; retorne.
+  Desmanche all eventos.
+  Limpe o texto retornado deste console.
+  Mostre o console.
+  Execute eventos usando o console.
+  Atribua o texto retornado deste console à string.
+  Desmanche all eventos.
+  Atualize o cursor.
+
+Etapas para que se atribua a localização deste mouse para uma localização:
+  Processe "user32.dll" "GetCursorPos" com \ https://docs.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-getcursorpos
+  \ Recupera a posição do cursor do mouse, nas coordenadas da tela.
+    O endereçamento desta localização. [lpPoint] \ Um ponteiro para uma estrutura POINT que recebe as coordenadas da tela do cursor.
+    \ https://docs.microsoft.com/pt-br/previous-versions/dd162805(v=vs.85)
+  Processe "user32.dll" "ScreenToClient" com \ https://docs.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-screentoclient
+  \ A função ScreenToClient converte as coordenadas da tela de um ponto especificado na tela em coordenadas da área do cliente.
+    A janela principal do programa [hWnd]  \Um identificador para a janela cuja área do cliente será usada para a conversão.
+    e O endereçamento desta localização. \ caso a janela principal esteja em um segundo monitor.
+    \ Um ponteiro para uma estrutura POINT que especifica as coordenadas da tela a serem convertidas.
+    \ https://docs.microsoft.com/pt-br/previous-versions/dd162805(v=vs.85)
+  Processe "gdi32.dll" "DPtoLP" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-dptolp
+  \ A função DPtoLP converte as coordenadas do dispositivo em coordenadas lógicas. 
+  \A conversão depende do modo de mapeamento do contexto do dispositivo, das configurações das origens e extensões da janela e da janela de visualização e da transformação do mundo.
+    O tela canvas [hdc] \ Um identificador para o contexto do dispositivo.
+    e O endereçamento desta localização [lppt] \ Um ponteiro para uma matriz de estruturas POINT. 
+    \As coordenadas x e y contidas em cada estrutura POINT serão transformadas.
+    \ https://docs.microsoft.com/pt-br/previous-versions/dd162805(v=vs.85)
+    e 1. [c] \ O número de pontos na matriz.
+
+Etapas para que se abra um arquivo usando um endereço completo e uns milliseconds:
+  Start um temporizador.
+  Comece. [a executar o código abaixo]
+    Abra o arquivo usando o endereço completo.
+    Se o erro do fluxo de entrada/saída estiver em branco, retorne.
+    Se os intervalos deste temporizador forem greater do que os milliseconds, retorne.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se abra um arquivo usando um endereço completo:
+  Limpe o erro do fluxo de entrada/saída.
+  Extraia um endereço da pasta desde o endereço completo.
+  Se o endereço da pasta não estiver no sistema de arquivos, atribua "A Pasta: " junto com o endereço da pasta seguido de " não existe." ao erro do fluxo de entrada/saída; retorne.
+  Ligue o endereço completo para read-write mode.
+  Isole o endereço completo.
+  Anexe o caractere NULL o endereço completo.
+  Processe "kernel32.dll" "CreateFileA" com \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-createfilea
+  \Cria ou abre um arquivo ou dispositivo de E/S. 
+    O caractere inicial deste endereço completo  [lpFileName] \ O nome do arquivo ou dispositivo a ser criado ou aberto. 
+    \Você pode usar barras (/) ou barras invertidas (\) neste nome.
+    e -1073741824 [dwDesiredAccess = GENERIC_READ+GENERIC_WRITE]  \ O acesso solicitado ao arquivo ou dispositivo, que pode ser resumido como leitura, gravação, ou ambos.
+    e 0  [dwShareMode] \O modo de compartilhamento solicitado do arquivo ou dispositivo, que pode ser lido, escrito, ambos, excluir, todos ou nenhum. 
+    \Os pedidos de acesso a atributos ou atributos estendidos não são afetados por este sinalizador.
+    \O valor 0 impede que outros processos abram esse arquivo ou dispositivo se solicitarem acesso de exclusão, leitura ou gravação.
+  \Se este parâmetro for 0 e CreateFile for bem-sucedido, o arquivo ou dispositivo não pode ser compartilhado e não pode ser aberto novamente até que o identificador para o arquivo ou dispositivo seja fechado.   
+    e 0 [lpSecurityAttributes] \Um ponteiro para uma estrutura SECURITY_ATTRIBUTES que contém dois membros de dados separados, mas relacionados: 
+    \ https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)
+    \um descritor de segurança opcional e um valor booleano que determina se o identificador retornado pode ser herdado por processos filho.
+    \Este parâmetro pode ser NULL.
+    \Se este parâmetro for NULL, o identificador retornado por CreateFile não pode ser herdado por nenhum processo filho que o aplicativo possa criar 
+    \e o arquivo ou dispositivo associado ao identificador retornado obtém um descritor de segurança padrão.
+    e 4 [dwCreationDisposition = OPEN_ALWAYS] \Uma ação a ser executada em um arquivo ou dispositivo existente ou não.
+    \Para dispositivos diferentes de arquivos, este parâmetro geralmente é definido como OPEN_EXISTING.
+    \ OPEN_ALWAYS Abre um arquivo, sempre.; Se o arquivo especificado existir, a função será bem-sucedida
+    e -2147483520 [dwFlagsAndAttributes = FILE_FLAG_WRITE_THROUGH ou FILE_ATTRIBUTE_NORMAL] 
+    e 0 [hTemplateFile] \Um identificador válido para um arquivo de modelo com o direito de acesso GENERIC_READ. 
+    \O arquivo de modelo fornece atributos de arquivo e atributos estendidos para o arquivo que está sendo criado.
+    \Este parâmetro pode ser NULL.
+    \Ao abrir um arquivo existente, CreateFile ignora este parâmetro
+    devolvendo o arquivo.\Se a função for bem-sucedida, o valor de retorno será um identificador aberto para o arquivo, dispositivo, canal nomeado ou slot de correio especificado.
+    \Se a função falhar, o valor de retorno é -1 (INVALID_HANDLE_VALUE).
+  Se o arquivo for -1 [INVALID_HANDLE_VALUE], atribua "Erro ao abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; retorne.
+
+O module é um estrutura com
+  Um número identificador,
+  Um endereço completo,
+  Um endereço da pasta,
+  Um root endereço da pasta, \ uma pasta acima do qual o exe está sendo executado. exemplo: C:\1\2\a.exe o endereço seria c:\1\
+  Um nome do arquivo s/ extensão denominado nome.
+
+O mouse é um estrutura com
+  Uma tecla denominado botão esquerdo, 
+  Uma tecla denominado botão direito.
+  \ e uma tecla denominada roda do mouse.

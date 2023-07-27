@@ -1,0 +1,886 @@
+\ copyright © 2006, 2017 a sociedade osmosiana - o editor de código
+
+Etapas para que se adicione para uns blocos:
+  Crie um bloco.
+  Posponha o bloco para os blocos.
+
+Etapas para que se posponha uns blocos para umas linhas des textos:
+    Obtenha um bloco desde os blocos.
+    Se o bloco for inexistente, retorne.
+    Posponha as linhas des textos deste bloco para as linhas des textos.
+  Recomece. [percorra novamente o código acima]
+
+Um bloco é uma coisa com 
+  Um nome e 
+  Umas linhas des textos.
+
+Etapas para que se avance um subtexto (past um qualifier):
+    Se o conteúdo deste caractere inicial deste subtexto for o retorno de carro, retorne.
+    Se o conteúdo deste caractere inicial deste subtexto for o parênteses esquerdo, adicione 1 para uma contagem.
+    Se o conteúdo deste caractere inicial deste subtexto for o parênteses direito, subtraia 1 desde a contagem.
+    Adicione 1 para o caractere inicial deste subtexto.
+    Se a contagem for 0, retorne.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se avance um subtexto (past um remark):
+    Se o conteúdo deste caractere inicial deste subtexto for o retorno de carro, retorne.
+    Se o conteúdo deste caractere inicial deste subtexto for o colchete esquerdo, adicione 1 para uma contagem.
+    Se o conteúdo deste caractere inicial deste subtexto for o colchete direito, subtraia 1 desde a contagem.
+    Adicione 1 para o caractere inicial deste subtexto.
+    Se a contagem for 0, retorne.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se avance um subtexto (past uma string):
+    Se o conteúdo deste caractere inicial deste subtexto for o retorno de carro, retorne.
+    Adicione 1 para o caractere inicial deste subtexto.
+    Se o conteúdo deste caractere inicial deste subtexto não for as aspas duplas, recomece.
+    Adicione 1 para o caractere inicial deste subtexto.
+    Se o conteúdo deste caractere inicial deste subtexto não for as aspas duplas, retorne.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se comment algum tipo de linhas des textos selecionadas em um source:
+  Se o source for inexistente, retorne.
+  Comece. [a executar o código abaixo]
+    Obtenha uma linha de texto desde as linhas des textos desta caixa de texto deste source.
+    Se a linha de texto for inexistente, retorne.
+    Se a linha de texto of a caixa de texto deste source não estiver selecionado, recomece.
+    Se a linha de texto estiver em branco, recomece.
+    Anteponha "\" para a string deste linha de texto.
+  Recomece. [percorra novamente o código acima]
+
+A cor dos comentários é uma cor.
+
+Etapas para que se converta um source para um trecho:
+  Se o source for inexistente, limpe o trecho; retorne.
+  Extraia o trecho desde a caixa de texto deste source.
+
+Etapas para que se crie um bloco:
+  Aloque memória para o bloco.
+
+Etapas para que se crie uns blocos usando umas linhas des textos:
+  Obtenha uma linha de texto desde as linhas des textos.
+  Se a linha de texto for inexistente, retorne.
+  \ Se a string deste linha de texto começa com algum tipo de definition starter, adicione para os blocos. \ did not handle multi-line conjunto definitions
+  Se a string deste linha de texto has neither código nor comment sobre it, adicione para os blocos.
+  Se os blocos estiverem vazios, adicione para os blocos.
+  Copie a linha de texto para uma segunda linha de texto.
+  Posponha a segunda linha de texto para as linhas des textos deste last bloco destes blocos.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se crie um source usando um trecho:
+  Aloque memória para o source.
+  Atribua a caixa deste pad a uma caixa.
+  Atribua a altura desta caixa dividido pela altura desta fonte padrão times a altura desta fonte padrão a uma altura.
+  Atribua a coordenada Y do canto superior esquerdo desta caixa mais a altura à coordenada Y do canto inferior direito desta caixa.
+  Centralize a caixa na caixa deste pad (verticalmente).
+  Crie a caixa de texto deste source.
+  Atribua a caixa à caixa desta caixa de texto deste source.
+  Atribua a cor preta à cor do pincel desta caixa de texto deste source.
+  Atribua a fonte padrão à fonte desta caixa de texto deste source.
+  Atribua 24 pixels à margem desta caixa de texto deste source.
+  Atribua o trecho ao caixa de texto deste source.
+  Ligue o detector de rolagem horizontal desta caixa de texto deste source.
+  Ligue o detector de rolagem vertical desta caixa de texto deste source.
+
+Etapas para que se determine se um trecho é caixa de texto-format:
+  Lance um subtexto sobre o trecho.
+  Comece. [a executar o código abaixo]
+    Se o caractere inicial deste subtexto for maior do que o caractere final deste subtexto, diga sim.
+    Se o conteúdo deste caractere inicial deste subtexto não for algum tipo de caixa de texto byte, diga não.
+    Adicione 1 para o caractere inicial deste subtexto.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se determine se um byte é algum tipo de caixa de texto byte:
+  Se o byte for imprimível, diga sim.
+  Se o byte for o tabulação horizontal, diga sim.
+  Se o byte for a quebra de linha, diga sim.
+  Se o byte for o retorno de carro, diga sim.
+[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+
+Etapas para que se determine se uma linha de texto é algum tipo de comment:
+  Se a linha de texto for inexistente, diga não.
+  Lance um subtexto sobre a string deste linha de texto.
+  Comece. [a executar o código abaixo]
+    Se o subtexto estiver em branco, diga não.
+    Se o conteúdo deste caractere inicial deste subtexto for a barra invertida, diga sim.
+    Se o conteúdo deste caractere inicial deste subtexto for irrelevante, adicione 1 para o caractere inicial deste subtexto; recomece.
+[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+
+Etapas para que se determine se something está selecionado em um source:
+  Se o source for inexistente, diga não.
+  Se something estiver selecionado na caixa de texto deste source, diga sim.
+[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+
+Etapas para que se determine se um source é alterado:
+  Se o source for inexistente, diga não.
+  Se o somente leitura detector deste source estiver ativo, diga não.
+  Se a caixa de texto deste source foi alterado, diga sim.
+[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+
+Etapas para que se determine se um source é somente leitura:
+  Se o source for inexistente, diga não.
+  Se o somente leitura detector deste source estiver ativo, diga sim.
+[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+
+Etapas para que se determine se uma localização está em um source:
+  Se o source for inexistente, diga não.
+  Se a localização estiver na caixa de texto deste source, diga sim.
+[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+
+Etapas para que se determine se uma string has neither código nor comment sobre it:
+  Isole a string.
+  Remove algum tipo de leading noise desde a string.
+  Remove algum tipo de trailing noise desde a string.
+  Se a string estiver em branco, diga sim.
+[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+
+Etapas para que se determine se uma string does start com algum tipo de artigo definido; \ creio que isto deveria istar no agrupador
+Etapas para que se determine se uma string começa com algum tipo de artigo definido: \função não utilizada, será removida na próxima versão
+  Se a string começa com "o ", diga sim.
+  Se a string começa com "a ", diga sim.
+  Se a string começa com "os ", diga sim.
+  Se a string começa com "as ", diga sim.
+[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+
+Etapas para que se determine se uma string does start com algum tipo de definition starter; \função não utilizada, será removida na próxima versão
+Etapas para que se determine se uma string começa com algum tipo de definition starter: \ era utilizada na função de criação de blocos a partir de linhas. 
+  \ foi removido por não funcionar com estruturas de várias linhas (conjuntos) 
+  Se a string começa com "an ", diga sim.
+  Se a string começa com "some ", diga sim.
+  Se a string começa com "to ", diga sim.
+  Se a string começa com "the ", diga sim.
+[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+
+Etapas para que se determine se uma string does start com algum tipo de artigo indefinido;
+Etapas para que se determine se uma string começa com algum tipo de artigo indefinido:
+  Se a string começa com "an ", diga sim.
+  Se a string começa com "an ", diga sim.
+  Se a string começa com "some ", diga sim.
+  \Se a string começa com "um ", diga sim.
+  \Se a string começa com "uma ", diga sim.
+  \Se a string começa com "uns ", diga sim.
+  \Se a string começa com "umas ", diga sim.
+[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+
+Etapas para que se determine se uma string does start com algum tipo de rotina starter;
+Etapas para que se determine se uma string começa com algum tipo de rotina starter:
+  Se a string começa com "to ", diga sim.
+  \Se a string começa com "Etapas para que se ", diga sim.
+  \Se a string começa com "Passos necessárias para que se ", diga sim.
+  \Se a string começa com "Etapas necessárias para que ", diga sim.
+  \Se a string começa com "Passos necessárias para que ", diga sim.
+[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+
+Etapas para que se pinte uma linha de texto of um source (colorized):
+  \Escreva "pinte uma linha de texto of um source (colorized)" para "c:\0\log.txt".
+  Se o source for inexistente, retorne.
+  Obtenha um subtexto usando a linha de texto e o source (commented part).
+  Se o subtexto estiver em branco, pinte a linha de texto of a caixa de texto deste source (editing); retorne.
+  Pinte a caixa de seleção pela linha de texto of a caixa de texto deste source.
+  Obtenha uma caixa usando a linha de texto e a caixa de texto deste source.
+  \ uncommented part 
+  Lance um segundo subtexto sobre a string deste linha de texto.
+  Atribua o caractere inicial deste subtexto menos 1 ao caractere final deste segundo subtexto.
+  Pinte o segundo subtexto na caixa com a cor preta e a fonte desta caixa de texto deste source e o alinhamento desta caixa de texto deste source.
+  \ (commented part)
+  Obtenha uma largura usando o segundo subtexto e o memory canvas e a fonte desta caixa de texto deste source.
+  Adicione a largura para a coordenada X do canto superior esquerdo desta caixa.
+  Pinte o subtexto na caixa com a cor dos comentários e a fonte desta caixa de texto deste source e o alinhamento desta caixa de texto deste source.
+
+Etapas para que se pinte um source:
+  Se o source for inexistente, retorne.
+  Cubra somente fora de a caixa desta caixa de texto deste source.
+  Se o colorized detector deste source estiver ativo, pinte o source (colorized); retorne.
+  Pinte o source (not colorized).
+
+Etapas para que se pinte um source (colorized):
+  Se o source for inexistente, retorne.
+  Obtenha uma linha de texto desde as linhas des textos desta caixa de texto deste source.
+  Se a linha de texto for inexistente, pare.
+  Se a linha de texto of a caixa de texto deste source não for visível, recomece.
+  Pinte a linha de texto of o source (colorized).
+  Recomece. [percorra novamente o código acima]
+  Pinte o cursor de texto na caixa de texto deste source.
+
+Etapas para que se pinte um source (not colorized):
+  Se o source for inexistente, retorne.
+  Pinte a caixa de texto deste source (editing).
+
+Etapas para que se finalize o editor:
+
+Etapas para que se obtenha um first linha de texto e um last linha de texto usando um número de folhas e um source:
+  Se o source for inexistente, esvazie o first linha de texto; esvazie o last linha de texto; retorne.
+  Atribua o normalized seleção desta caixa de texto deste source a uma seleção.
+  Atribua a anchor número da linha desta seleção a um número da linha.
+  Adicione o número de folhas menos 1 times a número de linhas/folha deste source para o número da linha.
+  Obtenha a first linha de texto usando o número da linha e a caixa de texto deste source.
+  Atribua o número da linha mais a número de linhas/folha deste source menos 1 a um segundo número da linha.
+  Limite o segundo número da linha para 1 e o número de linhas do cursor desta seleção.
+  Obtenha a last linha de texto usando o segundo número da linha e a caixa de texto deste source.
+
+Etapas para que se obtenha o painel de informações por um source:
+  Se o source for inexistente, limpe a string deste painel de informações; retorne.
+  Atribua o painel de informações string desta caixa de texto deste source à string deste painel de informações.
+  Se o somente leitura detector desta source estiver ativo, posponha " (s)" para a string deste painel de informações.
+
+Etapas para que se obtenha um subtexto usando uma linha de texto e um source (commented part):
+  Se o source for inexistente, limpe o subtexto; retorne.
+  Se a linha de texto for inexistente, limpe o subtexto; retorne.
+  Lance o subtexto sobre a string deste linha de texto.
+  Comece. [a executar o código abaixo]
+    Se o conteúdo deste caractere inicial deste subtexto for o retorno de carro, limpe o subtexto; pare.
+    Se o conteúdo deste caractere inicial deste subtexto for a barra invertida, pare.
+    Se o conteúdo deste caractere inicial deste subtexto for as aspas duplas, avance o subtexto (past uma string); recomece.
+    Se o conteúdo deste caractere inicial deste subtexto for o parênteses esquerdo, avance o subtexto (past um qualifier); recomece.
+    Se o conteúdo deste caractere inicial deste subtexto for o colchete esquerdo, avance o subtexto (past um remark); recomece.
+    Adicione 1 para o caractere inicial deste subtexto.
+  Recomece. [percorra novamente o código acima]
+  Subtraia 1 desde o caractere final deste subtexto. \ assim o return byte não é desenhado
+
+Etapas para que se execute capitalize usando um source:
+  Se nada estiver selecionado no source, avise; retorne.
+  Mostre no painel de informações "Colocando 1ª letra do texto em maiúsculas...".
+  Execute capitalize usando a caixa de texto deste source.
+  Mostre o ambiente de trabalho com "Colocado".
+
+Etapas para que se execute verificação ortográfica usando um source:
+  Carregue o dicionário léxico.
+  Se o dicionário léxico for inexistente, mostre erro "Não foi possível encontrar nenhum arquivo de léxico."; retorne.
+  Atribua "verificação ortográfica" ao modo de localização de texto.
+  Limpe a última operação desta caixa de texto deste source.
+  Atribua 1 ao find anchor.
+  Encontre o next misspelling na caixa de texto deste source usando um detector.
+  Se o detector não estiver ativo, avise; mostre o ambiente de trabalho com "Pronto"; retorne.
+  Role a caixa de texto deste source para o cursor de texto e centralize-o.
+  Mostre o ambiente de trabalho com "Encontrado".
+
+Etapas para que se execute comment usando um source:
+  Se nada estiver selecionado no source, avise; retorne.
+  Relembre a caixa de texto deste source com "comment".
+  Comment algum tipo de linhas des textos selecionadas no source.
+  Square para cima algum tipo de seleção na caixa de texto deste source.
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se efetue cópias usando um source:
+  Se nada estiver selecionado no source, avise; retorne.
+  Mostre no painel de informações "Copiando...".
+  efetue cópias usando a caixa de texto deste source.
+  Mostre o ambiente de trabalho com "Copiado".
+
+Etapas para que se execute cut usando um source:
+  Se nada estiver selecionado no source, avise; retorne.
+  Mostre no painel de informações "Recortando...".
+  Execute cut usando a caixa de texto deste source.
+  Mostre o ambiente de trabalho com "Recortado".
+
+Etapas para que se execute deciframento usando um source:
+  Se nada estiver selecionado no source, avise; retorne.
+  Peça "Senha?".
+  Se o texto do campo estiver em branco, mostre erro "Senha não pode ficar em branco."; retorne.
+  Mostre no painel de informações "Resolvendo...".
+  Extraia um trecho desde a caixa de texto deste source (trecho selecionado).
+  Decifre o trecho com o texto do campo.
+  Se o erro do fluxo de entrada/saída não estiver em branco, mostre erro o erro do fluxo de entrada/saída; retorne.
+  Atribua o trecho sobre a área de transferência do Windows.
+  Mostre o ambiente de trabalho com "Salvo na área de transferência".
+
+Etapas para que se execute encrypt usando um source:
+  Se nada estiver selecionado no source, avise; retorne.
+  Peça "Passphrase?".
+  Se o texto do campo estiver em branco, mostre erro "Passphrase não pode ser em branco."; retorne.
+  Mostre no painel de informações "Misturando dados...".
+  Extraia um trecho desde a caixa de texto deste source (trecho selecionado).
+  Encrypt o trecho com o texto do campo.
+  Se o erro do fluxo de entrada/saída não estiver em branco, mostre erro o erro do fluxo de entrada/saída; retorne.
+  Atribua o trecho sobre a área de transferência do Windows.
+  Mostre o ambiente de trabalho com "Na área de transferência".
+
+Etapas para que se execute um evento usando um source (finding - pressionamento de tecla - tecla backspace):
+  Se o texto pesquisado estiver em branco, avise; retorne.
+  Remove o last byte desde o texto pesquisado.
+  Encontre next usando a caixa de texto deste source e um detector.
+  Se o detector não estiver ativo, avise.
+  Se o texto pesquisado estiver em branco, atribua o find anchor ao cursor de texto desta caixa de texto deste source; desvencilhe-se de a caixa de texto deste source.
+  Role a caixa de texto deste source para o cursor de texto e centralize-o.
+  Mostre o ambiente de trabalho com "Buscando...".
+
+Etapas para que se execute um evento usando um source (finding - pressionamento de teclas de letras, números e demais sinais gráficos):
+  Posponha o byte deste evento para o texto pesquisado.
+  Atribua o find anchor a um anchor.
+  Atribua o anchor desta caixa de texto deste source ao find anchor.
+  Encontre next usando a caixa de texto deste source e um detector.
+  Atribua o anchor ao find anchor.
+  Se o detector não estiver ativo, avise; remove o last byte desde o texto pesquisado; retorne.
+  Role a caixa de texto deste source para o cursor de texto e centralize-o.
+  Mostre o ambiente de trabalho com "Buscando...".
+
+Etapas para que se execute um evento usando um source (finding - pressionamento de tecla):
+  Se o byte deste evento for imprimível, execute o evento usando o source (finding - pressionamento de teclas de letras, números e demais sinais gráficos); retorne.
+  Se a tecla deste evento for a tecla backspace, execute o evento usando o source (finding - pressionamento de tecla - tecla backspace); retorne.
+  Se a tecla deste evento for a tecla Shift, retorne.
+  Relinquish control.
+
+Etapas para que se execute um evento usando um source (finding - clique):
+  Relinquish control.
+
+Etapas para que se execute um evento usando um source (finding - atualização de tela):
+  Mostre o ambiente de trabalho com "Buscando...".
+
+Etapas para que se execute um evento usando um source (finding - clique direito):
+  Relinquish control.
+
+Etapas para que se execute um evento usando um source (finding - mostrar seta):
+  Mostre a seta do mouse.
+
+Etapas para que se execute um evento usando um source (finding):
+  Se a categoria deste evento for "pressionamento de tecla", execute o evento usando o source (finding - pressionamento de tecla); retorne.
+  Se a categoria deste evento for "clique", execute o evento usando o source (finding - clique); retorne.
+  Se a categoria deste evento for "atualização de tela", execute o evento usando o source (finding - atualização de tela); retorne.
+  Se a categoria deste evento for "clique direito", execute o evento usando o source (finding - clique direito); retorne.
+  Se a categoria deste evento for "mostrar seta", execute o evento usando o source (finding - mostrar seta); retorne.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - tecla backspace):
+  Oculte o cursor.
+  Se não existir something para backspace na caixa de texto deste source, avise; retorne.
+  Execute o evento usando a caixa de texto deste source (tecla backspace).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - tecla Delete):
+  Oculte o cursor.
+  Se não existir something para remove na caixa de texto deste source, avise; retorne.
+  Execute o evento usando a caixa de texto deste source (tecla Delete).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - seta pra baixo):
+  Oculte o cursor.
+  Execute o evento usando a caixa de texto deste source (seta pra baixo).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - tecla End):
+  Oculte o cursor.
+  Execute o evento usando a caixa de texto deste source (tecla End).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - tecla Enter):
+  Oculte o cursor.
+  Execute o evento usando a caixa de texto deste source (tecla Enter).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - tecla Esc):
+  Execute o evento usando a caixa de texto deste source (tecla Esc).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - tecla Home):
+  Oculte o cursor.
+  Execute o evento usando a caixa de texto deste source (tecla Home).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - seta esquerda):
+  Oculte o cursor.
+  Execute o evento usando a caixa de texto deste source (seta esquerda).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - tecla Page Down):
+  Oculte o cursor.
+  Execute o evento usando a caixa de texto deste source (tecla Page Down).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - tecla Page Up):
+  Oculte o cursor.
+  Execute o evento usando a caixa de texto deste source (tecla Page Up).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - caracteres gráficos):
+  Oculte o cursor.
+  Execute o evento usando a caixa de texto deste source (caracteres gráficos).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - seta direita):
+  Oculte o cursor.
+  Execute o evento usando a caixa de texto deste source (seta direita).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - tecla Tab):
+  Oculte o cursor.
+  Execute o evento usando a caixa de texto deste source (tecla Tab).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla - seta pra cima):
+  Oculte o cursor.
+  Execute o evento usando a caixa de texto deste source (seta pra cima).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (pressionamento de tecla):
+  Se o byte deste evento for imprimível, execute o evento usando o source (pressionamento de tecla - caracteres gráficos); retorne.
+  Se a tecla deste evento for a tecla backspace, execute o evento usando o source (pressionamento de tecla - tecla backspace); retorne.
+  Se a tecla deste evento for a tecla Delete, execute o evento usando o source (pressionamento de tecla - tecla Delete); retorne.
+  Se a tecla deste evento for a seta pra baixo, execute o evento usando o source (pressionamento de tecla - seta pra baixo); retorne.
+  Se a tecla deste evento for a tecla End, execute o evento usando o source (pressionamento de tecla - tecla End); retorne.
+  Se a tecla deste evento for a tecla Enter, execute o evento usando o source (pressionamento de tecla - tecla Enter); retorne.
+  Se a tecla deste evento for a tecla Esc, execute o evento usando o source (pressionamento de tecla - tecla Esc); retorne.
+  Se a tecla deste evento for a tecla Home, execute o evento usando o source (pressionamento de tecla - tecla Home); retorne.
+  Se a tecla deste evento for a seta pra esquerda, execute o evento usando o source (pressionamento de tecla - seta esquerda); retorne.
+  Se a tecla deste evento for a tecla PgDn, execute o evento usando o source (pressionamento de tecla - tecla Page Down); retorne.
+  Se a tecla deste evento for a tecla PgUp, execute o evento usando o source (pressionamento de tecla - tecla Page Up); retorne.
+  Se a tecla deste evento for a seta pra direita, execute o evento usando o source (pressionamento de tecla - seta direita); retorne.
+  Se a tecla deste evento for a tecla Tab, execute o evento usando o source (pressionamento de tecla - tecla Tab); retorne.
+  Se a tecla deste evento for a seta pra cima, execute o evento usando o source (pressionamento de tecla - seta pra cima); retorne.
+
+Etapas para que se execute um evento usando um source (clique):
+  Se a localização deste evento não estiver no source, retorne.
+  Rastreie o source usando o evento.
+  Atualize o cursor.
+
+Etapas para que se execute um evento usando um source (clique duplo):
+  Execute o evento usando a caixa de texto deste source (clique duplo).
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute um evento usando um source (clique direito):
+  Se a localização deste evento não estiver no source, retorne.
+  Mostre o hand cursor.
+  Role o source usando o evento.
+  Atualize o cursor.
+
+Etapas para que se execute um evento usando um source (mostrar seta do mouse):
+  Se a localização deste evento estiver no source, mostre o i-beam cursor; retorne.
+  Mostre a seta do mouse.
+
+Etapas para que se execute eventos usando um source (finding):
+    Desenfileire um evento.
+    Se o evento for inexistente, retorne.
+    Execute o evento usando o source (finding).
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se execute extract globals usando um source:
+  Mostre no painel de informações "Extraindo variáveis globais...".
+  Crie uns blocos usando as linhas des textos desta caixa de texto deste source.
+  Scrub os blocos por extracting.
+  Nomeie os blocos.
+  Classifique os blocos.
+  Comece. [a executar o código abaixo]
+    Obtenha um bloco desde os blocos.
+    Se o bloco for inexistente, pare.
+    Se a first linha de texto deste bloco for inexistente, recomece.
+    Se a string desta first linha de texto deste bloco não começa com algum tipo de artigo definido, recomece.
+    Converta as linhas des textos deste bloco para uma string.
+    Posponha a string para um clipboard string.
+  Recomece. [percorra novamente o código acima]
+  Atribua o clipboard string sobre a área de transferência do Windows.
+  Destrua os blocos.
+  Mostre o ambiente de trabalho com "Extraído para a área de transferência".
+
+Etapas para que se transcreva cabeçalhos de rotina usando um source:
+  Mostre no painel de informações "Extraindo cabeçalhos de rotina...".
+  Crie uns blocos usando as linhas des textos desta caixa de texto deste source.
+  Scrub os blocos por extracting.
+  Nomeie os blocos.
+  Classifique os blocos.
+  Comece. [a executar o código abaixo]
+    Obtenha um bloco desde os blocos.
+    Se o bloco for inexistente, pare.
+    Se a first linha de texto deste bloco for inexistente, recomece.
+    Se a string desta first linha de texto deste bloco não começa com algum tipo de rotina starter, recomece.
+    Posponha a string desta first linha de texto deste bloco junto com a quebra de linha para um clipboard string.
+  Recomece. [percorra novamente o código acima]
+  Atribua o clipboard string sobre a área de transferência do Windows.
+  Destrua os blocos.
+  Mostre o ambiente de trabalho com "Salvo na Área de Transferência".
+
+Etapas para que se execute extract types usando um source:
+  Mostre no painel de informações "Extraindo tipos...".
+  Crie uns blocos usando as linhas des textos desta caixa de texto deste source.
+  Scrub os blocos por extracting.
+  Nomeie os blocos.
+  Classifique os blocos.
+  Comece. [a executar o código abaixo]
+    Obtenha um bloco desde os blocos.
+    Se o bloco for inexistente, pare.
+    Se a first linha de texto deste bloco for inexistente, recomece.
+    Se a string desta first linha de texto deste bloco não começa com algum tipo de artigo indefinido, recomece. \verificar
+    Converta as linhas des textos deste bloco para uma string.
+    Posponha a string para um clipboard string.
+  Recomece. [percorra novamente o código acima]
+  Atribua o clipboard string sobre a área de transferência do Windows.
+  Destrua os blocos.
+  Mostre o ambiente de trabalho com "Tipos na área de transferência".
+
+Etapas para que se tente encontrar usando um source:
+  Limpe a última operação desta caixa de texto deste source.
+  Desvencilhe-se de a caixa de texto deste source.
+  Role a caixa de texto deste source para o cursor de texto.
+  Atribua o anchor desta caixa de texto deste source ao find anchor.
+  Limpe o texto pesquisado.
+  Atribua "localização de texto" ao modo de localização de texto.
+  Mostre o ambiente de trabalho com "Buscando...".
+  Oculte o cursor.
+  Execute eventos usando o source (finding).
+  Mostre o ambiente de trabalho com painel de informações.
+  Atualize o cursor.
+
+Etapas para que se encontre novamente usando um source:
+  Se o modo de localização de texto for "localização de texto", encontre novamente usando o source (localização de texto); retorne.
+  Se o modo de localização de texto for "verificação ortográfica", encontre novamente usando o source (verificação ortográfica); retorne.
+  Avise.
+
+Etapas para que se encontre novamente usando um source (verificação ortográfica):
+  Limpe a última operação desta caixa de texto deste source.
+  Atribua o cursor de texto desta caixa de texto deste source ao find anchor.
+  Encontre o next misspelling na caixa de texto deste source usando um detector.
+  Se o detector não estiver ativo, avise; mostre painel de informações "Pronto"; retorne.
+  Role a caixa de texto deste source para o cursor de texto e centralize-o.
+  Mostre o ambiente de trabalho com "Encontrado".
+
+Etapas para que se encontre novamente usando um source (localização de texto):
+  Limpe a última operação desta caixa de texto deste source.
+  Atribua o cursor de texto desta caixa de texto deste source ao find anchor.
+  Encontre next usando a caixa de texto deste source e um detector.
+  Se o detector não estiver ativo, avise; mostre painel de informações "Não encontrado"; retorne.
+  Role a caixa de texto deste source para o cursor de texto e centralize-o.
+  Mostre o ambiente de trabalho com "Encontrado".
+
+Etapas para que se mude tamanho usando um source e uma altura da fonte:
+  Isole a altura da fonte.
+  Limite [os valores possíveis para] a altura da fonte para [um valor entre] 1 pixel e 96 pixels.
+  Atribua a caixa deste pad a uma caixa.
+  Atribua a altura desta caixa dividido pelo altura da fonte times a altura da fonte a uma altura.
+  Atribua a coordenada Y do canto superior esquerdo desta caixa mais a altura à coordenada Y do canto inferior direito desta caixa.
+  Centralize a caixa na caixa deste pad (verticalmente).
+  Mude tamanho usando a caixa de texto deste source e a caixa e a altura da fonte.
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se mude tamanho segunda usando um source:
+  Atribua a altura desta fonte desta caixa de texto deste source / 96 pixels a uma proporção.
+  Converta a proporção para uma proporção string.
+  Peça "Altura (em polegadas)?" com a proporção string.
+  Se o texto do campo estiver em branco, retorne.
+  Mostre o ambiente de trabalho.
+  Converta o texto do campo para uma segunda proporção.
+  Se a segunda proporção for 0, mostre erro "Tamanho inválido."; retorne.
+  Atribua 96 pixels times a segunda proporção a uma altura da fonte.
+  Mude tamanho usando o source e a altura da fonte.
+
+Etapas para que se mude nome da fonte usando um source:
+  Peça "Nome?" com o nome desta fonte desta caixa de texto deste source.
+  Se o texto do campo estiver em branco, retorne.
+  Mostre o ambiente de trabalho.
+  Mude nome da fonte usando a caixa de texto deste source e o texto do campo.
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute indent usando um source:
+  Se nada estiver selecionado no source, avise; retorne.
+  Execute indent usando a caixa de texto deste source.
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute lowercase usando um source:
+  Se nada estiver selecionado no source, avise; retorne.
+  Execute lowercase usando a caixa de texto deste source.
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute outdent usando um source:
+  Se nada estiver selecionado no source, avise; retorne.
+  Execute outdent usando a caixa de texto deste source.
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute paste usando um source:
+  Se não existir caixa de texto sobre a área de transferência do Windows, avise; retorne.
+  Mostre no painel de informações "Colando...".
+  Execute paste usando a caixa de texto deste source.
+  Mostre o ambiente de trabalho com "Colado".
+
+Etapas para que se execute imprima usando um source:
+  Atribua a selecionado contagem de linhas desta caixa de texto desta source a uma contagem.
+  Se a contagem for 0, mostre erro "Não tem nada pra eu imprimir."; retorne.
+  Peça "Informe o número de número de cópias:" com "1".
+  Se o texto do campo estiver em branco, retorne.
+  Converta o texto do campo para um número entre 1 e o maior número.
+  Mostre o ambiente de trabalho com "Imprimindo...".
+  Imprima o número of número de cópias of o source.
+  Mostre no painel de informações "Pronto".
+
+Etapas para que se execute refeito usando um source:
+  Se a caixa de texto deste source não puder ser refeito, avise; retorne.
+  Execute refeito usando a caixa de texto deste source.
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute reverse usando um source:
+  Se nada estiver selecionado no source, avise; retorne.
+  Execute reverse usando a caixa de texto deste source.
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute select all usando um source:
+  Execute select all usando a caixa de texto deste source.
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute classifique definitions usando um source:
+  Mostre no painel de informações "Ordenando definições...".
+  Relembre a caixa de texto deste source com "classifique definitions".
+  Classifique definitions usando o source.
+  Mostre o ambiente de trabalho com "Definições classificadas".
+
+Etapas para que se organize linhas selecionadas usando um source:
+  Se nada estiver selecionado no source, avise; retorne.
+  Mostre no painel de informações "Ordenando linhas...".
+  Execute classifique algum tipo de linhas des textos selecionadas usando a caixa de texto deste source.
+  Mostre o ambiente de trabalho com "Linhas ordenadas".
+
+Etapas para que se execute uncomment usando um source:
+  Se nada estiver selecionado no source, avise; retorne.
+  Relembre a caixa de texto deste source com "comment".
+  Uncomment algum tipo de linhas des textos selecionadas no source.
+  Square para cima algum tipo de seleção na caixa de texto deste source.
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute desfeito usando um source:
+  Se a caixa de texto deste source não pode ser desfeito, avise; retorne.
+  Execute desfeito usando a caixa de texto deste source.
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se execute uppercase usando um source:
+  Se nada estiver selecionado no source, avise; retorne.
+  Execute uppercase usando a caixa de texto deste source.
+  Mostre o ambiente de trabalho com painel de informações.
+
+Etapas para que se inicialize o editor:
+
+Etapas para que se mova um percorredor (qualifier rules):
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o parênteses esquerdo, adicione 1 para uma contagem.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o parênteses direito, subtraia 1 desde a contagem.
+  Avance o percorredor.
+  Se a contagem for 0, retorne.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se mova um percorredor (remark rules):
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o colchete esquerdo, adicione 1 para uma contagem.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o colchete direito, subtraia 1 desde a contagem.
+  Avance o percorredor.
+  Se a contagem for 0, retorne.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se mova um percorredor (source classificação rules):
+  Skip algum tipo de leading noise no segmento final deste percorredor.
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Se o segmento final deste percorredor estiver em branco, retorne.
+  Avance o percorredor.
+  Se o conteúdo deste caractere final deste segmento inicial deste percorredor for algum tipo de mark, retorne.
+  Comece. [a executar o código abaixo]
+    Se o segmento final deste percorredor estiver em branco, retorne.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for irrelevante, retorne.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for algum tipo de mark, retorne.
+    Avance o percorredor.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se nomeie um bloco:
+  Se o bloco for inexistente, retorne.
+  Limpe o nome deste bloco.
+  Se a first linha de texto deste bloco for inexistente, retorne.
+  Se a first linha de texto deste bloco for algum tipo de comment, retorne.
+  Lance um percorredor sobre a string desta first linha de texto deste bloco.
+  Comece. [a executar o código abaixo]
+  Mova o percorredor (source classificação rules).
+    Se o segmento inicial deste percorredor estiver em branco, retorne.
+    Se o segmento inicial deste percorredor for "an", recomece.
+    Se o segmento inicial deste percorredor for "some", recomece.
+    Se o segmento inicial deste percorredor for "the", recomece.
+    Se o segmento inicial deste percorredor for "to", recomece.
+    Se o segmento inicial deste percorredor for "*", recomece.
+    Se o segmento inicial deste percorredor for ",", retorne.
+    Se o segmento inicial deste percorredor for ";", retorne.
+    Se o segmento inicial deste percorredor for ":", retorne.
+    Se o segmento inicial deste percorredor for ".", retorne.
+    Posponha o segmento inicial deste percorredor junto com o caractere de espaço para o nome deste bloco.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se nomeie uns blocos:
+  Obtenha um bloco desde os blocos.
+  Se o bloco for inexistente, retorne.
+  Nomeie o bloco.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se imprima um número de cópias of um número de folhas of um número de folhas/cópia of um source:
+  Se o source for inexistente, retorne.
+  Mostre no painel de informações o número de cópias seguido de " de " junto com o número de folhas seguido de " de " junto com o número de folhas/cópia seguido de "...".
+  Obtenha um first linha de texto e uma last linha de texto usando o número de folhas e o source.
+  Atribua 48 pixels e 48 pixels a uma localização.
+  Inicie uma folha.
+  Atribua o first linha de texto a um current linha de texto.
+  Comece. [a executar o código abaixo]
+    Imprima o current linha de texto of o source sob a localização.
+    Se o current linha de texto for a last linha de texto, pare.
+    Atribua o next desta current linha de texto ao current linha de texto.
+    Adicione a altura da linha desta caixa de texto deste source para a coordenada Y desta localização.
+  Recomece. [percorra novamente o código acima]
+  End a folha.
+
+Etapas para que se imprima um número de cópias of um source:
+  Se o source for inexistente, retorne.
+  Atribua o número de folhas/cópia deste source a um número de folhas/cópia.
+  Atribua 1 a um número de folhas.
+  Comece. [a executar o código abaixo]
+    Se o número de folhas for maior do que o número de folhas/cópia, retorne.
+    Imprima o número de cópias of o número de folhas of o número de folhas/cópia of o source.
+    Adicione 1 para o número de folhas.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se imprima um número of número de cópias of um source:
+  Se o source for inexistente, retorne.
+  Inicie a impressão.
+  Comece. [a executar o código abaixo]
+    Adicione 1 para o número de cópias.
+    Se o número de cópias for maior do que o número, pare.
+    Imprima o número de cópias of o source.
+  Recomece. [percorra novamente o código acima]
+  End printing.
+
+Etapas para que se imprima uma linha de texto of um source sob uma localização:
+  Se o source for inexistente, retorne.
+  Se a linha de texto for inexistente, retorne.
+  Atribua 0 pixels e 0 pixels e 720 pixels e a altura da linha desta caixa de texto deste source a uma caixa.
+  Mova a caixa para a localização.
+  Cubra somente fora de a caixa.
+  Obtenha um subtexto usando a linha de texto e o source (commented part).
+  \ uncommented part
+  Lance um segundo subtexto sobre o working string desta linha de texto.
+  Se o subtexto não estiver em branco, atribua o caractere inicial deste subtexto menos 1 ao caractere final deste segundo subtexto.
+  Pinte o segundo subtexto na caixa com a cor preta e a fonte desta caixa de texto deste source e o alinhamento desta caixa de texto deste source.
+  \ commented part
+  Se o subtexto estiver em branco, retorne.
+  Atribua a cor dos comentários a uma cor.
+  Se o colorized detector deste source não estiver ativo, atribua a cor preta à cor.
+  Obtenha uma largura usando o segundo subtexto e o memory canvas e a fonte desta caixa de texto deste source.
+  Adicione a largura para a coordenada X do canto superior esquerdo desta caixa.
+  Pinte o subtexto na caixa com a cor e a fonte desta caixa de texto deste source e o alinhamento desta caixa de texto deste source.
+
+Etapas para que se atribua o número de linhas/folha desse source para um número de linhas/folha:
+  Se o source for inexistente, atribua 0 ao número de linhas/folha; retorne.
+  Atribua 960 pixels dividido pela altura da linha desta caixa de texto deste source ao número de linhas/folha.
+
+Etapas para que se atribua o número de folhas/cópia desse source para um número de folhas/cópia:
+  Se o source for inexistente, atribua 0 ao número de folhas/cópia; retorne.
+  Divida a selecionado contagem de linhas desta caixa de texto deste source por as número de linhas/folha deste source usando um quociente e um resto.
+  Atribua o quociente ao número de folhas/cópia.
+  Se o resto não for 0, adicione 1 para o número de folhas/cópia.
+
+Um número de linhas/folha é um número.
+
+Etapas para que se role um source usando um evento:
+  Se o source for inexistente, retorne.
+  Encontre um sector usando a malha desta caixa de texto deste source e a localização deste evento.
+  Comece. [a executar o código abaixo]
+    Se o botão direito deste mouse não estiver sendo pressionado, retorne.
+    Encontre uma segunda sector usando a malha desta caixa de texto deste source e a localização deste mouse.
+    Obtenha um difference entre a segunda sector e o sector.
+    Se a difference for 0, recomece.
+    Role a caixa de texto deste source usando a difference.
+    Mostre o ambiente de trabalho.
+    Adicione a difference para o sector.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se scrub um bloco:
+  Scrub o bloco (forward).
+  Scrub o bloco (backward).
+
+Etapas para que se scrub um bloco (backward):
+  Se o bloco for inexistente, retorne.
+  Atribua a last linha de texto deste bloco a uma linha de texto.
+  Se a linha de texto for inexistente, pare.
+  Se a linha de texto não estiver em branco, pare.
+  Remove a linha de texto desde as linhas des textos deste bloco.
+  Destrua a linha de texto.
+  Recomece. [percorra novamente o código acima]
+  Crie uma segunda linha de texto usando o retorno de carro.
+  Posponha a segunda linha de texto para as linhas des textos deste bloco.
+
+Etapas para que se scrub um bloco (forward):
+  Se o bloco for inexistente, retorne.
+  Atribua a first linha de texto deste bloco a uma linha de texto.
+  Se a linha de texto for inexistente, pare.
+  Se a linha de texto não estiver em branco, pare.
+  Remove a linha de texto desde as linhas des textos deste bloco.
+  Destrua a linha de texto.
+  Recomece. [percorra novamente o código acima]
+  \ crie uma segunda linha de texto usando o retorno de carro.
+  \ posponha a segunda linha de texto para as linhas des textos deste bloco.
+
+Etapas para que se scrub um bloco por extracting:
+  Se o bloco for inexistente, retorne.
+  Atribua o last linha de texto deste bloco a uma linha de texto.
+  Se a linha de texto for inexistente, pare.
+  Se a linha de texto estiver em branco, remove a linha de texto desde as linhas des textos deste bloco; destrua a linha de texto; recomece.
+  Se a string deste linha de texto começa com "\", remove a linha de texto desde as linhas des textos deste bloco; destrua a linha de texto; recomece.
+
+Etapas para que se scrub uns blocos:
+  Obtenha um bloco desde os blocos.
+  Se o bloco for inexistente, retorne.
+  Scrub o bloco.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se scrub uns blocos por extracting:
+  Obtenha um bloco desde os blocos.
+  Se o bloco for inexistente, retorne.
+  Scrub o bloco por extracting.
+  Recomece. [percorra novamente o código acima]
+
+Um número de folhas é um número.
+
+Um número de folhas/cópia é um número.
+
+Etapas para que se classifique uns blocos:
+  Se os first bloco destes blocos for os last bloco destes blocos, retorne.
+  Separe os blocos para uns blocos anteriores e uns blocos posteriores.
+  Classifique os blocos anteriores.
+  Classifique os blocos posteriores.
+  Comece. [a executar o código abaixo]
+    Atribua o first bloco destes blocos anteriores a um bloco anterior.
+    Atribua o first bloco destes blocos posteriores a um bloco posterior.
+    Se o bloco anterior for inexistente, posponha os blocos posteriores para os blocos; retorne.
+    Se o bloco posterior for inexistente, posponha os blocos anteriores para os blocos; retorne.
+    Se o nome deste bloco anterior for maior do que o nome deste bloco posterior, mova o bloco posterior desde o blocos posteriores para os blocos; recomece.
+    Mova o bloco anterior desde o blocos anteriores para os blocos.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se classifique definitions usando um source:
+  Se o source for inexistente, retorne.
+  Crie uns blocos usando as linhas des textos desta caixa de texto deste source.
+  Scrub os blocos.
+  Nomeie os blocos.
+  Classifique os blocos.
+  Destrua as linhas des textos desta caixa de texto deste source.
+  Posponha os blocos para as linhas des textos desta caixa de texto deste source.
+  Redefina a origem of a caixa de texto deste source.
+  Redefina o cursor de texto of a caixa de texto deste source.
+  Desvencilhe-se de a caixa de texto deste source.
+  Renumere as linhas des textos desta caixa de texto deste source.
+  Destrua os blocos.
+
+Um source é uma coisa com
+  Um somente leitura detector,
+  Um colorized detector,
+  Uma caixa de texto.
+
+Etapas para que se rastreie um source usando um evento:
+  Se o source for inexistente, retorne.
+  Se o evento for inexistente, retorne.
+  Extend algum tipo de seleção na caixa de texto deste source usando a localização deste evento.
+  Se o detector de tecla Shift deste evento não estiver ativo, desvencilhe-se de a caixa de texto deste source.
+  Limpe uma seleção.
+  Comece. [a executar o código abaixo]
+    Se um detector estiver ativo, mostre o ambiente de trabalho com painel de informações.
+    Se o botão esquerdo deste mouse não estiver sendo pressionado, retorne.
+    Atribua a localização deste mouse a uma localização.
+    Role automaticamente a caixa de texto deste source usando a localização e o detector.
+    Extend algum tipo de seleção na caixa de texto deste source usando a localização.
+    Se a seleção desta caixa de texto deste source for a seleção, recomece.
+    Ligue o detector.
+    Atribua a seleção desta caixa de texto deste source à seleção.
+  Recomece. [percorra novamente o código acima]
+
+Etapas para que se uncomment algum tipo de linhas des textos selecionadas em um source:
+  Se o source for inexistente, retorne.
+  Comece. [a executar o código abaixo]
+    Obtenha uma linha de texto desde as linhas des textos desta caixa de texto deste source.
+    Se a linha de texto for inexistente, retorne.
+    Se a linha de texto of a caixa de texto deste source não estiver selecionado, recomece.
+    Se o conteúdo deste caractere inicial desta string desta linha de texto não for a barra invertida, recomece.
+    Remove o first byte desde a string deste linha de texto.
+  Recomece. [percorra novamente o código acima]
+  
