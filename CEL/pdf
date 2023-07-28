@@ -70,13 +70,13 @@ Um pdf state é um estrutura com
   Um fonte catálogo.
 
 \Etapas para que se output a pdf border usando uma cor:
-\  Se a cor for a cor da borda atual deste pdf state, cancele.
+\  Se a cor for a cor da borda atual deste pdf state, retorne.
 \  Output a cor sem passar pra próxima linha.
 \  Output " RG".
 \  Atribua a cor à cor da borda atual deste pdf state.
 
 \Etapas para que se output o pdf preencha usando uma cor:
-\  Se a cor for a cor de preenchimento atual deste pdf state, cancele.
+\  Se a cor for a cor de preenchimento atual deste pdf state, retorne.
 \  Output a cor sem passar pra próxima linha.
 \  Output " rg".
 \  Atribua a cor à cor de preenchimento atual deste pdf state.
@@ -84,7 +84,7 @@ Um pdf state é um estrutura com
 Etapas para que se atribua umas fonte larguras para um trecho:
   \ usado na conversão de pdf 
   Limpe o trecho.
-  Se a fonte larguras forem inexistente, cancele.
+  Se a fonte larguras forem inexistente, retorne.
   Atribua o data destes fonte larguras a um endereço numérico.
   Comece. [a executar o código abaixo]
     Se um contador estiver past a contagem destas fonte larguras, pare.
@@ -105,13 +105,13 @@ Etapas para que se output uma string sem passar pra próxima linha:
   Posponha a string para os current contents deste pdf state sem passar pra próxima linha.
 
 Etapas para que se output o pdf border usando uma cor:
-  Se a cor for a cor da borda atual deste pdf state, cancele.
+  Se a cor for a cor da borda atual deste pdf state, retorne.
   Output a cor sem passar pra próxima linha.
   Output " RG".
   Atribua a cor à cor da borda atual deste pdf state.
 
 Etapas para que se output o pdf preencha usando uma cor:
-  Se a cor for a cor de preenchimento atual deste pdf state, cancele.
+  Se a cor for a cor de preenchimento atual deste pdf state, retorne.
   Output a cor sem passar pra próxima linha.
   Output " rg".
   Atribua a cor à cor de preenchimento atual deste pdf state.
@@ -122,7 +122,7 @@ Etapas para que se output setcolor usando uma cor da borda e uma cor de preenchi
 
 Etapas para que se include uma fonte no current pdf:
   Encontre um pdf object usando o nome desta fonte e a fonte catálogo deste pdf state.
-  Se o pdf object não for inexistente, cancele.
+  Se o pdf object não for inexistente, retorne.
   Crie uma fonte info usando a fonte.
   Converta a fonte info para pdf em units.
   \ stream
@@ -180,12 +180,12 @@ Etapas para que se include uma fonte no current pdf:
   Catalogue a definition usando o nome desta fonte e a fonte catálogo deste pdf state.
 
 Etapas para que se include uma fonte em um pdf object:
-  Se o pdf object for inexistente, cancele.
+  Se o pdf object for inexistente, retorne.
   Encontre uma fonte pdf object usando o nome desta fonte e a fonte catálogo deste pdf state.
-  Se a fonte pdf object for inexistente, cancele.
+  Se a fonte pdf object for inexistente, retorne.
   Atribua "/" junto com o nome da fonte deste fonte pdf object seguido de " " junto com o número deste fonte pdf object seguido de " 0 R" a uma string.
   Encontre um conjunto de texto usando a string e os fonte strings deste pdf object.
-  Se o conjunto de texto não for inexistente, cancele.
+  Se o conjunto de texto não for inexistente, retorne.
   Crie um new conjunto de texto usando a string.
   Posponha o new conjunto de texto para os fonte strings deste pdf object.
 
@@ -211,7 +211,7 @@ Etapas para que se end uma folha (pdf style - finish o current contents):
 
 Etapas para que se end uma folha (pdf style - finish o current página - fonte resources):
   Atribua a current página deste pdf state a uma página pdf object.
-  Se as fonte strings desta página estiverem vazias, cancele.
+  Se as fonte strings desta página estiverem vazias, retorne.
   Posponha "/Font <<" para a página sem passar pra próxima linha.
   Comece. [a executar o código abaixo]
     Obtenha um conjunto de texto desde as fonte strings desta página.
@@ -224,7 +224,7 @@ Etapas para que se end uma folha (pdf style - finish o current página - fonte re
 
 Etapas para que se end uma folha (pdf style - finish o current página - image resources):
   Atribua a current página deste pdf state a uma página pdf object.
-  Se as image strings desta página estiverem vazias, cancele.
+  Se as image strings desta página estiverem vazias, retorne.
   Posponha "/XObject <<" para a página sem passar pra próxima linha.
   Comece. [a executar o código abaixo]
     Obtenha um conjunto de texto desde as image strings desta página.
@@ -251,14 +251,14 @@ Etapas para que se end uma folha (pdf style):
   End a folha (pdf style - finish o current contents).
 
 Etapas para que se end printing:
-  Se o documento detector deste pdf state estiver ativo, end printing (pdf style); saia.
+  Se o documento detector deste pdf state estiver ativo, end printing (pdf style); retorne.
   Processe "gdi32.dll" "EndDoc" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-enddoc
   \ A função EndDoc termina um trabalho de impressão.
     a área de impressão. [hdc] \Um identificador para o contexto do dispositivo para o trabalho de impressão.
   Finalize a área de impressão.
 
 Etapas para que se end printing (pdf style):
-  Se o documento detector deste pdf state não estiver ativo, cancele.
+  Se o documento detector deste pdf state não estiver ativo, retorne.
   End printing o conteúdo deste pdf ponteiro deste pdf state.
 
 Etapas para que se end printing um pdf:
@@ -288,17 +288,17 @@ Etapas para que se end printing um pdf (append header):
 
 Etapas para que se end printing um pdf (append o outline entries - crie o objects):
   Obtenha um pdf outline entry desde as outline entries deste pdf state.
-  Se o pdf outline entry for inexistente, cancele.
+  Se o pdf outline entry for inexistente, retorne.
   Adicione um entry pdf object usando "outline entry".
   Atribua a entry ao pdf object desta pdf outline entry.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se end printing um pdf (append o outline entries):
-  Se as outline entries deste pdf state estiverem vazias, cancele.
+  Se as outline entries deste pdf state estiverem vazias, retorne.
   End printing o pdf (append o outline entries - crie o objects).
   Comece. [a executar o código abaixo]
     Obtenha um pdf outline entry desde as outline entries deste pdf state.
-    Se o pdf outline entry for inexistente, cancele.
+    Se o pdf outline entry for inexistente, retorne.
     Atribua o pdf object desta pdf outline entry a um object pdf object.
     Posponha o número deste object seguido de " 0 obj" para o object.
     Posponha "<<" para o object.
@@ -314,7 +314,7 @@ Etapas para que se end printing um pdf (append o outline entries):
 
 Etapas para que se end printing um pdf (append o outline):
   Esvazie o outline deste pdf state.
-  Se as outline entries deste pdf state estiverem vazias, cancele.
+  Se as outline entries deste pdf state estiverem vazias, retorne.
   Adicione um outline pdf object usando "outline".
   Atribua o outline ao outline deste pdf state.
   End printing o pdf (append o outline entries).
@@ -387,12 +387,12 @@ Etapas para que se end printing um pdf (offset e posponha objects):
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se pinte uma string sob uma localização com uma cor e uma fonte (pdf style):
-  Se a string estiver em branco, cancele.
+  Se a string estiver em branco, retorne.
   Isole a localização.
   Include a fonte no current pdf.
   Include a fonte na current página deste pdf state.
   Encontre um definition pdf object usando o nome desta fonte e a fonte catálogo deste pdf state.
-  Se o definition for inexistente, cancele. \ erro
+  Se o definition for inexistente, retorne. \ erro
   Crie uma fonte info usando a fonte e a string.
   Output o pdf border usando a cor.
   Output o pdf preencha usando a cor.
@@ -412,7 +412,7 @@ Etapas para que se pinte uma string sob uma localização com uma cor e uma fonte 
   Destrua a fonte info.
 
 Etapas para que se pinte uma string sob uma localização com uma cor e uma fonte:
-  Se a página detector deste pdf state estiver ativo, pinte a string sob a localização com a cor e a fonte (pdf style); saia.
+  Se a página detector deste pdf state estiver ativo, pinte a string sob a localização com a cor e a fonte (pdf style); retorne.
   Defina o código da cor of o quadro atual usando a cor.
   Crie o número da fonte of o quadro atual usando a fonte.
   Ajuste espaçamento  da fonte usando a string.
@@ -436,8 +436,8 @@ Etapas para que se pinte uma string sob uma localização com uma cor e uma fonte:
   Destrua o número da fonte of o quadro atual.
 
 Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de preenchimento (pdf style):
-  Se a cor da borda e a cor de preenchimento são clear, cancele.
-  Se o raio desta caixa arredondada for 0, pinte a caixa arredondada como uma caixa com a cor da borda e a cor de preenchimento (pdf style); saia.
+  Se a cor da borda e a cor de preenchimento são clear, retorne.
+  Se o raio desta caixa arredondada for 0, pinte a caixa arredondada como uma caixa com a cor da borda e a cor de preenchimento (pdf style); retorne.
   Atribua o raio desta caixa arredondada a um raio.
   Atribua o raio times 2 a um offset.
   Atribua a caixa arredondada a uma caixa.
@@ -464,7 +464,7 @@ Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
   Output stroke e preencha usando a cor da borda e a cor de preenchimento.
 
 Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de preenchimento:
-  Se a página detector deste pdf state estiver ativo, pinte a caixa arredondada com a cor da borda e a cor de preenchimento (pdf style); saia.
+  Se a página detector deste pdf state estiver ativo, pinte a caixa arredondada com a cor da borda e a cor de preenchimento (pdf style); retorne.
   Isole a caixa arredondada.
   Crie o hPen of o quadro atual usando a cor da borda.
   Crie o hBrush of o quadro atual usando a cor de preenchimento.
@@ -483,17 +483,17 @@ Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
   Destrua o hPen of o quadro atual.
 
 Etapas para que se pinte um polígono com uma cor da borda e uma cor de preenchimento:
-  Se a página detector deste pdf state estiver ativo, pinte o polígono com a cor da borda e a cor de preenchimento (pdf style); saia.
-  Se o polígono for inexistente, cancele.
+  Se a página detector deste pdf state estiver ativo, pinte o polígono com a cor da borda e a cor de preenchimento (pdf style); retorne.
+  Se o polígono for inexistente, retorne.
   Pinte o polígono com a cor de preenchimento (apenas a cor de preenchimento).
   Pinte o polígono com a cor da borda (border only).
 
 Etapas para que se pinte um polígono com uma cor da borda e uma cor de preenchimento (pdf style):
-  Se o polígono for inexistente, cancele.
-  Se a cor da borda e a cor de preenchimento são clear, cancele.
+  Se o polígono for inexistente, retorne.
+  Se a cor da borda e a cor de preenchimento são clear, retorne.
   Output setcolor usando a cor da borda e a cor de preenchimento.
   Obtenha um vértice desde os vértices deste polígono.
-  Se o vértice for inexistente, cancele.
+  Se o vértice for inexistente, retorne.
   Output moveto usando a localização deste vértice.
   Comece. [a executar o código abaixo]
     Obtenha o vértice desde os vértices deste polígono.
@@ -503,7 +503,7 @@ Etapas para que se pinte um polígono com uma cor da borda e uma cor de preenchim
   Output stroke e preencha usando a cor da borda e a cor de preenchimento.
 
 Etapas para que se pinte uma imagem (pdf style):
-  Se a imagem for inexistente, cancele.
+  Se a imagem for inexistente, retorne.
   Atribua 
     a coordenada X do canto superior esquerdo desta caixa desta imagem 
     menos a coordenada X do canto superior esquerdo desta caixa intacta desta imagem 
@@ -567,8 +567,8 @@ Etapas para que se pinte uma imagem (pdf style):
   \Obs: A função retorna o valor GpStatus, sendo que o valor 0 significa que função foi bem-sucedida.
 
 Etapas para que se pinte uma imagem:
-  Se a página detector deste pdf state estiver ativo, pinte a imagem (pdf style); saia.
-  Se a imagem for inexistente, cancele.
+  Se a página detector deste pdf state estiver ativo, pinte a imagem (pdf style); retorne.
+  Se a imagem for inexistente, retorne.
   Salve o quadro atual.
   Cubra externamente a caixa desta imagem.
   Processe "gdiplus.dll" "GdipCreateFromHDC" com 
@@ -592,14 +592,14 @@ Etapas para que se pinte uma imagem:
   Restaure o quadro atual.
 
 Etapas para que se pinte uma linha reta com uma cor (pdf style):
-  Se a cor estiver clear, cancele.
+  Se a cor estiver clear, retorne.
   Output setcolor usando a cor e a cor preta.
   Output moveto usando a localização inicial desta linha reta.
   Output lineto usando a localização final desta linha reta.
   Output stroke e preencha usando a cor e a cor preta.
 
 Etapas para que se pinte uma linha reta com uma cor:
-  Se a página detector deste pdf state estiver ativo, pinte a linha reta com a cor (pdf style); saia.
+  Se a página detector deste pdf state estiver ativo, pinte a linha reta com a cor (pdf style); retorne.
   Crie o hPen of o quadro atual usando a cor.
   Processe "gdi32.dll" "MoveToEx" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-movetoex
   \A função MoveToEx atualiza a posição atual para o ponto especificado e, opcionalmente, retorna a posição anterior.
@@ -635,7 +635,7 @@ Etapas para que se pinte uma linha reta com uma cor:
   Destrua o hPen of o quadro atual.
 
 Etapas para que se pinte um gpBitmap sob uma localização (pdf style):
-  Se o gpBitmap for inexistente, cancele.
+  Se o gpBitmap for inexistente, retorne.
   \ adicione xobject
   Adicione um xobject pdf object usando "image object".
   Atribua "I" junto com o número deste xobject a um nome.
@@ -672,7 +672,7 @@ Etapas para que se pinte um gpBitmap sob uma localização (pdf style):
   Output "Q".
 
 Etapas para que se pinte uma elipse com uma cor da borda e uma cor de preenchimento (pdf style):
-  Se a cor da borda e a cor de preenchimento são clear, cancele.
+  Se a cor da borda e a cor de preenchimento são clear, retorne.
   Output setcolor usando a cor da borda e a cor de preenchimento.
   Atribua a coordenada X do canto superior esquerdo desta elipse e a coordenada Y do canto superior esquerdo desta elipse a uma localização.
   Adicione o y-extent desta elipse dividido por 2 para a coordenada Y desta localização.
@@ -684,7 +684,7 @@ Etapas para que se pinte uma elipse com uma cor da borda e uma cor de preenchime
   Output stroke e preencha usando a cor da borda e a cor de preenchimento.
 
 Etapas para que se pinte uma elipse com uma cor da borda e uma cor de preenchimento:
-  Se a página detector deste pdf state estiver ativo, pinte a elipse com a cor da borda e a cor de preenchimento (pdf style); saia.
+  Se a página detector deste pdf state estiver ativo, pinte a elipse com a cor da borda e a cor de preenchimento (pdf style); retorne.
   Isole a elipse.
   Crie o hPen of o quadro atual usando a cor da borda.
   Crie o hBrush of o quadro atual usando a cor de preenchimento.
@@ -702,7 +702,7 @@ Etapas para que se pinte uma elipse com uma cor da borda e uma cor de preenchime
   Destrua o hPen of o quadro atual.
 
 Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimento (pdf style):
-  Se a cor da borda e a cor de preenchimento são clear, cancele.
+  Se a cor da borda e a cor de preenchimento são clear, retorne.
   Output setcolor usando a cor da borda e a cor de preenchimento.
   Output o canto inferior esquerdo desta caixa sem passar pra próxima linha.
   Output o x-extent desta caixa sem passar pra próxima linha.
@@ -711,7 +711,7 @@ Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimen
   Output stroke e preencha usando a cor da borda e a cor de preenchimento.
 
 Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimento:
-  Se a página detector deste pdf state estiver ativo, pinte a caixa com a cor da borda e a cor de preenchimento (pdf style); saia.
+  Se a página detector deste pdf state estiver ativo, pinte a caixa com a cor da borda e a cor de preenchimento (pdf style); retorne.
   Isole a caixa.
   Crie o hPen of o quadro atual usando a cor da borda.
   Crie o hBrush of o quadro atual usando a cor de preenchimento.
@@ -768,7 +768,7 @@ Etapas para que se converta uma string e um actual fonte info e um original font
     Atribua o caractere final deste subtexto ao caractere inicial deste subtexto.
     Adicione 1 para o current byte#.
   Recomece. [percorra novamente o código acima]
-  Se o caractere inicial deste subtexto for maior do que o caractere final desta string, cancele.
+  Se o caractere inicial deste subtexto for maior do que o caractere final desta string, retorne.
   Converta o subtexto para uma segunda pdf string.
   Posponha a segunda pdf string para o trecho.
 
@@ -778,7 +778,7 @@ Etapas para que se converta um número para pdf em units usando um emsquare númer
 
 Etapas para que se converta um gpBitmap para um trecho (pdf style):
   Limpe o trecho.
-  Se o gpBitmap for inexistente, cancele.
+  Se o gpBitmap for inexistente, retorne.
   Lock o gpBitmap usando um BitmapData (espaço de cor RGB de 24 bits).
   Atribua 1 a um número da linha.
   Atribua 1 a um número de coluna.
@@ -813,7 +813,7 @@ Etapas para que se converta umas fonte larguras para pdf em units:
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se converta uma fonte info para pdf em units:
-  Se a fonte info for inexistente, cancele.
+  Se a fonte info for inexistente, retorne.
   Converta o internal leading desta fonte info para pdf em units usando o emsquare desta fonte info e a fonte desta fonte info.
   Converta o ascent desta fonte info para pdf em units usando o emsquare desta fonte info e a fonte desta fonte info.
   Converta o descent desta fonte info para pdf em units usando o emsquare desta fonte info e a fonte desta fonte info.
@@ -847,7 +847,7 @@ Etapas para que se inicie uma folha usando uma caixa e um título de índice remis
   Atribua a cor preta ao cor da borda atual deste pdf state.
   Atribua a cor preta à cor de preenchimento atual deste pdf state.
   Inicie a folha usando a caixa e o título de índice remissivo (pdf style - start o current página).
-  Se o título de índice remissivo estiver em branco, cancele.
+  Se o título de índice remissivo estiver em branco, retorne.
   Crie um pdf outline entry usando o título de índice remissivo e o current altura deste pdf state e o número desta current página deste pdf state.
   Posponha o pdf outline entry para o outline entries deste pdf state.
 
@@ -858,14 +858,14 @@ Etapas para que se inicie uma folha usando uma caixa e um título de índice remis
   Inicie a folha usando a caixa e o título de índice remissivo (pdf style).
 
 Etapas para que se inicie uma folha usando uma caixa:
-  Se o documento detector deste pdf state estiver ativo, inicie a folha usando a caixa (pdf style); saia.
+  Se o documento detector deste pdf state estiver ativo, inicie a folha usando a caixa (pdf style); retorne.
   Processe "kernel32.dll" "GlobalLock" com \ https://docs.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globallock
   \A função GlobalLock bloqueia um objeto de memória global e aumenta a contagem de bloqueios em um. 
   \Bloqueia um objeto de memória global e retorna um ponteiro para o primeiro byte do bloco de memória do objeto.
     O número identificador do modo de dispositivo da impressora [hMem] \Um identificador para o objeto de memória global. 
     devolvendo um pdevmode. \Se a função for bem-sucedida, o valor de retorno é um ponteiro [que aponta] para o primeiro byte do bloco de memória.
     \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-devmodea
-  Se o pdevmode for inexistente, cancele. \Se a função falhar, o valor de retorno será NULL.
+  Se o pdevmode for inexistente, retorne. \Se a função falhar, o valor de retorno será NULL.
   Disjuncione logicamente o dmFields deste pdevmode usando 1 [DM_ORIENTATION].
   Atribua 1 [DMORIENT_PORTRAIT] ao dmOrientation deste pdevmode .
   Se a largura desta caixa for maior do que a altura desta caixa, atribua 2 [DMORIENT_LANDSCAPE] ao dmOrientation deste pdevmode .
@@ -989,12 +989,12 @@ Etapas para que se inicie a impressão um pdf (start o root):
   Posponha "/Type /Catalog" para o root.
 
 Etapas para que se inicie uma folha modo retrato usando um título de índice remissivo:
-  Se o pdf documento detector não estiver ativo, limpe a folha modo retrato; saia.
+  Se o pdf documento detector não estiver ativo, limpe a folha modo retrato; retorne.
   Faça a folha modo retrato 816 pixels por 1056 pixels.
   Inicie a folha usando a caixa e o título de índice remissivo (pdf style).
 
 Etapas para que se inicie uma folha modo paisagem usando um título de índice remissivo:
-  Se o pdf documento detector não estiver ativo, limpe a folha modo paisagem; saia.
+  Se o pdf documento detector não estiver ativo, limpe a folha modo paisagem; retorne.
   Faça a folha modo paisagem 1056 pixels por 816 pixels.
   Inicie a folha usando a caixa e o título de índice remissivo (pdf style).
 
@@ -1013,7 +1013,7 @@ Etapas para que se adicione um pdf object usando um categoria:
   Atribua o object número deste pdf state ao número deste pdf object.
 
 Etapas para que se end uma folha:
-  Se o documento detector deste pdf state estiver ativo, end a folha (pdf style); saia.
+  Se o documento detector deste pdf state estiver ativo, end a folha (pdf style); retorne.
   Processe "gdi32.dll" "EndPage" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-endpage
   \ A função EndPage notifica o dispositivo que o aplicativo terminou de gravar em uma página. 
   \Esta função é normalmente usada para fazer com que o driver de dispositivo avançe para uma nova página.

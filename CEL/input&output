@@ -6,9 +6,9 @@ Etapas para que se read stdin para um trecho:
   Limpe o erro do fluxo de entrada/saída.
   Limpe o trecho.
   Encontre uma string usando o environment variáveis e "CONTENT_LENGTH".
-  Se a string estiver em branco, atribua "Ocorreu um erro na hora de obter o conteúdo de comprimento CONTENT_LENGTH." ao erro do fluxo de entrada/saída; saia.
+  Se a string estiver em branco, atribua "Ocorreu um erro na hora de obter o conteúdo de comprimento CONTENT_LENGTH." ao erro do fluxo de entrada/saída; retorne.
   Converta a string a uma quantidade de caracteres.
-  Se a quantidade de caracteres for 0, cancele.
+  Se a quantidade de caracteres for 0, retorne.
   Reassocie o caractere inicial deste trecho usando a quantidade de caracteres.
   Processe "kernel32.dll" "ReadFile" com \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-readfile
   \Lê dados do arquivo especificado ou dispositivo de entrada / saída (E / S). As leituras ocorrem na posição especificada pelo ponteiro do arquivo, se suportado pelo dispositivo.
@@ -17,7 +17,7 @@ Etapas para que se read stdin para um trecho:
     e A quantidade de caracteres [nNumberOfBytesToRead] \O número máximo de bytes a serem lidos.
     e O endereçamento desse número [lpNumberOfBytesRead] \Um ponteiro para a variável que recebe o número de bytes lidos ao usar um parâmetro hFile síncrono.
     e nil. [lpOverlapped] \Um ponteiro para uma estrutura OVERLAPPED é necessário se o parâmetro hFile foi aberto com FILE_FLAG_OVERLAPPED, caso contrário, pode ser NULL.
-  Se o número não for a quantidade de caracteres, atribua "Erro ao ler dados do fluxo de entrada padrão stdin." ao erro do fluxo de entrada/saída; limpe o trecho; saia.
+  Se o número não for a quantidade de caracteres, atribua "Erro ao ler dados do fluxo de entrada padrão stdin." ao erro do fluxo de entrada/saída; limpe o trecho; retorne.
   Atribua o caractere inicial deste trecho mais a quantidade de caracteres menos 1 ao caractere final deste trecho.
 
 Etapas para que se read uma string desde um console:
@@ -38,7 +38,7 @@ Etapas para que se read um endereço completo para um trecho:
   Limpe o erro do fluxo de entrada/saída.
   Isole o endereço completo.
   Anexe o caractere NULL o endereço completo.
-  Se o endereço completo não estiver no sistema de arquivos, atribua "O Arquivo: '" junto com o endereço completo seguido de "' não existe." ao erro do fluxo de entrada/saída; saia.
+  Se o endereço completo não estiver no sistema de arquivos, atribua "O Arquivo: '" junto com o endereço completo seguido de "' não existe." ao erro do fluxo de entrada/saída; retorne.
   \ abra o endereço completo para read-write mode.
   Processe "kernel32.dll" "CreateFileA" com \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-createfilea
   \Cria ou abre um arquivo ou dispositivo de E/S. 
@@ -73,7 +73,7 @@ Etapas para que se read um endereço completo para um trecho:
     \Este parâmetro pode ser NULL.
     devolvendo um número identificador. \Se a função for bem-sucedida, o valor de retorno será um identificador aberto para o arquivo, dispositivo, canal nomeado ou slot de correio especificado.
     \Se a função falhar, o valor de retorno é INVALID_HANDLE_VALUE.
-  Se o número identificador for -1 [INVALID_HANDLE_VALUE], atribua "Ocorreu um erro ao tentar abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; saia.
+  Se o número identificador for -1 [INVALID_HANDLE_VALUE], atribua "Ocorreu um erro ao tentar abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; retorne.
   Processe "kernel32.dll" "GetFileSize" com \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-getfilesize
   \ Recupera o tamanho do arquivo especificado, em bytes.
     O número identificador [hFile] \Um identificador para o arquivo.
@@ -98,17 +98,17 @@ Etapas para que se read um endereço completo para um trecho:
     o número identificador.[hObject] \Um identificador válido para um objeto aberto.
     \Se o aplicativo estiver sendo executado em um depurador, a função lançará uma exceção se receber um valor de identificador inválido ou um valor de pseudo-identificador. 
     \Isso pode acontecer se você fechar um identificador duas vezes ou se você chamar CloseHandle em um identificador retornado pela função FindFirstFile em vez de chamar a função FindClose.
-  Se o número não for 0, cancele.
+  Se o número não for 0, retorne.
   Atribua "Ocorreu um erro ao tentar ler o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
 
 Etapas para que se carregue um endereço completo para uma imagem;
 Etapas para que se read um endereço completo para uma imagem:
   Read o endereço completo a um trecho.
-  Se o erro do fluxo de entrada/saída não estiver em branco, esvazie a imagem; saia.
+  Se o erro do fluxo de entrada/saída não estiver em branco, esvazie a imagem; retorne.
   Crie a imagem usando o trecho.
 
 Etapas para que se read um texto retornado desde um terminal:
-  Se o terminal for inexistente, limpe o texto retornado; saia.
+  Se o terminal for inexistente, limpe o texto retornado; retorne.
   Desmanche all eventos.
   Limpe o texto retornado deste terminal.
   Adicione um quora para o terminal.
@@ -160,26 +160,26 @@ Etapas para que se read um arquivo para um trecho:
     e 0 [lpOverlapped] \ Um ponteiro para uma estrutura OVERLAPPED é necessário se o parâmetro hFile foi aberto com FILE_FLAG_OVERLAPPED, caso contrário, pode ser NULL.
     \ https://docs.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-overlapped
     devolvendo um número resultante. \Se a função for bem-sucedida, o valor de retorno será diferente de zero (VERDADEIRO).
-  Se o número resultante for 0, atribua "Ocorreu um erro ao tentar ler o arquivo." ao erro do fluxo de entrada/saída; saia.
+  Se o número resultante for 0, atribua "Ocorreu um erro ao tentar ler o arquivo." ao erro do fluxo de entrada/saída; retorne.
 
 Etapas para que se read a Bíblia:
-  Se a Bíblia não for inexistente, cancele.
+  Se a Bíblia não for inexistente, retorne.
   Extraia um endereço da pasta desde o endereço completo deste module.
   Comece. [a executar o código abaixo]
-    Se o endereço da pasta estiver em branco, cancele.
+    Se o endereço da pasta estiver em branco, retorne.
     Atribua o endereço da pasta seguido de "Bíblia.txt" a um endereço completo.
-    Se o endereço completo estiver no sistema de arquivos, read a Bíblia usando o endereço completo; saia.
+    Se o endereço completo estiver no sistema de arquivos, read a Bíblia usando o endereço completo; retorne.
     Extraia o endereço da pasta desde o endereço da pasta.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se read a Bíblia usando um endereço completo:
-  Se o Bíblia não for inexistente, cancele.
+  Se o Bíblia não for inexistente, retorne.
   Read o endereço completo a um trecho.
-  Se o erro do fluxo de entrada/saída não estiver em branco, cancele.
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
   Aloque memória para o Bíblia.
   Lance um percorredor sobre o trecho.
   Comece. [a executar o código abaixo]
-    Se o segmento final deste percorredor estiver em branco, cancele.
+    Se o segmento final deste percorredor estiver em branco, retorne.
     Aloque memória para um verse. Posponha o verse para os verses desta Bíblia.
     Mova o percorredor (caixa de texto arquivo rules).
     Atribua o segmento inicial deste percorredor à string deste verse.
@@ -189,11 +189,11 @@ Etapas para que se read a Bíblia usando um endereço completo:
 
 Etapas para que se read um byte desde um console:
   Read uma string desde o console.
-  Se a string estiver em branco, atribua o caractere null ao byte; saia.
+  Se a string estiver em branco, atribua o caractere null ao byte; retorne.
   Atribua o conteúdo deste caractere inicial desta string ao byte.
 
 Etapas para que se read um console para uma string:
-  Se o console for inexistente, limpe a string; saia.
+  Se o console for inexistente, limpe a string; retorne.
   Desmanche all eventos.
   Limpe o texto retornado deste console.
   Mostre o console.
@@ -226,14 +226,14 @@ Etapas para que se abra um arquivo usando um endereço completo e uns millisecond
   Start um temporizador.
   Comece. [a executar o código abaixo]
     Abra o arquivo usando o endereço completo.
-    Se o erro do fluxo de entrada/saída estiver em branco, cancele.
-    Se os intervalos deste temporizador forem greater do que os milliseconds, cancele.
+    Se o erro do fluxo de entrada/saída estiver em branco, retorne.
+    Se os intervalos deste temporizador forem greater do que os milliseconds, retorne.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se abra um arquivo usando um endereço completo:
   Limpe o erro do fluxo de entrada/saída.
   Extraia um endereço da pasta desde o endereço completo.
-  Se o endereço da pasta não estiver no sistema de arquivos, atribua "A Pasta: " junto com o endereço da pasta seguido de " não existe." ao erro do fluxo de entrada/saída; saia.
+  Se o endereço da pasta não estiver no sistema de arquivos, atribua "A Pasta: " junto com o endereço da pasta seguido de " não existe." ao erro do fluxo de entrada/saída; retorne.
   Ligue o endereço completo para read-write mode.
   Isole o endereço completo.
   Anexe o caractere NULL o endereço completo.
@@ -262,7 +262,7 @@ Etapas para que se abra um arquivo usando um endereço completo:
     \Ao abrir um arquivo existente, CreateFile ignora este parâmetro
     devolvendo o arquivo.\Se a função for bem-sucedida, o valor de retorno será um identificador aberto para o arquivo, dispositivo, canal nomeado ou slot de correio especificado.
     \Se a função falhar, o valor de retorno é -1 (INVALID_HANDLE_VALUE).
-  Se o arquivo for -1 [INVALID_HANDLE_VALUE], atribua "Erro ao abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; saia.
+  Se o arquivo for -1 [INVALID_HANDLE_VALUE], atribua "Erro ao abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; retorne.
 
 O module é um estrutura com
   Um número identificador,

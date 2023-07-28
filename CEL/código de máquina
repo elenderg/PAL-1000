@@ -28,23 +28,23 @@ Um número é um estrutura com
   Um segundo byte,
   Um terceiro byte,
   Um quarto byte, \ 4 bytes = 32 bits 
-  Uma word de menor ordem sob o primeiro byte, 
-  Uma word de maior ordem sob o terceiro byte. \ Devido à extremidade (ordenação) dos processadores x86
+  Uma word de ordem inferior sob o primeiro byte, 
+  Uma word de ordem superior sob o terceiro byte. \ Devido à extremidade (ordenação) dos processadores x86
 
- Uma word de menor ordem é uma word.
- Uma word de maior ordem é uma word.
+ Uma word de ordem inferior é uma word.
+ Uma word de ordem superior é uma word.
 
 Uma máscara de disjunção exclusiva é uma mask.
 
 Etapas para que se desassocie um ponteiro:
-  Se o ponteiro for inexistente, cancele.
+  Se o ponteiro for inexistente, retorne.
   Processe "kernel32.dll" "HeapFree" com  \ https://docs.microsoft.com/pt-br/windows/win32/api/heapapi/nf-heapapi-heapfree
   \Libera um bloco de memória alocado de um heap pela função HeapAlloc ou HeapReAlloc.
     O endereço heap [hHeap] \Um identificador para o heap cujo bloco de memória deve ser liberado. Esse identificador é retornado pela função HeapCreate ou GetProcessHeap.
     e 0 [dwFlags no options] e  \As opções de liberação de heap.
   o ponteiro [lpMem] \Um ponteiro para o bloco de memória a ser liberado. Este ponteiro é retornado pela função HeapAlloc ou HeapReAlloc. Este ponteiro pode ser NULL.
     devolvendo um número. \ Se a função for bem-sucedida, o valor de retorno será diferente de zero. 
-  Se o número for 0, cancele. \Se a função falhar, o valor de retorno é zero.
+  Se o número for 0, retorne. \Se a função falhar, o valor de retorno é zero.
   Esvazie o ponteiro.
   Subtraia 1 desde a contagem do heap.
 
@@ -415,12 +415,12 @@ Etapas para que se negate uma fração:
 
 Etapas para que se atribua um detector para uma string;
 Etapas para que se converta um detector para uma string:
-  Se o detector estiver ativo, atribua "SIM" à string; saia. \ no momento tem que ser inglês por conta das externalized reams
+  Se o detector estiver ativo, atribua "SIM" à string; retorne. \ no momento tem que ser inglês por conta das externalized reams
   Atribua "NÃO" à string.
 
 Etapas para que se reassocie um ponteiro usando um quantidade de bytes:
-  Se o ponteiro for inexistente, associe o ponteiro usando o quantidade de bytes; saia.
-  Se o quantidade de bytes for 0, desassocie o ponteiro; saia.
+  Se o ponteiro for inexistente, associe o ponteiro usando o quantidade de bytes; retorne.
+  Se o quantidade de bytes for 0, desassocie o ponteiro; retorne.
   Isole o quantidade de bytes.
   Arredonde o quantidade de bytes para cima para o próxima potência of two.
   Processe "kernel32.dll" "HeapReAlloc" com  \ https://docs.microsoft.com/pt-br/windows/win32/api/heapapi/nf-heapapi-heaprealloc
@@ -854,7 +854,7 @@ Etapas para que se lance um subtexto sobre uma string: \assembly
 
 Etapas para que se divida um ponteiro por um número;
 Etapas para que se divida um número por um segundo número:
-  Se o segundo número for 0, atribua o maior número ao número; saia.
+  Se o segundo número for 0, atribua o maior número ao número; retorne.
   Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o número
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
   Decodifique $8B00. \ mov eax,[eax]
@@ -865,7 +865,7 @@ Etapas para que se divida um número por um segundo número:
 
 Etapas para que se divida um ponteiro por um número usando um quociente e um resto;
 Etapas para que se divida um número por um segundo número usando um quociente e um resto:
-  Se o segundo número for 0, atribua o maior número ao quociente; atribua 0 ao resto; saia.
+  Se o segundo número for 0, atribua o maior número ao quociente; atribua 0 ao resto; retorne.
   Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o 1º número (epb+8) no registrador eax
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva o 2º número (epb+12) no registrador ebx
   Decodifique $8B00. \ mov eax,[eax] 

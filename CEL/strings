@@ -13,49 +13,49 @@ Etapas para que se mova um percorredor (catálogo dicionário léxico rules):
   Skip algum tipo de leading noise no segmento final deste percorredor.
   Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
   Comece. [a executar o código abaixo]
-    Se o segmento final deste percorredor estiver em branco, cancele.
+    Se o segmento final deste percorredor estiver em branco, retorne.
     Avance o percorredor.
-    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for irrelevante, cancele.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for irrelevante, retorne.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se mova um percorredor (quoted string rules):
   Avance o percorredor.
-  Se o segmento final deste percorredor estiver em branco, cancele.
+  Se o segmento final deste percorredor estiver em branco, retorne.
   Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for as aspas duplas, recomece.
-  Se o caractere inicial deste segmento final deste percorredor for o caractere final deste segmento final deste percorredor, avance o percorredor; saia.
+  Se o caractere inicial deste segmento final deste percorredor for o caractere final deste segmento final deste percorredor, avance o percorredor; retorne.
   Avance o percorredor.
-  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for as aspas duplas, cancele.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for as aspas duplas, retorne.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se mova um percorredor (spell checking rules):
   Skip algum tipo de non-alfanumérico bytes no segmento final deste percorredor. \ pula o #
   Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
   Comece. [a executar o código abaixo]
-    Se o segmento final deste percorredor estiver em branco, cancele.
+    Se o segmento final deste percorredor estiver em branco, retorne.
     Avance o percorredor.
     Se o segmento final deste percorredor está sobre alguma espécie de contração, avance o percorredor; recomece.
-    Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for alfanumérico, cancele.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for alfanumérico, retorne.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se mova um percorredor (caixa de texto arquivo rules):
   Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
   Comece. [a executar o código abaixo]
-    Se o segmento final deste percorredor estiver em branco, cancele.
+    Se o segmento final deste percorredor estiver em branco, retorne.
     Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o retorno de carro, avance o percorredor; pare.
-    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for a quebra de linha, avance o percorredor; saia. 
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for a quebra de linha, avance o percorredor; retorne. 
   \ *Rotina nova criada pelo Dahn para new to handle lines terminated por just linefeed
     Avance o percorredor.
   Recomece. [percorra novamente o código acima]
-  Se o segmento final deste percorredor estiver em branco, cancele.
+  Se o segmento final deste percorredor estiver em branco, retorne.
   Se o conteúdo deste caractere inicial deste segmento final deste percorredor for a quebra de linha, adicione 1 para o caractere inicial deste segmento final deste percorredor.
 
 Etapas para que se mova um percorredor (word wrapping rules):
   Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
-  Se o segmento final deste percorredor estiver em branco, cancele.
-  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o retorno de carro, avance o percorredor; saia.
+  Se o segmento final deste percorredor estiver em branco, retorne.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o retorno de carro, avance o percorredor; retorne.
   Comece. [a executar o código abaixo]
-    Se o segmento final deste percorredor estiver em branco, cancele.
-    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o retorno de carro, cancele.
+    Se o segmento final deste percorredor estiver em branco, retorne.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o retorno de carro, retorne.
     Se o segmento inicial deste percorredor estiver em branco, avance o percorredor; recomece.
     Se o conteúdo deste caractere inicial deste segmento final deste percorredor for like o conteúdo deste caractere final deste segmento inicial deste percorredor, 
       avance o percorredor; recomece.
@@ -63,24 +63,24 @@ Etapas para que se mova um percorredor (word wrapping rules):
 Etapas para que se mova um percorredor usando uma caixa (word wrapping rules):
   Skip algum tipo de leading quebra de linha no segmento final deste percorredor.
   Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
-  Se o segmento final deste percorredor estiver em branco, cancele.
+  Se o segmento final deste percorredor estiver em branco, retorne.
   Lance um segundo percorredor sobre o percorredor.
   Comece. [a executar o código abaixo]
-    Se o segmento final deste percorredor estiver em branco, cancele.
+    Se o segmento final deste percorredor estiver em branco, retorne.
     Mova o segundo percorredor (word wrapping rules).
-    Se o segmento inicial deste segundo percorredor estiver em branco, cancele.
-    Se o conteúdo deste caractere inicial deste segmento inicial deste segundo percorredor for o retorno de carro, avance o percorredor; saia.
+    Se o segmento inicial deste segundo percorredor estiver em branco, retorne.
+    Se o conteúdo deste caractere inicial deste segmento inicial deste segundo percorredor for o retorno de carro, avance o percorredor; retorne.
     Se o conteúdo deste caractere inicial deste segmento inicial deste segundo percorredor for whitespace, avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor; recomece.
     Se o segmento inicial deste percorredor estiver em branco, avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor; recomece.
-    Se o segmento inicial deste percorredor junto com o segmento inicial deste segundo percorredor forem wider do que a caixa, cancele.
+    Se o segmento inicial deste percorredor junto com o segmento inicial deste segundo percorredor forem wider do que a caixa, retorne.
     Avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se mova um percorredor usando um separator byte:
   Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
   Comece. [a executar o código abaixo]
-    Se o segmento final deste percorredor estiver em branco, cancele.
-    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o separator byte, adicione 1 para o caractere inicial deste segmento final deste percorredor; saia.
+    Se o segmento final deste percorredor estiver em branco, retorne.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o separator byte, adicione 1 para o caractere inicial deste segmento final deste percorredor; retorne.
     Avance o percorredor.
   Recomece. [percorra novamente o código acima]
 
@@ -109,7 +109,7 @@ Etapas para que se atribua uma string para uma segunda string:
 Etapas para que se remove aspas de uma string:
   Lance um subtexto sobre a string.
   Se o subtexto estiver em branco, pare.
-  Se o conteúdo deste caractere inicial deste subtexto não for as aspas duplas, cancele.
+  Se o conteúdo deste caractere inicial deste subtexto não for as aspas duplas, retorne.
   Adicione 1 para o caractere inicial deste subtexto.
   Comece. [a executar o código abaixo]
     Se o subtexto estiver em branco, pare.
@@ -121,10 +121,10 @@ Etapas para que se remove aspas de uma string:
   Atribua a segunda string à string.
 
 Etapas para que se uppercase qualquer trecho selecionado em uma caixa de texto:
-  Se a caixa de texto for inexistente, cancele.
+  Se a caixa de texto for inexistente, retorne.
   Comece. [a executar o código abaixo]
     Obtenha uma linha de texto desde as linhas des textos desta caixa de texto.
-    Se a linha de texto for inexistente, cancele.
+    Se a linha de texto for inexistente, retorne.
     Se a linha de texto of a caixa de texto não estiver selecionado, recomece.
     Lance um subtexto sobre qualquer trecho selecionado na linha de texto of a caixa de texto.
     Uppercase o subtexto.
@@ -159,20 +159,20 @@ Etapas para que se anteponha uma string para uma segunda string:
   Atribua o caractere inicial desta segunda string mais a quantidade de caracteres agrupados menos 1 ao caractere final desta segunda string.
 
 Etapas para que se uppercase o character depois de um finger e atribua it para uma string:
-  Se o finger for inexistente, cancele.
+  Se o finger for inexistente, retorne.
   Atribua o conteúdo deste finger à string.
   Uppercase a string.
 
 Etapas para que se uppercase uma string:
   Lance um subtexto sobre a string.
   Comece. [a executar o código abaixo]
-    Se o subtexto estiver em branco, cancele.
+    Se o subtexto estiver em branco, retorne.
     Uppercase o conteúdo deste caractere inicial deste subtexto.
     Adicione 1 para o caractere inicial deste subtexto.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se uppercase uma caixa de texto:
-  Se a caixa de texto for inexistente, cancele.
+  Se a caixa de texto for inexistente, retorne.
   Comece. [a executar o código abaixo]
     Obtenha uma linha de texto desde as linhas des textos desta caixa de texto.
     Se a linha de texto for inexistente, pare.
@@ -184,7 +184,7 @@ Etapas para que se escreva uma string;
 Etapas para que se pinte uma string:
   Isole a string.
   Comece. [a executar o código abaixo]
-  Se a string estiver em branco, cancele.
+  Se a string estiver em branco, retorne.
     Obtenha um byte desde a string.
     Pinte o byte.
     Se a string não estiver em branco, providencie espaçamento adequado entre caracteres.
@@ -197,7 +197,7 @@ Etapas para que se pinte uma string usando um centro localização e um raio:
   Isole a string.
   Atribua 1 e a quantidade de caracteres desta string a uma fração.
   Comece. [a executar o código abaixo]
-    Se a string estiver em branco, cancele.
+    Se a string estiver em branco, retorne.
     Obtenha um byte desde a string.
     Start sob o centro localização.
     Mova o raio.
@@ -212,7 +212,7 @@ Etapas para que se escreva uma string sob uma localização com uma cor:
   Pinte a string.
 
 Etapas para que se escreva uma string sobre um console:
-  Se o console for inexistente, cancele.
+  Se o console for inexistente, retorne.
   Insira a string ao caixa de texto deste console.
   Insira o retorno de carro ao caixa de texto deste console.
   Wrap a caixa de texto deste console.
@@ -221,7 +221,7 @@ Etapas para que se escreva uma string sobre um console:
 
 Etapas para que se escreva uma string para um console sem passar pra próxima linha;
 Etapas para que se escreva uma string sobre um console sem passar pra próxima linha:
-  Se o console for inexistente, cancele.
+  Se o console for inexistente, retorne.
   Insira a string ao caixa de texto deste console.
   Wrap a caixa de texto deste console.
   Role a caixa de texto deste console para o cursor de texto.
@@ -258,7 +258,7 @@ Etapas para que se escreva uma string no middle of a tela:
   Atualize o tela.
 
 Etapas para que se escreva uma string sobre um terminal:
-  Se o terminal for inexistente, cancele.
+  Se o terminal for inexistente, retorne.
   Adicione um quora para o terminal.
   Atribua a string à string deste quora.
   Atribua a output cor deste terminal à cor deste quora.
@@ -267,7 +267,7 @@ Etapas para que se escreva uma string sobre um terminal:
 Etapas para que se pinte uma string while turning uma fração:
   Isole a string.
   Comece. [a executar o código abaixo]
-    Se a string estiver em branco, cancele.
+    Se a string estiver em branco, retorne.
     Obtenha um byte desde a string.
     Pinte o byte.
     Vire a fração.
@@ -352,29 +352,29 @@ Etapas para que se pinte uma string com uma cor uns twips para baixo desde o top
   Pinte a string com a cor.
 
 Etapas para que se zero preencha uma string usando uma contagem:
-  Se a quantidade de caracteres desta string for maior do que ou igual à contagem, cancele.
+  Se a quantidade de caracteres desta string for maior do que ou igual à contagem, retorne.
   Anteponha o número zero para a string.
   Recomece. [percorra novamente o código acima]
   
 
 Etapas para que se remove algum tipo de trailing barra invertida desde uma string:
-  Se a string estiver em branco, cancele.
-  Se o conteúdo deste caractere final desta string não for a barra invertida, cancele.
+  Se a string estiver em branco, retorne.
+  Se o conteúdo deste caractere final desta string não for a barra invertida, retorne.
   Remove o last byte desde a string.
 
 Etapas para que se remove algum tipo de trailing quebra de linha desde uma string:
-  Se a string estiver em branco, cancele.
-  Se o conteúdo deste caractere final desta string não for a quebra de linha, cancele.
+  Se a string estiver em branco, retorne.
+  Se o conteúdo deste caractere final desta string não for a quebra de linha, retorne.
   Remove o last byte desde a string.
 
 Etapas para que se remove algum tipo de trailing retorno de carro desde uma string:
-  Se a string estiver em branco, cancele.
-  Se o conteúdo deste caractere final desta string não for o retorno de carro, cancele.
+  Se a string estiver em branco, retorne.
+  Se o conteúdo deste caractere final desta string não for o retorno de carro, retorne.
   Remove o last byte desde a string.
 
 Etapas para que se remove bytes de uma string usando um subtexto:
-  Se a string estiver em branco, cancele.
-  Se o subtexto estiver em branco, cancele.
+  Se a string estiver em branco, retorne.
+  Se o subtexto estiver em branco, retorne.
   Atribua o caractere final desta string menos o caractere final deste subtexto a uma quantidade de caracteres.
   Atribua o caractere final deste subtexto mais 1 a um ponteiro.
   Copie bytes desde o ponteiro para o caractere inicial deste subtexto pelo quantidade de caracteres.

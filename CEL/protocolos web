@@ -2,7 +2,7 @@ Um query byte é um texto de consulta.
 Um texto de consulta é uma string.
 
 Etapas para que se read uma response string desde uma requisição WinHTTP:
-  Se a requisição WinHTTP for inexistente, cancele.
+  Se a requisição WinHTTP for inexistente, retorne.
   Limpe a response string.
   Atribua 8 kilobytes a um trecho size.
   Comece. [a executar o código abaixo]
@@ -52,7 +52,7 @@ Etapas para que se read uma URL para um trecho:
     [e  dwFlags e] \ Opções -> verificar se não é isso que tá dando bug no monet.
     devolvendo um número identificador da URL da internet. \ Retorna um identificador válido que o aplicativo passa para as funções WinINet subsequentes. 
     \Se InternetOpen falhar, ele retornará NULL.
-  Se o número identificador da URL da internet for 0 [NULL], atribua "Erro. Não foi possível se conectar à internet. Verifique sua conexão" ao erro do fluxo de entrada/saída; saia.
+  Se o número identificador da URL da internet for 0 [NULL], atribua "Erro. Não foi possível se conectar à internet. Verifique sua conexão" ao erro do fluxo de entrada/saída; retorne.
  \ internet abra URL
   Isole a URL.
   Anexe o caractere NULL a URL.
@@ -102,13 +102,13 @@ Etapas para que se read uma URL para um trecho:
     O número identificador da URL da internet. [hInternet] \ O identificador a ser fechado.
 
 Etapas para que se receive o response string desde uma requisição WinHTTP:
-  Se a requisição WinHTTP for inexistente, cancele.
+  Se a requisição WinHTTP for inexistente, retorne.
   Processe "WinHTTP.dll" "WinHttpReceiveResponse" com \ https://docs.microsoft.com/pt-br/windows/win32/api/winhttp/nf-winhttp-winhttpreceiveresponse
   \ A função WinHttpReceiveResponse espera receber a resposta a uma solicitação HTTP iniciada por WinHttpSendRequest.
     O número identificador de requisição desta requisição WinHTTP [hRequest] \ O Identificador de HINTERNET retornado por WinHttpOpenRequest e enviado por WinHttpSendRequest.
     e 0 [lpReserved] \ este parâmetro é reservado e deve ser NULL.
     devolvendo um número resultante. \ Retorna TRUE se for bem-sucedido ou FALSE caso contrário.
-  Se o número resultante for 0 [FALSE], atribua "A resposta da solicitação HTTP não foi bem sucedida" ao erro do fluxo de entrada/saída; saia.
+  Se o número resultante for 0 [FALSE], atribua "A resposta da solicitação HTTP não foi bem sucedida" ao erro do fluxo de entrada/saída; retorne.
 
 Etapas para que se receive um trecho desde um socket:
   Limpe o erro do fluxo de entrada/saída.
@@ -132,9 +132,9 @@ Etapas para que se receive um trecho desde um socket:
       \Se nenhum erro ocorrer, recv retorna o número de bytes recebidos e o buffer apontado pelo parâmetro buf conterá esses dados recebidos. 
       \Se a conexão foi fechada normalmente, o valor de retorno é zero.
       \Caso contrário, um valor de SOCKET_ERROR é retornado
-    Se a contagem não for -1 [SOCKET_ERROR], atribua o ponteiro mais a contagem menos 1 ao caractere final deste trecho; saia.
-    Se o último erro do windows sockets não for 10040 [WSAMSGSIZE], atribua "Ocorreu um erro no recebimento dos dados." ao erro do fluxo de entrada/saída; limpe o trecho; saia.
-  \Se o last winsock erro desse system não for 10040 [WSAMSGSIZE], atribua "Ocorreu um erro no recebimento dos dados." ao erro do fluxo de entrada/saída; limpe o trecho; saia.
+    Se a contagem não for -1 [SOCKET_ERROR], atribua o ponteiro mais a contagem menos 1 ao caractere final deste trecho; retorne.
+    Se o último erro do windows sockets não for 10040 [WSAMSGSIZE], atribua "Ocorreu um erro no recebimento dos dados." ao erro do fluxo de entrada/saída; limpe o trecho; retorne.
+  \Se o last winsock erro desse system não for 10040 [WSAMSGSIZE], atribua "Ocorreu um erro no recebimento dos dados." ao erro do fluxo de entrada/saída; limpe o trecho; retorne.
     Atribua o ponteiro mais a contagem menos 1 ao caractere final deste trecho.
   Recomece. [percorra novamente o código acima]
 
@@ -143,13 +143,13 @@ Etapas para que se post um data string para uma URL e receive um response string
   Limpe o response string .
   Limpe o erro do fluxo de entrada/saída.
   Crie uma requisição WinHTTP por posting para o URL.
-  Se o erro do fluxo de entrada/saída não estiver em branco, cancele.
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
   Send o data para a requisição WinHTTP.
-  Se o erro do fluxo de entrada/saída não estiver em branco, destrua a requisição WinHTTP; saia.
+  Se o erro do fluxo de entrada/saída não estiver em branco, destrua a requisição WinHTTP; retorne.
   Receive o response string desde a requisição WinHTTP.
-  Se o erro do fluxo de entrada/saída não estiver em branco, destrua a requisição WinHTTP; saia.
+  Se o erro do fluxo de entrada/saída não estiver em branco, destrua a requisição WinHTTP; retorne.
   Read o response string desde a requisição WinHTTP.
-  Se o erro do fluxo de entrada/saída não estiver em branco, destrua a requisição WinHTTP; saia.
+  Se o erro do fluxo de entrada/saída não estiver em branco, destrua a requisição WinHTTP; retorne.
   Destrua a requisição WinHTTP.
 
 
