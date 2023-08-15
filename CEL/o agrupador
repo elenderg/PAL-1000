@@ -49,7 +49,7 @@ A etiqueta de carregamento de endereço é uma etiqueta igual a 13.
 A etiqueta de carregamento de registrador EAX é uma etiqueta igual a 14.
 A etiqueta de laço é uma etiqueta igual a 15.
 A etiqueta de negação lógica é uma etiqueta igual a 16.
-A prolog etiqueta é uma etiqueta igual a 17.
+A etiqueta preliminar é uma etiqueta igual a 17.
 A etiqueta de inserção de endereço [na stack] é uma etiqueta igual a 18.
 A etiqueta de inserção de valor [na stack] é uma etiqueta igual a 19.
 A etiqueta de obtenção do registrador EAX é uma etiqueta igual a 20.
@@ -570,7 +570,7 @@ Etapas para que se enderece um fragment usando um endereço:
   Se a etiqueta deste fragment for a etiqueta de retorno, adicione 5 para o endereço; retorne.
   Se a etiqueta deste fragment for a etiqueta de repetição, adicione 5 para o endereço; retorne.
   Se a etiqueta deste fragment for a etiqueta de interrupção, adicione 5 para o endereço; retorne.
-  Se a etiqueta deste fragment for a prolog etiqueta, enderece o fragment usando o endereço (prolog); retorne.
+  Se a etiqueta deste fragment for a etiqueta preliminar, enderece o fragment usando o endereço (etapa preliminar); retorne.
   Se a etiqueta deste fragment for a epilog etiqueta, enderece o fragment usando o endereço (epilog); retorne.
   Se a etiqueta deste fragment for a etiqueta de decodificação, adicione a quantidade de caracteres deste código deste fragment para o endereço; retorne.
   Se a etiqueta deste fragment for a etiqueta de inserção de valor [na stack], enderece o fragment usando o endereço (push value); retorne.
@@ -584,7 +584,7 @@ Etapas para que se enderece um fragment usando um endereço (epilog):
   Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, adicione 3 para o endereço.
   Adicione 6 para o endereço.
 
-Etapas para que se enderece um fragment usando um endereço (prolog):
+Etapas para que se enderece um fragment usando um endereço (etapa preliminar):
   Adicione 3 para o endereço.
   Se o local size desta rotina utilizada atualmente não for 0, adicione 10 para o endereço.
   Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, adicione 3 para o endereço.
@@ -785,7 +785,7 @@ Etapas para que se posponha uma etiqueta para um trecho (as um fragment etiqueta
   Se a etiqueta for a etiqueta de carregamento de registrador EAX, posponha "Carregamento do Registrador EAX" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de laço, posponha "Loop" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de negação lógica, posponha "Negação Lógica" para o trecho (com separador); retorne.
-  Se a etiqueta for a prolog etiqueta, posponha "Prólogo" para o trecho (com separador); retorne.
+  Se a etiqueta for a etiqueta preliminar, posponha "Prólogo" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de inserção de endereço [na stack], posponha "Empilhamento de endereço" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de inserção de valor [na stack], posponha "Empilhamento de valor" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de obtenção do registrador EAX, posponha "Requisição EAX" para o trecho (com separador); retorne.
@@ -1151,7 +1151,7 @@ Etapas para que se compile o body of uma rotina:
   Atribua a rotina à rotina utilizada atualmente.
   Crie o nickname catálogo desta rotina usando 101.
   Eliminate duplicate nicknames desde os parâmetros desta rotina usando o nickname catálogo desta rotina.
-  Compile o body of a rotina (prolog).
+  Compile o body of a rotina (etapa preliminar).
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, retorne.
     Se o segmento inicial deste percorredor estiver em branco, pare.
@@ -1176,10 +1176,10 @@ Etapas para que se compile o body of uma rotina (epilog):
   Recomece. [percorra novamente o código acima]
   Adicione um quarto fragment usando o epilog etiqueta.
 
-Etapas para que se compile o body of uma rotina (prolog):
+Etapas para que se compile o body of uma rotina (etapa preliminar):
   Se a rotina for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Adicione um fragment usando o prolog etiqueta.
+  Adicione um fragment usando o etiqueta preliminar.
   Adicione um segundo fragment usando o etiqueta de laço.
 
 Etapas para que se compile o body of a rotina denominada uma string;
@@ -4110,7 +4110,7 @@ Etapas para que se encontre uma variável usando um nome e umas variáveis:
 Um fragment é uma coisa com
   \ we have three lists in the compiler memory — types, variables, and rotinas 
   \ each rotina consists of a series of logical instructions called “fragments.” There are just 22 fragment types:
-  Uma etiqueta [break, Demanda Externa, Demanda Indireta, Demanda Interna, dereference, end if, epilog, exit, finalize, increment, Decodifique, jump false, load address, load eax, loop, not, prolog, push address, push value, salve eax, repeat, rotina address],
+  Uma etiqueta [break, Demanda Externa, Demanda Indireta, Demanda Interna, dereference, end if, epilog, exit, finalize, increment, Decodifique, jump false, load address, load eax, loop, not, etapa preliminar, push address, push value, salve eax, repeat, rotina address],
   Uma variável (reference) [Demanda Indireta, dereference, increment, load address, load eax, pop, push address, push value, rotina address, salve eax],
   Uma segunda variável (reference) [load address],
   Uma rotina (reference) [Demanda Interna, rotina address],
@@ -6111,7 +6111,7 @@ Etapas para que se transforme em código hexadecimal um fragment:
   Se a etiqueta deste fragment for o etiqueta de retorno, transforme em código hexadecimal o fragment (exit); retorne.
   Se a etiqueta deste fragment for a etiqueta de repetição, transforme em código hexadecimal o fragment (repeat); retorne.
   Se a etiqueta deste fragment for o etiqueta de interrupção, transforme em código hexadecimal o fragment (break); retorne.
-  Se a etiqueta deste fragment for o prolog etiqueta, transforme em código hexadecimal o fragment (prolog); retorne.
+  Se a etiqueta deste fragment for o etiqueta preliminar, transforme em código hexadecimal o fragment (etapa preliminar); retorne.
   Se a etiqueta deste fragment for o epilog etiqueta, transforme em código hexadecimal o fragment (epilog); retorne.
   Se a etiqueta deste fragment for o etiqueta de inserção de valor [na stack], transforme em código hexadecimal o fragment (push value); retorne.
   Se a etiqueta deste fragment for a etiqueta de demanda externa, transforme em código hexadecimal o fragment (Demanda Externa); retorne.
@@ -6191,7 +6191,7 @@ Etapas para que se transforme em código hexadecimal um fragment (load eax):
 Etapas para que se transforme em código hexadecimal um fragment (not):
   Acrescente $83F001 para o código deste fragment. \ xor eax,1
 
-Etapas para que se transforme em código hexadecimal um fragment (prolog):
+Etapas para que se transforme em código hexadecimal um fragment (etapa preliminar):
   Acrescente $55 para o código deste fragment. \ push ebp -> saves the contents of the EBP register on the stack.
   Acrescente $8BEC para o código deste fragment. \ mov ebp,esp -> puts the contents of the ESP register into the EBP register
   Atribua o local size desta rotina utilizada atualmente dividido por 4 para um número.
