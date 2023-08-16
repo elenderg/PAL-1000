@@ -151,7 +151,7 @@ Etapas para que se adicione o rotina de destruição por um type:
   Se o type for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o type não deveria ser ignorado, retorne.
-  Se o type puder ser reduzido para "coisas", adicione o rotina de destruição pelo type (coisas); retorne.
+  Se o type puder ser reduzido para "listas", adicione o rotina de destruição pelo type (listas); retorne.
   Se o type puder ser reduzido para "ponteiro", adicione o rotina de destruição pelo type (ponteiro); retorne.
 
 Etapas para que se adicione o rotina de destruição por um type (ponteiro):
@@ -163,7 +163,7 @@ Etapas para que se adicione o rotina de destruição por um type (ponteiro):
   Posponha "Destrua um " junto com o nome deste type para o header string desta rotina.
   Posponha "Se o " junto com o nome deste type seguido de " for inexistente, retorne. " para o body string desta rotina.
   Se o conteúdo type deste type puder ser reduzido para "ponteiro", posponha "Destrua o conteúdo de este " junto com o nome deste type seguido de "'. " para o body string desta rotina.
-  Se o conteúdo type deste type puder ser reduzido para "coisas", posponha "Destrua o conteúdo de este " junto com o nome deste type seguido de "'. " para o body string desta rotina.
+  Se o conteúdo type deste type puder ser reduzido para "listas", posponha "Destrua o conteúdo de este " junto com o nome deste type seguido de "'. " para o body string desta rotina.
   Comece. [a executar o código abaixo]
     Obtenha um campo desde os campos deste conteúdo type deste type.
     Se o campo for inexistente, pare.
@@ -176,12 +176,12 @@ Etapas para que se adicione o rotina de destruição por um type (ponteiro):
   Lance as instruções desta rotina sobre o body string desta rotina.
   Compile o header of a rotina.
 
-Etapas para que se adicione o rotina de destruição por um type (coisas):
+Etapas para que se adicione o rotina de destruição por um type (listas):
   Se o type for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
   \Atribua "Erro interno na hora de executar a tarefa de destruição de tipos" ao texto retornado.
-  Se o first campo destes campos deste type for inexistente, apresente uma mensagem de erro contendo "Erro interno no campo do tipo. Veja rotina 'adicione um forget rotina por um type (coisas)'"; [Say o texto retornado;] exit. \Adicionado Say o texto retornado
-  Se o type deste first campo destes campos deste type for inexistente, apresente a mensagem de erro contendo "Erro interno no tipo do campo. Consulte a rotina 'adicione o forget rotina por um type (coisas)'"; retorne.
+  Se o first campo destes campos deste type for inexistente, apresente uma mensagem de erro contendo "Erro interno no campo do tipo. Veja rotina 'adicione um forget rotina por um type (listas)'"; [Say o texto retornado;] exit. \Adicionado Say o texto retornado
+  Se o type deste first campo destes campos deste type for inexistente, apresente a mensagem de erro contendo "Erro interno no tipo do campo. Consulte a rotina 'adicione o forget rotina por um type (listas)'"; retorne.
   Atribua "Destrua [" junto com o nome deste type seguido de "]" para uma representação interna da rotina.
   Se a representação interna da rotina estiver no catálogo geral de rotinas, retorne.
   Adicione uma rotina para as rotinas usando nil.
@@ -1336,7 +1336,7 @@ Etapas para que se compile um endereço da pasta (identificação dos tipos das var
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mostre no painel de informações "Resolvendo tipos...".
   Start o temporizador de resolução de tipos.
-  Resolva os types (expand coisas).
+  Resolva os types (expand listas).
   Resolva os types (registro de plurais).
   Resolva os types (base types).
   Resolva os types (optional info).
@@ -2874,7 +2874,7 @@ Etapas para que se determine se um percorredor está sobre algum tipo de preposiç
   Se o segmento inicial deste percorredor for algum tipo de artigo, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se uma string é algum tipo de artigo indefinido: \ esse aqui parece que não serve pra muita coisa
+Etapas para que se determine se uma string é algum tipo de artigo indefinido: \ esse aqui parece que não serve pra muita lista
   \PAL
   Se a string for algum tipo de artigo indefinido português, diga sim.
   Se a string for algum tipo de pronome demonstrativo abrangente, diga sim.
@@ -3731,7 +3731,7 @@ Etapas para que se determine se um type deveria ser finalizado:[se o compilador 
   Se os campos deste type deveriam ser finalizados, diga sim.\ this is for strings inside records
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se um type deveria ser ignorado:  [ou seja, o compilador não deveria finalizar esse tipo de forma automática]
+Etapas para que se determine se um type deveria ser ignorado: [ou seja, o compilador não deveria finalizar esse tipo de forma automática]
   \ ie, can be destroyed/needs a destroy routine generated for it
   \The phrase "should be forgotten" means "ought to be forgotten" which really means "needs to have a destroy routine automatically generated for it". 
   \See page 93 of the manual.
@@ -3740,9 +3740,9 @@ Etapas para que se determine se um type deveria ser ignorado:  [ou seja, o compi
   \Se o nome deste type for "elemento", diga não.
   \Se o nome deste type for "elementos", diga não.
   \CAL
-  Se o nome deste type for "coisa", diga não. \ no, because this is the built-in type which we don't ever allocate or destroy, it exists so we can "magically" add next and previous fields to anything defined as a "thing"
-  Se o nome deste type for "coisas", diga não. \ no, because this is the built-in type we "magically" generate to anchor lists of things, same as above of .
-  Se o type puder ser reduzido para "coisas", diga sim. \ yes, because (though it seems to contradict the line immediately above of ) this is a an actual list of things that we can destroy, for example "some pages".
+  Se o nome deste type for "lista", diga não. \ no, because this is the built-in type which we don't ever allocate or destroy, it exists so we can "magically" add next and previous fields to anything defined as a "thing"
+  Se o nome deste type for "listas", diga não. \ no, because this is the built-in type we "magically" generate to anchor lists of things, same as above of .
+  Se o type puder ser reduzido para "listas", diga sim. \ yes, because (though it seems to contradict the line immediately above of ) this is a an actual list of things that we can destroy, for example "some pages".
   Se o type não puder ser reduzido para "ponteiro", diga não. \ \ no, because a pointer variable is a static variable (it is the address in the variable that is dynamic); the pointer variable itself is not something that can be dynamically allocated, so no destroy is necessary
   Se o conteúdo type deste type for inexistente, diga não. \ no, because it's a pointer to nothing, so there's nothing to destroy.
   Se o conteúdo type deste type não puder ser reduzido para "ponteiro", diga sim.\ yes, because it's a pointer to something allocated, not a pointer to another pointer. Pointers to pointers are handled with the next recursive line
@@ -3856,7 +3856,7 @@ Etapas para que se eliminate duplicate nicknames usando uma variável e um catálo
 
   
 
-An entry é uma coisa com
+An entry é uma lista com
   Um nome endereço,
   Um previamente calculado endereço, \ consulte https://en.wikipedia.org/wiki/Thunk e 
   \http://ftp.informatik.rwth-aachen.de/jargon300/thunk.html para mais informações
@@ -4105,7 +4105,7 @@ Etapas para que se encontre uma variável usando um nome e umas variáveis:
     Se o nickname desta variável for o nome, retorne.
   Recomece. [percorra novamente o código acima]
 
-Um fragment é uma coisa com
+Um fragment é uma lista com
   \ we have three lists in the compiler memory — types, variables, and rotinas 
   \ each rotina consists of a series of logical instructions called “fragments.” There are just 22 fragment types:
   Uma etiqueta [break, Demanda Externa, Demanda Indireta, Demanda Interna, dereference, end if, etapa conclusiva, exit, finalize, increment, Decodifique, jump false, load address, load eax, loop, not, etapa preliminar, push address, empilhamento de valor, salve eax, repeat, rotina address],
@@ -4168,7 +4168,7 @@ Um import header é um estrutura com
   \É composto por: RVA = Base da Imagem + Ordem Endian
   Um endereço denominado first previamente calculado memory endereço.
 
-Um import é uma coisa com
+Um import é uma lista com
   Um nome endereço,
   Um header endereço,
   Um nome,
@@ -4378,21 +4378,21 @@ Etapas para que se link:
   
 
 Etapas para que se liste tudo:
-  Limpe o listagem deste compilador.
-  Liste a mensagem de erro deste compilador na listagem deste compilador.
-  Liste os types depois de "TIPOS:" na listagem deste compilador.
-  Liste os globals depois de "VARIÁVEIS GLOBAIS:" na listagem deste compilador.
-  Liste os literals depois de "VALORES LITERAIS:" na listagem deste compilador.
-  Liste as rotinas depois de "ROTINAS:" na listagem deste compilador.
-  Liste o catálogo de tipos depois de "ÍNDICE DE TIPOS:" na listagem deste compilador.
-  Liste o catálogo de variáveis globais depois de "ÍNDICE GLOBAL:" na listagem deste compilador.
-  Liste o catálogo de variáveis hexadecimais depois de "ÍNDICE DE VALORES LITERAIS:" na listagem deste compilador.
-  Liste o catálogo geral de rotinas depois de "ÍNDICE DE ROTINAS:" na listagem deste compilador.
-  Liste o catálogo de rotinas úteis depois de "Catálogo de Rotinas Úteis:" na listagem deste compilador.
-  Liste o imports depois de "DLL's:" na listagem deste compilador.
-  Liste o sources files depois de "ARQUIVOS FONTE:" na listagem deste compilador.
-  Liste os temporizadores depois de "TEMPORIZADORES:" na listagem deste compilador.
-  Escreva o listagem deste compilador para o listagem endereço completo deste compilador.
+  Limpe o listagem trecho deste compilador.
+  Liste a mensagem de erro deste compilador na listagem trecho deste compilador.
+  Liste os types depois de "TIPOS:" na listagem trecho deste compilador.
+  Liste os globals depois de "VARIÁVEIS GLOBAIS:" na listagem trecho deste compilador.
+  Liste os literals depois de "VALORES LITERAIS:" na listagem trecho deste compilador.
+  Liste as rotinas depois de "ROTINAS:" na listagem trecho deste compilador.
+  Liste o catálogo de tipos depois de "ÍNDICE DE TIPOS:" na listagem trecho deste compilador.
+  Liste o catálogo de variáveis globais depois de "ÍNDICE GLOBAL:" na listagem trecho deste compilador.
+  Liste o catálogo de variáveis hexadecimais depois de "ÍNDICE DE VALORES LITERAIS:" na listagem trecho deste compilador.
+  Liste o catálogo geral de rotinas depois de "ÍNDICE DE ROTINAS:" na listagem trecho deste compilador.
+  Liste o catálogo de rotinas úteis depois de "Catálogo de Rotinas Úteis:" na listagem trecho deste compilador.
+  Liste o imports depois de "DLL's:" na listagem trecho deste compilador.
+  Liste o sources files depois de "ARQUIVOS FONTE:" na listagem trecho deste compilador.
+  Liste os temporizadores depois de "TEMPORIZADORES:" na listagem trecho deste compilador.
+  Escreva o listagem trecho deste compilador para o listagem endereço completo deste compilador.
 
 Etapas para que se liste um mensagem de erro em um trecho:
   Se o mensagem de erro estiver em branco, retorne.
@@ -4690,7 +4690,7 @@ Uma representação interna da rotina é uma string.  \ moniker
 \ • makes it easy reduce types (like [count] to [number]) when looking for an appropriate routine to call;
 \ • makes it easy to expand prepositions (like "to" into "in/into/to"); and
 \ • shows how the compiler interpreted various phrases in error messages.
-Uma unidade semântica é uma coisa com
+Uma unidade semântica é uma lista com
   Uma string,
   Um type (reference),
   Um variável (reference),
@@ -5451,7 +5451,7 @@ Etapas para que se reduza um type para um segundo type por utility use:
     Se o nome deste segundo type for "texto", retorne.
     Se o nome deste segundo type for "número", retorne.
     Se o nome deste segundo type for "ponteiro", retorne.
-    Se o nome deste segundo type for "coisa", esvazie o segundo type; retorne.
+    Se o nome deste segundo type for "lista", esvazie o segundo type; retorne.
     \PAL
     \Se o nome deste segundo type for "elemento", esvazie o segundo type; retorne.
     Se o base type deste segundo type for o segundo type, esvazie o segundo type; retorne.
@@ -5546,15 +5546,15 @@ Etapas para que se resolva um type (base type):
   Resolva o base type deste type (base type).
   Desative o cooking detector deste type.
 
-Etapas para que se resolva um type (expand coisa): \ base type deste type não está resolved yet
+Etapas para que se resolva um type (expand lista): \ base type deste type não está resolved yet
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o type for inexistente, retorne.
   Se o base type deste type não for inexistente, retorne.
-  Se o nome deste type for "coisa", retorne.
+  Se o nome deste type for "lista", retorne.
   \Se o nome deste type for "elemento", retorne.
-  Se o type não puder ser reduzido para "coisa" using o base nome, retorne.
+  Se o type não puder ser reduzido para "lista" using o base nome, retorne.
   Encontre um base type usando o base nome deste type e o catálogo de tipos.
-  \ adicione coisa estrutura - o número of secret campos é hard coded em two places: search por "du que 4" \ was 6
+  \ adicione lista estrutura - o número of secret campos é hard coded em two places: search por "du que 4" \ was 6
   Atribua o nome deste type seguido de " estrutura" para um nome.
   Atribua o nome deste type seguido de " estruturas" para um plural nome.
   Atribua o nome deste base type seguido de " estrutura" para um base nome.
@@ -5592,7 +5592,7 @@ Etapas para que se resolva um type (registro de plurais):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o type for inexistente, retorne.
   Se o plural nome deste type estiver em branco, retorne.
-  Se o type puder ser reduzido para "coisa" using o base nome, retorne.
+  Se o type puder ser reduzido para "lista" using o base nome, retorne.
   Catalogue o type usando o plural nome deste type.
 
 Etapas para que se resolva um type (optional info - ponteiro):
@@ -5600,7 +5600,7 @@ Etapas para que se resolva um type (optional info - ponteiro):
   Se o conteúdo type deste type não for inexistente, retorne.
   Se o conteúdo nome deste type estiver em branco, atribua o conteúdo type deste base type deste type ao conteúdo type deste type; retorne.
   Encontre o conteúdo type deste type usando o conteúdo nome deste type e o catálogo de tipos.
-  Se o conteúdo type deste type for inexistente, apresente uma mensagem de erro contendo "Não sei bem pra que coisa você está se referindo." e o local de aparição deste type; retorne.
+  Se o conteúdo type deste type for inexistente, apresente uma mensagem de erro contendo "Não sei bem pra que lista você está se referindo." e o local de aparição deste type; retorne.
 
 Etapas para que se resolva um type (optional info - conjunto):
   Se o detector de erros deste compilador estiver ativado, retorne.
@@ -5618,7 +5618,7 @@ Etapas para que se resolva um type (optional info - conjunto):
     Se o type deste campo não puder ser reduzido para "ponteiro", apresente a mensagem de erro contendo "Não entendi o parâmetro '(reference)' nesse campo: " junto com o nome deste campo seguido de "'..." e o local de aparição deste campo; retorne.
   Recomece. [percorra novamente o código acima]
   Eliminate duplicate nicknames desde os campos deste type.
-  Se o type não puder ser reduzido para "coisa estrutura", retorne.
+  Se o type não puder ser reduzido para "lista estrutura", retorne.
   Se a contagem destes campos deste type for maior do que 4, retorne. \ already copied? was 2 por next e prev, now 6 para included Spanish redefiniions
   Copie os campos deste base type deste type aos campos deste type (data campos only).
 
@@ -5651,11 +5651,11 @@ Etapas para que se resolva uns types (base types):
   Resolva o type (base type).
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se resolva uns types (expand coisas):
+Etapas para que se resolva uns types (expand listas):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Obtenha um type desde o types.
   Se o type for inexistente, retorne.
-  Resolva o type (expand coisa).
+  Resolva o type (expand lista).
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se resolva uns types (registro de plurais):
@@ -5703,7 +5703,7 @@ O catálogo geral de rotinas é um catálogo.
 
 Um tamanho local é um size.
 
-Uma rotina é uma coisa com
+Uma rotina é uma lista com
   Um local de aparição (reference),
   Um detector de compatibilidade,
   Um detector de deliberação,
@@ -6091,7 +6091,7 @@ Etapas para que se skip para o previous palavra em um subtexto:
   Recomece. [percorra novamente o código acima]
   Skip algum tipo de trailing noise no subtexto.
 
-Um source file é uma coisa com 
+Um source file é uma lista com 
   Um endereço completo e 
   Um trecho.
 
@@ -6265,7 +6265,7 @@ Etapas para que se transforme em código hexadecimal umas rotinas:
 O catálogo de tipos é um catálogo.
 
 
-Um type é uma coisa com
+Um type é uma lista com
   Um local de aparição (reference),
   Um nome, um plural nome,
   Um cabeçalho semi-expandido,
@@ -6283,7 +6283,7 @@ Os types são uns types.
 
 O catálogo de rotinas úteis é um catálogo.
 
-Uma variável é uma coisa com
+Uma variável é uma lista com
   Um local de aparição (reference),
   Um categoria [literal, global, local, parâmetro, scratch],
   Um compiled detector,
@@ -6331,7 +6331,7 @@ Etapas para que se compile o header of uma rotina usando um percorredor (função 
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum tipo de artigo indefinido, apresente a mensagem de erro contendo "Esperava um artigo indefinido, mas encontrei: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Compile os unidades semânticas desta rotina e o parâmetros desta rotina usando o percorredor (artigo indefinido).
-  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Existem outras coisas no final desta função." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Existem outras listas no final desta função." e o percorredor; retorne.
   Converta os unidades semânticas desta rotina para a representação interna da rotina desta rotina.
   Catalogue a rotina usando os unidades semânticas desta rotina e o catálogo geral de rotinas. \ por employs
 
