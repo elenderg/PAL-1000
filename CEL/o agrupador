@@ -2378,7 +2378,9 @@ Etapas para que se determine se alguns of umas unidades semânticas são advérbios
   Se a string deste unidade semântica for algum tipo de advérbio de negação, diga sim.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se determine se um byte é algum tipo de glom byte:
+Um byte ignorável é um byte.
+
+Etapas para que se determine se um byte é um byte ignorável:
   Se o byte for algum tipo de letra, diga sim.
   Se o byte for algum tipo de digit, diga sim.
   Se o byte for o acento til, diga sim.
@@ -2526,7 +2528,7 @@ Etapas para que se determine se um percorredor está sobre algum tipo de possessi
   Isole o percorredor.
   Adicione 2 para o caractere inicial deste segmento final deste percorredor.
   Se o segmento final deste percorredor estiver em branco, diga sim.
-  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for algum tipo de glom byte, diga sim.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for um byte ignorável, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se um percorredor está sobre algum tipo de possessive (type 2 - preceding s, single-quote, non-glom-byte):
@@ -2536,7 +2538,7 @@ Etapas para que se determine se um percorredor está sobre algum tipo de possessi
   Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for o s minúsculo ou o S maiúsculo, diga não.
   Adicione 2 para o caractere inicial deste segmento final deste percorredor.
   Se o segmento final deste percorredor estiver em branco, diga sim.
-  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for algum tipo de glom byte, diga sim.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for um byte ignorável, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se um percorredor está sobre algum tipo de simile:
@@ -2939,18 +2941,16 @@ Etapas para que se determine se um percorredor está sobre algum tipo de unidade 
 Etapas para que se determine se uma string é uma keyword de designação:
   \PAL
   Se a string for "chamado", diga sim.
-  Se a string for "chamada", diga sim.
-  Se a string for "denominado", diga sim.
-  Se a string for "denominada", diga sim.
   Se a string for "chamados", diga sim.
+  Se a string for "chamada", diga sim.  
   Se a string for "chamadas", diga sim.
+  Se a string for "denominado", diga sim.
   Se a string for "denominados", diga sim.
+  Se a string for "denominada", diga sim.
   Se a string for "denominadas", diga sim.
-  \Se a string for "conhecido como", diga sim.
-  \Se a string for "conhecida como", diga sim.
-  \CAL
-  Se a string for "called", diga sim.
-[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+[Caso as condições acima não puderem ser satisfeitas, então:] Diga não.
+
+\Uma keyword 
 
 Etapas para que se determine se uma string é algum tipo de reference:
   \PAL
@@ -4709,7 +4709,7 @@ Etapas para que se mova um percorredor (símbolos conectivos):
   Avance o percorredor.
   Se o segmento final deste percorredor estiver em branco, retorne.
   Se o percorredor estiver sobre algum tipo de possessive, retorne.
-  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for algum tipo de glom byte, recomece.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for um byte ignorável, recomece.
 
 Etapas para que se mova um percorredor (sinais de pontuação):
   Avance o percorredor.
@@ -5427,7 +5427,9 @@ Etapas para que se parse uma string para uma segunda string (para expandir contr
     Se o segmento final deste percorredor de contrações estiver em branco, retorne.
     Posicione o segmento inicial deste percorredor de contrações sobre o segmento final deste percorredor de contrações. 
     Mova o percorredor de contrações (englobando tudo).
-    Se o conteúdo deste caractere inicial deste segmento inicial deste percorredor de contrações não for algum tipo de glom byte, posponha o segmento inicial deste percorredor de contrações para a segunda string; recomece.
+    Se o conteúdo deste caractere inicial deste segmento inicial deste percorredor de contrações 
+    NÃO for um byte ignorável, posponha o segmento inicial deste percorredor de contrações para a segunda string; 
+   Recomece.
     Posponha o segmento inicial deste percorredor de contrações para a segunda string usando a terceira string (para expandir contrações).
     Atribua o segmento inicial deste percorredor de contrações à terceira string.
   Recomece. [percorra novamente o código acima]
