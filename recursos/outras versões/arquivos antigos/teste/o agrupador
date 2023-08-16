@@ -39,7 +39,7 @@ A etiqueta de demanda indireta é uma etiqueta igual a 3.
 A etiqueta de demanda interna é uma etiqueta igual a 4.
 A etiqueta de revogação é uma etiqueta igual a 5.
 A etiqueta delimitadora de bloco condicional é uma etiqueta igual a 6.
-A epilog etiqueta é uma etiqueta igual a 7.
+A etiqueta conclusiva é uma etiqueta igual a 7.
 A etiqueta de retorno é uma etiqueta igual a 8.
 A etiqueta de finalização é uma etiqueta igual a 9.
 A etiqueta de acréscimo é uma etiqueta igual a 10.
@@ -49,7 +49,7 @@ A etiqueta de carregamento de endereço é uma etiqueta igual a 13.
 A etiqueta de carregamento de registrador EAX é uma etiqueta igual a 14.
 A etiqueta de laço é uma etiqueta igual a 15.
 A etiqueta de negação lógica é uma etiqueta igual a 16.
-A prolog etiqueta é uma etiqueta igual a 17.
+A etiqueta preliminar é uma etiqueta igual a 17.
 A etiqueta de inserção de endereço [na stack] é uma etiqueta igual a 18.
 A etiqueta de inserção de valor [na stack] é uma etiqueta igual a 19.
 A etiqueta de obtenção do registrador EAX é uma etiqueta igual a 20.
@@ -151,7 +151,7 @@ Etapas para que se adicione o rotina de destruição por um type:
   Se o type for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o type não deveria ser ignorado, retorne.
-  Se o type puder ser reduzido para "coisas", adicione o rotina de destruição pelo type (coisas); retorne.
+  Se o type puder ser reduzido para "listas", adicione o rotina de destruição pelo type (listas); retorne.
   Se o type puder ser reduzido para "ponteiro", adicione o rotina de destruição pelo type (ponteiro); retorne.
 
 Etapas para que se adicione o rotina de destruição por um type (ponteiro):
@@ -163,7 +163,7 @@ Etapas para que se adicione o rotina de destruição por um type (ponteiro):
   Posponha "Destrua um " junto com o nome deste type para o header string desta rotina.
   Posponha "Se o " junto com o nome deste type seguido de " for inexistente, retorne. " para o body string desta rotina.
   Se o conteúdo type deste type puder ser reduzido para "ponteiro", posponha "Destrua o conteúdo de este " junto com o nome deste type seguido de "'. " para o body string desta rotina.
-  Se o conteúdo type deste type puder ser reduzido para "coisas", posponha "Destrua o conteúdo de este " junto com o nome deste type seguido de "'. " para o body string desta rotina.
+  Se o conteúdo type deste type puder ser reduzido para "listas", posponha "Destrua o conteúdo de este " junto com o nome deste type seguido de "'. " para o body string desta rotina.
   Comece. [a executar o código abaixo]
     Obtenha um campo desde os campos deste conteúdo type deste type.
     Se o campo for inexistente, pare.
@@ -176,12 +176,12 @@ Etapas para que se adicione o rotina de destruição por um type (ponteiro):
   Lance as instruções desta rotina sobre o body string desta rotina.
   Compile o header of a rotina.
 
-Etapas para que se adicione o rotina de destruição por um type (coisas):
+Etapas para que se adicione o rotina de destruição por um type (listas):
   Se o type for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
   \Atribua "Erro interno na hora de executar a tarefa de destruição de tipos" ao texto retornado.
-  Se o first campo destes campos deste type for inexistente, apresente uma mensagem de erro contendo "Erro interno no campo do tipo. Veja rotina 'adicione um forget rotina por um type (coisas)'"; [Say o texto retornado;] exit. \Adicionado Say o texto retornado
-  Se o type deste first campo destes campos deste type for inexistente, apresente a mensagem de erro contendo "Erro interno no tipo do campo. Consulte a rotina 'adicione o forget rotina por um type (coisas)'"; retorne.
+  Se o first campo destes campos deste type for inexistente, apresente uma mensagem de erro contendo "Erro interno no campo do tipo. Veja rotina 'adicione um forget rotina por um type (listas)'"; [Say o texto retornado;] exit. \Adicionado Say o texto retornado
+  Se o type deste first campo destes campos deste type for inexistente, apresente a mensagem de erro contendo "Erro interno no tipo do campo. Consulte a rotina 'adicione o forget rotina por um type (listas)'"; retorne.
   Atribua "Destrua [" junto com o nome deste type seguido de "]" para uma representação interna da rotina.
   Se a representação interna da rotina estiver no catálogo geral de rotinas, retorne.
   Adicione uma rotina para as rotinas usando nil.
@@ -570,44 +570,44 @@ Etapas para que se enderece um fragment usando um endereço:
   Se a etiqueta deste fragment for a etiqueta de retorno, adicione 5 para o endereço; retorne.
   Se a etiqueta deste fragment for a etiqueta de repetição, adicione 5 para o endereço; retorne.
   Se a etiqueta deste fragment for a etiqueta de interrupção, adicione 5 para o endereço; retorne.
-  Se a etiqueta deste fragment for a prolog etiqueta, enderece o fragment usando o endereço (prolog); retorne.
-  Se a etiqueta deste fragment for a epilog etiqueta, enderece o fragment usando o endereço (epilog); retorne.
+  Se a etiqueta deste fragment for a etiqueta preliminar, enderece o fragment usando o endereço (etapa preliminar); retorne.
+  Se a etiqueta deste fragment for a etiqueta conclusiva, enderece o fragment usando o endereço (etapa conclusiva); retorne.
   Se a etiqueta deste fragment for a etiqueta de decodificação, adicione a quantidade de caracteres deste código deste fragment para o endereço; retorne.
-  Se a etiqueta deste fragment for a etiqueta de inserção de valor [na stack], enderece o fragment usando o endereço (push value); retorne.
+  Se a etiqueta deste fragment for a etiqueta de inserção de valor [na stack], enderece o fragment usando o endereço (empilhamento de valor); retorne.
   Se a etiqueta deste fragment for a etiqueta de demanda externa, adicione 6 para o endereço; retorne.
   Se a etiqueta deste fragment for a etiqueta de carregamento de registrador EAX, adicione 5 para o endereço; retorne. \ was 8 when "load eax" took em variáveis; now "load eax" only does um immediate value
   Se a etiqueta deste fragment for a etiqueta de obtenção do registrador EAX, enderece o fragment usando o endereço (registrador EAX); retorne.
   Se a etiqueta deste fragment for a etiqueta de demanda indireta, adicione 8 para o endereço; retorne.
   Se a etiqueta deste fragment for a etiqueta de endereço de rotina, adicione 12 para o endereço; retorne.
 
-Etapas para que se enderece um fragment usando um endereço (epilog):
+Etapas para que se enderece um fragment usando um endereço (etapa conclusiva):
   Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, adicione 3 para o endereço.
   Adicione 6 para o endereço.
 
-Etapas para que se enderece um fragment usando um endereço (prolog):
+Etapas para que se enderece um fragment usando um endereço (etapa preliminar):
   Adicione 3 para o endereço.
-  Se o local size desta rotina utilizada atualmente não for 0, adicione 10 para o endereço.
+  Se o tamanho local desta rotina utilizada atualmente não for 0, adicione 10 para o endereço.
   Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, adicione 3 para o endereço.
 
-Etapas para que se enderece um fragment usando um endereço (push value):
+Etapas para que se enderece um fragment usando um endereço (empilhamento de valor):
   Adicione 6 para o endereço.
-  Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - endereço um fragment usando um endereço (push value)"; retorne.
-  Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - endereço um fragment usando um endereço (push value)"; retorne.
+  Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - endereço um fragment usando um endereço (empilhamento de valor)"; retorne.
+  Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - endereço um fragment usando um endereço (empilhamento de valor)"; retorne.
   Atribua a quantidade de caracteres deste type desta variável deste fragment para uma quantidade de caracteres.
   Se a quantidade de caracteres for 4, adicione 2 para o endereço; retorne.
   Se a quantidade de caracteres for 2, adicione 3 para o endereço; retorne.
   Se a quantidade de caracteres for 1, adicione 4 para o endereço; retorne.
-  Apresente a mensagem de erro contendo "Erro interno 3 - endereço um fragment usando um endereço (push value)".
+  Apresente a mensagem de erro contendo "Erro interno 3 - endereço um fragment usando um endereço (empilhamento de valor)".
 
 Etapas para que se enderece um fragment usando um endereço (registrador EAX):
   Adicione 6 para o endereço.
-  Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - endereço um fragment usando um endereço (push value)"; retorne.
-  Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - endereço um fragment usando um endereço (push value)"; retorne.
+  Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - endereço um fragment usando um endereço (empilhamento de valor)"; retorne.
+  Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - endereço um fragment usando um endereço (empilhamento de valor)"; retorne.
   Atribua a quantidade de caracteres deste type desta variável deste fragment para uma quantidade de caracteres.
   Se a quantidade de caracteres for 4, adicione 2 para o endereço; retorne.
   Se a quantidade de caracteres for 2, adicione 3 para o endereço; retorne.
   Se a quantidade de caracteres for 1, adicione 2 para o endereço; retorne.
-  Apresente a mensagem de erro contendo "Erro interno 3 - endereço um fragment usando um endereço (push value)".
+  Apresente a mensagem de erro contendo "Erro interno 3 - endereço um fragment usando um endereço (empilhamento de valor)".
 
 Etapas para que se enderece uns fragments usando um endereço:
   Se o detector de erros deste compilador estiver ativado, retorne.
@@ -775,7 +775,7 @@ Etapas para que se posponha uma etiqueta para um trecho (as um fragment etiqueta
   Se a etiqueta for a etiqueta de demanda interna, posponha "Demanda Interna" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de revogação, posponha "Dereferência" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta delimitadora de bloco condicional, posponha "Fim de bloco condicional" para o trecho (com separador); retorne.
-  Se a etiqueta for a epilog etiqueta, posponha "Epílogo" para o trecho (com separador); retorne.
+  Se a etiqueta for a etiqueta conclusiva, posponha "Epílogo" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de retorno, posponha "Retorno de Rotina" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de finalização, posponha "finalize" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de acréscimo, posponha "Incremento" para o trecho (com separador); retorne.
@@ -785,7 +785,7 @@ Etapas para que se posponha uma etiqueta para um trecho (as um fragment etiqueta
   Se a etiqueta for a etiqueta de carregamento de registrador EAX, posponha "Carregamento do Registrador EAX" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de laço, posponha "Loop" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de negação lógica, posponha "Negação Lógica" para o trecho (com separador); retorne.
-  Se a etiqueta for a prolog etiqueta, posponha "Prólogo" para o trecho (com separador); retorne.
+  Se a etiqueta for a etiqueta preliminar, posponha "Prólogo" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de inserção de endereço [na stack], posponha "Empilhamento de endereço" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de inserção de valor [na stack], posponha "Empilhamento de valor" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de obtenção do registrador EAX, posponha "Requisição EAX" para o trecho (com separador); retorne.
@@ -1107,24 +1107,22 @@ Etapas para que se calculate o redefinition offsets em uns types:
   Calculate o redefinition offsets no type.
   Recomece. [percorra novamente o código acima]
 
-  
-
-Etapas para que se check por invalid optional info sobre um type:
+Etapas para que se verifique por informações opcionais inválidas em um type:
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o type for inexistente, retorne.
-  Se o conteúdo nome deste type não estiver em branco, check por invalid optional info sobre o type (conteúdo).
-  Se o campos deste type não estiverem vazios, check por invalid optional info sobre o type (campos).
-  Se a razão de escala deste type não for 0, check por invalid optional info sobre o type (scale).
+  Se o conteúdo nome deste type não estiver em branco, verifique por informações opcionais inválidas em o type (conteúdo).
+  Se o campos deste type não estiverem vazios, verifique por informações opcionais inválidas em o type (campos).
+  Se a razão de escala deste type não for 0, verifique por informações opcionais inválidas em o type (scale).
 
-Etapas para que se check por invalid optional info sobre um type (campos):
+Etapas para que se verifique por informações opcionais inválidas em um type (campos):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se o type não puder ser reduzido para "estrutura", apresente uma mensagem de erro contendo "Erro. A palavra 'com' só é permitida em estruturas." e o local de aparição deste type; retorne. \\mudar aqui
+  Se o type não puder ser reduzido para "estrutura", apresente uma mensagem de erro contendo "Erro. A palavra-chave 'com' só é permitida em estruturas." e o local de aparição deste type; retorne. \\mudar aqui
 
-Etapas para que se check por invalid optional info sobre um type (scale):
+Etapas para que se verifique por informações opcionais inválidas em um type (scale):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o type não puder ser reduzido para "número", apresente uma mensagem de erro contendo "Escalas são permitidas apenas em tipos numéricos." e o local de aparição deste type; retorne.
 
-Etapas para que se check por invalid optional info sobre um type (conteúdo):
+Etapas para que se verifique por informações opcionais inválidas em um type (conteúdo):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o type não puder ser reduzido para "ponteiro", apresente uma mensagem de erro contendo "A palavra 'para' só é permitida em ponteiro." e o local de aparição deste type; retorne.
 
@@ -1153,16 +1151,16 @@ Etapas para que se compile o body of uma rotina:
   Atribua a rotina à rotina utilizada atualmente.
   Crie o nickname catálogo desta rotina usando 101.
   Eliminate duplicate nicknames desde os parâmetros desta rotina usando o nickname catálogo desta rotina.
-  Compile o body of a rotina (prolog).
+  Compile o body of a rotina (etapa preliminar).
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, retorne.
     Se o segmento inicial deste percorredor estiver em branco, pare.
     Compile a próxima instrução usando o percorredor.
   Recomece. [percorra novamente o código acima]
-  Compile o body of a rotina (epilog).
+  Compile o body of a rotina (etapa conclusiva).
   Atribua o saved rotina à rotina utilizada atualmente.
 
-Etapas para que se compile o body of uma rotina (epilog):
+Etapas para que se compile o body of uma rotina (etapa conclusiva):
   Se a rotina for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
   Adicione um fragment usando a etiqueta de finalização.
@@ -1173,15 +1171,15 @@ Etapas para que se compile o body of uma rotina (epilog):
     Se o type desta variável não deveria ser finalizado, recomece.
     Adicione um segundo fragment usando o etiqueta de inserção de endereço [na stack] e a variável.
     Encontre uma segunda rotina usando "~finalize" e o type desta variável.
-    Se a segunda rotina for inexistente, apresente uma mensagem de erro contendo "Erro interno - compile o body of uma rotina (epilog)"; retorne.
+    Se a segunda rotina for inexistente, apresente uma mensagem de erro contendo "Erro interno - compile o body of uma rotina (etapa conclusiva)"; retorne.
     Adicione um terceiro fragment usando a etiqueta de demanda interna e a segunda rotina.
   Recomece. [percorra novamente o código acima]
-  Adicione um quarto fragment usando o epilog etiqueta.
+  Adicione um quarto fragment usando o etiqueta conclusiva.
 
-Etapas para que se compile o body of uma rotina (prolog):
+Etapas para que se compile o body of uma rotina (etapa preliminar):
   Se a rotina for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Adicione um fragment usando o prolog etiqueta.
+  Adicione um fragment usando o etiqueta preliminar.
   Adicione um segundo fragment usando o etiqueta de laço.
 
 Etapas para que se compile o body of a rotina denominada uma string;
@@ -1194,7 +1192,7 @@ Etapas para que se compile o body of a rotina denominado uma string:
 Etapas para que se compile o body of uma rotina usando um percorredor (sobrecarga de métodos):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação). \ *** do we need this?
-  Atribua o next desta rotina para um conteúdo rotina.
+  Atribua a next rotina desta rotina para um conteúdo rotina.
   Se o conteúdo rotina for inexistente, apresente uma mensagem de erro contendo "Você definiu uma palavra alternativa aqui, mas eu não tenho certeza pra que ela serve." e o percorredor; retorne.
   Atribua a representação interna da rotina deste conteúdo rotina ao employs representação interna da rotina desta rotina.
   Compile o body of o conteúdo rotina.
@@ -1338,7 +1336,7 @@ Etapas para que se compile um endereço da pasta (identificação dos tipos das var
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mostre no painel de informações "Resolvendo tipos...".
   Start o temporizador de resolução de tipos.
-  Resolva os types (expand coisas).
+  Resolva os types (expand listas).
   Resolva os types (registro de plurais).
   Resolva os types (base types).
   Resolva os types (optional info).
@@ -1653,7 +1651,7 @@ Etapas para que se compile umas unidades semânticas e uns parâmetros usando um p
   Mova o percorredor (usando diretrizes de compilação).
   Examine um nome usando o percorredor.
   Extend o nome destes parâmetro com o nome.
-  Se o segmento inicial deste percorredor for algum called, compile o Processe'd part usando o percorredor e o parâmetro.
+  Se o segmento inicial deste percorredor for uma keyword de designação, compile o Processe'd part usando o percorredor e o parâmetro.
   Resolva o parâmetro.
   Se o parâmetro estiver duplicada no parâmetros, apresente uma mensagem de erro contendo "Cara, você repetiu o parâmetro: " junto com o nome deste parâmetro seguido de "." e o local de aparição deste parâmetro; retorne.
   Adicione uma unidade semântica para os unidades semânticas usando o type deste parâmetro.
@@ -2061,7 +2059,7 @@ Etapas para que se compile um termo usando um percorredor (new local):
   Mova o percorredor (usando diretrizes de compilação).
   Examine um nome usando o percorredor.
   Extend o nome deste local com o nome.
-  Se o segmento inicial deste percorredor for algum called, compile o Processe'd part usando o percorredor e o local.
+  Se o segmento inicial deste percorredor for uma keyword de designação, compile o Processe'd part usando o percorredor e o local.
   Resolva o local.
   Se o local estiver duplicada em os parâmetros desta rotina utilizada atualmente, apresente a mensagem de erro contendo "o parâmetro: " junto com o nome deste local seguido de "' já está sendo usado como parâmetro." e o local de aparição deste local; retorne.
   Se o local estiver duplicada em os locals desta rotina utilizada atualmente, apresente a mensagem de erro contendo "Já existe uma variável local chamada'" junto com o nome deste local seguido de "'. Você tem que dar um nome diferente." e o local de aparição deste local; retorne.
@@ -2182,7 +2180,7 @@ Etapas para que se compile um termo usando um percorredor e uma variável nome (d
   \CAL
   \Se o segmento inicial deste percorredor for "another", atribua "segunda" ao nome deste local.
   Extend o nome deste local com a variável nome.
-  Se o segmento inicial deste percorredor for algum called, compile o Processe'd part usando o percorredor e o local.
+  Se o segmento inicial deste percorredor for uma keyword de designação, compile o Processe'd part usando o percorredor e o local.
   Resolva o local.
   Se o local estiver duplicada em os parâmetros desta rotina utilizada atualmente, apresente uma mensagem de erro contendo "O termo: " junto com o nome deste local seguido de "' já está sendo usado como parâmetro." e o local de aparição deste local; retorne.
   Se o local estiver duplicada em os locals desta rotina utilizada atualmente, apresente a mensagem de erro contendo "O termo: " junto com o nome deste local seguido de "' já está sendo usado coma variável local." e o local de aparição deste local; retorne.
@@ -2308,7 +2306,12 @@ Etapas para que se copie uns campos para uns segundo campos (data campos only):
   \Se o next deste next deste next deste next deste first destes campos for inexistente, retorne.
   \Se o next deste next deste next deste next deste next deste first destes campos for inexistente, retorne.
   \Atribua o next deste next deste next deste next deste first destes campos para um campo.
-  Atribua o next deste next deste next deste next deste first destes campos para um campo.\ english next e prev e spanish next e prev redefinitions
+  Atribua o next campo 
+    deste next campo 
+    deste next campo 
+    deste next campo 
+    deste first campo destes campos 
+  para um campo.\ english next e prev e spanish next e prev redefinitions
   \ talvez mudar isso aqui ajude?
   Comece. [a executar o código abaixo]
     Se o campo for inexistente, retorne.
@@ -2380,7 +2383,9 @@ Etapas para que se determine se alguns of umas unidades semânticas são advérbios
   Se a string deste unidade semântica for algum tipo de advérbio de negação, diga sim.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se determine se um byte é algum tipo de glom byte:
+Um byte ignorável é um byte.
+
+Etapas para que se determine se um byte é um byte ignorável:
   Se o byte for algum tipo de letra, diga sim.
   Se o byte for algum tipo de digit, diga sim.
   Se o byte for o acento til, diga sim.
@@ -2528,7 +2533,7 @@ Etapas para que se determine se um percorredor está sobre algum tipo de possessi
   Isole o percorredor.
   Adicione 2 para o caractere inicial deste segmento final deste percorredor.
   Se o segmento final deste percorredor estiver em branco, diga sim.
-  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for algum tipo de glom byte, diga sim.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for um byte ignorável, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se um percorredor está sobre algum tipo de possessive (type 2 - preceding s, single-quote, non-glom-byte):
@@ -2538,7 +2543,7 @@ Etapas para que se determine se um percorredor está sobre algum tipo de possessi
   Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for o s minúsculo ou o S maiúsculo, diga não.
   Adicione 2 para o caractere inicial deste segmento final deste percorredor.
   Se o segmento final deste percorredor estiver em branco, diga sim.
-  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for algum tipo de glom byte, diga sim.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for um byte ignorável, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se um percorredor está sobre algum tipo de simile:
@@ -2874,7 +2879,7 @@ Etapas para que se determine se um percorredor está sobre algum tipo de preposiç
   Se o segmento inicial deste percorredor for algum tipo de artigo, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se uma string é algum tipo de artigo indefinido: \ esse aqui parece que não serve pra muita coisa
+Etapas para que se determine se uma string é algum tipo de artigo indefinido: \ esse aqui parece que não serve pra muita lista
   \PAL
   Se a string for algum tipo de artigo indefinido português, diga sim.
   Se a string for algum tipo de pronome demonstrativo abrangente, diga sim.
@@ -2938,23 +2943,19 @@ Etapas para que se determine se um percorredor está sobre algum tipo de unidade 
   Se o segmento inicial deste percorredor for "então", diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
-
-
-Etapas para que se determine se uma string é algum called:
+Etapas para que se determine se uma string é uma keyword de designação:
   \PAL
   Se a string for "chamado", diga sim.
-  Se a string for "chamada", diga sim.
-  Se a string for "denominado", diga sim.
-  Se a string for "denominada", diga sim.
   Se a string for "chamados", diga sim.
+  Se a string for "chamada", diga sim.  
   Se a string for "chamadas", diga sim.
+  Se a string for "denominado", diga sim.
   Se a string for "denominados", diga sim.
+  Se a string for "denominada", diga sim.
   Se a string for "denominadas", diga sim.
-  \Se a string for "conhecido como", diga sim.
-  \Se a string for "conhecida como", diga sim.
-  \CAL
-  Se a string for "called", diga sim.
-[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+[Caso as condições acima não puderem ser satisfeitas, então:] Diga não.
+
+\Uma keyword 
 
 Etapas para que se determine se uma string é algum tipo de reference:
   \PAL
@@ -2976,7 +2977,7 @@ Etapas para que se determine se um percorredor está sobre algum tipo de nome end
   Se o percorredor estiver sobre algum tipo de preposition, diga sim.
   Se o segmento inicial deste percorredor for algum tipo de qualifier, diga sim.
   Se o segmento inicial deste percorredor for algum tipo de literal, diga sim.
-  Se o segmento inicial deste percorredor for algum called, diga sim.
+  Se o segmento inicial deste percorredor for uma keyword de designação, diga sim.
   \Se o segmento inicial deste percorredor for "equal", diga sim.
   Se o segmento inicial deste percorredor for "então", diga sim.
   Se o segmento inicial deste percorredor for algum tipo de operador de atribuição composto, diga sim.
@@ -2997,7 +2998,7 @@ Etapas para que se determine se um percorredor está sobre algum tipo de nome sta
   Se o percorredor estiver sobre algum tipo de preposition, diga sim.
   Se o segmento inicial deste percorredor for algum tipo de qualifier, diga não.
   Se o segmento inicial deste percorredor for algum tipo de literal, diga não.
-  Se o segmento inicial deste percorredor for algum called, diga sim.
+  Se o segmento inicial deste percorredor for uma keyword de designação, diga sim.
   \Se o segmento inicial deste percorredor for "equal", diga sim.
   Se o segmento inicial deste percorredor for "então", diga sim.
   Se o segmento inicial deste percorredor for algum tipo de operador de atribuição composto, diga sim.
@@ -3735,7 +3736,7 @@ Etapas para que se determine se um type deveria ser finalizado:[se o compilador 
   Se os campos deste type deveriam ser finalizados, diga sim.\ this is for strings inside records
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se um type deveria ser ignorado:  [ou seja, o compilador não deveria finalizar esse tipo de forma automática]
+Etapas para que se determine se um type deveria ser ignorado: [ou seja, o compilador não deveria finalizar esse tipo de forma automática]
   \ ie, can be destroyed/needs a destroy routine generated for it
   \The phrase "should be forgotten" means "ought to be forgotten" which really means "needs to have a destroy routine automatically generated for it". 
   \See page 93 of the manual.
@@ -3744,9 +3745,9 @@ Etapas para que se determine se um type deveria ser ignorado:  [ou seja, o compi
   \Se o nome deste type for "elemento", diga não.
   \Se o nome deste type for "elementos", diga não.
   \CAL
-  Se o nome deste type for "coisa", diga não. \ no, because this is the built-in type which we don't ever allocate or destroy, it exists so we can "magically" add next and previous fields to anything defined as a "thing"
-  Se o nome deste type for "coisas", diga não. \ no, because this is the built-in type we "magically" generate to anchor lists of things, same as above of .
-  Se o type puder ser reduzido para "coisas", diga sim. \ yes, because (though it seems to contradict the line immediately above of ) this is a an actual list of things that we can destroy, for example "some pages".
+  Se o nome deste type for "lista", diga não. \ no, because this is the built-in type which we don't ever allocate or destroy, it exists so we can "magically" add next and previous fields to anything defined as a "thing"
+  Se o nome deste type for "listas", diga não. \ no, because this is the built-in type we "magically" generate to anchor lists of things, same as above of .
+  Se o type puder ser reduzido para "listas", diga sim. \ yes, because (though it seems to contradict the line immediately above of ) this is a an actual list of things that we can destroy, for example "some pages".
   Se o type não puder ser reduzido para "ponteiro", diga não. \ \ no, because a pointer variable is a static variable (it is the address in the variable that is dynamic); the pointer variable itself is not something that can be dynamically allocated, so no destroy is necessary
   Se o conteúdo type deste type for inexistente, diga não. \ no, because it's a pointer to nothing, so there's nothing to destroy.
   Se o conteúdo type deste type não puder ser reduzido para "ponteiro", diga sim.\ yes, because it's a pointer to something allocated, not a pointer to another pointer. Pointers to pointers are handled with the next recursive line
@@ -3860,7 +3861,7 @@ Etapas para que se eliminate duplicate nicknames usando uma variável e um catálo
 
   
 
-An entry é uma coisa com
+An entry é uma lista com
   Um nome endereço,
   Um previamente calculado endereço, \ consulte https://en.wikipedia.org/wiki/Thunk e 
   \http://ftp.informatik.rwth-aachen.de/jargon300/thunk.html para mais informações
@@ -3934,7 +3935,7 @@ Etapas para que se encontre um fragment usando um segundo fragment e uma etiquet
   Comece. [a executar o código abaixo]
     Se o fragment for inexistente, retorne.
     Se a etiqueta deste fragment for a etiqueta, retorne.
-    Atribua o next deste fragment ao fragment.
+    Atribua o next fragment deste fragment ao fragment.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se encontre um fragment usando um segundo fragment e uma etiqueta (backwards):
@@ -3942,7 +3943,7 @@ Etapas para que se encontre um fragment usando um segundo fragment e uma etiquet
   Comece. [a executar o código abaixo]
     Se o fragment for inexistente, retorne.
     Se a etiqueta deste fragment for a etiqueta, retorne.
-    Atribua o previous deste fragment ao fragment.
+    Atribua o previous fragment deste fragment ao fragment.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se encontre um import usando uma string:
@@ -3971,7 +3972,7 @@ Etapas para que se encontre uma rotina usando uma representação interna da rotin
     Posponha o unidade semântica para a representação interna da rotina (while bubbling).
     Encontre uma referência usando a representação interna da rotina e o catálogo.
     Se a referência não for inexistente, atribua o ponteiro deste referência à rotina.
-    Se a referência não for inexistente, encontre a rotina usando a representação interna da rotina e o next deste unidade semântica e o catálogo.
+    Se a referência não for inexistente, encontre a rotina usando a representação interna da rotina e a next unidade semântica deste unidade semântica e o catálogo.
     Se a rotina não for inexistente, pare.
     Bubble o unidade semântica.
     Se o unidade semântica estiver bubbled out, pare.
@@ -3980,7 +3981,7 @@ Etapas para que se encontre uma rotina usando uma representação interna da rotin
 
 Etapas para que se encontre uma rotina usando umas unidades semânticas:
   Esvazie a rotina.
-  Encontre a rotina usando uma representação interna da rotina e o first destes unidades semânticas e o catálogo geral de rotinas.
+  Encontre a rotina usando uma representação interna da rotina e a first unidade semântica destas unidades semânticas e o catálogo geral de rotinas.
 
 Etapas para que se encontre uma rotina usando uma string e uma segunda string e uma terceira string e um quarto string:
   Adicione uma unidade semântica para umas unidades semânticas usando a string.
@@ -4109,11 +4110,11 @@ Etapas para que se encontre uma variável usando um nome e umas variáveis:
     Se o nickname desta variável for o nome, retorne.
   Recomece. [percorra novamente o código acima]
 
-Um fragment é uma coisa com
+Um fragment é uma lista com
   \ we have three lists in the compiler memory — types, variables, and rotinas 
   \ each rotina consists of a series of logical instructions called “fragments.” There are just 22 fragment types:
-  Uma etiqueta [break, Demanda Externa, Demanda Indireta, Demanda Interna, dereference, end if, epilog, exit, finalize, increment, Decodifique, jump false, load address, load eax, loop, not, prolog, push address, push value, salve eax, repeat, rotina address],
-  Uma variável (reference) [Demanda Indireta, dereference, increment, load address, load eax, pop, push address, push value, rotina address, salve eax],
+  Uma etiqueta [break, Demanda Externa, Demanda Indireta, Demanda Interna, dereference, end if, etapa conclusiva, exit, finalize, increment, Decodifique, jump false, load address, load eax, loop, not, etapa preliminar, push address, empilhamento de valor, salve eax, repeat, rotina address],
+  Uma variável (reference) [Demanda Indireta, dereference, increment, load address, load eax, pop, push address, empilhamento de valor, rotina address, salve eax],
   Uma segunda variável (reference) [load address],
   Uma rotina (reference) [Demanda Interna, rotina address],
   Uma entry (reference) [Demanda Externa],
@@ -4172,7 +4173,7 @@ Um import header é um estrutura com
   \É composto por: RVA = Base da Imagem + Ordem Endian
   Um endereço denominado first previamente calculado memory endereço.
 
-Um import é uma coisa com
+Um import é uma lista com
   Um nome endereço,
   Um header endereço,
   Um nome,
@@ -4382,21 +4383,21 @@ Etapas para que se link:
   
 
 Etapas para que se liste tudo:
-  Limpe o listagem deste compilador.
-  Liste a mensagem de erro deste compilador na listagem deste compilador.
-  Liste os types depois de "TIPOS:" na listagem deste compilador.
-  Liste os globals depois de "VARIÁVEIS GLOBAIS:" na listagem deste compilador.
-  Liste os literals depois de "VALORES LITERAIS:" na listagem deste compilador.
-  Liste as rotinas depois de "ROTINAS:" na listagem deste compilador.
-  Liste o catálogo de tipos depois de "ÍNDICE DE TIPOS:" na listagem deste compilador.
-  Liste o catálogo de variáveis globais depois de "ÍNDICE GLOBAL:" na listagem deste compilador.
-  Liste o catálogo de variáveis hexadecimais depois de "ÍNDICE DE VALORES LITERAIS:" na listagem deste compilador.
-  Liste o catálogo geral de rotinas depois de "ÍNDICE DE ROTINAS:" na listagem deste compilador.
-  Liste o catálogo de rotinas úteis depois de "Catálogo de Rotinas Úteis:" na listagem deste compilador.
-  Liste o imports depois de "DLL's:" na listagem deste compilador.
-  Liste o sources files depois de "ARQUIVOS FONTE:" na listagem deste compilador.
-  Liste os temporizadores depois de "TEMPORIZADORES:" na listagem deste compilador.
-  Escreva o listagem deste compilador para o listagem endereço completo deste compilador.
+  Limpe o listagem trecho deste compilador.
+  Liste a mensagem de erro deste compilador na listagem trecho deste compilador.
+  Liste os types depois de "TIPOS:" na listagem trecho deste compilador.
+  Liste os globals depois de "VARIÁVEIS GLOBAIS:" na listagem trecho deste compilador.
+  Liste os literals depois de "VALORES LITERAIS:" na listagem trecho deste compilador.
+  Liste as rotinas depois de "ROTINAS:" na listagem trecho deste compilador.
+  Liste o catálogo de tipos depois de "ÍNDICE DE TIPOS:" na listagem trecho deste compilador.
+  Liste o catálogo de variáveis globais depois de "ÍNDICE GLOBAL:" na listagem trecho deste compilador.
+  Liste o catálogo de variáveis hexadecimais depois de "ÍNDICE DE VALORES LITERAIS:" na listagem trecho deste compilador.
+  Liste o catálogo geral de rotinas depois de "ÍNDICE DE ROTINAS:" na listagem trecho deste compilador.
+  Liste o catálogo de rotinas úteis depois de "Catálogo de Rotinas Úteis:" na listagem trecho deste compilador.
+  Liste o imports depois de "DLL's:" na listagem trecho deste compilador.
+  Liste o sources files depois de "ARQUIVOS FONTE:" na listagem trecho deste compilador.
+  Liste os temporizadores depois de "TEMPORIZADORES:" na listagem trecho deste compilador.
+  Escreva o listagem trecho deste compilador para o listagem endereço completo deste compilador.
 
 Etapas para que se liste um mensagem de erro em um trecho:
   Se o mensagem de erro estiver em branco, retorne.
@@ -4439,7 +4440,7 @@ Etapas para que se liste um fragment em um trecho:
   Posponha "Número hexadecimal: " para o trecho.
   Posponha o número deste fragment para o trecho (as hex com separador).
   Posponha "Endereço: " para o trecho.
-  Posponha o endereço deste fragment para o trecho (as hex com separador).  
+  Posponha o endereço deste fragment para o trecho (as hex com separador).
   Converta o código deste fragment para uma cifra hexadecimal.
   Posponha "Código compilado: " para o trecho.
   Posponha a cifra hexadecimal para o trecho (com separador).
@@ -4519,12 +4520,12 @@ Etapas para que se liste uma rotina em um trecho:
   Posponha o detector de função desta rotina para o trecho (com separador). \ A rotina é uma função ? SIM / NÃO
   Posponha o texto CRLF para o trecho.
   Posponha "| Employs utilizados: |     " para o trecho.
-  Posponha o employs representação interna da rotina desta rotina para o trecho (com separador). 
+  Posponha o employs representação interna da rotina desta rotina para o trecho (com separador).
   Posponha o texto CRLF para o trecho.
   Posponha "| Tamanho dos parâmetros: " para o trecho.
   Posponha o parâmetro size desta rotina para o trecho (com separador). \ Tamanho dos parâmetros. Exemplo: 16 ( 4 parâmetros)
   Posponha " Tamanho das variáveis: " para o trecho.
-  Posponha o local size desta rotina para o trecho (com separador). \Tamanho do local. Exemplo: 28
+  Posponha o tamanho local desta rotina para o trecho (com separador). \Tamanho do local. Exemplo: 28
   Posponha o texto CRLF para o trecho.
   Posponha "| Endereço da Rotina: " para o trecho.
   Posponha o endereço desta rotina para o trecho (as hex com separador). \ Endereço da rotina, Exemplo: 0041D000
@@ -4694,7 +4695,7 @@ Uma representação interna da rotina é uma string.  \ moniker
 \ • makes it easy reduce types (like [count] to [number]) when looking for an appropriate routine to call;
 \ • makes it easy to expand prepositions (like "to" into "in/into/to"); and
 \ • shows how the compiler interpreted various phrases in error messages.
-Uma unidade semântica é uma coisa com
+Uma unidade semântica é uma lista com
   Uma string,
   Um type (reference),
   Um variável (reference),
@@ -4713,7 +4714,7 @@ Etapas para que se mova um percorredor (símbolos conectivos):
   Avance o percorredor.
   Se o segmento final deste percorredor estiver em branco, retorne.
   Se o percorredor estiver sobre algum tipo de possessive, retorne.
-  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for algum tipo de glom byte, recomece.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for um byte ignorável, recomece.
 
 Etapas para que se mova um percorredor (sinais de pontuação):
   Avance o percorredor.
@@ -4807,17 +4808,17 @@ Um nickname é um nome.
 Etapas para que se offset o locals em uma rotina:
   Se a rotina for inexistente, retorne.
   Se a compiled detector desta rotina não estiver ativo, retorne.
-  Limpe o local size desta rotina.
+  Limpe o tamanho local desta rotina.
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, retorne.
     Obtenha um local desde os locals desta rotina.
     Se o local for inexistente, retorne.
-    Se o previous deste local não for inexistente, atribua o offset deste previous deste local ao offset deste local.
+    Se o previous local deste local não for inexistente, atribua o offset deste previous local deste local ao offset deste local.
     Atribua a quantidade de caracteres deste type deste local para uma quantidade de caracteres.
     Se a categoria deste local for "scratch", atribua a magnitude desse ponteiro ao quantidade de caracteres.
     Arredonde a quantidade de caracteres para cima para o múltiplo imediato of 4.
     Subtraia a quantidade de caracteres desde o offset deste local.
-    Adicione a quantidade de caracteres para o local size desta rotina.
+    Adicione a quantidade de caracteres para o tamanho local desta rotina.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se offset os locals em umas rotinas:
@@ -4836,8 +4837,8 @@ Etapas para que se offset o parâmetros em uma rotina:
     Obtenha um parâmetro desde os parâmetros desta rotina.
     Se o parâmetro for inexistente, retorne.
     Se o detector de compatibilidade desta rotina estiver ativo, ative o by-value detector deste parâmetro.
-    Se o previous deste parâmetro for inexistente, atribua 8 ao offset deste parâmetro. \ skip o return address e saved ebp
-    Se o previous deste parâmetro não for inexistente, atribua o offset deste previous deste parâmetro mais 4 ao offset deste parâmetro. \ all parâmetros são 4 ponteiro do byte s ou 4 byte values por callbacks
+    Se o previous parâmetro deste parâmetro for inexistente, atribua 8 ao offset deste parâmetro. \ skip o return address e saved ebp
+    Se o previous parâmetro deste parâmetro não for inexistente, atribua o offset deste previous parâmetro deste parâmetro mais 4 ao offset deste parâmetro. \ all parâmetros são 4 ponteiro do byte s ou 4 byte values por callbacks
     Adicione 4 para a parâmetro size desta rotina.
   Recomece. [percorra novamente o código acima]
 
@@ -5431,7 +5432,9 @@ Etapas para que se parse uma string para uma segunda string (para expandir contr
     Se o segmento final deste percorredor de contrações estiver em branco, retorne.
     Posicione o segmento inicial deste percorredor de contrações sobre o segmento final deste percorredor de contrações. 
     Mova o percorredor de contrações (englobando tudo).
-    Se o conteúdo deste caractere inicial deste segmento inicial deste percorredor de contrações não for algum tipo de glom byte, posponha o segmento inicial deste percorredor de contrações para a segunda string; recomece.
+    Se o conteúdo deste caractere inicial deste segmento inicial deste percorredor de contrações 
+    NÃO for um byte ignorável, posponha o segmento inicial deste percorredor de contrações para a segunda string; 
+   Recomece.
     Posponha o segmento inicial deste percorredor de contrações para a segunda string usando a terceira string (para expandir contrações).
     Atribua o segmento inicial deste percorredor de contrações à terceira string.
   Recomece. [percorra novamente o código acima]
@@ -5453,7 +5456,7 @@ Etapas para que se reduza um type para um segundo type por utility use:
     Se o nome deste segundo type for "texto", retorne.
     Se o nome deste segundo type for "número", retorne.
     Se o nome deste segundo type for "ponteiro", retorne.
-    Se o nome deste segundo type for "coisa", esvazie o segundo type; retorne.
+    Se o nome deste segundo type for "lista", esvazie o segundo type; retorne.
     \PAL
     \Se o nome deste segundo type for "elemento", esvazie o segundo type; retorne.
     Se o base type deste segundo type for o segundo type, esvazie o segundo type; retorne.
@@ -5548,15 +5551,15 @@ Etapas para que se resolva um type (base type):
   Resolva o base type deste type (base type).
   Desative o cooking detector deste type.
 
-Etapas para que se resolva um type (expand coisa): \ base type deste type não está resolved yet
+Etapas para que se resolva um type (expand lista): \ base type deste type não está resolved yet
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o type for inexistente, retorne.
   Se o base type deste type não for inexistente, retorne.
-  Se o nome deste type for "coisa", retorne.
+  Se o nome deste type for "lista", retorne.
   \Se o nome deste type for "elemento", retorne.
-  Se o type não puder ser reduzido para "coisa" using o base nome, retorne.
+  Se o type não puder ser reduzido para "lista" using o base nome, retorne.
   Encontre um base type usando o base nome deste type e o catálogo de tipos.
-  \ adicione coisa estrutura - o número of secret campos é hard coded em two places: search por "du que 4" \ was 6
+  \ adicione lista estrutura - o número of secret campos é hard coded em two places: search por "du que 4" \ was 6
   Atribua o nome deste type seguido de " estrutura" para um nome.
   Atribua o nome deste type seguido de " estruturas" para um plural nome.
   Atribua o nome deste base type seguido de " estrutura" para um base nome.
@@ -5594,7 +5597,7 @@ Etapas para que se resolva um type (registro de plurais):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o type for inexistente, retorne.
   Se o plural nome deste type estiver em branco, retorne.
-  Se o type puder ser reduzido para "coisa" using o base nome, retorne.
+  Se o type puder ser reduzido para "lista" using o base nome, retorne.
   Catalogue o type usando o plural nome deste type.
 
 Etapas para que se resolva um type (optional info - ponteiro):
@@ -5602,7 +5605,7 @@ Etapas para que se resolva um type (optional info - ponteiro):
   Se o conteúdo type deste type não for inexistente, retorne.
   Se o conteúdo nome deste type estiver em branco, atribua o conteúdo type deste base type deste type ao conteúdo type deste type; retorne.
   Encontre o conteúdo type deste type usando o conteúdo nome deste type e o catálogo de tipos.
-  Se o conteúdo type deste type for inexistente, apresente uma mensagem de erro contendo "Não sei bem pra que coisa você está se referindo." e o local de aparição deste type; retorne.
+  Se o conteúdo type deste type for inexistente, apresente uma mensagem de erro contendo "Não sei bem pra que lista você está se referindo." e o local de aparição deste type; retorne.
 
 Etapas para que se resolva um type (optional info - conjunto):
   Se o detector de erros deste compilador estiver ativado, retorne.
@@ -5620,7 +5623,7 @@ Etapas para que se resolva um type (optional info - conjunto):
     Se o type deste campo não puder ser reduzido para "ponteiro", apresente a mensagem de erro contendo "Não entendi o parâmetro '(reference)' nesse campo: " junto com o nome deste campo seguido de "'..." e o local de aparição deste campo; retorne.
   Recomece. [percorra novamente o código acima]
   Eliminate duplicate nicknames desde os campos deste type.
-  Se o type não puder ser reduzido para "coisa estrutura", retorne.
+  Se o type não puder ser reduzido para "lista estrutura", retorne.
   Se a contagem destes campos deste type for maior do que 4, retorne. \ already copied? was 2 por next e prev, now 6 para included Spanish redefiniions
   Copie os campos deste base type deste type aos campos deste type (data campos only).
 
@@ -5637,7 +5640,7 @@ Etapas para que se resolva um type (optional info):
   Se o type for inexistente, retorne.
   Se o optional info resolved detector deste type estiver ativo, retorne.
   Se o base type deste type for o type, retorne. \ por built em types
-  Check por invalid optional info sobre o type.
+  Verifique por informações opcionais inválidas em o type.
   Ligue o cooking detector deste type.
   Resolva o base type deste type (optional info).
   Se o type puder ser reduzido para "ponteiro", resolva o type (optional info - ponteiro).
@@ -5653,11 +5656,11 @@ Etapas para que se resolva uns types (base types):
   Resolva o type (base type).
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se resolva uns types (expand coisas):
+Etapas para que se resolva uns types (expand listas):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Obtenha um type desde o types.
   Se o type for inexistente, retorne.
-  Resolva o type (expand coisa).
+  Resolva o type (expand lista).
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se resolva uns types (registro de plurais):
@@ -5703,7 +5706,9 @@ Um cabeçalho de rotina é um subtexto.
 
 O catálogo geral de rotinas é um catálogo.
 
-Uma rotina é uma coisa com
+Um tamanho local é um size.
+
+Uma rotina é uma lista com
   Um local de aparição (reference),
   Um detector de compatibilidade,
   Um detector de deliberação,
@@ -5716,7 +5721,7 @@ Uma rotina é uma coisa com
   Um parâmetro size,
   Um employs representação interna da rotina ,
   Some locals, 
-  Um local size,
+  Um tamanho local,
   Um cabeçalho de rotina, 
   Um header string,
   Umas instruções, 
@@ -5750,12 +5755,15 @@ Etapas para que se examine algum tipo de pauses usando um percorredor:
   Mova o percorredor (usando diretrizes de compilação).
   Recomece. [percorra novamente o código acima]
 
+Uma keyword é uma string.
+Uma keyword de designação é uma keyword.
+
 Etapas para que se examine um campo usando um percorredor:
   Se o detector de erros deste compilador estiver ativado, retorne.
   Examine o campo usando o percorredor (type part).
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, retorne.
-    Se o segmento inicial deste percorredor for algum called, examine o campo usando o percorredor (called part); recomece.
+    Se o segmento inicial deste percorredor for uma keyword de designação, examine o campo usando o percorredor (called part); recomece.
     Se o segmento inicial deste percorredor for "sob", examine o campo usando o percorredor (redefine part); recomece.
     \Se o segmento inicial deste percorredor for "equivalente a", examine o campo usando o percorredor (redefine part); recomece.
     \Se o segmento inicial deste percorredor for "análogo a", examine o campo usando o percorredor (redefine part); recomece.
@@ -6088,7 +6096,7 @@ Etapas para que se skip para o previous palavra em um subtexto:
   Recomece. [percorra novamente o código acima]
   Skip algum tipo de trailing noise no subtexto.
 
-Um source file é uma coisa com 
+Um source file é uma lista com 
   Um endereço completo e 
   Um trecho.
 
@@ -6113,9 +6121,9 @@ Etapas para que se transforme em código hexadecimal um fragment:
   Se a etiqueta deste fragment for o etiqueta de retorno, transforme em código hexadecimal o fragment (exit); retorne.
   Se a etiqueta deste fragment for a etiqueta de repetição, transforme em código hexadecimal o fragment (repeat); retorne.
   Se a etiqueta deste fragment for o etiqueta de interrupção, transforme em código hexadecimal o fragment (break); retorne.
-  Se a etiqueta deste fragment for o prolog etiqueta, transforme em código hexadecimal o fragment (prolog); retorne.
-  Se a etiqueta deste fragment for o epilog etiqueta, transforme em código hexadecimal o fragment (epilog); retorne.
-  Se a etiqueta deste fragment for o etiqueta de inserção de valor [na stack], transforme em código hexadecimal o fragment (push value); retorne.
+  Se a etiqueta deste fragment for o etiqueta preliminar, transforme em código hexadecimal o fragment (etapa preliminar); retorne.
+  Se a etiqueta deste fragment for o etiqueta conclusiva, transforme em código hexadecimal o fragment (etapa conclusiva); retorne.
+  Se a etiqueta deste fragment for o etiqueta de inserção de valor [na stack], transforme em código hexadecimal o fragment (empilhamento de valor); retorne.
   Se a etiqueta deste fragment for a etiqueta de demanda externa, transforme em código hexadecimal o fragment (Demanda Externa); retorne.
   Se a etiqueta deste fragment for o etiqueta de carregamento de registrador EAX, transforme em código hexadecimal o fragment (load eax); retorne.
   Se a etiqueta deste fragment for o etiqueta de obtenção do registrador EAX, transforme em código hexadecimal o fragment (registrador EAX); retorne.
@@ -6128,8 +6136,8 @@ Etapas para que se transforme em código hexadecimal um fragment (break):
   Se o segundo fragment for inexistente, atribua a etiqueta de finalização ao etiqueta. \ para break sem um loop ou depois de um loop
   Encontre um terceiro fragment usando o last fragment destes fragments desta rotina utilizada atualmente e a etiqueta (backwards).
   Se o terceiro fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transforme em código hexadecimal um fragment (break)"; retorne.
-  Se o next deste terceiro fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - transforme em código hexadecimal um fragment (break)"; retorne.
-  Acrescente $E9 e o endereço deste next deste terceiro fragment para o fragment. \ JMP o endereço da destination
+  Se o next fragment deste terceiro fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - transforme em código hexadecimal um fragment (break)"; retorne.
+  Acrescente $E9 e o endereço deste next fragment deste terceiro fragment para o fragment. \ JMP o endereço da destination
 
 Etapas para que se transforme em código hexadecimal um fragment (Demanda Externa):
   Acrescente $FF15 e o endereço desta entry deste fragment para o código deste fragment. \ Processe [o endereço desta entry deste fragment ]
@@ -6149,7 +6157,7 @@ Etapas para que se transforme em código hexadecimal um fragment (dereference):
   Acrescente $8B12 para o código deste fragment. \ mov edx,[edx]
   Acrescente $8995 e o offset desta variável deste fragment para o código deste fragment. \ mov [ebp+ o offset desta variável deste fragment]
 
-Etapas para que se transforme em código hexadecimal um fragment (epilog):
+Etapas para que se transforme em código hexadecimal um fragment (etapa conclusiva):
   Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, acrescente $5F5E5B para o código deste fragment. \ pop edi; pop esi; pop ebx;
   Acrescente $8BE5 para o código deste fragment. \ mov esp,ebp -> não seria 89EC?
   Acrescente $5D para o código deste fragment. \ pop ebp
@@ -6193,10 +6201,10 @@ Etapas para que se transforme em código hexadecimal um fragment (load eax):
 Etapas para que se transforme em código hexadecimal um fragment (not):
   Acrescente $83F001 para o código deste fragment. \ xor eax,1
 
-Etapas para que se transforme em código hexadecimal um fragment (prolog):
+Etapas para que se transforme em código hexadecimal um fragment (etapa preliminar):
   Acrescente $55 para o código deste fragment. \ push ebp -> saves the contents of the EBP register on the stack.
   Acrescente $8BEC para o código deste fragment. \ mov ebp,esp -> puts the contents of the ESP register into the EBP register
-  Atribua o local size desta rotina utilizada atualmente dividido por 4 para um número.
+  Atribua o tamanho local desta rotina utilizada atualmente dividido por 4 para um número.
   Se o número não for 0, acrescente $B9 \ mov ecx,number;  -> sets up the loop that will clear enough space on the stack for the routine's local variables
     e O número e $6A004975FB \loop: push 0; dec ecx; jnz loop -> a loop that pushes enough zeros onto the stack to initialize the local variables.
   para o código deste fragment. 
@@ -6206,15 +6214,15 @@ Etapas para que se transforme em código hexadecimal um fragment (push endereço):
   Acrescente endereço loading código para o código deste fragment usando a variável deste fragment. \ atribua endereço para edx
   Acrescente $52 para o código deste fragment. \ push edx -> push the 4-byte value in edx onto the stack
 
-Etapas para que se transforme em código hexadecimal um fragment (push value):
+Etapas para que se transforme em código hexadecimal um fragment (empilhamento de valor):
   Acrescente endereço loading código para o código deste fragment usando a variável deste fragment. \ atribua endereço para edx
-  Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transforme em código hexadecimal um fragment (push value)"; retorne.
-  Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - transforme em código hexadecimal um fragment (push value)"; retorne.
+  Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - transforme em código hexadecimal um fragment (empilhamento de valor)"; retorne.
+  Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - transforme em código hexadecimal um fragment (empilhamento de valor)"; retorne.
   Atribua a quantidade de caracteres deste type desta variável deste fragment para uma quantidade de caracteres.
   Se a quantidade de caracteres for 4, acrescente $FF32 para o código deste fragment; retorne. \ push [edx]
   Se a quantidade de caracteres for 2, acrescente $66FF32 para o código deste fragment; retorne. \ push word ptr [edx]
   Se a quantidade de caracteres for 1, acrescente $0FB61252 para o código deste fragment; retorne. \ movzxb edx,[edx]; push edx
-  Apresente a mensagem de erro contendo "Erro interno 3 - transforme em código hexadecimal um fragment (push value)".
+  Apresente a mensagem de erro contendo "Erro interno 3 - transforme em código hexadecimal um fragment (empilhamento de valor)".
 
 Etapas para que se transforme em código hexadecimal um fragment (repeat):
   Encontre um segundo fragment usando o fragment e o etiqueta de laço (backwards).
@@ -6262,7 +6270,7 @@ Etapas para que se transforme em código hexadecimal umas rotinas:
 O catálogo de tipos é um catálogo.
 
 
-Um type é uma coisa com
+Um type é uma lista com
   Um local de aparição (reference),
   Um nome, um plural nome,
   Um cabeçalho semi-expandido,
@@ -6280,7 +6288,7 @@ Os types são uns types.
 
 O catálogo de rotinas úteis é um catálogo.
 
-Uma variável é uma coisa com
+Uma variável é uma lista com
   Um local de aparição (reference),
   Um categoria [literal, global, local, parâmetro, scratch],
   Um compiled detector,
@@ -6328,7 +6336,7 @@ Etapas para que se compile o header of uma rotina usando um percorredor (função 
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum tipo de artigo indefinido, apresente a mensagem de erro contendo "Esperava um artigo indefinido, mas encontrei: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Compile os unidades semânticas desta rotina e o parâmetros desta rotina usando o percorredor (artigo indefinido).
-  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Existem outras coisas no final desta função." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Existem outras listas no final desta função." e o percorredor; retorne.
   Converta os unidades semânticas desta rotina para a representação interna da rotina desta rotina.
   Catalogue a rotina usando os unidades semânticas desta rotina e o catálogo geral de rotinas. \ por employs
 
