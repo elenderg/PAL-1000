@@ -443,7 +443,7 @@ Etapas para que se adicione o atribua ou converta fragments usando uma variável 
   Encontre uma rotina usando "atribua" e o type desta variável e "para" e o type desta segunda variável.
   Se a rotina for inexistente, encontre a rotina usando "converta" e o type desta variável e "para" e o type desta segunda variável.
   Se a rotina não for inexistente, adicione um terceiro fragment usando a etiqueta de demanda interna e a rotina; retorne.
-  \ erro message
+  \ Mensagem de Erro
   Adicione uma unidade semântica para umas unidades semânticas usando "atribua/converta".
   Adicione uma segunda unidade semântica para as unidades semânticas usando o type desta variável.
   Adicione um terceiro unidade semântica para as unidades semânticas usando "para/a".
@@ -505,7 +505,7 @@ Etapas para que se adicione two fragments usando uma string e uma variável e um 
   Encontre uma rotina usando as unidades semânticas.
   Se a rotina for inexistente, converta as unidades semânticas para uma representação interna da rotina.
   Destrua as unidades semânticas.
-  Se a rotina for inexistente, apresente uma mensagem de erro contendo "Eu não sei como: " junto com a representação interna da rotina seguido de "." e o local de aparição; retorne.
+  Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro. A rotina para que se '" junto com a representação interna da rotina seguido de "' ainda não foi definida." e o local de aparição; retorne.
   Adicione um segundo fragment usando a etiqueta de demanda interna e a rotina.
 
 Etapas para que se adicione um type para uns types usando um local de aparição:
@@ -565,7 +565,7 @@ Etapas para que se enderece um fragment usando um endereço:
   Se a etiqueta deste fragment for a etiqueta de decodificação, adicione a quantidade de caracteres deste código deste fragment para o endereço; retorne.
   Se a etiqueta deste fragment for a etiqueta de inserção de valor [na stack], enderece o fragment usando o endereço (empilhamento de valor); retorne.
   Se a etiqueta deste fragment for a etiqueta de demanda externa, adicione 6 para o endereço; retorne.
-  Se a etiqueta deste fragment for a etiqueta de carregamento de registrador EAX, adicione 5 para o endereço; retorne. \ was 8 when "load eax" took em variáveis; now "load eax" only does um immediate value
+  Se a etiqueta deste fragment for a etiqueta de carregamento de registrador EAX, adicione 5 para o endereço; retorne. \ Era 8 quando "load eax" aceitava variáveis; agora "load eax" só aceita números
   Se a etiqueta deste fragment for a etiqueta de obtenção do registrador EAX, enderece o fragment usando o endereço (registrador EAX); retorne.
   Se a etiqueta deste fragment for a etiqueta de demanda indireta, adicione 8 para o endereço; retorne.
   Se a etiqueta deste fragment for a etiqueta de endereço de rotina, adicione 12 para o endereço; retorne.
@@ -581,23 +581,23 @@ Etapas para que se enderece um fragment usando um endereço (etapa preliminar):
 
 Etapas para que se enderece um fragment usando um endereço (empilhamento de valor):
   Adicione 6 para o endereço.
-  Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - endereço um fragment usando um endereço (empilhamento de valor)"; retorne.
-  Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - endereço um fragment usando um endereço (empilhamento de valor)"; retorne.
+  Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno #1. Consulte a rotina para que se enderece um fragment usando um endereço (empilhamento de valor)"; retorne.
+  Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno #2 - Consulte a rotina para que se enderece um fragment usando um endereço (empilhamento de valor)"; retorne.
   Atribua a quantidade de caracteres deste type desta variável deste fragment para uma quantidade de caracteres.
   Se a quantidade de caracteres for 4, adicione 2 para o endereço; retorne.
   Se a quantidade de caracteres for 2, adicione 3 para o endereço; retorne.
   Se a quantidade de caracteres for 1, adicione 4 para o endereço; retorne.
-  Apresente a mensagem de erro contendo "Erro interno 3 - endereço um fragment usando um endereço (empilhamento de valor)".
+  Apresente a mensagem de erro contendo "Erro interno #3 - Consulte a rotina para que se enderece um fragment usando um endereço (empilhamento de valor)".
 
 Etapas para que se enderece um fragment usando um endereço (registrador EAX):
   Adicione 6 para o endereço.
-  Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno - endereço um fragment usando um endereço (empilhamento de valor)"; retorne.
-  Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - endereço um fragment usando um endereço (empilhamento de valor)"; retorne.
+  Se a variável deste fragment for inexistente, apresente uma mensagem de erro contendo "Erro interno #4 - Consulte a rotina para que se enderece um fragment usando um endereço (registrador EAX)"; retorne.
+  Se o type desta variável deste fragment for inexistente, apresente a mensagem de erro contendo "Erro interno #5 - Consulte a rotina para que se enderece um fragment usando um endereço (registrador EAX)"; retorne.
   Atribua a quantidade de caracteres deste type desta variável deste fragment para uma quantidade de caracteres.
   Se a quantidade de caracteres for 4, adicione 2 para o endereço; retorne.
   Se a quantidade de caracteres for 2, adicione 3 para o endereço; retorne.
   Se a quantidade de caracteres for 1, adicione 2 para o endereço; retorne.
-  Apresente a mensagem de erro contendo "Erro interno 3 - endereço um fragment usando um endereço (empilhamento de valor)".
+  Apresente a mensagem de erro contendo "Erro interno #6 - Consulte a rotina para que se enderece um fragment usando um endereço (registrador EAX)".
 
 Etapas para que se enderece uns fragments usando um endereço:
   Se o detector de erros deste compilador estiver ativado, retorne.
@@ -613,7 +613,7 @@ Etapas para que se enderece um import:
   Atribua a quantidade de caracteres deste nome deste import mais 1 para um número.
   Arredonde o número para cima para o múltiplo imediato of 2.
   Adicione o número para o endereço do nome usado atualmente.
-  Adicione a magnitude desse import header para o endereço do cabeçalho usado atualmente. \ tenho que traduzir com calma isso depois
+  Adicione a magnitude desse import header para o endereço do cabeçalho usado atualmente. 
   Atribua o endereço pré-calculado atual ao first previamente calculado memory endereço deste import header deste import.
   Enderece as entries deste import.
   Adicione 4 para o endereço pré-calculado atual.
@@ -661,6 +661,7 @@ Etapas para que se enderece uma variável usando um endereço:
   Atribua o image base mais o endereço ao endereço desta variável.
   Adicione a quantidade de caracteres deste type desta variável para o endereço.
   Se o type desta variável puder ser reduzido para "string", adicione a quantidade de caracteres deste data desta variável mais 1 para o endereço.
+  Se o type desta variável puder ser reduzido para "cadeia de caracteres", adicione a quantidade de caracteres deste data desta variável mais 1 para o endereço.
   Se o type desta variável puder ser reduzido para "texto", adicione a quantidade de caracteres deste data desta variável mais 1 para o endereço.
   Arredonde o endereço para cima para o múltiplo imediato of 4.
 
@@ -671,16 +672,6 @@ Etapas para que se enderece uns variáveis usando um endereço:
   Enderece a variável usando o endereço.
   Recomece. [percorra novamente o código acima]
 
-  
-
-Etapas para que se advance um trecho:
-  Posponha o retorno de carro para o trecho.
-  Posponha a quebra de linha para o trecho.
-
-Etapas para que se advance um trecho (twice):
-  Advance o trecho.
-  Advance o trecho.
-
 Etapas para que se posponha um entry para um trecho (com separador):
   Se a entry for inexistente, posponha "(entrada não inicializada)" para o trecho (com separador); retorne.
   Posponha o nome desta entry para o trecho (com separador).
@@ -689,7 +680,7 @@ Etapas para que se posponha um detector para um trecho (com separador):
   Converta o detector para uma string.
   Posponha a string para o trecho (com separador).
 
-Etapas para que se posponha o global finalizers para uma string:
+Etapas para que se posponha os global finalizers para uma string:
   Obtenha um global desde o globals.
   Se o global for inexistente, retorne.
   Se o compiled detector deste global não estiver ativo, recomece.
@@ -709,7 +700,7 @@ Etapas para que se posponha os global initializers para uma string:
 Etapas para que se posponha uma unidade semântica para uma representação interna da rotina :
   Se a unidade semântica for inexistente, retorne.
   Se a representação interna da rotina não estiver em branco, posponha o caractere de espaço para a representação interna da rotina.
-  Se o type desta unidade semântica não for inexistente, posponha "[" e o nome deste type desta unidade semântica e "]" para a representação interna da rotina (fast); retorne.
+  Se o type desta unidade semântica não for inexistente, posponha "[" e o nome deste type desta unidade semântica e "]" para a representação interna da rotina (fast); retorne. \ moniker
   Se a string desta unidade semântica não estiver em branco, posponha a string desta unidade semântica para a representação interna da rotina ; retorne.
 
 Etapas para que se posponha uma unidade semântica para uma representação interna da rotina (while bubbling):
@@ -718,7 +709,7 @@ Etapas para que se posponha uma unidade semântica para uma representação interna
   Se o subtexto atual desta unidade semântica não estiver em branco, posponha o subtexto atual desta unidade semântica para a representação interna da rotina ; retorne.
   Se o type atual desta unidade semântica não for inexistente, posponha "[" e o nome deste type atual desta unidade semântica e "]" para a representação interna da rotina (fast); retorne.
 
-Etapas para que se posponha um número para um trecho (as hex com separador):
+Etapas para que se posponha um número para um trecho (cifra hexadecimal com separador):
   Converta o número para uma cifra hexadecimal.
   Posponha a cifra hexadecimal para o trecho (com separador).
 
@@ -741,7 +732,7 @@ Etapas para que se posponha uma string e uma segunda string e uma terceira strin
   Adicione a quantidade de caracteres desta string para a quantidade de caracteres. \ Atribua a quantidade de caracteres da 1ª string para a quantidade de caracteres. 
   Adicione a quantidade de caracteres desta segunda string para a quantidade de caracteres. \ Atribua a quantidade de caracteres da 2ª string para a quantidade de caracteres. 
   Adicione a quantidade de caracteres desta terceira string para a quantidade de caracteres. \ Atribua a quantidade de caracteres da 3ª string para a quantidade de caracteres. 
-  Reassocie um ponteiro usando a quantidade de caracteres.
+  Restabeleça um ponteiro usando a quantidade de caracteres.
   Atribua o ponteiro para um ponteiro do byte .
   Copie bytes desde o caractere inicial desta quarta string para o ponteiro do byte pelo quantidade de caracteres desta quarta string.
   Adicione a quantidade de caracteres desta quarta string para o ponteiro do byte .
@@ -767,12 +758,12 @@ Etapas para que se posponha uma etiqueta para um trecho (as um fragment etiqueta
   Se a etiqueta for a etiqueta delimitadora de bloco condicional, posponha "Fim de bloco condicional" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta conclusiva, posponha "Epílogo" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de retorno, posponha "Retorno de Rotina" para o trecho (com separador); retorne.
-  Se a etiqueta for a etiqueta de finalização, posponha "finalize" para o trecho (com separador); retorne.
+  Se a etiqueta for a etiqueta de finalização, posponha "Finalização" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de acréscimo, posponha "Incremento" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de decodificação, posponha "Decodifique" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de desvio falso, posponha "Desvio de condição insatisfeita" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de carregamento de endereço, posponha "Carregamento de endereço" para o trecho (com separador); retorne.
-  Se a etiqueta for a etiqueta de carregamento de registrador EAX, posponha "Carregamento do Registrador EAX" para o trecho (com separador); retorne.
+  Se a etiqueta for a etiqueta de carregamento de registrador EAX, posponha "Atribuição EAX" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de laço, posponha "Loop" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de negação lógica, posponha "Negação Lógica" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta preliminar, posponha "Prólogo" para o trecho (com separador); retorne.
@@ -781,7 +772,7 @@ Etapas para que se posponha uma etiqueta para um trecho (as um fragment etiqueta
   Se a etiqueta for a etiqueta de obtenção do registrador EAX, posponha "Requisição EAX" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de repetição, posponha "Repetição" para o trecho (com separador); retorne.
   Se a etiqueta for a etiqueta de endereço de rotina, posponha "Endereço de Rotina" para o trecho (com separador); retorne.
-  Posponha "?" para o trecho (com separador).
+  [Caso não seja nenhum dessas etiquetas, então:] Posponha "?" para o trecho (com separador).
 
 Etapas para que se posponha um type para um trecho (com separador):
   Se o type for inexistente, posponha "(tipo não inicializado)" para o trecho (com separador); retorne.
@@ -908,7 +899,7 @@ Etapas para que se acrescente endereço loading código para um texto hexadecimal 
   Acrescente $8B95 e o offset desta variável para o texto hexadecimal. \ mov edx,[ebp+ the offset da variável]
 
 Etapas para que se acrescente um texto hexadecimal e um endereço para um fragment:
-  \ Processe ou jump
+  \ Processe ou Salto
   Atribua o endereço para um número.
   Subtraia o endereço deste fragment desde o número.
   Subtraia a quantidade de caracteres deste código deste fragment desde o número.
@@ -997,6 +988,7 @@ Etapas para que se disponibilize uma string para um trecho sob um endereço:
 Etapas para que se disponibilize uma variável para um trecho:
   Se o compiled detector desta variável não estiver ativo, retorne.
   Se o type desta variável puder ser reduzido para "string", disponibilize a variável ao trecho (como um texto); retorne.
+  Se o type desta variável puder ser reduzido para "cadeia de caracteres", disponibilize a variável ao trecho (como um texto); retorne.
   Se o type desta variável puder ser reduzido para "texto", disponibilize a variável ao trecho (como um texto); retorne.
   Atribua o endereço desta variável menos o image base para um endereço. \ Atribua a diferença entre o endreço da variável e a base da imagem em um endereço.
   Disponibilize o data desta variável ao trecho sob o endereço.
@@ -1086,7 +1078,7 @@ Etapas para que se calculate o redefinition offsets em um type:
     Se o campo for inexistente, retorne.
     Se o redefinition conteúdo nome deste campo estiver em branco, recomece.
     Encontre um segundo campo usando o redefinition conteúdo nome deste campo e os campos deste type.
-    Se o segundo campo for inexistente, apresente uma mensagem de erro contendo "Redefine inválido. Eu não consigo encontrar o campo: " junto com o redefinition conteúdo nome deste campo seguido de "' campo." e o local de aparição deste campo; retorne.
+    Se o segundo campo for inexistente, apresente uma mensagem de erro contendo "Erro. Comando de redefinição inválido. O campo '" junto com o redefinition conteúdo nome deste campo seguido de "' não pode ser encontrado." e o local de aparição deste campo; retorne.
     Atribua o offset deste segundo campo ao offset deste campo.
   Recomece. [percorra novamente o código acima]
 
@@ -1110,11 +1102,11 @@ Etapas para que se verifique por informações opcionais inválidas em um type (cam
 
 Etapas para que se verifique por informações opcionais inválidas em um type (scale):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se o type não puder ser reduzido para "número", apresente uma mensagem de erro contendo "Escalas são permitidas apenas em tipos numéricos." e o local de aparição deste type; retorne.
+  Se o type não puder ser reduzido para "número", apresente uma mensagem de erro contendo "Erro. Proporções e escalas de medida só podem ser utilizadas em tipos de dados numéricos." e o local de aparição deste type; retorne.
 
 Etapas para que se verifique por informações opcionais inválidas em um type (conteúdo):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se o type não puder ser reduzido para "ponteiro", apresente uma mensagem de erro contendo "A palavra 'para' só é permitida em ponteiro." e o local de aparição deste type; retorne.
+  Se o type não puder ser reduzido para "ponteiro", apresente uma mensagem de erro contendo "Erro. A palavra-chave 'para' só pode ser utilizada ao apontar para variáveis do tipo ponteiro." e o local de aparição deste type; retorne.
 
 Etapas para que se limpe um campo termo:
   Preencha bytes com o caractere null começando sob o endereçamento deste campo termo pelo magnitude deste campo termo.
@@ -1124,9 +1116,9 @@ Etapas para que se limpe um termo:
   Limpe o phrase deste termo.
 
 Etapas para que se compile o bodies of as rotinas:
-  Compile o body of a rotina denominada "initialize before run".
-  Compile o body of a rotina denominada "execute o programa".
-  Compile o body of a rotina denominada "finalize after run".
+  Compile o body of a rotina denominada "Initialize before run".
+  Compile o body of a rotina denominada "Execute o programa".
+  Compile o body of a rotina denominada "Finalize after run".
 
 Etapas para que se compile o body of uma rotina:
   Se a rotina for inexistente, retorne.
@@ -1161,7 +1153,7 @@ Etapas para que se compile o body of uma rotina (etapa conclusiva):
     Se o type desta variável não deveria ser finalizado, recomece.
     Adicione um segundo fragment usando o etiqueta de inserção de endereço [na stack] e a variável.
     Encontre uma segunda rotina usando "~finalize" e o type desta variável.
-    Se a segunda rotina for inexistente, apresente uma mensagem de erro contendo "Erro interno - compile o body of uma rotina (etapa conclusiva)"; retorne.
+    Se a segunda rotina for inexistente, apresente uma mensagem de erro contendo "Erro interno #7 - Consulte a rotina 'para que se compile o body of uma rotina (etapa conclusiva)'"; retorne.
     Adicione um terceiro fragment usando a etiqueta de demanda interna e a segunda rotina.
   Recomece. [percorra novamente o código acima]
   Adicione um quarto fragment usando o etiqueta conclusiva.
@@ -1176,14 +1168,14 @@ Etapas para que se compile o body of a rotina denominada uma string;
 Etapas para que se compile o body of a rotina denominado uma string:
   Se o detector de erros deste compilador estiver ativado, retorne.
   Encontre uma rotina usando a string e o catálogo geral de rotinas.
-  Se a rotina for inexistente, apresente uma mensagem de erro contendo "Não consegui encontrar a rotina ''Etapas para que se " junto com a string seguido de ":''."; retorne.
+  Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro. A rotina 'para que se " junto com a string seguido de "' não pode ser encontrada."; retorne.
   Compile o body of a rotina.
 
 Etapas para que se compile o body of uma rotina usando um percorredor (sobrecarga de métodos):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação). \ *** do we need this?
   Atribua a next rotina desta rotina para um conteúdo rotina.
-  Se o conteúdo rotina for inexistente, apresente uma mensagem de erro contendo "Você definiu uma palavra alternativa aqui, mas eu não tenho certeza pra que ela serve." e o percorredor; retorne.
+  Se o conteúdo rotina for inexistente, apresente uma mensagem de erro contendo "Erro. Não foi possível encontrar o cabeçalho alternativo desta rotina." e o percorredor; retorne.
   Atribua a representação interna da rotina deste conteúdo rotina ao employs representação interna da rotina desta rotina.
   Compile o body of o conteúdo rotina.
 
@@ -1193,11 +1185,11 @@ Etapas para que se compile o body of uma rotina usando um percorredor (employ):
   Compile uma rotina reference usando o percorredor.
   Converta a rotina reference para o employs representação interna da rotina desta rotina.
   Destrua a rotina reference.
-  Se o segmento inicial deste percorredor não for ".", apresente uma mensagem de erro contendo "Employ statments devem terminar com um ponto, não com: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for ".", apresente uma mensagem de erro contendo "Erro. O comando 'Employ' deve terminar com um ponto, não com: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Somente um employ" e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Erro. Permitido apenas um employ por rotina" e o percorredor; retorne.
   Encontre uma segunda rotina usando o employs representação interna da rotina desta rotina e o catálogo geral de rotinas.
-  Se a segunda rotina for inexistente, apresente a mensagem de erro contendo "Não consigo encontrar um rotina: " junto com o employs representação interna da rotina desta rotina seguido de "' que você está tentando empregar." e o local de aparição desta rotina; retorne.
+  Se a segunda rotina for inexistente, apresente a mensagem de erro contendo "Erro. A rotina para que se '" junto com o employs representação interna da rotina desta rotina seguido de "' não foi encontrada." e o local de aparição desta rotina; retorne.
   Compile o body of a segunda rotina.
 
 Etapas para que se compile o Processe'd part usando um percorredor e uma variável:
@@ -1235,7 +1227,7 @@ Etapas para que se compile um endereço da pasta (Adicione e compile o built-in s
 
 Etapas para que se compile um endereço da pasta (Adicione o built-in memory rotinas):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Mostre no painel de informações "Adicionando como tarefas predefinidas na memória...".
+  Mostre no painel de informações "Adicionando tarefas predefinidas na memória...".
   Start o temporizador de adição de rotinas pré-definidas de mémoria .
   Adicione as rotinas de alocação e desalocação e finalização e destruição.
   Suspenda o temporizador de adição de rotinas pré-definidas de mémoria .
@@ -1317,7 +1309,7 @@ Etapas para que se compile um endereço da pasta (arquivos de código fonte):
 
 Etapas para que se compile um endereço da pasta (identificação de variáveis globais):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Mostre no painel de informações "Resolvendo itens de escopo abrangente...".
+  Mostre no painel de informações "Resolvendo itens de escopo global...".
   Start o temporizador de resolução de variáveis globais.
   Resolva o globals.
   Suspenda o temporizador de resolução de variáveis globais.
@@ -1385,12 +1377,12 @@ Etapas para que se compile um expression usando um percorredor:
 Etapas para que se compile um expression usando um percorredor (operador de divisão):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum objeto indireto, apresente uma mensagem de erro contendo "Você deve usar o termo 'dividido POR'." e o percorredor; retorne.
-  Se a variável desta expression for inexistente, apresente a mensagem de erro contendo "Comando 'dividido por' inválido, há um erro na variável: " junto com a phrase desta expression seguido de "." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for algum objeto indireto, apresente uma mensagem de erro contendo "Erro. Você deve usar o termo 'dividido POR'." e o percorredor; retorne.
+  Se a variável desta expression for inexistente, apresente a mensagem de erro contendo "Erro. Comando 'dividido por' inválido. Erro na variável  '" junto com a phrase desta expression seguido de "'." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "O seu 'dividido por', está errado. Não dá pra dividir por: " junto com a phrase deste termo seguido de "." e o percorredor; retorne.
+  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Erro. O comando 'dividido por', está errado. Não é possível dividir por '" junto com a phrase deste termo seguido de "'." e o percorredor; retorne.
   Adicione um intermediate usando o type nome desta expression e o caractere inicial deste segmento inicial deste percorredor.
   Adicione several fragments usando "atribua" e a variável desta expression e "para" e o intermediate e o caractere inicial deste segmento inicial deste percorredor.
   Adicione several fragments usando "divida" e o intermediate e "por" e a variável deste termo e o caractere inicial deste segmento inicial deste percorredor.
@@ -1399,11 +1391,11 @@ Etapas para que se compile um expression usando um percorredor (operador de divi
 
 Etapas para que se compile um expression usando um percorredor (operador de subtração):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "O seu 'minus', está errado. Não consigo subtrair o(a): " junto com a phrase desta expression seguido de "." e o percorredor; retorne.
+  Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "Erro. O comando 'menos', está incorreto. Não é possível subtrair de '" junto com a phrase desta expression seguido de "'." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "O seu 'minus', está errado. Não consigo diminuir do(a): " junto com a phrase deste termo seguido de "." e o percorredor; retorne.
+  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Erro. O comando 'menos', está incorreto. Não consigo diminuir de '" junto com a phrase deste termo seguido de "'." e o percorredor; retorne.
   Adicione um intermediate usando o type nome desta expression e o caractere inicial deste segmento inicial deste percorredor.
   Adicione several fragments usando "atribua" e a variável desta expression e "para" e o intermediate e o caractere inicial deste segmento inicial deste percorredor.
   Adicione several fragments usando "subtraia" e a variável deste termo e "desde" e o intermediate e o caractere inicial deste segmento inicial deste percorredor.
@@ -1412,11 +1404,11 @@ Etapas para que se compile um expression usando um percorredor (operador de subt
 
 Etapas para que se compile um expression usando um percorredor (operador de adição):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "O seu 'plus', está errado. Não consigo somar o: " junto com a phrase desta expression seguido de "." e o percorredor; retorne.
+  Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "Erro. O comando 'mais' está incorreto. Não é possível somar o '" junto com a phrase desta expression seguido de "'." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação). \talvez fosse o caso de repetir aqui
   Compile um termo usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "O seu 'plus', está errado. Não consigo somar um: " junto com a phrase deste termo seguido de "." e o percorredor; retorne.
+  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Erro. O comando 'mais' está incorreto. Não é possível adicionar o" junto com a phrase deste termo seguido de "." e o percorredor; retorne.
   Adicione um intermediate usando o type nome desta expression e o caractere inicial deste segmento inicial deste percorredor.
   Adicione several fragments usando "atribua" e a variável desta expression e "para" e o intermediate e o caractere inicial deste segmento inicial deste percorredor.\aqui muda o atribua
   Adicione several fragments usando "adicione" e a variável deste termo e "para" e o intermediate e o caractere inicial deste segmento inicial deste percorredor. \ aqui muda o add
@@ -1427,12 +1419,12 @@ Etapas para que se compile um expression usando um percorredor (operador de conc
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação).
   \Se o segmento inicial deste percorredor for "do",  recue/atribua/posponha "de o" ao 
-  Se o segmento inicial deste percorredor não for algum tipo de palavra de concatenação, apresente uma mensagem de erro contendo "Você deve usar o termo 'junto DE/junto COM/etc'." e o percorredor; retorne.
-  Se a variável desta expression for inexistente, apresente a mensagem de erro contendo "O seu 'then', está errado. Eu não entendi a variável da expressão: " junto com a phrase desta expression seguido de "." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for algum tipo de palavra de concatenação, apresente uma mensagem de erro contendo "Erro. Necessário escrever 'junto DE/junto COM/etc'." e o percorredor; retorne.
+  Se a variável desta expression for inexistente, apresente a mensagem de erro contendo "Erro. Eu não entendi a variável da expressão: " junto com a phrase desta expression seguido de "." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor. \\ aqui que deve compilar o termo
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "O seu 'then', está errado. Eu não achei a variável do termo: " junto com a phrase deste termo seguido de "." e o percorredor; retorne.
+  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Erro. Eu não achei a variável do termo: " junto com a phrase deste termo seguido de "." e o percorredor; retorne.
   Adicione um intermediate usando "string" e o caractere inicial deste segmento inicial deste percorredor.
   \Adicione um intermediate usando "texto" e o caractere inicial deste segmento inicial deste percorredor.
   Adicione o atribua ou converta fragments usando a variável desta expression e o intermediate e o caractere inicial deste segmento inicial deste percorredor.
@@ -1443,11 +1435,11 @@ Etapas para que se compile um expression usando um percorredor (operador de conc
 
 Etapas para que se compile um expression usando um percorredor (operador de multiplicação):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "O seu 'times', está errado. Eu não sei como multiplicar o: " junto com a phrase desta expression seguido de "." e o percorredor; retorne.
+  Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "Erro. Comando 'vezes' incorreto. Não é póssível multiplicar por '" junto com a phrase desta expression seguido de "'." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "O seu 'times', está errado. Eu não sei como multiplicar um: " junto com a phrase deste termo seguido de "." e o percorredor; retorne.
+  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Erro. Comando 'multiplicado por' incorreto. Não é póssível multiplicar por '" junto com a phrase deste termo seguido de "'." e o percorredor; retorne.
   Adicione um intermediate usando o type nome desta expression e o caractere inicial deste segmento inicial deste percorredor.
   Adicione several fragments usando "atribua" e a variável desta expression e "para" e o intermediate e o caractere inicial deste segmento inicial deste percorredor.
   Adicione several fragments usando "multiplique" e o intermediate e "por" e a variável deste termo e o caractere inicial deste segmento inicial deste percorredor.
@@ -1471,19 +1463,19 @@ Etapas para que se compile o header of uma rotina usando um percorredor (modo de
   Ligue o detector de compatibilidade desta rotina.
   Compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor.
   Converta as unidades semânticas desta rotina para a representação interna da rotina desta rotina.
-  Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas, apresente uma mensagem de erro contendo "Você já tinha escrito um função: " junto com a representação interna da rotina desta rotina seguido de "." e o local de aparição desta rotina; retorne.
+  Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas, apresente uma mensagem de erro contendo "Erro. A rotina para que se '" junto com a representação interna da rotina desta rotina seguido de "' já foi definida anteriormente." e o local de aparição desta rotina; retorne.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas.
 
 Etapas para que se compile o header of uma rotina usando um percorredor (rotina deliberativa):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum comando condicional, apresente uma mensagem de erro contendo "Erro na sintaxe do comando 'Para que se determine se'" e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for algum comando condicional, apresente uma mensagem de erro contendo "Erro. Rotina 'Para que se determine se' com sintaxe inválida" e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Ligue o detector de deliberação desta rotina.
   Compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor.
-  Se alguns of as unidades semânticas desta rotina forem advérbios de negação, apresente a mensagem de erro contendo "Não consigo me dar bem com palavras negativos em nomes de funções decisoras." e o percorredor; retorne.
+  Se alguns of as unidades semânticas desta rotina forem advérbios de negação, apresente a mensagem de erro contendo "Erro. A palavra-chave 'não' não é permitida em cabeçalhos de funções booleanas." e o percorredor; retorne.
   Converta as unidades semânticas desta rotina para a representação interna da rotina desta rotina.
-  Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas, apresente a mensagem de erro contendo "Você já me contou como'" junto com a representação interna da rotina desta rotina seguido de "." e o local de aparição desta rotina; retorne.
+  Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas, apresente a mensagem de erro contendo "Erro. A rotina para que se ''" junto com a representação interna da rotina desta rotina seguido de "' já havia sido definida anteriormente." e o local de aparição desta rotina; retorne.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas.
 
 Etapas para que se compile o header of uma rotina usando um percorredor (função):
@@ -1494,19 +1486,19 @@ Etapas para que se compile o header of uma rotina usando um percorredor (função)
   Se o segmento inicial deste percorredor for algum tipo de artigo indefinido, ative um detector.
   Se o detector estiver ativo, compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor (artigo indefinido).
   Se o detector não estiver ativo, compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor (artigo definido).
-  Se o segmento inicial deste percorredor não for algum tipo de possessive, apresente uma mensagem de erro contendo "Tá faltando um 's por aqui (ou está no lugar errado)." e o percorredor; retorne. \ not translated - no possessives em Spanish
+  Se o segmento inicial deste percorredor não for algum tipo de possessive, apresente uma mensagem de erro contendo "Erro. Necessário inserir um 's no código." e o percorredor; retorne. \ not translated - no possessives em Spanish
   Mova o percorredor (usando diretrizes de compilação).
   Examine um nome usando o percorredor.
   Adicione uma segunda unidade semântica para as unidades semânticas desta rotina usando "'s " junto com o nome.
-  Se o segmento inicial deste percorredor não for "para", apresente a mensagem de erro contendo "Eu estava esperando um palavra 'para', mas encontrei a palavra: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne. \ not translated - no possessives em Spanish
+  Se o segmento inicial deste percorredor não for "para", apresente a mensagem de erro contendo "Erro. Keyword 'para' ausente. Encontrado a palavra: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne. \ not translated - no possessives em Spanish
   Adicione um terceiro unidade semântica para as unidades semânticas desta rotina usando "para".
   Converta as unidades semânticas desta rotina para uma representação interna da rotina.
-  Se a representação interna da rotina estiver no catálogo geral de rotinas, apresente a mensagem de erro contendo "Eu já sei como: " junto com a representação interna da rotina seguido de "." e o local de aparição desta rotina; retorne. \ not translated - no possessives em Spanish
+  Se a representação interna da rotina estiver no catálogo geral de rotinas, apresente a mensagem de erro contendo "Erro. Rotina para que se '" junto com a representação interna da rotina seguido de "' já definida." e o local de aparição desta rotina; retorne. \ not translated - no possessives em Spanish
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum tipo de artigo indefinido, apresente a mensagem de erro contendo "Estava esperando um artigo indefinido, mas achei isso aqui: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne. \ not translated - no possessives em Spanish
+  Se o segmento inicial deste percorredor não for algum tipo de artigo indefinido, apresente a mensagem de erro contendo "Erro. Necessário artigo indefinido. Encontrado '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne. \ not translated - no possessives em Spanish
   Compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor (artigo indefinido).
-  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Tem comandos extras no fim dessa função." e o percorredor; retorne. \ not translated - no possessives em Spanish
+  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Erro. Encontrado comandos extras no fim da função." e o percorredor; retorne. \ not translated - no possessives em Spanish
   Converta as unidades semânticas desta rotina para a representação interna da rotina desta rotina.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas. \ por employs
 
@@ -1514,7 +1506,7 @@ Etapas para que se compile o header of uma rotina usando um percorredor (procedi
   Se o detector de erros deste compilador estiver ativado, retorne.
   Compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor.
   Converta as unidades semânticas desta rotina para a representação interna da rotina desta rotina.
-  Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas, apresente uma mensagem de erro contendo "Você já escreveu como fazer: " junto com a representação interna da rotina desta rotina seguido de "." e o local de aparição desta rotinas; retorne.
+  Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas, apresente uma mensagem de erro contendo "Erro. Rotina para que se '" junto com a representação interna da rotina desta rotina seguido de "' já codificada." e o local de aparição desta rotinas; retorne.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas.
 
 Etapas para que se compile o headers of uns rotinas:
@@ -1532,7 +1524,7 @@ Etapas para que se compile um literal usando um percorredor:
   Se o segmento inicial deste percorredor for algum tipo de numeric literal, compile o literal usando o percorredor (numeric); retorne.
   Se o segmento inicial deste percorredor for algum tipo de ponteiro literal, compile o literal usando o percorredor (ponteiro); retorne.
   Se o segmento inicial deste percorredor for algum tipo de string literal, compile o literal usando o percorredor (texto); retorne.
-  Apresente uma mensagem de erro contendo "Erro interno - compile um termo usando um percorredor (literal)" e o percorredor.
+  Apresente uma mensagem de erro contendo "Erro interno #8 - Consulte a rotina para que se compile um termo usando um percorredor (literal)" e o percorredor.
 
 Etapas para que se compile um literal usando um percorredor (detector):
   Se o detector de erros deste compilador estiver ativado, retorne.
@@ -1551,7 +1543,7 @@ Etapas para que se compile um literal usando um percorredor (hex):
   Atribua "texto hexadecimal" ao type nome deste literal.
   Resolva o literal.
 
-Etapas para que se compile um literal usando um percorredor (numeric - integer):
+Etapas para que se compile um literal usando um percorredor (valor numérico - integer):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Converta o segmento inicial deste percorredor para um número.
   Converta o número para os data deste literal.
@@ -1559,7 +1551,7 @@ Etapas para que se compile um literal usando um percorredor (numeric - integer):
   Atribua "número" ao type nome deste literal.
   Resolva o literal.
 
-Etapas para que se compile um literal usando um percorredor (numeric - proporção):
+Etapas para que se compile um literal usando um percorredor (valor numérico - proporção):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Converta o segmento inicial deste percorredor para uma proporção.
   Converta a proporção para o data deste literal.
@@ -1567,19 +1559,19 @@ Etapas para que se compile um literal usando um percorredor (numeric - proporção
   Atribua "proporção" ao type nome deste literal.
   Resolva o literal.
 
-Etapas para que se compile um literal usando um percorredor (numeric - com unidade de medida):
+Etapas para que se compile um literal usando um percorredor (valor numérico - com unidade de medida):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Converta o segmento inicial deste percorredor para uma proporção.
   Mova o percorredor (usando diretrizes de compilação).
   Examine um nome usando o percorredor.
   Encontre um type usando o nome e o catálogo de tipos.
-  Se o type for inexistente, apresente uma mensagem de erro contendo "'" junto com o nome seguido de "' é uma unidade de medida inexistente." e o local de aparição deste literal; retorne.
-  Se o type não puder ser reduzido para "número", apresente a mensagem de erro contendo "'" junto com o nome seguido de "' é uma unidade de medida inválida." e o local de aparição deste literal; retorne.
+  Se o type for inexistente, apresente uma mensagem de erro contendo "Erro. O(A) '" junto com o nome seguido de "' é uma unidade de medida inexistente." e o local de aparição deste literal; retorne.
+  Se o type não puder ser reduzido para "número", apresente a mensagem de erro contendo "Erro. O(A) '" junto com o nome seguido de "' é uma unidade de medida inválida." e o local de aparição deste literal; retorne.
   Atribua a razão de escala deste type para um final proporção.
   Se a razão de escala deste type for 0, atribua 1/1 ao final proporção.
   Multiplique o final proporção pelo proporção.
   Reduza o final proporção.
-  Se o denominador deste final proporção for 0, apresente a mensagem de erro contendo "Parece que essa é uma unidade de medida inválida." e o local de aparição deste literal.
+  Se o denominador deste final proporção for 0, apresente a mensagem de erro contendo "Erro. Denominador igual a zero. Unidade de medida inválida." e o local de aparição deste literal.
   Atribua o numerador deste final proporção dividido pelo denominador deste final proporção para um número.
   Atribua o nome deste type ao type nome deste literal.
   Converta o número para o data deste literal.
@@ -1587,10 +1579,10 @@ Etapas para que se compile um literal usando um percorredor (numeric - com unida
 
 Etapas para que se compile um literal usando um percorredor (numeric):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se o percorredor estiver acompanhado por algum tipo de unidade de medida, compile o literal usando o percorredor (numeric - com unidade de medida); retorne.
-  Se o segmento inicial deste percorredor for algum tipo de integer literal, compile o literal usando o percorredor (numeric - integer); retorne.
-  Se o segmento inicial deste percorredor for algum tipo de proporção literal, compile o literal usando o percorredor (numeric - proporção); retorne.
-  Se o segmento inicial deste percorredor for algum tipo de numeral misto literal, compile o literal usando o percorredor (numeric - proporção); retorne.
+  Se o percorredor estiver acompanhado por algum tipo de unidade de medida, compile o literal usando o percorredor (valor numérico - com unidade de medida); retorne.
+  Se o segmento inicial deste percorredor for algum tipo de integer literal, compile o literal usando o percorredor (valor numérico - integer); retorne.
+  Se o segmento inicial deste percorredor for algum tipo de proporção literal, compile o literal usando o percorredor (valor numérico - proporção); retorne.
+  Se o segmento inicial deste percorredor for algum tipo de numeral misto literal, compile o literal usando o percorredor (valor numérico - proporção); retorne.
 
 Etapas para que se compile um literal usando um percorredor (ponteiro):
   Se o detector de erros deste compilador estiver ativado, retorne.
@@ -1614,7 +1606,7 @@ Etapas para que se compile umas unidades semânticas e uns parâmetros usando um p
   Se o segmento inicial deste percorredor for algum tipo de artigo definido, compile as unidades semânticas e o parâmetros usando o percorredor (artigo definido); recomece.
   Se o percorredor estiver sobre algum tipo de artigo indefinido, compile as unidades semânticas e o parâmetros usando o percorredor (artigo indefinido); recomece.
   Se o percorredor estiver sobre algum tipo de unidade semântica string, compile as unidades semânticas e o parâmetros usando o percorredor (unidade semântica string); recomece.
-  Apresente uma mensagem de erro contendo "'" junto com o segmento inicial deste percorredor seguido de "' não é um nome de função que eu conheça." e o percorredor.
+  Apresente uma mensagem de erro contendo "Erro. Rotina para que se '" junto com o segmento inicial deste percorredor seguido de "' não localizada." e o percorredor.
 
 Etapas para que se compile umas unidades semânticas e uns parâmetros usando um percorredor (artigo definido):
   Se o detector de erros deste compilador estiver ativado, retorne.
@@ -4413,7 +4405,7 @@ Etapas para que se liste um entry em um trecho:
   Se a entry for inexistente, retorne.
   Posponha "| ENTRADA" para o trecho (com separador).
   Posponha o nome desta entry para o trecho (com separador).
-  Posponha o endereço desta entry para o trecho (as hex com separador).
+  Posponha o endereço desta entry para o trecho (cifra hexadecimal com separador).
   Advance o trecho.
 
 Etapas para que se liste um fragment em um trecho:
@@ -4428,9 +4420,9 @@ Etapas para que se liste um fragment em um trecho:
   Posponha "Entrada: " para o trecho.
   Posponha a entry desta fragment para o trecho (com separador).
   Posponha "Número hexadecimal: " para o trecho.
-  Posponha o número deste fragment para o trecho (as hex com separador).
+  Posponha o número deste fragment para o trecho (cifra hexadecimal com separador).
   Posponha "Endereço: " para o trecho.
-  Posponha o endereço deste fragment para o trecho (as hex com separador).
+  Posponha o endereço deste fragment para o trecho (cifra hexadecimal com separador).
   Converta o código deste fragment para uma cifra hexadecimal.
   Posponha "Código compilado: " para o trecho.
   Posponha a cifra hexadecimal para o trecho (com separador).
@@ -4518,7 +4510,7 @@ Etapas para que se liste uma rotina em um trecho:
   Posponha o tamanho local desta rotina para o trecho (com separador). \Tamanho do local. Exemplo: 28
   Posponha o texto CRLF para o trecho.
   Posponha "| Endereço da Rotina: " para o trecho.
-  Posponha o endereço desta rotina para o trecho (as hex com separador). \ Endereço da rotina, Exemplo: 0041D000
+  Posponha o endereço desta rotina para o trecho (cifra hexadecimal com separador). \ Endereço da rotina, Exemplo: 0041D000
   Advance o trecho.
   Liste os parâmetros desta rotina no trecho.
   Liste os locals desta rotina no trecho.
@@ -4591,7 +4583,7 @@ Etapas para que se liste um type em um trecho:
   Posponha " Plural: " para o trecho.
   Posponha o plural nome deste type para o trecho (com separador).
   Posponha " Comprimento: " para o trecho.
-  Posponha a quantidade de caracteres deste type para o trecho (as hex com separador).
+  Posponha a quantidade de caracteres deste type para o trecho (cifra hexadecimal com separador).
   Posponha " Tipo: " para o trecho.
   Posponha o base nome deste type para o trecho (com separador).
   Posponha " Tipo base: " para o trecho.
@@ -4632,7 +4624,7 @@ Etapas para que se liste uma variável em um trecho:
   Posponha "Tipo: " para o trecho.
   Posponha o type desta variável para o trecho (com separador).
   Posponha "Endereço (deslocamento): " para o trecho.
-  Posponha o endereço desta variável [or offset] para o trecho (as hex com separador).
+  Posponha o endereço desta variável [or offset] para o trecho (cifra hexadecimal com separador).
   Posponha "Passagem por valor? " para o trecho.
   Posponha o by-value detector desta variável para o trecho (com separador).
   Posponha "Contagem: " para o trecho.
