@@ -1628,8 +1628,6 @@ Etapas para que se compile umas unidades semânticas e uns parâmetros usando um p
   Se o segmento inicial deste percorredor for "segundos", atribua "segundos" ao nome deste parâmetro.
   Se o segmento inicial deste percorredor for "segunda", atribua "segunda" ao nome deste parâmetro.
   Se o segmento inicial deste percorredor for "segunda", atribua "segundas" ao nome deste parâmetro.
-  \CAL
-  \Se o segmento inicial deste percorredor for "another", atribua "segunda" ao nome deste parâmetro.
   Mova o percorredor (usando diretrizes de compilação).
   Examine um nome usando o percorredor.
   Extend o nome destes parâmetro com o nome.
@@ -1663,7 +1661,7 @@ Etapas para que se compile umas unidades semânticas usando um percorredor:
 
 Etapas para que se compile a próxima instrução usando um percorredor:
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se o segmento inicial deste percorredor for algum comando condicional, compile a próxima instrução usando o percorredor (if); retorne.
+  Se o segmento inicial deste percorredor for algum comando condicional, compile a próxima instrução usando o percorredor (cláusula de condicional); retorne.
   Se o segmento inicial deste percorredor for algum comando de percorrimento, compile a próxima instrução usando o percorredor (loop); retorne.
   Se o segmento inicial deste percorredor for algum comando de proteção, compile a próxima instrução usando o percorredor (privatize); retorne.
   Se o segmento inicial deste percorredor não for o início of algum statement, apresente uma mensagem de erro contendo "Eu esperava uma declaração aqui, mas encontrei: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
@@ -1691,20 +1689,20 @@ Etapas para que se compile a próxima instrução usando um percorredor (Processe -
   \Se o segmento inicial deste percorredor for uma keyword de devolução, compile a próxima instrução usando o percorredor devolvendo um termo (Keyword Processe - cláusula devolvendo).
   Adicione um fragmento usando a etiqueta de demanda externa e o função.
   Se o termo estiver vazio, retorne.
-  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Não entendi bem o que é: " junto com a phrase deste termo seguido de "." e o percorredor; retorne.
+  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Erro. A variável do termo '" junto com a phrase deste termo seguido de "' não pode ser localizada." e o percorredor; retorne.
   Adicione um segundo fragmento usando o etiqueta de obtenção do registrador EAX e a variável deste termo.
 
 Etapas para que se compile a próxima instrução usando um percorredor (Processe - indirect):
   Compile um expression usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "Eu não sei o que é: " junto com a phrase desta expression seguido de "." e o percorredor; retorne.
-  Se o tipo desta expression não puder ser reduzido para "ponteiro", apresente a mensagem de erro contendo "Eu preciso de um ponteiro tipo nesse CALL statement." e o percorredor; retorne.
+  Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "Erro. A variável da expressão'" junto com a phrase desta expression seguido de "' não pode ser localizada." e o percorredor; retorne.
+  Se o tipo desta expression não puder ser reduzido para "ponteiro", apresente a mensagem de erro contendo "Erro. Este comando'Processe' exige uma expressão do tipo ponteiro." e o percorredor; retorne.
   Se o segmento inicial deste percorredor for "com", compile a próxima instrução usando o percorredor (Keyword Processe - cláusula com).
   Se o segmento inicial deste percorredor for "contendo", compile a próxima instrução usando o percorredor (Keyword Processe - cláusula com).
   Se o segmento inicial deste percorredor for "devolvendo", compile a próxima instrução usando o percorredor devolvendo um termo (Keyword Processe - cláusula devolvendo).
   Adicione um fragmento usando a etiqueta de demanda indireta e a variável desta expression.
   Se o termo estiver vazio, retorne.
-  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Acho que essa varíavel é inválida: " junto com a phrase deste termo seguido de "." e o percorredor; retorne.
+  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Erro. A variável do termo '" junto com a phrase deste termo seguido de "' é inexistente." e o percorredor; retorne.
   Adicione um segundo fragmento usando o etiqueta de obtenção do registrador EAX e a variável deste termo.
 
 Etapas para que se compile a próxima instrução usando um percorredor (Processe - internal):
@@ -1712,13 +1710,11 @@ Etapas para que se compile a próxima instrução usando um percorredor (Processe -
   Encontre uma rotina usando as unidades semânticas.
   Se a rotina não for inexistente, adicione push fragmentos usando as unidades semânticas.
   Se a rotina não for inexistente, destrua as unidades semânticas; adicione um fragmento usando a etiqueta de demanda interna e a rotina; retorne.
+  [Caso a rotina seja inexistente, então:]
   Converta as unidades semânticas para uma representação interna da rotina.
-  Destrua as unidades semânticas.
-  \Atribua "Eu ainda não aprendi como" ao texto retornado.
-  \Say o texto retornado.
-  Atribua a representação interna da rotina ao texto retornado.
-  \Say o texto retornado.
-  Apresente uma mensagem de erro contendo "Eu ainda não aprendi como: " junto com a representação interna da rotina seguido de "." e o percorredor.
+  Destrua as unidades semânticas.  
+  Atribua a representação interna da rotina ao texto retornado. 
+  Apresente uma mensagem de erro contendo "Erro. A rotina para que se " junto com a representação interna da rotina seguido de " não foi localizada." e o percorredor.
 
 Etapas para que se compile a próxima instrução usando um percorredor (Keyword Processe - cláusula com):
   \ this routine is recursise so parameters get passed right to  left
@@ -1726,8 +1722,8 @@ Etapas para que se compile a próxima instrução usando um percorredor (Keyword Pr
   Mova o percorredor (usando diretrizes de compilação).
   Compile um expression usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "Eu não entendi a variável: " junto com a phrase desta expression seguido de "." e o percorredor; retorne.
-  Se o tipo desta expression não for value pushable, apresente a mensagem de erro contendo "'" junto com o nome deste tipo desta expression seguido de "' não pode ser processado corretamente." e o percorredor; retorne.
+  Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "Erro. A variável da expression '" junto com a phrase desta expression seguido de "' é inexistente." e o percorredor; retorne.
+  Se o tipo desta expression não for valor empilhável, apresente a mensagem de erro contendo "Erro. O tipo '" junto com o nome deste tipo desta expression seguido de "' da expressão é um valor empilhável." e o percorredor; retorne.
   Se o segmento inicial deste percorredor for algum and, compile a próxima instrução usando o percorredor (Keyword Processe - cláusula com).
   Adicione um fragmento usando o etiqueta de inserção de valor [na stack] e a variável desta expression.
 
@@ -1737,16 +1733,12 @@ Etapas para que se compile a próxima instrução usando um percorredor (Processe):
   Se o segmento inicial deste percorredor for algum string literal, compile a próxima instrução usando o percorredor (Processe - external); retorne.
   Compile a próxima instrução usando o percorredor (Processe - indirect).
 
-Etapas para que se compile a próxima instrução usando um percorredor (exit):
-  Se o detector de deliberação desta rotina utilizada atualmente estiver ativo, apresente uma mensagem de erro contendo "O que o comando 'exit' significa aqui? Sim? Não? Talvez?" e o percorredor; retorne.
-  \Se o segmento inicial deste percorredor for "a", mova o percorredor (usando diretrizes de compilação).
-  \Se o segmento inicial deste percorredor for "operação", mova o percorredor (usando diretrizes de compilação).
+Etapas para que se compile a próxima instrução usando um percorredor (cláusula de retorno):
+  Se o detector de deliberação desta rotina utilizada atualmente estiver ativo, apresente uma mensagem de erro contendo "Erro. Funções booleanas devem retornar um 'sim' ou 'não'" e o percorredor; retorne.  
   Adicione um fragmento usando o etiqueta de retorno.
-  \Se o segmento inicial deste percorredor for "a", mova o percorredor (usando diretrizes de compilação).
-  \Se o segmento inicial deste percorredor for "operação", mova o percorredor (usando diretrizes de compilação).
   Mova o percorredor (usando diretrizes de compilação).
 
-Etapas para que se compile a próxima instrução usando um percorredor (if):
+Etapas para que se compile a próxima instrução usando um percorredor (cláusula de condicional):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile umas unidades semânticas usando o percorredor.
@@ -1799,7 +1791,7 @@ Etapas para que se compile a próxima instrução usando um percorredor (loop):
 Etapas para que se compile a próxima instrução usando um percorredor (other):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o segmento inicial deste percorredor estiver em branco, retorne.
-  Se o segmento inicial deste percorredor for algum comando de abandono de rotina, compile a próxima instrução usando o percorredor (exit); retorne.
+  Se o segmento inicial deste percorredor for algum comando de abandono de rotina, compile a próxima instrução usando o percorredor (cláusula de retorno); retorne.
   Se o segmento inicial deste percorredor for algum comando de repetição, compile a próxima instrução usando o percorredor (repeat); retorne.
   Se o segmento inicial deste percorredor for algum comando de interrupção de repetições, compile a próxima instrução usando o percorredor (break); retorne.
   Se o segmento inicial deste percorredor for algum comando de confirmação ou negação, compile a próxima instrução usando o percorredor (keyword diga); retorne.
@@ -1862,7 +1854,7 @@ Etapas para que se compile a próxima instrução usando um percorredor (push):
   Compile um expression usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "Comando 'push' inválido, um expressão: " junto com a phrase desta expression seguido de "' parece estar vazia." e o percorredor; retorne.
-  Se o tipo desta expression não for value pushable, apresente a mensagem de erro contendo "Valores do tipo: " junto com o nome deste tipo desta expression seguido de "' não podem ser pushed." e o percorredor; retorne.
+  Se o tipo desta expression não for valor empilhável, apresente a mensagem de erro contendo "Valores do tipo: " junto com o nome deste tipo desta expression seguido de "' não podem ser pushed." e o percorredor; retorne.
   Adicione um fragmento usando o etiqueta de inserção de valor [na stack] e a variável desta expression.
 
 Etapas para que se compile a próxima instrução usando um percorredor (repeat):
@@ -1894,7 +1886,7 @@ Etapas para que se compile a próxima instrução usando um percorredor devolvendo 
   Compile o termo usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Eu não compreendi o termo da variável: " junto com a phrase deste termo seguido de "'. Ela parece estar vazia." e o percorredor; retorne.
-  Se o tipo deste termo não for value pushable, apresente a mensagem de erro contendo "Uma varíavel de 1, 2, ou 4 bytes é necessária na 'devolvendo' clause." e o percorredor.
+  Se o tipo deste termo não for valor empilhável, apresente a mensagem de erro contendo "Uma varíavel de 1, 2, ou 4 bytes é necessária na 'devolvendo' clause." e o percorredor.
 
 Etapas para que se compile uma rotina reference usando um percorredor:
   Se o segmento inicial deste percorredor for "para", mova o percorredor (usando diretrizes de compilação).
@@ -2033,8 +2025,6 @@ Etapas para que se compile um termo usando um percorredor (new local):
   Se o segmento inicial deste percorredor for "outro", atribua "outro" ao nome deste local.
   Se o segmento inicial deste percorredor for "segundo", atribua "segundo" ao nome deste local.
   Se o segmento inicial deste percorredor for "segunda", atribua "segunda" ao nome deste local.
-  \CAL
-  \Se o segmento inicial deste percorredor for "another", atribua "segunda" ao nome deste local.
   Mova o percorredor (usando diretrizes de compilação).
   Examine um nome usando o percorredor.
   Extend o nome deste local com o nome.
@@ -2156,8 +2146,6 @@ Etapas para que se compile um termo usando um percorredor e uma variável nome (d
   Se o segmento inicial deste percorredor for "outro", atribua "outro" ao nome deste local.
   Se o segmento inicial deste percorredor for "segundo", atribua "segundo" ao nome deste local.
   Se o segmento inicial deste percorredor for "segunda", atribua "segunda" ao nome deste local.
-  \CAL
-  \Se o segmento inicial deste percorredor for "another", atribua "segunda" ao nome deste local.
   Extend o nome deste local com a variável nome.
   Se o segmento inicial deste percorredor for uma keyword de designação, compile a parte designadora usando o percorredor e o local.
   Resolva o local.
@@ -2966,12 +2954,7 @@ Etapas para que se determine se uma string é algum operator aritmético:
 
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-\Etapas para que se determine se uma string é algum artigo indefinido inglês:
-\Se a string for "a", diga sim.
-\Se a string for "an", diga sim.
-\Se a string for "another", diga sim.
-\Se a string for "some", diga sim.
-\[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+
 
 Etapas para que se determine se uma string é algum pause:
   \PAL
@@ -3648,7 +3631,7 @@ Etapas para que se determine se um tipo é algum tipo pré-definido:
   Se o tipo for o base tipo deste tipo, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se um tipo é value pushable:
+Etapas para que se determine se um tipo é valor empilhável:
   Se o tipo for inexistente, diga não.
   Se a quantidade de caracteres deste tipo for 4, diga sim.
   Se a quantidade de caracteres deste tipo for 2, diga sim.
@@ -5720,22 +5703,20 @@ Etapas para que se examine um campo usando um percorredor (reference part):
   Mova o percorredor (usando diretrizes de compilação).
   Ligue o reference detector deste campo.
 
-Etapas para que se examine um campo usando um percorredor (tipo part - byte array):
+Etapas para que se examine um campo usando um percorredor (tipo part - array de bytes):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Converta o segmento inicial deste percorredor para uma proporção.
   Reduza a proporção.
-  Se o denominador desta proporção não for 1, apresente uma mensagem de erro contendo "Você precisa especificar um número completo de bytes para um byte array" e o percorredor; retorne.
+  Se o denominador desta proporção não for 1, apresente uma mensagem de erro contendo "Erro. Arrays exigem tamanhos não fracionários" e o percorredor; retorne.
   Atribua o numerador desta proporção à contagem deste campo.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for "byte" ou "bytes", apresente a mensagem de erro contendo "Erro. Você precisa adicionar a palavra 'bytes' depois de um número designador." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for "byte" ou "bytes", apresente a mensagem de erro contendo "Erro. Necessário utilizar a palavra 'bytes' após um número designador." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Atribua "byte" ao nome do tipo deste campo.
 
 Etapas para que se examine um campo usando um percorredor (tipo part - normal):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se o segmento inicial deste percorredor não for algum artigo indefinido, apresente uma mensagem de erro contendo "Falta por um artigo idefinido aqui, mas você colocou isso: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
-  \Se o segmento inicial deste percorredor for "another", atribua "segunda" ao nome deste campo.
-  \PAL
+  Se o segmento inicial deste percorredor não for algum artigo indefinido, apresente uma mensagem de erro contendo "Erro. O compilador esperava um artigo idefinido. Termo encontrado: '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.  
   Se o segmento inicial deste percorredor for "outra", atribua "outra" ao nome deste campo.
   Se o segmento inicial deste percorredor for "outras", atribua "outras" ao nome deste campo.
   Se o segmento inicial deste percorredor for "outro", atribua "outro" ao nome deste campo.
@@ -5750,7 +5731,7 @@ Etapas para que se examine um campo usando um percorredor (tipo part - normal):
 
 Etapas para que se examine um campo usando um percorredor (tipo part):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se o segmento inicial deste percorredor for algum numeric literal, examine o campo usando o percorredor (tipo part - byte array); retorne.
+  Se o segmento inicial deste percorredor for algum numeric literal, examine o campo usando o percorredor (tipo part - array de bytes); retorne.
   Examine o campo usando o percorredor (tipo part - normal).
 
 Etapas para que se examine uns campos usando um percorredor:
@@ -6046,7 +6027,7 @@ Etapas para que se transforme em código hexadecimal um fragmento:
   Se a etiqueta deste fragmento for o etiqueta de revogação, transforme em código hexadecimal o fragmento (dereference); retorne.
   Se a etiqueta deste fragmento for o etiqueta de desvio falso, transforme em código hexadecimal o fragmento (jump false); retorne.
   Se a etiqueta deste fragmento for a etiqueta de negação lógica, transforme em código hexadecimal o fragmento (not); retorne.
-  Se a etiqueta deste fragmento for o etiqueta de retorno, transforme em código hexadecimal o fragmento (exit); retorne.
+  Se a etiqueta deste fragmento for o etiqueta de retorno, transforme em código hexadecimal o fragmento (cláusula de retorno); retorne.
   Se a etiqueta deste fragmento for a etiqueta de repetição, transforme em código hexadecimal o fragmento (repeat); retorne.
   Se a etiqueta deste fragmento for o etiqueta de interrupção, transforme em código hexadecimal o fragmento (break); retorne.
   Se a etiqueta deste fragmento for o etiqueta preliminar, transforme em código hexadecimal o fragmento (etapa preliminar); retorne.
@@ -6093,9 +6074,9 @@ Etapas para que se transforme em código hexadecimal um fragmento (etapa conclusi
 
 Um tamanho do parâmetro é um size.
 
-Etapas para que se transforme em código hexadecimal um fragmento (exit):
+Etapas para que se transforme em código hexadecimal um fragmento (cláusula de retorno):
   Encontre um segundo fragmento usando o fragmento e a etiqueta de finalização.
-  Se o segundo fragmento for inexistente, apresente uma mensagem de erro contendo "Erro interno - transforme em código hexadecimal um fragmento (exit)"; retorne.
+  Se o segundo fragmento for inexistente, apresente uma mensagem de erro contendo "Erro interno - transforme em código hexadecimal um fragmento (cláusula de retorno)"; retorne.
   Acrescente $E9 e o endereço deste segundo fragmento para o fragmento. \ jmp + o address da destination
 
 Etapas para que se transforme em código hexadecimal um fragmento (increment):
