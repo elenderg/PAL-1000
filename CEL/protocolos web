@@ -4,26 +4,26 @@ Um texto de consulta é uma string.
 Etapas para que se leia uma response string desde uma requisição WinHTTP:
   Se a requisição WinHTTP for inexistente, retorne.
   Limpe a response string.
-  Atribua 8 kilobytes a um trecho size.
+  Atribua 8 kilobytes a um trecho tamanho.
   Comece. [a executar o código abaixo]
-    Atribua 0 a um size.
+    Atribua 0 a um tamanho.
     Processe "WinHTTP.dll" "WinHttpqueryDataAvailable" com \ https://docs.microsoft.com/pt-br/windows/win32/api/winhttp/nf-winhttp-winhttpquerydataavailable
     \ A função WinHttpQueryDataAvailable retorna a quantidade de dados, em bytes, disponíveis para serem lidos pela função WinHttpReadData.
       O número identificador de requisição desta requisição WinHTTP [hRequest] \ Um identificador de HINTERNET válido retornado por WinHttpOpenRequest. 
       \ https://docs.microsoft.com/pt-br/windows/win32/winhttp/hinternet-handles-in-winhttp
       \WinHttpReceiveResponse deve ter sido chamado para este identificador e concluído antes de WinHttpQueryDataAvailable ser chamado.
-      e O endereçamento deste size [lpdwNumberOfBytesAvailable] \ Um ponteiro para uma variável que recebe o número de bytes disponíveis.
+      e O endereçamento deste tamanho [lpdwNumberOfBytesAvailable] \ Um ponteiro para uma variável que recebe o número de bytes disponíveis.
       devolvendo um número resultante. \ Retorna TRUE se a função for bem-sucedida ou FALSE caso contrário.
     Se o número resultante for 0 [FALSE], atribua "Erro. Não foi possível verificar a quantidade de dados disponíveis." ao erro do fluxo de entrada/saída; limpe a response string; pare.
     Atribua a quantidade de caracteres desta response string a uma quantidade de caracteres armazenados.
-    Reaponte o caractere inicial desta response string usando a quantidade de caracteres armazenados mais o trecho size.
+    Reaponte o caractere inicial desta response string usando a quantidade de caracteres armazenados mais o trecho tamanho.
     Atribua o caractere inicial desta response string mais a quantidade de caracteres armazenados a um ponteiro.
     Processe "WinHTTP.dll" "WinHttpReadData" com \ https://docs.microsoft.com/pt-br/windows/win32/api/winhttp/nf-winhttp-winhttpreaddata
     \ A função WinHttpReadData lê dados de um identificador aberto pela função WinHttpOpenRequest.
       O número identificador de requisição desta requisição WinHTTP [hRequest] \ Um identificador de HINTERNET válido retornado por WinHttpOpenRequest. 
       \ https://docs.microsoft.com/pt-br/windows/win32/winhttp/hinternet-handles-in-winhttp
       e O ponteiro [lpBuffer] \ Ponteiro para um buffer que recebe os dados lidos.
-      e O trecho size [dwNumberOfBytesToRead] \ valor que contém o número de bytes a serem lidos.
+      e O trecho tamanho [dwNumberOfBytesToRead] \ valor que contém o número de bytes a serem lidos.
       e O endereçamento dessa contagem [lpdwNumberOfBytesRead] \ Ponteiro para uma variável que recebe o número de bytes lidos.
       devolvendo o número resultante. \ Retorna TRUE se for bem-sucedido ou FALSE caso contrário.
     Se o número resultante for 0 [FALSE], atribua "Ocorreu um erro ao ler os dados da requisição WinHTTP." ao erro do fluxo de entrada/saída; limpe o response; pare.
@@ -75,16 +75,16 @@ Etapas para que se leia uma URL para um trecho:
       o número identificador da URL da internet; [hInternet] \ O identificador a ser fechado.
     saia.
   \ leia o arquivo
-  Atribua 64 kilobytes a um trecho size.
+  Atribua 64 kilobytes a um trecho tamanho.
   Comece. [a executar o código abaixo]
     Atribua a quantidade de caracteres deste trecho a uma quantidade de caracteres armazenados.
-    Reaponte o caractere inicial deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
+    Reaponte o caractere inicial deste trecho usando a quantidade de caracteres armazenados mais o trecho tamanho.
     Atribua o caractere inicial deste trecho mais a quantidade de caracteres armazenados a um ponteiro.
     Processe "wininet.dll" "InternetReadFile" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wininet/nf-wininet-internetreadfile
     \ Lê dados de um identificador aberto pela função InternetOpenUrl, FtpOpenFile ou HttpOpenRequest.
       O número identificador da URL [hFile] \Esse identificador é obtido através das funções InternetOpenUrl, FtpOpenFile ou HttpOpenRequest.
       e O ponteiro [lpBuffer] \ Ponteiro para um buffer que recebe os dados.
-      e O trecho size [dwNumberOfBytesToRead] \ Número de bytes a serem lidos.
+      e O trecho tamanho [dwNumberOfBytesToRead] \ Número de bytes a serem lidos.
       e O endereçamento dessa contagem [lpdwNumberOfBytesRead] \  Ponteiro para uma variável que recebe o número de bytes lidos. 
       \InternetReadFile define esse valor como zero antes de fazer qualquer trabalho ou verificação de erros.
       \ ver se está relacionado com Etapas para que se receive um trecho desde um socket:
@@ -113,18 +113,18 @@ Etapas para que se receive o response string desde uma requisição WinHTTP:
 Etapas para que se receive um trecho desde um socket:
   Limpe o erro do fluxo de entrada/saída.
   Limpe o trecho.
-  Atribua 8 kilobytes a um trecho size.
+  Atribua 8 kilobytes a um trecho tamanho.
   Comece. [a executar o código abaixo]
-    Atribua 0 a um size.
+    Atribua 0 a um tamanho.
     Atribua a quantidade de caracteres deste trecho a uma quantidade de caracteres armazenados.
-    Reaponte o caractere inicial deste trecho usando a quantidade de caracteres armazenados mais o trecho size.
+    Reaponte o caractere inicial deste trecho usando a quantidade de caracteres armazenados mais o trecho tamanho.
     Atribua o caractere inicial deste trecho mais a quantidade de caracteres armazenados a um ponteiro.
     Processe "ws2_32.dll" "recv" com \ https://docs.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-recv
     \ A função recv recebe dados de um soquete conectado ou um soquete vinculado sem conexão.
     \A função recv é usada para ler dados de entrada em soquetes orientados à conexão ou soquetes sem conexão.
       O socket [s] \ O descritor que identifica um soquete conectado.
       e O ponteiro [*buf] \Um ponteiro para o buffer para receber os dados de entrada.
-      e O trecho size [len] \O comprimento, em bytes, do buffer apontado pelo parâmetro buf.
+      e O trecho tamanho [len] \O comprimento, em bytes, do buffer apontado pelo parâmetro buf.
       e 0 [flags] \Um conjunto de sinalizadores que influenciam o comportamento desta função. Veja as observações abaixo.
       \O parâmetro flags pode ser usado para influenciar o comportamento da invocação da função além das opções especificadas para o socket associado. 
       \A semântica desta função é determinada pelas opções de socket e o parâmetro flags.

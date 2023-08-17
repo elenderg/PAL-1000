@@ -130,7 +130,7 @@ Etapas para que se adicione os built-in tipos:
 Etapas para que se adicione um built-in tipo usando um nome e um plural nome e uma quantidade de caracteres:
   Adicione o built-in tipo para os tipos usando o nome e o plural nome e o nome.
   Atribua a quantidade de caracteres à quantidade de caracteres deste built-in tipo.
-  Atribua o built-in tipo ao base tipo deste built-in tipo.
+  Atribua o built-in tipo ao tipo base deste built-in tipo.
   Catalogue o built-in tipo.
 
 Etapas para que se adicione o rotina de desalocação para um tipo:
@@ -1018,22 +1018,22 @@ Um endereço base é um endereço.
 Uma zona é um estrutura com 
   Um endereço base, 
   Uma quantidade de caracteres e 
-  Um size.
+  Um tamanho.
 
 Etapas para que se bubble uma unidade semântica:
   Se a unidade semântica for inexistente, retorne.
   Se o subtexto atual desta unidade semântica não estiver em branco, limpe o subtexto atual desta unidade semântica; retorne.
   Se o tipo atual desta unidade semântica for inexistente, retorne.
   Se o tipo atual desta unidade semântica for algum tipo pré-definido, atribua nil ao tipo atual desta unidade semântica; retorne.
-  Atribua o base tipo deste tipo atual desta unidade semântica ao tipo atual desta unidade semântica.
+  Atribua o tipo base deste tipo atual desta unidade semântica ao tipo atual desta unidade semântica.
 
 Um built-in tipo é um tipo.
 
 Etapas para que se calculate a quantidade de caracteres of um tipo:
   Se o tipo for inexistente, retorne.
   Se a quantidade de caracteres deste tipo não for -1, retorne.
-  Calculate a quantidade de caracteres of o base tipo deste tipo.
-  Se os campos deste tipo estiverem vazios, atribua a quantidade de caracteres deste base tipo deste tipo à quantidade de caracteres deste tipo; retorne.
+  Calculate a quantidade de caracteres of o tipo base deste tipo.
+  Se os campos deste tipo estiverem vazios, atribua a quantidade de caracteres deste tipo base deste tipo à quantidade de caracteres deste tipo; retorne.
   Atribua 0 à quantidade de caracteres deste tipo.
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, retorne.
@@ -1320,7 +1320,7 @@ Etapas para que se compile um endereço da pasta (identificação dos tipos das var
   Start o temporizador de resolução de tipos.
   Resolva os tipos (expand listas).
   Resolva os tipos (registro de plurais).
-  Resolva os tipos (base tipos).
+  Resolva os tipos (tipos de dados primitivos).
   Resolva os tipos (optional info).
   Suspenda o temporizador de resolução de tipos.
 
@@ -3605,9 +3605,9 @@ Etapas para que se determine se um tipo pode ser reduzido para uma string usando
   Se o nome deste tipo for a string, diga sim.
   Se o cooking detector deste tipo estiver ativo, diga não.
   Ligue o cooking detector deste tipo.
-  Encontre um base tipo usando o base nome deste tipo e o catálogo de tipos.
-  Se o base tipo for inexistente, desative o cooking detector deste tipo; diga não.
-  Se o base tipo puder ser reduzido para a string usando o base nome, desative o cooking detector deste tipo; diga sim.
+  Encontre um tipo base usando o base nome deste tipo e o catálogo de tipos.
+  Se o tipo base for inexistente, desative o cooking detector deste tipo; diga não.
+  Se o tipo base puder ser reduzido para a string usando o base nome, desative o cooking detector deste tipo; diga sim.
   Desative o cooking detector deste tipo.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
@@ -3617,13 +3617,13 @@ Etapas para que se determine se um tipo pode ser reduzido para um nome do tipo:
   Comece. [a executar o código abaixo]
     Se o tipo for inexistente, diga não.
     Se o nome deste tipo for o nome do tipo, diga sim.
-    Se o base tipo deste tipo for o tipo, diga não.
-    Atribua o base tipo deste tipo ao tipo.
+    Se o tipo base deste tipo for o tipo, diga não.
+    Atribua o tipo base deste tipo ao tipo.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se determine se um tipo é algum tipo pré-definido:
   Se o tipo for inexistente, diga não.
-  Se o tipo for o base tipo deste tipo, diga sim.
+  Se o tipo for o tipo base deste tipo, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se um tipo é valor empilhável:
@@ -4239,7 +4239,7 @@ Etapas para que se inicialize um PE header (Optional Header):
   Atribua 4096 [$00001000] ao MemoryAlignment deste PE header. \ 4 KB
   Atribua 4096 [$00001000] ao FileAlignment deste PE header. \ 4 KB
   Atribua 0 ao Reserved deste PE header.
-  Atribua o EXE Size deste compilador ao SizeOfImageInMemory deste PE header.
+  Atribua o exe tamanho deste compilador ao SizeOfImageInMemory deste PE header.
   Atribua 4096 [section base] ao SizeOfAllHeadersInFile deste PE header. \ 4 KB
   Atribua 0 ao checksum deste PE header.
   Atribua 0 para as DllCharacteristics deste PE header.
@@ -4276,7 +4276,7 @@ Etapas para que se link:
   Arredonde para cima zona sizes.
   Inicialize um DOS header.
   Inicialize um PE header.
-  Preencha o EXE deste compilador com o caractere null usando o EXE Size deste compilador.
+  Preencha o EXE deste compilador com o caractere null usando o exe tamanho deste compilador.
   Disponibilize o DOS header ao EXE deste compilador.
   Disponibilize o PE header ao EXE deste compilador.
   Disponibilize as DLLs ao EXE deste compilador.
@@ -4507,7 +4507,7 @@ Etapas para que se liste um tipo em um trecho:
   Posponha " Tipo: " para o trecho.
   Posponha o base nome deste tipo para o trecho (com separador).
   Posponha " Tipo base: " para o trecho.
-  Posponha o base tipo deste tipo para o trecho (com separador).
+  Posponha o tipo base deste tipo para o trecho (com separador).
   Posponha o conteúdo nome deste tipo para o trecho (com separador).
   Posponha o conteúdo tipo deste tipo para o trecho (com separador).
   Posponha " Razão de escala: " para o trecho.
@@ -4851,7 +4851,7 @@ Um PE header é um estrutura com
   \ O tamanho (em bytes) da imagem, incluindo todos os headers, pois a imagem é carregada na memória. Ele deve ser um múltiplo de SectionAlignment.
   \ Indicates the amount of address space para reserve em the address space for the loaded executable image. 
   \This number is influenced greatly by SectionAlignment. 
-  \For example, consider a system having a fixed page size of 4096 bytes. 
+  \For example, consider a system having a fixed page tamanho of 4096 bytes. 
   \If you have an executable com 11 sections, each less than 4096 bytes, aligned sobre a 65,536-byte boundary, the SizeOfImage campo would be set para 11 * 65,536 = 720,896 (176 pages). 
    \The same arquivo linked com 4096-byte alignment would result em 11 * 4096 = 45,056 (11 pages) for the SizeOfImage campo. 
   \This is a simple example em which each section requires less than a page of memory. 
@@ -4891,7 +4891,7 @@ Um PE header é um estrutura com
   \ O tamanho do espaço de heap local a ser confirmado.
   Um número denominado LoaderFlags, 
   \ Reservado, deve ser zero. Tells the loader whether para break sobre load, debug over load, or the default, which is para let things run normally.
-  \ directories (16 address e size pairs)
+  \ directories (16 address e tamanho pairs)
   Um número denominado NumberOfDirectories, [NumberOfRvaAndSizes]
   \ O número de entradas de diretório de dados no restante do header opcional. Cada uma descreve uma localização e um tamanho.
   8 bytes denominados Directory0,
@@ -5289,11 +5289,11 @@ Etapas para que se atribua o endereço EXE completo deste compilador para um ende
   Remove algum trailing barra invertida desde o designador.
   Atribua o endereço da pasta deste compilador junto com o designador seguido de ".exe" ao endereço completo.
 
-Etapas para que se atribua o EXE size deste compilador para um size:
-  Atribua 4096 [section base] ao size.
-  Adicione o size desta região da DLL para o size.
-  Adicione o size desta região de dados para o size.
-  Adicione o size desta região de código para o size.
+Etapas para que se atribua o EXE tamanho deste compilador para um tamanho:
+  Atribua 4096 [section base] ao tamanho.
+  Adicione o tamanho desta região da DLL para o tamanho.
+  Adicione o tamanho desta região de dados para o tamanho.
+  Adicione o tamanho desta região de código para o tamanho.
 
 Etapas para que se atribua o listagem endereço completo deste compilador para um endereço completo:
   Extraia um designador desde o endereço da pasta deste compilador.
@@ -5361,8 +5361,8 @@ Etapas para que se reduza um tipo para um segundo tipo por utility use:
     Se o nome deste segundo tipo for "lista", esvazie o segundo tipo; retorne.
     \PAL
     \Se o nome deste segundo tipo for "elemento", esvazie o segundo tipo; retorne.
-    Se o base tipo deste segundo tipo for o segundo tipo, esvazie o segundo tipo; retorne.
-    Atribua o base tipo deste segundo tipo ao segundo tipo.
+    Se o tipo base deste segundo tipo for o segundo tipo, esvazie o segundo tipo; retorne.
+    Atribua o tipo base deste segundo tipo ao segundo tipo.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se organize o catálogo de rotinas úteis:
@@ -5442,29 +5442,29 @@ Etapas para que se resolva uns globals:
   Resolva o global.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se resolva um tipo (base tipo):
+Etapas para que se resolva um tipo (tipos de dados primitivos):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o tipo for inexistente, retorne.
-  Se o base tipo deste tipo não for inexistente, retorne.
-  Encontre o base tipo deste tipo usando o base nome deste tipo e o catálogo de tipos.
-  Se o base tipo deste tipo for inexistente, apresente uma mensagem de erro contendo "Erro. Tipo base '" junto com o base nome deste tipo seguido de "' inválido." e o local de aparição deste tipo; retorne.
+  Se o tipo base deste tipo não for inexistente, retorne.
+  Encontre o tipo base deste tipo usando o base nome deste tipo e o catálogo de tipos.
+  Se o tipo base deste tipo for inexistente, apresente uma mensagem de erro contendo "Erro. Tipo base '" junto com o base nome deste tipo seguido de "' inválido." e o local de aparição deste tipo; retorne.
   Ligue o cooking detector deste tipo.
-  Se o cooking detector deste base tipo deste tipo estiver ativo, apresente a mensagem de erro contendo "Definição recursiva com: " junto com o base nome deste tipo seguido de "." e o local de aparição deste tipo; retorne.
-  Resolva o base tipo deste tipo (base tipo).
+  Se o cooking detector deste tipo base deste tipo estiver ativo, apresente a mensagem de erro contendo "Definição recursiva com: " junto com o base nome deste tipo seguido de "." e o local de aparição deste tipo; retorne.
+  Resolva o tipo base deste tipo (tipos de dados primitivos).
   Desative o cooking detector deste tipo.
 
-Etapas para que se resolva um tipo (expand lista): \ base tipo deste tipo não está resolved yet
+Etapas para que se resolva um tipo (expand lista): \ tipo base deste tipo não está resolved yet
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o tipo for inexistente, retorne.
-  Se o base tipo deste tipo não for inexistente, retorne.
+  Se o tipo base deste tipo não for inexistente, retorne.
   Se o nome deste tipo for "lista", retorne.
   \Se o nome deste tipo for "elemento", retorne.
   Se o tipo não puder ser reduzido para "lista" usando o base nome, retorne.
-  Encontre um base tipo usando o base nome deste tipo e o catálogo de tipos.
+  Encontre um tipo base usando o base nome deste tipo e o catálogo de tipos.
   \ adicione lista estrutura - o número of secret campos é hard coded em two places: search por "du que 4" \ was 6
   Atribua o nome deste tipo seguido de " estrutura" para um nome.
   Atribua o nome deste tipo seguido de " estruturas" para um plural nome.
-  Atribua o nome deste base tipo seguido de " estrutura" para um base nome.
+  Atribua o nome deste tipo base seguido de " estrutura" para um base nome.
   Adicione um conjunto tipo para os tipos usando o nome e o plural nome e o base nome.
   Adicione um campo para os campos deste conjunto tipo usando "subsequente " junto com o nome deste tipo e "subsequente" e o nome deste tipo e o detector de ignição.
   \PAL antecedente\anterior\prévio e subseqüente\posterior
@@ -5482,7 +5482,7 @@ Etapas para que se resolva um tipo (expand lista): \ base tipo deste tipo não es
   \ fix para cima original tipo para look like um ponteiro
   Atribua o nome deste conjunto tipo ao conteúdo nome deste tipo.
   \ adicione chain tipo
-  Adicione um chain tipo para os tipos usando o plural nome deste tipo e "" e o plural nome deste base tipo.
+  Adicione um chain tipo para os tipos usando o plural nome deste tipo e "" e o plural nome deste tipo base.
   Adicione um terceiro campo para os campos deste chain tipo usando "first " junto com o nome deste tipo e "first" e o nome deste tipo e o detector de ignição.
   Adicione um terceiro portuguese campo para os campos deste chain tipo usando "primeiro " junto com o nome deste tipo e "primeiro" e o nome deste tipo e o detector de ignição.
   Atribua "first " junto com o nome deste tipo ao redefinition conteúdo nome deste terceiro portuguese campo.
@@ -5502,16 +5502,16 @@ Etapas para que se resolva um tipo (registro de plurais):
   Se o tipo puder ser reduzido para "lista" usando o base nome, retorne.
   Catalogue o tipo usando o plural nome deste tipo.
 
-Etapas para que se resolva um tipo (optional info - ponteiro):
+Etapas para que se resolva um tipo (dados opcionais - ponteiro):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o conteúdo tipo deste tipo não for inexistente, retorne.
-  Se o conteúdo nome deste tipo estiver em branco, atribua o conteúdo tipo deste base tipo deste tipo ao conteúdo tipo deste tipo; retorne.
+  Se o conteúdo nome deste tipo estiver em branco, atribua o conteúdo tipo deste tipo base deste tipo ao conteúdo tipo deste tipo; retorne.
   Encontre o conteúdo tipo deste tipo usando o conteúdo nome deste tipo e o catálogo de tipos.
   Se o conteúdo tipo deste tipo for inexistente, apresente uma mensagem de erro contendo "Não sei bem pra que lista você está se referindo." e o local de aparição deste tipo; retorne.
 
-Etapas para que se resolva um tipo (optional info - conjunto):
+Etapas para que se resolva um tipo (dados opcionais - conjunto):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se os campos deste tipo estiverem vazios, copie os campos deste base tipo deste tipo aos campos deste tipo; retorne.
+  Se os campos deste tipo estiverem vazios, copie os campos deste tipo base deste tipo aos campos deste tipo; retorne.
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, retorne.
     Obtenha um campo desde os campos deste tipo (backwards).
@@ -5527,35 +5527,37 @@ Etapas para que se resolva um tipo (optional info - conjunto):
   Eliminate duplicate nicknames desde os campos deste tipo.
   Se o tipo não puder ser reduzido para "lista estrutura", retorne.
   Se a contagem destes campos deste tipo for maior do que 4, retorne. \ already copied? was 2 por subsequente e prev, now 6 para included Spanish redefiniions
-  Copie os campos deste base tipo deste tipo aos campos deste tipo (apenas campos de dados).
+  Copie os campos deste tipo base deste tipo aos campos deste tipo (apenas campos de dados).
 
-Etapas para que se resolva um tipo (optional info - scale):
+Etapas para que se resolva um tipo (dados opcionais - scale):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Atribua o base tipo deste tipo para um base tipo.
-  Se a razão de escala deste tipo for 0, atribua a razão de escala deste base tipo deste tipo à razão de escala deste tipo; retorne.
-  Se a razão de escala deste base tipo for 0, retorne.
-  Multiplique a razão de escala deste tipo pela razão de escala deste base tipo.
-  Atribua o base tipo deste base tipo ao base tipo deste tipo.
+  Atribua o tipo base deste tipo para um tipo base.
+  Se a razão de escala deste tipo for 0, atribua a razão de escala deste tipo base deste tipo à razão de escala deste tipo; retorne.
+  Se a razão de escala deste tipo base for 0, retorne.
+  Multiplique a razão de escala deste tipo pela razão de escala deste tipo base.
+  Atribua o tipo base deste tipo base ao tipo base deste tipo.
+
+Um tipo base é um tipo.
 
 Etapas para que se resolva um tipo (optional info):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o tipo for inexistente, retorne.
   Se o optional info resolved detector deste tipo estiver ativo, retorne.
-  Se o base tipo deste tipo for o tipo, retorne. \ por built em tipos
+  Se o tipo base deste tipo for o tipo, retorne. \ para os tipos pré-definidos
   Verifique por informações opcionais inválidas em o tipo.
   Ligue o cooking detector deste tipo.
-  Resolva o base tipo deste tipo (optional info).
-  Se o tipo puder ser reduzido para "ponteiro", resolva o tipo (optional info - ponteiro).
-  Se o tipo puder ser reduzido para "estrutura", resolva o tipo (optional info - conjunto). \ mudar aqui
-  Se o tipo puder ser reduzido para "número", resolva o tipo (optional info - scale).
+  Resolva o tipo base deste tipo (optional info).
+  Se o tipo puder ser reduzido para "ponteiro", resolva o tipo (dados opcionais - ponteiro).
+  Se o tipo puder ser reduzido para "estrutura", resolva o tipo (dados opcionais - conjunto). \ mudar aqui
+  Se o tipo puder ser reduzido para "número", resolva o tipo (dados opcionais - scale).
   Desative o cooking detector deste tipo.
   Ligue o optional info resolved detector deste tipo.
 
-Etapas para que se resolva uns tipos (base tipos):
+Etapas para que se resolva uns tipos (tipos de dados primitivos): \ Esta rotina é recursiva.
   Se o detector de erros deste compilador estiver ativado, retorne.
   Obtenha um tipo desde o tipos.
   Se o tipo for inexistente, retorne.
-  Resolva o tipo (base tipo).
+  Resolva o tipo (tipos de dados primitivos). 
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se resolva uns tipos (expand listas):
@@ -5583,24 +5585,24 @@ Etapas para que se resolva uma variável:
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se a variável for inexistente, retorne.
   Se a tipo desta variável não for inexistente, retorne.
-  Se o nome do tipo desta variável não estiver em branco, resolva a variável (explicit nome do tipo); retorne.
+  Se o nome do tipo desta variável não estiver em branco, resolva a variável (usando o nome do tipo declarado); retorne.
   Encontre o tipo desta variável e o nickname desta variável usando o nome desta variável.
   Se o tipo desta variável não for inexistente, atribua o nome deste tipo desta variável ao nome do tipo desta variável; retorne.
-  Apresente uma mensagem de erro contendo "Não achei o tipo da variável: " junto com o nome desta variável seguido de "." e o local de aparição desta variável.
+  Apresente uma mensagem de erro contendo "Erro. Não foi possível determinar o tipo da variável '" junto com o nome desta variável seguido de "'." e o local de aparição desta variável.
 
-Etapas para que se resolva uma variável (explicit nome do tipo):
+Etapas para que se resolva uma variável (usando o nome do tipo declarado):
   Encontre o tipo desta variável usando o nome do tipo desta variável e o catálogo de tipos.
-  Se o tipo desta variável for inexistente, apresente uma mensagem de erro contendo "Não achei o nome do tipo da variável: " junto com o nome do tipo desta variável seguido de "." e o local de aparição desta variável; retorne.
+  Se o tipo desta variável for inexistente, apresente uma mensagem de erro contendo "Erro. Não foi possível determinar o tipo da variável '" junto com o nome do tipo desta variável seguido de "' no catálogo de tipos." e o local de aparição desta variável; retorne.
 
-  
+Um exe tamanho é um tamanho.
 
 Etapas para que se arredonde para cima zona sizes:
-  Atribua a quantidade de caracteres desta região da DLL ao size desta região da DLL.
-  Arredonde o size desta região da DLL para cima para o múltiplo imediato of 4096.
-  Atribua a quantidade de caracteres desta região de dados ao size desta região de dados.
-  Arredonde o size desta região de dados para cima para o múltiplo imediato of 4096.
-  Atribua a quantidade de caracteres desta região de código ao size desta região de código.
-  Arredonde o size desta região de código para cima para o múltiplo imediato of 4096.
+  Atribua a quantidade de caracteres desta região da DLL ao tamanho desta região da DLL.
+  Arredonde o tamanho desta região da DLL para cima para o múltiplo imediato of 4096.
+  Atribua a quantidade de caracteres desta região de dados ao tamanho desta região de dados.
+  Arredonde o tamanho desta região de dados para cima para o múltiplo imediato of 4096.
+  Atribua a quantidade de caracteres desta região de código ao tamanho desta região de código.
+  Arredonde o tamanho desta região de código para cima para o múltiplo imediato of 4096.
 
 Uma instrução é um subtexto.
 
@@ -5608,7 +5610,7 @@ Um cabeçalho de rotina é um subtexto.
 
 O catálogo geral de rotinas é um catálogo.
 
-Um tamanho local é um size.
+Um tamanho local é um tamanho.
 
 Um detector de função é um detector.
 
@@ -6065,7 +6067,7 @@ Etapas para que se transforme em código hexadecimal um fragmento (etapa conclusi
   Acrescente $5D para o código deste fragmento. \ pop ebp
   Acrescente $C2 e o tamanho do parâmetro desta rotina utilizada atualmente para o código deste fragmento. \ ret + o tamanho do parâmetro da rotina utilizada atualmente
 
-Um tamanho do parâmetro é um size.
+Um tamanho do parâmetro é um tamanho.
 
 Etapas para que se transforme em código hexadecimal um fragmento (cláusula de retorno):
   Encontre um segundo fragmento usando o fragmento e a etiqueta de finalização.
@@ -6178,7 +6180,7 @@ Um tipo é uma lista com
   Um nome, um plural nome,
   Um cabeçalho semi-expandido,
   Uma quantidade de caracteres,
-  Um base nome, um base tipo (reference),
+  Um base nome, um tipo base (reference),
   Um conteúdo nome, um conteúdo tipo (reference) [endereço de memórias only],
   Uma razão de escala,
   Some campos [records only],
