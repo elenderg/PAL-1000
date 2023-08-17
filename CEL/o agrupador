@@ -1663,7 +1663,7 @@ Etapas para que se compile a próxima instrução usando um percorredor:
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o segmento inicial deste percorredor for algum comando condicional, compile a próxima instrução usando o percorredor (cláusula de condicional); retorne.
   Se o segmento inicial deste percorredor for algum comando de percorrimento, compile a próxima instrução usando o percorredor (cláusula de inicio de laço); retorne.
-  Se o segmento inicial deste percorredor for algum comando de proteção, compile a próxima instrução usando o percorredor (privatize); retorne.
+  Se o segmento inicial deste percorredor for algum comando de proteção, compile a próxima instrução usando o percorredor (cláusula de isolamento); retorne.
   Se o segmento inicial deste percorredor não for o início of algum statement, apresente uma mensagem de erro contendo "Eu esperava uma declaração aqui, mas encontrei: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Compile a próxima instrução usando o percorredor (other).
   Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Tem um problema nesse comando aqui." e o percorredor; retorne.
@@ -1806,46 +1806,43 @@ Etapas para que se compile a próxima instrução usando um percorredor (other):
   \Se o segmento inicial deste percorredor for "senão", mova o percorredor (usando diretrizes de compilação); retorne.
   \Se o segmento inicial deste percorredor for "caso", mova o percorredor (usando diretrizes de compilação); retorne.
   \Se o segmento inicial deste percorredor for "contrário", mova o percorredor (usando diretrizes de compilação); retorne.
-  \Se o segmento inicial deste percorredor for "a", ative um detector; mova o percorredor (usando diretrizes de compilação); retorne.
-  \Se o detector estiver ativado e o segmento inicial deste percorredor for "operação", mova o percorredor (usando diretrizes de compilação); retorne.
-  \Se o segmento inicial deste percorredor for "operação", desative o detector; mova o percorredor (usando diretrizes de compilação); retorne.
   Compile a próxima instrução usando o percorredor (Processe - internal).
 
 Etapas para que se compile a próxima instrução usando um percorredor (point):
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Erro. O termo: " junto com a phrase deste termo seguido de "' está vazio." e o percorredor; retorne.
-  Se a categoria deste termo for "literal", apresente a mensagem de erro contendo "Você usou o tipo errado de variável aqui (literal)." e o percorredor.
-  Se a quantidade de caracteres deste tipo deste termo não for 4, apresente a mensagem de erro contendo "Você usou uma variável de comprimento errado (<>4)." e o percorredor.
-  Se o segmento inicial deste percorredor não for "para", apresente a mensagem de erro contendo "Faltou um 'para' depois da palavra 'aponte'. Você usou o termo: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
+  Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Erro. A variável '" junto com a phrase deste termo seguido de "' deste termo não pode ser encontrada." e o percorredor; retorne.
+  Se a categoria deste termo for "literal", apresente a mensagem de erro contendo "Erro. Identificado valor literal na categoria deste termo." e o percorredor.
+  Se a quantidade de caracteres deste tipo deste termo não for 4, apresente a mensagem de erro contendo "Erro. Variável de comprimento diferente de 4 ." e o percorredor.
+  Se o segmento inicial deste percorredor não for "para", apresente a mensagem de erro contendo "Erro. A keyword 'para é necessária após o comando 'aponte'. Termo encontrado: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for "rotina", apresente a mensagem de erro contendo "Acho que faltou a palavra 'rotina'. Você usou o termo: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for "rotina", apresente a mensagem de erro contendo "Erro. A sintaxe  do comando é 'Aponte para rotina'. Encontrado termo: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile uma rotina reference usando o percorredor.
   Converta a rotina reference para uma representação interna da rotina.
   Destrua a rotina reference.
   Encontre uma rotina usando a representação interna da rotina e o catálogo geral de rotinas.
-  Se a rotina for inexistente, apresente a mensagem de erro contendo "Não achei a tarefa: " junto com a representação interna da rotina seguido de "' que você falou." e o percorredor; retorne.
+  Se a rotina for inexistente, apresente a mensagem de erro contendo "Erro. A rotina para que se " junto com a representação interna da rotina seguido de " é inexistente." e o percorredor; retorne.
   Adicione um fragmento usando a etiqueta de endereço de rotina e a rotina.
   Atribua a variável deste termo à variável deste fragmento.
 
-Etapas para que se compile a próxima instrução usando um percorredor (privatize):
+Etapas para que se compile a próxima instrução usando um percorredor (cláusula de isolamento):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Comando 'isole', Inválido. Eu acho que o termo da variável: " junto com a phrase deste termo seguido de "' está vazio." e o percorredor; retorne.
-  Se a categoria deste termo não for "parâmetro", apresente a mensagem de erro contendo "Você só pode isolar parâmetros." e o percorredor; retorne.
+  Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Erro. Comando 'isole', Inválido. Termo da variável: " junto com a phrase deste termo seguido de "' está vazio." e o percorredor; retorne.
+  Se a categoria deste termo não for "parâmetro", apresente a mensagem de erro contendo "Erro. Apenas arâmetros podem ser isolados." e o percorredor; retorne.
   Adicione um local para os locals desta rotina utilizada atualmente usando "local" e o caractere inicial deste segmento inicial deste percorredor.
   Atribua o nome deste termo ao nome deste local.
   Atribua o nickname deste termo ao nickname deste local.
   Atribua o nome do tipo deste termo ao nome do tipo deste local.
   Resolva o local.
-  Anteponha "original " para o nome deste termo.
+  Anteponha "original " para o nome deste termo. \ Deveria ser "posponha"
   Se o nickname deste termo não estiver em branco, Anteponha "original " para o nickname deste termo.
   Adicione several fragmentos usando "atribua" e a variável deste termo e "para" e o local e o caractere inicial deste segmento inicial deste percorredor.
-  Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Você vive esquecendo dos pontos né?." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Erro. Necessário incluir um '.' ao dim do comando" e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
 
 Etapas para que se compile a próxima instrução usando um percorredor (cláusula de empilhamento):
@@ -1853,8 +1850,8 @@ Etapas para que se compile a próxima instrução usando um percorredor (cláusula d
   Mova o percorredor (usando diretrizes de compilação).
   Compile um expression usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "Comando 'push' inválido, um expressão: " junto com a phrase desta expression seguido de "' parece estar vazia." e o percorredor; retorne.
-  Se o tipo desta expression não for valor empilhável, apresente a mensagem de erro contendo "Valores do tipo: " junto com o nome deste tipo desta expression seguido de "' não podem ser pushed." e o percorredor; retorne.
+  Se a variável desta expression for inexistente, apresente uma mensagem de erro contendo "Erro. Comando de empilhamento inválido devido a expressão: " junto com a phrase desta expression seguido de "' ser inexistente." e o percorredor; retorne.
+  Se o tipo desta expression não for valor empilhável, apresente a mensagem de erro contendo "Erro. Valores do tipo: " junto com o nome deste tipo desta expression seguido de "' não podem ser empilhados." e o percorredor; retorne.
   Adicione um fragmento usando o etiqueta de inserção de valor [na stack] e a variável desta expression.
 
 Etapas para que se compile a próxima instrução usando um percorredor(cláusula de repetição):
