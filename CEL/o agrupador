@@ -1662,14 +1662,14 @@ Etapas para que se compile umas unidades semânticas usando um percorredor:
 Etapas para que se compile a próxima instrução usando um percorredor:
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o segmento inicial deste percorredor for algum comando condicional, compile a próxima instrução usando o percorredor (cláusula de condicional); retorne.
-  Se o segmento inicial deste percorredor for algum comando de percorrimento, compile a próxima instrução usando o percorredor (loop); retorne.
+  Se o segmento inicial deste percorredor for algum comando de percorrimento, compile a próxima instrução usando o percorredor (cláusula de inicio de laço); retorne.
   Se o segmento inicial deste percorredor for algum comando de proteção, compile a próxima instrução usando o percorredor (privatize); retorne.
   Se o segmento inicial deste percorredor não for o início of algum statement, apresente uma mensagem de erro contendo "Eu esperava uma declaração aqui, mas encontrei: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Compile a próxima instrução usando o percorredor (other).
   Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Tem um problema nesse comando aqui." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
 
-Etapas para que se compile a próxima instrução usando um percorredor (break):
+Etapas para que se compile a próxima instrução usando um percorredor (cláusula de interrupção):
   Adicione um fragmento usando o etiqueta de interrupção.
   Mova o percorredor (usando diretrizes de compilação).
 
@@ -1747,10 +1747,10 @@ Etapas para que se compile a próxima instrução usando um percorredor (cláusula d
   Se a rotina não for inexistente, adicione push fragmentos usando as unidades semânticas.
   Se a rotina for inexistente, converta as unidades semânticas para uma representação interna da rotina.
   Destrua as unidades semânticas.
-  Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro. A rotina: '" junto com a representação interna da rotina seguido de "' não existe." e o percorredor; retorne.
-  Se o detector de deliberação desta rotina não estiver ativo, apresente a mensagem de erro contendo "Cara eu vou precisar de um decider aqui, blz?" e o percorredor; retorne.
+  Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro. A rotina para que se '" junto com a representação interna da rotina seguido de "' não existe." e o percorredor; retorne.
+  Se o detector de deliberação desta rotina não estiver ativo, apresente a mensagem de erro contendo "Erro. Necessário utilizar um decisor." e o percorredor; retorne.
   \ Se o segmento inicial deste percorredor não for a vírgula, apresente a mensagem de erro contendo "Acho que você esqueceu de uma vírgula, eu achei isso aqui: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
-  Se o segmento inicial deste percorredor não for qualquer if-separador, apresente a mensagem de erro contendo "Acho que você esqueceu de colocar uma vírgula, eu achei isso aqui: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for qualquer separador de comandos, apresente a mensagem de erro contendo "Erro. Necessário incluir uma vírgula ao invés de: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Adicione um fragmento usando a etiqueta de demanda interna e a rotina.
   Se o detector estiver ativo, adicione um segundo fragmento usando a etiqueta de negação lógica.
   Adicione um terceiro fragmento usando o etiqueta de desvio falso.
@@ -1763,46 +1763,46 @@ Etapas para que se compile a próxima instrução usando um percorredor (cláusula d
     \Se o segmento inicial deste percorredor for "Caso", mova o percorredor (usando diretrizes de compilação).
     \Se o segmento inicial deste percorredor for "contrário", mova o percorredor (usando diretrizes de compilação).
     \Se o segmento inicial deste percorredor for a vírgula, mova o percorredor (usando diretrizes de compilação).
-    Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Você precisa usar um ponto ao invés de usar o termo: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
+    Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Erro. Necessário incluir um '.' ao invés de: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Adicione um quarto fragmento usando o etiqueta delimitadora de bloco condicional.
 
-Etapas para que se determine se um subtexto é qualquer if-separador:
+Etapas para que se determine se um subtexto é qualquer separador de comandos:
   Se o subtexto for a vírgula, diga sim.
   Se o subtexto for "então", diga sim.
   [Caso contrário] Diga não.
 
-Etapas para que se compile a próxima instrução usando um percorredor (Decodifique):
+Etapas para que se compile a próxima instrução usando um percorredor (cláusula de decodificação):
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum hex literal, apresente uma mensagem de erro contendo "Erro: ao invés de código hexadecimal, foi digitado o termo: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for algum hex literal, apresente uma mensagem de erro contendo "Erro. Encontrado '" junto com o segmento inicial deste percorredor seguido de "'. Esperado instrução hexadecimal" e o percorredor; retorne.
   Adicione um fragmento usando o etiqueta de decodificação.
   Atribua o segmento inicial deste percorredor para um parte da cifra binária.
   Adicione 1 para o caractere inicial desta parte da cifra binária.
   Converta o parte da cifra binária para o código deste fragmento.
   Mova o percorredor (usando diretrizes de compilação).
 
-Etapas para que se compile a próxima instrução usando um percorredor (loop):
+Etapas para que se compile a próxima instrução usando um percorredor (cláusula de inicio de laço):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Adicione um fragmento usando o etiqueta de laço.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Parece que alguém esqueceu de colocar um ponto por aí." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Erro. Necessário incluir um '.' após comandos em blocos de repetição." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
 
 Etapas para que se compile a próxima instrução usando um percorredor (other):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o segmento inicial deste percorredor estiver em branco, retorne.
   Se o segmento inicial deste percorredor for algum comando de abandono de rotina, compile a próxima instrução usando o percorredor (cláusula de retorno); retorne.
-  Se o segmento inicial deste percorredor for algum comando de repetição, compile a próxima instrução usando o percorredor (repeat); retorne.
-  Se o segmento inicial deste percorredor for algum comando de interrupção de repetições, compile a próxima instrução usando o percorredor (break); retorne.
+  Se o segmento inicial deste percorredor for algum comando de repetição, compile a próxima instrução usando o percorredor(cláusula de repetição); retorne.
+  Se o segmento inicial deste percorredor for algum comando de interrupção de repetições, compile a próxima instrução usando o percorredor (cláusula de interrupção); retorne.
   Se o segmento inicial deste percorredor for algum comando de confirmação ou negação, compile a próxima instrução usando o percorredor (keyword diga); retorne.
-  Se o segmento inicial deste percorredor for "Decodifique", compile a próxima instrução usando o percorredor (Decodifique); retorne.
-  Se o segmento inicial deste percorredor for "push", compile a próxima instrução usando o percorredor (push); retorne.
+  Se o segmento inicial deste percorredor for "Decodifique", compile a próxima instrução usando o percorredor (cláusula de decodificação); retorne.
+  Se o segmento inicial deste percorredor for "Push", compile a próxima instrução usando o percorredor (cláusula de empilhamento); retorne.
   Se o segmento inicial deste percorredor for algum chamada de biblioteca externa, compile a próxima instrução usando o percorredor (Processe); retorne.
   Se o segmento inicial deste percorredor for algum point, compile a próxima instrução usando o percorredor (point); retorne.
-  Se o segmento inicial deste percorredor for algum comando condicional, apresente uma mensagem de erro contendo "Colocar vários 'Se' no mesmo comando nunca dá muito certo. Melhor fazer tudo de novo." e o percorredor; retorne.
-  Se o segmento inicial deste percorredor for algum comando de proteção, apresente a mensagem de erro contendo "A sentença 'Isole' não pode ser usada nesse tipo de comando." e o percorredor; retorne.
-  Se o segmento inicial deste percorredor for algum comando de percorrimento, apresente a mensagem de erro contendo "Usar o comando 'Percorra' dentro de um 'Se' é uma ótima forma de arranjar problemas." e o percorredor; retorne.
-  Se o segmento inicial deste percorredor for algum reutilização de rotina, apresente a mensagem de erro contendo "O comando 'Empregue' deve ser o único comando de uma rotina." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor for algum comando condicional, apresente uma mensagem de erro contendo "Erro. O aninhamento de condicionais não é permitido." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor for algum comando de proteção, apresente a mensagem de erro contendo "Erro. A keyword 'Isole' não pode ser usada nesse tipo de comando." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor for algum comando de percorrimento, apresente a mensagem de erro contendo "Erro. Loops não são permitidos em condicionais." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor for algum reutilização de rotina, apresente a mensagem de erro contendo "Erro. O comando 'Empregue' deve ser o único comando de uma rotina." e o percorredor; retorne.
   \Se o segmento inicial deste percorredor for "senão", mova o percorredor (usando diretrizes de compilação); retorne.
   \Se o segmento inicial deste percorredor for "caso", mova o percorredor (usando diretrizes de compilação); retorne.
   \Se o segmento inicial deste percorredor for "contrário", mova o percorredor (usando diretrizes de compilação); retorne.
@@ -1848,7 +1848,7 @@ Etapas para que se compile a próxima instrução usando um percorredor (privatize)
   Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Você vive esquecendo dos pontos né?." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
 
-Etapas para que se compile a próxima instrução usando um percorredor (push):
+Etapas para que se compile a próxima instrução usando um percorredor (cláusula de empilhamento):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um expression usando o percorredor.
@@ -1857,7 +1857,7 @@ Etapas para que se compile a próxima instrução usando um percorredor (push):
   Se o tipo desta expression não for valor empilhável, apresente a mensagem de erro contendo "Valores do tipo: " junto com o nome deste tipo desta expression seguido de "' não podem ser pushed." e o percorredor; retorne.
   Adicione um fragmento usando o etiqueta de inserção de valor [na stack] e a variável desta expression.
 
-Etapas para que se compile a próxima instrução usando um percorredor (repeat):
+Etapas para que se compile a próxima instrução usando um percorredor(cláusula de repetição):
   Adicione um fragmento usando a etiqueta de repetição.
   Mova o percorredor (usando diretrizes de compilação).
 
@@ -6028,8 +6028,8 @@ Etapas para que se transforme em código hexadecimal um fragmento:
   Se a etiqueta deste fragmento for o etiqueta de desvio falso, transforme em código hexadecimal o fragmento (jump false); retorne.
   Se a etiqueta deste fragmento for a etiqueta de negação lógica, transforme em código hexadecimal o fragmento (not); retorne.
   Se a etiqueta deste fragmento for o etiqueta de retorno, transforme em código hexadecimal o fragmento (cláusula de retorno); retorne.
-  Se a etiqueta deste fragmento for a etiqueta de repetição, transforme em código hexadecimal o fragmento (repeat); retorne.
-  Se a etiqueta deste fragmento for o etiqueta de interrupção, transforme em código hexadecimal o fragmento (break); retorne.
+  Se a etiqueta deste fragmento for a etiqueta de repetição, transforme em código hexadecimal o fragmento(cláusula de repetição); retorne.
+  Se a etiqueta deste fragmento for o etiqueta de interrupção, transforme em código hexadecimal o fragmento (cláusula de interrupção); retorne.
   Se a etiqueta deste fragmento for o etiqueta preliminar, transforme em código hexadecimal o fragmento (etapa preliminar); retorne.
   Se a etiqueta deste fragmento for o etiqueta conclusiva, transforme em código hexadecimal o fragmento (etapa conclusiva); retorne.
   Se a etiqueta deste fragmento for o etiqueta de inserção de valor [na stack], transforme em código hexadecimal o fragmento (empilhamento de valor); retorne.
@@ -6039,13 +6039,13 @@ Etapas para que se transforme em código hexadecimal um fragmento:
   Se a etiqueta deste fragmento for a etiqueta de demanda indireta, transforme em código hexadecimal o fragmento (Demanda Indireta); retorne.
   Se a etiqueta deste fragmento for a etiqueta de endereço de rotina, transforme em código hexadecimal o fragmento (rotina endereço); retorne.
 
-Etapas para que se transforme em código hexadecimal um fragmento (break):
+Etapas para que se transforme em código hexadecimal um fragmento (cláusula de interrupção):
   Atribua a etiqueta de repetição para uma etiqueta.
   Encontre um segundo fragmento usando o fragmento e a etiqueta.
   Se o segundo fragmento for inexistente, atribua a etiqueta de finalização ao etiqueta. \ para break sem um loop ou depois de um loop
   Encontre um terceiro fragmento usando o last fragmento destes fragmentos desta rotina utilizada atualmente e a etiqueta (backwards).
-  Se o terceiro fragmento for inexistente, apresente uma mensagem de erro contendo "Erro interno - transforme em código hexadecimal um fragmento (break)"; retorne.
-  Se o subsequente fragmento deste terceiro fragmento for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - transforme em código hexadecimal um fragmento (break)"; retorne.
+  Se o terceiro fragmento for inexistente, apresente uma mensagem de erro contendo "Erro interno - transforme em código hexadecimal um fragmento (cláusula de interrupção)"; retorne.
+  Se o subsequente fragmento deste terceiro fragmento for inexistente, apresente a mensagem de erro contendo "Erro interno 2 - transforme em código hexadecimal um fragmento (cláusula de interrupção)"; retorne.
   Acrescente $E9 e o endereço deste subsequente fragmento deste terceiro fragmento para o fragmento. \ JMP o endereço da destination
 
 Etapas para que se transforme em código hexadecimal um fragmento (Demanda Externa):
@@ -6135,9 +6135,9 @@ Etapas para que se transforme em código hexadecimal um fragmento (empilhamento d
   Se a quantidade de caracteres for 1, acrescente $0FB61252 para o código deste fragmento; retorne. \ movzxb edx,[edx]; push edx
   Apresente a mensagem de erro contendo "Erro interno 3 - transforme em código hexadecimal um fragmento (empilhamento de valor)".
 
-Etapas para que se transforme em código hexadecimal um fragmento (repeat):
+Etapas para que se transforme em código hexadecimal um fragmento(cláusula de repetição):
   Encontre um segundo fragmento usando o fragmento e o etiqueta de laço (backwards).
-  Se o segundo fragmento for inexistente, apresente uma mensagem de erro contendo "Erro interno - transforme em código hexadecimal um fragmento (repeat)"; retorne.
+  Se o segundo fragmento for inexistente, apresente uma mensagem de erro contendo "Erro interno - transforme em código hexadecimal um fragmento(cláusula de repetição)"; retorne.
   Acrescente $E9 e o endereço deste segundo fragmento para o fragmento. \ jmp o address da destination 
 
 Etapas para que se transforme em código hexadecimal um fragmento (rotina endereço):
