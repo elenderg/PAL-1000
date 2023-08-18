@@ -1668,7 +1668,7 @@ Etapas para que se compile a próxima instrução usando um percorredor:
   Se o segmento inicial deste percorredor for algum comando de proteção, compile a próxima instrução usando o percorredor (cláusula de isolamento); retorne.
   Se o segmento inicial deste percorredor não for o início of algum declaração, apresente uma mensagem de erro contendo "Eu esperava uma declaração aqui, mas encontrei: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Compile a próxima instrução usando o percorredor (demais cláusulas).
-  Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Tem um problema nesse comando aqui." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Este comando está incorreto ou é uma keyword reservada." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
 
 Etapas para que se compile a próxima instrução usando um percorredor (cláusula de interrupção):
@@ -3430,8 +3430,7 @@ Etapas para que se determine se uma string é algum comando de abandono de rotina
   \Se a string for "e pronto", diga sim.
   \Se a string for "e só", diga sim.
   Se a string for "fim", diga sim.
-  \Se a string for "fimse", diga sim.
-  Se a string for "ignore", diga sim.
+  \Se a string for "fimse", diga sim. 
   \Se a string for "informe", diga sim.
   Se a string for "prossiga", diga sim.
   Se a string for "pronto", diga sim.
@@ -3950,7 +3949,7 @@ Etapas para que se encontre um tipo e um nickname usando um nome:
     \Se o subtexto estiver em branco, retorne.
     \Encontre o tipo usando o subtexto e o catálogo de tipos.
     \Se o tipo não for inexistente, pare.
-    \Skip para o subsequente palavra no subtexto.
+    \Passe para o subsequente palavra no subtexto.
   \Recomece. [percorra novamente o código acima]
   \Atribua o caractere inicial deste nome para caractere inicial deste segundo subtexto. \ está errado
   \Atribua o caractere inicial deste subtexto menos 2 ao caractere final deste segundo subtexto.
@@ -3965,7 +3964,7 @@ Etapas para que se encontre um tipo e um nickname usando um nome (backward):
     Se o subtexto estiver em branco, retorne.
     Encontre o tipo usando o subtexto e o catálogo de tipos.
     Se o tipo não for inexistente, pare.
-    Skip para o precedente palavra no subtexto. \precedente
+    Passe para o precedente palavra no subtexto. \precedente
   Recomece. [percorra novamente o código acima]
   Atribua o caractere final deste nome para o caractere final desse segundo subtexto.
   Atribua o caractere final deste subtexto mais 2 ao caractere inicial deste segundo subtexto.
@@ -3981,7 +3980,7 @@ Etapas para que se encontre um tipo e um nickname usando um nome (forward):
     Se o subtexto estiver em branco, retorne.
     Encontre o tipo usando o subtexto e o catálogo de tipos.
     Se o tipo não for inexistente, pare.
-    Skip para o subsequente palavra no subtexto. \subsequente
+    Passe para o subsequente palavra no subtexto. \subsequente
   Recomece. [percorra novamente o código acima]
   Atribua o caractere inicial deste nome para o caractere inicial desse segundo subtexto.
   Atribua o caractere inicial deste subtexto menos 2 ao caractere final deste segundo subtexto.
@@ -5836,13 +5835,13 @@ Etapas para que se examine uma rotina usando um percorredor:
   Se o segmento inicial deste percorredor for "necessários", mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor for "necessárias", mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for "para", apresente uma mensagem de erro contendo "Você precisa escrever 'para' antes de: " junto com o segmento inicial deste percorredor seguido de "' nesse tipo de rotina." e o percorredor; retorne.
-  Mova o percorredor (usando diretrizes de compilação). \ skip o "para" e obtenha o subsequente segmento inicial
+  Mova o percorredor (usando diretrizes de compilação). \ ignora o "para" e obtém o subsequente segmento inicial
   Se o segmento inicial deste percorredor for "que", mova o percorredor (usando diretrizes de compilação).
   \Se o segmento inicial deste percorredor não for "que", apresente uma mensagem de erro contendo "Você precisa colocar um 'que' antes da palavra: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
-  \Mova o percorredor (usando diretrizes de compilação). \ skip o "que" e obtenha o subsequente segmento inicial
+  \Mova o percorredor (usando diretrizes de compilação). \ ignora o "que" e obtém o subsequente segmento inicial
   Se o segmento inicial deste percorredor for "se", mova o percorredor (usando diretrizes de compilação).
   \Se o segmento inicial deste percorredor não for "se", apresente uma mensagem de erro contendo "Você precisa colocar um 'se' antes da palavra: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
-  \Mova o percorredor (usando diretrizes de compilação). \ skip o "se" e obtenha o subsequente segmento inicial
+  \Mova o percorredor (usando diretrizes de compilação). \ ignora o "se" e obtém o subsequente segmento inicial
   Examine a cabeçalho de rotina desta rotina usando o percorredor.
   Se o segmento inicial deste percorredor for o ponto&vírgula, examine a rotina usando o percorredor (sobrecarga de métodos); retorne. \ *** usado para nomes alternativos de rotinas
   Se o segmento inicial deste percorredor não for o sinal de dois pontos, apresente a mensagem de erro contendo "O nome dessa função está escrito errado.." e o local de aparição desta rotina; retorne.
@@ -5976,19 +5975,19 @@ Etapas para que se ligue o compiled detector em uma variável:
   Se o detector estiver ativo, atribua "converta o " junto com o nome deste literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao initializer string desta variável.
   Se o detector não estiver ativo, atribua "atribua o " junto com o nome deste literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao initializer string desta variável. \ Era " ao ". NÃO PODIA MUDAR O " ao " não sei o porquê
 
-Etapas para que se skip para o subsequente palavra em um subtexto:
+Etapas para que se passe para o subsequente palavra em um subtexto:
   Se o subtexto estiver em branco, retorne.
   Se o conteúdo deste caractere inicial deste subtexto for irrelevante, pare.
   Adicione 1 para o caractere inicial deste subtexto.
   Recomece. [percorra novamente o código acima]
-  Skip algum leading noise no subtexto.
+  ignore algum leading noise no subtexto.
 
-Etapas para que se skip para o precedente palavra em um subtexto:
+Etapas para que se passe para o precedente palavra em um subtexto:
   Se o subtexto estiver em branco, retorne.
   Se o conteúdo deste caractere final deste subtexto for irrelevante, pare.
   Subtraia 1 desde o caractere final deste subtexto.
   Recomece. [percorra novamente o código acima]
-  Skip algum trailing noise no subtexto.
+  ignore algum trailing noise no subtexto.
 
 Um arquivo fonte é uma lista com 
   Um endereço completo e 
@@ -6205,7 +6204,7 @@ Uma variável é uma lista com
 Um detector de referência é um detector.
 Um nome de redefinição de conteúdo é um nome.
 
-Etapas para que se skip algum trailing noise em um subtexto:
+Etapas para que se ignore algum trailing noise em um subtexto:
   Se o subtexto estiver em branco, retorne.
   Se o conteúdo deste caractere final deste subtexto não for irrelevante, retorne.
   Subtraia 1 desde o caractere final deste subtexto.
@@ -6218,10 +6217,10 @@ Etapas para que se compile o cabeçalho of uma rotina usando um percorredor (funç
   Se o detector de erros deste compilador estiver ativado, retorne.
   Ative o detector de função desta rotina.
   Adicione uma unidade semântica para as unidades semânticas desta rotina usando "atribua".
-  Mova o percorredor (usando diretrizes de compilação). \ skip "atribua" ou "poner"
-  Mova o percorredor (usando diretrizes de compilação). \ skip "the" ou Portuguese artigo definido
-  Examine um nome usando o percorredor. \ campo nome
-  Mova o percorredor (usando diretrizes de compilação). \ skip "uv" ou "de"
+  Mova o percorredor (usando diretrizes de compilação). \ ignora "atribua" 
+  Mova o percorredor (usando diretrizes de compilação). \ ignora "the" ou um artigo definido em português
+  Examine um nome usando o percorredor. \ nome do campo
+  Mova o percorredor (usando diretrizes de compilação). \ ignora "uv" ou "de"
   Se o segmento inicial deste percorredor for algum artigo indefinido, ative um detector.
   Se o detector estiver ativo, compile as unidades semânticas desta rotina e o parâmetros desta rotina usando o percorredor (artigo indefinido).
   Se o detector não estiver ativo, compile as unidades semânticas desta rotina e o parâmetros desta rotina usando o percorredor (artigo definido).
