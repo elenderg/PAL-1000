@@ -322,7 +322,7 @@ Etapas para que se adicione uma DLL para umas DLLs usando uma nome da DLL:
 
 Etapas para que se adicione um intermediate usando um nome do tipo e um local de aparição:
   Se a rotina utilizada atualmente for inexistente, esvazie o intermediate; retorne.
-  Adicione o intermediate para os locals desta rotina utilizada atualmente usando "local" e o local de aparição.
+  Adicione o intermediate para as variáveis locais desta rotina utilizada atualmente usando "local" e o local de aparição.
   Gere o nome deste intermediate usando "~I".
   Atribua o nome do tipo ao nome do tipo deste intermediate.
   Resolva o intermediate.
@@ -464,7 +464,7 @@ Etapas para que se adicione uma rotina para umas rotinas usando um local de apar
 
 Etapas para que se adicione um scratch usando um nome do tipo e um local de aparição:
   Se a rotina utilizada atualmente for inexistente, esvazie o scratch; retorne.
-  Adicione o scratch para os locals desta rotina utilizada atualmente usando "scratch" e o local de aparição.
+  Adicione o scratch para as variáveis locais desta rotina utilizada atualmente usando "scratch" e o local de aparição.
   Gere o nome deste scratch usando "~S".
   Atribua o nome do tipo ao nome do tipo deste scratch.
   Resolva o scratch.
@@ -1149,7 +1149,7 @@ Etapas para que se compile o corpo of uma rotina (etapa conclusiva):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Adicione um fragmento usando a etiqueta de finalização.
   Comece. [a executar o código abaixo]
-    Obtenha uma variável desde os locals desta rotina.
+    Obtenha uma variável desde as variáveis locais desta rotina.
     Se a variável for inexistente, pare.
     Se a categoria desta variável for "scratch", recomece.
     Se o tipo desta variável não deveria ser finalizado, recomece.
@@ -1299,7 +1299,7 @@ Etapas para que se compile um endereço da pasta (deslocamento de parâmetros e va
   Mostre no painel de informações "Deslocando parâmetros e variáveis...".
   Start o temporizador de deslocamentos.
   Offset o parâmetros na rotinas.
-  Offset o locals na rotinas.
+  Offset as variáveis locais na rotinas.
   Suspenda o temporizador de deslocamentos.
 
 Etapas para que se compile um endereço da pasta (arquivos de código fonte):
@@ -1836,14 +1836,14 @@ Etapas para que se compile a próxima instrução usando um percorredor (cláusula d
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Erro. Comando 'isole', Inválido. Termo da variável: " junto com a phrase deste termo seguido de "' está vazio." e o percorredor; retorne.
   Se a categoria deste termo não for "parâmetro", apresente a mensagem de erro contendo "Erro. Apenas arâmetros podem ser isolados." e o percorredor; retorne.
-  Adicione um local para os locals desta rotina utilizada atualmente usando "local" e o caractere inicial deste segmento inicial deste percorredor.
-  Atribua o nome deste termo ao nome deste local.
-  Atribua o nickname deste termo ao nickname deste local.
-  Atribua o nome do tipo deste termo ao nome do tipo deste local.
-  Resolva o local.
+  Adicione uma variável local para as variáveis locais desta rotina utilizada atualmente usando "local" e o caractere inicial deste segmento inicial deste percorredor.
+  Atribua o nome deste termo ao nome desta variável local.
+  Atribua o nickname deste termo ao nickname desta variável local.
+  Atribua o nome do tipo deste termo ao nome do tipo desta variável local.
+  Resolva a variável local.
   Anteponha "original " para o nome deste termo. \ Deveria ser "posponha"
   Se o nickname deste termo não estiver em branco, Anteponha "original " para o nickname deste termo.
-  Adicione several fragmentos usando "atribua" e a variável deste termo e "para" e o local e o caractere inicial deste segmento inicial deste percorredor.
+  Adicione several fragmentos usando "atribua" e a variável deste termo e "para" e a variável local e o caractere inicial deste segmento inicial deste percorredor.
   Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Erro. Necessário incluir um '.' ao dim do comando" e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
 
@@ -1974,7 +1974,7 @@ Etapas para que se compile um termo usando um percorredor (common part):
   Se o segmento inicial deste percorredor for o hífem, compile o termo usando o percorredor (negated termo); retorne.
   Se o segmento inicial deste percorredor for o sinal de adição, compile o termo usando o percorredor (posigated termo); retorne.
   Se o segmento inicial deste percorredor for o início of algum variável, compile o termo usando o percorredor (variável); retorne.
-  Se o segmento inicial deste percorredor for o início of algum new local, compile o termo usando o percorredor (new local); retorne.
+  Se o segmento inicial deste percorredor for o início of algum new local, compile o termo usando o percorredor (nova variável local); retorne.
   Se o segmento inicial deste percorredor for algum literal, compile o termo usando o percorredor (literal); retorne.
   Apresente uma mensagem de erro contendo "Erro. O Compilador esperava encontrar um termo. Encontrado: '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor.
 
@@ -2015,24 +2015,24 @@ Etapas para que se compile um termo usando um percorredor (negated termo):
   Atribua o intermediate à variável deste termo.
   Limpe o phrase deste termo.
 
-Etapas para que se compile um termo usando um percorredor (new local):
+Etapas para que se compile um termo usando um percorredor (nova variável local):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se a rotina utilizada atualmente for inexistente, apresente uma mensagem de erro contendo "Erro. Rotina não localizada. Não foi possível desempilhar o item da stack." e o percorredor; retorne.
-  Adicione um local para os locals desta rotina utilizada atualmente usando "local" e o caractere inicial deste segmento inicial deste percorredor.
+  Adicione uma variável local para as variáveis locais desta rotina utilizada atualmente usando "local" e o caractere inicial deste segmento inicial deste percorredor.
   \PAL
-  Se o segmento inicial deste percorredor for "outra", atribua "outra" ao nome deste local.
-  Se o segmento inicial deste percorredor for "outro", atribua "outro" ao nome deste local.
-  Se o segmento inicial deste percorredor for "segundo", atribua "segundo" ao nome deste local.
-  Se o segmento inicial deste percorredor for "segunda", atribua "segunda" ao nome deste local.
+  Se o segmento inicial deste percorredor for "outra", atribua "outra" ao nome desta variável local.
+  Se o segmento inicial deste percorredor for "outro", atribua "outro" ao nome desta variável local.
+  Se o segmento inicial deste percorredor for "segundo", atribua "segundo" ao nome desta variável local.
+  Se o segmento inicial deste percorredor for "segunda", atribua "segunda" ao nome desta variável local.
   Mova o percorredor (usando diretrizes de compilação).
   Examine um nome usando o percorredor.
-  Extend o nome deste local com o nome.
-  Se o segmento inicial deste percorredor for uma keyword de designação, compile a parte designadora usando o percorredor e o local.
-  Resolva o local.
-  Se o local estiver duplicada em os parâmetros desta rotina utilizada atualmente, apresente a mensagem de erro contendo "o parâmetro: " junto com o nome deste local seguido de "' já está sendo usado como parâmetro." e o local de aparição deste local; retorne.
-  Se o local estiver duplicada em os locals desta rotina utilizada atualmente, apresente a mensagem de erro contendo "Erro. A variável local " junto com o nome deste local seguido de "' já foi declarada nesta rotina. Utilize um nome de variável diferente." e o local de aparição deste local; retorne.
-  Eliminate duplicate nicknames usando o local e o nickname catálogo desta rotina utilizada atualmente.
-  Atribua o local à variável deste termo.
+  Extend o nome desta variável local com o nome.
+  Se o segmento inicial deste percorredor for uma keyword de designação, compile a parte designadora usando o percorredor e a variável local.
+  Resolva a variável local.
+  Se a variável local estiver duplicada em os parâmetros desta rotina utilizada atualmente, apresente a mensagem de erro contendo "o parâmetro: " junto com o nome desta variável local seguido de "' já está sendo usado como parâmetro." e o local de aparição desta variável local; retorne.
+  Se a variável local estiver duplicada em as variáveis locais desta rotina utilizada atualmente, apresente a mensagem de erro contendo "Erro. A variável local " junto com o nome desta variável local seguido de "' já foi declarada nesta rotina. Utilize um nome de variável diferente." e o local de aparição desta variável local; retorne.
+  Eliminate duplicate nicknames usando a variável local e o nickname catálogo desta rotina utilizada atualmente.
+  Atribua a variável local à variável deste termo.
   Limpe a phrase deste termo.
   Compile o termo usando o percorredor (possessives).
 
@@ -2139,19 +2139,19 @@ Etapas para que se compile um termo usando um percorredor e uma variável nome e 
 Etapas para que se compile um termo usando um percorredor e uma variável nome (decomposição do possessivo reverso - variável local):
   \ Rotina nova criada pelo Dahn para version 2
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Adicione um local para os locals desta rotina utilizada atualmente usando "local" e o caractere inicial deste segmento inicial deste percorredor.
+  Adicione uma variável local para as variáveis locais desta rotina utilizada atualmente usando "local" e o caractere inicial deste segmento inicial deste percorredor.
   \PAL
-  Se o segmento inicial deste percorredor for "outra", atribua "outra" ao nome deste local.
-  Se o segmento inicial deste percorredor for "outro", atribua "outro" ao nome deste local.
-  Se o segmento inicial deste percorredor for "segundo", atribua "segundo" ao nome deste local.
-  Se o segmento inicial deste percorredor for "segunda", atribua "segunda" ao nome deste local.
-  Extend o nome deste local com a variável nome.
-  Se o segmento inicial deste percorredor for uma keyword de designação, compile a parte designadora usando o percorredor e o local.
-  Resolva o local.
-  Se o local estiver duplicada em os parâmetros desta rotina utilizada atualmente, apresente uma mensagem de erro contendo "Erro. O termo: " junto com o nome deste local seguido de "' já está sendo usado como parâmetro." e o local de aparição deste local; retorne.
-  Se o local estiver duplicada em os locals desta rotina utilizada atualmente, apresente a mensagem de erro contendo "Erro. O termo: " junto com o nome deste local seguido de "' já está sendo usado coma variável local." e o local de aparição deste local; retorne.
-  Eliminate duplicate nicknames usando o local e o nickname catálogo desta rotina utilizada atualmente.
-  Atribua o local à variável deste termo.
+  Se o segmento inicial deste percorredor for "outra", atribua "outra" ao nome desta variável local.
+  Se o segmento inicial deste percorredor for "outro", atribua "outro" ao nome desta variável local.
+  Se o segmento inicial deste percorredor for "segundo", atribua "segundo" ao nome desta variável local.
+  Se o segmento inicial deste percorredor for "segunda", atribua "segunda" ao nome desta variável local.
+  Extend o nome desta variável local com a variável nome.
+  Se o segmento inicial deste percorredor for uma keyword de designação, compile a parte designadora usando o percorredor e a variável local.
+  Resolva a variável local.
+  Se a variável local estiver duplicada em os parâmetros desta rotina utilizada atualmente, apresente uma mensagem de erro contendo "Erro. O termo: " junto com o nome desta variável local seguido de "' já está sendo usado como parâmetro." e o local de aparição desta variável local; retorne.
+  Se a variável local estiver duplicada em as variáveis locais desta rotina utilizada atualmente, apresente a mensagem de erro contendo "Erro. O termo: " junto com o nome desta variável local seguido de "' já está sendo usado coma variável local." e o local de aparição desta variável local; retorne.
+  Eliminate duplicate nicknames usando a variável local e o nickname catálogo desta rotina utilizada atualmente.
+  Atribua a variável local à variável deste termo.
   Limpe a phrase deste termo.
 
 Etapas para que se compile um termo usando um campo nome e um percorredor (possessivo reverso):
@@ -2868,9 +2868,9 @@ Etapas para que se determine se uma string é uma keyword de designação:
   Se a string for "denominadas", diga sim.
 [Caso as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-\Uma keyword 
+Uma keyword de referenciamento é uma keyword.
 
-Etapas para que se determine se uma string é algum reference:
+Etapas para que se determine se uma string é uma keyword de referenciamento:
   Se a string for "(referência)", diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
@@ -2916,20 +2916,10 @@ Etapas para que se determine se um percorredor está sobre algum nome starter:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se uma string é algum advérbio de negação:
-  \SAL
   Se a string for "não", diga sim.
-  \Se a string for "nada", diga sim.
-  \Se a string for "ainda", diga sim.
-  \CAL
-  \Se a string for "no", diga sim.
-  Se a string for "not", diga sim.
-  \Se a string for "cannot", diga sim.
-  Se a string for "nothing", diga sim.
-  Se a string termina com "n't", diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma string é algum operator aritmético:
-  \PAL
   Se a string for "mais", diga sim.
   Se a string for "menos", diga sim.
   Se a string for "vezes", diga sim.
@@ -2939,31 +2929,20 @@ Etapas para que se determine se uma string é algum operator aritmético:
   Se a string for "juntamente", diga sim.
   Se a string for "junto", diga sim.
   Se a string for "acompanhado", diga sim.
-  \CAL
-  \Se a string for "plus", diga sim.
-  \Se a string for "minus", diga sim.
   Se a string for "times", diga sim.
-  \Se a string for "divided", diga sim.
-  \Se a string for "then", diga sim.
-
-[Se as condições acima não puderem ser satisfeitas, então:] Diga não.
+  [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 
 
 Etapas para que se determine se uma string é algum pause:
-  \PAL
   Se a string for "e", diga sim.
   Se a string for "ou", diga sim.
-  \CAL
-  Se a string for "and", diga sim.
-  Se a string for "or", diga sim.
   \default
   Se a string for ",", diga sim.
   Se a string for ";", diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma string é algum ponteiro literal:
-  \PAL
   Se a string for "nulo", diga sim.
   Se a string for "nula", diga sim.
   Se a string for "nulos", diga sim.
@@ -3989,7 +3968,7 @@ Etapas para que se encontre um tipo e um nickname usando um nome (forward):
 
 Etapas para que se encontre uma variável usando um nome:
   Se a rotina utilizada atualmente for inexistente, esvazie a variável; retorne.
-  Encontre a variável usando o nome e os locals desta rotina utilizada atualmente.
+  Encontre a variável usando o nome e as variáveis locais desta rotina utilizada atualmente.
   Se a variável não for inexistente, retorne.
   Encontre a variável usando o nome e os parâmetros desta rotina utilizada atualmente.
   Se a variável não for inexistente, retorne.
@@ -4259,7 +4238,7 @@ Etapas para que se inicialize um PE header (version information):
   Atribua 0 [$0000] ao SubsystemMinorVersion deste PE header.
   Atribua 2 [$0002] ao Subsystem deste PE header.
 
-Um intermediate é um local.
+Um intermediate é uma variável local.
 
 Etapas para que se link:
   Arredonde para cima tamanhos de zona.
@@ -4416,13 +4395,13 @@ Etapas para que se liste uma rotina em um trecho:
   Posponha "| Tamanho dos parâmetros: " para o trecho.
   Posponha o tamanho do parâmetro desta rotina para o trecho (com separador). \ Tamanho dos parâmetros. Exemplo: 16 ( 4 parâmetros)
   Posponha " Tamanho das variáveis: " para o trecho.
-  Posponha o tamanho local desta rotina para o trecho (com separador). \Tamanho do local. Exemplo: 28
+  Posponha o tamanho local desta rotina para o trecho (com separador). \Tamanho da variável local. Exemplo: 28
   Posponha o texto CRLF para o trecho.
   Posponha "| Endereço da Rotina: " para o trecho.
   Posponha o endereço desta rotina para o trecho (cifra hexadecimal com separador). \ Endereço da rotina, Exemplo: 0041D000
   Insira quebra de linha em o trecho.
   Liste os parâmetros desta rotina no trecho.
-  Liste os locals desta rotina no trecho.
+  Liste as variáveis locais desta rotina no trecho.
   Liste os fragmentos desta rotina no trecho.
   Insira quebra de linha em o trecho.
 
@@ -4568,7 +4547,7 @@ An literal é uma variável.
 
 O literals são uns literals.
 
-An local é uma variável.
+Uma variável local é uma variável.
 
 Um local de aparição é um ponteiro do byte .
 
@@ -4696,27 +4675,27 @@ Um parte da cifra binária é um subtexto.
 
 Um nickname é um nome.  
 
-Etapas para que se offset o locals em uma rotina:
+Etapas para que se offset as variáveis locais em uma rotina:
   Se a rotina for inexistente, retorne.
   Se a compiled detector desta rotina não estiver ativo, retorne.
   Limpe o tamanho local desta rotina.
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, retorne.
-    Obtenha um local desde os locals desta rotina.
-    Se o local for inexistente, retorne.
-    Se o precedente local deste local não for inexistente, atribua o offset deste precedente local deste local ao offset deste local.
-    Atribua a quantidade de caracteres deste tipo deste local para uma quantidade de caracteres.
-    Se a categoria deste local for "scratch", atribua a magnitude desse ponteiro à quantidade de caracteres.
+    Obtenha uma variável local desde as variáveis locais desta rotina.
+    Se a variável local for inexistente, retorne.
+    Se o precedente variável local desta variável local não for inexistente, atribua o offset deste precedente variável local desta variável local ao offset desta variável local.
+    Atribua a quantidade de caracteres deste tipo desta variável local para uma quantidade de caracteres.
+    Se a categoria desta variável local for "scratch", atribua a magnitude desse ponteiro à quantidade de caracteres.
     Arredonde a quantidade de caracteres para cima usando o múltiplo imediato de 4.
-    Subtraia a quantidade de caracteres desde o offset deste local.
+    Subtraia a quantidade de caracteres desde o offset desta variável local.
     Adicione a quantidade de caracteres para o tamanho local desta rotina.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se offset os locals em umas rotinas:
+Etapas para que se offset as variáveis locais em umas rotinas:
     Se o detector de erros deste compilador estiver ativado, retorne.
     Obtenha uma rotina desde as rotinas.
     Se a rotina for inexistente, retorne.
-    Offset os locals na rotina.
+    Offset as variáveis locais na rotina.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se offset o parâmetros em uma rotina:
@@ -5614,7 +5593,7 @@ Uma rotina é uma lista com
   Uns parâmetros, 
   Um tamanho do parâmetro,
   Um employs representação interna da rotina ,
-  Some locals, 
+  Umas variáveis locais, 
   Um tamanho local,
   Um cabeçalho de rotina, 
   Um header string,
@@ -5667,7 +5646,7 @@ Etapas para que se examine um campo usando um percorredor:
     Se o segmento inicial deste percorredor for "sob", examine o campo usando o percorredor (cláusula de redefinição); recomece.
     Se o segmento inicial deste percorredor for "sobre", examine o campo usando o percorredor (cláusula de redefinição); recomece.
     Se o segmento inicial deste percorredor for "redefinindo", examine o campo usando o percorredor (cláusula de redefinição); recomece.
-    Se o segmento inicial deste percorredor for algum reference, examine o campo usando o percorredor (cláusula de referência); recomece.
+    Se o segmento inicial deste percorredor for uma keyword de referenciamento, examine o campo usando o percorredor (cláusula de referência); recomece.
 
 Etapas para que se examine um campo usando um percorredor (cláusula designadora):
   Se o detector de erros deste compilador estiver ativado, retorne.
@@ -5942,7 +5921,7 @@ Etapas para que se examine um tipo usando um percorredor (unidade de medida):
   Mova o percorredor (usando diretrizes de compilação).
   Catalogue o tipo.
 
-Um scratch é um local.
+Um scratch é uma variável local.
 
 Etapas para que se scrub um catálogo:
     Obtenha um bucket usando o catálogo.
@@ -6191,7 +6170,7 @@ Uma variável é uma lista com
   Um nome do tipo,
   Um tipo (referência), \ actual tipo sobre literal, global, local; dereferenced tipo sobre parâmetros e scratches
   Um endereço [globals e literals only] ou 
-  Um offset sob o endereço [locals, parâmetros, e campos only],
+  Um offset sob o endereço [variáveis locais, parâmetros, e campos only],
   Um contagem [campos only],
   Um detector de referência [campos only],
   Um nome de redefinição de conteúdo [campos only],
