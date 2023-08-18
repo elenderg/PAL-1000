@@ -678,7 +678,7 @@ Etapas para que se posponha os global initializers para uma string:
   Se o literal deste global for inexistente, recomece.
   Se o compiled detector deste global não estiver ativo, recomece.
   Desative um detector.
-  Posponha o initializer string deste global para a string.
+  Posponha o texto inicializador deste global para a string.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se posponha uma unidade semântica para uma representação interna da rotina :
@@ -876,11 +876,11 @@ Etapas para que se acrescente endereço loading código para um texto hexadecimal 
   Se a variável for inexistente, acrescente $C7C200000000 para o texto hexadecimal; retorne. \ mov edx,0
   Se a categoria desta variável for "global", acrescente $C7C2 e o endereço desta variável para o texto hexadecimal; retorne. \ mov edx,the endereço da variável
   Se a categoria desta variável for "literal", acrescente $C7C2 e o endereço desta variável para o texto hexadecimal; retorne. \ mov edx,the endereço da variável
-  Se a categoria desta variável for "local", acrescente $8D95 e o offset desta variável para o texto hexadecimal; retorne. \ lea edx,[ebp+ the offset da variável]
-  Se a categoria desta variável for "scratch", acrescente $8B95 e o offset desta variável para o texto hexadecimal; retorne. \ mov edx, [ebp+ the offset da variável]
+  Se a categoria desta variável for "local", acrescente $8D95 e o deslocamento desta variável para o texto hexadecimal; retorne. \ lea edx,[ebp+ the deslocamento da variável]
+  Se a categoria desta variável for "scratch", acrescente $8B95 e o deslocamento desta variável para o texto hexadecimal; retorne. \ mov edx, [ebp+ the deslocamento da variável]
   Se a categoria desta variável não for "parâmetro", apresente uma mensagem de erro contendo "Erro interno#9"; retorne.
-  Se o by-value detector desta variável estiver ativo, acrescente $8D95 e o offset desta variável para o texto hexadecimal; retorne. \ lea edx,[ebp+the offset da variável]
-  Acrescente $8B95 e o offset desta variável para o texto hexadecimal. \ mov edx,[ebp+ the offset da variável]
+  Se o detector de passagem por-valor desta variável estiver ativo, acrescente $8D95 e o deslocamento desta variável para o texto hexadecimal; retorne. \ lea edx,[ebp+the deslocamento da variável]
+  Acrescente $8B95 e o deslocamento desta variável para o texto hexadecimal. \ mov edx,[ebp+ the deslocamento da variável]
 
 Etapas para que se acrescente um texto hexadecimal e um endereço para um fragmento:
   \ Processe ou Salto
@@ -910,8 +910,8 @@ Etapas para que se acrescente um texto hexadecimal e um número para um segundo t
   Converta o número para um terceiro texto hexadecimal.
   Posponha o terceiro texto hexadecimal para o segundo texto hexadecimal.
 
-Etapas para que se disponibilize bytes usando um ponteiro e uma quantidade de caracteres e um trecho e um offset:
-  Atribua o caractere inicial deste trecho mais o offset para um segundo ponteiro.
+Etapas para que se disponibilize bytes usando um ponteiro e uma quantidade de caracteres e um trecho e um deslocamento:
+  Atribua o caractere inicial deste trecho mais o deslocamento para um segundo ponteiro.
   Copie bytes desde o ponteiro para o segundo ponteiro pelo quantidade de caracteres.
 
 Etapas para que se disponibilize um DOS header para um trecho:
@@ -1032,26 +1032,26 @@ Etapas para que se calculate os comprimentos of uns tipos:
   Calculate a quantidade de caracteres of o tipo.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se calculate o offsets em um tipo:
+Etapas para que se calculate os deslocamentos em um tipo:
   Se o tipo for inexistente, retorne.
-  Atribua 0 para um offset.
+  Atribua 0 para um deslocamento.
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, retorne.
     Obtenha um campo desde os campos deste tipo.
     Se o campo for inexistente, retorne.
     Se o nome de redefinição de conteúdo deste campo não estiver em branco, recomece.
-    Atribua o offset ao offset deste campo.
-    Adicione a quantidade de caracteres deste tipo deste campo times a contagem deste campo para o offset.
+    Atribua o deslocamento ao deslocamento deste campo.
+    Adicione a quantidade de caracteres deste tipo deste campo times a contagem deste campo para o deslocamento.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se calculate os offsets em uns tipos:
+Etapas para que se calculate os deslocamentos em uns tipos:
   Se o detector de erros deste compilador estiver ativado, retorne.
   Obtenha um tipo desde o tipos.
   Se o tipo for inexistente, retorne.
-  Calculate o offsets no tipo.
+  Calculate os deslocamentos no tipo.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se calculate o redefinition offsets em um tipo:
+Etapas para que se calculate o redefinition deslocamentos em um tipo:
   Se o tipo for inexistente, retorne.
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, retorne.
@@ -1060,14 +1060,14 @@ Etapas para que se calculate o redefinition offsets em um tipo:
     Se o nome de redefinição de conteúdo deste campo estiver em branco, recomece.
     Encontre um segundo campo usando o nome de redefinição de conteúdo deste campo e os campos deste tipo.
     Se o segundo campo for inexistente, apresente uma mensagem de erro contendo "Erro. Comando de redefinição inválido. O campo '" junto com o nome de redefinição de conteúdo deste campo seguido de "' não pode ser encontrado." e o endereço local deste campo; retorne.
-    Atribua o offset deste segundo campo ao offset deste campo.
+    Atribua o deslocamento deste segundo campo ao deslocamento deste campo.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se calculate o redefinition offsets em uns tipos:
+Etapas para que se calculate o redefinition deslocamentos em uns tipos:
   Se o detector de erros deste compilador estiver ativado, retorne.
   Obtenha um tipo desde o tipos.
   Se o tipo for inexistente, retorne.
-  Calculate o redefinition offsets no tipo.
+  Calculate o redefinition deslocamentos no tipo.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se verifique por informações opcionais inválidas em um tipo:
@@ -1239,8 +1239,8 @@ Etapas para que se compile um endereço da pasta (cálculo de tamanhos e deslocame
   Mostre no painel de informações "Calculando tamanhos e deslocamentos...".
   Start o temporizador de etapas de cálculo.
   Calculate os comprimentos of o tipos.
-  Calculate o offsets no tipos.
-  Calculate o redefinition offsets no tipos.
+  Calculate os deslocamentos no tipos.
+  Calculate o redefinition deslocamentos no tipos.
   Suspenda o temporizador de etapas de cálculo.
 
 Etapas para que se compile um endereço da pasta (conteúdo das rotinas):
@@ -1277,8 +1277,8 @@ Etapas para que se compile um endereço da pasta (deslocamento de parâmetros e va
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mostre no painel de informações "Deslocando parâmetros e variáveis...".
   Start o temporizador de deslocamentos.
-  Offset o parâmetros na rotinas.
-  Offset as variáveis locais na rotinas.
+  Alinhe o parâmetros na rotinas.
+  Alinhe as variáveis locais na rotinas.
   Suspenda o temporizador de deslocamentos.
 
 Etapas para que se compile um endereço da pasta (arquivos de código fonte):
@@ -2149,7 +2149,7 @@ Etapas para que se compile um termo usando um percorredor e um campo termo:
   Atribua o campo deste campo termo para um campo.
   Adicione um scratch usando o nome deste tipo deste campo e o caractere inicial deste segmento inicial deste percorredor.
   Adicione um fragmento usando o etiqueta de carregamento de endereço e a variável deste termo e o scratch.
-  Se o offset deste campo não for 0, adicione um terceiro fragmento usando a etiqueta de acréscimo e o scratch e o offset deste campo.
+  Se o deslocamento deste campo não for 0, adicione um terceiro fragmento usando a etiqueta de acréscimo e o scratch e o deslocamento deste campo.
   Atribua o scratch à variável deste termo.
   Limpe a phrase deste termo.
 
@@ -2171,7 +2171,7 @@ Etapas para que se compile um termo usando um percorredor e um campo termo (in p
   Atribua o campo deste campo termo para um campo.
   Atribua o nome deste tipo deste campo ao nome do tipo deste termo.
   Atribua o tipo deste campo ao tipo deste termo.
-  Se o offset deste campo não for 0, adicione um terceiro fragmento usando a etiqueta de acréscimo e a variável deste termo e o offset deste campo.
+  Se o deslocamento deste campo não for 0, adicione um terceiro fragmento usando a etiqueta de acréscimo e a variável deste termo e o deslocamento deste campo.
   Limpe a phrase deste termo.
 
 Etapas para que se compile um termo usando um percorredor e um nome (possessive - campo):
@@ -2230,7 +2230,7 @@ Etapas para que se copie um campo para um segundo campo:
   Atribua a contagem deste campo à contagem deste segundo campo.
   Atribua o nome de redefinição de conteúdo deste campo ao nome de redefinição de conteúdo deste segundo campo.
   Atribua o detector de referência deste campo ao detector de referência deste segundo campo.
-  Atribua o offset deste campo ao offset deste segundo campo.
+  Atribua o deslocamento deste campo ao deslocamento deste segundo campo.
 
 Etapas para que se copie uns campos para uns segundo campos:
   Obtenha um campo desde o campos.
@@ -3601,8 +3601,8 @@ Um DOS header é um estrutura com
   \\ and the resulting value is placed em the CS register when control is transferred.
   Uma word denominada AddressOfRelocationTableInFile, \ 
   \\ O AddressOfRelocationTableInFile é um ponteiro [que aponta] para a tabela de tamanho variável de DLLs necessária para este programa.
-  \\ Relocation table offset.
-  \\ This word gives the offset desde the start of the arquivo para the relocation pointer table.
+  \\ Relocation table deslocamento.
+  \\ This word gives the deslocamento desde the start of the arquivo para the relocation pointer table.
   \\ This value must be used para locate the relocation pointer table (rather than assuming a fixed location) 
   \\because variável-length information pertaining para program overlays can occur before this table, causing its position para vary.
   \\A value of 40H em this campo generally indicates a different kind of executable arquivo, not a DOS "MZ" tipo.
@@ -4421,9 +4421,9 @@ Etapas para que se liste uma variável em um trecho:
   Posponha "Tipo: " para o trecho.
   Posponha o tipo desta variável para o trecho (com separador).
   Posponha "Endereço (deslocamento): " para o trecho.
-  Posponha o endereço desta variável [or offset] para o trecho (cifra hexadecimal com separador).
+  Posponha o endereço desta variável [or deslocamento] para o trecho (cifra hexadecimal com separador).
   Posponha "Passagem por valor? " para o trecho.
-  Posponha o by-value detector desta variável para o trecho (com separador).
+  Posponha o detector de passagem por-valor desta variável para o trecho (com separador).
   Posponha "Contagem: " para o trecho.
   Posponha a contagem desta variável para o trecho (com separador).
   Posponha "Referência somente? " para o trecho.
@@ -4584,7 +4584,7 @@ Um parte da cifra binária é um subtexto.
 
 Um nickname é um nome.  
 
-Etapas para que se offset as variáveis locais em uma rotina:
+Etapas para que se alinhe as variáveis locais em uma rotina:
   Se a rotina for inexistente, retorne.
   Se a compiled detector desta rotina não estiver ativo, retorne.
   Limpe o tamanho local desta rotina.
@@ -4592,22 +4592,22 @@ Etapas para que se offset as variáveis locais em uma rotina:
     Se o detector de erros deste compilador estiver ativado, retorne.
     Obtenha uma variável local desde as variáveis locais desta rotina.
     Se a variável local for inexistente, retorne.
-    Se o precedente variável local desta variável local não for inexistente, atribua o offset deste precedente variável local desta variável local ao offset desta variável local.
+    Se o precedente variável local desta variável local não for inexistente, atribua o deslocamento deste precedente variável local desta variável local ao deslocamento desta variável local.
     Atribua a quantidade de caracteres deste tipo desta variável local para uma quantidade de caracteres.
     Se a categoria desta variável local for "scratch", atribua a magnitude desse ponteiro à quantidade de caracteres.
     Arredonde a quantidade de caracteres para cima usando o múltiplo imediato de 4.
-    Subtraia a quantidade de caracteres desde o offset desta variável local.
+    Subtraia a quantidade de caracteres desde o deslocamento desta variável local.
     Adicione a quantidade de caracteres para o tamanho local desta rotina.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se offset as variáveis locais em umas rotinas:
+Etapas para que se alinhe as variáveis locais em umas rotinas:
     Se o detector de erros deste compilador estiver ativado, retorne.
     Obtenha uma rotina desde as rotinas.
     Se a rotina for inexistente, retorne.
-    Offset as variáveis locais na rotina.
+    Alinhe as variáveis locais na rotina.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se offset o parâmetros em uma rotina:
+Etapas para que se alinhe o parâmetros em uma rotina:
   Se a rotina for inexistente, retorne.
   Se a compiled detector desta rotina não estiver ativo, retorne.
   Limpe o tamanho do parâmetro desta rotina.
@@ -4615,17 +4615,17 @@ Etapas para que se offset o parâmetros em uma rotina:
     Se o detector de erros deste compilador estiver ativado, retorne.
     Obtenha um parâmetro desde os parâmetros desta rotina.
     Se o parâmetro for inexistente, retorne.
-    Se o detector de compatibilidade desta rotina estiver ativo, ative o by-value detector deste parâmetro.
-    Se o precedente parâmetro deste parâmetro for inexistente, atribua 8 ao offset deste parâmetro. \ skip o return address e saved ebp
-    Se o precedente parâmetro deste parâmetro não for inexistente, atribua o offset deste precedente parâmetro deste parâmetro mais 4 ao offset deste parâmetro. \ all parâmetros são 4 ponteiro do byte s ou 4 byte values por callbacks
+    Se o detector de compatibilidade desta rotina estiver ativo, ative o detector de passagem por-valor deste parâmetro.
+    Se o precedente parâmetro deste parâmetro for inexistente, atribua 8 ao deslocamento deste parâmetro. \ skip o return address e saved ebp
+    Se o precedente parâmetro deste parâmetro não for inexistente, atribua o deslocamento deste precedente parâmetro deste parâmetro mais 4 ao deslocamento deste parâmetro. \ all parâmetros são 4 ponteiro do byte s ou 4 byte values por callbacks
     Adicione 4 para a tamanho do parâmetro desta rotina.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se offset o parâmetros em umas rotinas:
+Etapas para que se alinhe o parâmetros em umas rotinas:
   Se o detector de erros deste compilador estiver ativado, retorne.
   Obtenha uma rotina desde as rotinas.
   Se a rotina for inexistente, retorne.
-  Offset o parâmetros na rotina.
+  Alinhe o parâmetros na rotina.
   Recomece. [percorra novamente o código acima]
 
   
@@ -5860,8 +5860,8 @@ Etapas para que se ligue o compiled detector em uma variável:
   Se a rotina for inexistente, encontre a rotina usando "converta" e o tipo deste literal desta variável e "para" e o tipo desta variável; ative um detector.
   Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro. O tipo e o valor da variável global  não estão correspondendo." e o endereço local desta variável; retorne.
   Compile o corpo of a rotina.
-  Se o detector estiver ativo, atribua "converta o " junto com o nome deste literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao initializer string desta variável.
-  Se o detector não estiver ativo, atribua "atribua o " junto com o nome deste literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao initializer string desta variável. \ Era " ao ". NÃO PODIA MUDAR O " ao " não sei o porquê
+  Se o detector estiver ativo, atribua "converta o " junto com o nome deste literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao texto inicializador desta variável.
+  Se o detector não estiver ativo, atribua "atribua o " junto com o nome deste literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao texto inicializador desta variável. \ Era " ao ". NÃO PODIA MUDAR O " ao " não sei o porquê
 
 Etapas para que se passe para o subsequente palavra em um subtexto:
   Se o subtexto estiver em branco, retorne.
@@ -5934,9 +5934,9 @@ Etapas para que se transforme em código hexadecimal um fragmento (Demanda Intern
   Acrescente $E8 e o endereço para o fragmento. \ Processe o address da rotina do fragmento 
 
 Etapas para que se transforme em código hexadecimal um fragmento (dereference):
-  Acrescente $8B95 e o offset desta variável deste fragmento para o código deste fragmento. \ mov edx,[ebp+ o offset desta variável deste fragmento]
+  Acrescente $8B95 e o deslocamento desta variável deste fragmento para o código deste fragmento. \ mov edx,[ebp+ o deslocamento desta variável deste fragmento]
   Acrescente $8B12 para o código deste fragmento. \ mov edx,[edx]
-  Acrescente $8995 e o offset desta variável deste fragmento para o código deste fragmento. \ mov [ebp+ o offset desta variável deste fragmento]
+  Acrescente $8995 e o deslocamento desta variável deste fragmento para o código deste fragmento. \ mov [ebp+ o deslocamento desta variável deste fragmento]
 
 Etapas para que se transforme em código hexadecimal um fragmento (etapa conclusiva):
   Se o detector de compatibilidade desta rotina utilizada atualmente estiver ativo, acrescente $5F5E5B para o código deste fragmento. \ pop edi; pop esi; pop ebx;
@@ -5954,7 +5954,7 @@ Etapas para que se transforme em código hexadecimal um fragmento (cláusula de re
 Etapas para que se transforme em código hexadecimal um fragmento (increment):
   Se a variável deste fragmento for inexistente, apresente uma mensagem de erro contendo "Erro interno #18"; retorne.
   Se a categoria desta variável deste fragmento não for "scratch", apresente a mensagem de erro contendo "Erro interno #19"; retorne.
-  Acrescente $8185 e o offset desta variável deste fragmento e o número deste fragmento para o código deste fragmento. \ add [ebp+ o offset desta variável deste fragmento], o número deste fragmento
+  Acrescente $8185 e o deslocamento desta variável deste fragmento e o número deste fragmento para o código deste fragmento. \ add [ebp+ o deslocamento desta variável deste fragmento], o número deste fragmento
 
 Etapas para que se transforme em código hexadecimal um fragmento (desvio caso resultado negativo):
   Encontre um segundo fragmento usando o fragmento e o etiqueta delimitadora de bloco condicional.
@@ -5964,7 +5964,7 @@ Etapas para que se transforme em código hexadecimal um fragmento (desvio caso re
 
 Etapas para que se transforme em código hexadecimal um fragmento (load endereço):
   Acrescente endereço loading código para o código deste fragmento usando a variável deste fragmento. \ atribua endereço para edx
-  Acrescente $8995 e o offset desta segunda variável deste fragmento para o código deste fragmento. \ mov [ebp+ o offset desta variável deste fragmento],edx
+  Acrescente $8995 e o deslocamento desta segunda variável deste fragmento para o código deste fragmento. \ mov [ebp+ o deslocamento desta variável deste fragmento],edx
 
 \Etapas para que se transforme em código hexadecimal um fragmento (atribuição de EAX):
 \Acrescente endereço loading código para o código deste fragmento usando a variável deste fragmento. \ atribua endereço para edx
@@ -6026,7 +6026,7 @@ Etapas para que se transforme em código hexadecimal um fragmento (registrador EA
   Se a quantidade de caracteres for 4, acrescente $8902 para o código deste fragmento; retorne. \ mov [edx],eax
   Se a quantidade de caracteres for 2, acrescente $668902 para o código deste fragmento; retorne. \ mov [edx],ax
   Se a quantidade de caracteres for 1, acrescente $8802 para o código deste fragmento; retorne. \ mov [edx],al
-  Apresente a mensagem de erro contendo "Erro interno #28".
+  [Se a quantidade de caracteres não for 1, 2 ou 4] Apresente a mensagem de erro contendo "Erro interno #28".
 
 Etapas para que se transforme em código hexadecimal uns fragmentos:
   Se o detector de erros deste compilador estiver ativado, retorne.
@@ -6079,19 +6079,24 @@ Uma variável é uma lista com
   Um nome, 
   Um nickname, 
   Um nome do tipo,
-  Um tipo (referência), \ actual tipo sobre literal, global, local; dereferenced tipo sobre parâmetros e scratches
+  Um tipo (referência), \ tipo real em literal, global e local; dereferenced tipo em parâmetros e scratches
   Um endereço [globals e literals only] ou 
-  Um offset sob o endereço [variáveis locais, parâmetros, e campos only],
+  Um deslocamento sob o endereço [variáveis locais, parâmetros, e campos only],
   Um contagem [campos only],
   Um detector de referência [campos only],
   Um nome de redefinição de conteúdo [campos only],
-  Um by-value detector [parâmetros only],
+  Um detector de passagem por-valor [parâmetros only],
   Um corpo global [globals only],
-  Um initializer string [globals only],
+  Um texto inicializador [globals only],
   Um literal (referência) [globals only - constant com which to initalize the global],
   Um texto hexadecimal denominado data [literals only].
 
+Um deslocamento é um número.
+
+Um texto inicializador é uma string.
+
 Um detector de referência é um detector.
+Um detector de passagem por-valor é um detector.
 Um nome de redefinição de conteúdo é um nome.
 
 Etapas para que se ignore algum trailing noise em um subtexto:
