@@ -1,18 +1,14 @@
-\ o compilador copyright © 2006-2021 a ordem osmosiana
+\ O compilador copyright © 2006-2021 a ordem osmosiana
+\ firstparam=esp+4/ebp+8, secondparam=esp+8/ebp+12, etc...
 
- \ firstparam=esp+4/ebp+8, secondparam=esp+8/ebp+12, etc...
-
-  
- \Plain English armazena strings em duas partes para que seja fácil trocar o primeiro e o último bytes de uma string, com um pequeno comando como este:
- \ Swap the string's first's target with the string's last's target.
- \Todos os parâmetros são passados  por referência, então a string modificada é retornada na variável passada, que é a maneira natural e óbvia de fazer isso.
+ \Este compilador armazena strings em duas partes para que seja fácil trocar o primeiro e o último bytes de uma string, com um pequeno comando como este:
+ \ Permute o conteúdo deste caractere inicial desta string com o conteúdo do caractere final desta string.
+ \Todos os parâmetros são passados por referência, então a string modificada é retornada na variável passada, que é a maneira natural e óbvia de fazer isso.
  \Por exemplo, se você passar o saleiro para alguém na mesa de jantar e ela usar um pouco, você receberá o saleiro de volta com menos sal do que quando passou.
-
 \Quando um parâmetro é passado "por referência", o chamador e o receptor usam a mesma variável para o parâmetro. 
 \Se o receptor modifica a variável do parâmetro, o efeito é visível para a variável do chamador.
 \Quando um parâmetro é passado "por valor", o chamador e o receptor têm duas variáveis independentes com o mesmo valor. 
 \Se o receptor modifica a variável de parâmetro, o efeito não é visível para o chamador.
-\ caso você precise, você pode "isolar" a variável
 
 Uma mensagem de erro é uma string.
 Uma contagem de nomes é uma contagem.
@@ -102,26 +98,26 @@ Etapas para que se adicione o rotina de alocação para um tipo:
   Se o conteúdo tipo deste tipo for inexistente, retorne.
   Adicione uma rotina para as rotinas usando nil.
   Posponha "Aloque memória para um " junto com o nome deste tipo para o header string desta rotina. \ traduzir aqui
-  Posponha "Associe o " junto com o nome deste tipo seguido de " usando " para o body string desta rotina. \Nomeie
-  Posponha a quantidade de caracteres deste conteúdo tipo deste tipo seguido de "." para o body string desta rotina.
+  Posponha "Associe o " junto com o nome deste tipo seguido de " usando " para a string do corpo desta rotina. \Nomeie
+  Posponha a quantidade de caracteres deste conteúdo tipo deste tipo seguido de "." para a string do corpo desta rotina.
   Lance a cabeçalho de rotina desta rotina sobre o header string desta rotina.
-  Lance as instruções desta rotina sobre o body string desta rotina.
+  Lance as instruções desta rotina sobre a string do corpo desta rotina.
   Compile o header of a rotina.
 
 Etapas para que se adicione e compile as rotinas de inicialização pré-execução e finalização pós-execução:
   Se o detector de erros deste compilador estiver ativado, retorne.
   Adicione uma rotina para as rotinas usando nil.
   Posponha "~Initialize before run e Run e Finalize after run" para o header string desta rotina.
-  Posponha "Initialize before run. " para o body string desta rotina.
-  Posponha os global initializers para o body string desta rotina.
-  Posponha "Execute o programa. " para o body string desta rotina. \ traduzir
-  Posponha os global finalizers para o body string desta rotina.
-  Posponha "Finalize after run. " para o body string desta rotina.
-  Posponha "Processe ""kernel32.dll"" ""ExitProcess"" com 0. " para o body string desta rotina.
+  Posponha "Initialize before run. " para a string do corpo desta rotina.
+  Posponha os global initializers para a string do corpo desta rotina.
+  Posponha "Execute o programa. " para a string do corpo desta rotina. \ traduzir
+  Posponha os global finalizers para a string do corpo desta rotina.
+  Posponha "Finalize after run. " para a string do corpo desta rotina.
+  Posponha "Processe ""kernel32.dll"" ""ExitProcess"" com 0. " para a string do corpo desta rotina.
   Lance a cabeçalho de rotina desta rotina sobre o header string desta rotina.
-  Lance as instruções desta rotina sobre o body string desta rotina.
+  Lance as instruções desta rotina sobre a string do corpo desta rotina.
   Compile o header of a rotina.
-  Compile o body of a rotina.
+  Compile o corpo of a rotina.
 
 Etapas para que se adicione os built-in tipos:
   Adicione um built-in tipo usando "byte" e "bytes" e 1.
@@ -140,11 +136,11 @@ Etapas para que se adicione o rotina de desalocação para um tipo:
   Se o conteúdo tipo deste tipo for inexistente, retorne.
   Adicione uma rotina para as rotinas usando nil.
   Posponha "Desaloque um " junto com o nome deste tipo para o header string desta rotina.
-  Posponha "Se o " junto com o nome deste tipo seguido de " for inexistente, retorne. " para o body string desta rotina.
-  Se o conteúdo tipo deste tipo deveria ser finalizado, posponha "~finalize o conteúdo de este " junto com o nome deste tipo seguido de ". " para o body string desta rotina. \ precisa ter uma rotina de destruição gerada automaticamente para ele "
-  Posponha "Desassocie o " junto com o nome deste tipo seguido de "." para o body string desta rotina.
+  Posponha "Se o " junto com o nome deste tipo seguido de " for inexistente, retorne. " para a string do corpo desta rotina.
+  Se o conteúdo tipo deste tipo deveria ser finalizado, posponha "~finalize o conteúdo de este " junto com o nome deste tipo seguido de ". " para a string do corpo desta rotina. \ precisa ter uma rotina de destruição gerada automaticamente para ele "
+  Posponha "Desassocie o " junto com o nome deste tipo seguido de "." para a string do corpo desta rotina.
   Lance a cabeçalho de rotina desta rotina sobre o header string desta rotina.
-  Lance as instruções desta rotina sobre o body string desta rotina.
+  Lance as instruções desta rotina sobre a string do corpo desta rotina.
   Compile o header of a rotina.
 
 Etapas para que se adicione o rotina de destruição por um tipo:
@@ -161,39 +157,39 @@ Etapas para que se adicione o rotina de destruição por um tipo (ponteiro):
   Se a representação interna da rotina estiver no catálogo geral de rotinas, retorne.
   Adicione uma rotina para as rotinas usando nil.
   Posponha "Destrua um " junto com o nome deste tipo para o header string desta rotina.
-  Posponha "Se o " junto com o nome deste tipo seguido de " for inexistente, retorne. " para o body string desta rotina.
-  Se o conteúdo tipo deste tipo puder ser reduzido para "ponteiro", posponha "Destrua o conteúdo de este " junto com o nome deste tipo seguido de "'. " para o body string desta rotina.
-  Se o conteúdo tipo deste tipo puder ser reduzido para "listas", posponha "Destrua o conteúdo de este " junto com o nome deste tipo seguido de "'. " para o body string desta rotina.
+  Posponha "Se o " junto com o nome deste tipo seguido de " for inexistente, retorne. " para a string do corpo desta rotina.
+  Se o conteúdo tipo deste tipo puder ser reduzido para "ponteiro", posponha "Destrua o conteúdo de este " junto com o nome deste tipo seguido de "'. " para a string do corpo desta rotina.
+  Se o conteúdo tipo deste tipo puder ser reduzido para "listas", posponha "Destrua o conteúdo de este " junto com o nome deste tipo seguido de "'. " para a string do corpo desta rotina.
   Comece. [a executar o código abaixo]
     Obtenha um campo desde os campos deste conteúdo tipo deste tipo.
     Se o campo for inexistente, pare.
     Se o reference detector deste campo estiver ativo, recomece.
     Se o tipo deste campo não deveria ser ignorado, recomece.
-    Posponha "Destrua o " junto com o nome deste tipo seguido de "'s " junto com o nome deste campo seguido de ". " para o body string desta rotina.
+    Posponha "Destrua o " junto com o nome deste tipo seguido de "'s " junto com o nome deste campo seguido de ". " para a string do corpo desta rotina.
   Recomece. [percorra novamente o código acima]
-  Posponha "Desaloque o " junto com o nome deste tipo seguido de ". " para o body string desta rotina. \ traduzir aqui
+  Posponha "Desaloque o " junto com o nome deste tipo seguido de ". " para a string do corpo desta rotina. \ traduzir aqui
   Lance a cabeçalho de rotina desta rotina sobre o header string desta rotina.
-  Lance as instruções desta rotina sobre o body string desta rotina.
+  Lance as instruções desta rotina sobre a string do corpo desta rotina.
   Compile o header of a rotina.
 
 Etapas para que se adicione o rotina de destruição por um tipo (listas):
   Se o tipo for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
   \Atribua "Erro interno na hora de executar a tarefa de destruição de tipos" ao texto retornado.
-  Se o first campo destes campos deste tipo for inexistente, apresente uma mensagem de erro contendo "Erro interno no campo do tipo. Veja rotina 'adicione um forget rotina por um tipo (listas)'"; [Say o texto retornado;] exit. \Adicionado Say o texto retornado
+  Se o first campo destes campos deste tipo for inexistente, apresente uma mensagem de erro contendo "Erro interno no campo do tipo. Consulte a rotina 'adicione um forget rotina por um tipo (listas)'"; retorne. \
   Se o tipo deste first campo destes campos deste tipo for inexistente, apresente a mensagem de erro contendo "Erro interno no tipo do campo. Consulte a rotina 'adicione o forget rotina por um tipo (listas)'"; retorne.
   Atribua "Destrua [" junto com o nome deste tipo seguido de "]" para uma representação interna da rotina.
   Se a representação interna da rotina estiver no catálogo geral de rotinas, retorne.
   Adicione uma rotina para as rotinas usando nil.
   Posponha "Destrua um " junto com o nome deste tipo para o header string desta rotina.
-  Posponha "Se o " junto com o nome deste tipo seguido de "'s first for inexistente, retorne. " para o body string desta rotina. \ listas duplamente encadeadas
+  Posponha "Se o " junto com o nome deste tipo seguido de "'s first for inexistente, retorne. " para a string do corpo desta rotina. \ listas duplamente encadeadas
   Atribua o nome deste tipo deste first campo destes campos deste tipo para um nome.
-  Posponha "Atribua o " junto com o nome deste tipo seguido de "'s first para um " junto com o nome seguido de ". " para o body string desta rotina.
-  Posponha "Remove o " junto com o nome seguido de " desde o " junto com o nome deste tipo seguido de ". " para o body string desta rotina.
-  Posponha "Destrua o " junto com o nome seguido de ". " para o body string desta rotina.
-  Posponha "Recomece. " para o body string desta rotina.
+  Posponha "Atribua o " junto com o nome deste tipo seguido de "'s first para um " junto com o nome seguido de ". " para a string do corpo desta rotina.
+  Posponha "Remove o " junto com o nome seguido de " desde o " junto com o nome deste tipo seguido de ". " para a string do corpo desta rotina.
+  Posponha "Destrua o " junto com o nome seguido de ". " para a string do corpo desta rotina.
+  Posponha "Recomece. " para a string do corpo desta rotina.
   Lance a cabeçalho de rotina desta rotina sobre o header string desta rotina.
-  Lance as instruções desta rotina sobre o body string desta rotina.
+  Lance as instruções desta rotina sobre a string do corpo desta rotina.
   Compile o header of a rotina.
 
 Etapas para que se adicione um função para umas DLLs usando uma DLL nome e um função nome:
@@ -226,8 +222,8 @@ Etapas para que se adicione a rotina de finalização por um tipo (conjunto):
   Se o tipo for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
   Adicione uma rotina para as rotinas usando nil.
-  Posponha "~finalize um " junto com o nome deste tipo para o header string desta rotina.
-  Posponha "Decodifique $50. " para o body string desta rotina. \ push eax -> push the 4 bytes value in EAX onto the stack
+  Posponha "~Finalize um " junto com o nome deste tipo para o header string desta rotina.
+  Posponha "Decodifique $50. " para a string do corpo desta rotina. \ push eax -> push the 4 bytes value in EAX onto the stack
   \The push instruction places its operand onto the top of the hardware supported stack in memory. 
   \Specifically, push first decrements ESP by 4, then places its operand into the contents of the 32-bit location sob address [ESP]. 
   \ESP (the stack pointer) is decremented by push since the x86 stack grows para baixo - i.e. the stack grows desde high addresses to lower addresses.
@@ -235,31 +231,31 @@ Etapas para que se adicione a rotina de finalização por um tipo (conjunto):
     Obtenha um campo desde os campos deste tipo.
     Se o campo for inexistente, pare.
     Se o tipo deste campo não deveria ser finalizado, recomece.
-    Posponha "~finalize o " junto com o nome deste tipo seguido de "'s " junto com o nome deste campo seguido de ". " para o body string desta rotina.
+    Posponha "~Finalize o " junto com o nome deste tipo seguido de "'s " junto com o nome deste campo seguido de ". " para a string do corpo desta rotina.
   Recomece. [percorra novamente o código acima]
-  Posponha "Decodifique $58." para o body string desta rotina. \ pop eax -> pop the top element of the stack into memory ar the four bytes starting at location EAX.
+  Posponha "Decodifique $58." para a string do corpo desta rotina. \ pop eax -> pop the top element of the stack into memory ar the four bytes starting at location EAX.
   \  \pop 4 bytes off the stack and put them into eax
   \ The pop instruction removes the 4-byte data element desde the top of the hardware-supported stack into the specified operand (i.e. register or memory location). 
   \It first moves the 4 bytes located sob memory location [SP] into the specified register or memory location, and then increments memory location [SP] by 4.
   Lance a cabeçalho de rotina desta rotina sobre o header string desta rotina.
-  Lance as instruções desta rotina sobre o body string desta rotina.
+  Lance as instruções desta rotina sobre a string do corpo desta rotina.
   Compile o header of a rotina.
 
 Etapas para que se adicione a rotina de finalização por um tipo (texto):
   Se o tipo for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
   Adicione uma rotina para as rotinas usando nil.
-  Posponha "~finalize um " junto com o nome deste tipo para o header string desta rotina.
-  Posponha "Decodifique $50. " para o body string desta rotina. \ push eax -> push the 4 bytes value in EAX onto the stack
+  Posponha "~Finalize um " junto com o nome deste tipo para o header string desta rotina.
+  Posponha "Decodifique $50. " para a string do corpo desta rotina. \ push eax -> push the 4 bytes value in EAX onto the stack
   \ Specifically, push first decrements ESP by 4, then places its operand into the contents of the 32-bit location sob endereço [ESP]. 
   \ESP (the stack pointer) is decremented by push since the x86 stack grows para baixo - i.e. the stack grows desde high addresses to lower addresses.
-  Posponha "Desassocie o caractere inicial de esta string . " para o body string desta rotina. \\ traduzir string aqui  
-  Posponha "Decodifique $58." para o body string desta rotina. \ pop eax -> pop the top element of the stack into memory at the four bytes starting at location EAX.
+  Posponha "Desassocie o caractere inicial de esta string . " para a string do corpo desta rotina. \\ traduzir string aqui  
+  Posponha "Decodifique $58." para a string do corpo desta rotina. \ pop eax -> pop the top element of the stack into memory at the four bytes starting at location EAX.
   \pop 4 bytes off the stack and put them into eax
   \ The pop instruction removes the 4-byte data element desde the top of the hardware-supported stack into the specified operand (i.e. register or memory location). 
   \ It first moves the 4 bytes located sob memory location [SP] into the specified register or memory location, and then increments memory location [SP] by 4.
   Lance a cabeçalho de rotina desta rotina sobre o header string desta rotina.
-  Lance as instruções desta rotina sobre o body string desta rotina.
+  Lance as instruções desta rotina sobre a string do corpo desta rotina.
   Compile o header of a rotina.
 
 Etapas para que se adicione um fragmento usando uma etiqueta:
@@ -284,7 +280,7 @@ Etapas para que se adicione um fragmento usando uma etiqueta e uma rotina:
   Crie o fragmento usando a etiqueta.
   Posponha o fragmento para os fragmentos desta rotina utilizada atualmente.
   Atribua a rotina à rotina deste fragmento.
-  Compile o body of a rotina.
+  Compile o corpo of a rotina.
 
 Etapas para que se adicione um fragmento usando uma etiqueta e uma variável:
   Se a rotina utilizada atualmente for inexistente, esvazie o fragmento; retorne.
@@ -663,7 +659,7 @@ Etapas para que se enderece uma variável usando um endereço:
   Se o tipo desta variável puder ser reduzido para "string", adicione a quantidade de caracteres deste data desta variável mais 1 para o endereço.
   Se o tipo desta variável puder ser reduzido para "cadeia de caracteres", adicione a quantidade de caracteres deste data desta variável mais 1 para o endereço.
   Se o tipo desta variável puder ser reduzido para "texto", adicione a quantidade de caracteres deste data desta variável mais 1 para o endereço.
-  Arredonde o endereço para cima usando o múltiplo imediato de 4.
+  Arredonde  para cima o endereço usando o múltiplo imediato de 4.
 
 Etapas para que se enderece uns variáveis usando um endereço:
   Se o detector de erros deste compilador estiver ativado, retorne.
@@ -1116,33 +1112,33 @@ Etapas para que se limpe um termo:
   Limpe o phrase deste termo.
 
 Etapas para que se compile o bodies of as rotinas:
-  Compile o body of a rotina denominada "Initialize before run".
-  Compile o body of a rotina denominada "Execute o programa".
-  Compile o body of a rotina denominada "Finalize after run".
+  Compile o corpo of a rotina denominada "Initialize before run".
+  Compile o corpo of a rotina denominada "Execute o programa".
+  Compile o corpo of a rotina denominada "Finalize after run".
 
-Etapas para que se compile o body of uma rotina:
+Etapas para que se compile o corpo of uma rotina:
   Se a rotina for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o compiled detector desta rotina estiver ativo, retorne.
   Ligue o compiled detector desta rotina.
   Lance um percorredor sobre as instruções desta rotina.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor for o ponto&vírgula, compile o body of a rotina usando o percorredor (sobrecarga de métodos); retorne. \ *** alternate palavraing
-  Se o segmento inicial deste percorredor for algum reutilização de rotina, compile o body of a rotina usando o percorredor (employ); retorne.
+  Se o segmento inicial deste percorredor for o ponto&vírgula, compile o corpo of a rotina usando o percorredor (sobrecarga de métodos); retorne. \ *** alternate wording
+  Se o segmento inicial deste percorredor for algum reutilização de rotina, compile o corpo of a rotina usando o percorredor (cláusula de reutilização); retorne.
   Atribua a rotina utilizada atualmente para um saved rotina.
   Atribua a rotina à rotina utilizada atualmente.
   Crie o nickname catálogo desta rotina usando 101.
   Eliminate duplicate nicknames desde os parâmetros desta rotina usando o nickname catálogo desta rotina.
-  Compile o body of a rotina (etapa preliminar).
+  Compile o corpo of a rotina (etapa preliminar).
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, retorne.
     Se o segmento inicial deste percorredor estiver em branco, pare.
     Compile a próxima instrução usando o percorredor.
   Recomece. [percorra novamente o código acima]
-  Compile o body of a rotina (etapa conclusiva).
+  Compile o corpo of a rotina (etapa conclusiva).
   Atribua o saved rotina à rotina utilizada atualmente.
 
-Etapas para que se compile o body of uma rotina (etapa conclusiva):
+Etapas para que se compile o corpo of uma rotina (etapa conclusiva):
   Se a rotina for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
   Adicione um fragmento usando a etiqueta de finalização.
@@ -1153,44 +1149,44 @@ Etapas para que se compile o body of uma rotina (etapa conclusiva):
     Se o tipo desta variável não deveria ser finalizado, recomece.
     Adicione um segundo fragmento usando o etiqueta de inserção de endereço [na stack] e a variável.
     Encontre uma segunda rotina usando "~finalize" e o tipo desta variável.
-    Se a segunda rotina for inexistente, apresente uma mensagem de erro contendo "Erro interno #7 - Consulte a rotina 'para que se compile o body of uma rotina (etapa conclusiva)'"; retorne.
+    Se a segunda rotina for inexistente, apresente uma mensagem de erro contendo "Erro interno #7 - Consulte a rotina 'para que se compile o corpo of uma rotina (etapa conclusiva)'"; retorne.
     Adicione um terceiro fragmento usando a etiqueta de demanda interna e a segunda rotina.
   Recomece. [percorra novamente o código acima]
   Adicione um quarto fragmento usando o etiqueta conclusiva.
 
-Etapas para que se compile o body of uma rotina (etapa preliminar):
+Etapas para que se compile o corpo of uma rotina (etapa preliminar):
   Se a rotina for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
   Adicione um fragmento usando o etiqueta preliminar.
   Adicione um segundo fragmento usando o etiqueta de laço.
 
-Etapas para que se compile o body of a rotina denominada uma string;
-Etapas para que se compile o body of a rotina denominado uma string:
+Etapas para que se compile o corpo of a rotina denominada uma string;
+Etapas para que se compile o corpo of a rotina denominado uma string:
   Se o detector de erros deste compilador estiver ativado, retorne.
   Encontre uma rotina usando a string e o catálogo geral de rotinas.
   Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro. A rotina 'para que se " junto com a string seguido de "' não pode ser encontrada."; retorne.
-  Compile o body of a rotina.
+  Compile o corpo of a rotina.
 
-Etapas para que se compile o body of uma rotina usando um percorredor (sobrecarga de métodos):
+Etapas para que se compile o corpo of uma rotina usando um percorredor (sobrecarga de métodos):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação). \ *** do we need this?
   Atribua a subsequente rotina desta rotina para um conteúdo rotina.
   Se o conteúdo rotina for inexistente, apresente uma mensagem de erro contendo "Erro. Não foi possível encontrar o cabeçalho alternativo desta rotina." e o percorredor; retorne.
   Atribua a representação interna da rotina deste conteúdo rotina ao employs representação interna da rotina desta rotina.
-  Compile o body of o conteúdo rotina.
+  Compile o corpo of o conteúdo rotina.
 
-Etapas para que se compile o body of uma rotina usando um percorredor (employ):
+Etapas para que se compile o corpo of uma rotina usando um percorredor (cláusula de reutilização):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile uma rotina reference usando o percorredor.
   Converta a rotina reference para o employs representação interna da rotina desta rotina.
   Destrua a rotina reference.
-  Se o segmento inicial deste percorredor não for ".", apresente uma mensagem de erro contendo "Erro. O comando 'Employ' deve terminar com um ponto, não com: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for ".", apresente uma mensagem de erro contendo "Erro. O comando 'Empregue' deve terminar com um ponto, não com: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Erro. Permitido apenas um employ por rotina" e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Erro. Permitido apenas uma cláusula de reutilização por rotina" e o percorredor; retorne.
   Encontre uma segunda rotina usando o employs representação interna da rotina desta rotina e o catálogo geral de rotinas.
   Se a segunda rotina for inexistente, apresente a mensagem de erro contendo "Erro. A rotina para que se '" junto com o employs representação interna da rotina desta rotina seguido de "' não foi encontrada." e o local de aparição desta rotina; retorne.
-  Compile o body of a segunda rotina.
+  Compile o corpo of a segunda rotina.
 
 Etapas para que se compile a parte designadora usando um percorredor e uma variável:
   Se o detector de erros deste compilador estiver ativado, retorne.
@@ -1932,7 +1928,7 @@ Etapas para que se compile uma rotina reference usando um percorredor (artigo in
   Mova o percorredor (usando diretrizes de compilação).
   Examine um nome usando o percorredor.
   Encontre um tipo e um nickname usando o nome.
-  Se o tipo for inexistente, apresente uma mensagem de erro contendo "Erro. O comando '" junto com o nome seguido de "' não é um employ válido." e o percorredor; retorne.
+  Se o tipo for inexistente, apresente uma mensagem de erro contendo "Erro. O comando '" junto com o nome seguido de "' não é um comando de reutilização válido." e o percorredor; retorne.
   Adicione uma unidade semântica para a rotina reference usando o tipo.
 
 Etapas para que se compile uma rotina reference usando um percorredor (unidade semântica string):
@@ -3507,16 +3503,7 @@ Etapas para que se determine se uma string é algum point:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma string é algum reutilização de rotina:
-  \ Employs servem para usar uma rotina 
-  \exemplos:
-  \To raise a flag: Employ set a flag.
-  \To decide if a flag is raised: Employ decide if a flag is set.
-  \ Acho que uma boa tradução seria:
-  \ Etapas para que se ative um detector: Faça uso da rotina "defina um detector".
-  \ (troquei a palavra "flag" por "detector" e a palavra "raise" por "ativar"
-  \ então ao invés de "empregue" usaríamos "faça uso da rotina" ou "lance mão da rotina"
-  \Estou pensando em retirar isso já que já temos a sobrecarga de métodos disponível
-  \PAL
+  \Obsoleto desde a implantação da sobrecarga de métodos
   Se a string for "empregue", diga sim.
   \CAL
   Se a string for "employ", diga sim.
@@ -4054,7 +4041,7 @@ Etapas para que se obtenha uma contagem usando umas DLLs (all funções mais marke
     Adicione 1 para a contagem.
   Recomece. [percorra novamente o código acima]
 
-Um global body é um subtexto.
+Um corpo global é um subtexto.
 
 O catálogo de variáveis globais é um catálogo.
 
@@ -5418,14 +5405,14 @@ Etapas para que se resolva um campo:
 Etapas para que se resolva um global:
   Se o global for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se o global body deste global não estiver em branco, resolva o global (compile body).
+  Se o corpo global deste global não estiver em branco, resolva o global (compile corpo).
   Se o nome do tipo deste global estiver em branco, apresente uma mensagem de erro contendo "Tipo inválido: " junto com o nome deste global seguido de "' . O tipo da variável global está vazio." e o local de aparição deste global; retorne.
   Resolva o global como uma variável.
 
-Etapas para que se resolva um global (compile body):
+Etapas para que se resolva um global (compile corpo):
   Se o global for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Lance um percorredor sobre o global body deste global.
+  Lance um percorredor sobre o corpo global deste global.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum literal, apresente uma mensagem de erro contendo "Erro de tipo. O tipo: " junto com o segmento inicial deste percorredor seguido de "' deve ser do tipo literal." e o percorredor; retorne.
   Compile um literal usando o percorredor.
@@ -5630,10 +5617,11 @@ Uma rotina é uma lista com
   Um cabeçalho de rotina, 
   Um header string,
   Umas instruções, 
-  Um body string,
+  Uma string do corpo,
   Uns fragmentos,
   Um endereço.
 
+Uma string do corpo é uma string.
 Um rotina reference é umas unidades semânticas.
 
 As rotinas são umas rotinas.
@@ -5736,17 +5724,17 @@ Etapas para que se examine uns campos usando um percorredor:
   Examine algum pauses usando o percorredor.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se examine um global body usando um percorredor:
+Etapas para que se examine um corpo global usando um percorredor:
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o segmento inicial deste percorredor estiver em branco, retorne.
-  Atribua o caractere inicial deste segmento inicial deste percorredor ao caractere inicial deste global body.
-  Atribua -1 ao caractere final deste global body.
+  Atribua o caractere inicial deste segmento inicial deste percorredor ao caractere inicial deste corpo global.
+  Atribua -1 ao caractere final deste corpo global.
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, retorne. \ o retorne sai da rotina
     Se o segmento inicial deste percorredor estiver em branco, retorne. \ o comando recomece volta pro começo do loop
     Se o segmento inicial deste percorredor for o sinal de dois pontos, retorne. \ o comando pare sai do loop, mas não sai da rotina, apenas do loop
     Se o segmento inicial deste percorredor for o ponto final, retorne.
-    Atribua o caractere final deste segmento inicial deste percorredor ao caractere final deste global body.
+    Atribua o caractere final deste segmento inicial deste percorredor ao caractere final deste corpo global.
     Mova o percorredor (usando diretrizes de compilação).
   Recomece. [percorra novamente o código acima]
 
@@ -5772,7 +5760,7 @@ Etapas para que se examine um global usando um percorredor (data part):
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum to, apresente uma mensagem de erro contendo "Depois da palavra 'equal' você precisa por um palavra 'to'. Você colocou;: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Examine o global body deste global usando o percorredor.
+  Examine o corpo global deste global usando o percorredor.
   Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Falta terminar um frase com um ponto." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Catalogue o global.
@@ -5792,7 +5780,7 @@ Etapas para que se examine um global usando um percorredor (has ou have):
 
 Etapas para que se examine um global usando um percorredor (literal termo):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Examine o global body deste global usando o percorredor.
+  Examine o corpo global deste global usando o percorredor.
   Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Aprenda a escrever corretamente. Cadê o ponto final?." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Catalogue o global.
@@ -5981,7 +5969,7 @@ Etapas para que se ligue o compiled detector em uma variável:
   Encontre uma rotina usando "atribua" e o tipo deste literal desta variável e "para" e o tipo desta variável.
   Se a rotina for inexistente, encontre a rotina usando "converta" e o tipo deste literal desta variável e "para" e o tipo desta variável; ative um detector.
   Se a rotina for inexistente, apresente uma mensagem de erro contendo "O tipo dessa variável global e desse literal não são compatíveis." e o local de aparição desta variável; retorne.
-  Compile o body of a rotina.
+  Compile o corpo of a rotina.
   Se o detector estiver ativo, atribua "converta o " junto com o nome deste literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao initializer string desta variável.
   Se o detector não estiver ativo, atribua "atribua o " junto com o nome deste literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao initializer string desta variável. \ Era " ao ". NÃO PODIA MUDAR O " ao " não sei o porquê
 
@@ -6206,7 +6194,7 @@ Uma variável é uma lista com
   Um reference detector [campos only],
   Um redefinition conteúdo nome [campos only],
   Um by-value detector [parâmetros only],
-  Um global body [globals only],
+  Um corpo global [globals only],
   Um initializer string [globals only],
   Um literal (reference) [globals only - constant com which to initalize the global],
   Um texto hexadecimal denominado data [literals only].
