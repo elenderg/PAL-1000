@@ -1523,7 +1523,7 @@ Etapas para que se compile um literal usando um percorredor:
   Adicione o literal para os literals usando o caractere inicial deste segmento inicial deste percorredor .
   \Se o segmento inicial deste percorredor for algum detector literal, compile o literal usando o percorredor (detector); retorne.
   Se o segmento inicial deste percorredor for algum hex literal, compile o literal usando o percorredor (hex); retorne.
-  Se o segmento inicial deste percorredor for algum numeric literal, compile o literal usando o percorredor (numeric); retorne.
+  Se o segmento inicial deste percorredor for algum valor numérico literal, compile o literal usando o percorredor (numeric); retorne.
   Se o segmento inicial deste percorredor for algum ponteiro literal, compile o literal usando o percorredor (ponteiro); retorne.
   Se o segmento inicial deste percorredor for algum string literal, compile o literal usando o percorredor (cadeia de caracteres); retorne.
   Apresente uma mensagem de erro contendo "Erro interno #8 - Consulte a rotina para que se compile um termo usando um percorredor (literal)" e o percorredor.
@@ -2824,7 +2824,7 @@ Etapas para que se determine se uma string é algum artigo indefinido português: 
 
 Etapas para que se determine se uma string é algum literal:
   Se a string for algum ponteiro literal, diga sim.
-  Se a string for algum numeric literal, diga sim.
+  Se a string for algum valor numérico literal, diga sim.
   Se a string for algum string literal, diga sim.
   \Se a string for algum detector literal, diga sim. ***
   Se a string for algum hex literal, diga sim.
@@ -5655,39 +5655,39 @@ Uma keyword de designação é uma keyword.
 
 Etapas para que se examine um campo usando um percorredor:
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Examine o campo usando o percorredor (tipo part).
+  Examine o campo usando o percorredor (tipo geral).
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, retorne.
-    Se o segmento inicial deste percorredor for uma keyword de designação, examine o campo usando o percorredor (parte designadora); recomece.
-    Se o segmento inicial deste percorredor for "sob", examine o campo usando o percorredor (redefine part); recomece.
-    \Se o segmento inicial deste percorredor for "equivalente a", examine o campo usando o percorredor (redefine part); recomece.
-    \Se o segmento inicial deste percorredor for "análogo a", examine o campo usando o percorredor (redefine part); recomece.
-    \Se o segmento inicial deste percorredor for "análoga a", examine o campo usando o percorredor (redefine part); recomece.
-    Se o segmento inicial deste percorredor for "em", examine o campo usando o percorredor (redefine part); recomece.
-    Se o segmento inicial deste percorredor for "sob", examine o campo usando o percorredor (redefine part); recomece.
-    Se o segmento inicial deste percorredor for "sobre", examine o campo usando o percorredor (redefine part); recomece.
-    Se o segmento inicial deste percorredor for "redefinindo", examine o campo usando o percorredor (redefine part); recomece.
-    Se o segmento inicial deste percorredor for algum reference, examine o campo usando o percorredor (reference part); recomece.
+    Se o segmento inicial deste percorredor for uma keyword de designação, examine o campo usando o percorredor (cláusula designadora); recomece.
+    Se o segmento inicial deste percorredor for "sob", examine o campo usando o percorredor (cláusula de redefinição); recomece.
+    \Se o segmento inicial deste percorredor for "equivalente a", examine o campo usando o percorredor (cláusula de redefinição); recomece.
+    \Se o segmento inicial deste percorredor for "análogo a", examine o campo usando o percorredor (cláusula de redefinição); recomece.
+    \Se o segmento inicial deste percorredor for "análoga a", examine o campo usando o percorredor (cláusula de redefinição); recomece.
+    Se o segmento inicial deste percorredor for "em", examine o campo usando o percorredor (cláusula de redefinição); recomece.
+    Se o segmento inicial deste percorredor for "sob", examine o campo usando o percorredor (cláusula de redefinição); recomece.
+    Se o segmento inicial deste percorredor for "sobre", examine o campo usando o percorredor (cláusula de redefinição); recomece.
+    Se o segmento inicial deste percorredor for "redefinindo", examine o campo usando o percorredor (cláusula de redefinição); recomece.
+    Se o segmento inicial deste percorredor for algum reference, examine o campo usando o percorredor (cláusula de referência); recomece.
 
-Etapas para que se examine um campo usando um percorredor (parte designadora):
+Etapas para que se examine um campo usando um percorredor (cláusula designadora):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Se o nome do tipo deste campo estiver em branco, atribua o nome deste campo ao nome do tipo deste campo. \ byte array nome do tipo already filled in
   Examine o nome deste campo usando o percorredor.
 
-Etapas para que se examine um campo usando um percorredor (redefine part):
+Etapas para que se examine um campo usando um percorredor (cláusula de redefinição):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum artigo definido, apresente uma mensagem de erro contendo "Eu estava esperando o artigo 'the', mas o que encontrei foi: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Examine o nome de redefinição de conteúdo deste campo usando o percorredor.
 
-Etapas para que se examine um campo usando um percorredor (reference part):
+Etapas para que se examine um campo usando um percorredor (cláusula de referência):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Ative o detector de referência deste campo.
 
-Etapas para que se examine um campo usando um percorredor (tipo part - array de bytes):
+Etapas para que se examine um campo usando um percorredor (tipo: array de bytes):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Converta o segmento inicial deste percorredor para uma proporção.
   Reduza a proporção.
@@ -5698,7 +5698,7 @@ Etapas para que se examine um campo usando um percorredor (tipo part - array de 
   Mova o percorredor (usando diretrizes de compilação).
   Atribua "byte" ao nome do tipo deste campo.
 
-Etapas para que se examine um campo usando um percorredor (tipo part - normal):
+Etapas para que se examine um campo usando um percorredor (tipo normal):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o segmento inicial deste percorredor não for algum artigo indefinido, apresente uma mensagem de erro contendo "Erro. O compilador esperava um artigo idefinido. Termo encontrado: '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.  
   Se o segmento inicial deste percorredor for "outra", atribua "outra" ao nome deste campo.
@@ -5713,10 +5713,10 @@ Etapas para que se examine um campo usando um percorredor (tipo part - normal):
   Examine um nome usando o percorredor.
   Extend o nome deste campo com o nome.
 
-Etapas para que se examine um campo usando um percorredor (tipo part):
+Etapas para que se examine um campo usando um percorredor (tipo geral):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se o segmento inicial deste percorredor for algum numeric literal, examine o campo usando o percorredor (tipo part - array de bytes); retorne.
-  Examine o campo usando o percorredor (tipo part - normal).
+  Se o segmento inicial deste percorredor for algum valor numérico literal, examine o campo usando o percorredor (tipo: array de bytes); retorne.
+  Examine o campo usando o percorredor (tipo normal).
 
 Etapas para que se examine uns campos usando um percorredor:
   Se o detector de erros deste compilador estiver ativado, retorne.
@@ -5911,7 +5911,7 @@ Etapas para que se examine um tipo usando um percorredor:
   Se o segmento inicial deste percorredor não for algum operador de atribuição simples, 
     apresente a mensagem de erro contendo "Eu esperava um 'é' ou um 'são', mas só achei um " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor for algum numeric literal, examine o tipo usando o percorredor (unidade de medida); retorne.
+  Se o segmento inicial deste percorredor for algum valor numérico literal, examine o tipo usando o percorredor (unidade de medida); retorne.
   Se o segmento inicial deste percorredor não for algum artigo indefinido, 
     apresente a mensagem de erro contendo "Faltou um artigo indefinido, lembra?: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
