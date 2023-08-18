@@ -24,7 +24,7 @@ Um intervalo é um número.
 Uma caixa de texto é uma lista com 
   Uma caixa,
   Uma origem,
-  Uma cor do pincel,
+  Uma cor da canetinha,
   Uma fonte,
   Um alinhamento,
   Umas linhas des textos,
@@ -42,7 +42,7 @@ Uma caixa de texto é uma lista com
 Um campo de texto é uma lista com
   Uma caixa,
   Uma origem,
-  Uma cor do pincel,
+  Uma cor da canetinha,
   Uma fonte,
   Um alinhamento,
   Some linhas des textos,
@@ -93,10 +93,10 @@ Um contexto é uma lista com \Um contexto de dispositivo é uma estrutura que defi
   Uma caixa, 
   Uma orientação, 
   Um tamanho da letra, 
-  Uma cor, um pincel sob a cor,
+  Uma cor, uma canetinha sob a cor,
   Um número e
-  Uma grossura do pincel.\ largura?
-  \OBS: A "grossura do pincel" não estava originalmente nessa estrutura, mas deveria.
+  Uma grossura da canetinha.\ largura?
+  \OBS: A "grossura da canetinha" não estava originalmente nessa estrutura, mas deveria.
   
 
 Um byte# é um número.
@@ -257,7 +257,7 @@ Etapas para que se ajuste espaçamento da fonte usando uma string:
     e 0. [extra]   \ A quantidade de espaço extra, em unidades lógicas, a ser adicionada a cada caractere. 
     \quero traduzir esse comando como: Mande a área de impressão e o código 0 para a função "SetTextCharacterExtra" da biblioteca "gdi32.dll".
   Processe "gdi32.dll" "GetCurrentObject" com  \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getcurrentobject
-  \A função GetCurrentObject retorna um identificador que identifica a caneta, pincel, paleta, bitmap ou fonte atual 
+  \A função GetCurrentObject retorna um identificador que identifica a caneta, canetinha, paleta, bitmap ou fonte atual 
   \e a função GetObject inicializa uma estrutura contendo os atributos desse objeto. 
   \Algumas impressoras fornecem canetas, pincéis e fontes residentes que podem ser usados para melhorar a velocidade de desenho em um aplicativo.
     A área de impressão [hDC] \ Um identificador para o contexto do dispositivo.
@@ -1437,7 +1437,7 @@ Etapas para que se copie as propriedades of uma caixa de texto Para um segunda c
   Se o segunda caixa de texto for inexistente, retorne.
   Atribua a caixa desta caixa de texto à caixa desta segunda caixa de texto.
   Atribua a origem desta caixa de texto à origem desta segunda caixa de texto.
-  Atribua a cor do pincel desta caixa de texto à cor do pincel desta segunda caixa de texto.
+  Atribua a cor da canetinha desta caixa de texto à cor da canetinha desta segunda caixa de texto.
   Atribua a fonte desta caixa de texto à fonte desta segunda caixa de texto.
   Atribua o alinhamento desta caixa de texto ao alinhamento desta segunda caixa de texto.
   Copie as linhas des textos desta caixa de texto para as linhas des textos desta segunda caixa de texto.
@@ -1802,12 +1802,12 @@ Etapas para que se crie o hBrush of um canvas usando uma cor:
   Converta a cor para um código da cor.
   Se a cor for clear, atribua o null hBrush a um hBrush.
   Se a cor não for clear, Processe "gdi32.dll" "CreateSolidBrush" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-createsolidbrush
-    \A função CreateSolidBrush cria um pincel lógico que possui a cor sólida especificada.
-    O código da cor [color] \A cor do pincel. Para criar um valor de cor COLORREF, use a macro RGB.
-    devolvendo o hBrush. \Se a função for bem-sucedida, o valor de retorno identifica um pincel lógico.
+    \A função CreateSolidBrush cria uma canetinha lógico que possui a cor sólida especificada.
+    O código da cor [color] \A cor da canetinha. Para criar um valor de cor COLORREF, use a macro RGB.
+    devolvendo o hBrush. \Se a função for bem-sucedida, o valor de retorno identifica uma canetinha lógico.
     \Se a função falhar, o valor de retorno será NULL.
-    \Um pincel sólido é um bitmap que o sistema usa para pintar o interior de formas preenchidas.
-     \Depois que um aplicativo cria um pincel chamando CreateSolidBrush, ele pode selecionar esse pincel em qualquer contexto de dispositivo chamando a função SelecionarObjeto
+    \Uma canetinha sólido é um bitmap que o sistema usa para pintar o interior de formas preenchidas.
+     \Depois que um aplicativo cria uma canetinha chamando CreateSolidBrush, ele pode selecionar esse canetinha em qualquer contexto de dispositivo chamando a função SelecionarObjeto
   Processe "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-selectobject
   \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
     O canvas [hDC] \Um identificador para o contexto do dispositivo.
@@ -1823,8 +1823,8 @@ Etapas para que se crie o número da fonte of um canvas usando uma fonte:
 Etapas para que se crie o hPen of um canvas usando uma cor:
   Converta a cor para um código da cor.
   Se a cor estiver clear, atribua o null hPen a um hPen.
-  Atribua a quantidade de twips/pixel times o grossura do pincel a um número.
-  Se o canvas for a área de impressão, atribua 1 pixel times o grossura do pincel ao número.
+  Atribua a quantidade de twips/pixel times o grossura da canetinha a um número.
+  Se o canvas for a área de impressão, atribua 1 pixel times o grossura da canetinha ao número.
   Se a cor não estiver clear, Processe "gdi32.dll" "CreatePen" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-createpen
   \A função CreatePen cria uma caneta lógica que possui o estilo, largura e cor especificados. 
   \A caneta pode ser posteriormente selecionada em um contexto de dispositivo e usada para desenhar linhas e curvas.
@@ -1850,7 +1850,7 @@ Etapas para que se crie um hRgn usando uma caixa:
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Processe "gdi32.dll" "Rectangle" com \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-rectangle
-    \A função Retângulo desenha um retângulo. O retângulo é delineado com a caneta (pincel) atual e preenchido com a cor do pincel (brush) atual.
+    \A função Retângulo desenha um retângulo. O retângulo é delineado com a caneta (canetinha) atual e preenchido com a cor da canetinha (brush) atual.
     O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa 
     e A coordenada Y do canto superior esquerdo desta caixa 
@@ -1876,7 +1876,7 @@ Etapas para que se crie um hRgn usando uma elipse:
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Processe "gdi32.dll" "Ellipse" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-ellipse
-  \A função Ellipse desenha uma elipse. O centro da elipse é o centro do retângulo delimitador especificado. A elipse é delineada com a caneta atual e preenchida com a cor do pincel atual.
+  \A função Ellipse desenha uma elipse. O centro da elipse é o centro do retângulo delimitador especificado. A elipse é delineada com a caneta atual e preenchida com a cor da canetinha atual.
     O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa 
     e A coordenada Y do canto superior esquerdo desta caixa 
@@ -1917,8 +1917,8 @@ Etapas para que se crie um hRgn usando um polígono:
     \ ALTERNATE ou Seleciona o modo alternativo (preenche a área entre os lados ímpares e pares do polígono em cada linha de varredura).
     \WINDING = Seleciona o modo de enrolamento (preenche qualquer região com um valor de enrolamento diferente de zero).
     \Para obter mais informações sobre esses modos, consulte a função SetPolyFillMode, ou leia mais abaixo:    
-    \Um aplicativo preenche o interior de uma região chamando a função FillRgn e fornecendo um identificador que identifica um pincel específico. 
-    \Quando um aplicativo chama FillRgn, o sistema preenche a região com a cor do pincel usando o modo de preenchimento atual para o contexto de dispositivo especificado. 
+    \Um aplicativo preenche o interior de uma região chamando a função FillRgn e fornecendo um identificador que identifica uma canetinha específico. 
+    \Quando um aplicativo chama FillRgn, o sistema preenche a região com a cor da canetinha usando o modo de preenchimento atual para o contexto de dispositivo especificado. 
     \Existem dois modos de preenchimento: alternado e enrolamento. 
     \O aplicativo pode definir o modo de preenchimento para um contexto de dispositivo chamando a função SetPolyFillMode. 
     \O aplicativo pode recuperar o modo de preenchimento atual para um contexto de dispositivo chamando a função GetPolyFillMode.    
@@ -1950,7 +1950,7 @@ Etapas para que se crie um hRgn usando uma caixa arredondada:
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Processe "gdi32.dll" "RoundRect" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-roundrect
-  \A função RoundRect desenha um retângulo com cantos arredondados. O retângulo é delineado com a caneta atual e preenchido com a cor do pincel atual.
+  \A função RoundRect desenha um retângulo com cantos arredondados. O retângulo é delineado com a caneta atual e preenchido com a cor da canetinha atual.
     O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa 
     e A coordenada Y do canto superior esquerdo desta caixa 
@@ -2263,7 +2263,7 @@ Etapas para que se crie um terminal em uma caixa:
 
 Etapas para que se crie uma caixa de texto:
   Aloque memória para a caixa de texto.
-  Atribua a cor preta à cor do pincel desta caixa de texto.
+  Atribua a cor preta à cor da canetinha desta caixa de texto.
   Atribua a fonte padrão ao fonte desta caixa de texto.
   Atribua "à esquerda" ao alinhamento desta caixa de texto.
   Atribua 1/1 ao fator de escala desta caixa de texto.
@@ -3367,8 +3367,8 @@ Etapas para que se determine se uma localização está em um polígono:
     \ ALTERNATE ou Seleciona o modo alternativo (preenche a área entre os lados ímpares e pares do polígono em cada linha de varredura).
     \WINDING = Seleciona o modo de enrolamento (preenche qualquer região com um valor de enrolamento diferente de zero).
     \Para obter mais informações sobre esses modos, consulte a função SetPolyFillMode, ou leia mais abaixo:    
-    \Um aplicativo preenche o interior de uma região chamando a função FillRgn e fornecendo um identificador que identifica um pincel específico. 
-    \Quando um aplicativo chama FillRgn, o sistema preenche a região com a cor do pincel usando o modo de preenchimento atual para o contexto de dispositivo especificado. 
+    \Um aplicativo preenche o interior de uma região chamando a função FillRgn e fornecendo um identificador que identifica uma canetinha específico. 
+    \Quando um aplicativo chama FillRgn, o sistema preenche a região com a cor da canetinha usando o modo de preenchimento atual para o contexto de dispositivo especificado. 
     \Existem dois modos de preenchimento: alternado e enrolamento. 
     \O aplicativo pode definir o modo de preenchimento para um contexto de dispositivo chamando a função SetPolyFillMode. 
     \O aplicativo pode recuperar o modo de preenchimento atual para um contexto de dispositivo chamando a função GetPolyFillMode.    
@@ -3396,9 +3396,9 @@ Etapas para que se determine se uma localização está em um polígono:
     devolvendo um número. \Se o ponto especificado estiver na região, o valor de retorno será diferente de zero.
     \Se o ponto especificado não estiver na região, o valor de retorno é zero.
   Processe "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deleteobject
-  \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
+  \A função DeleteObject exclui uma caneta, canetinha, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
   \Depois que o objeto é excluído, o identificador especificado não é mais válido.
-    O hRgn. [ho] \Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    O hRgn. [ho] \Um identificador para uma caneta, canetinha, fonte, bitmap, região ou paleta lógica.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
   Destrua a série de vértices.
   \Se o identificador especificado não é válido ou está atualmente selecionado em um DC, o valor de retorno é zero.
@@ -3434,9 +3434,9 @@ Etapas para que se determine se uma localização está em uma caixa arredondada:
     \Se o ponto especificado estiver na região, o valor de retorno será diferente de zero.
     \Se o ponto especificado não estiver na região, o valor de retorno é zero.
   Processe "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deleteobject
-  \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
+  \A função DeleteObject exclui uma caneta, canetinha, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
   \Depois que o objeto é excluído, o identificador especificado não é mais válido.
-    O hRgn. [ho] \Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    O hRgn. [ho] \Um identificador para uma caneta, canetinha, fonte, bitmap, região ou paleta lógica.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
   Se o número for 0, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
@@ -4077,9 +4077,9 @@ Etapas para que se destrua o hBrush of um canvas:
     \2 (SIMPLEREGION - quando a região consistir em um único retângulo.)
     \3 (COMPLEXREGION - quando a região consistir em mais de um retângulo.)
   Processe "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deleteobject
-  \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
+  \A função DeleteObject exclui uma caneta, canetinha, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
   \Depois que o objeto é excluído, o identificador especificado não é mais válido.
-    O hBrush. \Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    O hBrush. \Um identificador para uma caneta, canetinha, fonte, bitmap, região ou paleta lógica.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
 
 Etapas para que se destrua o número da fonte of um canvas:
@@ -4089,9 +4089,9 @@ Etapas para que se destrua o número da fonte of um canvas:
     e O null número da fonte [h] \O número identificador do objeto a ser selecionado.
     devolvendo um número da fonte.\Se o objeto selecionado não for uma região e a função for bem-sucedida, o valor de retorno é um identificador para o objeto que está sendo substituído.
   Processe "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deleteobject
-  \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
+  \A função DeleteObject exclui uma caneta, canetinha, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
   \Depois que o objeto é excluído, o identificador especificado não é mais válido.
-    O número da fonte.\Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    O número da fonte.\Um identificador para uma caneta, canetinha, fonte, bitmap, região ou paleta lógica.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
 
 Etapas para que se destrua o hPen of um canvas:
@@ -4101,16 +4101,16 @@ Etapas para que se destrua o hPen of um canvas:
     e O null hPen  [h] \O número identificador do objeto a ser selecionado.
     devolvendo um hPen.\Se o objeto selecionado não for uma região e a função for bem-sucedida, o valor de retorno é um identificador para o objeto que está sendo substituído.
   Processe "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deleteobject
-  \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
+  \A função DeleteObject exclui uma caneta, canetinha, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
   \Depois que o objeto é excluído, o identificador especificado não é mais válido.
-    O hPen.\Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    O hPen.\Um identificador para uma caneta, canetinha, fonte, bitmap, região ou paleta lógica.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
 
 Etapas para que se destrua um hRgn:
   Processe "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deleteobject
-  \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
+  \A função DeleteObject exclui uma caneta, canetinha, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
   \Depois que o objeto é excluído, o identificador especificado não é mais válido.
-    O hRgn. [ho] \Um identificador para uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    O hRgn. [ho] \Um identificador para uma caneta, canetinha, fonte, bitmap, região ou paleta lógica.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
 
 Etapas para que se destrua um catálogo:
@@ -4374,7 +4374,7 @@ Etapas para que se pinte um console:
   Salve o quadro atual.
   Cubra somente fora de a caixa deste console .
   Pinte a caixa deste console com a cor da borda deste console e a cor de preenchimento deste console.
-  Atribua a cor branca ao cor do pincel desta caixa de texto deste console.
+  Atribua a cor branca ao cor da canetinha desta caixa de texto deste console.
   Pinte a caixa de texto deste console.
   Restaure o quadro atual.
 
@@ -4600,7 +4600,7 @@ Etapas para que se pinte um polígono com uma cor (border only):
     Se o vértice for inexistente, pare.
     Processe "gdi32.dll" "LineTo" com \https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-lineto
     \A função LineTo desenha uma linha da posição atual até, mas não incluindo, o ponto especificado.
-    \A linha é desenhada usando a caneta atual e, se a caneta for uma caneta geométrica, a cor do pincel atual.
+    \A linha é desenhada usando a caneta atual e, se a caneta for uma caneta geométrica, a cor da canetinha atual.
     \Se LineTo for bem-sucedido, a posição atual será definida como o ponto final especificado.
       O quadro atual [hdc] \o número identificador do contexto do dispositivo.
       e A coordenada X deste vértice [x] \Especifica a coordenada x, em unidades lógicas, do ponto final da linha.
@@ -4646,7 +4646,7 @@ Etapas para que se pinte um polígono com uma cor (apenas a cor de preenchimento)
   Crie uma série de vértices usando os vértices deste polígono.
   Processe "gdi32.dll" "Polygon" com \https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-polygon
   \A função Polygon desenha um polígono que consiste em dois ou mais vértices conectados por linhas retas. 
-  \O polígono é delineado usando a caneta atual e preenchido usando a cor do pincel atual e o modo de preenchimento de polígono.
+  \O polígono é delineado usando a caneta atual e preenchido usando a cor da canetinha atual e o modo de preenchimento de polígono.
     O quadro atual [hdc] \O identificador do contexto do dispositivo.
     e O ponteiro da localização desta série de vértices [*apt] \Um ponteiro para uma matriz de estruturas POINT que especificam os vértices do polígono, em coordenadas lógicas.
     \https://docs.microsoft.com/pt-br/previous-versions/dd162805(v=vs.85)
@@ -4701,14 +4701,14 @@ Etapas para que se pinte uma linha de texto of uma caixa de texto:
   Se a caixa de texto for inexistente, retorne.
   Se a linha de texto for inexistente, retorne.
   Obtenha uma caixa usando a linha de texto e a caixa de texto.
-  Pinte o working string desta linha de texto na caixa com a cor do pincel desta caixa de texto e a fonte desta caixa de texto e o alinhamento desta caixa de texto.
+  Pinte o working string desta linha de texto na caixa com a cor da canetinha desta caixa de texto e a fonte desta caixa de texto e o alinhamento desta caixa de texto.
 
 Etapas para que se pinte uma linha de texto of uma caixa de texto (editing):
   Se a caixa de texto for inexistente, retorne.
   Se a linha de texto for inexistente, retorne.
   Pinte a caixa de seleção pela linha de texto of a caixa de texto.
   Obtenha uma caixa usando a linha de texto e a caixa de texto.
-  Pinte o working string desta linha de texto na caixa com a cor do pincel desta caixa de texto e a fonte desta caixa de texto e o alinhamento desta caixa de texto.
+  Pinte o working string desta linha de texto na caixa com a cor da canetinha desta caixa de texto e a fonte desta caixa de texto e o alinhamento desta caixa de texto.
 
 Etapas para que se pinte a caixa de seleção por uma linha de texto of uma caixa de texto:
   Se a caixa de texto for inexistente, retorne.
@@ -5321,15 +5321,15 @@ Etapas para que se finalize o memory canvas:
     \Observações: Esta função retorna o objeto selecionado anteriormente do tipo especificado. 
     \Um aplicativo deve sempre substituir um novo objeto pelo objeto padrão original depois de terminar de desenhar com o novo objeto.
     \Um aplicativo não pode selecionar um único bitmap em mais de um DC de cada vez.
-    \ICM: Se o objeto selecionado for um pincel ou uma caneta, o gerenciamento de cores é executado.
+    \ICM: Se o objeto selecionado for uma canetinha ou uma caneta, o gerenciamento de cores é executado.
   Processe "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deleteobject
-  \A função DeleteObject exclui uma caneta, pincel, fonte, bitmap, região ou paleta lógico, liberando todos os recursos do sistema associados ao objeto. 
+  \A função DeleteObject exclui uma caneta, canetinha, fonte, bitmap, região ou paleta lógico, liberando todos os recursos do sistema associados ao objeto. 
   \Depois que o objeto é excluído, o identificador especificado não é mais válido.
-    O hBitMap. [ho] \O indentificador de uma caneta, pincel, fonte, bitmap, região ou paleta lógica.
+    O hBitMap. [ho] \O indentificador de uma caneta, canetinha, fonte, bitmap, região ou paleta lógica.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se o identificador especificado não é válido ou está atualmente selecionado em um DC, o valor de retorno é zero.
-    \Não exclua um objeto de desenho (caneta ou pincel) enquanto ele ainda estiver selecionado em um DC.
-    \Quando um pincel de padrão é excluído, o bitmap associado à cor do pincel não é excluído. O bitmap deve ser excluído independentemente.
+    \Não exclua um objeto de desenho (caneta ou canetinha) enquanto ele ainda estiver selecionado em um DC.
+    \Quando uma canetinha de padrão é excluído, o bitmap associado à cor da canetinha não é excluído. O bitmap deve ser excluído independentemente.
   Processe "gdi32.dll" "DeleteDC" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deletedc
   \A função DeleteDC exclui o contexto de dispositivo especificado (DC).
     O memory canvas. [hdc] \O identificador do contexto do dispositivo.
@@ -6958,8 +6958,8 @@ Etapas para que se execute paste usando uma caixa de texto:
 
 Etapas para que se efetue alteração de cor usando uma caixa de texto e uma cor:
   Se a caixa de texto for inexistente, retorne.
-  Relembre a caixa de texto com "pincel".
-  Atribua a cor à cor do pincel desta caixa de texto.
+  Relembre a caixa de texto com "canetinha".
+  Atribua a cor à cor da canetinha desta caixa de texto.
 
 Etapas para que se execute refeito usando uma caixa de texto:
   Se a caixa de texto for inexistente, retorne.
@@ -7480,7 +7480,7 @@ Etapas para que se inicialize o memory canvas:
     \Se esse identificador for NULL, a função criará uma memória DC compatível com a tela atual do aplicativo.
     devolvendo o memory canvas. \Se a função for bem-sucedida, o valor de retorno é o identificador para um DC de memória.
   Processe "gdi32.dll" "GetCurrentObject" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getcurrentobject
-  \A função GetCurrentObject retorna um identificador que identifica a caneta, pincel, paleta, bitmap ou fonte atual 
+  \A função GetCurrentObject retorna um identificador que identifica a caneta, canetinha, paleta, bitmap ou fonte atual 
   \e a função GetObject inicializa uma estrutura contendo os atributos desse objeto. 
   \Algumas impressoras fornecem canetas, pincéis e fontes residentes que podem ser usados para melhorar a velocidade de desenho em um aplicativo.
     O memory canvas [hDC] \ Um identificador para o contexto do dispositivo.
@@ -7636,7 +7636,7 @@ Etapas para que se inicialize o tela canvas:
   \Para desenhar algo em uma janela, o programador deve obter o contexto do dispositivo da janela. 
   \Todo o desenho e pintura são feitos no identificador de contexto do dispositivo.
   \UM CONTEXTO DE DISPOSITIVO É UMA ESTRUTURA QUE DEFINE UM CONJUNTO DE OBJETOS GRÁFICOS E SEUS ATRIBUTOS ASSOCIADOS E OS MODOS GRÁFICOS QUE AFETAM A SAÍDA. 
-  \Os objetos gráficos incluem uma caneta para desenho de linha, um pincel para pintar e preencher, um bitmap para copiar ou rolar partes da tela, 
+  \Os objetos gráficos incluem uma caneta para desenho de linha, uma canetinha para pintar e preencher, um bitmap para copiar ou rolar partes da tela, 
   \uma paleta para definir o conjunto de cores disponíveis, uma região para recorte e outras operações e um caminho para operações de pintura e desenho.
   \Podemos desenhar algo na janela do evento WM_PAINT. 
   \O evento WM_PAINT é enviado pela estrutura da GUI do Win32 no momento do desenho da janela ou quando uma parte da janela requer uma atualização.
@@ -9778,7 +9778,7 @@ Etapas para que se salve um canvas:
   Processe "gdi32.dll" "SaveDC" com \ \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-savedc
   \A função SaveDC salva o estado atual do contexto de dispositivo especificado (DC) 
   \copiando dados que descrevem objetos selecionados e modos gráficos 
-  \(como bitmap, pincel, paleta, fonte, caneta, região, modo de desenho e modo de mapeamento) para um contexto pilha.
+  \(como bitmap, canetinha, paleta, fonte, caneta, região, modo de desenho e modo de mapeamento) para um contexto pilha.
     o canvas. [hdc] \Um identificador para o DC cujo estado deve ser salvo.
 
 
