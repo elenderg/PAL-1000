@@ -1793,7 +1793,7 @@ Etapas para que se compile a próxima instrução usando um percorredor (cláusula d
 Etapas para que se compile a próxima instrução usando um percorredor (demais cláusulas):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o segmento inicial deste percorredor estiver em branco, retorne.
-  Se o segmento inicial deste percorredor for algum comando de abandono de rotina, compile a próxima instrução usando o percorredor (cláusula de retorno); retorne.
+  Se o segmento inicial deste percorredor for algum comando de retorno de rotina, compile a próxima instrução usando o percorredor (cláusula de retorno); retorne.
   Se o segmento inicial deste percorredor for algum comando de repetição, compile a próxima instrução usando o percorredor(cláusula de repetição); retorne.
   Se o segmento inicial deste percorredor for algum comando de interrupção de repetições, compile a próxima instrução usando o percorredor (cláusula de interrupção); retorne.
   Se o segmento inicial deste percorredor for algum comando de confirmação ou negação, compile a próxima instrução usando o percorredor (keyword diga); retorne.
@@ -3381,104 +3381,41 @@ Etapas para que se determine se uma string é algum comando de interrupção de rep
   \PAL
   Se a string for "pare", diga sim.
   Se a string for "termine", diga sim.
-  \Se a string for "pare de percorrer", diga sim.
-  \Se a string for "saia", diga sim.
-  \Se a string for "saia do laço", diga sim.
-  \CAL
-  Se a string for "break", diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se uma string é algum comando de abandono de rotina:
-  Se a string for "cancele", diga sim. \ analisar
-  Se a string for "saia", diga sim.
-  Se a string for "retorne", diga sim.
-  Se a string for "desista", diga sim.
-  Se a string for "abandone", diga sim.
-  Se a string for "fuja", diga sim.
-  Se a string for "retire-se", diga sim.
-  Se a string for "saia", diga sim.
-  \Se a string for "cancele a operação", diga sim.
-  \Se a string for "interrompa a operação", diga sim.
-  \Se a string for "advirta", diga sim.
-  \Se a string for "anuncie", diga sim.
-  \Se a string for "avise", diga sim.  
-  Se a string for "desconsidere.", diga sim.
-  \Se a string for "deixa quieto", diga sim.
-  \Se a string for "deixe quieto", diga sim.
-  \Se a string for "e mais nada", diga sim.
-  \Se a string for "e pronto", diga sim.
-  \Se a string for "e só", diga sim.
-  Se a string for "fim", diga sim.
-  \Se a string for "fimse", diga sim. 
-  \Se a string for "informe", diga sim.
-  Se a string for "prossiga", diga sim.
-  Se a string for "pronto", diga sim.
-  \Se a string for "siga adiante", diga sim.
-  Se a string for "terminamos", diga sim.
-  \Se a string for "termine", diga sim.
-  \CAL
-  Se a string for "exit", diga sim.
+Etapas para que se determine se uma string é algum comando de retorno de rotina:
+  Se a string for "retorne", diga sim.  
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se uma string é algum comando de repetição:
-  \PAL
-  Se a string for "recomece", diga sim. 
-  \Se a string for "reinicie", diga sim. 
-  Se a string for "recomece", diga sim. 
-  \CAL
-  Se a string for "repeat", diga sim.
+Etapas para que se determine se uma string é algum comando de repetição:  
+  Se a string for "recomece", diga sim.
+  Se a string for "repita", diga sim.
+  \Se a string for "reinicie", diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma string é algum comando de confirmação ou negação:
-  \PAL
-  Se a string for "diga", diga sim. \# modo imperativo
-  Se a string for "responda", diga sim. \# modo imperativo
-  Se a string for "informe", diga sim. \# modo imperativo
-  \Se a string for "decida", diga sim. \ para usar como "decida afirmativamente/FAVORAVELMENTE e decida negativamente/desfavoravelmente"
-  \CAL
-  Se a string for "say", diga sim.
+  Se a string for "diga", diga sim. 
+  Se a string for "responda", diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma string é algum comando de deliberação:
-  \PAL
-  \Se a string for "decidir", diga sim.
-  Se a string for "decida", diga sim. \estou pensando em retirar devido o comentário da rotina anterior
-  \Se a string for "escolha", diga sim.
+  Se a string for "decida", diga sim.
   Se a string for "determine", diga sim.
-  Se a string for "conclua", diga sim.
   Se a string for "esclareça", diga sim.
-  \Se a string for "descubra", diga sim. \-> termo ruim.  pode ser confundido com "remover a cobertura de algo"
-  \Se a string for "mostre", diga sim. \-> termo ruim. Pode ser confundido com "exibir"
-  \Se a string for "demonstre", diga sim. \-> pode ser melhorado
-  Se a string for "analise", diga sim.
-  \CAL
-  Se a string for "decide", diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma string é algum chamada de biblioteca externa:
-  \PAL
   Se a string for "chame", diga sim.
   Se a string for "invoque", diga sim.
-  Se a string for "acione", diga sim.
+  \Se a string for "acione", diga sim. 
   Se a string for "processe", diga sim.
   Se a string for "informe", diga sim.\ no caso de comandos como "informe os parâmetros x e y e z para a função "FunctionName" da biblioteca "MyLibrary.dll"
-  \CAL
-  Se a string for "Call", diga sim.
-  \ Envie o parâmetro "nome" para a função "SetNome". Se a função SetNome produzir um código  diferente de 0, produza um relatório de erros a partir deste código.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma string é algum point:
-  \PAL
   Se a string for "aponte", diga sim.
   Se a string for "direcione", diga sim.
   Se a string for "redirecione", diga sim.
-  \Se a string for "mire", diga sim.
-  \Se a string for "dirija-se à", diga sim.
-  \Se a string for "refira-se à", diga sim.
-  \Se a string for "referencie", diga sim.
-  \Se a string for "faça referência à", diga sim.
-  \Se a string for "indique", diga sim.
-  \Se a string for "realce", diga sim.
   \CAL
   Se a string for "point", diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
