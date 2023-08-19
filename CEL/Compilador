@@ -593,12 +593,12 @@ Etapas para que se enderece uns fragmentos usando um endereço:
 Etapas para que se enderece uma DLL:
   Atribua o endereço do nome usado atualmente ao endereço do nome desta DLL.
   Atribua o endereço do cabeçalho usado atualmente ao endereço do cabeçalho desta DLL.
-  Atribua o endereço do nome usado atualmente ao nome memory endereço deste cabeçalho da DLL desta DLL.
+  Atribua o endereço do nome usado atualmente ao endereço do nome deste cabeçalho da DLL desta DLL.
   Atribua a quantidade de caracteres deste nome desta DLL mais 1 para um número.
   Arredonde o número para cima usando o múltiplo imediato de 2.
   Adicione o número para o endereço do nome usado atualmente.
   Adicione a magnitude desse cabeçalho da DLL para o endereço do cabeçalho usado atualmente. 
-  Atribua o endereço pré-calculado atual ao first previamente calculado memory endereço deste cabeçalho da DLL desta DLL.
+  Atribua o endereço pré-calculado atual ao primeiro endereço thunk de memória deste cabeçalho da DLL desta DLL.
   Enderece as funções desta DLL.
   Adicione 4 para o endereço pré-calculado atual.
 
@@ -3616,7 +3616,7 @@ Uma word denominada OEM_Identifier, \\ Specifies the identifier for the OEM for 
 Uma word denominada OEM_Info, \\ Specifies the OEM information for a specific value of e_oeminfo.
   20 bytes denominados ReservedWords, \\ Specifies Reserved words for the program (known em winnt.h as e_res[10]), usually set para zero by the linker.
   \\In this case, just use a single reserved1 set para zero; if not zero create ten reserved1 com the correct value.
-  Um número denominado Address_Of_PE_Header_In_File.   \ O Address_Of_PE_Header_In_File é um ponteiro [que aponta] para o “PE Header”, 
+  Um número denominado AddressOfPEHeaderInFile.   \ O AddressOfPEHeaderInFile é um ponteiro [que aponta] para o “PE Header”, 
   \Uma versão revisada e estendida do Cabeçalho DOS introduzida com o advento do Windows.
   \Os outros 16 campos do cabeçalho DOS não são usados.
 
@@ -3945,24 +3945,24 @@ A seção de DLLs é uma zona.
 
 Um cabeçalho da DLL é um estrutura com
 \traduzir isso aqui
-  Um endereço denominado original first previamente calculado, \ consulte https://www.linkedin.com/pulse/why-pe-need-original-first-thunkoft-milad-kahsari-alhadi/
+  Um endereço denominado primeiro thunk, \ consulte https://www.linkedin.com/pulse/why-pe-need-original-first-thunkoft-milad-kahsari-alhadi/
   \ https://stackoverflow.com/questions/42413937/why-pe-need-original-first-thunkoft#:~:caixa de texto=The%20original%20first%20thunk%20is,%2C%20user32%20etc)%20are%20known.
   \ Thunks são as partes definitivas dos códigos em um sistema operacional que manipula as transições entre o código de 16 e 32 bits.
   \ Assim, eles garantem a compatibilidade com versões anteriores entre as chamadas feitas pelo aplicativo.
   \ O OS está sujeito a esta facilidade para compatibilidade com versões anteriores, de modo que os aplicativos de 16 bits possam funcionar sem problemas em ambientes de 32 bits.
   Um número denominado TimeStamp, \ Set para zero até que bound; seguido de this feld is set para the TimeDateStamp of the exporting FileHeader da DLL
   Um endereço denominado forwarder chain, \ Forwarder Chain: O 32-bit catálogo of the frst forwarder em the liste of imported functions
-  Um endereço denominado nome memory endereço, 
+  Um endereço denominado endereço do nome, 
   \Esse endereço contém o RVA [Endereço Virtual Relativo] da DLL a ser carregada na memória. É um valor dword.
   \É composto por: RVA = Base da Imagem + Ordem Endian
-  Um endereço denominado first previamente calculado memory endereço.
+  Um endereço denominado primeiro endereço thunk de memória.
 
 Uma DLL é uma lista com
   Um endereço do nome,
   Um endereço do cabeçalho,
   Um nome,
   Um cabeçalho da DLL,
-  Some funções.
+  Umas funções.
 
 Um endereço do cabeçalho é um endereço.
 
@@ -4058,20 +4058,20 @@ Etapas para que se inicialize o compilador usando um endereço da pasta:
 
 Etapas para que se inicialize um cabeçalho DOS: \ vou alterar depois
   Atribua 23117 [$5A4D] ao Signature deste cabeçalho DOS.
-  Atribua 64 [$0040] ao addressofrelocationtableinfile deste cabeçalho DOS. \ O addressofrelocationtableinfile is a pointer para the variável-length de caracteres table of DLLs needed for this program.
-  Atribua 256 [$00000100] ao Address_Of_PE_Header_In_File deste cabeçalho DOS. \O Address_Of_PE_Header_In_File is a pointer para the PE Header, a revised and extended version of the DOS Header introduced com advent of Windows. 
+  Atribua 64 [$0040] ao AddressOfRelocationTableInFile deste cabeçalho DOS. \ O AddressOfRelocationTableInFile is a pointer para the variável-length de caracteres table of DLLs needed for this program.
+  Atribua 256 [$00000100] ao AddressOfPEHeaderInFile deste cabeçalho DOS. \O AddressOfPEHeaderInFile is a pointer para the PE Header, a revised and extended version of the DOS Header introduced com advent of Windows. 
   \O segunda 16 campos of the DOS Header are not used.
 
 Etapas para que se inicialize um cabeçalho PE:
   Inicialize o cabeçalho PE (cabeçalho padrão).
   Inicialize o cabeçalho PE (cabeçalho opcional).
-  Inicialize o cabeçalho PE (version information).
-  Inicialize o cabeçalho PE (directories).
-  Inicialize o cabeçalho PE (DLL section).
-  Inicialize o cabeçalho PE (data section).
-  Inicialize o cabeçalho PE (Code Section).
+  Inicialize o cabeçalho PE (informação da versão).
+  Inicialize o cabeçalho PE (diretórios).
+  Inicialize o cabeçalho PE (Seção de DLLs).
+  Inicialize o cabeçalho PE (seção de dados).
+  Inicialize o cabeçalho PE (seção de código).
 
-Etapas para que se inicialize um cabeçalho PE (Code Section):
+Etapas para que se inicialize um cabeçalho PE (seção de código):
   Atribua "code  " a uma string.
   Copie bytes desde o caractere inicial desta string para o endereçamento deste nome desta Code Section deste cabeçalho PE por 6.
   Atribua a quantidade de caracteres desta região de código ao SizeInBytes desta Code Section deste cabeçalho PE.
@@ -4082,7 +4082,7 @@ Etapas para que se inicialize um cabeçalho PE (Code Section):
   \IMAGE_FILE_LARGE_ADDRESS_ AWARE 0x0020 - Application can handle > 2-GB addresses.
 
   
-Etapas para que se inicialize um cabeçalho PE (data section):
+Etapas para que se inicialize um cabeçalho PE (seção de dados):
   Atribua "data " a uma string.
   Copie bytes desde o caractere inicial desta string para o endereçamento deste nome desta data section deste cabeçalho PE por 6.
   Atribua a quantidade de caracteres desta região de dados ao SizeInBytes desta data section deste cabeçalho PE.
@@ -4091,12 +4091,12 @@ Etapas para que se inicialize um cabeçalho PE (data section):
   Atribua o endereço base desta região de dados ao AddressInFile desta data section deste cabeçalho PE.
   Atribua -1073741760 [$C0000040] para as Characteristics desta data section deste cabeçalho PE. \ initialized, readable, writable
 
-Etapas para que se inicialize um cabeçalho PE (directories):
+Etapas para que se inicialize um cabeçalho PE (diretórios):
   Atribua 16 [$00000010] ao numberofdirectories deste cabeçalho PE.
   Atribua o endereço base desta seção de DLLs ao ImageDirectoryEntryImportAddress deste cabeçalho PE.
   Atribua a quantidade de caracteres desta seção de DLLs ao ImageDirectoryEntryImportSize deste cabeçalho PE.
 
-Etapas para que se inicialize um cabeçalho PE (DLL section):
+Etapas para que se inicialize um cabeçalho PE (Seção de DLLs):
   Atribua "idata " a uma string.
   Copie bytes desde o caractere inicial desta string para o endereçamento deste nome desta idata section deste cabeçalho PE por 6.
   Atribua a quantidade de caracteres desta seção de DLLs ao SizeInBytes desta idata section deste cabeçalho PE.
@@ -4110,7 +4110,7 @@ Etapas para que se inicialize um cabeçalho PE (cabeçalho opcional):
   Atribua a quantidade de caracteres desta Região de Código ao SizeOfCodeInFile deste cabeçalho PE.
   Atribua a quantidade de caracteres desta Região de Dados ao SizeOfInitializedDataInFile deste cabeçalho PE.
   Atribua 0 ao SizeOfUninitializedDataInFile deste cabeçalho PE.
-  Encontre uma rotina usando "~initialize before run e run e finalize after run" e o catálogo geral de rotinas. \ AddressOfEntryPointInMemory
+  Encontre uma rotina usando "~Initialize before run e Run e Finalize after run" e o catálogo geral de rotinas. \ AddressOfEntryPointInMemory
   Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro interno #13"; retorne.
   Atribua o endereço desta rotina menos o image base ao AddressOfEntryPointInMemory deste cabeçalho PE.
   Atribua o Endereço Base desta Região de Código ao AddressOfCodeInMemory deste cabeçalho PE. \BaseOfCode
@@ -4139,7 +4139,7 @@ Etapas para que se inicialize um cabeçalho PE (cabeçalho padrão):
   Atribua 224 [$00E0] ao SizeOfOptionalHeaderInBytes deste cabeçalho PE.
   Atribua 33166 [$818E] às Characteristics deste cabeçalho PE.
 
-Etapas para que se inicialize um cabeçalho PE (version information):
+Etapas para que se inicialize um cabeçalho PE (informação da versão):
   Atribua 0 ao MajorLinkerVersion deste cabeçalho PE.
   Atribua 0 ao MinorLinkerVersion deste cabeçalho PE.
   Atribua 4 [$0004] ao OS_MajorVersion deste cabeçalho PE.
