@@ -540,7 +540,7 @@ Etapas para que se disjuncione seletivamente um número com um segundo número:
   Decodifique $3103. \ xor [ebx],eax
 
 Etapas para que se avance um percorredor:
-  Decodifique $8B9D08000000. \ mov ebx,DWORD PTR [ebp+0x8] | mov ebx,[ebp+8]  \ salva o percorredor no registrador ebx
+  Decodifique $8B9D08000000. \ mov ebx,DWORD PTR [ebp+0x8] | mov ebx,[ebp+8]  \ salva o endereço do primeiro parâmetro [ebp+0x8] no registrador ebx. 
   Decodifique $FF8314000000. \ inc DWORD PTR [ebx+0x14] | inc [ebx+20] \ aumenta o valor do caractere final deste segmento inicial deste percorredor.
   Decodifique $FF8308000000. \ inc DWORD PTR [ebx+0x8] | inc [ebx+8] \ aumenta o valor do caractere inicial deste segmento final deste percorredor.
 
@@ -559,7 +559,7 @@ Etapas para que se compare uma string para uma segunda string usando uma quantid
   Decodifique $8B9514000000. \ mov edx,[ebp+20] \ a quantidade de caracteres desta segunda string
   Decodifique $8B12. \ mov edx,[edx]
   Decodifique $3BD0. \ cmp eax,edx \ if o differ do quantidade de caracteres, diga não.
-  Decodifique $0F852B000000. \ jne [Se as condições acima não puderem ser satisfeitas, então:] Diga não. \ ************************************ was 2C
+  Decodifique $0F852B000000. \ jne sayno \ ************************************ was 2C
   Decodifique $8BC8. \ mov ecx,eax \ atribua quantidade de caracteres A ecx 
   Decodifique $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
   Decodifique $8B1B. \ mov ebx,[ebx] o first da tabela de tradução

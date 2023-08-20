@@ -113,9 +113,9 @@ Etapas para que se adicione e compile as rotinas de inicialização pré-execução e
   Adicione uma rotina para as rotinas usando nil.
   Posponha "~Initialize before run e Run e Finalize after run" para o string do cabeçalho desta rotina.
   Posponha "Initialize before run. " para a string do corpo desta rotina.
-  Posponha os global initializers para a string do corpo desta rotina.
+  Posponha os inicializadores de variáveis globais para a string do corpo desta rotina.
   Posponha "Execute o programa. " para a string do corpo desta rotina. \ traduzir
-  Posponha os global finalizers para a string do corpo desta rotina.
+  Posponha os variável global finalizers para a string do corpo desta rotina.
   Posponha "Finalize after run. " para a string do corpo desta rotina.
   Posponha "Processe ""kernel32.dll"" ""ExitProcess"" com 0. " para a string do corpo desta rotina.
   Lance a cabeçalho de rotina desta rotina sobre o string do cabeçalho desta rotina.
@@ -664,21 +664,21 @@ Etapas para que se posponha um detector para um trecho (com separador):
   Converta o detector para uma string.
   Posponha a string para o trecho (com separador).
 
-Etapas para que se posponha os global finalizers para uma string:
-  Obtenha um global desde o globals.
-  Se o global for inexistente, retorne.
-  Se o compiled detector deste global não estiver ativo, recomece.
-  Se o tipo deste global não deveria ser finalizado, recomece.
-  Posponha "~finalize o " junto com o nome deste global seguido de ". " para a string.
+Etapas para que se posponha os variável global finalizers para uma string:
+  Obtenha uma variável global desde as variáveis globais.
+  Se a variável global for inexistente, retorne.
+  Se o compiled detector desta variável global não estiver ativo, recomece.
+  Se o tipo desta variável global não deveria ser finalizado, recomece.
+  Posponha "~finalize o " junto com o nome desta variável global seguido de ". " para a string.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se posponha os global initializers para uma string:
-  Obtenha um global desde o globals.
-  Se o global for inexistente, retorne.
-  Se o literal deste global for inexistente, recomece.
-  Se o compiled detector deste global não estiver ativo, recomece.
+Etapas para que se posponha os inicializadores de variáveis globais para uma string:
+  Obtenha uma variável global desde as variáveis globais.
+  Se a variável global for inexistente, retorne.
+  Se o literal desta variável global for inexistente, recomece.
+  Se o compiled detector desta variável global não estiver ativo, recomece.
   Desative um detector.
-  Posponha o texto inicializador deste global para a string.
+  Posponha o texto inicializador desta variável global para a string.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se posponha uma unidade semântica para uma representação interna da rotina :
@@ -874,7 +874,7 @@ Etapas para que se posponha uma string para uma segunda string usando uma tercei
 Etapas para que se acrescente endereço loading código para um texto hexadecimal usando uma variável:
   \ loads para edx
   Se a variável for inexistente, acrescente $C7C200000000 para o texto hexadecimal; retorne. \ mov edx,0
-  Se a categoria desta variável for "global", acrescente $C7C2 e o endereço desta variável para o texto hexadecimal; retorne. \ mov edx,the endereço da variável
+  Se a categoria desta variável for "variável global", acrescente $C7C2 e o endereço desta variável para o texto hexadecimal; retorne. \ mov edx,the endereço da variável
   Se a categoria desta variável for "literal", acrescente $C7C2 e o endereço desta variável para o texto hexadecimal; retorne. \ mov edx,the endereço da variável
   Se a categoria desta variável for "local", acrescente $8D95 e o deslocamento desta variável para o texto hexadecimal; retorne. \ lea edx,[ebp+ the deslocamento da variável]
   Se a categoria desta variável for "scratch", acrescente $8B95 e o deslocamento desta variável para o texto hexadecimal; retorne. \ mov edx, [ebp+ the deslocamento da variável]
@@ -1225,7 +1225,7 @@ Etapas para que se compile um endereço da pasta (address):
   Atribua o endereço menos a endereço base desta seção de DLLs à quantidade de caracteres desta seção de DLLs.
   Arredonde o endereço para cima usando o múltiplo imediato de 4096.
   Atribua o endereço à endereço base desta região de dados.
-  Enderece os globals usando o endereço.
+  Enderece as variáveis globais usando o endereço.
   Enderece os literals usando o endereço.
   Atribua o endereço menos a endereço base desta região de dados à quantidade de caracteres desta região de dados.
   Arredonde o endereço para cima usando o múltiplo imediato de 4096.
@@ -1290,9 +1290,9 @@ Etapas para que se compile um endereço da pasta (arquivos de código fonte):
 
 Etapas para que se compile um endereço da pasta (identificação de variáveis globais):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Mostre no painel de informações "Resolvendo itens de escopo global...".
+  Mostre no painel de informações "Resolvendo itens de escopo variável global...".
   Start o temporizador de resolução de variáveis globais.
-  Resolva o globals.
+  Resolva as variáveis globais.
   Suspenda o temporizador de resolução de variáveis globais.
 
 Etapas para que se compile um endereço da pasta (identificação dos tipos das variáveis):
@@ -3421,7 +3421,7 @@ Etapas para que se determine se uma string é o início of algum expressão:
   Se a string for algum literal, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se uma string é o início of algum global:
+Etapas para que se determine se uma string é o início of algum variável global:
   Se a string for algum artigo definido, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
@@ -3680,7 +3680,7 @@ Etapas para que se finalize o compilador:
   Destrua as DLLs.
   Destrua as rotinas.
   Destrua os literals.
-  Destrua os globals.
+  Destrua as variáveis globais.
   Destrua os tipos.
   Destrua os arquivos fontes.
 
@@ -3931,13 +3931,13 @@ Etapas para que se obtenha uma contagem usando umas DLLs (todas as funções mais 
     Adicione 1 para a contagem.
   Recomece. [percorra novamente o código acima]
 
-Um corpo global é um subtexto.
+Um corpo de variável global é um subtexto.
 
 O catálogo de variáveis globais é um catálogo.
 
-An global é uma variável.
+Uma variável global é uma variável.
 
-Os globals são uns globals.
+As variáveis globais são umas variáveis globais.
 
 A image base é um endereço igual a 4194304 [$00400000].
 
@@ -3969,11 +3969,11 @@ Um endereço do cabeçalho é um endereço.
 
 As DLLs são umas DLLs.
 
-Etapas para que se catalogue um global:
+Etapas para que se catalogue uma variável global:
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se o global for inexistente, retorne.
-  Se o nome deste global estiver no catálogo de variáveis globais, apresente uma mensagem de erro contendo "'" junto com o nome deste global seguido de "' é uma variável global duplicada." e o endereço local deste global; retorne.
-  Catalogue o global usando o nome deste global e o catálogo de variáveis globais.
+  Se a variável global for inexistente, retorne.
+  Se o nome desta variável global estiver no catálogo de variáveis globais, apresente uma mensagem de erro contendo "'" junto com o nome desta variável global seguido de "' é uma variável variável global duplicada." e o endereço local desta variável global; retorne.
+  Catalogue a variável global usando o nome desta variável global e o catálogo de variáveis globais.
 
 Etapas para que se catalogue um literal:
   Se o detector de erros deste compilador estiver ativado, retorne.
@@ -4160,7 +4160,7 @@ Etapas para que se link:
   Disponibilize o cabeçalho DOS ao trecho EXE deste compilador.
   Disponibilize o cabeçalho PE ao trecho EXE deste compilador.
   Disponibilize as DLLs ao trecho EXE deste compilador.
-  Disponibilize os globals ao trecho EXE deste compilador.
+  Disponibilize as variáveis globais ao trecho EXE deste compilador.
   Disponibilize os literals ao trecho EXE deste compilador.
   Disponibilize as rotinas ao trecho EXE deste compilador.
 
@@ -4168,7 +4168,7 @@ Etapas para que se liste tudo:
   Limpe o trecho de listagem deste compilador.
   Liste a mensagem de erro deste compilador na trecho de listagem deste compilador.
   Liste os tipos depois de "TIPOS:" na trecho de listagem deste compilador.
-  Liste os globals depois de "VARIÁVEIS GLOBAIS:" na trecho de listagem deste compilador.
+  Liste as variáveis globais depois de "VARIÁVEIS GLOBAIS:" na trecho de listagem deste compilador.
   Liste os literals depois de "VALORES LITERAIS:" na trecho de listagem deste compilador.
   Liste as rotinas depois de "ROTINAS:" na trecho de listagem deste compilador.
   Liste o catálogo de tipos depois de "ÍNDICE DE TIPOS:" na trecho de listagem deste compilador.
@@ -4392,9 +4392,9 @@ Etapas para que se liste um tipo em um trecho:
   Posponha o conteúdo tipo deste tipo para o trecho (com separador).
   Posponha " Razão de escala: " para o trecho.
   Posponha a razão de escala deste tipo para o trecho (com separador).
-  Insira quebra de linha em o trecho.
+  Insira quebra de linha no trecho.
   Liste os campos deste tipo no trecho.
-  Insira quebra de linha em o trecho.
+  Insira quebra de linha no trecho.
 
 Etapas para que se liste uns tipos em um trecho:
   Obtenha um tipo desde o tipos.
@@ -4438,7 +4438,7 @@ Etapas para que se liste uma variável em um trecho:
   Converta o data desta variável para uma cifra hexadecimal.
   Posponha "Conteúdo (hex): " para o trecho.
   Posponha a cifra hexadecimal para o trecho (com separador).
-  Insira quebra de linha em o trecho.
+  Insira quebra de linha no trecho.
 
 Etapas para que se liste uns variáveis em um trecho:
   Obtenha uma variável desde as variáveis.
@@ -4451,7 +4451,7 @@ Etapas para que se liste uns variáveis depois de uma string em um trecho:
   Insira quebra de linha em o trecho (duas vezes).
   Se as variáveis estiverem vazias, retorne.
   Liste as variáveis no trecho.
-  Insira quebra de linha em o trecho.
+  Insira quebra de linha no trecho.
 
 O catálogo de variáveis hexadecimais é um catálogo.
 
@@ -5297,31 +5297,31 @@ Etapas para que se resolva um campo:
   Se o apelido deste campo não for algum valid campo nome, limpe o apelido deste campo. \it
   Se o nome deste campo não for algum valid campo nome, apresente uma mensagem de erro contendo "'" junto com o nome deste campo seguido de "' é um campo nome inválido." e o endereço local deste campo; retorne.
 
-Etapas para que se resolva um global:
-  Se o global for inexistente, retorne.
+Etapas para que se resolva uma variável global:
+  Se a variável global for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Se o corpo global deste global não estiver em branco, resolva o global (compile corpo).
-  Se o nome do tipo deste global estiver em branco, apresente uma mensagem de erro contendo "Tipo inválido: " junto com o nome deste global seguido de "' . O tipo da variável global está vazio." e o endereço local deste global; retorne.
-  Resolva o global como uma variável.
+  Se o corpo de variável global desta variável global não estiver em branco, resolva a variável global (compile corpo).
+  Se o nome do tipo desta variável global estiver em branco, apresente uma mensagem de erro contendo "Tipo inválido: " junto com o nome desta variável global seguido de "' . O tipo da variável variável global está vazio." e o endereço local desta variável global; retorne.
+  Resolva a variável global como uma variável.
 
-Etapas para que se resolva um global (compile corpo):
-  Se o global for inexistente, retorne.
+Etapas para que se resolva uma variável global (compile corpo):
+  Se a variável global for inexistente, retorne.
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Lance um percorredor sobre o corpo global deste global.
+  Lance um percorredor sobre o corpo de variável global desta variável global.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum literal, apresente uma mensagem de erro contendo "Erro de tipo. O tipo: " junto com o segmento inicial deste percorredor seguido de "' deve ser do tipo literal." e o percorredor; retorne.
   Compile um literal usando o percorredor.
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Acho que era bom colocar um ponto por aqui, né?" e o percorredor; retorne.
-  Se o nome do tipo deste global estiver em branco, atribua o nome deste tipo deste literal ao nome do tipo deste global.
-  Atribua o literal ao literal deste global.
+  Se o nome do tipo desta variável global estiver em branco, atribua o nome deste tipo deste literal ao nome do tipo desta variável global.
+  Atribua o literal ao literal desta variável global.
   Catalogue o literal.
 
-Etapas para que se resolva uns globals:
+Etapas para que se resolva umas variáveis globais:
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Obtenha um global desde o globals.
-  Se o global for inexistente, retorne.
-  Resolva o global.
+  Obtenha uma variável global desde as variáveis globais.
+  Se a variável global for inexistente, retorne.
+  Resolva a variável global.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se resolva um tipo (tipos de dados primitivos):
@@ -5620,78 +5620,78 @@ Etapas para que se examine uns campos usando um percorredor:
   Examine algum pauses usando o percorredor.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se examine um corpo global usando um percorredor:
+Etapas para que se examine um corpo de variável global usando um percorredor:
   Se o detector de erros deste compilador estiver ativado, retorne.
   Se o segmento inicial deste percorredor estiver em branco, retorne.
-  Atribua o caractere inicial deste segmento inicial deste percorredor ao caractere inicial deste corpo global.
-  Atribua -1 ao caractere final deste corpo global.
+  Atribua o caractere inicial deste segmento inicial deste percorredor ao caractere inicial deste corpo de variável global.
+  Atribua -1 ao caractere final deste corpo de variável global.
   Comece. [a executar o código abaixo]
     Se o detector de erros deste compilador estiver ativado, retorne. \ o retorne sai da rotina
     Se o segmento inicial deste percorredor estiver em branco, retorne. \ o comando recomece volta pro começo do loop
     Se o segmento inicial deste percorredor for o sinal de dois pontos, retorne. \ o comando pare sai do loop, mas não sai da rotina, apenas do loop
     Se o segmento inicial deste percorredor for o ponto final, retorne.
-    Atribua o caractere final deste segmento inicial deste percorredor ao caractere final deste corpo global.
+    Atribua o caractere final deste segmento inicial deste percorredor ao caractere final deste corpo de variável global.
     Mova o percorredor (usando diretrizes de compilação).
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se examine um global usando um percorredor:
+Etapas para que se examine uma variável global usando um percorredor:
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Adicione o global para os globals usando "global" e o caractere inicial deste segmento inicial deste percorredor.
+  Adicione a variável global para as variáveis globais usando "variável global" e o caractere inicial deste segmento inicial deste percorredor.
   Mova o percorredor (usando diretrizes de compilação).
-  Examine o nome deste global usando o percorredor.
-  Se o segmento inicial deste percorredor for algum operador de atribuição de estruturas compostas, examine o global usando o percorredor(cláusula 'tem'); retorne.
+  Examine o nome desta variável global usando o percorredor.
+  Se o segmento inicial deste percorredor for algum operador de atribuição de estruturas compostas, examine a variável global usando o percorredor(cláusula 'tem'); retorne.
   Se o segmento inicial deste percorredor não for algum operador de atribuição simples, apresente uma mensagem de erro contendo "Erro. Necessário a utilização do verbo ser/estar ao invés de '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum artigo indefinido, examine o global usando o percorredor (literal termo); retorne.
+  Se o segmento inicial deste percorredor não for algum artigo indefinido, examine a variável global usando o percorredor (literal termo); retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Examine o nome do tipo deste global usando o percorredor.
-  Se o segmento inicial deste percorredor for o início of algum dado complementar, examine o global usando o percorredor (dados complementares); retorne.
-  Se o segmento inicial deste percorredor for algum operador de atribuição composto, examine o global usando o percorredor (data part); retorne.
+  Examine o nome do tipo desta variável global usando o percorredor.
+  Se o segmento inicial deste percorredor for o início of algum dado complementar, examine a variável global usando o percorredor (dados complementares); retorne.
+  Se o segmento inicial deste percorredor for algum operador de atribuição composto, examine a variável global usando o percorredor (data part); retorne.
   Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Erro. As definições devem terminar com um '.'" e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Catalogue o global.
+  Catalogue a variável global.
 
-Etapas para que se examine um global usando um percorredor (data part):
+Etapas para que se examine uma variável global usando um percorredor (data part):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum to, apresente uma mensagem de erro contendo "Erro. A sintaxe correta é 'igual a'." junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Examine o corpo global deste global usando o percorredor.
-  Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Erro. Necessário inserir um '.' ao final da variável global" e o percorredor; retorne.
+  Examine o corpo de variável global desta variável global usando o percorredor.
+  Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Erro. Necessário inserir um '.' ao final da variável variável global" e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Catalogue o global.
+  Catalogue a variável global.
 
-Etapas para que se examine um global usando um percorredor(cláusula 'tem'):
+Etapas para que se examine uma variável global usando um percorredor(cláusula 'tem'):
   Se o detector de erros deste compilador estiver ativado, retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Atribua "~inline " junto com o nome deste global seguido de " tipo" para um nome.
+  Atribua "~inline " junto com o nome desta variável global seguido de " tipo" para um nome.
   Atribua o nome seguido de "s" para um plural nome.
-  Adicione um tipo para os tipos usando o nome e o plural nome e "estrutura" e o endereço local deste global. \mudar aqui
+  Adicione um tipo para os tipos usando o nome e o plural nome e "estrutura" e o endereço local desta variável global. \mudar aqui
   Catalogue o tipo.
-  Atribua o nome deste tipo ao nome do tipo deste global.
+  Atribua o nome deste tipo ao nome do tipo desta variável global.
   Examine os campos deste tipo usando o percorredor.
   Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Erro. Insira um '.' no final da estrutura" e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Catalogue o global.
+  Catalogue a variável global.
 
-Etapas para que se examine um global usando um percorredor (literal termo):
+Etapas para que se examine uma variável global usando um percorredor (literal termo):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Examine o corpo global deste global usando o percorredor.
+  Examine o corpo de variável global desta variável global usando o percorredor.
   Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Erro. Necessário incluir um '.' ao final de valores textuais ou numéricos." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Catalogue o global.
+  Catalogue a variável global.
 
-Etapas para que se examine um global usando um percorredor (dados complementares):
+Etapas para que se examine uma variável global usando um percorredor (dados complementares):
   Se o detector de erros deste compilador estiver ativado, retorne.
-  Atribua "~inline " junto com o nome deste global seguido de " tipo" para um nome.
+  Atribua "~inline " junto com o nome desta variável global seguido de " tipo" para um nome.
   Atribua o nome seguido de "s" para um plural nome. \ aqui pode estar o erro na formação do plural
-  Adicione um tipo para os tipos usando o nome e o plural nome e o nome do tipo deste global e o endereço local deste global.
+  Adicione um tipo para os tipos usando o nome e o plural nome e o nome do tipo desta variável global e o endereço local desta variável global.
   Catalogue o tipo.
-  Atribua o nome deste tipo ao nome do tipo deste global.
+  Atribua o nome deste tipo ao nome do tipo desta variável global.
   Examine algum dado complementar pelo tipo usando o percorredor.
   Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Erro. Insira um '.' após as informações complementares." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Catalogue o global.
+  Catalogue a variável global.
 
 Etapas para que se examine um nome usando um percorredor:
   Limpe o nome.
@@ -5775,7 +5775,7 @@ Etapas para que se examine um arquivo fonte:
     Se o detector de erros deste compilador estiver ativado, retorne.
     Se o segmento inicial deste percorredor estiver em branco, retorne.
     Se o segmento inicial deste percorredor for o início of algum tipo, examine um tipo usando o percorredor; recomece.
-    Se o segmento inicial deste percorredor for o início of algum global, examine um global usando o percorredor; recomece.
+    Se o segmento inicial deste percorredor for o início of algum variável global, examine uma variável global usando o percorredor; recomece.
     Se o segmento inicial deste percorredor for o início of algum rotina, examine uma rotina usando o percorredor; recomece.
     Apresente uma mensagem de erro contendo "Erro. O compilador não reconhece a sintaxe '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor.
   Recomece. [percorra novamente o código acima]
@@ -5860,11 +5860,11 @@ Etapas para que se ligue o compiled detector em uma variável:
   Se a variável for inexistente, retorne.
   Se o compiled detector desta variável [já] estiver ativo, retorne.
   Ative o compiled detector desta variável.
-  Se a categoria desta variável não for "global", retorne.
+  Se a categoria desta variável não for "variável global", retorne.
   Se o literal desta variável for inexistente, retorne.
   Encontre uma rotina usando "atribua" e o tipo deste literal desta variável e "para" e o tipo desta variável.
   Se a rotina for inexistente, encontre a rotina usando "converta" e o tipo deste literal desta variável e "para" e o tipo desta variável; ative um detector.
-  Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro. O tipo e o valor da variável global  não estão correspondendo." e o endereço local desta variável; retorne.
+  Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro. O tipo e o valor da variável variável global  não estão correspondendo." e o endereço local desta variável; retorne.
   Compile o corpo of a rotina.
   Se o detector estiver ativo, atribua "converta o " junto com o nome deste literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao texto inicializador desta variável.
   Se o detector não estiver ativo, atribua "atribua o " junto com o nome deste literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao texto inicializador desta variável. \ Era " ao ". NÃO PODIA MUDAR O " ao " não sei o porquê
@@ -6080,21 +6080,21 @@ O catálogo de rotinas úteis é um catálogo.
 
 Uma variável é uma lista com
   Um endereço local (referência),
-  Um categoria [literal, global, local, parâmetro, scratch],
+  Um categoria [literal, variável global, local, parâmetro, scratch],
   Um compiled detector,
   Um nome, 
   Um apelido, 
   Um nome do tipo,
-  Um tipo (referência), \ tipo real em literal, global e local; dereferenced tipo em parâmetros e scratches
-  Um endereço [globals e literals only] ou 
+  Um tipo (referência), \ tipo real em literal, variável global e local; dereferenced tipo em parâmetros e scratches
+  Um endereço [variáveis globais e literals only] ou 
   Um deslocamento sob o endereço [variáveis locais, parâmetros, e campos only],
   Um contagem [campos only],
   Um detector de referência [campos only],
   Um nome de redefinição de conteúdo [campos only],
   Um detector de passagem por-valor [parâmetros only],
-  Um corpo global [globals only],
-  Um texto inicializador [globals only],
-  Um literal (referência) [globals only - constant com which to initalize the global],
+  Um corpo de variável global [variáveis globais only],
+  Um texto inicializador [variáveis globais only],
+  Um literal (referência) [variáveis globais only - constant com which to initalize the variável global],
   Um texto hexadecimal denominado data [literals only].
 
 Um deslocamento é um número.
