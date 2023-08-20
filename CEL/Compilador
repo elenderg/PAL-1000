@@ -329,9 +329,9 @@ Etapas para que se adicione um intermediate usando um nome do tipo e um endereço
   Atribua o nome do tipo ao nome do tipo deste intermediate.
   Resolva o intermediate.
 
-Etapas para que se adicione um literal para uns variáveis usando um endereço local:
-  Adicione o literal como uma variável para as variáveis usando "literal" e o endereço local.
-  Gere o nome deste literal usando "~L".
+Etapas para que se adicione um valor literal para uns variáveis usando um endereço local:
+  Adicione o valor literal como uma variável para as variáveis usando "literal" e o endereço local.
+  Gere o nome deste valor literal usando "~L".
 
 Etapas para que se adicione uma unidade semântica para umas unidades semânticas usando um expression:
   Crie a unidade semântica.
@@ -682,7 +682,7 @@ Etapas para que se posponha os variável global finalizers para uma string:
 Etapas para que se posponha os inicializadores de variáveis globais para uma string:
   Obtenha uma variável global desde as variáveis globais.
   Se a variável global for inexistente, retorne.
-  Se o literal desta variável global for inexistente, recomece.
+  Se o valor literal desta variável global for inexistente, recomece.
   Se o compiled detector desta variável global não estiver ativo, recomece.
   Desative um detector.
   Posponha o texto inicializador desta variável global para a string.
@@ -882,7 +882,7 @@ Etapas para que se posponha uma string para uma segunda string usando uma tercei
 Etapas para que se acrescente endereço loading código para um texto hexadecimal usando uma variável:
   \ loads para edx
   Se a variável for inexistente, acrescente $C7C200000000 para o texto hexadecimal; retorne. \ mov edx,0
-  Se a categoria desta variável for "variável global", acrescente $C7C2 e o endereço desta variável para o texto hexadecimal; retorne. \ mov edx,the endereço da variável
+  Se a categoria desta variável for "global", acrescente $C7C2 e o endereço desta variável para o texto hexadecimal; retorne. \ mov edx,the endereço da variável
   Se a categoria desta variável for "literal", acrescente $C7C2 e o endereço desta variável para o texto hexadecimal; retorne. \ mov edx,the endereço da variável
   Se a categoria desta variável for "local", acrescente $8D95 e o deslocamento desta variável para o texto hexadecimal; retorne. \ lea edx,[ebp+ the deslocamento da variável]
   Se a categoria desta variável for "scratch", acrescente $8B95 e o deslocamento desta variável para o texto hexadecimal; retorne. \ mov edx, [ebp+ the deslocamento da variável]
@@ -1234,7 +1234,7 @@ Etapas para que se compile um endereço da pasta (address):
   Arredonde o endereço para cima usando o múltiplo imediato de 4096.
   Atribua o endereço à endereço base desta região de dados.
   Enderece as variáveis globais usando o endereço.
-  Enderece os literals usando o endereço.
+  Enderece os valores literais usando o endereço.
   Atribua o endereço menos a endereço base desta região de dados à quantidade de caracteres desta região de dados.
   Arredonde o endereço para cima usando o múltiplo imediato de 4096.
   Atribua o endereço à endereço base desta região de código. \ Uma zona é uma estrutura que contém um endereço base, uma quantidade de caracteres e um tamanho.
@@ -1505,89 +1505,89 @@ Etapas para que se compile os cabelalhos of umas rotinas:
   Compile o cabeçalho of a rotina.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se compile um literal usando um percorredor:
+Etapas para que se compile um valor literal usando um percorredor:
   Se existir algum problema de compilação, retorne.
-  Adicione o literal para os literals usando o caractere inicial deste segmento inicial deste percorredor .
-  \Se o segmento inicial deste percorredor for algum detector literal, compile o literal usando o percorredor (detector); retorne.
-  Se o segmento inicial deste percorredor for algum hex literal, compile o literal usando o percorredor (hex); retorne.
-  Se o segmento inicial deste percorredor for algum valor numérico literal, compile o literal usando o percorredor (numeric); retorne.
-  Se o segmento inicial deste percorredor for algum ponteiro literal, compile o literal usando o percorredor (ponteiro); retorne.
-  Se o segmento inicial deste percorredor for algum string literal, compile o literal usando o percorredor (cadeia de caracteres); retorne.
+  Adicione o valor literal para os valores literais usando o caractere inicial deste segmento inicial deste percorredor .
+  \Se o segmento inicial deste percorredor for algum detector literal, compile o valor literal usando o percorredor (detector); retorne.
+  Se o segmento inicial deste percorredor for algum hex literal, compile o valor literal usando o percorredor (hex); retorne.
+  Se o segmento inicial deste percorredor for algum valor numérico literal, compile o valor literal usando o percorredor (numeric); retorne.
+  Se o segmento inicial deste percorredor for algum ponteiro literal, compile o valor literal usando o percorredor (ponteiro); retorne.
+  Se o segmento inicial deste percorredor for algum string literal, compile o valor literal usando o percorredor (cadeia de caracteres); retorne.
   Apresente uma mensagem de erro contendo "Erro interno #11 - Consulte a rotina para que se compile um termo usando um percorredor (literal)" e o percorredor.
 
-Etapas para que se compile um literal usando um percorredor (detector):
+Etapas para que se compile um valor literal usando um percorredor (detector):
   Se existir algum problema de compilação, retorne.
   Converta o segmento inicial deste percorredor para um detector.
-  Converta o detector para os data deste literal.
+  Converta o detector para os data deste valor literal.
   Mova o percorredor (usando diretrizes de compilação).
-  Atribua "detector" ao nome do tipo deste literal.
-  Resolva o literal. \ Que tal utilizar os termos "decifre", "traduza", "destrinche", "decodifique"?
+  Atribua "detector" ao nome do tipo deste valor literal.
+  Resolva o valor literal. \ Que tal utilizar os termos "decifre", "traduza", "destrinche", "decodifique"?
 
-Etapas para que se compile um literal usando um percorredor (hex):
+Etapas para que se compile um valor literal usando um percorredor (hex):
   Se existir algum problema de compilação, retorne.
   Atribua o segmento inicial deste percorredor para um parte da cifra binária.
   Adicione 1 para o caractere inicial desta parte da cifra binária.
-  Converta o parte da cifra binária para o data deste literal.
+  Converta o parte da cifra binária para o data deste valor literal.
   Mova o percorredor (usando diretrizes de compilação).
-  Atribua "texto hexadecimal" ao nome do tipo deste literal.
-  Resolva o literal.
+  Atribua "texto hexadecimal" ao nome do tipo deste valor literal.
+  Resolva o valor literal.
 
-Etapas para que se compile um literal usando um percorredor (valor numérico - integer):
+Etapas para que se compile um valor literal usando um percorredor (valor numérico - integer):
   Se existir algum problema de compilação, retorne.
   Converta o segmento inicial deste percorredor para um número.
-  Converta o número para os data deste literal.
+  Converta o número para os data deste valor literal.
   Mova o percorredor (usando diretrizes de compilação).
-  Atribua "número" ao nome do tipo deste literal.
-  Resolva o literal.
+  Atribua "número" ao nome do tipo deste valor literal.
+  Resolva o valor literal.
 
-Etapas para que se compile um literal usando um percorredor (valor numérico - proporção):
+Etapas para que se compile um valor literal usando um percorredor (valor numérico - proporção):
   Se existir algum problema de compilação, retorne.
   Converta o segmento inicial deste percorredor para uma proporção.
-  Converta a proporção para o data deste literal.
+  Converta a proporção para o data deste valor literal.
   Mova o percorredor (usando diretrizes de compilação).
-  Atribua "proporção" ao nome do tipo deste literal.
-  Resolva o literal.
+  Atribua "proporção" ao nome do tipo deste valor literal.
+  Resolva o valor literal.
 
-Etapas para que se compile um literal usando um percorredor (valor numérico - com unidade de medida):
+Etapas para que se compile um valor literal usando um percorredor (valor numérico - com unidade de medida):
   Se existir algum problema de compilação, retorne.
   Converta o segmento inicial deste percorredor para uma proporção.
   Mova o percorredor (usando diretrizes de compilação).
   Examine um nome usando o percorredor.
   Encontre um tipo usando o nome e o catálogo de tipos.
-  Se o tipo for inexistente, apresente uma mensagem de erro contendo "Erro. O(A) '" junto com o nome seguido de "' é uma unidade de medida inexistente." e o endereço local deste literal; retorne.
-  Se o tipo não puder ser reduzido para "número", apresente a mensagem de erro contendo "Erro. O(A) '" junto com o nome seguido de "' é uma unidade de medida inválida." e o endereço local deste literal; retorne.
+  Se o tipo for inexistente, apresente uma mensagem de erro contendo "Erro. O(A) '" junto com o nome seguido de "' é uma unidade de medida inexistente." e o endereço local deste valor literal; retorne.
+  Se o tipo não puder ser reduzido para "número", apresente a mensagem de erro contendo "Erro. O(A) '" junto com o nome seguido de "' é uma unidade de medida inválida." e o endereço local deste valor literal; retorne.
   Atribua a razão de escala deste tipo para um final proporção.
   Se a razão de escala deste tipo for 0, atribua 1/1 ao final proporção.
   Multiplique o final proporção pelo proporção.
   Reduza o final proporção.
-  Se o denominador deste final proporção for 0, apresente a mensagem de erro contendo "Erro. Denominador igual a zero. Unidade de medida inválida." e o endereço local deste literal.
+  Se o denominador deste final proporção for 0, apresente a mensagem de erro contendo "Erro. Denominador igual a zero. Unidade de medida inválida." e o endereço local deste valor literal.
   Atribua o numerador deste final proporção dividido pelo denominador deste final proporção para um número.
-  Atribua o nome deste tipo ao nome do tipo deste literal.
-  Converta o número para o data deste literal.
-  Resolva o literal.
+  Atribua o nome deste tipo ao nome do tipo deste valor literal.
+  Converta o número para o data deste valor literal.
+  Resolva o valor literal.
 
-Etapas para que se compile um literal usando um percorredor (numeric):
+Etapas para que se compile um valor literal usando um percorredor (numeric):
   Se existir algum problema de compilação, retorne.
-  Se o percorredor estiver acompanhado por algum unidade de medida, compile o literal usando o percorredor (valor numérico - com unidade de medida); retorne.
-  Se o segmento inicial deste percorredor for algum integer literal, compile o literal usando o percorredor (valor numérico - integer); retorne.
-  Se o segmento inicial deste percorredor for algum proporção literal, compile o literal usando o percorredor (valor numérico - proporção); retorne.
-  Se o segmento inicial deste percorredor for algum numeral misto literal, compile o literal usando o percorredor (valor numérico - proporção); retorne.
+  Se o percorredor estiver acompanhado por algum unidade de medida, compile o valor literal usando o percorredor (valor numérico - com unidade de medida); retorne.
+  Se o segmento inicial deste percorredor for algum integer literal, compile o valor literal usando o percorredor (valor numérico - integer); retorne.
+  Se o segmento inicial deste percorredor for algum proporção literal, compile o valor literal usando o percorredor (valor numérico - proporção); retorne.
+  Se o segmento inicial deste percorredor for algum numeral misto literal, compile o valor literal usando o percorredor (valor numérico - proporção); retorne.
 
-Etapas para que se compile um literal usando um percorredor (ponteiro):
+Etapas para que se compile um valor literal usando um percorredor (ponteiro):
   Se existir algum problema de compilação, retorne.
-  Converta 0 para os data deste literal. \ was nil
+  Converta 0 para os data deste valor literal. \ was nil
   Mova o percorredor (usando diretrizes de compilação).
-  Atribua "ponteiro" ao nome do tipo deste literal.
-  Resolva o literal.
+  Atribua "ponteiro" ao nome do tipo deste valor literal.
+  Resolva o valor literal.
 
-Etapas para que se compile um literal usando um percorredor (cadeia de caracteres):
+Etapas para que se compile um valor literal usando um percorredor (cadeia de caracteres):
   Se existir algum problema de compilação, retorne.
-  Atribua o segmento inicial deste percorredor aos data deste literal.
-  Remove aspas de os data deste literal.
+  Atribua o segmento inicial deste percorredor aos data deste valor literal.
+  Remove aspas de os data deste valor literal.
   Mova o percorredor (usando diretrizes de compilação).
-  Atribua "string" ao nome do tipo deste literal.
-  \Atribua "texto" ao nome do tipo deste literal.
-  Resolva o literal.
+  Atribua "string" ao nome do tipo deste valor literal.
+  \Atribua "texto" ao nome do tipo deste valor literal.
+  Resolva o valor literal.
 
 Etapas para que se compile umas unidades semânticas e uns parâmetros usando um percorredor:
   Se existir algum problema de compilação, retorne.
@@ -1985,8 +1985,8 @@ Etapas para que se compile um termo usando um percorredor (dereference):
 
 Etapas para que se compile um termo usando um percorredor (literal):
   Se existir algum problema de compilação, retorne.
-  Compile um literal usando o percorredor.
-  Atribua o literal à variável deste termo.
+  Compile um valor literal usando o percorredor.
+  Atribua o valor literal à variável deste termo.
   Limpe o phrase deste termo.
   Compile o termo usando o percorredor (possessives).
 
@@ -2033,11 +2033,11 @@ Etapas para que se compile um termo usando um percorredor (posigated termo):
 Etapas para que se compile um termo usando um percorredor (possessivo - magnitude):
   Se existir algum problema de compilação, retorne.
   Se a variável deste termo for inexistente, apresente uma mensagem de erro contendo "Erro. Comando magnitude inválido. A variável: " junto com a phrase deste termo seguido de "'não foi localizada." e o percorredor; retorne.
-  Adicione um literal para os literals usando o caractere inicial deste segmento inicial deste percorredor.
-  Converta a quantidade de caracteres deste tipo deste termo para os data deste literal.
-  Atribua "número" ao nome do tipo deste literal.
-  Resolva o literal.
-  Atribua o literal à variável deste termo.
+  Adicione um valor literal para os valores literais usando o caractere inicial deste segmento inicial deste percorredor.
+  Converta a quantidade de caracteres deste tipo deste termo para os data deste valor literal.
+  Atribua "número" ao nome do tipo deste valor literal.
+  Resolva o valor literal.
+  Atribua o valor literal à variável deste termo.
   Limpe a phrase deste termo.
 
 Etapas para que se compile um termo usando um percorredor (possessivo - conteúdo):
@@ -3692,7 +3692,7 @@ Etapas para que se finalize o compilador:
   Destrua o catálogo de tipos.
   Destrua as DLLs.
   Destrua as rotinas.
-  Destrua os literals.
+  Destrua os valores literais.
   Destrua as variáveis globais.
   Destrua os tipos.
   Destrua os arquivos fontes.
@@ -3988,11 +3988,11 @@ Etapas para que se catalogue uma variável global:
   Se o nome desta variável global estiver no catálogo de variáveis globais, apresente uma mensagem de erro contendo "'" junto com o nome desta variável global seguido de "' é uma variável variável global duplicada." e o endereço local desta variável global; retorne.
   Catalogue a variável global usando o nome desta variável global e o catálogo de variáveis globais.
 
-Etapas para que se catalogue um literal:
+Etapas para que se catalogue um valor literal:
   Se existir algum problema de compilação, retorne.
-  Se o literal for inexistente, retorne.
-  Se o nome deste literal estiver no catálogo de variáveis hexadecimais, apresente uma mensagem de erro contendo "Erro interno #12" e o endereço local deste literal; retorne.
-  Catalogue o literal usando o nome deste literal e o catálogo de variáveis hexadecimais.
+  Se o valor literal for inexistente, retorne.
+  Se o nome deste valor literal estiver no catálogo de variáveis hexadecimais, apresente uma mensagem de erro contendo "Erro interno #12" e o endereço local deste valor literal; retorne.
+  Catalogue o valor literal usando o nome deste valor literal e o catálogo de variáveis hexadecimais.
 
 Etapas para que se catalogue um cabeçalho semi-expandido usando um catálogo (special):
   Encontre uma referência usando o cabeçalho semi-expandido e o catálogo.
@@ -4174,7 +4174,7 @@ Etapas para que se link:
   Disponibilize o cabeçalho PE ao trecho EXE deste compilador.
   Disponibilize as DLLs ao trecho EXE deste compilador.
   Disponibilize as variáveis globais ao trecho EXE deste compilador.
-  Disponibilize os literals ao trecho EXE deste compilador.
+  Disponibilize os valores literais ao trecho EXE deste compilador.
   Disponibilize as rotinas ao trecho EXE deste compilador.
 
 Etapas para que se liste tudo:
@@ -4182,7 +4182,7 @@ Etapas para que se liste tudo:
   Liste a mensagem de erro deste compilador na trecho de listagem deste compilador.
   Liste os tipos depois de "TIPOS:" na trecho de listagem deste compilador.
   Liste as variáveis globais depois de "VARIÁVEIS GLOBAIS:" na trecho de listagem deste compilador.
-  Liste os literals depois de "VALORES LITERAIS:" na trecho de listagem deste compilador.
+  Liste os valores literais depois de "VALORES LITERAIS:" na trecho de listagem deste compilador.
   Liste as rotinas depois de "ROTINAS:" na trecho de listagem deste compilador.
   Liste o catálogo de tipos depois de "ÍNDICE DE TIPOS:" na trecho de listagem deste compilador.
   Liste o catálogo de variáveis globais depois de "ÍNDICE GLOBAL:" na trecho de listagem deste compilador.
@@ -4447,7 +4447,7 @@ Etapas para que se liste uma variável em um trecho:
   Posponha "Redefinição: " para o trecho.
   Posponha o nome de redefinição de conteúdo desta variável para o trecho (com separador).
   Posponha "Conteúdo: " para o trecho.
-  Posponha o literal desta variável para o trecho (com separador).
+  Posponha o valor literal desta variável para o trecho (com separador).
   Converta o data desta variável para uma cifra hexadecimal.
   Posponha "Conteúdo (hex): " para o trecho.
   Posponha a cifra hexadecimal para o trecho (com separador).
@@ -4468,9 +4468,9 @@ Etapas para que se liste uns variáveis depois de uma string em um trecho:
 
 O catálogo de variáveis hexadecimais é um catálogo.
 
-An literal é uma variável.
+Um valor literal é uma variável.
 
-O literals são uns literals.
+Os valores literais são uns valores literais.
 
 Uma variável local é uma variável.
 
@@ -5323,12 +5323,12 @@ Etapas para que se resolva uma variável global (compile corpo):
   Lance um percorredor sobre o corpo de variável global desta variável global.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum literal, apresente uma mensagem de erro contendo "Erro de tipo. O tipo: " junto com o segmento inicial deste percorredor seguido de "' deve ser do tipo literal." e o percorredor; retorne.
-  Compile um literal usando o percorredor.
+  Compile um valor literal usando o percorredor.
   Se existir algum problema de compilação, retorne.
   Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Acho que era bom colocar um ponto por aqui, né?" e o percorredor; retorne.
-  Se o nome do tipo desta variável global estiver em branco, atribua o nome deste tipo deste literal ao nome do tipo desta variável global.
-  Atribua o literal ao literal desta variável global.
-  Catalogue o literal.
+  Se o nome do tipo desta variável global estiver em branco, atribua o nome deste tipo deste valor literal ao nome do tipo desta variável global.
+  Atribua o valor literal ao valor literal desta variável global.
+  Catalogue o valor literal.
 
 Etapas para que se resolva umas variáveis globais:
   Se existir algum problema de compilação, retorne.
@@ -5649,7 +5649,7 @@ Etapas para que se examine um corpo de variável global usando um percorredor:
 
 Etapas para que se examine uma variável global usando um percorredor:
   Se existir algum problema de compilação, retorne.
-  Adicione a variável global para as variáveis globais usando "variável global" e o caractere inicial deste segmento inicial deste percorredor.
+  Adicione a variável global para as variáveis globais usando "global" e o caractere inicial deste segmento inicial deste percorredor.
   Mova o percorredor (usando diretrizes de compilação).
   Examine o nome desta variável global usando o percorredor.
   Se o segmento inicial deste percorredor for algum operador de atribuição de estruturas compostas, examine a variável global usando o percorredor(cláusula 'tem'); retorne.
@@ -5873,14 +5873,14 @@ Etapas para que se ligue o compiled detector em uma variável:
   Se a variável for inexistente, retorne.
   Se o compiled detector desta variável [já] estiver ativo, retorne.
   Ative o compiled detector desta variável.
-  Se a categoria desta variável não for "variável global", retorne.
-  Se o literal desta variável for inexistente, retorne.
-  Encontre uma rotina usando "atribua" e o tipo deste literal desta variável e "para" e o tipo desta variável.
-  Se a rotina for inexistente, encontre a rotina usando "converta" e o tipo deste literal desta variável e "para" e o tipo desta variável; ative um detector.
+  Se a categoria desta variável não for "global", retorne.
+  Se o valor literal desta variável for inexistente, retorne.
+  Encontre uma rotina usando "atribua" e o tipo deste valor literal desta variável e "para" e o tipo desta variável.
+  Se a rotina for inexistente, encontre a rotina usando "converta" e o tipo deste valor literal desta variável e "para" e o tipo desta variável; ative um detector.
   Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro. O tipo e o valor da variável variável global  não estão correspondendo." e o endereço local desta variável; retorne.
   Compile o corpo of a rotina.
-  Se o detector estiver ativo, atribua "converta o " junto com o nome deste literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao texto inicializador desta variável.
-  Se o detector não estiver ativo, atribua "atribua o " junto com o nome deste literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao texto inicializador desta variável. \ Era " ao ". NÃO PODIA MUDAR O " ao " não sei o porquê
+  Se o detector estiver ativo, atribua "converta o " junto com o nome deste valor literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao texto inicializador desta variável.
+  Se o detector não estiver ativo, atribua "atribua o " junto com o nome deste valor literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao texto inicializador desta variável. \ Era " ao ". NÃO PODIA MUDAR O " ao " não sei o porquê
 
 Etapas para que se passe para o subsequente palavra em um subtexto:
   Se o subtexto estiver em branco, retorne.
@@ -6099,7 +6099,7 @@ Uma variável é uma lista com
   Um apelido, 
   Um nome do tipo,
   Um tipo (referência), \ tipo real em literal, variável global e local; dereferenced tipo em parâmetros e scratches
-  Um endereço [variáveis globais e literals only] ou 
+  Um endereço [variáveis globais e literais only] ou 
   Um deslocamento sob o endereço [variáveis locais, parâmetros, e campos only],
   Um contagem [campos only],
   Um detector de referência [campos only],
@@ -6107,8 +6107,8 @@ Uma variável é uma lista com
   Um detector de passagem por-valor [parâmetros only],
   Um corpo de variável global [variáveis globais only],
   Um texto inicializador [variáveis globais only],
-  Um literal (referência) [variáveis globais only - constant com which to initalize the variável global],
-  Um texto hexadecimal denominado data [literals only].
+  Um valor literal (referência) [variáveis globais only - constant com which to initalize the variável global],
+  Um texto hexadecimal denominado data [literais only].
 
 Um deslocamento é um número.
 
