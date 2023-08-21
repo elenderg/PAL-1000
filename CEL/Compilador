@@ -4005,10 +4005,10 @@ Etapas para que se catalogue um valor literal:
   Se o nome deste valor literal estiver no catálogo de variáveis hexadecimais, apresente uma mensagem de erro contendo "Erro interno #12" e o endereço local deste valor literal; retorne.
   Catalogue o valor literal usando o nome deste valor literal e o catálogo de variáveis hexadecimais.
 
-Etapas para que se catalogue um cabeçalho semi-expandido usando um catálogo (special):
-  Encontre uma referência usando o cabeçalho semi-expandido e o catálogo.
+Etapas para que se catalogue um cabeçalho compactado usando um catálogo (special):
+  Encontre uma referência usando o cabeçalho compactado e o catálogo.
   Se a referência não for inexistente, retorne.
-  Catalogue o cabeçalho semi-expandido no catálogo.
+  Catalogue o cabeçalho compactado no catálogo.
 
 Etapas para que se catalogue uma rotina por utilização:
   Se existir algum problema de compilação, retorne.
@@ -4031,15 +4031,15 @@ Etapas para que se catalogue uma rotina usando uma representação interna da roti
 
 Etapas para que se catalogue uma rotina usando umas unidades semânticas e um catálogo:
   Se a rotina for inexistente, retorne.
-  Limpe um cabeçalho semi-expandido.
+  Limpe um cabeçalho compactado.
   Comece. [a executar o código abaixo]
     Obtenha uma unidade semântica desde as unidades semânticas.
     Se a unidade semântica for inexistente, retorne.
-    Posponha a unidade semântica para o cabeçalho semi-expandido.
+    Posponha a unidade semântica para o cabeçalho compactado.
     Se a unidade semântica for o last unidade semântica destes unidades semânticas, pare.
-    Catalogue o cabeçalho semi-expandido usando o catálogo (special).
+    Catalogue o cabeçalho compactado usando o catálogo (special).
   Recomece. [percorra novamente o código acima]
-  Catalogue a rotina usando o cabeçalho semi-expandido como uma representação interna da rotina e o catálogo (special).
+  Catalogue a rotina usando o cabeçalho compactado como uma representação interna da rotina e o catálogo (special).
 
 Etapas para que se catalogue umas rotinas por utilização:
   Se existir algum problema de compilação, retorne.
@@ -4509,7 +4509,7 @@ Uma unidade semântica é uma lista com
   Um tipo atual (referência),
   Um subtexto atual.
 
-Um cabeçalho semi-expandido é uma representação interna da rotina.
+Um cabeçalho compactado é uma representação interna da rotina.
 
 Etapas para que se mova um percorredor (ignorando os comentários):
   Avance o percorredor.
@@ -5610,10 +5610,10 @@ Etapas para que se examine um campo usando um percorredor (tipo: array de bytes)
   Se existir algum problema de compilação, retorne.
   Converta o segmento inicial deste percorredor para uma proporção.
   Reduza a proporção.
-  Se o denominador desta proporção não for 1, apresente uma mensagem de erro contendo "Erro. Arrays exigem tamanhos não fracionários" e o percorredor; retorne.
+  Se o denominador desta proporção não for 1, apresente uma mensagem de erro contendo "Erro de sintaxe. Arrays exigem tamanhos não fracionários" e o percorredor; retorne.
   Atribua o numerador desta proporção à contagem deste campo.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for "byte" ou "bytes", apresente a mensagem de erro contendo "Erro. Necessário utilizar a palavra 'bytes' após um número designador." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for "byte" ou "bytes", apresente a mensagem de erro contendo "Erro de sintaxe. Esperado 'bytes' após um número designador." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Atribua "byte" ao nome do tipo deste campo.
 
@@ -5665,7 +5665,7 @@ Etapas para que se examine uma variável global usando um percorredor:
   Mova o percorredor (usando diretrizes de compilação).
   Examine o nome desta variável global usando o percorredor.
   Se o segmento inicial deste percorredor for algum operador de atribuição de estruturas compostas, examine a variável global usando o percorredor(cláusula 'tem'); retorne.
-  Se o segmento inicial deste percorredor não for algum operador de atribuição simples, apresente uma mensagem de erro contendo "Erro de sintaxe. Esperado 'é/está'. Encontrado: '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for algum operador de atribuição simples, apresente uma mensagem de erro contendo "Erro de sintaxe. Esperado: 'é/está'. Encontrado: '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum artigo indefinido, examine a variável global usando o percorredor (literal termo); retorne.
   Mova o percorredor (usando diretrizes de compilação).
@@ -5714,7 +5714,7 @@ Etapas para que se examine uma variável global usando um percorredor (dados comp
   Catalogue o tipo.
   Atribua o nome deste tipo ao nome do tipo desta variável global.
   Examine algum dado complementar para o tipo usando o percorredor.
-  Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Erro. Esperado '.' após informações complementares." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Erro de sintaxe. Esperado '.' após informações complementares." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Catalogue a variável global.
 
@@ -5753,7 +5753,7 @@ Etapas para que se examine uma rotina usando um percorredor:
   Se o segmento inicial deste percorredor for "Passos", mova o percorredor (usando diretrizes de compilação). \ Pula a palavra  "Passos" ou "Etapas" e obtém o subsequente segmento inicial
   Se o segmento inicial deste percorredor for "necessários", mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor for "necessárias", mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for "para", apresente uma mensagem de erro contendo "Erro. Insira a kewyword 'para' '" junto com o segmento inicial deste percorredor seguido de "' neste cabeçalho de rotina." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for "para", apresente uma mensagem de erro contendo "Erro de sintaxe. Insira a keyword 'para' '" junto com o segmento inicial deste percorredor seguido de "' neste cabeçalho de rotina." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação). \ ignora o "para" e obtém o subsequente segmento inicial
   Se o segmento inicial deste percorredor for "que", mova o percorredor (usando diretrizes de compilação).
   \Se o segmento inicial deste percorredor não for "que", apresente uma mensagem de erro contendo "Você precisa colocar um 'que' antes da palavra: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
@@ -5763,7 +5763,7 @@ Etapas para que se examine uma rotina usando um percorredor:
   \Mova o percorredor (usando diretrizes de compilação). \ ignora o "se" e obtém o subsequente segmento inicial
   Examine a cabeçalho de rotina desta rotina usando o percorredor.
   Se o segmento inicial deste percorredor for o ponto&vírgula, examine a rotina usando o percorredor (sobrecarga de métodos); retorne. \ *** usado para nomes alternativos de rotinas
-  Se o segmento inicial deste percorredor não for o sinal de dois pontos, apresente a mensagem de erro contendo "Erro. Insira ':' ao final do cabeçalho desta rotina." e o endereço local desta rotina; retorne.
+  Se o segmento inicial deste percorredor não for o sinal de dois pontos, apresente a mensagem de erro contendo "Erro de sintaxe. ':' ausente ou mal posicionado" e o endereço local desta rotina; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Examine as instruções desta rotina usando o percorredor.
 
@@ -5771,7 +5771,7 @@ Etapas para que se examine uma rotina usando um percorredor (sobrecarga de métod
   \ *** para nomes alternativos de rotinas
   Isole o percorredor.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for o início of algum rotina, apresente uma mensagem de erro contendo "Erro. Verifique a posição do ';'" e o original percorredor; retorne.
+  Se o segmento inicial deste percorredor não for o início of algum rotina, apresente uma mensagem de erro contendo "Erro de sintaxe. ';' ausente ou mal posicionado" e o original percorredor; retorne.
   Atribua o caractere inicial deste segmento inicial deste original percorredor ao caractere inicial destas instruções desta rotina.
   Atribua o caractere final deste segmento inicial deste original percorredor ao caractere final destas instruções desta rotina.
   Mova o original percorredor (usando diretrizes de compilação).
@@ -5828,11 +5828,11 @@ Etapas para que se examine um tipo usando um percorredor:
     apresente uma mensagem de erro contendo "Erro, não foi possível detectar o idioma desta variável" e o endereço local deste tipo; retorne.
   Se o segmento inicial deste percorredor for algum operador de atribuição de estruturas compostas, examine o tipo usando o percorredor(cláusula 'tem'); retorne.
   Se o segmento inicial deste percorredor não for algum operador de atribuição simples, 
-    apresente a mensagem de erro contendo "Erro. Esperado 'ser/estar'. Encontrado '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
+    apresente a mensagem de erro contendo "Erro. Esperado 'é/está'. Encontrado '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor for algum valor numérico literal, examine o tipo usando o percorredor (unidade de medida); retorne.
   Se o segmento inicial deste percorredor não for algum artigo indefinido, 
-    apresente a mensagem de erro contendo "Erro. Esperado um artigo indefinido. Encontrado '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
+    apresente a mensagem de erro contendo "Erro. Esperado 'um/uma'. Encontrado '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Examine o base nome deste tipo usando o percorredor.
   Examine algum dado complementar para o tipo usando o percorredor.
@@ -5854,7 +5854,7 @@ Etapas para que se examine um tipo usando um percorredor(cláusula 'tem'):
 Etapas para que se examine um tipo usando um percorredor (unidade de medida):
   Se existir algum problema de compilação, retorne.
   Converta o segmento inicial deste percorredor para a razão de escala deste tipo.
-  Se a razão de escala deste tipo for 0, apresente uma mensagem de erro contendo "Erro. Impossível utilizar 0 em tipos de escala." e o endereço local deste tipo; retorne.
+  Se a razão de escala deste tipo for 0, apresente uma mensagem de erro contendo "Erro. Impossível utilizar 0 em tipos escalares." e o endereço local deste tipo; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Examine o base nome deste tipo usando o percorredor.
   Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Erro. Necessário um '.' no fim desta fração. Encontrado. '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
@@ -6087,12 +6087,15 @@ Etapas para que se transforme umas rotinas em código hexadecimal:
 
 O catálogo de tipos é um catálogo.
 
+Um nome do tipo base é um nome.
+
 Um tipo é uma lista com
   Um endereço local (referência),
   Um nome, um plural nome,
-  Um cabeçalho semi-expandido,
+  Um cabeçalho compactado,
   Uma quantidade de caracteres,
-  Um base nome, um tipo base (referência),
+  Um base nome, 
+  Um tipo base (referência),
   Um conteúdo nome, um conteúdo tipo (referência) [endereço de memórias only],
   Uma razão de escala,
   Some campos [records only],
@@ -6155,15 +6158,15 @@ Etapas para que se compile o cabeçalho of uma rotina usando um percorredor (funç
   Se o detector estiver ativo, compile as unidades semânticas desta rotina e o parâmetros desta rotina usando o percorredor (artigo indefinido).
   Se o detector não estiver ativo, compile as unidades semânticas desta rotina e o parâmetros desta rotina usando o percorredor (artigo definido).
   Adicione uma segunda unidade semântica para as unidades semânticas desta rotina usando "'s " junto com o nome.
-  Se o segmento inicial deste percorredor não for algum função possessiva reversa into, apresente uma mensagem de erro contendo "Erro. O compilador esperava a palavra 'para', mas encontrou o termo: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for algum função possessiva reversa into, apresente uma mensagem de erro contendo "Erro de sintaxe. Esperado: 'para'. Encontrado: '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
   Adicione um terceiro unidade semântica para as unidades semânticas desta rotina usando "para".
   Converta as unidades semânticas desta rotina para uma representação interna da rotina.
   Se a representação interna da rotina estiver no catálogo geral de rotinas, apresente a mensagem de erro contendo "Erro. A rotina para que se " junto com a representação interna da rotina seguido de ": já havia sido definida." e o endereço local desta rotina; retorne.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum artigo indefinido, apresente a mensagem de erro contendo "Erro. O compilador esperava encontrar um artigo indefinido, mas encontrou: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for algum artigo indefinido, apresente a mensagem de erro contendo "Erro. Esperado 'um/uma'. Encontrado: '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
   Compile as unidades semânticas desta rotina e o parâmetros desta rotina usando o percorredor (artigo indefinido).
-  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Erro. O compilador detectou a existência de outras listas no final desta função." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Erro. Comandos inválidos no final desta rotina." e o percorredor; retorne.
   Converta as unidades semânticas desta rotina para a representação interna da rotina desta rotina.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas. \ por employs
 
