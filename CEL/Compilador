@@ -77,7 +77,7 @@ O compilador é um estrutura com
 Um trecho de listagem é um trecho.
 
 Um endereço do arquivo atual é um endereço completo.
-Um problema é um número.
+\Um problema é um número.
 
 Etapas para que se determine se há algum problema de compilação;
 Etapas para que se determine se existe algum problema de compilação:
@@ -105,10 +105,10 @@ Etapas para que se adicione as rotinas de alocação e desalocação e finalização e
   Se existir algum problema de compilação, retorne.
   Obtenha um tipo desde o tipos.
   Se o tipo for inexistente, retorne.
-  Adicione a rotina de finalização pelo tipo.
+  Adicione a rotina de finalização para o tipo.
   Adicione a rotina de alocação para o tipo.
   Adicione a rotina de desalocação para o tipo.
-  Adicione a rotina de destruição pelo tipo.
+  Adicione a rotina de destruição para o tipo.
  Recomece. [percorra novamente o código acima]
 
 Etapas para que se adicione o rotina de alocação para um tipo:
@@ -163,14 +163,14 @@ Etapas para que se adicione o rotina de desalocação para um tipo:
   Lance as instruções desta rotina sobre a string do corpo desta rotina.
   Compile o cabeçalho of a rotina.
 
-Etapas para que se adicione o rotina de destruição por um tipo:
+Etapas para que se adicione o rotina de destruição para um tipo:
   Se o tipo for inexistente, retorne.
   Se existir algum problema de compilação, retorne.
   Se o tipo não deveria ser ignorado, retorne.
-  Se o tipo puder ser reduzido para "listas", adicione o rotina de destruição pelo tipo (listas); retorne.
-  Se o tipo puder ser reduzido para "ponteiro", adicione o rotina de destruição pelo tipo (ponteiro); retorne.
+  Se o tipo puder ser reduzido para "listas", adicione o rotina de destruição para o tipo (listas); retorne.
+  Se o tipo puder ser reduzido para "ponteiro", adicione o rotina de destruição para o tipo (ponteiro); retorne.
 
-Etapas para que se adicione o rotina de destruição por um tipo (ponteiro):
+Etapas para que se adicione o rotina de destruição para um tipo (ponteiro):
   Se o tipo for inexistente, retorne.
   Se existir algum problema de compilação, retorne.
   Atribua "Destrua [" junto com o nome deste tipo seguido de "]" para uma representação interna da rotina.
@@ -192,7 +192,7 @@ Etapas para que se adicione o rotina de destruição por um tipo (ponteiro):
   Lance as instruções desta rotina sobre a string do corpo desta rotina.
   Compile o cabeçalho of a rotina.
 
-Etapas para que se adicione o rotina de destruição por um tipo (listas):
+Etapas para que se adicione o rotina de destruição para um tipo (listas):
   Se o tipo for inexistente, retorne.
   Se existir algum problema de compilação, retorne.  
   Se o first campo destes campos deste tipo for inexistente, apresente uma mensagem de erro contendo "Erro interno #1'"; retorne. \
@@ -230,17 +230,17 @@ Etapas para que se adicione um campo para uns campos usando um nome e um apelido
   Atribua o nome do tipo ao nome do tipo deste campo.
   Atribua um detector de referência ao detector de referência deste campo.
 
-Etapas para que se adicione a rotina de finalização por um tipo:
+Etapas para que se adicione a rotina de finalização para um tipo:
   Se o tipo for inexistente, retorne.
   Se existir algum problema de compilação, retorne.
   Se o tipo não deveria ser finalizado, retorne.
-  Se o nome deste tipo for "string", adicione a rotina de finalização pelo tipo (cadeia de caracteres); retorne.
-  Se o nome deste tipo for "texto", adicione a rotina de finalização pelo tipo (cadeia de caracteres); retorne.
+  Se o nome deste tipo for "string", adicione a rotina de finalização para o tipo (cadeia de caracteres); retorne.
+  Se o nome deste tipo for "texto", adicione a rotina de finalização para o tipo (cadeia de caracteres); retorne.
   Se o tipo puder ser reduzido para "string", retorne. \ prevents generation of finalizer por derived string tipos
   Se o tipo puder ser reduzido para "texto", retorne.
-  Adicione a rotina de finalização pelo tipo (estrutura).
+  Adicione a rotina de finalização para o tipo (estrutura).
 
-Etapas para que se adicione a rotina de finalização por um tipo (estrutura):
+Etapas para que se adicione a rotina de finalização para um tipo (estrutura):
   Se o tipo for inexistente, retorne.
   Se existir algum problema de compilação, retorne.
   Adicione uma rotina para as rotinas usando nil.
@@ -263,7 +263,7 @@ Etapas para que se adicione a rotina de finalização por um tipo (estrutura):
   Lance as instruções desta rotina sobre a string do corpo desta rotina.
   Compile o cabeçalho of a rotina.
 
-Etapas para que se adicione a rotina de finalização por um tipo (cadeia de caracteres):
+Etapas para que se adicione a rotina de finalização para um tipo (cadeia de caracteres):
   Se o tipo for inexistente, retorne.
   Se existir algum problema de compilação, retorne.
   Adicione uma rotina para as rotinas usando nil.
@@ -431,7 +431,7 @@ Etapas para que se adicione uma unidade semântica para umas unidades semânticas 
 Etapas para que se adicione push fragmentos usando umas unidades semânticas:
   Se a rotina utilizada atualmente for inexistente, retorne.
   Comece. [a executar o código abaixo]
-    Obtenha uma unidade semântica desde as unidades semânticas (backwards).
+    Obtenha uma unidade semântica desde as unidades semânticas (regressivamente).
     Se a unidade semântica for inexistente, retorne.
     Se a variável desta unidade semântica for inexistente, recomece.
     Se o subtexto atual desta unidade semântica não estiver em branco, recomece.
@@ -2470,7 +2470,7 @@ Etapas para que se determine se um nome é algum valid campo nome:
 Etapas para que se determine se um percorredor está acompanhado por algum unidade de medida:
   Isole o percorredor.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o percorredor não estiver sobre algum nome starter, diga não.
+  Se o percorredor não estiver sobre algum indicador de início de variável, diga não.
   Examine um nome usando o percorredor.
   Encontre um tipo usando o nome e o catálogo de tipos.
   Se o tipo for inexistente, diga não.
@@ -2873,8 +2873,8 @@ Etapas para que se determine se uma string é uma keyword de referenciamento:
   Se a string for "(referência)", diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se um percorredor está sobre algum nome ender:
-  \ compare com nome starter
+Etapas para que se determine se um percorredor está sobre algum indicador de fim de variável:
+  \ compare com indicador de início de variável
   Se o segmento inicial deste percorredor for algum mark, diga sim.
   Se o segmento inicial deste percorredor for algum symbol, diga sim.
   Se o segmento inicial deste percorredor for algum artigo, diga sim.
@@ -2895,8 +2895,8 @@ Etapas para que se determine se um percorredor está sobre algum nome ender:
   Se o segmento inicial deste percorredor for algum advérbio de negação, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Etapas para que se determine se um percorredor está sobre algum nome starter:
-  \ compare com nome ender
+Etapas para que se determine se um percorredor está sobre algum indicador de início de variável:
+  \ compare com indicador de fim de variável
   Se o segmento inicial deste percorredor for algum mark, diga não.
   Se o segmento inicial deste percorredor for algum symbol, diga não.
   Se o segmento inicial deste percorredor for algum artigo, diga não.
@@ -3746,7 +3746,7 @@ Etapas para que se encontre um fragmento usando um segundo fragmento e uma etiqu
     Atribua o subsequente fragmento deste fragmento ao fragmento.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se encontre um fragmento usando um segundo fragmento e uma etiqueta (backwards):
+Etapas para que se encontre um fragmento usando um segundo fragmento e uma etiqueta (regressivamente):
   Atribua o segundo fragmento ao fragmento.
   Comece. [a executar o código abaixo]
     Se o fragmento for inexistente, retorne.
@@ -3853,9 +3853,9 @@ Etapas para que se encontre um arquivo fonte usando um ponteiro do byte :
 Etapas para que se encontre um tipo e um apelido usando um nome:
   Esvazie o tipo.
   Limpe o apelido.
-  Encontre o tipo e o apelido usando o nome (adiante).
+  Encontre o tipo e o apelido usando o nome (progressivamente).
   Se o tipo não for inexistente, retorne.
-  Encontre o tipo e o apelido usando o nome (pra trás).
+  Encontre o tipo e o apelido usando o nome (regressivamente).
   \Lance um subtexto sobre o nome.
   \Comece. [a executar o código abaixo]
     \Se o subtexto estiver em branco, retorne.
@@ -3868,7 +3868,7 @@ Etapas para que se encontre um tipo e um apelido usando um nome:
   \Se o segundo subtexto não estiver em branco, atribua o segundo subtexto ao apelido.
   \Se o segundo subtexto estiver em branco, atribua o subtexto ao apelido.
 
-Etapas para que se encontre um tipo e um apelido usando um nome (pra trás):
+Etapas para que se encontre um tipo e um apelido usando um nome (regressivamente):
   Esvazie o tipo.
   Limpe o apelido.
   Lance um subtexto sobre o nome.
@@ -3883,7 +3883,7 @@ Etapas para que se encontre um tipo e um apelido usando um nome (pra trás):
   Se o segundo subtexto não estiver em branco, atribua o segundo subtexto ao apelido.
   Se o segundo subtexto estiver em branco, atribua o subtexto ao apelido.
 
-Etapas para que se encontre um tipo e um apelido usando um nome (adiante):
+Etapas para que se encontre um tipo e um apelido usando um nome (progressivamente):
   \ original - sem alterações
   Esvazie o tipo.
   Limpe o apelido.
@@ -5420,7 +5420,7 @@ Etapas para que se resolva um tipo (dados opcionais - conjunto):
   Se os campos deste tipo estiverem vazios, copie os campos deste tipo base deste tipo aos campos deste tipo; retorne.
   Comece. [a executar o código abaixo]
     Se existir algum problema de compilação, retorne.
-    Obtenha um campo desde os campos deste tipo (backwards).
+    Obtenha um campo desde os campos deste tipo (regressivamente).
     Se o campo for inexistente, pare.
     Se o campo estiver duplicada em os campos deste tipo, apresente uma mensagem de erro contendo "O campo '" junto com o nome deste campo seguido de "' está definido mais de uma vez." e o endereço local deste campo; retorne.
     Resolva o campo.
@@ -5546,19 +5546,20 @@ Uma referência da rotina é umas unidades semânticas.
 
 As rotinas são umas rotinas.
 
-Etapas para que se examine algum dado complementar por um tipo usando um percorredor:
+\Etapas para que se examine algum dado complementar de um tipo usando um percorredor:
+Etapas para que se examine algum dado complementar para um tipo usando um percorredor:
   Se existir algum problema de compilação, retorne.
-  Se o segmento inicial deste percorredor for "to", examine algum dado complementar pelo tipo usando o percorredor (ponteiro); retorne.
-  Se o segmento inicial deste percorredor for "para", examine algum dado complementar pelo tipo usando o percorredor (ponteiro); retorne.
-  Se o segmento inicial deste percorredor for algum com, examine algum dado complementar pelo tipo usando o percorredor (estrutura); retorne.
+  Se o segmento inicial deste percorredor for "to", examine algum dado complementar para o tipo usando o percorredor (ponteiro); retorne.
+  Se o segmento inicial deste percorredor for "para", examine algum dado complementar para o tipo usando o percorredor (ponteiro); retorne.
+  Se o segmento inicial deste percorredor for algum com, examine algum dado complementar para o tipo usando o percorredor (estrutura); retorne.
 
-Etapas para que se examine algum dado complementar por um tipo usando um percorredor (ponteiro):
+Etapas para que se examine algum dado complementar para um tipo usando um percorredor (ponteiro):
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum artigo indefinido, apresente uma mensagem de erro contendo "A palavra 'to' precisa de um artigo indefinido depois dela, não de um: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for algum artigo indefinido, apresente uma mensagem de erro contendo "Erro. Sintaxe incorreta no comando 'Aponte para um'. Encontrado: '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Examine o conteúdo nome deste tipo usando o percorredor.
 
-Etapas para que se examine algum dado complementar por um tipo usando um percorredor (estrutura):
+Etapas para que se examine algum dado complementar para um tipo usando um percorredor (estrutura):
   Mova o percorredor (usando diretrizes de compilação).
   Examine o campos deste tipo usando o percorredor.
 
@@ -5596,7 +5597,7 @@ Etapas para que se examine um campo usando um percorredor (cláusula designadora)
 Etapas para que se examine um campo usando um percorredor (cláusula de redefinição):
   Se existir algum problema de compilação, retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum artigo definido, apresente uma mensagem de erro contendo "Eu estava esperando o artigo 'the', mas o que encontrei foi: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for algum artigo definido, apresente uma mensagem de erro contendo "Erro. Sintaxe incorreta. Esperado 'o/a'. Encontrado: '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Examine o nome de redefinição de conteúdo deste campo usando o percorredor.
 
@@ -5618,7 +5619,7 @@ Etapas para que se examine um campo usando um percorredor (tipo: array de bytes)
 
 Etapas para que se examine um campo usando um percorredor (tipo normal):
   Se existir algum problema de compilação, retorne.
-  Se o segmento inicial deste percorredor não for algum artigo indefinido, apresente uma mensagem de erro contendo "Erro. O compilador esperava um artigo idefinido. Termo encontrado: '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.  
+  Se o segmento inicial deste percorredor não for algum artigo indefinido, apresente uma mensagem de erro contendo "Erro de sintaxe. Esperado 'um/uma'. Encontrado: '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.  
   Se o segmento inicial deste percorredor for "outra", atribua "outra" ao nome deste campo.
   Se o segmento inicial deste percorredor for "outras", atribua "outras" ao nome deste campo.
   Se o segmento inicial deste percorredor for "outro", atribua "outro" ao nome deste campo.
@@ -5664,24 +5665,24 @@ Etapas para que se examine uma variável global usando um percorredor:
   Mova o percorredor (usando diretrizes de compilação).
   Examine o nome desta variável global usando o percorredor.
   Se o segmento inicial deste percorredor for algum operador de atribuição de estruturas compostas, examine a variável global usando o percorredor(cláusula 'tem'); retorne.
-  Se o segmento inicial deste percorredor não for algum operador de atribuição simples, apresente uma mensagem de erro contendo "Erro. Necessário a utilização do verbo ser/estar ao invés de '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for algum operador de atribuição simples, apresente uma mensagem de erro contendo "Erro de sintaxe. Esperado 'é/está'. Encontrado: '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum artigo indefinido, examine a variável global usando o percorredor (literal termo); retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Examine o nome do tipo desta variável global usando o percorredor.
   Se o segmento inicial deste percorredor for o início of algum dado complementar, examine a variável global usando o percorredor (dados complementares); retorne.
   Se o segmento inicial deste percorredor for algum operador de atribuição composto, examine a variável global usando o percorredor (data part); retorne.
-  Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Erro. As definições devem terminar com um '.'" e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Erro de sintaxe. Declaração de variáveis globais devem terminar com um '.'" e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Catalogue a variável global.
 
 Etapas para que se examine uma variável global usando um percorredor (data part):
   Se existir algum problema de compilação, retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum to, apresente uma mensagem de erro contendo "Erro. A sintaxe correta é 'igual a'." junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for algum to, apresente uma mensagem de erro contendo "Erro de sintaxe na variável global. Esperado: 'igual'. Encontrado: '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Examine o corpo de variável global desta variável global usando o percorredor.
-  Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Erro. Necessário inserir um '.' ao final da variável variável global" e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for o ponto final, apresente a mensagem de erro contendo "Erro de sintaxe. Esperado '.' ao final de uma declaração variável variável global" e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Catalogue a variável global.
 
@@ -5689,19 +5690,19 @@ Etapas para que se examine uma variável global usando um percorredor(cláusula 't
   Se existir algum problema de compilação, retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Atribua "~inline " junto com o nome desta variável global seguido de " tipo" para um nome.
-  Atribua o nome seguido de "s" para um plural nome.
+  Atribua o nome seguido de "s" para um plural nome. \ mudar aqui
   Adicione um tipo para os tipos usando o nome e o plural nome e "estrutura" e o endereço local desta variável global. \mudar aqui
   Catalogue o tipo.
   Atribua o nome deste tipo ao nome do tipo desta variável global.
   Examine os campos deste tipo usando o percorredor.
-  Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Erro. Insira um '.' no final da estrutura" e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Erro de sintaxe na estrutura. Esprado '.' no final de declarações de variáveis globais" e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Catalogue a variável global.
 
 Etapas para que se examine uma variável global usando um percorredor (literal termo):
   Se existir algum problema de compilação, retorne.
   Examine o corpo de variável global desta variável global usando o percorredor.
-  Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Erro. Necessário incluir um '.' ao final de valores textuais ou numéricos." e o percorredor; retorne.
+  Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Erro de sintaxe. Esperado '.' no final de declarações de valores." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Catalogue a variável global.
 
@@ -5712,18 +5713,18 @@ Etapas para que se examine uma variável global usando um percorredor (dados comp
   Adicione um tipo para os tipos usando o nome e o plural nome e o nome do tipo desta variável global e o endereço local desta variável global.
   Catalogue o tipo.
   Atribua o nome deste tipo ao nome do tipo desta variável global.
-  Examine algum dado complementar pelo tipo usando o percorredor.
-  Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Erro. Insira um '.' após as informações complementares." e o percorredor; retorne.
+  Examine algum dado complementar para o tipo usando o percorredor.
+  Se o segmento inicial deste percorredor não for o ponto final, apresente uma mensagem de erro contendo "Erro. Esperado '.' após informações complementares." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Catalogue a variável global.
 
 Etapas para que se examine um nome usando um percorredor:
   Limpe o nome.
   Se existir algum problema de compilação, retorne.
-  Se o percorredor estiver sobre algum nome starter, extend o nome com o segmento inicial deste percorredor; mova o percorredor (usando diretrizes de compilação).
+  Se o percorredor estiver sobre algum indicador de início de variável, extend o nome com o segmento inicial deste percorredor; mova o percorredor (usando diretrizes de compilação).
   Comece. [a executar o código abaixo]
     Se existir algum problema de compilação, retorne.
-    Se o percorredor estiver sobre algum nome ender, pare.
+    Se o percorredor estiver sobre algum indicador de fim de variável, pare.
     Extend o nome com o segmento inicial deste percorredor.
     Mova o percorredor (usando diretrizes de compilação).
   Recomece. [percorra novamente o código acima]
@@ -5834,7 +5835,7 @@ Etapas para que se examine um tipo usando um percorredor:
     apresente a mensagem de erro contendo "Erro. Esperado um artigo indefinido. Encontrado '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Examine o base nome deste tipo usando o percorredor.
-  Examine algum dado complementar pelo tipo usando o percorredor.
+  Examine algum dado complementar para o tipo usando o percorredor.
   Se o segmento inicial deste percorredor não for o ponto final, 
     apresente a mensagem de erro contendo "Erro. Insira um '.' após a declaração do tipo." 
     junto com o segmento inicial deste percorredor seguido de "." e o percorredor; retorne.
@@ -5939,13 +5940,13 @@ Etapas para que se transforme um fragmento em código hexadecimal:
   Se a etiqueta deste fragmento for o etiqueta de carregamento de registrador EAX, transforme o fragmento em código hexadecimal (atribuição de EAX); retorne.
   Se a etiqueta deste fragmento for o etiqueta de obtenção do registrador EAX, transforme o fragmento em código hexadecimal (registrador EAX); retorne.
   Se a etiqueta deste fragmento for a etiqueta de demanda indireta, transforme o fragmento em código hexadecimal (Demanda Indireta); retorne.
-  Se a etiqueta deste fragmento for a etiqueta de endereço de rotina, transforme o fragmento em código hexadecimal (rotina endereço); retorne.
+  Se a etiqueta deste fragmento for a etiqueta de endereço de rotina, transforme o fragmento em código hexadecimal (endereço de rotina); retorne.
 
 Etapas para que se transforme um fragmento em código hexadecimal (cláusula de interrupção):
   Atribua a etiqueta de repetição para uma etiqueta.
   Encontre um segundo fragmento usando o fragmento e a etiqueta.
   Se o segundo fragmento for inexistente, atribua a etiqueta de finalização ao etiqueta. \ para break sem um loop ou depois de um loop
-  Encontre um terceiro fragmento usando o last fragmento destes fragmentos desta rotina utilizada atualmente e a etiqueta (backwards).
+  Encontre um terceiro fragmento usando o last fragmento destes fragmentos desta rotina utilizada atualmente e a etiqueta (regressivamente).
   Se o terceiro fragmento for inexistente, apresente uma mensagem de erro contendo "Erro interno #15"; retorne.
   Se o subsequente fragmento deste terceiro fragmento for inexistente, apresente a mensagem de erro contendo "Erro interno #16"; retorne.
   Acrescente $E9 e o endereço deste subsequente fragmento deste terceiro fragmento para o fragmento. \ JMP o endereço da destination
@@ -6040,18 +6041,18 @@ Etapas para que se transforme um fragmento em código hexadecimal (empilhamento d
   Apresente a mensagem de erro contendo "Erro interno #23".
 
 Etapas para que se transforme um fragmento em código hexadecimal(cláusula de repetição):
-  Encontre um segundo fragmento usando o fragmento e o etiqueta de laço (backwards).
+  Encontre um segundo fragmento usando o fragmento e o etiqueta de laço (regressivamente).
   Se o segundo fragmento for inexistente, apresente uma mensagem de erro contendo "Erro interno #24 "; retorne.
   Acrescente $E9 e o endereço deste segundo fragmento para o fragmento. \ jmp o address da destination 
 
-Etapas para que se transforme um fragmento em código hexadecimal (rotina endereço):
-  Acrescente endereço loading código para o código deste fragmento usando a variável deste fragmento. \ atribua endereço para edx
+Etapas para que se transforme um fragmento em código hexadecimal (endereço de rotina):
+  Acrescente endereço loading código para o código deste fragmento usando a variável deste fragmento. \ atribui o endereço para o registrador edx
   Se a rotina deste fragmento for inexistente, apresente uma mensagem de erro contendo "Erro interno #25"; retorne.
   Obtenha um endereço usando a rotina deste fragmento.
   Acrescente $C702 e o endereço para o código deste fragmento. \ mov [edx],the endereço
 
 Etapas para que se transforme um fragmento em código hexadecimal (registrador EAX):
-  Acrescente endereço loading código para o código deste fragmento usando a variável deste fragmento. \ atribua endereço para edx
+  Acrescente endereço loading código para o código deste fragmento usando a variável deste fragmento. \ atribui o endereço para o registrador edx
   Se a variável deste fragmento for inexistente, apresente uma mensagem de erro contendo "Erro interno #26"; retorne.
   Se o tipo desta variável deste fragmento for inexistente, apresente a mensagem de erro contendo "Erro interno #27"; retorne.
   Atribua a quantidade de caracteres deste tipo desta variável deste fragmento para uma quantidade de caracteres.
@@ -6061,10 +6062,11 @@ Etapas para que se transforme um fragmento em código hexadecimal (registrador EA
   [Se a quantidade de caracteres não for 1, 2 ou 4] Apresente a mensagem de erro contendo "Erro interno #28".
 
 Etapas para que se transforme uns fragmentos em código hexadecimal:
-  Se existir algum problema de compilação, retorne.
-  Obtenha um fragmento desde o fragmentos.
-  Se o fragmento for inexistente, retorne.
-  Transforme o fragmento em código hexadecimal.
+  \Comece.
+    Se existir algum problema de compilação, retorne.
+    Obtenha um fragmento desde o fragmentos.
+    Se o fragmento for inexistente, retorne.
+    Transforme o fragmento em código hexadecimal.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se transforme uma rotina em código hexadecimal:
@@ -6076,10 +6078,11 @@ Etapas para que se transforme uma rotina em código hexadecimal:
   Transforme os fragmentos desta rotina em código hexadecimal.
 
 Etapas para que se transforme umas rotinas em código hexadecimal:
-  Se existir algum problema de compilação, retorne.
-  Obtenha uma rotina desde as rotinas.
-  Se a rotina for inexistente, pare.
-  Transforme a rotina em código hexadecimal.
+  \Comece.
+    Se existir algum problema de compilação, retorne.
+    Obtenha uma rotina desde as rotinas.
+    Se a rotina for inexistente, pare.
+    Transforme a rotina em código hexadecimal.
   Recomece. [percorra novamente o código acima]
 
 O catálogo de tipos é um catálogo.
