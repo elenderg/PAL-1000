@@ -11,18 +11,18 @@ Um folha modo retrato é uma folha.
 
 O pdf state é um pdf state.
 
-Uma pdf string é uma string. \ string surrounded by ( ) e has \( for (, \) for ), \\ for barra invertida
+Uma string pdf é uma string. \ string surrounded by ( ) e has \( for (, \) for ), \\ for barra invertida
 
 Um pdf é um trecho.
 
-Um pdf ponteiro é um ponteiro [que aponta] para um pdf.
+Um endereço pdf é um ponteiro [que aponta] para um pdf.
 
-Some fonte larguras é uma lista com \ used na pdf conversion
+Umas larguras de fonte é uma lista com \ usado para pdf conversion
   Uma fonte,
   Uma contagem,
   Um endereço numérico denominado data.
 
-Uma fonte info é uma lista com \ used na pdf conversion
+Uma definição da fonte é uma lista com \ used para pdf conversion
   Uma fonte,
   Um emsquare número,
   Um internal leading número,
@@ -33,7 +33,7 @@ Uma fonte info é uma lista com \ used na pdf conversion
   Um italicangle número,
   Um StemV número,
   Uma fonte caixa,
-  Some fonte larguras.
+  Umas larguras de fonte.
 
 Um pdf object é uma lista com
   Uma categoria [contents, fonte definition, fonte descriptor, fonte streamoutline, image object, outline entry, página, parent, root],
@@ -41,7 +41,7 @@ Um pdf object é uma lista com
   Um offset,
   Um data trecho,
   Um nome da fonte [fonte definition],
-  Um fonte info [fonte definition],
+  Um definição da fonte [fonte definition],
   Uns conjuntos des textos denominado fonte strings [page],
   Uns conjuntos des textos denominado image strings [page].
 
@@ -52,7 +52,7 @@ An pdf outline entry é uma lista com
   Um destination número.
 
 Um pdf state é um estrutura com
-  Um pdf ponteiro,
+  Um endereço pdf,
   Um documento detector,
   Um página detector,
   Um object número,
@@ -81,13 +81,13 @@ Um pdf state é um estrutura com
 \  Output " rg".
 \  Atribua a cor à cor de preenchimento atual deste pdf state.
 
-Etapas para que se atribua umas fonte larguras para um trecho:
+Etapas para que se atribua umas larguras de fonte para um trecho:
   \ usado na conversão de pdf 
   Limpe o trecho.
-  Se a fonte larguras forem inexistente, retorne.
-  Atribua o data destes fonte larguras a um endereço numérico.
+  Se a larguras de fonte forem inexistente, retorne.
+  Atribua o data destes larguras de fonte a um endereço numérico.
   Comece. [a executar o código abaixo]
-    Se um contador estiver past a contagem destas fonte larguras, pare.
+    Se um contador estiver past a contagem destas larguras de fonte, pare.
     Posponha o conteúdo deste endereço numérico seguido de " " para o trecho.
     Adicione 1 para uma contagem.
     Se a contagem for uniformemente divisível por 16, posponha o texto CRLF para o trecho.
@@ -123,8 +123,8 @@ Etapas para que se output setcolor usando uma cor da borda e uma cor de preenchi
 Etapas para que se include uma fonte no current pdf:
   Encontre um pdf object usando o nome desta fonte e a fonte catálogo deste pdf state.
   Se o pdf object não for inexistente, retorne.
-  Crie uma fonte info usando a fonte.
-  Converta a fonte info para pdf em units.
+  Crie uma definição da fonte usando a fonte.
+  Converta a definição da fonte para pdf em units.
   \ stream
   Atribua o actual data of a fonte a um trecho.
   Converta o trecho para uma cifra hexadecimal.
@@ -149,13 +149,13 @@ Etapas para que se include uma fonte no current pdf:
   Posponha "/Type /FontDescriptor" para o descriptor.
   Posponha "/FontName /" junto com a fonte base nome para o descriptor.
   Posponha "/FontFile2 " junto com o número deste stream seguido de " 0 R" para o descriptor.
-  Posponha "/Flags " junto com o flags deste fonte info para o descriptor.
-  Posponha "/FontBBox [" junto com a fonte caixa desta fonte info seguido de "]" para o descriptor.
-  Posponha "/Ascent " junto com o ascent desta fonte info para o descriptor.
-  Posponha "/Descent " junto com o descent desta fonte info para o descriptor.
-  Posponha "/CapHeight " junto com o capheight desta fonte info para o descriptor.
-  Posponha "/ItalicAngle " junto com o italicangle desta fonte info para o descriptor.
-  Posponha "/StemV " junto com o StemV desta fonte info para o descriptor.
+  Posponha "/Flags " junto com o flags deste definição da fonte para o descriptor.
+  Posponha "/FontBBox [" junto com a fonte caixa desta definição da fonte seguido de "]" para o descriptor.
+  Posponha "/Ascent " junto com o ascent desta definição da fonte para o descriptor.
+  Posponha "/Descent " junto com o descent desta definição da fonte para o descriptor.
+  Posponha "/CapHeight " junto com o capheight desta definição da fonte para o descriptor.
+  Posponha "/ItalicAngle " junto com o italicangle desta definição da fonte para o descriptor.
+  Posponha "/StemV " junto com o StemV desta definição da fonte para o descriptor.
   Posponha ">>" para o descriptor.
   Posponha "endobj" para o descriptor.
   \ definition
@@ -171,12 +171,12 @@ Etapas para que se include uma fonte no current pdf:
   Posponha "/FontDescriptor " junto com o número deste descriptor seguido de " 0 R" para a definition.
   Posponha "/FirstChar 0" para a definition.
   Posponha "/LastChar 255" para a definition.
-  Atribua as fonte larguras desta fonte info a uma segunda trecho.
+  Atribua as larguras de fonte desta definição da fonte a uma segunda trecho.
   Posponha "/Widths [" para a definition.
   Posponha a segunda trecho seguido de "]" para a definition.
   Posponha ">>" para a definition.
   Posponha "endobj" para a definition.
-  Atribua a fonte info à fonte info desta definition.
+  Atribua a definição da fonte à definição da fonte desta definition.
   Catalogue a definition usando o nome desta fonte e a fonte catálogo deste pdf state.
 
 Etapas para que se include uma fonte em um pdf object:
@@ -259,7 +259,7 @@ Etapas para que se end printing:
 
 Etapas para que se end printing (pdf style):
   Se o documento detector deste pdf state não estiver ativo, retorne.
-  End printing o conteúdo deste pdf ponteiro deste pdf state.
+  End printing o conteúdo deste endereço pdf deste pdf state.
 
 Etapas para que se end printing um pdf:
   End printing o pdf (finish o parent).
@@ -302,8 +302,8 @@ Etapas para que se end printing um pdf (append o outline entries):
     Atribua o pdf object desta pdf outline entry a um object pdf object.
     Posponha o número deste object seguido de " 0 obj" para o object.
     Posponha "<<" para o object.
-    Converta o título de índice remissivo deste pdf outline entry para um pdf string.
-    Posponha "/Title " junto com o pdf string para o object.
+    Converta o título de índice remissivo deste pdf outline entry para um string pdf.
+    Posponha "/Title " junto com o string pdf para o object.
     Posponha "/Parent " junto com o número deste outline deste pdf state seguido de " 0 R" para o object.
     Se o subsequente pdf outline entry desta pdf outline entry não for inexistente, posponha "/Next " junto com o número deste pdf object deste subsequente pdf outline entry desta pdf outline entry seguido de " 0 R" para o object.
     Se o precedente pdf outline entry desta pdf outline entry não for inexistente, posponha "/Prev " junto com o número deste pdf object deste precedente pdf outline entry desta pdf outline entry seguido de " 0 R" para o object.
@@ -393,23 +393,23 @@ Etapas para que se pinte uma string sob uma localização com uma cor e uma fonte 
   Include a fonte na current página deste pdf state.
   Encontre um definition pdf object usando o nome desta fonte e a fonte catálogo deste pdf state.
   Se o definition for inexistente, retorne. \ erro
-  Crie uma fonte info usando a fonte e a string.
+  Crie uma definição da fonte usando a fonte e a string.
   Output o pdf border usando a cor.
   Output o pdf preencha usando a cor.
   Output "BT".
   Output "/" junto com o nome da fonte desta definition seguido de " " junto com a adjusted altura desta fonte seguido de " Tf".
-  \ adicione a adjusted altura desta fonte menos o internal leading desta fonte info para o y do localização. \ just plain wrong
-  Adicione o ascent desta fonte info para a coordenada Y desta localização. \ fix por linha reta acima of 
+  \ adicione a adjusted altura desta fonte menos o internal leading desta definição da fonte para o y do localização. \ just plain wrong
+  Adicione o ascent desta definição da fonte para a coordenada Y desta localização. \ fix por linha reta acima of 
   Output a localização sem passar pra próxima linha.
   Output "Td".
   Output "[" sem passar pra próxima linha.
-  Converta a fonte info para pdf em units.
-  Converta a string e a fonte info e a fonte info desta definition a um trecho por pdf output.
+  Converta a definição da fonte para pdf em units.
+  Converta a string e a definição da fonte e a definição da fonte desta definition a um trecho por pdf output.
   Output o trecho sem passar pra próxima linha.
   Output "]" sem passar pra próxima linha.
   Output " TJ".
   Output "ET".
-  Destrua a fonte info.
+  Destrua a definição da fonte.
 
 Etapas para que se pinte uma string sob uma localização com uma cor e uma fonte:
   Se a página detector deste pdf state estiver ativo, pinte a string sob a localização com a cor e a fonte (pdf style); retorne.
@@ -737,40 +737,40 @@ Etapas para que se crie um pdf outline entry usando um título de índice remissiv
   Atribua a página altura à página altura deste pdf outline entry.
   Atribua o destination ao destination deste pdf outline entry.
 
-Etapas para que se converta uma string para um pdf string:
-  Atribua "(" ao pdf string.
+Etapas para que se converta uma string para um string pdf:
+  Atribua "(" ao string pdf.
   Lance um subtexto sobre a string.
   Subtraia 1 desde o caractere inicial deste subtexto.
   Comece. [a executar o código abaixo]
     Adicione 1 para o caractere inicial deste subtexto.
     Se o subtexto estiver em branco, pare.
-    Se o conteúdo deste caractere inicial deste subtexto for o parênteses esquerdo, posponha "\(" para o pdf string; recomece.
-    Se o conteúdo deste caractere inicial deste subtexto for o parênteses direito, posponha "\)" para o pdf string; recomece.
-    Se o conteúdo deste caractere inicial deste subtexto for a barra invertida, posponha "\\" para o pdf string; recomece.
-    Posponha o conteúdo deste caractere inicial deste subtexto para o pdf string.
+    Se o conteúdo deste caractere inicial deste subtexto for o parênteses esquerdo, posponha "\(" para o string pdf; recomece.
+    Se o conteúdo deste caractere inicial deste subtexto for o parênteses direito, posponha "\)" para o string pdf; recomece.
+    Se o conteúdo deste caractere inicial deste subtexto for a barra invertida, posponha "\\" para o string pdf; recomece.
+    Posponha o conteúdo deste caractere inicial deste subtexto para o string pdf.
   Recomece. [percorra novamente o código acima]
-  Posponha ")" para o pdf string.
+  Posponha ")" para o string pdf.
 
-Etapas para que se converta uma string e um actual fonte info e um original fonte info Para um trecho por pdf output:
+Etapas para que se converta uma string e um actual definição da fonte e um original definição da fonte Para um trecho por pdf output:
   Limpe o trecho.
   Atribua 0 a um current byte#.
   Lance um subtexto sobre o first byte of a string.
   Comece. [a executar o código abaixo]
     Se o caractere inicial deste subtexto for maior do que o caractere final desta string, pare.
     Se o caractere final deste subtexto é o caractere final desta string, pare.
-    Obtenha um current largura usando o current byte# e as fonte larguras desta actual fonte info.
-    Obtenha um original largura usando o conteúdo deste caractere final deste subtexto e a fonte larguras desta original fonte info.
+    Obtenha um current largura usando o current byte# e as larguras de fonte desta actual definição da fonte.
+    Obtenha um original largura usando o conteúdo deste caractere final deste subtexto e a larguras de fonte desta original definição da fonte.
     Atribua o original largura menos o current largura a um offset.
     Se o offset for 0, adicione 1 para o caractere final deste subtexto; adicione 1 para o current byte#; recomece.
-    Converta o subtexto para um pdf string.
-    Posponha o pdf string seguido de " " junto com o offset seguido de " " para o trecho.
+    Converta o subtexto para um string pdf.
+    Posponha o string pdf seguido de " " junto com o offset seguido de " " para o trecho.
     Atribua o caractere final deste subtexto mais 1 ao caractere final deste subtexto.
     Atribua o caractere final deste subtexto ao caractere inicial deste subtexto.
     Adicione 1 para o current byte#.
   Recomece. [percorra novamente o código acima]
   Se o caractere inicial deste subtexto for maior do que o caractere final desta string, retorne.
-  Converta o subtexto para uma segunda pdf string.
-  Posponha a segunda pdf string para o trecho.
+  Converta o subtexto para uma segunda string pdf.
+  Posponha a segunda string pdf para o trecho.
 
 Etapas para que se converta um número para pdf em units usando um emsquare número e uma fonte:
   Multiplique o número pelo emsquare / a adjusted altura desta fonte.
@@ -803,29 +803,29 @@ Etapas para que se desbloqueie um gpBitmap usando um BitmapData:
     \Depois de gravar no buffer temporário, uma chamada para GdipBitmapUnlockBits copia os dados de pixel do buffer para o objeto Bitmap. 
     \Se o formato de pixel do buffer temporário for diferente do formato de pixel do objeto Bitmap, os dados de pixel são convertidos apropriadamente.
 
-Etapas para que se converta umas fonte larguras para pdf em units:
-  Obtenha um OutlineTextmetric usando a fonte destas fonte larguras.
-  Atribua os data desta fonte larguras a um endereço numérico.
+Etapas para que se converta umas larguras de fonte para pdf em units:
+  Obtenha um OutlineTextmetric usando a fonte destas larguras de fonte.
+  Atribua os data desta larguras de fonte a um endereço numérico.
   Comece. [a executar o código abaixo]
-    Se um contador estiver past a contagem destas fonte larguras, pare.
-    Converta o conteúdo deste endereço numérico para pdf em units usando o otmEMSquare deste OutlineTextmetric e a fonte destas fonte larguras.
+    Se um contador estiver past a contagem destas larguras de fonte, pare.
+    Converta o conteúdo deste endereço numérico para pdf em units usando o otmEMSquare deste OutlineTextmetric e a fonte destas larguras de fonte.
     Adicione a magnitude desse número para o endereço numérico.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se converta uma fonte info para pdf em units:
-  Se a fonte info for inexistente, retorne.
-  Converta o internal leading desta fonte info para pdf em units usando o emsquare desta fonte info e a fonte desta fonte info.
-  Converta o ascent desta fonte info para pdf em units usando o emsquare desta fonte info e a fonte desta fonte info.
-  Converta o descent desta fonte info para pdf em units usando o emsquare desta fonte info e a fonte desta fonte info.
-  Converta o capheight desta fonte info para pdf em units usando o emsquare desta fonte info e a fonte desta fonte info.
-  \ Converta o italicangle desta fonte info para pdf em units usando o emsquare desta fonte info e a fonte desta fonte info. \não sei porque está comentado
-  Converta o StemV desta fonte info para pdf em units usando o emsquare desta fonte info e a fonte desta fonte info.
-  Converta a coordenada X do canto superior esquerdo desta fonte caixa desta fonte info para pdf em units usando o emsquare desta fonte info e a fonte desta fonte info.
-  Converta a coordenada Y do canto superior esquerdo desta fonte caixa desta fonte info para pdf em units usando o emsquare desta fonte info e a fonte desta fonte info.
-  Converta a coordenada X do canto inferior direito desta fonte caixa desta fonte info para pdf em units usando o emsquare desta fonte info e a fonte desta fonte info.
-  Converta a coordenada Y do canto inferior direito desta fonte caixa desta fonte info para pdf em units usando o emsquare desta fonte info e a fonte desta fonte info.
-  Permute a coordenada Y do canto superior esquerdo desta fonte caixa desta fonte info com a coordenada Y do canto inferior direito desta fonte caixa desta fonte info.
-  Converta as fonte larguras desta fonte info para pdf em units.
+Etapas para que se converta uma definição da fonte para pdf em units:
+  Se a definição da fonte for inexistente, retorne.
+  Converta o internal leading desta definição da fonte para pdf em units usando o emsquare desta definição da fonte e a fonte desta definição da fonte.
+  Converta o ascent desta definição da fonte para pdf em units usando o emsquare desta definição da fonte e a fonte desta definição da fonte.
+  Converta o descent desta definição da fonte para pdf em units usando o emsquare desta definição da fonte e a fonte desta definição da fonte.
+  Converta o capheight desta definição da fonte para pdf em units usando o emsquare desta definição da fonte e a fonte desta definição da fonte.
+  \ Converta o italicangle desta definição da fonte para pdf em units usando o emsquare desta definição da fonte e a fonte desta definição da fonte. \não sei porque está comentado
+  Converta o StemV desta definição da fonte para pdf em units usando o emsquare desta definição da fonte e a fonte desta definição da fonte.
+  Converta a coordenada X do canto superior esquerdo desta fonte caixa desta definição da fonte para pdf em units usando o emsquare desta definição da fonte e a fonte desta definição da fonte.
+  Converta a coordenada Y do canto superior esquerdo desta fonte caixa desta definição da fonte para pdf em units usando o emsquare desta definição da fonte e a fonte desta definição da fonte.
+  Converta a coordenada X do canto inferior direito desta fonte caixa desta definição da fonte para pdf em units usando o emsquare desta definição da fonte e a fonte desta definição da fonte.
+  Converta a coordenada Y do canto inferior direito desta fonte caixa desta definição da fonte para pdf em units usando o emsquare desta definição da fonte e a fonte desta definição da fonte.
+  Permute a coordenada Y do canto superior esquerdo desta fonte caixa desta definição da fonte com a coordenada Y do canto inferior direito desta fonte caixa desta definição da fonte.
+  Converta as larguras de fonte desta definição da fonte para pdf em units.
 
 Etapas para que se inicie uma folha usando uma caixa e um título de índice remissivo (pdf style - start o current página):
   Adicione o current página deste pdf state usando "page".
