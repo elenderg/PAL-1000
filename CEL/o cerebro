@@ -1175,7 +1175,7 @@ Etapas para que se converta um texto hexadecimal para um número:
   Se a quantidade de caracteres deste texto hexadecimal não for a magnitude deste número, limpe o número; retorne.
   Copie bytes desde o caractere inicial deste texto hexadecimal para o endereçamento destte número pela magnitude deste número.
 
-Etapas para que se converta um lParam para um tecla:
+Etapas para que se converta um lParam para uma tecla:
   \ assumes lParam desde wm_char message
   Atribua o lParam à tecla.
   Desloque a tecla 16 bits para a direita .
@@ -2415,7 +2415,7 @@ Etapas para que se de-sign um par de números:
 
 Etapas para que se de-sign uma string:
   Se a string estiver em branco, retorne.
-  Se o conteúdo deste caractere inicial desta string for algum sinal aritmético, remove o first byte desde a string.
+  Se o conteúdo deste caractere inicial desta string for algum sinal aritmético, remove o primeiro caractere desde a string.
 
 Um relatório é uma string.
 Um relatório de informações é uma string.
@@ -5071,7 +5071,7 @@ Etapas para que se extraia um designador desde um endereço completo:
   Lance um endereço completo subtexto sobre o endereço completo.
   Adicione a quantidade de caracteres desta unidade de disco para o caractere inicial deste endereço completo subtexto.
   Se o endereço completo subtexto estiver em branco, atribua o unidade de disco ao designador; retorne.
-  Lance um subtexto sobre o last byte of o endereço completo subtexto.
+  Lance um subtexto sobre o último caractere of o endereço completo subtexto.
   Se o conteúdo deste caractere inicial deste subtexto for a barra invertida, subtraia 1 desde o caractere inicial deste subtexto.
   Comece. [a executar o código abaixo]
     Se o caractere inicial deste subtexto for menor do que o caractere inicial deste endereço completo subtexto, pare.
@@ -5104,16 +5104,16 @@ Etapas para que se extraia um nome do diretório desde um endereço completo:
 Etapas para que se extraia um nome da pasta desde um endereço completo:
   Extraia o nome da pasta como um nome do diretório desde o endereço completo.
   Se o nome da pasta estiver em branco, retorne.
-  Remove o last byte desde o nome da pasta.
+  Remove o último caractere desde o nome da pasta.
 
 Etapas para que se extraia uma unidade de disco desde um endereço completo:
   Limpe o unidade de disco.
   Se a quantidade de caracteres deste endereço completo for menor do que 3, retorne.
-  Lance um subtexto sobre o first byte of o endereço completo.
+  Lance um subtexto sobre o primeiro caractere of o endereço completo.
   Adicione 2 para o caractere final deste subtexto.
   Se o subtexto termina com ":\", atribua o subtexto ao unidade de disco; retorne.
   Se o subtexto não começa com "\\", retorne.
-  Lance o subtexto sobre o first byte of o endereço completo.
+  Lance o subtexto sobre o primeiro caractere of o endereço completo.
   Comece. [a executar o código abaixo]
     Se o caractere final deste subtexto for maior do que o caractere final deste endereço completo, retorne.
     Se o conteúdo deste caractere final deste subtexto for a barra invertida, adicione 1 para uma contagem.
@@ -5125,7 +5125,7 @@ Etapas para que se extraia uma unidade de disco desde um endereço completo:
 Etapas para que se extraia um extensão desde um endereço completo:
   Limpe o extensão.
   Se o endereço completo estiver em branco, retorne.
-  Lance um subtexto sobre o last byte of o endereço completo.
+  Lance um subtexto sobre o último caractere of o endereço completo.
   Comece. [a executar o código abaixo]
     Se o caractere inicial deste subtexto for menor do que o caractere inicial deste endereço completo, retorne.
     Se o conteúdo deste caractere inicial deste subtexto for o sinal de dois pontos, retorne.
@@ -5284,40 +5284,24 @@ Etapas para que se preencha uma string com um byte usando uma contagem:
 Etapas para que se finalize after run:
   Se a contagem do heap for 0, retorne.
   Atribua a contagem do heap a uma contagem.
-  Atribua "Você esqueceu de destruir " junto com a contagem seguido de " elemento(s) no heap." a uma string.
+  Atribua "Aviso: Você esqueceu de destruir " junto com a contagem seguido de " elemento(s) no heap." a uma string.
   Produza o relatório de informações usando a string.
 
 Etapas para que se finalize os canvases:
   Finalize o memory canvas.
-  Finalize o tela canvas.
+  \Finalize o tela canvas.
 
-Etapas para que se finalize o cgi:
-  Processe "kernel32.dll" "FreeConsole". \https://docs.microsoft.com/pt-br/windows/console/freeconsole
-  \Desanexa o processo de chamada de seu console.
-  \Essa função não tem parâmetros.
-  \Se a função for bem-sucedida, o valor retornado será diferente de zero.
-  \Se a função falhar, o valor retornado será zero.
-  \Um processo pode ser anexado a no máximo um console. 
-  \Se o processo de chamada ainda não estiver anexado a um console, o código de erro retornado será ERROR_INVALID_PARAMETER (87).
-  \Um processo pode usar a função FreeConsole para desconectar-se de seu console. 
-  \Se outros processos compartilharem o console, o console não será destruído, mas o processo chamado FreeConsole não poderá se referir a ele. 
-  \Um console é fechado quando o último processo anexado a ele termina ou chama FreeConsole. 
-  \Depois que um processo chama FreeConsole, ele pode chamar a função AllocConsole para criar um novo console ou AttachConsole para anexar a outro console.
+Etapas para que se finalize o CGI:
+  Processe "kernel32.dll" "FreeConsole".  \ Esta função desanexa o processo chamador de seu respectivo console.
+  \ Documentação: -> https://docs.microsoft.com/pt-br/windows/console/freeconsole
 
-Etapas para que se finalize as cores:
+\Etapas para que se finalize as cores:
 
 Etapas para que se finalize COM:
-  Processe "ole32.dll" "CoUninitialize". \https://docs.microsoft.com/pt-br/windows/win32/api/combaseapi/nf-combaseapi-couninitialize
-  \A função CoUninitialize fecha a biblioteca COM no thread atual, 
-  \descarrega todas as DLLs carregadas pelo thread, 
-  \libera quaisquer outros recursos que o thread mantém 
-  \e força o fechamento de todas as conexões RPC no thread.
-  \Um thread deve chamar CoUninitialize uma vez para cada chamada bem-sucedida feita para a função CoInitialize ou CoInitializeEx, incluindo qualquer chamada que retorna S_FALSE. 
-  \Apenas a chamada CoUninitialize correspondente à chamada CoInitialize ou CoInitializeEx que inicializou a biblioteca pode fechá-la.
-  \CoUninitialize deve ser chamado no encerramento do aplicativo, como a última chamada feita para a biblioteca COM depois que o aplicativo oculta suas janelas principais e cai em seu loop de mensagem principal. 
-  \Se houver conversas abertas restantes, CoUninitialize inicia um loop de mensagem modal e despacha todas as mensagens pendentes dos contêineres ou servidor para este aplicativo COM. 
-  \Ao despachar as mensagens, CoUninitialize garante que o aplicativo não feche antes de receber todas as mensagens pendentes. 
-  \Mensagens não COM são descartadas.
+  Processe "ole32.dll" "CoUninitialize".
+  \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/combaseapi/nf-combaseapi-couninitialize
+  \A função CoUninitialize fecha a biblioteca COM no thread atual, descarrega todas as DLLs carregadas pelo thread, 
+  \libera quaisquer outros recursos que o thread mantém e força o fechamento de todas as conexões RPC no thread.
 
 Etapas para que se finalize um contexto:
   Destrua as escolhas.
@@ -5326,22 +5310,16 @@ Etapas para que se finalize um contexto:
   Destrua o contexto.
 
 Etapas para que se finalize os cursors:  
-  Processe "user32.dll" "DestroyCursor" com \ https://docs.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-destroycursor
-  \A função DestroyCursor destrói um cursor e libera qualquer memória ocupada por ele. 
-    O i-beam cursor. [hCursor] \O identificador do cursor a ser destruída. 
-    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
-    \Se a função falhar, o valor de retorno é zero.
-  Processe "user32.dll" "DestroyCursor" com \A função DestroyCursor destrói um cursor não compartilhado. 
-  \Não use esta função para destruir um cursor compartilhado. 
-  \Um cursor compartilhado é válido enquanto o módulo do qual foi carregado permanecer na memória.
-    O hand cursor. [hCursor] \As seguintes funções obtêm um cursor compartilhado:
-    \LoadCursor \LoadImage (se você usar o sinalizador LR_SHARED)
-    \LoadCursorFromFile \CopyImage (se você usar a sinalização LR_COPYRETURNORG e o parâmetro hImage for um cursor compartilhado)
+  Processe "user32.dll" "DestroyCursor" com \A função DestroyCursor destrói um cursor e libera qualquer memória ocupada por ele. 
+  \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-destroycursor
+    O i-beam cursor. [hCursor] \ O identificador do cursor a ser destruída. 
+  Processe "user32.dll" "DestroyCursor" com 
+    O hand cursor. [hCursor] 
   Processe "user32.dll" "DestroyCursor" com 
     A seta do mouse. [hCursor] 
 
 Etapas para que se finalize as fontes:
-  \Processe "gdi32.dll" "RemoveFontMemResourceEx" com o osmosian fonte resource.
+  \Processe "gdi32.dll" "RemoveFontMemResourceEx" com o recurso de fonte osmosiana.
   \Processe "gdi32.dll" "RemoveFontMemResourceEx" com o Segoe UI resource.
   Processe "gdi32.dll" "RemoveFontMemResourceEx" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-RemoveFontMemResourceEx
   \A função RemoveFontMemResourceEx remove as fontes que foram adicionadas a partir de um arquivo de imagem de memória.
@@ -5352,44 +5330,20 @@ Etapas para que se finalize as fontes:
     \Esta função removerá apenas a fonte especificada por fh.
 
 Etapas para que se finalize gdi+:
-  Processe "gdiplus.dll" "GdiplusShutdown" com \https://docs.microsoft.com/pt-br/windows/win32/api/gdiplusinit/nf-gdiplusinit-gdiplusshutdown
-  \A função GdiplusShutdown limpa os recursos usados pelo Windows GDI +. 
-  \Cada chamada para GdiplusStartup deve ser emparelhada com uma chamada para GdiplusShutdown.
-    O gpToken. [token] \ O Token retornado por uma chamada anterior para GdiplusStartup.
-    \Você deve chamar GdiplusStartup antes de criar quaisquer objetos GDI + 
-    \e deve excluir todos os seus objetos GDI + (ou fazer com que saiam do escopo) antes de chamar GdiplusShutdown.
-    \Observação: Para o Windows 7 e anteriores, se GDI + não puder criar uma família de fontes, 
-    \ele substitui a família Sans Serif genérica e armazena em cache do lado do cliente o ponteiro para a família genérica. 
-    \Como as chamadas para GdiplusStartup e GdiplusShutdown não estão cientes desse armazenamento em cache, 
-    \o sistema operacional retém o ponteiro para o objeto de família genérica após o tempo de vida do objeto, o que faz com que o sistema operacional trave por completo. 
-    \Para o Windows 8 e posterior, GDI + retorna um valor sentinela para o objeto da família genérica que permanece constante nas chamadas para GdiplusStartup 
-    \e GdiplusShutdown para que o sistema operacional não retenha o ponteiro para o objeto da família genérica após a vida útil do objeto.
+  Processe "gdiplus.dll" "GdiplusShutdown" com \A função GdiplusShutdown limpa os recursos usados pelo Windows GDI +. 
+  \ Documentação: -> \https://docs.microsoft.com/pt-br/windows/win32/api/gdiplusinit/nf-gdiplusinit-gdiplusshutdown  
+    O gpToken. [token] \ O Toke. Este valor é obtido chamando a função GdiplusStartup. 
 
 Etapas para que se finalize o memory canvas:
-  Processe "gdi32.dll" "SelectObject" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-selectobject
-  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O memory canvas [hdc] \identificador do contexto de dispositivo
-    e O saved memory hBitMap [h] \O identificador do objeto a ser selecionado.
-    \ Neste caso, O objeto especificado deve ter sido criado usando uma das seguintes funções:
-    \CreateBitmap, CreateBitmapIndirect, CreateCompatibleBitmap, CreateDIBitmap, CreateDIBSection
-    \Os bitmaps só podem ser selecionados em DCs de memória. Um único bitmap não pode ser selecionado em mais de um DC ao mesmo tempo.
-    devolvendo um hBitMap. [] \Se o objeto selecionado não for uma região e a função for bem-sucedida, o valor de retorno é um identificador para o objeto que está sendo substituído. 
-    \Se o objeto selecionado for uma região e a função for bem-sucedida, o valor de retorno será um dos seguintes valores.
-    \A região SIMPLEREGION consiste em um único retângulo. A região COMPLEXREGION consiste em mais de um retângulo.
-    \A região NULLREGION é uma região vazia.
-    \Se ocorrer um erro e o objeto selecionado não for uma região, o valor de retorno será NULL. Caso contrário, é HGDI_ERROR.
-    \Observações: Esta função retorna o objeto selecionado anteriormente do tipo especificado. 
-    \Um aplicativo deve sempre substituir um novo objeto pelo objeto padrão original depois de terminar de desenhar com o novo objeto.
-    \Um aplicativo não pode selecionar um único bitmap em mais de um DC de cada vez.
-    \ICM: Se o objeto selecionado for uma canetinha ou uma caneta, o gerenciamento de cores é executado.
-  Processe "gdi32.dll" "DeleteObject" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deleteobject
-  \A função DeleteObject exclui uma caneta, canetinha, fonte, bitmap, região ou paleta lógico, liberando todos os recursos do sistema associados ao objeto. 
-  \Depois que o objeto é excluído, o identificador especificado não é mais válido.
-    O hBitMap. [ho] \O indentificador de uma caneta, canetinha, fonte, bitmap, região ou paleta lógica.
-    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
-    \Se o identificador especificado não é válido ou está atualmente selecionado em um DC, o valor de retorno é zero.
-    \Não exclua um objeto de desenho (caneta ou canetinha) enquanto ele ainda estiver selecionado em um DC.
-    \Quando uma canetinha de padrão é excluído, o bitmap associado à cor da canetinha não é excluído. O bitmap deve ser excluído independentemente.
+  Processe "gdi32.dll" "SelectObject" com \A função SelectObject seleciona um objeto no contexto de dispositivo (Device Context) especificado. 
+  \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-selectobject  
+    O memory canvas [HDC]  \ Número Identificador do contexto de dispositivo
+    e O saved memory hBitMap [hGdiObj ] \ O identificador do objeto a ser selecionado.
+    \Os bitmaps só podem ser selecionados em DCs de memória. Um bitmap não pode ser selecionado em mais de um DC ao mesmo tempo.
+    devolvendo um hBitMap. [hGdiObj] \Se o objeto selecionado não for uma região e a função for bem-sucedida, o valor de retorno é um identificador para o objeto que está sendo substituído. 
+  Processe "gdi32.dll" "DeleteObject" com \A função DeleteObject exclui uma caneta, canetinha, fonte, bitmap, região ou paleta lógico, liberando todos os recursos do sistema associados ao objeto. Depois que o objeto é excluído, o identificador especificado não é mais válido.
+  \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deleteobject
+    O hBitMap. [hGdiObj ] 
   Processe "gdi32.dll" "DeleteDC" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deletedc
   \A função DeleteDC exclui o contexto de dispositivo especificado (DC).
     O memory canvas. [hdc] \O identificador do contexto do dispositivo.
@@ -5397,9 +5351,9 @@ Etapas para que se finalize o memory canvas:
     \Um aplicativo não deve excluir um controlador de domínio cujo identificador foi obtido chamando a função GetDC. 
     \Em vez disso, ele deve chamar a função ReleaseDC para liberar o DC.
 
-Etapas para que se finalize o módulo:
+\Etapas para que se finalize o módulo: \ vazio
 
-Etapas para que se finalize o mouse:
+\Etapas para que se finalize o mouse: \ vazio
 
 Etapas para que se finalize a área de impressão:
   Processe "kernel32.dll" "GlobalFree" com \ https://docs.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globalfree
@@ -5423,9 +5377,9 @@ Etapas para que se finalize a área de impressão:
     \Isso permite que você verifique o comportamento pretendido e, em seguida, continue a execução.
   Atribua 0 à área de impressão.
 
-Etapas para que se finalize a tela:
+\Etapas para que se finalize a tela:
 
-Etapas para que se finalize o tela canvas:
+\Etapas para que se finalize o tela canvas:
 
 Etapas para que se finalize um talker:
   Se o talker for inexistente, retorne.
@@ -5762,7 +5716,7 @@ Uma fonte é uma estrutura com
 
 Um altura da fonte é uns twips. \ indicates linha reta altura - o letras will fit nicely em uma caixa of this altura
 
-Um fonte resource é um número identificador.
+Um identificador de fonte é um número identificador.
 
 Um pé são 12 polegadas.
 
@@ -5925,12 +5879,12 @@ Etapas para que se obtenha um bucket# usando uma string e um catálogo:
 Etapas para que se obtenha um byte desde uma string:
   Se a string estiver em branco, atribua o caractere null ao byte; retorne.
   Atribua o conteúdo deste caractere inicial desta string ao byte.
-  Remove o first byte desde a string.
+  Remove o primeiro caractere desde a string.
 
 Etapas para que se obtenha um byte desde uma string (regressivamente):
   Se a string estiver em branco, atribua o caractere null ao byte; retorne.
   Atribua o conteúdo deste caractere final desta string ao byte.
-  Remove o last byte desde a string.
+  Remove o último caractere desde a string.
 
 Etapas para que se obtenha um centro localização usando uma localização e uma segunda localização:
   Atribua a localização e a segunda localização a uma linha reta.
@@ -6705,7 +6659,7 @@ Etapas para que se execute algum WM_SETCURSOR:
 
 Etapas para que se execute algum WM_SYSKEYDOWN com um wParam e um lParam;
 Etapas para que se execute algum WM_KEYDOWN com um wParam e um lParam:
-  Atribua o wParam a um tecla.
+  Atribua o wParam a uma tecla.
   Se a tecla com o lParam é alguma tecla de cancelamento ou tecla modificadora, retorne.
   Se a tecla for algum WM_CHAR tecla, retorne.
   Crie um evento.
@@ -6751,7 +6705,7 @@ Etapas para que se execute um evento usando um console (tecla backspace):
   Se o texto retornado deste console estiver em branco, retorne.
   Se o evento foi alterado, retorne.
   Execute o evento usando a caixa de texto deste console (tecla backspace).
-  Remove o last byte desde o texto retornado deste console.
+  Remove o último caractere desde o texto retornado deste console.
   Mostre o console.
 
 Etapas para que se execute um evento usando um console (seta pra baixo):
@@ -6817,8 +6771,8 @@ Etapas para que se execute um evento usando um terminal:
 Etapas para que se execute um evento usando um terminal (tecla backspace):
   Se o texto retornado deste terminal estiver em branco, retorne.
   Se o evento foi alterado, retorne.
-  Remove o last byte desde o texto retornado deste terminal.
-  Remove o last byte desde a string desta last string deste quora deste terminal.
+  Remove o último caractere desde o texto retornado deste terminal.
+  Remove o último caractere desde a string desta last string deste quora deste terminal.
   Mostre o terminal.
 
 Etapas para que se execute um evento usando um terminal (tecla Enter):
@@ -6859,7 +6813,7 @@ Etapas para que se execute um evento usando uma caixa de texto (tecla Delete):
 Etapas para que se execute um evento usando uma caixa de texto (seta pra baixo):
   Se a caixa de texto for inexistente, retorne.
   Se o cursor de texto of a caixa de texto é sobre o last linha reta, ative um detector.
-  Se o detector estiver ativo, mova o cursor de texto para o last byte of a caixa de texto.
+  Se o detector estiver ativo, mova o cursor de texto para o último caractere of a caixa de texto.
   Se o detector não estiver ativo, mova o cursor de texto para baixo na caixa de texto.
   Se o detector de tecla Shift deste evento não estiver ativo, desvencilhe-se de a caixa de texto.
   Limpe a última operação desta caixa de texto.
@@ -6867,8 +6821,8 @@ Etapas para que se execute um evento usando uma caixa de texto (seta pra baixo):
 
 Etapas para que se execute um evento usando uma caixa de texto (tecla End):
   Se a caixa de texto for inexistente, retorne.
-  Se o evento foi alterado, mova o cursor de texto para o last byte of a caixa de texto.
-  Se o evento não foi alterado, mova o cursor de texto para o last byte of o current linha de texto of a caixa de texto.
+  Se o evento foi alterado, mova o cursor de texto para o último caractere of a caixa de texto.
+  Se o evento não foi alterado, mova o cursor de texto para o último caractere of o current linha de texto of a caixa de texto.
   Se o detector de tecla Shift deste evento não estiver ativo, desvencilhe-se de a caixa de texto.
   Limpe a última operação desta caixa de texto.
   Role a caixa de texto para o cursor de texto.
@@ -6887,8 +6841,8 @@ Etapas para que se execute um evento usando uma caixa de texto (tecla Esc):
 
 Etapas para que se execute um evento usando uma caixa de texto (tecla Home):
   Se a caixa de texto for inexistente, retorne.
-  Se o evento foi alterado, mova o cursor de texto para o first byte of a caixa de texto.
-  Se o evento não foi alterado, mova o cursor de texto para o first byte of o current linha de texto of a caixa de texto.
+  Se o evento foi alterado, mova o cursor de texto para o primeiro caractere of a caixa de texto.
+  Se o evento não foi alterado, mova o cursor de texto para o primeiro caractere of o current linha de texto of a caixa de texto.
   Se o detector de tecla Shift deste evento não estiver ativo, desvencilhe-se de a caixa de texto.
   Limpe a última operação desta caixa de texto.
   Role a caixa de texto para o cursor de texto.
@@ -7497,7 +7451,7 @@ Etapas para que se inicialize as fontes:
   \ANSI_FIXED_FONT = Fonte do sistema de pitch fixo (monoespaçada) do Windows.
     devolvendo o null número da fonte. \Se a função for bem-sucedida, o valor de retorno é um identificador para o objeto lógico solicitado.
     \Se a função falhar, o valor de retorno será NULL.
-  \Processe "gdi32.dll" "AddFontMemResourceEx" com o caractere inicial desta osmosian fonte source e a quantidade de caracteres desta osmosian fonte source e 0 e o endereçamento desse número devolvendo o osmosian fonte resource.
+  \Processe "gdi32.dll" "AddFontMemResourceEx" com o caractere inicial desta osmosian fonte source e a quantidade de caracteres desta osmosian fonte source e 0 e o endereçamento desse número devolvendo o recurso de fonte osmosiana.
   \Processe "gdi32.dll" "AddFontMemResourceEx" com o caractere inicial desta fonte Segoe UI e a quantidade de caracteres desta fonte Segoe UI e 0 e o endereçamento desse número devolvendo o Segoe UI resource.
   Processe "gdi32.dll" "AddFontMemResourceEx" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-addfontmemresourceex
   \A função AddFontMemResourceEx adiciona o recurso de fonte de uma imagem de memória ao sistema.
@@ -8339,20 +8293,20 @@ Etapas para que se mova o cursor de texto para baixo one página em uma caixa de 
   Subtraia 1 desde o número de linhas do cursor desta caixa de texto.
   Limite o cursor de texto na caixa de texto.
 
-Etapas para que se mova o cursor de texto para o first byte of o current linha de texto of uma caixa de texto:
+Etapas para que se mova o cursor de texto para o primeiro caractere of o current linha de texto of uma caixa de texto:
   Se a caixa de texto for inexistente, retorne.
   Atribua 1 ao cursor de texto número de coluna desta caixa de texto.
 
-Etapas para que se mova o cursor de texto para o first byte of uma caixa de texto:
+Etapas para que se mova o cursor de texto para o primeiro caractere of uma caixa de texto:
   Se a caixa de texto for inexistente, retorne.
   Atribua 1 e 1 ao cursor de texto desta caixa de texto.
 
-Etapas para que se mova o cursor de texto para o last byte of o current linha de texto of uma caixa de texto:
+Etapas para que se mova o cursor de texto para o último caractere of o current linha de texto of uma caixa de texto:
   Se a caixa de texto for inexistente, retorne.
   Obtenha uma linha de texto usando o número de linhas do cursor desta caixa de texto e a caixa de texto.
   Atribua a quantidade de caracteres desta string desta linha de texto ao cursor de texto número de coluna desta caixa de texto.
 
-Etapas para que se mova o cursor de texto para o last byte of uma caixa de texto:
+Etapas para que se mova o cursor de texto para o último caractere of uma caixa de texto:
   Se a caixa de texto for inexistente, retorne.
   Atribua a contagem de linhas desta caixa de texto ao número de linhas do cursor desta caixa de texto.
   Obtenha uma linha de texto usando o número de linhas do cursor desta caixa de texto e a caixa de texto.
@@ -8675,8 +8629,8 @@ Etapas para que se outdent algum linhas des textos selecionadas em uma caixa de 
   Obtenha uma linha de texto desde as linhas des textos desta caixa de texto.
     Se a linha de texto for inexistente, retorne.
     Se a linha de texto of a caixa de texto não estiver selecionado, recomece. \selecionada
-    Se o conteúdo deste caractere inicial desta string desta linha de texto for o caractere de espaço, remove o first byte desde a string deste linha de texto.
-    Se o conteúdo deste caractere inicial desta string desta linha de texto for o caractere de espaço, remove o first byte desde a string deste linha de texto.
+    Se o conteúdo deste caractere inicial desta string desta linha de texto for o caractere de espaço, remove o primeiro caractere desde a string deste linha de texto.
+    Se o conteúdo deste caractere inicial desta string desta linha de texto for o caractere de espaço, remove o primeiro caractere desde a string deste linha de texto.
   Recomece. [percorra novamente o código acima]
 
 Um outdent é um número.
@@ -9100,7 +9054,7 @@ Etapas para que se centralize uma caixa de texto sobre uma localização:
 Etapas para que se atribua a first linha reta dessa caixa de texto para uma string:
   Se a caixa de texto for inexistente, limpe a string; retorne.
   Atribua a string desta first linha de texto desta caixa de texto à string.
-  Remove o last byte desde a string.
+  Remove o último caractere desde a string.
 
 Etapas para que se atribua a first linha reta contendo texto dessa caixa de texto para uma string:
   \ *** new
@@ -9110,7 +9064,7 @@ Etapas para que se atribua a first linha reta contendo texto dessa caixa de text
     Obtenha uma linha de texto desde as linhas des textos desta caixa de texto.
     Se a linha de texto for inexistente, retorne.
     Atribua a string deste linha de texto à string.
-    Remove o last byte desde a string. \ cr ou space (see caixa de texto rules no começo do arquivo)
+    Remove o último caractere desde a string. \ cr ou space (see caixa de texto rules no começo do arquivo)
     Remove algum leading noise desde a string.
     Remove algum trailing noise desde a string.
   Se a string estiver em branco, recomece.
@@ -9346,13 +9300,13 @@ Etapas para que se remove cada byte em uma caixa de texto:
   Se a caixa de texto for inexistente, retorne.
   Atribua "" ao caixa de texto.
 
-Etapas para que se remove o first byte desde uma string:
-  Lance um subtexto sobre o first byte of a string.
+Etapas para que se remove o primeiro caractere desde uma string:
+  Lance um subtexto sobre o primeiro caractere of a string.
   Remove bytes de a string usando o subtexto.
 
    
-Etapas para que se remove o last byte desde uma string:
-  Lance um subtexto sobre o last byte of a string.
+Etapas para que se remove o último caractere desde uma string:
+  Lance um subtexto sobre o último caractere of a string.
   Remove bytes de a string usando o subtexto.
 
 Etapas para que se remove os last dois bytes desde uma string:
@@ -9361,7 +9315,7 @@ Etapas para que se remove os last dois bytes desde uma string:
 Etapas para que se remove leading bytes desde uma string usando uma contagem:
   Isole a contagem.
   Se a contagem for maior do que a quantidade de caracteres desta string, limpe a string; retorne.
-  Lance um subtexto sobre o first byte of a string.
+  Lance um subtexto sobre o primeiro caractere of a string.
   Atribua o caractere inicial deste subtexto mais a contagem menos 1 ao caractere final deste subtexto.
   Remove bytes de a string usando o subtexto.
 
@@ -9369,7 +9323,7 @@ Etapas para que se remove leading noise desde uma string;
 Etapas para que se remove algum leading noise desde uma string:
   Se a string estiver em branco, retorne.
   Se o conteúdo deste caractere inicial desta string não for irrelevante, retorne.
-  Remove o first byte desde a string.
+  Remove o primeiro caractere desde a string.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se remove as linhas des textos of uma caixa de texto entre uma linha de texto e uma segunda linha de texto:
@@ -9400,7 +9354,7 @@ Etapas para que se remove uma lista desde umas listas:
 Etapas para que se remove trailing bytes desde uma string usando uma contagem:
   Isole a contagem.
   Se a contagem for maior do que a quantidade de caracteres desta string, limpe a string; retorne.
-  Lance um subtexto sobre o last byte of a string.
+  Lance um subtexto sobre o último caractere of a string.
   Atribua o caractere final deste subtexto menos a contagem mais 1 ao caractere inicial deste subtexto.
   Remove bytes de a string usando o subtexto.
 
@@ -9408,7 +9362,7 @@ Etapas para que se remove trailing noise desde uma string;
 Etapas para que se remove algum trailing noise desde uma string:
   Se a string estiver em branco, retorne.
   Se o conteúdo deste caractere final desta string não for irrelevante, retorne.
-  Remove o last byte desde a string.
+  Remove o último caractere desde a string.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se rename um endereço completo para um segundo endereço completo no sistema de arquivos:
@@ -10421,13 +10375,13 @@ Etapas para que se shut para baixo:
   Destrua o terminal.
   Finalize o contexto.
   Finalize os canvases.
-  Finalize o mouse.
+  \Finalize o mouse.
   Finalize os cursors.
   Finalize as fontes.
   Finalize a janela do programa.
-  Finalize o tela.
-  Finalize as cores.
-  Finalize o módulo.
+  \Finalize a tela.
+  \Finalize as cores.
+  \Finalize o módulo.
   Finalize o talker.
   Finalize gdi+.
   Finalize winsock.
@@ -10435,7 +10389,7 @@ Etapas para que se shut para baixo:
 
 Etapas para que se shut para baixo o cgi:
   Finalize o cgi.
-  Finalize o módulo.
+  \Finalize o módulo.
   Finalize winsock.
 
 O silent detector é um detector.
@@ -10495,12 +10449,12 @@ Etapas para que se lance um subtexto sobre qualquer trecho selecionado em uma li
   Se o número da linha desta linha de texto é o número de linhas do cursor desta seleção, atribua o caractere inicial deste subtexto mais o cursor de texto número de coluna desta seleção menos 2 ao caractere final deste subtexto.
   Se o número da linha desta linha de texto é o anchor número da linha desta seleção, atribua o caractere inicial deste subtexto mais o anchor número de coluna desta seleção menos 1 ao caractere inicial deste subtexto.
 
-Etapas para que se lance um subtexto sobre o first byte of uma string:
+Etapas para que se lance um subtexto sobre o primeiro caractere of uma string:
   Lance o subtexto sobre a string.
   Se a string estiver em branco, retorne.
   Atribua o caractere inicial desta string ao caractere final deste subtexto.
 
-Etapas para que se lance um subtexto sobre o last byte of uma string:
+Etapas para que se lance um subtexto sobre o último caractere of uma string:
   Lance o subtexto sobre a string.
   Se a string estiver em branco, retorne.
   Atribua o caractere final desta string ao caractere inicial deste subtexto.
