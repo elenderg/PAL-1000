@@ -218,7 +218,8 @@ Etapas para que se leia a Bíblia usando um endereço completo:
   Lance um percorredor sobre o trecho.
   Comece. [a executar o código abaixo]
     Se o segmento final deste percorredor estiver em branco, retorne.
-    Aloque memória para um versículo. Acrescente o versículo para os versículos desta Bíblia.
+    Aloque memória para um versículo. 
+    Acrescente o versículo para os versículos desta Bíblia.
     Mova o percorredor (caixa de texto arquivo rules).
     Atribua o segmento inicial deste percorredor à string deste versículo.
     Remova algum leading noise desde a string deste versículo.
@@ -243,23 +244,18 @@ Etapas para que se leia um console para uma string:
   Atualize o cursor.
 
 Etapas para que se atribua a localização deste mouse para uma localização:
-  Processe "user32.dll" "GetCursorPos" com \ https://docs.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-getcursorpos
-  \ Recupera a posição do cursor do mouse, nas coordenadas da tela.
-    O endereçamento desta localização. [lpPoint] \ Um ponteiro para uma estrutura POINT que recebe as coordenadas da tela do cursor.
-    \ https://docs.microsoft.com/pt-br/previous-versions/dd162805(v=vs.85)
-  Processe "user32.dll" "ScreenToClient" com \ https://docs.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-screentoclient
-  \ A função ScreenToClient converte as coordenadas da tela de um ponto especificado na tela em coordenadas da área do cliente.
-    A janela principal do programa [hWnd]  \Um identificador para a janela cuja área do cliente será usada para a conversão.
-    e O endereçamento desta localização. \ caso a janela principal esteja em um segundo monitor.
-    \ Um ponteiro para uma estrutura POINT que especifica as coordenadas da tela a serem convertidas.
-    \ https://docs.microsoft.com/pt-br/previous-versions/dd162805(v=vs.85)
-  Processe "gdi32.dll" "DPtoLP" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-dptolp
-  \ A função DPtoLP converte as coordenadas do dispositivo em coordenadas lógicas. 
-  \A conversão depende do modo de mapeamento do contexto do dispositivo, das configurações das origens e extensões da janela e da janela de visualização e da transformação do mundo.
-    O tela canvas [hdc] \ Um identificador para o contexto do dispositivo.
-    e O endereçamento desta localização [lppt] \ Um ponteiro para uma matriz de estruturas POINT. 
-    \As coordenadas x e y contidas em cada estrutura POINT serão transformadas.
-    \ https://docs.microsoft.com/pt-br/previous-versions/dd162805(v=vs.85)
+  Processe "user32.dll" "GetCursorPos" com \ Recupera a posição do cursor do mouse, retornando as coordenadas da tela.
+  \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-getcursorpos
+    O endereçamento desta localização. [lpPoint] \ Uma estrutura POINT que contém as coordenadas da tela do cursor.
+    \ Documentação: -> https://docs.microsoft.com/pt-br/previous-versions/dd162805(v=vs.85)
+  Processe "user32.dll" "ScreenToClient" com \ Converte as coordenadas de um ponto na tela  em coordenadas da área do cliente.
+  \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-screentoclient  
+    A janela principal do programa [hWnd] \ A janela cuja área do cliente será usada para a conversão.
+    e O endereçamento desta localização. \ Necessário caso a janela esteja em um segundo monitor.
+  Processe "gdi32.dll" "DPtoLP" com \ Converte as coordenadas do dispositivo em coordenadas lógicas. 
+  \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-dptolp
+    O canvas da tela [hdc] \ Um identificador para o contexto do dispositivo.
+    e O endereçamento desta localização [lppt] 
     e 1. [c] \ O número de pontos na matriz.
 
 Etapas para que se abra um arquivo usando um endereço completo e uns milliseconds:
@@ -277,31 +273,15 @@ Etapas para que se abra um arquivo usando um endereço completo:
   Ative o endereço completo para modo de leitura&gravação.
   Isole o endereço completo.
   Anexe o caractere NULL após o endereço completo.
-  Processe "kernel32.dll" "CreateFileA" com \ https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-createfilea
-  \Cria ou abre um arquivo ou dispositivo de E/S. 
-    O caractere inicial deste endereço completo  [lpFileName] \ O nome do arquivo ou dispositivo a ser criado ou aberto. 
-    \Você pode usar barras (/) ou barras invertidas (\) neste nome.
-    e -1073741824 [dwDesiredAccess = GENERIC_READ+GENERIC_WRITE]  \ O acesso solicitado ao arquivo ou dispositivo, que pode ser resumido como leitura, gravação, ou ambos.
-    e 0  [dwShareMode] \O modo de compartilhamento solicitado do arquivo ou dispositivo, que pode ser lido, escrito, ambos, excluir, todos ou nenhum. 
-    \Os pedidos de acesso a atributos ou atributos estendidos não são afetados por este sinalizador.
-    \O valor 0 impede que outros processos abram esse arquivo ou dispositivo se solicitarem acesso de exclusão, leitura ou gravação.
-  \Se este parâmetro for 0 e CreateFile for bem-sucedido, o arquivo ou dispositivo não pode ser compartilhado e não pode ser aberto novamente até que o identificador para o arquivo ou dispositivo seja fechado.   
-    e 0 [lpSecurityAttributes] \Um ponteiro para uma estrutura SECURITY_ATTRIBUTES que contém dois membros de dados separados, mas relacionados: 
-    \ https://docs.microsoft.com/pt-br/previous-versions/windows/desktop/legacy/aa379560(v=vs.85)
-    \um descritor de segurança opcional e um valor booleano que determina se o identificador retornado pode ser herdado por processos filho.
-    \Este parâmetro pode ser NULL.
-    \Se este parâmetro for NULL, o identificador retornado por CreateFile não pode ser herdado por nenhum processo filho que o aplicativo possa criar 
-    \e o arquivo ou dispositivo associado ao identificador retornado obtém um descritor de segurança padrão.
-    e 4 [dwCreationDisposition = OPEN_ALWAYS] \Uma ação a ser executada em um arquivo ou dispositivo existente ou não.
-    \Para dispositivos diferentes de arquivos, este parâmetro geralmente é definido como OPEN_EXISTING.
-    \ OPEN_ALWAYS Abre um arquivo, sempre.; Se o arquivo especificado existir, a função será bem-sucedida
+  Processe "kernel32.dll" "CreateFileA" com \ Também serve pra abrir um arquivo
+    O caractere inicial deste endereço completo  [lpFileName] 
+    e -1073741824 [dwDesiredAccess = GENERIC_READ+GENERIC_WRITE]  
+    e 0 [dwShareMode] 
+    e 0 [lpSecurityAttributes] 
+    e 4 [dwCreationDisposition = OPEN_ALWAYS] \ OPEN_ALWAYS Abre um arquivo, sempre.
     e -2147483520 [dwFlagsAndAttributes = FILE_FLAG_WRITE_THROUGH ou FILE_ATTRIBUTE_NORMAL] 
-    e 0 [hTemplateFile] \Um identificador válido para um arquivo de modelo com o direito de acesso GENERIC_READ. 
-    \O arquivo de modelo fornece atributos de arquivo e atributos estendidos para o arquivo que está sendo criado.
-    \Este parâmetro pode ser NULL.
-    \Ao abrir um arquivo existente, CreateFile ignora este parâmetro
-    devolvendo o arquivo.\Se a função for bem-sucedida, o valor de retorno será um identificador aberto para o arquivo, dispositivo, canal nomeado ou slot de correio especificado.
-    \Se a função falhar, o valor de retorno é -1 (INVALID_HANDLE_VALUE).
+    e 0 [hTemplateFile] \Ao abrir um arquivo existente, CreateFile ignora este parâmetro
+    devolvendo o arquivo. \Se a função falhar, o valor de retorno é -1 (INVALID_HANDLE_VALUE).
   Se o arquivo for -1 [INVALID_HANDLE_VALUE], atribua "Erro ao abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; retorne.
 
 O módulo é uma estrutura com
