@@ -432,17 +432,14 @@ Etapas para que se reaponte um ponteiro usando um quantidade de bytes:
   Se a quantidade de bytes for 0, desassocie o ponteiro; retorne.
   Isole a quantidade de bytes.
   Arredonde para cima a quantidade de bytes usando a potência de dois.
-  Processe "kernel32.dll" "HeapReAlloc" com  \ https://docs.microsoft.com/pt-br/windows/win32/api/heapapi/nf-heapapi-heaprealloc
-  \Realoca um bloco de memória de um heap. Esta função permite redimensionar um bloco de memória e alterar outras propriedades do bloco de memória. A memória alocada não é móvel.
-    O endereço heap [hHeap] \Um identificador para o heap do qual a memória deve ser realocada. Esse identificador é retornado pela função HeapCreate ou GetProcessHeap.
-    e 8 [8 = HEAP_ZERO_MEMORY]  [dwFlags] \As opções de realocação de heap. Se a solicitação de realocação for para um tamanho maior, 
-    \a região adicional da memória além do tamanho original será inicializada para zero. O conteúdo do bloco de memória até seu tamanho original não é afetado.
-    e O ponteiro [lpMem] \Um ponteiro para o bloco de memória que a função realoca. Este ponteiro é retornado por uma chamada anterior para a função HeapAlloc ou HeapReAlloc.
-    e A quantidade de bytes [dwBytes] \O novo tamanho do bloco de memória, em bytes. O tamanho de um bloco de memória pode ser aumentado ou diminuído usando esta função.
-  \Se o heap especificado pelo parâmetro hHeap for um heap "não expansível", dwBytes deve ser menor que 0x7FFF8. 
-  \Você pode criar um heap não expansível chamando a função HeapCreate com um valor diferente de zero.
+  Processe "kernel32.dll" "HeapReAlloc" com \Realoca um bloco de memória de um heap.
+ \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/heapapi/nf-heapapi-heaprealloc
+   \Esta função permite redimensionar um bloco de memória e alterar outras propriedades do bloco de memória. A memória alocada não é móvel.
+    O endereço heap [hHeap] \ O heap do qual a memória deve ser realocada. Obtido a partir da função HeapCreate ou GetProcessHeap.
+    e 8 [8 = HEAP_ZERO_MEMORY]  [dwFlags] \As opções de realocação de heap. 
+    e O ponteiro [lpMem] \ O bloco de memória que a função realoca. Obtido a partir da função HeapAlloc ou HeapReAlloc.
+    e A quantidade de bytes [dwBytes] \O novo tamanho do bloco de memória, em bytes. 
     devolvendo o ponteiro. \Se a função for bem-sucedida, o valor de retorno é um ponteiro [que aponta] para o bloco de memória realocado.
-  \Se a função falhar e você não tiver especificado HEAP_GENERATE_EXCEPTIONS nas dwFlags (o que é o caso aqui), o valor de retorno será NULL.
 
 Etapas para que se mostre olá mundo no console:
   Decodifique $B403. \mov  ah,0x3
