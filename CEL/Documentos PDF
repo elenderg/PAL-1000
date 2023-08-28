@@ -45,7 +45,7 @@ Um pdf object é uma lista com
   Uns conjuntos des textos denominado fonte strings [page],
   Uns conjuntos des textos denominado image strings [page].
 
-An pdf outline entry é uma lista com
+Um marcador pdf é uma lista com
   Um pdf object (referência),
   Um título de índice remissivo,
   Uma página altura,
@@ -59,7 +59,7 @@ Um pdf state é uma estrutura com
   Uns pdfs objects denominados objects,
   Um xref offset,
   Um outline pdf object (referência),
-  Umas pdf outline entries denominado outline entries,
+  Uns marcadores pdfs denominados marcadores,
   Um root pdf object (referência),
   Um parent pdf object (referência),
   Um current contents pdf object (referência),
@@ -266,64 +266,64 @@ Etapas para que se end printing um pdf:
   End printing o pdf (append o outline).
   End printing o pdf (finish o root).
   Limpe o pdf.
-  End printing o pdf (append header).
+  End printing o pdf (inserção de cabeçalho).
   End printing o pdf (offset e acrescente objects).
   End printing o pdf (append xref table).
   End printing o pdf (append trailer).
-  End printing o pdf (append footer).
+  End printing o pdf (inserção de rodapé).
   Destrua a fonte catálogo deste pdf state.
-  Destrua as outline entries deste pdf state.
+  Destrua os marcadores deste pdf state.
   Destrua os objects deste pdf state.
   Desative o documento detector deste pdf state.
 
-Etapas para que se end printing um pdf (append footer):
+Etapas para que se end printing um pdf (inserção de rodapé):
   Acrescente "startxref" junto com o texto CRLF para o pdf.
   Acrescente o xref offset deste pdf state junto com o texto CRLF para o pdf.
   Acrescente "%%EOF" para o pdf.
 
-Etapas para que se end printing um pdf (append header):
+Etapas para que se end printing um pdf (inserção de cabeçalho):
   Acrescente "%PDF-1.3" junto com o texto CRLF para o pdf.
   Acrescente "%âãÏÓ" junto com o texto CRLF para o pdf.
   Acrescente o texto CRLF para o pdf.
 
-Etapas para que se end printing um pdf (append o outline entries - crie o objects):
-  Obtenha um pdf outline entry desde as outline entries deste pdf state.
-  Se o pdf outline entry for inexistente, retorne.
+Etapas para que se end printing um pdf (inserção de marcadores - criação de objetos):
+  Obtenha um marcador pdf desde os marcadores deste pdf state.
+  Se o marcador pdf for inexistente, retorne.
   Adicione um entry pdf object usando "outline entry".
-  Atribua a entry ao pdf object desta pdf outline entry.
+  Atribua a entry ao pdf object desta marcador pdf.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se end printing um pdf (append o outline entries):
-  Se as outline entries deste pdf state estiverem vazias, retorne.
-  End printing o pdf (append o outline entries - crie o objects).
+Etapas para que se end printing um pdf (inserção de marcadores):
+  Se os marcadores deste pdf state estiverem vazias, retorne.
+  End printing o pdf (inserção de marcadores - criação de objetos).
   Comece. [a executar o código abaixo]
-    Obtenha um pdf outline entry desde as outline entries deste pdf state.
-    Se o pdf outline entry for inexistente, retorne.
-    Atribua o pdf object desta pdf outline entry a um object pdf object.
+    Obtenha um marcador pdf desde os marcadores deste pdf state.
+    Se o marcador pdf for inexistente, retorne.
+    Atribua o pdf object desta marcador pdf a um object pdf object.
     Acrescente o número deste object seguido de " 0 obj" para o object.
     Acrescente "<<" para o object.
-    Converta o título de índice remissivo deste pdf outline entry para um string pdf.
+    Converta o título de índice remissivo deste marcador pdf para um string pdf.
     Acrescente "/Title " junto com o string pdf para o object.
     Acrescente "/Parent " junto com o número deste outline deste pdf state seguido de " 0 R" para o object.
-    Se o subsequente pdf outline entry desta pdf outline entry não for inexistente, acrescente "/Next " junto com o número deste pdf object deste subsequente pdf outline entry desta pdf outline entry seguido de " 0 R" para o object.
-    Se o precedente pdf outline entry desta pdf outline entry não for inexistente, acrescente "/Prev " junto com o número deste pdf object deste precedente pdf outline entry desta pdf outline entry seguido de " 0 R" para o object.
-    Acrescente "/Dest [" junto com o destination deste pdf outline entry seguido de " 0 R /XYZ null " junto com a página altura deste pdf outline entry seguido de " null]" para o object.
+    Se o subsequente marcador pdf desta marcador pdf não for inexistente, acrescente "/Next " junto com o número deste pdf object deste subsequente marcador pdf desta marcador pdf seguido de " 0 R" para o object.
+    Se o precedente marcador pdf desta marcador pdf não for inexistente, acrescente "/Prev " junto com o número deste pdf object deste precedente marcador pdf desta marcador pdf seguido de " 0 R" para o object.
+    Acrescente "/Dest [" junto com o destination deste marcador pdf seguido de " 0 R /XYZ null " junto com a página altura deste marcador pdf seguido de " null]" para o object.
     Acrescente ">>" para o object.
     Acrescente "endobj" para o object.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se end printing um pdf (append o outline):
   Esvazie o outline deste pdf state.
-  Se as outline entries deste pdf state estiverem vazias, retorne.
+  Se os marcadores deste pdf state estiverem vazios, retorne.
   Adicione um outline pdf object usando "outline".
   Atribua o outline ao outline deste pdf state.
-  End printing o pdf (append o outline entries).
+  End printing o pdf (inserção de marcadores).
   Acrescente o número deste outline seguido de " 0 obj" para o outline.
   Acrescente "<<" para o outline.
   Acrescente "/Type /Outlines" para o outline.
-  Acrescente "/First " junto com o número deste pdf object deste first pdf outline entry destas outline entries deste pdf state seguido de " 0 R" para o outline.
-  Acrescente "/Last " junto com o número deste pdf object deste last pdf outline entry destas outline entries deste pdf state seguido de " 0 R" para o outline.
-  Acrescente "/Count " junto com a contagem destas outline entries deste pdf state para o outline.
+  Acrescente "/First " junto com o número deste pdf object deste first marcador pdf destes marcadores deste pdf state seguido de " 0 R" para o outline.
+  Acrescente "/Last " junto com o número deste pdf object deste last marcador pdf destes marcadores deste pdf state seguido de " 0 R" para o outline.
+  Acrescente "/Count " junto com a contagem destes marcadores deste pdf state para o outline.
   Acrescente ">>" para o outline.
   Acrescente "endobj" para o outline.
 
@@ -731,11 +731,11 @@ Etapas para que se crie um pdf object usando um categoria:
   Aloque memória para o pdf object.
   Atribua a categoria à categoria deste pdf object.
 
-Etapas para que se crie um pdf outline entry usando um título de índice remissivo e uma página altura e um destination número:
-  Aloque memória para o pdf outline entry.
-  Atribua o título de índice remissivo ao título de índice remissivo deste pdf outline entry.
-  Atribua a página altura à página altura deste pdf outline entry.
-  Atribua o destination ao destination deste pdf outline entry.
+Etapas para que se crie um marcador pdf usando um título de índice remissivo e uma página altura e um destination número:
+  Aloque memória para o marcador pdf.
+  Atribua o título de índice remissivo ao título de índice remissivo deste marcador pdf.
+  Atribua a página altura à página altura deste marcador pdf.
+  Atribua o destination ao destination deste marcador pdf.
 
 Etapas para que se converta uma string para um string pdf:
   Atribua "(" ao string pdf.
@@ -848,8 +848,8 @@ Etapas para que se inicie uma folha usando uma caixa e um título de índice remis
   Atribua a cor preta à cor de preenchimento atual deste pdf state.
   Inicie a folha usando a caixa e o título de índice remissivo (pdf style - start o current página).
   Se o título de índice remissivo estiver em branco, retorne.
-  Crie um pdf outline entry usando o título de índice remissivo e o current altura deste pdf state e o número desta current página deste pdf state.
-  Acrescente o pdf outline entry para o outline entries deste pdf state.
+  Crie um marcador pdf usando o título de índice remissivo e o current altura deste pdf state e o número desta current página deste pdf state.
+  Acrescente o marcador pdf para o marcadores deste pdf state.
 
 Etapas para que se inicie uma folha usando uma caixa (pdf style):
   Inicie a folha usando a caixa e "" (pdf style).
