@@ -241,8 +241,10 @@ Etapas para que se adicione a rotina de finalização para um tipo:
   Se o tipo não deveria ser finalizado, retorne.
   Se o nome deste tipo for "string", adicione a rotina de finalização para o tipo (cadeia de caracteres); retorne.
   Se o nome deste tipo for "texto", adicione a rotina de finalização para o tipo (cadeia de caracteres); retorne.
+  Se o nome deste tipo for "cadeia de caracteres", adicione a rotina de finalização para o tipo (cadeia de caracteres); retorne.
   Se o tipo puder ser reduzido para "string", retorne. \ impede a geração de finalizaores para tipos derivados de string
   Se o tipo puder ser reduzido para "texto", retorne.
+  Se o tipo puder ser reduzido para "cadeia de caracteres", retorne.
   Adicione a rotina de finalização para o tipo (estrutura).
 
 Etapas para que se adicione a rotina de finalização para um tipo (estrutura):
@@ -412,9 +414,6 @@ Etapas para que se adicione uma unidade semântica para umas unidades semânticas 
   \Se a string for "desaloque", atribua "desaloque" à string desta unidade semântica; retorne.
   \Se a string for "esvazie", atribua "deallocate" à string desta unidade semântica; retorne.
   \Se a string for "destrua", atribua "destrua" à string desta unidade semântica; retorne.
-  \\ usando    
-  Se a string for "com", atribua "usando" à string desta unidade semântica; retorne.
-  Se a string for "usando", atribua "usando" à string desta unidade semântica; retorne.
   \ é
   Se a string for "is", atribua "é" à string desta unidade semântica; retorne.
   \ backward/backwards/counterclockwise/counter-clockwise/anticlockwise/anti-clockwise
@@ -450,11 +449,11 @@ Etapas para que se adicione push fragmentos usando umas unidades semânticas:
 Etapas para que se adicione o atribua ou converta fragmentos usando uma variável e uma segunda variável e um endereço local:
   Adicione um fragmento usando o etiqueta de inserção de endereço [na stack] e a segunda variável.
   Adicione um segundo fragmento usando o etiqueta de inserção de endereço [na stack] e a variável.
-  Encontre uma rotina usando "atribua" e o tipo desta variável e "para" e o tipo desta segunda variável.
-  Se a rotina for inexistente, encontre a rotina usando "converta" e o tipo desta variável e "para" e o tipo desta segunda variável.
+  Encontre uma rotina usando "Atribua" e o tipo desta variável e "para" e o tipo desta segunda variável.
+  Se a rotina for inexistente, encontre a rotina usando "Converta" e o tipo desta variável e "para" e o tipo desta segunda variável.
   Se a rotina não for inexistente, adicione um terceiro fragmento usando a etiqueta de demanda interna e a rotina; retorne.
   \ Mensagem de Erro
-  Adicione uma unidade semântica para umas unidades semânticas usando "atribua/converta".
+  Adicione uma unidade semântica para umas unidades semânticas usando "Atribua/Converta".
   Adicione uma segunda unidade semântica para as unidades semânticas usando o tipo desta variável.
   Adicione uma terceira unidade semântica para as unidades semânticas usando "para/a".
   Adicione uma quarta unidade semântica para as unidades semânticas usando o tipo desta segunda variável.
@@ -693,7 +692,7 @@ Etapas para que se acrescente os finalizadores de variáveis globais para uma str
   Se a variável global for inexistente, retorne.
   Se o detector de compilação desta variável global não estiver ativo, recomece.
   Se o tipo desta variável global não deveria ser finalizado, recomece.
-  Acrescente "~finalize o " junto com o nome desta variável global seguido de ". " para a string.
+  Acrescente "~Finalize o " junto com o nome desta variável global seguido de ". " para a string.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se acrescente os inicializadores de variáveis globais para uma string:
@@ -790,7 +789,7 @@ Etapas para que se acrescente uma variável para um trecho (com separador):
   Se a variável for inexistente, acrescente "(variável não inicializada)" para o trecho (com separador); retorne.
   Acrescente o nome desta variável para o trecho (com separador).
 
-Etapas para que se determine se uma string é algum contração de preposição com artigo definido:
+Etapas para que se determine se uma string é alguma contração de preposição com artigo definido:
   Se a string for "do", diga sim.
   Se a string for "da", diga sim.
   Se a string for "dos", diga sim.
@@ -803,7 +802,7 @@ Etapas para que se determine se uma string é algum operador de concatenação cont
   Se o segmento inicial deste percorredor de contrações for "junto", mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor de contrações for "acompanhado", mova o percorredor (usando diretrizes de compilação).
   \Se o segmento inicial deste percorredor for uma variável, recue o percorredor.
-  Se o segmento inicial deste percorredor de contrações for algum contração de preposição com artigo definido, diga sim.
+  Se o segmento inicial deste percorredor de contrações for alguma contração de preposição com artigo definido, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma string está precisando ser decomposta:
@@ -996,7 +995,7 @@ Etapas para que se disponibilize uma variável para um trecho:
   Se o tipo desta variável puder ser reduzido para "string", disponibilize a variável ao trecho (como um texto); retorne.
   Se o tipo desta variável puder ser reduzido para "cadeia de caracteres", disponibilize a variável ao trecho (como um texto); retorne.
   Se o tipo desta variável puder ser reduzido para "texto", disponibilize a variável ao trecho (como um texto); retorne.
-  Atribua o endereço desta variável menos o image base para um endereço. \ Atribua a diferença entre o endreço da variável e a base da imagem em um endereço.
+  Atribua o endereço desta variável menos o image base para um endereço. \ Atribua a diferença entre o endereço da variável e a base da imagem para um endereço.
   Disponibilize o data desta variável ao trecho sob o endereço.
 
 Etapas para que se disponibilize uma variável para um trecho (como um texto):
@@ -4486,7 +4485,7 @@ Etapas para que se mova um percorredor (usando diretrizes de compilação): \ talv
   Mova o percorredor devolvendo uma string de erro (englobando tudo).
   Se a string de erro não estiver em branco, apresente uma mensagem de erro contendo a string de erro e o caractere inicial deste segmento inicial deste percorredor; retorne.
   \Se o segmento inicial deste percorredor for "del", recue o percorredor; retorne. \ Spanish contraction "del"; fudged para "de l", short por "de el"
-  \Se o segmento inicial deste percorredor for algum contração de preposição com artigo definido, determine se essa contração precisa ser desfeita usando o percorredor. \ Spanish contraction "al"; fudged para "a l", short por "a el"
+  \Se o segmento inicial deste percorredor for alguma contração de preposição com artigo definido, determine se essa contração precisa ser desfeita usando o percorredor. \ Spanish contraction "al"; fudged para "a l", short por "a el"
   Se o segmento inicial deste percorredor estiver em branco, retorne.
   Se o conteúdo deste caractere inicial deste segmento inicial deste percorredor for irrelevante, recomece.
   Se o conteúdo deste caractere inicial deste segmento inicial deste percorredor for a barra invertida, recomece.
