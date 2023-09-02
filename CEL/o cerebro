@@ -279,7 +279,7 @@ Etapas para que se alinhe uma caixa de texto usando um alinhamento:
 
 Um alinhamento é uma string [centro, esquerda ou direita].
 Uma quantia é um número.
-Uma anchor é um position.
+Uma anchor é um posicionamento.
 Uma máscara de conjunção lógica é uma mask.
 Um ângulo é [composto de] uns graus. [cujos valores variam ente 0 e 3599]
 
@@ -318,7 +318,7 @@ Etapas para que se posponha um trecho para um arquivo;
 Etapas para que se acrescente um trecho para um arquivo:
   Limpe o erro do fluxo de entrada/saída.
   Processe "kernel32.dll" "SetFilePointer" com \ Armazena o ponteiro do arquivo em dois valores LONG.
-  \Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-setfilepointer  
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-setfilepointer  
   O arquivo [hFile]
     e 0 [lDistanceToMove]
     e 0 [lpDistanceToMoveHigh]
@@ -326,7 +326,7 @@ Etapas para que se acrescente um trecho para um arquivo:
   Retornando um número resultante.\Se a função retornar -1 (INVALID_SET_FILE_POINTER), isso significa que a chamada para SetFilePointer não foi bem-sucedida.
   Se o número resultante for -1, atribua "Ocorreu um erro na hora de posicionar o ponteiro do arquivo." ao erro do fluxo de entrada/saída; retorne.
   Processe "kernel32.dll" "WriteFile" com \ Gravar dados no arquivo ou dispositivo de entrada / saída (E/S) especificado.
-  \Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-writefile  
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-writefile  
     O arquivo [hFile]
     e O caractere inicial deste trecho [lpBuffer] 
     e A quantidade de caracteres deste trecho [nNumberOfBytesToWrite]
@@ -606,7 +606,7 @@ Etapas para que se capitalize uma caixa de texto:
   Recomece. [percorra novamente o código acima]
   Wrap a caixa de texto.
 
-Um cursor de texto é um position.
+Um cursor de texto é um posicionamento.
 
 Etapas para que se centralize uma caixa sob o base of uma segunda caixa:
   Centralize a caixa na segunda caixa (horizontalmente).
@@ -733,7 +733,7 @@ Etapas para que se mude uma caixa de texto usando um nome da fonte:
   Atribua o nome da fonte ao nome desta fonte desta caixa de texto.
   Wrap a caixa de texto.
 
-Um character é um byte.
+Um caractere é um byte.
 
 Uma escolha é uma lista com um nome e uma caixa.
 
@@ -863,10 +863,11 @@ Etapas para que se compativelmente handle algum message com um janela do program
     Atribua 0 para EAX; 
     Retorne.
   Se a message for 001 [WM_CREATE], \ Documentação: ->https://learn.microsoft.com/pt-br/windows/win32/winmsg/wm-create
-    Execute algum WM_CREATE com 
+    Execute algum WM_CREATE com \ menus aqui
       A janela do programa; 
     Atribua 0 para EAX; 
     Retorne.
+[HMENU hMenubar = CreateMenu();                    HMENU hFile = CreateMenu();                    HMENU hEdit = CreateMenu();                    HMENU hHelp = CreateMenu();                        AppendMenu(hMenubar, 0x00000010, (UINT_PTR)hFile, "File");                    AppendMenu(hMenubar, 0x00000010, (UINT_PTR)hEdit, "Edit");                    AppendMenu(hMenubar, 0x00000010, (UINT_PTR)hHelp, "Help");                        AppendMenu(hFile, 0x00000000, 1, "Save");                    AppendMenu(hFile, 0x00000000, 2, "Load");                    AppendMenu(hFile, 0x00000000, 3, "Exit");                        AppendMenu(hEdit, 0x00000000, 4, "Undo");                    AppendMenu(hEdit, 0x00000000, 5, "Redo");                        AppendMenu(hHelp, 0x00000000, 6, "Visit website");                        SetMenu(hwnd, hMenubar);]
   Se a message for 002 [WM_DESTROY], \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/winmsg/wm-destroy
     Execute algum WM_DESTROY; 
     Atribua 0 para EAX; 
@@ -919,31 +920,26 @@ Etapas para que se compativelmente handle algum message com um janela do program
     e O lParam. [lParam] 
 
 Etapas para que se compativelmente aguarde por um process ponteiro:
-  Processe "kernel32.dll" "WaitForSingleObject" com \Espera até que o objeto esteja no estado sinalizado ou o intervalo de tempo limite expire.
+  Processe "kernel32.dll" "WaitForSingleObject" com \ Espera até que o objeto esteja no estado sinalizado ou o intervalo de tempo limite expire.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/synchapi/nf-synchapi-waitforsingleobject  
     O conteúdo deste process ponteiro [hHandle]  
     e -1. [dwMilliseconds]  
-  Processe "kernel32.dll" "CloseHandle" com \Fecha um identificador de objeto aberto.
+  Processe "kernel32.dll" "CloseHandle" com \ Fecha um identificador de objeto aberto.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/handleapi/nf-handleapi-closehandle
     O conteúdo deste process ponteiro. [hObject]  
   Atribua 0 ao conteúdo deste process ponteiro. 
-  Processe "user32.dll" "GetForegroundWindow" \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-getforegroundwindow
-  \Recupera um identificador para a janela do primeiro plano (a janela com a qual o usuário está trabalhando atualmente). 
-  \O sistema atribui uma prioridade um pouco mais alta ao encadeamento que cria a janela de primeiro plano do que aos outros encadeamentos.
-  Retornando uma janela do programa. \O valor de retorno é um identificador para a janela do primeiro plano. 
-   \A janela de primeiro plano pode ser NULL em certas circunstâncias, como quando uma janela está perdendo a ativação.
+  Processe "user32.dll" "GetForegroundWindow" \ Recupera um identificador para a janela do primeiro plano (a janela com a qual o usuário está trabalhando atualmente). 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-getforegroundwindow
+  Retornando uma janela do programa. 
   Se a janela do programa for a janela principal do programa, atribua 0 para EAX; retorne.
-  Processe "user32.dll" "ShowWindow" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-showwindow
- \Define o estado de exibição da janela especificada.
-    A janela principal do programa [hWnd] \Um número identificador para a janela.
-    e 6 [nCmdShow SW_MINIMIZE]. \Controla como a janela deve ser exibida. 
-    \SW_MINIMIZE Minimiza a janela especificada e ativa a próxima janela de nível superior na ordem Z.
-  Processe "user32.dll" "ShowWindow" com 
-    A janela principal do programa [hWnd]  \Um número identificador para a janela.
-    e 9 [nCmdShow SW_RESTORE]. \Ativa e exibe a janela. 
-    \Se a janela for minimizada ou maximizada, o sistema a restaurará para seu tamanho e posição originais. 
-    \Um aplicativo deve especificar este sinalizador ao restaurar uma janela minimizada.
-  Atribua 0 para EAX. \ abra return value of thread
+  Processe "user32.dll" "ShowWindow" com \ Define o estado de exibição da janela especificada.
+    \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-showwindow
+    A janela principal do programa [hWnd] 
+    e 6 [nCmdShow SW_MINIMIZE].
+  Processe "user32.dll" "ShowWindow" com  
+    A janela principal do programa [hWnd]  
+    e 9 [nCmdShow SW_RESTORE]. 
+  Atribua 0 para EAX. \ abre o valor de retorno da thread
 
 Um console é uma lista com 
   Uma caixa, 
@@ -954,19 +950,16 @@ Um console é uma lista com
   Um texto retornado string.
 
 O contexto é um contexto.
+A pilha de contextos é [composta de] uns contextos.
 
-
-
-O contexto stack é [composto de] uns contextos.
-
-Etapas para que se converta um posicionamento absoluto para uma position usando uma caixa de texto:
-  Se a caixa de texto for inexistente, limpe o position; retorne.
+Etapas para que se converta um posicionamento absoluto para um posicionamento usando uma caixa de texto:
+  Se a caixa de texto for inexistente, limpe o posicionamento; retorne.
   Preserve o posicionamento absoluto.
   Comece. [a executar o código abaixo]
     Obtenha uma linha de texto desde as linhas des textos desta caixa de texto.
-    Se a linha de texto for inexistente, limpe o position; retorne.
-    Atribua o número da linha desta linha de texto ao número da linha desta position.
-    Atribua o posicionamento absoluto ao número de coluna desta position.
+    Se a linha de texto for inexistente, limpe o posicionamento; retorne.
+    Atribua o número da linha desta linha de texto ao número da linha deste posicionamento.
+    Atribua o posicionamento absoluto ao número de coluna deste posicionamento.
     Subtraia a quantidade de caracteres desta string desta linha de texto desde o posicionamento absoluto.
     Se o posicionamento absoluto for menor do que 1, retorne.
   Recomece. [percorra novamente o código acima]
@@ -976,8 +969,8 @@ Etapas para que se converta um código binário Para um número:
   Atribua 1 a um value número.
   Comece. [a executar o código abaixo]
     Se o código binário estiver em branco, retorne.
-    Obtenha um character desde o código binário (regressivamente). \ was backwards
-    Se o character for "1", adicione o value para o número.
+    Obtenha um caractere desde o código binário (regressivamente). \ was backwards
+    Se o caractere for "1", adicione o value para o número.
     Double o value.
   Recomece. [percorra novamente o código acima]
 
@@ -1020,23 +1013,24 @@ Etapas para que se converta uma cor para um código da cor:
   Limite a luminosidade desta cor para 1 e 239.
   Redimensione proporcionalmente a matiz desta cor usando 240/3600.
   Limite a matiz desta cor para 1 e 239.
-  Processe "shlwapi.dll" "ColorHLSToRGB" com \ https://learn.microsoft.com/pt-br/windows/win32/api/shlwapi/nf-shlwapi-colorhlstorgb
-  \ Converte cores de matiz-luminância-saturação (HLS) para o formato RGB.
-    A matiz desta cor [wHue] \O valor de matiz HLS original.
-    e A luminosidade desta cor  [wLuminance] \O valor de luminância HLS original.
-    e A saturação desta cor [wSaturation] \O valor de saturação HLS original.
-  Retornando o código da cor. [COLORREF] \Retorna o valor RGB.
+  Processe "shlwapi.dll" "ColorHLSToRGB" com \ Converte cores HLS para o formato RGB.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/shlwapi/nf-shlwapi-colorhlstorgb  
+    A matiz desta cor [wHue] 
+    e A luminosidade desta cor  [wLuminance]
+    e A saturação desta cor [wSaturation]
+  Retornando o código da cor. [COLORREF]
 
 Etapas para que se converta uma cor para um espaço de cor RGB:
   Converta a cor para um código da cor.
   Converta o código da cor para o espaço de cor RGB.
 
 Etapas para que se converta um código da cor para uma cor:
-  Processe "shlwapi.dll" "ColorRGBToHLS" com \ https://learn.microsoft.com/pt-br/windows/win32/api/shlwapi/nf-shlwapi-colorrgbtohls
-    O código da cor e [clrRGB] \ A cor RGB original.
-    O endereçamento dum word [*pwHue] \ Um ponteiro para um valor que, quando esse método retorna com êxito, recebe o valor de matiz HLS.
-    e O endereçamento duma segunda word [*pwLuminance] \ Um ponteiro para um valor que, quando este método retorna com sucesso, recebe o valor de luminância HLS.
-    e O endereçamento dum terceiro word.[*pwSaturation] \ Um ponteiro para um valor que, quando este método retorna com sucesso, recebe o valor de saturação HLS.
+  Processe "shlwapi.dll" "ColorRGBToHLS" com \ Convert RGB p/ HSL
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/shlwapi/nf-shlwapi-colorrgbtohls
+    O código da cor e [clrRGB]
+    O endereçamento dum word [*pwHue]
+    e O endereçamento duma segunda word [*pwLuminance]
+    e O endereçamento dum terceiro word.[*pwSaturation]
   Atribua a word à matiz desta cor.
   Atribua a segunda word à luminosidade desta cor.
   Atribua o terceiro word à saturação desta cor.
@@ -1058,12 +1052,12 @@ Etapas para que se converta um código da cor para um espaço de cor RGB:
 
 Etapas para que se converta um filetime para uma string:
   Limpe a string.
-  Processe "kernel32.dll" "FileTimeToSystemTime" com \ https://learn.microsoft.com/pt-br/windows/win32/api/timezoneapi/nf-timezoneapi-filetimetosystemtime
-  \ Converte a hora do arquivo em formato de hora do sistema. A hora do sistema é baseada na hora universal coordenada (UTC).
-    O endereçamento deste filetime [*lpFileTime] \ Um ponteiro para uma estrutura FILETIME contendo a hora do arquivo a ser convertida para o formato de data e hora do sistema (UTC).
-    e O endereçamento dum SYSTEMTIME [lpSystemTime] \ Um ponteiro para uma estrutura SYSTEMTIME para receber a hora do arquivo convertido.
-  Retornando um número. \ Se a função for bem-sucedida, o valor de retorno será diferente de zero.
-  Se o número for 0, retorne. \Se a função falhar, o valor de retorno é zero.
+  Processe "kernel32.dll" "FileTimeToSystemTime" com \ Converte a hora do arquivo em formato de hora do sistema. (UTC).
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/timezoneapi/nf-timezoneapi-filetimetosystemtime
+    O endereçamento deste filetime [*lpFileTime] 
+    e O endereçamento dum SYSTEMTIME [lpSystemTime] 
+  Retornando um número. 
+  Se o número for 0, retorne. 
   Atribua o wYear deste SYSTEMTIME ao número do ano dum date/time.
   Atribua o wMonth deste SYSTEMTIME ao número do mês deste date/time.
   Atribua o wDayOfWeek deste SYSTEMTIME ao número do dia da semana deste date/time.
@@ -1082,37 +1076,23 @@ Etapas para que se converta um detector para um texto hexadecimal:
 Etapas para que se converta uma fonte para um número da fonte:
   Preserve a fonte.
   Anexe o caractere NULL após o nome desta fonte.
-  Processe "gdi32.dll" "CreateFontA" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-createfonta
-  \A função CreateFont cria uma fonte lógica com as características especificadas. A fonte lógica pode ser posteriormente selecionada como a fonte para qualquer dispositivo.
-   - a altura desta fonte times 3 [e depois] dividido por 4 [cHeight] \A altura, em unidades lógicas, da célula ou caractere da fonte. 
-   \O valor da altura do caractere (também conhecido como altura EM) é o valor da altura da célula do caractere menos o principal valor interno.
-   \Para todas as comparações de altura, o mapeador de fonte procura a maior fonte que não exceda o tamanho solicitado.
-    \Esse mapeamento ocorre quando a fonte é usada pela primeira vez.
-    e 0 [cWidth] \A largura média, em unidades lógicas, de caracteres na fonte solicitada. 
-   \Se este valor for zero, o mapeador de fonte escolhe um valor de correspondência mais próximo. 
-   \O valor de correspondência mais próximo é determinado 
-   \comparando os valores absolutos da diferença entre a proporção de aspecto do dispositivo atual e a proporção de aspecto digitalizado das fontes disponíveis.
-    e 0 [cEscapement] \O ângulo, em décimos de graus, entre o vetor de escape e o eixo x do dispositivo. 
-    \O vetor de escape é paralelo à linha de base de uma linha de texto.
-    e 0 [cOrientation] \O ângulo, em décimos de graus, entre a linha de base de cada personagem e o eixo x do dispositivo.
-    e 0 [cWeight] \A espessura da fonte no intervalo de 0 a 1000. Por exemplo, 400 é normal e 700 é negrito. Se este valor for zero, um peso padrão é usado.
-    e 0 [bItalic] \Especifica uma fonte em itálico se definida como TRUE.
-    e 0 [bUnderline] \Especifica uma fonte sublinhada se definida como TRUE.
-    e 0 [bStrikeOut] \Especifica uma fonte riscada se definida como TRUE.
-    e 1 [iCharSet = DEFAULT_CHARSET]  \O conjunto de caracteres. 
-    \DEFAULT_CHARSET é definido com um valor baseado na localidade do sistema atual. 
-    \Por exemplo, quando a localidade do sistema é inglês (Estados Unidos), ela é definida como ANSI_CHARSET.
-    e 0 [iOutPrecision] \A precisão de saída. 
-    \A precisão da saída define o quanto a saída deve corresponder à altura, largura, orientação do caractere, escape, densidade e tipo de fonte da fonte solicitada.
-    e 0 [iClipPrecision] \A precisão do recorte. A precisão de recorte define como recortar caracteres que estão parcialmente fora da região de recorte.
-    e 5 [iQuality = CLEARTYPE_QUALITY]  \A qualidade da saída. 
-    \A qualidade de saída define com que cuidado o GDI deve tentar corresponder os atributos de fonte lógica aos de uma fonte física real.
-    \Se CLEARTYPE_QUALITY for definido, o texto é renderizado (quando possível) usando o método de suavização ClearType.
-    e 4 [iPitchAndFamily = TRUETYPE_FONTTYPE]  \O pitch e a família da fonte.
-    e O caractere inicial deste nome desta fonte [pszFaceName] \Um ponteiro para uma string terminada em nulo que especifica o nome do tipo da fonte. 
-    \O comprimento desta string não deve exceder 32 caracteres, incluindo o caractere nulo de terminação.
-  Retornando o número da fonte. \Se a função for bem-sucedida, o valor de retorno é um identificador para uma fonte lógica.
-    \Se a função falhar, o valor de retorno será NULL.
+  Processe "gdi32.dll" "CreateFontA" com \ Cria uma fonte lógica com as características especificadas. 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-createfonta  
+   - A altura desta fonte times 3 dividido por 4 [cHeight] 
+    e 0 [cWidth] 
+    e 0 [cEscapement] 
+    e 0 [cOrientation] 
+    e 0 [cWeight] 
+    e 0 [bItalic] 
+    e 0 [bUnderline] 
+    e 0 [bStrikeOut] 
+    e 1 [iCharSet = DEFAULT_CHARSET]
+    e 0 [iOutPrecision] 
+    e 0 [iClipPrecision] 
+    e 5 [iQuality = CLEARTYPE_QUALITY]
+    e 4 [iPitchAndFamily = TRUETYPE_FONTTYPE]
+    e O caractere inicial deste nome desta fonte [pszFaceName]
+  Retornando o número da fonte.
 
 Etapas para que se converta uma fração para um texto hexadecimal:
   Reaponte o caractere inicial deste texto hexadecimal usando a magnitude desta fração.
@@ -1248,14 +1228,14 @@ Etapas para que se converta um ponteiro para uma string:
 Etapas para que se converta uns points para uns graus:
   Atribua o points times 3840 dividido por 3600 ao graus.
 
-Etapas para que se converta uma position para um posicionamento absoluto usando uma caixa de texto:
+Etapas para que se converta um posicionamento para um posicionamento absoluto usando uma caixa de texto:
   Se a caixa de texto for inexistente, limpe o posicionamento absoluto; retorne.
   Atribua 0 ao posicionamento absoluto.
   Comece. [a executar o código abaixo]
     Obtenha uma linha de texto desde as linhas des textos desta caixa de texto.
     Se a linha de texto for inexistente, retorne.
-    Se o número da linha desta linha de texto for menor do que o número da linha desta position, adicione a quantidade de caracteres desta string desta linha de texto para o posicionamento absoluto; recomece.
-  Adicione o número de coluna desta position para o posicionamento absoluto.
+    Se o número da linha desta linha de texto for menor do que o número da linha deste posicionamento, adicione a quantidade de caracteres desta string desta linha de texto para o posicionamento absoluto; recomece.
+  Adicione o número de coluna deste posicionamento para o posicionamento absoluto.
 
 Etapas para que se converta uns graus para uns points:
   Atribua os graus times 3600 dividido por 3840 ao points.
@@ -5276,7 +5256,7 @@ Etapas para que se finalize COM:
 Etapas para que se finalize um contexto:
   Destrua as escolhas.
   Destrua as figuras geométricas.
-  Destrua o contexto stack.
+  Destrua a pilha de contextos.
   Destrua o contexto.
 
 Etapas para que se finalize os cursors:  
@@ -6119,11 +6099,11 @@ Etapas para que se obtenha um offset par de números usando uma string e uma caix
     \Se a função falhar, o valor de retorno é zero.
   Adicione a altura desta caixa menos a tmHeight deste TEXTMETRIC dividido por 2 para o número Y deste offset par de números.
 
-Etapas para que se obtenha uma position usando uma localização e uma caixa de texto:
-  Se a caixa de texto for inexistente, limpe o position; retorne.
+Etapas para que se obtenha um posicionamento usando uma localização e uma caixa de texto:
+  Se a caixa de texto for inexistente, limpe o posicionamento; retorne.
   Obtenha uma linha de texto usando a localização e a caixa de texto.
-  Atribua o número da linha desta linha de texto ao número da linha desta position.
-  Obtenha o número de coluna desta position usando a linha de texto e a localização e a caixa de texto.
+  Atribua o número da linha desta linha de texto ao número da linha deste posicionamento.
+  Obtenha o número de coluna deste posicionamento usando a linha de texto e a localização e a caixa de texto.
 
 Etapas para que se obtenha um ponteiro RGB desde um BitmapData sob um número da linha e um número de coluna:
   \ 1 based
@@ -6275,14 +6255,14 @@ Etapas para que se obtenha um SockAddr usando um host string:
   Atribua o conteúdo deste AI_Addr deste AddrInfoPtr ao sockaddr.
   Processe o FeeAddrInfo ponteiro destas rotinas da função AddrInfo com o AddrInfoPtr.
 
-Etapas para que se obtenha uma localização usando uma position e uma caixa de texto:
+Etapas para que se obtenha uma localização usando um posicionamento e uma caixa de texto:
   Limpe a localização.
   Se a caixa de texto for inexistente, retorne.
-  Obtenha uma linha de texto usando o número da linha desta position e a caixa de texto.
+  Obtenha uma linha de texto usando o número da linha deste posicionamento e a caixa de texto.
   Obtenha uma caixa usando a linha de texto e a caixa de texto.
   Atribua a coordenada Y do canto superior esquerdo desta caixa à coordenada Y desta localização.
   Atribua o caractere inicial desta string desta linha de texto ao caractere inicial dum subtexto.
-  Atribua o caractere inicial deste subtexto mais o número de coluna desta position menos 2 ao caractere final deste subtexto.
+  Atribua o caractere inicial deste subtexto mais o número de coluna deste posicionamento menos 2 ao caractere final deste subtexto.
   Obtenha uma largura usando o subtexto e o memory canvas e a fonte desta caixa de texto.
   Atribua a coordenada X do canto superior esquerdo desta caixa mais a largura à coordenada X desta localização.
   Obtenha um offset par de números usando o working string desta linha de texto e a caixa e a fonte desta caixa de texto e o alinhamento desta caixa de texto.
@@ -7967,7 +7947,7 @@ Etapas para que se lowercase um byte:
   \adicione 32 para cada letra entre "A" and "Z" da string.
   Substitua o byte usando o tabela de caracteres minúsculos ASCII .
 
-Etapas para que se lowercase o character depois de um finger e atribua it para uma string:
+Etapas para que se lowercase o caractere depois de um finger e atribua it para uma string:
   Se o finger for inexistente, retorne.
   Atribua o conteúdo deste finger à string.
   Lowercase a string.
@@ -8687,9 +8667,9 @@ Um process ponteiro é um ponteiro [que aponta] para um process.
 
 Um punch linha reta é uma string.
 
-Etapas para que se atribua o character depois de um finger para um character:
-  Se o finger for inexistente, limpe o character; retorne.
-  Atribua o conteúdo deste finger ao character.
+Etapas para que se atribua o caractere depois de um finger para um caractere:
+  Se o finger for inexistente, limpe o caractere; retorne.
+  Atribua o conteúdo deste finger ao caractere.
 
 Etapas para que se atribua um date/time para uma segunda date/time:
   Atribua o número do ano deste date/time ao número do ano desta segunda date/time.
@@ -8717,7 +8697,7 @@ Etapas para que se atribua a string dum date/time para uma string:
   Acrescente ":" para a string.
   Zero preencha o número de milissegundos  deste date/time usando 3 e acrescente it para a string.
 
-Etapas para que se atribua um finger sobre o first character of uma string:
+Etapas para que se atribua um finger sobre o first caractere of uma string:
   Atribua o caractere inicial desta string ao finger.
 
 Etapas para que se atribua a contagem dum catálogo para uma contagem:
@@ -9449,14 +9429,14 @@ Etapas para que se restaure um canvas:
     \Nesse caso, o valor -1 restaura o estado salvo mais recentemente.
 
 Etapas para que se restaure um contexto:
-  Obtenha um saved contexto desde o contexto stack.
+  Obtenha um saved contexto desde a pilha de contextos.
   Se o saved contexto for inexistente, retorne.
   Atribua a localização deste saved contexto à localização deste contexto.
   Atribua a orientação deste saved contexto à orientação deste contexto.
   Atribua a tamanho da letra deste saved contexto à tamanho da letra deste contexto.
   Atribua a cor deste saved contexto à cor deste contexto.
   Atribua o número deste saved contexto ao número deste contexto.
-  Remova o saved contexto desde o contexto stack.
+  Remova o saved contexto desde a pilha de contextos.
   Destrua o saved contexto.
 
 Etapas para que se restaure uma janela do programa:
@@ -9498,8 +9478,8 @@ Etapas para que se reverta uma string:
   Limpe o original string.
   Comece. [a executar o código abaixo]
     Se a string estiver em branco, pare.
-    Obtenha um character desde a string (regressivamente).
-    Acrescente o character para o original string.
+    Obtenha um caractere desde a string (regressivamente).
+    Acrescente o caractere para o original string.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se inverta umas listas:
@@ -9681,7 +9661,7 @@ Etapas para que se salve um contexto:
   Atribua a tamanho da letra deste contexto à tamanho da letra deste saved contexto.
   Atribua a cor deste contexto à cor deste saved contexto.
   Atribua o número deste contexto ao número deste saved contexto.
-  Anteponha o saved contexto para o contexto stack.
+  Anteponha o saved contexto para a pilha de contextos.
 
 A saved memory hBitMap é um hBitMap.
 
@@ -11314,7 +11294,7 @@ Etapas para que se wrap uma caixa de texto:
   Se a caixa de texto for inexistente, retorne.
   Se o detector de quebra de texto desta caixa de texto não estiver ativo, retorne.
   Converta o anchor desta caixa de texto para um posicionamento absoluto usando a caixa de texto.
-  Converta o cursor de texto desta caixa de texto para uma segunda posicionamento absoluto usando a caixa de texto.
+  Converta o cursor de texto desta caixa de texto para uma segundo posicionamento absoluto usando a caixa de texto.
   Atribua o fator de escala desta caixa de texto a uma fração.
   Redimensione proporcionalmente a caixa de texto para 1/1.
   Extraia uma string desde a caixa de texto.
@@ -11332,7 +11312,7 @@ Etapas para que se wrap uma caixa de texto:
   Renumere as linhas des textos desta caixa de texto.
   Redimensione proporcionalmente a caixa de texto para a fração.
   Converta o posicionamento absoluto para o anchor desta caixa de texto usando a caixa de texto.
-  Converta a segunda posicionamento absoluto para o cursor de texto desta caixa de texto usando a caixa de texto.
+  Converta o segundo posicionamento absoluto para o cursor de texto desta caixa de texto usando a caixa de texto.
   Limite a origem of a caixa de texto.
 
 Etapas para que se salve um trecho em um arquivo;
