@@ -966,12 +966,12 @@ Etapas para que se converta um posicionamento absoluto para um posicionamento us
 
 Etapas para que se converta um código binário Para um número:
   Atribua 0 ao número.
-  Atribua 1 a um value número.
+  Atribua 1 a um valor numérico.
   Comece. [a executar o código abaixo]
     Se o código binário estiver em branco, retorne.
     Obtenha um caractere desde o código binário (regressivamente). \ was backwards
-    Se o caractere for "1", adicione o value para o número.
-    Double o value.
+    Se o caractere for "1", adicione o valor numérico para o número.
+    Double o valor numérico.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se converta uma caixa para uma string:
@@ -1104,18 +1104,20 @@ Etapas para que se converta uma fração para um numeral misto:
   Divida o numerador desta fração pelo denominador desta fração usando o número inteiro deste numeral misto e um resto.
   Atribua o resto e o denominador desta fração ao fração deste numeral misto.
 
+Um valor numérico é um número.
+
 Etapas para que se converta uma fração para uma string usando um número:
   \ converts para um decimal representation com "the número" of places
   Limpe a string.
   Se o número for menor do que 1, retorne.
-  Atribua 10 a um value número.
-  Raise o value para o número.
+  Atribua 10 a um valor numérico.
+  Raise o valor numérico para o número.
   Preserve a fração.
   Se a fração for negativa, ative um detector; de-sign a fração.
-  Multiplique o value pela fração.
-  Zero preencha o value usando o número e acrescente it para a string.
+  Multiplique o valor numérico pela fração.
+  Zero preencha o valor numérico usando o número e acrescente it para a string.
   Atribua a quantidade de caracteres desta string menos o número mais 1 a um byte#.
-  Insira "." à string antes de o byte#.
+  Insira "." para a string antes de o byte#.
   Se o conteúdo deste caractere inicial desta string for o ponto final, anteponha "0" para a string.
   Se o detector estiver ativo, anteponha "-" para a string.
 
@@ -1128,35 +1130,31 @@ Etapas para que se converta um texto hexadecimal para um número:
   Copie bytes desde o caractere inicial deste texto hexadecimal para o endereçamento destte número pela magnitude deste número.
 
 Etapas para que se converta um lParam para uma tecla:
-  \ assumes lParam desde wm_char message
+  \ assumes lParam from wm_char message
   Atribua o lParam à tecla.
   Desloque a tecla 16 bits para a direita .
-  \ https://learn.microsoft.com/pt-br/windows/win32/inputdev/virtual-key-codes
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/inputdev/virtual-key-codes
   Conjuncione logicamente a tecla com 255. \11111111 ou FF
-  Processe "user32.dll" "MapVirtualKeyA" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-mapvirtualkeya
-  \Traduz (mapeia) um código de tecla virtual em um código de varredura ou valor de caractere, ou traduz um código de varredura em um código de tecla virtual.
-    A tecla [uCode] \O código de chave virtual ou código de leitura de uma chave. 
-    \Como esse valor é interpretado depende do valor do parâmetro uMapType.
-    \A partir do Windows Vista, o byte alto do valor uCode pode conter 0xe0 ou 0xe1 para especificar o código de verificação estendida.
-    e 1 [uMapType MAPVK_VSC_TO_VK]  \A tradução a ser executada. O valor deste parâmetro depende do valor do parâmetro uCode.
-    \ Usando MAPVK_VSC_TO_VK, O parâmetro uCode é um código de varredura e é traduzido em um código de tecla virtual que não distingue entre as teclas esquerda e direita. Se não houver tradução, a função retorna 0.
-  Retornando a tecla. \O valor de retorno é um código de varredura, um código de chave virtual ou um valor de caractere, dependendo do valor de uCode e uMapType. 
-    \Se não houver tradução, o valor de retorno é zero.
+  Processe "user32.dll" "MapVirtualKeyA" com \ Mapeia um código de tecla virtual em um código de varredura e vice-versa
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-mapvirtualkeya  
+    A tecla [uCode] 
+    e 1 [uMapType MAPVK_VSC_TO_VK] 
+  Retornando a tecla. 
   Se a tecla NumLock não estiver ativada, retorne.
-  Se a tecla for a tecla Insert, atribua a tecla zero do teclado numérico à tecla; retorne.
-  Se a tecla for a tecla Delete, atribua a numpad-period tecla à tecla; retorne.
-  Se a tecla for a tecla Home, atribua a tecla sete do teclado numérico à tecla; retorne.
-  Se a tecla for a tecla End, atribua a tecla End do teclado numérico à tecla; retorne.
-  Se a tecla for a tecla PgUp, atribua a tecla nove do teclado numérico à tecla; retorne.
-  Se a tecla for a tecla PgDn, atribua a tecla três do teclado numérico à tecla; retorne.
-  Se a tecla for a seta pra esquerda, atribua a tecla quatro do teclado numérico à tecla; retorne.
-  Se a tecla for a seta pra cima, atribua a tecla oito do teclado numérico à tecla; retorne.
-  Se a tecla for a seta pra direita, atribua a tecla seis do teclado numérico à tecla; retorne.
-  Se a tecla for a seta pra baixo, atribua a tecla dois do teclado numérico à tecla; retorne.
-  Se a tecla for a tecla Clear, atribua a tecla cinco do teclado numérico à tecla; retorne.
+  Se a tecla for a tecla Insert, atribua a Tecla Zero do teclado numérico à tecla; retorne.
+  Se a tecla for a tecla Delete, atribua a Ponto do teclado numérico à tecla; retorne.
+  Se a tecla for a tecla Home, atribua a Tecla Sete do teclado numérico à tecla; retorne.
+  Se a tecla for a tecla End, atribua a Tecla End do teclado numérico à tecla; retorne.
+  Se a tecla for a tecla PgUp, atribua a Tecla Nove do teclado numérico à tecla; retorne.
+  Se a tecla for a tecla PgDn, atribua a Tecla Três do teclado numérico à tecla; retorne.
+  Se a tecla for a seta pra esquerda, atribua a Tecla Quatro do teclado numérico à tecla; retorne.
+  Se a tecla for a seta pra cima, atribua a Tecla Oito do teclado numérico à tecla; retorne.
+  Se a tecla for a seta pra direita, atribua a Tecla Seis do teclado numérico à tecla; retorne.
+  Se a tecla for a seta pra baixo, atribua a Tecla Dois do teclado numérico à tecla; retorne.
+  Se a tecla for a tecla Clear, atribua a Tecla Cinco do teclado numérico à tecla; retorne.
 
 Etapas para que se converta um lParam para uma localização:
-  Separe o lParam a um word e uma segunda word.
+  Separe o lParam a uma word e uma segunda word.
   Atribua a word à coordenada Y desta localização.
   Atribua a segunda word à coordenada X desta localização.
   Multiplique a localização pelo quantidade de twips/pixel .
@@ -1376,7 +1374,7 @@ Etapas para que se converta uma string para umas linhas des textos:
 Etapas para que se converta uma string para um UUID:
   Converta a string para uma string de caracteres amplos e anexe o caractere NULL nela.
   Processe "ole32.dll" "CLSIDFromString" com \Converte uma string gerada pela função StringFromCLSID de volta pro CLSID original.
-  \ Documentaçãp https://learn.microsoft.com/pt-br/windows/win32/api/combaseapi/nf-combaseapi-clsidfromstring  
+  \ Documentação https://learn.microsoft.com/pt-br/windows/win32/api/combaseapi/nf-combaseapi-clsidfromstring  
     O caractere inicial desta string de caracteres amplos [lpsz] \A representação da seqüência de caracteres do CLSID.
     e O endereçamento deste UUID. [pclsid] 
 
@@ -1402,13 +1400,13 @@ Etapas para que se converta uma URL para uma URL simplificada:
   Atribua 1 ao dwHostNameLength destes URL_COMPONENTS.
   Atribua 1 ao dwUrlPathLength destes URL_COMPONENTS.
   Atribua 1 ao dwExtraInfoLength destes URL_COMPONENTS.
-  Processe "wininet.dll" "InternetCrackUrlA" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wininet/nf-wininet-internetcrackurla
-  \"Racha" uma URL em suas partes componentes.
-    O caractere inicial desta URL [lpszUrl] \ Ponteiro para uma string que contém a URL canônica a ser quebrada.
-    e 0 [dwUrlLength] \ Tamanho da string lpszUrl, em TCHARs, ou zero se lpszUrl for uma string ASCIIZ.
-    e 0 [dwFlags] \ Controla a operação.
-    e O endereçamento destes URL_COMPONENTS [lpUrlComponents] \Pointer to a URL_COMPONENTS structure that receives the URL components.
-  Retornando um número. \Retorna TRUE se a função for bem-sucedida ou FALSE caso contrário.
+  Processe "wininet.dll" "InternetCrackUrlA" com \ Divide uma URL em suas partes componentes.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wininet/nf-wininet-internetcrackurla  
+    O caractere inicial desta URL [lpszUrl] 
+    e 0 [dwUrlLength]
+    e 0 [dwFlags]
+    e O endereçamento destes URL_COMPONENTS [lpUrlComponents]
+  Retornando um número.
   Converta o lpszScheme destes URL_COMPONENTS e o dwSchemeLength destes URL_COMPONENTS para o nome do protocolo desta URL simplificada.
   Converta o lpszHostName destes URL_COMPONENTS e o dwHostNameLength destes URL_COMPONENTS para o nome de host desta URL simplificada.
   Converta o lpszUrlPath destes URL_COMPONENTS e o dwUrlPathLength destes URL_COMPONENTS para o endereço de recurso desta URL simplificada.
@@ -1436,19 +1434,18 @@ Etapas para que se copie um evento para um segundo evento: \ mudar o "segunda" a
 
 Etapas para que se copie um gpBitmap Para um segundo gpBitmap: \verificar
   Se o gpBitmap for inexistente, esvazie o segundo gpBitmap; retorne.
-  Processe "gdiplus.dll" "GdipCloneBitmapAreaI" com \https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-bitmap-clone(int_int_int_int_pixelformat)
-    0 [x] \Valor longo que especifica a coordenada x do canto superior esquerdo do retângulo que especifica a parte deste bitmap a ser copiada.
-    e 0 [y] \Valor longo que especifica a coordenada y do canto superior esquerdo do retângulo que especifica a parte deste bitmap a ser copiada.
-    e A largura deste gpBitmap [width] \Valor longo que especifica a largura do retângulo que especifica a parte deste bitmap a ser copiada.
-    e A altura deste gpBitmap [height] \Valor longo que especifica a altura do retângulo que especifica a parte da imagem a ser copiada.
-    e 0 [format = PixelFormatDontCare]  \Valor inteiro longo que especifica o formato de pixel do novo bitmap.
-    \O valor 0 não especifica o formato do pixel.
-    \https://learn.microsoft.com/pt-br/windows/win32/gdiplus/-gdiplus-constant-image-pixel-format-constants
-    e O gpBitmap [*srcBitmap] \Ponteiro para o objeto Bitmap de origem.
-    e O endereçamento deste segundo gpBitmap. [**dstBitmap] \Ponteiro para uma variável DWORD que recebeu um ponteiro para o objeto Bitmap clonado.
-    \Este método retorna um ponteiro para o novo objeto Bitmap.
+  Processe "gdiplus.dll" "GdipCloneBitmapAreaI" com \ Cria um clone de um objeto Bitmap a partir das coordenadas e formato especificados
+  \ Documentação: ->https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-bitmap-clone(int_int_int_int_pixelformat)
+    0 [x] \ A coordenada x do canto superior esquerdo do retângulo  deste bitmap
+    e 0 [y] \ A coordenada y do canto superior esquerdo do retângulo deste bitmap
+    e A largura deste gpBitmap [width] \ A largura do retângulo deste bitmap 
+    e A altura deste gpBitmap [height] \ A altura do retângulo 
+    e 0 [format = PixelFormatDontCare]  \O formato de pixel do novo bitmap. O valor 0 não especifica o formato do pixel.
+    \ Consulte https://learn.microsoft.com/pt-br/windows/win32/gdiplus/-gdiplus-constant-image-pixel-format-constants
+    e O gpBitmap [*srcBitmap] \ objeto Bitmap de origem.
+    e O endereçamento deste segundo gpBitmap. [**dstBitmap] \ O objeto Bitmap clonado.
 
-Etapas para que se copie as propriedades of uma caixa de texto Para um segunda caixa de texto:
+Etapas para que se copie as propriedades of uma caixa de texto para um segunda caixa de texto:
   Se a caixa de texto for inexistente, retorne.
   Se o segunda caixa de texto for inexistente, retorne.
   Atribua a caixa desta caixa de texto à caixa desta segunda caixa de texto.
