@@ -106,14 +106,14 @@ Etapas para que se leia um endereço completo para um trecho:
     e 3 [dwCreationDisposition = OPEN_EXISTING] \ OPEN_EXISTING 3  Abre um arquivo ou dispositivo, apenas se existir.    
     e 0 [dwFlagsAndAttributes] \Os atributos e sinalizadores de arquivo ou dispositivo 
     e 0 [hTemplateFile] \Um identificador válido de um arquivo de modelo com o direito de acesso GENERIC_READ. Este parâmetro pode ser NULL.
-    devolvendo um número identificador. \Se a função for bem-sucedida, o valor de retorno será um identificador aberto para o arquivo, dispositivo, canal nomeado ou slot de correio especificado.
+    retornando um número identificador. \Se a função for bem-sucedida, o valor de retorno será um identificador aberto para o arquivo, dispositivo, canal nomeado ou slot de correio especificado.
     \Se a função falhar, o valor de retorno é INVALID_HANDLE_VALUE.
   Se o número identificador for -1 [INVALID_HANDLE_VALUE], atribua "Erro ao tentar abrir o arquivo: '" junto com o endereço completo seguido de "'." ao erro do fluxo de entrada/saída; retorne.
   Processe "kernel32.dll" "GetFileSize" com \ Recupera o tamanho do arquivo especificado, em bytes.
   \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-getfilesize  
     O número identificador [hFile] \ O número identificador do arquivo.
     e nil [lpFileSizeHigh] \ Dword de ordem superior que armazena o tamanho do arquivo. Pode ser NULL
-    devolvendo um tamanho. \ Se a função for bem-sucedida, o valor de retorno será a palavra dupla de ordem inferior do tamanho do arquivo e, 
+    retornando um tamanho. \ Se a função for bem-sucedida, o valor de retorno será a palavra dupla de ordem inferior do tamanho do arquivo e, 
     \se lpFileSizeHigh for diferente de NULL, a função colocará a palavra dupla de ordem superior do tamanho do arquivo na variável apontada por aquele parâmetro.
   Reaponte o caractere inicial deste trecho usando o tamanho.
   Atribua o caractere inicial deste trecho mais o tamanho menos 1 ao caractere final deste trecho.
@@ -124,7 +124,7 @@ Etapas para que se leia um endereço completo para um trecho:
     e O tamanho [nNumberOfBytesToRead] \ O número máximo de bytes a serem lidos.
     e O endereçamento dum número [lpNumberOfBytesRead] \ O número de bytes lidos ao usar um parâmetro hFile síncrono.   
     e 0 [lpOverlapped] \Um ponteiro para uma estrutura OVERLAPPED. Necessário se o parâmetro hFile foi aberto com FILE_FLAG_OVERLAPPED, caso contrário, pode ser NULL.
-    devolvendo o número. \Se a função for bem-sucedida, o valor de retorno será diferente de zero (VERDADEIRO).
+    retornando o número. \Se a função for bem-sucedida, o valor de retorno será diferente de zero (VERDADEIRO).
   Processe "kernel32.dll" "CloseHandle" com \Fecha um identificador de objeto aberto.
   \Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/handleapi/nf-handleapi-closehandle
     o número identificador.[hObject] \O identificador do arquivo aberto. 
@@ -183,7 +183,7 @@ Etapas para que se leia um arquivo para um trecho:
   \ Documentação: -. https://docs.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-getfilesize
     O arquivo [hFile] 
     e nil [lpFileSizeHigh] \ o tamanho do arquivo. Pode ser NULL 
-    devolvendo um tamanho. \ o valor de retorno é o tamanho do arquivo
+    retornando um tamanho. \ o valor de retorno é o tamanho do arquivo
   Reaponte o caractere inicial deste trecho usando o tamanho.
   Atribua o caractere inicial deste trecho mais o tamanho menos 1 ao caractere final deste trecho.
   Processe "kernel32.dll" "ReadFile" com \ Lê dados do arquivo especificado ou dispositivo de entrada/saída (E/S). 
@@ -194,7 +194,7 @@ Etapas para que se leia um arquivo para um trecho:
     e O endereçamento dum número [lpNumberOfBytesRead] \ Um ponteiro para a variável que recebe o número de bytes lidos ao usar um parâmetro hFile síncrono.
     e 0 [lpOverlapped] \ Necessário se o parâmetro hFile foi aberto com FILE_FLAG_OVERLAPPED, caso contrário, pode ser NULL.
     \ Documentação: -> https://docs.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-overlapped
-    devolvendo um número resultante. \Se a função for bem-sucedida, o valor de retorno será diferente de zero (VERDADEIRO).
+    retornando um número resultante. \Se a função for bem-sucedida, o valor de retorno será diferente de zero (VERDADEIRO).
   Se o número resultante for 0, atribua "Ocorreu um erro ao tentar ler o arquivo." ao erro do fluxo de entrada/saída; retorne.
 
 Etapas para que se obtenha a Bíblia;
@@ -281,7 +281,7 @@ Etapas para que se abra um arquivo usando um endereço completo:
     e 4 [dwCreationDisposition = OPEN_ALWAYS] \ OPEN_ALWAYS Abre um arquivo, sempre.
     e -2147483520 [dwFlagsAndAttributes = FILE_FLAG_WRITE_THROUGH ou FILE_ATTRIBUTE_NORMAL] 
     e 0 [hTemplateFile] \Ao abrir um arquivo existente, CreateFile ignora este parâmetro
-    devolvendo o arquivo. \Se a função falhar, o valor de retorno é -1 (INVALID_HANDLE_VALUE).
+    retornando o arquivo. \Se a função falhar, o valor de retorno é -1 (INVALID_HANDLE_VALUE).
   Se o arquivo for -1 [INVALID_HANDLE_VALUE], atribua "Erro ao abrir o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída; retorne.
 
 O módulo é uma estrutura com

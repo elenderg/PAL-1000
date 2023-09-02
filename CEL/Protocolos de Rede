@@ -13,7 +13,7 @@ Etapas para que se leia uma response string desde uma requisição WinHTTP:
       \ https://docs.microsoft.com/pt-br/windows/win32/winhttp/hinternet-handles-in-winhttp
       \WinHttpReceiveResponse deve ter sido chamado para este identificador e concluído antes de WinHttpQueryDataAvailable ser chamado.
       e O endereçamento deste tamanho [lpdwNumberOfBytesAvailable] \ Um ponteiro para uma variável que recebe o número de bytes disponíveis.
-      devolvendo um número resultante. \ Retorna TRUE se a função for bem-sucedida ou FALSE caso contrário.
+      retornando um número resultante. \ Retorna TRUE se a função for bem-sucedida ou FALSE caso contrário.
     Se o número resultante for 0 [FALSE], atribua "Erro. Não foi possível verificar a quantidade de dados disponíveis." ao erro do fluxo de entrada/saída; limpe a response string; pare.
     Atribua a quantidade de caracteres desta response string a uma quantidade de caracteres armazenados.
     Reaponte o caractere inicial desta response string usando a quantidade de caracteres armazenados mais o trecho tamanho.
@@ -25,7 +25,7 @@ Etapas para que se leia uma response string desde uma requisição WinHTTP:
       e O ponteiro [lpBuffer] \ Ponteiro para um buffer que recebe os dados lidos.
       e O trecho tamanho [dwNumberOfBytesToRead] \ valor que contém o número de bytes a serem lidos.
       e O endereçamento duma contagem [lpdwNumberOfBytesRead] \ Ponteiro para uma variável que recebe o número de bytes lidos.
-      devolvendo o número resultante. \ Retorna TRUE se for bem-sucedido ou FALSE caso contrário.
+      retornando o número resultante. \ Retorna TRUE se for bem-sucedido ou FALSE caso contrário.
     Se o número resultante for 0 [FALSE], atribua "Ocorreu um erro ao ler os dados da requisição WinHTTP." ao erro do fluxo de entrada/saída; limpe o response; pare.
     Atribua o ponteiro mais a contagem menos 1 ao caractere final desta response string.
     Se a contagem for 0, pare.
@@ -50,7 +50,7 @@ Etapas para que se leia uma URL para um trecho:
     \que não devem ser roteados por meio do proxy quando dwAccessType é definido como INTERNET_OPEN_TYPE_PROXY. 
     \Se dwAccessType não estiver definido como INTERNET_OPEN_TYPE_PROXY, este parâmetro será ignorado e deverá ser NULL.
     [e  dwFlags e] \ Opções -> verificar se não é isso que tá dando bug no monet.
-    devolvendo um número identificador da URL da internet. \ Retorna um identificador válido que o aplicativo passa para as funções WinINet subsequentes. 
+    retornando um número identificador da URL da internet. \ Retorna um identificador válido que o aplicativo passa para as funções WinINet subsequentes. 
     \Se InternetOpen falhar, ele retornará NULL.
   Se o número identificador da URL da internet for 0 [NULL], atribua "Erro. Não foi possível se conectar à internet. Verifique sua conexão" ao erro do fluxo de entrada/saída; retorne.
  \ internet abra URL
@@ -68,7 +68,7 @@ Etapas para que se leia uma URL para um trecho:
     \Se este parâmetro for -1L e lpszHeaders não for NULL, lpszHeaders será considerado terminado em zero (ASCIIZ) e o comprimento será calculado.
     e 0 [dwFlags] \ Opções extras
     e 0 [dwContext] \ Um ponteiro para uma variável que especifica o valor definido pelo aplicativo que é passado, junto com o identificador retornado, para qualquer função de retorno de chamada.
-    devolvendo um número identificador da URL. \ Retorna um identificador válido para a URL se a conexão for estabelecida com sucesso ou NULL se a conexão falhar.
+    retornando um número identificador da URL. \ Retorna um identificador válido para a URL se a conexão for estabelecida com sucesso ou NULL se a conexão falhar.
   Se o número identificador da URL for 0 [NULL], 
     Atribua "Erro. Não foi possível abrir a seguinte URL: " junto com o URL seguido de "." ao erro do fluxo de entrada/saída; 
     Processe "wininet.dll" "InternetCloseHandle" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wininet/nf-wininet-internetclosehandle
@@ -89,7 +89,7 @@ Etapas para que se leia uma URL para um trecho:
       e O endereçamento duma contagem [lpdwNumberOfBytesRead] \  Ponteiro para uma variável que recebe o número de bytes lidos. 
       \InternetReadFile define esse valor como zero antes de fazer qualquer trabalho ou verificação de erros.
       \ ver se está relacionado com Etapas para que se receive um trecho desde um socket:
-      devolvendo um número resultante. \ Retorna TRUE se for bem-sucedido ou FALSE caso contrário.
+      retornando um número resultante. \ Retorna TRUE se for bem-sucedido ou FALSE caso contrário.
     Se o número resultante for 0 [FALSE], atribua "Ocorreu um erro ao ler a seguinte URL: " junto com a URL seguido de "." ao erro do fluxo de entrada/saída; pare.
     Atribua o ponteiro mais a contagem menos 1 ao caractere final deste trecho.
     Se a contagem for 0, pare.
@@ -108,7 +108,7 @@ Etapas para que se receive o response string desde uma requisição WinHTTP:
   \ A função WinHttpReceiveResponse espera receber a resposta a uma solicitação HTTP iniciada por WinHttpSendRequest.
     O número identificador de requisição desta requisição WinHTTP [hRequest] \ O Identificador de HINTERNET retornado por WinHttpOpenRequest e enviado por WinHttpSendRequest.
     e 0 [lpReserved] \ este parâmetro é reservado e deve ser NULL.
-    devolvendo um número resultante. \ Retorna TRUE se for bem-sucedido ou FALSE caso contrário.
+    retornando um número resultante. \ Retorna TRUE se for bem-sucedido ou FALSE caso contrário.
   Se o número resultante for 0 [FALSE], atribua "A resposta da solicitação HTTP não foi bem sucedida" ao erro do fluxo de entrada/saída; retorne.
 
 Etapas para que se receive um trecho desde um socket:
@@ -129,7 +129,7 @@ Etapas para que se receive um trecho desde um socket:
       e 0 [flags] \Um conjunto de sinalizadores que influenciam o comportamento desta função. Veja as observações abaixo.
       \O parâmetro flags pode ser usado para influenciar o comportamento da invocação da função além das opções especificadas para o socket associado. 
       \A semântica desta função é determinada pelas opções de socket e o parâmetro flags.
-      devolvendo uma contagem. \ CONTAGEM
+      retornando uma contagem. \ CONTAGEM
       \Se nenhum erro ocorrer, recv retorna o número de bytes recebidos e o buffer apontado pelo parâmetro buf conterá esses dados recebidos. 
       \Se a conexão foi fechada normalmente, o valor de retorno é zero.
       \Caso contrário, um valor de SOCKET_ERROR é retornado
