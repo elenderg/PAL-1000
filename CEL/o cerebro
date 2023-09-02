@@ -253,54 +253,35 @@ Etapas para que se ajuste uma imagem (extraindo as caixas do gpBitmap):
 
 Etapas para que se ajuste espaçamento da fonte usando uma string:
   Se o quadro atual não for a área de impressão, retorne.
-  Processe "gdi32.dll" "SetTextCharacterExtra" com  \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-settextcharacterextra
-  \A função SetTextCharacterExtra define o espaçamento entre caracteres e adiciona espaço extra para cada célula de caractere na fonte selecionada, 
-  \incluindo o caractere de quebra,  quando o sistema grava uma linha de texto.
-    A área de impressão  [hDC]\ Um identificador para o contexto do dispositivo.
-    e 0. [extra]   \ A quantidade de espaço extra, em unidades lógicas, a ser adicionada a cada caractere. 
-    \quero traduzir esse comando como: Mande a área de impressão e o código 0 para a função "SetTextCharacterExtra" da biblioteca "gdi32.dll".
-  Processe "gdi32.dll" "GetCurrentObject" com  \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getcurrentobject
-  \A função GetCurrentObject retorna um identificador que identifica a caneta, canetinha, paleta, bitmap ou fonte atual 
-  \e a função GetObject inicializa uma estrutura contendo os atributos dum objeto. 
-  \Algumas impressoras fornecem canetas, pincéis e fontes residentes que podem ser usados para melhorar a velocidade de desenho em um aplicativo.
-    A área de impressão [hDC] \ Um identificador para o contexto do dispositivo.
-    e 6 [tipo OBJ_FONT]  \ O tipo de objeto a ser consultado. Este parâmetro pode ser vários valores.
-    \ OBJ_FONT -> Retorna a fonte selecionada no momento.
-  Retornando um número identificador. [h] \ Se a função for bem-sucedida, o valor de retorno é um identificador para o objeto especificado. 
-    \Se a função falhar, o valor de retorno será NULL.
-  Processe "gdi32.dll" "SelectObject" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-selectobject
-  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O memory canvas [hDC] \ Um identificador para o contexto do dispositivo.
-    e O número identificador. [h] \ Um identificador para o objeto a ser selecionado. Nesse caso é o número do comando anterior (a fonte selecionada no momento), retornado pelo GetCurrentObject acima
+  Processe "gdi32.dll" "SetTextCharacterExtra" com \ Define o espaçamento entre caracteres
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-settextcharacterextra
+    A área de impressão  [hDC]
+    e 0. [extra] 
+  Processe "gdi32.dll" "GetCurrentObject" com \ Retorna um identificador para o objeto 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getcurrentobject
+    A área de impressão [hDC] 
+    e 6 [tipo OBJ_FONT] \ OBJ_FONT -> Retorna a fonte selecionada no momento.
+  Retornando um número identificador. [h] 
+  Processe "gdi32.dll" "SelectObject" com \ Seleciona um objeto no contexto de dispositivo (DC) especificado.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-selectobject  
+    O memory canvas [hDC]
+    e O número identificador. [h] 
   Obtenha uma largura usando a string e o memory canvas.
-  Processe "gdi32.dll" "SelectObject" com 
-  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O memory canvas [hDC] \ Um identificador para o contexto do dispositivo.
-    e O null número da fonte.  [h] \ Um identificador para o objeto a ser selecionado. 
-    \Nesse caso é também é um número identificador de fonte, mas  este valor é o da função GetStockObject 
-    \O sistema oferece seis fontes de estoque. Uma fonte de estoque é uma fonte lógica que um aplicativo pode obter chamando a função GetStockObject e especificando a fonte solicitada. 
-    \Esse valor corresponde à ANSI_FIXED_FONT que especifica uma fonte monoespaçada baseada no conjunto de caracteres ANSI do Windows. Uma fonte Courier é normalmente usada.
+  Processe "gdi32.dll" "SelectObject" com   
+    O memory canvas [hDC] 
+    e O null número da fonte. [h] 
   Obtenha uma segunda largura usando a string e a área de impressão.
   Atribua a largura menos a segunda largura dividido pelo quantidade de caracteres desta string a um número.
-  Processe "gdi32.dll" "SetTextCharacterExtra" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-settextcharacterextra
-    \A função SetTextCharacterExtra define o espaçamento entre caracteres. 
-    \O espaçamento entre caracteres é adicionado a cada caractere, incluindo caracteres de quebra, quando o sistema grava uma linha de texto.
-    A área de impressão [hDC] \Um identificador para o contexto do dispositivo.
-    e O número. [extra] \A quantidade de espaço extra, em unidades lógicas, a ser adicionada a cada caractere. 
-    \Se o modo de mapeamento atual não for MM_TEXT, o parâmetro nCharExtra é transformado e arredondado para o pixel mais próximo.
+  Processe "gdi32.dll" "SetTextCharacterExtra" com a área de impressão [hDC] e o número. [extra] 
 
 Etapas para que se alinhe uma caixa de texto usando um alinhamento:
   Atribua o alinhamento ao alinhamento desta caixa de texto.
 
 Um alinhamento é uma string [centro, esquerda ou direita].
-
 Uma quantia é um número.
-
 Uma anchor é um position.
-
 Uma máscara de conjunção lógica é uma mask.
-
-Um ângulo é [composto de] uns precises degrees. [cujos valores variam ente 0 e 3599]
+Um ângulo é [composto de] uns graus. [cujos valores variam ente 0 e 3599]
 
 \ Proposta: Etapas para que se (adicione/insira/acrescente/posponha//etc) um trecho (para/em) [o (fim/final) de]  um arquivo;
 \acrescente
@@ -1276,8 +1257,8 @@ Etapas para que se converta um número para uma cifra hexadecimal:
 Etapas para que se converta um ponteiro para uma string:
   Converta o ponteiro para a string como uma cifra hexadecimal.
 
-Etapas para que se converta uns points para uns precises degrees:
-  Atribua o points times 3840 dividido por 3600 ao precises degrees.
+Etapas para que se converta uns points para uns graus:
+  Atribua o points times 3840 dividido por 3600 ao graus.
 
 Etapas para que se converta uma position para um posicionamento absoluto usando uma caixa de texto:
   Se a caixa de texto for inexistente, limpe o posicionamento absoluto; retorne.
@@ -1288,8 +1269,8 @@ Etapas para que se converta uma position para um posicionamento absoluto usando 
     Se o número da linha desta linha de texto for menor do que o número da linha desta position, adicione a quantidade de caracteres desta string desta linha de texto para o posicionamento absoluto; recomece.
   Adicione o número de coluna desta position para o posicionamento absoluto.
 
-Etapas para que se converta uns precises degrees para uns points:
-  Atribua os precises degrees times 3600 dividido por 3840 ao points.
+Etapas para que se converta uns graus para uns points:
+  Atribua os graus times 3600 dividido por 3840 ao points.
 
 Etapas para que se converta um texto de consulta para uma string:
   Limpe a string.
