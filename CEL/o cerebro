@@ -317,39 +317,23 @@ Etapas para que se posponha um trecho em um arquivo;
 Etapas para que se posponha um trecho para um arquivo;
 Etapas para que se acrescente um trecho para um arquivo:
   Limpe o erro do fluxo de entrada/saída.
-  Processe "kernel32.dll" "SetFilePointer" com \Esta função armazena o ponteiro do arquivo em dois valores LONG.
+  Processe "kernel32.dll" "SetFilePointer" com \ Armazena o ponteiro do arquivo em dois valores LONG.
   \Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-setfilepointer  
-  \Quando um arquivo é aberto, o Windows associa um ponteiro de arquivo com o fluxo padrão. 
-  \Esse ponteiro de arquivo é um valor de deslocamento que especifica o próximo byte a ser lido ou o local para receber o próximo byte escrito.
-    O arquivo [hFile]\ O número identificador do arquivo.
-    e 0 [lDistanceToMove] \ Distância 
-    e 0 [lpDistanceToMoveHigh] \Serve apenas para operações com 64 bits. Quando não é utilizado, esse valor deve ser 0 (NULL). 
-    e 2 [dwMoveMethod = FILE_END] \ O ponto de partida para o movimento do ponteiro do arquivo.
-    \ Este parâmetro pode ser um dos seguintes valores.
-    \0 = FILE_BEGIN ->  O ponto de partida é zero ou o início do arquivo.
-    \ 1 = FILE_CURRENT -> O ponto de partida é o valor atual do ponteiro do arquivo.
-    \ 2 = FILE_END -> O ponto de partida é a posição atual de fim de arquivo.
-  Retornando um número resultante.
-    \Se a função for bem-sucedida e lpDistanceToMoveHigh for NULL, o valor de retorno será o DWORD de ordem inferior do novo ponteiro de arquivo. 
-    \Obs: Se a função retornar qualquer valor que não seja -1 (INVALID_SET_FILE_POINTER), isso significa que a chamada para SetFilePointer foi bem-sucedida.
+  O arquivo [hFile]
+    e 0 [lDistanceToMove]
+    e 0 [lpDistanceToMoveHigh]
+    e 2 [dwMoveMethod = FILE_END]
+  Retornando um número resultante.\Se a função retornar -1 (INVALID_SET_FILE_POINTER), isso significa que a chamada para SetFilePointer não foi bem-sucedida.
   Se o número resultante for -1, atribua "Ocorreu um erro na hora de posicionar o ponteiro do arquivo." ao erro do fluxo de entrada/saída; retorne.
-    \ Se o ponteiro de arquivo for um valor negativo, a função falhará, o ponteiro de arquivo não será movido e o código retornado por GetLastError será ERROR_NEGATIVE_SEEK.
-  Processe "kernel32.dll" "WriteFile" com \ Essa função serve pra gravar dados no arquivo ou dispositivo de entrada / saída (E/S) especificado.
+  Processe "kernel32.dll" "WriteFile" com \ Gravar dados no arquivo ou dispositivo de entrada / saída (E/S) especificado.
   \Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-writefile  
-    O arquivo [hFile]  \ Um identificador para o arquivo ou dispositivo de E/S 
-    e O caractere inicial deste trecho [lpBuffer]  \ Um ponteiro para o buffer que contém os dados a serem gravados no arquivo ou dispositivo.
-    e A quantidade de caracteres deste trecho [nNumberOfBytesToWrite] \ O número de bytes a serem gravados no arquivo ou dispositivo.
-    \ Um valor 0 especifica uma operação de gravação nula. 
-    \O comportamento de uma operação de gravação nula depende do sistema de arquivos subjacente ou da tecnologia de comunicação.
+    O arquivo [hFile]
+    e O caractere inicial deste trecho [lpBuffer] 
+    e A quantidade de caracteres deste trecho [nNumberOfBytesToWrite]
     [Creio que seja preciso corrigir o texto abaixo]
-    e um [o] endereçamento dum número [lpNumberOfBytesWritten]  \Um ponteiro para a variável que recebe o número de bytes gravados ao usar um parâmetro hFile síncrono. 
-    \ WriteFile define esse valor como zero antes de fazer qualquer trabalho ou verificação de erro.
-    \ Use NULL para este parâmetro se esta for uma operação assíncrona para evitar resultados potencialmente errôneos.
-    \Este parâmetro pode ser NULL somente quando o próximo parâmetro [lpOverlapped] não for 0 (NULL).
-    e 0 [lpOverlapped]  \ utilizado somente quando se deseja gravar em outro lugar do arquivo, como por exemplo, no final. 
-    \ Se não for o caso, esse parâmetro pode ser 0 (NULL)
-  Retornando o número resultante. \ Se a função for bem-sucedida, o valor de retorno será diferente de 0 (VERDADEIRO).
-    \ Se a função falhar ou estiver sendo concluída de forma assíncrona, o valor de retorno será 0 (FALSO). 
+    e um [o] endereçamento dum número [lpNumberOfBytesWritten]
+    e 0 [lpOverlapped]
+  Retornando o número resultante.
   Se o número resultante for 0, atribua "Ocorreu um erro na hora de salvar o arquivo." ao erro do fluxo de entrada/saída; retorne.
 
 \acrescente
@@ -478,17 +462,17 @@ Etapas para que se acrescente zeros para uma string até chegar em um número:
   Acrescente "0" para a string.
   Recomece. [percorra novamente o código acima]
 
-Etapas para que se associe um ponteiro usando um quantidade de bytes:  \Assinale? Institua? Instale? Instaure? Crie? Inaugure? Monte? Componha? Constitua? Designe? Declare?
+Etapas para que se associe um ponteiro usando um quantidade de bytes:  \ Aloque memória RAM para um ponteiro
   Se a quantidade de bytes for 0, esvazie o ponteiro; retorne.
   Preserve a quantidade de bytes.
   Arredonde a quantidade de bytes para cima usando a próxima potência de dois.
-  Processe "kernel32.dll" "HeapAlloc" com \ https://learn.microsoft.com/pt-br/windows/win32/api/heapapi/nf-heapapi-heapalloc
-  \Aloca um bloco de memória de um heap. A memória alocada não é móvel.
-    O endereço heap [hHeap] \ Um identificador para o heap do qual a memória será alocada. Esse identificador é retornado pela função HeapCreate ou GetProcessHeap .
-    e 8 [dwFlags ] \As opções de alocação de heap. A especificação de qualquer um desses valores substituirá o valor correspondente especificado quando o heap foi criado com HeapCreate . 
-    [8 = HEAP_ZERO_MEMORY]  \A memória alocada será inicializada em zero. Caso contrário, a memória não é inicializada para zero.
-    e A quantidade de bytes [dwBytes] \O número de bytes a serem alocados.
-  Retornando o ponteiro. [LPVOID ] \Se a função for bem-sucedida, o valor de retorno é um ponteiro [que aponta] para o bloco de memória alocado.
+  Processe "kernel32.dll" "HeapAlloc" com \ Aloca um bloco de memória de um heap. 
+  \ Documentação: ->  https://learn.microsoft.com/pt-br/windows/win32/api/heapapi/nf-heapapi-heapalloc  
+    O endereço heap [hHeap]
+    e 8 [dwFlags ]
+    [8 = HEAP_ZERO_MEMORY]
+    e A quantidade de bytes [dwBytes]
+  Retornando o ponteiro. [LPVOID ]
   Se o ponteiro não for inexistente, adicione 1 para a contagem do heap; retorne.
 
 Etapas para que se role automaticamente uma caixa de texto usando uma localização e um detector:
@@ -508,42 +492,42 @@ Etapas para que se role automaticamente uma caixa de texto usando uma localizaçã
   Role a caixa de texto usando o valor da diferença.
   Aguarde por 50 milissegundos.
 
-\Um baseline é um número. \ variável não utilizada
+Um bipe é um número.
 
+Etapas para que se toque um bipe; 
+Etapas para que se reproduza um bipe; 
+Etapas para que se emita um bipe:
+  Atribua 0 ao bipe.
+  Processe "user32.dll" "MessageBeep" com \ Reproduz um som waveform
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-messagebeep
+  o bipe. [uType]\O valor 0 é o som especificado como o som Beep padrão do Windows.
+  Processe "user32.dll" "MessageBeep" com o bipe.
 
-Etapas para que se faça bi-bi:
-  Processe "user32.dll" "MessageBeep" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-messagebeep
-  \Reproduz um som waveform. O som waveform para cada tipo de som é identificado por uma entrada no registro.
-  0. [uType] \O som a ser reproduzido. Os sons são definidos pelo usuário por meio do aplicativo de painel de controle de Som e, a seguir, armazenados no registro.
-  \O valor 0 é o som especificado como o som Beep padrão do Windows.
-  Processe "user32.dll" "MessageBeep" com 
-  0.
+Etapas para que se inicie uma folha do modo paisagem:
+  Faça a folha do modo paisagem 1056 pixels por 816 pixels. \ Configure a página no modo paisagem usando as dimensões de 1056 pixels [de largura por 816 pixels de altura.
+  Inicie uma folha usando a folha do modo paisagem.
 
-Etapas para que se inicie uma folha modo paisagem:
-  Faça a folha modo paisagem 1056 pixels por 816 pixels.
-  Inicie uma folha com a folha modo paisagem.
-
-Etapas para que se inicie uma folha modo retrato:
-  Faça a folha modo retrato 816 pixels por 1056 pixels.
+Etapas para que se inicie uma folha do modo retrato:
+  Faça a folha do modo retrato 816 pixels por 1056 pixels.
   \para referência, uma folha A4 possui 3508 x 2480 px, praticamente 10x maio
-  Inicie uma folha com a folha modo retrato.
+  Inicie uma folha usando a folha do modo retrato.
 
 Etapas para que se inicie a impressão:
   Inicialize a área de impressão.
   Atribua a magnitude dum DOCINFO ao cbSize deste DOCINFO.
   Atribua o caractere inicial deste nome deste módulo ao lpszDocName deste DOCINFO.
-  Processe "gdi32.dll" "StartDocA" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-startdoca
-  \A função StartDoc inicia um trabalho de impressão.
-    A área de impressão [hDC] \Um identificador para o contexto do dispositivo para o trabalho de impressão.
-    e O endereçamento deste DOCINFO. [*lpdi] \Um ponteiro para uma estrutura DOCINFO contendo o nome do arquivo de documento e o nome do arquivo de saída.
+  Processe "gdi32.dll" "StartDocA" com \ Inicia uma nova impressão.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-startdoca  
+    A área de impressão [hDC] 
+    e O endereçamento deste DOCINFO. [*lpdi] 
 
 Etapas para que se inicie uma folha:
-  Inicie a folha como uma folha modo retrato.
+  Inicie a folha como uma folha do modo retrato.
 
 Um título de índice remissivo é uma string.
 
 Etapas para que se inicie uma folha usando um título de índice remissivo:
-  Inicie uma folha modo retrato usando o título de índice remissivo.
+  Inicie uma folha do modo retrato usando o título de índice remissivo.
 
 A Bíblia é uma lista com uns versículos.
 
@@ -587,14 +571,12 @@ Etapas para que se avance um percorredor por um número:
   Adicione o número para o caractere inicial deste segmento final deste percorredor.
 
 Etapas para que se assobie:
-  Processe "kernel32.dll" "Beep" com \ https://learn.microsoft.com/pt-br/windows/win32/api/utilapiset/nf-utilapiset-beep
-    \Gera tons simples no alto-falante. A função é síncrona; ele executa uma espera alertável e não retorna o controle para seu chamador até que o som termine.
-    220 [dwFreq] \A frequência do som, em hertz. Este parâmetro deve estar no intervalo de 37 a 32.767 (0x25 a 0x7FFF).
-    e 200. [dwDuration] \A duração do som, em milissegundos
+  Processe "kernel32.dll" "Beep" com \ Gera tons simples no alto-falante. 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/utilapiset/nf-utilapiset-beep  
+    220 [dwFreq] 
+    e 200. [dwDuration] 
 
 Uma quantidade de bytes é uma contagem.
-
-
 
 Etapas para que se capitalize algum linhas des textos selecionadas em uma caixa de texto:
   Se a caixa de texto for inexistente, retorne.
@@ -854,12 +836,10 @@ Etapas para que se limpe umas listas:
 Etapas para que se limpe uma word:
   Atribua 0 ao word.
 
-Etapas para que se close um arquivo:
-  Processe "kernel32.dll" "CloseHandle" com \ https://learn.microsoft.com/pt-br/windows/win32/api/handleapi/nf-handleapi-closehandle
-  \Fecha um identificador de objeto aberto.
-  \Em geral, CloseHandle invalida o identificador do objeto especificado, diminui a contagem do identificador do objeto e executa verificações de retenção do objeto. 
-  \Depois que o último identificador para um objeto é fechado, o objeto é removido do sistema. .
-    O arquivo. [hObject] \Um identificador válido para um objeto aberto.
+Etapas para que se feche um arquivo:
+  Processe "kernel32.dll" "CloseHandle" com \ Invalida um identificador de um objeto aberto.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/handleapi/nf-handleapi-closehandle
+  O arquivo. [hObject] 
 
 Etapas para que se avise:
   Toque o som de aviso.
@@ -7798,7 +7778,7 @@ Um categoria é uma string.
 
 Um lParam é um número.
 
-Um folha modo paisagem é uma folha.
+Um folha do modo paisagem é uma folha.
 
 O tamanho de letra grande é um tamanho da letra.
 
