@@ -425,132 +425,69 @@ Uma requisição WinHTTP é uma lista com
   Um número identificador de conexão,
   Um número identificador de requisição.
 
-Um WSADATA é uma estrutura com
-  \A estrutura WSADATA contém informações sobre a implementação do Windows Sockets.
+Um WSADATA é uma estrutura com \Contém informações sobre a implementação do Windows Sockets API Data
+\ Documentação : -> https://learn.microsoft.com/pt-br/windows/win32/api/winsock/ns-winsock-wsadata
   Uma word denominada wVersion,
-  \ A versão da especificação do Windows Sockets que o Ws2_32.dll espera que a rotina use. 
-  \Nessa word, O byte de ordem superior especifica o número da versão secundária; 
-  \O byte de ordem inferior especifica o número da versão principal.
   Uma word denominada wHighVersion,
-  \ A versão mais recente da especificação do Windows Sockets que o Ws2_32.dll pode oferecer suporte. 
-  \O byte de alta ordem especifica o número da versão secundária; o byte de ordem inferior especifica o número da versão principal.
-  \Possui o mesmo valor que o membro wVersion caso a versão solicitada no parâmetro wVersionRequested 
-  \(que é passado para a função WSAStartup) seja a versão mais alta da especificação Windows Sockets que o Ws2_32.dll pode suportar.
   257 bytes denominados szDescription,
-  \Uma string ASCII terminada em NULL na qual o Ws2_32.dll copia uma descrição da implementação do Windows Sockets. 
-  \O texto (até 256 caracteres de comprimento) pode conter qualquer caractere, exceto caracteres de controle e de formatação. 
-  \O uso mais provável que um aplicativo teria para este membro é exibi-lo (possivelmente truncado) em uma mensagem de status.
   127 bytes denominados szSystemStatus,
-  \ Uma string ASCII terminada em NULL na qual o Ws2_32.dll copia o status ou as informações de configuração relevantes. 
-  \O Ws2_32.dll deve usar este parâmetro apenas se as informações forem úteis para o usuário ou equipe de suporte.
-  \ Este membro não deve ser considerado uma extensão do parâmetro szDescription .
   Uma word [unsigned] denominado iMaxSockets,
-  \O número máximo de soquetes que podem ser abertos. Este membro deve ser ignorado para Windows Sockets versão 2 e posterior.
-  \O membro iMaxSockets é mantido para compatibilidade com a especificação 1.1 do Windows Sockets, mas não deve ser usado ao desenvolver novos aplicativos. 
-  \Nenhum valor único pode ser apropriado para todos os provedores de serviços subjacentes. 
-  \A arquitetura do Windows Sockets mudou na versão 2 para oferecer suporte a vários provedores, e a estrutura WSADATA não se aplica mais à pilha de um único fornecedor.
   Uma word [unsigned] denominado iMaxUdpDg,
-  \O tamanho máximo da mensagem de datagrama. Este membro é ignorado para Windows Sockets versão 2 e posterior.
-  \O membro iMaxUdpDg é mantido para compatibilidade com a especificação 1.1 do Windows Sockets, mas não deve ser usado ao desenvolver novos aplicativos. 
-  \A arquitetura do Windows Sockets mudou na versão 2 para oferecer suporte a vários provedores, e a estrutura WSADATA não se aplica mais à pilha de um único fornecedor. 
-  \Para o tamanho máximo real da mensagem específico para um determinado provedor de serviços do Windows Sockets e tipo de soquete, 
-  \os aplicativos devem usar getsockopt para recuperar o valor da opção SO_MAX_MSG_SIZE após a criação de um soquete.
   Um ponteiro denominado lpVendorInfo.
-  \Um ponteiro para informações específicas do fornecedor. 
-  \Este membro deve ser ignorado para Windows Sockets versão 2 e posterior.
-  \O membro lpVendorInfo é mantido para compatibilidade com a especificação 1.1 do Windows Sockets. 
-  \A arquitetura do Windows Sockets mudou na versão 2 para oferecer suporte a vários provedores, e a estrutura WSADATA não se aplica mais à pilha de um único fornecedor. 
-  \Os aplicativos que precisam acessar informações de configuração específicas do fornecedor devem usar getsockopt para recuperar o valor da opção PVD_CONFIG para informações específicas do fornecedor.
 
-Um PROCESS_INFORMATION é uma estrutura com
-  \ https://learn.microsoft.com/pt-br/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_information
+Um PROCESS_INFORMATION é uma estrutura com \ Contém informações sobre um processo recém-criado. Usado com a função CreateProcess
+\ Documentação : -> https://learn.microsoft.com/pt-br/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_information
   Um número identificador denominado hProcess,
   Um número identificador denominado hThread,
   Um número denominado dwProcessId,
   Um número denominado dwThreadId.
   
-Um LOGBRUSH é uma estrutura com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-logbrush
-  \ A estrutura LOGBRUSH define o estilo, a cor e o padrão de uma canetinha. 
+Um LOGBRUSH é uma estrutura com \ Define o estilo, a cor e o padrão de um pincel físico (brush). 
+\ Documentação : -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-logbrush
 \É usado pelas funções CreateBrushIndirect e ExtCreatePen.
-  Um número denominado lbStyle, \O estilo da canetinha. Os valores vão de 0 a 8.
-  Um código da cor denominado lbColor, \A cor na qual a cor da canetinha deve ser desenhado. 
-  \O valor de lbColor deve ser 0 ou 1.
-  \ 0 indica que a tabela de cores consiste em uma matriz de índices de 16 bits na paleta lógica atual.
-  \ 1 indica que a tabela de cores contém valores RGB literais.
-  \Se lbStyle for igual a 1 (BS_HOLLOW) ou (BS_PATTERN), lbColor será ignorado.
-  \Se lbStyle for  igual a 5(BS_DIBPATTERN) ou 6 (BS_DIBPATTERNPT), então 
-  \ a word de ordem inferior de lbColor irá especificar 
-  \se os membros bmiColors da estrutura BITMAPINFO contêm valores explícitos de vermelho, verde, azul (RGB) ou índices na paleta lógica atual.
-  \Se lbStyle for 2 (BS_HATCHED) ou 0 (BS_SOLID), lbColor será um valor de cor COLORREF. 
-  Um número denominado lbHatch. \Um estilo hachurado. O estilo depende do valor de  lbStyle.
-  \ Se lbStyle for 0 ou 1 esse valor será ignorado
-  \Se lbStyle for 2 (BS_HATCHED) então lbHatch vai especificar o estilo de rachurado, podendo ser um valord e 0 a 5
-  \Se lbStyle for 3 (BS_PATTERN) então lbHatch vai vai ser um número identificador de um bitmap
-  \Se lbStyle for 5 (BS_DIBPATTERN) então lbHatch vai ser um número identificador de uma packed DIB
-  \Uma canetinha de padrão definido por uma especificação de bitmap independente de dispositivo (DIB).
-  \Se lbStyle for 6 (BS_DIBPATTERNPT) então lbHatch vai ser um  ponteiro para uma packed DIB
+  Um número denominado lbStyle, 
+  Um código da cor denominado lbColor, 
+  Um número denominado lbHatch. 
   
-Um FILETIME é uma estrutura com \ https://learn.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-filetime
-\Contém um valor de 64 bits que representa o número de intervalos de 100 nanossegundos desde 1º de janeiro de 1601 (UTC).
+Um FILETIME é uma estrutura com \ Contém o número de intervalos de 100 nanossegundos desde 1º de janeiro de 1601 (UTC). - 64 bits
+\ Documentação : -> https://learn.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-filetime
   Um número denominado dwLowDateTime, \A parte de ordem inferior do tempo do arquivo.
   Um número denominado dwHighDateTime. \A parte de ordem superior do tempo do arquivo.
 
-Um DOCINFO é uma estrutura com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-docinfoa
-\A estrutura DOCINFO contém os nomes dos arquivos de entrada e saída e outras informações usadas pela função StartDoc.
-  Um número denominado cbSize, \O tamanho, em bytes, da estrutura.
-  Um ponteiro denominado lpszDocName, \ Ponteiro para uma string terminada em nulo que especifica o nome do documento.
-  Um ponteiro denominado lpszOutput, \Ponteiro para uma string terminada em nulo que especifica o nome de um arquivo de saída. 
-  \Se este ponteiro for NULL, a saída será enviada ao dispositivo identificado pelo número identificador de contexto do dispositivo que foi passado para a função StartDoc.
-  Um ponteiro denominado lpszDatatype, \Ponteiro para uma string terminada em nulo que especifica o tipo de dados usados para registrar o trabalho de impressão. 
-  \Os valores corretos dessa variável podem ser obtidos chamando EnumPrintProcessorDatatypes e podem incluir valores como raw, emf ou XPS_PASS. 
-  \Esta variável pode ser NULL. Observe que o tipo de dados solicitado pode ser ignorado.
-  Um número denominado fwType. \Especifica informações adicionais sobre o trabalho de impressão. 
-  \Este membro pode ser 0, 1 (DI_APPBANDING) ou 2 (DI_ROPS_READ_DESTINATION)
+Um DOCINFO é uma estrutura com \ Contém os nomes dos arquivos de entrada e saída e outras informações usadas pela função StartDoc.
+\ Documentação : -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-docinfoa
+  Um número denominado cbSize, 
+  Um ponteiro denominado lpszDocName, 
+  Um ponteiro denominado lpszOutput, 
+  Um ponteiro denominado lpszDatatype, 
+  Um número denominado fwType. 
 
 
-Um BitmapData é uma estrutura com \ https://learn.microsoft.com/pt-br/dotnet/api/system.drawing.imaging.BitmapData?view=dotnet-plat-ext-6.0
-\Especifica os atributos de uma imagem bitmap. 
-  Uma Largura, \ A largura em pixels do objeto Bitmap. Isso também pode ser considerado como o número de pixels em uma linha de varredura.
-  Uma Altura, \ A altura em pixels do objeto Bitmap. Também conhecido como o número de linhas de varredura.
-  Um número denominado Stride, \a largura da distância (também chamada de largura de verificação) do objeto Bitmap.
-  \A distância é a largura de uma única linha de pixels (uma linha de varredura), arredondada para um limite de quatro bytes. 
-  \Se a distãncia for positiva, o bitmap é de cima para baixo. Se a distância for negativo, o bitmap é ascendente.
-  Um número denominado PixelFormat, \O formato das informações de pixel no objeto Bitmap.
-  \O formato define quantos bits de memória são necessários para armazenar as informações de cor de um único pixel.
-  Um ponteiro denominado Scan0, \o endereço dos primeiros dados de pixel no bitmap. Isso também pode ser considerado a primeira linha de varredura no bitmap.
-  Um número denominado Reserved. \Reservado. Não use.
+Um BitmapData é uma estrutura com \Especifica os atributos de uma imagem bitmap. 
+\ Documentação : -> https://learn.microsoft.com/pt-br/dotnet/api/system.drawing.imaging.BitmapData?view=dotnet-plat-ext-6.0
+  Uma largura,
+  Uma altura, 
+  Um número denominado Stride, 
+  Um número denominado PixelFormat, 
+  Um ponteiro denominado Scan0, 
+  Um número denominado Reserved. 
 
-Um PAINTSTRUCT é uma estrutura com \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/ns-winuser-paintstruct
-\A estrutura PAINTSTRUCT contém informações para um aplicativo. 
-\Essas informações podem ser usadas para pintar a área do cliente de uma janela pertencente a esse aplicativo.
-  Um hDC denominado hDC, \Um identificador para o display de contexto do dispositivo a ser usado para pintura.
-  Um número denominado fErase, \Indica se o fundo deve ser apagado. Este valor é diferente de zero se o aplicativo deve apagar o plano de fundo. 
-  \O aplicativo é responsável por apagar o fundo se uma classe de janela for criada sem uma canetinha de fundo. 
-  \Para obter mais informações, consulte a descrição do membro hbrBackground da estrutura WNDCLASS.
-  Uma caixa denominado rcPaint, \Uma estrutura RECT que especifica os cantos superior esquerdo e inferior direito do retângulo em que a pintura é solicitada, 
-  \em unidades de dispositivo relativas ao canto superior esquerdo da área do cliente.
-  Um número denominado fRestore, \Reservado; usado internamente pelo sistema.
-  Um número denominado fIncUpdate, \Reservado; usado internamente pelo sistema.
-  32 bytes. \rgbReserved -.Reservado; usado internamente pelo sistema.
+Um PAINTSTRUCT é uma estrutura com \ Contém informações para pintar a área do cliente de uma janela
+\ Documentação : -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/ns-winuser-paintstruct
+  Um hDC denominado hDC, 
+  Um número denominado fErase, 
+  Uma caixa denominado rcPaint, 
+  Um número denominado fRestore, 
+  Um número denominado fIncUpdate, 
+  32 bytes denominados rgbReserved.
 
-Uma MSG é uma estrutura com \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/ns-winuser-MSG
-\Contém informações de mensagem da fila de mensagens de um encadeamento (thread).
-  Uma janela do programa denominado hwnd, \Um identificador para a janela cujo procedimento de janela recebe a mensagem. 
-  \Esta variável é NULL quando a mensagem é uma mensagem de thread.
-  Um número denominado message, \uint -> O identificador da mensagem. 
-  \Os aplicativos só podem usar a word de ordem inferior; a word de ordem superior é reservada pelo sistema.
-  Um wParam denominado wParam, \Informações adicionais sobre a mensagem. O significado exato depende do valor da variável message.
-  Um lParam denominado lParam, \Informações adicionais sobre a mensagem. O significado exato depende do valor da variável message.
-  Um número denominado time, \dword -> A hora em que a mensagem foi postada.
-  Uma localização denominado pt. \point -. A posição do cursor, em coordenadas da tela, quando a mensagem foi postada.
-  \Um número denominado lPrivate. \dword
-
-
-
-
-
-
-
-
-
+Uma MSG é uma estrutura com \Contém informações de mensagem da fila de mensagens de um encadeamento (thread).
+\ Documentação : -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/ns-winuser-MSG
+  Uma janela do programa denominado hwnd, 
+  Um número denominado message, 
+  Um wParam denominado wParam, 
+  Um lParam denominado lParam, 
+  Um número denominado time,
+  Uma localização denominado pt, \point -. A posição do cursor, em coordenadas da tela, quando a mensagem foi postada.
+  Um número denominado lPrivate. \ não acessível
 

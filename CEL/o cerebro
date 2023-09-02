@@ -7612,56 +7612,47 @@ Etapas para que se inicialize um talker:
     e O endereçamento deste IID [riid] 
     e O endereçamento deste talker.[*ppv] 
 
-Etapas para que se inicialize a janela do programa: \\ para inicializar a janela
+Etapas para que se inicialize a janela do programa: 
   Atribua a magnitude [tamanho em bytes] duma WNDCLASS [estrutura] ao cbSize desta classe da janela.
-  Atribua 40 [CS_OWNDC + CS_DBLCLKS] ao style desta classe da janela.
-  \O valor CS_OWNDC aloca um contexto de dispositivo exclusivo para cada janela da classe.
-  \O valor CS_DBLCLKS permite que o windows informe ao programa que aquele é um clique duplo (ao invés de dois cliques separados)
+  Atribua 40 [CS_OWNDC + CS_DBLCLKS] ao style desta classe da janela. \ Consulte https://learn.microsoft.com/pt-br/windows/win32/winmsg/window-class-styles
   Point o lpfnWndProc desta classe da janela para rotina handle algum message com um janela do programa um message número um wParam e um lParam.
-  \Isso define o procedimento da classe duma janela como sendo WndProc
-  \LPARAM é um typedef para um LONG_PTR que é um número inteiro (32 bits com sinal) no win32 e __int64 (64 bits com sinal) no x86_64.
-  \WPARAM é um typedef para um UINT_PTR que é um número (32 bits sem sinal) no win32 e __int64 (64 bits sem sinal) no x86_64.
+  \ Define o procedimento da classe da janela como sendo WndProc
   Atribua o número identificador deste módulo ao hInstance desta classe da janela.
   Atribua o caractere inicial deste nome deste módulo ao lpszClassName desta classe da janela.
-  Processe "user32.dll" "RegisterClassExA" \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-registerclassexa
-  \Registra uma classe de janela para uso subsequente em chamadas para a função CreateWindow ou CreateWindowEx.
-  \Antes de criar uma janela, você deve registrar uma classe pra essa janela chamando a função RegisterClass.
-  com o endereçamento desta classe da janela. [*unnamedParam1] \Esta função requer um único parâmetro, que é um ponteiro [que aponta] para uma estrutura do tipo WNDCLASS.
-  \Você deve preencher a estrutura com os valores apropriados antes de passá-la para a função.
-  Processe "user32.dll" "CreateWindowExA" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-createwindowexa
-  \Cria uma janela sobreposta, pop-up ou filha com um estilo de janela estendida; caso contrário, essa função é idêntica à função CreateWindow. 
-  \Para obter mais informações sobre como criar uma janela e para obter descrições completas dos outros parâmetros de CreateWindowEx, consulte 
+  Processe "user32.dll" "RegisterClassExA" \Registra uma classe de janela. Usada como parâmetro para a função CreateWindow
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-registerclassexa  
+  \Antes de criar uma janela, você deve registrar uma classe para a janela chamando a função RegisterClass.
+  com o endereçamento desta classe da janela. [*unnamedParam1] 
+  Processe "user32.dll" "CreateWindowExA" com \ Cria a janela
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-createwindowexa  
   \https://learn.microsoft.com/pt-br/windows/desktop/api/winuser/nf-winuser-createwindowa 
-    0 [dwExStyle] \ o estilo opcional da janela, como transparências por exemplo. 
-    \Veja mais detalhes em https://learn.microsoft.com/pt-br/windows/win32/winmsg/extended-window-styles
-    e O caractere inicial deste nome deste módulo [lpClassName]  \O nome da classe da janela
-    e O caractere inicial deste nome deste módulo  [lpWindowName] \O texto do título da janela
-    e 2147483648 [dwStyle]  [-2147483648 = WS_POPUP 0x80000000] \\  aqui define o tipo da janela. Use valores em decimal;  
+    0 [dwExStyle] \ Consulte https://learn.microsoft.com/pt-br/windows/win32/winmsg/extended-window-styles
+    e O caractere inicial deste nome deste módulo [lpClassName] \ O nome da classe da janela
+    e O caractere inicial deste nome deste módulo  [lpWindowName] \ O texto do título da janela
+    e 2147483648 [dwStyle]  [-2147483648 = WS_POPUP 0x80000000] \O tipo da janela. 
     [13565952  WS_OVERLAPPEDWINDOW 0x00CF0000]  
-    \para isso Converta os valores hexadecimais da listagem  https://www.autoitscript.com/autoit3/docs/appendix/GUIStyles.htm para decimal;
-    \outra opção mais fácil é usar o site https://www.magnumdb.com/
-    \ O valor na documentação do windows está em hexadecimal (ou em string), mas esse compilador usa números inteiros (longint). 
-    \ Para colocar a barra padrão, use o valor 13565952
-    e 0 [x] \posição horizontal inicial da janela
-    e 0 [y] \posição vertical inicial da janela
-    e A pixel largura desta tela [nWidth] \ A largura da janela em pixels;
-    e A pixel altura desta tela  [nHeight] \ A altura da janela em pixels
-    e 0 [hWndParent] \ opcional. Informa o número identificador do controle pai da janela (se existir) ou da janela em si
-    e 0 [hMenu] \ Um identificador para um menu
-    e O número identificador deste módulo [hInstance] \ Um identificador para a instância do módulo a ser associado à janela.
-    e 0. [lpParam] \ aqui é um ponteiro que passa uma informação extra pra janela. Usamos um valor nulo porque não precisamos passar mais nenhuma informação.
-  Processe "user32.dll" "ShowWindow" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-showwindow
-  \Define o estado de exibição da janela especificada.
-    A janela principal do programa [hWnd] \Um identificador da janela.
+    \ Para descobrir o tipo da janela, procure os valores da listagem https://www.autoitscript.com/autoit3/docs/appendix/GUIStyles.htm 
+    \ Ou no site https://www.magnumdb.com/ . Para uma janela padrão, use o valor 13565952
+    e 0 [x] 
+    e 0 [y] 
+    e A pixel largura desta tela [nWidth] 
+    e A pixel altura desta tela  [nHeight] 
+    e 0 [hWndParent] 
+    e 0 [hMenu] 
+    e O número identificador deste módulo [hInstance] 
+    e 0. [lpParam] 
+  Processe "user32.dll" "ShowWindow" com \Define o estado de exibição da janela especificada.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-showwindow
+    A janela principal do programa [hWnd] 
     e 1 [nCmdShow = SW_SHOWNORMAL]. \Controla como a janela deve ser exibida.
     \SW_SHOWNORMAL Ativa e exibe uma janela. Se a janela for minimizada ou maximizada, o sistema a restaurará para seu tamanho e posição originais. 
     \Um aplicativo deve especificar este sinalizador ao exibir a janela pela primeira vez.
 
 Etapas para que se inicialize winsock:
-  Processe "ws2_32.dll" "WSAStartup" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-wsastartup
-  \A função WSAStartup inicia o uso da DLL Winsock por um processo.
-    2 [wVersionRequired] \ a versão do Windows Sockets
-    e O endereçamento dum wsadata. [lpWSAData] \ Um ponteiro para a estrutura de dados WSADATA que deve receber detalhes da implementação do Windows Sockets.
+  Processe "ws2_32.dll" "WSAStartup" com \ Inicia o uso da DLL Winsock por um processo.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-wsastartup  
+    2 [wVersionRequired] 
+    e O endereçamento dum WSADATA. [lpWSAData] 
 
 Um input é um evento.
 
