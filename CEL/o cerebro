@@ -1663,7 +1663,7 @@ Etapas para que se crie um crypt session com uma passphrase string:
     e 0 [hKey] \A chave para o hash é passada neste parâmetro. Para algoritmos não chaveados, este parâmetro deve ser definido como zero.
     e 0 [dwFlags] \O seguinte valor de sinalizador é definido:
     \Valor CRYPT_SECRETDIGEST (0x00000001)  Significado: Este sinalizador não é usado.
-    e o endereçamento deste HCRYPTHASH deste crypt session [*phHash] \O endereço para o qual a função copia um identificador para o novo objeto hash.
+    e o endereçamento deste hCryptHash deste crypt session [*phHash] \O endereço para o qual a função copia um identificador para o novo objeto hash.
   Retornando o número resultante. \Se a função for bem-sucedida, ela retornará TRUE.
     \Se a função falhar, ele retornará FALSE.
   Se o número resultante for 0, atribua "Erro. Não foi possível criar o hash da senha." ao erro do fluxo de entrada/saída; destrua o crypt session; retorne.
@@ -1671,7 +1671,7 @@ Etapas para que se crie um crypt session com uma passphrase string:
   Processe "advapi32.dll" "CryptHashData" com \ https://docs.microsoft.com/pt-br/windows/win32/api/wincrypt/nf-wincrypt-crypthashdata
     \A função CryptHashData adiciona dados a um objeto hash especificado. 
     \ Esta função e CryptHashSessionKey podem ser chamadas várias vezes para calcular o hash de fluxos de dados longos ou descontínuos.
-    O HCRYPTHASH deste crypt session [hHash] \O número dentificador do objeto hash.
+    O hCryptHash deste crypt session [hHash] \O número dentificador do objeto hash.
     e O caractere inicial desta passphrase [*pbData] \Um ponteiro para um buffer que contém os dados a serem adicionados ao objeto hash.
     e A quantidade de caracteres desta passphrase [dwDataLen] \Número de bytes de dados a serem adicionados. 
     \Deve ser zero se o sinalizador CRYPT_USERDATA estiver definido.
@@ -1691,7 +1691,7 @@ Etapas para que se crie um crypt session com uma passphrase string:
     e 26625 [CALG_RC4  Stream Cipher Algid] \Uma estrutura ALG_ID que identifica o algoritmo de criptografia simétrica para o qual a chave deve ser gerada. 
     \Os algoritmos disponíveis provavelmente serão diferentes para cada CSP. 
     \Para obter mais informações sobre qual identificador de algoritmo é usado pelos diferentes provedores para as especificações de chave AT_KEYEXCHANGE e AT_SIGNATURE, consulte ALG_ID. 
-    e O HCRYPTHASH deste crypt session [hBaseData] \Um identificador para um objeto hash que foi alimentado com os dados de base exatos.
+    e O hCryptHash deste crypt session [hBaseData] \Um identificador para um objeto hash que foi alimentado com os dados de base exatos.
     e 8388608 [dwFlags Key length: 128 bit]  \Especifica o tipo de chave gerada. Os tamanhos de uma chave de sessão podem ser definidos quando a chave é gerada. O tamanho da chave, representando o comprimento do módulo da chave em bits, é definido com os 16 bits superiores deste parâmetro. Assim, se uma chave de sessão RC4 de 128 bits deve ser gerada, o valor 0x00800000 é combinado com qualquer outro valor predefinido dwFlags com um operati bit a bit OR
     e O endereçamento deste hCryptKey desta crypt session  [phKey] \Um ponteiro para uma variável HCRYPTKEY para receber o endereço do identificador da chave recém-gerada.
   Retornando o número resultante. \Se a função for bem-sucedida, o valor de retorno será TRUE.
@@ -4094,7 +4094,7 @@ Etapas para que se destrua um crypt session:
   \Quando um objeto hash é destruído, muitos CSPs sobrescrevem a memória no CSP onde o objeto hash foi mantido. A memória CSP é então liberada.
   \Deve haver uma correspondência um para um entre as chamadas para CryptCreateHash e CryptDestroyHash.
   \Todos os objetos hash que foram criados usando um CSP específico devem ser destruídos antes que o identificador CSP seja liberado com a função CryptReleaseContext.
-    O hcrypthash desta crypt session. [hHash] \O identificador do objeto hash a ser destruído.
+    O hCryptHash desta crypt session. [hHash] \O identificador do objeto hash a ser destruído.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
   Processe "advapi32.dll" "CryptReleaseContext" com \https://docs.microsoft.com/pt-br/windows/win32/api/wincrypt/nf-wincrypt-cryptreleasecontext
