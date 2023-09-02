@@ -11,7 +11,7 @@ Um wParam é um número. \ Um dos parâmetro das mensagem dos programas do Windows.
 
 Um ABC é uma estrutura com \ Define a largura de um caractere em uma fonte TrueType.
 \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-ABC  
-  Um abcA, \ O espaçamento A é adicionado p/ fornecer um espaço em branco antes do caractere
+  Um abcA, \ O espaçamento A é adicionado para fornecer um espaço em branco antes do caractere
   Um abcB, \ O espaçamento B é a largura do caractere.
   Um abcC.\ O espaçamento C é a distância adicionada p/ fornecer um espaço em branco à direita do caractere.
   \ A largura total de um caractere é a soma dos espaços A, B e C. O espaço A e o C podem ser negativos para indicar cavidades ou saliências.
@@ -347,61 +347,28 @@ Um URL_COMPONENTS é uma estrutura com \Contém os componentes de uma URL.
   Um endereço do caractere denominado lpszExtraInfo,
   Um número denominado dwExtraInfoLength.
 
-Um UUID é uma estrutura com \ Define um identificador único universal (UUID). 
-  \Um UUID fornece uma designação exclusiva de um objeto, como uma interface, um vetor de ponto de entrada do gerenciador ou um objeto cliente.
-  \A estrutura UUID é um sinônimo typedefizado para a estrutura GUID.
-  Um número denominado d1, \unsigned long
-  \ Especifica os primeiros 8 dígitos hexadecimais da GUID.
-  Uma word denominada d2, \unsigned short
-  \ Especifica o primeiro grupo de 4 dígitos hexadecimais.
-  Uma word denominada d3, \unsigned short
-  \ Especifica o segundo grupo de 4 dígitos hexadecimais.
-  8 bytes denominados d4. \unsigned char
-  \ Array de 8 bytes. 
-  \ Os primeiros 2 bytes contêm o terceiro grupo de 4 dígitos hexadecimais. 
-  \ Os 6 bytes restantes contêm os 12 dígitos hexadecimais finais.
+Um UUID é uma estrutura com \ Identificador Único Universal (UUID). 
+\ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/rpc/rpcdce/ns-rpcdce-uuid
+\ https://learn.microsoft.com/pt-br/windows/win32/api/guiddef/ns-guiddef-guid
+  Um número denominado Data1, 
+  Uma word denominada Data2, 
+  Uma word denominada Data3, 
+  8 bytes denominados Data4. 
 
-Um WIN32FINDDATA é uma estrutura com \https://learn.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataa
-\Contém informações sobre o arquivo localizado pela função FindFirstFile, FindFirstFileEx ou FindNextFile.
-  Um número denominado dwFileAttributes,
-  \Os atributos de arquivo de um arquivo.
-  \Para valores possíveis e suas descrições, consulte https://learn.microsoft.com/pt-br/windows/desktop/FileIO/file-attribute-constants
-  \O atributo FILE_ATTRIBUTE_SPARSE_FILE no arquivo é definido se qualquer um dos fluxos do arquivo já foi esparso.
-  Um filetime denominado ftCreationTime,
-  \Uma estrutura FILETIME que especifica quando um arquivo ou diretório foi criado.
-  \Se o sistema de arquivos subjacente não suportar a hora de criação, este valor será zero.
+Um WIN32FINDDATA é uma estrutura com \Contém informações sobre um arquivo localizado pela função FindFirstFile, FindFirstFileEx ou FindNextFile.
+\ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataa
+  Um número denominado dwFileAttributes, \ Consulte https://learn.microsoft.com/pt-br/windows/desktop/FileIO/file-attribute-constants
+  Um filetime denominado ftCreationTime,\ Consulte https://learn.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-filetime
   Um filetime denominado ftLastAccessTime,
-  \Uma estrutura FILETIME.
-  \Para um arquivo, a estrutura especifica quando o arquivo foi lido pela última vez, gravado ou executado para arquivos executáveis.
-  \Para um diretório, a estrutura especifica quando o diretório é criado. 
-  \Se o sistema de arquivos subjacente não suportar a hora do último acesso, esse membro será zero.
-  \No sistema de arquivos FAT, a data especificada para arquivos e diretórios está correta, mas a hora do dia é sempre definida para meia-noite.
   Um filetime denominado ftLastWriteTime,
-  \Uma estrutura FILETIME. https://learn.microsoft.com/pt-br/windows/desktop/api/minwinbase/ns-minwinbase-filetime
-  \Para um arquivo, a estrutura especifica quando o arquivo foi gravado, truncado ou substituído pela última vez, por exemplo, quando WriteFile ou SetEndOfFile são usados. 
-  \ A data e a hora não são atualizadas quando os atributos do arquivo ou descritores de segurança são alterados.
-  \Para um diretório, a estrutura especifica quando o diretório é criado. 
-  \Se o sistema de arquivos subjacente não suportar a hora da última gravação, esse valor será zero.
   Um número denominado nFileSizeHigh,
-  \O valor DWORD de ordem superior do tamanho do arquivo, em bytes.
-  \Este valor é zero, a menos que o tamanho do arquivo seja maior que MAXDWORD.
-  \O tamanho do arquivo é igual a (nFileSizeHigh * (MAXDWORD + 1)) + nFileSizeLow.
   Um número denominado nFileSizeLow,
-  \ O valor DWORD de ordem inferior do tamanho do arquivo, em bytes.
-  Um número denominado dwReserved0,
-  \Se o membro dwFileAttributes inclui o atributo FILE_ATTRIBUTE_REPARSE_POINT, este membro especifica a marca de ponto de nova análise.
-  \Caso contrário, este valor é indefinido e não deve ser usado.
-  \Para obter mais informações, consulte https://learn.microsoft.com/pt-br/windows/desktop/FileIO/reparse-point-tags
+  Um número denominado dwReserved0,\ Consulte https://learn.microsoft.com/pt-br/windows/desktop/FileIO/reparse-point-tags
   Um número denominado dwReserved1,
-  \Reservado para uso futuro.
   260 bytes denominados cFileName,
-   \ O nome do arquivo.
   14 bytes denominados cAlternateFileName.
-  \ Um nome alternativo para o arquivo.
-  \ Este nome está no formato clássico de nome de arquivo 8.3.
 
-Uma janela do programa class é uma estrutura com
-  \Contém informações de classe de janela. 
+Uma WNDCLASS é uma estrutura com \Contém informações de classe de janela. 
   \Os dois campos mais importantes na estrutura WNDCLASS são o segundo e o último.
   \Esta estrutura inclui dois campos que são ponteiros para cadeias de caracteres
   \É usada com as funções RegisterClassEx e GetClassInfoEx.  
@@ -449,7 +416,7 @@ Uma janela do programa class é uma estrutura com
   \ Um identificador para um pequeno ícone associado à classe da janela. 
   \ Se este membro for NULL, o sistema pesquisa o recurso de ícone especificado pelo membro hIcon para um ícone do tamanho apropriado para usar como o ícone pequeno.
 
-A janela do programa class é uma janela do programa class.
+A classe da janela é uma WNDCLASS.
 
 Uma janela do programa é um número identificador.
 
