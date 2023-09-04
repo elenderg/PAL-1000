@@ -38,20 +38,22 @@ Uma definição da fonte é uma lista com
   Uma caixa de fonte,
   Umas larguras de fonte.
 
-Um pdf object é uma lista com
+Um objeto pdf é uma lista com
   Uma categoria [contents, fonte definition, fonte descriptor, fonte streamoutline, image object, outline entry, página, parent, root],
   Um número,
   Um offset,
   Um data trecho,
   Um nome da fonte [fonte definition],
   Um definição da fonte [fonte definition],
-  Uns conjuntos des textos denominado fonte strings [page],
-  Uns conjuntos des textos denominado image strings [page].
+  Uns conjuntos des textos denominado textos de fonte [page],
+  Uns conjuntos des textos denominado textos de imagem [page].
+
+Uma altura da página é uma altura.
 
 Um marcador pdf é uma lista com
-  Um pdf object (referência),
+  Um objeto pdf (referência),
   Um título de índice remissivo,
-  Uma página altura,
+  Uma altura da página,
   Um destination número.
 
 Um pdf state é uma estrutura com
@@ -59,14 +61,14 @@ Um pdf state é uma estrutura com
   Um documento detector,
   Um página detector,
   Um object número,
-  Uns pdfs objects denominados objects,
+  Uns objetos pdfs denominados objetos,
   Um xref offset,
-  Um outline pdf object (referência),
+  Um outline objeto pdf (referência),
   Uns marcadores pdfs denominados marcadores,
-  Um root pdf object (referência),
-  Um parent pdf object (referência),
-  Um current contents pdf object (referência),
-  Um current página pdf object (referência),
+  Um root objeto pdf (referência),
+  Um parent objeto pdf (referência),
+  Um current contents objeto pdf (referência),
+  Um current página objeto pdf (referência),
   Um current altura,
   Uma cor da borda atual,
   Uma cor de preenchimento atual,
@@ -124,14 +126,14 @@ Etapas para que se output setcolor usando uma cor da borda e uma cor de preenchi
   Se a cor da borda não estiver clear, output o pdf border usando a cor da borda.
 
 Etapas para que se include uma fonte no current pdf:
-  Encontre um pdf object usando o nome desta fonte e a fonte catálogo deste pdf state.
-  Se o pdf object não for inexistente, retorne.
+  Encontre um objeto pdf usando o nome desta fonte e a fonte catálogo deste pdf state.
+  Se o objeto pdf não for inexistente, retorne.
   Crie uma definição da fonte usando a fonte.
   Converta a definição da fonte para pdf em units.
   \ stream
   Atribua o actual data of a fonte a um trecho.
   Converta o trecho para uma cifra hexadecimal.
-  Adicione um stream pdf object usando "fonte stream".
+  Adicione um stream objeto pdf usando "fonte stream".
   Acrescente o número deste stream seguido de " 0 obj" para o stream.
   Acrescente "<<" para o stream sem passar pra próxima linha.
   Acrescente "/Filter /ASCIIHexDecode" para o stream sem passar pra próxima linha.
@@ -143,7 +145,7 @@ Etapas para que se include uma fonte no current pdf:
   Acrescente "endstream" para o stream.
   Acrescente "endobj" para o stream.
   \ descriptor
-  Adicione um descriptor pdf object usando "fonte descriptor".
+  Adicione um descriptor objeto pdf usando "fonte descriptor".
   Atribua "F" junto com o número deste descriptor a um nome da fonte.
   Atribua o nome desta fonte a um nome base da fonte.
   Replace o caractere de espaço com o underline no nome base da fonte.
@@ -162,7 +164,7 @@ Etapas para que se include uma fonte no current pdf:
   Acrescente ">>" para o descriptor.
   Acrescente "endobj" para o descriptor.
   \ definition
-  Adicione um definition pdf object usando "fonte definition".
+  Adicione um definition objeto pdf usando "fonte definition".
   Atribua o nome da fonte ao nome da fonte desta definition.
   Acrescente o número desta definition seguido de " 0 obj" para a definition.
   Acrescente "<<" para a definition.
@@ -182,26 +184,26 @@ Etapas para que se include uma fonte no current pdf:
   Atribua a definição da fonte à definição da fonte desta definition.
   Catalogue a definition usando o nome desta fonte e a fonte catálogo deste pdf state.
 
-Etapas para que se include uma fonte em um pdf object:
-  Se o pdf object for inexistente, retorne.
-  Encontre uma fonte pdf object usando o nome desta fonte e a fonte catálogo deste pdf state.
-  Se a fonte pdf object for inexistente, retorne.
-  Atribua "/" junto com o nome da fonte deste fonte pdf object seguido de " " junto com o número deste fonte pdf object seguido de " 0 R" a uma string.
-  Encontre um conjunto de texto usando a string e os fonte strings deste pdf object.
+Etapas para que se include uma fonte em um objeto pdf:
+  Se o objeto pdf for inexistente, retorne.
+  Encontre uma fonte objeto pdf usando o nome desta fonte e a fonte catálogo deste pdf state.
+  Se a fonte objeto pdf for inexistente, retorne.
+  Atribua "/" junto com o nome da fonte deste fonte objeto pdf seguido de " " junto com o número deste fonte objeto pdf seguido de " 0 R" a uma string.
+  Encontre um conjunto de texto usando a string e os textos de fonte deste objeto pdf.
   Se o conjunto de texto não for inexistente, retorne.
   Crie um new conjunto de texto usando a string.
-  Acrescente o new conjunto de texto para os fonte strings deste pdf object.
+  Acrescente o new conjunto de texto para os textos de fonte deste objeto pdf.
 
-Etapas para que se encontre um pdf object usando um categoria:
-  Esvazie o pdf object.
+Etapas para que se encontre um objeto pdf usando um categoria:
+  Esvazie o objeto pdf.
   Comece. [a executar o código abaixo]
-    Obtenha o pdf object usando os objects deste pdf state.
-    Se o pdf object for inexistente, pare.
-    Se a categoria deste pdf object for a categoria, pare.
+    Obtenha o objeto pdf usando os objetos deste pdf state.
+    Se o objeto pdf for inexistente, pare.
+    Se a categoria deste objeto pdf for a categoria, pare.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se end uma folha (pdf style - finish o current contents):
-  Atribua os current contents deste pdf state a um content pdf object.
+  Atribua os current contents deste pdf state a um content objeto pdf.
   Atribua os data deste content a um trecho.
   Limpe os data deste content.
   Acrescente o número deste content seguido de " 0 obj" para o content.
@@ -213,11 +215,11 @@ Etapas para que se end uma folha (pdf style - finish o current contents):
   Desative a página detector deste pdf state.
 
 Etapas para que se end uma folha (pdf style - finish o current página - fonte resources):
-  Atribua a current página deste pdf state a uma página pdf object.
-  Se as fonte strings desta página estiverem vazias, retorne.
+  Atribua a current página deste pdf state a uma página objeto pdf.
+  Se as textos de fonte desta página estiverem vazias, retorne.
   Acrescente "/Font <<" para a página sem passar pra próxima linha.
   Comece. [a executar o código abaixo]
-    Obtenha um conjunto de texto desde as fonte strings desta página.
+    Obtenha um conjunto de texto desde as textos de fonte desta página.
     Se o conjunto de texto for inexistente, pare.
     Se um detector estiver ativo, acrescente " " para a página sem passar pra próxima linha.
     Acrescente a string deste conjunto de texto para a página sem passar pra próxima linha.
@@ -226,11 +228,11 @@ Etapas para que se end uma folha (pdf style - finish o current página - fonte re
   Acrescente ">>" para a página.
 
 Etapas para que se end uma folha (pdf style - finish o current página - image resources):
-  Atribua a current página deste pdf state a uma página pdf object.
-  Se as image strings desta página estiverem vazias, retorne.
+  Atribua a current página deste pdf state a uma página objeto pdf.
+  Se as textos de imagem desta página estiverem vazias, retorne.
   Acrescente "/XObject <<" para a página sem passar pra próxima linha.
   Comece. [a executar o código abaixo]
-    Obtenha um conjunto de texto desde as image strings desta página.
+    Obtenha um conjunto de texto desde as textos de imagem desta página.
     Se o conjunto de texto for inexistente, pare.
     Se um detector estiver ativo, acrescente " " para a página sem passar pra próxima linha.
     Acrescente a string deste conjunto de texto para a página sem passar pra próxima linha.
@@ -239,7 +241,7 @@ Etapas para que se end uma folha (pdf style - finish o current página - image re
   Acrescente ">>" para a página.
 
 Etapas para que se end uma folha (pdf style - finish o current página):
-  Atribua a current página deste pdf state a uma página pdf object.
+  Atribua a current página deste pdf state a uma página objeto pdf.
   Acrescente "/Resources" para a página.
   Acrescente "<<" para a página.
   Acrescente "/ProcSet [/PDF /Text /ImageC]" para a página.
@@ -270,13 +272,13 @@ Etapas para que se end printing um pdf:
   End printing o pdf (finish o root).
   Limpe o pdf.
   End printing o pdf (inserção de cabeçalho).
-  End printing o pdf (offset e acrescente objects).
+  End printing o pdf (offset e acrescente objetos).
   End printing o pdf (append xref table).
   End printing o pdf (append trailer).
   End printing o pdf (inserção de rodapé).
   Destrua a fonte catálogo deste pdf state.
   Destrua os marcadores deste pdf state.
-  Destrua os objects deste pdf state.
+  Destrua os objetos deste pdf state.
   Desative o documento detector deste pdf state.
 
 Etapas para que se end printing um pdf (inserção de rodapé):
@@ -292,8 +294,8 @@ Etapas para que se end printing um pdf (inserção de cabeçalho):
 Etapas para que se end printing um pdf (inserção de marcadores - criação de objetos):
   Obtenha um marcador pdf desde os marcadores deste pdf state.
   Se o marcador pdf for inexistente, retorne.
-  Adicione um entry pdf object usando "outline entry".
-  Atribua a entry pdf object ao pdf object desta marcador pdf.
+  Adicione um entry objeto pdf usando "outline entry".
+  Atribua a entry objeto pdf ao objeto pdf desta marcador pdf.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se end printing um pdf (inserção de marcadores):
@@ -302,38 +304,38 @@ Etapas para que se end printing um pdf (inserção de marcadores):
   Comece. [a executar o código abaixo]
     Obtenha um marcador pdf desde os marcadores deste pdf state.
     Se o marcador pdf for inexistente, retorne.
-    Atribua o pdf object desta marcador pdf a um object pdf object.
+    Atribua o objeto pdf desta marcador pdf a um object objeto pdf.
     Acrescente o número deste object seguido de " 0 obj" para o object.
     Acrescente "<<" para o object.
     Converta o título de índice remissivo deste marcador pdf para um string pdf.
     Acrescente "/Title " junto com o string pdf para o object.
-    Acrescente "/Parent " junto com o número deste outline pdf object deste pdf state seguido de " 0 R" para o object.
-    Se o subsequente marcador pdf desta marcador pdf não for inexistente, acrescente "/Next " junto com o número deste pdf object deste subsequente marcador pdf desta marcador pdf seguido de " 0 R" para o object.
-    Se o precedente marcador pdf desta marcador pdf não for inexistente, acrescente "/Prev " junto com o número deste pdf object deste precedente marcador pdf desta marcador pdf seguido de " 0 R" para o object.
-    Acrescente "/Dest [" junto com o destination deste marcador pdf seguido de " 0 R /XYZ null " junto com a página altura deste marcador pdf seguido de " null]" para o object.
+    Acrescente "/Parent " junto com o número deste outline objeto pdf deste pdf state seguido de " 0 R" para o object.
+    Se o subsequente marcador pdf desta marcador pdf não for inexistente, acrescente "/Next " junto com o número deste objeto pdf deste subsequente marcador pdf desta marcador pdf seguido de " 0 R" para o object.
+    Se o precedente marcador pdf desta marcador pdf não for inexistente, acrescente "/Prev " junto com o número deste objeto pdf deste precedente marcador pdf desta marcador pdf seguido de " 0 R" para o object.
+    Acrescente "/Dest [" junto com o destination deste marcador pdf seguido de " 0 R /XYZ null " junto com a altura da página deste marcador pdf seguido de " null]" para o object.
     Acrescente ">>" para o object.
     Acrescente "endobj" para o object.
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se end printing um pdf (inserção de índice):
-  Esvazie o outline pdf object deste pdf state.
+  Esvazie o outline objeto pdf deste pdf state.
   Se os marcadores deste pdf state estiverem vazios, retorne.
-  Adicione um outline pdf object usando "outline".
-  Atribua o outline pdf object ao outline pdf object deste pdf state.
+  Adicione um outline objeto pdf usando "outline".
+  Atribua o outline objeto pdf ao outline objeto pdf deste pdf state.
   End printing o pdf (inserção de marcadores).
-  Acrescente o número deste outline pdf object seguido de " 0 obj" para o outline pdf object.
-  Acrescente "<<" para o outline pdf object.
-  Acrescente "/Type /Outlines" para o outline pdf object.
-  Acrescente "/First " junto com o número deste pdf object deste first marcador pdf destes marcadores deste pdf state seguido de " 0 R" para o outline pdf object.
-  Acrescente "/Last " junto com o número deste pdf object deste last marcador pdf destes marcadores deste pdf state seguido de " 0 R" para o outline pdf object .
-  Acrescente "/Count " junto com a contagem destes marcadores deste pdf state para o outline pdf object.
-  Acrescente ">>" para o outline pdf object.
-  Acrescente "endobj" para o outline pdf object.
+  Acrescente o número deste outline objeto pdf seguido de " 0 obj" para o outline objeto pdf.
+  Acrescente "<<" para o outline objeto pdf.
+  Acrescente "/Type /Outlines" para o outline objeto pdf.
+  Acrescente "/First " junto com o número deste objeto pdf deste first marcador pdf destes marcadores deste pdf state seguido de " 0 R" para o outline objeto pdf.
+  Acrescente "/Last " junto com o número deste objeto pdf deste last marcador pdf destes marcadores deste pdf state seguido de " 0 R" para o outline objeto pdf .
+  Acrescente "/Count " junto com a contagem destes marcadores deste pdf state para o outline objeto pdf.
+  Acrescente ">>" para o outline objeto pdf.
+  Acrescente "endobj" para o outline objeto pdf.
 
 Etapas para que se end printing um pdf (append trailer):
   Acrescente "trailer" junto com o texto CRLF para o pdf.
   Acrescente "<<" junto com o texto CRLF para o pdf.
-  Atribua a contagem destes objects deste pdf state mais 1 a uma contagem.
+  Atribua a contagem destes objetos deste pdf state mais 1 a uma contagem.
   Acrescente "/Size " junto com a contagem junto com o texto CRLF para o pdf.
   Acrescente "/Root " junto com o número deste root deste pdf state seguido de " 0 R" junto com o texto CRLF para o pdf.
   Acrescente ">>" junto com o texto CRLF para o pdf.
@@ -342,26 +344,26 @@ Etapas para que se end printing um pdf (append trailer):
 Etapas para que se end printing um pdf (append xref table):
   Atribua a quantidade de caracteres deste pdf ao xref offset deste pdf state.
   Acrescente "xref" junto com o texto CRLF para o pdf.
-  Atribua a contagem destes objects deste pdf state mais 1 a uma contagem.
+  Atribua a contagem destes objetos deste pdf state mais 1 a uma contagem.
   Acrescente "0 " junto com a contagem junto com o texto CRLF para o pdf.
   Acrescente "0000000000 65535 f" junto com o texto CRLF para o pdf.
   Comece. [a executar o código abaixo]
-    Obtenha um pdf object desde os objects deste pdf state.
-    Se o pdf object for inexistente, pare.
-    Zero preencha o offset deste pdf object usando 10 e acrescente it para o pdf.
+    Obtenha um objeto pdf desde os objetos deste pdf state.
+    Se o objeto pdf for inexistente, pare.
+    Zero preencha o offset deste objeto pdf usando 10 e acrescente it para o pdf.
     Acrescente " 00000 n" junto com o texto CRLF para o pdf.
   Recomece. [percorra novamente o código acima]
   Acrescente o texto CRLF para o pdf.
 
 Etapas para que se end printing um pdf (finish o parent):
-  Atribua o parent deste pdf state a um parent pdf object.
+  Atribua o parent deste pdf state a um parent objeto pdf.
   Acrescente "/Kids [" para o parent sem passar pra próxima linha.
   Comece. [a executar o código abaixo]
-    Obtenha um pdf object desde os objects deste pdf state.
-    Se o pdf object for inexistente, pare.
-    Se a categoria deste pdf object não for "page", recomece.
+    Obtenha um objeto pdf desde os objetos deste pdf state.
+    Se o objeto pdf for inexistente, pare.
+    Se a categoria deste objeto pdf não for "page", recomece.
     Se um detector estiver ativo, acrescente " " para o parent sem passar pra próxima linha.
-    Acrescente o número deste pdf object seguido de " 0 R" para o parent sem passar pra próxima linha.
+    Acrescente o número deste objeto pdf seguido de " 0 R" para o parent sem passar pra próxima linha.
     Ative o detector.
     Adicione 1 para uma contagem.
     Se a contagem for uniformemente divisível por 20, acrescente o texto CRLF seguido de " " para o parent sem passar pra próxima linha.
@@ -372,20 +374,20 @@ Etapas para que se end printing um pdf (finish o parent):
   Acrescente "endobj" para o parent.
 
 Etapas para que se end printing um pdf (finish o root):
-  Atribua o root deste pdf state a um root pdf object.
+  Atribua o root deste pdf state a um root objeto pdf.
   Acrescente "/Pages " junto com o número deste parent deste pdf state seguido de " 0 R" para o root.
-  Encontre um pdf object usando "page".
-  Acrescente "/OpenAction [" junto com o número deste pdf object seguido de " 0 R /XYZ null null 1]" para o root.
+  Encontre um objeto pdf usando "page".
+  Acrescente "/OpenAction [" junto com o número deste objeto pdf seguido de " 0 R /XYZ null null 1]" para o root.
   Acrescente "/PageMode /UseNone" para o root.
-  Se o outline pdf object deste pdf state não for inexistente, acrescente "/Outlines " junto com o número deste outline pdf object deste pdf state seguido de " 0 R" para o root.
+  Se o outline objeto pdf deste pdf state não for inexistente, acrescente "/Outlines " junto com o número deste outline objeto pdf deste pdf state seguido de " 0 R" para o root.
   Acrescente ">>" para o root.
   Acrescente "endobj" para o root.
 
-Etapas para que se end printing um pdf (offset e acrescente objects):
-  Obtenha um pdf object desde os objects deste pdf state.
-  Se o pdf object for inexistente, pare.
-  Atribua a quantidade de caracteres deste pdf ao offset deste pdf object.
-  Acrescente o data deste pdf object para o pdf.
+Etapas para que se end printing um pdf (offset e acrescente objetos):
+  Obtenha um objeto pdf desde os objetos deste pdf state.
+  Se o objeto pdf for inexistente, pare.
+  Atribua a quantidade de caracteres deste pdf ao offset deste objeto pdf.
+  Acrescente o data deste objeto pdf para o pdf.
   Acrescente o texto CRLF para o pdf.
   Recomece. [percorra novamente o código acima]
 
@@ -394,7 +396,7 @@ Etapas para que se pinte uma string sob uma localização com uma cor e uma fonte 
   Preserve a localização.
   Include a fonte no current pdf.
   Include a fonte na current página deste pdf state.
-  Encontre um definition pdf object usando o nome desta fonte e a fonte catálogo deste pdf state.
+  Encontre um definition objeto pdf usando o nome desta fonte e a fonte catálogo deste pdf state.
   Se o definition for inexistente, retorne. \ erro
   Crie uma definição da fonte usando a fonte e a string.
   Output o pdf border usando a cor.
@@ -472,7 +474,7 @@ Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
   Crie o hPen of o quadro atual usando a cor da borda.
   Crie o hBrush of o quadro atual usando a cor de preenchimento.
   Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta caixa arredondada.
-  Atribua o raio desta caixa arredondada times 2 a um diameter número.
+  Atribua o raio desta caixa arredondada times 2 a um diâmetro.
   Processe "gdi32.dll" "RoundRect" com \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-roundrect
   \A função RoundRect desenha um retângulo com cantos arredondados. O retângulo é delineado e preenchido com a cor da canetinha atual.
     O quadro atual [hDC] \Trata-se de um numéro identificador do contexto do dispositivo.
@@ -480,8 +482,8 @@ Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
     e A coordenada Y do canto superior esquerdo desta caixa arredondada 
     e A coordenada X do canto inferior direito desta caixa arredondada 
     e A coordenada Y do canto inferior direito desta caixa arredondada 
-    e O diameter [width] \A largura, em coordenadas lógicas, da elipse usada para desenhar os cantos arredondados.
-    e O diameter. [height] \A altura, em coordenadas lógicas, da elipse usada para desenhar os cantos arredondados.
+    e O diâmetro [width] \A largura, em coordenadas lógicas, da elipse usada para desenhar os cantos arredondados.
+    e O diâmetro. [height] \A altura, em coordenadas lógicas, da elipse usada para desenhar os cantos arredondados.
   Destrua o hBrush of o quadro atual.
   Destrua o hPen of o quadro atual.
 
@@ -640,12 +642,12 @@ Etapas para que se pinte uma linha reta com uma cor:
 Etapas para que se pinte um gpBitmap sob uma localização (pdf style):
   Se o gpBitmap for inexistente, retorne.
   \ adicione xobject
-  Adicione um xobject pdf object usando "image object".
+  Adicione um xobject objeto pdf usando "image object".
   Atribua "I" junto com o número deste xobject a um nome.
   \ adicione para image resources em current página
   Atribua "/" junto com o nome seguido de " " junto com o número deste xobject seguido de " 0 R" a uma string.
   Crie um new conjunto de texto usando a string.
-  Acrescente o new conjunto de texto para os image strings desta current página deste pdf state.
+  Acrescente o new conjunto de texto para os textos de imagem desta current página deste pdf state.
   \ finish setting para cima xobject
   Acrescente o número deste xobject seguido de " 0 obj" para o xobject.
   Acrescente "<<" para o xobject.
@@ -730,14 +732,14 @@ Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimen
   Destrua o hBrush of o quadro atual.
   Destrua o hPen of o quadro atual.
 
-Etapas para que se crie um pdf object usando um categoria:
-  Aloque memória para o pdf object.
-  Atribua a categoria à categoria deste pdf object.
+Etapas para que se crie um objeto pdf usando um categoria:
+  Aloque memória para o objeto pdf.
+  Atribua a categoria à categoria deste objeto pdf.
 
-Etapas para que se crie um marcador pdf usando um título de índice remissivo e uma página altura e um destination número:
+Etapas para que se crie um marcador pdf usando um título de índice remissivo e uma altura da página e um destination número:
   Aloque memória para o marcador pdf.
   Atribua o título de índice remissivo ao título de índice remissivo deste marcador pdf.
-  Atribua a página altura à página altura deste marcador pdf.
+  Atribua a altura da página à altura da página deste marcador pdf.
   Atribua o destination ao destination deste marcador pdf.
 
 Etapas para que se converta uma string para um string pdf:
@@ -978,14 +980,14 @@ Etapas para que se inicie a impressão um pdf:
 
 Etapas para que se inicie a impressão um pdf (start o parent): 
 
-  Adicione um parent pdf object usando "parent".
+  Adicione um parent objeto pdf usando "parent".
   Atribua o parent ao parent deste pdf state.
   Acrescente o número deste parent seguido de " 0 obj" para o parent.
   Acrescente "<<" para o parent.
   Acrescente "/Type /Pages" para o parent.
 
 Etapas para que se inicie a impressão um pdf (start o root):
-  Adicione um root pdf object usando "root".
+  Adicione um root objeto pdf usando "root".
   Atribua o root ao root deste pdf state.
   Acrescente o número deste root seguido de " 0 obj" para o root.
   Acrescente "<<" para o root.
@@ -1001,19 +1003,19 @@ Etapas para que se inicie uma folha do modo paisagem usando um título de índice 
   Faça a folha do modo paisagem 1056 pixels por 816 pixels.
   Inicie a folha usando a caixa e o título de índice remissivo (pdf style).
 
-Etapas para que se acrescente uma string para um pdf object:
+Etapas para que se acrescente uma string para um objeto pdf:
   \ Adiciona o CRLF ao final da string
-  Acrescente a string para o data deste pdf object.
-  Acrescente o texto CRLF para o data deste pdf object.
+  Acrescente a string para o data deste objeto pdf.
+  Acrescente o texto CRLF para o data deste objeto pdf.
 
-Etapas para que se acrescente uma string para um pdf object sem passar pra próxima linha:
-  Acrescente a string para o data deste pdf object.
+Etapas para que se acrescente uma string para um objeto pdf sem passar pra próxima linha:
+  Acrescente a string para o data deste objeto pdf.
 
-Etapas para que se adicione um pdf object usando um categoria:
-  Crie o pdf object usando a categoria.
-  Acrescente o pdf object para os objects deste pdf state.
+Etapas para que se adicione um objeto pdf usando um categoria:
+  Crie o objeto pdf usando a categoria.
+  Acrescente o objeto pdf para os objetos deste pdf state.
   Adicione 1 para o object número deste pdf state.
-  Atribua o object número deste pdf state ao número deste pdf object.
+  Atribua o object número deste pdf state ao número deste objeto pdf.
 
 Etapas para que se end uma folha:
   Se o documento detector deste pdf state estiver ativo, end a folha (pdf style); retorne.

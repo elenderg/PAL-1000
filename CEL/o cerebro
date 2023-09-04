@@ -96,8 +96,8 @@ Um contexto é uma lista com \Um contexto de dispositivo é uma estrutura que defi
   Uma orientação, 
   Um tamanho da letra, 
   Uma cor, uma canetinha sob a cor,
-  Um número e
-  Uma grossura da canetinha.\ largura?
+  Um número
+  e Uma grossura da canetinha.\ largura?
   \OBS: A "grossura da canetinha" não estava originalmente nessa estrutura, mas deveria.
   
 
@@ -1638,16 +1638,12 @@ Etapas para que se crie umas larguras de fonte usando uma fonte:
   Associe o data destes larguras de fonte usando a contagem destas larguras de fonte times a magnitude dum número.
   Crie o número da fonte of o memory canvas usando a fonte.
   Associe um original endereço do ABC usando 256 times a magnitude dum ABC.
-  Processe "gdi32.dll" "GetCharABCWidthsA" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getcharabcwidthsa
-    \ A função GetCharABCWidths recupera as larguras, em unidades lógicas, de caracteres consecutivos em um intervalo especificado da fonte TrueType atual. 
-    \ Esta função é só funciona com fontes TrueType.
-    O memory canvas [hDC] \ Um identificador para o contexto do dispositivo.
-    e 0 [wFirst] \ O primeiro caractere do grupo de caracteres consecutivos da fonte atual.
-    e 255 [wLast] \O último caractere no grupo de caracteres consecutivos da fonte atual.
-    e o original endereço do ABC. [lpABC] \ Um ponteiro para uma matriz de estruturas ABC que recebe as larguras dos caracteres, em unidades lógicas. 
-    \Esta matriz deve conter, no mínimo, a mesma quantidade estruturas ABC que a quantidade de caracteres no intervalo especificado pelos parâmetros uFirstChar e uLastChar.
-    \ Para obter mais informações, veja o site abaixo: 
-    \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-ABC
+  Processe "gdi32.dll" "GetCharABCWidthsA" com \ Recupera as larguras de caracteres de uma fonte 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getcharabcwidthsa
+    O memory canvas [hDC]
+    e 0 [wFirst]
+    e 255 [wLast]
+    e o original endereço do ABC. [lpABC] \ Consulte https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-ABC
   Destrua o número da fonte of o memory canvas.
   Atribua o original endereço do ABC a um endereço do ABC.
   Atribua o data destes larguras de fonte a um endereço numérico.
@@ -1661,7 +1657,7 @@ Etapas para que se crie umas larguras de fonte usando uma fonte:
   Recomece. [percorra novamente o código acima]
   Desassocie o original endereço do ABC.
 
-Etapas para que se crie uns larguras de fonte usando uma fonte e uma string:
+Etapas para que se crie umas larguras de fonte usando uma fonte e uma string:
   Aloque memória para a larguras de fonte.
   Atribua a fonte à fonte destas larguras de fonte.
   Atribua a quantidade de caracteres desta string à contagem destas larguras de fonte.
@@ -1670,280 +1666,173 @@ Etapas para que se crie uns larguras de fonte usando uma fonte e uma string:
   Atribua a quantidade de caracteres desta string ao nglyphs destes GcpResults.
   Associe o lpDX destes GcpResults usando a quantidade de caracteres desta string times a magnitude dum número.
   Crie o número da fonte of o memory canvas usando a fonte.
-  Processe "gdi32.dll" "GetCharacterPlacementA" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getcharacterplacementa
-    \A função GetCharacterPlacement recupera informações sobre uma string de caracteres, tais como larguras de caracteres, posicionamento de circunflexo, ordenação dentro da string e renderização de glifo.
-    \A função copia as informações para a estrutura GCP_RESULTS especificada ou para uma ou mais matrizes especificadas pela estrutura.
-    \Embora essa função já tenha sido adequada para trabalhar com cadeias de caracteres, 
-    \ a necessidade de trabalhar com um número crescente de linguagens e sistemas de escrita a tornou obsoleta. 
-    \Ela foi substituído pela funcionalidade do módulo Uniscribe. Para obter mais informações, consulte https://learn.microsoft.com/pt-br/windows/desktop/Intl/uniscribe
-    O memory canvas [hDC] \Um identificador para o contexto do dispositivo.
-    e O caractere inicial desta string [lpString] \Um ponteiro para a sequência de caracteres a ser processada. 
-    \A string acima não precisa ser terminada em zero, pois nCount especifica o comprimento da string.
-    e A quantidade de caracteres desta string [nCount] \O comprimento da string apontada por lpString.
-    e 0 [nMexExtent] \A extensão máxima (em unidades lógicas) na qual a string é processada. 
-    \Os caracteres que, se processados, excederiam essa extensão são ignorados. 
-     \Os cálculos para qualquer pedido obrigatório ou matrizes de glifos aplicam-se apenas aos caracteres incluídos. 
-     \ Este parâmetro é usado apenas se o valor GCP_MAXEXTENT for especificado no parâmetro dwFlags.
-     \ Conforme a função processa a string de entrada, cada caractere e sua extensão são adicionados à saída, à extensão e à outras matrizes
-     \  apenas se a extensão total ainda não tiver excedido o máximo. Assim que o limite for atingido, o processamento será interrompido.
-    e O endereçamento deste GcpResults [lpResults] \Um ponteiro para uma estrutura GCP_RESULTS que recebe os resultados da função.
-    e 0. [dwFlags] \ serve para especificar como processar a string nas matrizes necessárias. nesse caso não foi especificado (valor nulo/ inválido)
+  Processe "gdi32.dll" "GetCharacterPlacementA" com \ Recupera informações sobre uma string ASCII
+  \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getcharacterplacementa
+  \ Função substituída pela funcionalidade do módulo Uniscribe. Consulte https://learn.microsoft.com/pt-br/windows/desktop/Intl/uniscribe
+    O memory canvas [hDC]
+    e O caractere inicial desta string [lpString]
+    e A quantidade de caracteres desta string [nCount]
+    e 0 [nMexExtent]
+    e O endereçamento deste GcpResults [lpResults]
+    e 0. [dwFlags]
   Destrua o número da fonte of o memory canvas.
   Atribua o lpDX destes GcpResults ao data destes larguras de fonte.
 
 Etapas para que se crie um gpBitmap usando um trecho:
   Limpe o erro do fluxo de entrada/saída.
-  Processe "kernel32.dll" "GlobalAlloc" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globalalloc
-    \Aloca o número especificado de bytes do heap.
-  2 [uFlags GMEM_MOVEABLE] \Os atributos de alocação de memória. Se zero for especificado, o padrão é GMEM_FIXED.
-  \GMEM_MOVEABLE = 0x0002
-   \Aloca memória móvel. Os blocos de memória nunca são movidos na memória física, mas podem ser movidos dentro do heap padrão.
-    \O valor de retorno é um identificador para o objeto de memória. Para converter o identificador em um ponteiro, use a função GlobalLock.
-    \Este valor não pode ser combinado com GMEM_FIXED.
-    e A quantidade de caracteres deste trecho [dwBytes] \O número de bytes a serem alocados. 
-    \Se este parâmetro for zero e o parâmetro uFlags especificar GMEM_MOVEABLE, 
-    \a função retornará um identificador para um objeto de memória que está marcado como descartado.
-  Retornando um número identificador. \Se a função for bem-sucedida, o valor de retorno será um identificador para o objeto de memória recém-alocado.
-    \Se a função falhar, o valor de retorno será NULL. 
-    \A função GlobalLock bloqueia um objeto de memória global e aumenta a contagem de bloqueios em um. 
-    \A função GlobalUnlock o desbloqueia e diminui a contagem de bloqueios em um. 
-    \Para obter a contagem de bloqueios de um objeto de memória global, use a função GlobalFlags.
-  Processe "kernel32.dll" "GlobalLock" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globallock
-    \Bloqueia um objeto de memória global e retorna um ponteiro para o primeiro byte do bloco de memória do objeto.
-    \Observação: As funções globais têm maior sobrecarga e fornecem menos recursos do que outras funções de gerenciamento de memória. 
-    \Novos aplicativos devem usar as funções de heap, a menos que a documentação indique que uma função global deve ser usada.
-    O número identificador [hMem] \Um identificador para o objeto de memória global. Nesse caso o identificador é número identificador retornado pela função GlobalAlloc .
-  Retornando um ponteiro. \Se a função for bem-sucedida, o valor de retorno é um ponteiro [que aponta] para o primeiro byte do bloco de memória.
-    \Se a função falhar, o valor de retorno será NULL.
-    \Observações
-    \As estruturas de dados internas para cada objeto de memória incluem uma contagem de bloqueio que é inicialmente zero. 
-    \Para objetos de memória móvel, GlobalLock aumenta a contagem em um e a função GlobalUnlock diminui a contagem em um. 
-    \Cada chamada bem-sucedida que um processo faz ao GlobalLock para um objeto deve ser correspondida por uma chamada correspondente ao GlobalUnlock. 
-    \A memória bloqueada não será movida ou descartada, a menos que o objeto de memória seja realocado usando a função GlobalReAlloc. 
-    \O bloco de memória de um objeto de memória bloqueado permanece bloqueado até que sua contagem de bloqueios diminua para zero, momento em que pode ser movido ou descartado.
+  Processe "kernel32.dll" "GlobalAlloc" com \ Aloca a partir do heap um número especificado de bytes 
+ \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globalalloc
+    2 [uFlags GMEM_MOVEABLE] 
+    e A quantidade de caracteres deste trecho [dwBytes] 
+  Retornando um número identificador. 
+  Processe "kernel32.dll" "GlobalLock" com \ Bloqueia um objeto de memória global
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globallock
+    O número identificador [hMem] 
+  Retornando um ponteiro. 
   Copie bytes desde o caractere inicial deste trecho para o ponteiro pelo quantidade de caracteres deste trecho.
-  Processe "kernel32.dll" "GlobalUnlock" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globalunlock
-    \Diminui a contagem de bloqueios associada a um objeto de memória que foi alocado com GMEM_MOVEABLE. 
-    \Esta função não tem efeito em objetos de memória alocados com GMEM_FIXED.
-    O número identificador. [hMem] \Um identificador para o objeto de memória global. Nese caso o identificador é número identificador retornado pela função GlobalAlloc .
-    \Se o objeto de memória ainda estiver bloqueado após diminuir a contagem de bloqueios, o valor de retorno será um valor diferente de zero. 
-    \Se o objeto de memória for desbloqueado após diminuir a contagem de bloqueios, a função retornará zero e GetLastError retornará 0 (NO_ERROR).
-    \Um processo não deve depender do valor de retorno para determinar o número de vezes que ele deve subsequentemente chamar GlobalUnlock para um objeto de memória.
-  Processe "ole32.dll" "CreateStreamOnHGlobal" com \ https://learn.microsoft.com/pt-br/windows/win32/api/combaseapi/nf-combaseapi-createstreamonhglobal
-    \A função CreateStreamOnHGlobal cria um objeto de fluxo que usa um identificador de memória HGLOBAL para armazenar o conteúdo do fluxo. 
-    \Este objeto é a implementação da interface IStream fornecida por OLE.
-    \O objeto de fluxo retornado oferece suporte para leitura e gravação, não é transacionado e não oferece suporte para bloqueio de região. 
-    \O objeto chama a função GlobalReAlloc para aumentar o bloco de memória conforme necessário.
-    \Dica: Considere o uso da função SHCreateMemStream, que produz melhor desempenho,
-    O número identificador [hGlobal] \Um identificador de memória alocado pela função GlobalAlloc ou, se NULL, um novo identificador deve ser alocado. 
-    \O identificador deve ser alocado como móvel e não descartável.
-    e 1 [fDeleteOnRelease = TRUE] \Um valor que indica se o identificador subjacente para este objeto de fluxo deve ser liberado automaticamente quando o objeto de fluxo é liberado. 
-    \Se definido como FALSE, o chamador deve liberar o hGlobal após a versão final. 
-    \Se definido como TRUE, a versão final irá liberar automaticamente o identificador subjacente.
-    e O endereçamento dum istream. [*ppstm] \O endereço da variável de ponteiro IStream*  (LPSTREAM) que recebe o ponteiro de interface para o novo objeto de fluxo. Seu valor não pode ser NULL.
-    \Observações
-    \Se hGlobal for NULL, a função aloca um novo identificador de memória e o fluxo está inicialmente vazio.
-    \Se hGlobal não for NULL, o conteúdo inicial do fluxo será o conteúdo atual do bloco de memória. 
-    \Portanto, CreateStreamOnHGlobal pode ser usado para abrir um fluxo existente na memória. 
-    \O identificador de memória e seu conteúdo não são perturbados pela criação do novo objeto de fluxo.
-    \O tamanho inicial do fluxo é o tamanho de hGlobal conforme retornado pela função GlobalSize. 
-    \Por causa do arredondamento, este não é necessariamente o mesmo tamanho que foi originalmente alocado para o identificador.
-  Processe "gdiplus.dll" "GdipCreateBitmapFromStream" com \https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-bitmap-bitmap(istream_bool)
-  \Cria um objeto Bitmapbaseado em um um stream. https://learn.microsoft.com/pt-br/windows/win32/api/objidl/nn-objidl-istream
-  \A interface IStream permite ler e gravar dados em objetos de fluxo. 
-  \Os objetos de fluxo contêm os dados em um objeto de armazenamento estruturado, onde os armazenamentos fornecem a estrutura. 
-  \Dados simples podem ser gravados diretamente em um fluxo, mas, mais frequentemente, os fluxos são elementos aninhados em um objeto de armazenamento. 
-  \Eles são semelhantes ao arquivo padrão
-    O istream [stream] \Ponteiro para uma interface IStream COM.
-    e O endereçamento deste gpBitmap [**bitmap] \Ponteiro para uma variável DWORD (endereçamento) que recebe um ponteiro para um objeto Bitmap (o gpBitmap).
+  Processe "kernel32.dll" "GlobalUnlock" com  \Diminui a contagem de bloqueios associada a um objeto de memória 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globalunlock
+    O número identificador. [hMem] 
+  Processe "ole32.dll" "CreateStreamOnHGlobal" com \A função CreateStreamOnHGlobal cria um objeto de fluxo
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/combaseapi/nf-combaseapi-createstreamonhglobal
+    O número identificador [hGlobal]
+    e 1 [fDeleteOnRelease = TRUE]
+    e O endereçamento dum istream. [*ppstm]
+  Processe "gdiplus.dll" "GdipCreateBitmapFromStream" com \Cria um objeto Bitmapbaseado em um um stream. 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/objidl/nn-objidl-istream
+  \ https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-bitmap-bitmap(istream_bool)
+    O istream [stream]
+    e O endereçamento deste gpBitmap [**bitmap]
   Retornando um número.
   Se o número não for 0, atribua "Não sei como processar este tipo de imagem." ao erro do fluxo de entrada/saída; esvazie o gpBitmap.
-  Processe o release deste vtable deste istream com o istream. \verificar isso com calma
+  Processe o release deste vtable deste istream com o istream. \ monet
 
 Etapas para que se crie um GpImageAttributes (escala de cinza):
-  Processe "gdiplus.dll" "GdipCreateImageAttributes" com 
-    \Um objeto ImageAttributes contém informações sobre como as cores de bitmap e metarquivo são manipuladas durante a renderização.
-    O endereçamento destes GpImageAttributes. [**imageattr] \Ponteiro para uma variável (GpImageAttributes).
-    \Essa variável contém um ponteiro para o objeto ImageAttributes. 
-    \( ou seja, o número identificador do objeto ImageAttributes)
+  Processe "gdiplus.dll" "GdipCreateImageAttributes" com \ Contém informações sobre como as cores de bitmap e metarquivo são manipuladas durante a renderização.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/gdiplus/-gdiplus-imageattributes-flat
+  \ https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusimageattributes/nl-gdiplusimageattributes-imageattributes
+    O endereçamento destes GpImageAttributes. [**imageattr] 
   Processe "gdiplus.dll" "GdipSetImageAttributesColorMatrix" com 
-    O GpImageAttributes [ imageattr] \Ponteiro para o objeto ImageAttributes.
-   e 0 [tipo = ColorAdjustTypeDefault ] \Elemento da enumeração ColorAdjustType que especifica a categoria para a qual a matriz de ajuste de cor é definida. O valor padrão é ColorAdjustTypeDefault.
-   e 1 [enableFlag] \Valor booleano que especifica se um ajuste de cor separado está habilitado para a categoria especificada pelo parâmetro tipo (ColorAdjustTypeDefault).
-   e o caractere inicial desta matriz de tons de cinza [colorMatrix] \Ponteiro para uma matriz 5x5 de ajuste de cor .
-   e 0 [grayMatrix] \Especifica uma matriz a ser usada para ajustar os tons de cinza quando o valor do parâmetro flags é igual ColorMatrixFlagsAltGray.
-   e 0 [flags = ColorMatrixFlagsDefault]. \Elemento da enumeração ColorMatrixFlags que especifica o tipo de imagem e a cor que serão afetados pela matriz de ajuste de cor.
+    O GpImageAttributes [ imageattr] 
+   e 0 [tipo = ColorAdjustTypeDefault] 
+   e 1 [enableFlag]
+   e o caractere inicial desta matriz de tons de cinza [colorMatrix] 
+   e 0 [grayMatrix]
+   e 0 [flags = ColorMatrixFlagsDefault].
 
 Etapas para que se crie o hBrush of um canvas usando uma cor:
   Converta a cor para um código da cor.
   Se a cor for clear, atribua o null hBrush a um hBrush.
-  Se a cor não for clear, Processe "gdi32.dll" "CreateSolidBrush" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-createsolidbrush
-    \A função CreateSolidBrush cria uma canetinha lógico que possui a cor sólida especificada.
-    O código da cor [color] \A cor da canetinha. Para criar um valor de cor COLORREF, use a macro RGB.
-  Retornando o hBrush. \Se a função for bem-sucedida, o valor de retorno identifica uma canetinha lógico.
-    \Se a função falhar, o valor de retorno será NULL.
-    \Uma canetinha sólido é um bitmap que o sistema usa para pintar o interior de formas preenchidas.
-     \Depois que um aplicativo cria uma canetinha chamando CreateSolidBrush, ele pode selecionar esse canetinha em qualquer contexto de dispositivo chamando a função SelecionarObjeto
-  Processe "gdi32.dll" "SelectObject" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-selectobject
-  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O canvas [hDC] \Um identificador para o contexto do dispositivo.
-    e O hBrush. [h] \Um identificador para o objeto a ser selecionado.
+  Se a cor não for clear, Processe "gdi32.dll" "CreateSolidBrush" com   \ Cria um pincel usando a cor  
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-createsolidbrush  
+    O código da cor [color]
+  Retornando o hBrush.
+  Processe "gdi32.dll" "SelectObject" com \ Seleciona um objeto no contexto de dispositivo (DC) especificado. 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-selectobject  
+    O canvas [hDC] 
+    e O hBrush. [h] 
 
 Etapas para que se crie o número da fonte of um canvas usando uma fonte:
   Converta a fonte para um número da fonte.
-  Processe "gdi32.dll" "SelectObject" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-selectobject
-  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O canvas [hDC] \Um identificador para o contexto do dispositivo.
-    e O número da fonte. [h] \Um número identificador para o objeto a ser selecionado.
+  Processe "gdi32.dll" "SelectObject" com
+    O canvas [hDC]
+    e O número da fonte. [h]
 
 Etapas para que se crie o hPen of um canvas usando uma cor:
   Converta a cor para um código da cor.
   Se a cor estiver clear, atribua o null hPen a um hPen.
   Atribua a quantidade de twips/pixel times o grossura da canetinha a um número.
   Se o canvas for a área de impressão, atribua 1 pixel times o grossura da canetinha ao número.
-  Se a cor não estiver clear, Processe "gdi32.dll" "CreatePen" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-createpen
-  \A função CreatePen cria uma caneta lógica que possui o estilo, largura e cor especificados. 
-  \A caneta pode ser posteriormente selecionada em um contexto de dispositivo e usada para desenhar linhas e curvas.
-    0 [iStyle = PS_SOLID]  \O estilo da caneta. PS_SOLID = A linha da caneta é "sólida" (sem traços ou pontilhados).
-    e O número [cWidth] \A largura da caneta, em unidades lógicas. Se nWidth é zero, a caneta tem um único pixel de largura, independentemente da transformação atual.
-    e O código da cor [color]  \Uma referência de cor para a cor da caneta. Para gerar uma estrutura COLORREF, use a macro RGB.
-  Retornando o hPen. \Se a função for bem-sucedida, o valor de retorno é um identificador que identifica uma caneta lógica.
-    \Se a função falhar, o valor de retorno será NULL.
-     \Depois que um aplicativo cria uma caneta lógica, ele pode selecionar essa caneta em um contexto de dispositivo chamando a função SelecionarObjeto. 
-      \Depois que uma caneta é selecionada em um contexto de dispositivo, ela pode ser usada para desenhar linhas e curvas.
-  Processe "gdi32.dll" "SelectObject" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-selectobject
-  \A função SelectObject seleciona um objeto no contexto de dispositivo (DC) especificado. O novo objeto substitui o objeto anterior do mesmo tipo.
-    O canvas [hDC] \Um identificador para o contexto do dispositivo.
-    e O hPen. [h] \Um número identificador para o objeto a ser selecionado.
+  Se a cor não estiver clear, Processe "gdi32.dll" "CreatePen" com \A função CreatePen cria uma caneta 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-createpen
+    0 [iStyle = PS_SOLID]
+    e O número [cWidth]
+    e O código da cor [color]
+  Retornando o hPen.
+  Processe "gdi32.dll" "SelectObject" com
+    O canvas [hDC]
+    e O hPen. [h]
 
-Etapas para que se crie um hRgn usando uma caixa: 
+Etapas para que se crie uma hRgn usando uma caixa: 
   \ hRgn = número identificador da região que será desenhada na tela
   Preserve a caixa.
   Adicione a quantidade de twips/pixel para o canto inferior direito desta caixa.
-  Processe "gdi32.dll" "BeginPath" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-beginpath
-    \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
-    O quadro atual.[hDC] \Um identificador para o contexto do dispositivo.
-    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
-    \Se a função falhar, o valor de retorno é zero.
-  Processe "gdi32.dll" "Rectangle" com \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-rectangle
-    \A função Retângulo desenha um retângulo. O retângulo é delineado com a caneta (canetinha) atual e preenchido com a cor da canetinha (brush) atual.
-    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
-    e A coordenada X do canto superior esquerdo desta caixa 
-    e A coordenada Y do canto superior esquerdo desta caixa 
-    e A coordenada X do canto inferior direito desta caixa 
-    e A coordenada Y do canto inferior direito desta caixa.    
-  Processe "gdi32.dll" "EndPath" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-endpath
-    \A função EndPath fecha um suporte de caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
-    O quadro atual. [hDC] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
-    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
-    \Se a função falhar, o valor de retorno é zero.
-  Processe "gdi32.dll" "PathToRegion" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-pathtoregion
-  \A função PathToRegion cria uma região do caminho que é selecionado no contexto de dispositivo especificado. A região resultante usa coordenadas do dispositivo.
-    O quadro atual [hDC] \Identificador para um contexto de dispositivo que contém um caminho fechado.
-   retornando o hRgn. \Se a função for bem-sucedida, o valor de retorno é um identificador válido para a região.
-    \ Se a função falhar, o valor de retorno é zero.
-
-Etapas para que se crie um hRgn usando uma elipse:
-  \ hRgn = número identificador da região que será desenhada na tela
-  Atribua a caixa desta elipse a uma caixa. \ No windows, toda elipse é desenhada dentro de uma caixa
-  Processe "gdi32.dll" "BeginPath" com  \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-beginpath
-    \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
-    O quadro atual.[hDC] \Um identificador para o contexto do dispositivo.
-    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
-    \Se a função falhar, o valor de retorno é zero.
-  Processe "gdi32.dll" "Ellipse" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-ellipse
-  \A função Ellipse desenha uma elipse. O centro da elipse é o centro do retângulo delimitador especificado. A elipse é delineada com a caneta atual e preenchida com a cor da canetinha atual.
-    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
+  Processe "gdi32.dll" "BeginPath" com \ Começa um caminho no contexto de dispositivo especificado.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-beginpath
+    O quadro atual.[hDC] 
+  Processe "gdi32.dll" "Rectangle" com \ Desenha um retângulo. 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-rectangle  
+    O quadro atual [hDC] 
     e A coordenada X do canto superior esquerdo desta caixa 
     e A coordenada Y do canto superior esquerdo desta caixa 
     e A coordenada X do canto inferior direito desta caixa 
     e A coordenada Y do canto inferior direito desta caixa.
-  Processe "gdi32.dll" "EndPath" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-endpath
-    \A função EndPath fecha um suporte de caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
-    O quadro atual. [hDC] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
-    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
-    \Se a função falhar, o valor de retorno é zero.
-  Processe "gdi32.dll" "PathToRegion" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-pathtoregion
-  \A função PathToRegion cria uma região do caminho que é selecionado no contexto de dispositivo especificado. A região resultante usa coordenadas do dispositivo.
-    O quadro atual [hDC] \Identificador para um contexto de dispositivo que contém um caminho fechado.
-   retornando o hRgn. \Se a função for bem-sucedida, o valor de retorno é um identificador válido para a região.
-    \ Se a função falhar, o valor de retorno é zero.
+  Processe "gdi32.dll" "EndPath" com \ Termina caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-endpath
+    O quadro atual. [hDC] 
+  Processe "gdi32.dll" "PathToRegion" com \ Cria uma região do caminho que é selecionado no contexto de dispositivo especificado. 
+  \ Documentação: ->  https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-pathtoregion  
+    O quadro atual [hDC]
+   retornando o hRgn.
 
-Etapas para que se crie um hRgn usando um polígono:
-  \ hRgn = número identificador da região que será desenhada na tela
-  Se o polígono for inexistente, atribua 0 ao hRgn; retorne.
-  [caso o polígono exista, então:] Crie uma série de vértices usando os vértices deste polígono.
-  Processe "gdi32.dll" "LPtoDP" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-lptodp
-  \A função LPtoDP converte coordenadas lógicas em coordenadas de dispositivo.
-  \A conversão depende do modo de mapeamento do contexto do dispositivo, das configurações das origens e extensões da janela e da janela de visualização e da transformação do mundo.
-    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
-    e O ponteiro da localização desta série de vértices [lppt] \Um ponteiro para uma matriz de estruturas POINT. 
-    \As coordenadas x e as coordenadas y contidas em cada uma das estruturas POINT serão transformadas.
-    \A estrutura POINT define as coordenadas X e Y de um ponto.
-    e A quantidade de vértices desta série de vértices. [c] \O número de pontos na matriz/série de vértices.
-  \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
-  \Se a função falhar, o valor de retorno é zero.
-  Processe "gdi32.dll" "CreatePolygonRgn" com  \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-createpolypolygonrgn
-  \A função CreatePolygonRgn cria uma região poligonal.
-    O ponteiro da localização desta série de vértices  [*pptl] \Um ponteiro para uma matriz de estruturas POINT que definem os vértices do polígono em unidades lógicas. 
-   \O polígono é presumido como sendo um polígono fechado. Cada vértice pode ser especificado apenas uma vez.
-    e A quantidade de vértices desta série de vértices [cPoint] \O número de pontos na matriz.
-    e 2 [iMode = WINDING] \O modo de preenchimento usado para determinar quais pixels estão na região.  -> exemplo: https://learn.microsoft.com/pt-br/windows/win32/gdi/images/csrgn-03.png
-    \Este parâmetro pode ser um dos seguintes valores.
-    \ ALTERNATE ou Seleciona o modo alternativo (preenche a área entre os lados ímpares e pares do polígono em cada linha de varredura).
-    \WINDING = Seleciona o modo de enrolamento (preenche qualquer região com um valor de enrolamento diferente de zero).
-    \Para obter mais informações sobre esses modos, consulte a função SetPolyFillMode, ou leia mais abaixo:    
-    \Um aplicativo preenche o interior de uma região chamando a função FillRgn e fornecendo um identificador que identifica uma canetinha específico. 
-    \Quando um aplicativo chama FillRgn, o sistema preenche a região com a cor da canetinha usando o modo de preenchimento atual para o contexto de dispositivo especificado. 
-    \Existem dois modos de preenchimento: alternado e enrolamento. 
-    \O aplicativo pode definir o modo de preenchimento para um contexto de dispositivo chamando a função SetPolyFillMode. 
-    \O aplicativo pode recuperar o modo de preenchimento atual para um contexto de dispositivo chamando a função GetPolyFillMode.    
-    \Modo Alternativo
-    \Para determinar quais pixels o sistema destaca quando o modo alternativo é especificado, execute o seguinte teste:
-    \Selecione um pixel no interior da região.
-    \Desenhe um raio imaginário, na direção x positiva, dum pixel em direção ao infinito.
-    \Cada vez que o raio cruza uma linha limite, aumente um valor de contagem.
-    \O sistema destaca o pixel se o valor da contagem for um número ímpar.    
-    \Modo de enrolamento
-    \Para determinar quais pixels o sistema destaca quando o modo de enrolamento é especificado, execute o seguinte teste:
-    \Determine a direção em que cada linha de limite é desenhada.
-    \Selecione um pixel no interior da região.
-    \Desenhe um raio imaginário, na direção x positiva, do pixel em direção ao infinito.
-    \Cada vez que o raio intercepta uma linha limite com um componente y positivo, aumente um valor de contagem. 
-    \Cada vez que o raio cruza uma linha limite com um componente y negativo, diminua o valor de contagem.
-    \O sistema destaca o pixel se o valor da contagem for diferente de zero.
-  Retornando o hRgn. \Se a função for bem-sucedida, o valor de retorno será o número identificador da região.
-    \Se a função falhar, o valor de retorno será NULL.
+Etapas para que se crie uma hRgn usando uma elipse:
+  Atribua a caixa desta elipse a uma caixa.
+  Processe "gdi32.dll" "BeginPath" com
+    O quadro atual.[hDC]
+  Processe "gdi32.dll" "Ellipse" com \ Desenha uma elipse. 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-ellipse
+    O quadro atual [hDC] 
+    e A coordenada X do canto superior esquerdo desta caixa 
+    e A coordenada Y do canto superior esquerdo desta caixa 
+    e A coordenada X do canto inferior direito desta caixa 
+    e A coordenada Y do canto inferior direito desta caixa.
+  Processe "gdi32.dll" "EndPath" com 
+    O quadro atual. [hDC] 
+  Processe "gdi32.dll" "PathToRegion" com
+    O quadro atual [hDC]
+   retornando o hRgn.
+
+Etapas para que se crie uma hRgn usando um polígono:
+  Se o polígono for inexistente, 
+    Atribua 0 à hRgn; 
+    Retorne.
+  [Caso o polígono exista, então:] 
+  Crie uma série de vértices usando os vértices deste polígono.
+  Processe "gdi32.dll" "LPtoDP" com \ Converte coordenadas lógicas em coordenadas de dispositivo.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-lptodp
+    O quadro atual [hDC]
+    e O ponteiro da localização desta série de vértices [lppt]
+    e A quantidade de vértices desta série de vértices. [c]
+  Processe "gdi32.dll" "CreatePolygonRgn" com \ Cria uma região poligonal.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-createpolypolygonrgn  
+    O ponteiro da localização desta série de vértices  [*pptl]
+    e A quantidade de vértices desta série de vértices [cPoint]
+    e 2 [iMode = WINDING]  \ Consulte https://learn.microsoft.com/pt-br/windows/win32/gdi/images/csrgn-03.png
+  Retornando o hRgn.
   Destrua a série de vértices.
 
-Etapas para que se crie um hRgn usando uma caixa arredondada:
-  Se o raio desta caixa arredondada for 0, crie o hRgn usando a caixa arredondada como [se fosse] uma caixa [normal]; retorne.
+Um diâmetro é um número.
+
+Etapas para que se crie uma hRgn usando uma caixa arredondada:
+  Se o raio desta caixa arredondada for 0, crie o hRgn usando a caixa arredondada como [se fosse] uma caixa; retorne.
   Atribua a caixa arredondada a uma caixa.
-  Atribua o raio desta caixa arredondada times 2 a um diameter número.
-  Processe "gdi32.dll" "BeginPath" com  \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-beginpath
-    \A função BeginPath abre um suporte de caminho no contexto de dispositivo especificado.
-    O quadro atual.[hDC] \Um identificador para o contexto do dispositivo.
-    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
-    \Se a função falhar, o valor de retorno é zero.
-  Processe "gdi32.dll" "RoundRect" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-roundrect
-  \A função RoundRect desenha um retângulo com cantos arredondados. O retângulo é delineado com a caneta atual e preenchido com a cor da canetinha atual.
-    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
+  Atribua o raio desta caixa arredondada times 2 a um diâmetro.
+  Processe "gdi32.dll" "BeginPath" com
+    O quadro atual.[hDC]
+  Processe "gdi32.dll" "RoundRect" com \ Desenha um retângulo com cantos arredondados.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-roundrect
+    O quadro atual [hDC]
     e A coordenada X do canto superior esquerdo desta caixa 
     e A coordenada Y do canto superior esquerdo desta caixa 
     e A coordenada X do canto inferior direito desta caixa 
     e A coordenada Y do canto inferior direito desta caixa 
-    e O diameter [width] \A largura, em coordenadas lógicas, da elipse usada para desenhar os cantos arredondados.
-    e O diameter. [height] \A altura, em coordenadas lógicas, da elipse usada para desenhar os cantos arredondados.    
-  Processe "gdi32.dll" "EndPath" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-endpath
-    \A função EndPath fecha um suporte de caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
-    O quadro atual. [hDC] \Um identificador para o contexto de dispositivo no qual o novo caminho é selecionado.
-    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
-    \Se a função falhar, o valor de retorno é zero.
-  Processe "gdi32.dll" "PathToRegion" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-pathtoregion
-  \A função PathToRegion cria uma região do caminho que é selecionado no contexto de dispositivo especificado. A região resultante usa coordenadas do dispositivo.
-    O quadro atual [hDC] \Identificador para um contexto de dispositivo que contém um caminho fechado.
-   retornando o hRgn. \Se a função for bem-sucedida, o valor de retorno é um identificador válido para a região.
-    \ Se a função falhar, o valor de retorno é zero.
+    e O diâmetro [width]
+    e O diâmetro. [height]
+  Processe "gdi32.dll" "EndPath" com 
+    O quadro atual. [hDC]
+  Processe "gdi32.dll" "PathToRegion" com
+    O quadro atual [hDC]
+   retornando o hRgn.
 
 Etapas para que se crie um catálogo usando uma contagem de recipientes:
   Aloque memória para o catálogo.
@@ -3323,7 +3212,7 @@ Etapas para que se determine se uma localização é debaixo of um linha reta horiz
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma localização está em uma elipse:
-  Crie um hRgn usando a elipse.
+  Crie uma hRgn usando a elipse.
   Preserve a localização.
   Divida a localização pelo quantidade de twips/pixel .
   Processe "gdi32.dll" "PtInRegion" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-ptinregion
@@ -3374,7 +3263,7 @@ Etapas para que se determine se uma localização está em um polígono:
     \Cada vez que o raio intercepta uma linha limite com um componente y positivo, aumente um valor de contagem. 
     \Cada vez que o raio cruza uma linha limite com um componente y negativo, diminua o valor de contagem.
     \O sistema destaca o pixel se o valor da contagem for diferente de zero.
-  Retornando um hRgn. \Se a função for bem-sucedida, o valor de retorno será o número identificador da região.
+  Retornando uma hRgn. \Se a função for bem-sucedida, o valor de retorno será o número identificador da região.
     \Se a função falhar, o valor de retorno será NULL.
   Processe "gdi32.dll" "PtInRegion" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-ptinregion
   \A função PtInRegion determina se o ponto especificado está dentro da região especificada.
@@ -3402,16 +3291,16 @@ Etapas para que se determine se uma localização está em uns polígonos:
 Etapas para que se determine se uma localização está em uma caixa arredondada:
   Preserve a caixa arredondada.
   Adicione a quantidade de twips/pixel para a canto inferior direito desta caixa arredondada.
-  Atribua o raio desta caixa arredondada times 2 a um diameter número.
+  Atribua o raio desta caixa arredondada times 2 a um diâmetro.
   Processe "gdi32.dll" "CreateRoundRectRgn" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-createroundrectrgn
   \A função CreateRoundRectRgn cria uma região retangular com cantos arredondados.
     A coordenada X do canto superior esquerdo desta caixa arredondada [x1] \todas as coordenadas estão em unidades de dispositivo
     e A coordenada Y do canto superior esquerdo desta caixa arredondada [y2]
     e A coordenada X do canto inferior direito desta caixa arredondada [x2]
     e A coordenada Y do canto inferior direito desta caixa arredondada [y2]
-    e O diameter [w] \Especifica a largura da elipse (em unidades de dispositivo) usada para criar os cantos arredondados .
-    e O diameter [h] \Especifica a altura da elipse (em unidades de dispositivo) usada para criar os cantos arredondados .
-  Retornando um hRgn. \Se a função for bem-sucedida, o valor de retorno será o identificador para a região.
+    e O diâmetro [w] \Especifica a largura da elipse (em unidades de dispositivo) usada para criar os cantos arredondados .
+    e O diâmetro [h] \Especifica a altura da elipse (em unidades de dispositivo) usada para criar os cantos arredondados .
+  Retornando uma hRgn. \Se a função for bem-sucedida, o valor de retorno será o identificador para a região.
     \Se a função falhar, o valor de retorno será NULL.
   Processe "gdi32.dll" "PtInRegion" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-ptinregion
   \A função PtInRegion determina se o ponto especificado está dentro da região especificada.
@@ -4077,7 +3966,7 @@ Etapas para que se destrua o hPen of um canvas:
     O hPen.\Um identificador para uma caneta, canetinha, fonte, bitmap, região ou paleta lógica.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
 
-Etapas para que se destrua um hRgn:
+Etapas para que se destrua uma hRgn:
   Processe "gdi32.dll" "DeleteObject" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deleteobject
   \A função DeleteObject exclui uma caneta, canetinha, fonte, bitmap, região ou paleta lógica, liberando todos os recursos do sistema associados ao objeto. 
   \Depois que o objeto é excluído, o identificador especificado não é mais válido.
@@ -6973,7 +6862,7 @@ Um hour é 60 minutes.
 
 Um hPen é um número identificador.
 
-Um hRgn é um número identificador.
+Uma hRgn é um número identificador.
 
 
 
@@ -7209,8 +7098,8 @@ Etapas para que se initialize before run: \ Ponto de entrada do aplicativo?
      Atribua 1 a um novo número; 
     Processe o ponteiro com 
         O endereço heap 
-        e 0 e
-        O endereçamento deste novo número 
+        e 0
+        e O endereçamento deste novo número
         e 4.
 
 Etapas para que se inicialize os canvases:
@@ -7945,16 +7834,16 @@ Etapas para que se faça uma par de números fracionários usando uma caixa e uma s
 Um margem é um número.
 
 Etapas para que se cubra internamente uma caixa:
-  Crie um hRgn usando a caixa.
+  Crie uma hRgn usando a caixa.
   Cubra internamente o hRgn.
   Destrua o hRgn.
 
 Etapas para que se cubra internamente uma elipse:
-  Crie um hRgn usando a elipse.
+  Crie uma hRgn usando a elipse.
   Cubra internamente o hRgn.
   Destrua o hRgn.
 
-Etapas para que se cubra internamente um hRgn:
+Etapas para que se cubra internamente uma hRgn:
   Processe "gdi32.dll" "ExtSelectClipRgn" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-extselectcliprgn
   \A função ExtSelectClipRgn combina a região especificada com a região de recorte atual usando o modo especificado.
     O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
@@ -7963,12 +7852,12 @@ Etapas para que se cubra internamente um hRgn:
     \RGN_DIFF = A nova região de recorte combina as áreas da região de recorte atual com as áreas excluídas da região identificada por hrgn.
 
 Etapas para que se cubra internamente um polígono:
-  Crie um hRgn usando o polígono.
+  Crie uma hRgn usando o polígono.
   Cubra internamente o hRgn.
   Destrua o hRgn.
 
 Etapas para que se cubra internamente uma caixa arredondada:
-  Crie um hRgn usando a caixa arredondada.
+  Crie uma hRgn usando a caixa arredondada.
   Cubra internamente o hRgn.
   Destrua o hRgn.
 
@@ -8007,16 +7896,16 @@ Etapas para que se cubra somente fora de uma caixa arredondada:
   Cubra externamente a caixa arredondada.
 
 Etapas para que se cubra externamente uma caixa:
-  Crie um hRgn usando a caixa.
+  Crie uma hRgn usando a caixa.
   Cubra externamente o hRgn.
   Destrua o hRgn.
 
 Etapas para que se cubra externamente uma elipse:
-  Crie um hRgn usando a elipse.
+  Crie uma hRgn usando a elipse.
   Cubra externamente o hRgn.
   Destrua o hRgn.
 
-Etapas para que se cubra externamente um hRgn:
+Etapas para que se cubra externamente uma hRgn:
   Processe "gdi32.dll" "ExtSelectClipRgn" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-extselectcliprgn
   \A função ExtSelectClipRgn combina a região especificada com a região de recorte atual usando o modo especificado.
     O quadro atual [hdc] \Um identificador para o contexto do dispositivo.
@@ -8025,12 +7914,12 @@ Etapas para que se cubra externamente um hRgn:
     \RGN_AND = A nova região de recorte combina as áreas sobrepostas da região de recorte atual e a região identificada por hrgn.
 
 Etapas para que se cubra externamente um polígono:
-  Crie um hRgn usando o polígono.
+  Crie uma hRgn usando o polígono.
   Cubra externamente o hRgn.
   Destrua o hRgn.
 
 Etapas para que se cubra externamente uma caixa arredondada:
-  Crie um hRgn usando a caixa arredondada.
+  Crie uma hRgn usando a caixa arredondada.
   Cubra externamente o hRgn.
   Destrua o hRgn.
 
@@ -11101,16 +10990,16 @@ Etapas para que se exponha tudo:
     e 0. [hrgn] \ Um identificador para a região a ser selecionada.
 
 Etapas para que se exponha conteúdo de uma caixa:
-  Crie um hRgn usando a caixa.
+  Crie uma hRgn usando a caixa.
   Mostre dentro de o hRgn.
   Destrua o hRgn.
 
 Etapas para que se exponha conteúdo de uma elipse:
-  Crie um hRgn usando a elipse.
+  Crie uma hRgn usando a elipse.
   Mostre dentro de o hRgn.
   Destrua o hRgn.
 
-Etapas para que se exponha conteúdo de um hRgn:
+Etapas para que se exponha conteúdo de uma hRgn:
   Processe "gdi32.dll" "ExtSelectClipRgn" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-extselectcliprgn
   \ A função ExtSelectClipRgn combina a região especificada com a região de recorte atual usando o modo especificado.
     O quadro atual e [hdc] \ Um identificador para o contexto do dispositivo.
@@ -11119,26 +11008,26 @@ Etapas para que se exponha conteúdo de um hRgn:
     \ Nesse caso a nova região de recorte combina a região de recorte atual [hdc] e a região selecionada [hrgn].
 
 Etapas para que se exponha conteúdo de um polígono:
-  Crie um hRgn usando o polígono.
+  Crie uma hRgn usando o polígono.
   Mostre dentro de o hRgn.
   Destrua o hRgn.
 
 Etapas para que se exponha conteúdo de uma caixa arredondada:
-  Crie um hRgn usando a caixa arredondada.
+  Crie uma hRgn usando a caixa arredondada.
   Mostre dentro de o hRgn.
   Destrua o hRgn.
 
 Etapas para que se exponha exterior de uma caixa:
-  Crie um hRgn usando a caixa.
+  Crie uma hRgn usando a caixa.
   Mostre fora de o hRgn.
   Destrua o hRgn.
 
 Etapas para que se exponha exterior de uma elipse:
-  Crie um hRgn usando a elipse.
+  Crie uma hRgn usando a elipse.
   Mostre fora de o hRgn.
   Destrua o hRgn.
 
-Etapas para que se exponha exterior de um hRgn:
+Etapas para que se exponha exterior de uma hRgn:
   Crie um old hRgn usando a caixa zero.
   Processe "gdi32.dll" "GetClipRgn" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getcliprgn
   \ A função GetClipRgn recupera um identificador que identifica a região de recorte definida pelo aplicativo atual para o contexto de dispositivo especificado.
@@ -11166,12 +11055,12 @@ Etapas para que se exponha exterior de um hRgn:
   Destrua o old hRgn.
 
 Etapas para que se exponha exterior de um polígono:
-  Crie um hRgn usando o polígono.
+  Crie uma hRgn usando o polígono.
   Mostre fora de o hRgn.
   Destrua o hRgn.
 
 Etapas para que se exponha exterior de uma caixa arredondada:
-  Crie um hRgn usando a caixa arredondada.
+  Crie uma hRgn usando a caixa arredondada.
   Mostre fora de o hRgn.
   Destrua o hRgn.
 
