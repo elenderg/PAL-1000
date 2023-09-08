@@ -478,7 +478,7 @@ Etapas para que se associe um ponteiro usando um quantidade de bytes:  \ Aloque 
 Etapas para que se role automaticamente uma caixa de texto usando uma localização e um detector:
   Se a caixa de texto for inexistente, desative o detector; retorne.
   Atribua a altura desta fonte desta caixa de texto a um número.
-  Limpe uma valor da diferença.
+  Limpe um valor da diferença.
   Atribua a caixa desta caixa de texto a uma caixa.
   Indent a caixa usando a quantidade de twips/pixel .
   Se a coordenada Y desta localização for menor do que a coordenada Y do canto superior esquerdo desta caixa, atribua o número ao número Y desta valor da diferença.
@@ -4672,48 +4672,27 @@ Etapas para que se finalize gdi+:
 Etapas para que se finalize o memory canvas:
   Processe "gdi32.dll" "SelectObject" com \A função SelectObject seleciona um objeto no contexto de dispositivo (Device Context) especificado. 
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-selectobject  
-    O memory canvas [HDC]  \ Número Identificador do contexto de dispositivo
-    e O saved memory hBitMap [hGdiObj ] \ O identificador do objeto a ser selecionado.
-    \Os bitmaps só podem ser selecionados em DCs de memória. Um bitmap não pode ser selecionado em mais de um DC ao mesmo tempo.
-  Retornando um hBitMap. [hGdiObj] \Se o objeto selecionado não for uma região e a função for bem-sucedida, o valor de retorno é um identificador para o objeto que está sendo substituído. 
-  Processe "gdi32.dll" "DeleteObject" com \A função DeleteObject exclui uma caneta, canetinha, fonte, bitmap, região ou paleta lógico, liberando todos os recursos do sistema associados ao objeto. Depois que o objeto é excluído, o identificador especificado não é mais válido.
+    O memory canvas [HDC]
+    e O saved memory hBitMap [hGdiObj ]
+  Retornando um hBitMap. [hGdiObj]
+  Processe "gdi32.dll" "DeleteObject" com \ Exclui o canvas, liberando todos os recursos do sistema associados ao objeto. 
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deleteobject
     O hBitMap. [hGdiObj ] 
-  Processe "gdi32.dll" "DeleteDC" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deletedc
-  \A função DeleteDC exclui o contexto de dispositivo especificado (DC).
-    O memory canvas. [hdc] \O identificador do contexto do dispositivo.
-    \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
-    \Um aplicativo não deve excluir um controlador de domínio cujo identificador foi obtido chamando a função GetDC. 
-    \Em vez disso, ele deve chamar a função ReleaseDC para liberar o DC.
+  Processe "gdi32.dll" "DeleteDC" com \ Exclui o contexto de dispositivo especificado (DC).
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-deletedc
+    O memory canvas. [hdc]
 
 \Etapas para que se finalize o módulo: \ vazio
 
 \Etapas para que se finalize o mouse: \ vazio
 
 Etapas para que se finalize a área de impressão:
-  Processe "kernel32.dll" "GlobalFree" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globalfree
-  \A função GlobalFree libera o objeto de memória global especificado e invalida seu identificador.
-    O número identificador do modo de dispositivo da impressora.[hMem] \ O número identificador do objeto de memória global. 
-    \Esse identificador é retornado pela função GlobalAlloc ou GlobalReAlloc. 
-    \Não é seguro liberar memória alocada com LocalAlloc.
-    \As funções globais têm maior sobrecarga e fornecem menos recursos do que outras funções de gerenciamento de memória. 
-    \Novos aplicativos devem usar as funções de heap, a menos que a Documentação indique que uma função global deve ser usada. 
-    \Para obter mais informações, consulte Funções globais e locais.
-    \Se o processo examinar ou modificar a memória depois de liberada, 
-    \pode ocorrer corrupção de heap ou pode ser gerada uma exceção de violação de acesso (EXCEPTION_ACCESS_VIOLATION).
-    \A função GlobalFree irá liberar um objeto de memória bloqueado. 
-    \Um objeto de memória bloqueado possui uma contagem de bloqueio maior que zero. 
-    \A função GlobalLock bloqueia um objeto de memória global e aumenta a contagem de bloqueios em 1. 
-    \A função GlobalUnlock o desbloqueia e diminui a contagem de bloqueios em 1. 
-    \Para obter a contagem de bloqueios de um objeto de memória global, use a função GlobalFlags.
-    \Se um aplicativo estiver sendo executado em uma versão de depuração do sistema, 
-    \a função GlobalFree emitirá uma mensagem informando que um objeto bloqueado está sendo liberado. 
-    \Se você estiver depurando o aplicativo, GlobalFree entrará em um ponto de interrupção antes de liberar um objeto bloqueado. 
-    \Isso permite que você verifique o comportamento pretendido e, em seguida, continue a execução.
+  Processe "kernel32.dll" "GlobalFree" com \ Libera um objeto de memória global e invalida seu identificador.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globalfree  
+    O número identificador do modo de dispositivo da impressora.[hMem]
   Atribua 0 à área de impressão.
 
 \Etapas para que se finalize a tela:
-
 \Etapas para que se finalize o canvas da tela:
 
 Etapas para que se finalize um talker:
@@ -4722,75 +4701,38 @@ Etapas para que se finalize um talker:
   Atribua nil ao talker.
 
 Etapas para que se finalize o janela do programa:
-  Processe "user32.dll" "DestroyWindow" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-destroywindow
-  \A função DestroyWindow destrói a janela especificada. 
-  \A função envia mensagens WM_DESTROY e WM_NCDESTROY para a janela para desativá-la e remover o foco do teclado dela. 
-  \A função também destrói o menu da janela, 
-  \esvazia a fila de mensagens do tópico, 
-  \destrói temporizadores, 
-  \remova a propriedade da área de transferência e 
-  \quebra a cadeia do visualizador da área de transferência (se a janela estiver no topo da cadeia do visualizador).
-  \Se a janela especificada for uma janela pai ou proprietária, 
-  \DestroyWindow destrói automaticamente as janelas filhas ou proprietárias associadas ao destruir a janela pai ou proprietária. 
-  \A função primeiro destrói as janelas filhas ou proprietárias e, em seguida, destrói a janela pai ou proprietária.
-  \DestroyWindow também destrói caixas de diálogo não modais criadas pela função CreateDialog.
-    A janela principal do programa. [hWnd] \O número identificador da janela a ser destruída.
-    \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
-    \Um thread não pode usar DestroyWindow para destruir uma janela criada por um thread diferente.
-    \Se a janela que está sendo destruída for uma janela filho que não tem o estilo WS_EX_NOPARENTNOTIFY, uma mensagem WM_PARENTNOTIFY é enviada ao pai.
+  Processe "user32.dll" "DestroyWindow" com \ Destrói a janela especificada. 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-destroywindow
+    A janela principal do programa. [hWnd]
   Comece. [a executar o código abaixo]
-  \ Execute a função "GetMessageA" da biblioteca "user32.dll" usando como argumentos os seguintes parâmetros: 
-  \\o endereçamento duma MSG e os valores 0, 0 e 0, esperando um número como resultado.
-  Processe "user32.dll" "GetMessageA" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-getmessagea
-  \A função GetMessageA obtém uma mensagem da fila de mensagens do thread de chamada. 
-  \A função despacha mensagens enviadas de entrada até que uma mensagem postada esteja disponível para obtenção.
-      O endereçamento duma MSG [lpMsg] \Um ponteiro para uma estrutura MSG que recebe informações da mensagem da fila de mensagens do segmento.
-      \https://learn.microsoft.com/pt-br/windows/desktop/api/winuser/ns-winuser-MSG
-      e 0 [hWnd]  \Um identificador para a janela cujas mensagens devem ser recuperadas. A janela deve pertencer ao segmento atual.
-    \Se hWnd for NULL, GetMessage recuperará mensagens para qualquer janela que pertença ao segmento atual 
-    \e quaisquer mensagens na fila de mensagens do segmento atual cujo valor hwnd seja NULL.
-    \Portanto, se hWnd for NULL, tanto as mensagens da janela quanto as mensagens do thread serão processadas.
-      e 0 [wMsgFilterMin] \O valor inteiro do menor valor da mensagem a ser recuperado. 
-      e 0 [wMsgFilterMax] \O valor inteiro do maior valor da mensagem a ser recuperado. 
-    \Se wMsgFilterMin e wMsgFilterMax forem 0, GetMessage retorna todas as mensagens disponíveis (ou seja, nenhuma filtragem de intervalo é executada).
-    Retornando um número. \Se a função recuperar uma mensagem diferente de WM_QUIT, o valor de retorno será diferente de zero.    
-    \Se houver um erro, o valor de retorno é -1. 
-    \Por exemplo, a função falhará se hWnd for um identificador de janela inválido ou lpMsg for um ponteiro inválido. 
-    Se o número for menor do que 1, pare. \Se a função recuperar a mensagem WM_QUIT, o valor de retorno será zero.
-    Processe "user32.dll" "TranslateMessage" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-translatemessage
-    \Traduz mensagens de teclas virtuais em mensagens de caracteres. 
-    \As mensagens de caracteres são postadas na fila de mensagens do thread de chamada, 
-    \para serem lidas na próxima vez que o thread chamar a função GetMessage ou PeekMessage.
-      o endereçamento desta MSG. [*lpMsg] \Um ponteiro para uma estrutura MSG 
-      \ https://learn.microsoft.com/pt-br/windows/desktop/api/winuser/ns-winuser-msg
-      \que contém informações de mensagem recuperadas da fila de mensagens do thread de chamada usando a função GetMessage ou PeekMessage.
-      \Se a mensagem for traduzida (ou seja, uma mensagem de caractere é postada na fila de mensagens do encadeamento), o valor de retorno é diferente de zero.
-      \Se a mensagem for WM_KEYDOWN, WM_KEYUP, WM_SYSKEYDOWN ou WM_SYSKEYUP, o valor de retorno será diferente de zero, independentemente da tradução.
-    \Se a mensagem não for traduzida (ou seja, uma mensagem de caractere não é postada na fila de mensagens do encadeamento), o valor de retorno é zero.
-    Processe "user32.dll" "DispatchMessageA" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-dispatchmessagea
-    \Envia uma mensagem para um procedimento de janela. Normalmente é usado para despachar uma mensagem recuperada pela função GetMessage.
-      o endereçamento desta MSG.[*lpMsg]  \Um ponteiro para uma estrutura que contém a mensagem.
-      \O valor de retorno especifica o valor retornado pelo procedimento de janela. E
-      \mbora seu significado dependa da mensagem que está sendo despachada, o valor de retorno geralmente é ignorado.
+    Processe "user32.dll" "GetMessageA" com \ Obtém uma mensagem da fila de mensagens do thread de chamada. 
+    \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-getmessagea
+        O endereçamento duma MSG [lpMsg] \ Consulte https://learn.microsoft.com/pt-br/windows/desktop/api/winuser/ns-winuser-MSG
+        e 0 [hWnd]
+        e 0 [wMsgFilterMin]
+        e 0 [wMsgFilterMax]
+      Retornando um número. 
+      Se o número for menor do que 1, pare.
+    Processe "user32.dll" "TranslateMessage" com \ Traduz mensagens de teclas virtuais em mensagens de caracteres. 
+    \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-translatemessage
+      o endereçamento desta MSG. [*lpMsg] 
+    Processe "user32.dll" "DispatchMessageA" com \ Usado para despachar uma mensagem obtida pela função GetMessage.
+    \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-dispatchmessagea
+      o endereçamento desta MSG.[*lpMsg]
   Recomece. [percorra novamente o código acima]
   Desmanche a fila de eventos.
   Destrua o evento atual.
 
 Etapas para que se finalize winsock:
-  Processe "ws2_32.dll" "WSACleanup". \https://learn.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-wsacleanup
-  \A função WSACleanup encerra o uso da DLL Winsock 2 (Ws2_32.dll).
-  \O valor de retorno é zero se a operação foi bem-sucedida. Caso contrário, o valor SOCKET_ERROR é retornado.
-  \Um aplicativo ou DLL é necessário para executar uma chamada WSAStartup com êxito antes de usar os serviços do Windows Sockets. 
-  \Quando tiver concluído o uso de Windows Sockets, 
-  \o aplicativo ou DLL deve chamar WSACleanup para cancelar o registro de uma implementação de Windows Sockets
-\  e permitir que a implementação libere quaisquer recursos alocados em nome do aplicativo ou DLL.
+  Processe "ws2_32.dll" "WSACleanup". \ Encerra o uso da DLL Winsock 2 (Ws2_32.dll).
+  \ Documentação: ->https://learn.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-wsacleanup
 
 A find anchor é uma anchor.
 
 Etapas para que se encontre uma escolha usando uma localização:
-  Start com nada no escolha.
+  Start com nada na escolha.
   Comece. [a executar o código abaixo]
-    Obtenha o [first/subsequente] escolha desde as escolhas.
+    Obtenha a [first/subsequente] escolha desde as escolhas.
     Se o escolha estiver sumido do mapa, retorne.
     Se a localização estiver na caixa desta escolha, pare.
   Recomece. [percorra novamente o código acima]
@@ -4880,8 +4822,6 @@ Etapas para que se encontre o subsequente misspelling em uma caixa de texto usan
     Se o detector estiver ativo, retorne.
   Recomece. [percorra novamente o código acima]
 
-
-
 Etapas para que se encontre um ponteiro usando uma string e um catálogo:
   Encontre uma referência usando a string e o catálogo.
   Se a referência não for inexistente, atribua o ponteiro deste referência ao ponteiro; retorne.
@@ -4962,18 +4902,17 @@ Etapas para que se encontre uma value string usando o environment variáveis e um
   Anexe o caractere NULL após o nome.
   Atribua 32767 a uma quantidade de caracteres. \ tamanho máximo da variável de ambiente
   Reaponte o caractere inicial desta value string usando a quantidade de caracteres.
-  Processe "kernel32.dll" "GetEnvironmentVariableA" com \Recupera o conteúdo da variável especificada do bloco de ambiente do processo de chamada.
+  Processe "kernel32.dll" "GetEnvironmentVariableA" com \ Recupera o conteúdo da variável especificada do bloco de ambiente do processo de chamada.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/processenv/nf-processenv-getenvironmentvariablea  
-    O caractere inicial deste nome [lpName] \O nome da variável de ambiente.
-    e O caractere inicial desta value string [lpBuffer] \ O conteúdo da variável de ambiente especificada como uma string terminada em nulo.
-    e A quantidade de caracteres [nSize] \ O tamanho do lpBuffer , incluindo o caractere de terminação nula, em caracteres.
-  Retornando a quantidade de caracteres. \O valor de retorno é o número de caracteres do lpBuffer , sem incluir o caractere nulo de terminação.
+    O caractere inicial deste nome [lpName]
+    e O caractere inicial desta value string [lpBuffer]
+    e A quantidade de caracteres [nSize]
+  Retornando a quantidade de caracteres.
   Atribua o caractere inicial desta value string mais a quantidade de caracteres menos 1 ao caractere final desta value string. 
 
 Um finger é um endereço de byte .
 
-\Um flag has 4 bytes.
-Um detector é uma estrutura com 4 bytes. \é uma estrutura com
+Um detector é uma estrutura com 4 bytes.
 
 Etapas para que se flip uma fração:
   Permute o numerador desta fração com o denominador desta fração.
@@ -4986,14 +4925,11 @@ Etapas para que se flip o gpBitmap em uma imagem:
   Flip o gpBitmap desta imagem.
 
 Etapas para que se flip um GpImage:
-  Processe "gdiplus.dll" "GdipImageRotateFlip" com \ https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-image-rotateflip
-  \A função GdipImageRotateFlip gira e/ou inverte a imagem. É a imagem que sofre a transformação e não o gráfico no qual será exibida.
-   \O ângulo e a inversão são definidos por uma das constantes da enumeração RotateFlipType .
-    O GpImage [*image] \Ponteiro para o objeto Image .
-    e 6 [rfType = RotateNoneFlipY aka Rotate180FlipX]. \ Elemento da enumeração RotateFlipType que especifica o tipo de rotação e o tipo de inversão.
-    \#RotateNoneFlipY = # Rotate180FlipX Especifica nenhuma rotação seguida por uma inversão vertical.
-    \Se a função for bem-sucedida, ela retornará 0, que é uma constante da enumeração de status .
-    \Se a função falhar, ela retornará um dos outros valores da enumeração de status .
+  Processe "gdiplus.dll" "GdipImageRotateFlip" com \Gira e/ou inverte uma imagem.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-image-rotateflip
+    O GpImage [*image]
+    e 6 [rfType = RotateNoneFlipY aka Rotate180FlipX]. 
+    \ Consulte https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusimaging/ne-gdiplusimaging-rotatefliptype
 
 Etapas para que se flip uma imagem:
   Se a imagem for inexistente, retorne.
@@ -5015,26 +4951,25 @@ Etapas para que se flip um polígono:
 Etapas para que se desmanche all input;
 Etapas para que se desmanche all inputs;
 Etapas para que se desmanche todos os eventos:
-  Desmanche algum messages.
+  Desmanche algumas mensagens.
   Desmanche a fila de eventos.
 
-Etapas para que se desmanche algum messages:
-  Processe "user32.dll" "PeekMessageA" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-peekmessagea
-  \Despacha as mensagens enviadas recebidas, verifica a fila de mensagens do thread para uma mensagem postada e recupera a mensagem (se houver).
-    O endereçamento duma MSG [lpMsg] \ Um ponteiro para uma estrutura MSG que recebe informações da mensagem.
-    e 0 [hWnd] \ Um identificador para a janela cujas mensagens devem ser recuperadas. A janela deve pertencer ao segmento atual.
-    \Se hWnd for NULL , PeekMessage recupera mensagens para qualquer janela que pertença ao segmento atual e todas as mensagens na fila de mensagens do segmento atual cujo valor hwnd é NULL (consulte a estrutura MSG ). 
-    \Portanto, se hWnd for NULL , as mensagens da janela e as mensagens do thread serão processadas.
-    e 0 [wMsgFilterMin] \ O valor da primeira mensagem no intervalo de mensagens a serem examinadas. 
-    \Use WM_KEYFIRST (0x0100) para especificar a primeira mensagem do teclado ou WM_MOUSEFIRST (0x0200) para especificar a primeira mensagem do mouse.
-    \Se wMsgFilterMin e wMsgFilterMax forem zero, PeekMessage retorna todas as mensagens disponíveis (ou seja, nenhuma filtragem de intervalo é executada).
-    e 0 [wMsgFilterMax] \ O valor da última mensagem no intervalo de mensagens a serem examinadas. 
-    \Use WM_KEYLAST para especificar a última mensagem do teclado ou WM_MOUSELAST para especificar a última mensagem do mouse.
-    e 1 [wRemoveMsg = PM_REMOVE] \ Especifica como as mensagens devem ser tratadas. 
-    \PM_REMOVE = As mensagens não são removidas da fila após o processamento por PeekMessage .
-  Retornando um número. \Se uma mensagem estiver disponível, o valor de retorno será diferente de zero.
-  Se o número for 0, retorne. \Se nenhuma mensagem estiver disponível, o valor de retorno é zero.
-  Se a mensagem desta MSG for 15 [WM_PAINT], Processe "user32.dll" "ValidateRect" com a janela principal do programa e 0. \ que tal ter uma rotina específica para isso?
+Etapas para que se desmanche algumas mensagens:
+  Processe "user32.dll" "PeekMessageA" com 
+  \ Despacha mensagens de entrada não enfileiradas, verifica a fila de mensagens de thread de uma mensagem postada e recupera a mensagem (se houver alguma).
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-peekmessagea  
+    O endereçamento duma MSG [lpMsg]
+    e 0 [hWnd]
+    e 0 [wMsgFilterMin]
+    e 0 [wMsgFilterMax]
+    e 1 [wRemoveMsg = PM_REMOVE]
+  Retornando um número.
+  Se o número for 0, retorne.
+  Se a mensagem desta MSG for 15 [WM_PAINT], 
+    Processe "user32.dll" "ValidateRect" com \ Valida a área do cliente dentro de um retângulo removendo o retângulo da região de atualização da janela especificada.
+    \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-validaterect
+      A janela principal do programa [hWnd]
+      e 0.  [*lpRect]
   Recomece. [percorra novamente o código acima]
 
 Etapas para que se desmanche um fila de eventos:
