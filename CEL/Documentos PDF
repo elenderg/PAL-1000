@@ -418,8 +418,8 @@ Etapas para que se pinte uma string sob uma localização com uma cor e uma fonte 
 
 Etapas para que se pinte uma string sob uma localização com uma cor e uma fonte:
   Se a página detector deste pdf state estiver ativo, pinte a string sob a localização com a cor e a fonte (pdf style); retorne.
-  Defina o código da cor of o quadro atual usando a cor.
-  Crie o número da fonte of o quadro atual usando a fonte.
+  Defina o código da cor of o contexto do dispositivo atual usando a cor.
+  Crie o número da fonte of o contexto do dispositivo atual usando a fonte.
   Ajuste espaçamento  da fonte usando a string.
   Atribua o caractere inicial desta string ao caractere inicial dum subtexto.
   Atribua o caractere inicial deste subtexto mais a caixa de texto cutoff menos 1 ao caractere final deste subtexto.
@@ -429,16 +429,16 @@ Etapas para que se pinte uma string sob uma localização com uma cor e uma fonte:
     Se o caractere final deste subtexto for maior do que o caractere final desta string, atribua o caractere final desta string ao caractere final deste subtexto.
     Processe "gdi32.dll" "TextOutA" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-textouta
     \A função TextOut grava uma sequência de caracteres no local especificado, usando a fonte, a cor de fundo e a cor do texto atualmente selecionadas.
-      O quadro atual [hdc] \ Um identificador para o contexto do dispositivo.
+      O contexto do dispositivo atual [hdc] \ Um identificador para o contexto do dispositivo.
       e A coordenada X desta localização [x] \ A coordenada x, em coordenadas lógicas, do ponto de referência que o sistema usa para alinhar a string.
       e A coordenada Y desta localização [y] \ A coordenada y, em coordenadas lógicas, do ponto de referência que o sistema usa para alinhar a string.
       e O caractere inicial deste subtexto [lpString] \ Um ponteiro para a string a ser desenhada. A string não precisa ser terminada em zero, porque cchString especifica o comprimento da string.
       e A quantidade de caracteres deste subtexto. [c] \ O comprimento da string apontada por lpString, em caracteres.
-    Obtenha uma largura usando o subtexto e o quadro atual.
+    Obtenha uma largura usando o subtexto e o contexto do dispositivo atual.
     Adicione a largura para a coordenada X desta localização.
     Mova o subtexto usando a caixa de texto cutoff.
   Recomece. [percorra novamente o código acima]
-  Destrua o número da fonte of o quadro atual.
+  Destrua o número da fonte of o contexto do dispositivo atual.
 
 Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de preenchimento (pdf style):
   Se a cor da borda e a cor de preenchimento são clear, retorne.
@@ -471,21 +471,21 @@ Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
 Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de preenchimento:
   Se a página detector deste pdf state estiver ativo, pinte a caixa arredondada com a cor da borda e a cor de preenchimento (pdf style); retorne.
   Preserve a caixa arredondada.
-  Crie o hPen of o quadro atual usando a cor da borda.
-  Crie o hBrush of o quadro atual usando a cor de preenchimento.
+  Crie o hPen of o contexto do dispositivo atual usando a cor da borda.
+  Crie o hBrush of o contexto do dispositivo atual usando a cor de preenchimento.
   Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta caixa arredondada.
   Atribua o raio desta caixa arredondada times 2 a um diâmetro.
   Processe "gdi32.dll" "RoundRect" com \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-roundrect
   \A função RoundRect desenha um retângulo com cantos arredondados. O retângulo é delineado e preenchido com a cor da canetinha atual.
-    O quadro atual [hDC] \Trata-se de um numéro identificador do contexto do dispositivo.
+    O contexto do dispositivo atual [hDC] \Trata-se de um numéro identificador do contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa arredondada 
     e A coordenada Y do canto superior esquerdo desta caixa arredondada 
     e A coordenada X do canto inferior direito desta caixa arredondada 
     e A coordenada Y do canto inferior direito desta caixa arredondada 
     e O diâmetro [width] \A largura, em coordenadas lógicas, da elipse usada para desenhar os cantos arredondados.
     e O diâmetro. [height] \A altura, em coordenadas lógicas, da elipse usada para desenhar os cantos arredondados.
-  Destrua o hBrush of o quadro atual.
-  Destrua o hPen of o quadro atual.
+  Destrua o hBrush of o contexto do dispositivo atual.
+  Destrua o hPen of o contexto do dispositivo atual.
 
 Etapas para que se pinte um polígono com uma cor da borda e uma cor de preenchimento:
   Se a página detector deste pdf state estiver ativo, pinte o polígono com a cor da borda e a cor de preenchimento (pdf style); retorne.
@@ -574,12 +574,12 @@ Etapas para que se pinte uma imagem (pdf style):
 Etapas para que se pinte uma imagem:
   Se a página detector deste pdf state estiver ativo, pinte a imagem (pdf style); retorne.
   Se a imagem for inexistente, retorne.
-  Salve o quadro atual.
+  Salve o contexto do dispositivo atual.
   Cubra externamente a caixa desta imagem.
   Processe "gdiplus.dll" "GdipCreateFromHDC" com 
   \ Cria um objeto Graphics associado a um contexto de dispositivo especificado.
   \ Ao usar esta função para criar um objeto Graphics, certifique-se de que o objeto Graphics seja excluído antes que o contexto do dispositivo seja liberado.
-    O quadro atual [hdc] \ Identificador para um contexto de dispositivo que será associado ao novo objeto Graphics.
+    O contexto do dispositivo atual [hdc] \ Identificador para um contexto de dispositivo que será associado ao novo objeto Graphics.
     e O endereçamento dum gpGraphic. [**graphics] \Ponteiro para uma variável que recebe um ponteiro para o novo objeto Graphics criado.
   Processe "gdiplus.dll" "GdipSetPageUnit" com 
   \Define a unidade de medida para este objeto Graphics. 
@@ -594,7 +594,7 @@ Etapas para que se pinte uma imagem:
   \ Exclui o objeto Graphics especificado.
     O gpGraphic. [*graphics] \ponteito do número identificador do objeto Graphics.
    \Valor de retorno da funlção: Retorna o valor GpStatus, sendo que o valor 0 significa que a função foi bem sucedida.
-  Restaure o quadro atual.
+  Restaure o contexto do dispositivo atual.
 
 Etapas para que se pinte uma linha reta com uma cor (pdf style):
   Se a cor estiver clear, retorne.
@@ -605,10 +605,10 @@ Etapas para que se pinte uma linha reta com uma cor (pdf style):
 
 Etapas para que se pinte uma linha reta com uma cor:
   Se a página detector deste pdf state estiver ativo, pinte a linha reta com a cor (pdf style); retorne.
-  Crie o hPen of o quadro atual usando a cor.
+  Crie o hPen of o contexto do dispositivo atual usando a cor.
   Processe "gdi32.dll" "MoveToEx" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-movetoex
   \A função MoveToEx atualiza a posição atual para o ponto especificado e, opcionalmente, retorna a posição anterior.
-    O quadro atual [hdc] \o número identificador do contexto do dispositivo.
+    O contexto do dispositivo atual [hdc] \o número identificador do contexto do dispositivo.
     e A coordenada X desta localização inicial desta linha reta [x] \Especifica a coordenada x da nova posição, em unidades lógicas.
     e A coordenada Y desta localização inicial desta linha reta [y] \Especifica a coordenada y da nova posição, em unidades lógicas.
     e nil. [lppt] \Ponteiro para uma estrutura POINT que recebe a posição atual anterior. 
@@ -620,7 +620,7 @@ Etapas para que se pinte uma linha reta com uma cor:
   \A função LineTo desenha uma linha da posição atual até, mas não incluindo, o ponto especificado.
   \A linha é desenhada usando a caneta atual e, se a caneta for uma caneta geométrica, a cor da canetinha atual.
   \Se LineTo for bem-sucedido, a posição atual será definida como o ponto final especificado.
-    O quadro atual [hdc] \o número identificador do contexto do dispositivo.
+    O contexto do dispositivo atual [hdc] \o número identificador do contexto do dispositivo.
     e A coordenada X desta localização final desta linha reta [x] \Especifica a coordenada x, em unidades lógicas, do ponto final da linha.
     e A coordenada Y desta localização final desta linha reta. [y] \Especifica a coordenada y, em unidades lógicas, do ponto final da linha.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
@@ -632,12 +632,12 @@ Etapas para que se pinte uma linha reta com uma cor:
   \Observação: Nem todos os dispositivos suportam a função SetPixelV. 
   \Para obter mais informações, consulte a descrição do recurso RC_BITBLT na função GetDeviceCaps.
   \SetPixelV é mais rápido do que SetPixel porque não precisa retornar o valor da cor do ponto realmente pintado.
-    O quadro atual [hdc] \O identificador do contexto do dispositivo.
+    O contexto do dispositivo atual [hdc] \O identificador do contexto do dispositivo.
     e A coordenada X desta localização final desta linha reta [z] \A coordenada z, em unidades lógicas, do ponto a ser definido.
     e A coordenada Y desta localização final desta linha reta  [y] \A coordenada y, em unidades lógicas, do ponto a ser definido.
     e O código da cor.\A cor a ser usada para pintar o ponto. Para criar um valor de cor COLORREF, use a macro RGB.
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
-  Destrua o hPen of o quadro atual.
+  Destrua o hPen of o contexto do dispositivo atual.
 
 Etapas para que se pinte um gpBitmap sob uma localização (pdf style):
   Se o gpBitmap for inexistente, retorne.
@@ -691,20 +691,20 @@ Etapas para que se pinte uma elipse com uma cor da borda e uma cor de preenchime
 Etapas para que se pinte uma elipse com uma cor da borda e uma cor de preenchimento:
   Se a página detector deste pdf state estiver ativo, pinte a elipse com a cor da borda e a cor de preenchimento (pdf style); retorne.
   Preserve a elipse.
-  Crie o hPen of o quadro atual usando a cor da borda.
-  Crie o hBrush of o quadro atual usando a cor de preenchimento.
+  Crie o hPen of o contexto do dispositivo atual usando a cor da borda.
+  Crie o hBrush of o contexto do dispositivo atual usando a cor de preenchimento.
   Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta elipse.
   Processe "gdi32.dll" "Ellipse" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-ellipse
   \A função Ellipse desenha uma elipse. O centro da elipse é o centro do retângulo delimitador especificado. A elipse é delineada com a caneta atual e preenchida com a cor da canetinha atual.
-    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
+    O contexto do dispositivo atual [hDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta elipse 
     e A coordenada Y do canto superior esquerdo desta elipse 
     e A coordenada X do canto inferior direito desta elipse 
     e A coordenada Y do canto inferior direito desta elipse. 
     \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
     \Se a função falhar, o valor de retorno é zero.
-  Destrua o hBrush of o quadro atual.
-  Destrua o hPen of o quadro atual.
+  Destrua o hBrush of o contexto do dispositivo atual.
+  Destrua o hPen of o contexto do dispositivo atual.
 
 Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimento (pdf style):
   Se a cor da borda e a cor de preenchimento são clear, retorne.
@@ -718,19 +718,19 @@ Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimen
 Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimento:
   Se a página detector deste pdf state estiver ativo, pinte a caixa com a cor da borda e a cor de preenchimento (pdf style); retorne.
   Preserve a caixa.
-  Crie o hPen of o quadro atual usando a cor da borda.
-  Crie o hBrush of o quadro atual usando a cor de preenchimento.
+  Crie o hPen of o contexto do dispositivo atual usando a cor da borda.
+  Crie o hBrush of o contexto do dispositivo atual usando a cor de preenchimento.
   Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta caixa.
   Processe "gdi32.dll" "Rectangle" com 
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-rectangle
   \A função Retângulo desenha um retângulo. O retângulo é delineado com a caneta (canetinha) atual e preenchido com o rolo de tinta (brush) atual.
-    O quadro atual [hDC] \Um identificador para o contexto do dispositivo.
+    O contexto do dispositivo atual [hDC] \Um identificador para o contexto do dispositivo.
     e A coordenada X do canto superior esquerdo desta caixa
     e A coordenada Y do canto superior esquerdo desta caixa
     e A coordenada X do canto inferior direito desta caixa 
     e A coordenada Y do canto inferior direito desta caixa.    
-  Destrua o hBrush of o quadro atual.
-  Destrua o hPen of o quadro atual.
+  Destrua o hBrush of o contexto do dispositivo atual.
+  Destrua o hPen of o contexto do dispositivo atual.
 
 Etapas para que se crie um objeto pdf usando um categoria:
   Aloque memória para o objeto pdf.
@@ -963,7 +963,7 @@ Etapas para que se inicie uma folha usando uma caixa:
   Processe "gdi32.dll" "StartPage" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-startpage
   \ A função StartPage prepara o driver da impressora para aceitar dados.
     A área de impressão. [hdc] \ O identificador do contexto do dispositivo para o trabalho de impressão.
-  Atribua a área de impressão ao quadro atual.
+  Atribua a área de impressão ao contexto do dispositivo atual.
   Processe "gdi32.dll" "GetDeviceCaps" com 
     A área de impressão [hdc]
     e 88 [index = LOGPIXELSX] 
@@ -1029,6 +1029,6 @@ Etapas para que se end uma folha:
     \ A quantidade de memória virtual disponível, 
     \ A quantidade de memória alocada por processos de chamada 
     \ e A quantidade de fragmentação no heap do processo.
-  Atribua o memory canvas ao quadro atual.
+  Atribua o contexto de dispositivo de memória ao contexto do dispositivo atual.
   Atribua o saved quantidade de twips/pixel à quantidade de twips/pixel .
 

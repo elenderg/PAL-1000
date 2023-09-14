@@ -21,10 +21,10 @@ Etapas para que se atribua a adjusted altura duma fonte para uma altura:
 
 Etapas para que se atribua o actual data of uma fonte para um trecho:
   \ só funciona com fontes true tipo e open tipo
-  Crie o número da fonte of o memory canvas usando a fonte.
+  Crie o número da fonte of o contexto de dispositivo de memória usando a fonte.
   Processe "gdi32.dll" "GetFontData" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getfontdata
   \A função GetFontData recupera dados métricos de fonte para uma fonte TrueType.
-    O memory canvas [hDC] \Um identificador para o contexto do dispositivo.
+    O contexto de dispositivo de memória [hDC] \Um identificador para o contexto do dispositivo.
     e 0 [dwTable] \O nome de uma tabela de métricas de fonte da qual os dados da fonte devem ser recuperados. 
     \Este parâmetro pode identificar uma das tabelas métricas documentadas na especificação TrueType Font Files publicada pela Microsoft Corporation. 
     \Se este parâmetro for zero, as informações são recuperadas começando no início do arquivo para arquivos de fonte TrueType ou do início dos dados para a fonte atualmente selecionada para arquivos TrueType Collection. 
@@ -37,19 +37,19 @@ Etapas para que se atribua o actual data of uma fonte para um trecho:
   Retornando uma contagem. \Se a função for bem-sucedida, o valor de retorno será o número de bytes retornados. Se a função falhar, o valor de retorno é -1 (GDI_ERROR).
   Reaponte o caractere inicial deste trecho usando a contagem.
   Processe "gdi32.dll" "GetFontData" com 
-    O memory canvas [hDC]
+    O contexto de dispositivo de memória [hDC]
     e 0 [dwTable]
     e 0 [dwOffset]
     e O caractere inicial deste trecho [pvBuffer]
     e A contagem. [cjBuffer]
   Atribua o caractere inicial deste trecho mais a contagem menos 1 ao caractere final deste trecho.
-  Destrua o número da fonte of o memory canvas.
+  Destrua o número da fonte of o contexto de dispositivo de memória.
 
 Etapas para que se obtenha um OutlineTextmetric usando uma fonte:
-  Crie o número da fonte of o memory canvas usando a fonte.
+  Crie o número da fonte of o contexto de dispositivo de memória usando a fonte.
   Processe "gdi32.dll" "GetOutlineTextMetricsA" com \ Documentação> -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getoutlinetextmetricsa
   \A função GetOutlineTextMetrics recupera métricas de texto para fontes TrueType.
-    O memory canvas [hDC] \Um identificador para o contexto do dispositivo.
+    O contexto de dispositivo de memória [hDC] \Um identificador para o contexto do dispositivo.
     e 0 [cjCopy] \ O tamanho, em bytes, do array que recebe as métricas de texto.
     e 0 [potm] \Um ponteiro para uma estrutura OUTLINETEXTMETRIC. 
     \Se potm for NULL, a função retornará o tamanho do buffer necessário para os dados métricos recuperados.
@@ -57,10 +57,10 @@ Etapas para que se obtenha um OutlineTextmetric usando uma fonte:
     \Se a função falhar, o valor de retorno é zero.
   Associe um POutlineTextmetric usando o número resultante. \ Associe / Defina \ Designe / Institua / Constitua / Estabeleça 
   Processe "gdi32.dll" "GetOutlineTextMetricsA" com 
-    O memory canvas [hDC]
+    O contexto de dispositivo de memória [hDC]
     e O número resultante [cjCopy]
     e O POutlineTextmetric. [potm]
   Atribua o conteúdo deste POutlineTextmetric ao OutlineTextmetric.
-  Destrua o número da fonte of o quadro atual.
+  Destrua o número da fonte of o contexto do dispositivo atual.
   Desassocie o POutlineTextmetric.
 
