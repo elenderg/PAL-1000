@@ -6,6 +6,8 @@
 [ISpVoice](https://learn.microsoft.com/pt-br/previous-versions/windows/desktop/ee413476(v=vs.85))  
 # Estruturas
 [ABC](https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-ABC)  
+[ADDRINFOA](https://learn.microsoft.com/pt-br/windows/win32/api/ws2def/ns-ws2def-addrinfoa)  
+
 [FILETIME](https://learn.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-filetime)  
 [GCP_RESULTS](https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-gcp_resultsa)  
 [IN_ADDR](https://learn.microsoft.com/pt-br/windows/win32/api/inaddr/ns-inaddr-In_Addr)  
@@ -18,9 +20,11 @@
 [POINT](https://learn.microsoft.com/pt-br/windows/win32/api/windef/ns-windef-point)  
 [PROCESS_INFORMATION](https://learn.microsoft.com/pt-br/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_information)  
 [SECURITY_ATTRIBUTES](https://learn.microsoft.com/pt-br/previous-versions/windows/desktop/legacy/aa379560(v=vs.85))  
+[sockaddr2](https://learn.microsoft.com/pt-br/windows/win32/winsock/sockaddr-2)  
 [STARTUPINFOA](https://learn.microsoft.com/pt-br/windows/win32/api/processthreadsapi/ns-processthreadsapi-startupinfoa)  
 [SYSTEMTIME](https://learn.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-SYSTEMTIME)  
 [TEXTMETRICA](https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-textmetrica)  
+[UUID](https://learn.microsoft.com/pt-br/windows/win32/rpc/rpcdce/ns-rpcdce-uuid)  
 [WIN32_FIND_DATAA](https://learn.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataa)  
 [WSADATA](https://learn.microsoft.com/pt-br/windows/win32/api/winsock/ns-winsock-wsadata)   
 
@@ -65,6 +69,8 @@
 [GdiplusShutdown](https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusinit/nf-gdiplusinit-gdiplusshutdown)  
 [GdiplusStartup](https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusinit/nf-gdiplusinit-gdiplusstartup)  
 [GdiplusStartupInput](https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusinit/ns-gdiplusinit-gdiplusstartupinput)  
+[GDIplus Bitmap](https://learn.microsoft.com/pt-br/windows/win32/gdiplus/-gdiplus-bitmap-flat)  
+[ImageAttributes](https://learn.microsoft.com/pt-br/windows/win32/gdiplus/-gdiplus-imageattributes-flat)  
 # Kernel
 ## [Handle](https://learn.microsoft.com/pt-br/windows/win32/api/handleapi/)
 [CloseHandle](https://learn.microsoft.com/pt-br/windows/win32/api/handleapi/nf-handleapi-closehandle)  
@@ -105,6 +111,7 @@
 [FileTimeToSystemTime](https://learn.microsoft.com/pt-br/windows/win32/api/timezoneapi/nf-timezoneapi-filetimetosystemtime)  
 [Beep](https://learn.microsoft.com/pt-br/windows/win32/api/utilapiset/nf-utilapiset-beep)  
 # [Segurança, criptografia e identidade](https://learn.microsoft.com/pt-br/windows/win32/api/_security/)
+[Cryptographic Service Providers](https://learn.microsoft.com/pt-br/windows/win32/seccertenroll/cryptoapi-cryptographic-service-providers)  
 [CryptAcquireContextA](https://learn.microsoft.com/pt-br/windows/win32/api/wincrypt/nf-wincrypt-cryptacquirecontexta)  
 [CryptCreateHash](https://learn.microsoft.com/pt-br/windows/win32/api/wincrypt/nf-wincrypt-cryptcreatehash)  
 [CryptDecrypt](https://learn.microsoft.com/pt-br/windows/win32/api/wincrypt/nf-wincrypt-cryptdecrypt)  
@@ -226,8 +233,11 @@
 [InternetOpenUrlA](https://learn.microsoft.com/pt-br/windows/win32/api/wininet/nf-wininet-internetopenurla)  
 [InternetReadFile](https://learn.microsoft.com/pt-br/windows/win32/api/wininet/nf-wininet-internetreadfile)  
 # [Windows Sockets 2](https://learn.microsoft.com/pt-br/windows/win32/api/_winsock/)
+
 [connect](https://learn.microsoft.com/pt-br/windows/win32/api/winsock2/nf-winsock2-connect)  
 [closesocket](https://learn.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-closesocket)  
+[freeaddrinfo](https://learn.microsoft.com/pt-br/windows/win32/api/ws2tcpip/nf-ws2tcpip-freeaddrinfo)  
+[getaddrinfo](https://learn.microsoft.com/pt-br/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo)  
 [inet_ntoa](https://learn.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-inet_ntoa)  
 [recv](https://learn.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-recv)  
 [setsockopt](https://learn.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-setsockopt)  
@@ -236,30 +246,27 @@
 [WSAGetLastError](https://learn.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-wsagetlasterror)  
 [WSAStartup](https://learn.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-wsastartup)  
 
+# Mensagens
 
-
-[addrinfoa](https://learn.microsoft.com/pt-br/windows/win32/api/ws2def/ns-ws2def-addrinfoa)  
-[freeaddrinfo](https://learn.microsoft.com/pt-br/windows/win32/api/ws2tcpip/nf-ws2tcpip-freeaddrinfo)  
-[getaddrinfo](https://learn.microsoft.com/pt-br/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo)  
-[File Headers](https://learn.microsoft.com/pt-br/windows/win32/debug/pe-format#file-headers)  
-[WM_PAINT](https://learn.microsoft.com/pt-br/windows/win32/gdi/wm-paint)  
-[GDIplus Bitmap](https://learn.microsoft.com/pt-br/windows/win32/gdiplus/-gdiplus-bitmap-flat)  
-[ImageAttributes](https://learn.microsoft.com/pt-br/windows/win32/gdiplus/-gdiplus-imageattributes-flat)  
 [Virtual Key Codes](https://learn.microsoft.com/pt-br/windows/win32/inputdev/virtual-key-codes)  
 [WM_ACTIVATE](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-activate)  
 [WM_CHAR](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-char)  
+[WM_CREATE](https://learn.microsoft.com/pt-br/windows/win32/winmsg/wm-create)  
+[WM_DESTROY](https://learn.microsoft.com/pt-br/windows/win32/winmsg/wm-destroy)  
 [WM_KEYDOWN](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-keydown)  
 [WM_LBUTTONDBLCLK](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-lbuttondblclk)  
 [WM_LBUTTONDOWN](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-lbuttondown)  
 [WM_RBUTTONDBLCLK](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-rbuttondblclk)  
 [WM_RBUTTONDOWN](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-rbuttondown)  
+[WM_PAINT](https://learn.microsoft.com/pt-br/windows/win32/gdi/wm-paint)  
 [WM_SYSKEYDOWN](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-syskeydown)  
 [WM_SETCURSOR](https://learn.microsoft.com/pt-br/windows/win32/menurc/wm-setcursor)  
-[UUID](https://learn.microsoft.com/pt-br/windows/win32/rpc/rpcdce/ns-rpcdce-uuid)  
-[Cryptographic Service Providers](https://learn.microsoft.com/pt-br/windows/win32/seccertenroll/cryptoapi-cryptographic-service-providers)  
-[WM_CREATE](https://learn.microsoft.com/pt-br/windows/win32/winmsg/wm-create)  
-[WM_DESTROY](https://learn.microsoft.com/pt-br/windows/win32/winmsg/wm-destroy)  
-[sockaddr2](https://learn.microsoft.com/pt-br/windows/win32/winsock/sockaddr-2)  
+
+
+# PE
+[File Headers](https://learn.microsoft.com/pt-br/windows/win32/debug/pe-format#file-headers)  
+
+
 # WinHTTP
 [WinHttpConnect](https://learn.microsoft.com/pt-br/windows/win32/api/WinHTTP/nf-WinHTTP-winhttpconnect)  
 [URL_COMPONENTS](https://learn.microsoft.com/pt-br/windows/win32/api/WinHTTP/ns-WinHTTP-url_components)  
