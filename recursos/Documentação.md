@@ -20,7 +20,7 @@
 [POINT](https://learn.microsoft.com/pt-br/windows/win32/api/windef/ns-windef-point)  
 [PROCESS_INFORMATION](https://learn.microsoft.com/pt-br/windows/win32/api/processthreadsapi/ns-processthreadsapi-process_information)  
 [SECURITY_ATTRIBUTES](https://learn.microsoft.com/pt-br/previous-versions/windows/desktop/legacy/aa379560(v=vs.85))  
-[sockaddr2](https://learn.microsoft.com/pt-br/windows/win32/winsock/sockaddr-2)  
+[sockaddr](https://learn.microsoft.com/pt-br/windows/win32/winsock/sockaddr-2)  
 [STARTUPINFOA](https://learn.microsoft.com/pt-br/windows/win32/api/processthreadsapi/ns-processthreadsapi-startupinfoa)  
 [SYSTEMTIME](https://learn.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-SYSTEMTIME)  
 [TEXTMETRICA](https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-textmetrica)  
