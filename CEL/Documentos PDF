@@ -257,9 +257,9 @@ Etapas para que se end uma folha (pdf style):
 
 Etapas para que se end printing:
   Se o documento detector deste pdf state estiver ativo, end printing (pdf style); retorne.
-  Processe "gdi32.dll" "EndDoc" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-enddoc
-  \ A função EndDoc termina um trabalho de impressão.
-    a área de impressão. [hdc] \Um identificador para o contexto do dispositivo para o trabalho de impressão.
+  Processe "gdi32.dll" "EndDoc" com \ Termina um trabalho de impressão.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-enddoc
+    a área de impressão. [hdc]
   Finalize a área de impressão.
 
 Etapas para que se end printing (pdf style):
@@ -427,13 +427,13 @@ Etapas para que se pinte uma string sob uma localização com uma cor e uma fonte:
   Comece. [a executar o código abaixo]
     Se o subtexto estiver em branco, pare.
     Se o caractere final deste subtexto for maior do que o caractere final desta string, atribua o caractere final desta string ao caractere final deste subtexto.
-    Processe "gdi32.dll" "TextOutA" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-textouta
-    \A função TextOut grava uma sequência de caracteres no local especificado, usando a fonte, a cor de fundo e a cor do texto atualmente selecionadas.
-      O contexto do dispositivo atual [hdc] \ Um identificador para o contexto do dispositivo.
-      e A coordenada X desta localização [x] \ A coordenada x, em coordenadas lógicas, do ponto de referência que o sistema usa para alinhar a string.
-      e A coordenada Y desta localização [y] \ A coordenada y, em coordenadas lógicas, do ponto de referência que o sistema usa para alinhar a string.
-      e O caractere inicial deste subtexto [lpString] \ Um ponteiro para a string a ser desenhada. A string não precisa ser terminada em zero, porque cchString especifica o comprimento da string.
-      e A quantidade de caracteres deste subtexto. [c] \ O comprimento da string apontada por lpString, em caracteres.
+    Processe "gdi32.dll" "TextOutA" com \ Grava uma sequência de caracteres no DC especificado, usando a fonte, a cor de fundo e a cor do texto atualmente selecionadas.
+    \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-textouta
+      O contexto do dispositivo atual [hdc]
+      e A coordenada X desta localização [x]
+      e A coordenada Y desta localização [y]
+      e O caractere inicial deste subtexto [lpString]
+      e A quantidade de caracteres deste subtexto. [c]
     Obtenha uma largura usando o subtexto e o contexto do dispositivo atual.
     Adicione a largura para a coordenada X desta localização.
     Mova o subtexto usando a caixa de texto cutoff.
@@ -606,37 +606,24 @@ Etapas para que se pinte uma linha reta com uma cor (pdf style):
 Etapas para que se pinte uma linha reta com uma cor:
   Se a página detector deste pdf state estiver ativo, pinte a linha reta com a cor (pdf style); retorne.
   Crie o hPen of o contexto do dispositivo atual usando a cor.
-  Processe "gdi32.dll" "MoveToEx" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-movetoex
-  \A função MoveToEx atualiza a posição atual para o ponto especificado e, opcionalmente, retorna a posição anterior.
-    O contexto do dispositivo atual [hdc] \o número identificador do contexto do dispositivo.
-    e A coordenada X desta localização inicial desta linha reta [x] \Especifica a coordenada x da nova posição, em unidades lógicas.
-    e A coordenada Y desta localização inicial desta linha reta [y] \Especifica a coordenada y da nova posição, em unidades lógicas.
-    e nil. [lppt] \Ponteiro para uma estrutura POINT que recebe a posição atual anterior. 
-    \Se este parâmetro for um ponteiro NULL, a posição anterior não será retornada.
-    \https://learn.microsoft.com/pt-br/previous-versions/dd162805(v=vs.85)
-    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
-    \Se a função falhar, o valor de retorno é zero.
-  Processe "gdi32.dll" "LineTo" com  \https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-lineto
-  \A função LineTo desenha uma linha da posição atual até, mas não incluindo, o ponto especificado.
-  \A linha é desenhada usando a caneta atual e, se a caneta for uma caneta geométrica, a cor da canetinha atual.
-  \Se LineTo for bem-sucedido, a posição atual será definida como o ponto final especificado.
-    O contexto do dispositivo atual [hdc] \o número identificador do contexto do dispositivo.
-    e A coordenada X desta localização final desta linha reta [x] \Especifica a coordenada x, em unidades lógicas, do ponto final da linha.
-    e A coordenada Y desta localização final desta linha reta. [y] \Especifica a coordenada y, em unidades lógicas, do ponto final da linha.
-    \Se a função for bem-sucedida, o valor de retorno será diferente de zero.
-    \Se a função falhar, o valor de retorno é zero.
+  Processe "gdi32.dll" "MoveToEx" com \ Atualiza a posição atual para o ponto especificado e, opcionalmente, retorna a posição anterior.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-movetoex  
+    O contexto do dispositivo atual [hdc]
+    e A coordenada X desta localização inicial desta linha reta [x]
+    e A coordenada Y desta localização inicial desta linha reta [y]
+    e nil. [lppt] \ Consulte https://learn.microsoft.com/pt-br/previous-versions/dd162805(v=vs.85)
+  Processe "gdi32.dll" "LineTo" com \ Desenha uma linha da posição atual até, mas não incluindo, o ponto especificado.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-lineto
+    O contexto do dispositivo atual [hdc]
+    e A coordenada X desta localização final desta linha reta [x]
+    e A coordenada Y desta localização final desta linha reta. [y]
   Converta a cor para um código da cor.
-  Processe "gdi32.dll" "SetPixelV" com \https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setpixelv
-  \A função SetPixelV define o pixel nas coordenadas especificadas para a aproximação mais próxima da cor especificada. 
-  \O ponto deve estar na região de recorte e na parte visível da superfície do dispositivo.
-  \Observação: Nem todos os dispositivos suportam a função SetPixelV. 
-  \Para obter mais informações, consulte a descrição do recurso RC_BITBLT na função GetDeviceCaps.
-  \SetPixelV é mais rápido do que SetPixel porque não precisa retornar o valor da cor do ponto realmente pintado.
-    O contexto do dispositivo atual [hdc] \O identificador do contexto do dispositivo.
-    e A coordenada X desta localização final desta linha reta [z] \A coordenada z, em unidades lógicas, do ponto a ser definido.
-    e A coordenada Y desta localização final desta linha reta  [y] \A coordenada y, em unidades lógicas, do ponto a ser definido.
-    e O código da cor.\A cor a ser usada para pintar o ponto. Para criar um valor de cor COLORREF, use a macro RGB.
-    \Se a função for bem-sucedida, o valor de retorno será diferente de zero. Se a função falhar, o valor de retorno é zero.
+  Processe "gdi32.dll" "SetPixelV" com \ Define o pixel nas coordenadas especificadas para a aproximação mais próxima da cor especificada. 
+  \https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setpixelv
+    O contexto do dispositivo atual [hdc]
+    e A coordenada X desta localização final desta linha reta [z]
+    e A coordenada Y desta localização final desta linha reta  [y]
+    e O código da cor.
   Destrua o hPen of o contexto do dispositivo atual.
 
 Etapas para que se pinte um gpBitmap sob uma localização (pdf style):
@@ -728,8 +715,8 @@ Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimen
     e A coordenada X do canto superior esquerdo desta caixa
     e A coordenada Y do canto superior esquerdo desta caixa
     e A coordenada X do canto inferior direito desta caixa 
-    e A coordenada Y do canto inferior direito desta caixa.    
-  Destrua o hBrush of o contexto do dispositivo atual.
+    e A coordenada Y do canto inferior direito desta caixa.
+  Destrua o hBrush of o contexto do dispositivo atual. \ Destrua o hBrush pertencente ao contexto do dispositivo atual.
   Destrua o hPen of o contexto do dispositivo atual.
 
 Etapas para que se crie um objeto pdf usando um categoria:
@@ -864,104 +851,77 @@ Etapas para que se inicie uma folha usando uma caixa e um título de índice remis
 
 Etapas para que se inicie uma folha usando uma caixa:
   Se o documento detector deste pdf state estiver ativo, inicie a folha usando a caixa (pdf style); retorne.
-  Processe "kernel32.dll" "GlobalLock" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globallock
-  \A função GlobalLock bloqueia um objeto de memória global e aumenta a contagem de bloqueios em um. 
-  \Bloqueia um objeto de memória global e retorna um ponteiro para o primeiro byte do bloco de memória do objeto.
-    O número identificador do modo de dispositivo da impressora [hMem] \Um identificador para o objeto de memória global. 
-  Retornando um pdevmode. \Se a função for bem-sucedida, o valor de retorno é um ponteiro [que aponta] para o primeiro byte do bloco de memória.
-    \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-devmodea
-  Se o pdevmode for inexistente, retorne. \Se a função falhar, o valor de retorno será NULL.
-  Disjuncione logicamente o dmFields deste pdevmode usando 1 [DM_ORIENTATION].
-  Atribua 1 [DMORIENT_PORTRAIT] ao dmOrientation deste pdevmode .
-  Se a largura desta caixa for maior do que a altura desta caixa, atribua 2 [DMORIENT_LANDSCAPE] ao dmOrientation deste pdevmode .
-  Processe "gdi32.dll" "ResetDCA" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-resetdca
-  \ A função ResetDC atualiza a impressora especificada ou contexto de dispositivo de plotadora (DC) usando as informações especificadas.
-    A área de impressão [hdc] \O identificador do DC que será atualizado
-    e O pdevmode. [*lpdm] \Um ponteiro para uma estrutura DEVMODE contendo informações sobre o novo DC.
-    \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-devmodea
-  Processe "kernel32.dll" "GlobalUnlock" com \ https://learn.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globalunlock
-    \Diminui a contagem de bloqueios associada a um objeto de memória que foi alocado com GMEM_MOVEABLE. 
-    \Esta função não tem efeito em objetos de memória alocados com GMEM_FIXED.
-    O número identificador do modo de dispositivo da impressora.  [hMem] \Um identificador para o objeto de memória global. 
-  Processe "gdi32.dll" "SetGraphicsMode" com \https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setgraphicsmode
-  \A função SetGraphicsMode define o modo gráfico para o contexto de dispositivo especificado.
-    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
-    e 2. [iMode = GM_ADVANCED] \O modo gráfico. 
-    \GM_ADVANCED = Define o modo gráfico avançado que permite transformações mundiais. 
-    \Este valor deve ser especificado se o aplicativo irá definir ou modificar a transformação do mundo para o contexto de dispositivo especificado. 
-    \Neste modo, todos os gráficos, incluindo saída de texto, estão totalmente em conformidade com a transformação de mundo para o dispositivo especificado no contexto do dispositivo.
-  Processe "gdi32.dll" "SetBkMode" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setbkmode
-  \A função SetBkMode define o modo de mistura de plano de fundo do contexto de dispositivo especificado. 
-    A área de impressão [hdc] \Um identificador para o contexto do dispositivo. 
-    \O modo de mistura de plano de fundo é usado com texto, pincéis hachurados e estilos de caneta que não são linhas sólidas.
-    e 1. [mode = TRANSPARENT] \ O modo do plano de fundo.
-    \TRANSPARENT = O fundo permanece intocado.
-  Processe "gdi32.dll" "SetMapMode" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setmapmode
-  \A função SetMapMode define o modo de mapeamento do contexto de dispositivo especificado. 
-  \O modo de mapeamento define a unidade de medida usada para transformar unidades de espaço de página em unidades de espaço de dispositivo 
-  \e também define a orientação dos eixos x e y do dispositivo.
-    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
-    e 8. [iMode = MM_ANISOTROPIC ] \O novo modo de mapeamento.
-    \MM_ANISOTROPIC = As unidades lógicas são mapeadas para unidades arbitrárias com eixos escalonados arbitrariamente. 
-    \Use as funções SetWindowExtEx e SetViewportExtEx para especificar as unidades, orientação e escala.
-  Processe "gdi32.dll" "GetDeviceCaps" com  \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getdevicecaps
-  \ A função GetDeviceCaps recupera informações específicas do dispositivo para o dispositivo especificado.
-    A área de impressão [hdc] \O número identificador do contexto do dipositivo
-    e 112 [index = PhysicalOffsetX] \O item a ser devolvido.
-    \PHYSICALOFFSETY = Para dispositivos de impressão: a distância da borda superior da página física até a borda superior da área imprimível, em unidades de dispositivo. 
-    \Por exemplo, uma impressora configurada para imprimir a 600 dpi em papel de 8,5 por 11 polegadas, 
-    \que não pode imprimir no papel de 0,5 polegada superior, tem um deslocamento físico vertical de 300 unidades de dispositivo.
-    \PHYSICALOFFSETX = a mesma lista, só que referente a distância da borda esquerda da página física até a borda esquerda da área imprimível, em unidades de dispositivo.
-  Retornando o número X dum par de números. \O valor de retorno especifica o valor do item desejado.
+  Processe "kernel32.dll" "GlobalLock" com \ Bloqueia um objeto de memória global e aumenta a contagem de bloqueios em um. 
+  \ https://learn.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globallock
+    O número identificador do modo de dispositivo da impressora [hMem]
+  Retornando um pDevMode. \ Consulte https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-devmodea
+  Se o pDevMode for inexistente, retorne.
+  Disjuncione logicamente o dmFields deste pDevMode usando 1 [DM_ORIENTATION].
+  Atribua 1 [DMORIENT_PORTRAIT] ao dmOrientation deste pDevMode .
+  Se a largura desta caixa for maior do que a altura desta caixa, atribua 2 [DMORIENT_LANDSCAPE] ao dmOrientation deste pDevMode .
+  Processe "gdi32.dll" "ResetDCA" com \ Atualiza a impressora especificada ou contexto de dispositivo (DC) usando as informações especificadas.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-resetdca
+    A área de impressão [hdc]
+    e O pDevMode. [*lpdm]
+  Processe "kernel32.dll" "GlobalUnlock" com \ Diminui a contagem de bloqueios associada a um objeto de memória
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winbase/nf-winbase-globalunlock
+    O número identificador do modo de dispositivo da impressora. [hMem]
+  Processe "gdi32.dll" "SetGraphicsMode" com \ Define o modo gráfico para o contexto de dispositivo especificado.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setgraphicsmode
+    A área de impressão [hdc]
+    e 2. [iMode = GM_ADVANCED]
+  Processe "gdi32.dll" "SetBkMode" com \ Define o modo de mistura de plano de fundo dum contexto de dispositivo
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setbkmode
+    A área de impressão [hdc]
+    e 1. [mode = TRANSPARENT]
+  Processe "gdi32.dll" "SetMapMode" com \ Define o modo de mapeamento dum contexto de dispositivo 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setmapmode
+    A área de impressão [hdc]
+    e 8. [iMode = MM_ANISOTROPIC ]
+  Processe "gdi32.dll" "GetDeviceCaps" com \ Recupera informações específicas do dispositivo para o dispositivo especificado.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getdevicecaps
+    A área de impressão [hdc]
+    e 112 [index = PhysicalOffsetX]
+  Retornando o número X dum par de números.
   Processe "gdi32.dll" "GetDeviceCaps" com 
     A área de impressão [hdc] 
     e 113 [PhysicalOffsetY ] 
   Retornando o número Y deste par de números.
   Negate o par de números.
-  Processe "gdi32.dll" "SetViewportOrgEx" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setviewportorgex
-  \ A função SetViewportOrgEx especifica qual ponto do dispositivo mapeia para a origem da janela (0,0).
-    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
-    e O número X deste par de números [x] \A coordenada x, em unidades de dispositivo, da nova origem da janela de exibição.
-    e O número Y deste par de números  [y] \A coordenada y, em unidades de dispositivo, da nova origem da janela de visualização.
-    e nil. [lppt] \Um ponteiro para uma estrutura POINT que recebe a origem da viewport anterior, nas coordenadas do dispositivo. Se lpPoint for NULL, este parâmetro não será usado.
-    \ https://learn.microsoft.com/pt-br/previous-versions/dd162805(v=vs.85)
-  Processe "gdi32.dll" "GetDeviceCaps" com  \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-getdevicecaps
-  \ A função GetDeviceCaps recupera informações específicas do dispositivo para o dispositivo especificado.
-    A área de impressão [hdc] \O número identificador do contexto do dipositivo
-    e 88 [index = LOGPIXELSX]  \O item a ser devolvido.
-    \LOGPIXELSX é o número de pixels por polegada lógica ao longo da largura da tela. Em um sistema com vários monitores, este valor é o mesmo para todos os monitores.
+  Processe "gdi32.dll" "SetViewportOrgEx" com \ Especifica qual ponto DO DISPOSITIVO mapeia para a origem da janela (0,0).
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setviewportorgex
+    A área de impressão [hdc]
+    e O número X deste par de números [x]
+    e O número Y deste par de números  [y]
+    e nil. [lppt]
+  Processe "gdi32.dll" "GetDeviceCaps" com
+    A área de impressão [hdc]
+    e 88 [index = LOGPIXELSX]
   Retornando o número X deste par de números.
   Processe "gdi32.dll" "GetDeviceCaps" com 
     A área de impressão 
-    e 90 [index = LOGPIXELSY] 
-    \ LOGPIXELSY é o número de pixels por polegada lógica ao longo da altura da tela. Em um sistema com vários monitores, este valor é o mesmo para todos os monitores.
+    e 90 [index = LOGPIXELSY]
   Retornando o número Y deste par de números.
-  Processe "gdi32.dll" "SetViewportExtEx" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setviewportextex
-  \A função SetViewportExtEx define as extensões horizontal e vertical da janela de visualização para um contexto de dispositivo usando os valores especificados.
-    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
-    e O número X deste par de números [x] \A extensão horizontal, em unidades de dispositivo, da janela de visualização.
-    e O número Y deste par de números [y] \A extensão vertical, em unidades de dispositivo, da janela de visualização.
-    e nil. [lpsz] \Um ponteiro para uma estrutura SIZE que recebe as extensões da janela de visualização anterior, em unidades de dispositivo. 
-    \Se lpSize for NULL, este parâmetro não será usado.
-    \ https://learn.microsoft.com/pt-br/previous-versions/dd145106(v=vs.85)
-  Processe "gdi32.dll" "SetWindowOrgEx" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setwindoworgex
-  \A função SetWindowOrgEx especifica qual ponto da janela mapeia para a origem da janela de visualização (0,0).
-    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
-    e 0 [x] \A coordenada x, em unidades lógicas, da nova origem da janela.
-    e 0 [y] \A coordenada y, em unidades lógicas, da nova origem da janela.
-    e nil. [lppt] \Um ponteiro para uma estrutura POINT que recebe a origem anterior da janela, em unidades lógicas. 
-    \Se lpPoint for NULL, este parâmetro não será usado.
-    \ https://learn.microsoft.com/pt-br/previous-versions/dd162805(v=vs.85)
-  Processe "gdi32.dll" "SetWindowExtEx" com  \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setwindowextex
-  \ A função SetWindowExtEx define as extensões horizontal e vertical da janela para um contexto de dispositivo usando os valores especificados.
-    A área de impressão [hdc] \Um identificador para o contexto do dispositivo.
-    e O tpi [x] \A extensão horizontal da janela em unidades lógicas.
-    e O tpi [y] \A extensão vertical da janela em unidades lógicas.
-    e nil. [lpsz] \Um ponteiro para uma estrutura SIZE que recebe as extensões da janela anterior, em unidades lógicas. 
-    \Se lpSize for NULL, este parâmetro não será usado.
-    \ https://learn.microsoft.com/pt-br/previous-versions/dd145106(v=vs.85)
-  Processe "gdi32.dll" "StartPage" com \ https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-startpage
-  \ A função StartPage prepara o driver da impressora para aceitar dados.
+  Processe "gdi32.dll" "SetViewportExtEx" com \ Define as extensões horizontal e vertical do viewport para um contexto de dispositivo 
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setviewportextex
+    A área de impressão [hdc]
+    e O número X deste par de números [x]
+    e O número Y deste par de números [y]
+    e nil. [lpsz]
+  Processe "gdi32.dll" "SetWindowOrgEx" com \ Especifica qual ponto DA JANELA mapeia para a origem da janela de visualização (0,0).
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setwindoworgex
+    A área de impressão [hdc]
+    e 0 [x]
+    e 0 [y]
+    e nil. [lppt]
+  Processe "gdi32.dll" "SetWindowExtEx" com \ define as extensões horizontal e vertical da janela para um contexto de dispositivo
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-setwindowextex
+    A área de impressão [hdc]
+    e O tpi [x]
+    e O tpi [y]
+    e nil. [lpsz]
+  Processe "gdi32.dll" "StartPage" com \ Prepara o driver da impressora para aceitar dados.
+  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-startpage
     A área de impressão. [hdc] \ O identificador do contexto do dispositivo para o trabalho de impressão.
   Atribua a área de impressão ao contexto do dispositivo atual.
   Processe "gdi32.dll" "GetDeviceCaps" com 
