@@ -125,4 +125,3 @@
 [WSAGetLastError](https://learn.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-wsagetlasterror)  
 [WSASocketA](https://learn.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-wsasocketa)  
 [WSAStartup](https://learn.microsoft.com/pt-br/windows/win32/api/winsock/nf-winsock-wsastartup)  
-[
