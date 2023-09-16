@@ -1,34 +1,34 @@
-\Um programa em código de máquina consiste de uma sequência de bytes que correspondem a instruções a serem executadas pelo processador. 
+\Um programa em código de máquina consiste de uma sequência de bytes que correspondem a instruções a serem executadas pelo processador.
 \As instruções do processador, chamadas de opcodes, são representadas por valores em hexadecimal.[
 \Para se programar em código de máquina, deve-se obter os códigos de instruções do processador utilizado contendo opcodes, operandos e formatos de cada instrução.
-\Por esse motivo foi criada uma linguagem de programação chamada Assembly, composta de códigos mnemônicos que expressam as mesmas instruções do processador, 
+\Por esse motivo foi criada uma linguagem de programação chamada Assembly, composta de códigos mnemônicos que expressam as mesmas instruções do processador,
 \embora escritos em acrônimos da língua inglesa, tais como MOV ou REP, em vez de opcodes.
 \all parameters are passed by reference
 \All parameters passed to Plain English routines are passed by reference, though parameters passed to DLLs use the C convention (the order is reversed and "simple" tipos are passed by value
-\"The whole system is built on just two, compiler-defined tipos: BYTE and RECORD. 
-\All the other tipos are constructed from these, and are defined in the "Noodle" library {a arquivo, loaded by the compiler}. 
-\The idea was to put as much as we could in the library, and as little as possible in the compiler. 
+\"The whole system is built on just two, compiler-defined tipos: BYTE and RECORD.
+\All the other tipos are constructed from these, and are defined in the "Noodle" library {a arquivo, loaded by the compiler}.
+\The idea was to put as much as we could in the library, and as little as possible in the compiler.
 \The compiler is aware of a few other tipos -- like NUMBER, STRING, SUBSTRING, THING -- mostly for memory management purposes, but all the other the tipo definitions are built up from BYTE and RECORD in the library." These are extended to support BYTE, WYRD, POINTER, FLAG, and RECORD.
 
 
 Um ponteiro é uma estrutura com 4 bytes.
 Um endereço numérico é um ponteiro [que aponta] para um número.
 Uma cifra binária é um byte. \ somente são válidos os 4 bits de ordem inferior. \ é um "low order nibble" ou uma sucessão de bytes de ordem inferior
-\ Exemplo: No byte 0101 1010 somente a parte "1010" é válida. 
+\ Exemplo: No byte 0101 1010 somente a parte "1010" é válida.
 O texto CRLF é uma string igual a $0D0A.
-Um cifra hexadecimal é uma string. \ Exemplo: $0010A0... O cifrão serve para indicar ao compilador que se trata de um valor hexadecimal. 
+Um cifra hexadecimal é uma string. \ Exemplo: $0010A0... O cifrão serve para indicar ao compilador que se trata de um valor hexadecimal.
  \Em outras linguagens costuma-se usar um # (como no css #a1b2e3; ou um 0x, por exemplo 0xA1B2FF...
 
-Uma word é uma estrutura com 
-  Um byte inicial [high byte] e 
+Uma word é uma estrutura com
+  Um byte inicial [high byte] e
   Um byte final [low byte].
 
 Um número é uma estrutura com
   Um primeiro byte,
   Um segundo byte,
   Um terceiro byte,
-  Um quarto byte, \ 4 bytes = 32 bits 
-  Uma word de ordem inferior sob o primeiro byte, 
+  Um quarto byte, \ 4 bytes = 32 bits
+  Uma word de ordem inferior sob o primeiro byte,
   Uma word de ordem superior sob o terceiro byte. \ Devido à extremidade (ordenação) dos processadores x86
 
 Uma word de ordem inferior é uma word.
@@ -43,7 +43,7 @@ Etapas para que se desassocie um ponteiro:
     O endereço heap [hHeap] \Um identificador para o heap cujo bloco de memória deve ser liberado. Esse identificador é retornado pela função HeapCreate ou GetProcessHeap.
     e 0 [dwFlags no options] e  \As opções de liberação de heap.
   o ponteiro [lpMem] \Um ponteiro para o bloco de memória a ser liberado. Este ponteiro é retornado pela função HeapAlloc ou HeapReAlloc. Este ponteiro pode ser NULL.
-  Retornando um número. \ Se a função for bem-sucedida, o valor de retorno será diferente de zero. 
+  Retornando um número. \ Se a função for bem-sucedida, o valor de retorno será diferente de zero.
   Se o número for 0, retorne. \Se a função falhar, o valor de retorno é zero.
   Esvazie o ponteiro.
   Subtraia 1 desde a contagem do heap.
@@ -52,12 +52,12 @@ Uma unit é um número.
 
 Uma lista é um ponteiro [que aponta] para uma lista estrutura.
 \Um conjunto de texto é uma lista com uma string.
-Uma lista estrutura é uma estrutura com 
-  Uma subsequente lista e 
+Uma lista estrutura é uma estrutura com
+  Uma subsequente lista e
   Uma precedente lista.
 
 Umas listas são uma estrutura com \ Importante
-  Uma first lista e 
+  Uma first lista e
   Uma last lista.
 
 Etapas para que se permute um par de números com um segundo par de números:
@@ -66,7 +66,7 @@ Etapas para que se permute um par de números com um segundo par de números:
 
 Etapas para que se permute um ponteiro com um segundo ponteiro;
 Etapas para que se permute um número com um segundo número:
-  Atribua o número a um terceiro número.
+  Atribua o número para um terceiro número.
   Atribua o segundo número ao número.
   Atribua o terceiro número ao segundo número.
 
@@ -101,51 +101,51 @@ Etapas para que se subtraia um par de números desde um segundo par de números:
 \ EXISTEM REGISTRADORES DE USO GERAL E DE USO ESPECÍFICO
 \ NO GERAL ebp+8 SE REFERE AO 1º ARGUMENTO DE UMA FUNÇÃO
 \ ebp+12 SE REFERE AO 2º ARGUMENTO E ASSIM POR DIANTE
-\O registrador ESP é um indicador do topo da pilha - portanto, muda constantemente à medida que a pilha aumenta ou diminui. 
+\O registrador ESP é um indicador do topo da pilha - portanto, muda constantemente à medida que a pilha aumenta ou diminui.
 \EBP é um registrador auxiliar.
-\ Primeiro, colocamos o conteúdo de ebp na pilha. em seguida, copiamos ESP (endereço do topo da pilha atual) para ebp 
+\ Primeiro, colocamos o conteúdo de ebp na pilha. em seguida, copiamos ESP (endereço do topo da pilha atual) para ebp
 \é por isso que quando nos referimos a outros itens na pilha, usamos o valor constante de ebp (e não alteramos um de esp).
 \Os parâmetros são acessados usando o  do ponteiro salvo de base de pilha EBP
 \[ebp + 16] - 3º parâmetro 'c'
 \[ebp + 12] - 2º parâmetro 'b'
 \[ebp + 8] - 1 º parâmetro 'a'
 \[ebp + 4] - endereço de retorno da função
-\[ebp + 0] - registrador do ponteiro salvo de base de pilha 
+\[ebp + 0] - registrador do ponteiro salvo de base de pilha
 \esp é o topo da pilha.
-\ebp geralmente é definido como esp no início de uma função. 
-\Parâmetros de função e variáveis locais são acessados ao adicionar e subtrair um valor de deslocamento constante do registrador ebp. 
-\Todas as convenções de chamada x86 definem ebp como sendo preservado nas chamadas de função. 
+\ebp geralmente é definido como esp no início de uma função.
+\Parâmetros de função e variáveis locais são acessados ao adicionar e subtrair um valor de deslocamento constante do registrador ebp.
+\Todas as convenções de chamada x86 definem ebp como sendo preservado nas chamadas de função.
 \O próprio ebp aponta, na verdade, para o ponteiro de base do quadro anterior, o que permite o funcionamento da pilha em um depurador e a visualização de outras variáveis locais de quadros.
-\ESP é o ponteiro da pilha atual, que mudará sempre que uma palavra ou endereço for inserido ou colocado na / fora da pilha. 
+\ESP é o ponteiro da pilha atual, que mudará sempre que uma palavra ou endereço for inserido ou colocado na / fora da pilha.
 \EBP é uma maneira mais conveniente para o compilador controlar os parâmetros de uma função e as variáveis locais do que usar o ESPdiretamente.
-\Geralmente (e isso pode variar de compilador para compilador), todos os argumentos para uma função sendo chamada são colocados na pilha pela função de chamada 
-\(geralmente na ordem inversa em que são declarados no protótipo da função, mas isso varia) . 
+\Geralmente (e isso pode variar de compilador para compilador), todos os argumentos para uma função sendo chamada são colocados na pilha pela função de chamada
+\(geralmente na ordem inversa em que são declarados no protótipo da função, mas isso varia) .
 \Em seguida, a função é chamada, o que coloca o endereço de retorno ( EIP) na pilha.
-\Ao entrar na função, o EBPvalor antigo é colocado na pilha e EBPé definido como o valor de ESP. 
-\Em seguida, o ESPé diminuído (porque a pilha cresce para baixo na memória) para alocar espaço para as variáveis locais e temporárias da função. 
+\Ao entrar na função, o EBPvalor antigo é colocado na pilha e EBPé definido como o valor de ESP.
+\Em seguida, o ESPé diminuído (porque a pilha cresce para baixo na memória) para alocar espaço para as variáveis locais e temporárias da função.
 \A partir dum ponto, durante a execução da função, os argumentos para a função estão localizados na pilha em deslocamentos positivos de EBP
 \(porque foram empurrados antes da chamada da função), e as variáveis locais estão localizadas em deslocamentos negativos de EBP
-\(porque eles foram alocados na pilha após a entrada da função). 
+\(porque eles foram alocados na pilha após a entrada da função).
 \É por isso que EBPé chamado de Ponteiro de Quadro , porque aponta para o centro do quadro de chamada de função .
-\Ao sair, tudo que a função precisa fazer é definir ESPo valor de EBP(que desaloca as variáveis locais da pilha e expõe a entrada EBPno topo da pilha), 
+\Ao sair, tudo que a função precisa fazer é definir ESPo valor de EBP(que desaloca as variáveis locais da pilha e expõe a entrada EBPno topo da pilha),
 \em seguida, retirar o EBPvalor antigo da pilha e, em seguida, a função retornos (estalar o endereço de retorno em EIP).
-\Ao retornar à função de chamada, ele pode incrementar ESPpara remover os argumentos da função que colocou na pilha antes de chamar a outra função. 
+\Ao retornar à função de chamada, ele pode incrementar ESPpara remover os argumentos da função que colocou na pilha antes de chamar a outra função.
 \Neste ponto, a pilha está de volta ao mesmo estado em que estava antes de invocar a função chamada.
 
 Etapas para que se subtraia um byte desde um segundo byte:
   Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> Salva o 1º byte (ebp+8) no registrador eax
   Decodifique $0FB600. \ movzx eax,[eax] ; -> ebp+8  o local onde o processador armazena o valor do 1º argumento da função.
   \ ebp+12 é é o local onde o processador armazena o valor do o 2º argumento da função
-  \ A instrução MOVZX (Move with Zero-Extend) copia o conteúdo do operando de origem (registrador ou localização na memória) para o operando de destino (registrador) e zero estende o valor. 
+  \ A instrução MOVZX (Move with Zero-Extend) copia o conteúdo do operando de origem (registrador ou localização na memória) para o operando de destino (registrador) e zero estende o valor.
   \O tamanho do valor convertido depende do atributo de tamanho do operando.
-  \Ao contrário do que se pode pensar, a instrução movzx (que preenche todos os registradores) na verdade é executada de forma mais rápida do que a instrução mov, 
+  \Ao contrário do que se pode pensar, a instrução movzx (que preenche todos os registradores) na verdade é executada de forma mais rápida do que a instrução mov,
   \ já que a instrução mov  define apenas as partes inferiores dos registradores.
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> Salva o 2º byte (ebp+12) no registrador ebx
   Decodifique $2803. \ sub [ebx],al ; -> subtrai o 1º byte do 2º byte
 
 Etapas para que se subtraia um byte desde um número:
   Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> Salva o byte (ebp+8) no registrador eax
-  Decodifique $0FB600. \ movzx eax,[eax] ; -> ebp+8 é o local onde o processador armazena o valor do 1º argumento da função. 
+  Decodifique $0FB600. \ movzx eax,[eax] ; -> ebp+8 é o local onde o processador armazena o valor do 1º argumento da função.
   \ ebp+12 é é o local onde o processador armazena o valor do o 2º argumento da função
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> Salva o número (ebp+12) no registrador ebx
   Decodifique $2903. \ sub [ebx],eax ; -> subtrai o byte do número
@@ -180,7 +180,7 @@ Etapas para que se desloque um byte para a esquerda uns bits:
 Etapas para que se desloque um byte para a direita uns bits;
 Etapas para que se desloque um byte uns bits para a direita:
   Decodifique $8B8D0C000000. \ mov ecx,[ebp+12] ; -> salva a quantidade de bits informada (ebp+12) no registrador ecx
-  \ ebp+12 é é o local onde o processador armazena o valor do o 2º argumento da função. 
+  \ ebp+12 é é o local onde o processador armazena o valor do o 2º argumento da função.
   Decodifique $8B09. \ mov ecx,[ecx] ; -> Nessa rotina os "bits" são considerados como um argumento, por isso precisamos do valor do 2º argumento
   Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o byte (ebp+8) no registrador eax
    \ebp+8 é o local onde o processador armazena o valor do 1º argumento da função.
@@ -225,7 +225,7 @@ Etapas para que se arredonde um número para cima usando o potência próxima de do
 Etapas para que se arredonde um número para cima usando o próxima potência de dois;
 Etapas para que se arredonde um número para cima usando o potência de dois:
   Decodifique $8B8D08000000. \ mov ecx,[ebp+8] ; -> salva o número (ebp+8) no registrador ecx
-  Decodifique $8B09. \ mov ecx,[ecx] 
+  Decodifique $8B09. \ mov ecx,[ecx]
   Decodifique $49. \ dec ecx ; -> diminui o valor de ecx
   Decodifique $0FBDC9. \ bsr ecx,ecx ; ->Bit scan reverse- Pesquisa no operando de origem (segundo operando) pelo conjunto de bits mais significativo (1 bit)
   \Se encontrar, o índice de bit é armazenado no operando de destino (primeiro operando).
@@ -235,7 +235,7 @@ Etapas para que se arredonde um número para cima usando o potência de dois:
   Decodifique $B904000000. \ mov ecx,4
   Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o número
   Decodifique $C70001000000. \ mov [eax],1
-  Decodifique $D320. \ shl [eax],ecx 
+  Decodifique $D320. \ shl [eax],ecx
 
 Etapas para que se redefina um ponteiro;
 Etapas para que se esvazie um ponteiro:
@@ -250,7 +250,7 @@ Etapas para que se atribua uma word para uma segunda word:
 
 Etapas para que se atribua um word para um word big-endian unsigned:
   Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva a word (ebp+8) no registrador eax
-  Decodifique $668B00. \ mov ax,word ptr [eax]  ; -> ebp+8 é o 1º parâmetro da função. 
+  Decodifique $668B00. \ mov ax,word ptr [eax]  ; -> ebp+8 é o 1º parâmetro da função.
   Decodifique $86E0. \ xchg al,ah ; -> ebp+12 é o 2º parâmetro da função
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva a a word big-endian unsigned  (ebp+12) no registrador ebx
   Decodifique $668903. \ mov word ptr [ebx],ax
@@ -276,7 +276,7 @@ Etapas para que se atribua a quantidade de caracteres duma string para uma quant
   \ Carrega default result
   Decodifique $B900000000. \ mov ecx,0 ; -> zera o registrador ecx
   \ if first for 0, store 0
-  Decodifique $833B00. \ cmp [ebx],0 ; -> compara a string com 0. 
+  Decodifique $833B00. \ cmp [ebx],0 ; -> compara a string com 0.
   Decodifique $0F8414000000. \ je store it
   \ if last for menor do que first, store 0
   Decodifique $8B5304. \ mov edx,[ebx+4] ; -> atribui o last ponteiro ao registrador edx
@@ -357,9 +357,9 @@ Etapas para que se atribua um byte para um número:
   Decodifique $8903. \ mov [ebx],eax
 
 Etapas para que se substitua um byte usando uma tabela de tradução:
-  Decodifique $8B8D08000000. \ mov ecx,[ebp+8]  ; -> salva o endereço do byte (ebp+8) no registrador ecx 
+  Decodifique $8B8D08000000. \ mov ecx,[ebp+8]  ; -> salva o endereço do byte (ebp+8) no registrador ecx
   Decodifique $8B01. \ mov eax,[ecx] \ salva o caractere em EAX
-  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] salva o endereço da tabela (ebp+12) no registrador ebx 
+  Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] salva o endereço da tabela (ebp+12) no registrador ebx
   Decodifique $8B1B. \ mov ebx,[ebx] o primeiro byte da tabela de tradução
   Decodifique $D7. \ xlat al,[ebx]
   Decodifique $8901. \ mov [ecx],eax
@@ -436,9 +436,9 @@ Etapas para que se reaponte um ponteiro usando um quantidade de bytes:
  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/heapapi/nf-heapapi-heaprealloc
    \Esta função permite redimensionar um bloco de memória e alterar outras propriedades do bloco de memória. A memória alocada não é móvel.
     O endereço heap [hHeap] \ O heap do qual a memória deve ser realocada. Obtido a partir da função HeapCreate ou GetProcessHeap.
-    e 8 [8 = HEAP_ZERO_MEMORY]  [dwFlags] \As opções de realocação de heap. 
+    e 8 [8 = HEAP_ZERO_MEMORY]  [dwFlags] \As opções de realocação de heap.
     e O ponteiro [lpMem] \ O bloco de memória que a função realoca. Obtido a partir da função HeapAlloc ou HeapReAlloc.
-    e A quantidade de bytes [dwBytes] \O novo tamanho do bloco de memória, em bytes. 
+    e A quantidade de bytes [dwBytes] \O novo tamanho do bloco de memória, em bytes.
   Retornando o ponteiro. \Se a função for bem-sucedida, o valor de retorno é um ponteiro [que aponta] para o bloco de memória realocado.
 
 Etapas para que se mostre olá mundo no console:
@@ -537,7 +537,7 @@ Etapas para que se disjuncione seletivamente um número com um segundo número:
   Decodifique $3103. \ xor [ebx],eax
 
 Etapas para que se avance um percorredor:
-  Decodifique $8B9D08000000. \ mov ebx,DWORD PTR [ebp+0x8] | mov ebx,[ebp+8]  \ salva o endereço do primeiro parâmetro [ebp+0x8] no registrador ebx. 
+  Decodifique $8B9D08000000. \ mov ebx,DWORD PTR [ebp+0x8] | mov ebx,[ebp+8]  \ salva o endereço do primeiro parâmetro [ebp+0x8] no registrador ebx.
   Decodifique $FF8314000000. \ inc DWORD PTR [ebx+0x14] | inc [ebx+20] \ aumenta o valor do caractere final deste segmento inicial deste percorredor.
   Decodifique $FF8308000000. \ inc DWORD PTR [ebx+0x8] | inc [ebx+8] \ aumenta o valor do caractere inicial deste segmento final deste percorredor.
 
@@ -557,7 +557,7 @@ Etapas para que se compare uma string para uma segunda string usando uma quantid
   Decodifique $8B12. \ mov edx,[edx]
   Decodifique $3BD0. \ cmp eax,edx \ if o differ do quantidade de caracteres, diga não.
   Decodifique $0F852B000000. \ jne sayno \ ************************************ was 2C
-  Decodifique $8BC8. \ mov ecx,eax \ atribua quantidade de caracteres A ecx 
+  Decodifique $8BC8. \ mov ecx,eax \ atribua quantidade de caracteres A ecx
   Decodifique $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
   Decodifique $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
   \ loop:
@@ -876,7 +876,7 @@ Etapas para que se divida um número por um segundo número usando um quociente e 
   Se o segundo número for 0, atribua o maior número ao quociente; atribua 0 ao resto; retorne.
   Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o 1º número (epb+8) no registrador eax
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva o 2º número (epb+12) no registrador ebx
-  Decodifique $8B00. \ mov eax,[eax] 
+  Decodifique $8B00. \ mov eax,[eax]
   Decodifique $99. \ cdq
   Decodifique $F73B. \ idiv [ebx] ; -> é a mesma lista que idiv eax,[ebx] mas está num formato estranho
   Decodifique $8B9D10000000. \ mov ebx,[ebp+16] ; ->salva o quociente (ebp+16) no registrador ebx
