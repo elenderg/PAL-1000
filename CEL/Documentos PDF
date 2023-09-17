@@ -448,21 +448,21 @@ Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
   Atribua a caixa arredondada para uma caixa.
   Output setcolor usando a cor da borda e a cor de preenchimento.
   \ initial moveto
-  Output moveto usando a coordenada X do canto superior esquerdo desta caixa e a coordenada Y do canto superior esquerdo desta caixa mais o raio.
+  Output moveto usando a coordenada X1 desta caixa e a coordenada Y1 desta caixa mais o raio.
   \ canto superior esquerdo
-  Atribua a coordenada X do canto superior esquerdo desta caixa e a coordenada Y do canto superior esquerdo desta caixa e a coordenada X do canto superior esquerdo desta caixa mais o offset e a coordenada Y do canto superior esquerdo desta caixa mais o offset para uma elipse.
+  Atribua a coordenada X1 desta caixa e a coordenada Y1 desta caixa e a coordenada X1 desta caixa mais o offset e a coordenada Y1 desta caixa mais o offset para uma elipse.
   Output o arco of a elipse usando "canto superior esquerdo".
-  Output lineto usando a coordenada X do canto inferior direito desta caixa menos o raio e a coordenada Y do canto superior esquerdo desta caixa.
+  Output lineto usando a coordenada X2 desta caixa menos o raio e a coordenada Y1 desta caixa.
   \ canto superior direito
-  Atribua a coordenada X do canto inferior direito desta caixa menos o offset e a coordenada Y do canto superior esquerdo desta caixa e a coordenada X do canto inferior direito desta caixa e a coordenada Y do canto superior esquerdo desta caixa mais o offset ao elipse.
+  Atribua a coordenada X2 desta caixa menos o offset e a coordenada Y1 desta caixa e a coordenada X2 desta caixa e a coordenada Y1 desta caixa mais o offset ao elipse.
   Output o arco of a elipse usando "canto superior direito".
-  Output lineto usando a coordenada X do canto inferior direito desta caixa e a coordenada Y do canto inferior direito desta caixa menos o raio.
+  Output lineto usando a coordenada X2 desta caixa e a coordenada Y2 desta caixa menos o raio.
   \ canto inferior direito
-  Atribua a coordenada X do canto inferior direito desta caixa menos o offset e a coordenada Y do canto inferior direito desta caixa menos o offset e a coordenada X do canto inferior direito desta caixa e a coordenada Y do canto inferior direito desta caixa ao elipse.
+  Atribua a coordenada X2 desta caixa menos o offset e a coordenada Y2 desta caixa menos o offset e a coordenada X2 desta caixa e a coordenada Y2 desta caixa ao elipse.
   Output o arco of a elipse usando "canto inferior direito".
-  Output lineto usando a coordenada X do canto superior esquerdo desta caixa mais o raio e a coordenada Y do canto inferior direito desta caixa.
+  Output lineto usando a coordenada X1 desta caixa mais o raio e a coordenada Y2 desta caixa.
   \ canto inferior esquerdo
-  Atribua a coordenada X do canto superior esquerdo desta caixa e a coordenada Y do canto inferior direito desta caixa menos o offset e a coordenada X do canto superior esquerdo desta caixa mais o offset e a coordenada Y do canto inferior direito desta caixa ao elipse.
+  Atribua a coordenada X1 desta caixa e a coordenada Y2 desta caixa menos o offset e a coordenada X1 desta caixa mais o offset e a coordenada Y2 desta caixa ao elipse.
   Output o arco of a elipse usando "canto inferior esquerdo ".
   \ finish para cima
   Output "h".
@@ -473,15 +473,15 @@ Etapas para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
   Preserve a caixa arredondada.
   Crie o hPen of o contexto do dispositivo atual usando a cor da borda.
   Crie o hBrush of o contexto do dispositivo atual usando a cor de preenchimento.
-  Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo localização desta caixa arredondada.
+  Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta caixa arredondada.
   Atribua o raio desta caixa arredondada times 2 para um diâmetro.
   Processe "gdi32.dll" "RoundRect" com \ Desenha um retângulo com cantos arredondados.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-roundrect
     O contexto do dispositivo atual [hDC]
-    e A coordenada X do canto superior esquerdo desta caixa arredondada
-    e A coordenada Y do canto superior esquerdo desta caixa arredondada
-    e A coordenada X do canto inferior direito desta caixa arredondada
-    e A coordenada Y do canto inferior direito desta caixa arredondada
+    e A coordenada X1 desta caixa arredondada
+    e A coordenada Y1 desta caixa arredondada
+    e A coordenada X2 desta caixa arredondada
+    e A coordenada Y2 desta caixa arredondada
     e O diâmetro [width]
     e O diâmetro. [height]
   Destrua o hBrush of o contexto do dispositivo atual.
@@ -510,66 +510,52 @@ Etapas para que se pinte um polígono com uma cor da borda e uma cor de preenchim
 Etapas para que se pinte uma imagem (pdf style):
   Se a imagem for inexistente, retorne.
   Atribua
-    a coordenada X do canto superior esquerdo desta caixa desta imagem
-    menos a coordenada X do canto superior esquerdo desta caixa intacta desta imagem
+    a coordenada X1 desta caixa desta imagem
+    menos a coordenada X1 desta caixa intacta desta imagem
     dividido pela quantidade de twips/pixel
     para um número X.
   Atribua
-    a coordenada Y do canto superior esquerdo desta caixa desta imagem
-    menos a coordenada Y do canto superior esquerdo desta caixa intacta desta imagem
+    a coordenada Y1 desta caixa desta imagem
+    menos a coordenada Y1 desta caixa intacta desta imagem
     dividido pelo quantidade de twips/pixel para um número Y.
   Atribua a largura desta caixa desta imagem dividido pela quantidade de twips/pixel para uma largura.
   Atribua a altura desta caixa desta imagem dividido pela quantidade de twips/pixel para uma altura.
-  Processe "gdiplus.dll" "GdipCreateBitmapFromScan0" com
-  \ Cria um objeto Bitmap com base em uma matriz de bytes junto com informações de tamanho e formato.
-    A largura [width] \Valor inteiro longo que especifica a largura, em pixels, do bitmap.
-    e A altura [height] \ especifica a altura, em pixels, do bitmap.
-    e 0 [stride] \especifica o deslocamento de byte entre o início de uma linha de varredura e a próxima.
-    \Isso é geralmente (mas não necessariamente) o número de bytes no formato de pixel (por exemplo, 2 para 16 bits por pixel) multiplicado pela largura do bitmap.
-    \O valor passado para este parâmetro deve ser um múltiplo de quatro.
-    e 137224 [format = PixelFormat24bppRGB] \Especifica o formato de pixel do bitmap.
-    \PixelFormat24bppRGB Especifica que o formato é de 24 bits por pixel; 8 bits cada são usados para os componentes vermelho, verde e azul.
-    e 0 [scan0] \O parâmetro scan0 é tratado como uma matriz de bytes. Ponteiro para uma matriz de bytes que contém os dados de pixel.
-    \O chamador é responsável por alocar e liberar o bloco de memória apontado por este parâmetro.
-    e O endereçamento dum gpBitmap. [*bitmap] \Ponteiro para uma variável DWORD que recives um ponteiro para um objeto Bitmap.
-  Processe "gdiplus.dll" "GdipGetImageGraphicsContext" com
+  Processe "gdiplus.dll" "GdipCreateBitmapFromScan0" com \ Cria um objeto Bitmap com base em uma matriz de bytes junto com informações de tamanho e formato.
+    A largura [width]
+    e A altura [height]
+    e 0 [stride]
+    e 137224 [format = PixelFormat24bppRGB]
+    e 0 [scan0]
+    e O endereçamento dum gpBitmap. [*bitmap]
+  Processe "gdiplus.dll" "GdipGetImageGraphicsContext" com \ INSERIR Documentação
     O gpBitmap
     e O endereçamento dum gpGraphic.
   Se o grayscale detector desta imagem estiver ativo, crie um GpImageAttributes (escala de cinza).
-  Processe "gdiplus.dll" "GdipDrawImageRectRectI" com
-  \\Desenha uma imagem em um local especificado.
-     O gpGraphic [*graphics] \ Ponteiro para o objeto Graphics.
-     e O gpBitmap desta imagem [*image] \ Ponteiro para um objeto Image que especifica a imagem a ser desenhada.
-   \ https://learn.microsoft.com/pt-br/windows/desktop/api/gdiplusheaders/nl-gdiplusheaders-image
-     [*destPoints] \ Ponteiro para uma matriz de objetos Point que especificam a área, em um paralelogramo, na qual desenhar a imagem.
-   \ https://learn.microsoft.com/pt-br/windows/desktop/api/gdiplustypes/nl-gdiplustypes-point
-   e 0 [dstx] \ valor inteiro que especifica a coordenada x do canto superior esquerdo da área de desenho da imagem.
-   e 0 [dsty] \ valor inteiro que especifica a coordenada y do canto superior esquerdo da área de desenho da imagem.
+  Processe "gdiplus.dll" "GdipDrawImageRectRectI" com \Desenha uma imagem em um local especificado.
+     O gpGraphic [*graphics]
+     e O gpBitmap desta imagem [*image] \ https://learn.microsoft.com/pt-br/windows/desktop/api/gdiplusheaders/nl-gdiplusheaders-image
+     [*destPoints] \ https://learn.microsoft.com/pt-br/windows/desktop/api/gdiplustypes/nl-gdiplustypes-point
+   e 0 [dstx]
+   e 0 [dsty]
    [/*destPoints]
-   [count] \ Número inteiro que especifica o número de elementos na matriz denominada destPoints.
-     e A largura [dstwidth ] \ valor inteiro que especifica a largura da área de desenho a ser desenhada.
-     e A altura [dstheight] \ valor inteiro que especifica a altura da área de desenho a ser desenhada.
+   [count]
+     e A largura [dstwidth]
+     e A altura [dstheight]
    [/count]
-     e O número X [srcx]  \ especifica a coordenada x do canto superior esquerdo da parte da imagem de origem a ser desenhada.
-     e O número Y [srcy]  \especifica a coordenada y do canto superior esquerdo da parte da imagem de origem a ser desenhada.
-     e A largura [srcwidth] \ valor inteiro que especifica a largura da parte da imagem de origem a ser desenhada.
-     e A altura [srcheight] \ valor inteiro que especifica a altura da parte da imagem de origem a ser desenhada.
-     e 2 [srcUnit = UnitPixel] \Elemento da enumeração da unidade que especifica a unidade de medida da imagem. O valor padrão é UnitPixel.
-     e O GpImageAttributes [*imageAttributes] \ Ponteiro para uma estrutura ImageAttributes que especifica os atributos de cor e tamanho da imagem a ser desenhada. O valor padrão é NULL.
-   \ https://learn.microsoft.com/pt-br/windows/desktop/api/gdiplusimageattributes/nl-gdiplusimageattributes-imageattributes
-     e nil [callback] \ Método de retorno de chamada usado para cancelar o desenho em andamento. O valor padrão é NULL.
-     e 0. [*callbackData] \ Ponteiro para dados adicionais usados pelo método especificado pelo parâmetro de retorno de chamada. O valor padrão é NULL.
+     e O número X [srcx]
+     e O número Y [srcy]
+     e A largura [srcwidth]
+     e A altura [srcheight]
+     e 2 [srcUnit = UnitPixel]
+     e O GpImageAttributes [*imageAttributes] \ https://learn.microsoft.com/pt-br/windows/desktop/api/gdiplusimageattributes/nl-gdiplusimageattributes-imageattributes
+     e nil [callback]
+     e 0. [*callbackData]
   Se o GpImageAttributes não for inexistente, destrua o GpImageAttributes.
-  Processe "gdiplus.dll" "GdipDeleteGraphics" com
-  \Exclui o objeto Graphics especificado.
-   O gpGraphic. [*graphics] \ Ponteiro para o objeto Graphics.
-  Pinte o gpBitmap sob o canto superior esquerdo localização desta caixa desta imagem (pdf style).
-  Processe "gdiplus.dll" "GdipDisposeImage" com
-  \Descarta o objeto Image especificado.
-    O gpBitmap.  [*image]
-  \GpImage é um ponteiro [que aponta] para o objeto Imagem que será descartado.
-  \Geralmente refere-se para uma imagem criada pelas funções GdipLoadImageFromFile, GdipLoadImageFromStream e outras funções construtoras de imagem.
-  \Obs: A função retorna o valor GpStatus, sendo que o valor 0 significa que função foi bem-sucedida.
+  Processe "gdiplus.dll" "GdipDeleteGraphics" com \Exclui o objeto Graphics especificado.
+   O gpGraphic. [*graphics]
+  Pinte o gpBitmap sob o canto superior esquerdo desta caixa desta imagem (pdf style).
+  Processe "gdiplus.dll" "GdipDisposeImage" com \Descarta o objeto Image especificado.
+    O gpBitmap. [*image]
 
 Etapas para que se pinte uma imagem:
   Se a página detector deste pdf state estiver ativo, pinte a imagem (pdf style); retorne.
@@ -589,7 +575,7 @@ Etapas para que se pinte uma imagem:
     e 2 [unit = pixels]. \ Elemento da enumeração Unit que especifica a unidade de medida para este objeto Graphics.
     \ https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusenums/ne-gdiplusenums-unit
     \ https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusgraphics/nl-gdiplusgraphics-graphics
-  Pinte a imagem sobre o gpGraphic sob a coordenada X do canto superior esquerdo desta caixa intacta desta imagem e a coordenada Y do canto superior esquerdo desta caixa intacta desta imagem.
+  Pinte a imagem sobre o gpGraphic sob a coordenada X1 desta caixa intacta desta imagem e a coordenada Y1 desta caixa intacta desta imagem.
   Processe "gdiplus.dll" "GdipDeleteGraphics" com
   \ Exclui o objeto Graphics especificado.
     O gpGraphic. [*graphics] \ponteito do número identificador do objeto Graphics.
@@ -666,10 +652,10 @@ Etapas para que se pinte um gpBitmap sob uma localização (pdf style):
 Etapas para que se pinte uma elipse com uma cor da borda e uma cor de preenchimento (pdf style):
   Se a cor da borda e a cor de preenchimento são clear, retorne.
   Output setcolor usando a cor da borda e a cor de preenchimento.
-  Atribua a coordenada X do canto superior esquerdo desta elipse e a coordenada Y do canto superior esquerdo desta elipse para uma localização.
+  Atribua a coordenada X1 desta elipse e a coordenada Y1 desta elipse para uma localização.
   Adicione o y-extent desta elipse dividido por 2 para a coordenada Y desta localização.
   Output moveto usando a localização.
-  Output o arco of a elipse usando "canto superior esquerdo".
+  Output o arco of a elipse usando "canto superior esquerdo". \ 
   Output o arco of a elipse usando "canto superior direito".
   Output o arco of a elipse usando "canto inferior direito".
   Output o arco of a elipse usando "canto inferior esquerdo ".
@@ -680,14 +666,14 @@ Etapas para que se pinte uma elipse com uma cor da borda e uma cor de preenchime
   Preserve a elipse.
   Crie o hPen of o contexto do dispositivo atual usando a cor da borda.
   Crie o hBrush of o contexto do dispositivo atual usando a cor de preenchimento.
-  Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo localização desta elipse.
+  Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta elipse.
   Processe "gdi32.dll" "Ellipse" com \ Desenha uma elipse
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-ellipse
     O contexto do dispositivo atual [hDC]
-    e A coordenada X do canto superior esquerdo [do retângulo delimitador] desta elipse [left]
-    e A coordenada Y do canto superior esquerdo [do retângulo delimitador] desta elipse [top]
-    e A coordenada X do canto inferior direito [do retângulo delimitador] desta elipse [right]
-    e A coordenada Y do canto inferior direito [do retângulo delimitador] desta elipse. [bottom]
+    e A coordenada X1 [do retângulo delimitador] desta elipse [left]
+    e A coordenada Y1 [do retângulo delimitador] desta elipse [top]
+    e A coordenada X2 [do retângulo delimitador] desta elipse [right]
+    e A coordenada Y2 [do retângulo delimitador] desta elipse. [bottom]
   Destrua o hBrush of o contexto do dispositivo atual.
   Destrua o hPen of o contexto do dispositivo atual.
 
@@ -705,15 +691,15 @@ Etapas para que se pinte uma caixa com uma cor da borda e uma cor de preenchimen
   Preserve a caixa.
   Crie o hPen of o contexto do dispositivo atual usando a cor da borda.
   Crie o hBrush of o contexto do dispositivo atual usando a cor de preenchimento.
-  Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo localização desta caixa.
+  Se a cor da borda estiver clear, adicione a quantidade de twips/pixel para o canto superior esquerdo desta caixa.
   Processe "gdi32.dll" "Rectangle" com
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-rectangle
   \A função Retângulo desenha um retângulo. O retângulo é delineado com a caneta (canetinha) atual e preenchido com o rolo de tinta (brush) atual.
     O contexto do dispositivo atual [hDC] \Um identificador para o contexto do dispositivo.
-    e A coordenada X do canto superior esquerdo desta caixa
-    e A coordenada Y do canto superior esquerdo desta caixa
-    e A coordenada X do canto inferior direito desta caixa
-    e A coordenada Y do canto inferior direito desta caixa.
+    e A coordenada X1 desta caixa
+    e A coordenada Y1 desta caixa
+    e A coordenada X2 desta caixa
+    e A coordenada Y2 desta caixa.
   Destrua o hBrush of o contexto do dispositivo atual. \ Destrua o hBrush pertencente ao contexto do dispositivo atual.
   Destrua o hPen of o contexto do dispositivo atual.
 
@@ -810,11 +796,11 @@ Etapas para que se converta uma definição da fonte para pdf em units:
   Converta o valor da altura desta definição da fonte para pdf em units usando o tamanho UPM desta definição da fonte e a fonte desta definição da fonte.
   \ Converta o italicangle desta definição da fonte para pdf em units usando o tamanho UPM desta definição da fonte e a fonte desta definição da fonte. \não sei porque está comentado
   Converta o valor da largura vertical desta definição da fonte para pdf em units usando o tamanho UPM desta definição da fonte e a fonte desta definição da fonte.
-  Converta a coordenada X do canto superior esquerdo desta caixa de fonte desta definição da fonte para pdf em units usando o tamanho UPM desta definição da fonte e a fonte desta definição da fonte.
-  Converta a coordenada Y do canto superior esquerdo desta caixa de fonte desta definição da fonte para pdf em units usando o tamanho UPM desta definição da fonte e a fonte desta definição da fonte.
-  Converta a coordenada X do canto inferior direito desta caixa de fonte desta definição da fonte para pdf em units usando o tamanho UPM desta definição da fonte e a fonte desta definição da fonte.
-  Converta a coordenada Y do canto inferior direito desta caixa de fonte desta definição da fonte para pdf em units usando o tamanho UPM desta definição da fonte e a fonte desta definição da fonte.
-  Permute a coordenada Y do canto superior esquerdo desta caixa de fonte desta definição da fonte com a coordenada Y do canto inferior direito desta caixa de fonte desta definição da fonte.
+  Converta a coordenada X1 desta caixa de fonte desta definição da fonte para pdf em units usando o tamanho UPM desta definição da fonte e a fonte desta definição da fonte.
+  Converta a coordenada Y1 desta caixa de fonte desta definição da fonte para pdf em units usando o tamanho UPM desta definição da fonte e a fonte desta definição da fonte.
+  Converta a coordenada X2 desta caixa de fonte desta definição da fonte para pdf em units usando o tamanho UPM desta definição da fonte e a fonte desta definição da fonte.
+  Converta a coordenada Y2 desta caixa de fonte desta definição da fonte para pdf em units usando o tamanho UPM desta definição da fonte e a fonte desta definição da fonte.
+  Permute a coordenada Y1 desta caixa de fonte desta definição da fonte com a coordenada Y2 desta caixa de fonte desta definição da fonte.
   Converta as larguras de fonte desta definição da fonte para pdf em units.
 
 Etapas para que se inicie uma folha usando uma caixa e um título de índice remissivo (pdf style - start o current página):

@@ -222,10 +222,10 @@ Etapas para que se adicione uma string para uns conjuntos de texto:
 
 \Etapas para que se mova a posição uma caixa utilizando 4 coordenadas:
 Etapas para que se ajuste uma caixa usando um número e um segundo número e um terceiro número e um quarto número:
-  Adicione o número para a coordenada X do canto superior esquerdo desta caixa.
-  Adicione o segundo número para a coordenada Y do canto superior esquerdo desta caixa.
-  Adicione o terceiro número para a coordenada X do canto inferior direito desta caixa.
-  Adicione o quarto número para a coordenada Y do canto inferior direito desta caixa.
+  Adicione o número para a coordenada X1 desta caixa.
+  Adicione o segundo número para a coordenada Y1 desta caixa.
+  Adicione o terceiro número para a coordenada X2 desta caixa.
+  Adicione o quarto número para a coordenada Y2 desta caixa.
 
 Etapas para que se ajuste um item:
   Atribua os dwFileAttributes deste WIN32FINDDATA deste item para um número.
@@ -250,10 +250,10 @@ Etapas para que se ajuste uma linha reta com um número e um segundo número e um 
 
 Etapas para que se ajuste uma imagem (extraindo as caixas do gpBitmap):
   Se a imagem for inexistente, retorne.
-  Atribua 0 à coordenada X do canto superior esquerdo desta caixa desta imagem.
-  Atribua 0 à coordenada Y do canto superior esquerdo desta caixa desta imagem.
-  Atribua a largura deste gpBitmap desta imagem menos 1 times a quantidade de twips/pixel à coordenada X do canto inferior direito desta caixa desta imagem.
-  Atribua a altura deste gpBitmap desta imagem menos 1 times a quantidade de twips/pixel à coordenada Y do canto inferior direito desta caixa desta imagem.
+  Atribua 0 à coordenada X1 desta caixa desta imagem.
+  Atribua 0 à coordenada Y1 desta caixa desta imagem.
+  Atribua a largura deste gpBitmap desta imagem menos 1 times a quantidade de twips/pixel à coordenada X2 desta caixa desta imagem.
+  Atribua a altura deste gpBitmap desta imagem menos 1 times a quantidade de twips/pixel à coordenada Y2 desta caixa desta imagem.
   Atribua a caixa desta imagem à caixa intacta desta imagem.
 
 Etapas para que se ajuste espaçamento da fonte usando uma string:
@@ -581,11 +581,11 @@ Etapas para que se acrescente uma string para uma segunda string:
 \insira
 \inclua
 \posponha
-Etapas para que se acrescente uma string para uma segunda string (handling email transparency):
+Etapas para que se acrescente uma string para uma segunda string (para transparência nos emails):
   Se a string estiver em branco, retorne.
   Lance um percorredor sobre a string.
   Comece. [a executar o código abaixo]
-    Mova o percorredor (caixa de texto arquivo rules).
+    Mova o percorredor (usando diretrizes de arquivos de texto).
     Se o segmento inicial deste percorredor estiver em branco, retorne.
     Se o segmento inicial deste percorredor começa com ".", acrescente "." para a segunda string.
     Acrescente o segmento inicial deste percorredor para a segunda string.
@@ -672,7 +672,7 @@ Etapas para que se acrescente zeros para uma string até chegar em um número:
   Acrescente "0" para a string.
   Recomece. [Execute novamente o código]
 
-Etapas para que se associe um ponteiro usando um quantidade de bytes:  \ Aloque memória RAM para um ponteiro
+Etapas para que se associe um ponteiro usando um quantidade de bytes:\ Aloque memória RAM para um ponteiro
   Se a quantidade de bytes for 0, esvazie o ponteiro; retorne.
   Preserve a quantidade de bytes.
   Arredonde a quantidade de bytes para cima usando a próxima potência de dois.
@@ -691,10 +691,10 @@ Etapas para que se role automaticamente uma caixa de texto usando uma localizaçã
   Limpe um valor da diferença.
   Atribua a caixa desta caixa de texto para uma caixa.
   Indent a caixa usando a quantidade de twips/pixel .
-  Se a coordenada Y desta localização for menor do que a coordenada Y do canto superior esquerdo desta caixa, atribua o número ao número Y desta valor da diferença.
-  Se a coordenada Y desta localização for maior do que a coordenada Y do canto inferior direito desta caixa, atribua o número ao número Y desta valor da diferença; negate o número Y desta valor da diferença.
-  Se a coordenada X desta localização for menor do que a coordenada X do canto superior esquerdo desta caixa, atribua o número ao número X desta valor da diferença.
-  Se a coordenada X desta localização for maior do que a coordenada X do canto inferior direito desta caixa, atribua o número ao número X desta valor da diferença; negate o número X desta valor da diferença.
+  Se a coordenada Y desta localização for menor do que a coordenada Y1 desta caixa, atribua o número ao número Y desta valor da diferença.
+  Se a coordenada Y desta localização for maior do que a coordenada Y2 desta caixa, atribua o número ao número Y desta valor da diferença; negate o número Y desta valor da diferença.
+  Se a coordenada X desta localização for menor do que a coordenada X1 desta caixa, atribua o número ao número X desta valor da diferença.
+  Se a coordenada X desta localização for maior do que a coordenada X2 desta caixa, atribua o número ao número X desta valor da diferença; negate o número X desta valor da diferença.
   Se o detector de rolagem horizontal desta caixa de texto não estiver ativo, atribua 0 ao número X desta valor da diferença.
   Se o detector de rolagem vertical desta caixa de texto não estiver ativo, atribua 0 ao número Y desta valor da diferença.
   Se o valor da diferença for 0, desative o detector; retorne.
@@ -748,12 +748,14 @@ Uma word big-endian unsigned é uma estrutura com 2 bytes.
 Um código binário é uma string.
 
 Uma caixa é uma estrutura com
-  Uma coordenada X do canto superior esquerdo ,
-  Uma coordenada Y do canto superior esquerdo,
-  Uma coordenada X do canto inferior direito,
-  Uma coordenada Y do canto inferior direito,
-  Um canto superior esquerdo localização sob a coordenada X do canto superior esquerdo, e
-  Um canto inferior direito localização sob a coordenada X do canto inferior direito.
+  Uma coordenada denominada coordenada X1, [left]
+  Uma coordenada denominada coordenada Y1, [top]
+  Uma coordenada denominada coordenada X2, [right]
+  Uma coordenada denominada coordenada Y2, [bottom]
+  Uma localização denominada canto superior esquerdo sob a coordenada X1, [left-top]
+  Uma localização denominada canto inferior direito sob a coordenada X2, [right-bottom]
+  Uma localização denominada canto esquerdo superior sob a coordenada X1, [top-left]
+  Um localização denominada canto direito inferior sob a coordenada X2. [bottom-right]
 
 Um brilho é uma luminosidade.
 
@@ -821,8 +823,8 @@ Um cursor de texto é um posicionamento.
 Etapas para que se centralize uma caixa sob o base of uma segunda caixa:
   Centralize a caixa na segunda caixa (horizontalmente).
   Atribua a altura desta caixa para uma altura.
-  Atribua a coordenada Y do canto inferior direito desta segunda caixa à coordenada Y do canto inferior direito desta caixa.
-  Atribua a coordenada Y do canto inferior direito desta caixa menos a altura à coordenada Y do canto superior esquerdo desta caixa.
+  Atribua a coordenada Y2 desta segunda caixa à coordenada Y2 desta caixa.
+  Atribua a coordenada Y2 desta caixa menos a altura à coordenada Y1 desta caixa.
 
 Etapas para que se centralize uma caixa em uma segunda caixa (horizontalmente):
   Atribua a coordenada X deste centro desta segunda caixa menos a coordenada X deste centro desta caixa para um número.
@@ -1186,13 +1188,13 @@ Etapas para que se converta um código binário Para um número:
 
 Etapas para que se converta uma caixa para uma string:
   Limpe a string.
-  Acrescente a coordenada X do canto superior esquerdo desta caixa para a string.
+  Acrescente a coordenada X1 desta caixa para a string.
   Acrescente " " para a string.
-  Acrescente a coordenada Y do canto superior esquerdo desta caixa para a string.
+  Acrescente a coordenada Y1 desta caixa para a string.
   Acrescente " " para a string.
-  Acrescente a coordenada X do canto inferior direito desta caixa para a string.
+  Acrescente a coordenada X2 desta caixa para a string.
   Acrescente " " para a string.
-  Acrescente a coordenada Y do canto inferior direito desta caixa para a string.
+  Acrescente a coordenada Y2 desta caixa para a string.
 
 Etapas para que se converta um byte para uma cifra binária:
   Atribua o byte à cifra binária como um byte.
@@ -1572,7 +1574,7 @@ Etapas para que se converta uma string para um texto de consulta:
 Etapas para que se converta uma string para umas linhas de texto:
   Lance um percorredor sobre a string.
   Comece. [a executar o código abaixo]
-    Mova o percorredor (caixa de texto arquivo rules).
+    Mova o percorredor (usando diretrizes de arquivos de texto).
     Se o segmento inicial deste percorredor estiver em branco, pare.
     Crie uma linha de texto usando o segmento inicial deste percorredor.
     Acrescente a linha de texto para as linhas de texto.
@@ -1749,12 +1751,12 @@ Etapas para que se crie um console:
   Atribua a cor preta à cor de preenchimento deste console.
   Atribua a caixa desta tela à caixa deste console.
   Atribua a caixa desta tela para uma caixa.
-  Subtraia a altura desta fonte padrão desde a coordenada Y do canto inferior direito desta caixa.
+  Subtraia a altura desta fonte padrão desde a coordenada Y2 desta caixa.
   Atribua a altura desta caixa dividido pela altura desta fonte padrão times a altura desta fonte padrão para uma altura.
-  Atribua a coordenada Y do canto superior esquerdo desta caixa mais a altura à coordenada Y do canto inferior direito desta caixa.
+  Atribua a coordenada Y1 desta caixa mais a altura à coordenada Y2 desta caixa.
   Centralize a caixa na caixa desta tela (verticalmente).
-  Atribua a coordenada Y do canto superior esquerdo desta caixa à coordenada X do canto superior esquerdo desta caixa.
-  Subtraia a coordenada Y do canto superior esquerdo desta caixa desde a coordenada X do canto inferior direito desta caixa.
+  Atribua a coordenada Y1 desta caixa à coordenada X1 desta caixa.
+  Subtraia a coordenada Y1 desta caixa desde a coordenada X2 desta caixa.
   Crie a caixa de texto deste console.
   Atribua a caixa à caixa desta caixa de texto deste console.
   Ative o detector de quebra de texto desta caixa de texto deste console.
@@ -1966,17 +1968,17 @@ Etapas para que se crie o hPen of um canvas usando uma cor:
 Etapas para que se crie uma hRgn usando uma caixa:
   \ hRgn = número identificador da região que será desenhada na tela
   Preserve a caixa.
-  Adicione a quantidade de twips/pixel para o canto inferior direito localização desta caixa.
+  Adicione a quantidade de twips/pixel para o canto inferior direito desta caixa.
   Processe "gdi32.dll" "BeginPath" com \ Começa um caminho no contexto de dispositivo especificado.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-beginpath
     O contexto do dispositivo atual.[hDC]
   Processe "gdi32.dll" "Rectangle" com \ Desenha um retângulo.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-rectangle
     O contexto do dispositivo atual [hDC]
-    e A coordenada X do canto superior esquerdo desta caixa
-    e A coordenada Y do canto superior esquerdo desta caixa
-    e A coordenada X do canto inferior direito desta caixa
-    e A coordenada Y do canto inferior direito desta caixa.
+    e A coordenada X1 desta caixa
+    e A coordenada Y1 desta caixa
+    e A coordenada X2 desta caixa
+    e A coordenada Y2 desta caixa.
   Processe "gdi32.dll" "EndPath" com \ Termina caminho e seleciona o caminho definido pelo suporte no contexto de dispositivo especificado.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-endpath
     O contexto do dispositivo atual. [hDC]
@@ -1992,10 +1994,10 @@ Etapas para que se crie uma hRgn usando uma elipse:
   Processe "gdi32.dll" "Ellipse" com \ Desenha uma elipse.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-ellipse
     O contexto do dispositivo atual [hDC]
-    e A coordenada X do canto superior esquerdo desta caixa
-    e A coordenada Y do canto superior esquerdo desta caixa
-    e A coordenada X do canto inferior direito desta caixa
-    e A coordenada Y do canto inferior direito desta caixa.
+    e A coordenada X1 desta caixa
+    e A coordenada Y1 desta caixa
+    e A coordenada X2 desta caixa
+    e A coordenada Y2 desta caixa.
   Processe "gdi32.dll" "EndPath" com
     O contexto do dispositivo atual. [hDC]
   Processe "gdi32.dll" "PathToRegion" com
@@ -2032,10 +2034,10 @@ Etapas para que se crie uma hRgn usando uma caixa arredondada:
   Processe "gdi32.dll" "RoundRect" com \ Desenha um retângulo com cantos arredondados.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-roundrect
     O contexto do dispositivo atual [hDC]
-    e A coordenada X do canto superior esquerdo desta caixa
-    e A coordenada Y do canto superior esquerdo desta caixa
-    e A coordenada X do canto inferior direito desta caixa
-    e A coordenada Y do canto inferior direito desta caixa
+    e A coordenada X1 desta caixa
+    e A coordenada Y1 desta caixa
+    e A coordenada X2 desta caixa
+    e A coordenada Y2 desta caixa
     e O diâmetro [width]
     e O diâmetro. [height]
   Processe "gdi32.dll" "EndPath" com
@@ -2350,13 +2352,13 @@ Etapas para que se produza o relatório de erros usando uma caixa;
 Etapas para que se produza o relatório de informações usando uma caixa:
   Limpe um relatório.
   Acrescente "Coordenada esquerda = " para o relatório.
-  Acrescente a coordenada X do canto superior esquerdo desta caixa para o relatório.
+  Acrescente a coordenada X1 desta caixa para o relatório.
   Acrescente ", Coordenada superior = " para o relatório.
-  Acrescente a coordenada Y do canto superior esquerdo desta caixa para o relatório.
+  Acrescente a coordenada Y1 desta caixa para o relatório.
   Acrescente ", Coordenada direita = " para o relatório.
-  Acrescente a coordenada X do canto inferior direito desta caixa para o relatório.
+  Acrescente a coordenada X2 desta caixa para o relatório.
   Acrescente ", Coordenada inferior = " para o relatório.
-  Acrescente a coordenada Y do canto inferior direito desta caixa para o relatório.
+  Acrescente a coordenada Y2 desta caixa para o relatório.
   Produza o relatório de informações usando o relatório.
 
 Etapas para que se produza o relatório de erros usando um byte;
@@ -2515,25 +2517,25 @@ Etapas para que se produza o relatório de informações usando uma word:
   Produza o relatório de informações usando o relatório.
 
 Etapas para que se determine se uma caixa é uma segunda caixa:
-  Se a coordenada X do canto superior esquerdo desta caixa não for a coordenada X do canto superior esquerdo desta segunda caixa, diga não.
-  Se a coordenada Y do canto superior esquerdo desta caixa não for a coordenada Y do canto superior esquerdo desta segunda caixa, diga não.
-  Se a coordenada X do canto inferior direito desta caixa não for a coordenada X do canto inferior direito desta segunda caixa, diga não.
-  Se a coordenada Y do canto inferior direito desta caixa não for a coordenada Y do canto inferior direito desta segunda caixa, diga não.
+  Se a coordenada X1 desta caixa não for a coordenada X1 desta segunda caixa, diga não.
+  Se a coordenada Y1 desta caixa não for a coordenada Y1 desta segunda caixa, diga não.
+  Se a coordenada X2 desta caixa não for a coordenada X2 desta segunda caixa, diga não.
+  Se a coordenada Y2 desta caixa não for a coordenada Y2 desta segunda caixa, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se uma caixa está em uma segunda caixa;
 Etapas para que se determine se uma caixa está inside uma segunda caixa:
-  Se a coordenada X do canto superior esquerdo desta caixa for menor do que a coordenada X do canto superior esquerdo desta segunda caixa, diga não.
-  Se a coordenada Y do canto superior esquerdo desta caixa for menor do que a coordenada Y do canto superior esquerdo desta segunda caixa, diga não.
-  Se a coordenada X do canto inferior direito desta caixa for maior do que a coordenada X do canto inferior direito desta segunda caixa, diga não.
-  Se a coordenada Y do canto inferior direito desta caixa for maior do que a coordenada Y do canto inferior direito desta segunda caixa, diga não.
+  Se a coordenada X1 desta caixa for menor do que a coordenada X1 desta segunda caixa, diga não.
+  Se a coordenada Y1 desta caixa for menor do que a coordenada Y1 desta segunda caixa, diga não.
+  Se a coordenada X2 desta caixa for maior do que a coordenada X2 desta segunda caixa, diga não.
+  Se a coordenada Y2 desta caixa for maior do que a coordenada Y2 desta segunda caixa, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se uma caixa está tocando uma segunda caixa:
-  Se a coordenada X do canto inferior direito desta segunda caixa for menor do que a coordenada X do canto superior esquerdo desta caixa, diga não.
-  Se a coordenada Y do canto inferior direito desta segunda caixa for menor do que a coordenada Y do canto superior esquerdo desta caixa, diga não.
-  Se a coordenada X do canto superior esquerdo desta segunda caixa for maior do que a coordenada X do canto inferior direito desta caixa, diga não.
-  Se a coordenada Y do canto superior esquerdo desta segunda caixa for maior do que a coordenada Y do canto inferior direito desta caixa, diga não.
+  Se a coordenada X2 desta segunda caixa for menor do que a coordenada X1 desta caixa, diga não.
+  Se a coordenada Y2 desta segunda caixa for menor do que a coordenada Y1 desta caixa, diga não.
+  Se a coordenada X1 desta segunda caixa for maior do que a coordenada X2 desta caixa, diga não.
+  Se a coordenada Y1 desta segunda caixa for maior do que a coordenada Y2 desta caixa, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se um byte é alfanumérico:
@@ -2768,7 +2770,7 @@ Etapas para que se determine se a localização atual está lado esquerdo ou lado d
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se a localização atual está para o lado direito of uma caixa:
-  Se a coordenada X desta localização deste contexto for maior do que a coordenada X do canto inferior direito desta caixa, diga sim.
+  Se a coordenada X desta localização deste contexto for maior do que a coordenada X2 desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se a localização atual está within uns twips of uma caixa:
@@ -2986,8 +2988,8 @@ Etapas para que se determine se o botão esquerdo do mouse está para baixo:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma linha reta está acima of uma caixa:
-  Se a coordenada Y desta localização inicial desta linha reta for maior do que ou igual à coordenada Y do canto superior esquerdo desta caixa, diga não.
-  Se a coordenada Y desta localização final desta linha reta for maior do que ou igual à coordenada Y do canto superior esquerdo desta caixa, diga não.
+  Se a coordenada Y desta localização inicial desta linha reta for maior do que ou igual à coordenada Y1 desta caixa, diga não.
+  Se a coordenada Y desta localização final desta linha reta for maior do que ou igual à coordenada Y1 desta caixa, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se uma linha reta está acima of uma coordenada:
@@ -2996,8 +2998,8 @@ Etapas para que se determine se uma linha reta está acima of uma coordenada:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se uma linha reta está debaixo of uma caixa:
-  Se a coordenada Y desta localização inicial desta linha reta for menor do que ou igual à coordenada Y do canto inferior direito desta caixa, diga não.
-  Se a coordenada Y desta localização final desta linha reta for menor do que ou igual à coordenada Y do canto inferior direito desta caixa, diga não.
+  Se a coordenada Y desta localização inicial desta linha reta for menor do que ou igual à coordenada Y2 desta caixa, diga não.
+  Se a coordenada Y desta localização final desta linha reta for menor do que ou igual à coordenada Y2 desta caixa, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se uma linha reta está debaixo of uma coordenada:
@@ -3204,7 +3206,7 @@ Etapas para que se determine se something está selecionado em uma caixa de texto
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se uma localização está acima of uma caixa:
-  Se a coordenada Y desta localização for menor do que a coordenada Y do canto superior esquerdo desta caixa, diga sim.
+  Se a coordenada Y desta localização for menor do que a coordenada Y1 desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma localização está acima of um linha reta horizontal:
@@ -3217,7 +3219,7 @@ Etapas para que se determine se uma localização está acima of ou debaixo of uma 
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma localização é debaixo of uma caixa:
-  Se a coordenada Y desta localização for maior do que a coordenada Y do canto inferior direito desta caixa, diga sim.
+  Se a coordenada Y desta localização for maior do que a coordenada Y2 desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma localização é debaixo of um linha reta horizontal:
@@ -3279,10 +3281,10 @@ Etapas para que se determine se uma localização está em uma caixa arredondada:
   Atribua o diâmetro para uma altura.
   Processe "gdi32.dll" "CreateRoundRectRgn" com \ Cria uma região retangular com cantos arredondados.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-createroundrectrgn
-    A coordenada X do canto superior esquerdo desta caixa arredondada [x1]
-    e A coordenada Y do canto superior esquerdo desta caixa arredondada [y2]
-    e A coordenada X do canto inferior direito desta caixa arredondada [x2]
-    e A coordenada Y do canto inferior direito desta caixa arredondada [y2]
+    A coordenada X1 desta caixa arredondada [x1]
+    e A coordenada Y1 desta caixa arredondada [y2]
+    e A coordenada X2 desta caixa arredondada [x2]
+    e A coordenada Y2 desta caixa arredondada [y2]
     e A largura [w]
     e A altura [h]
   Retornando uma hRgn.
@@ -3307,15 +3309,15 @@ Etapas para que se determine se uma localização está dentro de uma caixa;
 Etapas para que se determine se uma localização está inside uma caixa;
 Etapas para que se determine se uma localização está within uma caixa;
 Etapas para que se determine se uma localização está em uma caixa:
-  Se a coordenada X desta localização for menor do que a coordenada X do canto superior esquerdo desta caixa, diga não.
-  Se a coordenada Y desta localização for menor do que a coordenada Y do canto superior esquerdo desta caixa, diga não.
-  Se a coordenada X desta localização for maior do que a coordenada X do canto inferior direito desta caixa, diga não.
-  Se a coordenada Y desta localização for maior do que a coordenada Y do canto inferior direito desta caixa, diga não.
+  Se a coordenada X desta localização for menor do que a coordenada X1 desta caixa, diga não.
+  Se a coordenada Y desta localização for menor do que a coordenada Y1 desta caixa, diga não.
+  Se a coordenada X desta localização for maior do que a coordenada X2 desta caixa, diga não.
+  Se a coordenada Y desta localização for maior do que a coordenada Y2 desta caixa, diga não.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se uma localização está para a esquerda of uma caixa;
 Etapas para que se determine se uma localização está para o lado esquerdo of uma caixa:
-  Se a coordenada X desta localização for menor do que a coordenada X do canto superior esquerdo desta caixa, diga sim.
+  Se a coordenada X desta localização for menor do que a coordenada X1 desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma localização está para a direita ou para a esquerda of uma caixa;
@@ -3397,7 +3399,7 @@ Etapas para que se determine se uma localização é outside uma caixa:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se uma localização é para o lado direito of uma caixa:
-  Se a coordenada X desta localização for maior do que a coordenada X do canto inferior direito desta caixa, diga sim.
+  Se a coordenada X desta localização for maior do que a coordenada X2 desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se uma localização é tocando uma caixa:
@@ -3710,7 +3712,7 @@ Etapas para que se determine se we did encontre um ponteiro:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga sim.
 
 Etapas para que se determine se estamos acima of uma caixa:
-  Se a coordenada Y deste contexto for menor do que a coordenada Y do canto superior esquerdo desta caixa, diga sim.
+  Se a coordenada Y deste contexto for menor do que a coordenada Y1 desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se estamos acima of uma coordenada:
@@ -3722,8 +3724,8 @@ Etapas para que se determine se estamos acima of um linha reta horizontal:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se estamos acima of ou debaixo of uma caixa:
-  Se a coordenada Y deste contexto for menor do que a coordenada Y do canto superior esquerdo desta caixa, diga sim.
-  Se a coordenada Y deste contexto for maior do que a coordenada Y do canto inferior direito desta caixa, diga sim.
+  Se a coordenada Y deste contexto for menor do que a coordenada Y1 desta caixa, diga sim.
+  Se a coordenada Y deste contexto for maior do que a coordenada Y2 desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se estamos acima of uma localização:
@@ -3731,7 +3733,7 @@ Etapas para que se determine se estamos acima of uma localização:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se estamos debaixo of uma caixa:
-  Se a coordenada Y deste contexto for maior do que a coordenada Y do canto inferior direito desta caixa, diga sim.
+  Se a coordenada Y deste contexto for maior do que a coordenada Y2 desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se estamos debaixo of uma coordenada:
@@ -3755,14 +3757,14 @@ Etapas para que se determine se estamos facing north:
 Etapas para que se determine se estamos no lado esquerdo of uma caixa;
 Etapas para que se determine se estamos esquerda of uma caixa;
 Etapas para que se determine se estamos lado esquerdo of uma caixa:
-  Se a coordenada X deste contexto for menor do que a coordenada X do canto superior esquerdo desta caixa, diga sim.
+  Se a coordenada X deste contexto for menor do que a coordenada X1 desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se estamos no lado esquerdo ou no lado direito of uma caixa;
 Etapas para que se determine se estamos esquerda ou direita of uma caixa;
 Etapas para que se determine se estamos lado esquerdo ou lado direito of uma caixa:
-  Se a coordenada X deste contexto for menor do que a coordenada X do canto superior esquerdo desta caixa, diga sim.
-  Se a coordenada X deste contexto for maior do que a coordenada X do canto inferior direito desta caixa, diga sim.
+  Se a coordenada X deste contexto for menor do que a coordenada X1 desta caixa, diga sim.
+  Se a coordenada X deste contexto for maior do que a coordenada X2 desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se estamos outside uma caixa:
@@ -3770,7 +3772,7 @@ Etapas para que se determine se estamos outside uma caixa:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se estamos lado direito of uma caixa:
-  Se a coordenada X deste contexto for maior do que a coordenada X do canto inferior direito desta caixa, diga sim.
+  Se a coordenada X deste contexto for maior do que a coordenada X2 desta caixa, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Etapas para que se determine se estamos em uma caixa:
@@ -4025,7 +4027,7 @@ Etapas para que se pinte uma caixa:
 
 Etapas para que se pinte uma caixa (focus style):
   Preserve a caixa.
-  Adicione a quantidade de twips/pixel para o canto inferior direito localização desta caixa.
+  Adicione a quantidade de twips/pixel para o canto inferior direito desta caixa.
   Processe "gdi32.dll" "LPtoDP" com \ Converte coordenadas lógicas em coordenadas de dispositivo.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-lptodp
     O contexto do dispositivo atual [hdc]
@@ -4061,7 +4063,7 @@ Etapas para que se pinte o cursor de texto em uma caixa de texto:
   Se a caixa de texto for inexistente, retorne.
   Obtenha uma caixa por [para] o cursor de texto na caixa de texto.
   Se a caixa não estiver tocando a caixa desta caixa de texto, retorne.
-  Atribua o canto superior esquerdo localização desta caixa e o canto inferior direito localização desta caixa para uma linha reta.
+  Atribua o canto superior esquerdo desta caixa e o canto inferior direito desta caixa para uma linha reta.
   Pinte a linha reta com a cor azul.
 
 \Etapas para que se pinte um círculo aproximadamente uns twips wide;
@@ -4489,8 +4491,8 @@ Etapas para que se pinte uma string em uma caixa:
 
 Etapas para que se pinte uma string em uma caixa over um número com uma cor e uma fonte e um alinhamento:
   Preserve a caixa.
-  Se o alinhamento for "à esquerda", adicione o número para a coordenada X do canto superior esquerdo desta caixa.
-  Se o alinhamento for "à direita", subtraia o número desde a coordenada X do canto inferior direito desta caixa.
+  Se o alinhamento for "à esquerda", adicione o número para a coordenada X1 desta caixa.
+  Se o alinhamento for "à direita", subtraia o número desde a coordenada X2 desta caixa.
   Pinte a string na caixa com a cor e a fonte e o alinhamento.
 
 Etapas para que se pinte uma string em uma caixa com um alinhamento:
@@ -4504,7 +4506,7 @@ Etapas para que se pinte uma string em uma caixa com uma cor e um alinhamento:
 
 Etapas para que se pinte uma string em uma caixa com uma cor e uma fonte e um alinhamento:
   Obtenha um offset par de números usando a string e a caixa e a fonte e o alinhamento.
-  Pinte a string sob o canto superior esquerdo localização desta caixa mais o offset par de números com a cor e a fonte.
+  Pinte a string sob o canto superior esquerdo desta caixa mais o offset par de números com a cor e a fonte.
 
 Etapas para que se pinte uma string em uma caixa com uma fonte e um alinhamento:
   Pinte a string na caixa com a cor preta e a fonte e o alinhamento.
@@ -4613,12 +4615,12 @@ Etapas para que se encrypt um trecho usando um palavra-passe:
   Atribua a cifra hexadecimal ao trecho.
 
 Etapas para que se enlarge uma caixa por uns twips:
-  Subtraia os twips desde o canto superior esquerdo localização desta caixa.
-  Adicione os twips para o canto inferior direito localização desta caixa.
+  Subtraia os twips desde o canto superior esquerdo desta caixa.
+  Adicione os twips para o canto inferior direito desta caixa.
 
 Etapas para que se enlarge uma elipse por uns twips:
-  Subtraia os twips desde o canto superior esquerdo localização desta elipse.
-  Adicione os twips para o canto inferior direito localização desta elipse.
+  Subtraia os twips desde o canto superior esquerdo desta elipse.
+  Adicione os twips para o canto inferior direito desta elipse.
 
 Etapas para que se enfileire um evento:
   Acrescente o evento para a fila de eventos.
@@ -4648,10 +4650,10 @@ Etapas para que se expanda alguma seleção em uma caixa de texto usando uma local
   Limpe a última operação desta caixa de texto.
 
 Etapas para que se expanda uma caixa para include uma segunda caixa:
-  Se a coordenada X do canto superior esquerdo desta segunda caixa for menor do que a coordenada X do canto superior esquerdo desta caixa, atribua a coordenada X do canto superior esquerdo desta segunda caixa à coordenada X do canto superior esquerdo desta caixa.
-  Se a coordenada Y do canto superior esquerdo desta segunda caixa for menor do que a coordenada Y do canto superior esquerdo desta caixa, atribua a coordenada Y do canto superior esquerdo desta segunda caixa à coordenada Y do canto superior esquerdo desta caixa.
-  Se a coordenada X do canto inferior direito desta segunda caixa for maior do que a coordenada X do canto inferior direito desta caixa, atribua a coordenada X do canto inferior direito desta segunda caixa à coordenada X do canto inferior direito desta caixa.
-  Se a coordenada Y do canto inferior direito desta segunda caixa for maior do que a coordenada Y do canto inferior direito desta caixa, atribua a coordenada Y do canto inferior direito desta segunda caixa à coordenada Y do canto inferior direito desta caixa.
+  Se a coordenada X1 desta segunda caixa for menor do que a coordenada X1 desta caixa, atribua a coordenada X1 desta segunda caixa à coordenada X1 desta caixa.
+  Se a coordenada Y1 desta segunda caixa for menor do que a coordenada Y1 desta caixa, atribua a coordenada Y1 desta segunda caixa à coordenada Y1 desta caixa.
+  Se a coordenada X2 desta segunda caixa for maior do que a coordenada X2 desta caixa, atribua a coordenada X2 desta segunda caixa à coordenada X2 desta caixa.
+  Se a coordenada Y2 desta segunda caixa for maior do que a coordenada Y2 desta caixa, atribua a coordenada Y2 desta segunda caixa à coordenada Y2 desta caixa.
 
 Uns extra points são uns points.
 
@@ -4761,8 +4763,8 @@ Etapas para que se extraia uma imagem usando uma caixa:
     e A largura desta caixa [cx]
     e A altura desta caixa [cy]
     e o contexto do dispositivo atual  [hdcSrc]
-    e a coordenada X do canto superior esquerdo desta caixa [x1]
-    e a coordenada Y do canto superior esquerdo desta caixa [y1]
+    e a coordenada X1 desta caixa [x1]
+    e a coordenada Y1 desta caixa [y1]
     e 13369376 [0xCC0020 rop = SRCCOPY].
   Processe "gdiplus.dll" "GdipReleaseDC" com \ Libera o identificador de contexto de dispositivo
     O gpGraphic [graphics]
@@ -5148,8 +5150,8 @@ Etapas para que se flip um polígono:
   Comece. [a executar o código abaixo]
     Obtenha um vértice desde os vértices deste polígono.
     Se o vértice for inexistente, retorne.
-    Subtraia a coordenada Y do canto superior esquerdo desta caixa desde a coordenada Y deste vértice.
-    Atribua a coordenada Y do canto inferior direito desta caixa menos a coordenada Y deste vértice à coordenada Y deste vértice.
+    Subtraia a coordenada Y1 desta caixa desde a coordenada Y deste vértice.
+    Atribua a coordenada Y2 desta caixa menos a coordenada Y deste vértice à coordenada Y deste vértice.
   Recomece. [Execute novamente o código]
 
 Etapas para que se desmanche all input;
@@ -5276,28 +5278,28 @@ Etapas para que se obtenha uma caixa pelo cursor de texto em uma caixa de texto:
   Se a caixa de texto for inexistente, zero a caixa; retorne.
   Obtenha uma localização usando o cursor de texto desta caixa de texto e a caixa de texto.
   Atribua a localização e a localização ao caixa.
-  Adicione a altura da linha desta caixa de texto para a coordenada Y do canto inferior direito desta caixa.
+  Adicione a altura da linha desta caixa de texto para a coordenada Y2 desta caixa.
   Ajuste a caixa usando 0 e a quantidade de twips/pixel e 0 e - a quantidade de twips/pixel .
   Atribua a globalized origem desta caixa de texto para um origem.
-  Se a coordenada X do canto superior esquerdo desta caixa for menor do que a coordenada X desta origem,
-    Atribua a coordenada X desta origem à coordenada X do canto superior esquerdo desta caixa;
-    Atribua a coordenada X desta origem à coordenada X do canto inferior direito desta caixa.
+  Se a coordenada X1 desta caixa for menor do que a coordenada X desta origem,
+    Atribua a coordenada X desta origem à coordenada X1 desta caixa;
+    Atribua a coordenada X desta origem à coordenada X2 desta caixa.
   Se o detector de quebra de texto desta caixa de texto não estiver ativo, retorne.
-  Limite a coordenada X do canto superior esquerdo desta caixa para a coordenada X do canto superior esquerdo desta caixa de texto e a coordenada X do canto inferior direito desta caixa de texto.
-  Limite a coordenada X do canto inferior direito desta caixa para a coordenada X do canto superior esquerdo desta caixa de texto e a coordenada X do canto inferior direito desta caixa de texto.
+  Limite a coordenada X1 desta caixa para a coordenada X1 desta caixa de texto e a coordenada X2 desta caixa de texto.
+  Limite a coordenada X2 desta caixa para a coordenada X1 desta caixa de texto e a coordenada X2 desta caixa de texto.
 
 Etapas para que se obtenha uma caixa por uma linha reta:
   Atribua a localização inicial desta linha reta ao canto superior esquerdo desta caixa.
-  Atribua a localização final desta linha reta ao canto inferior direito localização desta caixa.
+  Atribua a localização final desta linha reta ao canto inferior direito desta caixa.
   Normalize a caixa.
 
 Etapas para que se obtenha uma caixa usando uma linha de texto e uma caixa de texto:
   Se a caixa de texto for inexistente, zero a caixa; retorne.
   Se a linha de texto for inexistente, zero a caixa; retorne.
   Atribua a globalized origem desta caixa de texto ao canto superior esquerdo desta caixa.
-  Adicione o número da linha desta linha de texto menos 1 times a altura da linha desta caixa de texto para a coordenada Y do canto superior esquerdo desta caixa.
-  Atribua a coordenada X do canto inferior direito desta caixa de texto à coordenada X do canto inferior direito desta caixa.
-  Atribua a coordenada Y do canto superior esquerdo desta caixa mais a altura da linha desta caixa de texto à coordenada Y do canto inferior direito desta caixa.
+  Adicione o número da linha desta linha de texto menos 1 times a altura da linha desta caixa de texto para a coordenada Y1 desta caixa.
+  Atribua a coordenada X2 desta caixa de texto à coordenada X2 desta caixa.
+  Atribua a coordenada Y1 desta caixa mais a altura da linha desta caixa de texto à coordenada Y2 desta caixa.
 
 Etapas para que se obtenha um recipiente usando um recipiente# e um catálogo:
   \ Se o catálogo for inexistente, esvazie o recipiente; retorne. \ para deixar o compilador mais rápido
@@ -5363,7 +5365,7 @@ Etapas para que se obtenha um número de coluna usando uma linha de texto e uma l
   Se a caixa de texto for inexistente, retorne.
   Se a linha de texto for inexistente, retorne.
   Obtenha uma caixa usando a linha de texto e a caixa de texto.
-  Se a coordenada Y desta localização for maior do que a coordenada Y do canto inferior direito desta caixa, atribua a quantidade de caracteres desta string desta linha de texto ao número de coluna; retorne.
+  Se a coordenada Y desta localização for maior do que a coordenada Y2 desta caixa, atribua a quantidade de caracteres desta string desta linha de texto ao número de coluna; retorne.
   \ only happens sobre last linha de texto of caixa de texto
   Crie o número da fonte of o contexto de dispositivo de memória usando a fonte desta caixa de texto.
   Obtenha um start largura e um subtexto usando a linha de texto e a localização e a caixa de texto (for "get um número de coluna usando uma linha de texto...").
@@ -5649,7 +5651,7 @@ Etapas para que se obtenha uma linha de texto usando um número da linha e uma ca
 Etapas para que se obtenha uma linha de texto usando uma localização e uma caixa de texto:
   Se a caixa de texto for inexistente, esvazie a linha de texto; retorne.
   Atribua a coordenada Y desta localização para uma coordenada Y.
-  Limite a coordenada Y para a coordenada Y do canto superior esquerdo desta caixa de texto e a coordenada Y do canto inferior direito desta caixa de texto.
+  Limite a coordenada Y para a coordenada Y1 desta caixa de texto e a coordenada Y2 desta caixa de texto.
   Atribua a coordenada Y menos a coordenada Y desta globalized origem desta caixa de texto dividido pela altura da linha desta caixa de texto mais 1 para um número da linha.
   Limite o número da linha para 1 e a contagem de linhas desta caixa de texto.
   Obtenha a linha de texto usando o número da linha e a caixa de texto.
@@ -5665,15 +5667,15 @@ Etapas para que se obtenha uma caixa de seleção usando uma linha de texto e uma 
 
 Etapas para que se obtenha uma caixa de seleção usando uma linha de texto e uma caixa de texto (lado esquerdo):
   Atribua a normalized seleção desta caixa de texto para uma seleção.
-  Atribua a coordenada X desta globalized origem desta caixa de texto à coordenada X do canto superior esquerdo desta caixa de seleção.
-  Se o anchor número da linha desta seleção for o número da linha desta linha de texto, obtenha uma localização usando o anchor desta seleção e a caixa de texto; atribua a coordenada X desta localização à coordenada X do canto superior esquerdo desta caixa de seleção.
-  Limite a coordenada X do canto superior esquerdo desta caixa de seleção para a coordenada X do canto superior esquerdo desta caixa de texto e a coordenada X do canto inferior direito desta caixa de texto.
+  Atribua a coordenada X desta globalized origem desta caixa de texto à coordenada X1 desta caixa de seleção.
+  Se o anchor número da linha desta seleção for o número da linha desta linha de texto, obtenha uma localização usando o anchor desta seleção e a caixa de texto; atribua a coordenada X desta localização à coordenada X1 desta caixa de seleção.
+  Limite a coordenada X1 desta caixa de seleção para a coordenada X1 desta caixa de texto e a coordenada X2 desta caixa de texto.
 
 Etapas para que se obtenha uma caixa de seleção usando uma linha de texto e uma caixa de texto (lado direito):
   Atribua a normalized seleção desta caixa de texto para uma seleção.
-  Atribua a coordenada X do canto inferior direito desta caixa de texto à coordenada X do canto inferior direito desta caixa de seleção.
-  Se o número de linhas do cursor desta seleção for o número da linha desta linha de texto, obtenha uma localização usando o cursor de texto desta seleção e a caixa de texto; atribua a coordenada X desta localização à coordenada X do canto inferior direito desta caixa de seleção.
-  Limite a coordenada X do canto inferior direito desta caixa de seleção para a coordenada X do canto superior esquerdo desta caixa de texto e a coordenada X do canto inferior direito desta caixa de texto.
+  Atribua a coordenada X2 desta caixa de texto à coordenada X2 desta caixa de seleção.
+  Se o número de linhas do cursor desta seleção for o número da linha desta linha de texto, obtenha uma localização usando o cursor de texto desta seleção e a caixa de texto; atribua a coordenada X desta localização à coordenada X2 desta caixa de seleção.
+  Limite a coordenada X2 desta caixa de seleção para a coordenada X1 desta caixa de texto e a coordenada X2 desta caixa de texto.
 
 Etapas para que se obtenha um tamanho usando um endereço completo no sistema de arquivos:
   Se o endereço completo for endereço da pasta-format, obtenha o tamanho usando o endereço completo no sistema de arquivos (pasta)[endereço].
@@ -5734,11 +5736,11 @@ Etapas para que se obtenha uma localização usando um posicionamento e uma caixa 
   Se a caixa de texto for inexistente, retorne.
   Obtenha uma linha de texto usando o número da linha deste posicionamento e a caixa de texto.
   Obtenha uma caixa usando a linha de texto e a caixa de texto.
-  Atribua a coordenada Y do canto superior esquerdo desta caixa à coordenada Y desta localização.
+  Atribua a coordenada Y1 desta caixa à coordenada Y desta localização.
   Atribua o caractere inicial desta string desta linha de texto ao caractere inicial dum subtexto.
   Atribua o caractere inicial deste subtexto mais o número de coluna deste posicionamento menos 2 ao caractere final deste subtexto.
   Obtenha uma largura usando o subtexto e o contexto de dispositivo de memória e a fonte desta caixa de texto.
-  Atribua a coordenada X do canto superior esquerdo desta caixa mais a largura à coordenada X desta localização.
+  Atribua a coordenada X1 desta caixa mais a largura à coordenada X desta localização.
   Obtenha um offset par de números usando o working string desta linha de texto e a caixa e a fonte desta caixa de texto e o alinhamento desta caixa de texto.
   Adicione o número X deste offset par de números para a coordenada X desta localização.
 
@@ -6436,10 +6438,10 @@ Um IID é um UUID. \ Um interface identifier é um Identificador único universal d
 
 Etapas para que se imagine uma caixa uns twips por uns outros twips;
 Etapas para que se faça uma caixa uns twips por uns outros twips:
-  Atribua 0 à coordenada X do canto superior esquerdo desta caixa.
-  Atribua 0 à coordenada Y do canto superior esquerdo desta caixa.
-  Atribua os twips à coordenada X do canto inferior direito desta caixa.
-  Atribua os outros twips à coordenada Y do canto inferior direito desta caixa.
+  Atribua 0 à coordenada X1 desta caixa.
+  Atribua 0 à coordenada Y1 desta caixa.
+  Atribua os twips à coordenada X2 desta caixa.
+  Atribua os outros twips à coordenada Y2 desta caixa.
 
 Etapas para que se imagine uma caixa uns twips high por uns outros twips wide;
 Etapas para que se faça uma caixa uns twips high por uns outros twips wide:
@@ -6458,9 +6460,9 @@ Etapas para que se imagine uma caixa uns twips wide por uns outros twips high;
 Etapas para que se faça uma caixa uns twips wide por uns outros twips high:
   Atribua 0 e 0 e os twips e os outros twips ao caixa.
 
-Etapas para que se imagine uma caixa com uma coordenada X do canto superior esquerdo e uma coordenada Y do canto superior esquerdo e uma coordenada X do canto inferior direito e uma coordenada Y do canto inferior direito;
-Etapas para que se faça uma caixa com uma coordenada X do canto superior esquerdo e uma coordenada Y do canto superior esquerdo e uma coordenada X do canto inferior direito e uma coordenada Y do canto inferior direito:
-  Atribua a coordenada X do canto superior esquerdo e a coordenada Y do canto superior esquerdo e a coordenada X do canto inferior direito e a coordenada Y do canto inferior direito ao caixa.
+Etapas para que se imagine uma caixa com uma coordenada X1 e uma coordenada Y1 e uma coordenada X2 e uma coordenada Y2;
+Etapas para que se faça uma caixa com uma coordenada X1 e uma coordenada Y1 e uma coordenada X2 e uma coordenada Y2:
+  Atribua a coordenada X1 e a coordenada Y1 e a coordenada X2 e a coordenada Y2 ao caixa.
 
 Etapas para que se imagine uma caixa com uma localização e uma segunda localização;
 Etapas para que se faça uma caixa com uma localização e uma segunda localização:
@@ -6486,14 +6488,14 @@ Etapas para que se faça uma elipse usando uma caixa:
 
 Etapas para que se imagine uma elipse uns twips por uns outros twips;
 Etapas para que se faça uma elipse uns twips por uns outros twips:
-  Atribua 0 à coordenada X do canto superior esquerdo desta elipse.
-  Atribua 0 à coordenada Y do canto superior esquerdo desta elipse.
-  Atribua os twips à coordenada X do canto inferior direito desta elipse.
-  Atribua os outros twips à coordenada Y do canto inferior direito desta elipse.
+  Atribua 0 à coordenada X1 desta elipse.
+  Atribua 0 à coordenada Y1 desta elipse.
+  Atribua os twips à coordenada X2 desta elipse.
+  Atribua os outros twips à coordenada Y2 desta elipse.
 
-Etapas para que se imagine uma elipse com uma coordenada X do canto superior esquerdo e uma coordenada Y do canto superior esquerdo e uma coordenada X do canto inferior direito e uma coordenada Y do canto inferior direito;
-Etapas para que se faça uma elipse com uma coordenada X do canto superior esquerdo e uma coordenada Y do canto superior esquerdo e uma coordenada X do canto inferior direito e uma coordenada Y do canto inferior direito:
-  Atribua a coordenada X do canto superior esquerdo e a coordenada Y do canto superior esquerdo e a coordenada X do canto inferior direito e a coordenada Y do canto inferior direito ao elipse.
+Etapas para que se imagine uma elipse com uma coordenada X1 e uma coordenada Y1 e uma coordenada X2 e uma coordenada Y2;
+Etapas para que se faça uma elipse com uma coordenada X1 e uma coordenada Y1 e uma coordenada X2 e uma coordenada Y2:
+  Atribua a coordenada X1 e a coordenada Y1 e a coordenada X2 e a coordenada Y2 ao elipse.
 
 Etapas para que se imagine uma elipse com uma localização e uma segunda localização;
 Etapas para que se faça uma elipse com uma localização e uma segunda localização:
@@ -6530,21 +6532,21 @@ Etapas para que se imagine uma linha reta across o base of uma caixa;
 Etapas para que se faça uma linha reta across o base of uma caixa;
 Etapas para que se imagine uma linha reta along o base of uma caixa;
 Etapas para que se faça uma linha reta along o base of uma caixa:
-  Atribua a coordenada Y do canto inferior direito desta caixa linha reta ao linha reta.
+  Atribua a coordenada Y2 desta caixa linha reta ao linha reta.
 
 Etapas para que se imagine uma linha reta across uma caixa uma fração of o caminho para cima desde o base;
 Etapas para que se faça uma linha reta across uma caixa uma fração of o caminho para cima desde o base:
-  Atribua a coordenada X do canto superior esquerdo desta caixa à coordenada X desta localização inicial desta linha reta.
-  Atribua a coordenada X do canto inferior direito desta caixa à coordenada X desta localização final desta linha reta.
-  Atribua a coordenada Y do canto inferior direito desta caixa times a fração a uns twips.
-  Atribua a coordenada Y do canto inferior direito desta caixa menos os twips à coordenada Y desta localização inicial desta linha reta.
-  Atribua a coordenada Y do canto inferior direito desta caixa menos os twips à coordenada Y desta localização final desta linha reta.
+  Atribua a coordenada X1 desta caixa à coordenada X desta localização inicial desta linha reta.
+  Atribua a coordenada X2 desta caixa à coordenada X desta localização final desta linha reta.
+  Atribua a coordenada Y2 desta caixa times a fração a uns twips.
+  Atribua a coordenada Y2 desta caixa menos os twips à coordenada Y desta localização inicial desta linha reta.
+  Atribua a coordenada Y2 desta caixa menos os twips à coordenada Y desta localização final desta linha reta.
 
 Etapas para que se imagine uma linha reta across o topo of uma caixa;
 Etapas para que se faça uma linha reta across o topo of uma caixa;
 Etapas para que se imagine uma linha reta along o topo of uma caixa;
 Etapas para que se faça uma linha reta along o topo of uma caixa:
-  Atribua a coordenada Y do canto superior esquerdo desta caixa linha reta ao linha reta.
+  Atribua a coordenada Y1 desta caixa linha reta ao linha reta.
 
 Etapas para que se imagine uma linha reta no middle of uma caixa;
 Etapas para que se faça uma linha reta no middle of uma caixa;
@@ -6554,17 +6556,17 @@ Etapas para que se imagine uma linha reta no centro of uma caixa;
 Etapas para que se faça uma linha reta no centro of uma caixa;
 Etapas para que se imagine uma linha reta across o centro of uma caixa;
 Etapas para que se faça uma linha reta across o centro of uma caixa:
-  Atribua a coordenada X do canto superior esquerdo desta caixa à coordenada X desta localização inicial desta linha reta.
-  Atribua a coordenada X do canto inferior direito desta caixa à coordenada X desta localização final desta linha reta.
+  Atribua a coordenada X1 desta caixa à coordenada X desta localização inicial desta linha reta.
+  Atribua a coordenada X2 desta caixa à coordenada X desta localização final desta linha reta.
   Atribua o y deste centro desta caixa à coordenada Y desta localização inicial desta linha reta.
   Atribua o y deste centro desta caixa à coordenada Y desta localização final desta linha reta.
 
 Etapas para que se imagine uma linha reta uns twips para cima desde o base of uma caixa;
 Etapas para que se faça uma linha reta uns twips para cima desde o base of uma caixa:
-  Atribua a coordenada X do canto superior esquerdo desta caixa à coordenada X desta localização inicial desta linha reta.
-  Atribua a coordenada X do canto inferior direito desta caixa à coordenada X desta localização final desta linha reta.
-  Atribua a coordenada Y do canto inferior direito desta caixa menos os twips à coordenada Y desta localização inicial desta linha reta.
-  Atribua a coordenada Y do canto inferior direito desta caixa menos os twips à coordenada Y desta localização final desta linha reta.
+  Atribua a coordenada X1 desta caixa à coordenada X desta localização inicial desta linha reta.
+  Atribua a coordenada X2 desta caixa à coordenada X desta localização final desta linha reta.
+  Atribua a coordenada Y2 desta caixa menos os twips à coordenada Y desta localização inicial desta linha reta.
+  Atribua a coordenada Y2 desta caixa menos os twips à coordenada Y desta localização final desta linha reta.
 
 Etapas para que se imagine uma linha reta com uma localização e uma segunda localização;
 Etapas para que se faça uma linha reta com uma localização e uma segunda localização:
@@ -6580,15 +6582,15 @@ Etapas para que se faça uma caixa arredondada desde uma caixa e um raio:
 
 Etapas para que se imagine uma caixa arredondada uns twips por uns outros twips;
 Etapas para que se faça uma caixa arredondada uns twips por uns outros twips com um raio:
-  Atribua 0 à coordenada X do canto superior esquerdo desta caixa arredondada.
-  Atribua 0 à coordenada Y do canto superior esquerdo desta caixa arredondada.
-  Atribua os twips à coordenada X do canto inferior direito desta caixa arredondada.
-  Atribua os outros twips à coordenada Y do canto inferior direito desta caixa arredondada.
+  Atribua 0 à coordenada X1 desta caixa arredondada.
+  Atribua 0 à coordenada Y1 desta caixa arredondada.
+  Atribua os twips à coordenada X2 desta caixa arredondada.
+  Atribua os outros twips à coordenada Y2 desta caixa arredondada.
   Atribua o raio ao raio desta caixa arredondada.
 
-Etapas para que se imagine uma caixa arredondada com uma coordenada X do canto superior esquerdo e uma coordenada Y do canto superior esquerdo e uma coordenada X do canto inferior direito e uma coordenada Y do canto inferior direito e um raio;
-Etapas para que se faça uma caixa arredondada com uma coordenada X do canto superior esquerdo e uma coordenada Y do canto superior esquerdo e uma coordenada X do canto inferior direito e uma coordenada Y do canto inferior direito e um raio:
-  Atribua a coordenada X do canto superior esquerdo e a coordenada Y do canto superior esquerdo e a coordenada X do canto inferior direito e a coordenada Y do canto inferior direito e o raio ao caixa arredondada.
+Etapas para que se imagine uma caixa arredondada com uma coordenada X1 e uma coordenada Y1 e uma coordenada X2 e uma coordenada Y2 e um raio;
+Etapas para que se faça uma caixa arredondada com uma coordenada X1 e uma coordenada Y1 e uma coordenada X2 e uma coordenada Y2 e um raio:
+  Atribua a coordenada X1 e a coordenada Y1 e a coordenada X2 e a coordenada Y2 e o raio ao caixa arredondada.
 
 Etapas para que se imagine uma caixa arredondada com uma localização e uma segunda localização e um raio;
 Etapas para que se faça uma caixa arredondada com uma localização e uma segunda localização e um raio:
@@ -6885,7 +6887,7 @@ Etapas para que se inicialize a tela:
   Atribua a pixel largura desta tela times a quantidade de twips/pixel para uma largura.
   Atribua a pixel altura desta tela times a quantidade de twips/pixel para uma altura.
   Atribua 0 [coordenda X1] e 0 [coordenda Y1] e a largura e a altura à caixa desta tela.
-  Subtraia a quantidade de twips/pixel desde o canto inferior direito localização desta tela.
+  Subtraia a quantidade de twips/pixel desde o canto inferior direito desta tela.
 
 Etapas para que se inicialize o canvas da tela:
   Processe "user32.dll" "GetDC" com \ Retorna o identificador do "contexto de dispositivo" (DC) de uma janela da tela inteira.
@@ -7051,16 +7053,16 @@ Etapas para que se insira um vértice para um polígono antes de um segundo vértic
 Etapas para que se intersect uma caixa com uma segunda caixa usando um terceiro caixa:
   \ caixas does not touch
   Limpe o terceiro caixa.
-  Se a coordenada X do canto superior esquerdo desta caixa for maior do que a coordenada X do canto inferior direito desta segunda caixa, retorne.
-  Se a coordenada Y do canto superior esquerdo desta caixa for maior do que a coordenada Y do canto inferior direito desta segunda caixa, retorne.
-  Se a coordenada X do canto inferior direito desta caixa for menor do que a coordenada X do canto superior esquerdo desta segunda caixa, retorne.
-  Se a coordenada Y do canto inferior direito desta caixa for menor do que a coordenada Y do canto superior esquerdo desta segunda caixa, retorne.
+  Se a coordenada X1 desta caixa for maior do que a coordenada X2 desta segunda caixa, retorne.
+  Se a coordenada Y1 desta caixa for maior do que a coordenada Y2 desta segunda caixa, retorne.
+  Se a coordenada X2 desta caixa for menor do que a coordenada X1 desta segunda caixa, retorne.
+  Se a coordenada Y2 desta caixa for menor do que a coordenada Y1 desta segunda caixa, retorne.
   \ caixas touch
   Atribua a caixa ao terceiro caixa.
-  Se a coordenada X do canto superior esquerdo desta caixa for menor do que a coordenada X do canto superior esquerdo desta segunda caixa, atribua a coordenada X do canto superior esquerdo desta segunda caixa à coordenada X do canto superior esquerdo desta terceiro caixa.
-  Se a coordenada Y do canto superior esquerdo desta caixa for menor do que a coordenada Y do canto superior esquerdo desta segunda caixa, atribua a coordenada Y do canto superior esquerdo desta segunda caixa à coordenada Y do canto superior esquerdo desta terceiro caixa.
-  Se a coordenada X do canto inferior direito desta caixa for maior do que a coordenada X do canto inferior direito desta segunda caixa, atribua a coordenada X do canto inferior direito desta segunda caixa à coordenada X do canto inferior direito desta terceiro caixa.
-  Se a coordenada Y do canto inferior direito desta caixa for maior do que a coordenada Y do canto inferior direito desta segunda caixa, atribua a coordenada Y do canto inferior direito desta segunda caixa à coordenada Y do canto inferior direito desta terceiro caixa.
+  Se a coordenada X1 desta caixa for menor do que a coordenada X1 desta segunda caixa, atribua a coordenada X1 desta segunda caixa à coordenada X1 desta terceiro caixa.
+  Se a coordenada Y1 desta caixa for menor do que a coordenada Y1 desta segunda caixa, atribua a coordenada Y1 desta segunda caixa à coordenada Y1 desta terceiro caixa.
+  Se a coordenada X2 desta caixa for maior do que a coordenada X2 desta segunda caixa, atribua a coordenada X2 desta segunda caixa à coordenada X2 desta terceiro caixa.
+  Se a coordenada Y2 desta caixa for maior do que a coordenada Y2 desta segunda caixa, atribua a coordenada Y2 desta segunda caixa à coordenada Y2 desta terceiro caixa.
 
 Um Endereço IP é uma estrutura com
   Um número,
@@ -7148,10 +7150,10 @@ Etapas para que se clareie uma matiz por uns points:
   Converta os segundo points para a matiz.
 
 Etapas para que se limite uma caixa para uma segunda caixa:
-  Limite a coordenada X do canto superior esquerdo desta caixa para a coordenada X do canto superior esquerdo desta segunda caixa e a coordenada X do canto inferior direito desta segunda caixa.
-  Limite a coordenada Y do canto superior esquerdo desta caixa para a coordenada Y do canto superior esquerdo desta segunda caixa e a coordenada Y do canto inferior direito desta segunda caixa.
-  Limite a coordenada X do canto inferior direito desta caixa para a coordenada X do canto superior esquerdo desta segunda caixa e a coordenada X do canto inferior direito desta segunda caixa.
-  Limite a coordenada Y do canto inferior direito desta caixa para a coordenada Y do canto superior esquerdo desta segunda caixa e a coordenada Y do canto inferior direito desta segunda caixa.
+  Limite a coordenada X1 desta caixa para a coordenada X1 desta segunda caixa e a coordenada X2 desta segunda caixa.
+  Limite a coordenada Y1 desta caixa para a coordenada Y1 desta segunda caixa e a coordenada Y2 desta segunda caixa.
+  Limite a coordenada X2 desta caixa para a coordenada X1 desta segunda caixa e a coordenada X2 desta segunda caixa.
+  Limite a coordenada Y2 desta caixa para a coordenada Y1 desta segunda caixa e a coordenada Y2 desta segunda caixa.
 
 Etapas para que se limite o cursor de texto em uma caixa de texto:
   Se a caixa de texto for inexistente, retorne.
@@ -7170,10 +7172,10 @@ Etapas para que se limite a origem of uma caixa de texto:
   Limite a coordenada Y desta caixa de texto para - o número e 0.
 
 Etapas para que se limite uma localização para uma caixa:
-  Se a coordenada X desta localização for menor do que a coordenada X do canto superior esquerdo desta caixa, atribua a coordenada X do canto superior esquerdo desta caixa à coordenada X desta localização.
-  Se a coordenada Y desta localização for menor do que a coordenada Y do canto superior esquerdo desta caixa, atribua a coordenada Y do canto superior esquerdo desta caixa à coordenada Y desta localização.
-  Se a coordenada X desta localização for maior do que a coordenada X do canto inferior direito desta caixa, atribua a coordenada X do canto inferior direito desta caixa à coordenada X desta localização.
-  Se a coordenada Y desta localização for maior do que a coordenada Y do canto inferior direito desta caixa, atribua a coordenada Y do canto inferior direito desta caixa à coordenada Y desta localização.
+  Se a coordenada X desta localização for menor do que a coordenada X1 desta caixa, atribua a coordenada X1 desta caixa à coordenada X desta localização.
+  Se a coordenada Y desta localização for menor do que a coordenada Y1 desta caixa, atribua a coordenada Y1 desta caixa à coordenada Y desta localização.
+  Se a coordenada X desta localização for maior do que a coordenada X2 desta caixa, atribua a coordenada X2 desta caixa à coordenada X desta localização.
+  Se a coordenada Y desta localização for maior do que a coordenada Y2 desta caixa, atribua a coordenada Y2 desta caixa à coordenada Y desta localização.
 
 Etapas para que se limite umas caixas de texto para uma contagem:
   Atribua a contagem destas caixas de texto para uma segunda contagem.
@@ -7197,12 +7199,12 @@ Etapas para que se pinte umas escolhas em uma caixa:
   \Pinte really fast. ***
   Obtenha uma escolha desde as escolhas.
   Se a escolha estiver sumido do mapa [because we have drawn them all], retorne.
-  Atribua a coordenada X do canto superior esquerdo desta caixa mais 24 pixels à coordenada X do canto superior esquerdo desta escolha.
-  Atribua a coordenada X do canto inferior direito desta caixa menos 24 pixels à coordenada X do canto inferior direito desta escolha.
-  Se a escolha for a first escolha desta escolha, atribua a coordenada Y do canto superior esquerdo desta caixa mais 24 pixels à coordenada Y do canto superior esquerdo desta escolha.
+  Atribua a coordenada X1 desta caixa mais 24 pixels à coordenada X1 desta escolha.
+  Atribua a coordenada X2 desta caixa menos 24 pixels à coordenada X2 desta escolha.
+  Se a escolha for a first escolha desta escolha, atribua a coordenada Y1 desta caixa mais 24 pixels à coordenada Y1 desta escolha.
   Se a escolha não for a first escolha desta escolha,
-  Atribua a coordenada Y do canto inferior direito desta precedente escolha desta escolha à coordenada Y do canto superior esquerdo desta escolha.
-  Atribua a coordenada Y do canto superior esquerdo desta escolha mais 24 pixels à coordenada Y do canto inferior direito desta escolha.
+  Atribua a coordenada Y2 desta precedente escolha desta escolha à coordenada Y1 desta escolha.
+  Atribua a coordenada Y1 desta escolha mais 24 pixels à coordenada Y2 desta escolha.
   \ Pinte a caixa desta escolha com a cor púrpura. \ temp ***
   Pinte o nome desta escolha na caixa desta escolha com a cor deste contexto.
   Recomece. [Execute novamente o código]
@@ -7577,7 +7579,7 @@ Etapas para que se mova uma imagem para a direita uns twips:
 
 Etapas para que se mova uma imagem para uma localização:
   Se a imagem for inexistente, retorne.
-  Calcule um valor da diferença entre a localização e o canto superior esquerdo localização desta imagem.
+  Calcule um valor da diferença entre a localização e o canto superior esquerdo desta imagem.
   Mova a imagem usando o valor da diferença.
 
 Etapas para que se mova uma imagem para cima uns twips:
@@ -7613,12 +7615,12 @@ Etapas para que se mova uma janela do programa para a esquerda:
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-getwindowrect
     A janela principal do programa [hWnd]
     e O endereçamento duma caixa. [lpRect] \ Consulte https://learn.microsoft.com/pt-br/windows/win32/api/windef/ns-windef-rect
-  Subtraia a pixel largura desta tela desde a coordenada X do canto superior esquerdo desta caixa.
+  Subtraia a pixel largura desta tela desde a coordenada X1 desta caixa.
   Processe "user32.dll" "MoveWindow" com \ Altera a posição e as dimensões da janela especificada.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-movewindow
     A janela do programa [hWnd]
-    e A coordenada X do canto superior esquerdo desta caixa [X]
-    e A coordenada Y do canto superior esquerdo desta caixa [Y]
+    e A coordenada X1 desta caixa [X]
+    e A coordenada Y1 desta caixa [Y]
     e A pixel largura desta tela [nWidth]
     e A pixel altura desta tela [nHeight]
     e 1. [bRepaint]
@@ -7628,11 +7630,11 @@ Etapas para que se mova uma janela do programa para a direita:
   Processe "user32.dll" "GetWindowRect" com
     A janela principal do programa [hWnd]
     e O endereçamento duma caixa. [lpRect]
-  Adicione a pixel largura desta tela para a coordenada X do canto superior esquerdo desta caixa.
+  Adicione a pixel largura desta tela para a coordenada X1 desta caixa.
   Processe "user32.dll" "MoveWindow" com
     A janela do programa [hWnd]
-    e A coordenada X do canto superior esquerdo desta caixa [X]
-    e A coordenada Y do canto superior esquerdo desta caixa [Y]
+    e A coordenada X1 desta caixa [X]
+    e A coordenada Y1 desta caixa [Y]
     e A pixel largura desta tela [nWidth]
     e A pixel altura desta tela [nHeight]
     e 1. [bRepaint]
@@ -7640,11 +7642,11 @@ Etapas para que se mova uma janela do programa para a direita:
 Etapas para que se redimensione cuidadosamente uma imagem usando um par de números racionais;
 Etapas para que se redimensione cuidadosamente uma imagem usando um par de números fracionários: [Redimensiona sem perder qualidade]
   Se a imagem for inexistente, retorne.
-  Mova a caixa intacta desta imagem usando o par de números fracionários e o canto superior esquerdo localização desta caixa desta imagem.
+  Mova a caixa intacta desta imagem usando o par de números fracionários e o canto superior esquerdo desta caixa desta imagem.
   Redimensione a caixa intacta desta imagem usando o par de números fracionários.
   Redimensione a caixa desta imagem usando o par de números fracionários.
-  Se a coordenada X do canto inferior direito desta imagem for menor do que a coordenada X do canto superior esquerdo desta imagem, mirror o gpBitmap no imagem.
-  Se a coordenada Y do canto inferior direito desta imagem for menor do que a coordenada Y do canto superior esquerdo desta imagem, flip o gpBitmap no imagem.
+  Se a coordenada X2 desta imagem for menor do que a coordenada X1 desta imagem, mirror o gpBitmap no imagem.
+  Se a coordenada Y2 desta imagem for menor do que a coordenada Y1 desta imagem, flip o gpBitmap no imagem.
 
 Etapas para que se redimensione cuidadosamente uma imagem usando um twip par de números: [Redimensiona sem perder qualidade]
   Se a imagem for inexistente, retorne.
@@ -7657,8 +7659,8 @@ Etapas para que se normalize um ângulo:
   Divida o ângulo por 3600 usando um quociente e o ângulo.
 
 Etapas para que se normalize uma caixa:
-  Se a coordenada X do canto inferior direito desta caixa for menor do que a coordenada X do canto superior esquerdo desta caixa, permute a coordenada X do canto superior esquerdo desta caixa com a coordenada X do canto inferior direito desta caixa.
-  Se a coordenada Y do canto inferior direito desta caixa for menor do que a coordenada Y do canto superior esquerdo desta caixa, permute a coordenada Y do canto superior esquerdo desta caixa com a coordenada Y do canto inferior direito desta caixa.
+  Se a coordenada X2 desta caixa for menor do que a coordenada X1 desta caixa, permute a coordenada X1 desta caixa com a coordenada X2 desta caixa.
+  Se a coordenada Y2 desta caixa for menor do que a coordenada Y1 desta caixa, permute a coordenada Y1 desta caixa com a coordenada Y2 desta caixa.
 
 Etapas para que se normalize um canvas:
   Processe "gdi32.dll" "SetGraphicsMode" com \ Define o modo gráfico para o contexto de dispositivo especificado.
@@ -7786,20 +7788,20 @@ Etapas para que se output o arco of uma elipse usando uma string: \\ interessant
   Atribua o x-extent desta elipse times a fração para um x-offset.
   Atribua o y-extent desta elipse times a fração para um y-offset.
   \ control point 1
-  Se a string for "canto superior esquerdo", atribua a coordenada X do canto superior esquerdo desta elipse e a coordenada Y deste centro menos o y-offset para um first control localização.
-  Se a string for "canto superior direito", atribua a coordenada X deste centro mais o x-offset e a coordenada Y do canto superior esquerdo desta elipse ao first control localização.
-  Se a string for "canto inferior direito", atribua a coordenada X do canto inferior direito desta elipse e a coordenada Y deste centro mais o y-offset ao first control localização.
-  Se a string for "canto inferior esquerdo ", atribua a coordenada X deste centro menos o x-offset e a coordenada Y do canto inferior direito desta elipse ao first control localização.
+  Se a string for "canto superior esquerdo", atribua a coordenada X1 desta elipse e a coordenada Y deste centro menos o y-offset para um first control localização.
+  Se a string for "canto superior direito", atribua a coordenada X deste centro mais o x-offset e a coordenada Y1 desta elipse ao first control localização.
+  Se a string for "canto inferior direito", atribua a coordenada X2 desta elipse e a coordenada Y deste centro mais o y-offset ao first control localização.
+  Se a string for "canto inferior esquerdo ", atribua a coordenada X deste centro menos o x-offset e a coordenada Y2 desta elipse ao first control localização.
   \ control point 2
-  Se a string for "canto superior esquerdo", atribua a coordenada X deste centro menos o x-offset e a coordenada Y do canto superior esquerdo desta elipse para um second control localização.
-  Se a string for "canto superior direito", atribua a coordenada X do canto inferior direito desta elipse e a coordenada Y deste centro menos o y-offset ao second control localização.
-  Se a string for "canto inferior direito", atribua a coordenada X deste centro mais o x-offset e a coordenada Y do canto inferior direito desta elipse ao second control localização.
-  Se a string for "canto inferior esquerdo ", atribua a coordenada X do canto superior esquerdo desta elipse e a coordenada Y deste centro mais o y-offset ao second control localização.
+  Se a string for "canto superior esquerdo", atribua a coordenada X deste centro menos o x-offset e a coordenada Y1 desta elipse para um second control localização.
+  Se a string for "canto superior direito", atribua a coordenada X2 desta elipse e a coordenada Y deste centro menos o y-offset ao second control localização.
+  Se a string for "canto inferior direito", atribua a coordenada X deste centro mais o x-offset e a coordenada Y2 desta elipse ao second control localização.
+  Se a string for "canto inferior esquerdo ", atribua a coordenada X1 desta elipse e a coordenada Y deste centro mais o y-offset ao second control localização.
   \ ending point
-  Se a string for "canto superior esquerdo", atribua a coordenada X do canto superior esquerdo desta elipse mais o half largura e a coordenada Y do canto superior esquerdo desta elipse para um ending localização.
-  Se a string for "canto superior direito", atribua a coordenada X do canto inferior direito desta elipse e a coordenada Y do canto superior esquerdo desta elipse mais o half altura ao ending localização.
-  Se a string for "canto inferior direito", atribua a coordenada X do canto inferior direito desta elipse menos o half largura e a coordenada Y do canto inferior direito desta elipse ao ending localização.
-  Se a string for "canto inferior esquerdo ", atribua a coordenada X do canto superior esquerdo desta elipse e a coordenada Y do canto inferior direito desta elipse menos o half altura ao ending localização.
+  Se a string for "canto superior esquerdo", atribua a coordenada X1 desta elipse mais o half largura e a coordenada Y1 desta elipse para um ending localização.
+  Se a string for "canto superior direito", atribua a coordenada X2 desta elipse e a coordenada Y1 desta elipse mais o half altura ao ending localização.
+  Se a string for "canto inferior direito", atribua a coordenada X2 desta elipse menos o half largura e a coordenada Y2 desta elipse ao ending localização.
+  Se a string for "canto inferior esquerdo ", atribua a coordenada X1 desta elipse e a coordenada Y2 desta elipse menos o half altura ao ending localização.
   \ spit it out
   Output o first control localização sem passar pra próxima linha.
   Output o second control localização sem passar pra próxima linha.
@@ -8152,7 +8154,7 @@ Etapas para que se atribua a first linha reta contendo texto duma caixa de texto
 Etapas para que se atribua a globalized origem duma caixa de texto para uma localização:
   Se a caixa de texto for inexistente, limpe a localização; retorne.
   Atribua a origem desta caixa de texto à localização.
-  Globalize a localização usando o canto superior esquerdo localização desta caixa de texto.
+  Globalize a localização usando o canto superior esquerdo desta caixa de texto.
 
 Etapas para que se atribua a malha duma caixa de texto para uma malha:
   Se a caixa de texto for inexistente, limpe a malha; retorne.
@@ -8274,13 +8276,13 @@ Etapas para que se atualize a tela usando uma caixa:
   Processe "gdi32.dll" "BitBlt" com \ Executa uma transferência de bloco de bits dos dados de cor
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/nf-wingdi-bitblt
     O canvas da tela [hdc]
-    e A coordenada X do canto superior esquerdo desta caixa [x]
-    e A coordenada Y do canto superior esquerdo desta caixa [y]
+    e A coordenada X1 desta caixa [x]
+    e A coordenada Y1 desta caixa [y]
     e A largura desta caixa [cx]
     e A altura desta caixa [cy]
     e O contexto do dispositivo atual [hdcSrc]
-    e A coordenada X do canto superior esquerdo desta caixa [x1]
-    e A coordenada Y do canto superior esquerdo desta caixa [y1]
+    e A coordenada X1 desta caixa [x1]
+    e A coordenada Y1 desta caixa [y1]
    e 13369376. [rop = SRCCOPY]
 
 Etapas para que se relembre uma caixa de texto:
@@ -8508,12 +8510,12 @@ Etapas para que se redimensione uma caixa usando uma par de números fracionários
   Atribua o y-extent desta caixa para uma altura.
   Redimensione proporcionalmente a largura usando a fração deste par de números fracionários.
   Redimensione proporcionalmente a altura usando a segunda fração deste par de números fracionários.
-  Atribua a coordenada X do canto superior esquerdo desta caixa mais a largura à coordenada X do canto inferior direito desta caixa.
-  Atribua a coordenada Y do canto superior esquerdo desta caixa mais a altura à coordenada Y do canto inferior direito desta caixa.
+  Atribua a coordenada X1 desta caixa mais a largura à coordenada X2 desta caixa.
+  Atribua a coordenada Y1 desta caixa mais a altura à coordenada Y2 desta caixa.
 
 Etapas para que se redimensione uma caixa usando um twip par de números:
-  Adicione o número X deste twip par de números para a coordenada X do canto inferior direito desta caixa.
-  Adicione o número Y deste twip par de números para a coordenada Y do canto inferior direito desta caixa.
+  Adicione o número X deste twip par de números para a coordenada X2 desta caixa.
+  Adicione o número Y deste twip par de números para a coordenada Y2 desta caixa.
 
 Etapas para que se redimensione uma elipse usando um par de números racionais;
 Etapas para que se redimensione uma elipse usando uma par de números fracionários:
@@ -8525,12 +8527,12 @@ Etapas para que se redimensione uma elipse usando um twip par de números:
 Etapas para que se redimensione uma linha reta usando um par de números racionais;
 Etapas para que se redimensione uma linha reta usando uma par de números fracionários:
   Atribua a caixa desta linha reta para uma caixa.
-  Subtraia o canto superior esquerdo localização desta caixa desde a localização inicial desta linha reta.
+  Subtraia o canto superior esquerdo desta caixa desde a localização inicial desta linha reta.
   Redimensione proporcionalmente a localização inicial desta linha reta usando o par de números fracionários.
-  Adicione o canto superior esquerdo localização desta caixa para a localização inicial desta linha reta.
-  Subtraia o canto superior esquerdo localização desta caixa desde a localização final desta linha reta.
+  Adicione o canto superior esquerdo desta caixa para a localização inicial desta linha reta.
+  Subtraia o canto superior esquerdo desta caixa desde a localização final desta linha reta.
   Redimensione proporcionalmente a localização final desta linha reta usando o par de números fracionários.
-  Adicione o canto superior esquerdo localização desta caixa para a localização final desta linha reta.
+  Adicione o canto superior esquerdo desta caixa para a localização final desta linha reta.
 
 Etapas para que se redimensione uma linha reta usando um twip par de números:
   Atribua a caixa desta linha reta para uma caixa.
@@ -8579,9 +8581,9 @@ Etapas para que se redimensione um polígono usando uma par de números fracionári
   Comece. [a executar o código abaixo]
     Obtenha um vértice desde os vértices deste polígono.
     Se o vértice for inexistente, retorne.
-    Subtraia o canto superior esquerdo localização desta caixa desde a localização deste vértice.
+    Subtraia o canto superior esquerdo desta caixa desde a localização deste vértice.
     Redimensione proporcionalmente a localização deste vértice usando o par de números fracionários.
-    Adicione o canto superior esquerdo localização desta caixa para a localização deste vértice.
+    Adicione o canto superior esquerdo desta caixa para a localização deste vértice.
   Recomece. [Execute novamente o código]
 
 Etapas para que se redimensione um polígono usando um twip par de números:
@@ -8680,10 +8682,10 @@ Um deslocamento horizontal é um número.
 Etapas para que se rotacione uma caixa:
   Atribua o centro desta caixa para um centro localização.
   Atribua a caixa para uma segunda caixa.
-  Atribua a coordenada Y deste centro menos a coordenada Y do canto superior esquerdo desta segunda caixa mais a coordenada X deste centro à coordenada X do canto inferior direito desta caixa.
-  Atribua a coordenada X do canto superior esquerdo desta segunda caixa menos a coordenada X deste centro mais a coordenada Y deste centro à coordenada Y do canto superior esquerdo desta caixa.
-  Atribua a coordenada Y deste centro menos a coordenada Y do canto inferior direito desta segunda caixa mais a coordenada X deste centro à coordenada X do canto superior esquerdo desta caixa.
-  Atribua a coordenada X do canto inferior direito desta segunda caixa menos a coordenada X deste centro mais a coordenada Y deste centro à coordenada Y do canto inferior direito desta caixa.
+  Atribua a coordenada Y deste centro menos a coordenada Y1 desta segunda caixa mais a coordenada X deste centro à coordenada X2 desta caixa.
+  Atribua a coordenada X1 desta segunda caixa menos a coordenada X deste centro mais a coordenada Y deste centro à coordenada Y1 desta caixa.
+  Atribua a coordenada Y deste centro menos a coordenada Y2 desta segunda caixa mais a coordenada X deste centro à coordenada X1 desta caixa.
+  Atribua a coordenada X2 desta segunda caixa menos a coordenada X deste centro mais a coordenada Y deste centro à coordenada Y2 desta caixa.
 
 Etapas para que se rotacione uma elipse:
   Rotacione a caixa desta elipse.
@@ -8795,12 +8797,12 @@ Etapas para que se arredonde um par de números usando o múltiplo imediato de um 
   Arredonde o número Y deste par de números usando o múltiplo imediato de o número.
 
 Uma caixa arredondada é uma caixa com
-  Uma coordenada X do canto superior esquerdo,
-  Uma coordenada Y do canto superior esquerdo,
-  Uma coordenada X do canto inferior direito,
-  Uma coordenada Y do canto inferior direito,
-  Um canto superior esquerdo localização sob a coordenada X do canto superior esquerdo ,
-  Um canto inferior direito localização sob a coordenada X do canto inferior direito, e
+  Uma coordenada denominada coordenada X1,
+  Uma coordenada denominada coordenada Y1,
+  Uma coordenada denominada coordenada X2,
+  Uma coordenada denominada coordenada Y2,
+  Uma localização denominada canto superior esquerdo sob a coordenada X1 ,
+  Uma localização denominada canto inferior direito sob a coordenada X2, e
   Um raio.
 
 Um número da linha é um número.
@@ -8865,10 +8867,10 @@ Etapas para que se speak uma string e espere:
 Etapas para que se redimensione proporcionalmente uma caixa usando uma proporção;
 Etapas para que se redimensione proporcionalmente uma caixa usando uma fração:
   Se a fração for 1/1, retorne.
-  Redimensione proporcionalmente a coordenada X do canto superior esquerdo desta caixa usando a fração.
-  Redimensione proporcionalmente a coordenada Y do canto superior esquerdo desta caixa usando a fração.
-  Redimensione proporcionalmente a coordenada X do canto inferior direito desta caixa usando a fração.
-  Redimensione proporcionalmente a coordenada Y do canto inferior direito desta caixa usando a fração.
+  Redimensione proporcionalmente a coordenada X1 desta caixa usando a fração.
+  Redimensione proporcionalmente a coordenada Y1 desta caixa usando a fração.
+  Redimensione proporcionalmente a coordenada X2 desta caixa usando a fração.
+  Redimensione proporcionalmente a coordenada Y2 desta caixa usando a fração.
 
 Etapas para que se redimensione proporcionalmente uma caixa para um percentual:
   Atribua o percentual / 100 para uma fração.
@@ -9022,10 +9024,10 @@ Etapas para que se role uma caixa de texto para o cursor de texto:
   Se o número de coluna deste cursor de texto desta caixa de texto for 1, atribua a margem desta caixa de texto à coordenada X desta caixa de texto.
   Obtenha uma caixa pelo cursor de texto na caixa de texto.
   Ajuste a caixa usando 0 e - a quantidade de twips/pixel e 0 e a quantidade de twips/pixel . \ cursor de texto caixas do not preencha entire linha de texto
-  Se a coordenada Y do canto superior esquerdo desta caixa for menor do que a coordenada Y do canto superior esquerdo desta caixa de texto, atribua a coordenada Y do canto superior esquerdo desta caixa de texto menos a coordenada Y do canto superior esquerdo desta caixa ao número Y duma valor da diferença.
-  Se a coordenada Y do canto inferior direito desta caixa for maior do que a coordenada Y do canto inferior direito desta caixa de texto, atribua a coordenada Y do canto inferior direito desta caixa de texto menos a coordenada Y do canto inferior direito desta caixa ao número Y desta valor da diferença.
-  Se a coordenada X do canto superior esquerdo desta caixa for menor do que a coordenada X do canto superior esquerdo desta caixa de texto , atribua a coordenada X do canto superior esquerdo desta caixa de texto menos a coordenada X do canto superior esquerdo desta caixa ao número X desta valor da diferença.
-  Se a coordenada X do canto inferior direito desta caixa for maior do que a coordenada X do canto inferior direito desta caixa de texto, atribua a coordenada X do canto inferior direito desta caixa de texto menos a coordenada X do canto inferior direito desta caixa ao número X desta valor da diferença.
+  Se a coordenada Y1 desta caixa for menor do que a coordenada Y1 desta caixa de texto, atribua a coordenada Y1 desta caixa de texto menos a coordenada Y1 desta caixa ao número Y duma valor da diferença.
+  Se a coordenada Y2 desta caixa for maior do que a coordenada Y2 desta caixa de texto, atribua a coordenada Y2 desta caixa de texto menos a coordenada Y2 desta caixa ao número Y desta valor da diferença.
+  Se a coordenada X1 desta caixa for menor do que a coordenada X1 desta caixa de texto , atribua a coordenada X1 desta caixa de texto menos a coordenada X1 desta caixa ao número X desta valor da diferença.
+  Se a coordenada X2 desta caixa for maior do que a coordenada X2 desta caixa de texto, atribua a coordenada X2 desta caixa de texto menos a coordenada X2 desta caixa ao número X desta valor da diferença.
   Se o valor da diferença for 0, retorne.
   Role a caixa de texto usando o valor da diferença.
 
@@ -9037,12 +9039,12 @@ Etapas para que se role uma caixa de texto para o cursor de texto e centralize-o
   Ajuste a caixa usando 0 e - a quantidade de twips/pixel e 0 e a quantidade de twips/pixel . \ cursor de texto caixas don not preencha entire linha de texto
   Atribua o y-extent desta caixa desta caixa de texto dividido por 2 para uma altura.
   Arredonde a altura para baixo usando o múltiplo imediato de a altura da linha desta caixa de texto.
-  Atribua a coordenada Y do canto superior esquerdo desta caixa desta caixa de texto mais a altura para uma coordenada Y do canto superior esquerdo.
-  Atribua a coordenada Y do canto superior esquerdo mais a altura da linha desta caixa de texto para uma coordenada Y do canto inferior direito.
-  Se a coordenada Y do canto superior esquerdo desta caixa for menor do que a coordenada Y do canto superior esquerdo, atribua a coordenada Y do canto superior esquerdo menos a coordenada Y do canto superior esquerdo desta caixa ao número Y duma valor da diferença.
-  Se a coordenada Y do canto inferior direito desta caixa for maior do que a coordenada Y do canto inferior direito, atribua a coordenada Y do canto inferior direito menos a coordenada Y do canto inferior direito desta caixa ao número Y desta valor da diferença.
-  Se a coordenada X do canto superior esquerdo desta caixa for menor do que a coordenada X do canto superior esquerdo desta caixa de texto , atribua a coordenada X do canto superior esquerdo desta caixa de texto menos a coordenada X do canto superior esquerdo desta caixa ao número X desta valor da diferença.
-  Se a coordenada X do canto inferior direito desta caixa for maior do que a coordenada X do canto inferior direito desta caixa de texto, atribua a coordenada X do canto inferior direito desta caixa de texto menos a coordenada X do canto inferior direito desta caixa ao número X desta valor da diferença.
+  Atribua a coordenada Y1 desta caixa desta caixa de texto mais a altura para uma coordenada Y1.
+  Atribua a coordenada Y1 mais a altura da linha desta caixa de texto para uma coordenada Y2.
+  Se a coordenada Y1 desta caixa for menor do que a coordenada Y1, atribua a coordenada Y1 menos a coordenada Y1 desta caixa ao número Y duma valor da diferença.
+  Se a coordenada Y2 desta caixa for maior do que a coordenada Y2, atribua a coordenada Y2 menos a coordenada Y2 desta caixa ao número Y desta valor da diferença.
+  Se a coordenada X1 desta caixa for menor do que a coordenada X1 desta caixa de texto , atribua a coordenada X1 desta caixa de texto menos a coordenada X1 desta caixa ao número X desta valor da diferença.
+  Se a coordenada X2 desta caixa for maior do que a coordenada X2 desta caixa de texto, atribua a coordenada X2 desta caixa de texto menos a coordenada X2 desta caixa ao número X desta valor da diferença.
   Se o valor da diferença for 0, retorne.
   Role a caixa de texto usando o valor da diferença.
 
@@ -9176,7 +9178,7 @@ Etapas para que se envie um email:
   Acrescente "Assunto: " junto com o assunto deste email junto com o texto CRLF para a temp string.
   Acrescente "Responder-Para: " junto com o remetente deste email junto com o texto CRLF para a temp string.
   Acrescente o texto CRLF para a temp string.
-  Acrescente a mensagem deste email para a temp string (handling email transparency).
+  Acrescente a mensagem deste email para a temp string (para transparência nos emails).
   Acrescente o texto CRLF seguido de "." junto com o texto CRLF para a temp string.
   Envie a temp string para o soquete e receba a response string.
   Se o erro do fluxo de entrada/saída não estiver em branco, destrua o soquete; retorne.
@@ -9320,10 +9322,10 @@ Etapas para que se indent uma caixa uns twips;
 Etapas para que se indent uma caixa por uns twips;
 Etapas para que se indent uma caixa uns twips sobre cada side;
 Etapas para que se indent uma caixa usando uns twips:
-  Adicione os twips para a coordenada X do canto superior esquerdo desta caixa.
-  Adicione os twips para a coordenada Y do canto superior esquerdo desta caixa.
-  Subtraia os twips desde a coordenada X do canto inferior direito desta caixa.
-  Subtraia os twips desde a coordenada Y do canto inferior direito desta caixa.
+  Adicione os twips para a coordenada X1 desta caixa.
+  Adicione os twips para a coordenada Y1 desta caixa.
+  Subtraia os twips desde a coordenada X2 desta caixa.
+  Subtraia os twips desde a coordenada Y2 desta caixa.
 
 Etapas para que se feche este programa;
 Etapas para que se feche o nosso programa;
@@ -9638,19 +9640,19 @@ Etapas para que se start sob o base of um linha reta horizontal:
   Atribua a localização final desta linha reta vertical à localização deste contexto.
 
 Etapas para que se start sob o canto base direito of uma caixa facing east:
-  Atribua o canto inferior direito localização desta caixa à localização deste contexto.
+  Atribua o canto inferior direito desta caixa à localização deste contexto.
   Face east.
 
 Etapas para que se start sob o canto base direito of uma caixa facing north:
-  Atribua o canto inferior direito localização desta caixa à localização deste contexto.
+  Atribua o canto inferior direito desta caixa à localização deste contexto.
   Vire para cima.
 
 Etapas para que se start sob o canto base direito of uma caixa facing south:
-  Atribua o canto inferior direito localização desta caixa à localização deste contexto.
+  Atribua o canto inferior direito desta caixa à localização deste contexto.
   Face south.
 
 Etapas para que se start sob o canto base direito of uma caixa facing west:
-  Atribua o canto inferior direito localização desta caixa à localização deste contexto.
+  Atribua o canto inferior direito desta caixa à localização deste contexto.
   Face west.
 
 Etapas para que se start sob a esquerda of um linha reta horizontal;
@@ -9662,14 +9664,14 @@ Etapas para que se start no middle of o base of uma caixa;
 Etapas para que se start sob o centro of o base of uma caixa;
 Etapas para que se start no centro of o base of uma caixa:
   Atribua a coordenada X deste centro desta caixa à coordenada X desta localização deste contexto.
-  Atribua a coordenada Y do canto inferior direito desta caixa à coordenada Y desta localização deste contexto.
+  Atribua a coordenada Y2 desta caixa à coordenada Y desta localização deste contexto.
 
 Etapas para que se start sob o middle of o base of uma caixa facing east;
 Etapas para que se start no middle of o base of uma caixa facing east;
 Etapas para que se start sob o centro of o base of uma caixa facing east;
 Etapas para que se start no centro of o base of uma caixa facing east:
   Atribua a coordenada X deste centro desta caixa à coordenada X desta localização deste contexto.
-  Atribua a coordenada Y do canto inferior direito desta caixa à coordenada Y desta localização deste contexto.
+  Atribua a coordenada Y2 desta caixa à coordenada Y desta localização deste contexto.
   Face east.
 
 Etapas para que se start sob o middle of o base of uma caixa facing north;
@@ -9677,7 +9679,7 @@ Etapas para que se start no middle of o base of uma caixa facing north;
 Etapas para que se start sob o centro of o base of uma caixa facing north;
 Etapas para que se start no centro of o base of uma caixa facing north:
   Atribua a coordenada X deste centro desta caixa à coordenada X desta localização deste contexto.
-  Atribua a coordenada Y do canto inferior direito desta caixa à coordenada Y desta localização deste contexto.
+  Atribua a coordenada Y2 desta caixa à coordenada Y desta localização deste contexto.
   Vire para cima.
 
 Etapas para que se start sob o middle of o base of uma caixa facing south;
@@ -9685,7 +9687,7 @@ Etapas para que se start no middle of o base of uma caixa facing south;
 Etapas para que se start sob o centro of o base of uma caixa facing south;
 Etapas para que se start no centro of o base of uma caixa facing south:
   Atribua a coordenada X deste centro desta caixa à coordenada X desta localização deste contexto.
-  Atribua a coordenada Y do canto inferior direito desta caixa à coordenada Y desta localização deste contexto.
+  Atribua a coordenada Y2 desta caixa à coordenada Y desta localização deste contexto.
   Face south.
 
 Etapas para que se start sob o middle of o base of uma caixa facing west;
@@ -9693,14 +9695,14 @@ Etapas para que se start no middle of o base of uma caixa facing west;
 Etapas para que se start sob o centro of o base of uma caixa facing west;
 Etapas para que se start no centro of o base of uma caixa facing west:
   Atribua a coordenada X deste centro desta caixa à coordenada X desta localização deste contexto.
-  Atribua a coordenada Y do canto inferior direito desta caixa à coordenada Y desta localização deste contexto.
+  Atribua a coordenada Y2 desta caixa à coordenada Y desta localização deste contexto.
   Face west.
 
 Etapas para que se start sob o middle of o lado esquerdo of uma caixa facing east;
 Etapas para que se start no middle of o lado esquerdo of uma caixa facing east;
 Etapas para que se start sob o centro of o lado esquerdo of uma caixa facing east;
 Etapas para que se start no centro of o lado esquerdo of uma caixa facing east:
-  Atribua a coordenada X do canto superior esquerdo desta caixa à coordenada X desta localização deste contexto.
+  Atribua a coordenada X1 desta caixa à coordenada X desta localização deste contexto.
   Atribua o y deste centro desta caixa à coordenada Y desta localização deste contexto.
   Face east.
 
@@ -9708,7 +9710,7 @@ Etapas para que se start sob o middle of o lado esquerdo of uma caixa facing nor
 Etapas para que se start no middle of o lado esquerdo of uma caixa facing north;
 Etapas para que se start sob o centro of o lado esquerdo of uma caixa facing north;
 Etapas para que se start no centro of o lado esquerdo of uma caixa facing north:
-  Atribua a coordenada X do canto superior esquerdo desta caixa à coordenada X desta localização deste contexto.
+  Atribua a coordenada X1 desta caixa à coordenada X desta localização deste contexto.
   Atribua o y deste centro desta caixa à coordenada Y desta localização deste contexto.
   Vire para cima.
 
@@ -9716,7 +9718,7 @@ Etapas para que se start sob o middle of o lado esquerdo of uma caixa facing sou
 Etapas para que se start no middle of o lado esquerdo of uma caixa facing south;
 Etapas para que se start sob o centro of o lado esquerdo of uma caixa facing south;
 Etapas para que se start no centro of o lado esquerdo of uma caixa facing south:
-  Atribua a coordenada X do canto superior esquerdo desta caixa à coordenada X desta localização deste contexto.
+  Atribua a coordenada X1 desta caixa à coordenada X desta localização deste contexto.
   Atribua o y deste centro desta caixa à coordenada Y desta localização deste contexto.
   Face south.
 
@@ -9724,7 +9726,7 @@ Etapas para que se start sob o middle of o lado esquerdo of uma caixa facing wes
 Etapas para que se start no middle of o lado esquerdo of uma caixa facing west;
 Etapas para que se start sob o centro of o lado esquerdo of uma caixa facing west;
 Etapas para que se start no centro of o lado esquerdo of uma caixa facing west:
-  Atribua a coordenada X do canto superior esquerdo desta caixa à coordenada X desta localização deste contexto.
+  Atribua a coordenada X1 desta caixa à coordenada X desta localização deste contexto.
   Atribua o y deste centro desta caixa à coordenada Y desta localização deste contexto.
   Face west.
 
@@ -9732,7 +9734,7 @@ Etapas para que se start sob o middle of o lado direito of uma caixa facing east
 Etapas para que se start no middle of o lado direito of uma caixa facing east;
 Etapas para que se start sob o centro of o lado direito of uma caixa facing east;
 Etapas para que se start no centro of o lado direito of uma caixa facing east:
-  Atribua a coordenada X do canto inferior direito desta caixa à coordenada X desta localização deste contexto.
+  Atribua a coordenada X2 desta caixa à coordenada X desta localização deste contexto.
   Atribua o y deste centro desta caixa à coordenada Y desta localização deste contexto.
   Face east.
 
@@ -9740,7 +9742,7 @@ Etapas para que se start sob o middle of o lado direito of uma caixa facing nort
 Etapas para que se start no middle of o lado direito of uma caixa facing north;
 Etapas para que se start sob o centro of o lado direito of uma caixa facing north;
 Etapas para que se start no centro of o lado direito of uma caixa facing north:
-  Atribua a coordenada X do canto inferior direito desta caixa à coordenada X desta localização deste contexto.
+  Atribua a coordenada X2 desta caixa à coordenada X desta localização deste contexto.
   Atribua o y deste centro desta caixa à coordenada Y desta localização deste contexto.
   Vire para cima.
 
@@ -9748,7 +9750,7 @@ Etapas para que se start sob o middle of o lado direito of uma caixa facing sout
 Etapas para que se start no middle of o lado direito of uma caixa facing south;
 Etapas para que se start sob o centro of o lado direito of uma caixa facing south;
 Etapas para que se start no centro of o lado direito of uma caixa facing south:
-  Atribua a coordenada X do canto inferior direito desta caixa à coordenada X desta localização deste contexto.
+  Atribua a coordenada X2 desta caixa à coordenada X desta localização deste contexto.
   Atribua o y deste centro desta caixa à coordenada Y desta localização deste contexto.
   Face south.
 
@@ -9756,7 +9758,7 @@ Etapas para que se start sob o middle of o lado direito of uma caixa facing west
 Etapas para que se start no middle of o lado direito of uma caixa facing west;
 Etapas para que se start sob o centro of o lado direito of uma caixa facing west;
 Etapas para que se start no centro of o lado direito of uma caixa facing west:
-  Atribua a coordenada X do canto inferior direito desta caixa à coordenada X desta localização deste contexto.
+  Atribua a coordenada X2 desta caixa à coordenada X desta localização deste contexto.
   Atribua o y deste centro desta caixa à coordenada Y desta localização deste contexto.
   Face west.
 
@@ -9765,14 +9767,14 @@ Etapas para que se start no middle of o topo of uma caixa;
 Etapas para que se start sob o centro of o topo of uma caixa;
 Etapas para que se start no centro of o topo of uma caixa:
   Atribua a coordenada X deste centro desta caixa à coordenada X desta localização deste contexto.
-  Atribua a coordenada Y do canto superior esquerdo desta caixa à coordenada Y desta localização deste contexto.
+  Atribua a coordenada Y1 desta caixa à coordenada Y desta localização deste contexto.
 
 Etapas para que se start sob o middle of o topo of uma caixa facing east;
 Etapas para que se start no middle of o topo of uma caixa facing east;
 Etapas para que se start sob o centro of o topo of uma caixa facing east;
 Etapas para que se start no centro of o topo of uma caixa facing east:
   Atribua a coordenada X deste centro desta caixa à coordenada X desta localização deste contexto.
-  Atribua a coordenada Y do canto superior esquerdo desta caixa à coordenada Y desta localização deste contexto.
+  Atribua a coordenada Y1 desta caixa à coordenada Y desta localização deste contexto.
   Face east.
 
 Etapas para que se start sob o middle of o topo of uma caixa facing north;
@@ -9780,7 +9782,7 @@ Etapas para que se start no middle of o topo of uma caixa facing north;
 Etapas para que se start sob o centro of o topo of uma caixa facing north;
 Etapas para que se start no centro of o topo of uma caixa facing north:
   Atribua a coordenada X deste centro desta caixa à coordenada X desta localização deste contexto.
-  Atribua a coordenada Y do canto superior esquerdo desta caixa à coordenada Y desta localização deste contexto.
+  Atribua a coordenada Y1 desta caixa à coordenada Y desta localização deste contexto.
   Vire para cima.
 
 Etapas para que se start sob o middle of o topo of uma caixa facing south;
@@ -9788,7 +9790,7 @@ Etapas para que se start no middle of o topo of uma caixa facing south;
 Etapas para que se start sob o centro of o topo of uma caixa facing south;
 Etapas para que se start no centro of o topo of uma caixa facing south:
   Atribua a coordenada X deste centro desta caixa à coordenada X desta localização deste contexto.
-  Atribua a coordenada Y do canto superior esquerdo desta caixa à coordenada Y desta localização deste contexto.
+  Atribua a coordenada Y1 desta caixa à coordenada Y desta localização deste contexto.
   Face south.
 
 Etapas para que se start sob o middle of o topo of uma caixa facing west;
@@ -9796,7 +9798,7 @@ Etapas para que se start no middle of o topo of uma caixa facing west;
 Etapas para que se start sob o centro of o topo of uma caixa facing west;
 Etapas para que se start no centro of o topo of uma caixa facing west:
   Atribua a coordenada X deste centro desta caixa à coordenada X desta localização deste contexto.
-  Atribua a coordenada Y do canto superior esquerdo desta caixa à coordenada Y desta localização deste contexto.
+  Atribua a coordenada Y1 desta caixa à coordenada Y desta localização deste contexto.
   Face west.
 
 Etapas para que se start sob a direita of um linha reta horizontal;
@@ -9823,19 +9825,19 @@ Etapas para que se start sob uma localização facing west:
   Face west.
 
 Etapas para que se start sob o canto superior esquerdo of uma caixa facing east:
-  Atribua o canto superior esquerdo localização desta caixa à localização deste contexto.
+  Atribua o canto superior esquerdo desta caixa à localização deste contexto.
   Face east.
 
 Etapas para que se start sob o canto superior esquerdo of uma caixa facing north:
-  Atribua o canto superior esquerdo localização desta caixa à localização deste contexto.
+  Atribua o canto superior esquerdo desta caixa à localização deste contexto.
   Vire para cima.
 
 Etapas para que se start sob o canto superior esquerdo of uma caixa facing south:
-  Atribua o canto superior esquerdo localização desta caixa à localização deste contexto.
+  Atribua o canto superior esquerdo desta caixa à localização deste contexto.
   Face south.
 
 Etapas para que se start sob o canto superior esquerdo of uma caixa facing west:
-  Atribua o canto superior esquerdo localização desta caixa à localização deste contexto.
+  Atribua o canto superior esquerdo desta caixa à localização deste contexto.
   Face west.
 
 Etapas para que se start sob o topo of um linha reta vertical:
@@ -9961,7 +9963,7 @@ Etapas para que se start um temporizador:
 Etapas para que se start uns twips acima of o middle of o base of uma caixa:
   \ incomplete abra of these
   Atribua a coordenada X deste centro desta caixa à coordenada X desta localização deste contexto.
-  Atribua a coordenada Y do canto inferior direito desta caixa menos os twips à coordenada Y desta localização deste contexto.
+  Atribua a coordenada Y2 desta caixa menos os twips à coordenada Y desta localização deste contexto.
 
 Etapas para que se start uns twips para baixo desde uma localização;
 Etapas para que se start uns twips debaixo of uma localização:
@@ -10107,8 +10109,8 @@ Etapas para que se dê meia volta:
   Vire para 1/2.
 
 Etapas para que se vire uma fração igual para um número over um segundo número:
-  Atribua o número à coordenada Y do canto superior esquerdo desta fração.
-  Atribua o segundo número à coordenada Y do canto inferior direito desta fração.
+  Atribua o número à coordenada Y1 desta fração.
+  Atribua o segundo número à coordenada Y2 desta fração.
   Vire a fração.
 
 Etapas para que se vire uma fração;
@@ -10119,8 +10121,8 @@ Etapas para que se vire para uma fração:
 
 Etapas para que se vire pra esquerda uma fração igual para um número over um segundo número;
 Etapas para que se vire para a esquerda uma fração igual para um número over um segundo número:
-  Atribua o número à coordenada Y do canto superior esquerdo desta fração.
-  Atribua o segundo número à coordenada Y do canto inferior direito desta fração.
+  Atribua o número à coordenada Y1 desta fração.
+  Atribua o segundo número à coordenada Y2 desta fração.
   Vire para a esquerda a fração.
 
 Etapas para que se vire uma fração para a esquerda;
@@ -10149,8 +10151,8 @@ Etapas para que se vire uns degraus:
 
 Etapas para que se vire pra direita uma fração igual para um número over um segundo número;
 Etapas para que se vire para a direita uma fração igual para um número over um segundo número:
-  Atribua o número à coordenada Y do canto superior esquerdo desta fração.
-  Atribua o segundo número à coordenada Y do canto inferior direito desta fração.
+  Atribua o número à coordenada Y1 desta fração.
+  Atribua o segundo número à coordenada Y2 desta fração.
   Vire para a fração.
 
 Etapas para que se vire para a direita uma fração:
@@ -10465,7 +10467,7 @@ Etapas para que se escreva um número sobre um console:
 Etapas para que se escreva uns quoras em uma caixa:
   \Pinte a caixa com a cor vermelha e a cor vermelha. \ temp ***
   Atribua a caixa para uma quora caixa.
-  Atribua a coordenada Y do canto superior esquerdo desta quora caixa mais 24 pixels à coordenada Y do canto inferior direito desta quora caixa.
+  Atribua a coordenada Y1 desta quora caixa mais 24 pixels à coordenada Y2 desta quora caixa.
   Comece. [a executar o código abaixo]
     Obtenha um quora desde o quoras.
     Se o quora for inexistente, pare.
@@ -10494,10 +10496,10 @@ Etapas para que se Solicite o evento para o Windows:
 
 Etapas para que se zero uma caixa: \ pra que se limpe as propriedades de uma caixa
   \ Era "clear uma caixa",  (which deveria pinte a caixa all black como does "clear o tela")
-  Atribua 0 à coordenada X do canto superior esquerdo desta caixa.
-  Atribua 0 à coordenada Y do canto superior esquerdo desta caixa.
-  Atribua 0 à coordenada X do canto inferior direito desta caixa.
-  Atribua 0 à coordenada Y do canto inferior direito desta caixa.
+  Atribua 0 à coordenada X1 desta caixa.
+  Atribua 0 à coordenada Y1 desta caixa.
+  Atribua 0 à coordenada X2 desta caixa.
+  Atribua 0 à coordenada Y2 desta caixa.
 
 A caixa zero é uma caixa.
 
