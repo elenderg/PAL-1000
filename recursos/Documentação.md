@@ -252,19 +252,49 @@
 # Mensagens
 
 [Virtual Key Codes](https://learn.microsoft.com/pt-br/windows/win32/inputdev/virtual-key-codes)  
-[WM_ACTIVATE](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-activate)  
-[WM_CHAR](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-char)  
-[WM_CREATE](https://learn.microsoft.com/pt-br/windows/win32/winmsg/wm-create)  
-[WM_DESTROY](https://learn.microsoft.com/pt-br/windows/win32/winmsg/wm-destroy)  
-[WM_KEYDOWN](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-keydown)  
-[WM_LBUTTONDBLCLK](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-lbuttondblclk)  
-[WM_LBUTTONDOWN](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-lbuttondown)  
-[WM_RBUTTONDBLCLK](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-rbuttondblclk)  
-[WM_RBUTTONDOWN](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-rbuttondown)  
-[WM_PAINT](https://learn.microsoft.com/pt-br/windows/win32/gdi/wm-paint)  
-[WM_SYSKEYDOWN](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-syskeydown)  
+
 [WM_SETCURSOR](https://learn.microsoft.com/pt-br/windows/win32/menurc/wm-setcursor)  
 
+##Mensagens de Janela:
+  
+[WM_ACTIVATE](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-activate)  
+WM_CLOSE  
+[WM_CREATE](https://learn.microsoft.com/pt-br/windows/win32/winmsg/wm-create)  
+[WM_DESTROY](https://learn.microsoft.com/pt-br/windows/win32/winmsg/wm-destroy)  
+WM_SIZE  
+WM_MOVE  
+WM_SETFOCUS  
+WM_KILLFOCUS  
+WM_SHOWWINDOW  
+  
+##Mensagens de Teclado e Mouse:  
+  
+[WM_KEYDOWN](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-keydown)  
+WM_KEYUP  
+[WM_CHAR](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-char)  
+[WM_SYSKEYDOWN](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-syskeydown)  
+WM_SYSKEYUP  
+WM_MOUSEMOVE  
+[WM_RBUTTONDOWN](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-rbuttondown)  
+WM_LBUTTONUP  
+[WM_LBUTTONDBLCLK](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-lbuttondblclk)  
+[WM_LBUTTONDOWN](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-lbuttondown)  
+WM_RBUTTONUP  
+[WM_RBUTTONDBLCLK](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-rbuttondblclk)  
+WM_MOUSEWHEEL  
+  
+##Mensagens de Pintura (Painting Messages):  
+  
+[WM_PAINT](https://learn.microsoft.com/pt-br/windows/win32/gdi/wm-paint)  
+WM_ERASEBKGND  
+
+##Mensagens de Controle de Janela:  
+  
+WM_ENABLE  
+WM_SETTEXT  
+WM_GETTEXT  
+WM_CLOSE  
+WM_COMMAND  
 
 # PE
 [File Headers](https://learn.microsoft.com/pt-br/windows/win32/debug/pe-format#file-headers)  
