@@ -28,7 +28,7 @@
 [TEXTMETRICA](https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-textmetrica)  
 [UUID](https://learn.microsoft.com/pt-br/windows/win32/rpc/rpcdce/ns-rpcdce-uuid)  
 [WIN32_FIND_DATAA](https://learn.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataa)  
-[WNDCLASS] (https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-wndclassexa)  
+[WNDCLASS](https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-wndclassexa)  
 [WSADATA](https://learn.microsoft.com/pt-br/windows/win32/api/winsock/ns-winsock-wsadata)   
 
 # [Caixas de diálogo comuns](https://learn.microsoft.com/pt-br/windows/win32/dlgbox/common-dialog-box-library?redirectedfrom=MSDN)
