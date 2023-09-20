@@ -255,7 +255,7 @@
 
 [WM_SETCURSOR](https://learn.microsoft.com/pt-br/windows/win32/menurc/wm-setcursor)  
 
-##Mensagens de Janela:
+## Mensagens de Janela:
   
 [WM_ACTIVATE](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-activate)  
 WM_CLOSE  
@@ -267,7 +267,7 @@ WM_SETFOCUS
 WM_KILLFOCUS  
 WM_SHOWWINDOW  
   
-##Mensagens de Teclado e Mouse:  
+## Mensagens de Teclado e Mouse:  
   
 [WM_KEYDOWN](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-keydown)  
 WM_KEYUP  
@@ -283,12 +283,12 @@ WM_RBUTTONUP
 [WM_RBUTTONDBLCLK](https://learn.microsoft.com/pt-br/windows/win32/inputdev/wm-rbuttondblclk)  
 WM_MOUSEWHEEL  
   
-##Mensagens de Pintura (Painting Messages):  
+## Mensagens de Pintura (Painting Messages):  
   
 [WM_PAINT](https://learn.microsoft.com/pt-br/windows/win32/gdi/wm-paint)  
 WM_ERASEBKGND  
 
-##Mensagens de Controle de Janela:  
+## Mensagens de Controle de Janela:  
   
 WM_ENABLE  
 WM_SETTEXT  
