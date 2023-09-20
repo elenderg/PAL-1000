@@ -7,8 +7,10 @@
 # Estruturas
 [ABC](https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-ABC)  
 [ADDRINFOA](https://learn.microsoft.com/pt-br/windows/win32/api/ws2def/ns-ws2def-addrinfoa)  
-
+[BitmapData](https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusimaging/nl-gdiplusimaging-bitmapdata)  
+[CLSID](https://learn.microsoft.com/pt-br/windows/win32/com/clsid-key-hklm)  
 [FILETIME](https://learn.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-filetime)  
+[GdiplusStartupInput](https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusinit/ns-gdiplusinit-gdiplusstartupinput)  
 [GCP_RESULTS](https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-gcp_resultsa)  
 [IN_ADDR](https://learn.microsoft.com/pt-br/windows/win32/api/inaddr/ns-inaddr-In_Addr)  
 [LOGBRUSH](https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-logbrush)  
@@ -26,6 +28,7 @@
 [TEXTMETRICA](https://learn.microsoft.com/pt-br/windows/win32/api/wingdi/ns-wingdi-textmetrica)  
 [UUID](https://learn.microsoft.com/pt-br/windows/win32/rpc/rpcdce/ns-rpcdce-uuid)  
 [WIN32_FIND_DATAA](https://learn.microsoft.com/pt-br/windows/win32/api/minwinbase/ns-minwinbase-win32_find_dataa)  
+[WNDCLASS] (https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-wndclassexa)  
 [WSADATA](https://learn.microsoft.com/pt-br/windows/win32/api/winsock/ns-winsock-wsadata)   
 
 # [Caixas de diálogo comuns](https://learn.microsoft.com/pt-br/windows/win32/dlgbox/common-dialog-box-library?redirectedfrom=MSDN)
@@ -62,13 +65,13 @@
 [SetFilePointer](https://learn.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-setfilepointer)  
 [WriteFile](https://learn.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-writefile)  
 # [GDI+](https://learn.microsoft.com/pt-br/windows/win32/api/_gdiplus/)
-[BitmapData](https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusimaging/nl-gdiplusimaging-bitmapdata)
+
 [Bitmap (clone)](https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-bitmap-clone(int_int_int_int_pixelformat))  
 [Bitmap (LockBits)](https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-bitmap-lockbits)  
 [Image (RotateFlip)](https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-image-rotateflip)  
 [GdiplusShutdown](https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusinit/nf-gdiplusinit-gdiplusshutdown)  
 [GdiplusStartup](https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusinit/nf-gdiplusinit-gdiplusstartup)  
-[GdiplusStartupInput](https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusinit/ns-gdiplusinit-gdiplusstartupinput)  
+
 [GDIplus Bitmap](https://learn.microsoft.com/pt-br/windows/win32/gdiplus/-gdiplus-bitmap-flat)  
 [ImageAttributes](https://learn.microsoft.com/pt-br/windows/win32/gdiplus/-gdiplus-imageattributes-flat)  
 # Kernel
