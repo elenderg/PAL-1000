@@ -1,0 +1,24 @@
+NPP_SAVE
+cd $(CURRENT_DIRECTORY)
+
+npp_console local -
+set local dirname = $(CURRENT_DIRECTORY)
+set local c ~ substr -1 1 $(dirname)  // trailing (last) character
+if "$(c)" == "\" then
+  set local dirname ~ substr 0 -1 $(dirname)  // removing trailing \
+else if "$(c)" == "/" then
+  set local dirname ~ substr 0 -1 $(dirname)  // removing trailing /
+endif
+set local n1 ~ strrfind "$(dirname)" \  // position of last \
+set local n2 ~ strrfind "$(dirname)" /  // position of last /
+if $(n1) > $(n2) then
+  set local n1 ~ $(n1) + 1
+  set local dirname ~ substr $(n1) - $(dirname)
+else
+  set local n2 ~ $(n2) + 1
+  set local dirname ~ substr $(n2) - $(dirname)
+endif
+npp_console local +
+
+C:\compilador.exe $(CURRENT_DIRECTORY)
+$(CURRENT_DIRECTORY)\$(dirname).exe
