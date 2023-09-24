@@ -24,11 +24,11 @@ Uma word é uma estrutura com
   Um byte final [low byte].
 
 Um número é uma estrutura com
-  Um primeiro byte,
+  Um primeiro_ byte,
   Um segundo byte,
   Um terceiro byte,
   Um quarto byte, \ 4 bytes = 32 bits
-  Uma word de ordem inferior sob o primeiro byte,
+  Uma word de ordem inferior sob o primeiro_ byte,
   Uma word de ordem superior sob o terceiro byte. \ Devido à extremidade (ordenação) dos processadores x86
 
 Uma word de ordem inferior é uma word.
@@ -57,7 +57,7 @@ Uma lista estrutura é uma estrutura com
   Uma precedente lista.
 
 Umas listas são uma estrutura com \ Importante
-  Uma first lista e
+  Uma primeiro lista e
   Uma last lista.
 
 Rotina para que se permute um par de números com um segundo par de números:
@@ -71,7 +71,7 @@ Rotina para que se permute um número com um segundo número:
   Atribua o terceiro número ao segundo número.
 
 Rotina para que se permute umas listas com umas outras listas:
-  Permute a first lista destas listas com a first lista destas outras listas.
+  Permute a primeiro lista destas listas com a primeiro lista destas outras listas.
   Permute a last lista destas listas com a last lista destas outras listas.
 
 Rotina para que se subtraia uma fração desde uma segunda fração:
@@ -115,7 +115,7 @@ Rotina para que se subtraia um par de números desde um segundo par de números:
 \ebp geralmente é definido como esp no início de uma função.
 \Parâmetros de função e variáveis locais são acessados ao adicionar e subtrair um valor de deslocamento constante do registrador ebp.
 \Todas as convenções de chamada x86 definem ebp como sendo preservado nas chamadas de função.
-\O próprio ebp aponta, na verdade, para o ponteiro de base do quadro anterior, o que permite o funcionamento da pilha em um depurador e a visualização de outras variáveis locais de quadros.
+\O próprio ebp aponta, na verdade, para o ponteiro de base do quadro anterior_, o que permite o funcionamento da pilha em um depurador e a visualização de outras variáveis locais de quadros.
 \ESP é o ponteiro da pilha atual, que mudará sempre que uma palavra ou endereço for inserido ou colocado na / fora da pilha.
 \EBP é uma maneira mais conveniente para o compilador controlar os parâmetros de uma função e as variáveis locais do que usar o ESPdiretamente.
 \Geralmente (e isso pode variar de compilador para compilador), todos os argumentos para uma função sendo chamada são colocados na pilha pela função de chamada
@@ -228,7 +228,7 @@ Rotina para que se arredonde um número para cima usando o potência de dois:
   Decodifique $8B09. \ mov ecx,[ecx]
   Decodifique $49. \ dec ecx ; -> diminui o valor de ecx
   Decodifique $0FBDC9. \ bsr ecx,ecx ; ->Bit scan reverse- Pesquisa no operando de origem (segundo operando) pelo conjunto de bits mais significativo (1 bit)
-  \Se encontrar, o índice de bit é armazenado no operando de destino (primeiro operando).
+  \Se encontrar, o índice de bit é armazenado no operando de destino (primeiro_ operando).
   Decodifique $41. \ inc ecx ; -> aumenta o valor de ecx
   Decodifique $81F904000000. \ cmp ecx,4 ; -> compara o valor de ecx
   Decodifique $0F8F05000000. \ jg sobre the próximo 1 statement (Jump short if greater)
@@ -275,10 +275,10 @@ Rotina para que se atribua a quantidade de caracteres duma string para uma quant
   Decodifique $8B9D08000000. \ mov ebx,[ebp+8] ; -> salva a string (ebp+8) no registrador eax
   \ Carrega default result
   Decodifique $B900000000. \ mov ecx,0 ; -> zera o registrador ecx
-  \ if first for 0, store 0
+  \ if primeiro for 0, store 0
   Decodifique $833B00. \ cmp [ebx],0 ; -> compara a string com 0.
   Decodifique $0F8414000000. \ je store it
-  \ if last for menor do que first, store 0
+  \ if last for menor do que primeiro, store 0
   Decodifique $8B5304. \ mov edx,[ebx+4] ; -> atribui o last ponteiro ao registrador edx
   Decodifique $3B13. \ cmp edx,[ebx] ; -> compara edc com ebx
   Decodifique $0F8C09000000. \ jl store it
@@ -292,13 +292,13 @@ Rotina para que se atribua a quantidade de caracteres duma string para uma quant
 
 Rotina para que se atribua um número para uma word:
   Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> atribui o número (ebp+8) ao registrador eax
-  Decodifique $8B00. \ mov eax,[eax] ; -> ebp+8 representa o primeiro argumento da função (o número).
+  Decodifique $8B00. \ mov eax,[eax] ; -> ebp+8 representa o primeiro_ argumento da função (o número).
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> atribui a word (ebp+12) ao registrador ebx
   Decodifique $668903. \ mov [ebx],ax
 
 Rotina para que se atribua um número para um byte:
   Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> atribui o número (ebp+8) ao registrador eax
-  Decodifique $8B00. \ mov eax,[eax] ; -> ebp+8 representa o primeiro argumento da função (o número).
+  Decodifique $8B00. \ mov eax,[eax] ; -> ebp+8 representa o primeiro_ argumento da função (o número).
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> atribui o byte (ebp+12) ao registrador ebx
   Decodifique $8803. \ mov [ebx],al
 
@@ -360,7 +360,7 @@ Rotina para que se substitua um byte usando uma tabela de tradução:
   Decodifique $8B8D08000000. \ mov ecx,[ebp+8]  ; -> salva o endereço do byte (ebp+8) no registrador ecx
   Decodifique $8B01. \ mov eax,[ecx] \ salva o caractere em EAX
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] salva o endereço da tabela (ebp+12) no registrador ebx
-  Decodifique $8B1B. \ mov ebx,[ebx] o primeiro byte da tabela de tradução
+  Decodifique $8B1B. \ mov ebx,[ebx] o primeiro_ byte da tabela de tradução
   Decodifique $D7. \ xlat al,[ebx]
   Decodifique $8901. \ mov [ecx],eax
 
@@ -537,7 +537,7 @@ Rotina para que se disjuncione seletivamente um número com um segundo número:
   Decodifique $3103. \ xor [ebx],eax
 
 Rotina para que se avance um percorredor:
-  Decodifique $8B9D08000000. \ mov ebx,DWORD PTR [ebp+0x8] | mov ebx,[ebp+8]  \ salva o endereço do primeiro parâmetro [ebp+0x8] no registrador ebx.
+  Decodifique $8B9D08000000. \ mov ebx,DWORD PTR [ebp+0x8] | mov ebx,[ebp+8]  \ salva o endereço do primeiro_ parâmetro [ebp+0x8] no registrador ebx.
   Decodifique $FF8314000000. \ inc DWORD PTR [ebx+0x14] | inc [ebx+20] \ aumenta o valor do caractere final deste segmento inicial deste percorredor.
   Decodifique $FF8308000000. \ inc DWORD PTR [ebx+0x8] | inc [ebx+8] \ aumenta o valor do caractere inicial deste segmento final deste percorredor.
 
@@ -559,7 +559,7 @@ Rotina para que se compare uma string para uma segunda string usando uma quantid
   Decodifique $0F852B000000. \ jne sayno \ ************************************ was 2C
   Decodifique $8BC8. \ mov ecx,eax \ atribua quantidade de caracteres A ecx
   Decodifique $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
-  Decodifique $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
+  Decodifique $8B1B. \ mov ebx,[ebx] o primeiro da tabela de tradução
   \ loop:
   Decodifique $85C9. \ test ecx,ecx
   Decodifique $0F8424000000. \ jz say yes \ ************************************ was 25
@@ -587,15 +587,15 @@ Rotina para que se compare uma string para uma segunda string usando uma quantid
 
 Rotina para que se compare uma string para uma segunda string usando uma quantidade de caracteres e uma segunda quantidade de caracteres e uma tabela de tradução retornando um número:
   Decodifique $8BB508000000. \ mov esi,[ebp+8] \ a string
-  Decodifique $8B36. \ mov esi,[esi] \ o first do string
+  Decodifique $8B36. \ mov esi,[esi] \ o primeiro do string
   Decodifique $8BBD0C000000. \ mov edi,[ebp+12] \ a segunda string
-  Decodifique $8B3F. \ mov edi,[edi] \ o first do segunda string
+  Decodifique $8B3F. \ mov edi,[edi] \ o primeiro do segunda string
   Decodifique $8B8510000000. \ mov eax,[ebp+16] \ a quantidade de caracteres do string
   Decodifique $8B00. \ mov eax,[eax]
   Decodifique $8B9514000000. \ mov edx,[ebp+20] \ a quantidade de caracteres do segunda string
   Decodifique $8B12. \ mov edx,[edx]
   Decodifique $8B9D18000000. \ mov ebx,[ebp+24] \ o tabela de tradução
-  Decodifique $8B1B. \ mov ebx,[ebx] o first da tabela de tradução
+  Decodifique $8B1B. \ mov ebx,[ebx] o primeiro da tabela de tradução
   \ obtenha o minimum quantidade de caracteres
   Decodifique $8BC8. \ mov ecx,eax
   Decodifique $3BCA. \ cmp ecx,edx
@@ -790,10 +790,10 @@ Rotina para que se determine se uma string está em branco:
   \ assume true
   Decodifique $B801000000. \ mov eax,1
   Decodifique $8B9D08000000. \ mov ebx,[ebp+8] \ a string
-    \ if first for 0, exit
+    \ if primeiro for 0, exit
   Decodifique $833B00. \ cmp [ebx],0
   Decodifique $0F8410000000. \ je end
-  \ if last for menor do que first, exit
+  \ if last for menor do que primeiro, exit
   Decodifique $8B5304. \ mov edx,[ebx+4] \ last ponteiro
   Decodifique $3B13. \ cmp edx,[ebx]
   Decodifique $0F8C05000000. \ jl end
@@ -853,9 +853,9 @@ Rotina para que se copie bytes desde um ponteiro para um segundo ponteiro por um
 Rotina para que se lance um subtexto sobre uma string: \assembly
   Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o subtexto
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] \ a string
-  \ atribua o caractere inicial desta string ao first do subtexto
+  \ atribua o caractere inicial desta string ao primeiro do subtexto
   Decodifique $8B8B00000000. \ mov ecx,[ebx+0] \ o caractere inicial desta string
-  Decodifique $898800000000. \ mov [eax+0],ecx \ o first do subtexto
+  Decodifique $898800000000. \ mov [eax+0],ecx \ o primeiro do subtexto
   \ atribua o caractere final desta string ao caractere final deste subtexto
   Decodifique $8B8B04000000. \ mov ecx,[ebx+4] \ o last do string
   Decodifique $898804000000. \ mov [eax+4],ecx \ o caractere final deste subtexto
