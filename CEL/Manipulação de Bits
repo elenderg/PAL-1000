@@ -278,12 +278,12 @@ Rotina para que se atribua a quantidade de caracteres duma string para uma quant
   \ if primeiro for 0, store 0
   Decodifique $833B00. \ cmp [ebx],0 ; -> compara a string com 0.
   Decodifique $0F8414000000. \ je store it
-  \ if last for menor do que primeiro, store 0
-  Decodifique $8B5304. \ mov edx,[ebx+4] ; -> atribui o last ponteiro ao registrador edx
+  \ if último for menor do que primeiro, store 0
+  Decodifique $8B5304. \ mov edx,[ebx+4] ; -> atribui o último ponteiro ao registrador edx
   Decodifique $3B13. \ cmp edx,[ebx] ; -> compara edc com ebx
   Decodifique $0F8C09000000. \ jl store it
   \ calcula a  quantidade de caracteres
-  Decodifique $8B8B04000000. \ mov ecx,[ebx+4] ; ->atribui o last ponteiro ao registrador ecx
+  Decodifique $8B8B04000000. \ mov ecx,[ebx+4] ; ->atribui o último ponteiro ao registrador ecx
   Decodifique $2B0B. \ sub ecx,[ebx] \ subtrai o registrador ebx do ecx
   Decodifique $41. \ inc ecx \ adiciona 1 ao registrador ecx
   \ STORE IT:
@@ -629,7 +629,7 @@ Rotina para que se compare uma string para uma segunda string usando uma quantid
   Decodifique $0FB6C2. \ movzx eax,dl
   Decodifique $0FB6D6. \ movzx edx,dh
   \L5:
-  \ subtraia either os lengths ou os last dois bytes para abra o eax para <0, =0, >0
+  \ subtraia either os lengths ou os último dois bytes para abra o eax para <0, =0, >0
   Decodifique $2BC2. \ sub eax,edx
   Decodifique $8B9D1C000000. \ mov ebx,[ebp+28] \ o número
   Decodifique $8903. \ mov [ebx],eax
@@ -793,8 +793,8 @@ Rotina para que se determine se uma string está em branco:
     \ if primeiro for 0, exit
   Decodifique $833B00. \ cmp [ebx],0
   Decodifique $0F8410000000. \ je end
-  \ if last for menor do que primeiro, exit
-  Decodifique $8B5304. \ mov edx,[ebx+4] \ last ponteiro
+  \ if último for menor do que primeiro, exit
+  Decodifique $8B5304. \ mov edx,[ebx+4] \ último ponteiro
   Decodifique $3B13. \ cmp edx,[ebx]
   Decodifique $0F8C05000000. \ jl end
   \Diga não.:
@@ -857,7 +857,7 @@ Rotina para que se lance um subtexto sobre uma string: \assembly
   Decodifique $8B8B00000000. \ mov ecx,[ebx+0] \ o caractere inicial desta string
   Decodifique $898800000000. \ mov [eax+0],ecx \ o primeiro do subtexto
   \ atribua o caractere final desta string ao caractere final deste subtexto
-  Decodifique $8B8B04000000. \ mov ecx,[ebx+4] \ o last do string
+  Decodifique $8B8B04000000. \ mov ecx,[ebx+4] \ o último do string
   Decodifique $898804000000. \ mov [eax+4],ecx \ o caractere final deste subtexto
 
 Rotina para que se divida um ponteiro por um número;
