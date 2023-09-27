@@ -29,10 +29,8 @@ Rotina para que se leia uma response string desde uma requisição WinHTTP:
   Reitere. [Execute novamente o código]
 
 Rotina para que se leia uma URL para um trecho:
-  \ prepare
   Limpe o trecho.
   Limpe o erro do fluxo de entrada/saída.
-  \ internet abra
   Processe "wininet.dll" "InternetOpenA" com \ Inicializa o uso das funções WinINet de um aplicativo.
   \ Documentação> -> https://learn.microsoft.com/pt-br/windows/win32/api/wininet/nf-wininet-internetopena
     O caractere inicial deste nome deste módulo [lpszAgent]
@@ -41,8 +39,9 @@ Rotina para que se leia uma URL para um trecho:
     e nil [lpszProxyBypass]
     e 268435456 [dwFlags]
   Retornando um número identificador da URL da internet.
-  Se o número identificador da URL da internet for 0 [NULL], atribua "Erro. Não foi possível se conectar à internet. Verifique sua conexão" ao erro do fluxo de entrada/saída; retorne.
- \ internet abra URL
+  Se o número identificador da URL da internet for 0 [NULL], 
+    Atribua "Erro. Não foi possível se conectar à internet. Verifique sua conexão" ao erro do fluxo de entrada/saída; 
+    Retorne.
   Preserve a URL.
   Anexe o caractere NULL após a URL.
   Processe "wininet.dll" "InternetOpenUrlA" com \ Abre um recurso especificado por uma URL FTP/HTTP completa.
@@ -90,7 +89,9 @@ Rotina para que se receba o response string desde uma requisição WinHTTP:
     O número identificador de requisição desta requisição WinHTTP [hRequest]
     e 0 [lpReserved]
   Retornando um número resultante.
-  Se o número resultante for 0 [FALSE], atribua "Erro ao receber a questão da solicitação HTTP. Funcção WinHttpReceiveResponse (winhttp.dll)." ao erro do fluxo de entrada/saída; retorne.
+  Se o número resultante for 0 [FALSE], 
+    Atribua "Erro ao receber a questão da solicitação HTTP. Funcção WinHttpReceiveResponse (winhttp.dll)." ao erro do fluxo de entrada/saída; 
+    Retorne.
 
 Rotina para que se receba um trecho desde um soquete:
   Limpe o erro do fluxo de entrada/saída.
@@ -109,24 +110,36 @@ Rotina para que se receba um trecho desde um soquete:
       e O trecho tamanho [len]
       e 0 [flags]
     Retornando uma contagem.
-    Se a contagem não for -1 [SOCKET_ERROR], atribua o ponteiro mais a contagem menos 1 ao caractere final deste trecho; retorne.
-    Se o último erro do windows sockets não for 10040 [WSAMSGSIZE], atribua "Erro ao receber os dados. Função 'recv' da lib 'ws2_32.dll'." ao erro do fluxo de entrada/saída; limpe o trecho; retorne.
-  \Se o último winsock erro dum system não for 10040 [WSAMSGSIZE], atribua "Ocorreu um erro no recebimento dos dados." ao erro do fluxo de entrada/saída; limpe o trecho; retorne.
+    Se a contagem não for -1 [SOCKET_ERROR], 
+      Atribua o ponteiro mais a contagem menos 1 ao caractere final deste trecho; 
+      Retorne.
+    Se o último erro do windows sockets não for 10040 [WSAMSGSIZE], 
+      Atribua "Erro ao receber os dados. Função 'recv' da lib 'ws2_32.dll'." ao erro do fluxo de entrada/saída; 
+      Limpe o trecho; 
+      Retorne.
+  \Se o último winsock erro dum system não for 10040 [WSAMSGSIZE],  \ "dum" não é permitido aqui
+    \Atribua "Ocorreu um erro no recebimento dos dados." ao erro do fluxo de entrada/saída; 
+    \Limpe o trecho; 
+    \Retorne.
     Atribua o ponteiro mais a contagem menos 1 ao caractere final deste trecho.
   Reitere. [Execute novamente o código]
 
 Rotina para que se post um data string para uma URL e receba um response string:
   \ só funciona com http e https
-  Limpe o response string .
+  Limpe a response string .
   Limpe o erro do fluxo de entrada/saída.
   Crie uma requisição WinHTTP por posting para o URL.
   Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
   Envie o data para a requisição WinHTTP.
-  Se o erro do fluxo de entrada/saída não estiver em branco, destrua a requisição WinHTTP; retorne.
+  Se o erro do fluxo de entrada/saída não estiver em branco, 
+    Destrua a requisição WinHTTP; 
+    Retorne.
   Receba o response string desde a requisição WinHTTP.
-  Se o erro do fluxo de entrada/saída não estiver em branco, destrua a requisição WinHTTP; retorne.
+  Se o erro do fluxo de entrada/saída não estiver em branco, 
+    Destrua a requisição WinHTTP; 
+    Retorne.
   Leia o response string desde a requisição WinHTTP.
-  Se o erro do fluxo de entrada/saída não estiver em branco, destrua a requisição WinHTTP; retorne.
+  Se o erro do fluxo de entrada/saída não estiver em branco, 
+    Destrua a requisição WinHTTP; 
+    Retorne.
   Destrua a requisição WinHTTP.
-
-

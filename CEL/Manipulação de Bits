@@ -424,35 +424,41 @@ Rotina para que se negate uma fração:
 
 Rotina para que se atribua um detector para uma string;
 Rotina para que se converta um detector para uma string:
-  Se o detector estiver ativo, atribua "SIM" à string; retorne. \ no momento tem que ser inglês por conta das externalized reams
+  Se o detector estiver ativo, 
+    Atribua "SIM" à string; 
+    Retorne. \ no momento tem que ser inglês por conta das externalized reams
+  \ Se o detector não estiver ativo,
   Atribua "NÃO" à string.
 
 Rotina para que se reaponte um ponteiro usando um quantidade de bytes:
-  Se o ponteiro for inexistente, associe o ponteiro usando a quantidade de bytes; retorne.
-  Se a quantidade de bytes for 0, desassocie o ponteiro; retorne.
+  Se o ponteiro for inexistente, 
+    Associe o ponteiro usando a quantidade de bytes; 
+    Retorne.
+  Se a quantidade de bytes for 0, 
+    Desassocie o ponteiro; 
+    Retorne.
   Preserve a quantidade de bytes.
   Arredonde para cima a quantidade de bytes usando a potência de dois.
   Processe "kernel32.dll" "HeapReAlloc" com \Realoca um bloco de memória de um heap.
  \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/heapapi/nf-heapapi-heaprealloc
-   \Esta função permite redimensionar um bloco de memória e alterar outras propriedades do bloco de memória. A memória alocada não é móvel.
-    O endereço heap [hHeap] \ O heap do qual a memória deve ser realocada. Obtido a partir da função HeapCreate ou GetProcessHeap.
-    e 8 [8 = HEAP_ZERO_MEMORY]  [dwFlags] \As opções de realocação de heap.
-    e O ponteiro [lpMem] \ O bloco de memória que a função realoca. Obtido a partir da função HeapAlloc ou HeapReAlloc.
-    e A quantidade de bytes [dwBytes] \O novo tamanho do bloco de memória, em bytes.
-  Retornando o ponteiro. \Se a função for bem-sucedida, o valor de retorno é um ponteiro [que aponta] para o bloco de memória realocado.
+    O endereço heap [hHeap]
+    e 8 [8 = HEAP_ZERO_MEMORY]  [dwFlags]
+    e O ponteiro [lpMem]
+    e A quantidade de bytes [dwBytes]
+  Retornando o ponteiro.
 
 Rotina para que se mostre olá mundo no console:
-  Decodifique $B403. \mov  ah,0x3
-  Decodifique $CD10. \int  0x10
-  Decodifique $B001. \mov  al,0x1
-  Decodifique $B30A. \mov  bl,0xa
-  Decodifique $B90B00BD13.  \mov  ecx,0x13bd000b
+  Decodifique $B403. \mov ah,0x3
+  Decodifique $CD10. \int 0x10
+  Decodifique $B001. \mov al,0x1
+  Decodifique $B30A. \mov bl,0xa
+  Decodifique $B90B00BD13.  \mov ecx,0x13bd000b
   Decodifique $01B413CD10C34F. \add  DWORD PTR [ebx+edx*1+0x4fc310cd],esi
   Decodifique $69206D756E64.  \ imul esp,DWORD PTR [eax],0x646e756d
-  Decodifique $6D. \  outs dx,DWORD PTR ds:[esi]
-  Decodifique $21. \   .byte 0x21
-  Decodifique $0D.  \   .byte 0xd
-  Decodifique $0A.  \   .byte 0xa
+  Decodifique $6D. \ outs dx,DWORD PTR ds:[esi]
+  Decodifique $21. \ .byte 0x21
+  Decodifique $0D.  \ .byte 0xd
+  Decodifique $0A.  \ .byte 0xa
 
 Rotina para que se adicione um byte para um segundo byte:
   Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o byte 67 8B 45 08
@@ -862,7 +868,9 @@ Rotina para que se lance um subtexto sobre uma string: \assembly
 
 Rotina para que se divida um ponteiro por um número;
 Rotina para que se divida um número por um segundo número:
-  Se o segundo número for 0, atribua o maior número ao número; retorne.
+  Se o segundo número for 0, 
+    Atribua o maior número ao número; 
+    Retorne.
   Decodifique $8B8508000000. \ mov eax,[ebp+8] \ o número
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] \ o segundo número
   Decodifique $8B00. \ mov eax,[eax]
@@ -873,7 +881,10 @@ Rotina para que se divida um número por um segundo número:
 
 Rotina para que se divida um ponteiro por um número usando um quociente e um resto;
 Rotina para que se divida um número por um segundo número usando um quociente e um resto:
-  Se o segundo número for 0, atribua o maior número ao quociente; atribua 0 ao resto; retorne.
+  Se o segundo número for 0, 
+    Atribua o maior número ao quociente; 
+    Atribua 0 ao resto; 
+    Retorne.
   Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> salva o 1º número (epb+8) no registrador eax
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> salva o 2º número (epb+12) no registrador ebx
   Decodifique $8B00. \ mov eax,[eax]
@@ -887,5 +898,3 @@ Rotina para que se divida um número por um segundo número usando um quociente e 
 O som de aviso é uma wave igual a $524946463A02000057415645666D74201200000001000100401F0000401F000001000800000066616374040000000702000064617461070200007F7F807F7F807F7F808080807F807F7F80817F81817E7E827E7D847C79877D5F6D99B2A25D608269A5979869667F7D8D738C7D8C5E7E878F767A75868D84797278829A7D7E857A73929271657492907D7E7D787E8B887C758388827E817F7C7B89897C7A7E84838183827E7A8488877D7E8181808484817C7F84838181807E7F8283807E8081808182807F7F81818081807F7F8081818080807F7F808180807F80808080807F8080807F8080808080807F7F7F7F7F8080807F7F7F7C7B8182817C7B7D7E8082807D7D7C7F8281807F7C7D808082807E7E7E7D7E807D7B7C7B7D7D7B7A7979797875727269797A490F4571FFF4FF0C001297FBF492525BB0F5B26A001C69BEE5BA76476F9EBD953C3757BAC9BB705C7F9AA883645D7897AA9B806977959588696976999B83766F828C907F7375828E91877B757D868B837A757C858D8880787B8187847B7A7D8788807B79808486817D7C7F8384817D7C7F8484817B7B7D83847F7C7B7E8182827D7C7C8082817D7C7D7F81807F7D7D7F82817F7B7B7E8081807E7D7D7F80807E7D7D7E80807E7D7D7E7F807F7D7D7E7F807F7E7D7E7E80807F7E7D7E80807F7E7E7E7F7F7E7E7E7F7F7F7F7E7E7F7F807F7F7E7E7E7F8080807E7E7E80807F7E7E7F8081807F7F7E7F7F80807F7E7F8081807F7E7E7E80808080807F807F7F7F7F7F7F7F80808080807F7F7F808080807F80808180807F80808100.
 
 A matriz de tons de cinza é um texto hexadecimal igual a $8716993E8716993E8716993E0000000000000000A245163FA245163FA245163F0000000000000000D578E93DD578E93DD578E93D00000000000000000000000000000000000000000000803F00000000000000000000000000000000000000000000803F.
-
-
