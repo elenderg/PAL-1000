@@ -11407,6 +11407,411 @@ Rotina para que se obtenha um OutlineTextmetric usando uma fonte:
   Destrua o número da fonte de o contexto do dispositivo atual.
   Desassocie o POutlineTextmetric.
 
+[MANIUPLAÇÃO DE STRINGS]
+
+Uma string de caracteres amplos é uma string.
+Um subtexto é uma string.
+Um destinatário é uma string.
+Uma mensagem é uma string.
+Uma palavra é um subtexto. \ não confundir com word
+
+Um conjunto de texto é uma lista com uma string.
+
+Um nome é uma string.
+O texto de espaço é uma string igual a " ".
+
+Rotina para que se mova um percorredor (catálogo dicionário léxico rules):
+  Ignore algum leading noise no segmento final deste percorredor.
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Itere. [o código a seguir]
+    Se o segmento final deste percorredor estiver em branco, retorne.
+    Avance o percorredor.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for irrelevante, retorne.
+  Reitere. [Execute novamente o código]
+
+Rotina para que se mova um percorredor (strings com aspas):
+  Avance o percorredor.
+  Se o segmento final deste percorredor estiver em branco, retorne.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for as aspas duplas, reitere.
+  Se o caractere inicial deste segmento final deste percorredor for o caractere final deste segmento final deste percorredor, 
+    Avance o percorredor; 
+    Retorne.
+  Avance o percorredor.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for as aspas duplas, retorne.
+  Reitere. [Execute novamente o código]
+
+Rotina para que se mova um percorredor (spell checking rules):
+  Ignore algum non-alfanumérico bytes no segmento final deste percorredor. \ pula o #
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Itere. [o código a seguir]
+    Se o segmento final deste percorredor estiver em branco, retorne.
+    Avance o percorredor.
+    Se o segmento final deste percorredor está sobre alguma espécie de contração, 
+      Avance o percorredor; 
+      Reitere.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor não for alfanumérico, retorne.
+  Reitere. [Execute novamente o código]
+
+Rotina para que se mova um percorredor (usando diretrizes de arquivos de texto):
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Itere. [o código a seguir]
+    Se o segmento final deste percorredor estiver em branco, retorne.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o retorno de carro, 
+      Avance o percorredor; 
+      Pare.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for a quebra de linha, 
+      Avance o percorredor; 
+      Retorne.
+  \ *Rotina nova criada pelo Dahn para abranger novas linhas terminadas apenas por LF
+    Avance o percorredor.
+  Reitere. [Execute novamente o código]
+  Se o segmento final deste percorredor estiver em branco, retorne.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for a quebra de linha, adicione 1 para o caractere inicial deste segmento final deste percorredor.
+
+Rotina para que se mova um percorredor (word wrapping rules):
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Se o segmento final deste percorredor estiver em branco, retorne.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o retorno de carro, 
+    Avance o percorredor; 
+    Retorne.
+  Itere. [o código a seguir]
+    Se o segmento final deste percorredor estiver em branco, 
+      Retorne.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o retorno de carro, 
+      Retorne.
+    Se o segmento inicial deste percorredor estiver em branco, 
+      Avance o percorredor; 
+      Reitere.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for semelhante ao conteúdo deste caractere final deste segmento inicial deste percorredor,
+      Avance o percorredor; 
+      Reitere.
+
+Rotina para que se mova um percorredor usando uma caixa (word wrapping rules):
+  Ignore algum leading quebra de linha no segmento final deste percorredor.
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Se o segmento final deste percorredor estiver em branco, retorne.
+  Lance um segundo percorredor sobre o percorredor.
+  Itere. [o código a seguir]
+    Se o segmento final deste percorredor estiver em branco, retorne.
+    Mova o segundo percorredor (word wrapping rules).
+    Se o segmento inicial deste segundo percorredor estiver em branco, retorne.
+    Se o conteúdo deste caractere inicial deste segmento inicial deste segundo percorredor for o retorno de carro, 
+      Avance o percorredor; 
+      Retorne.
+    Se o conteúdo deste caractere inicial deste segmento inicial deste segundo percorredor for whitespace, 
+      Avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor; 
+      Reitere.
+    Se o segmento inicial deste percorredor estiver em branco, 
+      Avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor; 
+      Reitere.
+    Se o segmento inicial deste percorredor junto com o segmento inicial deste segundo percorredor forem wider do que a caixa, retorne.
+    Avance o percorredor pelo quantidade de caracteres deste segmento inicial deste segundo percorredor.
+  Reitere. [Execute novamente o código]
+
+Rotina para que se mova um percorredor usando um separator byte:
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Itere. [o código a seguir]
+    Se o segmento final deste percorredor estiver em branco, retorne.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for o separator byte, 
+      Adicione 1 para o caractere inicial deste segmento final deste percorredor; 
+      Retorne.
+    Avance o percorredor.
+  Reitere. [Execute novamente o código]
+
+Rotina para que se escolha aleatoriamente uma letra de_ o alfabeto:
+  \ atribua letra A contexto? ***
+  Escolha aleatoriamente um número entre 65 e 90.
+  Atribua o número à letra.
+
+Rotina para que se atribua um percorredor para um segundo percorredor:
+  Copie bytes desde o endereçamento deste percorredor para o endereçamento deste segundo percorredor pela magnitude deste percorredor.
+
+Rotina para que se atribua um byte para uma string:
+  Atribua 1 para uma quantidade de caracteres.
+  Reaponte o caractere inicial desta string usando a quantidade de caracteres.
+  Atribua o byte ao conteúdo deste caractere inicial desta string.
+  Atribua o caractere inicial desta string ao caractere final desta string.
+
+Rotina para que se atribua uma string para uma segunda string:
+  Atribua a quantidade de caracteres desta string para uma quantidade de caracteres armazenados.
+  Associe um ponteiro usando a quantidade de caracteres armazenados.
+  Copie bytes desde o caractere inicial desta string para o ponteiro pelo quantidade de caracteres armazenados.
+  Desassocie o caractere inicial desta segunda string.
+  Atribua o ponteiro ao caractere inicial desta segunda string.
+  Atribua o caractere inicial desta segunda string mais a quantidade de caracteres armazenados menos 1 ao caractere final desta segunda string.
+
+Rotina para que se remova as aspas de uma string:
+  Lance um subtexto sobre a string.
+  Se o subtexto estiver em branco, pare.
+  Se o conteúdo deste caractere inicial deste subtexto não for as aspas duplas, retorne.
+  Adicione 1 para o caractere inicial deste subtexto.
+  Itere. [o código a seguir]
+    Se o subtexto estiver em branco, pare.
+    Se o caractere inicial deste subtexto é o caractere final deste subtexto, pare.
+    Acrescente o conteúdo deste caractere inicial deste subtexto para uma segunda string.
+    Se o conteúdo deste caractere inicial deste subtexto for as aspas duplas, adicione 1 para o caractere inicial deste subtexto.
+    Adicione 1 para o caractere inicial deste subtexto.
+  Reitere. [Execute novamente o código]
+  Atribua a segunda string à string.
+
+Rotina para que se uppercase qualquer trecho selecionado em uma caixa de texto:
+  Se a caixa de texto for inexistente, retorne.
+  Itere. [o código a seguir]
+    Obtenha uma linha de texto desde as linhas de texto desta caixa de texto.
+    Se a linha de texto for inexistente, retorne.
+    Se a linha de texto de_ a caixa de texto não estiver selecionado, reitere.
+    Lance um subtexto sobre qualquer trecho selecionado na linha de texto de_ a caixa de texto.
+    Uppercase o subtexto.
+  Reitere. [Execute novamente o código]
+
+Rotina para que se uppercase um byte:
+  Substitua o byte usando a tabela de caracteres maiúsculos ascii .
+  \ Decodifique $8B8508000000. \ mov eax,[ebp+8] \ Salva o caractere no registrador eax
+  \ Decodifique $803861. \ cmp byte ptr [eax],'a'  \ Compare the byte to the lowercase “a” caractere
+  \ Decodifique $0F820C000000. \ jb END \  If the byte is before the “a” in the ASCII chart, jump to the end; we’re done
+  \ Decodifique $80387A. \ cmp byte ptr [eax],'z' \ Compare the byte to the lowercase “z” caractere
+  \ Decodifique $0F8703000000. \ ja END \ If the byte is after the “z” in the ASCII chart, jump to the end; we’re done
+  \ Decodifique $802820. \ sub byte ptr [eax],$20 \ Subtract hex 20 (decimal 32) from the byte
+  \ END
+
+Rotina para que se anteponha um byte para uma string:
+  Atribua a quantidade de caracteres desta string para uma quantidade de caracteres armazenados.
+  Reaponte o caractere inicial desta string usando a quantidade de caracteres desta string mais 1.
+  Copie bytes desde o caractere inicial desta string para o caractere inicial desta string mais 1 pelo quantidade de caracteres armazenados.
+  Atribua o caractere inicial desta string mais a quantidade de caracteres armazenados ao caractere final desta string.
+  Atribua o byte ao conteúdo deste caractere inicial desta string.
+
+Rotina para que se anteponha uma string para uma segunda string:
+  Atribua a quantidade de caracteres desta segunda string mais a quantidade de caracteres desta string para uma quantidade de caracteres agrupados.
+  Reaponte um ponteiro usando a quantidade de caracteres agrupados.
+  Atribua o ponteiro ao caractere inicial dum subtexto.
+  Copie bytes desde o caractere inicial desta string para o caractere inicial deste subtexto pelo quantidade de caracteres desta string.
+  Adicione a quantidade de caracteres desta string para o caractere inicial deste subtexto.
+  Copie bytes desde o caractere inicial desta segunda string para o caractere inicial deste subtexto pelo quantidade de caracteres desta segunda string.
+  Desassocie o caractere inicial desta segunda string. \ para que se esvazie extra allocates e copies
+  Atribua o ponteiro ao caractere inicial desta segunda string.
+  Atribua o caractere inicial desta segunda string mais a quantidade de caracteres agrupados menos 1 ao caractere final desta segunda string.
+
+Rotina para que se uppercase o caractere depois de um finger e atribua it para uma string:
+  Se o finger for inexistente, retorne.
+  Atribua o conteúdo deste finger à string.
+  Uppercase a string.
+
+Rotina para que se uppercase uma string:
+  Lance um subtexto sobre a string.
+  Itere. [o código a seguir]
+    Se o subtexto estiver em branco, retorne.
+    Uppercase o conteúdo deste caractere inicial deste subtexto.
+    Adicione 1 para o caractere inicial deste subtexto.
+  Reitere. [Execute novamente o código]
+
+Rotina para que se uppercase uma caixa de texto:
+  Se a caixa de texto for inexistente, retorne.
+  Itere. [o código a seguir]
+    Obtenha uma linha de texto desde as linhas de texto desta caixa de texto.
+    Se a linha de texto for inexistente, pare.
+    Uppercase a string desta linha de texto.
+  Reitere. [Execute novamente o código]
+  Wrap a caixa de texto.
+
+Rotina para que se escreva uma string;
+Rotina para que se pinte uma string:
+  Preserve a string.
+  Itere. [o código a seguir]
+  Se a string estiver em branco, retorne.
+    Obtenha um byte desde a string.
+    Pinte o byte.
+    Se a string não estiver em branco, providencie espaçamento adequado entre caracteres.
+  Reitere. [Execute novamente o código]
+
+
+Rotina para que se escreva uma string usando um centro localização e um raio;
+Rotina para que se pinte uma string usando um centro localização e um raio:
+  Preserve a string.
+  Atribua 1 e a quantidade de caracteres desta string para uma fração.
+  Itere. [o código a seguir]
+    Se a string estiver em branco, retorne.
+    Obtenha um byte desde a string.
+    Comece sob o centro localização.
+    Mova o raio.
+    Pinte o byte.
+    Vire a fração.
+  Reitere. [Execute novamente o código]
+
+Rotina para que se escreva uma string sob uma localização com uma cor:
+\Rotina para que se pinte uma string sob uma localização com uma cor:
+  Comece sob a localização.
+  Atribua a cor à cor deste contexto.
+  Pinte a string.
+
+Rotina para que se escreva uma string sobre um console:
+  Se o console for inexistente, retorne.
+  Insira a string para a caixa de texto deste console.
+  Insira o retorno de carro para a caixa de texto deste console.
+  Wrap a caixa de texto deste console.
+  Role a caixa de texto deste console para o cursor de texto.
+  Mostre o console.
+
+Rotina para que se escreva uma string para um console sem passar pra próxima linha;
+Rotina para que se escreva uma string sobre um console sem passar pra próxima linha:
+  Se o console for inexistente, retorne.
+  Insira a string para a caixa de texto deste console.
+  Wrap a caixa de texto deste console.
+  Role a caixa de texto deste console para o cursor de texto.
+  Mostre o console.
+
+Rotina para que se escreva uma string em uma caixa:
+\Rotina para que se pinte uma string em uma caixa:
+  Pinte a string na caixa com a cor deste contexto.
+
+Rotina para que se escreva uma string em uma caixa com uma cor:
+\Rotina para que se pinte uma string em uma caixa com uma cor:
+  Atribua a cor à cor deste contexto.
+  Atribua o canto inferior esquerdo desta caixa à localização deste contexto.
+  Atribua a altura desta caixa dividido por 2 à tamanho da letra deste contexto.
+  \Atribua a altura desta caixa à tamanho da letra deste contexto.
+  Vire para cima.
+  Mova a altura desta caixa dividido por 4. \ was 4 e still é now! ***
+  Pinte a string.
+
+Rotina para que se escreva uma string no meio de uma caixa;
+Rotina para que se pinte uma string no meio de uma caixa:
+  Atribua a tamanho da letra deste contexto dividido por 4 para um tamanho do quadrado. \ was 4 ***
+  \ caracteres são two quadrados em largura mais one quadrado de_ intercharacter spacing. no spacing sob o end.
+  Atribua a quantidade de caracteres desta string vezes o tamanho do quadrado vezes 3 menos o tamanho do quadrado para uma largura.
+  Divida a largura por 2.
+  Comece no meio de a caixa.
+  Mova para baixo a tamanho da letra deste contexto dividido por 2. \ was 2 ***
+  Mova a largura para a esquerda.
+  Vire para cima.
+  Pinte a string.
+
+Rotina para que se escreva uma string no meio de a tela:
+  Pinte a string no meio de a caixa desta tela.
+  Atualize o tela.
+
+Rotina para que se escreva uma string sobre um terminal:
+  Se o terminal for inexistente, retorne.
+  Adicione um quora para o terminal.
+  Atribua a string à string deste quora.
+  Atribua a output cor deste terminal à cor deste quora.
+  Mostre o terminal.
+
+Rotina para que se pinte uma string while turning uma fração:
+  Preserve a string.
+  Itere. [o código a seguir]
+    Se a string estiver em branco, retorne.
+    Obtenha um byte desde a string.
+    Pinte o byte.
+    Vire a fração.
+    Se a string não estiver em branco, providencie espaçamento adequado entre caracteres.
+  Reitere. [Execute novamente o código]
+
+Rotina para que se escreva uma string com uma cor;
+Rotina para que se pinte uma string com uma cor:
+  Atribua a cor à cor deste contexto.
+  Pinte a string.
+
+Rotina para que se escreva uma string com uma cor sob a base de uma caixa;
+Rotina para que se pinte uma string com uma cor sob a base de uma caixa:
+  Atribua a tamanho da letra deste contexto dividido por 4 para um tamanho do quadrado. \ ***
+  \ caracteres são two quadrados em largura mais one quadrado de_ intercharacter spacing. no spacing sob o end.
+  Atribua a quantidade de caracteres desta string vezes o tamanho do quadrado vezes 3 menos o tamanho do quadrado para uma largura.
+  Divida a largura por 2.
+  Comece no meio de a base de a caixa.
+  Mova para cima a tamanho da letra deste contexto vezes 2. \ was sem o vezes 2 ***
+  Mova a largura para a esquerda.
+  Vire para cima.
+  Pinte a string com a cor.
+
+Rotina para que se escreva uma string com uma cor sob o topo de_ uma caixa;
+Rotina para que se pinte uma string com uma cor sob o topo de_ uma caixa:
+  Atribua a tamanho da letra deste contexto dividido por 4 para um tamanho do quadrado. \ ***
+  \ caracteres são two quadrados em largura mais one quadrado de_ intercharacter spacing. no spacing sob o end.
+  Atribua a quantidade de caracteres desta string vezes o tamanho do quadrado vezes 3 menos o tamanho do quadrado para uma largura.
+  Divida a largura por 2.
+  Comece no meio de o topo de_ a caixa.
+  Mova para baixo a tamanho da letra deste contexto vezes 4. \ was vezes 2 ***
+  Mova a largura para a esquerda.
+  Vire para cima.
+  Pinte a string com a cor.
+
+Rotina para que se escreva uma string com uma cor no meio de uma caixa;
+Rotina para que se pinte uma string com uma cor no meio de uma caixa:
+  Atribua a tamanho da letra deste contexto dividido por 4 para um tamanho do quadrado. \ was 4 ***
+  \ caracteres são two quadrados em largura mais one quadrado de_ intercharacter spacing. no spacing sob o end.
+  Atribua a quantidade de caracteres desta string vezes o tamanho do quadrado vezes 3 menos o tamanho do quadrado para uma largura.
+  Divida a largura por 2.
+  Comece no meio de a caixa.
+  Mova para baixo a tamanho da letra deste contexto dividido por 2. \ was 2 ***
+  Mova a largura para a esquerda.
+  Vire para cima.
+  Pinte a string com a cor.
+
+\Rotina para que se escreva uma string com uma cor aproximadamente um raio desde um centro localização;
+Rotina para que se escreva uma string com uma cor um raio desde um centro localização;
+Rotina para que se pinte uma string com uma cor aproximadamente um raio desde um centro localização;
+Rotina para que se pinte uma string com uma cor um raio desde um centro localização:
+  Atribua a cor à cor deste contexto.
+  Pinte a string usando o centro localização e o raio.
+
+Rotina para que se escreva uma string com uma fonte e um tamanho e uma cor e uma localização:
+  Atribua o tamanho à altura desta fonte.
+  Atribua a largura desta string para uma largura.
+  Atribua a localização e a localização para uma caixa.
+  Subtraia a largura dividido por 2 desde a coordenada X1 desta caixa.
+  Adicione a largura dividido por 2 para a coordenada X2 desta caixa.
+  Subtraia o tamanho dividido por 2 desde a coordenada Y1 desta caixa.
+  Adicione o tamanho dividido por 2 para a coordenada Y2 desta caixa.
+  Pinte a string na caixa com a cor e a fonte e "centralizado".
+  Atualize a tela.
+
+Rotina para que se escreva uma string com uma cor uns twips para baixo desde o topo de_ uma caixa;
+Rotina para que se escreva uma string com uma cor uns twips para baixo desde o topo centro de_ uma caixa;
+Rotina para que se pinte uma string com uma cor uns twips para baixo desde o topo de_ uma caixa;
+Rotina para que se pinte uma string com uma cor uns twips para baixo desde o topo centro de_ uma caixa:
+  Atribua a tamanho da letra deste contexto dividido por 4 para um tamanho do quadrado. \ was 4 ***
+  \ caracteres são two quadrados em largura mais one quadrado de_ intercharacter spacing. no spacing sob o end.
+  Atribua a quantidade de caracteres desta string vezes o tamanho do quadrado vezes 3 menos o tamanho do quadrado para uma largura.
+  Divida a largura por 2.
+  Comece no meio de o topo de_ a caixa.
+  Mova para baixo os twips.
+  Mova a largura para a esquerda.
+  Vire para cima.
+  Pinte a string com a cor.
+
+Rotina para que se zero preencha uma string usando uma contagem:
+  Se a quantidade de caracteres desta string for maior do que ou igual à contagem, retorne.
+  Anteponha o número zero para a string.
+  Reitere. [Execute novamente o código]
+
+
+Rotina para que se remova alguma barra invertida final desde uma string:
+  Se a string estiver em branco, retorne.
+  Se o conteúdo deste caractere final desta string não for a barra invertida, retorne.
+  Remova o último caractere desde a string.
+
+Rotina para que se remova alguma quebra de linha final desde uma string:
+  Se a string estiver em branco, retorne.
+  Se o conteúdo deste caractere final desta string não for a quebra de linha, retorne.
+  Remova o último caractere desde a string.
+
+Rotina para que se remova algum retorno de carro final desde uma string:
+  Se a string estiver em branco, retorne.
+  Se o conteúdo deste caractere final desta string não for o retorno de carro, retorne.
+  Remova o último caractere desde a string.
+
+Rotina para que se remova bytes de uma string usando um subtexto:
+  Se a string estiver em branco, retorne.
+  Se o subtexto estiver em branco, retorne.
+  Atribua o caractere final desta string menos o caractere final deste subtexto para uma quantidade de caracteres.
+  Atribua o caractere final deste subtexto mais 1 para um ponteiro.
+  Copie bytes desde o ponteiro para o caractere inicial deste subtexto pelo quantidade de caracteres.
+  Atribua a quantidade de caracteres desta string menos a quantidade de caracteres deste subtexto para um new quantidade de caracteres.
+  Reaponte o caractere inicial desta string usando o new quantidade de caracteres.
+  Atribua o caractere inicial desta string mais o new quantidade de caracteres menos 1 ao caractere final desta string.
+
+
 [INPUT/OUTPUT]
 
 O número identificador do modo de dispositivo da impressora é um número identificador.
