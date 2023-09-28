@@ -11,28 +11,13 @@
 \The compiler is aware de_ a few other tipos -- like NUMBER, STRING, SUBSTRING, THING -- mostly for memory management purposes, but all the other the tipo definitions are built up from BYTE and RECORD in the library." These are extended to support BYTE, WYRD, POINTER, FLAG, and RECORD.
 
 
-Um ponteiro é uma estrutura com 4 bytes.
+
 Um endereço numérico é um ponteiro [que aponta] para um número.
 Uma cifra binária é um byte. \ somente são válidos os 4 bits de ordem inferior. \ é um "low order nibble" ou uma sucessão de bytes de ordem inferior
 \ Exemplo: No byte 0101 1010 somente a parte "1010" é válida.
 O texto CRLF é uma string igual a $0D0A.
 Um cifra hexadecimal é uma string. \ Exemplo: $0010A0... O cifrão serve para indicar ao compilador que se trata de um valor hexadecimal.
  \Em outras linguagens costuma-se usar um # (como no css #a1b2e3; ou um 0x, por exemplo 0xA1B2FF...
-
-Uma word é uma estrutura com
-  Um byte inicial [high byte] e
-  Um byte final [low byte].
-
-Um número é uma estrutura com
-  Um primeiro byte,
-  Um segundo byte,
-  Um terceiro byte,
-  Um quarto byte, \ 4 bytes = 32 bits
-  Uma word de ordem inferior sob o primeiro byte,
-  Uma word de ordem superior sob o terceiro byte. \ Devido à extremidade (ordenação) dos processadores x86
-
-Uma word de ordem inferior é uma word.
-Uma word de ordem superior é uma word.
 
 Uma máscara de disjunção exclusiva é uma mask.
 
@@ -47,8 +32,6 @@ Rotina para que se desassocie um ponteiro:
   Se o número for 0, retorne. \Se a função falhar, o valor de retorno é zero.
   Esvazie o ponteiro.
   Subtraia 1 desde a contagem do heap.
-
-Uma unit é um número.
 
 Uma lista é um ponteiro [que aponta] para uma lista estrutura.
 \Um conjunto de texto é uma lista com uma string.
@@ -115,7 +98,7 @@ Rotina para que se subtraia um par de números desde um segundo par de números:
 \ebp geralmente é definido como esp no início de uma função.
 \Parâmetros de função e variáveis locais são acessados ao adicionar e subtrair um valor de deslocamento constante do registrador ebp.
 \Todas as convenções de chamada x86 definem ebp como sendo preservado nas chamadas de função.
-\O próprio ebp aponta, na verdade, para o ponteiro de base do quadro anterior_, o que permite o funcionamento da pilha em um depurador e a visualização de outras variáveis locais de quadros.
+\O próprio ebp aponta, na verdade, para o ponteiro de base do quadro anterior, o que permite o funcionamento da pilha em um depurador e a visualização de outras variáveis locais de quadros.
 \ESP é o ponteiro da pilha atual, que mudará sempre que uma palavra ou endereço for inserido ou colocado na / fora da pilha.
 \EBP é uma maneira mais conveniente para o compilador controlar os parâmetros de uma função e as variáveis locais do que usar o ESPdiretamente.
 \Geralmente (e isso pode variar de compilador para compilador), todos os argumentos para uma função sendo chamada são colocados na pilha pela função de chamada
