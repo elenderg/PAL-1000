@@ -24,11 +24,11 @@ Uma word é uma estrutura com
   Um byte final [low byte].
 
 Um número é uma estrutura com
-  Um primeiro_ byte,
+  Um primeiro byte,
   Um segundo byte,
   Um terceiro byte,
   Um quarto byte, \ 4 bytes = 32 bits
-  Uma word de ordem inferior sob o primeiro_ byte,
+  Uma word de ordem inferior sob o primeiro byte,
   Uma word de ordem superior sob o terceiro byte. \ Devido à extremidade (ordenação) dos processadores x86
 
 Uma word de ordem inferior é uma word.
@@ -228,7 +228,7 @@ Rotina para que se arredonde um número para cima usando o potência de dois:
   Decodifique $8B09. \ mov ecx,[ecx]
   Decodifique $49. \ dec ecx ; -> diminui o valor de ecx
   Decodifique $0FBDC9. \ bsr ecx,ecx ; ->Bit scan reverse- Pesquisa no operando de origem (segundo operando) pelo conjunto de bits mais significativo (1 bit)
-  \Se encontrar, o índice de bit é armazenado no operando de destino (primeiro_ operando).
+  \Se encontrar, o índice de bit é armazenado no operando de destino (primeiro operando).
   Decodifique $41. \ inc ecx ; -> aumenta o valor de ecx
   Decodifique $81F904000000. \ cmp ecx,4 ; -> compara o valor de ecx
   Decodifique $0F8F05000000. \ jg sobre the próximo 1 statement (Jump short if greater)
@@ -292,13 +292,13 @@ Rotina para que se atribua a quantidade de caracteres duma string para uma quant
 
 Rotina para que se atribua um número para uma word:
   Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> atribui o número (ebp+8) ao registrador eax
-  Decodifique $8B00. \ mov eax,[eax] ; -> ebp+8 representa o primeiro_ argumento da função (o número).
+  Decodifique $8B00. \ mov eax,[eax] ; -> ebp+8 representa o primeiro argumento da função (o número).
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> atribui a word (ebp+12) ao registrador ebx
   Decodifique $668903. \ mov [ebx],ax
 
 Rotina para que se atribua um número para um byte:
   Decodifique $8B8508000000. \ mov eax,[ebp+8] ; -> atribui o número (ebp+8) ao registrador eax
-  Decodifique $8B00. \ mov eax,[eax] ; -> ebp+8 representa o primeiro_ argumento da função (o número).
+  Decodifique $8B00. \ mov eax,[eax] ; -> ebp+8 representa o primeiro argumento da função (o número).
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] ; -> atribui o byte (ebp+12) ao registrador ebx
   Decodifique $8803. \ mov [ebx],al
 
@@ -360,7 +360,7 @@ Rotina para que se substitua um byte usando uma tabela de tradução:
   Decodifique $8B8D08000000. \ mov ecx,[ebp+8]  ; -> salva o endereço do byte (ebp+8) no registrador ecx
   Decodifique $8B01. \ mov eax,[ecx] \ salva o caractere em EAX
   Decodifique $8B9D0C000000. \ mov ebx,[ebp+12] salva o endereço da tabela (ebp+12) no registrador ebx
-  Decodifique $8B1B. \ mov ebx,[ebx] o primeiro_ byte da tabela de tradução
+  Decodifique $8B1B. \ mov ebx,[ebx] o primeiro byte da tabela de tradução
   Decodifique $D7. \ xlat al,[ebx]
   Decodifique $8901. \ mov [ecx],eax
 
@@ -543,7 +543,7 @@ Rotina para que se disjuncione seletivamente um número com um segundo número:
   Decodifique $3103. \ xor [ebx],eax
 
 Rotina para que se avance um percorredor:
-  Decodifique $8B9D08000000. \ mov ebx,DWORD PTR [ebp+0x8] | mov ebx,[ebp+8]  \ salva o endereço do primeiro_ parâmetro [ebp+0x8] no registrador ebx.
+  Decodifique $8B9D08000000. \ mov ebx,DWORD PTR [ebp+0x8] | mov ebx,[ebp+8]  \ salva o endereço do primeiro parâmetro [ebp+0x8] no registrador ebx.
   Decodifique $FF8314000000. \ inc DWORD PTR [ebx+0x14] | inc [ebx+20] \ aumenta o valor do caractere final deste segmento inicial deste percorredor.
   Decodifique $FF8308000000. \ inc DWORD PTR [ebx+0x8] | inc [ebx+8] \ aumenta o valor do caractere inicial deste segmento final deste percorredor.
 
