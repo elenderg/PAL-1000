@@ -1255,13 +1255,27 @@ Rotina para que se acrescente uma string para uma segunda string usando uma terc
 
 Rotina para que se acrescente a instrução de carregamento de endereço para um texto hexadecimal usando uma variável:
   \ loads para edx
-  Se a variável for inexistente, acrescente $C7C200000000 para o texto hexadecimal; Retorne. \ mov edx,0
-  Se a categoria desta variável for "global", acrescente $C7C2 e o endereço desta variável para o texto hexadecimal; Retorne. \ mov edx,the endereço da variável
-  Se a categoria desta variável for "literal", acrescente $C7C2 e o endereço desta variável para o texto hexadecimal; Retorne. \ mov edx,the endereço da variável
-  Se a categoria desta variável for "local", acrescente $8D95 e o deslocamento desta variável para o texto hexadecimal; Retorne. \ lea edx,[ebp+ the deslocamento da variável]
-  Se a categoria desta variável for "scratch", acrescente $8B95 e o deslocamento desta variável para o texto hexadecimal; Retorne. \ mov edx, [ebp+ the deslocamento da variável]
-  Se a categoria desta variável não for "parâmetro", apresente uma mensagem de erro contendo "Erro interno#9"; Retorne.
-  Se o detector de passagem por-valor desta variável estiver ativo, acrescente $8D95 e o deslocamento desta variável para o texto hexadecimal; Retorne. \ lea edx,[ebp+the deslocamento da variável]
+  Se a variável for inexistente,
+     acrescente $C7C200000000 para o texto hexadecimal;
+     Retorne. \ mov edx,0
+  Se a categoria desta variável for "global",
+     acrescente $C7C2 e o endereço desta variável para o texto hexadecimal;
+     Retorne. \ mov edx,the endereço da variável
+  Se a categoria desta variável for "literal",
+     acrescente $C7C2 e o endereço desta variável para o texto hexadecimal;
+     Retorne. \ mov edx,the endereço da variável
+  Se a categoria desta variável for "local",
+     acrescente $8D95 e o deslocamento desta variável para o texto hexadecimal;
+     Retorne. \ lea edx,[ebp+ the deslocamento da variável]
+  Se a categoria desta variável for "scratch",
+     acrescente $8B95 e o deslocamento desta variável para o texto hexadecimal;
+     Retorne. \ mov edx, [ebp+ the deslocamento da variável]
+  Se a categoria desta variável não for "parâmetro",
+     apresente uma mensagem de erro contendo "Erro interno#9";
+     Retorne.
+  Se o detector de passagem por-valor desta variável estiver ativo,
+     acrescente $8D95 e o deslocamento desta variável para o texto hexadecimal;
+     Retorne. \ lea edx,[ebp+the deslocamento da variável]
   Acrescente $8B95 e o deslocamento desta variável para o texto hexadecimal. \ mov edx,[ebp+ the deslocamento da variável]
 
 Rotina para que se acrescente um texto hexadecimal e um endereço para um fragmento:
@@ -1350,9 +1364,15 @@ Rotina para que se disponibilize uma string para um trecho sob um endereço:
 
 Rotina para que se disponibilize uma variável para um trecho:
   Se o detector de compilação desta variável não estiver ativo, retorne.
-  Se o tipo desta variável puder ser reduzido para "string", disponibilize a variável ao trecho (como um texto); Retorne.
-  Se o tipo desta variável puder ser reduzido para "cadeia de caracteres", disponibilize a variável ao trecho (como um texto); Retorne.
-  Se o tipo desta variável puder ser reduzido para "texto", disponibilize a variável ao trecho (como um texto); Retorne.
+  Se o tipo desta variável puder ser reduzido para "string",
+     disponibilize a variável ao trecho (como um texto);
+     Retorne.
+  Se o tipo desta variável puder ser reduzido para "cadeia de caracteres",
+     disponibilize a variável ao trecho (como um texto);
+     Retorne.
+  Se o tipo desta variável puder ser reduzido para "texto",
+     disponibilize a variável ao trecho (como um texto);
+     Retorne.
   Atribua o endereço desta variável menos o image base para um endereço. \ Atribua a diferença entre o endereço da variável e a base da imagem para um endereço.
   Disponibilize o data desta variável ao trecho sob o endereço.
 
@@ -1385,9 +1405,13 @@ Uma zona é uma estrutura com
 
 Rotina para que se bubble uma unidade semântica:
   Se a unidade semântica for inexistente, retorne.
-  Se o subtexto atual desta unidade semântica não estiver em branco, limpe o subtexto atual desta unidade semântica; Retorne.
+  Se o subtexto atual desta unidade semântica não estiver em branco,
+     limpe o subtexto atual desta unidade semântica;
+     Retorne.
   Se o tipo atual desta unidade semântica for inexistente, retorne.
-  Se o tipo atual desta unidade semântica for algum tipo pré-definido, atribua nil ao tipo atual desta unidade semântica; Retorne.
+  Se o tipo atual desta unidade semântica for algum tipo pré-definido,
+     atribua nil ao tipo atual desta unidade semântica;
+     Retorne.
   Atribua o tipo base deste tipo atual desta unidade semântica ao tipo atual desta unidade semântica.
 
 Um tipo primitivo é um tipo.
@@ -1396,7 +1420,9 @@ Rotina para que se calcule a quantidade de caracteres referente para um tipo:
   Se o tipo for inexistente, retorne.
   Se a quantidade de caracteres deste tipo não for -1, retorne.
   Calcule a quantidade de caracteres referente para o tipo base deste tipo.
-  Se os campos deste tipo estiverem vazios, atribua a quantidade de caracteres deste tipo base deste tipo à quantidade de caracteres deste tipo; Retorne.
+  Se os campos deste tipo estiverem vazios,
+     atribua a quantidade de caracteres deste tipo base deste tipo à quantidade de caracteres deste tipo;
+     Retorne.
   Atribua 0 à quantidade de caracteres deste tipo.
   Itere. [o código a seguir]
     Se existir algum problema de compilação, retorne.
@@ -1499,7 +1525,9 @@ Rotina para que se compile o corpo referente para uma rotina:
   Ative o detector de compilação desta rotina.
   Lance um percorredor sobre as instruções desta rotina.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor for o ponto&vírgula, compile o corpo referente à rotina usando o percorredor (sobrecarga de métodos); Retorne. \ *** alternate wording
+  Se o segmento inicial deste percorredor for o ponto&vírgula,
+     compile o corpo referente à rotina usando o percorredor (sobrecarga de métodos);
+     Retorne. \ *** alternate wording
   \Se o segmento inicial deste percorredor for uma palavra-chave de reutilização de rotina, compile o corpo referente à rotina usando o percorredor (cláusula de reutilização); Retorne.
   Atribua a rotina utilizada atualmente para um saved rotina.
   Atribua a rotina à rotina utilizada atualmente.
@@ -1526,7 +1554,9 @@ Rotina para que se compile o corpo referente para uma rotina (etapa conclusiva):
     Se o tipo desta variável não deveria ser finalizado, reitere.
     Adicione um segundo fragmento usando o etiqueta de inserção de endereço [na stack] e a variável.
     Encontre uma segunda rotina usando "~Finalize" e o tipo desta variável.
-    Se a segunda rotina for inexistente, apresente uma mensagem de erro contendo "Erro interno #10'"; Retorne.
+    Se a segunda rotina for inexistente,
+     apresente uma mensagem de erro contendo "Erro interno #10'";
+     Retorne.
     Adicione um terceiro fragmento usando a etiqueta de demanda interna e a segunda rotina.
   Reitere. [Execute novamente o código]
   Adicione um quarto fragmento usando o etiqueta conclusiva.
@@ -1541,14 +1571,18 @@ Rotina para que se compile o corpo referente para a rotina denominada uma string
 Rotina para que se compile o corpo referente para a rotina denominado uma string:
   Se existir algum problema de compilação, retorne.
   Encontre uma rotina usando a string e o catálogo geral de rotinas.
-  Se a rotina for inexistente, apresente uma mensagem de erro contendo "Erro #32. A rotina 'para que se " junto com a string seguido de "' não pode ser encontrada."; Retorne.
+  Se a rotina for inexistente,
+     apresente uma mensagem de erro contendo "Erro #32. A rotina 'para que se " junto com a string seguido de "' não pode ser encontrada.";
+     Retorne.
   Compile o corpo referente à rotina.
 
 Rotina para que se compile o corpo referente para uma rotina usando um percorredor (sobrecarga de métodos):
   Se existir algum problema de compilação, retorne.
   Mova o percorredor (usando diretrizes de compilação). \ *** do we need this?
   Atribua a próxima rotina desta rotina para um conteúdo rotina.
-  Se o conteúdo rotina for inexistente, apresente uma mensagem de erro contendo "Erro #33. Não foi possível encontrar o cabeçalho alternativo desta rotina." e o percorredor; Retorne.
+  Se o conteúdo rotina for inexistente,
+     apresente uma mensagem de erro contendo "Erro #33. Não foi possível encontrar o cabeçalho alternativo desta rotina." e o percorredor;
+     Retorne.
   Atribua a representação interna da rotina deste conteúdo rotina ao representação de emprego desta rotina.
   Compile o corpo referente para o conteúdo rotina.
 
@@ -1558,11 +1592,17 @@ Rotina para que se compile o corpo referente para uma rotina usando um percorred
   Compile uma referência da rotina usando o percorredor.
   Converta a referência da rotina para o representação de emprego desta rotina.
   Destrua a referência da rotina.
-  Se o segmento inicial deste percorredor não for ".", apresente uma mensagem de erro contendo "Erro #34. O comando 'Empregue' deve terminar com um '.' ao invés de '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; Retorne.
+  Se o segmento inicial deste percorredor não for ".",
+     apresente uma mensagem de erro contendo "Erro #34. O comando 'Empregue' deve terminar com um '.' ao invés de '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor;
+     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Erro #35. Permitido apenas uma cláusula de reutilização dentro de cada rotina" e o percorredor; Retorne.
+  Se o segmento inicial deste percorredor não estiver em branco,
+     apresente a mensagem de erro contendo "Erro #35. Permitido apenas uma cláusula de reutilização dentro de cada rotina" e o percorredor;
+     Retorne.
   Encontre uma segunda rotina usando o representação de emprego desta rotina e o catálogo geral de rotinas.
-  Se a segunda rotina for inexistente, apresente a mensagem de erro contendo "Erro #36. A rotina para que se '" junto com o representação de emprego desta rotina seguido de "' não foi encontrada." e o endereço local desta rotina; Retorne.
+  Se a segunda rotina for inexistente,
+     apresente a mensagem de erro contendo "Erro #36. A rotina para que se '" junto com o representação de emprego desta rotina seguido de "' não foi encontrada." e o endereço local desta rotina;
+     Retorne.
   Compile o corpo referente para a segunda rotina.
 
 Rotina para que se compile a parte designadora usando um percorredor e uma variável:
@@ -1737,25 +1777,49 @@ Rotina para que se compile uma expressão matematica usando um percorredor:
   Itere. [o código a seguir]
     Se existir algum problema de compilação, retorne.
     Se o segmento inicial deste percorredor não for algum operador aritmético, retorne.
-    Se o segmento inicial deste percorredor for algum operador de divisão, compile o expressão matematica usando o percorredor (operador de divisão); Reitere.
-    Se o segmento inicial deste percorredor for algum operador de subtração, compile o expressão matematica usando o percorredor (operador de subtração); Reitere.
-    Se o segmento inicial deste percorredor for algum operador de adição, compile o expressão matematica usando o percorredor (operador de adição); Reitere.
-    Se o segmento inicial deste percorredor for algum operador de concatenação, compile o expressão matematica usando o percorredor (operador de concatenação); Reitere.
-    Se o segmento inicial deste percorredor for algum operador de multiplicação, compile o expressão matematica usando o percorredor (operador de multiplicação); Reitere.
-    Se o segmento inicial deste percorredor for "junto", compile o expressão matematica usando o percorredor (operador de concatenação); Reitere.
-    Se o segmento inicial deste percorredor for "juntamente", compile o expressão matematica usando o percorredor (operador de concatenação); Reitere.
-    Se o segmento inicial deste percorredor for "seguido", compile o expressão matematica usando o percorredor (operador de concatenação); Reitere.
-    Se o segmento inicial deste percorredor for "acompanhado", compile o expressão matematica usando o percorredor (operador de concatenação); Reitere.
+    Se o segmento inicial deste percorredor for algum operador de divisão,
+     compile o expressão matematica usando o percorredor (operador de divisão);
+     Reitere.
+    Se o segmento inicial deste percorredor for algum operador de subtração,
+     compile o expressão matematica usando o percorredor (operador de subtração);
+     Reitere.
+    Se o segmento inicial deste percorredor for algum operador de adição,
+     compile o expressão matematica usando o percorredor (operador de adição);
+     Reitere.
+    Se o segmento inicial deste percorredor for algum operador de concatenação,
+     compile o expressão matematica usando o percorredor (operador de concatenação);
+     Reitere.
+    Se o segmento inicial deste percorredor for algum operador de multiplicação,
+     compile o expressão matematica usando o percorredor (operador de multiplicação);
+     Reitere.
+    Se o segmento inicial deste percorredor for "junto",
+     compile o expressão matematica usando o percorredor (operador de concatenação);
+     Reitere.
+    Se o segmento inicial deste percorredor for "juntamente",
+     compile o expressão matematica usando o percorredor (operador de concatenação);
+     Reitere.
+    Se o segmento inicial deste percorredor for "seguido",
+     compile o expressão matematica usando o percorredor (operador de concatenação);
+     Reitere.
+    Se o segmento inicial deste percorredor for "acompanhado",
+     compile o expressão matematica usando o percorredor (operador de concatenação);
+     Reitere.
 
 Rotina para que se compile uma expressão matematica usando um percorredor (operador de divisão):
   Se existir algum problema de compilação, retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum objeto indireto, apresente uma mensagem de erro contendo "Erro #37. Você deve usar o termo 'dividido POR'." e o percorredor; Retorne.
-  Se a variável desta expressão matematica for inexistente, apresente a mensagem de erro contendo "Erro #38. Comando 'dividido por' inválido. Erro na variável  '" junto com a frase desta expressão matematica seguido de "'." e o percorredor; Retorne.
+  Se o segmento inicial deste percorredor não for algum objeto indireto,
+     apresente uma mensagem de erro contendo "Erro #37. Você deve usar o termo 'dividido POR'." e o percorredor;
+     Retorne.
+  Se a variável desta expressão matematica for inexistente,
+     apresente a mensagem de erro contendo "Erro #38. Comando 'dividido por' inválido. Erro na variável  '" junto com a frase desta expressão matematica seguido de "'." e o percorredor;
+     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor.
   Se existir algum problema de compilação, retorne.
-  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Erro #39. O comando 'dividido por', está errado. Não é possível dividir por '" junto com a frase deste termo seguido de "'." e o percorredor; Retorne.
+  Se a variável deste termo for inexistente,
+     apresente a mensagem de erro contendo "Erro #39. O comando 'dividido por', está errado. Não é possível dividir por '" junto com a frase deste termo seguido de "'." e o percorredor;
+     Retorne.
   Adicione uma variável intermediária usando o nome do tipo desta expressão matematica e o caractere inicial deste segmento inicial deste percorredor.
   Adicione fragmentos diversos usando "Atribua" e a variável desta expressão matematica e "para" e a variável intermediária e o caractere inicial deste segmento inicial deste percorredor.
   Adicione fragmentos diversos usando "Divida" e a variável intermediária e "por" e a variável deste termo e o caractere inicial deste segmento inicial deste percorredor.
@@ -1764,11 +1828,15 @@ Rotina para que se compile uma expressão matematica usando um percorredor (opera
 
 Rotina para que se compile uma expressão matematica usando um percorredor (operador de subtração):
   Se existir algum problema de compilação, retorne.
-  Se a variável desta expressão matematica for inexistente, apresente uma mensagem de erro contendo "Erro #40. O comando 'menos', está incorreto. Não é possível subtrair de '" junto com a frase desta expressão matematica seguido de "'." e o percorredor; Retorne.
+  Se a variável desta expressão matematica for inexistente,
+     apresente uma mensagem de erro contendo "Erro #40. O comando 'menos', está incorreto. Não é possível subtrair de '" junto com a frase desta expressão matematica seguido de "'." e o percorredor;
+     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor.
   Se existir algum problema de compilação, retorne.
-  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Erro #41. O comando 'menos', está incorreto. Não consigo diminuir de '" junto com a frase deste termo seguido de "'." e o percorredor; Retorne.
+  Se a variável deste termo for inexistente,
+     apresente a mensagem de erro contendo "Erro #41. O comando 'menos', está incorreto. Não consigo diminuir de '" junto com a frase deste termo seguido de "'." e o percorredor;
+     Retorne.
   Adicione uma variável intermediária usando o nome do tipo desta expressão matematica e o caractere inicial deste segmento inicial deste percorredor.
   Adicione fragmentos diversos usando "Atribua" e a variável desta expressão matematica e "para" e a variável intermediária e o caractere inicial deste segmento inicial deste percorredor.
   Adicione fragmentos diversos usando "Subtraia" e a variável deste termo e "desde" e a variável intermediária e o caractere inicial deste segmento inicial deste percorredor.
@@ -1777,11 +1845,15 @@ Rotina para que se compile uma expressão matematica usando um percorredor (opera
 
 Rotina para que se compile uma expressão matematica usando um percorredor (operador de adição):
   Se existir algum problema de compilação, retorne.
-  Se a variável desta expressão matematica for inexistente, apresente uma mensagem de erro contendo "Erro #42. O comando 'mais' está incorreto. Não é possível somar o '" junto com a frase desta expressão matematica seguido de "'." e o percorredor; Retorne.
+  Se a variável desta expressão matematica for inexistente,
+     apresente uma mensagem de erro contendo "Erro #42. O comando 'mais' está incorreto. Não é possível somar o '" junto com a frase desta expressão matematica seguido de "'." e o percorredor;
+     Retorne.
   Mova o percorredor (usando diretrizes de compilação). \talvez fosse o caso de repetir aqui
   Compile um termo usando o percorredor.
   Se existir algum problema de compilação, retorne.
-  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Erro #43. O comando 'mais' está incorreto. Não é possível adicionar o" junto com a frase deste termo seguido de "." e o percorredor; Retorne.
+  Se a variável deste termo for inexistente,
+     apresente a mensagem de erro contendo "Erro #43. O comando 'mais' está incorreto. Não é possível adicionar o" junto com a frase deste termo seguido de "." e o percorredor;
+     Retorne.
   Adicione uma variável intermediária usando o nome do tipo desta expressão matematica e o caractere inicial deste segmento inicial deste percorredor.
   Adicione fragmentos diversos usando "Atribua" e a variável desta expressão matematica e "para" e a variável intermediária e o caractere inicial deste segmento inicial deste percorredor.\aqui muda o atribua
   Adicione fragmentos diversos usando "Adicione" e a variável deste termo e "para" e a variável intermediária e o caractere inicial deste segmento inicial deste percorredor. \ aqui muda o add
@@ -1791,12 +1863,18 @@ Rotina para que se compile uma expressão matematica usando um percorredor (opera
 Rotina para que se compile uma expressão matematica usando um percorredor (operador de concatenação):
   Se existir algum problema de compilação, retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum palavra de concatenação, apresente uma mensagem de erro contendo "Erro #44. Necessário escrever 'junto DE/junto COM/etc'." e o percorredor; Retorne.
-  Se a variável desta expressão matematica for inexistente, apresente a mensagem de erro contendo "Erro #45. Eu não entendi a variável da expressão matematica: " junto com a frase desta expressão matematica seguido de "." e o percorredor; Retorne.
+  Se o segmento inicial deste percorredor não for algum palavra de concatenação,
+     apresente uma mensagem de erro contendo "Erro #44. Necessário escrever 'junto DE/junto COM/etc'." e o percorredor;
+     Retorne.
+  Se a variável desta expressão matematica for inexistente,
+     apresente a mensagem de erro contendo "Erro #45. Eu não entendi a variável da expressão matematica: " junto com a frase desta expressão matematica seguido de "." e o percorredor;
+     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor.
   Se existir algum problema de compilação, retorne.
-  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Erro #46. Eu não achei a variável do termo: " junto com a frase deste termo seguido de "." e o percorredor; Retorne.
+  Se a variável deste termo for inexistente,
+     apresente a mensagem de erro contendo "Erro #46. Eu não achei a variável do termo: " junto com a frase deste termo seguido de "." e o percorredor;
+     Retorne.
   Adicione uma variável intermediária usando "string" e o caractere inicial deste segmento inicial deste percorredor.
   \Adicione uma variável intermediária usando "texto" e o caractere inicial deste segmento inicial deste percorredor.
   \Adicione uma variável intermediária usando "cadeia de caracteres" e o caractere inicial deste segmento inicial deste percorredor.
@@ -1808,11 +1886,15 @@ Rotina para que se compile uma expressão matematica usando um percorredor (opera
 
 Rotina para que se compile uma expressão matematica usando um percorredor (operador de multiplicação):
   Se existir algum problema de compilação, retorne.
-  Se a variável desta expressão matematica for inexistente, apresente uma mensagem de erro contendo "Erro #47. Erro de sintaxe. Comando 'vezes' incorreto. Não é póssível multiplicar por '" junto com a frase desta expressão matematica seguido de "'." e o percorredor; Retorne.
+  Se a variável desta expressão matematica for inexistente,
+     apresente uma mensagem de erro contendo "Erro #47. Erro de sintaxe. Comando 'vezes' incorreto. Não é póssível multiplicar por '" junto com a frase desta expressão matematica seguido de "'." e o percorredor;
+     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor.
   Se existir algum problema de compilação, retorne.
-  Se a variável deste termo for inexistente, apresente a mensagem de erro contendo "Erro #48. Erro de sintaxe. Comando 'multiplicado por' incorreto. Não é póssível multiplicar por '" junto com a frase deste termo seguido de "'." e o percorredor; Retorne.
+  Se a variável deste termo for inexistente,
+     apresente a mensagem de erro contendo "Erro #48. Erro de sintaxe. Comando 'multiplicado por' incorreto. Não é póssível multiplicar por '" junto com a frase deste termo seguido de "'." e o percorredor;
+     Retorne.
   Adicione uma variável intermediária usando o nome do tipo desta expressão matematica e o caractere inicial deste segmento inicial deste percorredor.
   Adicione fragmentos diversos usando "Atribua" e a variável desta expressão matematica e "para" e a variável intermediária e o caractere inicial deste segmento inicial deste percorredor.
   Adicione fragmentos diversos usando "Multiplique" e a variável intermediária e "por" e a variável deste termo e o caractere inicial deste segmento inicial deste percorredor.
@@ -1824,10 +1906,18 @@ Rotina para que se compile o cabeçalho referente para uma rotina:
   Se existir algum problema de compilação, retorne.
   Lance um percorredor sobre a cabeçalho de rotina desta rotina.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor for algum comando de deliberação, compile o cabeçalho referente para a rotina usando o percorredor (rotina deliberativa); Retorne.
-  Se o percorredor for o início referente para alguma função possessiva reversa, compile o cabeçalho referente para a rotina usando o percorredor (função do possessivo reverso); Retorne.
-  Se o percorredor for o início referente para alguma função, compile o cabeçalho referente para a rotina usando o percorredor (função); Retorne.
-  Se o segmento inicial deste percorredor for "compativelmente", compile o cabeçalho referente para a rotina usando o percorredor (modo de compatibilidade); Retorne.
+  Se o segmento inicial deste percorredor for algum comando de deliberação,
+     compile o cabeçalho referente para a rotina usando o percorredor (rotina deliberativa);
+     Retorne.
+  Se o percorredor for o início referente para alguma função possessiva reversa,
+     compile o cabeçalho referente para a rotina usando o percorredor (função do possessivo reverso);
+     Retorne.
+  Se o percorredor for o início referente para alguma função,
+     compile o cabeçalho referente para a rotina usando o percorredor (função);
+     Retorne.
+  Se o segmento inicial deste percorredor for "compativelmente",
+     compile o cabeçalho referente para a rotina usando o percorredor (modo de compatibilidade);
+     Retorne.
   Compile o cabeçalho referente para a rotina usando o percorredor (procedimento).
 
 Rotina para que se compile o cabeçalho referente para uma rotina usando um percorredor (modo de compatibilidade): \ callback
@@ -1836,19 +1926,27 @@ Rotina para que se compile o cabeçalho referente para uma rotina usando um perco
   Ative o detector de compatibilidade desta rotina.
   Compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor.
   Converta as unidades semânticas desta rotina para a representação interna da rotina desta rotina.
-  Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas, apresente uma mensagem de erro contendo "Erro #49. A rotina para que se '" junto com a representação interna da rotina desta rotina seguido de "' já foi definida anteriormente." e o endereço local desta rotina; Retorne.
+  Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas,
+     apresente uma mensagem de erro contendo "Erro #49. A rotina para que se '" junto com a representação interna da rotina desta rotina seguido de "' já foi definida anteriormente." e o endereço local desta rotina;
+     Retorne.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas.
 
 Rotina para que se compile o cabeçalho referente para uma rotina usando um percorredor (rotina deliberativa):
   Se existir algum problema de compilação, retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum comando condicional, apresente uma mensagem de erro contendo "Erro #50. Rotina 'Para que se determine se' com sintaxe inválida" e o percorredor; Retorne.
+  Se o segmento inicial deste percorredor não for algum comando condicional,
+     apresente uma mensagem de erro contendo "Erro #50. Rotina 'Para que se determine se' com sintaxe inválida" e o percorredor;
+     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Ative o detector de deliberação desta rotina.
   Compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor.
-  Se alguns referente para as unidades semânticas desta rotina forem advérbios de negação, apresente a mensagem de erro contendo "Erro #51. A palavra-chave 'não' não é permitida em cabeçalhos de funções booleanas." e o percorredor; Retorne.
+  Se alguns referente para as unidades semânticas desta rotina forem advérbios de negação,
+     apresente a mensagem de erro contendo "Erro #51. A palavra-chave 'não' não é permitida em cabeçalhos de funções booleanas." e o percorredor;
+     Retorne.
   Converta as unidades semânticas desta rotina para a representação interna da rotina desta rotina.
-  Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas, apresente a mensagem de erro contendo "Erro #52. A rotina para que se ''" junto com a representação interna da rotina desta rotina seguido de "' já havia sido definida anteriormente." e o endereço local desta rotina; Retorne.
+  Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas,
+     apresente a mensagem de erro contendo "Erro #52. A rotina para que se ''" junto com a representação interna da rotina desta rotina seguido de "' já havia sido definida anteriormente." e o endereço local desta rotina;
+     Retorne.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas.
 
 Rotina para que se compile o cabeçalho referente para uma rotina usando um percorredor (função):
@@ -1859,19 +1957,29 @@ Rotina para que se compile o cabeçalho referente para uma rotina usando um perco
   Se o segmento inicial deste percorredor for algum artigo indefinido, ative um detector.
   Se o detector estiver ativo, compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor (artigo indefinido).
   Se o detector não estiver ativo, compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor (artigo definido).
-  Se o segmento inicial deste percorredor não for algum possessivo inglês, apresente uma mensagem de erro contendo "Erro #53. Necessário inserir um 's no código." e o percorredor; Retorne. \ not translated - no possessives em Spanish
+  Se o segmento inicial deste percorredor não for algum possessivo inglês,
+     apresente uma mensagem de erro contendo "Erro #53. Necessário inserir um 's no código." e o percorredor;
+     Retorne. \ not translated - no possessives em Spanish
   Mova o percorredor (usando diretrizes de compilação).
   Examine um nome usando o percorredor.
   Adicione uma segunda unidade semântica para as unidades semânticas desta rotina usando "'s " junto com o nome.
-  Se o segmento inicial deste percorredor não for "para", apresente a mensagem de erro contendo "Erro #54. palavra-chave 'para' ausente. Encontrado a palavra: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor; Retorne. \ not translated - no possessives em Spanish
+  Se o segmento inicial deste percorredor não for "para",
+     apresente a mensagem de erro contendo "Erro #54. palavra-chave 'para' ausente. Encontrado a palavra: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor;
+     Retorne. \ not translated - no possessives em Spanish
   Adicione uma terceira unidade semântica para as unidades semânticas desta rotina usando "para".
   Converta as unidades semânticas desta rotina para uma representação interna da rotina.
-  Se a representação interna da rotina estiver no catálogo geral de rotinas, apresente a mensagem de erro contendo "Erro #55. Rotina para que se '" junto com a representação interna da rotina seguido de "' já definida." e o endereço local desta rotina; Retorne. \ not translated - no possessives em Spanish
+  Se a representação interna da rotina estiver no catálogo geral de rotinas,
+     apresente a mensagem de erro contendo "Erro #55. Rotina para que se '" junto com a representação interna da rotina seguido de "' já definida." e o endereço local desta rotina;
+     Retorne. \ not translated - no possessives em Spanish
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum artigo indefinido, apresente a mensagem de erro contendo "Erro #56. Necessário artigo indefinido. Encontrado '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor; Retorne. \ not translated - no possessives em Spanish
+  Se o segmento inicial deste percorredor não for algum artigo indefinido,
+     apresente a mensagem de erro contendo "Erro #56. Necessário artigo indefinido. Encontrado '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor;
+     Retorne. \ not translated - no possessives em Spanish
   Compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor (artigo indefinido).
-  Se o segmento inicial deste percorredor não estiver em branco, apresente a mensagem de erro contendo "Erro #57. Encontrado comandos extras no fim da função." e o percorredor; Retorne. \ not translated - no possessives em Spanish
+  Se o segmento inicial deste percorredor não estiver em branco,
+     apresente a mensagem de erro contendo "Erro #57. Encontrado comandos extras no fim da função." e o percorredor;
+     Retorne. \ not translated - no possessives em Spanish
   Converta as unidades semânticas desta rotina para a representação interna da rotina desta rotina.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas. \ para employs
 
@@ -1879,7 +1987,9 @@ Rotina para que se compile o cabeçalho referente para uma rotina usando um perco
   Se existir algum problema de compilação, retorne.
   Compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor.
   Converta as unidades semânticas desta rotina para a representação interna da rotina desta rotina.
-  Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas, apresente uma mensagem de erro contendo "Erro #58. Rotina para que se '" junto com a representação interna da rotina desta rotina seguido de "' já codificada." e o endereço local desta rotinas; Retorne.
+  Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas,
+     apresente uma mensagem de erro contendo "Erro #58. Rotina para que se '" junto com a representação interna da rotina desta rotina seguido de "' já codificada." e o endereço local desta rotinas;
+     Retorne.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas.
 
 Rotina para que se compile os cabelalhos referente para umas rotinas:
