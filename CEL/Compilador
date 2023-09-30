@@ -34,7 +34,7 @@
 \ Os programas em C operam de maneira semelhante.
 
 \ A CPU Intel sabe como colocar valores e endereços de 4 bytes na pilha e como recuperá-los.
-\ Para colocar e retirar coisas maiores da pilha, precisamos brincar diretamente com o registro ESP.
+\ Para colocar e retirar coisas maiores da pilha, precisamos lidar diretamente com o registro ESP.
 \ Subtrair 16 do endereço no ESP, por exemplo, abre espaço para 16 bytes de dados locais no “topo” da pilha; adicionar 16 tira esses bytes da pilha.
 
 Uma mensagem de erro é uma string.
@@ -761,10 +761,10 @@ Rotina para que se enderece um fragmento usando um endereço (etapa preliminar):
 Rotina para que se enderece um fragmento usando um endereço (empilhamento de valor):
   Adicione 6 para o endereço.
   Se a variável deste fragmento for inexistente,
-    Apresente uma mensagem de erro contendo "Erro #5. A variável é inválida.";
+    Apresente uma mensagem de erro contendo "Erro #5. A variável '" junto com o nome desta variável deste fragmento seguido de "' é inválida.";
     Retorne.
   Se o tipo desta variável deste fragmento for inexistente,
-    Apresente a mensagem de erro contendo "Erro #6. O tipo é inválido.";
+    Apresente a mensagem de erro contendo "Erro #6. O tipo '" junto com o nome deste tipo desta variável deste fragmento seguido de "' é inválido.";
     Retorne.
   Atribua a quantidade de caracteres deste tipo desta variável deste fragmento para uma quantidade de caracteres.
   Se a quantidade de caracteres for 4,
@@ -797,7 +797,7 @@ Rotina para que se enderece um fragmento usando um endereço (registrador EAX):
   Se a quantidade de caracteres for 1,
     Adicione 2 para o endereço;
     Retorne.
-  Apresente a mensagem de erro contendo "Erro interno #10. A quantidade de bytes do tipo '" junto com o nome deste tipo desta variável deste fragmento seguido de "' é incompatível com o registrador EAX.".
+  Apresente a mensagem de erro contendo "Erro #10. A quantidade de bytes do tipo '" junto com o nome deste tipo desta variável deste fragmento seguido de "' é incompatível com o registrador EAX.".
 
 Rotina para que se enderece uns fragmentos usando um endereço:
   Se existir algum problema de compilação, retorne.
@@ -5904,10 +5904,10 @@ Rotina para que se organize o catálogo de rotinas úteis:
 Rotina para que se organize o catálogo de rotinas úteis usando umas referências:
     Obtenha uma referência desde as referências.
     Se a referência for inexistente, retorne.
-    Atribua o ponteiro deste referência para uma rotina.
+    Atribua o ponteiro desta referência para uma rotina.
     Se a rotina for inexistente,
-    Apresente uma mensagem de erro contendo "Erro interno #134. Rotina inexistente";
-    Retorne.
+      Apresente uma mensagem de erro contendo "Erro interno #134. A rotina não foi localizada";
+      Retorne.
     Copie as unidades semânticas desta rotina para umas unidades semânticas.
     Reduza as unidades semânticas por utilização.
     Catalogue a rotina usando as unidades semânticas e o catálogo geral de rotinas.
