@@ -1,25 +1,41 @@
-\ O compilador copyright © 2006-2021 a ordem osmosiana
-\ firstparam=esp+4/ebp+8, secondparam=esp+8/ebp+12, etc...
+\ Este arquivo contém o código fonte do compilador da linguagemd e programação "Português Puro"
+\ firstparam=esp+4/ebp+8, 
+\secondparam=esp+8/ebp+12, etc...
 
- \Este compilador armazena strings em duas partes para que seja fácil trocar o primeiro e o último bytes de uma string, com um pequeno comando como este:
- \ Permute o conteúdo deste caractere inicial desta string com o conteúdo do caractere final desta string.
- \Todos os parâmetros são passados por referência, então a string modificada é retornada na variável passada, que é a maneira natural e óbvia de fazer isso.
- \Por exemplo, se você passar o saleiro para alguém na mesa de jantar e ela usar um pouco, você receberá o saleiro de volta com menos sal do que quando passou.
-\Quando um parâmetro é passado "por referência", o chamador e o receptor usam a mesma variável para o parâmetro.
-\Se o receptor modifica a variável do parâmetro, o efeito é visível para a variável do chamador.
-\Quando um parâmetro é passado "por valor", o chamador e o receptor têm duas variáveis independentes com o mesmo valor.
-\Se o receptor modifica a variável de parâmetro, o efeito não é visível para o chamador.
+\ Strings são uimplementadas como uma struct  que contém 2 membros, a saber:
+\ O endereço do byte inicial e o endereço do byte final.
+\ Desta forma é possível trocar o primeiro e o último bytes de uma string, com um comandos como este:
+\ Permute o conteúdo deste caractere inicial desta string com o conteúdo do caractere final desta string.
 
-\ The EBP (base pointer) and ESP (stack pointer) registers, on the other hand, are used to manipulate the STACK which is an area referente para memory that you can think referente para like a stack referente para dinner plates, with each plate representing a saved register value, or an address somewhere in the program's code, or the address referente para a variable (that lives somewhere else in memory), or the contents referente para a variable. As is typical with Windows, the stack grows backways: that is, the address referente para the "top" referente para the stack is always less than the address referente para the "bottom".
+\ Parâmetros são passados por referência
 
-\ The ESP register always holds the address referente para the "top" referente para the stack. The EBP register holds the address referente para the "bottom" referente para the stack for the current routine. By convention, this is how the STACK is used by Plain English (C uses the STACK in a similar way, but pushes the parameters in reverse order):
+\ Os registradores EBP (ponteiro base) e ESP (ponteiro de pilha) são usados para manipular a PILHA
+\ que é uma área da memória que você pode imaginar como uma pilha de pratos, 
+\ sendo que cada prato representando um valor salvo em um registrador,
+\ ou um endereço em algum lugar no código do programa, 
+\ ou o endereço de uma variável (que reside em algum outro lugar na memória),
+\ ou o conteúdo de uma variável. 
 
-\ You can see that, once things are set up, a routine’s primeiro parameter will be at the address in the EBP register plus 8, the second parameter at the address in EBP plus 12, etc. And that our local variables will be a the address in the EBP register minus 4, minus 8, etc, depending on the length referente para each referente para those variables.
+\ Como é típico do Windows, a pilha cresce inversamente.
+\ ou seja, o endereço do “topo” da pilha é sempre menor que o endereço da base.
 
-\ THE PROLOG OF EVERY PLAIN ENGLISH ROUTINE BEGINS BY SAVING THE CALLER'S EBP ON THE STACK, JUST ABOVE THE RETURN ADDRESS.
-\ THE EPILOG OF EVERY ROUTINE REMOVES ANY LOCAL VARIABLES, RESTORES THE EBP, AND RETURNS TO THE CALLER, POPPING ANY PARAMETERS AS HE DOES. C programs operate in a similar way.
+\ O registrador ESP sempre contém o endereço do “topo” da pilha. 
+\O registrador EBP contém o endereço da “base” da pilha da rotina atual.
+\ Por convenção, é assim que a pilha é usada em Português Puro 
+\ (C usa o STACK de maneira semelhante, mas envia os parâmetros na ordem inversa):
 
-\ The Intel CPU knows how to PUSH 4-byte values and addresses onto the stack, and how to POP them back off. To get larger things on and off the stack we need to play with the ESP register directly. Subtracting 16 from the address in ESP, for example, makes room for 16 bytes referente para local data at the "top" referente para the stack; adding 16 takes those bytes off the stack.
+\ Você pode ver que dessa forma,  o primeiro parâmetro de uma rotina estará no endereço do registrador EBP + 8,
+\ o segundo parâmetro estará no endereço em EBP + 12, etc.
+\ E que nossas variáveis locais serão estarão no endereço no registrador EBP menos 4, menos 8, etc, 
+\ dependendo, é claro, do tamanho de cada uma dessas variáveis.
+
+\ O prólogo de cada rotina em português puro começa salvando o ebp do chamador na pilha, logo acima do endereço de retorno.
+\ O epílogo de cada rotina remove quaisquer variáveis locais, restaura o ebp e retorna ao chamador, estabelecendo quaisquer parâmetros enquanto ele assim o faz.
+\ Os programas em C operam de maneira semelhante.
+
+\ A CPU Intel sabe como colocar valores e endereços de 4 bytes na pilha e como recuperá-los.
+\ Para colocar e retirar coisas maiores da pilha, precisamos brincar diretamente com o registro ESP.
+\ Subtrair 16 do endereço no ESP, por exemplo, abre espaço para 16 bytes de dados locais no “topo” da pilha; adicionar 16 tira esses bytes da pilha.
 
 Uma mensagem de erro é uma string.
 Uma contagem de nomes é uma contagem.
@@ -71,7 +87,7 @@ O compilador é uma estrutura com
   Um endereço do arquivo atual,
   Um número da linha de erro,
   Uma contagem de nomes,
-  Um trecho EXE,
+  Um trecho exe,
   Um trecho de listagem.
 
 Um trecho de listagem é um trecho.
@@ -106,7 +122,7 @@ Rotina para que se apresente uma mensagem de erro contendo uma string e um perco
 
 Rotina para que se adicione as rotinas de alocação e desalocação e finalização e destruição:
   Se existir algum problema de compilação, retorne.
-  Obtenha um tipo desde o tipos.
+  Obtenha um tipo desde os tipos.
   Se o tipo for inexistente, retorne.
   Adicione a rotina de finalização para o tipo.
   Adicione a rotina de alocação para o tipo.
@@ -125,7 +141,7 @@ Rotina para que se adicione o rotina de alocação para um tipo:
   Acrescente a quantidade de caracteres deste tipo do conteúdo deste tipo seguido de "." para a string do corpo desta rotina.
   Lance a cabeçalho de rotina desta rotina sobre a string do cabeçalho desta rotina.
   Lance as instruções desta rotina sobre a string do corpo desta rotina.
-  Compile o cabeçalho referente para a rotina.
+  Compile o cabeçalho referente à rotina.
 
 Rotina para que se adicione e compile as rotinas de inicialização pré-execução e finalização pós-execução:
   Se existir algum problema de compilação, retorne.
@@ -139,7 +155,7 @@ Rotina para que se adicione e compile as rotinas de inicialização pré-execução e
   Acrescente "Processe ""kernel32.dll"" ""ExitProcess"" com 0. " para a string do corpo desta rotina.
   Lance a cabeçalho de rotina desta rotina sobre a string do cabeçalho desta rotina.
   Lance as instruções desta rotina sobre a string do corpo desta rotina.
-  Compile o cabeçalho referente para a rotina.
+  Compile o cabeçalho referente à rotina.
   Compile o corpo referente à rotina.
 
 Rotina para que se adicione os tipos primitivos:
@@ -168,7 +184,7 @@ Rotina para que se adicione o rotina de desalocação para um tipo:
   Acrescente "Desassocie o " junto com o nome deste tipo seguido de "." para a string do corpo desta rotina. \ Desaloque memória para o
   Lance a cabeçalho de rotina desta rotina sobre a string do cabeçalho desta rotina.
   Lance as instruções desta rotina sobre a string do corpo desta rotina.
-  Compile o cabeçalho referente para a rotina.
+  Compile o cabeçalho referente à rotina.
 
 Rotina para que se adicione o rotina de destruição para um tipo:
   Se o tipo for inexistente, retorne.
@@ -201,16 +217,16 @@ Rotina para que se adicione o rotina de destruição para um tipo (ponteiros):
   Acrescente "Desaloque o " junto com o nome deste tipo seguido de ". " para a string do corpo desta rotina. \ traduzir aqui
   Lance a cabeçalho de rotina desta rotina sobre a string do cabeçalho desta rotina.
   Lance as instruções desta rotina sobre a string do corpo desta rotina.
-  Compile o cabeçalho referente para a rotina.
+  Compile o cabeçalho referente à rotina.
 
 Rotina para que se adicione o rotina de destruição para um tipo (listas):
   Se o tipo for inexistente, retorne.
   Se existir algum problema de compilação, retorne.
   Se o primeiro campo destes campos deste tipo for inexistente,
-    Apresente uma mensagem de erro contendo "Erro interno #1'";
+    Apresente uma mensagem de erro contendo "Erro #1. O campo '" junto com o nome deste primeiro campo destes campos deste tipo seguido de "' é inválido.'";
     Retorne. \
   Se o tipo deste primeiro campo destes campos deste tipo for inexistente,
-    Apresente a mensagem de erro contendo "Erro interno #2'";
+    Apresente a mensagem de erro contendo "Erro #2'. O tipo '" junto com o nome deste tipo deste primeiro campo destes campos deste tipo seguido de "' é inválido.'";
     Retorne.
   Atribua "Destrua [" junto com o nome deste tipo seguido de "]" para uma representação interna da rotina.
   Se a representação interna da rotina estiver no catálogo geral de rotinas, retorne.
@@ -225,7 +241,7 @@ Rotina para que se adicione o rotina de destruição para um tipo (listas):
   Acrescente "Reitere. " para a string do corpo desta rotina.
   Lance a cabeçalho de rotina desta rotina sobre a string do cabeçalho desta rotina.
   Lance as instruções desta rotina sobre a string do corpo desta rotina.
-  Compile o cabeçalho referente para a rotina.
+  Compile o cabeçalho referente à rotina.
 
 Um nome da DLL é um nome.
 Um nome da função é um nome.
@@ -269,10 +285,10 @@ Rotina para que se adicione a rotina de finalização para um tipo (estrutura):
   Se existir algum problema de compilação, retorne.
   Adicione uma rotina para as rotinas usando nil.
   Acrescente "~Finalize um " junto com o nome deste tipo para a string do cabeçalho desta rotina.
-  Acrescente "Decodifique $50. " para a string do corpo desta rotina. \ push eax -> push the 4 bytes value in EAX onto the stack
-  \The push instruction places its operand onto the top referente para the hardware supported stack in memory.
-  \Specifically, push primeiro decrements ESP by 4, then places its operand into the contents referente para the 32-bit location sob address [ESP].
-  \ESP (the stack pointer) is decremented by push since the x86 stack grows para baixo - i.e. the stack grows from high addresses to lower addresses.
+  Acrescente "Decodifique $50. " para a string do corpo desta rotina. \ push eax -> coloca o valor de 32 bits presentes em EAX na pilha
+  \ A instrução push coloca seu operando no topo da pilha de hardware na memória.
+  \ Especificamente, a instrução push primeiro decrementa ESP em 4 e depois coloca seu operando no conteúdo do local de 32 bits no endereço [ESP].
+   \ESP (o ponteiro da pilha) é decrementado por push, pois a pilha x86 cresce para baixo - ou seja, a pilha cresce dos endereços maiores para os endereços menores.
   Itere. [o código a seguir]
     Obtenha um campo desde os campos deste tipo.
     Se o campo for inexistente, pare.
@@ -285,7 +301,7 @@ Rotina para que se adicione a rotina de finalização para um tipo (estrutura):
   \It primeiro moves the 4 bytes located sob memory location [SP] into the specified register or memory location, and then increments memory location [SP] by 4.
   Lance a cabeçalho de rotina desta rotina sobre a string do cabeçalho desta rotina.
   Lance as instruções desta rotina sobre a string do corpo desta rotina.
-  Compile o cabeçalho referente para a rotina.
+  Compile o cabeçalho referente à rotina.
 
 Rotina para que se adicione a rotina de finalização para um tipo (cadeia de caracteres):
   Se o tipo for inexistente, retorne.
@@ -302,7 +318,7 @@ Rotina para que se adicione a rotina de finalização para um tipo (cadeia de cara
   \ It primeiro moves the 4 bytes located sob memory location [SP] into the specified register or memory location, and then increments memory location [SP] by 4.
   Lance a cabeçalho de rotina desta rotina sobre a string do cabeçalho desta rotina.
   Lance as instruções desta rotina sobre a string do corpo desta rotina.
-  Compile o cabeçalho referente para a rotina.
+  Compile o cabeçalho referente à rotina.
 
 Rotina para que se adicione um fragmento usando uma etiqueta:
   Se a rotina utilizada atualmente for inexistente,
@@ -393,7 +409,7 @@ Rotina para que se adicione uma unidade semântica para umas unidades semânticas 
   Atribua a variável desta expressão matematica à variável desta unidade semântica.
   Se a variável desta expressão matematica não for inexistente, atribua o tipo desta expressão matematica ao tipo desta unidade semântica.
 
-  \# Unifica o sentido de diferentes termos usados em proposições, verbos e conjunções.
+  \ Unifica o sentido de diferentes termos usados em proposições, verbos e conjunções.
 Rotina para que se adicione uma unidade semântica para umas unidades semânticas usando uma string: \ creio que isso aqui ajude nas funções
   Crie a unidade semântica.
   Acrescente a unidade semântica para as unidades semânticas.
@@ -596,7 +612,7 @@ Rotina para que se adicione fragmentos diversos usando uma string e uma variável
   Se a rotina for inexistente, converta as unidades semânticas para uma representação interna da rotina.
   Destrua as unidades semânticas.
   Se a rotina for inexistente,
-    Apresente uma mensagem de erro contendo "Erro #29. A rotina para que se '" junto com a representação interna da rotina seguido de "' não foi encontrada." e o endereço local;
+    Apresente uma mensagem de erro contendo "Erro #3. A rotina para que se '" junto com a representação interna da rotina seguido de "' não foi encontrada." e o endereço local;
     Retorne.
   Adicione um terceiro fragmento usando a etiqueta de demanda interna e a rotina.
 
@@ -614,7 +630,7 @@ Rotina para que se adicione fragmentos diversos usando uma string e uma variável
   Se a rotina for inexistente, converta as unidades semânticas para uma representação interna da rotina.
   Destrua as unidades semânticas.
   Se a rotina for inexistente,
-    Apresente uma mensagem de erro contendo "Erro #30. A rotina para que se '" junto com a representação interna da rotina seguido de "' não pôde ser localizada." e o endereço de byte;
+    Apresente uma mensagem de erro contendo "Erro #4. A rotina para que se '" junto com a representação interna da rotina seguido de "' não pôde ser localizada." e o endereço de byte;
     Retorne.
   Adicione um quarto fragmento usando a etiqueta de demanda interna e a rotina.
 
@@ -745,10 +761,10 @@ Rotina para que se enderece um fragmento usando um endereço (etapa preliminar):
 Rotina para que se enderece um fragmento usando um endereço (empilhamento de valor):
   Adicione 6 para o endereço.
   Se a variável deste fragmento for inexistente,
-    Apresente uma mensagem de erro contendo "Erro interno #3.";
+    Apresente uma mensagem de erro contendo "Erro #5. A variável é inválida.";
     Retorne.
   Se o tipo desta variável deste fragmento for inexistente,
-    Apresente a mensagem de erro contendo "Erro interno #4";
+    Apresente a mensagem de erro contendo "Erro #6. O tipo é inválido.";
     Retorne.
   Atribua a quantidade de caracteres deste tipo desta variável deste fragmento para uma quantidade de caracteres.
   Se a quantidade de caracteres for 4,
@@ -760,15 +776,16 @@ Rotina para que se enderece um fragmento usando um endereço (empilhamento de val
   Se a quantidade de caracteres for 1,
     Adicione 4 para o endereço;
     Retorne.
-  Apresente a mensagem de erro contendo "Erro interno #5".
+  Apresente a mensagem de erro contendo "Erro #7.  A quantidade de bytes do tipo '" junto com o nome deste tipo desta variável deste fragmento seguido de "' é incompatível com a Stack.".
 
 Rotina para que se enderece um fragmento usando um endereço (registrador EAX):
   Adicione 6 para o endereço.
   Se a variável deste fragmento for inexistente,
-    Apresente uma mensagem de erro contendo "Erro interno #6";
+    Apresente uma mensagem de erro contendo "Erro #8. A variável '" junto com o nome desta variável deste fragmento seguido de "' é inválida";
     Retorne.
   Se o tipo desta variável deste fragmento for inexistente,
-    Apresente a mensagem de erro contendo "Erro interno #7";
+    Apresente a mensagem de erro contendo "Erro #9. O tipo '" junto com o nome deste tipo desta variável deste fragmento
+      seguido de "da variável '" junto com o nome desta variável deste fragmento seguido de "' é inválido";
     Retorne.
   Atribua a quantidade de caracteres deste tipo desta variável deste fragmento para uma quantidade de caracteres.
   Se a quantidade de caracteres for 4,
@@ -780,7 +797,7 @@ Rotina para que se enderece um fragmento usando um endereço (registrador EAX):
   Se a quantidade de caracteres for 1,
     Adicione 2 para o endereço;
     Retorne.
-  Apresente a mensagem de erro contendo "Erro interno #8".
+  Apresente a mensagem de erro contendo "Erro interno #10. A quantidade de bytes do tipo '" junto com o nome deste tipo desta variável deste fragmento seguido de "' é incompatível com o registrador EAX.".
 
 Rotina para que se enderece uns fragmentos usando um endereço:
   Se existir algum problema de compilação, retorne.
@@ -1047,7 +1064,7 @@ Rotina para que se determine se uma string está precisando ser decomposta:
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
 Rotina para que se acrescente uma string para uma segunda string usando uma terceira string (para expandir contrações):
-  \# contrações
+  \contrações
   Se a string for "ao",
     Acrescente "a o" para a segunda string;
     Retorne.
@@ -1209,8 +1226,7 @@ Rotina para que se acrescente uma string para uma segunda string usando uma terc
   Se a string for "noutras",
     Acrescente "em outras" para a segunda string;
     Retorne.
-  \# "no" pode ser uma negação em inglês.
-  \Se a string deveria ser expandida usando a terceira string (análise de termos compostos), atribua "desde" para a string; atribua "" para a segunda string; Retorne.
+   \Se a string deveria ser expandida usando a terceira string (análise de termos compostos), atribua "desde" para a string; atribua "" para a segunda string; Retorne.
   Se a string for "na",
     Acrescente "em a" para a segunda string;
     Retorne.
@@ -1254,29 +1270,29 @@ Rotina para que se acrescente uma string para uma segunda string usando uma terc
   Acrescente a string para a segunda string.
 
 Rotina para que se acrescente a instrução de carregamento de endereço para um texto hexadecimal usando uma variável:
-  \ loads para edx
+  \ carrega o valor em edx
   Se a variável for inexistente,
-    Acrescente $C7C200000000 para o texto hexadecimal;
-    Retorne. \ mov edx,0
+    Acrescente $C7C200000000 para o texto hexadecimal; \ mov edx,0
+    Retorne. 
   Se a categoria desta variável for "global",
-    Acrescente $C7C2 e o endereço desta variável para o texto hexadecimal;
-    Retorne. \ mov edx,the endereço da variável
+    Acrescente $C7C2 e o endereço desta variável para o texto hexadecimal; \ mov edx, o endereço da variável
+    Retorne. 
   Se a categoria desta variável for "literal",
-    Acrescente $C7C2 e o endereço desta variável para o texto hexadecimal;
-    Retorne. \ mov edx,the endereço da variável
+    Acrescente $C7C2 e o endereço desta variável para o texto hexadecimal; \ mov edx, o endereço da variável
+    Retorne. 
   Se a categoria desta variável for "local",
-    Acrescente $8D95 e o deslocamento desta variável para o texto hexadecimal;
-    Retorne. \ lea edx,[ebp+ the deslocamento da variável]
+    Acrescente $8D95 e o deslocamento desta variável para o texto hexadecimal; \ lea edx,[ebp+ o deslocamento da variável]
+    Retorne. 
   Se a categoria desta variável for "scratch",
-    Acrescente $8B95 e o deslocamento desta variável para o texto hexadecimal;
-    Retorne. \ mov edx, [ebp+ the deslocamento da variável]
+    Acrescente $8B95 e o deslocamento desta variável para o texto hexadecimal; \ mov edx, [ebp+ o deslocamento da variável]
+    Retorne. 
   Se a categoria desta variável não for "parâmetro",
-    Apresente uma mensagem de erro contendo "Erro interno#9";
+    Apresente uma mensagem de erro contendo "Erro #11. A variável '" junto com o nome desta variável seguido de "' não é do tipo 'parâmetro.'";
     Retorne.
   Se o detector de passagem por-valor desta variável estiver ativo,
-    Acrescente $8D95 e o deslocamento desta variável para o texto hexadecimal;
-    Retorne. \ lea edx,[ebp+the deslocamento da variável]
-  Acrescente $8B95 e o deslocamento desta variável para o texto hexadecimal. \ mov edx,[ebp+ the deslocamento da variável]
+    Acrescente $8D95 e o deslocamento desta variável para o texto hexadecimal; \ lea edx,[ebp+ o deslocamento da variável]
+    Retorne. 
+  Acrescente $8B95 e o deslocamento desta variável para o texto hexadecimal. \ mov edx,[ebp+ o deslocamento da variável]
 
 Rotina para que se acrescente um texto hexadecimal e um endereço para um fragmento:
   \ Processe ou Salto
@@ -1419,7 +1435,7 @@ Um tipo primitivo é um tipo.
 Rotina para que se calcule a quantidade de caracteres referente para um tipo:
   Se o tipo for inexistente, retorne.
   Se a quantidade de caracteres deste tipo não for -1, retorne.
-  Calcule a quantidade de caracteres referente para o tipo base deste tipo.
+  Calcule a quantidade de caracteres referente ao tipo base deste tipo.
   Se os campos deste tipo estiverem vazios,
     Atribua a quantidade de caracteres deste tipo base deste tipo à quantidade de caracteres deste tipo;
     Retorne.
@@ -1429,10 +1445,11 @@ Rotina para que se calcule a quantidade de caracteres referente para um tipo:
     Obtenha um campo desde o campos deste tipo.
     Se o campo for inexistente, retorne.
     Se o novo nome deste campo não estiver em branco, reitere.
-    Calcule a quantidade de caracteres referente para o tipo deste campo.
+    Calcule a quantidade de caracteres referente ao tipo deste campo.
     Adicione a quantidade de caracteres deste tipo deste campo vezes a contagem deste campo para a quantidade de caracteres deste tipo.
   Reitere. [Execute novamente o código]
 
+Rotina para que se calcule os comprimentos referentes para uns tipos;
 Rotina para que se calcule os comprimentos referente para uns tipos:
   Se existir algum problema de compilação, retorne.
   Obtenha um tipo desde o tipos.
@@ -1468,8 +1485,9 @@ Rotina para que se calcule os deslocamentos das redefinições em um tipo:
     Se o novo nome deste campo estiver em branco, reitere.
     Encontre um segundo campo usando o novo nome deste campo e os campos deste tipo.
     Se o segundo campo for inexistente, 
-      Apresente uma mensagem de erro contendo "Erro #31. Comando de redefinição inválido. O campo '" 
-      Junto com o novo nome deste campo seguido de "' não pode ser encontrado." e o endereço local deste campo; 
+      Apresente uma mensagem de erro contendo "Erro #12. Palavra-chave 'sob' utilizada incorretamente. O campo '" 
+        junto com o novo nome deste campo seguido de "' da estrutura '"
+        junto com o nome deste tipo seguido de "' não pode ser encontrado." e o endereço local deste campo; 
       Retorne.
     Atribua o deslocamento deste segundo campo ao deslocamento deste campo.
   Reitere. [Execute novamente o código]
@@ -1491,19 +1509,19 @@ Rotina para que se verifique por informações opcionais inválidas em um tipo:
 Rotina para que se verifique por informações opcionais inválidas em um tipo (campos):
   Se existir algum problema de compilação, retorne.
   Se o tipo não puder ser reduzido para "estrutura", 
-    Apresente uma mensagem de erro contendo "Erro. A palavra-chave 'com' só é permitida em estruturas." e o endereço local deste tipo; 
-    Retorne. \ #ABCDE
+    Apresente uma mensagem de erro contendo "Erro #13. A palavra-chave 'com' deve ser utilizada apenas em estruturas." e o endereço local deste tipo; \ #ABCDE
+    Retorne. 
 
 Rotina para que se verifique por informações opcionais inválidas em um tipo (tipos fracionários):
   Se existir algum problema de compilação, retorne.
   Se o tipo não puder ser reduzido para "número", 
-    Apresente uma mensagem de erro contendo "Erro. Proporções e escalas de medida só podem ser utilizadas em tipos de dados numéricos." e o endereço local deste tipo; 
+    Apresente uma mensagem de erro contendo "Erro #14. Proporções e escalas de medida só podem ser utilizadas em tipos de dados numéricos." e o endereço local deste tipo; 
     Retorne.
 
 Rotina para que se verifique por informações opcionais inválidas em um tipo (conteúdo):
   Se existir algum problema de compilação, retorne.
   Se o tipo não puder ser reduzido para "ponteiro", 
-    Apresente uma mensagem de erro contendo "Erro. A palavra-chave 'para' só pode ser utilizada ao apontar para variáveis do tipo ponteiro." e o endereço local deste tipo; 
+    Apresente uma mensagem de erro contendo "Erro #15. A palavra-chave 'para' só pode ser utilizada ao apontar para variáveis do tipo ponteiro." e o endereço local deste tipo; 
     Retorne.
 
 Rotina para que se limpe um campo de estrutura:
@@ -1555,8 +1573,8 @@ Rotina para que se compile o corpo referente para uma rotina (etapa conclusiva):
     Adicione um segundo fragmento usando o etiqueta de inserção de endereço [na stack] e a variável.
     Encontre uma segunda rotina usando "~Finalize" e o tipo desta variável.
     Se a segunda rotina for inexistente,
-    Apresente uma mensagem de erro contendo "Erro interno #10'";
-    Retorne.
+      Apresente uma mensagem de erro contendo "Erro #16. A rotina para que se finalize um '" junto com o tipo desta variável seguido de "' não foi encontrada'";
+      Retorne.
     Adicione um terceiro fragmento usando a etiqueta de demanda interna e a segunda rotina.
   Reitere. [Execute novamente o código]
   Adicione um quarto fragmento usando o etiqueta conclusiva.
@@ -1572,19 +1590,21 @@ Rotina para que se compile o corpo referente para a rotina denominado uma string
   Se existir algum problema de compilação, retorne.
   Encontre uma rotina usando a string e o catálogo geral de rotinas.
   Se a rotina for inexistente,
-    Apresente uma mensagem de erro contendo "Erro #32. A rotina 'para que se " junto com a string seguido de "' não pode ser encontrada.";
+    Apresente uma mensagem de erro contendo "Erro #17. A rotina 'para que se " junto com a string seguido de "' não pode ser encontrada.";
     Retorne.
   Compile o corpo referente à rotina.
+
+Uma rotina alvo é uma rotina.
 
 Rotina para que se compile o corpo referente para uma rotina usando um percorredor (sobrecarga de métodos):
   Se existir algum problema de compilação, retorne.
   Mova o percorredor (usando diretrizes de compilação). \ *** do we need this?
-  Atribua a próxima rotina desta rotina para um conteúdo rotina.
-  Se o conteúdo rotina for inexistente,
-    Apresente uma mensagem de erro contendo "Erro #33. Não foi possível encontrar o cabeçalho alternativo desta rotina." e o percorredor;
+  Atribua a próxima rotina desta rotina para um rotina alvo.
+  Se o rotina alvo for inexistente,
+    Apresente uma mensagem de erro contendo "Erro #17. Não foi possível encontrar o cabeçalho alternativo desta rotina." e o percorredor;
     Retorne.
-  Atribua a representação interna da rotina deste conteúdo rotina ao representação de emprego desta rotina.
-  Compile o corpo referente para o conteúdo rotina.
+  Atribua a representação interna da rotina deste rotina alvo ao representação de emprego desta rotina.
+  Compile o corpo referente ao rotina alvo.
 
 Rotina para que se compile o corpo referente para uma rotina usando um percorredor (cláusula de reutilização):
   Se existir algum problema de compilação, retorne.
@@ -1593,15 +1613,15 @@ Rotina para que se compile o corpo referente para uma rotina usando um percorred
   Converta a referência da rotina para o representação de emprego desta rotina.
   Destrua a referência da rotina.
   Se o segmento inicial deste percorredor não for ".",
-    Apresente uma mensagem de erro contendo "Erro #34. O comando 'Empregue' deve terminar com um '.' ao invés de '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor;
+    Apresente uma mensagem de erro contendo "Erro #18. O comando 'Empregue' deve terminar com um '.' ao invés de '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor;
     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não estiver em branco,
-    Apresente a mensagem de erro contendo "Erro #35. Permitido apenas uma cláusula de reutilização dentro de cada rotina" e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #19. Permitido apenas uma cláusula de reutilização dentro de cada rotina" e o percorredor;
     Retorne.
   Encontre uma segunda rotina usando o representação de emprego desta rotina e o catálogo geral de rotinas.
   Se a segunda rotina for inexistente,
-    Apresente a mensagem de erro contendo "Erro #36. A rotina para que se '" junto com o representação de emprego desta rotina seguido de "' não foi encontrada." e o endereço local desta rotina;
+    Apresente a mensagem de erro contendo "Erro #20. A rotina para que se '" junto com o representação de emprego desta rotina seguido de "' não foi encontrada." e o endereço local desta rotina;
     Retorne.
   Compile o corpo referente para a segunda rotina.
 
@@ -1809,16 +1829,16 @@ Rotina para que se compile uma expressão matematica usando um percorredor (opera
   Se existir algum problema de compilação, retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum objeto indireto,
-    Apresente uma mensagem de erro contendo "Erro #37. Você deve usar o termo 'dividido POR'." e o percorredor;
+    Apresente uma mensagem de erro contendo "Erro #21. Você deve usar o termo 'dividido POR'." e o percorredor;
     Retorne.
   Se a variável desta expressão matematica for inexistente,
-    Apresente a mensagem de erro contendo "Erro #38. Comando 'dividido por' inválido. Erro na variável  '" junto com a frase desta expressão matematica seguido de "'." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #22. Comando 'dividido por' inválido. Erro na variável  '" junto com a frase desta expressão matematica seguido de "'." e o percorredor;
     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor.
   Se existir algum problema de compilação, retorne.
   Se a variável deste termo for inexistente,
-    Apresente a mensagem de erro contendo "Erro #39. O comando 'dividido por', está errado. Não é possível dividir por '" junto com a frase deste termo seguido de "'." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #23. O comando 'dividido por', está errado. Não é possível dividir por '" junto com a frase deste termo seguido de "'." e o percorredor;
     Retorne.
   Adicione uma variável intermediária usando o nome do tipo desta expressão matematica e o caractere inicial deste segmento inicial deste percorredor.
   Adicione fragmentos diversos usando "Atribua" e a variável desta expressão matematica e "para" e a variável intermediária e o caractere inicial deste segmento inicial deste percorredor.
@@ -1829,13 +1849,13 @@ Rotina para que se compile uma expressão matematica usando um percorredor (opera
 Rotina para que se compile uma expressão matematica usando um percorredor (operador de subtração):
   Se existir algum problema de compilação, retorne.
   Se a variável desta expressão matematica for inexistente,
-    Apresente uma mensagem de erro contendo "Erro #40. O comando 'menos', está incorreto. Não é possível subtrair de '" junto com a frase desta expressão matematica seguido de "'." e o percorredor;
+    Apresente uma mensagem de erro contendo "Erro #24. O comando 'menos', está incorreto. Não é possível subtrair de '" junto com a frase desta expressão matematica seguido de "'." e o percorredor;
     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor.
   Se existir algum problema de compilação, retorne.
   Se a variável deste termo for inexistente,
-    Apresente a mensagem de erro contendo "Erro #41. O comando 'menos', está incorreto. Não consigo diminuir de '" junto com a frase deste termo seguido de "'." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #25. O comando 'menos', está incorreto. Não consigo diminuir de '" junto com a frase deste termo seguido de "'." e o percorredor;
     Retorne.
   Adicione uma variável intermediária usando o nome do tipo desta expressão matematica e o caractere inicial deste segmento inicial deste percorredor.
   Adicione fragmentos diversos usando "Atribua" e a variável desta expressão matematica e "para" e a variável intermediária e o caractere inicial deste segmento inicial deste percorredor.
@@ -1846,13 +1866,13 @@ Rotina para que se compile uma expressão matematica usando um percorredor (opera
 Rotina para que se compile uma expressão matematica usando um percorredor (operador de adição):
   Se existir algum problema de compilação, retorne.
   Se a variável desta expressão matematica for inexistente,
-    Apresente uma mensagem de erro contendo "Erro #42. O comando 'mais' está incorreto. Não é possível somar o '" junto com a frase desta expressão matematica seguido de "'." e o percorredor;
+    Apresente uma mensagem de erro contendo "Erro #26. Comando 'mais' incorreto. Não é possível somar o '" junto com a frase desta expressão matematica seguido de "'." e o percorredor;
     Retorne.
   Mova o percorredor (usando diretrizes de compilação). \talvez fosse o caso de repetir aqui
   Compile um termo usando o percorredor.
   Se existir algum problema de compilação, retorne.
   Se a variável deste termo for inexistente,
-    Apresente a mensagem de erro contendo "Erro #43. O comando 'mais' está incorreto. Não é possível adicionar o" junto com a frase deste termo seguido de "." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #27. Comando 'mais' incorreto. Não é possível adicionar o" junto com a frase deste termo seguido de "." e o percorredor;
     Retorne.
   Adicione uma variável intermediária usando o nome do tipo desta expressão matematica e o caractere inicial deste segmento inicial deste percorredor.
   Adicione fragmentos diversos usando "Atribua" e a variável desta expressão matematica e "para" e a variável intermediária e o caractere inicial deste segmento inicial deste percorredor.\aqui muda o atribua
@@ -1864,16 +1884,16 @@ Rotina para que se compile uma expressão matematica usando um percorredor (opera
   Se existir algum problema de compilação, retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum palavra de concatenação,
-    Apresente uma mensagem de erro contendo "Erro #44. Necessário escrever 'junto DE/junto COM/etc'." e o percorredor;
+    Apresente uma mensagem de erro contendo "Erro #28. Necessário escrever 'junto DE/junto COM/etc'." e o percorredor;
     Retorne.
   Se a variável desta expressão matematica for inexistente,
-    Apresente a mensagem de erro contendo "Erro #45. Eu não entendi a variável da expressão matematica: " junto com a frase desta expressão matematica seguido de "." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #29. A variável da expressão matematica: " junto com a frase desta expressão matematica seguido de " é inválida." e o percorredor;
     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor.
   Se existir algum problema de compilação, retorne.
   Se a variável deste termo for inexistente,
-    Apresente a mensagem de erro contendo "Erro #46. Eu não achei a variável do termo: " junto com a frase deste termo seguido de "." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #30. A variável do termo '" junto com a frase deste termo seguido de "' é inválida." e o percorredor;
     Retorne.
   Adicione uma variável intermediária usando "string" e o caractere inicial deste segmento inicial deste percorredor.
   \Adicione uma variável intermediária usando "texto" e o caractere inicial deste segmento inicial deste percorredor.
@@ -1887,13 +1907,13 @@ Rotina para que se compile uma expressão matematica usando um percorredor (opera
 Rotina para que se compile uma expressão matematica usando um percorredor (operador de multiplicação):
   Se existir algum problema de compilação, retorne.
   Se a variável desta expressão matematica for inexistente,
-    Apresente uma mensagem de erro contendo "Erro #47. Erro de sintaxe. Comando 'vezes' incorreto. Não é póssível multiplicar por '" junto com a frase desta expressão matematica seguido de "'." e o percorredor;
+    Apresente uma mensagem de erro contendo "Erro #31. Erro de sintaxe. Comando 'vezes' incorreto. Não é póssível multiplicar por '" junto com a frase desta expressão matematica seguido de "'." e o percorredor;
     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile um termo usando o percorredor.
   Se existir algum problema de compilação, retorne.
   Se a variável deste termo for inexistente,
-    Apresente a mensagem de erro contendo "Erro #48. Erro de sintaxe. Comando 'multiplicado por' incorreto. Não é póssível multiplicar por '" junto com a frase deste termo seguido de "'." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #32. Erro de sintaxe. Comando 'multiplicado por' incorreto. Não é póssível multiplicar por '" junto com a frase deste termo seguido de "'." e o percorredor;
     Retorne.
   Adicione uma variável intermediária usando o nome do tipo desta expressão matematica e o caractere inicial deste segmento inicial deste percorredor.
   Adicione fragmentos diversos usando "Atribua" e a variável desta expressão matematica e "para" e a variável intermediária e o caractere inicial deste segmento inicial deste percorredor.
@@ -1927,7 +1947,7 @@ Rotina para que se compile o cabeçalho referente para uma rotina usando um perco
   Compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor.
   Converta as unidades semânticas desta rotina para a representação interna da rotina desta rotina.
   Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas,
-    Apresente uma mensagem de erro contendo "Erro #49. A rotina para que se '" junto com a representação interna da rotina desta rotina seguido de "' já foi definida anteriormente." e o endereço local desta rotina;
+    Apresente uma mensagem de erro contendo "Erro #33. A rotina para que se '" junto com a representação interna da rotina desta rotina seguido de "' já foi definida anteriormente." e o endereço local desta rotina;
     Retorne.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas.
 
@@ -1935,17 +1955,17 @@ Rotina para que se compile o cabeçalho referente para uma rotina usando um perco
   Se existir algum problema de compilação, retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum comando condicional,
-    Apresente uma mensagem de erro contendo "Erro #50. Rotina 'Para que se determine se' com sintaxe inválida" e o percorredor;
+    Apresente uma mensagem de erro contendo "Erro #34. Rotina 'Para que se determine se' com sintaxe inválida" e o percorredor;
     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Ative o detector de deliberação desta rotina.
   Compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor.
   Se alguns referente para as unidades semânticas desta rotina forem advérbios de negação,
-    Apresente a mensagem de erro contendo "Erro #51. A palavra-chave 'não' não é permitida em cabeçalhos de funções booleanas." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #35. A palavra-chave 'não' não é permitida em cabeçalhos de funções booleanas." e o percorredor;
     Retorne.
   Converta as unidades semânticas desta rotina para a representação interna da rotina desta rotina.
   Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas,
-    Apresente a mensagem de erro contendo "Erro #52. A rotina para que se ''" junto com a representação interna da rotina desta rotina seguido de "' já havia sido definida anteriormente." e o endereço local desta rotina;
+    Apresente a mensagem de erro contendo "Erro #36. A rotina para que se ''" junto com a representação interna da rotina desta rotina seguido de "' já havia sido definida anteriormente." e o endereço local desta rotina;
     Retorne.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas.
 
@@ -1958,27 +1978,27 @@ Rotina para que se compile o cabeçalho referente para uma rotina usando um perco
   Se o detector estiver ativo, compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor (artigo indefinido).
   Se o detector não estiver ativo, compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor (artigo definido).
   Se o segmento inicial deste percorredor não for algum possessivo inglês,
-    Apresente uma mensagem de erro contendo "Erro #53. Necessário inserir um 's no código." e o percorredor;
+    Apresente uma mensagem de erro contendo "Erro #37. Necessário inserir um 's no código." e o percorredor;
     Retorne. \ not translated - no possessives em Spanish
   Mova o percorredor (usando diretrizes de compilação).
   Examine um nome usando o percorredor.
   Adicione uma segunda unidade semântica para as unidades semânticas desta rotina usando "'s " junto com o nome.
   Se o segmento inicial deste percorredor não for "para",
-    Apresente a mensagem de erro contendo "Erro #54. palavra-chave 'para' ausente. Encontrado a palavra: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #38. palavra-chave 'para' ausente. Encontrado a palavra: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor;
     Retorne. \ not translated - no possessives em Spanish
   Adicione uma terceira unidade semântica para as unidades semânticas desta rotina usando "para".
   Converta as unidades semânticas desta rotina para uma representação interna da rotina.
   Se a representação interna da rotina estiver no catálogo geral de rotinas,
-    Apresente a mensagem de erro contendo "Erro #55. Rotina para que se '" junto com a representação interna da rotina seguido de "' já definida." e o endereço local desta rotina;
+    Apresente a mensagem de erro contendo "Erro #39. Rotina para que se '" junto com a representação interna da rotina seguido de "' já definida." e o endereço local desta rotina;
     Retorne. \ not translated - no possessives em Spanish
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas.
   Mova o percorredor (usando diretrizes de compilação).
   Se o segmento inicial deste percorredor não for algum artigo indefinido,
-    Apresente a mensagem de erro contendo "Erro #56. Necessário artigo indefinido. Encontrado '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #40. Necessário artigo indefinido. Encontrado '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor;
     Retorne. \ not translated - no possessives em Spanish
   Compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor (artigo indefinido).
   Se o segmento inicial deste percorredor não estiver em branco,
-    Apresente a mensagem de erro contendo "Erro #57. Encontrado comandos extras no fim da função." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #41. Encontrado comandos extras no fim desta rotina." e o percorredor;
     Retorne. \ not translated - no possessives em Spanish
   Converta as unidades semânticas desta rotina para a representação interna da rotina desta rotina.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas. \ para employs
@@ -1988,7 +2008,7 @@ Rotina para que se compile o cabeçalho referente para uma rotina usando um perco
   Compile as unidades semânticas desta rotina e os parâmetros desta rotina usando o percorredor.
   Converta as unidades semânticas desta rotina para a representação interna da rotina desta rotina.
   Se a representação interna da rotina desta rotina estiver no catálogo geral de rotinas,
-    Apresente uma mensagem de erro contendo "Erro #58. Rotina para que se '" junto com a representação interna da rotina desta rotina seguido de "' já codificada." e o endereço local desta rotinas;
+    Apresente uma mensagem de erro contendo "Erro #42. Rotina para que se '" junto com a representação interna da rotina desta rotina seguido de "' já codificada." e o endereço local desta rotinas;
     Retorne.
   Catalogue a rotina usando as unidades semânticas desta rotina e o catálogo geral de rotinas.
 
@@ -1996,7 +2016,7 @@ Rotina para que se compile os cabelalhos referente para umas rotinas:
   Se existir algum problema de compilação, retorne.
   Obtenha uma rotina desde as rotinas.
   Se a rotina for inexistente, retorne.
-  Compile o cabeçalho referente para a rotina.
+  Compile o cabeçalho referente à rotina.
   Reitere. [Execute novamente o código]
 
 Rotina para que se compile um valor literal usando um percorredor:
@@ -2015,7 +2035,7 @@ Rotina para que se compile um valor literal usando um percorredor:
   Se o segmento inicial deste percorredor for algum string literal,
     Compile o valor literal usando o percorredor (cadeia de caracteres);
     Retorne.
-  Apresente uma mensagem de erro contendo "Erro interno #11 - Consulte a rotina para que se compile um termo usando um percorredor (valor literal)" e o percorredor.
+  Apresente uma mensagem de erro contendo "Erro interno #43. O valor '" junto com o segmento inicial deste percorredor  seguido de "' não pode ser compilado." e o percorredor.
 
 Rotina para que se compile um valor literal usando um percorredor (valores booleanos):
   Se existir algum problema de compilação, retorne.
@@ -2023,7 +2043,7 @@ Rotina para que se compile um valor literal usando um percorredor (valores boole
   Converta o detector para os data deste valor literal.
   Mova o percorredor (usando diretrizes de compilação).
   Atribua "detector" ao nome do tipo deste valor literal.
-  Destrinche o valor literal. \ Que tal utilizar os termos "decifre", "traduza", "destrinche", "decodifique"?
+  Destrinche o valor literal. \ 
 
 Rotina para que se compile um valor literal usando um percorredor (valores hexadecimais):
   Se existir algum problema de compilação, retorne.
@@ -2057,16 +2077,17 @@ Rotina para que se compile um valor literal usando um percorredor (valor numéric
   Examine um nome usando o percorredor.
   Encontre um tipo usando o nome e o catálogo de tipos.
   Se o tipo for inexistente,
-    Apresente uma mensagem de erro contendo "Erro #59. O(A) '" junto com o nome seguido de "' é uma unidade de medida inexistente." e o endereço local deste valor literal;
+    Apresente uma mensagem de erro contendo "Erro #44. O tipo '" junto com o nome seguido de "' é uma unidade de medida inexistente." e o endereço local deste valor literal;
     Retorne.
   Se o tipo não puder ser reduzido para "número",
-    Apresente a mensagem de erro contendo "Erro #60. O(A) '" junto com o nome seguido de "' é uma unidade de medida inválida." e o endereço local deste valor literal;
+    Apresente a mensagem de erro contendo "Erro #55. O tipo '" junto com o nome seguido de "' não é um valor numérico válido." e o endereço local deste valor literal;
     Retorne.
   Atribua a razão de escala deste tipo para um final proporção.
   Se a razão de escala deste tipo for 0, atribua 1/1 ao final proporção.
   Multiplique o final proporção pelo proporção.
   Reduza o final proporção.
-  Se o denominador deste final proporção for 0, apresente a mensagem de erro contendo "Erro #61. Denominador igual a zero. Unidade de medida inválida." e o endereço local deste valor literal.
+  Se o denominador deste final proporção for 0, 
+    Apresente a mensagem de erro contendo "Erro #56. Denominador igual a zero. Unidade de medida inválida." e o endereço local deste valor literal.
   Atribua o numerador deste final proporção dividido pelo denominador deste final proporção para um número.
   Atribua o nome deste tipo ao nome do tipo deste valor literal.
   Converta o número para o data deste valor literal.
@@ -4126,7 +4147,7 @@ Rotina para que se determine se um tipo é valor empilhável:
   Se a quantidade de caracteres deste tipo for 1, diga sim.
 [Se as condições acima não puderem ser satisfeitas, então:] Diga não.
 
-Rotina para que se determine se um tipo deveria ser finalizado:[se o compilador deveria liberar a memória alocada para algum tipo]
+Rotina para que se determine se um tipo deveria ser finalizado: [determina se o compilador deveria liberar a memória alocada para algum tipo]
   \The frase "should be finalized" means "ought to be/needs to be automatically deallocated".
   Se o tipo for inexistente, diga não.
   Se o tipo puder ser reduzido para "subtexto", diga não.\ substrings point to (parts referente para) real strings that get deallocated elsewhere
