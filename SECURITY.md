@@ -12,10 +12,6 @@ estão sendo atualmente suportadas com atualizações de segurança.
 | CEL-1000    | Estável ✔️ |
 
 
-## Relatando uma vulnerabilidade
+## Vulnerabilidades
 
-Esta seção serve para informar às pessoas como relatar uma vulnerabilidade.
-
-Esta seção serve para que você saiba para onde ir, 
-com que frequência pode esperar obter uma atualização sobre uma vulnerabilidade relatada,
-o que esperar se a vulnerabilidade for aceita ou recusada, etc.
+Até o momento todas as vulnerabilidades encontradas foram corrigidas.
