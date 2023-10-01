@@ -9,7 +9,7 @@ estão sendo atualmente suportadas com atualizações de segurança.
 | ------- | ------------------ |
 | CAL-4700    | Estável ✔️ |
 | SAL-1016    | Estável ✔️ |
-| CEL         | Instável ❎ |
+| CEL-1000    | Estável ✔️ |
 
 
 ## Relatando uma vulnerabilidade
