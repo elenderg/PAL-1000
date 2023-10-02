@@ -1890,21 +1890,26 @@ Rotina para que se converta uma string para um detector:
   [Se o texto informado não for nenhuma dessas opções, então:]
   Desative o detector.
 
+Um subtexto numérico é um subtexto.
+Um subtexto fracionário é um subtexto.
+Um numerador textual é um subtexto.
+Um denominador textual é um subtexto.
+
 Rotina para que se converta uma string para uma fração:
   Limpe a fração.
   Se a string estiver em branco, retorne.
-  Se a string for algum integer,
+  Se a string for algum inteiro,
     Converta a string para o numerador desta fração;
     Retorne.
   Lance um subtexto sobre a string.
   Se o conteúdo deste caractere inicial deste subtexto for algum sinal aritmético, adicione 1 para o caractere inicial deste subtexto.
   Se o subtexto estiver em branco, retorne.
-  Subdivida o subtexto em um integer subtexto e uma fração subtexto usando o hífem.
-  Se o integer subtexto estiver em branco, atribua o subtexto à fração subtexto.
-  Subdivida a fração subtexto em um numerador subtexto e um denominador subtexto usando o slash byte.
-  Converta o integer subtexto para um número inteiro.
-  Converta o numerador subtexto para um numerador número.
-  Converta o denominador subtexto para um denominador número.
+  Subdivida o subtexto em um subtexto numérico e uma subtexto fracionário usando o hífem. \ Insere o hífem no meio do número misto
+  Se o subtexto numérico estiver em branco, atribua o subtexto ao subtexto fracionário.
+  Subdivida a subtexto fracionário em um numerador textual e um denominador textual usando o barra inclinada.
+  Converta o subtexto numérico para um número inteiro.
+  Converta o numerador textual para um numerador número.
+  Converta o denominador textual para um denominador número.
   Se o número inteiro for negativo, retorne.
   Se o numerador número for negativo, retorne.
   Se o denominador número for negativo, retorne.
@@ -2985,7 +2990,7 @@ Rotina para que se determine se uma caixa está tocando uma segunda caixa:
 
 Rotina para que se determine se um byte é alfanumérico:
   Se o byte for algum letra, diga sim.
-  Se o byte for algum digit, diga sim.
+  Se o byte for algum dígito, diga sim.
   [Caso contrário,] Diga não.
 
 Rotina para que se determine se um byte é um segundo byte ou um terceiro byte:
@@ -2997,7 +3002,7 @@ Rotina para que se determine se um byte é alguma consoante:
   Se o byte estiver em "bcdfghjklmnpqrstvwxyzçñ", diga sim.
   [Caso contrário,] Diga não.
 
-Rotina para que se determine se um byte é algum digit:
+Rotina para que se determine se um byte é algum dígito:
   Se o byte for menor do que o número zero, diga não.
   Se o byte for maior do que o número nove, diga não.
   [Caso contrário,] Diga sim.
@@ -3015,7 +3020,7 @@ Rotina para que se determine se um byte é algum letra:
   [Caso contrário,] Diga não.
 
 Rotina para que se determine se um byte é algum indicador numérico:
-  Se o byte é algum digit, diga sim.
+  Se o byte é algum dígito, diga sim.
   Se o byte é algum sinal aritmético, diga sim.
   [Caso contrário,] Diga não.
 
@@ -3108,7 +3113,7 @@ Rotina para que se determine se um byte é uma string:
   [Caso contrário,] Diga não.
 
 Rotina para que se determine se um byte é symbolic:
-  Se o byte estiver entre o ponto de exclamação e o slash byte, diga sim.
+  Se o byte estiver entre o ponto de exclamação e o barra inclinada, diga sim.
   Se o byte estiver entre o sinal de dois pontos e o sinal de arroba, diga sim.
   Se o byte estiver entre o colchete esquerdo e o acento grave, diga sim.
   Se o byte estiver entre o chave esquerda e o acento til, diga sim.
@@ -3351,7 +3356,7 @@ Rotina para que se determine se um item é encontrado:
   Se a categoria deste item não estiver em branco, diga sim.
   [Caso contrário,] Diga não.
 
-Rotina para que se determine se uma tecla é algum digit tecla:
+Rotina para que se determine se uma tecla é algum dígito tecla:
   Se a tecla estiver entre 48 e 57, diga sim.
   [Caso contrário,] Diga não.
 
@@ -3371,7 +3376,7 @@ Rotina para que se determine se uma tecla é algum pad tecla:
 
 Rotina para que se determine se uma tecla é algum tecla imprimível:
   Se a tecla for o barra de espaço, diga sim.
-  Se a tecla for algum digit tecla, diga sim.
+  Se a tecla for algum dígito tecla, diga sim.
   Se a tecla for algum letra tecla, diga sim.
   Se a tecla for algum pad tecla, diga sim.
   Se a tecla for algum símbolo tecla, diga sim.
@@ -3919,31 +3924,19 @@ Rotina para que se determine se uma string é algum proporção literal:
   Se o subtexto estiver em branco, diga não.
   Se o conteúdo deste caractere inicial deste subtexto não for algum indicador numérico, diga não.
   Se o conteúdo deste caractere inicial deste subtexto for algum sinal aritmético, adicione 1 para o caractere inicial deste subtexto.
-  Subdivida o subtexto em um numerador subtexto e um denominador subtexto usando o slash byte.
-  Se o numerador subtexto não for algum integer literal, diga não.
-  Se o denominador subtexto não for algum integer literal, diga não.
+  Subdivida o subtexto em um numerador textual e um denominador textual usando o barra inclinada.
+  Se o numerador textual não for algum número inteiro, diga não.
+  Se o denominador textual não for algum número inteiro, diga não.
   [Caso contrário,] Diga sim.
 
-\Rotina para que se determine se uma string é algum inteiro:
-\ parece ser uma duplicata da rotina abaixo
-\Lance um subtexto sobre a string.
-\Se o subtexto estiver em branco, diga não.
-\Se o conteúdo deste caractere inicial deste subtexto for algum sinal aritmético, adicione 1 para o caractere inicial deste subtexto.
-\Se o subtexto estiver em branco, diga não.
-\Itere. [o código a seguir]
- \Se o conteúdo deste caractere inicial deste subtexto não for algum digit, diga não.
- \Adicione 1 para o caractere inicial deste subtexto.
-\Se o subtexto estiver em branco, diga sim.
-\Reitere. [Execute novamente o código]
-
-Rotina para que se determine se uma string é algum integer;
-Rotina para que se determine se uma string é algum integer literal:
+Rotina para que se determine se uma string é algum inteiro;
+Rotina para que se determine se uma string é algum número inteiro:
   Lance um subtexto sobre a string.
   Se o subtexto estiver em branco, diga não.
   Se o conteúdo deste caractere inicial deste subtexto for algum sinal aritmético, adicione 1 para o caractere inicial deste subtexto.
   Se o subtexto estiver em branco, diga não.
   Itere. [o código a seguir]
-    Se o conteúdo deste caractere inicial deste subtexto não for algum digit, diga não.
+    Se o conteúdo deste caractere inicial deste subtexto não for algum dígito, diga não.
     Adicione 1 para o caractere inicial deste subtexto.
     Se o subtexto estiver em branco, diga sim.
   Reitere. [Execute novamente o código]
@@ -3953,15 +3946,15 @@ Rotina para que se determine se uma string é algum numeral misto literal:
   Se o subtexto estiver em branco, diga não.
   Se o conteúdo deste caractere inicial deste subtexto não for algum indicador numérico, diga não.
   Se o conteúdo deste caractere inicial deste subtexto for algum sinal aritmético, adicione 1 para o caractere inicial deste subtexto.
-  Subdivida o subtexto em um integer subtexto e uma fração subtexto usando o hífem.
-  Se o integer subtexto não for algum integer literal, diga não.
-  Se a fração subtexto não for algum fração literal, diga não.
+  Subdivida o subtexto em um subtexto numérico e uma subtexto fracionário usando o hífem.
+  Se o subtexto numérico não for algum número inteiro, diga não.
+  Se a subtexto fracionário não for algum fração literal, diga não.
   [Caso contrário,] Diga sim.
 
 Rotina para que se determine se uma string é algum valor numérico literal:
   Se a string estiver em branco, diga não.
   Se o conteúdo deste caractere inicial desta string não for algum indicador numérico, diga não.
-  Se a string é algum integer literal, diga sim.
+  Se a string é algum número inteiro, diga sim.
   Se a string é algum fração literal, diga sim.
   Se a string é algum numeral misto literal, diga sim.
   [Caso contrário,] Diga não.
@@ -3971,7 +3964,7 @@ Rotina para que se determine se uma string é algum sinal aritmético:
   Se o conteúdo deste caractere inicial desta string é algum sinal aritmético, diga sim.
   [Caso contrário,] Diga não.
 
-Rotina para que se determine se uma string é algum palavra:
+Rotina para que se determine se uma string é alguma palavra:
   Se a quantidade de caracteres desta string for menor do que 2, diga não.
   Lance um subtexto sobre a string.
   Subtraia 1 desde o caractere inicial deste subtexto.
@@ -3982,20 +3975,19 @@ Rotina para que se determine se uma string é algum palavra:
     Se o conteúdo deste caractere inicial deste subtexto for o single-quote byte, reitere.
   [Caso contrário,] Diga não.
 
-
-
+Rotina para que se determine se uma string é igual para um byte;
 Rotina para que se determine se uma string é um byte:
   Se a quantidade de caracteres desta string não for 1, diga não.
-  Se o conteúdo deste caractere inicial desta string é o byte, diga sim.
+  Se o conteúdo deste caractere inicial desta string for o byte, diga sim.
   [Caso contrário,] Diga não.
 
-Rotina para que se determine se uma string é dos-compatible:
+Rotina para que se determine se uma string é compatível c/ o DOS:
   Se a string estiver em branco, diga não.
   Se o conteúdo deste caractere inicial desta string é o ponto final, diga não.
   Lance um subtexto sobre a string.
   Itere. [o código a seguir]
     Se o subtexto estiver em branco, diga sim.
-    Se o conteúdo deste caractere inicial deste subtexto for o slash byte, diga não.
+    Se o conteúdo deste caractere inicial deste subtexto for o barra inclinada, diga não.
     Se o conteúdo deste caractere inicial deste subtexto for a barra invertida, diga não.
     Se o conteúdo deste caractere inicial deste subtexto for o sinal de dois pontos, diga não.
     Se o conteúdo deste caractere inicial deste subtexto for o asterisco, diga não.
@@ -4052,7 +4044,7 @@ Rotina para que se determine se uma string é menor ou igual para uma segunda str
 \ needs work por Spanish
 Rotina para que se determine se uma string está escrito incorretamente:
   Se o dicionário léxico for inexistente, diga não.
-  Se a string não for algum palavra, diga não.
+  Se a string não for alguma palavra, diga não.
   Preserve a string.
   Se a string termina com "'s", remova os dois últimos caracteres desde a string.
   Se a string estiver no catálogo deste dicionário léxico, diga não.
@@ -4135,7 +4127,7 @@ Rotina para que se determine se um segmento inicial é numeric:
   Se o segmento inicial estiver em branco, diga não.
   Itere. [o código a seguir]
     Obtenha um byte desde o segmento inicial.
-    Se o byte não for algum digit, diga não.
+    Se o byte não for algum dígito, diga não.
     Se o segmento inicial estiver em branco, diga sim.
   Reitere. [Execute novamente o código]
 
@@ -12411,7 +12403,7 @@ O sinal de subtração é um byte igual a 45.
 O sinal de hífem é um byte igual a 45.
 O símbolo hífem é um byte igual a 45.
 O ponto final é um byte igual a 46.
-O slash byte é um byte igual a 47.
+A barra inclinada é um byte igual a 47.
 O número zero é um byte igual a 48.
 O número hum é um byte igual a 49.
 O número 'um' é um byte igual a 49.
@@ -12960,7 +12952,7 @@ Rotina para que se pinte um byte:
   Se o byte for o ponto de interrogação, pinte o ponto de interrogação.
   Se o byte for o ponto&vírgula, pinte o semi-colon caractere.
   Se o byte for o single-quote byte, pinte o single-quote caractere.
-  Se o byte for o slash byte, pinte o slash caractere.
+  Se o byte for o barra inclinada, pinte o slash caractere.
   Se o byte for o acento til, pinte o tilde caractere.
   Se o byte for o underline, pinte o underscore caractere.
   Se o byte for o barra vertical, pinte o vertical-bar caractere.
