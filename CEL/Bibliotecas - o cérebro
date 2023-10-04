@@ -16784,25 +16784,30 @@ Um marcador pdf é uma lista com
   Um objeto pdf (referência),
   Um título de índice remissivo,
   Uma altura da página,
-  Um destination número.
+  Um número denominado destinação.
+
+Um marcador do pdf é um objeto pdf.
+Um objeto da raiz é um objeto pdf.
+Uns conteúdos atuais são uns objeto pdf.
+Uma altura atual é uma altura.
 
 Um pdf state é uma estrutura com
   Um endereço pdf,
-  Um documento detector,
-  Um página detector,
-  Um object número,
+  Um detector denominado detector de documentos,
+  Um detector denominado detector de páginas,
+  Um número denominado número do objeto,
   Uns objetos pdfs denominados objetos,
-  Um xref offset,
-  Um outline objeto pdf (referência),
+  Um offset denominado deslocamento da tabela XREF,
+  Um marcador do pdf (referência),
   Uns marcadores pdfs denominados marcadores,
-  Um root objeto pdf (referência),
-  Um parent objeto pdf (referência),
-  Um current contents objeto pdf (referência),
-  Um current página objeto pdf (referência),
-  Um current altura,
+  Um objeto da raiz (referência),
+  Um objeto pai (referência),
+  Um conteúdos atuais (referência),
+  Um objeto pdf denominado página atual (referência),
+  Uma altura atual,
   Uma cor da borda atual,
   Uma cor de preenchimento atual,
-  Um fonte catálogo.
+  Um catálogo denominado catálogo de fontes.
 
 \Rotina para que se transcreva a borda do pdf usando uma cor:
 \  Se a cor for a cor da borda atual deste pdf state, retorne.
@@ -16833,13 +16838,13 @@ Rotina para que se atribua umas larguras de fonte para um trecho:
 
 Rotina para que se transcreva uma localização sem passar pra próxima linha:
   Transcreva a coordenada X desta localização sem passar pra próxima linha.
-  Transcreva a current altura deste pdf state menos a coordenada Y desta localização sem passar pra próxima linha.
+  Transcreva a altura atual deste pdf state menos a coordenada Y desta localização sem passar pra próxima linha.
 
 Rotina para que se transcreva uma string:
-  Acrescente a string para os current contents deste pdf state.
+  Acrescente a string para os conteúdos atuais deste pdf state.
 
 Rotina para que se transcreva uma string sem passar pra próxima linha:
-  Acrescente a string para os current contents deste pdf state sem passar pra próxima linha.
+  Acrescente a string para os conteúdos atuais deste pdf state sem passar pra próxima linha.
 
 Rotina para que se transcreva o borda do pdf usando uma cor:
   Se a cor for a cor da borda atual deste pdf state, retorne.
@@ -16860,7 +16865,7 @@ Rotina para que se transcreva setcolor usando uma cor da borda e uma cor de pree
     Transcreva o borda do pdf usando a cor da borda.
 
 Rotina para que se include uma fonte no current pdf:
-  Encontre um objeto pdf usando o nome desta fonte e a fonte catálogo deste pdf state.
+  Encontre um objeto pdf usando o nome desta fonte e a catálogo de fontes deste pdf state.
   Se o objeto pdf não for inexistente, retorne.
   Crie uma definição da fonte usando a fonte.
   Converta a definição da fonte para pdf em units.
@@ -16916,11 +16921,11 @@ Rotina para que se include uma fonte no current pdf:
   Acrescente ">>" para a definition.
   Acrescente "endobj" para a definition.
   Atribua a definição da fonte à definição da fonte desta definition.
-  Catalogue a definition usando o nome desta fonte e a fonte catálogo deste pdf state.
+  Catalogue a definition usando o nome desta fonte e a catálogo de fontes deste pdf state.
 
 Rotina para que se include uma fonte em um objeto pdf:
   Se o objeto pdf for inexistente, retorne.
-  Encontre uma fonte objeto pdf usando o nome desta fonte e a fonte catálogo deste pdf state.
+  Encontre uma fonte objeto pdf usando o nome desta fonte e a catálogo de fontes deste pdf state.
   Se a fonte objeto pdf for inexistente, retorne.
   Atribua "/" junto com o nome da fonte deste fonte objeto pdf seguido de " " junto com o número deste fonte objeto pdf seguido de " 0 R" para uma string.
   Encontre um conjunto de texto usando a string e os textos de fonte deste objeto pdf.
@@ -16937,7 +16942,7 @@ Rotina para que se encontre um objeto pdf usando um categoria:
   Reitere. [Execute novamente o código]
 
 Rotina para que se end uma folha (modo pdf - finalização da do conteúdo atual):
-  Atribua os current contents deste pdf state para um content objeto pdf.
+  Atribua os conteúdos atuais deste pdf state para um content objeto pdf.
   Atribua os data deste content para um trecho.
   Limpe os data deste content.
   Acrescente o número deste content seguido de " 0 obj" para o content.
@@ -16946,10 +16951,10 @@ Rotina para que se end uma folha (modo pdf - finalização da do conteúdo atual):
   Acrescente o trecho para os data deste content.
   Acrescente "endstream" para o content.
   Acrescente "endobj" para o content.
-  Desative a página detector deste pdf state.
+  Desative a detector de páginas deste pdf state.
 
 Rotina para que se end uma folha (modo pdf - finalização da página atual - fontes):
-  Atribua a current página deste pdf state para uma página objeto pdf.
+  Atribua a página atual deste pdf state para uma página objeto pdf.
   Se as textos de fonte desta página estiverem vazias, retorne.
   Acrescente "/Font <<" para a página sem passar pra próxima linha.
   Itere. [o código a seguir]
@@ -16962,7 +16967,7 @@ Rotina para que se end uma folha (modo pdf - finalização da página atual - fonte
   Acrescente ">>" para a página.
 
 Rotina para que se end uma folha (modo pdf - finalização da página atual - recursos):
-  Atribua a current página deste pdf state para uma página objeto pdf.
+  Atribua a página atual deste pdf state para uma página objeto pdf.
   Se as textos de imagem desta página estiverem vazias, retorne.
   Acrescente "/XObject <<" para a página sem passar pra próxima linha.
   Itere. [o código a seguir]
@@ -16975,7 +16980,7 @@ Rotina para que se end uma folha (modo pdf - finalização da página atual - recur
   Acrescente ">>" para a página.
 
 Rotina para que se end uma folha (modo pdf - finalização da página atual):
-  Atribua a current página deste pdf state para uma página objeto pdf.
+  Atribua a página atual deste pdf state para uma página objeto pdf.
   Acrescente "/Resources" para a página.
   Acrescente "<<" para a página.
   Acrescente "/ProcSet [/PDF /Text /ImageC]" para a página.
@@ -16990,7 +16995,7 @@ Rotina para que se end uma folha (modo pdf):
   End a folha (modo pdf - finalização da do conteúdo atual).
 
 Rotina para que se end printing:
-  Se o documento detector deste pdf state estiver ativo,
+  Se o detector de documentos deste pdf state estiver ativo,
     End printing (modo pdf);
     Retorne.
   Processe "gdi32.dll" "EndDoc" com \ Termina um trabalho de impressão.
@@ -16999,7 +17004,7 @@ Rotina para que se end printing:
   Finalize a área de impressão.
 
 Rotina para que se end printing (modo pdf):
-  Se o documento detector deste pdf state não estiver ativo, retorne.
+  Se o detector de documentos deste pdf state não estiver ativo, retorne.
   End printing o conteúdo deste endereço pdf deste pdf state.
 
 Rotina para que se end printing um pdf:
@@ -17012,14 +17017,14 @@ Rotina para que se end printing um pdf:
   End printing o pdf (inserção de tabela XREF).
   End printing o pdf (inserção do trailer).
   End printing o pdf (inserção de rodapé).
-  Destrua a fonte catálogo deste pdf state.
+  Destrua a catálogo de fontes deste pdf state.
   Destrua os marcadores deste pdf state.
   Destrua os objetos deste pdf state.
-  Desative o documento detector deste pdf state.
+  Desative o detector de documentos deste pdf state.
 
 Rotina para que se end printing um pdf (inserção de rodapé):
   Acrescente "startxref" junto com o texto CRLF para o pdf.
-  Acrescente o xref offset deste pdf state junto com o texto CRLF para o pdf.
+  Acrescente o deslocamento da tabela XREF deste pdf state junto com o texto CRLF para o pdf.
   Acrescente "%%EOF" para o pdf.
 
 Rotina para que se end printing um pdf (inserção de cabeçalho):
@@ -17045,40 +17050,40 @@ Rotina para que se end printing um pdf (inserção de marcadores):
     Acrescente "<<" para o object.
     Converta o título de índice remissivo deste marcador pdf para um string pdf.
     Acrescente "/Title " junto com o string pdf para o object.
-    Acrescente "/Parent " junto com o número deste outline objeto pdf deste pdf state seguido de " 0 R" para o object.
+    Acrescente "/Parent " junto com o número deste marcador do pdf deste pdf state seguido de " 0 R" para o object.
     Se o próximo marcador pdf desta marcador pdf não for inexistente, acrescente "/Next " junto com o número deste objeto pdf deste próximo marcador pdf desta marcador pdf seguido de " 0 R" para o object.
     Se o precedente marcador pdf desta marcador pdf não for inexistente, acrescente "/Prev " junto com o número deste objeto pdf deste precedente marcador pdf desta marcador pdf seguido de " 0 R" para o object.
-    Acrescente "/Dest [" junto com o destination deste marcador pdf seguido de " 0 R /XYZ null " junto com a altura da página deste marcador pdf seguido de " null]" para o object.
+    Acrescente "/Dest [" junto com a destinação deste marcador pdf seguido de " 0 R /XYZ null " junto com a altura da página deste marcador pdf seguido de " null]" para o object.
     Acrescente ">>" para o object.
     Acrescente "endobj" para o object.
   Reitere. [Execute novamente o código]
 
 Rotina para que se end printing um pdf (inserção de índice):
-  Esvazie o outline objeto pdf deste pdf state.
+  Esvazie o marcador do pdf deste pdf state.
   Se os marcadores deste pdf state estiverem vazios, retorne.
-  Adicione um outline objeto pdf usando "outline".
-  Atribua o outline objeto pdf ao outline objeto pdf deste pdf state.
+  Adicione um marcador do pdf usando "outline".
+  Atribua o marcador do pdf ao marcador do pdf deste pdf state.
   End printing o pdf (inserção de marcadores).
-  Acrescente o número deste outline objeto pdf seguido de " 0 obj" para o outline objeto pdf.
-  Acrescente "<<" para o outline objeto pdf.
-  Acrescente "/Type /Outlines" para o outline objeto pdf.
-  Acrescente "/First " junto com o número deste objeto pdf deste primeiro marcador pdf destes marcadores deste pdf state seguido de " 0 R" para o outline objeto pdf.
-  Acrescente "/Last " junto com o número deste objeto pdf deste último marcador pdf destes marcadores deste pdf state seguido de " 0 R" para o outline objeto pdf .
-  Acrescente "/Count " junto com a contagem destes marcadores deste pdf state para o outline objeto pdf.
-  Acrescente ">>" para o outline objeto pdf.
-  Acrescente "endobj" para o outline objeto pdf.
+  Acrescente o número deste marcador do pdf seguido de " 0 obj" para o marcador do pdf.
+  Acrescente "<<" para o marcador do pdf.
+  Acrescente "/Type /Outlines" para o marcador do pdf.
+  Acrescente "/First " junto com o número deste objeto pdf deste primeiro marcador pdf destes marcadores deste pdf state seguido de " 0 R" para o marcador do pdf.
+  Acrescente "/Last " junto com o número deste objeto pdf deste último marcador pdf destes marcadores deste pdf state seguido de " 0 R" para o marcador do pdf .
+  Acrescente "/Count " junto com a contagem destes marcadores deste pdf state para o marcador do pdf.
+  Acrescente ">>" para o marcador do pdf.
+  Acrescente "endobj" para o marcador do pdf.
 
 Rotina para que se end printing um pdf (inserção do trailer):
   Acrescente "trailer" junto com o texto CRLF para o pdf.
   Acrescente "<<" junto com o texto CRLF para o pdf.
   Atribua a contagem destes objetos deste pdf state mais 1 para uma contagem.
   Acrescente "/Size " junto com a contagem junto com o texto CRLF para o pdf.
-  Acrescente "/Root " junto com o número deste root deste pdf state seguido de " 0 R" junto com o texto CRLF para o pdf.
+  Acrescente "/Root " junto com o número deste objeto da raiz deste pdf state seguido de " 0 R" junto com o texto CRLF para o pdf.
   Acrescente ">>" junto com o texto CRLF para o pdf.
   Acrescente o texto CRLF para o pdf.
 
 Rotina para que se end printing um pdf (inserção de tabela XREF):
-  Atribua a quantidade de caracteres deste pdf ao xref offset deste pdf state.
+  Atribua a quantidade de caracteres deste pdf ao deslocamento da tabela XREF deste pdf state.
   Acrescente "xref" junto com o texto CRLF para o pdf.
   Atribua a contagem destes objetos deste pdf state mais 1 para uma contagem.
   Acrescente "0 " junto com a contagem junto com o texto CRLF para o pdf.
@@ -17091,33 +17096,35 @@ Rotina para que se end printing um pdf (inserção de tabela XREF):
   Reitere. [Execute novamente o código]
   Acrescente o texto CRLF para o pdf.
 
+Um objeto pai é um objeto pdf.
+
 Rotina para que se end printing um pdf (finalização do objeto pai):
-  Atribua o parent deste pdf state para um parent objeto pdf.
-  Acrescente "/Kids [" para o parent sem passar pra próxima linha.
+  Atribua o objeto pai deste pdf state para um objeto pai.
+  Acrescente "/Kids [" para o objeto pai sem passar pra próxima linha.
   Itere. [o código a seguir]
     Obtenha um objeto pdf desde os objetos deste pdf state.
     Se o objeto pdf for inexistente, pare.
     Se a categoria deste objeto pdf não for "page", reitere.
-    Se um detector estiver ativo, acrescente " " para o parent sem passar pra próxima linha.
-    Acrescente o número deste objeto pdf seguido de " 0 R" para o parent sem passar pra próxima linha.
+    Se um detector estiver ativo, acrescente " " para o objeto pai sem passar pra próxima linha.
+    Acrescente o número deste objeto pdf seguido de " 0 R" para o objeto pai sem passar pra próxima linha.
     Ative o detector.
     Adicione 1 para uma contagem.
-    Se a contagem for uniformemente divisível por 20, acrescente o texto CRLF seguido de " " para o parent sem passar pra próxima linha.
+    Se a contagem for uniformemente divisível por 20, acrescente o texto CRLF seguido de " " para o objeto pai sem passar pra próxima linha.
   Reitere. [Execute novamente o código]
-  Acrescente "]" para o parent.
-  Acrescente "/Count " junto com a contagem para o parent.
-  Acrescente ">>" para o parent.
-  Acrescente "endobj" para o parent.
+  Acrescente "]" para o objeto pai.
+  Acrescente "/Count " junto com a contagem para o objeto pai.
+  Acrescente ">>" para o objeto pai.
+  Acrescente "endobj" para o objeto pai.
 
 Rotina para que se end printing um pdf (finalização do objeto raiz):
-  Atribua o root deste pdf state para um root objeto pdf.
-  Acrescente "/Pages " junto com o número deste parent deste pdf state seguido de " 0 R" para o root.
+  Atribua o objeto da raiz deste pdf state para um objeto da raiz.
+  Acrescente "/Pages " junto com o número deste objeto pai deste pdf state seguido de " 0 R" para o objeto da raiz.
   Encontre um objeto pdf usando "page".
-  Acrescente "/OpenAction [" junto com o número deste objeto pdf seguido de " 0 R /XYZ null null 1]" para o root.
-  Acrescente "/PageMode /UseNone" para o root.
-  Se o outline objeto pdf deste pdf state não for inexistente, acrescente "/Outlines " junto com o número deste outline objeto pdf deste pdf state seguido de " 0 R" para o root.
-  Acrescente ">>" para o root.
-  Acrescente "endobj" para o root.
+  Acrescente "/OpenAction [" junto com o número deste objeto pdf seguido de " 0 R /XYZ null null 1]" para o objeto da raiz.
+  Acrescente "/PageMode /UseNone" para o objeto da raiz.
+  Se o marcador do pdf deste pdf state não for inexistente, acrescente "/Outlines " junto com o número deste marcador do pdf deste pdf state seguido de " 0 R" para o objeto da raiz.
+  Acrescente ">>" para o objeto da raiz.
+  Acrescente "endobj" para o objeto da raiz.
 
 Rotina para que se end printing um pdf (deslocamento e inserção de objetos):
   Obtenha um objeto pdf desde os objetos deste pdf state.
@@ -17131,8 +17138,8 @@ Rotina para que se pinte uma string sob uma localização com uma cor e uma fonte 
   Se a string estiver em branco, retorne.
   Preserve a localização.
   Include a fonte no current pdf.
-  Include a fonte na current página deste pdf state.
-  Encontre um definition objeto pdf usando o nome desta fonte e a fonte catálogo deste pdf state.
+  Include a fonte na página atual deste pdf state.
+  Encontre um definition objeto pdf usando o nome desta fonte e a catálogo de fontes deste pdf state.
   Se o definition for inexistente, retorne. \ erro
   Crie uma definição da fonte usando a fonte e a string.
   Transcreva o borda do pdf usando a cor.
@@ -17153,7 +17160,7 @@ Rotina para que se pinte uma string sob uma localização com uma cor e uma fonte 
   Destrua a definição da fonte.
 
 Rotina para que se pinte uma string sob uma localização com uma cor e uma fonte:
-  Se a página detector deste pdf state estiver ativo,
+  Se a detector de páginas deste pdf state estiver ativo,
     Pinte a string sob a localização com a cor e a fonte (modo pdf);
     Retorne.
   Defina o código da cor de o contexto do dispositivo atual usando a cor.
@@ -17209,7 +17216,7 @@ Rotina para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
   Transcreva stroke e preencha usando a cor da borda e a cor de preenchimento.
 
 Rotina para que se pinte uma caixa arredondada com uma cor da borda e uma cor de preenchimento:
-  Se a página detector deste pdf state estiver ativo,
+  Se a detector de páginas deste pdf state estiver ativo,
     Pinte a caixa arredondada com a cor da borda e a cor de preenchimento (modo pdf);
     Retorne.
   Preserve a caixa arredondada.
@@ -17230,7 +17237,7 @@ Rotina para que se pinte uma caixa arredondada com uma cor da borda e uma cor de
   Destrua o hPen de o contexto do dispositivo atual.
 
 Rotina para que se pinte um polígono com uma cor da borda e uma cor de preenchimento:
-  Se a página detector deste pdf state estiver ativo,
+  Se a detector de páginas deste pdf state estiver ativo,
     Pinte o polígono com a cor da borda e a cor de preenchimento (modo pdf);
     Retorne.
   Se o polígono for inexistente, retorne.
@@ -17302,7 +17309,7 @@ Rotina para que se pinte uma imagem (modo pdf):
     O gpBitmap. [*image]
 
 Rotina para que se pinte uma imagem:
-  Se a página detector deste pdf state estiver ativo,
+  Se a detector de páginas deste pdf state estiver ativo,
     Pinte a imagem (modo pdf);
     Retorne.
   Se a imagem for inexistente, retorne.
@@ -17336,7 +17343,7 @@ Rotina para que se pinte uma linha reta com uma cor (modo pdf):
   Transcreva stroke e preencha usando a cor e a cor preta.
 
 Rotina para que se pinte uma linha reta com uma cor:
-  Se a página detector deste pdf state estiver ativo,
+  Se a detector de páginas deste pdf state estiver ativo,
     Pinte a linha reta com a cor (modo pdf);
     Retorne.
   Crie o hPen de o contexto do dispositivo atual usando a cor.
@@ -17365,10 +17372,10 @@ Rotina para que se pinte um gpBitmap sob uma localização (modo pdf):
   \ adicione xobject
   Adicione um xobject objeto pdf usando "image object".
   Atribua "I" junto com o número deste xobject para um nome.
-  \ adicione para image resources em current página
+  \ adicione para image resources em página atual
   Atribua "/" junto com o nome seguido de " " junto com o número deste xobject seguido de " 0 R" para uma string.
   Crie um new conjunto de texto usando a string.
-  Acrescente o new conjunto de texto para os textos de imagem desta current página deste pdf state.
+  Acrescente o new conjunto de texto para os textos de imagem desta página atual deste pdf state.
   \ finish setting para cima xobject
   Acrescente o número deste xobject seguido de " 0 obj" para o xobject.
   Acrescente "<<" para o xobject.
@@ -17387,11 +17394,11 @@ Rotina para que se pinte um gpBitmap sob uma localização (modo pdf):
   Acrescente a cifra hexadecimal para o xobject.
   Acrescente "endstream" para o xobject.
   Acrescente "endobj" para o xobject.
-  \ pinte o image no current contents
+  \ pinte o image no conteúdos atuais
   Atribua a largura deste gpBitmap vezes a quantidade de twips/pixel para uma largura.
   Atribua a altura deste gpBitmap vezes a quantidade de twips/pixel para uma altura.
   Atribua a coordenada X desta localização para um número X.
-  Atribua a current altura deste pdf state menos a coordenada Y desta localização menos a altura para um número Y.
+  Atribua a altura atual deste pdf state menos a coordenada Y desta localização menos a altura para um número Y.
   Transcreva "q".
   Transcreva a largura seguido de " 0 0 " junto com a altura seguido de " " junto com o número X seguido de " " junto com o número Y seguido de " cm".
   Transcreva "/" junto com o nome seguido de " Do".
@@ -17410,7 +17417,7 @@ Rotina para que se pinte uma elipse com uma cor da borda e uma cor de preenchime
   Transcreva stroke e preencha usando a cor da borda e a cor de preenchimento.
 
 Rotina para que se pinte uma elipse com uma cor da borda e uma cor de preenchimento:
-  Se a página detector deste pdf state estiver ativo,
+  Se a detector de páginas deste pdf state estiver ativo,
     Pinte a elipse com a cor da borda e a cor de preenchimento (modo pdf);
     Retorne.
   Preserve a elipse.
@@ -17437,7 +17444,7 @@ Rotina para que se pinte uma caixa com uma cor da borda e uma cor de preenchimen
   Transcreva stroke e preencha usando a cor da borda e a cor de preenchimento.
 
 Rotina para que se pinte uma caixa com uma cor da borda e uma cor de preenchimento:
-  Se a página detector deste pdf state estiver ativo,
+  Se a detector de páginas deste pdf state estiver ativo,
     Pinte a caixa com a cor da borda e a cor de preenchimento (modo pdf);
     Retorne.
   Preserve a caixa.
@@ -17459,11 +17466,13 @@ Rotina para que se crie um objeto pdf usando um categoria:
   Aloque memória para o objeto pdf.
   Atribua a categoria à categoria deste objeto pdf.
 
-Rotina para que se crie um marcador pdf usando um título de índice remissivo e uma altura da página e um destination número:
+Uma destinação numérica é um número.
+
+Rotina para que se crie um marcador pdf usando um título de índice remissivo e uma altura da página e uma destinação numérica:
   Aloque memória para o marcador pdf.
   Atribua o título de índice remissivo ao título de índice remissivo deste marcador pdf.
   Atribua a altura da página à altura da página deste marcador pdf.
-  Atribua o destination ao destination deste marcador pdf.
+  Atribua a destinação numérica para a destinação deste marcador pdf.
 
 Rotina para que se converta uma string para um string pdf:
   Atribua "(" para a string pdf.
@@ -17567,28 +17576,28 @@ Rotina para que se converta uma definição da fonte para pdf em units:
   Permute a coordenada Y1 desta caixa de fonte desta definição da fonte com a coordenada Y2 desta caixa de fonte desta definição da fonte.
   Converta as larguras de fonte desta definição da fonte para pdf em units.
 
-Rotina para que se inicie uma folha usando uma caixa e um título de índice remissivo (pdf style - comece o current página):
-  Adicione o current página deste pdf state usando "page".
-  Acrescente o número desta current página deste pdf state seguido de " 0 obj" para o current página deste pdf state.
-  Acrescente "<<" para o current página deste pdf state.
-  Acrescente "/Type /Page" para o current página deste pdf state.
-  Acrescente "/Parent " junto com o número deste parent deste pdf state seguido de " 0 R" para o current página deste pdf state.
+Rotina para que se inicie uma folha usando uma caixa e um título de índice remissivo (pdf style - comece o página atual):
+  Adicione o página atual deste pdf state usando "page".
+  Acrescente o número desta página atual deste pdf state seguido de " 0 obj" para o página atual deste pdf state.
+  Acrescente "<<" para o página atual deste pdf state.
+  Acrescente "/Type /Page" para o página atual deste pdf state.
+  Acrescente "/Parent " junto com o número deste objeto pai deste pdf state seguido de " 0 R" para a página atual deste pdf state.
   Atribua a largura desta caixa menos a quantidade de twips/pixel vezes 72 / o tpi para uma largura.
   Atribua a altura desta caixa menos a quantidade de twips/pixel vezes 72 / o tpi para uma altura.
-  Acrescente "/MediaBox [0 0 " junto com a largura seguido de " " junto com a altura seguido de "]" para o current página deste pdf state.
-  Atribua a altura desta caixa menos a quantidade de twips/pixel ao current altura deste pdf state.
-  Adicione os current contents deste pdf state usando "contents".
-  Acrescente "/Contents " junto com o número destes current contents deste pdf state seguido de " 0 R" para o current página deste pdf state.
-  Acrescente "0.05 0 0 0.05 1 1 cm" para os current contents deste pdf state. \ open matrix to scale 72/1440
-  Acrescente "13 w 0 J 0 j 0 i" para os current contents deste pdf state. \ penwidth, linecap, linejoin, flatness \ 15 w sobre penwidth comes out to em largura
+  Acrescente "/MediaBox [0 0 " junto com a largura seguido de " " junto com a altura seguido de "]" para a página atual deste pdf state.
+  Atribua a altura desta caixa menos a quantidade de twips/pixel para a altura atual deste pdf state.
+  Adicione os conteúdos atuais deste pdf state usando "contents".
+  Acrescente "/Contents " junto com o número destes conteúdos atuais deste pdf state seguido de " 0 R" para a página atual deste pdf state.
+  Acrescente "0.05 0 0 0.05 1 1 cm" para os conteúdos atuais deste pdf state. \ open matrix to scale 72/1440
+  Acrescente "13 w 0 J 0 j 0 i" para os conteúdos atuais deste pdf state. \ penwidth, linecap, linejoin, flatness \ 15 w sobre penwidth comes out to em largura
 
 Rotina para que se inicie uma folha usando uma caixa e um título de índice remissivo (modo pdf):
-  Ative a página detector deste pdf state.
+  Ative a detector de páginas deste pdf state.
   Atribua a cor preta ao cor da borda atual deste pdf state.
   Atribua a cor preta à cor de preenchimento atual deste pdf state.
-  Inicie a folha usando a caixa e o título de índice remissivo (pdf style - comece o current página).
+  Inicie a folha usando a caixa e o título de índice remissivo (pdf style - comece o página atual).
   Se o título de índice remissivo estiver em branco, retorne.
-  Crie um marcador pdf usando o título de índice remissivo e o current altura deste pdf state e o número desta current página deste pdf state.
+  Crie um marcador pdf usando o título de índice remissivo e o altura atual deste pdf state e o número desta página atual deste pdf state.
   Acrescente o marcador pdf para o marcadores deste pdf state.
 
 Rotina para que se inicie uma folha usando uma caixa (modo pdf):
@@ -17598,7 +17607,7 @@ Rotina para que se inicie uma folha usando uma caixa e um título de índice remis
   Inicie a folha usando a caixa e o título de índice remissivo (modo pdf).
 
 Rotina para que se inicie uma folha usando uma caixa:
-  Se o documento detector deste pdf state estiver ativo,
+  Se o detector de documentos deste pdf state estiver ativo,
     Inicie a folha usando a caixa (modo pdf);
     Retorne.
   Processe "kernel32.dll" "GlobalLock" com \ Bloqueia um objeto de memória global e aumenta a contagem de bloqueios em um.
@@ -17682,35 +17691,35 @@ Rotina para que se inicie uma folha usando uma caixa:
   Atribua o tpi dividido pelo número à quantidade de twips/pixel .
 
 Rotina para que se inicie a impressão um pdf:
-  Ative o documento detector deste pdf state.
-  Atribua 0 ao object número deste pdf state.
-  Crie a fonte catálogo deste pdf state usando 113.
+  Ative o detector de documentos deste pdf state.
+  Atribua 0 ao número do objeto deste pdf state.
+  Crie a catálogo de fontes deste pdf state usando 113.
   Inicie a impressão o pdf (criação do objeto raiz).
   Inicie a impressão o pdf (criação do objeto pai).
 
 Rotina para que se inicie a impressão um pdf (criação do objeto pai):
-  Adicione um parent objeto pdf usando "parent".
-  Atribua o parent ao parent deste pdf state.
-  Acrescente o número deste parent seguido de " 0 obj" para o parent.
-  Acrescente "<<" para o parent.
-  Acrescente "/Type /Pages" para o parent.
+  Adicione um objeto pai usando "parent".
+  Atribua o objeto pai ao objeto pai deste pdf state.
+  Acrescente o número deste objeto pai seguido de " 0 obj" para o objeto pai.
+  Acrescente "<<" para o objeto pai.
+  Acrescente "/Type /Pages" para o objeto pai.
 
 Rotina para que se inicie a impressão um pdf (criação do objeto raiz):
-  Adicione um root objeto pdf usando "root".
-  Atribua o root ao root deste pdf state.
-  Acrescente o número deste root seguido de " 0 obj" para o root.
-  Acrescente "<<" para o root.
-  Acrescente "/Type /Catalog" para o root.
+  Adicione um objeto da raiz usando "root".
+  Atribua o objeto da raiz ao objeto da raiz deste pdf state.
+  Acrescente o número deste objeto da raiz seguido de " 0 obj" para o objeto da raiz.
+  Acrescente "<<" para o objeto da raiz.
+  Acrescente "/Type /Catalog" para o objeto da raiz.
 
 Rotina para que se inicie uma folha no modo retrato usando um título de índice remissivo:
-  Se o pdf documento detector não estiver ativo,
+  Se o pdf detector de documentos não estiver ativo,
     Limpe a folha no modo retrato;
     Retorne.
   Faça a folha 816 pixels por 1056 pixels.
   Inicie a folha usando a caixa e o título de índice remissivo (modo pdf).
 
 Rotina para que se inicie uma folha no modo paisagem usando um título de índice remissivo:
-  Se o pdf documento detector não estiver ativo,
+  Se o pdf detector de documentos não estiver ativo,
     Limpe a folha;
     Retorne.
   Faça a folha 1056 pixels por 816 pixels.
@@ -17727,12 +17736,12 @@ Rotina para que se acrescente uma string para um objeto pdf sem passar pra próxi
 Rotina para que se adicione um objeto pdf usando um categoria:
   Crie o objeto pdf usando a categoria.
   Acrescente o objeto pdf para os objetos deste pdf state.
-  Adicione 1 para o object número deste pdf state.
-  Atribua o object número deste pdf state ao número deste objeto pdf.
+  Adicione 1 para o número do objeto deste pdf state.
+  Atribua o número do objeto deste pdf state ao número deste objeto pdf.
 
 Rotina para que se finalize a gravação referente para uma folha;
 Rotina para que se end uma folha:
-  Se o documento detector deste pdf state estiver ativo,
+  Se o detector de documentos deste pdf state estiver ativo,
     End a folha (modo pdf);
     Retorne.
   Processe "gdi32.dll" "EndPage" com \ Notifica o dispositivo que o aplicativo terminou a gravação em uma página.
