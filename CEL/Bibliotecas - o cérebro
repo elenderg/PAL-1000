@@ -2090,10 +2090,10 @@ Rotina para que se copie uma imagem Para uma segunda imagem:
   Aloque memória para a segunda imagem.
   Atribua a caixa desta imagem à caixa desta segunda imagem.
   Atribua a caixa intacta desta imagem à caixa intacta desta segunda imagem.
-  Atribua o grayscale detector desta imagem ao grayscale detector desta segunda imagem.
-  Atribua o mirror detector desta imagem ao mirror detector desta segunda imagem.
+  Atribua o detector de escala de cinza desta imagem ao detector de escala de cinza desta segunda imagem.
+  Atribua o espelhamento horizontal desta imagem ao espelhamento horizontal desta segunda imagem.
   Atribua o ângulo de rotação desta imagem ao ângulo de rotação desta segunda imagem.
-  Atribua os data desta imagem aos data desta segunda imagem.
+  Atribua os dados hexadecimais desta imagem aos dados hexadecimais desta segunda imagem.
   Copie o gpBitmap desta imagem ao gpBitmap desta segunda imagem.
 
 Rotina para que se copie um polígono Para um segundo polígono:
@@ -2565,7 +2565,7 @@ Rotina para que se crie uma imagem usando um trecho:
     Esvazie a imagem;
     Retorne.
   Aloque memória para a imagem.
-  Atribua o trecho ao data desta imagem.
+  Atribua o trecho ao dados hexadecimais desta imagem.
   Atribua o gpBitmap ao gpBitmap desta imagem.
   Ajuste a imagem (extraindo as caixas do gpBitmap).
 
@@ -4422,7 +4422,7 @@ Uma distância é [composta de] uns twips.
 
 Rotina para que se divida uma fração por uma segunda fração:
   Preserve a segunda fração.
-  Flip a segunda fração.
+  Inverta verticalmente a segunda fração.
   Multiplique a fração pela segunda fração.
 
 Rotina para que se divida uma fração por um número:
@@ -4431,7 +4431,7 @@ Rotina para que se divida uma fração por um número:
 
 Rotina para que se divida um número por uma fração:
   Preserve a fração.
-  Flip a fração.
+  Inverta verticalmente a fração.
   Multiplique o número pela fração.
 
 Rotina para que se divida um par de números por um segundo par de números:
@@ -4718,7 +4718,7 @@ Rotina para que se cubra a parte de fora de uma caixa:
 
 Rotina para que se pinte uma imagem sobre um gpGraphic sob uma coordenada X e uma coordenada Y:
   Se a imagem for inexistente, retorne.
-  Se o grayscale detector desta imagem estiver ativo, crie um GpImageAttributes (escala de cinza).
+  Se o detector de escala de cinza desta imagem estiver ativo, crie um GpImageAttributes (escala de cinza).
   Processe "gdiplus.dll" "GdipDrawImageRectRectI" com \ Usada para desenhar imagens com cores ou faixas de cores transparentes.
   \Observações: a parte da imagem de origem a ser desenhada é redimensionada para caber no retângulo.
     O gpGraphic [*graphics]
@@ -5600,31 +5600,33 @@ Um finger é um endereço de byte .
 
 Um detector é uma estrutura com 4 bytes.
 
-Rotina para que se flip uma fração:
+Rotina para que se inverta verticalmente uma fração:
   Permute o numerador desta fração com o denominador desta fração.
 
-Rotina para que se flip o gpBitmap em uma imagem:
+Rotina para que se inverta verticalmente o gpBitmap em uma imagem:
   Se a imagem for inexistente, retorne.
-  Inverta o mirror detector desta imagem.
-  Adicione 1800 para o ângulo de rotação desta imagem.
+  Inverta o espelhamento horizontal desta imagem.
+  Adicione 1800 [180,0] para o ângulo de rotação desta imagem.
   Normalize o ângulo de rotação desta imagem.
-  Flip o gpBitmap desta imagem.
+  Inverta verticalmente o gpBitmap desta imagem.
 
-Rotina para que se flip um GpImage:
+Rotina para que se inverta verticalmente um GpImage:
   Processe "gdiplus.dll" "GdipImageRotateFlip" com \Gira e/ou inverte uma imagem.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-image-rotateflip
     O GpImage [*image]
-    e 6 [rfType = RotateNoneFlipY aka Rotate180FlipX].
+    e 6 [rfType = RotateNoneFlipY ou Rotate180FlipX]. \ faz rotação de 180 graus seguida por uma inversão horizontal.  é 4 na rotina "inverta horizontalmente um GpImage"
     \ Consulte https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusimaging/ne-gdiplusimaging-rotatefliptype
 
-Rotina para que se flip uma imagem:
+Rotina para que se inverta verticalmente uma imagem:
   Se a imagem for inexistente, retorne.
-  Atribua a coordenada Y deste centro desta caixa desta imagem menos a coordenada Y deste centro desta caixa intacta desta imagem ao número Y dum par de números.
+  Atribua a coordenada Y deste centro desta caixa desta imagem 
+    menos a coordenada Y deste centro desta caixa intacta desta imagem 
+    ao número Y dum par de números.
   Multiplique o número Y deste par de números por 2.
   Mova a caixa intacta desta imagem usando o par de números.
-  Flip o gpBitmap no imagem.
+  Inverta verticalmente o gpBitmap na imagem.
 
-Rotina para que se flip um polígono:
+Rotina para que se inverta verticalmente um polígono:
   Se o polígono for inexistente, retorne.
   Atribua a caixa deste polígono para uma caixa.
   Itere. [o código a seguir]
@@ -8121,25 +8123,25 @@ Rotina para que se minimize um janela do programa:
     A janela do programa [hWnd]
     e 6. [nCmdShow = SW_MINIMIZE]
 
-Rotina para que se mirror o gpBitmap em uma imagem:
+Rotina para que se inverta horizontalmente o gpBitmap em uma imagem:
   Se a imagem for inexistente, retorne.
-  Inverta o mirror detector desta imagem.
-  Mirror o gpBitmap desta imagem.
+  Inverta o espelhamento horizontal desta imagem.
+  Inverta horizontalmente o gpBitmap desta imagem.
 
-Rotina para que se mirror um GpImage:
+Rotina para que se inverta horizontalmente um GpImage:
   Processe "gdiplus.dll" "GdipImageRotateFlip" com \ Gira e vira a imagem.
   \ https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusheaders/nf-gdiplusheaders-image-rotateflip
     O GpImage [*image]
-    e 4 [rotateFlipType = RotateNoneFlipX].
+    e 4 [rotateFlipType = RotateNoneFlipX]. \ Inverte a imagem horizontalmente.  é 6 na rotina "inverta verticalmente um GpImage"
     \Elemento da enumeração RotateFlipType que especifica o tipo de rotação e o tipo de inversão.
     \ Consulte https://learn.microsoft.com/pt-br/windows/win32/api/gdiplusimaging/ne-gdiplusimaging-rotatefliptype
 
-Rotina para que se mirror uma imagem:
+Rotina para que se inverta horizontalmente uma imagem:
   Se a imagem for inexistente, retorne.
   Atribua a coordenada X deste centro desta caixa desta imagem menos a coordenada X deste centro desta caixa intacta desta imagem ao número X dum par de números.
   Multiplique o número X deste par de números por 2.
   Mova a caixa intacta desta imagem usando o par de números.
-  Mirror o gpBitmap no imagem.
+  Inverta horizontalmente o gpBitmap na imagem.
 
 Rotina para que se mova o anchor para o lado esquerdo para algum non-alfanumérico byte em uma caixa de texto:
   Se a caixa de texto for inexistente, retorne.
@@ -8351,8 +8353,8 @@ Rotina para que se redimensione cuidadosamente uma imagem usando um par de númer
   Mova a caixa intacta desta imagem usando o par de números fracionários e o canto superior esquerdo desta caixa desta imagem.
   Redimensione a caixa intacta desta imagem usando o par de números fracionários.
   Redimensione a caixa desta imagem usando o par de números fracionários.
-  Se a coordenada X2 desta imagem for menor do que a coordenada X1 desta imagem, mirror o gpBitmap no imagem.
-  Se a coordenada Y2 desta imagem for menor do que a coordenada Y1 desta imagem, flip o gpBitmap no imagem.
+  Se a coordenada X2 desta imagem for menor do que a coordenada X1 desta imagem, inverta horizontalmente o gpBitmap na imagem.
+  Se a coordenada Y2 desta imagem for menor do que a coordenada Y1 desta imagem, inverta verticalmente o gpBitmap na imagem.
 
 Rotina para que se redimensione cuidadosamente uma imagem usando um twip par de números: [Redimensiona sem perder qualidade]
   Se a imagem for inexistente, retorne.
@@ -8569,10 +8571,10 @@ Uma imagem é uma lista com \FIGURA?
 \ as caixas estão em twits
 Uma caixa [location da cropped imagem sobre a página],
 Uma caixa intacta [location da entire imagem sobre a página],
-Um grayscale detector,
-Um mirror detector,
+Um detector denominado detector de escala de cinza,
+Um detector denominado espelhamento horizontal,
 Um ângulo de rotação, \ rotation é clockwise
-Um texto hexadecimal denominado data [original bytes em original format],
+Um texto hexadecimal denominado dados hexadecimais [original bytes em original format],
 Um gpBitmap.
 
 Rotina para que se toque um wave:
@@ -9328,7 +9330,7 @@ Rotina para que se redimensione uma imagem para uma largura por uma altura:
   Destrua o gpBitmap desta imagem.
   Atribua o gpBitmap ao gpBitmap desta imagem.
   Ajuste a imagem (extraindo as caixas do gpBitmap).
-  Limpe os data desta imagem.
+  Limpe os dados hexadecimais desta imagem.
 
 Rotina para que se redimensione um polígono usando um par de números racionais;
 Rotina para que se redimensione um polígono usando uma par de números fracionários:
@@ -9477,7 +9479,7 @@ Rotina para que se rotacione uma linha reta:
 Rotina para que se rotacione uma imagem:
   Se a imagem for inexistente, retorne.
   Adicione 900 para o ângulo de rotação desta imagem.
-  Se o mirror detector desta imagem estiver ativo, adicione 1800 para o ângulo de rotação desta imagem.
+  Se o espelhamento horizontal desta imagem estiver ativo, adicione 1800 para o ângulo de rotação desta imagem.
   Normalize o ângulo de rotação desta imagem.
   Rotacione a caixa desta imagem.
   Rotacione a caixa intacta desta imagem.
@@ -9726,7 +9728,7 @@ Rotina para que se redimensione proporcionalmente uma caixa de texto para uma fr
   \ absolute
   Se a caixa de texto for inexistente, retorne.
   Atribua o fator de escala desta caixa de texto para uma segunda fração.
-  Flip a segunda fração.
+  Inverta verticalmente a segunda fração.
   Multiplique a segunda fração pela fração.
   Redimensione proporcionalmente a caixa de texto usando a segunda fração.
 
@@ -16730,7 +16732,7 @@ Rotina para que se mova uma caixa usando uma par de números fracionários e uma l
   Subtraia o valor da diferença desde a segunda valor da diferença.
   Mova a caixa usando a segunda valor da diferença.
 
-Rotina para que se mirror um polígono:
+Rotina para que se inverta horizontalmente um polígono:
   Se o polígono for inexistente, retorne.
   Atribua a caixa deste polígono para uma caixa.
   Itere. [o código a seguir]
@@ -16957,14 +16959,14 @@ Rotina para que se encontre um objeto pdf usando um categoria:
 
 Rotina para que se end uma folha (modo pdf - finalização da do conteúdo atual):
   Atribua os conteúdos atuais deste pdf state para um content objeto pdf.
-  Atribua os data deste content para um trecho.
-  Limpe os data deste content.
-  Acrescente o número deste content seguido de " 0 obj" para o content.
-  Acrescente "<</Length " junto com a quantidade de caracteres deste trecho seguido de " >>" para o content.
-  Acrescente "stream" para o content.
-  Acrescente o trecho para os data deste content.
-  Acrescente "endstream" para o content.
-  Acrescente "endobj" para o content.
+  Atribua os data deste content objeto pdf para um trecho.
+  Limpe os data deste content objeto pdf.
+  Acrescente o número deste content objeto pdf seguido de " 0 obj" para o content.
+  Acrescente "<</Length " junto com a quantidade de caracteres deste trecho seguido de " >>" para o content objeto pdf.
+  Acrescente "stream" para o content objeto pdf.
+  Acrescente o trecho para os data deste content objeto pdf.
+  Acrescente "endstream" para o content objeto pdf.
+  Acrescente "endobj" para o content objeto pdf.
   Desative a detector de páginas deste pdf state.
 
 Rotina para que se end uma folha (modo pdf - finalização da página atual - fontes):
@@ -17300,7 +17302,7 @@ Rotina para que se pinte uma imagem (modo pdf):
   Processe "gdiplus.dll" "GdipGetImageGraphicsContext" com \ INSERIR Documentação
     O gpBitmap
     e O endereçamento dum gpGraphic.
-  Se o grayscale detector desta imagem estiver ativo, crie um GpImageAttributes (escala de cinza).
+  Se o detector de escala de cinza desta imagem estiver ativo, crie um GpImageAttributes (escala de cinza).
   Processe "gdiplus.dll" "GdipDrawImageRectRectI" com \Desenha uma imagem em um local especificado.
     O gpGraphic [*graphics]
     e O gpBitmap desta imagem [*image] \ https://learn.microsoft.com/pt-br/windows/desktop/api/gdiplusheaders/nl-gdiplusheaders-image
