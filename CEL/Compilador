@@ -2,7 +2,7 @@
 \ firstparam=esp+4/ebp+8, 
 \secondparam=esp+8/ebp+12, etc...
 
-\ Strings são uimplementadas como uma struct  que contém 2 membros, a saber:
+\ Strings são implementadas como uma struct que contém 2 membros, a saber:
 \ O endereço do byte inicial e o endereço do byte final.
 \ Desta forma é possível trocar o primeiro e o último bytes de uma string, com um comandos como este:
 \ Permute o conteúdo deste caractere inicial desta string com o conteúdo do caractere final desta string.
@@ -3198,8 +3198,10 @@ Rotina para que se determine se uns campos deveria ser finalizado:
 
 Rotina para que se determine se um item parece ser encadernável:
   Carregue o endereço completo deste item para um trecho.
-  Se o trecho começa com "ream cal", diga sim. \ CONFERIR AQUI. "TRECHO" e "COMEÇA COM"
-  Se o trecho começa com "Documento produzido pelo Editor de Documentos", diga sim.
+  Se o trecho começa com "ream cal", diga sim. \ ream
+  Se o trecho começa com "ream SAL", diga sim. \
+  Se o trecho começa com "ream CEL", diga sim. \ 
+  Se o trecho começa com "Este documento foi produzido pelo Editor de Documentos - CEL", diga sim.
   [Caso contrário,] Diga não.
 
 Rotina para que se determine se uma representação interna da rotina está em um catálogo:
@@ -4309,7 +4311,7 @@ Rotina para que se encontre um fragmento usando um segundo fragmento e uma etiqu
   Itere. [o código a seguir]
     Se o fragmento for inexistente, retorne.
     Se a etiqueta deste fragmento for a etiqueta, retorne.
-    Atribua o precedente fragmento deste fragmento ao fragmento.
+    Atribua o fragmento anterior deste fragmento ao fragmento.
   Reitere. [Execute novamente o código]
 
 Rotina para que se encontre uma DLL usando uma string:
@@ -4424,7 +4426,7 @@ Rotina para que se encontre um tipo e um apelido usando um nome:
     \ Se o subtexto estiver em branco, retorne.
     \ Encontre o tipo usando o subtexto e o catálogo de tipos.
     \ Se o tipo não for inexistente, pare.
-    \ Passe para a palavra próximo no subtexto.
+    \ Passe para a próxima palavra  no subtexto.
   \ Reitere. [Execute novamente o código]
   \ Atribua o caractere inicial deste nome para caractere inicial deste segundo subtexto. \ está errado
   \ Atribua o caractere inicial deste subtexto menos 2 ao caractere final deste segundo subtexto.
@@ -4439,7 +4441,7 @@ Rotina para que se encontre um tipo e um apelido usando um nome (regressivamente
     Se o subtexto estiver em branco, retorne.
     Encontre o tipo usando o subtexto e o catálogo de tipos.
     Se o tipo não for inexistente, pare.
-    Passe para a precedente palavra no subtexto.
+    Passe para a palavra anterior no subtexto.
   Reitere. [Execute novamente o código]
   Atribua o caractere final deste nome para o caractere final dum segundo subtexto.
   Atribua o caractere final deste subtexto mais 2 ao caractere inicial deste segundo subtexto.
@@ -4455,7 +4457,7 @@ Rotina para que se encontre um tipo e um apelido usando um nome (progressivament
     Se o subtexto estiver em branco, retorne.
     Encontre o tipo usando o subtexto e o catálogo de tipos.
     Se o tipo não for inexistente, pare.
-    Passe para a palavra próximo no subtexto. \próximo
+    Passe para a próxima palavra  no subtexto. \próximo
   Reitere. [Execute novamente o código]
   Atribua o caractere inicial deste nome para o caractere inicial dum segundo subtexto.
   Atribua o caractere inicial deste subtexto menos 2 ao caractere final deste segundo subtexto.
@@ -5246,7 +5248,7 @@ Rotina para que se alinhe as variáveis locais em uma rotina:
     Se existir algum problema de compilação, retorne.
     Obtenha uma variável local desde as variáveis locais desta rotina.
     Se a variável local for inexistente, retorne.
-    Se o precedente variável local desta variável local não for inexistente, atribua o deslocamento deste precedente variável local desta variável local ao deslocamento desta variável local.
+    Se o variável local anterior desta variável local não for inexistente, atribua o deslocamento deste variável local anterior desta variável local ao deslocamento desta variável local.
     Atribua a quantidade de caracteres deste tipo desta variável local para uma quantidade de caracteres.
     Se a categoria desta variável local for "scratch", atribua a magnitude dum ponteiro à quantidade de caracteres.
     Arredonde a quantidade de caracteres para cima usando o múltiplo imediato de 4.
@@ -5270,8 +5272,8 @@ Rotina para que se alinhe o parâmetros em uma rotina:
     Obtenha um parâmetro desde os parâmetros desta rotina.
     Se o parâmetro for inexistente, retorne.
     Se o detector de compatibilidade desta rotina estiver ativo, ative o detector de passagem por-valor deste parâmetro.
-    Se o precedente parâmetro deste parâmetro for inexistente, atribua 8 ao deslocamento deste parâmetro. \ skip o return address e saved ebp
-    Se o precedente parâmetro deste parâmetro não for inexistente, atribua o deslocamento deste precedente parâmetro deste parâmetro mais 4 ao deslocamento deste parâmetro. \ all parâmetros são 4 endereço de byte s ou 4 byte values por callbacks
+    Se o parâmetro anterior deste parâmetro for inexistente, atribua 8 ao deslocamento deste parâmetro. \ skip o return address e saved ebp
+    Se o parâmetro anterior deste parâmetro não for inexistente, atribua o deslocamento deste parâmetro anterior deste parâmetro mais 4 ao deslocamento deste parâmetro. \ all parâmetros são 4 endereço de byte s ou 4 byte values por callbacks
     Adicione 4 para a tamanho do parâmetro desta rotina.
   Reitere. [Execute novamente o código]
 
@@ -6642,14 +6644,14 @@ Rotina para que se ligue o detector de compilação em uma variável:
   Se o detector estiver ativo, atribua "converta o " junto com o nome deste valor literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao texto inicializador desta variável.
   Se o detector não estiver ativo, atribua "atribua o " junto com o nome deste valor literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao texto inicializador desta variável. \ Era " ao ". NÃO PODIA MUDAR O " ao " não sei o porquê
 
-Rotina para que se passe para a palavra próximo em um subtexto:
+Rotina para que se passe para a próxima palavra  em um subtexto:
   Se o subtexto estiver em branco, retorne.
   Se o conteúdo deste caractere inicial deste subtexto for irrelevante, pare.
   Adicione 1 para o caractere inicial deste subtexto.
   Reitere. [Execute novamente o código]
   Ignore algum leading noise no subtexto.
 
-Rotina para que se passe para o precedente palavra em um subtexto:
+Rotina para que se passe para a palavra anterior em um subtexto:
   Se o subtexto estiver em branco, retorne.
   Se o conteúdo deste caractere final deste subtexto for irrelevante, pare.
   Subtraia 1 desde o caractere final deste subtexto.
