@@ -3369,11 +3369,11 @@ Rotina para que se determine se um item é encontrado:
   Se a categoria deste item não estiver em branco, diga sim.
   [Caso contrário,] Diga não.
 
-Rotina para que se determine se uma tecla é algum dígito tecla:
+Rotina para que se determine se uma tecla é alguma tecla de dígito:
   Se a tecla estiver entre 48 e 57, diga sim.
   [Caso contrário,] Diga não.
 
-Rotina para que se determine se uma tecla é algum letra tecla:
+Rotina para que se determine se uma tecla é alguma tecla de letra:
   Se a tecla estiver entre 65 e 90, diga sim.
   [Caso contrário,] Diga não.
 
@@ -3389,34 +3389,75 @@ Rotina para que se determine se uma tecla é algum pad tecla:
 
 Rotina para que se determine se uma tecla é algum tecla imprimível:
   Se a tecla for o barra de espaço, diga sim.
-  Se a tecla for algum dígito tecla, diga sim.
-  Se a tecla for algum letra tecla, diga sim.
+  Se a tecla for alguma tecla de dígito, diga sim.
+  Se a tecla for alguma tecla de letra, diga sim.
   Se a tecla for algum pad tecla, diga sim.
-  Se a tecla for algum símbolo tecla, diga sim.
+  Se a tecla for alguma tecla de símbolo, diga sim.
   [Caso contrário,] Diga não.
 
-Rotina para que se determine se uma tecla é algum símbolo tecla:
+Rotina para que se determine se uma tecla é alguma tecla de símbolo:
   Se a tecla estiver entre 186 e 192, diga sim.
   Se a tecla estiver entre 219 e 222, diga sim.
   [Caso contrário,] Diga não.
 
-Rotina para que se determine se uma tecla é algum WM_CHAR tecla:
+Rotina para que se determine se uma tecla é alguma tecla do tipo WM_CHAR:
   Se a tecla não for algum tecla imprimível , diga não.
   Se a tecla Alt está para baixo, diga não.
   Se a tecla Ctrl está para baixo, diga não.
   [Caso contrário,] Diga sim.
 
-Rotina para que se determine se uma tecla [ou botão do mouse] está sendo pressionado;
-Rotina para que se determine se uma [determinada] tecla [específica] está sendo pressionada:
+Rotina para que se aguarde até que pressionemos uma tecla;
+Rotina para que se aguarde até pressionarmos uma tecla;
+Rotina para que se espere até pressionarmos uma tecla;
+Rotina para que se aguarde por uma tecla;
+Rotina para que se espere por uma tecla;
+Rotina para que se aguarde o pressionamento de uma tecla;
+Rotina para que se aguarde pelo pressionamento de uma tecla;
+Rotina para que se aguarde uma tecla ser pressionada;
+Rotina para que se espere uma tecla ser pressionada;
+Rotina para que se aguarde uma tecla:
+  Aguarde pela tecla para go para baixo.
+  Aguarde pela tecla para come para cima.
+  Desmanche todos os eventos.
+
+Rotina para que se aguarde por uma tecla para go para baixo:
+  Se a tecla não estiver sendo pressionada, reitere. \ OK
+  \If the key is not down, repeat.
+
+\To decide if a key is down:
+Rotina para que se determine se uma tecla está sendo pressionado; [ou botão do mouse] 
+Rotina para que se determine se uma tecla [específica] está sendo pressionada:
+\Se a tecla não estiver sendo pressionada, reitere.
+\If the key is not down, repeat.
   Processe "user32.dll" "GetAsyncKeyState" com \ Determina se uma tecla está ativada ou desativada no momento em que a função é chamada e se a tecla foi pressionada após uma chamada anterior para GetAsyncKeyState.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-getasynckeystate
     A tecla [vKey] \ Consulte https://learn.microsoft.com/pt-br/windows/desktop/inputdev/virtual-key-codes
-  Retornando um word.
+  Retornando uma word.
   Atribua a word para um número.
   Se o número for menor do que 0, diga sim.
   [Caso contrário,] Diga não.
 
+\Wait for the key to go down. - > If the key is not down, repeat.  -> GetAsyncKeyState"
+\Wait for the key to come up. -> If the key is not up, repeat. -> If the key is down, say no. - > 
+
+Rotina para que se aguarde por uma tecla para come back para cima:
+  Se a tecla não estiver para cima, reitere.
+  \If the key is not up, repeat.
+
+Rotina para que se determine se uma tecla está para cima:
+  Se a tecla estiver sendo pressionada, diga não.
+  [Caso contrário,] Diga sim.
+
+Rotina para que se aguarde por uma tecla para come para cima:
+  Se a tecla estiver sendo pressionada, reitere.
+  \If the key is not up, repeat.
+
+Rotina para que se aguarde sobre that there tecla com o ESC sobre it:
+  Aguarde pela tecla Esc.
+
+\ To decide if a key was down:
 Rotina para que se determine se uma tecla está para baixo:
+\ foi pressionada \ estava pra baixo
   Processe "user32.dll" "GetKeyState" com \Recupera o status da tecla virtual especificada.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/winuser/nf-winuser-getkeystate
     A tecla [nVirtKey]
@@ -3436,9 +3477,7 @@ Rotina para que se determine se uma tecla está ativada:
   Se o número for 1, diga sim.
   [Caso contrário,] Diga não.
 
-Rotina para que se determine se uma tecla está para cima:
-  Se a tecla está para baixo, diga não.
-  [Caso contrário,] Diga sim.
+
 
 Rotina para que se determine se uma tecla com um lParam é alguma tecla de cancelamento ou tecla modificadora:
   Atribua o lParam para um número.
@@ -6681,7 +6720,7 @@ Rotina para que se execute algum WM_SYSKEYDOWN com um wParam e um lParam;
 Rotina para que se execute algum WM_KEYDOWN com um wParam e um lParam:
   Atribua o wParam para uma tecla.
   Se a tecla com o lParam é alguma tecla de cancelamento ou tecla modificadora, retorne.
-  Se a tecla for algum WM_CHAR tecla, retorne.
+  Se a tecla for alguma tecla do tipo WM_CHAR, retorne.
   Crie um evento.
   Atribua "pressionamento de tecla" à categoria deste evento.
   Se a tecla Alt está para baixo, ative o detector de tecla Alt deste evento.
@@ -11138,19 +11177,7 @@ Rotina para que se aguarde até que narração esteja concluída:
   Se o talker for inexistente, retorne.
   Processe o [método] WaitUntilDone desta VTable [SpVoice] deste talker com o talker e -1.
 
-Rotina para que se aguarde até que pressionemos uma tecla;
-Rotina para que se aguarde até pressionarmos uma tecla;
-Rotina para que se espere até pressionarmos uma tecla;
-Rotina para que se aguarde por uma tecla;
-Rotina para que se espere por uma tecla;
-Rotina para que se aguarde o pressionamento de uma tecla;
-Rotina para que se aguarde pelo pressionamento de uma tecla;
-Rotina para que se aguarde uma tecla ser pressionada;
-Rotina para que se espere uma tecla ser pressionada;
-Rotina para que se aguarde uma tecla:
-  Aguarde pela tecla para go para baixo.
-  Aguarde pela tecla para come para cima.
-  Desmanche todos os eventos.
+
 
 Um arquivo de som é um endereço completo.
 
@@ -15885,17 +15912,7 @@ Rotina para que se use small pointy letras:
   \ seria o oposto de  "big roundy letras" | ainda não foi implementado
   Use small letras.
 
-Rotina para que se aguarde por uma tecla para come back para cima:
-  Se a tecla estiver sendo pressionada, reitere.
 
-Rotina para que se aguarde por uma tecla para come para cima:
-  Se a tecla estiver sendo pressionada, reitere.
-
-Rotina para que se aguarde por uma tecla para go para baixo:
-  Se a tecla não estiver sendo pressionada, reitere.
-
-Rotina para que se aguarde sobre that there tecla com o ESC sobre it:
-  Aguarde pela tecla Esc.
 
   Rotina para que se escolha aleatoriamente um tamanho da letra entre uns twips e uns outros twips:
   Escolha aleatoriamente um número aleatório entre os twips e os outros twips.
