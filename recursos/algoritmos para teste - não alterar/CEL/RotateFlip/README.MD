@@ -23,3 +23,5 @@ A sintaxe de chamada é esta
 _Processe "gdiplus.dll" "GdipImageRotateFlip" com_ 
   _o gpBitmap desta imagem_ e 
   _o valor da enumeração._ \ número que vai de 0 a 7
+
+https://github.com/elenderg/Portugues-Puro/blob/ab18c3122e587df2948c74df18eec898bd80b933/recursos/algoritmos%20para%20teste%20-%20n%C3%A3o%20alterar/CEL/RotateFlip/RotateFlip.png  
