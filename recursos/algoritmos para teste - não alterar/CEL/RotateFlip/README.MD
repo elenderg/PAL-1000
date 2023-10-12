@@ -46,3 +46,6 @@ RotateNoneFlipXY = Rotate180FlipNone,
 Rotate90FlipXY = Rotate270FlipNone,  
 Rotate180FlipXY = RotateNoneFlipNone,  
 Rotate270FlipXY = Rotate90FlipNone,  
+
+<p>
+<img src="https://github.com/elenderg/Portugues-Puro/blob/5f986bf23bd70d2494bbf6b6a75f473f40bb8ef4/recursos/algoritmos%20para%20teste%20-%20n%C3%A3o%20alterar/CEL/RotateFlip/setas.png" > </p>
