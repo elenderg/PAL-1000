@@ -25,7 +25,8 @@ _Processe "gdiplus.dll" "GdipImageRotateFlip" com_
   _o valor da enumeração._ \ número que vai de 0 a 7
 
 <p>
-<img src="https://github.com/elenderg/Portugues-Puro/blob/ab18c3122e587df2948c74df18eec898bd80b933/recursos/algoritmos%20para%20teste%20-%20n%C3%A3o%20alterar/CEL/RotateFlip/RotateFlip.png  " alt="Tela do Programa" width="856" height="481">
+<img src="https://github.com/elenderg/Portugues-Puro/blob/77ec44b2bc042a1e2e7044b74689d0837c62b653/recursos/algoritmos%20para%20teste%20-%20n%C3%A3o%20alterar/CEL/RotateFlip/Rotate90-Rotate270.png" alt="Rotate90-Rotate270" > </p><p>
+<img src="https://github.com/elenderg/Portugues-Puro/blob/77ec44b2bc042a1e2e7044b74689d0837c62b653/recursos/algoritmos%20para%20teste%20-%20n%C3%A3o%20alterar/CEL/RotateFlip/RotateNone-Rotate180.png" alt="RotateNone-Rotate180" >
  </p>
 
 
