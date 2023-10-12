@@ -2,7 +2,7 @@
 \ firstparam=esp+4/ebp+8, 
 \secondparam=esp+8/ebp+12, etc...
 
-\ Strings são uimplementadas como uma struct  que contém 2 membros, a saber:
+\ Strings são implementadas como uma struct que contém 2 membros, a saber:
 \ O endereço do byte inicial e o endereço do byte final.
 \ Desta forma é possível trocar o primeiro e o último bytes de uma string, com um comandos como este:
 \ Permute o conteúdo deste caractere inicial desta string com o conteúdo do caractere final desta string.
@@ -547,6 +547,27 @@ Rotina para que se adicione uma unidade semântica para umas unidades semânticas 
   \ sobre
   Se a string for "sob",
     Atribua "sobre" à string desta unidade semântica;
+    Retorne.
+  Se a string for "sobre",
+    Atribua "sobre" à string desta unidade semântica;
+    Retorne.
+  Se a string for "começa",
+    Atribua "começa" à string desta unidade semântica;
+    Retorne.
+  Se a string for "começar",
+    Atribua "começa" à string desta unidade semântica;
+    Retorne.
+  Se a string for "termina",
+    Atribua "termina" à string desta unidade semântica;
+    Retorne.
+  Se a string for "terminar",
+    Atribua "termina" à string desta unidade semântica;
+    Retorne.
+  Se a string for "cabe",
+    Atribua "cabe" à string desta unidade semântica;
+    Retorne.
+  Se a string for "couber",
+    Atribua "cabe" à string desta unidade semântica;
     Retorne.
   Se a string for "sobre",
     Atribua "sobre" à string desta unidade semântica;
@@ -1885,7 +1906,7 @@ Rotina para que se compile uma expressão matematica usando um percorredor (opera
 Rotina para que se compile uma expressão matematica usando um percorredor (operador de concatenação):
   Se existir algum problema de compilação, retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Se o segmento inicial deste percorredor não for algum palavra de concatenação,
+  Se o segmento inicial deste percorredor não for alguma palavra de concatenação,
     Apresente uma mensagem de erro contendo "Erro #29. Necessário escrever 'junto DE/junto COM/etc'." e o percorredor;
     Retorne.
   Se a variável desta expressão matematica for inexistente,
@@ -2101,7 +2122,7 @@ Rotina para que se compile um valor literal usando um percorredor (valor numéric
   Se o percorredor estiver acompanhado por algum unidade de medida,
     Compile o valor literal usando o percorredor (valor numérico - unidade de medida);
     Retorne.
-  Se o segmento inicial deste percorredor for algum integer literal,
+  Se o segmento inicial deste percorredor for algum número inteiro,
     Compile o valor literal usando o percorredor (valor numérico - números inteiros);
     Retorne.
   Se o segmento inicial deste percorredor for algum proporção literal,
@@ -2430,16 +2451,22 @@ Rotina para que se compile a próxima instrução usando um percorredor (palavra-ch
   Compile um termo usando o percorredor.
   Se existir algum problema de compilação, retorne.
   Se a variável deste termo for inexistente,
-    Apresente uma mensagem de erro contendo "Erro #71. A variável '" junto com a frase deste termo seguido de "' deste termo não pode ser encontrada." e o percorredor;
+    Apresente uma mensagem de erro contendo "Erro #71. A variável '" 
+    junto com a frase deste termo seguido de "' deste termo não pode ser encontrada." e o percorredor;
     Retorne.
-  Se a categoria deste termo for "literal", apresente a mensagem de erro contendo "Erro #72. Identificado valor literal na categoria deste termo." e o percorredor.
-  Se a quantidade de caracteres deste tipo deste termo não for 4, apresente a mensagem de erro contendo "Erro #73. Variável de comprimento diferente de 4 ." e o percorredor.
+  Se a categoria deste termo for "literal", 
+    Apresente a mensagem de erro contendo "Erro #72. Identificado valor literal na categoria deste termo." e o percorredor.
+  Se a quantidade de caracteres deste tipo deste termo não for 4, 
+    Apresente a mensagem de erro contendo "Erro #73. Variável de comprimento diferente de 4 ." e o percorredor.
   Se o segmento inicial deste percorredor não for "para",
-    Apresente a mensagem de erro contendo "Erro #74. A palavra-chave 'para é necessária após o comando 'aponte'. Termo encontrado: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #74. A palavra-chave 'para é necessária após o comando 'aponte'. Termo encontrado: " 
+    junto com o segmento inicial deste percorredor seguido de "." e o percorredor;
     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
+  \Mova o percorredor (usando diretrizes de compilação). \ artigo definido
   Se o segmento inicial deste percorredor não for "rotina",
-    Apresente a mensagem de erro contendo "Erro #75. A sintaxe  do comando é 'Aponte para rotina'. Encontrado termo: " junto com o segmento inicial deste percorredor seguido de "." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #75. A sintaxe do comando é 'Aponte para rotina'. Encontrado termo: " 
+    junto com o segmento inicial deste percorredor seguido de "." e o percorredor;
     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Compile uma referência da rotina usando o percorredor.
@@ -2447,7 +2474,8 @@ Rotina para que se compile a próxima instrução usando um percorredor (palavra-ch
   Destrua a referência da rotina.
   Encontre uma rotina usando a representação interna da rotina e o catálogo geral de rotinas.
   Se a rotina for inexistente,
-    Apresente a mensagem de erro contendo "Erro #76. A rotina para que se " junto com a representação interna da rotina seguido de " é inexistente." e o percorredor;
+    Apresente a mensagem de erro contendo "Erro #76. A rotina para que se "
+    junto com a representação interna da rotina seguido de " é inexistente." e o percorredor;
     Retorne.
   Adicione um fragmento usando a etiqueta de endereço de rotina e a rotina.
   Atribua a variável deste termo à variável deste fragmento.
@@ -2458,7 +2486,11 @@ Rotina para que se compile a próxima instrução usando um percorredor (cláusula d
   Compile um termo usando o percorredor.
   Se existir algum problema de compilação, retorne.
   Se a variável deste termo for inexistente,
-    Apresente uma mensagem de erro contendo "Erro #77. Comando 'isole', Inválido. Termo da variável: " junto com a frase deste termo seguido de "' está vazio." e o percorredor;
+    Apresente uma mensagem de erro contendo "Erro #77. Comando 'Isole', Inválido. A variável '" 
+      junto com a frase deste termo 
+      [seguido de "do termo '" junto com o termo]
+      seguido de "' está vazia. " 
+      e o percorredor;
     Retorne.
   Se a categoria deste termo não for "parâmetro",
     Apresente a mensagem de erro contendo "Erro #78. Apenas parâmetros podem ser isolados." e o percorredor;
@@ -2468,8 +2500,11 @@ Rotina para que se compile a próxima instrução usando um percorredor (cláusula d
   Atribua o apelido deste termo ao apelido desta variável local.
   Atribua o nome do tipo deste termo ao nome do tipo desta variável local.
   Destrinche a variável local.
-  Anteponha "original " para o nome deste termo. \ Deveria ser "acrescente"
-  Se o apelido deste termo não estiver em branco, Anteponha "original " para o apelido deste termo.
+  Anteponha "original " para o nome deste termo. 
+  \Acrescente " original" para o nome deste termo. 
+  Se o apelido deste termo não estiver em branco, 
+    Anteponha "original " para o apelido deste termo.
+    \Acrescente " original" para o apelido deste termo.
   Adicione fragmentos diversos usando "Atribua" e a variável deste termo e "para" e a variável local e o caractere inicial deste segmento inicial deste percorredor.
   Se o segmento inicial deste percorredor não for o ponto final,
     Apresente a mensagem de erro contendo "Erro #79. Necessário incluir um '.' ao fim do comando" e o percorredor;
@@ -3109,7 +3144,7 @@ Um byte ignorável é um byte.
 
 Rotina para que se determine se um byte é um byte ignorável:
   Se o byte for algum letra, diga sim.
-  Se o byte for algum digit, diga sim.
+  Se o byte for algum dígito, diga sim.
   Se o byte for o acento til, diga sim.
   Se o byte for o sinal de arroba, diga sim.
   Se o byte for o símbolo cardinal, diga sim.
@@ -3119,7 +3154,7 @@ Rotina para que se determine se um byte é um byte ignorável:
   Se o byte for o single-quote byte, diga sim.
   Se o byte for o hífem, diga sim.
   Se o byte for o sinal de adição, diga sim.
-  Se o byte for o slash byte, diga sim.
+  Se o byte for o barra inclinada, diga sim.
   Se o byte for o símbolo da Libra Esterlina, diga sim.
   [Caso contrário,] Diga não.
 
@@ -3142,7 +3177,7 @@ Rotina para que se determine se um byte é algum símbolo: \ deveria estar no cére
   Se o byte for o asterisco, diga sim.
   Se o byte for o sinal de adição, diga sim.
   Se o byte for o hífem, diga sim.
-  Se o byte for o slash byte, diga sim.
+  Se o byte for o barra inclinada, diga sim.
   Se o byte for o símbolo menor do que, diga sim.
   Se o byte for o símbolo maior do que, diga sim.
   Se o byte for a chave esquerda, diga sim.
@@ -3177,8 +3212,10 @@ Rotina para que se determine se uns campos deveria ser finalizado:
 
 Rotina para que se determine se um item parece ser encadernável:
   Carregue o endereço completo deste item para um trecho.
-  Se o trecho começa com "ream cal", diga sim. \ CONFERIR AQUI. "TRECHO" e "COMEÇA COM"
-  Se o trecho começa com "Documento produzido pelo Editor de Documentos", diga sim.
+  Se o trecho começa com "ream cal", diga sim. \ ream
+  Se o trecho começa com "ream SAL", diga sim. \
+  Se o trecho começa com "ream CEL", diga sim. \ 
+  Se o trecho começa com "Este documento foi produzido pelo Editor de Documentos - CEL", diga sim.
   [Caso contrário,] Diga não.
 
 Rotina para que se determine se uma representação interna da rotina está em um catálogo:
@@ -3301,7 +3338,7 @@ Rotina para que se determine se uma string termina com alguma consoante e uma se
   Subtraia a quantidade de caracteres desta segunda string desde o caractere final deste subtexto.
   Se o subtexto estiver em branco, diga não.
   Se o conteúdo deste caractere final deste subtexto não for alguma consoante, diga não.
-  Se a string não termina com a segunda string, diga não.
+  Se a string não terminar com a segunda string, diga não.
   [Caso contrário,] Diga sim.
 
 Rotina para que se determine se uma string termina com algum vogal e uma segunda string:
@@ -3309,12 +3346,12 @@ Rotina para que se determine se uma string termina com algum vogal e uma segunda
   Subtraia a quantidade de caracteres desta segunda string desde o caractere final deste subtexto.
   Se o subtexto estiver em branco, diga não.
   Se o conteúdo deste caractere final deste subtexto não for algum vogal, diga não.
-  Se a string não termina com a segunda string, diga não.
+  Se a string não terminar com a segunda string, diga não.
   [Caso contrário,] Diga sim.
 
 Rotina para que se determine se uma string termina com alguma vogal ou com alguma consoante:
-  Se a string termina com algum vogal, diga sim.
-  Se a string termina com alguma consoante, diga sim.
+  Se a string terminar com algum vogal, diga sim.
+  Se a string terminar com alguma consoante, diga sim.
   [Caso contrário,] Diga não.
 
 Rotina para que se determine se uma string termina com alguma consoante:
@@ -3353,7 +3390,7 @@ Rotina para que se determine se uma string é algum objeto indireto:
   Se a string for "por", diga sim. \ TODO: Testar a compatibilidade
   [Caso contrário,] Diga não.
 
-Rotina para que se determine se uma string é algum palavra de concatenação:
+Rotina para que se determine se uma string é alguma palavra de concatenação:
   Se a string for "com", diga sim.
   Se a string for "de", diga sim.
   Se a string for "a", diga sim.
@@ -3411,12 +3448,8 @@ Rotina para que se determine se uma string é alguma conjunção:
   Se a string for "ou", diga sim.
   Se a string for "nem", diga sim.
   \CAL
-  Se a string for "both", diga sim.
-  Se a string for "but", diga sim.
-  Se a string for "either", diga sim.
   Se a string for "neither", diga sim.
   Se a string for "nor", diga sim.
-  Se a string for "or", diga sim.
   [Caso contrário,] Diga não.
 
 Rotina para que se determine se uma string é algum to:
@@ -3521,18 +3554,9 @@ Rotina para que se determine se um percorredor está sobre algum preposição conec
 Rotina para que se determine se uma string é algum artigo indefinido:
   Se a string for algum artigo indefinido português, diga sim.
   Se a string for algum pronome demonstrativo abrangente, diga sim.
-  \CAL
-  Se a string for algum artigo indefinido inglês, diga sim.
   [Caso contrário,] Diga não.
 
-Rotina para que se determine se uma string é algum artigo indefinido inglês:
-  \CAL
-  \Se a string for "an", diga sim.
-  \Se a string for "another", diga sim.
-  \Se a string for "some", diga sim.
-  [Caso contrário,] Diga não.
-
-Rotina para que se determine se uma string é algum artigo indefinido português: \ é aqui que se deve colocar o possessivo. descobri.
+Rotina para que se determine se uma string é algum artigo indefinido português: 
   \PAL
   Se a string for "um", diga sim.
   Se a string for "uma", diga sim.
@@ -3544,7 +3568,7 @@ Rotina para que se determine se uma string é algum artigo indefinido português: 
   \Se a string for "alguma", diga sim.
   \Se a string for "alguns", diga sim.
   \Se a string for "algumas", diga sim.
-  Se a string for algum pronome demonstrativo abrangente, diga sim.
+  Se a string for algum pronome demonstrativo abrangente, diga sim. \ para funcionamento dos possessivos - local correto
   [Caso contrário,] Diga não.
 
 Rotina para que se determine se uma string é algum valor literal:
@@ -3942,34 +3966,13 @@ Rotina para que se determine se uma string é algum verbo:
   Se a string for "necessita", diga sim.
   Se a string for "necessitar", diga sim.
   Se a string for "requer", diga sim.
-  \CAL
-  Se a string for "are", diga sim.
-  Se a string for "be", diga sim.
-  Se a string for "can", diga sim.
-  Se a string for "does", diga sim.
-  Se a string for "is", diga sim.
-  Se a string for "may", diga sim.
-  Se a string for "should", diga sim.
-  Se a string for "was", diga sim.
-  Se a string for "will", diga sim.
-  Se a string for "would", diga sim.
-  Se a string for "has", diga sim.
-  Se a string for "have", diga sim.
-  Se a string termina com "n't", diga sim.
   \\ trouble makers
-  Se a string for "begins", diga sim.
-  Se a string for "ends", diga sim.
-  Se a string for "looks", diga sim.
-  Se a string for "needs", diga sim.
-  Se a string for "starts", diga sim.
   [Caso contrário,] Diga não.
 
 Rotina para que se determine se uma string é o enunciado de alguma rotina ou variável:
   Se a string for "Passos", diga sim.
   Se a string for "Etapas", diga sim.
   Se a string for "Rotina", diga sim.
-  \CAL
-  Se a string for "to", diga sim.
   \default
   Se a string for algum artigo indefinido, diga sim.
   Se a string for algum artigo definido, diga sim.
@@ -3984,7 +3987,7 @@ Rotina para que se determine se uma string é algum comando de proteção:
   Se a string for "isole", diga sim.
   Se a string for "conserve", diga sim.
   Se a string for "preserve", diga sim.
-  Se a string for "derive", diga sim.
+  \Se a string for "derive", diga sim.
   [Caso contrário,] Diga não.
 
 Rotina para que se determine se uma string é algum comando de percorrimento:
@@ -3995,7 +3998,6 @@ Rotina para que se determine se uma string é algum comando de percorrimento:
 
 Rotina para que se determine se uma string é algum comando de interrupção de repetições:
   Se a string for "pare", diga sim.
-  \Se a string for "termine", diga sim.
   [Caso contrário,] Diga não.
 
 Rotina para que se determine se uma string é algum comando de retorno de rotina:
@@ -4032,8 +4034,6 @@ Rotina para que se determine se uma string é algum point:
   Se a string for "aponte", diga sim.
   Se a string for "direcione", diga sim.
   Se a string for "redirecione", diga sim.
-  \CAL
-  Se a string for "point", diga sim.
   [Caso contrário,] Diga não.
 
 Uma palavra-chave de reutilização de rotina é uma palavra-chave.
@@ -4325,7 +4325,7 @@ Rotina para que se encontre um fragmento usando um segundo fragmento e uma etiqu
   Itere. [o código a seguir]
     Se o fragmento for inexistente, retorne.
     Se a etiqueta deste fragmento for a etiqueta, retorne.
-    Atribua o precedente fragmento deste fragmento ao fragmento.
+    Atribua o fragmento anterior deste fragmento ao fragmento.
   Reitere. [Execute novamente o código]
 
 Rotina para que se encontre uma DLL usando uma string:
@@ -4440,7 +4440,7 @@ Rotina para que se encontre um tipo e um apelido usando um nome:
     \ Se o subtexto estiver em branco, retorne.
     \ Encontre o tipo usando o subtexto e o catálogo de tipos.
     \ Se o tipo não for inexistente, pare.
-    \ Passe para a palavra próximo no subtexto.
+    \ Passe para a próxima palavra  no subtexto.
   \ Reitere. [Execute novamente o código]
   \ Atribua o caractere inicial deste nome para caractere inicial deste segundo subtexto. \ está errado
   \ Atribua o caractere inicial deste subtexto menos 2 ao caractere final deste segundo subtexto.
@@ -4455,7 +4455,7 @@ Rotina para que se encontre um tipo e um apelido usando um nome (regressivamente
     Se o subtexto estiver em branco, retorne.
     Encontre o tipo usando o subtexto e o catálogo de tipos.
     Se o tipo não for inexistente, pare.
-    Passe para a precedente palavra no subtexto.
+    Passe para a palavra anterior no subtexto.
   Reitere. [Execute novamente o código]
   Atribua o caractere final deste nome para o caractere final dum segundo subtexto.
   Atribua o caractere final deste subtexto mais 2 ao caractere inicial deste segundo subtexto.
@@ -4471,7 +4471,7 @@ Rotina para que se encontre um tipo e um apelido usando um nome (progressivament
     Se o subtexto estiver em branco, retorne.
     Encontre o tipo usando o subtexto e o catálogo de tipos.
     Se o tipo não for inexistente, pare.
-    Passe para a palavra próximo no subtexto. \próximo
+    Passe para a próxima palavra  no subtexto. \próximo
   Reitere. [Execute novamente o código]
   Atribua o caractere inicial deste nome para o caractere inicial dum segundo subtexto.
   Atribua o caractere inicial deste subtexto menos 2 ao caractere final deste segundo subtexto.
@@ -4660,7 +4660,7 @@ Rotina para que se catalogue um tipo usando um nome:
   Se o endereço local for inexistente, atribua o endereço local deste existing tipo ao endereço local. \ point the error to a type in the source code, not a generated type
   Se o endereço local não for inexistente, Apresente uma mensagem de erro contendo "Erro #125. Tipo: " junto com o nome seguido de "' duplicado." e o endereço local.
 
-Rotina para que se inicialize o compilador:
+\Rotina para que se inicialize o compilador:
 \Rotina em branco. Serve apenas para fazer com que o código fique "simétrico"
 
 Rotina para que se inicialize o compilador usando um endereço da pasta:
@@ -5262,7 +5262,7 @@ Rotina para que se alinhe as variáveis locais em uma rotina:
     Se existir algum problema de compilação, retorne.
     Obtenha uma variável local desde as variáveis locais desta rotina.
     Se a variável local for inexistente, retorne.
-    Se o precedente variável local desta variável local não for inexistente, atribua o deslocamento deste precedente variável local desta variável local ao deslocamento desta variável local.
+    Se o variável local anterior desta variável local não for inexistente, atribua o deslocamento deste variável local anterior desta variável local ao deslocamento desta variável local.
     Atribua a quantidade de caracteres deste tipo desta variável local para uma quantidade de caracteres.
     Se a categoria desta variável local for "scratch", atribua a magnitude dum ponteiro à quantidade de caracteres.
     Arredonde a quantidade de caracteres para cima usando o múltiplo imediato de 4.
@@ -5286,8 +5286,8 @@ Rotina para que se alinhe o parâmetros em uma rotina:
     Obtenha um parâmetro desde os parâmetros desta rotina.
     Se o parâmetro for inexistente, retorne.
     Se o detector de compatibilidade desta rotina estiver ativo, ative o detector de passagem por-valor deste parâmetro.
-    Se o precedente parâmetro deste parâmetro for inexistente, atribua 8 ao deslocamento deste parâmetro. \ skip o return address e saved ebp
-    Se o precedente parâmetro deste parâmetro não for inexistente, atribua o deslocamento deste precedente parâmetro deste parâmetro mais 4 ao deslocamento deste parâmetro. \ all parâmetros são 4 endereço de byte s ou 4 byte values por callbacks
+    Se o parâmetro anterior deste parâmetro for inexistente, atribua 8 ao deslocamento deste parâmetro. \ skip o return address e saved ebp
+    Se o parâmetro anterior deste parâmetro não for inexistente, atribua o deslocamento deste parâmetro anterior deste parâmetro mais 4 ao deslocamento deste parâmetro. \ all parâmetros são 4 endereço de byte s ou 4 byte values por callbacks
     Adicione 4 para a tamanho do parâmetro desta rotina.
   Reitere. [Execute novamente o código]
 
@@ -5826,10 +5826,7 @@ Rotina para que se atribua um termo para um segundo termo:
 
 Rotina para que se carregue um arquivo fonte:
   Se o arquivo fonte for inexistente, retorne.
-  \Carregue o endereço completo deste arquivo fonte ao trecho deste arquivo fonte.
-  \Se o erro do fluxo de entrada/saída não estiver em branco, 
-    \apresente uma mensagem de erro contendo "Não foi possível carregar o arquivo: " junto com o endereço completo deste arquivo fonte seguido de "."; 
-    \Retorne.
+  \Carregue o endereço completo deste arquivo fonte para o trecho deste arquivo fonte.
   Carregue o endereço completo deste arquivo fonte para uma string.
   Se o erro do fluxo de entrada/saída não estiver em branco,
     Apresente uma mensagem de erro contendo "Erro #133. Não foi possível carregar o arquivo: " junto com o endereço completo deste arquivo fonte seguido de ".";
@@ -5858,8 +5855,7 @@ Rotina para que se parse uma string para uma segunda string (para expandir contr
     Se o segmento final deste percorredor de contrações estiver em branco, retorne.
     Posicione o segmento inicial deste percorredor de contrações sobre o segmento final deste percorredor de contrações.
     Mova o percorredor de contrações (englobando tudo).
-    Se o conteúdo deste caractere inicial deste segmento inicial deste percorredor de contrações
-    NÃO for um byte ignorável,
+    Se o conteúdo deste caractere inicial deste segmento inicial deste percorredor de contrações não for um byte ignorável,
     Acrescente o segmento inicial deste percorredor de contrações para a segunda string;
     
    Reitere.
@@ -6563,17 +6559,13 @@ Rotina para que se examine uns arquivos fontes:
 Rotina para que se examine um tipo usando um percorredor:
   Se existir algum problema de compilação, retorne.
   Se o segmento inicial deste percorredor for algum artigo indefinido português, ative um português detector.
-  Se o segmento inicial deste percorredor for algum artigo indefinido inglês, ative um english detector.
   Adicione o tipo para os tipos usando o caractere inicial deste segmento inicial deste percorredor.
   Mova o percorredor (usando diretrizes de compilação).
   Examine o nome deste tipo usando o percorredor.
   Atribua o nome deste tipo ao nome plural deste tipo.
   Atribua 0 para uma contagem.
-  Se o english detector não estiver ativo,
+  Se o português detector estiver ativo,
     Pluralize o nome plural deste tipo (strings em português);
-    Adicione 1 à contagem.
-  Se o english detector estiver ativo,
-    Pluralize o nome plural deste tipo (english rules);
     Adicione 1 à contagem.
   \Se o português detector estiver ativo, pluralize o nome plural deste tipo (strings em português); adicione 1 à contagem.
   Se a contagem for igual ou maior do que 2,
@@ -6666,14 +6658,14 @@ Rotina para que se ligue o detector de compilação em uma variável:
   Se o detector estiver ativo, atribua "converta o " junto com o nome deste valor literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao texto inicializador desta variável.
   Se o detector não estiver ativo, atribua "atribua o " junto com o nome deste valor literal desta variável seguido de " para o " junto com o nome desta variável seguido de ". " ao texto inicializador desta variável. \ Era " ao ". NÃO PODIA MUDAR O " ao " não sei o porquê
 
-Rotina para que se passe para a palavra próximo em um subtexto:
+Rotina para que se passe para a próxima palavra  em um subtexto:
   Se o subtexto estiver em branco, retorne.
   Se o conteúdo deste caractere inicial deste subtexto for irrelevante, pare.
   Adicione 1 para o caractere inicial deste subtexto.
   Reitere. [Execute novamente o código]
   Ignore algum leading noise no subtexto.
 
-Rotina para que se passe para o precedente palavra em um subtexto:
+Rotina para que se passe para a palavra anterior em um subtexto:
   Se o subtexto estiver em branco, retorne.
   Se o conteúdo deste caractere final deste subtexto for irrelevante, pare.
   Subtraia 1 desde o caractere final deste subtexto.
