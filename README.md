@@ -26,13 +26,16 @@ O Ambiente de Desenvolvimento Integrado é composto de basicamente 6 arquivos:
 
 ## Funcionamento
 
-A interface do Ambiente Integrado de Deesenvolvimento (ADI) pode parecer confusa para alguns no começo. Existem 26 caracteres de A a Z, cada um correspondendo a um menu específico,  
+A interface do Ambiente Integrado de Desenvolvimento (ADI) usa uma abordagem disruptiva. 
+
+Existem 26 botões de menu, correspondendo aos caracteres de A a Z,  
 <img src="docs/Imagens-Para-o-Readme/menus.png" Alt="Menu do programa">
-- além do botão **＊** que é utilizado para selecionar a paleta de cores. 
+
+- além do botão **＊** que é utilizado para abrir a paleta de cores. 
  <img src="docs/Imagens-Para-o-Readme/✷.png" Alt="Paleta de cores">
 
 
-Boa parte dos sub-menus possui uma tecla de atalho que pode ser acessada com _Ctrl_ ou _Alt_ (na maior parte das vezes qualquer uma das teclas funciona).
+Boa parte dos sub-menus possui uma tecla de atalho que pode ser acessada com _Ctrl_ ou _Alt_.
 
 Ao lado dos botões existe uma barra que exibe informações diversas, dependendo do contexto, por exemplo: 
 
@@ -45,8 +48,13 @@ Ao lado dos botões existe uma barra que exibe informações diversas, dependend
  - quantidade de linhas selecionadas
  <img src="docs/Imagens-Para-o-Readme/quantidadedelinhasselecionadas.png">
 
+O programa ainda não possui barras de rolagem nem botões de Maximizar, Minimizar ou Fechar. 
 
-No momento o programa ainda não possui barra de rolagem nem botões de Maximizar, Minimizar ou Fechar. (Para sair do Programa, pressione <kbd>Alt+F</kbd>, para Fechar um arquivo, pressione <kbd>Ctrl + W</kbd> . Para descer linhas utilize a seta para baixo <kbd>↓</kbd> ou clique com o botão direito do mouse e arraste.
+(Para sair do Programa, pressione <kbd>Alt+F</kbd>.
 
-Existem projetos como o [CAL-4018](https://github.com/Folds/english) que adicionam esses elementos, porém o foco agora é traduzir a interface e a linguagem para o Português Brasileiro.
+Para Fechar um arquivo, pressione <kbd>Ctrl + W</kbd> . 
+
+Para descer linhas utilize a seta para baixo <kbd>↓</kbd> ou clique com o botão direito do mouse e arraste.
+
+Existem projetos como o [CAL-4018](https://github.com/Folds/english) que adicionam esses elementos.
  <img src="docs/Imagens-Para-o-Readme/cal4018.png">
