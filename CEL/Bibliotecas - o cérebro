@@ -11293,7 +11293,11 @@ Rotina para que se escreva um byte para StdOut:
     e O endereçamento dum número [lpNumberOfBytesWritten]
     e nil. [lpOverlapped]
 
-Rotina para que se pule para a próxima linha  em StdOut;
+Rotina para que se use a próxima linha na saída padrão;
+Rotina para que se escreva na próxima linha da saída padrão;
+Rotina para que se pule para a próxima linha da saída padrão;
+Rotina para que se pule para a próxima linha da StdOut;
+Rotina para que se pule para a próxima linha em StdOut;
 Rotina para que se pule para a próxima linha na StdOut;
 Rotina para que se pule para a próxima linha na saída padrão:
   Escreva o retorno de carro para StdOut.
@@ -11973,9 +11977,13 @@ Rotina para que se carregue um endereço completo para um trecho;
 Rotina para que se leia um endereço completo para um trecho:
   Limpe o erro do fluxo de entrada/saída.
   Preserve o endereço completo.
+  Se o conteúdo deste caractere final deste endereço completo for a barra invertida, 
+    remova o último caractere desde o endereço completo.
   Anexe o caractere NULL após o endereço completo.
   Se o endereço completo não estiver no sistema de arquivos, 
     Atribua "O Arquivo: '" junto com o endereço completo seguido de "' não existe." ao erro do fluxo de entrada/saída; 
+    Escreva "Erro. O Arquivo: '" junto com o endereço completo seguido de "' não existe." para StdOut; 
+    Avise o usuário;
     Retorne.
   \ coloca o endereço no modo de leitura/gravação.
   Processe "kernel32.dll" "CreateFileA" com \Cria ou abre um arquivo ou dispositivo de E/S.
@@ -11990,6 +11998,7 @@ Rotina para que se leia um endereço completo para um trecho:
   Retornando um número identificador.
   Se o número identificador for -1 [INVALID_HANDLE_VALUE], 
     Atribua "Erro ao tentar abrir o arquivo: '" junto com o endereço completo seguido de "'." ao erro do fluxo de entrada/saída; 
+    Avise o usuário;
     Retorne.
   Processe "kernel32.dll" "GetFileSize" com \ Recupera o tamanho do arquivo especificado, em bytes.
   \ Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/fileapi/nf-fileapi-getfilesize
@@ -12009,8 +12018,11 @@ Rotina para que se leia um endereço completo para um trecho:
   Processe "kernel32.dll" "CloseHandle" com \Fecha um identificador de objeto aberto.
   \Documentação: -> https://learn.microsoft.com/pt-br/windows/win32/api/handleapi/nf-handleapi-closehandle
     O número identificador.[hObject]
-  Se o número não for 0, retorne.
-  Atribua "Ocorreu um erro ao tentar ler o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída.
+  Se o número não for 0, 
+    Retorne.
+  Se o número  for 0,
+    Atribua "Ocorreu um erro ao tentar ler o arquivo: " junto com o endereço completo seguido de "." ao erro do fluxo de entrada/saída;
+    Avise o usuário.
 
 Rotina para que se atribua um endereço completo para uma imagem;
 Rotina para que se carregue um endereço completo para uma imagem;
@@ -12232,6 +12244,8 @@ Rotina para que se leia uma response string desde uma requisição WinHTTP:
     Se a contagem for 0, pare.
   Reitere. [Execute novamente o código]
 
+Um número identificador da URL é um número.
+
 Rotina para que se leia uma URL para um trecho:
   Limpe o trecho.
   Limpe o erro do fluxo de entrada/saída.
@@ -12241,7 +12255,7 @@ Rotina para que se leia uma URL para um trecho:
     e 0 [dwAccessType = INTERNET_OPEN_TYPE_PRECONFIG]
     e nil [lpszProxy]
     e nil [lpszProxyBypass]
-    e 268435456 [dwFlags]
+    e 268435456 [dwFlags = INTERNET_FLAG_ASYNC]
   Retornando um número identificador da URL da internet.
   Se o número identificador da URL da internet for 0 [NULL], 
     Atribua "Erro. Não foi possível se conectar à internet. Verifique sua conexão" ao erro do fluxo de entrada/saída; 
