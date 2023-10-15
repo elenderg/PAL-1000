@@ -2003,11 +2003,9 @@ ream cal-3024
        ""
        ""
        "Um evento é considerado como alterado se a tecla Alt ou a tecla Ctrl estiverem sendo pressionadas no momento em que o evento ocorreu. "
+       "Os detalhes de implementação estão contidos no 'cérebro'."
        ""
-       "A partir daí, precisamos de mais uma rotina:"
-       ""
-       ""
-       ""
+       "Para executar o evento precisaremos de mais uma rotina:"
        ""
        ""
        ""
@@ -2016,9 +2014,10 @@ ream cal-3024
        ""
        ""
        ""
-       "The ""q-key"" is defined in my noodle, as is the ""quit"" routine."
        ""
-       "And now, we're ready. Run. ALT-TAB. Make sure you're in the Cal Monet. Press CTRL-Q, or ALT-Q. Then ALT-TAB to make sure he's gone. Sweet."
+       ""
+       ""
+       "A tecla 'Q/q' também está definida no cérebro, bem como a rotina para que se feche o programa.  Execute o progama, dê um Alt+Tab se for preciso, até abrir a tela do PAL MONET. Agora teste o funcionamento dos atalhos."
     end
     polygon 0 0 0 -1 0 0 2 2160 3960 2160 5760
     polygon 0 0 0 -1 0 0 2 10080 3960 10080 5760
@@ -2076,7 +2075,7 @@ ream cal-3024
     polygon 0 0 0 -1 0 0 2 10080 8640 10080 11520
     text -1 0 0 -1 0 0 2520 9360 9720 10440 0 "" "osmosian" 360 "left" 0 0 0 yes
        "Rotina para que se execute um evento (atalho):"
-       "  Se a tecla deste evento for a tecla Q, feche o programa; retorne."
+       "  Se a tecla deste evento for a tecla Q/q, feche o programa; retorne."
        ""
        ""
        ""
@@ -2133,25 +2132,15 @@ ream cal-3024
        "24"
     end
     text -1 0 0 -1 0 0 2160 2160 10080 13680 0 "title" "osmosian" 360 "left" 0 0 0 yes
-       "AVOIDING FLICKER"
+       "EVITANDO PROBLEMAS DE CINTILAÇÃO (TELA PISCANDO)"
        ""
-       "It's time to start thinking about actually getting something on the screen. Which, unfortunately, is harder than it should be. There are two difficulties we must overcome. The first is flicker."
+       "Um dos problemas comuns ao tentar exibir itens na tela é a cintilação."
        ""
-       "More often than not, a completed screen display consists of a number of distinct, overlapping objects, drawn back to front. My handsome face, for example, has a large gray pad at the back, some roundy white menu buttons in front of that, and some uppercase letters in front of the buttons."
+       "Para evitar este problema, utilizamos uma espécie de tela virtual, que é armazenada na memória. "
        ""
-       "Now if my face was drawn right on the screen, you would experience a bad case of flicker. The menus would momentarily disappear altogether (when the pad was drawn), then the buttons would appear, one at a time, first without the letters, and then with them, and so forth. Distracting. Annoying. Ugly."
+       "Ou seja, primeiramente nós precisamos efetuar o desenho e pintura de todos os itens na tela virtual para aí sim atualizar o conteúdo da tela real. Veja o diagrama abaixo:"
        ""
-       "We solve this problem much as an artist would. We work on a canvas in memory that is concealed from prying eyes and then, when the drawing is complete, we reveal it all at once. Like this:"
-       ""
-       ""
-       ""
-       ""
-       ""
-       ""
-       ""
-       ""
-       ""
-       "Note the terms in the above diagram. By convention, we use the word ""draw"" to indicate that we are working on the invisible canvas in memory. We use the word ""refresh"" when we transfer the contents of the canvas to the screen. And we say ""show"" when we want both to happen in quick succession."
+       "Perceba os termos utilizados no diagrama abaixo. Para manter a convenção, utilizamos o verbo ""pinte"" para indicar a pintura numa tela virtual. O comando ""Atualize a tela"" é utilizado para transferir o conteúdo da tela virtual pa a real.  O comando ""Exiba"" é utilizado para efetuar as duas ações em seqüência."
        ""
     end
     rectangle 0 0 0 -1 0 0 3600 9360 5760 11880 180
@@ -2160,19 +2149,19 @@ ream cal-3024
     polygon 0 0 0 0 0 1000 5 5040 9720 7380 9720 7560 9900 7380 10080 5040 10080
     polygon 0 0 0 0 0 1000 5 2160 11160 7380 11160 7560 11340 7380 11520 2160 11520
     text -1 0 0 -1 0 0 2160 9720 4140 10080 0 "" "osmosian" 360 "center" 0 0 0 yes
-       "draw"
+       "Pinte o item"
     end
     text -1 0 0 -1 0 0 5040 9720 7380 10080 0 "" "osmosian" 360 "center" 0 0 0 yes
-       "refresh"
+       "Atualize a tela"
     end
     text -1 0 0 -1 0 0 2160 11160 7200 11520 0 "" "osmosian" 360 "center" 0 0 0 yes
-       "show"
+       "Exiba o item"
     end
     text -1 0 0 -1 0 0 3600 10440 5760 10800 0 "" "osmosian" 360 "center" 0 0 0 yes
-       "CANVAS"
+       "TELA VIRTUAL"
     end
     text -1 0 0 -1 0 0 6480 10440 8640 10800 0 "" "osmosian" 360 "center" 0 0 0 yes
-       "SCREEN"
+       "TELA REAL"
     end
   end
   page 12240 15840 1 1440
@@ -2180,41 +2169,26 @@ ream cal-3024
        "25"
     end
     text -1 0 0 -1 0 0 2160 2160 10080 13680 0 "title" "osmosian" 360 "left" 0 0 0 yes
-       "THE REFRESH EVENT"
+       "O EVENTO DE ATUALIZAÇÃO DE TELA"
        ""
-       "The second screen-related difficulty we have to face is that the kluge tries to be a multi-tasking system, and only partially succeeds. Oh, it's bad enough that I have to share valuable resources with other, less deserving, programs. And that I can never be sure how long anything is going to take. And that I'm constantly being interrupted when I'm trying to get my work done."
+       "Ao trabalhar com o Windows, precisamos redesenhar a tela do programa a cada vez que as janelas são alternada, caso contrário a tela apresentará diversas falhas. "
        ""
-       "But the real problem arises when some other program rudely takes over the screen and splatters my handsome face with idiotic icons and other tasteless tripe.  And why is this a problem? Because the convoluted kluge — the kluge that somehow manages to restore all of my memory and registers and flags to the exact state they were in at the moment of interruption — cannot seem to remember what my face looks like! So what does the kluge do? It sends us a ""refresh"" event, and expects us to do all the work."
-       ""
-       "Fortunately, when all is said and done, the refresh event proves to be more bothersome than difficult. Such is life. Here's how we deal with it:"
-       ""
-       ""
-       ""
-       ""
-       ""
-       ""
-       ""
-       ""
-       ""
-       ""
-       ""
-       ""
-       "The reason we make the ""show everything"" routine separate will be clear soon enough. How we ""draw the background"" is covered on the next few pages."
+       "Iremos precisar então criar uma rotina específica para lidar com a atualização de tela. Mais sobre isso nas próximas páginas."
     end
     polygon 0 0 0 -1 0 0 2 2160 9000 2160 12240
     polygon 0 0 0 -1 0 0 2 10080 9000 10080 12240
     text -1 0 0 -1 0 0 2520 9360 9720 11520 0 "" "osmosian" 360 "left" 0 0 0 yes
-       "To handle an event (refresh):"
-       "  Show everything."
+       "Rotina para que se execute um evento (atualização de tela):"
+       "  Pinte a tela e atualize."
        ""
-       "To show everything:"
-       "  Draw the background."
-       "  Refresh the screen."
+       "Rotina para que se pinte a tela e atualize:"
+       "  Pinte o plano de fundo."
+       "  Atualize a tela."
        ""
        ""
     end
     text -1 0 0 -1 0 0 2160 12060 4140 12420 0 "" "osmosian" 360 "center" 0 0 0 yes
-       "how to paint"
+       "Pintando..."
     end
     text -1 0 0 -1 0 0 4140 12060 6120 12420 0 "" "osmosian" 360 "center" 0 0 0 yes
        ""
@@ -2264,19 +2238,9 @@ ream cal-3024
        "26"
     end
     text -1 0 0 -1 0 0 2160 2160 10080 13680 0 "title" "osmosian" 360 "left" 0 0 0 yes
-       "THE BACKGROUND"
+       "O PLANO DE FUNDO"
        ""
-       "Our background begins with a definition. Type it in:"
-       ""
-       ""
-       ""
-       ""
-       ""
-       ""
-       ""
-       "If you've grown up programming in other, more obscure, languages, you will probably think of ""the background"" as a global variable of type ""picture"". And that's okay. It is. But if you're just starting out, you will more likely think something like, ""The background is a picture"". And that's okay, too. It is."
-       ""
-       "We'll create the background when we initialize our stuff:"
+       "O plano de fundo é uma imagem. Poortanto, basta digitar:"
        ""
        ""
        ""
@@ -2284,16 +2248,26 @@ ream cal-3024
        ""
        ""
        ""
+       "Conforme já discutido anteriormente, Artigos definidos indicam variáveis globais. Estamos declarando uma variável global do tipo ""imagem"". "
        ""
-       "And destroy it when we're done:"
+       "Imagens precisam ser alocadas dinamicamente na memória. Então devemos criar o plano de fundo na rotina para que se inicialize os demais componentes da interface:"
+       ""
+       ""
+       ""
+       ""
+       ""
+       ""
+       ""
+       ""
+       "Também iremos precisar desalocar a imagem ao fechar o progama, então:"
     end
     polygon 0 0 0 -1 0 0 2 2160 3600 2160 5040
     polygon 0 0 0 -1 0 0 2 10080 3600 10080 5040
     text -1 0 0 -1 0 0 2520 3960 9720 4320 0 "" "osmosian" 360 "left" 0 0 0 yes
-       "The background is a picture."
+       "O Plano de fundo é uma imagem."
     end
     text -1 0 0 -1 0 0 2160 4860 4140 5220 0 "" "osmosian" 360 "center" 0 0 0 yes
-       "how to paint"
+       "Pintando..."
     end
     text -1 0 0 -1 0 0 4140 4860 6120 5220 0 "" "osmosian" 360 "center" 0 0 0 yes
        ""
@@ -2340,11 +2314,11 @@ ream cal-3024
     polygon 0 0 0 -1 0 0 2 2160 8280 2160 10080
     polygon 0 0 0 -1 0 0 2 10080 8280 10080 10080
     text -1 0 0 -1 0 0 2520 8640 9720 9360 0 "" "osmosian" 360 "left" 0 0 0 yes
-       "To initialize our stuff:"
-       "  Create the background."
+       "Rotina para que se inicialize os demais componentes da interface:"
+       "  Crie o plano de fundo."
     end
     text -1 0 0 -1 0 0 2160 9900 4140 10260 0 "" "osmosian" 360 "center" 0 0 0 yes
-       "how to paint"
+       "Pintando..."
     end
     text -1 0 0 -1 0 0 4140 9900 6120 10260 0 "" "osmosian" 360 "center" 0 0 0 yes
        ""
@@ -2391,11 +2365,11 @@ ream cal-3024
     polygon 0 0 0 -1 0 0 2 2160 11520 2160 13320
     polygon 0 0 0 -1 0 0 2 10080 11520 10080 13320
     text -1 0 0 -1 0 0 2520 11880 9720 12600 0 "" "osmosian" 360 "left" 0 0 0 yes
-       "To finalize our stuff:"
-       "  Destroy the background."
+       "Etapas para que se libere os recursos alocados na memória:"
+       "  Destrua o plano de fundo."
     end
     text -1 0 0 -1 0 0 2160 13140 4140 13500 0 "" "osmosian" 360 "center" 0 0 0 yes
-       "how to paint"
+       "Pintando..."
     end
     text -1 0 0 -1 0 0 4140 13140 6120 13500 0 "" "osmosian" 360 "center" 0 0 0 yes
        ""
@@ -2445,24 +2419,21 @@ ream cal-3024
        "27"
     end
     text -1 0 0 -1 0 0 2160 2160 10080 13680 0 "title" "osmosian" 360 "left" 0 0 0 yes
-       "MEMORY LEAKS"
+       "VAZAMENTOS DE MEMÓRIA"
        ""
-       "The background, as we've said, is a picture. Pictures require memory for storage. How much memory depends, of course, on the size of the picture. Since we don't always know in advance how big or small a picture might be, memory for pictures is allocated, dynamically, at run time. This memory must later be deallocated when it is no longer needed."
+       "O plano de fundo, comforme mencionado na página anterior, é uma imagem. As imagens  ocupam espaço e precisam ser armazenadas em algum lugar. Como a quantidade de espaço necessária para armazenar a imagem irá variar dependendo do tamanho da imagem, iremos precisar alocar espaço dinamicamente enquanto o programa está sendo executado. Também iremos precisar desalocar o espaço utilizado quando o mesmo não for mais necessário."
        ""
-       "By convention, we use the words ""create"" and ""destroy"" whenever dynamic memory allocation and deallocation is involved. It is your responsibility to destroy whatever you create before relinquishing control in your program."
-       "If you don't, you will cause a ""memory leak"", and bits of memory will drip from your computer onto your shoes."
+       "Você pode utilizar as rotinas ""Aloque memória para"" e ""Desaloque"", caso queira, mas recomendamos a utilização das rotinas ""crie"" e ""destrua"" no lugar delas Lembre-se de destruir tudo que foi criado.  Caso você esqueça o programa informará quantos elementos foram deixados na memória."
        ""
-       "You'll be able to see this for yourself once we've created our background. Just ""comment out"" the line that destroys it, and when you quit the program, with CTRL-Q, a frightening message box will appear with the bad news."
+       "Você pode testar este recurso ao comentar a linha ""Destrua o plano de fundo"". "
        ""
-       "Now if you've programmed before, you'll probably want to know that..."
+       "O compilador age da seguinte forma com objetos alocados dinamicamente:"
        ""
-       "(1) Strings are dynamically allocated and can be of any length — but string memory is managed entirely (and very efficiently) by me so they appear to be static to you. In other words, don't worry about them. Just enjoy."
+       "(1) Strings são alocadas dinamicamente, podendo ter qualquer comprimento — porém a alocação e desalocação de strings é gerenciada de forma automática pelo compilador, de forma que elas aparentam ser alocadas estaticamente."
        ""
-       "(2) When you destroy a thing, everything attached to that thing is destroyed along with it. This frees you from the tedious burden of writing detailed destroy routines for each kind of thing you create."
+       "(2) Ao destruir uma lista duplamente encadeada, todos os membros da lista são destruídos junto com ela. "
        ""
-       "(3) Anything more than this falls under the heading ""garbage collection"" and, as every manly programmer knows, garbage collection is for sissies."
-       ""
-       "If you've never programmed, just make sure you clean up after yourself."
+       "(3) O compilador não possui Coletor de lixo (Garbage collector) ."
     end
   end
   page 12240 15840 1 1440
@@ -2470,9 +2441,9 @@ ream cal-3024
        "28"
     end
     text -1 0 0 -1 0 0 2160 2160 10080 13680 0 "title" "osmosian" 360 "left" 0 0 0 yes
-       "DAB, DAB, DAB"
+       "PINCELANDO AS OBRAS DE ARTE"
        ""
-       "Alright, back to work. We create the background by dabbing the off-screen canvas with various shades of gray, refreshing the screen every 1000 dabs. When we're done, we extract a copy so we can use it during refresh events."
+       "Iremos criar o plano de fundo do programa pincelando a tela com vários tons de cinza, atualizando a tela a cada 1.000 pinceladas. When we're done, we extract a copy so we can use it during refresh events."
        ""
        ""
        ""
