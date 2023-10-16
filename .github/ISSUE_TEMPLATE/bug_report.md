@@ -13,7 +13,7 @@ assignees: ''
 **Como Reproduzir o Erro**
  - Descreva as etapas para reprodução do erro:
 1. Vá em '...'
-2. Clique np '....'
+2. Clique no '....'
 3. Desça até '....'
 4. Veja o erro
 
@@ -25,8 +25,8 @@ assignees: ''
 
 **Ambiente de Trabalho (por favor preencha as seguitnes informações):**
  - Sistema Operacional: [por exemplo, Windows 7]
- - Idioma [por exemplo CAL, SAL, ou PAL]
+ - IDE [por exemplo CAL, SAL, ou PAL]
  - Versão [por exemplo 4700]
 
 **Informações adicionais**
- - Quaisquer ifnormações adicionais que vcê julgue necessárias devem estar aqui.
+ - Quaisquer informações adicionais que vcê julgue necessárias devem estar aqui.
