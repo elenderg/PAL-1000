@@ -37,7 +37,7 @@ Existem 26 botões de menu, correspondendo aos caracteres de A a Z,
  <img src="docs/Imagens-Para-o-Readme/✷.png" Alt="Paleta de cores">
 
 
-Boa parte dos sub-menus possui uma tecla de atalho que pode ser acessada com _Ctrl_ ou _Alt_.
+Boa parte dos sub-menus possui uma tecla de atalho que pode ser acessada com <kbd>Ctrl</kbd> ou <kbd>Alt</kbd>.
 
 Ao lado dos botões existe uma barra que exibe informações diversas, dependendo do contexto, por exemplo: 
 
