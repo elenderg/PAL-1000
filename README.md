@@ -1,15 +1,14 @@
-# Português Puro
+# PAL-1000
 
 <p>
 <img src="docs/Imagens-Para-o-Readme/tela.png" alt="Tela do Programa" width="856" height="481">
  </p>
  
-
-Este Projeto é baseado na [Plain English Programming Language](http://osmosianplainenglishprogramming.blog/).
+Este Projeto é baseado no [CAL-4700](http://www.osmosian.com/cal-4700.zip) (IDE da [Plain English Programming Language](http://osmosianplainenglishprogramming.blog/)).
 
 Os arquivos originais do projeto podem ser obtidos [aqui](http://www.osmosian.com/cal-4700.zip) e na pasta [CAL-4700](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/CAL-4700).
 
-A documentação da linguagem (em inglês) está disponível [aqui](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/CAL-4700/documentation).
+A documentação do cal-4700 está disponível [aqui](https://github.com/elenderg/Portugues-Puro/tree/main/recursos/CAL-4700/documentation) ou [aqui]](http://osmosian.com/instructions.pdf).
 
 *A documentação da linguagem do projeto está em desenvolvimento.*
 
