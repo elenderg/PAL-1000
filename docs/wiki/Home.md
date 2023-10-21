@@ -1,6 +1,6 @@
-﻿ProgramaÃ§Ã£o em PortuguÃªs Simples
+Programação em Português Simples
 
-Copyright Â© 2006 2021
+Copyright © 2006 
 
 A Ordem Osmosiana de Programadores
 
