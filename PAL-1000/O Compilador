@@ -3896,6 +3896,21 @@ Rotina para que se determine se um percorredor está sobre algum possessivo rever
   Se o segmento inicial deste percorredor for algum pronome demonstrativo, diga sim.
   Diga não.
 
+Rotina para que se determine se um percorredor está sobre alguma locução prepositiva:
+  Preserve o percorredor.
+  Se o segmento inicial deste percorredor não for alguma locução prepositiva diga não.
+  Mova o percorredor (usando diretrizes de compilação).
+  Se o segmento inicial deste percorredor for "de", diga sim.
+  Se o segmento inicial deste percorredor for "do", diga sim.\ Se o segmento inicial deste percorredor for "do", atribua "o" para o segmento inicial deste percorredor original; diga sim.
+  Se o segmento inicial deste percorredor for "dos", diga sim.
+  Se o segmento inicial deste percorredor for "da", diga sim.
+  Se o segmento inicial deste percorredor for "das", diga sim.
+  Diga não.
+
+Rotina para que se determine se uma string é alguma locução prepositiva:
+  Se a string for alguma preposição, diga sim.
+  Diga não.
+
 Rotina para que se determine se uma string é algum string literal:
   Se a string estiver em branco, diga não.
   Se o conteúdo deste caractere inicial desta string for as aspas duplas, diga sim.
@@ -5386,10 +5401,10 @@ Rotina para que se pluralize uma string (strings em português):
     Se uma string plural não estiver em branco, acrescente " " para a string plural.
     Acrescente o segmento inicial deste percorredor para a string plural.
     Se o segmento inicial deste percorredor for "de",
-    Ative um detector;
-    Reitere. \ PLURAL
-    Se o detector não estiver ativo, pluralize a string plural (português - regras comuns) .
-    \Se o detector estiver ativo, pluralize o string plural (substantivos compostos).
+      Ative um detector;
+      Reitere. \ PLURAL
+    Se o detector não estiver ativo, 
+      Pluralize a string plural (português - regras comuns) .
   Reitere.
   Atribua a string plural à string.
 
@@ -5784,7 +5799,6 @@ Rotina para que se pluralize uma string (terminada com "z"):
   \# regra padrão
   Acrescente "es" para a string. \ Retorne.
 
-Rotina para que se pluralize uma string (english rules); \ plural inglês
 Rotina para que se pluralize uma string:
   Lance um percorredor sobre a string.
   Itere.
@@ -5793,10 +5807,10 @@ Rotina para que se pluralize uma string:
     Se uma string plural não estiver em branco, acrescente " " para a string plural.
     Acrescente o segmento inicial deste percorredor para a string plural.
     Se o segmento inicial deste percorredor for "de",
-    Ative um detector;
-    Reitere. \ PLURAL
-    Se o detector não estiver ativo, pluralize a string plural (português - regras comuns) .
-    \Se o detector estiver ativo, pluralize o string plural (substantivos compostos).
+      Ative um detector;
+      Reitere. \ PLURAL
+    Se o detector não estiver ativo, 
+      Pluralize a string plural (português - regras comuns).
   Reitere.
   Atribua a string plural à string.
 
@@ -5930,7 +5944,7 @@ Rotina para que se remova alguns termos negativos desde umas unidades semânticas
     Se a string desta unidade semântica for "nada",
     Inverta o detector;
     Atribua "something" à string desta unidade semântica; Reitere.
-    \Se a string desta unidade semântica termina com "n't", inverta o detector; remova trailing bytes desde a string desta unidade semântica usando 3; Reitere.
+    \Se a string desta unidade semântica termina com "n't", inverta o detector; remova final bytes desde a string desta unidade semântica usando 3; Reitere.
   Reitere.
 
 Rotina para que se destrinche um campo:
@@ -6568,7 +6582,6 @@ Rotina para que se examine um tipo usando um percorredor:
   Se o português detector estiver ativo,
     Pluralize o nome plural deste tipo (strings em português);
     Adicione 1 à contagem.
-  \Se o português detector estiver ativo, pluralize o nome plural deste tipo (strings em português); adicione 1 à contagem.
   Se a contagem for igual ou maior do que 2,
     Apresente uma mensagem de erro contendo "Erro #165. não foi possível detectar o idioma desta variável" e o endereço local deste tipo;
     Retorne.
@@ -6598,10 +6611,10 @@ Rotina para que se examine um tipo usando um percorredor:
 Rotina para que se examine um tipo usando um percorredor(cláusula 'tem'):
   Se existir algum problema de compilação, retorne.
   Mova o percorredor (usando diretrizes de compilação).
-  Atribua "estrutura" ao nome do tipo primitivo deste tipo. \\mudar aqui
+  Atribua "estrutura" ao nome do tipo primitivo deste tipo.
   Examine o campos deste tipo usando o percorredor.
   Se o segmento inicial deste percorredor não for o ponto final,
-    Apresente uma mensagem de erro contendo "Erro #169. Esperado '.' após a palavra-chave 'tem'. Encontrado '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor;
+    Apresente uma mensagem de erro contendo "Erro #169. Esperado '.' no final da estrutura. Encontrado '" junto com o segmento inicial deste percorredor seguido de "'." e o percorredor;
     Retorne.
   Mova o percorredor (usando diretrizes de compilação).
   Catalogue o tipo.
@@ -6623,9 +6636,12 @@ Rotina para que se examine um tipo usando um percorredor (unidade de medida):
 Um scratch é uma variável local.
 
 Rotina para que se scrub um catálogo:
+  [Itere.]
     Obtenha um recipiente usando o catálogo.
-    Se o recipiente for inexistente, retorne.
-      Se as referências deste recipiente estiverem vazios, reitere.
+    Se o recipiente for inexistente,
+      Retorne.
+    Se as referências deste recipiente estiverem vazios,
+      Reitere.
     Scrub as referências deste recipiente.
   Reitere.
 
@@ -6665,7 +6681,7 @@ Rotina para que se passe para a próxima palavra  em um subtexto:
   Se o conteúdo deste caractere inicial deste subtexto for irrelevante, pare.
   Adicione 1 para o caractere inicial deste subtexto.
   Reitere.
-  Ignore algum leading noise no subtexto.
+  Ignore os caracteres ignoráveis no início no subtexto.
 
 Rotina para que se passe para a palavra anterior em um subtexto:
   Se o subtexto estiver em branco, retorne.
