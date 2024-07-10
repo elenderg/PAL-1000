@@ -1,0 +1,1031 @@
+I will send you a documentation and make questions about it. 
+
+This is the GOLD Meta-Language Overview
+Overview
+The GOLD Meta-Language used to define a grammar using the GOLD Parsing System.
+The notation used by the GOLD Meta-Language closely follows the standards used in language theory. This allows both students and professionals, familiar with language theory, to be able to write grammars without a large learning curve.
+
+Productions are specified using Backus-Naur Form.
+Terminals are represented through Regular Expressions.
+Character sets are based on set notation.
+
+Syntax
+Line Comments
+!
+
+Comment
+Block Comments
+!*
+
+Comments	
+*!
+
+Details
+Comments in the GOLD Meta-Language use the 'explanation mark' for line comments and block comments. Block comments can be nested.
+
+Examples
+! This is a comment
+! This is also a comment
+
+!*
+   Remember to always comment your code. This
+   can add a great deal to readability.
+*!
+
+Setting Grammar Properties
+
+Many attributes of a grammar cannot be specified using Backus-Naur Form statements or regular expressions. These attributes can range from the formal name of the grammar to how parse tables will be constructed by the system. As a result, the Builder must allow the developer a means to declare this information within the meta-language.
+
+The role of properties is nebulous by design. Some may set the formal name of the grammar, for instance, and others can have significant impact on how the system constructs parse tables. Property names are delimited by doubled-quotes and can be set to any of the symbols and literals recognized by the GOLD Meta-Language. In most cases, the value will be a string.
+
+The properties are as follows:
+
+Property Name	Type	Description
+Name	Optional	The name of the grammar.
+Version	Optional	The version of the grammar.   This can contain any alphanumeric string.
+Author	Optional	The grammar's author.
+About	Optional	A short description of the grammar.
+Case Sensitive	Optional	Whether the grammar is considered to be case sensitive. When this parameter is set "True", the GOLD Builder will construct case sensitive tokenizer tables (DFA). In other words, if your language contains a terminal 'if', the text 'IF', 'If', and 'iF' will cause a syntax error. This parameter defaults to 'False'.
+Character Mapping	Optional	For now, the only valid values are Windows-1252 and None. The system defaults to Windows-1252 - which populates characters 128 to 159 as needed. This documentation contains a chart of the characters affected.
+Auto Whitespace	Optional	In the previous version of the GOLD Parser, the whitespace terminal was always created when omitted in the grammar. Unfortunately, not all grammars make use of whitespace. This parameter is set to 'True' by default, but can be changed to 'False'. When 'False', the system will not automatically create a whitespace terminal unless it is manually defined.
+Virtual Terminals	Optional	
+Using this property, the developer can specify a series of terminal names. The system will enter these terminals into the symbol table, but they will not be entered into the Deterministic Finite Automata. As a result, the terminals will not be recognized by the lexer, but can, instead, be created by a specialized version of the Engine or by the developer. This can help developers parse languages which are not context free - such as Python.
+
+This feature was added in Version 2.2 of the Builder. In Version 5, you can set a terminal to "Virtual", but assigning its attributes.
+
+Start Symbol	Required	The starting symbol in the grammar. When LALR parse tables are constructed by the GOLD Builder, an "accepted" grammar will reduce to this nonterminal.
+Example
+"Name"    = 'My Programming Language'
+"Version" = '1.0 beta'
+"Author"  = 'John Q. Public'
+
+"About"   = 'This is a test declaration.'
+          | 'You can use multiple lines by using the "pipe" symbol'
+
+"Case Sensitive" = 'False'
+"Start Symbol" = <Statement>
+
+Literal sets of characters are delimited using the square brackets '[' and ']' and pre-defined sets are delimited by the braces '{' and '}'. For instance, the text "[abcde]" denotes a set of characters consisting of the first five letters of the alphabet; while the text "{abc}" refers to a set named "abc".
+
+Sets can then be declared by adding and subtracting previously declared sets and literal sets.  The GOLD Builder provides a collection of pre-defined sets that contain characters often used to define terminals.
+
+Character Constants and Set Ranges
+Each character in the Basic Multilingual Plane of the Unicode Character Set is represented by a 16-bit integer. This value is known as a "code point" in Unicode terminology. The characters from 0xD800 to 0xDBFF and from 0xFFF0 to 0xFFFF are reserved by Unicode for encoding. As a result, these values cannot be used.
+
+The developer can specify any character using either its decimal or hexadecimal code point. Decimal values are denoted by a number-sign prefix (#) and hexadecimal values are denoted by an ampersand (&).
+
+Set ranges can be specified by using a ".." between two values. Both the start and end values can be in either decimal or hexadecimal.
+
+Set Name	Description
+{#n}	Using this notation, you can specify any character - in particular, those not accessible via the keyboard.  For instance, {#169} specifies the copyright character ©. The value of, n can be any number from 1 to 55295 or from 56320 to 65519. 
+{&n}	This is the hexadecimal notation for a single character.  The value of, n can be any number from &1 to &D7FF or from &DC00 to &FFEF.
+{#n .. #m}	Using this notation, you can specify a set containing the characters from n to m. The number-sign denotes a decimal value.
+{&n .. &m}	Set ranges can also be defined using hexadecimal values.
+Examples
+Basic
+Declaration	Resulting Set
+{Bracket} = [']']	]
+{Quote} = ['']	'
+{Vowels} = [aeiou]	aeiou
+{Vowels 2} = {Vowels} + [y]	aeiouy
+{Set 1} = [abc]	abc
+{Set 2} = {Set 1} + [12] - [c]	ab12
+{Set 3} = {Set 2} + [0123456789]	ab0123456789
+Set Ranges
+Declaration	Characters	Comments
+Example1 = {#65}	A	This example specifies the character with the Unicode codepoint of 65 - the letter 'A'.
+Example1 = {&41}	A	Hexadecimal value for 'A'.
+Example3 = {#65 .. #70}	ABCDEF	This set range defines a set from from the letter 'A' (#65) to 'F' (#70).
+Example4 = {&41 .. &46}	ABCDEF	This is the same set range using the hexadecimal values.
+Example5 = {#65 .. &46}	ABCDEF	Both decimal and hexadecimal notation can be mixed. This, however, can be confusing and it is not recommended.
+Additional Examples
+The following declares a set named "Hex Char" containing the characters that are valid in a hexadecimal number.
+
+{Hex Char} = {Digit} + [ABCDEF]
+The following declares a set containing the characters that can be placed inside a normal "string". In this case, the double quote is the delimiting character (which it is in most programming languages).
+
+{String Char} = {Printable} - ["]
+
+Regular Expressions
+The notation is rather simple, yet versatile enough to express any terminal needed. Basically, regular expressions consist of a series of characters that define the pattern of the terminal.
+
+Literal sets of characters are delimited using the square brackets '[' and ']' and defined sets are delimited by the braces '{' and '}'. For instance, the text "[abcde]" denotes a set of characters consisting of the first five letters of the alphabet; while the text "{abc}" refers to a set named "abc". Neither of these are part of the "pure" notation for regular expressions, but are widely used in other parser generators such as Lex/Yacc.
+
+Sub-expressions are delimited by normal parenthesis '(' and ')'. The pipe character '|' is used to denote alternate expressions.
+
+Either a set, a sub expression, or a single character can be followed by any of the following three symbols:
+
+*	Kleene Closure. This symbol denotes 0 or more or the specified character(s)
++	One or more. This symbol denotes 1 or more of the specified character(s)
+?	Optional. This symbol denotes 0 or 1 of the specified character(s)
+For example, the regular expression ab* translates to "an a followed by zero or more b's" and [abc]+ translates to "an series of one or more a's, b's or c's".
+
+Note:	When text is read by the Builder, all characters delimited by single quotes are analyzed as literal strings. In other words, any text delimited by single quotes is considered to be exactly as printed. This allows you to specify characters that would normally be limited by the notation. For instance, when defining a rule, angle brackets are used to delimit nonterminals. By typing '<' and '>', you can specify these two characters without worrying about the system misinterpreting them. A single quote character can be specified by typing a double single quote ''.
+In the case of regular expressions, single quotes allow you to specify the following characters: ? * + ( ) { } [ ]
+
+Special Terminals
+Whitespace
+In practically all programming languages, the parser recognizes (and usually ignores) the spaces, new lines, and other meaningless characters that exist between tokens. For instance, in the code:
+
+If  Done Then
+   Counter = 1;
+End If
+The fact that there are two spaces between the 'If' and 'Done', a new line after 'Then', and multiple space before 'Counter' is irrelevant.
+
+From the parser's point of view (in particular the Deterministic Finite Automata that it uses) these whitespace characters are recognized as a special terminal which can be discarded. In GOLD, this terminal is simply called the Whitespace terminal and can be defined to whatever is needed. If the Whitespace Terminal is not defined explicitly in the grammar, it will be implicitly declared as one or more of the characters in the pre-defined Whitespace set:  {Whitespace}+.
+
+Normally, you would not need to worry about the Whitespace terminal unless you are designing a language where the end of a line is significant. This is the case with Visual Basic, BASIC and many, many others. The proper declaration can be seen in an example.
+
+Comment
+Block and line comments are common in programming languages. The Comment Terminal is often generated as a container for group. Since comments are considered whitespace, GOLD will set the Comment Terminal to "noise" if it is created.
+
+Examples
+Declaration	Valid strings
+Example1 = a b c*	ab, abc, abcc, abccc, abcccc, ...
+Example2 = a b? c	abc, ac
+Example3 = a|b|c	a, b, c
+Example4 = a[12]*b	ab, a1b, a2b, a12b, a21b, a22b, a111b, ...
+Example5 = '*'+	*, **, ***, ****, ...
+Example6 = {Letter}+	cat, dog, Sacramento, ...
+Identifier = {Letter}{AlphaNumeric}*	e4, Param4b, Color2, temp, ...
+ListFunction = c[ad]+r	car, cdr, caar, cadr, cdar, cddr, caaar, ...
+ListFunction = c(a|d)+r	The same as the above using a different, yet equivalent, regular expression.
+NewLine = {CR}{LF}|{CR}	Windows and DOS use {CR}{LF} for newlines, UNIX simply uses {CR}. This definition will detect both.
+
+Overview
+Symbol Attributes
+Attribute	Valid Values
+Type	Content / Noise
+Source	Lexer / Virtual
+Details
+Type
+Terminal attributes allows you to control how the symbol is viewed by the parser. If can be merely considered noise or an essential part of the grammar.  Noise symbols are ignored by the parser. Normally, the symbols 'Whitespace' and 'Comment' are automatically defined as 'noise'. Any other terminal defaults to 'Content'.
+
+Source
+This controls whether GOLD will generate DFA states to recognize the terminal. In practically all cases, this will be the case and the terminal will be generated by the lexer. However, in rare circumstances, the developer may want to create the terminal manually at runtime. The alternative value, virtual, will place the symbol into the Symbol Table, but will not create any DFA states.
+
+Languages such as Python, do not use symbols to mark the start and end of a block of statements. Instead, the indentation of each statement is used to determine when  a block begins and ends. For Python, content of whitespace is important - or at least the position of a token rather than solely its classification by the lexer. If a program has an indent of 10 spaces, the grammar must contain a set of rules for statements at this level. The same is true for all other levels of indentation - requiring an infinite number of rules to parse.
+
+Virtual terminals are design to resolve problems like this by allowing the developer to define terminals that will be create manually. Each of these terminals are entered into the Symbol Table, but will not be recognized by the Engine's lexer. In other words, these terminals only exist in the Symbol Table and will never be created by the lexer's Deterministic Finite Automata.
+
+As a result, the developer must create these terminals at runtime and push them onto the front of the input queue. The actual semantics and method calls will vary greatly between different implementations of the Engine. In the case of Python, tokens could be created to represent a increase or decrease in indentation. Of course, the developer can create special tokens for any number of reasons; not just this one alone.
+
+ This is redundant with the old "Virtual Terminals" grammar property. Both can be used.
+Examples
+Virtual
+The following example sets the "source" attribute of IndentIncrease and IndentDecrease to "virtual".
+
+IndentIncrease @= { Source = Virtual }
+IndentDecrease @= { Source = Virtual }
+These "virtual" terminals can be used in the grammar, but must be created by the developer at parse-time.
+
+<Statement>  ::= If <Exp> then IndentInc <Statements> IndentDec
+Noise Terminal
+The following example creates a noise terminal called me. It consists of two dash and 1 or more letters. Since it is set to "noise", it will be viewed as the same as whitespace and ignored.
+
+IgnoreMe  = '--' {Letter}+
+
+IgnoreMe @= { Type = Noise }
+
+In GOLD, lexical groups are used for situations where a number of recognized tokens should be organized into a single "group". This mechanism is most commonly used to handle line and block comments. However, it is not limited to "noise", but can be used for any content.
+
+Comment Groups
+One of the key principles in programming languages is the ability to incorporate comments and other documentation directly to the source code. Whether it is FORTRAN, COBOL or C++, the ability exists, but in varying forms. Essentially, there are three different types of comments used in programming languages: those that tell the compiler to ignore the remaining text in the current line of code and those used to denote the start and end of a multi-line comment. 
+
+To accommodate the intricacies of comments, the GOLD Parser Builder provides for this special class of terminals called "groups". These allow you to create comments with little typing.
+
+Block Comments
+Any time a symbol is defined ending with  Start,  End, and Line , a lexical group will be created. Each group acts as a container for data - such as block comments or any other group the user may need. Once a group is read, the system will treat it as a single token. This is the group's "container".
+
+All groups have a start and end symbol. In the case of the following definition, both are quite obvious.
+
+Comment Start = '/*'
+Comment End   = '*/'
+This will create a normal "block" group with the start symbol '/*' and end symbol '*/'. For this block, the system will create a group called "Comment Block". The start and end definitions actually refer symbol names as opposed to regular expressions. This allows for the same symbol to be used to end multiple blocks.
+
+Line Comments
+Many programming languages have constructs, such as line comments, that read an entire line and end at the newline. The same group mechanism is used for block comments and line comments. However, a few things happen "behind the scenes" to make this possible. The following definition creates a line comment:
+
+Comment Line  = '//'
+Like the block comment above, this definition has a start and ending symbol. The difference here is that the start symbol is '//' and end symbol is implied to be the newline. GOLD will automatically define 'newline' if it is needed and adjust the definition for "whitespace" as needed. The following is the logic used:
+
+If there is already a 'Newline' terminal defined, the system will use it
+Otherwise, Newline will be declared automatically
+The whitespace terminal will be created from any unused whitespace characters
+Real-World Examples
+Below is a comparison of comment terminals in several common programming languages. Blanks fields denote the programming language lacks a terminal of that type. For instance, Visual Basic does not provide block comments.
+
+Programming Language	Line Comment	Comment Start	Comment End
+Ada	--		
+BASIC	REM		
+C / C++	//	/*	*/
+COBOL	*		
+Delphi		{	}
+LISP	;		
+FORTRAN 90	!		
+Java	//	/*	*/
+Perl	#		
+Prolog	%	/*	*/
+SQL	--	/*	*/
+Visual Basic	'		
+GOLD Meta-Language	!	!*	*!
+Other Groups
+Comments are not the only type of group available to developers. When a comment group is created, the container "comment" is automatically declared to be "noise" and will be ignored. This should be no surprise. Comments are generally discarded by parsers. However, you can create multiple groups - which can also be ignored or used directly in your grammar. The following chart shows what is created from group definitions. There are some examples available of when, and how, you can use them.
+
+GOLD uses the first part of the definition, the 'name' to create the group name and container. Note: line-based groups and block-groups, of the same name, share the same container.
+
+Groups
+Definition	Generated Group Name	Generated Container
+name Start	name Block	name
+name End
+name Line	name Line
+
+Group Attributes
+Overview
+Group Attributes
+Attribute	Valid Values
+Nesting	All / None / Self / { ... }
+Advance	Token / Character
+Ending	Open / Closed
+Details
+Nesting
+Any group can allow groups to be nested with it.
+
+This sets what groups can be nested within it. The user can also specify a set of group names using a braced-list.  This defaults to None.
+
+Advance
+This sets whether the lexical group will advance on each token or character. The default is Character.
+
+Ending
+This attribute determines if the group is open-ended or closed. If the group is closed, the end token is consumed when the group is complete. Otherwise, it is left in the queue. Block groups default to 'closed'. Line groups default to 'open' to leave the newline for languages that need it as part of their syntax.
+
+Examples
+Example 1
+The following example declares Comment Start and Comment End. The group is set to Unnested and Character.
+
+Comment Start   = '*/'
+Comment End     = '/*'
+
+Comment Block @= { Nesting = All, Advance = Character }
+
+Example: Groups
+Non-Noise Groups
+The group approach is designed to allow the developer to create any number of groups. The most common, naturally, will be the block comment. However, there will be situations where the developer will want to create a group that will be recognized by the parser as a regular terminal.
+
+The terminals 'Comment' and 'Whitespace' are automatically defined as whitespace, and, therefore, ignored. However, these are the only two. Any other groups will create regular terminals. For instance, a developer might want to create a language that allows a variable to be assigned a string literal or HTML code.
+
+So, if the developer wants to create a HTML block in code, they can specify:
+
+HTML Start = '<html>'
+HTML End   = '</html>'
+This will create the HTML Start and HTML End symbols in the table. The system will create the HTML terminal. This HTML terminal can be used directly in grammar. So, in the grammar, the developer can specify the following definitions:
+
+<Assign>  ::= Identifier '=' <Value>
+
+<Value>   ::= StringLiteral
+           |  HTML
+In this case, the HTML terminal would probably not be tokenized - since the terminal syntax of the grammar probably differs greatly from HTML. So, the group can be defined as 'unnested' and 'character' using the attributes. Note: this is not "set in stone", the developer could want to use different attributes.
+
+HTML Block @= { Nesting = None, Advance = Character }
+The grammar could accept  the following text:
+
+name = "String Literal"
+
+page =
+<html>
+   <head>
+     <title>Some page</title>
+   </head>
+   </body>
+     This is a tad easier than concatenating a series of strings!
+   </body>
+</html>
+Real-World Examples
+ANSI-C (and its children)
+ANSI C comments are pretty basic. They cannot be nested, and only advance a character at a time (untokenized).This format is used by all successors of ANSI-C such as C++, Java and C#.  Strangely, line comments are not part of the ANSI-C language definition. But, rarely, has a compiler not recognized them.
+
+Comment Block @= { Nesting = All, Advance = Character }
+
+Comment Start   = '*/'
+Comment End     = '/*'
+Comment Line    = '//'
+Pascal
+The Pascal Programming Language has two different block comments. The original version of the language used (* to start a comment and *) to end one. Later, the curly brackets { and } were added. Both are valid in Pascal programs. In addition, the two are synonymous, meaning a comment can start with (* and end with } and vice versa
+
+In this case, the single comment group can be defined. The regular expressions can be defined so Comment Start and Comment End can accept either notation. Normally, Pascal comments cannot be nested, but this varies by compiler. Group definitions specify a terminal name, so extra definitions are necessary.
+
+CommentBlock  @= { Nesting = All, Advance = Character }
+
+StartTerminal  = '{' | '(*'
+EndTerminal    = '}' | '*)'
+
+Comment Start  = StartTerminal
+Comment End    = EndTerminal
+If the developer wants the start and end of the comment to "match", they can define a second group. Only 'Comment' and 'Whitespace' are flagged as being whitespace, but any terminal can be set to whitespace by assigning its attributes. In the follow example, the grammar defines 'Comment2'. The name is really up to the developer. They could have just as easily used 'CommentAlt', 'OtherFormat', etc...
+
+To set this group to noise, the developer uses 'noise' in the attributes. As a result, both Comment and Comment2 will be ignored by the parser. The developer could also manually add the 'noise' attribute to "Comment Attributes", but is not necessary.
+
+Comment Block  @= { Nesting = All, Advance = Character }
+Comment2 Block @= { Nesting = All, Advance = Character }
+
+Comment2 @= { Type = Noise }
+
+Comment Start   = '{'
+Comment End     = '}'
+
+Comment2 Start  = '(*'
+Comment2 End    = '*)'
+
+The majority of the grammar, that you will write, will be used to specify the syntactic structure of the language. When an input string is parsed (such as the user's program), it is stored into a tree structure that follows the syntactic structure of the language. There are several ways to specifying the structure of a grammar and different parsing systems use different notations and formats.
+
+Regardless of the parser, practically all use a variation of a notation known as Backus-Naur Form (or BNF for short). GOLD uses BNF to describe the syntax of the grammar and attempts to stay close to the original notation.
+
+Terminals and Nonterminals
+Backus-Naur Form consists of two different types of symbols: terminals and nonterminals. Terminals represent that pieces of text that makes a valid input string (such as a user's program). When an input string is parsed, terminals will be the "leaves" of the parse tree. Nonterminals represent other syntactic structures defined in the grammar. These will be the nodes in the parse tree.
+
+Terminals are left without special formatting or are delimited by single quotes. Examples include: if, while, '=' and identifier. Typically, nonterminals are delimited by angle-brackets. Examples include <statement> and <exp>. Both terminals and nonterminals are referred to generically as "symbols".
+
+
+
+When text is read by the Builder, all characters delimited by single quotes are analyzed as literal strings. Any text delimited by single quotes is considered to be exactly as printed. This allows you to specify characters that would normally be limited by the notation. For instance, when defining a rule, angle brackets are used to delimit nonterminals. By typing '<' and '>', you can specify these two characters without worrying about the system misinterpreting them. A single quote character can be specified by typing two single quotes ''. 
+Productions
+The syntax of the grammar is defined using a series of "productions". These consist of a single nonterminal called the "head". The head is defined to consist of multiple symbols making up the production's "handle".
+
+ For instance, the following production defines a generic If-Statement syntax. The symbols 'if', 'then', and 'end' are terminals. The symbols <Expression> and <Statements> are nonterminals. The first nonterminal, before the ::= symbol, is the "head". All the terminals/nonterminals after the ::= is called a "handle".  The "head" and "handle", together, are called a "production".
+
+<Statement>	::=	if <Expression> then <Statements> end
+The production above basically defines that a <Statement> as an 'if' terminal, an <Expression> defined elsewhere, a 'then' terminal,  <Statements> defined elsewhere, and, finally, an 'end' terminal. 
+
+Rules
+If you are declaring a series of productions that derive the same nonterminal (they have the same head), you can use pipe characters '|' to create a series of different handles. The pipe symbol basically means "or". So, in the example below, <Statement> is defined using three different handles. It can be equivalent to any of these.
+
+<Statement> ::= if <Expression> then <Statements> end
+             |  while <Expression> do <Statements> end
+             |  for Id = <Range> do <Statements> end
+Internally, the notation above will create three different productions:
+
+<Statement>	::=	if <Expression> then <Statements> end
+<Statement>	::=	while <Expression> do <Statements> end
+<Statement>	::=	for Id = <Range> do <Statements> end
+However, to prevent typos, GOLD only permits the single definition. In GOLD terminology, a series of related productions, with the same head, is called a "Rule".
+
+Nullable Rules
+A rule can also be declared as "nullable". This basically means that the nonterminal, that the rule represents, can contain zero terminals. For all intents and purposes, the nonterminal an be seen as optional. In grammars, nullable rules are often used for optional clauses (on statements) or creating lists that contain zero or more items.
+
+A null production (and hence a nullable rule), is declared by simply creating a production that contains no symbols.
+
+<Optional Keyword> ::= Keyword
+                    |          
+The second handle in the definition contains no symbols. The rule is therefore nullable. GOLD version 5 also permits an alternative notation. The text <>, used by itself, will declare a null production.
+
+<Optional Keyword> ::= Keyword
+                    |  <>        
+Summary
+A rule consists of one or more productions.
+The production starts with a single nonterminal, which is the name of the rule being defined
+This nonterminal is followed by a ::= symbol which means “as defined as”.
+The symbol is followed by a series of terminals and nonterminals.
+ Examples
+Fall-Through Logic
+The following defines a rule called <Value> which can contain either an Identifier terminal or the contents of another rule called <Literal>
+
+<Value> ::= Identifier
+         |  <Literal>
+
+<Literal> ::= Number
+           |  String
+The <Literal> can contain either a  Number or String terminal. As a result of this definition, a <Value> can contain an Identifier, Number or String .
+
+Nullable Clause
+The three clauses in the C-style For Statement are optional. The <Opt Exp> rule defines an optional expression.
+
+<For Statement> ::= for '(' <Opt Exp> ';' <Opt Exp> ';' <Opt Exp> ')' <Statements>
+
+<Opt Exp> ::= <Expression>
+           |  
+Lists
+The following two rules define a comma delimited list of Identifiers.
+
+<List> ::= <List> ',' Identifier
+         | Identifier
+Operator Precedence
+Operator precedence is an important aspect of most programming languages. The following rules define the common arithmetic operators.
+
+<Expression> ::= <Expression> '+' <Mult Exp>
+               | <Expression> '-' <Mult Exp>
+               | <Mult Exp>
+<Mult Exp>   ::= <Mult Exp> '*' <Negate Exp>
+               | <Mult Exp> '/' <Negate Exp>
+               | <Negate Exp>
+
+<Negate Exp> ::= '-' <Value>
+               | <Value>
+
+<Value>      ::= ID
+               | Integer
+               | '(' <Expression> ')'
+
+
+Example: Lists
+Comma Delimited
+The following declaration defines a list of identifiers where commas are used to separate list items. The last item in the list will not be followed by a comma. This definition does not allow the list to be completely empty.
+
+Identifier = {Letter}{Alphanumeric}*
+<List> ::= <List> ',' <List Item>
+        |  <List Item>
+
+<List Item> ::= Identifier
+
+Statement List
+The following declaration defines a list of "Statements" where each <Statement> will be followed by a semicolon. Unlike the example above, the last item in the list will be followed by the symbol. However, since the <List> rule is nullable (the blank line), the list can be completely empty.
+
+Identifier = {Letter}{Alphanumeric}*
+<List> ::= <List> <Statement> ';'
+        |
+
+<Statement> ::= print '(' Identifier ')'
+              | read '(' Identifier ')' 
+
+Statement List (1 or more members)
+This is a declaration identical to the example above, except the list must contain at least one item.
+
+Identifier = {Letter}{Alphanumeric}*
+<List> ::= <List> <Statement> ';'
+         | <Statement> ';'
+
+<Statement> ::= print '(' Identifier ')'
+              | read '(' Identifier ')'
+
+
+
+Example: If-Then-Else Statement
+The Hanging-Else Problem
+The following is a very simple grammar with a complex problem:
+
+Id = {Letter}{AlphaNumeric}*             
+<Statement> ::= if Id then <Statement>
+              | if Id then <Statement> else <Statement>
+              | Id ':=' Id
+When this grammar is analyzed by the GOLD Parser Builder (or any other generator for that matter), a problem arises in the LALR(1) parse tables. Invariably, a shift-reduce error occurs when the parser reaches the "else" option on the If-Then statement.
+
+This type of error is caused by ambiguity in the grammar itself; in the case of the above grammar, the parser does not know where it can reduce a rule or must push a token onto the parse stack. Technical issues aside, it is important to understand why this grammar is ambiguous.
+
+The ambiguity of the grammar can be seen with a very simple piece of  source code:
+
+if Enrolled then if Studied then Grade:=A else Grade:=B
+The sample source code could be interpreted two distinct ways by the grammar. The first interpretation would bind the "else" to the first "if".
+
+if Enrolled then if Studied then Grade:=A else Grade:=B
+The second interpretation would bind the "else" to the second 'if" statement:
+
+if Enrolled then if Studied then Grade:=A else Grade:=B
+Fortunately, there are two approaches you can take to resolve the problem.
+
+Hanging-Else Solution #1: Modify the Grammar
+This approach modifies the grammar such that the scope of the "if" statement is explicitly stated. Another terminal is added to the end of each "if" statement, in this case an "end". A number of programming languages use this approach; the most notable are: Visual Basic and Ada.
+
+Id = {Letter}{AlphaNumeric}*
+
+<Statement> ::= if Id then <Statement> end
+              | if Id then <Statement> else <Statement> end
+              | Id ':=' Id
+As seen below, the ambiguity of the original grammar has been resolved.
+
+if Enrolled then if Studied then Grade:=A end else Grade:=B end
+if Enrolled then if Studied then Grade:=A else Grade:=B end end
+Hanging-Else Solution #2: Restrict the "Else"
+This solution resolves the hanging-else problem by restricting the "if-then" statement to remove ambiguity. Two levels of statements are declared with the second, "restricted", group only used in the "then" clause of a "if-then-else" statement. The "restricted" group is completely identical the the first with one exception: only the "if-then-else" variant of the if statement is allowed.
+
+In other words, no "if" statements without "else" clauses can appear inside the "then" part of an "if-then-else" statement. Using this solution, the "else" will bind to the last "If" statement, and still allows chaining. This is the case with the C/C++ programming language family.
+
+Id = {Letter}{AlphaNumeric}*
+
+<Statement> ::= if Id then <Statement>
+              | if Id then <Then Stm> else <Statement>
+              | Id ':=' Id
+
+<Then Stm>  ::= if Id then <Then Stm> else <Then Stm>
+              | Id ':=' Id
+Unfortunately, this adds a number of rules, but it is ultimately the price you pay for such a grammar.
+
+
+In the GOLD Meta-language, you can control the attributes of terminals and groups. These attributes control how a terminal is treated and how groups will behave. Each attribute assignment consists of a set of attribute-value pairs.
+
+Terminal Attributes
+Overview
+Symbol Attributes
+Attribute	Valid Values
+Type	Content / Noise
+Source	Lexer / Virtual
+Details
+Type
+Terminal attributes allows you to control how the symbol is viewed by the parser. If can be merely considered noise or an essential part of the grammar.  Noise symbols are ignored by the parser. Normally, the symbols 'Whitespace' and 'Comment' are automatically defined as 'noise'. Any other terminal defaults to 'Content'.
+
+Source
+This controls whether GOLD will generate DFA states to recognize the terminal. In practically all cases, this will be the case and the terminal will be generated by the lexer. However, in rare circumstances, the developer may want to create the terminal manually at runtime. The alternative value, virtual, will place the symbol into the Symbol Table, but will not create any DFA states.
+
+Languages such as Python, do not use symbols to mark the start and end of a block of statements. Instead, the indentation of each statement is used to determine when  a block begins and ends. For Python, content of whitespace is important - or at least the position of a token rather than solely its classification by the lexer. If a program has an indent of 10 spaces, the grammar must contain a set of rules for statements at this level. The same is true for all other levels of indentation - requiring an infinite number of rules to parse.
+
+Virtual terminals are design to resolve problems like this by allowing the developer to define terminals that will be create manually. Each of these terminals are entered into the Symbol Table, but will not be recognized by the Engine's lexer. In other words, these terminals only exist in the Symbol Table and will never be created by the lexer's Deterministic Finite Automata.
+
+As a result, the developer must create these terminals at runtime and push them onto the front of the input queue. The actual semantics and method calls will vary greatly between different implementations of the Engine. In the case of Python, tokens could be created to represent a increase or decrease in indentation. Of course, the developer can create special tokens for any number of reasons; not just this one alone.
+
+ This is redundant with the old "Virtual Terminals" grammar property. Both can be used.
+Examples
+Virtual
+The following example sets the "source" attribute of IndentIncrease and IndentDecrease to "virtual".
+
+IndentIncrease @= { Source = Virtual }
+IndentDecrease @= { Source = Virtual }
+These "virtual" terminals can be used in the grammar, but must be created by the developer at parse-time.
+
+<Statement>  ::= If <Exp> then IndentInc <Statements> IndentDec
+Noise Terminal
+The following example creates a noise terminal called me. It consists of two dash and 1 or more letters. Since it is set to "noise", it will be viewed as the same as whitespace and ignored.
+
+IgnoreMe  = '--' {Letter}+
+
+IgnoreMe @= { Type = Noise }
+
+Group Attributes
+Overview
+Group Attributes
+Attribute	Valid Values
+Nesting	All / None / Self / { ... }
+Advance	Token / Character
+Ending	Open / Closed
+Details
+Nesting
+Any group can allow groups to be nested with it.
+
+This sets what groups can be nested within it. The user can also specify a set of group names using a braced-list.  This defaults to None.
+
+Advance
+This sets whether the lexical group will advance on each token or character. The default is Character.
+
+Ending
+This attribute determines if the group is open-ended or closed. If the group is closed, the end token is consumed when the group is complete. Otherwise, it is left in the queue. Block groups default to 'closed'. Line groups default to 'open' to leave the newline for languages that need it as part of their syntax.
+
+Examples
+Example 1
+The following example declares Comment Start and Comment End. The group is set to Unnested and Character.
+
+Comment Start   = '*/'
+Comment End     = '/*'
+
+Comment Block @= { Nesting = All, Advance = Character }
+
+
+ Pre-Defined Character Sets
+ The GOLD Builder has a collection of useful pre-defined sets at your disposal. These include the sets that are often used for defining terminals as well as characters not accessible via the keyboard.
+
+Constants
+Name	Codepoint	Description
+{HT}	&09 	Horizontal Tab character.
+{LF}	&10	Line Feed character.
+{VT}	&11	Vertical Tab character. This character is rarely used.
+{FF}	&12	Form Feed character. This character is also known as "New Page".
+{CR}	&13	Carriage Return character {#13}.
+{Space}	&20	Space character. Technically, this set is not needed since a "space" can be expressed by using single quotes: ' '. The set was added to allow the developer to more explicitly indicate the character and add readability.
+{NBSP}	&A0	No-Break Space character. The No-Break Space character is used to represent a space where a line break is not allowed. It is often used in source code for indentation.
+{LS}	&2028	Unicode Line Separator
+{PS}	&2029	Unicode Paragraph Separator
+Common Character Sets
+Please see the Pre-Defined Character Set Chart for pictures of these characters.
+
+Name	Codepoints	Description
+{Number}	&30 .. &39	0123456789
+{Digit}	&30 .. &39	0123456789
+This set is maintained to support older grammars. The term "digit" is technically inaccurate and this set will eventually be removed, but not for a long time. Please use the {Number} set.
+{Letter}	&41 .. &5A, &61 .. &7A	abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ
+{AlphaNumeric}	&30 .. &39, &41 .. &5A, &61 .. &7A	This set includes all the characters in {Letter} and {Number}
+{Printable}	&20 .. &7E, &A0	This set includes all standard characters that can be printed onscreen. This includes the characters from  #32 to #127 and  #160 (No-Break Space). The No-Break Space character was included since it is often used in source code.
+{Letter Extended}	&C0 .. &D6, &D8 .. &F6, &F8 .. &FF	This set includes all the letters which are part of the extended characters in the first 256 characters (ANSI).
+{Printable Extended}	&A1 .. &FF	This set includes all the printable characters above #127. Although rarely used in programming languages, they could be used, for instance, as valid characters in a string literal.
+{Whitespace}	&09 .. &0D, %20, &A0	This set includes all characters that are normally considered whitespace and ignored by the parser. The set consists of the Space, Horizontal  Tab, Line Feed, Vertical Tab, Form Feed, Carriage Return and No-Break Space.
+Useful
+Name	Codepoints
+{All Latin}	&41 .. &5A, &61 .. &7A, &AA, &B5, &BA, &C0 .. &D6, &D8 .. &F6, &F8 .. &024F, &1E00 .. &1EFF, &2C60 .. &2C7F, &A720 .. &A7FF
+{All Letters}	This is too large to display here.
+{All Printable}	&20 .. &7F, &A0 .. &200A, &2010 .. &2027, &202F .. &205F, &2065 .. &2069, &2070 .. &D7FF, &E000 .. &FEFE, &FF00 .. &FFEF
+{All Space}	&20, &A0, &1680, &180E, &2000 .. &200A, &202F, &205F, &3000
+{All Newline}	&0A, &0D, &2028, &2029
+{All Whitespace}	&09 .. &0D, &20, &85, &A0, &1680, &180E, &2000 .. &200A, &2028, &2029, &202F, &205F, &3000
+Unicode Blocks
+Unicode is divided into different distinct sections for many of the world's languages. The GOLD Meta-Language contains a number of predefined sets based on the Unicode standard.
+
+For more information please visit: www.unicode.org.
+
+Name	Codepoints
+{Basic Latin}	&00 .. &7F
+{Latin-1 Supplement}	&80 .. &FF
+{Latin Extended-A}	&0100 .. &017F
+{Latin Extended-B}	&0180 .. &024F
+{IPA Extensions}	&0250 .. &02AF
+{Spacing Modifier Letters}	&02B0 .. &02FF
+{Combining Diacritical Marks}	&0300 .. &036F
+{Greek and Coptic}	&0370 .. &03FF
+{Cyrillic}	&0400 .. &04FF
+{Cyrillic Supplement}	&0500 .. &052F
+{Armenian}	&0530 .. &058F
+{Hebrew}	&0590 .. &05FF
+{Arabic}	&0600 .. &06FF
+{Syriac}	&0700 .. &074F
+{Arabic Supplement}	&0750 .. &077F
+{Thaana}	&0780 .. &07BF
+{NKo}	&07C0 .. &07FF
+{Samaritan}	&0800 .. &083F
+{Devanagari}	&0900 .. &097F
+{Bengali}	&0980 .. &09FF
+{Gurmukhi}	&0A00 .. &0A7F
+{Gujarati}	&0A80 .. &0AFF
+{Oriya}	&0B00 .. &0B7F
+{Tamil}	&0B80 .. &0BFF
+{Telugu}	&0C00 .. &0C7F
+{Kannada}	&0C80 .. &0CFF
+{Malayalam}	&0D00 .. &0D7F
+{Sinhala}	&0D80 .. &0DFF
+{Thai}	&0E00 .. &0E7F
+{Lao}	&0E80 .. &0EFF
+{Tibetan}	&0F00 .. &0FFF
+{Myanmar}	&1000 .. &109F
+{Georgian}	&10A0 .. &10FF
+{Hangul Jamo}	&1100 .. &11FF
+{Ethiopic}	&1200 .. &137F
+{Ethiopic Supplement}	&1380 .. &139F
+{Cherokee}	&13A0 .. &13FF
+{Unified Canadian Aboriginal Syllabics}	&1400 .. &167F
+{Ogham}	&1680 .. &169F
+{Runic}	&16A0 .. &16FF
+{Tagalog}	&1700 .. &171F
+{Hanunoo}	&1720 .. &173F
+{Buhid}	&1740 .. &175F
+{Tagbanwa}	&1760 .. &177F
+{Khmer}	&1780 .. &17FF
+{Mongolian}	&1800 .. &18AF
+{Unified Canadian Aboriginal Syllabics Extended}	&18B0 .. &18FF
+{Limbu}	&1900 .. &194F
+{Tai Le}	&1950 .. &197F
+{New Tai Lue}	&1980 .. &19DF
+{Khmer Symbols}	&19E0 .. &19FF
+{Buginese}	&1A00 .. &1A1F
+{Tai Tham}	&1A20 .. &1AAF
+{Balinese}	&1B00 .. &1B7F
+{Sundanese}	&1B80 .. &1BBF
+{Lepcha}	&1C00 .. &1C4F
+{Ol Chiki}	&1C50 .. &1C7F
+{Vedic Extensions}	&1CD0 .. &1CFF
+{Phonetic Extensions}	&1D00 .. &1D7F
+{Phonetic Extensions Supplement}	&1D80 .. &1DBF
+{Combining Diacritical Marks Supplement}	&1DC0 .. &1DFF
+{Latin Extended Additional}	&1E00 .. &1EFF
+{Greek Extended}	&1F00 .. &1FFF
+{General Punctuation}	&2000 .. &206F
+{Superscripts and Subscripts}	&2070 .. &209F
+{Currency Symbols}	&20A0 .. &20CF
+{Combining Diacritical Marks for Symbols}	&20D0 .. &20FF
+{Letterlike Symbols}	&2100 .. &214F
+{Number Forms}	&2150 .. &218F
+{Arrows}	&2190 .. &21FF
+{Mathematical Operators}	&2200 .. &22FF
+{Miscellaneous Technical}	&2300 .. &23FF
+{Control Pictures}	&2400 .. &243F
+{Optical Character Recognition}	&2440 .. &245F
+{Enclosed Alphanumerics}	&2460 .. &24FF
+{Box Drawing}	&2500 .. &257F
+{Block Elements}	&2580 .. &259F
+{Geometric Shapes}	&25A0 .. &25FF
+{Miscellaneous Symbols}	&2600 .. &26FF
+{Dingbats}	&2700 .. &27BF
+{Miscellaneous Mathematical Symbols-A}	&27C0 .. &27EF
+{Supplemental Arrows-A}	&27F0 .. &27FF
+{Braille Patterns}	&2800 .. &28FF
+{Supplemental Arrows-B}	&2900 .. &297F
+{Miscellaneous Mathematical Symbols-B}	&2980 .. &29FF
+{Supplemental Mathematical Operators}	&2A00 .. &2AFF
+{Miscellaneous Symbols and Arrows}	&2B00 .. &2BFF
+{Glagolitic}	&2C00 .. &2C5F
+{Latin Extended-C}	&2C60 .. &2C7F
+{Coptic}	&2C80 .. &2CFF
+{Georgian Supplement}	&2D00 .. &2D2F
+{Tifinagh}	&2D30 .. &2D7F
+{Ethiopic Extended}	&2D80 .. &2DDF
+{Cyrillic Extended-A}	&2DE0 .. &2DFF
+{Supplemental Punctuation}	&2E00 .. &2E7F
+{CJK Radicals Supplement}	&2E80 .. &2EFF
+{Kangxi Radicals}	&2F00 .. &2FDF
+{Ideographic Description Characters}	&2FF0 .. &2FFF
+{CJK Symbols and Punctuation}	&3000 .. &303F
+{Hiragana}	&3040 .. &309F
+{Katakana}	&30A0 .. &30FF
+{Bopomofo}	&3100 .. &312F
+{Hangul Compatibility Jamo}	&3130 .. &318F
+{Kanbun}	&3190 .. &319F
+{Bopomofo Extended}	&31A0 .. &31BF
+{CJK Strokes}	&31C0 .. &31EF
+{Katakana Phonetic Extensions}	&31F0 .. &31FF
+{Enclosed CJK Letters and Months}	&3200 .. &32FF
+{CJK Compatibility}	&3300 .. &33FF
+{CJK Unified Ideographs Extension A}	&3400 .. &4DBF
+{Yijing Hexagram Symbols}	&4DC0 .. &4DFF
+{CJK Unified Ideographs}	&4E00 .. &9FFF
+{Yi Syllables}	&A000 .. &A48F
+{Yi Radicals}	&A490 .. &A4CF
+{Lisu}	&A4D0 .. &A4FF
+{Vai}	&A500 .. &A63F
+{Cyrillic Extended-B}	&A640 .. &A69F
+{Bamum}	&A6A0 .. &A6FF
+{Modifier Tone Letters}	&A700 .. &A71F
+{Latin Extended-D}	&A720 .. &A7FF
+{Syloti Nagri}	&A800 .. &A82F
+{Common Indic Number Forms}	&A830 .. &A83F
+{Phags-pa}	&A840 .. &A87F
+{Saurashtra}	&A880 .. &A8DF
+{Devanagari Extended}	&A8E0 .. &A8FF
+{Kayah Li}	&A900 .. &A92F
+{Rejang}	&A930 .. &A95F
+{Hangul Jamo Extended-A}	&A960 .. &A97F
+{Javanese}	&A980 .. &A9DF
+{Cham}	&AA00 .. &AA5F
+{Myanmar Extended-A}	&AA60 .. &AA7F
+{Tai Viet}	&AA80 .. &AADF
+{Meetei Mayek}	&ABC0 .. &ABFF
+{Hangul Syllables}	&AC00 .. &D7AF
+{Hangul Jamo Extended-B}	&D7B0 .. &D7FF
+{Private Use Area}	&E000 .. &F8FF
+{CJK Compatibility Ideographs}	&F900 .. &FAFF
+{Alphabetic Presentation Forms}	&FB00 .. &FB4F
+{Arabic Presentation Forms-A}	&FB50 .. &FDFF
+{Variation Selectors}	&FE00 .. &FE0F
+{Vertical Forms}	&FE10 .. &FE1F
+{Combining Half Marks}	&FE20 .. &FE2F
+{CJK Compatibility Forms}	&FE30 .. &FE4F
+{Small Form Variants}	&FE50 .. &FE6F
+{Arabic Presentation Forms-B}	&FE70 .. &FEFF
+{Halfwidth and Fullwidth Forms}	&FF00 .. &FFEF
+Miscellaneous Character Sets
+Name	Codepoints	Description
+{All Valid}	&01 .. &D7FF, &E000 .. &FFEF	The {All Valid} character set contains every valid character in the Basic Multilingual Plane of the Unicode Character Set. This includes the characters from &1 to &D7FF and  &DC00 to &FFEF.
+Please note that this set also includes whitespace and control characters that are rarely used in programming languages.  It is only available in versions 2.6 and later of the Builder.
+
+{ANSI Mapped}	&0152, &0153, &0160, &0161, &0178, &017D, &017E, &0192, &02C6, &02DC, &2013, &2014, &2018 .. &201A, &201C .. &201E, &2020 .. &2022, &2026, &2030, &2039, &203A, &20AC, &2122	This set contains the characters between 128 and 159 that have different values in Unicode. The set is only available in versions 2.0.6 and later of the Builder.
+{ANSI Printable}	&20 .. &7E, &A0 .. &FF	This set contains all printable characters available in ANSI. Essentially, this is a union of {Printable}, {Printable Extended} and {ANSI Mapped}.  The set is only available in versions 2.0.6 and later of the Builder.
+{Control Codes}	&00 .. &1F, &7F .. &9F	This set includes the characters from 1 to 31 and from 127 to 159.  It is only available in versions 2.6 and later of the Builder.
+{Euro Sign}	&20AC	The Euro Currency Sign.
+{Formatting}	&200B .. &200F, &202A .. &202E, &2060 .. &2064, &206A .. &206F, &FEFF, &FFF9 .. &FFFB	Unicode formatting characters.
+ 
+Character Mapping
+The following is the mapping between the Windows-1252 characters between 128 and 159 and Unicode values. If the Character Mapping Property is set to Windows-1252, the system will populate the Windows-1252 values.
+
+Windows-1252 Character Mapping
+Windows-1252 Character	Unicode Control Character Replaced	Windows-1252	Unicode
+Dec	Hex	Dec	Hex
+€	RESERVED FOR FUTURE USE	128	0x80	8364	0x20AC
+‚	Break permitted here	130	0x82	8218	0x201A
+ƒ	No break here	131	0x83	402	0x0192
+„	Index	132	0x84	8222	0x201E
+…	Next Line (replacement for CRLF)	133	0x85	8230	0x2026
+†	Start of selected area	134	0x86	8224	0x2020
+‡	End of selected area	135	0x87	8225	0x2021
+ˆ	Character tabulation set	136	0x88	710	0x02C6
+‰	Character tabulation with justification	137	0x89	8240	0x2030
+Š	Line tabulation set	138	0x8A	352	0x0160
+‹	Partial line forward	139	0x8B	8249	0x2039
+Œ	Partial line backwards	140	0x8C	338	0x0152
+‘	Private use #1	145	0x91	8216	0x2018
+’	Private use #2	146	0x92	8217	0x2019
+“	Set transmit state	147	0x93	8220	0x201C
+”	Cancel character	148	0x94	8221	0x201D
+•	Message waiting	149	0x95	8226	0x2022
+–	Start of guarded area	150	0x96	8211	0x2013
+—	End of guarded area	151	0x97	8212	0x2014
+˜	Start of string	152	0x98	732	0x02DC
+™	RESERVED FOR FUTURE USE	153	0x99	8482	0x2122
+š	Single character introducer	154	0x9A	353	0x0161
+›	Control sequence introducer	155	0x9B	8250	0x203A
+œ	String terminator	156	0x9C	339	0x0153
+Ÿ	Application program command	159	0x9F	376	0x0178
+
+Shift-Reduce Conflict
+Overview
+The Shift-Reduce Conflict is the most common type of conflict found in grammars. It is caused when the grammar allows a rule to be reduced  for particular token, but, at the same time, allowing another rule to be shifted for that same token. As a result, the grammar is ambiguous since a program can be interpreted more than one way. This error is often caused by recursive grammar definitions where the system cannot determine when one rule is complete and another is just started.
+
+The Lookahead Set
+The Lookahead Set is used by the LALR construction algorithm to determine when to "reduce" a rule. When a configuration is complete - (e.g. the cursor is past the last symbol), the LALR algorithm reduces the rule for each token in the set. This information is stored as a series of "reduce" actions in the LALR state.
+
+When a token is read by the LALR algorithm, it looks up token in the current state and then performs the associated action. If an entry exists with a "shift" action, the system will push the token on an internal stack and jump to the specified state. If a "reduce" action is found, the associated rule is reduced and passed to the developer. If the token is not found in the state, a syntax error occurs.
+
+Naturally, there can only be one action for any given state. For example, if a programming language contains a terminal for the reserved word "while", only one entry for "while" can exist in the state. A shift-reduce action, therefore, is caused when the system does not know if to "shift" or "reduce" for a given token.
+
+For more information, please consult a book on compiler theory.
+
+Solutions
+Versions 2.4 and later of the GOLD Parser Builder automatically fixes Shift-Reduce Conflicts by not "reducing" when it would cause a conflict. This is the same behavior of the YACC compiler-compiler. It is best to closely check these states to determine if the "shift" is the action wanted.
+
+The error is commonly caused by ambiguous grammars. This may not be the fault of the language being defined. Modifying the grammar can ultimately resolve the conflict. For an example of how to resolve Shift-Reduce conflicts, please see the If Statement Example Page.
+
+ 
+Reduce-Reduce Conflict
+Overview
+A Reduce-Reduce error is a caused when a grammar allows two or more different rules to be reduced at the same time, for the same token. When this happens, the grammar becomes ambiguous since a program can be interpreted more than one way. This error can be caused when the same rule is reached by more than one path.
+
+The Lookahead Set
+The Lookahead Set is used by the LALR construction algorithm to determine when to "reduce" a rule. When a configuration is complete - (e.g. the cursor is past the last symbol), the LALR algorithm reduces the rule for each token in the set. This information is stored as a series of "reduce" actions in the LALR state.
+
+When a token is read by the LALR algorithm, it looks up token in the current state and then performs the associated action. If an entry exists with a "shift" action, the system will push the token on an internal stack and jump to the specified state. If a "reduce" action is found, the associated rule is reduced and passed to the developer. If the token is not found in the state, a syntax error occurs.
+
+Naturally, there can only be one action for any given state. For example, if a programming language contains a terminal for the reserved word "while", only one entry for "while" can exist in the state. A shift-reduce action, therefore, is caused when the system does not know if to "shift" or "reduce" for a given token.
+
+For more information, please consult a book on compiler theory.
+
+Glossary
+Backus-Naur Form	Backus-Naur Form is a notation used to describe the syntax of programming languages. In particular is it used to define productions.
+Configuration	In parsing terms, a configuration is a production in the process of being completed. Configurations play a major role in the construction of LR parse tables.
+Deterministic Finite
+Automata	A Deterministic Finite Automaton is often used to analyze a series of characters.  Often it is implemented using state driven transition graph. Please see theinline-arrow-r.gif (99 bytes)Deterministic Finite Automata page for more information.
+Grammar	Please see theinline-arrow-r.gif (99 bytes)Grammar and Backus-Naur Form page
+LALR Parsing	LALR Parsing, or "Lookahead LR parsing", is a variant of LR Parsing that combines different "configurations" to limit the size of the parse tables. As a result, the algorithm is slightly less powerful than the LR Parsing. Grammars that can be parsed by a LR parser, might be found to be "ambiguous" by LALR. However, this is very rarely the case and real-world examples are few.
+The number of states eliminated by LALR are sometimes huge. The C programming language, for instance, has over 10,000 LR states. LALR drops this number to slightly more than 200.
+
+LR Parsing	
+LR Parsing, or Left-to-right Right-derivative parsing, uses tables to determine when a rule is complete and when additional tokens are needed to be read from the source.The LR Parser does very little "thinking" at runtime. All decisions are based on the content of the parse tables. The construction of these tables where all the "thinking" takes place. LR parser generators, such as YACC and GOLD, construct these tables by analyzing the grammar and determining all the possible "states" the system can be in when parsing.
+
+Each state represents a point in the parse process where a number of tokens have been read from the source and rules are in different states of completion. Each production in a state of completion is called a "configuration" and each state is really a configuration set.
+
+LR parse tables can be huge, and, as a result, often a variant of LR Parsing is used. For more information, please see theinline-arrow-r.gif (99 bytes)LALR Algorithm page.
+
+Nonterminal	A nonterminal is a symbol used in Backus-Naur form represent a syntactic structures defined in the grammar.
+
+Please see theinline-arrow-r.gif (99 bytes)Define Rules page
+Nullable Rule	
+A nullable rule is a type of rule which is optional, or in other words, can contain no symbols. In the GOLD Meta-Language, a nullable rule can be specified by adding a blank entry:
+
+<Optional ID> ::= Identifier
+               |
+Parser	A parser is software, such as a procedure or library, that organizes text into a set of logical units used by a programming language.
+Parser Generator	A parser generator is a generic term that refers to any software program that helps develop a working parser. Examples include the GOLD, YACC and ANTLR.
+Production	Please see theinline-arrow-r.gif (99 bytes)Define Rules page.
+Reduce-Reduce
+Conflict	A Reduce-Reduce Conflict is a caused when a grammar allows two or more different rules to be reduced at the same time, for the same token. When this happens, the grammar becomes ambiguous since a program can be interpreted more than one way.
+For instance, assume you have the following grammar:
+
+<S> ::= <A> | <B>
+
+<A> ::= Identifier
+<B> ::= Identifier
+When the system reads an identifier, it cannot determine if it has completed <A> or<B>.
+
+When a LALR parser generator is analyzing a grammar and constructing the parse tables, these conflicts are located immediately.
+
+Regular Expression	A Regular Expression is a notation used describe patterns of characters. In programming language theory, they are often used to describe a languages' terminals. For more information, please see theinline-arrow-r.gif (99 bytes)Define Terminals page
+Rule	Please see theinline-arrow-r.gif (99 bytes)Define Rules page.
+Semantics	The semantics of a programming language refers to how the actual statements, constructs, etc... are interpreted. This is quite different from the syntax of a programming language which refers to how different symbols and reserved words are arranged.
+For instance, in both Visual Basic and C++, the following is a valid expression:
+
+a & b
+Even though the syntax is the same between the two languages, the semantics are quite different. In C++, this expression is interpreted as a binary-and of "a" and "b". In Visual Basic, however, this expression returns the concatenation of two strings.
+
+Symbol	In parsing terms, a symbol is the building block of a grammar and can be either a terminal or nonterminal. Essentially, the term "symbol" is used to refer to either of its two forms.
+Syntax	The term "syntax" refers to the structure of a programming language, in particular, the different series of symbols and words that make up the basic parts of the language. This is quite different from the programming language's semantics - the actual meaning of those different parts.
+Shift	A "shift" is an action performed by a parsing engine when it reads a token that is valid in the current state. Lookahead parsers maintain a list of terminals which are expected to be read from each state, given that the syntax of the program is correct. If the token is not the expected, a syntax error occurs.
+In the bottom-up parser engines, such as GOLD and YACC, a shift pushes the token onto an internal stack that is used to hold tokens that are being used to construct completed productions.
+
+Shift-Reduce
+Conflict	The Shift-Reduce Conflict is the most common type of conflict found in grammars. It is caused when the grammar allows a production to be reduced  for particular token, but, at the same time, allowing another rule to be shifted for that same token.
+As a result, the grammar is ambiguous since a program can be interpreted more than one way.
+
+This error is often caused by recursive grammar definitions where the system cannot determine when one rule is complete and another is just started. The Builder documentation contains an inline-arrow-r.gif (99 bytes)example of the common if-then-else grammar problem and how to fit it.
+
+Terminal	In Backus-Naur Form, a terminal is used to denote a programming language's reserved words and symbols. Please see thePlease see the Define Rules page.
+
+Example: Line-Based Grammar
+Overview
+The following grammars implement line-based programming languages. This type of grammar does not ignore the end of a line, but, instead, uses it as an essential part of the language. Real world examples include Visual Basic and many scripting languages.
+
+To accomplish this, the grammar must be able to recognize the Newline as a terminal rather than simply considering it whitespace. The characters used to represent a Newline differ slightly between computer platforms. The Windows operating system uses the combination of a Carriage Return followed by a Line Feed; UNIX, on the other hand, merely uses the Carriage Return. The definition of a Newline terminal must take this into account.
+
+In the grammars below, a Newline terminal is declared with the two possible permutations of the Carriage Return and Line Feed. It may also be advisable to make a solitary Line Feed recognized as a Newline terminal (for fault tolerance).
+
+The Whitespace Terminal must also be declared such that it does not accept the Newline as whitespace. Below, Whitespace is declared as a series of the normal whitespace characters without the Carriage Return and Line Feed.
+
+Solution #1 - NewLine Terminal
+In this example, a NewLine is added to the end of each statement. So the grammar can allow blank lines, the statement rule also contains a simple NewLine.
+
+"Start Symbol" = <Program>
+
+{WS} = {Whitespace} - {CR} - {LF}
+
+Whitespace = {WS}+
+NewLine = {CR}{LF}|{CR}
+
+<Program> ::= <Statements>
+
+<Statement> ::= If Identifier Then NewLine <Statements> End NewLine
+              | Print '(' Identifier ')' NewLine
+              | Read '(' Identifier ')' NewLine
+              | NewLine   !Allow blank lines
+
+<Statements> ::= <Statement> <Statements>
+               |
+
+<Exp> ::= Identifier '=' Identifier
+        | Identifier '<>' Identifier
+Solution #2 - Using a NewLine rule and terminal
+Although this solution above works for simple line-based grammars, it will not work well for more complex variants.
+
+1	Select Case Value
+2	
+3	   Case 1, -1
+4	      Name = "True"
+5	
+6	   Case 0
+7	      Name = "False"
+8	   Case Else
+9	      Name = "Error
+10	End Select
+For grammars where the constructs can be quite complex, such as case-statements, this solution becomes difficult to write. For instance, assume you have the following Visual Basic Select-Case statement
+Line #2 is a blank line and, as a result, must be specified in the grammar. The developer could manually declare each section where optional newlines are permitted, but this approach is very tedious and mistakes are easy to make.
+
+A better solution is to use a rule that accepts NewLines rather than using the NewLine terminal at the end of each statement.
+
+The following solution replaces each NewLine with a new rule called <nl> - for NewLines. The <nl> rule is designed to accept one or more NewLine tokens. This solution makes it far easier to write complex line-based grammars. Each line is now logically followed by one or more NewLines rather than just a one. The rule that accepted a blank line as a statement is no longer needed.
+
+However, since NewLine characters are only acceptable following a statement, any blank lines before the start of the program must be removed. In the grammar below, the <nl opt> rule removes any NewLines before the start of the first actual line.
+
+"Start Symbol" = <Program>
+
+{WS} = {Whitespace} - {CR} - {LF}
+
+Whitespace = {WS}+
+NewLine = {CR}{LF}|{CR}
+
+<nl>     ::= NewLine <nl>          !One or more
+           | NewLine
+
+<nl Opt> ::= NewLine <nl Opt>      !Zero or more
+           |
+
+! <nl opt> removes blank lines before first statement
+
+<Program> ::= <nl Opt> <Statements> 
+
+<Statement> ::= If Identifier Then <nl> <Statements> End <nl>
+              | Print '(' Identifier ')' <nl>
+              | Read '(' Identifier ')' <nl>
+
+<Statements> ::= <Statement> <Statements>
+               |
+ Example: Lists
+Comma Delimited
+The following declaration defines a list of identifiers where commas are used to separate list items. The last item in the list will not be followed by a comma. This definition does not allow the list to be completely empty.
+
+Identifier = {Letter}{Alphanumeric}*
+<List> ::= <List> ',' <List Item>
+        |  <List Item>
+
+<List Item> ::= Identifier
+
+Statement List
+The following declaration defines a list of "Statements" where each <Statement> will be followed by a semicolon. Unlike the example above, the last item in the list will be followed by the symbol. However, since the <List> rule is nullable (the blank line), the list can be completely empty.
+
+Identifier = {Letter}{Alphanumeric}*
+<List> ::= <List> <Statement> ';'
+        |
+
+<Statement> ::= print '(' Identifier ')'
+              | read '(' Identifier ')' 
+
+Statement List (1 or more members)
+This is a declaration identical to the example above, except the list must contain at least one item.
+
+Identifier = {Letter}{Alphanumeric}*
+<List> ::= <List> <Statement> ';'
+         | <Statement> ';'
+
+<Statement> ::= print '(' Identifier ')'
+              | read '(' Identifier ')'
+
+Example: String Terminal
+ 
+
+The following example declares the string terminal commonly used in programming languages. It is declared as a series of zero or more printable characters (not including the double-quotes used for delimiters).
+
+{String Char} = {Printable} - ["]
+
+String = '"'{String Char}*'"'
+
+<Literal> ::= Identifier
+            | String
+However, this definition does not allow the programmer to specify the double-quote character. Two distinct approaches are used in modern programming languages. The first approach is to use another structure or constant to represent the double-quote. The second approach is the use of an "override" character that allows the double-quote to be placed directly in the string. The latter approach is used in the C/C++ programming language family.
+
+The following contains a much more complex definition for strings, but implements the second approach mentioned above. The backslash character '\' now acts as an override and can be used to represent the double-quote character. Essentially, the string terminal is now a series of any printable character (not including the double-quote and backslash) and any printable character preceded by the backslash.
+
+{String Char} = {Printable} - ["\]
+
+String = '"' ({String Char} | '\'{Printable})* '"'
+
+<Literal> ::= Identifier
+            | String
+
+
+

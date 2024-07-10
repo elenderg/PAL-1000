@@ -1,0 +1,117 @@
+This is the EBNF. It has some terms that are not defined anywhere so you will have to create some new rules for them (like "non-possessive" or "non-glombyte").  Assume extended ASCII as Windows 1252 codepage. Assume chars as any printable character from Windows 1252 codepage. Also, where there is some rule with -name in its end (like type-name or routine-name) treat this terms like any possible word. Any word in uppercase is a string literal, like TARGET, MAGNITUDE or WHEREABOUTS
+Articles are "a", "an" and "the.
+Prepositions are "about", "above", "across", "after", "against", "all", "alone", "along", "among", "any", "anywhere", "around", "as", "at", "away", "back", "backward", "backwards", "before", "beginning", "behind", "below", "beneath", "beside", "between", "beyond", "bigger", "by", "close", "deep", "diagonally", "down", "downward", "ending", "everywhere", "except", "finishing", "facing", "for", "forward", "from", "given", "giving", "high", "in", "inside", "into", "larger", "leaning", "left", "leftward", "leftways", "like", "limiting", "long", "near", "of", "off", "on", "only", "onto", "out", "outside", "over", "past", "pointing", "returning", "right", "rightward", "rightways", "shorter", "sideway", "sideways", "similar", "smaller", "somewhere", "slantwise", "slantway", "slantways", "starting", "tall", "taller", "thru", "through", "throughout", "to", "toward", "towards", "under", "underneath", "until", "unto", "up", "upward", "upon", "using", "via", "while", "wide", "with", "within", "without"
+Conjunctions are 'and' , 'both' , 'but' , 'either' , 'neither' , 'nor' and 'or' 
+
+
+The TypeName, VariableName, FieldName, DllName, EntryName, ParameterTerm are all words. They may contain any printable character from Windows 1252 codepage. their size may vary from 1 to undefinite size.
+
+
+--- LEXICAL BNF ---
+
+noise = non-printable | space | tab | non-breaking-space
+comment = \ chars cr
+remark = [ printable-chars ]
+
+token = glom | possessive | qualifier | string
+
+glom = glomstarter { glombyte }
+glombyte = letter | digit | ~ @ # % _ $ & - + / | non-possessive '
+glomstarter = letter | digit | ~ @ # % _ $ & '
+letter = A..Z | a..z | extended ascii
+digit = 0..9
+
+possessive = ' preceded by S followed by non-glombyte | 'S non-glombyte
+qualifier = ( printable-chars )
+string = " printable-chars | nested-quotes "
+
+mark = . , ; : ! ?
+symbol = | * + - ^ / < > { } = extended ascii
+
+--- ONE LEVEL UP FROM LEXICAL ---
+
+noise = lexical-noise | comment | remark
+integer-token = digit { digit }
+ratio-token = integer-token / integer-token
+mixed-token = integer-token - integer-token / integer-token
+numeric-token = integer-token | ratio-token | mixed-token
+nibble-token = $ { digit | A..F }
+string-token = same as lexical
+qualifier-token = same as lexical
+
+--- SYNTATICAL BNF ---
+
+program = { type | global | routine }
+
+built-in-types = BYTE | BYTE POINTER | WYRD | NUMBER | FLAG | POINTER | RECORD | STRING | SUBSTRING | HEX-STRING
+                          | THING | THING RECORD | THINGS | RATIO | NUMERATOR | DENOMINATOR
+
+type = A name IS A type-name [ optional-info ] .
+        = A name HAS fields .
+        = A name IS number-token type-name .
+
+optional-info = TO A type-name | WITH fields
+
+fields = field-descriptor { pauses field-descriptor }
+field-descriptor = ( A name | numeric-token BYTES ) { CALLED name | AT THE name | ( REFERENCE ) }
+
+pause  = , | ; | AND | OR
+pauses = { pause }
+
+conjunction = AND | BOTH | BUT | EITHER | NEITHER | NOR | OR
+preposition = IN | OF | ON | WITH | BEFORE | AFTER ...
+
+global = THE name IS A type-name [ optional-info ] .
+            = THE name HAS fields .
+            = THE name IS A type-name EQUAL TO constant-term .
+            = THE name IS constant-term .
+
+routine  = procedure | decider | function | callback
+procedure = { TO routine-name ; } | TO routine-name : employ-clause | statements
+decider = { TO DECIDE IF routine-name ; } | TO DECIDE IF routine-name : employ-clause | statements
+function = { TO PUT A type-name 'S name INTO A type-name ; } | TO PUT A type-name 'S name INTO A type-name : employ-clause | statements
+               = { TO PUT THE name 'S name INTO A type-name ; } | TO PUT THE name 'S name INTO A type-name : employ-clause | statements
+callback = { TO COMPATIBLY routine-name ; } TO COMPATIBLY routine-name : employ-clause | statements
+
+routine-name = { monikette | parameter | phrase } [ qualifier ]
+monikette = any word except articles
+parameter = A name [ CALLED name ]
+phrase = THE name
+employ-clause = EMPLOY routine-name .
+
+name = { any word except articles, prepositions, conjunctions, verbs, operators, CALLED, EQUAL }
+
+statement = privatize | loop | conditional | unconditional .
+privatize = PRIVATIZE parameter-term .
+loop = LOOP .
+conditional = IF decider-call , unconditional { ; unconditional } .
+
+unconditional = break | call | exit | intel | repeat | point | push | say
+break = BREAK
+call (internal) = { monikette | expression | phrase } [ qualifier ]
+call (external) = CALL "dll-name" "entry-name" [ WITH expression { AND expression } ] [ RETURNING term ]
+call (indirect) = CALL expression [ WITH expression { AND expression } ] [ RETURNING term ]
+exit = EXIT
+intel = INTEL nibble-token
+point = POINT term TO ROUTINE { monikette | parameter | phrase } [ qualifier ]
+push = PUSH expression
+repeat = REPEAT
+say = SAY flag-expression
+
+expression = term { operator term }
+operator = PLUS | MINUS | TIMES | DIVIDED BY | THEN
+
+constant-term = negated-constant-term | posigated-constant-term | literal
+negated-constant-term = - constant-term
+posigated-constant-term = + constant-term
+literal = numeric-token [ type name ] | string-token | nibble-token | YES | NO | NIL
+
+term = negated-term | posigated-term | new-local | variable | literal-term [ AS A type-name ] [ / term ]
+negated-term = - term
+posigated-term = + term
+new-local = A name [ CALLED name ] possessives
+variable = THE variable-name possessives
+literal-term = literal possessives
+
+possessives = { possessives }
+possesive = 'S ( field-name | function | TARGET | MAGNITUDE | WHEREABOUTS )

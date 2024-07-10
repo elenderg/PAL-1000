@@ -1,0 +1,169 @@
+"Name" = "My Language"
+
+! Predefined character sets
+{Letter} = [&41 .. &5A] | [&61 .. &7A] 
+{Digit} = [&30 .. &39]
+{Printable} = [&20 .. &7E] | [&A0]
+{NonPrintable} = [&00 .. &1F] | [&7F .. &9F]
+
+! Additional character sets
+{Space} = [&20]
+{Tab} = [&09]
+{NonBreakingSpace} = [&A0]
+{ExtendedASCII} = [&A1 .. &FF]
+{Symbol} = [ | * + - ^ / < > { } =] | {ExtendedASCII}
+{Mark} = [. , ; : ! ?]
+
+! Composite character sets
+{GlomStarter} = {Letter} | {Digit} | ~ @ # % _ $ & '
+{GlomByte} = {Letter} | {Digit} | ~ @ # % _ $ & - + / | ' 
+{NonGlomByte} = {Printable} - {GlomByte}
+
+! Tokens
+Noise  = {NonPrintable} | {Space} | {Tab} | {NonBreakingSpace} 
+Comment = \ {Printable} {CR}
+Remark = [{Printable}]
+Token  = Glom | Possessive | Qualifier | String
+
+! Gloms
+Glom = {GlomStarter} {GlomByte}
+GlomStarter = {GlomStarter}
+GlomByte = {GlomByte}
+Letter = {Letter} | {ExtendedASCII}
+Digit = {Digit}
+
+! Possessives
+Possessive = 'S {NonGlomByte} | ' {NonGlomByte}
+
+! Qualifiers
+Qualifier = ({Printable}) 
+
+! Strings
+String = "{Printable}" | "{String}" 
+String = """{Printable}"""
+NestedQuotes = """{Printable}""" | """"
+
+! Symbols
+Mark = {Mark}
+Symbol = {Symbol}
+
+! ONE LEVEL UP
+Noise = Noise | Comment | Remark 
+IntegerToken = {Digit} {Digit}*
+RatioToken = {IntegerToken} / {IntegerToken}
+MixedToken = {IntegerToken} - {IntegerToken} / {IntegerToken}
+NumericToken = {IntegerToken} | {RatioToken} | {MixedToken}
+NibbleToken = $ {Digit}|{Letter}[A..F]
+StringToken = String
+QualifierToken = Qualifier
+
+! SYNTACTICAL BNF
+
+Program = {Type | Global | Routine}
+
+! Built-in Types
+BuiltInTypes = BYTE | BYTE POINTER | WYRD | NUMBER | FLAG | POINTER | RECORD | STRING | SUBSTRING | HEX-STRING
+              | THING | THING RECORD | THINGS | RATIO | NUMERATOR | DENOMINATOR
+
+! Type Definitions
+Type = A {Name} IS A {TypeName} [{OptionalInfo}] .
+      | A {Name} HAS {Fields} .
+      | A {Name} IS {NumericToken} {TypeName} . 
+
+OptionalInfo = TO A {TypeName} | WITH {Fields}
+
+! Fields
+Fields = {FieldDescriptor} {Pause} {FieldDescriptor}
+FieldDescriptor = (A {Name} | {NumericToken} BYTES) {CALLED {Name} | AT THE {Name} | (REFERENCE)} 
+
+! Pauses
+Pause = , | ; | AND | OR
+Pauses = {Pause}
+
+! Conjunctions
+Conjunction = AND | BOTH | BUT | EITHER | NEITHER | NOR | OR
+
+! Prepositions
+Preposition = IN | OF | ON | WITH | BEFORE | AFTER | ...
+
+! Globals
+Global = THE {Name} IS A {TypeName} [{OptionalInfo}] .
+        | THE {Name} HAS {Fields} .
+        | THE {Name} IS A {TypeName} EQUAL TO {ConstantTerm} .
+        | THE {Name} IS {ConstantTerm} .
+
+! Routines
+Routine = Procedure | Decider | Function | Callback
+Procedure = {TO {RoutineName} ;} | TO {RoutineName} : {EmployClause} | {Statements}
+Decider = {TO DECIDE IF {RoutineName} ;} | TO DECIDE IF {RoutineName} : {EmployClause} | {Statements}
+Function = {TO PUT A {TypeName} 'S {Name} INTO A {TypeName} ;} | TO PUT A {TypeName} 'S {Name} INTO A {TypeName} : {EmployClause} | {Statements}
+          | {TO PUT THE {Name} 'S {Name} INTO A {TypeName} ;} | TO PUT THE {Name} 'S {Name} INTO A {TypeName} : {EmployClause} | {Statements}
+Callback = {TO COMPATIBLY {RoutineName} ;} TO COMPATIBLY {RoutineName} : {EmployClause} | {Statements}
+
+! Routine Names
+RoutineName = {Monikette | Parameter | Phrase} [{Qualifier}]
+Monikette = {AnyWordExceptArticles}
+Parameter = A {Name} [CALLED {Name}]
+Phrase = THE {Name}
+EmployClause = EMPLOY {RoutineName} .
+
+! Names
+Name = {AnyWordExceptArticles, Prepositions, Conjunctions, Verbs, Operators, CALLED, EQUAL}
+
+! Statements
+Statement = Privatize | Loop | Conditional | Unconditional . 
+Privatize = PRIVATIZE {ParameterTerm} .
+Loop = LOOP . 
+Conditional = IF {DeciderCall} , {Unconditional} { ; {Unconditional} } .
+
+! Unconditional Statements
+Unconditional = Break | Call | Exit | Intel | Repeat | Point | Push | Say 
+Break = BREAK
+Call(internal) = {Monikette | Expression | Phrase} [{Qualifier}] 
+Call(external) = CALL "{DllName}" "{EntryName}" [WITH {Expression} {AND {Expression}}] [RETURNING {Term}]
+Call(indirect) = CALL {Expression} [WITH {Expression} {AND {Expression}}] [RETURNING {Term}]
+Exit = EXIT
+Intel = INTEL {NibbleToken}
+Point = POINT {Term} TO ROUTINE {Monikette | Parameter | Phrase} [{Qualifier}]
+Push = PUSH {Expression}
+Repeat = REPEAT
+Say = SAY {FlagExpression}
+
+! Expressions
+Expression = {Term} {Operator} {Term} 
+Operator = PLUS | MINUS | TIMES | DIVIDED BY | THEN
+
+! Constant Terms
+ConstantTerm = NegatedConstantTerm | Posi gatedConstantTerm | Literal 
+NegatedConstantTerm = - {ConstantTerm}
+Posi gatedConstantTerm = + {ConstantTerm}
+Literal = {NumericToken} [{TypeName}] | {StringToken} | {NibbleToken} | YES | NO | NIL
+
+! Terms
+Term = NegatedTerm | Posi gatedTerm | NewLocal | Variable | LiteralTerm [{AsATypeName}] [{/ {Term}}] 
+NegatedTerm = - {Term}
+Posi gatedTerm = + {Term}
+NewLocal = A {Name} [CALLED {Name}] {Possessives}
+Variable = THE {VariableName} {Possessives}
+LiteralTerm = {Literal} {Possessives}
+
+! Possessives
+Possessives = {Possessive}
+Possessive = 'S ({FieldName} | {Function} | TARGET | MAGNITUDE | WHEREABOUTS)
+
+! Additional Rules (assuming extended ASCII)
+AnyWordExceptArticles = {Letter}{Letter}* 
+TypeName = {AnyWordExceptArticles}
+VariableName = {AnyWordExceptArticles}
+FieldName = {AnyWordExceptArticles}
+Function = {AnyWordExceptArticles} 
+DllName = {AnyWordExceptArticles} 
+EntryName = {AnyWordExceptArticles}
+
+! Other missing rules (make assumptions based on the context)
+ParameterTerm = {AnyWordExceptArticles} 
+DeciderCall = {AnyWordExceptArticles} 
+FlagExpression = {AnyWordExceptArticles}
+
+! You might need to add more rules and refine existing ones based on 
+! the specific requirements of your language. 

@@ -1,0 +1,53 @@
+"Name"     = 'Plain English'
+"Author"   = 'Elender'
+"Version"  = '0.1'
+"About"    = 'A short description of the grammar'
+
+"Start Symbol" = <Program>
+
+! -------------------------------------------------
+! Character Sets
+! -------------------------------------------------
+
+{String Chars} = {Printable}
+{NonPrintable} = [&00 .. &1F] + [&7F .. &9F] ! http://www.goldparser.org/doc/grammars/define-sets.htm
+{ExtendedASCII} = [&A1 .. &FF]
+{Symbol} = [|*+-^/<>{}=] + {ExtendedASCII}
+{Mark} = [.,;:!?]
+
+! -------------------------------------------------
+! Composite character sets
+! -------------------------------------------------
+{GlomStarter} = {Letter} + {Digit} + [~@#%_$&'']
+{GlomByte} = {Letter} + {Digit} + [~@#%_$&-+/|'']
+{NonGlomByte} = {Printable} - {GlomByte} 
+               
+! -------------------------------------------------
+! Terminals
+! -------------------------------------------------
+
+StringLiteral = '"' {String Chars}* '"'
+
+! -------------------------------------------------
+! Tokens
+! -------------------------------------------------
+Noise  = {NonPrintable} | {Space} | {HT} | {NBSP} 
+Comment = [\] {Printable}* {CR}
+Remark = [{Printable}]
+Token  = Glom | Possessive | Qualifier | String
+
+! -------------------------------------------------
+! Gloms
+! -------------------------------------------------
+Glom = {GlomStarter} {GlomByte}
+GlomStarter = {GlomStarter}
+GlomByte = {GlomByte}
+Letter = {Letter} | {ExtendedASCII}
+Digit = {Digit}
+
+! -------------------------------------------------
+! Rules
+! -------------------------------------------------
+
+! The grammar starts below
+<Program> ::= 
