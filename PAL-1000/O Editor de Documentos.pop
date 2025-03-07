@@ -102,12 +102,61 @@ A sequência de formas é uma sequência de formas.
 A margem da caixa de texto é um número igual a 4 px.
 A cor do tracer é uma cor. \ tracer - initialized em ambiente de trabalho
 
-Rotina para que se adicione uma página para um documento:
-  Se o documento for inexistente, retorne.
-  Crie a página.
-  Insira a página para as páginas deste documento antes dessa primeira página selecionada deste documento.
-  Ative o sinalizador de alteração deste documento.
+\Rotina para que se inicialize o caderno:
+
+Rotina para que se crie um documento usando um trecho:
+  Limpe o erro do fluxo de entrada/saída.
+  Lance um percorredor sobre o trecho.
+  Mova o percorredor (diretrizes de documentos).
+  Renderize o documento usando o percorredor.
+  Se o erro do fluxo de entrada/saída não estiver em branco,
+    Destrua o documento.
+
+Rotina para que se mova um percorredor (diretrizes de documentos):
+  Ignore os caracteres ignoráveis no início no segmento final deste percorredor.
+  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
+  Se o segmento final deste percorredor estiver em branco, retorne.
+  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for as aspas duplas,
+    Mova o percorredor (strings com aspas);
+    Retorne.
+  Itere.
+    Se o segmento final deste percorredor estiver em branco, retorne.
+    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for irrelevante, retorne.
+    Adicione 1 para o caractere final deste segmento inicial deste percorredor.
+    Adicione 1 para o caractere inicial deste segmento final deste percorredor.
+  Reitere.
+
+Rotina para que se renderize um documento usando um percorredor: \ traduzir erros depois
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Se o segmento inicial deste percorredor não for "ream",
+    Fail com "Erro. Documento inválido - keyword 'ream' ausente no documento";
+    Retorne.
+  Mova o percorredor (diretrizes de documentos).
+  Se o segmento inicial deste percorredor não for a versão do editor de documentos,
+    Fail com "Erro. Versão do documento inválida";
+    Retorne.
+  Mova o percorredor (diretrizes de documentos).
+  Crie o documento.
+  Renderize as páginas deste documento usando o percorredor.
+  Se o segmento inicial deste percorredor não for "end",
+    Fail com "Erro. Documento inválido - ""end"" not encontrado";
+    Retorne.
+  Mova o percorredor (diretrizes de documentos).
+  Se o segmento inicial deste percorredor não estiver em branco,
+    Fail com "Erro. Documento inválido";
+    Retorne.
   Ajuste o canto de cada página no documento.
+
+Rotina para que se fail com uma string:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Atribua a string ao erro do fluxo de entrada/saída.
+
+Rotina para que se crie um documento:
+  Aloque memória para o documento.
+  Ative a exibição da malha quadriculada deste documento.
+  Atribua 6 pixels e 6 pixels ao yank da malha quadriculada deste documento.
+  Atribua 1/1 à razão de escala deste documento.
+  Ajuste o documento.
 
 Rotina para que se ajuste um documento:
   Se o documento for inexistente, retorne.
@@ -117,6 +166,104 @@ Rotina para que se ajuste um documento:
   Atribua a caixa à caixa deste documento.
   Atribua 0 e o tamanho do canto à malha quadriculada deste documento.
   Atribua o canto superior esquerdo desta caixa deste documento à origem deste documento.
+
+Rotina para que se renderize umas páginas usando um percorredor:
+  [Itere.]
+    Se o erro do fluxo de entrada/saída não estiver em branco,
+      Retorne.
+    Se o segmento inicial deste percorredor não for "page",
+      Retorne.
+    Renderize uma página usando o percorredor.
+    Acrescente a página para a páginas.
+  Reitere.
+
+Rotina para que se renderize uma página usando um percorredor:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Se o segmento inicial deste percorredor não for "page",
+    Fail com "Erro.  Documento inválido - keyword 'page' não encontrada";
+    Retorne.
+  Mova o percorredor (diretrizes de documentos).
+  Crie a página.
+  Renderize a largura desta página usando o percorredor.
+  Renderize a altura desta página usando o percorredor.
+  Renderize a medida desta página usando o percorredor.
+  Renderize as formas desta página usando o percorredor.
+  Ajuste a página.
+  Se o segmento inicial deste percorredor não for "end",
+    Fail com "Erro.  Documento inválido - keyword 'end' não encontrada";
+    Retorne.
+  Mova o percorredor (diretrizes de documentos).
+
+Rotina para que se crie uma página:
+  Aloque memória para o página.
+  Atribua 816 pixels à largura desta página.
+  Atribua 1056 pixels à altura desta página.
+  Atribua 0 e 0 à origem desta página.
+  Atribua a quantidade de twips/pixel e a quantidade de twips/pixel à malha quadriculada desta página.
+  Atribua 1/1 à razão de escala desta página.
+  Atribua 1 / o tpi à medida desta página.
+  Redefina o posicionador usando a página.
+  Ajuste a página.
+
+Rotina para que se ajuste uma página:
+  Se a página for inexistente, retorne.
+  Ajuste as listas de formas usando a página.
+  Ajuste o título de índice remissivo dessa página.
+  Ajuste o número de página dessa página.
+
+Rotina para que se ajuste a listas de formas usando uma página:
+  Se a página for inexistente, retorne.
+  Destrua as listas de formas desta página.
+  Crie as listas de formas desta página usando as formas desta página.
+  Classifique as listas de formas desta página (horizontalmente).
+  Classifique as listas de formas desta página (verticalmente).
+
+Rotina para que se crie umas listas de formas usando umas formas:
+  [Itere.]
+  Obtenha uma forma desde as formas.
+    Se a forma for inexistente, retorne.
+    Se a categoria desta forma for "agrupamento de formas geométricas",
+      Crie as listas de formas usando as formas desta forma;
+      Reitere.
+    Se a categoria desta forma for "group",
+      Crie as listas de formas usando as formas desta forma;
+      Reitere.
+    Se a categoria desta forma não for caixa de texto, reitere.
+    Crie uma lista de formas usando a forma.
+    Acrescente a lista de formas para as listas de formas.
+  Reitere.
+
+Rotina para que se crie uma lista de formas usando uma forma:
+  Se a forma for inexistente,
+    Esvazie a lista de formas;
+    Retorne.
+  Aloque memória para a lista de formas.
+  Atribua a forma à forma desta lista de formas.
+
+Rotina para que se ajuste o número de página de uma página:
+  Se a página for inexistente, retorne.
+  Limpe o número de página desta página.
+  Encontre uma forma usando as listas de formas desta página e "Número da Página".
+  Se a forma não for inexistente,
+    Atribua a primeira linha reta desta caixa de texto desta forma ao número de página desta página;
+    Retorne.
+  Encontre uma segunda forma usando as listas de formas desta página e "Número da Página (par)".
+  Se a segunda forma não for inexistente,
+    Atribua a primeira linha reta desta caixa de texto desta segunda forma ao número de página desta página;
+    Retorne.
+  Encontre uma terceira forma usando as listas de formas desta página e "Número da Página (ímpar)".
+  Se a terceira forma não for inexistente,
+    Atribua a primeira linha reta desta caixa de texto desta terceira forma ao número de página desta página;
+    Retorne.
+
+\---------------------------------------------------------------------------------------------
+
+Rotina para que se adicione uma página para um documento:
+  Se o documento for inexistente, retorne.
+  Crie a página.
+  Insira a página para as páginas deste documento antes dessa primeira página selecionada deste documento.
+  Ative o sinalizador de alteração deste documento.
+  Ajuste o canto de cada página no documento.
 
 Rotina para que se ajuste o canto de cada página em um documento:
   Se o documento for inexistente, retorne.
@@ -137,28 +284,6 @@ Rotina para que se ajuste o canto de uma página em um documento:
   Se a página não for a primeira página deste documento,
     Atribua a coordenada Y2 deste canto desta página anterior desta página à coordenada Y1 deste canto desta página.
   Atribua a coordenada Y1 deste canto desta página mais o tamanho do canto à coordenada Y2 deste canto desta página.
-
-Rotina para que se ajuste uma página:
-  Se a página for inexistente, retorne.
-  Ajuste as listas de formas usando a página.
-  Ajuste o título de índice remissivo dessa página.
-  Ajuste o número de página dessa página.
-
-Rotina para que se ajuste o número de página de uma página:
-  Se a página for inexistente, retorne.
-  Limpe o número de página desta página.
-  Encontre uma forma usando as listas de formas desta página e "Número da Página".
-  Se a forma não for inexistente,
-    Atribua a primeira linha reta desta caixa de texto desta forma ao número de página desta página;
-    Retorne.
-  Encontre uma segunda forma usando as listas de formas desta página e "Número da Página (par)".
-  Se a segunda forma não for inexistente,
-    Atribua a primeira linha reta desta caixa de texto desta segunda forma ao número de página desta página;
-    Retorne.
-  Encontre uma terceira forma usando as listas de formas desta página e "Número da Página (ímpar)".
-  Se a terceira forma não for inexistente,
-    Atribua a primeira linha reta desta caixa de texto desta terceira forma ao número de página desta página;
-    Retorne.
 
 Rotina para que se ajuste uma forma:
   Se a forma for inexistente, retorne.
@@ -200,13 +325,6 @@ Rotina para que se ajuste uma forma:
     Retorne.
   \Se a categoria desta forma for inválida,
   Produza o relatório de informações usando "Erro ao tentar identificar a forma geométrica '" junto com a categoria desta forma seguido de "'.".
-
-Rotina para que se ajuste a listas de formas usando uma página:
-  Se a página for inexistente, retorne.
-  Destrua as listas de formas desta página.
-  Crie as listas de formas desta página usando as formas desta página.
-  Classifique as listas de formas desta página (horizontalmente).
-  Classifique as listas de formas desta página (verticalmente).
 
 Rotina para que se determine se uma categoria é caixa de texto:
   Se a categoria for "text", diga sim.
@@ -696,32 +814,6 @@ Rotina para que se copie umas formas para umas segundas formas:
     Acrescente a segunda forma para as segundas formas.
   Reitere.
 
-Rotina para que se crie um documento:
-  Aloque memória para o documento.
-  Ative a exibição da malha quadriculada deste documento.
-  Atribua 6 pixels e 6 pixels ao yank da malha quadriculada deste documento.
-  Atribua 1/1 à razão de escala deste documento.
-  Ajuste o documento.
-
-Rotina para que se crie um documento usando um trecho:
-  Limpe o erro do fluxo de entrada/saída.
-  Lance um percorredor sobre o trecho.
-  Mova o percorredor (diretrizes de documentos).
-  Renderize o documento usando o percorredor.
-  Se o erro do fluxo de entrada/saída não estiver em branco,
-    Destrua o documento.
-
-Rotina para que se crie uma página:
-  Aloque memória para o página.
-  Atribua 816 pixels à largura desta página.
-  Atribua 1056 pixels à altura desta página.
-  Atribua 0 e 0 à origem desta página.
-  Atribua a quantidade de twips/pixel e a quantidade de twips/pixel à malha quadriculada desta página.
-  Atribua 1/1 à razão de escala desta página.
-  Atribua 1 / o tpi à medida desta página.
-  Redefina o posicionador usando a página.
-  Ajuste a página.
-
 Rotina para que se crie um parágrafo:
   Aloque memória para o parágrafo.
 
@@ -811,27 +903,6 @@ Rotina para que se crie uma forma usando um categoria (padrão):
     Crie a forma usando a categoria (padrão - caixa de texto);
     Retorne.
   Produza o relatório de informações usando "Erro no processamento da rotina 'Rotina para que se crie uma forma usando um categoria:' A categoria '" junto com a categoria seguido de "' não existe".
-
-Rotina para que se crie uma lista de formas usando uma forma:
-  Se a forma for inexistente,
-    Esvazie a lista de formas;
-    Retorne.
-  Aloque memória para a lista de formas.
-  Atribua a forma à forma desta lista de formas.
-
-Rotina para que se crie umas listas de formas usando umas formas:
-  Obtenha uma forma desde as formas.
-  Se a forma for inexistente, retorne.
-  Se a categoria desta forma for "agrupamento de formas geométricas",
-    Crie a listas de formas usando as formas desta forma;
-    Reitere.
-  Se a categoria desta forma for "group",
-    Crie a listas de formas usando as formas desta forma;
-    Reitere.
-  Se a categoria desta forma não for caixa de texto, reitere.
-  Crie uma lista de formas usando a forma.
-  Acrescente a lista de formas para as listas de formas.
-  Reitere.
 
 Rotina para que se recorte uma imagem usando um cropper e uma localização:
   Se a imagem for inexistente, retorne.
@@ -1725,10 +1796,6 @@ Rotina para que se transcreva uma caixa de texto usando um trecho e uma quantida
   Transcreva o parágrafos usando o trecho e a quantidade de espaços.
   Destrua o parágrafos.
   Subtraia o recuo do documento desde a quantidade de espaços.
-
-Rotina para que se fail com uma string:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Atribua a string ao erro do fluxo de entrada/saída.
 
 Rotina para que se preencha algumas formas selecionadas sobre uma página usando uma cor:
   Se a página for inexistente, retorne.
@@ -3658,8 +3725,6 @@ Rotina para que se execute yank usando uma página e um número:
   Atribua "Yank " junto com o número original / 1440 para uma string.
   Mostre o ambiente de trabalho com a string.
 
-\Rotina para que se inicialize o caderno:
-
 Rotina para que se renderize uma caixa usando um percorredor:
   Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
   Renderize a coordenada X1 desta caixa usando o percorredor.
@@ -3672,27 +3737,6 @@ Rotina para que se renderize uma cor usando um percorredor:
   Renderize a matiz desta cor usando o percorredor.
   Renderize a saturação desta cor usando o percorredor.
   Renderize o luminosidade desta cor usando o percorredor.
-
-Rotina para que se renderize um documento usando um percorredor: \ traduzir erros depois
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Se o segmento inicial deste percorredor não for "ream",
-    Fail com "Erro. Documento inválido - keyword 'ream' ausente no documento";
-    Retorne.
-  Mova o percorredor (diretrizes de documentos).
-  Se o segmento inicial deste percorredor não for a versão do editor de documentos,
-    Fail com "Erro. Versão do documento inválida";
-    Retorne.
-  Mova o percorredor (diretrizes de documentos).
-  Crie o documento.
-  Renderize as páginas deste documento usando o percorredor.
-  Se o segmento inicial deste percorredor não for "end",
-    Fail com "Erro. Documento inválido - ""end"" not encontrado";
-    Retorne.
-  Mova o percorredor (diretrizes de documentos).
-  Se o segmento inicial deste percorredor não estiver em branco,
-    Fail com "Erro. Documento inválido";
-    Retorne.
-  Ajuste o canto de cada página no documento.
 
 Rotina para que se renderize uma elipse usando um percorredor:
   Renderize a caixa desta elipse usando o percorredor.
@@ -3731,32 +3775,6 @@ Rotina para que se renderize um número usando um percorredor:
     Retorne.
   Converta o segmento inicial deste percorredor para o número.
   Mova o percorredor (diretrizes de documentos).
-
-Rotina para que se renderize uma página usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Se o segmento inicial deste percorredor não for "page",
-    Fail com "Erro.  Documento inválido - keyword 'page' não encontrada";
-    Retorne.
-  Mova o percorredor (diretrizes de documentos).
-  Crie a página.
-  Renderize a largura desta página usando o percorredor.
-  Renderize a altura desta página usando o percorredor.
-  Renderize a medida desta página usando o percorredor.
-  Renderize as formas desta página usando o percorredor.
-  Ajuste a página.
-  Se o segmento inicial deste percorredor não for "end",
-    Fail com "Erro.  Documento inválido - keyword 'end' não encontrada";
-    Retorne.
-  Mova o percorredor (diretrizes de documentos).
-
-Rotina para que se renderize uns páginas usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco,
-    Retorne.
-  Se o segmento inicial deste percorredor não for "page",
-    Retorne.
-  Renderize uma página usando o percorredor.
-  Acrescente a página para a páginas.
-  Reitere.
 
 Rotina para que se renderize um parágrafo usando um percorredor:
   Se o erro do fluxo de entrada/saída não estiver em branco,
@@ -4142,20 +4160,6 @@ Rotina para que se mova o focus sobre uma página (forwards):
     Atribua a primeira lista de formas destes listas de formas desta página à lista de formas.
   Solte as formas desta página.
   Selecione a forma desta lista de formas.
-
-Rotina para que se mova um percorredor (diretrizes de documentos):
-  Ignore os caracteres ignoráveis no início no segmento final deste percorredor.
-  Posicione o segmento inicial deste percorredor sobre o segmento final deste percorredor.
-  Se o segmento final deste percorredor estiver em branco, retorne.
-  Se o conteúdo deste caractere inicial deste segmento final deste percorredor for as aspas duplas,
-    Mova o percorredor (strings com aspas);
-    Retorne.
-  Itere.
-    Se o segmento final deste percorredor estiver em branco, retorne.
-    Se o conteúdo deste caractere inicial deste segmento final deste percorredor for irrelevante, retorne.
-    Adicione 1 para o caractere final deste segmento inicial deste percorredor.
-    Adicione 1 para o caractere inicial deste segmento final deste percorredor.
-  Reitere.
 
 Rotina para que se mova uma forma usando um par de números:
   Se a forma for inexistente, retorne.

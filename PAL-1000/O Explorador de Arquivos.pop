@@ -42,6 +42,213 @@ O explorador de arquivos é uma estrutura com
   Uma margem e
   Um clipboard endereço completo.
 
+Rotina para que se inicialize o explorador de arquivos:
+  Atribua o temp endereço completo seguido de "the " junto com o nome deste módulo seguido de " clipboard\" ao clipboard deste explorador de arquivos.
+  Atribua a altura da listagem de elementos  e a altura da listagem de elementos à malha quadriculada deste explorador de arquivos.
+  Atribua 24 pixels à margem deste explorador de arquivos.
+  Atribua a caixa deste espaço de trabalho para uma caixa.
+  Atribua a altura desta caixa dividido pelo altura da listagem de elementos vezes a altura da listagem de elementos  para uma altura.
+  Atribua a coordenada Y1 desta caixa mais a altura à coordenada Y2 desta caixa.
+  Atribua a caixa ao caixa desta explorador de arquivos.
+
+Rotina para que se abra uma listagem:
+  Se a listagem for inexistente, retorne.
+  Se a categoria desta listagem for "listagem de unidades",
+    Abra a listagem (listagem de unidades);
+    Retorne.
+  Se a categoria desta listagem for "unidade de disco",
+    Abra a listagem (unidade de disco ou pasta);
+    Retorne.
+  Se a categoria desta listagem for "endereço de pasta",
+    Abra a listagem (unidade de disco ou pasta);
+    Retorne.
+  Se a categoria desta listagem for "ficheiro",
+    Abra a listagem (arquivo);
+    Retorne.
+
+Rotina para que se abra uma listagem (listagem de unidades):
+  Atribua o acento grave para um byte.
+  Itere.
+    Adicione 1 para o byte.
+    Se o byte for maior do que o z minúsculo, pare.
+    Se o byte não for algum unidade de disco válida, reitere.
+    Atribua o byte seguido de ":\" para um endereço completo.
+    Crie um elemento usando o endereço completo.
+    Acrescente o elemento para os elementos desta listagem.
+    Atribua a listagem ao diretório pai deste elemento.
+  Reitere.
+  Ajuste a listagem.
+
+Rotina para que se crie uma listagem usando um endereço completo:
+  Crie a listagem.
+  Se o endereço completo for do tipo pasta,
+    Atribua "endereço de pasta" à categoria desta listagem.
+  Se o endereço completo for do tipo arquivo,
+    Atribua "ficheiro" à categoria desta listagem.
+  Se o endereço completo for do tipo unidade,
+    Atribua "unidade de disco" à categoria desta listagem.
+  Atribua o endereço completo ao endereço completo desta listagem.
+  \Lowercase o endereço completo desta listagem.
+  Extraia o endereço da pasta desta listagem desde o endereço completo desta listagem.
+  Extraia o designador desta listagem desde o endereço completo desta listagem.
+  Atribua o designador desta listagem ao designador s/ barra invertida desta listagem.
+  Remova alguma barra invertida final desde o designador s/ barra invertida desta listagem.
+  Extraia a extensão desta listagem desde o endereço completo desta listagem.
+
+Rotina para que se crie uma listagem:
+  Aloque memória para a listagem.
+  Atribua "listagem de unidades" à categoria desta listagem.
+
+Rotina para que se ajuste uma listagem:
+  Se a listagem for inexistente,
+    Retorne.
+  Atribua a coordenada X1 deste explorador de arquivos mais a margem deste explorador de arquivos à coordenada X desta origem desta listagem.
+  Atribua a coordenada Y1 deste explorador de arquivos à coordenada Y desta origem desta listagem.
+  Ajuste cada elemento presente na listagem.
+  Esvazie o cursor de texto desta listagem.
+  Atribua o cursor de texto desta listagem para o elemento âncora desta seleção desta listagem.
+
+Rotina para que se ajuste cada elemento presente em uma listagem:
+  Se a listagem for inexistente,
+    Retorne.
+  Itere.
+    Obtenha um elemento desde os elementos desta listagem.
+    Se o elemento for inexistente, pare.
+    Ajuste o elemento na listagem.
+  Reitere.
+  Delimite a origem na listagem.
+
+Rotina para que se ajuste um elemento em uma listagem:
+  Se a listagem for inexistente,
+    Retorne.
+  Se o elemento for inexistente,
+    Retorne.
+  Atribua 0 à coordenada X1 deste elemento.
+  Atribua 32767 à coordenada X2 deste elemento. \ Valor máximo do GDI do Windows.
+  Atribua 10 à coordenada Y1 deste elemento.
+  Se o elemento não for o primeiro elemento desta listagem,
+    Atribua a coordenada Y2 deste elemento anterior deste elemento à coordenada Y1 deste elemento.
+  Atribua a coordenada Y1 deste elemento mais a altura da listagem de elementos  à coordenada Y2 deste elemento.
+
+Rotina para que se delimite a origem em uma listagem:
+  Se a listagem for inexistente, retorne.
+  Se a listagem estiver vazia, retorne.
+  Delimite a coordenada X desta origem desta listagem para -32767 e a coordenada X1 deste explorador de arquivos mais a margem deste explorador de arquivos.
+  Atribua a coordenada Y1 deste explorador de arquivos menos a coordenada Y1 deste último elemento desta listagem para um número.
+  Delimite a coordenada Y desta origem desta listagem para o número e a coordenada Y1 deste explorador de arquivos.
+
+Rotina para que se abra uma listagem (unidade de disco ou pasta):
+  Itere.
+    Obtenha um item desde o endereço completo desta listagem.
+    Se o item não for encontrado, pare.
+    Atribua o endereço completo desta listagem junto com o designador deste item para um endereço completo.
+    Crie um elemento usando o endereço completo e o grupo data/hora de criação deste item.
+    Acrescente o elemento para os elementos desta listagem.
+    Atribua a listagem ao diretório pai deste elemento.
+  Reitere.
+  Ajuste a listagem.
+  Classifique a listagem.
+
+Rotina para que se classifique uma listagem:
+  Se a listagem for inexistente, retorne.
+  Classifique a listagem por extensão.
+  Classifique a listagem por designador.
+  Classifique a listagem por categoria.
+
+Rotina para que se classifique uma listagem por extensão:
+  Se a listagem for inexistente, retorne.
+  Classifique os elementos desta listagem por extensão.
+  Ajuste cada elemento presente na listagem.
+
+Rotina para que se classifique uns elementos por extensão:
+  Se o primeiro elemento destes elementos for o último elemento destes elementos, retorne.
+  Subdivida os elementos em uns elementos anteriores e uns elementos posteriores.
+  Classifique os elementos anteriores por extensão.
+  Classifique os elementos posteriores por extensão.
+  Itere.
+    Atribua o primeiro elemento destes elementos anteriores para um elemento anterior.
+    Atribua o primeiro elemento destes elementos posteriores para um elemento posterior.
+    Se o elemento anterior for inexistente,
+      Acrescente o elementos posteriores para os elementos;
+      Retorne.
+    Se o elemento posterior for inexistente,
+      Acrescente o elementos anteriores para os elementos;
+      Retorne.
+    Se a extensão deste elemento anterior for maior do que a extensão deste elemento posterior,
+      Mova o elemento posterior desde o elementos posteriores para os elementos;
+      Reitere.
+    Mova o elemento anterior desde o elementos anteriores para os elementos.
+  Reitere.
+
+Rotina para que se classifique uma listagem por designador:
+  Se a listagem for inexistente, retorne.
+  Classifique os elementos desta listagem por designador.
+  Ajuste cada elemento presente na listagem.
+
+Rotina para que se classifique uns elementos por designador:
+  Se o primeiro elemento destes elementos for o último elemento destes elementos,
+    Retorne.
+  Subdivida os elementos em uns elementos anteriores e uns elementos posteriores.
+  Classifique o elementos anteriores por designador.
+  Classifique o elementos posteriores por designador.
+  Itere.
+    Atribua o primeiro elemento destes elementos anteriores para um elemento anterior.
+    Atribua o primeiro elemento destes elementos posteriores para um elemento posterior.
+    Se o elemento anterior for inexistente,
+      Acrescente o elementos posteriores aos elementos;
+      Retorne.
+    Se o elemento posterior for inexistente,
+      Acrescente o elementos anteriores aos elementos;
+      Retorne.
+    Se o designador s/ barra invertida deste elemento anterior for maior do que o designador s/ barra invertida deste elemento posterior,
+      Mova o elemento posterior desde o elementos posteriores para os elementos;
+      Reitere.
+    Mova o elemento anterior desde o elementos anteriores para os elementos.
+  Reitere.
+
+Rotina para que se classifique uma listagem por categoria:
+  Se a listagem for inexistente, retorne.
+  Classifique os elementos desta listagem por categoria.
+  Ajuste cada elemento presente na listagem.
+
+Rotina para que se classifique uns elementos por categoria:
+  Se o primeiro elemento destes elementos for o último elemento destes elementos,
+    Retorne.
+  Subdivida os elementos em uns elementos anteriores e uns elementos posteriores.
+  Classifique os elementos anteriores por categoria.
+  Classifique os elementos posteriores por categoria.
+  Itere.
+    Atribua o primeiro elemento destes elementos anteriores para um elemento anterior.
+    Atribua o primeiro elemento destes elementos posteriores para um elemento posterior.
+    Se o elemento anterior for inexistente,
+      Acrescente o elementos posteriores para os elementos;
+      Retorne.
+    Se o elemento posterior for inexistente,
+      Acrescente o elementos anteriores para os elementos;
+      Retorne.
+    Se a categoria deste elemento anterior for maior do que a categoria deste elemento posterior,
+      Mova o elemento posterior desde o elementos posteriores para os elementos;
+      Reitere.
+    Mova o elemento anterior desde o elementos anteriores para os elementos.
+  Reitere.
+
+Rotina para que se abra uma listagem (arquivo):
+  Leia o endereço completo desta listagem para um trecho.
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Se o trecho for documento-format,
+    Abra a listagem usando o trecho (formato de documento);
+    Retorne.
+  Se o trecho estiver no formato de arquivo de texto,
+    Abra a listagem usando o trecho (arquivo de texto);
+    Retorne.
+  \Se o trecho estiver no formato binário,
+  Abra a listagem usando o trecho (arquivo binário). \ Retorne.
+
+Rotina para que se abra uma listagem usando um trecho (formato de documento):
+  Crie o documento desta listagem usando o trecho.
+
+\----------------------------------------------------------------------------------------
+
 Rotina para que se adicione um elemento para uma listagem e para o sistema de arquivos usando um endereço completo:
   Se a listagem for inexistente,
     Retorne.
@@ -63,37 +270,6 @@ Rotina para que se adicione um elemento para uma listagem e para o sistema de ar
   Insira o elemento aos elementos desta listagem antes de o primeiro elemento selecionado desta listagem.
   Atribua a listagem ao diretório pai deste elemento.
   Ajuste cada elemento presente na listagem.
-
-Rotina para que se ajuste cada elemento presente em uma listagem:
-  Se a listagem for inexistente,
-    Retorne.
-  Itere.
-    Obtenha um elemento desde os elementos desta listagem.
-    Se o elemento for inexistente, pare.
-    Ajuste o elemento na listagem.
-  Reitere.
-  Delimite a origem na listagem.
-
-Rotina para que se ajuste uma listagem:
-  Se a listagem for inexistente,
-    Retorne.
-  Atribua a coordenada X1 deste explorador de arquivos mais a margem deste explorador de arquivos à coordenada X desta origem desta listagem.
-  Atribua a coordenada Y1 deste explorador de arquivos à coordenada Y desta origem desta listagem.
-  Ajuste cada elemento presente na listagem.
-  Esvazie o cursor de texto desta listagem.
-  Atribua o cursor de texto desta listagem para o elemento âncora desta seleção desta listagem.
-
-Rotina para que se ajuste um elemento em uma listagem:
-  Se a listagem for inexistente,
-    Retorne.
-  Se o elemento for inexistente,
-    Retorne.
-  Atribua 0 à coordenada X1 deste elemento.
-  Atribua 32767 à coordenada X2 deste elemento. \ Valor máximo do GDI do Windows.
-  Atribua 10 à coordenada Y1 deste elemento.
-  Se o elemento não for o primeiro elemento desta listagem,
-    Atribua a coordenada Y2 deste elemento anterior deste elemento à coordenada Y1 deste elemento.
-  Atribua a coordenada Y1 deste elemento mais a altura da listagem de elementos  à coordenada Y2 deste elemento.
 
 Rotina para que se role automaticamente uma listagem usando uma localização e um sinalizador:
   Se a listagem for inexistente,
@@ -166,26 +342,6 @@ Rotina para que se copie um elemento no sistema de arquivos:
     Retorne.
   Atribua o clipboard deste explorador de arquivos junto com o designador deste elemento para um endereço completo.
   Duplique o endereço completo deste elemento para o endereço completo no sistema de arquivos.
-
-Rotina para que se crie uma listagem:
-  Aloque memória para a listagem.
-  Atribua "listagem de unidades" à categoria desta listagem.
-
-Rotina para que se crie uma listagem usando um endereço completo:
-  Crie a listagem.
-  Se o endereço completo for do tipo pasta,
-    Atribua "endereço de pasta" à categoria desta listagem.
-  Se o endereço completo for do tipo arquivo,
-    Atribua "ficheiro" à categoria desta listagem.
-  Se o endereço completo for do tipo unidade,
-    Atribua "unidade de disco" à categoria desta listagem.
-  Atribua o endereço completo ao endereço completo desta listagem.
-  \Lowercase o endereço completo desta listagem.
-  Extraia o endereço da pasta desta listagem desde o endereço completo desta listagem.
-  Extraia o designador desta listagem desde o endereço completo desta listagem.
-  Atribua o designador desta listagem ao designador s/ barra invertida desta listagem.
-  Remova alguma barra invertida final desde o designador s/ barra invertida desta listagem.
-  Extraia a extensão desta listagem desde o endereço completo desta listagem.
 
 Rotina para que se crie uma listagem usando um endereço completo e uma date/time string:
   Crie a listagem usando o endereço completo.
@@ -999,49 +1155,6 @@ Rotina para que se execute classifique elementos usando uma listagem e uma strin
   Mostre no painel de informações a contagem destes elementos desta listagem e "item ordenado" ou "itens ordenados".
   Desmanche a fila de eventos.
 
-Rotina para que se inicialize o explorador de arquivos:
-  Atribua o temp endereço completo seguido de "the " junto com o nome deste módulo seguido de " clipboard\" ao clipboard deste explorador de arquivos.
-  Atribua a altura da listagem de elementos  e a altura da listagem de elementos à malha quadriculada deste explorador de arquivos.
-  Atribua 24 pixels à margem deste explorador de arquivos.
-  Atribua a caixa deste espaço de trabalho para uma caixa.
-  Atribua a altura desta caixa dividido pelo altura da listagem de elementos vezes a altura da listagem de elementos  para uma altura.
-  Atribua a coordenada Y1 desta caixa mais a altura à coordenada Y2 desta caixa.
-  Atribua a caixa ao caixa desta explorador de arquivos.
-
-Rotina para que se delimite a origem em uma listagem:
-  Se a listagem for inexistente, retorne.
-  Se a listagem estiver vazia, retorne.
-  Delimite a coordenada X desta origem desta listagem para -32767 e a coordenada X1 deste explorador de arquivos mais a margem deste explorador de arquivos.
-  Atribua a coordenada Y1 deste explorador de arquivos menos a coordenada Y1 deste último elemento desta listagem para um número.
-  Delimite a coordenada Y desta origem desta listagem para o número e a coordenada Y1 deste explorador de arquivos.
-
-Rotina para que se abra uma listagem:
-  Se a listagem for inexistente, retorne.
-  Se a categoria desta listagem for "listagem de unidades",
-    Abra a listagem (listagem de unidades);
-    Retorne.
-  Se a categoria desta listagem for "unidade de disco",
-    Abra a listagem (unidade de disco ou pasta);
-    Retorne.
-  Se a categoria desta listagem for "endereço de pasta",
-    Abra a listagem (unidade de disco ou pasta);
-    Retorne.
-  Se a categoria desta listagem for "ficheiro",
-    Abra a listagem (arquivo);
-    Retorne.
-
-Rotina para que se abra uma listagem (unidade de disco ou pasta):
-  Itere.
-    Obtenha um item desde o endereço completo desta listagem.
-    Se o item não for encontrado, pare.
-    Atribua o endereço completo desta listagem junto com o designador deste item para um endereço completo.
-    Crie um elemento usando o endereço completo e o grupo data/hora de criação deste item.
-    Acrescente o elemento para os elementos desta listagem.
-    Atribua a listagem ao diretório pai deste elemento.
-  Reitere.
-  Ajuste a listagem.
-  Classifique a listagem.
-
 Rotina para que se abra uma listagem (arquivo binário):
   Leia o endereço completo desta listagem para um trecho.
   Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
@@ -1051,33 +1164,6 @@ Rotina para que se abra uma listagem (arquivo de texto):
   Leia o endereço completo desta listagem para um trecho.
   Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
   Abra a listagem usando o trecho (arquivo de texto).
-
-Rotina para que se abra uma listagem (arquivo):
-  Leia o endereço completo desta listagem para um trecho.
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Se o trecho for documento-format,
-    Abra a listagem usando o trecho (formato de documento);
-    Retorne.
-  Se o trecho estiver no formato de arquivo de texto,
-    Abra a listagem usando o trecho (arquivo de texto);
-    Retorne.
-  Abra a listagem usando o trecho (arquivo binário).
-
-Rotina para que se abra uma listagem (listagem de unidades):
-  Atribua o acento grave para um byte.
-  Itere.
-    Adicione 1 para o byte.
-    Se o byte for maior do que o z minúsculo, pare.
-    Se o byte não for algum unidade de disco válida, reitere.
-    Atribua o byte seguido de ":\" para um endereço completo.
-    Crie um elemento usando o endereço completo.
-    Acrescente o elemento para os elementos desta listagem.
-    Atribua a listagem ao diretório pai deste elemento.
-  Reitere.
-  Ajuste a listagem.
-
-Rotina para que se abra uma listagem usando um trecho (formato de documento):
-  Crie o documento desta listagem usando o trecho.
 
 Rotina para que se abra uma listagem usando um trecho (arquivo binário):
   Despeje o trecho para uma segundo trecho.
@@ -1364,72 +1450,10 @@ Rotina para que se snapshot uns elementos:
     Atribua o sinalizador de seleção deste elemento ao sinalizador de seleção anterior deste elemento.
   Reitere.
 
-Rotina para que se classifique uma listagem:
-  Se a listagem for inexistente, retorne.
-  Classifique a listagem por extensão.
-  Classifique a listagem por designador.
-  Classifique a listagem por categoria.
-
-Rotina para que se classifique uma listagem por designador:
-  Se a listagem for inexistente, retorne.
-  Classifique os elementos desta listagem por designador.
-  Ajuste cada elemento presente na listagem.
-
-Rotina para que se classifique uma listagem por extensão:
-  Se a listagem for inexistente, retorne.
-  Classifique os elementos desta listagem por extensão.
-  Ajuste cada elemento presente na listagem.
-
 Rotina para que se classifique uma listagem por date:
   Se a listagem for inexistente, retorne.
   Classifique os elementos desta listagem por date.
   Ajuste cada elemento presente na listagem.
-
-Rotina para que se classifique uma listagem por categoria:
-  Se a listagem for inexistente, retorne.
-  Classifique os elementos desta listagem por categoria.
-  Ajuste cada elemento presente na listagem.
-
-Rotina para que se classifique uns elementos por designador:
-  Se o primeiro elemento destes elementos for o último elemento destes elementos,
-    Retorne.
-  Subdivida os elementos em uns elementos anteriores e uns elementos posteriores.
-  Classifique o elementos anteriores por designador.
-  Classifique o elementos posteriores por designador.
-  Itere.
-    Atribua o primeiro elemento destes elementos anteriores para um elemento anterior.
-    Atribua o primeiro elemento destes elementos posteriores para um elemento posterior.
-    Se o elemento anterior for inexistente,
-      Acrescente o elementos posteriores aos elementos;
-      Retorne.
-    Se o elemento posterior for inexistente,
-      Acrescente o elementos anteriores aos elementos;
-      Retorne.
-    Se o designador s/ barra invertida deste elemento anterior for maior do que o designador s/ barra invertida deste elemento posterior,
-      Mova o elemento posterior desde o elementos posteriores para os elementos;
-      Reitere.
-    Mova o elemento anterior desde o elementos anteriores para os elementos.
-  Reitere.
-
-Rotina para que se classifique uns elementos por extensão:
-  Se o primeiro elemento destes elementos for o último elemento destes elementos, retorne.
-  Subdivida os elementos em uns elementos anteriores e uns elementos posteriores.
-  Classifique os elementos anteriores por extensão.
-  Classifique os elementos posteriores por extensão.
-  Itere.
-    Atribua o primeiro elemento destes elementos anteriores para um elemento anterior.
-    Atribua o primeiro elemento destes elementos posteriores para um elemento posterior.
-    Se o elemento anterior for inexistente,
-      Acrescente o elementos posteriores para os elementos;
-      Retorne.
-    Se o elemento posterior for inexistente,
-      Acrescente o elementos anteriores para os elementos;
-      Retorne.
-    Se a extensão deste elemento anterior for maior do que a extensão deste elemento posterior,
-      Mova o elemento posterior desde o elementos posteriores para os elementos;
-      Reitere.
-    Mova o elemento anterior desde o elementos anteriores para os elementos.
-  Reitere.
 
 Rotina para que se classifique uns elementos por date:
   Se o primeiro elemento destes elementos for o último elemento destes elementos,
@@ -1447,27 +1471,6 @@ Rotina para que se classifique uns elementos por date:
       Acrescente o elementos anteriores para os elementos;
       Retorne.
     Se o grupo data/hora de criação deste elemento anterior for maior do que o grupo data/hora de criação deste elemento posterior,
-      Mova o elemento posterior desde o elementos posteriores para os elementos;
-      Reitere.
-    Mova o elemento anterior desde o elementos anteriores para os elementos.
-  Reitere.
-
-Rotina para que se classifique uns elementos por categoria:
-  Se o primeiro elemento destes elementos for o último elemento destes elementos,
-    Retorne.
-  Subdivida os elementos em uns elementos anteriores e uns elementos posteriores.
-  Classifique os elementos anteriores por categoria.
-  Classifique os elementos posteriores por categoria.
-  Itere.
-    Atribua o primeiro elemento destes elementos anteriores para um elemento anterior.
-    Atribua o primeiro elemento destes elementos posteriores para um elemento posterior.
-    Se o elemento anterior for inexistente,
-      Acrescente o elementos posteriores para os elementos;
-      Retorne.
-    Se o elemento posterior for inexistente,
-      Acrescente o elementos anteriores para os elementos;
-      Retorne.
-    Se a categoria deste elemento anterior for maior do que a categoria deste elemento posterior,
       Mova o elemento posterior desde o elementos posteriores para os elementos;
       Reitere.
     Mova o elemento anterior desde o elementos anteriores para os elementos.
