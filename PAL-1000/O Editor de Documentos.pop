@@ -240,31 +240,11 @@ Rotina para que se crie uma lista de formas usando uma forma:
   Aloque memória para a lista de formas.
   Atribua a forma à forma desta lista de formas.
 
-Rotina para que se ajuste o número de página de uma página:
-  Se a página for inexistente, retorne.
-  Limpe o número de página desta página.
-  Encontre uma forma usando as listas de formas desta página e "Número da Página".
-  Se a forma não for inexistente,
-    Atribua a primeira linha reta desta caixa de texto desta forma ao número de página desta página;
-    Retorne.
-  Encontre uma segunda forma usando as listas de formas desta página e "Número da Página (par)".
-  Se a segunda forma não for inexistente,
-    Atribua a primeira linha reta desta caixa de texto desta segunda forma ao número de página desta página;
-    Retorne.
-  Encontre uma terceira forma usando as listas de formas desta página e "Número da Página (ímpar)".
-  Se a terceira forma não for inexistente,
-    Atribua a primeira linha reta desta caixa de texto desta terceira forma ao número de página desta página;
-    Retorne.
+Rotina para que se determine se uma categoria é caixa de texto:
+  Se a categoria for "text", diga sim.
+  Se a categoria for "caixa-de-texto", diga sim.
+  Diga não.
 
-Rotina para que se encontre uma forma usando umas listas de formas e um label:
-    Obtenha uma lista de formas desde as listas de formas.
-    Se a lista de formas for inexistente,
-    Esvazie a forma;
-    Retorne.
-    Se a label desta forma desta lista de formas for a label, pare.
-  Reitere.
-  Atribua a forma desta lista de formas à forma.
-  
 Rotina para que se classifique umas listas de formas (horizontalmente):
   Se a primeira lista de formas destas listas de formas for a última lista de formas destas listas de formas, retorne.
   Subdivida as listas de formas em umas listas de formas anteriores e umas listas de formas posteriores.
@@ -324,38 +304,118 @@ Rotina para que se ajuste o título de índice remissivo de uma página:
   Se o conteúdo deste caractere final deste título de índice remissivo desta página for symbolic, retorne.
   Acrescente "..." para o título de índice remissivo desta página.
 
-
-
-
-
-\---------------------------------------------------------------------------------------------
-
-Rotina para que se adicione uma página para um documento:
-  Se o documento for inexistente, retorne.
-  Crie a página.
-  Insira a página para as páginas deste documento antes dessa primeira página selecionada deste documento.
-  Ative o sinalizador de alteração deste documento.
-  Ajuste o canto de cada página no documento.
-
-Rotina para que se ajuste o canto de cada página em um documento:
-  Se o documento for inexistente, retorne.
-  Itere.
-    Obtenha uma página desde as páginas deste documento.
-    Se a página for inexistente, pare.
-    Ajuste o canto dessa página no documento.
+Rotina para que se encontre uma forma usando umas listas de formas e um label:
+    Obtenha uma lista de formas desde as listas de formas.
+    Se a lista de formas for inexistente,
+    Esvazie a forma;
+    Retorne.
+    Se a label desta forma desta lista de formas for a label, pare.
   Reitere.
-  Delimite a origem no documento.
-
-Rotina para que se ajuste o canto de uma página em um documento:
-  Se o documento for inexistente, retorne.
+  Atribua a forma desta lista de formas à forma.
+  
+Rotina para que se ajuste o número de página de uma página:
   Se a página for inexistente, retorne.
-  Atribua 8 pixels ao raio deste canto desta página.
-  Atribua 24 pixels à coordenada X1 deste canto desta página.
-  Atribua a coordenada X2 deste documento menos 24 pixels à coordenada X2 deste canto desta página.
-  Atribua 0 à coordenada Y1 deste canto desta página.
-  Se a página não for a primeira página deste documento,
-    Atribua a coordenada Y2 deste canto desta página anterior desta página à coordenada Y1 deste canto desta página.
-  Atribua a coordenada Y1 deste canto desta página mais o tamanho do canto à coordenada Y2 deste canto desta página.
+  Limpe o número de página desta página.
+  Encontre uma forma usando as listas de formas desta página e "Número da Página".
+  Se a forma não for inexistente,
+    Atribua a primeira linha reta desta caixa de texto desta forma ao número de página desta página;
+    Retorne.
+  Encontre uma segunda forma usando as listas de formas desta página e "Número da Página (par)".
+  Se a segunda forma não for inexistente,
+    Atribua a primeira linha reta desta caixa de texto desta segunda forma ao número de página desta página;
+    Retorne.
+  Encontre uma terceira forma usando as listas de formas desta página e "Número da Página (ímpar)".
+  Se a terceira forma não for inexistente,
+    Atribua a primeira linha reta desta caixa de texto desta terceira forma ao número de página desta página;
+    Retorne.
+
+Rotina para que se renderize um número usando um percorredor:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Se o segmento inicial deste percorredor não for algum número inteiro,
+    Fail com "Erro. Documento inválido - esperava encontrar um número";
+    Retorne.
+  Converta o segmento inicial deste percorredor para o número.
+  Mova o percorredor (diretrizes de documentos).
+
+Rotina para que se renderize uma proporção usando um percorredor:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Renderize o numerador deste proporção usando o percorredor.
+  Renderize o denominador deste proporção usando o percorredor.
+
+Rotina para que se renderize umas formas usando um percorredor:
+  [Itere.]
+    Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+    Se o segmento inicial deste percorredor estiver em branco, retorne.
+    Se o segmento inicial deste percorredor for "end", retorne.
+    Renderize uma forma usando o percorredor.
+    Acrescente a forma para as formas.
+  Reitere.
+
+Rotina para que se renderize uma forma usando um percorredor:
+  Esvazie a forma.
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Se o segmento inicial deste percorredor for "elipse",
+    Renderize a forma usando o percorredor (elipse);
+    Retorne.
+  Se o segmento inicial deste percorredor for "ellipse",
+    Renderize a forma usando o percorredor (elipse);
+    Retorne.
+  Se o segmento inicial deste percorredor for "group",
+    Renderize a forma usando o percorredor (múltiplas formas agrupadas);
+    Retorne.
+  Se o segmento inicial deste percorredor for "agrupamento de formas geométricas",
+    Renderize a forma usando o percorredor (múltiplas formas agrupadas);
+    Retorne.
+  Se o segmento inicial deste percorredor for "imagem",
+    Renderize a forma usando o percorredor (imagem);
+    Retorne.
+  Se o segmento inicial deste percorredor for "picture",
+    Renderize a forma usando o percorredor (imagem);
+    Retorne.
+  Se o segmento inicial deste percorredor for "polígono",
+    Renderize a forma usando o percorredor (polígono);
+    Retorne.
+  Se o segmento inicial deste percorredor for "polygon",
+    Renderize a forma usando o percorredor (polígono);
+    Retorne.
+  Se o segmento inicial deste percorredor for "retângulo",
+    Renderize a forma usando o percorredor (retângulo);
+    Retorne.
+  Se o segmento inicial deste percorredor for "rectangle",
+    Renderize a forma usando o percorredor (retângulo);
+    Retorne.
+  Se o segmento inicial deste percorredor for "caixa-de-texto",
+    Renderize a forma usando o percorredor (caixa de texto);
+    Retorne.
+  Se o segmento inicial deste percorredor for "text",
+    Renderize a forma usando o percorredor (caixa de texto);
+    Retorne.
+  \ Se o segmento não for uma forma válida,
+  Fail com "Erro.  Documento Inválido - forma inválida".
+
+Rotina para que se renderize uma forma usando um percorredor (elipse):
+  Crie a forma.
+  Atribua o segmento inicial deste percorredor à categoria desta forma.
+  Mova o percorredor (diretrizes de documentos).
+  Renderize a cor da borda desta forma usando o percorredor.
+  Renderize a cor de preenchimento desta forma usando o percorredor.
+  Renderize a elipse desta forma usando o percorredor.
+  Ajuste a forma.
+
+Rotina para que se crie uma forma:
+  Aloque memória para a forma.
+  Atribua a cor preta à cor da borda desta forma.
+  Atribua a cor transparente à cor de preenchimento desta forma.
+  Atribua 1/1 à razão de escala desta forma.
+
+Rotina para que se renderize uma cor usando um percorredor:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Renderize a matiz desta cor usando o percorredor.
+  Renderize a saturação desta cor usando o percorredor.
+  Renderize o luminosidade desta cor usando o percorredor.
+
+Rotina para que se renderize uma elipse usando um percorredor:
+  Renderize a caixa desta elipse usando o percorredor.
 
 Rotina para que se ajuste uma forma:
   Se a forma for inexistente, retorne.
@@ -396,12 +456,188 @@ Rotina para que se ajuste uma forma:
     Atribua a retângulo de texto desta forma à caixa desta forma;
     Retorne.
   \Se a categoria desta forma for inválida,
-  Produza o relatório de informações usando "Erro ao tentar identificar a forma geométrica '" junto com a categoria desta forma seguido de "'.".
+  Produza o relatório de informações usando "Erro. A forma geométrica '" junto com a categoria desta forma seguido de "' é inválida.".
 
-Rotina para que se determine se uma categoria é caixa de texto:
-  Se a categoria for "text", diga sim.
-  Se a categoria for "caixa-de-texto", diga sim.
+Rotina para que se renderize uma forma usando um percorredor (múltiplas formas agrupadas):
+  Crie a forma.
+  Atribua o segmento inicial deste percorredor à categoria desta forma.
+  Mova o percorredor (diretrizes de documentos).
+  Renderize as formas desta forma usando o percorredor.
+  Ajuste a forma.
+  Se o segmento inicial deste percorredor não for "end",
+    Fail com "Erro.  Documento inválido - invalid group";
+    Retorne.
+  Mova o percorredor (diretrizes de documentos).
+
+Rotina para que se renderize uma forma usando um percorredor (imagem):
+  Crie a forma.
+  Atribua o segmento inicial deste percorredor à categoria desta forma.
+  Mova o percorredor (diretrizes de documentos).
+  Renderize a cor da borda desta forma usando o percorredor.
+  Renderize a imagem desta forma usando o percorredor.
+  Ajuste a forma.
+
+Rotina para que se renderize uma imagem usando um percorredor:
+  Crie a imagem.
+  Renderize a caixa desta imagem usando o percorredor.
+  Renderize a caixa intacta desta imagem usando o percorredor.
+  Renderize o sinalizador de escala de cinza desta imagem usando o percorredor.
+  Renderize o espelhamento horizontal desta imagem usando o percorredor.
+  Renderize o ângulo de rotação desta imagem usando o percorredor.
+  Renderize os dados hexadecimais desta imagem usando o percorredor.
+  Crie o gpBitmap desta imagem usando os dados hexadecimais desta imagem.
+  Rotacione o gpBitmap desta imagem usando o ângulo de rotação desta imagem.
+  Se o espelhamento horizontal desta imagem estiver ativo,
+    Inverta horizontalmente o gpBitmap desta imagem.
+
+Rotina para que se renderize uma caixa usando um percorredor:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Renderize a coordenada X1 desta caixa usando o percorredor.
+  Renderize a coordenada Y1 desta caixa usando o percorredor.
+  Renderize a coordenada X2 desta caixa usando o percorredor.
+  Renderize a coordenada Y2 desta caixa usando o percorredor.
+
+Rotina para que se renderize um sinalizador usando um percorredor:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Se o segmento inicial deste percorredor não for algum sinalizador literal (para o editor de documentos),
+    Fail com "Erro.  Documento inválido - esperava encontrar um 'SIM' ou 'NÃO' ";
+    Retorne. \ adicionado (para o caderno)
+  Converta o segmento inicial deste percorredor para o sinalizador.
+  Mova o percorredor (diretrizes de documentos).
+
+Rotina para que se determine se uma string é algum sinalizador literal (para o editor de documentos):
+  Se a string for "yes", diga sim.
+  Se a string for "sim", diga sim.
+  Se a string for "SIM", diga sim.
+  Se a string for "no", diga sim.
+  Se a string for "não", diga sim.
+  Se a string for "NÃO", diga sim.
   Diga não.
+
+Rotina para que se renderize um texto hexadecimal usando um percorredor:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Renderize uma cifra hexadecimal usando o percorredor.
+  Converta a cifra hexadecimal para o texto hexadecimal.
+
+Rotina para que se renderize uma forma usando um percorredor (polígono):
+  Crie a forma.
+  Atribua o segmento inicial deste percorredor à categoria desta forma.
+  Mova o percorredor (diretrizes de documentos).
+  Renderize a cor da borda desta forma usando o percorredor.
+  Renderize a cor de preenchimento desta forma usando o percorredor.
+  Renderize o polígono desta forma usando o percorredor.
+  Ajuste a forma.
+
+Rotina para que se renderize um polígono usando um percorredor:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Crie o polígono.
+  Renderize uma contagem usando o percorredor.
+  Itere.
+    Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+    Se a contagem for 0, retorne.
+    Renderize uma localização usando o percorredor.
+    Acrescente a localização para o polígono.
+    Subtraia 1 desde a contagem.
+  Reitere.
+
+Rotina para que se renderize uma localização usando um percorredor:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Renderize a coordenada X desta localização usando o percorredor.
+  Renderize a coordenada Y desta localização usando o percorredor.
+
+Rotina para que se renderize uma forma usando um percorredor (retângulo):
+  Crie a forma.
+  Atribua o segmento inicial deste percorredor à categoria desta forma.
+  Mova o percorredor (diretrizes de documentos).
+  Renderize a cor da borda desta forma usando o percorredor.
+  Renderize a cor de preenchimento desta forma usando o percorredor.
+  Renderize o contorno retangular desta forma usando o percorredor.
+  Ajuste a forma.
+
+Rotina para que se renderize um contorno retangular usando um percorredor:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Renderize o contorno retangular tal como uma caixa usando o percorredor.
+  Renderize o raio deste contorno retangular usando o percorredor.
+
+Rotina para que se renderize uma forma usando um percorredor (caixa de texto):
+  Crie a forma.
+  Atribua o segmento inicial deste percorredor à categoria desta forma.
+  Mova o percorredor (diretrizes de documentos).
+  Renderize a cor da borda desta forma usando o percorredor.
+  Renderize a cor de preenchimento desta forma usando o percorredor.
+  Renderize o retângulo de texto desta forma usando o percorredor.
+  Renderize o label desta forma usando o percorredor.
+  Renderize a caixa de texto desta forma usando o percorredor.
+  Se a caixa de texto desta forma for inexistente, retorne.
+  Ajuste a caixa de texto no forma.
+  Ajuste a forma.
+  Se o segmento inicial deste percorredor não for "end",
+    Fail com "Documento Inválido - texto inválido";
+    Retorne.
+  Mova o percorredor (diretrizes de documentos).
+
+Rotina para que se renderize uma string usando um percorredor:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Se o segmento inicial deste percorredor não começa com as aspas duplas,
+    Fail com "Erro.  Documento inválido - Faltam as aspas duplas ";
+    Retorne.
+  Atribua o segmento inicial deste percorredor à string.
+  Mova o percorredor (diretrizes de documentos).
+  Remova as aspas dessa string.
+
+Rotina para que se renderize uma caixa de texto usando um percorredor:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Crie a caixa de texto.
+  Renderize a fonte desta caixa de texto usando o percorredor.
+  Renderize o alinhamento desta caixa de texto usando o percorredor.
+  Renderize a cor da canetinha desta caixa de texto usando o percorredor.
+  Renderize o sinalizador de quebra de texto desta caixa de texto usando o percorredor.
+  Renderize uns parágrafos usando o percorredor.
+  Converta os parágrafos para as linhas de texto desta caixa de texto.
+  Garanta uma linha de texto na caixa de texto.
+  Destrua os parágrafos.
+
+Rotina para que se renderize uma fonte usando um percorredor:
+  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+  Renderize o nome desta fonte usando o percorredor.
+  Renderize a altura desta fonte usando o percorredor.
+
+Rotina para que se renderize uns parágrafos usando um percorredor:
+  [Itere.]
+    Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
+    Se o segmento inicial deste percorredor for "end", retorne.
+    Renderize um parágrafo usando o percorredor.
+    Acrescente o parágrafo para o parágrafos.
+  Reitere.
+
+Rotina para que se ajuste o canto de cada página em um documento:
+  Se o documento for inexistente, retorne.
+  Itere.
+    Obtenha uma página desde as páginas deste documento.
+    Se a página for inexistente, pare.
+    Ajuste o canto dessa página no documento.
+  Reitere.
+  Delimite a origem no documento.
+
+Rotina para que se ajuste o canto de uma página em um documento:
+  Se o documento for inexistente, retorne.
+  Se a página for inexistente, retorne.
+  Atribua 8 pixels ao raio deste canto desta página.
+  Atribua 24 pixels à coordenada X1 deste canto desta página.
+  Atribua a coordenada X2 deste documento menos 24 pixels à coordenada X2 deste canto desta página.
+  Atribua 0 à coordenada Y1 deste canto desta página.
+  Se a página não for a primeira página deste documento,
+    Atribua a coordenada Y2 deste canto desta página anterior desta página à coordenada Y1 deste canto desta página.
+  Atribua a coordenada Y1 deste canto desta página mais o tamanho do canto à coordenada Y2 deste canto desta página.
+
+\---------------------------------------------------------------------------------------------
+
+Rotina para que se adicione uma página para um documento:
+  Se o documento for inexistente, retorne.
+  Crie a página.
+  Insira a página para as páginas deste documento antes dessa primeira página selecionada deste documento.
+  Ative o sinalizador de alteração deste documento.
+  Ajuste o canto de cada página no documento.
 
 Rotina para que se ajuste a caixa de texto em uma forma:
   Se a forma for inexistente, retorne.
@@ -414,8 +650,6 @@ Rotina para que se ajuste a caixa de texto em uma forma:
   Se a cor da borda desta forma não for transparente,
     Subtraia a margem desde a coordenada X2 desta caixa.
   Mude a caixa de texto desta forma usando a caixa.
-
-de índice remissivo desta página.
 
 Rotina para que se alinhe algumas formas selecionadas sobre uma página usando um alinhamento:
   Se a página for inexistente, retorne.
@@ -870,12 +1104,6 @@ Rotina para que se copie umas formas para umas segundas formas:
 
 Rotina para que se crie um parágrafo:
   Aloque memória para o parágrafo.
-
-Rotina para que se crie uma forma:
-  Aloque memória para a forma.
-  Atribua a cor preta à cor da borda desta forma.
-  Atribua a cor transparente à cor de preenchimento desta forma.
-  Atribua 1/1 à razão de escala desta forma.
 
 Rotina para que se crie uma forma usando um categoria (padrão - elipse):
   Crie a forma.
@@ -3772,244 +4000,11 @@ Rotina para que se execute yank usando uma página e um número:
   Atribua "Yank " junto com o número original / 1440 para uma string.
   Mostre o ambiente de trabalho com a string.
 
-Rotina para que se renderize uma caixa usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Renderize a coordenada X1 desta caixa usando o percorredor.
-  Renderize a coordenada Y1 desta caixa usando o percorredor.
-  Renderize a coordenada X2 desta caixa usando o percorredor.
-  Renderize a coordenada Y2 desta caixa usando o percorredor.
-
-Rotina para que se renderize uma cor usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Renderize a matiz desta cor usando o percorredor.
-  Renderize a saturação desta cor usando o percorredor.
-  Renderize o luminosidade desta cor usando o percorredor.
-
-Rotina para que se renderize uma elipse usando um percorredor:
-  Renderize a caixa desta elipse usando o percorredor.
-
-Rotina para que se renderize um sinalizador usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Se o segmento inicial deste percorredor não for algum sinalizador literal (for o caderno),
-    Fail com "Erro.  Documento inválido - esperava encontrar um 'SIM' ou 'NÃO' ";
-    Retorne. \ adicionado (para o caderno)
-  Converta o segmento inicial deste percorredor para o sinalizador.
-  Mova o percorredor (diretrizes de documentos).
-
-Rotina para que se determine se uma string é algum sinalizador literal (for o caderno):
-  Se a string for "yes", diga sim.
-  Se a string for "sim", diga sim.
-  Se a string for "SIM", diga sim.
-  Se a string for "no", diga sim.
-  Se a string for "não", diga sim.
-  Se a string for "NÃO", diga sim.
-  Diga não.
-
-Rotina para que se renderize uma fonte usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Renderize o nome desta fonte usando o percorredor.
-  Renderize a altura desta fonte usando o percorredor.
-
-Rotina para que se renderize um texto hexadecimal usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Renderize uma cifra hexadecimal usando o percorredor.
-  Converta a cifra hexadecimal para o texto hexadecimal.
-
-Rotina para que se renderize um número usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Se o segmento inicial deste percorredor não for algum número inteiro,
-    Fail com "Erro. Documento inválido - esperava encontrar um número";
-    Retorne.
-  Converta o segmento inicial deste percorredor para o número.
-  Mova o percorredor (diretrizes de documentos).
-
 Rotina para que se renderize um parágrafo usando um percorredor:
   Se o erro do fluxo de entrada/saída não estiver em branco,
     Retorne.
   Crie o parágrafo.
   Renderize a string deste parágrafo usando o percorredor.
-
-Rotina para que se renderize uns parágrafos usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco,
-    Retorne.
-  Se o segmento inicial deste percorredor for "end",
-    Retorne.
-  Renderize um parágrafo usando o percorredor.
-  Acrescente o parágrafo para o parágrafos.
-  Reitere.
-
-Rotina para que se renderize uma imagem usando um percorredor:
-  Crie a imagem.
-  Renderize a caixa desta imagem usando o percorredor.
-  Renderize a caixa intacta desta imagem usando o percorredor.
-  Renderize o sinalizador de escala de cinza desta imagem usando o percorredor.
-  Renderize o espelhamento horizontal desta imagem usando o percorredor.
-  Renderize o ângulo de rotação desta imagem usando o percorredor.
-  Renderize os dados hexadecimais desta imagem usando o percorredor.
-  Crie o gpBitmap desta imagem usando os dados hexadecimais desta imagem.
-  Rotacione o gpBitmap desta imagem usando o ângulo de rotação desta imagem.
-  Se o espelhamento horizontal desta imagem estiver ativo,
-    Inverta horizontalmente o gpBitmap desta imagem.
-
-Rotina para que se renderize um polígono usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Crie o polígono.
-  Renderize uma contagem usando o percorredor.
-  Itere.
-    Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-    Se a contagem for 0, retorne.
-    Renderize uma localização usando o percorredor.
-    Acrescente a localização para o polígono.
-    Subtraia 1 desde a contagem.
-  Reitere.
-
-Rotina para que se renderize uma proporção usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Renderize o numerador deste proporção usando o percorredor.
-  Renderize o denominador deste proporção usando o percorredor.
-
-Rotina para que se renderize um contorno retangular usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Renderize o contorno retangular tal como uma caixa usando o percorredor.
-  Renderize o raio deste contorno retangular usando o percorredor.
-
-Rotina para que se renderize uma forma usando um percorredor:
-  Esvazie a forma.
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Se o segmento inicial deste percorredor for "elipse",
-    Renderize a forma usando o percorredor (elipse);
-    Retorne.
-  Se o segmento inicial deste percorredor for "ellipse",
-    Renderize a forma usando o percorredor (elipse);
-    Retorne.
-  Se o segmento inicial deste percorredor for "group",
-    Renderize a forma usando o percorredor (múltiplas formas agrupadas);
-    Retorne.
-  Se o segmento inicial deste percorredor for "agrupamento de formas geométricas",
-    Renderize a forma usando o percorredor (múltiplas formas agrupadas);
-    Retorne.
-  Se o segmento inicial deste percorredor for "imagem",
-    Renderize a forma usando o percorredor (imagem);
-    Retorne.
-  Se o segmento inicial deste percorredor for "picture",
-    Renderize a forma usando o percorredor (imagem);
-    Retorne.
-  Se o segmento inicial deste percorredor for "polígono",
-    Renderize a forma usando o percorredor (polígono);
-    Retorne.
-  Se o segmento inicial deste percorredor for "polygon",
-    Renderize a forma usando o percorredor (polígono);
-    Retorne.
-  Se o segmento inicial deste percorredor for "retângulo",
-    Renderize a forma usando o percorredor (retângulo);
-    Retorne.
-  Se o segmento inicial deste percorredor for "rectangle",
-    Renderize a forma usando o percorredor (retângulo);
-    Retorne.
-  Se o segmento inicial deste percorredor for "caixa-de-texto",
-    Renderize a forma usando o percorredor (caixa de texto);
-    Retorne.
-  Se o segmento inicial deste percorredor for "text",
-    Renderize a forma usando o percorredor (caixa de texto);
-    Retorne.
-  Fail com "Erro.  Documento Inválido - forma inválida".
-
-Rotina para que se renderize uma forma usando um percorredor (elipse):
-  Crie a forma.
-  Atribua o segmento inicial deste percorredor à categoria desta forma.
-  Mova o percorredor (diretrizes de documentos).
-  Renderize a cor da borda desta forma usando o percorredor.
-  Renderize a cor de preenchimento desta forma usando o percorredor.
-  Renderize a elipse desta forma usando o percorredor.
-  Ajuste a forma.
-
-Rotina para que se renderize uma forma usando um percorredor (múltiplas formas agrupadas):
-  Crie a forma.
-  Atribua o segmento inicial deste percorredor à categoria desta forma.
-  Mova o percorredor (diretrizes de documentos).
-  Renderize as formas desta forma usando o percorredor.
-  Ajuste a forma.
-  Se o segmento inicial deste percorredor não for "end",
-    Fail com "Erro.  Documento inválido - invalid group";
-    Retorne.
-  Mova o percorredor (diretrizes de documentos).
-
-Rotina para que se renderize uma forma usando um percorredor (imagem):
-  Crie a forma.
-  Atribua o segmento inicial deste percorredor à categoria desta forma.
-  Mova o percorredor (diretrizes de documentos).
-  Renderize a cor da borda desta forma usando o percorredor.
-  Renderize a imagem desta forma usando o percorredor.
-  Ajuste a forma.
-
-Rotina para que se renderize uma forma usando um percorredor (polígono):
-  Crie a forma.
-  Atribua o segmento inicial deste percorredor à categoria desta forma.
-  Mova o percorredor (diretrizes de documentos).
-  Renderize a cor da borda desta forma usando o percorredor.
-  Renderize a cor de preenchimento desta forma usando o percorredor.
-  Renderize o polígono desta forma usando o percorredor.
-  Ajuste a forma.
-
-Rotina para que se renderize uma forma usando um percorredor (retângulo):
-  Crie a forma.
-  Atribua o segmento inicial deste percorredor à categoria desta forma.
-  Mova o percorredor (diretrizes de documentos).
-  Renderize a cor da borda desta forma usando o percorredor.
-  Renderize a cor de preenchimento desta forma usando o percorredor.
-  Renderize o contorno retangular desta forma usando o percorredor.
-  Ajuste a forma.
-
-Rotina para que se renderize uma forma usando um percorredor (caixa de texto):
-  Crie a forma.
-  Atribua o segmento inicial deste percorredor à categoria desta forma.
-  Mova o percorredor (diretrizes de documentos).
-  Renderize a cor da borda desta forma usando o percorredor.
-  Renderize a cor de preenchimento desta forma usando o percorredor.
-  Renderize a retângulo de texto desta forma usando o percorredor.
-  Renderize o label desta forma usando o percorredor.
-  Renderize a caixa de texto desta forma usando o percorredor.
-  Se a caixa de texto desta forma for inexistente, retorne.
-  Ajuste a caixa de texto no forma.
-  Ajuste a forma.
-  Se o segmento inicial deste percorredor não for "end",
-    Fail com "Documento Inválido - texto inválido";
-    Retorne.
-  Mova o percorredor (diretrizes de documentos).
-
-Rotina para que se renderize umas formas usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Se o segmento inicial deste percorredor estiver em branco, retorne.
-  Se o segmento inicial deste percorredor for "end", retorne.
-  Renderize uma forma usando o percorredor.
-  Acrescente a forma para as formas.
-  Reitere.
-
-Rotina para que se renderize uma localização usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Renderize a coordenada X desta localização usando o percorredor.
-  Renderize a coordenada Y desta localização usando o percorredor.
-
-Rotina para que se renderize uma string usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Se o segmento inicial deste percorredor não começa com as aspas duplas,
-    Fail com "Erro.  Documento inválido - Faltam as aspas duplas ";
-    Retorne.
-  Atribua o segmento inicial deste percorredor à string.
-  Mova o percorredor (diretrizes de documentos).
-  Remova as aspas dessa string.
-
-Rotina para que se renderize uma caixa de texto usando um percorredor:
-  Se o erro do fluxo de entrada/saída não estiver em branco, retorne.
-  Crie a caixa de texto.
-  Renderize a fonte desta caixa de texto usando o percorredor.
-  Renderize o alinhamento desta caixa de texto usando o percorredor.
-  Renderize a cor da canetinha desta caixa de texto usando o percorredor.
-  Renderize o sinalizador de quebra de texto desta caixa de texto usando o percorredor.
-  Renderize uns parágrafos usando o percorredor.
-  Converta os parágrafos para as linhas de texto desta caixa de texto.
-  Garanta uma linha de texto na caixa de texto.
-  Destrua os parágrafos.
 
 Rotina para que se delimite a origem em um documento:
   Se o documento for inexistente, retorne.
