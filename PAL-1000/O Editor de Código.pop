@@ -44,17 +44,78 @@ Rotina para que se crie um código-fonte usando um trecho:
   Ative o sinalizador de rolagem horizontal desta caixa de texto deste código-fonte.
   Ative o sinalizador de rolagem vertical desta caixa de texto deste código-fonte.
 
-\ ------------------------------------------------------------
+Rotina para que se pinte um código-fonte:
+  Se o código-fonte for inexistente, retorne.
+  Cubra somente fora dessa caixa desta caixa de texto deste código-fonte.
+  Se o sinalizador de colorização deste código-fonte estiver ativo,
+    Pinte o código-fonte (colorização);
+    Retorne.
+  Pinte o código-fonte (sem colorização).
 
-Rotina para que se adicione para uns blocos:
-  Crie um bloco.
-  Acrescente o bloco para os blocos.
+Rotina para que se pinte um código-fonte (colorização):
+  [Itere.]
+  Se o código-fonte for inexistente, retorne.
+    Obtenha uma linha de texto desde as linhas de texto desta caixa de texto deste código-fonte.
+    Se a linha de texto for inexistente, pare.
+    Se a linha de texto na caixa de texto deste código-fonte não for visível, reitere.
+    Pinte a linha de texto no código-fonte (colorização).
+  Reitere.
+  Pinte o cursor de texto na caixa de texto deste código-fonte.
 
-Rotina para que se acrescente uns blocos para umas linhas de texto:
+Rotina para que se pinte uma linha de texto em um código-fonte (colorização):
+  Se o código-fonte for inexistente, retorne.
+  Obtenha um subtexto usando a linha de texto e o código-fonte (parte comentada).
+  Se o subtexto estiver em branco,
+    Pinte a linha de texto na caixa de texto deste código-fonte (edição);
+    Retorne.
+  Pinte a caixa de seleção pela linha de texto na caixa de texto deste código-fonte.
+  Obtenha uma caixa usando a linha de texto e a caixa de texto deste código-fonte.
+  \ uncommented part
+  Lance um segundo subtexto sobre a string desta linha de texto.
+  Atribua o caractere inicial deste subtexto menos 1 ao caractere final deste segundo subtexto.
+  Pinte o segundo subtexto na caixa com a cor branca e a fonte desta caixa de texto deste código-fonte e o alinhamento desta caixa de texto deste código-fonte.
+  \ (parte comentada)
+  Obtenha uma largura usando o segundo subtexto e o contexto de dispositivo de memória e a fonte desta caixa de texto deste código-fonte.
+  Adicione a largura para a coordenada X1 desta caixa.
+  Pinte o subtexto na caixa com a cor dos comentários e a fonte desta caixa de texto deste código-fonte e o alinhamento desta caixa de texto deste código-fonte.
+
+Rotina para que se obtenha um subtexto usando uma linha de texto e um código-fonte (parte comentada):
+  Se o código-fonte for inexistente,
+    Limpe o subtexto;
+    Retorne.
+  Se a linha de texto for inexistente,
+    Limpe o subtexto;
+    Retorne.
+  Lance o subtexto sobre a string desta linha de texto.
   Itere.
-    Obtenha um bloco desde os blocos.
-    Se o bloco for inexistente, retorne.
-    Acrescente as linhas de texto deste bloco para as linhas de texto.
+    Se o conteúdo deste caractere inicial deste subtexto for o retorno de carro,
+      Limpe o subtexto;
+      Pare.
+    Se o conteúdo deste caractere inicial deste subtexto for a barra invertida,
+      Pare.
+    Se o conteúdo deste caractere inicial deste subtexto for as aspas duplas,
+      Avance o subtexto (depois de uma string);
+      Reitere.
+    Se o conteúdo deste caractere inicial deste subtexto for o parênteses esquerdo,
+      Avance o subtexto (depois de um qualificador);
+      Reitere.
+    Se o conteúdo deste caractere inicial deste subtexto for o colchete esquerdo,
+      Avance o subtexto (depois de uma observação);
+      Reitere.
+    Adicione 1 para o caractere inicial deste subtexto.
+  Reitere.
+  Subtraia 1 desde o caractere final deste subtexto. \ assim o return byte não é desenhado
+
+Rotina para que se avance um subtexto (depois de uma string):
+  Itere.
+    Se o conteúdo deste caractere inicial deste subtexto for o retorno de carro,
+      Retorne.
+    Adicione 1 para o caractere inicial deste subtexto.
+    Se o conteúdo deste caractere inicial deste subtexto não for as aspas duplas,
+      Reitere.
+    Adicione 1 para o caractere inicial deste subtexto.
+    Se o conteúdo deste caractere inicial deste subtexto não for as aspas duplas,
+      Retorne.
   Reitere.
 
 Rotina para que se avance um subtexto (depois de um qualificador):
@@ -83,16 +144,21 @@ Rotina para que se avance um subtexto (depois de uma observação):
       Retorne.
   Reitere.
 
-Rotina para que se avance um subtexto (depois de uma string):
+Rotina para que se pinte um código-fonte (sem colorização):
+  Se o código-fonte for inexistente, retorne.
+  Pinte a caixa de texto deste código-fonte (edição).
+
+\ ------------------------------------------------------------
+
+Rotina para que se adicione para uns blocos:
+  Crie um bloco.
+  Acrescente o bloco para os blocos.
+
+Rotina para que se acrescente uns blocos para umas linhas de texto:
   Itere.
-    Se o conteúdo deste caractere inicial deste subtexto for o retorno de carro,
-      Retorne.
-    Adicione 1 para o caractere inicial deste subtexto.
-    Se o conteúdo deste caractere inicial deste subtexto não for as aspas duplas,
-      Reitere.
-    Adicione 1 para o caractere inicial deste subtexto.
-    Se o conteúdo deste caractere inicial deste subtexto não for as aspas duplas,
-      Retorne.
+    Obtenha um bloco desde os blocos.
+    Se o bloco for inexistente, retorne.
+    Acrescente as linhas de texto deste bloco para as linhas de texto.
   Reitere.
 
 Rotina para que se comente as linhas de texto selecionadas em um código-fonte:
@@ -206,45 +272,6 @@ Rotina para que se determine se uma string começa com algum indicador de início 
   Se a string começa com "to ", diga sim.
   Diga não.
 
-Rotina para que se pinte uma linha de texto em um código-fonte (colorização):
-  Se o código-fonte for inexistente, retorne.
-  Obtenha um subtexto usando a linha de texto e o código-fonte (parte comentada).
-  Se o subtexto estiver em branco,
-    Pinte a linha de texto na caixa de texto deste código-fonte (edição);
-    Retorne.
-  Pinte a caixa de seleção pela linha de texto na caixa de texto deste código-fonte.
-  Obtenha uma caixa usando a linha de texto e a caixa de texto deste código-fonte.
-  \ uncommented part
-  Lance um segundo subtexto sobre a string desta linha de texto.
-  Atribua o caractere inicial deste subtexto menos 1 ao caractere final deste segundo subtexto.
-  Pinte o segundo subtexto na caixa com a cor branca e a fonte desta caixa de texto deste código-fonte e o alinhamento desta caixa de texto deste código-fonte.
-  \ (parte comentada)
-  Obtenha uma largura usando o segundo subtexto e o contexto de dispositivo de memória e a fonte desta caixa de texto deste código-fonte.
-  Adicione a largura para a coordenada X1 desta caixa.
-  Pinte o subtexto na caixa com a cor dos comentários e a fonte desta caixa de texto deste código-fonte e o alinhamento desta caixa de texto deste código-fonte.
-
-Rotina para que se pinte um código-fonte:
-  Se o código-fonte for inexistente, retorne.
-  Cubra somente fora dessa caixa desta caixa de texto deste código-fonte.
-  Se o sinalizador de colorização deste código-fonte estiver ativo,
-    Pinte o código-fonte (colorização);
-    Retorne.
-  Pinte o código-fonte (sem colorização).
-
-Rotina para que se pinte um código-fonte (colorização):
-  [Itere.]
-  Se o código-fonte for inexistente, retorne.
-    Obtenha uma linha de texto desde as linhas de texto desta caixa de texto deste código-fonte.
-    Se a linha de texto for inexistente, pare.
-    Se a linha de texto na caixa de texto deste código-fonte não for visível, reitere.
-    Pinte a linha de texto no código-fonte (colorização).
-  Reitere.
-  Pinte o cursor de texto na caixa de texto deste código-fonte.
-
-Rotina para que se pinte um código-fonte (sem colorização):
-  Se o código-fonte for inexistente, retorne.
-  Pinte a caixa de texto deste código-fonte (edição).
-
 \Rotina para que se finalize o editor:
 
 Rotina para que se obtenha uma primeira linha de texto e uma última linha de texto usando um número de folhas e um código-fonte:
@@ -267,33 +294,6 @@ Rotina para que se obtenha o painel de informações por um código-fonte:
   Atribua o painel de informações string desta caixa de texto deste código-fonte à string deste painel de informações.
   Se o bloqueio de gravação desta código-fonte estiver ativo,
     Acrescente " (s)" para a string deste painel de informações. \ DE SOMENTE LEITURA
-
-Rotina para que se obtenha um subtexto usando uma linha de texto e um código-fonte (parte comentada):
-  Se o código-fonte for inexistente,
-    Limpe o subtexto;
-    Retorne.
-  Se a linha de texto for inexistente,
-    Limpe o subtexto;
-    Retorne.
-  Lance o subtexto sobre a string desta linha de texto.
-  Itere.
-    Se o conteúdo deste caractere inicial deste subtexto for o retorno de carro,
-      Limpe o subtexto;
-      Pare.
-    Se o conteúdo deste caractere inicial deste subtexto for a barra invertida,
-      Pare.
-    Se o conteúdo deste caractere inicial deste subtexto for as aspas duplas,
-      Avance o subtexto (depois de uma string);
-      Reitere.
-    Se o conteúdo deste caractere inicial deste subtexto for o parênteses esquerdo,
-      Avance o subtexto (depois de um qualificador);
-      Reitere.
-    Se o conteúdo deste caractere inicial deste subtexto for o colchete esquerdo,
-      Avance o subtexto (depois de uma observação);
-      Reitere.
-    Adicione 1 para o caractere inicial deste subtexto.
-  Reitere.
-  Subtraia 1 desde o caractere final deste subtexto. \ assim o return byte não é desenhado
 
 Rotina para que se execute capitalize usando um código-fonte:
   Se nada estiver selecionado no código-fonte,

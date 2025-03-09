@@ -261,6 +261,82 @@ Rotina para que se abra uma listagem usando um trecho (arquivo binário):
   Ative o bloqueio de gravação deste código-fonte desta listagem.
   Desative o sinalizador de colorização deste código-fonte desta listagem.
 
+Rotina para que se selecione todos os itens usando uma listagem:
+  Se a listagem estiver [na] raiz,
+    Avise o usuário;
+    Retorne.
+  Solte os elementos na listagem.
+  Selecione os elementos desta listagem.
+  Atribua o primeiro elemento desta listagem para o elemento âncora desta seleção desta listagem.
+  Atribua o último elemento desta listagem ao cursor de texto desta listagem.
+  Mostre o painel de informações do ambiente de trabalho.
+
+Rotina para que se determine se uma listagem é raiz:
+  Se a listagem for inexistente, diga não.
+  Se o diretório pai desta listagem for inexistente, diga sim. \ se a listagem não tiver pai então ela é a listagem pai.
+  Diga não.
+
+Rotina para que se pinte uma listagem:
+  Se a listagem for inexistente,
+    Retorne.
+  Cubra somente fora dessa caixa deste explorador de arquivos.
+  Pinte a caixa deste explorador de arquivos com a cor do ambiente de trabalho [borda] e a cor do ambiente de trabalho [preenchimento].
+  \ aqui muda a cor da caixa externa do explorador de arquivos e da borda.
+  Atribua a caixa deste explorador de arquivos para uma caixa.
+  Subtraia a margem deste explorador de arquivos desde a coordenada X2 desta caixa.
+  Cubra externamente a caixa.
+  Pinte os elementos visíveis na listagem.
+
+Rotina para que se pinte os elementos visíveis em uma listagem:
+  Se a listagem for inexistente,
+    Retorne.
+  Itere.
+    Obtenha um elemento desde os elementos desta listagem.
+    Se o elemento for inexistente,
+      Retorne.
+    Se o elemento não estiver visível na listagem, reitere.
+    Pinte o elemento na listagem.
+  Reitere.
+
+Rotina para que se determine se um elemento está visível em uma listagem:
+  Se o elemento for inexistente, diga não.
+  Atribua a caixa deste elemento para uma caixa.
+  Mova a caixa usando a origem desta listagem.
+  Se a coordenada Y1 desta caixa for menor do que a coordenada Y1 deste explorador de arquivos, diga não.
+  Se a coordenada Y2 desta caixa for maior do que a coordenada Y2 deste explorador de arquivos, diga não.
+  Diga sim.
+
+Rotina para que se pinte um elemento em uma listagem:
+  Se a listagem for inexistente,
+    Retorne.
+  Se o elemento for inexistente,
+    Retorne.
+  Atribua a cor do ambiente de trabalho para uma cor da borda.
+  Atribua a cor do ambiente de trabalho para uma cor de preenchimento.
+  Atribua a caixa deste elemento e 6 pixels para uma caixa arredondada. \aqui muda o raio da borda do seletor de arquivos
+  Mova a caixa arredondada usando a origem desta listagem.
+  Atribua a coordenada X2 deste explorador de arquivos menos a margem deste explorador de arquivos à coordenada X2 desta caixa arredondada.
+  Se o sinalizador de seleção deste elemento estiver ativo,
+    Atribua o cor cinza escuríssimo à cor da borda. \ cor branca eu acho
+  Se o sinalizador de seleção deste elemento estiver ativo,
+    Atribua a cor cinza escuríssimo à cor de preenchimento. \ aqui muda a cor do hover da pasta selecionada
+  Pinte a caixa arredondada com a cor da borda e a cor de preenchimento.
+  Adicione 4 pixels para a coordenada X1 desta caixa arredondada.
+  Pinte o endereço da pasta deste elemento na caixa arredondada com a cor clara e a fonte padrão e "à esquerda". \ muda a fonte da pastas mãe
+  Atribua o designador deste elemento para um designador.
+  Se a categoria deste elemento for "unidade de disco",
+    Obtenha uma descrição de dispositivo pelo endereço completo deste elemento.
+  Se a categoria deste elemento for "unidade de disco",
+    Acrescente " (" junto com o descrição de dispositivo seguido de ")" para o designador.
+  \ Se a categoria deste elemento for "unidade de disco", obtenha uma categoria da unidade de disco pelo endereço completo deste elemento.
+   \ Se a categoria deste elemento for "unidade de disco", acrescente " (" junto com a categoria da unidade de disco seguido de ")" para o designador.
+  \ Se a categoria deste elemento for "unidade de disco", obtenha um nome da unidade de disco pelo endereço completo deste elemento.
+  \ Se a categoria deste elemento for "unidade de disco", acrescente " (" junto com o nome da unidade de disco seguido de ")" para o designador.
+  Obtenha uma largura usando o endereço da pasta deste elemento e o contexto de dispositivo de memória e a fonte padrão.
+  Adicione a largura para a coordenada X1 desta caixa arredondada.
+  Pinte o designador na caixa arredondada com a cor branca e a fonte padrão e "à esquerda". \ muda a fonte da pasta atual
+  \Se o sinalizador de seleção deste elemento estiver ativo, pinte o designador na caixa arredondada com a cor branca e a fonte padrão e "à esquerda".
+
 \----------------------------------------------------------------------------------------
 
 Rotina para que se adicione um elemento para uma listagem e para o sistema de arquivos usando um endereço completo:
@@ -403,11 +479,6 @@ Rotina para que se determine se uma listagem foi alterado:
   Se o documento desta listagem foi alterado, diga sim.
   Diga não.
 
-Rotina para que se determine se uma listagem é raiz:
-  Se a listagem for inexistente, diga não.
-  Se o diretório pai desta listagem for inexistente, diga sim. \ se a listagem não tiver pai então ela é a listagem pai.
-  Diga não.
-
 Rotina para que se determine se uma listagem é savable:
   Se a listagem for inexistente, diga não.
   Se a categoria desta listagem não for "ficheiro", diga não.
@@ -420,14 +491,6 @@ Rotina para que se determine se um elemento está selecionado:
   Se o elemento for inexistente, diga não.
   Se o sinalizador de seleção deste elemento estiver ativo, diga sim.
   Diga não.
-
-Rotina para que se determine se um elemento está visível em uma listagem:
-  Se o elemento for inexistente, diga não.
-  Atribua a caixa deste elemento para uma caixa.
-  Mova a caixa usando a origem desta listagem.
-  Se a coordenada Y1 desta caixa for menor do que a coordenada Y1 deste explorador de arquivos, diga não.
-  Se a coordenada Y2 desta caixa for maior do que a coordenada Y2 deste explorador de arquivos, diga não.
-  Diga sim.
 
 Rotina para que se determine se something está selecionado em uma listagem:
   Se a listagem for inexistente, diga não.
@@ -485,59 +548,6 @@ Rotina para que se solte os elementos em uma listagem:
   Esvazie o cursor de texto desta listagem.
   Atribua o cursor de texto desta listagem para o elemento âncora desta seleção desta listagem.
   Snapshot os elementos desta listagem.
-
-Rotina para que se pinte os elementos visíveis em uma listagem:
-  Se a listagem for inexistente,
-    Retorne.
-  Itere.
-    Obtenha um elemento desde os elementos desta listagem.
-    Se o elemento for inexistente,
-      Retorne.
-    Se o elemento não estiver visível na listagem, reitere.
-    Pinte o elemento na listagem.
-  Reitere.
-
-Rotina para que se pinte uma listagem:
-  Se a listagem for inexistente,
-    Retorne.
-  Cubra somente fora dessa caixa deste explorador de arquivos.
-  Pinte a caixa deste explorador de arquivos com a cor do ambiente de trabalho [borda] e a cor do ambiente de trabalho [preenchimento].
-  \ aqui muda a cor da caixa externa do explorador de arquivos e da borda.
-  Atribua a caixa deste explorador de arquivos para uma caixa.
-  Subtraia a margem deste explorador de arquivos desde a coordenada X2 desta caixa.
-  Cubra externamente a caixa.
-  Pinte os elementos visíveis na listagem.
-
-Rotina para que se pinte um elemento em uma listagem:
-  Se a listagem for inexistente,
-    Retorne.
-  Se o elemento for inexistente,
-    Retorne.
-  Atribua a cor do ambiente de trabalho para uma cor da borda.
-  Atribua a cor do ambiente de trabalho para uma cor de preenchimento.
-  Atribua a caixa deste elemento e 6 pixels para uma caixa arredondada. \aqui muda o raio da borda do seletor de arquivos
-  Mova a caixa arredondada usando a origem desta listagem.
-  Atribua a coordenada X2 deste explorador de arquivos menos a margem deste explorador de arquivos à coordenada X2 desta caixa arredondada.
-  Se o sinalizador de seleção deste elemento estiver ativo,
-    Atribua o cor cinza escuríssimo à cor da borda. \ cor branca eu acho
-  Se o sinalizador de seleção deste elemento estiver ativo,
-    Atribua a cor cinza escuríssimo à cor de preenchimento. \ aqui muda a cor do hover da pasta selecionada
-  Pinte a caixa arredondada com a cor da borda e a cor de preenchimento.
-  Adicione 4 pixels para a coordenada X1 desta caixa arredondada.
-  Pinte o endereço da pasta deste elemento na caixa arredondada com a cor clara e a fonte padrão e "à esquerda". \ muda a fonte da pastas mãe
-  Atribua o designador deste elemento para um designador.
-  Se a categoria deste elemento for "unidade de disco",
-    Obtenha uma descrição de dispositivo pelo endereço completo deste elemento.
-  Se a categoria deste elemento for "unidade de disco",
-    Acrescente " (" junto com o descrição de dispositivo seguido de ")" para o designador.
-  \ Se a categoria deste elemento for "unidade de disco", obtenha uma categoria da unidade de disco pelo endereço completo deste elemento.
-   \ Se a categoria deste elemento for "unidade de disco", acrescente " (" junto com a categoria da unidade de disco seguido de ")" para o designador.
-  \ Se a categoria deste elemento for "unidade de disco", obtenha um nome da unidade de disco pelo endereço completo deste elemento.
-  \ Se a categoria deste elemento for "unidade de disco", acrescente " (" junto com o nome da unidade de disco seguido de ")" para o designador.
-  Obtenha uma largura usando o endereço da pasta deste elemento e o contexto de dispositivo de memória e a fonte padrão.
-  Adicione a largura para a coordenada X1 desta caixa arredondada.
-  Pinte o designador na caixa arredondada com a cor branca e a fonte padrão e "à esquerda". \ muda a fonte da pasta atual
-  \Se o sinalizador de seleção deste elemento estiver ativo, pinte o designador na caixa arredondada com a cor branca e a fonte padrão e "à esquerda".
 
 Rotina para que se despeje um trecho para um segundo trecho:
   Limpe o segundo trecho.
@@ -1142,16 +1152,6 @@ Rotina para que se coordene a execução dos programas usando uma listagem:
     Mostre na tela o erro do fluxo de entrada/saída;
     Retorne.
   Desmanche a fila de eventos.
-
-Rotina para que se selecione todos os itens usando uma listagem:
-  Se a listagem é raiz,
-    Avise o usuário;
-    Retorne.
-  Solte os elementos na listagem.
-  Selecione os elementos desta listagem.
-  Atribua o primeiro elemento desta listagem para o elemento âncora desta seleção desta listagem.
-  Atribua o último elemento desta listagem ao cursor de texto desta listagem.
-  Mostre o painel de informações do ambiente de trabalho.
 
 Rotina para que se execute classifique elementos usando uma listagem e uma string:
   Se a listagem estiver [na] raiz,
